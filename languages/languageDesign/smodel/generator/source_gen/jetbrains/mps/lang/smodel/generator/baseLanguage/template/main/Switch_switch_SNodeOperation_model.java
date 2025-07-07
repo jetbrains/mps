@@ -125,7 +125,7 @@ public class Switch_switch_SNodeOperation_model extends TemplateSwitchBase imple
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386683562"), CONCEPTS.Model_RootsOperation$JA, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_120_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -140,7 +140,7 @@ public class Switch_switch_SNodeOperation_model extends TemplateSwitchBase imple
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386683572"), CONCEPTS.Model_RootsOperation$JA, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_120_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -177,7 +177,7 @@ public class Switch_switch_SNodeOperation_model extends TemplateSwitchBase imple
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386683593"), CONCEPTS.Model_RootsIncludingImportedOperation$pG, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_120_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -192,7 +192,7 @@ public class Switch_switch_SNodeOperation_model extends TemplateSwitchBase imple
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386683603"), CONCEPTS.Model_RootsIncludingImportedOperation$pG, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_120_3(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -207,7 +207,7 @@ public class Switch_switch_SNodeOperation_model extends TemplateSwitchBase imple
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386683613"), CONCEPTS.Model_NodesIncludingImportedOperation$i0, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_120_4(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -222,7 +222,7 @@ public class Switch_switch_SNodeOperation_model extends TemplateSwitchBase imple
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386683623"), CONCEPTS.Model_NodesIncludingImportedOperation$i0, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_120_5(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

@@ -93,7 +93,7 @@ public class TooltipManager {
         };
         myLastIdeTooltip.setPreferredPosition(Balloon.Position.above);
         myLastIdeTooltip.setCalloutShift(myActiveTooltip.getHeight() / 2 + 2);
-        myLastIdeTooltip.setBorderInsets(new JBInsets(1));
+        myLastIdeTooltip.setBorderInsets(new JBInsets(0));
         myTimer.mouseMovedIn(myActiveTooltip.getTimingProperties(), event.isControlDown(), isNotEmptyString(check_7mhxd1_a2a0g0b0g0m(as_7mhxd1_a0a0c0a6a1a6a21(myEditorComponent, jetbrains.mps.ide.tooltips.TooltipComponent.class), event)));
       }
     }

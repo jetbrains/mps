@@ -18,6 +18,10 @@ import java.util.ArrayList;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 
 public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspectDescriptor> {
   public LanguageAspectsEP_extension() {
@@ -41,13 +45,18 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
       @Nullable
       public IconResource getIconResource() {
-        return IconContainer.RESOURCE_a0a5a0a0a1;
+        return IconContainer.RESOURCE_0;
       }
       @Nullable
       public String getHelpUrl() {
         return HELP_URL;
       }
+      @Override
+      public void configureDescriptorModel(@NotNull SModule module, @NotNull SModel descriptorModel) {
+        new ModelImports(descriptorModel).addUsedLanguage(MetaAdapterFactory.getLanguage(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, "jetbrains.mps.lang.dataFlow"));
+        SModelOperations.createNewRootNode(descriptorModel, MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x7fbdaa9796878e0bL, "jetbrains.mps.lang.dataFlow.structure.DataFlowAspectDeputy"));
+      }
     };
   }
-  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "/data-flow.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "data-flow.html";
 }

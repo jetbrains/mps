@@ -7,7 +7,7 @@ import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
-@GeneratedClass(node = "r:03d3090f-cc5b-43a6-b212-e089f946314d(jetbrains.mps.vcs.mergehints.runtime)/1277106018273911117", model = "r:03d3090f-cc5b-43a6-b212-e089f946314d(jetbrains.mps.vcs.mergehints.runtime)")
+@GeneratedClass(nodeId = "1277106018273911117", model = "r:03d3090f-cc5b-43a6-b212-e089f946314d(jetbrains.mps.vcs.mergehints.runtime)")
 public interface VCSAspectDescriptor extends ILanguageAspect {
   @Nullable
   VCSConceptAspect getVCSDescriptor(SAbstractConcept c);

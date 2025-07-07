@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 @MPSLaunch
 public class FunctionTypeReceiverLoading_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(FunctionTypeReceiverLoading_Test.class, "${mps_home}", "r:eec037d7-3e10-4036-974a-838b679589c3(jetbrains.mps.kotlin.tests.misc.stubs@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FunctionTypeReceiverLoading_Test.class).projectPath(null).modelRef("r:eec037d7-3e10-4036-974a-838b679589c3(jetbrains.mps.kotlin.tests.misc.stubs@tests)").reopenProject(null).build());
 
   public FunctionTypeReceiverLoading_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -42,13 +42,18 @@ public class FunctionTypeReceiverLoading_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3463082351151604522");
+    }
+
     public void test_receiversProperlyLoaded() throws Exception {
-      runWithinCommand(() -> addNodeById("3463082351151604522"));
+      initTestNodes();
       runWithinCommand(() -> {
         // Expected signature of the with signature is with(T, T.() -> R): R, this tests the function type only
         // Regularly, stubs seem to stop loading the receiver type on function types
         // This test ensures loading still happens.
-        SNode function = SLinkOperations.getTarget(getNodeById("3463082351151617521"), LINKS.function$Weyv);
+        SNode function = SLinkOperations.getTarget(getAnnotatedNode("withCall"), LINKS.function$Weyv);
 
         // General assumptions on with() function before reaching the actual function type (if this fails, check with kotlin lang that the signature has not changed or been removed)
         Iterator<SNode> params = ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(function)).iterator();

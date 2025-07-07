@@ -10,6 +10,6 @@ import jetbrains.mps.annotations.GeneratedClass;
  * @deprecated 
  */
 @Deprecated(since = "2019.3", forRemoval = true)
-@GeneratedClass(node = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)/1937421445113686258", model = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)")
+@GeneratedClass(nodeId = "1937421445113686258", model = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)")
 public abstract class BaseFinder implements IFinder {
 }

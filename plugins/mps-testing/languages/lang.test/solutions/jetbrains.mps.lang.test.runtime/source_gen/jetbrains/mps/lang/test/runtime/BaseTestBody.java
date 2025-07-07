@@ -8,51 +8,140 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import java.util.ArrayList;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.List;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Collections;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SNodeId;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.ide.ThreadUtils;
-import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BaseTestBody {
   protected final SModel myModel;
+  private final SModel myTransientModel;
   protected final Project myProject;
   protected final Map<SNode, SNode> myMap;
+  private final Map<String, SNode> myAnnotatedNodes;
 
   protected BaseTestBody(TransformationTest owner) {
     myMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
+    myAnnotatedNodes = MapSequence.fromMap(new HashMap<>());
 
-    // this is what BaseTransformationTest.runTest() used to do
-    myModel = owner.getTransientModelDescriptor();
+    myModel = owner.getModelDescriptor();
+    myTransientModel = owner.getTransientModelDescriptor();
     myProject = owner.getProject();
   }
 
-  public final void addNodeById(final String id) {
-    myProject.getModelAccess().executeCommand(() -> {
-      SNode node = getRealNodeById(id);
-      SNode copy = CopyUtil.copy(node, myMap, true);
-      for (SNode a : ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{}))) {
-        SNodeOperations.deleteNode(a);
+  /**
+   * subclasses override with an initialization sequence to prepare all nodes test could access/modify
+   * this method serves as an entry point for generated test methods to move initialization into single place and out of test code
+   */
+  protected void initTestNodes() {
+    // no-op, subclasses override with a sequence of addNodeById()
+  }
+
+  /**
+   * Handy alternative to a sequence of addNodeById(), with appropriate model lock
+   */
+  protected final void prepareTestNodes(final String... nodeId) {
+    // intentionally not clone/copy in the name, as I plan to have distinct model for stripped copies of test nodes with original id
+    // (aka clone), so that I can get rid of myMap altogether (would reference test copies by the same id as original one)
+    myProject.getModelAccess().runWriteAction(() -> {
+      // clear temp model, just in case we reuse from previous test case
+      // FIXME put a not into BaseEditorTestBody that it doesn't need cleanup as long as it's single test case per test.
+      ArrayList<SNode> roots = new ArrayList<>();
+      for (SNode r : myTransientModel.getRootNodes()) {
+        roots.add(r);
       }
-      myModel.addRootNode(copy);
+      for (SNode r : roots) {
+        myTransientModel.removeRootNode(r);
+      }
+      roots.clear();
+      for (String nid : nodeId) {
+        roots.add(getRealNodeById(nid));
+      }
+      for (SNode originalRoot : myModel.getRootNodes()) {
+        // isInstanceOf(ITestCase) technically prevents us from using a test case as test data, but I believe this to be an exceptional scenario,
+        // especially provided there's similar logic to detect tests (roots<ITestCase>)
+        if (SNodeOperations.isInstanceOf(originalRoot, CONCEPTS.ITestCase$Fp)) {
+          continue;
+        }
+        roots.add(originalRoot);
+      }
+      // getNodeById(), below, relies on the preserved node identity
+      List<SNode> copied = CopyUtil.copyAndPreserveId(roots, myMap);
+      for (SNode c : ListSequence.fromList(copied)) {
+        // cleanTestAnnotation is not necessary for roots we use as aux data, but don't want to bother at the moment
+        cleanTestAnnotations(c);
+        myTransientModel.addRootNode(c);
+      }
     });
   }
 
   /**
-   * access copy of a node given identity from original model; copy is clean 
+   * requires proper write/command model lock
    */
-  public final SNode getNodeById(final String id) {
-    // FIXME this is provisional fix for MPSI-38. In most scenarios, getNodeById is invoked from
-    // model read. It's just an editor tests that we didn't use TestNodeReference with.
-    // Alternative would be to grab model read from outside; doing it locally for InvokeIntentionStatement only
-    // makes templates too complicated, doing it in general (for any TestNodeReference) changes too many templates
-    // to afford the change in a year-old bugfix (20.3 fix at the moment of 21.3 release)
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> MapSequence.fromMap(myMap).get(getRealNodeById(id)));
+  public final void addNodeById(String id) {
+    // I believe idea here is to make a copy of original node w/o any test-related stuff, like 'check'annotations
+    // There's implicit assumption that *all* the nodes created under NodesTestCase get copied and that myMap gives access to a copy of any child of the original node.
+    SNode node = getRealNodeById(id);
+    // getNodeById(), below, relies on the preserved node identity
+    SNode copy = CopyUtil.copyAndPreserveId(Collections.singletonList(node), myMap).get(0);
+    cleanTestAnnotations(copy);
+    myTransientModel.addRootNode(copy);
+  }
+
+  private void cleanTestAnnotations(SNode testNode) {
+    for (SNode a : ListSequence.fromList(SNodeOperations.getNodeDescendants(testNode, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{}))) {
+      if (SNodeOperations.isInstanceOf(a, CONCEPTS.TestNodeAnnotation$27)) {
+        String an = SPropertyOperations.getString(SNodeOperations.cast(a, CONCEPTS.TestNodeAnnotation$27), PROPS.name$MnvL);
+        if (MapSequence.fromMap(myAnnotatedNodes).get(an) == null) {
+          // don't overwrite in case "after" node has been copied from "before" with the same named annotations
+          MapSequence.fromMap(myAnnotatedNodes).put(an, SNodeOperations.getParent(a));
+        }
+      }
+      SNodeOperations.deleteNode(a);
+    }
+  }
+
+  /**
+   * access copy of a node given identity from original model; copy is clean 
+   * ATM requires model read for transient test model (once/if we introduce repository and separate MA for test transients, we may lift this requirement as well)
+   */
+  public final SNode getNodeById(String id) {
+    // FWIW, generally getNodeById is invoked from model command/read. 
+    // For TestNodeReference and named test nodes that could be used e.g. in editor tests outside of a proper model lock (e.g.InvokeIntentionStatement)
+    // there's #getAnnotatedNode() which doesn't require model lock at the moment.
+    SNodeId nid = SNodeId.fromString(id);
+    SNode copy = myTransientModel.getNode(nid);
+    if (copy != null) {
+      return copy;
+    }
+    // well, there are few nodes we deleted when copying that could be referenced this way, like types from <check has type> operation
+    // therefore, find the copy in myMap (still there, not affected by a.detach from #cleanTestAnnotations())
+    return MapSequence.fromMap(myMap).get(myModel.getNode(nid));
+  }
+
+  /**
+   * Gives named access to a test node copy. For use with TestNodeReference.
+   * 
+   * @since 2024.1
+   * @return copy of a test node annotated with a name in the original model
+   */
+  @Nullable
+  protected final SNode getAnnotatedNode(String name) {
+    // intentionally done in a way to avoid model read requirement, yet I'm reluctant to put this into javadoc right away.
+    // perhaps, we'll need to demand model read later, as I feel it's not quite ok to have tests accessing node<> w/o proper access
+    return MapSequence.fromMap(myAnnotatedNodes).get(name);
   }
 
   /**
@@ -103,6 +192,12 @@ public class BaseTestBody {
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept ITestCase$Fp = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
+    /*package*/ static final SConcept TestNodeAnnotation$27 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x119e1c6609cL, "jetbrains.mps.lang.test.structure.TestNodeAnnotation");
     /*package*/ static final SConcept AbstractTestNodeAnnotation$lh = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 /**
  * The classloader-wrapper around the IDEA or system classloaders.
@@ -29,12 +31,11 @@ public final class IDEADelegatingModuleClassLoader extends MPSModuleClassLoader 
     registerAsParallelCapable();
   }
 
-  private final SModule myModule;
+  private final SModuleReference myModule;
 
   public IDEADelegatingModuleClassLoader(SModule module, ClassLoader delegate) {
-    super("Delegate to IDEA CL " + delegate.toString(), delegate);
-    // FIXME why on earth we keep SModule, not SModuleReference and expose it through ModuleClassNotFoundException?
-    myModule = module;
+    super(String.format("Delegate %s to IDEA CL %s", NameUtil.compactNamespace(module.getModuleName()), delegate.toString()), delegate);
+    myModule = module.getModuleReference();
   }
 
   @Override

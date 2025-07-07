@@ -11,7 +11,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.Alarm;
 import com.intellij.util.Alarm.ThreadToUse;
+import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.Component;
 import java.awt.Window;
@@ -57,6 +59,11 @@ class HintPopupController {
     }
   }
 
+  protected void cancelAllRequests() {
+    myMoveAlarm.cancelAllRequests();
+    myHoverAlarm.cancelAllRequests();
+  }
+
   private class MyMouseMotionAdapter extends MouseMotionAdapter {
     @Override
     public void mouseMoved(MouseEvent e) {
@@ -68,9 +75,7 @@ class HintPopupController {
       }
       // FIXME magic constant 300? 600?
       if (myMoveAlarm.getActiveRequestCount() == 0) {
-        myMoveAlarm.addRequest(() -> {
-          MPSDocumentationManager.getInstance().cancelAll();
-        }, 300);
+        myMoveAlarm.addRequest(() -> MPSDocumentationManager.getInstance().cancelAll(), 300);
       }
       myHoverAlarm.cancelAllRequests();
       myHoverAlarm.addRequest(() -> {
@@ -117,11 +122,11 @@ class HintPopupController {
     myKeepHintOnMouseMove = keep;
   }
 
-  public void showInfoToolTip(Project project, Editor editor, String docMessage, TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup, RelativePoint showPoint) {
+  public void showInfoToolTip(Project project, Editor editor, @Nullable DocumentationProvider provider, TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup, RelativePoint showPoint) {
     // this clears the hint window on mouse move
     setKeepHintOnMouseMove(false);
 
-    MPSDocumentationManager.getInstance().showHintPopup(project, editor, docMessage, tooltipRenderer, tooltipGroup, showPoint, (hint) -> {
+    MPSDocumentationManager.getInstance().showHintPopup(project, editor, provider, tooltipRenderer, tooltipGroup, showPoint, (hint) -> {
       Window window = hint.getPopupWindow();
       if (window != null) {
         IdeEventQueue.getInstance().addDispatcher(e -> {

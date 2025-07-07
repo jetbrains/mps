@@ -12,6 +12,7 @@ import java.awt.Frame;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
+import com.intellij.openapi.actionSystem.PlatformCoreDataKeys;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.script.runtime.RefactoringScript;
@@ -57,12 +58,15 @@ public class RunMigrationScripts_Action extends BaseAction {
     {
       List<SModule> p = event.getData(MPSCommonDataKeys.MODULES);
     }
+    {
+      Object[] p = event.getData(PlatformCoreDataKeys.SELECTED_ITEMS);
+    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-    SearchScope scope = mpsProject.getModelAccess().computeReadAction(() -> (RunMigrationScripts_Action.this.global ? AbstractMigrationScriptHelper.createMigrationScope(mpsProject) : AbstractMigrationScriptHelper.createMigrationScope(event.getData(MPSCommonDataKeys.MODULES), event.getData(MPSCommonDataKeys.MODELS))));
+    SearchScope scope = mpsProject.getModelAccess().computeReadAction(() -> MigrationScriptHelper.combineModulesModelsSelectedItemsIntoScope(RunMigrationScripts_Action.this.global, mpsProject, event.getData(PlatformCoreDataKeys.SELECTED_ITEMS), event.getData(MPSCommonDataKeys.MODULES), event.getData(MPSCommonDataKeys.MODELS)));
     if (!(scope.getModels().iterator().hasNext())) {
       return;
     }

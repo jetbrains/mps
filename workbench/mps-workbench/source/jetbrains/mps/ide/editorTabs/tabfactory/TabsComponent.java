@@ -42,6 +42,22 @@ public interface TabsComponent {
    */
   void editNode(SNodeReference sNodePointer);
 
+  /**
+   * Returns true if there is an editor tab opened on a root node matching the specified reference.
+   * @param reference
+   * @return
+   */
+  default boolean hasEditorFor(@NotNull SNodeReference reference) {
+    return false;
+  }
+
+  /**
+   * Returns a reference to the node that is open in the "main" editor of this tabs component.
+   */
+  default SNodeReference getMainNode() {
+    return null;
+  }
+
   JComponent getComponent();
 
   /**

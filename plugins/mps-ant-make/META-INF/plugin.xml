@@ -3,12 +3,15 @@
   <id>jetbrains.mps.tool.make</id>
   <name>MPS Ant Integration: Make</name>
   <description>Provides implementation of Generate/Make tasks for MPS Ant scripts</description>
-  <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
   <category>Custom Languages</category>
-  <version>2023.3.4</version>
-  <idea-version since-build="233.1" until-build="241.1"/>
+  <version>2025.1</version>
+  <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
+  <idea-version since-build="251.1" until-build="252.1"/>
   <!-- intentionally no depends, as I find 'j.m.core' dependency simply wrong,
-       and 'com.intellij' confusing and wrong - this code doesn't depend on workbench (IdeaPlugin.xml is part of [mps-workbench] -->
+       and 'com.intellij' confusing and wrong - this code doesn't depend on workbench (MPSPlugin.xml is part of [mps-workbench] -->
+  <dependencies>
+    <plugin id="jetbrains.mps.core"/>
+  </dependencies>
 
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="/" hide="true"/>

@@ -5,7 +5,7 @@ package jetbrains.mps.debug.api.breakpoints;
 import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.JComponent;
 
-@GeneratedClass(node = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)/4474271214082912939", model = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)")
+@GeneratedClass(nodeId = "4474271214082912939", model = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)")
 public interface IBreakpointPropertiesUi<B extends IBreakpoint> {
   void setBreakpoint(B breakpoint);
   JComponent getMainComponent();

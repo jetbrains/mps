@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="8l899h6eus8wwb3p2fuklt15shzrmqj">
-  <files names="HtmlAttribute_TextGen.java:HtmlClosingTag_TextGen.java:HtmlDocument_TextGen.java:HtmlEntityRefValue_TextGen.java:HtmlEntityRef_TextGen.java:HtmlFile_TextGen.java:HtmlLine_TextGen.java:HtmlOpeningTag_TextGen.java:HtmlTag_TextGen.java:HtmlTextValue_TextGen.java:HtmlWord_TextGen.java:TextGenAspectDescriptor.java" />
+<product version="3" modelHash="habh6cf9hho4zxdm7zpztelzyjdof4">
+  <files names="HtmlAttribute_TextGen.java:HtmlClosingTag_TextGen.java:HtmlDocument_TextGen.java:HtmlEntityRefValue_TextGen.java:HtmlEntityRef_TextGen.java:HtmlFile_TextGen.java:HtmlLineWithoutSpaces_TextGen.java:HtmlLine_TextGen.java:HtmlOpeningTag_TextGen.java:HtmlTag_TextGen.java:HtmlTextValue_TextGen.java:HtmlWord_TextGen.java:TextGenAspectDescriptor.java" />
 </product>
 

@@ -22,7 +22,7 @@ public class EnumerationDescriptor_RuleType extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_strictly_after_0 = new EnumerationDescriptor.MemberDescriptor("strictly_after", "after (>)", 0x24ae9488ebb07a1fL, "r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/4241665505353447152");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe39L, 0x5869770da61dfe3aL, 0x5869770da61dfe3bL, 0x5869770da61dfe3cL, 0x24ae9488ebb07a1eL, 0x24ae9488ebb07a1fL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_strictly_before_0, myMember_strictly_together_0, myMember_before_or_together_0, myMember_after_or_together_0, myMember_strictly_after_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_strictly_before_0, myMember_strictly_together_0, myMember_before_or_together_0, myMember_after_or_together_0, myMember_strictly_after_0);
 
   @Nullable
   @Override

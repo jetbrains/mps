@@ -26,7 +26,7 @@ import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.ReloadableFinder;
 import java.util.Arrays;
 
-@GeneratedClass(node = "r:3cb1700d-933a-4e99-ae78-290ebea08948(jetbrains.mps.ide.findusages.view)/8568892084424436823", model = "r:3cb1700d-933a-4e99-ae78-290ebea08948(jetbrains.mps.ide.findusages.view)")
+@GeneratedClass(nodeId = "8568892084424436823", model = "r:3cb1700d-933a-4e99-ae78-290ebea08948(jetbrains.mps.ide.findusages.view)")
 public class FindUtils {
   private static final Logger LOG = Logger.getLogger(FindUtils.class);
   @Deprecated

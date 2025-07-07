@@ -57,39 +57,9 @@ public class CachedModuleData {
   }
 
   public void save(ModelOutputStream stream) throws IOException {
-    stream.writeByte(27);
-    ModulesMiner.saveHandle(myHandle, stream);
-
-    Set<Entry<String, List<CachedModelData>>> entries = myModels.entrySet();
-    stream.writeInt(entries.size());
-    for (Entry<String, List<CachedModelData>> entry : entries) {
-      stream.writeString(entry.getKey());
-
-      List<CachedModelData> value = entry.getValue();
-      stream.writeInt(value.size());
-      for (CachedModelData model : value) {
-        model.save(stream);
-      }
-    }
-    stream.writeInt(0x674921);
   }
 
   public static CachedModuleData load(ModelInputStream stream) throws IOException {
-    if (stream.readByte() != 27) throw new IOException("bad stream: no module start marker");
-    ModuleHandle moduleHandle = ModulesMiner.loadHandle(stream);
-
-    Map<String, List<CachedModelData>> modelsByPath = new HashMap<String, List<CachedModelData>>();
-    for (int size = stream.readInt(); size > 0; size--) {
-      String key = stream.readString();
-      int valueSize = stream.readInt();
-      List<CachedModelData> models = new ArrayList<CachedModelData>(valueSize);
-      for (; valueSize > 0; valueSize--) {
-        models.add(CachedModelData.load(stream));
-      }
-      modelsByPath.put(key, models);
-    }
-
-    if (stream.readInt() != 0x674921) throw new IOException("bad stream: no module end marker");
-    return new CachedModuleData(moduleHandle, modelsByPath);
+    return null;
   }
 }

@@ -21,7 +21,7 @@ import java.util.List;
  * 
  * @param <T> something one can queue and process in batch.
  */
-@GeneratedClass(node = "r:e74490a1-7013-47e5-9f40-14c310c80a86(jetbrains.mps.vcs.suspicious)/4707157387247635635", model = "r:e74490a1-7013-47e5-9f40-14c310c80a86(jetbrains.mps.vcs.suspicious)")
+@GeneratedClass(nodeId = "4707157387247635635", model = "r:e74490a1-7013-47e5-9f40-14c310c80a86(jetbrains.mps.vcs.suspicious)")
 /*package*/ abstract class BaseTaskQueue<T> {
   private final LinkedBlockingQueue<T> myTasks = new LinkedBlockingQueue<T>();
   private final Semaphore myProcessingSemaphore = new Semaphore(1);

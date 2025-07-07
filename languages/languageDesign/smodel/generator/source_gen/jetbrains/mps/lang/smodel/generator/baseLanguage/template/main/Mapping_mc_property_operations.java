@@ -70,7 +70,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6202631021711083892"), CONCEPTS.Property_SetOperation$ot, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_1_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

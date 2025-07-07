@@ -32,7 +32,7 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
       @Nullable
       public IconResource getIconResource() {
-        return IconContainer.RESOURCE_a0a2a0a0a1;
+        return IconContainer.RESOURCE_0;
       }
       @Override
       public void configureDescriptorModel(@NotNull SModule module, @NotNull SModel descriptorModel) {

@@ -5,13 +5,21 @@ package jetbrains.mps.vcs.history;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import com.intellij.openapi.vcs.history.CurrentRevision;
+import org.jetbrains.mps.openapi.model.SModel;
+import com.intellij.openapi.vcs.VcsException;
+import java.io.IOException;
+import org.jetbrains.mps.openapi.persistence.ModelLoadException;
+import jetbrains.mps.vcspersistence.ModelSack;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.FilePath;
 import com.intellij.vcsUtil.VcsUtil;
 import com.intellij.vcs.log.util.VcsLogUtil;
@@ -33,14 +41,26 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)/4809466702829312972", model = "r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)")
+@GeneratedClass(nodeId = "4809466702829312972", model = "r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)")
 public final class CommitsGraph {
 
   @NotNull
   private final Collection<CommitsGraphNode> myNodes;
+  private final VirtualFile myFile;
+  private final ComponentHost myPlatform;
 
-  public CommitsGraph(@NotNull Project project, @NotNull VirtualFile file, @NotNull List<VcsFileRevision> revisions) throws BuildException {
-    myNodes = buildGraph(project, file, revisions);
+  public CommitsGraph(@NotNull MPSProject project, @NotNull VirtualFile file, @NotNull List<VcsFileRevision> revisions) throws BuildException {
+    myNodes = buildGraph(project.getProject(), file, revisions);
+    myFile = file;
+    myPlatform = project.getPlatform();
+  }
+
+  @NotNull
+  public VirtualFile getFile() {
+    // FIXME provisional code, as there's a file traveling along with CommitsGraph, and I see no reason to pass both when can keep it here
+    //     OTOH, don't quite get the idea of VF for a commit graph of a model. If indeed is ok, remove fixme and document like "actual file used to build the graph"
+    //     Provided there's single use, perhaps, shall remove notion of the file as CommitsGraph's public attribute? Still, need to keep it as a field.
+    return myFile;
   }
 
   @Nullable
@@ -54,8 +74,23 @@ public final class CommitsGraph {
     CollectionSequence.fromCollection(myNodes).addElement(localRevisionNode);
   }
 
+  public void addLocalRevisionNode(@NotNull CurrentRevision revision) {
+    SModel loadModel = null;
+    try {
+      loadModel = loadModel(revision);
+    } catch (Exception ex) {
+      // ignore as it was in RootModelHistoryExtractor prior to the refactoring. However, shall not happen and is likely an error - current revision w/o a model?
+    }
+    addLocalRevisionNode(new CommitsGraphNode(revision, loadModel));
+  }
+
   public Collection<CommitsGraphNode> getNodes() {
     return myNodes;
+  }
+
+  /*package*/ SModel loadModel(VcsFileRevision revision) throws VcsException, IOException, ModelLoadException, IllegalArgumentException {
+    // FIXME in fact, could discover once, and reuse ModelSack, and do not keep neither VF not CH. Just don't want to deal with exceptions from cons at the moment
+    return ModelSack.discover(myPlatform, myFile.getName()).load(revision.loadContent());
   }
 
   public static class BuildException extends Exception {
@@ -77,7 +112,7 @@ public final class CommitsGraph {
   @Nullable
   private static VcsLogData getDataManager(Project project) {
     VcsLogManager logManager = VcsProjectLog.getInstance(project).getLogManager();
-    return check_2ne4bd_a1a51(logManager);
+    return check_2ne4bd_a1a32(logManager);
   }
 
   @NotNull
@@ -171,7 +206,7 @@ public final class CommitsGraph {
     }
     return nodes;
   }
-  private static VcsLogData check_2ne4bd_a1a51(VcsLogManager checkedDotOperand) {
+  private static VcsLogData check_2ne4bd_a1a32(VcsLogManager checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getDataManager();
     }

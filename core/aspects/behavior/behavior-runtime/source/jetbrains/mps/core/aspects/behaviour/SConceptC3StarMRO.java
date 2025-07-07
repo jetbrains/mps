@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.core.aspects.behaviour;
 
-import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,7 +31,11 @@ import java.util.Set;
  * @since 18.1
  */
 public class SConceptC3StarMRO extends C3StarAncestorResolutionOrder<_SAbstractConcept> {
-  private static final _SAbstractConcept BASECONCEPT_WRAP = _SAbstractConcept.wrap(SNodeUtil.concept_BaseConcept);
+  private final _SAbstractConcept BASECONCEPT_WRAP;
+
+  public SConceptC3StarMRO(@NotNull SConcept baseConcept) {
+    BASECONCEPT_WRAP = _SAbstractConcept.wrap(baseConcept);
+  }
 
   @NotNull
   protected List<_SAbstractConcept> calcLinearizationImpl(@NotNull _SAbstractConcept concept, @NotNull Set<_SAbstractConcept> visited) {

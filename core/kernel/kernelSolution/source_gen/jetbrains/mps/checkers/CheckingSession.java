@@ -14,7 +14,7 @@ import org.jetbrains.mps.openapi.util.Consumer;
  * See {@link jetbrains.mps.checkers.SuppressErrorsChecker }<br>
  * See {@link jetbrains.mps.checkers.AggregatingChecker }<br>
  */
-@GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/596238210753843643", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
+@GeneratedClass(nodeId = "596238210753843643", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public interface CheckingSession<I extends IssueKindReportItem> {
   abstract class SuppressableError<T> {
     public SuppressableError(T error) {

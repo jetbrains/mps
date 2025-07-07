@@ -4195,7 +4195,7 @@
     </node>
     <node concept="3lhOvk" id="IR$DxXvx4F" role="3lj3bC">
       <ref role="30HIoZ" to="yv2q:IR$DxXuVkC" resolve="ModuleActivator" />
-      <ref role="3lhOvi" node="IR$DxXvgor" resolve="ModuleActivatorTemplate" />
+      <ref role="3lhOvi" node="IR$DxXvgor" resolve="ModuleActivatorToClass" />
       <node concept="30G5F_" id="IR$DxXv$K9" role="30HLyM">
         <node concept="3clFbS" id="IR$DxXv$Ka" role="2VODD2">
           <node concept="3clFbF" id="IR$DxXv$XJ" role="3cqZAp">
@@ -4288,7 +4288,7 @@
       <node concept="2tJIrI" id="3ITW85S310d" role="jymVt" />
       <node concept="3Tm1VV" id="IR$DxXvgou" role="1B3o_S" />
       <node concept="3uibUv" id="IR$DxXvh7b" role="EKbjA">
-        <ref role="3uigEE" to="ze1i:~ModuleRuntime$Activator" resolve="Activator" />
+        <ref role="3uigEE" to="ze1i:~ModuleRuntime$Activator" resolve="ModuleRuntime.Activator" />
       </node>
       <node concept="3clFb_" id="IR$DxXvh8e" role="jymVt">
         <property role="TrG5h" value="contribute" />
@@ -4297,7 +4297,7 @@
         <node concept="37vLTG" id="IR$DxXvh8j" role="3clF46">
           <property role="TrG5h" value="ctx" />
           <node concept="3uibUv" id="IR$DxXvh8k" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~ModuleRuntime$ActivatorContext" resolve="ActivatorContext" />
+            <ref role="3uigEE" to="ze1i:~ModuleRuntime$ActivatorContext" resolve="ModuleRuntime.ActivatorContext" />
           </node>
           <node concept="2AHcQZ" id="IR$DxXvh8l" role="2AJF6D">
             <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -4320,7 +4320,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="IR$DxXvh8n" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
         <node concept="1W57fq" id="IR$DxXvhG1" role="lGtFl">
           <node concept="3IZrLx" id="IR$DxXvhG2" role="3IZSJc">

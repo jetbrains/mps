@@ -14,7 +14,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 
 @State(name = "DefaultSearchOptions3", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
 )
-@GeneratedClass(node = "r:39c01cc7-82c8-4706-9a38-48a33acb0535(jetbrains.mps.ide.findusages.view.optionseditor)/28859145781927652", model = "r:39c01cc7-82c8-4706-9a38-48a33acb0535(jetbrains.mps.ide.findusages.view.optionseditor)")
+@GeneratedClass(nodeId = "28859145781927652", model = "r:39c01cc7-82c8-4706-9a38-48a33acb0535(jetbrains.mps.ide.findusages.view.optionseditor)")
 public class DefaultSearchOptionsComponent implements PersistentStateComponent<Element> {
   private final DefaultOptionsContainer myDefaultOptions = new DefaultOptionsContainer();
   private final Project myProject;

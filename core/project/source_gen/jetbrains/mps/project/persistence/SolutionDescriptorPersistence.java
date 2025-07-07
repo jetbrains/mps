@@ -12,27 +12,18 @@ import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.util.xml.XmlUtil;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Collection;
 
 /**
  * XML/DOM persistence for a descriptor of Solution module
  */
-@GeneratedClass(node = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)/842994667883032842", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
+@GeneratedClass(nodeId = "842994667883032842", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
 public class SolutionDescriptorPersistence {
   private final String SOURCE_GEN_DEFAULT = "${module}/source_gen";
 
-  public static final String SOURCE_PATH = "sourcePath";
-  public static final String SOURCE_PATH_SOURCE = "source";
-  public static final String COMPILE_IN_MPS = "compileInMPS";
-  /*package*/ static final String PLUGIN_KIND = "pluginKind";
-
-  /**
-   * 
-   * @deprecated use another cons
-   */
-  @Deprecated(forRemoval = true, since = "2023.3")
-  public SolutionDescriptorPersistence(Object unused) {
-  }
+  private static final String SOURCE_PATH = "sourcePath";
+  private static final String SOURCE_PATH_SOURCE = "source";
+  private static final String COMPILE_IN_MPS = "compileInMPS";
+  private static final String PLUGIN_KIND = "pluginKind";
 
   public SolutionDescriptorPersistence() {
   }
@@ -42,55 +33,55 @@ public class SolutionDescriptorPersistence {
     SolutionDescriptor descriptor;
     try {
       descriptor = ((_FunctionTypes._return_P0_E0<SolutionDescriptor>) () -> {
-        final SolutionDescriptor result_8ckma3_a0a0a0b0l = new SolutionDescriptor();
-        final String result_8ckma3_a0a0a0a0b0l = rootElement.getAttributeValue("name");
-        result_8ckma3_a0a0a0b0l.setNamespace(result_8ckma3_a0a0a0a0b0l);
+        final SolutionDescriptor result_8ckma3_a0a0a0b0j = new SolutionDescriptor();
+        final String result_8ckma3_a0a0a0a0b0j = rootElement.getAttributeValue("name");
+        result_8ckma3_a0a0a0b0j.setNamespace(result_8ckma3_a0a0a0a0b0j);
 
         if (rootElement.getAttributeValue("uuid") != null) {
-          final ModuleId result_8ckma3_a0a2a0a0a0b0l = ModuleId.fromString(rootElement.getAttributeValue("uuid"));
-          result_8ckma3_a0a0a0b0l.setId(result_8ckma3_a0a2a0a0a0b0l);
+          final ModuleId result_8ckma3_a0a2a0a0a0b0j = ModuleId.fromString(rootElement.getAttributeValue("uuid"));
+          result_8ckma3_a0a0a0b0j.setId(result_8ckma3_a0a2a0a0a0b0j);
         }
 
         String pluginKind = rootElement.getAttributeValue(PLUGIN_KIND);
         if (pluginKind != null && pluginKind.length() > 0) {
-          final SolutionKind result_8ckma3_a0a5a0a0a0b0l = SolutionKind.valueOf(pluginKind);
-          result_8ckma3_a0a0a0b0l.setKind(result_8ckma3_a0a5a0a0a0b0l);
+          final SolutionKind result_8ckma3_a0a5a0a0a0b0j = SolutionKind.valueOf(pluginKind);
+          result_8ckma3_a0a0a0b0j.setKind(result_8ckma3_a0a5a0a0a0b0j);
         }
 
-        final boolean result_8ckma3_a7a0a0a0b0l = XmlUtil.booleanWithDefault(rootElement, COMPILE_IN_MPS, false);
-        result_8ckma3_a0a0a0b0l.setCompileInMPS(result_8ckma3_a7a0a0a0b0l);
+        final boolean result_8ckma3_a7a0a0a0b0j = XmlUtil.booleanWithDefault(rootElement, COMPILE_IN_MPS, false);
+        result_8ckma3_a0a0a0b0j.setCompileInMPS(result_8ckma3_a7a0a0a0b0j);
 
         String moduleVersion = rootElement.getAttributeValue("moduleVersion");
         if (moduleVersion != null) {
           try {
-            result_8ckma3_a0a0a0b0l.setModuleVersion(Integer.parseInt(moduleVersion));
+            result_8ckma3_a0a0a0b0j.setModuleVersion(Integer.parseInt(moduleVersion));
           } catch (NumberFormatException ignored) {
           }
         }
         String op = XmlUtil.stringWithDefault(rootElement, "generatorOutputPath", SOURCE_GEN_DEFAULT);
-        final String result_8ckma3_a21a0a0a0b0l = (op.isBlank() ? null : op);
-        result_8ckma3_a0a0a0b0l.setOutputRoot(result_8ckma3_a21a0a0a0b0l);
+        final String result_8ckma3_a21a0a0a0b0j = (op.isBlank() ? null : op);
+        result_8ckma3_a0a0a0b0j.setOutputRoot(result_8ckma3_a21a0a0a0b0j);
 
-        result_8ckma3_a0a0a0b0l.getModelRootDescriptors().addAll(ModuleDescriptorPersistence.loadModelRoots(XmlUtil.children(XmlUtil.first(rootElement, "models"), "modelRoot")));
+        result_8ckma3_a0a0a0b0j.getModelRootDescriptors().addAll(ModuleDescriptorPersistence.loadModelRoots(XmlUtil.children(XmlUtil.first(rootElement, "models"), "modelRoot")));
 
-        result_8ckma3_a0a0a0b0l.setNeedsExternalIdeaCompile(XmlUtil.first(rootElement, "compileInIDEA") != null);
+        result_8ckma3_a0a0a0b0j.setNeedsExternalIdeaCompile(XmlUtil.first(rootElement, "compileInIDEA") != null);
 
-        result_8ckma3_a0a0a0b0l.readOnlyStubModule(XmlUtil.first(rootElement, "readOnlyStubs") != null);
+        result_8ckma3_a0a0a0b0j.readOnlyStubModule(XmlUtil.first(rootElement, "readOnlyStubs") != null);
 
         Element facets = XmlUtil.first(rootElement, "facets");
         if (facets != null) {
-          result_8ckma3_a0a0a0b0l.getModuleFacetDescriptors().addAll(ModuleDescriptorPersistence.loadFacets(XmlUtil.children(facets, "facet")));
+          result_8ckma3_a0a0a0b0j.getModuleFacetDescriptors().addAll(ModuleDescriptorPersistence.loadFacets(XmlUtil.children(facets, "facet")));
         }
 
 
         List<String> javaLibs = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(rootElement, "stubModelEntries"), "stubModelEntry")).select((it) -> it.getAttributeValue("path")).toList();
-        result_8ckma3_a0a0a0b0l.getJavaLibPersistedValues().addAll(javaLibs);
+        result_8ckma3_a0a0a0b0j.getJavaLibPersistedValues().addAll(javaLibs);
 
-        ModuleDescriptorPersistence.loadDependencies(result_8ckma3_a0a0a0b0l, rootElement);
+        ModuleDescriptorPersistence.loadDependencies(result_8ckma3_a0a0a0b0j, rootElement);
 
         List<String> sources = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(rootElement, SOURCE_PATH), SOURCE_PATH_SOURCE)).select((it) -> it.getAttributeValue("path")).toList();
-        result_8ckma3_a0a0a0b0l.getSourcePathPersistedValue().addAll(sources);
-        return result_8ckma3_a0a0a0b0l;
+        result_8ckma3_a0a0a0b0j.getSourcePathPersistedValue().addAll(sources);
+        return result_8ckma3_a0a0a0b0j;
       }).invoke();
     } catch (Exception ex) {
       throw new ModuleReadException(ex);
@@ -113,13 +104,8 @@ public class SolutionDescriptorPersistence {
         result.setAttribute("generatorOutputPath", descriptor.getOutputRoot());
       }
     } else {
-      if (descriptor.getOutputPath() != null) {
-        // Just in case there's MD construction code with immediate save() (w/o AM.save()/update magic)
-        result.setAttribute("generatorOutputPath", descriptor.getOutputPath());
-      } else {
-        // indicate no output path
-        result.setAttribute("generatorOutputPath", "");
-      }
+      // indicate no output path
+      result.setAttribute("generatorOutputPath", "");
     }
     if (descriptor.needsExternalIdeaCompile()) {
       result.addContent(new Element("compileInIDEA"));
@@ -136,25 +122,6 @@ public class SolutionDescriptorPersistence {
       Element facets = new Element("facets");
       ModuleDescriptorPersistence.saveFacets(facets, descriptor.getModuleFacetDescriptors());
       result.addContent(facets);
-    }
-
-
-    Collection<String> additionalJavaStubPaths = descriptor.getJavaLibPersistedValues();
-    if (!(additionalJavaStubPaths.isEmpty())) {
-      Element stubModelEntries = new Element("stubModelEntries");
-      for (String l : additionalJavaStubPaths) {
-        XmlUtil.tagWithAttribute(stubModelEntries, "stubModelEntry", "path", l);
-      }
-      result.addContent(stubModelEntries);
-    }
-
-    Collection<String> sources = descriptor.getSourcePathPersistedValue();
-    if (!(sources.isEmpty())) {
-      Element sourcePath = new Element(SOURCE_PATH);
-      for (String p : sources) {
-        XmlUtil.tagWithAttribute(sourcePath, SOURCE_PATH_SOURCE, "path", p);
-      }
-      result.addContent(sourcePath);
     }
 
     ModuleDescriptorPersistence.saveDependencies(result, descriptor);

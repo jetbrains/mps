@@ -16,7 +16,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import javax.swing.JComponent;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)/4577525712681046198", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
+@GeneratedClass(nodeId = "4577525712681046198", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
 public abstract class AbstractEvaluationDialog extends DialogWrapper {
   protected final EvaluationProvider myProvider;
   protected final EvaluationPanel myEvaluationPanel;

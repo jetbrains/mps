@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,14 @@
  */
 package jetbrains.mps.persistence;
 
-import jetbrains.mps.extapi.persistence.StreamAsMultiDataSource;
-import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.persistence.DataSourceListener;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
-
-import java.util.stream.Stream;
 
 /**
  * @author apyshkin
  * @since 16/07/2020
  */
-public abstract class StreamDataSourceBase implements StreamDataSource, StreamAsMultiDataSource {
+public abstract class StreamDataSourceBase implements StreamDataSource {
   private final String myName;
   private final String myLocation;
 
@@ -49,33 +44,7 @@ public abstract class StreamDataSourceBase implements StreamDataSource, StreamAs
   }
 
   @Override
-  public void addListener(@NotNull DataSourceListener listener) {
-    if (isReadOnly()) {
-      Logger.getLogger(getClass()).warning("Adding " + listener + " to read-only " + this);
-    }
-  }
-
-  @Override
-  public void removeListener(@NotNull DataSourceListener listener) {
-    if (isReadOnly()) {
-      Logger.getLogger(getClass()).warning("Removing " + listener + " from read-only " + this);
-    }
-  }
-
-  @Override
   public long getTimestamp() {
     return 0L;
-  }
-
-  @NotNull
-  @Override
-  public final Stream<StreamDataSource> getSubStreams() {
-    return StreamAsMultiDataSource.super.getSubStreams();
-  }
-
-  @NotNull
-  @Override
-  public final StreamDataSource getStreamByNameOrCreate(@NotNull String name) {
-    return StreamAsMultiDataSource.super.getStreamByNameOrCreate(name);
   }
 }

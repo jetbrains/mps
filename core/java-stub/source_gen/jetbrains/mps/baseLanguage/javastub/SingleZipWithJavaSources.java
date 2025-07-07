@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/8643037841689041893", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
+@GeneratedClass(nodeId = "8643037841689041893", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
 public class SingleZipWithJavaSources implements JavadocSupplier {
   private static final Logger LOG = Logger.getLogger(SingleZipWithJavaSources.class);
   private final File myZipFileName;

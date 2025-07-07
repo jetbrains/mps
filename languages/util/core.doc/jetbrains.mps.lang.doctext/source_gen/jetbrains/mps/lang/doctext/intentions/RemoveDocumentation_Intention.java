@@ -53,7 +53,7 @@ public final class RemoveDocumentation_Intention extends AbstractIntentionDescri
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$ug).set(node, null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentationAnnotation$ug).set(node, null);
     }
 
     @Override
@@ -65,7 +65,7 @@ public final class RemoveDocumentation_Intention extends AbstractIntentionDescri
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$ug).list(node)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DocumentedNodeAnnotation$ug));
+      return ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentationAnnotation$ug).list(node)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DocumentationAnnotation$ug));
     }
 
 
@@ -77,6 +77,6 @@ public final class RemoveDocumentation_Intention extends AbstractIntentionDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DocumentedNodeAnnotation$ug = MetaAdapterFactory.getConcept(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, "jetbrains.mps.lang.core.doc.structure.DocumentedNodeAnnotation");
+    /*package*/ static final SConcept DocumentationAnnotation$ug = MetaAdapterFactory.getConcept(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, "jetbrains.mps.lang.core.doc.structure.DocumentationAnnotation");
   }
 }

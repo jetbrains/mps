@@ -24,6 +24,9 @@
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
+      </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
@@ -552,6 +555,53 @@
       </node>
     </node>
     <node concept="2tJIrI" id="5HBbAYqG$Xb" role="jymVt" />
+    <node concept="3clFb_" id="3vL64MrqPjM" role="jymVt">
+      <property role="TrG5h" value="addConfiguredProject" />
+      <node concept="3clFbS" id="3vL64MrqPjP" role="3clF47">
+        <node concept="3clFbJ" id="3vL64Mru9aO" role="3cqZAp">
+          <node concept="3clFbS" id="3vL64Mru9aQ" role="3clFbx">
+            <node concept="3clFbF" id="3vL64MrqVms" role="3cqZAp">
+              <node concept="2OqwBi" id="3vL64MrqWMh" role="3clFbG">
+                <node concept="37vLTw" id="3vL64MrqVmr" role="2Oq$k0">
+                  <ref role="3cqZAo" to="644x:3ufQioQQtje" resolve="myWhatToDo" />
+                </node>
+                <node concept="liA8E" id="3vL64MrqYqb" role="2OqNvi">
+                  <ref role="37wK5l" to="asz6:KL8Aql8eqX" resolve="addProjectFile" />
+                  <node concept="2OqwBi" id="3vL64Mrr0J9" role="37wK5m">
+                    <node concept="37vLTw" id="3vL64MrqZw4" role="2Oq$k0">
+                      <ref role="3cqZAo" node="3vL64MrqTBu" resolve="projectPath" />
+                    </node>
+                    <node concept="liA8E" id="3vL64Mrr2bz" role="2OqNvi">
+                      <ref role="37wK5l" to="644x:3vL64MrqKye" resolve="getPath" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1rXfSq" id="3vL64Mruan4" role="3clFbw">
+            <ref role="37wK5l" node="3vL64MrtJjH" resolve="checkProperProjectDir" />
+            <node concept="2OqwBi" id="3vL64MrubSy" role="37wK5m">
+              <node concept="37vLTw" id="3vL64MrubSz" role="2Oq$k0">
+                <ref role="3cqZAo" node="3vL64MrqTBu" resolve="projectPath" />
+              </node>
+              <node concept="liA8E" id="3vL64MrubS$" role="2OqNvi">
+                <ref role="37wK5l" to="644x:3vL64MrqKye" resolve="getPath" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="3vL64MrqNBu" role="1B3o_S" />
+      <node concept="3cqZAl" id="3vL64MrqNIx" role="3clF45" />
+      <node concept="37vLTG" id="3vL64MrqTBu" role="3clF46">
+        <property role="TrG5h" value="projectPath" />
+        <node concept="3uibUv" id="3vL64MrqTBt" role="1tU5fm">
+          <ref role="3uigEE" to="644x:3vL64MrqJPF" resolve="ProjectPath" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="KUYoaWXRWz" role="jymVt" />
     <node concept="3clFb_" id="28$8eDn2SGn" role="jymVt">
       <property role="TrG5h" value="addConfiguredLibrary" />
       <node concept="3cqZAl" id="28$8eDn2SGo" role="3clF45" />
@@ -1149,6 +1199,73 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3vL64MrtBKi" role="jymVt" />
+    <node concept="3clFb_" id="3vL64MrtJjH" role="jymVt">
+      <property role="TrG5h" value="checkProperProjectDir" />
+      <node concept="10P_77" id="3vL64MrtXun" role="3clF45" />
+      <node concept="3Tm6S6" id="3vL64MrtJjJ" role="1B3o_S" />
+      <node concept="3clFbS" id="3vL64MrtJjM" role="3clF47">
+        <node concept="3clFbJ" id="3vL64MrtO6Z" role="3cqZAp">
+          <node concept="3clFbS" id="3vL64MrtO71" role="3clFbx">
+            <node concept="3cpWs6" id="3vL64MrtQQ_" role="3cqZAp">
+              <node concept="3clFbT" id="3vL64MrtS1k" role="3cqZAk">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="3vL64MrtPE8" role="3clFbw">
+            <node concept="2ShNRf" id="3vL64MrtPE9" role="2Oq$k0">
+              <node concept="1pGfFk" id="3vL64MrtPEa" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.io.File,java.lang.String)" resolve="File" />
+                <node concept="37vLTw" id="3vL64MrtPEb" role="37wK5m">
+                  <ref role="3cqZAo" node="3vL64MrtMMg" resolve="dir" />
+                </node>
+                <node concept="Xl_RD" id="3vL64MrtPEc" role="37wK5m">
+                  <property role="Xl_RC" value=".mps" />
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="3vL64MrtPEd" role="2OqNvi">
+              <ref role="37wK5l" to="guwi:~File.exists()" resolve="exists" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3vL64Mrtj8M" role="3cqZAp">
+          <node concept="2OqwBi" id="3vL64Mrtj8N" role="3clFbG">
+            <node concept="1rXfSq" id="3vL64Mrtj8O" role="2Oq$k0">
+              <ref role="37wK5l" to="gola:~ProjectComponent.getProject()" resolve="getProject" />
+            </node>
+            <node concept="liA8E" id="3vL64Mrtj8P" role="2OqNvi">
+              <ref role="37wK5l" to="gola:~Project.log(java.lang.String,int)" resolve="log" />
+              <node concept="2OqwBi" id="3vL64Mrtj8Q" role="37wK5m">
+                <node concept="Xl_RD" id="3vL64Mrtj8R" role="2Oq$k0">
+                  <property role="Xl_RC" value="Not an MPS project: %s" />
+                </node>
+                <node concept="2cAKMz" id="3vL64Mrtj8S" role="2OqNvi">
+                  <node concept="37vLTw" id="3vL64Mrtj8T" role="2cAKU6">
+                    <ref role="3cqZAo" node="3vL64MrtMMg" resolve="dir" />
+                  </node>
+                </node>
+              </node>
+              <node concept="10M0yZ" id="KUYoaWY4FI" role="37wK5m">
+                <ref role="3cqZAo" to="gola:~Project.MSG_ERR" resolve="MSG_ERR" />
+                <ref role="1PxDUh" to="gola:~Project" resolve="Project" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="3vL64MrtUHG" role="3cqZAp">
+          <node concept="3clFbT" id="3vL64MrtVT_" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3vL64MrtMMg" role="3clF46">
+        <property role="TrG5h" value="dir" />
+        <node concept="3uibUv" id="3vL64MrtMMf" role="1tU5fm">
+          <ref role="3uigEE" to="guwi:~File" resolve="File" />
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="5gsHVK$XwSg" role="jymVt" />
     <node concept="3Tm1VV" id="4MVYzzgvQfF" role="1B3o_S" />
     <node concept="3uibUv" id="4MVYzzgvQKA" role="1zkMxy">
@@ -1251,10 +1368,29 @@
                 </node>
               </node>
             </node>
+            <node concept="1dT_AC" id="5Bu6YVLdLpt" role="1dT_Ay">
+              <property role="1dT_AB" value="" />
+            </node>
+          </node>
+          <node concept="TZ5HA" id="5Bu6YVLdLqo" role="2U$1Aj">
+            <node concept="1dT_AC" id="5Bu6YVLdLqp" role="1dT_Ay">
+              <property role="1dT_AB" value="" />
+            </node>
+            <node concept="2U$1Ah" id="5Bu6YVLdLpq" role="1dT_Ay">
+              <property role="2U$1Ai" value="li" />
+              <node concept="TZ5HA" id="5Bu6YVLdLpr" role="2U$1Aj">
+                <node concept="1dT_AC" id="5Bu6YVLdLps" role="1dT_Ay">
+                  <property role="1dT_AB" value="&amp;lt;project&amp;gt; " />
+                </node>
+              </node>
+            </node>
             <node concept="1dT_AC" id="5gsHVK_0h5T" role="1dT_Ay">
               <property role="1dT_AB" value="" />
             </node>
             <node concept="1dT_AC" id="5gsHVK_0h5U" role="1dT_Ay">
+              <property role="1dT_AB" value="" />
+            </node>
+            <node concept="1dT_AC" id="5Bu6YVLdLnh" role="1dT_Ay">
               <property role="1dT_AB" value="" />
             </node>
           </node>

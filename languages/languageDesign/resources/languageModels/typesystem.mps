@@ -747,5 +747,36 @@
       <ref role="1YaFvo" to="1oap:7Mb2akaesqV" resolve="FileIcon" />
     </node>
   </node>
+  <node concept="1YbPZF" id="3AneBQArpUO">
+    <property role="TrG5h" value="typeof_ConstantFieldIcon" />
+    <property role="3GE5qa" value="icons.descriptors" />
+    <node concept="3clFbS" id="3AneBQArpUP" role="18ibNy">
+      <node concept="2NvLDW" id="3AneBQArslr" role="3cqZAp">
+        <node concept="mw_s8" id="3AneBQArspV" role="1ZfhKB">
+          <node concept="2c44tf" id="3AneBQArspR" role="mwGJk">
+            <node concept="3uibUv" id="3AneBQArsso" role="2c44tc">
+              <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="3AneBQArslu" role="1ZfhK$">
+          <node concept="1Z2H0r" id="3AneBQArruP" role="mwGJk">
+            <node concept="2OqwBi" id="3AneBQArrHA" role="1Z2MuG">
+              <node concept="1YBJjd" id="3AneBQArryQ" role="2Oq$k0">
+                <ref role="1YBMHb" node="3AneBQArpUR" resolve="constantFieldIcon" />
+              </node>
+              <node concept="3TrEf2" id="3AneBQArrVl" role="2OqNvi">
+                <ref role="3Tt5mk" to="1oap:6S5fI02sJzE" resolve="field" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="3AneBQArpUR" role="1YuTPh">
+      <property role="TrG5h" value="constantFieldIcon" />
+      <ref role="1YaFvo" to="1oap:6S5fI02sJjS" resolve="ConstantFieldIcon" />
+    </node>
+  </node>
 </model>
 

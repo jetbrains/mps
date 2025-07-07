@@ -15,12 +15,8 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
   private final BHDescriptor myExtension__BehaviorDescriptor = new Extension__BehaviorDescriptor();
   private final BHDescriptor myIRootWithUniqueName__BehaviorDescriptor = new IRootWithUniqueName__BehaviorDescriptor();
   private final BHDescriptor myExtensionPointType__BehaviorDescriptor = new ExtensionPointType__BehaviorDescriptor();
-  private final BHDescriptor myExtensionDeclaration__BehaviorDescriptor = new ExtensionDeclaration__BehaviorDescriptor();
   private final BHDescriptor myExtensionPointDeclaration__BehaviorDescriptor = new ExtensionPointDeclaration__BehaviorDescriptor();
   private final BHDescriptor myExtensionPointExpression__BehaviorDescriptor = new ExtensionPointExpression__BehaviorDescriptor();
-  private final BHDescriptor myExtensionFunction__BehaviorDescriptor = new ExtensionFunction__BehaviorDescriptor();
-  private final BHDescriptor myExtensionFieldReference__BehaviorDescriptor = new ExtensionFieldReference__BehaviorDescriptor();
-  private final BHDescriptor myExtensionObjectGetter__BehaviorDescriptor = new ExtensionObjectGetter__BehaviorDescriptor();
 
   public BehaviorAspectDescriptor() {
   }
@@ -32,24 +28,16 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
       case 0:
         return myExtension__BehaviorDescriptor;
       case 1:
-        return myExtensionDeclaration__BehaviorDescriptor;
-      case 2:
-        return myExtensionFieldReference__BehaviorDescriptor;
-      case 3:
-        return myExtensionFunction__BehaviorDescriptor;
-      case 4:
-        return myExtensionObjectGetter__BehaviorDescriptor;
-      case 5:
         return myExtensionPointDeclaration__BehaviorDescriptor;
-      case 6:
+      case 2:
         return myExtensionPointExpression__BehaviorDescriptor;
-      case 7:
+      case 3:
         return myExtensionPointType__BehaviorDescriptor;
-      case 8:
+      case 4:
         return myIRootWithUniqueName__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x1c30c5b543be3b2L), MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L), MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e9eL), MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e15253efL), MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x6f6f7f3b7a178565L), MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L), MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x5bf74eafefe0e940L), MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L), MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2b7651d49ee9d72L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x1c30c5b543be3b2L), MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L), MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x5bf74eafefe0e940L), MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L), MetaIdFactory.conceptId(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2b7651d49ee9d72L)).seal();
 }

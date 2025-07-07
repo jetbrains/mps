@@ -14,7 +14,7 @@
       <unit at="9,0,14,0" name="jetbrains.mps.lang.structure.plugin.ExtensionDescriptor" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.structure.plugin.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.structure.plugin.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590290(jetbrains.mps.lang.structure.plugin)/2415215581734104897">
@@ -32,7 +32,7 @@
       <node id="3193873080290339088" at="29,0,30,0" concept="3" trace="myOrderConstraints" />
       <node id="3193873080290339088" at="32,60,33,71" concept="5" />
       <node id="3193873080290339088" at="35,50,36,148" concept="5" />
-      <node id="3193873080290339088" at="39,45,40,49" concept="5" />
+      <node id="3193873080290339088" at="39,45,40,40" concept="5" />
       <node id="3193873080290339088" at="43,34,44,24" concept="5" />
       <node id="3193873080290339088" at="47,102,48,164" concept="2" />
       <node id="3193873080290339088" at="48,164,49,218" concept="2" />
@@ -63,7 +63,7 @@
       <scope id="3193873080290339088" at="24,40,25,57" />
       <scope id="3193873080290339088" at="32,60,33,71" />
       <scope id="3193873080290339088" at="35,50,36,148" />
-      <scope id="3193873080290339088" at="39,45,40,49" />
+      <scope id="3193873080290339088" at="39,45,40,40" />
       <scope id="3193873080290339088" at="43,34,44,24" />
       <scope id="3193873080290339088" at="47,102,49,218" />
       <scope id="3193873080290339088" at="24,0,27,0" />

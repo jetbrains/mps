@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,16 +30,13 @@ import org.jetbrains.annotations.NotNull;
 public class IoFileSystem implements FileSystem {
   private static final Logger LOG = Logger.getLogger(IoFileSystem.class);
 
-  // afaik there are no direct uses in mbeddr, only by means of FileSystem.getInstance()
-  public static IoFileSystem INSTANCE;
-
   private final VFSManager myManager;
 
   /**
    * IMPLEMENTATION METHOD FOR MPS INTERNAL USE!
    */
-  public static void newInstance(VFSManager vfsManager) {
-    INSTANCE = new IoFileSystem(vfsManager);
+  public static FileSystem newInstance(VFSManager vfsManager) {
+    return new IoFileSystem(vfsManager);
   }
 
   private IoFileSystem(VFSManager vfsManager) {

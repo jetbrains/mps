@@ -50,7 +50,6 @@
         <property id="852155438140865197" name="allowErrors" index="G7GLQ" />
         <property id="3743352646565420194" name="includeSelf" index="GvXf4" />
       </concept>
-      <concept id="1215612918969" name="jetbrains.mps.lang.test.structure.NodeUnreachable" flags="ng" index="8bhQy" />
       <concept id="7835233914439520906" name="jetbrains.mps.lang.test.structure.AbstractNodeRuleCheckOperation" flags="ng" index="mZCkL">
         <child id="710597951278798299" name="expectedMessage" index="1DMPz9" />
       </concept>
@@ -85,9 +84,6 @@
       <concept id="4531408400484511853" name="jetbrains.mps.lang.test.structure.ReportErrorStatementReference" flags="ng" index="2PYRI3" />
       <concept id="1227182079811" name="jetbrains.mps.lang.test.structure.TypeKeyStatement" flags="nn" index="2TK7Tu">
         <property id="1227184461946" name="keys" index="2TTd_B" />
-      </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
       </concept>
       <concept id="8333855927540283103" name="jetbrains.mps.lang.test.structure.NodeConstraintsErrorCheckOperation" flags="ng" index="39XrGg">
         <child id="8333855927548182241" name="errorRef" index="39rjcI" />
@@ -4001,9 +3997,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="4qWC2JVszPl">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
   <node concept="1lH9Xt" id="5dHXnb3qyzv">
     <property role="TrG5h" value="NullableAnalyzer" />
@@ -13397,12 +13390,12 @@
                   <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="7CXmI" id="5aCBbpD9jBH" role="lGtFl">
-                    <node concept="2DdRWr" id="5aCBbpD9r8P" role="7EUXB">
-                      <node concept="MGsTx" id="5aCBbpD9r8Q" role="MJxsd">
-                        <ref role="39XzEq" to="tpeh:6ffEDrbzX0u" />
+                    <node concept="1TM$A" id="3YHHPoeymkc" role="7EUXB">
+                      <node concept="2PYRI3" id="3YHHPoeymkd" role="3lydEf">
+                        <ref role="39XzEq" to="tpeh:56b3vLW08zf" />
                       </node>
-                      <node concept="1DMPye" id="5aCBbpD9r8R" role="1DMPz9">
-                        <property role="1DMPyf" value="Error: incompatible types: java.lang.Number and java.lang.Object" />
+                      <node concept="1DMPye" id="3YHHPoeymke" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: Object is not a subtype of Number" />
                       </node>
                     </node>
                   </node>
@@ -22323,7 +22316,7 @@
                 </node>
               </node>
               <node concept="7CXmI" id="3efgZvcIsWr" role="lGtFl">
-                <node concept="8bhQy" id="3efgZvcIsWF" role="7EUXB" />
+                <node concept="1TM$A" id="d$zdnv6oLb" role="7EUXB" />
               </node>
             </node>
           </node>
@@ -33618,20 +33611,20 @@
                   </node>
                 </node>
                 <node concept="7CXmI" id="5aCBbpD$YhR" role="lGtFl">
-                  <node concept="1TM$A" id="5aCBbpD$ZvU" role="7EUXB">
-                    <node concept="2PYRI3" id="5aCBbpD$ZvV" role="3lydEf">
-                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                  <node concept="1TM$A" id="3YHHPoexOrv" role="7EUXB">
+                    <node concept="2PYRI3" id="3YHHPoexOrw" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:56b3vLW08zf" />
                     </node>
-                    <node concept="1DMPye" id="5aCBbpD$ZvW" role="1DMPz9">
-                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    <node concept="1DMPye" id="3YHHPoexOrx" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Number is not a subtype of Integer" />
                     </node>
                   </node>
-                  <node concept="2DdRWr" id="5aCBbpD$ZvX" role="7EUXB">
-                    <node concept="MGsTx" id="5aCBbpD$ZvY" role="MJxsd">
-                      <ref role="39XzEq" to="tpeh:6ffEDrbzX0u" />
+                  <node concept="1TM$A" id="3YHHPoexOry" role="7EUXB">
+                    <node concept="2PYRI3" id="3YHHPoexOrz" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
                     </node>
-                    <node concept="1DMPye" id="5aCBbpD$ZvZ" role="1DMPz9">
-                      <property role="1DMPyf" value="Error: incompatible types: java.lang.Number and java.lang.Integer" />
+                    <node concept="1DMPye" id="3YHHPoexOr$" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
                     </node>
                   </node>
                 </node>
@@ -34169,12 +34162,12 @@
                     </node>
                   </node>
                   <node concept="7CXmI" id="5aCBbpD_9Uc" role="lGtFl">
-                    <node concept="2DdRWr" id="5aCBbpD_bS1" role="7EUXB">
-                      <node concept="MGsTx" id="5aCBbpD_bS2" role="MJxsd">
-                        <ref role="39XzEq" to="tpeh:6ffEDrbzX0u" />
+                    <node concept="1TM$A" id="3YHHPoexW3j" role="7EUXB">
+                      <node concept="2PYRI3" id="3YHHPoexW3k" role="3lydEf">
+                        <ref role="39XzEq" to="tpeh:56b3vLW08zf" />
                       </node>
-                      <node concept="1DMPye" id="5aCBbpD_bS3" role="1DMPz9">
-                        <property role="1DMPyf" value="Error: incompatible types: java.lang.Number and java.lang.Integer" />
+                      <node concept="1DMPye" id="3YHHPoexW3l" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: Number is not a subtype of Integer" />
                       </node>
                     </node>
                   </node>

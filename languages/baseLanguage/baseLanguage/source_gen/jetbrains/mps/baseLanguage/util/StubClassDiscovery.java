@@ -28,8 +28,8 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.persistence.PersistenceRegistry;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
@@ -153,12 +153,25 @@ public final class StubClassDiscovery {
     if (generatedAnnotation == null) {
       return null;
     }
+    //  fallback code for pre-MPS-2025.2 generated code with node="node-ptr" instead of nodeId="id". Keep for few major releases
     String nodeParameter = SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(generatedAnnotation, LINKS.value$uK2B)).where((it) -> SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)", "~GeneratedClass.node()"))).first(), LINKS.value$Y7om), CONCEPTS.StringLiteral$xu), PROPS.value$w7MM);
-    if (nodeParameter == null) {
+    final PersistenceRegistry pfr = PersistenceRegistry.getInstance();
+    final SRepository repo = SNodeOperations.getModel(stubClassifier).getRepository();
+    if ((nodeParameter != null && nodeParameter.length() > 0)) {
+      SNodeReference nodeReference = pfr.createNodeReference(nodeParameter);
+      return SNodeOperations.as(nodeReference.resolve(repo), CONCEPTS.Classifier$Ix);
+    }
+    String modelParameter = SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(generatedAnnotation, LINKS.value$uK2B)).where((it) -> SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)", "~GeneratedClass.model()"))).first(), LINKS.value$Y7om), CONCEPTS.StringLiteral$xu), PROPS.value$w7MM);
+    String nodeIdParameter = SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(generatedAnnotation, LINKS.value$uK2B)).where((it) -> SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)", "~GeneratedClass.nodeId()"))).first(), LINKS.value$Y7om), CONCEPTS.StringLiteral$xu), PROPS.value$w7MM);
+    if ((nodeIdParameter == null || nodeIdParameter.length() == 0)) {
       return null;
     }
-    SNodeReference nodeReference = PersistenceRegistry.getInstance().createNodeReference(nodeParameter);
-    return SNodeOperations.as(nodeReference.resolve(SNodeOperations.getModel(stubClassifier).getRepository()), CONCEPTS.Classifier$Ix);
+    SModel clModel = pfr.createModelReference(modelParameter).resolve(repo);
+    if (clModel == null) {
+      return null;
+    }
+    SNodeId clNodeId = pfr.createNodeId(nodeIdParameter);
+    return (clNodeId == null ? null : SNodeOperations.as(clModel.getNode(clNodeId), CONCEPTS.Classifier$Ix));
   }
 
   public List<SNode> findCompatibleClassifiers(SNode classifier) {

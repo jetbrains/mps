@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
  * Applies the checker specified in the {@code origin} parameter to the constructor, 
  * to all objects received from the {@code iterate} passed as the second parameter.
  */
-@GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/8195773907766053653", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
+@GeneratedClass(nodeId = "8195773907766053653", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class IteratingChecker<O, P, I extends IssueKindReportItem> implements IAbstractChecker<O, I> {
 
   public interface IteratorWithProgress<T> extends Iterator<T> {

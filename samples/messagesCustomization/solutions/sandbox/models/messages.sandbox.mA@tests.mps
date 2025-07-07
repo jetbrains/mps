@@ -30,9 +30,6 @@
       <concept id="7691029917083872157" name="jetbrains.mps.lang.test.structure.IRuleReference" flags="ngI" index="2u4UPC">
         <reference id="8333855927540250453" name="declaration" index="39XzEq" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="8333855927540283103" name="jetbrains.mps.lang.test.structure.NodeConstraintsErrorCheckOperation" flags="ng" index="39XrGg">
         <child id="8333855927548182241" name="errorRef" index="39rjcI" />
       </concept>
@@ -59,6 +56,9 @@
       <concept id="5983615114019032372" name="messages.customization.structure.TestConcept" flags="ng" index="cMlWa">
         <property id="5778414857994410328" name="prop" index="3ZEpjE" />
         <reference id="1592627013225970334" name="link" index="2175Xa" />
+      </concept>
+      <concept id="4739004755180692318" name="messages.customization.structure.NamedContainer" flags="ng" index="GEJ3D">
+        <child id="4739004755180692369" name="tc" index="GEJ0A" />
       </concept>
       <concept id="2884486869351428739" name="messages.customization.structure.AuxConcept" flags="ng" index="1eZVc5" />
       <concept id="116705030628857298" name="messages.customization.structure.IncorrectTargetTestConcept" flags="ng" index="1BJcH9">
@@ -90,59 +90,57 @@
   <node concept="1lH9Xt" id="2Ew8zTEY7CQ">
     <property role="TrG5h" value="FeedbackPropConstraintsAreBroken" />
     <property role="3DII0k" value="2hh8MJdVwqX/command" />
-    <node concept="1qefOq" id="2Ew8zTEY7CS" role="1SKRRt">
-      <node concept="cMlWa" id="2Ew8zTEY7CR" role="1qenE9">
-        <property role="TrG5h" value="AA" />
-        <property role="3ZEpjE" value="101" />
-        <ref role="2175Xa" node="2Ew8zTEY7CR" resolve="AA" />
-        <node concept="7CXmI" id="2Ew8zTEYqc0" role="lGtFl">
-          <node concept="39XrGg" id="2w7KopAY0yn" role="7EUXB">
-            <node concept="2u4KIi" id="2w7KopAY0yo" role="39rjcI">
-              <ref role="39XzEq" to="2e5h:2Ew8zTEYgJs" />
+    <node concept="1qefOq" id="474kVtHrE5S" role="1SKRRt">
+      <node concept="GEJ3D" id="474kVtHrU9Z" role="1qenE9">
+        <property role="TrG5h" value="FeedbackPropConstraintsAreBroken" />
+        <node concept="cMlWa" id="2Ew8zTEY7CR" role="GEJ0A">
+          <property role="TrG5h" value="AA" />
+          <property role="3ZEpjE" value="101" />
+          <ref role="2175Xa" node="2Ew8zTEY7CR" resolve="AA" />
+          <node concept="7CXmI" id="2Ew8zTEYqc0" role="lGtFl">
+            <node concept="39XrGg" id="2w7KopAY0yn" role="7EUXB">
+              <node concept="2u4KIi" id="2w7KopAY0yo" role="39rjcI">
+                <ref role="39XzEq" to="2e5h:2Ew8zTEYgJs" />
+              </node>
+              <node concept="1DMPye" id="2w7KopAY0yp" role="1DMPz9">
+                <property role="1DMPyf" value="Property constraints are broken for the property prop  " />
+              </node>
             </node>
-            <node concept="1DMPye" id="2w7KopAY0yp" role="1DMPz9">
-              <property role="1DMPyf" value="Property constraints are broken for the property prop  " />
+          </node>
+          <node concept="2rqxmr" id="2Ew8zTEYqcb" role="lGtFl">
+            <ref role="1BTHP0" node="2Ew8zTEY7CR" resolve="AA" />
+            <node concept="3KTrbX" id="416FkZyJf6T" role="3KTr4d">
+              <ref role="3AHY9a" node="2w7KopAXZIT" resolve="A" />
+            </node>
+            <node concept="3KTrbX" id="416FkZyJf6G" role="3KTr4d">
+              <ref role="3AHY9a" node="2rz8PXlJKi_" resolve="A" />
+            </node>
+            <node concept="3KTrbX" id="416FkZyJf6L" role="3KTr4d">
+              <ref role="3AHY9a" node="65DbCInVsiu" resolve="A" />
+            </node>
+            <node concept="3KTrbX" id="416FkZyJf79" role="3KTr4d">
+              <ref role="3AHY9a" node="2Ew8zTEY7CR" resolve="AA" />
+            </node>
+            <node concept="3KTrbX" id="lTjnfyPLcm" role="3KTr4d">
+              <ref role="3AHY9a" node="6uBDHA8Kvw" resolve="a" />
+            </node>
+            <node concept="3KTrbX" id="lTjnfyPLc$" role="3KTr4d">
+              <ref role="3AHY9a" node="6uBDHA8TBT" resolve="aux2" />
             </node>
           </node>
         </node>
-        <node concept="2rqxmr" id="2Ew8zTEYqcb" role="lGtFl">
-          <ref role="1BTHP0" node="2Ew8zTEY7CR" resolve="AA" />
-          <node concept="3KTrbX" id="416FkZyJf6T" role="3KTr4d">
-            <ref role="3AHY9a" node="2w7KopAXZIT" resolve="A" />
-          </node>
-          <node concept="3KTrbX" id="416FkZyJf6G" role="3KTr4d">
-            <ref role="3AHY9a" node="2rz8PXlJKi_" resolve="A" />
-          </node>
-          <node concept="3KTrbX" id="416FkZyJf6L" role="3KTr4d">
-            <ref role="3AHY9a" node="65DbCInVsiu" resolve="A" />
-          </node>
-          <node concept="3KTrbX" id="416FkZyJf79" role="3KTr4d">
-            <ref role="3AHY9a" node="2Ew8zTEY7CR" resolve="AA" />
-          </node>
-          <node concept="3KTrbX" id="lTjnfyPLcm" role="3KTr4d">
-            <ref role="3AHY9a" node="6uBDHA8Kvw" resolve="a" />
-          </node>
-          <node concept="3KTrbX" id="lTjnfyPLc$" role="3KTr4d">
-            <ref role="3AHY9a" node="6uBDHA8TBT" resolve="aux2" />
+        <node concept="cMlWa" id="2w7KopAXZIT" role="GEJ0A">
+          <property role="TrG5h" value="A" />
+          <property role="3ZEpjE" value="10" />
+          <ref role="2175Xa" node="2w7KopAXZIT" resolve="A" />
+          <node concept="7CXmI" id="2w7KopAXZIU" role="lGtFl">
+            <node concept="7OXhh" id="2w7KopAY0fI" role="7EUXB">
+              <property role="GvXf4" value="true" />
+            </node>
           </node>
         </node>
       </node>
     </node>
-    <node concept="1qefOq" id="2w7KopAXZIS" role="1SKRRt">
-      <node concept="cMlWa" id="2w7KopAXZIT" role="1qenE9">
-        <property role="TrG5h" value="A" />
-        <property role="3ZEpjE" value="10" />
-        <ref role="2175Xa" node="2w7KopAXZIT" resolve="A" />
-        <node concept="7CXmI" id="2w7KopAXZIU" role="lGtFl">
-          <node concept="7OXhh" id="2w7KopAY0fI" role="7EUXB">
-            <property role="GvXf4" value="true" />
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
-  <node concept="2XOHcx" id="4qWC2JVszPl">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
   <node concept="1lH9Xt" id="2w7KopAY0zR">
     <property role="TrG5h" value="FeedbackChildIsNotDefined" />
@@ -310,7 +308,7 @@
     </node>
     <node concept="1qefOq" id="6uBDHA8Kjr" role="1SKRRt">
       <node concept="1BJcH9" id="6uBDHA8Kjq" role="1qenE9">
-        <property role="TrG5h" value="TargetTest" />
+        <property role="TrG5h" value="FeedbackTargetTest" />
         <ref role="3Qwp4V" node="6uBDHA8TBT" resolve="aux2" />
         <node concept="cMlWa" id="6uBDHA8Kvw" role="3Qwp4Z">
           <property role="TrG5h" value="a" />

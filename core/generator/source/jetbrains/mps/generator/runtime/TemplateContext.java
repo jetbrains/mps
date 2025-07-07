@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.generator.runtime;
 
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -108,10 +107,7 @@ public interface TemplateContext {
    */
   SNode getCallSiteNode();
 
-  /**
-   * @return new context that preserves input, but discards {@link #getInputName() mapping label}
-   */
-  TemplateContext subContext(GeneratedMatchingPattern pattern);
+  TemplateContext subContext(PatternMatch pattern);
 
   /**
    * Reset input name, unlike {@link #subContext(String)} and {@link #subContext(String, org.jetbrains.mps.openapi.model.SNode)} that

@@ -11,7 +11,7 @@ import java.util.LinkedHashMap;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.make.resources.IResource;
 
-@GeneratedClass(node = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)/1291978361072214390", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
+@GeneratedClass(nodeId = "1291978361072214390", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
 public class CompositeResult implements IResult {
   private Map<ITarget.Name, IResult> results = MapSequence.fromMap(new LinkedHashMap<ITarget.Name, IResult>(16, (float) 0.75, false));
   public CompositeResult() {

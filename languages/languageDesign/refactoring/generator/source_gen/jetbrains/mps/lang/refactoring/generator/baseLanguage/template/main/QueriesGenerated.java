@@ -149,6 +149,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_14_0(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.refactoring$WUC4);
   }
+  public static Object referenceMacro_GetReferent_24_0(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "refactoringClassConstructor");
+  }
   public static Object referenceMacro_GetReferent_25_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output RefactoringAspectDescriptor for model model;
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".RefactoringAspectDescriptor";
@@ -581,7 +584,8 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("7786266509745404940", new RTQ(2, "Object"));
     rtqMethods.put("7786266509745404969", new RTQ(3, "BaseConcept"));
     rtqMethods.put("2298239814950984734", new RTQ(4, null));
-    rtqMethods.put("7356053917602985058", new RTQ(5, "RefactoringAspectDescriptor"));
+    rtqMethods.put("7828368525704360218", new RTQ(5, "RefactoringClass"));
+    rtqMethods.put("7356053917602985058", new RTQ(6, "RefactoringAspectDescriptor"));
   }
   @NotNull
   @Override
@@ -609,6 +613,8 @@ public class QueriesGenerated extends QueryProviderBase {
         case 4:
           return QueriesGenerated.referenceMacro_GetReferent_14_0(ctx);
         case 5:
+          return QueriesGenerated.referenceMacro_GetReferent_24_0(ctx);
+        case 6:
           return QueriesGenerated.referenceMacro_GetReferent_25_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));

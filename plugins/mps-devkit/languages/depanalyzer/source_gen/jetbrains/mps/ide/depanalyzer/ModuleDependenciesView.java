@@ -29,6 +29,8 @@ import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 
 public class ModuleDependenciesView extends JPanel implements DataProvider {
   private DependencyTree myLeftTree;
@@ -113,6 +115,11 @@ public class ModuleDependenciesView extends JPanel implements DataProvider {
     @Override
     public boolean isSelected(AnActionEvent event) {
       return myValue;
+    }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
     }
   }
 }

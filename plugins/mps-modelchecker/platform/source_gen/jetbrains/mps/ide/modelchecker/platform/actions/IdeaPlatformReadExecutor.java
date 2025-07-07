@@ -14,7 +14,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import java.util.concurrent.RejectedExecutionException;
 import jetbrains.mps.smodel.ModelAccessBase;
 
-@GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/1214276514581541420", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
+@GeneratedClass(nodeId = "1214276514581541420", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class IdeaPlatformReadExecutor implements Executor {
   private final ModelAccess myModelAccess;
   public IdeaPlatformReadExecutor(ModelAccess modelAccess) {

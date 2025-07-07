@@ -155,6 +155,8 @@ public class GenerationController implements ITaskPoolProvider {
       }
 
       if (!(ttrace instanceof NullPerformanceTracer)) {
+        // XXX FWIW, session continues to use ttrace object up to discardTransients(), invoked later in finally(),
+        //     beware of copying (or otherwise using) trace information in setPerformanceTrace (other than keeping the reference)
         status.setPerformanceTrace(ttrace);
       }
       myGenerationHandler.done(task, status);

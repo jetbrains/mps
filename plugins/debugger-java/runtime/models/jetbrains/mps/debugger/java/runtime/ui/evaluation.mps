@@ -95,6 +95,9 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
+        <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
+      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
@@ -5584,6 +5587,22 @@
                 </node>
                 <node concept="3clFbT" id="2p3Oqnx0Tr_" role="37wK5m">
                   <property role="3clFbU" value="false" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="5x3aXeSr_wu" role="3cqZAp">
+          <node concept="2OqwBi" id="5x3aXeSrCzG" role="3clFbG">
+            <node concept="37vLTw" id="5x3aXeSr_ws" role="2Oq$k0">
+              <ref role="3cqZAo" node="2p3Oqnx0Trp" resolve="toolbar" />
+            </node>
+            <node concept="liA8E" id="5x3aXeSrGBZ" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~ActionToolbar.setTargetComponent(javax.swing.JComponent)" resolve="setTargetComponent" />
+              <node concept="2OqwBi" id="3b_2XFZwLH3" role="37wK5m">
+                <node concept="Xjq3P" id="5x3aXeSrJwz" role="2Oq$k0" />
+                <node concept="2OwXpG" id="3b_2XFZwQy6" role="2OqNvi">
+                  <ref role="2Oxat5" node="6ra8WUbIhvf" resolve="myTree" />
                 </node>
               </node>
             </node>

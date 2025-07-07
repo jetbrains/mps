@@ -20,7 +20,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.checkers.LanguageErrorsComponent;
+import jetbrains.mps.editor.runtime.LanguageErrorsComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -54,10 +54,12 @@ import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.checking.EditorChecker;
 import jetbrains.mps.typesystem.checking.TypesEditorChecker;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
+import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.smodel.event.SModelImportEvent;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)/5031859272495377247", model = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)")
+@GeneratedClass(nodeId = "5031859272495377247", model = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)")
 public class AutoResolver extends BaseEventProcessingEditorChecker {
   private boolean myForceAutofix = false;
   private final MPSProject myProject;
@@ -145,9 +147,10 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
 
           // in case this becomes a performance bottleneck, consider reusing the editor's typechecking context
           boolean doRecheckEditor = false;
+          final ResolverComponent resolver = myProject.getComponent(ResolverComponent.class);
           // Trying to resolve all broken references using scope and then using substitute actions.
           for (SReference brokenRef : SetSequence.fromSet(badReferences)) {
-            boolean resolvedByScope = ResolverComponent.getInstance().resolveScopesOnly(brokenRef, editorComponent.getEditorContext().getRepository());
+            boolean resolvedByScope = resolver.resolveScopesOnly(brokenRef, editorComponent.getEditorContext().getRepository());
 
             final jetbrains.mps.openapi.editor.cells.EditorCell cellWithRole;
             if (resolvedByScope) {
@@ -186,7 +189,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
             editorComponent.restoreState(state);
 
             if (wasForceAutofix) {
-              // re-running next checker in force autofix mode
+              // re-running next checker in force auto-fix mode
               myForceAutofix = true;
             }
           }
@@ -266,6 +269,11 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
   @Override
   public boolean needsUpdateAfterPropertyEvent(SModelPropertyEvent event) {
     return EditorSettings.getInstance().isAutoQuickFix() && PROPS.name$MnvL.getName().equals(event.getPropertyName());
+  }
+
+  @Override
+  protected boolean needsUpdateAfterEvent(SModelEvent event) {
+    return event instanceof SModelImportEvent || super.needsUpdateAfterEvent(event);
   }
 
   private static final class PROPS {

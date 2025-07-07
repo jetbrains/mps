@@ -20,7 +20,7 @@ public class EnumerationDescriptor_ProjectionType extends EnumerationDescriptorB
   private final EnumerationDescriptor.MemberDescriptor myMember_compact_0 = new EnumerationDescriptor.MemberDescriptor("compact", "compact", 0x6aae07ffdad120deL, "r:eb859fb0-1cb5-4829-a090-c7f47391d585(jetbrains.mps.lang.editor.multiple.testLanguage.structure)/4241665505353448677");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x6aae07ffdad120c4L, 0x6aae07ffdad120c5L, 0x6aae07ffdad120e1L, 0x6aae07ffdad120deL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_defaultEditor_0, myMember_rich_0, myMember_compact_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_defaultEditor_0, myMember_rich_0, myMember_compact_0);
 
   @Nullable
   @Override

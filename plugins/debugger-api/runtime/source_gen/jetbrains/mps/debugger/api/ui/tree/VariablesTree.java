@@ -46,7 +46,7 @@ import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 
-@GeneratedClass(node = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)/4474271214083118048", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
+@GeneratedClass(nodeId = "4474271214083118048", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
 public class VariablesTree extends MPSTree implements DataProvider {
   private static final String COMMAND_OPEN_NODE_IN_PROJECT = "COMMAND_OPEN_NODE_IN_PROJECT";
   public static final DataKey<IValue> MPS_DEBUGGER_VALUE = DataKey.create("MPS_DEBUGGER_VALUE");

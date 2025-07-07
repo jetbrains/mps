@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 @MPSLaunch
 public class RenameModel_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(RenameModel_Test.class, "${mps_home}", "r:dc1e5ac6-993e-4ca9-bf73-f993261504b8(testModelRenaming.tests@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(RenameModel_Test.class).projectPath(null).modelRef("r:dc1e5ac6-993e-4ca9-bf73-f993261504b8(testModelRenaming.tests@tests)").reopenProject(null).build());
 
   public RenameModel_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -50,7 +50,13 @@ public class RenameModel_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_renameModel() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SModel modelToRename = TestBody.this.initializeModel("1");
         if (modelToRename == null) {
@@ -71,6 +77,7 @@ public class RenameModel_Test extends BaseTransformationTest {
       });
     }
     public void test_caseSensitiveRenameModel() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SModel modelToRename = TestBody.this.initializeModel("2");
         if (modelToRename == null) {

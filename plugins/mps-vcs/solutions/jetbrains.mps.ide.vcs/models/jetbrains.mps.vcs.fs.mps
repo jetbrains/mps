@@ -13,10 +13,10 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="rfhd" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.registry(MPS.IDEA/)" />
     <import index="jlff" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs(MPS.IDEA/)" />
-    <import index="z2p8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.dvcs(MPS.IDEA/)" />
     <import index="snbe" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.io(MPS.IDEA/)" />
+    <import index="z2p8" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.dvcs(jetbrains.mps.vcs.idea.stubs/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
-    <import index="tkms" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.dvcs.repo(MPS.IDEA/)" implicit="true" />
+    <import index="tkms" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.dvcs.repo(jetbrains.mps.vcs.idea.stubs/)" implicit="true" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
@@ -402,10 +402,10 @@
               </node>
             </node>
             <node concept="3clFbF" id="24kmG9Gd4OX" role="3cqZAp">
-              <node concept="2YIFZM" id="24kmG9Gd5CK" role="3clFbG">
+              <node concept="2YIFZM" id="2vCsXJ2NIXY" role="3clFbG">
                 <ref role="37wK5l" to="z2p8:~DvcsUtil.ensureAllChildrenInVfs(com.intellij.openapi.vfs.VirtualFile)" resolve="ensureAllChildrenInVfs" />
                 <ref role="1Pybhc" to="z2p8:~DvcsUtil" resolve="DvcsUtil" />
-                <node concept="37vLTw" id="24kmG9Gd5P3" role="37wK5m">
+                <node concept="37vLTw" id="2vCsXJ2NIXZ" role="37wK5m">
                   <ref role="3cqZAo" node="24kmG9GcQFe" resolve="root" />
                 </node>
               </node>

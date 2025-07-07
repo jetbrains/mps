@@ -18,6 +18,7 @@ package jetbrains.mps.typesystem.uiActions;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ToggleAction;
@@ -63,6 +64,11 @@ public class MyBaseNodeDialog extends BaseNodeDialog {
 
       public void setSelected(AnActionEvent e, boolean state) {
         supertypesTree.setShowOnlyStrong(state);
+      }
+
+      @Override
+      public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
       }
     });
     p.setToolbar(ActionManager.getInstance().createActionToolbar(ActionPlaces.TYPE_HIERARCHY_VIEW_TOOLBAR, g, true).getComponent());

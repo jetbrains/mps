@@ -253,10 +253,10 @@
       <node id="8278380780105768314" at="94,99,95,81" concept="9" />
       <node id="8278380780105768314" at="95,81,96,43" concept="2" />
       <node id="8278380780105768314" at="96,43,97,25" concept="8" />
-      <node id="8278380780105768314" at="100,34,101,33" concept="8" />
-      <node id="8278380780105768314" at="103,31,104,30" concept="8" />
-      <node id="8278380780105768314" at="107,44,108,34" concept="2" />
-      <node id="8278380780105768314" at="110,41,111,31" concept="2" />
+      <node id="8278380780105768457" at="100,34,101,33" concept="8" />
+      <node id="760327805388801935" at="103,31,104,30" concept="8" />
+      <node id="8278380780105768457" at="107,44,108,34" concept="2" />
+      <node id="760327805388801935" at="110,41,111,31" concept="2" />
       <node id="8278380780105768457" at="115,0,116,0" concept="3" trace="myNodePointer" />
       <node id="760327805388801935" at="116,0,117,0" concept="3" trace="myNodeText" />
       <node id="8278380780105768314" at="121,11,122,48" concept="7" />
@@ -279,10 +279,10 @@
       <node id="8278380780105768339" at="67,38,70,5" concept="5" />
       <node id="8278380780105768384" at="77,10,80,5" concept="0" />
       <node id="3261175532206505651" at="82,0,85,0" concept="6" trace="setNode#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)V" />
-      <node id="8278380780105768314" at="100,0,103,0" concept="6" trace="getNodePointer#()Ljava/lang/String;" />
-      <node id="8278380780105768314" at="103,0,106,0" concept="6" trace="getNodeText#()Ljava/lang/String;" />
-      <node id="8278380780105768314" at="107,0,110,0" concept="6" trace="setNodePointer#(Ljava/lang/String;)V" />
-      <node id="8278380780105768314" at="110,0,113,0" concept="6" trace="setNodeText#(Ljava/lang/String;)V" />
+      <node id="8278380780105768457" at="100,0,103,0" concept="6" trace="getNodePointer#()Ljava/lang/String;" />
+      <node id="760327805388801935" at="103,0,106,0" concept="6" trace="getNodeText#()Ljava/lang/String;" />
+      <node id="8278380780105768457" at="107,0,110,0" concept="6" trace="setNodePointer#(Ljava/lang/String;)V" />
+      <node id="760327805388801935" at="110,0,113,0" concept="6" trace="setNodeText#(Ljava/lang/String;)V" />
       <node id="8278380780105768314" at="142,0,145,0" concept="6" trace="createCloneTemplate#()Ljetbrains/mps/execution/lib/NodeByConcept_Configuration;" />
       <node id="8278380780105768314" at="145,0,148,0" concept="6" trace="getEditor#()Ljetbrains/mps/execution/lib/NodeByConcept_Configuration_Editor;" />
       <node id="8278380780105768314" at="53,0,57,0" concept="6" trace="writeExternal#(Lorg/jdom/Element;)V" />
@@ -307,10 +307,10 @@
       <scope id="8278380780105768340" at="68,40,69,18" />
       <scope id="3261175532206505653" at="82,62,83,102" />
       <scope id="8278380780105768314" at="87,46,88,18" />
-      <scope id="8278380780105768314" at="100,34,101,33" />
-      <scope id="8278380780105768314" at="103,31,104,30" />
-      <scope id="8278380780105768314" at="107,44,108,34" />
-      <scope id="8278380780105768314" at="110,41,111,31" />
+      <scope id="8278380780105768457" at="100,34,101,33" />
+      <scope id="760327805388801935" at="103,31,104,30" />
+      <scope id="8278380780105768457" at="107,44,108,34" />
+      <scope id="760327805388801935" at="110,41,111,31" />
       <scope id="8278380780105768314" at="126,47,127,64" />
       <scope id="8278380780105768314" at="132,27,133,21" />
       <scope id="8278380780105768314" at="142,60,143,65" />
@@ -330,13 +330,13 @@
       <scope id="3261175532206505651" at="82,0,85,0">
         <var name="nodePtr" id="3261175532206506699" />
       </scope>
-      <scope id="8278380780105768314" at="100,0,103,0" />
-      <scope id="8278380780105768314" at="103,0,106,0" />
-      <scope id="8278380780105768314" at="107,0,110,0">
-        <var name="value" id="8278380780105768314" />
+      <scope id="8278380780105768457" at="100,0,103,0" />
+      <scope id="760327805388801935" at="103,0,106,0" />
+      <scope id="8278380780105768457" at="107,0,110,0">
+        <var name="value" id="8278380780105768457" />
       </scope>
-      <scope id="8278380780105768314" at="110,0,113,0">
-        <var name="value" id="8278380780105768314" />
+      <scope id="760327805388801935" at="110,0,113,0">
+        <var name="value" id="760327805388801935" />
       </scope>
       <scope id="8278380780105768314" at="142,0,145,0" />
       <scope id="8278380780105768314" at="145,0,148,0" />
@@ -456,10 +456,10 @@
       <node id="8278380780105899265" at="111,99,112,81" concept="9" />
       <node id="8278380780105899265" at="112,81,113,43" concept="2" />
       <node id="8278380780105899265" at="113,43,114,25" concept="8" />
-      <node id="8278380780105899265" at="117,34,118,33" concept="8" />
-      <node id="8278380780105899265" at="120,31,121,30" concept="8" />
-      <node id="8278380780105899265" at="124,44,125,34" concept="2" />
-      <node id="8278380780105899265" at="127,41,128,31" concept="2" />
+      <node id="8278380780105899464" at="117,34,118,33" concept="8" />
+      <node id="760327805388812488" at="120,31,121,30" concept="8" />
+      <node id="8278380780105899464" at="124,44,125,34" concept="2" />
+      <node id="760327805388812488" at="127,41,128,31" concept="2" />
       <node id="8278380780105899464" at="132,0,133,0" concept="3" trace="myNodePointer" />
       <node id="760327805388812488" at="133,0,134,0" concept="3" trace="myNodeText" />
       <node id="8278380780105899265" at="138,11,139,48" concept="7" />
@@ -481,10 +481,10 @@
       <node id="8278380780105899300" at="70,35,73,5" concept="5" />
       <node id="8278380780105899347" at="80,10,83,5" concept="0" />
       <node id="3261175532206508212" at="85,0,88,0" concept="6" trace="setNode#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)V" />
-      <node id="8278380780105899265" at="117,0,120,0" concept="6" trace="getNodePointer#()Ljava/lang/String;" />
-      <node id="8278380780105899265" at="120,0,123,0" concept="6" trace="getNodeText#()Ljava/lang/String;" />
-      <node id="8278380780105899265" at="124,0,127,0" concept="6" trace="setNodePointer#(Ljava/lang/String;)V" />
-      <node id="8278380780105899265" at="127,0,130,0" concept="6" trace="setNodeText#(Ljava/lang/String;)V" />
+      <node id="8278380780105899464" at="117,0,120,0" concept="6" trace="getNodePointer#()Ljava/lang/String;" />
+      <node id="760327805388812488" at="120,0,123,0" concept="6" trace="getNodeText#()Ljava/lang/String;" />
+      <node id="8278380780105899464" at="124,0,127,0" concept="6" trace="setNodePointer#(Ljava/lang/String;)V" />
+      <node id="760327805388812488" at="127,0,130,0" concept="6" trace="setNodeText#(Ljava/lang/String;)V" />
       <node id="8278380780105899265" at="153,0,156,0" concept="1" trace="NodeBySeveralConcepts_Configuration#(Ljava/util/List;)V" />
       <node id="8278380780105899265" at="157,0,160,0" concept="6" trace="createCloneTemplate#()Ljetbrains/mps/execution/lib/NodeBySeveralConcepts_Configuration;" />
       <node id="8278380780105899265" at="160,0,163,0" concept="6" trace="getEditor#()Ljetbrains/mps/execution/lib/NodeBySeveralConcepts_Configuration_Editor;" />
@@ -515,10 +515,10 @@
       <scope id="8278380780105899408" at="93,31,94,39" />
       <scope id="8278380780105899418" at="95,16,96,22" />
       <scope id="8278380780105899265" at="104,54,105,18" />
-      <scope id="8278380780105899265" at="117,34,118,33" />
-      <scope id="8278380780105899265" at="120,31,121,30" />
-      <scope id="8278380780105899265" at="124,44,125,34" />
-      <scope id="8278380780105899265" at="127,41,128,31" />
+      <scope id="8278380780105899464" at="117,34,118,33" />
+      <scope id="760327805388812488" at="120,31,121,30" />
+      <scope id="8278380780105899464" at="124,44,125,34" />
+      <scope id="760327805388812488" at="127,41,128,31" />
       <scope id="8278380780105899265" at="143,47,144,64" />
       <scope id="8278380780105899265" at="149,27,150,21" />
       <scope id="8278380780105899265" at="153,77,154,24" />
@@ -538,13 +538,13 @@
       <scope id="3261175532206508212" at="85,0,88,0">
         <var name="nodePtr" id="3261175532206509320" />
       </scope>
-      <scope id="8278380780105899265" at="117,0,120,0" />
-      <scope id="8278380780105899265" at="120,0,123,0" />
-      <scope id="8278380780105899265" at="124,0,127,0">
-        <var name="value" id="8278380780105899265" />
+      <scope id="8278380780105899464" at="117,0,120,0" />
+      <scope id="760327805388812488" at="120,0,123,0" />
+      <scope id="8278380780105899464" at="124,0,127,0">
+        <var name="value" id="8278380780105899464" />
       </scope>
-      <scope id="8278380780105899265" at="127,0,130,0">
-        <var name="value" id="8278380780105899265" />
+      <scope id="760327805388812488" at="127,0,130,0">
+        <var name="value" id="760327805388812488" />
       </scope>
       <scope id="8278380780105899265" at="153,0,156,0">
         <var name="targets" id="8278380780105899266" />

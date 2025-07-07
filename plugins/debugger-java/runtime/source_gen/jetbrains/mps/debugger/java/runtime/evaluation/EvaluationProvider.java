@@ -32,7 +32,7 @@ import jetbrains.mps.debugger.java.runtime.ui.evaluation.WatchesPanel;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debugger.java.runtime.evaluation.model.EvaluationWithContextContainer;
 
-@GeneratedClass(node = "r:1f2ecb68-8f37-460f-acb8-866f8f05b15e(jetbrains.mps.debugger.java.runtime.evaluation)/671562190169411198", model = "r:1f2ecb68-8f37-460f-acb8-866f8f05b15e(jetbrains.mps.debugger.java.runtime.evaluation)")
+@GeneratedClass(nodeId = "671562190169411198", model = "r:1f2ecb68-8f37-460f-acb8-866f8f05b15e(jetbrains.mps.debugger.java.runtime.evaluation)")
 public class EvaluationProvider implements IEvaluationProvider {
   private final DebugSession myDebugSession;
   @Nullable
@@ -160,7 +160,7 @@ public class EvaluationProvider implements IEvaluationProvider {
     }
     final EvaluationWithContextContainer rv = new EvaluationWithContextContainer(myDebugSession.getProject(), myDebugSession, myContainerModuleRef, isWatch);
     ApplicationManager.getApplication().invokeLater(() -> {
-      myDebugSession.getProject().getModelAccess().executeCommand(() -> rv.setUpNode(selectedNodes));
+      myDebugSession.getProject().getModelAccess().runWriteAction(() -> rv.setUpNode(selectedNodes));
       onNodeSetUp.invoke(rv);
     });
     return rv;

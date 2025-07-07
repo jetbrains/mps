@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -35,7 +35,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 @MPSLaunch
 public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(SuppressErrorsPerformanceTest_Test.class, "${mps_home}", "r:331d12a3-ff36-4324-a0a5-3624fa05f749(jetbrains.mps.console.performance@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SuppressErrorsPerformanceTest_Test.class).projectPath(null).modelRef("r:331d12a3-ff36-4324-a0a5-3624fa05f749(jetbrains.mps.console.performance@tests)").reopenProject(null).build());
 
   public SuppressErrorsPerformanceTest_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -52,8 +52,13 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5968606277575949800");
+    }
+
     public void test_testPerformance() throws Exception {
-      runWithinCommand(() -> addNodeById("5968606277575949800"));
+      initTestNodes();
       runWithinCommand(() -> {
         // the goal of that test is to ensure more efficient than quadratic complexity
         Duration durationA = TestBody.this.measureSuppressPerformance(4 * 1000);
@@ -66,11 +71,11 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
 
     public Duration measureSuppressPerformance(int modelSize) {
       SNode var5968606277576107105 = getNodeById("5968606277576107085");
-      ListSequence.fromList(SLinkOperations.getChildren(getNodeById("5968606277576107085"), LINKS.item$upGD)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("response"), LINKS.item$upGD)).clear();
       for (int i = 0; i < modelSize; i++) {
-        ListSequence.fromList(SLinkOperations.getChildren(getNodeById("5968606277576107085"), LINKS.item$upGD)).addElement(createNodeResponseItem_wxn1w7_a0a0a2a5g());
+        ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("response"), LINKS.item$upGD)).addElement(createNodeResponseItem_wxn1w7_a0a0a2a7g());
       }
-      SModel modelToCheck = SNodeOperations.getModel(getNodeById("5968606277576107085"));
+      SModel modelToCheck = SNodeOperations.getModel(getAnnotatedNode("response"));
       IChecker<SNode, NodeReportItem> structureChecker = new StructureChecker();
       long startTime = System.nanoTime();
       IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem> checker = new ModelCheckerBuilder(new ModelCheckerBuilder.ModelsExtractorImpl().includeStubs(false)).createChecker(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), structureChecker, new SuppressErrorsChecker()));
@@ -78,7 +83,7 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
       long stopTime = System.nanoTime();
       return Duration.ofNanos(stopTime - startTime);
     }
-    private static SNode createNodeResponseItem_wxn1w7_a0a0a2a5g() {
+    private static SNode createNodeResponseItem_wxn1w7_a0a0a2a7g() {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeResponseItem$Xr);
       n0.forChild(LINKS.node$X2qT).initNull();
       return n0.getResult();

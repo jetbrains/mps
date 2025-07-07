@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ package jetbrains.mps.classloading;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.reloading.ClassBytesProvider.ClassBytes;
+import jetbrains.mps.reloading.IClassPathItem;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.ProtectionDomainUtil;
 import jetbrains.mps.util.iterable.IterableEnumeration;
 import jetbrains.mps.util.iterable.MergeIterator;
 import org.jetbrains.annotations.NonNls;
@@ -28,16 +28,21 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.CodeSource;
 import java.security.ProtectionDomain;
+import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 /**
  * MPS implementation of <code>java.lang.ClassLoader</code> which uses non-standard way of class loading delegation.
@@ -58,7 +63,9 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   private static final ClassLoader SYSTEM_CLASSLOADER = getSystemClassLoader();
 
 
-  private final ModuleClassLoaderSupport mySupport;
+  private final IClassPathItem myClassPathItem;
+  private final ReloadableModule myModule;
+  private Supplier<List<ClassLoader>> myDependencySupplier;
   // null values are not allowed => using <code>Optional</code>
   private final ConcurrentMap<String, Optional<Class<?>>> myClasses = new ConcurrentHashMap<>();
 
@@ -90,11 +97,25 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     }
   }
 
-  // FIXME I don't think ModuleClassLoaderSupport and ModuleClassLoader knowing about each other is right. If it's the former to instantiate latter,
-  //       it shall pass all relevant initialization pieces in here, instead of `this`.
+  /**
+   * @deprecated coupling b/w ModuleClassLoaderSupport and ModuleClassLoader isn't right. If it's the former to instantiate latter,
+   *             it shall pass all relevant initialization pieces in here, instead of `this`.
+   *             May become package-local, if necessary (to avoid long construction argument list)
+   */
+  @Deprecated(forRemoval = true, since = "2024.1")
   public ModuleClassLoader(@NotNull ModuleClassLoaderSupport support) {
     super(support.suggestClassLoaderName(), support.getRootClassLoader());
-    mySupport = support;
+    myModule = support.getModule();
+    myClassPathItem = support.getClassPathItem();
+    myDependencySupplier = support.getCompileDependencies();
+  }
+
+  // XXX could use MPSModuleClassLoader for dependencies
+  /**/ ModuleClassLoader(@NotNull String clName, @NotNull ClassLoader parent, @NotNull ReloadableModule module, @NotNull IClassPathItem cp, @NotNull Supplier<List<ClassLoader>> dependencies) {
+    super(clName, parent);
+    myModule = module;
+    myClassPathItem = cp;
+    myDependencySupplier = dependencies;
   }
 
   @Override
@@ -102,14 +123,14 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   public Class<?> loadOwnClass(String name) throws ClassNotFoundException {
     Class<?> aClass = loadClass(name, false, true);
     if (aClass == null) {
-      throw new ModuleClassNotFoundException(getModule());
+      throw createCLNFException(name);
     }
     return aClass;
   }
 
   @NotNull
   public ReloadableModule getModule() {
-    return mySupport.getModule();
+    return myModule;
   }
 
   @Override
@@ -164,8 +185,8 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   }
 
   private ModuleClassNotFoundException createCLNFException(String name) {
-    ReloadableModule module = mySupport.getModule();
-    return new ModuleClassNotFoundException(module,
+    ReloadableModule module = getModule();
+    return new ModuleClassNotFoundException(module.getModuleReference(),
                                             String.format("Unable to load class: '%s' using ModuleClassLoader of the '%s' module", name,
                                                           module.getModuleName()));
   }
@@ -192,7 +213,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
       if (aClass != null) {
         return aClass;
       }
-      ClassBytes classBytes = mySupport.findClassBytes(fqName);
+      ClassBytes classBytes = myClassPathItem.getClassBytes(fqName);
       if (classBytes != null) {
         String pack = NameUtil.namespaceFromLongName(fqName);
         synchronized (myPackageLock) {
@@ -200,7 +221,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
             definePackage(pack, null, null, null, null, null, null, null);
           }
         }
-        ProtectionDomain newProtectionDomain = ProtectionDomainUtil.loadedClassDomain(classBytes.getPath());
+        ProtectionDomain newProtectionDomain = loadedClassDomain(classBytes.getPath());
         byte[] bytes = classBytes.getBytes();
         aClass = defineClass(fqName, bytes, 0, bytes.length, newProtectionDomain);
         return recordClass(fqName, aClass);
@@ -210,7 +231,11 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   }
 
   private Class<?> loadFromDeps(String name) throws ClassNotFoundException {
-    Collection<? extends ClassLoader> dependencyClassLoaders = getDependencyClassLoaders();
+    Collection<ClassLoader> dependencyClassLoaders = getDependencyClassLoaders();
+
+    if (LOG.isDebugLevel()) {
+      LOG.debug(String.format("Looking for %s among %d dependencies of %s", name, dependencyClassLoaders.size(), getName()));
+    }
 
     // loading from ModuleClassLoaders firstly; it's faster, we can tell right here if we can find class there.
     for (ClassLoader depCL : dependencyClassLoaders) {
@@ -219,7 +244,8 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
           LOG.trace("checking dep moduleclassloader " + depCL);
         }
         ModuleClassLoader depCL1 = (ModuleClassLoader) depCL;
-        if (depCL1.mySupport.canFindClass(name)) {
+        depCL1.checkNotDisposed();
+        if (depCL1.myClassPathItem.hasClass(name)) {
           // here it will certainly load with class loader depCL
           return depCL1.loadFromSelf(name);
         }
@@ -288,23 +314,25 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   public URL getOwnResource(String name) {
     // unlike getResource(), don't look up in parent/bootstrap CL, we care about resources of this module only
     // unlike this.findResource(), don't look up in dependencies
-    return mySupport.findResource(name);
+    // Perhaps, the method shall get exposed in superclass (next to loadOwnClass()) for uniformity with delegating CL for "provided CL" scenario
+    return myClassPathItem.getResource(name);
   }
 
 
   @Override
   protected URL findResource(String name) {
     checkNotDisposed();
-    List<ClassLoader> classLoadersToCheck = new ArrayList<>();
-    classLoadersToCheck.add(this);
-    classLoadersToCheck.addAll(getDependencyClassLoaders());
-    for (ClassLoader dep : classLoadersToCheck) {
+    Stream<ClassLoader> classLoadersToCheck = Stream.concat(Stream.of(this), getDependencyClassLoaders().stream());
+    for (Iterator<ClassLoader> it = classLoadersToCheck.iterator(); it.hasNext(); ) {
+      final ClassLoader dep = it.next();
+      URL res;
       if (dep instanceof ModuleClassLoader) {
-        URL res;
-        res = ((ModuleClassLoader) dep).mySupport.findResource(name);
-        if (res != null) {
-          return res;
-        }
+        res = ((ModuleClassLoader) dep).getOwnResource(name);
+      } else {
+        res = dep.getResource(name); // see getOwnResource(), above
+      }
+      if (res != null) {
+        return res;
       }
     }
 
@@ -314,17 +342,22 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   @Override
   protected Enumeration<URL> findResources(String name) {
     checkNotDisposed();
-    List<ClassLoader> classLoadersToCheck = new ArrayList<>();
-    classLoadersToCheck.add(this);
-    classLoadersToCheck.addAll(getDependencyClassLoaders());
+    Stream<ClassLoader> classLoadersToCheck = Stream.concat(Stream.of(this), getDependencyClassLoaders().stream());
     List<URL> result = new ArrayList<>();
-    for (ClassLoader dep : classLoadersToCheck) {
-      if (dep instanceof ModuleClassLoader) {
+    for (Iterator<ClassLoader> it = classLoadersToCheck.iterator(); it.hasNext(); ) {
+      final ClassLoader dep = it.next();
+      try {
         Enumeration<URL> resources;
-        resources = ((ModuleClassLoader) dep).mySupport.findResources(name);
+        if (dep instanceof ModuleClassLoader) {
+          resources = ((ModuleClassLoader) dep).myClassPathItem.getResources(name);
+        } else {
+          resources = dep.getResources(name);
+        }
         while (resources.hasMoreElements()) {
           result.add(resources.nextElement());
         }
+      } catch (Exception ex) {
+        LOG.debug(String.format("Attempt to find resources from CL %s failed", dep), ex);
       }
     }
 
@@ -351,7 +384,9 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
    */
   private Collection<ClassLoader> getDependencyClassLoaders() {
     if (myDependenciesClassLoaders == null) {
-      myDependenciesClassLoaders = mySupport.getCompileDependencies();
+      // XXX why not MPSCLRegistry as cons argument + method to query deps?
+      myDependenciesClassLoaders = myDependencySupplier.get();
+      myDependencySupplier = null;
     }
     return myDependenciesClassLoaders;
   }
@@ -359,6 +394,11 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   public String toString() {
     final String rv = super.toString();
     return myDisposed ? rv + "[DISPOSED]" : rv;
+  }
+
+  private static ProtectionDomain loadedClassDomain(URL url) {
+    CodeSource cs = new CodeSource(url, (Certificate[]) null);
+    return new ProtectionDomain(cs, null);
   }
 
   public static class ModuleClassLoaderIsDisposedException extends IllegalStateException {

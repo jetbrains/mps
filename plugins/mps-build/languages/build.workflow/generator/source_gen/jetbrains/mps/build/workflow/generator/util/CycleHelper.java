@@ -100,6 +100,7 @@ public class CycleHelper {
       Set<SNode> seenModules = new LinkedHashSet<SNode>();
       Set<SNode> seenLibraries = new LinkedHashSet<SNode>();
       Set<SNode> taskDependency = new LinkedHashSet<SNode>();
+      boolean withKotlin = false;
 
       int heapSize = 0;
       for (Module m : cycle) {
@@ -141,7 +142,10 @@ public class CycleHelper {
             sources.add(n);
           }
         }
+
+        withKotlin = withKotlin || SPropertyOperations.getBoolean(module, PROPS.withKotlin$2$Am);
       }
+      SPropertyOperations.assign(cycleX, PROPS.withKotlin$2$Am, withKotlin);
       SPropertyOperations.assign(cycleX, PROPS.heapSize$LySR, heapSize);
       SLinkOperations.setNewChild(cycleX, LINKS.sources$L7Yt, null);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cycleX, LINKS.sources$L7Yt), LINKS.elements$5C58)).addSequence(Sequence.fromIterable(((Iterable<SNode>) sources)).select((it) -> CopyUtil.copy(it)));
@@ -231,6 +235,7 @@ public class CycleHelper {
     /*package*/ static final SProperty fork$H$9A = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x3d4a6c597112f405L, "fork");
     /*package*/ static final SProperty conditionalCompile$z2HS = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x71e3a5e19d971200L, "conditionalCompile");
     /*package*/ static final SProperty heapSize$LySR = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0xcdff0e1a96ccbe3L, "heapSize");
+    /*package*/ static final SProperty withKotlin$2$Am = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x6ab0965855d6fac1L, "withKotlin");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty temporaryFolder$kyMK = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L, 0x667edfe41720f53eL, "temporaryFolder");
   }

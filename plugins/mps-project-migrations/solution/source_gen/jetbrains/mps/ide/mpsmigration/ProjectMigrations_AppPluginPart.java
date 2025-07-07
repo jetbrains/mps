@@ -16,6 +16,7 @@ import jetbrains.mps.ide.mpsmigration.v_2021_3.Migrations_2021_3;
 import jetbrains.mps.ide.mpsmigration.v_2022_3.Migrations_2022_3;
 import jetbrains.mps.ide.mpsmigration.v_2023_1.Migrations_2023_1;
 import jetbrains.mps.ide.mpsmigration.v_2023_3.Migrations_2023_3;
+import jetbrains.mps.ide.mpsmigration.v_2024_3.Migrations_2024_3;
 
 public class ProjectMigrations_AppPluginPart extends ApplicationPluginPart {
   private ArrayDeque<ProjectMigration> myMigrations = new ArrayDeque<ProjectMigration>();
@@ -37,6 +38,7 @@ public class ProjectMigrations_AppPluginPart extends ApplicationPluginPart {
     new Migrations_2022_3().offerInto(ProjectMigrations_AppPluginPart.this.myMigrations);
     new Migrations_2023_1().offerInto(ProjectMigrations_AppPluginPart.this.myMigrations);
     new Migrations_2023_3().offerInto(ProjectMigrations_AppPluginPart.this.myMigrations);
+    new Migrations_2024_3().offerInto(ProjectMigrations_AppPluginPart.this.myMigrations);
     // assume myMigrations are ordered from older to new
     for (ProjectMigration pm : ProjectMigrations_AppPluginPart.this.myMigrations) {
       ProjectMigrations_AppPluginPart.this.myRegistry.addProjectMigration(pm);

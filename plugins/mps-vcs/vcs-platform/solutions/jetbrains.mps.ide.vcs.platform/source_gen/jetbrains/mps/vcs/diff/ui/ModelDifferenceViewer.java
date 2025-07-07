@@ -28,7 +28,9 @@ import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
+import javax.swing.JScrollPane;
 import com.intellij.ui.ScrollPaneFactory;
+import com.intellij.ui.IdeBorderFactory;
 import java.awt.Dimension;
 import com.intellij.openapi.util.DimensionService;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
@@ -58,7 +60,7 @@ import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
 import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/6410246949269566016", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "6410246949269566016", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public class ModelDifferenceViewer implements DataProvider {
   private final MPSProject myProject;
   private final List<String> myTitles;
@@ -107,11 +109,13 @@ public class ModelDifferenceViewer implements DataProvider {
 
     // create panels
     myPanel.setSplitterProportionKey(getClass().getName() + "ModelTreeSplitter");
-
     myPanel.setSecondComponent(myNoRootPanel);
     if (showTree) {
       myTree = new ModelDifferenceTree(project.getRepository());
-      myPanel.setFirstComponent(ScrollPaneFactory.createScrollPane(myTree));
+      myTree.withModelName(myModels);
+      JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(myTree);
+      scrollPane.setViewportBorder(IdeBorderFactory.createBorder());
+      myPanel.setFirstComponent(scrollPane);
 
       // actions connected to model tree
       myGoToNeighbourRootActions = new MyGoToNeighbourRootActions();

@@ -25,7 +25,7 @@ import jetbrains.mps.ide.vfs.MPSSavingRequestor;
 import java.util.stream.Collectors;
 import com.intellij.openapi.vcs.AbstractVcs;
 
-@GeneratedClass(node = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/6203974263416579308", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
+@GeneratedClass(nodeId = "6203974263416579308", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
 public class GeneratedFileConflictResolving {
   private final MPSProject myMpsProject;
 

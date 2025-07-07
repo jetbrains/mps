@@ -40,7 +40,7 @@ import com.intellij.openapi.application.ApplicationManager;
 /**
  * IDEA service
  */
-@GeneratedClass(node = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)/3613324658897711340", model = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)")
+@GeneratedClass(nodeId = "3613324658897711340", model = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)")
 public final class MPSVcsManager {
   private static final Logger LOG = Logger.getLogger(MPSVcsManager.class);
   private final Project myProject;

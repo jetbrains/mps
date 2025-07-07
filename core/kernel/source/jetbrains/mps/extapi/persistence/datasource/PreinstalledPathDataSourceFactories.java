@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,20 +31,12 @@ import org.jetbrains.mps.openapi.persistence.DataSource;
  *
  * @author apyshkin
  * @since 29/12/16
+ * @deprecated implementation class, shall not be part of `extapi` nor referenced directly by clients
  */
+@Deprecated(forRemoval = true, since = "2025.2")
 @Immutable
-public enum PreinstalledPathDataSourceFactories implements DataSourceFactoryFromPath {
+public enum PreinstalledPathDataSourceFactories {
   FILE_OR_FOLDER;
-
-  @NotNull
-  @Override
-  public DataSource create(@NotNull Path path) {
-    // FIXME (a) is there reason for Path, not IFile? Few uses of the method suggest IFile could work
-    //       (b) if Path is necessary, can we initialize PreinstalledPathDataSourceFactories with VfsManager or
-    //           anything else to avoid using FS singleton?
-    IFile file = FileSystem.getInstance().getFile(path);
-    return createFromFile(file);
-  }
 
   @NotNull
   public DataSource createFromFile(@NotNull IFile file) {

@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.constraints.ConstraintsChildAndPropFacade;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.lang.editor.menus.transformation.PropertyTransformationMenuItem;
 
-@GeneratedClass(node = "r:e7d06f33-351b-4c9c-b848-ef96eff562e1(jetbrains.mps.editor.runtime.impl.cellMenu)/2816844678677465131", model = "r:e7d06f33-351b-4c9c-b848-ef96eff562e1(jetbrains.mps.editor.runtime.impl.cellMenu)")
+@GeneratedClass(nodeId = "2816844678677465131", model = "r:e7d06f33-351b-4c9c-b848-ef96eff562e1(jetbrains.mps.editor.runtime.impl.cellMenu)")
 public class EnumSPropertyTransformationItemFactory {
   private EnumSPropertyTransformationItemFactory() {
   }

@@ -19,7 +19,7 @@ public class EnumerationDescriptor_MappingScriptKind extends EnumerationDescript
   private final EnumerationDescriptor.MemberDescriptor myMember_post_processing_0 = new EnumerationDescriptor.MemberDescriptor("post_processing", "post-process output model", 0x1165f09be34L, "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/4241665505353446772");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165f07f3c1L, 0x1165f07f3c2L, 0x1165f09be34L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_pre_processing_0, myMember_post_processing_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_pre_processing_0, myMember_post_processing_0);
 
   @Nullable
   @Override

@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaLocation;
 
-@GeneratedClass(node = "r:6c15a5c9-1bba-4ade-a066-13f2741b04fc(jetbrains.mps.debugger.java.api.state)/3432969378036015499", model = "r:6c15a5c9-1bba-4ade-a066-13f2741b04fc(jetbrains.mps.debugger.java.api.state)")
+@GeneratedClass(nodeId = "3432969378036015499", model = "r:6c15a5c9-1bba-4ade-a066-13f2741b04fc(jetbrains.mps.debugger.java.api.state)")
 public abstract class JavaUiState extends AbstractUiState {
   protected JavaUiState(AbstractDebugSession debugSession) {
     super(debugSession);

@@ -21,8 +21,15 @@ public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
   private static final String LAUNCHER_SOLUTION = "c234a56a-502f-4751-aded-6f9846fff7ce(jetbrains.mps.lang.test.junit5)";
   private static final String LAUNCHER_METHOD = "launchTests";
 
+  private boolean myForceFailOnError = false;
+
   public LaunchTestWorker(Script whatToDo) {
     super(whatToDo);
+  }
+
+  @Override
+  public void setForceFailOnError() {
+    myForceFailOnError = true;
   }
 
   @Override
@@ -66,7 +73,13 @@ public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
 
     if (method.get() != null && object.get() != null) {
       try {
-        method.get().invoke(object.get());
+        Object retVal = method.get().invoke(object.get());
+        if (retVal instanceof Integer) {
+          if ((Integer) retVal > 0) {
+            failBuild();
+          }
+        } else {
+        }
 
       } catch (InvocationTargetException | IllegalAccessException e) {
         error("unexpected error ", e);
@@ -74,6 +87,13 @@ public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
       }
     } else {
       failBuild();
+    }
+  }
+
+  @Override
+  protected void failBuild(String name) {
+    if (myForceFailOnError || (!(myErrors.isEmpty()) && myWhatToDo.getFailOnError())) {
+      forceFailBuild(name);
     }
   }
 

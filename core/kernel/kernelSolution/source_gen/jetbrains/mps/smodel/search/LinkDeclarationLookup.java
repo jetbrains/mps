@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
  * This code used to be part of ConceptAndSuperConceptsCache, which is quite outdated to keep going.
  * Note, this code doesn't check if supplied link in fact belongs to the hierarchy of the concept
  */
-@GeneratedClass(node = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)/7813081600365639852", model = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)")
+@GeneratedClass(nodeId = "7813081600365639852", model = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)")
 public final class LinkDeclarationLookup {
   private final SNode myConcept;
 

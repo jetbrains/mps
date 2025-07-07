@@ -18,7 +18,7 @@ import com.intellij.util.ui.JBUI;
 import com.intellij.ui.DocumentAdapter;
 import javax.swing.event.DocumentEvent;
 
-@GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/1685972956014329975", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
+@GeneratedClass(nodeId = "1685972956014329975", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public class StringChooserDialog extends RefactoringDialog {
   protected JPanel myPanel;
   protected JLabel myLabel = new JLabel();

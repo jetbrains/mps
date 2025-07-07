@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 
-@GeneratedClass(node = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)/8568892084424439650", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
+@GeneratedClass(nodeId = "8568892084424439650", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
 /*package*/ class UsagesSearchType extends SearchType<SReference, SNode> {
   /*package*/ UsagesSearchType() {
   }

@@ -20,7 +20,7 @@ import jetbrains.mps.baseLanguage.javastub.asm.ASMUnboundedType;
 import java.util.List;
 import java.util.Iterator;
 
-@GeneratedClass(node = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/7241381882860008238", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
+@GeneratedClass(nodeId = "7241381882860008238", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
 public final class ASMNodeId {
   private ASMNodeId() {
   }

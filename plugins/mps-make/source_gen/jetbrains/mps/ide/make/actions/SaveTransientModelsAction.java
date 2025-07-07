@@ -8,6 +8,8 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.generator.GenerationSettingsProvider;
 import jetbrains.mps.icons.MPSIcons;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 
 public class SaveTransientModelsAction extends ToggleAction {
   public SaveTransientModelsAction() {
@@ -28,6 +30,11 @@ public class SaveTransientModelsAction extends ToggleAction {
     } else {
       e.getPresentation().setIcon(null);
     }
+  }
+  @NotNull
+  @Override
+  public ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
   @Override
   public void setSelected(AnActionEvent e, boolean state) {

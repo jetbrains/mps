@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,6 +57,8 @@ public interface IndexAwareModelFactory extends ModelFactory {
    * @param name Name of the stream, to help model factory decide which part of data source it is.
    * @param input An input stream which is a part of a data source accepted by this model factory
    * @return (A subset of) model data contained in the given input stream
+   *
+   * {@implNote Seems that could be implemented through standard MF.load() + a special loading flag!}
    *
    * @see org.jetbrains.mps.openapi.persistence.MultiStreamDataSource
    */

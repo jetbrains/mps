@@ -1686,7 +1686,7 @@
                   </node>
                 </node>
                 <node concept="2qgKlT" id="6Y" role="2OqNvi">
-                  <ref role="37wK5l" to="jglh:28CvMylq0Pm" resolve="getConceptType" />
+                  <ref role="37wK5l" to="jglh:4VnyIrvoQ8N" resolve="getConceptType" />
                   <uo k="s:originTrace" v="n:2852204284041000278" />
                 </node>
               </node>

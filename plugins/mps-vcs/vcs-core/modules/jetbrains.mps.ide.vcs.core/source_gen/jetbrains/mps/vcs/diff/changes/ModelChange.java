@@ -11,17 +11,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/8813828754313712692", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "8813828754313712692", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public abstract class ModelChange {
   private final ChangeSet myChangeSet;
   private ModelChange myOpposite = null;
   private final SNodeId myRootId;
-
-  @Deprecated(forRemoval = true)
-  protected ModelChange(@NotNull ChangeSet changeSet) {
-    myChangeSet = changeSet;
-    myRootId = null;
-  }
 
   protected ModelChange(@NotNull ChangeSet changeSet, @Nullable SNodeId rootId) {
     myChangeSet = changeSet;

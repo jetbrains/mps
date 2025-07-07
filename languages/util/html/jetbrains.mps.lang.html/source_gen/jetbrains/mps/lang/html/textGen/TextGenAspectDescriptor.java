@@ -37,6 +37,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new HtmlFile_TextGen();
       case LanguageConceptSwitch.HtmlLine:
         return new HtmlLine_TextGen();
+      case LanguageConceptSwitch.HtmlLineWithoutSpaces:
+        return new HtmlLineWithoutSpaces_TextGen();
       case LanguageConceptSwitch.HtmlOpeningTag:
         return new HtmlOpeningTag_TextGen();
       case LanguageConceptSwitch.HtmlTag:

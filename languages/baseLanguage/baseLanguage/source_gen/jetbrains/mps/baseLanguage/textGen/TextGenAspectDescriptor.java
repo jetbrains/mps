@@ -166,6 +166,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new GreaterThanOrEqualsExpression_TextGen();
       case LanguageConceptSwitch.HexIntegerLiteral:
         return new HexIntegerLiteral_TextGen();
+      case LanguageConceptSwitch.HexLongLiteral:
+        return new HexLongLiteral_TextGen();
       case LanguageConceptSwitch.IfStatement:
         return new IfStatement_TextGen();
       case LanguageConceptSwitch.ImplicitAnnotationInstanceValue:

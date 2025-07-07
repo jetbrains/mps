@@ -100,7 +100,7 @@ public class DefaultMenuContribution extends TransformationMenuBase {
 
       @Override
       public IconResource getIcon() {
-        return IconContainer.RESOURCE_a0a7c5;
+        return IconContainer.RESOURCE_2;
       }
       @Override
       public String getTooltipText() {

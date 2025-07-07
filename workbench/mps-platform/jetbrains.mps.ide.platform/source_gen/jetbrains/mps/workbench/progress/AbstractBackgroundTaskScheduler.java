@@ -20,7 +20,7 @@ import com.intellij.openapi.util.Condition;
 import com.intellij.openapi.application.ModalityState;
 import java.util.concurrent.TimeUnit;
 
-@GeneratedClass(node = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)/5860855079808959130", model = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)")
+@GeneratedClass(nodeId = "5860855079808959130", model = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)")
 public abstract class AbstractBackgroundTaskScheduler<JOB> extends DefaultTaskScheduler {
   private final Project myMpsProject;
   private Executor myExecutor;
@@ -51,6 +51,9 @@ public abstract class AbstractBackgroundTaskScheduler<JOB> extends DefaultTaskSc
 
   protected final void submitAll(Collection<ProgressTask> tasks, AbstractJobQueue<JOB> queue, final ProgressMonitor monitor) {
     for (final ProgressTask task : tasks) {
+      if (monitor.isCanceled()) {
+        return;
+      }
       queue.submit(createJob(task, monitor), monitor);
     }
   }
@@ -81,7 +84,7 @@ public abstract class AbstractBackgroundTaskScheduler<JOB> extends DefaultTaskSc
     protected AbstractJobQueue(int queueSize, final BooleanSupplier shouldStop) {
       // Condition must be imported here explicitly to avoid generation failure
       Condition<Object> condition = (__) -> shouldStop.getAsBoolean();
-      // ThreadToUse.POOLED is preferrable here because IDEA application may not be available
+      // ThreadToUse.POOLED is preferable here because IDEA application may not be available
       this.myProcessor = new QueueProcessor<JobQueueItem>((JobQueueItem bgRunnable, Runnable continuation) -> bgRunnable.accept(continuation), true, QueueProcessor.ThreadToUse.POOLED, condition);
       this.myLatch = new CountDownLatch(queueSize);
     }

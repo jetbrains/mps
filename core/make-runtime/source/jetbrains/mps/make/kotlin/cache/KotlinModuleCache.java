@@ -3,45 +3,32 @@
  */
 package jetbrains.mps.make.kotlin.cache;
 
+import jetbrains.mps.make.PackagePrefix;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.io.File;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-/**
- * Kotlin output cache for a single module. It contains the list of all inputs for each
- * output file.
- * <br>
- * This data is used for compilation avoidance (not compiling modules that are up-to-date)
- */
-public class KotlinModuleCache {
-  private final Map<String, List<String>> myOutputToSourceFiles;
-
-  private final Set<File> mySourceFiles;
-
+public interface KotlinModuleCache {
 
   /**
-   * Create a module cache from the mapping of input files to output files.
+   * Must be called before any call to getSourcesFor(), as it may retain some data about source files.
    *
-   * @param outputToSourceFiles source files per output file mapping
-   * @param sourceFiles         optional set of source files (can be approximately derived from map values)
+   * @return whether we are sure that some sources need to be compiled.
    */
-  public KotlinModuleCache(Map<String, List<String>> outputToSourceFiles, Set<File> sourceFiles) {
-    this.myOutputToSourceFiles = outputToSourceFiles;
-    this.mySourceFiles = sourceFiles;
-  }
-
+  Boolean processSources(@NotNull Set<File> sources);
 
   /**
-   * Returns a list of source file used in previous compilation to create the output file, or null if
-   * the entry is not found (which means the output file was either not compiled from kotlin or that
-   * cache does not include it).
+   * @return list of input files matching the output, or null if not applicable
    */
-  public List<String> getSourcesFor(String outputFilePath) {
-    return myOutputToSourceFiles.get(outputFilePath);
-  }
+  @Nullable
+  List<File> getSourcesFor(@NotNull File outputFile, @NotNull PackagePrefix packPrefix);
 
-  public Set<File> getSourceFiles() {
-    return mySourceFiles;
-  }
+  /**
+   * @param compiledFiles relative paths list of output files
+   * @return true if cache knows about files that are missing from the provided list
+   */
+  Boolean missesOutput(@NotNull Set<File> compiledFiles);
 }

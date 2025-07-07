@@ -22,7 +22,7 @@ public class EnumerationDescriptor_RefactoringTargetKind_Enum extends Enumeratio
   private final EnumerationDescriptor.MemberDescriptor myMember_devkit_0 = new EnumerationDescriptor.MemberDescriptor("devkit", "devkit", 0x119bea74c36L, "r:00000000-0000-4000-0000-011c89590319(jetbrains.mps.lang.refactoring.structure)/4241665505353447177");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1199f59d376L, 0x1199f59d377L, 0x1199f5a9c96L, 0x119bea73eb7L, 0x119bea747f0L, 0x119bea74c36L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_node_0, myMember_model_0, myMember_language_0, myMember_solution_0, myMember_devkit_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_node_0, myMember_model_0, myMember_language_0, myMember_solution_0, myMember_devkit_0);
 
   @Nullable
   @Override

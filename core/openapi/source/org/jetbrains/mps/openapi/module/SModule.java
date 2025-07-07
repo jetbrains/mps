@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,14 +41,18 @@ public interface SModule {
    * The repository-wide unique identifier
    */
   @NotNull
-  SModuleId getModuleId();
+  default SModuleId getModuleId() {
+    return getModuleReference().getModuleId();
+  }
 
   // FIXME why not "" in case there's no module name
   /**
    * Identical to getModuleReference.getModuleName()
    */
   @Nullable
-  String getModuleName();
+  default String getModuleName() {
+    return getModuleReference().getModuleName();
+  }
 
   /**
    * A reference to the module, which persists between subsequent read/write actions.
@@ -86,7 +90,7 @@ public interface SModule {
 
   /**
    * All dependencies on modules of all kinds.
-   * Includes only dependencies declared in this model. See also GlobalModuleDependenciesManager [not yet in API]
+   * Includes only dependencies declared in this module. See also GlobalModuleDependenciesManager [not yet in API]
    */
   Iterable<SDependency> getDeclaredDependencies();
 
@@ -98,7 +102,9 @@ public interface SModule {
   /**
    * @return version of used language, or -1 if used languages are not tracked or there's no entry for this particular language
    */
-  int getUsedLanguageVersion(@NotNull SLanguage usedLanguage);
+  default int getUsedLanguageVersion(@NotNull SLanguage usedLanguage) {
+    return -1;
+  }
 
   /**
    * FIXME decide whether we need resolveInDependencies(SModelReference), which might be handy to give module control over
@@ -171,9 +177,13 @@ public interface SModule {
   /**
    * Listener can be added only once, the second time it's just not added
    */
-  void addModuleListener(SModuleListener listener);
+  default void addModuleListener(SModuleListener listener) {
+    // no-op
+  }
 
-  void removeModuleListener(SModuleListener listener);
+  default void removeModuleListener(SModuleListener listener) {
+    // no-op
+  }
 
   /**
    * Generally, modules may have their models available on demand, i.e. unless anyone asked for {@link #getModels()}, module

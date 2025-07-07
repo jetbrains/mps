@@ -6,20 +6,19 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckTypesAction;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class DiamondOperator_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(DiamondOperator_Test.class, "${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(DiamondOperator_Test.class).projectPath(null).modelRef("r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)").reopenProject(null).build());
 
   public DiamondOperator_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -40,21 +39,20 @@ public class DiamondOperator_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeTypeCheck2668602783496187514() throws Exception {
-      runWithinCommand(() -> addNodeById("2668602783496188412"));
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2668602783496030020");
+    }
 
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2668602783496031829");
-        SNode operation = getRealNodeById("2668602783496187514");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2668602783496188412"));
-      });
+    public void test_NodeTypeCheck2668602783496187514() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2668602783496031829")).checkTypeIs(getNodeById("2668602783496188412")));
     }
     public void test_NodeTypeSystemCheck2668602783496250965() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2668602783496238456");
-        SNode operation = getRealNodeById("2668602783496250965");
-        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("2668602783496238456");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.bookmark.BookmarkManager;
 import jetbrains.mps.ide.bookmark.BookmarksDialog;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236354516255", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1236354516255", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ShowBookmarksDialog_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -42,7 +42,7 @@ public class ShowBookmarksDialog_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    BookmarkManager bookmarkManager = event.getData(CommonDataKeys.PROJECT).getComponent(BookmarkManager.class);
+    BookmarkManager bookmarkManager = BookmarkManager.getInstance(event.getData(CommonDataKeys.PROJECT));
     BookmarksDialog dialog = new BookmarksDialog(event.getData(CommonDataKeys.PROJECT), bookmarkManager);
     dialog.show();
   }

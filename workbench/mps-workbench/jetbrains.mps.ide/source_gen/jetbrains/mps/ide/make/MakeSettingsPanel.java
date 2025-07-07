@@ -16,7 +16,7 @@ import java.awt.FlowLayout;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.icons.AllIcons;
 
-@GeneratedClass(node = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)/4182099185160006907", model = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)")
+@GeneratedClass(nodeId = "4182099185160006907", model = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)")
 public final class MakeSettingsPanel implements ProjectPrefsExtraPanel {
   private final MakeServiceConfiguration myMakeConfig;
   private JCheckBox myMakeInBackground;

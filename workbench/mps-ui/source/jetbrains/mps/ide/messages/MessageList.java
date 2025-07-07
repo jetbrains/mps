@@ -132,6 +132,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
   private final ConcurrentLinkedQueue<IMessage> myMessagesQueue = new ConcurrentLinkedQueue<>();
   private volatile boolean myIsDisposed = false;
   private boolean myActivateOnMessage = false;
+  private Runnable myNonActivationHandler = null;
 
   protected MessageList() {
     myUpdateQueue.setRestartTimerOnAdd(true);
@@ -154,6 +155,14 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
    */
   public void setActivateOnMessage(boolean activateOnMessage) {
     myActivateOnMessage = activateOnMessage;
+  }
+
+  /**
+   * If not null, the provided handler is run if the obtained messages do not activate the tool window.
+   * This can typically be used to notify the user with a balloon about an operation that has finished without showing any relevant messages.
+   */
+  public void setNonActivationHandler(Runnable nonActivationHandler) {
+    myNonActivationHandler = nonActivationHandler;
   }
 
   @Override
@@ -245,6 +254,10 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
         updateActions();
         if (myActivateOnMessage && messagesToAdd.size() > 0) {
           bringToFront();
+        } else {
+          if (myNonActivationHandler != null) {
+            myNonActivationHandler.run();
+          }
         }
       }
 
@@ -534,11 +547,17 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
 
     group.add(new AnAction("Show Help for This Message", null, null) {
       @Override
-      public void update(AnActionEvent e) {
+      public void update(@NotNull AnActionEvent e) {
         boolean enabled = getHelpUrlForCurrentMessage() != null;
         Presentation presentation = e.getPresentation();
         presentation.setEnabled(enabled);
         presentation.setVisible(enabled);
+      }
+
+      @Override
+      public @NotNull ActionUpdateThread getActionUpdateThread() {
+        // JList.getSelectedValuesList()
+        return ActionUpdateThread.EDT;
       }
 
       @Override
@@ -652,7 +671,12 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     }
 
     @Override
-    public void update(AnActionEvent e) {
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+
+    @Override
+    public void update(@NotNull AnActionEvent e) {
       super.update(e);
       e.getPresentation().setEnabled(myTextToCopy != null);
     }

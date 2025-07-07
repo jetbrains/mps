@@ -17,7 +17,7 @@
       <unit at="12,0,911,0" name="jetbrains.mps.lang.generator.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,14,0" name="jetbrains.mps.lang.generator.structure.IconContainer" />
+      <unit at="8,0,15,0" name="jetbrains.mps.lang.generator.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,242,0" name="jetbrains.mps.lang.generator.structure.LanguageConceptSwitch" />
@@ -295,8 +295,8 @@
       <node id="1092059087312" at="726,48,727,76" concept="5" />
       <node id="1092059087312" at="727,76,728,35" concept="1" />
       <node id="1092059087312" at="728,35,729,33" concept="1" />
-      <node id="1092059087312" at="729,33,730,57" concept="1" />
-      <node id="1092059087312" at="730,57,731,51" concept="1" />
+      <node id="1092059087312" at="729,33,730,45" concept="1" />
+      <node id="1092059087312" at="730,45,731,51" concept="1" />
       <node id="1092059087312" at="732,9,733,41" concept="6" />
       <node id="1205226736292346923" at="908,0,909,0" concept="8" trace="HELP_URL2" />
       <node id="1092059087312" at="725,53,732,9" concept="3" />
@@ -338,8 +338,8 @@
       <node id="1095416546421" at="493,49,494,76" concept="5" />
       <node id="1095416546421" at="494,76,495,35" concept="1" />
       <node id="1095416546421" at="495,35,496,32" concept="1" />
-      <node id="1095416546421" at="496,32,497,57" concept="1" />
-      <node id="1095416546421" at="497,57,498,52" concept="1" />
+      <node id="1095416546421" at="496,32,497,45" concept="1" />
+      <node id="1095416546421" at="497,45,498,52" concept="1" />
       <node id="1095416546421" at="499,9,500,42" concept="6" />
       <node id="6354210107034397076" at="906,0,907,0" concept="8" trace="HELP_URL" />
       <node id="1095416546421" at="492,54,499,9" concept="3" />
@@ -431,8 +431,8 @@
       <node id="1112730859144" at="805,43,806,76" concept="5" />
       <node id="1112730859144" at="806,76,807,35" concept="1" />
       <node id="1112730859144" at="807,35,808,33" concept="1" />
-      <node id="1112730859144" at="808,33,809,57" concept="1" />
-      <node id="1112730859144" at="809,57,810,46" concept="1" />
+      <node id="1112730859144" at="808,33,809,45" concept="1" />
+      <node id="1112730859144" at="809,45,810,46" concept="1" />
       <node id="1112730859144" at="811,9,812,36" concept="6" />
       <node id="1205226736292346229" at="909,0,910,0" concept="8" trace="HELP_URL3" />
       <node id="1112730859144" at="804,48,811,9" concept="3" />
@@ -1875,8 +1875,8 @@
       <node id="1195499912406" at="517,42,518,76" concept="5" />
       <node id="1195499912406" at="518,76,519,35" concept="1" />
       <node id="1195499912406" at="519,35,520,33" concept="1" />
-      <node id="1195499912406" at="520,33,521,57" concept="1" />
-      <node id="1195499912406" at="521,57,522,45" concept="1" />
+      <node id="1195499912406" at="520,33,521,45" concept="1" />
+      <node id="1195499912406" at="521,45,522,45" concept="1" />
       <node id="1195499912406" at="523,9,524,35" concept="6" />
       <node id="1205226736292347823" at="907,0,908,0" concept="8" trace="HELP_URL1" />
       <node id="1195499912406" at="516,47,523,9" concept="3" />

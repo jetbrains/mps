@@ -10,9 +10,9 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -37,7 +37,7 @@ public class ExecutionModeNodesTestCase extends MigrationScriptBase {
       SearchScope scope_l053oc_a0e = CommandUtil.createScope(m);
       final SearchScope scope_l053oc_a0e_0 = new EditableFilteringScope(scope_l053oc_a0e);
       QueryExecutionContext context = () -> scope_l053oc_a0e_0;
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodesTestCase$nd, false)).visitAll((node) -> {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodesTestCase$nd, false)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.accessMode$uiyo), 0x4bf9938bddc2d016L)).visitAll((node) -> {
         if (!(SPropertyOperations.getBoolean(node, PROPS.needsNoWriteAction$Edij))) {
           SPropertyOperations.setEnum(node, PROPS.accessMode$uiyo, 0x2451232bcdee06bdL, "command");
         } else {
@@ -74,7 +74,7 @@ public class ExecutionModeNodesTestCase extends MigrationScriptBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty needsNoWriteAction$Edij = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x57f984daa37add4aL, "needsNoWriteAction");
     /*package*/ static final SProperty accessMode$uiyo = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x2451232bcdebc33fL, "accessMode");
+    /*package*/ static final SProperty needsNoWriteAction$Edij = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x57f984daa37add4aL, "needsNoWriteAction");
   }
 }

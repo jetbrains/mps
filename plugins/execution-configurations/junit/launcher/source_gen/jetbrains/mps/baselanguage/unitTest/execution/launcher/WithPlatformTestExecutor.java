@@ -23,21 +23,21 @@ import java.util.Arrays;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * Command-line front-end to launch MPS tests that need MPS environment (ITestable, incliding BTestCase, and JUnit3/JUnit4 ClassConcept with respective annotation/superclass) 
+ * Command-line front-end to launch MPS tests that need MPS environment (ITestable, including BTestCase, and JUnit3/JUnit4 ClassConcept with respective annotation/superclass) 
  * 
  * FIXME At the moment, starts MPS on top of IDEA platform with no explicitly specified plugins (effectively means any available). 
  *       Would be great to configure that.
+ * Note, it's essential to extend DefaultTestExecutor as TestParameters.comprises() relies on the fact
  */
 public class WithPlatformTestExecutor extends DefaultTestExecutor {
-  private static final String PATH_MACRO_PREFIX = "path.macro.";
   private static final String EXECUTION_SOLUTION = "f618e99a-2641-465c-bb54-31fe76f9e285(jetbrains.mps.baseLanguage.unitTest.execution)";
 
-  public WithPlatformTestExecutor(TestsContributor testsContributor) {
-    super(testsContributor);
+  public WithPlatformTestExecutor() {
   }
 
   /**
    * Called when ITestCase is executed (except for BTestCase)
+   * Basically, all we do here is start platform (IDEA env) and switch control to MPS-managed code (much like LaunchTestWorker does)
    */
   public static void main(String[] args) throws Exception {
     File file = new File(args[0]);
@@ -51,20 +51,39 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
 
     try {
       Environment env = startIdea(execScript.getStartupArguments());
-      //  Instead of WithPlatformTestExecutor+TestContributor, could use Suite/ParentRunner without need to wrap my runners into Request (much like MpsTestsSuite does)
-      String className = ((execScript.getStartupArguments().getCompatibilityMode()) ? "jetbrains.mps.baseLanguage.unitTest.execution.server.ScriptTestContributor" : "jetbrains.mps.baseLanguage.unitTest.execution.server.JUnit5ScriptTestContributor");
-      Class<?>[] argTypes = new Class<?>[]{Environment.class, ExecutorScript.class};
-      TestsContributor contributor = (TestsContributor) WithPlatformTestExecutor.instantiateContributor(env, className, argTypes, new Object[]{env, execScript});
 
-      WithPlatformTestExecutor executor = new WithPlatformTestExecutor(contributor);
+      String className = "jetbrains.mps.baseLanguage.unitTest.execution.server.CommandLineTestExecutor";
+      Class<?>[] argTypes = new Class<?>[]{Environment.class, ExecutorScript.class};
+      // XXX I'm a bit concerned about ExecutorScript.class matching - here vs CommandLineTestExecutor cons. Here, we've got plain 
+      //     Java CL built from command-line classpath spec, while for CommandLineTestExecutor cons, ExecutorScript.class comes from
+      //     unitTest.launcher module with 'plugin' classloader ("provided"), which is a delegate to IDEA's PluginClassloader.
+      //     I wonder how come [cmdline]ExecutorScript.class == [mps-exec-cfg:unitTestLauncher]ExecutorScript.class. Perhaps, parent CL delegation?
+      TestExecutor exec = (TestExecutor) instantiate(env, className, argTypes, new Object[]{env, execScript});
+
+      //  FIXME copied from DefaultTestExecutor.runAndQuit; needs refactoring
+      int exitCode = EXIT_CODE_FOR_EXCEPTION;
       try {
-        executor.run();
+        try {
+          exec.init();
+          exec.execute();
+        } finally {
+          Throwable executionError = exec.getExecutionError();
+          if (executionError != null) {
+            exitCode = EXIT_CODE_FOR_EXCEPTION;
+          } else {
+            exitCode = exec.getFailureCount();
+          }
+          exec.dispose();
+        }
+      } catch (Exception ex) {
+        error(ex);
+        exitCode = EXIT_CODE_FOR_EXCEPTION;
       } finally {
-        env.dispose();
-        executor.exit();
+        System.exit(exitCode);
       }
     } catch (Exception ex) {
       error(ex);
+      //  why not EXIT_CODE_FOR_EXCEPTION?
       fail();
     }
   }
@@ -76,7 +95,7 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
     if (startupArguments.getAutomaticPLuginDiscoveryMode()) {
       cfg = cfg.withAutomaticPluginDiscovery();
     } else {
-      cfg = cfg.withDefaultPlugins().withDebuggerPlugin();
+      cfg = cfg.withDefaultPlugins().withExecutionPlugins();
     }
 
     // Same code is in MpsWorker, we'd better share it
@@ -108,7 +127,7 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
     return rv;
   }
 
-  protected static Object instantiateContributor(Environment environment, String fqClassName, Class<?>[] argTypes, Object[] args) throws Exception {
+  protected static Object instantiate(Environment environment, String fqClassName, Class<?>[] argTypes, Object[] args) throws Exception {
     AtomicReference<Object> object = new AtomicReference<Object>();
     ModuleClassCode code = new ModuleClassCode(EXECUTION_SOLUTION);
     try {

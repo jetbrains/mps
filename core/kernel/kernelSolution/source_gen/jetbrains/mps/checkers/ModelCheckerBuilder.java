@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
  * The resulting checker is an instance of {@link jetbrains.mps.checkers.IAbstractChecker } and can accept {@link jetbrains.mps.checkers.ModelCheckerBuilder.ItemsToCheck }.
  * 
  */
-@GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/3719390199793466458", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
+@GeneratedClass(nodeId = "3719390199793466458", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class ModelCheckerBuilder {
   private static final Logger LOG = Logger.getLogger(ModelCheckerBuilder.class);
 

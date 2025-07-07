@@ -40,8 +40,8 @@ public class UpdateListOfBrandingProperties extends MigrationScriptBase {
         if ((SLinkOperations.getTarget(branding, LINKS.script$MlVT) == null)) {
           SNode productCopy = SNodeOperations.copyNode(SLinkOperations.getTarget(branding, LINKS.product$RfQu));
           for (SNode part : SLinkOperations.getChildren(productCopy, LINKS.parts$uJA0)) {
-            if (part instanceof SNode) {
-              SPropertyOperations.set(((SNode) part), PROPS.text$lRuU, SPropertyOperations.getString(((SNode) part), PROPS.text$lRuU).toLowerCase());
+            if (SNodeOperations.isInstanceOf(part, CONCEPTS.BuildTextStringPart$3R) && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.BuildTextStringPart$3R), PROPS.text$lRuU))) {
+              SPropertyOperations.set(SNodeOperations.cast(part, CONCEPTS.BuildTextStringPart$3R), PROPS.text$lRuU, SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.BuildTextStringPart$3R), PROPS.text$lRuU).toLowerCase());
             }
           }
           SLinkOperations.setTarget(branding, LINKS.script$MlVT, productCopy);
@@ -62,8 +62,13 @@ public class UpdateListOfBrandingProperties extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 6);
   }
 
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept BuildMps_Branding$M0 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, "jetbrains.mps.build.mps.structure.BuildMps_Branding");
+    /*package*/ static final SConcept BuildTextStringPart$3R = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart");
   }
 
   private static final class LINKS {

@@ -20,7 +20,7 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.view.optionseditor.options.ViewOptions;
 import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2557058267217516060", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "2557058267217516060", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 /*package*/ class FindUsagesHelper {
   private final Project myIdeaProject;
   private final MPSProject myProject;
@@ -36,7 +36,7 @@ import jetbrains.mps.ide.findusages.view.UsageToolOptions;
     return DefaultSearchOptionsComponent.getOptions(myProject);
   }
   private UsagesViewTool getTool() {
-    return myIdeaProject.getComponent(UsagesViewTool.class);
+    return UsagesViewTool.getInstance(myIdeaProject);
   }
   /*package*/ boolean isApplicable() {
     return getTool() != null && getDefaultOptions() != null;

@@ -15,7 +15,7 @@ import jetbrains.mps.tool.common.GeneratorProperties;
  * to a worker, generally running in another classpath. I need to keep GeneratorProperties independent of Ant,
  * hence this class, which indeed looks quite similar
  */
-@GeneratedClass(node = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/290922613093580482", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
+@GeneratedClass(nodeId = "290922613093580482", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public final class GeneratorSettings extends DataType {
   private boolean myIsStrict = true;
   private boolean myIsInplace = true;

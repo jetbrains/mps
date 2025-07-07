@@ -22,7 +22,7 @@ public class EnumerationDescriptor_PrecisionSetting extends EnumerationDescripto
   private final EnumerationDescriptor.MemberDescriptor myMember_UNLIMITED_0 = new EnumerationDescriptor.MemberDescriptor("UNLIMITED", "UNLIMITED", 0x12056af9d65L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448475");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, 0x12056af4e38L, 0x12056afb320L, 0x12056af992dL, 0x12056af99caL, 0x12056af9d65L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_CUSTOM_0, myMember_DECIMAL32_0, myMember_DECIMAL64_0, myMember_DECIMAL128_0, myMember_UNLIMITED_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_CUSTOM_0, myMember_DECIMAL32_0, myMember_DECIMAL64_0, myMember_DECIMAL128_0, myMember_UNLIMITED_0);
 
   @Nullable
   @Override

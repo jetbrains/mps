@@ -4,10 +4,9 @@ package jetbrains.mps.lang.text.editor;
 
 import java.awt.datatransfer.Transferable;
 import com.intellij.ide.CopyPasteManagerEx;
-import jetbrains.mps.ide.datatransfer.SModelDataFlavor;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
+import java.util.Optional;
+import jetbrains.mps.datatransfer.PasteNodeData;
+import jetbrains.mps.datatransfer.SNodeClip;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -26,35 +25,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class TextEditorHelper {
 
   public static Object getDataFromClipboard() {
-    Transferable contents = null;
-    for (Transferable trf : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
-      if (trf != null && (trf.isDataFlavorSupported(SModelDataFlavor.sNode) || trf.isDataFlavorSupported(DataFlavor.stringFlavor))) {
-        contents = trf;
-      }
-      break;
+    Transferable[] allContents = CopyPasteManagerEx.getInstanceEx().getAllContents();
+    Optional<PasteNodeData> nf = SNodeClip.peekNodeFlavor(allContents);
+    if (nf.isPresent()) {
+      return nf.get();
     }
-    if (contents == null) {
-      return null;
-    }
-    if (contents.isDataFlavorSupported(SModelDataFlavor.sNode)) {
-      try {
-        return contents.getTransferData(SModelDataFlavor.sNode);
-      } catch (UnsupportedFlavorException ex) {
-        return null;
-      } catch (IOException ex) {
-        return null;
-      }
-    }
-    if (contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-      try {
-        return contents.getTransferData(DataFlavor.stringFlavor);
-      } catch (UnsupportedFlavorException ex) {
-        return null;
-      } catch (IOException ex) {
-        return null;
-      }
-    }
-    return null;
+    return SNodeClip.peekStringFlavor(allContents).orElse(null);
   }
 
   public static SNode insertLineIntoLines(SNode currentLine, SNode currentNode, SNode lineToInsert) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ public class ProjectMPSFacetCorrectnessTest implements EnvironmentAware {
   @Rule
   public final ErrorCollector myErrors = new ErrorCollector();
 
-  private List<String> EXCLUDES = Arrays.asList("jetbrains.mps.ide.build"); // these are waiting for the java facet to be disabled (not possible for now)
+  private final List<String> EXCLUDES = Arrays.asList("jetbrains.mps.build.sandbox"); // these are waiting for the java facet to be replaced with plain-text
   private Environment myEnvironment;
 
   /**

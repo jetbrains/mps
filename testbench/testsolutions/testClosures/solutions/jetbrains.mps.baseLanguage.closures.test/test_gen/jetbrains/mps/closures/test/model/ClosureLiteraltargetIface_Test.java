@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @MPSLaunch
 public class ClosureLiteraltargetIface_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(ClosureLiteraltargetIface_Test.class, "${mps_home}", "r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ClosureLiteraltargetIface_Test.class).projectPath(null).modelRef("r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)").reopenProject(null).build());
 
   public ClosureLiteraltargetIface_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -43,28 +43,27 @@ public class ClosureLiteraltargetIface_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7178287329507546170", "7178287329507578878");
+    }
+
     public void test_baz() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7178287329507546170");
-        addNodeById("7178287329507578878");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         TemplateQueryContext genContext = TestBody.this.getContext();
-        SNode literal = getNodeById("7178287329507578897");
-        new ClosureLiteralTarget(genContext).setTarget(literal, _quotation_createNode_u745oo_b0a2a0a1a3h(), _quotation_createNode_u745oo_c0a2a0a1a3h());
-        TestBody.this.assertLiteralTarget(genContext, literal, _quotation_createNode_u745oo_c0a3a0a1a3h());
+        SNode literal = getAnnotatedNode("literal");
+        new ClosureLiteralTarget(genContext).setTarget(literal, _quotation_createNode_u745oo_b0a2a0a1a5h(), _quotation_createNode_u745oo_c0a2a0a1a5h());
+        TestBody.this.assertLiteralTarget(genContext, literal, _quotation_createNode_u745oo_c0a3a0a1a5h());
       });
     }
     public void test_baz2() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7178287329507546170");
-        addNodeById("7178287329507578878");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         TemplateQueryContext genContext = TestBody.this.getContext();
-        SNode literal = getNodeById("7178287329507578897");
-        new ClosureLiteralTarget(genContext).setTarget(literal, _quotation_createNode_u745oo_b0a2a0a1a4h(), _quotation_createNode_u745oo_c0a2a0a1a4h());
-        TestBody.this.assertLiteralTarget(genContext, literal, _quotation_createNode_u745oo_c0a3a0a1a4h());
+        SNode literal = getAnnotatedNode("literal");
+        new ClosureLiteralTarget(genContext).setTarget(literal, _quotation_createNode_u745oo_b0a2a0a1a6h(), _quotation_createNode_u745oo_c0a2a0a1a6h());
+        TestBody.this.assertLiteralTarget(genContext, literal, _quotation_createNode_u745oo_c0a3a0a1a6h());
       });
     }
 
@@ -75,7 +74,7 @@ public class ClosureLiteraltargetIface_Test extends BaseTransformationTest {
       SNode target = (SNode) Values.LITERAL_TARGET.get(gencontext, literal);
       Assert.assertTrue(new SNodeMatcher().match(expected, target));
     }
-    private static SNode _quotation_createNode_u745oo_b0a2a0a1a3h() {
+    private static SNode _quotation_createNode_u745oo_b0a2a0a1a5h() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -108,7 +107,7 @@ public class ClosureLiteraltargetIface_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), quotedNode_3);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_u745oo_c0a2a0a1a3h() {
+    private static SNode _quotation_createNode_u745oo_c0a2a0a1a5h() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -124,7 +123,7 @@ public class ClosureLiteraltargetIface_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), quotedNode_3);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_u745oo_c0a3a0a1a3h() {
+    private static SNode _quotation_createNode_u745oo_c0a3a0a1a5h() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -157,7 +156,7 @@ public class ClosureLiteraltargetIface_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), quotedNode_3);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_u745oo_b0a2a0a1a4h() {
+    private static SNode _quotation_createNode_u745oo_b0a2a0a1a6h() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -178,7 +177,7 @@ public class ClosureLiteraltargetIface_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), quotedNode_3);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_u745oo_c0a2a0a1a4h() {
+    private static SNode _quotation_createNode_u745oo_c0a2a0a1a6h() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -194,7 +193,7 @@ public class ClosureLiteraltargetIface_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), quotedNode_3);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_u745oo_c0a3a0a1a4h() {
+    private static SNode _quotation_createNode_u745oo_c0a3a0a1a6h() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;

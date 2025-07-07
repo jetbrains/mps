@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import com.sun.jdi.ThreadReference;
 import com.sun.jdi.request.EventRequest;
 
-@GeneratedClass(node = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)/613652663728232607", model = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)")
+@GeneratedClass(nodeId = "613652663728232607", model = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)")
 /*package*/ class UserContext implements Context {
   private final EventsProcessor myEventsProcessor;
   public UserContext(EventsProcessor eventsProcessor) {

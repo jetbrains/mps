@@ -184,7 +184,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL1);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a81b0gb);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_NodeFactories = cpb.create();
         }
         return props_NodeFactories;
@@ -261,7 +261,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL2);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a82b0gb);
+          cpb.icon(IconContainer.RESOURCE_1);
           props_PasteWrappers = cpb.create();
         }
         return props_PasteWrappers;

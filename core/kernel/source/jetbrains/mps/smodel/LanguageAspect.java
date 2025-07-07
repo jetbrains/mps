@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,105 +15,74 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
-import jetbrains.mps.smodel.language.LanguageAspectSupport;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 // NOTE, although quite some of these enums are not in use in MPS, there are uses in mbeddr!
 public enum LanguageAspect {
   //mostly migrated
-  STRUCTURE("structure", BootstrapLanguages.structureLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "structure.html"),
+  STRUCTURE("structure"),
 
   //mostly migrated
-  EDITOR("editor", BootstrapLanguages.editorLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "editor.html  "),
+  EDITOR("editor"),
+
+  //mostly migrated (no uses in MPS)
+  ACTIONS("actions"),
 
   //mostly migrated
-  ACTIONS("actions", BootstrapLanguages.actionsLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "editor-actions.html"),
+  CONSTRAINTS("constraints"),
 
   //mostly migrated
-  CONSTRAINTS("constraints", BootstrapLanguages.constraintsLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "constraints.html") {
-    @Override
-    public Collection<SLanguage> getMainLanguages() {
-      Collection<SLanguage> mainLanguages = new ArrayList<>();
-      LanguageAspectDescriptor aspectDescriptor = LanguageAspectSupport.getAspectDescriptorById(getName());
-      if (aspectDescriptor != null) {
-        mainLanguages.addAll(aspectDescriptor.getMainLanguages());
-      }
-      SLanguage bootstrapLang = MetaAdapterFactory.getLanguage(getMainLanguage());
-      return Stream.concat(mainLanguages.stream(), Stream.of(bootstrapLang))
-                   .distinct()
-                   .collect(Collectors.toList());
-    }
-  },
+  BEHAVIOR("behavior"),
 
   //mostly migrated
-  BEHAVIOR("behavior", BootstrapLanguages.behaviorLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "behavior.html"),
+  TYPESYSTEM("typesystem"),
+
+  //mostly migrated (no uses in MPS)
+  REFACTORINGS("refactorings"),
+
+  //mostly migrated (no uses in MPS)
+  SCRIPTS("scripts"),
+
+  //mostly migrated (no uses in MPS)
+  INTENTIONS("intentions"),
 
   //mostly migrated
-  TYPESYSTEM("typesystem", BootstrapLanguages.typesystemLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "typesystem.html"),
-
-  //mostly migrated
-  REFACTORINGS("refactorings", BootstrapLanguages.refactoringLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "refactoring.html"),
-
-  //mostly migrated
-  SCRIPTS("scripts", BootstrapLanguages.scriptLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "scripts.html"),
-
-  //mostly migrated
-  INTENTIONS("intentions", BootstrapLanguages.intentionsLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "intentions.html"),
-
-  //mostly migrated
-  FIND_USAGES("findUsages", BootstrapLanguages.findUsagesLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "find-usages.html"),
+  FIND_USAGES("findUsages"),
 
   //migrated, uncomment when migration is finished [compatibility] and deprecate this class
-  PLUGIN("plugin", null, LanguageAspect.HELP_CENTER_BASE + "plugin.html") {
-    @Override
-    public Collection<SLanguage> getMainLanguages() {
-      ArrayList<SLanguage> result = new ArrayList<>();
-      result.add(MetaAdapterFactory.getLanguage(BootstrapLanguages.pluginLanguageRef()));
-      result.add(MetaAdapterFactory.getLanguage(BootstrapLanguages.aspectLanguageRef()));
-      return result;
-    }
-  },
+  // (no uses in MPS)
+  PLUGIN("plugin"),
 
-  //mostly migrated
-  DATA_FLOW("dataFlow", BootstrapLanguages.dataFlowLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "data-flow.html"),
+  //mostly migrated (no uses in MPS)
+  DATA_FLOW("dataFlow"),
 
-  //mostly migrated
-  TEST("test", BootstrapLanguages.testLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "testing-languages.html"),
+  //mostly migrated (no uses in MPS)
+  TEST("test"),
 
-  //mostly migrated
-  TEXT_GEN("textGen", BootstrapLanguages.textGenLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "textGen.html"),
+  //mostly migrated (no uses in MPS)
+  TEXT_GEN("textGen"),
 
-  //mostly migrated
-  MIGRATION("migration", BootstrapLanguages.migrationLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "migrations.html");
+  //mostly migrated. No uses in MPS, 1 in mbeddr
+  MIGRATION("migration");
 
   //TODO must be changed for each major/minor version release
-  public static final String HELP_CENTER_BASE = "https://www.jetbrains.com/help/mps/2023.2/";
+  public static final String HELP_CENTER_BASE = "https://www.jetbrains.com/help/mps/2024.1/";
 
   private String myName;
-  private final SModuleReference myMainLang;
-  private final String myHelpURL;
 
-  LanguageAspect(String name, SModuleReference mainLang, String helpURL) {
+  LanguageAspect(String name) {
     myName = name;
-    myMainLang = mainLang;
-    myHelpURL = helpURL;
   }
 
   /**
@@ -136,11 +105,12 @@ public enum LanguageAspect {
   }
 
   public SModel getOrCreate(Language l) {
+    Logger.getLogger(LanguageAspect.class).warnDeprecatedUse("Don't use legacy LanguageAspect class to create new aspect models");
     return get_internal(l, true);
   }
 
   private SModel get_internal(Language l, boolean doCreate) {
-    final String aspectModelName = l.getModuleName() + "." + myName;
+    final String aspectModelName = l.getModuleName() + '.' + myName;
     for (SModel md : l.getModels()) {
       if (aspectModelName.equals(md.getModelName())) {
         return md;
@@ -153,12 +123,23 @@ public enum LanguageAspect {
     return myName;
   }
 
+  /**
+   * @deprecated use {@link jetbrains.mps.smodel.language.LanguageAspectDescriptor} alternative.
+   *             There are no known uses, the method will be removed after 2025.2
+   */
+  @Deprecated(forRemoval = true)
   public SModel createNew(Language l) {
     return createNew(l, true);
   }
 
+  /**
+   * @deprecated use {@link jetbrains.mps.smodel.language.LanguageAspectDescriptor} alternative.
+   *             There are no known uses, the method will be removed after 2025.2
+   */
+  @Deprecated(forRemoval = true)
   public SModel createNew(final Language l, final boolean saveModel) {
     assert get(l) == null;
+    Logger.getLogger(LanguageAspect.class).warnDeprecatedUse("Don't use legacy LanguageAspect class to create new aspect models");
 
     SModel structureModel = l.getStructureModelDescriptor();
     ModelRoot modelRoot;
@@ -171,27 +152,10 @@ public enum LanguageAspect {
     return modelRoot.createModel(new SModelName(l.getModuleName(), getName(), null));
   }
 
-  @Nullable
-  public String getHelpURL() {
-    return myHelpURL;
-  }
-
-  // FIXME tell it as SLanguage
-  // refactor to have constants as fields, not as methods
-  @Deprecated
-  public SModuleReference getMainLanguage() {
-    return myMainLang;
-  }
-
-  public Collection<SLanguage> getMainLanguages() {
-    ArrayList<SLanguage> res = new ArrayList<>();
-    res.add(MetaAdapterFactory.getLanguage(getMainLanguage()));
-    return res;
-  }
-
-@Deprecated(since = "3.3", forRemoval = true)
   //not used in MPS
   //use jetbrains.mps.smodel.language.LanguageAspectSupport.getAspectModels()
+  // [2025] still 2 uses in mps-extensions
+  @Deprecated(since = "3.3", forRemoval = true)
   public static Collection<SModel> getAspectModels(Language l) {
     Set<SModel> result = new HashSet<>();
     for (LanguageAspect aspect : LanguageAspect.values()) {

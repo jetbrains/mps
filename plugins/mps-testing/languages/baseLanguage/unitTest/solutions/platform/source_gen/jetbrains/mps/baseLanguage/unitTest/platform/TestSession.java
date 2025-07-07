@@ -12,9 +12,11 @@ import org.jetbrains.annotations.NotNull;
 public class TestSession {
 
   private final Map<Object, Object> myAccessories;
+  private final Map<String, String> myProperties;
 
-  protected TestSession(Map<Object, Object> accessories) {
+  protected TestSession(Map<Object, Object> accessories, Map<String, String> properties) {
     myAccessories = Map.copyOf(accessories);
+    myProperties = Map.copyOf(properties);
   }
 
   /**
@@ -30,6 +32,18 @@ public class TestSession {
       return Optional.of(accessoryClass.cast(myAccessories.get(accessoryClass)));
     }
     return Optional.empty();
+  }
+
+  /**
+   * Serves to facilitate overriding of system properties for tests that are run with this session.
+   * Instead of calling directly {@code System.getProperty()}, this method should be used, which 
+   * delegates to {@link java.lang.System } for properties that are not defined for this session.
+   */
+  public String getSystemProperty(String key) {
+    if (myProperties.containsKey(key)) {
+      return myProperties.get(key);
+    }
+    return System.getProperty(key);
   }
 
 }

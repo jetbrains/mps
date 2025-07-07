@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.util.net.NetUtils;
 import java.io.IOException;
 
-@GeneratedClass(node = "r:4032b78d-911f-4395-b88c-ccb50cb24300(jetbrains.mps.debugger.java.api.settings)/3432969378036017435", model = "r:4032b78d-911f-4395-b88c-ccb50cb24300(jetbrains.mps.debugger.java.api.settings)")
+@GeneratedClass(nodeId = "3432969378036017435", model = "r:4032b78d-911f-4395-b88c-ccb50cb24300(jetbrains.mps.debugger.java.api.settings)")
 public class LocalConnectionSettings extends DebugConnectionSettings {
   public LocalConnectionSettings(boolean useSockets) {
     super(useSockets, "localhost", 5005, "");

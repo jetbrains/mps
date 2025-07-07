@@ -67,7 +67,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   protected void build() {
     project.getRepository().getModelAccess().executeCommand(() -> {
       // Temporary model for the edition of the default value
-      model = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.forDefaultModule());
+      model = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.nonReloadableModule(project.getRepository()));
       model.addRootNode(parentExpression);
       model.addChangeListener(ParamDefaultValueEditor.this);
       TemporaryModels.getInstance().addMissingImports(model);

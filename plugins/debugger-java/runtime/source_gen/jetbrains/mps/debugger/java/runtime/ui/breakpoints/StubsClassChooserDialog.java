@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant;
 
-@GeneratedClass(node = "r:0bb5e892-3294-41a6-b5db-b1bdf3480f53(jetbrains.mps.debugger.java.runtime.ui.breakpoints)/742486944792820722", model = "r:0bb5e892-3294-41a6-b5db-b1bdf3480f53(jetbrains.mps.debugger.java.runtime.ui.breakpoints)")
+@GeneratedClass(nodeId = "742486944792820722", model = "r:0bb5e892-3294-41a6-b5db-b1bdf3480f53(jetbrains.mps.debugger.java.runtime.ui.breakpoints)")
 public abstract class StubsClassChooserDialog extends DialogWrapper {
   private final ChooseByNamePanel myPanel;
   private String mySelected;

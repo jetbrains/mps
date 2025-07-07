@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
 import jetbrains.mps.smodel.persistence.lines.PropertyLineContent;
 import jetbrains.mps.smodel.persistence.lines.ReferenceLineContent;
 
-@GeneratedClass(node = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)/8837498651724313880", model = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)")
+@GeneratedClass(nodeId = "8837498651724313880", model = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)")
 public class LineContentAccumulator {
   private List<LineContent> myLineToContentMap = ListSequence.fromList(new ArrayList<LineContent>());
   private Deque<SNodeId> myNodeIdStack = DequeSequence.fromDeque(new LinkedList<SNodeId>());

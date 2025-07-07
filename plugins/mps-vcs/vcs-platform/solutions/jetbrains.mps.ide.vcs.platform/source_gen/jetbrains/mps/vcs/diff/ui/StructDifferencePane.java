@@ -35,6 +35,7 @@ import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.diff.DiffBundle;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.diff.tools.util.DiffSplitter;
@@ -49,7 +50,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.StructChangeSetBuilder;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/4664177994952686123", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "4664177994952686123", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public class StructDifferencePane implements PropertyChangeListener {
   private static final String PARAM_SHOW_INSPECTOR = StructDifferencePane.class.getName() + "ShowInspector";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = StructDifferencePane.class.getName() + "InspectorSplitterPosition";
@@ -188,6 +189,11 @@ public class StructDifferencePane implements PropertyChangeListener {
       public void setSelected(AnActionEvent e, boolean b) {
         showInspector(b);
       }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+      }
     });
     myActionGroup.add(new ToggleAction(() -> DiffBundle.message("synchronize.scrolling", new Object[0]), Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
       @Override
@@ -203,6 +209,11 @@ public class StructDifferencePane implements PropertyChangeListener {
       public void update(@NotNull AnActionEvent e) {
         super.update(e);
         enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
+      }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
       }
     });
   }

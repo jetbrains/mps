@@ -8,13 +8,11 @@ import com.intellij.openapi.Disposable;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.workbench.ProjectModelFilter;
-import com.intellij.openapi.startup.StartupActivity;
+import jetbrains.mps.ide.util.MPSProjectActivity;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.MPSCoreComponents;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.Disposer;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -59,13 +57,13 @@ import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)/2810982631457564914", model = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)")
+@GeneratedClass(nodeId = "2810982631457564914", model = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)")
 public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposable {
   private static final Logger LOG = Logger.getLogger(StubModelsFastFindSupport.class);
   private final PersistenceRegistry myRegistry;
   private final ProjectModelFilter myModelFilter;
 
-  public static final class Plug implements StartupActivity.Background {
+  public static final class Plug extends MPSProjectActivity {
 
     @Override
     public void runActivity(@NotNull Project project) {
@@ -73,14 +71,13 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       if (mpsProject == null) {
         return;
       }
-      MPSCoreComponents mpsCore = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
-      StubModelsFastFindSupport ffs = new StubModelsFastFindSupport(mpsProject, mpsCore);
+      StubModelsFastFindSupport ffs = new StubModelsFastFindSupport(mpsProject);
       Disposer.register(project, ffs);
     }
   }
 
-  private StubModelsFastFindSupport(MPSProject mpsProject, MPSCoreComponents mpsCore) {
-    myRegistry = mpsCore.getPlatform().findComponent(PersistenceRegistry.class);
+  private StubModelsFastFindSupport(MPSProject mpsProject) {
+    myRegistry = mpsProject.getComponent(PersistenceRegistry.class);
     myModelFilter = new ProjectModelFilter(mpsProject);
     myRegistry.addFindUsagesParticipant(this);
   }

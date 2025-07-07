@@ -55,12 +55,13 @@ import com.intellij.openapi.ide.CopyPasteManager;
 import com.intellij.util.ui.TextTransferable;
 import jetbrains.mps.workbench.action.BaseGroup;
 import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.idea.ActionsBundle;
 import com.intellij.openapi.actionSystem.IdeActions;
 import git4idea.i18n.GitBundle;
 import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/309173295241373953", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "309173295241373953", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public final class AnnotationColumn extends AbstractLeftColumn {
 
   private final EditorAnnotation myEditorAnnotation;
@@ -435,6 +436,11 @@ public final class AnnotationColumn extends AbstractLeftColumn {
         AnnotationOptions.getInstance().showTooltips(show);
         myEditorAnnotation.showTooltips(show);
       }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+      }
     };
   }
 
@@ -450,6 +456,11 @@ public final class AnnotationColumn extends AbstractLeftColumn {
           return;
         }
         AnnotationOptions.getInstance().highlightAllCells();
+      }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
       }
     };
   }
@@ -467,6 +478,11 @@ public final class AnnotationColumn extends AbstractLeftColumn {
         }
         AnnotationOptions.getInstance().highlightCommitCells();
       }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+      }
     };
   }
 
@@ -483,6 +499,11 @@ public final class AnnotationColumn extends AbstractLeftColumn {
         }
         AnnotationOptions.getInstance().doNotHighlightCells();
       }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+      }
     };
   }
 
@@ -496,10 +517,16 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   }
 
   private AnAction createShowDiffAction(final CommitsGraphNode commitsGraphNode) {
+    // XXX why AnAction here and BaseAction elsewhere?
     return new AnAction(ActionsBundle.actionText(IdeActions.ACTION_SHOW_DIFF_COMMON), "Show diff", AllIcons.Actions.Diff) {
       @Override
       public void actionPerformed(@NotNull AnActionEvent p1) {
         myEditorAnnotation.showDiff(commitsGraphNode);
+      }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
       }
     };
   }

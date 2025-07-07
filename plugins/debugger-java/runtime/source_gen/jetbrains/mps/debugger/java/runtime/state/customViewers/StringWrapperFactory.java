@@ -15,7 +15,7 @@ import jetbrains.mps.debug.api.programState.IWatchable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)/7129857096177569321", model = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)")
+@GeneratedClass(nodeId = "7129857096177569321", model = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)")
 public class StringWrapperFactory extends ValueWrapperFactory {
   @Override
   public boolean canWrapValue(@NotNull IValueProxy value) {

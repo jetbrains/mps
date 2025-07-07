@@ -11,7 +11,7 @@
       <node id="3148679935644987401" at="24,76,25,36" concept="1" />
       <node id="3148679935644987401" at="30,52,31,19" concept="4" />
       <node id="3148679935644987401" at="35,51,36,72" concept="1" />
-      <node id="3148679935644987422" at="36,72,37,176" concept="1" />
+      <node id="3148679935644987422" at="36,72,37,167" concept="1" />
       <node id="3148679935644987401" at="16,0,18,0" concept="3" trace="ourParametersCacheExtension" />
       <node id="3148679935644987401" at="19,0,22,0" concept="0" trace="InvokeParameterizedIntentionWithNode_Test#()V" />
       <node id="3148679935644987401" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -20,7 +20,7 @@
       <scope id="3148679935644987401" at="19,54,20,60" />
       <scope id="3148679935644987401" at="24,76,25,36" />
       <scope id="3148679935644987401" at="30,52,31,19" />
-      <scope id="3148679935644987401" at="35,51,37,176" />
+      <scope id="3148679935644987401" at="35,51,37,167" />
       <scope id="3148679935644987401" at="19,0,22,0" />
       <scope id="3148679935644987401" at="30,0,33,0">
         <var name="owner" id="3148679935644987401" />

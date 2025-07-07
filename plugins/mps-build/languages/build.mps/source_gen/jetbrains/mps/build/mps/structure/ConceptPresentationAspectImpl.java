@@ -338,7 +338,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_BuildMps_IdeaPlugin == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a33b0tc);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_BuildMps_IdeaPlugin = cpb.create();
         }
         return props_BuildMps_IdeaPlugin;
@@ -395,7 +395,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_BuildMps_Language;
       case LanguageConceptSwitch.BuildMps_Module:
         if (props_BuildMps_Module == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL);
+          cpb.deprecateProperty(0x14d3fb6fb84ac614L, "doNotCompile");
           props_BuildMps_Module = cpb.create();
         }
         return props_BuildMps_Module;
@@ -458,7 +459,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_BuildMps_ModuleDoc == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("documentation files");
-          cpb.rawPresentation("BuildMps_ModuleDoc");
+          cpb.rawPresentation("documentation");
           props_BuildMps_ModuleDoc = cpb.create();
         }
         return props_BuildMps_ModuleDoc;
@@ -488,7 +489,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_BuildMps_ModuleResources == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("auxiliary resource files to deploy with a module");
-          cpb.rawPresentation("BuildMps_ModuleResources");
+          cpb.rawPresentation("resources");
           props_BuildMps_ModuleResources = cpb.create();
         }
         return props_BuildMps_ModuleResources;

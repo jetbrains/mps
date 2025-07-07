@@ -16,7 +16,7 @@ import javax.swing.table.JTableHeader;
 import java.awt.Component;
 import javax.swing.table.TableCellRenderer;
 
-@GeneratedClass(node = "r:2645cf7b-becf-4fd8-946c-a69d83379844(jetbrains.mps.workbench.dialogs.project.components.parts.diffrowtable)/1560298786499496072", model = "r:2645cf7b-becf-4fd8-946c-a69d83379844(jetbrains.mps.workbench.dialogs.project.components.parts.diffrowtable)")
+@GeneratedClass(nodeId = "1560298786499496072", model = "r:2645cf7b-becf-4fd8-946c-a69d83379844(jetbrains.mps.workbench.dialogs.project.components.parts.diffrowtable)")
 /*package*/ class BasicDiffRowTableUI extends BasicTableUI {
   public BasicDiffRowTableUI() {
     super();

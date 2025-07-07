@@ -15,7 +15,7 @@ import java.awt.Color;
 import jetbrains.mps.errors.MessageStatus;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/739457190729175664", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
+@GeneratedClass(nodeId = "739457190729175664", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class ChangeGroupMessages {
   public static final EditorMessageOwner OWNER = new EditorMessageOwner() {};
   private final ChangeGroupLayout myLayout;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,26 +19,23 @@ import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.intellij.util.ui.UIUtil;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModel.Problem;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
 import javax.swing.event.HyperlinkEvent;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
- * Extracted from {@link ModelStorageConflictsListener}.
+ * Extracted from {@code ModelStorageConflictsListener}.
+ * Perhaps, have to become SRepository-wide parameter rather than per-model listener
  *
  * @author apyshkin
  * @since 02/11/2020
@@ -51,7 +48,7 @@ public final class ModelStorageProblemsListener extends SRepositoryContentAdapte
   private volatile SModelReference myLastModel;
 
 
-  /*package*/ ModelStorageProblemsListener(@NotNull MPSProject project) {
+  public ModelStorageProblemsListener(@NotNull MPSProject project) {
     myProject = project;
   }
 
@@ -67,32 +64,19 @@ public final class ModelStorageProblemsListener extends SRepositoryContentAdapte
 
   @Override
   public void problemsDetected(SModel model, Iterable<SModel.Problem> problems) {
-    if (Sequence.fromIterable(problems).any(new IWhereFilter<>() {
-      public boolean accept(SModel.Problem it) {
-        return it.isError();
-      }
-    })) {
-      final boolean isSave = Sequence.fromIterable(problems).any(new IWhereFilter<>() {
-        public boolean accept(SModel.Problem it) {
-          return it.isError() && it.getKind() == SModel.Problem.Kind.Save;
+    if (StreamSupport.stream(problems.spliterator(), false).anyMatch(SModel.Problem::isError)) {
+      final boolean isSave = StreamSupport.stream(problems.spliterator(), false).anyMatch(it -> it.isError() && it.getKind() == SModel.Problem.Kind.Save);
+      final ArrayList<SNodeReference> errLinks = new ArrayList<>();
+      String problemText = StreamSupport.stream(problems.spliterator(), false).filter(SModel.Problem::isError).limit(3).map(it -> {
+        String msg;
+        if (it.getAnchorNode() != null) {
+          msg = String.format("error: (<a href=\"%d\">%s</a>)", errLinks.size(), it.getText());
+          errLinks.add(it.getAnchorNode());
+        } else {
+          msg = String.format("error: %s)", it.getText());
         }
-      });
-      final Map<String, SNodeReference> errMap = new HashMap<>();
-      final Wrappers._int index = new Wrappers._int(0);
-      String problemText = IterableUtils.join(Sequence.fromIterable(problems).where(new IWhereFilter<>() {
-        public boolean accept(SModel.Problem it) {
-          return it.isError();
-        }
-      }).select(new ISelector<Problem, String>() {
-        public String select(Problem it) {
-          String link = "";
-          if (it.getAnchorNode() != null) {
-            link = " (<a href=\"" + index.value + "\">view node</a>)";
-            errMap.put(Integer.toString(index.value++), it.getAnchorNode());
-          }
-          return "error: " + it.getText() + link;
-        }
-      }).take(3), "<br/>");
+        return msg;
+      }).collect(Collectors.joining("<br/>"));
       final String message = String.format("<p>Cannot %s model %s.<br/>%s</p>", (isSave ? "save" : "load"), model.getName(), problemText);
       UIUtil.invokeLaterIfNeeded(() -> {
         if (myLastNotification != null) {
@@ -103,11 +87,14 @@ public final class ModelStorageProblemsListener extends SRepositoryContentAdapte
             return;
           }
 
-          SNodeReference ref1 = errMap.get(e.getDescription());
-          assert ref1 != null;
-          new EditorNavigator(myProject).shallFocus(true)
-                                        .shallSelect(true)
-                                        .open(ref1);
+          try {
+            SNodeReference ref1 = errLinks.get(Integer.parseInt(e.getDescription()));
+            new EditorNavigator(myProject).shallFocus(true)
+                                          .shallSelect(true)
+                                          .open(ref1);
+          } catch (Exception ex) {
+            Logger.getLogger(ModelStorageProblemsListener.class).info("Can't navigate link " + e.getDescription(), ex);
+          }
         });
         Notifications.Bus.notify(myLastNotification);
       });

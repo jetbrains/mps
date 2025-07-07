@@ -23,7 +23,7 @@ import jetbrains.mps.ide.editor.actions.FindDeclarationUtils;
 import com.intellij.openapi.ui.popup.JBPopup;
 import java.util.Collections;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/8348041782507834008", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "8348041782507834008", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ShowDefinitionInMenu_Action extends BaseAction {
   private static final Icon ICON = null;
 

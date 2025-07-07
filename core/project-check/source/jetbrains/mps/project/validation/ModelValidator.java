@@ -169,7 +169,7 @@ public final class ModelValidator {
     }
 
     if (mySkipUnlessLoaded && !myModel.isLoaded()) {
-      result.accept(new ModelValidationProblem(model, MessageStatus.OK, "Model is not loaded; no validity check"));
+//      result.accept(new ModelValidationProblem(model, MessageStatus.OK, "Model is not loaded; no validity check"));
       return;
     }
 
@@ -245,11 +245,20 @@ public final class ModelValidator {
               devkitAssociatedPlan = new Pair<>((DevKit) devkitModule, planNode);
             } else {
               SNode otherPlan = devkitAssociatedPlan.o2;
-              if (GenPlanTranslator.getForkOwner(otherPlan) != planNode &&
-                  GenPlanTranslator.getForkOwner(planNode) != otherPlan)
+              String otherGenTarget = GenPlanTranslator.getForkGenerationTarget(otherPlan);
+              String getTarget = GenPlanTranslator.getForkGenerationTarget(planNode);
+              if (getTarget == null && otherGenTarget == null)
               {
                   String m = String.format("Both devkit %s and %s supply generation plan, ", devkitModule.getModuleName(), devkitAssociatedPlan.o1.getModuleName());
                   result.accept(new ModelValidationProblem(model, MessageStatus.ERROR, m));
+              }
+              else if (getTarget != null && otherGenTarget != null){
+                String m = String.format("Both devkit %s and %s supply a fork of a generation plan, ", devkitModule.getModuleName(), devkitAssociatedPlan.o1.getModuleName());
+                result.accept(new ModelValidationProblem(model, MessageStatus.ERROR, m));
+              }
+              else if (otherGenTarget != null) {
+                // ensure only one plan can have generationTarget == null (that is, not a fork)
+                devkitAssociatedPlan = new Pair<>((DevKit)devkitModule, planNode);
               }
             }
           }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
@@ -36,6 +36,7 @@ import jetbrains.mps.ide.actions.MPSActionPlaces;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.roots.editors.ModelRootEntryContainer.ContentEntryEditorListener;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
@@ -48,6 +49,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
 
@@ -98,13 +100,16 @@ public class ModelRootContentEntriesEditor implements Disposable {
   }
 
   private static Iterable<ModelRoot> modelRootDetachedInstances(@NotNull AbstractModule module) {
+    // XXX I wonder if we can go with an empty/custom MPC here. Using the one for module as it mimics present behavior, although perhaps could come up with
+    //     a custom MPC not to involve SModule/AbstractModule here.
+    ModulePersistenceContext mpc = PersistenceContextImpl.forModule(module);
     ArrayList<ModelRoot> rv = new ArrayList<>();
     for (ModelRoot mr : module.getModelRoots()) {
       MementoImpl mm = new MementoImpl();
-      mr.save(mm);
+      mr.save(mm, mpc);
       final ModelRoot detachedRoot = PersistenceFacade.getInstance().getModelRootFactory(mr.getType()).create();
       rv.add(detachedRoot);
-      detachedRoot.load(mm);
+      detachedRoot.load(mm, mpc);
       if (detachedRoot instanceof ModelRootBase) {
         // just for the sake of getModule() later from some file chooser dialog.
         ((ModelRootBase) detachedRoot).setModule(module);
@@ -287,9 +292,10 @@ public class ModelRootContentEntriesEditor implements Disposable {
 
   private List<ModelRootDescriptor> getDescriptors() {
     List<ModelRootDescriptor> descriptors = new LinkedList<>();
+    ModulePersistenceContext mpc = myModule != null ? PersistenceContextImpl.forModule(myModule) : PersistenceContextImpl.empty();
     for (ModelRootEntryContainer container : myModelRootEntries) {
       Memento memento = new MementoImpl();
-      container.getModelRoot().save(memento);
+      container.getModelRoot().save(memento, mpc);
       descriptors.add(new ModelRootDescriptor(container.getModelRoot().getType(), memento));
     }
     return descriptors;

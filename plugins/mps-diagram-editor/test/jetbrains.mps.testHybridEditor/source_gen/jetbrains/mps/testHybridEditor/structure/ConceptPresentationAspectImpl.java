@@ -51,7 +51,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_Connector == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a3b0m);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_Connector = cpb.create();
         }
         return props_Connector;
@@ -66,7 +66,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ConnectorInstance == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("ConnectorInstance");
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a5b0m);
+          cpb.icon(IconContainer.RESOURCE_1);
           props_ConnectorInstance = cpb.create();
         }
         return props_ConnectorInstance;
@@ -88,7 +88,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_MetaBlock == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a8b0m);
+          cpb.icon(IconContainer.RESOURCE_2);
           props_MetaBlock = cpb.create();
         }
         return props_MetaBlock;

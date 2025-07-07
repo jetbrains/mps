@@ -60,6 +60,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.HyperlinkEvent;
 import java.awt.BorderLayout;
 import java.awt.Dialog;
@@ -99,7 +100,7 @@ public class BlameDialog extends DialogWrapper {
   private List<File> myFilesToAttach = new ArrayList<>();
   private String mySubsystem = null;
   private PluginDescriptor myPluginDescriptor;
-  private String myToken = null;
+  private volatile String myToken;
 
   public BlameDialog(Project project, Dialog dialog) {
     super(dialog, true);
@@ -299,8 +300,11 @@ public class BlameDialog extends DialogWrapper {
       myException.setText(builder.toString());
     }
 
-    myToken = ThreadUtils.computeInBGTOrNull(() -> PasswordSafe.getInstance().getPassword(getCredentialAttributes()));
-    updateCredentialsPane();
+    myCredentialsLabel.setHtmlText(IdeBundle.message("blame.dialog.submit.error.loading"));
+    ThreadUtils.submitToBGT(() -> {
+      myToken = PasswordSafe.getInstance().getPassword(getCredentialAttributes());
+      SwingUtilities.invokeLater(BlameDialog.this::updateCredentialsPane);
+    });
 
     Dimension size = DimensionService.getInstance().getSize(getDimensionServiceKey());
     if (size == null) {

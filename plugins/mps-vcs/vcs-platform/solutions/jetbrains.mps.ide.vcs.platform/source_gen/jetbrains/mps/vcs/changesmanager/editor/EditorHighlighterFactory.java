@@ -11,9 +11,10 @@ import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.nodeEditor.NodeEditorComponent;
 import jetbrains.mps.nodeEditor.InspectorTool;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
 
-@GeneratedClass(node = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/6402272430682179765", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
+@GeneratedClass(nodeId = "6402272430682179765", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
 public class EditorHighlighterFactory {
   private final Map<EditorComponent, EditorHighlighter> myEditorsHighlighters = MapSequence.fromMap(new HashMap<EditorComponent, EditorHighlighter>());
   private final Project myProject;
@@ -27,7 +28,7 @@ public class EditorHighlighterFactory {
   }
 
   private void addHighighlighterIfNeeded(@NotNull jetbrains.mps.nodeEditor.EditorComponent editorComponent) {
-    if (editorComponent instanceof NodeEditorComponent || editorComponent == myProject.getComponent(InspectorTool.class).getInspector()) {
+    if (editorComponent instanceof NodeEditorComponent || editorComponent == InspectorTool.getInstance(ProjectHelper.fromIdeaProject(myProject)).getInspector()) {
       MapSequence.fromMap(myEditorsHighlighters).put(editorComponent, new EditorHighlighter(myProject, editorComponent));
     }
   }

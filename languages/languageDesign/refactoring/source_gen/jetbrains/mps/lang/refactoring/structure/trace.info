@@ -17,7 +17,7 @@
       <unit at="12,0,410,0" name="jetbrains.mps.lang.refactoring.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.refactoring.structure.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.refactoring.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,122,0" name="jetbrains.mps.lang.refactoring.structure.LanguageConceptSwitch" />
@@ -1061,8 +1061,8 @@
       <node id="616550569928923871" at="317,137,318,80" concept="1" />
       <node id="6895093993902236229" at="318,80,319,35" concept="1" />
       <node id="6895093993902236229" at="319,35,320,32" concept="1" />
-      <node id="6895093993902236229" at="320,32,321,57" concept="1" />
-      <node id="6895093993902236229" at="321,57,322,43" concept="1" />
+      <node id="6895093993902236229" at="320,32,321,45" concept="1" />
+      <node id="6895093993902236229" at="321,45,322,43" concept="1" />
       <node id="6895093993902236229" at="323,9,324,33" concept="6" />
       <node id="6354210107034397076" at="408,0,409,0" concept="8" trace="HELP_URL" />
       <node id="6895093993902236229" at="315,45,323,9" concept="3" />

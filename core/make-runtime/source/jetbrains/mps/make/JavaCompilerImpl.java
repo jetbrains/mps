@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,6 +61,14 @@ import java.util.stream.StreamSupport;
  * @since 2021.1
  */
 final class JavaCompilerImpl implements AutoCloseable {
+  private final String CALCULATING_DEPS_MSG = "Calculating Classpath";
+  private final String COMPILING_JAVA_MSG = "Compiling Java";
+  private final String PREPARING_TO_COMPILE_MSG = "Preparing";
+  private final String COPYING_RESOURCES_MSG = "Copying Resources";
+  private final String WRITING_CLASSES_MSG = "Writing Classes";
+  private final String MODULES_CLASSPATH_STR = "Modules: %s;\nClasspath: %s\n";
+  private final String COMPILATION_PROBLEMS = "Compilation problems";
+
   // FIXME take value from JavaCompilerOptions
   private static final int MAX_ERRORS = 20; // do I care to report more?
 
@@ -125,7 +133,7 @@ final class JavaCompilerImpl implements AutoCloseable {
       return null;
     }
     tracer.start("", 3 + (count > 1 ? count * 3 : count * 2)); // analyze, copyRes, classpath, 2 per module (javac+instrument) +(count) for bulk
-    tracer.push(InternalJavaCompiler.PREPARING_TO_COMPILE_MSG);
+    tracer.push(PREPARING_TO_COMPILE_MSG);
     // FTR, original code in InternalJavaCompiler analyzed dirty modules only
     //   although once/if we get rid of dirty check, we likely need to analyze all modules here
     ModuleAnalyzerResult analysisResult = modules.analyze();
@@ -136,7 +144,7 @@ final class JavaCompilerImpl implements AutoCloseable {
 
     analysisResult.filesToDelete.forEach(FileUtil::delete); // removing all stale files
     tracer.pop(1);
-    tracer.push(InternalJavaCompiler.COPYING_RESOURCES_MSG);
+    tracer.push(COPYING_RESOURCES_MSG);
     // XXX original InternalJavaCompiler copied resources of all modules, I feel it's not right.
     modules.getDirtyModules().forEach(this::copyResources);
     tracer.pop(1);
@@ -156,11 +164,11 @@ final class JavaCompilerImpl implements AutoCloseable {
         // XXX original code in InternalJavaCompiler didn't invoke reportModulesWithRemovalsAreNotChanged() in this case, is it correct?
         return MPSCompilationResult.noJavaCompiledCompilationResult();
       }
-      tracer.push(InternalJavaCompiler.CALCULATING_DEPS_MSG);
+      tracer.push(CALCULATING_DEPS_MSG);
       final List<Path> classpath = List.of(new LinkedHashSet<>(modules.getCompileClasspath()).toArray(new Path[0]));
       tracer.pop(1);
       //
-      tracer.push(InternalJavaCompiler.COMPILING_JAVA_MSG);
+      tracer.push(COMPILING_JAVA_MSG);
       tracer.getSender().debug(String.format("Compiler in use: %s", myJavaCompiler.getClass().getSimpleName()));
       configureClassPath(classpath);
 
@@ -296,7 +304,7 @@ final class JavaCompilerImpl implements AutoCloseable {
         continue;
       }
       if (errorRecord.errors++ == 0) {
-        sender.error(InternalJavaCompiler.COMPILATION_PROBLEMS);
+        sender.error(COMPILATION_PROBLEMS);
       }
       if (d.getSource() == null) {
         // no idea what we can do w/o source file
@@ -313,14 +321,14 @@ final class JavaCompilerImpl implements AutoCloseable {
     if (errorRecord.errors > 0) {
       final Iterable<? extends File> cp = myFileManager.getLocation(StandardLocation.CLASS_PATH);
       final List<String> cpStrings = StreamSupport.stream(cp.spliterator(), false).map(File::getPath).collect(Collectors.toList());
-      sender.info(String.format(InternalJavaCompiler.MODULES_CLASSPATH_STR, compiledModuleName, cpStrings));
+      sender.info(String.format(MODULES_CLASSPATH_STR, compiledModuleName, cpStrings));
     }
     return errorRecord;
   }
 
   private void instrumentClasses(Collection<Path> classPath, Iterable<JavaFileObject> classFO, CompositeTracer tracer) {
     try {
-      tracer.start(InternalJavaCompiler.WRITING_CLASSES_MSG, 1);
+      tracer.start(WRITING_CLASSES_MSG, 1);
       final ClassFileWriter cfw = new ClassFileWriter(classPath, myJavaHome, tracer.getSender());
       for (JavaFileObject fo : classFO) {
         cfw.instrumentNotNull(myFileManager.asPath(fo).toFile());
@@ -425,7 +433,8 @@ final class JavaCompilerImpl implements AutoCloseable {
   private static void reportModulesWithRemovalsAreNotChanged(Collection<BaseModuleContainer.JavaModule> modulesWithRemovals, Collection<BaseModuleContainer.JavaModule> changedModules, MessageSender ms) {
     for (BaseModuleContainer.JavaModule module : modulesWithRemovals) {
       if (!changedModules.contains(module)) {
-        ms.warn(String.format(InternalJavaCompiler.MODULE_WITH_REMOVALS_WAS_NOT_CHANGED, module.name()), module.moduleReference());
+        final String MODULE_WITH_REMOVALS_WAS_NOT_CHANGED = "Module With Removals Is Not In The Changed Modules: %s";
+        ms.warn(String.format(MODULE_WITH_REMOVALS_WAS_NOT_CHANGED, module.name()), module.moduleReference());
       }
     }
   }

@@ -31,7 +31,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBeforeTestsMethod = createDescriptorForBeforeTestsMethod();
   /*package*/ final ConceptDescriptor myConceptBootstrapActionReference = createDescriptorForBootstrapActionReference();
   /*package*/ final ConceptDescriptor myConceptCheckDataFlowOperation = createDescriptorForCheckDataFlowOperation();
-  /*package*/ final ConceptDescriptor myConceptCheckNodeDataflow = createDescriptorForCheckNodeDataflow();
   /*package*/ final ConceptDescriptor myConceptCheckNodeForErrorMessagesOperation = createDescriptorForCheckNodeForErrorMessagesOperation();
   /*package*/ final ConceptDescriptor myConceptCheckNodeForErrors = createDescriptorForCheckNodeForErrors();
   /*package*/ final ConceptDescriptor myConceptDragMouseStatement = createDescriptorForDragMouseStatement();
@@ -68,7 +67,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptNodeExpectedTypeCheckOperation = createDescriptorForNodeExpectedTypeCheckOperation();
   /*package*/ final ConceptDescriptor myConceptNodeInfoCheckOperation = createDescriptorForNodeInfoCheckOperation();
   /*package*/ final ConceptDescriptor myConceptNodeOperationsContainer = createDescriptorForNodeOperationsContainer();
-  /*package*/ final ConceptDescriptor myConceptNodeReachable = createDescriptorForNodeReachable();
   /*package*/ final ConceptDescriptor myConceptNodeRuleCheckOperation = createDescriptorForNodeRuleCheckOperation();
   /*package*/ final ConceptDescriptor myConceptNodeTypeCheckOperation = createDescriptorForNodeTypeCheckOperation();
   /*package*/ final ConceptDescriptor myConceptNodeTypeSetCheckOperation = createDescriptorForNodeTypeSetCheckOperation();
@@ -77,7 +75,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptNodeTypeSystemWarningCheckOperation = createDescriptorForNodeTypeSystemWarningCheckOperation();
   /*package*/ final ConceptDescriptor myConceptNodeUnknownErrorCheckOperation = createDescriptorForNodeUnknownErrorCheckOperation();
   /*package*/ final ConceptDescriptor myConceptNodeUnknownWarningCheckOperation = createDescriptorForNodeUnknownWarningCheckOperation();
-  /*package*/ final ConceptDescriptor myConceptNodeUnreachable = createDescriptorForNodeUnreachable();
   /*package*/ final ConceptDescriptor myConceptNodeWarningCheckOperation = createDescriptorForNodeWarningCheckOperation();
   /*package*/ final ConceptDescriptor myConceptNodesTestCase = createDescriptorForNodesTestCase();
   /*package*/ final ConceptDescriptor myConceptNodesTestMethod = createDescriptorForNodesTestMethod();
@@ -100,8 +97,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptTypesystemEquationReference = createDescriptorForTypesystemEquationReference();
   /*package*/ final ConceptDescriptor myConceptUnknownRuleReference = createDescriptorForUnknownRuleReference();
   /*package*/ final ConceptDescriptor myConceptUntypedExpression = createDescriptorForUntypedExpression();
-  /*package*/ final ConceptDescriptor myConceptVariableAlive = createDescriptorForVariableAlive();
-  /*package*/ final ConceptDescriptor myConceptVariableInitialized = createDescriptorForVariableInitialized();
   /*package*/ final ConceptDescriptor myConceptWarningStatementReference = createDescriptorForWarningStatementReference();
   /*package*/ final EnumerationDescriptor myEnumerationExecutionModelAccessMode = new EnumerationDescriptor_ExecutionModelAccessMode();
   /*package*/ final EnumerationDescriptor myEnumerationLevel = new EnumerationDescriptor_Level();
@@ -126,7 +121,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractNodeAssert, myConceptAbstractNodeErrorCheckOperation, myConceptAbstractNodeRuleCheckOperation, myConceptAbstractNodeWarningCheckOperation, myConceptAbstractTestNodeAnnotation, myConceptActionReference, myConceptAfterTestsMethod, myConceptAnonymousCellAnnotation, myConceptApplyQuickFix, myConceptAssertMatch, myConceptBeforeTestsMethod, myConceptBootstrapActionReference, myConceptCheckDataFlowOperation, myConceptCheckNodeDataflow, myConceptCheckNodeForErrorMessagesOperation, myConceptCheckNodeForErrors, myConceptDragMouseStatement, myConceptEditorComponentExpression, myConceptEditorOperation, myConceptEditorTestCase, myConceptExpectedMessageContainer, myConceptExpressionContainer, myConceptICheckForExpectedRule, myConceptINodesTestMethod, myConceptIReferenceAttachable, myConceptIRuleReference, myConceptITestAnnotationsContainer, myConceptIgnoreMigrationDataOption, myConceptInfoStatementReference, myConceptInvokeActionStatement, myConceptInvokeIntentionStatement, myConceptInvokeSurroundWithIntentionStatement, myConceptIsActionApplicableExpression, myConceptIsIntentionApplicableExpression, myConceptLogEvent, myConceptMPSActionReference, myConceptMigrationReference, myConceptMigrationTestCase, myConceptMigrationTestOption, myConceptMockAnnotation, myConceptMockScopeProvider, myConceptModelExpression, myConceptNamedNodeReference, myConceptNodeCheckOperation, myConceptNodeConstraintsErrorCheckOperation, myConceptNodeConstraintsWarningCheckOperation, myConceptNodeErrorCheckOperation, myConceptNodeExpectedTypeCheckOperation, myConceptNodeInfoCheckOperation, myConceptNodeOperationsContainer, myConceptNodeReachable, myConceptNodeRuleCheckOperation, myConceptNodeTypeCheckOperation, myConceptNodeTypeSetCheckOperation, myConceptNodeTypeSystemErrorCheckOperation, myConceptNodeTypeSystemRuleCheckOperation, myConceptNodeTypeSystemWarningCheckOperation, myConceptNodeUnknownErrorCheckOperation, myConceptNodeUnknownWarningCheckOperation, myConceptNodeUnreachable, myConceptNodeWarningCheckOperation, myConceptNodesTestCase, myConceptNodesTestMethod, myConceptPressKeyStatement, myConceptPressMouseStatement, myConceptProjectExpression, myConceptReportErrorStatementReference, myConceptScopeEntry, myConceptScopesExpectedNode, myConceptScopesTest, myConceptSimpleNodeTest, myConceptStableIdOption, myConceptSwitchToInspector, myConceptTestInfo, myConceptTestNode, myConceptTestNodeAnnotation, myConceptTestNodeReference, myConceptTestProjectAware, myConceptTypeKeyStatement, myConceptTypesystemEquationReference, myConceptUnknownRuleReference, myConceptUntypedExpression, myConceptVariableAlive, myConceptVariableInitialized, myConceptWarningStatementReference);
+    return Arrays.asList(myConceptAbstractNodeAssert, myConceptAbstractNodeErrorCheckOperation, myConceptAbstractNodeRuleCheckOperation, myConceptAbstractNodeWarningCheckOperation, myConceptAbstractTestNodeAnnotation, myConceptActionReference, myConceptAfterTestsMethod, myConceptAnonymousCellAnnotation, myConceptApplyQuickFix, myConceptAssertMatch, myConceptBeforeTestsMethod, myConceptBootstrapActionReference, myConceptCheckDataFlowOperation, myConceptCheckNodeForErrorMessagesOperation, myConceptCheckNodeForErrors, myConceptDragMouseStatement, myConceptEditorComponentExpression, myConceptEditorOperation, myConceptEditorTestCase, myConceptExpectedMessageContainer, myConceptExpressionContainer, myConceptICheckForExpectedRule, myConceptINodesTestMethod, myConceptIReferenceAttachable, myConceptIRuleReference, myConceptITestAnnotationsContainer, myConceptIgnoreMigrationDataOption, myConceptInfoStatementReference, myConceptInvokeActionStatement, myConceptInvokeIntentionStatement, myConceptInvokeSurroundWithIntentionStatement, myConceptIsActionApplicableExpression, myConceptIsIntentionApplicableExpression, myConceptLogEvent, myConceptMPSActionReference, myConceptMigrationReference, myConceptMigrationTestCase, myConceptMigrationTestOption, myConceptMockAnnotation, myConceptMockScopeProvider, myConceptModelExpression, myConceptNamedNodeReference, myConceptNodeCheckOperation, myConceptNodeConstraintsErrorCheckOperation, myConceptNodeConstraintsWarningCheckOperation, myConceptNodeErrorCheckOperation, myConceptNodeExpectedTypeCheckOperation, myConceptNodeInfoCheckOperation, myConceptNodeOperationsContainer, myConceptNodeRuleCheckOperation, myConceptNodeTypeCheckOperation, myConceptNodeTypeSetCheckOperation, myConceptNodeTypeSystemErrorCheckOperation, myConceptNodeTypeSystemRuleCheckOperation, myConceptNodeTypeSystemWarningCheckOperation, myConceptNodeUnknownErrorCheckOperation, myConceptNodeUnknownWarningCheckOperation, myConceptNodeWarningCheckOperation, myConceptNodesTestCase, myConceptNodesTestMethod, myConceptPressKeyStatement, myConceptPressMouseStatement, myConceptProjectExpression, myConceptReportErrorStatementReference, myConceptScopeEntry, myConceptScopesExpectedNode, myConceptScopesTest, myConceptSimpleNodeTest, myConceptStableIdOption, myConceptSwitchToInspector, myConceptTestInfo, myConceptTestNode, myConceptTestNodeAnnotation, myConceptTestNodeReference, myConceptTestProjectAware, myConceptTypeKeyStatement, myConceptTypesystemEquationReference, myConceptUnknownRuleReference, myConceptUntypedExpression, myConceptWarningStatementReference);
   }
 
   @Override
@@ -159,8 +154,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptBootstrapActionReference;
       case LanguageConceptSwitch.CheckDataFlowOperation:
         return myConceptCheckDataFlowOperation;
-      case LanguageConceptSwitch.CheckNodeDataflow:
-        return myConceptCheckNodeDataflow;
       case LanguageConceptSwitch.CheckNodeForErrorMessagesOperation:
         return myConceptCheckNodeForErrorMessagesOperation;
       case LanguageConceptSwitch.CheckNodeForErrors:
@@ -233,8 +226,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptNodeInfoCheckOperation;
       case LanguageConceptSwitch.NodeOperationsContainer:
         return myConceptNodeOperationsContainer;
-      case LanguageConceptSwitch.NodeReachable:
-        return myConceptNodeReachable;
       case LanguageConceptSwitch.NodeRuleCheckOperation:
         return myConceptNodeRuleCheckOperation;
       case LanguageConceptSwitch.NodeTypeCheckOperation:
@@ -251,8 +242,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptNodeUnknownErrorCheckOperation;
       case LanguageConceptSwitch.NodeUnknownWarningCheckOperation:
         return myConceptNodeUnknownWarningCheckOperation;
-      case LanguageConceptSwitch.NodeUnreachable:
-        return myConceptNodeUnreachable;
       case LanguageConceptSwitch.NodeWarningCheckOperation:
         return myConceptNodeWarningCheckOperation;
       case LanguageConceptSwitch.NodesTestCase:
@@ -297,10 +286,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptUnknownRuleReference;
       case LanguageConceptSwitch.UntypedExpression:
         return myConceptUntypedExpression;
-      case LanguageConceptSwitch.VariableAlive:
-        return myConceptVariableAlive;
-      case LanguageConceptSwitch.VariableInitialized:
-        return myConceptVariableInitialized;
       case LanguageConceptSwitch.WarningStatementReference:
         return myConceptWarningStatementReference;
       default:
@@ -460,17 +445,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.alias("for dataflow messages");
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForCheckNodeDataflow() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.test", "CheckNodeDataflow", 0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b743c0e8cL);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.test.structure.AbstractNodeAssert
-    b.super_(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11ada7b9a44L);
-    b.origin("r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/1217425837708");
-    b.version(3);
-    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
-    b.alias("check node dataflow");
-    return b.create();
-  }
   private static ConceptDescriptor createDescriptorForCheckNodeForErrorMessagesOperation() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.test", "CheckNodeForErrorMessagesOperation", 0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07d3d54aL);
     b.class_(false, false, false);
@@ -545,8 +519,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("description", 0x1a226282e4830468L).type(PrimitiveTypeId.STRING).origin("1883175908513350760").done();
     b.aggregate("testNodeBefore", 0x2b9f5f5eae643562L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L).optional(true).ordered(true).multiple(false).origin("3143335925185262946").done();
     b.aggregate("testNodeResult", 0x2b9f5f5eae643585L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L).optional(true).ordered(true).multiple(false).origin("3143335925185262981").done();
-    b.aggregate("nodeToEdit", 0x11e314b78e4L).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL).optional(true).ordered(true).multiple(false).origin("1229187676388").done();
-    b.aggregate("result", 0x11e314bf3d3L).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL).optional(true).ordered(true).multiple(false).origin("1229187707859").done();
     b.aggregate("code", 0x11e314cad13L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(true).ordered(true).multiple(false).origin("1229187755283").done();
     b.aggregate("logEvents", 0x486f8079df2fd868L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x486f8079df2fd630L).optional(true).ordered(true).multiple(true).origin("5219531754069547112").done();
     b.kind(ConceptKind.IMPLEMENTATION, StaticScope.GLOBAL);
@@ -724,7 +696,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x12509ddfaa7c0557L);
     b.origin("r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/5476670926298696679");
     b.version(3);
-    b.associate("migration_old", 0x4c010b30d9be54a3L).target(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x47bb811da2acc4d6L).optional(true).origin("5476670926298698915").done();
     b.aggregate("inputNodes", 0x4c010b30d9be4be8L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L).optional(true).ordered(true).multiple(true).origin("5476670926298696680").done();
     b.aggregate("outputNodes", 0x4c010b30d9be5494L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L).optional(true).ordered(true).multiple(true).origin("5476670926298698900").done();
     b.aggregate("migration", 0x5bf7864595df8b02L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L).optional(false).ordered(true).multiple(true).origin("6626913010124294914").done();
@@ -852,16 +823,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("nodeOperations", 0x11b07abae7cL).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07797e20L).optional(true).ordered(true).multiple(true).origin("1215604436604").done();
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForNodeReachable() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.test", "NodeReachable", 0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b02f9eeb8L);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.test.structure.NodeCheckOperation
-    b.super_(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07797e20L);
-    b.origin("r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/1215525678776");
-    b.version(3);
-    b.alias("reachable");
-    return b.create();
-  }
   private static ConceptDescriptor createDescriptorForNodeRuleCheckOperation() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.test", "NodeRuleCheckOperation", 0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x3bc62fcd9b027d04L);
     b.class_(false, true, false);
@@ -945,16 +906,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.aggregate("warningRef", 0x73a7cdcfbbc116a3L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4af0d67L).optional(false).ordered(true).multiple(false).origin("8333855927564310179").done();
     b.alias("has warning");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForNodeUnreachable() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.test", "NodeUnreachable", 0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b082d1cb9L);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.test.structure.NodeCheckOperation
-    b.super_(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07797e20L);
-    b.origin("r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/1215612918969");
-    b.version(3);
-    b.alias("unreachable");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNodeWarningCheckOperation() {
@@ -1189,28 +1140,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/8101092317677916964");
     b.version(3);
     b.alias("_");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForVariableAlive() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.test", "VariableAlive", 0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b086b4872L);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.test.structure.NodeCheckOperation
-    b.super_(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07797e20L);
-    b.origin("r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/1215616993394");
-    b.version(3);
-    b.aggregate("var", 0x11b086b8b1aL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L).optional(false).ordered(true).multiple(false).origin("1215617010458").done();
-    b.alias("variable alive");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForVariableInitialized() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.test", "VariableInitialized", 0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0843a235L);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.test.structure.NodeCheckOperation
-    b.super_(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07797e20L);
-    b.origin("r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/1215614394933");
-    b.version(3);
-    b.aggregate("var", 0x11b0843f269L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L).optional(false).ordered(true).multiple(false).origin("1215614415465").done();
-    b.alias("variable initialized");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForWarningStatementReference() {

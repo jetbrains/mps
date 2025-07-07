@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@ import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.workbench.dialogs.project.newproject.ProjectFactory;
 import jetbrains.mps.workbench.dialogs.project.newproject.ProjectFactory.ProjectNotCreatedException;
 import jetbrains.mps.workbench.dialogs.project.newproject.ProjectOptions;
@@ -37,7 +38,6 @@ import org.jetbrains.annotations.NotNull;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -71,6 +71,7 @@ public class ProjectCreationTest implements EnvironmentAware {
   private static final List<String> PROJECT_PROPERTIES_DIR_CONTENT = Arrays.asList(
       PROJECT_PROPERTIES_DIR + "/modules.xml",
       PROJECT_PROPERTIES_DIR + "/workspace.xml",
+      PROJECT_PROPERTIES_DIR + "/product-workspace.xml",
       PROJECT_PROPERTIES_DIR + "/migration.xml");
 
   private static final List<String> EMPTY_PROJECT_PATH_LIST_FB = Arrays.asList(
@@ -157,32 +158,19 @@ public class ProjectCreationTest implements EnvironmentAware {
   }
 
   private void invokeTest(final ProjectOptionsProvider projectOptionsProvider, List<String> expectedPathList) {
-    final Reference<Throwable> refThrowable = new Reference<>();
-    ApplicationManager.getApplication().invokeAndWait(() -> {
-      try {
-        myTmpDir = IFileUtil.createTmpDir();
-        try {
-          ProjectFactory factory = new ProjectFactory(projectOptionsProvider.getProjectOptions(myTmpDir));
-          myProject = factory.createProject();
-          factory.activate(false);
-          myProject.save();
-        } catch (ProjectNotCreatedException e) {
-          Assert.fail();
-        }
-      } catch (Throwable t) {
-        refThrowable.set(t);
-      }
-    }, ModalityState.defaultModalityState());
-    if (!refThrowable.isNull()) {
-      throw new RuntimeException(refThrowable.get());
+    myTmpDir = IFileUtil.createTmpDir(myEnv.getPlatform().findComponent(VFSManager.class).getUmbrellaFileSystemJavaIO());
+    try {
+      ProjectFactory factory = new ProjectFactory(projectOptionsProvider.getProjectOptions(myTmpDir));
+      myProject = factory.createProject();
+      factory.activate(false);
+      myProject.save();
+    } catch (ProjectNotCreatedException e) {
+      Assert.fail();
     }
+
     Exception exception = ThreadUtils.runInUIThreadAndWait(() -> {
-      try {
-        StoreUtil.saveSettings(myProject, true);
-        ProjectManagerEx.getInstanceEx().closeAndDispose(myProject);
-      } catch (Throwable t) {
-        refThrowable.set(t);
-      }
+      StoreUtil.saveSettings(myProject, true);
+      ProjectManagerEx.getInstanceEx().closeAndDispose(myProject);
     });
     if (exception != null) {
       throw new RuntimeException(exception);

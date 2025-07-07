@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.project.MPSProject;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.workbench.actions.model.DeleteModelHelper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.ui.UIUtil;
@@ -22,8 +21,9 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.ide.save.SaveRepositoryCommand;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.SModelStereotype;
+import org.jetbrains.mps.openapi.module.SModule;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3575273646046443826", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "3575273646046443826", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class DeleteModels_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -57,13 +57,6 @@ public class DeleteModels_Action extends BaseAction {
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       MapSequence.fromMap(_params).put("project", p);
-      if (p == null) {
-        return false;
-      }
-    }
-    {
-      SModule p = event.getData(MPSCommonDataKeys.CONTEXT_MODULE);
-      MapSequence.fromMap(_params).put("contextModule", p);
       if (p == null) {
         return false;
       }
@@ -104,7 +97,11 @@ public class DeleteModels_Action extends BaseAction {
         if (SModelStereotype.isStubModel(model) || SModelStereotype.isDescriptorModel(model)) {
           continue;
         }
-        DeleteModelHelper.deleteModel(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModule) MapSequence.fromMap(_params).get("contextModule")), model, safeDelete, true);
+        SModule module = model.getModule();
+        if (module == null) {
+          continue;
+        }
+        DeleteModelHelper.deleteModel(((MPSProject) MapSequence.fromMap(_params).get("project")), module, model, safeDelete, true);
       }
     });
   }
@@ -122,10 +119,10 @@ public class DeleteModels_Action extends BaseAction {
       return false;
     }
     for (SModel m : ListSequence.fromList(((List<SModel>) MapSequence.fromMap(_params).get("models")))) {
-      if (!(SModelStereotype.isStubModel(m)) && !(SModelStereotype.isDescriptorModel(m))) {
-        return true;
+      if (SModelStereotype.isStubModel(m) || SModelStereotype.isDescriptorModel(m) || m.isReadOnly() || m.getModule().isReadOnly()) {
+        return false;
       }
     }
-    return false;
+    return true;
   }
 }

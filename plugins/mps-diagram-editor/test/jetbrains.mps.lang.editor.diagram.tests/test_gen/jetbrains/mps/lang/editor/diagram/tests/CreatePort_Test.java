@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @MPSLaunch
 public class CreatePort_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(CreatePort_Test.class, "${mps_home}", "r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CreatePort_Test.class).projectPath(null).modelRef("r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)").reopenProject(false).build());
 
   public CreatePort_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -39,7 +39,7 @@ public class CreatePort_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("2278461409093572745", "2278461409093572838");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommandInEDT(() -> SNodeFactoryOperations.addNewChild(getNodeById("2278461409093572746"), LINKS.outputs$oKtu, null));
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommandInEDT(() -> SNodeFactoryOperations.addNewChild(getAnnotatedNode("node"), LINKS.outputs$oKtu, null));
       // Here used to be MA.flushEventQueue, which seems useless here, press mouse would post its own events to EDT, so that
       // by the time events are processed, the command to add a new node is over for sure.
       {

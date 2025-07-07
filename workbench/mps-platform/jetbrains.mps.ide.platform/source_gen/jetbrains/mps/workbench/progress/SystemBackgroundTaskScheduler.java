@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletionException;
 import java.util.concurrent.ExecutionException;
 
-@GeneratedClass(node = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)/5860855079812039016", model = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)")
+@GeneratedClass(nodeId = "5860855079812039016", model = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)")
 public class SystemBackgroundTaskScheduler extends AbstractBackgroundTaskScheduler<ProgressTask> {
 
   public SystemBackgroundTaskScheduler(Project mpsProject) {

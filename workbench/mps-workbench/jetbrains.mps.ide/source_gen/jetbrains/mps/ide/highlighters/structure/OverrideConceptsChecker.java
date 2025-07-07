@@ -18,7 +18,7 @@ import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:8da2312b-c61c-4a7c-bb90-3ea3623b8abe(jetbrains.mps.ide.highlighters.structure)/1401464578585832882", model = "r:8da2312b-c61c-4a7c-bb90-3ea3623b8abe(jetbrains.mps.ide.highlighters.structure)")
+@GeneratedClass(nodeId = "1401464578585832882", model = "r:8da2312b-c61c-4a7c-bb90-3ea3623b8abe(jetbrains.mps.ide.highlighters.structure)")
 public final class OverrideConceptsChecker extends BaseEventProcessingEditorChecker {
   private static final int MAX_ITEMS_TO_SHOW = 5;
 

@@ -3755,7 +3755,7 @@
                             <ref role="3cqZAo" node="5W7E4fV0WQo" resolve="it" />
                           </node>
                           <node concept="2qgKlT" id="nhyique9pP" role="2OqNvi">
-                            <ref role="37wK5l" to="hez:nhyiqudFLy" resolve="getConstructorDescriptor" />
+                            <ref role="37wK5l" to="hez:26mUjU3xhgD" resolve="getFunctionDescriptor" />
                           </node>
                         </node>
                         <node concept="liA8E" id="nhyique9pQ" role="2OqNvi">

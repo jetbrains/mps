@@ -25,7 +25,7 @@ import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
 import java.util.Arrays;
 import com.intellij.openapi.ui.Messages;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/3531370237490077457", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "3531370237490077457", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class ReportModelMergeProblem_Action extends BaseAction {
   private static final Icon ICON = null;
 

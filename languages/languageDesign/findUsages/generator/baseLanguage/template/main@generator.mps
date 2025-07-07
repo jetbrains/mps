@@ -240,10 +240,12 @@
         <property id="1501378878163388321" name="variable" index="26SvY3" />
       </concept>
       <concept id="1167087469898" name="jetbrains.mps.lang.generator.structure.CreateRootRule" flags="lg" index="2VPoh5">
+        <reference id="1200923511980" name="label" index="2sBCQV" />
         <reference id="1167087469901" name="templateNode" index="2VPoh2" />
         <child id="1167087469900" name="conditionFunction" index="2VPoh3" />
       </concept>
       <concept id="1167087518662" name="jetbrains.mps.lang.generator.structure.CreateRootRule_Condition" flags="in" index="2VP$b9" />
+      <concept id="5133195082121471908" name="jetbrains.mps.lang.generator.structure.LabelMacro" flags="ln" index="2ZBi8u" />
       <concept id="1167168920554" name="jetbrains.mps.lang.generator.structure.BaseMappingRule_Condition" flags="in" index="30G5F_" />
       <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
       <concept id="1167169308231" name="jetbrains.mps.lang.generator.structure.BaseMappingRule" flags="ng" index="30H$t8">
@@ -267,7 +269,6 @@
       <concept id="1167514355419" name="jetbrains.mps.lang.generator.structure.Root_MappingRule" flags="lg" index="3lhOvk">
         <reference id="1167514355421" name="template" index="3lhOvi" />
       </concept>
-      <concept id="1131073187192" name="jetbrains.mps.lang.generator.structure.MapSrcNodeMacro" flags="ln" index="1pdMLZ" />
       <concept id="1048903277984099206" name="jetbrains.mps.lang.generator.structure.VarDeclaration" flags="ng" index="1ps_xZ">
         <child id="1048903277984099209" name="type" index="1ps_xK" />
         <child id="1048903277984099210" name="value" index="1ps_xN" />
@@ -316,6 +317,13 @@
       </concept>
     </language>
     <language id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext">
+      <concept id="1216860049627" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabelAndInput" flags="nn" index="1iwH70">
+        <reference id="1216860049628" name="label" index="1iwH77" />
+        <child id="1216860049632" name="inputNode" index="1iwH7V" />
+      </concept>
+      <concept id="1216860049622" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabel" flags="nn" index="1iwH7d">
+        <reference id="1216860049623" name="label" index="1iwH7c" />
+      </concept>
       <concept id="1216860049635" name="jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext" flags="nn" index="1iwH7S" />
       <concept id="1048903277984174662" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef2" flags="nn" index="1psM6Z">
         <reference id="1048903277984174663" name="vardecl" index="1psM6Y" />
@@ -422,6 +430,7 @@
     <property role="TrG5h" value="main" />
     <node concept="2VPoh5" id="6VBrDosl72i" role="2VS0gm">
       <ref role="2VPoh2" node="6VBrDosl4_S" resolve="FindUsagesDescriptor" />
+      <ref role="2sBCQV" node="2YGAo3wXFza" resolve="AspectDescriptorClass" />
       <node concept="2VP$b9" id="6VBrDosl72j" role="2VPoh3">
         <node concept="3clFbS" id="6VBrDosl72k" role="2VODD2">
           <node concept="3SKdUt" id="6hfjOhYikZP" role="3cqZAp">
@@ -486,6 +495,18 @@
       <property role="TrG5h" value="map_FinderConstructor" />
       <ref role="2rTdP9" to="tp3b:hqPqlEd" resolve="FinderDeclaration" />
       <ref role="2rZz_L" to="tpee:fzclF84" resolve="ConstructorDeclaration" />
+    </node>
+    <node concept="2rT7sh" id="2YGAo3wXFza" role="2rTMjI">
+      <property role="TrG5h" value="AspectDescriptorClass" />
+      <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
+    </node>
+    <node concept="2rT7sh" id="2YGAo3wXMTi" role="2rTMjI">
+      <property role="TrG5h" value="AspectDescriptorConstructor" />
+      <ref role="2rZz_L" to="tpee:fzclF84" resolve="ConstructorDeclaration" />
+    </node>
+    <node concept="2rT7sh" id="2YGAo3wXPGF" role="2rTMjI">
+      <property role="TrG5h" value="DeclaringModelField" />
+      <ref role="2rZz_L" to="tpee:f$Wx3kv" resolve="StaticFieldDeclaration" />
     </node>
     <node concept="3aamgX" id="6gUevv0y9_k" role="3acgRq">
       <ref role="30HIoZ" to="tp3b:1JlDhgSjx_p" resolve="ExecuteFindersGetSearchResults" />
@@ -766,7 +787,7 @@
       <node concept="3cqZAl" id="6VBrDosllh4" role="3clF45" />
       <node concept="3clFbS" id="6VBrDosllh5" role="3clF47" />
       <node concept="3Tm1VV" id="6VBrDosllh6" role="1B3o_S" />
-      <node concept="1pdMLZ" id="6VBrDosllhk" role="lGtFl">
+      <node concept="2ZBi8u" id="6MbZi$kNNrc" role="lGtFl">
         <ref role="2rW$FS" node="hzAc2oz" resolve="map_FinderConstructor" />
       </node>
     </node>
@@ -1411,6 +1432,38 @@
             <node concept="10M0yZ" id="4WgT1ADZ7Uw" role="37wK5m">
               <ref role="3cqZAo" node="4WgT1ADYA82" resolve="DECLARING_MODEL" />
               <ref role="1PxDUh" node="6VBrDosl4_S" resolve="FindUsagesDescriptor" />
+              <node concept="1ZhdrF" id="2YGAo3wXJGn" role="lGtFl">
+                <property role="2qtEX8" value="classifier" />
+                <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070533707846/1144433057691" />
+                <node concept="3$xsQk" id="2YGAo3wXJGo" role="3$ytzL">
+                  <node concept="3clFbS" id="2YGAo3wXJGp" role="2VODD2">
+                    <node concept="3clFbF" id="2YGAo3wXM3b" role="3cqZAp">
+                      <node concept="2OqwBi" id="2YGAo3wXMxM" role="3clFbG">
+                        <node concept="1iwH7S" id="2YGAo3wXM3a" role="2Oq$k0" />
+                        <node concept="1iwH7d" id="2YGAo3wXMBX" role="2OqNvi">
+                          <ref role="1iwH7c" node="2YGAo3wXFza" resolve="AspectDescriptorClass" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1ZhdrF" id="2YGAo3wXVy1" role="lGtFl">
+                <property role="2qtEX8" value="variableDeclaration" />
+                <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068498886296/1068581517664" />
+                <node concept="3$xsQk" id="2YGAo3wXVy2" role="3$ytzL">
+                  <node concept="3clFbS" id="2YGAo3wXVy3" role="2VODD2">
+                    <node concept="3clFbF" id="2YGAo3wXXkX" role="3cqZAp">
+                      <node concept="2OqwBi" id="2YGAo3wXXzY" role="3clFbG">
+                        <node concept="1iwH7S" id="2YGAo3wXXkW" role="2Oq$k0" />
+                        <node concept="1iwH7d" id="2YGAo3wXXFS" role="2OqNvi">
+                          <ref role="1iwH7c" node="2YGAo3wXPGF" resolve="DeclaringModelField" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
             <node concept="Xl_RD" id="4WgT1ADZbpN" role="37wK5m">
               <node concept="17Uvod" id="4WgT1ADZsMz" role="lGtFl">
@@ -1945,6 +1998,9 @@
           <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
         </node>
       </node>
+      <node concept="2ZBi8u" id="2YGAo3wXP_C" role="lGtFl">
+        <ref role="2rW$FS" node="2YGAo3wXPGF" resolve="DeclaringModelField" />
+      </node>
     </node>
     <node concept="3Tm1VV" id="6VBrDosl4_T" role="1B3o_S" />
     <node concept="n94m4" id="6VBrDosl4AL" role="lGtFl" />
@@ -1996,6 +2052,9 @@
       <node concept="3cqZAl" id="6VBrDosl4_V" role="3clF45" />
       <node concept="3Tm1VV" id="6VBrDosl4_W" role="1B3o_S" />
       <node concept="3clFbS" id="6VBrDosl4_X" role="3clF47" />
+      <node concept="2ZBi8u" id="2YGAo3wXOJ7" role="lGtFl">
+        <ref role="2rW$FS" node="2YGAo3wXMTi" resolve="AspectDescriptorConstructor" />
+      </node>
     </node>
     <node concept="2tJIrI" id="4WgT1ADZEpo" role="jymVt" />
     <node concept="3clFb_" id="4WgT1ADZG3o" role="jymVt">
@@ -2041,6 +2100,23 @@
                 <node concept="2ShNRf" id="4WgT1ADZR9J" role="3cqZAk">
                   <node concept="1pGfFk" id="4WgT1ADZR9K" role="2ShVmc">
                     <ref role="37wK5l" node="6VBrDosllh3" resolve="FinderClass" />
+                    <node concept="1ZhdrF" id="2YGAo3wXY2V" role="lGtFl">
+                      <property role="2qtEX8" value="baseMethodDeclaration" />
+                      <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
+                      <node concept="3$xsQk" id="2YGAo3wXY2W" role="3$ytzL">
+                        <node concept="3clFbS" id="2YGAo3wXY2X" role="2VODD2">
+                          <node concept="3clFbF" id="2YGAo3wY0iM" role="3cqZAp">
+                            <node concept="2OqwBi" id="2YGAo3wY0x$" role="3clFbG">
+                              <node concept="1iwH7S" id="2YGAo3wY0iL" role="2Oq$k0" />
+                              <node concept="1iwH70" id="2YGAo3wY0MT" role="2OqNvi">
+                                <ref role="1iwH77" node="hzAc2oz" resolve="map_FinderConstructor" />
+                                <node concept="30H73N" id="2YGAo3wY0Vq" role="1iwH7V" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>
@@ -2324,7 +2400,7 @@
                                       <property role="3oM_SC" value="output" />
                                     </node>
                                     <node concept="3oM_SD" id="ATZLwXnV5m" role="1PaTwD">
-                                      <property role="3oM_SC" value="FindUsagesDescriptorCons" />
+                                      <property role="3oM_SC" value="AspectDesctiptorConstructor" />
                                     </node>
                                     <node concept="3oM_SD" id="ATZLwXnV5n" role="1PaTwD">
                                       <property role="3oM_SC" value="for" />
@@ -2334,6 +2410,37 @@
                                     </node>
                                     <node concept="3oM_SD" id="ATZLwXnV5p" role="1PaTwD">
                                       <property role="3oM_SC" value="model;" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="3SKdUt" id="2YGAo3wXPlh" role="3cqZAp">
+                                  <node concept="1PaTwC" id="2YGAo3wXPli" role="1aUNEU">
+                                    <node concept="3oM_SD" id="2YGAo3wXPlj" role="1PaTwD">
+                                      <property role="3oM_SC" value="" />
+                                    </node>
+                                    <node concept="3oM_SD" id="2YGAo3wXPn3" role="1PaTwD">
+                                      <property role="3oM_SC" value="" />
+                                    </node>
+                                    <node concept="3oM_SD" id="2YGAo3wXPn9" role="1PaTwD">
+                                      <property role="3oM_SC" value="" />
+                                    </node>
+                                    <node concept="3oM_SD" id="2YGAo3wXPne" role="1PaTwD">
+                                      <property role="3oM_SC" value="" />
+                                    </node>
+                                    <node concept="3oM_SD" id="2YGAo3wXPnj" role="1PaTwD">
+                                      <property role="3oM_SC" value="ONCE" />
+                                    </node>
+                                    <node concept="3oM_SD" id="2YGAo3wXPog" role="1PaTwD">
+                                      <property role="3oM_SC" value="there's" />
+                                    </node>
+                                    <node concept="3oM_SD" id="2YGAo3wXPoL" role="1PaTwD">
+                                      <property role="3oM_SC" value="devkit" />
+                                    </node>
+                                    <node concept="3oM_SD" id="2YGAo3wXPqu" role="1PaTwD">
+                                      <property role="3oM_SC" value="for" />
+                                    </node>
+                                    <node concept="3oM_SD" id="2YGAo3wXPqJ" role="1PaTwD">
+                                      <property role="3oM_SC" value="findUsages!" />
                                     </node>
                                   </node>
                                 </node>

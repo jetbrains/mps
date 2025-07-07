@@ -96,7 +96,7 @@ public class DeleteNode_Action extends BaseAction {
     if (!(dialog.isOK())) {
       return;
     }
-    helper.deleteNodes(safeOption.isSelected(), aspectsOption.isSelected(), true);
+    helper.deleteNodes(safeOption.isSelected(), aspectsOption.isSelected());
   }
   private Iterable<SNode> getAffectedNodes(final Map<String, Object> _params) {
     Iterable<SNode> list = ((List<SNode>) MapSequence.fromMap(_params).get("nodes"));

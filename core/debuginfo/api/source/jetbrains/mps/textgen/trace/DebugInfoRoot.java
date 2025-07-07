@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.textgen.trace;
 
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.HashSet;
@@ -47,6 +48,7 @@ public class DebugInfoRoot {
     myUnitPositions.add(unitPosition);
   }
 
+  @Nullable
   public SNodeReference getNodeRef() {
     return myNodeRef;
   }

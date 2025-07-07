@@ -35,7 +35,7 @@ import jetbrains.mps.util.ConditionalIterable;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527286941", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "6599163591527286941", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public class SNodeOperations {
   private static final Logger LOG = Logger.getLogger(SNodeOperations.class);
   private static boolean ourCastExceptionsEnabled = RuntimeFlags.isExceptionOnBadCast();

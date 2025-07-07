@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.smodel.language;
 import jetbrains.mps.aspects.InOrderSorter;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.annotations.NotNull;
@@ -42,9 +41,7 @@ public class LanguageAspectSupport {
 
   public static boolean isAspectModel(SModel model) {
     SModule module = model.getModule();
-    if (!(module instanceof Language)) return false;
-    if (getOldAspect(model) != null) return true;
-    return getNewAspect(model) != null;
+    return module instanceof Language && getNewAspect(model) != null;
   }
 
   public static Collection<SModel> getAspectModels(@NotNull SModule language) {
@@ -53,12 +50,6 @@ public class LanguageAspectSupport {
     LinkedHashSet<SModel> result = new LinkedHashSet<>();
     for (LanguageAspectDescriptor d : collectAspects()) {
       result.addAll(d.getAspectModels(language));
-    }
-    //falling back to old aspects for case where getAspectModels() is called before new aspects are initialized
-    for (LanguageAspect la : LanguageAspect.values()) {
-      SModel aspectModel = la.get(((Language) language));
-      if (aspectModel == null) continue;
-      result.add(aspectModel);
     }
     return result;
   }
@@ -83,24 +74,17 @@ public class LanguageAspectSupport {
 
   @Nullable
   public static String getHelpUrl(SModel model) {
-    if (!(model.getModule() instanceof Language)) return null;
-
-    for (LanguageAspectDescriptor d : collectAspects()) {
-      if (d.getAspectModels(model.getModule()).contains(model)) return d.getHelpUrl();
+    if (!(model.getModule() instanceof Language)) {
+      return null;
     }
-
-    for (LanguageAspect la : LanguageAspect.values()) {
-      if (la.is(model)) return la.getHelpURL();
-    }
-
-    return null;
+    LanguageAspectDescriptor d = getNewAspect(model);
+    return d == null ? null : d.getHelpUrl();
   }
 
   @Nullable
   public static SModuleReference getDefaultDevkit(SModel model) {
     LanguageAspectDescriptor newAspect = getNewAspect(model);
-    if (newAspect == null) return null;
-    return newAspect.getDefaultDevkit();
+    return newAspect == null ? null : newAspect.getDefaultDevkit();
   }
 
   /**
@@ -130,45 +114,22 @@ public class LanguageAspectSupport {
   @Deprecated(since = "2022.2", forRemoval = true)
   public static Collection<SLanguage> getMainLanguages(SModel model) {
     LanguageAspectDescriptor newAspect = getNewAspect(model);
-    if (newAspect != null) return newAspect.getMainLanguages();
-    LanguageAspect oldAspect = getOldAspect(model);
-    if (oldAspect != null) return oldAspect.getMainLanguages();
-    return Collections.emptyList();
+    return  newAspect != null ? newAspect.getMainLanguages() : Collections.emptyList();
   }
 
   public static Collection<SLanguage> getAdditionalLanguages(SModel model) {
     LanguageAspectDescriptor newAspect = getNewAspect(model);
-    if (newAspect != null) return newAspect.getAdditionalLanguages();
-    LanguageAspect oldAspect = getOldAspect(model);
-    if (oldAspect != null) return oldAspect.getMainLanguages();
-    return Collections.emptyList();
+    return newAspect != null ? newAspect.getAdditionalLanguages() : Collections.emptyList();
   }
 
   public static boolean isLanguageModelNameForbidden(String modelName) {
     String shortName = modelName.substring(modelName.lastIndexOf('.') + 1);
-    for (LanguageAspect aspect : LanguageAspect.values()) {
-      if (shortName.equals(aspect.getName())) {
-        return true;
-      }
-    }
-    for (LanguageAspectDescriptor ad : collectAspects()) {
+    for (LanguageAspectDescriptor ad : collectAspectsUnsorted()) {
       if (shortName.equals(ad.getId())) {
         return true;
       }
     }
     return false;
-  }
-
-  @Nullable
-  @Deprecated(since = "3.3", forRemoval = true)
-  //for internal use only
-  private static LanguageAspect getOldAspect(SModel model) {
-    // FTR, mbeddr still refers to old LanguageAspect.{ASPECT} constants, does it mean we
-    //      have to consult LA.values() here?
-    for (LanguageAspect la : LanguageAspect.values()) {
-      if (la.is(model)) return la;
-    }
-    return null;
   }
 
   @Nullable

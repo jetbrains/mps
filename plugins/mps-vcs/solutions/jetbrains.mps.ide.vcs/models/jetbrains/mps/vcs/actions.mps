@@ -18,8 +18,8 @@
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="rvbb" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.projectPane(MPS.Workbench/)" />
     <import index="ddhc" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide(MPS.IDEA/)" />
-    <import index="cyi7" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.changes.ui(MPS.IDEA/)" />
-    <import index="s4aq" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.changes.actions(MPS.IDEA/)" />
+    <import index="de5q" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.actions(jetbrains.mps.vcs.idea.stubs/)" />
+    <import index="s4aq" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.changes.actions(jetbrains.mps.vcs.idea.stubs/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -305,8 +305,8 @@
   <node concept="312cEu" id="6FKiTwA0J3a">
     <property role="TrG5h" value="AbstractShowInFileView" />
     <property role="1sVAO0" value="true" />
-    <node concept="3uibUv" id="6FKiTwA0J3b" role="1zkMxy">
-      <ref role="3uigEE" to="de5p:~AbstractVcsAction" resolve="AbstractVcsAction" />
+    <node concept="3uibUv" id="2vCsXJ2NQZU" role="1zkMxy">
+      <ref role="3uigEE" to="de5q:~AbstractVcsAction" resolve="AbstractVcsAction" />
     </node>
     <node concept="3clFbW" id="6FKiTwA0J3c" role="jymVt">
       <node concept="3cqZAl" id="6FKiTwA0J3d" role="3clF45" />
@@ -748,8 +748,8 @@
   <node concept="312cEu" id="6FKiTwA0J6h">
     <property role="TrG5h" value="ShowInLogicalView" />
     <node concept="3Tm1VV" id="6FKiTwA0J6i" role="1B3o_S" />
-    <node concept="3uibUv" id="6FKiTwA0J6j" role="1zkMxy">
-      <ref role="3uigEE" to="de5p:~AbstractVcsAction" resolve="AbstractVcsAction" />
+    <node concept="3uibUv" id="2vCsXJ2NIbc" role="1zkMxy">
+      <ref role="3uigEE" to="de5q:~AbstractVcsAction" resolve="AbstractVcsAction" />
     </node>
     <node concept="3clFbW" id="6FKiTwA0J6k" role="jymVt">
       <node concept="3Tm1VV" id="6FKiTwA0J6l" role="1B3o_S" />
@@ -1227,7 +1227,7 @@
   <node concept="312cEu" id="7pVeK7_8ojQ">
     <property role="TrG5h" value="SetExtensionChangesGroupingAction" />
     <node concept="3Tm1VV" id="7pVeK7_8ojR" role="1B3o_S" />
-    <node concept="3uibUv" id="7pVeK7_8pfF" role="1zkMxy">
+    <node concept="3uibUv" id="2vCsXJ2NKHg" role="1zkMxy">
       <ref role="3uigEE" to="s4aq:~SetChangesGroupingAction" resolve="SetChangesGroupingAction" />
     </node>
     <node concept="3clFb_" id="7pVeK7_8pgj" role="jymVt">
@@ -1241,9 +1241,8 @@
       </node>
       <node concept="3clFbS" id="7pVeK7_8pgo" role="3clF47">
         <node concept="3clFbF" id="7pVeK7_8pZe" role="3cqZAp">
-          <node concept="10M0yZ" id="PFiw1EGNkD" role="3clFbG">
-            <ref role="3cqZAo" to="cyi7:~ChangesGroupingSupport.EXTENSION_GROUPING" resolve="EXTENSION_GROUPING" />
-            <ref role="1PxDUh" to="cyi7:~ChangesGroupingSupport" resolve="ChangesGroupingSupport" />
+          <node concept="Xl_RD" id="6ef8kEM5QUM" role="3clFbG">
+            <property role="Xl_RC" value="extension" />
           </node>
         </node>
       </node>

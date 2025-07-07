@@ -15,6 +15,7 @@
         <reference id="3705377275350227762" name="plan" index="NozSM" />
       </concept>
       <concept id="1152961914448136207" name="jetbrains.mps.lang.generator.plan.structure.LanguageEntry" flags="ng" index="2Qf6Nf">
+        <property id="1152961914448142318" name="kind" index="2Qf7GI" />
         <child id="1152961914448136208" name="language" index="2Qf6Ng" />
       </concept>
       <concept id="1820634577908471803" name="jetbrains.mps.lang.generator.plan.structure.Plan" flags="ng" index="2VgMpV">
@@ -54,6 +55,20 @@
       </node>
     </node>
     <node concept="2VgMA2" id="p4S6WR3TZ5" role="2VgMA7">
+      <node concept="2Qf6Nf" id="6MzWVapuSE5" role="2Qf7GQ">
+        <property role="2Qf7GI" value="1009c2Af4wn/Extend" />
+        <node concept="2V$Bhx" id="6MzWVapuSE6" role="2Qf6Ng">
+          <property role="2V$B1T" value="7fa12e9c-b949-4976-b4fa-19accbc320b4" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.dataFlow" />
+        </node>
+      </node>
+      <node concept="2Qf6Nf" id="6MzWVapuSE7" role="2Qf7GQ">
+        <property role="2Qf7GI" value="1009c2Af4wn/Extend" />
+        <node concept="2V$Bhx" id="6MzWVapuSE8" role="2Qf6Ng">
+          <property role="2V$B1T" value="97a52717-898f-4598-8150-573d9fd03868" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.dataFlow.analyzers" />
+        </node>
+      </node>
       <node concept="2Qf6Nf" id="6pkKjyUzzBs" role="2Qf7GQ">
         <node concept="2V$Bhx" id="p4S6WR8VTH" role="2Qf6Ng">
           <property role="2V$B1T" value="7fa12e9c-b949-4976-b4fa-19accbc320b4" />

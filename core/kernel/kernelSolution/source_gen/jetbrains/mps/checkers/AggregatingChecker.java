@@ -36,7 +36,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
  * See {@link jetbrains.mps.checkers.CheckingSession }<br>
  * See {@link jetbrains.mps.checkers.ICheckingPostprocessor }<br>
  */
-@GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/8195773907765992281", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
+@GeneratedClass(nodeId = "8195773907765992281", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class AggregatingChecker<O> implements IAbstractChecker<O, IssueKindReportItem> {
   private List<? extends IChecker<O, ? extends IssueKindReportItem>> myOrigins;
   private _FunctionTypes._return_P1_E0<? extends String, ? super O> myNameGetter;

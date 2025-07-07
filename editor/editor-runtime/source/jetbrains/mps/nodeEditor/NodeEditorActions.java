@@ -17,13 +17,18 @@ package jetbrains.mps.nodeEditor;
 
 import com.intellij.ide.IdeTooltip;
 import com.intellij.ide.IdeTooltipManager;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.HintHint;
+import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.nodeEditor.actions.CursorPositionTracker;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.nodeEditor.cells.GeometryUtil;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationToolWindowManager;
+import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationUI;
 import jetbrains.mps.nodeEditor.selection.NodeRangeSelection;
 import jetbrains.mps.nodeEditor.selection.SelectUpUtil;
 import jetbrains.mps.openapi.editor.EditorComponent;
@@ -837,4 +842,5 @@ public class NodeEditorActions {
       getSearchPanel(context).deactivate();
     }
   }
+
 }

@@ -3328,27 +3328,53 @@
           <node concept="3cqZAl" id="2cPzl2lSSG$" role="3clF45" />
           <node concept="3Tm1VV" id="2cPzl2lSSG_" role="1B3o_S" />
           <node concept="3clFbS" id="2cPzl2lSSGA" role="3clF47">
-            <node concept="3clFbF" id="2cPzl2lSTWS" role="3cqZAp">
-              <node concept="2YIFZM" id="2cPzl2lSUEg" role="3clFbG">
-                <ref role="37wK5l" to="fwk:~TracingUtil.copyWithTrace(org.jetbrains.mps.openapi.model.SNode)" resolve="copyWithTrace" />
-                <ref role="1Pybhc" to="fwk:~TracingUtil" resolve="TracingUtil" />
-                <node concept="10Nm6u" id="2cPzl2lSUEr" role="37wK5m">
-                  <node concept="29HgVG" id="2cPzl2lSUJo" role="lGtFl">
-                    <node concept="3NFfHV" id="2cPzl2lSUJp" role="3NFExx">
-                      <node concept="3clFbS" id="2cPzl2lSUJq" role="2VODD2">
-                        <node concept="3clFbF" id="2cPzl2lSUJw" role="3cqZAp">
-                          <node concept="2OqwBi" id="2cPzl2lSUJr" role="3clFbG">
-                            <node concept="3TrEf2" id="2cPzl2lSUJu" role="2OqNvi">
-                              <ref role="3Tt5mk" to="tpf3:2cPzl2lSLsJ" resolve="nodes" />
+            <node concept="3clFbF" id="4p18xuGaI45" role="3cqZAp">
+              <node concept="2OqwBi" id="4p18xuGaIdK" role="3clFbG">
+                <node concept="37vLTw" id="4p18xuGaI43" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2cPzl2lSSHe" resolve="ctx" />
+                  <node concept="29HgVG" id="4p18xuGaISc" role="lGtFl">
+                    <node concept="3NFfHV" id="4p18xuGaISd" role="3NFExx">
+                      <node concept="3clFbS" id="4p18xuGaISe" role="2VODD2">
+                        <node concept="3clFbF" id="4p18xuGaIX8" role="3cqZAp">
+                          <node concept="2OqwBi" id="4p18xuGaIX9" role="3clFbG">
+                            <node concept="1PxgMI" id="4p18xuGaIXa" role="2Oq$k0">
+                              <node concept="2OqwBi" id="4p18xuGaIXb" role="1m5AlR">
+                                <node concept="30H73N" id="4p18xuGaIXc" role="2Oq$k0" />
+                                <node concept="1mfA1w" id="4p18xuGaIXd" role="2OqNvi" />
+                              </node>
+                              <node concept="chp4Y" id="4p18xuGaIXe" role="3oSUPX">
+                                <ref role="cht4Q" to="tpee:hqOqwz4" resolve="DotExpression" />
+                              </node>
                             </node>
-                            <node concept="30H73N" id="2cPzl2lSUJv" role="2Oq$k0" />
+                            <node concept="3TrEf2" id="4p18xuGaIXf" role="2OqNvi">
+                              <ref role="3Tt5mk" to="tpee:hqOq$gm" resolve="operand" />
+                            </node>
                           </node>
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="raruj" id="2cPzl2lSUIv" role="lGtFl" />
+                <node concept="liA8E" id="4p18xuGaIrW" role="2OqNvi">
+                  <ref role="37wK5l" to="q1l7:~TemplateQueryContext.copyWithTrace(java.lang.Iterable)" resolve="copyWithTrace" />
+                  <node concept="10Nm6u" id="2cPzl2lSUEr" role="37wK5m">
+                    <node concept="29HgVG" id="2cPzl2lSUJo" role="lGtFl">
+                      <node concept="3NFfHV" id="2cPzl2lSUJp" role="3NFExx">
+                        <node concept="3clFbS" id="2cPzl2lSUJq" role="2VODD2">
+                          <node concept="3clFbF" id="2cPzl2lSUJw" role="3cqZAp">
+                            <node concept="2OqwBi" id="2cPzl2lSUJr" role="3clFbG">
+                              <node concept="3TrEf2" id="2cPzl2lSUJu" role="2OqNvi">
+                                <ref role="3Tt5mk" to="tpf3:2cPzl2lSLsJ" resolve="nodes" />
+                              </node>
+                              <node concept="30H73N" id="2cPzl2lSUJv" role="2Oq$k0" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="raruj" id="4p18xuGaIzC" role="lGtFl" />
               </node>
             </node>
           </node>

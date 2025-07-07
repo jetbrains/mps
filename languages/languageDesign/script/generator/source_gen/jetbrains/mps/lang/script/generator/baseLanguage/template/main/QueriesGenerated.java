@@ -275,6 +275,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_6_8(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.methodDeclaration$e4PM);
   }
+  public static Object referenceMacro_GetReferent_10_0(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "MigrationScriptCons");
+  }
   public static Object referenceMacro_GetReferent_11_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output ScriptsDescriptorCons for model model;
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".ScriptsDescriptor";
@@ -805,7 +808,8 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("4227269532951704939", new RTQ(7, "Object"));
     rtqMethods.put("4227269532951723034", new RTQ(8, "Object"));
     rtqMethods.put("2975042811631233252", new RTQ(9, "Object"));
-    rtqMethods.put("4147950839246952263", new RTQ(10, "ScriptsDescriptor"));
+    rtqMethods.put("7880579697410510990", new RTQ(10, "MigrationScriptImpl"));
+    rtqMethods.put("4147950839246952263", new RTQ(11, "ScriptsDescriptor"));
   }
   @NotNull
   @Override
@@ -843,6 +847,8 @@ public class QueriesGenerated extends QueryProviderBase {
         case 9:
           return QueriesGenerated.referenceMacro_GetReferent_6_8(ctx);
         case 10:
+          return QueriesGenerated.referenceMacro_GetReferent_10_0(ctx);
+        case 11:
           return QueriesGenerated.referenceMacro_GetReferent_11_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));

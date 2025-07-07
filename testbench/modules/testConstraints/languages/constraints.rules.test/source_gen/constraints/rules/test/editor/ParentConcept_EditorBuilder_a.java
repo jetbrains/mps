@@ -168,7 +168,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return LINKS.children$y7TL;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.ChildConcept$v;
+      return CONCEPTS.ChildConceptBase$W7;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -225,7 +225,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept ChildConcept$v = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, "constraints.rules.test.structure.ChildConcept");
+    /*package*/ static final SConcept ChildConceptBase$W7 = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x74b496bab051d961L, "constraints.rules.test.structure.ChildConceptBase");
   }
 
   private static final class LINKS {

@@ -27,6 +27,7 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.ExperimentalUI;
 import jetbrains.mps.samples.SamplesInfo;
 import jetbrains.mps.workbench.actions.OpenMPSProjectFileChooserDescriptor;
 import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
@@ -38,6 +39,7 @@ import java.util.Comparator;
 
 public class OpenSampleProjectAction extends AnAction {
 
+  @SuppressWarnings("UnstableApiUsage")
   public void actionPerformed(@NotNull AnActionEvent e) {
     VirtualFile samplesFolder = null;
     String samplesPath = SamplesInfo.getInstance().getSamplesPath();
@@ -58,10 +60,13 @@ public class OpenSampleProjectAction extends AnAction {
     final FileChooserDescriptor descriptor = new OpenMPSProjectFileChooserDescriptor(true);
     descriptor.setTitle("Samples");
 
-    VirtualFile result = FileChooser.chooseFile(descriptor, currentProject, samplesFolder);
-    if (result != null) {
-      if (OpenMPSProjectTrustProjectHelper.checkTrust(result)) {
-        ProjectUtil.openProject(result.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
+    final VirtualFile @NotNull [] virtualFiles = FileChooser.chooseFiles(descriptor, currentProject, samplesFolder);
+    for (VirtualFile virtualFile : virtualFiles) {
+      if (virtualFile == null) {
+        continue;
+      }
+      if (OpenMPSProjectTrustProjectHelper.checkTrust(virtualFile)) {
+        ProjectUtil.openProject(virtualFile.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
       }
     }
   }

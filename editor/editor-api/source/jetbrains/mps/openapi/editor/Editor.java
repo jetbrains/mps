@@ -42,6 +42,10 @@ public interface Editor {
 
   void loadState(@NotNull EditorState state);
 
+  default void loadState(@NotNull EditorState state, boolean isUndo) {
+    loadState(state);
+  }
+
   /**
    * <p>
    * This method is invoked each time when the editor is selected.

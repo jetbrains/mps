@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.generator.template;
 
+import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -23,8 +24,19 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 public class MappingScriptContext extends TemplateQueryContext {
   private final SModel myModel;
 
+  /**
+   * @deprecated replaced with {@link #MappingScriptContext(SModel, SNodeReference, TemplateContext)}
+   *             remove when few releases generate alternative cons
+   */
+  @Deprecated(since = "2025.2", forRemoval = true)
   public MappingScriptContext(@NotNull SModel model, @NotNull SNodeReference mappingScript, @NotNull TemplateExecutionEnvironment env) {
     super(mappingScript, env);
+    myModel = model;
+    // drop TQC.super context when this usage gone, and re-evaluate myEnv contract there
+  }
+
+  public MappingScriptContext(@NotNull SModel model, @NotNull SNodeReference mappingScript, @NotNull TemplateContext templateContext) {
+    super(mappingScript, templateContext);
     myModel = model;
   }
 

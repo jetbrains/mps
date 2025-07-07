@@ -45,6 +45,7 @@ import java.util.stream.Stream;
 /**
  * visitXXX methods require model read
  */
+@Deprecated(forRemoval = true)
 public class GenStatusUpdater extends TreeUpdateVisitor implements TreeMessageOwner {
   private final ModelGenerationStatusManager myGenerationStatusManager;
   private final MakeServiceComponent myMakeComponent;

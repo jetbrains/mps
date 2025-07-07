@@ -8,14 +8,14 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.make.MakeServiceComponent;
-import javax.swing.tree.TreeNode;
-import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
+import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.ide.ui.tree.DiscoveryValueProvider;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 
 public class MakeNamespace_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -36,8 +36,8 @@ public class MakeNamespace_Action extends BaseAction {
     if (event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(MakeServiceComponent.class).isSessionActive()) {
       return false;
     }
-    for (TreeNode selectedNode : event.getData(MPSCommonDataKeys.TREE_NODES)) {
-      if (!(selectedNode instanceof NamespaceTextNode)) {
+    for (Object selectedValue : event.getData(MPSCommonDataKeys.VALUES)) {
+      if (!(selectedValue instanceof VirtualFolder.Modules)) {
         return false;
       }
     }
@@ -64,7 +64,16 @@ public class MakeNamespace_Action extends BaseAction {
       }
     }
     {
-      List<TreeNode> p = event.getData(MPSCommonDataKeys.TREE_NODES);
+      List<Object> p = event.getData(MPSCommonDataKeys.VALUES);
+      if (p == null) {
+        return false;
+      }
+      if (p.isEmpty()) {
+        return false;
+      }
+    }
+    {
+      List<Object> p = event.getData(MPSCommonDataKeys.USER_OBJECTS);
       if (p == null) {
         return false;
       }
@@ -90,9 +99,12 @@ public class MakeNamespace_Action extends BaseAction {
   }
   private List<SModule> selectedModules(final AnActionEvent event) {
     List<SModule> modules = new ArrayList<SModule>();
-    for (TreeNode ppNode : ListSequence.fromList(event.getData(MPSCommonDataKeys.TREE_NODES))) {
-      for (SModule module : ListSequence.fromList(((NamespaceTextNode) ppNode).getModulesUnder())) {
-        modules.add(module);
+    for (Object selectedObject : event.getData(MPSCommonDataKeys.USER_OBJECTS)) {
+      if (selectedObject instanceof DiscoveryValueProvider) {
+        DiscoveryValueProvider provider = ((DiscoveryValueProvider) selectedObject);
+        for (SModule module : Sequence.fromIterable(Sequence.fromStream(provider.discoverValuesOfType(SModule.class)))) {
+          modules.add(module);
+        }
       }
     }
     return modules;

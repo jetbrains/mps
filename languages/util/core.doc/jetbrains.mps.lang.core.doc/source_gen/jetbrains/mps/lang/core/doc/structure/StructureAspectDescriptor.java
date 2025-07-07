@@ -12,7 +12,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
-  /*package*/ final ConceptDescriptor myConceptDocumentedNodeAnnotation = createDescriptorForDocumentedNodeAnnotation();
+  /*package*/ final ConceptDescriptor myConceptDocumentationAnnotation = createDescriptorForDocumentationAnnotation();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -28,15 +28,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptDocumentedNodeAnnotation);
+    return Arrays.asList(myConceptDocumentationAnnotation);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
-      case LanguageConceptSwitch.DocumentedNodeAnnotation:
-        return myConceptDocumentedNodeAnnotation;
+      case LanguageConceptSwitch.DocumentationAnnotation:
+        return myConceptDocumentationAnnotation;
       default:
         return null;
     }
@@ -47,14 +47,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
-  private static ConceptDescriptor createDescriptorForDocumentedNodeAnnotation() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.core.doc", "DocumentedNodeAnnotation", 0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L);
+  private static ConceptDescriptor createDescriptorForDocumentationAnnotation() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.core.doc", "DocumentationAnnotation", 0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L);
     b.class_(false, false, false);
     // extends: jetbrains.mps.lang.core.structure.NodeAttribute
     b.super_(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
     b.origin("r:818648d2-4985-4d36-93cd-2c5b9b2eaf23(jetbrains.mps.lang.core.doc.structure)/4293932951803486388");
     b.version(3);
-    b.aggregate("text", 0x1ec73eba262d6d52L).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x38518aff8a105fd6L).optional(false).ordered(true).multiple(false).origin("2217810310728609106").done();
+    b.aggregate("text", 0x1ec73eba262d6d52L).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x270e002425f43123L).optional(false).ordered(true).multiple(false).origin("2217810310728609106").done();
     return b.create();
   }
 }

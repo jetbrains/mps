@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 @MPSLaunch
 public class LightPatternReferenceTest_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(LightPatternReferenceTest_Test.class, "${mps_home}", "r:ef0e231b-e6bd-436f-9003-b53de4081716(jetbrains.mps.lang.pattern.test)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(LightPatternReferenceTest_Test.class).projectPath(null).modelRef("r:ef0e231b-e6bd-436f-9003-b53de4081716(jetbrains.mps.lang.pattern.test)").reopenProject(null).build());
 
   public LightPatternReferenceTest_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -44,11 +44,16 @@ public class LightPatternReferenceTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8187773339868678967");
+    }
+
     public void test_patternSwitch4_matches() throws Exception {
-      runWithinCommand(() -> addNodeById("8187773339868678967"));
+      initTestNodes();
       runWithinCommand(() -> {
         boolean matches;
-        SNode nodeToMatch = _quotation_createNode_9nn70n_a0b0a0b0d8();
+        SNode nodeToMatch = _quotation_createNode_9nn70n_a0b0a0b0f8();
         if (new LightPattern_Reference_Test.Pattern1_Pattern().match(nodeToMatch)) {
           matches = true;
         } else {
@@ -58,10 +63,10 @@ public class LightPatternReferenceTest_Test extends BaseTransformationTest {
       });
     }
     public void test_patternSwitch4_referenceMismatch() throws Exception {
-      runWithinCommand(() -> addNodeById("8187773339868678967"));
+      initTestNodes();
       runWithinCommand(() -> {
         boolean matches;
-        SNode nodeToMatch = _quotation_createNode_9nn70n_a0b0a0b0e8(getNodeById("8187773339868709516"));
+        SNode nodeToMatch = _quotation_createNode_9nn70n_a0b0a0b0g8(getAnnotatedNode("constructor"));
         if (new LightPattern_Reference_Test.Pattern4_Pattern().match(nodeToMatch)) {
           matches = true;
         } else {
@@ -71,14 +76,14 @@ public class LightPatternReferenceTest_Test extends BaseTransformationTest {
       });
     }
     public void test_patternSwitch5_matchesWithReference() throws Exception {
-      runWithinCommand(() -> addNodeById("8187773339868678967"));
+      initTestNodes();
       runWithinCommand(() -> {
         boolean matches;
-        SNode nodeToMatch = _quotation_createNode_9nn70n_a0b0a0b0f8(getNodeById("8187773339868709516"));
+        SNode nodeToMatch = _quotation_createNode_9nn70n_a0b0a0b0h8(getAnnotatedNode("constructor"));
         if (new LightPattern_Reference_Test.Pattern5_Pattern().match(nodeToMatch)) {
-          matches = LightPattern_Reference_Test.Pattern5_Pattern.getVar(nodeToMatch) == getNodeById("8187773339868709516");
+          matches = LightPattern_Reference_Test.Pattern5_Pattern.getVar(nodeToMatch) == getAnnotatedNode("constructor");
           System.out.println(LightPattern_Reference_Test.Pattern5_Pattern.getVar(nodeToMatch).getModel());
-          System.out.println(getNodeById("8187773339868709516").getModel());
+          System.out.println(getAnnotatedNode("constructor").getModel());
         } else {
           matches = false;
         }
@@ -86,7 +91,7 @@ public class LightPatternReferenceTest_Test extends BaseTransformationTest {
       });
     }
 
-    private static SNode _quotation_createNode_9nn70n_a0b0a0b0d8() {
+    private static SNode _quotation_createNode_9nn70n_a0b0a0b0f8() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -101,7 +106,7 @@ public class LightPatternReferenceTest_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), quotedNode_2);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_9nn70n_a0b0a0b0e8(Object parameter_1) {
+    private static SNode _quotation_createNode_9nn70n_a0b0a0b0g8(Object parameter_1) {
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
       SNode quotedNode_4 = null;
@@ -116,7 +121,7 @@ public class LightPatternReferenceTest_Test extends BaseTransformationTest {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), quotedNode_3);
       return quotedNode_2;
     }
-    private static SNode _quotation_createNode_9nn70n_a0b0a0b0f8(Object parameter_1) {
+    private static SNode _quotation_createNode_9nn70n_a0b0a0b0h8(Object parameter_1) {
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
       SNode quotedNode_4 = null;

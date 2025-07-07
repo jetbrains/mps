@@ -25,7 +25,7 @@ import java.util.Collections;
 import java.util.stream.Stream;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
-@GeneratedClass(node = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)/6168415856807659069", model = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)")
+@GeneratedClass(nodeId = "6168415856807659069", model = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)")
 public final class FacetRegistry implements CoreComponent {
   private static Logger LOG = Logger.getLogger(FacetRegistry.class);
   private Map<IFacet.Name, IFacet> facetMap = MapSequence.fromMap(new HashMap<IFacet.Name, IFacet>());

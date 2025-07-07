@@ -2,7 +2,7 @@
 <model ref="r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)">
   <persistence version="9" />
   <languages>
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -19,9 +19,6 @@
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
-      </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
       </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
@@ -60,7 +57,6 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -226,13 +222,6 @@
       <property role="TrG5h" value="deg" />
       <property role="IQ2nx" value="758819215871550447" />
       <ref role="AX2Wp" node="3Ftr4R6BFKs" resolve="MatrixNormKind" />
-      <node concept="3l_iC" id="3Ftr4R6BHbL" role="lGtFl">
-        <node concept="1TJgyi" id="E7RwTMKUfJ" role="3l_iP">
-          <property role="TrG5h" value="deg" />
-          <property role="IQ2nx" value="758819215871550447" />
-          <ref role="AX2Wp" node="3Ftr4R6BFKs" resolve="MatrixNormKind" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyj" id="E7RwTMJ0Zh" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -532,13 +521,6 @@
       <property role="TrG5h" value="target" />
       <property role="IQ2nx" value="1237214516967" />
       <ref role="AX2Wp" node="3Ftr4R6BFK2" resolve="CastTargetDescriptor" />
-      <node concept="3l_iC" id="3Ftr4R6BHbR" role="lGtFl">
-        <node concept="1TJgyi" id="i0fIPrB" role="3l_iP">
-          <property role="TrG5h" value="target" />
-          <property role="IQ2nx" value="1237214516967" />
-          <ref role="AX2Wp" node="3Ftr4R6BFK2" resolve="CastTargetDescriptor" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="i1j4sHm">

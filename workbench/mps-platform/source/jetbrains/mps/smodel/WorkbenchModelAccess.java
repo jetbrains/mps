@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,13 +24,14 @@ import jetbrains.mps.ide.undo.WorkbenchUndoHandler;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.undo.DefaultUndoContext;
 import jetbrains.mps.smodel.undo.UndoContext;
-import jetbrains.mps.util.ComputeRunnable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.util.RunWithOutcome;
 
 import java.math.BigDecimal;
+import java.util.concurrent.Callable;
 
 import static java.math.BigDecimal.valueOf;
 
@@ -47,6 +48,16 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   private final WorkbenchUndoHandler myUndoHandler;
   private final CancellableReadsManager myCancellableReads;
   private final ModelAccess mySubstitutedModelAccess;
+
+  /**
+   * PROVISIONAL CODE
+   * DON'T USE OUTSIDE OF MPS.
+   * IN MPS, DON'T USE UNLESS FOR TRANSITION PURPOSES
+   * @return IDEA App Service instance
+   */
+  public static WorkbenchModelAccess getInstance() {
+    return (WorkbenchModelAccess) ApplicationManager.getApplication().getService(org.jetbrains.mps.openapi.module.ModelAccess.class);
+  }
 
   public WorkbenchModelAccess() {
     // not allowing to substitute alien model accesses here
@@ -81,8 +92,9 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       myCancellableReads.removeIfCanCancel(r);
       return;
     }
-    ApplicationManager.getApplication().runReadAction(new LockRunnable(getReadLock(), myReadActionDispatcher.wrap(r)));
+    ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(new LockRunnable(getReadLock(), myReadActionDispatcher.wrap(r))));
     myCancellableReads.removeIfCanCancel(r);
+    sharedReadIsOver(); // FIXME not nice we do this outside of LockRunnable, but don't want to bother right now
   }
 
   @Override
@@ -95,10 +107,11 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     myCancellableReads.cancel();
     final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), wrapWithModelWriteDispatch(r));
     if (isInEDT()) {
-      myPlatformWriteHelper.runWrite(lockRunnable);
+      myPlatformWriteHelper.runWrite(new PlatformCancelBlock(lockRunnable));
     } else {
-      ApplicationManager.getApplication().runReadAction(lockRunnable);
+      ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(lockRunnable));
     }
+    sharedReadIsOver();
   }
 
   // to cease once clearRepositoryStateCache gone
@@ -162,7 +175,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     // 1 ms is pretty short to be considered 'try'
     final LockRunnable lockRunnable = new LockRunnable(getReadLock(), 1, myReadActionDispatcher.wrap(r));
     // XXX likely, shall try to grab IDEA's read lock much like tryWrite does
-    ApplicationManager.getApplication().runReadAction(lockRunnable);
+    ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(lockRunnable));
     if (lockRunnable.wasExecuted()) {
       myCancellableReads.removeIfCanCancel(r);
       return true;
@@ -189,7 +202,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     try {
       // in fact, there are 2 lock attempts, one to grab IDEA's platform lock (myPlatformWriteHelper.tryWrite),
       // and another is to grab MPS write lock with lockRunnable
-      myPlatformWriteHelper.tryWrite(lockRunnable);
+      myPlatformWriteHelper.tryWrite(new PlatformCancelBlock(lockRunnable));
     } catch (WriteTimeOutException e) {
       // XXX why not return false to indicate failed attempt?
       throw new TimeOutRuntimeException(String.format(IDEA_WRITE_LOCK_FAIL, taskTimer.secondsElapsed()), e);
@@ -221,12 +234,8 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     TaskTimer taskTimer = new TaskTimer();
     // tryWrite ensures our command runnable would be executed from a distinct thread and hence would be 'top' one
     final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, wrapWithModelWriteDispatch(wrapTopCommandRunnable(r, project)));
-    ComputeRunnable<WriteTimeOutException> computable = new ComputeRunnable<>(() -> {
-      try {
-        myPlatformWriteHelper.tryWrite(lockRunnable);
-      } catch (WriteTimeOutException e) {
-        return e;
-      }
+    RunWithOutcome<Object> computable = new RunWithOutcome<>((Callable<?>) () -> {
+      myPlatformWriteHelper.tryWrite(new PlatformCancelBlock(lockRunnable));
       return null;
     });
     // XXX unlike #executeCommand(Runnable, Project), we don't respect UndoRunnable options here, why?
@@ -241,9 +250,9 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       }
     }
     CommandProcessor.getInstance().executeCommand(project.getProject(), computable, name, groupId, confirmUndo);
-    if (computable.getResult() != null) {
+    if (computable.getException() != null) {
       // XXX why on earth do we report platform lock timeout with an exception, while model lock timeout with mere boolean wasExecuted?
-      throw new TimeOutRuntimeException(String.format(IDEA_WRITE_LOCK_FAIL, taskTimer.secondsElapsed()), computable.getResult());
+      throw new TimeOutRuntimeException(String.format(IDEA_WRITE_LOCK_FAIL, taskTimer.secondsElapsed()), computable.getException());
     }
     return lockRunnable.wasExecuted();
   }
@@ -307,7 +316,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       }
     } else {
       final LockRunnable withModelLock = new LockRunnable(getWriteLock(), wrapWithModelWriteDispatch(cmd));
-      cmd = myPlatformWriteHelper.withPlatformWrite(withModelLock);
+      cmd = myPlatformWriteHelper.withPlatformWrite(new PlatformCancelBlock((withModelLock)));
     }
     CommandProcessor.getInstance().executeCommand(project.getProject(), cmd, name, groupId, confirmUndo);
   }
@@ -321,7 +330,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     myCancellableReads.cancel();
 
     final LockRunnable withModelLock = new LockRunnable(getWriteLock(), wrapWithModelWriteDispatch(wrapTopCommandRunnable(r, project)));
-    CommandProcessor.getInstance().runUndoTransparentAction(myPlatformWriteHelper.withPlatformWrite(withModelLock));
+    CommandProcessor.getInstance().runUndoTransparentAction(myPlatformWriteHelper.withPlatformWrite(new PlatformCancelBlock(withModelLock)));
   }
 
   @Override

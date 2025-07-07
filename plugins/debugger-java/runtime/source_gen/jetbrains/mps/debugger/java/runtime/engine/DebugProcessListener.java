@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debugger.java.runtime.engine.events.Context;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 
-@GeneratedClass(node = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)/8961922059449034483", model = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)")
+@GeneratedClass(nodeId = "8961922059449034483", model = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)")
 public interface DebugProcessListener {
   void connectorIsReady();
   void paused(@NotNull Context suspendContext);

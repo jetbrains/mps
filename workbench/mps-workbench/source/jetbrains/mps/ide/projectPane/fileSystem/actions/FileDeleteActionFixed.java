@@ -17,6 +17,7 @@ package jetbrains.mps.ide.projectPane.fileSystem.actions;
 
 import com.intellij.ide.DeleteProvider;
 import com.intellij.ide.actions.DeleteAction;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
@@ -40,6 +41,11 @@ public class FileDeleteActionFixed extends DeleteAction {
 
   private static class MyDeleteProvider implements DeleteProvider {
     private final static Logger LOG = Logger.getLogger(MyDeleteProvider.class);
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
 
     @Override
     public boolean canDeleteElement(@NotNull DataContext dataContext) {

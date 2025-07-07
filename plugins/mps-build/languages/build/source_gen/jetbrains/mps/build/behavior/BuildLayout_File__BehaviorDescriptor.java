@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
-import jetbrains.mps.build.util.LocalSourcePathArtifact;
 import jetbrains.mps.build.util.FileSetUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -58,12 +57,7 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
         return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(required), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$xmoo)));
       }
     }
-    if (artifactId instanceof LocalSourcePathArtifact) {
-      LocalSourcePathArtifact art = (LocalSourcePathArtifact) artifactId;
-      if (!(art.isFolder()) && art.getRoot() == SNodeOperations.getContainingRoot(__thisNode__)) {
-        return Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$xmoo)));
-      }
-    }
+    // Here used to be dead code with LocalSourcePathArtifact alternative. LSPA now always represents folders, no way to match BL_File
     return false;
   }
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {

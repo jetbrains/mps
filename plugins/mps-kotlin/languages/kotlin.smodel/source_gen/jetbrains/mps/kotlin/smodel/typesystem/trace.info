@@ -87,13 +87,13 @@
     <file name="fix_shortNodeTypeAsProjection_QuickFix.java">
       <node id="2852204284038044344" at="12,51,13,133" concept="10" />
       <node id="2852204284038066785" at="15,44,16,34" concept="7" />
-      <node id="2852204284040996874" at="18,35,19,278" concept="2" />
+      <node id="2852204284040996874" at="18,35,19,270" concept="2" />
       <node id="2852204284038044344" at="12,0,15,0" concept="1" trace="fix_shortNodeTypeAsProjection_QuickFix#()V" />
       <node id="2852204284038044344" at="15,0,18,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="2852204284038044344" at="18,0,21,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="2852204284038044344" at="12,51,13,133" />
       <scope id="2852204284038066474" at="15,44,16,34" />
-      <scope id="2852204284038044346" at="18,35,19,278" />
+      <scope id="2852204284038044346" at="18,35,19,270" />
       <scope id="2852204284038044344" at="12,0,15,0" />
       <scope id="2852204284038044344" at="15,0,18,0">
         <var name="node" id="2852204284038044344" />

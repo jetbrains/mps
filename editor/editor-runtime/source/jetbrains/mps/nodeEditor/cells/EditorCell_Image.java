@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -260,7 +260,7 @@ public class EditorCell_Image extends EditorCell_Basic {
         return null;
       }
       String fullPath = MacrosFactory.forModule(m).expandPath(myPath);
-      if (fullPath == null || !(m instanceof AbstractModule)) {
+      if (fullPath == null || !(m instanceof AbstractModule) || ((AbstractModule) m).getDescriptorFile() == null) {
         return null;
       }
 
@@ -276,7 +276,7 @@ public class EditorCell_Image extends EditorCell_Basic {
         // into EditorContext implementation (which could use ModuleRuntime.getOwnResource() for deployed modules)
         // or even under some IconManager (BaseIconManager alternative) so that there's single place to look for modules
         // come and go.
-        IFile iconFile = ((AbstractModule) m).getFileSystem().findExistingFile(fullPath);
+        IFile iconFile = ((AbstractModule) m).getDescriptorFile().getFileSystem().findExistingFile(fullPath);
         if (iconFile == null) {
           LOG.info(String.format("Can't find image '%s' in module %s", myPath, m.getModuleName()));
           return null;

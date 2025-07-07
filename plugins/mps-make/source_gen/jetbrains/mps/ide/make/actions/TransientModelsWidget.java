@@ -6,12 +6,12 @@ import com.intellij.openapi.wm.StatusBarWidget;
 import com.intellij.openapi.wm.CustomStatusBarWidget;
 import com.intellij.ide.ui.UISettingsListener;
 import java.beans.PropertyChangeListener;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.wm.StatusBar;
 import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.generator.IModifiableGenerationSettings;
 import java.awt.KeyboardFocusManager;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.util.Consumer;
@@ -25,22 +25,21 @@ import java.beans.PropertyChangeEvent;
 
 /*package*/ class TransientModelsWidget implements StatusBarWidget, CustomStatusBarWidget, StatusBarWidget.TextPresentation, StatusBarWidget.WidgetPresentation, UISettingsListener, PropertyChangeListener {
   public static final String WIDGET_ID = "TransientModelsWidget";
-  @NotNull
-  private final StatusBar myStatusBar;
+  private StatusBar myStatusBar;
   private final Icon myIcon = MPSIcons.Nodes.TransientModule;
   private final Icon myIconDisable = MPSIcons.Nodes.TransientModuleDisabled;
   private final IModifiableGenerationSettings myGenerationSettings;
   private TransientModelsPanel myComponent;
   private KeyboardFocusManager myFocusManager;
+  private boolean myIsDisposed = false;
 
-  public TransientModelsWidget(StatusBar bar, IModifiableGenerationSettings settings) {
-    myStatusBar = bar;
+  public TransientModelsWidget(IModifiableGenerationSettings settings) {
     myGenerationSettings = settings;
-
   }
 
   @Override
   public void install(@NotNull StatusBar bar) {
+    myStatusBar = bar;
     // Use approach from com.intellij.openapi.wm.impl.status.ToolWindowsWidget
     ApplicationManager.getApplication().getMessageBus().connect(this).subscribe(UISettingsListener.TOPIC, this);
     myFocusManager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
@@ -78,10 +77,15 @@ import java.beans.PropertyChangeEvent;
   }
 
   public void update() {
+    if (myIsDisposed) {
+      return;
+    }
     if (myComponent != null) {
       myComponent.update();
     }
-    myStatusBar.updateWidget(ID());
+    if (myStatusBar != null) {
+      myStatusBar.updateWidget(ID());
+    }
   }
 
   @Nullable
@@ -92,6 +96,8 @@ import java.beans.PropertyChangeEvent;
 
   @Override
   public void dispose() {
+    myIsDisposed = true;
+    myStatusBar = null;
     // no need to removeUISettingsListener as it is registered with Disposable and UISettings removes the listener on dispose
     if (myFocusManager != null) {
       myFocusManager.removePropertyChangeListener("focusOwner", this);

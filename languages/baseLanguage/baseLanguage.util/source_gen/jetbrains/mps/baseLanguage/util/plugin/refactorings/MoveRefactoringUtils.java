@@ -81,13 +81,19 @@ public class MoveRefactoringUtils {
     }
     SRepository repo = mm.getRepository();
     ModelDependencyUpdate mdu = new ModelDependencyUpdate(mm, node);
-    int beforeSize = ((SModelInternal) mm).getModelImports().size();
+    int beforeSize = as_rpe1sx_a0a0a4a5(mm, SModelInternal.class).getModelImports().size();
     mdu.updateImportedModels(repo);
-    int afterSize = ((SModelInternal) mm).getModelImports().size();
+    int afterSize = as_rpe1sx_a0a0a6a5(mm, SModelInternal.class).getModelImports().size();
     if (repo != null && mm.getModule() != null) {
       mdu.updateModuleDependencies(repo);
     }
     return afterSize > beforeSize;
+  }
+  private static <T> T as_rpe1sx_a0a0a4a5(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_rpe1sx_a0a0a6a5(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 
   private static final class CONCEPTS {

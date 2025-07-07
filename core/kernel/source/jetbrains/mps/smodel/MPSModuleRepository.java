@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.extapi.model.StorageMemoryConflictResolver;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.module.SRepositoryBase;
@@ -50,7 +51,6 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
-@SuppressWarnings("UnstableApiUsage") // just to get rid of errors for log4j.Logger
 public class MPSModuleRepository extends SRepositoryBase implements CoreComponent, SRepositoryExt, ReferenceScopeHelper.Source {
   private static final Logger LOG = Logger.getLogger(MPSModuleRepository.class);
   private static MPSModuleRepository ourInstance;
@@ -86,7 +86,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
    * @since 3.2
    * @deprecated
    */
-@Deprecated(since = "3.4", forRemoval = true)
+  @Deprecated(since = "3.4", forRemoval = true)
   public static MPSModuleRepository getInstance() {
     return ourInstance;
   }
@@ -144,8 +144,6 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     SModuleId moduleId = moduleToRegister.getModuleReference().getModuleId();
     String moduleFqName = moduleToRegister.getModuleName();
 
-    AbstractModule aModuleToRegister = (AbstractModule) moduleToRegister;
-
     SModule existing = getModule(moduleId);
     if (existing != null) {
       //paranoid check relates to MPS-24219
@@ -156,7 +154,9 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
       if (!Objects.equals(existing.getModuleName(), moduleFqName)) {
         String msg = "Trying to register a module with the same identity but different name. There's module '%s' in the repository, and new module is '%s'.\n" +
                      "Original module comes from %s, contesting from %s";
-        LOG.error(String.format(msg, existing.getModuleName(), moduleFqName, ((AbstractModule) existing).getDescriptorFile(), aModuleToRegister.getDescriptorFile()));
+        Object existingModuleLocation = existing instanceof AbstractModule ? ((AbstractModule) existing).getDescriptorFile() : "<unknown>";
+        Object newModuleLocation = moduleToRegister instanceof AbstractModule ? ((AbstractModule) moduleToRegister).getDescriptorFile() : "<unknown>";
+        LOG.error(String.format(msg, existing.getModuleName(), moduleFqName, existingModuleLocation, newModuleLocation));
       }
       myModuleToOwners.addLink(existing, owner);
       return (T) existing;
@@ -167,8 +167,10 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     // XXX for now, decided to let AbstractModule.attach to control whether it has incomplete model set; although might be reasonable
     //     to keep this logic here, without the need for markIncompleteModelSet() callback or an SRepositoryListener notifications?
 
-    checkModelsAreNotChanged(aModuleToRegister);
-    aModuleToRegister.attach(this);
+    checkModelsAreNotChanged(moduleToRegister);
+    if (moduleToRegister instanceof SModuleBase) {
+      ((SModuleBase) moduleToRegister).attach(this);
+    }
     myModuleToOwners.addLink(moduleToRegister, owner);
     invalidateCaches();
     fireModuleAdded(moduleToRegister);
@@ -176,7 +178,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   }
 
   // Adding not saved model can cause data loss, see MPS-18743.
-  private void checkModelsAreNotChanged(AbstractModule aModuleToRegister) {
+  private void checkModelsAreNotChanged(SModule aModuleToRegister) {
     aModuleToRegister.forEachRegisteredModel(model -> {
       if (model instanceof EditableSModel && ((EditableSModel) model).isChanged()) {
         LOG.error("Added a module with unsaved model to a repository. " +
@@ -370,6 +372,23 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   private boolean checkModulesModelsChanged() {
     boolean changedModule = myModules.stream().filter(EditableSModule.class::isInstance).map(EditableSModule.class::cast).anyMatch(EditableSModule::isChanged);
     return changedModule || myModelRepository.hasModelsToSave();
+  }
+
+  // provisional duplication of ConflictResolver logic from ProjectRepository for the time while this one is the true
+  // owner of all modules. Once we keep project modules inside ProjectRepository only, can keep independent resolvers (or no resolver at all for this one)
+  private StorageMemoryConflictResolver<EditableSModel> myConflictResolver;
+
+  @Override
+  public StorageMemoryConflictResolver<EditableSModel> getConflictResolver() {
+    if (myConflictResolver != null) {
+      return myConflictResolver;
+    }
+    return SRepositoryExt.super.getConflictResolver();
+  }
+
+  public void setConflictResolver(StorageMemoryConflictResolver<? super EditableSModel> resolver) {
+    // null value resets to a default resolver logic.
+    myConflictResolver = (StorageMemoryConflictResolver<EditableSModel>) resolver;
   }
 
   //

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.module;
 
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.MPSModuleClassLoader;
-import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -73,6 +72,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
  * @deprecated this interface is not bad per se, just the fact it extends {@code SModule} is unfortunate.
  *             Eventually, {@code ClassLoaderManager} shall use this one (and aggregate SModule)
  *             for its CL purposes, keeping SModule hierarchy (Solution, Language, Generator, etc) independent.
+ *             <br/>Required change: If you need to access SModule, don't assume this class extends {@code SModule}, get one using {@link #getModule()}
  */
 @Deprecated(forRemoval = false, since = "2023.3")
 public interface ReloadableModule extends SModule {
@@ -86,7 +86,14 @@ public interface ReloadableModule extends SModule {
    * warning: this method is lazy implemented!
    */
   @NotNull
-  Class<?> getClass(@NotNull String classFqName) throws ClassNotFoundException;
+  default Class<?> getClass(@NotNull String classFqName) throws ClassNotFoundException {
+    MPSModuleClassLoader classLoader = getClassLoader();
+    Class<?> aClass = classLoader.loadClass(classFqName);
+    if (aClass == null) {
+      throw new LoadedClassIsNullException(classLoader, classFqName);
+    }
+    return aClass;
+  }
 
 
   /**
@@ -100,7 +107,9 @@ public interface ReloadableModule extends SModule {
    * warning: this method is lazy implemented!
    */
   @NotNull
-  Class<?> getOwnClass(@NotNull String classFqName) throws ClassNotFoundException;
+  default Class<?> getOwnClass(@NotNull String classFqName) throws ClassNotFoundException {
+    return getClassLoader().loadOwnClass(classFqName);
+  }
 
   /**
    * Currently there are MPS ModuleClassLoader, dealing with regular MPS-managed modules and their generated classes,
@@ -112,16 +121,9 @@ public interface ReloadableModule extends SModule {
    */
   @NotNull
   default MPSModuleClassLoader getClassLoader() {
-    return getClassLoader0();
-  }
-
-  /**
-   * @deprecated {@link #getClassLoader()} has been updated, use it instead
-   */
-  @NotNull
-  default MPSModuleClassLoader getClassLoader0() {
-    Logger.getLogger(getClass()).warnDeprecatedUse("use getClassLoader() directly");
-    return getClassLoader();
+    // this is provisional code until we split AM and ReloadableModule hierarchy. RM would become a wrapper for CLM own purposes
+    // (and would get CLM instance at construction then)
+    return ClassLoaderManager.getInstance().getClassLoader(getModule());
   }
 
   /**

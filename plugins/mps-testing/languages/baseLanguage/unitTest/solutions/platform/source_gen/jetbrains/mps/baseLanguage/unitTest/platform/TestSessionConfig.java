@@ -11,6 +11,7 @@ import java.util.HashMap;
 public class TestSessionConfig {
 
   private Map<Object, Object> myAccessories = new HashMap<>(4);
+  private Map<String, String> myProperties = new HashMap<>(4);
 
   public TestSessionConfig() {
   }
@@ -27,7 +28,17 @@ public class TestSessionConfig {
     return this;
   }
 
+  /**
+   * Set a value for a system property that needs to be overridden.
+   */
+  public TestSessionConfig withSystemProperty(String key, String property) {
+    if (property != null) {
+      myProperties.put(key, property);
+    }
+    return this;
+  }
+
   protected TestSession create() {
-    return new TestSession(myAccessories);
+    return new TestSession(myAccessories, myProperties);
   }
 }

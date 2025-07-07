@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -17,7 +17,7 @@ import java.io.IOException;
 @MPSLaunch
 public class ImageExport_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(ImageExport_Test.class, "${mps_home}", "r:57812925-2ef0-43c6-8314-0222b2c13acf(jetbrains.mps.lang.editor.imageGen.tests@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ImageExport_Test.class).projectPath(null).modelRef("r:57812925-2ef0-43c6-8314-0222b2c13acf(jetbrains.mps.lang.editor.imageGen.tests@tests)").reopenProject(null).build());
 
   public ImageExport_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -38,7 +38,13 @@ public class ImageExport_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_manuallyExportedImage() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         ImageLoader imageloader = new ImageLoader("ManuallyExportedImage.gif");
         try {
@@ -50,6 +56,7 @@ public class ImageExport_Test extends BaseTransformationTest {
       });
     }
     public void test_imageExportedByGenerator() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         ImageLoader imageloader = new ImageLoader(Cls.class.getSimpleName() + ".png");
         try {

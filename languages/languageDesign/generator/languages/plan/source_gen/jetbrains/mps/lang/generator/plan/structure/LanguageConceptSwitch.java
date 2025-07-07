@@ -19,16 +19,17 @@ public final class LanguageConceptSwitch {
   public static final int DocumentationLine = 7;
   public static final int DocumentationStep = 8;
   public static final int Fork = 9;
-  public static final int ForkOf = 10;
-  public static final int ForkSelector = 11;
-  public static final int InPlaceCheckpointRefSpec = 12;
-  public static final int InPlaceCheckpointSpec = 13;
-  public static final int IncludePlan = 14;
-  public static final int LanguageEntry = 15;
-  public static final int Plan = 16;
-  public static final int Step = 17;
-  public static final int TextDocLine = 18;
-  public static final int Transform = 19;
+  public static final int ForkAs = 10;
+  public static final int ForkOf = 11;
+  public static final int ForkSelector = 12;
+  public static final int InPlaceCheckpointRefSpec = 13;
+  public static final int InPlaceCheckpointSpec = 14;
+  public static final int IncludePlan = 15;
+  public static final int LanguageEntry = 16;
+  public static final int Plan = 17;
+  public static final int Step = 18;
+  public static final int TextDocLine = 19;
+  public static final int Transform = 20;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L);
@@ -42,6 +43,7 @@ public final class LanguageConceptSwitch {
     builder.put(0xc6a8aea78a50f67L, DocumentationLine);
     builder.put(0xc6a8aea78a4805dL, DocumentationStep);
     builder.put(0x2bf683196b12a3cbL, Fork);
+    builder.put(0x177eaafe20561e5fL, ForkAs);
     builder.put(0x6969a2cdc59e74c5L, ForkOf);
     builder.put(0x1ea8fc1842bbe7eeL, ForkSelector);
     builder.put(0x340cd07aed7cb32cL, InPlaceCheckpointRefSpec);

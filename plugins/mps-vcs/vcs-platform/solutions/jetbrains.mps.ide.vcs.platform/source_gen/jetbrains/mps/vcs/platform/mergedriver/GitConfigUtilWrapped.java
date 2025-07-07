@@ -15,7 +15,7 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import git4idea.config.GitConfigUtil;
 import com.intellij.openapi.progress.ProgressManager;
 
-@GeneratedClass(node = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/6692539425074861414", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
+@GeneratedClass(nodeId = "6692539425074861414", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
 public class GitConfigUtilWrapped {
   public static String getValue(@NotNull final Project project, @NotNull final VirtualFile root, @NotNull final String key) throws VcsException {
     Application application = ApplicationManager.getApplication();

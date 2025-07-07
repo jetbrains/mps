@@ -46,7 +46,7 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
     projectRepository.getModelAccess().runReadAction(() -> {
       SModel struc = SModuleOperations.getAspect(testPackagedLanguageModule(), "structure");
       Assert.assertNotNull(struc);
-      Assert.assertEquals(ListSequence.fromList(SModelOperations.roots(struc, null)).count(), 1);
+      Assert.assertEquals(Integer.valueOf(ListSequence.fromList(SModelOperations.roots(struc, null)).count()), Integer.valueOf(1));
     });
   }
   @Test
@@ -54,7 +54,7 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
     projectRepository.getModelAccess().runReadAction(() -> {
       SModel editor = SModuleOperations.getAspect(testPackagedLanguageModule(), "editor");
       Assert.assertNotNull(editor);
-      Assert.assertEquals(ListSequence.fromList(SModelOperations.roots(editor, null)).count(), 1);
+      Assert.assertEquals(Integer.valueOf(ListSequence.fromList(SModelOperations.roots(editor, null)).count()), Integer.valueOf(1));
     });
   }
   @Test
@@ -64,8 +64,8 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
       GlobalIconManager iconManager = GlobalIconManager.getInstance();
       Icon icon = iconManager.getIconFor(CONCEPTS.TestConcept$ND);
       Assert.assertNotNull(icon);
-      Assert.assertEquals(icon.getIconWidth(), 16);
-      Assert.assertEquals(icon.getIconHeight(), 16);
+      Assert.assertEquals(Integer.valueOf(icon.getIconWidth()), Integer.valueOf(16));
+      Assert.assertEquals(Integer.valueOf(icon.getIconHeight()), Integer.valueOf(16));
     });
   }
   @Test
@@ -80,7 +80,7 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
         }
       }
       Assert.assertNotNull(libraryModel);
-      Assert.assertEquals(ListSequence.fromList(SModelOperations.roots(libraryModel, null)).count(), 1);
+      Assert.assertEquals(Integer.valueOf(ListSequence.fromList(SModelOperations.roots(libraryModel, null)).count()), Integer.valueOf(1));
       Assert.assertEquals(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SModelOperations.roots(libraryModel, null)).first(), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL), "DummyLibraryClass");
     });
   }

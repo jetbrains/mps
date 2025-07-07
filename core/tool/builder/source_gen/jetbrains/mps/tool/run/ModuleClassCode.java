@@ -15,7 +15,7 @@ import java.util.function.IntPredicate;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Constructor;
 
-@GeneratedClass(node = "r:2706a815-df9c-4792-bb89-2a2c3cd1dc7a(jetbrains.mps.tool.run)/141668663183665326", model = "r:2706a815-df9c-4792-bb89-2a2c3cd1dc7a(jetbrains.mps.tool.run)")
+@GeneratedClass(nodeId = "141668663183665326", model = "r:2706a815-df9c-4792-bb89-2a2c3cd1dc7a(jetbrains.mps.tool.run)")
 public final class ModuleClassCode {
   private final String myModuleReference;
   private Class<?> myLoadedClass;

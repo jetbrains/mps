@@ -27,9 +27,6 @@
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="1225467090849" name="jetbrains.mps.lang.test.structure.ProjectExpression" flags="nn" index="1jxXqW" />
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
         <property id="2616911529524314943" name="accessMode" index="3DII0k" />
@@ -410,7 +407,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="o2FwARiECS" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.io.File)" resolve="getFile" />
                 <node concept="37vLTw" id="o2FwARiECT" role="37wK5m">
                   <ref role="3cqZAo" node="o2FwARim52" resolve="modelFile" />
                 </node>
@@ -1045,9 +1042,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="1fvQcDvAhsL">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
 </model>
 

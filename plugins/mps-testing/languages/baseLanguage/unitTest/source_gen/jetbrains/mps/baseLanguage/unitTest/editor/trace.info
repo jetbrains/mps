@@ -1356,9 +1356,9 @@
       <node id="1171978123200" at="48,48,49,28" concept="1" />
       <node id="1171978123200" at="49,28,50,31" concept="1" />
       <node id="1171978127907" at="50,31,51,49" concept="1" />
-      <node id="1171978341091" at="51,49,52,48" concept="1" />
+      <node id="1171978348249" at="51,49,52,48" concept="1" />
       <node id="1171978153884" at="52,48,53,49" concept="1" />
-      <node id="1171978348249" at="53,49,54,48" concept="1" />
+      <node id="1171978341091" at="53,49,54,48" concept="1" />
       <node id="5168467225194540185" at="54,48,55,50" concept="1" />
       <node id="1171978143085" at="55,50,56,49" concept="1" />
       <node id="1171978123200" at="56,49,57,22" concept="6" />
@@ -1369,27 +1369,27 @@
       <node id="1171978127907" at="63,93,64,40" concept="1" />
       <node id="1171978127907" at="64,40,65,34" concept="1" />
       <node id="1171978127907" at="65,34,66,22" concept="6" />
-      <node id="1171978123200" at="68,40,69,127" concept="5" />
-      <node id="1171978123200" at="69,127,70,33" concept="6" />
-      <node id="1171978123200" at="76,122,77,38" concept="8" />
+      <node id="1171978123200" at="68,40,69,123" concept="5" />
+      <node id="1171978123200" at="69,123,70,33" concept="6" />
+      <node id="1171978123200" at="76,120,77,38" concept="8" />
       <node id="1171978123200" at="77,38,78,25" concept="1" />
       <node id="1171978123200" at="83,28,84,20" concept="6" />
       <node id="1171978123200" at="87,55,88,76" concept="5" />
-      <node id="1171978123200" at="88,76,89,117" concept="1" />
-      <node id="1171978123200" at="89,117,90,120" concept="1" />
-      <node id="1171978123200" at="90,120,91,48" concept="1" />
+      <node id="1171978123200" at="88,76,89,115" concept="1" />
+      <node id="1171978123200" at="89,115,90,118" concept="1" />
+      <node id="1171978123200" at="90,118,91,48" concept="1" />
       <node id="1171978123200" at="91,48,92,24" concept="6" />
       <node id="1171978123200" at="98,118,99,137" concept="1" />
-      <node id="1171978123200" at="101,42,102,49" concept="1" />
+      <node id="1171978123200" at="101,42,102,47" concept="1" />
       <node id="1171978123200" at="106,44,107,41" concept="1" />
-      <node id="1171978123200" at="107,41,108,108" concept="1" />
+      <node id="1171978123200" at="107,41,108,106" concept="1" />
       <node id="1171978123200" at="109,11,110,56" concept="5" />
-      <node id="1171978123200" at="110,56,111,47" concept="1" />
-      <node id="1171978123200" at="111,47,112,48" concept="1" />
+      <node id="1171978123200" at="110,56,111,45" concept="1" />
+      <node id="1171978123200" at="111,45,112,48" concept="1" />
       <node id="1171978123200" at="112,48,113,35" concept="1" />
       <node id="1171978123200" at="113,35,114,26" concept="6" />
       <node id="1171978123200" at="115,17,116,42" concept="1" />
-      <node id="1171978123200" at="119,40,120,24" concept="6" />
+      <node id="1171978123200" at="119,40,120,22" concept="6" />
       <node id="1171978153884" at="123,41,124,99" concept="5" />
       <node id="1171978153884" at="124,99,125,47" concept="1" />
       <node id="1171978153884" at="125,47,126,34" concept="5" />
@@ -1397,27 +1397,27 @@
       <node id="1171978153884" at="127,93,128,40" concept="1" />
       <node id="1171978153884" at="128,40,129,34" concept="1" />
       <node id="1171978153884" at="129,34,130,22" concept="6" />
-      <node id="1171978123200" at="132,40,133,123" concept="5" />
-      <node id="1171978123200" at="133,123,134,33" concept="6" />
-      <node id="1171978123200" at="140,120,141,38" concept="8" />
+      <node id="1171978123200" at="132,40,133,127" concept="5" />
+      <node id="1171978123200" at="133,127,134,33" concept="6" />
+      <node id="1171978123200" at="140,122,141,38" concept="8" />
       <node id="1171978123200" at="141,38,142,25" concept="1" />
       <node id="1171978123200" at="147,28,148,20" concept="6" />
       <node id="1171978123200" at="151,55,152,76" concept="5" />
-      <node id="1171978123200" at="152,76,153,115" concept="1" />
-      <node id="1171978123200" at="153,115,154,118" concept="1" />
-      <node id="1171978123200" at="154,118,155,48" concept="1" />
+      <node id="1171978123200" at="152,76,153,117" concept="1" />
+      <node id="1171978123200" at="153,117,154,120" concept="1" />
+      <node id="1171978123200" at="154,120,155,48" concept="1" />
       <node id="1171978123200" at="155,48,156,24" concept="6" />
       <node id="1171978123200" at="162,118,163,137" concept="1" />
-      <node id="1171978123200" at="165,42,166,47" concept="1" />
+      <node id="1171978123200" at="165,42,166,49" concept="1" />
       <node id="1171978123200" at="170,44,171,41" concept="1" />
-      <node id="1171978123200" at="171,41,172,106" concept="1" />
+      <node id="1171978123200" at="171,41,172,108" concept="1" />
       <node id="1171978123200" at="173,11,174,56" concept="5" />
-      <node id="1171978123200" at="174,56,175,45" concept="1" />
-      <node id="1171978123200" at="175,45,176,48" concept="1" />
+      <node id="1171978123200" at="174,56,175,47" concept="1" />
+      <node id="1171978123200" at="175,47,176,48" concept="1" />
       <node id="1171978123200" at="176,48,177,35" concept="1" />
       <node id="1171978123200" at="177,35,178,26" concept="6" />
       <node id="1171978123200" at="179,17,180,42" concept="1" />
-      <node id="1171978123200" at="183,40,184,22" concept="6" />
+      <node id="1171978123200" at="183,40,184,24" concept="6" />
       <node id="5168467225194540185" at="187,42,188,142" concept="5" />
       <node id="5168467225194540185" at="188,142,189,34" concept="5" />
       <node id="6425011686328630589" at="189,34,190,49" concept="1" />
@@ -1430,8 +1430,8 @@
       <node id="1171978143085" at="198,54,199,40" concept="1" />
       <node id="1171978143085" at="199,40,200,34" concept="1" />
       <node id="1171978143085" at="200,34,201,22" concept="6" />
-      <node id="1171978123200" at="205,0,206,0" concept="7" trace="expected$QBis" />
-      <node id="1171978123200" at="206,0,207,0" concept="7" trace="actual$QBxt" />
+      <node id="1171978123200" at="205,0,206,0" concept="7" trace="actual$QBxt" />
+      <node id="1171978123200" at="206,0,207,0" concept="7" trace="expected$QBis" />
       <node id="1171978123200" at="28,0,30,0" concept="2" trace="myNode" />
       <node id="1171978123200" at="73,0,75,0" concept="2" trace="myNode" />
       <node id="1171978123200" at="137,0,139,0" concept="2" trace="myNode" />
@@ -1444,9 +1444,9 @@
       <node id="1171978123200" at="183,0,186,0" concept="4" trace="getNoTargetText#()Ljava/lang/String;" />
       <node id="1171978123200" at="31,0,35,0" concept="0" trace="AssertEquals_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1171978123200" at="68,0,72,0" concept="4" trace="createRefNode_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1171978123200" at="76,0,80,0" concept="0" trace="expectedSingleRoleHandler_q24t2b_b0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="1171978123200" at="76,0,80,0" concept="0" trace="actualSingleRoleHandler_q24t2b_b0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="1171978123200" at="132,0,136,0" concept="4" trace="createRefNode_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1171978123200" at="140,0,144,0" concept="0" trace="actualSingleRoleHandler_q24t2b_d0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="1171978123200" at="140,0,144,0" concept="0" trace="expectedSingleRoleHandler_q24t2b_d0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="1171978123200" at="36,0,41,0" concept="4" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1171978123200" at="81,0,86,0" concept="4" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1171978123200" at="145,0,150,0" concept="4" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -1456,9 +1456,9 @@
       <node id="1171978123200" at="97,0,105,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="1171978123200" at="161,0,169,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="1171978127907" at="59,0,68,0" concept="4" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1171978123200" at="108,108,117,7" concept="9" />
+      <node id="1171978123200" at="108,106,117,7" concept="9" />
       <node id="1171978153884" at="123,0,132,0" concept="4" trace="createConstant_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1171978123200" at="172,106,181,7" concept="9" />
+      <node id="1171978123200" at="172,108,181,7" concept="9" />
       <node id="1171978143085" at="194,0,203,0" concept="4" trace="createConstant_2#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1171978123200" at="46,0,59,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1171978123200" at="105,0,119,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -1467,23 +1467,23 @@
       <scope id="1171978123200" at="42,39,43,32" />
       <scope id="1171978123200" at="83,28,84,20" />
       <scope id="1171978123200" at="98,118,99,137" />
-      <scope id="1171978123200" at="101,42,102,49" />
+      <scope id="1171978123200" at="101,42,102,47" />
       <scope id="1171978123200" at="115,17,116,42" />
-      <scope id="1171978123200" at="119,40,120,24" />
+      <scope id="1171978123200" at="119,40,120,22" />
       <scope id="1171978123200" at="147,28,148,20" />
       <scope id="1171978123200" at="162,118,163,137" />
-      <scope id="1171978123200" at="165,42,166,47" />
+      <scope id="1171978123200" at="165,42,166,49" />
       <scope id="1171978123200" at="179,17,180,42" />
-      <scope id="1171978123200" at="183,40,184,22" />
+      <scope id="1171978123200" at="183,40,184,24" />
       <scope id="1171978123200" at="31,92,33,18" />
       <scope id="1171978123200" at="68,40,70,33">
         <var name="provider" id="1171978123200" />
       </scope>
-      <scope id="1171978123200" at="76,122,78,25" />
+      <scope id="1171978123200" at="76,120,78,25" />
       <scope id="1171978123200" at="132,40,134,33">
         <var name="provider" id="1171978123200" />
       </scope>
-      <scope id="1171978123200" at="140,120,142,25" />
+      <scope id="1171978123200" at="140,122,142,25" />
       <scope id="1171978123200" at="42,0,45,0" />
       <scope id="1171978123200" at="119,0,122,0" />
       <scope id="1171978123200" at="183,0,186,0" />
@@ -1565,8 +1565,8 @@
       <scope id="1171978123200" at="105,0,119,0" />
       <scope id="1171978123200" at="169,0,183,0" />
       <unit id="1171978123200" at="204,0,208,0" name="jetbrains.mps.baseLanguage.unitTest.editor.AssertEquals_EditorBuilder_a$LINKS" />
-      <unit id="1171978123200" at="72,0,123,0" name="jetbrains.mps.baseLanguage.unitTest.editor.AssertEquals_EditorBuilder_a$expectedSingleRoleHandler_q24t2b_b0" />
-      <unit id="1171978123200" at="136,0,187,0" name="jetbrains.mps.baseLanguage.unitTest.editor.AssertEquals_EditorBuilder_a$actualSingleRoleHandler_q24t2b_d0" />
+      <unit id="1171978123200" at="72,0,123,0" name="jetbrains.mps.baseLanguage.unitTest.editor.AssertEquals_EditorBuilder_a$actualSingleRoleHandler_q24t2b_b0" />
+      <unit id="1171978123200" at="136,0,187,0" name="jetbrains.mps.baseLanguage.unitTest.editor.AssertEquals_EditorBuilder_a$expectedSingleRoleHandler_q24t2b_d0" />
       <unit id="1171978123200" at="27,0,209,0" name="jetbrains.mps.baseLanguage.unitTest.editor.AssertEquals_EditorBuilder_a" />
     </file>
   </root>

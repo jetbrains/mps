@@ -15,7 +15,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 /**
  * Allows to fill an empty project with given modules at runtime
  */
-@GeneratedClass(node = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/6450649963068208885", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
+@GeneratedClass(nodeId = "6450649963068208885", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
 public final class ProjectModulesFiller {
   private static final Logger LOG = Logger.getLogger(ProjectModulesFiller.class);
   private final Project myProject;

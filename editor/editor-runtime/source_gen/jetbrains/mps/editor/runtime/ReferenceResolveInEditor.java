@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 /**
  * Facility to resolve a (broken) reference in an editor by applying substitute action
  */
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/5447047924421797846", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+@GeneratedClass(nodeId = "5447047924421797846", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class ReferenceResolveInEditor {
   private final EditorComponent myEditorComponent;
   private EditorCell myLastCell;

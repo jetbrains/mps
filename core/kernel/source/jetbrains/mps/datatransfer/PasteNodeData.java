@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,26 +40,10 @@ public final class PasteNodeData {
   private final Collection<AssociationLink> myCopiedLinks;
   private final Set<SLanguage> myNecessaryLanguages; // r/o
   private final Set<SModelReference> myNecessaryModels; // r/o
-  private final SModelReference mySourceModel;
-
-  // for paste scenario, legacy
-  public PasteNodeData(List<SNode> nodes, Set<SReference> references,
-                       SModelReference sourceModelRef,
-                       Set<SLanguage> necessaryLanguages,
-                       Set<SModelReference> necessaryModels) {
-    myOrigin = null;
-    myNodes = nodes;
-    myRequireResolveReferences = references;
-    myCopiedLinks = Collections.emptyList();
-    mySourceModel = sourceModelRef;
-    myNecessaryLanguages = necessaryLanguages;
-    myNecessaryModels = necessaryModels;
-  }
 
   // for paste scenario, new
   public PasteNodeData(PasteNodeData in, List<SNode> nodes, Set<SReference> references) {
     myOrigin = in;
-    mySourceModel = in.mySourceModel;
     myNodes = nodes;
     myRequireResolveReferences = references;
     myCopiedLinks = Collections.emptySet(); // employed on copy only
@@ -67,9 +51,8 @@ public final class PasteNodeData {
     myNecessaryModels = in.getNecessaryModels();
   }
 
-    // for copy scenario
-  public PasteNodeData(SModelReference sourceModelRef,
-                       List<SNode> nodes,
+  // for copy scenario, new
+  public PasteNodeData(List<SNode> nodes,
                        @NotNull Collection<AssociationLink> references,
                        Set<SLanguage> necessaryLanguages,
                        Set<SModelReference> necessaryModels) {
@@ -77,20 +60,13 @@ public final class PasteNodeData {
     myNodes = nodes;
     myRequireResolveReferences = Collections.emptySet(); // employed on paste only
     myCopiedLinks = references;
-    mySourceModel = sourceModelRef;
     myNecessaryLanguages = necessaryLanguages;
     myNecessaryModels = necessaryModels;
   }
 
-    // empty
-  private PasteNodeData(@Nullable SModelReference sourceModel) {
-    myOrigin = null;
-    myNodes = Collections.emptyList();
-    myRequireResolveReferences = Collections.emptySet();
-    myCopiedLinks = Collections.emptyList();
-    mySourceModel = sourceModel;
-    myNecessaryLanguages = Collections.emptySet();
-    myNecessaryModels = Collections.emptySet();
+  // empty
+  private PasteNodeData() {
+    this(Collections.emptyList(), Collections.emptySet(), Collections.emptySet(), Collections.emptySet());
   }
 
   public List<SNode> getNodes() {
@@ -103,11 +79,6 @@ public final class PasteNodeData {
 
   public Collection<AssociationLink> getCopiedLinks() {
     return myCopiedLinks;
-  }
-
-  @Nullable
-  public SModelReference getSourceModel() {
-    return mySourceModel;
   }
 
   public Set<SLanguage> getNecessaryLanguages() {
@@ -126,11 +97,7 @@ public final class PasteNodeData {
    * @since 2024.1
    */
   public void consume() {
-    if (myOrigin == null) {
-      // Generally, shall not invoke consume() on node data other than intended for paste operation.
-      // However, could be null even for legitimate 'paste' usage, in case legacy constructor was employed
-      return;
-    }
+    assert myOrigin != null : "Don't invoke consume() on node data other than intended for paste operation";
     myOrigin.myPasteCount++; // XXX would be great to decrement on undo!
   }
 
@@ -141,7 +108,7 @@ public final class PasteNodeData {
     return myPasteCount > 0;
   }
 
-  public static PasteNodeData emptyPasteNodeData(SModelReference sourceModel) {
-    return new PasteNodeData(sourceModel);
+  public static PasteNodeData emptyPasteNodeData() {
+    return new PasteNodeData();
   }
 }

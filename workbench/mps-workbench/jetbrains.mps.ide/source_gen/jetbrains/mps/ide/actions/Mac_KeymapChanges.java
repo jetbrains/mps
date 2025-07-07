@@ -5,7 +5,7 @@ package jetbrains.mps.ide.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3734045384533036331", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "3734045384533036331", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public final class Mac_KeymapChanges extends BaseKeymapChanges {
   public Mac_KeymapChanges() {
     add("jetbrains.mps.ide.actions.NewElement_Action", "ctrl N");
@@ -14,7 +14,7 @@ public final class Mac_KeymapChanges extends BaseKeymapChanges {
     add("jetbrains.mps.ide.actions.ShowConceptInHierarchy_Action", "ctrl H");
     add("jetbrains.mps.ide.actions.ShowQuickDocumentation_Action", " F1");
     replace("jetbrains.mps.ide.actions.FindTextInProject_Action", "ctrl alt shift F");
-    replace("jetbrains.mps.ide.actions.ShowNodeInfo_Action", "ctrl Q");
+    replace("jetbrains.mps.ide.actions.ShowNodeInfo_Action", "ctrl shift Q");
     customTemplate("jetbrains.mps.ide.actions.GoToBookmark_Action", new ShortcutChange0());
     customTemplate("jetbrains.mps.ide.actions.SetBookmark_Action", new ShortcutChange1());
   }

@@ -21,7 +21,7 @@ public class EnumerationDescriptor_ResourcesPolicy extends EnumerationDescriptor
   private final EnumerationDescriptor.MemberDescriptor myMember_PRODUCE_0 = new EnumerationDescriptor.MemberDescriptor("PRODUCE", "produce", 0x1740bd43b75c4b27L, "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/4241665505353446927");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1740bd43b75c4b23L, 0x1740bd43b75c4b24L, 0x1740bd43b75c4b25L, 0x1740bd43b75c4b26L, 0x1740bd43b75c4b27L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_TRANSFORM_0, myMember_PASSTHRU_0, myMember_CONSUME_0, myMember_PRODUCE_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_TRANSFORM_0, myMember_PASSTHRU_0, myMember_CONSUME_0, myMember_PRODUCE_0);
 
   @Nullable
   @Override

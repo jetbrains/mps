@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.presentation;
 
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SNodeUtil;
@@ -27,6 +28,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -250,7 +252,15 @@ public class NodePresentationUtil {
     }
     SContainmentLink containmentLink = node.getContainmentLink();
     assert containmentLink != null;
-    return containmentLink.getName() + " (" + NameUtil.compactNodeFQName(node.getContainingRoot()) + ")";
+    final SNode root = node.getContainingRoot();
+    if (root!=null && root.getConcept().isSubConceptOf(SNodeUtil.concept_INamedConcept)) {
+      // Allow a potential getter on the "name" property to kick in
+      final String rootName = SPropertyOperations.getString(root, SNodeUtil.property_INamedConcept_name);
+      if (rootName != null) {
+        return containmentLink.getName() + " (" + NameUtil.compactNodeFQName(root, rootName) + ")";
+      }
+    }
+    return containmentLink.getName() + " (" + NameUtil.compactNodeFQName(root) + ")";
   }
 
   /**

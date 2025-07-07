@@ -51,12 +51,19 @@ public class TraceablePositionInfo extends PositionInfo {
     assert p instanceof TraceablePositionInfo;
     TraceablePositionInfo tpi = (TraceablePositionInfo) p;
     if (myConcept != null) {
-      result = myConcept.getName().compareTo(tpi.myConcept.getName());
-      if (result != 0) {
-        return result;
+      if (tpi.myConcept == null) {
+        return -1;
+      }
+      if (!myConcept.equals(tpi.myConcept)) {
+        // use of myConcept.getName() could trigger module/language loading, it's not what we would like to get here
+        // all we need here just any predictable order (note, I expect
+        return myConcept.toString().compareTo(tpi.myConcept.toString());
       }
     }
     if (myPropertyString != null) {
+      if (tpi.myPropertyString == null) {
+        return -1;
+      }
       return myPropertyString.compareTo(tpi.myPropertyString);
     }
     if (tpi.myConcept == null && tpi.myPropertyString == null) {

@@ -39,8 +39,11 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> hasStaticMemebers_idhFq8xqE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasStaticMemebers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1214840444586L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<List<SNode>> getMethodsToImplement_id4GM03FJm5q2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMethodsToImplement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5418393554803775106L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<List<SNode>> getMethodsToOverride_id4GM03FJm3zL = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMethodsToOverride").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5418393554803767537L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canBeFinal_id6aeBP5Qha2s = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeFinal").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7101788834635227292L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canBeAbstract_id6aeBP5Qh1A$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAbstract").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7101788834635192740L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canBeStatic_id2L7NFMAtrRg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeStatic").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3190746170657193424L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(findConstantByName_idhEwIiGU, getSuperclass_idi3H_lLu, getExtendedClassifierTypes_id1UeCwxlWKny, getExtendedEnumJavaType_id6O4rE5gbZ0q, getMembers_idhEwJjl2, hasStaticMemebers_idhFq8xqE, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(findConstantByName_idhEwIiGU, getSuperclass_idi3H_lLu, getExtendedClassifierTypes_id1UeCwxlWKny, getExtendedEnumJavaType_id6O4rE5gbZ0q, getMembers_idhEwJjl2, hasStaticMemebers_idhFq8xqE, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL, canBeFinal_id6aeBP5Qha2s, canBeAbstract_id6aeBP5Qh1A$, canBeStatic_id2L7NFMAtrRg);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -94,6 +97,15 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
     Iterable<SNode> allToBeAdded = Sequence.fromIterable(ownMethods).where((final SNode own) -> !(ListSequence.fromList(methodsToOverride).any((toBeOverriden) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(own, toBeOverriden))));
     return ListSequence.fromList(methodsToOverride).addSequence(Sequence.fromIterable(allToBeAdded));
   }
+  /*package*/ static boolean canBeFinal_id6aeBP5Qha2s(@NotNull SAbstractConcept __thisConcept__) {
+    return false;
+  }
+  /*package*/ static boolean canBeAbstract_id6aeBP5Qh1A$(@NotNull SAbstractConcept __thisConcept__) {
+    return false;
+  }
+  /*package*/ static boolean canBeStatic_id2L7NFMAtrRg(@NotNull SNode __thisNode__) {
+    return false;
+  }
 
   /*package*/ EnumClass__BehaviorDescriptor() {
   }
@@ -126,6 +138,8 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((List<SNode>) getMethodsToImplement_id4GM03FJm5q2(node));
       case 7:
         return (T) ((List<SNode>) getMethodsToOverride_id4GM03FJm3zL(node));
+      case 10:
+        return (T) ((Boolean) canBeStatic_id2L7NFMAtrRg(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -138,6 +152,10 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 8:
+        return (T) ((Boolean) canBeFinal_id6aeBP5Qha2s(concept));
+      case 9:
+        return (T) ((Boolean) canBeAbstract_id6aeBP5Qh1A$(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

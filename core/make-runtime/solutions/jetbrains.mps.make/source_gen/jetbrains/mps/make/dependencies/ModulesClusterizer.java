@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.generator.runtime.TemplateModule;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
-@GeneratedClass(node = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)/1077540970775387654", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
+@GeneratedClass(nodeId = "1077540970775387654", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
 public class ModulesClusterizer {
   private static Logger LOG = Logger.getLogger(ModulesCluster.class);
   private static boolean NEW_CLUSTERS = Boolean.getBoolean("mps.make.newclusters");

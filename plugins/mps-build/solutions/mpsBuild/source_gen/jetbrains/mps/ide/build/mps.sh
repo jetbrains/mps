@@ -209,11 +209,14 @@ CLASSPATH="$CLASSPATH:$IDE_HOME/lib/intellij-test-discovery.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/java-frontback.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/java-impl.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/javac2.jar"
+CLASSPATH="$CLASSPATH:$IDE_HOME/lib/jaxb-api.jar"
+CLASSPATH="$CLASSPATH:$IDE_HOME/lib/jaxb-runtime.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/jetbrains-annotations.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/jps-model.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/junit4.jar"
-CLASSPATH="$CLASSPATH:$IDE_HOME/lib/kotlin-compiler-client-embeddable-1.9.0.jar"
-CLASSPATH="$CLASSPATH:$IDE_HOME/lib/kotlinx-metadata-jvm-0.7.0.jar"
+CLASSPATH="$CLASSPATH:$IDE_HOME/lib/kotlin-compiler-client-embeddable-2.1.0.jar"
+CLASSPATH="$CLASSPATH:$IDE_HOME/lib/kotlin-metadata-jvm-2.1.0.jar"
+CLASSPATH="$CLASSPATH:$IDE_HOME/lib/kotlinx-metadata-klib-0.0.6.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/lib.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/mps-annotations.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/mps-behavior-api.jar"
@@ -250,12 +253,15 @@ CLASSPATH="$CLASSPATH:$IDE_HOME/lib/mps-textgen.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/mps-tips.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/mps-tuples.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/mps-workbench.jar"
+CLASSPATH="$CLASSPATH:$IDE_HOME/lib/nio-fs.jar"
+CLASSPATH="$CLASSPATH:$IDE_HOME/lib/opentelemetry.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/platform-loader.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/protobuf.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/pty4j.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/rd.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/stats.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/testFramework.jar"
+CLASSPATH="$CLASSPATH:$IDE_HOME/lib/trove.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/util.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/util-8.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/util_rt.jar"
@@ -287,6 +293,7 @@ MAIN_CLASS=jetbrains.mps.Launcher
   -Dpty4j.preferred.native.folder="${IDE_HOME}/lib/pty4j" \
   -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader \
   -Didea.vendor.name=$IDEA_VENDOR_NAME \
-  --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.vm=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.fs=ALL-UNNAMED --add-opens=java.base/sun.security.ssl=ALL-UNNAMED --add-opens=java.base/sun.security.util=ALL-UNNAMED --add-opens=java.desktop/java.awt=ALL-UNNAMED --add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED --add-opens=java.desktop/java.awt.event=ALL-UNNAMED --add-opens=java.desktop/java.awt.image=ALL-UNNAMED --add-opens=java.desktop/java.awt.peer=ALL-UNNAMED --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED --add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED --add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED --add-opens=java.desktop/sun.awt.image=ALL-UNNAMED --add-opens=java.desktop/sun.awt=ALL-UNNAMED --add-opens=java.desktop/sun.font=ALL-UNNAMED --add-opens=java.desktop/sun.java2d=ALL-UNNAMED --add-opens=java.desktop/sun.swing=ALL-UNNAMED --add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED --add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED --add-opens=java.desktop/com.sun.java.swing.plaf.gtk=ALL-UNNAMED \
+  --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.vm=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.fs=ALL-UNNAMED --add-opens=java.base/sun.security.ssl=ALL-UNNAMED --add-opens=java.base/sun.security.util=ALL-UNNAMED --add-opens=java.desktop/java.awt=ALL-UNNAMED --add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED --add-opens=java.desktop/java.awt.event=ALL-UNNAMED --add-opens=java.desktop/java.awt.image=ALL-UNNAMED --add-opens=java.desktop/java.awt.peer=ALL-UNNAMED --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED --add-opens=java.desktop/javax.swing.text=ALL-UNNAMED --add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED --add-opens=java.desktop/javax.swing.text.html.parser=ALL-UNNAMED --add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED --add-opens=java.desktop/sun.awt.image=ALL-UNNAMED --add-opens=java.desktop/sun.awt=ALL-UNNAMED --add-opens=java.desktop/sun.font=ALL-UNNAMED --add-opens=java.desktop/sun.java2d=ALL-UNNAMED --add-opens=java.desktop/sun.swing=ALL-UNNAMED --add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED --add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED --add-opens=java.management/sun.management=ALL-UNNAMED --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED --add-opens=java.desktop/com.sun.java.swing.plaf.gtk=ALL-UNNAMED \
+  -Dij.startup.error.report.url=https://youtrack.jetbrains.com/newissue?project=MPS\&clearDraft=true\&summary=\$TITLE\$\&description=\$DESCR\$ \
   ${MAIN_CLASS} \
   "$@"

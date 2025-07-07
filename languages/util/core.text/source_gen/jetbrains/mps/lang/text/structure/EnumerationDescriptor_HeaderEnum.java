@@ -23,7 +23,7 @@ public class EnumerationDescriptor_HeaderEnum extends EnumerationDescriptorBase 
   private final EnumerationDescriptor.MemberDescriptor myMember_Header6_0 = new EnumerationDescriptor.MemberDescriptor("Header6", "6", 0x2ef408c1b21eff1aL, "r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/3383338848072171290");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L, 0x6cb23f222fb40ea3L, 0x6cb23f222fb40f40L, 0x6cb23f222fb40fdfL, 0x2ef408c1b21eff0fL, 0x2ef408c1b21eff14L, 0x2ef408c1b21eff1aL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_Header1_0, myMember_Header2_0, myMember_Header3_0, myMember_Header4_0, myMember_Header5_0, myMember_Header6_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_Header1_0, myMember_Header2_0, myMember_Header3_0, myMember_Header4_0, myMember_Header5_0, myMember_Header6_0);
 
   @Nullable
   @Override

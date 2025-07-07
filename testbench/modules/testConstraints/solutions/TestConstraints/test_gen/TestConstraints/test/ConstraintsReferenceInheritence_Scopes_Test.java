@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -21,7 +21,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 @MPSLaunch
 public class ConstraintsReferenceInheritence_Scopes_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(ConstraintsReferenceInheritence_Scopes_Test.class, "${mps_home}", "r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ConstraintsReferenceInheritence_Scopes_Test.class).projectPath(null).modelRef("r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)").reopenProject(null).build());
 
   public ConstraintsReferenceInheritence_Scopes_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -50,35 +50,36 @@ public class ConstraintsReferenceInheritence_Scopes_Test extends BaseTransformat
       super(owner);
     }
 
-    public void test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperScoping_target_2614955748379945979() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2614955748379861984");
+    }
 
+    public void test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperScoping_target_2614955748379945979() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2614955748379945979");
-        SNode operation = getRealNodeById("2614955748379945983");
         new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c73L, 0x244a306605641d21L, "target"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), SNodeOperations.getPointer(getRealNodeById("2614955748379861988")), SNodeOperations.getPointer(getRealNodeById("2614955748379962563")))).check();
       });
     }
     public void test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperScoping_target_2614955748379963961() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2614955748379963961");
-        SNode operation = getRealNodeById("2614955748379963968");
         new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c73L, 0x244a306605641d21L, "target"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), SNodeOperations.getPointer(getRealNodeById("2614955748379962563")))).check();
       });
     }
     public void test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperHandler_target_2614955748380109408() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2614955748380109408");
-        SNode operation = getRealNodeById("2614955748380109681");
         new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), SNodeOperations.getPointer(getRealNodeById("2614955748379861990")), SNodeOperations.getPointer(getRealNodeById("2614955748379861988")), SNodeOperations.getPointer(getRealNodeById("2614955748379962563")))).check();
       });
     }
     public void test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperHandler_target_2614955748380109677() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2614955748380109677");
-        SNode operation = getRealNodeById("2614955748380109692");
         new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), SNodeOperations.getPointer(getRealNodeById("2614955748379861988")), SNodeOperations.getPointer(getRealNodeById("2614955748379962563")))).check();
       });
     }

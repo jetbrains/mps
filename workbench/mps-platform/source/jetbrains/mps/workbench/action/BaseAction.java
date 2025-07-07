@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +20,10 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.Presentation;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.util.NlsActions.ActionText;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.ex.StatusBarEx;
@@ -44,7 +42,6 @@ import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.Icon;
-import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -58,7 +55,7 @@ public abstract class BaseAction extends AnAction {
   private boolean myDisableOnNoProject = true;
   private Set<ActionPlace> myPlaces = null;
 
-  private ActionUpdateThread myUpdateThread;
+  private ActionUpdateThread myUpdateThread = ActionUpdateThread.EDT;
 
   public BaseAction() {
     this((String) null, (String) null, (Icon) null);
@@ -92,11 +89,6 @@ public abstract class BaseAction extends AnAction {
 
   @Override
   public @NotNull ActionUpdateThread getActionUpdateThread() {
-    if (myUpdateThread == null) {
-      // MPS_Frame and MPS_MPSProject values, supplied by a GetDataRule, are not available in EDT, hence OLD_EDT default
-      // (As I read ActionUpdateThread javadoc, EDT doesn't give access to anything but DataProviders from Swing component hierarchy)
-      myUpdateThread = Registry.is("mps.actions.old_edt", false) ? ActionUpdateThread.OLD_EDT : ActionUpdateThread.EDT;
-    }
     return myUpdateThread;
   }
 
@@ -327,7 +319,7 @@ public abstract class BaseAction extends AnAction {
   protected abstract void doExecute(AnActionEvent e, Map<String, Object> params);
 
   protected final boolean isMakeSessionActive() {
-    final Platform mpsPlaf = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform();
+    final Platform mpsPlaf = MPSCoreComponents.getInstance().getPlatform();
     final MakeServiceComponent makeService = mpsPlaf.findComponent(MakeServiceComponent.class);
     return makeService != null && makeService.isSessionActive();
   }

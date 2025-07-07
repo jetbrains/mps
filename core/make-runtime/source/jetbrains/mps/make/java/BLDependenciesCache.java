@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import jetbrains.mps.generator.cache.CacheGenerator;
 import jetbrains.mps.generator.cache.ParseFacility;
 import jetbrains.mps.generator.cache.ParseFacility.Parser;
 import jetbrains.mps.generator.generationTypes.StreamHandler;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -107,6 +108,9 @@ public class BLDependenciesCache extends BaseModelCache<ModelDependencies> {
               continue;
             }
             if (m instanceof TransientSModel || m.getModule() instanceof TransientSModule) {
+              continue;
+            }
+            if (!SModuleOperations.classesAvailableToMPS(m.getModule())) {
               continue;
             }
             if (md.add(m.getModule().getModuleReference())) {

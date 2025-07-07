@@ -21,7 +21,7 @@ import java.util.HashSet;
 import java.util.EventListener;
 import com.intellij.execution.Executor;
 
-@GeneratedClass(node = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)/4474271214082913702", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
+@GeneratedClass(nodeId = "4474271214082913702", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
 public class DebugSessionManagerComponent implements Disposable {
   @Topic.ProjectLevel
   public static final Topic<DebugSessionListener> TOPIC = Topic.create("Debug Session", DebugSessionListener.class);
@@ -65,7 +65,7 @@ public class DebugSessionManagerComponent implements Disposable {
   }
 
 
-  public DebugSessionListener getEventPublisher() {
+  private DebugSessionListener getEventPublisher() {
     return myProject.getMessageBus().syncPublisher(TOPIC);
   }
 

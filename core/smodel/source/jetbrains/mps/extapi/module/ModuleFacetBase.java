@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,24 +18,22 @@ package jetbrains.mps.extapi.module;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.DetachableFacet;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
-import org.jetbrains.mps.openapi.persistence.Memento;
 
 /**
  * Base class for all module facets.
  *
  * fixme not thread-safe
  */
-public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
+public abstract class ModuleFacetBase implements SModuleFacet {
   private static final Logger LOG = Logger.getLogger(ModuleFacetBase.class);
 
   private final String myFacetType;
   private SModule myModule;
 
   /**
-   * attach happens automatically so you can initialize a facet in one line
+   * attach happens automatically, so you can initialize a facet in one line
    */
   protected ModuleFacetBase(@NotNull String facetType, @NotNull SModule module) {
     myFacetType = facetType;
@@ -71,13 +69,5 @@ public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
 
   public final void detach() {
     myModule = null;
-  }
-
-  @Override
-  public void save(@NotNull Memento memento) {
-  }
-
-  @Override
-  public void load(@NotNull Memento memento) {
   }
 }

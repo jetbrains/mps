@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,29 +23,12 @@ import org.jetbrains.annotations.NotNull;
 
 public class EmptyHighlighter extends Highlighter {
   public EmptyHighlighter(Project project) {
-    super(project);
+    super(project, true);
   }
 
   @Override
-  public void projectOpened() {
-  }
-
-  @Override
-  public void projectClosed() {
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return EmptyHighlighter.class.getName();
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
+  public void dispose() {
+    // no-op
   }
 
   @Override

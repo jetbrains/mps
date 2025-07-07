@@ -21,7 +21,7 @@ import java.util.HashSet;
 import java.util.function.Predicate;
 import java.util.Comparator;
 
-@GeneratedClass(node = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933580312", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
+@GeneratedClass(nodeId = "3201642974933580312", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
 /*package*/ final class ProjectFilesModel extends AbstractListModel<IFile> {
   private final List<IFile> myModules = new ArrayList<>();
 

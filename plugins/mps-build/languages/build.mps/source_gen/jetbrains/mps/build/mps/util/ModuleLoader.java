@@ -7,6 +7,7 @@ import jetbrains.mps.build.util.Context;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.project.io.DescriptorIOFacade;
+import jetbrains.mps.smodel.RepositoryFacade;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -16,8 +17,6 @@ import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.smodel.MPSModuleOwner;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -28,17 +27,6 @@ import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import java.util.List;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import java.util.Objects;
-import jetbrains.mps.extapi.module.SRepositoryBase;
-import jetbrains.mps.extapi.module.SRepositoryExt;
-import org.jetbrains.mps.openapi.module.ModelAccess;
-import java.util.Map;
-import org.jetbrains.mps.openapi.module.SModuleId;
-import java.util.HashMap;
-import jetbrains.mps.project.AbstractModule;
-import java.util.Set;
-import java.util.Collections;
-import java.util.ArrayList;
-import jetbrains.mps.smodel.AbstractModelAccess;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -57,7 +45,7 @@ public final class ModuleLoader {
    * As long as generator modules could not be loaded without their source language module already present in the repository, we need to share repository
    * between language's ModuleChecker and that of its generators.
    */
-  private Repo myRepository = null;
+  private RepositoryFacade myRepository = null;
   private IFile myModuleDescriptorFile;
 
   public ModuleLoader(@NotNull SNode buildProject, @NotNull IMessageHandler msgHandler) {
@@ -70,7 +58,7 @@ public final class ModuleLoader {
     myBuildProject = buildProject;
     myBuildContext = (genContext != null ? Context.defaultContext(genContext) : Context.defaultContext());
     myPathConverter = new PathConverter(myBuildContext, buildProject);
-    myVisibleModules = new VisibleModules(buildProject, msgHandler, genContext);
+    myVisibleModules = new VisibleModules(buildProject, msgHandler);
     myVisibleModules.collect();
     myMsgHandler = msgHandler;
     // TODO enforce outer code to specify FS to avoid singleton access
@@ -93,20 +81,10 @@ public final class ModuleLoader {
 
   public void checkAllModules(final ModuleChecker.CheckType type) {
     Iterable<SNode> parts = SLinkOperations.getChildren(myBuildProject, LINKS.parts$mGDj);
-    myRepository = new Repo(new ModelAccessNoLimit());
+    myRepository = RepositoryFacade.createPlainRegistrationRepo();
 
     Sequence.fromIterable(SLinkOperations.collectMany(SNodeOperations.ofConcept(parts, CONCEPTS.BuildMps_Group$Jc), LINKS.modules$JlQo)).union(Sequence.fromIterable(SNodeOperations.ofConcept(parts, CONCEPTS.BuildMps_AbstractModule$FZ))).where((it) -> (SLinkOperations.getTarget(it, LINKS.path$iYKB) != null)).visitAll((it) -> createModuleChecker(it).check(type));
 
-    // We have to dispose modules as their models/datasources attach e.g. file listeners that get notified long time after generation of a build project is over.
-    MPSModuleOwner unused = new MPSModuleOwner() {
-      @Override
-      public boolean isHidden() {
-        return true;
-      }
-    };
-    for (SModule m : Sequence.fromIterable(myRepository.getModules())) {
-      myRepository.unregisterModule(m, unused);
-    }
     myRepository.dispose();
     myRepository = null;
   }
@@ -198,117 +176,7 @@ public final class ModuleLoader {
   }
 
 
-  private static class Repo extends SRepositoryBase implements SRepositoryExt {
-    private final ModelAccess myModelAccess;
-    private final Map<SModuleId, SModule> myModules;
 
-    public Repo(ModelAccess ma) {
-      myModelAccess = ma;
-      myModules = new HashMap<SModuleId, SModule>();
-    }
-
-    public <T extends SModule> T registerModule(@NotNull T module, @NotNull MPSModuleOwner owner) {
-      SModule existing = myModules.putIfAbsent(module.getModuleId(), module);
-      if (existing != null) {
-        throw new IllegalStateException("Duplicate modules with id '" + module.getModuleId() + "'");
-      }
-      if (module instanceof AbstractModule) {
-        ((AbstractModule) module).attach(this);
-      }
-      return module;
-    }
-
-    @Override
-    public void unregisterModule(@NotNull SModule module, @NotNull MPSModuleOwner owner) {
-      SModule removed = myModules.remove(module.getModuleId());
-      if (removed != module) {
-        throw new IllegalStateException();
-      }
-      if (module instanceof AbstractModule) {
-        ((AbstractModule) module).dispose();
-      }
-    }
-
-    @Override
-    public Set<MPSModuleOwner> getOwners(@NotNull SModule module) {
-      // as we ignore MPSModuleOwner when registering a module, there's no way to return a proper value
-      // OTOH, UnsupportedOperationException, though technically right, is no appropriate as there's generic code
-      // that expects this method not to throw an exception (i.e. Language unregistering its Generators)
-      return Collections.<MPSModuleOwner>emptySet();
-    }
-
-
-    @Override
-    public Set<SModule> getModules(MPSModuleOwner owner) {
-      // see getOwners(), above, for reasone why empty collection, not exception
-      return Collections.<SModule>emptySet();
-    }
-
-    @Nullable
-    @Override
-    public SModule getModule(@NotNull SModuleId mid) {
-      return myModules.get(mid);
-    }
-
-    @Override
-    public void saveAll() {
-      throw new UnsupportedOperationException();
-    }
-
-    @NotNull
-    @Override
-    public Iterable<SModule> getModules() {
-      return new ArrayList<SModule>(myModules.values());
-    }
-
-    @NotNull
-    @Override
-    public ModelAccess getModelAccess() {
-      return myModelAccess;
-    }
-  }
-
-  private static class ModelAccessNoLimit extends AbstractModelAccess {
-    public boolean canRead() {
-      return true;
-    }
-
-    public boolean canWrite() {
-      return true;
-    }
-
-    public void runReadAction(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public void runReadInEDT(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public void runWriteAction(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public void runWriteInEDT(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public void executeCommand(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public void executeCommandInEDT(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public void executeUndoTransparentCommand(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public boolean isCommandAction() {
-      return false;
-    }
-  }
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
   }

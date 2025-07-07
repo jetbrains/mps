@@ -43,6 +43,7 @@
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="7a0s" ref="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)" />
     <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
+    <import index="czme" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.resolve(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -237,6 +238,9 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
+      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
@@ -574,7 +578,7 @@
               <node concept="3uibUv" id="x6gRTxAe$s" role="3rvSg0">
                 <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
                 <node concept="3uibUv" id="x6gRTxAe$t" role="11_B2D">
-                  <ref role="3uigEE" to="wsw7:1FY502P5b8n" resolve="LanguageErrorsComponent.ApprovableError" />
+                  <ref role="3uigEE" to="7a0s:1FY502P5b8n" resolve="LanguageErrorsComponent.ApprovableError" />
                 </node>
               </node>
             </node>
@@ -586,7 +590,7 @@
                 <node concept="3uibUv" id="x6gRTxAfs9" role="3rHtpV">
                   <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
                   <node concept="3uibUv" id="x6gRTxAfsa" role="11_B2D">
-                    <ref role="3uigEE" to="wsw7:1FY502P5b8n" resolve="LanguageErrorsComponent.ApprovableError" />
+                    <ref role="3uigEE" to="7a0s:1FY502P5b8n" resolve="LanguageErrorsComponent.ApprovableError" />
                   </node>
                 </node>
               </node>
@@ -925,7 +929,7 @@
                   <ref role="3cqZAo" node="4yKSLMxH802" resolve="error" />
                 </node>
                 <node concept="2OwXpG" id="4yKSLMxH1lq" role="2OqNvi">
-                  <ref role="2Oxat5" to="wsw7:1FY502P5p53" resolve="myApproved" />
+                  <ref role="2Oxat5" to="7a0s:1FY502P5p53" resolve="myApproved" />
                 </node>
               </node>
             </node>
@@ -956,7 +960,7 @@
           <node concept="3cpWsn" id="4yKSLMxH802" role="1Duv9x">
             <property role="TrG5h" value="error" />
             <node concept="3uibUv" id="4yKSLMxH7Zl" role="1tU5fm">
-              <ref role="3uigEE" to="wsw7:1FY502P5b8n" resolve="LanguageErrorsComponent.ApprovableError" />
+              <ref role="3uigEE" to="7a0s:1FY502P5b8n" resolve="LanguageErrorsComponent.ApprovableError" />
             </node>
           </node>
         </node>
@@ -1126,7 +1130,7 @@
                 <node concept="2ShNRf" id="4yKSLMx_aTq" role="37vLTx">
                   <node concept="Tc6Ow" id="4yKSLMx_gyJ" role="2ShVmc">
                     <node concept="3uibUv" id="4yKSLMx_p4x" role="HW$YZ">
-                      <ref role="3uigEE" to="wsw7:1FY502P5b8n" resolve="LanguageErrorsComponent.ApprovableError" />
+                      <ref role="3uigEE" to="7a0s:1FY502P5b8n" resolve="LanguageErrorsComponent.ApprovableError" />
                     </node>
                   </node>
                 </node>
@@ -1167,7 +1171,7 @@
               <ref role="37wK5l" to="33ny:~Collection.add(java.lang.Object)" resolve="add" />
               <node concept="2ShNRf" id="4yKSLMx_I9j" role="37wK5m">
                 <node concept="1pGfFk" id="4yKSLMx_LUP" role="2ShVmc">
-                  <ref role="37wK5l" to="wsw7:1FY502PcAbS" resolve="LanguageErrorsComponent.ApprovableError" />
+                  <ref role="37wK5l" to="7a0s:1FY502PcAbS" resolve="LanguageErrorsComponent.ApprovableError" />
                   <node concept="37vLTw" id="4yKSLMx_PVY" role="37wK5m">
                     <ref role="3cqZAo" node="5VT$fGfbIQP" resolve="reportItem" />
                   </node>
@@ -1189,7 +1193,7 @@
           <node concept="3uibUv" id="4yKSLMxyREQ" role="3rvSg0">
             <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
             <node concept="3uibUv" id="4yKSLMxyRER" role="11_B2D">
-              <ref role="3uigEE" to="wsw7:1FY502P5b8n" resolve="LanguageErrorsComponent.ApprovableError" />
+              <ref role="3uigEE" to="7a0s:1FY502P5b8n" resolve="LanguageErrorsComponent.ApprovableError" />
             </node>
           </node>
         </node>
@@ -1430,6 +1434,26 @@
                                       </node>
                                     </node>
                                   </node>
+                                  <node concept="3cpWs8" id="6kkED_btKW_" role="3cqZAp">
+                                    <node concept="3cpWsn" id="6kkED_btKWA" role="3cpWs9">
+                                      <property role="TrG5h" value="resolver" />
+                                      <property role="3TUv4t" value="true" />
+                                      <node concept="3uibUv" id="6kkED_btHr$" role="1tU5fm">
+                                        <ref role="3uigEE" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
+                                      </node>
+                                      <node concept="2OqwBi" id="6kkED_bupND" role="33vP2m">
+                                        <node concept="37vLTw" id="6kkED_buleA" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="15Dv6lKf6It" resolve="myProject" />
+                                        </node>
+                                        <node concept="liA8E" id="6kkED_buuq2" role="2OqNvi">
+                                          <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                                          <node concept="3VsKOn" id="6kkED_bu9vZ" role="37wK5m">
+                                            <ref role="3VsUkX" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
+                                          </node>
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
                                   <node concept="3SKdUt" id="77jjuPIc_54" role="3cqZAp">
                                     <node concept="1PaTwC" id="ATZLwXoa9T" role="1aUNEU">
                                       <node concept="3oM_SD" id="ATZLwXoa9U" role="1PaTwD">
@@ -1486,9 +1510,8 @@
                                           <property role="TrG5h" value="resolvedByScope" />
                                           <node concept="10P_77" id="77jjuPI7xDH" role="1tU5fm" />
                                           <node concept="2OqwBi" id="77jjuPI7xEy" role="33vP2m">
-                                            <node concept="2YIFZM" id="77jjuPI7xEz" role="2Oq$k0">
-                                              <ref role="1Pybhc" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
-                                              <ref role="37wK5l" to="5ijk:1$3BPv3Ve2T" resolve="getInstance" />
+                                            <node concept="37vLTw" id="6kkED_btKWC" role="2Oq$k0">
+                                              <ref role="3cqZAo" node="6kkED_btKWA" resolve="resolver" />
                                             </node>
                                             <node concept="liA8E" id="77jjuPI7xE$" role="2OqNvi">
                                               <ref role="37wK5l" to="5ijk:2uxkWp9XZ7U" resolve="resolveScopesOnly" />
@@ -1900,7 +1923,7 @@
                                                 <property role="3oM_SC" value="force" />
                                               </node>
                                               <node concept="3oM_SD" id="ATZLwXoaaR" role="1PaTwD">
-                                                <property role="3oM_SC" value="autofix" />
+                                                <property role="3oM_SC" value="auto-fix" />
                                               </node>
                                               <node concept="3oM_SD" id="ATZLwXoaaS" role="1PaTwD">
                                                 <property role="3oM_SC" value="mode" />
@@ -2506,10 +2529,45 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3OAwXw0f8zs" role="jymVt" />
     <node concept="3uibUv" id="36YhQHI6usj" role="1zkMxy">
       <ref role="3uigEE" to="n70j:~BaseEventProcessingEditorChecker" resolve="BaseEventProcessingEditorChecker" />
     </node>
     <node concept="3Tm1VV" id="4nkKl$KPUHx" role="1B3o_S" />
+    <node concept="3clFb_" id="3OAwXw0fdwT" role="jymVt">
+      <property role="TrG5h" value="needsUpdateAfterEvent" />
+      <node concept="3Tmbuc" id="3OAwXw0fdwU" role="1B3o_S" />
+      <node concept="10P_77" id="3OAwXw0fdwW" role="3clF45" />
+      <node concept="37vLTG" id="3OAwXw0fdwX" role="3clF46">
+        <property role="TrG5h" value="event" />
+        <node concept="3uibUv" id="3OAwXw0fdwY" role="1tU5fm">
+          <ref role="3uigEE" to="j9co:~SModelEvent" resolve="SModelEvent" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="3OAwXw0fdwZ" role="3clF47">
+        <node concept="3clFbF" id="3OAwXw0fdx3" role="3cqZAp">
+          <node concept="22lmx$" id="3OAwXw0fqMO" role="3clFbG">
+            <node concept="2ZW3vV" id="3OAwXw0f$3R" role="3uHU7B">
+              <node concept="3uibUv" id="3OAwXw0fCeW" role="2ZW6by">
+                <ref role="3uigEE" to="j9co:~SModelImportEvent" resolve="SModelImportEvent" />
+              </node>
+              <node concept="37vLTw" id="3OAwXw0fvGv" role="2ZW6bz">
+                <ref role="3cqZAo" node="3OAwXw0fdwX" resolve="event" />
+              </node>
+            </node>
+            <node concept="3nyPlj" id="3OAwXw0fdx2" role="3uHU7w">
+              <ref role="37wK5l" to="n70j:~BaseEventProcessingEditorChecker.needsUpdateAfterEvent(jetbrains.mps.smodel.event.SModelEvent)" resolve="needsUpdateAfterEvent" />
+              <node concept="37vLTw" id="3OAwXw0fdx1" role="37wK5m">
+                <ref role="3cqZAo" node="3OAwXw0fdwX" resolve="event" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3OAwXw0fdx0" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="2uxkWp9VnLc">
     <property role="TrG5h" value="RefScopeCheckerInEditor" />
@@ -2530,7 +2588,7 @@
           <ref role="3uigEE" to="wyuk:~ComponentHost" resolve="ComponentHost" />
         </node>
         <node concept="2AHcQZ" id="3ost_8YM7Ka" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
     </node>
@@ -2555,10 +2613,32 @@
         <ref role="3uigEE" to="d6hs:~EditorQuickFix" resolve="EditorQuickFix" />
       </node>
       <node concept="3clFbS" id="2uxkWp9VQCL" role="3clF47">
+        <node concept="3cpWs8" id="pGO2w7w217" role="3cqZAp">
+          <node concept="3cpWsn" id="pGO2w7w218" role="3cpWs9">
+            <property role="TrG5h" value="resolver" />
+            <node concept="3uibUv" id="pGO2w7w1a5" role="1tU5fm">
+              <ref role="3uigEE" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
+            </node>
+            <node concept="2OqwBi" id="pGO2w7w219" role="33vP2m">
+              <node concept="37vLTw" id="pGO2w7w21a" role="2Oq$k0">
+                <ref role="3cqZAo" to="k2t0:~RefScopeChecker.myHost" resolve="myHost" />
+              </node>
+              <node concept="liA8E" id="pGO2w7w21b" role="2OqNvi">
+                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                <node concept="3VsKOn" id="pGO2w7w21c" role="37wK5m">
+                  <ref role="3VsUkX" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs6" id="2uxkWp9Xu1n" role="3cqZAp">
           <node concept="2ShNRf" id="2uxkWp9Xulw" role="3cqZAk">
             <node concept="1pGfFk" id="2uxkWp9Xvty" role="2ShVmc">
               <ref role="37wK5l" node="1$3BPv3W06F" resolve="RefScopeCheckerInEditor.ResolveReferenceEditorBasedQuickFix" />
+              <node concept="37vLTw" id="pGO2w7w21d" role="37wK5m">
+                <ref role="3cqZAo" node="pGO2w7w218" resolve="resolver" />
+              </node>
               <node concept="37vLTw" id="2uxkWp9Xwe_" role="37wK5m">
                 <ref role="3cqZAo" node="2uxkWp9VQCy" resolve="reference" />
               </node>
@@ -3581,13 +3661,22 @@
         <node concept="3Tm1VV" id="1$3BPv3W06H" role="1B3o_S" />
         <node concept="3clFbS" id="1$3BPv3W06I" role="3clF47">
           <node concept="XkiVB" id="5s7RUu7MsWg" role="3cqZAp">
-            <ref role="37wK5l" to="k2t0:~RefScopeChecker$ResolveReferenceQuickFix.&lt;init&gt;(org.jetbrains.mps.openapi.model.SReference,boolean)" resolve="RefScopeChecker.ResolveReferenceQuickFix" />
+            <ref role="37wK5l" to="k2t0:~RefScopeChecker$ResolveReferenceQuickFix.&lt;init&gt;(jetbrains.mps.resolve.ResolverComponent,org.jetbrains.mps.openapi.model.SReference,boolean)" resolve="RefScopeChecker.ResolveReferenceQuickFix" />
+            <node concept="37vLTw" id="pGO2w7vp4u" role="37wK5m">
+              <ref role="3cqZAo" node="pGO2w7vgFm" resolve="resolver" />
+            </node>
             <node concept="37vLTw" id="5s7RUu7Mtzb" role="37wK5m">
               <ref role="3cqZAo" node="1$3BPv3W08r" resolve="reference" />
             </node>
             <node concept="37vLTw" id="5s7RUu7MtAh" role="37wK5m">
               <ref role="3cqZAo" node="5H5gR35TNF0" resolve="executeImmediately" />
             </node>
+          </node>
+        </node>
+        <node concept="37vLTG" id="pGO2w7vgFm" role="3clF46">
+          <property role="TrG5h" value="resolver" />
+          <node concept="3uibUv" id="pGO2w7vi$E" role="1tU5fm">
+            <ref role="3uigEE" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
           </node>
         </node>
         <node concept="37vLTG" id="1$3BPv3W08r" role="3clF46">
@@ -3656,12 +3745,11 @@
               <node concept="3cpWs6" id="2uxkWp9Z9YQ" role="3cqZAp" />
             </node>
             <node concept="2OqwBi" id="2uxkWp9Z8_N" role="3clFbw">
-              <node concept="2YIFZM" id="2uxkWp9Z7Xt" role="2Oq$k0">
-                <ref role="37wK5l" to="5ijk:1$3BPv3Ve2T" resolve="getInstance" />
-                <ref role="1Pybhc" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
+              <node concept="37vLTw" id="pGO2w7vBkG" role="2Oq$k0">
+                <ref role="3cqZAo" to="k2t0:~RefScopeChecker$ResolveReferenceQuickFix.myResolver" resolve="myResolver" />
               </node>
               <node concept="liA8E" id="2uxkWp9Z9qD" role="2OqNvi">
-                <ref role="37wK5l" to="5ijk:2uxkWp9XZ7U" resolve="resolveScopesOnly" />
+                <ref role="37wK5l" to="czme:~ResolverComponent.resolveScopesOnly(org.jetbrains.mps.openapi.model.SReference,org.jetbrains.mps.openapi.module.SRepository)" resolve="resolveScopesOnly" />
                 <node concept="37vLTw" id="2uxkWp9Z9s$" role="37wK5m">
                   <ref role="3cqZAo" to="k2t0:~RefScopeChecker$ResolveReferenceQuickFix.myReference" resolve="myReference" />
                 </node>

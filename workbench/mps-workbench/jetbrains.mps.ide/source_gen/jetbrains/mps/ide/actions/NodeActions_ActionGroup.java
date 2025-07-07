@@ -7,7 +7,7 @@ import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991215587", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1204991215587", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NodeActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.NodeActions_ActionGroup";
   public static final String LABEL_ID_newActions = ID + "newActions";
@@ -35,8 +35,6 @@ public class NodeActions_ActionGroup extends GeneratedActionGroup {
     addNamedAnchor(LABEL_ID_showGeneratedText);
     NodeActions_ActionGroup.this.addSeparator();
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.SetNodePackage_Action");
-    NodeActions_ActionGroup.this.addSeparator();
-    NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ExpandNode_Action");
     NodeActions_ActionGroup.this.addSeparator();
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CutNode_Action");
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CopyNode_Action");

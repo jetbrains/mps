@@ -12,9 +12,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -55,7 +55,8 @@ public final class AddDocumentation_Intention extends AbstractIntentionDescripto
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode ann = new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$ug).addNew(node, CONCEPTS.DocumentedNodeAnnotation$ug);
+      SNode ann = SNodeFactoryOperations.createNewNode(CONCEPTS.DocumentationAnnotation$ug, null);
+      ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentationAnnotation$ug).list(node)).insertElement(0, ann);
       SNodeFactoryOperations.setNewChild(ann, LINKS.text$Dgpy, CONCEPTS.DocText$WM);
     }
 
@@ -68,7 +69,7 @@ public final class AddDocumentation_Intention extends AbstractIntentionDescripto
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return !(ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$ug).list(node)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DocumentedNodeAnnotation$ug)));
+      return !(ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentationAnnotation$ug).list(node)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DocumentationAnnotation$ug)));
     }
 
 
@@ -80,7 +81,7 @@ public final class AddDocumentation_Intention extends AbstractIntentionDescripto
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DocumentedNodeAnnotation$ug = MetaAdapterFactory.getConcept(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, "jetbrains.mps.lang.core.doc.structure.DocumentedNodeAnnotation");
+    /*package*/ static final SConcept DocumentationAnnotation$ug = MetaAdapterFactory.getConcept(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, "jetbrains.mps.lang.core.doc.structure.DocumentationAnnotation");
     /*package*/ static final SConcept DocText$WM = MetaAdapterFactory.getConcept(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L, "jetbrains.mps.lang.doctext.structure.DocText");
   }
 

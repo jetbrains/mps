@@ -7,6 +7,13 @@ import java.util.Queue;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 public interface ILinkedListSequence<T> extends IListSequence<T>, Deque<T> {
+  ILinkedListSequence<T> reversed();
+  T getLast();
+  void addLast(T t);
+  T getFirst();
+  T removeLast();
+  T removeFirst();
+  void addFirst(T t);
   T addLastElement(T t);
   T removeFirstElement();
   Queue<T> toQueue();

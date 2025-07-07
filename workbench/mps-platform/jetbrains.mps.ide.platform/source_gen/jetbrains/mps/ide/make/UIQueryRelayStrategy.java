@@ -14,7 +14,7 @@ import jetbrains.mps.ide.ThreadUtils;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.ide.project.ProjectHelper;
 
-@GeneratedClass(node = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)/173672751428923189", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
+@GeneratedClass(nodeId = "173672751428923189", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
 /*package*/ class UIQueryRelayStrategy {
   public UIQueryRelayStrategy() {
   }

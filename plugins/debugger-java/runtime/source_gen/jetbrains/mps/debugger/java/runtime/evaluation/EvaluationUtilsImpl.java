@@ -49,24 +49,13 @@ import com.sun.jdi.LongValue;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.sun.jdi.ObjectReference;
 
-@GeneratedClass(node = "r:1f2ecb68-8f37-460f-acb8-866f8f05b15e(jetbrains.mps.debugger.java.runtime.evaluation)/3187167456722533876", model = "r:1f2ecb68-8f37-460f-acb8-866f8f05b15e(jetbrains.mps.debugger.java.runtime.evaluation)")
+@GeneratedClass(nodeId = "3187167456722533876", model = "r:1f2ecb68-8f37-460f-acb8-866f8f05b15e(jetbrains.mps.debugger.java.runtime.evaluation)")
 public class EvaluationUtilsImpl extends EvaluationUtils {
   private static final Logger LOG = Logger.getLogger(EvaluationUtilsImpl.class);
   public static final String JAVA_LANG_OBJECT_CLASSNAME = "java.lang.Object";
   public EvaluationUtilsImpl() {
   }
-  @Override
-  public void dispose() {
-    synchronized (LOCK) {
-      INSTANCE = null;
-    }
-  }
-  @Override
-  public void init() {
-    synchronized (LOCK) {
-      INSTANCE = this;
-    }
-  }
+
   public void assertEvaluating() {
     // todo real check
     LOG.assertLog(!(ApplicationManager.getApplication().isDispatchThread()), "Evaluation should be invoked in evaluation command rather than in edt.");

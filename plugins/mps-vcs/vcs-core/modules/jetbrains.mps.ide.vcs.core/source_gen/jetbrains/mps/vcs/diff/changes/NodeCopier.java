@@ -15,14 +15,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
 import java.util.Objects;
-import jetbrains.mps.smodel.references.UnregisteredNodes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.SNodeUtil;
+import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/7082523601896465910", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "7082523601896465910", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class NodeCopier {
   private Map<SNodeId, SNodeId> myIdReplacementCache = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>());
   private SModel myModel;
@@ -48,6 +46,8 @@ public class NodeCopier {
       do {
         replacedId = jetbrains.mps.smodel.SModel.generateUniqueId();
       } while (myModel.getNode(replacedId) != null);
+      // FWIW, 'node' here is a detached copy. It's intended to be injected into myModel, hence we make sure (above) this new node and its children don't get nodeId changed once injected
+      //      However, I don't feel this is the best possible approach
       ((jetbrains.mps.smodel.SNode) node).setId(replacedId);
       if (!(MapSequence.fromMap(myIdReplacementCache).containsKey(nodeId))) {
         MapSequence.fromMap(myIdReplacementCache).put(nodeId, replacedId);
@@ -82,32 +82,18 @@ public class NodeCopier {
   }
 
   public void restoreIds(boolean affectOthers) {
-    // no idea if the reasons that lead to this code still hold 
-    // With UN being tracked for repository-attached models and within command only, do we still get errors here?
-    UnregisteredNodes.WarningLevel oldWarningLevel = UnregisteredNodes.setWarningLevel(UnregisteredNodes.WarningLevel.WARNING);
-    try {
+    // XXX perhaps, would be smart to use model's UPDATE mode to perform these changes? 
+    softRestoreIds();
+    if (affectOthers) {
+      evictOtherDuplicates();
       softRestoreIds();
-      if (affectOthers) {
-        evictOtherDuplicates();
-        softRestoreIds();
-        assert Sequence.fromIterable(MapSequence.fromMap(myIdReplacementCache).values()).all((id) -> id == null);
-      }
-    } finally {
-      UnregisteredNodes.setWarningLevel(oldWarningLevel);
+      assert Sequence.fromIterable(MapSequence.fromMap(myIdReplacementCache).values()).all((id) -> id == null);
     }
   }
 
   private void setId(SNode node, SNodeId id) {
-    if (SNodeOperations.getParent(node) == null) {
-      SNodeOperations.deleteNode(node);
-      ((jetbrains.mps.smodel.SNode) node).setId(id);
-      SModelOperations.addRootNode(myModel, node);
-    } else {
-      SNode stubNode = new jetbrains.mps.smodel.SNode(SNodeUtil.concept_BaseConcept);
-      SNodeOperations.replaceWithAnother(node, stubNode);
-      ((jetbrains.mps.smodel.SNode) node).setId(id);
-      SNodeOperations.replaceWithAnother(stubNode, node);
-    }
+    SModelInternal smi = (SModelInternal) myModel;
+    smi.changeNodeId(node.getNodeId(), id);
   }
 
   private void softRestoreIds() {

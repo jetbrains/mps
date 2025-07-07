@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.util.io.ModelInputStream;
@@ -37,12 +36,6 @@ import java.util.Map;
  * for partial model loading and is in use by most persistence implementations supplied by MPS.
  */
 public class SModelHeader {
-  /**
-   * @deprecated Use {@link GeneratableSModel#DO_NOT_GENERATE} instead, header doesn't care about specific attributes
-   */
-  @Deprecated(since = "2021.3", forRemoval = true)
-  public static final String DO_NOT_GENERATE = GeneratableSModel.DO_NOT_GENERATE;
-
   /*
    * Model is identified with SModelId, optional module id and has a name, these are elements we'd like to keep in header
    * for quick consideration. Although SModelReference has all these, and it seems straightforward to use it here,

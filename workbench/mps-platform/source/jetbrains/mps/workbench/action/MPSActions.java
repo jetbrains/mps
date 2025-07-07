@@ -23,6 +23,7 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
 import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.logging.Logger;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +88,7 @@ public class MPSActions {
         // TODO: remove the workaround
         return;
     }
-    AnAction[] children = group.getChildren(null);
+    List<AnAction> children = ActionUtils.getChildren(group);
     for (AnAction child : children) {
       if (child instanceof ActionGroup) {
         removeGroupsFromGroup((ActionGroup) child, groups);

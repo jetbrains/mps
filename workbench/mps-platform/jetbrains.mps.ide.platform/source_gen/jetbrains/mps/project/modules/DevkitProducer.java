@@ -12,7 +12,7 @@ import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.smodel.GeneralModuleFactory;
 import jetbrains.mps.project.ModuleId;
 
-@GeneratedClass(node = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)/4651854782306228045", model = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)")
+@GeneratedClass(nodeId = "4651854782306228045", model = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)")
 public class DevkitProducer {
   private final MPSProject myProject;
 

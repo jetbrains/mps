@@ -22,7 +22,7 @@ import com.intellij.openapi.fileEditor.TextEditor;
 import com.intellij.openapi.editor.LogicalPosition;
 import com.intellij.openapi.editor.ScrollType;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a5(jetbrains.mps.ide.common)/4221956679901042757", model = "r:00000000-0000-4000-0000-011c895904a5(jetbrains.mps.ide.common)")
+@GeneratedClass(nodeId = "4221956679901042757", model = "r:00000000-0000-4000-0000-011c895904a5(jetbrains.mps.ide.common)")
 public final class FileOpenUtil {
   private FileOpenUtil() {
   }

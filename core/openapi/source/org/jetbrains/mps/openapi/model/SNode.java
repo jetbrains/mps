@@ -342,78 +342,113 @@ public interface SNode {
   Iterable<Object> getUserObjectKeys();
 
   //------------deprecated, remove after 3.2-----------
+  // All uses in MPS have been removed or replaced with SNodeLegacy. However, there are still uses in mbeddr and MPS-extensions
 
   /**
    * @deprecated use getContainmentLink()
    */
   @Deprecated
-  String getRoleInParent();
+  default String getRoleInParent() {
+    // no-op, just to facilitate removal of overrides
+    return null;
+  }
 
   /**
    * @deprecated use hasProperty(SProperty), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-@Deprecated(since = "2020.2", forRemoval = true)
-  boolean hasProperty(String propertyName);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default boolean hasProperty(String propertyName) {
+    // no-op, just to facilitate removal of overrides
+    return false;
+  }
 
   /**
    * @deprecated use getProperty(SProperty), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-@Deprecated(since = "2020.2", forRemoval = true)
-  String getProperty(String propertyName);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default String getProperty(String propertyName) {
+    // no-op, just to facilitate removal of overrides
+    return null;
+  }
 
   /**
    * @deprecated use setProperty(SProperty), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-@Deprecated(since = "2020.2", forRemoval = true)
-  void setProperty(String propertyName, String propertyValue);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default void setProperty(String propertyName, String propertyValue) {
+    // no-op, just to facilitate removal of overrides
+  }
 
   /**
    * @deprecated use getProperties()
    */
   @Deprecated
-  Iterable<String> getPropertyNames();
+  default Iterable<String> getPropertyNames() {
+    // no-op, just to facilitate removal of overrides
+    return null;
+  }
 
   /**
    * @deprecated use setReferenceTarget(SReferenceLink, SNode), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-@Deprecated(since = "2020.2", forRemoval = true)
-  void setReferenceTarget(String role, @Nullable SNode target);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default void setReferenceTarget(String role, @Nullable SNode target) {
+    // no-op, just to facilitate removal of overrides
+    // FWIW, there's override in mps-extensions and no uses in mbeddr
+  }
 
   /**
    * @deprecated use getReferenceTarget(SReferenceLink), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-@Deprecated(since = "2020.2", forRemoval = true)
-  SNode getReferenceTarget(String role);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default SNode getReferenceTarget(String role) {
+    // no-op, just to facilitate removal of overrides
+    return null;
+  }
 
   // SReferences
 
   /**
    * @deprecated use getReference(SReferenceLink), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-@Deprecated(since = "2020.2", forRemoval = true)
-  SReference getReference(String role);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default SReference getReference(String role) {
+    // no-op, just to facilitate removal of overrides
+    // FWIW, there's override in mps-extensions and no uses in mbeddr
+    return null;
+  }
 
   /**
    * @deprecated use setReference(SReferenceLink, SReference), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-@Deprecated(since = "2020.2", forRemoval = true)
-  void setReference(String role, SReference reference);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default void setReference(String role, SReference reference) {
+    // no-op, just to facilitate removal of overrides
+    // FWIW, there's override in mps-extensions and no uses in mbeddr
+  }
 
   /**
    * @deprecated use insertChildBefore(SContainmentLink, SNode, SNode), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-@Deprecated(since = "2020.2", forRemoval = true)
-  void insertChildBefore(String role, SNode child, @Nullable SNode anchor);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default void insertChildBefore(String role, SNode child, @Nullable SNode anchor) {
+    // no-op, just to facilitate removal of overrides
+  }
 
   /**
    * @deprecated use addChild(SContainmentLink, SNode), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-@Deprecated(since = "2020.2", forRemoval = true)
-  void addChild(String role, SNode child);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default void addChild(String role, SNode child) {
+    // no-op, just to facilitate removal of overrides
+  }
 
   /**
    * @deprecated use getChildren(SContainmentLink), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-@Deprecated(since = "2020.2", forRemoval = true)
-  Iterable<? extends SNode> getChildren(String role);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default Iterable<? extends SNode> getChildren(String role) {
+    // no-op, just to facilitate removal of overrides
+    return null;
+  }
 }

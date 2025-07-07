@@ -24,7 +24,7 @@ import org.jdom.Element;
  * FIXME auxiliary properties are likely not part of MPS startup sequence
  * FIXME myLibraries - what the hell is 'name' key, and do I really want to stick to File there provided I may use macro values as part of a library path
  */
-@GeneratedClass(node = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/878521226297928383", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
+@GeneratedClass(nodeId = "878521226297928383", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
 public class ScriptData {
   private static final String ROOT_TASKDATA = "taskdata";
   private static final String PROP_WORKER = "worker";
@@ -147,7 +147,6 @@ public class ScriptData {
       // I know I'm inside a loop, but I don't expect more that 1 <repo> tag
       setRepo(repo);
     }
-
     for (Element e : root.getChildren(ELEM_MACRO)) {
       addMacro(e.getAttributeValue(NAME), e.getAttributeValue(VALUE));
     }

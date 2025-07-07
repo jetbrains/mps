@@ -8,18 +8,18 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import com.intellij.ui.JBColor;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import java.awt.Point;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.cells.ParentSettings;
 import java.awt.Graphics2D;
 import java.awt.AlphaComposite;
+import com.intellij.ui.JBColor;
 import java.awt.BasicStroke;
 import java.awt.Rectangle;
 import java.awt.Component;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 
 public class TooltipWrapper extends EditorCell_Collection implements Tooltip {
   @NotNull
@@ -38,10 +38,6 @@ public class TooltipWrapper extends EditorCell_Collection implements Tooltip {
     myTiming = timing;
 
     addEditorCell(visibleCell);
-    EditorCell tooltipCell = myTooltipCellEvaluator.getTooltipCell();
-    if (tooltipCell != null) {
-      tooltipCell.getStyle().set(StyleAttributes.BACKGROUND_COLOR, JBColor.background());
-    }
   }
 
   @Override
@@ -90,7 +86,12 @@ public class TooltipWrapper extends EditorCell_Collection implements Tooltip {
   @Nullable
   @Override
   public EditorCell getTooltipCell() {
-    return myTooltipCellEvaluator.getTooltipCell();
+    EditorCell tooltipCell = myTooltipCellEvaluator.getTooltipCell();
+    if (tooltipCell != null) {
+      tooltipCell.getStyle().set(StyleAttributes.BACKGROUND_COLOR, JBColor.background());
+    }
+
+    return tooltipCell;
   }
 
   @NotNull

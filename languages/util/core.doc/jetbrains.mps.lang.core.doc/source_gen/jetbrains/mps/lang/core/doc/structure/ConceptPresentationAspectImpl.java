@@ -9,20 +9,20 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private ConceptPresentation props_DocumentedNodeAnnotation;
+  private ConceptPresentation props_DocumentationAnnotation;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case LanguageConceptSwitch.DocumentedNodeAnnotation:
-        if (props_DocumentedNodeAnnotation == null) {
+      case LanguageConceptSwitch.DocumentationAnnotation:
+        if (props_DocumentationAnnotation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("DocumentedNodeAnnotation");
-          props_DocumentedNodeAnnotation = cpb.create();
+          cpb.rawPresentation("DocumentationAnnotation");
+          props_DocumentationAnnotation = cpb.create();
         }
-        return props_DocumentedNodeAnnotation;
+        return props_DocumentationAnnotation;
     }
     return null;
   }

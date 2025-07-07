@@ -33,6 +33,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+@Deprecated(forRemoval = true)
 public final class TreeNodeUpdater {
   private final Project myProject;
   private final Semaphore myGuard = new Semaphore(1);

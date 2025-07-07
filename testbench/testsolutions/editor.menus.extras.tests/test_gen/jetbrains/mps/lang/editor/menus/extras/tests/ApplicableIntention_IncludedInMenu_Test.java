@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -27,7 +27,7 @@ import org.junit.Assert;
 @MPSLaunch
 public class ApplicableIntention_IncludedInMenu_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(ApplicableIntention_IncludedInMenu_Test.class, "${mps_home}", "r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ApplicableIntention_IncludedInMenu_Test.class).projectPath(null).modelRef("r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)").reopenProject(false).build());
 
   public ApplicableIntention_IncludedInMenu_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -61,7 +61,7 @@ public class ApplicableIntention_IncludedInMenu_Test extends BaseTransformationT
 
         DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
 
-        Assert.assertEquals(1, part.createItems(context).size());
+        Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(part.createItems(context).size()));
       });
     }
   }

@@ -3,17 +3,19 @@
   <readOnlyStubs/>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <library location="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-common-1.9.0.jar" />
-      <library location="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-1.9.0.jar" />
+      <library location="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.1.0.jar" />
     </facet>
   </facets>
   <models>
-    <!-- Regular (JVM) stdlib is not included there -->
     <modelRoot contentPath="${mps_home}/plugins/mps-kotlin/lib" type="kotlin_common">
-      <sourceRoot location="kotlin-stdlib-common-1.9.0.jar" />
       <sourceRoot location="kotlin-builtins.jar" />
+      <sourceRoot location="kotlin-stdlib-2.1.0.jar" />
+      <sourceRoot location="kotlin-stdlib-2.1.0-all.jar" />
     </modelRoot>
   </models>
+  <dependencies>
+    <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
+  </dependencies>
   <sourcePath />
   <languageVersions />
 </solution>

@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -16,7 +16,7 @@ import jetbrains.mps.baseLanguage.util.plugin.refactorings.InlineMethodModel;
 @MPSLaunch
 public class CheckInlineWithThrow_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(CheckInlineWithThrow_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CheckInlineWithThrow_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public CheckInlineWithThrow_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -33,9 +33,14 @@ public class CheckInlineWithThrow_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053187489");
+    }
+
     public void test_CheckInlineWithThrow() throws Exception {
-      runWithinCommand(() -> addNodeById("1230053187489"));
-      runWithinCommand(() -> Assert.assertNull(new InlineMethodModel(getNodeById("1230053187517")).getErrors()));
+      initTestNodes();
+      runWithinCommand(() -> Assert.assertNull(new InlineMethodModel(getAnnotatedNode("call")).getErrors()));
     }
 
   }

@@ -7,15 +7,13 @@ import jetbrains.mps.tool.common.Script;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
-import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
-import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
-import org.junit.platform.launcher.TestExecutionListener;
-import org.junit.platform.commons.PreconditionViolationException;
 import java.util.List;
+import java.io.File;
+import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
+import jetbrains.mps.lang.test.junit5.tcutil.JUnit5TestExecutionListener;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SModule;
-import java.io.File;
+import jetbrains.mps.classloading.ClassLoaderManager;
 
 public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
 
@@ -36,13 +34,7 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
     Project project = myEnvironment.createProject(new ModuleFilesListProjectStrategy(myWhatToDo.getModules()));
     FailureDetector failureDetector = new FailureDetector();
 
-    TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, myEnvironment);
-    TestSession testSession = TestPlatform.getInstance().openSession(sessionConfig);
-    try {
-      launchTests(project, failureDetector);
-    } finally {
-      TestPlatform.getInstance().closeSession(testSession);
-    }
+    launchTestsWithSession(collectTestClasses(project), failureDetector);
 
     myEnvironment.closeProject(project);
     myEnvironment.dispose();
@@ -50,23 +42,29 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
     if (failureDetector.hasFailures()) {
       failureDetector.flushErrors(myWorkerCallback);
     }
-    // this method throws RuntimeException in case there were errors and failOnError is set
-    myWorkerCallback.failBuild();
-
     return failureDetector.failuresCount();
   }
 
-  protected void launchTests(Project project, TestExecutionListener executionListener) throws PreconditionViolationException {
-    List<Class<?>> testClasses = collectTestClasses(project);
-
-    ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
-    try {
-      Thread.currentThread().setContextClassLoader(testModuleContextClassLoader(project));
-      launchTests(testClasses, executionListener);
-
-    } finally {
-      Thread.currentThread().setContextClassLoader(contextClassLoader);
+  @Override
+  public TestSessionConfig configureSession(TestSessionConfig config) {
+    List<File> projectDirectories = myWhatToDo.getProjectDirectories();
+    if (!(projectDirectories.isEmpty())) {
+      if (projectDirectories.size() > 1) {
+        myWorkerCallback.error("only one project directory can be specified", new IllegalStateException());
+      }
+      config = config.withSystemProperty(SystemProperties.PROJECT_PATH, projectDirectories.get(0).getAbsolutePath());
     }
+    return config;
+  }
+
+  @Override
+  protected JUnit5TestExecutionListener createTestExecutionListener() {
+    return new JUnit5TestExecutionListener() {
+      @Override
+      protected void flushSystemStreams() {
+        // NOP: avoid attempting to flush stdout/stderr in order not to deadlock; MPS-37852
+      }
+    };
   }
 
   private List<Class<?>> collectTestClasses(final Project project) {
@@ -78,6 +76,7 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
           testClasses.add(moduleClassLoader.loadClass(testClassName));
 
         } catch (ClassNotFoundException e) {
+          myWorkerCallback.setForceFailOnError();
           myWorkerCallback.error("error building test suite", e);
         }
       }
@@ -85,18 +84,11 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
 
     project.getModelAccess().runReadAction(() -> {
 
-      new TestDiscovery(visitor).surveyModules(project.getProjectModules());
+      new TestDiscovery(myEnvironment.getPlatform().findComponent(ClassLoaderManager.class), visitor).surveyModules(project.getProjectModules());
 
     });
 
     return testClasses;
-  }
-
-  private ClassLoader testModuleContextClassLoader(final Project project) {
-    return ModuleClassLoaderUtil.classLoaderForTestExecution(myEnvironment.getPlatform(), () -> {
-      return project.getProjectModules().stream().map(SModule::getModuleReference).map(Object::toString).toList();
-
-    });
   }
 
   private boolean isHaltOnFailure() {

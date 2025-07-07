@@ -22,7 +22,7 @@ import com.intellij.unscramble.AnalyzeStacktraceUtil;
  * @deprecated It is not used anymore. It is duplication of {@link com.intellij.unscramble.AnalyzeStacktraceDialog }}.
  */
 @Deprecated(since = "2019.3", forRemoval = true)
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/4221956679900513516", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "4221956679900513516", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class AnalyzeStacktraceDialog extends DialogWrapper {
   private JComponent myComponent;
   private JTextArea myText;

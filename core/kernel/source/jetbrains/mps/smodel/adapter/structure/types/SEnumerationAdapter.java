@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -116,12 +116,6 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
       return SType.NOT_A_VALUE;
     }
 
-    // if persisted by internal value, TODO remove after 19.2 since all literals will be persisted by id
-    SEnumerationLiteral literal = getEnumMemberByRawValue0(string);
-    if (literal != null) {
-      return literal;
-    }
-
     if (string == null) {
       // default implicitly stored
       return getDefault();
@@ -142,11 +136,6 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     } catch (IllegalArgumentException e) {
       // serialized value is not id
     }
-    // TODO replace with just 'return SType.NOT_A_VALUE' after 19.2 since all literals stored by id
-    SDataType rawMemberType = getRawMemberType();
-    if (rawMemberType != null) {
-      return new InvalidEnumerationLiteral(this, rawMemberType.fromString(string));
-    }
     return SType.NOT_A_VALUE;
   }
 
@@ -158,24 +147,7 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
         // store default values implicitly
         return null;
       }
-      String string = serializeId(literal.myId) + "/" + literal.getName();
-      if (getEnumMemberByRawValue0(string) != null) {
-        // TODO drop after 19.2 since all values will be persisted by id
-        int suffix = 1;
-        while (getEnumMemberByRawValue0(string + "#" + suffix) != null) {
-          suffix++;
-        }
-        string = string + "#" + suffix;
-      }
-      return string;
-    }
-    // TODO replace with just 'return null' after 19.2 since all literals stored by id
-    if (value instanceof InvalidEnumerationLiteral) {
-      SDataType rawMemberType = getRawMemberType();
-      if (rawMemberType != null) {
-        Object rawValue = ((InvalidEnumerationLiteral) value).getRawValue();
-        return rawMemberType.toString(rawValue);
-      }
+      return serializeId(literal.myId) + "/" + literal.getName();
     }
     return null;
   }

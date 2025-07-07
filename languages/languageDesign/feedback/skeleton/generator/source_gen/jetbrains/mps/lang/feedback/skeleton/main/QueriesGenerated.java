@@ -66,6 +66,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
+  public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "feedbackDescriptorCons");
+  }
   public static Object referenceMacro_GetReferent_3_0(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$NMNv);
   }
@@ -298,8 +301,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("2916065699089599886", new RTQ(0, "BaseConcept"));
-    rtqMethods.put("6285588811486484649", new RTQ(1, "PROVIDER"));
+    rtqMethods.put("4855853316367980412", new RTQ(0, "Generated_FeedbackDescriptor"));
+    rtqMethods.put("2916065699089599886", new RTQ(1, "BaseConcept"));
+    rtqMethods.put("6285588811486484649", new RTQ(2, "PROVIDER"));
   }
   @NotNull
   @Override
@@ -317,8 +321,10 @@ public class QueriesGenerated extends QueryProviderBase {
     public Object evaluate(@NotNull ReferenceMacroContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
-          return QueriesGenerated.referenceMacro_GetReferent_3_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_2_0(ctx);
         case 1:
+          return QueriesGenerated.referenceMacro_GetReferent_3_0(ctx);
+        case 2:
           return QueriesGenerated.referenceMacro_GetReferent_3_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));

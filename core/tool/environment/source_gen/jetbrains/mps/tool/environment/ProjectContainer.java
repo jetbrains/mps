@@ -18,7 +18,7 @@ import jetbrains.mps.project.FileBasedProject;
 import java.util.Objects;
 import java.io.IOException;
 
-@GeneratedClass(node = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/623745604705880298", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
+@GeneratedClass(nodeId = "623745604705880298", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
 /*package*/ class ProjectContainer implements ProjectManagerListener {
   private static final Logger LOG = Logger.getLogger(ProjectContainer.class);
   private final Set<Project> myProjects;

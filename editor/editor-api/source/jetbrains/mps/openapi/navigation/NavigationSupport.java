@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.openapi.navigation;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
@@ -35,8 +36,19 @@ import org.jetbrains.mps.openapi.module.SModule;
 public abstract class NavigationSupport implements CoreComponent {
   private static NavigationSupport INSTANCE;
 
+  /**
+   * @deprecated use {@link EditorNavigator} or {@link ProjectPaneNavigator} instead.
+   *             If utterly necessary, for transition purposes can use {@link #getInstance(Project)}
+   */
+  @Deprecated(forRemoval = true, since = "2024.1")
   public static NavigationSupport getInstance() {
+    Logger.getLogger(NavigationSupport.class).warnDeprecatedUse("Replace with #getInstance(project) call");
     return INSTANCE;
+  }
+
+  public static NavigationSupport getInstance(@NotNull Project mpsProject) {
+    // NavigationSupportImpl is part of [mps-workbench] and gets registered through j.m.ide module plugin (AppPart)
+    return mpsProject.getComponent(NavigationSupport.class);
   }
 
   @Override

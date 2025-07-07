@@ -118,9 +118,17 @@ final class GenerationSettingsPreferencesPage implements SearchableConfigurable 
     GridBagConstraints c = new GridBagConstraints();
     c.gridx = 0;
     c.weightx = 1;
-    c.fill = GridBagConstraints.BOTH;
 
     c.gridy = 0;
+    c.weighty = 0;
+    c.fill = GridBagConstraints.HORIZONTAL;
+    c.anchor = GridBagConstraints.WEST;
+    myStatusLabel = new JLabel();
+    myStatusLabel.setBorder(new JBEmptyBorder(JBUI.insets(5)));
+    myMainPanel.add(myStatusLabel, c);
+
+    c.fill = GridBagConstraints.BOTH;
+    c.gridy++;
     myMainPanel.add(createOptionsPanel(), c);
 
     c.gridy++;
@@ -135,13 +143,6 @@ final class GenerationSettingsPreferencesPage implements SearchableConfigurable 
     c.gridy++;
     c.weighty = 1;
     myMainPanel.add(new JPanel(), c);
-    c.gridy++;
-    c.weighty = 0;
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.anchor = GridBagConstraints.WEST;
-    myStatusLabel = new JLabel();
-    myStatusLabel.setBorder(new JBEmptyBorder(JBUI.insets(5)));
-    myMainPanel.add(myStatusLabel, c);
     updateStatus();
     return myMainPanel;
   }
@@ -381,7 +382,7 @@ final class GenerationSettingsPreferencesPage implements SearchableConfigurable 
     ArrayList<String> messages = new ArrayList<>();
     if (myInplaceTransform.isSelected() && mySaveTransientModelsCheckBox.isSelected()) {
       messages.add(
-          String.format("<h2>Warning:</h2>Using <strong>%s</strong><br>together with <strong>%s</strong>may slow down generation process significantly",
+          String.format("<h2>Warning:</h2>Using <strong>%s</strong><br>together with <strong>%s</strong> may slow down generation process significantly",
                         myInplaceTransform.getText(), mySaveTransientModelsCheckBox.getText()));
     }
     if (!messages.isEmpty()) {

@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
  * @deprecated use S-entities instead
  */
 @Deprecated
-@GeneratedClass(node = "r:2c4d9270-b6d6-44af-aecd-e01a223680db(jetbrains.mps.kernel.model)/1237995590703", model = "r:2c4d9270-b6d6-44af-aecd-e01a223680db(jetbrains.mps.kernel.model)")
+@GeneratedClass(nodeId = "1237995590703", model = "r:2c4d9270-b6d6-44af-aecd-e01a223680db(jetbrains.mps.kernel.model)")
 public class SModelUtil {
   public static Language getDeclaringLanguage(final SNode concept) {
     if (concept == null) {

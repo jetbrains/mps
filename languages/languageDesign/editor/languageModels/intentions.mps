@@ -6,7 +6,7 @@
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="1" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -1886,7 +1886,7 @@
                 <ref role="3cqZAo" node="hYCXnUA" resolve="transactional" />
               </node>
               <node concept="3TrEf2" id="hYDsSr1" role="2OqNvi">
-                <ref role="3Tt5mk" to="tpc2:hGPY767" resolve="property" />
+                <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" resolve="propertyDeclaration" />
               </node>
             </node>
           </node>
@@ -2099,7 +2099,7 @@
             <node concept="2OqwBi" id="hYD06zt" role="37vLTx">
               <node concept="2Sf5sV" id="hYD06zu" role="2Oq$k0" />
               <node concept="3TrEf2" id="hYD0d1G" role="2OqNvi">
-                <ref role="3Tt5mk" to="tpc2:hGPY767" resolve="property" />
+                <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" resolve="propertyDeclaration" />
               </node>
             </node>
             <node concept="2OqwBi" id="hYD06zw" role="37vLTJ">
@@ -2118,7 +2118,7 @@
             <node concept="2OqwBi" id="hYDsE4h" role="37vLTJ">
               <node concept="2Sf5sV" id="hYDsDUC" role="2Oq$k0" />
               <node concept="3TrEf2" id="hYDsEz6" role="2OqNvi">
-                <ref role="3Tt5mk" to="tpc2:hGPY767" resolve="property" />
+                <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" resolve="propertyDeclaration" />
               </node>
             </node>
           </node>

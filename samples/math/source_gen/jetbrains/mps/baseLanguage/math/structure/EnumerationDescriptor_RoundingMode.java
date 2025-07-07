@@ -25,7 +25,7 @@ public class EnumerationDescriptor_RoundingMode extends EnumerationDescriptorBas
   private final EnumerationDescriptor.MemberDescriptor myMember_UP_0 = new EnumerationDescriptor.MemberDescriptor("UP", "UP", 0x120568f3db1L, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448449");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120568e25cfL, 0x120568e25d0L, 0x120568e9842L, 0x120568e98d0L, 0x120568e997dL, 0x120568e99ebL, 0x120568f1650L, 0x120568f2853L, 0x120568f3db1L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_CEILING_0, myMember_DOWN_0, myMember_FLOOR_0, myMember_HALF_DOWN_0, myMember_HALF_EVEN_0, myMember_HALF_UP_0, myMember_UNNECCESARY_0, myMember_UP_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_CEILING_0, myMember_DOWN_0, myMember_FLOOR_0, myMember_HALF_DOWN_0, myMember_HALF_EVEN_0, myMember_HALF_UP_0, myMember_UNNECCESARY_0, myMember_UP_0);
 
   @Nullable
   @Override

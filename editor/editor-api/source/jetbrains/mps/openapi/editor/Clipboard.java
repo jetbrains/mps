@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,13 @@
  */
 package jetbrains.mps.openapi.editor;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
+
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Interaction with editor's clipboard
@@ -23,6 +29,23 @@ import org.jetbrains.mps.openapi.model.SNode;
  * @since 2023.3
  */
 public interface Clipboard {
-  void put(SNode node, String text);
-  void put(Iterable<SNode> nodes, String text);
+  default void put(SNode node, String text) {
+    put(Collections.singleton(node), text, null);
+  }
+
+  /**
+   * Shorthand for {@link #put(Iterable, String, Map)}, for scenarios with no attribute handling
+   */
+  default void put(Iterable<SNode> nodes, String text) {
+    put(nodes, text, null);
+  }
+
+  void put(@NotNull Iterable<SNode> nodes, @NotNull String text, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes);
+
+  /**
+   * Unlike {@link #put(Iterable, String)}, this method indicates supplied nodes are not present
+   * in a model and could be copied as is, preserving unique attributes, values and identities, if any.
+   * Useful for 'Cut' operations and when placing newly ("freshly") created nodes into clipboard.
+   */
+  void putAsFresh(@NotNull Iterable<SNode> nodes, @NotNull String text, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes);
 }

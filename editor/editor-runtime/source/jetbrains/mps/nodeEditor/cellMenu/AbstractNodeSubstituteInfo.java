@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -121,8 +121,8 @@ public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
   @Override
   public List<SubstituteAction> getSmartMatchingActions(final String pattern, final boolean strictMatching, EditorCell contextCell) {
     // TODO make this thread local maybe?
-    ourModelForTypechecking = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
-    final ModelDependencyResolver mdr = new ModelDependencyResolver(LanguageRegistry.getInstance(), getEditorContext().getRepository());
+    ourModelForTypechecking = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule(getEditorContext().getRepository()));
+    final ModelDependencyResolver mdr = new ModelDependencyResolver(LanguageRegistry.getInstance(getEditorContext().getRepository()), getEditorContext().getRepository());
     final ModelImports mi = new ModelImports(ourModelForTypechecking);
     mdr.usedLanguages(getEditorContext().getModel()).forEach(mi::addUsedLanguage);
 

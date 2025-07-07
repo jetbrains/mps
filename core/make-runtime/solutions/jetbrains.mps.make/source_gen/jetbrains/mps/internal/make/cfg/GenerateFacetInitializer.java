@@ -18,7 +18,7 @@ import jetbrains.mps.generator.TransientModelsProvider;
  * values explicitly (e.g. cleanMake for those longing for rebuild only).
  * Perhaps, this it should be MakeSession's responsibility to set properties.
  */
-@GeneratedClass(node = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)/9122198050634039886", model = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)")
+@GeneratedClass(nodeId = "9122198050634039886", model = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)")
 public final class GenerateFacetInitializer implements PropertyPoolInitializer {
   private GenerationOptions.OptionsBuilder myGenOptions;
   private ModelGenerationPlan myPlan;

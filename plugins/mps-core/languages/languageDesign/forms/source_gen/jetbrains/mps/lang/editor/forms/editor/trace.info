@@ -18,28 +18,21 @@
   </root>
   <root nodeRef="r:c1ef22cb-79d9-43c5-a7c0-3497c3269866(jetbrains.mps.lang.editor.forms.editor)/1186415538255">
     <file name="FormsStylePack_StyleSheet.java">
-      <node id="1186415544875" at="15,71,16,33" concept="9" />
-      <node id="1186415544875" at="18,67,19,24" concept="9" />
-      <node id="4284599143868091278" at="23,59,24,48" concept="1" />
-      <node id="1186415544875" at="15,0,18,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1186415544875" at="18,0,21,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
-      <node id="1186415544875" at="22,0,26,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="1186415544875" at="15,71,16,33" />
-      <scope id="1186415544875" at="18,67,19,24" />
-      <scope id="1186415544875" at="23,59,24,48" />
-      <scope id="1186415544875" at="15,0,18,0">
-        <var name="editorContext" id="1186415544875" />
-        <var name="node" id="1186415544875" />
-      </scope>
-      <scope id="1186415544875" at="18,0,21,0">
+      <node id="1186415544875" at="13,67,14,24" concept="9" />
+      <node id="4284599143868091278" at="18,59,19,48" concept="1" />
+      <node id="1186415544875" at="13,0,16,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
+      <node id="1186415544875" at="17,0,21,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="1186415544875" at="13,67,14,24" />
+      <scope id="1186415544875" at="18,59,19,48" />
+      <scope id="1186415544875" at="13,0,16,0">
         <var name="builderEnv" id="1186415544875" />
       </scope>
-      <scope id="1186415544875" at="22,0,26,0">
+      <scope id="1186415544875" at="17,0,21,0">
         <var name="editorCell" id="1186415544875" />
         <var name="style" id="1186415544875" />
       </scope>
-      <unit id="1186415544875" at="14,0,28,0" name="jetbrains.mps.lang.editor.forms.editor.FormsStylePack_StyleSheet$KeyWordStyleClass" />
-      <unit id="1186415538255" at="13,0,29,0" name="jetbrains.mps.lang.editor.forms.editor.FormsStylePack_StyleSheet" />
+      <unit id="1186415544875" at="12,0,23,0" name="jetbrains.mps.lang.editor.forms.editor.FormsStylePack_StyleSheet$KeyWordStyleClass" />
+      <unit id="1186415538255" at="11,0,24,0" name="jetbrains.mps.lang.editor.forms.editor.FormsStylePack_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:c1ef22cb-79d9-43c5-a7c0-3497c3269866(jetbrains.mps.lang.editor.forms.editor)/1340057216891285332">

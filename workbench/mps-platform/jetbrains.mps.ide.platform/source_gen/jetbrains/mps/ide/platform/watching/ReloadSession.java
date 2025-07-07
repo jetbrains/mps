@@ -17,7 +17,7 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
 import org.jetbrains.annotations.Nullable;
 import java.util.function.Supplier;
 
-@GeneratedClass(node = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/174954467868287275", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
+@GeneratedClass(nodeId = "174954467868287275", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
 public class ReloadSession {
   private static final Logger LOG = Logger.getLogger(ReloadSession.class);
   private List<ReloadListener> myListeners = ListSequence.fromList(new ArrayList<ReloadListener>());

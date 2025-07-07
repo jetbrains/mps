@@ -23,7 +23,7 @@ public class EnumerationDescriptor_Keymap extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_Default_0 = new EnumerationDescriptor.MemberDescriptor("Default", "Default", 0x21ea68327baf70c0L, "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/4241665505353446999");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, 0x15afe07f2a9bb079L, 0x2b52ed8175294e87L, 0x1a8587bfae037330L, 0x1a8587bfae037331L, 0x1a8587bfae037332L, 0x21ea68327baf70c0L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_Mac_OS_X_0, myMember_Mac_OS_X_Plus_0, myMember_XWin_0, myMember_GNOME_0, myMember_KDE_0, myMember_Default_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_Mac_OS_X_0, myMember_Mac_OS_X_Plus_0, myMember_XWin_0, myMember_GNOME_0, myMember_KDE_0, myMember_Default_0);
 
   @Nullable
   @Override

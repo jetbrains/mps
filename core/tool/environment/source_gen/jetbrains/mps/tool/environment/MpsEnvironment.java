@@ -14,13 +14,14 @@ import java.util.List;
 import jetbrains.mps.library.contributor.LibraryContributor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
 import java.io.File;
 import jetbrains.mps.core.tool.environment.util.FileMPSProject;
 import jetbrains.mps.util.FileUtil;
 
-@GeneratedClass(node = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/7413225496542996633", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
+@GeneratedClass(nodeId = "7413225496542996633", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
 public final class MpsEnvironment extends EnvironmentBase {
   private static final Logger LOG = Logger.getLogger(MpsEnvironment.class);
   private Platform myPlatform;
@@ -56,7 +57,7 @@ public final class MpsEnvironment extends EnvironmentBase {
     // can move the field here and init CLs along with field initialization
     myPlugins.buildClassLoaders(getRootClassLoader());
     final List<LibraryContributor> libContribs = ListSequence.fromList(new ArrayList<LibraryContributor>());
-    LibraryContributorHelper helper = new LibraryContributorHelper();
+    LibraryContributorHelper helper = new LibraryContributorHelper(myPlatform.findComponent(VFSManager.class).getUmbrellaFileSystemJavaIO());
     if (SetSequence.fromSet(myConfig.getLibs()).isNotEmpty()) {
       ListSequence.fromList(libContribs).addElement(helper.createLibContributorForLibs(myConfig.getLibs(), getRootClassLoader()));
     }

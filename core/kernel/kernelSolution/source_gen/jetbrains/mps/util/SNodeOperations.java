@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)/2089287822043606602", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
+@GeneratedClass(nodeId = "2089287822043606602", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
 public class SNodeOperations {
   public SNodeOperations() {
   }
@@ -102,7 +102,7 @@ public class SNodeOperations {
   public static Set<String> getChildRoles(SNode n) {
     Set<String> res = SetSequence.fromSet(new HashSet<String>());
     for (SNode child : Sequence.fromIterable(n.getChildren())) {
-      SetSequence.fromSet(res).addElement(child.getRoleInParent());
+      SetSequence.fromSet(res).addElement(child.getContainmentLink().getName());
     }
     return res;
   }
@@ -135,7 +135,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isRoot(SNode n) {
-    // uses in mbeddt
+    // uses in mbeddr
     return n.getModel() != null && n.getParent() == null;
   }
   /**
@@ -206,21 +206,9 @@ public class SNodeOperations {
     return children.iterator().next();
   }
   /**
-   * 
-   * @deprecated rewrite using SContainmentLink, don't use by-string roles
-   */
-  @Deprecated
-  public static SNode getChild(SNode node, String role) {
-    Iterable<? extends SNode> children = node.getChildren(role);
-    if (!(children.iterator().hasNext())) {
-      return null;
-    }
-    return children.iterator().next();
-  }
-  /**
    * This will be replaced by getting resolve info from a reference in a context containing it
    * [artem] Well, I believe this one has to be replaced with Scope, with IResolveInfo being a default fallback. 
-   *   Neither this method nor SNodeUtil shall be used by MPS code as it makes an assumption scope impl complies with the way we build resolveInfo here.
+   *   This method shall be used by MPS code as it makes an assumption scope impl complies with the way we build resolveInfo here.
    *   Instead, it's Scope responsibility to build and process resolveInfo
    * 
    * @deprecated use scopes to obtain actual resolveInfo; Use reference.resolveInfo to find out value stored with an association link instance.

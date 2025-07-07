@@ -20,7 +20,7 @@ public class MemberScopes {
   private MemberScopes() {
   }
   @Deprecated
-  public static Scope visibleClassifierMembers(SNode contextClassifier, SAbstractConcept kind, SNode contextNode) {
+  public static Scope visibleClassifierMembers(final SNode contextClassifier, SAbstractConcept kind, final SNode contextNode) {
     // todo[MM]: concepts here must be replaces with a regular Java enum. No point in using concepts here
     Scope membersScope = Classifier__BehaviorDescriptor.getMembers_id1UeCwxlVpJs.invoke(contextClassifier, kind);
     if (membersScope == null) {

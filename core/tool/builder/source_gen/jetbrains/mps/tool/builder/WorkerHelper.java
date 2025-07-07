@@ -14,7 +14,7 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.classloading.ClassLoaderManager;
 
-@GeneratedClass(node = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)/6744798568372956937", model = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)")
+@GeneratedClass(nodeId = "6744798568372956937", model = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)")
 public final class WorkerHelper {
   private final ComponentHost myPlatform;
 

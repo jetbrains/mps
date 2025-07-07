@@ -11,7 +11,7 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 
-@GeneratedClass(node = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/788503456865530690", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
+@GeneratedClass(nodeId = "788503456865530690", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
 public class RefactoringSessionImpl implements RefactoringSession {
   private static final Logger LOG = Logger.getLogger(RefactoringSessionImpl.class);
   private List<Runnable> myChanges = ListSequence.fromList(new ArrayList<Runnable>());

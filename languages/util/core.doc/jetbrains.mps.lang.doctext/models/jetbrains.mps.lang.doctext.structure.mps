@@ -12,14 +12,12 @@
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
-        <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
       </concept>
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
-        <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
         <child id="1169129564478" name="implements" index="PzmwI" />
       </concept>
@@ -32,9 +30,6 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
-      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -43,33 +38,22 @@
   <node concept="1TIwiD" id="DvN_rQM1U_">
     <property role="EcuMT" value="747542936069611173" />
     <property role="TrG5h" value="DocText" />
-    <property role="19KtqR" value="true" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="1V7fFCABoNa" role="PzmwI">
-      <ref role="PrY4T" to="tpck:3xhyJYa45Zm" resolve="IPlaceholderContent" />
+      <ref role="PrY4T" to="tpck:2se02g_X34z" resolve="DocumentationContent" />
     </node>
     <node concept="PrWs8" id="1V7fFCABpgn" role="PzmwI">
       <ref role="PrY4T" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
+    </node>
+    <node concept="PrWs8" id="2se02g_O1tz" role="PzmwI">
+      <ref role="PrY4T" to="zqge:3fm7HO1ENRN" resolve="IHoldDocumentation" />
     </node>
     <node concept="1TJgyj" id="3Ov4nq1TC48" role="1TKVEi">
       <property role="IQ2ns" value="4404258161274814728" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="lines" />
-      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="6N0oV4ThMNB">
-    <property role="EcuMT" value="7836372964445990119" />
-    <property role="TrG5h" value="TextNodeReference" />
-    <property role="3GE5qa" value="" />
-    <property role="34LRSv" value="reference" />
-    <ref role="1TJDcQ" to="zqge:8D0iRqSPVB" resolve="TextElement" />
-    <node concept="1TJgyj" id="rh3Y2YeW$V" role="1TKVEi">
-      <property role="IQ2ns" value="491191292298774843" />
-      <property role="20kJfa" value="reference" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
 </model>

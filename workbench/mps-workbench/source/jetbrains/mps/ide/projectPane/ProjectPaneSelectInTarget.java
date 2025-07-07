@@ -20,19 +20,14 @@ import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
-import jetbrains.mps.fileTypes.MPSFileTypesManager;
 import jetbrains.mps.ide.editor.MPSFileNodeEditor;
-import jetbrains.mps.ide.projectPane.logicalview.ProjectTreeFindHelper;
-import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
-import jetbrains.mps.nodeEditor.NodeEditorComponent;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
-import jetbrains.mps.openapi.editor.Editor;
-import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -95,32 +90,45 @@ public final class ProjectPaneSelectInTarget extends AbstractProjectViewSelectIn
   }
 
   private SModel getModel(VirtualFile virtualFile) {
-    IdeaFileSystem fs = myProject.getFileSystem();
-    if (!fs.canConvert(virtualFile)) {
+    IFile modelFile = toIFile(virtualFile);
+    if (modelFile == null) {
       return null;
     }
-    IFile modelFile = fs.fromVirtualFile(virtualFile);
     // XXX perhaps, shall take same approach as with module files (see #getModule, below)?
     //     with ProjectTreeFindHelper we at least make sure there's a tree node to navigate to, SModelFileTracker doesn't guarantee us that
     return SModelFileTracker.getInstance(myProject.getRepository()).findModel(modelFile);
   }
 
   private boolean isModuleFile(VirtualFile virtualFile) {
-    // FIXME understands module source files only
-    return MPSFileTypesManager.isModuleFile(virtualFile);
+    IFile file = toIFile(virtualFile);
+    return file != null && myProject.getProjectModulesWithGenerators().stream()
+                                    .filter(AbstractModule.class::isInstance)
+                                    .anyMatch((m) -> Objects.equals(((AbstractModule) m).getDescriptorFile(), file));
   }
 
   private SModule getModule(VirtualFile virtualFile) {
+    IFile file = toIFile(virtualFile);
+    if (file != null) {
+      Optional<SModule> maybeModule = myProject.getProjectModulesWithGenerators().stream()
+                                               .filter(AbstractModule.class::isInstance)
+                                               .filter((m) -> Objects.equals(((AbstractModule) m).getDescriptorFile(), file))
+                                               .findFirst();
+      if (maybeModule.isPresent()) {
+        return maybeModule.get();
+      }
+    }
+    return null;
+  }
+
+  @Nullable
+  private IFile toIFile(VirtualFile virtualFile) {
+    // FIXME this code is kept around only for the lack of a better alternative
     IdeaFileSystem fs = myProject.getFileSystem();
     if (!fs.canConvert(virtualFile)) {
       return null;
     }
-    IFile moduleFile = fs.fromVirtualFile(virtualFile);
-    Optional<SModule> maybeModule = myProject.getProjectModulesWithGenerators().stream()
-                                              .filter(AbstractModule.class::isInstance)
-                                              .filter((m) -> Objects.equals(((AbstractModule) m).getDescriptorFile(), moduleFile))
-                                              .findFirst();
-    return maybeModule.orElse(null);
+    IFile modelFile = fs.fromVirtualFile(virtualFile);
+    return modelFile;
   }
 
   private boolean isNodeFile(VirtualFile virtualFile) {

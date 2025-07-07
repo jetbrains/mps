@@ -40,6 +40,13 @@ public abstract class ReportItemBase implements ReportItem, IssueKindReportItem 
   }
 
   @Override
+  public String toString() {
+    return "ReportItemBase {" +
+           "myMessage='" + myMessage + '\'' +
+           '}';
+  }
+
+  @Override
   public final String getMessage() {
     return myMessage;
   }

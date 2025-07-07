@@ -18,7 +18,7 @@ public class RelativePathHelper {
    */
   @Nullable
   public static RelativePathHelper forModule(SModule module) {
-    if (module == null || ((AbstractModule) module).getDescriptorFile() == null || module.isPackaged()) {
+    if (module.isPackaged() || module instanceof AbstractModule == false || ((AbstractModule) module).getDescriptorFile() == null) {
       return null;
     }
     String basePath = ((AbstractModule) module).getDescriptorFile().getParent().getPath();

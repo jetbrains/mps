@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1818770337282919436", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1818770337282919436", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 /*package*/ class OverrideConceptMethodsDialog extends GroupedNodesChooser {
   private JCheckBox myRemoveAttributes;
   private JCheckBox myAddReturn;
@@ -38,7 +38,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   @Override
   protected void initOptions() {
     try {
-      myOptions = myProject.getComponent(ProjectPluginManager.class).getPrefsComponent(BehaviorDialogsPersistentOptions_PreferencesComponent.class);
+      myOptions = ProjectPluginManager.getInstance(myProject).getPrefsComponent(BehaviorDialogsPersistentOptions_PreferencesComponent.class);
     } catch (Exception e) {
       myOptions = null;
     }

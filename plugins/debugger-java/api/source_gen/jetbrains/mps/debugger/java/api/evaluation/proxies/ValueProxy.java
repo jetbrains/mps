@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import com.sun.jdi.Value;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)/4727801710070563612", model = "r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)")
+@GeneratedClass(nodeId = "4727801710070563612", model = "r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)")
 public abstract class ValueProxy implements IValueProxy {
   @NotNull
   protected final Value myValue;

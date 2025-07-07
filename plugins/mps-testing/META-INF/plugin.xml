@@ -19,12 +19,16 @@
   <name>MPS Testing</name>
   <category>Custom Languages</category>
   <description>Languages unit-testing java code and MPS aspects such as editor and typesystem</description>
-  <version>2023.3.4</version>
-  <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="233.1" until-build="241.1"/>
+  <version>2025.1</version>
+  <vendor url="http://www.jetbrains.com/mps/" email="support@jetbrains.com">JetBrains</vendor>
+  <idea-version since-build="251.1" until-build="252.1"/>
+  <dependencies>
+    <plugin id="jetbrains.mps.core"/>
+  </dependencies>
 
   <depends>jetbrains.mps.core</depends>
   <depends optional="true">jetbrains.mps.ide</depends> <!-- FIXME 'optional' is a provisional workaround -->
+  <depends>jetbrains.mps.junit5</depends>
   <depends>com.intellij.modules.lang</depends>
 
   <extensions defaultExtensionNs="com.intellij">

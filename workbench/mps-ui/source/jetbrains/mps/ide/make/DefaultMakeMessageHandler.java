@@ -15,8 +15,13 @@
  */
 package jetbrains.mps.ide.make;
 
+import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.wm.ToolWindowId;
+import com.intellij.openapi.wm.ToolWindowManager;
 import jetbrains.mps.ide.messages.MessageListOptions;
 import jetbrains.mps.ide.messages.MessagesViewTool;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
@@ -36,7 +41,15 @@ public class DefaultMakeMessageHandler implements IMessageHandler {
   public DefaultMakeMessageHandler(Project mpsProject) {
     MessagesViewTool tool = MessagesViewTool.getInstance(mpsProject);
     if (tool != null) {
-      IMessageList list = tool.getMessageList("Make", MessageListOptions.ActivateOnMessage, MessageListOptions.ReuseExisting);
+      Runnable balloonHandler = () -> {
+        final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(ProjectHelper.toIdeaProject(mpsProject));
+        ToolWindow toolWindow = toolWindowManager.getToolWindow(ToolWindowId.MESSAGES_WINDOW);
+        boolean visible = toolWindow != null && toolWindow.isVisible();
+        if (!visible) {
+          toolWindowManager.notifyByBalloon(ToolWindowId.MESSAGES_WINDOW, MessageType.INFO, "Make successful");
+        }
+      };
+      IMessageList list = tool.getMessageList("Make", balloonHandler, MessageListOptions.ActivateOnMessage, MessageListOptions.ReuseExisting);
       list.clear();
       myDelegate = list;
     } else {

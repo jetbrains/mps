@@ -16,7 +16,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestDiscoveryParticipant;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -27,7 +26,6 @@ import jetbrains.mps.ide.findusages.model.scopes.ProjectScope;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import com.intellij.openapi.project.Project;
 
 public class TestListPanel extends ListPanel<ITestNodeWrapper> {
@@ -56,38 +54,28 @@ public class TestListPanel extends ListPanel<ITestNodeWrapper> {
       return ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
     }
     final SRepository repo = mpsProject.getRepository();
-    return new ModelAccessHelper(repo).runReadAction(new Computable<List<ITestNodeWrapper>>() {
-      public List<ITestNodeWrapper> compute() {
-        List<SNode> nodesList = new ArrayList<SNode>();
-        TestDiscoveryParticipant tdp = TestPlatform.getInstance().getAggregateDiscoveryParticipant();
-        Iterable<SAbstractConcept> wrappedRootConcepts = tdp.sourceConcepts();
-        progress.start("Looking up test roots...", Sequence.fromIterable(wrappedRootConcepts).count());
-        for (SAbstractConcept c : Sequence.fromIterable(wrappedRootConcepts)) {
-          Set<SNode> usages = FindUsagesFacade.getInstance().findInstances(new ProjectScope(mpsProject), Collections.singleton(c), false, progress.subTask(1, SubProgressKind.REPLACING));
-          ListSequence.fromList(nodesList).addSequence(SetSequence.fromSet(usages));
-        }
-        progress.done();
-        if (myIsTestMethods) {
-          List<ITestNodeWrapper> methodsList = ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
-          for (SNode testCase : nodesList) {
-            ITestNodeWrapper wrapper = TestNodeWrapperFactory.tryToWrap(testCase);
-            if (wrapper == null) {
-              continue;
-            }
-            ListSequence.fromList(methodsList).addSequence(Sequence.fromIterable(wrapper.getTestMethods()));
+    return new ModelAccessHelper(repo).runReadAction(() -> {
+      List<SNode> nodesList = new ArrayList<SNode>();
+      TestDiscoveryParticipant tdp = TestPlatform.getInstance().getAggregateDiscoveryParticipant();
+      Iterable<SAbstractConcept> wrappedRootConcepts = tdp.sourceConcepts();
+      progress.start("Looking up test roots...", Sequence.fromIterable(wrappedRootConcepts).count());
+      for (SAbstractConcept c : Sequence.fromIterable(wrappedRootConcepts)) {
+        Set<SNode> usages = FindUsagesFacade.getInstance().findInstances(new ProjectScope(mpsProject), Collections.singleton(c), false, progress.subTask(1, SubProgressKind.REPLACING));
+        ListSequence.fromList(nodesList).addSequence(SetSequence.fromSet(usages));
+      }
+      progress.done();
+      if (myIsTestMethods) {
+        List<ITestNodeWrapper> methodsList = ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
+        for (SNode testCase : nodesList) {
+          ITestNodeWrapper wrapper = TestNodeWrapperFactory.tryToWrap(testCase);
+          if (wrapper == null) {
+            continue;
           }
-          return methodsList;
-        } else {
-          return ListSequence.fromList(nodesList).select(new _FunctionTypes._return_P1_E0<ITestNodeWrapper, SNode>() {
-            public ITestNodeWrapper invoke(SNode it) {
-              return wrap(it);
-            }
-          }).where(new _FunctionTypes._return_P1_E0<Boolean, ITestNodeWrapper>() {
-            public Boolean invoke(ITestNodeWrapper it) {
-              return it != null;
-            }
-          }).toList();
+          ListSequence.fromList(methodsList).addSequence(Sequence.fromIterable(wrapper.getTestMethods()));
         }
+        return methodsList;
+      } else {
+        return ListSequence.fromList(nodesList).select((it) -> wrap(it)).where((it) -> it != null).toList();
       }
     });
   }

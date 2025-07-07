@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)/7024895274322369629", model = "r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)")
+@GeneratedClass(nodeId = "7024895274322369629", model = "r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)")
 public class InitializeFieldInConstructorRefactoring extends AbstractInitializeFieldRefactoring {
 
   public void performRefactoring(SNode field, SNodeReference[] selectedConstructors, SRepository repository) {

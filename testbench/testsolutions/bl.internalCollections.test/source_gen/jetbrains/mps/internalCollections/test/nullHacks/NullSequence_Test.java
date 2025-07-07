@@ -20,8 +20,8 @@ public class NullSequence_Test extends Util_Test {
       Assert.assertNull(nullSeq);
       Assert.assertNull(Sequence.fromIterable(nullSeq).first());
       Assert.assertNull(Sequence.fromIterable(nullSeq).last());
-      Assert.assertEquals(0, Sequence.fromIterable(nullSeq).count());
-      Assert.assertEquals(0, Sequence.fromIterable(nullSeq).count());
+      Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(Sequence.fromIterable(nullSeq).count()));
+      Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(Sequence.fromIterable(nullSeq).count()));
       List<Integer> list5 = ListSequence.fromListAndArray(new ArrayList<Integer>(), 1, 2, 3, 4, 5);
       ListSequence.fromList(list5).addSequence(Sequence.fromIterable(nullSeq));
       this.assertIterableEquals(this.expect5(), list5);
@@ -45,8 +45,8 @@ public class NullSequence_Test extends Util_Test {
     if (Sequence.USE_NULL_SEQUENCE) {
       Iterable<Integer> input = this.input5();
       Iterable<String> nullSeq = Sequence.fromIterable(input).translate((it) -> ((ISequence<String>) null));
-      Assert.assertEquals(0, Sequence.fromIterable(nullSeq).count());
-      Assert.assertEquals(0, Sequence.fromIterable(nullSeq).count());
+      Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(Sequence.fromIterable(nullSeq).count()));
+      Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(Sequence.fromIterable(nullSeq).count()));
     }
   }
   @Test
@@ -58,8 +58,8 @@ public class NullSequence_Test extends Util_Test {
       Assert.assertNull(ListSequence.fromList(nullList).last());
       Assert.assertNull(ListSequence.fromList(nullList).first());
       Assert.assertNull(ListSequence.fromList(nullList).getElement(-1));
-      Assert.assertEquals(0, ListSequence.fromList(nullList).count());
-      Assert.assertEquals(0, ListSequence.fromList(nullList).count());
+      Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(ListSequence.fromList(nullList).count()));
+      Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(ListSequence.fromList(nullList).count()));
     }
   }
   @Test

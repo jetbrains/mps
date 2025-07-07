@@ -23,9 +23,6 @@
         <element id="module-output" name="mps-messaging" />
         <element id="module-output" name="logging" />
       </element>
-      <element id="archive" name="mps-boot-util.jar">
-        <element id="module-output" name="boot-util" />
-      </element>
       <element id="archive" name="mps-closures.jar">
         <element id="module-output" name="closures-runtime" />
       </element>

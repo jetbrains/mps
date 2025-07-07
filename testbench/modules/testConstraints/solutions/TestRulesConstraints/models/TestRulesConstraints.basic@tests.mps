@@ -14,18 +14,12 @@
       <concept id="1215603922101" name="jetbrains.mps.lang.test.structure.NodeOperationsContainer" flags="ng" index="7CXmI">
         <child id="1215604436604" name="nodeOperations" index="7EUXB" />
       </concept>
-      <concept id="1215607067978" name="jetbrains.mps.lang.test.structure.CheckNodeForErrorMessagesOperation" flags="ng" index="7OXhh">
-        <property id="3743352646565420194" name="includeSelf" index="GvXf4" />
-      </concept>
       <concept id="7835233914436786109" name="jetbrains.mps.lang.test.structure.NodeUnknownErrorCheckOperation" flags="ng" index="mDk06">
         <child id="8333855927540028958" name="errorRef" index="39UlJh" />
       </concept>
       <concept id="7691029917083831655" name="jetbrains.mps.lang.test.structure.UnknownRuleReference" flags="ng" index="2u4KIi" />
       <concept id="7691029917083872157" name="jetbrains.mps.lang.test.structure.IRuleReference" flags="ngI" index="2u4UPC">
         <reference id="8333855927540250453" name="declaration" index="39XzEq" />
-      </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
       </concept>
       <concept id="8333855927540283103" name="jetbrains.mps.lang.test.structure.NodeConstraintsErrorCheckOperation" flags="ng" index="39XrGg">
         <child id="8333855927548182241" name="errorRef" index="39rjcI" />
@@ -67,6 +61,7 @@
           <property role="TrG5h" value="C1" />
           <property role="34Tnqk" value="99" />
         </node>
+        <node concept="34TkZr" id="3avGh6bHMmX" role="2ouw3G" />
         <node concept="7CXmI" id="4lxcYU10ijD" role="lGtFl">
           <node concept="mDk06" id="4lxcYU10ijE" role="7EUXB">
             <node concept="2u4KIi" id="4lxcYU10ijF" role="39UlJh">
@@ -83,11 +78,6 @@
               <ref role="39XzEq" to="oc2i:7GQ_VdxaycZ" resolve="propIsTrue" />
             </node>
           </node>
-          <node concept="7CXmI" id="4lxcYU10ijX" role="lGtFl">
-            <node concept="7OXhh" id="4lxcYU10ijZ" role="7EUXB">
-              <property role="GvXf4" value="true" />
-            </node>
-          </node>
         </node>
       </node>
     </node>
@@ -99,6 +89,7 @@
           <property role="TrG5h" value="C1" />
           <property role="34Tnqk" value="99" />
         </node>
+        <node concept="34TkZr" id="3avGh6bHMpg" role="2ouw3G" />
         <node concept="E$Ump" id="4lxcYU10iMY" role="2ouw3G">
           <property role="TrG5h" value="C1" />
           <property role="34Tnqk" value="105" />
@@ -141,9 +132,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="4qWC2JVszPl">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
 </model>
 

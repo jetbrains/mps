@@ -6,10 +6,12 @@ import jetbrains.mps.plugins.part.ApplicationPluginPart;
 import jetbrains.mps.checkers.IChecker;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.errors.item.IssueKindReportItem;
+import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.errors.CheckerRegistry;
 
 public class CheckExtensions_AppPluginPart extends ApplicationPluginPart {
   private IChecker<SModel, IssueKindReportItem> myCheckExtendedClassImport = new ExtendedClassImportCheck();
+  private IChecker<SModule, IssueKindReportItem> myCheckJavaVersion = new JavaTargetVersionCheck();
   public CheckExtensions_AppPluginPart() {
   }
   @Override
@@ -17,13 +19,16 @@ public class CheckExtensions_AppPluginPart extends ApplicationPluginPart {
     assert CheckExtensions_AppPluginPart.this.myCheckExtendedClassImport != null;
     CheckerRegistry registry = getPlatform().findComponent(CheckerRegistry.class);
     registry.registerChecker(CheckExtensions_AppPluginPart.this.myCheckExtendedClassImport);
+    registry.registerChecker(CheckExtensions_AppPluginPart.this.myCheckJavaVersion);
   }
   @Override
   public void dispose() {
     if (CheckExtensions_AppPluginPart.this.myCheckExtendedClassImport != null) {
       CheckerRegistry registry = getPlatform().findComponent(CheckerRegistry.class);
       registry.unregisterChecker(CheckExtensions_AppPluginPart.this.myCheckExtendedClassImport);
+      registry.unregisterChecker(CheckExtensions_AppPluginPart.this.myCheckJavaVersion);
       CheckExtensions_AppPluginPart.this.myCheckExtendedClassImport = null;
+      CheckExtensions_AppPluginPart.this.myCheckJavaVersion = null;
     }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel.tempmodel;
 
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.util.FileUtil;
@@ -36,35 +35,29 @@ import java.util.function.Function;
  * Created by apyshkin on 12/7/17.
  */
 public final class NaiveJavaModuleFacet implements JavaModuleFacet {
-  private final AbstractModule myOwningModule;
+  private SModule myOwningModule;
   private final IFile mySourceGen;
   private final IFile myClassesGen;
+  private final JavaLanguageLevel myJavaLevel;
 
-  @NotNull
-  @Override
-  public String getFacetType() {
-    return FACET_TYPE;
+  public NaiveJavaModuleFacet(@NotNull SModule owningModule, @NotNull Function<File, IFile> fsMap, @Nullable String sourceGen, @NotNull String classesGen) {
+    this(owningModule, sourceGen == null ? null : fsMap.apply(FileUtil.createTmpDir(sourceGen)), fsMap.apply(FileUtil.createTmpDir(classesGen)));
   }
 
-  public NaiveJavaModuleFacet(@NotNull AbstractModule owningModule, @Nullable String sourceGen, @NotNull String classesGen) {
-    this(owningModule, (f) -> owningModule.getFileSystem().getFile(f.getAbsolutePath()), sourceGen, classesGen);
+  public NaiveJavaModuleFacet(@NotNull SModule owningModule, @Nullable IFile sourceGen, @NotNull IFile classesGen) {
+    this(sourceGen, classesGen, JavaLanguageLevel.getDefault(true));
+    attach(owningModule);
   }
 
-  public NaiveJavaModuleFacet(@NotNull AbstractModule owningModule, @NotNull Function<File, IFile> fsMap, @Nullable String sourceGen, @NotNull String classesGen) {
-    myOwningModule = owningModule;
-    mySourceGen = sourceGen == null ? null : fsMap.apply(FileUtil.createTmpDir(sourceGen));
-    myClassesGen = fsMap.apply(FileUtil.createTmpDir(classesGen));
-  }
-
-  public NaiveJavaModuleFacet(@NotNull AbstractModule owningModule, @Nullable IFile sourceGen, @NotNull IFile classesGen) {
-    myOwningModule = owningModule;
+  /*package*/ NaiveJavaModuleFacet(@Nullable IFile sourceGen, @Nullable IFile classesGen, JavaLanguageLevel javaLevel) {
     mySourceGen = sourceGen;
     myClassesGen = classesGen;
+    myJavaLevel = javaLevel;
   }
 
   @Override
   public JavaLanguageLevel getLanguageLevel() {
-    return JavaLanguageLevel.getDefault(true);
+    return myJavaLevel;
   }
 
   @Nullable
@@ -73,7 +66,7 @@ public final class NaiveJavaModuleFacet implements JavaModuleFacet {
     return mySourceGen;
   }
 
-  @NotNull
+  @Nullable
   @Override
   public IFile getClassesGen() {
     return myClassesGen;
@@ -128,5 +121,16 @@ public final class NaiveJavaModuleFacet implements JavaModuleFacet {
   public LoadExtensions getLoadExtensions() {
     // unless requested, assume nobody loads extensions from temp modules
     return LoadExtensions.NotAvailable;
+  }
+
+  @Override
+  public void attach(@NotNull SModule module) {
+    assert myOwningModule == null : "Module already attached";
+    myOwningModule = module;
+  }
+
+  @Override
+  public void detach() {
+    myOwningModule = null;
   }
 }

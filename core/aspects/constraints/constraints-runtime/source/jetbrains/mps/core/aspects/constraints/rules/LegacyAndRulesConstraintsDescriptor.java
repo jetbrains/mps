@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.PredefinedRuleKinds;
 import jetbrains.mps.core.context.Context;
-import jetbrains.mps.smodel.language.ConceptRegistry;
+import jetbrains.mps.smodel.language.ConstraintsRegistry;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeAncestor;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeChild;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeParent;
@@ -63,14 +63,17 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
   @NotNull private final SAbstractConcept myConcept;
   @NotNull private final RulesConstraintsDescriptor myRulesDescriptor;
   private final SConceptC3StarMRO myMro;
+  private final ConstraintsRegistry myLegacyConstraintsRegistry;
 
-  public LegacyAndRulesConstraintsDescriptor(SConceptC3StarMRO mro, @NotNull SAbstractConcept concept, @NotNull RulesConstraintsDescriptor rulesDescriptor) {
+  public LegacyAndRulesConstraintsDescriptor(SConceptC3StarMRO mro, @NotNull SAbstractConcept concept, @NotNull RulesConstraintsDescriptor rulesDescriptor,
+                                             @NotNull ConstraintsRegistry legacyConstraintsRegistry) {
     myMro = mro;
     if (rulesDescriptor instanceof LegacyAndRulesConstraintsDescriptor) {
       throw new IllegalArgumentException("Cannot construct a legacy wrapper over a legacy wrapper, " + concept);
     }
     myConcept = concept;
     myRulesDescriptor = rulesDescriptor;
+    myLegacyConstraintsRegistry = legacyConstraintsRegistry;
   }
 
   @Override
@@ -258,12 +261,12 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
     if (rulesDescriptor instanceof LegacyAndRulesConstraintsDescriptor) {
       return (LegacyAndRulesConstraintsDescriptor) rulesDescriptor;
     }
-    return new LegacyAndRulesConstraintsDescriptor(myMro, concept, rulesDescriptor);
+    return new LegacyAndRulesConstraintsDescriptor(myMro, concept, rulesDescriptor, myLegacyConstraintsRegistry);
   }
 
   @NotNull
   private ConstraintsDescriptor getLegacyDescriptor(@NotNull SAbstractConcept concept) {
-    return ConceptRegistry.getInstance().getConstraintsDescriptor(concept);
+    return myLegacyConstraintsRegistry.getConstraintsDescriptor(concept);
   }
 
   @Override

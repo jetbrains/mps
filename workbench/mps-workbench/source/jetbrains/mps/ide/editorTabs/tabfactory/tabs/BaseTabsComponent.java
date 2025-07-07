@@ -28,6 +28,7 @@ import jetbrains.mps.ide.undo.MPSUndoUtil;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.util.containers.MultiMap;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -60,6 +61,7 @@ public abstract class BaseTabsComponent<TabImpl extends AbstractEditorTab> imple
   private final Project myProject;
 
   private List<Document> myEditedDocuments = new ArrayList<>();
+  private TabEditorLayout myEditorLayout = null;
   private SNodeReference myLastNode = null;
 
   private final JComponent myComponent;
@@ -95,6 +97,16 @@ public abstract class BaseTabsComponent<TabImpl extends AbstractEditorTab> imple
 
   protected boolean isDisposed() {
     return myDisposed;
+  }
+
+  @Override
+  public SNodeReference getMainNode() {
+    return myEditorLayout != null ? myEditorLayout.getFirstEditNode() : null;
+  }
+
+  @Override
+  public boolean hasEditorFor(@NotNull SNodeReference reference) {
+    return myEditorLayout != null && myEditorLayout.hasEditor(reference);
   }
 
   @Override
@@ -228,7 +240,8 @@ public abstract class BaseTabsComponent<TabImpl extends AbstractEditorTab> imple
     }
 
     myEditedDocuments = editedDocumentsNew;
-
+    myEditorLayout = result;
+    
     return result;
   }
 

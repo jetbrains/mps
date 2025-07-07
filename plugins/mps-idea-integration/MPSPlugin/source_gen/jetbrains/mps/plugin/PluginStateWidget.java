@@ -20,7 +20,7 @@ import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.icons.MPSIcons;
 import javax.swing.Timer;
 
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/8611316981187517974", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "8611316981187517974", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconPresentation {
   public static final String WIDGET_ID = "MpsPluginStateMonitor";
   private static final Logger LOG = Logger.getLogger(PluginStateWidget.class);

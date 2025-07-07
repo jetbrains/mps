@@ -20,7 +20,7 @@ public class EnumerationDescriptor_Unit extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_KWH_0 = new EnumerationDescriptor.MemberDescriptor("KWH", "KWH", 0x102dc0bbd47L, "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/4241665505353448291");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc0a8282L, 0x102dc0a9c92L, 0x102dc0b6d03L, 0x102dc0bbd47L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_USD_KWH_0, myMember_USD_0, myMember_KWH_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_USD_KWH_0, myMember_USD_0, myMember_KWH_0);
 
   @Nullable
   @Override

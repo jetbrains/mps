@@ -7,6 +7,8 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.generator.GenerationSettingsProvider;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 
 public class CheckModelsBeforeGenerationAction extends ToggleAction {
   public CheckModelsBeforeGenerationAction() {
@@ -21,6 +23,11 @@ public class CheckModelsBeforeGenerationAction extends ToggleAction {
   public void update(AnActionEvent e) {
     super.update(e);
     e.getPresentation().setEnabledAndVisible((e.getData(MPSCommonDataKeys.MPS_PROJECT)) != null);
+  }
+  @NotNull
+  @Override
+  public ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
   @Override
   public void setSelected(AnActionEvent e, boolean state) {

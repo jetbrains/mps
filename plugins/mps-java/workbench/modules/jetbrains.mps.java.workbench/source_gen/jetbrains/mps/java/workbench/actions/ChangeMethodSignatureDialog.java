@@ -100,7 +100,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       SNode baseMethodDeclaration = ChangeMethodSignatureDialog.this.myParameters.getDeclaration();
       SLinkOperations.setTarget(baseMethodDeclaration, LINKS.body$5xQk, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4975dc2bdcfa0c49L, "jetbrains.mps.baseLanguage.structure.StubStatementList")));
 
-      myTempModel = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.forDefaultModule());
+      myTempModel = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.nonReloadableModule(myProject.getRepository()));
       myTempModel.addRootNode(baseMethodDeclaration);
       myTempModel.addChangeListener(myDefaultValuePanel);
       myTempModel.addChangeListener(ChangeMethodSignatureDialog.this);

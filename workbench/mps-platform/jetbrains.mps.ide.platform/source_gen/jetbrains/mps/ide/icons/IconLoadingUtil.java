@@ -7,7 +7,7 @@ import javax.swing.Icon;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ExperimentalUI;
 
-@GeneratedClass(node = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)/4459225238462083668", model = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)")
+@GeneratedClass(nodeId = "4459225238462083668", model = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)")
 public class IconLoadingUtil {
   /**
    * resource parameter has the same contract as the Class.getResource(String)'s parameter \n

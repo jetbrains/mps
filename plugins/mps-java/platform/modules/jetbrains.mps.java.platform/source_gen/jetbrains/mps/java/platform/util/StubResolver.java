@@ -33,7 +33,7 @@ import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
-@GeneratedClass(node = "r:ba675e48-daa4-42f0-bb41-6ecb53e4758b(jetbrains.mps.java.platform.util)/5778265495851109956", model = "r:ba675e48-daa4-42f0-bb41-6ecb53e4758b(jetbrains.mps.java.platform.util)")
+@GeneratedClass(nodeId = "5778265495851109956", model = "r:ba675e48-daa4-42f0-bb41-6ecb53e4758b(jetbrains.mps.java.platform.util)")
 public class StubResolver {
   private static final Logger LOG = Logger.getLogger(StubResolver.class);
   private static final String JAVA_STUB = SModelStereotype.getStubStereotypeForId(LanguageID.JAVA);
@@ -77,6 +77,9 @@ public class StubResolver {
     return result;
   }
   public void resolveInModel(SModel model) {
+    if (model.isReadOnly()) {
+      return;
+    }
     Map<SModelReference, SModelReference> models = MapSequence.fromMap(new HashMap<SModelReference, SModelReference>());
     List<SReference> toResolve = getReferencesToResolve(model, models);
     if (ListSequence.fromList(toResolve).isEmpty()) {

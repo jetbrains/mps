@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,22 +58,31 @@ public final class VisibilityUtil {
   }
 
 
-
+  /**
+   * @deprecated use alternative instance methods
+   */
+  @Deprecated(forRemoval = true, since = "2025.1")
   public static boolean isVisible(SModule from, SModule what) {
-    // FIXME module.getScope() might get expensive, refactor this class to reuse scope instance once obtained
-    return ((AbstractModule) from).getScope().resolve(what.getModuleReference()) != null;
+    return new VisibilityUtil(from).isVisible(what);
   }
 
+  /**
+   * @deprecated use alternative instance methods
+   */
+  @Deprecated(forRemoval = true, since = "2025.1")
   public static boolean isVisible(SModule from, SModel what) {
     SModule module = what.getModule();
-    if (module == null) return false;
-    return ((AbstractModule) from).getScope().resolve(what.getReference()) != null;
+    // XXX no idea why we check module of a model for != null here
+    return module != null && from != null && new VisibilityUtil(from).isVisible(what);
   }
 
+  /**
+   * @deprecated use alternative instance methods
+   */
+  @Deprecated(forRemoval = true, since = "2025.1")
   public static boolean isVisible(SModel from, SModel what) {
     SModule fromModule = from.getModule();
-    if (fromModule == null) return false;
-    return isVisible(fromModule, what);
+    return fromModule != null && isVisible(fromModule, what);
   }
 
 }

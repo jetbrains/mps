@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.vcs.annotate.LineAnnotationAspect;
 import jetbrains.mps.vcs.history.CommitsGraphNode;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/9024594033545073834", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "9024594033545073834", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class RevisionAspectSubcolumn extends AnnotationAspectSubcolumn {
   public RevisionAspectSubcolumn(EditorAnnotation editorAnnotation) {
     super(editorAnnotation, LineAnnotationAspect.REVISION);

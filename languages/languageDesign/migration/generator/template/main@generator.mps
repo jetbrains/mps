@@ -103,6 +103,9 @@
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
+      <concept id="8353134822275456723" name="jetbrains.mps.baseLanguage.structure.HexLongLiteral" flags="ng" index="11gdke">
+        <property id="8353134822275456796" name="hexValue" index="11gdj1" />
+      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
@@ -125,9 +128,6 @@
       <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
-      </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
@@ -1893,13 +1893,13 @@
             <node concept="2YIFZM" id="23CHI7KJQsG" role="37wK5m">
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getLanguage(long,long,java.lang.String)" resolve="getLanguage" />
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-              <node concept="1adDum" id="23CHI7KJQsH" role="37wK5m">
-                <property role="1adDun" value="0l" />
-                <node concept="17Uvod" id="23CHI7KJQsI" role="lGtFl">
-                  <property role="2qtEX9" value="value" />
-                  <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/4269842503726207156/4269842503726207157" />
-                  <node concept="3zFVjK" id="23CHI7KJQsJ" role="3zH0cK">
-                    <node concept="3clFbS" id="23CHI7KJQsK" role="2VODD2">
+              <node concept="11gdke" id="k1Ecncyhjd" role="37wK5m">
+                <property role="11gdj1" value="0L" />
+                <node concept="17Uvod" id="k1Ecncyi0T" role="lGtFl">
+                  <property role="2qtEX9" value="hexValue" />
+                  <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/8353134822275456723/8353134822275456796" />
+                  <node concept="3zFVjK" id="k1Ecncyi0U" role="3zH0cK">
+                    <node concept="3clFbS" id="k1Ecncyi0V" role="2VODD2">
                       <node concept="3cpWs8" id="23CHI7KJQsL" role="3cqZAp">
                         <node concept="3cpWsn" id="23CHI7KJQsM" role="3cpWs9">
                           <property role="TrG5h" value="msb" />
@@ -1946,16 +1946,11 @@
                           <node concept="Xl_RD" id="23CHI7KJQt6" role="3uHU7w">
                             <property role="Xl_RC" value="L" />
                           </node>
-                          <node concept="3cpWs3" id="23CHI7KPSZm" role="3uHU7B">
-                            <node concept="2YIFZM" id="23CHI7KJQt7" role="3uHU7w">
-                              <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
-                              <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
-                              <node concept="37vLTw" id="23CHI7KJQt8" role="37wK5m">
-                                <ref role="3cqZAo" node="23CHI7KJQsM" resolve="msb" />
-                              </node>
-                            </node>
-                            <node concept="Xl_RD" id="23CHI7KPRX1" role="3uHU7B">
-                              <property role="Xl_RC" value="0x" />
+                          <node concept="2YIFZM" id="23CHI7KJQt7" role="3uHU7B">
+                            <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
+                            <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
+                            <node concept="37vLTw" id="23CHI7KJQt8" role="37wK5m">
+                              <ref role="3cqZAo" node="23CHI7KJQsM" resolve="msb" />
                             </node>
                           </node>
                         </node>
@@ -1964,13 +1959,13 @@
                   </node>
                 </node>
               </node>
-              <node concept="1adDum" id="23CHI7KJQt9" role="37wK5m">
-                <property role="1adDun" value="0l" />
-                <node concept="17Uvod" id="23CHI7KJQta" role="lGtFl">
-                  <property role="2qtEX9" value="value" />
-                  <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/4269842503726207156/4269842503726207157" />
-                  <node concept="3zFVjK" id="23CHI7KJQtb" role="3zH0cK">
-                    <node concept="3clFbS" id="23CHI7KJQtc" role="2VODD2">
+              <node concept="11gdke" id="k1Ecnc_fcP" role="37wK5m">
+                <property role="11gdj1" value="0L" />
+                <node concept="17Uvod" id="k1Ecnc_fcQ" role="lGtFl">
+                  <property role="2qtEX9" value="hexValue" />
+                  <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/8353134822275456723/8353134822275456796" />
+                  <node concept="3zFVjK" id="k1Ecnc_fcR" role="3zH0cK">
+                    <node concept="3clFbS" id="k1Ecnc_fcS" role="2VODD2">
                       <node concept="3cpWs8" id="23CHI7KJQtd" role="3cqZAp">
                         <node concept="3cpWsn" id="23CHI7KJQte" role="3cpWs9">
                           <property role="TrG5h" value="lsb" />
@@ -2017,16 +2012,11 @@
                           <node concept="Xl_RD" id="23CHI7KJQty" role="3uHU7w">
                             <property role="Xl_RC" value="L" />
                           </node>
-                          <node concept="3cpWs3" id="23CHI7KPTcy" role="3uHU7B">
-                            <node concept="2YIFZM" id="23CHI7KJQtz" role="3uHU7w">
-                              <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
-                              <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
-                              <node concept="37vLTw" id="23CHI7KJQt$" role="37wK5m">
-                                <ref role="3cqZAo" node="23CHI7KJQte" resolve="lsb" />
-                              </node>
-                            </node>
-                            <node concept="Xl_RD" id="23CHI7KPTcK" role="3uHU7B">
-                              <property role="Xl_RC" value="0x" />
+                          <node concept="2YIFZM" id="23CHI7KJQtz" role="3uHU7B">
+                            <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
+                            <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
+                            <node concept="37vLTw" id="23CHI7KJQt$" role="37wK5m">
+                              <ref role="3cqZAo" node="23CHI7KJQte" resolve="lsb" />
                             </node>
                           </node>
                         </node>

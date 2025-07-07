@@ -19,7 +19,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import java.util.Objects;
 import jetbrains.mps.vcs.diff.DiffUtil;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/6359197607515881703", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "6359197607515881703", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class AddRootChange extends StructureChange {
   private final SNodeId myNodeId;
 

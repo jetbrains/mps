@@ -12,6 +12,8 @@
     <import index="4rfc" ref="r:3cf16c72-eb63-43af-9e50-31efa02178ea(jetbrains.mps.baseLanguage.unitTest.runtime)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
+    <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
+    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -34,6 +36,9 @@
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
+      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
+        <reference id="1144433057691" name="classifier" index="1PxDUh" />
+      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
@@ -46,6 +51,7 @@
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
+      <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -62,6 +68,10 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
+      <concept id="1068581242864" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" flags="nn" index="3cpWs8">
+        <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
+      </concept>
+      <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
@@ -165,12 +175,46 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="3cpWs8" id="15ZFihwTGju" role="3cqZAp">
+                    <node concept="3cpWsn" id="15ZFihwTGjv" role="3cpWs9">
+                      <property role="TrG5h" value="function" />
+                      <node concept="1bVj0M" id="15ZFihwTGjw" role="33vP2m">
+                        <node concept="3clFbS" id="15ZFihwTGjx" role="1bW5cS">
+                          <node concept="3clFbF" id="15ZFihwTGjy" role="3cqZAp">
+                            <node concept="2OqwBi" id="15ZFihwTHXP" role="3clFbG">
+                              <node concept="37vLTw" id="15ZFihwTHXQ" role="2Oq$k0">
+                                <ref role="3cqZAo" node="4rQ9_5eeUMU" resolve="testSession" />
+                              </node>
+                              <node concept="liA8E" id="15ZFihwTHXR" role="2OqNvi">
+                                <ref role="37wK5l" to="4u8o:15ZFihwSubz" resolve="getSystemProperty" />
+                                <node concept="10M0yZ" id="5qUkJhvoEQa" role="37wK5m">
+                                  <ref role="3cqZAo" to="4u8o:5qUkJhvm5dl" resolve="PROJECT_PATH" />
+                                  <ref role="1PxDUh" to="4u8o:5qUkJhvm4Q_" resolve="SystemProperties" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3uibUv" id="15ZFihwTGQM" role="1tU5fm">
+                        <ref role="3uigEE" to="82uw:~Supplier" resolve="Supplier" />
+                        <node concept="17QB3L" id="15ZFihwTGQN" role="11_B2D" />
+                      </node>
+                    </node>
+                  </node>
                   <node concept="3clFbF" id="4rQ9_5eeVjn" role="3cqZAp">
                     <node concept="2YIFZM" id="4rQ9_5eeVoE" role="3clFbG">
                       <ref role="37wK5l" to="4rfc:2I0w4TZS$tx" resolve="setEnvironment" />
                       <ref role="1Pybhc" to="4rfc:5gsHVKCieoX" resolve="EnvironmentAwareExtension" />
                       <node concept="37vLTw" id="4rQ9_5eeZgY" role="37wK5m">
                         <ref role="3cqZAo" node="4rQ9_5eeYjf" resolve="e" />
+                      </node>
+                      <node concept="2YIFZM" id="15ZFihwTHiw" role="37wK5m">
+                        <ref role="37wK5l" to="33ny:~Optional.of(java.lang.Object)" resolve="of" />
+                        <ref role="1Pybhc" to="33ny:~Optional" resolve="Optional" />
+                        <node concept="37vLTw" id="15ZFihwTHix" role="37wK5m">
+                          <ref role="3cqZAo" node="15ZFihwTGjv" resolve="function" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -227,6 +271,33 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="15ZFihwTI$4" role="3cqZAp">
+          <node concept="3cpWsn" id="15ZFihwTI$5" role="3cpWs9">
+            <property role="TrG5h" value="function" />
+            <node concept="1bVj0M" id="15ZFihwTI$6" role="33vP2m">
+              <node concept="3clFbS" id="15ZFihwTI$7" role="1bW5cS">
+                <node concept="3clFbF" id="15ZFihwTI$8" role="3cqZAp">
+                  <node concept="2OqwBi" id="15ZFihwTI$9" role="3clFbG">
+                    <node concept="37vLTw" id="15ZFihwTI$a" role="2Oq$k0">
+                      <ref role="3cqZAo" node="4rQ9_5eeUN2" resolve="testSession" />
+                    </node>
+                    <node concept="liA8E" id="15ZFihwTI$b" role="2OqNvi">
+                      <ref role="37wK5l" to="4u8o:15ZFihwSubz" resolve="getSystemProperty" />
+                      <node concept="10M0yZ" id="5qUkJhvoD9k" role="37wK5m">
+                        <ref role="3cqZAo" to="4u8o:5qUkJhvm5dl" resolve="PROJECT_PATH" />
+                        <ref role="1PxDUh" to="4u8o:5qUkJhvm4Q_" resolve="SystemProperties" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3uibUv" id="15ZFihwTI$d" role="1tU5fm">
+              <ref role="3uigEE" to="82uw:~Supplier" resolve="Supplier" />
+              <node concept="17QB3L" id="15ZFihwTI$e" role="11_B2D" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="4rQ9_5eeZPq" role="3cqZAp">
           <node concept="2YIFZM" id="4rQ9_5eeZPs" role="3clFbG">
             <ref role="37wK5l" to="4rfc:2I0w4TZS$tx" resolve="setEnvironment" />
@@ -237,6 +308,13 @@
               </node>
               <node concept="liA8E" id="VnxRnAca3r" role="2OqNvi">
                 <ref role="37wK5l" to="5zyv:~ConcurrentLinkedDeque.peek()" resolve="peek" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="15ZFihwTKKX" role="37wK5m">
+              <ref role="37wK5l" to="33ny:~Optional.of(java.lang.Object)" resolve="of" />
+              <ref role="1Pybhc" to="33ny:~Optional" resolve="Optional" />
+              <node concept="37vLTw" id="15ZFihwTLbe" role="37wK5m">
+                <ref role="3cqZAo" node="15ZFihwTI$5" resolve="function" />
               </node>
             </node>
           </node>

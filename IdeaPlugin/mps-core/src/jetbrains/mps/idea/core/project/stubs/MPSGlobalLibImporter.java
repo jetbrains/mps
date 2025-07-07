@@ -19,8 +19,8 @@ package jetbrains.mps.idea.core.project.stubs;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.roots.impl.libraries.ApplicationLibraryTable;
 import com.intellij.openapi.roots.libraries.LibraryTable;
+import com.intellij.openapi.roots.libraries.LibraryTablesRegistrar;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.idea.core.MPSBundle;
@@ -34,7 +34,7 @@ public class MPSGlobalLibImporter extends BaseLibImporter implements Application
   }
 
   protected LibraryTable getLibTable() {
-    return ApplicationLibraryTable.getApplicationTable();
+    return LibraryTablesRegistrar.getInstance().getLibraryTable();
   }
 
   @Override

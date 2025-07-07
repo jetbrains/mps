@@ -18,7 +18,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import java.io.IOException;
 import com.intellij.openapi.ui.Messages;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2589658255268083871", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "2589658255268083871", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class RenameFileOrDirectory_Action extends BaseAction {
   private static final Icon ICON = null;
 

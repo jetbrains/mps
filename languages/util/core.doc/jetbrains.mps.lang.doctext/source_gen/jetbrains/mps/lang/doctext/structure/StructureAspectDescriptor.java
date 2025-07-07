@@ -13,7 +13,6 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptDocText = createDescriptorForDocText();
-  /*package*/ final ConceptDescriptor myConceptTextNodeReference = createDescriptorForTextNodeReference();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -24,14 +23,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
-    deps.extendedLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text");
     deps.employedLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text");
     deps.aggregatedLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptDocText, myConceptTextNodeReference);
+    return Arrays.asList(myConceptDocText);
   }
 
   @Override
@@ -40,8 +38,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.DocText:
         return myConceptDocText;
-      case LanguageConceptSwitch.TextNodeReference:
-        return myConceptTextNodeReference;
       default:
         return null;
     }
@@ -54,23 +50,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   private static ConceptDescriptor createDescriptorForDocText() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.doctext", "DocText", 0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L);
-    b.class_(false, false, true);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x38518aff8a105fd6L);
+    b.class_(false, false, false);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x270e002425f43123L);
     b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6b2f47401707d876L);
+    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x33d61edd01ab3df3L);
     b.origin("r:c17bb0de-76cd-48ca-9cc0-ce1b39396c8b(jetbrains.mps.lang.doctext.structure)/747542936069611173");
     b.version(3);
-    b.aggregate("lines", 0x3d1f117681e68108L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(false).ordered(true).multiple(true).origin("4404258161274814728").done();
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForTextNodeReference() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.doctext", "TextNodeReference", 0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0x6cc063b139472ce7L);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.text.structure.TextElement
-    b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L);
-    b.origin("r:c17bb0de-76cd-48ca-9cc0-ce1b39396c8b(jetbrains.mps.lang.doctext.structure)/7836372964445990119");
-    b.version(3);
-    b.associate("reference", 0x6d10fe0be3bc93bL).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L).optional(false).origin("491191292298774843").done();
-    b.alias("reference");
+    b.aggregate("lines", 0x3d1f117681e68108L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(true).origin("4404258161274814728").done();
     return b.create();
   }
 }

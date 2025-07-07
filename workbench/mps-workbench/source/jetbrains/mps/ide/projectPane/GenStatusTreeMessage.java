@@ -25,6 +25,7 @@ import org.jetbrains.mps.annotations.Immutable;
  * @since 2020.3
  */
 @Immutable
+@Deprecated(forRemoval = true)
 public final class GenStatusTreeMessage extends TreeMessage {
   private final GenerationStatus myStatus;
 

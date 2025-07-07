@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,17 +40,6 @@ public class NavigationTargetScopeIterable implements Iterable<NavigationTarget>
   private final SearchScope myScope;
   private final SRepository myRepo;
   private final Project myProject;
-
-  /**
-   * @deprecated use {@link #NavigationTargetScopeIterable(SearchScope, MPSProject)} instead as we need Project for {@code NavigationParticipant}s
-   */
-  @Deprecated(since = "2020.3", forRemoval = true)
-  public NavigationTargetScopeIterable(@NotNull SearchScope scope, @NotNull SRepository repo) {
-    myScope = scope;
-    final jetbrains.mps.project.Project project = ProjectHelper.getProject(repo);
-    myProject = project instanceof MPSProject ? ((MPSProject) project).getProject() : null;
-    myRepo = repo;
-  }
 
   public NavigationTargetScopeIterable(@NotNull SearchScope scope, @NotNull MPSProject mpsProject) {
     myScope = scope;

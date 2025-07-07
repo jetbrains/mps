@@ -380,7 +380,7 @@
       <property role="TrG5h" value="ancestor" />
       <node concept="1XD0b9" id="6CwBo1ZN_hB" role="THmaL">
         <node concept="giPau" id="6CwBo1ZN_hC" role="1XD00_">
-          <ref role="1ap9JL" to="0:~Any.equals(Any?)" resolve="equals" />
+          <ref role="1ap9JL" to="0:~Int.equals(Any?)" resolve="equals" />
           <node concept="1XD0k7" id="6CwBo1ZN_hD" role="21Pkll">
             <property role="1XD01k" value="1" />
           </node>
@@ -498,7 +498,7 @@
       <property role="TrG5h" value="ancestors" />
       <node concept="1XD0b9" id="6CwBo1ZAX2S" role="THmaL">
         <node concept="giPau" id="6CwBo1ZB4KE" role="1XD00_">
-          <ref role="1ap9JL" to="0:~Any.equals(Any?)" resolve="equals" />
+          <ref role="1ap9JL" to="0:~Int.equals(Any?)" resolve="equals" />
           <node concept="1XD0k7" id="6CwBo1ZB6a9" role="21Pkll">
             <property role="1XD01k" value="1" />
           </node>

@@ -95,7 +95,7 @@ public class TestSubstituteParentPropertyAndReference_ReferenceMenuPart extends 
       public IconResource getIcon(String pattern) {
         boolean val = _context.getEditorContext() != null && _context.getNode() != null && _context.getModel() != null && targetNode != null;
 
-        return IconContainer.RESOURCE_a2a9d4;
+        return IconContainer.RESOURCE_0;
       }
       @Override
       public String getShortDescriptionText(@NotNull String pattern) {

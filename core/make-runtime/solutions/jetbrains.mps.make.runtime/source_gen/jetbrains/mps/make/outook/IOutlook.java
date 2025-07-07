@@ -5,7 +5,7 @@ package jetbrains.mps.make.outook;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.make.facet.IFacet;
 
-@GeneratedClass(node = "r:41450d7d-4a69-4546-a21d-9ea9c2837268(jetbrains.mps.make.outook)/5608160002100096676", model = "r:41450d7d-4a69-4546-a21d-9ea9c2837268(jetbrains.mps.make.outook)")
+@GeneratedClass(nodeId = "5608160002100096676", model = "r:41450d7d-4a69-4546-a21d-9ea9c2837268(jetbrains.mps.make.outook)")
 public interface IOutlook {
   Iterable<IFacet.Name> facetNames();
 }

@@ -888,9 +888,9 @@
         </node>
         <node concept="3cpWs6" id="6IhgjCFShf" role="3cqZAp">
           <node concept="2OqwBi" id="6IhgjCFShg" role="3cqZAk">
-            <node concept="10M0yZ" id="6IhgjCFShh" role="2Oq$k0">
-              <ref role="3cqZAo" to="f5fe:~Sorter.ALPHA_SORTER_ID" resolve="ALPHA_SORTER_ID" />
-              <ref role="1PxDUh" to="f5fe:~Sorter" resolve="Sorter" />
+            <node concept="2YIFZM" id="5wk3WoD$MxO" role="2Oq$k0">
+              <ref role="37wK5l" to="f5fe:~Sorter.getAlphaSorterId()" resolve="getAlphaSorterId" />
+              <ref role="1Pybhc" to="f5fe:~Sorter" resolve="Sorter" />
             </node>
             <node concept="liA8E" id="6IhgjCFShi" role="2OqNvi">
               <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />

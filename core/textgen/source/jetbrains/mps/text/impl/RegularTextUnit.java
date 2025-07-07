@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,10 @@
 package jetbrains.mps.text.impl;
 
 import jetbrains.mps.components.ComponentHost;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.text.BufferSnapshot;
-import jetbrains.mps.text.CompatibilityTextUnit;
 import jetbrains.mps.text.TextBuffer;
 import jetbrains.mps.text.TextUnit;
-import jetbrains.mps.textgen.trace.ScopePositionInfo;
-import jetbrains.mps.textgen.trace.TraceablePositionInfo;
-import jetbrains.mps.textgen.trace.UnitPositionInfo;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +30,6 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 import java.util.stream.Stream.Builder;
 
@@ -44,7 +38,7 @@ import java.util.stream.Stream.Builder;
  *
  * @author Artem Tikhomirov
  */
-public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
+public class RegularTextUnit implements TextUnit {
   private final SNode myStartNode;
   private final String myFilename;
   private final String myPath;
@@ -55,8 +49,6 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
   private Status myState = Status.Undefined;
   private String myOutcome;
   private BufferLayoutConfiguration myLayoutBuilder;
-  // CompatibilityTextUnit stuff
-  private TraceInfoCollector myTraceCollector;
   private ErrorCollector myErrorCollector;
   private List<Pair<String,Object>> myContextObjects;
 
@@ -185,8 +177,8 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
       return;
     }
 
-    myTraceCollector = new TraceInfoCollector();
-    addContextObject(TraceInfoCollector.class.getName(), myTraceCollector);
+    final TraceInfoCollector traceCollector = new TraceInfoCollector();
+    addContextObject(TraceInfoCollector.class.getName(), traceCollector);
     TextBuffer trueBuffer = new TextBufferImpl();
     myLayoutBuilder.prepareBuffer(trueBuffer);
 
@@ -202,7 +194,7 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
     tgs.appendNode(myStartNode);
 
     final BufferSnapshot textSnapshot = myLayoutBuilder.prepareSnapshot(trueBuffer);
-    myTraceCollector.populatePositions(textSnapshot);
+    traceCollector.populatePositions(textSnapshot);
 
     myOutcome = textSnapshot.getText().toString();
     if (myErrorCollector.hasErrors()) {
@@ -250,24 +242,6 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
   @NotNull
   public List<IMessage> getMessages() {
     return myErrorCollector == null ? Collections.emptyList() : myErrorCollector.problems();
-  }
-
-  @Nullable
-  public Map<SNode, TraceablePositionInfo> getPositions() {
-    Logger.getLogger(getClass()).warnDeprecatedUse("Stop using CompatibilityTextUnit");
-    return myTraceCollector == null ? null : myTraceCollector.getTracePositions();
-  }
-
-  @Nullable
-  public Map<SNode, ScopePositionInfo> getScopePositions() {
-    Logger.getLogger(getClass()).warnDeprecatedUse("Stop using CompatibilityTextUnit");
-    return myTraceCollector == null ? null : myTraceCollector.getScopePositions();
-  }
-
-  @Nullable
-  public Map<SNode, UnitPositionInfo> getUnitPositions() {
-    Logger.getLogger(getClass()).warnDeprecatedUse("Stop using CompatibilityTextUnit");
-    return myTraceCollector == null ? null : myTraceCollector.getUnitPositions();
   }
 
   private void checkNotYetGenerated() {

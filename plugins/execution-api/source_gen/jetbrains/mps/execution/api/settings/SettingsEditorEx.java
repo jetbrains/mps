@@ -8,7 +8,7 @@ import com.intellij.openapi.util.Factory;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.ui.Messages;
 
-@GeneratedClass(node = "r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)/3908032508224771799", model = "r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)")
+@GeneratedClass(nodeId = "3908032508224771799", model = "r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)")
 public abstract class SettingsEditorEx<Settings> extends SettingsEditor<Settings> {
   public SettingsEditorEx() {
   }

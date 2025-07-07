@@ -20,7 +20,7 @@ public class EnumerationDescriptor_BuildLayout_TarCompression extends Enumeratio
   private final EnumerationDescriptor.MemberDescriptor myMember_bzip2_0 = new EnumerationDescriptor.MemberDescriptor("bzip2", "bzip2", 0x1b76dbd13de88927L, "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4241665505353448066");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1b76dbd13de88924L, 0x1b76dbd13de88925L, 0x1b76dbd13de88926L, 0x1b76dbd13de88927L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_none_0, myMember_gzip_0, myMember_bzip2_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_none_0, myMember_gzip_0, myMember_bzip2_0);
 
   @Nullable
   @Override

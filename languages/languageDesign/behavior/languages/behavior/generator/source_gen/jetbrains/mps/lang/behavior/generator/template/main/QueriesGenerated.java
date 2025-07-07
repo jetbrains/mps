@@ -87,11 +87,11 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_6_3(final PropertyMacroContext _context) {
     long leastSignificantBits = ((UUID) _context.getVariable("var:langUUID")).getLeastSignificantBits();
-    return "0x" + Long.toHexString(leastSignificantBits) + "L";
+    return Long.toHexString(leastSignificantBits) + "L";
   }
   public static Object propertyMacro_GetValue_6_4(final PropertyMacroContext _context) {
     long mostSignificantBits = ((UUID) _context.getVariable("var:langUUID")).getMostSignificantBits();
-    return "0x" + Long.toHexString(mostSignificantBits) + "L";
+    return Long.toHexString(mostSignificantBits) + "L";
   }
   public static Object propertyMacro_GetValue_6_5(final PropertyMacroContext _context) {
     return new ConceptMethodGenerationHelper(_context.getNode()).getGeneratedFieldName();

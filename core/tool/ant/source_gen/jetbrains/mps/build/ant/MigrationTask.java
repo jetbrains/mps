@@ -17,7 +17,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.LinkedHashSet;
 
-@GeneratedClass(node = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/108194650710656503", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
+@GeneratedClass(nodeId = "108194650710656503", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public class MigrationTask extends MpsLoadTask {
 
   private final MigrateTaskProperties myProps;

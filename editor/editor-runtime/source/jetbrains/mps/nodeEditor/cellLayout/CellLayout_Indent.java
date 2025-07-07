@@ -238,13 +238,13 @@ public class CellLayout_Indent extends AbstractCellLayout {
         }
         if (isOnNewLine(rootCell, current) || newLineAfter) {
           newLineAfter = false;
-          result.appendToTheRight(new TextBuilderImpl("\n"), true);
+          result.appendToTheRightHtml(new HtmlTextBuilderImpl("<br>"), true);
           for (int i = 0; i < getIndent(rootCell, current, false); i++) {
-            result.appendToTheRight(new TextBuilderImpl(EditorCell_Indent.getIndentText()), false);
+            result.appendToTheRightHtml(new HtmlTextBuilderImpl(EditorCell_Indent.getIndentHtml()), false);
           }
         }
 
-        result.appendToTheRight(current.renderHtml(), PunctuationUtil.hasLeftGap(current));
+        result.appendToTheRightHtml(current.renderHtml(), PunctuationUtil.hasLeftGap(current));
 
         if (isNewLineAfter(rootCell, current)) {
           newLineAfter = true;

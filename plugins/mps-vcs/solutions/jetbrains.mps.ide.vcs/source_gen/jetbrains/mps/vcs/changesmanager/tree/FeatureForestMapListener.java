@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import jetbrains.mps.vcs.changesmanager.tree.features.Feature;
 
-@GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/5668645347099288944", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
+@GeneratedClass(nodeId = "5668645347099288944", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public interface FeatureForestMapListener extends EventListener {
   void featuresAdded(@NotNull Collection<Feature> featuresWithAncestors);
   void featuresRemoving(@NotNull Collection<Feature> featuresWithAncestors);

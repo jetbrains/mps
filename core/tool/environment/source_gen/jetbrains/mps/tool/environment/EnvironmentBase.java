@@ -4,7 +4,7 @@ package jetbrains.mps.tool.environment;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.util.LogInitializer;
+import jetbrains.mps.core.tool.environment.util.LogInitializer;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.TestMode;
@@ -25,7 +25,7 @@ import jetbrains.mps.project.Project;
  * The contract: only one environment must be alive,
  * it is being stored in the special EnvironmentContainer class.
  */
-@GeneratedClass(node = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/3727517784852198296", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
+@GeneratedClass(nodeId = "3727517784852198296", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
 public abstract class EnvironmentBase implements Environment {
   private static final Logger LOG = Logger.getLogger(EnvironmentBase.class);
 

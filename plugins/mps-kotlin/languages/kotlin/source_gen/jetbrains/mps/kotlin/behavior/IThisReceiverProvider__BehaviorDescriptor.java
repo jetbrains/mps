@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -37,9 +38,11 @@ public final class IThisReceiverProvider__BehaviorDescriptor extends BaseBHDescr
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull SNode __thisNode__, final ScopeCollector collector, final SNode childNode) {
+  /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull SNode __thisNode__, final ScopeCollector collector, SNode childNode) {
     // Declare scopes for each type
-    Sequence.fromIterable(IThisReceiverProvider__BehaviorDescriptor.getThisTypeReferences_idxpyqH1FuA0.invoke(__thisNode__)).visitAll((thisRef) -> Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(thisRef.compute(), collector.getFilter(), childNode, ((boolean) true))).visitAll((scope) -> collector.declareScope(scope)));
+    // TODO pass context from outside? inferring from here would fail scenarios in which one would search from a platform which isn't default
+    FullScopeContext context = FullScopeContext.fromContext(childNode);
+    Sequence.fromIterable(IThisReceiverProvider__BehaviorDescriptor.getThisTypeReferences_idxpyqH1FuA0.invoke(__thisNode__)).visitAll((thisRef) -> Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(thisRef.compute(), collector.getFilter(), context, ((boolean) true))).visitAll((scope) -> collector.declareScope(scope)));
 
     return true;
   }

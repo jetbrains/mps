@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @MPSLaunch
 public class SNodeGetReferenceOperation_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(SNodeGetReferenceOperation_Test.class, "${mps_home}", "r:8ac706c2-cfd2-4da3-8b63-a741ed2733d4(jetbrains.mps.smodel.test.reflection@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SNodeGetReferenceOperation_Test.class).projectPath(null).modelRef("r:8ac706c2-cfd2-4da3-8b63-a741ed2733d4(jetbrains.mps.smodel.test.reflection@tests)").reopenProject(null).build());
 
   public SNodeGetReferenceOperation_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -56,82 +56,67 @@ public class SNodeGetReferenceOperation_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2906110183022090592", "2906110183022122665", "2906110183022122679");
+    }
+
     public void test_empty() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022090592");
-        addNodeById("2906110183022122665");
-        addNodeById("2906110183022122679");
-      });
-      runWithinCommand(() -> Assert.assertNull(SNodeOperations.getReference(getNodeById("2906110183022090593"), LINKS.root$cBIX)));
+      initTestNodes();
+      runWithinCommand(() -> Assert.assertNull(SNodeOperations.getReference(getAnnotatedNode("emptyReferenceContainer"), LINKS.root$cBIX)));
     }
     public void test_byLinkDeclaration() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022090592");
-        addNodeById("2906110183022122665");
-        addNodeById("2906110183022122679");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode rootLinkDeclaration = SLinkOperations.findLinkDeclaration(LINKS.root$cBIX);
-        SReference rootContainerReference = SNodeOperations.getReference(getNodeById("2906110183022122680"), LINKS.root$cBIX);
-        Assert.assertEquals(getNodeById("2906110183022122666"), SLinkOperations.getTargetNode(rootContainerReference));
+        SReference rootContainerReference = SNodeOperations.getReference(getAnnotatedNode("referenceContainerSub"), LINKS.root$cBIX);
+        Assert.assertEquals(getAnnotatedNode("rootContainer"), SLinkOperations.getTargetNode(rootContainerReference));
         Assert.assertEquals(rootLinkDeclaration, SLinkOperations.findLinkDeclaration(rootContainerReference));
         Assert.assertEquals(LINKS.root$cBIX, SLinkOperations.getRefLink(rootContainerReference));
         Assert.assertNotNull(SLinkOperations.getResolveInfo(rootContainerReference));
-        SReference leftChildReference = SNodeOperations.getReference(getNodeById("2906110183022122680"), LINKS.leftChild$f5Cu);
-        Assert.assertEquals(getNodeById("2906110183022122667"), SLinkOperations.getTargetNode(leftChildReference));
+        SReference leftChildReference = SNodeOperations.getReference(getAnnotatedNode("referenceContainerSub"), LINKS.leftChild$f5Cu);
+        Assert.assertEquals(getAnnotatedNode("leftChild"), SLinkOperations.getTargetNode(leftChildReference));
         Assert.assertEquals(SLinkOperations.findLinkDeclaration(LINKS.leftChild$f5Cu), SLinkOperations.findLinkDeclaration(leftChildReference));
-        Assert.assertEquals(SPropertyOperations.getString(SLinkOperations.findLinkDeclaration(LINKS.leftChild$f5Cu), PROPS.role$Nsjf), check_l3bw6i_a9a0a1a4k(SLinkOperations.getRefLink(leftChildReference)));
+        Assert.assertEquals(SPropertyOperations.getString(SLinkOperations.findLinkDeclaration(LINKS.leftChild$f5Cu), PROPS.role$Nsjf), check_l3bw6i_a9a0a1a6k(SLinkOperations.getRefLink(leftChildReference)));
         Assert.assertNotNull(SLinkOperations.getResolveInfo(leftChildReference));
       });
     }
     public void test_bySpecializedLinkDeclaration() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        addNodeById("2906110183022090592");
-        addNodeById("2906110183022122665");
-        addNodeById("2906110183022122679");
-      });
-      runWithinCommand(() -> {
-        SReference refByOriginalLink = SNodeOperations.getReference(getNodeById("2906110183022122680"), LINKS.rightChild$f5Rv);
-        Assert.assertEquals(getNodeById("2906110183022122670"), SLinkOperations.getTargetNode(refByOriginalLink));
+        SReference refByOriginalLink = SNodeOperations.getReference(getAnnotatedNode("referenceContainerSub"), LINKS.rightChild$f5Rv);
+        Assert.assertEquals(getAnnotatedNode("rightChild"), SLinkOperations.getTargetNode(refByOriginalLink));
         Assert.assertEquals(SLinkOperations.findLinkDeclaration(LINKS.rightChild$f5Rv), SLinkOperations.findLinkDeclaration(refByOriginalLink));
-        Assert.assertEquals(SPropertyOperations.getString(SLinkOperations.findLinkDeclaration(LINKS.rightChild$f5Rv), PROPS.role$Nsjf), check_l3bw6i_a3a0a1a5k(SLinkOperations.getRefLink(refByOriginalLink)));
+        Assert.assertEquals(SPropertyOperations.getString(SLinkOperations.findLinkDeclaration(LINKS.rightChild$f5Rv), PROPS.role$Nsjf), check_l3bw6i_a3a0a1a7k(SLinkOperations.getRefLink(refByOriginalLink)));
         Assert.assertNotNull(SLinkOperations.getResolveInfo(refByOriginalLink));
-        SReference refBySpecializedLink = SNodeOperations.getReference(getNodeById("2906110183022122680"), LINKS.rightChild$f5Rv);
+        SReference refBySpecializedLink = SNodeOperations.getReference(getAnnotatedNode("referenceContainerSub"), LINKS.rightChild$f5Rv);
         Assert.assertEquals(refByOriginalLink, refBySpecializedLink);
       });
     }
     public void test_forNull() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022090592");
-        addNodeById("2906110183022122665");
-        addNodeById("2906110183022122679");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nullReferenceContainer = null;
         Assert.assertNull(SNodeOperations.getReference(nullReferenceContainer, LINKS.rightChild$f5Rv));
         SReferenceLink n = null;
-        Assert.assertNull(SNodeOperations.getReference(getNodeById("2906110183022090593"), n));
+        Assert.assertNull(SNodeOperations.getReference(getAnnotatedNode("emptyReferenceContainer"), n));
       });
     }
     public void test_invalidLinkDeclaration() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022090592");
-        addNodeById("2906110183022122665");
-        addNodeById("2906110183022122679");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SReferenceLink invalidLink = LINKS.specializedLink$7ZCN;
-        Assert.assertNull(SNodeOperations.getReference(getNodeById("2906110183022122680"), invalidLink));
+        Assert.assertNull(SNodeOperations.getReference(getAnnotatedNode("referenceContainerSub"), invalidLink));
       });
     }
 
-    private static String check_l3bw6i_a9a0a1a4k(SReferenceLink checkedDotOperand) {
+    private static String check_l3bw6i_a9a0a1a6k(SReferenceLink checkedDotOperand) {
       if (null != checkedDotOperand) {
         return checkedDotOperand.getName();
       }
       return null;
     }
-    private static String check_l3bw6i_a3a0a1a5k(SReferenceLink checkedDotOperand) {
+    private static String check_l3bw6i_a3a0a1a7k(SReferenceLink checkedDotOperand) {
       if (null != checkedDotOperand) {
         return checkedDotOperand.getName();
       }

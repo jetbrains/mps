@@ -9,6 +9,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.baseLanguage.closures.behavior.FunctionType__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
@@ -17,9 +18,19 @@ import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescri
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import org.jetbrains.mps.openapi.language.SConcept;
+import java.util.Optional;
+import java.util.Map;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
+import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class FunctionalInterfaceHelper {
@@ -77,21 +88,31 @@ public class FunctionalInterfaceHelper {
    */
   public static FunctionalMethodResult getClassifierFunctionalMethod(SNode classifier) {
     // Visibility not checked as it is assumed abstract methods are visible (otherwise class cannot be overridden)
-    Iterable<SNode> cands = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(classifier)), CONCEPTS.InstanceMethodDeclaration$39)).where((m) -> !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL))) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m));
+    Iterator<SNode> cands = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(classifier)), CONCEPTS.InstanceMethodDeclaration$39)).where((m) -> !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL))) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m)).iterator();
 
-    if (Sequence.fromIterable(cands).isEmpty()) {
+    // No items: no abstract method
+    if (!(cands.hasNext())) {
       return NO_ABSTRACT_METHOD;
-    } else if (Sequence.fromIterable(cands).count() == 1) {
-      return new FunctionalMethodResult(Sequence.fromIterable(cands).first(), REGULAR_FUNCTIONAL_INTERFACE);
-    } else {
-      // Need to check whether all methods have same signature
-      SNode first = Sequence.fromIterable(cands).first();
-      final String erasureSignature = BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(first);
-
-      // Note: this way of filtering may ignore cases java would detect as errors (eg. myMethod(List<Integer>) and myMethod(List<String>)) but such processing should be checked on class level
-      String errorMessage = (Sequence.fromIterable(cands).skip(1).all((it) -> Objects.equals(BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(it), erasureSignature)) ? REGULAR_FUNCTIONAL_INTERFACE : MORE_THAN_ONE_METHOD);
-      return new FunctionalMethodResult(first, errorMessage);
     }
+
+    // Single item: regular functional interface
+    SNode first = cands.next();
+    if (!(cands.hasNext())) {
+      return new FunctionalMethodResult(first, REGULAR_FUNCTIONAL_INTERFACE);
+    }
+
+    // Otherwise: need to check whether all methods have same signature
+    String erasureSignature = BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(first);
+
+    // Note: this way of filtering may ignore cases java would detect as errors (eg. myMethod(List<Integer>) and myMethod(List<String>)) but such processing should be checked on class level
+    while (cands.hasNext()) {
+      if (!(Objects.equals(BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(cands.next()), erasureSignature))) {
+        return new FunctionalMethodResult(first, MORE_THAN_ONE_METHOD);
+      }
+    }
+
+    // All have same signature
+    return new FunctionalMethodResult(first, REGULAR_FUNCTIONAL_INTERFACE);
   }
 
   /**
@@ -104,14 +125,46 @@ public class FunctionalInterfaceHelper {
     return MultiTuple.<SNode,String>from(classifierFunctionalMethod.getMethod(), classifierFunctionalMethod.getErrorMessage());
   }
 
+  public static Optional<SNode> getFunctionType(final SNode type) {
+    return Optional.ofNullable(getClassifierFunctionalMethod(SLinkOperations.getTarget(type, LINKS.classifier$cxMr)).getMethod()).map((method) -> {
+      final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
+      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(type, subs);
+
+      List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select((it) -> (SNode) IGenericType__BehaviorDescriptor.expandGenerics_id7Gunk0ZqeQo.invoke(SNodeOperations.asSConcept(CONCEPTS.IGenericType$13), SLinkOperations.getTarget(it, LINKS.type$a1UY), subs)).toList();
+
+      SNode returnType = IGenericType__BehaviorDescriptor.expandGenerics_id7Gunk0ZqeQo.invoke(SNodeOperations.asSConcept(CONCEPTS.IGenericType$13), SLinkOperations.getTarget(method, LINKS.returnType$5xoi), subs);
+      return _quotation_createNode_fyataq_a6a0a0a0o(params, returnType);
+    });
+  }
+
+  private static SNode _quotation_createNode_fyataq_a6a0a0a0o(Object parameter_1, Object parameter_2) {
+    SNode quotedNode_3 = null;
+    SNode quotedNode_4 = null;
+    SNode quotedNode_5 = null;
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0x1174a4d19ffL, "FunctionType"));
+    quotedNode_3 = nb.getResult();
+    for (SNode child : (List<SNode>) parameter_1) {
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType"), SNodeOperations.copyIfNecessary(child));
+    }
+    quotedNode_5 = (SNode) parameter_2;
+    if (quotedNode_5 != null) {
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), SNodeOperations.copyIfNecessary(quotedNode_5));
+    }
+    return quotedNode_3;
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept FunctionType$9U = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, "jetbrains.mps.baseLanguage.closures.structure.FunctionType");
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
     /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SInterfaceConcept IGenericType$13 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 
   private static final class PROPS {

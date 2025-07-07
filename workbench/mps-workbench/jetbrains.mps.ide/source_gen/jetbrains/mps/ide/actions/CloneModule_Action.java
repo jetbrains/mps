@@ -9,10 +9,10 @@ import jetbrains.mps.workbench.action.ActionAccess;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.util.ModuleNameUtil;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import com.intellij.openapi.ui.Messages;
@@ -21,7 +21,11 @@ import jetbrains.mps.ide.ui.dialogs.modules.NewModuleDialog;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
 import java.nio.file.Path;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
+import jetbrains.mps.project.modules.NewModuleCheck;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.project.DevKit;
+import jetbrains.mps.util.IStatus;
 import jetbrains.mps.extapi.persistence.CopyNotSupportedException;
 import jetbrains.mps.ide.newModuleDialogs.CopyModuleHelper;
 import com.intellij.openapi.application.ApplicationManager;
@@ -33,9 +37,6 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.extapi.persistence.CopyableModelRoot;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.project.Solution;
 import com.intellij.openapi.project.Project;
 import javax.swing.JComponent;
 import com.intellij.openapi.wm.WindowManager;
@@ -43,7 +44,7 @@ import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.openapi.ui.popup.Balloon;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3138904107381036995", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "3138904107381036995", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CloneModule_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -58,8 +59,8 @@ public class CloneModule_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    boolean isApplicable = event.getData(MPSCommonDataKeys.TREE_SELECTION_SIZE) == 1 && CloneModule_Action.this.supportsClonning(event.getData(MPSCommonDataKeys.MODULE), event);
-    event.getPresentation().setText("Clone " + ModuleNameUtil.getModuleType(event.getData(MPSCommonDataKeys.MODULE)));
+    boolean isApplicable = event.getData(MPSCommonDataKeys.TREE_SELECTION_SIZE) == 1 && CloneModule_Action.this.supportsClonning(((AbstractModule) event.getData(MPSCommonDataKeys.MODULE)), event);
+    event.getPresentation().setText("Clone " + ModuleNameUtil.getModuleType(((AbstractModule) event.getData(MPSCommonDataKeys.MODULE))));
     event.getPresentation().setEnabledAndVisible(isApplicable);
   }
   @Override
@@ -70,6 +71,9 @@ public class CloneModule_Action extends BaseAction {
     {
       SModule p = event.getData(MPSCommonDataKeys.MODULE);
       if (p == null) {
+        return false;
+      }
+      if (p != null && !(p instanceof AbstractModule)) {
         return false;
       }
     }
@@ -89,7 +93,7 @@ public class CloneModule_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final AbstractModule module = as_i0xx9i_a0a0a6(event.getData(MPSCommonDataKeys.MODULE), AbstractModule.class);
+    final AbstractModule module = as_i0xx9i_a0a0a6(((AbstractModule) event.getData(MPSCommonDataKeys.MODULE)), AbstractModule.class);
 
     Map<ModelRoot, String> nonCloneable = CloneModule_Action.this.collectCloneErrorMessages(module.getModelRoots(), event);
     if (!(MapSequence.fromMap(nonCloneable).isEmpty())) {
@@ -99,7 +103,6 @@ public class CloneModule_Action extends BaseAction {
 
     final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
     final String virtualFolder = mpsProject.getVirtualFolder(module);
-    final String ext = CloneModule_Action.this.getExtension(module, event);
     File projectHome = NewModuleDialog.projectHome(mpsProject);
     IFile moduleHome = module.getModuleSourceDir().getParent();
     final NameLocationPanel cfg = new NameLocationPanel(projectHome, "Cloned Module name:", "Clone Module to:");
@@ -109,12 +112,27 @@ public class CloneModule_Action extends BaseAction {
     final NewModuleDialog<SModule> dialog = new NewModuleDialog<>(mpsProject, cfg);
     dialog.setTitle(String.format("Clone %s %s", ModuleNameUtil.getModuleType(module), module.getModuleName()));
     dialog.withDimensionKey(CloneModule_Action.this.getClass().getName());
-    dialog.withCheck(() -> NewModuleUtil.check(mpsProject, ext, cfg.getModuleName(), cfg.getModuleLocation().getAbsolutePath()));
+    final NewModuleCheck mc = new NewModuleCheck();
+    if (module instanceof Language) {
+      mc.forLanguage();
+    } else if (module instanceof Generator) {
+      mc.forGenerator();
+    } else if (module instanceof DevKit) {
+      mc.forDevkit();
+    } else {
+      mc.forSolution();
+    }
+    mc.withScope(mpsProject.getRepository());
+    dialog.withCheck(() -> {
+      mc.withName(cfg.getModuleName()).withHome(cfg.getModuleLocation());
+      IStatus s = mc.checkAll();
+      return (s.isOk() ? null : s.getMessage());
+    });
     final CopyNotSupportedException[] error = new CopyNotSupportedException[]{null};
     dialog.withFactory(() -> {
       final String moduleName = cfg.getModuleName();
-      // FIXME there's NewModuleUtil.getModuleFile with the same logic, refactor
-      IFile descriptorFile = mpsProject.getFileSystem().getFile(cfg.getModuleLocation()).findChild(moduleName + ext);
+      // FIXME it's not quite good to take module name from cfg but module file from check operation, need an uniform approach
+      IFile descriptorFile = mpsProject.getFileSystem().getFile(mc.getModuleFile());
       CopyModuleHelper helper = new CopyModuleHelper(mpsProject, module, moduleName, descriptorFile, virtualFolder);
       try {
         // XXX why logic to add module to project is hidden under CopyModuleHelper? I'd say it shall create a module
@@ -172,18 +190,7 @@ public class CloneModule_Action extends BaseAction {
     return result;
   }
   private boolean supportsClonning(SModule module, final AnActionEvent event) {
-    // XXX why not generators, at least standalone?
-    //     Need to check if CopyModuleHelper supports .mpst
-    return !(module.isPackaged()) && CloneModule_Action.this.getExtension(module, event) != null;
-  }
-  private String getExtension(SModule module, final AnActionEvent event) {
-    if (module instanceof Language) {
-      return MPSExtentions.DOT_LANGUAGE;
-    }
-    if (module instanceof Solution) {
-      return MPSExtentions.DOT_SOLUTION;
-    }
-    return null;
+    return !(module.isPackaged()) && module instanceof AbstractModule && ((AbstractModule) module).getModuleDescriptor() != null;
   }
   private void showPopup(Project ideaProject, String htmlText, MessageType messageType, final AnActionEvent event) {
     // XXX there's BaseAction.showNotification, can I merge these? There's no fadeout time in BA.showNotification

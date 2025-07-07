@@ -13,12 +13,14 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -33,6 +35,9 @@ public final class FlexibleBlock__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean isOneLiner_idCy8Bus23OC(@NotNull SNode __thisNode__) {
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.forceMultiLine$d9kx)) {
+      return false;
+    }
     if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statements$R3pt)).isEmpty()) {
       return true;
     }
@@ -89,6 +94,10 @@ public final class FlexibleBlock__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty forceMultiLine$d9kx = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, 0x1576099f23c283c7L, "forceMultiLine");
   }
 
   private static final class LINKS {

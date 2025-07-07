@@ -6,19 +6,18 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class FeedbackMultipleChildrenInSingleRole_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(FeedbackMultipleChildrenInSingleRole_Test.class, "${mps_home}", "r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FeedbackMultipleChildrenInSingleRole_Test.class).projectPath(null).modelRef("r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)").reopenProject(null).build());
 
   public FeedbackMultipleChildrenInSingleRole_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -35,12 +34,16 @@ public class FeedbackMultipleChildrenInSingleRole_Test extends BaseTransformatio
       super(owner);
     }
 
-    public void test_NodeErrorCheck4631579825415181488() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7019192671317970805");
+    }
 
+    public void test_NodeErrorCheck4631579825415181488() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("7019192671317970806");
-        SNode operation = getRealNodeById("4631579825415181488");
-        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Multiple children in the single role 'singleRoleChild':  [StringLiteral='one', StringLiteral='second']!!!", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("7019192671317970806");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Multiple children in the single role 'singleRoleChild':  [StringLiteral='one', StringLiteral='second']!!!", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

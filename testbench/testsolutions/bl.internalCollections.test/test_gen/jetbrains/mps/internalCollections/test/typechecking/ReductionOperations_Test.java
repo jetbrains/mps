@@ -6,24 +6,22 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckTypesAction;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 @MPSLaunch
 public class ReductionOperations_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(ReductionOperations_Test.class, "${mps_home}", "r:ea0833ca-e474-4ae3-b6d3-3f8d18af5a89(jetbrains.mps.internalCollections.test.typechecking@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ReductionOperations_Test.class).projectPath(null).modelRef("r:ea0833ca-e474-4ae3-b6d3-3f8d18af5a89(jetbrains.mps.internalCollections.test.typechecking@tests)").reopenProject(null).build());
 
   public ReductionOperations_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -204,374 +202,201 @@ public class ReductionOperations_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeTypeCheck2462863295917877179() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877180"));
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2462863295917877125");
+    }
 
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877167");
-        SNode operation = getRealNodeById("2462863295917877179");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877180"));
-      });
+    public void test_NodeTypeCheck2462863295917877179() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877167")).checkTypeIs(getNodeById("2462863295917877180")));
     }
     public void test_NodeTypeCheck2462863295917877194() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877195"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877182");
-        SNode operation = getRealNodeById("2462863295917877194");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877195"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877182")).checkTypeIs(getNodeById("2462863295917877195")));
     }
     public void test_NodeIsNotSubtypeOfCheck2462863295928385310() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877213");
-        SNode operation = getRealNodeById("2462863295928385310");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "Error: A is not a subtype of B", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("2462863295917877213");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "Error: A is not a subtype of B", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTypeCheck2462863295917877219() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877220"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877207");
-        SNode operation = getRealNodeById("2462863295917877219");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877220"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877207")).checkTypeIs(getNodeById("2462863295917877220")));
     }
     public void test_NodeTypeCheck2462863295917877234() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877235"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877222");
-        SNode operation = getRealNodeById("2462863295917877234");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877235"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877222")).checkTypeIs(getNodeById("2462863295917877235")));
     }
     public void test_NodeTypeCheck2462863295917877258() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877259"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877245");
-        SNode operation = getRealNodeById("2462863295917877258");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877259"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877245")).checkTypeIs(getNodeById("2462863295917877259")));
     }
     public void test_NodeTypeCheck2462863295917877274() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877275"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877261");
-        SNode operation = getRealNodeById("2462863295917877274");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877275"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877261")).checkTypeIs(getNodeById("2462863295917877275")));
     }
     public void test_NodeTypeCheck2462863295917877290() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877291"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877277");
-        SNode operation = getRealNodeById("2462863295917877290");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877291"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877277")).checkTypeIs(getNodeById("2462863295917877291")));
     }
     public void test_NodeTypeCheck2462863295917877306() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877307"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877293");
-        SNode operation = getRealNodeById("2462863295917877306");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877307"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877293")).checkTypeIs(getNodeById("2462863295917877307")));
     }
     public void test_NodeIsNotSubtypeOfCheck2462863295923106098() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877327");
-        SNode operation = getRealNodeById("2462863295923106098");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("2462863295917877327");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTypeCheck2462863295917877342() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877343"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877325");
-        SNode operation = getRealNodeById("2462863295917877342");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877343"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877325")).checkTypeIs(getNodeById("2462863295917877343")));
     }
     public void test_NodeTypeCheck2462863295917877358() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877359"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877345");
-        SNode operation = getRealNodeById("2462863295917877358");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877359"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877345")).checkTypeIs(getNodeById("2462863295917877359")));
     }
     public void test_NodeIsNotSubtypeOfCheck2462863295923160902() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877363");
-        SNode operation = getRealNodeById("2462863295923160902");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("2462863295917877363");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTypeCheck2462863295917877378() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877379"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877361");
-        SNode operation = getRealNodeById("2462863295917877378");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877379"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877361")).checkTypeIs(getNodeById("2462863295917877379")));
     }
     public void test_NodeTypeCheck2462863295917877394() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877395"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877381");
-        SNode operation = getRealNodeById("2462863295917877394");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877395"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877381")).checkTypeIs(getNodeById("2462863295917877395")));
     }
     public void test_NodeTypeCheck2462863295917877420() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877421"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877407");
-        SNode operation = getRealNodeById("2462863295917877420");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877421"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877407")).checkTypeIs(getNodeById("2462863295917877421")));
     }
     public void test_NodeTypeCheck2462863295917877436() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877437"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877423");
-        SNode operation = getRealNodeById("2462863295917877436");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877437"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877423")).checkTypeIs(getNodeById("2462863295917877437")));
     }
     public void test_NodeTypeCheck1850627139669168297() throws Exception {
-      runWithinCommand(() -> addNodeById("1850627139669168298"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("1850627139669168284");
-        SNode operation = getRealNodeById("1850627139669168297");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("1850627139669168298"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("1850627139669168284")).checkTypeIs(getNodeById("1850627139669168298")));
     }
     public void test_NodeTypeCheck1850627139669482940() throws Exception {
-      runWithinCommand(() -> addNodeById("1850627139669482941"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("1850627139669482927");
-        SNode operation = getRealNodeById("1850627139669482940");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("1850627139669482941"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("1850627139669482927")).checkTypeIs(getNodeById("1850627139669482941")));
     }
     public void test_NodeTypeCheck2462863295917877540() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877541"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877527");
-        SNode operation = getRealNodeById("2462863295917877540");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877541"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877527")).checkTypeIs(getNodeById("2462863295917877541")));
     }
     public void test_NodeTypeCheck2462863295917877556() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877557"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877543");
-        SNode operation = getRealNodeById("2462863295917877556");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877557"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877543")).checkTypeIs(getNodeById("2462863295917877557")));
     }
     public void test_NodeTypeCheck2462863295917877572() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877573"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877559");
-        SNode operation = getRealNodeById("2462863295917877572");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877573"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877559")).checkTypeIs(getNodeById("2462863295917877573")));
     }
     public void test_NodeTypeCheck2462863295917877588() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877589"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877575");
-        SNode operation = getRealNodeById("2462863295917877588");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877589"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877575")).checkTypeIs(getNodeById("2462863295917877589")));
     }
     public void test_NodeIsNotSubtypeOfCheck2462863295917877614() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877612");
-        SNode operation = getRealNodeById("2462863295917877614");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("2462863295917877612");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeIsNotSubtypeOfCheck2462863295917877617() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877603");
-        SNode operation = getRealNodeById("2462863295917877617");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("2462863295917877603");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTypeCheck2462863295917877620() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877621"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877601");
-        SNode operation = getRealNodeById("2462863295917877620");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877621"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877601")).checkTypeIs(getNodeById("2462863295917877621")));
     }
     public void test_NodeTypeCheck2462863295917877636() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877637"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877623");
-        SNode operation = getRealNodeById("2462863295917877636");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877637"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877623")).checkTypeIs(getNodeById("2462863295917877637")));
     }
     public void test_NodeIsNotSubtypeOfCheck2462863295917877652() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877641");
-        SNode operation = getRealNodeById("2462863295917877652");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("2462863295917877641");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTypeCheck2462863295917877655() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877656"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877639");
-        SNode operation = getRealNodeById("2462863295917877655");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877656"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877639")).checkTypeIs(getNodeById("2462863295917877656")));
     }
     public void test_NodeIsNotSubtypeOfCheck2462863295917877671() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877669");
-        SNode operation = getRealNodeById("2462863295917877671");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("2462863295917877669");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTypeCheck2462863295917877674() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877675"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877658");
-        SNode operation = getRealNodeById("2462863295917877674");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877675"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877658")).checkTypeIs(getNodeById("2462863295917877675")));
     }
     public void test_NodeTypeCheck2462863295917877706() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877707"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877685");
-        SNode operation = getRealNodeById("2462863295917877706");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877707"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877685")).checkTypeIs(getNodeById("2462863295917877707")));
     }
     public void test_NodeTypeCheck2462863295917877730() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877731"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877709");
-        SNode operation = getRealNodeById("2462863295917877730");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877731"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877709")).checkTypeIs(getNodeById("2462863295917877731")));
     }
     public void test_NodeTypeCheck2462863295917877754() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877755"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877733");
-        SNode operation = getRealNodeById("2462863295917877754");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877755"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877733")).checkTypeIs(getNodeById("2462863295917877755")));
     }
     public void test_NodeTypeCheck2462863295917877778() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877779"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877757");
-        SNode operation = getRealNodeById("2462863295917877778");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877779"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877757")).checkTypeIs(getNodeById("2462863295917877779")));
     }
     public void test_NodeTypeCheck2462863295917877818() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877819"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877797");
-        SNode operation = getRealNodeById("2462863295917877818");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877819"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877797")).checkTypeIs(getNodeById("2462863295917877819")));
     }
     public void test_NodeTypeCheck2462863295917877866() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877867"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877845");
-        SNode operation = getRealNodeById("2462863295917877866");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877867"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877845")).checkTypeIs(getNodeById("2462863295917877867")));
     }
     public void test_NodeTypeCheck2462863295917877923() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877924"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877902");
-        SNode operation = getRealNodeById("2462863295917877923");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877924"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877902")).checkTypeIs(getNodeById("2462863295917877924")));
     }
     public void test_NodeTypeCheck2462863295917877947() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877948"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877926");
-        SNode operation = getRealNodeById("2462863295917877947");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877948"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877926")).checkTypeIs(getNodeById("2462863295917877948")));
     }
     public void test_NodeTypeCheck2462863295917877978() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917877979"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877956");
-        SNode operation = getRealNodeById("2462863295917877978");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917877979"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877956")).checkTypeIs(getNodeById("2462863295917877979")));
     }
     public void test_NodeTypeCheck2462863295917878003() throws Exception {
-      runWithinCommand(() -> addNodeById("2462863295917878004"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877981");
-        SNode operation = getRealNodeById("2462863295917878003");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2462863295917878004"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2462863295917877981")).checkTypeIs(getNodeById("2462863295917878004")));
     }
     public void test_ErrorMessagesCheck2462863295917878009() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2462863295917877126");
-        SNode operation = getRealNodeById("2462863295917878009");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2462863295917877213"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "Error: A is not a subtype of B", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2462863295917877327"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2462863295917877363"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2462863295917877612"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2462863295917877603"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2462863295917877641"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2462863295917877669"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+        SNode nodeToCheck = getNodeById("2462863295917877126");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("2462863295917877213"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "Error: A is not a subtype of B", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("2462863295917877327"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("2462863295917877363"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("2462863295917877612"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("2462863295917877603"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("2462863295917877641"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("2462863295917877669"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), myProject.getPlatform()))).run();
       });
     }
 

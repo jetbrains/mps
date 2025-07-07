@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,20 +28,14 @@ import jetbrains.mps.project.persistence.DeploymentDescriptorPersistence;
 import jetbrains.mps.project.persistence.ModuleReadException;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
-import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
-import jetbrains.mps.project.structure.modules.LibraryDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.PathManager;
-import jetbrains.mps.util.io.ModelInputStream;
-import jetbrains.mps.util.io.ModelOutputStream;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
@@ -51,7 +45,6 @@ import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -392,10 +385,8 @@ public final class ModulesMiner {
     if (filePath.endsWith(SLASH_META_INF_MODULE_XML)) {
       IFile moduleHome;
       if (file.isInZipArchive()) {
-        moduleHome = file.getBundleHome();
+        moduleHome = file.stepUpToArchive();
       } else {
-        // IFile.getBundleHome is not smart enough to recognize META-INF/module.xml in a regular directory (not archive), and yields
-        // wrong result then (file.getParent() == META-INF/ location which won't help to locate libraries).
         // Instead, assume META-INF/module.xml is at the root of a module location (which if generally the case).
         moduleHome = file.getParent().getParent();
       }
@@ -520,11 +511,18 @@ public final class ModulesMiner {
   }
 
   /**
-   * We've got deployed module, found its source module, and need to fix java stub paths of the latter to get @java_stub models loaded properly.
+   * We've got deployed module, found its source module, and need to fix java and/or kotlin stub paths of the latter to get @java_stub (or @kotlin_common)
+   * models loaded properly.
    *
    * On one hand, there's desire to get rid of this code by moving relevant update into build language, as it's odd to 'fix' module descriptor during load.
    * OTOH, it's source module we get fixed here, and if we move towards no source modules at all, then, perhaps, we shall not care to update neither here nor
    * in build language. Still, there's a question whether @java_stub models are part of deployment story.
+   * <p>
+   *  Just an idea - if we consider removing 'source' modules but leaving stub models, then, perhaps, we can have another entry in module.xml,
+   *  listing 'stub' models, and then lang.build mapping for entries (done with ArtifactsRelativePathHelper) would be enough, and no rewriting magic here?
+   *  However, there's another tricky point - build language cares about classpath jars and doesn't look into model roots, here we imply model roots
+   *  reference the same jars JMF got as libraries (Dependencies of BM_AbstractModule list jars from JMF, not stub model root)
+   * </p>
    *
    * JFTR, next code used to live in AbstractModule#updatePackagedDescriptor. Unlike the method, we no longer expose dd.getLibraries() as @java_stubs,
    * instead, we do our best to update MRD here with a proper path (we consult deploymentJars, with actual deployed layout, for matches).
@@ -542,7 +540,8 @@ public final class ModulesMiner {
     MacroHelper macroHelper = MacrosFactory.forModuleFile(sourcesDescriptorFile);
     for (ModelRootDescriptor rootDescriptor : sourceModuleDescriptor.getModelRootDescriptors()) {
       String rootDescriptorType = rootDescriptor.getType();
-      if (rootDescriptorType.equals(PersistenceRegistry.JAVA_CLASSES_ROOT)) {
+      // KotlinStubModelRootFactory.rootName == "kotlin_common"
+      if (PersistenceRegistry.JAVA_CLASSES_ROOT.equals(rootDescriptorType) || "kotlin_common".equals(rootDescriptorType)) {
         // there are few possible deployment layouts:
         //    1. App/Contents/languages/my.lang.jar + -src.jar
         //    2. App/Contents/plugins/<name>/languages/my.lang.jar + -src.jar + libraries from additional cp
@@ -735,48 +734,6 @@ public final class ModulesMiner {
       }
       return null;
     }
-  }
-
-  public static void saveHandle(@NotNull ModuleHandle handle, ModelOutputStream stream) throws IOException {
-    stream.writeShort(0x1be0);
-    stream.writeString(handle.getFile().getPath());
-    ModuleDescriptor descriptor = handle.getDescriptor();
-    if (descriptor instanceof LanguageDescriptor) {
-      stream.writeByte(1);
-    } else if (descriptor instanceof SolutionDescriptor) {
-      stream.writeByte(2);
-    } else if (descriptor instanceof DevkitDescriptor) {
-      stream.writeByte(3);
-    } else if (descriptor instanceof GeneratorDescriptor) {
-      stream.writeByte(4);
-    } else if (descriptor instanceof LibraryDescriptor) {
-      stream.writeByte(5);
-    } else {
-      throw new IllegalArgumentException("unknown module:" + descriptor);
-    }
-    descriptor.save(stream);
-  }
-
-  public static ModuleHandle loadHandle(ModelInputStream stream) throws IOException {
-    if (stream.readShort() != 0x1be0) throw new IOException("bad stream: no start marker");
-    String file = stream.readString();
-    ModuleDescriptor descriptor;
-    int type = stream.readByte();
-    if (type == 1) {
-      descriptor = new LanguageDescriptor();
-    } else if (type == 2) {
-      descriptor = new SolutionDescriptor();
-    } else if (type == 3) {
-      descriptor = new DevkitDescriptor();
-    } else if (type == 4) {
-      descriptor = new GeneratorDescriptor();
-    } else if (type == 5) {
-      descriptor = new LibraryDescriptor();
-    } else {
-      throw new IOException("broken stream: invalid descriptor type");
-    }
-    descriptor.load(stream);
-    return new ModuleHandle(FileSystem.getInstance().getFile(file), descriptor);
   }
 
   @Immutable

@@ -30,6 +30,7 @@ import jetbrains.mps.findUsages.ModelImportLookup;
 import jetbrains.mps.findUsages.NodeUsageLookup;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.FilePerRootDataSource;
@@ -70,7 +71,7 @@ import java.util.stream.Collectors;
 // FIXME utilize project to deal with dumb mode and use project's FS to get VirtualFile for an IFile
 public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposable {
 
-  public static final class Plug implements StartupActivity.Background {
+  public static final class Plug extends MPSProjectActivity {
     @Override
     public void runActivity(@NotNull Project project) {
       final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);

@@ -5,14 +5,24 @@ package jetbrains.mps.ide.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.awt.Color;
 import jetbrains.mps.nodeEditor.MPSColors;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.markup.TextAttributes;
+import com.intellij.openapi.editor.colors.EditorColors;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/227146524086772103", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "227146524086772103", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class HighlightConstants {
-  public static final Color DEPENDENCY_COLOR = MPSColors.PINK;
-  public static final Color NODE_COLOR = MPSColors.MAGENTA;
-  public static final Color INSTANCES_COLOR = MPSColors.BLUE;
-  public static final Color USAGES_COLOR = MPSColors.PINK;
   public static final Color ANCESTOR_COLOR = MPSColors.GREEN;
   public HighlightConstants() {
+  }
+  public static Color getSearchResultsBackgroundColor() {
+    EditorColorsScheme globalScheme = EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
+    TextAttributes attributes = globalScheme.getAttributes(EditorColors.SEARCH_RESULT_ATTRIBUTES);
+    return attributes.getBackgroundColor();
+  }
+  public static Color getSearchResultsSourceBackgroundColor() {
+    EditorColorsScheme globalScheme = EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
+    TextAttributes attributes = globalScheme.getAttributes(EditorColors.WRITE_SEARCH_RESULT_ATTRIBUTES);
+    return attributes.getBackgroundColor();
   }
 }

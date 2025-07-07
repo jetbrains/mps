@@ -12,7 +12,7 @@ import jetbrains.mps.logging.Logger;
  * Unlike new ArrayList(), doesn't tolerate modifications.
  * Unlike Collections.emptyList(), doesn't fail with exception on modifications
  */
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/767246027818411253", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "767246027818411253", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 /*package*/ class EmptyList<T> extends AbstractList<T> {
   private String myMessage;
   /*package*/ EmptyList() {

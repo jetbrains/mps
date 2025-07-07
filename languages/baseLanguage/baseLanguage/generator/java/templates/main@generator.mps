@@ -23,6 +23,7 @@
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
     <import index="9eha" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
+    <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -981,7 +982,7 @@
       <node concept="2AHcQZ" id="2zzdvByadYl" role="2AJF6D">
         <ref role="2AI5Lk" to="9eha:~GeneratedClass" resolve="GeneratedClass" />
         <node concept="2B6LJw" id="4wRvteNrpar" role="2B76xF">
-          <ref role="2B6OnR" to="9eha:~GeneratedClass.node()" resolve="node" />
+          <ref role="2B6OnR" to="9eha:~GeneratedClass.nodeId()" resolve="nodeId" />
           <node concept="Xl_RD" id="4wRvteNrpsK" role="2B70Vg">
             <property role="Xl_RC" value="" />
             <node concept="17Uvod" id="4wRvteNrpQB" role="lGtFl">
@@ -989,23 +990,27 @@
               <property role="2qtEX9" value="value" />
               <node concept="3zFVjK" id="4wRvteNrpQC" role="3zH0cK">
                 <node concept="3clFbS" id="4wRvteNrpQD" role="2VODD2">
-                  <node concept="3clFbF" id="4wRvteNruwE" role="3cqZAp">
-                    <node concept="2OqwBi" id="4wRvteNrvFx" role="3clFbG">
-                      <node concept="2OqwBi" id="4wRvteNrvl4" role="2Oq$k0">
-                        <node concept="2JrnkZ" id="4wRvteNrvlf" role="2Oq$k0">
-                          <node concept="2OqwBi" id="4wRvteNrtc5" role="2JrQYb">
-                            <node concept="1iwH7S" id="4wRvteNrtc6" role="2Oq$k0" />
-                            <node concept="12$id9" id="4wRvteNrtc7" role="2OqNvi">
-                              <node concept="30H73N" id="4wRvteNrtc8" role="12$y8L" />
+                  <node concept="3clFbF" id="24z85dSBC65" role="3cqZAp">
+                    <node concept="2OqwBi" id="24z85dSBCqf" role="3clFbG">
+                      <node concept="2YIFZM" id="24z85dSBCht" role="2Oq$k0">
+                        <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
+                        <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
+                      </node>
+                      <node concept="liA8E" id="24z85dSBCDM" role="2OqNvi">
+                        <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeId)" resolve="asString" />
+                        <node concept="2OqwBi" id="4wRvteNrvl4" role="37wK5m">
+                          <node concept="2JrnkZ" id="4wRvteNrvlf" role="2Oq$k0">
+                            <node concept="2OqwBi" id="4wRvteNrtc5" role="2JrQYb">
+                              <node concept="1iwH7S" id="4wRvteNrtc6" role="2Oq$k0" />
+                              <node concept="12$id9" id="4wRvteNrtc7" role="2OqNvi">
+                                <node concept="30H73N" id="4wRvteNrtc8" role="12$y8L" />
+                              </node>
                             </node>
                           </node>
+                          <node concept="liA8E" id="4wRvteNusgV" role="2OqNvi">
+                            <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
+                          </node>
                         </node>
-                        <node concept="liA8E" id="4wRvteNusgV" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SNode.getReference()" resolve="getReference" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="4wRvteNrvQl" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                       </node>
                     </node>
                   </node>

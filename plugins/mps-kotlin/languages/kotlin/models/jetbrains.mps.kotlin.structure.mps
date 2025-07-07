@@ -166,9 +166,6 @@
     <node concept="PrWs8" id="2yYXHtl6JEn" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjj" resolve="IDeclaration" />
     </node>
-    <node concept="PrWs8" id="213J8chjiJ$" role="PzmwI">
-      <ref role="PrY4T" node="213J8chjiEQ" resolve="IVariableIdentifier" />
-    </node>
     <node concept="PrWs8" id="1Izr$$XgfUD" role="PzmwI">
       <ref role="PrY4T" node="1Izr$$XgfU$" resolve="IObject" />
     </node>
@@ -278,6 +275,7 @@
     <property role="34LRSv" value="get" />
     <property role="R4oN_" value="property getter" />
     <property role="3GE5qa" value="declaration.property.accessor" />
+    <ref role="1TJDcQ" node="3hnD4DbJUw1" resolve="PropertyAccessor" />
     <node concept="1TJgyj" id="2yYXHtl6JoE" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798373930" />
       <property role="20kJfa" value="_body" />
@@ -289,9 +287,6 @@
     </node>
     <node concept="PrWs8" id="6TRHYuCE24U" role="PzmwI">
       <ref role="PrY4T" node="6TRHYuCB$BU" resolve="IAnnotated" />
-    </node>
-    <node concept="PrWs8" id="1yTI8p9rTn7" role="PzmwI">
-      <ref role="PrY4T" node="18X2O0Fy6BI" resolve="IStatementHolder" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jeh">
@@ -726,8 +721,11 @@
     <node concept="PrWs8" id="18X2O0Fyb4a" role="PzmwI">
       <ref role="PrY4T" node="18X2O0Fy6BI" resolve="IStatementHolder" />
     </node>
+    <node concept="PrWs8" id="7LH$Ac_$$yg" role="PzmwI">
+      <ref role="PrY4T" node="2mD64u3yQho" resolve="IInferencePart" />
+    </node>
     <node concept="t5JxF" id="6gam351cCpq" role="lGtFl">
-      <property role="t5JxN" value="block of statements, that can be seen either as a { list of statements } or as an expression" />
+      <property role="t5JxN" value="block of statements, that can be seen either as a { list of statements } or as an expression. To be used as part of an expression (example: if, when), otherwise use IStatementHolder which lets you free to use IInferencePart or not." />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JfJ">
@@ -931,6 +929,11 @@
     <node concept="1QGGSu" id="58ySuOXMcXP" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/classInitializerKotlin.svg" />
       <property role="uyjgh" value="${module}/icons/classInitializerKotlin_newui.svg" />
+    </node>
+    <node concept="1TJgyi" id="6cin1kbYhfn" role="1TKVEl">
+      <property role="IQ2nx" value="7138869604800598999" />
+      <property role="TrG5h" value="multiLineParameters" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jgu">
@@ -1270,11 +1273,6 @@
       <ref role="PrY4T" node="2yYXHtl6JhF" resolve="IParameterModifier" />
     </node>
   </node>
-  <node concept="PlHQZ" id="2yYXHtl6JhN">
-    <property role="EcuMT" value="2936055411798373491" />
-    <property role="TrG5h" value="IPlatformModifier" />
-    <property role="3GE5qa" value="declaration.modifier" />
-  </node>
   <node concept="1TIwiD" id="2yYXHtl6JhO">
     <property role="EcuMT" value="2936055411798373492" />
     <property role="TrG5h" value="ExpectPlatformModifier" />
@@ -1283,9 +1281,6 @@
     <property role="3GE5qa" value="declaration.modifier" />
     <node concept="PrWs8" id="2yYXHtl6JIm" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6JhN" resolve="IPlatformModifier" />
-    </node>
-    <node concept="PrWs8" id="2AaqzlrRBf$" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6JeY" resolve="IFunctionModifier" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JhP">
@@ -1302,6 +1297,9 @@
     <property role="EcuMT" value="2936055411798373497" />
     <property role="TrG5h" value="ILambdaParameter" />
     <property role="3GE5qa" value="expression.function" />
+    <node concept="PrWs8" id="2tT4f1P7a57" role="PrDN$">
+      <ref role="PrY4T" node="2mD64u3yQho" resolve="IInferencePart" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JhV">
     <property role="EcuMT" value="2936055411798373499" />
@@ -1534,10 +1532,10 @@
     <property role="34LRSv" value="set" />
     <property role="R4oN_" value="property setter" />
     <property role="3GE5qa" value="declaration.property.accessor" />
+    <ref role="1TJDcQ" node="3hnD4DbJUw1" resolve="PropertyAccessor" />
     <node concept="1TJgyj" id="2yYXHtl6Jwm" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798374422" />
       <property role="20kJfa" value="parameter" />
-      <property role="20lbJX" value="fLJekj4/_1" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6JkE" resolve="ParameterWithOptionalType" />
     </node>
@@ -1555,12 +1553,6 @@
     </node>
     <node concept="PrWs8" id="6cg9X74Le2c" role="PzmwI">
       <ref role="PrY4T" node="6cg9X74Le0Z" resolve="IVisible" />
-    </node>
-    <node concept="PrWs8" id="1yTI8p9sj8N" role="PzmwI">
-      <ref role="PrY4T" node="18X2O0Fy6BI" resolve="IStatementHolder" />
-    </node>
-    <node concept="PrWs8" id="51pIiWIw7Xq" role="PzmwI">
-      <ref role="PrY4T" node="213J8chjiEQ" resolve="IVariableIdentifier" />
     </node>
   </node>
   <node concept="PlHQZ" id="2yYXHtl6JjL">
@@ -1790,7 +1782,7 @@
       <property role="IQ2ns" value="7960033071993940670" />
       <property role="20kJfa" value="parameter" />
       <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="2yYXHtl6Jkd" resolve="TypeParameter" />
+      <ref role="20lvS9" node="4QzAmvhcm6x" resolve="ITypeParameter" />
     </node>
     <node concept="PrWs8" id="6cg9X74h_iP" role="PzmwI">
       <ref role="PrY4T" node="6TRHYuCB$BU" resolve="IAnnotated" />
@@ -1906,7 +1898,6 @@
     <node concept="1TJgyj" id="1502VugFOBE" role="1TKVEi">
       <property role="IQ2ns" value="1243006380188584426" />
       <property role="20kJfa" value="target" />
-      <property role="20lbJX" value="fLJekj4/_1" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6Jjg" resolve="IExpression" />
     </node>
@@ -2307,6 +2298,9 @@
     <node concept="PrWs8" id="2zU6wHFnfeR" role="PrDN$">
       <ref role="PrY4T" node="7Iv8Cw7qLdE" resolve="ITypecheckingRoot" />
     </node>
+    <node concept="PrWs8" id="4DC0lW7c08" role="PrDN$">
+      <ref role="PrY4T" node="5D4bOjrr8CG" resolve="IFunctionCall" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jmh">
     <property role="EcuMT" value="2936055411798373777" />
@@ -2549,6 +2543,11 @@
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6Jg5" resolve="FunctionParameter" />
+    </node>
+    <node concept="1TJgyi" id="6cin1kbYkvI" role="1TKVEl">
+      <property role="IQ2nx" value="7138869604800612334" />
+      <property role="TrG5h" value="multiLineParameters" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
   <node concept="PlHQZ" id="1502Vugz7Wy">
@@ -3008,6 +3007,11 @@
       <property role="20kJfa" value="statements" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="2yYXHtl6Jcy" resolve="IStatement" />
+    </node>
+    <node concept="1TJgyi" id="1lQ2pWzKCf7" role="1TKVEl">
+      <property role="IQ2nx" value="1546434101152744391" />
+      <property role="TrG5h" value="forceMultiLine" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
   <node concept="1TIwiD" id="18X2O0FAD2E">
@@ -4178,6 +4182,9 @@
     <node concept="PrWs8" id="1$jFvlEU7BR" role="PrDN$">
       <ref role="PrY4T" node="2gj5XQXEpsk" resolve="ITypeArguments" />
     </node>
+    <node concept="PrWs8" id="4DC0lWfTKn" role="PrDN$">
+      <ref role="PrY4T" node="5D4bOjrr8CG" resolve="IFunctionCall" />
+    </node>
     <node concept="t5JxF" id="1$jFvlEW9v6" role="lGtFl">
       <property role="t5JxN" value="inheritance specifier that initialize the parent type with a constructor call" />
     </node>
@@ -4453,6 +4460,104 @@
     </node>
     <node concept="PrWs8" id="7EfieuW$tD0" role="PrDN$">
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7xxJ3oHTQux">
+    <property role="EcuMT" value="8674421298176681889" />
+    <property role="TrG5h" value="TargetPlatforms" />
+    <property role="3GE5qa" value="platform" />
+    <property role="R4oN_" value="target platform for given root" />
+    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <node concept="1TJgyj" id="6IEyNxjYWnG" role="1TKVEi">
+      <property role="IQ2ns" value="7758166382142539244" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="platform" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="6IEyNxjZ283" resolve="TargetPlatform" />
+    </node>
+    <node concept="M6xJ_" id="7xxJ3oHTQ_0" role="lGtFl">
+      <property role="Hh88m" value="targetPlatform" />
+      <node concept="trNpa" id="7xxJ3oHTQG_" role="EQaZv">
+        <ref role="trN6q" node="74Z9X$ygekT" resolve="IKotlinRoot" />
+      </node>
+      <node concept="tn0Fv" id="6IEyNxk503s" role="HhnKV" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6IEyNxjYK5J">
+    <property role="EcuMT" value="7758166382142488943" />
+    <property role="3GE5qa" value="platform.provided" />
+    <property role="TrG5h" value="JvmTargetPlatform" />
+    <property role="34LRSv" value="jvm" />
+    <ref role="1TJDcQ" node="6IEyNxjZ283" resolve="TargetPlatform" />
+  </node>
+  <node concept="1TIwiD" id="6IEyNxjZ1CK">
+    <property role="EcuMT" value="7758166382142560816" />
+    <property role="3GE5qa" value="platform.provided" />
+    <property role="TrG5h" value="SourceSetTargetPlatform" />
+    <ref role="1TJDcQ" node="6IEyNxjZ283" resolve="TargetPlatform" />
+    <node concept="1TJgyj" id="3xoAZRy8X_h" role="1TKVEi">
+      <property role="IQ2ns" value="4060166578797533521" />
+      <property role="20kJfa" value="sourceSet" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="3xoAZRy8Ux2" resolve="SourceSetDeclaration" />
+    </node>
+    <node concept="RPilO" id="3xoAZRy8XK6" role="lGtFl">
+      <ref role="RPilL" node="3xoAZRy8X_h" resolve="sourceSet" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6IEyNxjZ283">
+    <property role="TrG5h" value="TargetPlatform" />
+    <property role="3GE5qa" value="platform" />
+    <property role="EcuMT" value="7758166382142488390" />
+    <property role="R5$K7" value="true" />
+  </node>
+  <node concept="1TIwiD" id="3xoAZRy8Ux2">
+    <property role="EcuMT" value="4060166578797520962" />
+    <property role="3GE5qa" value="platform" />
+    <property role="TrG5h" value="SourceSetDeclaration" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="3xoAZRy8V0q" role="1TKVEi">
+      <property role="IQ2ns" value="4060166578797522970" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="platforms" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <ref role="20lvS9" node="6IEyNxjZ283" resolve="TargetPlatform" />
+    </node>
+    <node concept="PrWs8" id="3xoAZRy8UUX" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1AhYRh" id="3xoAZRyCMUu" role="lGtFl" />
+  </node>
+  <node concept="PlHQZ" id="2yYXHtl6JhN">
+    <property role="EcuMT" value="2936055411798373491" />
+    <property role="TrG5h" value="IPlatformModifier" />
+    <property role="3GE5qa" value="declaration.modifier" />
+    <node concept="PrWs8" id="rI4V6uYWYs" role="PrDN$">
+      <ref role="PrY4T" node="2yYXHtl6JeY" resolve="IFunctionModifier" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6Mh9$DhtGYW">
+    <property role="EcuMT" value="7823076128355438524" />
+    <property role="3GE5qa" value="platform.provided" />
+    <property role="TrG5h" value="CommonTargetPlatform" />
+    <property role="34LRSv" value="common" />
+    <ref role="1TJDcQ" node="6IEyNxjZ283" resolve="TargetPlatform" />
+  </node>
+  <node concept="1TIwiD" id="3hnD4DbJUw1">
+    <property role="EcuMT" value="3771663851951466497" />
+    <property role="3GE5qa" value="declaration.property.accessor" />
+    <property role="TrG5h" value="PropertyAccessor" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="3hnD4DbJU$F" role="PzmwI">
+      <ref role="PrY4T" node="213J8chjiEQ" resolve="IVariableIdentifier" />
+    </node>
+    <node concept="PrWs8" id="3hnD4DbJVe5" role="PzmwI">
+      <ref role="PrY4T" node="18X2O0Fy6BI" resolve="IStatementHolder" />
+    </node>
+    <node concept="t5JxF" id="3hnD4DbK3nv" role="lGtFl">
+      <property role="t5JxN" value="block of code defining a property accessor (get, set..), defines a &quot;field&quot; variable to access backing field" />
     </node>
   </node>
 </model>

@@ -28,7 +28,7 @@ import org.eclipse.jdt.internal.compiler.problem.ProblemSeverities;
  * 
  * @since 3.0
  */
-@GeneratedClass(node = "r:40e27d97-dea1-422b-91e0-3b9f3271a7f1(org.eclipse.jdt.internal.core.util)/1218034168005181764", model = "r:40e27d97-dea1-422b-91e0-3b9f3271a7f1(org.eclipse.jdt.internal.core.util)")
+@GeneratedClass(nodeId = "1218034168005181764", model = "r:40e27d97-dea1-422b-91e0-3b9f3271a7f1(org.eclipse.jdt.internal.core.util)")
 public class CommentRecorderParser extends Parser {
   /*package*/ int[] commentStops = new int[10];
   /*package*/ int[] commentStarts = new int[10];

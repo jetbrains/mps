@@ -4,7 +4,7 @@ package jetbrains.mps.vcs.util;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)/3531370237490043869", model = "r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)")
+@GeneratedClass(nodeId = "3531370237490043869", model = "r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)")
 public interface MergeConstants {
   int CURRENT = 0;
   int ORIGINAL = 1;

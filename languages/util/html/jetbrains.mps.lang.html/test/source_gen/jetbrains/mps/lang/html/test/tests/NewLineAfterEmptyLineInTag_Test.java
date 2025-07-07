@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class NewLineAfterEmptyLineInTag_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(NewLineAfterEmptyLineInTag_Test.class, "${mps_home}", "r:16787a38-3459-4ea1-9150-b215a73f5d27(jetbrains.mps.lang.html.test.tests@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(NewLineAfterEmptyLineInTag_Test.class).projectPath(null).modelRef("r:16787a38-3459-4ea1-9150-b215a73f5d27(jetbrains.mps.lang.html.test.tests@tests)").reopenProject(false).build());
 
   public NewLineAfterEmptyLineInTag_Test() {
     super(ourParametersCacheExtension.getParametersCache());

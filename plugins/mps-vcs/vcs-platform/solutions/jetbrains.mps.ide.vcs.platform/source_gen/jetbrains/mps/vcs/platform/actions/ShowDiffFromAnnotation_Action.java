@@ -19,7 +19,7 @@ import jetbrains.mps.vcs.annotate.AnnotatedCellMessage;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/275536438154355298", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "275536438154355298", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class ShowDiffFromAnnotation_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.Diff;
 

@@ -26,8 +26,8 @@ public final class TestsUtil {
     if (projectPath != null) {
       return NameUtil.escapeString(projectPath);
     }
-    Logger.getLogger(TestsUtil.class).error(String.format("Model %s (from %s) doesn't specify project path in TestInfo!", SModelOperations.getModelName(model), model.getSource()));
-    return "";
+    Logger.getLogger(TestsUtil.class).info(String.format("Model %s (from %s) doesn't specify project path in TestInfo. Use -Dmps.test.project.path to specify project path.", SModelOperations.getModelName(model), model.getSource()));
+    return null;
   }
 
   public static void mapSrcExtract(SNode outputNode) {
@@ -38,7 +38,7 @@ public final class TestsUtil {
         SNode expression = SLinkOperations.getTarget(SNodeOperations.cast(s, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);
         if (SNodeOperations.isInstanceOf(expression, CONCEPTS.LocalMethodCall$zT)) {
           SNode mCall = SNodeOperations.cast(expression, CONCEPTS.LocalMethodCall$zT);
-          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(mCall, LINKS.actualArgument$pzdx)).first(), CONCEPTS.ClosureLiteral$rp), LINKS.body$Ujx2), LINKS.statement$53DE)).isEmpty()) {
+          if (ListSequence.fromList(SLinkOperations.getChildren(mCall, LINKS.actualArgument$pzdx)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(mCall, LINKS.actualArgument$pzdx)).first(), CONCEPTS.ClosureLiteral$rp) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(mCall, LINKS.actualArgument$pzdx)).first(), CONCEPTS.ClosureLiteral$rp), LINKS.body$Ujx2), LINKS.statement$53DE)).isEmpty()) {
             skip = true;
           }
         } else if (SNodeOperations.isInstanceOf(expression, CONCEPTS.DotExpression$yW) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.InvokeFunctionOperation$cv) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR), CONCEPTS.ClosureLiteral$rp)) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import org.jetbrains.mps.openapi.ui.persistence.TabFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * Keeps track of tabs instantiated, hence its lifecycle shall not span single UI action
@@ -71,5 +72,16 @@ final class FacetTabsPersistence {
       myFacetTabs.put(facetType, tab);
     }
     return tab;
+  }
+
+  /**
+   * Once SModuleFacet instances become invalid (e.g. reloaded), tabs stored here are no longer valid
+   */
+  void clearTabs() {
+    myFacetTabs.clear();
+  }
+
+  void forEachTab(Consumer<Tab> c) {
+    myFacetTabs.values().forEach(c);
   }
 }

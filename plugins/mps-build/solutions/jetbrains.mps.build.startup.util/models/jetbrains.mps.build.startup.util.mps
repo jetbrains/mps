@@ -150,7 +150,13 @@
           <property role="Xl_RC" value="java.desktop/javax.swing.plaf.basic" />
         </node>
         <node concept="Xl_RD" id="1$mDfZ_DXSS" role="2BsfMF">
+          <property role="Xl_RC" value="java.desktop/javax.swing.text" />
+        </node>
+        <node concept="Xl_RD" id="43qvtA_Jmii" role="2BsfMF">
           <property role="Xl_RC" value="java.desktop/javax.swing.text.html" />
+        </node>
+        <node concept="Xl_RD" id="1AZlOUQHav5" role="2BsfMF">
+          <property role="Xl_RC" value="java.desktop/javax.swing.text.html.parser" />
         </node>
         <node concept="Xl_RD" id="1$mDfZ_DXTk" role="2BsfMF">
           <property role="Xl_RC" value="java.desktop/sun.awt.datatransfer" />
@@ -181,6 +187,9 @@
         </node>
         <node concept="Xl_RD" id="1$mDfZ_F$0x" role="2BsfMF">
           <property role="Xl_RC" value="jdk.jdi/com.sun.tools.jdi" />
+        </node>
+        <node concept="Xl_RD" id="1DGmarS1Qn8" role="2BsfMF">
+          <property role="Xl_RC" value="java.management/sun.management" />
         </node>
       </node>
       <node concept="3Tm6S6" id="2_gL36cK3YM" role="1B3o_S" />

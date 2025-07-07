@@ -64,7 +64,7 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="children" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
-      <ref role="20lvS9" node="7w_sh_iHHi0" resolve="ChildConcept" />
+      <ref role="20lvS9" node="7iO_FEKkt_x" resolve="ChildConceptBase" />
     </node>
     <node concept="1TJgyi" id="6ijHUgUSyYU" role="1TKVEl">
       <property role="IQ2nx" value="7247338141359681466" />

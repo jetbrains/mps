@@ -27,7 +27,7 @@ import jetbrains.mps.ide.platform.refactoring.RefactoringViewAction;
 import jetbrains.mps.ide.platform.refactoring.RefactoringViewItem;
 import com.intellij.openapi.ui.Messages;
 
-@GeneratedClass(node = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)/5532289631192025701", model = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)")
+@GeneratedClass(nodeId = "5532289631192025701", model = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)")
 public class DefaultRefactoringUI implements RefactoringUI {
   private static final Logger LOG = Logger.getLogger(DefaultRefactoringUI.class);
   protected Project myProject;

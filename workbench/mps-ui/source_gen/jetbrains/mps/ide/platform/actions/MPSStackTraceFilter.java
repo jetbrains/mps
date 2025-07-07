@@ -18,7 +18,7 @@ import com.intellij.execution.filters.HyperlinkInfo;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.navigation.NodeNavigatable;
 
-@GeneratedClass(node = "r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)/4221956679900716104", model = "r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)")
+@GeneratedClass(nodeId = "4221956679900716104", model = "r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)")
 public class MPSStackTraceFilter implements Filter {
   private static String STRING_START = "at ";
   private static String SEPARATOR = "/";

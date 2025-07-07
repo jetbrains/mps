@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,9 +73,12 @@ public class ProjectMPSClassLoadingTest implements EnvironmentAware {
     project = myEnvironment.openProject(new File(PathManager.getHomePath()));
     SRepositoryListener crazyListener = ModulesReloadTestStress.createCrazyListener(getCLM());
     project.getRepository().addRepositoryListener(crazyListener);
-    doTest();
-    project.getRepository().removeRepositoryListener(crazyListener);
-    myEnvironment.closeProject(project);
+    try {
+      doTest();
+    } finally {
+      project.getRepository().removeRepositoryListener(crazyListener);
+      myEnvironment.closeProject(project);
+    }
   }
 
   private void doTest() {

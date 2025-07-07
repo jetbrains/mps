@@ -4,7 +4,6 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/tests/psiProject/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/build/plugins-sandbox/plugins/tests/blProject/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-core/common/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-java/scopes/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-core/jps-plugin/testSrc" isTestSource="false" />
@@ -14,7 +13,6 @@
       <sourceFolder url="file://$MODULE_DIR$/mps-vcs/source" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-java/testSrc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests/blProject/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/mps-java/debugger/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-java/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-core/jps-plugin/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-core/src" isTestSource="false" />
@@ -73,14 +71,12 @@
     <orderEntry type="module" module-name="intentions-runtime" />
     <orderEntry type="module" module-name="logging" />
     <orderEntry type="module" module-name="migration-platform" />
-    <orderEntry type="module" module-name="misc-tests" />
     <orderEntry type="module" module-name="model" />
     <orderEntry type="module" module-name="mps-modelchecker" />
     <orderEntry type="module" module-name="module" />
     <orderEntry type="module" module-name="mps" />
     <orderEntry type="module" module-name="mps-annotations" />
     <orderEntry type="module" module-name="mps-ant" />
-    <orderEntry type="module" module-name="mps-debugger" />
     <orderEntry type="module" module-name="mps-devkit" />
     <orderEntry type="module" module-name="mps-editor" />
     <orderEntry type="module" module-name="mps-icons" />

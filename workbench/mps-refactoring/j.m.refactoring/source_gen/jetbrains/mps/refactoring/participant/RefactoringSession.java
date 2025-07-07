@@ -5,7 +5,7 @@ package jetbrains.mps.refactoring.participant;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/4331048896013535311", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
+@GeneratedClass(nodeId = "4331048896013535311", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
 public interface RefactoringSession {
   void putObject(String id, Object object);
   Object getObject(String id);

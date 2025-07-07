@@ -13,14 +13,14 @@ import jetbrains.mps.workbench.MPSDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
 import jetbrains.mps.ide.ui.dialogs.modules.NewModuleDialog;
+import jetbrains.mps.project.modules.NewModuleCheck;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
-import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.util.IStatus;
 import java.io.File;
 import jetbrains.mps.project.modules.SolutionProducer;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1229271450720", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1229271450720", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NewSolution_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Nodes.Solution;
 
@@ -56,8 +56,15 @@ public class NewSolution_Action extends BaseAction {
     final String virtualFolder = event.getData(MPSDataKeys.NAMESPACE);
     final NameLocationPanel cfg = new NameLocationPanel(NewModuleDialog.projectHome(mpsProject), "Solution name:", "Solution file location:");
     cfg.withDefaults("NewSolution", "solutions");
+    final NewModuleCheck mc = new NewModuleCheck().forSolution();
+    mc.withScope(mpsProject.getRepository());
+
     NewModuleDialog<Solution> dialog = new NewModuleDialog<>(mpsProject, cfg);
-    dialog.withCheck(() -> NewModuleUtil.check(mpsProject, MPSExtentions.DOT_SOLUTION, cfg.getModuleName(), cfg.getModuleLocation().getAbsolutePath()));
+    dialog.withCheck(() -> {
+      mc.withName(cfg.getModuleName()).withHome(cfg.getModuleLocation());
+      IStatus s = mc.checkAll();
+      return (s.isOk() ? null : s.getMessage());
+    });
     dialog.withFactory(() -> {
       String moduleName = cfg.getModuleName();
       File moduleLocation = cfg.getModuleLocation();

@@ -2,6 +2,8 @@
 <model ref="r:88063101-bb85-46fe-9808-adf7c6c8b71d(jetbrains.mps.lang.feedback.skeleton.main@generator)">
   <persistence version="9" />
   <languages>
+    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
     <devkit ref="a2eb3a43-fcc2-4200-80dc-c60110c4862d(jetbrains.mps.devkit.templates)" />
   </languages>
   <imports>
@@ -187,6 +189,7 @@
         <child id="1167087469900" name="conditionFunction" index="2VPoh3" />
       </concept>
       <concept id="1167087518662" name="jetbrains.mps.lang.generator.structure.CreateRootRule_Condition" flags="in" index="2VP$b9" />
+      <concept id="5133195082121471908" name="jetbrains.mps.lang.generator.structure.LabelMacro" flags="ln" index="2ZBi8u" />
       <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
       <concept id="1167169308231" name="jetbrains.mps.lang.generator.structure.BaseMappingRule" flags="ng" index="30H$t8">
         <reference id="1167169349424" name="applicableConcept" index="30HIoZ" />
@@ -426,8 +429,8 @@
       </node>
     </node>
     <node concept="2rT7sh" id="5sUTrySNvs8" role="2rTMjI">
-      <property role="TrG5h" value="feedbackDescriptorClass" />
-      <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
+      <property role="TrG5h" value="feedbackDescriptorCons" />
+      <ref role="2rZz_L" to="tpee:fzclF84" resolve="ConstructorDeclaration" />
       <ref role="2rTdP9" to="wff5:6kKc3mjFxo7" resolve="FeedbackPerConceptRoot" />
     </node>
     <node concept="2rT7sh" id="5sUTrySNQg4" role="2rTMjI">
@@ -1042,6 +1045,23 @@
             <node concept="2ShNRf" id="4lnto0oJD6Z" role="37wK5m">
               <node concept="1pGfFk" id="4lnto0oJDvK" role="2ShVmc">
                 <ref role="37wK5l" node="4cGwgqnZxrg" resolve="Generated_FeedbackDescriptor" />
+                <node concept="1ZhdrF" id="4dztdOzx1tW" role="lGtFl">
+                  <property role="2qtEX8" value="baseMethodDeclaration" />
+                  <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
+                  <node concept="3$xsQk" id="4dztdOzx1tX" role="3$ytzL">
+                    <node concept="3clFbS" id="4dztdOzx1tY" role="2VODD2">
+                      <node concept="3clFbF" id="4dztdOzx1Jr" role="3cqZAp">
+                        <node concept="2OqwBi" id="4dztdOzx2q3" role="3clFbG">
+                          <node concept="1iwH7S" id="4dztdOzx1Jq" role="2Oq$k0" />
+                          <node concept="1iwH70" id="4dztdOzx3xf" role="2OqNvi">
+                            <ref role="1iwH77" node="5sUTrySNvs8" resolve="feedbackDescriptorCons" />
+                            <node concept="30H73N" id="4dztdOzx3O2" role="1iwH7V" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
               <node concept="1WS0z7" id="4lnto0oJF0G" role="lGtFl">
                 <node concept="3JmXsc" id="4lnto0oJF0H" role="3Jn$fo">
@@ -1252,6 +1272,9 @@
             <ref role="3cqZAo" node="3uq0yNaWR0_" resolve="CONCEPT" />
           </node>
         </node>
+      </node>
+      <node concept="2ZBi8u" id="4dztdOzx0J2" role="lGtFl">
+        <ref role="2rW$FS" node="5sUTrySNvs8" resolve="feedbackDescriptorCons" />
       </node>
     </node>
     <node concept="2tJIrI" id="68U29HUcxnq" role="jymVt" />

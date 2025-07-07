@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-@GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/3748064186690606395", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
+@GeneratedClass(nodeId = "3748064186690606395", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public interface RefactoringViewItem {
   void close();
   interface RefactoringViewItemEx extends RefactoringViewItem {

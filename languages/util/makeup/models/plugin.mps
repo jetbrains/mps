@@ -67,11 +67,17 @@
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
+      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
+        <reference id="1144433057691" name="classifier" index="1PxDUh" />
+      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -127,6 +133,9 @@
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
+      </concept>
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
@@ -334,11 +343,30 @@
                 <property role="TrG5h" value="localFileSystem" />
                 <property role="3TUv4t" value="true" />
                 <node concept="3uibUv" id="13TYo4F$sPX" role="1tU5fm">
-                  <ref role="3uigEE" to="3ju5:~FileSystem" resolve="FileSystem" />
+                  <ref role="3uigEE" to="3ju5:~IFileSystem" resolve="IFileSystem" />
                 </node>
-                <node concept="2YIFZM" id="13TYo4F$sQ0" role="33vP2m">
-                  <ref role="1Pybhc" to="3ju5:~FileSystem" resolve="FileSystem" />
-                  <ref role="37wK5l" to="3ju5:~FileSystem.getInstance()" resolve="getInstance" />
+                <node concept="2OqwBi" id="6gq1gaFzcvE" role="33vP2m">
+                  <node concept="2OqwBi" id="6gq1gaFzbqX" role="2Oq$k0">
+                    <node concept="2OqwBi" id="6gq1gaFzakO" role="2Oq$k0">
+                      <node concept="2_BwXt" id="6gq1gaFz9XJ" role="2Oq$k0" />
+                      <node concept="liA8E" id="6gq1gaFzb39" role="2OqNvi">
+                        <ref role="37wK5l" to="hfuk:2BjwmTxTf34" resolve="getProject" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="6gq1gaFzbMQ" role="2OqNvi">
+                      <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                      <node concept="3VsKOn" id="6gq1gaFzcaI" role="37wK5m">
+                        <ref role="3VsUkX" to="3ju5:~VFSManager" resolve="VFSManager" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="6gq1gaFzcQu" role="2OqNvi">
+                    <ref role="37wK5l" to="3ju5:~VFSManager.getFileSystem(java.lang.String)" resolve="getFileSystem" />
+                    <node concept="10M0yZ" id="6gq1gaFzduT" role="37wK5m">
+                      <ref role="3cqZAo" to="3ju5:~VFSManager.FILE_FS" resolve="FILE_FS" />
+                      <ref role="1PxDUh" to="3ju5:~VFSManager" resolve="VFSManager" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -834,7 +862,7 @@
                                       <ref role="3cqZAo" node="13TYo4F$sPZ" resolve="localFileSystem" />
                                     </node>
                                     <node concept="liA8E" id="3avV6wmodoL" role="2OqNvi">
-                                      <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
+                                      <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.lang.String)" resolve="getFile" />
                                       <node concept="37vLTw" id="13TYo4F$xoL" role="37wK5m">
                                         <ref role="3cqZAo" node="13TYo4F$q5l" resolve="destination" />
                                       </node>
@@ -988,27 +1016,33 @@
               </node>
             </node>
             <node concept="3clFbH" id="13TYo4F$Ee1" role="3cqZAp" />
-            <node concept="3clFbF" id="13TYo4F$KUD" role="3cqZAp">
-              <node concept="2OqwBi" id="13TYo4F$M6t" role="3clFbG">
-                <node concept="37vLTw" id="13TYo4F$KUB" role="2Oq$k0">
-                  <ref role="3cqZAo" node="13TYo4F$sPZ" resolve="localFileSystem" />
-                </node>
-                <node concept="liA8E" id="13TYo4F$MzG" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~FileSystem.runWriteTransaction(java.lang.Runnable)" resolve="runWriteTransaction" />
-                  <node concept="1bVj0M" id="13TYo4F$W3W" role="37wK5m">
-                    <node concept="3clFbS" id="13TYo4F$W3X" role="1bW5cS">
-                      <node concept="3clFbF" id="13TYo4F$W8N" role="3cqZAp">
-                        <node concept="2OqwBi" id="13TYo4F$Wfd" role="3clFbG">
-                          <node concept="37vLTw" id="13TYo4F$W8M" role="2Oq$k0">
-                            <ref role="3cqZAo" node="3avV6wmoiHA" resolve="fp" />
-                          </node>
-                          <node concept="liA8E" id="13TYo4F$WvF" role="2OqNvi">
-                            <ref role="37wK5l" to="iqmz:3KiLc2_D183" resolve="flushChanges" />
+            <node concept="3clFbF" id="6gq1gaFz2r1" role="3cqZAp">
+              <node concept="2OqwBi" id="6gq1gaFz5Xi" role="3clFbG">
+                <node concept="2ShNRf" id="6gq1gaFz2qX" role="2Oq$k0">
+                  <node concept="1pGfFk" id="6gq1gaFz4Ci" role="2ShVmc">
+                    <property role="373rjd" value="true" />
+                    <ref role="37wK5l" to="3ju5:~WriteTransaction.&lt;init&gt;(jetbrains.mps.vfs.IFileSystem,java.lang.Runnable)" resolve="WriteTransaction" />
+                    <node concept="37vLTw" id="6gq1gaFzeet" role="37wK5m">
+                      <ref role="3cqZAo" node="13TYo4F$sPZ" resolve="localFileSystem" />
+                    </node>
+                    <node concept="1bVj0M" id="13TYo4F$W3W" role="37wK5m">
+                      <node concept="3clFbS" id="13TYo4F$W3X" role="1bW5cS">
+                        <node concept="3clFbF" id="13TYo4F$W8N" role="3cqZAp">
+                          <node concept="2OqwBi" id="13TYo4F$Wfd" role="3clFbG">
+                            <node concept="37vLTw" id="13TYo4F$W8M" role="2Oq$k0">
+                              <ref role="3cqZAo" node="3avV6wmoiHA" resolve="fp" />
+                            </node>
+                            <node concept="liA8E" id="13TYo4F$WvF" role="2OqNvi">
+                              <ref role="37wK5l" to="iqmz:3KiLc2_D183" resolve="flushChanges" />
+                            </node>
                           </node>
                         </node>
                       </node>
                     </node>
                   </node>
+                </node>
+                <node concept="liA8E" id="6gq1gaFz7Pv" role="2OqNvi">
+                  <ref role="37wK5l" to="3ju5:~WriteTransaction.executeAndWait()" resolve="executeAndWait" />
                 </node>
               </node>
             </node>

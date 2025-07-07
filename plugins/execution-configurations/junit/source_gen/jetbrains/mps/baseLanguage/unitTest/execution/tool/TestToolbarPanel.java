@@ -19,6 +19,9 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
+import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.actionSystem.IdeActions;
@@ -28,7 +31,6 @@ import com.intellij.execution.testframework.TestConsoleProperties;
 import com.intellij.util.config.Storage;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.execution.configurations.RunProfile;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.testframework.Filter;
 import com.intellij.execution.testframework.TestTreeView;
 import com.intellij.execution.testframework.ui.AbstractTestTreeBuilderBase;
@@ -132,11 +134,17 @@ public class TestToolbarPanel extends JPanel {
       public boolean isSelected(AnActionEvent p0) {
         return UnitTestOptions.isHidePassed();
       }
+
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
+      }
     };
   }
 
   private ToggleAction cteateTrackRunningAction() {
-    return new ToggleAction("Track Running Test", "Select currently running test in tree", AllIcons.Nodes.Jsf.Renderer) {
+    return new ToggleAction("Track Running Test", "Select currently running test in tree", MPSIcons.Nodes.TrackRunningTests) {
       {
         setSelected(((AnActionEvent) null), UnitTestOptions.isTrackRunning());
       }
@@ -149,6 +157,12 @@ public class TestToolbarPanel extends JPanel {
       @Override
       public boolean isSelected(AnActionEvent event) {
         return UnitTestOptions.isTrackRunning();
+      }
+
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
       }
     };
   }
@@ -167,6 +181,12 @@ public class TestToolbarPanel extends JPanel {
           child = (MPSTreeNode) child.getNextSibling();
         }
       }
+
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
+      }
     };
   }
 
@@ -178,6 +198,12 @@ public class TestToolbarPanel extends JPanel {
       @Override
       public void actionPerformed(AnActionEvent p0) {
         myTree.expandAll();
+      }
+
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
       }
     };
   }
@@ -193,6 +219,12 @@ public class TestToolbarPanel extends JPanel {
           myNavigator.goNextOccurence();
         }
       }
+
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
+      }
     };
   }
 
@@ -206,6 +238,12 @@ public class TestToolbarPanel extends JPanel {
         if (myNavigator.hasPreviousOccurence()) {
           myNavigator.goPreviousOccurence();
         }
+      }
+
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
       }
     };
   }
@@ -224,6 +262,12 @@ public class TestToolbarPanel extends JPanel {
       @Override
       public boolean isSelected(AnActionEvent event) {
         return UnitTestOptions.isSelectFirstFailed();
+      }
+
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
       }
     };
   }

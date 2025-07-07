@@ -17,6 +17,7 @@
 package jetbrains.mps.idea.core.projectView.edit;
 
 import com.intellij.ide.DeleteProvider;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
@@ -39,6 +40,11 @@ public class SingleFileModelDeleteProvider implements DeleteProvider {
 
   public SingleFileModelDeleteProvider(Iterable<MPSPsiModel> models) {
     myModels = models;
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 
   @Override

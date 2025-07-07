@@ -10,12 +10,10 @@ import kotlin.time.Duration.Companion.milliseconds
 @Suppress("UnstableApiUsage")
 class MPSApplicationInitializedListener : ApplicationInitializedListener {
 
-    override suspend fun execute(asyncScope: CoroutineScope) {
-        asyncScope.launch {
-            while (!LoadingState.COMPONENTS_LOADED.isOccurred) {
-                delay(1.milliseconds)
-            }
-            PluginLoaderRegistry.getInstance().signalAppInitialized()
+    override suspend fun execute() {
+        while (!LoadingState.COMPONENTS_LOADED.isOccurred) {
+            delay(1.milliseconds)
         }
+        PluginLoaderRegistry.getInstance().signalAppInitialized()
     }
 }

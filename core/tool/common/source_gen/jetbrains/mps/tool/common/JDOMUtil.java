@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jdom.output.Format;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/8797607015334522630", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
+@GeneratedClass(nodeId = "8797607015334522630", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
 public class JDOMUtil {
   public static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 

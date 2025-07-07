@@ -5,6 +5,8 @@ package jetbrains.mps.kotlin.scopes;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.signatures.MemberSignature;
 import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.kotlin.stubs.platform.TargetPlatform;
 import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
@@ -46,6 +48,23 @@ public interface SignatureFilter {
   boolean acceptSignature(MemberSignature signature, SNode source);
 
   /**
+   * Returns true if the given platform is accepted by the consumer.
+   * 
+   * Unlike other methods, this should be applied in relevant scopes at the root level,
+   * and shouldn't be handled on every scope or concept.
+   * 
+   * In most cases, returns true if the platform is 'common' or null.
+   * 
+   * @param platform specific platform which signatures will use.
+   * @return whether the consumer accepts given signatures
+   */
+  @ApiStatus.Experimental
+  default boolean acceptPlatform(@NotNull TargetPlatform platform) {
+    // Default: doesn't accept platform specific signatures
+    return platform.isCommon();
+  }
+
+  /**
    * Returns true if the attributes given to a signature are deemed valid.
    */
   @ApiStatus.Experimental
@@ -67,6 +86,11 @@ public interface SignatureFilter {
 
     @Override
     public boolean acceptReceiver(SNode type) {
+      return true;
+    }
+
+    @Override
+    public boolean acceptPlatform(TargetPlatform platform) {
       return true;
     }
   };

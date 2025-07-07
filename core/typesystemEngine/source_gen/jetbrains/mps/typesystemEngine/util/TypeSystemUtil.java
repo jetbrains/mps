@@ -8,7 +8,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)/2216760464199540788", model = "r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)")
+@GeneratedClass(nodeId = "2216760464199540788", model = "r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)")
 public class TypeSystemUtil {
   public static boolean shouldApplyTypeSystemRules(SNode node) {
     return !(SNodeOperations.isInstanceOf(node, CONCEPTS.IDontApplyTypesystemRules$LF));

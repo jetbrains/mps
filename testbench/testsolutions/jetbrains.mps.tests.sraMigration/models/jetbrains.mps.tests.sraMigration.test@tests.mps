@@ -5,7 +5,7 @@
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
@@ -1316,7 +1316,7 @@
       <node concept="3Tm6S6" id="7l0SErcZi0B" role="1B3o_S" />
       <node concept="17QB3L" id="7l0SErcZi0F" role="1tU5fm" />
       <node concept="Xl_RD" id="7l0SErcZi2l" role="33vP2m">
-        <property role="Xl_RC" value="testbench/modules/testSmartRefAttrMigration/" />
+        <property role="Xl_RC" value="testbench/projects/testSmartRefAttrMigration/" />
       </node>
     </node>
     <node concept="312cEg" id="7l0SErcZkaN" role="jymVt">

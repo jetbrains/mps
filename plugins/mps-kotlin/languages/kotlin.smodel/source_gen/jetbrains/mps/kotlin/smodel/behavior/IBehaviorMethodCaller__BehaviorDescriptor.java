@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ISequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -30,29 +31,26 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IBehaviorMethodCaller__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xeb56ebf4df56438eL, 0xaf06fc1cd08b495aL, 0x6192a8532884e5a8L, "jetbrains.mps.kotlin.smodel.structure.IBehaviorMethodCaller");
 
-  public static final SMethod<SNode> getConceptType_id28CvMylq0Pm = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConceptType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008640019798L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
+  public static final SMethod<Iterable<SNode>> getConceptTypes_id28CvMylq0Pm = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getConceptTypes").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008640019798L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
   public static final SMethod<Void> populateTypeSignatures_id5q426iHK5S9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateTypeSignatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6234117012692426249L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConceptType_id28CvMylq0Pm, populateTypeSignatures_id5q426iHK5S9);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConceptTypes_id28CvMylq0Pm, populateTypeSignatures_id5q426iHK5S9);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static void populateTypeSignatures_id5q426iHK5S9(@NotNull SNode __thisNode__, SignatureCollector visitor) {
+  /*package*/ static void populateTypeSignatures_id5q426iHK5S9(@NotNull final SNode __thisNode__, SignatureCollector visitor) {
     // In the above code, we add all methods and links at one, as the hierarchy will not visit projection supertypes (node<X> and SNode are the only visited, not node<Y> with X extends Y)
     // It is the opposite behavior of ConceptType, whose super-concepts are visited
-    SNode concept = SLinkOperations.getTarget(IBehaviorMethodCaller__BehaviorDescriptor.getConceptType_id28CvMylq0Pm.invoke(__thisNode__), LINKS.concept$PItp);
-    if (concept == null) {
-      return;
-    }
+    Iterable<SNode> concepts = SLinkOperations.collect(IBehaviorMethodCaller__BehaviorDescriptor.getConceptTypes_id28CvMylq0Pm.invoke(__thisNode__), LINKS.concept$PItp);
 
     // TODO check for visibility (see ConceptBehavior details)*
-    Iterable<SNode> methods = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(concept, __thisNode__)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe)));
+    ISequence<SNode> methods = Sequence.fromIterable(concepts).translate((it) -> (Iterable<SNode>) AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(it, __thisNode__)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe)));
 
     SignatureBuilder.create(methods, ConceptFunctionSignature.class).withSignature((SNode node) -> new ConceptFunctionSignature(node)).declareTo(visitor);
 
     // TODO we only give getter signature as it is not expected to have separate setter, do we?
-    SignatureBuilder.create(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept), LinkSignature.class).withSignatures((SNode it) -> {
+    SignatureBuilder.create(Sequence.fromIterable(concepts).translate((it) -> (List<SNode>) AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(it)), LinkSignature.class).withSignatures((SNode it) -> {
       return (Iterable<LinkSignature>) () -> {
         return new YieldingIterator<LinkSignature>() {
           private int __CP__ = 0;
@@ -86,7 +84,7 @@ __switch__:
       };
     }).declareTo(visitor);
 
-    SignatureBuilder.create(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept), LinkSignature.class).withSignature((SNode it) -> new LinkSignature(it, AccessorKind.GETTER)).declareTo(visitor);
+    SignatureBuilder.create(Sequence.fromIterable(concepts).translate((it) -> (List<SNode>) AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(it)), LinkSignature.class).withSignature((SNode it) -> new LinkSignature(it, AccessorKind.GETTER)).declareTo(visitor);
   }
 
   /*package*/ IBehaviorMethodCaller__BehaviorDescriptor() {

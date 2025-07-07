@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.core.aspects.behaviour.BehaviorRegistryImpl;
 import jetbrains.mps.core.aspects.behaviour.SConceptC3StarMRO;
 import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
@@ -46,7 +47,7 @@ public class ConceptRegistry implements CoreComponent, LanguageRegistryListener 
   private final ConceptPropertiesRegistry myConcPropsRegistry;
   private final BehaviorRegistry myBehaviorRegistry;
   private final ConstraintsRegistry myConstraintsRegistry;
-  private final SConceptC3StarMRO myMRO = new SConceptC3StarMRO();
+  private final SConceptC3StarMRO myMRO = new SConceptC3StarMRO(SNodeUtil.concept_BaseConcept);
 
   // fixme wrong naming
   public ConceptRegistry(@NotNull LanguageRegistry languageRegistry) {

@@ -60,6 +60,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         new testParentStyleStyleClass(this).apply(style, editorCell);
         editorCell.getStyle().putAll(style);
         editorCell.setDefaultText("<no theProperty>");
+
         setCellContext(editorCell);
         editorCell.setCommitInCommand(false);
       }

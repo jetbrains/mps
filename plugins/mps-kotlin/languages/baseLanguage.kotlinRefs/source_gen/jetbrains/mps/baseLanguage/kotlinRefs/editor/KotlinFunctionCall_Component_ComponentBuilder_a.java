@@ -27,6 +27,7 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
@@ -34,9 +35,9 @@ import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 /*package*/ class KotlinFunctionCall_Component_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -78,7 +79,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       editorCell.setDefaultText("<no functionName>");
       editorCell.setCellId("KFCC_property_functionName");
       Style style = new StyleImpl();
-      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.target$7dy6);
+      style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_rare56_a0b0());
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new ReplaceWith_IKotlinFunctionLikeCall_cellMenu_rare56_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
@@ -92,6 +93,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     } finally {
       getCellFactory().popCellContext();
     }
+  }
+  private SNode _StyleParameter_QueryFunction_rare56_a0b0() {
+    return SLinkOperations.getTarget(getNode(), LINKS.target$7dy6);
   }
   public static class ReplaceWith_IKotlinFunctionLikeCall_cellMenu_rare56_a0b0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_IKotlinFunctionLikeCall_cellMenu_rare56_a0b0() {
@@ -113,12 +117,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     /*package*/ static final SProperty functionName$M4b = MetaAdapterFactory.getProperty(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L, 0x17400fc2a35501ffL, "functionName");
   }
 
-  private static final class LINKS {
-    /*package*/ static final SReferenceLink target$7dy6 = MetaAdapterFactory.getReferenceLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L, 0xf8c78301adL, "target");
-  }
-
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
     /*package*/ static final SInterfaceConcept IKotlinFunctionLikeCall$lJ = MetaAdapterFactory.getInterfaceConcept(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L, "jetbrains.mps.baseLanguage.kotlinRefs.structure.IKotlinFunctionLikeCall");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink target$7dy6 = MetaAdapterFactory.getReferenceLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L, 0xf8c78301adL, "target");
   }
 }

@@ -13,6 +13,11 @@
   <loadproperties srcfile="version.properties" description="Load versions of dependencies to download"/>
   <loadproperties srcfile="lib.properties" description="Load destination paths to 3rd party libraries"/>
 
+  <uptodate property="MPSPlugin.upToDate" targetfile="${basedir}/../workbench/mps-workbench/source/META-INF/MPSPlugin.xml">
+    <srcfiles dir="${basedir}/../lib" includes="module-descriptors.xml"/>
+    <srcfiles dir="${basedir}/../workbench/mps-workbench/source/META-INF" includes="MPSPlugin.template.xml"/>
+  </uptodate>
+
   <!-- ===================================================== -->
   <!-- Help and ivy load                        -->
   <!-- ===================================================== -->
@@ -43,9 +48,9 @@
     <condition property="difutill.missing" value="true" else="false">
       <not>
         <and>
-          <available file="${diffutils.lib}"/>
-          <available file="${diffutils.sources}"/>
-          <available file="${diffutils.javadoc}"/>
+          <available file="${java-diff-utils.lib}"/>
+          <available file="${java-diff-utils.sources}"/>
+          <available file="${java-diff-utils.javadoc}"/>
         </and>
       </not>
     </condition>
@@ -76,7 +81,8 @@
       <not>
         <and>
           <!-- Assumes the presence of javadoc and such if the version is correct -->
-          <available file="${kotlin.core.libs}/kotlinx-metadata-jvm-${kotlinx.metadata.version}.jar"/>
+          <available file="${kotlin.core.libs}/kotlin-metadata-jvm-${kotlin.version}.jar"/>
+          <available file="${kotlin.core.libs}/kotlinx-metadata-klib-${kotlinx.metadata.version}.jar"/>
           <available file="${kotlin.core.libs}/kotlin-compiler-client-embeddable-${kotlin.version}.jar"/>
         </and>
       </not>
@@ -95,7 +101,7 @@
     <condition property="kotlinpluginlibs.missing" value="true" else="false">
       <not>
         <and>
-          <available file="${kotlin.lib}/kotlin-stdlib-common-${kotlin.version}.jar"/>
+          <available file="${kotlin.lib}/kotlin-stdlib-all-${kotlin.version}.jar"/>
           <available file="${kotlin.lib}/kotlin-stdlib-${kotlin.version}.jar"/>
           <available file="${kotlin.lib}/kotlin-builtins.jar"/>
         </and>
@@ -215,7 +221,7 @@
   <!-- Download 3rd party libraries                          -->
   <!-- ===================================================== -->
 
-  <target name="install" depends="download-platform,install-platform,download-3rd-party" description="Download all platform libs and sources"/>
+  <target name="install" depends="download-platform,install-platform,download-3rd-party,embed-module-descriptors" description="Download all platform libs and sources"/>
 
   <!-- ===================================================== -->
   <!-- Download libraries with ivy                           -->
@@ -256,6 +262,12 @@
     <chmod file="${basedir}/../bin/win/runnerw.exe" perm="755"/>
     <chmod file="${basedir}/../bin/win/vistalauncher.exe" perm="755"/>
     <chmod file="${basedir}/../bin/win/WinProcessListHelper.exe" perm="755"/>
+  </target>
+
+  <target name="embed-module-descriptors" unless="MPSPlugin.upToDate">
+    <loadfile property="fileContent" srcFile="${basedir}/../lib/module-descriptors.xml"/>
+    <copy overwrite="true" file="${basedir}/../workbench/mps-workbench/source/META-INF/MPSPlugin.template.xml" tofile="${basedir}/../workbench/mps-workbench/source/META-INF/MPSPlugin.xml"/>
+    <replace failOnNoReplacements="true" file="${basedir}/../workbench/mps-workbench/source/META-INF/MPSPlugin.xml" token="@@MODULE_DESCRIPTORS@@" value="${fileContent}"/>
   </target>
 
   <target name="update-licence-info">
@@ -331,7 +343,7 @@
   </target>
 
   <target name="download-diffutils" depends="check-diffutils,install-ivy" if="${difutill.missing}"
-          description="Download com.googlecode.java-diff-utils-diffutils library">
+          description="Download io.github.java-diff-utils library">
     <echo message="DiffUtil library is missing. Downloading..."/>
     <ivy:resolve file="ivyDiffUtils.xml" showprogress="true"/>
     <ivy:retrieve pattern="${basedir}/../lib/ext/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
@@ -418,6 +430,7 @@
 
     <delete dir="${basedir}/../plugins/java" failonerror="false"/>
     <delete dir="${basedir}/../plugins/java-ide-customization" failonerror="false"/>
+    <delete dir="${basedir}/../plugins/json" failonerror="false"/>
     <delete dir="${basedir}/../plugins/copyright" failonerror="false"/>
     <delete dir="${basedir}/../plugins/properties" failonerror="false"/>
     <delete dir="${basedir}/../plugins/properties-resource-bundle-editor" failonerror="false"/>
@@ -430,13 +443,12 @@
     <delete dir="${basedir}/../plugins/github" failonerror="false"/>
     <delete dir="${basedir}/../plugins/ant" failonerror="false"/>
     <delete dir="${basedir}/../plugins/sh" failonerror="false"/>
-    <delete dir="${basedir}/../plugins/vcs-changeReminder" failonerror="false"/>
     <delete dir="${basedir}/../plugins/markdown" failonerror="false"/>
     <delete dir="${basedir}/../plugins/grazie" failonerror="false"/>
     <delete dir="${basedir}/../plugins/space" failonerror="false"/>
     <delete dir="${basedir}/../plugins/platform-images" failonerror="false"/>
     <delete dir="${basedir}/../plugins/laf-macos" failonerror="false"/>
-    <delete dir="${basedir}/../plugins/laf-win10" failonerror="false"/>
+    <delete dir="${basedir}/../plugins/vcs-git-commit-modal" failonerror="false"/>
 
     <delete dir="${basedir}/../build/tools/mac" failonerror="false"/>
 
@@ -454,9 +466,9 @@
 
 
   <target name="clean-diffutils">
-    <delete file="${diffutils.lib}" failonerror="false"/>
-    <delete file="${diffutils.sources}" failonerror="false"/>
-    <delete file="${diffutils.javadoc}" failonerror="false"/>
+    <delete file="${java-diff-utils.lib}" failonerror="false"/>
+    <delete file="${java-diff-utils.sources}" failonerror="false"/>
+    <delete file="${java-diff-utils.javadoc}" failonerror="false"/>
   </target>
 
   <target name="clean-testlib">
@@ -471,7 +483,7 @@
     <delete failonerror="false">
       <fileset dir="${kotlin.core.libs}">
         <!-- Versions not included so it can clear up previous version -->
-        <include name="kotlinx-metadata-jvm-*.jar" />
+        <include name="kotlin-metadata-jvm-*.jar" />
         <include name="kotlin-compiler-client-embeddable-*.jar" />
       </fileset>
     </delete>

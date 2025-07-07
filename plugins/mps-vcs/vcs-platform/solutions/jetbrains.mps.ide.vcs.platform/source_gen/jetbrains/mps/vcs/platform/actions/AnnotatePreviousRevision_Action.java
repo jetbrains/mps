@@ -20,7 +20,7 @@ import jetbrains.mps.vcs.annotate.AnnotationColumn;
 import jetbrains.mps.vcs.history.CommitsGraphNode;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/3282354958926656247", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "3282354958926656247", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class AnnotatePreviousRevision_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.Annotate;
 

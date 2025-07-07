@@ -5,7 +5,7 @@ package jetbrains.mps.execution.api.commands;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
 
-@GeneratedClass(node = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)/889694274152177360", model = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)")
+@GeneratedClass(nodeId = "889694274152177360", model = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)")
 public interface CommandPart {
   List<String> getCommandList();
   int getLength();

@@ -20,7 +20,7 @@ import java.io.IOException;
 import jetbrains.mps.project.persistence.DevkitDescriptorPersistence;
 import jetbrains.mps.project.persistence.GeneratorDescriptorPersistence;
 
-@GeneratedClass(node = "r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)/557142600900539533", model = "r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)")
+@GeneratedClass(nodeId = "557142600900539533", model = "r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)")
 /*package*/ class StandardDescriptorIOProvider implements DescriptorIOProvider {
   private static final Logger LOG = Logger.getLogger(StandardDescriptorIOProvider.class);
 

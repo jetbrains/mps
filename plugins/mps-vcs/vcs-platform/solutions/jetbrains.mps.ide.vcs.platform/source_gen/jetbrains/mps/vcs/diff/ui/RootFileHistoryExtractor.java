@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.HashMap;
 import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/6427926084137231861", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "6427926084137231861", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 /*package*/ final class RootFileHistoryExtractor implements RevisionsExtractor {
   private static final Logger LOG = Logger.getLogger(RootFileHistoryExtractor.class);
   private final SNodeId myRoot;

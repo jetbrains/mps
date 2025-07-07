@@ -19,7 +19,7 @@ public class EnumerationDescriptor_WorkflowPresentation extends EnumerationDescr
   private final EnumerationDescriptor.MemberDescriptor myMember_tabular_0 = new EnumerationDescriptor.MemberDescriptor("tabular", "tabular", 0x3301f82dc7d4d8ffL, "r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/4241665505353448599");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d4d8f5L, 0x3301f82dc7d4d8f6L, 0x3301f82dc7d4d8ffL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_structural_0, myMember_tabular_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_structural_0, myMember_tabular_0);
 
   @Nullable
   @Override

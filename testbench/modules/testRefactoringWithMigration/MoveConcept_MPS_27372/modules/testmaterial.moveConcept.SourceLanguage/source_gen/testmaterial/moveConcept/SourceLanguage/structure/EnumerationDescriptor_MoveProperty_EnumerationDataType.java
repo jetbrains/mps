@@ -20,7 +20,7 @@ public class EnumerationDescriptor_MoveProperty_EnumerationDataType extends Enum
   private final EnumerationDescriptor.MemberDescriptor myMember_third_0 = new EnumerationDescriptor.MemberDescriptor("third", "third", 0x7a8eee67881ee9cfL, "r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/8831258047752890842");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x7a8eee67881ee9caL, 0x7a8eee67881ee9cbL, 0x7a8eee67881ee9ccL, 0x7a8eee67881ee9cfL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_first_0, myMember_second_0, myMember_third_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_first_0, myMember_second_0, myMember_third_0);
 
   @Nullable
   @Override

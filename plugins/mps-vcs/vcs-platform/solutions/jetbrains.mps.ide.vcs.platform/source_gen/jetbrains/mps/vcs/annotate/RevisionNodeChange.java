@@ -30,7 +30,7 @@ import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/5555299221747429994", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "5555299221747429994", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ class RevisionNodeChange {
 
   @NotNull

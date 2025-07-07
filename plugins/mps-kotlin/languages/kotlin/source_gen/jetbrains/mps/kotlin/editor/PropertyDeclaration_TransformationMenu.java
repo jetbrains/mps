@@ -32,7 +32,11 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -64,11 +68,51 @@ public class PropertyDeclaration_TransformationMenu extends TransformationMenuBa
       result.add(new TMP_Action_m048q9_b0());
       result.add(new TMP_Action_m048q9_c0());
       result.add(new TMP_Action_m048q9_d0());
+      result.add(new TMP_Param_m048q9_e0());
+      result.add(new TMP_Action_m048q9_f0());
     }
     return result;
   }
 
   private class TMP_Action_m048q9_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    @Nullable
+    protected TransformationMenuItem createItem(TransformationMenuContext context) {
+      return new Item(context).resetTraceInfo();
+    }
+
+    private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
+      /*package*/ Item(TransformationMenuContext context) {
+        super(context);
+      }
+      /*package*/ Item resetTraceInfo() {
+        updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "644431067875159585"));
+        return this;
+      }
+      @Nullable
+      @Override
+      public String getLabelText(String pattern) {
+        return "lateinit";
+      }
+
+      @Override
+      public void execute(@NotNull String pattern) {
+        SPropertyOperations.assign(_context.getNode(), PROPS.isLateInit$qFSS, true);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "lateinitCell", -1);
+      }
+
+
+
+      public void customize(String pattern, EditorMenuItemStyle style) {
+        EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
+        SAbstractConcept outputConcept = null;
+        EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
+        for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
+          customizer.customize(style, compositeContext);
+        }
+      }
+    }
+  }
+  private class TMP_Action_m048q9_c0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
       return new Item(context).resetTraceInfo();
@@ -106,7 +150,7 @@ public class PropertyDeclaration_TransformationMenu extends TransformationMenuBa
       }
     }
   }
-  private class TMP_Action_m048q9_c0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+  private class TMP_Action_m048q9_d0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
       return new Item(context).resetTraceInfo();
@@ -147,7 +191,71 @@ public class PropertyDeclaration_TransformationMenu extends TransformationMenuBa
       }
     }
   }
-  private class TMP_Action_m048q9_d0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+  private class TMP_Param_m048q9_e0 extends ParameterizedMenuPart<SConcept, TransformationMenuItem, TransformationMenuContext> {
+    /*package*/ TMP_Param_m048q9_e0() {
+      super(new EditorMenuDescriptorBase("parameterized transformation menu part", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "644431067880079952")));
+    }
+    @NotNull
+    @Override
+    protected List<TransformationMenuItem> createItems(SConcept parameter, TransformationMenuContext context) {
+      return new TMP_Action_m048q9_a4a(parameter).createItems(context);
+    }
+
+    @Nullable
+    @Override
+    protected Iterable<? extends SConcept> getParameters(TransformationMenuContext _context) {
+      return ListSequence.fromListAndArray(new ArrayList<>(), CONCEPTS.PublicVisibility$Me, CONCEPTS.InternalVisibility$Xn, CONCEPTS.ProtectedVisibility$XQ, CONCEPTS.PrivateVisibility$WS);
+    }
+
+    private class TMP_Action_m048q9_a4a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+      private final SConcept myParameterObject;
+      public TMP_Action_m048q9_a4a(SConcept parameterObject) {
+        myParameterObject = parameterObject;
+      }
+      @Nullable
+      protected TransformationMenuItem createItem(TransformationMenuContext context) {
+        return new Item(context).resetTraceInfo();
+      }
+
+      private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
+        /*package*/ Item(TransformationMenuContext context) {
+          super(context);
+        }
+        /*package*/ Item resetTraceInfo() {
+          updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "644431067880129757"));
+          return this;
+        }
+        @Nullable
+        @Override
+        public String getLabelText(String pattern) {
+          return SConceptOperations.conceptAlias(myParameterObject) + " set";
+        }
+
+        @Override
+        public void execute(@NotNull String pattern) {
+          SNode setter = SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.setter$C2Xy, null);
+          SLinkOperations.setTarget(setter, LINKS.visibility$vnSV, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(myParameterObject)));
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), setter, SelectionManager.LAST_CELL, -1);
+        }
+
+        @Override
+        public boolean canExecute(@NotNull String pattern) {
+          return (SLinkOperations.getTarget(_context.getNode(), LINKS.setter$C2Xy) == null);
+        }
+
+
+        public void customize(String pattern, EditorMenuItemStyle style) {
+          EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
+          SAbstractConcept outputConcept = null;
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(myParameterObject, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
+          for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
+            customizer.customize(style, compositeContext);
+          }
+        }
+      }
+    }
+  }
+  private class TMP_Action_m048q9_f0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
       return new Item(context).resetTraceInfo();
@@ -169,13 +277,12 @@ public class PropertyDeclaration_TransformationMenu extends TransformationMenuBa
 
       @Override
       public void execute(@NotNull String pattern) {
-        SelectionUtil.selectCell(_context.getEditorContext(), SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.setter$C2Xy, null), SelectionManager.FIRST_EDITABLE_CELL);
+        if ((SLinkOperations.getTarget(_context.getNode(), LINKS.setter$C2Xy) != null)) {
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.setter$C2Xy, null);
+        }
+        SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.setter$C2Xy), SelectionManager.FIRST_EDITABLE_CELL);
       }
 
-      @Override
-      public boolean canExecute(@NotNull String pattern) {
-        return (SLinkOperations.getTarget(_context.getNode(), LINKS.setter$C2Xy) == null);
-      }
 
 
       public void customize(String pattern, EditorMenuItemStyle style) {
@@ -191,14 +298,20 @@ public class PropertyDeclaration_TransformationMenu extends TransformationMenuBa
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyDeclaration$SE = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, "jetbrains.mps.kotlin.structure.PropertyDeclaration");
+    /*package*/ static final SConcept PublicVisibility$Me = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af395L, "jetbrains.mps.kotlin.structure.PublicVisibility");
+    /*package*/ static final SConcept InternalVisibility$Xn = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af397L, "jetbrains.mps.kotlin.structure.InternalVisibility");
+    /*package*/ static final SConcept ProtectedVisibility$XQ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af398L, "jetbrains.mps.kotlin.structure.ProtectedVisibility");
+    /*package*/ static final SConcept PrivateVisibility$WS = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af396L, "jetbrains.mps.kotlin.structure.PrivateVisibility");
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty isLateInit$qFSS = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x298a6a355c5a8ee4L, "isLateInit");
     /*package*/ static final SProperty isOverride$4zN7 = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x441fd2709ed45e6aL, "isOverride");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink getter$C1zs = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x11400bb7908cd0efL, "getter");
     /*package*/ static final SContainmentLink setter$C2Xy = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x11400bb7908cd0f5L, "setter");
+    /*package*/ static final SContainmentLink visibility$vnSV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, 0x631027d1c4c4e040L, "visibility");
   }
 }

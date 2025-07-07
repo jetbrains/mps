@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,12 @@ import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
 
 /**
  * Blank (no-op) implementation of {@link SNodeChangeListener}
+ * @deprecated with default methods in {@link SNodeChangeListener}, there's no use in this class.
+ *
  * @author Artem Tikhomirov
  */
+@SuppressWarnings("RedundantMethodOverride")
+@Deprecated(since = "2025.1", forRemoval = true)
 public abstract class SNodeChangeListenerAdapter implements SNodeChangeListener {
   @Override
   public void propertyChanged(@NotNull SPropertyChangeEvent event) {

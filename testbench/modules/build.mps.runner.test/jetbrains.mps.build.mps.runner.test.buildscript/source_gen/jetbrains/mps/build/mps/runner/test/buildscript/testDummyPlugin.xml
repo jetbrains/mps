@@ -31,9 +31,7 @@
   
   <path id="path.mps.ant.path">
     <pathelement location="${artifacts.mps}/lib/ant/lib/ant-mps.jar" />
-    <fileset dir="${artifacts.IDEA}/lib">
-      <include name="util-8.jar" />
-    </fileset>
+    <pathelement location="${artifacts.IDEA}/lib/util-8.jar" />
   </path>
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
@@ -42,10 +40,6 @@
   
   <target name="assemble" depends="classes, declare-mps-tasks">
     <mkdir dir="${build.layout}/dummy-mps" />
-    <mkdir dir="${build.layout}/dummy-mps/META-INF" />
-    <copy todir="${build.layout}/dummy-mps/META-INF">
-      <fileset file="${basedir}/jetbrains.mps.build.mps.runner.test.buildscript/source_gen/jetbrains/mps/build/mps/runner/test/data/plugin.xml" />
-    </copy>
     <mkdir dir="${build.layout}/dummy-mps/lib" />
     <jar destfile="${build.layout}/dummy-mps/lib/dummy-mps.jar" duplicate="preserve">
       <zipfileset file="${basedir}/jetbrains.mps.build.mps.runner.test.buildscript/source_gen/jetbrains/mps/build/mps/runner/test/data/plugin.xml" prefix="META-INF" />

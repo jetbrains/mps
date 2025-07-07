@@ -14,7 +14,6 @@ import com.intellij.execution.ExecutionException;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 
@@ -64,11 +63,7 @@ public final class TestsWithParameters {
         ListSequence.fromList(testsToSkip).addElement(test);
       }
     }
-    String skipped = IterableUtils.join(ListSequence.fromList(testsToSkip).select(new _FunctionTypes._return_P1_E0<String, ITestNodeWrapper>() {
-      public String invoke(ITestNodeWrapper it) {
-        return it.getName();
-      }
-    }), " ");
+    String skipped = IterableUtils.join(ListSequence.fromList(testsToSkip).select((it) -> it.getName()), " ");
     if ((skipped != null && skipped.length() > 0)) {
       if (LOG.isWarningLevel()) {
         LOG.warning("All tests could not be executed together. Skipped: " + skipped);

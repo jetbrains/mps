@@ -47,6 +47,10 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
+        <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
+        <reference id="1144432896254" name="enumClass" index="1Px2BO" />
+      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
@@ -527,6 +531,28 @@
       <node concept="3cqZAl" id="6P_LPfESKzM" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="1or34_f2j7T" role="jymVt" />
+    <node concept="3clFb_" id="yAgQsnw2Ev" role="jymVt">
+      <property role="TrG5h" value="getActionUpdateThread" />
+      <node concept="3Tm1VV" id="yAgQsnw2Ew" role="1B3o_S" />
+      <node concept="2AHcQZ" id="yAgQsnw2Ey" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="3uibUv" id="yAgQsnw2Ez" role="3clF45">
+        <ref role="3uigEE" to="qkt:~ActionUpdateThread" resolve="ActionUpdateThread" />
+      </node>
+      <node concept="3clFbS" id="yAgQsnw2E_" role="3clF47">
+        <node concept="3clFbF" id="yAgQsnw6LB" role="3cqZAp">
+          <node concept="Rm8GO" id="yAgQsnw7k8" role="3clFbG">
+            <ref role="Rm8GQ" to="qkt:~ActionUpdateThread.BGT" resolve="BGT" />
+            <ref role="1Px2BO" to="qkt:~ActionUpdateThread" resolve="ActionUpdateThread" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="yAgQsnw2EA" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="yAgQsnw1Dg" role="jymVt" />
     <node concept="3clFb_" id="1or34_f2jO3" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="update" />
@@ -548,17 +574,45 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="yAgQsnv_wu" role="3cqZAp">
+          <node concept="3cpWsn" id="yAgQsnv_wv" role="3cpWs9">
+            <property role="TrG5h" value="presentation" />
+            <node concept="3uibUv" id="yAgQsnvsRf" role="1tU5fm">
+              <ref role="3uigEE" to="qkt:~Presentation" resolve="Presentation" />
+            </node>
+            <node concept="2OqwBi" id="yAgQsnv_ww" role="33vP2m">
+              <node concept="37vLTw" id="yAgQsnv_wx" role="2Oq$k0">
+                <ref role="3cqZAo" node="1or34_f2jO7" resolve="event" />
+              </node>
+              <node concept="liA8E" id="yAgQsnv_wy" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2VpW0qBd2GP" role="3cqZAp">
+          <node concept="2OqwBi" id="2VpW0qBd3vM" role="3clFbG">
+            <node concept="37vLTw" id="2VpW0qBd2GN" role="2Oq$k0">
+              <ref role="3cqZAo" node="yAgQsnv_wv" resolve="presentation" />
+            </node>
+            <node concept="liA8E" id="2VpW0qBd6b9" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~Presentation.putClientProperty(com.intellij.openapi.util.Key,java.lang.Object)" resolve="putClientProperty" />
+              <node concept="10M0yZ" id="2VpW0qBd9bb" role="37wK5m">
+                <ref role="3cqZAo" to="8rsk:~ActionUtil.ALWAYS_VISIBLE_GROUP" resolve="ALWAYS_VISIBLE_GROUP" />
+                <ref role="1PxDUh" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+              </node>
+              <node concept="3clFbT" id="2VpW0qBdbtj" role="37wK5m">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="BmcO$nDCKQ" role="3cqZAp">
           <node concept="3clFbS" id="BmcO$nDCKT" role="3clFbx">
             <node concept="3clFbF" id="BmcO$nDDcO" role="3cqZAp">
               <node concept="2OqwBi" id="BmcO$nDDcP" role="3clFbG">
-                <node concept="2OqwBi" id="BmcO$nDDcQ" role="2Oq$k0">
-                  <node concept="37vLTw" id="BmcO$nDDcR" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1or34_f2jO7" resolve="event" />
-                  </node>
-                  <node concept="liA8E" id="BmcO$nDDcS" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
-                  </node>
+                <node concept="37vLTw" id="yAgQsnv_w$" role="2Oq$k0">
+                  <ref role="3cqZAo" node="yAgQsnv_wv" resolve="presentation" />
                 </node>
                 <node concept="liA8E" id="BmcO$nDDcT" role="2OqNvi">
                   <ref role="37wK5l" to="qkt:~Presentation.setIcon(javax.swing.Icon)" resolve="setIcon" />
@@ -578,24 +632,15 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="BmcO$nDDcX" role="3cqZAp">
-              <node concept="2OqwBi" id="BmcO$nDDcY" role="3clFbG">
-                <node concept="2OqwBi" id="BmcO$nDDcZ" role="2Oq$k0">
-                  <node concept="37vLTw" id="BmcO$nDDd0" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1or34_f2jO7" resolve="event" />
-                  </node>
-                  <node concept="liA8E" id="BmcO$nDDd1" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
-                  </node>
+            <node concept="3clFbF" id="yAgQsnvOmI" role="3cqZAp">
+              <node concept="2YIFZM" id="yAgQsnvOOg" role="3clFbG">
+                <ref role="37wK5l" to="qkt:~Toggleable.setSelected(com.intellij.openapi.actionSystem.Presentation,boolean)" resolve="setSelected" />
+                <ref role="1Pybhc" to="qkt:~Toggleable" resolve="Toggleable" />
+                <node concept="37vLTw" id="yAgQsnvQkC" role="37wK5m">
+                  <ref role="3cqZAo" node="yAgQsnv_wv" resolve="presentation" />
                 </node>
-                <node concept="liA8E" id="BmcO$nDDd2" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:~Presentation.putClientProperty(java.lang.String,java.lang.Object)" resolve="putClientProperty" />
-                  <node concept="37vLTw" id="BmcO$nDDd5" role="37wK5m">
-                    <ref role="3cqZAo" to="qkt:~Toggleable.SELECTED_PROPERTY" resolve="SELECTED_PROPERTY" />
-                  </node>
-                  <node concept="3clFbT" id="BmcO$nDDd3" role="37wK5m">
-                    <property role="3clFbU" value="true" />
-                  </node>
+                <node concept="3clFbT" id="yAgQsnvSyK" role="37wK5m">
+                  <property role="3clFbU" value="true" />
                 </node>
               </node>
             </node>
@@ -610,13 +655,8 @@
             <node concept="3clFbS" id="BmcO$nDUPm" role="9aQI4">
               <node concept="3clFbF" id="BmcO$nz_pO" role="3cqZAp">
                 <node concept="2OqwBi" id="BmcO$nz_pP" role="3clFbG">
-                  <node concept="2OqwBi" id="BmcO$nz_pQ" role="2Oq$k0">
-                    <node concept="37vLTw" id="BmcO$nz_pR" role="2Oq$k0">
-                      <ref role="3cqZAo" node="1or34_f2jO7" resolve="event" />
-                    </node>
-                    <node concept="liA8E" id="BmcO$nz_pS" role="2OqNvi">
-                      <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
-                    </node>
+                  <node concept="37vLTw" id="yAgQsnv_w_" role="2Oq$k0">
+                    <ref role="3cqZAo" node="yAgQsnv_wv" resolve="presentation" />
                   </node>
                   <node concept="liA8E" id="BmcO$nz_pT" role="2OqNvi">
                     <ref role="37wK5l" to="qkt:~Presentation.setIcon(javax.swing.Icon)" resolve="setIcon" />
@@ -631,23 +671,14 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbF" id="BmcO$nz_q2" role="3cqZAp">
-                <node concept="2OqwBi" id="BmcO$nz_q3" role="3clFbG">
-                  <node concept="2OqwBi" id="BmcO$nz_q4" role="2Oq$k0">
-                    <node concept="37vLTw" id="BmcO$nz_q5" role="2Oq$k0">
-                      <ref role="3cqZAo" node="1or34_f2jO7" resolve="event" />
-                    </node>
-                    <node concept="liA8E" id="BmcO$nz_q6" role="2OqNvi">
-                      <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
-                    </node>
+              <node concept="3clFbF" id="yAgQsnvTPK" role="3cqZAp">
+                <node concept="2YIFZM" id="yAgQsnvTPL" role="3clFbG">
+                  <ref role="37wK5l" to="qkt:~Toggleable.setSelected(com.intellij.openapi.actionSystem.Presentation,boolean)" resolve="setSelected" />
+                  <ref role="1Pybhc" to="qkt:~Toggleable" resolve="Toggleable" />
+                  <node concept="37vLTw" id="yAgQsnvTPM" role="37wK5m">
+                    <ref role="3cqZAo" node="yAgQsnv_wv" resolve="presentation" />
                   </node>
-                  <node concept="liA8E" id="BmcO$nz_q7" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~Presentation.putClientProperty(java.lang.String,java.lang.Object)" resolve="putClientProperty" />
-                    <node concept="37vLTw" id="BmcO$nz_qb" role="37wK5m">
-                      <ref role="3cqZAo" to="qkt:~Toggleable.SELECTED_PROPERTY" resolve="SELECTED_PROPERTY" />
-                    </node>
-                    <node concept="3clFbT" id="BmcO$nz_q9" role="37wK5m" />
-                  </node>
+                  <node concept="3clFbT" id="yAgQsnw0LB" role="37wK5m" />
                 </node>
               </node>
             </node>
@@ -688,9 +719,6 @@
     </node>
     <node concept="3uibUv" id="6KNGF9gTZh" role="EKbjA">
       <ref role="3uigEE" to="qkt:~Toggleable" resolve="Toggleable" />
-    </node>
-    <node concept="3uibUv" id="6P_LPfEVTGE" role="EKbjA">
-      <ref role="3uigEE" to="qkt:~AlwaysVisibleActionGroup" resolve="AlwaysVisibleActionGroup" />
     </node>
   </node>
   <node concept="312cEu" id="6KNGF9gTZi">

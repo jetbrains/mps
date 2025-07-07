@@ -14,6 +14,8 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.smodel.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.SNodeImplAccess;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.DefaultSModel;
 import org.jetbrains.annotations.Nullable;
@@ -24,7 +26,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
  * Merge model has to be EditableSModel for now (there's otherwise dubious use of isChanged status),
  * however, rest of the EditableSModel API is superfluous for the merge model.
  */
-@GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/1549936565245931290", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
+@GeneratedClass(nodeId = "1549936565245931290", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
 public final class MergeTemporaryModel extends EditableModelDescriptor implements PersistenceVersionAware, EditableSModel, GeneratableSModel {
   private final boolean myReadOnly;
 
@@ -45,6 +47,11 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
     // TODO generalize merge for any SModel
     jetbrains.mps.smodel.SModel resModel = CopyUtil.copyModel(((SModelBase) origin).getSModel());
     rv.replace(new ModelLoadResult<jetbrains.mps.smodel.SModel>(resModel, ModelLoadingState.FULLY_LOADED));
+    // FIXME CopyUtil replaces all LocalNodePtr with IndirectNodePtr, and subsequent change of model references doesn't update these IndirectNodePtr, making them point to another model.
+    //      here, sort of hack to ensure IndirectNodePtr for the same model get replaced back with LocalNodePtr
+    for (SNode root : resModel.getRootNodes()) {
+      new SNodeImplAccess(root).rerouteAssociationDeep(rv.getReference(), rv.getReference());
+    }
     return rv;
   }
 
@@ -65,11 +72,6 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
   }
 
   @Override
-  public void rename(String newModelName, boolean changeFile) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public boolean isReadOnly() {
     return myReadOnly;
   }
@@ -77,15 +79,6 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
   @Override
   public void reloadFromSource() {
     throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public void updateTimestamp() {
-    // no-op
-  }
-  @Override
-  public boolean needsReloading() {
-    return false;
   }
 
   public void setPersistenceVersion(int version) {

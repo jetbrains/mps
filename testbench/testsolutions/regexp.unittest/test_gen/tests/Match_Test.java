@@ -23,7 +23,7 @@ public class Match_Test {
   @Test
   public void test_split() throws Exception {
     List<String> list = RegexpOperations.split("abc, def, xxyyy", REGEXP4);
-    Assert.assertEquals(list.size(), 3);
+    Assert.assertEquals(Integer.valueOf(list.size()), Integer.valueOf(3));
     Assert.assertEquals("abc", list.get(0));
     Assert.assertEquals("def", list.get(1));
     Assert.assertEquals("xxyyy", list.get(2));

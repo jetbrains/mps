@@ -7,7 +7,7 @@ import com.intellij.openapi.actionSystem.ToggleAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
-@GeneratedClass(node = "r:b522c221-948b-4fac-886a-2badf29b5fb4(jetbrains.mps.ide.hierarchy.toggle)/5797068448049410625", model = "r:b522c221-948b-4fac-886a-2badf29b5fb4(jetbrains.mps.ide.hierarchy.toggle)")
+@GeneratedClass(nodeId = "5797068448049410625", model = "r:b522c221-948b-4fac-886a-2badf29b5fb4(jetbrains.mps.ide.hierarchy.toggle)")
 public abstract class GroupedToggleAction extends ToggleAction {
   private boolean mySelected = false;
   private ToggleActionGroup myGroup = null;

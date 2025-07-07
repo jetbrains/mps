@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 /**
  * Looking on other checker's output errors and intercepting them
  */
-@GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/4829978961957196678", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
+@GeneratedClass(nodeId = "4829978961957196678", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public interface ICheckingPostprocessor<I extends IssueKindReportItem> {
 
   void postProcess(SRepository repository, ProgressMonitor monitor, CheckingSession<? super I> checkingSession);

@@ -14,7 +14,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.FileStatus;
-import com.intellij.openapi.vcs.impl.VcsFileStatusProvider;
+import com.intellij.openapi.vcs.FileStatusManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.MPSProject;
@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 
-@GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035919781", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
+@GeneratedClass(nodeId = "7545884443035919781", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.Diff;
 
@@ -50,7 +50,7 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
 
     final Project ideaProject = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject();
     if (ProjectLevelVcsManager.getInstance(ideaProject).getVcsFor(virtualFile) != null) {
-      FileStatus fileStatus = VcsFileStatusProvider.getInstance(ideaProject).getFileStatus(virtualFile);
+      FileStatus fileStatus = FileStatusManager.getInstance(ideaProject).getStatus(virtualFile);
       return FileStatus.ADDED != fileStatus && FileStatus.UNKNOWN != fileStatus;
     }
     return false;

@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.FastNodeFinderManager;
  * @author Artem Tikhomirov
  * @since 2020.3
  */
-@GeneratedClass(node = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)/7654095791599162719", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
+@GeneratedClass(nodeId = "7654095791599162719", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
 public final class InstanceLookup {
   private final Collection<SAbstractConcept> myToLookUp;
   private final Consumer<SNode> myConsumer;

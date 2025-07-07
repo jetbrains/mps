@@ -5,8 +5,10 @@ package jetbrains.mps.transformation.test.inputLang.generator.outputLang.templat
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.runtime.TemplateMappingScript;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.smodel.SNodePointer;
 
@@ -26,8 +28,10 @@ public class Script_test_postMappingScript implements TemplateMappingScript {
   public int getKind() {
     return POSTPROCESS;
   }
-  public void apply(SModel model, TemplateExecutionEnvironment env) {
-    QueriesGenerated.mappingScript_CodeBlock_4(new MappingScriptContext(model, getScriptNode(), env));
+
+  @Override
+  public void apply(@NotNull SModel model, @NotNull TemplateContext templateContext) throws GenerationFailureException {
+    QueriesGenerated.mappingScript_CodeBlock_4(new MappingScriptContext(model, getScriptNode(), templateContext));
   }
   private static final SNodePointer mappingScriptNode = new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195510384868");
 }

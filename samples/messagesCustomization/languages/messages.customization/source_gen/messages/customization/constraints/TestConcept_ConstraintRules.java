@@ -165,7 +165,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       if (!(isDefined(context))) {
         return null;
       }
-      return (SNode) SNodeOperations.cast(SNodeOperations.getContainingRoot(context.getParentNode()), CONCEPTS.INamedConcept$Kd);
+      return (SNode) ListSequence.fromList(SNodeOperations.getNodeAncestors(context.getParentNode(), CONCEPTS.INamedConcept$Kd, true)).last();
     }
 
     public static boolean isDefined(@NotNull ContainmentContext context) {

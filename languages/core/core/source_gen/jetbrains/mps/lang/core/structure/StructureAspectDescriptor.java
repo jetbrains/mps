@@ -21,6 +21,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBaseConcept = createDescriptorForBaseConcept();
   /*package*/ final ConceptDescriptor myConceptBasePlaceholder = createDescriptorForBasePlaceholder();
   /*package*/ final ConceptDescriptor myConceptChildAttribute = createDescriptorForChildAttribute();
+  /*package*/ final ConceptDescriptor myConceptDocumentationContent = createDescriptorForDocumentationContent();
   /*package*/ final ConceptDescriptor myConceptIAntisuppressErrors = createDescriptorForIAntisuppressErrors();
   /*package*/ final ConceptDescriptor myConceptICanSuppressErrors = createDescriptorForICanSuppressErrors();
   /*package*/ final ConceptDescriptor myConceptICommentedOutFromScope = createDescriptorForICommentedOutFromScope();
@@ -71,7 +72,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAttribute, myConceptBaseCommentAttribute, myConceptBaseConcept, myConceptBasePlaceholder, myConceptChildAttribute, myConceptIAntisuppressErrors, myConceptICanSuppressErrors, myConceptICommentedOutFromScope, myConceptIContainer, myConceptIDeprecatable, myConceptIDontApplyTypesystemRules, myConceptIDontSubstituteByDefault, myConceptIGenericComment, myConceptIMetaLevelChanger, myConceptINamedConcept, myConceptIOldCommentContainer, myConceptIPlaceholderContent, myConceptIResolveInfo, myConceptISkipConstraintsChecking, myConceptISmartReferent, myConceptIStubForAnotherConcept, myConceptISuppressErrors, myConceptIType, myConceptIWrapper, myConceptImplementationContainer, myConceptImplementationPart, myConceptImplementationWithStubPart, myConceptInterfacePart, myConceptLinkAttribute, myConceptMigrationAnnotation, myConceptMigrationAnnotation_old, myConceptMigrationDataAnnotation, myConceptNodeAttribute, myConceptPropertyAttribute, myConceptReviewMigration, myConceptReviewMigration_old, myConceptScopeFacade, myConceptScopeProvider, myConceptSideTransformInfo, myConceptSuppressErrorsAnnotation, myConceptTypeAnnotated);
+    return Arrays.asList(myConceptAttribute, myConceptBaseCommentAttribute, myConceptBaseConcept, myConceptBasePlaceholder, myConceptChildAttribute, myConceptDocumentationContent, myConceptIAntisuppressErrors, myConceptICanSuppressErrors, myConceptICommentedOutFromScope, myConceptIContainer, myConceptIDeprecatable, myConceptIDontApplyTypesystemRules, myConceptIDontSubstituteByDefault, myConceptIGenericComment, myConceptIMetaLevelChanger, myConceptINamedConcept, myConceptIOldCommentContainer, myConceptIPlaceholderContent, myConceptIResolveInfo, myConceptISkipConstraintsChecking, myConceptISmartReferent, myConceptIStubForAnotherConcept, myConceptISuppressErrors, myConceptIType, myConceptIWrapper, myConceptImplementationContainer, myConceptImplementationPart, myConceptImplementationWithStubPart, myConceptInterfacePart, myConceptLinkAttribute, myConceptMigrationAnnotation, myConceptMigrationAnnotation_old, myConceptMigrationDataAnnotation, myConceptNodeAttribute, myConceptPropertyAttribute, myConceptReviewMigration, myConceptReviewMigration_old, myConceptScopeFacade, myConceptScopeProvider, myConceptSideTransformInfo, myConceptSuppressErrorsAnnotation, myConceptTypeAnnotated);
   }
 
   @Override
@@ -88,6 +89,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptBasePlaceholder;
       case LanguageConceptSwitch.ChildAttribute:
         return myConceptChildAttribute;
+      case LanguageConceptSwitch.DocumentationContent:
+        return myConceptDocumentationContent;
       case LanguageConceptSwitch.IAntisuppressErrors:
         return myConceptIAntisuppressErrors;
       case LanguageConceptSwitch.ICanSuppressErrors:
@@ -226,6 +229,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.property("role_DebugInfo", 0x9d98713f249b585L).type(PrimitiveTypeId.STRING).origin("709746936026609029").done();
     b.property("linkId", 0x9d98713f249b587L).type(PrimitiveTypeId.STRING).origin("709746936026609031").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForDocumentationContent() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.core", "DocumentationContent", 0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x270e002425f43123L);
+    b.interface_();
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x38518aff8a105fd6L);
+    b.origin("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/2814186972408721699");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForIAntisuppressErrors() {

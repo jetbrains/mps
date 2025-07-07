@@ -4,6 +4,7 @@
   <languages>
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
+    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="6" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -183,6 +184,7 @@
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
+      <concept id="1173122760281" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorsOperation" flags="nn" index="z$bX8" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
@@ -232,6 +234,7 @@
         <child id="540871147943773366" name="argument" index="25WWJ7" />
       </concept>
       <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
+      <concept id="1165525191778" name="jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation" flags="nn" index="1uHKPH" />
     </language>
   </registry>
   <node concept="1M2fIO" id="hX1g4Ed">
@@ -910,6 +913,34 @@
               <node concept="37vLTw" id="1RWKWpMUtSn" role="37wK5m">
                 <ref role="3cqZAo" node="1RWKWpMUp3h" resolve="container" />
               </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="4URE8v9f6fh">
+    <property role="3GE5qa" value="operation" />
+    <ref role="1M2myG" to="2omo:4URE8v98gJD" resolve="BinaryWriteOperation" />
+    <node concept="9S07l" id="4URE8v9f6gY" role="9Vyp8">
+      <node concept="3clFbS" id="4URE8v9f6gZ" role="2VODD2">
+        <node concept="3clFbF" id="4URE8v9f6wo" role="3cqZAp">
+          <node concept="2OqwBi" id="4URE8v9fnbO" role="3clFbG">
+            <node concept="2OqwBi" id="4URE8v9fgTe" role="2Oq$k0">
+              <node concept="2OqwBi" id="4URE8v9f6Fe" role="2Oq$k0">
+                <node concept="nLn13" id="4URE8v9f6wn" role="2Oq$k0" />
+                <node concept="z$bX8" id="4URE8v9f6Qa" role="2OqNvi">
+                  <node concept="1xMEDy" id="4URE8v9facu" role="1xVPHs">
+                    <node concept="chp4Y" id="4URE8v9fbzT" role="ri$Ld">
+                      <ref role="cht4Q" to="2omo:hX1bSug" resolve="GenerateTextDeclaration" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1uHKPH" id="4URE8v9fmvJ" role="2OqNvi" />
+            </node>
+            <node concept="3TrcHB" id="4URE8v9fnCr" role="2OqNvi">
+              <ref role="3TsBF5" to="2omo:mnd_T6VhrG" resolve="binaryOutput" />
             </node>
           </node>
         </node>

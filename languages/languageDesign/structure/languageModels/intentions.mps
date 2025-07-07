@@ -10,7 +10,7 @@
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -1370,10 +1370,10 @@
         <node concept="3cpWs6" id="6OtXG9KaFjH" role="3cqZAp">
           <node concept="3K4zz7" id="6OtXG9KaGic" role="3cqZAk">
             <node concept="Xl_RD" id="6OtXG9KaGBj" role="3K4GZi">
-              <property role="Xl_RC" value="Remove Doc Annotation" />
+              <property role="Xl_RC" value="Remove Simple Doc Annotation" />
             </node>
             <node concept="Xl_RD" id="6OtXG9KaFu5" role="3K4E3e">
-              <property role="Xl_RC" value="Document" />
+              <property role="Xl_RC" value="Add Simple Doc Annotation" />
             </node>
             <node concept="2OqwBi" id="6OtXG9Kbux5" role="3K4Cdx">
               <node concept="2OqwBi" id="6OtXG9Kav13" role="2Oq$k0">

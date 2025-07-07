@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="22z9kqnypi3z6ogbb5f9wyjcs1m00qg">
+<product version="3" modelHash="-ektwmvl6gd648dv3heiwj3dyddi49rr">
   <files names="CoreWorker.java:MpsWorkerTest.java:WorkerBase.java:WorkerHelper.java:WorkerMessageHandler.java" />
 </product>
 

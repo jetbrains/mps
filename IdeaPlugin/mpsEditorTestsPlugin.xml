@@ -15,19 +15,6 @@
   
   <target name="assemble" depends="classes, declare-mps-tasks, fetchDependencies">
     <mkdir dir="${build.layout}/mps.editor.tests" />
-    <mkdir dir="${build.layout}/mps.editor.tests/META-INF" />
-    <echoxml file="${build.layout}/mps.editor.tests/META-INF/plugin.xml">
-      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
-        <id>jetbrains.mps.lang.editor.tests</id>
-        <name>jetbrains.mps.lang.editor.tests</name>
-        <version>${mpsBootstrapCore.version}</version>
-        <depends>jetbrains.mps.core</depends>
-        
-        <extensions defaultExtensionNs="com.intellij">
-          <mps.LanguageLibrary dir="/languages" />
-        </extensions>
-      </idea-plugin>
-    </echoxml>
     <mkdir dir="${build.layout}/mps.editor.tests/lib" />
     <mkdir dir="${build.tmp}/default/mps.editor.tests.jar" />
     <mkdir dir="${build.tmp}/default/mps.editor.tests.jar/META-INF" />
@@ -36,6 +23,7 @@
         <id>jetbrains.mps.lang.editor.tests</id>
         <name>jetbrains.mps.lang.editor.tests</name>
         <version>${mpsBootstrapCore.version}</version>
+        <depends>com.intellij.modules.platform</depends>
         <depends>jetbrains.mps.core</depends>
         
         <extensions defaultExtensionNs="com.intellij">

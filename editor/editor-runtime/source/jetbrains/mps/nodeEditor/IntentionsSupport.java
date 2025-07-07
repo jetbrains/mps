@@ -64,10 +64,13 @@ import java.util.concurrent.atomic.AtomicReference;
 public class IntentionsSupport {
   private static final long INTENTION_SHOW_DELAY = 1000;
 
-  // MPS-extensions tries to modify this field (and myLightBulb) through reflection
-  private final AbstractAction myShowIntentionsAction;
+  // MPS-extensions tries to modify this field through reflection
+  //  we are making it temporary nonfinal till re-writing com.mbeddr.mpsutil.intentions.runtime.plugin
+  private AbstractAction myShowIntentionsAction;
   private final Point myLightBulbLocation = new Point();
-  private final LightBulbMenu myLightBulb;
+  // MPS-extensions tries to modify this field through reflection
+  //  we are making it temporary nonfinal till re-writing com.mbeddr.mpsutil.intentions.runtime.plugin
+  private LightBulbMenu myLightBulb;
 
   private final AtomicReference<IntentionsThread> myShowIntentionsThread = new AtomicReference<>();
 

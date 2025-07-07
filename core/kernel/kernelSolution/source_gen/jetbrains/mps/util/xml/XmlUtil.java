@@ -8,7 +8,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import java.util.List;
 
-@GeneratedClass(node = "r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)/4876847581624854372", model = "r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)")
+@GeneratedClass(nodeId = "4876847581624854372", model = "r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)")
 public class XmlUtil {
   private XmlUtil() {
   }

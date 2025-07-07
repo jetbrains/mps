@@ -18,8 +18,10 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
+import jetbrains.mps.generator.runtime.PatternMatch;
 import jetbrains.mps.generator.template.PatternRuleContext;
+import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -118,65 +120,120 @@ public class QueriesGenerated {
     SNode mainContextNode = _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.CustomRoot$QF, false, false), "rootcustom");
     return SLinkOperations.getTarget(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(mainContextNode)).first(), LINKS.body$5xQk);
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_0(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0db(_quotation_createNode_x583g4_a0a0a0db());
+  public static PatternMatch patternRule_Condition_0_0(final PatternRuleContext _context) {
+    final GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0db(_quotation_createNode_x583g4_a0a0a0db());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
-    _context.createPatternContext(pattern);
-    if (!(rule_Condition_0_2(_context))) {
+    PatternMatch rv = new PatternMatch() {
+      @Nullable
+      @Override
+      public Object getValue(String name) {
+        return pattern.getFieldValue(name);
+      }
+    };
+    if (!(rule_Condition_0_2(_context.withValues(rv)))) {
       return null;
     }
-    return pattern;
+    return rv;
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_1(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0eb(_quotation_createNode_x583g4_a0a0a0eb());
+  public static PatternMatch patternRule_Condition_0_1(final PatternRuleContext _context) {
+    final GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0eb(_quotation_createNode_x583g4_a0a0a0eb());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
-    return pattern;
+    PatternMatch rv = new PatternMatch() {
+      @Nullable
+      @Override
+      public Object getValue(String name) {
+        return pattern.getFieldValue(name);
+      }
+    };
+    return rv;
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_2(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0fb(_quotation_createNode_x583g4_a0a0a0fb());
+  public static PatternMatch patternRule_Condition_0_2(final PatternRuleContext _context) {
+    final GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0fb(_quotation_createNode_x583g4_a0a0a0fb());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
-    return pattern;
+    PatternMatch rv = new PatternMatch() {
+      @Nullable
+      @Override
+      public Object getValue(String name) {
+        return pattern.getFieldValue(name);
+      }
+    };
+    return rv;
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_3(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0gb(_quotation_createNode_x583g4_a0a0a0gb());
+  public static PatternMatch patternRule_Condition_0_3(final PatternRuleContext _context) {
+    final GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0gb(_quotation_createNode_x583g4_a0a0a0gb());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
-    return pattern;
+    PatternMatch rv = new PatternMatch() {
+      @Nullable
+      @Override
+      public Object getValue(String name) {
+        return pattern.getFieldValue(name);
+      }
+    };
+    return rv;
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_4(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0hb(_quotation_createNode_x583g4_a0a0a0hb());
+  public static PatternMatch patternRule_Condition_0_4(final PatternRuleContext _context) {
+    final GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0hb(_quotation_createNode_x583g4_a0a0a0hb());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
-    return pattern;
+    PatternMatch rv = new PatternMatch() {
+      @Nullable
+      @Override
+      public Object getValue(String name) {
+        return pattern.getFieldValue(name);
+      }
+    };
+    return rv;
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_5(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0ib(_quotation_createNode_x583g4_a0a0a0ib());
+  public static PatternMatch patternRule_Condition_0_5(final PatternRuleContext _context) {
+    final GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0ib(_quotation_createNode_x583g4_a0a0a0ib());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
-    return pattern;
+    PatternMatch rv = new PatternMatch() {
+      @Nullable
+      @Override
+      public Object getValue(String name) {
+        return pattern.getFieldValue(name);
+      }
+    };
+    return rv;
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_6(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0jb(_quotation_createNode_x583g4_a0a0a0jb());
+  public static PatternMatch patternRule_Condition_0_6(final PatternRuleContext _context) {
+    final GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0jb(_quotation_createNode_x583g4_a0a0a0jb());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
-    return pattern;
+    PatternMatch rv = new PatternMatch() {
+      @Nullable
+      @Override
+      public Object getValue(String name) {
+        return pattern.getFieldValue(name);
+      }
+    };
+    return rv;
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_7(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0kb(_quotation_createNode_x583g4_a0a0a0kb());
+  public static PatternMatch patternRule_Condition_0_7(final PatternRuleContext _context) {
+    final GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0kb(_quotation_createNode_x583g4_a0a0a0kb());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
-    return pattern;
+    PatternMatch rv = new PatternMatch() {
+      @Nullable
+      @Override
+      public Object getValue(String name) {
+        return pattern.getFieldValue(name);
+      }
+    };
+    return rv;
   }
   public static Object varMacro_Value_1_0(final TemplateVarContext _context) {
     return 42;

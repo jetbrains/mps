@@ -2,13 +2,12 @@
 <model ref="r:6aa6f228-56c3-4d3a-b03e-4204df10c967(jetbrains.mps.samples.KajaAndOr.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
     <import index="6ms5" ref="r:d3eab93d-0231-40c7-b095-39bdf7a89e92(jetbrains.mps.samples.KajaAndOr.structure)" />
-    <import index="tpen" ref="r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)" />
     <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" />
     <import index="e118" ref="r:18c202d7-badd-41dd-bd9e-9d42a045e4f4(jetbrains.mps.samples.Kaja.editor)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
@@ -304,7 +303,7 @@
     <node concept="3EZMnI" id="1DJg4Tz2$oi" role="2wV5jI">
       <node concept="3F0ifn" id="1DJg4Tz2$ol" role="3EZMnx">
         <property role="3F0ifm" value="(" />
-        <ref role="1k5W1q" to="tpen:hFCSAw$" resolve="LeftParen" />
+        <ref role="1k5W1q" to="e118:hFCSAw$" resolve="LeftParen" />
         <node concept="A1WHu" id="1wEcoXjJ_CE" role="3vIgyS">
           <ref role="A1WHt" to="e118:1wEcoXjJyo$" resolve="NegateAndAlter" />
         </node>
@@ -315,7 +314,7 @@
       </node>
       <node concept="PMmxH" id="2Kq7O$TUhHE" role="3EZMnx">
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
-        <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
+        <ref role="1k5W1q" to="e118:gcRXCL$K0g" resolve="KeyWord" />
         <ref role="1ERwB7" node="1epj7GMtAq7" resolve="DeleteLogicalOperator" />
         <node concept="VPxyj" id="2Kq7O$TUhIV" role="3F10Kt">
           <property role="VOm3f" value="true" />
@@ -332,7 +331,7 @@
       </node>
       <node concept="3F0ifn" id="1DJg4Tz2$ot" role="3EZMnx">
         <property role="3F0ifm" value=")" />
-        <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
+        <ref role="1k5W1q" to="e118:hFCSUmN" resolve="RightParen" />
         <node concept="A1WHu" id="1wEcoXjJ_CH" role="3vIgyS">
           <ref role="A1WHt" to="e118:1wEcoXjJyo$" resolve="NegateAndAlter" />
         </node>

@@ -26,9 +26,6 @@
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="1225467090849" name="jetbrains.mps.lang.test.structure.ProjectExpression" flags="nn" index="1jxXqW" />
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
         <property id="2616911529524314943" name="accessMode" index="3DII0k" />
@@ -353,7 +350,7 @@
             <node concept="3981dx" id="fzIHCHioZT" role="39821P">
               <property role="TrG5h" value="test.jar" />
               <node concept="3xLA65" id="fzIHCHioZU" role="lGtFl">
-                <property role="TrG5h" value="test.jar" />
+                <property role="TrG5h" value="test.jar.nested" />
               </node>
               <node concept="398223" id="71TRJIlH7Vc" role="39821P">
                 <property role="TrG5h" value="internalFolder" />
@@ -584,7 +581,7 @@
           </node>
           <node concept="2OqwBi" id="fzIHCHip0e" role="3tpDZA">
             <node concept="3xONca" id="fzIHCHip0F" role="2Oq$k0">
-              <ref role="3xOPvv" node="fzIHCHioZU" resolve="test.jar" />
+              <ref role="3xOPvv" node="fzIHCHioZU" resolve="test.jar.nested" />
             </node>
             <node concept="2qgKlT" id="fzIHCHip0g" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:fzIHCHip1Q" resolve="getOutputPath_WithMacro" />
@@ -2644,7 +2641,7 @@
                   </node>
                   <node concept="2OqwBi" id="h4X9S9l9O" role="37wK5m">
                     <node concept="37vLTw" id="h4X9S9l9P" role="2Oq$k0">
-                      <ref role="3cqZAo" node="h4X9S9jzo" resolve="rph2" />
+                      <ref role="3cqZAo" node="h4X9S9jzo" resolve="rph" />
                     </node>
                     <node concept="liA8E" id="h4X9S9l9Q" role="2OqNvi">
                       <ref role="37wK5l" to="o3n2:5iAPpylXscy" resolve="makeRelative" />
@@ -2664,7 +2661,7 @@
                   </node>
                   <node concept="2OqwBi" id="h4X9S9l9V" role="37wK5m">
                     <node concept="37vLTw" id="h4X9S9l9W" role="2Oq$k0">
-                      <ref role="3cqZAo" node="h4X9S9jzo" resolve="rph2" />
+                      <ref role="3cqZAo" node="h4X9S9jzo" resolve="rph" />
                     </node>
                     <node concept="liA8E" id="h4X9S9l9X" role="2OqNvi">
                       <ref role="37wK5l" to="o3n2:5iAPpylXscy" resolve="makeRelative" />
@@ -2715,7 +2712,7 @@
               <ref role="37wK5l" to="rjhg:~Assert.assertThrows(java.lang.Class,org.junit.function.ThrowingRunnable)" resolve="assertThrows" />
               <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
               <node concept="3VsKOn" id="h4X9Sj1OZ" role="37wK5m">
-                <ref role="3VsUkX" to="o3n2:1AfwOXhIPFt" resolve="PathException" />
+                <ref role="3VsUkX" to="o3n2:1AfwOXhIPFt" resolve="RelativePathHelper.PathException" />
               </node>
               <node concept="1bVj0M" id="h4X9Sj21z" role="37wK5m">
                 <node concept="3clFbS" id="h4X9Sj21_" role="1bW5cS">
@@ -3002,9 +2999,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="2sj4mwvrNYf">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
 </model>
 

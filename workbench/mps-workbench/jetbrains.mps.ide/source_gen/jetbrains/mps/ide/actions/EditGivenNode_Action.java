@@ -12,7 +12,7 @@ import java.util.Map;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2010440180771532928", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "2010440180771532928", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class EditGivenNode_Action extends BaseAction {
   private static final Icon ICON = null;
 

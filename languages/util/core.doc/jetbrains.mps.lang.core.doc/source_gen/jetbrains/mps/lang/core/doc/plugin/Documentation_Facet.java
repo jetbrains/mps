@@ -142,7 +142,7 @@ public class Documentation_Facet extends IFacet.Stub {
               if (vars(pa.global()).needCustomPlan() != null && ((Boolean) vars(pa.global()).needCustomPlan())) {
                 final Project project = monitor.getSession().getProject();
 
-                final SModelReference genPlanModel = PersistenceFacade.getInstance().createModelReference("r:d1cf1bdc-d32d-481e-8ec6-73dc1f9dcb76(jetbrains.mps.lang.descriptor.structure_doc@genplan)");
+                final SModelReference genPlanModel = PersistenceFacade.getInstance().createModelReference("r:d1cf1bdc-d32d-481e-8ec6-73dc1f9dcb76(jetbrains.mps.lang.documentation@genplan)");
                 final Wrappers._T<SModel> planModel = new Wrappers._T<SModel>();
                 project.getRepository().getModelAccess().runReadAction(() -> planModel.value = SPointerOperations.resolveModel(genPlanModel, project.getRepository()));
                 MessagesViewTool messagesView = MessagesViewTool.getInstance(project);

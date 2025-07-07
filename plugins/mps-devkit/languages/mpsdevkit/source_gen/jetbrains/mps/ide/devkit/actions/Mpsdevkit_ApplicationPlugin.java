@@ -13,11 +13,11 @@ import jetbrains.mps.ide.actions.Goto_ActionGroup;
 import jetbrains.mps.ide.actions.AnalyzeModule_ActionGroup;
 import jetbrains.mps.ide.actions.Tools_ActionGroup;
 import jetbrains.mps.ide.actions.NamespaceNewActions_ActionGroup;
+import jetbrains.mps.ide.actions.ToolsInternal_ActionGroup;
 import jetbrains.mps.ide.actions.LanguageActions_ActionGroup;
 import jetbrains.mps.ide.actions.DevkitActions_ActionGroup;
 import jetbrains.mps.ide.actions.GeneratorActions_ActionGroup;
 import jetbrains.mps.ide.actions.SolutionActions_ActionGroup;
-import jetbrains.mps.ide.actions.ToolsInternal_ActionGroup;
 import jetbrains.mps.ide.actions.NodeActions_ActionGroup;
 import java.util.List;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
@@ -42,10 +42,13 @@ public class Mpsdevkit_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new CellProperties_Action());
     addAction(new CreateDefaultEditor_Action());
     addAction(new DeleteGenerator_Action());
+    addAction(new FindCrossTemplateReferences_Action());
     addAction(new FindLanguageConceptsUsages_Action());
     addAction(new FindModuleUsage_Action());
+    addAction(new FindReferencesToNonReferenceable_Action());
     addAction(new FindRootableConceptsWithoutIcons_Action());
     addAction(new FindUnusedAndDeprecatedConcepts_Action());
+    addAction(new FindWrongAspectDependencies_Action());
     addAction(new GoToConceptDeclaration_Action());
     addAction(new GoToEditorDeclaration_Action());
     addAction(new GoToNode_Action());
@@ -70,6 +73,7 @@ public class Mpsdevkit_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ShowEditorMenuItemTrace_Action());
     addAction(new ShowGenerationTrace_Action());
     addAction(new ShowGenerationTraceback_Action());
+    addAction(new ShowGeneratorTargetLanguages_Action());
     addAction(new ShowNodeInExplorer_Action());
     addAction(new ShowOriginNode_Action());
     addAction(new ShowStructure_Action());
@@ -98,6 +102,7 @@ public class Mpsdevkit_ApplicationPlugin extends BaseApplicationPlugin {
     addGroup(new RuntimeFolderActions_ActionGroup(this));
     addGroup(new ShowNodeIn_ActionGroup(this));
     addGroup(new StructureAdditions_ActionGroup(this));
+    addGroup(new ToolsInternalEx_ActionGroup(this));
     addGroup(new TraceActions_ActionGroup(this));
   }
   public void adjustRegularGroups() {
@@ -117,7 +122,8 @@ public class Mpsdevkit_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(EditorInternalEx_ActionGroup.ID, DebugActions_ActionGroup.ID, DebugActions_ActionGroup.LABEL_ID_editor);
     insertGroupIntoAnother(AccessoriesGroupActions_ActionGroup.ID, LanguageNewActionsEx_ActionGroup.ID, LanguageNewActionsEx_ActionGroup.LABEL_ID_accessory);
     insertGroupIntoAnother(LanguageNewCustomPartActions_ActionGroup.ID, LanguageNewActions_ActionGroup.ID, LanguageNewActions_ActionGroup.LABEL_ID_newAspect);
-    insertGroupIntoAnother(NamespaceNewActionsEx_ActionGroup.ID, NamespaceNewActions_ActionGroup.ID, null);
+    insertGroupIntoAnother(NamespaceNewActionsEx_ActionGroup.ID, NamespaceNewActions_ActionGroup.ID, NamespaceNewActions_ActionGroup.LABEL_ID_languageExt);
+    insertGroupIntoAnother(ToolsInternalEx_ActionGroup.ID, ToolsInternal_ActionGroup.ID, null);
     insertGroupIntoAnother(FindLanguageUsages_ActionGroup.ID, LanguageActions_ActionGroup.ID, LanguageActions_ActionGroup.LABEL_ID_find_usages);
     insertGroupIntoAnother(ContributeModuleUsage_ActionGroup.ID, DevkitActions_ActionGroup.ID, DevkitActions_ActionGroup.LABEL_ID_find_usages);
     insertGroupIntoAnother(ContributeModuleUsage_ActionGroup.ID, GeneratorActions_ActionGroup.ID, GeneratorActions_ActionGroup.LABEL_ID_find_usages);

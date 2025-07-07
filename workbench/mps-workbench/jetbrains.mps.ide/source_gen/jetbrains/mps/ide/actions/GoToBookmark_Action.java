@@ -9,12 +9,12 @@ import jetbrains.mps.workbench.action.ActionAccess;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
+import jetbrains.mps.ide.bookmark.BookmarkManager;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.ide.bookmark.BookmarkManager;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1234018313905", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1234018313905", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class GoToBookmark_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -33,7 +33,8 @@ public class GoToBookmark_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText("Go to Bookmark " + GoToBookmark_Action.this.num);
-    event.getPresentation().setEnabled(((Project) MapSequence.fromMap(_params).get("project")).getComponent(BookmarkManager.class).getBookmark(GoToBookmark_Action.this.num) != null);
+
+    event.getPresentation().setEnabled(BookmarkManager.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).getBookmark(GoToBookmark_Action.this.num) != null);
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -51,7 +52,7 @@ public class GoToBookmark_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((Project) MapSequence.fromMap(_params).get("project")).getComponent(BookmarkManager.class).navigateToBookmark(GoToBookmark_Action.this.num);
+    BookmarkManager.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).navigateToBookmark(GoToBookmark_Action.this.num);
   }
   @NotNull
   public String getActionId() {

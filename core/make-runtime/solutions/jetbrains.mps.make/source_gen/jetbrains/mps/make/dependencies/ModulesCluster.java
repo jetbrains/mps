@@ -31,7 +31,7 @@ import java.util.LinkedList;
 import java.util.HashSet;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
 
-@GeneratedClass(node = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)/5888262800849895741", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
+@GeneratedClass(nodeId = "5888262800849895741", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
 public class ModulesCluster {
   private final Map<SModuleReference, ModuleDeps> myDepsGraph = MapSequence.fromMap(new HashMap<SModuleReference, ModuleDeps>());
   private final Map<SLanguage, ModuleDeps> languageModules = MapSequence.fromMap(new HashMap<SLanguage, ModuleDeps>());

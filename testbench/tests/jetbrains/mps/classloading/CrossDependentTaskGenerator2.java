@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,8 @@ package jetbrains.mps.classloading;
 
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.reloading.FakeClassPathItem;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.SDependencyScope;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -102,7 +100,7 @@ final class CrossDependentTaskGenerator2 extends TaskGenerator {
     ModuleClassLoaderSupport support = new ModuleClassLoaderSupport(module,
                                                                     () -> Collections.singletonList(dep.get()),
                                                                     new FakeClassPathItem(classes));
-    return new ModuleClassLoader(support);
+    return support.getModuleClassLoader();
   }
 
   @NotNull
@@ -110,8 +108,6 @@ final class CrossDependentTaskGenerator2 extends TaskGenerator {
   public Collection<Callable<Object>> createTasks() {
     FakeReloadableModule s1 = new FakeReloadableModule("FIRST");
     FakeReloadableModule s2 = new FakeReloadableModule("SECOND");
-    s2.addDependency(new SDependencyImpl(s1, SDependencyScope.DEFAULT, false));
-    s1.addDependency(new SDependencyImpl(s2, SDependencyScope.DEFAULT, false));
     Collection<Callable<Object>> taskList = new ArrayList<>(CrossDependentTaskGenerator2.nThreads);
     taskList.add(firstCLTask(s1));
     taskList.add(secondCLTask(s2));

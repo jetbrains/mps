@@ -28,7 +28,7 @@ import jetbrains.mps.errors.item.FlavouredItem;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/4498927700296444643", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
+@GeneratedClass(nodeId = "4498927700296444643", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class UsedLanguagesChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
   private final SConcept C = CONCEPTS.SideTransformInfo$Hi;
   private final SContainmentLink L = LINKS.smodelAttribute$KJ43;

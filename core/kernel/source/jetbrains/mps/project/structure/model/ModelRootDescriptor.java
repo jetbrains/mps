@@ -22,6 +22,7 @@ import jetbrains.mps.project.structure.modules.Copyable;
 import jetbrains.mps.util.io.MementoStreamUtil;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
+import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.persistence.Memento;
@@ -98,6 +99,11 @@ public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> 
    */
   public static ModelRootDescriptor addJavaStubModelRoot(File file, final Collection<ModelRootDescriptor> modelRootDescriptors) {
     String path = file.getParentFile().getAbsolutePath();
+    // MPS-37824 java.io.File on Windows uses '\' in paths. Since we tend to avoid using IFileSystem here (see the comment above),
+    // manual replacement of the separator character seems like the best option
+    if (File.separatorChar != '/') {
+      path = PathUtil.toSystemIndependent(path);
+    }
     String name = file.getName();
     return implAddRoot(path, name, modelRootDescriptors);
   }

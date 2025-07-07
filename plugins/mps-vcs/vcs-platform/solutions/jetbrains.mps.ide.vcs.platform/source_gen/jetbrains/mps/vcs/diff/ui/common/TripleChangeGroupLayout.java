@@ -44,7 +44,7 @@ import com.intellij.util.ui.GraphicsUtil;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import javax.swing.JScrollPane;
 
-@GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/1801212291202741470", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
+@GeneratedClass(nodeId = "1801212291202741470", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public final class TripleChangeGroupLayout {
 
   @Nullable

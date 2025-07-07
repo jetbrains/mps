@@ -7,15 +7,22 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
-import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
+import jetbrains.mps.ide.ui.tree.ContextValueProvider;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import java.awt.Frame;
-import javax.swing.tree.TreeNode;
-import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import javax.swing.JOptionPane;
+import com.intellij.openapi.ui.InputValidator;
+import com.intellij.openapi.ui.InputValidatorEx;
+import com.intellij.openapi.util.NlsContexts;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NonNls;
+import java.util.Arrays;
+import com.intellij.openapi.util.NlsSafe;
+import com.intellij.openapi.ui.Messages;
+import com.intellij.icons.AllIcons;
 import java.util.Collection;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import java.util.Collections;
@@ -25,7 +32,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6840593892233919195", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "6840593892233919195", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class RenamePackage_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -40,7 +47,7 @@ public class RenamePackage_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((PackageNode) event.getData(MPSCommonDataKeys.TREE_NODE)).getAncestor(SModelTreeNode.class) != null;
+    return ((ContextValueProvider) event.getData(MPSCommonDataKeys.USER_OBJECT)).contextValueOfType(SModel.class).isPresent();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -64,11 +71,20 @@ public class RenamePackage_Action extends BaseAction {
       }
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
+      Object p = event.getData(MPSCommonDataKeys.VALUE);
       if (p == null) {
         return false;
       }
-      if (p != null && !(p instanceof PackageNode)) {
+      if (p != null && !(p instanceof VirtualFolder.Nodes)) {
+        return false;
+      }
+    }
+    {
+      Object p = event.getData(MPSCommonDataKeys.USER_OBJECT);
+      if (p == null) {
+        return false;
+      }
+      if (p != null && !(p instanceof ContextValueProvider)) {
         return false;
       }
     }
@@ -76,14 +92,37 @@ public class RenamePackage_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    PackageNode treeNode = ((PackageNode) event.getData(MPSCommonDataKeys.TREE_NODE));
-    final SModel model = treeNode.getAncestor(SModelTreeNode.class).getModel();
+    final SModel model = ((ContextValueProvider) event.getData(MPSCommonDataKeys.USER_OBJECT)).contextValueOfType(SModel.class).get();
     if (model == null) {
       return;
     }
-    final String packageName = treeNode.getPackage();
+    final String packageName = ((VirtualFolder.Nodes) event.getData(MPSCommonDataKeys.VALUE)).getName();
     ModelAccess modelAccess = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess();
-    final String newName = (String) JOptionPane.showInputDialog(event.getData(MPSCommonDataKeys.FRAME), "Enter virtual folder name", "Rename Virtual Folder", JOptionPane.INFORMATION_MESSAGE, null, null, packageName);
+
+    InputValidator validator = new InputValidatorEx() {
+
+      @NlsContexts.DetailedDescription
+      @Nullable
+      @Override
+      public String getErrorText(@NonNls String virtualFolder) {
+        String normalized = (virtualFolder == null ? "" : virtualFolder);
+        normalized = String.join(".", Arrays.asList(normalized.split("\\.+")));
+        if (!(normalized.equals(virtualFolder))) {
+          return "Invalid virtual folder format";
+        }
+        normalized = (normalized.startsWith(".") ? normalized.substring(1) : normalized);
+        if (!(normalized.equals(virtualFolder))) {
+          return "Virtual folder cannot start with a '.'";
+        }
+        return null;
+      }
+      @Override
+      public boolean canClose(@NlsSafe String virtualFolder) {
+        return getErrorText(virtualFolder) == null;
+      }
+    };
+
+    final String newName = (String) Messages.showInputDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), "Enter virtual folder name", "Rename Virtual Folder", AllIcons.General.InformationDialog, packageName, validator);
     if (newName == null) {
       return;
     }

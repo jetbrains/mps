@@ -6,33 +6,33 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Map;
 import com.intellij.psi.impl.cache.impl.id.IdIndexEntry;
 import java.util.HashMap;
-import jetbrains.mps.kotlin.stubs.common.KotlinId;
+import jetbrains.mps.kotlin.stubs.loading.ids.KotlinId;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.kotlin.stubs.common.KotlinLanguage;
-import kotlinx.metadata.internal.common.KmModuleFragment;
-import kotlinx.metadata.KmPackage;
-import kotlinx.metadata.KmClass;
-import kotlinx.metadata.internal.metadata.ProtoBuf;
-import kotlinx.metadata.internal.metadata.deserialization.Flags;
-import jetbrains.mps.kotlin.stubs.common.metadata.EnumFlags;
-import jetbrains.mps.kotlin.stubs.common.metadata.AnnotationExtension;
-import kotlinx.metadata.KmType;
-import kotlinx.metadata.KmClassifier;
-import kotlinx.metadata.KmTypeProjection;
-import kotlinx.metadata.KmConstructor;
-import kotlinx.metadata.KmValueParameter;
-import kotlinx.metadata.KmTypeParameter;
-import kotlinx.metadata.KmFunction;
+import jetbrains.mps.kotlin.stubs.loading.kind.KotlinCommonModelKind;
+import kotlin.metadata.internal.common.KmModuleFragment;
+import kotlin.metadata.KmPackage;
+import kotlin.metadata.KmClass;
+import kotlin.metadata.ClassKind;
+import kotlin.metadata.Attributes;
+import jetbrains.mps.kotlin.stubs.smodel.metadata.KtAttributes;
+import jetbrains.mps.kotlin.stubs.extension.KtAnnotations;
+import kotlin.metadata.KmType;
+import kotlin.metadata.KmClassifier;
+import kotlin.metadata.KmTypeProjection;
+import kotlin.metadata.KmConstructor;
+import kotlin.metadata.KmValueParameter;
+import kotlin.metadata.KmTypeParameter;
+import kotlin.metadata.KmFunction;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import kotlinx.metadata.KmProperty;
-import kotlinx.metadata.KmTypeAlias;
-import kotlinx.metadata.KmExtensionVisitor;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import kotlinx.metadata.KmAnnotation;
+import kotlin.metadata.KmProperty;
+import kotlin.metadata.KmTypeAlias;
+import java.util.List;
+import kotlin.metadata.KmAnnotation;
 import jetbrains.mps.internal.collections.runtime.IMapping;
-import kotlinx.metadata.KmAnnotationArgument;
+import kotlin.metadata.KmAnnotationArgument;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import kotlinx.metadata.KmFlexibleTypeUpperBound;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import kotlin.metadata.KmFlexibleTypeUpperBound;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -44,7 +44,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
  * 
  * Each visitor has a single instance and reports to the module indexer (they can be reused several times).
  */
-@GeneratedClass(node = "r:839db98b-6aa7-4fd6-a3a0-c413dbdb3e27(jetbrains.mps.kotlin.idePlugin.fastSearch)/8550542210338422830", model = "r:839db98b-6aa7-4fd6-a3a0-c413dbdb3e27(jetbrains.mps.kotlin.idePlugin.fastSearch)")
+@GeneratedClass(nodeId = "8550542210338422830", model = "r:839db98b-6aa7-4fd6-a3a0-c413dbdb3e27(jetbrains.mps.kotlin.idePlugin.fastSearch)")
 public class KtModuleIndexer {
   private Map<IdIndexEntry, Integer> entries = new HashMap<>();
 
@@ -62,15 +62,17 @@ public class KtModuleIndexer {
     putRef(fqName);
   }
 
-  private void putConcepts(SAbstractConcept... instanciated) {
+  private void putConcepts(SAbstractConcept... instantiated) {
     // TODO is deprecated without offering replacement options
-    for (SAbstractConcept concept : instanciated) {
-      entries.put(new IdIndexEntry(concept.getQualifiedName(), true), 0);
+    for (SAbstractConcept concept : instantiated) {
+      if (concept != null) {
+        entries.put(new IdIndexEntry(concept.getQualifiedName(), true), 0);
+      }
     }
   }
 
   private void putModelRef(String packageName) {
-    entries.put(new IdIndexEntry(packageName + "@" + KotlinLanguage.ModelKind.COMMON.stereotype, true), 0);
+    entries.put(new IdIndexEntry(packageName + "@" + KotlinCommonModelKind.INSTANCE.getStereotype(), true), 0);
   }
 
   public void indexModule(KmModuleFragment fragment) {
@@ -84,17 +86,16 @@ public class KtModuleIndexer {
   }
 
   public void indexClass(KmClass klass) {
-    int flags = klass.getFlags();
-    ProtoBuf.Class.Kind classKind = Flags.CLASS_KIND.get(flags);
-    if (classKind == ProtoBuf.Class.Kind.ANNOTATION_CLASS) {
+    ClassKind classKind = Attributes.getKind(klass);
+    if (classKind == ClassKind.ANNOTATION_CLASS) {
       putConcepts(CONCEPTS.AnnotationClassModifier$vN);
     }
 
-    putConcepts(EnumFlags.getClassConcept(classKind), EnumFlags.getVisibility(Flags.VISIBILITY.get(flags)), EnumFlags.getModality(Flags.MODALITY.get(flags)));
+    putConcepts(KtAttributes.getClassConcept(classKind), KtAttributes.getVisibility(Attributes.getVisibility(klass)), KtAttributes.getModality(Attributes.getModality(klass)));
 
-    if (Flags.IS_INNER.get(flags)) {
+    if (Attributes.isInner(klass)) {
       putConcepts(CONCEPTS.InnerClassModifier$wL);
-    } else if (Flags.IS_DATA.get(flags)) {
+    } else if (Attributes.isData(klass)) {
       putConcepts(CONCEPTS.DataClassModifier$wi);
     }
 
@@ -110,7 +111,7 @@ public class KtModuleIndexer {
       putConcepts(CONCEPTS.EnumEntry$ji);
     }
     indexType(klass.getInlineClassUnderlyingType());
-    indexExtensionsAnnotations(klass.visitExtensions(AnnotationExtension.type));
+    indexExtensionsAnnotations(KtAnnotations.getAnnotations(klass));
   }
 
   public void indexType(KmType type) {
@@ -142,11 +143,11 @@ public class KtModuleIndexer {
     });
 
     indexType(check_x019md_a0h0q(type.getFlexibleTypeUpperBound()));
-    indexExtensionsAnnotations(type.visitExtensions(AnnotationExtension.type));
+    indexExtensionsAnnotations(KtAnnotations.getAnnotations(type));
   }
 
   public void indexConstructor(KmConstructor constructor) {
-    Boolean secondary = Flags.IS_SECONDARY.get(constructor.getFlags());
+    boolean secondary = Attributes.isSecondary(constructor);
     if (secondary) {
       putConcepts(CONCEPTS.SecondaryConstructor$Lg);
     } else {
@@ -162,7 +163,7 @@ public class KtModuleIndexer {
       constructor.getValueParameters().forEach(this::indexValueParameter);
     }
 
-    indexExtensionsAnnotations(constructor.visitExtensions(AnnotationExtension.type));
+    indexExtensionsAnnotations(KtAnnotations.getAnnotations(constructor));
   }
 
 
@@ -173,7 +174,7 @@ public class KtModuleIndexer {
 
     indexType(param.getType());
     indexType(param.getVarargElementType());
-    indexExtensionsAnnotations(param.visitExtensions(AnnotationExtension.type));
+    indexExtensionsAnnotations(KtAnnotations.getAnnotations(param));
   }
 
   public void indexTypeParameter(KmTypeParameter typeParam) {
@@ -186,9 +187,8 @@ public class KtModuleIndexer {
 
   public void indexFunction(KmFunction fun) {
     // from class, package
-    int flags = fun.getFlags();
-    putConcepts(CONCEPTS.FunctionDeclaration$oD, EnumFlags.getVisibility(Flags.VISIBILITY.get(flags)), EnumFlags.getModality(Flags.MODALITY.get(flags)));
-    putConcepts(Sequence.fromIterable(EnumFlags.getFunctionModifiers(flags)).toGenericArray(SAbstractConcept.class));
+    putConcepts(CONCEPTS.FunctionDeclaration$oD, KtAttributes.getVisibility(Attributes.getVisibility(fun)), KtAttributes.getModality(Attributes.getModality(fun)));
+    putConcepts(Sequence.fromIterable(KtAttributes.getFunctionModifiers(fun)).toGenericArray(SAbstractConcept.class));
 
     fun.getTypeParameters().forEach(this::indexTypeParameter);
     indexType(fun.getReturnType());
@@ -198,7 +198,7 @@ public class KtModuleIndexer {
       fun.getValueParameters().forEach(this::indexValueParameter);
     }
 
-    indexExtensionsAnnotations(fun.visitExtensions(AnnotationExtension.type));
+    indexExtensionsAnnotations(KtAnnotations.getAnnotations(fun));
   }
 
   public void indexProperty(KmProperty prop) {
@@ -211,7 +211,7 @@ public class KtModuleIndexer {
     indexType(prop.getReceiverParameterType());
     indexType(prop.getReturnType());
 
-    indexExtensionsAnnotations(prop.visitExtensions(AnnotationExtension.type));
+    indexExtensionsAnnotations(KtAnnotations.getAnnotations(prop));
   }
 
   public void indexTypeAlias(KmTypeAlias typeAlias) {
@@ -223,11 +223,8 @@ public class KtModuleIndexer {
     typeAlias.getAnnotations().forEach(this::indexAnnotation);
   }
 
-  public void indexExtensionsAnnotations(KmExtensionVisitor visitor) {
-    AnnotationExtension extension = as_x019md_a0a0a13(visitor, AnnotationExtension.class);
-    if (extension != null) {
-      ListSequence.fromList(extension.getAnnotations()).visitAll((annotation) -> KtModuleIndexer.this.indexAnnotation(annotation));
-    }
+  public void indexExtensionsAnnotations(List<KmAnnotation> annotations) {
+    annotations.forEach(this::indexAnnotation);
   }
 
   public void indexAnnotation(KmAnnotation annotation) {
@@ -259,10 +256,12 @@ public class KtModuleIndexer {
     } else if (arg instanceof KmAnnotationArgument.KClassValue) {
       KmAnnotationArgument.KClassValue value = (KmAnnotationArgument.KClassValue) arg;
       putClassRef(value.getClassName());
-      if (value.getArrayDimensionCount() > 1) {
-        putConcepts(CONCEPTS.TypeProjection$5e);
-        putRef("kotlin/Array");
-      }
+      putConcepts(CONCEPTS.MemberNavigationExpression$7I, CONCEPTS.ClassMemberTarget$le, CONCEPTS.ReceiverType$$f);
+    } else if (arg instanceof KmAnnotationArgument.ArrayKClassValue) {
+      KmAnnotationArgument.ArrayKClassValue value = (KmAnnotationArgument.ArrayKClassValue) arg;
+      putClassRef(value.getClassName());
+      putConcepts(CONCEPTS.TypeProjection$5e);
+      putRef("kotlin/Array");
       putConcepts(CONCEPTS.MemberNavigationExpression$7I, CONCEPTS.ClassMemberTarget$le, CONCEPTS.ReceiverType$$f);
     } else if (arg instanceof KmAnnotationArgument.EnumValue) {
       KmAnnotationArgument.EnumValue value = ((KmAnnotationArgument.EnumValue) arg);
@@ -288,9 +287,6 @@ public class KtModuleIndexer {
       return checkedDotOperand.getType();
     }
     return null;
-  }
-  private static <T> T as_x019md_a0a0a13(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
   }
 
   private static final class CONCEPTS {

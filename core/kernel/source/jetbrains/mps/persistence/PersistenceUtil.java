@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -184,7 +184,7 @@ public final class PersistenceUtil {
     @NotNull
     @Override
     public InputStream openInputStream() throws IOException {
-      throw new UnsupportedOperationException("I am not able to read only to write " + this);
+      return getContentAsStream();
     }
 
     @NotNull
@@ -263,12 +263,22 @@ public final class PersistenceUtil {
       return null;
     }
 
+    @Nullable
     public String getContent(String name, String charsetName) {
       StreamDataSource streamByName = getStreamByName(name);
       if (!(streamByName instanceof InMemoryStreamDataSource)) {
         return null;
       }
       return ((InMemoryStreamDataSource) streamByName).getContent(charsetName);
+    }
+
+    @Nullable
+    public byte[] getContentBytes(String name) {
+      StreamDataSource streamByName = getStreamByName(name);
+      if (!(streamByName instanceof InMemoryStreamDataSource)) {
+        return null;
+      }
+      return ((InMemoryStreamDataSource) streamByName).getContentBytes();
     }
   }
 }

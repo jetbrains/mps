@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.refactoring.runtime.RefactoringAspect;
 
-@GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/1399798136780143890", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
+@GeneratedClass(nodeId = "1399798136780143890", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public abstract class RefactoringAccessEx extends RefactoringAccess {
   private RefactoringFacadeImpl myRefactoringFacade;
   private final Platform myPlatform;

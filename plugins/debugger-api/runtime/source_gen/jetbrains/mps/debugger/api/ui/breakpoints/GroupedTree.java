@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.UIManager;
 
-@GeneratedClass(node = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)/4474271214083111858", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
+@GeneratedClass(nodeId = "4474271214083111858", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
 /*package*/ abstract class GroupedTree<D extends CheckBoxNodeRenderer.NodeData> extends MPSTree {
   public GroupedTree() {
     setCellRenderer(new CheckBoxNodeRenderer(true, getCellRenderer()));

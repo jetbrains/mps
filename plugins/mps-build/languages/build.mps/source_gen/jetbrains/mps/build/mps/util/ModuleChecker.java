@@ -6,7 +6,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.messages.IMessageHandler;
-import jetbrains.mps.extapi.module.SRepositoryExt;
+import jetbrains.mps.smodel.RepositoryFacade;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -42,6 +42,8 @@ import jetbrains.mps.build.mps.behavior.BuildMps_AbstractModule__BehaviorDescrip
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
@@ -56,7 +58,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.build.mps.behavior.BuildMps_Generator__BehaviorDescriptor;
 import java.util.LinkedHashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.util.MacrosFactory;
@@ -65,7 +66,6 @@ import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.build.mps.behavior.BuildMps_Module__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.smodel.GeneralModuleFactory;
-import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -85,10 +85,10 @@ public final class ModuleChecker {
   /**
    * To access certain module properties (like used languages and devkits), we need to load modules temporarily.
    */
-  private final SRepositoryExt myRepository;
+  private final RepositoryFacade myRepository;
   private SModule myLoadedModule;
 
-  /*package*/ ModuleChecker(SNode module, VisibleModules visible, PathConverter pathConverter, @Nullable IFile moduleDescriptorFile, ModuleDescriptor moduleDescriptor, IMessageHandler reporter, SRepositoryExt repo) {
+  /*package*/ ModuleChecker(SNode module, VisibleModules visible, PathConverter pathConverter, @Nullable IFile moduleDescriptorFile, ModuleDescriptor moduleDescriptor, IMessageHandler reporter, RepositoryFacade repo) {
     myModule = module;
     myVisibleModules = visible;
     // seems that moduleDescriptorFile != null for partial/full import scenarios, and can be null for 'check';
@@ -656,7 +656,13 @@ public final class ModuleChecker {
         final JavaModuleFacet jmf = loadedModule.getFacet(JavaModuleFacet.class);
         // here used to be some confusing logic with presence of sources and models, I see no reason to check it here
         // shall be checking rule, if necessary
-        SPropertyOperations.assign(module, PROPS.doNotCompile$4EF, jmf == null || jmf.getCompile() != JavaModuleFacet.Compile.MPS);
+
+        // remove doNotComplie if it was by setting to false
+        if (SPropertyOperations.getBoolean(module, PROPS.doNotCompile$4EF)) {
+          SPropertyOperations.assign(module, PROPS.doNotCompile$4EF, false);
+        }
+        // this is used instead of doNotCompile
+        SPropertyOperations.assignEnum(module, PROPS.javaCode$OceX, (jmf == null || !(jmf.getCompile().isCompiled()) ? SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x352834178d0efa67L, "jetbrains.mps.build.mps.structure.BuildMps_CodeKind"), 0x352834178d0efa6bL, "none") : (jmf.getCompile() == JavaModuleFacet.Compile.MPS ? SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x352834178d0efa67L, "jetbrains.mps.build.mps.structure.BuildMps_CodeKind"), 0x352834178d0efa68L, "compile_mps") : SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x352834178d0efa67L, "jetbrains.mps.build.mps.structure.BuildMps_CodeKind"), 0x352834178d0efa69L, "compile_ext"))));
 
 
         for (ModelRoot mr : loadedModule.getModelRoots()) {
@@ -1069,11 +1075,7 @@ public final class ModuleChecker {
   private SModule getLoadedModule() {
     if (myLoadedModule == null) {
       myLoadedModule = new GeneralModuleFactory().instantiate(myModuleDescriptor, myModuleDescriptorFile);
-      myRepository.registerModule(myLoadedModule, new MPSModuleOwner() {
-        public boolean isHidden() {
-          return true;
-        }
-      });
+      myRepository.registerModule(myLoadedModule);
     }
     return myLoadedModule;
   }
@@ -1275,6 +1277,7 @@ public final class ModuleChecker {
     /*package*/ static final SProperty uuid$pC01 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
     /*package*/ static final SProperty extracted$UUL7 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x70ece8f91dd584e6L, "extracted");
     /*package*/ static final SProperty doNotCompile$4EF = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
+    /*package*/ static final SProperty javaCode$OceX = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x28a3c6c6f75d7a0bL, "javaCode");
     /*package*/ static final SProperty useMakeTask$aRFt = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, 0x3f7149bc568e8eb4L, "useMakeTask");
     /*package*/ static final SProperty reexport$kN5t = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cc1L, "reexport");
     /*package*/ static final SProperty reexport$1qdl = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport");

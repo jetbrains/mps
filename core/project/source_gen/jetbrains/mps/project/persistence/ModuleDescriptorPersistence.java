@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.io.IOException;
 
-@GeneratedClass(node = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)/842994667883031742", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
+@GeneratedClass(nodeId = "842994667883031742", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
 public class ModuleDescriptorPersistence {
   private static final Logger LOG = Logger.getLogger(ModuleDescriptorPersistence.class);
   private static final String HEADER_PATTERN = ".*<(language|dev-kit|solution)[^>]+(namespace|name)=\\\"([^\"]+)\\\"[^>]+uuid=\\\"([^\"]+)\\\".*";
@@ -190,46 +190,24 @@ public class ModuleDescriptorPersistence {
   }
 
   public static void readMemento(Memento memento, Element element) {
-    MacroHelper macroHelper = null;
-    for (Attribute attr : (List<Attribute>) element.getAttributes()) {
-      String name = attr.getName();
-      if (macroHelper != null && isPathAttribute(name)) {
-        memento.put(name, macroHelper.expandPath(attr.getValue()));
-        memento.putPathSpec(name, attr.getValue());
-      } else {
-        memento.put(name, attr.getValue());
-      }
+    for (Attribute attr : element.getAttributes()) {
+      memento.put(attr.getName(), attr.getValue());
     }
-    for (Element elem : (List<Element>) element.getChildren()) {
+    for (Element elem : element.getChildren()) {
       Memento child = memento.createChild(elem.getName());
       readMemento(child, elem);
     }
   }
 
   public static void writeMemento(Memento memento, Element element) {
-    MacroHelper macroHelper = null;
     for (String key : memento.getKeys()) {
-      if (macroHelper != null && isPathAttribute(key)) {
-        element.setAttribute(key, macroHelper.shrinkPath(memento.get(key), memento.getPathSpec(key)));
-      } else {
-        if (key.startsWith(Memento.PATH_SPEC_PREFIX)) {
-          // don't serialize internal values
-          // XXX could use macro name from the value as a hint for macroHelper, until get rid of all full path value uses
-          //     (i.e. switch them to path specification)
-          continue;
-        }
-        element.setAttribute(key, memento.get(key));
-      }
+      element.setAttribute(key, memento.get(key));
     }
     for (Memento childMemento : memento.getChildren()) {
       Element child = new Element(childMemento.getType());
       writeMemento(childMemento, child);
       element.addContent(child);
     }
-  }
-
-  private static boolean isPathAttribute(String name) {
-    return name.equals("path") || name.endsWith("Path");
   }
 
   public static void saveFacets(Element result, Collection<ModuleFacetDescriptor> facets) {

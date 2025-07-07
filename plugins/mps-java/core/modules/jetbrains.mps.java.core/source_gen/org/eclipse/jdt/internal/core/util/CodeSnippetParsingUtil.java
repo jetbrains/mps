@@ -33,7 +33,7 @@ import org.eclipse.jdt.internal.compiler.ast.ConstructorDeclaration;
  * 
  * Utility class to parse different code snippets
  */
-@GeneratedClass(node = "r:40e27d97-dea1-422b-91e0-3b9f3271a7f1(org.eclipse.jdt.internal.core.util)/1218034168005183146", model = "r:40e27d97-dea1-422b-91e0-3b9f3271a7f1(org.eclipse.jdt.internal.core.util)")
+@GeneratedClass(nodeId = "1218034168005183146", model = "r:40e27d97-dea1-422b-91e0-3b9f3271a7f1(org.eclipse.jdt.internal.core.util)")
 public class CodeSnippetParsingUtil {
   public RecordedParsingInformation recordedParsingInformation;
   public boolean ignoreMethodBodies;

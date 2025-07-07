@@ -9,16 +9,11 @@ import jetbrains.mps.generator.impl.plan.EngagedGeneratorCollector;
 import jetbrains.mps.generator.impl.plan.RegularPlanBuilder;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.Message;
-import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import kotlinx.coroutines.repackaged.net.bytebuddy.implementation.bytecode.Throw;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -52,15 +47,10 @@ public class CompositeInterpretedPlanProvider implements ModelGenerationPlan.Pro
     for (SNode planDecl : planNodes) {
       myMessageHandler.handle(Message.info(InterpretedPlanProvider.class, String.format("Interpreted plan from node %s", planDecl.getPresentation()), planDecl.getReference(), null));
 
-      SNode forkOwner = GenPlanTranslator.getForkOwner(planDecl);
-      if (forkOwner != null) {
-        if (planNodes.contains(forkOwner)) {
-          myMessageHandler.handle(Message.info(InterpretedPlanProvider.class, String.format("Fork of %s", forkOwner.getPresentation()), forkOwner.getReference(), null));
-          sortedPlanNodes.addFirst(planDecl);
-        }else{
-          myMessageHandler.handle(Message.createMessage(MessageKind.ERROR, InterpretedPlanProvider.class.toString(), String.format("Fork owner not in scope %s", forkOwner.getPresentation()), forkOwner.getReference()));
-          return null;
-        }
+      String forkGenerationTarget = GenPlanTranslator.getForkGenerationTarget(planDecl);
+      if (forkGenerationTarget != null) {
+        myMessageHandler.handle(Message.info(InterpretedPlanProvider.class, String.format("Destination target of a fork: %s", forkGenerationTarget), planDecl.getReference(), null));
+        sortedPlanNodes.addFirst(planDecl);
       } else {
         sortedPlanNodes.add(planDecl);
       }
@@ -75,6 +65,7 @@ public class CompositeInterpretedPlanProvider implements ModelGenerationPlan.Pro
       gpt = new GenPlanTranslator(planNode);
       gpt.feedMulti(planBuilder);
     }
+    // because forks come first, the last gpt has the correct (whole plan's) identity
     return planBuilder.wrapUp(gpt.getPlanIdentity());
   }
 

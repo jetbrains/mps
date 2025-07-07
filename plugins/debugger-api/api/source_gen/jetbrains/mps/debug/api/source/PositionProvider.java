@@ -16,7 +16,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.NonNls;
 
-@GeneratedClass(node = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)/7048882195103545633", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
+@GeneratedClass(nodeId = "7048882195103545633", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
 public class PositionProvider {
   public static ExtensionPointName<PositionProviderBean> EP = ExtensionPointName.create("jetbrains.mps.debugger.PositionProvider");
   private final List<PositionProviderBean> myLegacyProviders = ListSequence.fromList(new ArrayList<PositionProviderBean>());

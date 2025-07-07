@@ -95,9 +95,9 @@ __switch__:
     // null test
     s1 = null;
     Iterable<Integer> s2_ = Sequence.fromIterable(s1).concat(Sequence.fromIterable(s2));
-    Assert.assertEquals(3, Sequence.fromIterable(s2_).count());
+    Assert.assertEquals(Integer.valueOf(3), Integer.valueOf(Sequence.fromIterable(s2_).count()));
     Iterable<Integer> s2__ = Sequence.fromIterable(s2).concat(null);
-    Assert.assertEquals(3, Sequence.fromIterable(s2__).count());
+    Assert.assertEquals(Integer.valueOf(3), Integer.valueOf(Sequence.fromIterable(s2__).count()));
   }
   @Test
   public void test_mps36315() throws Exception {

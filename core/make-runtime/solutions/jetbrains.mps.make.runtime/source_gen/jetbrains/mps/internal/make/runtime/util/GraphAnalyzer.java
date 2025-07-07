@@ -12,7 +12,7 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/1936544640085949692", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
+@GeneratedClass(nodeId = "1936544640085949692", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public abstract class GraphAnalyzer<V> {
   private Map<V, Wrapper<V>> wrapMap = MapSequence.fromMap(new HashMap<V, Wrapper<V>>());
   private _FunctionTypes._return_P1_E0<? extends Iterable<Wrapper<V>>, ? super Wrapper<V>> forward = (Wrapper<V> d) -> Sequence.fromIterable(forwardEdges(d.vertex)).select((v) -> MapSequence.fromMap(wrapMap).get(v));

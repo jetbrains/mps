@@ -31,9 +31,7 @@
   
   <path id="path.mps.ant.path">
     <pathelement location="${artifacts.mps}/lib/ant/lib/ant-mps.jar" />
-    <fileset dir="${artifacts.IDEA}/lib">
-      <include name="util-8.jar" />
-    </fileset>
+    <pathelement location="${artifacts.IDEA}/lib/util-8.jar" />
   </path>
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
@@ -157,6 +155,9 @@
         <fileset file="${artifacts.mps}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.IDEA}/plugins/vcs-git/lib/git4idea-rt.jar" />
         <fileset file="${artifacts.IDEA}/plugins/vcs-git/lib/vcs-git.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.impl.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.dvcs.impl.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.log.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />

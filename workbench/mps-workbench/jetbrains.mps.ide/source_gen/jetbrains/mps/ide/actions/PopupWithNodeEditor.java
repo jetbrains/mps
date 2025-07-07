@@ -17,7 +17,7 @@ import com.intellij.openapi.ui.popup.LightweightWindowEvent;
  * 
  * @see jetbrains.mps.ide.actions.PopupWithNodeEditorUI 
  */
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2265788403135016386", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "2265788403135016386", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public abstract class PopupWithNodeEditor {
   protected final PopupWithNodeEditorUI myUI;
   protected final JBPopup myPopup;

@@ -41,7 +41,7 @@ import jetbrains.mps.internal.make.runtime.util.FilesDelta;
 import jetbrains.mps.internal.make.runtime.java.FileDeltaCollector;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.smodel.resources.DResource;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.WriteTransaction;
 import jetbrains.mps.make.script.IConfig;
 import jetbrains.mps.make.script.IPropertiesPool;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -162,7 +162,8 @@ public class GenerateImages_Facet extends IFacet.Stub {
                 _output_7crsqe_a0a = Sequence.fromIterable(_output_7crsqe_a0a).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new DResource(deltaList))));
 
                 progressMonitor.step("Saving images");
-                if (!(FileSystem.getInstance().runWriteTransaction(() -> fp.flushChanges()))) {
+                WriteTransaction wt = new WriteTransaction(monitor.getSession().getProject().getPlatform(), () -> fp.flushChanges());
+                if (!(wt.executeAndWait())) {
                   monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("Failed to save files")));
                   return new IResult.FAILURE(_output_7crsqe_a0a);
                 }

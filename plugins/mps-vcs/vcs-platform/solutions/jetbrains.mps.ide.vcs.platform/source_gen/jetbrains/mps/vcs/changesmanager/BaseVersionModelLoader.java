@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import jetbrains.mps.persistence.MultiStreamDataSourceBase;
@@ -41,7 +42,7 @@ import com.intellij.openapi.vcs.changes.ByteBackedContentRevision;
 import jetbrains.mps.util.FileUtil;
 import com.intellij.openapi.vcs.VcsException;
 
-@GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/2253323551303625635", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
+@GeneratedClass(nodeId = "2253323551303625635", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 /*package*/ final class BaseVersionModelLoader {
   private static final Logger LOG = Logger.getLogger(BaseVersionModelLoader.class);
   private final Project myProject;
@@ -71,30 +72,29 @@ import com.intellij.openapi.vcs.VcsException;
       }
       return null;
     }
-    return loadModel(mpsPlatform, source, guessFactory(model));
-  }
-
-  private static SModel loadModel(ComponentHost mpsPlatform, @NotNull DataSource source, @Nullable ModelFactory factory) {
-    if (factory == null) {
-      factory = mpsPlatform.findComponent(ModelFactoryService.class).getDefaultModelFactory(source.getType());
-    }
-    if (factory == null) {
-      if (LOG.isErrorLevel()) {
-        LOG.error("Could not find a suitable model factory", new IllegalStateException());
-      }
-      return null;
-    }
+    ModelFactory factory = guessFactory(model);
     try {
-      SModel model = factory.load(source);
-      model.load();
-      return model;
+      if (factory == null) {
+        factory = mpsPlatform.findComponent(ModelFactoryService.class).getDefaultModelFactory(source.getType());
+      }
+      if (factory == null) {
+        if (LOG.isWarningLevel()) {
+          LOG.warning(String.format("Could not find a suitable model factory to access base revision of model %s", SModelOperations.getModelName(model)));
+        }
+        return null;
+      }
+      SModel baseRev = factory.load(source);
+      baseRev.load();
+      return baseRev;
     } catch (ModelLoadException | UnsupportedDataSourceException ex) {
-      if (LOG.isErrorLevel()) {
-        LOG.error("Caught on model load with " + factory + " from " + source, new IllegalStateException());
+      // generally, it's ok not to get base revision, we could try another time (e.g. if it's a VFS caching issue, see MPS-37919), hence not an error
+      if (LOG.isWarningLevel()) {
+        LOG.warning(String.format("Caught on model load with %s from %s, no base revision for model %s", factory, source, SModelOperations.getModelName(model)), ex);
       }
     }
     return null;
   }
+
 
   /**
    * redirects to vcs byte[] file contents instead of the actual files on disk for this model

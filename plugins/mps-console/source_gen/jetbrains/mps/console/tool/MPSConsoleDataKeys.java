@@ -6,8 +6,10 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import com.intellij.openapi.actionSystem.DataKey;
 
-@GeneratedClass(node = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/8501841415479214219", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
+@GeneratedClass(nodeId = "8501841415479214219", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
 public class MPSConsoleDataKeys extends MPSCommonDataKeys {
   @MPSCommonDataKeys.Description(description = "current console tab")
   public static final DataKey<BaseConsoleTab> CONSOLE_TAB = DataKey.create("MPS_ConsoleTab");
+  @MPSCommonDataKeys.Description(description = "the original paste provider, not the one defined by BaseConsoleTab")
+  public static final DataKey<BaseConsoleTab> PARENT_PASTE_PROVIDER = DataKey.create("MPS_ConsoleTab_Parent_Paste_Provider");
 }

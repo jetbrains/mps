@@ -384,12 +384,15 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.outputNode$ytKx);
   }
   public static SNode sourceNodeQuery_0_71(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.nodes$IBQe);
-  }
-  public static SNode sourceNodeQuery_0_72(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
   }
+  public static SNode sourceNodeQuery_0_72(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.nodes$IBQe);
+  }
   public static SNode sourceNodeQuery_0_73(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
+  }
+  public static SNode sourceNodeQuery_0_74(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.node$h$rM);
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
@@ -507,6 +510,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("5615708520037052712", new SNQ(i++));
     snqMethods.put("5615708520037052724", new SNQ(i++));
     snqMethods.put("5615708520037058480", new SNQ(i++));
+    snqMethods.put("5062364941209234957", new SNQ(i++));
     snqMethods.put("2537089342344768473", new SNQ(i++));
     snqMethods.put("3228980938641241356", new SNQ(i++));
     snqMethods.put("3228980938641241369", new SNQ(i++));
@@ -673,6 +677,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.sourceNodeQuery_0_72(ctx);
         case 73:
           return QueriesGenerated.sourceNodeQuery_0_73(ctx);
+        case 74:
+          return QueriesGenerated.sourceNodeQuery_0_74(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }

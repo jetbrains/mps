@@ -12,7 +12,7 @@ import java.util.List;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 
-@GeneratedClass(node = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)/453110257780703303", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
+@GeneratedClass(nodeId = "453110257780703303", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
 /*package*/ class DOMVisibleModelElements implements VisibleModelElements {
   private Map<Integer, SModelReference> myVisibleModelElements = new HashMap<Integer, SModelReference>();
   private int myMaxVisibleModelIndex = 1;

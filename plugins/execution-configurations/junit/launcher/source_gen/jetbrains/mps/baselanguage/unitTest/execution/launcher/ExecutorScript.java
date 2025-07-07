@@ -14,8 +14,18 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
  * Set of test executor arguments to get serialized for inter-process communication
  */
 public class ExecutorScript {
+  private static final String ELM_MODULE = "module";
+  private static final String ELM_TEST = "test";
+  private static final String ELM_PROJECT = "project";
+  private static final String ATTR_PTR = "ptr";
+  private static final String ATTR_FQN = "fqn";
+  private static final String ATTR_NODE = "node";
+  private static final String ATTR_ISTESTCASE = "isTestCase";
+  private static final String ATTR_URL = "url";
+
   @Nullable
   private ScriptData myEnvironmentStartupData;
+  private String myProjectUrl;
   protected final List<TestRecord> myTests = new ArrayList<TestRecord>();
 
   public Collection<TestRecord> getTests() {
@@ -32,18 +42,31 @@ public class ExecutorScript {
     return myEnvironmentStartupData;
   }
 
+  public String setProjectUrl(String projectUrl) {
+    return myProjectUrl = projectUrl;
+  }
+
+  public String getProjectUrl() {
+    return myProjectUrl;
+  }
+
   public void write(Element root) {
     for (TestRecord r : ListSequence.fromList(myTests)) {
-      Element module = new Element("module");
-      module.setAttribute("ptr", r.myTestModule);
+      Element module = new Element(ELM_MODULE);
+      module.setAttribute(ATTR_PTR, r.myTestModule);
       for (int i = 0; i < r.myTestQualifiedName.size(); i++) {
-        Element elem = new Element("test");
-        elem.setAttribute("fqn", r.myTestQualifiedName.get(i));
-        elem.setAttribute("node", r.myTestNode.get(i));
-        elem.setAttribute("isTestCase", r.isTestCase.get(i));
+        Element elem = new Element(ELM_TEST);
+        elem.setAttribute(ATTR_FQN, r.myTestQualifiedName.get(i));
+        elem.setAttribute(ATTR_NODE, r.myTestNode.get(i));
+        elem.setAttribute(ATTR_ISTESTCASE, r.isTestCase.get(i));
         module.addContent(elem);
       }
       root.addContent(module);
+    }
+    if (myProjectUrl != null) {
+      Element proj = new Element(ELM_PROJECT);
+      proj.setAttribute(ATTR_URL, myProjectUrl);
+      root.addContent(proj);
     }
     if (myEnvironmentStartupData != null) {
       myEnvironmentStartupData.write(root);
@@ -51,13 +74,20 @@ public class ExecutorScript {
   }
 
   public void read(Element root) {
-    for (Element me : ListSequence.fromList(root.getChildren("module"))) {
-      TestRecord tr = new TestRecord(me.getAttributeValue("ptr"));
+    for (Element me : ListSequence.fromList(root.getChildren(ELM_MODULE))) {
+      TestRecord tr = new TestRecord(me.getAttributeValue(ATTR_PTR));
       myTests.add(tr);
-      for (Element te : ListSequence.fromList(me.getChildren("test"))) {
-        tr.add(te.getAttributeValue("fqn"), te.getAttributeValue("node"), te.getAttributeValue("isTestCase"));
+      for (Element te : ListSequence.fromList(me.getChildren(ELM_TEST))) {
+        tr.add(te.getAttributeValue(ATTR_FQN), te.getAttributeValue(ATTR_NODE), te.getAttributeValue(ATTR_ISTESTCASE));
       }
     }
+    for (Element proj : ListSequence.fromList(root.getChildren(ELM_PROJECT))) {
+      if (myProjectUrl != null) {
+        throw new IllegalStateException("expected only one child of type: " + ELM_PROJECT);
+      }
+      myProjectUrl = proj.getAttribute(ATTR_URL).getValue();
+    }
+
     myEnvironmentStartupData = new ScriptData();
     myEnvironmentStartupData.read(root);
   }

@@ -321,5 +321,40 @@
       </node>
     </node>
   </node>
+  <node concept="2S6QgY" id="6O6RkI0xA3J">
+    <property role="TrG5h" value="ToggleGenerateFunctionTextOrBinary" />
+    <ref role="2ZfgGC" to="2omo:hX1bSug" resolve="GenerateTextDeclaration" />
+    <node concept="2S6ZIM" id="6O6RkI0xA3K" role="2ZfVej">
+      <node concept="3clFbS" id="6O6RkI0xA3L" role="2VODD2">
+        <node concept="3clFbF" id="6O6RkI0xArg" role="3cqZAp">
+          <node concept="Xl_RD" id="6O6RkI0xArf" role="3clFbG">
+            <property role="Xl_RC" value="Toggle text/binary generation" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2Sbjvc" id="6O6RkI0xA3M" role="2ZfgGD">
+      <node concept="3clFbS" id="6O6RkI0xA3N" role="2VODD2">
+        <node concept="3clFbF" id="6O6RkI0xB83" role="3cqZAp">
+          <node concept="37vLTI" id="6O6RkI0xEoI" role="3clFbG">
+            <node concept="3fqX7Q" id="6O6RkI0xEKc" role="37vLTx">
+              <node concept="2OqwBi" id="6O6RkI0xEKe" role="3fr31v">
+                <node concept="2Sf5sV" id="6O6RkI0xEKf" role="2Oq$k0" />
+                <node concept="3TrcHB" id="6O6RkI0xEKg" role="2OqNvi">
+                  <ref role="3TsBF5" to="2omo:mnd_T6VhrG" resolve="binaryOutput" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="6O6RkI0xBkl" role="37vLTJ">
+              <node concept="2Sf5sV" id="6O6RkI0xB82" role="2Oq$k0" />
+              <node concept="3TrcHB" id="6O6RkI0xDhQ" role="2OqNvi">
+                <ref role="3TsBF5" to="2omo:mnd_T6VhrG" resolve="binaryOutput" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

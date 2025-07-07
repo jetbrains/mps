@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
-@GeneratedClass(node = "r:92932ea9-7c1a-42ec-ba50-b485e2406f2b(jetbrains.mps.ide.ui.util)/4744614252206716878", model = "r:92932ea9-7c1a-42ec-ba50-b485e2406f2b(jetbrains.mps.ide.ui.util)")
+@GeneratedClass(nodeId = "4744614252206716878", model = "r:92932ea9-7c1a-42ec-ba50-b485e2406f2b(jetbrains.mps.ide.ui.util)")
 public class NodeAttributesUtil {
   public static boolean isDeprecatedNode(SNode node) {
     return SNodeOperations.isInstanceOf(node, CONCEPTS.IStructureDeprecatable$Wl) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(SNodeOperations.cast(node, CONCEPTS.IStructureDeprecatable$Wl)) != null);

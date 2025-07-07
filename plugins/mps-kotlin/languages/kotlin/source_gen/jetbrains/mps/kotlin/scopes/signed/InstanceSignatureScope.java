@@ -19,6 +19,7 @@ import java.util.Objects;
  * Scope that collects all signatures in a type using a visitor.
  * 
  * @see jetbrains.mps.kotlin.scopes.TypeMembersVisitor 
+ * @see jetbrains.mps.kotlin.plugin.ExtensionsHelper requires typesystem enabled to work reliably (may function on certain types)
  */
 public class InstanceSignatureScope implements SignatureScope {
   private final TypeReference myTypeReference;
@@ -61,11 +62,15 @@ public class InstanceSignatureScope implements SignatureScope {
       }
     });
     // Visit type
-    VisibilityAccess baseAccesToType = KotlinScopesHelper.getBaseAccessToType(myContextNode, type);
+    VisibilityAccess baseAccesToType = getInstanceTypeBaseAccess();
     TypeMembersVisitor visitor = new TypeMembersVisitor(filter, myContextNode, baseAccesToType);
     IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(type, visitor);
 
     return visitor.getMembers();
+  }
+
+  protected VisibilityAccess getInstanceTypeBaseAccess() {
+    return KotlinScopesHelper.getBaseAccessToType(myContextNode, getInstanceType());
   }
 
   @Override

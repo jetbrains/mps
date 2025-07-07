@@ -10,7 +10,7 @@ import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.make.facet.ITarget;
 
-@GeneratedClass(node = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)/6705512905415971354", model = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)")
+@GeneratedClass(nodeId = "6705512905415971354", model = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)")
 public final class JavaCompileFacetInitializer implements PropertyPoolInitializer {
   private Boolean mySkipCompilation;
   private JavaCompilerOptions myOptions;

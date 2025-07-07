@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,6 +48,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * @deprecated obsolete component that uses MPSTree
+ */
+@Deprecated(forRemoval = true)
 public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
   private Project myProject;
   private ProjectTreeNode myProjectTreeNode;
@@ -108,7 +112,7 @@ public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
       }
     } else {
       // postpone the update until the make session ends
-      if (myMakeNotificationListener.compareAndSet(null, new Stub() {
+      if (myMakeNotificationListener.compareAndSet(null, new IMakeNotificationListener() {
         @Override
         public void sessionClosed(MakeNotification notification) {
           rebuildLater();

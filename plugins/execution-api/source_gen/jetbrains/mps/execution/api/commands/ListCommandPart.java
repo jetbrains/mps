@@ -12,7 +12,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.io.File;
 
-@GeneratedClass(node = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)/6868250101935612520", model = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)")
+@GeneratedClass(nodeId = "6868250101935612520", model = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)")
 public class ListCommandPart extends AbstractCommandPart implements CommandPart {
   private static final Logger LOG = Logger.getLogger(ListCommandPart.class);
   public ListCommandPart(List<? extends Object> list) {

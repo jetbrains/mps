@@ -318,7 +318,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateAggregation(0x88e6d7a0aad9adfL, "modelsToGenerateBlock");
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL);
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a53b0xb);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_Refactoring = cpb.create();
         }
         return props_Refactoring;

@@ -20,7 +20,7 @@ public class EnumerationDescriptor_TransformKind extends EnumerationDescriptorBa
   private final EnumerationDescriptor.MemberDescriptor myMember_Extend_0 = new EnumerationDescriptor.MemberDescriptor("Extend", "Extend", 0x100024c0a63c4817L, "r:4a23ef0d-9c2f-48a6-8597-fbdd5b11f792(jetbrains.mps.lang.generator.plan.structure)/1152961914448136215");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x100024c0a63c4812L, 0x100024c0a63c4813L, 0x100024c0a63c4814L, 0x100024c0a63c4817L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_Transform_0, myMember_TargetAt_0, myMember_Extend_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_Transform_0, myMember_TargetAt_0, myMember_Extend_0);
 
   @Nullable
   @Override

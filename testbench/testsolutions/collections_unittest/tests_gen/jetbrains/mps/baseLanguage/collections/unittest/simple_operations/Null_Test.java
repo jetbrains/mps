@@ -19,10 +19,10 @@ public class Null_Test {
     Assert.assertNull(ListSequence.fromList(l).first());
     Assert.assertNull(ListSequence.fromList(l).last());
     Assert.assertNull(ListSequence.fromList(l).first());
-    Assert.assertEquals(-1, ListSequence.fromList(l).indexOf(""));
+    Assert.assertEquals(Integer.valueOf(-1), Integer.valueOf(ListSequence.fromList(l).indexOf("")));
     Assert.assertTrue(ListSequence.fromList(l).isEmpty());
     Assert.assertFalse(ListSequence.fromList(l).isNotEmpty());
-    Assert.assertEquals(0, ListSequence.fromList(l).count());
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(ListSequence.fromList(l).count()));
     ListSequence.fromList(l).removeElement("");
     ListSequence.fromList(l).removeSequence(ListSequence.fromList(l));
   }

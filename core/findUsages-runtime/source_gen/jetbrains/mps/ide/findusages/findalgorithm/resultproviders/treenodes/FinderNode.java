@@ -15,7 +15,7 @@ import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.ReloadableFinder;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 
-@GeneratedClass(node = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)/8568892084424435683", model = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)")
+@GeneratedClass(nodeId = "8568892084424435683", model = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)")
 public class FinderNode extends BaseLeaf {
   private static final String FINDER = "finder";
   private static final String GENERATED_FINDER = "generated_finder";

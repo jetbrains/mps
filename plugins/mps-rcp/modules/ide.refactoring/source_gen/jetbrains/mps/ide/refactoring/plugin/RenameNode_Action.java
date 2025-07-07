@@ -9,9 +9,9 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.refactoring.runtime.access.RefactoringAccess;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.MPSProject;
 import java.awt.Frame;
 import com.intellij.featureStatistics.FeatureUsageTracker;
@@ -46,7 +46,7 @@ public class RenameNode_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return RefactoringAccess.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT)).isApplicable("jetbrains.mps.lang.core.refactorings.Rename", event.getData(MPSCommonDataKeys.NODE));
+    return RefactoringAccess.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT)).isApplicable("jetbrains.mps.lang.core.refactorings.Rename", event.getData(MPSCommonDataKeys.NODE)) && !(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)).isReadOnly());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,17 @@
  */
 package jetbrains.mps.smodel.tempmodel;
 
-import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
-import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.MPSModuleOwner;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
-import org.jetbrains.mps.openapi.module.SModuleId;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import java.util.Collections;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * FIXME why it's not a TransientSModule, so that we don't need to care about this particular kind of module when we want to
@@ -38,34 +34,22 @@ import java.util.Set;
  * TODO: it does not belong to any repository
  *       ^^ is this true?
  */
-public class TempModule extends ReloadableModuleBase implements SModule, MPSModuleOwner {
+public class TempModule extends AbstractModule implements SModule, ReloadableModule {
   private final ModuleDescriptor myDescriptor;
-  private final JavaModuleFacet myJavaModuleFacet;
+  private final List<SModuleFacet> myModuleFacets;
 
-  public TempModule(Set<ModelRootDescriptor> modelRoots, boolean withSourceGen, boolean withJavaFacet) {
-    if (withSourceGen && !withJavaFacet) {
-      throw new IllegalArgumentException("Don't have GenerationTargetFacet implementation other than JavaModuleFacet handy, either write one or re-consider arguments");
-    }
-    SModuleId id = ModuleId.regular();
-    SModuleReference reference = new ModuleReference("TempModule" + id, id);
-    setModuleReference(reference);
-    // FIXME who cares to have MD for a temp module?
+  /*package*/ TempModule(SModuleFacet... facets) {
+    super((IFile) null);
+    // FIXME remove MD altogether
     myDescriptor = new ModuleDescriptor();
-    myDescriptor.getModelRootDescriptors().addAll(modelRoots);
-    dependenciesChanged();
+    ModuleId id = ModuleId.regular();
+    myDescriptor.setId(id);
+    myDescriptor.setNamespace("TempModule" + id);
+    setModuleReference(myDescriptor.getModuleReference());
 
-    if (withJavaFacet) {
-      myJavaModuleFacet = new NaiveJavaModuleFacet(this,
-                                                  withSourceGen ? "TEMP_SOURCE_GEN"
-                                                                : null,
-                                                   "TEMP_CLASSES_GEN");
-    } else {
-      myJavaModuleFacet = null;
-    }
-  }
-
-  public boolean isHidden() {
-    return true;
+    myModuleFacets = Arrays.asList(facets);
+    // FIXME likely would be better to move next to module's register()/untegister() code
+    myModuleFacets.forEach(f -> f.attach(this));
   }
 
   @Override
@@ -87,7 +71,7 @@ public class TempModule extends ReloadableModuleBase implements SModule, MPSModu
   @NotNull
   @Override
   public Iterable<SModuleFacet> getFacets() {
-    return myJavaModuleFacet != null ? Collections.singleton(myJavaModuleFacet) : Collections.emptySet();
+    return myModuleFacets;
   }
 
   public String toString() {

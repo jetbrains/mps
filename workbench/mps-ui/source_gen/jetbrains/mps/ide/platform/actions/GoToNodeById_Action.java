@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.persistence.def.v9.IdEncoder;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@GeneratedClass(node = "r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)/227146524086541067", model = "r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)")
+@GeneratedClass(nodeId = "227146524086541067", model = "r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)")
 public class GoToNodeById_Action extends BaseAction {
   private static final Icon ICON = null;
 

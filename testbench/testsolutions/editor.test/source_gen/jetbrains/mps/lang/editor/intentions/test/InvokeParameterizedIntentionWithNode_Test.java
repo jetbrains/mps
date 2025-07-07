@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class InvokeParameterizedIntentionWithNode_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(InvokeParameterizedIntentionWithNode_Test.class, "${mps_home}", "r:5e7f4bbc-a70e-4ed1-a92d-22eea98a2a8c(jetbrains.mps.lang.editor.intentions.test)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(InvokeParameterizedIntentionWithNode_Test.class).projectPath(null).modelRef("r:5e7f4bbc-a70e-4ed1-a92d-22eea98a2a8c(jetbrains.mps.lang.editor.intentions.test)").reopenProject(false).build());
 
   public InvokeParameterizedIntentionWithNode_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -34,7 +34,7 @@ public class InvokeParameterizedIntentionWithNode_Test extends BaseTransformatio
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("3148679935644987430", "3148679935644987444");
-      invokeParameterizedIntention("jetbrains.mps.lang.editor.editorTest.intentions.MoveAttributeToNodeParam_Intention", getNodeById("3148679935644987437"), myStart.getNode());
+      invokeParameterizedIntention("jetbrains.mps.lang.editor.editorTest.intentions.MoveAttributeToNodeParam_Intention", getAnnotatedNode("param"), myStart.getNode());
     }
   }
 }

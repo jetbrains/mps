@@ -11,7 +11,7 @@ import jetbrains.mps.components.CoreComponent;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.components.ComponentPluginFactory;
 
-@GeneratedClass(node = "r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)/1289622777586550823", model = "r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)")
+@GeneratedClass(nodeId = "1289622777586550823", model = "r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)")
 public final class MPSBaseLanguage extends ComponentPlugin implements ComponentHost {
   private ClassifierSuccessors mySuccessorIndex;
   private CodeStyleSettingsRegistry myCodeStyleRegistry;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,10 @@
 package jetbrains.mps.nodeEditor.cells;
 
 import com.intellij.openapi.command.CommandProcessor;
+import com.intellij.openapi.util.text.HtmlBuilder;
 import com.intellij.openapi.util.text.HtmlChunk;
+import com.intellij.openapi.vfs.VirtualFileManager;
+import com.intellij.util.io.URLUtil;
 import com.intellij.util.ui.StartupUiUtil;
 import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
@@ -28,6 +31,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.ide.datatransfer.TextPasteUtil;
+import jetbrains.mps.ide.undo.WorkbenchUndoHandler;
 import jetbrains.mps.nodeEditor.CellSide;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.IntelligentInputUtil;
@@ -35,6 +39,7 @@ import jetbrains.mps.nodeEditor.IntelligentInputUtil.IntelligentCellProcessor;
 import jetbrains.mps.nodeEditor.cellLayout.PunctuationUtil;
 import jetbrains.mps.nodeEditor.cellMenu.CompletionHelper;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstitutePatternEditor;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationUtil;
 import jetbrains.mps.nodeEditor.keyboard.TextChangeEvent;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 import jetbrains.mps.openapi.editor.ActionHandler;
@@ -75,7 +80,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   protected TextLine myNullTextLine;
   protected CaretState myCaretState = new CaretState();
 
-  protected EditorCell_Label(@NotNull jetbrains.mps.openapi.editor.EditorContext editorContext, SNode node, String text) {
+  protected EditorCell_Label(@NotNull EditorContext editorContext, SNode node, String text) {
     super(editorContext, node);
     myTextLine = new TextLine("", getStyle(), false, editorContext.getEditorComponent().getEditorComponentSettings());
     myNullTextLine = new TextLine("", getStyle(), true, editorContext.getEditorComponent().getEditorComponentSettings());
@@ -132,20 +137,41 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   }
 
   private String getRenderedHtml() {
-    HtmlChunk htmlChunk = HtmlChunk.text(getRenderedText());
+    HtmlBuilder htmlBuilder = new HtmlBuilder();
+    for (Character c : getRenderedText().toCharArray()) {
+      if (c == ' ') {
+        htmlBuilder.append(HtmlChunk.nbsp());
+      } else {
+        htmlBuilder.append(c.toString());
+      }
+    }
+    HtmlChunk htmlChunk = htmlBuilder.toFragment();
 
     // format
     boolean isBold = this.getRenderedTextLine().getFont().isBold();
     if (isBold) {
       htmlChunk = htmlChunk.bold();
     }
-    boolean isItalic = this.getRenderedTextLine().getFont().isItalic();
-    if (isItalic) {
-      htmlChunk = htmlChunk.italic();
-    }
     boolean isUnderlined = this.getRenderedTextLine().isUnderlined();
     if (isUnderlined) {
       htmlChunk = htmlChunk.wrapWith("u");
+    }
+
+    String link = null;
+    String url = this.getStyle().get(StyleAttributes.URL);
+    if (url != null){
+      if (!url.startsWith(URLUtil.HTTP_PROTOCOL)) {
+        url = VirtualFileManager.constructUrl(URLUtil.HTTP_PROTOCOL, url);
+      }
+      link = MPSDocumentationUtil.getLinkForUrl(url);
+    } else {
+      SNode node = APICellAdapter.getSNodeWRTReference(this);
+      if (node != this.getSNode()){
+        link = MPSDocumentationUtil.getLinkForSNodeReference(node.getReference());
+      }
+    }
+    if (link != null) {
+      htmlChunk = HtmlChunk.link(link, htmlChunk);
     }
 
     // color
@@ -161,7 +187,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     int fontSize = StartupUiUtil.getLabelFont().getSize();
     float cellFontSize = this.getRenderedTextLine().getFont().getSize2D();
     if (fontSize != cellFontSize) {
-      htmlChunk = HtmlChunk.span("font-size: " + cellFontSize + "px").child(htmlChunk);
+      htmlChunk = HtmlChunk.font((int) cellFontSize).child(htmlChunk);
     }
     return htmlChunk.toString();
   }
@@ -219,6 +245,9 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   }
 
   public boolean isCaretPositionAllowed(int position) {
+    if (getStyle().get(StyleAttributes.PLACEHOLDER) && position != 0) {
+      return false;
+    }
     if (!StyleAttributesUtil.isFirstPositionAllowed(getStyle()) && position == 0) {
       return false;
     }
@@ -244,14 +273,18 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
   @Override
   public void end() {
-    int textLength = getText().length();
-    if (StyleAttributesUtil.isLastPositionAllowed(getStyle())) {
-      if (textLength > 0 || StyleAttributesUtil.isFirstPositionAllowed(getStyle())) {
-        setCaretPosition(getText().length());
-      }
+    if (getStyle().get(StyleAttributes.PLACEHOLDER)) {
+      setCaretPosition(0);
     } else {
-      if (textLength > 0 && (textLength > 1 || StyleAttributesUtil.isFirstPositionAllowed(getStyle()))) {
-        setCaretPosition(getText().length() - 1);
+      int textLength = getText().length();
+      if (StyleAttributesUtil.isLastPositionAllowed(getStyle())) {
+        if (textLength > 0 || StyleAttributesUtil.isFirstPositionAllowed(getStyle())) {
+          setCaretPosition(getText().length());
+        }
+      } else {
+        if (textLength > 0 && (textLength > 1 || StyleAttributesUtil.isFirstPositionAllowed(getStyle()))) {
+          setCaretPosition(getText().length() - 1);
+        }
       }
     }
   }
@@ -471,6 +504,9 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   }
 
   private void makePositionValid() {
+    if (getStyle().get(StyleAttributes.PLACEHOLDER) && myTextLine.getCaretPosition() > 0) {
+      setCaretPosition(0);
+    }
     if (myTextLine.getCaretPosition() == 0 && !StyleAttributesUtil.isFirstPositionAllowed(getStyle()) && isCaretPositionAllowed(1)) {
       setCaretPosition(1);
     }
@@ -630,7 +666,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
   private void addChangeTextUndoableAction() {
     final ModelAccess ma = getContext().getRepository().getModelAccess();
-    if (ma instanceof ModelCommandContext.Provider) {
+    if (ma instanceof Provider) {
       final ModelCommandContext cc = ((Provider) ma).getCommandContext(getContext().getModel());
       if (cc != null) {
         cc.registerActionWithUndo(new DummyUndoableAction(getSNode()));
@@ -661,7 +697,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     return currentText.substring(0, startSelection) + replacingText + currentText.substring(endSelection);
   }
 
-  private boolean canDeleteFrom(jetbrains.mps.openapi.editor.cells.EditorCell cell) {
+  private boolean canDeleteFrom(EditorCell cell) {
     if (getText().length() == 0) {
       return false;
     }
@@ -775,7 +811,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
   @Override
   public NodeSubstitutePatternEditor createSubstitutePatternEditor() {
-    return new NodeSubstitutePatternEditor(getEditor().getEditorComponentSettings(), this);
+    return new NodeSubstitutePatternEditor(this);
   }
 
   public void selectWordOrAll() {
@@ -896,7 +932,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   }
 
   private boolean isTheOnlyCompletelySelectedLabelInBigCell() {
-    jetbrains.mps.openapi.editor.cells.EditorCell containingBigCell = CellTraversalUtil.getContainingBigCell(this);
+    EditorCell containingBigCell = CellTraversalUtil.getContainingBigCell(this);
     return CellTraversalUtil.getFirstLeaf(containingBigCell) == this && CellTraversalUtil.getLastLeaf(containingBigCell) == this &&
            getText().equals(getSelectedText());
   }
@@ -1323,8 +1359,8 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
   /**
    * This action can be used to introduce empty action into the stack of actions within UndoHelper
-   * forcing it to add undoable command into IDEA undo stack: see {@link jetbrains.mps.ide.undo.WorkbenchUndoHandler}
-   * flushCommand() method implementation. This method will not add {@link jetbrains.mps.ide.undo.SNodeIdeaUndoableAction}
+   * forcing it to add undoable command into IDEA undo stack: see {@link WorkbenchUndoHandler}
+   * flushCommand() method implementation. This method will not add {@link SNodeIdeaUndoableAction}
    * action into IDEA undo stack if it has no own undoable actions.
    * <p/>
    * This is helpful in case of UI-only modifications performed upon the cells. For example, if the textual cell is modified

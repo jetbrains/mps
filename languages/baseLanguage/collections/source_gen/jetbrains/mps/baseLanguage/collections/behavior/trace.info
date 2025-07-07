@@ -2886,82 +2886,85 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590327(jetbrains.mps.baseLanguage.collections.behavior)/1331913329176269837">
     <file name="CustomContainersUtil.java">
-      <node id="1576845966387098673" at="24,225,25,214" concept="8" />
-      <node id="1576845966387098679" at="25,214,26,75" concept="3" />
-      <node id="1279588871815509357" at="26,75,27,94" concept="8" />
-      <node id="1434634659124293199" at="27,94,28,381" concept="8" />
-      <node id="1434634659123514320" at="28,381,29,277" concept="8" />
-      <node id="1434634659124293832" at="31,79,32,66" concept="8" />
-      <node id="1434634659124149575" at="33,81,34,276" concept="8" />
-      <node id="1434634659124149429" at="36,19,37,103" concept="3" />
-      <node id="1434634659124149701" at="37,103,38,20" concept="1" />
-      <node id="1434634659124149731" at="39,19,40,105" concept="3" />
-      <node id="1434634659124210439" at="40,105,41,20" concept="1" />
-      <node id="1434634659124149858" at="42,20,43,34" concept="1" />
-      <node id="1576845966387098685" at="46,7,47,17" concept="9" />
-      <node id="1576845966387098646" at="48,84,49,220" concept="8" />
-      <node id="1576845966387098652" at="49,220,50,75" concept="3" />
-      <node id="1576845966387106089" at="51,117,52,167" concept="3" />
-      <node id="1576845966387098658" at="53,7,54,17" concept="9" />
-      <node id="9034802358628472461" at="57,87,58,280" concept="9" />
-      <node id="1331913329176269837" at="62,0,63,0" concept="12" trace="containerDeclaration$nqf8" />
-      <node id="1331913329176269837" at="63,0,64,0" concept="12" trace="elementType$WxmV" />
-      <node id="1331913329176269837" at="64,0,65,0" concept="12" trace="typeVariableDeclaration$Lipp" />
-      <node id="1331913329176269837" at="65,0,66,0" concept="12" trace="containerDeclaration$QVZa" />
-      <node id="1331913329176269837" at="66,0,67,0" concept="12" trace="containerType$WQze" />
-      <node id="1331913329176269837" at="67,0,68,0" concept="12" trace="keyType$cmqk" />
-      <node id="1331913329176269837" at="68,0,69,0" concept="12" trace="valueType$hLQn" />
-      <node id="1331913329176269837" at="69,0,70,0" concept="12" trace="typeVariableDeclaration$Lz1I" />
-      <node id="1331913329176269837" at="70,0,71,0" concept="12" trace="keyType$Uj4M" />
-      <node id="1331913329176269837" at="71,0,72,0" concept="12" trace="valueType$2EUo" />
-      <node id="1331913329176269837" at="75,0,76,0" concept="12" trace="Type$bu" />
-      <node id="1331913329176269837" at="76,0,77,0" concept="12" trace="MapType$h0" />
-      <node id="1331913329176269837" at="77,0,78,0" concept="12" trace="TypeVariableReference$WL" />
-      <node id="1331913329176269839" at="21,0,23,0" concept="2" trace="CustomContainersUtil#()V" />
-      <node id="1279588871815509430" at="50,75,53,7" concept="6" />
-      <node id="9034802358628470395" at="57,0,60,0" concept="13" trace="containerDeclarations#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-      <node id="1434634659124149349" at="34,276,44,11" concept="14" />
-      <node id="1434634659124148763" at="32,66,45,9" concept="6" />
-      <node id="1434634659124293271" at="29,277,46,7" concept="4" />
-      <node id="1331913329176269888" at="23,83,55,9" concept="9" />
-      <node id="1331913329176269843" at="23,0,57,0" concept="13" trace="containerCreators#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-      <scope id="1331913329176269842" at="21,33,21,33" />
-      <scope id="1434634659124149351" at="42,20,43,34" />
-      <scope id="1279588871815509431" at="51,117,52,167" />
-      <scope id="9034802358628470398" at="57,87,58,280" />
-      <scope id="1331913329176269839" at="21,0,23,0" />
-      <scope id="1434634659124149399" at="36,19,38,20" />
-      <scope id="1434634659124149671" at="39,19,41,20" />
-      <scope id="9034802358628470395" at="57,0,60,0">
+      <node id="1576845966387098673" at="25,225,26,214" concept="8" />
+      <node id="1576845966387098679" at="26,214,27,75" concept="3" />
+      <node id="1279588871815509357" at="27,75,28,94" concept="8" />
+      <node id="1434634659124293199" at="28,94,29,381" concept="8" />
+      <node id="1434634659123514320" at="29,381,30,277" concept="8" />
+      <node id="1434634659124293832" at="32,79,33,66" concept="8" />
+      <node id="1434634659124149575" at="34,81,35,276" concept="8" />
+      <node id="1434634659124149429" at="37,19,38,103" concept="3" />
+      <node id="1434634659124149701" at="38,103,39,20" concept="1" />
+      <node id="1434634659124149731" at="40,19,41,105" concept="3" />
+      <node id="1434634659124210439" at="41,105,42,20" concept="1" />
+      <node id="1434634659124149858" at="43,20,44,34" concept="1" />
+      <node id="1576845966387098685" at="47,7,48,17" concept="9" />
+      <node id="1576845966387098646" at="49,84,50,220" concept="8" />
+      <node id="1576845966387098652" at="50,220,51,75" concept="3" />
+      <node id="1576845966387106089" at="52,117,53,167" concept="3" />
+      <node id="1576845966387098658" at="54,7,55,17" concept="9" />
+      <node id="8697389563009389525" at="59,159,60,35" concept="10" />
+      <node id="9034802358628472466" at="60,35,61,166" concept="9" />
+      <node id="1331913329176269837" at="66,0,67,0" concept="12" trace="containerDeclaration$nqf8" />
+      <node id="1331913329176269837" at="67,0,68,0" concept="12" trace="elementType$WxmV" />
+      <node id="1331913329176269837" at="68,0,69,0" concept="12" trace="typeVariableDeclaration$Lipp" />
+      <node id="1331913329176269837" at="69,0,70,0" concept="12" trace="containerDeclaration$QVZa" />
+      <node id="1331913329176269837" at="70,0,71,0" concept="12" trace="containerType$WQze" />
+      <node id="1331913329176269837" at="71,0,72,0" concept="12" trace="keyType$cmqk" />
+      <node id="1331913329176269837" at="72,0,73,0" concept="12" trace="valueType$hLQn" />
+      <node id="1331913329176269837" at="73,0,74,0" concept="12" trace="typeVariableDeclaration$Lz1I" />
+      <node id="1331913329176269837" at="74,0,75,0" concept="12" trace="keyType$Uj4M" />
+      <node id="1331913329176269837" at="75,0,76,0" concept="12" trace="valueType$2EUo" />
+      <node id="1331913329176269837" at="79,0,80,0" concept="12" trace="Type$bu" />
+      <node id="1331913329176269837" at="80,0,81,0" concept="12" trace="MapType$h0" />
+      <node id="1331913329176269837" at="81,0,82,0" concept="12" trace="TypeVariableReference$WL" />
+      <node id="1331913329176269839" at="22,0,24,0" concept="2" trace="CustomContainersUtil#()V" />
+      <node id="1279588871815509430" at="51,75,54,7" concept="6" />
+      <node id="9034802358628472461" at="58,87,62,7" concept="9" />
+      <node id="9034802358628470395" at="58,0,64,0" concept="13" trace="containerDeclarations#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
+      <node id="1434634659124149349" at="35,276,45,11" concept="14" />
+      <node id="1434634659124148763" at="33,66,46,9" concept="6" />
+      <node id="1434634659124293271" at="30,277,47,7" concept="4" />
+      <node id="1331913329176269888" at="24,83,56,9" concept="9" />
+      <node id="1331913329176269843" at="24,0,58,0" concept="13" trace="containerCreators#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
+      <scope id="1331913329176269842" at="22,33,22,33" />
+      <scope id="1434634659124149351" at="43,20,44,34" />
+      <scope id="1279588871815509431" at="52,117,53,167" />
+      <scope id="1331913329176269839" at="22,0,24,0" />
+      <scope id="1434634659124149399" at="37,19,39,20" />
+      <scope id="1434634659124149671" at="40,19,42,20" />
+      <scope id="9034802358628472465" at="59,159,61,166" />
+      <scope id="9034802358628470398" at="58,87,62,7" />
+      <scope id="1576845966387098645" at="49,84,55,17">
+        <var name="ccc" id="1576845966387098647" />
+      </scope>
+      <scope id="9034802358628470395" at="58,0,64,0">
         <var name="model" id="7602110602933087154" />
         <var name="type" id="9034802358628472457" />
       </scope>
-      <scope id="1576845966387098645" at="48,84,54,17">
-        <var name="ccc" id="1576845966387098647" />
-      </scope>
-      <scope id="1434634659124148765" at="33,81,44,11">
+      <scope id="1434634659124148765" at="34,81,45,11">
         <var name="pt" id="1434634659124149576" />
       </scope>
-      <scope id="1434634659124293272" at="31,79,45,9">
+      <scope id="1434634659124293272" at="32,79,46,9">
         <var name="c" id="1434634659124293833" />
       </scope>
-      <scope id="1434634659124293271" at="29,277,46,7">
+      <scope id="1434634659124293271" at="30,277,47,7">
         <var name="idx" id="1434634659124293274" />
       </scope>
-      <scope id="1576845966387098672" at="24,225,47,17">
+      <scope id="1576845966387098672" at="25,225,48,17">
         <var name="cmc" id="1576845966387098674" />
         <var name="ctParams" id="1434634659124293200" />
         <var name="tvds" id="1279588871815509358" />
         <var name="typeParams" id="1434634659123514321" />
       </scope>
-      <scope id="1331913329176269853" at="23,83,55,9" />
-      <scope id="1331913329176269843" at="23,0,57,0">
+      <scope id="1331913329176269853" at="24,83,56,9" />
+      <scope id="1331913329176269843" at="24,0,58,0">
         <var name="model" id="7602110602933087137" />
         <var name="type" id="1331913329176269850" />
       </scope>
-      <unit id="1331913329176269837" at="74,0,79,0" name="jetbrains.mps.baseLanguage.collections.behavior.CustomContainersUtil$CONCEPTS" />
-      <unit id="1331913329176269837" at="61,0,73,0" name="jetbrains.mps.baseLanguage.collections.behavior.CustomContainersUtil$LINKS" />
-      <unit id="1331913329176269837" at="20,0,80,0" name="jetbrains.mps.baseLanguage.collections.behavior.CustomContainersUtil" />
+      <unit id="1331913329176269837" at="78,0,83,0" name="jetbrains.mps.baseLanguage.collections.behavior.CustomContainersUtil$CONCEPTS" />
+      <unit id="1331913329176269837" at="65,0,77,0" name="jetbrains.mps.baseLanguage.collections.behavior.CustomContainersUtil$LINKS" />
+      <unit id="1331913329176269837" at="21,0,84,0" name="jetbrains.mps.baseLanguage.collections.behavior.CustomContainersUtil" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590327(jetbrains.mps.baseLanguage.collections.behavior)/1576845966386891472">

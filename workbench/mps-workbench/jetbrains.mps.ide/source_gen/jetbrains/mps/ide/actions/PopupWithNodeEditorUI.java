@@ -51,6 +51,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -61,7 +62,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
  * @see jetbrains.mps.ide.actions.PopupWithNodeEditor 
  * @see jetbrains.mps.ide.actions.ShowDefinition_Action 
  */
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/670386341911975581", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "670386341911975581", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public final class PopupWithNodeEditorUI implements Disposable {
   private static final Dimension PANEL_SIZE = JBUI.size(700, 300);
 
@@ -276,6 +277,13 @@ public final class PopupWithNodeEditorUI implements Disposable {
         e.getPresentation().setVisible(false);
       }
     }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
+    }
   }
 
   private class ForwardAction extends AnAction {
@@ -296,6 +304,13 @@ public final class PopupWithNodeEditorUI implements Disposable {
       if (myNodeChooser.getItemCount() <= 1) {
         e.getPresentation().setVisible(false);
       }
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
     }
   }
 

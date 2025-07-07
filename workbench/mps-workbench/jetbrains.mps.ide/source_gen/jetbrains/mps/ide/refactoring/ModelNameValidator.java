@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 /**
  * Allow to validate model name under provided model root
  */
-@GeneratedClass(node = "r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)/7250929142958060523", model = "r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)")
+@GeneratedClass(nodeId = "7250929142958060523", model = "r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)")
 public final class ModelNameValidator {
   private final ModelRoot myModelRoot;
 

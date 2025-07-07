@@ -490,43 +490,72 @@
   <root nodeRef="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)/5113316557562117902">
     <file name="TestSession.java">
       <node id="5113316557565449540" at="14,0,15,0" concept="3" trace="myAccessories" />
-      <node id="5113316557565462546" at="16,58,17,44" concept="2" />
-      <node id="5113316557568014037" at="29,52,30,81" concept="7" />
-      <node id="5113316557568055882" at="31,5,32,28" concept="7" />
-      <node id="5113316557564587341" at="16,0,19,0" concept="1" trace="TestSession#(Ljava/util/Map;)V" />
-      <node id="5113316557568011091" at="28,73,31,5" concept="4" />
-      <node id="5113316557565464619" at="28,0,34,0" concept="5" trace="getAccessory#(Ljava/lang/Class;)Ljava/util/Optional;" />
-      <scope id="5113316557564587345" at="16,58,17,44" />
-      <scope id="5113316557568011149" at="29,52,30,81" />
-      <scope id="5113316557564587341" at="16,0,19,0">
+      <node id="1260916792442958193" at="15,0,16,0" concept="3" trace="myProperties" />
+      <node id="5113316557565462546" at="17,90,18,44" concept="2" />
+      <node id="1260916792442966474" at="18,44,19,42" concept="2" />
+      <node id="5113316557568014037" at="31,52,32,81" concept="7" />
+      <node id="5113316557568055882" at="33,5,34,28" concept="7" />
+      <node id="1260916792442999334" at="43,40,44,35" concept="7" />
+      <node id="1260916792442904680" at="45,5,46,35" concept="7" />
+      <node id="5113316557568011091" at="30,73,33,5" concept="4" />
+      <node id="1260916792442975674" at="42,47,45,5" concept="4" />
+      <node id="5113316557564587341" at="17,0,21,0" concept="1" trace="TestSession#(Ljava/util/Map;Ljava/util/Map;)V" />
+      <node id="5113316557565464619" at="30,0,36,0" concept="5" trace="getAccessory#(Ljava/lang/Class;)Ljava/util/Optional;" />
+      <node id="1260916792442872547" at="42,0,48,0" concept="5" trace="getSystemProperty#(Ljava/lang/String;)Ljava/lang/String;" />
+      <scope id="5113316557568011149" at="31,52,32,81" />
+      <scope id="1260916792442975676" at="43,40,44,35" />
+      <scope id="5113316557564587345" at="17,90,19,42" />
+      <scope id="5113316557564587341" at="17,0,21,0">
         <var name="accessories" id="5113316557565456344" />
+        <var name="properties" id="1260916792442964886" />
       </scope>
-      <scope id="5113316557565464626" at="28,73,32,28" />
-      <scope id="5113316557565464619" at="28,0,34,0">
+      <scope id="5113316557565464626" at="30,73,34,28" />
+      <scope id="1260916792442872551" at="42,47,46,35" />
+      <scope id="5113316557565464619" at="30,0,36,0">
         <var name="accessoryClass" id="5113316557565464620" />
       </scope>
-      <unit id="5113316557562117902" at="12,0,36,0" name="jetbrains.mps.baseLanguage.unitTest.platform.TestSession" />
+      <scope id="1260916792442872547" at="42,0,48,0">
+        <var name="key" id="1260916792442902854" />
+      </scope>
+      <unit id="5113316557562117902" at="12,0,50,0" name="jetbrains.mps.baseLanguage.unitTest.platform.TestSession" />
     </file>
   </root>
   <root nodeRef="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)/5113316557565525910">
     <file name="TestSessionConfig.java">
       <node id="5113316557565527522" at="13,0,14,0" concept="3" trace="myAccessories" />
-      <node id="5113316557568089781" at="25,80,26,45" concept="2" />
-      <node id="5113316557565528063" at="26,45,27,16" concept="7" />
-      <node id="5113316557565598492" at="30,34,31,42" concept="7" />
-      <node id="5113316557565526020" at="15,0,17,0" concept="1" trace="TestSessionConfig#()V" />
-      <node id="5113316557565595305" at="30,0,33,0" concept="5" trace="create#()Ljetbrains/mps/baseLanguage/unitTest/platform/TestSession;" />
-      <node id="5113316557565528048" at="25,0,29,0" concept="5" trace="withAccessory#(Ljava/lang/Class;null)Ljetbrains/mps/baseLanguage/unitTest/platform/TestSessionConfig;" />
-      <scope id="5113316557565526024" at="15,30,15,30" />
-      <scope id="5113316557565595309" at="30,34,31,42" />
-      <scope id="5113316557565526020" at="15,0,17,0" />
-      <scope id="5113316557565528056" at="25,80,27,16" />
-      <scope id="5113316557565595305" at="30,0,33,0" />
-      <scope id="5113316557565528048" at="25,0,29,0">
+      <node id="1260916792442919952" at="14,0,15,0" concept="3" trace="myProperties" />
+      <node id="5113316557568089781" at="26,80,27,45" concept="2" />
+      <node id="5113316557565528063" at="27,45,28,16" concept="7" />
+      <node id="1260916792442924441" at="35,27,36,38" concept="2" />
+      <node id="1260916792442953571" at="37,5,38,16" concept="7" />
+      <node id="5113316557565598492" at="41,34,42,56" concept="7" />
+      <node id="5113316557565526020" at="16,0,18,0" concept="1" trace="TestSessionConfig#()V" />
+      <node id="736394498117819650" at="34,76,37,5" concept="4" />
+      <node id="5113316557565595305" at="41,0,44,0" concept="5" trace="create#()Ljetbrains/mps/baseLanguage/unitTest/platform/TestSession;" />
+      <node id="5113316557565528048" at="26,0,30,0" concept="5" trace="withAccessory#(Ljava/lang/Class;null)Ljetbrains/mps/baseLanguage/unitTest/platform/TestSessionConfig;" />
+      <node id="1260916792442912763" at="34,0,40,0" concept="5" trace="withSystemProperty#(Ljava/lang/String;Ljava/lang/String;)Ljetbrains/mps/baseLanguage/unitTest/platform/TestSessionConfig;" />
+      <scope id="5113316557565526024" at="16,30,16,30" />
+      <scope id="736394498117819652" at="35,27,36,38" />
+      <scope id="5113316557565595309" at="41,34,42,56" />
+      <scope id="5113316557565526020" at="16,0,18,0" />
+      <scope id="5113316557565528056" at="26,80,28,16" />
+      <scope id="5113316557565595305" at="41,0,44,0" />
+      <scope id="5113316557565528048" at="26,0,30,0">
         <var name="accessoryClass" id="5113316557565528049" />
         <var name="value" id="5113316557565528052" />
       </scope>
-      <unit id="5113316557565525910" at="11,0,34,0" name="jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig" />
+      <scope id="1260916792442912767" at="34,76,38,16" />
+      <scope id="1260916792442912763" at="34,0,40,0">
+        <var name="key" id="1260916792442916273" />
+        <var name="property" id="1260916792442916983" />
+      </scope>
+      <unit id="5113316557565525910" at="11,0,45,0" name="jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig" />
+    </file>
+  </root>
+  <root nodeRef="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)/6249398642455104933">
+    <file name="SystemProperties.java">
+      <node id="6249398642455106389" at="15,0,16,0" concept="10" trace="PROJECT_PATH" />
+      <unit id="6249398642455104933" at="10,0,18,0" name="jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties" />
     </file>
   </root>
 </debug-info>

@@ -19,7 +19,7 @@ public class EnumerationDescriptor_KeyMapChange extends EnumerationDescriptorBas
   private final EnumerationDescriptor.MemberDescriptor myMember_remove_0 = new EnumerationDescriptor.MemberDescriptor("remove", "remove", 0x5e2b603c8f03666aL, "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/4241665505353447100");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5e2b603c8f036668L, 0x5e2b603c8f036669L, 0x5e2b603c8f03666aL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_replace_all_0, myMember_remove_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_replace_all_0, myMember_remove_0);
 
   @Nullable
   @Override

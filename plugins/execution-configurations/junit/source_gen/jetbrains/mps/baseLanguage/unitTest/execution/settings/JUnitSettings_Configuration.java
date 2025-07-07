@@ -30,7 +30,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.util.Reference;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.execution.lib.ClonableList;
 
 public final class JUnitSettings_Configuration implements IPersistentConfiguration, Copyable<JUnitSettings_Configuration> {
@@ -146,11 +145,7 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
   public List<SNodeReference> getTestsToMake(final MPSProject project) {
     final Reference<List<ITestNodeWrapper>> toTest = new Reference<List<ITestNodeWrapper>>();
     ApplicationManager.getApplication().invokeAndWait(() -> toTest.set(getTestsUnderProgress(project)), ModalityState.NON_MODAL);
-    return ListSequence.fromList(toTest.get()).select(new _FunctionTypes._return_P1_E0<SNodeReference, ITestNodeWrapper>() {
-      public SNodeReference invoke(ITestNodeWrapper it) {
-        return it.getNodePointer();
-      }
-    }).toList();
+    return ListSequence.fromList(toTest.get()).select((it) -> it.getNodePointer()).toList();
   }
   private List<ITestNodeWrapper> collectTests(final MPSProject project) {
     return getJUnitRunType().collect(this, project);

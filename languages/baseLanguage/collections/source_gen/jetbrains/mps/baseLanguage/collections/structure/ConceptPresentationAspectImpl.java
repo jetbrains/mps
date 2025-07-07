@@ -543,7 +543,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ForEachVariable == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a74b0rg);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_ForEachVariable = cpb.create();
         }
         return props_ForEachVariable;

@@ -1,12 +1,12 @@
 /*
- * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel.constraints;
 
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblem;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.language.ConceptRegistryUtil;
+import jetbrains.mps.smodel.language.ConstraintsRegistry;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
@@ -27,7 +27,14 @@ import java.util.List;
 public final class ConstraintsChildAndPropFacade {
   private static final Logger LOG = Logger.getLogger(ConstraintsChildAndPropFacade.class);
 
+  private static ConstraintsRegistry ourConstraintsRegistry;
+
   private ConstraintsChildAndPropFacade() {}
+
+  /*package*/ static void initRegistry(ConstraintsRegistry registry) {
+    ourConstraintsRegistry = registry;
+  }
+
 
   /**
    * Validates both structure constraints {@code SType#isInstanceOf(Object)}
@@ -48,7 +55,7 @@ public final class ConstraintsChildAndPropFacade {
       value = "";
     }
     CheckingNodeContextImpl debugInfo = new CheckingNodeContextImpl();
-    @NotNull ConstraintsDescriptor descriptor = ConceptRegistryUtil.getConstraintsDescriptor(context.getNode().getConcept());
+    ConstraintsDescriptor descriptor = ourConstraintsRegistry.getConstraintsDescriptor(context.getNode().getConcept());
     PropertyConstraintsDescriptor pcd = descriptor.getProperty(property);
     if (pcd == null) {
       return Collections.singletonList(new FailingPropertyConstraintProblem(property, context.getNode().getReference()));

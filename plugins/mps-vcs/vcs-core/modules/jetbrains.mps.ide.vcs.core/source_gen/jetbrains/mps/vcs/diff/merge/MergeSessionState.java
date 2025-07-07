@@ -18,7 +18,7 @@ import java.util.HashMap;
  * @deprecated 
  */
 @Deprecated
-@GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/4124845871897266050", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
+@GeneratedClass(nodeId = "4124845871897266050", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
 public class MergeSessionState {
   /*package*/ final MergeTemporaryModel myResultModel;
   /*package*/ final Set<ModelChange> myResolvedChanges;

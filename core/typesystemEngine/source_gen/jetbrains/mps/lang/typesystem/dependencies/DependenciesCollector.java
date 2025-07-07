@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
  * @deprecated there are no uses of this class and I don't quite understand its purpose, nor method quotations with no-op assignment it produces. Unless there's sound objection, shall remove in the next release. Please remove this annotation and let me know if the class is still in use!!!
  */
 @Deprecated(since = "2023.3", forRemoval = true)
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)/1194533670612", model = "r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)")
+@GeneratedClass(nodeId = "1194533670612", model = "r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)")
 public class DependenciesCollector {
   @Deprecated
   public DependenciesCollector() {

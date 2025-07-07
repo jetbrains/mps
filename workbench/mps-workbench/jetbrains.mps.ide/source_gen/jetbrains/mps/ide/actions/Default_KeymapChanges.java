@@ -5,7 +5,7 @@ package jetbrains.mps.ide.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2443880313834662249", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "2443880313834662249", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public final class Default_KeymapChanges extends BaseKeymapChanges {
   public Default_KeymapChanges() {
     add("jetbrains.mps.ide.actions.CloneModel_Action", "shift F5");
@@ -48,7 +48,7 @@ public final class Default_KeymapChanges extends BaseKeymapChanges {
     add("jetbrains.mps.ide.actions.ShowDefinition_Action", "ctrl shift I");
     add("jetbrains.mps.ide.actions.ShowInLogicalView_Action", "alt F2");
     add("jetbrains.mps.ide.actions.ShowNodeInInspector_Action", "ctrl alt I");
-    add("jetbrains.mps.ide.actions.ShowNodeInfo_Action", "ctrl Q");
+    add("jetbrains.mps.ide.actions.ShowNodeInfo_Action", "ctrl shift Q");
     add("jetbrains.mps.ide.actions.ShowParameters_Action", "ctrl P");
     add("jetbrains.mps.ide.actions.ShowQuickDocumentation_Action", " F1");
     // parameterized

@@ -47,6 +47,10 @@ import javax.swing.tree.TreeNode;
 import java.util.ArrayDeque;
 import java.util.LinkedList;
 
+/**
+ * @deprecated
+ */
+@Deprecated(forRemoval = true)
 public final class ProjectTreeFindHelper {
   @Nullable
   private final ProjectTree myProjectTree;

@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
  * inject it elsewhere - it won't get reduced as lang.smodel generator is already over). Private/protected methods are 
  * not referenced from outside and are safe to use whatever deemed necessary.
  */
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6407023681583030432", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "6407023681583030432", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public interface IAttributeDescriptor {
   default boolean match(@NotNull SNode attribute) {
     return false;
