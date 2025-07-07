@@ -19,6 +19,9 @@
   <name>VCS Integration for MPS</name>
   <description>VCS features in MPS</description>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
+  <dependencies>
+    <plugin id="jetbrains.mps.core"/>
+  </dependencies>
 
   <depends optional="true">Subversion</depends>
   <depends optional="true" config-file="MPSVcsGit.xml">Git4Idea</depends>
@@ -26,12 +29,6 @@
   <depends optional="true" config-file="langDesignOptional.xml">jetbrains.mps.ide.devkit</depends>
 
   <xi:include href="MPSVcs.xml"/>
-
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.vcs.MPSVcsManager</implementation-class>
-    </component>
-  </project-components>
 
   <applicationListeners>
     <listener class="jetbrains.mps.vcs.diff.ui.common.EditorSettingsEditorColorsListener"
@@ -50,6 +47,14 @@
     <listener class="jetbrains.mps.vcs.fs.ExternalVcsRepoSynchronization"
               topic="git4idea.repo.GitRepositoryChangeListener"
               activeInHeadlessMode="false"/>
+    <listener class="jetbrains.mps.vcs.MPSVcsManager$FileStatusListener"
+              topic="com.intellij.openapi.vcs.FileStatusListener"
+              activeInHeadlessMode="false"
+              activeInTestMode="false"/>
+    <listener class="jetbrains.mps.vcs.MPSVcsManager$NotifyConfigChange"
+              topic="com.intellij.openapi.vcs.VcsMappingListener"
+              activeInHeadlessMode="false"
+              activeInTestMode="false"/>
   </projectListeners>
 
   <actions>
@@ -87,11 +92,14 @@
     <projectService serviceInterface="jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping"
                     serviceImplementation="jetbrains.mps.vcs.changesmanager.roots.NodeFileStatusMappingExt"/>
 
+    <projectService serviceImplementation="jetbrains.mps.vcs.MPSVcsManager" />
+    <backgroundPostStartupActivity implementation="jetbrains.mps.vcs.MPSVcsManager$OnStartup" />
+
     <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
     <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>
     <editorNotificationProvider implementation="jetbrains.mps.vcs.annotate.AnnotationEditorNotificationProvider"/>
 
-    <changesGroupingPolicy key="extension" id="extension" implementationClass="jetbrains.mps.vcs.integration.ExtensionChangesGroupingPolicy$Factory"/>
+    <changesGroupingPolicy key="extension" id="extension" weight="25" implementationClass="jetbrains.mps.vcs.integration.ExtensionChangesGroupingPolicy$Factory"/>
 
     <!--
       FIXME has to point to /languages as it's in build layout in mpsVcs but that would lead to module discovery errors when running from sources
@@ -105,7 +113,9 @@
     <mps.treeCreationHandler implementation="jetbrains.mps.vcs.changesmanager.tree.ChangesTreeCreationHandler"/>
     <checkoutListener implementation="jetbrains.mps.vcs.integration.ProjectCheckoutListener" id="ProjectFileMPSCheckoutListener"
                       order="after ProjectDirMPSCheckoutListener"/>
-    <checkoutListener implementation="jetbrains.mps.vcs.integration.ProjectDirMPSCheckoutListener" order="first" id="ProjectDirMPSCheckoutListener"/>
+    <checkoutListener implementation="jetbrains.mps.vcs.integration.ProjectDirMPSCheckoutListener"
+                      order="first, before ProjectDirCheckoutListener"
+                      id="ProjectDirMPSCheckoutListener"/>
     <checkoutListener implementation="jetbrains.mps.vcs.integration.NonMPSProjectCheckoutListener"
                       order="after ProjectFileMPSCheckoutListener, before PlatformProjectCheckoutListener"/>
     <checkinHandlerFactory implementation="jetbrains.mps.vcs.platform.integration.OptimizeImportsCheckinHandler$OptimizeImportsCheckinHandlerFactory"/>

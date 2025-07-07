@@ -1141,7 +1141,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("5041115067675811288", new RTQ(25, "myTemplate"));
     rtqMethods.put("5041115067675811306", new RTQ(26, "PersistentConfigurationTemplateWeave"));
     rtqMethods.put("5041115067675811316", new RTQ(27, "SettingsEditorEx"));
-    rtqMethods.put("5041115067675811328", new RTQ(28, "PersistentConfigurationEditorTemplate"));
+    rtqMethods.put("5041115067675811328", new RTQ(28, "PersistentConfigurationTemplateWeave.PersistentConfigurationEditorTemplate"));
     rtqMethods.put("5041115067675811339", new RTQ(29, "myConfiguration"));
     rtqMethods.put("5041115067675811374", new RTQ(30, "myTemplate"));
     rtqMethods.put("5041115067675811421", new RTQ(31, "name"));

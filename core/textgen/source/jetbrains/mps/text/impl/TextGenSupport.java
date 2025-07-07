@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ public final class TextGenSupport implements TextArea {
 
   public TextGenSupport(@NotNull TextGenContext context) {
     myContext = context;
-    myTraceInfoCollector = ((TextGenTransitionContext) context).getTextUnitContextObject(TraceInfoCollector.class.getName(), TraceInfoCollector.class);
+    myTraceInfoCollector = ((TextGenContextImpl) context).getTextUnitContextObject(TraceInfoCollector.class.getName(), TraceInfoCollector.class);
   }
 
   public boolean needPositions() {
@@ -123,7 +123,7 @@ public final class TextGenSupport implements TextArea {
         found = true;
         break;
       }
-      if (TextGenRegistry.getInstance().hasTextGen(attribute)) {
+      if (getContextImpl().getTextGenRegistry().hasTextGen(attribute)) {
         attributedNode = attribute;
       }
     }
@@ -142,7 +142,7 @@ public final class TextGenSupport implements TextArea {
     // start with last attribute with textgen, if any
     SNode n = node;
     for (SNode attribute : node.getChildren(SNodeUtil.link_BaseConcept_smodelAttribute)) {
-      if (TextGenRegistry.getInstance().hasTextGen(attribute)) {
+      if (getContextImpl().getTextGenRegistry().hasTextGen(attribute)) {
         n = attribute;
       }
     }
@@ -150,27 +150,28 @@ public final class TextGenSupport implements TextArea {
   }
 
   private void doAppendNode(SNode node) {
-    ((TextGenTransitionContext) myContext).generateText(node);
+    getContextImpl().generateText(node);
   }
 
 
   // FIXME copy of SNodeTextGen.foundError()
   public void reportError(String info) {
+    final String debugText = SNodeOperations.getDebugText(myContext.getPrimaryInput());
     String message = info != null ?
-        "textgen error: '" + info + "' in " + SNodeOperations.getDebugText(myContext.getPrimaryInput()) :
-        "textgen error in " + SNodeOperations.getDebugText(myContext.getPrimaryInput());
-    getTransitionContext().foundError(message, myContext.getPrimaryInput(), null);
+                     String.format("textgen error: '%s' in %s", info, debugText) :
+                     String.format("textgen error in %s", debugText);
+    getContextImpl().foundError(message, myContext.getPrimaryInput(), null);
   }
 
-  private TextGenTransitionContext getTransitionContext() {
-    return ((TextGenTransitionContext) myContext);
+  private TextGenContextImpl getContextImpl() {
+    return ((TextGenContextImpl) myContext);
   }
 
   /**
    * Mechanism to access context object instance in a typed manner.
    */
   public <T> T getContextObject(String identity, Class<T> kind) {
-    return getTransitionContext().getTextUnitContextObject(identity, kind);
+    return getContextImpl().getTextUnitContextObject(identity, kind);
   }
 
 

@@ -36,6 +36,8 @@ import javax.swing.JList;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 
 /**
  * This class was split up without thinking, just to make something work quickly.
@@ -75,6 +77,7 @@ public abstract class ListPanel<T> extends JBPanel {
     DefaultActionGroup group = ActionUtils.groupFromActions(add, remove);
     ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.RUN_CONFIGURATIONS_COMBOBOX, group, false);
     mainPanel.add(toolbar.getComponent(), BorderLayout.EAST);
+    toolbar.setTargetComponent(mainPanel);
 
     add(new JBLabel(myTitle + ":"), LayoutUtil.createLabelConstraints(0));
     add(mainPanel, LayoutUtil.createPanelConstraints(1));
@@ -208,6 +211,12 @@ public abstract class ListPanel<T> extends JBPanel {
       super.update(event);
       event.getPresentation().setEnabled(isEditable && myMpsProject != null);
     }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
   }
 
   private class MyListRemoveAction extends AnAction {
@@ -249,8 +258,14 @@ public abstract class ListPanel<T> extends JBPanel {
 
     @Override
     public void update(AnActionEvent event) {
-      super.update(event);
       event.getPresentation().setEnabled(isEditable && myMpsProject != null && myList.getSelectedIndices().length != 0);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      //  Swing access
+      return ActionUpdateThread.EDT;
     }
   }
 }

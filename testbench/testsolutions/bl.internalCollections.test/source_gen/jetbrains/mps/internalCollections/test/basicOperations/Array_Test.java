@@ -4,7 +4,6 @@ package jetbrains.mps.internalCollections.test.basicOperations;
 
 import jetbrains.mps.internalCollections.test.closures.Util_Test;
 import org.junit.jupiter.api.Test;
-import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
@@ -13,7 +12,7 @@ public class Array_Test extends Util_Test {
   @Test
   public void test_iterateArrayFor() throws Exception {
     int[] arr = new int[]{1, 2, 3, 4, 5};
-    List test = new ArrayList();
+    ArrayList<Integer> test = new ArrayList<Integer>();
     for (int i : arr) {
       test.add(i);
     }

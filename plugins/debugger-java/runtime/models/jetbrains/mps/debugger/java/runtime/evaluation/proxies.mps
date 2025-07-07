@@ -45,7 +45,6 @@
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
-      <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
       <concept id="1070475587102" name="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" flags="nn" index="XkiVB" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
@@ -176,10 +175,6 @@
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
-      </concept>
-      <concept id="1170075670744" name="jetbrains.mps.baseLanguage.structure.SynchronizedStatement" flags="nn" index="1HWtB8">
-        <child id="1170075728144" name="expression" index="1HWFw0" />
-        <child id="1170075736412" name="block" index="1HWHxc" />
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
@@ -3598,58 +3593,6 @@
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
       <node concept="2AHcQZ" id="3tYsUK_Sd3o" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="2GfvxUDMjPh" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="dispose" />
-      <node concept="3cqZAl" id="2GfvxUDMjPi" role="3clF45" />
-      <node concept="3Tm1VV" id="2GfvxUDMjPj" role="1B3o_S" />
-      <node concept="3clFbS" id="2GfvxUDMjPk" role="3clF47">
-        <node concept="1HWtB8" id="6w0uxLH2hKe" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeooIN" role="1HWFw0">
-            <ref role="3cqZAo" to="dcbi:6w0uxLH27wC" resolve="LOCK" />
-          </node>
-          <node concept="3clFbS" id="6w0uxLH2hKg" role="1HWHxc">
-            <node concept="3clFbF" id="2GfvxUDMjPl" role="3cqZAp">
-              <node concept="37vLTI" id="2GfvxUDMjPm" role="3clFbG">
-                <node concept="37vLTw" id="2BHiRxeoso1" role="37vLTJ">
-                  <ref role="3cqZAo" to="dcbi:6dm0XGkqAqt" resolve="INSTANCE" />
-                </node>
-                <node concept="10Nm6u" id="2GfvxUDMjPo" role="37vLTx" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_Sd3p" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="2GfvxUDMjPp" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="init" />
-      <node concept="3cqZAl" id="2GfvxUDMjPq" role="3clF45" />
-      <node concept="3Tm1VV" id="2GfvxUDMjPr" role="1B3o_S" />
-      <node concept="3clFbS" id="2GfvxUDMjPs" role="3clF47">
-        <node concept="1HWtB8" id="6w0uxLH2hK9" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeorF5" role="1HWFw0">
-            <ref role="3cqZAo" to="dcbi:6w0uxLH27wC" resolve="LOCK" />
-          </node>
-          <node concept="3clFbS" id="6w0uxLH2hKb" role="1HWHxc">
-            <node concept="3clFbF" id="2GfvxUDMjPt" role="3cqZAp">
-              <node concept="37vLTI" id="2GfvxUDMjPu" role="3clFbG">
-                <node concept="37vLTw" id="2BHiRxeop0K" role="37vLTJ">
-                  <ref role="3cqZAo" to="dcbi:6dm0XGkqAqt" resolve="INSTANCE" />
-                </node>
-                <node concept="Xjq3P" id="2GfvxUDMjPw" role="37vLTx" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_Sd3s" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>

@@ -9,15 +9,15 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.refactoring.runtime.access.RefactoringAccess;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.MPSProject;
 import java.awt.Frame;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import javax.swing.JOptionPane;
+import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.ide.platform.refactoring.RenameDialog;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.refactoring.participant.RefactoringProcessor;
@@ -46,7 +46,7 @@ public class RenameNode_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return RefactoringAccess.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT)).isApplicable("jetbrains.mps.lang.core.refactorings.Rename", event.getData(MPSCommonDataKeys.NODE));
+    return RefactoringAccess.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT)).isApplicable("jetbrains.mps.lang.core.refactorings.Rename", event.getData(MPSCommonDataKeys.NODE)) && !(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)).isReadOnly());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -91,7 +91,7 @@ public class RenameNode_Action extends BaseAction {
       oldName.value = SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.name$MnvL);
     });
     if (!(canBeRenamed.value)) {
-      JOptionPane.showMessageDialog(event.getData(MPSCommonDataKeys.FRAME), "Nodes with getter and without setter for the \"name\" property can't be renamed", "Read-only property", JOptionPane.INFORMATION_MESSAGE);
+      Messages.showInfoMessage(event.getData(MPSCommonDataKeys.FRAME), "Nodes with getter and without setter for the \"name\" property can't be renamed", "Read-only property");
       return;
     }
     RenameDialog dialog = new RenameDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), oldName.value, "node") {

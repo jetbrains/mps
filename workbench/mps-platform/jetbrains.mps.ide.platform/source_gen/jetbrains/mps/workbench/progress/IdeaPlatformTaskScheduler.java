@@ -13,15 +13,15 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.ProgressIndicator;
 import java.util.function.BooleanSupplier;
+import com.intellij.openapi.progress.impl.ProgressManagerImpl;
 import com.intellij.openapi.progress.util.ProgressWrapper;
+import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.progress.ProgressMonitorBase;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.progress.EmptyProgressIndicator;
-import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.progress.impl.ProgressManagerImpl;
 import com.intellij.openapi.progress.ProgressManager;
 
-@GeneratedClass(node = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)/2961775013264836716", model = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)")
+@GeneratedClass(nodeId = "2961775013264836716", model = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)")
 public class IdeaPlatformTaskScheduler extends AbstractBackgroundTaskScheduler<Task.Backgroundable> {
 
   public IdeaPlatformTaskScheduler(Project mpsProject) {
@@ -77,8 +77,7 @@ public class IdeaPlatformTaskScheduler extends AbstractBackgroundTaskScheduler<T
 
     @Override
     public BackgroundableJobQueueItem createItem(Task.Backgroundable bgdable, Runnable continuation, ProgressMonitor monitor) {
-      ProgressIndicator pind = ProgressWrapper.wrap(ProgressWrapper.unwrap(getProgressIndicator(monitor)));
-      return new BackgroundableJobQueueItem(bgdable, continuation, pind);
+      return new BackgroundableJobQueueItem(bgdable, continuation, monitor);
     }
 
     @Override
@@ -87,6 +86,40 @@ public class IdeaPlatformTaskScheduler extends AbstractBackgroundTaskScheduler<T
         if (!(blocking.run())) {
           break;
         }
+      }
+    }
+
+  }
+
+  protected static class BackgroundableJobQueueItem implements AbstractBackgroundTaskScheduler.JobQueueItem {
+
+    private final Task.Backgroundable myBackgroundable;
+    private final Runnable myContinuation;
+    private final ProgressMonitor myProgressMonitor;
+
+    public BackgroundableJobQueueItem(Task.Backgroundable bgdable, Runnable continuation, ProgressMonitor monitor) {
+      myBackgroundable = bgdable;
+      myContinuation = continuation;
+      myProgressMonitor = monitor;
+    }
+
+    @Override
+    public void accept(Runnable queueContinuation) {
+      com.intellij.openapi.project.Project project = myBackgroundable.getProject();
+      if (project != null && project.isDisposed()) {
+        // skip task execution and pump the queue
+        queueContinuation.run();
+        return;
+      }
+
+      try {
+        if (!(myProgressMonitor.isCanceled())) {
+          ProgressManagerImpl progressManager = getCoreProgressManager();
+          ProgressIndicator pind = ProgressWrapper.wrap(ProgressWrapper.unwrap(getProgressIndicator(myProgressMonitor)));
+          progressManager.runProcessWithProgressAsynchronously(myBackgroundable, pind, myContinuation, ModalityState.NON_MODAL);
+        }
+      } finally {
+        queueContinuation.run();
       }
     }
 
@@ -104,38 +137,6 @@ public class IdeaPlatformTaskScheduler extends AbstractBackgroundTaskScheduler<T
         pind = new EmptyProgressIndicator(ModalityState.NON_MODAL);
       }
       return pind;
-    }
-
-  }
-
-  protected static class BackgroundableJobQueueItem implements AbstractBackgroundTaskScheduler.JobQueueItem {
-
-    private final Task.Backgroundable myBackgroundable;
-    private final ProgressIndicator myProgressIndicator;
-    private final Runnable myContinuation;
-
-    public BackgroundableJobQueueItem(Task.Backgroundable bgdable, Runnable continuation, ProgressIndicator progressIndicator) {
-      myBackgroundable = bgdable;
-      myContinuation = continuation;
-      myProgressIndicator = progressIndicator;
-    }
-
-    @Override
-    public void accept(Runnable queueContinuation) {
-      com.intellij.openapi.project.Project project = myBackgroundable.getProject();
-      if (project != null && project.isDisposed()) {
-        // skip task execution and pump the queue
-        queueContinuation.run();
-        return;
-      }
-
-      try {
-        ProgressManagerImpl progressManager = getCoreProgressManager();
-        progressManager.runProcessWithProgressAsynchronously(myBackgroundable, myProgressIndicator, myContinuation, ModalityState.NON_MODAL);
-
-      } finally {
-        queueContinuation.run();
-      }
     }
 
     private static ProgressManagerImpl getCoreProgressManager() {

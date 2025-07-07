@@ -25,7 +25,7 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
  * As a drawback, need an external mechanism to tell non-generated files under generated location.
  * MPS doesn't use it for TextGen as we record names of generated files and don't need to walk FS any more
  */
-@GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/3251655328352589723", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
+@GeneratedClass(nodeId = "3251655328352589723", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public class StaleFilesCollector {
   private final IFile rootDir;
   private final Set<IFile> filesToKeep;

@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)/8484262519286281120", model = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)")
+@GeneratedClass(nodeId = "8484262519286281120", model = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)")
 public class ConceptAndSuperConceptsScope extends Scope {
   private final SNode myTopConcept;
 

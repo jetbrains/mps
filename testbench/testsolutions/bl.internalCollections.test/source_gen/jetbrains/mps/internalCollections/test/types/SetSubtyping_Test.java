@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -14,15 +14,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 @MPSLaunch
 public class SetSubtyping_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(SetSubtyping_Test.class, "${mps_home}", "r:3b93a80b-8267-4154-a2f6-29cf728da0a5(jetbrains.mps.internalCollections.test.types)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SetSubtyping_Test.class).projectPath(null).modelRef("r:3b93a80b-8267-4154-a2f6-29cf728da0a5(jetbrains.mps.internalCollections.test.types)").reopenProject(null).build());
 
   public SetSubtyping_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -51,36 +49,37 @@ public class SetSubtyping_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeIncompatibleTypesCheck4720524343100610619() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4720524343099923543");
+    }
 
+    public void test_NodeIncompatibleTypesCheck4720524343100610619() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("4720524343100607535");
-        SNode operation = getRealNodeById("4720524343100610619");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240249913658"), "Error: Incompatible types", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("4720524343100607535");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240249913658"), "Error: Incompatible types", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeIncompatibleTypesCheck4720524343100640222() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("4720524343100629645");
-        SNode operation = getRealNodeById("4720524343100640222");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240249913658"), "Error: Incompatible types", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("4720524343100629645");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240249913658"), "Error: Incompatible types", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeIncompatibleTypesCheck4720524343100648716() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("4720524343100648710");
-        SNode operation = getRealNodeById("4720524343100648716");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240249913658"), "Error: Incompatible types", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("4720524343100648710");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240249913658"), "Error: Incompatible types", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck4720524343099926088() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("4720524343099923541");
-        SNode operation = getRealNodeById("4720524343099926088");
-        new CheckErrorMessagesRunnable(nodeToCheck, true, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4720524343100607535"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240249913658"), "Error: Incompatible types", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4720524343100629645"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240249913658"), "Error: Incompatible types", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4720524343100648710"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240249913658"), "Error: Incompatible types", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+        SNode nodeToCheck = getNodeById("4720524343099923541");
+        new CheckErrorMessagesRunnable(nodeToCheck, true, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("4720524343100607535"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240249913658"), "Error: Incompatible types", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("4720524343100629645"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240249913658"), "Error: Incompatible types", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("4720524343100648710"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240249913658"), "Error: Incompatible types", myProject.getRepository(), myProject.getPlatform()))).run();
       });
     }
 

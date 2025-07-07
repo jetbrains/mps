@@ -28,7 +28,7 @@ public class HidingBySignatureScope extends CompositeSignatureScope {
       return null;
     } else {
       // Unlike composite, we still apply for one scope as distinct may not be applied
-      return new CompositeSignatureScope(list);
+      return new HidingBySignatureScope(list);
     }
   }
 }

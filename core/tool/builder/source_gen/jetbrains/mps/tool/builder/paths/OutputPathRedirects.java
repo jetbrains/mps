@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.io.File;
 import jetbrains.mps.vfs.IFile;
 
-@GeneratedClass(node = "r:ab35dba0-4d05-45fe-8a07-0916d087799f(jetbrains.mps.tool.builder.paths)/1343659934891487707", model = "r:ab35dba0-4d05-45fe-8a07-0916d087799f(jetbrains.mps.tool.builder.paths)")
+@GeneratedClass(nodeId = "1343659934891487707", model = "r:ab35dba0-4d05-45fe-8a07-0916d087799f(jetbrains.mps.tool.builder.paths)")
 public class OutputPathRedirects implements IRedirects {
   private final File outputRoot;
   private final File cachesOutputRoot;

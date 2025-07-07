@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.io.File;
 
-@GeneratedClass(node = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)/8514960456944541507", model = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)")
+@GeneratedClass(nodeId = "8514960456944541507", model = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)")
 public class MpsWorkerTest extends CoreWorker {
   private String myModuleRef;
   private boolean myIsPresent;

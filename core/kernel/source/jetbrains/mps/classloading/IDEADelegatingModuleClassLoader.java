@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,11 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.util.NameUtil;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+
 /**
  * The classloader-wrapper around the IDEA or system classloaders.
  * Corresponds to the module which is NOT managed by MPS classloading subsystem
@@ -26,7 +31,24 @@ public final class IDEADelegatingModuleClassLoader extends MPSModuleClassLoader 
     registerAsParallelCapable();
   }
 
-  public IDEADelegatingModuleClassLoader(ClassLoader delegate) {
-    super("Delegate to IDEA CL " + delegate.toString(), delegate);
+  private final SModuleReference myModule;
+
+  public IDEADelegatingModuleClassLoader(SModule module, ClassLoader delegate) {
+    super(String.format("Delegate %s to IDEA CL %s", NameUtil.compactNamespace(module.getModuleName()), delegate.toString()), delegate);
+    myModule = module.getModuleReference();
+  }
+
+  @Override
+  @NotNull
+  public Class<?> loadOwnClass(String name) throws ClassNotFoundException {
+    final Class<?> rv = loadClass(name);
+    // It's quite convenient to have loadOwnClass() in superclass, yet there's no easy way to implement
+    // it properly in this IDEA delegating CL. I hesitate about loadOwnClass == loadClass, or even just bald `return null`.
+    // for now, explore an assumption classes directly from plugin would come with CL == getParent, while
+    // classes from dependencies would manifest different plugin CL
+    if (rv.getClassLoader() == getParent()) {
+      return rv;
+    }
+    throw new ModuleClassNotFoundException(myModule, String.format("Class %s is not available directly from module %s but from one of its dependencies", name, myModule.getModuleName()));
   }
 }

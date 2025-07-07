@@ -19,5 +19,7 @@
     <orderEntry type="module" module-name="java-stub" />
     <orderEntry type="library" exported="" name="KotlinCoreLibs" level="project" />
     <orderEntry type="module" module-name="persistence" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
+    <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
   </component>
 </module>

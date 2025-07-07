@@ -9,7 +9,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
-import jetbrains.mps.InternalFlag;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -62,7 +62,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_bepn0t_a0a() {
-    return InternalFlag.isInternalMode();
+    return RuntimeFlags.isInternalMode();
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());

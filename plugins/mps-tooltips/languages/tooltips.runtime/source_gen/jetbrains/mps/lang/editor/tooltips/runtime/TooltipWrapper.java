@@ -19,6 +19,7 @@ import java.awt.BasicStroke;
 import java.awt.Rectangle;
 import java.awt.Component;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 
 public class TooltipWrapper extends EditorCell_Collection implements Tooltip {
   @NotNull
@@ -85,7 +86,12 @@ public class TooltipWrapper extends EditorCell_Collection implements Tooltip {
   @Nullable
   @Override
   public EditorCell getTooltipCell() {
-    return myTooltipCellEvaluator.getTooltipCell();
+    EditorCell tooltipCell = myTooltipCellEvaluator.getTooltipCell();
+    if (tooltipCell != null) {
+      tooltipCell.getStyle().set(StyleAttributes.BACKGROUND_COLOR, JBColor.background());
+    }
+
+    return tooltipCell;
   }
 
   @NotNull

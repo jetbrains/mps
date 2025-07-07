@@ -10,25 +10,40 @@ import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.kotlin.overloading.Argument;
+import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
+import jetbrains.mps.kotlin.overloading.NodeArgument;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.kotlin.api.members.SignatureBuilder;
+import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class AbstractConstructorDelegationCall__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56a195b73L, "jetbrains.mps.kotlin.structure.AbstractConstructorDelegationCall");
 
   public static final SMethod<Iterable<ParameterDeclaration>> getAvailableParameters_id1$jFvlD0xqw = new SMethodBuilder<Iterable<ParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<ParameterDeclaration>>) ((Class) Object.class))).name("getAvailableParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145046038176L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SReferenceLink> getTargetLink_id5D4bOjrrcOr = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getTargetLink").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734615461147L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Iterable<Argument>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<Argument>>(new SJavaCompoundTypeImpl((Class<Iterable<Argument>>) ((Class) Object.class))).name("getArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2228752951862577661L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<FunctionDeclaration> getFunctionDescriptor_id26mUjU3xhgD = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunctionDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2420378304462001193L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<String> getFunctionName_id4nn3FPlEjh5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5032507314958578757L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Iterable<SNode>> getAvailableConstructors_id4DC0lWpsin = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAvailableConstructors").modifiers(13, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(83774013505389719L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<SignatureScope>> getFunctionScopeParts_id6dAo8EmAhT7 = new SMethodBuilder<Iterable<SignatureScope>>(new SJavaCompoundTypeImpl((Class<Iterable<SignatureScope>>) ((Class) Object.class))).name("getFunctionScopeParts").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7162518405727723079L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(FullScopeContext.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableParameters_id1$jFvlD0xqw);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableParameters_id1$jFvlD0xqw, getTargetLink_id5D4bOjrrcOr, getArguments_id1VI7K1jROBX, getFunctionDescriptor_id26mUjU3xhgD, getFunctionName_id4nn3FPlEjh5, getAvailableConstructors_id4DC0lWpsin, getFunctionScopeParts_id6dAo8EmAhT7);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -40,6 +55,23 @@ public final class AbstractConstructorDelegationCall__BehaviorDescriptor extends
       return Sequence.fromIterable(Collections.<ParameterDeclaration>emptyList());
     }
     return func.getParameters();
+  }
+  /*package*/ static SReferenceLink getTargetLink_id5D4bOjrrcOr(@NotNull SNode __thisNode__) {
+    return LINKS.constructor$vAAY;
+  }
+  /*package*/ static Iterable<Argument> getArguments_id1VI7K1jROBX(@NotNull SNode __thisNode__) {
+    return NodeArgument.ofList(SLinkOperations.getChildren(__thisNode__, LINKS.arguments$zJyV));
+  }
+  /*package*/ static FunctionDeclaration getFunctionDescriptor_id26mUjU3xhgD(@NotNull SNode __thisNode__) {
+    return KotlinFunctionDeclaration.of(SLinkOperations.getTarget(__thisNode__, LINKS.constructor$vAAY));
+  }
+  /*package*/ static String getFunctionName_id4nn3FPlEjh5(@NotNull SNode __thisNode__) {
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.constructor$vAAY), PROPS.name$MnvL);
+  }
+  /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, FullScopeContext context) {
+    SignatureScope scope = SignatureBuilder.create(AbstractConstructorDelegationCall__BehaviorDescriptor.getAvailableConstructors_id4DC0lWpsin.invoke(__thisConcept__, context.getNode()), FunctionSignature.class).withSignature((fn) -> new FunctionSignature(new KotlinFunctionDeclaration(fn))).toScope();
+
+    return Sequence.singleton(scope);
   }
 
   /*package*/ AbstractConstructorDelegationCall__BehaviorDescriptor() {
@@ -59,6 +91,14 @@ public final class AbstractConstructorDelegationCall__BehaviorDescriptor extends
     switch (methodIndex) {
       case 0:
         return (T) ((Iterable<ParameterDeclaration>) getAvailableParameters_id1$jFvlD0xqw(node));
+      case 1:
+        return (T) ((SReferenceLink) getTargetLink_id5D4bOjrrcOr(node));
+      case 2:
+        return (T) ((Iterable<Argument>) getArguments_id1VI7K1jROBX(node));
+      case 3:
+        return (T) ((FunctionDeclaration) getFunctionDescriptor_id26mUjU3xhgD(node));
+      case 4:
+        return (T) ((String) getFunctionName_id4nn3FPlEjh5(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -71,6 +111,8 @@ public final class AbstractConstructorDelegationCall__BehaviorDescriptor extends
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 6:
+        return (T) ((Iterable<SignatureScope>) getFunctionScopeParts_id6dAo8EmAhT7(concept, (FullScopeContext) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -90,5 +132,10 @@ public final class AbstractConstructorDelegationCall__BehaviorDescriptor extends
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink constructor$vAAY = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56a195b73L, 0x1913adf56a196517L, "constructor");
+    /*package*/ static final SContainmentLink arguments$zJyV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL, 0x5b1dd60162ecf00cL, "arguments");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

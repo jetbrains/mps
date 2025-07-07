@@ -11,7 +11,7 @@
     <import index="twf3" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.ast(Eclipse.ECJ/)" />
     <import index="mm0s" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.problem(Eclipse.ECJ/)" />
     <import index="rs4p" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.core.compiler(Eclipse.ECJ/)" />
-    <import index="6g5n" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler(/)" />
+    <import index="6g5n" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler(Eclipse.ECJ/)" />
     <import index="sc83" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.impl(Eclipse.ECJ/)" />
     <import index="tz9m" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.env(Eclipse.ECJ/)" />
     <import index="i7h4" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.classfmt(Eclipse.ECJ/)" />

@@ -20,6 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.baseLanguage.util.ReflectionUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -96,9 +97,9 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ static boolean isCompileTimeConstant_idi1LOPRp(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR)) {
       SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR);
-      return SPropertyOperations.getBoolean(declaration, PROPS.isFinal$gvTP) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD));
+      return SPropertyOperations.getBoolean(declaration, PROPS.isFinal$gvTP) && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.Expression$mB, true)).contains(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD))) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD));
     } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41), PROPS.isFinal$gvTP) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41), LINKS.initializer$2twD));
+      return SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41), PROPS.isFinal$gvTP) && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.Expression$mB, true)).contains(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41), LINKS.initializer$2twD))) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41), LINKS.initializer$2twD));
     }
 
     return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invokeSuper(__thisNode__, CONCEPTS.VariableReference$TC));
@@ -229,6 +230,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
     /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
     /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
     /*package*/ static final SInterfaceConcept Closureoid$kl = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1192e7dfdd1L, "jetbrains.mps.baseLanguage.structure.Closureoid");
     /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");

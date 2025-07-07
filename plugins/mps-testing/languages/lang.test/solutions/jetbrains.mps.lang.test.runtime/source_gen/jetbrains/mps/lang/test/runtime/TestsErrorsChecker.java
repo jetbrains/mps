@@ -4,11 +4,10 @@ package jetbrains.mps.lang.test.runtime;
 
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.errors.item.NodeReportItem;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.MessageStatus;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -25,10 +24,12 @@ import jetbrains.mps.checkers.TargetConceptChecker2;
 import jetbrains.mps.project.validation.StructureChecker;
 import jetbrains.mps.checkers.ErrorReportHelper;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /**
+ * XXX I wonder what's the proper replacement for this code, what's "common model checking logic" is. There's NodeCheckerUtil next to this class, with pretty similar logic, imo.
  * 
  * @deprecated needs to be united with the common model checking logic. Here we have the second cache of the same things.
  */
@@ -36,7 +37,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public final class TestsErrorsChecker {
   private static final Logger LOG = Logger.getLogger(TestsErrorsChecker.class);
   private final SNode myRoot;
-  @Nullable
   private final ComponentHost myHost;
 
   /**
@@ -45,12 +45,7 @@ public final class TestsErrorsChecker {
   private ModelErrorsHolder<NodeReportItem> ourModelErrorsHolder = new ModelErrorsHolder<NodeReportItem>();
 
   @Deprecated
-  public TestsErrorsChecker(SNode root) {
-    this(root, null);
-  }
-
-  @Deprecated
-  public TestsErrorsChecker(SNode root, @Nullable ComponentHost host) {
+  public TestsErrorsChecker(SNode root, @NotNull ComponentHost host) {
     assert root == SNodeOperations.getContainingRoot(root);
     myRoot = root;
     myHost = host;

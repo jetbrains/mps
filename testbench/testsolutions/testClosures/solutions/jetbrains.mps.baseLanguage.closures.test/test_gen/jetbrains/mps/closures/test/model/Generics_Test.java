@@ -6,22 +6,20 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 @MPSLaunch
 public class Generics_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(Generics_Test.class, "${mps_home}", "r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Generics_Test.class).projectPath(null).modelRef("r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)").reopenProject(null).build());
 
   public Generics_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -46,28 +44,30 @@ public class Generics_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck5462327771639049246() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7289865355732882894", "1674014916759205623");
+    }
 
+    public void test_NodeErrorCheck5462327771639049246() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("5462327771639049241");
-        SNode operation = getRealNodeById("5462327771639049246");
-        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("5462327771639049241");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck5419091611223712729() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("7289865355732882896");
-        SNode operation = getRealNodeById("5419091611223712729");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("5462327771639049241"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+        SNode nodeToCheck = getNodeById("7289865355732882896");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(false).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getNodeById("5462327771639049241"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()))).run();
       });
     }
     public void test_NodeErrorCheck1674014916759209386() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("1674014916759207935");
-        SNode operation = getRealNodeById("1674014916759209386");
-        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("1674014916759207935");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

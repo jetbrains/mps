@@ -14,7 +14,7 @@ import jetbrains.mps.debug.api.programState.IWatchable;
 import java.util.ArrayList;
 import jetbrains.mps.debugger.java.runtime.state.watchables.JavaWatchpointValueWatchable;
 
-@GeneratedClass(node = "r:6dff38c0-3c4e-455b-9e65-d46014c8a7f5(jetbrains.mps.debugger.java.runtime.state.values)/3187167456722650426", model = "r:6dff38c0-3c4e-455b-9e65-d46014c8a7f5(jetbrains.mps.debugger.java.runtime.state.values)")
+@GeneratedClass(nodeId = "3187167456722650426", model = "r:6dff38c0-3c4e-455b-9e65-d46014c8a7f5(jetbrains.mps.debugger.java.runtime.state.values)")
 public class FieldWatchpointValue extends JavaValue implements IValue {
   private final Field myField;
   private final JavaValue myCurrentValue;

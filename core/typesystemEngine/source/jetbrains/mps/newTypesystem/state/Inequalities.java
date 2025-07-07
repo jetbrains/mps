@@ -333,8 +333,10 @@ public class Inequalities {
         SNode nextToSolve = forward ? nowOpposite : nowSolving;
         if (!TypesUtil.isVariable(nextToSolve)) {
           SNode type = myState.expand(nextToSolve);
-          cfwd.add(type);
-          typesToBlocks.put(type, block);
+          if (type != null) {
+            cfwd.add(type);
+            typesToBlocks.put(type, block);
+          }
         } else if (!alreadyPassed.contains(nextToSolve)){
           collectNodesTransitive(nextToSolve, cfwd, cbwd, forward == isLeft, typesToBlocks, relation, alreadyPassed);
         }

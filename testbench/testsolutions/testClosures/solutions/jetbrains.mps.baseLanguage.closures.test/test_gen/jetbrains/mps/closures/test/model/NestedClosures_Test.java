@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @MPSLaunch
 public class NestedClosures_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(NestedClosures_Test.class, "${mps_home}", "r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(NestedClosures_Test.class).projectPath(null).modelRef("r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)").reopenProject(null).build());
 
   public NestedClosures_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -44,76 +44,75 @@ public class NestedClosures_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7794145398369864922", "7794145398370003456");
+    }
+
     public void test_nestedClosuresWithNullInvoke() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7794145398369864922");
-        addNodeById("7794145398370003456");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("8064771679623824010")));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0a0a0b0d7());
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getAnnotatedNode("invoke1")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0a0a0b0f7());
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("8237239636117693349")));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0b0a0b0d7());
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getAnnotatedNode("invoke2")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0b0a0b0f7());
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("8237239636117681932")));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0c0a0b0d7());
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getAnnotatedNode("closure1")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0c0a0b0f7());
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("8064771679623817626")));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0d0a0b0d7());
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getAnnotatedNode("closure2")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0d0a0b0f7());
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
       });
     }
     public void test_nestedClosuresWithNullCompactInvoke() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7794145398369864922");
-        addNodeById("7794145398370003456");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("7794145398369968591")));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0a0a0b0e7());
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getAnnotatedNode("compactInvoke1")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0a0a0b0g7());
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("7794145398369968585")));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0b0a0b0e7());
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getAnnotatedNode("compactInvoke2")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0b0a0b0g7());
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("7794145398369968586")));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0c0a0b0e7());
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getAnnotatedNode("closure3")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0c0a0b0g7());
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("7794145398369968592")));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0d0a0b0e7());
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getAnnotatedNode("closure4")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0d0a0b0g7());
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
       });
     }
 
-    private static SNode _quotation_createNode_z5xbip_a0a0b0a0a0b0d7() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0a0a0b0f7() {
       SNode quotedNode_1 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
       quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0b0a0b0d7() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0b0a0b0f7() {
       SNode quotedNode_1 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
       quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0c0a0b0d7() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0c0a0b0f7() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0xe8770ba07b68051L, "ClosureLiteralType"));
@@ -123,7 +122,7 @@ public class NestedClosures_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), quotedNode_2);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0d0a0b0d7() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0d0a0b0f7() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0xe8770ba07b68051L, "ClosureLiteralType"));
@@ -133,19 +132,19 @@ public class NestedClosures_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), quotedNode_2);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0a0a0b0e7() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0a0a0b0g7() {
       SNode quotedNode_1 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
       quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0b0a0b0e7() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0b0a0b0g7() {
       SNode quotedNode_1 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
       quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0c0a0b0e7() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0c0a0b0g7() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0xe8770ba07b68051L, "ClosureLiteralType"));
@@ -155,7 +154,7 @@ public class NestedClosures_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), quotedNode_2);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0d0a0b0e7() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0d0a0b0g7() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0xe8770ba07b68051L, "ClosureLiteralType"));

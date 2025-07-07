@@ -44,7 +44,6 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodRefactoringUtils;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import com.intellij.java.refactoring.JavaRefactoringBundle;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.refactoring.RefactoringBundle;
 import java.util.Map;
@@ -101,7 +100,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       SNode baseMethodDeclaration = ChangeMethodSignatureDialog.this.myParameters.getDeclaration();
       SLinkOperations.setTarget(baseMethodDeclaration, LINKS.body$5xQk, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4975dc2bdcfa0c49L, "jetbrains.mps.baseLanguage.structure.StubStatementList")));
 
-      myTempModel = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.forDefaultModule());
+      myTempModel = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.nonReloadableModule(myProject.getRepository()));
       myTempModel.addRootNode(baseMethodDeclaration);
       myTempModel.addChangeListener(myDefaultValuePanel);
       myTempModel.addChangeListener(ChangeMethodSignatureDialog.this);
@@ -226,12 +225,13 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
     boolean changeVisibility = false;
     if (changeVisibilityFor.value != null && !(isChangeMandatory.value)) {
-      String message = JavaRefactoringBundle.message("dialog.message.overriding.methods.with.weaken.visibility", SConceptOperations.conceptAlias(changeVisibilityFor.value));
+      // [java-impl.jar] JavaRefactoringBundle "dialog.message.overriding.methods.with.weaken.visibility"
+      String message = String.format("Do you want to reduce the visibility of overriding methods to '%s' as well?", SConceptOperations.conceptAlias(changeVisibilityFor.value));
 
       changeVisibility = Messages.showYesNoDialog(myProject.getProject(), message, RefactoringBundle.message("changeSignature.refactoring.name"), Messages.getQuestionIcon()) == Messages.YES;
     } else if (changeVisibilityFor.value != null) {
       // TODO internationalization
-      boolean cancel = Messages.showYesNoDialog(myProject.getProject(), "Overriding methods visibility will be reduced to '" + SConceptOperations.conceptAlias(changeVisibilityFor.value) + "'. Proceed?", RefactoringBundle.message("changeSignature.refactoring.name"), Messages.getQuestionIcon()) == Messages.NO;
+      boolean cancel = Messages.showYesNoDialog(myProject.getProject(), String.format("Overriding methods visibility will be reduced to '%s'. Proceed?", SConceptOperations.conceptAlias(changeVisibilityFor.value)), RefactoringBundle.message("changeSignature.refactoring.name"), Messages.getQuestionIcon()) == Messages.NO;
 
       if (cancel) {
         return;

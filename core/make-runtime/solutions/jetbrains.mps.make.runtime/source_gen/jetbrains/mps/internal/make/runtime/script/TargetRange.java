@@ -21,11 +21,12 @@ import jetbrains.mps.make.resources.IResource;
 import java.util.LinkedList;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
 
-@GeneratedClass(node = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)/6168415856807658379", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
+@GeneratedClass(nodeId = "6168415856807658379", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
 public class TargetRange {
   private Map<ITarget.Name, ITarget> targetsView = MapSequence.fromMap(new HashMap<ITarget.Name, ITarget>());
   private Set<ITarget> allTargets = SetSequence.fromSet(new HashSet<ITarget>());
   private Map<ITarget.Name, TargetRefs> allRefs = MapSequence.fromMap(new HashMap<ITarget.Name, TargetRefs>());
+  private Set<ITarget.Name> allRequestedTargets = SetSequence.fromSet(new HashSet<ITarget.Name>());
   public TargetRange() {
   }
   public void addTarget(ITarget trg) {
@@ -34,6 +35,10 @@ public class TargetRange {
       SetSequence.fromSet(allTargets).addElement(trg);
       this.updateRefs(trg);
     }
+  }
+  public void addRequestedTarget(ITarget trg) {
+    addTarget(trg);
+    SetSequence.fromSet(allRequestedTargets).addElement(trg.getName());
   }
   public void addRelated(Iterable<ITarget> availableTargets) {
     Set<ITarget.Name> valences = SetSequence.fromSetWithValues(new HashSet<ITarget.Name>(), Sequence.fromIterable(MapSequence.fromMap(targetsView).values()).translate((trg) -> Sequence.fromIterable(trg.before()).concat(Sequence.fromIterable(trg.notBefore())).concat(Sequence.fromIterable(trg.after())).concat(Sequence.fromIterable(trg.notAfter()))));
@@ -89,6 +94,9 @@ public class TargetRange {
       throw new IllegalArgumentException("unknown target");
     }
     return ListSequence.fromList(MapSequence.fromMap(allRefs).get(target).after).where((tn) -> MapSequence.fromMap(allRefs).containsKey(tn)).select((tn) -> MapSequence.fromMap(targetsView).get(tn));
+  }
+  public boolean isRequested(ITarget.Name name) {
+    return SetSequence.fromSet(allRequestedTargets).contains(name);
   }
   public boolean hasCycles() {
     return ListSequence.fromList(new TargetsGraph().findCycles()).isNotEmpty();

@@ -4,7 +4,7 @@ package jetbrains.mps.vcs.util;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)/1277106018273978907", model = "r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)")
+@GeneratedClass(nodeId = "1277106018273978907", model = "r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)")
 public enum MergeStrategy {
   OURS(),
   THEIRS()

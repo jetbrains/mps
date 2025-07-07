@@ -17,6 +17,7 @@ package jetbrains.mps.classloading;
 
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Any MPS module which has a java facet is a subject to MPS custom class loading.
@@ -47,8 +48,14 @@ public abstract class MPSModuleClassLoader extends ClassLoader {
     }
   }
 
-  // I'd love to have loadOwnClass() here, in superclass, but as there's no easy way to implement it properly
-  // in IDEA delegating CL, and I hesitate about loadOwnClass == loadClass, let me stick just to this comment now.
+  /**
+   * does its best to load class without traversing dependencies or parent classloader
+   * @param name
+   * @return
+   * @throws ClassNotFoundException
+   */
+  @NotNull
+  public abstract Class<?> loadOwnClass(String name) throws ClassNotFoundException;
 
   static {
     registerAsParallelCapable0();

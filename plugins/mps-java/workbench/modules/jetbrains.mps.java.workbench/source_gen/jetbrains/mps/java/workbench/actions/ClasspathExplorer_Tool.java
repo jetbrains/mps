@@ -14,9 +14,10 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.ide.tools.CloseAction;
-import javax.swing.JComponent;
+import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import javax.swing.JComponent;
 import org.jetbrains.mps.openapi.module.SModule;
 
 public class ClasspathExplorer_Tool extends GeneratedTool {
@@ -41,7 +42,9 @@ public class ClasspathExplorer_Tool extends GeneratedTool {
         {
           // there's BaseTool.createCloseAction() but can't invoke protected methods here
           DefaultActionGroup group = ActionUtils.groupFromActions(new CloseAction(ClasspathExplorer_Tool.this));
-          JComponent toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, false).getComponent();
+          ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, false);
+          actionToolbar.setTargetComponent(ClasspathExplorer_Tool.this.myComponent);
+          JComponent toolbar = actionToolbar.getComponent();
           ClasspathExplorer_Tool.this.myComponent.add(toolbar, BorderLayout.WEST);
         }
       });

@@ -23,7 +23,7 @@ import jetbrains.mps.resolve.ResolverComponent;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/965654005418338549", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "965654005418338549", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class GoByReference_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.GoByReference_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());
@@ -64,7 +64,7 @@ public class GoByReference_ActionGroup extends GeneratedActionGroup {
           mpsProject.getModelAccess().executeUndoTransparentCommand(new Runnable() {
             @Override
             public void run() {
-              ResolverComponent.getInstance().resolve(finalRef, mpsProject.getRepository());
+              mpsProject.getComponent(ResolverComponent.class).resolve(finalRef, mpsProject.getRepository());
             }
           });
           SReferenceLink role = finalRef.getLink();

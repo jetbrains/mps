@@ -17,7 +17,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.ide.bookmark.BookmarkManager;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236342883095", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1236342883095", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class SetBookmarkNoNumber_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -60,7 +60,7 @@ public class SetBookmarkNoNumber_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    BookmarkManager bookmarkManager = ((Project) MapSequence.fromMap(_params).get("project")).getComponent(BookmarkManager.class);
+    BookmarkManager bookmarkManager = BookmarkManager.getInstance(((Project) MapSequence.fromMap(_params).get("project")));
     bookmarkManager.setUnnumberedBookmark(((SNode) MapSequence.fromMap(_params).get("node")));
   }
 }

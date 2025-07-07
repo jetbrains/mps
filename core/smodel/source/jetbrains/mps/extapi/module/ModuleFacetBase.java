@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,42 +16,24 @@
 package jetbrains.mps.extapi.module;
 
 import jetbrains.mps.logging.Logger;
-import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.DetachableFacet;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
-import org.jetbrains.mps.openapi.persistence.Memento;
-
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
 
 /**
  * Base class for all module facets.
  *
  * fixme not thread-safe
  */
-public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
+public abstract class ModuleFacetBase implements SModuleFacet {
   private static final Logger LOG = Logger.getLogger(ModuleFacetBase.class);
 
   private final String myFacetType;
-  private final AtomicReference<SModule> myModule = new AtomicReference<>();
-  private Consumer<SModule> myOnModuleReset = null;
+  private SModule myModule;
 
   /**
-   * the common flow is to have module already in construction, register it once and for all (#setModule + #attach), dispose in the end
-   *
-   * @deprecated prefer the second constructor, help yourself avoiding all #setModule, #attach invocations
-   */
-  @Deprecated
-  @ScheduledForRemoval(inVersion = "2020.3")
-  protected ModuleFacetBase(@NotNull String facetType) {
-    myFacetType = facetType;
-  }
-
-  /**
-   * attach happens automatically so you can initialize a facet in one line
+   * attach happens automatically, so you can initialize a facet in one line
    */
   protected ModuleFacetBase(@NotNull String facetType, @NotNull SModule module) {
     myFacetType = facetType;
@@ -67,49 +49,25 @@ public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
   @Nullable
   @Override
   public final SModule getModule() {
-    return myModule.get();
-  }
-
-  public final void attach(@NotNull SModule module) {
-    if (myModule.get() != null) {
-      LOG.error("Could not attach to the module, already attached to " + myModule.get(), new IllegalStateException());
-      return;
-    }
-    myModule.set(module);
-    if (myOnModuleReset != null) {
-      myOnModuleReset.accept(module);
-    }
-  }
-
-  public final void detach() {
-    myModule.set(null);
-  }
-
-  @Override
-  public void save(@NotNull Memento memento) {
-  }
-
-  @Override
-  public void load(@NotNull Memento memento) {
+    return myModule;
   }
 
   /**
    * #attach and #detach are designed final, doing the simplest thing (resetting the field #myModule)
-   * It appears that sometimes a client of this class needs to perform a custom initialization when
-   * the owning module is being changed.
+   * If a client of this class needs to perform a custom initialization when the owning module is being changed,
+   * we may offer a single callback instead of overridable #attach methods
    *
-   * We do not want to go back to overridable #attach, instead offering to provide a single callback
-   * in a separate method below.
-   *
-   * @param callback -- will be called in this method and on each module re-set.
+   * @param module will be returned from #getModule afterwards
    */
-  public final void callBackOnModuleReset(@NotNull Consumer<SModule> callback) {
-    if (myOnModuleReset != null) {
-      throw new IllegalStateException("Can be set only once");
+  public final void attach(@NotNull SModule module) {
+    if (myModule != null) {
+      LOG.error("Could not attach to the module, already attached to " + myModule, new IllegalStateException());
+      return;
     }
-    myOnModuleReset = callback;
-    if (getModule() != null) {
-      callback.accept(getModule());
-    }
+    myModule = module;
+  }
+
+  public final void detach() {
+    myModule = null;
   }
 }

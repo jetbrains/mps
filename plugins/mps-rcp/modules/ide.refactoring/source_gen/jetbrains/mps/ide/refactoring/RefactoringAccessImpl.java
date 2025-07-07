@@ -43,7 +43,7 @@ public class RefactoringAccessImpl extends RefactoringAccessEx {
 
   @Override
   public void showRefactoringView(Project project, RefactoringViewAction refactoringViewAction, Runnable disposeAction, SearchResults searchResults, SearchTask searchTask, String name) {
-    RefactoringView_Tool refactoringView = project.getComponent(ProjectPluginManager.class).getTool(RefactoringView_Tool.class);
+    RefactoringView_Tool refactoringView = ProjectPluginManager.getInstance(project).getTool(RefactoringView_Tool.class);
     refactoringView.showRefactoringView(project, refactoringViewAction, disposeAction, truncateSearchResults(project, searchResults), searchTask, name);
   }
 
@@ -51,7 +51,7 @@ public class RefactoringAccessImpl extends RefactoringAccessEx {
   public void showRefactoringView(RefactoringContext refactoringContext, RefactoringViewAction refactoringViewAction, Runnable disposeAction, SearchResults searchResults, SearchTask searchTask, String name) {
     jetbrains.mps.project.Project mpsProject = refactoringContext.getSelectedProject();
     Project ideaProject = ProjectHelper.toIdeaProject(mpsProject);
-    RefactoringView_Tool refactoringView = ideaProject.getComponent(ProjectPluginManager.class).getTool(RefactoringView_Tool.class);
+    RefactoringView_Tool refactoringView = ProjectPluginManager.getInstance(ideaProject).getTool(RefactoringView_Tool.class);
     refactoringView.showRefactoringView(refactoringContext, refactoringViewAction, disposeAction, truncateSearchResults(ideaProject, searchResults), searchTask);
   }
 

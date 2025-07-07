@@ -1145,7 +1145,7 @@
             <node concept="3cpWs6" id="6HPXYdN5F0w" role="3cqZAp">
               <node concept="10M0yZ" id="6HPXYdN5F0p" role="3cqZAk">
                 <ref role="1PxDUh" to="vjwt:2Y$mRnIClK2" resolve="Icons" />
-                <ref role="3cqZAo" to="vjwt:15fzu3GFwxo" resolve="THREAD_AT_BREAKPOINT" />
+                <ref role="3cqZAo" to="vjwt:15fzu3GFwxo" resolve="THREAD_CURRENT" />
               </node>
             </node>
           </node>

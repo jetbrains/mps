@@ -21,21 +21,18 @@ import jetbrains.mps.debugger.java.api.evaluation.proxies.IObjectValueProxy;
 import com.sun.jdi.ThreadReference;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.IArrayValueProxy;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.PrimitiveValueProxy;
+import com.intellij.openapi.application.ApplicationManager;
 import com.sun.jdi.InvocationException;
 import com.sun.jdi.InvalidTypeException;
 import com.sun.jdi.IncompatibleThreadStateException;
 import com.sun.jdi.ClassNotLoadedException;
 
-@GeneratedClass(node = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)/4727801710070561555", model = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)")
+@GeneratedClass(nodeId = "4727801710070561555", model = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)")
 public abstract class EvaluationUtils {
   private static final Logger LOG = Logger.getLogger(EvaluationUtils.class);
-  protected static EvaluationUtils INSTANCE;
-  protected static final Object LOCK = new Object();
   public static final String JAVA_LANG_OBJECT = "Ljava/lang/Object;";
   public EvaluationUtils() {
   }
-  public abstract void init();
-  public abstract void dispose();
   public abstract Value getArrayElementAt(ArrayReference array, int index);
   @NotNull
   public abstract Field findField(ClassType referenceType, String fieldName) throws InvalidEvaluatedExpressionException;
@@ -71,11 +68,11 @@ public abstract class EvaluationUtils {
   public abstract IObjectValueProxy boxValue(PrimitiveValueProxy primitiveValueProxy, ThreadReference threadReference) throws EvaluationException;
   public abstract PrimitiveValueProxy unboxValue(IObjectValueProxy valueProxy, ThreadReference threadReference) throws EvaluationException;
   public abstract String getStringPresentation(@NotNull Value value, ThreadReference reference);
+
   public static EvaluationUtils getInstance() {
-    synchronized (LOCK) {
-      return INSTANCE;
-    }
+    return ApplicationManager.getApplication().getService(EvaluationUtils.class);
   }
+
   /**
    * Do something and convert jdi exceptions to evaluation exception
    * 

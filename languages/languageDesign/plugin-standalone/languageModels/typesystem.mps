@@ -41,10 +41,6 @@
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
-      <concept id="1081256982272" name="jetbrains.mps.baseLanguage.structure.InstanceOfExpression" flags="nn" index="2ZW3vV">
-        <child id="1081256993305" name="classType" index="2ZW6by" />
-        <child id="1081256993304" name="leftExpression" index="2ZW6bz" />
-      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
         <child id="1070534934091" name="type" index="10QFUM" />
@@ -66,6 +62,7 @@
         <child id="1082485599094" name="ifFalseStatement" index="9aQIa" />
         <child id="1068580123160" name="condition" index="3clFbw" />
         <child id="1068580123161" name="ifTrue" index="3clFbx" />
+        <child id="1206060520071" name="elsifClauses" index="3eNLev" />
       </concept>
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
@@ -77,6 +74,13 @@
         <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
+      <concept id="1206060495898" name="jetbrains.mps.baseLanguage.structure.ElsifClause" flags="ng" index="3eNFk2">
+        <child id="1206060619838" name="condition" index="3eO9$A" />
+        <child id="1206060644605" name="statementList" index="3eOfB_" />
+      </concept>
+      <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
+        <child id="1081516765348" name="expression" index="3fr31v" />
+      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -89,6 +93,9 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
+      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
+      </concept>
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
@@ -193,6 +200,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -366,6 +381,58 @@
           <node concept="3cpWs6" id="6mhEhX8gtso" role="3cqZAp" />
         </node>
       </node>
+      <node concept="3SKdUt" id="2KxF7SEse7I" role="3cqZAp">
+        <node concept="1PaTwC" id="2KxF7SEse7J" role="1aUNEU">
+          <node concept="3oM_SD" id="2KxF7SEseag" role="1PaTwD">
+            <property role="3oM_SC" value="account" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEseb8" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEsebc" role="1PaTwD">
+            <property role="3oM_SC" value="scenario" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEsec6" role="1PaTwD">
+            <property role="3oM_SC" value="when" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEsed1" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEsedX" role="1PaTwD">
+            <property role="3oM_SC" value="module" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEseeU" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEsefS" role="1PaTwD">
+            <property role="3oM_SC" value="IDEA-compiled" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEsehH" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEseiH" role="1PaTwD">
+            <property role="3oM_SC" value="contributes" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEsek$" role="1PaTwD">
+            <property role="3oM_SC" value="lang.plugin" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEseni" role="1PaTwD">
+            <property role="3oM_SC" value="extensions" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEseol" role="1PaTwD">
+            <property role="3oM_SC" value="through" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEseoz" role="1PaTwD">
+            <property role="3oM_SC" value="IDEA" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEsepC" role="1PaTwD">
+            <property role="3oM_SC" value="extpoint" />
+          </node>
+          <node concept="3oM_SD" id="2KxF7SEseqI" role="1PaTwD">
+            <property role="3oM_SC" value="mechanism" />
+          </node>
+        </node>
+      </node>
       <node concept="3clFbJ" id="6mhEhX8gtBc" role="3cqZAp">
         <node concept="3clFbS" id="6mhEhX8gtBe" role="3clFbx">
           <node concept="2MkqsV" id="6mhEhX8gtvO" role="3cqZAp">
@@ -384,29 +451,37 @@
               </node>
             </node>
             <node concept="Xl_RD" id="6mhEhX8gtxX" role="2MkJ7o">
-              <property role="Xl_RC" value="This solution needs 'plugin' kind to facilitate class loading for plugin extensions" />
+              <property role="Xl_RC" value="This module needs to specify it is capable to provide extensions to MPS to facilitate proper class loading" />
             </node>
             <node concept="1YBJjd" id="6mhEhX8gtxE" role="1urrMF">
               <ref role="1YBMHb" node="6mhEhX8gq$v" resolve="spd" />
             </node>
           </node>
         </node>
-        <node concept="2ZW3vV" id="6mhEhX8gtKk" role="3clFbw">
-          <node concept="3uibUv" id="6mhEhX8gu24" role="2ZW6by">
-            <ref role="3uigEE" to="z1c3:~Solution" resolve="Solution" />
-          </node>
-          <node concept="37vLTw" id="6mhEhX8gtDg" role="2ZW6bz">
+        <node concept="2YIFZM" id="2KxF7SEs9YG" role="3clFbw">
+          <ref role="37wK5l" to="z1c3:~SModuleOperations.classloadingManagedByMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="classloadingManagedByMPS" />
+          <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+          <node concept="37vLTw" id="2KxF7SEsa1V" role="37wK5m">
             <ref role="3cqZAo" node="6mhEhX8grlK" resolve="module" />
           </node>
         </node>
-        <node concept="9aQIb" id="6mhEhX8gu6N" role="9aQIa">
-          <node concept="3clFbS" id="6mhEhX8gu6O" role="9aQI4">
-            <node concept="2MkqsV" id="6mhEhX8gu7f" role="3cqZAp">
-              <node concept="Xl_RD" id="6mhEhX8gu7I" role="2MkJ7o">
-                <property role="Xl_RC" value="This module is not capable to load classes, plugin extensions may not function properly" />
+        <node concept="3eNFk2" id="2KxF7SEscIM" role="3eNLev">
+          <node concept="3clFbS" id="2KxF7SEscIN" role="3eOfB_">
+            <node concept="2MkqsV" id="2KxF7SEscIO" role="3cqZAp">
+              <node concept="Xl_RD" id="2KxF7SEscIP" role="2MkJ7o">
+                <property role="Xl_RC" value="This module is not capable to load classes, plugin extensions can not function properly" />
               </node>
-              <node concept="1YBJjd" id="6mhEhX8gu7r" role="1urrMF">
+              <node concept="1YBJjd" id="2KxF7SEscIQ" role="1urrMF">
                 <ref role="1YBMHb" node="6mhEhX8gq$v" resolve="spd" />
+              </node>
+            </node>
+          </node>
+          <node concept="3fqX7Q" id="2KxF7SEsdUd" role="3eO9$A">
+            <node concept="2YIFZM" id="2KxF7SEsdUf" role="3fr31v">
+              <ref role="37wK5l" to="z1c3:~SModuleOperations.classesAvailableToMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="classesAvailableToMPS" />
+              <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+              <node concept="37vLTw" id="2KxF7SEsdUg" role="37wK5m">
+                <ref role="3cqZAo" node="6mhEhX8grlK" resolve="module" />
               </node>
             </node>
           </node>

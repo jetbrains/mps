@@ -18,6 +18,7 @@ package jetbrains.mps.idea.java.convert;
 import com.intellij.facet.FacetManager;
 import com.intellij.facet.FacetTypeRegistry;
 import com.intellij.ide.projectView.ProjectView;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
@@ -83,6 +84,11 @@ public class ConvertPackageToModel extends AnAction {
 
   public ConvertPackageToModel() {
     super("Convert Java to MPS", "", null);
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 
   @Override

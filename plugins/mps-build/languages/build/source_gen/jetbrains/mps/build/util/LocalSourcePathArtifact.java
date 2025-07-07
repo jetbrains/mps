@@ -7,14 +7,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 public class LocalSourcePathArtifact {
   private final SNode root;
   private final String sourcePath;
-  private final boolean isFolder;
+
   private final Integer myMarkValue;
 
-  public LocalSourcePathArtifact(SNode root, String sourcePath, boolean isFolder) {
+  public LocalSourcePathArtifact(SNode root, String sourcePath) {
     this.root = root;
     this.sourcePath = sourcePath;
-    this.isFolder = isFolder;
-    // unless already intialized, record whatever random value, I just utilize the fact user objects get propagated through transformation steps unchanged
+    // unless already initialized, record whatever random value, I just utilize the fact user objects get propagated through transformation steps unchanged
     myMarkValue = markRoot(root, root.hashCode());
   }
   public SNode getRoot() {
@@ -23,9 +22,7 @@ public class LocalSourcePathArtifact {
   public String getSourcePath() {
     return sourcePath;
   }
-  public boolean isFolder() {
-    return isFolder;
-  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -42,17 +39,12 @@ public class LocalSourcePathArtifact {
     if ((sourcePath != null ? !(sourcePath.equals(that.sourcePath)) : that.sourcePath != null)) {
       return false;
     }
-    if (isFolder != that.isFolder) {
-      return false;
-    }
-
     return true;
   }
   @Override
   public int hashCode() {
     int result = myMarkValue.intValue();
     result = 31 * result + ((sourcePath != null ? String.valueOf(sourcePath).hashCode() : 0));
-    result = 31 * result + ((isFolder ? 1 : 0));
     return result;
   }
 

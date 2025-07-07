@@ -11,7 +11,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
 
-@GeneratedClass(node = "r:c0d12a77-d1ce-4458-b94f-4eb6f4df358a(jetbrains.mps.java.platform.extensions)/2773971779182586893", model = "r:c0d12a77-d1ce-4458-b94f-4eb6f4df358a(jetbrains.mps.java.platform.extensions)")
+@GeneratedClass(nodeId = "2773971779182586893", model = "r:c0d12a77-d1ce-4458-b94f-4eb6f4df358a(jetbrains.mps.java.platform.extensions)")
 public final class JavaSourceStubsModelRootEntryFactory implements ModelRootEntryFactory<JavaSourceStubModelRoot> {
   private final MPSProject myProject;
 

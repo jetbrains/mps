@@ -5,7 +5,7 @@ package jetbrains.mps.ide.findusages.model;
 import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.Icon;
 
-@GeneratedClass(node = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)/847291649004062081", model = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)")
+@GeneratedClass(nodeId = "847291649004062081", model = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)")
 public class CategoryKind {
   public static final CategoryKind DEFAULT_CATEGORY_KIND = new CategoryKind("Category", null, "Group by category");
   private String myName;

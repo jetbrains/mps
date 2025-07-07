@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="a6qub0d157atkxuuvw0t2ljqy3fbn3z">
-  <files names="OverridingMethodsCalculator.java" />
+<product version="3" modelHash="273133r2sq0q12fbm1o581kdt0d80q">
+  <files names="CodeStyleSettings.java:CodeStyleSettingsProvider.java:CodeStyleSettingsRegistry.java:OverridingMethodsCalculator.java" />
 </product>
 

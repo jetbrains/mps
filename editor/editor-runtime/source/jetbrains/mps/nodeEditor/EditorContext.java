@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.nodeEditor;
 
 import com.intellij.openapi.wm.IdeFocusManager;
 import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.assist.DisabledContextAssistantManager;
@@ -25,6 +26,7 @@ import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.nodeEditor.deletionApprover.DeletionApproverImpl;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
+import jetbrains.mps.openapi.editor.Clipboard;
 import jetbrains.mps.openapi.editor.DeletionApprover;
 import jetbrains.mps.openapi.editor.EditorComponentState;
 import jetbrains.mps.openapi.editor.EditorInspector;
@@ -50,6 +52,7 @@ import javax.swing.Icon;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Author: Sergey Dmitriev
@@ -208,7 +211,13 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
 
   @Override
   public EditorInspector getInspector() {
-    return getOperationContext().getComponent(InspectorTool.class);
+    return inspectorTool();
+  }
+
+  @Nullable
+  private InspectorTool inspectorTool() {
+    Project project = ProjectHelper.getProject(myRepository);
+    return project != null ? InspectorTool.getInstance(project) : null;
   }
 
   @Override
@@ -233,9 +242,9 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
   @Override
   public void openInspector() {
     ThreadUtils.runInUIThreadNoWait(() -> IdeFocusManager.getGlobalInstance().doWhenFocusSettlesDown(() -> {
-      final InspectorTool inspector = getOperationContext().getComponent(InspectorTool.class);
+      final InspectorTool inspector = inspectorTool();
       if (inspector != null) {
-        inspector.openTool(true);
+        inspector.activate();
       }
     }));
   }
@@ -356,5 +365,20 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
     } else {
       return jetbrains.mps.openapi.editor.EditorContext.super.getDeletionApprover();
     }
+  }
+
+  @Override
+  public Clipboard getClipboard() {
+    return new Clipboard() {
+      @Override
+      public void put(@NotNull Iterable<SNode> nodes, @NotNull String text, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes) {
+        CopyPasteUtil.putToClipboard(nodes, nodesAndAttributes, text, false);
+      }
+
+      @Override
+      public void putAsFresh(@NotNull Iterable<SNode> nodes, @NotNull String text, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes) {
+        CopyPasteUtil.putToClipboard(nodes, nodesAndAttributes, text, true);
+      }
+    };
   }
 }

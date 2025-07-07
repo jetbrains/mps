@@ -13,9 +13,10 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.concurrent.atomic.AtomicInteger;
 import jetbrains.mps.baseLanguage.typesystem.InferenceHelper;
 import jetbrains.mps.baseLanguage.collections.behavior.AbstractContainerCreator__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -37,21 +38,32 @@ public class typeof_AbstractContainerCreator_InferenceRule extends AbstractInfer
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264610000485", 0, null);
         typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(elementType_typevar_7830826264609997034), (SNode) SLinkOperations.getTarget(creator, LINKS.elementType$WxmV), _info_12389875345);
       }
-    } else {
-      // Must set a bound for inference to work when nothing is specified
-      {
-        SNode _nodeToCheck_1029348928467 = creator;
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264629514034", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(elementType_typevar_7830826264609997034), (SNode) _quotation_createNode_eiap6w_a1a0c0b0a2a1(), false, true, _info_12389875345);
-      }
     }
-    for (SNode initValue : ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.initValue$Wx_W))) {
-      {
-        SNode _nodeToCheck_1029348928467 = initValue;
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "816097550963602641", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "816097550963602647", true), (SNode) typeCheckingContext.getRepresentative(elementType_typevar_7830826264609997034), false, true, _info_12389875345);
-      }
+
+    if (ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.initValue$Wx_W)).isNotEmpty()) {
+      // Wait for all init values to be set before building element type and assigning type
+      final AtomicInteger remaining = new AtomicInteger(ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.initValue$Wx_W)).count());
+      ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.initValue$Wx_W)).visitAll((it) -> {
+        {
+          final SNode argtype = typeCheckingContext.typeOf(it, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5533324111881364239", true);
+          typeCheckingContext.whenConcrete(argtype, () -> {
+            if (remaining.decrementAndGet() == 0) {
+              ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.initValue$Wx_W)).visitAll((arg) -> {
+                {
+                  SNode _nodeToCheck_1029348928467 = arg;
+                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5533324111881407229", 0, null);
+                  typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.getRepresentative(elementType_typevar_7830826264609997034), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5533324111881412490", true), false, true, _info_12389875345);
+                }
+              });
+
+
+              InferenceHelper.addEquation(typeCheckingContext, AbstractContainerCreator__BehaviorDescriptor.createType_id6MGFJY7SgiV.invoke(creator, typeCheckingContext.getRepresentative(elementType_typevar_7830826264609997034)), (SLinkOperations.getTarget(creator, LINKS.elementType$WxmV) == null), typeCheckingContext.typeOf(creator, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5892713725994766202", true));
+            }
+          }, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5533324111881363185", true, false);
+        }
+      });
     }
+
     if ((SLinkOperations.getTarget(creator, LINKS.copyFrom$DKAJ) != null)) {
       // Use to infer :<=: join(T[], seq<T>), but it would not play in inference easily (waited for everything to be concrete, without being triggered at the right time)
       {
@@ -67,21 +79,34 @@ public class typeof_AbstractContainerCreator_InferenceRule extends AbstractInfer
             {
               SNode _nodeToCheck_1029348928467 = creator;
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "3116855336938476078", 0, null);
-              typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(copyFromType), (SNode) _quotation_createNode_eiap6w_a1a0c0a0a0a1a0b0b0e0b(typeCheckingContext.getRepresentative(elementType_typevar_7830826264609997034)), false, true, _info_12389875345);
+              typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(copyFromType), (SNode) _quotation_createNode_eiap6w_a1a0c0a0a0a1a0b0b0g0b(typeCheckingContext.getRepresentative(elementType_typevar_7830826264609997034)), false, true, _info_12389875345);
             }
           }
         }, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "3116855336938460782", false, false);
       }
     }
+
     if ((SLinkOperations.getTarget(creator, LINKS.initSize$VCLN) != null)) {
       {
         SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(creator, LINKS.initSize$VCLN);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1562299158921037898", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1562299158921037890", true), (SNode) _quotation_createNode_eiap6w_a1a0c0a0f0b(), false, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1562299158921037890", true), (SNode) _quotation_createNode_eiap6w_a1a0c0a0i0b(), false, true, _info_12389875345);
       }
     }
 
-    InferenceHelper.addEquation(typeCheckingContext, AbstractContainerCreator__BehaviorDescriptor.createType_id6MGFJY7SgiV.invoke(creator, typeCheckingContext.getRepresentative(elementType_typevar_7830826264609997034)), (SLinkOperations.getTarget(creator, LINKS.elementType$WxmV) == null), typeCheckingContext.typeOf(creator, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "8010275703121611968", true));
+    // This is done separately in case there are any initValue (see above)
+    if (ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.initValue$Wx_W)).isEmpty()) {
+      // Must set a bound for inference to work when nothing is specified
+      if ((SLinkOperations.getTarget(creator, LINKS.elementType$WxmV) == null)) {
+        {
+          SNode _nodeToCheck_1029348928467 = creator;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5892713725994495958", 0, null);
+          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(elementType_typevar_7830826264609997034), (SNode) _quotation_createNode_eiap6w_a1a0c0a0b0l0b(), false, true, _info_12389875345);
+        }
+      }
+
+      InferenceHelper.addEquation(typeCheckingContext, AbstractContainerCreator__BehaviorDescriptor.createType_id6MGFJY7SgiV.invoke(creator, typeCheckingContext.getRepresentative(elementType_typevar_7830826264609997034)), (SLinkOperations.getTarget(creator, LINKS.elementType$WxmV) == null), typeCheckingContext.typeOf(creator, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "8010275703121611968", true));
+    }
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.AbstractContainerCreator$cz;
@@ -92,14 +117,7 @@ public class typeof_AbstractContainerCreator_InferenceRule extends AbstractInfer
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_eiap6w_a1a0c0b0a2a1() {
-    SNode quotedNode_1 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
-    quotedNode_1 = nb.getResult();
-    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
-    return quotedNode_1;
-  }
-  private static SNode _quotation_createNode_eiap6w_a1a0c0a0a0a1a0b0b0e0b(Object parameter_1) {
+  private static SNode _quotation_createNode_eiap6w_a1a0c0a0a0a1a0b0b0g0b(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));
@@ -110,10 +128,17 @@ public class typeof_AbstractContainerCreator_InferenceRule extends AbstractInfer
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_eiap6w_a1a0c0a0f0b() {
+  private static SNode _quotation_createNode_eiap6w_a1a0c0a0i0b() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType"));
     quotedNode_1 = nb.getResult();
+    return quotedNode_1;
+  }
+  private static SNode _quotation_createNode_eiap6w_a1a0c0a0b0l0b() {
+    SNode quotedNode_1 = null;
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     return quotedNode_1;
   }
 

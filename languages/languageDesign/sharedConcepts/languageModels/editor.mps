@@ -2,7 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c895902bb(jetbrains.mps.lang.sharedConcepts.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
   </languages>
   <imports>
     <import index="tpcw" ref="r:00000000-0000-4000-0000-011c895902bc(jetbrains.mps.lang.sharedConcepts.structure)" implicit="true" />
@@ -70,10 +70,6 @@
   <node concept="22mcaB" id="1wEcoXjJMCR">
     <ref role="aqKnT" to="tpcw:uYrIA378mk" resolve="ConceptFunctionParameter_progressMonitor" />
     <node concept="22hDWj" id="xzgvwPPpDe" role="22hAXT" />
-  </node>
-  <node concept="22mcaB" id="1wEcoXjJMCS">
-    <ref role="aqKnT" to="tpcw:gTQ799U" resolve="ConceptFunctionParameter_operationContext" />
-    <node concept="22hDWj" id="xzgvwPPpDf" role="22hAXT" />
   </node>
   <node concept="22mcaB" id="1wEcoXjJMCT">
     <ref role="aqKnT" to="tpcw:gTQ7B__" resolve="ConceptFunctionParameter_scope" />

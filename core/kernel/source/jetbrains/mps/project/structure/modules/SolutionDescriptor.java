@@ -29,10 +29,18 @@ public class SolutionDescriptor extends ModuleDescriptor {
   private boolean myRequestCompileIDEA = false;
   private boolean myReadOnlyStubModule = false;
 
+  /**
+   * @deprecated use {@link ModuleDescriptor#getOutputRoot()}, instead
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public final String getOutputPath() {
     return myOutputPath;
   }
 
+  /**
+   * @deprecated use {@link ModuleDescriptor#setOutputRoot(String)}, instead
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public final void setOutputPath(String outputPath) {
     myOutputPath = outputPath;
   }
@@ -101,18 +109,12 @@ public class SolutionDescriptor extends ModuleDescriptor {
   @Override
   public void save(ModelOutputStream stream) throws IOException {
     super.save(stream);
-    stream.writeString(myOutputPath);
-    stream.writeString(myKind.name());
-    stream.writeBoolean(myCompileInMPS);
     stream.writeBoolean(myRequestCompileIDEA);
   }
 
   @Override
   public void load(ModelInputStream stream) throws IOException {
     super.load(stream);
-    myOutputPath = stream.readString();
-    myKind = SolutionKind.valueOf(stream.readString());
-    myCompileInMPS = stream.readBoolean();
     myRequestCompileIDEA = stream.readBoolean();
   }
 

@@ -15,7 +15,7 @@ import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.actionSystem.Presentation;
 
-@GeneratedClass(node = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)/7705742079275757969", model = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)")
+@GeneratedClass(nodeId = "7705742079275757969", model = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)")
 public class ShowInLogicalView extends AbstractVcsAction {
   public ShowInLogicalView() {
   }

@@ -13,7 +13,7 @@ import jetbrains.mps.refactoring.framework.IRefactoring;
  * @author Artem Tikhomirov
  * @since 2018.2
  */
-@GeneratedClass(node = "r:896b61c7-1bb0-433c-9386-4bed38ff63bd(jetbrains.mps.refactoring.runtime)/9098014410655355571", model = "r:896b61c7-1bb0-433c-9386-4bed38ff63bd(jetbrains.mps.refactoring.runtime)")
+@GeneratedClass(nodeId = "9098014410655355571", model = "r:896b61c7-1bb0-433c-9386-4bed38ff63bd(jetbrains.mps.refactoring.runtime)")
 public interface RefactoringAspect extends ILanguageAspect {
 
   /**

@@ -20,9 +20,6 @@
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
-      </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
@@ -50,6 +47,7 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
+      <concept id="418049251856799813" name="jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute" flags="ig" index="1AhYRh" />
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="5404671619616246344" name="staticScope" index="2_RsDV" />
         <property id="1096454100552" name="rootable" index="19KtqR" />
@@ -90,6 +88,14 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
       <node concept="t5JxF" id="6NiicI2vWfr" role="lGtFl">
         <property role="t5JxN" value="this string is a path, file- or jar-based (no other FSes are supported yet), the format is same with what Macros.shrink() returns" />
+      </node>
+    </node>
+    <node concept="1TJgyi" id="1$fQzw7xISD" role="1TKVEl">
+      <property role="IQ2nx" value="1805901909778165289" />
+      <property role="TrG5h" value="newuiFile" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="t5JxF" id="1$fQzw7xISH" role="lGtFl">
+        <property role="t5JxN" value="the icon file to use under new UI, if empty, a naming convention is used first &quot;originalName_newui.svg&quot;, if no such files exists, use the &quot;file&quot; property value in new UI" />
       </node>
     </node>
     <node concept="1TJgyj" id="63hNSM1YIC9" role="1TKVEi">
@@ -167,6 +173,13 @@
       <property role="20lbJX" value="fLJekj6/_1__n" />
       <ref role="20lvS9" node="2p1v3tObwT_" resolve="IconLayerDescription" />
     </node>
+    <node concept="1TJgyj" id="7MKI4BBUT$V" role="1TKVEi">
+      <property role="IQ2ns" value="8984883884167239995" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="newuiLayers" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="2p1v3tObwT_" resolve="IconLayerDescription" />
+    </node>
     <node concept="PrWs8" id="2p1v3tObwP6" role="PzmwI">
       <ref role="PrY4T" node="2p1v3tOa9VI" resolve="Icon" />
     </node>
@@ -180,13 +193,6 @@
       <property role="TrG5h" value="r" />
       <property role="IQ2nx" value="2756621024541681857" />
       <ref role="AX2Wp" node="3Ftr4R6BFtI" resolve="Size" />
-      <node concept="3l_iC" id="3Ftr4R6BH87" role="lGtFl">
-        <node concept="1TJgyi" id="2p1v3tObyz1" role="3l_iP">
-          <property role="IQ2nx" value="2756621024541681857" />
-          <property role="TrG5h" value="r" />
-          <ref role="AX2Wp" node="3Ftr4R6BFtI" resolve="Size" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="2p1v3tObwTx">
@@ -198,13 +204,6 @@
       <property role="TrG5h" value="r" />
       <property role="IQ2nx" value="2756621024541675106" />
       <ref role="AX2Wp" node="3Ftr4R6BFtI" resolve="Size" />
-      <node concept="3l_iC" id="3Ftr4R6BH89" role="lGtFl">
-        <node concept="1TJgyi" id="2p1v3tObwTy" role="3l_iP">
-          <property role="IQ2nx" value="2756621024541675106" />
-          <property role="TrG5h" value="r" />
-          <ref role="AX2Wp" node="3Ftr4R6BFtI" resolve="Size" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="PlHQZ" id="2p1v3tObwT_">
@@ -394,6 +393,46 @@
     <node concept="25R33" id="3Ftr4R6BFtM" role="25R1y">
       <property role="TrG5h" value="small" />
       <property role="3tVfz5" value="1571777932759345039" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="39fSgdSEt5B">
+    <property role="EcuMT" value="3625363630082085223" />
+    <property role="3GE5qa" value="icons" />
+    <property role="TrG5h" value="GeneratedImage" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="39fSgdSHrm0" role="1TKVEi">
+      <property role="IQ2ns" value="3625363630082864512" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="layers" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <ref role="20lvS9" node="2p1v3tObwT_" resolve="IconLayerDescription" />
+    </node>
+    <node concept="1TJgyi" id="39fSgdSEtdf" role="1TKVEl">
+      <property role="IQ2nx" value="3625363630082085711" />
+      <property role="TrG5h" value="fileName" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1AhYRh" id="39fSgdSEt90" role="lGtFl" />
+  </node>
+  <node concept="1TIwiD" id="6S5fI02sJjS">
+    <property role="EcuMT" value="7927811850890310904" />
+    <property role="3GE5qa" value="icons.descriptors" />
+    <property role="TrG5h" value="ConstantFieldIcon" />
+    <property role="34LRSv" value="constant" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="6S5fI02sJrT" role="PzmwI">
+      <ref role="PrY4T" node="2p1v3tOa9VI" resolve="Icon" />
+    </node>
+    <node concept="1TJgyj" id="6S5fI02sJzE" role="1TKVEi">
+      <property role="IQ2ns" value="7927811850890311914" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="field" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:f_0M0x6" resolve="StaticFieldReference" />
+      <node concept="t5JxF" id="6S5fI02sJCb" role="lGtFl">
+        <property role="t5JxN" value="use to reference some distributed icons, like AllIcons.ToolWindows.Messages" />
+      </node>
     </node>
   </node>
 </model>

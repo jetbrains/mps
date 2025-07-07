@@ -3,12 +3,13 @@
   <persistence version="9" />
   <languages>
     <use id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect" version="2" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
     <import index="tpcc" ref="r:00000000-0000-4000-0000-011c89590290(jetbrains.mps.lang.structure.plugin)" />
     <import index="smjb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.help(MPS.Core/)" />
+    <import index="tp41" ref="r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -25,6 +26,7 @@
     </language>
     <language id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect">
       <concept id="3433054418424672374" name="jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor" flags="ng" index="3vrhyV">
+        <reference id="8426907848585442521" name="proponent" index="h493j" />
         <child id="6106419185511570295" name="mainLanguages" index="QG$2i" />
         <child id="8222125370833980146" name="devkit" index="TkT64" />
         <child id="4726480899534753275" name="helpUrl" index="1fTXyH" />
@@ -80,6 +82,7 @@
   </registry>
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="dataFlow" />
+    <ref role="h493j" to="tp41:7YXEDumxSSb" resolve="DataFlowAspectDeputy" />
     <node concept="1QGGSu" id="P5ZkC6w36T" role="3vqPLo">
       <property role="1iqoE4" value="${module}/icons/dataFlowModel.png" />
     </node>
@@ -91,7 +94,7 @@
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />
     </node>
     <node concept="1sEMCm" id="46nPloex5Bn" role="1fTXyH">
-      <property role="1sEMCp" value="/data-flow.html" />
+      <property role="1sEMCp" value="data-flow.html" />
       <ref role="1fZFei" node="46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
     <node concept="T9mpH" id="33Cba0CiWmu" role="TkT64">

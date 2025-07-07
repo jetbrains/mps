@@ -9,25 +9,32 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.behavior.IRawTypeHolder__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class check_ClassifierType_UseOfRawType_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ClassifierType_UseOfRawType_NonTypesystemRule() {
   }
-  public void applyRule(final SNode classifierType, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty()) {
-      {
-        final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(classifierType, "Raw use of parameterized class '" + SPropertyOperations.getString(SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr), PROPS.name$MnvL) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8329232789335967727", null, errorTarget);
+  public void applyRule(final SNode type, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(type, LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(type, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty()) {
+      // Some concepts allow raw type usages even in Java
+      SNode parent = SNodeOperations.as(SNodeOperations.getParent(type), CONCEPTS.IRawTypeHolder$kw);
+      if (parent == null || !((boolean) IRawTypeHolder__BehaviorDescriptor.allowRawType_id6SseLh999LE.invoke(parent, type))) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(type, "Raw use of parameterized class '" + SPropertyOperations.getString(SLinkOperations.getTarget(type, LINKS.classifier$cxMr), PROPS.name$MnvL) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8329232789335967727", null, errorTarget);
+        }
       }
     }
   }
@@ -42,16 +49,17 @@ public class check_ClassifierType_UseOfRawType_NonTypesystemRule extends Abstrac
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
     /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IRawTypeHolder$kw = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6e1c3b1449249c56L, "jetbrains.mps.baseLanguage.structure.IRawTypeHolder");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

@@ -14,7 +14,7 @@ import com.sun.jdi.request.StepRequest;
 import org.jetbrains.annotations.NotNull;
 import com.sun.jdi.Location;
 
-@GeneratedClass(node = "r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)/6460341978864599228", model = "r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)")
+@GeneratedClass(nodeId = "6460341978864599228", model = "r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)")
 public class StepRequestor implements Requestor {
   public static final int STOP = 0;
   private static final Logger LOG = Logger.getLogger(StepRequestor.class);

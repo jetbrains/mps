@@ -27,7 +27,7 @@ import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 /**
  * NOTE: all nodes except UnionNode MUST have <2 children
  */
-@GeneratedClass(node = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)/8568892084424437236", model = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)")
+@GeneratedClass(nodeId = "8568892084424437236", model = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)")
 public abstract class BaseNode implements IResultProvider {
   private static final Logger LOG = Logger.getLogger(BaseNode.class);
   private static final String CHILD = "child";

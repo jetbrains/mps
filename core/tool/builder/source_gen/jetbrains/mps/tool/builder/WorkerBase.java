@@ -47,7 +47,7 @@ import java.io.PrintWriter;
  * under mps-home/lib based on Ant Project properties (various "artifacts.*" values). Task has control over classpath through 
  * MpsLoadTask#calculateClassPath() method and may supply extra elements in use by particular worker (e.g. MigrationTask adds jars of migration plugin)
  */
-@GeneratedClass(node = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)/878521226300773719", model = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)")
+@GeneratedClass(nodeId = "878521226300773719", model = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)")
 public abstract class WorkerBase {
   protected final List<String> myErrors = new ArrayList<String>();
   protected final Script myWhatToDo;
@@ -190,8 +190,12 @@ public abstract class WorkerBase {
   }
   protected void failBuild(String name) {
     if (!(myErrors.isEmpty()) && myWhatToDo.getFailOnError()) {
-      throw new BuildFailureException(this.formatErrorsReport(name).toString(), -13);
+      forceFailBuild(name);
     }
+  }
+
+  protected void forceFailBuild(String name) throws BuildFailureException {
+    throw new BuildFailureException(this.formatErrorsReport(name).toString(), -13);
   }
 
   /**

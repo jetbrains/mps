@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Arrays;
 
-@GeneratedClass(node = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/1583398502928454540", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
+@GeneratedClass(nodeId = "1583398502928454540", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public final class MakeTask extends MpsLoadTask {
   private GeneratorSettings mySettings;
 

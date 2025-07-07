@@ -19,6 +19,7 @@ import jetbrains.mps.extapi.model.ResolveInfoUpdater;
 import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.impl.cache.MappingsMemento;
 import jetbrains.mps.generator.impl.plan.CheckpointState;
+import jetbrains.mps.generator.impl.plan.CrossModelEnvironment.OriginalModelTag;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.smodel.ModelImports;
@@ -123,6 +124,8 @@ class CheckpointStateBuilder {
     new ModelImports(myCheckpointModel).addModelImport(originalInputModel.getReference());
     DebugMappingsBuilder dmb = new DebugMappingsBuilder(originalInputModel.getRepository(), myTransitionTrace.getActiveTransition(), myLogger);
     myDebugMappingNode = dmb.build(myCheckpointModel, stepLabels);
+    // see MPSSPRT-455
+    OriginalModelTag.installTo(myDebugMappingNode, originalInputModel.getReference());
   }
 
   /*package*/ CheckpointState create(CheckpointIdentity step) {

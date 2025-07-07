@@ -33,19 +33,18 @@ import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
 import jetbrains.mps.persistence.PersistenceVersionAware;
-import jetbrains.mps.smodel.SModelAdapter;
-import jetbrains.mps.smodel.event.SModelEvent;
+import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.event.SModelReferenceEvent;
-import jetbrains.mps.smodel.event.SModelChildEvent;
-import jetbrains.mps.smodel.event.SModelPropertyEvent;
-import jetbrains.mps.smodel.event.SModelRootEvent;
+import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
+import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
+import org.jetbrains.mps.openapi.event.SNodeAddEvent;
+import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/4124845871897265510", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
+@GeneratedClass(nodeId = "4124845871897265510", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
 public final class MergeSession {
   private final ChangeSet myMineChangeSet;
   private final ChangeSet myRepositoryChangeSet;
@@ -58,15 +57,21 @@ public final class MergeSession {
   private final Set<ModelChange> myResolvedChanges = SetSequence.fromSet(new HashSet<ModelChange>());
   private final NodeCopier myNodeCopier;
   private final MyResultModelListener myModelListener = new MyResultModelListener();
+  private final boolean myIsTrackMovedNodes;
   private ChangesInvalidateHandler myChangesInvalidateHandler;
 
   public static MergeSession createMergeSession(SModel base, SModel mine, SModel repository) {
-    return createMergeSession(base, mine, repository, createTemporaryResultModel(base, mine, repository), false);
+    return createMergeSession(base, mine, repository, false);
+  }
+
+  public static MergeSession createMergeSession(SModel base, SModel mine, SModel repository, boolean isTrackMovedNodes) {
+    return createMergeSession(base, mine, repository, createTemporaryResultModel(base, mine, repository), isTrackMovedNodes);
   }
 
   public static MergeTemporaryModel createTemporaryResultModel(SModel base, SModel mine, SModel repository) {
     MergeTemporaryModel result = MergeTemporaryModel.writableCloneOf(base);
     int pv = Math.max(getPersistenceVersion(base), Math.max(getPersistenceVersion(mine), getPersistenceVersion(repository)));
+    // XXX without non-functional forced save version in ModelMergeViewer, there's little value to keep track of persistence version here, revisit!
     result.setPersistenceVersion(pv);
     return result;
   }
@@ -75,8 +80,13 @@ public final class MergeSession {
     return new MergeSession(base, mine, repository, resultModel, isTrackMovedNodes);
   }
 
+  public static MergeSession createMergeSession(MergeSession other, boolean isTrackMovedNodes) {
+    return new MergeSession(other.getBaseModel(), other.getMyModel(), other.getRepositoryModel(), other.myResultModel, isTrackMovedNodes);
+  }
+
   private MergeSession(SModel base, SModel mine, SModel repository, MergeTemporaryModel result, boolean isTrackMovedNodes) {
-    ChangeConflictsBuilder conflictsBuilder = (isTrackMovedNodes ? new MovesAwareMergeConflictsBuilder(result, mine, repository, false) : new MergeConflictsBuilder(base, mine, repository));
+    myIsTrackMovedNodes = isTrackMovedNodes;
+    ChangeConflictsBuilder conflictsBuilder = (isTrackMovedNodes ? new MovesAwareMergeConflictsBuilder(base, mine, repository, false) : new MergeConflictsBuilder(base, mine, repository));
     myMineChangeSet = conflictsBuilder.getMyChangeSet();
     myRepositoryChangeSet = conflictsBuilder.getRepositoryChangeSet();
     myConflictingChanges = conflictsBuilder.getConflictingChanges();
@@ -103,7 +113,8 @@ public final class MergeSession {
   }
 
   public void installResultModelListener() {
-    myResultModel.addModelListener(myModelListener);
+    // FIXME why there's no remove listener? Perhaps, MergeSession deserves a dispose()?
+    myResultModel.addChangeListener(myModelListener);
   }
 
   private void fillNodeToChangesMap() {
@@ -172,7 +183,7 @@ public final class MergeSession {
   }
 
   public Iterable<ModelChange> getConflictedWith(ModelChange change) {
-    // even after conlict resolving we still consider the change conflicted, so it should be applied manually
+    // even after conflict resolving we still consider the change conflicted, so it should be applied manually
     return MapSequence.fromMap(myConflictingChanges).get(change);
   }
 
@@ -201,11 +212,17 @@ public final class MergeSession {
   }
 
   private void applyHierarchicalChanges(Iterable<ModelChange> changes) {
+    if (myIsTrackMovedNodes) {
+      // Apply NodeId changes first to fix wrap and move problem when Id of where to move (in new model) is changed as well
+      //  do it only when "track moved nodes" option set to not disturb "normal" merge logic
+      Sequence.fromIterable(changes).ofType(NodeIdChange.class).visitAll((it) -> applyChange(it));
+      //  after this change applied myNodeCopier will have a mapping oldId -> newId so there should be no problems with other changes to apply
+    }
     new HierarchicalChangesApplier(this).applyHierarchicalChanges(Sequence.fromIterable(changes).ofType(HierarchicalNodeGroupChange.class).select((it) -> (HierarchicalNodeGroupChange) getChangeByMergeStrategy(it)).sort((a, b) -> compareChanges(a, b), true).toList());
   }
 
   private static int compareChanges(ModelChange ch1, ModelChange ch2) {
-    // sort out nonconflicting changes to the end of list, so they will be ignored if other connected changes exists
+    // sort out non-conflicting changes to the end of list, so they will be ignored if other connected changes exists
     boolean aa = ch1.isNonConflicting();
     boolean bb = ch2.isNonConflicting();
     int result = (aa == bb ? 0 : (aa ? 1 : -1));
@@ -249,7 +266,7 @@ public final class MergeSession {
       for (NodeGroupChange ch : ListSequence.fromList(ngcConflictedChanges)) {
         // add new changes only for insertions, we need ChangeSetImpl to manually add one change there
         // original conflicted changes will be resolved
-        ChangeSetImpl changeSet = as_bow6nj_a0a2a5a3a95(ch.getChangeSet(), ChangeSetImpl.class);
+        ChangeSetImpl changeSet = as_bow6nj_a0a2a5a3a46(ch.getChangeSet(), ChangeSetImpl.class);
         assert changeSet != null;
         NodeGroupChange newChange = new NodeGroupChange(changeSet, ch.getOldParentNodeId(), ch.getNewParentNodeId(), ch.getRoleLink(), anchorIndex, anchorIndex, ch.getResultBegin(), ch.getResultEnd());
         if (isNotEmptyChange(newChange)) {
@@ -319,6 +336,10 @@ public final class MergeSession {
     return change.getChangeSet() == myMineChangeSet;
   }
 
+  public boolean tracksMovedNodes() {
+    return myIsTrackMovedNodes;
+  }
+
   @NotNull
   public MergeSessionFullState getCurrentFullState() {
     final MergeSessionFullState state = new MergeSessionFullState();
@@ -358,54 +379,6 @@ public final class MergeSession {
     final Map<SNodeId, SNodeId> idReplacementCache = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>(MapSequence.fromMap(state.myIdReplacementCache).count()));
     MapSequence.fromMap(state.myIdReplacementCache).visitAll((it) -> MapSequence.fromMap(idReplacementCache).put(it.key(), it.value()));
     myNodeCopier.setState(idReplacementCache, myResultModel);
-  }
-
-  /**
-   * Use getCurrentFullState()
-   * 
-   * @deprecated 
-   */
-  @Deprecated
-  public MergeSessionState getCurrentState() {
-    return new MergeSessionState(myResultModel, myResolvedChanges, myNodeCopier.getState());
-  }
-
-  /**
-   * Use restoreFullState()
-   * 
-   * @deprecated 
-   */
-  @Deprecated
-  public void restoreState(MergeSessionState state) {
-    MergeSessionState stateCopy = new MergeSessionState(state);
-    myResultModel.setSModelInternal(stateCopy.myResultModel.getSModel());
-
-    restoreHierarchicalChanges();
-    SetSequence.fromSet(myResolvedChanges).clear();
-    SetSequence.fromSet(myResolvedChanges).addSequence(SetSequence.fromSet(stateCopy.myResolvedChanges));
-    myNodeCopier.setState(stateCopy.myIdReplacementCache, myResultModel);
-  }
-
-  /**
-   * 
-   * @deprecated 
-   */
-  @Deprecated
-  private void restoreHierarchicalChanges() {
-    setHierarchicalChangesNotApplied(myMineChangeSet, myResultModel);
-    setHierarchicalChangesNotApplied(myRepositoryChangeSet, myResultModel);
-  }
-
-  /**
-   * 
-   * @deprecated 
-   */
-  @Deprecated
-  private static void setHierarchicalChangesNotApplied(ChangeSet changeSet, final SModel model) {
-    ListSequence.fromList(changeSet.getModelChanges()).ofType(HierarchicalNodeGroupChange.class).visitAll((it) -> {
-      it.getGroup(true).setIsNotApplied(model);
-      it.getGroup(false).setIsNotApplied(model);
-    });
   }
 
   public boolean hasResolvedChanges() {
@@ -450,23 +423,24 @@ public final class MergeSession {
     void someChangesInvalidated();
   }
 
-  private class MyResultModelListener extends SModelAdapter {
+  private class MyResultModelListener implements SNodeChangeListener {
     private boolean myListeningAllowed = true;
 
-    private MyResultModelListener() {
+    /*package*/ MyResultModelListener() {
     }
 
-    private void enable() {
+    /*package*/ void enable() {
       myListeningAllowed = true;
     }
 
-    private void disable() {
+    /*package*/ void disable() {
       myListeningAllowed = false;
     }
 
-    private void invalidateDeletedRoot(SModelEvent event) {
-      assert event.getAffectedRoot() != null;
-      List<ModelChange> nodeChanges = MapSequence.fromMap(myNodeToChanges).get(event.getAffectedRoot().getNodeId());
+    private void invalidateDeletedRoot(SNode affectedNode) {
+      SNode root = SNodeOperations.getContainingRoot(affectedNode);
+      assert root != null;
+      List<ModelChange> nodeChanges = MapSequence.fromMap(myNodeToChanges).get(root.getNodeId());
       SetSequence.fromSet(myResolvedChanges).addSequence(ListSequence.fromList(nodeChanges).ofType(DeleteRootChange.class));
     }
 
@@ -478,62 +452,40 @@ public final class MergeSession {
       }
     }
 
-    private void referenceModified(SModelReferenceEvent event) {
-      invalidateDeletedRoot(event);
+    @Override
+    public void referenceChanged(@NotNull SReferenceChangeEvent event) {
+      if (!(myListeningAllowed)) {
+        return;
+      }
+      invalidateDeletedRoot(event.getNode());
       invalidateChanges();
     }
 
     @Override
-    public void referenceRemoved(SModelReferenceEvent event) {
-      if (!(myListeningAllowed)) {
-        return;
-      }
-      referenceModified(event);
-    }
-
-    @Override
-    public void referenceAdded(SModelReferenceEvent event) {
-      if (!(myListeningAllowed)) {
-        return;
-      }
-      referenceModified(event);
-    }
-
-    @Override
-    public void beforeChildRemoved(SModelChildEvent event) {
+    public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
       if (!(myListeningAllowed)) {
         return;
       }
       beforeNodeRemovedRecursively(event.getChild());
-      invalidateDeletedRoot(event);
+      invalidateDeletedRoot((event.isRoot() ? event.getChild() : event.getParent()));
       invalidateChanges();
     }
 
     @Override
-    public void childAdded(SModelChildEvent event) {
-      if (!(myListeningAllowed)) {
+    public void nodeAdded(@NotNull SNodeAddEvent event) {
+      if (!(myListeningAllowed) || event.isRoot()) {
         return;
       }
-      invalidateDeletedRoot(event);
+      invalidateDeletedRoot(event.getParent());
       invalidateChanges();
     }
 
     @Override
-    public void propertyChanged(SModelPropertyEvent event) {
+    public void propertyChanged(@NotNull SPropertyChangeEvent event) {
       if (!(myListeningAllowed)) {
         return;
       }
-      invalidateDeletedRoot(event);
-      invalidateChanges();
-    }
-
-    @Override
-    public void beforeRootRemoved(SModelRootEvent event) {
-      if (!(myListeningAllowed)) {
-        return;
-      }
-      beforeNodeRemovedRecursively(event.getRoot());
-      invalidateDeletedRoot(event);
+      invalidateDeletedRoot(event.getNode());
       invalidateChanges();
     }
   }
@@ -550,7 +502,7 @@ public final class MergeSession {
     private Set<ModelChange> myResolvedChanges;
     private Map<SNodeId, SNodeId> myIdReplacementCache;
   }
-  private static <T> T as_bow6nj_a0a2a5a3a95(Object o, Class<T> type) {
+  private static <T> T as_bow6nj_a0a2a5a3a46(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

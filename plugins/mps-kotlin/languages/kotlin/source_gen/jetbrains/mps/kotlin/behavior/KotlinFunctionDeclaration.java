@@ -45,7 +45,10 @@ public class KotlinFunctionDeclaration implements InferrableFunctionDeclaration 
     return IFunctionDeclaration__BehaviorDescriptor.getReceiverType_id2gj5XQXMFhP.invoke(myDeclaration);
   }
 
-
+  @Override
+  public boolean isExtension() {
+    return (boolean) IFunctionDeclaration__BehaviorDescriptor.isExtension_id4Cl0D9hBslM.invoke(myDeclaration);
+  }
   @Override
   public Iterable<SAbstractConcept> getModifiers() {
     return IFunctionDeclaration__BehaviorDescriptor.getModifiers_id4q11fqJUzWN.invoke(myDeclaration);

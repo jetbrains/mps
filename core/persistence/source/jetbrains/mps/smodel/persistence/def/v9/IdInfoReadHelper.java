@@ -95,6 +95,15 @@ class IdInfoReadHelper {
     return myStripImplementation;
   }
 
+  // internXXX methods: provisional code, perhaps, worth adding distinct helper (like getIdEncoder()), responsible for unique values
+  public String internPropertyValue(String value) {
+    return value == null ? null : value.intern();
+  }
+
+  public String internResolveInfo(String value) {
+    return value == null ? null : value.intern();
+  }
+
   // Fill methods, populate myInfoCollector with persisted meta-model info
 
   public void withLanguage(String id, String name) {

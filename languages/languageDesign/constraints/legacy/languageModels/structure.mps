@@ -2,7 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c8959030d(jetbrains.mps.lang.constraints.structure)">
   <persistence version="9" />
   <languages>
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -787,6 +787,7 @@
   <node concept="1TIwiD" id="1EUJGK9Snwb">
     <property role="EcuMT" value="1926061574202685451" />
     <property role="TrG5h" value="ModelScopeEval" />
+    <property role="34LRSv" value="for model" />
     <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
     <node concept="1TJgyj" id="1EUJGK9Snwc" role="1TKVEi">
       <property role="IQ2ns" value="1926061574202685452" />

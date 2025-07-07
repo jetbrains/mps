@@ -19,6 +19,8 @@ import java.util.concurrent.atomic.AtomicReference;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import jetbrains.mps.vcs.history.CommitsGraphNode;
 import org.jetbrains.annotations.Nullable;
+import java.awt.Color;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -34,12 +36,11 @@ import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
-import java.awt.Color;
 import java.util.Iterator;
 import jetbrains.mps.vcs.diff.ui.common.EditorCellMessageUtil;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -47,7 +48,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import git4idea.GitVcs;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.vcs.actions.AnnotationsSettings;
 import java.util.Arrays;
@@ -66,14 +66,14 @@ import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.diff.DiffManager;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
-import jetbrains.mps.openapi.editor.Editor;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
+import jetbrains.mps.vcspersistence.ModelSack;
 import java.io.IOException;
+import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/1507597541852241756", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "1507597541852241756", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public final class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.UpdateListener, RootAnnotation.RootAnnotationUpdateListener {
 
   private final EditorComponent myEditorComponent;
@@ -86,11 +86,14 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   private final MergingUpdateQueue myUpdateQueue;
   private final List<RevisionChanges> myVcsChangesGroups = ListSequence.fromList(new ArrayList<RevisionChanges>());
   private AtomicReference<List<LineAnnotation>> myLineAnnotationsRef = new AtomicReference<List<LineAnnotation>>(ListSequence.fromList(new ArrayList<LineAnnotation>()));
-  private List<VcsFileRevision> myAllRevisions;
+  private final List<VcsFileRevision> myAllRevisions;
   private LineAnnotationsUpdateListener myLineAnnotationsUpdateListener;
   private CommitsGraphNode myCommitUnderMouse;
   @Nullable
   private final VcsFileRevision myRevision;
+  private List<Color> currentPalette = null;
+  private EditorColorsScheme currentColorsScheme;
+
 
 
   /*package*/ EditorAnnotation(EditorComponent editorComponent, VirtualFile file, AbstractVcs vcs, MPSProject mpsProject, RootAnnotation rootAnnotation, List<VcsFileRevision> revisions, @Nullable VcsFileRevision revision) {
@@ -316,6 +319,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   }
 
   private void updateMessages(CellAnnotation cellAnnotation, Set<RevisionNodeChange> changes, final EditorCell cell, List<AnnotatedCellMessage> oldMessages, List<AnnotatedCellMessage> newMessages) {
+    final Wrappers._T<Set<RevisionNodeChange>> _changes = new Wrappers._T<Set<RevisionNodeChange>>(changes);
 
     if (CellTraversalUtil.getFoldedParent(cell) != null) {
       return;
@@ -331,28 +335,28 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       return;
     }
 
-    changes = SetSequence.fromSetWithValues(new HashSet<RevisionNodeChange>(), SetSequence.fromSet(changes).where((final RevisionNodeChange it) -> {
+    // XXX I wonder if whole method shall get wrapped with read action, rather than this piece only
+    _changes.value = getModelAccess().computeReadAction(() -> SetSequence.fromSetWithValues(new HashSet<RevisionNodeChange>(), SetSequence.fromSet(_changes.value).where((it) -> {
       if (SetSequence.fromSet(it.getNodeIds()).count() == 1) {
-        final Wrappers._T<SNode> node = new Wrappers._T<SNode>();
-        getModelAccess().runReadAction(() -> node.value = getModel().getNode(SetSequence.fromSet(it.getNodeIds()).first()));
-        if (SNodeOperations.isInstanceOf(node.value, CONCEPTS.BaseCommentAttribute$nv)) {
-          boolean commentedNode = cell.isBig() && !(Objects.equals(cell.getSNode(), node.value)) && !(Objects.equals(cell.getParent().getSNode(), node.value));
+        SNode node = getModel().getNode(SetSequence.fromSet(it.getNodeIds()).first());
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseCommentAttribute$nv)) {
+          boolean commentedNode = cell.isBig() && !(Objects.equals(cell.getSNode(), node)) && !(Objects.equals(cell.getParent().getSNode(), node));
           return !(commentedNode);
         }
       }
       return !(ListSequence.fromList(it.getMovedChildIds()).contains(cellNodeId));
-    }));
+    })));
 
-    if (SetSequence.fromSet(changes).isEmpty()) {
+    if (SetSequence.fromSet(_changes.value).isEmpty()) {
       return;
     }
 
     if (cell instanceof EditorCell_Collection) {
       for (EditorCell childCell : Sequence.fromIterable((EditorCell_Collection) cell)) {
-        updateMessages(cellAnnotation, changes, childCell, oldMessages, newMessages);
+        updateMessages(cellAnnotation, _changes.value, childCell, oldMessages, newMessages);
       }
     } else {
-      updateLeafMessage(cellAnnotation.getCommitsGraphNode(), changes, cell, oldMessages, newMessages);
+      updateLeafMessage(cellAnnotation.getCommitsGraphNode(), _changes.value, cell, oldMessages, newMessages);
     }
   }
 
@@ -387,7 +391,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       ListSequence.fromList(lineAnnotations).addElement(la);
     });
     myLineAnnotationsRef.set(lineAnnotations);
-    check_coav66_a3a27(myLineAnnotationsUpdateListener);
+    check_coav66_a3a57(myLineAnnotationsUpdateListener);
   }
 
   @NotNull
@@ -452,8 +456,8 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     if (revisionOrderNumber < 0) {
       return null;
     }
-    List<Color> colorPalette = getOrderedColorPalette();
-    return ListSequence.fromList(colorPalette).getElement(revisionOrderNumber % ListSequence.fromList(colorPalette).count());
+    updateCurrentPaletteIfNeeded();
+    return ListSequence.fromList(currentPalette).getElement(revisionOrderNumber % ListSequence.fromList(currentPalette).count());
   }
 
   private Color getColorByRevisionAuthor(CommitsGraphNode graphNode) {
@@ -462,8 +466,16 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     if (authorNumber < 0) {
       return null;
     }
-    List<Color> colorPalette = getOrderedColorPalette();
-    return ListSequence.fromList(colorPalette).getElement(authorNumber % ListSequence.fromList(colorPalette).count());
+    updateCurrentPaletteIfNeeded();
+    return ListSequence.fromList(currentPalette).getElement(authorNumber % ListSequence.fromList(currentPalette).count());
+  }
+
+  private void updateCurrentPaletteIfNeeded() {
+    if (currentPalette == null || currentColorsScheme != EditorColorsManager.getInstance().getGlobalScheme()) {
+      List<Color> colorPalette = getOrderedColorPalette();
+      currentPalette = colorPalette;
+      currentColorsScheme = EditorColorsManager.getInstance().getGlobalScheme();
+    }
   }
 
   private static List<Color> getOrderedColorPalette() {
@@ -473,13 +485,6 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     */
 
     EditorColorsScheme colorsScheme = EditorColorsManager.getInstance().getGlobalScheme();
-    // The VCS_ANNOTATIONS_COLOR_1-5 colors in the Light scheme are way too close to each other, revert to the IntelliJ Light colors, if available
-    if (colorsScheme.getName().contains("user_Light")) {
-      EditorColorsScheme intellijScheme = EditorColorsManager.getInstance().getScheme("IntelliJ Light");
-      if (intellijScheme != null) {
-        colorsScheme = intellijScheme;
-      }
-    }
     AnnotationsSettings settings = AnnotationsSettings.getInstance();
     List<Color> initialPalette = settings.getOrderedColors(colorsScheme);
     /*
@@ -620,7 +625,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       if (commitModel == null) {
         return;
       }
-      final SNode root = commitModel.getNode(getRootId());
+      SNode root = commitModel.getNode(getRootId());
       if (root == null) {
         return;
       }
@@ -628,39 +633,38 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       final String shortCommit = revision.getRevisionNumber().asString().substring(0, 8);
       getModelAccess().runWriteAction(() -> DiffModelUtil.renameModelAndRegister(commitModel, shortCommit, true));
 
-      getModelAccess().runReadInEDT(() -> {
-        Editor newEditor = NavigationSupport.getInstance().openNode(myMpsProject, root, true, false);
-        if (newEditor != null) {
-          EditorComponent newEditorComponent = (EditorComponent) newEditor.getCurrentEditorComponent();
-          if (newEditorComponent != null) {
-            // Revision editor is read-only and should not be highlighted. 
-            // Similarly, editors in the Diff dialog window are not highlighted.
-            newEditorComponent.getHighlighter().setPaused(true);
-            EditorAnnotation revisionEditorAnnotation = new EditorAnnotation(newEditorComponent, myFile, myVcs, myMpsProject, myRootAnnotation, myAllRevisions, revision);
-            AnnotationColumn annotationColumn = new AnnotationColumn(myMpsProject.getProject(), newEditorComponent.getLeftEditorHighlighter(), revisionEditorAnnotation, null);
-            revisionEditorAnnotation.updateAndRepaint();
-          }
+      new EditorNavigator(myMpsProject).shallFocus(true).onceEditorReady((n, newEditor) -> {
+        EditorComponent newEditorComponent = (EditorComponent) newEditor.getCurrentEditorComponent();
+        if (newEditorComponent != null) {
+          // Revision editor is read-only and should not be highlighted. 
+          // Similarly, editors in the Diff dialog window are not highlighted.
+          newEditorComponent.getHighlighter().setPaused(true);
+          // XXX I wonder if Highlighter is capable to detect read-only editors itself, instead of explicit setPaused() here?
+          EditorAnnotation revisionEditorAnnotation = new EditorAnnotation(newEditorComponent, myFile, myVcs, myMpsProject, myRootAnnotation, myAllRevisions, revision);
+          // FWIW, AnnotationColumn registers itself as a listener to EditorAnnotation and adds it to highlighter when appropriate
+          AnnotationColumn annotationColumn = new AnnotationColumn(myMpsProject.getProject(), newEditorComponent.getLeftEditorHighlighter(), revisionEditorAnnotation, null);
+          revisionEditorAnnotation.updateAndRepaint();
         }
-      });
+      }).open(SNodeOperations.getPointer(root));
     });
   }
 
   @Nullable
   private SModel loadRevisionModel(VcsFileRevision revision) {
-    SModel commitModel;
     try {
-      commitModel = VCSPersistenceUtil.loadModel(revision.loadContent(), myFile.getExtension());
-    } catch (IOException ex) {
-      return null;
-    } catch (VcsException ex) {
+      // FWIW, old code with VCSPersistenceUtil.loadModel(file.extension) worked for per-root persistence w/o magic of ModelSack
+      //     due to fallback to v9 persistence in VCSPersistenceSupport.getPersistence(). OTOH, the fallback shall be gone eventually
+      ModelSack md = ModelSack.discover(myMpsProject.getPlatform(), myFile.getName());
+      SModel commitModel = md.load(revision.loadContent());
+      if (!(commitModel.isLoaded())) {
+        return null;
+      }
+      return commitModel;
+    } catch (IOException | VcsException | ModelLoadException | IllegalArgumentException ex) {
       return null;
     }
-    if (commitModel == null || !(commitModel.isLoaded())) {
-      return null;
-    }
-    return commitModel;
   }
-  private static void check_coav66_a3a27(LineAnnotationsUpdateListener checkedDotOperand) {
+  private static void check_coav66_a3a57(LineAnnotationsUpdateListener checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.lineAnnotationsUpdated();
     }

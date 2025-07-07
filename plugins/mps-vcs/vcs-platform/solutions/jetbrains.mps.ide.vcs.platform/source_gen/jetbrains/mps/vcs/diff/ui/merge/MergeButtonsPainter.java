@@ -16,7 +16,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import javax.swing.Icon;
 
-@GeneratedClass(node = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)/708166622413811400", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
+@GeneratedClass(nodeId = "708166622413811400", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
 public class MergeButtonsPainter extends ButtonsPainter {
   private MergeRootsPane myPane;
   private MergeButtonsPainter(MergeRootsPane pane, EditorComponent editorComponent, ChangeGroupLayout changeGroupLayout) {

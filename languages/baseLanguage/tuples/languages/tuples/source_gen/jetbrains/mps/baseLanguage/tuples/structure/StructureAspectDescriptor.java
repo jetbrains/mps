@@ -18,6 +18,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptIndexedTupleLiteral = createDescriptorForIndexedTupleLiteral();
   /*package*/ final ConceptDescriptor myConceptIndexedTupleMemberAccessExpression = createDescriptorForIndexedTupleMemberAccessExpression();
   /*package*/ final ConceptDescriptor myConceptIndexedTupleType = createDescriptorForIndexedTupleType();
+  /*package*/ final ConceptDescriptor myConceptLocalVariableDeclarationInTuple = createDescriptorForLocalVariableDeclarationInTuple();
   /*package*/ final ConceptDescriptor myConceptNamedTupleComponentAccessOperation = createDescriptorForNamedTupleComponentAccessOperation();
   /*package*/ final ConceptDescriptor myConceptNamedTupleComponentDeclaration = createDescriptorForNamedTupleComponentDeclaration();
   /*package*/ final ConceptDescriptor myConceptNamedTupleComponentReference = createDescriptorForNamedTupleComponentReference();
@@ -40,7 +41,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptIndexedTupleLiteral, myConceptIndexedTupleMemberAccessExpression, myConceptIndexedTupleType, myConceptNamedTupleComponentAccessOperation, myConceptNamedTupleComponentDeclaration, myConceptNamedTupleComponentReference, myConceptNamedTupleDeclaration, myConceptNamedTupleLiteral, myConceptNamedTupleType);
+    return Arrays.asList(myConceptIndexedTupleLiteral, myConceptIndexedTupleMemberAccessExpression, myConceptIndexedTupleType, myConceptLocalVariableDeclarationInTuple, myConceptNamedTupleComponentAccessOperation, myConceptNamedTupleComponentDeclaration, myConceptNamedTupleComponentReference, myConceptNamedTupleDeclaration, myConceptNamedTupleLiteral, myConceptNamedTupleType);
   }
 
   @Override
@@ -53,6 +54,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptIndexedTupleMemberAccessExpression;
       case LanguageConceptSwitch.IndexedTupleType:
         return myConceptIndexedTupleType;
+      case LanguageConceptSwitch.LocalVariableDeclarationInTuple:
+        return myConceptLocalVariableDeclarationInTuple;
       case LanguageConceptSwitch.NamedTupleComponentAccessOperation:
         return myConceptNamedTupleComponentAccessOperation;
       case LanguageConceptSwitch.NamedTupleComponentDeclaration:
@@ -80,6 +83,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     // extends: jetbrains.mps.baseLanguage.structure.Expression
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1206e6cc291L);
     b.origin("r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)/1238853782547");
     b.version(3);
     b.aggregate("component", 0x1207171832eL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(true).origin("1238853845806").done();
@@ -111,6 +115,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("componentType", 0x1207158795cL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(true).ordered(true).multiple(true).origin("1238852204892").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
     b.alias("[");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForLocalVariableDeclarationInTuple() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.tuples", "LocalVariableDeclarationInTuple", 0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x387e75e5416d26cbL);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.baseLanguage.structure.Expression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    b.origin("r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)/4070820740695140043");
+    b.version(3);
+    b.aggregate("variable", 0x387e75e5416d2758L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL).optional(false).ordered(true).multiple(false).origin("4070820740695140184").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNamedTupleComponentAccessOperation() {

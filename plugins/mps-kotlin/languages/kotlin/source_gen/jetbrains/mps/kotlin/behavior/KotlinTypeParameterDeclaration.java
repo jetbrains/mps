@@ -9,13 +9,9 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
-import java.util.ArrayList;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class KotlinTypeParameterDeclaration extends DefaultTypeParameterDeclaration {
   private final SNode myParameter;
@@ -36,12 +32,7 @@ public class KotlinTypeParameterDeclaration extends DefaultTypeParameterDeclarat
   @Override
   @NotNull
   public List<SNode> getUpperBounds() {
-    List<SNode> bounds = new ArrayList<SNode>();
-    // TODO add constraints in where clause
-    if ((SLinkOperations.getTarget(myParameter, LINKS.bound$KhhI) != null)) {
-      ListSequence.fromList(bounds).addElement(SLinkOperations.getTarget(myParameter, LINKS.bound$KhhI));
-    }
-    return bounds;
+    return (List<SNode>) ITypeParameter__BehaviorDescriptor.getUpperBounds_id4VnyIrvnC4l.invoke(myParameter);
   }
   @Override
   public SEnumerationLiteral getVariance() {
@@ -51,9 +42,5 @@ public class KotlinTypeParameterDeclaration extends DefaultTypeParameterDeclarat
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty variance$xP5D = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4da39967d13161a1L, 0x22287f28953f8c9bL, "variance");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink bound$KhhI = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, 0x28bef6d7551af850L, "bound");
   }
 }

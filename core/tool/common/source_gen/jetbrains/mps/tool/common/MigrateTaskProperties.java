@@ -8,7 +8,7 @@ import java.io.File;
 /**
  * Pass <migrate> parameters from ant task to actual worker via script
  */
-@GeneratedClass(node = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/4031029858776329668", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
+@GeneratedClass(nodeId = "4031029858776329668", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
 public class MigrateTaskProperties {
   private static final String PRE_CHECK_HALT = "migrate.pre-check-halt";
   private static final String DEPS_ERROR_HALT = "migrate.deps-error-halt";

@@ -24,7 +24,7 @@ import jetbrains.mps.debugger.java.api.state.proxy.JavaThread;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaLocation;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaStackFrame;
 
-@GeneratedClass(node = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)/7406771907178600108", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
+@GeneratedClass(nodeId = "7406771907178600108", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
 public abstract class EvaluationUi extends JPanel {
   private static final Logger LOG = Logger.getLogger(EvaluationUi.class);
   public static final DataKey<IEvaluationContainer> EVALUATION_CONTAINER = DataKey.create("Evaluation Container");

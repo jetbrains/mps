@@ -15,11 +15,15 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.EditorPanelManager;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+
+import java.util.function.BiConsumer;
 
 /**
  * User: shatalin
@@ -43,5 +47,22 @@ public class EditorPanelManagerImpl implements EditorPanelManager {
     // the project. This is sort of implicit assumption I'd like to avoid at all costs.
     // And the reason not to use EditorNavigator directly is that we generally don't have access to Project in editors.
     new EditorNavigator(myProject).shallFocus(true).open(node.getReference());
+  }
+
+  @Override
+  public void openAndSelect(@NotNull SNode node) {
+    final SNodeReference toSelect = node.getReference();
+    final SNodeReference editorFor = node.getContainingRoot().getReference();
+    final BiConsumer<SNode, Editor> cc = (n, e) -> {
+      if (toSelect.equals(editorFor)) {
+        e.getEditorContext().selectWRTFocusPolicy(n, true);
+      } else {
+        final SNode nn = toSelect.resolve(e.getEditorContext().getRepository());
+        if (nn != null) {
+          e.getEditorContext().selectWRTFocusPolicy(nn, true);
+        }
+      }
+    };
+    new EditorNavigator(myProject).shallFocus(true).shallSelect(false).onceEditorReady(cc).open(editorFor);
   }
 }

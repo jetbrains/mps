@@ -4,6 +4,7 @@ package jetbrains.mps.lang.text.structure;
 
 import jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
+import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
 import jetbrains.mps.smodel.runtime.ConstrainedStringDatatypeDescriptor;
 import jetbrains.mps.smodel.runtime.ConstrainedStringDatatypeDescriptorImpl;
 import java.util.Collection;
@@ -13,8 +14,8 @@ import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
-import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
+import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.StaticScope;
 
@@ -22,7 +23,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBulletLine = createDescriptorForBulletLine();
   /*package*/ final ConceptDescriptor myConceptBulletPoint = createDescriptorForBulletPoint();
   /*package*/ final ConceptDescriptor myConceptEmptyParagraphLetter = createDescriptorForEmptyParagraphLetter();
+  /*package*/ final ConceptDescriptor myConceptHeader = createDescriptorForHeader();
+  /*package*/ final ConceptDescriptor myConceptHtmlTag = createDescriptorForHtmlTag();
   /*package*/ final ConceptDescriptor myConceptIHoldComment = createDescriptorForIHoldComment();
+  /*package*/ final ConceptDescriptor myConceptIHoldDocumentation = createDescriptorForIHoldDocumentation();
   /*package*/ final ConceptDescriptor myConceptIHoldLines = createDescriptorForIHoldLines();
   /*package*/ final ConceptDescriptor myConceptIHoldParagraphs = createDescriptorForIHoldParagraphs();
   /*package*/ final ConceptDescriptor myConceptIParagraph = createDescriptorForIParagraph();
@@ -36,10 +40,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptParagraph = createDescriptorForParagraph();
   /*package*/ final ConceptDescriptor myConceptText = createDescriptorForText();
   /*package*/ final ConceptDescriptor myConceptTextElement = createDescriptorForTextElement();
+  /*package*/ final ConceptDescriptor myConceptTextNodeReference = createDescriptorForTextNodeReference();
   /*package*/ final ConceptDescriptor myConceptTextualElement = createDescriptorForTextualElement();
   /*package*/ final ConceptDescriptor myConceptUrlTextualElement = createDescriptorForUrlTextualElement();
   /*package*/ final ConceptDescriptor myConceptWord = createDescriptorForWord();
+  /*package*/ final EnumerationDescriptor myEnumerationHeaderEnum = new EnumerationDescriptor_HeaderEnum();
   /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypeCharacterValueType = new ConstrainedStringDatatypeDescriptorImpl(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4aee0L, "CharacterValueType", "r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/9143182410139348704", ".");
+  /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypeUrl = new ConstrainedStringDatatypeDescriptorImpl(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6107f13d8b6c38eeL, "Url", "r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/6991822193150408942", "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)");
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -55,7 +62,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBulletLine, myConceptBulletPoint, myConceptEmptyParagraphLetter, myConceptIHoldComment, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptIParagraph, myConceptIndentedPoint, myConceptLetter, myConceptLine, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptNumberedLine, myConceptNumberedPoint, myConceptParagraph, myConceptText, myConceptTextElement, myConceptTextualElement, myConceptUrlTextualElement, myConceptWord);
+    return Arrays.asList(myConceptBulletLine, myConceptBulletPoint, myConceptEmptyParagraphLetter, myConceptHeader, myConceptHtmlTag, myConceptIHoldComment, myConceptIHoldDocumentation, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptIParagraph, myConceptIndentedPoint, myConceptLetter, myConceptLine, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptNumberedLine, myConceptNumberedPoint, myConceptParagraph, myConceptText, myConceptTextElement, myConceptTextNodeReference, myConceptTextualElement, myConceptUrlTextualElement, myConceptWord);
   }
 
   @Override
@@ -68,8 +75,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptBulletPoint;
       case LanguageConceptSwitch.EmptyParagraphLetter:
         return myConceptEmptyParagraphLetter;
+      case LanguageConceptSwitch.Header:
+        return myConceptHeader;
+      case LanguageConceptSwitch.HtmlTag:
+        return myConceptHtmlTag;
       case LanguageConceptSwitch.IHoldComment:
         return myConceptIHoldComment;
+      case LanguageConceptSwitch.IHoldDocumentation:
+        return myConceptIHoldDocumentation;
       case LanguageConceptSwitch.IHoldLines:
         return myConceptIHoldLines;
       case LanguageConceptSwitch.IHoldParagraphs:
@@ -96,6 +109,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptText;
       case LanguageConceptSwitch.TextElement:
         return myConceptTextElement;
+      case LanguageConceptSwitch.TextNodeReference:
+        return myConceptTextNodeReference;
       case LanguageConceptSwitch.TextualElement:
         return myConceptTextualElement;
       case LanguageConceptSwitch.UrlTextualElement:
@@ -109,7 +124,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList(myCSDatatypeCharacterValueType);
+    return Arrays.asList(myEnumerationHeaderEnum, myCSDatatypeCharacterValueType, myCSDatatypeUrl);
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
@@ -147,10 +162,39 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForHeader() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "Header", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.lang.text.structure.Line
+    b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/7832392118012508876");
+    b.version(3);
+    b.property("level", 0x6cb23f222fb47b9dL).type(MetaIdFactory.dataTypeId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L)).origin("7832392118012509085").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHtmlTag() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "HtmlTag", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.lang.text.structure.TextElement
+    b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/809653093352985574");
+    b.version(3);
+    b.property("tagName", 0x5c842a42c54b10b6L).type(PrimitiveTypeId.STRING).origin("6666499814681415862").done();
+    b.aggregate("content", 0x16838b3fce9a4922L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(false).ordered(true).multiple(false).origin("1622293396948928802").done();
+    b.alias("tag");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForIHoldComment() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "IHoldComment", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x18ce7fcc0a02c1ffL);
     b.interface_();
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/1787506616430676716");
+    b.version(3);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForIHoldDocumentation() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "IHoldDocumentation", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x33d61edd01ab3df3L);
+    b.interface_();
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/3735206875515010547");
     b.version(3);
     return b.create();
   }
@@ -275,7 +319,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/2535923850359206929");
     b.version(3);
     b.aggregate("paragraphs", 0x7ee31bf598f6d778L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL).optional(true).ordered(true).multiple(true).origin("9143182410139490168").done();
-    b.aggregate("lines", 0x2331694e561a03b8L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(false).ordered(true).multiple(true).origin("2535923850359210936").done();
+    b.aggregate("lines", 0x2331694e561a03b8L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(true).origin("2535923850359210936").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
   }
@@ -285,6 +329,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/155656958578482919");
     b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTextNodeReference() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "TextNodeReference", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cc063b139472ce7L);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.lang.text.structure.TextElement
+    b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/7836372964445990119");
+    b.version(3);
+    b.associate("reference", 0x6d10fe0be3bc93bL).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L).optional(false).origin("491191292298774843").done();
+    b.alias("reference");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTextualElement() {
@@ -318,7 +373,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("bold", 0x57d1fa7f2af1d47eL).type(PrimitiveTypeId.BOOLEAN).origin("6328114375520539774").done();
     b.property("italic", 0x57d1fa7f2af1d481L).type(PrimitiveTypeId.BOOLEAN).origin("6328114375520539777").done();
     b.property("underlined", 0x57d1fa7f2af1d494L).type(PrimitiveTypeId.BOOLEAN).origin("6328114375520539796").done();
-    b.property("url", 0x57d1fa7f2af1d485L).type(PrimitiveTypeId.STRING).origin("6328114375520539781").done();
+    b.property("url", 0x57d1fa7f2af1d485L).type(MetaIdFactory.dataTypeId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6107f13d8b6c38eeL)).origin("6328114375520539781").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
   }

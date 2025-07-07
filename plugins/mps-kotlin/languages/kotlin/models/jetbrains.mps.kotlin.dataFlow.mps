@@ -1349,14 +1349,14 @@
   </node>
   <node concept="3_zdsH" id="5xQ$WN8eAqX">
     <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
-    <ref role="3_znuS" to="hcm8:1502VugCR$H" resolve="MemberNavigationOperation" />
+    <ref role="3_znuS" to="hcm8:1502VugCR$H" resolve="MemberNavigationExpression" />
     <node concept="3__wT9" id="5xQ$WN8eAqY" role="3_A6iZ">
       <node concept="3clFbS" id="5xQ$WN8eAqZ" role="2VODD2">
         <node concept="3AgYrR" id="5xQ$WN8eAro" role="3cqZAp">
           <node concept="2OqwBi" id="5xQ$WN8eADr" role="3Ah4Yx">
             <node concept="3__QtB" id="5xQ$WN8eArT" role="2Oq$k0" />
             <node concept="3TrEf2" id="5xQ$WN8eB3n" role="2OqNvi">
-              <ref role="3Tt5mk" to="hcm8:1502Vug_mWz" resolve="operand" />
+              <ref role="3Tt5mk" to="hcm8:1QSyUt0NM5s" resolve="operand" />
             </node>
           </node>
         </node>

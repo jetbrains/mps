@@ -28,10 +28,16 @@ public abstract class Identifiers {
   }
 
   public static boolean isValidQuotableIdentifier(String identifier) {
+    if (identifier == null) {
+      return false;
+    }
     return QUOTED_IDENTIFIER.matcher(identifier).matches();
   }
 
   public static boolean isValid(String identifier) {
+    if (identifier == null) {
+      return false;
+    }
     return VALID_IDENTIFIER.matcher(identifier).matches();
   }
 

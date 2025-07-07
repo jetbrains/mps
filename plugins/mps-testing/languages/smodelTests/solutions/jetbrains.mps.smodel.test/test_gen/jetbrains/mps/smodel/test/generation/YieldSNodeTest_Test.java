@@ -23,9 +23,9 @@ public class YieldSNodeTest_Test {
   @Test
   public void test_MPS29957() throws Exception {
     // This test is to ensure that the code is generated and compiled correctly
-    Assert.assertEquals(Sequence.fromIterable(createCollection1()).count(), 3);
-    Assert.assertEquals(Sequence.fromIterable(createCollection2()).count(), 1);
-    Assert.assertEquals(Sequence.fromIterable(createCollection3()).count(), 1);
+    Assert.assertEquals(Integer.valueOf(Sequence.fromIterable(createCollection1()).count()), Integer.valueOf(3));
+    Assert.assertEquals(Integer.valueOf(Sequence.fromIterable(createCollection2()).count()), Integer.valueOf(1));
+    Assert.assertEquals(Integer.valueOf(Sequence.fromIterable(createCollection3()).count()), Integer.valueOf(1));
   }
   public Iterable<SNode> createCollection1() {
     return Sequence.fromClosure(() -> {

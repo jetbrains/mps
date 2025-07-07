@@ -26,6 +26,7 @@ import jetbrains.mps.ide.actions.LanguageActions_ActionGroup;
 import jetbrains.mps.ide.actions.ModelActions_ActionGroup;
 import jetbrains.mps.ide.actions.ModuleActions_ActionGroup;
 import jetbrains.mps.ide.actions.NamespaceActions_ActionGroup;
+import jetbrains.mps.ide.actions.NamespaceNewActions_ActionGroup;
 import jetbrains.mps.ide.actions.NodeActions_ActionGroup;
 import jetbrains.mps.ide.actions.PackageActions_ActionGroup;
 import jetbrains.mps.ide.actions.ProjectActions_ActionGroup;
@@ -39,6 +40,7 @@ import jetbrains.mps.ide.projectPane.fileSystem.nodes.AbstractFileTreeNode;
 import jetbrains.mps.ide.projectPane.fileSystem.nodes.FileTreeNode;
 import jetbrains.mps.ide.projectPane.fileSystem.nodes.FolderTreeNode;
 import jetbrains.mps.ide.projectPane.fileSystem.nodes.ModuleTreeNode;
+import jetbrains.mps.ide.ui.tree.VirtualFolder.Nodes;
 import jetbrains.mps.ide.ui.smodel.PropertyTreeNode;
 import jetbrains.mps.ide.ui.smodel.ReferenceTreeNode;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
@@ -56,7 +58,13 @@ import jetbrains.mps.ide.ui.tree.module.TransientModelsTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.Solution;
+import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.workbench.action.ActionUtils;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public class ProjectPaneActionGroups {
 
@@ -75,6 +83,7 @@ public class ProjectPaneActionGroups {
   public static final String MODEL_ACTIONS = ModelActions_ActionGroup.ID;
   public static final String PACKAGE_ACTIONS = PackageActions_ActionGroup.ID;
   public static final String NAMESPACE_ACTIONS = NamespaceActions_ActionGroup.ID;
+  public static final String NAMESPACE_NEW_ACTIONS = NamespaceNewActions_ActionGroup.ID;
 
   // FIXME hardcoded action ID
   // [artem] guess, the reason to hardcode ids is that these actions reside in j.m.ide.devkit solution which is not visible
@@ -145,25 +154,21 @@ public class ProjectPaneActionGroups {
     return null;
   }
 
-  public static ActionGroup getQuickCreateGroup(MPSTreeNode treeNode) {
-    if (treeNode instanceof TextTreeNode) {
-      if (treeNode instanceof ProjectTreeNode) {
-        return ActionUtils.getGroup(PROJECT_NEW_ACTIONS);
-      } else if (treeNode instanceof PackageNode) {
-        return ActionUtils.getGroup(CREATE_ROOT_ACTIONS);
-      }
-    }
-    if (treeNode instanceof SModelTreeNode || treeNode instanceof SNodeTreeNode) {
+  public static ActionGroup getQuickCreateGroup(Object value) {
+    if (value instanceof MPSProject) {
+      return ActionUtils.getGroup(PROJECT_NEW_ACTIONS);
+    } else if (value instanceof Nodes) {
       return ActionUtils.getGroup(CREATE_ROOT_ACTIONS);
     }
-    if (treeNode instanceof ProjectModuleTreeNode) {
-      if (treeNode instanceof ProjectSolutionTreeNode) {
-        return ActionUtils.getGroup(SOLUTION_NEW_ACTIONS);
-      } else if (treeNode instanceof GeneratorTreeNode) {
-        return ActionUtils.getGroup(GENERATOR_NEW_ACTIONS);
-      } else if (treeNode instanceof ProjectLanguageTreeNode) {
-        return ActionUtils.getGroup(LANGUAGE_NEW_ACTIONS);
-      }
+    if (value instanceof SModel || value instanceof SNode) {
+      return ActionUtils.getGroup(CREATE_ROOT_ACTIONS);
+    }
+    if (value instanceof Solution) {
+      return ActionUtils.getGroup(SOLUTION_NEW_ACTIONS);
+    } else if (value instanceof Generator) {
+      return ActionUtils.getGroup(GENERATOR_NEW_ACTIONS);
+    } else if (value instanceof Language) {
+      return ActionUtils.getGroup(LANGUAGE_NEW_ACTIONS);
     }
     return null;
   }

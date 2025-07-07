@@ -5,7 +5,7 @@ package jetbrains.mps.ide.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3121818631993911011", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "3121818631993911011", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public final class Mac_10_5_KeymapChanges extends BaseKeymapChanges {
   public Mac_10_5_KeymapChanges() {
     add("jetbrains.mps.ide.actions.NewElement_Action", "meta N");
@@ -14,6 +14,7 @@ public final class Mac_10_5_KeymapChanges extends BaseKeymapChanges {
     add("jetbrains.mps.ide.actions.ShowDefinitionInMenu_Action", "meta Y");
     add("jetbrains.mps.ide.actions.ShowDefinition_Action", "alt SPACE");
     add("jetbrains.mps.ide.actions.ShowDefinition_Action", "meta Y");
+    add("jetbrains.mps.ide.actions.ShowQuickDocumentation_Action", " F1");
     remove("jetbrains.mps.ide.actions.NewElement_Action", "alt INSERT");
     remove("jetbrains.mps.ide.actions.NewElement_Action", "ctrl alt INSERT");
     replace("jetbrains.mps.ide.actions.FindTextInProject_Action", "ctrl alt shift F");
@@ -21,7 +22,7 @@ public final class Mac_10_5_KeymapChanges extends BaseKeymapChanges {
     replace("jetbrains.mps.ide.actions.GoToModule_Action", "meta alt O");
     replace("jetbrains.mps.ide.actions.ShowClassInHierarchy_Action", "ctrl H");
     replace("jetbrains.mps.ide.actions.ShowConceptInHierarchy_Action", "ctrl H");
-    replace("jetbrains.mps.ide.actions.ShowNodeInfo_Action", "ctrl Q");
+    replace("jetbrains.mps.ide.actions.ShowNodeInfo_Action", "ctrl shift Q");
     // parameterized
     replaceTemplate("jetbrains.mps.ide.actions.GoToRootNode_Action", "meta O");
     customTemplate("jetbrains.mps.ide.actions.GoToBookmark_Action", new ShortcutChange0());

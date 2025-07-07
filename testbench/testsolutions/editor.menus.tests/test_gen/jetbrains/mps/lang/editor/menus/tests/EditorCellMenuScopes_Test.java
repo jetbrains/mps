@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.SNodePointer;
 @MPSLaunch
 public class EditorCellMenuScopes_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(EditorCellMenuScopes_Test.class, "${mps_home}", "r:4f8193a2-048e-4ddf-b505-dfca00e8c910(jetbrains.mps.lang.editor.menus.tests@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(EditorCellMenuScopes_Test.class).projectPath(null).modelRef("r:4f8193a2-048e-4ddf-b505-dfca00e8c910(jetbrains.mps.lang.editor.menus.tests@tests)").reopenProject(null).build());
 
   public EditorCellMenuScopes_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -58,51 +58,50 @@ public class EditorCellMenuScopes_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ScopeOf_TransformationMenuReference_Default_concept_1068638940632614994() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1068638940632614985");
+    }
 
+    public void test_ScopeOf_TransformationMenuReference_Default_concept_1068638940632614994() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1068638940632614994");
-        SNode operation = getRealNodeById("1068638940632614996");
         new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), new SNodePointer("r:c6b5a119-ed4d-420e-b7df-fa1b4101c68f(jetbrains.mps.lang.editor.menus.testLanguage.structure)", "1068638940632614930"), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))).check();
       });
     }
     public void test_ScopeOf_TransformationMenuReference_Named_menu_1068638940632808481() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1068638940632808481");
-        SNode operation = getRealNodeById("1068638940632808483");
         new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff09L, 0x5d3b34577b3cff0aL, "menu"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "3794279994274164831"), new SNodePointer("r:963517d7-70d8-4c26-b98a-77234c4cb04a(jetbrains.mps.lang.editor.menus.testExtendingLanguage.editor)", "1068638940632627681"))).check();
       });
     }
     public void test_ScopeOf_TransformationMenuReference_Default_concept_4091667478583379447() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4091667478583379447");
-        SNode operation = getRealNodeById("4091667478583379449");
         new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), new SNodePointer("r:c6b5a119-ed4d-420e-b7df-fa1b4101c68f(jetbrains.mps.lang.editor.menus.testLanguage.structure)", "4091667478582876846"), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194658468"))).check();
       });
     }
     public void test_ScopeOf_TransformationMenuReference_Named_menu_4091667478583467351() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4091667478583467351");
-        SNode operation = getRealNodeById("4091667478583467353");
         new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff09L, 0x5d3b34577b3cff0aL, "menu"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "4091667478582879857"))).check();
       });
     }
     public void test_ScopeOf_TransformationMenuReference_Default_concept_4091667478583467622() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4091667478583467622");
-        SNode operation = getRealNodeById("4091667478583467624");
         new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), new SNodePointer("r:c6b5a119-ed4d-420e-b7df-fa1b4101c68f(jetbrains.mps.lang.editor.menus.testLanguage.structure)", "1068638940632614930"), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))).check();
       });
     }
     public void test_ScopeOf_TransformationMenuReference_Named_menu_4091667478583468879() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4091667478583468879");
-        SNode operation = getRealNodeById("4091667478583486304");
         new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff09L, 0x5d3b34577b3cff0aL, "menu"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), new SNodePointer("r:963517d7-70d8-4c26-b98a-77234c4cb04a(jetbrains.mps.lang.editor.menus.testExtendingLanguage.editor)", "1068638940632627681"), new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "3794279994274164831"))).check();
       });
     }

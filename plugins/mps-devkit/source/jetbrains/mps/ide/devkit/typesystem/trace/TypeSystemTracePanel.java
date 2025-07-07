@@ -8,6 +8,7 @@ import com.intellij.icons.AllIcons.Actions;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ToggleAction;
@@ -24,6 +25,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.workbench.action.BaseAction;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import javax.swing.Icon;
@@ -246,6 +248,11 @@ public class TypeSystemTracePanel extends JPanel implements Disposable {
     abstract boolean initialState();
 
     abstract void stateChanged(boolean newState);
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
+    }
 
     private boolean mySelected;
   }

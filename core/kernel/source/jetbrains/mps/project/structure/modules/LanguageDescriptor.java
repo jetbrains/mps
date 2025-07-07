@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,10 +47,18 @@ public class LanguageDescriptor extends ModuleDescriptor {
     myRuntimeModules = new LinkedHashSet<>();
   }
 
+  /**
+   * @deprecated use {@link ModuleDescriptor#getOutputRoot()}, instead
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public String getGenPath() {
     return myGenPath;
   }
 
+  /**
+   * @deprecated use {@link ModuleDescriptor#setOutputRoot(String)}, instead
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public void setGenPath(String genPath) {
     myGenPath = genPath;
   }

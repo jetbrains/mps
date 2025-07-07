@@ -8,9 +8,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 /**
  * Util class for precedence computation in binary and unary expressions, allow to keep a tree
@@ -55,12 +55,13 @@ public class PrecedenceUtil {
         if (Objects.equals(((leftTransform ? LINKS.right$yQIM : LINKS.left$yQgK)), SNodeOperations.getContainingLink(targetNode))) {
           break;
         }
-      } else if (!(leftTransform) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.PostfixUnaryExpression$2v)) {
-        // Postfix: right transform shouldn't pass through
-        break;
-      } else if (leftTransform && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.PrefixUnaryExpression$JZ)) {
-        // Prefix: left transform shouldn't pass through
-        break;
+      } else if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IUnaryExpression$Rp)) {
+        boolean isRight = (boolean) IUnaryExpression__BehaviorDescriptor.isRightUnary_id7EfieuW$AAu.invoke(SNodeOperations.cast(parentNode, CONCEPTS.IUnaryExpression$Rp));
+
+        // Prefix: left transform shouldn't pass through (same for postfix/right)
+        if ((leftTransform && !(isRight)) || (!(leftTransform) && isRight)) {
+          break;
+        }
       }
 
       targetNode = parentNode;
@@ -89,7 +90,7 @@ public class PrecedenceUtil {
       }
     }
 
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToProcess), CONCEPTS.UnaryExpression$Ls)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToProcess), CONCEPTS.IUnaryExpression$Rp)) {
       SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3e2L, "jetbrains.mps.kotlin.structure.ParenthesizedExpression"));
       SNodeOperations.replaceWithAnother(nodeToProcess, parens);
       SLinkOperations.setTarget(parens, LINKS.nested$xoIL, result);
@@ -109,9 +110,15 @@ public class PrecedenceUtil {
   }
 
   public static SNode processUnaryTransform(SNode sourceNode, SNode unary, boolean isLeft) {
-    SNode nodeToProcess = PrecedenceUtil.getTargetForTransform(sourceNode, IExpression__BehaviorDescriptor.getPrecedenceLevel_id666oMY59eOv.invoke(unary), isLeft);
+    return processUnaryTransform(sourceNode, unary, LINKS.operand$YS5t, IExpression__BehaviorDescriptor.getPrecedenceLevel_id666oMY59eOv.invoke(unary), isLeft);
+  }
+  /**
+   * Use this one in case of custom unary expressions (which do not extend UnaryExpression)
+   */
+  public static <T extends SNode> T processUnaryTransform(SNode sourceNode, T unary, SContainmentLink operandLink, Precedence precedenceLevel, boolean isLeft) {
+    SNode nodeToProcess = PrecedenceUtil.getTargetForTransform(sourceNode, precedenceLevel, isLeft);
     SNodeOperations.replaceWithAnother(nodeToProcess, unary);
-    SLinkOperations.setTarget(unary, LINKS.operand$YS5t, nodeToProcess);
+    SLinkOperations.setTarget(unary, operandLink, nodeToProcess);
     return unary;
   }
 
@@ -119,9 +126,7 @@ public class PrecedenceUtil {
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IExpression$2i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression");
     /*package*/ static final SConcept BinaryExpression$$S = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, "jetbrains.mps.kotlin.structure.BinaryExpression");
-    /*package*/ static final SConcept PostfixUnaryExpression$2v = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956fd8L, "jetbrains.mps.kotlin.structure.PostfixUnaryExpression");
-    /*package*/ static final SConcept PrefixUnaryExpression$JZ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f1dL, "jetbrains.mps.kotlin.structure.PrefixUnaryExpression");
-    /*package*/ static final SConcept UnaryExpression$Ls = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, "jetbrains.mps.kotlin.structure.UnaryExpression");
+    /*package*/ static final SInterfaceConcept IUnaryExpression$Rp = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7a8f48e7bc91d518L, "jetbrains.mps.kotlin.structure.IUnaryExpression");
   }
 
   private static final class LINKS {

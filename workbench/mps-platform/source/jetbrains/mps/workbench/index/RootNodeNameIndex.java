@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.workbench.index;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
@@ -91,6 +90,7 @@ public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelR
         if (factory == null) {
           return null;
         }
+        // FIXME seems that can be replaced with regular load(StreamDataSource, ContentOption.CONTENT_ONLY)
         if (!(factory instanceof IndexAwareModelFactory)) {
           return null;
         }
@@ -167,7 +167,7 @@ public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelR
   @NotNull
   @Override
   public SingleEntryIndexer<ModelRootsData> getIndexer() {
-    return new MyIndexer(ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform());
+    return new MyIndexer(MPSCoreComponents.getInstance().getPlatform());
   }
 
   @NotNull

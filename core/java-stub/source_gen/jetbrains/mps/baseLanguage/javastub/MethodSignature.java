@@ -19,7 +19,7 @@ import org.eclipse.jdt.internal.compiler.ast.MethodDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.TypeReference;
 import org.eclipse.jdt.internal.compiler.ast.ArrayTypeReference;
 
-@GeneratedClass(node = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/1632542722248173982", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
+@GeneratedClass(nodeId = "1632542722248173982", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
 /*package*/ class MethodSignature {
   private static final Logger LOG = Logger.getLogger(MethodSignature.class);
 

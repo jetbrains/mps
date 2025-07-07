@@ -22,7 +22,7 @@ public class EnumerationDescriptor_BuildLayout_CopyFilterEolStyle extends Enumer
   private final EnumerationDescriptor.MemberDescriptor myMember_crlf_0 = new EnumerationDescriptor.MemberDescriptor("crlf", "convert to the pair CRLF", 0x3a43b020f623c9b2L, "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4241665505353448061");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3a43b020f623c9aeL, 0x3a43b020f623f4a5L, 0x3a43b020f623c9afL, 0x3a43b020f623c9b0L, 0x3a43b020f623c9b1L, 0x3a43b020f623c9b2L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_local_0, myMember_asis_0, myMember_cr_0, myMember_lf_0, myMember_crlf_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_local_0, myMember_asis_0, myMember_cr_0, myMember_lf_0, myMember_crlf_0);
 
   @Nullable
   @Override

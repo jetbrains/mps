@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,12 @@ import org.jetbrains.annotations.Nullable;
  * {@link ComponentPlugin} plugs {@link CoreComponent} and expose any/all of them through API of {@link ComponentHost}.
  * In the future, however, we might want to make Project a {@link ComponentHost} as well, and provide means
  * to publish own components into layers (publish/withdraw).
+ * <p>
+ *   Note, at the moment this interface also serves as CoreComponent 'accessor'. The name in this scenario could be
+ *   a bit misleading (as 'accessor' merely gives access to component host(s), but from API perspective it's identical
+ *   and I see no reason to have both.
+ * </p>
  *
- * This is an attempt to fill the gaps in component story.
  * @author Artem Tikhomirov
  * @since 3.4
  */

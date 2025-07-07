@@ -171,7 +171,7 @@ __switch__:
     try {
       trd.join();
     } finally {
-      Assert.assertEquals(42, foo.value);
+      Assert.assertEquals(Integer.valueOf(42), Integer.valueOf(foo.value));
     }
   }
   @Test
@@ -182,7 +182,7 @@ __switch__:
     try {
       trd.join();
     } finally {
-      Assert.assertEquals(42, foo.value);
+      Assert.assertEquals(Integer.valueOf(42), Integer.valueOf(foo.value));
     }
   }
   @Test

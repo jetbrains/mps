@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,13 +53,13 @@ public class DeploymentConcurrencyTest implements EnvironmentAware {
     // With DeploymentNotificationImpl and its semaphores, we started to face InterruptedException from semaphore during this test.
     // To me, it looks like 20 sec limit for the executor service is not enough. First thread grabs write for almost whole duration:
     //   Write Action duration (us): 908, 1309, 1055, 1679, 1075, 1006, 1122, 1010, 1044, 986, 1029, 1040, 996, 1037, 988, 1033, 979, 1041, 1049, 867
-    // therefore, I decided to make less reloads (used to be 20). I feel 10 is enough to make a point.
+    // therefore, I decided to make fewer reloads (used to be 20). I feel 10 is enough to make a point.
     final int TOTAL_RELOADS = 10;
 //    final ArrayList<Long> waDur = new ArrayList<>();
     taskList.add(() -> {
       for (int i = 0; i < TOTAL_RELOADS; i++) {
-        final long s = System.nanoTime();
-        repo.getModelAccess().runWriteAction(() -> getCLM().reloadAll(new EmptyProgressMonitor()));
+//        final long s = System.nanoTime();
+        getCLM().reloadAll(new EmptyProgressMonitor());
 //        waDur.add(System.nanoTime() - s);
       }
       return null;

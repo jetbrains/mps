@@ -57,5 +57,8 @@
         <fileset file="${build.tmp}/deps/buildY/AaLibs.zip/abcde.jar" />
       </classpath>
     </javac>
+    <copy todir="${build.tmp}/java/out/module-B-in-Z">
+      <fileset dir="${basedir}/subprojects/buildB/moduleB" excludes="**/*.java" />
+    </copy>
   </target>
 </project>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="dquruckr0assuzh6kmwr529vxi11ipr">
-  <files names="InlineIconExpressions.java:MigrationDescriptor.java:MoveResourcePathToIconFile.java" />
+<product version="3" modelHash="7nmegf0o61phesfpdfge77fb550fb2t">
+  <files names="ConstantFieldIcon.java:InlineIconExpressions.java:MigrationDescriptor.java:MoveResourcePathToIconFile.java" />
 </product>
 

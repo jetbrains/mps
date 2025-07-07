@@ -25,9 +25,11 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandlerElementKeyMap;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.RParenthesisStyleClass;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 /*package*/ class FunctionParameters_Component_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -70,6 +72,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     AbstractCellListHandler handler = new parametersListHandler_ro4pkg_b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("FPC_refNodeList_parameters");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
+    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, _StyleParameter_QueryFunction_ro4pkg_a1b0());
+    style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_ro4pkg_a2b0());
+    editorCell.getStyle().putAll(style);
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
@@ -147,6 +154,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       Style style = new StyleImpl();
       style.set(StyleAttributes.LAYOUT_CONSTRAINT, "");
       style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+      style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_ro4pkg_a0a1a(prevNode, nextNode));
       editorCell.getStyle().putAll(style);
       editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteNode(prevNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
       editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(prevNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
@@ -161,6 +169,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setDefaultText("");
       return editorCell;
     }
+    private boolean _StyleParameter_QueryFunction_ro4pkg_a0a1a(SNode prevNode, SNode nextNode) {
+      return SPropertyOperations.getBoolean(getNode(), PROPS.multiLineParameters$vVHR);
+    }
+  }
+  private boolean _StyleParameter_QueryFunction_ro4pkg_a1b0() {
+    return SPropertyOperations.getBoolean(getNode(), PROPS.multiLineParameters$vVHR);
+  }
+  private boolean _StyleParameter_QueryFunction_ro4pkg_a2b0() {
+    return SPropertyOperations.getBoolean(getNode(), PROPS.multiLineParameters$vVHR);
   }
   private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
@@ -178,5 +195,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept FunctionParameter$tR = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af405L, "jetbrains.mps.kotlin.structure.FunctionParameter");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty multiLineParameters$vVHR = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d755909980L, 0x63125c150bf947eeL, "multiLineParameters");
   }
 }

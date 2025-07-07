@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -212,7 +213,8 @@ public class GenerationSessionContext {
           uniqueNameBuffer.append('_');
           uniqueNameBuffer.append(suffix);
         } else {
-          String name = topmostNamed.getName();
+//          String name = topmostNamed.getName();
+          String name = SNodeAccessUtil.getProperty(topmostNamed, SNodeUtil.property_INamedConcept_name);
           if (name != null) {
             // In fact, ("v2".hashCode >>> 1) == ("v3".hashCode >>> 1) and "unique" names
             // in two distinct roots (and distinct contextNode) happen to share top suffix.

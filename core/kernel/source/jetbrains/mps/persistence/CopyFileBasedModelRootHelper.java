@@ -103,8 +103,7 @@ public class CopyFileBasedModelRootHelper<ModelRoot extends FileBasedModelRoot> 
       for (SourceRoot sourceRoot : mySourceModelRoot.getSourceRoots(kind)) {
         String relativePath = FileBasedModelRoot.relativize(sourceRoot.getAbsolutePath().getPath(), contentDirectory);
         IFile descendant = targetContentDir.getDescendant(relativePath);
-        String targetSourceRoot = descendant.getPath();
-        myTargetModelRoot.addSourceRoot(kind, new DefaultSourceRoot(targetSourceRoot, targetContentDir));
+        myTargetModelRoot.addSourceRoot(kind, new DefaultSourceRoot(relativePath, targetContentDir));
       }
     }
   }

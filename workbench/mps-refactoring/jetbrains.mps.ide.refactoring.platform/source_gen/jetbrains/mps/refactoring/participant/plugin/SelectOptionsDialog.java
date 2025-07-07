@@ -16,7 +16,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JLabel;
 
-@GeneratedClass(node = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)/7321908258465164318", model = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)")
+@GeneratedClass(nodeId = "7321908258465164318", model = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)")
 public class SelectOptionsDialog extends RefactoringDialog {
 
   private List<String> myOptions;

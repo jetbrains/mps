@@ -86,7 +86,7 @@
     </node>
   </node>
   <node concept="2XOHcx" id="5m50vnflPpQ">
-    <property role="2XOHcw" value="${module}/../.." />
+    <property role="2XOHcw" value="${project_home}" />
   </node>
 </model>
 

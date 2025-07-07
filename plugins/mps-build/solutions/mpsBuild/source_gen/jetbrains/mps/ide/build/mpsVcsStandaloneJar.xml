@@ -5,6 +5,7 @@
   <property name="build.layout" location="${build.dir}/artifacts/mpsVcsStandaloneJar" />
   <property name="idea_home" location="" />
   <property name="mps_home" location="${basedir}" />
+  <property name="kotlinc_home" location="${mps_home}/plugins/mps-kotlin/kotlinc" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
   <property name="artifacts.mpsCore" location="${build.dir}/artifacts/mpsCore" />
   <property name="artifacts.mpsWorkbench" location="${build.dir}/artifacts/mpsWorkbench" />
@@ -44,7 +45,11 @@
     </fileset>
   </path>
   
-  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
+  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
+  
+  <typedef name="skip" classname="com.intellij.ant.ClassFilterAnnotationRegexp" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
+  
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar" />
   
   <target name="assemble" depends="classes">
     <mkdir dir="${build.layout}/lib" />
@@ -60,12 +65,8 @@
     <ant antfile="build/mpsCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsWorkbench.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsTroveCollections.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaCore.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaPlatform.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJava.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsMakePlugin.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsTesting.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsPlugins.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsMakePlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsBuild.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsVcsPlatform.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
@@ -91,7 +92,11 @@
   
   <target name="java.compile.vcs-ide" depends="fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/vcs-ide" />
-    <javac2 destdir="${build.tmp}/java/out/vcs-ide" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/vcs-ide" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
+      <withKotlin moduleName="vcs-ide">        
+        <compilerarg value="-jvm-target=21" />
+      </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src path="${mps_home}/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/source_gen" />
       <classpath>
@@ -118,14 +123,15 @@
         <fileset file="${artifacts.mpsVcsPlatform}/lib/vcs-core.jar" />
         <fileset file="${artifacts.mpsVcsPlatform}/lib/vcs-platform.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/java-frontback.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
@@ -134,11 +140,12 @@
         <fileset dir="${artifacts.IDEA}/plugins/vcs-svn/lib" includes="*.jar" />
         <fileset dir="${artifacts.IDEA}/plugins/vcs-git/lib" includes="*.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
+        <fileset dir="${artifacts.IDEA}/lib/modules" includes="*.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/vcs-ide">
-      <fileset dir="${mps_home}/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
 </project>

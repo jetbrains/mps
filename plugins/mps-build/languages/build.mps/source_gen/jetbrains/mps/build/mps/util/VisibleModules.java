@@ -6,21 +6,18 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.HashMap;
 import jetbrains.mps.messages.IMessageHandler;
-import jetbrains.mps.generator.template.TemplateQueryContext;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.messages.LogHandler;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.build.util.DependenciesHelper;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
 import java.util.Set;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -32,6 +29,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -44,42 +42,26 @@ public final class VisibleModules {
   private Map<String, SNode> myId2Module = new HashMap<String, SNode>();
   private final SNode myProject;
   private final IMessageHandler myMsgHandler;
-  private final TemplateQueryContext myGenContext;
 
   public VisibleModules(SNode project) {
-    this(project, null);
+    this(project, new LogHandler(Logger.getLogger(VisibleModules.class)));
   }
 
-  public VisibleModules(SNode project, @Nullable TemplateQueryContext genContext) {
-    this(project, new LogHandler(Logger.getLogger(VisibleModules.class)), genContext);
-  }
-
-  public VisibleModules(@NotNull SNode project, @NotNull IMessageHandler msgHandler, @Nullable TemplateQueryContext genContext) {
+  public VisibleModules(@NotNull SNode project, @NotNull IMessageHandler msgHandler) {
     myProject = project;
     myMsgHandler = msgHandler;
-    myGenContext = genContext;
-  }
-
-  private SNodeReference createRef(SNode node) {
-    SNode original = node;
-    if (myGenContext != null) {
-      original = DependenciesHelper.getOriginalNode(node, myGenContext);
-    }
-    return original.getReference();
   }
 
   public void collect() {
     Queue<SNode> queue = QueueSequence.fromQueue(new LinkedList<SNode>());
     QueueSequence.fromQueue(queue).addLastElement(myProject);
 
-    Set<SNodeReference> seen = SetSequence.fromSet(new HashSet<SNodeReference>());
+    Set<SNodeReference> seen = SetSequence.fromSet(new HashSet<>());
     while (QueueSequence.fromQueue(queue).isNotEmpty()) {
       SNode project = QueueSequence.fromQueue(queue).removeFirstElement();
-      SNodeReference projectRef = createRef(project);
-      if (seen.contains(projectRef)) {
+      if (!(seen.add(SNodeOperations.getPointer(project)))) {
         continue;
       }
-      seen.add(projectRef);
       for (SNode dep : SLinkOperations.getChildren(project, LINKS.dependencies$redY)) {
         SNode projectDependency = SNodeOperations.as(dep, CONCEPTS.BuildProjectDependency$sN);
         if (projectDependency == null) {
@@ -89,9 +71,8 @@ public final class VisibleModules {
         SNode depproj = SLinkOperations.getTarget(projectDependency, LINKS.script$6Ehy);
         if ((depproj == null)) {
           SReference ref = SNodeOperations.getReference(projectDependency, LINKS.script$6Ehy);
-          report("Cannot find the build project dependency " + SLinkOperations.getResolveInfo(ref) + " in the model " + check_xuwpka_a0a1a4a4a4a41(ref.getTargetSModelReference()), projectDependency);
-        }
-        if (depproj != null && !(seen.contains(depproj.getNodeId()))) {
+          report(String.format("Cannot find the build project dependency %s in the model %s", SLinkOperations.getResolveInfo(ref), check_xuwpka_b0a0b0e0c0e0j(ref.getTargetSModelReference())), projectDependency);
+        } else {
           QueueSequence.fromQueue(queue).addLastElement(depproj);
         }
       }
@@ -157,7 +138,7 @@ public final class VisibleModules {
     }
     return result;
   }
-  private static String check_xuwpka_a0a1a4a4a4a41(SModelReference checkedDotOperand) {
+  private static String check_xuwpka_b0a0b0e0c0e0j(SModelReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelName();
     }

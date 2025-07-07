@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import com.intellij.util.LocalTimeCounter;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
@@ -122,6 +123,11 @@ public class NodeEditorComponent extends EditorComponent {
     if (editedNode == null || !org.jetbrains.mps.openapi.model.SNodeUtil.isAccessible(editedNode, getEditorContext().getRepository())) {
       return;
     }
+    Project project = ProjectHelper.getProject(getEditorContext().getRepository());
+    if (project == null || project.isDisposed()) {
+      // avoid triggering assertions in UpdateImpl
+      return;
+    }
     super.rebuildEditorContent();
   }
 
@@ -138,7 +144,7 @@ public class NodeEditorComponent extends EditorComponent {
     if (p == null || p.isDisposed()) {
       return null;
     }
-    return p.getComponent(InspectorTool.class);
+    return InspectorTool.getInstance(p);
   }
 
   @Override

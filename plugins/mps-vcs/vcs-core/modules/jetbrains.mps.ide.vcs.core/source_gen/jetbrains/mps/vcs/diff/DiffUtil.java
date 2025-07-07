@@ -15,7 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.changes.NodeChange;
 import java.util.Collections;
-import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -43,7 +42,7 @@ import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.smodel.DefaultSModel;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/520259247110483854", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
+@GeneratedClass(nodeId = "520259247110483854", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 public final class DiffUtil {
 
   private DiffUtil() {
@@ -99,38 +98,11 @@ public final class DiffUtil {
     return Sequence.fromIterable(oldProperties).union(Sequence.fromIterable(newProperties)).translate((property) -> collectPropertyChanges(changeSet, oldNode, newNode, property));
   }
 
-  /*package*/ static Iterable<NodeChange> collectPropertyChanges(@NotNull final ChangeSet changeSet, @NotNull final SNode oldNode, @NotNull final SNode newNode, @NotNull final SProperty property) {
+  /*package*/ static Iterable<NodeChange> collectPropertyChanges(@NotNull ChangeSet changeSet, @NotNull SNode oldNode, @NotNull SNode newNode, @NotNull SProperty property) {
     if (propertiesAreEqual(oldNode, newNode, property)) {
       return Sequence.fromIterable(Collections.<NodeChange>emptyList());
     }
-    return Sequence.fromClosure(() -> {
-      return (Iterable<NodeChange>) () -> {
-        return new YieldingIterator<NodeChange>() {
-          private int __CP__ = 0;
-          protected boolean moveToNext() {
-__loop__:
-            do {
-__switch__:
-              switch (this.__CP__) {
-                case -1:
-                  assert false : "Internal error";
-                  return false;
-                case 2:
-                  this.__CP__ = 1;
-                  this.yield(((NodeChange) new SetPropertyChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), property, newNode.getProperty(property))));
-                  return true;
-                case 0:
-                  this.__CP__ = 2;
-                  break;
-                default:
-                  break __loop__;
-              }
-            } while (true);
-            return false;
-          }
-        };
-      };
-    });
+    return Sequence.singleton(new SetPropertyChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), property, newNode.getProperty(property)));
   }
 
   /*package*/ static Iterable<NodeChange> collectReferenceChanges(@NotNull final ChangeSet changeSet, @NotNull final SNode oldNode, @NotNull final SNode newNode) {
@@ -139,46 +111,19 @@ __switch__:
     return ListSequence.fromList(oldReferences).concat(ListSequence.fromList(newReferences)).select((r) -> r.getLink()).distinct().translate((it) -> collectReferenceChanges(changeSet, oldNode, newNode, it));
   }
 
-  /*package*/ static Iterable<NodeChange> collectReferenceChanges(@NotNull final ChangeSet changeSet, @NotNull final SNode oldNode, @NotNull final SNode newNode, @NotNull final SReferenceLink role) {
+  /*package*/ static Iterable<NodeChange> collectReferenceChanges(@NotNull ChangeSet changeSet, @NotNull SNode oldNode, @NotNull SNode newNode, @NotNull SReferenceLink role) {
 
-    final boolean refsAreEqual = DiffUtil.referencesAreEqual(oldNode, newNode, role);
+    boolean refsAreEqual = DiffUtil.referencesAreEqual(oldNode, newNode, role);
     boolean diffByResolveInfo = DiffUtil.referencesDifferByResolveInfo(oldNode, newNode, role);
 
     if (refsAreEqual && !(diffByResolveInfo)) {
       return Collections.emptyList();
     }
 
-    final SReference newReference = newNode.getReference(role);
-    final SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_z8xa03_a0a7a51(newReference));
-    final SModelReference targetModel = check_z8xa03_a0i0p(newReference);
-    return Sequence.fromClosure(() -> {
-      return (Iterable<NodeChange>) () -> {
-        return new YieldingIterator<NodeChange>() {
-          private int __CP__ = 0;
-          protected boolean moveToNext() {
-__loop__:
-            do {
-__switch__:
-              switch (this.__CP__) {
-                case -1:
-                  assert false : "Internal error";
-                  return false;
-                case 2:
-                  this.__CP__ = 1;
-                  this.yield((NodeChange) new SetReferenceChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_z8xa03_g0a0a0a0a9a51(newReference), refsAreEqual));
-                  return true;
-                case 0:
-                  this.__CP__ = 2;
-                  break;
-                default:
-                  break __loop__;
-              }
-            } while (true);
-            return false;
-          }
-        };
-      };
-    });
+    SReference newReference = newNode.getReference(role);
+    SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_z8xa03_a0a7a51(newReference));
+    SModelReference targetModel = check_z8xa03_a0i0p(newReference);
+    return Sequence.singleton(new SetReferenceChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_z8xa03_g0a0a9a51(newReference), refsAreEqual));
   }
 
   private static boolean referencesAreEqual(@NotNull SNode oldNode, @NotNull SNode newNode, @NotNull SReferenceLink role) {
@@ -214,40 +159,13 @@ __switch__:
     return check_z8xa03_a0a32(AttributeOperations.getChildNodesAndAttributes(parent, link));
   }
 
-  /*package*/ static Iterable<NodeChange> collectConceptChanges(final ChangeSet changeSet, @NotNull final SNode oldNode, @NotNull SNode newNode) {
-    final SConcept oldConcept = oldNode.getConcept();
-    final SConcept newConcept = newNode.getConcept();
+  /*package*/ static Iterable<NodeChange> collectConceptChanges(ChangeSet changeSet, @NotNull SNode oldNode, @NotNull SNode newNode) {
+    SConcept oldConcept = oldNode.getConcept();
+    SConcept newConcept = newNode.getConcept();
     if (Objects.equals(oldNode.getConcept(), newNode.getConcept())) {
       return Sequence.fromIterable(Collections.<NodeChange>emptyList());
     } else {
-      return Sequence.fromClosure(() -> {
-        return (Iterable<NodeChange>) () -> {
-          return new YieldingIterator<NodeChange>() {
-            private int __CP__ = 0;
-            protected boolean moveToNext() {
-__loop__:
-              do {
-__switch__:
-                switch (this.__CP__) {
-                  case -1:
-                    assert false : "Internal error";
-                    return false;
-                  case 2:
-                    this.__CP__ = 1;
-                    this.yield((NodeChange) new SetConceptChange(changeSet, oldNode.getNodeId(), oldConcept, newConcept));
-                    return true;
-                  case 0:
-                    this.__CP__ = 2;
-                    break;
-                  default:
-                    break __loop__;
-                }
-              } while (true);
-              return false;
-            }
-          };
-        };
-      });
+      return Sequence.singleton(new SetConceptChange(changeSet, oldNode.getNodeId(), oldConcept, newConcept));
     }
   }
 
@@ -263,6 +181,7 @@ __switch__:
     if (Sequence.fromIterable(aDoNotCompareIds).contains(a.getNodeId()) || Sequence.fromIterable(bDoNotCompareIds).contains(b.getNodeId())) {
       return true;
     }
+    // Seems that AggregationToChildMap(x, false) could be a nice replacement here
     Set<SContainmentLink> roles = SetSequence.fromSetWithValues(new HashSet<SContainmentLink>(), jetbrains.mps.util.SNodeOperations.getChildRoles(a, true));
     SetSequence.fromSet(roles).addSequence(SetSequence.fromSet(jetbrains.mps.util.SNodeOperations.getChildRoles(b, true)));
     for (SContainmentLink r : SetSequence.fromSet(roles)) {
@@ -340,7 +259,7 @@ __switch__:
     }
     return null;
   }
-  private static String check_z8xa03_g0a0a0a0a9a51(SReference checkedDotOperand) {
+  private static String check_z8xa03_g0a0a9a51(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getResolveInfo(checkedDotOperand);
     }

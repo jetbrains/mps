@@ -9,8 +9,8 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.tree.TreeNode;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogDefaultSettings;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
@@ -35,18 +35,36 @@ import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
  * 
  * @see jetbrains.mps.ide.actions.ModelCreationActionsBaseExecutor 
  */
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7081154005681548338", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7081154005681548338", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
 
   protected final NewModelDialogSettings.Factory myDialogSettingsFactory;
   protected final SModule myModule;
 
+  /**
+   * 
+   * @deprecated use the appropriate constructor that accepts StereotypeProvider instead
+   */
+  @Deprecated(forRemoval = true)
   public NewModelActionExecutor(@NotNull MPSProject project, @NotNull SModule module, @Nullable TreeNode treeNode) {
     this(project, module, getDefaultSettingsFactory(module, treeNode));
   }
 
+  public NewModelActionExecutor(@NotNull MPSProject project, @NotNull SModule module, @Nullable StereotypeProvider stereotypeProvider) {
+    this(project, module, getDefaultSettingsFactory(module, stereotypeProvider));
+  }
+
+  /**
+   * 
+   * @deprecated use the appropriate constructor that accepts StereotypeProvider instead
+   */
+  @Deprecated(forRemoval = true)
   public NewModelActionExecutor(@NotNull MPSProject project, @NotNull SModule module, @Nullable TreeNode treeNode, @NotNull String namespace) {
     this(project, module, namespace, getDefaultStereotypeProvider(treeNode));
+  }
+
+  public NewModelActionExecutor(@NotNull MPSProject project, @NotNull SModule module, @Nullable StereotypeProvider stereotypeProvider, @NotNull String namespace) {
+    this(project, module, namespace, (stereotypeProvider != null ? stereotypeProvider : StereotypeProvider.NONE));
   }
 
   public NewModelActionExecutor(@NotNull MPSProject project, @NotNull SModule module, @NotNull SModel contextModel) {
@@ -72,7 +90,7 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   protected final SModel showDialog(SModule module) {
     NewModelDialog dialog = new NewModelDialog(myProject, (AbstractModule) module, NewModelActionExecutor.getTitle(), myDialogSettingsFactory);
     dialog.show();
-    return check_e2o8ll_a2a61(dialog.getResultHelper());
+    return check_e2o8ll_a2a02(dialog.getResultHelper());
   }
 
   /**
@@ -104,8 +122,17 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   public static NewModelDialogSettings.Factory getDefaultSettingsFactory(SModule module, TreeNode treeNode) {
     return getDefaultSettingsFactory(getDefaultNamespaceFor(module), treeNode);
   }
+
+  public static NewModelDialogSettings.Factory getDefaultSettingsFactory(SModule module, @Nullable StereotypeProvider stereotypeProvider) {
+    return getDefaultSettingsFactory(getDefaultNamespaceFor(module), (stereotypeProvider != null ? stereotypeProvider : StereotypeProvider.NONE));
+  }
+
   public static NewModelDialogSettings.Factory getDefaultSettingsFactory(String namespace, TreeNode treeNode) {
     return NewModelDialogDefaultSettings.getFactory(namespace + ".", getDefaultStereotypeProvider(treeNode));
+  }
+
+  public static NewModelDialogSettings.Factory getDefaultSettingsFactory(String namespace, @Nullable StereotypeProvider stereotypeProvider) {
+    return NewModelDialogDefaultSettings.getFactory(namespace + ".", (stereotypeProvider != null ? stereotypeProvider : StereotypeProvider.NONE));
   }
 
   public static String getDefaultNamespaceFor(SModule module) {
@@ -174,7 +201,7 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
     } while (inUse.contains(candidate));
     return candidate;
   }
-  private static EditableSModel check_e2o8ll_a2a61(ModelCreateHelper checkedDotOperand) {
+  private static EditableSModel check_e2o8ll_a2a02(ModelCreateHelper checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.createModelHandleExceptions();
     }

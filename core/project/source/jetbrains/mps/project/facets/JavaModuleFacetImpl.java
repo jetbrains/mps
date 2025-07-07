@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@ package jetbrains.mps.project.facets;
 import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
@@ -36,17 +36,15 @@ import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.util.PathSpecBundle;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.openapi.FileSystem;
-import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Optional;
@@ -78,10 +76,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   private static final String KEY_CLASSLOADER = "classes";
   private static final String KEY_EXTENSION = "ext";
 
-  // XXX perhaps, shall keep String and translate to IFile the moment asked. However, feel right to use IFile (well, *not String*) for FS locations
-  //     and shall rather deal with String uses for files in MD. Uses of the value suggest we can use java.io.File (this is a location we
-  //     unlikely need IDEA VFS services for)
-  private IFile myGeneratedClassesLocation = null;
+  private PathSpec myGeneratedClassesLocation = null;
 
   private Compile myCompile = Compile.MPS;
   private LoadClasses myLoadClasses = LoadClasses.ManagedByMPS;
@@ -91,6 +86,8 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   private JavaLanguageLevel myJavaLanguageLevel = null;
   private PathSpecBundle myLibraryBundle = new PathSpecBundle();
   private PathSpecBundle myAdditionalSources = new PathSpecBundle();
+
+  // myTransitionLibraryBundle and myTransitionExtraSources stay in 23.3; we still write these back on save (unless 23.2 migration moved them to JMF)
   private boolean myTransitionLibraryBundle = true;
   private boolean myTransitionExtraSources = true;
 
@@ -117,6 +114,12 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   }
 
   public void setGeneratedClassesLocation(IFile classesGen) {
+    setGeneratedClassesLocation(classesGen == null ? null : new PathSpec(classesGen));
+  }
+  public void setGeneratedClassesLocation(@Nullable PathSpec classesGen) {
+    if (classesGen != null && !classesGen.resolved() && getModule() != null) {
+      throw new IllegalArgumentException("Facet already attached to a module needs resolved paths: " + classesGen.value());
+    }
     myGeneratedClassesLocation = classesGen;
   }
 
@@ -128,20 +131,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   @Override
   @Nullable
   public IFile getClassesGen() {
-    return myGeneratedClassesLocation;
-  }
-
-  @Nullable
-  @Override
-  public IFile getOutputRoot() {
-    // FIXME not a field like myGeneratedClassesLocation but re-calculated each time as value editing happens
-    //  through MD and I'm not sure JMF instances get updated once MD.outputPath get changed (check usages of
-    //  ProjectPathUtil.setGeneratorOutputPath());
-    // This is copy of super.getOutputRoot(), just with macro resolution added for scenarios when module descriptor
-    //      has been read w/o macro resolution (e.g. in lang.build)
-    String outputPath = ProjectPathUtil.getGeneratorOutputPath(getAbstractModule().getModuleDescriptor());
-    outputPath = outputPath == null ? null : MacrosFactory.forModule(getModule()).expandPath(outputPath);
-    return outputPath == null ? null : getAbstractModule().getFileSystem().getFile(outputPath);
+    return myGeneratedClassesLocation == null || !myGeneratedClassesLocation.resolved() ? null : myGeneratedClassesLocation.resolvedFile();
   }
 
   @Override
@@ -218,28 +208,9 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     return rv;
   }
 
-  /**
-   * @deprecated use {@link #setSourcePathSpec(PathSpecBundle)} instead
-   */
-  @Deprecated(since = "2023.1", forRemoval = true)
-  public void setAdditionalSourcePaths(Collection<String> newValue) {
-    final FileSystem fs = getAbstractModule().getFileSystem();
-    ArrayList<PathSpec> converted = new ArrayList<>();
-    newValue.stream().map(fs::getFile).map(PathSpec::new).forEach(converted::add);
-    setSourcePathSpec(new PathSpecBundle(converted));
-    // clear persisted values in MD just in case there are some, not to save them in addition to new path spec
-    ModuleDescriptor moduleDescriptor = getAbstractModule().getModuleDescriptor();
-    if (moduleDescriptor == null) {
-      return;
-    }
-    // here we imply getSourcePaths() returns value-by-reference
-    final Collection<String> persistedPaths = moduleDescriptor.getSourcePathPersistedValue();
-    persistedPaths.clear();
-  }
-
   @Override
-  public void save(@NotNull Memento memento) {
-    super.save(memento);
+  public void save(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    super.save(memento, context);
     if (myJavaLanguageLevel != null) {
       // if myJavaLanguageLevel value has been read, write it back even if it's the same as default
       memento.put(JAVA_LANGUAGE_LEVEL, myJavaLanguageLevel.name());
@@ -262,13 +233,13 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       toUpdate = memento.createChild(CLASSES_KEY);
       toUpdate.put(GENERATED_KEY, Boolean.toString(true));
     }
-    toUpdate.put(PATH_KEY, myGeneratedClassesLocation != null ? myGeneratedClassesLocation.getPath() : null);
+    final MacroHelper mh = PersistenceContextImpl.macroHelper(context);
+    toUpdate.put(PATH_KEY, myGeneratedClassesLocation != null ? myGeneratedClassesLocation.shrink(mh) : null);
     memento.put(KEY_COMPILE, myCompile.toPersistenceValue());
     memento.put(KEY_CLASSLOADER, myLoadClasses.toPersistenceValue());
     memento.put(KEY_EXTENSION, myLoadExtensions.toPersistenceValue());
     if (!myTransitionLibraryBundle) {
       memento.clearChildren(LIBRARY_KEY);
-      final MacroHelper mh = MacrosFactory.forModule(getModule());
       for (PathSpec jl : myLibraryBundle) {
         final Memento mm = memento.createChild(LIBRARY_KEY);
         // to avoid MDP logic to process "path" attributes with MacroHelper. Not ready yet to
@@ -278,7 +249,6 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     }
     if (!myTransitionExtraSources) {
       memento.clearChildren(SOURCE_KEY);
-      final MacroHelper mh = MacrosFactory.forModule(getModule());
       for (PathSpec sl : myAdditionalSources) {
         final Memento mm = memento.createChild(SOURCE_KEY);
         mm.put(LOCATION_KEY, sl.shrink(mh));
@@ -286,21 +256,21 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     }
   }
 
-  private static boolean isBlank(Memento memento) {
+  /*package*/ static boolean isBlank(Memento memento) {
     return memento.getType() == null && !memento.getKeys().iterator().hasNext() && !memento.getChildren().iterator().hasNext();
   }
 
   @Override
-  public void load(@NotNull Memento memento) {
-    super.load(memento);
+  public void load(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    super.load(memento, context);
     // FIXME seems that I need dedicated 'initNew/Default' API method, as blank JMF might be a legitimate scenario
     //       when I don't need any location. OTOH, can at least provide compile/load/ext flags in this case?
     if (isBlank(memento)) {
       // some reasonable defaults for scenario when a new facet is added and immediately loaded with blank Memento.
       // FIXME in fact, JavaModuleFacetTab does the same, but only for Solution, while I need this to happen for every module with a new JMF.
       //       Merge these two approaches into 1 place.
-      myGeneratedClassesLocation = getAbstractModule().getModuleSourceDir().findChild(AbstractModule.CLASSES_GEN);
-      // FIXME this code ^^^ is wrong for Generator (src dir == lang src dir), there's a defect in YT
+      myGeneratedClassesLocation = new PathSpec(MacrosFactory.MODULE + '/' + AbstractModule.CLASSES_GEN);
+      // FIXME this code ^^^ is wrong for Generator (src dir == lang src dir), there's a defect in YT (MPS-35607)
       // FIXME Once there's myOutputRoot, need to decide about its default value. On one hand, seems reasonable to do the same as
       //       for myGeneratedClassesLocation. However, there was none and code that creates JMF seems to care about
       //       source output explicitly (producers). Nevertheless, shall unify approach -
@@ -313,7 +283,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       return;
     }
     String languageLevel = memento.get(JAVA_LANGUAGE_LEVEL);
-    if (languageLevel != null && languageLevel.length() > 0) {
+    if (languageLevel != null && !languageLevel.isEmpty()) {
       myJavaLanguageLevel = JavaLanguageLevel.valueOf(languageLevel);
     }
 
@@ -346,21 +316,13 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       }
       myTransitionLibraryBundle = true;
     } else {
-      // FIXME LEHA
-      FileSystem fs = getAbstractModule().getFileSystem();
       // JFTR, intentionally pretty much the same logic is below in classGenPath
       // FYI, pure stub modules that claim to be 'java' but don't have any generated classes are fine with
       //      null default for myGeneratedClassesLocation (now that legacy 'classes_gen' default is no longer here)
       for (Memento m : memento.getChildren(CLASSES_KEY)) {
         if (Boolean.parseBoolean(m.get(GENERATED_KEY))) {
-          final String v;
-          if (m.getPathSpec(PATH_KEY) == null) {
-            v = m.get(PATH_KEY);
-          } else {
-            v = MacrosFactory.forModule(getModule()).expandPath(m.getPathSpec(PATH_KEY));
-          }
-          // XXX I wonder if one more FS#getFile(String path, Nullable MacroHelper) is better than separate expandPath()?
-          myGeneratedClassesLocation = v == null ? null : fs.getFile(v);
+          final String v = m.get(PATH_KEY);
+          myGeneratedClassesLocation = v == null ? null : new PathSpec(v);
           break;
         }
       }
@@ -391,36 +353,23 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     if (moduleDescriptor != null) {
       moduleDescriptor.getSourcePathPersistedValue().stream().map(PathSpec::new).forEach(sources::add);
     }
-    if (!libraries.isEmpty() || !sources.isEmpty()) {
-      final MacroHelper macroHelper = MacrosFactory.forModule(getModule());
-      FileSystem fs = getAbstractModule().getFileSystem();
-      Function<String, IFile> tr = (s) -> {
-        final String expanded = macroHelper.expandPath(s);
-        if (MacrosFactory.containsMacro(expanded)) {
-          return null;
-        }
-        // XXX not clear if this code shall be part of the function or rather PathSpec.resolve().
-        //     On the one hand, better to keep it in one place. On the other, catching PFE there might be too
-        //     much of internal knowledge (assumption of what Function uses under the hood) for the PathSpec.
-        //     Moreover, not clear how to handle exception then, except for null (!resolved) - log, ignore?
-        //     Therefore, seems that the function that does conversion shall be responsible to error handling.
-        try {
-          return fs.getFile(expanded);
-        } catch (PathFormatException ex) {
-          return null;
-        }
-      };
-      // don't re-resolve PathSpec that were instantiated with IFile
-      final Predicate<PathSpec> resolved = PathSpec::resolved;
-      if (!libraries.isEmpty()) {
-        libraries.stream().filter(resolved.negate()).forEach(l -> l.resolve(tr));
-        myLibraryBundle = new PathSpecBundle(libraries);
-      }
-      if (!sources.isEmpty()) {
-        sources.stream().filter(resolved.negate()).forEach(s -> s.resolve(tr));
-        myAdditionalSources = new PathSpecBundle(sources);
-      }
+    // resolve PathSpec instances
+    // XXX I wonder if one more FS#getFile(String path, Nullable MacroHelper) is better than separate expandPath()?
+    final Function<String, IFile> tr = PersistenceContextImpl.pathResolveFunction(context);
+    // don't re-resolve PathSpec that were instantiated with IFile (e.g. for libraries of deployed modules)
+    final Predicate<PathSpec> resolved = PathSpec::resolved;
+    if (!libraries.isEmpty()) {
+      libraries.stream().filter(resolved.negate()).forEach(l -> l.resolve(tr));
+      myLibraryBundle = new PathSpecBundle(libraries);
     }
+    if (!sources.isEmpty()) {
+      sources.stream().filter(resolved.negate()).forEach(s -> s.resolve(tr));
+      myAdditionalSources = new PathSpecBundle(sources);
+    }
+    if (myGeneratedClassesLocation != null) {
+      myGeneratedClassesLocation.resolve(tr);
+    }
+
     // configure defaults for transition
     AbstractModule module = getAbstractModule();
     ModuleDescriptor descriptor = module.getModuleDescriptor();
@@ -528,7 +477,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
    */
   @TestOnly
   @Nullable
-  public static IFile classGenPath(ModuleDescriptor descriptor, IFile moduleDescriptorFile) {
+  public static PathSpec classGenPath(ModuleDescriptor descriptor) {
     final ModuleFacetDescriptor fd = descriptor.getModuleFacetDescriptors().stream().filter(d -> FACET_TYPE.equals(d.getType())).findFirst().orElse(null);
     if (fd == null) {
       return null;
@@ -538,7 +487,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     for (Memento m : fd.getMemento().getChildren(CLASSES_KEY)) {
       if (Boolean.parseBoolean(m.get(GENERATED_KEY))) {
         final String v = m.get(PATH_KEY);
-        return v == null ? null : moduleDescriptorFile.getFS().getFile(v);
+        return v == null ? null : new PathSpec(v);
       }
     }
     return null;
@@ -575,7 +524,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   public static ModuleFacetDescriptor forJavaCodeModule(@Nullable JavaModuleFacet prototype) {
     if (prototype != null) {
       final ModuleFacetDescriptor rv = new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, new MementoImpl());
-      prototype.save(rv.getMemento());
+      prototype.save(rv.getMemento(), PersistenceContextImpl.empty());
       return rv;
     } else {
       return forNewJavaCodeModule();
@@ -587,9 +536,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     if (compile == Compile.MPS) {
       final Memento ck = rv.getMemento().createChild(CLASSES_KEY);
       ck.put(GENERATED_KEY, Boolean.toString(true));
-      // I'd love to specify it this way, but not sure how/when proper macro handling would happen
-      // see setDefaultClassesGenLocation(), below, for workaround
-      ck.putPathSpec(PATH_KEY, "${module}/classes_gen");
+      ck.put(PATH_KEY, MacrosFactory.MODULE + '/' + AbstractModule.CLASSES_GEN);
     }
     rv.getMemento().put(KEY_COMPILE, compile.toPersistenceValue());
     rv.getMemento().put(KEY_CLASSLOADER, loadClasses.toPersistenceValue());
@@ -613,15 +560,6 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     }
     ck.put(GENERATED_KEY, Boolean.toString(true));
     ck.put(PATH_KEY, moduleDir.findChild(AbstractModule.CLASSES_GEN).getPath());
-    // forJavaCodeModule specifies PATH_KEY, just in case it's different from module dir, clean it to avoid
-    // hard-to-trace defects like MPS-35397. Eventually, once we stick to path spec, need to pass macro-relative
-    // path spec here instead of moduleDir (would take quite some refactoring in LanguageProducer and module descriptor editing in general)
-    ck.putPathSpec(PATH_KEY, null);
-  }
-
-  public static void setDefaultClassesGenLocation(@NotNull ModuleDescriptor md, @NotNull IFile moduleDir) {
-    final Optional<ModuleFacetDescriptor> jmfdOpt = md.getModuleFacetDescriptors().stream().filter(d -> JavaModuleFacet.FACET_TYPE.equals(d.getType())).findFirst();
-    jmfdOpt.ifPresent(jmfd -> setDefaultClassesGenLocation(jmfd, moduleDir));
   }
 
   // FIXME hack, no need to create (or resolve classes_gen) unless necessary
@@ -629,9 +567,9 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     final Optional<ModuleFacetDescriptor> jmfdOpt = md.getModuleFacetDescriptors().stream().filter(d -> JavaModuleFacet.FACET_TYPE.equals(d.getType())).findFirst();
     jmfdOpt.ifPresent(jmfd -> {
       final Memento ck = jmfd.getMemento().getChild(CLASSES_KEY);
+      // XXX I wonder if we shall put generated==false here?
       if (ck != null) {
         ck.put(PATH_KEY, null);
-        ck.putPathSpec(PATH_KEY, null);
       }
     });
   }

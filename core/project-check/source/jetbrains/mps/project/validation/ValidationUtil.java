@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,6 @@ package jetbrains.mps.project.validation;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.errors.item.ModelReportItem;
-import jetbrains.mps.errors.item.ModelReportItemBase;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.generator.impl.GenPlanTranslator;
 import jetbrains.mps.generator.impl.plan.DependencyCollectorPlanBuilder;
@@ -29,7 +27,7 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_AbstractRef;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingPriorityRule;
@@ -40,8 +38,8 @@ import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -71,21 +69,6 @@ public class ValidationUtil {
         }
       }, progressMonitor);
     }
-  }
-
- // is this method called from model checker ?
-  /**
-   * @deprecated Use {@link ModelValidator} instead
-   */
-@Deprecated(since = "2020.1", forRemoval = true)
-  public static void validateModel(@NotNull final SModel model, @NotNull Processor<? super ModelReportItem> processor) {
-    // there was 1 use in mbeddr, in com.mbeddr.mpsutil.projectview.runtime; refactored Oct 5, 2020 in mps/2020.2 branch.
-    processor.process(new ModelReportItemBase(MessageStatus.ERROR, model.getReference(), "ValidationUtil.validateModel() is NO-OP, please refactor your code to use ModelValidator!") {
-      @Override
-      public ItemKind getIssueKind() {
-        return IssueKindReportItem.MODEL_PROPERTIES.deriveItemKind();
-      }
-    });
   }
 
   public static void validateModule(final SModule m, Processor<? super ModuleValidationProblem> processor) {
@@ -370,7 +353,7 @@ public class ValidationUtil {
     }
 
     final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
-    final Compile compileFlag = jmf == null ? Compile.None : jmf.getCompile();
+    final LoadClasses clFlag = jmf == null ? LoadClasses.NotAvailable : jmf.getLoadClasses();
     for (SDependency dep : module.getDeclaredDependencies()) {
       SModuleReference moduleRef = dep.getTargetModule();
       SModule depModule = moduleRef.resolve(repository);
@@ -380,17 +363,21 @@ public class ValidationUtil {
         }
         // fall-through
       } else {
-        if (compileFlag != Compile.External || dep.getScope() != SDependencyScope.DEFAULT) {
-          // 1) module compiled in MPS (or not compiled at all) can depend on both non-MPS and MPS-managed modules
-          //    XXX For Compile.None I assume it's a 'design' dependency even if it's "DEFAULT" scope.
+        if (clFlag != LoadClasses.ManagedByContributor || dep.getScope() != SDependencyScope.DEFAULT) {
+          // 1) module loaded by MPS can depend on both non-MPS and MPS-managed modules
+          //    XXX For LoadClasses.NotAvailable I assume it's a 'design' dependency even if it's "DEFAULT" scope.
           //        This consideration might need a second thought, however.
           // 2) dependencies like EXTENDS are possible between languages only (languages are compile in mps);
           //    DESIGN and GENERATES-INTO are of no interest (no classloading), other kinds are not in use now.
           continue;
         }
-        // IDEA-compiled (well, by any external facility) modules are likely loaded by IDEA and may lack access to classes managed by MPS classloaders.
+        // IDEA-managed modules (well, modules managed by any external facility) are likely loaded by IDEA plugin CL and
+        //      generally lack access to classes managed by MPS classloaders.
+        //      However, there are few scenarios that work, namely access to concepts (with DEFAULT dependency to a Language module)
+        //      from IDEA-managed code works as Concepts get generated into identity objects available in IDEA code.
+        //      Same works for most behavior calls, but (surprise) not for general classes.
         final JavaModuleFacet depJavaFacet = depModule.getFacet(JavaModuleFacet.class);
-        if (depJavaFacet.getCompile() == Compile.MPS) {
+        if (depJavaFacet != null && depJavaFacet.getLoadClasses() == LoadClasses.ManagedByMPS) {
           String msg = "Dependency target %s has MPS-managed classloader, the module may fail to load dependent classes";
           if (!processor.process(new ModuleValidationProblem(module, MessageStatus.WARNING, String.format(msg, depModule.getModuleName())))) {
             return false;
@@ -411,10 +398,12 @@ public class ValidationUtil {
     }
 
     final boolean packagedModule = module.isPackaged();
-    if (jmf != null && !jmf.getAdditionalSourcePaths().isEmpty() && !packagedModule) {
+    final FileSystem fs = module.getDescriptorFile() != null ? module.getDescriptorFile().getFileSystem() : null;
+    if (jmf != null && !jmf.getAdditionalSourcePaths().isEmpty() && !packagedModule && fs != null) {
       for (String sourcePath : jmf.getAdditionalSourcePaths()) {
+        // XXX I wonder if I shall utilize PathSpec and JMFI.getSourcePathSpec() (perhaps, exposed in JMF instead of bare String?)
         try {
-          IFile file = module.getFileSystem().getFile(sourcePath);
+          IFile file = fs.getFile(sourcePath);
           if (!file.exists()) {
             if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, "Can't find source path: " + sourcePath))) {
               return false;
@@ -428,15 +417,16 @@ public class ValidationUtil {
         }
       }
     }
-    if (jmf != null && !jmf.getLibraryClassPath().isEmpty()) {
+    if (jmf != null && !jmf.getLibraryClassPath().isEmpty() && fs != null) {
       for (String path : jmf.getLibraryClassPath()) {
         if (packagedModule && !path.endsWith(".jar")) {
           // FIXME provisional hack to deal with recently added {module}/classes in .msd to get rid of another JMFI hack.
           //       These paths are valid for source modules, and make no sense for deployed.
           continue;
         }
+        // same as above, there are PathSpec values for library CP in JMFI, would rather use these
         try {
-          IFile file = module.getFileSystem().getFile(path);
+          IFile file = fs.getFile(path);
           if (!file.exists()) {
             String msg = (new File(path).exists() ? "Idea VFS is not up-to-date. " : "") + "Can't find library: " + path;
             if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, msg))) {

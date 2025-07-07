@@ -7,10 +7,10 @@ import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
+import jetbrains.mps.build.util.MacroHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.build.util.MacroHelper;
-import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.build.util.DependenciesHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
@@ -59,9 +59,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.haltonfailure$573F) == null)) {
       return "false";
     }
-    SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
-    MacroHelper macroHelper = new MacroHelper.MacroContext(project, _context).getMacros(project);
-    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.haltonfailure$573F), macroHelper);
+    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.haltonfailure$573F), ((MacroHelper) _context.getVariable("var:macroHelper")));
   }
   public static Object propertyMacro_GetValue_0_2(final PropertyMacroContext _context) {
     SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
@@ -87,17 +85,17 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getTemplateValue();
   }
   public static Object propertyMacro_GetValue_0_3(final PropertyMacroContext _context) {
-    // the value "build.tmp" is hardcoded in the gen template for BuildProject
-    // as the name of a "location macro" in the target BwfProject
-    return _context.getTemplateValue();
+    SNode reportsDir = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.reportsDir$43Sq);
+    if (reportsDir != null) {
+      return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(reportsDir);
+    }
+    return ".";
   }
   public static Object propertyMacro_GetValue_0_4(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.openTestReport$U4gB) == null)) {
       return "false";
     }
-    SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
-    MacroHelper macroHelper = new MacroHelper.MacroContext(project, _context).getMacros(project);
-    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.openTestReport$U4gB), macroHelper);
+    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.openTestReport$U4gB), ((MacroHelper) _context.getVariable("var:macroHelper")));
   }
   public static Object propertyMacro_GetValue_0_5(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.path$oN2q);
@@ -121,18 +119,34 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.defaultPath$9tbQ), Context.defaultContext(_context));
   }
   public static Object propertyMacro_GetValue_0_12(final PropertyMacroContext _context) {
-    // the value "build.tmp" is hardcoded in the gen template for BuildProject
-    // as the name of a "location macro" in the target BwfProject
+    SNode projectPath = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.projectPath$WGC5);
+    if (projectPath != null) {
+      return BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(projectPath, Context.defaultContext(_context));
+    }
     return _context.getTemplateValue();
   }
   public static Object propertyMacro_GetValue_0_13(final PropertyMacroContext _context) {
+    SNode reportsDir = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.reportsDir$43Sq);
+    if (reportsDir != null) {
+      return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(reportsDir);
+    }
+    return ".";
+  }
+  public static Object propertyMacro_GetValue_0_14(final PropertyMacroContext _context) {
+    SNode reportsDir = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.reportsDir$43Sq);
+    if (reportsDir != null) {
+      return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(reportsDir);
+    }
+    return ".";
+  }
+  public static Object propertyMacro_GetValue_0_15(final PropertyMacroContext _context) {
     SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
     if (project == null) {
       return _context.getTemplateValue();
     }
     return "*-" + SPropertyOperations.getString(project, PROPS.name$MnvL) + ".xml";
   }
-  public static Object propertyMacro_GetValue_0_14(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_16(final PropertyMacroContext _context) {
     return _context.getTemplateValue() + "." + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
@@ -193,7 +207,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return Sequence.fromIterable(seq).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Iterable<SNode> sourceNodesQuery_0_5(final SourceSubstituteMacroNodesContext _context) {
-    return ((ModulePlugins) _context.getVariable("var:requiredPlugins")).getPlugins(_context, false);
+    return ((ModulePlugins) _context.getVariable("var:requiredPlugins")).getPlugins(_context);
   }
   public static Iterable<SNode> sourceNodesQuery_0_6(final SourceSubstituteMacroNodesContext _context) {
     final SNode thisProject = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
@@ -206,9 +220,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.jvmArgs$IZpF) == null)) {
       return "-Xss2048k -Xmx1024m";
     }
-    SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
-    MacroHelper macroHelper = new MacroHelper.MacroContext(project, _context).getMacros(project);
-    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.jvmArgs$IZpF), macroHelper);
+    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.jvmArgs$IZpF), ((MacroHelper) _context.getVariable("var:macroHelper")));
   }
   public static Object varMacro_Value_0_1(final TemplateVarContext _context) {
     return "mps.macro.";
@@ -223,13 +235,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return plugins;
   }
   public static Object varMacro_Value_0_4(final TemplateVarContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.compressArgs$RBk7) == null)) {
-      return false;
-    }
-    SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
-    MacroHelper macroHelper = new MacroHelper.MacroContext(project, _context).getMacros(project);
-    String text = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.compressArgs$RBk7), macroHelper);
-    return "true".equals(text);
+    return Context.defaultContext(_context).getMacros(_context.getNode());
   }
   public static Object varMacro_Value_0_5(final TemplateVarContext _context) {
     return ((ModulePlugins) _context.getVariable("var:requiredPlugins")).getModulesNotInPlugins();
@@ -296,6 +302,8 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("7135065582586081373", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "plugin.id"));
     pvqMethods.put("149846544984625625", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "mps.macro"));
     pvqMethods.put("149846544985221019", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "mps.macro.value"));
+    pvqMethods.put("881291017016005252", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "${basedir}"));
+    pvqMethods.put("8658160622856544027", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "${build.tmp}"));
     pvqMethods.put("5528547093808122703", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "${build.tmp}"));
     pvqMethods.put("5528547093811329864", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "*-name.xml"));
     pvqMethods.put("4005526075832899341", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "test"));
@@ -345,6 +353,10 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.propertyMacro_GetValue_0_13(ctx);
         case 14:
           return QueriesGenerated.propertyMacro_GetValue_0_14(ctx);
+        case 15:
+          return QueriesGenerated.propertyMacro_GetValue_0_15(ctx);
+        case 16:
+          return QueriesGenerated.propertyMacro_GetValue_0_16(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -417,7 +429,7 @@ public class QueriesGenerated extends QueryProviderBase {
     vvqMethods.put("8597400937104346013", new VVQ(1));
     vvqMethods.put("2409421742521905393", new VVQ(2));
     vvqMethods.put("2409421742521905397", new VVQ(3));
-    vvqMethods.put("1688667350638627524", new VVQ(4));
+    vvqMethods.put("8722582819256361524", new VVQ(4));
     vvqMethods.put("819766574531080626", new VVQ(5));
   }
   @NotNull
@@ -464,13 +476,14 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink options$gctq = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x5b81705cdfb31570L, "options");
     /*package*/ static final SContainmentLink haltonfailure$573F = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdfb323cdL, "haltonfailure");
     /*package*/ static final SContainmentLink macros$r8_A = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
+    /*package*/ static final SContainmentLink reportsDir$43Sq = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x7827f736ad3cd256L, "reportsDir");
     /*package*/ static final SContainmentLink openTestReport$U4gB = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5069a4074dc718d1L, "openTestReport");
     /*package*/ static final SContainmentLink defaultPath$9tbQ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, 0x668c6cfbafadf0eaL, "defaultPath");
+    /*package*/ static final SContainmentLink projectPath$WGC5 = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x6eb820dc194450baL, "projectPath");
     /*package*/ static final SContainmentLink modules$V7vE = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x3f496e80bd8ef370L, "modules");
     /*package*/ static final SContainmentLink jvmArgs$IZpF = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x321879066b697c19L, "jvmArgs");
     /*package*/ static final SContainmentLink requiredPlugins$eyJB = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdf7bc31bL, "requiredPlugins");
     /*package*/ static final SReferenceLink plugin$qDpN = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin");
-    /*package*/ static final SContainmentLink compressArgs$RBk7 = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x176f5a022a9bdb0eL, "compressArgs");
   }
 
   private static final class CONCEPTS {

@@ -33,6 +33,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     deps.extendedLanguage(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, "jetbrains.mps.lang.util.order");
+    deps.employedLanguage(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, "jetbrains.mps.baseLanguage.lightweightdsl");
     deps.aggregatedLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
     deps.aggregatedLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources");
     deps.aggregatedLanguage(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, "jetbrains.mps.lang.util.order");

@@ -5,7 +5,7 @@ package jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
 
-@GeneratedClass(node = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)/8568892084424438026", model = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)")
+@GeneratedClass(nodeId = "8568892084424438026", model = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)")
 public abstract class BaseLeaf extends BaseNode {
   public BaseLeaf() {
   }

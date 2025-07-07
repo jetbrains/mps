@@ -15,9 +15,9 @@ public class Distinct_Test {
     Iterable<Integer> source;
     source = ListSequence.fromListAndArray(new ArrayList<Integer>(), 1, 2, 2, 3, 4, 4, 5);
     source = Sequence.fromIterable(source).distinct();
-    Assert.assertEquals(Sequence.fromIterable(source).where((it) -> it == 2).count(), 1);
-    Assert.assertEquals(Sequence.fromIterable(source).where((it) -> it == 4).count(), 1);
-    Assert.assertEquals(Sequence.fromIterable(source).count(), 5);
+    Assert.assertEquals(Integer.valueOf(Sequence.fromIterable(source).where((it) -> it == 2).count()), Integer.valueOf(1));
+    Assert.assertEquals(Integer.valueOf(Sequence.fromIterable(source).where((it) -> it == 4).count()), Integer.valueOf(1));
+    Assert.assertEquals(Integer.valueOf(Sequence.fromIterable(source).count()), Integer.valueOf(5));
     source = Sequence.fromIterable(source).sort((it) -> it, true);
     Integer c = 1;
     for (Integer i : Sequence.fromIterable(source)) {
@@ -81,9 +81,9 @@ __switch__:
       };
     });
     source = Sequence.fromIterable(source).distinct();
-    Assert.assertEquals(Sequence.fromIterable(source).where((it) -> it == 2).count(), 1);
-    Assert.assertEquals(Sequence.fromIterable(source).where((it) -> it == 4).count(), 1);
-    Assert.assertEquals(Sequence.fromIterable(source).count(), 5);
+    Assert.assertEquals(Integer.valueOf(Sequence.fromIterable(source).where((it) -> it == 2).count()), Integer.valueOf(1));
+    Assert.assertEquals(Integer.valueOf(Sequence.fromIterable(source).where((it) -> it == 4).count()), Integer.valueOf(1));
+    Assert.assertEquals(Integer.valueOf(Sequence.fromIterable(source).count()), Integer.valueOf(5));
     source = Sequence.fromIterable(source).sort((it) -> it, true);
     Integer c = 1;
     for (Integer i : Sequence.fromIterable(source)) {

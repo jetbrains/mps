@@ -83,6 +83,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Collection_y2smso_b0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
+    style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, true);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefNodeList_0());
@@ -193,6 +194,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("Constant_y2smso_a1b0");
       Style style = new StyleImpl();
       style.set(StyleAttributes.EDITABLE, true);
+      style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, true);
       editorCell.getStyle().putAll(style);
       if (true) {
         editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_RECURSIVELY);

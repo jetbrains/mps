@@ -14,14 +14,14 @@ import jetbrains.mps.kotlin.overloading.Argument;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
+import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -38,7 +38,7 @@ public final class IFunctionCall__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<SNode>> getTypeArguments_id5JfKd21NW9H = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTypeArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6615718379394155117L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<FunctionDeclaration> getFunctionDescriptor_id26mUjU3xhgD = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunctionDescriptor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2420378304462001193L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isNullSafe_idAd0bnVTsgC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNullSafe").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(688207099672773672L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Iterable<SignatureScope>> getFunctionScopeParts_id6dAo8EmAhT7 = new SMethodBuilder<Iterable<SignatureScope>>(new SJavaCompoundTypeImpl((Class<Iterable<SignatureScope>>) ((Class) Object.class))).name("getFunctionScopeParts").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7162518405727723079L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
+  public static final SMethod<Iterable<SignatureScope>> getFunctionScopeParts_id6dAo8EmAhT7 = new SMethodBuilder<Iterable<SignatureScope>>(new SJavaCompoundTypeImpl((Class<Iterable<SignatureScope>>) ((Class) Object.class))).name("getFunctionScopeParts").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7162518405727723079L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(FullScopeContext.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, getModifierFilter_id5D4bOjruyUS, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getFunctionDescriptor_id26mUjU3xhgD, isNullSafe_idAd0bnVTsgC, getFunctionScopeParts_id6dAo8EmAhT7);
 
@@ -64,10 +64,9 @@ public final class IFunctionCall__BehaviorDescriptor extends BaseBHDescriptor {
 
     return false;
   }
-  /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, SNode referenceNode, SNode contextNode, SContainmentLink containment) {
+  /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, FullScopeContext context) {
     // default: assumes the node is already created
-    MemberReceiver receiver = IFunctionCall__BehaviorDescriptor.getReceiver_id5D4bOjrrgiZ.invoke(SNodeOperations.as(referenceNode, CONCEPTS.IFunctionCall$Sf));
-    return SignatureScopeHelper.getFunctionScopeParts(receiver, contextNode);
+    return KotlinScopes.create(context).functions().receiver(IFunctionCall__BehaviorDescriptor.getReceiver_id5D4bOjrrgiZ.invoke(SNodeOperations.as(context.getReferenceNode(), CONCEPTS.IFunctionCall$Sf))).buildScopes();
   }
 
   /*package*/ IFunctionCall__BehaviorDescriptor() {
@@ -106,7 +105,7 @@ public final class IFunctionCall__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 8:
-        return (T) ((Iterable<SignatureScope>) getFunctionScopeParts_id6dAo8EmAhT7(concept, (SNode) parameters[0], (SNode) parameters[1], (SContainmentLink) parameters[2]));
+        return (T) ((Iterable<SignatureScope>) getFunctionScopeParts_id6dAo8EmAhT7(concept, (FullScopeContext) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

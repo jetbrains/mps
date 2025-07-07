@@ -56,7 +56,6 @@
       <node id="1581198836068122092" at="127,17,128,39" concept="2" />
       <node id="1581198836068122069" at="130,29,131,150" concept="12" />
       <node id="1581198836067746926" at="136,54,137,133" concept="7" />
-      <node id="1581198836068052606" at="152,35,153,17" concept="7" />
       <node id="8680026619980519666" at="64,10,66,5" concept="0" />
       <node id="1581198836067967623" at="47,0,50,0" concept="1" trace="XmlPersistenceModelDescriptor#(Lorg/jetbrains/mps/openapi/model/SModelReference;Lorg/jetbrains/mps/openapi/persistence/DataSource;)V" />
       <node id="7981051971751694606" at="57,44,60,9" concept="4" />
@@ -64,11 +63,8 @@
       <node id="1581198836068121983" at="106,65,109,5" concept="4" />
       <node id="1581198836068122005" at="110,26,113,5" concept="4" />
       <node id="1581198836068122043" at="115,18,118,5" concept="4" />
-      <node id="1581198836068052574" at="143,0,146,0" concept="5" trace="rename#(Ljava/lang/String;Z)V" />
-      <node id="1581198836068052587" at="147,0,150,0" concept="5" trace="updateTimestamp#()V" />
-      <node id="1581198836068052607" at="156,0,159,0" concept="5" trace="reloadFromSource#()V" />
+      <node id="1581198836068052607" at="143,0,146,0" concept="5" trace="reloadFromSource#()V" />
       <node id="1581198836067746921" at="135,0,139,0" concept="5" trace="importedLanguageIds#()Ljava/util/Collection;" />
-      <node id="1581198836068052596" at="151,0,155,0" concept="5" trace="needsReloading#()Z" />
       <node id="1581198836068253905" at="70,22,77,5" concept="13" />
       <node id="1581198836068022604" at="54,73,63,7" concept="13" />
       <node id="1581198836068122090" at="120,111,129,7" concept="13" />
@@ -80,9 +76,7 @@
       <node id="1581198836067817321" at="82,52,101,5" concept="13" />
       <node id="1581198836067809627" at="80,0,103,0" concept="5" trace="readModel#()Ljetbrains/mps/smodel/SModel;" />
       <node id="1581198836068170743" at="104,0,134,0" concept="5" trace="writeModel#(Ljetbrains/mps/extapi/model/SModelData;)V" />
-      <scope id="1581198836068052585" at="144,57,144,57" />
-      <scope id="1581198836068052594" at="148,33,148,33" />
-      <scope id="1581198836068052614" at="157,34,157,34" />
+      <scope id="1581198836068052614" at="144,34,144,34" />
       <scope id="1581198836067967627" at="47,113,48,38" />
       <scope id="1581198836068022605" at="55,11,56,80" />
       <scope id="7981051971751694606" at="58,35,59,41" />
@@ -98,7 +92,6 @@
       <scope id="1581198836068122091" at="127,17,128,39" />
       <scope id="1581198836068122068" at="130,29,131,150" />
       <scope id="1581198836067746925" at="136,54,137,133" />
-      <scope id="1581198836068052603" at="152,35,153,17" />
       <scope id="1581198836067817369" at="94,7,96,7">
         <var name="e" id="1581198836067817381" />
       </scope>
@@ -113,17 +106,11 @@
         <var name="modelReference" id="1581198836067967630" />
       </scope>
       <scope id="1581198836068253916" at="73,42,76,7" />
-      <scope id="1581198836068052574" at="143,0,146,0">
-        <var name="b" id="1581198836068052580" />
-        <var name="string" id="1581198836068052578" />
-      </scope>
-      <scope id="1581198836068052587" at="147,0,150,0" />
-      <scope id="1581198836068052607" at="156,0,159,0" />
+      <scope id="1581198836068052607" at="143,0,146,0" />
       <scope id="1581198836068253915" at="73,5,77,5">
         <var name="e" id="1581198836068253942" />
       </scope>
       <scope id="1581198836067746921" at="135,0,139,0" />
-      <scope id="1581198836068052596" at="151,0,155,0" />
       <scope id="1581198836068022601" at="57,44,62,79">
         <var name="invalidModel" id="3978240706437681618" />
       </scope>
@@ -165,7 +152,7 @@
       <scope id="1581198836068170743" at="104,0,134,0">
         <var name="modelData" id="1581198836068170744" />
       </scope>
-      <unit id="1581198836067947976" at="44,0,160,0" name="jetbrains.mps.persistence.XmlPersistenceModelDescriptor" />
+      <unit id="1581198836067947976" at="44,0,147,0" name="jetbrains.mps.persistence.XmlPersistenceModelDescriptor" />
     </file>
   </root>
   <root nodeRef="r:bef1ed1f-5598-42b2-8784-93f0f1c6e538(jetbrains.mps.persistence)/7358309956614999744">

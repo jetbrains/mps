@@ -4,7 +4,7 @@ package jetbrains.mps.make.facet;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)/184542595914090623", model = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)")
+@GeneratedClass(nodeId = "184542595914090623", model = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)")
 public interface ITargetEx2 extends ITargetEx {
   int workEstimate();
 }

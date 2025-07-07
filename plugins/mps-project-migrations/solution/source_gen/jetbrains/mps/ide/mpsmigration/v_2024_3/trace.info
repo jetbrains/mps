@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082113931046:jetbrains.mps.baseLanguage.structure.ContinueStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:163e0bf3-571d-47fb-bf3a-85d0fe5d1747(jetbrains.mps.ide.mpsmigration.v_2024_3)/2144086068959770585">
+    <file name="Migrations_2024_3.java">
+      <node id="2144086068959771919" at="9,61,10,57" concept="2" />
+      <node id="2144086068959771466" at="9,0,12,0" concept="5" trace="offerInto#(Ljava/util/Deque;)V" />
+      <scope id="2144086068959771470" at="9,61,10,57" />
+      <scope id="2144086068959771466" at="9,0,12,0">
+        <var name="migrations" id="1291799896031618351" />
+      </scope>
+      <unit id="2144086068959770585" at="8,0,13,0" name="jetbrains.mps.ide.mpsmigration.v_2024_3.Migrations_2024_3" />
+    </file>
+  </root>
+  <root nodeRef="r:163e0bf3-571d-47fb-bf3a-85d0fe5d1747(jetbrains.mps.ide.mpsmigration.v_2024_3)/2144086068959777591">
+    <file name="LangResourceImport4Migration.java">
+      <node id="2144086068959802008" at="21,41,22,61" concept="11" />
+      <node id="2144086068959827201" at="26,33,27,16" concept="7" />
+      <node id="2144086068959825515" at="30,34,31,85" concept="7" />
+      <node id="2144086068960066429" at="34,45,35,145" concept="6" />
+      <node id="2144086068959844302" at="35,145,36,74" concept="6" />
+      <node id="2144086068959882463" at="37,22,38,19" concept="7" />
+      <node id="2144086068959896486" at="39,5,40,57" concept="6" />
+      <node id="2144086068959839368" at="40,57,41,160" concept="2" />
+      <node id="2144086068960948762" at="41,160,42,0" concept="9" />
+      <node id="2144086068960443815" at="42,0,43,64" concept="6" />
+      <node id="2144086068960135449" at="45,79,46,17" concept="1" />
+      <node id="2144086068960301248" at="47,7,48,37" concept="6" />
+      <node id="2144086068960164913" at="49,211,50,60" concept="2" />
+      <node id="2144086068960271741" at="50,60,51,91" concept="8" />
+      <node id="2144086068960230694" at="51,91,52,76" concept="2" />
+      <node id="2144086068960487853" at="52,76,53,49" concept="2" />
+      <node id="2144086068960529776" at="55,5,56,0" concept="9" />
+      <node id="2144086068960604552" at="57,43,58,79" concept="2" />
+      <node id="4607234030527116253" at="58,79,59,22" concept="2" />
+      <node id="2144086068959943880" at="60,5,61,0" concept="9" />
+      <node id="2144086068959939871" at="61,0,62,16" concept="7" />
+      <node id="2144086068959777591" at="66,0,67,0" concept="10" trace="FileIcon$Z0" />
+      <node id="2144086068959801886" at="21,0,24,0" concept="0" trace="LangResourceImport4Migration#()V" />
+      <node id="2144086068959877750" at="36,74,39,5" concept="4" />
+      <node id="2144086068959979479" at="44,35,47,7" concept="4" />
+      <node id="2144086068959825498" at="25,0,29,0" concept="5" trace="isRerunnable#()Z" />
+      <node id="2144086068959825506" at="29,0,33,0" concept="5" trace="getDescription#()Ljava/lang/String;" />
+      <node id="2144086068960573033" at="56,0,60,5" concept="3" />
+      <node id="2144086068960320268" at="48,37,54,7" concept="4" />
+      <node id="2144086068959968029" at="43,64,55,5" concept="3" />
+      <node id="2144086068959825516" at="33,0,64,0" concept="5" trace="doExecute#(Ljetbrains/mps/project/Project;)Z" />
+      <scope id="2144086068959801890" at="21,41,22,61" />
+      <scope id="2144086068959825502" at="26,33,27,16" />
+      <scope id="2144086068959825512" at="30,34,31,85" />
+      <scope id="2144086068959877752" at="37,22,38,19" />
+      <scope id="2144086068959979481" at="45,79,46,17" />
+      <scope id="2144086068960573036" at="57,43,59,22" />
+      <scope id="2144086068959801886" at="21,0,24,0" />
+      <scope id="2144086068959825498" at="25,0,29,0" />
+      <scope id="2144086068959825506" at="29,0,33,0" />
+      <scope id="2144086068960320270" at="49,211,53,49" />
+      <scope id="2144086068960573033" at="56,0,60,5">
+        <var name="am" id="2144086068960573037" />
+      </scope>
+      <scope id="2144086068959968032" at="44,35,54,7">
+        <var name="module" id="2144086068960301249" />
+      </scope>
+      <scope id="2144086068959968029" at="43,64,55,5">
+        <var name="m" id="2144086068959968033" />
+      </scope>
+      <scope id="2144086068959825522" at="34,45,62,16">
+        <var name="fum" id="2144086068959844303" />
+        <var name="langResourcesLang" id="2144086068960066427" />
+        <var name="models2check" id="2144086068959896492" />
+        <var name="modules2fix" id="2144086068960443816" />
+      </scope>
+      <scope id="2144086068959825516" at="33,0,64,0">
+        <var name="project" id="2144086068959825520" />
+      </scope>
+      <unit id="2144086068959777591" at="65,0,68,0" name="jetbrains.mps.ide.mpsmigration.v_2024_3.LangResourceImport4Migration$CONCEPTS" />
+      <unit id="2144086068959777591" at="20,0,69,0" name="jetbrains.mps.ide.mpsmigration.v_2024_3.LangResourceImport4Migration" />
+    </file>
+  </root>
+</debug-info>
+

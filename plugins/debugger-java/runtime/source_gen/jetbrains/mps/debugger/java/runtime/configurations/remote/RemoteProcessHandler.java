@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 import java.io.OutputStream;
 
-@GeneratedClass(node = "r:40062e7d-2d40-4964-a55f-255e1fee23d7(jetbrains.mps.debugger.java.runtime.configurations.remote)/6391517972808555635", model = "r:40062e7d-2d40-4964-a55f-255e1fee23d7(jetbrains.mps.debugger.java.runtime.configurations.remote)")
+@GeneratedClass(nodeId = "6391517972808555635", model = "r:40062e7d-2d40-4964-a55f-255e1fee23d7(jetbrains.mps.debugger.java.runtime.configurations.remote)")
 public class RemoteProcessHandler extends ProcessHandler {
   private final Project myProject;
   public RemoteProcessHandler(Project project) {

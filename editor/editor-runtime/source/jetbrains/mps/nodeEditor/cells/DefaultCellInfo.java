@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -129,7 +129,7 @@ public class DefaultCellInfo implements CellInfo {
           LOG.error("Invalid serialized node reference: " + nodeReferenceText, ex);
         }
       }
-      return new DefaultCellInfo(cellId, nodeReference);
+      return new DefaultCellInfo(cellId.intern(), nodeReference);
     } else {
       int cellNumber;
       String num = e.getAttributeValue(CELL_NUMBER_ATTR);

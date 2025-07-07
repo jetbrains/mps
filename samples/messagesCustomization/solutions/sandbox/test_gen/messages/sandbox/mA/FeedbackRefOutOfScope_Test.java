@@ -6,20 +6,19 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class FeedbackRefOutOfScope_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(FeedbackRefOutOfScope_Test.class, "${mps_home}", "r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FeedbackRefOutOfScope_Test.class).projectPath(null).modelRef("r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)").reopenProject(null).build());
 
   public FeedbackRefOutOfScope_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -40,20 +39,23 @@ public class FeedbackRefOutOfScope_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck7019192671317902489() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2802122285522027684", "7019192671317902493");
+    }
 
+    public void test_NodeErrorCheck7019192671317902489() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2802122285522027685");
-        SNode operation = getRealNodeById("7019192671317902489");
-        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Unresolved reference: B", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("2802122285522027685");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Unresolved reference: B", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnknownRuleCheck7019192671317924833() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("7019192671317902494");
-        SNode operation = getRealNodeById("7019192671317924833");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "8918166317255507159"), "Reference is out of scope: can not found the link 'link' in the node A", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("7019192671317902494");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "8918166317255507159"), "Reference is out of scope: can not found the link 'link' in the node A", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

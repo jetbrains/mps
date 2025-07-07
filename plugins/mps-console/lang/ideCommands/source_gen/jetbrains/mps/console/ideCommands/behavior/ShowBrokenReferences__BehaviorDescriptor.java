@@ -50,7 +50,7 @@ public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescri
     } else {
       console.addClosure(() -> {
         Project project = context.getProject();
-        final UsagesViewTool tool = check_5hdxhn_a0b0a0a0a0b0a(ProjectHelper.toIdeaProject(project));
+        final UsagesViewTool tool = UsagesViewTool.getInstance(ProjectHelper.toIdeaProject(project));
         assert tool != null;
         project.getRepository().getModelAccess().runReadAction(() -> {
           final List<SearchResult> res = ListSequence.fromList(new ArrayList<SearchResult>());
@@ -112,12 +112,6 @@ public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescri
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-  private static UsagesViewTool check_5hdxhn_a0b0a0a0a0b0a(com.intellij.openapi.project.Project checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getComponent(UsagesViewTool.class);
-    }
-    return null;
   }
 
   private static final class LINKS {

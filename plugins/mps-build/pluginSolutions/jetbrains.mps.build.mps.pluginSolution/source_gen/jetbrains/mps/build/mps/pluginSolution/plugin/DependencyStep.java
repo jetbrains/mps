@@ -69,7 +69,6 @@ public class DependencyStep extends AbstractStep {
 
   public enum DependencyKind {
     MPS("Plug-in for MPS"),
-    IDEA("Plug-in for IntelliJ IDEA"),
     STANDALONE("Standalone IDE");
 
     public static final int DEFAULT = 0;

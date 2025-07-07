@@ -12,8 +12,11 @@ import com.intellij.ui.components.JBPanel;
 import com.intellij.ui.IdeBorderFactory;
 import java.awt.BorderLayout;
 import com.intellij.ui.components.JBCheckBox;
+import java.awt.FlowLayout;
+import com.intellij.ui.components.JBLabel;
+import com.intellij.icons.AllIcons;
 
-@GeneratedClass(node = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)/4182099185160006907", model = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)")
+@GeneratedClass(nodeId = "4182099185160006907", model = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)")
 public final class MakeSettingsPanel implements ProjectPrefsExtraPanel {
   private final MakeServiceConfiguration myMakeConfig;
   private JCheckBox myMakeInBackground;
@@ -31,9 +34,18 @@ public final class MakeSettingsPanel implements ProjectPrefsExtraPanel {
     myMakeInBackground = new JBCheckBox("Perform in background");
     myMakeInBackground.setSelected(myMakeConfig.isMakeInBackground());
     p.add(myMakeInBackground, BorderLayout.NORTH);
-    myDisableMakeOnStartup = new JBCheckBox("Disable Make On Startup");
+    myDisableMakeOnStartup = new JBCheckBox("Do not compile on startup");
+    final String tooltipMessage = "Use with caution. Please read the documentation (press F1) before enabling.";
+    myDisableMakeOnStartup.setToolTipText(tooltipMessage);
     myDisableMakeOnStartup.setSelected(myMakeConfig.isDisableMakeOnStartup());
-    p.add(myDisableMakeOnStartup, BorderLayout.SOUTH);
+
+    final JBPanel wrapper = new JBPanel();
+    wrapper.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 5));
+    wrapper.add(myDisableMakeOnStartup);
+    final JBLabel icon = new JBLabel(AllIcons.General.Warning);
+    icon.setToolTipText(tooltipMessage);
+    wrapper.add(icon);
+    p.add(wrapper, BorderLayout.SOUTH);
     return p;
   }
 

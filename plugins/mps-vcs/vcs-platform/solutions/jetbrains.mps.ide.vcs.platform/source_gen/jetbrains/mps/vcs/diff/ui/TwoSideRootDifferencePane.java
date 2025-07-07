@@ -19,7 +19,7 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/5939348756325699563", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "5939348756325699563", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 /*package*/ final class TwoSideRootDifferencePane extends RootDifferencePaneBase {
 
   /*package*/ TwoSideRootDifferencePane(MPSProject project, SNodeId rootId, boolean isMetadataView, List<String> titles, List<SModel> models, List<SModel> metadataModels, List<ModelChangeSet> changeSets, List<ModelChangeSet> metadataChangeSets) {

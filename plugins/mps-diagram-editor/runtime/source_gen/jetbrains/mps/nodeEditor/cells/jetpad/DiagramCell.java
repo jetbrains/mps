@@ -341,7 +341,7 @@ public abstract class DiagramCell extends AbstractJetpadCell implements EditorCe
 
   @Override
   public NodeSubstitutePatternEditor createSubstitutePatternEditor() {
-    return new NodeSubstitutePatternEditor(getEditor().getEditorComponentSettings()) {
+    return new NodeSubstitutePatternEditor(getContext()) {
       @Override
       public void activate(Window window, Point point, Dimension dimension, boolean show) {
         Dimension actualDimension = new Dimension(100, 0);

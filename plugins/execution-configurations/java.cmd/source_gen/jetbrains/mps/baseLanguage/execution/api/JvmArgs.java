@@ -6,10 +6,10 @@ import java.util.List;
 import jetbrains.mps.execution.api.commands.ListCommandPart;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.InternalFlag;
+import jetbrains.mps.RuntimeFlags;
 
 public final class JvmArgs {
   public static List<String> getDefaultJvmArgs() {
-    return new ListCommandPart(ListSequence.fromListAndArray(new ArrayList<>(), "-client", "-Xss1024k", "-ea", "-Xmx1500m", "-XX:+HeapDumpOnOutOfMemoryError", "-Dfile.encoding=UTF-8", ((InternalFlag.isInternalMode() ? " -Dmps.internal=true" : "")), "-Didea.invalidate.caches.invalidates.vfs=true", "-Didea.trust.disabled=false")).getCommandList();
+    return new ListCommandPart(ListSequence.fromListAndArray(new ArrayList<>(), "-client", "-Xss1024k", "-ea", "-Xmx1500m", "-XX:+HeapDumpOnOutOfMemoryError", "-Dfile.encoding=UTF-8", ((RuntimeFlags.isInternalMode() ? " -Dmps.internal=true" : "")), "-Didea.invalidate.caches.invalidates.vfs=true", "-Didea.trust.disabled=false")).getCommandList();
   }
 }

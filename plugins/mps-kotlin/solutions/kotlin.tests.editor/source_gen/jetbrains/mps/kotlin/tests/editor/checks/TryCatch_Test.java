@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -14,12 +14,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class TryCatch_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(TryCatch_Test.class, "${mps_home}", "r:7c8e019c-f730-4087-8f9d-0f24a0e49d4c(jetbrains.mps.kotlin.tests.editor.checks@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TryCatch_Test.class).projectPath(null).modelRef("r:7c8e019c-f730-4087-8f9d-0f24a0e49d4c(jetbrains.mps.kotlin.tests.editor.checks@tests)").reopenProject(null).build());
 
   public TryCatch_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -36,12 +35,16 @@ public class TryCatch_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeExpectingCatchOrFinallyCheck8160487567611772388() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8160487567611772122");
+    }
 
+    public void test_NodeExpectingCatchOrFinallyCheck8160487567611772388() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8160487567611772337");
-        SNode operation = getRealNodeById("8160487567611772388");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8160487567610426386"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("8160487567611772337");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8160487567610426386"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

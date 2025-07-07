@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.BaseMPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleOwner;
+import jetbrains.mps.util.annotation.AccessAsPlatformService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -39,6 +40,7 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@AccessAsPlatformService
 public class TransientModelsProvider {
 
   private final ConcurrentMap<GeneratorTask, TransientModelsModule> myModuleMap = new ConcurrentHashMap<>();
@@ -105,7 +107,7 @@ public class TransientModelsProvider {
    * get registered in the associated repository when {@link #publishAll()} is requested. Thus, only publish activity would require write lock,
    * while the transformation process is ok with a read on source model's repository. It's not final, though. If we manage to maintain distinct
    * repository for transients, we still may lock it for write during transformation process (transitively locking source model's one for read)
-   * and there'd be no reason to be minimalistic about write lock then.
+   * and there would be no reason to be minimalistic about write lock then.
    * @param moduleName name for a new transient module, without stereotype
    * @return new module instance
    */

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="jetbrains.mps.baseLanguage.pluginSolution" uuid="e8837c20-5f6c-49c3-987d-dc9d4b635bc6" moduleVersion="0">
   <models>
-    <modelRoot type="default" contentPath="${module}">
+    <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
   </models>
   <facets>
-    <facet planModel="r:ee509762-630b-48e4-adf4-6295b314fefe(jetbrains.mps.baseLanguage.pluginSolution.custom@genplan)" type="generator" />
+    <facet type="generator" planModel="r:ee509762-630b-48e4-adf4-6295b314fefe(jetbrains.mps.baseLanguage.pluginSolution.custom@genplan)" />
     <facet type="java" compile="mps" classes="mps" ext="yes">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
@@ -35,6 +35,8 @@
     <dependency reexport="false">af65afd8-f0dd-4942-87d9-63a55f2a9db1(jetbrains.mps.lang.behavior)</dependency>
     <dependency reexport="true">98b3b6eb-9d60-4e29-9afb-762ac8948292(jetbrains.mps.ide.refactoring.platform)</dependency>
     <dependency reexport="false">2af156ab-65c1-4a62-bd0d-ea734f71eab6(jetbrains.mps.dataFlow.runtime)</dependency>
+    <dependency reexport="false">5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)</dependency>
+    <dependency reexport="false">e39e4a59-8cb6-498e-860e-8fa8361c0d90(jetbrains.mps.baseLanguage.scopes)</dependency>
   </dependencies>
   <languageVersions>
     <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="12" />
@@ -77,6 +79,7 @@
     <module reference="2af156ab-65c1-4a62-bd0d-ea734f71eab6(jetbrains.mps.dataFlow.runtime)" version="0" />
     <module reference="bfbdd672-7ff5-403f-af4f-16da5226f34c(jetbrains.mps.findUsages.runtime)" version="0" />
     <module reference="019b622b-0aef-4dd3-86d0-4eef01f3f6bb(jetbrains.mps.ide)" version="0" />
+    <module reference="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" version="0" />
     <module reference="8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)" version="0" />
     <module reference="98b3b6eb-9d60-4e29-9afb-762ac8948292(jetbrains.mps.ide.refactoring.platform)" version="0" />
     <module reference="25092e07-e655-497c-92fb-558a8e3080ed(jetbrains.mps.ide.ui)" version="0" />

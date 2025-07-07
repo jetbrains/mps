@@ -5,14 +5,16 @@ package jetbrains.mps.debug.api;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
 import java.util.ArrayList;
+import com.intellij.openapi.extensions.ExtensionPointName;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.application.ApplicationManager;
 
-@GeneratedClass(node = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)/4474271214082913032", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
+@GeneratedClass(nodeId = "4474271214082913032", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
 public class Debuggers {
   private final List<IDebugger> myDebuggers = new ArrayList<IDebugger>();
+  private static final ExtensionPointName<DebuggerImplBean> EP = ExtensionPointName.create("jetbrains.mps.debugger.implementation");
 
   public Debuggers() {
   }
@@ -29,16 +31,21 @@ public class Debuggers {
       removed = myDebuggers.remove(debugger);
     }
     if (!(removed)) {
-      Logger.getLogger(Debuggers.class).warning("Debugger " + debugger.getName() + " was not registered.");
+      Logger.getLogger(Debuggers.class).warning(String.format("Debugger %s was not registered.", debugger.getName()));
     }
   }
 
   public List<IDebugger> getDebuggers() {
+    List<IDebugger> debuggers;
     synchronized (myDebuggers) {
-      List<IDebugger> debuggers;
-      debuggers = new ArrayList<IDebugger>(myDebuggers);
-      return debuggers;
+      debuggers = new ArrayList<>(myDebuggers);
     }
+    for (DebuggerImplBean implBean : EP.getExtensionList()) {
+      IDebugger<?, ?> di = implBean.instantiate();
+      assert implBean.getIdentifier().equals(di.getName());
+      debuggers.add(di);
+    }
+    return debuggers;
   }
 
   @Nullable
@@ -46,6 +53,11 @@ public class Debuggers {
     for (IDebugger debugger : getDebuggers()) {
       if (name.equals(debugger.getName())) {
         return debugger;
+      }
+    }
+    for (DebuggerImplBean implBean : EP.getExtensionList()) {
+      if (name.equals(implBean.getIdentifier())) {
+        return implBean.instantiate();
       }
     }
     return null;

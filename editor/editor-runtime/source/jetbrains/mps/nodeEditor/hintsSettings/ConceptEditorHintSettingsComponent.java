@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.nodeEditor.hintsSettings;
 
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
@@ -35,24 +34,10 @@ import java.util.Set;
     name = "ConceptEditorHintSettings",
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
-public class ConceptEditorHintSettingsComponent implements PersistentStateComponent<HintsState>, ProjectComponent {
+public class ConceptEditorHintSettingsComponent implements PersistentStateComponent<HintsState> {
   private HintsState myState = new HintsState();
 
   public ConceptEditorHintSettingsComponent(Project project) {
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Editor Context Hints Configurable";
   }
 
   @NotNull
@@ -67,16 +52,6 @@ public class ConceptEditorHintSettingsComponent implements PersistentStateCompon
   public void loadState(@NotNull HintsState state) {
     myState = new HintsState();
     myState.setEnabledHints(state.getEnabledHints());
-  }
-
-  @Override
-  public void projectOpened() {
-
-  }
-
-  @Override
-  public void projectClosed() {
-
   }
 
   public static ConceptEditorHintSettingsComponent getInstance(Project project) {

@@ -28,7 +28,7 @@ import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 
-@GeneratedClass(node = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/8704812547333227493", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
+@GeneratedClass(nodeId = "8704812547333227493", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
 public class ConsoleUtil {
   private static final Logger LOG = Logger.getLogger(ConsoleUtil.class);
   public static boolean make(final Project project, final SModel model) {
@@ -72,7 +72,7 @@ public class ConsoleUtil {
   }
   private static UsagesViewTool check_xg48a4_a0a0a0c(com.intellij.openapi.project.Project checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.getComponent(UsagesViewTool.class);
+      return checkedDotOperand.getService(UsagesViewTool.class);
     }
     return null;
   }

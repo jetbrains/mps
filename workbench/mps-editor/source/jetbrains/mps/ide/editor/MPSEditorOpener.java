@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.FileEditorProvider;
+import com.intellij.openapi.fileEditor.ex.FileEditorProviderManager;
 import com.intellij.openapi.fileEditor.ex.IdeDocumentHistory;
 import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.openapi.wm.ToolWindowManager;
@@ -85,7 +86,7 @@ public class MPSEditorOpener {
     if (!SNodeUtil.isAccessible(node, myProject.getRepository())) {
       return null;
     }
-    final Editor nodeEditor = openEditor(node.getContainingRoot(), false);
+    final Editor nodeEditor = openEditor(node.getContainingRoot(), focus);
 
     if ((nodeEditor.getCurrentEditorComponent() instanceof NodeEditorComponent)) {
       NodeEditorComponent nec = (NodeEditorComponent) nodeEditor.getCurrentEditorComponent();
@@ -139,7 +140,12 @@ public class MPSEditorOpener {
     checkVirtualFileBaseNode(baseNode, file); // assertion for MPS-9753
 
     FileEditorManager editorManager = FileEditorManager.getInstance(myProject.getProject());
-    file.putUserData(FileEditorProvider.KEY, ApplicationManager.getApplication().getComponent(MPSFileNodeEditorProvider.class));
+    // XXX look up KEY usages, seems this is the right way to access MPSFileNodeEditorProvider, although
+    //     not sure if there's still any need for this code, commit 4d8d546d didn't specify which tests depend on it
+    if (ApplicationManager.getApplication().isUnitTestMode()) {
+      FileEditorProvider fep = FileEditorProviderManager.getInstance().getProvider("MPSFileEditor"); // == MPSFileNodeEditorProvider.getEditorTypeId
+      file.putUserData(FileEditorProvider.KEY, fep);
+    }
 
     FileEditor fileEditor = editorManager.openFile(file, focus, true)[0];
     MPSFileNodeEditor fileNodeEditor = (MPSFileNodeEditor) fileEditor;
@@ -181,13 +187,13 @@ public class MPSEditorOpener {
       getFocusManager().requestFocus(toBeFocused, false);
     } else {
       final InspectorTool inspectorTool = getInspector();
-      inspectorTool.getToolWindow().activate(null);
+      inspectorTool.activate();
       getFocusManager().requestFocus(inspectorTool.getInspector(), false);
     }
   }
 
   private InspectorTool getInspector() {
-    return myProject.getProject().getComponent(InspectorTool.class);
+    return InspectorTool.getInstance(myProject);
   }
 
   private jetbrains.mps.openapi.editor.EditorComponent getInspectorComponent() {

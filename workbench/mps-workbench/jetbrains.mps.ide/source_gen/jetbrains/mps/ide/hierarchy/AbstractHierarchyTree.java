@@ -16,9 +16,12 @@ import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.ide.ui.util.NodeAttributesUtil;
 import java.awt.font.TextAttribute;
 import java.util.Set;
-import jetbrains.mps.util.CollectionUtil;
-import org.jetbrains.mps.util.Condition;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.LinkedHashSet;
 import java.util.ArrayList;
 import java.util.HashSet;
 import org.jetbrains.annotations.NotNull;
@@ -30,9 +33,9 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.workbench.action.ActionUtils;
 
-@GeneratedClass(node = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)/5797068448049410623", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
+@GeneratedClass(nodeId = "5797068448049410623", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
 public abstract class AbstractHierarchyTree extends MPSTree {
-  private AbstractHierarchyView myHierarchyView;
+  private AbstractHierarchyViewState myHierarchyView;
   private SNode myHierarchyNode;
   protected boolean myIsParentHierarchy;
   protected boolean myOnlyInOneModel;
@@ -47,7 +50,7 @@ public abstract class AbstractHierarchyTree extends MPSTree {
   /**
    * Tree shall not depend on hierarchy view, and all uses of myHierarchyView/getHierarchyView() shall get refactored and removed.
    */
-  public void setHierarchyView(AbstractHierarchyView hv) {
+  public void setHierarchyView(AbstractHierarchyViewState hv) {
     myHierarchyView = hv;
   }
 
@@ -64,7 +67,7 @@ public abstract class AbstractHierarchyTree extends MPSTree {
   }
 
   @Nullable
-  public AbstractHierarchyView getHierarchyView() {
+  public AbstractHierarchyViewState getHierarchyView() {
     return myHierarchyView;
   }
 
@@ -138,35 +141,21 @@ public abstract class AbstractHierarchyTree extends MPSTree {
   protected abstract Set<SNode> getParents(SNode node, Set<SNode> visited) throws CircularHierarchyException;
   protected abstract Set<SNode> getDescendants(SNode node, Set<SNode> visited) throws CircularHierarchyException;
   protected Set<SNode> getAbstractChildren(final SNode node, Set<SNode> visited) throws CircularHierarchyException {
-    Set<SNode> result;
+    Iterable<SNode> result;
     if (myIsParentHierarchy) {
       result = getParents(node, visited);
     } else {
       result = getDescendants(node, visited);
     }
+    result = Sequence.fromIterable(result).where(new NotNullWhereFilter());
     if (myOnlyInOneModel) {
-      result = CollectionUtil.filter(result, new Condition<SNode>() {
-        @Override
-        public boolean met(SNode n) {
-          if (n == null) {
-            return false;
-          }
-          return SNodeOperations.getModel(n) == SNodeOperations.getModel(node);
-        }
-      });
+      final SModel oneModel = SNodeOperations.getModel(node);
+      result = Sequence.fromIterable(result).where((n) -> SNodeOperations.getModel(n) == oneModel);
     }
     if (!(myShowGeneratorModels)) {
-      result = CollectionUtil.filter(result, new Condition<SNode>() {
-        @Override
-        public boolean met(SNode n) {
-          if (n == null) {
-            return false;
-          }
-          return !(isInGeneratorModel(n));
-        }
-      });
+      result = Sequence.fromIterable(result).where((n) -> !(isInGeneratorModel(n)));
     }
-    return result;
+    return SetSequence.fromSetWithValues(new LinkedHashSet<>(), result);
   }
   protected SNode getAbstractParent(SNode node) {
     if (myIsParentHierarchy) {
@@ -220,7 +209,7 @@ public abstract class AbstractHierarchyTree extends MPSTree {
   }
 
   /*package*/ HierarchyTreeNode getActiveTreeNode() {
-    // I've got no idea what's the need behind this, and 'active' is just a quess here.
+    // I've got no idea what's the need behind this, and 'active' is just a guess here.
     // I merely moved this field from HierarchyView, where it's read, here, where it's modified.
     return myTreeNode;
   }
@@ -234,7 +223,7 @@ public abstract class AbstractHierarchyTree extends MPSTree {
     }
   }
 
-  private boolean isInGeneratorModel(SNode n) {
+  private static boolean isInGeneratorModel(SNode n) {
     return SNodeOperations.getModel(n) != null && SModelStereotype.isGeneratorModel(SNodeOperations.getModel(n));
   }
 
@@ -245,7 +234,7 @@ public abstract class AbstractHierarchyTree extends MPSTree {
     }
 
     final SNodeReference ptr = ((HierarchyTreeNode) treeNode).getNodeReference();
-    final AbstractHierarchyView hierarchyView = getHierarchyView();
+    final AbstractHierarchyViewState hierarchyView = getHierarchyView();
     if (hierarchyView == null) {
       return null;
     }

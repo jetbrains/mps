@@ -23,10 +23,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Map;
 
 /**
  * @author Artem Tikhomirov
@@ -40,6 +42,7 @@ public final class GenerationStatus implements IStatus {
   private final SModel myInputModel;
   // we initialize it the moment GS is created assuming we can read the input model at this time, so I don't bother with model RA.
   private final SRepository myInputModelRepo;
+  private Map<SModelReference, String> myGentargetByOutput = Collections.emptyMap();
   private GenerationDependencies myDependencies;
 
   // XXX would be great to hide this one behind a factory method, boolean errors is gross.
@@ -61,6 +64,11 @@ public final class GenerationStatus implements IStatus {
     myInputModelRepo = inputModel.getRepository();
   }
 
+  public GenerationStatus(@NotNull SModel inputModel, @NotNull Collection<SModel> outputModels, GenerationDependencies dependencies, boolean errors, Map<SModelReference, String> gentargetByOutput) {
+    this(inputModel, outputModels, dependencies, errors);
+    myGentargetByOutput = gentargetByOutput;
+  }
+
 
     @Override
   public Code getCode() {
@@ -73,6 +81,10 @@ public final class GenerationStatus implements IStatus {
   @Nullable
   public SModel getOutputModel() {
     return myOutputModel;
+  }
+
+  public String getGenerationTarget(SModelReference outputModel) {
+    return myGentargetByOutput.get(outputModel);
   }
 
   public SModel getInputModel() {

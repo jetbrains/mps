@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -178,7 +178,7 @@ public class DevKit extends AbstractModule {
   @Override
   public void save() {
     super.save();
-    if (isReadOnly()) {
+    if (isReadOnly() || getDescriptorFile() == null) {
       return;
     }
 
@@ -187,7 +187,7 @@ public class DevKit extends AbstractModule {
       return;
     }
     try {
-      DescriptorIO<DevkitDescriptor> io = DescriptorIOFacade.getInstance().standardProvider().devkitDescriptorIO();
+      DescriptorIO<DevkitDescriptor> io = new DescriptorIOFacade().standardProvider().devkitDescriptorIO();
       io.writeToFile(getModuleDescriptor(), getDescriptorFile());
     } catch (Exception ex) {
       Logger.getLogger(getClass()).error("Save failed", ex);

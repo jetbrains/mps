@@ -8,12 +8,14 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.view.UsagesView;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import com.intellij.openapi.project.Project;
+import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.wm.impl.status.InlineProgressIndicator;
 import jetbrains.mps.ide.script.migrationtool.MigrationScriptsController;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.icons.AllIcons;
@@ -29,12 +31,10 @@ import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import com.intellij.openapi.application.ApplicationManager;
 import javax.swing.JLabel;
 import com.intellij.openapi.progress.TaskInfo;
-import jetbrains.mps.project.MPSProject;
+import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.Collection;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import javax.swing.JOptionPane;
 import jetbrains.mps.smodel.UndoRunnable;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
@@ -55,13 +55,13 @@ public abstract class MigrationScriptsView implements ResultsListener {
   private JPanel myControlsPanel;
   private JPanel myStatusPanel;
   private JButton myApplyButton;
-  private final Project myProject;
+  private final MPSProject myProject;
   private InlineProgressIndicator myIndicator;
   private MigrationScriptsController myController;
 
   public MigrationScriptsView(MigrationScriptFinder finder, IResultProvider provider, SearchQuery query, MigrationScriptsTool_Tool tool, @NotNull Project project) {
     ThreadUtils.assertEDT();
-    myProject = project;
+    myProject = ProjectHelper.fromIdeaProjectOrFail(project);
     myFinder = finder;
     myFinder.addResultsListener(this);
     myQuery = query;
@@ -134,16 +134,13 @@ public abstract class MigrationScriptsView implements ResultsListener {
     };
   }
   private MPSProject getMPSProject() {
-    return myProject.getComponent(MPSProject.class);
+    return myProject;
   }
   private void applyMigrations() {
     ThreadUtils.assertEDT();
 
-    final Collection<SearchResult<SNode>> aliveIncludedResults = new ModelAccessHelper(getMPSProject().getModelAccess()).runReadAction(new Computable<Collection<SearchResult<SNode>>>() {
-      public Collection<SearchResult<SNode>> compute() {
-        return myController.computeAliveIncludedResults(myUsagesView.getIncludedResultNodes(), getMPSProject().getRepository());
-      }
-    });
+    final SRepository projectRepo = getMPSProject().getRepository();
+    final Collection<SearchResult<SNode>> aliveIncludedResults = projectRepo.getModelAccess().computeReadAction(() -> myController.computeAliveIncludedResults(myUsagesView.getIncludedResultNodes(), projectRepo));
     if (aliveIncludedResults.size() == 0) {
       JOptionPane.showMessageDialog(getComponent(), "No job");
       return;
@@ -164,7 +161,7 @@ public abstract class MigrationScriptsView implements ResultsListener {
   }
   private void checkMigrationResults() {
     final MigrationScriptFinder newFinder = new MigrationScriptFinder(myFinder.getScripts());
-    ProgressManager.getInstance().run(new Task.Modal(myProject, "Searching", true) {
+    ProgressManager.getInstance().run(new Task.Modal(myProject.getProject(), "Searching", true) {
       @Override
       public void run(@NotNull final ProgressIndicator indicator) {
         indicator.setIndeterminate(true);

@@ -141,7 +141,7 @@ public class IdeaScopesUtils {
     public final List<String> result = new ArrayList<String>();
 
     MyResultSet(CompletionContributor contributor) {
-      super(new PlainPrefixMatcher(""), Consumer.EMPTY_CONSUMER, contributor);
+      super(new PlainPrefixMatcher(""), (Consumer<Object>) o -> { }, contributor);
     }
 
     @Override

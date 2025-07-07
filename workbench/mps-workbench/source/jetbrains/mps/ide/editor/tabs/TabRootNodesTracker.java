@@ -16,10 +16,14 @@
 package jetbrains.mps.ide.editor.tabs;
 
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.fileEditor.FileEditorManager;
+import com.intellij.util.LocalTimeCounter;
 import jetbrains.mps.ide.editorTabs.tabfactory.TabsComponent;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.nodeEditor.EditorSettings;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NotNull;
@@ -40,6 +44,7 @@ import org.jetbrains.mps.openapi.project.Project;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 
 /**
  * Listener for model changes specific to tabbed editors.
@@ -55,6 +60,7 @@ import java.util.HashSet;
  */
 class TabRootNodesTracker extends SRepositoryContentAdapter implements Disposable {
   private final Collection<SNodeReference> myChangedRoots = new HashSet<>();
+  private final Collection<SNodeReference> myEditedRoots = new HashSet<>();
   private final Collection<TabsComponent> myTabsComponents = new HashSet<>();
 
   private final Project myProject;
@@ -74,6 +80,7 @@ class TabRootNodesTracker extends SRepositoryContentAdapter implements Disposabl
   public void dispose() {
     detachRepoListener();
     myChangedRoots.clear();
+    myEditedRoots.clear();
     myTabsComponents.clear();
   }
 
@@ -128,6 +135,8 @@ class TabRootNodesTracker extends SRepositoryContentAdapter implements Disposabl
   public void nodeAdded(@NotNull SNodeAddEvent event) {
     if (event.isRoot()) {
       myChangedRoots.add(event.getChild().getReference());
+    } else {
+      myEditedRoots.add(event.getParent().getContainingRoot().getReference());
     }
   }
 
@@ -135,6 +144,8 @@ class TabRootNodesTracker extends SRepositoryContentAdapter implements Disposabl
   public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
     if (event.isRoot()) {
       myChangedRoots.add(new SNodePointer(event.getModel().getReference(), event.getChild().getNodeId()));
+    } else if (event.getParent() != null) {
+      myEditedRoots.add(event.getParent().getContainingRoot().getReference());
     }
   }
 
@@ -142,11 +153,16 @@ class TabRootNodesTracker extends SRepositoryContentAdapter implements Disposabl
   public void propertyChanged(@NotNull SPropertyChangeEvent event) {
     if (event.getNode().getParent() == null && EditorSettings.getInstance().isShowPlain()) {
       myChangedRoots.add(event.getNode().getReference());
+    } else if (event.getNode() != null) {
+      myEditedRoots.add(event.getNode().getContainingRoot().getReference());
     }
   }
 
   @Override
   public void referenceChanged(@NotNull SReferenceChangeEvent event) {
+    if (event.getNode() != null) {
+      myEditedRoots.add(event.getNode().getContainingRoot().getReference());
+    }
     SReference newValue = event.getNewValue();
     if (newValue == null) {
       return;
@@ -160,6 +176,7 @@ class TabRootNodesTracker extends SRepositoryContentAdapter implements Disposabl
   @Override
   public void commandStarted(SRepository repository) {
     myChangedRoots.clear();
+    myEditedRoots.clear();
   }
 
   @Override
@@ -170,5 +187,19 @@ class TabRootNodesTracker extends SRepositoryContentAdapter implements Disposabl
       }
     }
     myChangedRoots.clear();
+    if (!myEditedRoots.isEmpty()) {
+      NodeVirtualFileSystem nvfs = NodeVirtualFileSystem.getInstance();
+      for (TabsComponent tabsComponent : myTabsComponents) {
+        Optional<MPSNodeVirtualFile> vfile = myEditedRoots.stream()
+           .filter(tabsComponent::hasEditorFor)
+           .findFirst()
+           .flatMap((__) -> nvfs.lookupVirtualFile(myProject.getRepository(),
+                                                   tabsComponent.getMainNode()));
+        if (vfile.isPresent()) {
+          vfile.get().setModificationStamp(LocalTimeCounter.currentTime());
+          FileEditorManager.getInstance(((MPSProject) myProject).getProject()).updateFilePresentation(vfile.get());
+        }
+      }
+    }
   }
 }

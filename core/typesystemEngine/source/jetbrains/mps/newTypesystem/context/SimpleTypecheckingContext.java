@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.typesystem.TypeSystemReporter;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
@@ -41,7 +40,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -132,10 +130,10 @@ public abstract class SimpleTypecheckingContext<
           usedLanguages.addAll(IterableUtil.asCollection(((DevKit) module).getAllExportedLanguageIds()));
         }
       }
-      result = LanguageScopeExecutor.execWithMultiLanguageScope(usedLanguages, computable);
+      result = LanguageScopeExecutor.execWithMultiLanguageScope(usedLanguages, computable, getTypeCheckerHelper().getScopeFactory());
     } else {
       // XXX this is the way it was; although may build set of languages in use from the node's hierarchy and restrict scope only to those
-      result = LanguageScopeExecutor.execWithGlobalScope(computable);
+      result = LanguageScopeExecutor.execWithGlobalScope(computable, getTypeCheckerHelper().getScopeFactory());
     }
     myTypeCheckerHelper.getTypeSystemReporter().reportTypeOf(node, (System.nanoTime() - start));
     return result;
@@ -269,7 +267,7 @@ public abstract class SimpleTypecheckingContext<
         getTypechecking().computeTypes(refreshTypes);
         getTypechecking().setCheckedTypesystem();
         return null;
-      });
+      }, getTypeCheckerHelper().getScopeFactory());
     }
   }
 
@@ -326,7 +324,8 @@ public abstract class SimpleTypecheckingContext<
   @Override
   public TypeSubstitution getSubstitution(final SNode origNode) {
     return LanguageScopeExecutor.execWithGlobalScope(
-        () -> getTypechecking().getTypecheckingComponent().lookupSubstitution(origNode, SimpleTypecheckingContext.this));
+        () -> getTypechecking().getTypecheckingComponent().lookupSubstitution(origNode, SimpleTypecheckingContext.this),
+        getTypeCheckerHelper().getScopeFactory());
   }
 
   protected void processDependency(SNode node, String ruleModel, String ruleId, boolean addDependency) {

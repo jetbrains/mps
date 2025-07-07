@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,11 +34,6 @@ public final class SPrimitiveTypes {
 
   public static final SDataType STRING = new SPrimitiveDataType() {
     @Override
-    public int getType() {
-      return SPrimitiveDataType.STRING;
-    }
-
-    @Override
     public boolean isInstanceOf(@Nullable Object value) {
       return value == null || value instanceof String;
     }
@@ -65,11 +60,6 @@ public final class SPrimitiveTypes {
   };
 
   public static final SDataType INTEGER = new SPrimitiveDataType() {
-    @Override
-    public int getType() {
-      return SPrimitiveDataType.INT;
-    }
-
     @Override
     public boolean isInstanceOf(@Nullable Object value) {
       return value == null || value instanceof Integer;
@@ -104,11 +94,6 @@ public final class SPrimitiveTypes {
   };
 
   public static final SDataType BOOLEAN = new SPrimitiveDataType() {
-    @Override
-    public int getType() {
-      return SPrimitiveDataType.BOOL;
-    }
-
     @Override
     public boolean isInstanceOf(@Nullable Object value) {
       return value instanceof Boolean;

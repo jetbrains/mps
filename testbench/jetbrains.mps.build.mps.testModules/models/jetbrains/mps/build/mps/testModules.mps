@@ -51,9 +51,6 @@
     <node concept="2Uj$md" id="LYpJ$oNJI3" role="2Uj_Yd">
       <ref role="2Uj$mc" to="5lan:6rP_NjK3fBF" resolve="JavaCompilationXmlConflict" />
     </node>
-    <node concept="2Uj$md" id="3iBi5uuKAAO" role="2Uj_Yd">
-      <ref role="2Uj$mc" to="q08g:6rP_NjK3fBF" resolve="RefactoringTest" />
-    </node>
     <node concept="2Uj$md" id="4tzJw0sqrFJ" role="2Uj_Yd">
       <ref role="2Uj$mc" to="8ytb:4tzJw0sqrF_" resolve="FindUsages" />
     </node>
@@ -68,6 +65,18 @@
     </node>
     <node concept="2Uj$md" id="QQUW4evXxZ" role="2Uj_Yd">
       <ref role="2Uj$mc" to="68g4:1fvQcDvHjaU" resolve="ModelRenaming" />
+    </node>
+  </node>
+  <node concept="2UguNc" id="7CPkROrbVY5">
+    <property role="TrG5h" value="mpsTestRefactoring" />
+    <node concept="2Uj$md" id="7CPkROrbVY9" role="2Uj_Yd">
+      <ref role="2Uj$mc" to="q08g:6rP_NjK3fBF" resolve="RefactoringTest" />
+    </node>
+    <node concept="1dCxOl" id="7CPkROrbVYb" role="3cVaLd">
+      <property role="1XweGQ" value="r:12897c41-1d23-444a-8c3d-8a254e74f9b6" />
+      <node concept="1j_P7g" id="7CPkROrbVYc" role="1j$8Uc">
+        <property role="1j_P7h" value="jetbrains.mps.ide.build.tests.generatedTests" />
+      </node>
     </node>
   </node>
 </model>

@@ -16,7 +16,7 @@ import com.intellij.diff.contents.FileContent;
 import com.intellij.diff.contents.DiffContent;
 import com.intellij.diff.merge.TextMergeTool;
 
-@GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/5085852630254807374", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
+@GeneratedClass(nodeId = "5085852630254807374", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class ModelMergeTool implements MergeTool {
   public static final Set<FileType> SUPPORTED_TYPES = SetSequence.fromSetAndArray(new HashSet<FileType>(), ModelDiffTool.DIFF_SUPPORTED_TYPES);
 

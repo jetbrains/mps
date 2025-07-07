@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.logging;
 
@@ -132,7 +132,10 @@ import java.util.logging.LogRecord;
   }
 
   private LogRecord createRecord(Level l, String message, Throwable t, Object hintObject) {
+    // XXX in fact, better to avoid creating LogRecord directly, as I can't set all its fields correctly,
+    //     see private Logger.doLog(LogRecord), which populates resource bundle.
     LogRecord lr = new LogRecord(l, message);
+    lr.setLoggerName(myLogger.getName());
     lr.setThrown(t);
     if (hintObject != null) {
       lr.setParameters(new Object[] {hintObject});

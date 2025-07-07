@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <use id="daafa647-f1f7-4b0b-b096-69cd7c8408c0" name="jetbrains.mps.baseLanguage.regexp" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
@@ -20,6 +20,7 @@
     <import index="f4zo" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.cells(MPS.Editor/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
+    <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -302,6 +303,7 @@
       <concept id="1166059625718" name="jetbrains.mps.lang.editor.structure.CellMenuPart_CellMenuComponent" flags="ng" index="1Y$tRT">
         <reference id="1166059677893" name="cellMenuComponent" index="1Y$EBa" />
       </concept>
+      <concept id="1176809959526" name="jetbrains.mps.lang.editor.structure.QueryFunction_Color" flags="in" index="3ZlJ5R" />
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
@@ -316,6 +318,9 @@
       <concept id="1215695189714" name="jetbrains.mps.baseLanguage.structure.PlusAssignmentExpression" flags="nn" index="d57v9" />
       <concept id="1153422305557" name="jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression" flags="nn" index="2dkUwp" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="1179360813171" name="jetbrains.mps.baseLanguage.structure.HexIntegerLiteral" flags="nn" index="2nou5x">
+        <property id="1179360856892" name="value" index="2noCCI" />
+      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -349,6 +354,9 @@
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -412,6 +420,7 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
+      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
@@ -1113,8 +1122,23 @@
     <node concept="14StLt" id="5M4a$b5iSRB" role="V601i">
       <property role="TrG5h" value="xmlTagName" />
       <node concept="VechU" id="5M4a$b5iSRC" role="3F10Kt">
-        <node concept="1iSF2X" id="5M4a$b5iSRD" role="VblUZ">
-          <property role="1iTho6" value="000080" />
+        <node concept="3ZlJ5R" id="73GgUGmj$J_" role="VblUZ">
+          <node concept="3clFbS" id="73GgUGmj$JA" role="2VODD2">
+            <node concept="3clFbF" id="73GgUGmjAau" role="3cqZAp">
+              <node concept="2ShNRf" id="73GgUGmjAas" role="3clFbG">
+                <node concept="1pGfFk" id="73GgUGmjCmb" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="lzb2:~JBColor.&lt;init&gt;(int,int)" resolve="JBColor" />
+                  <node concept="2nou5x" id="73GgUGmjJwX" role="37wK5m">
+                    <property role="2noCCI" value="000080" />
+                  </node>
+                  <node concept="2nou5x" id="73GgUGmjOFR" role="37wK5m">
+                    <property role="2noCCI" value="0060A0" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
       </node>
       <node concept="Vb9p2" id="7gcenJsyQDV" role="3F10Kt">
@@ -1135,8 +1159,23 @@
     <node concept="14StLt" id="5M4a$b5iSSc" role="V601i">
       <property role="TrG5h" value="xmlTagPunctuation" />
       <node concept="VechU" id="5M4a$b5iSSd" role="3F10Kt">
-        <node concept="1iSF2X" id="5M4a$b5iSSe" role="VblUZ">
-          <property role="1iTho6" value="303030" />
+        <node concept="3ZlJ5R" id="73GgUGmlAgu" role="VblUZ">
+          <node concept="3clFbS" id="73GgUGmlAgv" role="2VODD2">
+            <node concept="3clFbF" id="73GgUGmlAtG" role="3cqZAp">
+              <node concept="2ShNRf" id="73GgUGmlAtH" role="3clFbG">
+                <node concept="1pGfFk" id="73GgUGmlAtI" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="lzb2:~JBColor.&lt;init&gt;(int,int)" resolve="JBColor" />
+                  <node concept="2nou5x" id="73GgUGmlAtJ" role="37wK5m">
+                    <property role="2noCCI" value="303030" />
+                  </node>
+                  <node concept="2nou5x" id="73GgUGmlAtK" role="37wK5m">
+                    <property role="2noCCI" value="E0E0E0" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
       </node>
     </node>

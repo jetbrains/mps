@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.vfs.iofs.jar;
 
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
@@ -29,14 +30,16 @@ public final class JarIoFileSystem implements IFileSystem {
   public static final String JAR_SEPARATOR = "!";
   private static final Logger LOG = Logger.getLogger(JarIoFileSystem.class);
   private final VFSManager myManager;
+  private final FileSystem myUmbrellaFileSystem;
 
   private final JarFileDataCache myJarCache;
 
   /**
    * Clients shall not instantiate this class. Instead, use {@link jetbrains.mps.vfs.VFSManager#getFileSystem(String)}
    */
-  public JarIoFileSystem(@NotNull VFSManager manager) {
+  public JarIoFileSystem(@NotNull VFSManager manager, FileSystem umbrellaFileSystem) {
     myManager = manager;
+    myUmbrellaFileSystem = umbrellaFileSystem;
     myJarCache = new JarFileDataCache();
   }
 
@@ -76,7 +79,11 @@ public final class JarIoFileSystem implements IFileSystem {
     return false;
   }
 
-  /*package*/ VFSManager getManager() {
-    return myManager;
+  /**
+   * @since 2025.1
+   */
+  @NotNull
+  /*package*/ FileSystem getUmbrellaFileSystem() {
+    return myUmbrellaFileSystem;
   }
 }

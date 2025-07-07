@@ -11,7 +11,7 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 
-@GeneratedClass(node = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)/8018595893829093050", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
+@GeneratedClass(nodeId = "8018595893829093050", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
 public class DisjointSets<T> {
   private Map<T, T> myParent = MapSequence.fromMap(new HashMap<T, T>());
   private Map<T, Integer> myRank = MapSequence.fromMap(new HashMap<T, Integer>());

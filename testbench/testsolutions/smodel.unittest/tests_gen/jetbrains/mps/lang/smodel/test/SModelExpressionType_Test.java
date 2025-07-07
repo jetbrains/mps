@@ -6,21 +6,19 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.project.ProjectBase;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.Arrays;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 
 @MPSLaunch
 public class SModelExpressionType_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(SModelExpressionType_Test.class, "${mps_home}", "r:3deabf90-227b-4dd7-a1b3-e4735e4a0270(jetbrains.mps.lang.smodel.test)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SModelExpressionType_Test.class).projectPath(null).modelRef("r:3deabf90-227b-4dd7-a1b3-e4735e4a0270(jetbrains.mps.lang.smodel.test)").reopenProject(null).build());
 
   public SModelExpressionType_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -57,52 +55,51 @@ public class SModelExpressionType_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck6080263412727118172() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6080263412727116005");
+    }
 
+    public void test_ErrorMessagesCheck6080263412727118172() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("6080263412727112549");
-        SNode operation = getRealNodeById("6080263412727118172");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+        SNode nodeToCheck = getNodeById("6080263412727112549");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
       });
     }
     public void test_ErrorMessagesCheck6080263412727118260() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("6080263412727112980");
-        SNode operation = getRealNodeById("6080263412727118260");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+        SNode nodeToCheck = getNodeById("6080263412727112980");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
       });
     }
     public void test_ErrorMessagesCheck6080263412727118414() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("6080263412727113074");
-        SNode operation = getRealNodeById("6080263412727118414");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+        SNode nodeToCheck = getNodeById("6080263412727113074");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
       });
     }
     public void test_ErrorMessagesCheck6080263412727118566() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("6080263412727114148");
-        SNode operation = getRealNodeById("6080263412727118566");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+        SNode nodeToCheck = getNodeById("6080263412727114148");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
       });
     }
     public void test_ErrorMessagesCheck6080263412727118634() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("6080263412727114414");
-        SNode operation = getRealNodeById("6080263412727118634");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+        SNode nodeToCheck = getNodeById("6080263412727114414");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
       });
     }
     public void test_ErrorMessagesCheck6080263412727118704() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("6080263412727114632");
-        SNode operation = getRealNodeById("6080263412727118704");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+        SNode nodeToCheck = getNodeById("6080263412727114632");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
       });
     }
 

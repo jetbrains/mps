@@ -13,7 +13,7 @@ import java.util.Arrays;
  * Leftmost component in key array is most generic, rightmost is most specific.
  */
 @Immutable
-@GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/6192537294411385", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
+@GeneratedClass(nodeId = "6192537294411385", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public final class DeltaKey {
   private final Object[] myKey;
 

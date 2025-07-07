@@ -21,7 +21,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 
-@GeneratedClass(node = "r:e7d06f33-351b-4c9c-b848-ef96eff562e1(jetbrains.mps.editor.runtime.impl.cellMenu)/7279038390441828524", model = "r:e7d06f33-351b-4c9c-b848-ef96eff562e1(jetbrains.mps.editor.runtime.impl.cellMenu)")
+@GeneratedClass(nodeId = "7279038390441828524", model = "r:e7d06f33-351b-4c9c-b848-ef96eff562e1(jetbrains.mps.editor.runtime.impl.cellMenu)")
 public class EnumSPropertySubstituteInfo extends AbstractNodeSubstituteInfo implements DefaultSubstituteInfo {
   private SNode myNode;
   private SProperty myProperty;

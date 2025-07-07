@@ -4,6 +4,7 @@ package jetbrains.mps.kotlin.api.declaration;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.kotlin.api.members.TypeExpander;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.kotlin.api.builtins.BuiltIn;
@@ -36,6 +37,10 @@ public interface ParameterDeclaration {
 
 
   default String getPresentationInFunction(boolean erased) {
+    return getPresentationInFunction(erased, TypeExpander.DEFAULT);
+  }
+
+  default String getPresentationInFunction(boolean erased, @NotNull TypeExpander expander) {
     StringBuilder sb = new StringBuilder();
     if (isVararg()) {
       sb.append("vararg ");
@@ -43,7 +48,7 @@ public interface ParameterDeclaration {
 
     // Name omitted as not displayed in FunctionDeclaration presentation
     // If it is necessary for other purposes, add it back and change FunctionDeclaration presentation
-    sb.append(IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(getType(), ((boolean) erased)));
+    sb.append(IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(expander.expandType(getType()), ((boolean) erased)));
     return sb.toString();
   }
 

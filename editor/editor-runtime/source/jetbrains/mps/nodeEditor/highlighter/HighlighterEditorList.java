@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.InspectorTool;
 import jetbrains.mps.openapi.editor.Editor;
@@ -63,7 +64,7 @@ public class HighlighterEditorList {
     }
     //
     for (FileEditor selectedEditor : myFileEditorManager.getSelectedEditors()) {
-      final DataContext dc = DataManager.getInstance().getDataContext(selectedEditor.getComponent());
+      final DataContext dc = DataManager.getInstance().getDataContext(selectedEditor.getPreferredFocusedComponent());
       // could use MPSEditorDataKeys.MPS_EDITOR, although neither helps to get rid of [mps-editor] dependency
       editorComponents.add(dc.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
     }
@@ -94,14 +95,14 @@ public class HighlighterEditorList {
     //     but here might be of use.
 
     for (FileEditor editor : myFileEditorManager.getAllEditors()) {
-      final DataContext dc = DataManager.getInstance().getDataContext(editor.getComponent());
+      final DataContext dc = DataManager.getInstance().getDataContext(editor.getPreferredFocusedComponent());
       EditorComponent editorComponent = dc.getData(MPSEditorDataKeys.EDITOR_COMPONENT);
       if (editorComponent != null) {
         editorComponents.add(editorComponent);
       }
     }
     // == EditorComponentUtil.findInspector()
-    final InspectorTool inspectorTool = myFileEditorManager.getProject().getComponent(InspectorTool.class);
+    final InspectorTool inspectorTool = InspectorTool.getInstance(ProjectHelper.fromIdeaProject(myFileEditorManager.getProject()));
     if (inspectorTool != null && inspectorTool.getInspector() != null) {
       editorComponents.add(inspectorTool.getInspector());
     }

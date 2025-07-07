@@ -50,7 +50,7 @@ import jetbrains.mps.tool.builder.unittest.ConsoleTestReporter;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 
-@GeneratedClass(node = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)/878521226301296209", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
+@GeneratedClass(nodeId = "878521226301296209", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
 public class GenTestWorker extends BaseGeneratorWorker {
   private final MyMessageHandler myMessageHandler = new MyMessageHandler();
   private boolean myTestFailed = false;

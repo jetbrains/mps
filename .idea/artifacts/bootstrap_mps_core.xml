@@ -8,13 +8,11 @@
         <element id="module-output" name="util-core" />
         <element id="module-output" name="typesystemEngine" />
         <element id="module-output" name="typechecking" />
-        <element id="module-output" name="scripts-runtime" />
         <element id="module-output" name="project" />
         <element id="module-output" name="components" />
         <element id="module-output" name="findUsages-runtime" />
         <element id="module-output" name="debuginfo-impl" />
         <element id="module-output" name="debuginfo-api" />
-        <element id="module-output" name="dataflow-rt" />
         <element id="module-output" name="kernel-resources" />
         <element id="module-output" name="smodel" />
         <element id="module-output" name="vfs" />
@@ -24,9 +22,6 @@
         <element id="module-output" name="module" />
         <element id="module-output" name="mps-messaging" />
         <element id="module-output" name="logging" />
-      </element>
-      <element id="archive" name="mps-boot-util.jar">
-        <element id="module-output" name="boot-util" />
       </element>
       <element id="archive" name="mps-closures.jar">
         <element id="module-output" name="closures-runtime" />

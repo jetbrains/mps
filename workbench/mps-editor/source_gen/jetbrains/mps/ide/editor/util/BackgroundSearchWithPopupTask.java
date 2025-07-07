@@ -24,7 +24,7 @@ import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.openapi.ui.MessageType;
 
-@GeneratedClass(node = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/5343046100067132614", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
+@GeneratedClass(nodeId = "5343046100067132614", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
 public class BackgroundSearchWithPopupTask extends BackgroundSearchTask {
   private final JBPopup myPopup;
   private final PopupSettingsBuilder mySettings;

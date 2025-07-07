@@ -253,41 +253,38 @@
   </root>
   <root nodeRef="r:32667737-240a-422b-b048-8918d4b92152(jetbrains.mps.execution.impl.configurations.util@tests)/8410090958587088828">
     <file name="TestNodeWrapHelper.java">
-      <node id="8392702805776873276" at="17,0,18,0" concept="5" trace="myRepo" />
-      <node id="8392702805776873280" at="19,47,20,18" concept="4" />
-      <node id="8392702805776890304" at="25,47,26,97" concept="9" />
-      <node id="8392702805776903561" at="27,50,28,51" concept="9" />
-      <node id="8392702805776917902" at="28,51,29,77" concept="9" />
-      <node id="8392702805776889544" at="30,29,31,59" concept="4" />
-      <node id="8392702805776891197" at="33,9,34,22" concept="10" />
-      <node id="8392702805776872784" at="19,0,22,0" concept="3" trace="TestNodeWrapHelper#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
-      <node id="8392702805776920793" at="29,77,32,11" concept="7" />
-      <node id="8392702805776889517" at="26,97,33,9" concept="6" />
-      <node id="8392702805776888740" at="25,0,36,0" concept="8" trace="compute#()Ljava/util/List;" />
-      <node id="8392702805776892492" at="23,77,36,7" concept="10" />
-      <node id="8392702805776875501" at="23,0,38,0" concept="8" trace="discover#(null)Ljava/util/List;" />
-      <scope id="8392702805776872788" at="19,47,20,18" />
-      <scope id="8392702805776920795" at="30,29,31,59" />
-      <scope id="8392702805776872784" at="19,0,22,0">
+      <node id="8392702805776873276" at="16,0,17,0" concept="5" trace="myRepo" />
+      <node id="8392702805776873280" at="18,47,19,18" concept="4" />
+      <node id="8392702805776890304" at="23,62,24,95" concept="9" />
+      <node id="8392702805776903561" at="25,48,26,49" concept="9" />
+      <node id="8392702805776917902" at="26,49,27,75" concept="9" />
+      <node id="8392702805776889544" at="28,27,29,57" concept="4" />
+      <node id="8392702805776891197" at="31,7,32,20" concept="10" />
+      <node id="8392702805776872784" at="18,0,21,0" concept="3" trace="TestNodeWrapHelper#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="8392702805776920793" at="27,75,30,9" concept="7" />
+      <node id="8392702805776889517" at="24,95,31,7" concept="6" />
+      <node id="8392702805776892492" at="22,77,33,7" concept="10" />
+      <node id="8392702805776875501" at="22,0,35,0" concept="8" trace="discover#(null)Ljava/util/List;" />
+      <scope id="8392702805776872788" at="18,47,19,18" />
+      <scope id="8392702805776920795" at="28,27,29,57" />
+      <scope id="8392702805776872784" at="18,0,21,0">
         <var name="repo" id="8392702805776873240" />
       </scope>
-      <scope id="8392702805776889520" at="27,50,32,11">
+      <scope id="8392702805776889520" at="25,48,30,9">
         <var name="resolved" id="8392702805776903562" />
         <var name="wrap" id="8392702805776917903" />
       </scope>
-      <scope id="8392702805776889517" at="26,97,33,9">
+      <scope id="8392702805776889517" at="24,95,31,7">
         <var name="nodeRef" id="8392702805776889518" />
       </scope>
-      <scope id="8392702805776888741" at="25,47,34,22">
+      <scope id="8392702805776888741" at="23,62,32,20">
         <var name="result" id="8392702805776890305" />
       </scope>
-      <scope id="8392702805776888740" at="25,0,36,0" />
-      <scope id="8392702805776875504" at="23,77,36,7" />
-      <scope id="8392702805776875501" at="23,0,38,0">
+      <scope id="8392702805776875504" at="22,77,33,7" />
+      <scope id="8392702805776875501" at="22,0,35,0">
         <var name="testNodes" id="8392702805776883481" />
       </scope>
-      <unit id="8392702805776888740" at="24,59,36,5" name="jetbrains.mps.execution.impl.configurations.util.TestNodeWrapHelper$1" />
-      <unit id="8410090958587088828" at="16,0,39,0" name="jetbrains.mps.execution.impl.configurations.util.TestNodeWrapHelper" />
+      <unit id="8410090958587088828" at="15,0,36,0" name="jetbrains.mps.execution.impl.configurations.util.TestNodeWrapHelper" />
     </file>
   </root>
 </debug-info>

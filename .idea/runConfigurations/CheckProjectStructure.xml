@@ -29,6 +29,7 @@
         <artifact name="bootstrap:mps-platform" />
         <artifact name="bootstrap:mps-testbench" />
         <artifact name="bootstrap:mps-workbench" />
+        <artifact name="bootstrap:scripts-runtime" />
         <artifact name="mpsdevkit" />
       </option>
       <option name="AntTarget" enabled="true" antfile="file://$PROJECT_DIR$/testbench/cleanup.xml" target="cleanup" />

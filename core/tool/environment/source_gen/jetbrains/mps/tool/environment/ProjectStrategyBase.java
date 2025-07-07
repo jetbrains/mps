@@ -24,7 +24,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
 
-@GeneratedClass(node = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/6450649963068953208", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
+@GeneratedClass(nodeId = "6450649963068953208", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
 public abstract class ProjectStrategyBase implements ProjectStrategy {
   private static final Logger LOG = Logger.getLogger(ProjectStrategyBase.class);
   @Override

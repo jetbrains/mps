@@ -1383,7 +1383,7 @@
       <node id="7241381882860009788" at="120,0,123,0" concept="8" trace="isPublic#()Z" />
       <node id="7241381882860009803" at="123,0,126,0" concept="8" trace="isFinal#()Z" />
       <node id="7241381882860009818" at="126,0,129,0" concept="8" trace="isDeprecated#()Z" />
-      <node id="1043983806974577004" at="129,0,132,0" concept="8" trace="getClassifierKind#()Ljetbrains/mps/stubs/javastub/classpath/ClassifierKind;" />
+      <node id="1043983806974577004" at="129,0,132,0" concept="8" trace="getClassifierKind#()Ljetbrains/mps/baseLanguage/javastub/ClassifierKind;" />
       <node id="7241381882860009833" at="132,0,135,0" concept="8" trace="getName#()Ljava/lang/String;" />
       <node id="9052093979232890792" at="135,29,138,5" concept="7" />
       <node id="7894199968368685027" at="141,0,144,0" concept="8" trace="getInnerClasses#()Ljava/util/List;" />

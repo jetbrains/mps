@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860008759", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
+@GeneratedClass(nodeId = "7241381882860008759", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
 public class ASMFormalTypeParameter extends ASMTypeVariable {
   private ASMType myClassBound;
   private List<ASMType> myInterfaceBounds;

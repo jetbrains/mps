@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.idea.core.actions;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKey;
@@ -97,6 +98,11 @@ public class NewRootAction extends AnAction {
       FileEditorManager.getInstance(myProject).openFile(
         NodeVirtualFileSystem.getInstance().getFileFor(ProjectHelper.getProjectRepository(myProject), createdNode.get()), true);
     }
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 
   @Override

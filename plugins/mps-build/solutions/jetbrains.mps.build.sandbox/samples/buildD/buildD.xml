@@ -61,5 +61,8 @@
         <fileset file="${build.tmp}/deps/buildA/abcde.zip/abcde.jar" />
       </classpath>
     </javac>
+    <copy todir="${build.tmp}/java/out/AAA">
+      <fileset dir="${basedir}/buildD/src" excludes="**/*.java" />
+    </copy>
   </target>
 </project>

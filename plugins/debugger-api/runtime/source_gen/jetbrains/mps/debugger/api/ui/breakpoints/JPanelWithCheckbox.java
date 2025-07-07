@@ -14,7 +14,7 @@ import jetbrains.mps.debug.api.breakpoints.IBreakpoint;
 import java.awt.Color;
 import javax.swing.UIManager;
 
-@GeneratedClass(node = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)/4474271214083123569", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
+@GeneratedClass(nodeId = "4474271214083123569", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
 /*package*/ class JPanelWithCheckbox extends JPanel {
   private final JCheckBox myCheckBox;
   protected final JLabel myLabel;

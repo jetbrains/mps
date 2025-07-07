@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @MPSLaunch
 public class TestWeaving_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(TestWeaving_Test.class, "${mps_home}", "r:aca77a3d-d50b-42af-89a7-f304bf06ae8f(jetbrains.mps.traceInfo.testWeaving.test@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestWeaving_Test.class).projectPath(null).modelRef("r:aca77a3d-d50b-42af-89a7-f304bf06ae8f(jetbrains.mps.traceInfo.testWeaving.test@tests)").reopenProject(null).build());
 
   public TestWeaving_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -65,49 +65,62 @@ public class TestWeaving_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_weave() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdg = TestBody.this.testDataInstanceGenerated();
         new TestUtil(myProject).testWeave(tdg, SLinkOperations.getChildren(tdg, LINKS.weave$ef6v), 11);
       });
     }
     public void test_weaveEach() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdg = TestBody.this.testDataInstanceGenerated();
         new TestUtil(myProject).testWeave(tdg, SLinkOperations.getChildren(tdg, LINKS.weaveEach$eflw), 17);
       });
     }
     public void test_weaveMany() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdg = TestBody.this.testDataInstanceGenerated();
         new TestUtil(myProject).testWeaveMany(tdg, SLinkOperations.getChildren(tdg, LINKS.weaveMany$KBdy), 23);
       });
     }
     public void test_weaveEachMany() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdg = TestBody.this.testDataInstanceGenerated();
         new TestUtil(myProject).testWeaveMany(tdg, SLinkOperations.getChildren(tdg, LINKS.weaveEachMany$KBsz), 50);
       });
     }
     public void test_weaveInterpreted() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdi = TestBody.this.testDataInstanceInterpreted();
         new TestUtil(myProject).testWeave(tdi, SLinkOperations.getChildren(tdi, LINKS.weave$XdZ3), 11);
       });
     }
     public void test_weaveEachInterpreted() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdi = TestBody.this.testDataInstanceInterpreted();
         new TestUtil(myProject).testWeave(tdi, SLinkOperations.getChildren(tdi, LINKS.weaveEach$Xee4), 17);
       });
     }
     public void test_weaveManyInterpreted() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdi = TestBody.this.testDataInstanceInterpreted();
         new TestUtil(myProject).testWeaveMany(tdi, SLinkOperations.getChildren(tdi, LINKS.weaveMany$vA66), 23);
       });
     }
     public void test_weaveEachManyInterpreted() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdi = TestBody.this.testDataInstanceInterpreted();
         new TestUtil(myProject).testWeaveMany(tdi, SLinkOperations.getChildren(tdi, LINKS.weaveEachMany$vAl7), 50);

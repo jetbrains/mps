@@ -453,15 +453,15 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
     rtqMethods.put("4636242761502527777", new RTQ(0, "Context"));
-    rtqMethods.put("4636242761502555060", new RTQ(1, "Def"));
+    rtqMethods.put("4636242761502555060", new RTQ(1, "DescriptorClass.Def"));
     rtqMethods.put("4636242761502481039", new RTQ(2, "Context"));
     rtqMethods.put("7280614907478295696", new RTQ(3, "CAN_BE_CHILD"));
     rtqMethods.put("8556303794924669906", new RTQ(4, "ContainmentContext"));
     rtqMethods.put("3562920471664392960", new RTQ(5, "ContainmentContext"));
-    rtqMethods.put("4636242761502992616", new RTQ(6, "Def"));
+    rtqMethods.put("4636242761502992616", new RTQ(6, "DescriptorClass.Def"));
     rtqMethods.put("8525842417252886997", new RTQ(7, "ContainmentContext"));
     rtqMethods.put("1867733327985372373", new RTQ(8, "ContainmentContext"));
-    rtqMethods.put("1867733327985372405", new RTQ(9, "RuleClass"));
+    rtqMethods.put("1867733327985372405", new RTQ(9, "DescriptorClass.RuleClass"));
     rtqMethods.put("1867733327985608762", new RTQ(10, "RULE"));
     rtqMethods.put("3036427283674689532", new RTQ(11, "BaseConcept"));
     rtqMethods.put("3036427283674695622", new RTQ(12, "virtualPackage"));

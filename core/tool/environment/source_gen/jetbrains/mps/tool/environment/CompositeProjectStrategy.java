@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/3021026760599848569", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
+@GeneratedClass(nodeId = "3021026760599848569", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
 public class CompositeProjectStrategy implements ProjectStrategy {
   private final ProjectStrategy[] myStrategies;
 

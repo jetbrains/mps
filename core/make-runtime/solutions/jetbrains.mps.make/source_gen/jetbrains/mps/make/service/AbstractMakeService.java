@@ -18,7 +18,7 @@ import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.make.script.IOption;
 import jetbrains.mps.make.script.IQuery;
 
-@GeneratedClass(node = "r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)/2298333944697014852", model = "r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)")
+@GeneratedClass(nodeId = "2298333944697014852", model = "r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)")
 public abstract class AbstractMakeService implements IMakeService {
   public AbstractMakeService() {
   }

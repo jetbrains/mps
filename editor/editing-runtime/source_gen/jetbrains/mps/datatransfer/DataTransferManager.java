@@ -22,7 +22,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
-@GeneratedClass(node = "r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)/618908363385245775", model = "r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)")
+@GeneratedClass(nodeId = "618908363385245775", model = "r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)")
 public final class DataTransferManager implements LanguageRegistryListener {
 
   /**

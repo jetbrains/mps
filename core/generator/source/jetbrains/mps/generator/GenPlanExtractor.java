@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,13 +34,16 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.Set;
 
 /**
  * For a given model, figure out generation plan associated either with module's custom facet or through devkit
  * and populate generator options appropriately.
- * @implNote doesn't address model read. may cache information about plans found
+ * @implNote Implementation doesn't address model read.
+ *           May cache information about plans found.
+ *           Note, caching not necessarily respects model changes, plan changes or language/generator deployment state.
  * @author Artem Tikhomirov
  * @since 3.4
  */
@@ -52,6 +55,9 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
   // null value indicates there's no plan associated with devkit (or the plan couldn't get instantiated).
   private final Map<SModuleReference, PlanProviderInfo> myDevkitToPlan = new HashMap<>();
   private final IMessageHandler myMessageHandler;
+
+  // cache GP, separately per the method obtained
+  private final IdentityHashMap<SModel, ModelGenerationPlan> myFacetPlans = new IdentityHashMap<>(), myDevkitPlans = new IdentityHashMap<>();
 
   public GenPlanExtractor(@NotNull SRepository repository, @Nullable IMessageHandler messageHandler) {
     myRepository = repository;
@@ -76,6 +82,9 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
 
   @Nullable
   private ModelGenerationPlan planFromCustomFacet(SModel model) {
+    if (myFacetPlans.containsKey(model)) {
+      return myFacetPlans.get(model);
+    }
     final SModule ownerModule = model.getModule();
     final ModelGenerationPlan.Provider facet = myOwnerModuleToFacet.get(ownerModule);
     if (facet != null) {
@@ -87,7 +96,11 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
       if (f != null) {
         myMessageHandler.handle(Message.info(GenPlanExtractor.class, String.format("Module %s has facet that provides generation plans", ownerModule.getModuleName()), ownerModule.getModuleReference(), null));
         myOwnerModuleToFacet.put(ownerModule, f);
-        return f.getPlan(model);
+        ModelGenerationPlan plan = f.getPlan(model);
+        if (plan != null) {
+          myFacetPlans.put(model, plan);
+        }
+        return plan;
       } else {
         myOwnerModulesNoCustomFacet.add(ownerModule);
         // fall-through
@@ -113,8 +126,22 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
    */
   @Nullable
   private ModelGenerationPlan planFromDevKit(SModel model) {
+    ModelGenerationPlan plan = myDevkitPlans.get(model);
+    if (plan != null) {
+      return plan;
+    }
+    plan = planFromDevKitImpl(model);
+    if (plan != null) {
+      myDevkitPlans.put(model, plan);
+    }
+    return plan;
+  }
+
+  @Nullable
+  private ModelGenerationPlan planFromDevKitImpl(SModel model) {
     // plans associated directly with devkit property has higher precedence than plans coming from DevKit's facets plan providers
     ArrayList<ModelGenerationPlan.Provider> facetAssociatedPlan = new ArrayList<>();
+    ArrayList<ModelGenerationPlan.Provider> directPlan = new ArrayList<>();
     for (SModuleReference dkRef : ((SModelInternal) model).importedDevkits()) {
       if (myDevkitToPlan.containsKey(dkRef)) {
         final PlanProviderInfo rv = myDevkitToPlan.get(dkRef);
@@ -123,7 +150,7 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
           continue;
         }
         if (rv.isDirect) {
-          return rv.provider.getPlan(model);
+          directPlan.add(rv.provider);
         } else {
           facetAssociatedPlan.add(rv.provider);
           // FALL-THROUGH, continue;
@@ -140,7 +167,7 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
           myMessageHandler.handle(Message.info(GenPlanExtractor.class, String.format("Devkit %s has associated plan %s", devkit.getModuleName(), dkPlan.getName()), dkPlan, null));
           mgpProvider = new InterpretedPlanProvider(LanguageRegistry.getInstance(myRepository), myMessageHandler, dkPlan, myRepository);
           myDevkitToPlan.put(dkRef, new PlanProviderInfo(mgpProvider, true));
-          return mgpProvider.getPlan(model);
+          directPlan.add(mgpProvider);
         } else {
           mgpProvider = fromModuleFacets(devkit);
           if (mgpProvider != null) {
@@ -153,7 +180,15 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
         }
       }
     }
-    //noinspection LoopStatementThatDoesntLoop
+    if (directPlan.size() == 1) {
+      return directPlan.get(0).getPlan(model);
+    }
+    else if (directPlan.size() > 1) {
+      // construct the composite provider
+      CompositeInterpretedPlanProvider planProvider =
+          new CompositeInterpretedPlanProvider(LanguageRegistry.getInstance(myRepository), myMessageHandler, directPlan);
+      return planProvider.getPlan(model);
+    }
     for (ModelGenerationPlan.Provider p : facetAssociatedPlan) {
       // we can get here only if there's no GP directly associated with any imported devkit
       return p.getPlan(model);
@@ -199,8 +234,8 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
     myOptions.customPlan(model, p);
   }
 
-  final class PlanProviderInfo {
-    final boolean isDirect; // true if MGP is assocated with a devkit directly, false if comes through facets
+  static final class PlanProviderInfo {
+    final boolean isDirect; // true if MGP is associated with a devkit directly, false if comes through facets
     final ModelGenerationPlan.Provider provider;
 
     PlanProviderInfo(ModelGenerationPlan.Provider p, boolean direct) {

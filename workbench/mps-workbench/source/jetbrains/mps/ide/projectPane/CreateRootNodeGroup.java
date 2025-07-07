@@ -19,13 +19,9 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
-import com.intellij.openapi.project.Project;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.BootstrapLanguages;
@@ -42,6 +38,7 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.ToStringComparator;
+import jetbrains.mps.workbench.MPSDataKeys;
 import jetbrains.mps.workbench.action.BaseGroup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -53,7 +50,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
@@ -61,6 +57,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ *  FIXME: Create* actions have nothing to do with project pane implementation, move elsewhere
+ * 
+ */
 // FIXME is there true need to extend BaseGroup? Can benefit from BG update and, perhaps, shorter model read?
 public class CreateRootNodeGroup extends BaseGroup {
   public CreateRootNodeGroup() {
@@ -71,28 +71,6 @@ public class CreateRootNodeGroup extends BaseGroup {
   @Override
   public @NotNull ActionUpdateThread getActionUpdateThread() {
     return ActionUpdateThread.BGT;
-  }
-
-  @Override
-  public void update(AnActionEvent e) {
-    Project project = getEventProject(e);
-    final SRepository repo;
-    if (project != null && !project.isDisposed()) {
-      repo = ProjectHelper.getProjectRepository(project);
-    } else {
-      //noinspection removal
-      repo = MPSCoreComponents.getInstance().getModuleRepository();
-    }
-
-    repo.getModelAccess().runReadAction(() -> {
-      try {
-        e.getPresentation().setEnabled(true);
-        e.getPresentation().setVisible(true);
-        doUpdate(e);
-      } catch (Throwable ex) {
-        Logger.getLogger(this.getClass()).error("CreateRootNodeGroup update failed", ex);
-      }
-    });
   }
 
   @Override
@@ -132,15 +110,7 @@ public class CreateRootNodeGroup extends BaseGroup {
         disable(event.getPresentation());
         return;
       }
-
-      TreeNode treeNode = event.getData(MPSCommonDataKeys.TREE_NODE);
-
-      if (!(treeNode instanceof PackageNode)) {
-        _package = null;
-      } else {
-        final PackageNode node = (PackageNode) treeNode;
-        _package = node.getPackage();
-      }
+      _package = event.getData(MPSDataKeys.NAMESPACE);
     } else {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
       if (node != null) {

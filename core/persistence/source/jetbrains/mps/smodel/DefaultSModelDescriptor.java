@@ -69,7 +69,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
     if (!source.isReadOnly() && source.getTimestamp() == -1) {
       // no file on disk
       DefaultSModel model = new DefaultSModel(getReference(), myHeader);
-      return new ModelLoadResult(model, ModelLoadingState.FULLY_LOADED);
+      return new ModelLoadResult<>(model, ModelLoadingState.FULLY_LOADED);
     }
 
     jetbrains.mps.smodel.loading.ModelLoadResult result;
@@ -79,24 +79,19 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
       LOG.warning(String.format("Failed to load model %s: %s", getSource().getLocation(), e.toString()));
       fireProblemsDetected(Collections.singleton(new PersistenceProblem(Kind.Load, e.toString(), getSource().getLocation(), true)));
       InvalidDefaultSModel newModel = new InvalidDefaultSModel(getReference(), e);
-      return new ModelLoadResult(newModel, ModelLoadingState.NOT_LOADED);
+      return new ModelLoadResult<>(newModel, ModelLoadingState.NOT_LOADED);
     }
 
     jetbrains.mps.smodel.SModel model = result.getModel();
-    if (result.getState() == ModelLoadingState.FULLY_LOADED && getRepository() != null) {
-      boolean needToSave = model.updateExternalReferences(getRepository());
 
-      if (needToSave && !source.isReadOnly()) {
-        setChanged(true);
-      }
+    if (!model.getReference().equals(getReference())) {
+      LOG.errorWithTrace(
+          "\nError loading model from: \"" + source.getLocation() + "\"\n" +
+          "expected model UID     : \"" + getReference() + "\"\n" +
+          "but was UID            : \"" + model.getReference() + "\"\n" +
+          "the model will not be available.\n" +
+          "Make sure that all project's roots and/or the model namespace is correct");
     }
-
-    LOG.assertLog(model.getReference().equals(getReference()),
-        "\nError loading model from: \"" + source.getLocation() + "\"\n" +
-            "expected model UID     : \"" + getReference() + "\"\n" +
-            "but was UID            : \"" + model.getReference() + "\"\n" +
-            "the model will not be available.\n" +
-            "Make sure that all project's roots and/or the model namespace is correct");
     return new ModelLoadResult<>(result.getModel(), result.getState());
   }
 
@@ -143,7 +138,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
 
   @Override
   public boolean isGeneratable() {
-    return !isDoNotGenerate();
+    return !isDoNotGenerate() && !isReadOnly();
   }
 
   @Override

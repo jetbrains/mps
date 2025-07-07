@@ -17,6 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.actions.ModuleDependencyUtils;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -24,9 +25,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class liveTemplates_Expression extends SubstituteMenuBase {
   public liveTemplates_Expression() {
@@ -66,7 +68,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         ModuleDependencyUtils.addDependencyOnJDKIfMissing(_context.getModel().getModule());
-        return _quotation_createNode_9g126d_a1a0a();
+        return createDotExpression_9g126d_a1a0a(SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System"), _context.getModel().getRepository()), SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System.out"), _context.getModel().getRepository()), SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)", "~PrintStream.println()"), _context.getModel().getRepository()));
       }
 
       @Nullable
@@ -115,7 +117,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         ModuleDependencyUtils.addDependencyOnJDKIfMissing(_context.getModel().getModule());
-        return _quotation_createNode_9g126d_a1a0b();
+        return createDotExpression_9g126d_a1a0b(SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System"), _context.getModel().getRepository()), SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System.err"), _context.getModel().getRepository()), SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)", "~PrintStream.println()"), _context.getModel().getRepository()));
       }
 
       @Nullable
@@ -139,48 +141,45 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       }
     }
   }
-  private static SNode _quotation_createNode_9g126d_a1a0a() {
-    SNode quotedNode_1 = null;
-    SNode quotedNode_2 = null;
-    SNode quotedNode_3 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"));
-    quotedNode_1 = nb.getResult();
-    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940c80846L, "StaticFieldReference"));
-    quotedNode_2 = nb1.getResult();
-    nb1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~System");
-    nb1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~System.out");
-    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), quotedNode_2);
-    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation"));
-    quotedNode_3 = nb2.getResult();
-    nb2.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)/~PrintStream.println%28%29");
-    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_3);
-    return quotedNode_1;
+  private static SNode createDotExpression_9g126d_a1a0a(SNode p0, SNode p1, SNode p2) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$yW);
+    {
+      SNodeBuilder n1 = n0.forChild(LINKS.operand$w6IR).init(CONCEPTS.StaticFieldReference$cU);
+      n1.setReferenceTarget(LINKS.classifier$BPY8, p0);
+      n1.setReferenceTarget(LINKS.variableDeclaration$N1XG, p1);
+    }
+    {
+      SNodeBuilder n2 = n0.forChild(LINKS.operation$gs9E).init(CONCEPTS.InstanceMethodCallOperation$uu);
+      n2.setReferenceTarget(LINKS.baseMethodDeclaration$pyYw, p2);
+    }
+    return n0.getResult();
   }
-  private static SNode _quotation_createNode_9g126d_a1a0b() {
-    SNode quotedNode_1 = null;
-    SNode quotedNode_2 = null;
-    SNode quotedNode_3 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"));
-    quotedNode_1 = nb.getResult();
-    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940c80846L, "StaticFieldReference"));
-    quotedNode_2 = nb1.getResult();
-    nb1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~System");
-    nb1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~System.err");
-    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), quotedNode_2);
-    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation"));
-    quotedNode_3 = nb2.getResult();
-    nb2.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)/~PrintStream.println%28%29");
-    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_3);
-    return quotedNode_1;
+  private static SNode createDotExpression_9g126d_a1a0b(SNode p0, SNode p1, SNode p2) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$yW);
+    {
+      SNodeBuilder n1 = n0.forChild(LINKS.operand$w6IR).init(CONCEPTS.StaticFieldReference$cU);
+      n1.setReferenceTarget(LINKS.classifier$BPY8, p0);
+      n1.setReferenceTarget(LINKS.variableDeclaration$N1XG, p1);
+    }
+    {
+      SNodeBuilder n2 = n0.forChild(LINKS.operation$gs9E).init(CONCEPTS.InstanceMethodCallOperation$uu);
+      n2.setReferenceTarget(LINKS.baseMethodDeclaration$pyYw, p2);
+    }
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
     /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
     /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept StaticFieldReference$cU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink classifier$BPY8 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 
-@GeneratedClass(node = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/6884273804135045612", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
+@GeneratedClass(nodeId = "6884273804135045612", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
 public class NodeCopyTracker {
   private static final String id = "refactoringSession.nodeCopyTracker";
   private Map<SNode, SNode> copyMap = MapSequence.fromMap(new HashMap<SNode, SNode>());

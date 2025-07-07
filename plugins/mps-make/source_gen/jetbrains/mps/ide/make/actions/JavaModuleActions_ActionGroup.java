@@ -17,9 +17,6 @@ public class JavaModuleActions_ActionGroup extends GeneratedActionGroup {
     JavaModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.MakeModule_Action");
     JavaModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.RebuildModule_Action");
     JavaModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.CleanModule_Action");
-  }
-  @Override
-  public boolean hideIfNoVisibleChildren() {
-    return true;
+    getTemplatePresentation().setHideGroupIfEmpty(true);
   }
 }

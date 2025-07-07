@@ -336,24 +336,24 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ff(jetbrains.mps.lang.smodel.intentions)/1203704393457">
     <file name="IntentionsDescriptor.java">
-      <node id="1203704393457" at="116,47,117,76" concept="2" />
-      <node id="1203704393457" at="152,50,153,62" concept="2" />
+      <node id="1203704393457" at="116,47,117,71" concept="2" />
+      <node id="1203704393457" at="152,50,153,57" concept="2" />
     </file>
-    <file name="ReplaceConceptIsWithConceptEquals_Intention.java">
+    <file name="ReplaceSingleConceptWithList_Intention.java">
       <node id="1203704393457" at="26,0,27,0" concept="3" trace="myCachedExecutable" />
-      <node id="1203704393457" at="28,56,29,145" concept="11" />
-      <node id="1203704393457" at="33,35,34,47" concept="7" />
+      <node id="1203704393457" at="28,51,29,145" concept="11" />
+      <node id="1203704393457" at="33,35,34,42" concept="7" />
       <node id="1203704393457" at="38,35,39,17" concept="7" />
       <node id="1203704393457" at="43,37,44,105" concept="2" />
       <node id="1203704393457" at="45,5,46,30" concept="7" />
-      <node id="1203705008814" at="53,87,54,52" concept="7" />
+      <node id="1203705008814" at="53,87,54,55" concept="7" />
       <node id="1203705048412" at="58,78,59,108" concept="6" />
       <node id="1213126636995" at="59,108,60,320" concept="2" />
       <node id="1203705289613" at="60,320,61,60" concept="2" />
       <node id="1203704393457" at="66,55,67,21" concept="7" />
       <node id="1203704393457" at="68,7,69,18" concept="7" />
       <node id="1203705028488" at="72,93,73,137" concept="7" />
-      <node id="1203704393457" at="78,48,79,62" concept="7" />
+      <node id="1203704393457" at="78,48,79,57" concept="7" />
       <node id="1203704393457" at="85,0,86,0" concept="9" trace="OperationParm_ConceptList$ng" />
       <node id="1203704393457" at="86,0,87,0" concept="9" trace="RefConcept_Reference$Ij" />
       <node id="1203704393457" at="90,0,91,0" concept="9" trace="concept$D$8x" />
@@ -361,7 +361,7 @@
       <node id="1203704393457" at="92,0,93,0" concept="9" trace="conceptArgument$xapp" />
       <node id="1203704393457" at="93,0,94,0" concept="9" trace="conceptDeclaration$3mP7" />
       <node id="1203704393457" at="49,0,51,0" concept="1" trace="IntentionImplementation#()V" />
-      <node id="1203704393457" at="28,0,31,0" concept="1" trace="ReplaceConceptIsWithConceptEquals_Intention#()V" />
+      <node id="1203704393457" at="28,0,31,0" concept="1" trace="ReplaceSingleConceptWithList_Intention#()V" />
       <node id="1203704393457" at="42,99,45,5" concept="4" />
       <node id="1203704393457" at="65,86,68,7" concept="4" />
       <node id="1203704393457" at="72,0,75,0" concept="5" trace="isApplicableToNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
@@ -373,14 +373,14 @@
       <node id="1203704393457" at="57,0,63,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="1203704393457" at="64,0,71,0" concept="5" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
       <scope id="1203704393457" at="49,38,49,38" />
-      <scope id="1203704393457" at="28,56,29,145" />
-      <scope id="1203704393457" at="33,35,34,47" />
+      <scope id="1203704393457" at="28,51,29,145" />
+      <scope id="1203704393457" at="33,35,34,42" />
       <scope id="1203704393457" at="38,35,39,17" />
       <scope id="1203704393457" at="43,37,44,105" />
-      <scope id="1203704393459" at="53,87,54,52" />
+      <scope id="1203704393459" at="53,87,54,55" />
       <scope id="1203704393457" at="66,55,67,21" />
       <scope id="1203704393461" at="72,93,73,137" />
-      <scope id="1203704393457" at="78,48,79,62" />
+      <scope id="1203704393457" at="78,48,79,57" />
       <scope id="1203704393457" at="49,0,51,0" />
       <scope id="1203704393457" at="28,0,31,0" />
       <scope id="1203704393463" at="58,78,61,60">
@@ -411,16 +411,16 @@
         <var name="editorContext" id="1203704393457" />
         <var name="node" id="1203704393457" />
       </scope>
-      <unit id="1203704393457" at="84,0,88,0" name="jetbrains.mps.lang.smodel.intentions.ReplaceConceptIsWithConceptEquals_Intention$CONCEPTS" />
-      <unit id="1203704393457" at="89,0,95,0" name="jetbrains.mps.lang.smodel.intentions.ReplaceConceptIsWithConceptEquals_Intention$LINKS" />
-      <unit id="1203704393457" at="48,0,83,0" name="jetbrains.mps.lang.smodel.intentions.ReplaceConceptIsWithConceptEquals_Intention$IntentionImplementation" />
-      <unit id="1203704393457" at="25,0,96,0" name="jetbrains.mps.lang.smodel.intentions.ReplaceConceptIsWithConceptEquals_Intention" />
+      <unit id="1203704393457" at="84,0,88,0" name="jetbrains.mps.lang.smodel.intentions.ReplaceSingleConceptWithList_Intention$CONCEPTS" />
+      <unit id="1203704393457" at="89,0,95,0" name="jetbrains.mps.lang.smodel.intentions.ReplaceSingleConceptWithList_Intention$LINKS" />
+      <unit id="1203704393457" at="48,0,83,0" name="jetbrains.mps.lang.smodel.intentions.ReplaceSingleConceptWithList_Intention$IntentionImplementation" />
+      <unit id="1203704393457" at="25,0,96,0" name="jetbrains.mps.lang.smodel.intentions.ReplaceSingleConceptWithList_Intention" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ff(jetbrains.mps.lang.smodel.intentions)/1205354609722">
     <file name="IntentionsDescriptor.java">
       <node id="1205354609722" at="102,47,103,76" concept="2" />
-      <node id="1205354609722" at="153,62,154,62" concept="2" />
+      <node id="1205354609722" at="153,57,154,62" concept="2" />
     </file>
     <file name="Replace_ListType_withNodeListType_Intention.java">
       <node id="1205354609722" at="24,0,25,0" concept="3" trace="myCachedExecutable" />

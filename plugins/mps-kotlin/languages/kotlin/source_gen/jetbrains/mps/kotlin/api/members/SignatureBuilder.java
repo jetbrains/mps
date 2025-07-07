@@ -30,7 +30,6 @@ import jetbrains.mps.kotlin.scopes.signed.ListSignatureScope;
 public class SignatureBuilder<T extends MemberSignature, U extends SNode> {
   private final Class<T> kind;
   private final Iterable<U> nodes;
-  private SNode receiverType = null;
   private Map<SignatureAttributeKey<?>, BiFunction<? super T, ? super U, ?>> attributesMakers;
   private Function<U, Iterable<T>> signatureBuilder = null;
 
@@ -52,17 +51,6 @@ public class SignatureBuilder<T extends MemberSignature, U extends SNode> {
    */
   public SignatureBuilder<T, U> withSignatures(Function<U, Iterable<T>> signatureBuilder) {
     this.signatureBuilder = signatureBuilder;
-    return this;
-  }
-
-  /**
-   * Set the extension receiver type used for all the signatures.
-   * 
-   * This receiver type is not the receiver type expected from context (node.ancestor<IClassLike>.getThisType()) but rather
-   * one use for extensions members
-   */
-  public SignatureBuilder<T, U> withExtensionReceiverType(SNode receiverType) {
-    this.receiverType = receiverType;
     return this;
   }
 
@@ -134,14 +122,14 @@ __switch__:
                   this.__CP__ = 24;
                   break;
                 case 3:
-                  if (filter == null || (filter.acceptKind(kind) && filter.acceptReceiver(receiverType))) {
+                  if (filter == null || (filter.acceptKind(kind))) {
                     this.__CP__ = 4;
                     break;
                   }
                   this.__CP__ = 1;
                   break;
                 case 13:
-                  if (filter != null && !(filter.acceptSignature(_9_signature, _5_node))) {
+                  if (filter != null && !(filter.acceptReceiver(_9_signature.getExtensionReceiver()) && filter.acceptSignature(_9_signature, _5_node))) {
                     this.__CP__ = 14;
                     break;
                   }

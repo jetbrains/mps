@@ -72,8 +72,6 @@ public class MakeActionImpl {
           inputRes = null;
           // fall-through to close make session
         }
-
-
       } catch (RuntimeException e) {
         makeService.closeSession(session);
         throw e;
@@ -81,7 +79,6 @@ public class MakeActionImpl {
 
       if (inputRes != null) {
         makeService.make(session, inputRes);
-
       } else {
         makeService.closeSession(session);
       }

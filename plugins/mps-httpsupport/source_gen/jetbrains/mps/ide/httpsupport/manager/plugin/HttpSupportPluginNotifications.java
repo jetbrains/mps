@@ -8,7 +8,7 @@ import com.intellij.notification.Notifications;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 
-@GeneratedClass(node = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)/3750908339007107457", model = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)")
+@GeneratedClass(nodeId = "3750908339007107457", model = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)")
 public final class HttpSupportPluginNotifications {
   private static final Logger LOG = Logger.getLogger(HttpSupportPluginNotifications.class);
 

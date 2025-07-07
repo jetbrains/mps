@@ -8,7 +8,7 @@ import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.util.FileUtil;
 
-@GeneratedClass(node = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)/3342666646761698548", model = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)")
+@GeneratedClass(nodeId = "3342666646761698548", model = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)")
 /*package*/ class SimpleMerger extends AbstractContentMerger {
   /*package*/ SimpleMerger() {
   }

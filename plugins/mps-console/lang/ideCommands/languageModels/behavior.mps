@@ -248,9 +248,6 @@
       </concept>
       <concept id="8974276187400348181" name="jetbrains.mps.lang.access.structure.ExecuteLightweightCommandStatement" flags="nn" index="1QHqEK" />
     </language>
-    <language id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots">
-      <concept id="4079382982702596667" name="jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression" flags="nn" index="2EnYce" />
-    </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
       <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1200830824066" name="jetbrains.mps.baseLanguage.closures.structure.YieldStatement" flags="nn" index="2n63Yl">
@@ -1472,18 +1469,14 @@
                             <node concept="3uibUv" id="6f57PHh$Ok7" role="1tU5fm">
                               <ref role="3uigEE" to="ngmm:~UsagesViewTool" resolve="UsagesViewTool" />
                             </node>
-                            <node concept="2EnYce" id="6f57PHh$Onf" role="33vP2m">
-                              <node concept="2YIFZM" id="6f57PHh$Ong" role="2Oq$k0">
+                            <node concept="2YIFZM" id="1MOxAVt1fwc" role="33vP2m">
+                              <ref role="37wK5l" to="ngmm:~UsagesViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                              <ref role="1Pybhc" to="ngmm:~UsagesViewTool" resolve="UsagesViewTool" />
+                              <node concept="2YIFZM" id="6f57PHh$Ong" role="37wK5m">
                                 <ref role="37wK5l" to="alof:~ProjectHelper.toIdeaProject(jetbrains.mps.project.Project)" resolve="toIdeaProject" />
                                 <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
                                 <node concept="37vLTw" id="6f57PHh$Onh" role="37wK5m">
                                   <ref role="3cqZAo" node="6f57PHhzT8O" resolve="project" />
-                                </node>
-                              </node>
-                              <node concept="liA8E" id="6f57PHh$Oni" role="2OqNvi">
-                                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                                <node concept="3VsKOn" id="6f57PHh$Onj" role="37wK5m">
-                                  <ref role="3VsUkX" to="ngmm:~UsagesViewTool" resolve="UsagesViewTool" />
                                 </node>
                               </node>
                             </node>

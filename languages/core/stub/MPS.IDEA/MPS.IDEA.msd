@@ -5,7 +5,6 @@
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="app.jar" />
       <sourceRoot location="lib.jar" />
-      <sourceRoot location="java-impl.jar" />
       <sourceRoot location="testFramework.jar" />
       <sourceRoot location="platform-loader.jar" />
       <sourceRoot location="util.jar" />
@@ -46,7 +45,6 @@
     <facet type="java" compile="ext" classes="provided" ext="no">
       <library location="${platform_lib}/app.jar" />
       <library location="${platform_lib}/lib.jar" />
-      <library location="${platform_lib}/java-impl.jar" />
       <library location="${platform_lib}/testFramework.jar" /> <!-- c.i.testFramework.TestApplicationManager in IdeaEnvironment -->
       <library location="${platform_lib}/stats.jar" /> <!-- to satisfy dependencies of com.intellij.ide.impl.TrustedPathsSettings -->
       <library location="${platform_lib}/platform-loader.jar" />

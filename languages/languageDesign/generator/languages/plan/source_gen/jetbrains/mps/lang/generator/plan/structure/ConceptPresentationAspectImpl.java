@@ -19,6 +19,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DocumentationLine;
   private ConceptPresentation props_DocumentationStep;
   private ConceptPresentation props_Fork;
+  private ConceptPresentation props_ForkAs;
+  private ConceptPresentation props_ForkOf;
   private ConceptPresentation props_ForkSelector;
   private ConceptPresentation props_InPlaceCheckpointRefSpec;
   private ConceptPresentation props_InPlaceCheckpointSpec;
@@ -109,6 +111,21 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Fork = cpb.create();
         }
         return props_Fork;
+      case LanguageConceptSwitch.ForkAs:
+        if (props_ForkAs == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("fork as");
+          props_ForkAs = cpb.create();
+        }
+        return props_ForkAs;
+      case LanguageConceptSwitch.ForkOf:
+        if (props_ForkOf == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
+          cpb.rawPresentation("fork of");
+          props_ForkOf = cpb.create();
+        }
+        return props_ForkOf;
       case LanguageConceptSwitch.ForkSelector:
         if (props_ForkSelector == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -148,7 +165,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_LanguageEntry;
       case LanguageConceptSwitch.Plan:
         if (props_Plan == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL);
+          cpb.deprecateAggregation(0x6969a2cdc59e927eL, "forkOf");
           cpb.shortDesc("Sequence of transformation steps");
           cpb.presentationByName();
           props_Plan = cpb.create();

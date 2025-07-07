@@ -12,7 +12,7 @@ import java.util.Objects;
  * 
  * @Immutable
  */
-@GeneratedClass(node = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/496689236032862552", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
+@GeneratedClass(nodeId = "496689236032862552", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
 public class PluginData {
   public final String path;
   public final String id;

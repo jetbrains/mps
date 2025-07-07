@@ -9,6 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.kotlin.plugin.ExtensionsHelper;
 import jetbrains.mps.kotlin.behavior.NodeTypeVarSubs;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
@@ -30,7 +31,7 @@ public class check_IType_bounds_NonTypesystemRule extends AbstractNonTypesystemR
   public check_IType_bounds_NonTypesystemRule() {
   }
   public void applyRule(final SNode type, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SModelStereotype.isStubModel(SNodeOperations.getModel(type))) {
+    if (SModelStereotype.isStubModel(SNodeOperations.getModel(type)) || !(ExtensionsHelper.hasTypesystem(type))) {
       return;
     }
 

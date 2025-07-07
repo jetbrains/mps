@@ -4,6 +4,6 @@ package jetbrains.mps.lang.typesystem.dependencies;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)/1223644778913", model = "r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)")
+@GeneratedClass(nodeId = "1223644778913", model = "r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)")
 public @interface CheckingMethod {
 }

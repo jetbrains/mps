@@ -39,7 +39,7 @@ import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
 import java.util.function.Function;
 import jetbrains.mps.internal.collections.runtime.IListSequence;
 
-@GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/2244785825716135804", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
+@GeneratedClass(nodeId = "2244785825716135804", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
 public class MovesAwareMergeConflictsBuilder implements ChangeConflictsBuilder {
 
   @NotNull

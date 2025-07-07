@@ -45,6 +45,11 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.extendedLanguage(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, "jetbrains.mps.baseLanguage.classifiers");
+    deps.extendedLanguage(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, "jetbrains.mps.baseLanguage.lightweightdsl");
+    deps.employedLanguage(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, "jetbrains.mps.lang.checkedName");
+    deps.employedLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure");
+    deps.employedLanguage(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, "jetbrains.mps.baseLanguage.lightweightdsl");
     deps.aggregatedLanguage(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, "jetbrains.mps.baseLanguage.classifiers");
     deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }

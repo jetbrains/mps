@@ -753,7 +753,7 @@
                         <node concept="2yIwOk" id="6Lydko$LTVf" role="2OqNvi" />
                       </node>
                       <node concept="liA8E" id="6Lydko$LTVg" role="2OqNvi">
-                        <ref role="37wK5l" to="c17a:~SAbstractConcept.getProperties():java.util.Collection" resolve="getProperties" />
+                        <ref role="37wK5l" to="c17a:~SAbstractConcept.getProperties()" resolve="getProperties" />
                       </node>
                     </node>
                   </node>
@@ -777,7 +777,7 @@
                             <ref role="2Gs0qQ" node="6Lydko$Mswi" resolve="prop" />
                           </node>
                           <node concept="liA8E" id="6Lydko$MGZR" role="2OqNvi">
-                            <ref role="37wK5l" to="c17a:~SProperty.getType():org.jetbrains.mps.openapi.language.SDataType" resolve="getType" />
+                            <ref role="37wK5l" to="c17a:~SProperty.getType()" resolve="getType" />
                           </node>
                         </node>
                       </node>
@@ -806,7 +806,7 @@
                               <ref role="3cqZAo" node="6Lydko$MLZm" resolve="enumm" />
                             </node>
                             <node concept="liA8E" id="76ipi_068yM" role="2OqNvi">
-                              <ref role="37wK5l" to="xx25:~SEnumerationAdapter.migrateEnumProperty(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SProperty):void" resolve="migrateEnumProperty" />
+                              <ref role="37wK5l" to="xx25:~SEnumerationAdapter.migrateEnumProperty(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SProperty)" resolve="migrateEnumProperty" />
                               <node concept="2GrUjf" id="76ipi_068zJ" role="37wK5m">
                                 <ref role="2Gs0qQ" node="6Lydko$LJlJ" resolve="node" />
                               </node>

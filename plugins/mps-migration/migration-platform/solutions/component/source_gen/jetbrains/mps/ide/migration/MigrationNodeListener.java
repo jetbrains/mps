@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.event.SNodeAddEvent;
 import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1665513457618784384", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
+@GeneratedClass(nodeId = "1665513457618784384", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class MigrationNodeListener extends SRepositoryContentAdapter {
   private SRepository myRepository;
   private final Set<SNodeReference> roots = SetSequence.fromSet(new HashSet<SNodeReference>());

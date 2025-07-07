@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide;
 
+import com.intellij.execution.process.ProcessIOExecutorService;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
@@ -30,6 +31,11 @@ import java.lang.reflect.InvocationTargetException;
  * For IDEA, use <code>ApplicationManager.getApplication()</code>
  */
 public class ThreadUtils {
+
+  public static void submitToBGT(@NotNull Runnable code) {
+      ProcessIOExecutorService.INSTANCE.submit(code);
+  }
+
   @Nullable
   public static Exception runInUIThreadAndWait(Runnable r) {
     LogExceptionsRunnable wrap = new LogExceptionsRunnable(Logger.getLogger(ThreadUtils.class), r);

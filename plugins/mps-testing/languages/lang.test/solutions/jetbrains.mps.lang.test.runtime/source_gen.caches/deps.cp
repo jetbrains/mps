@@ -17,7 +17,6 @@
   <uses module="49808fad-9d41-4b96-83fa-9231640f6b2b(JUnit)" kind="rt+dp" />
   <uses module="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt+dp" />
   <uses module="1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)" kind="dp" />
-  <uses module="215c4c45-ba99-49f5-9ab7-4b6901a63cfd(MPS.Generator)" kind="dp" />
   <uses module="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="dp" />
   <uses module="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="dp" />
   <uses module="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="dp" />
@@ -34,7 +33,6 @@
   <uses module="2c7e7a6d-a1f9-4f07-84e0-d0f5b91d380c(jetbrains.mps.baseLanguage.unitTest.platform)" kind="dp" />
   <uses module="6ef0db41-d3b2-47fe-82ac-d55a42cb6b13(jetbrains.mps.baseLanguage.unitTest.runtime)" kind="dp" />
   <uses module="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" kind="dp" />
-  <uses module="2af156ab-65c1-4a62-bd0d-ea734f71eab6(jetbrains.mps.dataFlow.runtime)" kind="dp" />
   <uses module="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />

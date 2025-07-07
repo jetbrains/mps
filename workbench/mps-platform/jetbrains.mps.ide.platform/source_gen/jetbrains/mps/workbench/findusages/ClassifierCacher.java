@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
-import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
+import jetbrains.mps.baseLanguage.javastub.ClassifierKind;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMTypeVariable;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMFormalTypeParameter;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMType;
@@ -38,7 +38,7 @@ import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)/3822554386093951004", model = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)")
+@GeneratedClass(nodeId = "3822554386093951004", model = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)")
 /*package*/ class ClassifierCacher {
   private final Map<IdIndexEntry, Integer> myResult = new HashMap<IdIndexEntry, Integer>();
 

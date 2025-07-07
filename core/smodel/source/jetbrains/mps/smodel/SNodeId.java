@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -145,7 +145,7 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
      * @since 2023.3
      */
     public static Foreign fromIdNoPrefix(@NotNull String id) {
-      assert id.length() > 0 && id.charAt(0) != '~';
+      assert !id.isEmpty() && id.charAt(0) != '~' : id;
       return new Foreign(id.intern(), 0);
     }
 
@@ -159,11 +159,6 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
     public boolean equals(Object o) {
       if (this == o) return true;
       else if (o == null) return false;
-      else if (o instanceof StringBasedIdForJavaStubMethods) {
-        StringBasedIdForJavaStubMethods otherId = (StringBasedIdForJavaStubMethods) o;
-        String idNoPrefix = getIdNoPrefix();
-        return idNoPrefix.equals(otherId.getIdWithoutReturnTypeNoPrefix());
-      }
       if (getClass() != o.getClass()) return false;
 
       Foreign otherId = (Foreign) o;

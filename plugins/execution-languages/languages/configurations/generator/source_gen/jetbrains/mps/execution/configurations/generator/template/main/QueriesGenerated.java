@@ -1151,7 +1151,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("8147019390234496483", new RTQ(18, "IPersistentConfiguration"));
     rtqMethods.put("4013739085301446322", new RTQ(19, "BaseConcept"));
     rtqMethods.put("4013739085301455089", new RTQ(20, "BaseConcept"));
-    rtqMethods.put("4013739085301519675", new RTQ(21, "RunConfigurationProducerPart_Template"));
+    rtqMethods.put("4013739085301519675", new RTQ(21, "RunConfigurationProducer_Template.RunConfigurationProducerPart_Template"));
     rtqMethods.put("5703615523638516677", new RTQ(22, "BaseConcept"));
     rtqMethods.put("5703615523638516691", new RTQ(23, "BaseConcept"));
     rtqMethods.put("2137130439060046369", new RTQ(24, "myField"));

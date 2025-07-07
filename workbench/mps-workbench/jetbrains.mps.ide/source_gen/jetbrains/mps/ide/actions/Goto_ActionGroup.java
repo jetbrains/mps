@@ -9,7 +9,7 @@ import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.ide.actions.GotoActionAction;
 import com.intellij.ide.actions.GotoFileAction;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991237264", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1204991237264", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class Goto_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.Goto_ActionGroup";
   public static final String LABEL_ID_gotoVCS = ID + "gotoVCS";

@@ -20,9 +20,8 @@ public class Sample {
     System.out.println(String.valueOf((((_FunctionTypes._return_P0_E0<Matrix<Double>>) () -> {
       Matrix<Double> r_a0a0a3a1;
       r_a0a0a3a1 = null;
-      for (int i_a0a0a0d0b = 0; i_a0a0a0d0b <= 99; i_a0a0a0d0b++) {
-        int k_a0a0a0d0b = i_a0a0a0d0b;
-        r_a0a0a3a1 = new Matrix(r_a0a0a3a1, new Matrix<Double>(true, Matrix.soDouble, new Matrix<Double>(new Matrix<Integer>(new Integer[][]{{1, k_a0a0a0d0b, 0}}, Matrix.soInt), Matrix.soDouble), new Matrix<Double>(new Double[][]{{(double) 0, 1.0, (double) 0}}, Matrix.soDouble), new Matrix<Double>(new Matrix<Integer>(new Integer[][]{{0, 0, 1}}, Matrix.soInt), Matrix.soDouble)), MatrixOperation.MatrixAdd, Matrix.soDouble);
+      for (int k = 0; k <= 99; k++) {
+        r_a0a0a3a1 = new Matrix(r_a0a0a3a1, new Matrix<Double>(true, Matrix.soDouble, new Matrix<Double>(new Matrix<Integer>(new Integer[][]{{1, k, 0}}, Matrix.soInt), Matrix.soDouble), new Matrix<Double>(new Double[][]{{(double) 0, 1.0, (double) 0}}, Matrix.soDouble), new Matrix<Double>(new Matrix<Integer>(new Integer[][]{{0, 0, 1}}, Matrix.soInt), Matrix.soDouble)), MatrixOperation.MatrixAdd, Matrix.soDouble);
       }
       return r_a0a0a3a1;
     }).invoke())));

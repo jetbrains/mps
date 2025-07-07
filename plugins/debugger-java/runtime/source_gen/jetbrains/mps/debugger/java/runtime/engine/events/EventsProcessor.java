@@ -46,7 +46,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import com.sun.jdi.event.VMDeathEvent;
 import com.sun.jdi.event.VMDisconnectEvent;
 
-@GeneratedClass(node = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)/6460341978864584371", model = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)")
+@GeneratedClass(nodeId = "6460341978864584371", model = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)")
 public class EventsProcessor {
   protected static final int STATE_INITIAL = 0;
   protected static final int STATE_ATTACHED = 1;

@@ -30,7 +30,7 @@ import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.diff.DiffManager;
 import com.intellij.diff.InvalidDiffRequestException;
 
-@GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/5047908084943665620", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
+@GeneratedClass(nodeId = "5047908084943665620", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class TestMergeAction_Action extends BaseAction {
   private static final Logger LOG = Logger.getLogger(TestMergeAction_Action.class);
   private static final Icon ICON = null;

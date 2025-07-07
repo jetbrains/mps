@@ -95,7 +95,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private Color _StyleParameter_QueryFunction_zgm7s3_a2b0() {
-    return _EditorUtil.grayIfNotSelectable(getNode());
+    return _EditorUtil.grayIfNotSelectable(getNode(), getEditorContext());
   }
   private EditorCell createCollection_2() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
@@ -264,7 +264,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private Color _StyleParameter_QueryFunction_zgm7s3_a1c0() {
-    return _EditorUtil.grayIfNotSelectable(getNode());
+    return _EditorUtil.grayIfNotSelectable(getNode(), getEditorContext());
   }
   private EditorCell createCollection_5() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());

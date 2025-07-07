@@ -91,7 +91,6 @@
       </concept>
       <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
-        <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
       <concept id="1171903607971" name="jetbrains.mps.baseLanguage.structure.WildCardType" flags="in" index="3qTvmN" />
@@ -138,7 +137,6 @@
   </registry>
   <node concept="312cEu" id="7GTlfWVJch4">
     <property role="TrG5h" value="MethodReferences" />
-    <property role="2bfB8j" value="true" />
     <node concept="3Tm1VV" id="7GTlfWVJch5" role="1B3o_S" />
     <node concept="3clFb_" id="7GTlfWVJcj4" role="jymVt">
       <property role="TrG5h" value="testInstanceMethodCall" />
@@ -579,7 +577,6 @@
     </node>
     <node concept="3HP615" id="7GTlfWVJch6" role="jymVt">
       <property role="TrG5h" value="Comparator" />
-      <property role="2bfB8j" value="true" />
       <node concept="16euLQ" id="7GTlfWVJch7" role="16eVyc">
         <property role="TrG5h" value="C" />
       </node>
@@ -604,7 +601,6 @@
     </node>
     <node concept="3HP615" id="7GTlfWVJchg" role="jymVt">
       <property role="TrG5h" value="Mapper" />
-      <property role="2bfB8j" value="true" />
       <node concept="16euLQ" id="7GTlfWVJchh" role="16eVyc">
         <property role="TrG5h" value="I" />
       </node>
@@ -628,7 +624,6 @@
     </node>
     <node concept="3HP615" id="7GTlfWVJchp" role="jymVt">
       <property role="TrG5h" value="Consumer" />
-      <property role="2bfB8j" value="true" />
       <node concept="16euLQ" id="7GTlfWVJchq" role="16eVyc">
         <property role="TrG5h" value="T" />
       </node>
@@ -647,7 +642,6 @@
     </node>
     <node concept="3HP615" id="7GTlfWVJchx" role="jymVt">
       <property role="TrG5h" value="Builder" />
-      <property role="2bfB8j" value="true" />
       <node concept="16euLQ" id="7GTlfWVJchy" role="16eVyc">
         <property role="TrG5h" value="T" />
       </node>

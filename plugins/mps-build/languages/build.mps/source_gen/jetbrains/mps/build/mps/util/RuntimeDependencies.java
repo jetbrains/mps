@@ -11,12 +11,15 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.iterable.RecursiveIterator;
 import java.util.Iterator;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 /**
  * Collect dependencies we would like to record in a deployment MD.
@@ -32,10 +35,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
  * 2) *All* languages from used devkits (including extended devkits!) are reported as 'used'. Perhaps, there's nothing wrong with that, especially if we manage to get rid of 'used languages' in deployed modules altogether.
  * 3) However, we don't collect extended languages of those used (except for purposes of RT collection, see (1), above), as it much more effective to build closure of extended languages in
  *    runtime (compiled classes report relations b/w modules), rather than at this moment.
- * 4) Solutions exported from devkits (again, including extended devkits) are reported as deployment/classloading dependencies, though they are not necessarily essential for classloading.
- *    These are exposed in AM.getDeclaredDependencies() as 'default' dependency, thus making them valid reference targets and potential CL dep. 
- *    However, devkit story and therefore their status is not clear. If it's in 'used', not in 'depends', perhaps, these solution shall consitute 'design' time dependencies with 
- *    reference targets but bo CL dep. OTOH, there's no mechanism to specify 'depends' other than with explicit module reference, and it would be odd to require users to specify these
+ * 4) Solutions exported from devkits are no longer reported as deployment/classloading dependencies.
+ *    Unfortunately, devkit story and therefore their status is not clear. If it's in 'used', not in 'depends', perhaps, these solution shall constitute 'design' time dependencies with 
+ *    reference targets but no CL dependency. OTOH, there's no mechanism to specify 'depends' other than with explicit module reference, and it would be odd to require users to specify these
  *    in addition to 'used' devkit.
  */
 public final class RuntimeDependencies {
@@ -51,7 +53,10 @@ public final class RuntimeDependencies {
     Iterable<SNode> ul = SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyUseLanguage$uH), LINKS.language$udAS);
     List<SNode> devkits = Sequence.fromIterable(includingExtended(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyOnDevKit$4s), LINKS.devkit$Q_pH))).toList();
     Iterable<SNode> devkitLanguages = SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(devkits, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportLanguage$EV), LINKS.language$qqxl);
-    Iterable<SNode> devkitSolutions = SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(devkits, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportSolution$71), LINKS.solution$qxKS);
+    // Solutions exported from devkits used to get reported as deployment/classloading dependencies (although they are not necessarily essential for classloading),
+    // but since AM.getDeclaredDependencies() stick to declared dependencies only and CLDependencies respects that, we have to keep logic here as close to CLDependencies
+    // as possible, to make sure CL for source modules works the same as for deployed. Eventually, shall pack "deps.cp" into distributed module and use these exact values instead of
+    // a rough guess we make here.
     List<SNode> allUsedLang = Sequence.fromIterable(ul).concat(Sequence.fromIterable(devkitLanguages)).where(new NotNullWhereFilter()).toList();
     myUsedLanguages.addAll(allUsedLang);
     Iterable<SNode> targetLanguages = SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN), LINKS.language$wAwY);
@@ -60,14 +65,17 @@ public final class RuntimeDependencies {
     for (SNode rts : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(includingExtendedLanguages(ListSequence.fromList(allUsedLang).concat(Sequence.fromIterable(targetLanguages))), LINKS.runtime$lxKd), CONCEPTS.BuildMps_ModuleSolutionRuntime$b5), LINKS.solution$3MS)).where(new NotNullWhereFilter())) {
       myLangRuntimes.add(rts);
     }
-    for (SNode s : Sequence.fromIterable(devkitSolutions).where(new NotNullWhereFilter())) {
-      myCompileDeps.add(s);
-    }
 
     for (SNode m : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C), LINKS.module$kGi0)).where(new NotNullWhereFilter())) {
+      if (SEnumOperations.isMember(SPropertyOperations.getEnum(m, PROPS.javaCode$OceX), 0x352834178d0efa6bL)) {
+        continue;
+      }
       myCompileDeps.add(m);
     }
     for (SNode m : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W), LINKS.language$NYXp)).where(new NotNullWhereFilter())) {
+      if (SEnumOperations.isMember(SPropertyOperations.getEnum(m, PROPS.javaCode$OceX), 0x352834178d0efa6bL)) {
+        continue;
+      }
       myCompileDeps.add(m);
     }
   }
@@ -112,7 +120,6 @@ public final class RuntimeDependencies {
     /*package*/ static final SConcept BuildMps_ModuleDependencyUseLanguage$uH = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyUseLanguage");
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnDevKit$4s = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnDevKit");
     /*package*/ static final SConcept BuildMps_DevKitExportLanguage$EV = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, "jetbrains.mps.build.mps.structure.BuildMps_DevKitExportLanguage");
-    /*package*/ static final SConcept BuildMps_DevKitExportSolution$71 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d7aL, "jetbrains.mps.build.mps.structure.BuildMps_DevKitExportSolution");
     /*package*/ static final SConcept BuildMps_ModuleDependencyTargetLanguage$oN = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x7c8000c54bad607cL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyTargetLanguage");
     /*package*/ static final SConcept BuildMps_ModuleSolutionRuntime$b5 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSolutionRuntime");
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnModule$1C = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnModule");
@@ -125,7 +132,6 @@ public final class RuntimeDependencies {
     /*package*/ static final SReferenceLink devkit$Q_pH = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, 0x4780308f5d5bc4aL, "devkit");
     /*package*/ static final SContainmentLink exports$Qvxv = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d29d82L, "exports");
     /*package*/ static final SReferenceLink language$qqxl = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, 0x4780308f5d29d73L, "language");
-    /*package*/ static final SReferenceLink solution$qxKS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d7aL, 0x4780308f5d29d7bL, "solution");
     /*package*/ static final SReferenceLink language$wAwY = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x7c8000c54bad607cL, 0x2c4467914643d2d3L, "language");
     /*package*/ static final SContainmentLink runtime$lxKd = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x2c4467914643be24L, "runtime");
     /*package*/ static final SReferenceLink solution$3MS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, 0x2c4467914644b6e4L, "solution");
@@ -135,5 +141,9 @@ public final class RuntimeDependencies {
     /*package*/ static final SContainmentLink dependency$u_ko = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, 0x64bd442e1cf7aaefL, "dependency");
     /*package*/ static final SContainmentLink extends$SF0h = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d23142L, "extends");
     /*package*/ static final SReferenceLink devkit$uPRS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2313aL, 0x4780308f5d2313bL, "devkit");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty javaCode$OceX = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x28a3c6c6f75d7a0bL, "javaCode");
   }
 }

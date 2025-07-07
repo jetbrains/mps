@@ -15,8 +15,9 @@ import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.workbench.MPSDataKeys;
+import com.intellij.openapi.project.Project;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.workbench.action.BaseGroup;
-import com.intellij.openapi.actionSystem.AnAction;
 import org.jetbrains.annotations.Nullable;
 
 public class ScriptsGlobally_ActionGroup extends GeneratedActionGroup {
@@ -26,7 +27,7 @@ public class ScriptsGlobally_ActionGroup extends GeneratedActionGroup {
   public ScriptsGlobally_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Scripts", ID, plugin);
     setIsInternal(false);
-    setMnemonic("S".charAt(0));
+    setMnemonic('S');
     setPopup(true);
   }
   public void doUpdate(AnActionEvent event) {
@@ -34,17 +35,21 @@ public class ScriptsGlobally_ActionGroup extends GeneratedActionGroup {
     event.getPresentation().setVisible(true);
     MPSProject project = event.getData(MPSDataKeys.MPS_PROJECT);
     if (project == null) {
-      event.getPresentation().setEnabled(false);
-      return;
+      Project ideaProject = event.getData(MPSDataKeys.PROJECT);
+      project = ProjectHelper.fromIdeaProject(ideaProject);
+      if (project == null) {
+        event.getPresentation().setEnabled(false);
+        event.getPresentation().setVisible(false);
+        return;
+      }
     }
     event.getPresentation().setEnabled(true);
+    event.getPresentation().setVisible(true);
 
-    ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(project, false);
-    BaseGroup catGroup = menuBuilder.create_ByCategoryPopup();
-    for (AnAction a : catGroup.getChildren(null)) {
-      ScriptsGlobally_ActionGroup.this.add(a);
-    }
-    ScriptsGlobally_ActionGroup.this.addParameterizedAction(new RunMigrationScripts_Action(false), false);
+    ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(project);
+    BaseGroup catGroup = menuBuilder.createPopup(false);
+    ScriptsGlobally_ActionGroup.this.add(catGroup);
+    ScriptsGlobally_ActionGroup.this.addParameterizedAction(new RunMigrationScripts_Action(true), true);
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);
     }

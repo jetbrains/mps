@@ -35,14 +35,14 @@ public class Set_Test extends Util_Test {
     Set<String> test = SetSequence.fromSet(new HashSet<String>());
     Assert.assertTrue(SetSequence.fromSet(test).isEmpty());
     Assert.assertFalse(SetSequence.fromSet(test).isNotEmpty());
-    Assert.assertEquals(0, SetSequence.fromSet(test).count());
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(SetSequence.fromSet(test).count()));
   }
   @Test
   public void test_nonEmptyCreator() throws Exception {
     Set<String> test = SetSequence.fromSetAndArray(new HashSet<String>(), "A", "B", "C");
     Assert.assertFalse(SetSequence.fromSet(test).isEmpty());
     Assert.assertTrue(SetSequence.fromSet(test).isNotEmpty());
-    Assert.assertEquals(3, SetSequence.fromSet(test).count());
+    Assert.assertEquals(Integer.valueOf(3), Integer.valueOf(SetSequence.fromSet(test).count()));
   }
   @Test
   public void test_clear() throws Exception {
@@ -54,11 +54,11 @@ public class Set_Test extends Util_Test {
   public void test_add() throws Exception {
     Set<String> test = SetSequence.fromSetAndArray(new HashSet<String>(), "A", "B", "C");
     SetSequence.fromSet(test).addElement("D");
-    Assert.assertEquals(4, SetSequence.fromSet(test).count());
+    Assert.assertEquals(Integer.valueOf(4), Integer.valueOf(SetSequence.fromSet(test).count()));
     SetSequence.fromSet(test).addElement("E");
-    Assert.assertEquals(5, SetSequence.fromSet(test).count());
+    Assert.assertEquals(Integer.valueOf(5), Integer.valueOf(SetSequence.fromSet(test).count()));
     SetSequence.fromSet(test).addElement("A");
-    Assert.assertEquals(5, SetSequence.fromSet(test).count());
+    Assert.assertEquals(Integer.valueOf(5), Integer.valueOf(SetSequence.fromSet(test).count()));
   }
   @Test
   public void test_testAdd() throws Exception {
@@ -112,7 +112,7 @@ public class Set_Test extends Util_Test {
     Set<Integer> test = SetSequence.fromSetAndArray(new HashSet<Integer>(), 1, 2, 3, 4, 5);
     this.assertIterableEqualsIgnoreOrder(this.input5(), test);
     int[] array = ArrayUtils.toIntArray(SetSequence.fromSet(test));
-    Assert.assertEquals(5, array.length);
+    Assert.assertEquals(Integer.valueOf(5), Integer.valueOf(array.length));
   }
   @Test
   public void test_contains() throws Exception {

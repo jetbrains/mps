@@ -88,6 +88,7 @@
   <uses module="d4615e3b-d671-4ba9-af01-2b78369b0ba7(jetbrains.mps.lang.pattern)" kind="dp" />
   <uses module="3a13115c-633c-4c5c-bbcc-75c4219e9555(jetbrains.mps.lang.quotation)" kind="dp" />
   <uses module="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt+dp" />
+  <uses module="3330376f-82a0-45ed-ae50-a320ee8b0b63(jetbrains.mps.lang.script.rt)" kind="rt+dp" />
   <uses module="13744753-c81f-424a-9c1b-cf8943bf4e86(jetbrains.mps.lang.sharedConcepts)" kind="dp" />
   <uses module="7866978e-a0f0-4cc7-81bc-4d213d9375e1(jetbrains.mps.lang.smodel)" kind="dp" />
   <uses module="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt+dp" />

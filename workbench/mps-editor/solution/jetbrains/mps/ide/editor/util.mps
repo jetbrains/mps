@@ -482,15 +482,11 @@
                 </node>
               </node>
               <node concept="2OqwBi" id="ES8jtOrJix" role="3K4GZi">
-                <node concept="2OqwBi" id="ES8jtOrHqJ" role="2Oq$k0">
-                  <node concept="37vLTw" id="ES8jtOrHPq" role="2Oq$k0">
+                <node concept="2YIFZM" id="oeXz_6eOo4" role="2Oq$k0">
+                  <ref role="37wK5l" to="exr9:~InspectorTool.getInstance(jetbrains.mps.project.Project)" resolve="getInstance" />
+                  <ref role="1Pybhc" to="exr9:~InspectorTool" resolve="InspectorTool" />
+                  <node concept="37vLTw" id="oeXz_6eQmy" role="37wK5m">
                     <ref role="3cqZAo" node="ES8jtOrHPj" resolve="mpsProject" />
-                  </node>
-                  <node concept="liA8E" id="ES8jtOrHDb" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
-                    <node concept="3VsKOn" id="ES8jtOrIjY" role="37wK5m">
-                      <ref role="3VsUkX" to="exr9:~InspectorTool" resolve="InspectorTool" />
-                    </node>
                   </node>
                 </node>
                 <node concept="liA8E" id="ES8jtOrJML" role="2OqNvi">
@@ -1323,24 +1319,24 @@
           <node concept="3cpWsn" id="3TltS6fENyq" role="3cpWs9">
             <property role="TrG5h" value="tool" />
             <property role="3TUv4t" value="false" />
-            <node concept="2OqwBi" id="3TltS6fENys" role="33vP2m">
-              <node concept="2OqwBi" id="3TltS6fENyt" role="2Oq$k0">
-                <node concept="37vLTw" id="2BHiRxgm6kR" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3TltS6fENyd" resolve="manager" />
-                </node>
-                <node concept="liA8E" id="3TltS6fENyv" role="2OqNvi">
-                  <ref role="37wK5l" to="iwsx:~FileEditorManager.getProject()" resolve="getProject" />
-                </node>
-              </node>
-              <node concept="liA8E" id="3TltS6fENyw" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="3TltS6fENyx" role="37wK5m">
-                  <ref role="3VsUkX" to="exr9:~InspectorTool" resolve="InspectorTool" />
-                </node>
-              </node>
-            </node>
             <node concept="3uibUv" id="3TltS6fENyr" role="1tU5fm">
               <ref role="3uigEE" to="exr9:~InspectorTool" resolve="InspectorTool" />
+            </node>
+            <node concept="2YIFZM" id="oeXz_6eQJX" role="33vP2m">
+              <ref role="37wK5l" to="exr9:~InspectorTool.getInstance(jetbrains.mps.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="exr9:~InspectorTool" resolve="InspectorTool" />
+              <node concept="2YIFZM" id="oeXz_6eVHH" role="37wK5m">
+                <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+                <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+                <node concept="2OqwBi" id="3TltS6fENyt" role="37wK5m">
+                  <node concept="37vLTw" id="2BHiRxgm6kR" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3TltS6fENyd" resolve="manager" />
+                  </node>
+                  <node concept="liA8E" id="3TltS6fENyv" role="2OqNvi">
+                    <ref role="37wK5l" to="iwsx:~FileEditorManager.getProject()" resolve="getProject" />
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>

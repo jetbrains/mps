@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,20 +88,8 @@ public abstract class ProjectBase extends Project {
     return myModuleLoader.getErrors();
   }
 
-  /**
-   * FIXME deprecate or reduce visibility to protected once mbeddr
-   *       switches to MPS 22.2, where direct ProjectBase.getVirtualFolder() was added.
-   *       Now there's org.modelix.model.mpsadapters/ProjectModuleAsNode that accesses
-   *       virtual folder by means of this method, and can't use cast to StandaloneMPSProject
-   *       as it adds MPS.Workbench dependency
-   */
   @Nullable
-  public final ModulePath getPath(@NotNull SModule module) {
-    return myModuleLoader.getPath(module.getModuleReference());
-  }
-
-  @Nullable
-  final ModulePath getPath(@NotNull SModuleReference mRef) {
+  /*package*/ final ModulePath getPath(@NotNull SModuleReference mRef) {
     return myModuleLoader.getPath(mRef);
   }
 
@@ -109,7 +97,7 @@ public abstract class ProjectBase extends Project {
     return myModuleLoader.allPaths();
   }
 
-  // all project modules, inclding language-hosted generators, are registered with a project as owner.
+  // all project modules, including language-hosted generators, are registered with a project as owner.
   /*package*/ void associateWithProjectRepo(SModule module) {
     SRepositoryExt repository = (SRepositoryExt) getRepository();
     // generally, module is already registered with a repo, as the primary mechanism to create a module instance, ModuleRepositoryFacade#instantiateModule,
@@ -139,7 +127,7 @@ public abstract class ProjectBase extends Project {
     IFile descriptorFile = module instanceof AbstractModule ? ((AbstractModule) module).getDescriptorFile() : null;
     if (descriptorFile != null) {
       final ModulePath modulePath = new ModulePath(descriptorFile, null);
-      final ModulePath existing = getPath(module);
+      final ModulePath existing = getPath(module.getModuleReference());
       if (existing != null) {
   //      throw new IllegalArgumentException(module + " is already in the " + this); todo enable after MPS-24400
         LOG.warning(String.format("Project %s already tracks module %s under %s; provided %s ignored", this, module.getModuleReference(), existing, modulePath));
@@ -229,7 +217,7 @@ public abstract class ProjectBase extends Project {
    */
   @Override
   public boolean isProjectModule(@NotNull SModule module) {
-    if (getPath(module) != null) {
+    if (getPath(module.getModuleReference()) != null) {
       return true;
     }
     // FIXME now myModuleLoader keeps ModulePath for each module, including Generator one, next code is no longer necessary
@@ -260,18 +248,11 @@ public abstract class ProjectBase extends Project {
    */
   @Hack
   protected final void loadModules(@NotNull Collection<ModulePath> modulePaths) {
+    // FIXME present approach is unfortunate, as it's impossible to split module discovery (ModulesMiner for a path, and even up to SModule instantiation)
+    //       from its registration in a project/its repo. First step could be initiated in parallel with project startup and done in non-UI thread. Even
+    //       actual registration of the modules could be done in a project repo write w/o EDT access. It's only UI update that MAY (not necessarily SHALL)
+    //       require EDT (with new project model, perhaps, even this might be no longer a requirement).
     myModuleLoader.updatePathsInProject(modulePaths);
-  }
-
-  @Hack
-  protected final void fireModulesLoaded() {
-    getModelAccess().checkWriteAccess();
-    //  TODO FIXME get rid of onModuleLoad
-    for (SModule m : getProjectModulesWithGenerators()) {
-      if (m instanceof AbstractModule) {
-        ((AbstractModule) m).onModuleLoad();
-      }
-    }
   }
 
   /**
@@ -281,6 +262,7 @@ public abstract class ProjectBase extends Project {
    */
   public final void projectOpened() {
     LOG.info("Project '" + getName() + "' is opened");
+    update();
     myProjectManager.projectOpened(this);
   }
 
@@ -298,7 +280,7 @@ public abstract class ProjectBase extends Project {
   /**
    * Access components that constitute core of MPS platform.
    */
-  public final ComponentHost getPlatform() {
+  public final @NotNull ComponentHost getPlatform() {
     return myPlatform;
   }
 

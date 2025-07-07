@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.util;
 
@@ -7,6 +7,8 @@ import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.annotations.Singleton;
 
 import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,14 +20,10 @@ import java.util.Collection;
  */
 @Singleton
 public final class PathManager {
-  //  I am in doubt whether we need this (e.g in copymodels)
-//  private static final String PROPERTY_HOME_PATH = "mps.home.path";
+  private static final String FILE_PROTO = "file";
+  private static final String JAR_PROTO = "jar";
 
-  private static final String FILE = "file";
-  public static final String DOT_JAR = ".jar";
-
-  private static final String PROPERTIES_FILE_NAME = com.intellij.openapi.application.PathManager.PROPERTIES_FILE_NAME;
-  public static final String LAUNCHER_CLASS = "jetbrains/mps/Launcher.class";
+  private static final String LAUNCHER_CLASS = "jetbrains/mps/Launcher.class";
 
   private static String ourHomePath;
 
@@ -50,26 +48,41 @@ public final class PathManager {
       return ourHomePath;
     }
 
-    String rootPath = getContainingJar(PathManager.class);
-
-    File root = new File(rootPath);
-    root = root.getAbsoluteFile();
-
-    if (rootPath.endsWith(DOT_JAR)) {
+//    ContainingJar(PAthManager.class): /.../mps/lib/mps-core.jar
+//    CL.SystemResource(Launcher):      file:/.../mps/startup/classes/jetbrains/mps/Launcher.class
+//    CL.SystemResource(PathManager):   jar:file:/.../mps/lib/mps-core.jar!/jetbrains/mps/util/PathManager.class
+    try {
+      // we know PathManager.class is part of [kernel], which always goes into lib/mps-core.jar (in sources - as an IDEA project artifact)
+      final String thisClassQualifiedFile = PathManager.class.getName().replace('.', '/') + ".class";
+      URI thisClassURI;
+      URL sr = ClassLoader.getSystemResource(thisClassQualifiedFile);
+      if (sr == null) {
+        // For "Run IDEA Tests" scenarios, where we do have .jar artifacts in classpath, but don't specify IDEA's CL as system CL
+        sr = PathManager.class.getClassLoader().getResource(thisClassQualifiedFile);
+      }
+      thisClassURI = sr.toURI();
+      assert JAR_PROTO.equals(thisClassURI.getScheme());
+      // FWIW, sr.getPath() == null
+      String path = thisClassURI.getRawSchemeSpecificPart();
+      int delim = path.indexOf("!/");
+      if (delim > 0) {
+        path = path.substring(0, delim);
+      }
+      URI file = new URI(path);
+      assert FILE_PROTO.equals(file.getScheme());
+      File root = new File(file.getSchemeSpecificPart());
       // {mps_home}/lib
       root = root.getParentFile();
       if (root != null) {
-        // {mps_home}             -
+        // {mps_home}
         root = root.getParentFile();
       }
-    } else {
-      while ((!isMpsDir(root)) && (root.getParentFile() != null)) {
-        root = root.getParentFile();
-      }
+      ourHomePath = root == null ? "/" : root.getAbsolutePath();
+    } catch (URISyntaxException ex) {
+      throw new RuntimeException(ex);
     }
-
-    ourHomePath = root.getAbsolutePath();
     if ("/".equals(ourHomePath)) {
+      // XXX not sure `new File("c:/").getAbsolutePath()` translates to "/" on Windows, likely incomplete check here
       throw new IllegalStateException("cannot detect MPS location");
     }
     return ourHomePath;
@@ -81,29 +94,21 @@ public final class PathManager {
   @Internal
   public static boolean isFromSources() {
     final URL launcherURL = ClassLoader.getSystemResource(LAUNCHER_CLASS);
-    return launcherURL != null && launcherURL.getProtocol().equals(FILE);
+    return launcherURL != null && launcherURL.getProtocol().equals(FILE_PROTO);
   }
 
   /**
-   * Returns the classpath entry corresponding to {@link jetbrains.mps.Launcher} class used to bootstrap MPS.
-   * Only makes sense if {@link PathManager.isFromSources()} returns true.
+   * Returns the classpath entry corresponding to {@code jetbrains.mps.Launcher} class used to bootstrap MPS.
+   * Only makes sense if {@link PathManager#isFromSources()} returns true.
    */
   @Internal
   public static String getLauncherClassPathEntry() {
     URL launcherURL = ClassLoader.getSystemResource(LAUNCHER_CLASS);
-    if (launcherURL != null && launcherURL.getProtocol().equals(FILE)) {
+    if (launcherURL != null && launcherURL.getProtocol().equals(FILE_PROTO)) {
       return launcherURL.getFile().substring(0, launcherURL.getFile().length() - LAUNCHER_CLASS.length() - 1); // drop trailing File.separator
     }
     
     return null;
-  }
-
-  private static String getContainingJar(Class<?> aClass) {
-    return getResourceRoot(aClass, "/" + aClass.getName().replace('.', '/') + ".class");
-  }
-
-  public static String getIdeaPath() {
-    return com.intellij.openapi.application.PathManager.getHomePath();
   }
 
   public static String getLibExtPath() {
@@ -111,17 +116,10 @@ public final class PathManager {
   }
 
   /**
-   * @return <MPS or IDEA home>/lib location, where IDEA platform jars reside. May be the same as {@link #getLibPath()}
+   * @return <MPS home>/lib location, where IDEA platform jars reside. Is the same as {@link #getLibPath()}
    */
   public static String getPlatformLibPath() {
-    return com.intellij.openapi.application.PathManager.getLibPath();
-  }
-
-  public static String[] getHomePaths() {
-    if (getHomePath().equals(getIdeaPath())) {
-      return new String[]{getHomePath()};
-    }
-    return new String[]{getHomePath(), getIdeaPath()};
+    return getLibPath();
   }
 
   public static Collection<String> getBootstrapPaths() {
@@ -136,19 +134,19 @@ public final class PathManager {
   }
 
   /**
-   * @return <MPS home>/lib location, where mps own jars reside. May be the same as {@link #getPlatformLibPath()}
+   * @return <MPS home>/lib location, where mps own jars reside. Now is the same as {@link #getPlatformLibPath()}
    */
   public static String getLibPath() {
     // Given getIdeaPath() + getHomePath(), I assume we face few scenarios with location for MPS libraries:
     // I) "Big" MPS aka MPS as IDE
     //    there's one <MPS Installation>/lib folder to host both IDEA and MPS libraries
-    // II) MPS as IDEA plugin
+    // II) MPS as IDEA plugin -- NO LONGER ACTUAL
     //    there's <IDEA installation>/lib for IDEA jars
     //    <mps-core plugin>/lib with MPS jars
     // III) MPS started from sources
     //    there's <checkout dir>/lib with IDEA jars
-    //    there's no lib/ with MPS jars, however,  #getHomePath() points to same <checkout dir> (the one with bin/idea.properties), and
-    //    therefore getLibPath() == getPlatformLibPath().
+    //    there's lib/ with MPS jars (IDEA project artifacts)
+    //    getLibPath() == getPlatformLibPath().
     return getHomePath() + File.separator + "lib";
   }
 
@@ -168,19 +166,8 @@ public final class PathManager {
     return getHomePath() + File.separator + "editor";
   }
 
-  private static boolean isMpsDir(File file) {
-    return new File(file, "bin" + File.separator + PROPERTIES_FILE_NAME).exists();
-  }
-
-  /**
-   * Attempts to detect classpath entry which contains given resource
-   */
-  private static String getResourceRoot(Class<?> context, String path) {
-    return com.intellij.openapi.application.PathManager.getResourceRoot(context, path);
-  }
-
   public static String getPreInstalledPluginsPath() {
-    return com.intellij.openapi.application.PathManager.getPreInstalledPluginsPath();
+    return getHomePath() + File.separator + "plugins";
   }
 
   public static String getUserDir() {

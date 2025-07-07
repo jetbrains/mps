@@ -17,7 +17,7 @@ import jetbrains.mps.debug.api.programState.IWatchable;
 import java.util.ArrayList;
 import com.sun.jdi.VirtualMachine;
 
-@GeneratedClass(node = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)/3432969378036014408", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
+@GeneratedClass(nodeId = "3432969378036014408", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
 public abstract class ValueWrapper<V extends IValueProxy> extends JavaValue<V> implements IValue {
   private final String myPresentation;
   public ValueWrapper(@NotNull V value, @NotNull ThreadReference threadReference) {

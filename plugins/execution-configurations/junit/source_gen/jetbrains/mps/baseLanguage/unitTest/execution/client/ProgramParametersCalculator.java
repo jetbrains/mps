@@ -9,7 +9,6 @@ import com.intellij.execution.ExecutionException;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutor;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.tool.common.ScriptData;
 import java.io.File;
@@ -39,6 +38,9 @@ import java.util.HashSet;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import java.util.HashMap;
 import jetbrains.mps.project.PathMacros;
+import jetbrains.mps.project.ProjectRepository;
+import jetbrains.mps.project.Project;
+import jetbrains.mps.project.MPSProject;
 
 /**
  * Calculates required modules, macros and other stuff for the external process test run
@@ -61,14 +63,11 @@ import jetbrains.mps.project.PathMacros;
   public String calculate() throws ExecutionException {
     boolean doINeedMPS = myTestsToRun.getParameters().needsMPS();
     boolean useCompatibilityMode = myTestsToRun.getParameters().useCompatibilityMode();
-    return (doINeedMPS ? calcParamsWithMpsPlatformToStart(useCompatibilityMode) : calcParamsWithoutMPSPlatformToStart(useCompatibilityMode));
+    return (doINeedMPS ? calcParamsWithMpsPlatformToStart(useCompatibilityMode) : calcParamsWithoutMPSPlatformToStart());
   }
 
-  private String calcParamsWithoutMPSPlatformToStart(boolean useCompatibilityMode) {
+  private String calcParamsWithoutMPSPlatformToStart() {
     List<String> testsCommandLine = ListSequence.fromList(new ArrayList<String>());
-    if (!(useCompatibilityMode)) {
-      ListSequence.fromList(testsCommandLine).addElement(DefaultTestExecutor.JUNIT5_OPTION);
-    }
     for (ITestNodeWrapper test : ListSequence.fromList(myTestsToRun.getTests())) {
       ListSequence.fromList(testsCommandLine).addElement((test.isTestCase() ? "-c" : "-m"));
       ListSequence.fromList(testsCommandLine).addElement(test.getFqName());
@@ -78,6 +77,7 @@ import jetbrains.mps.project.PathMacros;
 
   private String calcParamsWithMpsPlatformToStart(boolean useCompatibilityMode) throws ExecutionException {
     ClientExecutorScript args = new ClientExecutorScript();
+    args.setProjectUrl(getProjectUrl());
     ScriptData startupArgs = args.addStartupArguments();
     addModulesAndDepsToStartupArgs(startupArgs);
     addMacrosToStartupArgs(startupArgs);
@@ -114,9 +114,7 @@ import jetbrains.mps.project.PathMacros;
     // XXX here, we exploit the assumption module descriptor file resides under a module root
     myRepo.getModelAccess().runReadAction(() -> {
       List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
-      List<SModuleReference> requiredModules = new ArrayList<SModuleReference>(myTestsToRun.getRequiredModules());
-      requiredModules.add(CPCalculator.MODULE_WITH_EXECUTORS());
-      for (SModuleReference testModule : requiredModules) {
+      for (SModuleReference testModule : myTestsToRun.getRequiredModules()) {
         SModule tm = testModule.resolve(myRepo);
         if (tm != null) {
           ListSequence.fromList(modules).addElement(tm);
@@ -196,5 +194,15 @@ import jetbrains.mps.project.PathMacros;
         }
       }
     }
+  }
+
+  private String getProjectUrl() {
+    if (myRepo instanceof ProjectRepository) {
+      Project project = ((ProjectRepository) myRepo).getProject();
+      if (project instanceof MPSProject) {
+        return ((MPSProject) project).getProject().getPresentableUrl();
+      }
+    }
+    return null;
   }
 }

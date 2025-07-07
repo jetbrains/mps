@@ -1945,28 +1945,21 @@
   </root>
   <root nodeRef="r:0f9ddbb6-f761-4bd7-8dde-1e5300bd28c2(jetbrains.mps.lang.project.editor)/269654322145159994">
     <file name="ProjectStructure_StyleSheet.java">
-      <node id="269654322145162290" at="15,71,16,33" concept="9" />
-      <node id="269654322145162290" at="18,67,19,24" concept="9" />
-      <node id="1270973925599550934" at="23,59,24,42" concept="1" />
-      <node id="269654322145162290" at="15,0,18,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="269654322145162290" at="18,0,21,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
-      <node id="269654322145162290" at="22,0,26,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="269654322145162290" at="15,71,16,33" />
-      <scope id="269654322145162290" at="18,67,19,24" />
-      <scope id="269654322145162290" at="23,59,24,42" />
-      <scope id="269654322145162290" at="15,0,18,0">
-        <var name="editorContext" id="269654322145162290" />
-        <var name="node" id="269654322145162290" />
-      </scope>
-      <scope id="269654322145162290" at="18,0,21,0">
+      <node id="269654322145162290" at="13,67,14,24" concept="9" />
+      <node id="1270973925599550934" at="18,59,19,48" concept="1" />
+      <node id="269654322145162290" at="13,0,16,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
+      <node id="269654322145162290" at="17,0,21,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="269654322145162290" at="13,67,14,24" />
+      <scope id="269654322145162290" at="18,59,19,48" />
+      <scope id="269654322145162290" at="13,0,16,0">
         <var name="builderEnv" id="269654322145162290" />
       </scope>
-      <scope id="269654322145162290" at="22,0,26,0">
+      <scope id="269654322145162290" at="17,0,21,0">
         <var name="editorCell" id="269654322145162290" />
         <var name="style" id="269654322145162290" />
       </scope>
-      <unit id="269654322145162290" at="14,0,28,0" name="jetbrains.mps.lang.project.editor.ProjectStructure_StyleSheet$KeyWordStyleClass" />
-      <unit id="269654322145159994" at="13,0,29,0" name="jetbrains.mps.lang.project.editor.ProjectStructure_StyleSheet" />
+      <unit id="269654322145162290" at="12,0,23,0" name="jetbrains.mps.lang.project.editor.ProjectStructure_StyleSheet$KeyWordStyleClass" />
+      <unit id="269654322145159994" at="11,0,24,0" name="jetbrains.mps.lang.project.editor.ProjectStructure_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:0f9ddbb6-f761-4bd7-8dde-1e5300bd28c2(jetbrains.mps.lang.project.editor)/269654322145263498">

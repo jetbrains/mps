@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 package jetbrains.mps.typesystem;
 
 import gnu.trove.THashSet;
-import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
 import jetbrains.mps.lang.pattern.ConceptMatchingPattern;
 import jetbrains.mps.lang.pattern.INodeMatchingPattern;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.languageScope.LanguageScopeFactory;
 import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.TargetTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.component.IncrementalTypecheckingComponent;
@@ -49,7 +49,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -65,19 +64,20 @@ import java.util.function.Function;
 public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTypecheckingQueries>, LanguageRegistryListener {
 
   // dependencies
-  private final ClassLoaderManager myClassLoaderManager;
   private final LanguageRegistry myLanguageRegistry;
 
+  private final LanguageScopeFactory myScopeFactory;
+
   // managed stuff
-  private RulesManager myRulesManager;
+  private final RulesManager myRulesManager;
 
-  private Set<DataContainer> myDataContainers = new HashSet<>();
+  private final Set<DataContainer> myDataContainers = new HashSet<>();
 
-  public LegacyTypecheckingProvider(ClassLoaderManager classLoaderManager, LanguageRegistry languageRegistry) {
-    myClassLoaderManager = classLoaderManager;
+  public LegacyTypecheckingProvider(@NotNull LanguageRegistry languageRegistry, @NotNull LanguageScopeFactory scopeFactory) {
     myLanguageRegistry = languageRegistry;
     myLanguageRegistry.addRegistryListener(this);
     myRulesManager = new RulesManager();
+    myScopeFactory = scopeFactory;
   }
 
   @Override
@@ -107,7 +107,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     Flags flags = session.flags();
     TypeCheckerHelper typeCheckerHelper = session.getData(TypeCheckerHelper.class);
     if (flags.getRoot() != null && flags.isIncremental()) {
-      IncrementalTypecheckingContext typecheckingContext = new IncrementalTypecheckingContext(flags.getRoot(), typeCheckerHelper, myClassLoaderManager);
+      IncrementalTypecheckingContext typecheckingContext = new IncrementalTypecheckingContext(flags.getRoot(), typeCheckerHelper, myLanguageRegistry);
       IncrementalLegacyTypecheckingQueries queries = new IncrementalLegacyTypecheckingQueries(flags, typecheckingContext);
       typecheckingContext.setTypeInvalidateNotifier((node) -> queries.myObservable.dispatchTypeInvalidated(node));
       return queries;
@@ -134,7 +134,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
   public AuxDataContainer createDataContainer(Flags flags) {
     // TODO: is the trace only supported for "main" generator thread? apparently it has always been this way
     IPerformanceTracer performanceTracer = flags.isGeneratorMain() ? flags.getTracer() : null;
-    return new DataContainer(new TypeCheckerHelper(myRulesManager, performanceTracer));
+    return new DataContainer(new TypeCheckerHelper(myRulesManager, myScopeFactory, performanceTracer));
   }
 
   @Override

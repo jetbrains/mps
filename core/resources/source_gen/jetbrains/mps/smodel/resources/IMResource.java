@@ -8,7 +8,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 
 @Deprecated
-@GeneratedClass(node = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/7544464876071207476", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
+@GeneratedClass(nodeId = "7544464876071207476", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
 public interface IMResource extends IResource {
   SModule module();
   Iterable<SModel> models();

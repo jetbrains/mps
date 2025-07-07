@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NonNls;
 import com.intellij.openapi.project.Project;
 
-@GeneratedClass(node = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)/4474271214082916537", model = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)")
+@GeneratedClass(nodeId = "4474271214082916537", model = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)")
 public interface IBreakpoint {
   @NotNull
   IBreakpointKind getKind();

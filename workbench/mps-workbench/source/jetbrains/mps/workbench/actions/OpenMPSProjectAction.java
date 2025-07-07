@@ -27,10 +27,13 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.ex.FileChooserDialogImpl;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.NlsContexts;
 import com.intellij.openapi.util.SystemInfo;
@@ -38,6 +41,7 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrame;
 import com.intellij.openapi.wm.impl.welcomeScreen.NewWelcomeScreen;
+import com.intellij.ui.ExperimentalUI;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -57,6 +61,7 @@ public class OpenMPSProjectAction extends AnAction {
   public void update(@NotNull AnActionEvent e) {
     Presentation presentation = e.getPresentation();
     presentation.setIcon(AllIcons.Actions.MenuOpen);
+    presentation.setApplicationScope(true);
   }
 
   protected FileChooserDescriptor createFileChooserDescriptor() {
@@ -81,24 +86,36 @@ public class OpenMPSProjectAction extends AnAction {
 
     descriptor.putUserData(FileChooserDialogImpl.PREFER_LAST_OVER_TO_SELECT, Boolean.TRUE);
 
-    final VirtualFile virtualFile = FileChooser.chooseFile(descriptor, currentProject, userHomeDir);
-    if (virtualFile == null) {
-      return;
-    }
+    final VirtualFile @NotNull [] virtualFiles = FileChooser.chooseFiles(descriptor, currentProject, userHomeDir);
+    for (VirtualFile virtualFile : virtualFiles) {
+      if (virtualFile == null) {
+        continue;
+      }
 
-    if (OpenMPSProjectFileChooserDescriptor.isMpsProjectDirectory(virtualFile) || OpenMPSProjectFileChooserDescriptor.isMpsProjectFile(virtualFile)) {
-      if (OpenMPSProjectTrustProjectHelper.checkTrust(virtualFile)) {
-        ProjectUtil.openProject(virtualFile.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
-      }
-    } else {
-      if (virtualFile.isDirectory()) {
-        @NlsContexts.DialogTitle String title = new DynamicBundle(this.getClass(), "messages.MPSIdeBundle").getMessage("unknown.mps.project.directory.title");
-        @NlsContexts.DialogMessage String msg = new DynamicBundle(this.getClass(), "messages.MPSIdeBundle").getMessage("unknown.mps.project.directory.text");
-        Messages.showErrorDialog(currentProject, msg, title);
+      if (OpenMPSProjectFileChooserDescriptor.isMpsProjectDirectory(virtualFile) || OpenMPSProjectFileChooserDescriptor.isMpsProjectFile(virtualFile)) {
+        if (OpenMPSProjectTrustProjectHelper.checkTrust(virtualFile)) {
+          ProjectUtil.openProject(virtualFile.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
+        }
       } else {
-        OpenFileAction.openFile(virtualFile, currentProject);
+        if (virtualFile.isDirectory()) {
+          @NlsContexts.DialogTitle String title = new DynamicBundle(this.getClass(), "messages.MPSIdeBundle").getMessage("unknown.mps.project.directory.title");
+          @NlsContexts.DialogMessage String msg = new DynamicBundle(this.getClass(), "messages.MPSIdeBundle").getMessage("unknown.mps.project.directory.text");
+          Messages.showErrorDialog(currentProject, msg, title);
+        } else {
+          if (currentProject == null) {
+            @NlsContexts.DialogTitle String title =
+                new DynamicBundle(this.getClass(), "messages.MPSIdeBundle").getMessage("cannot.open.file.without.project.title");
+            @NlsContexts.DialogMessage String msg =
+                new DynamicBundle(this.getClass(), "messages.MPSIdeBundle").getMessage("cannot.open.file.without.project.text");
+            Messages.showErrorDialog(msg, title);
+          } else {
+            OpenFileAction.openFile(virtualFile, currentProject);
+          }
+        }
       }
+
     }
+//    final VirtualFile virtualFile = FileChooser.chooseFile(descriptor, currentProject, userHomeDir);
   }
 
   public static class OnMPSWelcomeScreen extends OpenMPSProjectAction {

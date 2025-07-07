@@ -11,16 +11,16 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
   </languages>
   <imports>
-    <import index="y4kr" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.kotlin.stubs.common(MPS.Core/)" />
-    <import index="182a" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.kotlin.stubs.common.metadata(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
-    <import index="747n" ref="r:3391afe4-c131-4e6c-87cf-990834a43a93(jetbrains.mps.kotlin.stubs.common)" />
     <import index="vxxo" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure.concept(MPS.Core/)" />
     <import index="rjhg" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)" />
     <import index="tzbx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.nodeidmap(MPS.Core/)" />
+    <import index="22au" ref="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be/java:jetbrains.mps.kotlin.stubs.loading.ids.migration(jetbrains.mps.kotlin.stubs/)" />
+    <import index="vfcs" ref="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be/java:jetbrains.mps.kotlin.stubs.loading(jetbrains.mps.kotlin.stubs/)" />
+    <import index="wjeu" ref="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be/java:jetbrains.mps.kotlin.stubs.loading.ids(jetbrains.mps.kotlin.stubs/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -47,9 +47,6 @@
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
         <child id="1239714902950" name="expression" index="2$L3a6" />
-      </concept>
-      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
-        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -239,7 +236,7 @@
         <property role="TrG5h" value="context" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="1h3cSlxwfaE" role="1tU5fm">
-          <ref role="3uigEE" to="182a:~VisitorContext" resolve="VisitorContext" />
+          <ref role="3uigEE" to="vfcs:~NodeIdHandler" resolve="NodeIdHandler" />
         </node>
         <node concept="3Tmbuc" id="1h3cSlxwfaF" role="1B3o_S" />
       </node>
@@ -289,7 +286,7 @@
         <node concept="37vLTG" id="1h3cSlxwfb1" role="3clF46">
           <property role="TrG5h" value="ctx" />
           <node concept="3uibUv" id="1h3cSlxwfb2" role="1tU5fm">
-            <ref role="3uigEE" to="182a:~VisitorContext" resolve="VisitorContext" />
+            <ref role="3uigEE" to="vfcs:~NodeIdHandler" resolve="NodeIdHandler" />
           </node>
         </node>
         <node concept="37vLTG" id="1h3cSlxwfb3" role="3clF46">
@@ -331,7 +328,7 @@
                   <ref role="3cqZAo" node="1h3cSlxwfaD" resolve="context" />
                 </node>
                 <node concept="liA8E" id="1h3cSlxwfbl" role="2OqNvi">
-                  <ref role="37wK5l" to="182a:~VisitorContext.packageLocalName(java.lang.String)" resolve="packageLocalName" />
+                  <ref role="37wK5l" to="vfcs:~NodeIdHandler.packageLocalName(java.lang.String)" resolve="packageLocalName" />
                   <node concept="37vLTw" id="1h3cSlxwfbm" role="37wK5m">
                     <ref role="3cqZAo" node="1h3cSlxwfb5" resolve="holder" />
                   </node>
@@ -384,7 +381,7 @@
                       <ref role="3cqZAo" node="1h3cSlxwfaD" resolve="context" />
                     </node>
                     <node concept="liA8E" id="1h3cSlxwfbG" role="2OqNvi">
-                      <ref role="37wK5l" to="182a:~VisitorContext.packageLocalName(java.lang.String)" resolve="packageLocalName" />
+                      <ref role="37wK5l" to="vfcs:~NodeIdHandler.packageLocalName(java.lang.String)" resolve="packageLocalName" />
                       <node concept="37vLTw" id="1h3cSlxwfbH" role="37wK5m">
                         <ref role="3cqZAo" node="1h3cSlxwfbv" resolve="receiver" />
                       </node>
@@ -434,7 +431,7 @@
                     <ref role="3cqZAo" node="1h3cSlxwfaD" resolve="context" />
                   </node>
                   <node concept="liA8E" id="1h3cSlxwfc2" role="2OqNvi">
-                    <ref role="37wK5l" to="182a:~VisitorContext.packageLocalName(java.lang.String)" resolve="packageLocalName" />
+                    <ref role="37wK5l" to="vfcs:~NodeIdHandler.packageLocalName(java.lang.String)" resolve="packageLocalName" />
                     <node concept="37vLTw" id="1h3cSlxwfc3" role="37wK5m">
                       <ref role="3cqZAo" node="1h3cSlxwfbT" resolve="argumentId" />
                     </node>
@@ -620,9 +617,9 @@
             <property role="TrG5h" value="prefixedName" />
             <node concept="17QB3L" id="1h3cSlxBd9n" role="1tU5fm" />
             <node concept="3cpWs3" id="1h3cSlxBd9o" role="33vP2m">
-              <node concept="10M0yZ" id="1h3cSlxBd9p" role="3uHU7B">
-                <ref role="3cqZAo" to="y4kr:~FunctionIdBuilder.FUNCTION_ID_PREFIX" resolve="FUNCTION_ID_PREFIX" />
-                <ref role="1PxDUh" to="y4kr:~FunctionIdBuilder" resolve="FunctionIdBuilder" />
+              <node concept="10M0yZ" id="3A0PwL8bJg2" role="3uHU7B">
+                <ref role="3cqZAo" to="wjeu:~FunctionIdBuilder.FUNCTION_ID_PREFIX" resolve="FUNCTION_ID_PREFIX" />
+                <ref role="1PxDUh" to="wjeu:~FunctionIdBuilder" resolve="FunctionIdBuilder" />
               </node>
               <node concept="Xl_RD" id="1h3cSlxBd9q" role="3uHU7w">
                 <property role="Xl_RC" value="myFunction" />
@@ -630,21 +627,19 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="1h3cSlxBdaj" role="3cqZAp">
-          <node concept="3cpWsn" id="1h3cSlxBdak" role="3cpWs9">
-            <property role="TrG5h" value="context" />
-            <node concept="3uibUv" id="1h3cSlxBdal" role="1tU5fm">
-              <ref role="3uigEE" to="182a:~VisitorContext" resolve="VisitorContext" />
+        <node concept="3cpWs8" id="3A0PwL8ayUZ" role="3cqZAp">
+          <node concept="3cpWsn" id="3A0PwL8ayV0" role="3cpWs9">
+            <property role="TrG5h" value="idProducer" />
+            <node concept="3uibUv" id="3A0PwL8ayV1" role="1tU5fm">
+              <ref role="3uigEE" to="vfcs:~NodeIdHandler" resolve="NodeIdHandler" />
             </node>
-            <node concept="2ShNRf" id="1h3cSlxBdam" role="33vP2m">
-              <node concept="1pGfFk" id="1h3cSlxBdan" role="2ShVmc">
+            <node concept="2ShNRf" id="3A0PwL8aLJ3" role="33vP2m">
+              <node concept="1pGfFk" id="3A0PwL8aRcw" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="182a:~VisitorContext.&lt;init&gt;(jetbrains.mps.kotlin.stubs.common.references.KotlinJvmReferenceSolver,java.lang.String,org.jetbrains.mps.openapi.model.SNode)" resolve="VisitorContext" />
-                <node concept="10Nm6u" id="1h3cSlxDFSe" role="37wK5m" />
-                <node concept="37vLTw" id="1h3cSlxBdao" role="37wK5m">
+                <ref role="37wK5l" to="vfcs:~NodeIdHandler.&lt;init&gt;(java.lang.String)" resolve="NodeIdHandler" />
+                <node concept="37vLTw" id="3A0PwL8aVOO" role="37wK5m">
                   <ref role="3cqZAo" node="1h3cSlxBd9i" resolve="packageName" />
                 </node>
-                <node concept="10Nm6u" id="1h3cSlxDKEX" role="37wK5m" />
               </node>
             </node>
           </node>
@@ -664,13 +659,13 @@
           <node concept="3cpWsn" id="1h3cSlxBdav" role="3cpWs9">
             <property role="TrG5h" value="idBuilder" />
             <node concept="3uibUv" id="1h3cSlxBdaw" role="1tU5fm">
-              <ref role="3uigEE" to="747n:6UEu$_UwA8l" resolve="FunctionIdBuilder" />
+              <ref role="3uigEE" to="wjeu:~FunctionIdBuilder" resolve="FunctionIdBuilder" />
             </node>
             <node concept="2ShNRf" id="1h3cSlxBdax" role="33vP2m">
               <node concept="1pGfFk" id="1h3cSlxBday" role="2ShVmc">
-                <ref role="37wK5l" to="747n:6UEu$_UwAcD" resolve="FunctionIdBuilder" />
+                <ref role="37wK5l" to="wjeu:~FunctionIdBuilder.&lt;init&gt;(jetbrains.mps.kotlin.stubs.loading.NodeIdHandler,java.lang.String,java.lang.String)" resolve="FunctionIdBuilder" />
                 <node concept="37vLTw" id="1h3cSlxBdaz" role="37wK5m">
-                  <ref role="3cqZAo" node="1h3cSlxBdak" resolve="context" />
+                  <ref role="3cqZAo" node="3A0PwL8ayV0" resolve="idProducer" />
                 </node>
                 <node concept="37vLTw" id="1h3cSlxBda$" role="37wK5m">
                   <ref role="3cqZAo" node="1h3cSlxBd9m" resolve="prefixedName" />
@@ -692,7 +687,7 @@
               <node concept="1pGfFk" id="1h3cSlxBdaE" role="2ShVmc">
                 <ref role="37wK5l" node="1h3cSlxwfaZ" resolve="mps35026_Test.LegacyFunctionIdBuilder" />
                 <node concept="37vLTw" id="1h3cSlxBdaF" role="37wK5m">
-                  <ref role="3cqZAo" node="1h3cSlxBdak" resolve="context" />
+                  <ref role="3cqZAo" node="3A0PwL8ayV0" resolve="idProducer" />
                 </node>
                 <node concept="37vLTw" id="1h3cSlxBdaG" role="37wK5m">
                   <ref role="3cqZAo" node="1h3cSlxBd9m" resolve="prefixedName" />
@@ -712,7 +707,7 @@
                   <ref role="3cqZAo" node="1h3cSlxBdav" resolve="idBuilder" />
                 </node>
                 <node concept="liA8E" id="1h3cSlxBdaN" role="2OqNvi">
-                  <ref role="37wK5l" to="747n:6UEu$_UwFSg" resolve="setReceiver" />
+                  <ref role="37wK5l" to="wjeu:~FunctionIdBuilder.setReceiver(java.lang.String)" resolve="setReceiver" />
                   <node concept="37vLTw" id="1h3cSlxBdaO" role="37wK5m">
                     <ref role="3cqZAo" node="1h3cSlxBcdB" resolve="receiverType" />
                   </node>
@@ -754,7 +749,7 @@
                   <ref role="3cqZAo" node="1h3cSlxBdav" resolve="idBuilder" />
                 </node>
                 <node concept="liA8E" id="1h3cSlxBdb4" role="2OqNvi">
-                  <ref role="37wK5l" to="747n:6UEu$_UwY2K" resolve="addArgument" />
+                  <ref role="37wK5l" to="wjeu:~FunctionIdBuilder.addArgument(java.lang.String)" resolve="addArgument" />
                   <node concept="2GrUjf" id="1h3cSlxBdb5" role="37wK5m">
                     <ref role="2Gs0qQ" node="1h3cSlxBdaY" resolve="arg" />
                   </node>
@@ -781,12 +776,11 @@
           <node concept="3cpWsn" id="7hs8Xth4p$O" role="3cpWs9">
             <property role="TrG5h" value="typeParameters" />
             <node concept="3uibUv" id="7hs8Xth4p$P" role="1tU5fm">
-              <ref role="3uigEE" to="747n:1r7toXetTqH" resolve="TypeParameterIdSection" />
+              <ref role="3uigEE" to="wjeu:~TypeParameterIdSection" resolve="TypeParameterIdSection" />
             </node>
             <node concept="2ShNRf" id="7hs8Xth4xxm" role="33vP2m">
-              <node concept="HV5vD" id="7hs8Xth4z74" role="2ShVmc">
-                <property role="373rjd" value="true" />
-                <ref role="HV5vE" to="747n:1r7toXetTqH" resolve="TypeParameterIdSection" />
+              <node concept="1pGfFk" id="3A0PwL8acm2" role="2ShVmc">
+                <ref role="37wK5l" to="wjeu:~TypeParameterIdSection.&lt;init&gt;()" resolve="TypeParameterIdSection" />
               </node>
             </node>
           </node>
@@ -805,7 +799,7 @@
                   <ref role="3cqZAo" node="7hs8Xth4p$O" resolve="typeParameters" />
                 </node>
                 <node concept="liA8E" id="7hs8Xth4IfZ" role="2OqNvi">
-                  <ref role="37wK5l" to="747n:1r7toXetUuq" resolve="add" />
+                  <ref role="37wK5l" to="wjeu:~TypeParameterIdSection.add(java.lang.String)" resolve="add" />
                   <node concept="2GrUjf" id="7hs8Xth4JFa" role="37wK5m">
                     <ref role="2Gs0qQ" node="1h3cSlxBdbd" resolve="arg" />
                   </node>
@@ -830,7 +824,7 @@
               <ref role="3cqZAo" node="1h3cSlxBdav" resolve="idBuilder" />
             </node>
             <node concept="liA8E" id="1h3cSlxBdbj" role="2OqNvi">
-              <ref role="37wK5l" to="747n:7hs8Xth3Vwq" resolve="setTypeParameters" />
+              <ref role="37wK5l" to="wjeu:~FunctionIdBuilder.setTypeParameters(jetbrains.mps.kotlin.stubs.loading.ids.TypeParameterIdSection)" resolve="setTypeParameters" />
               <node concept="37vLTw" id="7hs8Xth4PdU" role="37wK5m">
                 <ref role="3cqZAo" node="7hs8Xth4p$O" resolve="typeParameters" />
               </node>
@@ -852,7 +846,7 @@
       <node concept="3Tm1VV" id="1h3cSlxAX_6" role="1B3o_S" />
       <node concept="1LlUBW" id="1h3cSlxB1pY" role="3clF45">
         <node concept="3uibUv" id="1h3cSlxB98J" role="1Lm7xW">
-          <ref role="3uigEE" to="747n:6UEu$_UwA8l" resolve="FunctionIdBuilder" />
+          <ref role="3uigEE" to="wjeu:~FunctionIdBuilder" resolve="FunctionIdBuilder" />
         </node>
         <node concept="3uibUv" id="1h3cSlxBaEJ" role="1Lm7xW">
           <ref role="3uigEE" node="1h3cSlxwfav" resolve="mps35026_Test.LegacyFunctionIdBuilder" />
@@ -936,7 +930,7 @@
             <property role="TrG5h" value="builders" />
             <node concept="1LlUBW" id="1h3cSlxBEnv" role="1tU5fm">
               <node concept="3uibUv" id="1h3cSlxBEn_" role="1Lm7xW">
-                <ref role="3uigEE" to="747n:6UEu$_UwA8l" resolve="FunctionIdBuilder" />
+                <ref role="3uigEE" to="wjeu:~FunctionIdBuilder" resolve="FunctionIdBuilder" />
               </node>
               <node concept="3uibUv" id="1h3cSlxBEn$" role="1Lm7xW">
                 <ref role="3uigEE" node="1h3cSlxwfav" resolve="mps35026_Test.LegacyFunctionIdBuilder" />
@@ -968,7 +962,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1gnz8XLzMTd" role="2OqNvi">
-              <ref role="37wK5l" to="747n:6UEu$_Ux3Yu" resolve="applyOn" />
+              <ref role="37wK5l" to="wjeu:~FunctionIdBuilder.applyOn(org.jetbrains.mps.openapi.model.SNode)" resolve="applyOn" />
               <node concept="37vLTw" id="1gnz8XLzMWw" role="37wK5m">
                 <ref role="3cqZAo" node="1gnz8XLze2N" resolve="node" />
               </node>
@@ -1034,7 +1028,7 @@
                   </node>
                   <node concept="2OqwBi" id="1h3cSlxvVby" role="3uHU7w">
                     <node concept="liA8E" id="1h3cSlxvVb$" role="2OqNvi">
-                      <ref role="37wK5l" to="747n:5RFSIeIdJ0s" resolve="build" />
+                      <ref role="37wK5l" to="wjeu:~FunctionIdBuilder.build(boolean)" resolve="build" />
                       <node concept="3clFbT" id="1h3cSlxvVb_" role="37wK5m" />
                     </node>
                     <node concept="1LFfDK" id="1h3cSlxBOSx" role="2Oq$k0">
@@ -1064,7 +1058,7 @@
                 <node concept="3cpWs3" id="1h3cSlxzP88" role="37wK5m">
                   <node concept="2OqwBi" id="1h3cSlxvUUk" role="3uHU7w">
                     <node concept="liA8E" id="1h3cSlxvUUm" role="2OqNvi">
-                      <ref role="37wK5l" to="747n:5RFSIeIdJ0s" resolve="build" />
+                      <ref role="37wK5l" to="wjeu:~FunctionIdBuilder.build(boolean)" resolve="build" />
                       <node concept="3clFbT" id="1h3cSlxvUUn" role="37wK5m">
                         <property role="3clFbU" value="true" />
                       </node>
@@ -1178,7 +1172,7 @@
           </node>
           <node concept="2ZW3vV" id="1h3cSlxAmyn" role="3clFbw">
             <node concept="3uibUv" id="1h3cSlxAnkk" role="2ZW6by">
-              <ref role="3uigEE" to="747n:5RFSIeI5Xmf" resolve="KtFunctionNodeId" />
+              <ref role="3uigEE" to="22au:~KtFunctionNodeId" resolve="KtFunctionNodeId" />
             </node>
             <node concept="37vLTw" id="1h3cSlxAlHw" role="2ZW6bz">
               <ref role="3cqZAo" node="1h3cSlxvUHj" resolve="newId" />
@@ -1357,12 +1351,11 @@
           <node concept="3cpWsn" id="1gnz8XLzd6j" role="3cpWs9">
             <property role="TrG5h" value="map" />
             <node concept="3uibUv" id="1gnz8XLzd6k" role="1tU5fm">
-              <ref role="3uigEE" to="y4kr:~KotlinStringBasedNodeIdMap" resolve="KotlinStringBasedNodeIdMap" />
+              <ref role="3uigEE" to="22au:~KotlinStringBasedNodeIdMap" resolve="KotlinStringBasedNodeIdMap" />
             </node>
             <node concept="2ShNRf" id="1gnz8XLzd7J" role="33vP2m">
-              <node concept="1pGfFk" id="1gnz8XLzdoq" role="2ShVmc">
-                <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="y4kr:~KotlinStringBasedNodeIdMap.&lt;init&gt;()" resolve="KotlinStringBasedNodeIdMap" />
+              <node concept="1pGfFk" id="3A0PwL89Hvf" role="2ShVmc">
+                <ref role="37wK5l" to="22au:~KotlinStringBasedNodeIdMap.&lt;init&gt;()" resolve="KotlinStringBasedNodeIdMap" />
               </node>
             </node>
           </node>
@@ -1373,7 +1366,7 @@
               <ref role="3cqZAo" node="1gnz8XLzd6j" resolve="map" />
             </node>
             <node concept="liA8E" id="1h3cSlxvWr$" role="2OqNvi">
-              <ref role="37wK5l" to="y4kr:~KotlinStringBasedNodeIdMap.put(org.jetbrains.mps.openapi.model.SNodeId,org.jetbrains.mps.openapi.model.SNode)" resolve="put" />
+              <ref role="37wK5l" to="22au:~KotlinStringBasedNodeIdMap.put(org.jetbrains.mps.openapi.model.SNodeId,org.jetbrains.mps.openapi.model.SNode)" resolve="put" />
               <node concept="2OqwBi" id="1h3cSlxvXis" role="37wK5m">
                 <node concept="37vLTw" id="1h3cSlxvWvY" role="2Oq$k0">
                   <ref role="3cqZAo" node="1gnz8XLze2N" resolve="node" />
@@ -1394,7 +1387,7 @@
               <ref role="3cqZAo" node="1gnz8XLzd6j" resolve="map" />
             </node>
             <node concept="liA8E" id="1h3cSlxvZvM" role="2OqNvi">
-              <ref role="37wK5l" to="y4kr:~KotlinStringBasedNodeIdMap.get(org.jetbrains.mps.openapi.model.SNodeId)" resolve="get" />
+              <ref role="37wK5l" to="22au:~KotlinStringBasedNodeIdMap.get(org.jetbrains.mps.openapi.model.SNodeId)" resolve="get" />
               <node concept="37vLTw" id="1h3cSlxvZ_n" role="37wK5m">
                 <ref role="3cqZAo" node="1h3cSlxvUHj" resolve="newId" />
               </node>
@@ -1410,7 +1403,7 @@
               <ref role="3cqZAo" node="1gnz8XLzd6j" resolve="map" />
             </node>
             <node concept="liA8E" id="1h3cSlxvZWD" role="2OqNvi">
-              <ref role="37wK5l" to="y4kr:~KotlinStringBasedNodeIdMap.get(org.jetbrains.mps.openapi.model.SNodeId)" resolve="get" />
+              <ref role="37wK5l" to="22au:~KotlinStringBasedNodeIdMap.get(org.jetbrains.mps.openapi.model.SNodeId)" resolve="get" />
               <node concept="37vLTw" id="1h3cSlxvZWE" role="37wK5m">
                 <ref role="3cqZAo" node="1h3cSlxvVbu" resolve="newIdForeign" />
               </node>
@@ -1426,7 +1419,7 @@
               <ref role="3cqZAo" node="1gnz8XLzd6j" resolve="map" />
             </node>
             <node concept="liA8E" id="1h3cSlxvZYJ" role="2OqNvi">
-              <ref role="37wK5l" to="y4kr:~KotlinStringBasedNodeIdMap.get(org.jetbrains.mps.openapi.model.SNodeId)" resolve="get" />
+              <ref role="37wK5l" to="22au:~KotlinStringBasedNodeIdMap.get(org.jetbrains.mps.openapi.model.SNodeId)" resolve="get" />
               <node concept="37vLTw" id="1h3cSlxvZYK" role="37wK5m">
                 <ref role="3cqZAo" node="1h3cSlxvUUh" resolve="oldId" />
               </node>
@@ -1442,7 +1435,7 @@
               <ref role="3cqZAo" node="1gnz8XLzd6j" resolve="map" />
             </node>
             <node concept="liA8E" id="1h3cSlxwQDO" role="2OqNvi">
-              <ref role="37wK5l" to="y4kr:~KotlinStringBasedNodeIdMap.get(org.jetbrains.mps.openapi.model.SNodeId)" resolve="get" />
+              <ref role="37wK5l" to="22au:~KotlinStringBasedNodeIdMap.get(org.jetbrains.mps.openapi.model.SNodeId)" resolve="get" />
               <node concept="37vLTw" id="1h3cSlxwQDP" role="37wK5m">
                 <ref role="3cqZAo" node="1h3cSlxwzu0" resolve="oldIdWithLegacy" />
               </node>
@@ -1696,7 +1689,7 @@
               <property role="TrG5h" value="first" />
               <node concept="1LlUBW" id="1h3cSlxBZq$" role="1tU5fm">
                 <node concept="3uibUv" id="1h3cSlxBZqE" role="1Lm7xW">
-                  <ref role="3uigEE" to="747n:6UEu$_UwA8l" resolve="FunctionIdBuilder" />
+                  <ref role="3uigEE" to="wjeu:~FunctionIdBuilder" resolve="FunctionIdBuilder" />
                 </node>
                 <node concept="3uibUv" id="1h3cSlxBZqD" role="1Lm7xW">
                   <ref role="3uigEE" node="1h3cSlxwfav" resolve="mps35026_Test.LegacyFunctionIdBuilder" />
@@ -1750,7 +1743,7 @@
               <property role="TrG5h" value="second" />
               <node concept="1LlUBW" id="1h3cSlxC33G" role="1tU5fm">
                 <node concept="3uibUv" id="1h3cSlxC33M" role="1Lm7xW">
-                  <ref role="3uigEE" to="747n:6UEu$_UwA8l" resolve="FunctionIdBuilder" />
+                  <ref role="3uigEE" to="wjeu:~FunctionIdBuilder" resolve="FunctionIdBuilder" />
                 </node>
                 <node concept="3uibUv" id="1h3cSlxC33L" role="1Lm7xW">
                   <ref role="3uigEE" node="1h3cSlxwfav" resolve="mps35026_Test.LegacyFunctionIdBuilder" />
@@ -1876,8 +1869,8 @@
               <node concept="liA8E" id="1h3cSlxCihq" role="2OqNvi">
                 <ref role="37wK5l" to="w1kc:~SNode.setId(org.jetbrains.mps.openapi.model.SNodeId)" resolve="setId" />
                 <node concept="2YIFZM" id="1h3cSlxClN_" role="37wK5m">
-                  <ref role="37wK5l" to="y4kr:~KotlinId.kotlinId(java.lang.String)" resolve="kotlinId" />
-                  <ref role="1Pybhc" to="y4kr:~KotlinId" resolve="KotlinId" />
+                  <ref role="37wK5l" to="wjeu:~KotlinId.kotlinId(java.lang.String)" resolve="kotlinId" />
+                  <ref role="1Pybhc" to="wjeu:~KotlinId" resolve="KotlinId" />
                   <node concept="2OqwBi" id="1h3cSlxC8EK" role="37wK5m">
                     <node concept="1LFfDK" id="1h3cSlxC7IZ" role="2Oq$k0">
                       <node concept="37vLTw" id="1h3cSlxC79p" role="1LFl5Q">
@@ -1903,8 +1896,8 @@
               <node concept="liA8E" id="1h3cSlxCnPg" role="2OqNvi">
                 <ref role="37wK5l" to="w1kc:~SNode.setId(org.jetbrains.mps.openapi.model.SNodeId)" resolve="setId" />
                 <node concept="2YIFZM" id="1h3cSlxCnPh" role="37wK5m">
-                  <ref role="37wK5l" to="y4kr:~KotlinId.kotlinId(java.lang.String)" resolve="kotlinId" />
-                  <ref role="1Pybhc" to="y4kr:~KotlinId" resolve="KotlinId" />
+                  <ref role="37wK5l" to="wjeu:~KotlinId.kotlinId(java.lang.String)" resolve="kotlinId" />
+                  <ref role="1Pybhc" to="wjeu:~KotlinId" resolve="KotlinId" />
                   <node concept="2OqwBi" id="1h3cSlxCnPi" role="37wK5m">
                     <node concept="1LFfDK" id="1h3cSlxCnPj" role="2Oq$k0">
                       <node concept="37vLTw" id="1h3cSlxCnPk" role="1LFl5Q">
@@ -2089,7 +2082,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1h3cSlxCUZ3" role="2OqNvi">
-                <ref role="37wK5l" to="747n:6UEu$_Ux3Yu" resolve="applyOn" />
+                <ref role="37wK5l" to="wjeu:~FunctionIdBuilder.applyOn(org.jetbrains.mps.openapi.model.SNode)" resolve="applyOn" />
                 <node concept="37vLTw" id="1h3cSlxCZNF" role="37wK5m">
                   <ref role="3cqZAo" node="1h3cSlxC612" resolve="node1" />
                 </node>
@@ -2107,7 +2100,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1h3cSlxD172" role="2OqNvi">
-                <ref role="37wK5l" to="747n:6UEu$_Ux3Yu" resolve="applyOn" />
+                <ref role="37wK5l" to="wjeu:~FunctionIdBuilder.applyOn(org.jetbrains.mps.openapi.model.SNode)" resolve="applyOn" />
                 <node concept="37vLTw" id="1h3cSlxD173" role="37wK5m">
                   <ref role="3cqZAo" node="1h3cSlxC6fe" resolve="node2" />
                 </node>
@@ -2118,9 +2111,8 @@
           <node concept="3clFbF" id="1h3cSlxD3sF" role="3cqZAp">
             <node concept="37vLTI" id="1h3cSlxD4hU" role="3clFbG">
               <node concept="2ShNRf" id="1h3cSlxD5Ss" role="37vLTx">
-                <node concept="HV5vD" id="1h3cSlxD6tq" role="2ShVmc">
-                  <property role="373rjd" value="true" />
-                  <ref role="HV5vE" to="747n:5RFSIeI6LTC" resolve="KotlinStringBasedNodeIdMap" />
+                <node concept="1pGfFk" id="3A0PwL89Hvd" role="2ShVmc">
+                  <ref role="37wK5l" to="22au:~KotlinStringBasedNodeIdMap.&lt;init&gt;()" resolve="KotlinStringBasedNodeIdMap" />
                 </node>
               </node>
               <node concept="37vLTw" id="1h3cSlxD3sD" role="37vLTJ">
@@ -2274,12 +2266,12 @@
       </node>
       <node concept="VUp57" id="1h3cSlxF6UT" role="3nqlJM">
         <node concept="VXe08" id="1h3cSlxF8wr" role="VUp5m">
-          <ref role="VXe09" to="747n:5RFSIeI6LTC" resolve="KotlinStringBasedNodeIdMap" />
+          <ref role="VXe09" to="22au:~KotlinStringBasedNodeIdMap" resolve="KotlinStringBasedNodeIdMap" />
         </node>
       </node>
       <node concept="VUp57" id="1h3cSlxFbQO" role="3nqlJM">
         <node concept="VXe08" id="1h3cSlxFfa5" role="VUp5m">
-          <ref role="VXe09" to="747n:5RFSIeI5Xmf" resolve="KtFunctionNodeId" />
+          <ref role="VXe09" to="22au:~KtFunctionNodeId" resolve="KtFunctionNodeId" />
         </node>
       </node>
     </node>

@@ -14,7 +14,7 @@
       <unit at="8,0,13,0" name="jetbrains.mps.lang.migration.plugin.ExtensionDescriptor" />
     </file>
     <file name="IconContainer.java">
-      <unit at="7,0,10,0" name="jetbrains.mps.lang.migration.plugin.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.migration.plugin.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:e5186c75-12ba-46bf-934f-f0e026ef8c26(jetbrains.mps.lang.migration.plugin)/3193873080290339088">
@@ -24,7 +24,7 @@
       <node id="3193873080290339088" at="33,60,34,71" concept="5" />
       <node id="3193873080290339088" at="36,50,37,148" concept="5" />
       <node id="3193873080290339088" at="41,55,42,179" concept="5" />
-      <node id="3193873080290339088" at="45,45,46,49" concept="5" />
+      <node id="3193873080290339088" at="45,45,46,40" concept="5" />
       <node id="3193873080290339088" at="49,34,50,24" concept="5" />
       <node id="7985135864305739902" at="53,87,54,61" concept="2" />
       <node id="4726480899536083423" at="58,0,59,0" concept="6" trace="HELP_URL" />
@@ -42,7 +42,7 @@
       <scope id="3193873080290339088" at="33,60,34,71" />
       <scope id="3193873080290339088" at="36,50,37,148" />
       <scope id="3193873080290339088" at="41,55,42,179" />
-      <scope id="3193873080290339088" at="45,45,46,49" />
+      <scope id="3193873080290339088" at="45,45,46,40" />
       <scope id="3193873080290339088" at="49,34,50,24" />
       <scope id="3193873080290339088" at="53,87,54,61" />
       <scope id="3193873080290339088" at="25,0,28,0" />

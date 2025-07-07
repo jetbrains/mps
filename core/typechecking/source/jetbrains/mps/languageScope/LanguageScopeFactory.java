@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,17 +47,9 @@ public class LanguageScopeFactory implements CoreComponent, LanguageRegistryList
   private final LanguageRegistry myLanguageRegistry;
   private final SRepository myRepository;
 
-  /**
-   * @deprecated
-   */
-@Deprecated(since = "2018.2", forRemoval = true)
-  public static LanguageScopeFactory getInstance() {
-    return INSTANCE;
-  }
+  private final ConcurrentHashMap<String, Integer> myNamespaceIndices = new ConcurrentHashMap<>();
 
-  private ConcurrentHashMap<String, Integer> myNamespaceIndices = new ConcurrentHashMap<>();
-
-  private AtomicInteger myBits = new AtomicInteger(0);
+  private final AtomicInteger myBits = new AtomicInteger(0);
 
   private SimpleLRUCache<LanguagesHolder> myCachedLanguages;
 
@@ -100,7 +92,7 @@ public class LanguageScopeFactory implements CoreComponent, LanguageRegistryList
   }
 
   private void initCache() {
-    myCachedLanguages = new SimpleLRUCache<LanguagesHolder>(CACHE_SIZE) {
+    myCachedLanguages = new SimpleLRUCache<>(CACHE_SIZE) {
       @Override
       protected void purged(LanguagesHolder holder) {
         holder.clear();
@@ -163,6 +155,10 @@ public class LanguageScopeFactory implements CoreComponent, LanguageRegistryList
     LanguageScope langScope = new LanguageScope(this, nsBitSet);
     cached.setScope(langScope);
     return langScope;
+  }
+
+  /*package*/ LanguageScope getGlobal() {
+    return LanguageScope.getGlobal();
   }
 
   private void updateNamespaceBit(BitSet nsBitSet, String namespace) {

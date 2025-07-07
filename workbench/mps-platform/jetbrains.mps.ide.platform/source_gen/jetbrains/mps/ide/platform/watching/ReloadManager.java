@@ -8,13 +8,11 @@ import java.util.function.Supplier;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.Computable;
 
-@GeneratedClass(node = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/4774203567223337882", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
+@GeneratedClass(nodeId = "4774203567223337882", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
 public abstract class ReloadManager {
 
   public static ReloadManager getInstance() {
-    // towards replacing App Component with a Service
-    // FIXME once we can update uses in mps-ext/mbeddr to use this method, make it a service
-    return ApplicationManager.getApplication().getComponent(ReloadManager.class);
+    return ApplicationManager.getApplication().getService(ReloadManager.class);
   }
 
   /**

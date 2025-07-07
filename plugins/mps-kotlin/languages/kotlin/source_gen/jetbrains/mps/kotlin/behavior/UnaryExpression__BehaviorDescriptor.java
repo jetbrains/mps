@@ -35,7 +35,7 @@ public final class UnaryExpression__BehaviorDescriptor extends BaseBHDescriptor 
     if (child != null) {
       return false;
     }
-    return ((boolean) IStatement__BehaviorDescriptor.isLeftExpressionTarget_id69RFwVHPwd9.invoke0(__thisNode__, CONCEPTS.IExpression$2i, SNodeOperations.getContainingLink(__thisNode__)));
+    return ((boolean) IStatement__BehaviorDescriptor.isLeftExpressionTarget_id69RFwVHPwd9.invoke0(__thisNode__, CONCEPTS.IUnaryExpression$Rp, SNodeOperations.getContainingLink(__thisNode__)));
   }
 
   /*package*/ UnaryExpression__BehaviorDescriptor() {
@@ -85,6 +85,6 @@ public final class UnaryExpression__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IExpression$2i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression");
+    /*package*/ static final SInterfaceConcept IUnaryExpression$Rp = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7a8f48e7bc91d518L, "jetbrains.mps.kotlin.structure.IUnaryExpression");
   }
 }

@@ -56,5 +56,8 @@ public final class MPSColors extends JBColor {
 
   public static final Color violet = new JBColor(new Color(0x8000FF), new Color(0x9C57FF));
   public static final Color VIOLET = violet;
+
+  public static final Color yellow = new JBColor(new Color(253, 254, 226, 100), new Color(0x11, 0x49, 0x57, 200));  //new Color(253, 254, 226), new Color(253, 254, 226));
+  public static final Color YELLOW = yellow;
 }
 

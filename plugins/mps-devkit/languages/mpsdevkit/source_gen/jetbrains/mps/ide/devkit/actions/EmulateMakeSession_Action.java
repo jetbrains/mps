@@ -11,11 +11,7 @@ import java.util.Map;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.make.IMakeService;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.make.MakeServiceComponent;
-import jetbrains.mps.core.platform.Platform;
-import jetbrains.mps.ide.MPSCoreComponents;
-import com.intellij.openapi.application.Application;
 
 public class EmulateMakeSession_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -77,7 +73,7 @@ public class EmulateMakeSession_Action extends BaseAction {
     return res.toString();
   }
   public IMakeService getMakeServiceComponent(final AnActionEvent event) {
-    return check_r0pals_a0a9(check_r0pals_a0a0j(check_r0pals_a0a0a9(check_r0pals_a0a0a0j(ApplicationManager.getApplication()))));
+    return check_r0pals_a0a9(event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(MakeServiceComponent.class));
   }
   public static String mockSession_State(MockMakeSessionProvider object) {
     return "";
@@ -85,24 +81,6 @@ public class EmulateMakeSession_Action extends BaseAction {
   private static IMakeService check_r0pals_a0a9(MakeServiceComponent checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.get();
-    }
-    return null;
-  }
-  private static MakeServiceComponent check_r0pals_a0a0j(Platform checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.findComponent(MakeServiceComponent.class);
-    }
-    return null;
-  }
-  private static Platform check_r0pals_a0a0a9(MPSCoreComponents checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getPlatform();
-    }
-    return null;
-  }
-  private static MPSCoreComponents check_r0pals_a0a0a0j(Application checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getComponent(MPSCoreComponents.class);
     }
     return null;
   }

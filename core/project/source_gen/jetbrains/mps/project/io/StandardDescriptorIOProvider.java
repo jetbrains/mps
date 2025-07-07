@@ -4,7 +4,6 @@ package jetbrains.mps.project.io;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
@@ -21,20 +20,11 @@ import java.io.IOException;
 import jetbrains.mps.project.persistence.DevkitDescriptorPersistence;
 import jetbrains.mps.project.persistence.GeneratorDescriptorPersistence;
 
-@GeneratedClass(node = "r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)/557142600900539533", model = "r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)")
+@GeneratedClass(nodeId = "557142600900539533", model = "r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)")
 /*package*/ class StandardDescriptorIOProvider implements DescriptorIOProvider {
   private static final Logger LOG = Logger.getLogger(StandardDescriptorIOProvider.class);
-  private final MacroHelper.Source myMacroHelperSource;
-  private final MacroHelper myMacroHelperSingleton;
 
-  /*package*/ StandardDescriptorIOProvider(MacroHelper.Source macroHelperSource) {
-    myMacroHelperSource = macroHelperSource;
-    myMacroHelperSingleton = null;
-  }
-
-  /*package*/ StandardDescriptorIOProvider(MacroHelper macroHelperSingleton) {
-    myMacroHelperSource = null;
-    myMacroHelperSingleton = macroHelperSingleton;
+  /*package*/ StandardDescriptorIOProvider() {
   }
 
   @Override
@@ -55,10 +45,6 @@ import jetbrains.mps.project.persistence.GeneratorDescriptorPersistence;
     return new GeneratorDescriptorIO();
   }
 
-  /*package*/ MacroHelper forModuleFile(IFile file) {
-    return (myMacroHelperSingleton != null ? myMacroHelperSingleton : myMacroHelperSource.moduleFile(file));
-  }
-
   /*package*/ class SolutionDescriptorIO implements DescriptorIO<SolutionDescriptor> {
     public SolutionDescriptorIO() {
     }
@@ -66,10 +52,9 @@ import jetbrains.mps.project.persistence.GeneratorDescriptorPersistence;
     public SolutionDescriptor readFromFile(IFile file) throws DescriptorIOException {
       SolutionDescriptor descriptor;
       try {
-        MacroHelper macroHelper = forModuleFile(file);
         Document document = JDOMUtil.loadDocument(file);
         Element rootElement = document.getRootElement();
-        descriptor = new SolutionDescriptorPersistence(macroHelper).load(rootElement);
+        descriptor = new SolutionDescriptorPersistence().load(rootElement);
       } catch (Exception ex) {
         descriptor = new SolutionDescriptor();
         ModuleReadException mre = (ex instanceof ModuleReadException ? ((ModuleReadException) ex) : new ModuleReadException(ex));
@@ -90,8 +75,7 @@ import jetbrains.mps.project.persistence.GeneratorDescriptorPersistence;
       }
 
       try {
-        MacroHelper macroHelper = forModuleFile(file);
-        Element result = new SolutionDescriptorPersistence(macroHelper).save(sd);
+        Element result = new SolutionDescriptorPersistence().save(sd);
         JDOMUtil.writeDocument(new Document(result), file);
       } catch (Exception e) {
         if (LOG.isErrorLevel()) {
@@ -119,10 +103,9 @@ import jetbrains.mps.project.persistence.GeneratorDescriptorPersistence;
       LanguageDescriptor descriptor;
 
       try {
-        MacroHelper macroHelper = forModuleFile(file);
         Document document = JDOMUtil.loadDocument(file);
         Element languageElement = document.getRootElement();
-        descriptor = new LanguageDescriptorPersistence(macroHelper).load(languageElement);
+        descriptor = new LanguageDescriptorPersistence().load(languageElement);
       } catch (Exception ex) {
         descriptor = new LanguageDescriptor();
         ModuleReadException mre = (ex instanceof ModuleReadException ? ((ModuleReadException) ex) : new ModuleReadException(ex));
@@ -146,8 +129,7 @@ import jetbrains.mps.project.persistence.GeneratorDescriptorPersistence;
         return;
       }
       try {
-        MacroHelper macroHelper = forModuleFile(file);
-        Element element = new LanguageDescriptorPersistence(macroHelper).save(ld);
+        Element element = new LanguageDescriptorPersistence().save(ld);
         Document doc = new Document(element);
         JDOMUtil.writeDocument(doc, file);
         // XXX is it always a need to refresh timestamp in the descriptor? What if serialize it into a copy file
@@ -218,10 +200,9 @@ import jetbrains.mps.project.persistence.GeneratorDescriptorPersistence;
     public GeneratorDescriptor readFromFile(IFile file) throws DescriptorIOException {
       GeneratorDescriptor descriptor;
       try {
-        MacroHelper macroHelper = forModuleFile(file);
         Document document = JDOMUtil.loadDocument(file);
         Element languageElement = document.getRootElement();
-        descriptor = new GeneratorDescriptorPersistence(macroHelper, false).load(languageElement);
+        descriptor = new GeneratorDescriptorPersistence(false).load(languageElement);
       } catch (Exception ex) {
         descriptor = new GeneratorDescriptor();
         ModuleReadException mre = (ex instanceof ModuleReadException ? ((ModuleReadException) ex) : new ModuleReadException(ex));
@@ -235,8 +216,7 @@ import jetbrains.mps.project.persistence.GeneratorDescriptorPersistence;
     @Override
     public void writeToFile(GeneratorDescriptor d, IFile file) throws DescriptorIOException {
       try {
-        MacroHelper macroHelper = forModuleFile(file);
-        Element element = new GeneratorDescriptorPersistence(macroHelper, false).save(d);
+        Element element = new GeneratorDescriptorPersistence(false).save(d);
         Document doc = new Document(element);
         JDOMUtil.writeDocument(doc, file);
         // XXX is it always a need to refresh timestamp in the descriptor? What if serialize it into a copy file

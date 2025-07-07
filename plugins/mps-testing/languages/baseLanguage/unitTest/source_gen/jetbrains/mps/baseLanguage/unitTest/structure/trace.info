@@ -13,7 +13,7 @@
       <unit at="11,0,177,0" name="jetbrains.mps.baseLanguage.unitTest.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="7,0,10,0" name="jetbrains.mps.baseLanguage.unitTest.structure.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.baseLanguage.unitTest.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,66,0" name="jetbrains.mps.baseLanguage.unitTest.structure.LanguageConceptSwitch" />
@@ -64,8 +64,8 @@
       <node id="1171931851043" at="20,0,21,0" concept="1" trace="props_BTestCase" />
       <node id="1171931851043" at="95,38,96,76" concept="3" />
       <node id="1171931851043" at="96,76,97,35" concept="0" />
-      <node id="1171931851043" at="97,35,98,55" concept="0" />
-      <node id="1171931851043" at="98,55,99,41" concept="0" />
+      <node id="1171931851043" at="97,35,98,45" concept="0" />
+      <node id="1171931851043" at="98,45,99,41" concept="0" />
       <node id="1171931851043" at="100,9,101,31" concept="4" />
       <node id="1171931851043" at="94,43,100,9" concept="2" />
       <scope id="1171931851043" at="95,38,99,41">

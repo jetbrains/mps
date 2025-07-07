@@ -2,12 +2,12 @@
 <generator alias="LanguageDescriptor" namespace="jetbrains.mps.lang.structure.ldgen" uuid="35588015-5a1b-4ecf-977e-f1a53aa15799" generatorOutputPath="${module}/source_gen">
   <source-language module="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" />
   <models>
-    <modelRoot type="default" contentPath="${module}">
+    <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="templates" />
     </modelRoot>
   </models>
   <facets>
-    <facet compile="mps" classes="mps" ext="no" type="java">
+    <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>

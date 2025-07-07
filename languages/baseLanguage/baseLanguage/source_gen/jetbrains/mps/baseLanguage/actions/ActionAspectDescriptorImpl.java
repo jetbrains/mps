@@ -54,6 +54,8 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
           return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1187945171249());
         case "HexIntegerLiteral":
           return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_141880770457524215());
+        case "HexLongLiteral":
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_8353134822315570241());
         case "IGenericClassCreator":
           return Collections.<NodeFactory>singletonList(new DefaultInferrableConstructor.NodeFactory_228184896957125097());
         case "IfStatement":

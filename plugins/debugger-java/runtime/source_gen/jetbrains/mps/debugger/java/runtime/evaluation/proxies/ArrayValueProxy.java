@@ -23,7 +23,7 @@ import com.sun.jdi.InvocationException;
 import com.sun.jdi.IncompatibleThreadStateException;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.INullValueProxy;
 
-@GeneratedClass(node = "r:88da44e4-ffd4-490b-bf61-1da15124dd34(jetbrains.mps.debugger.java.runtime.evaluation.proxies)/3102837338444216936", model = "r:88da44e4-ffd4-490b-bf61-1da15124dd34(jetbrains.mps.debugger.java.runtime.evaluation.proxies)")
+@GeneratedClass(nodeId = "3102837338444216936", model = "r:88da44e4-ffd4-490b-bf61-1da15124dd34(jetbrains.mps.debugger.java.runtime.evaluation.proxies)")
 /*package*/ class ArrayValueProxy extends ValueProxy implements IArrayValueProxy, IObjectValueProxy {
   public ArrayValueProxy(ArrayReference value) {
     super(value);

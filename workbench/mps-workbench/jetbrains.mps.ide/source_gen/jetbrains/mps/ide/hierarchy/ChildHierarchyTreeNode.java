@@ -18,7 +18,7 @@ import com.intellij.ui.LayeredIcon;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import com.intellij.icons.AllIcons;
 
-@GeneratedClass(node = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)/5797068448049410628", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
+@GeneratedClass(nodeId = "5797068448049410628", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
 public class ChildHierarchyTreeNode extends HierarchyTreeNode {
   private final AbstractHierarchyTree myHierarchyTree;
   private boolean myInitialized = false;

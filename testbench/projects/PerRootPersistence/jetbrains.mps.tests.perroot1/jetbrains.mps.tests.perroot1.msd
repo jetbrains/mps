@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="jetbrains.mps.tests.perroot1" uuid="6ba22040-292f-49a9-b08a-229fea76ee0a" moduleVersion="0">
   <models>
-    <modelRoot type="default" contentPath="${module}">
+    <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
   </models>
   <facets>
-    <facet compile="mps" classes="mps" ext="no" type="java">
+    <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>

@@ -42,7 +42,7 @@ import jetbrains.mps.vcs.diff.changes.UsedLanguageChange;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/4124845871897264455", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
+@GeneratedClass(nodeId = "4124845871897264455", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
 public class MergeConflictsBuilder implements ChangeConflictsBuilder {
   private SModel myBaseModel;
   private SModel myMyModel;

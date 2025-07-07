@@ -4,24 +4,31 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
-import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
-import jetbrains.mps.ide.ui.tree.module.ProjectModulesPoolTreeNode;
+import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import jetbrains.mps.workbench.action.ActionUtils;
 import java.util.Map;
+import com.intellij.openapi.command.undo.DocumentReference;
+import java.util.List;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.MPSProject;
+import java.util.Set;
+import java.util.LinkedHashSet;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
+import com.intellij.openapi.editor.Document;
+import jetbrains.mps.ide.undo.MPSUndoUtil;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/592892991208959069", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "592892991208959069", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NamespaceInternalActionsUtil {
-  public static DefaultActionGroup createNewGroup(final NamespaceTextNode node) {
-    boolean hasModulesUnder = node.hasModulesUnder();
-    boolean hasModelsUnder = node.hasModelsUnder();
+  public static DefaultActionGroup createNewGroup(final VirtualFolder virtualFolder) {
+    boolean hasModulesUnder = virtualFolder instanceof VirtualFolder.Modules;
+    boolean hasModelsUnder = virtualFolder instanceof VirtualFolder.Models;
     if (!(hasModelsUnder) && !(hasModulesUnder)) {
       return null;
     }
     DefaultActionGroup newGroup = new DefaultActionGroup("New", true);
-    // Actions should be disabled for modules pool
-    if (node.getPath().length > 1 && node.getPath()[1] instanceof ProjectModulesPoolTreeNode) {
-      return null;
-    }
     if (hasModulesUnder) {
       newGroup.addAll(ActionUtils.getGroup(NamespaceNewActions_ActionGroup.ID));
     }
@@ -32,11 +39,28 @@ public class NamespaceInternalActionsUtil {
       newGroup.add(new NewModel_Action() {
         @Override
         protected String getNamespace(Map<String, Object> _params) {
-          return node.getNamespace();
+          return virtualFolder.getName();
         }
       });
     }
     return newGroup;
   }
 
+  public static DocumentReference[] obtainDocumentReferences(List<SModule> modules, MPSProject mpsProject) {
+    final Set<DocumentReference> myDocumentReferences = new LinkedHashSet<>();
+    for (SModule m : modules) {
+      for (SModel model : m.getModels()) {
+        for (SNode root : model.getRootNodes()) {
+          MPSNodeVirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(mpsProject.getRepository(), root);
+          assert file.hasValidMPSNode() : "Invalid file was returned by VFS for: " + root;
+          Document doc = MPSUndoUtil.getDoc(file);
+          if (doc == null) {
+            continue;
+          }
+          myDocumentReferences.add(MPSUndoUtil.getRefForDoc(doc));
+        }
+      }
+    }
+    return myDocumentReferences.toArray(new DocumentReference[myDocumentReferences.size()]);
+  }
 }

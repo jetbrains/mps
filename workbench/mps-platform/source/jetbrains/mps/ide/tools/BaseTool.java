@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.ide.tools;
 import com.intellij.ide.actions.ActivateToolWindowAction;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.KeyboardShortcut;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.keymap.Keymap;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.DumbService;
@@ -56,7 +57,7 @@ public abstract class BaseTool {
   private final boolean mySideTool;
   private boolean myCanCloseContent;
   private boolean myIsRegistered;
-  private ToolWindowManager myWindowManager;
+  private boolean myIsDisposed = false;
 
   private JComponent myComponent = null;
 
@@ -106,7 +107,7 @@ public abstract class BaseTool {
    * @param setActive determine if tool window must be just opened or additionally became active and attract focus
    */
   public void openToolLater(final boolean setActive) {
-    ThreadUtils.runInUIThreadNoWait(() -> openTool(setActive));
+    ApplicationManager.getApplication().invokeLater(() -> openTool(setActive));
   }
 
   /**
@@ -144,7 +145,8 @@ public abstract class BaseTool {
    */
   public boolean isAvailable() {
     ThreadUtils.assertEDT();
-    return getToolWindow().isAvailable();
+    ToolWindow toolWindow = getToolWindow();
+    return toolWindow != null && toolWindow.isAvailable();
   }
 
   public void setAvailable(boolean state) {
@@ -197,13 +199,14 @@ public abstract class BaseTool {
       register();
     }
     // register() may fail if myProject hasn't been initialized - ToolWindowManager is a ProjectComponent
-    return myWindowManager == null ? null : myWindowManager.getToolWindow(myId);
+    final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(myProject);
+    return toolWindowManager == null ? null : toolWindowManager.getToolWindow(myId);
   }
 
   public void registerLater() {
     ThreadUtils.runInUIThreadNoWait(() -> {
       final Project project = getProject();
-      if (project.isDisposed()) {
+      if (project.isDisposed() || this.myIsDisposed) {
         return;
       }
       DumbService.getInstance(project).runWhenSmart(this::register);
@@ -211,7 +214,7 @@ public abstract class BaseTool {
   }
 
   public final void register() {
-    if (myProject.isDisposed()) {
+    if (myProject.isDisposed() || myIsDisposed) {
       return;
     }
     if (isRegistered()) {
@@ -220,7 +223,7 @@ public abstract class BaseTool {
     ThreadUtils.assertEDT();
     myIsRegistered = true;
 
-    myWindowManager = ToolWindowManager.getInstance(myProject);
+    final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(myProject);
 
     if (myShortcutsByKeymap != null) {
       String actionId = ActivateToolWindowAction.getActionIdForToolWindow(myId);
@@ -256,9 +259,9 @@ public abstract class BaseTool {
 
 
     //if we create a new project, tool windows are created for it automatically
-    ToolWindow toolWindow = myWindowManager.getToolWindow(myId);
+    ToolWindow toolWindow = toolWindowManager.getToolWindow(myId);
     if (toolWindow == null) {
-      toolWindow = myWindowManager.registerToolWindow(myId, builder -> {
+      toolWindow = toolWindowManager.registerToolWindow(myId, builder -> {
         builder.icon = myIcon;
         builder.canCloseContent = myCanCloseContent;
         builder.anchor = myAnchor;
@@ -346,9 +349,11 @@ public abstract class BaseTool {
     if (myProject.isDisposed()) {
       return;
     }
-    ToolWindow toolWindow = getToolWindow();
+    final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(myProject);
+    ToolWindow toolWindow = toolWindowManager == null ? null : toolWindowManager.getToolWindow(myId);
     if (toolWindow != null) {
-      myWindowManager.unregisterToolWindow(myId);
+      //noinspection deprecation
+      toolWindowManager.unregisterToolWindow(myId);
       ContentManager contentManager = toolWindow.getContentManager();
       Disposer.dispose(contentManager);
     }
@@ -392,10 +397,12 @@ public abstract class BaseTool {
     if (!isRegistered()) {
       register();
     }
-    if (getToolWindow() == null) {
+    if (myProject.isDisposed()) {
       return null;
     }
-    return getToolWindow().getContentManager();
+    ToolWindowManager wm = ToolWindowManager.getInstance(myProject);
+    ToolWindow tw = wm == null ? null : wm.getToolWindow(myId);
+    return tw == null ? null : tw.getContentManager();
   }
 
   @Override
@@ -411,6 +418,7 @@ public abstract class BaseTool {
   }
 
   public void dispose() {
+    this.myIsDisposed = true;
     // FIXME what's the contract for this method? Seems that it's only BaseProjectPlugin that cares to invoke it.
     //       There's BaseProjectTool subclass, with disposeComponent() that doesn't invoke dispose(), is it right?
     //       No idea where to put general dispose code in subclasses like UsagesViewTool - shall I use disposeComponent() or dispose()?

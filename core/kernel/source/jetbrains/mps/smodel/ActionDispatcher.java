@@ -136,6 +136,8 @@ import java.util.function.Consumer;
   }
 
   /*package*/ static boolean isControlFlowIDEA(RuntimeException ex) {
+    // hack to work around async update mechanism in com.intellij.openapi.actionSystem.impl.ActionUpdater
+    if ("com.intellij.openapi.actionSystem.impl.AwaitSharedData".equals(ex.getClass().getName())) return true;
     return isDescendant(ex.getClass(), "com.intellij.openapi.diagnostic.ControlFlowException");
   }
 

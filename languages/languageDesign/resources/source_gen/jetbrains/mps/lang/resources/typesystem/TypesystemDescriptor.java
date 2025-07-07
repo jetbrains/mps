@@ -17,6 +17,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_ConstantFieldIcon_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_IconExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -27,6 +31,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     {
       InferenceRule_Runtime inferenceRule = new typeof_NodeIconResourceExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_FileIcon_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_HelpURL_NonTypesystemRule();

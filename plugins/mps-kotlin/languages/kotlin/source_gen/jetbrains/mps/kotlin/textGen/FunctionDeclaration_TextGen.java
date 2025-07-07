@@ -10,14 +10,12 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.behavior.IInheritable__BehaviorDescriptor;
 import jetbrains.mps.lang.traceable.behavior.UnitConcept__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class FunctionDeclaration_TextGen extends TextGenDescriptorBase {
@@ -56,7 +54,7 @@ public class FunctionDeclaration_TextGen extends TextGenDescriptorBase {
     tgs.append(")");
     KotlinTextGen.returnType(ctx.getPrimaryInput(), ctx);
     KotlinTextGen.constraints(ctx.getPrimaryInput(), ctx);
-    if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(IInheritable__BehaviorDescriptor.getInheritance_id6jE_6duswG9.invoke(ctx.getPrimaryInput())), CONCEPTS.AbstractInheritanceModifier$GA))) {
+    if (!((boolean) IInheritable__BehaviorDescriptor.isAbstract_id4KPNZIZDjbY.invoke(ctx.getPrimaryInput()))) {
       tgs.append(" ");
       KotlinTextGen.functionStatements(ctx.getPrimaryInput(), ctx);
     }
@@ -75,7 +73,6 @@ public class FunctionDeclaration_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractInheritanceModifier$GA = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f2L, "jetbrains.mps.kotlin.structure.AbstractInheritanceModifier");
     /*package*/ static final SInterfaceConcept UnitConcept$1g = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept");
   }
 }

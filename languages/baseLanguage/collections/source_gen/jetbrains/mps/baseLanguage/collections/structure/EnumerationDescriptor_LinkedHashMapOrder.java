@@ -19,7 +19,7 @@ public class EnumerationDescriptor_LinkedHashMapOrder extends EnumerationDescrip
   private final EnumerationDescriptor.MemberDescriptor myMember_access_order_0 = new EnumerationDescriptor.MemberDescriptor("access_order", "access_order", 0x120c2ddcb5fL, "r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/4241665505353445531");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c2dd1862L, 0x120c2dd1863L, 0x120c2ddcb5fL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_insertion_order_0, myMember_access_order_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_insertion_order_0, myMember_access_order_0);
 
   @Nullable
   @Override

@@ -6,19 +6,18 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class FeedbackNoRefInObligatoryRole_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(FeedbackNoRefInObligatoryRole_Test.class, "${mps_home}", "r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FeedbackNoRefInObligatoryRole_Test.class).projectPath(null).modelRef("r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)").reopenProject(null).build());
 
   public FeedbackNoRefInObligatoryRole_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -35,12 +34,16 @@ public class FeedbackNoRefInObligatoryRole_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck7019192671317970783() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7019192671317968619");
+    }
 
+    public void test_NodeErrorCheck7019192671317970783() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("7019192671317969474");
-        SNode operation = getRealNodeById("7019192671317970783");
-        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "No ref in the very obligatory role 'obligatoryref'", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("7019192671317969474");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "No ref in the very obligatory role 'obligatoryref'", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

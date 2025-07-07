@@ -20,7 +20,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ImageGenerator == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a0b0c);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_ImageGenerator = cpb.create();
         }
         return props_ImageGenerator;

@@ -17,7 +17,7 @@ import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.changes.ContentRevision;
 import com.intellij.openapi.util.io.FileUtil;
 
-@GeneratedClass(node = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/3521790172251226878", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
+@GeneratedClass(nodeId = "3521790172251226878", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
 public class ModuleVcsPathPresenter extends VcsPathPresenter {
   private final Project myProject;
   public ModuleVcsPathPresenter(final Project project) {

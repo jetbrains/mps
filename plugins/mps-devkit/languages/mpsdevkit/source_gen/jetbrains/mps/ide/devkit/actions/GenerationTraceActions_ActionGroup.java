@@ -13,6 +13,7 @@ public class GenerationTraceActions_ActionGroup extends GeneratedActionGroup {
     super("GenerationTraceActions", ID, plugin);
     setIsInternal(false);
     setPopup(false);
+    updateInBackground(true);
     GenerationTraceActions_ActionGroup.this.addAction("jetbrains.mps.ide.devkit.actions.ShowOriginNode_Action");
     GenerationTraceActions_ActionGroup.this.addAction("jetbrains.mps.ide.devkit.actions.ShowGenerationTrace_Action");
     GenerationTraceActions_ActionGroup.this.addAction("jetbrains.mps.ide.devkit.actions.ShowGenerationTraceback_Action");

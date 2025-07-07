@@ -9,7 +9,7 @@ import javax.swing.JList;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.nodeEditor.MPSColors;
 
-@GeneratedClass(node = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/1560298786499489409", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
+@GeneratedClass(nodeId = "1560298786499489409", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
 /*package*/ class PathRenderer extends JBList.StripedListCellRenderer {
   public PathRenderer() {
   }

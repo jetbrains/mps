@@ -9,8 +9,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
@@ -56,31 +54,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
     setCellContext(editorCell);
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefNode_0());
-    if (nodeCondition_avk0kx_a2a()) {
-      editorCell.addEditorCell(createRefNode_1());
-    }
     editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createConstant_2());
     editorCell.addEditorCell(createRefNodeList_0());
-    if (nodeCondition_avk0kx_a6a()) {
-      editorCell.addEditorCell(createRefNodeList_1());
-    }
     editorCell.addEditorCell(createConstant_3());
     editorCell.addEditorCell(createConstant_4());
-    editorCell.addEditorCell(createRefNode_2());
-    if (nodeCondition_avk0kx_a01a()) {
-      editorCell.addEditorCell(createRefNode_3());
-    }
+    editorCell.addEditorCell(createRefNode_1());
     return editorCell;
-  }
-  private boolean nodeCondition_avk0kx_a2a() {
-    return (SLinkOperations.getTarget(myNode, LINKS.messageTarget_old$1DXA) != null);
-  }
-  private boolean nodeCondition_avk0kx_a6a() {
-    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.helginsIntention_old$EFV_)).isNotEmpty();
-  }
-  private boolean nodeCondition_avk0kx_a01a() {
-    return (SLinkOperations.getTarget(myNode, LINKS.foreignMessageSource_old$VQEu) != null);
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "node feature to highlight(optional)");
@@ -149,65 +129,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return "<no messageTarget>";
     }
   }
-  private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new messageTarget_oldSingleRoleHandler_avk0kx_c0(myNode, LINKS.messageTarget_old$1DXA, getEditorContext());
-    return provider.createCell();
-  }
-  private static class messageTarget_oldSingleRoleHandler_avk0kx_c0 extends SingleRoleCellProvider {
-    @NotNull
-    private SNode myNode;
-
-    public messageTarget_oldSingleRoleHandler_avk0kx_c0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
-      super(containmentLink, context);
-      myNode = ownerNode;
-    }
-
-    @Override
-    @NotNull
-    public SNode getNode() {
-      return myNode;
-    }
-
-    protected EditorCell createChildCell(SNode child) {
-      EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.messageTarget_old$1DXA, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.messageTarget_old$1DXA, child));
-      installCellInfo(child, editorCell, false);
-      return editorCell;
-    }
-
-
-
-    private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
-      if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
-      }
-      if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.messageTarget_old$1DXA);
-      }
-      Style style = new StyleImpl();
-      style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
-      style.set(StyleAttributes.STRIKE_OUT, true);
-      editorCell.getStyle().putAll(style);
-    }
-    @Override
-    protected EditorCell createEmptyCell() {
-      getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.messageTarget_old$1DXA));
-      try {
-        EditorCell editorCell = super.createEmptyCell();
-        editorCell.setCellId("empty_messageTarget_old");
-        installCellInfo(null, editorCell, true);
-        setCellContext(editorCell);
-        return editorCell;
-      } finally {
-        getCellFactory().popCellContext();
-      }
-    }
-    protected String getNoTargetText() {
-      return "<no messageTarget_old>";
-    }
-  }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, " ");
     editorCell.setCellId("Constant_avk0kx_1");
@@ -228,7 +149,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new helginsIntentionListHandler_avk0kx_f0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new helginsIntentionListHandler_avk0kx_e0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_helginsIntention");
     Style style = new StyleImpl();
@@ -237,11 +158,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class helginsIntentionListHandler_avk0kx_f0 extends RefNodeListHandler {
+  private static class helginsIntentionListHandler_avk0kx_e0 extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public helginsIntentionListHandler_avk0kx_f0(SNode ownerNode, EditorContext context) {
+    public helginsIntentionListHandler_avk0kx_e0(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -264,85 +185,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(helginsIntentionListHandler_avk0kx_f0.this.getNode(), LINKS.helginsIntention$WhDe));
-      try {
-        EditorCell emptyCell = null;
-        emptyCell = super.createEmptyCell();
-        installElementCellActions(null, emptyCell, true);
-        setCellContext(emptyCell);
-        return emptyCell;
-      } finally {
-        getCellFactory().popCellContext();
-      }
-    }
-
-    private static final Object OBJ = new Object();
-
-    public void installElementCellActions(SNode elementNode, EditorCell elementCell, boolean isEmptyCell) {
-      if (elementCell.getUserObject(AbstractCellListHandler.ELEMENT_CELL_COMPLETE_SET) == null) {
-        if (elementCell.getSubstituteInfo() == null || elementCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-          elementCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_COMPLETE_SET, OBJ);
-          elementCell.setSubstituteInfo((isEmptyCell ? new SEmptyContainmentSubstituteInfo(elementCell) : new SChildSubstituteInfo(elementCell)));
-        }
-      }
-      if (elementCell.getUserObject(AbstractCellListHandler.ELEMENT_CELL_DELETE_SET) == null) {
-        if (elementNode != null) {
-          elementCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_DELETE_SET, OBJ);
-          elementCell.setAction(CellActionType.DELETE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
-        }
-      }
-      if (elementCell.getUserObject(ELEMENT_CELL_BACKSPACE_SET) == null) {
-        if (elementNode != null) {
-          elementCell.putUserObject(ELEMENT_CELL_BACKSPACE_SET, OBJ);
-          elementCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
-        }
-      }
-      if (elementCell.getUserObject(AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET) == null) {
-        if (elementNode != null) {
-          elementCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET, OBJ);
-        }
-      }
-    }
-  }
-  private EditorCell createRefNodeList_1() {
-    AbstractCellListHandler handler = new helginsIntention_oldListHandler_avk0kx_g0(myNode, getEditorContext());
-    EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
-    editorCell.setCellId("refNodeList_helginsIntention_old");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.INDENT_LAYOUT_CHILDREN_NEWLINE, true);
-    style.set(StyleAttributes.STRIKE_OUT, true);
-    editorCell.getStyle().putAll(style);
-    editorCell.setSRole(handler.getElementSRole());
-    return editorCell;
-  }
-  private static class helginsIntention_oldListHandler_avk0kx_g0 extends RefNodeListHandler {
-    @NotNull
-    private SNode myNode;
-
-    public helginsIntention_oldListHandler_avk0kx_g0(SNode ownerNode, EditorContext context) {
-      super(context, false);
-      myNode = ownerNode;
-    }
-
-    @NotNull
-    public SNode getNode() {
-      return myNode;
-    }
-    public SContainmentLink getSLink() {
-      return LINKS.helginsIntention_old$EFV_;
-    }
-    public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.TypesystemIntention$sw;
-    }
-
-    public EditorCell createNodeCell(SNode elementNode) {
-      EditorCell elementCell = getUpdateSession().updateChildNodeCell(elementNode);
-      installElementCellActions(elementNode, elementCell, false);
-      return elementCell;
-    }
-    public EditorCell createEmptyCell() {
-      getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(helginsIntention_oldListHandler_avk0kx_g0.this.getNode(), LINKS.helginsIntention_old$EFV_));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(helginsIntentionListHandler_avk0kx_e0.this.getNode(), LINKS.helginsIntention$WhDe));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -401,15 +244,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new foreignMessageSourceSingleRoleHandler_avk0kx_j0(myNode, LINKS.foreignMessageSource$aPMj, getEditorContext());
+  private EditorCell createRefNode_1() {
+    SingleRoleCellProvider provider = new foreignMessageSourceSingleRoleHandler_avk0kx_h0(myNode, LINKS.foreignMessageSource$aPMj, getEditorContext());
     return provider.createCell();
   }
-  private static class foreignMessageSourceSingleRoleHandler_avk0kx_j0 extends SingleRoleCellProvider {
+  private static class foreignMessageSourceSingleRoleHandler_avk0kx_h0 extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public foreignMessageSourceSingleRoleHandler_avk0kx_j0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public foreignMessageSourceSingleRoleHandler_avk0kx_h0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -459,70 +302,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return "<no foreignMessageSource>";
     }
   }
-  private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new foreignMessageSource_oldSingleRoleHandler_avk0kx_k0(myNode, LINKS.foreignMessageSource_old$VQEu, getEditorContext());
-    return provider.createCell();
-  }
-  private static class foreignMessageSource_oldSingleRoleHandler_avk0kx_k0 extends SingleRoleCellProvider {
-    @NotNull
-    private SNode myNode;
-
-    public foreignMessageSource_oldSingleRoleHandler_avk0kx_k0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
-      super(containmentLink, context);
-      myNode = ownerNode;
-    }
-
-    @Override
-    @NotNull
-    public SNode getNode() {
-      return myNode;
-    }
-
-    protected EditorCell createChildCell(SNode child) {
-      EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.foreignMessageSource_old$VQEu, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.foreignMessageSource_old$VQEu, child));
-      installCellInfo(child, editorCell, false);
-      return editorCell;
-    }
-
-
-
-    private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
-      if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
-      }
-      if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.foreignMessageSource_old$VQEu);
-      }
-      Style style = new StyleImpl();
-      style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
-      style.set(StyleAttributes.STRIKE_OUT, true);
-      editorCell.getStyle().putAll(style);
-    }
-    @Override
-    protected EditorCell createEmptyCell() {
-      getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.foreignMessageSource_old$VQEu));
-      try {
-        EditorCell editorCell = super.createEmptyCell();
-        editorCell.setCellId("empty_foreignMessageSource_old");
-        installCellInfo(null, editorCell, true);
-        setCellContext(editorCell);
-        return editorCell;
-      } finally {
-        getCellFactory().popCellContext();
-      }
-    }
-    protected String getNoTargetText() {
-      return "<no foreignMessageSource_old>";
-    }
-  }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink messageTarget_old$1DXA = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4abc990L, "messageTarget_old");
-    /*package*/ static final SContainmentLink helginsIntention_old$EFV_ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e7L, "helginsIntention_old");
-    /*package*/ static final SContainmentLink foreignMessageSource_old$VQEu = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x37a16b7744c2e061L, "foreignMessageSource_old");
     /*package*/ static final SContainmentLink messageTarget$3zAg = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5cf3L, "messageTarget");
     /*package*/ static final SContainmentLink helginsIntention$WhDe = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
     /*package*/ static final SContainmentLink foreignMessageSource$aPMj = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5dd2L, "foreignMessageSource");

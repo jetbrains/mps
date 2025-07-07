@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import com.intellij.ide.TooltipEvent;
 import com.intellij.openapi.ui.popup.Balloon;
+import com.intellij.util.ui.JBInsets;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.ArrayList;
@@ -92,7 +93,8 @@ public class TooltipManager {
         };
         myLastIdeTooltip.setPreferredPosition(Balloon.Position.above);
         myLastIdeTooltip.setCalloutShift(myActiveTooltip.getHeight() / 2 + 2);
-        myTimer.mouseMovedIn(myActiveTooltip.getTimingProperties(), event.isControlDown(), isNotEmptyString(check_7mhxd1_a2a0f0b0g0m(as_7mhxd1_a0a0c0a5a1a6a21(myEditorComponent, jetbrains.mps.ide.tooltips.TooltipComponent.class), event)));
+        myLastIdeTooltip.setBorderInsets(new JBInsets(0));
+        myTimer.mouseMovedIn(myActiveTooltip.getTimingProperties(), event.isControlDown(), isNotEmptyString(check_7mhxd1_a2a0g0b0g0m(as_7mhxd1_a0a0c0a6a1a6a21(myEditorComponent, jetbrains.mps.ide.tooltips.TooltipComponent.class), event)));
       }
     }
   }
@@ -171,7 +173,7 @@ public class TooltipManager {
     }
     return null;
   }
-  private static String check_7mhxd1_a2a0f0b0g0m(jetbrains.mps.ide.tooltips.TooltipComponent checkedDotOperand, MouseEvent event) {
+  private static String check_7mhxd1_a2a0g0b0g0m(jetbrains.mps.ide.tooltips.TooltipComponent checkedDotOperand, MouseEvent event) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getMPSTooltipText(event);
     }
@@ -180,7 +182,7 @@ public class TooltipManager {
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
-  private static <T> T as_7mhxd1_a0a0c0a5a1a6a21(Object o, Class<T> type) {
+  private static <T> T as_7mhxd1_a0a0c0a6a1a6a21(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

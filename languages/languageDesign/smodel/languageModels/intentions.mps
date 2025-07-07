@@ -19,7 +19,6 @@
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
-    <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="tp24" ref="r:00000000-0000-4000-0000-011c89590300(jetbrains.mps.lang.smodel.scripts)" />
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" />
@@ -732,14 +731,14 @@
     </node>
   </node>
   <node concept="2S6QgY" id="hx2nQVL">
-    <property role="TrG5h" value="ReplaceConceptIsWithConceptEquals" />
+    <property role="TrG5h" value="ReplaceSingleConceptWithList" />
     <property role="3GE5qa" value="operation.parameter" />
     <ref role="2ZfgGC" to="tp25:gDxMEHC" resolve="OperationParm_Concept" />
     <node concept="2S6ZIM" id="hx2nQVM" role="2ZfVej">
       <node concept="3clFbS" id="hx2nQVN" role="2VODD2">
         <node concept="3clFbF" id="hx2qdaI" role="3cqZAp">
           <node concept="Xl_RD" id="hx2qdaJ" role="3clFbG">
-            <property role="Xl_RC" value="Replace 'concept=' with Concept List" />
+            <property role="Xl_RC" value="Replace Concept with a List of Concepts" />
           </node>
         </node>
       </node>

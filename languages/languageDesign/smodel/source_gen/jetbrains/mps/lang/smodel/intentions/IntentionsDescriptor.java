@@ -114,7 +114,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
-          intentions[0] = new ReplaceConceptIsWithConceptEquals_Intention();
+          intentions[0] = new ReplaceSingleConceptWithList_Intention();
         }
         break;
       case 12:
@@ -150,7 +150,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   public Collection<IntentionFactory> getAllIntentions() {
     IntentionFactory[] rv = new IntentionFactory[18];
     rv[0] = new AddSNodeCastStatement_Intention();
-    rv[1] = new ReplaceConceptIsWithConceptEquals_Intention();
+    rv[1] = new ReplaceSingleConceptWithList_Intention();
     rv[2] = new Replace_ListType_withNodeListType_Intention();
     rv[3] = new AddOperationParameter_Intention();
     rv[4] = new ConvertPropertySetToAssignment_Intention();

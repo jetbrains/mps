@@ -18,7 +18,7 @@ import java.util.HashSet;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.project.DevKit;
 
-@GeneratedClass(node = "r:25996281-7301-4cd9-9368-f68f49d5af63(jetbrains.mps.ide.ui.dialogs.properties)/3995997045458695685", model = "r:25996281-7301-4cd9-9368-f68f49d5af63(jetbrains.mps.ide.ui.dialogs.properties)")
+@GeneratedClass(nodeId = "3995997045458695685", model = "r:25996281-7301-4cd9-9368-f68f49d5af63(jetbrains.mps.ide.ui.dialogs.properties)")
 public class ModelProperties {
   private final List<SModelReference> myImportedModels = new ArrayList<SModelReference>();
   private final List<SLanguage> myUsedLanguages = new ArrayList<SLanguage>();

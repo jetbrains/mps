@@ -10,16 +10,18 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.smodel.GeneralModuleFactory;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.persistence.DefaultModelRoot;
-import jetbrains.mps.project.ProjectPathUtil;
+import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
+import jetbrains.mps.project.facets.JavaModuleFacetImpl;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 
-@GeneratedClass(node = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)/1723752571811373979", model = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)")
+@GeneratedClass(nodeId = "1723752571811373979", model = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)")
 public class SolutionProducer {
   private static final Logger LOG = Logger.getLogger(SolutionProducer.class);
   private final MPSProject myProject;
@@ -35,36 +37,11 @@ public class SolutionProducer {
     // FIXME error reporting
 
     SolutionDescriptor descriptor = createSolutionDescriptor(namespace, descriptorFile);
-    if (myJavaFacetLevel == JavaFacetLevel.Off) {
-      descriptor.getModuleFacetDescriptors().removeIf((d) -> JavaModuleFacet.FACET_TYPE.equals(d.getType()));
-    }
-    if (myJavaFacetLevel == JavaFacetLevel.Regular || myJavaFacetLevel == JavaFacetLevel.Contributor) {
-      // XXX would be better to have this value set inside JMFI.forNewJavaCodeModule()
-      JavaModuleFacetImpl.setDefaultClassesGenLocation(descriptor, moduleDir);
-    }
+    configureJavaFacet(descriptor);
+
     Solution module = (Solution) new GeneralModuleFactory().instantiate(descriptor, descriptorFile);
     myProject.addModule(module);
     new ModuleDependencyVersions(myProject.getComponent(LanguageRegistry.class), myProject.getRepository()).update(module);
-    final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
-    if (myJavaFacetLevel != JavaFacetLevel.Off && jmf != null) {
-      switch (myJavaFacetLevel) {
-        case Sandbox:
-          jmf.setCompile(JavaModuleFacet.Compile.None);
-          jmf.setLoadClasses(JavaModuleFacet.LoadClasses.NotAvailable);
-          jmf.setLoadExtensions(JavaModuleFacet.LoadExtensions.NotAvailable);
-          break;
-        case Regular:
-          jmf.setCompile(JavaModuleFacet.Compile.MPS);
-          jmf.setLoadClasses(JavaModuleFacet.LoadClasses.ManagedByMPS);
-          jmf.setLoadExtensions(JavaModuleFacet.LoadExtensions.NotAvailable);
-          break;
-        case Contributor:
-          jmf.setCompile(JavaModuleFacet.Compile.MPS);
-          jmf.setLoadClasses(JavaModuleFacet.LoadClasses.ManagedByMPS);
-          jmf.setLoadExtensions(JavaModuleFacet.LoadExtensions.Plugin);
-          break;
-      }
-    }
     module.save();
     return module;
   }
@@ -79,8 +56,7 @@ public class SolutionProducer {
     myJavaFacetLevel = JavaFacetLevel.Sandbox;
   }
 
-  public static SolutionDescriptor createSolutionDescriptor(String namespace, IFile descriptorFile) {
-    // FIXME public until uses in NewModuleUtil gone
+  private static SolutionDescriptor createSolutionDescriptor(String namespace, IFile descriptorFile) {
     SolutionDescriptor descriptor = new SolutionDescriptor();
     descriptor.setNamespace(namespace);
     descriptor.setId(ModuleId.regular());
@@ -98,11 +74,29 @@ public class SolutionProducer {
     }
 
     descriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(modelsDir.getParent(), modelsDir));
-    // keep JMF for a new descriptor as it used to be, although need for JMF is not apparent, and caller shall configure 
-    // module descriptor and facet descriptors according to own needs
-    descriptor.getModuleFacetDescriptors().add(JavaModuleFacetImpl.forNewJavaCodeModule());
-    ProjectPathUtil.setGeneratorOutputPath(descriptor, moduleLocation.findChild("source_gen").getPath());
+    descriptor.setOutputRoot(MacrosFactory.MODULE + "/source_gen");
     return descriptor;
+  }
+
+  private void configureJavaFacet(ModuleDescriptor md) {
+    ModuleFacetDescriptor mfd = null;
+    switch (myJavaFacetLevel) {
+      case Off:
+        break;
+      case Sandbox:
+        mfd = JavaModuleFacetImpl.forJavaCodeModule(JavaModuleFacet.Compile.None, JavaModuleFacet.LoadClasses.NotAvailable, JavaModuleFacet.LoadExtensions.NotAvailable);
+        break;
+      case Regular:
+        mfd = JavaModuleFacetImpl.forJavaCodeModule(JavaModuleFacet.Compile.MPS, JavaModuleFacet.LoadClasses.ManagedByMPS, JavaModuleFacet.LoadExtensions.NotAvailable);
+        break;
+      case Contributor:
+        mfd = JavaModuleFacetImpl.forJavaCodeModule(JavaModuleFacet.Compile.MPS, JavaModuleFacet.LoadClasses.ManagedByMPS, JavaModuleFacet.LoadExtensions.Plugin);
+        break;
+    }
+    if (mfd != null) {
+      md.getModuleFacetDescriptors().add(mfd);
+    }
+
   }
 
   private enum JavaFacetLevel {

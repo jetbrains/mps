@@ -2,7 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)">
   <persistence version="9" />
   <languages>
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -32,9 +32,6 @@
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
-      </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
       </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
@@ -942,13 +939,6 @@
       <property role="TrG5h" value="messageType" />
       <property role="IQ2nx" value="1169670356567" />
       <ref role="AX2Wp" node="3Ftr4R6BFlG" resolve="GeneratorMessageType" />
-      <node concept="3l_iC" id="3Ftr4R6BH5Y" role="lGtFl">
-        <node concept="1TJgyi" id="h1lMjTn" role="3l_iP">
-          <property role="TrG5h" value="messageType" />
-          <property role="IQ2nx" value="1169670356567" />
-          <ref role="AX2Wp" node="3Ftr4R6BFlG" resolve="GeneratorMessageType" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="h1lLB5n" role="1TKVEl">
       <property role="TrG5h" value="messageText" />
@@ -1084,13 +1074,6 @@
       <property role="TrG5h" value="scriptKind" />
       <property role="IQ2nx" value="1195595592106" />
       <ref role="AX2Wp" node="3Ftr4R6BFlL" resolve="MappingScriptKind" />
-      <node concept="3l_iC" id="3Ftr4R6BH60" role="lGtFl">
-        <node concept="1TJgyi" id="hpv3f6E" role="3l_iP">
-          <property role="TrG5h" value="scriptKind" />
-          <property role="IQ2nx" value="1195595592106" />
-          <ref role="AX2Wp" node="3Ftr4R6BFlL" resolve="MappingScriptKind" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="hpv3jWJ" role="1TKVEl">
       <property role="TrG5h" value="modifiesModel" />

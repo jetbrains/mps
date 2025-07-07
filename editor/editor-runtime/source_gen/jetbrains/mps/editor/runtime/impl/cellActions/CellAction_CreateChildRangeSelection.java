@@ -9,7 +9,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.nodeEditor.selection.NodeRangeSelection;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 
-@GeneratedClass(node = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)/6859763651190628904", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
+@GeneratedClass(nodeId = "6859763651190628904", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
 public class CellAction_CreateChildRangeSelection extends AbstractCellAction {
   private SNode myNode;
   private EditorContext myEditorContext;

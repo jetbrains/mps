@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.classloading.ClassLoaderManager.DeploymentStatuses;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
@@ -26,15 +25,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
-import org.jetbrains.mps.openapi.module.SModuleId;
-import org.jetbrains.mps.openapi.module.SModuleListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -43,14 +38,9 @@ import java.util.Set;
  */
 public class FakeReloadableModule implements ReloadableModule {
   private final SModuleReference myModuleReference;
-  private final List<SDependency> myDeps = new ArrayList<>();
 
   public FakeReloadableModule(String name) {
     myModuleReference = new ModuleReference(name, ModuleId.regular());
-  }
-
-  public void addDependency(SDependency dep) {
-    myDeps.add(dep);
   }
 
   @NotNull
@@ -67,38 +57,8 @@ public class FakeReloadableModule implements ReloadableModule {
 
   @NotNull
   @Override
-  public ClassLoaderManager getCLM() {
-    // XXX test code, e.g. CrossDependentTaskGenerator1.firstCLTask, use external fields to keep ModuleClassLoader instances
-    //     I wonder why not ReloadableModule (or even SModule) would allow get/set CL operations, instead of odd direct and
-    //     indirect CLM access?
-    throw new UnsupportedOperationException("Not implemented");
-  }
-
-  @NotNull
-  @Override
   public MPSModuleClassLoader getClassLoader() {
     throw new UnsupportedOperationException("Not implemented");
-  }
-
-  @Override
-  public void reload() {
-  }
-
-  @NotNull
-  @Override
-  public DeploymentStatus getStatus() {
-    return DeploymentStatuses.DEPLOYED;
-  }
-
-  @NotNull
-  @Override
-  public SModuleId getModuleId() {
-    return myModuleReference.getModuleId();
-  }
-
-  @Override
-  public String getModuleName() {
-    return myModuleReference.getModuleName();
   }
 
   @NotNull
@@ -124,17 +84,12 @@ public class FakeReloadableModule implements ReloadableModule {
 
   @Override
   public Iterable<SDependency> getDeclaredDependencies() {
-    return myDeps;
+    return Collections.emptyList();
   }
 
   @Override
   public Set<SLanguage> getUsedLanguages() {
-    return null;
-  }
-
-  @Override
-  public int getUsedLanguageVersion(@NotNull SLanguage usedLanguage) {
-    return 0;
+    return Collections.emptySet();
   }
 
   @Nullable
@@ -155,24 +110,8 @@ public class FakeReloadableModule implements ReloadableModule {
     return Collections.emptyList();
   }
 
-  @Nullable
-  @Override
-  public <T extends SModuleFacet> T getFacet(@NotNull Class<T> clazz) {
-    return null;
-  }
-
   @Override
   public Iterable<ModelRoot> getModelRoots() {
     return Collections.emptyList();
-  }
-
-  @Override
-  public void addModuleListener(SModuleListener listener) {
-
-  }
-
-  @Override
-  public void removeModuleListener(SModuleListener listener) {
-
   }
 }

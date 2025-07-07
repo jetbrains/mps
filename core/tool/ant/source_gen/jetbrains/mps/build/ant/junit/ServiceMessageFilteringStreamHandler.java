@@ -16,7 +16,7 @@ import org.apache.tools.ant.Task;
  * wrapped into a new service message, correspondingly "testStdOut" and "testStdErr", which is forwarded
  * to {@code log()} method.
  */
-@GeneratedClass(node = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)/1651753373022126287", model = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)")
+@GeneratedClass(nodeId = "1651753373022126287", model = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)")
 public class ServiceMessageFilteringStreamHandler extends MyExecuteStreamHandler implements ExecuteStreamHandler {
 
   private AtomicBoolean testStarted = new AtomicBoolean(false);

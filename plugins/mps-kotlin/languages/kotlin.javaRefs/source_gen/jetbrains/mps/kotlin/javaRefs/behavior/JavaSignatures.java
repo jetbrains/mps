@@ -13,15 +13,14 @@ import jetbrains.mps.kotlin.api.members.SignatureCollector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
-import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.kotlin.signatures.AccessorKind;
 import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration;
-import jetbrains.mps.kotlin.api.members.TypeExpander;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration;
+import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaVariableHelper;
+import jetbrains.mps.kotlin.signatures.AccessorKind;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.kotlin.signatures.MemberSignature;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -53,52 +52,11 @@ public class JavaSignatures {
       return;
     }
 
-    SignatureBuilder.create(field, PropertySignature.class).withSignatures((_node) -> {
-      return (Iterable<PropertySignature>) () -> {
-        return new YieldingIterator<PropertySignature>() {
-          private int __CP__ = 0;
-          protected boolean moveToNext() {
-__loop__:
-            do {
-__switch__:
-              switch (this.__CP__) {
-                case -1:
-                  assert false : "Internal error";
-                  return false;
-                case 3:
-                  if (!(isFinal)) {
-                    this.__CP__ = 4;
-                    break;
-                  }
-                  this.__CP__ = 1;
-                  break;
-                case 2:
-                  this.__CP__ = 3;
-                  this.yield(new PropertySignature(SPropertyOperations.getString(field, PROPS.name$MnvL), AccessorKind.GETTER));
-                  return true;
-                case 5:
-                  this.__CP__ = 1;
-                  this.yield(new PropertySignature(SPropertyOperations.getString(field, PROPS.name$MnvL), AccessorKind.SETTER));
-                  return true;
-                case 0:
-                  this.__CP__ = 2;
-                  break;
-                case 4:
-                  this.__CP__ = 5;
-                  break;
-                default:
-                  break __loop__;
-              }
-            } while (true);
-            return false;
-          }
-        };
-      };
-    }).withAttribute(SignatureAttributeKey.VISIBILITY, JavaSignatures::convertVisibility).declareTo(collector);
+    SignatureBuilder.create(field, PropertySignature.class).withSignatures((_node) -> PropertySignature.signaturesOf(SPropertyOperations.getString(field, PROPS.name$MnvL), !(isFinal), null)).withAttribute(SignatureAttributeKey.VISIBILITY, JavaSignatures::convertVisibility).declareTo(collector);
   }
 
   public static void declareConstructor(SignatureCollector collector, final SNode method) {
-    SignatureBuilder.create(method, FunctionSignature.class).withSignature((_node) -> new FunctionSignature(new JavaDefaultConstructorDeclaration(method), (TypeExpander) null)).declareTo(collector);
+    SignatureBuilder.create(method, FunctionSignature.class).withSignature((_node) -> new FunctionSignature(new JavaDefaultConstructorDeclaration(method))).declareTo(collector);
   }
 
   public static void declareMethod(final SignatureCollector collector, final SNode method) {
@@ -139,11 +97,11 @@ __switch__:
                     break;
                   case 5:
                     this.__CP__ = 4;
-                    this.yield(new PropertySignature(JavaVariableHelper.accessorNameOf(method), AccessorKind.GETTER));
+                    this.yield(new PropertySignature(JavaVariableHelper.accessorNameOf(method), AccessorKind.GETTER, null));
                     return true;
                   case 7:
                     this.__CP__ = 1;
-                    this.yield(new PropertySignature(JavaVariableHelper.accessorNameOf(method), AccessorKind.SETTER));
+                    this.yield(new PropertySignature(JavaVariableHelper.accessorNameOf(method), AccessorKind.SETTER, null));
                     return true;
                   case 0:
                     this.__CP__ = 2;

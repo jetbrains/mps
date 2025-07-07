@@ -28,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Nls;
 import javax.swing.JComponent;
 
-@GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199793466714", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
+@GeneratedClass(nodeId = "3719390199793466714", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class ModelCheckerPreferencesPage implements SearchableConfigurable {
   private final JPanel myPage;
   private final JSlider myCheckingLevelSlider = new JSlider(JSlider.VERTICAL, 0, ModelCheckerSettings.CheckingLevel.values().length - 1, 0);

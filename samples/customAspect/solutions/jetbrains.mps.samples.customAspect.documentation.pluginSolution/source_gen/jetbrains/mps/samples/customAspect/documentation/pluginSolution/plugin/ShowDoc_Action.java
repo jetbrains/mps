@@ -14,7 +14,7 @@ import jetbrains.mps.samples.customAspect.documentation.runtime.DocumentationAsp
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.MPSProject;
-import javax.swing.JOptionPane;
+import com.intellij.openapi.ui.Messages;
 
 public class ShowDoc_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -76,7 +76,7 @@ public class ShowDoc_Action extends BaseAction {
 
     String docText = docDescriptor.getConceptDocumentation(concept);
     if (docText != null) {
-      JOptionPane.showMessageDialog(null, docText);
+      Messages.showInfoMessage(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), docText, "Documentation");
     }
   }
 }

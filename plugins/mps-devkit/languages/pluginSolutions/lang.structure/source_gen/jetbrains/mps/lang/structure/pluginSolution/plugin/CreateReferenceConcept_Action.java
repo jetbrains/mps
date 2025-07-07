@@ -21,7 +21,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.Language;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -83,7 +83,7 @@ public class CreateReferenceConcept_Action extends BaseAction {
     SModelOperations.addRootNode(editorModel, editor);
     SPropertyOperations.set(editor, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$EkXl));
 
-    NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), concept, true, true);
+    new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).shallSelect(true).open(SNodeOperations.getPointer(concept));
   }
   private static SNode _quotation_createNode_vn7eng_a0b0a(Object parameter_1, Object parameter_2, Object parameter_3) {
     SNode quotedNode_4 = null;

@@ -4,28 +4,29 @@ package jetbrains.mps.ide.devkit.actions;
 
 import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
 import javax.swing.Icon;
+import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowAnchor;
+import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.devkit.components.NodeExplorerComponent;
-import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 
 public class NodeExplorer_Tool extends BaseTabbedProjectTool {
   private static final Icon ICON = null;
-  private Project myProject;
+  private MPSProject myProject;
   public NodeExplorer_Tool(Project project) {
     super(project, "Node Explorer", null, ICON, ToolWindowAnchor.BOTTOM, true);
   }
   public void init(Project project) {
     super.init(project);
-    NodeExplorer_Tool.this.myProject = project;
+    NodeExplorer_Tool.this.myProject = ProjectHelper.fromIdeaProject(project);
   }
   public void dispose() {
     super.dispose();
   }
   public void showNode(SNode node) {
-    final NodeExplorerComponent nodeExplorer = new NodeExplorerComponent(NodeExplorer_Tool.this.myProject.getComponent(MPSProject.class), node);
+    final NodeExplorerComponent nodeExplorer = new NodeExplorerComponent(NodeExplorer_Tool.this.myProject, node);
     nodeExplorer.setCloseAction(() -> NodeExplorer_Tool.this.closeTab(nodeExplorer));
     NodeExplorer_Tool.this.addTab(nodeExplorer, node.toString(), GlobalIconManager.getInstance().getIconFor(node), null, true);
   }

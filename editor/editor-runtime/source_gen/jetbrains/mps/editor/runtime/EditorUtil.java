@@ -16,21 +16,21 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
-import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.project.AbstractModule;
 import java.awt.Component;
+import com.intellij.execution.process.ProcessIOExecutorService;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.util.IFileUtil;
+import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
+import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import javax.swing.JButton;
 import javax.swing.AbstractAction;
@@ -38,7 +38,7 @@ import java.awt.event.ActionEvent;
 import com.intellij.openapi.fileChooser.FileChooser;
 import java.awt.Dimension;
 
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/7973955287399271868", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+@GeneratedClass(nodeId = "7973955287399271868", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class EditorUtil {
 
   /**
@@ -88,34 +88,45 @@ public class EditorUtil {
     });
   }
 
-  public static JComponent createSelectImageButton(final SNode node, final SProperty property, final EditorContext context, final Iterable<String> supportedFormats, @NotNull final PathShrinker shrinkPath, @NotNull _FunctionTypes._return_P1_E0<? extends String, ? super String> expandPath) {
-    final FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor().withFileFilter((VirtualFile f) -> Sequence.fromIterable(supportedFormats).contains(f.getExtension()));
+  public static JComponent createSelectImageButton(final SNode node, final SProperty property, final EditorContext context, final Iterable<String> supportedFormats, @NotNull final PathShrinker shrinkPath, @NotNull final _FunctionTypes._return_P1_E0<? extends String, ? super String> expandPath) {
+    var descriptor = FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor().withFileFilter((f) -> Sequence.fromIterable(supportedFormats).contains(f.getExtension()));
     descriptor.setTitle("Select Image File");
 
-    final IFile moduleDir = new ModelAccessHelper(context.getRepository()).runReadAction(() -> ((AbstractModule) SNodeOperations.getModel(node).getModule()).getModuleSourceDir());
+    return createSelectButton(node, property, context, descriptor, expandPath, (final IFile chosenFile, final Component parentComponent) -> {
+      // VFS operations (findChild(), getPath() and exists()) should not be called on EDT (might trigger VFS update)
+      ProcessIOExecutorService.INSTANCE.execute(() -> {
+        final var modulePath = expandPath.invoke(MacrosFactory.MODULE);
+        final var chosenFileName = chosenFile.getName();
 
-    return createSelectButton(node, property, context, descriptor, expandPath, (final IFile chosenFile, Component parentComponent) -> {
-      boolean isUnderModule = FileUtil.isAncestor(moduleDir.getPath(), chosenFile.getPath());
-      final Wrappers._T<IFile> result = new Wrappers._T<IFile>(chosenFile);
+        // sort of hack to avoid dialog if ${module} macro couldn't get resolved
+        final var isUnderModule = (MacrosFactory.MODULE.equals(modulePath) ? true : FileUtil.isAncestor(modulePath, chosenFile.getPath()));
+        final var resultFile = (isUnderModule ? chosenFile : chosenFile.getFileSystem().getFile(modulePath + "/icons/" + chosenFileName));
+        final var needOverwrite = !(isUnderModule) && resultFile.exists();
+        final var resultPath = resultFile.getPath();
 
-      if (!(isUnderModule)) {
-        String message = String.format("The image file is outside of the module directory.%nMPS will copy the file to %s/icons folder.%nWould you like to proceed?", moduleDir.getPath());
-        if (Messages.showYesNoDialog(parentComponent, message, "Copy Image", Messages.getQuestionIcon()) != Messages.YES) {
-          return;
-        }
+        // Dialogs should be called on EDT
+        ApplicationManager.getApplication().invokeLater(() -> {
+          if (!(isUnderModule)) {
+            String message = String.format("The image file is outside of the module directory.%nMPS will copy the file to %s/icons folder.%nWould you like to proceed?", modulePath);
+            if (Messages.showYesNoDialog(parentComponent, message, "Copy Image", Messages.getQuestionIcon()) != Messages.YES) {
+              return;
+            }
 
-        final IFile copiedFile = moduleDir.findChild("icons").findChild(chosenFile.getName());
-        if (copiedFile.exists()) {
-          String rewriteMessage = String.format("A file named %s already exists in the target folder.%nDo you want to replace it?", chosenFile.getName());
-          if (Messages.showYesNoDialog(parentComponent, rewriteMessage, "Warning", Messages.getWarningIcon()) != Messages.YES) {
-            return;
+            if (needOverwrite) {
+              String rewriteMessage = String.format("A file named %s already exists in the target folder.%nDo you want to replace it?", chosenFileName);
+
+              if (Messages.showYesNoDialog(parentComponent, rewriteMessage, "Warning", Messages.getWarningIcon()) != Messages.YES) {
+                return;
+              }
+            }
+
+            context.getRepository().getModelAccess().runWriteAction(() -> IFileUtil.copyFileContent(chosenFile, resultFile));
           }
-        }
-        context.getRepository().getModelAccess().runWriteAction(() -> IFileUtil.copyFileContent(chosenFile, copiedFile));
-        result.value = copiedFile;
-      }
 
-      context.getRepository().getModelAccess().executeCommand(() -> node.setProperty(property, shrinkPath.shrink(result.value.getPath(), node.getProperty(property))));
+          // Change in write action, in current (EDT) thread
+          context.getRepository().getModelAccess().executeCommand(() -> node.setProperty(property, shrinkPath.shrink(resultPath, node.getProperty(property))));
+        });
+      });
     });
   }
 

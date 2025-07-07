@@ -7,7 +7,7 @@ import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import jetbrains.mps.logging.Logger;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -40,7 +40,7 @@ import com.intellij.util.WaitFor;
 public class JUnitInProcessTermination_Test extends BaseTransformationTest {
   private static final Logger LOG = Logger.getLogger(JUnitInProcessTermination_Test.class);
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(JUnitInProcessTermination_Test.class, "${mps_home}", "r:ff98d12f-bc65-4639-94c3-dee022b33791(jetbrains.mps.execution.impl.configurations.tests.inprocess@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JUnitInProcessTermination_Test.class).projectPath(null).modelRef("r:ff98d12f-bc65-4639-94c3-dee022b33791(jetbrains.mps.execution.impl.configurations.tests.inprocess@tests)").reopenProject(null).build());
 
   public JUnitInProcessTermination_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -57,7 +57,13 @@ public class JUnitInProcessTermination_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_terminate() throws Exception {
+      initTestNodes();
       this.startAndTerminate(new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", "6339244025082972090")));
     }
 

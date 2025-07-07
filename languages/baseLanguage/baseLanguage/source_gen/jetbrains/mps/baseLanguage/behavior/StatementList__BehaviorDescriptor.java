@@ -149,9 +149,9 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
       if (childStatement == statement) {
         break;
       }
-      SNode var = ILocalVariableElement__BehaviorDescriptor.getLocalVariableDeclaration_idi1ItFZH.invoke(statement);
-      if (var != null) {
-        ListSequence.fromList(result).addElement(var);
+      List<SNode> vars = ILocalVariableElement__BehaviorDescriptor.getAllLocalVariableDeclarations_id3xYtul1v6S1.invoke(statement);
+      if (ListSequence.fromList(vars).isNotEmpty()) {
+        ListSequence.fromList(result).addSequence(ListSequence.fromList(vars));
       }
     }
 
@@ -163,7 +163,7 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
 
     for (int num = 0; num < index; num++) {
       if (SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$53DE)).getElement(num), CONCEPTS.ILocalVariableElement$nm)) {
-        ListSequence.fromList(result).addElement(ILocalVariableElement__BehaviorDescriptor.getLocalVariableDeclaration_idi1ItFZH.invoke(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$53DE)).getElement(num), CONCEPTS.ILocalVariableElement$nm)));
+        ListSequence.fromList(result).addSequence(ListSequence.fromList(ILocalVariableElement__BehaviorDescriptor.getAllLocalVariableDeclarations_id3xYtul1v6S1.invoke(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$53DE)).getElement(num), CONCEPTS.ILocalVariableElement$nm))));
       }
     }
 

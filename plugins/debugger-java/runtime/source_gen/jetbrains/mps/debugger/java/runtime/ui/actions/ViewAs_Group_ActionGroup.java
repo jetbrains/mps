@@ -24,7 +24,7 @@ import jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory;
 import jetbrains.mps.debugger.java.runtime.state.customViewers.CustomViewersManagerImpl;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/4225554808929802673", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
+@GeneratedClass(nodeId = "4225554808929802673", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
 public class ViewAs_Group_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.debugger.java.runtime.ui.actions.ViewAs_Group_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());

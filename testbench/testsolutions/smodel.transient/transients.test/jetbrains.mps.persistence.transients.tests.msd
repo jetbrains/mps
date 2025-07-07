@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="jetbrains.mps.persistence.transients.tests" uuid="744e8fdc-be86-476c-90fa-c51c36b899e5" moduleVersion="0">
   <models>
-    <modelRoot type="default" contentPath="${module}">
+    <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
   </models>
   <facets>
-    <facet compile="mps" classes="mps" ext="no" type="java">
+    <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
     <facet type="tests" />
@@ -14,6 +14,7 @@
   <dependencies>
     <dependency reexport="false">6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)</dependency>
     <dependency reexport="false">8a1d24e1-cf4e-440a-9855-08a714a1c1f3(jetbrains.mps.persistence.transients)</dependency>
+    <dependency reexport="false">f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)</dependency>
   </dependencies>
   <languageVersions>
     <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="12" />
@@ -36,6 +37,7 @@
     <module reference="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" version="0" />
     <module reference="8a1d24e1-cf4e-440a-9855-08a714a1c1f3(jetbrains.mps.persistence.transients)" version="0" />
     <module reference="744e8fdc-be86-476c-90fa-c51c36b899e5(jetbrains.mps.persistence.transients.tests)" version="0" />
+    <module reference="f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)" version="0" />
   </dependencyVersions>
 </solution>
 

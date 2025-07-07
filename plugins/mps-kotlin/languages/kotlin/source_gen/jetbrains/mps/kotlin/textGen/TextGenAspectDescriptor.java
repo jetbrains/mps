@@ -10,9 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.kotlin.behavior.IKotlinRoot__BehaviorDescriptor;
 import jetbrains.mps.text.TextUnit;
-import jetbrains.mps.text.impl.BufferLayoutBuilder;
-import jetbrains.mps.text.impl.RegularTextUnit;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -170,8 +169,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new LambdaLiteral_TextGen();
       case LanguageConceptSwitch.LocalPropertyDeclaration:
         return new LocalPropertyDeclaration_TextGen();
-      case LanguageConceptSwitch.MemberNavigationOperation:
-        return new MemberNavigationOperation_TextGen();
+      case LanguageConceptSwitch.MemberNavigationExpression:
+        return new MemberNavigationExpression_TextGen();
       case LanguageConceptSwitch.MultiLambdaParameter:
         return new MultiLambdaParameter_TextGen();
       case LanguageConceptSwitch.NavigationOperation:
@@ -300,37 +299,37 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
       if (root.getConcept().equals(CONCEPTS.KtScript$OG)) {
         String fname = getFileName_KtScript(root);
         String ext = getFileExtension_KtScript(root);
-        outline.registerTextUnit(createTextUnit0((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit0(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
       if (root.getConcept().equals(CONCEPTS.InterfaceDeclaration$fL)) {
         String fname = getFileName_InterfaceDeclaration(root);
         String ext = getFileExtension_InterfaceDeclaration(root);
-        outline.registerTextUnit(createTextUnit1((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit1(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
       if (root.getConcept().equals(CONCEPTS.KotlinFile$4h)) {
         String fname = getFileName_KotlinFile(root);
         String ext = getFileExtension_KotlinFile(root);
-        outline.registerTextUnit(createTextUnit2((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit2(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
       if (root.getConcept().equals(CONCEPTS.ClassDeclaration$Jm)) {
         String fname = getFileName_ClassDeclaration(root);
         String ext = getFileExtension_ClassDeclaration(root);
-        outline.registerTextUnit(createTextUnit3((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit3(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
       if (root.getConcept().equals(CONCEPTS.EnumClassDeclaration$xK)) {
         String fname = getFileName_EnumClassDeclaration(root);
         String ext = getFileExtension_EnumClassDeclaration(root);
-        outline.registerTextUnit(createTextUnit4((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit4(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
       if (root.getConcept().equals(CONCEPTS.ObjectDeclaration$LN)) {
         String fname = getFileName_ObjectDeclaration(root);
         String ext = getFileExtension_ObjectDeclaration(root);
-        outline.registerTextUnit(createTextUnit5((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit5(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
     }
@@ -371,71 +370,73 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   private static String getFileExtension_ObjectDeclaration(SNode node) {
     return "kt";
   }
-  private static TextUnit createTextUnit0(String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("header");
-    lb.add("imports");
-    lb.add("body");
-    lb.activate("body");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("imports", KotlinTextGen.contextObjectInstance_imports(node));
-    return rv;
+  private static String getPath_InterfaceDeclaration(SNode node) {
+    return (String) IKotlinRoot__BehaviorDescriptor.getTargetTextGenFolder_id3xoAZRzelnN.invoke(node);
   }
-  private static TextUnit createTextUnit1(String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("header");
-    lb.add("imports");
-    lb.add("body");
-    lb.activate("body");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("imports", KotlinTextGen.contextObjectInstance_imports(node));
-    return rv;
+  private static String getPath_KotlinFile(SNode node) {
+    return (String) IKotlinRoot__BehaviorDescriptor.getTargetTextGenFolder_id3xoAZRzelnN.invoke(node);
   }
-  private static TextUnit createTextUnit2(String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("header");
-    lb.add("imports");
-    lb.add("body");
-    lb.activate("body");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("imports", KotlinTextGen.contextObjectInstance_imports(node));
-    return rv;
+  private static String getPath_ClassDeclaration(SNode node) {
+    return (String) IKotlinRoot__BehaviorDescriptor.getTargetTextGenFolder_id3xoAZRzelnN.invoke(node);
   }
-  private static TextUnit createTextUnit3(String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("header");
-    lb.add("imports");
-    lb.add("body");
-    lb.activate("body");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("imports", KotlinTextGen.contextObjectInstance_imports(node));
-    return rv;
+  private static String getPath_EnumClassDeclaration(SNode node) {
+    return (String) IKotlinRoot__BehaviorDescriptor.getTargetTextGenFolder_id3xoAZRzelnN.invoke(node);
   }
-  private static TextUnit createTextUnit4(String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("header");
-    lb.add("imports");
-    lb.add("body");
-    lb.activate("body");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("imports", KotlinTextGen.contextObjectInstance_imports(node));
-    return rv;
+  private static String getPath_ObjectDeclaration(SNode node) {
+    return (String) IKotlinRoot__BehaviorDescriptor.getTargetTextGenFolder_id3xoAZRzelnN.invoke(node);
   }
-  private static TextUnit createTextUnit5(String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("header");
-    lb.add("imports");
-    lb.add("body");
-    lb.activate("body");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("imports", KotlinTextGen.contextObjectInstance_imports(node));
-    return rv;
+  private static TextUnit createTextUnit0(TextGenModelOutline outline, String filename, SNode node) {
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("header", false);
+    rv.layout("imports", false);
+    rv.layout("body", true);
+    rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
+    return rv.build();
+  }
+  private static TextUnit createTextUnit1(TextGenModelOutline outline, String filename, SNode node) {
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("header", false);
+    rv.layout("imports", false);
+    rv.layout("body", true);
+    rv.path(getPath_InterfaceDeclaration(node));
+    rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
+    return rv.build();
+  }
+  private static TextUnit createTextUnit2(TextGenModelOutline outline, String filename, SNode node) {
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("header", false);
+    rv.layout("imports", false);
+    rv.layout("body", true);
+    rv.path(getPath_KotlinFile(node));
+    rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
+    return rv.build();
+  }
+  private static TextUnit createTextUnit3(TextGenModelOutline outline, String filename, SNode node) {
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("header", false);
+    rv.layout("imports", false);
+    rv.layout("body", true);
+    rv.path(getPath_ClassDeclaration(node));
+    rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
+    return rv.build();
+  }
+  private static TextUnit createTextUnit4(TextGenModelOutline outline, String filename, SNode node) {
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("header", false);
+    rv.layout("imports", false);
+    rv.layout("body", true);
+    rv.path(getPath_EnumClassDeclaration(node));
+    rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
+    return rv.build();
+  }
+  private static TextUnit createTextUnit5(TextGenModelOutline outline, String filename, SNode node) {
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("header", false);
+    rv.layout("imports", false);
+    rv.layout("body", true);
+    rv.path(getPath_ObjectDeclaration(node));
+    rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
+    return rv.build();
   }
 
   private static final class CONCEPTS {

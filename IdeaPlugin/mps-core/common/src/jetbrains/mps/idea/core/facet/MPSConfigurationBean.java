@@ -71,9 +71,7 @@ public final class MPSConfigurationBean {
     // build descriptor that reflects actual state
     SolutionDescriptor sd = new SolutionDescriptor();
     sd.setId(ModuleId.fromString(myState.UUID));
-    sd.setOutputPath(myState.generatorOutputPath);
-    // keep this for one release, we need getCompileInMPS uses to fade away first
-    sd.setCompileInMPS(false);
+    sd.setOutputRoot(myState.generatorOutputPath);
     // XXX there's SingleModuleMPSSupport which constructs SolutionDescriptor for SolutionIdea, too, and it doesn't add any module facets?!
     // XXX Here we used to add IdeaPluginModuleFacet (ecde62c5), which I don't quite understand the reason for.
     //     to my best knowledge, we use MPS to write code IDEA can use like any other hand-written code, and we
@@ -172,7 +170,7 @@ public final class MPSConfigurationBean {
   /*package*/ State toState(SolutionDescriptor actualDescriptor) {
     State result = new State();
     result.UUID = actualDescriptor.getId().toString();
-    result.generatorOutputPath = actualDescriptor.getOutputPath();
+    result.generatorOutputPath = actualDescriptor.getOutputRoot();
     result.useModuleSourceFolder = myState.useModuleSourceFolder;
     result.useTransientOutputFolder = myState.useTransientOutputFolder;
     Map<SLanguage, Integer> lVersions = actualDescriptor.getLanguageVersions();

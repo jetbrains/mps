@@ -19,6 +19,7 @@ import jetbrains.mps.classloading.ModuleClassLoader;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -30,8 +31,14 @@ import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
 /**
  * Generic representation of a deployed module.
@@ -91,6 +98,7 @@ public final class ModuleRuntime {
 
   /**
    * PROVISIONAL API, DON'T USE OUTSIDE PluginLoaderRegistry code
+   * Right now, limited to resources in classpath, so for modules loaded from sources and {module}/classes_gen/ CP, can't access e.g. {module}/icons/
    */
   @NotNull
   public InputStream getOwnResource(@NotNull String fqn) throws IOException {
@@ -117,7 +125,11 @@ public final class ModuleRuntime {
     return myProvidesExtensions;
   }
 
-  public void activate(ModuleRuntimeContext context) {
+  private Class<?>[] myBasicExtensionKeys;
+  private Extension<?>[] myBasicExtensionValues;
+
+  // FIXME need to decide whether we try to load activator for modules withExtensions() == false
+  public void activate(final ModuleRuntimeContext context) {
       try {
         myModuleActivator = myActivatorFactory.newInstance(this, context);
       } catch (Exception ex) {
@@ -129,6 +141,24 @@ public final class ModuleRuntime {
       }
       try {
         myModuleActivator.activate();
+        if (withExtensions()) {
+          final List<Pair<Class<?>, Extension<?>>> registrations = new ArrayList<>();
+          final ActivatorContext ac = new ActivatorContext() {
+            @Override
+            public <T> void extension(Class<T> key, Extension<? extends T> ext) {
+              registrations.add(new Pair<>(key, ext));
+            }
+          };
+          myModuleActivator.contribute(ac);
+          if (!registrations.isEmpty()) {
+            myBasicExtensionKeys = new Class<?>[registrations.size()];
+            myBasicExtensionValues = new Extension<?>[registrations.size()];
+            for (int i = 0, x = registrations.size(); i < x; i++) {
+              myBasicExtensionKeys[i] = registrations.get(i).o1;
+              myBasicExtensionValues[i] = registrations.get(i).o2;
+            }
+          }
+        }
       } catch (Throwable th) {
         final String cn = NameUtil.compactNamespace(myModuleActivator.getClass().getName());
         final String mn = NameUtil.compactNamespace(myModuleReference.getModuleName());
@@ -136,11 +166,37 @@ public final class ModuleRuntime {
       }
   }
 
-  public void deactivate(ModuleRuntimeContext context) {
+  public void deactivate(final ModuleRuntimeContext context) {
     if (myModuleActivator != null) {
       myModuleActivator.deactivate();
+      myBasicExtensionKeys = null;
+      // XXX we can detect which extensions have been instantiated and let them do cleanup, if necessary
+      //     like if the class implements, say, optional Disposable, we can invoke it here.
+      myBasicExtensionValues = null;
       myModuleActivator = null;
     }
+  }
+
+  /**
+   * PROVISIONAL API, DON'T USE OUTSIDE OF MPS INTERNALS.
+   * INSTEAD, RELY on {@code LanguageRegistry#withAvailableExtensions}
+   * @since 2023.3
+   */
+  public  <T> Stream<Extension<T>> extensionsFor(Class<T> kind) {
+    // XXX decide if matchRequest goes in here or is checked outside
+    if (myBasicExtensionKeys == null) {
+      return Stream.empty();
+    }
+    Builder<Extension<T>> builder = null;
+    for (int i = 0; i < myBasicExtensionKeys.length; i++) {
+      if (myBasicExtensionKeys[i] == kind) {
+        if (builder == null) {
+          builder = Stream.builder();
+          builder.add((Extension<T>) myBasicExtensionValues[i]);
+        }
+      }
+    }
+    return builder == null ? Stream.empty() : builder.build();
   }
 
   // instantiated once during module lifecycle
@@ -182,8 +238,75 @@ public final class ModuleRuntime {
   //    - abstract class with setContext invoked from this MR and client code accessing one through getContext/getPlatform()
   public interface Activator {
     default void activate() {}
+    /**
+     * Invoked if module manifests it provides extensions to MPS (see {@link jetbrains.mps.project.facets.JavaModuleFacet.LoadExtensions}
+     * {@link #activate()} comes first, followed by this method in case there's need to supply extensions.
+     * @since 2023.3
+     */
+    default void contribute(@NotNull ActivatorContext ctx) {
+    }
     default void deactivate() {}
   }
+
+  /**
+   * Mediator to install extensions into runtime.
+   * Extensions get uninstalled automatically on deactivation, therefore we don't
+   * pass context to {@link Activator#deactivate()}
+   * @since 2023.3
+   */
+  public interface ActivatorContext {
+    <T> void extension(Class<T> key, Extension<? extends T> ext);
+    //void extension(ExtensionPoint extpoint, Extension<?> ext);
+  }
+
+  /**
+   * <ul>
+   * <li>openapi/extapi?
+   * <li>stateless/statefull (same instance or a new one from get())? Take into account getAspect() idea, above, and ModuleRuntimeAspectKey
+   * <li>lifecycle (e.g. activate/deactivate for existing/legacy Extensions)
+   * </ul>
+   * @since 2023.3
+   */
+  public interface Extension<T> {
+    public interface MatchRequest {
+      // e.g. something simple as Tags(=Set<String>) and intersection/contains (extSet.allOf(((Tags)matchRequest).tagsAsSet()),
+    }
+    boolean matches(MatchRequest matchRequest);
+    Optional<T> get();
+
+    static <E> Extension<E> of(Supplier<E> factory, String ... tags) {
+      return new ExtImpl(factory);
+    }
+  }
+  private static class ExtImpl<E> implements Extension<E> {
+
+    private final Supplier<E> myFactory;
+
+    public ExtImpl(Supplier<E> factory) {
+      myFactory = factory;
+    }
+
+    @Override
+    public boolean matches(MatchRequest matchRequest) {
+      // provisional, always matches
+      return true;
+    }
+
+    @Override
+    public Optional<E> get() {
+      try {
+        E rv = myFactory.get();
+        if (rv != null) {
+          return Optional.of(rv);
+        }
+        // fall through, to get empty()
+      } catch (Throwable ex) {
+        Logger.getLogger(ModuleRuntime.class).warning("Failed to get extension instance, factory: " + myFactory, ex);
+      }
+      return Optional.empty();
+    }
+  }
+
 
   /**
    * Captures the way we instantiate classes specific to different module types.

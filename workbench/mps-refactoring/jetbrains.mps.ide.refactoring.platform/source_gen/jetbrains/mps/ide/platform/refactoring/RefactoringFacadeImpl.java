@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import com.intellij.ide.DataManager;
 
-@GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/2183214647889839513", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
+@GeneratedClass(nodeId = "2183214647889839513", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public class RefactoringFacadeImpl implements RefactoringFacade {
   private static final Logger LOG = Logger.getLogger(RefactoringFacadeImpl.class);
   private final RefactoringAccessEx myRefactoringAccess;

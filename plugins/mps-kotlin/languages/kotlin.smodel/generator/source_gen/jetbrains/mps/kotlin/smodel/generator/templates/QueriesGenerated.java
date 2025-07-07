@@ -41,7 +41,6 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
-import jetbrains.mps.kotlin.behavior.IConstructorSuperSpecifier__BehaviorDescriptor;
 import java.util.Iterator;
 import jetbrains.mps.kotlin.smodel.behavior.ConceptTypeParameterDeclaration;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
@@ -384,7 +383,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static void mappingScript_CodeBlock_10(final MappingScriptContext _context) {
     // TODO make that behavior generic in type parameters definition? (some "isSugar" method?)
     ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.IConstructorSuperSpecifier$wm)).visitAll((it) -> {
-      Iterable<TypeParameterDeclaration> typeParameters = IConstructorSuperSpecifier__BehaviorDescriptor.getConstructorDescriptor_idnhyiqudFLy.invoke(it).getTypeParameters();
+      Iterable<TypeParameterDeclaration> typeParameters = IFunctionCall__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(it).getTypeParameters();
       {
         Iterator<TypeParameterDeclaration> parameter_it = Sequence.fromIterable(typeParameters).iterator();
         Iterator<SNode> argument_it = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.typeArguments$86s6)).iterator();

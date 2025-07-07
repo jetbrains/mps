@@ -13,7 +13,7 @@ import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
-@GeneratedClass(node = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)/3671170675134061970", model = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)")
+@GeneratedClass(nodeId = "3671170675134061970", model = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)")
 public class ScopeResolver implements IResolver {
   private static final Logger LOG = Logger.getLogger(ScopeResolver.class);
   public ScopeResolver() {

@@ -32,7 +32,11 @@
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
+      <concept id="1070534604311" name="jetbrains.mps.baseLanguage.structure.ByteType" flags="in" index="10PrrI" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
+      <concept id="1070534760951" name="jetbrains.mps.baseLanguage.structure.ArrayType" flags="in" index="10Q1$e">
+        <child id="1070534760952" name="componentType" index="10Q1$1" />
+      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
@@ -1131,6 +1135,37 @@
     <node concept="1YaCAy" id="1RWKWpMTL8o" role="1YuTPh">
       <property role="TrG5h" value="ref" />
       <ref role="1YaFvo" to="2omo:3tQ$H_xEPE1" resolve="UnitContextReference" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="4URE8v98M1K">
+    <property role="TrG5h" value="typeof_BinaryWriteOperation" />
+    <property role="3GE5qa" value="operation" />
+    <node concept="3clFbS" id="4URE8v98M1L" role="18ibNy">
+      <node concept="1ZobV4" id="4URE8v98M5w" role="3cqZAp">
+        <node concept="mw_s8" id="4URE8v98Owb" role="1ZfhKB">
+          <node concept="2c44tf" id="4URE8v98Ow7" role="mwGJk">
+            <node concept="10Q1$e" id="4URE8v98O$S" role="2c44tc">
+              <node concept="10PrrI" id="4URE8v98OzI" role="10Q1$1" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="4URE8v98NT5" role="1ZfhK$">
+          <node concept="1Z2H0r" id="4URE8v98NT1" role="mwGJk">
+            <node concept="2OqwBi" id="4URE8v98O5_" role="1Z2MuG">
+              <node concept="1YBJjd" id="4URE8v98NU9" role="2Oq$k0">
+                <ref role="1YBMHb" node="4URE8v98M1N" resolve="op" />
+              </node>
+              <node concept="3TrEf2" id="4URE8v98Omn" role="2OqNvi">
+                <ref role="3Tt5mk" to="2omo:4URE8v98h6s" resolve="data" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="4URE8v98M1N" role="1YuTPh">
+      <property role="TrG5h" value="op" />
+      <ref role="1YaFvo" to="2omo:4URE8v98gJD" resolve="BinaryWriteOperation" />
     </node>
   </node>
 </model>

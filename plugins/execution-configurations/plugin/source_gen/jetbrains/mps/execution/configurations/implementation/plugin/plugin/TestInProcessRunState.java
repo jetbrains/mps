@@ -12,6 +12,7 @@ public final class TestInProcessRunState implements Comparable<TestInProcessRunS
   private static final Logger LOG = Logger.getLogger(TestInProcessRunState.class);
   private static final Key<AtomicReference<RunStateEnum>> STATE_KEY = Key.create("jetbrains.mps.junit.run.state");
   private final AtomicReference<RunStateEnum> myValue;
+  private final Project myIdeaProject;
 
   public static TestInProcessRunState getInstance(Project ideaProject) {
     // on module reload, what I risk to keep in memory state is Key and RunStateEnum instances, that are hopefully 
@@ -21,10 +22,11 @@ public final class TestInProcessRunState implements Comparable<TestInProcessRunS
       knownState = new AtomicReference<RunStateEnum>(RunStateEnum.IDLE);
       ideaProject.putUserData(STATE_KEY, knownState);
     }
-    return new TestInProcessRunState(knownState);
+    return new TestInProcessRunState(ideaProject, knownState);
   }
 
-  private TestInProcessRunState(AtomicReference<RunStateEnum> value) {
+  private TestInProcessRunState(Project ideaProject, AtomicReference<RunStateEnum> value) {
+    myIdeaProject = ideaProject;
     myValue = value;
   }
 
@@ -34,6 +36,10 @@ public final class TestInProcessRunState implements Comparable<TestInProcessRunS
 
   public void set(RunStateEnum value) {
     myValue.set(value);
+  }
+
+  public Project getProject() {
+    return myIdeaProject;
   }
 
   public boolean advance(RunStateEnum oldValue, RunStateEnum value) {
@@ -64,6 +70,10 @@ public final class TestInProcessRunState implements Comparable<TestInProcessRunS
   @Override
   public int compareTo(@NotNull TestInProcessRunState another) {
     return myValue.get().compareTo(another.myValue.get());
+  }
+
+  public boolean isIdle() {
+    return myValue.get() == RunStateEnum.IDLE;
   }
 
   public boolean isInitialized() {

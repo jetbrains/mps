@@ -79,6 +79,8 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
   private VFSManager myVFSManager;
   private NodeIdentityComponent myIdentitySupplier;
   private ProjectManager myProjectManager;
+  private ResolverComponent myResolver;
+
 
   /**
    * made package-private
@@ -147,12 +149,12 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     init(new DescriptorModelComponent(myModuleRepository,
                                       new LanguageDescriptorModelProvider(myLanguageRegistry),
                                       new GeneratorDescriptorModelProvider(),
-                                      new GenericDescriptorModelProvider()));
+                                      new GenericDescriptorModelProvider(myLanguageRegistry)));
     init(new TypeRegistry());
 
     myProjectManager = init(new ProjectManager());
 
-    init(new ResolverComponent());
+    myResolver = init(new ResolverComponent());
     init(new ValidationSettings());
 
     myAutoImportsManager = init(new ModelsAutoImportsManager());
@@ -255,6 +257,9 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     }
     if (ProjectManager.class == componentClass) {
       return componentClass.cast(myProjectManager);
+    }
+    if (ResolverComponent.class == componentClass) {
+      return componentClass.cast(myResolver);
     }
     if (NodeIdentityComponent.class.equals(componentClass)) {
       return componentClass.cast(myIdentitySupplier);

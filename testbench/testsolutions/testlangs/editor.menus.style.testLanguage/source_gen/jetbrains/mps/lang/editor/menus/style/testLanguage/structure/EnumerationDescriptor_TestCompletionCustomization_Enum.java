@@ -19,7 +19,7 @@ public class EnumerationDescriptor_TestCompletionCustomization_Enum extends Enum
   private final EnumerationDescriptor.MemberDescriptor myMember_no_priority_0 = new EnumerationDescriptor.MemberDescriptor("no_priority", "no priority", 0x49b1109510b71ff6L, "r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4241665505353448650");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b71ff4L, 0x49b1109510b71ff5L, 0x49b1109510b71ff6L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_with_priority_0, myMember_no_priority_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_with_priority_0, myMember_no_priority_0);
 
   @Nullable
   @Override

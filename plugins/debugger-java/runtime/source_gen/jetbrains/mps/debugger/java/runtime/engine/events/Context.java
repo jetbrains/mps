@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.Nullable;
 import com.sun.jdi.ThreadReference;
 
-@GeneratedClass(node = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)/613652663728232571", model = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)")
+@GeneratedClass(nodeId = "613652663728232571", model = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)")
 public interface Context {
   @Nullable
   ThreadReference getThread();

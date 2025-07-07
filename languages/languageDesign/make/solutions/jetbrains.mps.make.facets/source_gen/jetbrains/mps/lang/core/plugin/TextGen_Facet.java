@@ -59,7 +59,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.make.java.ModelDependencies;
 import jetbrains.mps.make.delta.IDelta;
 import jetbrains.mps.smodel.resources.DResource;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.WriteTransaction;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.smodel.resources.TResource;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
@@ -177,38 +177,45 @@ public class TextGen_Facet extends IFacet.Stub {
               int modelsCount = 0;
               final List<GResource> resourcesWithOutput = ListSequence.fromList(new ArrayList<GResource>(Sequence.fromIterable(input).count()));
               final Map<SModule, ModuleStaleFileManager> moduleStaleFilesMap = new HashMap<SModule, ModuleStaleFileManager>();
-              for (GResource resource : Sequence.fromIterable(input)) {
-                Collection<SModel> outputModels = resource.status().getOutputModels();
+
+              for (GResource inputData : Sequence.fromIterable(input)) {
+                Collection<SModel> outputModels = inputData.status().getOutputModels();
                 if (outputModels.isEmpty()) {
                   continue;
                 }
                 //  
                 // collect changes in a module-wide context
-                ModuleStaleFileManager sfm = moduleStaleFilesMap.get(resource.module());
+                ModuleStaleFileManager sfm = moduleStaleFilesMap.get(inputData.module());
                 if (sfm == null) {
-                  sfm = new ModuleStaleFileManager(resource.module(), Target_make.vars(pa.global()).alternateOutput(), genDepsCache, messageHandler);
-                  moduleStaleFilesMap.put(resource.module(), sfm);
-                  sfm.collectRetainedFiles(Sequence.fromIterable(resource.retainedModels()).where((smd) -> GenerationFacade.canGenerate(smd)));
-                }
-                // Perhaps, shall check res.status.isError(), however not sure if there
-                // couldn't be an output model with error state, and we'd like to see erroneous text to localize error
-                if (!(sfm.hasGenerationTarget(resource.model()))) {
-                  monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("no output location for " + resource.model().getName())));
-                  continue;
-                }
-                if (resource.getValue(MakeKeys.CLEAN_MAKE)) {
-                  sfm.collectGeneratedFilesForceClean(resource.model());
-                } else {
-                  sfm.collectGeneratedFiles(resource.model());
+                  sfm = new ModuleStaleFileManager(inputData.module(), Target_make.vars(pa.global()).alternateOutput(), genDepsCache, messageHandler);
+                  moduleStaleFilesMap.put(inputData.module(), sfm);
+                  sfm.collectRetainedFiles(Sequence.fromIterable(inputData.retainedModels()).where((smd) -> GenerationFacade.canGenerate(smd)));
                 }
 
+                for (SModel model : outputModels) {
+                  String generationTarget = inputData.status().getGenerationTarget(model.getReference());
+                  ModuleStaleFileManager.ModelStaleFileManager msfm = sfm.new ModelStaleFileManager(inputData.model(), generationTarget);
+
+                  // Perhaps, shall check res.status.isError(), however not sure if there
+                  // couldn't be an output model with error state, and we'd like to see erroneous text to localize error
+                  if (!(msfm.hasGenerationTarget())) {
+                    monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("no output location for " + model.getName())));
+                    continue;
+                  }
+                  if (inputData.getValue(MakeKeys.CLEAN_MAKE)) {
+                    msfm.collectGeneratedFilesForceClean();
+                  } else {
+                    msfm.collectGeneratedFiles();
+                  }
+                }
                 // need exact number of textgen tasks I'm going to schedule as it's the counter for the poll() loop, and we might get into trouble if
                 // number of scheduled models doesn't match that we expect to poll.
                 modelsCount += outputModels.size();
-                ListSequence.fromList(resourcesWithOutput).addElement(resource);
+                ListSequence.fromList(resourcesWithOutput).addElement(inputData);
               }
+
               final Project mpsProject = monitor.getSession().getProject();
-              final TextGeneratorEngine tgEngine = new TextGeneratorEngine(messageHandler);
+              final TextGeneratorEngine tgEngine = new TextGeneratorEngine(messageHandler, mpsProject.getPlatform());
 
               if (modelsCount == 0) {
                 // jftr, ArrayBlockingQueue doesn't tolerate 0 size
@@ -221,26 +228,27 @@ public class TextGen_Facet extends IFacet.Stub {
               final boolean _generateDebugInfo = (vars(pa.global()).generateDebugInfo() == null && tgs.isGenerateDebugInfo()) || vars(pa.global()).generateDebugInfo();
               final long timeoutSeconds = tgs.getPerModelTimeout().toSeconds();
 
-              final ProgressMonitor subProgress_s0a0b = progressMonitor.subTask(1000);
-              subProgress_s0a0b.start("Writing", modelsCount + 3);
+              final ProgressMonitor subProgress_u0a0b = progressMonitor.subTask(1000);
+              subProgress_u0a0b.start("Writing", modelsCount + 3);
 
               try {
                 final ArrayBlockingQueue<TextGenResult> resultQueue = new ArrayBlockingQueue<TextGenResult>(modelsCount);
-                final Map<SModel, GResource> textGenInput2Resource = new HashMap<SModel, GResource>(modelsCount * 2);
+                final Map<SModel, GResource> inputDataByOutputModel = new HashMap<SModel, GResource>(modelsCount * 2);
                 // We queue all models first, prior to poll(), and though ArrayBlockingQueue won't allow more than specified number of result elements, I don't care much.
                 // If I hit the limit and resultQueue is blocked, scheduled textgen tasks would get parked with tgEngine's executor service and proceed once we get to poll().
                 // Nevertheless, the fact I did my best to get modelsCount right makes me feel I'd never face this scenario.
                 mpsProject.getModelAccess().runReadAction(() -> {
                   for (GResource res : ListSequence.fromList(resourcesWithOutput)) {
-                    for (SModel model2generate : CollectionSequence.fromCollection(res.status().getOutputModels())) {
-                      textGenInput2Resource.put(model2generate, res);
+                    for (SModel outputModel : CollectionSequence.fromCollection(res.status().getOutputModels())) {
+                      inputDataByOutputModel.put(outputModel, res);
+                      String generationTarget = res.status().getGenerationTarget(outputModel.getReference());
                       // FIXME status.getOutputRepository is the one to lock for breakDownToUnits (down in schedule() call), and, perhaps, for the outer runReadAction here, too.
-                      tgEngine.schedule(model2generate, resultQueue);
+                      tgEngine.schedule(outputModel, resultQueue, generationTarget);
                     }
                   }
                 });
 
-                subProgress_s0a0b.advance(3);
+                subProgress_u0a0b.advance(3);
 
                 final Map<GResource, ResourceDeltaCollector> deltas2 = new HashMap<GResource, ResourceDeltaCollector>();
                 // there's no really any use of the cached bl dependencies, provided each model from the set of resources is generated once and the cache is only populated, not read.
@@ -269,9 +277,10 @@ public class TextGen_Facet extends IFacet.Stub {
                   // (like, 'generated') to track "generation required" status.
                   // Once/if we use other mechanism instead of dependencies/generated files, shall reconsider approach here.
 
-                  subProgress_s0a0b.advance(1);
-                  subProgress_s0a0b.step(tgr.getModel().getReference().getModelName());
-                  final GResource inputResource = textGenInput2Resource.get(tgr.getModel());
+                  SModel outputModel = tgr.getModel();
+                  subProgress_u0a0b.advance(1);
+                  subProgress_u0a0b.step(outputModel.getReference().getModelName());
+                  final GResource inputResource = inputDataByOutputModel.get(outputModel);
 
                   _output_21gswx_a0b = Sequence.fromIterable(_output_21gswx_a0b).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new TextGenOutcomeResource(inputResource.model(), inputResource.module(), tgr))));
 
@@ -295,13 +304,15 @@ public class TextGen_Facet extends IFacet.Stub {
                       ModuleStaleFileManager staleFilesManager = moduleStaleFilesMap.get(inputResource.module());
                       assert staleFilesManager != null;
 
+                      ModuleStaleFileManager.ModelStaleFileManager msfm = staleFilesManager.new ModelStaleFileManager(inputResource.model(), tgr.getGenerationTarget());
+
                       // we'd like to report delta per (module, model) pair (DResource is not sufficient, there are TResource clients)
                       // And I don't want to report complete module delta for each model just not to face any trouble with delta merge.
                       // Therefore, I don't use staleFilesManager.completeDelta, but report (module, model) deltas here with ResourceDeltaCollector
                       // and separately report module-wide delta with staleFilesManager.getModuleWideDelta.
-                      // However, would like to get this fixed (get rid of TResource use and report single combined delta per module)
-                      FileDeltaCollector javaSourcesLoc = staleFilesManager.getPrimaryStreamHandler(inputResource.model());
-                      FileDeltaCollector cachesLocation = staleFilesManager.getCacheStreamHandler(inputResource.model());
+                      // However, would like to get this fixed (get rid of TResource use and report single combined delta per module)                                                
+                      FileDeltaCollector javaSourcesLoc = msfm.getPrimaryStreamHandler();
+                      FileDeltaCollector cachesLocation = msfm.getCacheStreamHandler();
                       //  
                       // Serialize outcome
                       GenerationDependencies genDeps = inputResource.status().getDependencies();
@@ -309,10 +320,10 @@ public class TextGen_Facet extends IFacet.Stub {
                       for (TextUnit tu : tgr.getUnits()) {
                         TextUnit.Status tgState = tu.getState();
                         assert tgState != TextUnit.Status.Undefined;
-                        genDeps.update(tu.getFilePath(), tu.getFileName());
                         if (tgState == TextUnit.Status.Empty) {
                           continue;
                         }
+                        genDeps.update(tu.getFilePath(), tu.getFileName());
                         if (tgState == TextUnit.Status.Failed) {
                           monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(String.format("Text outcome for %s has been generated with errors", tu.getFileName()))));
                           // fall through
@@ -323,7 +334,7 @@ public class TextGen_Facet extends IFacet.Stub {
                           }
                           javaSourcesLoc.saveStream(tu.getFileName(), tu.getBytes());
                         } else {
-                          FileDeltaCollector fdc = staleFilesManager.newPrimaryStreamHandler(inputResource.model(), tu.getFilePath());
+                          FileDeltaCollector fdc = msfm.newPrimaryStreamHandler(tu.getFilePath());
                           fdc.saveStream(tu.getFileName(), tu.getBytes());
                           rdm.addDelta(fdc.getDelta());
                         }
@@ -389,11 +400,12 @@ public class TextGen_Facet extends IFacet.Stub {
                 _output_21gswx_a0b = Sequence.fromIterable(_output_21gswx_a0b).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new DResource(moduleWideStaleFiles))));
 
                 // flush stream handlers
-                if (!(FileSystem.getInstance().runWriteTransaction(() -> {
+                WriteTransaction wt = new WriteTransaction(monitor.getSession().getProject().getPlatform(), () -> {
                   for (ModuleStaleFileManager sfm : CollectionSequence.fromCollection(moduleStaleFilesMap.values())) {
                     sfm.flushChanges();
                   }
-                }))) {
+                });
+                if (!(wt.executeAndWait())) {
                   monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("Failed to save files")));
                   return new IResult.FAILURE(_output_21gswx_a0b);
                 }
@@ -416,7 +428,7 @@ public class TextGen_Facet extends IFacet.Stub {
                 return new IResult.FAILURE(_output_21gswx_a0b);
               } finally {
                 tgEngine.shutdown();
-                subProgress_s0a0b.done();
+                subProgress_u0a0b.done();
               }
             default:
               progressMonitor.done();
@@ -509,7 +521,7 @@ public class TextGen_Facet extends IFacet.Stub {
           final Iterable<GResource> input = (Iterable<GResource>) (Iterable) rawInput;
           switch (0) {
             case 0:
-              final TextGeneratorEngine tgEngine = new TextGeneratorEngine(monitor.getSession().getMessageHandler());
+              final TextGeneratorEngine tgEngine = new TextGeneratorEngine(monitor.getSession().getMessageHandler(), monitor.getSession().getProject().getPlatform());
               try {
                 int modelsCount = 0;
                 for (GResource resource : Sequence.fromIterable(input)) {

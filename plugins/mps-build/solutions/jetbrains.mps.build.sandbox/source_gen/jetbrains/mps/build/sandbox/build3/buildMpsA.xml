@@ -20,8 +20,8 @@
       </filterchain>
     </copy>
     <zip destfile="${build.layout}/temp/zipfilesettest1.zip">
-      <zipfileset file="${basedir}/jetbrains.mps.build.sandbox/samples/build.xml" prefix="AAA" />
       <zipfileset dir="${artifacts.buildMpsB}/X" prefix="AAA/X" />
+      <zipfileset file="${basedir}/jetbrains.mps.build.sandbox/samples/build.xml" prefix="AAA" />
       <fileset dir="${build.tmp}/default/zipfilesettest1.zip" />
     </zip>
     <tar destfile="${build.layout}/temp/tarfilesettest1.tar" longfile="gnu">
@@ -97,6 +97,9 @@
         <fileset file="${build.tmp}/deps/buildMpsB/MpsB.zip/abcde.jar" />
       </classpath>
     </javac>
+    <copy todir="${build.tmp}/java/out/A">
+      <fileset dir="${basedir}/jetbrains.mps.build.sandbox/samples/buildD/src" excludes="**/*.java" />
+    </copy>
   </target>
   
   <target name="java.compile.testImportJarReexport" depends="java.compile.A, fetchDependencies">
@@ -112,5 +115,8 @@
         <fileset file="${build.tmp}/deps/buildMpsB/MpsB.zip/abcde.jar" />
       </classpath>
     </javac>
+    <copy todir="${build.tmp}/java/out/testImportJarReexport">
+      <fileset dir="${basedir}/jetbrains.mps.build.sandbox/samples/buildA/src" excludes="**/*.java" />
+    </copy>
   </target>
 </project>

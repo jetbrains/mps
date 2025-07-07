@@ -10,8 +10,6 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vcs.ui.RefreshableOnComponent;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.List;
@@ -39,7 +37,7 @@ import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import com.intellij.openapi.vcs.checkin.CheckinHandlerFactory;
 import com.intellij.openapi.vcs.changes.CommitContext;
 
-@GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199793465778", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
+@GeneratedClass(nodeId = "3719390199793465778", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class ModelCheckerCheckinHandler extends CheckinHandler {
   private Project myProject;
   private CheckinProjectPanel myPanel;
@@ -54,9 +52,7 @@ public class ModelCheckerCheckinHandler extends CheckinHandler {
     return new RefreshableOnComponent() {
       @Override
       public JComponent getComponent() {
-        JPanel panel = new JPanel(new GridLayout(1, 0));
-        panel.add(checkModelCheckBox);
-        return panel;
+        return checkModelCheckBox;
       }
       @Override
       public void restoreState() {

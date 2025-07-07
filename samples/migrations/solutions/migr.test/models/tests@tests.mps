@@ -116,7 +116,7 @@
     <node concept="2fuMXU" id="5j9sOBrZV3n" role="2fuLKQ" />
   </node>
   <node concept="2XOHcx" id="5m50vnflPpQ">
-    <property role="2XOHcw" value="${module}/../.." />
+    <property role="2XOHcw" value="${project_home}" />
   </node>
 </model>
 

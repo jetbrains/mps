@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -24,7 +24,7 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.SelectionFrameView
 @MPSLaunch
 public class BlockDecoratorTest_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(BlockDecoratorTest_Test.class, "${mps_home}", "r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(BlockDecoratorTest_Test.class).projectPath(null).modelRef("r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)").reopenProject(false).build());
 
   public BlockDecoratorTest_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -46,7 +46,7 @@ public class BlockDecoratorTest_Test extends BaseTransformationTest {
       initEditorComponent("141381309807688262", "141381309807688282");
       Mapper descendantMapper;
       final Wrappers._T<SNode> node = new Wrappers._T<SNode>();
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> node.value = getNodeById("141381309807688263"));
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> node.value = getAnnotatedNode("node"));
       descendantMapper = DecoratorTestRunner.prepareAndGetMapper(node.value, getEditorComponent(), BlockCell.class);
       Assert.assertTrue(descendantMapper != null);
       Assert.assertTrue(descendantMapper.getTarget() != null);

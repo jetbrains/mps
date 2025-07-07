@@ -108,6 +108,9 @@
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
+      <concept id="8353134822275456723" name="jetbrains.mps.baseLanguage.structure.HexLongLiteral" flags="ng" index="11gdke">
+        <property id="8353134822275456796" name="hexValue" index="11gdj1" />
+      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
@@ -2778,45 +2781,40 @@
           </node>
           <node concept="liA8E" id="65j9Utz5gVN" role="2OqNvi">
             <ref role="37wK5l" to="manl:~SMethodBuilder.languageId(long,long)" resolve="languageId" />
-            <node concept="1adDum" id="65j9Utz8mmE" role="37wK5m">
-              <property role="1adDun" value="0L" />
-              <node concept="17Uvod" id="65j9Utz8mmF" role="lGtFl">
-                <property role="2qtEX9" value="value" />
-                <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/4269842503726207156/4269842503726207157" />
-                <node concept="3zFVjK" id="65j9Utz8mmG" role="3zH0cK">
-                  <node concept="3clFbS" id="65j9Utz8mmH" role="2VODD2">
-                    <node concept="3cpWs8" id="65j9Utz8yI8" role="3cqZAp">
-                      <node concept="3cpWsn" id="65j9Utz8yI9" role="3cpWs9">
+            <node concept="11gdke" id="k1Ecncyhjd" role="37wK5m">
+              <property role="11gdj1" value="1L" />
+              <node concept="17Uvod" id="k1Ecncyi0T" role="lGtFl">
+                <property role="2qtEX9" value="hexValue" />
+                <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/8353134822275456723/8353134822275456796" />
+                <node concept="3zFVjK" id="k1Ecncyi0U" role="3zH0cK">
+                  <node concept="3clFbS" id="k1Ecncyi0V" role="2VODD2">
+                    <node concept="3cpWs8" id="k1Ecnc$6d9" role="3cqZAp">
+                      <node concept="3cpWsn" id="k1Ecnc$6da" role="3cpWs9">
                         <property role="TrG5h" value="leastSignificantBits" />
-                        <node concept="3cpWsb" id="65j9Utz8yBC" role="1tU5fm" />
-                        <node concept="2OqwBi" id="65j9Utz8yIa" role="33vP2m">
-                          <node concept="2OqwBi" id="65j9Utz8yIb" role="2Oq$k0">
-                            <node concept="1iwH7S" id="65j9Utz8yIc" role="2Oq$k0" />
-                            <node concept="1psM6Z" id="65j9Utz8yId" role="2OqNvi">
+                        <node concept="3cpWsb" id="k1Ecnc$6db" role="1tU5fm" />
+                        <node concept="2OqwBi" id="k1Ecnc$6dc" role="33vP2m">
+                          <node concept="2OqwBi" id="k1Ecnc$6dd" role="2Oq$k0">
+                            <node concept="1iwH7S" id="k1Ecnc$6de" role="2Oq$k0" />
+                            <node concept="1psM6Z" id="k1Ecnc$6df" role="2OqNvi">
                               <ref role="1psM6Y" node="65j9Utz8IZ7" resolve="langUUID" />
                             </node>
                           </node>
-                          <node concept="liA8E" id="65j9Utz8yIe" role="2OqNvi">
+                          <node concept="liA8E" id="k1Ecnc$6dg" role="2OqNvi">
                             <ref role="37wK5l" to="33ny:~UUID.getLeastSignificantBits()" resolve="getLeastSignificantBits" />
                           </node>
                         </node>
                       </node>
                     </node>
-                    <node concept="3cpWs6" id="5GsNtLEsbz4" role="3cqZAp">
-                      <node concept="3cpWs3" id="7VphOoWsv9t" role="3cqZAk">
-                        <node concept="Xl_RD" id="7VphOoWsv9C" role="3uHU7w">
+                    <node concept="3cpWs6" id="k1Ecnc$6dh" role="3cqZAp">
+                      <node concept="3cpWs3" id="k1Ecnc$6di" role="3cqZAk">
+                        <node concept="Xl_RD" id="k1Ecnc$6dj" role="3uHU7w">
                           <property role="Xl_RC" value="L" />
                         </node>
-                        <node concept="3cpWs3" id="5GsNtLEsc2R" role="3uHU7B">
-                          <node concept="Xl_RD" id="5GsNtLEsbFS" role="3uHU7B">
-                            <property role="Xl_RC" value="0x" />
-                          </node>
-                          <node concept="2YIFZM" id="5GsNtLEscdS" role="3uHU7w">
-                            <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
-                            <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
-                            <node concept="37vLTw" id="5GsNtLEscr2" role="37wK5m">
-                              <ref role="3cqZAo" node="65j9Utz8yI9" resolve="leastSignificantBits" />
-                            </node>
+                        <node concept="2YIFZM" id="k1Ecnc$6dm" role="3uHU7B">
+                          <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
+                          <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
+                          <node concept="37vLTw" id="k1Ecnc$6dn" role="37wK5m">
+                            <ref role="3cqZAo" node="k1Ecnc$6da" resolve="leastSignificantBits" />
                           </node>
                         </node>
                       </node>
@@ -2825,45 +2823,40 @@
                 </node>
               </node>
             </node>
-            <node concept="1adDum" id="65j9Utz6dB_" role="37wK5m">
-              <property role="1adDun" value="1L" />
-              <node concept="17Uvod" id="65j9Utz6kar" role="lGtFl">
-                <property role="2qtEX9" value="value" />
-                <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/4269842503726207156/4269842503726207157" />
-                <node concept="3zFVjK" id="65j9Utz6kas" role="3zH0cK">
-                  <node concept="3clFbS" id="65j9Utz6kat" role="2VODD2">
-                    <node concept="3cpWs8" id="65j9Utz8zIT" role="3cqZAp">
-                      <node concept="3cpWsn" id="65j9Utz8zIU" role="3cpWs9">
+            <node concept="11gdke" id="k1Ecnc$0Jy" role="37wK5m">
+              <property role="11gdj1" value="0L" />
+              <node concept="17Uvod" id="k1Ecnc$0Jz" role="lGtFl">
+                <property role="2qtEX9" value="hexValue" />
+                <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/8353134822275456723/8353134822275456796" />
+                <node concept="3zFVjK" id="k1Ecnc$0J$" role="3zH0cK">
+                  <node concept="3clFbS" id="k1Ecnc$0J_" role="2VODD2">
+                    <node concept="3cpWs8" id="k1Ecnc$6_m" role="3cqZAp">
+                      <node concept="3cpWsn" id="k1Ecnc$6_n" role="3cpWs9">
                         <property role="TrG5h" value="mostSignificantBits" />
-                        <node concept="3cpWsb" id="65j9Utz8z3L" role="1tU5fm" />
-                        <node concept="2OqwBi" id="65j9Utz8zIV" role="33vP2m">
-                          <node concept="2OqwBi" id="65j9Utz8zIW" role="2Oq$k0">
-                            <node concept="1iwH7S" id="65j9Utz8zIX" role="2Oq$k0" />
-                            <node concept="1psM6Z" id="65j9Utz8zIY" role="2OqNvi">
+                        <node concept="3cpWsb" id="k1Ecnc$6_o" role="1tU5fm" />
+                        <node concept="2OqwBi" id="k1Ecnc$6_p" role="33vP2m">
+                          <node concept="2OqwBi" id="k1Ecnc$6_q" role="2Oq$k0">
+                            <node concept="1iwH7S" id="k1Ecnc$6_r" role="2Oq$k0" />
+                            <node concept="1psM6Z" id="k1Ecnc$6_s" role="2OqNvi">
                               <ref role="1psM6Y" node="65j9Utz8IZ7" resolve="langUUID" />
                             </node>
                           </node>
-                          <node concept="liA8E" id="65j9Utz8zIZ" role="2OqNvi">
+                          <node concept="liA8E" id="k1Ecnc$6_t" role="2OqNvi">
                             <ref role="37wK5l" to="33ny:~UUID.getMostSignificantBits()" resolve="getMostSignificantBits" />
                           </node>
                         </node>
                       </node>
                     </node>
-                    <node concept="3cpWs6" id="5GsNtLEt6Z4" role="3cqZAp">
-                      <node concept="3cpWs3" id="7VphOoWsv$L" role="3cqZAk">
-                        <node concept="Xl_RD" id="7VphOoWsv$W" role="3uHU7w">
+                    <node concept="3cpWs6" id="k1Ecnc$6_u" role="3cqZAp">
+                      <node concept="3cpWs3" id="k1Ecnc$6_v" role="3cqZAk">
+                        <node concept="Xl_RD" id="k1Ecnc$6_w" role="3uHU7w">
                           <property role="Xl_RC" value="L" />
                         </node>
-                        <node concept="3cpWs3" id="5GsNtLEt6Z5" role="3uHU7B">
-                          <node concept="Xl_RD" id="5GsNtLEt6Z8" role="3uHU7B">
-                            <property role="Xl_RC" value="0x" />
-                          </node>
-                          <node concept="2YIFZM" id="5GsNtLEt6Z6" role="3uHU7w">
-                            <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
-                            <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
-                            <node concept="37vLTw" id="5GsNtLEt6Z7" role="37wK5m">
-                              <ref role="3cqZAo" node="65j9Utz8zIU" resolve="mostSignificantBits" />
-                            </node>
+                        <node concept="2YIFZM" id="k1Ecnc$6_z" role="3uHU7B">
+                          <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
+                          <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
+                          <node concept="37vLTw" id="k1Ecnc$6_$" role="37wK5m">
+                            <ref role="3cqZAo" node="k1Ecnc$6_n" resolve="mostSignificantBits" />
                           </node>
                         </node>
                       </node>

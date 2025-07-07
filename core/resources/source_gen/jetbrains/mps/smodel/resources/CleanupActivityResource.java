@@ -10,6 +10,6 @@ import jetbrains.mps.make.resources.IResource;
  * Comes handy when a task allocates a resource that needs to survive few make steps
  * (e.g. transient models of generator), but need clean-up once make process is over
  */
-@GeneratedClass(node = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/8118537977657118022", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
+@GeneratedClass(nodeId = "8118537977657118022", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
 public interface CleanupActivityResource extends IResource, Runnable {
 }

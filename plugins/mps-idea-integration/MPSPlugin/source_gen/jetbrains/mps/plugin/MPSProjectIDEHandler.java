@@ -67,7 +67,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
  * There are few actions available from IDEA project that navigate to MPS project counterparts, and to support these, this MPSProjectIDEHandler is registered in IProjectHandler for each started MPS project
  * so that IDEA project actions could navigate to MPS nodes from source files.
  */
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/8632185942131071134", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "8632185942131071134", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDEHandler, ProjectComponent {
   private static final Logger LOG = Logger.getLogger(MPSProjectIDEHandler.class);
   private Project myProject;

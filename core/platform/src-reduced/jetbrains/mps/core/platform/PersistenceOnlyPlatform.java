@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.core.platform;
 
+import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.persistence.MPSPersistence;
 import org.jetbrains.annotations.NotNull;
@@ -48,6 +49,11 @@ public final class PersistenceOnlyPlatform implements Platform {
     return myPersistence.findComponent(componentClass);
   }
 
+  @Override
+  public void install(ComponentPlugin componentPlugin) {
+    // not that it's technically impossible, just don't see a reason to support platform augmentation now for persistence-only scenario
+    throw new IllegalArgumentException("Can't augment persistence-only platform");
+  }
 
   @Override
   public void dispose() {

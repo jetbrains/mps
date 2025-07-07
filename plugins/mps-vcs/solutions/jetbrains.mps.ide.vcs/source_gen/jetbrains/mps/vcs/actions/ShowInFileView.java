@@ -12,7 +12,7 @@ import com.intellij.openapi.vcs.actions.VcsContext;
 import com.intellij.openapi.project.ProjectUtil;
 import java.util.Collections;
 
-@GeneratedClass(node = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)/7705742079275757540", model = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)")
+@GeneratedClass(nodeId = "7705742079275757540", model = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)")
 public class ShowInFileView extends AbstractShowInFileView {
   public ShowInFileView() {
   }

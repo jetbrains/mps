@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-@GeneratedClass(node = "r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)/1904418645612386202", model = "r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)")
+@GeneratedClass(nodeId = "1904418645612386202", model = "r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)")
 public final class CheckingUtil {
   public static boolean isAssigned(SNode node) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.AbstractUnaryNumberOperation$Q6) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.UnaryMinus$na)) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractUnaryNumberOperation$Q6), LINKS.expression$uRUg) == node) {

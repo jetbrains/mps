@@ -43,7 +43,7 @@ import com.intellij.diff.DiffContentFactory;
 import com.intellij.openapi.vcs.changes.ContentRevision;
 import com.intellij.openapi.vcs.changes.BinaryContentRevision;
 import java.io.IOException;
-import com.intellij.openapi.vcs.impl.VcsFileStatusProvider;
+import com.intellij.openapi.vcs.FileStatusManager;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -62,6 +62,7 @@ import com.intellij.vcs.log.Hash;
 import com.intellij.util.Consumer;
 import com.intellij.vcs.log.ui.MainVcsLogUi;
 import com.intellij.vcs.log.ui.VcsLogUiEx;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.vcs.log.impl.VcsLogContentUtil;
 import java.util.concurrent.Future;
 import git4idea.i18n.GitBundle;
@@ -72,7 +73,7 @@ import com.intellij.vcs.log.impl.HashImpl;
 import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
 import com.intellij.openapi.vcs.impl.VcsBackgroundableActions;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/8230098746512809101", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "8230098746512809101", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public final class VcsActionsUtil {
   private static final Logger LOG = Logger.getLogger(VcsActionsUtil.class);
   private final MPSProject myProject;
@@ -191,7 +192,7 @@ public final class VcsActionsUtil {
     }
   }
 
-  private static Iterable<VirtualFile> collectUnversionedFiles(final VcsFileStatusProvider fileStatusProvider, @NotNull final VirtualFile dir) {
+  private static Iterable<VirtualFile> collectUnversionedFiles(final FileStatusManager fileStatusProvider, @NotNull final VirtualFile dir) {
     return ((_FunctionTypes._return_P0_E0<Iterable<VirtualFile>>) () -> {
       return (Iterable<VirtualFile>) () -> {
         return new YieldingIterator<VirtualFile>() {
@@ -225,7 +226,7 @@ __switch__:
                   this.__CP__ = 10;
                   break;
                 case 2:
-                  if (fileStatusProvider.getFileStatus(dir) == FileStatus.UNKNOWN) {
+                  if (fileStatusProvider.getStatus(dir) == FileStatus.UNKNOWN) {
                     this.__CP__ = 3;
                     break;
                   }
@@ -267,7 +268,7 @@ __switch__:
   }
 
   public static Iterable<VirtualFile> getUnversionedFilesForModules(@NotNull MPSProject mpsProject, List<SModule> module) {
-    final VcsFileStatusProvider statusProvider = VcsFileStatusProvider.getInstance(mpsProject.getProject());
+    final FileStatusManager statusProvider = FileStatusManager.getInstance(mpsProject.getProject());
     final FileSystemBridge fsb = mpsProject.getFileSystem();
     return ListSequence.fromList(module).ofType(AbstractModule.class).select((this0) -> this0.getDescriptorFile()).where(new NotNullWhereFilter()).select((this0) -> this0.getParent()).select(new _FunctionTypes._return_P1_E0<VirtualFile, IFile>() {
       public VirtualFile invoke(@NotNull IFile p1) {
@@ -300,13 +301,13 @@ __switch__:
     if (hash == null) {
       return;
     }
-    Consumer<? super MainVcsLogUi> consumer = new Consumer<VcsLogUiEx>() {
+    final Consumer<? super MainVcsLogUi> consumer = new Consumer<VcsLogUiEx>() {
       @Override
       public void consume(VcsLogUiEx p1) {
         VcsActionsUtil.jumpToRevisionUnderProgress(myProject, p1, hash);
       }
     };
-    VcsLogContentUtil.runInMainLog(myProject, consumer);
+    ApplicationManager.getApplication().invokeLater(() -> VcsLogContentUtil.runInMainLog(myProject, consumer));
   }
 
   private static void jumpToRevisionUnderProgress(@NotNull Project project, @NotNull VcsLogUiEx logUi, @NotNull Hash hash) {

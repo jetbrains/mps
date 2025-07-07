@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -152,6 +152,7 @@ public class StyleAttributes {
   public static final StyleAttribute<Color> TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("text-background-color", null, true);
   public static final StyleAttribute<Color> NULL_TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("null-text-color", null, true);
   public static final StyleAttribute<Color> SELECTED_TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("selected-text-background-color", null, true);
+  public static final StyleAttribute<Color> SELECTED_TEXT_COLOR = new InheritableStyleAttribute<>("selected-text-color", null, true);
   public static final StyleAttribute<Color> NULL_SELECTED_TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("null-selected-text-color", null, true);
 
   public static final StyleAttribute<Boolean> DRAW_BRACKETS = new SimpleStyleAttribute<>("draw-brackets", false, true);
@@ -162,6 +163,7 @@ public class StyleAttributes {
   public static final StyleAttribute<Boolean> READ_ONLY = new InheritableStyleAttribute<>("read-only", false, true);
   public static final StyleAttribute<Boolean> UNDERLINED = new SimpleStyleAttribute<>("underlined", false, true);
   public static final StyleAttribute<Boolean> STRIKE_OUT = new SimpleStyleAttribute<>("deprecated", false, true);
+  public static final StyleAttribute<Boolean> PLACEHOLDER = new SimpleStyleAttribute<>("placeholder", false, true);
 
   public static final StyleAttribute<Boolean> BASE_LINE_CELL = new SimpleStyleAttribute<>("baseLineCell", false, true);
   public static final StyleAttribute<DefaultBaseLine> DEFAULT_BASE_LINE =

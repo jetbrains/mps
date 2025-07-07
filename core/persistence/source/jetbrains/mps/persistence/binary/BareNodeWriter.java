@@ -58,14 +58,6 @@ public class BareNodeWriter {
   protected final ModelOutputStream myOut;
   private boolean myWriteUserObjects = true; // true is legacy setting
 
-  /**
-   * @deprecated use {@link #BareNodeWriter(Predicate, ModelOutputStream, boolean)} instead
-   */
-@Deprecated(since = "2020.2", forRemoval = true)
-  public BareNodeWriter(@NotNull SModelReference modelReference, @NotNull ModelOutputStream os) {
-    this(modelReference::equals, os, true);
-  }
-
   public BareNodeWriter(@NotNull Predicate<SModelReference> localModelRefPredicate, @NotNull ModelOutputStream os, boolean writeUserObjects) {
     myLocalModelReference = localModelRefPredicate;
     myOut = os;
@@ -75,8 +67,6 @@ public class BareNodeWriter {
   public BareNodeWriter(@NotNull ModelOutputStream os) {
     this(x -> false, os, true);
   }
-
-
 
   public void writeNodes(Collection<SNode> nodes) throws IOException {
     myOut.writeInt(nodes.size());

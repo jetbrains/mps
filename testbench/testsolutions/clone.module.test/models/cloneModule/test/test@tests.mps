@@ -680,7 +680,7 @@
         </node>
       </node>
       <node concept="3s$Bmu" id="Po8DAr8baA" role="3s_gse">
-        <property role="3s$Bm0" value="cloneLanguageWithAcessoryModels" />
+        <property role="3s$Bm0" value="cloneLanguageWithAccessoryModels" />
         <node concept="3cqZAl" id="Po8DAr8baB" role="3clF45" />
         <node concept="3Tm1VV" id="Po8DAr8baC" role="1B3o_S" />
         <node concept="3clFbS" id="Po8DAr8baD" role="3clF47">
@@ -831,7 +831,7 @@
             </node>
             <node concept="3_1$Yv" id="Po8DArbuZB" role="3_9lra">
               <node concept="Xl_RD" id="Po8DArbwpq" role="3_1BAH">
-                <property role="Xl_RC" value="Different count of accesory models" />
+                <property role="Xl_RC" value="Different count of accessory models" />
               </node>
             </node>
           </node>
@@ -903,7 +903,7 @@
                 </node>
                 <node concept="3_1$Yv" id="Po8DArc10k" role="3_9lra">
                   <node concept="Xl_RD" id="Po8DArc2x4" role="3_1BAH">
-                    <property role="Xl_RC" value="Same accesory models" />
+                    <property role="Xl_RC" value="Same accessory models" />
                   </node>
                 </node>
               </node>
@@ -931,7 +931,7 @@
                 </node>
                 <node concept="3_1$Yv" id="Po8DArc2ys" role="3_9lra">
                   <node concept="Xl_RD" id="Po8DArc2yt" role="3_1BAH">
-                    <property role="Xl_RC" value="Same accesory model references" />
+                    <property role="Xl_RC" value="Same accessory model references" />
                   </node>
                 </node>
               </node>
@@ -1567,8 +1567,16 @@
                       <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
                     </node>
                     <node concept="2OqwBi" id="1rpDfGKrKPL" role="33vP2m">
-                      <node concept="37vLTw" id="1rpDfGKrKPM" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2_jX3OnHZgc" resolve="clonedModulesDirectory" />
+                      <node concept="2OqwBi" id="Vcu4Ju8iEs" role="2Oq$k0">
+                        <node concept="37vLTw" id="1rpDfGKrKPM" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2_jX3OnHZgc" resolve="clonedModulesDirectory" />
+                        </node>
+                        <node concept="liA8E" id="Vcu4Ju8lhn" role="2OqNvi">
+                          <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
+                          <node concept="37vLTw" id="Vcu4Ju8no7" role="37wK5m">
+                            <ref role="3cqZAo" node="1rpDfGKrKPA" resolve="clonedModuleName" />
+                          </node>
+                        </node>
                       </node>
                       <node concept="liA8E" id="1rpDfGKrKPN" role="2OqNvi">
                         <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
@@ -1781,7 +1789,7 @@
                   <node concept="37vLTI" id="2_jX3OnHZQA" role="3clFbG">
                     <node concept="2YIFZM" id="2_jX3OnHZXB" role="37vLTx">
                       <ref role="1Pybhc" to="18ew:~IFileUtil" resolve="IFileUtil" />
-                      <ref role="37wK5l" to="18ew:~IFileUtil.createTmpDir(jetbrains.mps.vfs.FileSystem)" resolve="createTmpDir" />
+                      <ref role="37wK5l" to="18ew:~IFileUtil.createTmpDir(jetbrains.mps.vfs.openapi.FileSystem)" resolve="createTmpDir" />
                       <node concept="2OqwBi" id="2Z81NTQQWEb" role="37wK5m">
                         <node concept="37vLTw" id="2Z81NTQQWc9" role="2Oq$k0">
                           <ref role="3cqZAo" node="7l0SErcZkaN" resolve="project" />

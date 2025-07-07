@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.editor;
 
@@ -8,17 +8,15 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentChange;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
@@ -39,7 +37,7 @@ public final class EditorTrackService {
   private final MPSProject myProject;
   private final CopyOnWriteArrayList<MPSFileNodeEditor> myEditors = new CopyOnWriteArrayList<>();
 
-  private final DeployListener myDeployListener = new RefreshEditors();
+  private final ModuleDeploymentListener myDeployListener = new RefreshEditors();
 
   private boolean myListenersActive = false;
 
@@ -68,23 +66,21 @@ public final class EditorTrackService {
 
   private void activateListeners() {
     assert !myListenersActive;
-    final ClassLoaderManager clm = myProject.getComponent(ClassLoaderManager.class);
-    clm.addListener(myDeployListener);
+    myProject.getPlatform().findComponent(LanguageRegistry.class).addRegistryListener(myDeployListener);
     myListenersActive = true;
   }
 
   private void deactivateListeners() {
     assert myListenersActive;
-    final ClassLoaderManager clm = myProject.getComponent(ClassLoaderManager.class);
-    clm.removeListener(myDeployListener);
+    myProject.getPlatform().findComponent(LanguageRegistry.class).removeRegistryListener(myDeployListener);
     myListenersActive = false;
   }
 
-  // FIXME has to be LanguageRegistryListener, as it's behavior's getPresentation() that affects file name
-  // FIXME moreover, has to listen to file changes, instead, not to reload every
-  private class RefreshEditors implements DeployListener {
+  // Need to know about deployed modules as it's behavior's getPresentation() code that affects file name
+  // FIXME has to listen to file changes, instead, not to reload every
+  private class RefreshEditors implements ModuleDeploymentListener {
     @Override
-    public void onLoaded(@NotNull Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
+    public void deploymentStateChanged(@NotNull ModuleDeploymentChange change) {
       final List<MPSNodeVirtualFile> files = myEditors.stream().map(MPSFileNodeEditor::getFile).collect(Collectors.toList());
       if (files.isEmpty()) {
         return;
@@ -93,7 +89,7 @@ public final class EditorTrackService {
       // perhaps, it was for getVirtualFile, that accessed SNode. Well, now it does not.
       ApplicationManager.getApplication().executeOnPooledThread(() -> {
         final com.intellij.openapi.project.Project project = myProject.getProject();
-        // FIXME first, it has to me WorkbenchModelAccess not to start read/write for disposed project
+        // FIXME first, it has to be WorkbenchModelAccess not to start read/write for disposed project
         //       second, I don't think DeployListener is the right way to address editor title update, too low-level, imo.
         if (project.isDisposed()) {
           return;

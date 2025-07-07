@@ -20,7 +20,7 @@ public class EnumerationDescriptor_EnumerationMemberIdentifierPolicy extends Enu
   private final EnumerationDescriptor.MemberDescriptor myMember_custom_0 = new EnumerationDescriptor.MemberDescriptor("custom", "custom", 0x116d5fd9aa3L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447581");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, 0x116d5fab106L, 0x116d5fd31b6L, 0x116d5fd9aa3L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_derive_from_presentation_0, myMember_derive_from_internal_value_0, myMember_custom_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_derive_from_presentation_0, myMember_derive_from_internal_value_0, myMember_custom_0);
 
   @Nullable
   @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.workbench.index;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.util.indexing.DataIndexer;
 import com.intellij.util.indexing.DefaultFileTypeSpecificInputFilter;
@@ -115,7 +114,7 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
 
   public PropertyValueIndex() {
     // copied from MPSModelsIndexer
-    final Platform mpsPlatform = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform();
+    final Platform mpsPlatform = MPSCoreComponents.getInstance().getPlatform();
     for (ModelFactory mf : mpsPlatform.findComponent(ModelFactoryService.class).getFactories()) {
       if (mf instanceof IndexAwareModelFactory) {
         for (DataSourceType type : mf.getPreferredDataSourceTypes()) {

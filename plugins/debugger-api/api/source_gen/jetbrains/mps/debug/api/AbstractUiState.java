@@ -14,7 +14,7 @@ import jetbrains.mps.debug.api.programState.IWatchable;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import com.intellij.openapi.application.ApplicationManager;
 
-@GeneratedClass(node = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)/4474271214082913514", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
+@GeneratedClass(nodeId = "4474271214082913514", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
 public abstract class AbstractUiState {
   private static final Logger LOG = Logger.getLogger(AbstractUiState.class);
   protected static final int NO_FRAME = -1;

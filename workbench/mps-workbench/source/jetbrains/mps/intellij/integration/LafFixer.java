@@ -24,6 +24,8 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl;
 import com.intellij.util.ui.StartupUiUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.annotations.ApiStatus.Internal;
 
 
@@ -68,13 +70,13 @@ final class LafFixer {
    */
   @Internal
   private static final class MyAppLifecycleListener implements AppLifecycleListener {
-
     @Override
     public void appStarted() {
       // Disables the Welcome screen banner and Project settings toolbar action's (gear icon) tooltip promoting new UI
-      com.intellij.ide.util.PropertiesComponent.getInstance().setValue(com.intellij.ui.ExperimentalUI.NEW_UI_USED_PROPERTY, true);
+      if (System.getProperty("experimental.ui.used.once") != null) {
+        com.intellij.ide.util.PropertiesComponent.getInstance().setValue("experimental.ui.used.once", true);
+      }
     }
-
     @Override
     public void welcomeScreenDisplayed() {
       if (ConfigImportHelper.isFirstSession() && !ConfigImportHelper.isConfigImported()) {

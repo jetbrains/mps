@@ -5,6 +5,7 @@
   <property name="build.layout" location="${build.dir}/artifacts/mpsJpsIdea" />
   <property name="mps_home" location="${basedir}" />
   <property name="idea_home" location="" />
+  <property name="kotlinc_home" location="${mps_home}/plugins/mps-kotlin/kotlinc" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
   <property name="artifacts.mpsPluginCommon" location="${build.dir}/artifacts/mpsPluginCommon" />
   <property name="artifacts.mpsJavaPlatform" location="${build.dir}/artifacts/mpsJavaPlatform" />
@@ -42,7 +43,11 @@
     </fileset>
   </path>
   
-  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
+  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
+  
+  <typedef name="skip" classname="com.intellij.ant.ClassFilterAnnotationRegexp" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
+  
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar" />
   
   <target name="assemble" depends="classes, declare-mps-tasks">
     <mkdir dir="${build.layout}/lib" />
@@ -94,6 +99,10 @@
     <mkdir dir="${mps_home}/IdeaPlugin/mps-core/jps-plugin/src" />
     <mkdir dir="${build.tmp}/java/out/mps-core-jps-plugin" />
     <javac2 destdir="${build.tmp}/java/out/mps-core-jps-plugin" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+      <withKotlin moduleName="mps-core-jps-plugin">        
+        <compilerarg value="-jvm-target=11" />
+      </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/IdeaPlugin/mps-core/jps-plugin/src" />
@@ -124,18 +133,20 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/java-frontback.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset dir="${artifacts.IDEA}/plugins/java/lib" includes="*.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-core-jps-plugin">
-      <fileset dir="${mps_home}/IdeaPlugin/mps-core/jps-plugin/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/IdeaPlugin/mps-core/jps-plugin/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -143,6 +154,10 @@
     <mkdir dir="${mps_home}/IdeaPlugin/mps-java/jps-plugin/src" />
     <mkdir dir="${build.tmp}/java/out/mps-java-jps-plugin" />
     <javac2 destdir="${build.tmp}/java/out/mps-java-jps-plugin" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+      <withKotlin moduleName="mps-java-jps-plugin">        
+        <compilerarg value="-jvm-target=11" />
+      </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/IdeaPlugin/mps-java/jps-plugin/src" />
@@ -171,17 +186,19 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/java-frontback.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-java-jps-plugin">
-      <fileset dir="${mps_home}/IdeaPlugin/mps-java/jps-plugin/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/IdeaPlugin/mps-java/jps-plugin/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
 </project>

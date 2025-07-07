@@ -5,25 +5,11 @@ package jetbrains.mps.ide.newModuleDialogs;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.util.ModulePathConverter;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.util.PathConverters;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
-import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.ModuleId;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
-import java.util.ArrayList;
-import org.jdom.Element;
-import jetbrains.mps.project.persistence.ModuleDescriptorPersistence;
-import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.persistence.MementoImpl;
-import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 
 /**
  *  Incorporates the descriptor copying ('cloning') logic,
@@ -32,24 +18,17 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
  * 
  *  Created by apyshkin on 12/6/16.
  */
-@GeneratedClass(node = "r:8bdc9cf5-28de-48ab-8b85-36b2d96bc635(jetbrains.mps.ide.newModuleDialogs)/7650435763716686950", model = "r:8bdc9cf5-28de-48ab-8b85-36b2d96bc635(jetbrains.mps.ide.newModuleDialogs)")
+@GeneratedClass(nodeId = "7650435763716686950", model = "r:8bdc9cf5-28de-48ab-8b85-36b2d96bc635(jetbrains.mps.ide.newModuleDialogs)")
 /*package*/ final class DescriptorCopyOrganizer {
   @NotNull
   private final AbstractModule myModuleToCopy;
   @NotNull
   private final String myNewName;
-  private final ModulePathConverter myModulePathConverter;
-  private final IFile myNewFile;
 
-  public DescriptorCopyOrganizer(@NotNull AbstractModule moduleToCopy, @NotNull String newName, @NotNull IFile newFile) {
+
+  public DescriptorCopyOrganizer(@NotNull AbstractModule moduleToCopy, @NotNull String newName) {
     myModuleToCopy = moduleToCopy;
     myNewName = newName;
-    myNewFile = newFile;
-    if (moduleToCopy.getDescriptorFile() != null) {
-      myModulePathConverter = PathConverters.forDescriptorFiles(moduleToCopy.getDescriptorFile(), newFile);
-    } else {
-      myModulePathConverter = null;
-    }
     if (moduleToCopy.getModuleDescriptor() == null) {
       throw new UnsupportedOperationException("Cannot copy without descriptor so far");
     }
@@ -68,6 +47,8 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
     final ModuleDescriptor copyDescriptor = moduleDescriptor.copy();
     setNewIdAndTimestamp(copyDescriptor);
     copyDescriptor.setNamespace(myNewName);
+    resetModelRoots(copyDescriptor);
+
     if (copyDescriptor instanceof LanguageDescriptor) {
       ((LanguageDescriptor) copyDescriptor).getGenerators().forEach((GeneratorDescriptor gd) -> {
         gd.setSourceLanguage(copyDescriptor.getModuleReference());
@@ -75,117 +56,24 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
         // well, in fact we might want to copy tail of source generator (if any), but for general
         // use seems default approach of LanguageProducer is ok enough.
         gd.setNamespace(myNewName + ".generator");
+        resetModelRoots(gd);
       });
     }
-    if (myModulePathConverter != null) {
-      hackModuleDescriptor(copyDescriptor);
-
-      if (copyDescriptor instanceof SolutionDescriptor) {
-        hackSolutionDescriptor((SolutionDescriptor) copyDescriptor);
-      } else
-      if (copyDescriptor instanceof LanguageDescriptor) {
-        hackLanguageDescriptor((LanguageDescriptor) copyDescriptor);
-        ((LanguageDescriptor) copyDescriptor).getGenerators().forEach((GeneratorDescriptor genDescriptor) -> {
-          hackGeneratorDescriptor(genDescriptor);
-          hackModuleDescriptor(genDescriptor);
-        });
-      }
-    }
+    // JFTR, we may face copyDescriptor instanceof GeneratorDescriptor for standalone Generators 
     return copyDescriptor;
   }
 
-  private void hackModuleDescriptor(final ModuleDescriptor copyDescriptor) {
-    hackFacetProperties(copyDescriptor);
-    hackDeploymentDescriptor(copyDescriptor);
-    resetModelRootsAndFacets(copyDescriptor);
-  }
-
-  private void resetModelRootsAndFacets(final ModuleDescriptor copyDescriptor) {
+  private void resetModelRoots(final ModuleDescriptor copyDescriptor) {
     // these are descriptors not the model roots themselves and thus we have a problem
     // model roots will be copied later via CopyableModelRoot functionality
-    copyDescriptor.getModelRootDescriptors().clear();
 
-    // facet cloning should be implemented similarly to how it is implemented for model roots
-    // but currently we just copy facet descriptors, since all current facets has trivial logic of cloning
-    // so no need to reset descriptors here
+    // FWIW, it's CopyModuleHelper.copyModelRoots() that performs adjustment of the roots.
+    // XXX not sure if this logic is still valid, need to check if just cloning MRD works.
+    copyDescriptor.clearModelRootDescriptors();
   }
 
   private static void setNewIdAndTimestamp(final ModuleDescriptor descriptor) {
     descriptor.setId(ModuleId.regular());
     descriptor.setTimestamp(Long.toString(System.currentTimeMillis()));
-  }
-
-  /**
-   * will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
-   * moreover these paths will move to the java module facet implementation
-   * 
-   * @deprecated in 2023.1, java library and source paths moved to JMF, and are preserved with PathSpec, no need to convert paths from one descriptor to another
-   */
-  @Deprecated(forRemoval = true, since = "2023.1")
-  private void hackFacetProperties(@NotNull ModuleDescriptor copyDescriptor) {
-    resaveFacetsUnderNewFile(copyDescriptor);
-
-    // area of facet descriptor which is still in the module descriptor
-    Collection<String> javaLibs = copyDescriptor.getJavaLibPersistedValues();
-    List<String> newStubPaths = javaLibs.stream().map(myModulePathConverter::source2Target).collect(Collectors.<String>toList());
-    javaLibs.clear();
-    javaLibs.addAll(newStubPaths);
-    final Collection<String> sourcePathsByReference = copyDescriptor.getSourcePathPersistedValue();
-    List<String> newSourcePaths = sourcePathsByReference.stream().map(myModulePathConverter::source2Target).collect(Collectors.<String>toList());
-    sourcePathsByReference.clear();
-    sourcePathsByReference.addAll(newSourcePaths);
-  }
-
-  private void resaveFacetsUnderNewFile(ModuleDescriptor copyDescriptor) {
-    // FIXME why all this odd logic with ModuleDescriptorPersistence write/read memento?!
-    final List<ModuleFacetDescriptor> newFacetDescriptors = new ArrayList<ModuleFacetDescriptor>();
-    copyDescriptor.getModuleFacetDescriptors().forEach((ModuleFacetDescriptor it) -> {
-      Element tmp = new Element("tmp");
-      ModuleDescriptorPersistence.writeMemento(it.getMemento(), tmp, MacrosFactory.forModule(myModuleToCopy));
-      MementoImpl memo = new MementoImpl();
-      ModuleDescriptorPersistence.readMemento(memo, tmp, MacrosFactory.forModuleFile(myNewFile));
-      newFacetDescriptors.add(new ModuleFacetDescriptor(it.getType(), memo));
-    });
-    copyDescriptor.getModuleFacetDescriptors().clear();
-    copyDescriptor.getModuleFacetDescriptors().addAll(newFacetDescriptors);
-  }
-
-  /**
-   * will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
-   * or if these locations are not needed right in the module, just are vital for its initialization
-   */
-  private void hackDeploymentDescriptor(@NotNull ModuleDescriptor copyDescriptor) {
-    DeploymentDescriptor deploymentDescriptor = copyDescriptor.getDeploymentDescriptor();
-    if (deploymentDescriptor != null) {
-      deploymentDescriptor.setSourcesJar(myModulePathConverter.source2Target(deploymentDescriptor.getSourcesJar()));
-      deploymentDescriptor.setDescriptorFile(myModulePathConverter.source2Target(deploymentDescriptor.getDescriptorFile()));
-    }
-  }
-
-  /**
-   * will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
-   */
-  private void hackSolutionDescriptor(@NotNull SolutionDescriptor copyDescriptor) {
-    final String outputPath = copyDescriptor.getOutputPath();
-    if (outputPath != null) {
-      copyDescriptor.setOutputPath(myModulePathConverter.source2Target(outputPath));
-    }
-  }
-
-  /**
-   * will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
-   */
-  private void hackLanguageDescriptor(@NotNull LanguageDescriptor copyDescriptor) {
-    final String genPath = copyDescriptor.getGenPath();
-    if (genPath != null) {
-      copyDescriptor.setGenPath(myModulePathConverter.source2Target(genPath));
-    }
-  }
-
-  private void hackGeneratorDescriptor(@NotNull GeneratorDescriptor genDescriptor) {
-    String outputPath = genDescriptor.getOutputPath();
-    if (outputPath != null) {
-      genDescriptor.setOutputPath(myModulePathConverter.source2Target(outputPath));
-    }
   }
 }

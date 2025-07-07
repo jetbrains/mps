@@ -6,11 +6,11 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -38,6 +38,14 @@ public class AddAccessoryModel_Action extends BaseAction {
   @Override
   public boolean isDumbAware() {
     return true;
+  }
+  @Override
+  public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
+    return !(((Language) event.getData(MPSCommonDataKeys.CONTEXT_MODULE)).isReadOnly());
+  }
+  @Override
+  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {

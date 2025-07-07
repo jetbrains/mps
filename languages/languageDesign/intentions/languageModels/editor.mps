@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
@@ -86,7 +86,6 @@
         <reference id="6591946374543067572" name="conceptDeclaration" index="aqKnT" />
         <child id="5991739802479788259" name="type" index="22hAXT" />
       </concept>
-      <concept id="1214406454886" name="jetbrains.mps.lang.editor.structure.TextBackgroundColorStyleClassItem" flags="ln" index="30gYXW" />
       <concept id="1233758997495" name="jetbrains.mps.lang.editor.structure.PunctuationLeftStyleClassItem" flags="ln" index="11L4FC" />
       <concept id="1233759184865" name="jetbrains.mps.lang.editor.structure.PunctuationRightStyleClassItem" flags="ln" index="11LMrY" />
       <concept id="1154465273778" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_ParentNode" flags="nn" index="3bvxqY" />
@@ -717,9 +716,6 @@
           <node concept="VPM3Z" id="441vB8LQTI0" role="3F10Kt">
             <property role="VOm3f" value="false" />
           </node>
-          <node concept="30gYXW" id="441vB8LQTI1" role="3F10Kt">
-            <property role="Vb096" value="fLwANPp/orange" />
-          </node>
         </node>
         <node concept="3F0ifn" id="441vB8LQTI2" role="3EZMnx">
           <node concept="VPM3Z" id="441vB8LQTI3" role="3F10Kt">
@@ -735,9 +731,6 @@
           <property role="3F0ifm" value="additional methods" />
           <node concept="VPM3Z" id="441vB8LQTI8" role="3F10Kt">
             <property role="VOm3f" value="false" />
-          </node>
-          <node concept="30gYXW" id="441vB8LQTI9" role="3F10Kt">
-            <property role="Vb096" value="fLwANPp/orange" />
           </node>
         </node>
         <node concept="3F0ifn" id="441vB8LQTIa" role="3EZMnx" />

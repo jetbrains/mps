@@ -7,7 +7,7 @@ import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
-@GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/1156564534683228178", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
+@GeneratedClass(nodeId = "1156564534683228178", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class MakeFromChangesView_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.vcs.plugin.MakeFromChangesView_ActionGroup";
 

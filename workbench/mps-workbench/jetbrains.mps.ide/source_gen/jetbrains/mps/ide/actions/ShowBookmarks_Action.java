@@ -13,14 +13,14 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.bookmark.BookmarksTool;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1234190163902", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1234190163902", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ShowBookmarks_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public ShowBookmarks_Action() {
     super("Bookmarks...", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    this.setActionAccess(ActionAccess.NONE);
     updateInBackground(true);
   }
   @Override
@@ -42,6 +42,6 @@ public class ShowBookmarks_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(CommonDataKeys.PROJECT).getComponent(BookmarksTool.class).openTool(true);
+    BookmarksTool.getInstance(event.getData(CommonDataKeys.PROJECT)).openTool();
   }
 }

@@ -22,6 +22,7 @@
         <artifact name="bootstrap:mps-platform" />
         <artifact name="bootstrap:mps-testbench" />
         <artifact name="bootstrap:mps-workbench" />
+        <artifact name="bootstrap:scripts-runtime" />
         <artifact name="migration-platform" />
         <artifact name="mpsdevkit" />
       </option>

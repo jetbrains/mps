@@ -1,14 +1,14 @@
 /*
- * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.project.facets;
 
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.generator.fileGenerator.FileGenerationUtil;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.util.IFileUtil;
-import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.annotations.NotNull;
@@ -16,6 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 
 /**
  * @author Artem Tikhomirov
@@ -24,13 +25,10 @@ import org.jetbrains.mps.openapi.persistence.Memento;
 public class PlainTextTargetFacet extends ModuleFacetBase implements GenerationTargetFacet {
   public static final String FACET_TYPE = "plaintext";
 
-  private IFile myOutputRoot;
   private IFile myOutputCacheRoot;
   private boolean myUseModelNameForFolder = true;
-
   private boolean myOutputRootFromDescriptor = true;
-  private String myOutputRootOriginal;
-
+  private PathSpec myOutputRoot;
 
 
   public PlainTextTargetFacet(SModule module) {
@@ -40,13 +38,16 @@ public class PlainTextTargetFacet extends ModuleFacetBase implements GenerationT
   @Nullable
   @Override
   public IFile getOutputRoot(@NotNull SModel model) {
-    return myOutputRoot;
+    return myOutputRoot == null || !myOutputRoot.resolved() ? null : myOutputRoot.resolvedFile();
   }
 
   @Nullable
   @Override
   public IFile getOutputLocation(@NotNull SModel model) {
-    return myUseModelNameForFolder ? withModelName(myOutputRoot, model) : myOutputRoot;
+    if (myOutputRoot == null || !myOutputRoot.resolved()) {
+      return null;
+    }
+    return myUseModelNameForFolder ? withModelName(myOutputRoot.resolvedFile(), model) : myOutputRoot.resolvedFile();
   }
 
   @Nullable
@@ -58,6 +59,9 @@ public class PlainTextTargetFacet extends ModuleFacetBase implements GenerationT
   @Nullable
   @Override
   public IFile getOutputCacheLocation(@NotNull SModel model) {
+    if (myOutputCacheRoot == null) {
+      return null;
+    }
     return myUseModelNameForFolder ? withModelName(myOutputCacheRoot, model) : myOutputCacheRoot;
   }
 
@@ -77,7 +81,7 @@ public class PlainTextTargetFacet extends ModuleFacetBase implements GenerationT
   }
 
   public IFile location() {
-    return myOutputRoot;
+    return myOutputRoot != null && myOutputRoot.resolved() ? myOutputRoot.resolvedFile() : null;
   }
 
   public IFile locationCache() {
@@ -85,42 +89,40 @@ public class PlainTextTargetFacet extends ModuleFacetBase implements GenerationT
   }
 
   public void location(@Nullable IFile location) {
-    myOutputRoot = location;
+    // FIXME need to decide what does null location means. Whether it's "from module" or "none"
+    myOutputRoot = location == null ? null : new PathSpec(location);
     //noinspection removal
     myOutputCacheRoot = location == null ? null : FileGenerationUtil.getCachesDir(location);
+    if (location != null && getModule() instanceof AbstractModule) {
+      myOutputRootFromDescriptor = location.equals(((AbstractModule) getModule()).getOutputPath());
+    }
   }
 
   @Override
-  public void load(@NotNull Memento memento) {
+  public void load(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
     final String foldersValue = memento.get("folders");
     myUseModelNameForFolder = foldersValue == null || Boolean.parseBoolean(foldersValue);
     String locationValue = memento.get("root");
     final AbstractModule am = (AbstractModule) getModule();
     if (locationValue == null) {
       myOutputRootFromDescriptor = true;
-      myOutputRootOriginal = null;
-      locationValue = ProjectPathUtil.getGeneratorOutputPath(am.getModuleDescriptor());
-      // MD value could be in {$module}/source_gen form (now, in lang.build scenario only, eventually we'll move to MD with persistence
-      // values in all cases), fall through to expand
-      // FIXME generatorOutputPath could be null, need to account for this scenario (although, quite unlikely one)
+      myOutputRoot = am.getOutputPath() == null ? null : new PathSpec(am.getOutputPath());
     } else {
       myOutputRootFromDescriptor = false;
-      myOutputRootOriginal = locationValue;
+      myOutputRoot = new PathSpec(locationValue);
+      myOutputRoot.resolve(PersistenceContextImpl.pathResolveFunction(context));
     }
-    final String expanded = MacrosFactory.forModule(getModule()).expandPath(locationValue);
-    myOutputRoot = am.getFileSystem().getFile(expanded);
     //noinspection removal
-    myOutputCacheRoot = FileGenerationUtil.getCachesDir(myOutputRoot);
+    myOutputCacheRoot = myOutputRoot != null && myOutputRoot.resolved() ? FileGenerationUtil.getCachesDir(myOutputRoot.resolvedFile()) : null;
   }
 
   @Override
-  public void save(@NotNull Memento memento) {
+  public void save(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
     memento.put("folders", String.valueOf(myUseModelNameForFolder));
-    if (myOutputRootFromDescriptor) {
+    if (myOutputRootFromDescriptor || myOutputRoot == null) {
       memento.put("root", null);
     } else {
-      final String shrank = MacrosFactory.forModule(getModule()).shrinkPath(myOutputRoot, myOutputRootOriginal);
-      memento.put("root", shrank);
+      memento.put("root", myOutputRoot.shrink(PersistenceContextImpl.macroHelper(context)));
     }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,12 @@
 package jetbrains.mps.project.structure.modules;
 
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
@@ -29,6 +31,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.IOException;
@@ -44,24 +47,28 @@ import java.util.function.Supplier;
  * This class captures persistence and editing aspects of SModule. Client code shall not use this class
  * unless its purpose is to edit or persist module properties. Use SModule API (or Language/Generator/Solution/DevKit subclasses)
  * to read module dependencies and identity information.
- *
+ * <p>
  * -----------------------------------------------------------------------------------------------------------------------------------
+ * <p>
  * FIXME This class mixes up the persistence and editing aspects of the {@link AbstractModule} class.
  * FIXME in order to edit facets/model roots in the module a client needs to access such entities as {@link ModuleFacetDescriptor}, {@link ModelRootDescriptor} directly,
  * FIXME when he has just an {@link AbstractModule} (which leads to a low-level module#getModuleDescriptor.getFacetDescriptors().add...)
  * FIXME obviously it is wrong: a client should rather work with {@link SModuleFacet} entities in the case of editing an {@link AbstractModule}, not descriptors.
  * FIXME OTOH it cannot be a plain persistence descriptor since in order to update (more or less) any properties of an {@link AbstractModule}
  * FIXME we use such pattern in the {@code AbstractModule} as:
+ * <pre>
  * <code>
  *   AbstractModule module;
  *   var descriptor = module.getDescriptor();
- *   <change descriptor freely as we wish>
+ *   // change descriptor freely as we wish
  *   module.setDescriptor(descriptor); // commit descriptor
  * </code>
+ * </pre>
  * which is needed in order to guarantee a consistency of the {@link AbstractModule} operations.
- *
+ * <p>
  * TODO Also I would rather use in the ModuleDescriptor hierarchy composition instead of inheritance. The {@link #myDeploymentDescriptor} reference is especially repelling here.
- *
+ *  ^^^ not sure I follow. DD is examplary use of composition instead of inheritance.
+ * <p>
  * Road map:
  * We separate the persistence descriptor from the special editing 'handle'.
  * We ensure that the persistence descriptor reflects all the properties we find in our module persistence.
@@ -135,13 +142,28 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     }
   };
   private final Collection<String> myJavaLibs = new LinkedHashSet<>();
-  private final Collection<String> myJavaLibs2 = new LinkedHashSet<>();
   private final Collection<String> mySourcePaths = new LinkedHashSet<>();
-  private final Collection<String> mySourcePaths2 = new LinkedHashSet<>();
   private DeploymentDescriptor myDeploymentDescriptor; // FIXME must be removed
 
+  /**
+   * Serves as a default location for artifacts produced by a module, if any.
+   * Keep null if module got no general output location. Note, facets (especially {@link jetbrains.mps.project.facets.GenerationTargetFacet})
+   * can use this value, if present, as a default for facet's output location, but may specify their own path. It's advised, however, to stay
+   * under this location, if specified.
+   * <p>
+   * Impl note: I'm not certain if use String or PathSpec. After all, PathSpec doesn't show up in ModelRootDescriptor or ModuleFacetDescriptor
+   *  (they stick to Memento and strings), PathSpec shows up only e.g. for SModuleFacet level. With that, seems that we can stick to string persistence
+   *  value (of course, w/o any macro expansion or full path assumption), and ressurect AM.getOutputPath(), which would do the magic with
+   *  string(MD) --> PathSpec(AM). OTOH, MD serves as an editing handle for modules, and use of PathSpec seems more handy and straightforward/honest way
+   *  to tell paths. Unlike ModelRootDescriptor and ModuleFacetDescriptor, there's less clear load()/save() contract for MD, which makes it trickier to
+   *  go from IFile/PathSpec to String and back
+   */
+  @Nullable
+  private String myOutputRoot;
+
+  private boolean myUseOutputRootFromLegacy;
+
   private Throwable myLoadException;
-  private boolean myUseTransientOutput;
 
   public ModuleDescriptor() {
   }
@@ -150,6 +172,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     return myId;
   }
 
+  // FIXME WHY NOT SModuleId
   public final void setId(ModuleId id) {
     myId = id;
   }
@@ -207,12 +230,57 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     // no-op, subclasses that do support this setting shall override
   }
 
+  /**
+   * @since 2023.3
+   */
+  @Nullable
+  public String getOutputRoot() {
+    return myOutputRoot;
+  }
+
+  public void setOutputRoot(@Nullable String location) {
+    myOutputRoot = location;
+  }
+
+  /**
+   * Transition code, don't use except for MPS internal purposes
+   */
+  @Deprecated(forRemoval = true)
+  public void markOutputRootLegacyValue(boolean value) {
+    myUseOutputRootFromLegacy = value;
+  }
+
+  /**
+   * Transition code, don't use except for MPS internal purposes
+   */
+  @Deprecated(forRemoval = true)
+  public boolean isOutputRootFromLegacy() {
+    return myUseOutputRootFromLegacy;
+  }
+
   public final Collection<ModelRootDescriptor> getModelRootDescriptors() {
     return myModelRoots;
   }
 
+  /**
+   * Hides the fact if {@link #getModelRootDescriptors()} gives a copy or by-reference value
+   * @since 2024.2
+   */
+  public void clearModelRootDescriptors() {
+    myModelRoots.clear();
+  }
+
   public final Collection<ModuleFacetDescriptor> getModuleFacetDescriptors() {
     return myFacets;
+  }
+
+
+  /**
+   * Hides the fact if {@link #getModuleFacetDescriptors()} gives a copy or by-reference value
+   * @since 2024.2
+   */
+  public void clearModuleFacetDescriptors() {
+    myFacets.clear();
   }
 
   /**
@@ -226,7 +294,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     removeFacetDescriptor(facet);
     final ModuleFacetDescriptor fd = new ModuleFacetDescriptor(facet.getFacetType(), new MementoImpl());
     // write defaults or actual values, if any
-    facet.save(fd.getMemento());
+    facet.save(fd.getMemento(), PersistenceContextImpl.empty());
     myFacets.add(fd);
   }
 
@@ -260,10 +328,10 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
    * for editing of module settings) - it's sort of changes snapshot, applied with a single setModuleDescriptor operation, rather than sequence
    * of SModule changes.
    */
-  public final void updateFacetDescriptor(@NotNull SModuleFacet facet) {
+  public final void updateFacetDescriptor(@NotNull SModuleFacet facet, @NotNull ModulePersistenceContext context) {
     for (ModuleFacetDescriptor facetDescriptor : myFacets) {
       if (facetDescriptor.getType().equals(facet.getFacetType())) {
-        facet.save(facetDescriptor.getMemento());
+        facet.save(facetDescriptor.getMemento(), context);
         break;
       }
     }
@@ -287,22 +355,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
 
 
   /**
-   * Paths to extra jar files needed to compile and run given module, generally empty unless a module has some peculiar dependencies on existing java libraries.
-   * As of today, these come from {@code <stubModelEntry path=""/>} in a module descriptor.
-   * according to {@code LanguageDescriptorPersistence}, legacy entries were {@code classPath} and {@code runtimeClassPath}.
-   * This method is just a better name for what used to be {@code getAdditionalJavaStubPaths()}.
-   * FIXME WHY DOES IT USE String for File location, which FS shall I use to resolve these locations?
-   * @deprecated replaced with {@link jetbrains.mps.project.facets.JavaModuleFacetImpl#getJavaLibrarySpec()}, although if all you need is
-   *             to access libraries, {@link jetbrains.mps.project.facets.JavaModuleFacet#getLibraryClassPath()} might be better alternative
-   *             This method will be removed after few releases (as it's part of well-known MD class, we'll keep it for a couple of releases)
-   */
-  @Deprecated(since = "2023.1", forRemoval = true)
-  public final Collection<String> getJavaLibs() {
-    Logger.getLogger(getClass()).warnDeprecatedUse("Java Libraries are part of JavaModuleFacet specification now");
-    return myJavaLibsWarnWrap;
-  }
-
-  /**
    * Provisional API to migrate usages of {@code MD.getJavaLibs()} to libraries from {@code JavaModuleFacet}
    * This field reflects legacy persisted values, these are converted to respective elements in JMF
    */
@@ -311,46 +363,9 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     return myJavaLibs;
   }
 
-  /**
-   * this one holds unprocessed values from module descriptor persistence (i.e macro values not expanded) and is
-   * intended solely for use from migration script, to ensure migrated paths use same macro (to prevent expand/shrink cycle
-   * to pick another matching one, like infamous mps_home/lib -> platform_lib conversion)
-   *
-   * This value makes sense only until {@code myJavaLibs} value has not been modified, there's a check in migration not to
-   * complete unless these two collections reflect original (read from file) state
-   *
-   * Once 23.1 is out, remove this field. Migration (which has to stay for a while) can use expanded getJavaLibPersistedValues()
-   * then. The only drawback would be potential for a wrong macro in migrated values in case there are few matching paths. Not a big
-   * deal provided there's version that handles it right.
-   */
-  @Deprecated(forRemoval = true, since = "0")
-  public final Collection<String> getJavaLibOriginalValues() {
-    return myJavaLibs2;
-  }
-
-    /**
-     * Additional source files to compile along with module's own generated output.
-     * Though, uses are bit odd:
-     *  - There's unused {@link AbstractModule#getSourcePaths()}
-     *  - JavaModuleFacet manifests these {@link jetbrains.mps.project.facets.JavaModuleFacet#getAdditionalSourcePaths()}, likely using module descriptor just as a storage (it's what JMF does anyway)
-     *  - Make respects these to compile a module
-     * @deprecated not an attribute of every module, use {@link jetbrains.mps.project.facets.JavaModuleFacet#getAdditionalSourcePaths()} instead
-     */
-  @Deprecated(since = "2023.1", forRemoval = true)
-  public final Collection<String> getSourcePaths() {
-    Logger.getLogger(getClass()).warnDeprecatedUse("Additional source paths are part of JavaModuleFacet specification now");
-    return getSourcePathPersistedValue();
-  }
-
   @Deprecated(forRemoval = true, since = "0")
   public final Collection<String> getSourcePathPersistedValue() {
     return mySourcePaths;
-  }
-
-  // solely for migration; to keep original macro w/o extra shrink/expand
-  @Deprecated(forRemoval = true, since = "0")
-  public final Collection<String> getSourcePathOriginalValue() {
-    return mySourcePaths2;
   }
 
   @Nullable
@@ -383,14 +398,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     myLoadException = loadException;
   }
 
-  public boolean isUseTransientOutput() {
-    return myUseTransientOutput;
-  }
-
-  public void setUseTransientOutput(boolean useTransientOutput) {
-    myUseTransientOutput = useTransientOutput;
-  }
-
   protected int getHeaderMarker() {
     return 0x73048111;
   }
@@ -421,15 +428,13 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
       stream.writeModuleReference(ref);
     }
 
-    stream.writeStrings(myJavaLibs);
-    stream.writeStrings(mySourcePaths);
+    stream.writeString(myOutputRoot);
 
     stream.writeByte(myDeploymentDescriptor != null ? 0x1 : 0x70);
     if (myDeploymentDescriptor != null) {
       myDeploymentDescriptor.save(stream);
     }
 
-    stream.writeBoolean(myUseTransientOutput);
     stream.writeInt(myModuleVersion);
 
     stream.writeByte(0x3a);
@@ -464,10 +469,8 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     }
 
     myJavaLibs.clear();
-    myJavaLibs.addAll(stream.readStrings());
-
     mySourcePaths.clear();
-    mySourcePaths.addAll(stream.readStrings());
+    myOutputRoot = stream.readString();
 
     byte b = stream.readByte();
     if (b == 0x1) {
@@ -479,7 +482,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
       throw new IOException("broken stream");
     }
 
-    myUseTransientOutput = stream.readBoolean();
     myModuleVersion = stream.readInt();
 
     if (stream.readByte() != 0x3a) throw new IOException("bad stream: no module descriptor end marker");
@@ -514,7 +516,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     descriptorCopy.getSourcePathPersistedValue().addAll(getSourcePathPersistedValue());
     copyDeploymentDescriptor(descriptorCopy);
     descriptorCopy.setLoadException(getLoadException());
-    descriptorCopy.setUseTransientOutput(isUseTransientOutput());
+    descriptorCopy.setOutputRoot(getOutputRoot());
     return descriptorCopy;
   }
 

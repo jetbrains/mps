@@ -19,7 +19,7 @@ public class EnumerationDescriptor_ScriptType extends EnumerationDescriptorBase 
   private final EnumerationDescriptor.MemberDescriptor myMember_migration_0 = new EnumerationDescriptor.MemberDescriptor("migration", "migration", 0x498b4f71ee081152L, "r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)/4241665505353447356");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x498b4f71ee081150L, 0x498b4f71ee081151L, 0x498b4f71ee081152L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_enhancement_0, myMember_migration_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_enhancement_0, myMember_migration_0);
 
   @Nullable
   @Override

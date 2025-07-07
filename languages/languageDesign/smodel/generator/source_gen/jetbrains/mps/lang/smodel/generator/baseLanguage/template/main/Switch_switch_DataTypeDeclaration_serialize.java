@@ -55,7 +55,7 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8822815258147280395"), CONCEPTS.PrimitiveDataTypeDeclaration$80, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_134_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -72,7 +72,7 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8822815258147321304"), CONCEPTS.PrimitiveDataTypeDeclaration$80, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_134_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

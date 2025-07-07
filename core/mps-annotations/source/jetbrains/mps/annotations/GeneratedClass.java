@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,11 +29,25 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.TYPE)
 public @interface GeneratedClass {
+  /*
+   * Note, despite the fact this annotation bears CLASS retention policy, MPS class parser doesn't look into that
+   * and make all annotations available, effectively meaning it's sort of RUNTIME (except for the fact Java reflection doesn't
+   * get this information, but MPS doesn't rely on Java reflection for this).
+   */
+
   /**
+   * @deprecated since 2025.2, MPS generates and uses nodeId instead, and uses this value as fallback only.
    * @return serialized node reference
    * @see org.jetbrains.mps.openapi.model.SNodeReference
    */
+  @Deprecated(forRemoval = true,since = "2025.2")
   String node() default "";
+
+  /**
+   * @return serialized node id, to get complete {@code org.jetbrains.mps.openapi.model.SNodeReference} together with {@link #model()}
+   * @since 2025.2
+   */
+  String nodeId() default "";
 
   /**
    * @return serialized model reference

@@ -27,7 +27,7 @@ import org.jetbrains.mps.util.DescendantsTreeIterator;
  * Base interface for custom checkers.
  * Custom checker should extend one of the following base classes depending on preciseness of the checker
  */
-@GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/5108287150809026064", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
+@GeneratedClass(nodeId = "5108287150809026064", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public interface IChecker<O, I extends IssueKindReportItem> {
 
   void check(O toCheck, SRepository repository, Consumer<? super I> errorCollector, ProgressMonitor monitor);

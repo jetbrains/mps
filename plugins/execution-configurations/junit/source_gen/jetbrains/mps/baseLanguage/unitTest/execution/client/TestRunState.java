@@ -14,11 +14,10 @@ import org.jetbrains.mps.annotations.Immutable;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeEvent;
-import jetbrains.mps.baseLanguage.unitTest.execution.TestRawEvent;
+import jetbrains.mps.baselanguage.unitTest.execution.TestRawEvent;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey;
 import org.jetbrains.mps.annotations.Internal;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestCaseNodeKey;
@@ -57,21 +56,13 @@ public final class TestRunState {
   private final TestRunData myInnerData = new TestRunData();
 
   private void processTestCases(List<ITestNodeWrapper> tests) {
-    for (ITestNodeWrapper testCase : ListSequence.fromList(tests).where(new _FunctionTypes._return_P1_E0<Boolean, ITestNodeWrapper>() {
-      public Boolean invoke(ITestNodeWrapper it) {
-        return it.isTestCase();
-      }
-    })) {
+    for (ITestNodeWrapper testCase : ListSequence.fromList(tests).where((it) -> it.isTestCase())) {
       MapSequence.fromMap(myTestCase2MethodsMap).put(testCase, ListSequence.fromListWithValues(new ArrayList<ITestNodeWrapper>(), testCase.getTestMethods()));
     }
   }
 
   private void processTestMethods(List<ITestNodeWrapper> tests) {
-    for (ITestNodeWrapper testMethod : ListSequence.fromList(tests).where(new _FunctionTypes._return_P1_E0<Boolean, ITestNodeWrapper>() {
-      public Boolean invoke(ITestNodeWrapper it) {
-        return !(it.isTestCase());
-      }
-    })) {
+    for (ITestNodeWrapper testMethod : ListSequence.fromList(tests).where((it) -> !(it.isTestCase()))) {
       ITestNodeWrapper enclosingTestCase = testMethod.getTestCase();
       List<ITestNodeWrapper> currentTestMethods = getMethodsForTestCase(enclosingTestCase);
       if (currentTestMethods == null) {

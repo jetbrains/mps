@@ -15,6 +15,8 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSColors;
+import java.awt.Color;
+import com.intellij.ui.JBColor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.editor.cellProviders.SReferenceCellProvider;
 import jetbrains.mps.editor.runtime.impl.CellUtil;
@@ -76,11 +78,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, true);
     style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.pink));
-    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.magenta));
+    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_73o0fl_a2a0()));
     editorCell.getStyle().putAll(style);
     MacroSymbol_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
+  }
+  private Color _StyleParameter_QueryFunction_73o0fl_a2a0() {
+    return new JBColor(new Color(175, 0, 175, 100), new Color(151, 118, 169, 120));
   }
   private EditorCell createRefCell_0() {
     final SReferenceLink referenceLink = LINKS.labelDeclaration$ORJN;
@@ -140,7 +145,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setDefaultText("<no name>");
         editorCell.setCellId("property_name");
         Style style = new StyleImpl();
-        style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.orange));
+        style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_73o0fl_a0a0b0()));
         editorCell.getStyle().putAll(style);
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);
@@ -154,6 +159,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
       } finally {
         getCellFactory().popCellContext();
       }
+    }
+    private Color _StyleParameter_QueryFunction_73o0fl_a0a0b0() {
+      return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("HIGHLIGHTED_LABEL_IN_EDITOR").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
     }
   }
   private EditorCell createAttributedNodeCell_0() {
@@ -171,11 +179,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, true);
     style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.pink));
-    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.magenta));
+    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_73o0fl_a2d0()));
     editorCell.getStyle().putAll(style);
     MacroSymbol_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
+  }
+  private Color _StyleParameter_QueryFunction_73o0fl_a2d0() {
+    return new JBColor(new Color(175, 0, 175, 100), new Color(151, 118, 169, 120));
   }
 
   private static final class LINKS {

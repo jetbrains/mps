@@ -5,7 +5,7 @@ package jetbrains.mps.vcs.diff.ui.common;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.ide.util.PropertiesComponent;
 
-@GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/3099206799939802191", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
+@GeneratedClass(nodeId = "3099206799939802191", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public final class DiffSettingsUtil {
 
   public static final String HIDE_ID_CHANGES = "vcs.hide.id.changes";

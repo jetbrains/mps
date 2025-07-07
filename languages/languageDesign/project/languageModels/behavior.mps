@@ -12,7 +12,6 @@
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
-    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -39,12 +38,6 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
-      <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
-        <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-      </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
-        <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -132,21 +125,6 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
-    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="5383422241790532083" name="tags" index="3nqlJM" />
-      </concept>
-      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
-    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
@@ -172,7 +150,6 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -453,42 +430,6 @@
   </node>
   <node concept="13h7C7" id="5qdugmiLBZW">
     <ref role="13h7C2" to="hypd:5xDtKQA7vSB" resolve="ModelReference" />
-    <node concept="13i0hz" id="5qdugmiLBZZ" role="13h7CS">
-      <property role="TrG5h" value="getModelReference" />
-      <node concept="2AHcQZ" id="2BHFktfnkV_" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="P$JXv" id="2BHFktfnkVq" role="lGtFl">
-        <node concept="TZ5HI" id="2BHFktfnkVr" role="3nqlJM">
-          <node concept="TZ5HA" id="2BHFktfnkVs" role="3HnX3l">
-            <node concept="1dT_AC" id="2BHFktfnkY$" role="1dT_Ay">
-              <property role="1dT_AB" value="use #toModelReference() instead, strings are bad way to communicate complex objects" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="5qdugmiLC00" role="1B3o_S" />
-      <node concept="17QB3L" id="5qdugmiLC04" role="3clF45" />
-      <node concept="3clFbS" id="5qdugmiLC02" role="3clF47">
-        <node concept="3clFbF" id="3mq37CcXGnH" role="3cqZAp">
-          <node concept="2OqwBi" id="3mq37CcXGv2" role="3clFbG">
-            <node concept="2YIFZM" id="3mq37CcXGtD" role="2Oq$k0">
-              <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
-              <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-            </node>
-            <node concept="liA8E" id="3mq37CcXGxP" role="2OqNvi">
-              <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SModelReference)" resolve="asString" />
-              <node concept="2OqwBi" id="3mq37CcXGaV" role="37wK5m">
-                <node concept="13iPFW" id="3mq37CcXG5w" role="2Oq$k0" />
-                <node concept="2qgKlT" id="3mq37CcXGg2" role="2OqNvi">
-                  <ref role="37wK5l" node="2BHFktfnfdc" resolve="toModelReference" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="13i0hz" id="2BHFktfnfdc" role="13h7CS">
       <property role="TrG5h" value="toModelReference" />
       <node concept="3Tm1VV" id="2BHFktfnfdd" role="1B3o_S" />
@@ -554,7 +495,7 @@
               <ref role="3cqZAo" node="2BHFktfnq9F" resolve="pf" />
             </node>
             <node concept="liA8E" id="2BHFktfniUg" role="2OqNvi">
-              <ref role="37wK5l" to="dush:~PersistenceFacade.createModelReference(org.jetbrains.mps.openapi.module.SModuleReference,org.jetbrains.mps.openapi.model.SModelId,java.lang.String)" resolve="createModelReference" />
+              <ref role="37wK5l" to="dush:~PersistenceFacade.createModelReference(org.jetbrains.mps.openapi.module.SModuleReference,org.jetbrains.mps.openapi.model.SModelId,org.jetbrains.mps.openapi.model.SModelName)" resolve="createModelReference" />
               <node concept="37vLTw" id="2BHFktfnq2V" role="37wK5m">
                 <ref role="3cqZAo" node="2BHFktfnplR" resolve="moduleRef" />
               </node>
@@ -572,26 +513,21 @@
                   </node>
                 </node>
               </node>
-              <node concept="2OqwBi" id="2BHFktfnvx_" role="37wK5m">
-                <node concept="2ShNRf" id="2BHFktfnsbU" role="2Oq$k0">
-                  <node concept="1pGfFk" id="2BHFktfnuX0" role="2ShVmc">
-                    <ref role="37wK5l" to="mhbf:~SModelName.&lt;init&gt;(java.lang.CharSequence,java.lang.CharSequence)" resolve="SModelName" />
-                    <node concept="2OqwBi" id="2BHFktfnv52" role="37wK5m">
-                      <node concept="13iPFW" id="2BHFktfnuZN" role="2Oq$k0" />
-                      <node concept="3TrcHB" id="2BHFktfnvaz" role="2OqNvi">
-                        <ref role="3TsBF5" to="hypd:5xDtKQA7vSI" resolve="qualifiedName" />
-                      </node>
-                    </node>
-                    <node concept="2OqwBi" id="2BHFktfnvlk" role="37wK5m">
-                      <node concept="13iPFW" id="2BHFktfnvhA" role="2Oq$k0" />
-                      <node concept="3TrcHB" id="2BHFktfnvtI" role="2OqNvi">
-                        <ref role="3TsBF5" to="hypd:5LsHsRgAFYL" resolve="stereotype" />
-                      </node>
+              <node concept="2ShNRf" id="2BHFktfnsbU" role="37wK5m">
+                <node concept="1pGfFk" id="2BHFktfnuX0" role="2ShVmc">
+                  <ref role="37wK5l" to="mhbf:~SModelName.&lt;init&gt;(java.lang.CharSequence,java.lang.CharSequence)" resolve="SModelName" />
+                  <node concept="2OqwBi" id="2BHFktfnv52" role="37wK5m">
+                    <node concept="13iPFW" id="2BHFktfnuZN" role="2Oq$k0" />
+                    <node concept="3TrcHB" id="2BHFktfnvaz" role="2OqNvi">
+                      <ref role="3TsBF5" to="hypd:5xDtKQA7vSI" resolve="qualifiedName" />
                     </node>
                   </node>
-                </node>
-                <node concept="liA8E" id="2BHFktfnvAc" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModelName.getValue()" resolve="getValue" />
+                  <node concept="2OqwBi" id="2BHFktfnvlk" role="37wK5m">
+                    <node concept="13iPFW" id="2BHFktfnvhA" role="2Oq$k0" />
+                    <node concept="3TrcHB" id="2BHFktfnvtI" role="2OqNvi">
+                      <ref role="3TsBF5" to="hypd:5LsHsRgAFYL" resolve="stereotype" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>

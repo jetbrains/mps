@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="jetbrains.mps.samples.nodeuid.sandbox" uuid="ff43a7ee-8428-4eb6-ab6f-ab45c0c2f158" moduleVersion="0">
   <models>
-    <modelRoot type="default" contentPath="${module}">
+    <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
   </models>
   <facets>
-    <facet compile="off" classes="off" ext="no" type="java">
+    <facet type="java" compile="off" classes="off" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>

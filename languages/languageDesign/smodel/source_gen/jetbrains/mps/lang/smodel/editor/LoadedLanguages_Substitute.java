@@ -123,7 +123,7 @@ public class LoadedLanguages_Substitute extends SubstituteMenuBase {
         @Nullable
         @Override
         public IconResource getIcon(@NotNull String pattern) {
-          return IconContainer.RESOURCE_a0a31e3d_0;
+          return IconContainer.RESOURCE_1;
         }
       }
     }

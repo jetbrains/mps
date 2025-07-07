@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -16,7 +16,7 @@ import org.junit.Assert;
 @MPSLaunch
 public class CheckStaticVisibility_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(CheckStaticVisibility_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CheckStaticVisibility_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public CheckStaticVisibility_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -33,16 +33,17 @@ public class CheckStaticVisibility_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053114802", "1230053114815", "1230053114829");
+    }
+
     public void test_CheckStaticVisibility() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        addNodeById("1230053114802");
-        addNodeById("1230053114815");
-        addNodeById("1230053114829");
-      });
-      runWithinCommand(() -> {
-        InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230053114810"));
+        InlineMethodRefactoring ref = new InlineMethodRefactoring(getAnnotatedNode("call_1"));
         Assert.assertTrue(ref.getProblems().length() > 0);
-        ref = new InlineMethodRefactoring(getNodeById("1230053114813"));
+        ref = new InlineMethodRefactoring(getAnnotatedNode("call_2"));
         Assert.assertTrue(ref.getProblems().length() > 0);
       });
     }

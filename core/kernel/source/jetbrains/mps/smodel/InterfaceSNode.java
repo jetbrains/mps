@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
+/**
+ * {@link LazySNode} idea put forward. Tracks state whether this node is incomplete, requests complete model load and could be present
+ * almost in any part of a model provided all its ancestors are {@code InterfaceSNode} as well.
+ */
 public class InterfaceSNode extends SNode {
 
   private boolean skippedRolesOrIds = false;

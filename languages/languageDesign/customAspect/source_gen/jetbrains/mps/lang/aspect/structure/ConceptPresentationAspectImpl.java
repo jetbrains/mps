@@ -61,7 +61,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L);
           cpb.deprecateAggregation(0x54be5be5620c1b77L, "mainLanguages");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a5b0i);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_SimpleLanguageAspectDescriptor = cpb.create();
         }
         return props_SimpleLanguageAspectDescriptor;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -289,12 +289,6 @@ public class SolutionIdea extends Solution {
   }
 
   @Override
-  protected void dependenciesChanged() {
-    super.dependenciesChanged();
-    myDependencies = null;
-  }
-
-  @Override
   public boolean isPackaged() {
     return false;
   }
@@ -341,31 +335,29 @@ public class SolutionIdea extends Solution {
     return true;
   }
 
-  @NotNull
-  @Override
-  protected SModuleFacet loadAndAttachIfNeeded(@NotNull SModuleFacet facet, Memento memento) {
-    if (facet instanceof JavaModuleFacet) {
-      // XXX we used to mangle getClassesGen() here as a hack to allow TraceInfoCache to find trace.info files
-      //    copied after build into classes_gen location. With the hack gone, I don't think there's any reason to
-      //    override classes_gen location for a JMF of a module in IDEA project, however I just don't want to loose knowledge this code captures.
-      // Indeed, it's quite specific to JavaModuleFacetImpl, and we'd rather get custom JMF implementation for MPS-as-IDEA-plugin
-      //    scenario, but it would take another round of refactoring, including consideration of GenerationTargetFacet over JMF.
-      CompilerModuleExtension compilerModuleExtension = ModuleRootManager.getInstance(myModule).getModuleExtension(CompilerModuleExtension.class);
-      VirtualFile compilerOutputPath = compilerModuleExtension.getCompilerOutputPath();
-      if (compilerOutputPath != null) {
-        if (memento == null) {
-          memento = new MementoImpl();
-        }
-        // In-line values of JavaModuleFacetImpl.CLASSES_KEY and other keys
-        final Memento c = memento.createChild("classes");
-        c.put("generated", "true");
-        c.put("path", compilerOutputPath.getPath());
-        return super.loadAndAttachIfNeeded(facet, c);
-      }
-      // fall through
-    }
-    return super.loadAndAttachIfNeeded(facet, memento);
-  }
+//  protected SModuleFacet loadAndAttachIfNeeded(@NotNull SModuleFacet facet, Memento memento) {
+//    if (facet instanceof JavaModuleFacet) {
+//      // XXX we used to mangle getClassesGen() here as a hack to allow TraceInfoCache to find trace.info files
+//      //    copied after build into classes_gen location. With the hack gone, I don't think there's any reason to
+//      //    override classes_gen location for a JMF of a module in IDEA project, however I just don't want to loose knowledge this code captures.
+//      // Indeed, it's quite specific to JavaModuleFacetImpl, and we'd rather get custom JMF implementation for MPS-as-IDEA-plugin
+//      //    scenario, but it would take another round of refactoring, including consideration of GenerationTargetFacet over JMF.
+//      CompilerModuleExtension compilerModuleExtension = ModuleRootManager.getInstance(myModule).getModuleExtension(CompilerModuleExtension.class);
+//      VirtualFile compilerOutputPath = compilerModuleExtension.getCompilerOutputPath();
+//      if (compilerOutputPath != null) {
+//        if (memento == null) {
+//          memento = new MementoImpl();
+//        }
+//        // In-line values of JavaModuleFacetImpl.CLASSES_KEY and other keys
+//        final Memento c = memento.createChild("classes");
+//        c.put("generated", "true");
+//        c.put("path", compilerOutputPath.getPath());
+//        return super.loadAndAttachIfNeeded(facet, c);
+//      }
+//      // fall through
+//    }
+//    return super.loadAndAttachIfNeeded(facet, memento);
+//  }
 
   public Module getIdeaModule() {
     return myModule;

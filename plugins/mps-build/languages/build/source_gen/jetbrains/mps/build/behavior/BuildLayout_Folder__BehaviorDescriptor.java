@@ -79,11 +79,12 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
     }
     if (object instanceof LocalSourcePathArtifact) {
       LocalSourcePathArtifact art = (LocalSourcePathArtifact) object;
-      if (!(art.isFolder()) || art.getRoot() != SNodeOperations.getContainingRoot(__thisNode__)) {
+      if (art.getRoot() != SNodeOperations.getContainingRoot(__thisNode__)) {
         return false;
       }
 
       for (SNode c : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO))) {
+        // XXX I wonder why we build LSPA(path.parent,path.tail) for a and get here and not handle exports(path) in BL_Files/BL_AbstractCopy instead?
         if (SNodeOperations.isInstanceOf(c, CONCEPTS.BuildLayout_Files$Oo)) {
           SNode files = SNodeOperations.as(c, CONCEPTS.BuildLayout_Files$Oo);
           if (ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$WlG4)).isEmpty() && Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(files, LINKS.path$Wlt3)))) {

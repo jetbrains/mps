@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.item.IssueKindReportItem;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -51,7 +52,8 @@ public class NodeCheckerUtil {
     return sourceNode.resolve(ruleRepository);
   }
 
-  public static List<IChecker<?, ? extends IssueKindReportItem>> getStandardCheckers(@Nullable ComponentHost host) {
+  public static List<IChecker<?, ? extends IssueKindReportItem>> getStandardCheckers(@NotNull ComponentHost host) {
+    // FWIW, there's same/similar list in deprecated TestsErrorsChecker
     List<IChecker<?, ? extends IssueKindReportItem>> result = ListSequence.fromList(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>());
     ListSequence.fromList(result).addElement(new TypesystemChecker());
     ListSequence.fromList(result).addElement(new NonTypesystemChecker());
@@ -63,7 +65,7 @@ public class NodeCheckerUtil {
     return result;
   }
 
-  public static Collection<NodeReportItem> checkForNodeMessages(final SNode node, @Nullable ComponentHost host) {
+  public static Collection<NodeReportItem> checkForNodeMessages(final SNode node, @NotNull ComponentHost host) {
     SModel model = SNodeOperations.getModel(node);
     final SRepository repository = SNodeOperations.getModel(node).getRepository();
     final CollectConsumer<NodeReportItem> resultConsumer = new CollectConsumer<NodeReportItem>();
@@ -78,7 +80,10 @@ public class NodeCheckerUtil {
 
   /**
    * works with node from original model
+   * 
+   * @deprecated in use as runtime for deprecated CheckNodeForErrors, won't be necessary once the concept gone.
    */
+  @Deprecated
   public static void checkNodeForErrorMessages(SNode node, boolean allowErrors, boolean allowWarnings, boolean includeSelf, @Nullable ComponentHost host, CheckExpectedMessageRunnable... excluded) {
     Runnable checkErrorsAction = new CheckErrorMessagesRunnable(node, allowWarnings, allowErrors, host).includeSelf(includeSelf).exclude(Sequence.fromIterable(Sequence.fromArray(excluded)).toList());
     checkErrorsAction.run();

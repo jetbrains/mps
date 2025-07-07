@@ -14,7 +14,7 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 
-@GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/505174985642693148", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
+@GeneratedClass(nodeId = "505174985642693148", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public class FilesDelta implements IDelta {
   private static Logger LOG = Logger.getLogger(FilesDelta.class);
   private Map<IFile, Status> files = MapSequence.fromMap(new HashMap<IFile, Status>());
@@ -84,6 +84,7 @@ public class FilesDelta implements IDelta {
       return new FilesDelta(that).copy(this);
     }
 
+    // FIXME this functionality is never actually used
     DeltaKey commonPrefix = key.commonPrefix(that.key);
     if (!(commonPrefix.isEmpty())) {
       return new FilesDelta(commonPrefix).copy(this).copy(that);

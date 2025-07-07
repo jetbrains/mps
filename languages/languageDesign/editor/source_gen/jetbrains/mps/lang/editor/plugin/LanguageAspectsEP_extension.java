@@ -42,7 +42,7 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
       @Nullable
       public IconResource getIconResource() {
-        return IconContainer.RESOURCE_a0a5a0a0a1;
+        return IconContainer.RESOURCE_0;
       }
       @Nullable
       public String getHelpUrl() {
@@ -71,7 +71,7 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
     };
   }
-  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "/editor.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptEditorDeclaration$BH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");

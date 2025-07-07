@@ -175,6 +175,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_AbstractLongLiteral_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_AbstractUnaryNumberOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -336,10 +340,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_LocalPropertyReference_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_LongLiteral_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -820,6 +820,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_HasSuperConstructorCall_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_HexLongLiteral_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -1403,11 +1407,27 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myComparisonRules.add(comparisonRule);
     }
     {
+      ComparisonRule_Runtime comparisonRule = new bound_comparableWith_lbt_ComparisonRule();
+      this.myComparisonRules.add(comparisonRule);
+    }
+    {
+      ComparisonRule_Runtime comparisonRule = new bound_comparableWith_ubt_ComparisonRule();
+      this.myComparisonRules.add(comparisonRule);
+    }
+    {
       ComparisonRule_Runtime comparisonRule = new char_compatibleWith_byte_ComparisonRule();
       this.myComparisonRules.add(comparisonRule);
     }
     {
+      ComparisonRule_Runtime comparisonRule = new lbt_comparableWith_bound_ComparisonRule();
+      this.myComparisonRules.add(comparisonRule);
+    }
+    {
       ComparisonRule_Runtime comparisonRule = new typevar_comparable_with_classifier_type_ComparisonRule();
+      this.myComparisonRules.add(comparisonRule);
+    }
+    {
+      ComparisonRule_Runtime comparisonRule = new ubt_comparableWith_bound_ComparisonRule();
       this.myComparisonRules.add(comparisonRule);
     }
     {
@@ -1467,7 +1487,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
           return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).contains(variable);
         }
         public SNode convert(SNode contextNode, String role, SNode variable, boolean isAggregation) {
-          return _quotation_createNode_3ist9o_a0a1a0a0a0un0a();
+          return _quotation_createNode_3ist9o_a0a1a0a0a0zn0a();
         }
       };
       this.myVariableConverters.add(converter);
@@ -1500,7 +1520,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     {
       OverloadedOpsProvider_OneTypeSpecified provider = new OverloadedOpsProvider_OneTypeSpecified() {
         {
-          this.myOperandType = _quotation_createNode_3ist9o_a0a0a0a0a0a0a663a0();
+          this.myOperandType = _quotation_createNode_3ist9o_a0a0a0a0a0a0a173a0();
           this.myOperationConcept = CONCEPTS.PlusExpression$k0;
           this.myTypeIsExact = false;
           this.myIsStrong = false;
@@ -1508,7 +1528,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
           this.myRuleNodeId = "1533154877881631948";
         }
         public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
-          return _quotation_createNode_3ist9o_a0a1a0a0a0a0co0a();
+          return _quotation_createNode_3ist9o_a0a1a0a0a0a0ho0a();
         }
         @Override
         public void reportConflict(IRuleConflictWarningProducer producer) {
@@ -1778,20 +1798,20 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       return quotedNode_1;
     }
   }
-  private static SNode _quotation_createNode_3ist9o_a0a1a0a0a0un0a() {
+  private static SNode _quotation_createNode_3ist9o_a0a1a0a0a0zn0a() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();
     nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_3ist9o_a0a0a0a0a0a0a663a0() {
+  private static SNode _quotation_createNode_3ist9o_a0a0a0a0a0a0a173a0() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_3ist9o_a0a1a0a0a0a0co0a() {
+  private static SNode _quotation_createNode_3ist9o_a0a1a0a0a0a0ho0a() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
     quotedNode_1 = nb.getResult();

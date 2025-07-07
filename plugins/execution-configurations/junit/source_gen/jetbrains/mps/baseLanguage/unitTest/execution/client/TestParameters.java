@@ -52,6 +52,7 @@ public final class TestParameters {
     myNeedsMPS = mpsRequired;
     if (myNeedsMPS) {
       ListSequence.fromList(myAdditionalJvmArgs).addElement("-DNO_FS_ROOTS_ACCESS_CHECK=true");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("-Dintellij.platform.load.app.info.from.resources=true");
       ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.io=ALL-UNNAMED");
       ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.lang=ALL-UNNAMED");
       ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED");

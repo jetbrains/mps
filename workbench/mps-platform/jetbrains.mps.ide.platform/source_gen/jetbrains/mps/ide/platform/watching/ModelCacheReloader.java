@@ -26,7 +26,7 @@ import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
  * Would be great to rewrite using something like FileSystem.getInstance().addListener(..), natural MPS mechanism,
  * but at the moment there's no mechanism to attach a listener to any FS even (specific file only)
  */
-@GeneratedClass(node = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/8474613039627890805", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
+@GeneratedClass(nodeId = "8474613039627890805", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
 public final class ModelCacheReloader implements BulkFileListener {
   private static final Logger LOG = Logger.getLogger(ModelCacheReloader.class);
   private boolean myWarningPosted;

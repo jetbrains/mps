@@ -76,5 +76,10 @@
       </src>
       <classpath refid="path.java.library.apache-collections" />
     </javac>
+    <copy todir="${build.tmp}/java/out/mps-core">
+      <fileset dir="${mps_home}/core/source" excludes="**/*.java" />
+      <fileset dir="${mps_home}/core/source_gen" excludes="**/*.java" />
+      <fileset dir="${mps_home}/core/tests" excludes="**/*.java" />
+    </copy>
   </target>
 </project>

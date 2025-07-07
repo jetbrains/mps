@@ -304,6 +304,10 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     final ForkEntry forkStep = new ForkEntry();
     mySteps.add(forkStep);
     return new RegularPlanBuilder(myLanguageRegistry, myEngagedGenerators, myMessageHandler) {
+      @Override
+      public void setGenerationTarget(String targetHint) {
+        forkStep.myGenerationTarget = targetHint;
+      }
       @NotNull
       @Override
       public ModelGenerationPlan wrapUp(@NotNull PlanIdentity planIdentity) {
@@ -559,6 +563,7 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
 
   private static class ForkEntry implements StepEntry {
     private List<StepEntry> mySteps = Collections.emptyList();
+    private String myGenerationTarget = null;
 
     public void steps(List<StepEntry> steps) {
       assert !steps.contains(this) : "Fork step shall not include itself";
@@ -584,7 +589,7 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     public void createStep(List<Step> steps) {
       final ArrayList<Step> branch = new ArrayList<>();
       mySteps.forEach(s -> s.createStep(branch));
-      steps.add(new Fork(branch));
+      steps.add(new Fork(branch, myGenerationTarget));
     }
   }
 }

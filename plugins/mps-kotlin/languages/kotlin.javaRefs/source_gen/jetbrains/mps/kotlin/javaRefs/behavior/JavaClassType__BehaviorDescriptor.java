@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.List;
 import java.util.Arrays;
@@ -39,7 +40,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration;
-import jetbrains.mps.kotlin.api.members.TypeExpander;
 import org.jetbrains.annotations.ApiStatus;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
@@ -66,7 +66,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<SNode>> getTypeParameters_id6r77ob2URYe = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTypeParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7405920559687237518L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Iterable<TypeParameterDeclaration>> getTypeParameters_id7an2tsIdpkM = new SMethodBuilder<Iterable<TypeParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class))).name("getTypeParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8257079261604975922L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<String> toString_id4nn3FPlZH$r = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5032507314964191515L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<SignatureScope> getStaticScope_id1ODRHGtufGw = new SMethodBuilder<SignatureScope>(new SJavaCompoundTypeImpl(SignatureScope.class)).name("getStaticScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2101455733818719008L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureFilter.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SignatureScope> getStaticScope_id1ODRHGtufGw = new SMethodBuilder<SignatureScope>(new SJavaCompoundTypeImpl(SignatureScope.class)).name("getStaticScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2101455733818719008L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureFilter.class, ""), SMethodBuilder.createJavaParameter(FullScopeContext.class, ""));
   public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> createConstructor_id2$1CHwF$28b = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("createConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2954821879859257867L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, getClassifier_id7an2tsIdpk7, getClassifier_id6r77ob2URY9, getTypeParameters_id6r77ob2URYe, getTypeParameters_id7an2tsIdpkM, toString_id4nn3FPlZH$r, getStaticScope_id1ODRHGtufGw, createConstructor_id2$1CHwF$28b);
@@ -94,7 +94,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Iterable<SNode> getTypeParameters_id6r77ob2URYe(@NotNull SNode __thisNode__) {
     // At time of writing this should not really matter, those are handled by kotlin implementation anyway
-    return Sequence.fromIterable(Collections.emptyList());
+    return Sequence.fromIterable(Collections.<SNode>emptyList());
   }
   /*package*/ static Iterable<TypeParameterDeclaration> getTypeParameters_id7an2tsIdpkM(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.typeVariableDeclaration$Lipp)).select(new _FunctionTypes._return_P1_E0<JavaTypeParameterDeclaration, SNode>() {
@@ -113,7 +113,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return pres.toString();
   }
-  /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull final SNode __thisNode__, final SignatureFilter filter, final SNode contextNode) {
+  /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull final SNode __thisNode__, final SignatureFilter filter, final FullScopeContext context) {
     return new ListSignatureScope(() -> {
       final FilterSignatureCollector collector = new FilterSignatureCollector(filter);
       boolean acceptFunctions = filter.acceptKind(FunctionSignature.class);
@@ -123,20 +123,20 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
         // Directly get the constructors of nested classes
         Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.ClassConcept$bK)).where((it) -> {
           // Only static classes, non static are instance fields
-          return SPropertyOperations.getBoolean(it, PROPS.isStatic$3WAz) && JavaSignatures.isAllowedVisibility(it, contextNode);
+          return SPropertyOperations.getBoolean(it, PROPS.isStatic$3WAz) && JavaSignatures.isAllowedVisibility(it, context.getNode());
         }).visitAll((klass) -> {
           Iterable<SNode> constructors = ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(klass);
           if (Sequence.fromIterable(constructors).isEmpty() && !(SNodeOperations.isInstanceOf(klass, CONCEPTS.EnumClass$Vk))) {
             JavaSignatures.declareConstructor(collector, klass);
           }
 
-          SignatureBuilder.create(Sequence.fromIterable(constructors).where((it) -> JavaSignatures.isAllowedVisibility(it, contextNode)), FunctionSignature.class).withSignature((SNode node) -> new FunctionSignature(new JavaMethodDeclaration(node), (TypeExpander) null));
+          SignatureBuilder.create(Sequence.fromIterable(constructors).where((it) -> JavaSignatures.isAllowedVisibility(it, context.getNode())), FunctionSignature.class).withSignature((SNode node) -> new FunctionSignature(new JavaMethodDeclaration(node)));
         });
       }
 
       // Unlike kotlin, companion member (static) of a java class are also contained in the class
       if (acceptFunctions || acceptProperty) {
-        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.StaticMethodDeclaration$FJ)).where((it) -> JavaSignatures.isAllowedVisibility(it, contextNode)).visitAll((it) -> {
+        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.StaticMethodDeclaration$FJ)).where((it) -> JavaSignatures.isAllowedVisibility(it, context.getNode())).visitAll((it) -> {
           // This will apply the filter on signatures
           JavaSignatures.declareMethod(collector, it);
         });
@@ -144,7 +144,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
 
       if (acceptProperty) {
         // Static properties
-        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.StaticFieldDeclaration$jR)).where((it) -> JavaSignatures.isAllowedVisibility(it, contextNode)).visitAll((it) -> JavaSignatures.declareField(collector, it));
+        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.StaticFieldDeclaration$jR)).where((it) -> JavaSignatures.isAllowedVisibility(it, context.getNode())).visitAll((it) -> JavaSignatures.declareField(collector, it));
 
         // Enum variables
         ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).visitAll((it) -> JavaSignatures.declareField(collector, it, true));
@@ -222,7 +222,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
       case 6:
         return (T) ((String) toString_id4nn3FPlZH$r(node, ((boolean) (Boolean) parameters[0])));
       case 7:
-        return (T) ((SignatureScope) getStaticScope_id1ODRHGtufGw(node, (SignatureFilter) parameters[0], (SNode) parameters[1]));
+        return (T) ((SignatureScope) getStaticScope_id1ODRHGtufGw(node, (SignatureFilter) parameters[0], (FullScopeContext) parameters[1]));
       case 8:
         return (T) ((_FunctionTypes._return_P0_E0<? extends SNode>) createConstructor_id2$1CHwF$28b(node));
       default:

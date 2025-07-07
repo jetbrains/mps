@@ -19,7 +19,9 @@
     <import index="4stj" ref="r:ed8e9175-44d1-47ad-9d2b-75c7b10d01f8(jetbrains.mps.samples.customAspect.documentation.runtime)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
+    <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
+    <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" implicit="true" />
   </imports>
   <registry>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -66,6 +68,9 @@
       </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
+      </concept>
+      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
+        <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -257,13 +262,26 @@
         </node>
         <node concept="3clFbJ" id="_dFfuhixnA" role="3cqZAp">
           <node concept="3clFbS" id="_dFfuhixnC" role="3clFbx">
-            <node concept="3clFbF" id="_dFfuhixLv" role="3cqZAp">
-              <node concept="2YIFZM" id="_dFfuhiB2F" role="3clFbG">
-                <ref role="37wK5l" to="dxuu:~JOptionPane.showMessageDialog(java.awt.Component,java.lang.Object)" resolve="showMessageDialog" />
-                <ref role="1Pybhc" to="dxuu:~JOptionPane" resolve="JOptionPane" />
-                <node concept="10Nm6u" id="_dFfuhiB37" role="37wK5m" />
-                <node concept="37vLTw" id="_dFfuhiB4i" role="37wK5m">
+            <node concept="3clFbF" id="7KiBiDiVvCV" role="3cqZAp">
+              <node concept="2YIFZM" id="7KiBiDiV_Va" role="3clFbG">
+                <ref role="37wK5l" to="jkm4:~Messages.showInfoMessage(com.intellij.openapi.project.Project,java.lang.String,java.lang.String)" resolve="showInfoMessage" />
+                <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+                <node concept="2OqwBi" id="7KiBiDiVTQk" role="37wK5m">
+                  <node concept="2OqwBi" id="7KiBiDiVDIB" role="2Oq$k0">
+                    <node concept="2WthIp" id="7KiBiDiVDIE" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="7KiBiDiVDIG" role="2OqNvi">
+                      <ref role="2WH_rO" node="_dFfuhirCR" resolve="project" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="7KiBiDiVVgC" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
+                  </node>
+                </node>
+                <node concept="37vLTw" id="7KiBiDiV_ZZ" role="37wK5m">
                   <ref role="3cqZAo" node="_dFfuhix7Q" resolve="docText" />
+                </node>
+                <node concept="Xl_RD" id="7KiBiDiVAIE" role="37wK5m">
+                  <property role="Xl_RC" value="Documentation" />
                 </node>
               </node>
             </node>

@@ -61,4 +61,12 @@ public class KajaStylePack_KeyPack {
       super("STRING", priority);
     }
   }
+  public static class PARENTH_StyleKey extends AbstractStyleKey {
+    public PARENTH_StyleKey() {
+      super("PARENTH");
+    }
+    public PARENTH_StyleKey(int priority) {
+      super("PARENTH", priority);
+    }
+  }
 }

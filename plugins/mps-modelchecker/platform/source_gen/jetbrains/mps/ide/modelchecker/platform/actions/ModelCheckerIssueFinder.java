@@ -40,7 +40,7 @@ import jetbrains.mps.util.Pair;
  * <p>
  * Checkers are executed using a helper object: {@link jetbrains.mps.checkers.ModelCheckerBuilder }.
  */
-@GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199793465345", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
+@GeneratedClass(nodeId = "3719390199793465345", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class ModelCheckerIssueFinder implements SearchTask {
   private final List<IChecker<?, ?>> myExtraCheckers;
   private final SRepository myRepository;

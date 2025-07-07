@@ -5646,7 +5646,7 @@
                       <ref role="3cqZAo" node="VFd4X$txkN" resolve="names" />
                     </node>
                     <node concept="liA8E" id="VFd4X$tTkj" role="2OqNvi">
-                      <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object):void" resolve="putValue" />
+                      <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object)" resolve="putValue" />
                       <node concept="2OqwBi" id="VFd4X$tTBD" role="37wK5m">
                         <node concept="2GrUjf" id="VFd4X$tTmy" role="2Oq$k0">
                           <ref role="2Gs0qQ" node="VFd4X$twLe" resolve="member" />
@@ -5674,7 +5674,7 @@
                         <ref role="3cqZAo" node="VFd4X$txUZ" resolve="prensetations" />
                       </node>
                       <node concept="liA8E" id="1ob16QTmXC2" role="2OqNvi">
-                        <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object):void" resolve="putValue" />
+                        <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object)" resolve="putValue" />
                         <node concept="2OqwBi" id="1ob16QTmXC3" role="37wK5m">
                           <node concept="2GrUjf" id="1ob16QTmXC4" role="2Oq$k0">
                             <ref role="2Gs0qQ" node="VFd4X$twLe" resolve="member" />
@@ -5722,7 +5722,7 @@
                       <ref role="3cqZAo" node="VFd4X$txUZ" resolve="prensetations" />
                     </node>
                     <node concept="liA8E" id="VFd4X$tZiB" role="2OqNvi">
-                      <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object):void" resolve="putValue" />
+                      <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object)" resolve="putValue" />
                       <node concept="2OqwBi" id="VFd4X$tZDm" role="37wK5m">
                         <node concept="2GrUjf" id="VFd4X$tZlj" role="2Oq$k0">
                           <ref role="2Gs0qQ" node="VFd4X$twLe" resolve="member" />
@@ -5752,7 +5752,7 @@
             <ref role="3cqZAo" node="VFd4X$txkN" resolve="names" />
           </node>
           <node concept="liA8E" id="VFd4X$uMBo" role="2OqNvi">
-            <ref role="37wK5l" to="yg2w:~MultiMap.entrySet():java.util.Set" resolve="entrySet" />
+            <ref role="37wK5l" to="yg2w:~MultiMap.entrySet()" resolve="entrySet" />
           </node>
         </node>
         <node concept="3clFbS" id="VFd4X$uLXE" role="2LFqv$">
@@ -5769,7 +5769,7 @@
                   <ref role="2Gs0qQ" node="VFd4X$uLXA" resolve="namePartition" />
                 </node>
                 <node concept="liA8E" id="VFd4X$vcEM" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Map$Entry.getValue():java.lang.Object" resolve="getValue" />
+                  <ref role="37wK5l" to="33ny:~Map$Entry.getValue()" resolve="getValue" />
                 </node>
               </node>
             </node>
@@ -5821,7 +5821,7 @@
             <ref role="3cqZAo" node="VFd4X$txUZ" resolve="prensetations" />
           </node>
           <node concept="liA8E" id="VFd4X$xFRO" role="2OqNvi">
-            <ref role="37wK5l" to="yg2w:~MultiMap.entrySet():java.util.Set" resolve="entrySet" />
+            <ref role="37wK5l" to="yg2w:~MultiMap.entrySet()" resolve="entrySet" />
           </node>
         </node>
         <node concept="3clFbS" id="VFd4X$xFRP" role="2LFqv$">
@@ -5838,7 +5838,7 @@
                   <ref role="2Gs0qQ" node="VFd4X$xFRL" resolve="presentationPartition" />
                 </node>
                 <node concept="liA8E" id="VFd4X$xFRW" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Map$Entry.getValue():java.lang.Object" resolve="getValue" />
+                  <ref role="37wK5l" to="33ny:~Map$Entry.getValue()" resolve="getValue" />
                 </node>
               </node>
             </node>

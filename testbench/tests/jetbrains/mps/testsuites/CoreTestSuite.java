@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,12 +41,6 @@ import org.junit.runners.model.RunnerBuilder;
     jetbrains.mps.util.MacrosTest.class,
     jetbrains.mps.vfs.path.NonArchivePathTest.class,
     jetbrains.mps.vfs.path.FilePathTest.class,
-    jetbrains.mps.dataFlow.lang.InitializedVariablesAnalysisTest.class,
-    jetbrains.mps.dataFlow.lang.LivenessAnalysisTest.class,
-    jetbrains.mps.dataFlow.lang.ProgramTest.class,
-    jetbrains.mps.dataFlow.lang.ReachabilityAnaysisTest.class,
-    jetbrains.mps.dataFlow.lang.ReachingDefinitionsTest.class,
-    jetbrains.mps.dataFlow.lang.StructuralProgramBuilderTest.class,
     jetbrains.mps.aspects.InOrderSorterTest.class,
     jetbrains.mps.compile.EclipseJavaCompilerTest.class,
     jetbrains.mps.classloading.ModuleClassLoaderTest.class,

@@ -20,6 +20,7 @@
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" implicit="true" />
+    <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -77,6 +78,9 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
@@ -121,6 +125,7 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
+      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
@@ -189,6 +194,7 @@
       <concept id="505095865854384109" name="jetbrains.mps.make.script.structure.JobDeclaration" flags="ng" index="2aLE7I">
         <child id="505095865854384110" name="job" index="2aLE7H" />
       </concept>
+      <concept id="7044091413522263180" name="jetbrains.mps.make.script.structure.GetMakeSessionExpression" flags="ng" index="2_BwXt" />
       <concept id="2360002718792625579" name="jetbrains.mps.make.script.structure.JobDefinition" flags="in" index="ElOhj" />
       <concept id="2360002718792625580" name="jetbrains.mps.make.script.structure.InputResourcesParameter" flags="nn" index="ElOhk" />
       <concept id="2360002718792622184" name="jetbrains.mps.make.script.structure.OutputResources" flags="nn" index="ElOAg">
@@ -756,14 +762,22 @@
                     </node>
                   </node>
                 </node>
-                <node concept="3clFbF" id="eduOM7PQO2" role="3cqZAp">
-                  <node concept="2OqwBi" id="eduOM7PQO7" role="3clFbG">
-                    <node concept="2YIFZM" id="eduOM7PQO4" role="2Oq$k0">
-                      <ref role="37wK5l" to="3ju5:~FileSystem.getInstance()" resolve="getInstance" />
-                      <ref role="1Pybhc" to="3ju5:~FileSystem" resolve="FileSystem" />
-                    </node>
-                    <node concept="liA8E" id="eduOM7PR7f" role="2OqNvi">
-                      <ref role="37wK5l" to="3ju5:~FileSystem.runWriteTransaction(java.lang.Runnable)" resolve="runWriteTransaction" />
+                <node concept="3clFbF" id="6gq1gaF$ce0" role="3cqZAp">
+                  <node concept="2ShNRf" id="6gq1gaF$cdW" role="3clFbG">
+                    <node concept="1pGfFk" id="6gq1gaF$cUZ" role="2ShVmc">
+                      <property role="373rjd" value="true" />
+                      <ref role="37wK5l" to="3ju5:~WriteTransaction.&lt;init&gt;(jetbrains.mps.components.ComponentHost,java.lang.Runnable)" resolve="WriteTransaction" />
+                      <node concept="2OqwBi" id="6gq1gaF$eQD" role="37wK5m">
+                        <node concept="2OqwBi" id="6gq1gaF$enz" role="2Oq$k0">
+                          <node concept="2_BwXt" id="6gq1gaF$emI" role="2Oq$k0" />
+                          <node concept="liA8E" id="6gq1gaF$e_v" role="2OqNvi">
+                            <ref role="37wK5l" to="hfuk:2BjwmTxTf34" resolve="getProject" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="6gq1gaF$f6s" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
+                        </node>
+                      </node>
                       <node concept="1bVj0M" id="eduOM7PR7g" role="37wK5m">
                         <node concept="3clFbS" id="eduOM7PR7h" role="1bW5cS">
                           <node concept="3clFbF" id="eduOM7PR7i" role="3cqZAp">

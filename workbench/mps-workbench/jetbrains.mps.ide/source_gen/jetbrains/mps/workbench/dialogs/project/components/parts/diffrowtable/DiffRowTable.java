@@ -14,7 +14,7 @@ import java.util.Enumeration;
 import java.awt.Dimension;
 import javax.swing.event.ListSelectionEvent;
 
-@GeneratedClass(node = "r:2645cf7b-becf-4fd8-946c-a69d83379844(jetbrains.mps.workbench.dialogs.project.components.parts.diffrowtable)/1560298786499490568", model = "r:2645cf7b-becf-4fd8-946c-a69d83379844(jetbrains.mps.workbench.dialogs.project.components.parts.diffrowtable)")
+@GeneratedClass(nodeId = "1560298786499490568", model = "r:2645cf7b-becf-4fd8-946c-a69d83379844(jetbrains.mps.workbench.dialogs.project.components.parts.diffrowtable)")
 public class DiffRowTable extends JTable {
   public DiffRowTable() {
     setUI(new BasicDiffRowTableUI());

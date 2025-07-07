@@ -33,9 +33,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 
 /**
- * evgeny, 11/21/11
- *
- * TODO: rewrite as service
+ * NON-FUNCTIONAL, UNUSED. Comes as CC in Big MPS
  */
 public class NavigationSupportImpl extends NavigationSupport implements Disposable {
 

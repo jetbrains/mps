@@ -8,7 +8,7 @@
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -840,6 +840,7 @@
         <node concept="A1WHu" id="1wEcoXjJzE$" role="3vIgyS">
           <ref role="A1WHt" to="tpen:2jHvEnOP8oj" resolve="loopLabels" />
         </node>
+        <node concept="VPM3Z" id="3e7$st3sURg" role="3F10Kt" />
       </node>
       <node concept="3F1sOY" id="gMGtcA3" role="3EZMnx">
         <ref role="1NtTu8" to="tp2q:gMGsz7L" resolve="variable" />
@@ -847,6 +848,7 @@
       <node concept="3F0ifn" id="gMGtcA4" role="3EZMnx">
         <property role="3F0ifm" value="in" />
         <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
+        <node concept="VPM3Z" id="3e7$st3s08G" role="3F10Kt" />
       </node>
       <node concept="3F1sOY" id="gMGtcA5" role="3EZMnx">
         <property role="1cu_pB" value="gtgu$YJ/1" />

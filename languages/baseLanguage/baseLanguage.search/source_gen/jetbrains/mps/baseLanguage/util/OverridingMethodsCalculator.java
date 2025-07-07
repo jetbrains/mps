@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 /**
  * use the ClassifierMethodsHierarchyChecker idea instead of this class
  */
-@GeneratedClass(node = "r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)/8432634623182691821", model = "r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)")
+@GeneratedClass(nodeId = "8432634623182691821", model = "r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)")
 public final class OverridingMethodsCalculator {
   private final Map<SNode, Set<SNode>> myOverriding2BaseMethodsMap = MapSequence.fromMap(new HashMap<SNode, Set<SNode>>());
 

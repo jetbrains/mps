@@ -11,6 +11,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.tool.environment.Environment;
 import org.junit.Rule;
 import org.junit.rules.TestRule;
+import java.util.function.Supplier;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import java.awt.GraphicsEnvironment;
@@ -31,6 +32,7 @@ public abstract class BaseTransformationTest implements TransformationTest, Envi
 
   @Rule
   public final TestRule myBeforeAsRule;
+  private Supplier<String> myProjectUrlSupplier;
 
   protected BaseTransformationTest(TestParametersCache paramCache) {
     myParamCache = paramCache;
@@ -42,6 +44,11 @@ public abstract class BaseTransformationTest implements TransformationTest, Envi
     myEnvironment = env;
   }
 
+  @Override
+  public void setProjectUrl(Supplier<String> projectUrlSupplier) {
+    myProjectUrlSupplier = projectUrlSupplier;
+  }
+
   /**
    * To respect @Rule in subclasses, has to be invoked as part of a TestRule, not with @Before
    */
@@ -50,10 +57,15 @@ public abstract class BaseTransformationTest implements TransformationTest, Envi
     if (myParamCache != null) {
       // initializes project/models for the first test in the class, reuse initialized values for subsequent tests from the same class
       // FIXME it seems I can do this populate from ClassRule TestParametersCache itself, just need to sort out access to Environment value
-      myParamCache.initializeOnce(this, myEnvironment);
+      myParamCache.initializeOnce(this, myEnvironment, myProjectUrlSupplier);
       setProject(myParamCache.getProject());
       setModelDescriptor(myParamCache.getTestModel());
       setTransientModelDescriptor(myParamCache.getTransientModel());
+
+    } else {
+      if (LOG.isWarningLevel()) {
+        LOG.warning("no TestParametersCache instance for " + this);
+      }
     }
     clearSystemClipboard();
   }

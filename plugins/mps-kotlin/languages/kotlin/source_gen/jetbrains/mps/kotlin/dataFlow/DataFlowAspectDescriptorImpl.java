@@ -66,7 +66,7 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
       case 16:
         return Collections.<IDataFlowBuilder>singletonList(new LambdaLiteral_DataFlow());
       case 17:
-        return Collections.<IDataFlowBuilder>singletonList(new MemberNavigationOperation_DataFlow());
+        return Collections.<IDataFlowBuilder>singletonList(new MemberNavigationExpression_DataFlow());
       case 18:
         return Collections.<IDataFlowBuilder>singletonList(new NavigationOperation_DataFlow());
       case 19:

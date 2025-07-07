@@ -12,7 +12,7 @@ import java.util.Iterator;
 import org.apache.tools.ant.types.resources.FileResource;
 import java.util.Collections;
 
-@GeneratedClass(node = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/3449270742160220910", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
+@GeneratedClass(nodeId = "3449270742160220910", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public class ExcludeNested extends DataType {
   private List<FileSet> excluded = new ArrayList<FileSet>();
   public ExcludeNested() {

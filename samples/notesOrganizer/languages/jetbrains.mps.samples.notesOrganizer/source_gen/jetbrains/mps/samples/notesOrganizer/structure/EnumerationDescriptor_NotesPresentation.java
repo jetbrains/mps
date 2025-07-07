@@ -20,7 +20,7 @@ public class EnumerationDescriptor_NotesPresentation extends EnumerationDescript
   private final EnumerationDescriptor.MemberDescriptor myMember_inspected_0 = new EnumerationDescriptor.MemberDescriptor("inspected", "inspected", 0x7ba12f0b1640efddL, "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/4241665505353448613");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b1640efd5L, 0x7ba12f0b1640efd6L, 0x7ba12f0b1640efdaL, 0x7ba12f0b1640efddL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_default_0, myMember_compact_0, myMember_inspected_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_default_0, myMember_compact_0, myMember_inspected_0);
 
   @Nullable
   @Override

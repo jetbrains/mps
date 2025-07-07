@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:7119da0f-4b4d-46d9-adcc-2ac001a0ec2b(jetbrains.mps.lang.plugin.generator.baseLanguage.template.commands@generator)">
+<model ref="r:7119da0f-4b4d-46d9-adcc-2ac001a0ec2b(jetbrains.mps.lang.access.template@generator)">
   <persistence version="9" />
   <languages>
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
@@ -12,9 +12,11 @@
     <import index="qff7" ref="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="jtsr" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.project(MPS.OpenAPI/)" />
+    <import index="tp2c" ref="r:00000000-0000-4000-0000-011c89590338(jetbrains.mps.baseLanguage.closures.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
@@ -103,12 +105,26 @@
       <concept id="1167327847730" name="jetbrains.mps.lang.generator.structure.Reduction_MappingRule" flags="lg" index="3aamgX">
         <child id="1169672767469" name="ruleConsequence" index="1lVwrX" />
       </concept>
+      <concept id="1167951910403" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery" flags="in" index="3JmXsc" />
       <concept id="1168024337012" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery" flags="in" index="3NFfHV" />
+      <concept id="1118786554307" name="jetbrains.mps.lang.generator.structure.LoopMacro" flags="ln" index="1WS0z7">
+        <child id="1167952069335" name="sourceNodesQuery" index="3Jn$fo" />
+      </concept>
+    </language>
+    <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
+      <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
+        <child id="1199569906740" name="parameter" index="1bW2Oz" />
+        <child id="1199569916463" name="body" index="1bW5cS" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
         <reference id="1138056516764" name="link" index="3Tt5mk" />
+      </concept>
+      <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
+        <reference id="1138056546658" name="link" index="3TtcxE" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -482,6 +498,48 @@
                           <node concept="30H73N" id="1eZSuKdVBL5" role="2Oq$k0" />
                         </node>
                       </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="2zzH$pD9sz9" role="3acgRq">
+      <property role="2n97ot" value="This RR is to introduce bl.closures as a target language to make sure lang.access goes before it" />
+      <ref role="30HIoZ" to="qff7:7Mb2akafE8d" resolve="CommandClosureLiteral" />
+      <node concept="gft3U" id="2zzH$pD9tu9" role="1lVwrX">
+        <node concept="1bVj0M" id="2zzH$pD9tvT" role="gfFT$">
+          <node concept="gl6BB" id="2zzH$pD9tLw" role="1bW2Oz">
+            <property role="TrG5h" value="_" />
+            <node concept="2jxLKc" id="2zzH$pD9tLx" role="1tU5fm" />
+            <node concept="1WS0z7" id="2zzH$pD9tSI" role="lGtFl">
+              <node concept="3JmXsc" id="2zzH$pD9tSL" role="3Jn$fo">
+                <node concept="3clFbS" id="2zzH$pD9tSM" role="2VODD2">
+                  <node concept="3clFbF" id="2zzH$pD9tSS" role="3cqZAp">
+                    <node concept="2OqwBi" id="2zzH$pD9tSN" role="3clFbG">
+                      <node concept="3Tsc0h" id="2zzH$pD9tSQ" role="2OqNvi">
+                        <ref role="3TtcxE" to="tp2c:htbW2KO" resolve="parameter" />
+                      </node>
+                      <node concept="30H73N" id="2zzH$pD9tSR" role="2Oq$k0" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="2zzH$pD9tvU" role="1bW5cS">
+            <node concept="29HgVG" id="2zzH$pD9unT" role="lGtFl">
+              <node concept="3NFfHV" id="2zzH$pD9unU" role="3NFExx">
+                <node concept="3clFbS" id="2zzH$pD9unV" role="2VODD2">
+                  <node concept="3clFbF" id="2zzH$pD9uo1" role="3cqZAp">
+                    <node concept="2OqwBi" id="2zzH$pD9unW" role="3clFbG">
+                      <node concept="3TrEf2" id="2zzH$pD9unZ" role="2OqNvi">
+                        <ref role="3Tt5mk" to="tp2c:htbW58J" resolve="body" />
+                      </node>
+                      <node concept="30H73N" id="2zzH$pD9uo0" role="2Oq$k0" />
                     </node>
                   </node>
                 </node>

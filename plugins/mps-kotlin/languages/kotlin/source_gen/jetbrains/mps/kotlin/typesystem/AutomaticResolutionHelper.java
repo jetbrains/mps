@@ -69,6 +69,12 @@ public class AutomaticResolutionHelper {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(functionHolder, "Function " + receiverString + resolved.getFunctionPresentation(false) + " is better suited for this call, but its concept (" + SNodeOperations.getConcept(resolved.getNode()).getName() + ") is not supported by current call implementation. Please manually pick this method or use a compatible concept.", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "192512837082705263", null, errorTarget);
+              {
+                SNode _foreign_34989546 = resolved.getNode();
+                if (_foreign_34989546 != null) {
+                  _reporter_2309309498.additionalRule(_foreign_34989546.getReference());
+                }
+              }
             }
           }
         }

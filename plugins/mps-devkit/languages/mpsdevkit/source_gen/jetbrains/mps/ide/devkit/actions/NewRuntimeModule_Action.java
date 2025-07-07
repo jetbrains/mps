@@ -14,11 +14,8 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import javax.swing.tree.TreeNode;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.ide.ui.tree.MPSTree;
-import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.project.ModuleInstanceCondition;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.workbench.choose.ModuleScopeIterable;
@@ -33,6 +30,7 @@ import com.intellij.ide.util.gotoByName.ChooseByNamePopupComponent;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.ide.projectPane.ProjectPane;
 import com.intellij.openapi.application.ModalityState;
 
 public class NewRuntimeModule_Action extends BaseAction {
@@ -49,7 +47,7 @@ public class NewRuntimeModule_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((SModule) MapSequence.fromMap(_params).get("contextModule")) instanceof Language;
+    return ((SModule) MapSequence.fromMap(_params).get("contextModule")) instanceof Language && !(((SModule) MapSequence.fromMap(_params).get("contextModule")).isReadOnly());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -75,13 +73,6 @@ public class NewRuntimeModule_Action extends BaseAction {
       }
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
-      MapSequence.fromMap(_params).put("treeNode", p);
-      if (p == null) {
-        return false;
-      }
-    }
-    {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
@@ -95,7 +86,6 @@ public class NewRuntimeModule_Action extends BaseAction {
     final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
 
     final Language language = (Language) ((SModule) MapSequence.fromMap(_params).get("contextModule"));
-    final MPSTree mpsTree = ((MPSTreeNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).getTree();
 
     ModuleInstanceCondition solutionOnly = new ModuleInstanceCondition(Solution.class);
     ModuleScopeIterable localScope = new ModuleScopeIterable(new ConditionalScope(((MPSProject) MapSequence.fromMap(_params).get("project")).getScope(), solutionOnly, null), repo);
@@ -120,7 +110,7 @@ public class NewRuntimeModule_Action extends BaseAction {
             mdv.update(g);
           }
           language.save();
-          mpsTree.rebuildLater();
+          ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).rebuild();
         });
       }
     }, ModalityState.current(), true);

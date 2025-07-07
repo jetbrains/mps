@@ -31,6 +31,8 @@ public final class RuntimeFlags {
   private static Boolean ourLegacyLoadModels = null;
   private static Boolean ourCustomNodeIdentitySupport;
 
+  private static Boolean ourLegacyCLDeps = null;
+
   private RuntimeFlags() {
   }
 
@@ -112,7 +114,15 @@ public final class RuntimeFlags {
     }
     return ourLegacyLoadModels;
   }
-  
+
+  public static boolean legacyCLDependencies() {
+    if (ourLegacyCLDeps == null) {
+      // we're good with new approach unless forced to use the old one
+      ourLegacyCLDeps = Boolean.getBoolean("mps.clm.deps.legacy");
+    }
+    return ourLegacyCLDeps;
+  }
+
   public static boolean customNodeIdentitySupport() {
     if (ourCustomNodeIdentitySupport == null) {
       ourCustomNodeIdentitySupport = Boolean.getBoolean("mps.nodeuid");

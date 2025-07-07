@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,12 +32,15 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 public class DebugInfo {
+
   private final Map<SNodeReference, DebugInfoRoot> myRoots = new HashMap<>();
 
   public DebugInfo() {
   }
 
-  private DebugInfoRoot getOrCreateDebugInfoRoot(SNode rootNode) {
+  private DebugInfoRoot getOrCreateDebugInfoRoot(@Nullable SNode rootNode) {
+    // rootNode could be null for some unit positions (scope and trace are always !null). Not sure I understand, why and
+    // if there's any sense to keep these positions
     SNodeReference ref = getRef(rootNode);
     DebugInfoRoot infoRoot = myRoots.get(ref);
     if (infoRoot == null) {
@@ -59,7 +62,7 @@ public class DebugInfo {
     getOrCreateDebugInfoRoot(containingRoot).addScopePosition(position);
   }
 
-  public void addUnitPosition(UnitPositionInfo unitPosition, SNode containingRoot) {
+  public void addUnitPosition(UnitPositionInfo unitPosition, @Nullable SNode containingRoot) {
     getOrCreateDebugInfoRoot(containingRoot).addUnitPosition(unitPosition);
   }
 
@@ -196,6 +199,7 @@ public class DebugInfo {
     PersistenceFacade persFacade = PersistenceFacade.getInstance();
     ArrayList<SNodeReference> unitNodes = new ArrayList<>();
     for (DebugInfoRoot dr : getRootsForFile(fileName)) {
+      if (dr.getNodeRef() == null)  continue;
       ArrayList<UnitPositionInfo> positionInfos = new ArrayList<>(dr.getUnitPositions());
       Collections.sort(positionInfos, Collections.reverseOrder(new PositionInfo.StartLineComparator()));
       for (UnitPositionInfo upi : positionInfos) {

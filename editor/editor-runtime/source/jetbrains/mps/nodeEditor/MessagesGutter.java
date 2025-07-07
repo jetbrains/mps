@@ -15,17 +15,22 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.codeInsight.hint.TooltipGroup;
+import com.intellij.codeInsight.hint.TooltipRenderer;
 import com.intellij.icons.AllIcons.General;
 import com.intellij.openapi.editor.colors.CodeInsightColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.impl.EditorImpl;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.IconUtil;
 import com.intellij.util.containers.SortedList;
 import com.intellij.util.ui.ButtonlessScrollBarUI;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
 import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
@@ -52,6 +57,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements MouseMotionListener, MouseListener {
   private static final Comparator<GutterMark> EDITOR_MESSAGES_COMPARATOR = (mark, otherMark) -> otherMark.getPriority() != mark.getPriority() ?
@@ -69,11 +75,13 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
   private final boolean myRightToLeft;
   private MergingUpdateQueue myUpdateQueue;
   private final Object myUpdateIdentity = new Object();
+  private final HintPopupController myHintPopupController;
 
   public MessagesGutter(EditorComponent editorComponent, boolean rightToLeft) {
     myEditorComponent = editorComponent;
     myScrollable = editorComponent;
     myRightToLeft = rightToLeft;
+    myHintPopupController = new HintPopupController(this::showHintToolTip);
   }
 
   @Override
@@ -90,10 +98,12 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
     super.installListeners();
     scrollbar.addMouseListener(this);
     scrollbar.addMouseMotionListener(this);
+    myHintPopupController.installListeners(scrollbar);
   }
 
   @Override
   public void uninstallListeners() {
+    myHintPopupController.uninstallListeners(scrollbar);
     scrollbar.removeMouseMotionListener(this);
     scrollbar.removeMouseListener(this);
     super.uninstallListeners();
@@ -390,6 +400,31 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
       }
     }
     return result;
+  }
+
+  private void showHintToolTip(MouseEvent event) {
+    int y = event.getY();
+
+    List<GutterMark> gutterMarks = getGutterMarksAt(y);
+    List<SimpleEditorMessage> messages = gutterMarks.stream()
+                                                    .map(GutterMark::getEditorMessage)
+                                                    .collect(Collectors.toList());
+
+    // by some reason tooltip provider expects messages to be in reverse order
+    Collections.reverse(messages);
+
+    EditorTooltipProvider tooltipProvider = myEditorComponent.getTooltipProvider();
+    final TooltipRenderer tooltipRenderer = tooltipProvider.getTooltipRenderer(messages);
+    if (tooltipRenderer == null) {
+      return;
+    }
+    final TooltipGroup tooltipGroup = tooltipProvider.getTooltipGroup();
+
+    Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(myEditorComponent.getRepository()));
+    RelativePoint showPoint = new RelativePoint(scrollbar, event.getPoint());
+
+    // this shows a hint popup on the error strip at right hand side of the editor
+    myHintPopupController.showInfoToolTip(project, myEditorComponent.getPlatformEditorEmulation(), null, tooltipRenderer, tooltipGroup, showPoint);
   }
 
   /*package*/ String getMPSTooltipText(MouseEvent event) {

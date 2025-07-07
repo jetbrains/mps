@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -122,6 +122,8 @@ public class SelectionInfoImpl implements SelectionInfo {
         }
         // I know it's odd to access module outside ot model read (although the module is likely deployed and shall not
         // get disposed unexpectedly). Just don't want to refactor the a lot (exception handling for both if/else cases).
+        // FIXME this usage of ReloadableModule has to be replaced with a mechanism like extension point or
+        //       EditorAspectDescriptor contribution.
         selectionClass = reloadableModule.getClass(mySelectionClassName);
       } else {
         selectionClass = getClass().getClassLoader().loadClass(mySelectionClassName);

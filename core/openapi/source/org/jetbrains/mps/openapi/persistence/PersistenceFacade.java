@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -122,7 +122,7 @@ public abstract class PersistenceFacade {
    * @return module identity constructed from the fragments supplied
    * @since 3.3
    */
-  public abstract SModuleReference createModuleReference(@NotNull SModuleId moduleId, String moduleName);
+  public abstract SModuleReference createModuleReference(@NotNull SModuleId moduleId, @Nullable String moduleName);
 
   /**
    * Creates an SModelId from a given text identifier.

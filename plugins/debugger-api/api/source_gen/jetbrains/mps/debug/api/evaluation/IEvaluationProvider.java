@@ -9,7 +9,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 
-@GeneratedClass(node = "r:4a0301da-c964-420c-8e35-486843de9df5(jetbrains.mps.debug.api.evaluation)/4474271214082914177", model = "r:4a0301da-c964-420c-8e35-486843de9df5(jetbrains.mps.debug.api.evaluation)")
+@GeneratedClass(nodeId = "4474271214082914177", model = "r:4a0301da-c964-420c-8e35-486843de9df5(jetbrains.mps.debug.api.evaluation)")
 public interface IEvaluationProvider {
   void showEvaluationDialog(Project mpsProject);
   void showEvaluationDialog(Project mpsProject, List<SNodeReference> selectedNodes);

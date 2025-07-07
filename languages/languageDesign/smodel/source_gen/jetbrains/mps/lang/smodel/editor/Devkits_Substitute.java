@@ -128,7 +128,7 @@ public class Devkits_Substitute extends SubstituteMenuBase {
         @Nullable
         @Override
         public IconResource getIcon(@NotNull String pattern) {
-          return IconContainer.RESOURCE_a0a31e3d_1;
+          return IconContainer.RESOURCE_2;
         }
       }
     }

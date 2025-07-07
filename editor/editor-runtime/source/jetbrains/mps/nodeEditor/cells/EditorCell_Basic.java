@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.nodeEditor.cells;
 
 import com.intellij.util.ui.UIUtil;
 import gnu.trove.TIntObjectHashMap;
+import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.editor.runtime.impl.LayoutConstraints;
@@ -33,6 +34,7 @@ import jetbrains.mps.nodeEditor.cellMenu.NodeSubstitutePatternEditor;
 import jetbrains.mps.nodeEditor.cells.collections.Entry;
 import jetbrains.mps.nodeEditor.keyboard.TextChangeEvent;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -588,7 +590,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
 
   @Override
   public NodeSubstitutePatternEditor createSubstitutePatternEditor() {
-    return new NodeSubstitutePatternEditor(myEditorContext.getEditorComponent().getEditorComponentSettings());
+    return new NodeSubstitutePatternEditor(myEditorContext);
   }
 
   @Override
@@ -774,6 +776,10 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   @Override
   public TextBuilder renderText() {
     return new TextBuilderImpl();
+  }
+
+  public HtmlTextBuilder renderHtml(){
+    return new HtmlTextBuilderImpl();
   }
 
   @Override

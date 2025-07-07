@@ -2440,7 +2440,7 @@
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="aF" role="37wK5m">
                     <node concept="HV5vD" id="aH" role="2ShVmc">
-                      <ref role="HV5vE" node="xO" resolve="MemberNavigationOperation_DataFlow" />
+                      <ref role="HV5vE" node="xO" resolve="MemberNavigationExpression_DataFlow" />
                     </node>
                   </node>
                   <node concept="3uibUv" id="aG" role="3PaCim">
@@ -2450,7 +2450,7 @@
               </node>
             </node>
             <node concept="3gn64h" id="aC" role="1pnPq6">
-              <ref role="3gnhBz" to="hcm8:1502VugCR$H" resolve="MemberNavigationOperation" />
+              <ref role="3gnhBz" to="hcm8:1502VugCR$H" resolve="MemberNavigationExpression" />
             </node>
           </node>
           <node concept="1pnPoh" id="8x" role="1_3QMm">
@@ -4536,15 +4536,15 @@
         </node>
       </node>
       <node concept="39e2AG" id="k9" role="39e3Y0">
-        <ref role="39e2AK" to="ka84:5xQ$WN8eAqX" resolve="MemberNavigationOperation_DataFlow" />
+        <ref role="39e2AK" to="ka84:5xQ$WN8eAqX" resolve="MemberNavigationExpression_DataFlow" />
         <node concept="385nmt" id="l8" role="385vvn">
-          <property role="385vuF" value="MemberNavigationOperation_DataFlow" />
+          <property role="385vuF" value="MemberNavigationExpression_DataFlow" />
           <node concept="3u3nmq" id="la" role="385v07">
             <property role="3u3nmv" value="6374444830331397821" />
           </node>
         </node>
         <node concept="39e2AT" id="l9" role="39e2AY">
-          <ref role="39e2AS" node="xO" resolve="MemberNavigationOperation_DataFlow" />
+          <ref role="39e2AS" node="xO" resolve="MemberNavigationExpression_DataFlow" />
         </node>
       </node>
       <node concept="39e2AG" id="ka" role="39e3Y0">
@@ -7260,7 +7260,7 @@
     </node>
   </node>
   <node concept="312cEu" id="xO">
-    <property role="TrG5h" value="MemberNavigationOperation_DataFlow" />
+    <property role="TrG5h" value="MemberNavigationExpression_DataFlow" />
     <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
     <uo k="s:originTrace" v="n:6374444830331397821" />
     <node concept="3Tm1VV" id="xP" role="1B3o_S">
@@ -7317,7 +7317,7 @@
                     </node>
                   </node>
                   <node concept="3TrEf2" id="y8" role="2OqNvi">
-                    <ref role="3Tt5mk" to="hcm8:1502Vug_mWz" resolve="operand" />
+                    <ref role="3Tt5mk" to="hcm8:1QSyUt0NM5s" resolve="operand" />
                     <uo k="s:originTrace" v="n:6374444830331400407" />
                   </node>
                 </node>

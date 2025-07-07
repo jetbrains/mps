@@ -16,7 +16,7 @@ import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 /**
  * StubModelsFastFindSupport accesses indexed values we create here (through IdIndex.NAME, this class being contributor to the index)
  */
-@GeneratedClass(node = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)/2810982631457565449", model = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)")
+@GeneratedClass(nodeId = "2810982631457565449", model = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)")
 public class JavaStubIdIndexer implements IdIndexer {
   private static final Logger LOG = Logger.getLogger(JavaStubIdIndexer.class);
   public JavaStubIdIndexer() {

@@ -1,10 +1,11 @@
 /*
- * Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.typesystem.inference;
 
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.lang.typesystem.runtime.RuntimeSupport;
+import jetbrains.mps.languageScope.LanguageScopeFactory;
 import jetbrains.mps.newTypesystem.RuntimeSupportNew;
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
 import jetbrains.mps.newTypesystem.context.HoleTypecheckingContext;
@@ -13,6 +14,8 @@ import jetbrains.mps.typesystem.inference.util.ConcurrentSubtypingCache;
 import jetbrains.mps.typesystem.inference.util.SubtypingCache;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.performance.IPerformanceTracer;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 /**
@@ -20,15 +23,17 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 public class TypeCheckerHelper {
 
-  private RulesManager myRulesManager;
-  private IPerformanceTracer myPerformanceTracer = null;
+  private final RulesManager myRulesManager;
+  private final IPerformanceTracer myPerformanceTracer;
 
-  private SubtypingManager mySubtypingManager;
-  private RuntimeSupport myRuntimeSupport;
-  private ThreadLocal<SubtypingCache> mySubtypingCache = new ThreadLocal<>();
-  private TypeSystemReporter myTypeSystemReporter = new TypeSystemReporter();
+  private final SubtypingManager mySubtypingManager;
+  private final RuntimeSupport myRuntimeSupport;
+  private final ThreadLocal<SubtypingCache> mySubtypingCache = new ThreadLocal<>();
+  private final TypeSystemReporter myTypeSystemReporter = new TypeSystemReporter();
+  private final LanguageScopeFactory myScopeFactory;
 
-  public TypeCheckerHelper(RulesManager rulesManager, IPerformanceTracer performanceTracer) {
+  public TypeCheckerHelper(@NotNull RulesManager rulesManager, @NotNull LanguageScopeFactory scopeFactory, @Nullable IPerformanceTracer performanceTracer) {
+    myScopeFactory = scopeFactory;
     myRuntimeSupport = new RuntimeSupportNew(this);
     mySubtypingManager = new SubTypingManagerNew(this);
     myRulesManager = rulesManager;
@@ -46,6 +51,10 @@ public class TypeCheckerHelper {
 
   public RulesManager getRulesManager() {
     return myRulesManager;
+  }
+
+  public LanguageScopeFactory getScopeFactory() {
+    return myScopeFactory;
   }
 
   public TypeSystemReporter getTypeSystemReporter() {

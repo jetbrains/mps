@@ -44,10 +44,10 @@
       </filterchain>
     </copy>
     <zip destfile="${build.layout}/importTest/importResult.zip">
+      <zipfileset dir="${artifacts.buildA}/result" prefix="result" filemode="754" dirmode="752" />
       <zipfileset dir="${build.tmp}/deps/buildA/A-_dl__lbrace_aver_rbrace_.zip" filemode="754" dirmode="752" />
       <zipfileset file="${basedir}/buildB.xml" filemode="754" />
       <zipfileset dir="${basedir}/moduleB/src/jetbrains/moduleB" filemode="754" dirmode="752" />
-      <zipfileset dir="${artifacts.buildA}/result" prefix="result" filemode="754" dirmode="752" />
       <zipfileset dir="${build.tmp}/default/importResult.zip_f754_d752" filemode="754" dirmode="752" />
     </zip>
     <zip destfile="${build.layout}/importTest/importResultContent.zip">
@@ -94,5 +94,8 @@
         <fileset file="${build.tmp}/deps/buildA/abcde.zip/abcde.jar" />
       </classpath>
     </javac>
+    <copy todir="${build.tmp}/java/out/module-B">
+      <fileset dir="${basedir}/moduleB/src" excludes="**/*.java" />
+    </copy>
   </target>
 </project>

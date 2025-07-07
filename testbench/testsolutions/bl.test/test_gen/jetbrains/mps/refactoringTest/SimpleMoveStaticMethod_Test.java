@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -19,7 +19,7 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 @MPSLaunch
 public class SimpleMoveStaticMethod_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(SimpleMoveStaticMethod_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SimpleMoveStaticMethod_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public SimpleMoveStaticMethod_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -36,16 +36,16 @@ public class SimpleMoveStaticMethod_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3014415391767789120", "3014415391767789149", "3014415391767789154", "3014415391767789181");
+    }
+
     public void test_SimpleMoveStaticMethod() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        addNodeById("3014415391767789120");
-        addNodeById("3014415391767789149");
-        addNodeById("3014415391767789154");
-        addNodeById("3014415391767789181");
-      });
-      runWithinCommand(() -> {
-        MoveStaticMethodRefactoring refactoring = new MoveStaticMethodRefactoring(getNodeById("3014415391767789137"), getNodeById("3014415391767789150"));
-        SearchResults<SNode> results = new SearchResults(Collections.emptyList(), Collections.singletonList(new SearchResult(getNodeById("3014415391767789131"), "usage")));
+        MoveStaticMethodRefactoring refactoring = new MoveStaticMethodRefactoring(getAnnotatedNode("move"), getAnnotatedNode("before2"));
+        SearchResults<SNode> results = new SearchResults(Collections.emptyList(), Collections.singletonList(new SearchResult(getAnnotatedNode("usage"), "usage")));
         refactoring.setUsages(results);
         refactoring.doRefactoring();
       });

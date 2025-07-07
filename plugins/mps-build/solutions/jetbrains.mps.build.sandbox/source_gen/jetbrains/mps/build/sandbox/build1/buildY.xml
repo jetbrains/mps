@@ -50,5 +50,8 @@
         <fileset file="${basedir}/buildA/abcde.jar" />
       </classpath>
     </javac>
+    <copy todir="${build.tmp}/java/out/module-A-in-Y">
+      <fileset dir="${basedir}/buildA/src" excludes="**/*.java" />
+    </copy>
   </target>
 </project>

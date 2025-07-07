@@ -109,7 +109,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setDefaultText("<no text>");
       editorCell.setCellId("property_text");
       Style style = new StyleImpl();
-      new DOC_COMMENT_StyleKey().apply(style);
+      new DOC_COMMENT_StyleKey().apply(this, style);
       style.set(StyleAttributes.PADDING_LEFT, new Padding(0.0, Measure.SPACES));
       style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0, Measure.SPACES));
       style.set(StyleAttributes.SPELLCHECK, true);

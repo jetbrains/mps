@@ -10,23 +10,21 @@ import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.util.ArrayList;
 import com.intellij.openapi.vcs.history.CurrentRevision;
 import jetbrains.mps.project.MPSProject;
-import com.intellij.openapi.vfs.VirtualFile;
 import java.util.Map;
 import jetbrains.mps.vcs.history.CommitsGraphNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.vcs.history.CommitsGraph;
 import jetbrains.mps.vcs.history.RootCommitsGraphTraverser;
+import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.vcs.history.CommitsGraph;
+import org.jetbrains.annotations.NotNull;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/4799633552517352046", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "4799633552517352046", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 /*package*/ final class RootModelHistoryExtractor implements RevisionsExtractor, CommitsGraphNodeConsumer {
   private final SNodeId myRootId;
   private final List<VcsFileRevision> myFilteredRevisions = new ArrayList<VcsFileRevision>();
@@ -36,10 +34,7 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
   private final int myTotalRevisions;
   private int myProcessedRevisions;
   private final MPSProject myProject;
-  private final VirtualFile myFile;
   private final Map<VcsFileRevision, CommitsGraphNode> myRevisionToNodeMap = MapSequence.fromMap(new HashMap<VcsFileRevision, CommitsGraphNode>());
-  @NotNull
-  private final CommitsGraph myCommitsGraph;
   private final RootCommitsGraphTraverser myRootCommitsGraphTraverser;
 
 
@@ -47,12 +42,11 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
     myProject = project;
     myLocalRevision = ((CurrentRevision) revisions.get(0));
     myRootId = root;
-    myFile = file;
     myOnUpdate = onUpdate;
     myTotalRevisions = revisions.size();
-    myCommitsGraph = new CommitsGraph(project.getProject(), file, revisions.subList(1, revisions.size()));
-    myCommitsGraph.addLocalRevisionNode(new CommitsGraphNode(myLocalRevision, loadLocalModel()));
-    myRootCommitsGraphTraverser = new RootCommitsGraphTraverser(myCommitsGraph.getHeadNode(), myRootId, myFile, this);
+    final CommitsGraph commitsGraph = new CommitsGraph(project, file, revisions.subList(1, revisions.size()));
+    commitsGraph.addLocalRevisionNode(myLocalRevision);
+    myRootCommitsGraphTraverser = new RootCommitsGraphTraverser(commitsGraph, myRootId, this);
   }
 
   @Override
@@ -103,10 +97,6 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
   public boolean stop() {
     myRootCommitsGraphTraverser.stop();
     return true;
-  }
-
-  private SModel loadLocalModel() {
-    return VCSPersistenceUtil.loadModel(myLocalRevision.loadContent(), myFile.getExtension());
   }
 
   @Override
@@ -160,9 +150,7 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
     if (prevModel == model || prevModel == null || model == null) {
       return false;
     }
-    final Wrappers._boolean modelsHaveChanges = new Wrappers._boolean();
-    myProject.getModelAccess().runReadAction(() -> modelsHaveChanges.value = ChangeSetBuilder.hasChangesForNodeId(prevModel, model, myRootId));
-    return modelsHaveChanges.value;
+    return myProject.getModelAccess().computeReadAction(() -> ChangeSetBuilder.hasChangesForNodeId(prevModel, model, myRootId));
   }
 
   private void addNodeToHistory(CommitsGraphNode node) {

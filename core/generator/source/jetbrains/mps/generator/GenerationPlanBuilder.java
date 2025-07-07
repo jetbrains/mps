@@ -135,6 +135,14 @@ public interface GenerationPlanBuilder {
   GenerationPlanBuilder fork();
 
   /**
+   * Sets the generation target of a {@link #fork()}. Has no effect otherwise.
+   * @param targetHint generation target
+   */
+  default void setGenerationTarget(String targetHint) {
+    // NOP by default
+  }
+
+  /**
    * Completes {@link ModelGenerationPlan} instance with any state information build is aware of (e.g. build extends relation between
    * generators for {@link #applyGeneratorWithExtended(SModule...) or respect priority rules of generators involved}
    *

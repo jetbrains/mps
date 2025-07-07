@@ -36,7 +36,7 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.List;
 
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/4976050993950574656", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+@GeneratedClass(nodeId = "4976050993950574656", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class HighlightUsagesSupport {
 
   private static final EditorMessageOwner emo = new EditorMessageOwner() {};
@@ -93,7 +93,7 @@ public class HighlightUsagesSupport {
     }
     final Set<SReference> refs = new HashSet<>();
     myRepository.getModelAccess().runReadAction(() -> {
-      final SNode nodeToHighlight = APICellAdapter.getSNodeWRTReference(selectedCell);
+      final SNode nodeToHighlight = APICellAdapter.getSNodeWRTReference(selectedCell, myRepository);
       if (nodeToHighlight == null) {
         return;
       }

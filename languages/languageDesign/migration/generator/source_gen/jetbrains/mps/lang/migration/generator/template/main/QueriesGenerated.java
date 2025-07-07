@@ -145,11 +145,11 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getLanguageId((Language) SNodeOperations.getModel(_context.getOriginalCopiedInputNode(_context.getNode())).getModule()).getIdValue().getMostSignificantBits();
-    return "0x" + Long.toHexString(msb) + "L";
+    return Long.toHexString(msb) + "L";
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
     long lsb = MetaIdByDeclaration.getLanguageId((Language) SNodeOperations.getModel(_context.getOriginalCopiedInputNode(_context.getNode())).getModule()).getIdValue().getLeastSignificantBits();
-    return "0x" + Long.toHexString(lsb) + "L";
+    return Long.toHexString(lsb) + "L";
   }
   public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
     return SNodeOperations.getModel(_context.getOriginalCopiedInputNode(_context.getNode())).getModule().getModuleName();
@@ -941,8 +941,8 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("5712848521226167740", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "0"));
     pvqMethods.put("5712848521226184886", new PVQ(i++, MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157a3736dL, 0x11157a64c91L, "fqClassName"), "MigrationScriptImpl"));
     pvqMethods.put("6547769411407089659", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "MigrationDescriptor"));
-    pvqMethods.put("2371346285333538606", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value"), "0l"));
-    pvqMethods.put("2371346285333538634", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value"), "0l"));
+    pvqMethods.put("360755012659912761", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x73ec4bdd32ac9ed3L, 0x73ec4bdd32ac9f1cL, "hexValue"), "0L"));
+    pvqMethods.put("360755012660687670", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x73ec4bdd32ac9ed3L, 0x73ec4bdd32ac9f1cL, "hexValue"), "0L"));
     pvqMethods.put("2371346285333538662", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
     pvqMethods.put("5387853834547028854", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "0"));
     pvqMethods.put("3286233802027187823", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));

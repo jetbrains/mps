@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
-@GeneratedClass(node = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/8474613039627889281", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
+@GeneratedClass(nodeId = "8474613039627889281", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
 /*package*/ abstract class EventProcessor {
   public EventProcessor() {
   }

@@ -14,9 +14,9 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.JCheckBox;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
 import jetbrains.mps.ide.ui.dialogs.modules.NewModuleDialog;
+import jetbrains.mps.project.modules.NewModuleCheck;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
-import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.util.IStatus;
 import java.io.File;
 import jetbrains.mps.project.modules.LanguageAndSolutionsProducer;
 import java.util.function.Consumer;
@@ -58,12 +58,14 @@ public class NewLanguage_Action extends BaseAction {
     final String virtualFolder = event.getData(MPSDataKeys.NAMESPACE);
     final JCheckBox runtime = new JCheckBox("Create Runtime Solution");
     final JCheckBox sandbox = new JCheckBox("Create Sandbox Solution");
+    final JCheckBox generator = new JCheckBox("Create Generator (as part of the language)");
     final NameLocationPanel cfg = new NameLocationPanel(NewModuleDialog.projectHome(mpsProject), "Language name:", "Language file location:") {
       {
         // copied from NewLanguageSettings. I don't like this, but don't want to spend time designing 
         // alternative right now. Alas, this approach forces me not to keep NameLocationPanel final. 
         add(runtime, 4, 0.0);
         add(sandbox, 5, 0.0);
+        add(generator, 6, 0.0);
         // there's no event dispatch on checkbox change in NewLanguageSettings, not sure it's right, though
       }
       @Override
@@ -71,20 +73,26 @@ public class NewLanguage_Action extends BaseAction {
         super.reset();
         runtime.setSelected(false);
         sandbox.setSelected(false);
+        generator.setSelected(true);
       }
     };
     cfg.withDefaults("NewLanguage", "languages");
 
-
+    final NewModuleCheck mc = new NewModuleCheck().forLanguage();
+    mc.withScope(mpsProject.getRepository());
 
     NewModuleDialog<Language> dialog = new NewModuleDialog<>(mpsProject, cfg);
     dialog.setTitle("New Language");
-    dialog.withCheck(() -> NewModuleUtil.check(mpsProject, MPSExtentions.DOT_LANGUAGE, cfg.getModuleName(), cfg.getModuleLocation().getAbsolutePath()));
+    dialog.withCheck(() -> {
+      mc.withName(cfg.getModuleName()).withHome(cfg.getModuleLocation());
+      IStatus s = mc.checkAll();
+      return (s.isOk() ? null : s.getMessage());
+    });
     dialog.withFactory(() -> {
       String moduleName = cfg.getModuleName();
       File moduleLocation = cfg.getModuleLocation();
       LanguageAndSolutionsProducer lp = new LanguageAndSolutionsProducer(mpsProject);
-      lp.withRuntimeSolution(runtime.isSelected()).withSandboxSolution(sandbox.isSelected());
+      lp.withRuntimeSolution(runtime.isSelected()).withSandboxSolution(sandbox.isSelected()).withGenerator(generator.isSelected());
       Language lang = lp.create(moduleName, mpsProject.getFileSystem().getFile(moduleLocation));
       mpsProject.setVirtualFolder(lang, virtualFolder);
       Consumer<Solution> setVF = (Solution s) -> mpsProject.setVirtualFolder(s, virtualFolder);

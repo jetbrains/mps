@@ -18,7 +18,7 @@ import jetbrains.mps.java.core.newparser.JavaParser;
 import java.io.IOException;
 import jetbrains.mps.logging.Logger;
 
-@GeneratedClass(node = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)/4423331261408331046", model = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)")
+@GeneratedClass(nodeId = "4423331261408331046", model = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)")
 public class MPSJavaSrcDataSource extends FolderDataSource {
 
   public MPSJavaSrcDataSource(@NotNull IFile dir) {

@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -14,12 +14,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class WarnOnImportingAbsentAction_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(WarnOnImportingAbsentAction_Test.class, "${mps_home}", "r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(WarnOnImportingAbsentAction_Test.class).projectPath(null).modelRef("r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)").reopenProject(null).build());
 
   public WarnOnImportingAbsentAction_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -36,12 +35,16 @@ public class WarnOnImportingAbsentAction_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeImportHasNoEffectCheck858085313517684344() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1465006755395151275", "1465006755395151313");
+    }
 
+    public void test_NodeImportHasNoEffectCheck858085313517684344() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("1465006755395151322");
-        SNode operation = getRealNodeById("858085313517684344");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2760718446999230123"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        SNode nodeToCheck = getNodeById("1465006755395151322");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2760718446999230123"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

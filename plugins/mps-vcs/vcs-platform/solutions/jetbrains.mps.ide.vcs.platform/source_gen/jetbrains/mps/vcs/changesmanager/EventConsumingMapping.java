@@ -15,7 +15,7 @@ import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import jetbrains.mps.smodel.event.SModelReferenceEvent;
 
-@GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/6389979038222847043", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
+@GeneratedClass(nodeId = "6389979038222847043", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public class EventConsumingMapping {
   private BidirectionalMultiMap<SNodeId, SModelEvent> myNodesToUnconsumedEvents = new BidirectionalMultiMap<SNodeId, SModelEvent>();
   private BidirectionalMap<SNodeId, SModelEvent> myAddedNodesToEvents = new BidirectionalMap<SNodeId, SModelEvent>();

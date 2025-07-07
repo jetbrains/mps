@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,10 +45,10 @@ import java.util.Map;
 import java.util.Set;
 
 public class TextLine {
-  // COLORS: Remove hardcoded color
+  // TODO COLORS: Remove hardcoded color
   private static final Color SELECTED_OR_BACKGROUND_ERROR_COLOR =
-      new JBColor(new Color(255, 220, 220, 128), ColorUtil.mix(StyleRegistry.getInstance().getEditorBackground(), DarculaColors.RED, 0.1));
-  private static final Color ERROR_FOREGROUND_COLOR = new JBColor(new Color(168, 30, 30, 255), DarculaColors.RED);
+      new JBColor(new Color(255, 220, 220, 90), new Color(0xd6, 0x4d, 0x5b, 50));
+  private static final Color ERROR_FOREGROUND_COLOR = new JBColor(new Color(168, 30, 30, 190), DarculaColors.RED);
 
   private String myText;
   private int myDescent = 0;
@@ -73,6 +73,7 @@ public class TextLine {
   private int myMinimalLength = 0;
 
   private final double myLineSpacing = EditorSettings.getInstance().getLineSpacing();
+  // FIXME use "COMPLETION_POPUP" (or dedicated) style instead of EditorSettings service
   private Color mySelectedTextColor = EditorSettings.getInstance().getSelectionForegroundColor();
   private final Color myTextSelectedTextColor = EditorSettings.getInstance().getSelectionForegroundColor();
   private final Color myTextSelectedBackgroundColor = EditorSettings.getInstance().getSelectionBackgroundColor();
@@ -359,13 +360,6 @@ public class TextLine {
     myShowsErrorColor = false;
   }
 
-  public Color getBackgroundColor() {
-    if (myShowsErrorColor) {
-      return SELECTED_OR_BACKGROUND_ERROR_COLOR;
-    }
-    return null;
-  }
-
   public Color getTextColor() {
     init();
     if (myControlOvered) {
@@ -379,47 +373,8 @@ public class TextLine {
     }
   }
 
-  public Color getEffectiveTextColor() {
-    if (myShowsErrorColor) {
-      return ERROR_FOREGROUND_COLOR;
-    } else {
-      return getTextColor();
-    }
-  }
-
-  public Color getEffectiveSelectedTextColor() {
-    if (myShowsErrorColor) {
-      return SELECTED_OR_BACKGROUND_ERROR_COLOR;
-    } else {
-      return mySelectedTextColor != null ? mySelectedTextColor : getTextColor();
-    }
-  }
-
-  public Color getTextBackgroundColor() {
-    init();
-    if (myShowsErrorColor) {
-      return SELECTED_OR_BACKGROUND_ERROR_COLOR;
-    } else {
-      if (!myNull) {
-        return myTextBackground;
-      } else {
-        return myNullTextBackground;
-      }
-    }
-  }
-
   public void setSelectedTextColor(Color selectedTextColor) {
     mySelectedTextColor = selectedTextColor;
-  }
-
-
-  public Color getSelectedTextBackgroundColor() {
-    init();
-    if (!myNull) {
-      return mySelectedTextBackground;
-    } else {
-      return myNulLSelectedTextBackground;
-    }
   }
 
   public Font getFont() {
@@ -448,30 +403,37 @@ public class TextLine {
   }
 
   public void paint(Graphics g, int shiftX, int shiftY, Color forcedTextColor) {
-    Color backgroundColor;
     Color textColor;
     Color textBackgroundColor;
 
-    backgroundColor = getBackgroundColor();
     if (forcedTextColor != null) {
       textColor = forcedTextColor;
       textBackgroundColor = null;
     } else {
       if (mySelected) {
-        textColor = getEffectiveSelectedTextColor();
-        textBackgroundColor = getSelectedTextBackgroundColor();
+        if (myShowsErrorColor) {
+          textColor =  ERROR_FOREGROUND_COLOR;
+        } else {
+          textColor =  mySelectedTextColor != null ? mySelectedTextColor : getTextColor();
+        }
+        if (myNull) {
+          textBackgroundColor = myNulLSelectedTextBackground;
+        } else {
+          textBackgroundColor = mySelectedTextBackground;
+        }
       } else {
-        textColor = getEffectiveTextColor();
-        textBackgroundColor = getTextBackgroundColor();
+        if (myShowsErrorColor) {
+          textColor = ERROR_FOREGROUND_COLOR;
+          textBackgroundColor = SELECTED_OR_BACKGROUND_ERROR_COLOR;
+        } else {
+          textColor = getTextColor();
+          if (myNull) {
+            textBackgroundColor =  myNullTextBackground;
+          } else {
+            textBackgroundColor =  myTextBackground;
+          }
+        }
       }
-    }
-
-    if (backgroundColor != null && !g.getColor().equals(backgroundColor) && !mySelected) {
-      g.setColor(backgroundColor);
-      g.fillRect(shiftX + getPaddingLeft(),
-                 shiftY + getPaddingTop(),
-                 getEffectiveWidth(),
-                 myTextHeight);
     }
 
     if (textBackgroundColor != null) {

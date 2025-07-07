@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import java.util.Objects;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public final class DotExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
 
   public static final SMethod<Boolean> isLValue_idhEwJgmE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877519786L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isChildAssignedInAssignment_id79$CF9VcmHc = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isChildAssignedInAssignment").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8242892105449565004L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getClassifier_idhEwIPI9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877410697L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getOperandType_id7GulAc9z0dN = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOperandType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8871623299328377715L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<String> getVariableExpectedName_idhEwJgm_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVariableExpectedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877519781L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
@@ -42,13 +44,16 @@ public final class DotExpression__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<List<SNode>> getAllDots_id2c6AtCN58E1 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAllDots").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2523873803626646145L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> isMultiline_id6to_vySiwwX = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMultiline").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7446866879333402685L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLValue_idhEwJgmE, getClassifier_idhEwIPI9, getOperandType_id7GulAc9z0dN, getVariableExpectedName_idhEwJgm_, isLegalAsStatement_idi26MfYG, allowsNullOperand_id3Yy2P0QQESt, lvalue_id1653mnvAgpj, getSyntacticallyLeftSideExpression_id1wHCnsn590c, setSyntacticallyLeftSideExpression_id1wHCnsn58ZK, getPrecedenceLevel_id1O90zDONSxM, getAllDots_id2c6AtCN58E1, isMultiline_id6to_vySiwwX);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLValue_idhEwJgmE, isChildAssignedInAssignment_id79$CF9VcmHc, getClassifier_idhEwIPI9, getOperandType_id7GulAc9z0dN, getVariableExpectedName_idhEwJgm_, isLegalAsStatement_idi26MfYG, allowsNullOperand_id3Yy2P0QQESt, lvalue_id1653mnvAgpj, getSyntacticallyLeftSideExpression_id1wHCnsn590c, setSyntacticallyLeftSideExpression_id1wHCnsn58ZK, getPrecedenceLevel_id1O90zDONSxM, getAllDots_id2c6AtCN58E1, isMultiline_id6to_vySiwwX);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static boolean isLValue_idhEwJgmE(@NotNull SNode __thisNode__) {
     return (boolean) IOperation__BehaviorDescriptor.isLValue_idhEwIP$w.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.operation$gs9E));
+  }
+  /*package*/ static boolean isChildAssignedInAssignment_id79$CF9VcmHc(@NotNull SNode __thisNode__, SNode child) {
+    return Objects.equals(child, SLinkOperations.getTarget(__thisNode__, LINKS.operation$gs9E));
   }
   /*package*/ static SNode getClassifier_idhEwIPI9(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(DotExpression__BehaviorDescriptor.getOperandType_id7GulAc9z0dN.invoke(__thisNode__), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
@@ -115,23 +120,25 @@ public final class DotExpression__BehaviorDescriptor extends BaseBHDescriptor {
       case 0:
         return (T) ((Boolean) isLValue_idhEwJgmE(node));
       case 1:
-        return (T) ((SNode) getClassifier_idhEwIPI9(node));
+        return (T) ((Boolean) isChildAssignedInAssignment_id79$CF9VcmHc(node, (SNode) parameters[0]));
       case 2:
-        return (T) ((SNode) getOperandType_id7GulAc9z0dN(node));
+        return (T) ((SNode) getClassifier_idhEwIPI9(node));
       case 3:
-        return (T) ((String) getVariableExpectedName_idhEwJgm_(node));
+        return (T) ((SNode) getOperandType_id7GulAc9z0dN(node));
       case 4:
-        return (T) ((Boolean) isLegalAsStatement_idi26MfYG(node));
+        return (T) ((String) getVariableExpectedName_idhEwJgm_(node));
       case 5:
+        return (T) ((Boolean) isLegalAsStatement_idi26MfYG(node));
+      case 6:
         return (T) ((Boolean) allowsNullOperand_id3Yy2P0QQESt(node));
-      case 7:
-        return (T) ((SNode) getSyntacticallyLeftSideExpression_id1wHCnsn590c(node));
       case 8:
+        return (T) ((SNode) getSyntacticallyLeftSideExpression_id1wHCnsn590c(node));
+      case 9:
         setSyntacticallyLeftSideExpression_id1wHCnsn58ZK(node, (SNode) parameters[0]);
         return null;
-      case 10:
-        return (T) ((List<SNode>) getAllDots_id2c6AtCN58E1(node));
       case 11:
+        return (T) ((List<SNode>) getAllDots_id2c6AtCN58E1(node));
+      case 12:
         return (T) ((Boolean) isMultiline_id6to_vySiwwX(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -145,9 +152,9 @@ public final class DotExpression__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 6:
+      case 7:
         return (T) ((Boolean) lvalue_id1653mnvAgpj(concept));
-      case 9:
+      case 10:
         return (T) ((PrecedenceUtil.Precedence) getPrecedenceLevel_id1O90zDONSxM(concept));
       default:
         throw new BHMethodNotFoundException(this, method);

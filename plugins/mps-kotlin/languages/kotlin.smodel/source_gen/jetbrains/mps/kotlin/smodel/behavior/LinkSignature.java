@@ -13,7 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class LinkSignature extends PropertySignature {
   private SNode link;
   public LinkSignature(SNode link, AccessorKind kind) {
-    super(SPropertyOperations.getString(link, PROPS.name$MnvL), kind);
+    super(SPropertyOperations.getString(link, PROPS.name$MnvL), kind, null);
     this.link = link;
   }
 

@@ -17,10 +17,11 @@ package jetbrains.mps.workbench.dialogs.project.newproject;
 
 import com.intellij.openapi.startup.StartupManager;
 import jetbrains.mps.icons.MPSIcons.Nodes;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
 import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.project.modules.NewModuleCheck;
 import jetbrains.mps.project.modules.SolutionProducer;
+import jetbrains.mps.util.IStatus;
 import jetbrains.mps.workbench.DocumentationHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -55,7 +56,7 @@ public class DefaultSolutionProjectTemplate implements SolutionProjectTemplate {
   @Override
   public String getDescription() {
     return "Solutions are used to store code written in MPS languages. " +
-           "Each <a href=\"" + DocumentationHelper.getHelpCenterBase() + "MPS+project+structure#MPSprojectstructure-solutions\">MPS solution</a> " +
+           "Each <a href=\"" + DocumentationHelper.getHelpCenterBase() + "mps-project-structure.html#solutions\">MPS solution</a> " +
            "is a set of models with a name.";
   }
 
@@ -82,6 +83,7 @@ public class DefaultSolutionProjectTemplate implements SolutionProjectTemplate {
   @Nullable
   @Override
   public String checkSettings() {
-    return NewModuleUtil.check(null, MPSExtentions.DOT_SOLUTION, myNewSolutionSettings.getModuleName(), myNewSolutionSettings.getModuleLocation().getAbsolutePath());
+    final IStatus s = new NewModuleCheck().forSolution().withName(myNewSolutionSettings.getModuleName()).withHome(myNewSolutionSettings.getModuleLocation()).checkAll();
+    return s.getMessage();
   }
 }

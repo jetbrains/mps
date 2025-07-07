@@ -11,15 +11,19 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.ide.projectPane.ProjectPane;
+import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.projectPane.logicalview.ProjectTree;
-import jetbrains.mps.ide.projectPane.logicalview.ProjectTreeFindHelper;
+import jetbrains.mps.VisibleModuleRegistry;
+import jetbrains.mps.scope.ConditionalScope;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.projectPane.ProjectPane;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import javax.swing.SwingUtilities;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216124527478", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1216124527478", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ShowInLogicalView_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.ProjectPane.LogicalView;
 
@@ -27,6 +31,7 @@ public class ShowInLogicalView_Action extends BaseAction {
     super("Show Node in Logical View", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -38,16 +43,10 @@ public class ShowInLogicalView_Action extends BaseAction {
     if (module == null) {
       return false;
     }
-    ProjectPane pane = ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
-    ProjectTree tree = (pane == null ? null : pane.getTree());
-    if (tree == null) {
-      return false;
-    }
-    ProjectTreeFindHelper treeFinder = new ProjectTreeFindHelper(tree);
-    // it's fine if we could navigate to a module. If the module is not part of the project pane, no reason to expect more.
-    // If, however, module is present, it's highly likely node's model would be there as well, and the node, too.
-    // Just don't want to slow down by ensuring there's model and node in the tree.
-    return treeFinder.findMostSuitableModuleTreeNode(module) != null;
+    GlobalScope globalScope = new GlobalScope(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+    VisibleModuleRegistry visibleModules = VisibleModuleRegistry.getInstance();
+    ConditionalScope visibleModulesScope = new ConditionalScope(globalScope, visibleModules::isVisible, null);
+    return Sequence.fromIterable(((Iterable<SModule>) visibleModulesScope.getModules())).contains(module);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -78,12 +77,12 @@ public class ShowInLogicalView_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     // XXX perhaps, shall use ProjectPaneNavigator?
     final ProjectPane pane = ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
-    SNodeReference nodeToSelect;
+    final Wrappers._T<SNodeReference> nodeToSelect = new Wrappers._T<SNodeReference>();
     if (pane.showNodeStructure()) {
-      nodeToSelect = ((SNode) MapSequence.fromMap(_params).get("node")).getReference();
+      nodeToSelect.value = ((SNode) MapSequence.fromMap(_params).get("node")).getReference();
     } else {
-      nodeToSelect = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess()).runReadAction(() -> ((SNode) MapSequence.fromMap(_params).get("node")).getContainingRoot().getReference());
+      nodeToSelect.value = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess()).runReadAction(() -> ((SNode) MapSequence.fromMap(_params).get("node")).getContainingRoot().getReference());
     }
-    pane.selectNode(nodeToSelect, true);
+    SwingUtilities.invokeLater(() -> pane.selectNode(nodeToSelect.value, true));
   }
 }

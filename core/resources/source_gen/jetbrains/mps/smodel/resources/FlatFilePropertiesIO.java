@@ -12,7 +12,7 @@ import java.io.InputStream;
 import jetbrains.mps.util.FileUtil;
 import java.util.HashMap;
 
-@GeneratedClass(node = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/5555789605584709649", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
+@GeneratedClass(nodeId = "5555789605584709649", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
 public class FlatFilePropertiesIO implements IPropertiesIO {
   private IFile descFile;
   public FlatFilePropertiesIO(IFile descFile) {

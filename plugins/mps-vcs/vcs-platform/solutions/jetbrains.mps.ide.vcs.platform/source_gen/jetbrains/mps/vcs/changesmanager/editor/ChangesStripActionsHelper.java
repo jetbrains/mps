@@ -31,7 +31,7 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 
-@GeneratedClass(node = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/2052504288806109972", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
+@GeneratedClass(nodeId = "2052504288806109972", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
 public final class ChangesStripActionsHelper {
   private final MPSProject myProject;
   private final EditorContext myEditorContext;

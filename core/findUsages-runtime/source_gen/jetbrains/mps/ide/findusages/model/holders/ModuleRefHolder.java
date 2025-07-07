@@ -15,7 +15,7 @@ import jetbrains.mps.ide.findusages.CantSaveSomethingException;
  * Replacement for {@code jetbrains.mps.ide.findusages.model.holders.ModuleHolder} that doesn't force SModule resolution
  * @author Artem Tikhomirov
  */
-@GeneratedClass(node = "r:6d26b589-14c5-496e-9d2b-5c71b3a15e5d(jetbrains.mps.ide.findusages.model.holders)/8568892084424438952", model = "r:6d26b589-14c5-496e-9d2b-5c71b3a15e5d(jetbrains.mps.ide.findusages.model.holders)")
+@GeneratedClass(nodeId = "8568892084424438952", model = "r:6d26b589-14c5-496e-9d2b-5c71b3a15e5d(jetbrains.mps.ide.findusages.model.holders)")
 public class ModuleRefHolder implements IHolder<SModuleReference> {
   private static final String UID = "moduleReference";
   private SModuleReference myReference;

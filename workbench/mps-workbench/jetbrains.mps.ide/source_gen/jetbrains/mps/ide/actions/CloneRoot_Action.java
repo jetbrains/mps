@@ -14,11 +14,13 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.datatransfer.DataTransferManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
+import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215874930420", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1215874930420", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CloneRoot_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -62,6 +64,9 @@ public class CloneRoot_Action extends BaseAction {
       }
 
     }
+    {
+      SModel p = event.getData(MPSCommonDataKeys.TARGET_MODEL);
+    }
     return true;
   }
   @Override
@@ -70,9 +75,10 @@ public class CloneRoot_Action extends BaseAction {
       SNode root = SNodeOperations.getContainingRoot(node);
       SNode copy = SNodeOperations.copyNode(root);
       DataTransferManager.getInstance().postProcessNode(copy);
-      SModelOperations.addRootNode(SNodeOperations.getModel(root), copy);
-      NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), copy, true, true);
-      NavigationSupport.getInstance().selectInTree(event.getData(MPSCommonDataKeys.MPS_PROJECT), copy, false);
+      SModel destination = (event.getData(MPSCommonDataKeys.TARGET_MODEL) != null ? event.getData(MPSCommonDataKeys.TARGET_MODEL) : SNodeOperations.getModel(root));
+      SModelOperations.addRootNode(destination, copy);
+      new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).shallSelect(true).open(SNodeOperations.getPointer(copy));
+      new ProjectPaneNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(false).select(SNodeOperations.getPointer(copy));
     }
   }
 }

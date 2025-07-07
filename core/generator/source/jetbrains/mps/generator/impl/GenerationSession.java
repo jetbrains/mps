@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,10 +72,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Queue;
 import java.util.function.Function;
@@ -188,6 +190,7 @@ class GenerationSession {
       //   Logic similar to the one of GMDM (takes used languages of a model) is ok for the first round.
       myEmployedLanguages.addAll(ModelContentUtil.getUsedLanguages(myOriginalInputModel));
       ArrayList<SModel> allOutputModels = new ArrayList<>(4);
+      Map<SModelReference, String> gentargetByOutputModel = new HashMap<>();
       ttrace.push("steps");
 
       ModelTransitions transitionTrace = new ModelTransitions(); // FIXME make it optional, if there are no Checkpoint steps, do not record transitions
@@ -205,11 +208,13 @@ class GenerationSession {
       majorBranch.transitionTrace = transitionTrace;
       forkQueue.add(majorBranch);
       while (!forkQueue.isEmpty()) {
-        SModel output = processGenPlanBranch(forkQueue.removeFirst(), forkQueue, monitor);
+        PlanBranchInfo branchInfo = forkQueue.removeFirst();
+        SModel output = processGenPlanBranch(branchInfo, forkQueue, monitor);
         // for *each* completed GP branch, keep model as it's the outcome we are going to process further
         if (output != null) {
           allOutputModels.add(output);
           mySessionContext.getModule().addModelToKeep(output.getReference(), true);
+          gentargetByOutputModel.put(output.getReference(), branchInfo.generationTarget);
         }
       }
 
@@ -223,7 +228,7 @@ class GenerationSession {
       // XXX we could use GenerationDependencies to pass more information about actual generators/languages involved (including their runtimes
       //     to facilitate proper classpath calculation
       final GenerationDependencies genDeps = new GenerationDependencies(myOriginalInputModel, myControlEnv.getOptions().getParametersProvider());
-      GenerationStatus generationStatus = new GenerationStatus(myOriginalInputModel, allOutputModels, genDeps, myLogger.getErrorCount() > 0);
+      GenerationStatus generationStatus = new GenerationStatus(myOriginalInputModel, allOutputModels, genDeps, myLogger.getErrorCount() > 0, gentargetByOutputModel);
       generationStatus.setCrossModelEnvironment(myControlEnv.getCrossModelEnvironment());
       generationStatus.setEmployedLanguages(myEmployedLanguages);
       return generationStatus;
@@ -372,6 +377,14 @@ class GenerationSession {
         lastBigTransformStepMappings.clear();
       } else if (planStep instanceof Fork) {
         Fork forkStep = (Fork) planStep;
+        String generationTarget = forkStep.getGenerationTarget();
+        // proceed with this fork if either:
+        //  - generation target is undefined
+        //  - otherwise, the original model's module has a facet of the corresponding type
+        // this saves the efforts of running generation on an optional fork
+        if (generationTarget != null && (myOriginalInputModel.getModule().getFacetOfType(generationTarget) == null)) {
+          continue;
+        }
         PlanBranchInfo bi = new PlanBranchInfo(++myBranchCounter);
         // Pair cloneTransient/changeModelReference deserves a dedicated utility.
         // Use of bi.serial is to ensure input model shows up under a proper group of models. It might be modified in-place, therefore it has to be part
@@ -385,6 +398,7 @@ class GenerationSession {
         bi.actualStateCopyOfLastBitTransformStepMappings = new ArrayList<>(lastBigTransformStepMappings);
         // bi.inputModel, clone of currInputModel, already has ORIGIN_TRACE values properly set, no need to do anything in fork().
         bi.transitionTrace = transitionTrace.fork();
+        bi.generationTarget = generationTarget;
         forkQueue.add(bi);
       }
     }
@@ -448,7 +462,7 @@ class GenerationSession {
   // precondition: myStepArguments initialized (!= null);
   private SModel executeMajorStepInternal(SModel inputModel, ProgressMonitor progress) throws GenerationFailureException, GenerationCanceledException {
     SModel currentInputModel = inputModel;
-    // XXX Does cloneInputModel == true make any sense for for a first model in a branch (which is itself a copy at the fork point?)
+    // XXX Does cloneInputModel == true make any sense for a first model in a branch (which is itself a copy at the fork point?)
     final boolean cloneInputModel = myControlEnv.getOptions().isSaveTransientModels() && myControlEnv.getOptions().applyTransformationsInplace();
 
     // -----------------------

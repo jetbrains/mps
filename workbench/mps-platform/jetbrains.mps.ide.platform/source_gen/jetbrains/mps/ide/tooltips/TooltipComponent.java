@@ -7,10 +7,10 @@ import java.awt.event.MouseEvent;
 
 /**
  * 
- * @deprecated see {@link jetbrains.mps.ide.tooltips.MPSToolTipManager }
+ * @deprecated no uses in MPS, i use in mps-extensions. delete this class once the usage gone
  */
 @Deprecated(since = "2020.1", forRemoval = true)
-@GeneratedClass(node = "r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)/3564103493663133593", model = "r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)")
+@GeneratedClass(nodeId = "3564103493663133593", model = "r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)")
 public interface TooltipComponent {
   String getMPSTooltipText(MouseEvent mouseEvent);
 }

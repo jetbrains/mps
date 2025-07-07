@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.project.DumbModeTask;
 import com.intellij.openapi.project.DumbService;
@@ -35,7 +36,7 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.make.kotlin.KotlinCompilerOptions;
-import jetbrains.mps.make.kotlin.cache.KotlinCompileCacheHandlerImpl;
+import jetbrains.mps.make.kotlin.cache.JvmKotlinCompileCacheHandler;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.MPSProject;
@@ -79,7 +80,7 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
     // ProjectLibraryManager used to be cons parameter
     @SuppressWarnings("unused")
     final ProjectLibraryManager plm = ProjectLibraryManager.getInstance(project);
-    myComponents = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+    myComponents = MPSCoreComponents.getInstance();
     DumbService.getInstance(project).queueTask(new DumbModeTask() {
       @Override
       public @Nullable DumbModeTask tryMergeWith(@NotNull DumbModeTask taskFromQueue) {
@@ -109,11 +110,12 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
   private void doBuild(ProgressMonitor monitor) {
     LOG.info("Building modules on startup");
     final ModuleMaker maker = new ModuleMaker();
+    maker.ignoreFiles(file -> FileTypeManager.getInstance().isFileIgnored(file.getName()));
 
     // Create temporary client file
     final File clientFile = KotlinCompilerOptions.createClientFile();
-    maker.options(JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(myMPSProject))
-         .kotlinCompileCache(new KotlinCompileCacheHandlerImpl(IMessageHandler.NULL_HANDLER))
+    maker.options(myMPSProject.getComponent(JavaCompilerOptionsComponent.class).getJavaCompilerOptions(myMPSProject))
+         .kotlinCompileCache(new JvmKotlinCompileCacheHandler(IMessageHandler.NULL_HANDLER))
          .kotlinOptions(new KotlinCompilerOptions(clientFile));
     final ReloadManager reloadManager = ReloadManager.getInstance();
     reloadManager.computeNoReload(() -> {

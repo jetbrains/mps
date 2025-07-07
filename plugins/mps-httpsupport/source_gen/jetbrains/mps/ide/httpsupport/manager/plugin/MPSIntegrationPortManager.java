@@ -10,7 +10,7 @@ import java.net.InetSocketAddress;
 import java.net.BindException;
 import java.io.IOException;
 
-@GeneratedClass(node = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)/802768723527085987", model = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)")
+@GeneratedClass(nodeId = "802768723527085987", model = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)")
 public class MPSIntegrationPortManager extends CustomPortServerManagerBase {
   private static final Logger LOG = Logger.getLogger(MPSIntegrationPortManager.class);
 

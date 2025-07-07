@@ -25,6 +25,7 @@ import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class AssignmentExpression__BehaviorDescriptor extends BaseBHDescriptor {
@@ -34,8 +35,9 @@ public final class AssignmentExpression__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<Boolean> isReadAsignment_idhGd96S1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isChangeAssignment").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1215696236033L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> canConvertToLocalVariableDeclaration_idhLFstkU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canConvertToLocalVariableDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1221573334330L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> convertToLocalVariableDeclaration_idhLFsFld = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("convertToLocalVariableDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1221573391693L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<List<SNode>> getAllLocalVariableDeclarations_id3xYtul1v6S1 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAllLocalVariableDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4070820740696141313L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(deriveType_idhEwIVPz, isReadAsignment_idhGd96S1, canConvertToLocalVariableDeclaration_idhLFstkU, convertToLocalVariableDeclaration_idhLFsFld);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(deriveType_idhEwIVPz, isReadAsignment_idhGd96S1, canConvertToLocalVariableDeclaration_idhLFstkU, convertToLocalVariableDeclaration_idhLFsFld, getAllLocalVariableDeclarations_id3xYtul1v6S1);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -80,6 +82,13 @@ public final class AssignmentExpression__BehaviorDescriptor extends BaseBHDescri
     SNodeOperations.replaceWithAnother(exprStatement, varDeclStmnt);
     return varDeclStmnt;
   }
+  /*package*/ static List<SNode> getAllLocalVariableDeclarations_id3xYtul1v6S1(@NotNull SNode __thisNode__) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.lValue$splI), CONCEPTS.ILocalVariableElement$nm)) {
+      return ILocalVariableElement__BehaviorDescriptor.getAllLocalVariableDeclarations_id3xYtul1v6S1.invoke(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.lValue$splI), CONCEPTS.ILocalVariableElement$nm));
+    } else {
+      return ILocalVariableElement__BehaviorDescriptor.getAllLocalVariableDeclarations_id3xYtul1v6S1.invoke0(__thisNode__, CONCEPTS.ILocalVariableElement$nm);
+    }
+  }
 
   /*package*/ AssignmentExpression__BehaviorDescriptor() {
   }
@@ -104,6 +113,8 @@ public final class AssignmentExpression__BehaviorDescriptor extends BaseBHDescri
         return (T) ((Boolean) canConvertToLocalVariableDeclaration_idhLFstkU(node));
       case 3:
         return (T) ((SNode) convertToLocalVariableDeclaration_idhLFsFld(node, (String) parameters[0]));
+      case 4:
+        return (T) ((List<SNode>) getAllLocalVariableDeclarations_id3xYtul1v6S1(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -154,6 +165,7 @@ public final class AssignmentExpression__BehaviorDescriptor extends BaseBHDescri
     /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
     /*package*/ static final SConcept NullType$Ea = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType");
     /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SInterfaceConcept ILocalVariableElement$nm = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1206e6cc291L, "jetbrains.mps.baseLanguage.structure.ILocalVariableElement");
   }
 
   private static final class PROPS {

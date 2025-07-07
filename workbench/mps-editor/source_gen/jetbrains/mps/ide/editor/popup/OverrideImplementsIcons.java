@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.Icon;
 import com.intellij.icons.AllIcons;
 
-@GeneratedClass(node = "r:579b6612-4f9e-4479-8e4c-5ef2ee0f9722(jetbrains.mps.ide.editor.popup)/3125308444886170641", model = "r:579b6612-4f9e-4479-8e4c-5ef2ee0f9722(jetbrains.mps.ide.editor.popup)")
+@GeneratedClass(nodeId = "3125308444886170641", model = "r:579b6612-4f9e-4479-8e4c-5ef2ee0f9722(jetbrains.mps.ide.editor.popup)")
 public final class OverrideImplementsIcons {
   public static final Icon IMPLEMENTED = AllIcons.Gutter.ImplementedMethod;
   public static final Icon IMPLEMENTING = AllIcons.Gutter.ImplementingMethod;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,14 +28,6 @@ import jetbrains.mps.typesystem.inference.TypeChecker;
  */
 public class TargetTypecheckingContext extends SimpleTypecheckingContext<TargetState, TargetTypechecking> {
 
-  /**
-   * Don't use.
-   */
-  @Deprecated(forRemoval = true)
-  public TargetTypecheckingContext(SNode node, TypeChecker typeChecker) {
-    super(node, typeChecker.getTypeCheckerHelper());
-  }
-
   public TargetTypecheckingContext(SNode node, TypeCheckerHelper typeCheckerHelper) {
     super(node, typeCheckerHelper);
   }
@@ -52,6 +44,6 @@ public class TargetTypecheckingContext extends SimpleTypecheckingContext<TargetS
 
   @Override
   public SNode getTypeOf_resolveMode(SNode node, TypeChecker typeChecker) {
-    return LanguageScopeExecutor.execWithModelScope(node.getModel(), () -> getTypechecking().computeTypesForNodeDuringResolving(node));
+    return LanguageScopeExecutor.execWithModelScope(node.getModel(), () -> getTypechecking().computeTypesForNodeDuringResolving(node), getTypeCheckerHelper().getScopeFactory());
   }
 }

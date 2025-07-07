@@ -22,7 +22,7 @@
     <orderEntry type="module" module-name="debugger-api-runtime" />
     <orderEntry type="module" module-name="debugger-api-api" />
     <orderEntry type="module" module-name="debugger-java-api" />
-    <orderEntry type="module" module-name="mps-debugger" />
+    <orderEntry type="module" module-name="debugger-core" />
     <orderEntry type="library" name="Annotations" level="project" />
     <orderEntry type="library" name="Idea-platform" level="project" />
     <orderEntry type="module" module-name="findUsages-runtime" />
@@ -33,5 +33,6 @@
     <orderEntry type="module" module-name="behavior-runtime" />
     <orderEntry type="module" module-name="java-stub" />
     <orderEntry type="module" module-name="typechecking" />
+    <orderEntry type="module" module-name="debuginfo-impl" />
   </component>
 </module>

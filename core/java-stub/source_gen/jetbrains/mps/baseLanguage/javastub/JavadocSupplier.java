@@ -10,7 +10,7 @@ import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
  * Control lifecycle of a documentation source to avoid retaining parsed data/caches in memory
  * Supplier instances are expected to be queried from a single thread (implementation doesn't need to care about multi-threading)
  */
-@GeneratedClass(node = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/8648630529540259901", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
+@GeneratedClass(nodeId = "8648630529540259901", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
 public interface JavadocSupplier extends Function<ASMClass, Documentation> {
   /**
    * Shall get invoked prior to use of this supplier to obtain Documentation, always followed by release()

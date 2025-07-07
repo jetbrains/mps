@@ -9,7 +9,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.executors.DefaultRunExecutor;
 
-@GeneratedClass(node = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)/3908032508224771122", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
+@GeneratedClass(nodeId = "3908032508224771122", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
 public abstract class BaseMpsRunConfiguration extends RunConfigurationBase implements LocatableConfiguration {
   public BaseMpsRunConfiguration(Project project, ConfigurationFactory factory, String name) {
     super(project, factory, name);

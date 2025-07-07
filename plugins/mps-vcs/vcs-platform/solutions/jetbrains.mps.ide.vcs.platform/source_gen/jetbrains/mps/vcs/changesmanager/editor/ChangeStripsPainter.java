@@ -30,9 +30,9 @@ import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 
-@GeneratedClass(node = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/867367425399189430", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
+@GeneratedClass(nodeId = "867367425399189430", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
 public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
-  private static final int AREA_WIDTH = 9;
+  private static final int AREA_WIDTH = 4;
   private static final int ARROW_HEIGHT = 8;
   private EditorHighlighter myEditorHighlighter;
   private ChangeGroupLayout myChangeGroupLayout;

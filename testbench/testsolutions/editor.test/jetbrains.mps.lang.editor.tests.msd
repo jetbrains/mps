@@ -6,7 +6,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" compile="mps" classes="mps" ext="yes">
+    <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
@@ -32,7 +32,7 @@
     <language slang="l:f61473f9-130f-42f6-b98d-6c438812c2f6:jetbrains.mps.baseLanguage.unitTest" version="1" />
     <language slang="l:63650c59-16c8-498a-99c8-005c7ee9515d:jetbrains.mps.lang.access" version="0" />
     <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="2" />
-    <language slang="l:18bc6592-03a6-4e29-a83a-7ff23bde13ba:jetbrains.mps.lang.editor" version="14" />
+    <language slang="l:18bc6592-03a6-4e29-a83a-7ff23bde13ba:jetbrains.mps.lang.editor" version="15" />
     <language slang="l:81f0abb8-d71e-4d13-a0c1-d2291fbb28b7:jetbrains.mps.lang.editor.editorTest" version="0" />
     <language slang="l:e7808658-592b-442e-9770-511bd6bd751d:jetbrains.mps.lang.editor.editorTest.extension" version="0" />
     <language slang="l:a936c42c-cb2c-4d64-a1dc-12986579a998:jetbrains.mps.lang.editor.styleTests" version="0" />

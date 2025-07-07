@@ -7,11 +7,11 @@
   <imports>
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="3j2" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.stubs.javastub.classpath(MPS.Core/)" />
     <import index="tuzk" ref="b55d8dfc-0d9d-43d5-886d-c644e7083bff/java:org.jetbrains.org.objectweb.asm.signature(jetbrains.mps.java.stub/)" />
     <import index="dd86" ref="b55d8dfc-0d9d-43d5-886d-c644e7083bff/java:org.jetbrains.org.objectweb.asm.tree(jetbrains.mps.java.stub/)" />
     <import index="k8ye" ref="b55d8dfc-0d9d-43d5-886d-c644e7083bff/java:org.jetbrains.org.objectweb.asm(jetbrains.mps.java.stub/)" />
     <import index="emwx" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.lang.model(JDK/)" />
+    <import index="1ltj" ref="r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -9635,14 +9635,14 @@
     <node concept="3clFb_" id="TWYrQXYG_G" role="jymVt">
       <property role="TrG5h" value="getClassifierKind" />
       <node concept="3uibUv" id="TWYrQXYTZX" role="3clF45">
-        <ref role="3uigEE" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+        <ref role="3uigEE" to="1ltj:6i5nc29sCa5" resolve="ClassifierKind" />
       </node>
       <node concept="3Tm1VV" id="TWYrQXYG_J" role="1B3o_S" />
       <node concept="3clFbS" id="TWYrQXYG_K" role="3clF47">
         <node concept="3cpWs6" id="TWYrQXZ5rB" role="3cqZAp">
           <node concept="2YIFZM" id="TWYrQXZrDK" role="3cqZAk">
-            <ref role="37wK5l" to="3j2:~ClassifierKind.getClassifierKind(int)" resolve="getClassifierKind" />
-            <ref role="1Pybhc" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+            <ref role="37wK5l" to="1ltj:6i5nc29sCat" resolve="getClassifierKind" />
+            <ref role="1Pybhc" to="1ltj:6i5nc29sCa5" resolve="ClassifierKind" />
             <node concept="2OqwBi" id="TWYrQXZFoa" role="37wK5m">
               <node concept="37vLTw" id="TWYrQXZAP1" role="2Oq$k0">
                 <ref role="3cqZAo" node="6hYzBiUOvv1" resolve="myNode" />

@@ -16,7 +16,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@GeneratedClass(node = "r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)/5332932484372864216", model = "r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)")
+@GeneratedClass(nodeId = "5332932484372864216", model = "r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)")
 public class NodeTabColorProvider implements TabColorProvider {
   private final Project myProject;
 

@@ -7,7 +7,8 @@ import jetbrains.mps.build.util.Context;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.project.io.DescriptorIOFacade;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.smodel.RepositoryFacade;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.template.TemplateQueryContext;
@@ -16,33 +17,16 @@ import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.List;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.extapi.module.SModuleBase;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.io.File;
 import java.io.IOException;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
+import java.util.List;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import java.util.Objects;
-import jetbrains.mps.extapi.module.SRepositoryBase;
-import jetbrains.mps.extapi.module.SRepositoryExt;
-import org.jetbrains.mps.openapi.module.ModelAccess;
-import java.util.Map;
-import org.jetbrains.mps.openapi.module.SModuleId;
-import java.util.HashMap;
-import jetbrains.mps.smodel.MPSModuleOwner;
-import jetbrains.mps.project.AbstractModule;
-import java.util.Set;
-import java.util.Collections;
-import java.util.ArrayList;
-import jetbrains.mps.smodel.AbstractModelAccess;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -60,10 +44,9 @@ public final class ModuleLoader {
    * To access certain module properties (like used languages and devkits), we need to load modules temporarily.
    * As long as generator modules could not be loaded without their source language module already present in the repository, we need to share repository
    * between language's ModuleChecker and that of its generators.
-   * The field is not initialized unless import (either full or partial) is requested (CheckType.doFullImport == true || CheckType.doPartialImport == true)
    */
-  private ModuleRepositoryFacade myRepository = null;
-
+  private RepositoryFacade myRepository = null;
+  private IFile myModuleDescriptorFile;
 
   public ModuleLoader(@NotNull SNode buildProject, @NotNull IMessageHandler msgHandler) {
     this(buildProject, null, msgHandler);
@@ -75,13 +58,12 @@ public final class ModuleLoader {
     myBuildProject = buildProject;
     myBuildContext = (genContext != null ? Context.defaultContext(genContext) : Context.defaultContext());
     myPathConverter = new PathConverter(myBuildContext, buildProject);
-    myVisibleModules = new VisibleModules(buildProject, msgHandler, genContext);
+    myVisibleModules = new VisibleModules(buildProject, msgHandler);
     myVisibleModules.collect();
     myMsgHandler = msgHandler;
     // TODO enforce outer code to specify FS to avoid singleton access
     myFS = FileSystem.getInstance();
-    // TODO need access to plafrom to obtain DescriptorIOFacade instance, or supply from caller.
-    myDescriptorIO = DescriptorIOFacade.getInstance();
+    myDescriptorIO = new DescriptorIOFacade();
   }
 
   public ModuleLoader useFileSystem(FileSystem fs) {
@@ -99,34 +81,25 @@ public final class ModuleLoader {
 
   public void checkAllModules(final ModuleChecker.CheckType type) {
     Iterable<SNode> parts = SLinkOperations.getChildren(myBuildProject, LINKS.parts$mGDj);
-    Repo r = new Repo(new ModelAccessNoLimit());
-    myRepository = new ModuleRepositoryFacade(r);
+    myRepository = RepositoryFacade.createPlainRegistrationRepo();
 
     Sequence.fromIterable(SLinkOperations.collectMany(SNodeOperations.ofConcept(parts, CONCEPTS.BuildMps_Group$Jc), LINKS.modules$JlQo)).union(Sequence.fromIterable(SNodeOperations.ofConcept(parts, CONCEPTS.BuildMps_AbstractModule$FZ))).where((it) -> (SLinkOperations.getTarget(it, LINKS.path$iYKB) != null)).visitAll((it) -> createModuleChecker(it).check(type));
 
-    // XXX would be great to unregister all modules here, to dispose them explicitly, but as long as its our private repo, does it matter?
-    // We have to dispose modules as their models/datasources attach e.g. file listeners that get notified long time after generation of a build project is over.
-    // BEWARE, don't ever try to do myRepository.dispose(). MRF is CoreComponent AND singleton, dispose just makes subsequent MRF.getInstance() (yes, there are still few out there) to fail with NPE
-    if (myRepository != null) {
-      // MRF has distinction between 'true' repo and a global one it looks into at certain moments, beware to use proper one
-      List<SModule> modules = IterableUtil.copyToList(myRepository.getRepository().getModules());
-      for (SModule m : ListSequence.fromList(modules)) {
-        // would be great to myRepository.unregisterModule(m) here, but there are 2 obstacles:
-        // first, MRF doesn't use true repo; second, we need to know module owner which is internal class in ModuleChecker now
-        // As I'm about to throw myRepository away, I don't care that much it is to hold information about disposed modules
-        if (m instanceof SModuleBase) {
-          ((SModuleBase) m).dispose();
-        }
-      }
-    }
+    myRepository.dispose();
+    myRepository = null;
   }
 
-  public ModuleChecker createModuleChecker(SNode module) {
+  /**
+   * MPS INTERNAL USE ONLY, NOT AN API
+   */
+  @Nullable
+  public ModuleDescriptor loadModuleDescriptor(SNode module) {
     assert SNodeOperations.getNodeAncestor(module, CONCEPTS.BuildProject$ae, false, false) == myBuildProject;
+
     String moduleFilePath = BuildSourcePath__BehaviorDescriptor.getLocalPath_id4Kip2_918Y$.invoke(SLinkOperations.getTarget(module, LINKS.path$iYKB), myBuildContext);
     if (moduleFilePath == null) {
-      reportError(String.format("cannot import module file for %s: file doesn't exist (%s)", SPropertyOperations.getString(module, PROPS.name$MnvL), BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(module, LINKS.path$iYKB), myBuildContext)), module);
-      return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
+      reportError(String.format("cannot import module file for %s: file doesn't exist (%s)", SPropertyOperations.getString(module, PROPS.name$MnvL), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(module, LINKS.path$iYKB))), module);
+      return null;
     }
 
     try {
@@ -138,22 +111,39 @@ public final class ModuleLoader {
     IFile file = myFS.getFile(moduleFilePath);
     if (!(file.exists())) {
       reportError(String.format("cannot import module file for %s: file doesn't exist (%s)", SPropertyOperations.getString(module, PROPS.name$MnvL), moduleFilePath), module);
-      return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
+      return null;
     }
     if (file.isDirectory()) {
       reportError(String.format("cannot import module file for %s: file is a directory (%s)", SPropertyOperations.getString(module, PROPS.name$MnvL), moduleFilePath), module);
-      return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
+      return null;
     }
+    if (!(myDescriptorIO.isModuleDescriptorFile(file))) {
+      reportError(String.format("cannot import module from %s: unknown descriptor persistence", moduleFilePath), module);
+      return null;
+    }
+    // provisional hack until I get rid of IFile use in ModuleChecker (load SModule here and use other means to get module relative path)
+    myModuleDescriptorFile = file;
 
     ModuleDescriptor md = null;
     try {
       MacroHelper helper = new ModuleMacroHelper(myBuildProject, myMsgHandler);
-      md = myDescriptorIO.readFromModuleFile(helper, file);
+      // FIXME ModuleMacroHelper is not necessary any more, but I need to make use of its MMH.unknownMacros logic to help craft BuildProject's initial macros
+      md = myDescriptorIO.fromFileType(file).readFromFile(file);
       if (md.getLoadException() != null) {
         reportError(String.format("cannot import module file for %s: exception: %s", SPropertyOperations.getString(module, PROPS.name$MnvL), md.getLoadException().getMessage()), module);
       }
     } catch (Exception ex) {
       reportError(String.format("cannot import module file for %s: exception: %s", SPropertyOperations.getString(module, PROPS.name$MnvL), ex.getMessage()), module);
+    }
+    return md;
+  }
+
+  public ModuleChecker createModuleChecker(SNode module) {
+    assert SNodeOperations.getNodeAncestor(module, CONCEPTS.BuildProject$ae, false, false) == myBuildProject;
+
+    ModuleDescriptor md = loadModuleDescriptor(module);
+    if (md == null) {
+      return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
     }
 
     if (md instanceof LanguageDescriptor && SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_Generator$RQ)) {
@@ -163,7 +153,7 @@ public final class ModuleLoader {
       List<GeneratorDescriptor> generators = ((LanguageDescriptor) md).getGenerators();
       if (isEmptyString(SPropertyOperations.getString(module, PROPS.uuid$pC01))) {
         if (generators.isEmpty()) {
-          reportError(String.format("No generator descriptors found in language %s from %s", md.getNamespace(), moduleFilePath), module);
+          reportError(String.format("No generator descriptors found in language %s from %s", md.getNamespace(), SLinkOperations.getTarget(module, LINKS.path$iYKB)), module);
           return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
         } else {
           // just pick the first one, use intention later to select another (if any)
@@ -177,126 +167,16 @@ public final class ModuleLoader {
           }
         }
         if (md instanceof LanguageDescriptor) {
-          reportError(String.format("No generator with uuid %s found in language %s from %s", SPropertyOperations.getString(module, PROPS.uuid$pC01), md.getNamespace(), moduleFilePath), module);
+          reportError(String.format("No generator with uuid %s found in language %s from %s", SPropertyOperations.getString(module, PROPS.uuid$pC01), md.getNamespace(), SLinkOperations.getTarget(module, LINKS.path$iYKB)), module);
           return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
         }
       }
     }
-    return new ModuleChecker(module, myVisibleModules, myPathConverter, file, md, myMsgHandler, myRepository);
+    return new ModuleChecker(module, myVisibleModules, myPathConverter, myModuleDescriptorFile, md, myMsgHandler, myRepository);
   }
 
 
-  private static class Repo extends SRepositoryBase implements SRepositoryExt {
-    private final ModelAccess myModelAccess;
-    private final Map<SModuleId, SModule> myModules;
 
-    public Repo(ModelAccess ma) {
-      myModelAccess = ma;
-      myModules = new HashMap<SModuleId, SModule>();
-    }
-
-    public <T extends SModule> T registerModule(@NotNull T module, @NotNull MPSModuleOwner owner) {
-      SModule existing = myModules.putIfAbsent(module.getModuleId(), module);
-      if (existing != null) {
-        throw new IllegalStateException("Duplicate modules with id '" + module.getModuleId() + "'");
-      }
-      if (module instanceof AbstractModule) {
-        ((AbstractModule) module).attach(this);
-      }
-      return module;
-    }
-
-    @Override
-    public void unregisterModule(@NotNull SModule module, @NotNull MPSModuleOwner owner) {
-      SModule removed = myModules.remove(module.getModuleId());
-      if (removed != module) {
-        throw new IllegalStateException();
-      }
-      if (module instanceof AbstractModule) {
-        ((AbstractModule) module).dispose();
-      }
-    }
-
-    @Override
-    public Set<MPSModuleOwner> getOwners(@NotNull SModule module) {
-      // as we ignore MPSModuleOwner when registering a module, there's no way to return a proper value
-      // OTOH, UnsupportedOperationException, though technically right, is no appropriate as there's generic code
-      // that expects this method not to throw an exception (i.e. Language unregistering its Generators)
-      return Collections.<MPSModuleOwner>emptySet();
-    }
-
-
-    @Override
-    public Set<SModule> getModules(MPSModuleOwner owner) {
-      // see getOwners(), above, for reasone why empty collection, not exception
-      return Collections.<SModule>emptySet();
-    }
-
-    @Nullable
-    @Override
-    public SModule getModule(@NotNull SModuleId mid) {
-      return myModules.get(mid);
-    }
-
-    @Override
-    public void saveAll() {
-      throw new UnsupportedOperationException();
-    }
-
-    @NotNull
-    @Override
-    public Iterable<SModule> getModules() {
-      return new ArrayList<SModule>(myModules.values());
-    }
-
-    @NotNull
-    @Override
-    public ModelAccess getModelAccess() {
-      return myModelAccess;
-    }
-  }
-
-  private static class ModelAccessNoLimit extends AbstractModelAccess {
-    public boolean canRead() {
-      return true;
-    }
-
-    public boolean canWrite() {
-      return true;
-    }
-
-    public void runReadAction(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public void runReadInEDT(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public void runWriteAction(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public void runWriteInEDT(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public void executeCommand(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public void executeCommandInEDT(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public void executeUndoTransparentCommand(Runnable p0) {
-      throw new UnsupportedOperationException();
-    }
-
-    public boolean isCommandAction() {
-      return false;
-    }
-  }
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
   }

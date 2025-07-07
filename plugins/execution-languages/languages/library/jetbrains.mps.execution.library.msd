@@ -7,7 +7,7 @@
   </models>
   <facets>
     <facet type="tests" />
-    <facet type="java" compile="mps" classes="mps" ext="yes">
+    <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>

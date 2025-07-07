@@ -30,7 +30,6 @@
   <uses module="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
-  <uses module="8e98f4e2-decf-4e97-bf80-9109e8b759ee(jetbrains.mps.lang.constraints.rules.runtime)" kind="dp" />
   <uses module="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="dp" />
   <uses module="90966cb5-4f67-429a-b7ba-d0fded4ede71(jetbrains.mps.lang.editor.forms.runtime)" kind="rt+dp" />
   <uses module="afb9a5fd-bc5d-4169-a225-42d8823d623a(jetbrains.mps.lang.editor.formsTests)" kind="dp" />

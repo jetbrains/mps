@@ -24,7 +24,7 @@ import jetbrains.mps.internal.make.runtime.script.Script;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
 
-@GeneratedClass(node = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)/1479818508463261244", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
+@GeneratedClass(nodeId = "1479818508463261244", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
 public class ScriptBuilder {
   private static Logger LOG = Logger.getLogger(ScriptBuilder.class);
   private final Set<IFacet.Name> myRequestedFacets = SetSequence.fromSet(new HashSet<IFacet.Name>());
@@ -126,7 +126,7 @@ public class ScriptBuilder {
     List<ITarget> allTargets = ListSequence.fromList(Sequence.fromIterable(sortedFacets).translate((fname) -> MapSequence.fromMap(facetsView).get(fname).targets()).toList()).reversedList();
     for (ITarget trg : ListSequence.fromList(allTargets)) {
       if (SetSequence.fromSet(requestedTargets).contains(trg.getName())) {
-        tr.addTarget(trg);
+        tr.addRequestedTarget(trg);
       }
     }
     for (ITarget.Name tn : SetSequence.fromSet(requestedTargets)) {

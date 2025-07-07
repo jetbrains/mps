@@ -18,7 +18,7 @@ import java.util.Collection;
  * The latter method is intended to be overridden by subclasses of this class that wish
  * to allocate a portion (a sub-task) of the parent monitor's total work. 
  */
-@GeneratedClass(node = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)/6032839525407361830", model = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)")
+@GeneratedClass(nodeId = "6032839525407361830", model = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)")
 public abstract class ProgressTask {
 
   public static final Runnable NOP = () -> {

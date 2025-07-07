@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,12 +27,13 @@ import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.openapi.startup.StartupManager;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.ProjectPane;
-import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.ProjectManager;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.project.modules.DevkitProducer;
@@ -62,7 +63,15 @@ public class ProjectFactory {
     myOptions = options;
   }
 
+  /**
+   * @deprecated use {@link #createProjectMPS()} instead
+   */
+  @Deprecated(forRemoval = true, since = "2025.2")
   public Project createProject() throws ProjectNotCreatedException {
+    return createProjectMPS().getProject();
+  }
+
+  public MPSProject createProjectMPS() throws ProjectNotCreatedException {
     final String[] error = new String[]{null};
     ProgressManager.getInstance().run(new Task.Modal(null, "Creating Project", false) {
       @Override
@@ -95,8 +104,7 @@ public class ProjectFactory {
       ApplicationManagerEx.getApplicationEx().setSaveAllowed(saveAllowed);
     }
 
-    //noinspection ConstantConditions
-    final MPSProject mpsProject = myCreatedProject.getComponent(MPSProject.class);
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(myCreatedProject);
     assert mpsProject != null;
 
     StartupManager.getInstance(myCreatedProject).runAfterOpened(() -> {
@@ -137,14 +145,15 @@ public class ProjectFactory {
 
       });
     });
-    return myCreatedProject;
+    return mpsProject;
   }
 
   public void activate(boolean openInNewFrame) {
     if (myCreatedProject == null) {
       return;
     }
-    ProjectMigrationsRegistry.getInstance().applyMigrationsToNewProject(ProjectHelper.fromIdeaProject(myCreatedProject));
+
+    MPSCoreComponents.getInstance().getPlatform().findComponent(ProjectManager.class).fireProjectCreated(ProjectHelper.fromIdeaProject(myCreatedProject));
 
     ProjectManagerEx projectManager = ProjectManagerEx.getInstanceEx();
 
@@ -157,7 +166,12 @@ public class ProjectFactory {
       StartupManagerEx startupManager = StartupManagerEx.getInstanceEx(myCreatedProject);
       // extra .invokeLater() was added here (copied from IDEA platform) see: https://youtrack.jetbrains.com/issue/IDEA-158859
       Runnable projectPaneActivator =
-          () -> ApplicationManager.getApplication().invokeLater(ProjectPane.getInstance(myCreatedProject)::activate, ModalityState.NON_MODAL);
+          () -> {
+            final ProjectPane projectPane = ProjectPane.getInstance(myCreatedProject);
+            if (projectPane != null) {
+              ApplicationManager.getApplication().invokeLater(projectPane::activate, ModalityState.NON_MODAL);
+            }
+          };
       startupManager.runAfterOpened(projectPaneActivator);
     }
   }

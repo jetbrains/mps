@@ -27,13 +27,13 @@ import jetbrains.mps.vfs.refresh.FileSystemListener;
 import java.util.ArrayList;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.util.io.FileUtil;
-import jetbrains.mps.InternalFlag;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
 import java.util.HashSet;
 import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 
-@GeneratedClass(node = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/7799350397879214929", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
+@GeneratedClass(nodeId = "7799350397879214929", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
 /*package*/ class FileProcessor extends ReloadParticipant {
   private static final Logger LOG = Logger.getLogger(FileProcessor.class);
   private final FileSystemListenersContainer myListenersContainer;
@@ -181,7 +181,7 @@ import java.util.Arrays;
   }
 
   private void printStat(String name, long beginTime) {
-    if (InternalFlag.isInternalMode()) {
+    if (RuntimeFlags.isInternalMode()) {
       if (LOG.isDebugLevel()) {
         LOG.debug("FileProcessor: " + name + " -> " + (System.currentTimeMillis() - beginTime) / 1000.0 + "s");
       }

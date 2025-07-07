@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import jetbrains.mps.persistence.MultiStreamDataSourceBase;
@@ -22,25 +23,26 @@ import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import com.intellij.openapi.vcs.changes.ChangeListManager;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import java.util.function.Function;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.vfs.IFile;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.persistence.ByteArrayInputSource;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
+import jetbrains.mps.persistence.StreamDataSourceBase;
+import java.io.InputStream;
+import java.io.IOException;
+import com.intellij.openapi.vcs.changes.ChangeListManager;
+import java.io.ByteArrayInputStream;
+import java.io.OutputStream;
 import com.intellij.openapi.vcs.changes.Change;
 import com.intellij.openapi.vcs.changes.ContentRevision;
 import com.intellij.openapi.vcs.changes.ByteBackedContentRevision;
 import jetbrains.mps.util.FileUtil;
 import com.intellij.openapi.vcs.VcsException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
-@GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/2253323551303625635", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
+@GeneratedClass(nodeId = "2253323551303625635", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 /*package*/ final class BaseVersionModelLoader {
   private static final Logger LOG = Logger.getLogger(BaseVersionModelLoader.class);
   private final Project myProject;
@@ -70,30 +72,29 @@ import java.io.OutputStream;
       }
       return null;
     }
-    return loadModel(mpsPlatform, source, guessFactory(model));
-  }
-
-  private static SModel loadModel(ComponentHost mpsPlatform, @NotNull DataSource source, @Nullable ModelFactory factory) {
-    if (factory == null) {
-      factory = mpsPlatform.findComponent(ModelFactoryService.class).getDefaultModelFactory(source.getType());
-    }
-    if (factory == null) {
-      if (LOG.isErrorLevel()) {
-        LOG.error("Could not find a suitable model factory", new IllegalStateException());
-      }
-      return null;
-    }
+    ModelFactory factory = guessFactory(model);
     try {
-      SModel model = factory.load(source);
-      model.load();
-      return model;
+      if (factory == null) {
+        factory = mpsPlatform.findComponent(ModelFactoryService.class).getDefaultModelFactory(source.getType());
+      }
+      if (factory == null) {
+        if (LOG.isWarningLevel()) {
+          LOG.warning(String.format("Could not find a suitable model factory to access base revision of model %s", SModelOperations.getModelName(model)));
+        }
+        return null;
+      }
+      SModel baseRev = factory.load(source);
+      baseRev.load();
+      return baseRev;
     } catch (ModelLoadException | UnsupportedDataSourceException ex) {
-      if (LOG.isErrorLevel()) {
-        LOG.error("Caught on model load with " + factory + " from " + source, new IllegalStateException());
+      // generally, it's ok not to get base revision, we could try another time (e.g. if it's a VFS caching issue, see MPS-37919), hence not an error
+      if (LOG.isWarningLevel()) {
+        LOG.warning(String.format("Caught on model load with %s from %s, no base revision for model %s", factory, source, SModelOperations.getModelName(model)), ex);
       }
     }
     return null;
   }
+
 
   /**
    * redirects to vcs byte[] file contents instead of the actual files on disk for this model
@@ -108,8 +109,7 @@ import java.io.OutputStream;
       mySubs = convertSubStreams(original, project).collect(Collectors.<StreamDataSource>toList());
     }
 
-    private static Stream<StreamDataSource> convertSubStreams(MultiStreamDataSource original, Project project) {
-      final ChangeListManager clManager = ChangeListManager.getInstance(project);
+    private static Stream<StreamDataSource> convertSubStreams(MultiStreamDataSource original, final Project project) {
       final FileSystemBridge fsBridge = ProjectHelper.fromIdeaProject(project).getFileSystem();
       return original.getSubStreams().flatMap(new Function<StreamDataSource, Stream<StreamDataSource>>() {
         @Override
@@ -131,11 +131,7 @@ import java.io.OutputStream;
                   }
                   return null;
                 }
-                byte[] data = getBaseVersionContent(vFile, clManager);
-                if (data == null) {
-                  return null;
-                }
-                return new ByteArrayInputSource(dataSource.getStreamName(), dataSource.getLocation(), data);
+                return new StreamRelay(dataSource.getStreamName(), dataSource.getLocation(), project, vFile);
               }
             }).filter(Objects::nonNull);
           }
@@ -168,6 +164,41 @@ import java.io.OutputStream;
       return true;
     }
 
+    private static class StreamRelay extends StreamDataSourceBase {
+      private final Project myProject;
+      private final VirtualFile myFile;
+      private StreamRelay(String name, String location, Project project, VirtualFile file) {
+        super(name, location);
+        myProject = project;
+        myFile = file;
+      }
+
+      @NotNull
+      @Override
+      public InputStream openInputStream() throws IOException {
+        final ChangeListManager clManager = ChangeListManager.getInstance(myProject);
+        byte[] data = getBaseVersionContent(myFile, clManager);
+        if (data == null) {
+          throw new IOException(String.format("Couldn't retrieve content for stream %s from file %s", getLocation(), myFile));
+        }
+        return new ByteArrayInputStream(data);
+      }
+
+      @NotNull
+      @Override
+      public OutputStream openOutputStream() throws IOException {
+        throw new UnsupportedOperationException();
+      }
+
+      @Override
+      public boolean exists() {
+        return true;
+      }
+      @Override
+      public boolean isReadOnly() {
+        return true;
+      }
+    }
 
     @Nullable
     private static byte[] getBaseVersionContent(@NotNull VirtualFile file, ChangeListManager clManager) {

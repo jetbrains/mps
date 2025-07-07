@@ -14,7 +14,7 @@ import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManagerListener;
-import com.intellij.openapi.startup.StartupActivity;
+import com.intellij.openapi.startup.ProjectActivity;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
@@ -34,6 +34,8 @@ import jetbrains.mps.messages.IMessageList;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.project.MPSProject;
+import kotlin.Unit;
+import kotlin.coroutines.Continuation;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -166,6 +168,18 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
    */
   @NotNull
   public IMessageList getMessageList(@NotNull final String name, MessageListOptions... options) {
+    return this.getMessageList(name, null, options);
+  }
+  /**
+   * Creates/retrieves existing named collection of messages, with respect to supplied options.
+   *
+   * @param name    name of the list. It's up to caller to provide reasonable name in case of {@link MessageListOptions#AlwaysNew} to tell one list from another.
+   * @param nonActivationHandler A handler to notify the user if the tool window is not activated as a result of adding new messages
+   * @param options if no options specified, {@link MessageListOptions#ActivateOnMessage} and {@link MessageListOptions#ReuseExisting} is assumed.
+   * @return UI-backed collection of messages
+   */
+  @NotNull
+  public IMessageList getMessageList(@NotNull final String name, @Nullable final Runnable nonActivationHandler, MessageListOptions... options) {
     List<MessageListOptions> optionsList = Arrays.asList(options);
     if (!optionsList.isEmpty()) {
       if (!optionsList.contains(MessageListOptions.AlwaysNew) && !optionsList.contains(MessageListOptions.ReuseExisting)) {
@@ -183,6 +197,7 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
     boolean activateOnMessage = !optionsList.contains(MessageListOptions.DeafOnMessage) ||
                                 optionsList.contains(MessageListOptions.ActivateOnMessage);
     list.setActivateOnMessage(activateOnMessage);
+    list.setNonActivationHandler(nonActivationHandler);
     return list;
   }
 
@@ -384,12 +399,18 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
     }
   }
 
-  public static final class MessageViewToolInitialization implements StartupActivity {
+  public static final class MessageViewToolInitialization implements ProjectActivity {
+
+    @Nullable
     @Override
-    public void runActivity(@NotNull Project project) {
-      // First assess to the com.intellij.ui.content.MessageView service should be done from dispatch thread.
+    public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
+      if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
+        return null;
+      }
+      // First access to the com.intellij.ui.content.MessageView service should be done from dispatch thread.
       // This post startup activity is used to achieve this.
-      project.getService(MessagesViewTool.class).getDefaultList().createContent(false, false);
+      ApplicationManager.getApplication().invokeLater(() -> project.getService(MessagesViewTool.class).getDefaultList().createContent(false, false));
+      return null;
     }
   }
 }

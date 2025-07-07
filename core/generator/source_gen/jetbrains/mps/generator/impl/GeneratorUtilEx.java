@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)/894226751621690778", model = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)")
+@GeneratedClass(nodeId = "894226751621690778", model = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)")
 public final class GeneratorUtilEx {
   public static String getPatternVariableName(SNode ref) {
     return ((String) BHReflection.invoke0(ref, CONCEPTS.TemplateArgumentPatternRef$dA, SMethodIdV2.create("getVariableName", 2902001550281937661L, 0x3bd222b39cd71affL)));

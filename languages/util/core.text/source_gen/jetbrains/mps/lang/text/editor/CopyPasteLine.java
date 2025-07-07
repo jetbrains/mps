@@ -7,8 +7,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
-import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -27,7 +25,7 @@ public class CopyPasteLine {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         WordRangeSelection selection = new WordRangeSelection(editorContext.getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$_j45)).first(), ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$_j45)).last(), true);
-        CopyPasteUtil.copyNodesAndTextToClipboard((List<SNode>) List.of(node), null, selection.buildTextualRepresentationOfSelectedCells());
+        editorContext.getClipboard().put(node, selection.buildTextualRepresentationOfSelectedCells());
       }
       @Override
       public boolean canExecute(EditorContext editorContext) {
@@ -46,7 +44,7 @@ public class CopyPasteLine {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         WordRangeSelection selection = new WordRangeSelection(editorContext.getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$_j45)).first(), ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$_j45)).last(), true);
-        CopyPasteUtil.copyNodesAndTextToClipboard((List<SNode>) List.of(node), null, selection.buildTextualRepresentationOfSelectedCells());
+        editorContext.getClipboard().put(node, selection.buildTextualRepresentationOfSelectedCells());
         SNodeOperations.deleteNode(node);
       }
       @Override

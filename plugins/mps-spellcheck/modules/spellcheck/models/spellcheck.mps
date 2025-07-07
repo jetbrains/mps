@@ -286,9 +286,6 @@
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
-      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
-        <reference id="1116615189566" name="classifier" index="3VsUkX" />
-      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
@@ -372,28 +369,8 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="mQZQCk9p6J" role="3cqZAp">
-          <node concept="3cpWsn" id="mQZQCk9p6K" role="3cpWs9">
-            <property role="TrG5h" value="highlighter" />
-            <node concept="3uibUv" id="mQZQCk9p4I" role="1tU5fm">
-              <ref role="3uigEE" to="exr9:~Highlighter" resolve="Highlighter" />
-            </node>
-            <node concept="2OqwBi" id="mQZQCk9p6L" role="33vP2m">
-              <node concept="1KvdUw" id="mQZQCk9p6M" role="2Oq$k0" />
-              <node concept="liA8E" id="mQZQCk9p6N" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="mQZQCk9p6O" role="37wK5m">
-                  <ref role="3VsUkX" to="exr9:~Highlighter" resolve="Highlighter" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="mQZQCk9jVp" role="3cqZAp">
           <node concept="2OqwBi" id="mQZQCk9pnb" role="3clFbG">
-            <node concept="37vLTw" id="mQZQCk9p6P" role="2Oq$k0">
-              <ref role="3cqZAo" node="mQZQCk9p6K" resolve="highlighter" />
-            </node>
             <node concept="liA8E" id="mQZQCk9q0y" role="2OqNvi">
               <ref role="37wK5l" to="exr9:~Highlighter.addChecker(jetbrains.mps.nodeEditor.checking.EditorChecker)" resolve="addChecker" />
               <node concept="2OqwBi" id="mQZQCk9q1b" role="37wK5m">
@@ -403,34 +380,19 @@
                 </node>
               </node>
             </node>
+            <node concept="2YIFZM" id="6Z07o0_VA60" role="2Oq$k0">
+              <ref role="37wK5l" to="exr9:~Highlighter.getInstance(jetbrains.mps.project.MPSProject)" resolve="getInstance" />
+              <ref role="1Pybhc" to="exr9:~Highlighter" resolve="Highlighter" />
+              <node concept="1KvdUw" id="6Z07o0_VA61" role="37wK5m" />
+            </node>
           </node>
         </node>
       </node>
     </node>
     <node concept="2uRRBN" id="mQZQCk9q4T" role="2uRRB_">
       <node concept="3clFbS" id="mQZQCk9q4U" role="2VODD2">
-        <node concept="3cpWs8" id="mQZQCk9q9_" role="3cqZAp">
-          <node concept="3cpWsn" id="mQZQCk9q9A" role="3cpWs9">
-            <property role="TrG5h" value="highlighter" />
-            <node concept="3uibUv" id="mQZQCk9q9B" role="1tU5fm">
-              <ref role="3uigEE" to="exr9:~Highlighter" resolve="Highlighter" />
-            </node>
-            <node concept="2OqwBi" id="mQZQCk9q9C" role="33vP2m">
-              <node concept="1KvdUw" id="mQZQCk9q9D" role="2Oq$k0" />
-              <node concept="liA8E" id="mQZQCk9q9E" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="mQZQCk9q9F" role="37wK5m">
-                  <ref role="3VsUkX" to="exr9:~Highlighter" resolve="Highlighter" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="mQZQCk9qn2" role="3cqZAp">
           <node concept="2OqwBi" id="mQZQCk9qCO" role="3clFbG">
-            <node concept="37vLTw" id="mQZQCk9qn0" role="2Oq$k0">
-              <ref role="3cqZAo" node="mQZQCk9q9A" resolve="highlighter" />
-            </node>
             <node concept="liA8E" id="mQZQCk9qFy" role="2OqNvi">
               <ref role="37wK5l" to="exr9:~Highlighter.removeChecker(jetbrains.mps.nodeEditor.checking.EditorChecker)" resolve="removeChecker" />
               <node concept="2OqwBi" id="mQZQCk9qGb" role="37wK5m">
@@ -439,6 +401,11 @@
                   <ref role="2WH_rO" node="mQZQCk9jh0" resolve="mySpellChecker" />
                 </node>
               </node>
+            </node>
+            <node concept="2YIFZM" id="6Z07o0_V_SX" role="2Oq$k0">
+              <ref role="37wK5l" to="exr9:~Highlighter.getInstance(jetbrains.mps.project.MPSProject)" resolve="getInstance" />
+              <ref role="1Pybhc" to="exr9:~Highlighter" resolve="Highlighter" />
+              <node concept="1KvdUw" id="6Z07o0_V_UF" role="37wK5m" />
             </node>
           </node>
         </node>

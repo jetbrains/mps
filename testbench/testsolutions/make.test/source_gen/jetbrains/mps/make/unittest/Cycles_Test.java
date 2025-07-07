@@ -114,10 +114,10 @@ public class Cycles_Test {
     GraphAnalyzer<String> cd = graph.getCycleDetector();
 
     // L3, S9, L1, {S1, M1, M2, S2, S0}, S3, S6, {S4,L2}
-    Assert.assertEquals(7, ListSequence.fromList(cd.totalOrder(false)).count());
+    Assert.assertEquals(Integer.valueOf(7), Integer.valueOf(ListSequence.fromList(cd.totalOrder(false)).count()));
 
     List<List<String>> cycles = cd.totalOrder(true);
-    Assert.assertEquals(4, ListSequence.fromList(cycles).count());
+    Assert.assertEquals(Integer.valueOf(4), Integer.valueOf(ListSequence.fromList(cycles).count()));
     Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "L3", "S9", "L1"), ListSequence.fromList(cycles).getElement(0));
     Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "S1", "M1", "M2", "S2", "S0"), ListSequence.fromList(cycles).getElement(1));
     Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "S3", "S6"), ListSequence.fromList(cycles).getElement(2));
@@ -134,7 +134,7 @@ public class Cycles_Test {
     // 
     GraphAnalyzer<String> cd = graph.getCycleDetector();
     List<List<String>> cycles = cd.totalOrder(true);
-    Assert.assertEquals(6, ListSequence.fromList(cycles).count());
+    Assert.assertEquals(Integer.valueOf(6), Integer.valueOf(ListSequence.fromList(cycles).count()));
     Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "L3"), ListSequence.fromList(cycles).getElement(0));
     Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "S9", "L1"), ListSequence.fromList(cycles).getElement(1));
     Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "S1", "M1", "M2", "S2", "S0"), ListSequence.fromList(cycles).getElement(2));

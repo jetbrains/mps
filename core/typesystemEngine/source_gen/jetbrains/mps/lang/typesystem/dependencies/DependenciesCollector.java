@@ -14,8 +14,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.List;
-import jetbrains.mps.util.CollectionUtil;
-import org.jetbrains.mps.util.Condition;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -23,8 +22,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)/1194533670612", model = "r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)")
+/**
+ * 
+ * @deprecated there are no uses of this class and I don't quite understand its purpose, nor method quotations with no-op assignment it produces. Unless there's sound objection, shall remove in the next release. Please remove this annotation and let me know if the class is still in use!!!
+ */
+@Deprecated(since = "2023.3", forRemoval = true)
+@GeneratedClass(nodeId = "1194533670612", model = "r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)")
 public class DependenciesCollector {
+  @Deprecated
   public DependenciesCollector() {
   }
   public void collectDependencies(SNode inferenceRule, Map<SNode, Pair<SNode, SNode>> dependencies, Set<SNode> leaves) {
@@ -116,12 +121,7 @@ public class DependenciesCollector {
                               while (SNodeOperations.getParent(nodeStatement) != SNodeOperations.getParent(usageStatement)) {
                                 usageStatement = SNodeOperations.getNodeAncestor(usageStatement, CONCEPTS.Statement$P6, false, false);
                               }
-                              List<SNode> list = CollectionUtil.filter(jetbrains.mps.util.SNodeOperations.getChildren(SNodeOperations.getParent(nodeStatement)), new Condition() {
-                                @Override
-                                public boolean met(Object p0) {
-                                  return SNodeOperations.isInstanceOf(((SNode) p0), CONCEPTS.Statement$P6);
-                                }
-                              });
+                              List<SNode> list = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(SNodeOperations.getParent(nodeStatement)), CONCEPTS.Statement$P6)).toList();
                               if (ListSequence.fromList(list).indexOf(nodeStatement) <= ListSequence.fromList(list).indexOf(usageStatement)) {
                                 MapSequence.fromMap(dependencies).put(reference, new Pair<SNode, SNode>(node, _quotation_createNode_bcwvc2_b0a0a0e0a0b0a0c0a2a1a0c0a2a0c0b0b0c0f0b()));
                               }

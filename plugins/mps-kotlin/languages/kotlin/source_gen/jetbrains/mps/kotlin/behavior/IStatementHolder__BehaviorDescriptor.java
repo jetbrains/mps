@@ -18,12 +18,14 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class IStatementHolder__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, "jetbrains.mps.kotlin.structure.IStatementHolder");
@@ -31,7 +33,7 @@ public final class IStatementHolder__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Void> collectDeclarationsBefore_id18X2O0Fy9mO = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectDeclarationsBefore").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1314219036498236852L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> collectSpecificScope_id1yTI8p9qmpS = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectSpecificScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1781658014498514552L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> asSingleExpression_id18X2O0FvKfA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("asSingleExpression").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1314219036497609702L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SNode> asSingleExpression_id18X2O0FvKfA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("asSingleExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1314219036497609702L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isOneLiner_idCy8Bus23OC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isOneLiner").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(730183986701679912L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectDeclarationsBefore_id18X2O0Fy9mO, collectScope_id7DyvjiA20yV, collectSpecificScope_id1yTI8p9qmpS, asSingleExpression_id18X2O0FvKfA, isOneLiner_idCy8Bus23OC);
@@ -61,6 +63,7 @@ public final class IStatementHolder__BehaviorDescriptor extends BaseBHDescriptor
       {
         final SNode scopePart = child;
         if (SNodeOperations.isInstanceOf(scopePart, CONCEPTS.IStatementScopePart$Qc)) {
+          // TODO the result should be supplied in reverse order, or make this return items in regular order
           IStatementScopePart__BehaviorDescriptor.populateStatementDeclarations_id2ZbCiJacEjm.invoke(scopePart, collector);
         }
       }
@@ -97,7 +100,7 @@ public final class IStatementHolder__BehaviorDescriptor extends BaseBHDescriptor
     return null;
   }
   /*package*/ static boolean isOneLiner_idCy8Bus23OC(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statements$R3pt)).isEmpty() || (IStatementHolder__BehaviorDescriptor.asSingleExpression_id18X2O0FvKfA.invoke(__thisNode__) != null);
+    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.forceMultiLine$d9kx)) && (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statements$R3pt)).isEmpty() || (IStatementHolder__BehaviorDescriptor.asSingleExpression_id18X2O0FvKfA.invoke(__thisNode__) != null));
   }
 
   /*package*/ IStatementHolder__BehaviorDescriptor() {
@@ -165,5 +168,9 @@ public final class IStatementHolder__BehaviorDescriptor extends BaseBHDescriptor
     /*package*/ static final SInterfaceConcept IExpression$2i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression");
     /*package*/ static final SConcept LambdaLiteral$Bd = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, "jetbrains.mps.kotlin.structure.LambdaLiteral");
     /*package*/ static final SConcept ReturnExpression$c8 = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af55eL, "jetbrains.mps.kotlin.structure.ReturnExpression");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty forceMultiLine$d9kx = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, 0x1576099f23c283c7L, "forceMultiLine");
   }
 }

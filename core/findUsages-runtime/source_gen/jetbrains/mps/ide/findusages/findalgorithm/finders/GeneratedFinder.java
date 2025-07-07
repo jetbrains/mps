@@ -23,7 +23,7 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.logging.Logger;
 
-@GeneratedClass(node = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)/8267733531687412365", model = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)")
+@GeneratedClass(nodeId = "8267733531687412365", model = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)")
 public abstract class GeneratedFinder implements IInterfacedFinder {
 
   public GeneratedFinder() {

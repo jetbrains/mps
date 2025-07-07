@@ -13,7 +13,7 @@ import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.annotations.NonNls;
 
-@GeneratedClass(node = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/1171652495569015565", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
+@GeneratedClass(nodeId = "1171652495569015565", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
 public interface RecursiveParticipant<InitialDataObject, FinalDataObject, InitialPoint, FinalPoint> extends RefactoringParticipant<InitialDataObject, FinalDataObject, InitialPoint, FinalPoint> {
 
   List<List<RefactoringParticipant.Change<InitialDataObject, FinalDataObject>>> getChanges(List<InitialDataObject> initialStates, SRepository repository, List<RefactoringParticipant.Option> selectedOptions, SearchScope searchScope, ProgressMonitor progressMonitor, Iterable<RefactoringParticipant.ParticipantApplied> parents);

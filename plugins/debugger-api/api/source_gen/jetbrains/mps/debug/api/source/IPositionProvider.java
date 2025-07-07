@@ -8,7 +8,7 @@ import jetbrains.mps.debug.api.programState.ILocation;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debug.api.AbstractDebugSession;
 
-@GeneratedClass(node = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)/7048882195103542592", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
+@GeneratedClass(nodeId = "7048882195103542592", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
 public interface IPositionProvider<P extends SourcePosition> {
 
   @Nullable

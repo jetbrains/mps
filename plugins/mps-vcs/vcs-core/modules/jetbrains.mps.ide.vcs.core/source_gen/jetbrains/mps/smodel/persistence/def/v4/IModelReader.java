@@ -7,7 +7,7 @@ import jetbrains.mps.smodel.DefaultSModel;
 import org.jdom.Document;
 import jetbrains.mps.smodel.SModelHeader;
 
-@GeneratedClass(node = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)/5317173964876939116", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
+@GeneratedClass(nodeId = "5317173964876939116", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
 public interface IModelReader {
   DefaultSModel readModel(Document document, SModelHeader header);
 }

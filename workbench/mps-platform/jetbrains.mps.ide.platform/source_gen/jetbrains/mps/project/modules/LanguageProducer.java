@@ -10,9 +10,9 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
-import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.project.ModuleId;
@@ -20,7 +20,7 @@ import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.ProjectPathUtil;
+import jetbrains.mps.util.MacrosFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -42,7 +42,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 /**
  * Creates a new Language module and registers it with a project
  */
-@GeneratedClass(node = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)/1723752571811374017", model = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)")
+@GeneratedClass(nodeId = "1723752571811374017", model = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)")
 public class LanguageProducer {
   private static final Logger LOG = Logger.getLogger(LanguageProducer.class);
   private final MPSProject myProject;
@@ -50,6 +50,11 @@ public class LanguageProducer {
 
   public LanguageProducer(@NotNull MPSProject mpsProject) {
     myProject = mpsProject;
+  }
+
+  public LanguageProducer withGenerator(boolean flag) {
+    myWithGenerator = flag;
+    return this;
   }
 
   @NotNull
@@ -64,42 +69,41 @@ public class LanguageProducer {
 
     LanguageDescriptor languageDescriptor = createLanguageDescriptor(namespace, moduleDir);
 
-    if (!(myWithGenerator)) {
-      throw new IllegalStateException("FIXME Support with/without generator option!");
-    }
-
-    IFile generatorLocation = moduleDir.findChild("generator");
-    if (generatorLocation.exists()) {
-      if (LOG.isErrorLevel()) {
-        LOG.error("Generator file for " + descriptorFile + " already exists");
-      }
-      throw new IllegalArgumentException("The generator for the language " + descriptorFile.getName() + " already exists");
-    }
-    generatorLocation.mkdirs();
-
-    //  it's the first and only generator in the language, no need to generate some unique long value
-    final GeneratorDescriptor generatorDescriptor = createGeneratorDescriptor(languageDescriptor.getNamespace() + ".generator", generatorLocation, null);
-    generatorDescriptor.setSourceLanguage(languageDescriptor.getModuleReference());
-    languageDescriptor.getGenerators().add(generatorDescriptor);
-
     ModuleRepositoryFacade projectRepoFacade = new ModuleRepositoryFacade(myProject);
     Language language = (Language) projectRepoFacade.instantiate(languageDescriptor, descriptorFile);
     myProject.addModule(language);
-    Generator generator = (Generator) projectRepoFacade.instantiate(generatorDescriptor, descriptorFile);
-    // though generator lives under the language, Project respects both nested and standalone generators now,  we have to do project.addModule(generator) to ensure it is properly registered with a repo
-    myProject.addModule(generator);
+
+    Generator generator = null;
+    if (myWithGenerator) {
+      IFile generatorLocation = moduleDir.findChild("generator");
+      if (generatorLocation.exists()) {
+        if (LOG.isErrorLevel()) {
+          LOG.error("Generator file for " + descriptorFile + " already exists");
+        }
+        throw new IllegalArgumentException("The generator for the language " + descriptorFile.getName() + " already exists");
+      }
+      generatorLocation.mkdirs();
+      //  it's the first and only generator in the language, no need to generate some unique long value
+      final GeneratorDescriptor generatorDescriptor = createGeneratorDescriptor(languageDescriptor.getNamespace() + ".generator", generatorLocation, null);
+      generatorDescriptor.setSourceLanguage(languageDescriptor.getModuleReference());
+      languageDescriptor.getGenerators().add(generatorDescriptor);
+      generator = (Generator) projectRepoFacade.instantiate(generatorDescriptor, descriptorFile);
+      // though generator lives under the language, Project respects both nested and standalone generators now,  we have to do project.addModule(generator) to ensure it is properly registered with a repo
+      myProject.addModule(generator);
+      createTemplateModelIfNoneYet(myProject, generator);
+    }
 
     // XXX why after registering a module? 
     createMainLanguageAspects(language);
 
-    createTemplateModelIfNoneYet(myProject, generator);
-
     ModuleDependencyVersions mv = new ModuleDependencyVersions(myProject.getComponent(LanguageRegistry.class), myProject.getRepository());
     mv.update(language);
-    mv.update(generator);
-
     language.save();
-    generator.save();
+
+    if (generator != null) {
+      mv.update(generator);
+      generator.save();
+    }
     return language;
   }
 
@@ -116,9 +120,8 @@ public class LanguageProducer {
     }
     languageDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(moduleLocation, languageModels));
     ModuleFacetDescriptor jmfDescriptor = JavaModuleFacetImpl.forJavaCodeModule(JavaModuleFacet.Compile.MPS, JavaModuleFacet.LoadClasses.ManagedByMPS, JavaModuleFacet.LoadExtensions.Plugin);
-    JavaModuleFacetImpl.setDefaultClassesGenLocation(jmfDescriptor, moduleLocation);
     languageDescriptor.getModuleFacetDescriptors().add(jmfDescriptor);
-    ProjectPathUtil.setGeneratorOutputPath(languageDescriptor, moduleLocation.findChild("source_gen").getPath());
+    languageDescriptor.setOutputRoot(MacrosFactory.MODULE + "/source_gen");
     return languageDescriptor;
   }
 
@@ -151,12 +154,14 @@ public class LanguageProducer {
       modelRootDescriptor = DefaultModelRoot.createSingleFolderDescriptor(templateModelsLocation);
     }
     generatorDescriptor.getModelRootDescriptors().add(modelRootDescriptor);
-    // FIXME Above, to configure a root, we create typed MR, fill with data and convert to MRD
-    //      with JMF, we configure MFD (persistence level) directly. Need to stick to single approach
+    // FIXME Above, to configure a root, we create typed MR (inside DMR.createDescriptor), fill with data and convert to MRD
+    //      with JMF, we configure MFD (persistence level) directly. Need to stick to single approach. 
+    //      However, as long as it's inside factory method, do I care that much?
     ModuleFacetDescriptor jmfDescriptor = JavaModuleFacetImpl.forNewJavaCodeModule();
     JavaModuleFacetImpl.setDefaultClassesGenLocation(jmfDescriptor, generatorModuleLocation);
     generatorDescriptor.getModuleFacetDescriptors().add(jmfDescriptor);
-    ProjectPathUtil.setGeneratorOutputPath(generatorDescriptor, generatorModuleLocation.findChild("source_gen").getPath());
+    // XXX indeed, not as nice as "${module}/source_gen" but PathSpec tolerates full path, and I didn't get information here if generator is inside a language or is standalone
+    generatorDescriptor.setOutputRoot(generatorModuleLocation.findChild("source_gen").getPath());
     return generatorDescriptor;
   }
 

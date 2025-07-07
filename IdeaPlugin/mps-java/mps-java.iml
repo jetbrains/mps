@@ -177,6 +177,7 @@
       <sourceFolder url="file://$MODULE_DIR$/testSrc" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/models" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/source_gen" isTestSource="false" generated="true" />
     </content>
     <orderEntry type="jdk" jdkName="IDEA IC" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -191,8 +192,6 @@
     <orderEntry type="library" name="mps-openapi" level="project" />
     <orderEntry type="library" name="mps-java-platform" level="project" />
     <orderEntry type="library" name="mps-core" level="project" />
-    <orderEntry type="library" name="mps-logging" level="project" />
-    <orderEntry type="library" name="mps-messaging" level="project" />
     <orderEntry type="library" name="ant-mps" level="project" />
     <orderEntry type="library" name="mps-annotations" level="project" />
     <orderEntry type="library" name="diffutils" level="project" />

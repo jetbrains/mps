@@ -10,6 +10,6 @@ import jetbrains.mps.annotations.GeneratedClass;
  * @author Artem Tikhomirov
  * @since 2018.2
  */
-@GeneratedClass(node = "r:896b61c7-1bb0-433c-9386-4bed38ff63bd(jetbrains.mps.refactoring.runtime)/9098014410655364831", model = "r:896b61c7-1bb0-433c-9386-4bed38ff63bd(jetbrains.mps.refactoring.runtime)")
+@GeneratedClass(nodeId = "9098014410655364831", model = "r:896b61c7-1bb0-433c-9386-4bed38ff63bd(jetbrains.mps.refactoring.runtime)")
 public abstract class RefactoringAspectBase implements RefactoringAspect {
 }

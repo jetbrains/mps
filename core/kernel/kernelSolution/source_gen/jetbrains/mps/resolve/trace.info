@@ -104,7 +104,7 @@
       <node id="1350834277000283678" at="86,114,87,31" concept="7" />
       <node id="2855655749839248585" at="88,105,89,19" concept="8" />
       <node id="2855655749839267007" at="90,5,91,76" concept="8" />
-      <node id="1802459475176382654" at="93,49,94,20" concept="8" />
+      <node id="1802459475176382654" at="98,49,99,20" concept="8" />
       <node id="1802459475176463122" at="23,46,26,5" concept="5" />
       <node id="1802459475176463130" at="26,5,29,5" concept="5" />
       <node id="1519428872448363234" at="39,22,42,5" concept="5" />
@@ -113,9 +113,9 @@
       <node id="1802459475176380692" at="59,49,62,5" concept="5" />
       <node id="2342250705168349131" at="63,71,66,7" concept="5" />
       <node id="2855655749839247774" at="87,31,90,5" concept="5" />
-      <node id="1802459475176382649" at="93,0,96,0" concept="12" trace="getInstance#()Ljetbrains/mps/resolve/ResolverComponent;" />
       <node id="3840495236046418265" at="34,0,38,0" concept="0" trace="ResolverComponent#()V" />
       <node id="2855655749839292041" at="75,121,79,9" concept="5" />
+      <node id="1802459475176382649" at="97,0,101,0" concept="12" trace="getInstance#()Ljetbrains/mps/resolve/ResolverComponent;" />
       <node id="3840495236046418280" at="47,0,52,0" concept="6" trace="dispose#()V" />
       <node id="1802459475176380618" at="62,5,67,5" concept="4" />
       <node id="1802459475176537128" at="74,29,80,7" concept="3" />
@@ -133,7 +133,7 @@
       <scope id="1802459475176380693" at="60,29,61,19" />
       <scope id="2342250705168349132" at="64,68,65,20" />
       <scope id="2855655749839247775" at="88,105,89,19" />
-      <scope id="1802459475176382652" at="93,49,94,20" />
+      <scope id="1802459475176382652" at="98,49,99,20" />
       <scope id="3840495236046418268" at="34,30,36,42" />
       <scope id="3840495236046418283" at="48,25,50,20" />
       <scope id="2855655749839292044" at="76,61,78,32" />
@@ -144,9 +144,9 @@
         <var name="resolver" id="3671170675134061857" />
       </scope>
       <scope id="1802459475176380621" at="63,71,66,7" />
-      <scope id="1802459475176382649" at="93,0,96,0" />
       <scope id="3840495236046418265" at="34,0,38,0" />
       <scope id="1802459475176537129" at="75,121,79,9" />
+      <scope id="1802459475176382649" at="97,0,101,0" />
       <scope id="3840495236046418280" at="47,0,52,0" />
       <scope id="1802459475176380618" at="62,5,67,5">
         <var name="nextResolver" id="1802459475176380619" />
@@ -184,7 +184,7 @@
         <var name="references" id="1802459475176537100" />
         <var name="repository" id="1802459475176537106" />
       </scope>
-      <unit id="3840495236046418263" at="18,0,97,0" name="jetbrains.mps.resolve.ResolverComponent" />
+      <unit id="3840495236046418263" at="18,0,102,0" name="jetbrains.mps.resolve.ResolverComponent" />
     </file>
   </root>
   <root nodeRef="r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)/5447047924422371423">

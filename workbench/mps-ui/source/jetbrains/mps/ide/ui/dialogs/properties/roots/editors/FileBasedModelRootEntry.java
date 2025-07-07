@@ -298,6 +298,7 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
 
   public void updateUI() {
     myEventDispatcher.getMulticaster().fireDataChanged();
+    myFileBasedModelRootEditor.myTree.repaint();
   }
 
   @Override

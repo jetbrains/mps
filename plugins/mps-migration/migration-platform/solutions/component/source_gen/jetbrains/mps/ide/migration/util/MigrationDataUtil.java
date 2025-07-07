@@ -37,7 +37,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:22e3ec81-a192-41cd-83a2-488758bdeedc(jetbrains.mps.ide.migration.util)/2009787284780725896", model = "r:22e3ec81-a192-41cd-83a2-488758bdeedc(jetbrains.mps.ide.migration.util)")
+@GeneratedClass(nodeId = "2009787284780725896", model = "r:22e3ec81-a192-41cd-83a2-488758bdeedc(jetbrains.mps.ide.migration.util)")
 public class MigrationDataUtil {
   public static void saveData(AbstractModule module, Iterable<Tuples._2<MigrationScriptReference, SNode>> data) {
     IFile file = getDataFile(module);

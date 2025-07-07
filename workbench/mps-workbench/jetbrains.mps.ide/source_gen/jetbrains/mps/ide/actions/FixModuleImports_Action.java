@@ -8,11 +8,11 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215867986486", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1215867986486", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class FixModuleImports_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -25,6 +25,14 @@ public class FixModuleImports_Action extends BaseAction {
   @Override
   public boolean isDumbAware() {
     return true;
+  }
+  @Override
+  public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
+    return !(event.getData(MPSCommonDataKeys.MODEL).isReadOnly()) && !(event.getData(MPSCommonDataKeys.MODEL).getModule().isReadOnly());
+  }
+  @Override
+  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,10 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 /**
  * Convenient empty implementation of {@link org.jetbrains.mps.openapi.model.SModelListener}
+ * @deprecated With default methods in the interface, there's no longer need for this class, implement {@link SModelListener} directlu.
  */
+@SuppressWarnings({"RedundantMethodOverride", "DeprecatedIsStillUsed"})
+@Deprecated(since = "2025.1")
 public abstract class SModelListenerBase implements SModelListener {
   @Override
   public void modelLoaded(SModel model, boolean partially) {

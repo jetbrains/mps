@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,17 +21,15 @@ import jetbrains.mps.module.ModuleDeleteHelper;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.ProjectBase;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.modules.DevkitProducer;
 import jetbrains.mps.project.modules.LanguageAndSolutionsProducer;
 import jetbrains.mps.project.modules.LanguageProducer;
 import jetbrains.mps.project.modules.SolutionProducer;
-import jetbrains.mps.project.structure.GenericDescriptorModelProvider;
-import jetbrains.mps.project.structure.LanguageDescriptorModelProvider.LanguageModelDescriptor;
 import jetbrains.mps.refactoring.Renamer;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.vfs.IFile;
@@ -47,7 +45,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -273,16 +270,14 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
         Assert.assertTrue(contentDirectory.isDescendant(moduleDir));
       }
 
-      final String generatorOutputPath = ProjectPathUtil.getGeneratorOutputPath(module.getModuleDescriptor());
+      final IFile generatorOutputPath = module.getOutputPath();
       if (generatorOutputPath != null) {
-        Assert.assertEquals(mustBeMoved, generatorOutputPath.contains(newModuleName));
+        Assert.assertEquals(mustBeMoved, generatorOutputPath.getPath().contains(newModuleName));
       }
 
       // Check models namespace is changed
       for (SModel model : module.getModels()) {
-        if (!(model instanceof GenericDescriptorModelProvider.DescriptorModel || model instanceof LanguageModelDescriptor)) {
-          Assert.assertEquals(newModuleName, model.getName().getNamespace());
-        }
+        Assert.assertEquals(newModuleName, SModelStereotype.isDescriptorModel(model)? model.getName().getLongName() : model.getName().getNamespace());
       }
 
       // Check model file name stays simple despite namespace change
@@ -312,9 +307,9 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
           Assert.assertTrue(contentDirectory.isDescendant(module.getModuleSourceDir()));
         }
 
-        final String generatorOutputPathSub = ProjectPathUtil.getGeneratorOutputPath(subModule.getModuleDescriptor());
+        final IFile generatorOutputPathSub = subModule.getOutputPath();
         if (generatorOutputPathSub != null) {
-          Assert.assertTrue(generatorOutputPathSub.contains(newModuleName));
+          Assert.assertTrue(generatorOutputPathSub.getPath().contains(newModuleName));
         }
       }
 
@@ -482,16 +477,16 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
     ProjectBackup projectBackup = new ProjectBackup(myProject);
     Reference<Language> langRef = new Reference<>();
     invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(moduleName, getNewDirInProject(moduleName))));
+    saveProjectInTest();
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
-      saveProjectInTest();
       projectBackup.doBackup();
       deleteModule(lang, deleteFiles);
       Assert.assertFalse(deleteFiles && lang.getDescriptorFile().exists());
       Assert.assertTrue(myProject.getProjectModules().isEmpty());
     });
+    saveProjectInTest();
     invokeInCommand(() -> {
-      saveProjectInTest();
       projectBackup.restoreFromBackup();
     });
     refreshProjectRecursively();

@@ -6,6 +6,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class NamedElementsScope extends SimpleScope {
   public NamedElementsScope(Iterable<SNode> nodes) {
@@ -27,7 +32,14 @@ public class NamedElementsScope extends SimpleScope {
   @Nullable
   @Override
   public String getReferenceText(@NotNull SNode target) {
-    // todo: is it right?
-    return target.getName();
+    return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

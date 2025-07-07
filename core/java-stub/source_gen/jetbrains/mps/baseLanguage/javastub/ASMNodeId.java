@@ -5,13 +5,11 @@ package jetbrains.mps.baseLanguage.javastub;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMField;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMMethod;
-import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMType;
-import jetbrains.mps.baseLanguage.javastub.asm.ASMParameterizedType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClassType;
+import jetbrains.mps.baseLanguage.javastub.asm.ASMParameterizedType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMArrayType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMVarArgType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMPrimitiveType;
@@ -22,37 +20,28 @@ import jetbrains.mps.baseLanguage.javastub.asm.ASMUnboundedType;
 import java.util.List;
 import java.util.Iterator;
 
-@GeneratedClass(node = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/7241381882860008238", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
-public class ASMNodeId {
-  public ASMNodeId() {
+@GeneratedClass(nodeId = "7241381882860008238", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
+public final class ASMNodeId {
+  private ASMNodeId() {
   }
   public static SNodeId createId(String fqClassName) {
-    return new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + NameUtil.shortNameFromLongName(fqClassName));
+    return create(NameUtil.shortNameFromLongName(fqClassName));
   }
-  public static SNodeId createId(ASMClass cls, ASMField field) {
-    return new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + ASMNodeId.shortNameFromSlashedLongName(cls.getName()) + "." + field.getName());
+  /*package*/ static SNodeId createId(String classShortName, ASMField field) {
+    return create(classShortName + '.' + field.getName());
   }
   public static SNodeId createFieldId(String fqClassName, String fieldName) {
-    return new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + NameUtil.shortNameFromLongName(fqClassName) + "." + fieldName);
+    return create(NameUtil.shortNameFromLongName(fqClassName) + '.' + fieldName);
   }
-  public static SNodeId createId(ASMClass cls, ASMMethod method) {
+  /*package*/ static SNodeId createId(String classShortName, ASMMethod method) {
     StringBuilder sb = new StringBuilder();
-    sb.append(ASMNodeId.shortNameFromSlashedLongName(cls.getName()));
+    sb.append(classShortName);
     sb.append('.');
-    if (method.isConstructor()) {
-      sb.append("<init>");
-    } else {
-      sb.append(method.getName());
-    }
+    sb.append(method.getName());
     sb.append('(');
     ASMNodeId.appendList(sb, method.getParameterTypes());
     sb.append(')');
-    if (!(method.isConstructor())) {
-      sb.append(':');
-      sb.append(ASMNodeId.asString(method.getReturnType()));
-      return new StringBasedIdForJavaStubMethods(StringBasedIdForJavaStubMethods.ID_PREFIX + sb.toString());
-    }
-    return new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + sb.toString());
+    return create(sb.toString());
   }
   public static SNodeId createAnnotationMethodId(String fqClassName, String methodName) {
     StringBuilder sb = new StringBuilder();
@@ -60,54 +49,71 @@ public class ASMNodeId {
     sb.append('.');
     sb.append(methodName);
     sb.append("()");
-    return new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + sb.toString());
+    return create(sb.toString());
   }
-  private static String shortNameFromSlashedLongName(String slashedLongName) {
+
+  /*package*/ static jetbrains.mps.smodel.SNodeId.Foreign create(String value) {
+    return jetbrains.mps.smodel.SNodeId.Foreign.fromIdNoPrefix(value);
+  }
+
+  /*package*/ static String shortNameFromSlashedLongName(String slashedLongName) {
     int offset = slashedLongName.lastIndexOf('/');
     if (offset < 0) {
       return slashedLongName;
     }
     return slashedLongName.substring(offset + 1);
   }
-  private static String asString(ASMType type) {
+
+  private static void appendType(StringBuilder sb, ASMType type) {
+    if (type instanceof ASMClassType) {
+      sb.append(((ASMClassType) type).getName());
+      return;
+    }
     if (type instanceof ASMParameterizedType) {
-      StringBuilder sb = new StringBuilder();
-      sb.append(ASMNodeId.asString(((ASMParameterizedType) type).getRawType()));
+      appendType(sb, ((ASMParameterizedType) type).getRawType());
       sb.append('<');
       ASMNodeId.appendList(sb, ((ASMParameterizedType) type).getActualTypeArguments());
       sb.append('>');
-      return sb.toString();
-    }
-    if (type instanceof ASMClassType) {
-      return ((ASMClassType) type).getName();
+      return;
     }
     if (type instanceof ASMArrayType) {
-      return ASMNodeId.asString(((ASMArrayType) type).getElementType()) + "[]";
+      appendType(sb, ((ASMArrayType) type).getElementType());
+      sb.append("[]");
+      return;
     }
     if (type instanceof ASMVarArgType) {
-      return ASMNodeId.asString(((ASMVarArgType) type).getElementType()) + "...";
+      appendType(sb, ((ASMVarArgType) type).getElementType());
+      sb.append("...");
+      return;
     }
     if (type instanceof ASMPrimitiveType) {
-      return ((ASMPrimitiveType) type).getName();
+      sb.append(((ASMPrimitiveType) type).getName());
+      return;
     }
     if (type instanceof ASMTypeVariable) {
-      return ((ASMTypeVariable) type).getName();
+      sb.append(((ASMTypeVariable) type).getName());
+      return;
     }
     if (type instanceof ASMExtendsType) {
-      return "? extends " + ASMNodeId.asString(((ASMExtendsType) type).getBound());
+      sb.append("? extends ");
+      appendType(sb, ((ASMExtendsType) type).getBound());
+      return;
     }
     if (type instanceof ASMSuperType) {
-      return "? super " + ASMNodeId.asString(((ASMSuperType) type).getBound());
+      sb.append("? super ");
+      appendType(sb, ((ASMSuperType) type).getBound());
+      return;
     }
     if (type instanceof ASMUnboundedType) {
-      return "?";
+      sb.append('?');
+      return;
     }
     throw new RuntimeException("unexpected type: " + type);
   }
   private static void appendList(StringBuilder sb, List<ASMType> types) {
     Iterator<ASMType> iterator = types.iterator();
     while (iterator.hasNext()) {
-      sb.append(ASMNodeId.asString(iterator.next()));
+      appendType(sb, iterator.next());
       if (iterator.hasNext()) {
         sb.append(',');
       }

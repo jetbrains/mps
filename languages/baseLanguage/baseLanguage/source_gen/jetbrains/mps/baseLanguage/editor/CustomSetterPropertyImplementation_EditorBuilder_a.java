@@ -21,6 +21,7 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import jetbrains.mps.baseLanguage.behavior.PropertyImplementation__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.CommentStyleClass;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -96,7 +97,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSRole(LINKS.getAccessor$GzTk);
       }
       Style style = new StyleImpl();
-      style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
+      style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_c9bxgq_a0a0());
       editorCell.getStyle().putAll(style);
       ExpandGetter.setCellActions(editorCell, getNode(), getEditorContext());
     }
@@ -117,18 +118,27 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     protected String getNoTargetText() {
       return "<no getAccessor>";
     }
+    private boolean _StyleParameter_QueryFunction_c9bxgq_a0a0() {
+      return (boolean) PropertyImplementation__BehaviorDescriptor.hasSetter_idhEwIUA2.invoke(getNode());
+    }
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
     editorCell.setCellId("Constant_c9bxgq_b0");
     Style style = new StyleImpl();
     new CommentStyleClass(this).apply(style, editorCell);
-    style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
-    style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
+    style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_c9bxgq_a0b0());
+    style.set(StyleAttributes.INDENT_LAYOUT_INDENT, _StyleParameter_QueryFunction_c9bxgq_a1b0());
     editorCell.getStyle().putAll(style);
     AddCustomSetterToDefaultGetter.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
+  }
+  private boolean _StyleParameter_QueryFunction_c9bxgq_a0b0() {
+    return (boolean) PropertyImplementation__BehaviorDescriptor.hasSetter_idhEwIUA2.invoke(getNode());
+  }
+  private boolean _StyleParameter_QueryFunction_c9bxgq_a1b0() {
+    return (boolean) PropertyImplementation__BehaviorDescriptor.hasSetter_idhEwIUA2.invoke(getNode());
   }
   private EditorCell createRefNode_1() {
     SingleRoleCellProvider provider = new setAccessorSingleRoleHandler_c9bxgq_c0(myNode, LINKS.setAccessor$G$8l, getEditorContext());
@@ -167,8 +177,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSRole(LINKS.setAccessor$G$8l);
       }
       Style style = new StyleImpl();
-      style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
-      style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
+      style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_c9bxgq_a0c0());
+      style.set(StyleAttributes.INDENT_LAYOUT_INDENT, _StyleParameter_QueryFunction_c9bxgq_a1c0());
       editorCell.getStyle().putAll(style);
     }
     @Override
@@ -190,7 +200,20 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       Style style = new StyleImpl();
       style.set(StyleAttributes.SELECTABLE, false);
       editorCell.getStyle().putAll(style);
+      editorCell.addEditorCell(createConstant_1());
       return editorCell;
+    }
+    private EditorCell createConstant_1() {
+      EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "no setter");
+      editorCell.setCellId("Constant_c9bxgq_a0c0");
+      editorCell.setDefaultText("");
+      return editorCell;
+    }
+    private boolean _StyleParameter_QueryFunction_c9bxgq_a0c0() {
+      return (boolean) PropertyImplementation__BehaviorDescriptor.hasSetter_idhEwIUA2.invoke(getNode());
+    }
+    private boolean _StyleParameter_QueryFunction_c9bxgq_a1c0() {
+      return (boolean) PropertyImplementation__BehaviorDescriptor.hasSetter_idhEwIUA2.invoke(getNode());
     }
   }
 

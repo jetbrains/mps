@@ -86,20 +86,23 @@ public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, Null
       }
       if (instruction instanceof WriteInstruction) {
         WriteInstruction write = (WriteInstruction) instruction;
-        SNode value = (SNode) write.getValue();
-        if (SNodeOperations.isInstanceOf(value, CONCEPTS.VariableReference$TC)) {
-          value = SLinkOperations.getTarget(SNodeOperations.cast(value, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
+        SNode value = as_4e6y3_a0a1a4a3e(write.getValue(), SNode.class);
+        {
+          final SNode ref = value;
+          if (SNodeOperations.isInstanceOf(ref, CONCEPTS.VariableReference$TC)) {
+            value = SLinkOperations.getTarget(ref, LINKS.variableDeclaration$N1XG);
+          }
         }
-        NullableState valueState = result.get(value);
-        if (valueState == null) {
-          valueState = NullableState.UNKNOWN;
-        }
+        NullableState valueState = result.getOrDefault(value, NullableState.UNKNOWN);
         result.put((SNode) write.getVariable(), valueState);
       }
       return result;
     }
     public AnalysisDirection getDirection() {
       return AnalysisDirection.FORWARD;
+    }
+    private static <T> T as_4e6y3_a0a1a4a3e(Object o, Class<T> type) {
+      return (type.isInstance(o) ? (T) o : null);
     }
   }
 

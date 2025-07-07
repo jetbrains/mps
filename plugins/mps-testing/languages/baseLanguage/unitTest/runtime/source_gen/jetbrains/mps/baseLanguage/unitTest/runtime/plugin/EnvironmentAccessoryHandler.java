@@ -6,16 +6,20 @@ import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionListener;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
+import java.util.function.Supplier;
+import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
 import jetbrains.mps.baseLanguage.unitTest.runtime.EnvironmentAwareExtension;
+import java.util.Optional;
 
 public class EnvironmentAccessoryHandler implements TestSessionListener {
   private ConcurrentLinkedDeque<Environment> environmentStack = new ConcurrentLinkedDeque<Environment>();
 
   @Override
-  public void sessionOpened(TestSession testSession) {
+  public void sessionOpened(final TestSession testSession) {
     testSession.getAccessory(Environment.class).ifPresentOrElse((e) -> {
       environmentStack.push(e);
-      EnvironmentAwareExtension.setEnvironment(e);
+      Supplier<String> function = () -> testSession.getSystemProperty(SystemProperties.PROJECT_PATH);
+      EnvironmentAwareExtension.setEnvironment(e, Optional.of(function));
 
     }, () -> {
       environmentStack.push(null);
@@ -24,8 +28,9 @@ public class EnvironmentAccessoryHandler implements TestSessionListener {
   }
 
   @Override
-  public void sessionClosed(TestSession testSession) {
+  public void sessionClosed(final TestSession testSession) {
     environmentStack.pop();
-    EnvironmentAwareExtension.setEnvironment(environmentStack.peek());
+    Supplier<String> function = () -> testSession.getSystemProperty(SystemProperties.PROJECT_PATH);
+    EnvironmentAwareExtension.setEnvironment(environmentStack.peek(), Optional.of(function));
   }
 }

@@ -9,21 +9,24 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import jetbrains.mps.kotlin.scopes.signed.ScopeCollector;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class KtScript__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3efL, "jetbrains.mps.kotlin.structure.KtScript");
 
   public static final SMethod<Boolean> isRunnable_idoITd3IthrB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRunnable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(445544999161239271L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<String> getClassName_id7klTmOSHg_9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8436901734214076745L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
+  public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9, collectScope_id7DyvjiA20yV);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -33,6 +36,11 @@ public final class KtScript__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static String getClassName_id7klTmOSHg_9(@NotNull SNode __thisNode__, KtEnvironmentConfig envConfig) {
     return IKotlinRoot__BehaviorDescriptor.getFqName_id74Z9X$ygjSa.invoke(__thisNode__, envConfig);
+  }
+  /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull SNode __thisNode__, ScopeCollector collector, SNode childNode) {
+    // Need to collect both
+    ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IStatementHolder$84, collector, childNode);
+    return ((boolean) ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IKotlinFile$wS, collector, childNode));
   }
 
   /*package*/ KtScript__BehaviorDescriptor() {
@@ -54,6 +62,8 @@ public final class KtScript__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Boolean) isRunnable_idoITd3IthrB(node));
       case 1:
         return (T) ((String) getClassName_id7klTmOSHg_9(node, (KtEnvironmentConfig) parameters[0]));
+      case 2:
+        return (T) ((Boolean) collectScope_id7DyvjiA20yV(node, (ScopeCollector) parameters[0], (SNode) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -81,5 +91,10 @@ public final class KtScript__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IStatementHolder$84 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, "jetbrains.mps.kotlin.structure.IStatementHolder");
+    /*package*/ static final SInterfaceConcept IKotlinFile$wS = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinFile");
   }
 }

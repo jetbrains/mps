@@ -24,7 +24,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.shortDesc("provides feedback for different problems");
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL);
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a0b0d);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_FeedbackPerConceptRoot = cpb.create();
         }
         return props_FeedbackPerConceptRoot;

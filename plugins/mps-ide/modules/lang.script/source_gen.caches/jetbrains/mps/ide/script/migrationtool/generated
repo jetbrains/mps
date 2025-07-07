@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="ce5r5lgjf5j58t31h63kfvfn5mgvznv">
-  <files names="MigrationScriptExecutor.java:MigrationScriptFinder.java:MigrationScriptsController.java:ResultsListener.java" />
+<product version="3" modelHash="-41nzj28azcsy7ppp7lq4kzzehu9bs9n">
+  <files names="MigrationScriptFinder.java:MigrationScriptsController.java:ResultsListener.java" />
 </product>
 

@@ -10,7 +10,7 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 
-@GeneratedClass(node = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)/708166622413808756", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
+@GeneratedClass(nodeId = "708166622413808756", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
 public class ApplyNonConflictsForRoot extends BaseAction implements DumbAware {
   private MergeRootsPane myPane;
   public ApplyNonConflictsForRoot(MergeRootsPane pane) {

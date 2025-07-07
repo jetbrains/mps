@@ -12,7 +12,7 @@ import com.sun.jdi.Value;
  * some meaningless comment from old times:
  * This solution was introduced as the easiest of the two adequate solutions of MPS-9041
  */
-@GeneratedClass(node = "r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)/4727801710070560812", model = "r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)")
+@GeneratedClass(nodeId = "4727801710070560812", model = "r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)")
 public interface IValueProxy {
   @Nullable
   Value getJDIValue();

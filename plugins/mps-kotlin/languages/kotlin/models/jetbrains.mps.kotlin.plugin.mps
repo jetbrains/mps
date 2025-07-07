@@ -7,6 +7,8 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
+    <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="0" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
     <import index="kdsm" ref="r:4d5ec8ef-7006-453c-a8cf-f9897337b08c(jetbrains.mps.kotlin.api.extension)" />
@@ -22,6 +24,7 @@
       </concept>
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
+      <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
@@ -78,6 +81,7 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
@@ -106,10 +110,25 @@
         <child id="1225797361612" name="parameter" index="1BdPVh" />
       </concept>
     </language>
+    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
+        <child id="8465538089690331502" name="body" index="TZ5H$" />
+      </concept>
+      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
+      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
+        <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
+        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      </concept>
+    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -173,6 +192,145 @@
       <node concept="3Tm1VV" id="7iropoGY2sR" role="1B3o_S" />
       <node concept="3uibUv" id="7iropoGY2zs" role="3clF45">
         <ref role="3uigEE" to="kdsm:7VTXQs1r_Rt" resolve="KotlinTypesystem" />
+      </node>
+      <node concept="P$JXv" id="42NctsY_wBR" role="lGtFl">
+        <node concept="TZ5HA" id="42NctsY_wBS" role="TZ5H$">
+          <node concept="1dT_AC" id="42NctsY_wBT" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns an available instance of Kotlin typesystem handle. If null is returned, either the" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="42NctsY_EI1" role="TZ5H$">
+          <node concept="1dT_AC" id="42NctsY_EI2" role="1dT_Ay">
+            <property role="1dT_AB" value="extension point has not been populated (missing plugin?) or the plugged-in typesystems are" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="42NctsY_Mz7" role="TZ5H$">
+          <node concept="1dT_AC" id="42NctsY_Mz8" role="1dT_Ay">
+            <property role="1dT_AB" value="unavailable (eg. coderules is off)" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3E2609YkJ2f" role="jymVt" />
+    <node concept="2YIFZL" id="3E2609Yk_CW" role="jymVt">
+      <property role="TrG5h" value="hasTypesystem" />
+      <node concept="37vLTG" id="3E2609Yk_CX" role="3clF46">
+        <property role="TrG5h" value="contextNode" />
+        <node concept="3Tqbb2" id="3E2609Yk_CY" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="3E2609Yk_CZ" role="3clF47">
+        <node concept="3cpWs6" id="3E2609Yk_D0" role="3cqZAp">
+          <node concept="3y3z36" id="3E2609YkPeM" role="3cqZAk">
+            <node concept="10Nm6u" id="3E2609YkQqC" role="3uHU7w" />
+            <node concept="1rXfSq" id="3E2609YkN1c" role="3uHU7B">
+              <ref role="37wK5l" node="7iropoGY2Ay" resolve="getTypesystem" />
+              <node concept="37vLTw" id="3E2609YkNRs" role="37wK5m">
+                <ref role="3cqZAo" node="3E2609Yk_CX" resolve="contextNode" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="3E2609Yk_Df" role="1B3o_S" />
+      <node concept="10P_77" id="3E2609YkZGo" role="3clF45" />
+      <node concept="P$JXv" id="3E2609Yk_Dh" role="lGtFl">
+        <node concept="TZ5HA" id="3E2609YkCWn" role="TZ5H$">
+          <node concept="1dT_AC" id="3E2609YkCWo" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns true if an available Kotlin typesystem handler is present." />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="42NctsYt9gV" role="jymVt" />
+    <node concept="2YIFZL" id="42NctsYt8ws" role="jymVt">
+      <property role="TrG5h" value="withTypesystem" />
+      <node concept="37vLTG" id="42NctsYt8wt" role="3clF46">
+        <property role="TrG5h" value="contextNode" />
+        <node concept="3Tqbb2" id="42NctsYt8wu" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="42NctsYt8wv" role="3clF46">
+        <property role="TrG5h" value="ifDisabled" />
+        <node concept="1ajhzC" id="42NctsYtasH" role="1tU5fm">
+          <node concept="16syzq" id="42NctsYtb9z" role="1ajl9A">
+            <ref role="16sUi3" node="42NctsYt8wT" resolve="T" />
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="42NctsYt8wx" role="3clF46">
+        <property role="TrG5h" value="ifEnabled" />
+        <node concept="1ajhzC" id="42NctsYt8wy" role="1tU5fm">
+          <node concept="16syzq" id="42NctsYt8wz" role="1ajl9A">
+            <ref role="16sUi3" node="42NctsYt8wT" resolve="T" />
+          </node>
+          <node concept="3uibUv" id="42NctsYt8w$" role="1ajw0F">
+            <ref role="3uigEE" to="kdsm:7VTXQs1r_Rt" resolve="KotlinTypesystem" />
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbS" id="42NctsYt8w_" role="3clF47">
+        <node concept="3cpWs8" id="42NctsYt8wA" role="3cqZAp">
+          <node concept="3cpWsn" id="42NctsYt8wB" role="3cpWs9">
+            <property role="TrG5h" value="typesystem" />
+            <node concept="3uibUv" id="42NctsYt8wC" role="1tU5fm">
+              <ref role="3uigEE" to="kdsm:7VTXQs1r_Rt" resolve="KotlinTypesystem" />
+            </node>
+            <node concept="1rXfSq" id="42NctsYt8wD" role="33vP2m">
+              <ref role="37wK5l" node="7iropoGY2Ay" resolve="getTypesystem" />
+              <node concept="37vLTw" id="42NctsYt8wE" role="37wK5m">
+                <ref role="3cqZAo" node="42NctsYt8wt" resolve="contextNode" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="42NctsYt8wF" role="3cqZAp">
+          <node concept="3clFbS" id="42NctsYt8wG" role="3clFbx">
+            <node concept="3cpWs6" id="42NctsYt8wH" role="3cqZAp">
+              <node concept="2OqwBi" id="42NctsYtd2H" role="3cqZAk">
+                <node concept="37vLTw" id="42NctsYt8wI" role="2Oq$k0">
+                  <ref role="3cqZAo" node="42NctsYt8wv" resolve="ifDisabled" />
+                </node>
+                <node concept="1Bd96e" id="42NctsYtfEc" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="42NctsYt8wJ" role="3clFbw">
+            <node concept="10Nm6u" id="42NctsYt8wK" role="3uHU7w" />
+            <node concept="37vLTw" id="42NctsYt8wL" role="3uHU7B">
+              <ref role="3cqZAo" node="42NctsYt8wB" resolve="typesystem" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="42NctsYt8wM" role="3cqZAp">
+          <node concept="2OqwBi" id="42NctsYt8wN" role="3cqZAk">
+            <node concept="37vLTw" id="42NctsYt8wO" role="2Oq$k0">
+              <ref role="3cqZAo" node="42NctsYt8wx" resolve="ifEnabled" />
+            </node>
+            <node concept="1Bd96e" id="42NctsYt8wP" role="2OqNvi">
+              <node concept="37vLTw" id="42NctsYt8wQ" role="1BdPVh">
+                <ref role="3cqZAo" node="42NctsYt8wB" resolve="typesystem" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="42NctsYt8wR" role="1B3o_S" />
+      <node concept="16syzq" id="42NctsYt8wS" role="3clF45">
+        <ref role="16sUi3" node="42NctsYt8wT" resolve="T" />
+      </node>
+      <node concept="16euLQ" id="42NctsYt8wT" role="16eVyc">
+        <property role="TrG5h" value="T" />
+      </node>
+      <node concept="P$JXv" id="42NctsY_Sh2" role="lGtFl">
+        <node concept="TZ5HA" id="42NctsY_Sh3" role="TZ5H$">
+          <node concept="1dT_AC" id="42NctsY_Sh4" role="1dT_Ay">
+            <property role="1dT_AB" value="Computes a value depending on the presence of an available typesystem. Computation of both results are lazy" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="42NctsYA63B" role="TZ5H$">
+          <node concept="1dT_AC" id="42NctsYA63C" role="1dT_Ay">
+            <property role="1dT_AB" value="(only in appropriate case)." />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="2k7NUUK0bq0" role="jymVt" />
@@ -248,6 +406,13 @@
       </node>
       <node concept="16euLQ" id="2k7NUUK0bBz" role="16eVyc">
         <property role="TrG5h" value="T" />
+      </node>
+      <node concept="P$JXv" id="42NctsY_YXO" role="lGtFl">
+        <node concept="TZ5HA" id="42NctsY_YXP" role="TZ5H$">
+          <node concept="1dT_AC" id="42NctsY_YXQ" role="1dT_Ay">
+            <property role="1dT_AB" value="Computes a value depending on the presence of an available typesystem." />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="3Tm1VV" id="7iropoGY2fj" role="1B3o_S" />

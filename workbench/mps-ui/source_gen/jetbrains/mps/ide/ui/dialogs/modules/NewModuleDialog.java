@@ -15,7 +15,7 @@ import java.io.File;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.project.ProjectKt;
 
-@GeneratedClass(node = "r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)/3861876536592569598", model = "r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)")
+@GeneratedClass(nodeId = "3861876536592569598", model = "r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)")
 public class NewModuleDialog<T extends SModule> extends DialogWrapper {
   private final MPSProject myProject;
   private final NameLocationPanel myValues;

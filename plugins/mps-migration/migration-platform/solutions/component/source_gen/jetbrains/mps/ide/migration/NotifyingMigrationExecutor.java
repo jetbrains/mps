@@ -8,7 +8,7 @@ import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
-@GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/7423808107305764555", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
+@GeneratedClass(nodeId = "7423808107305764555", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class NotifyingMigrationExecutor extends MigrationExecutorImpl {
   public NotifyingMigrationExecutor(final Project project) {
     super(project);

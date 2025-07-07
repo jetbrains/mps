@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,9 +27,14 @@ import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.ide.vfs.ProjectRootListenerComponent;
+import jetbrains.mps.nodefs.FileSystemProjectBridge;
+import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.WorkbenchModelAccess;
+import jetbrains.mps.util.annotation.AccessAsPlatformService;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.VFSManager;
+import jetbrains.mps.vfs.tracking.ConflictResolverImpl;
 import org.jdom.JDOMException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -51,29 +56,38 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
   private final com.intellij.openapi.project.Project myProject;
   private final IdeaFileSystem myProjectFileSystem;
 
+  private FileSystemProjectBridge myFileSystemBridge;
+
   // WorkbenchModelAccess is provisional argument. Now it provides implementation of executeCommand method
   // with respect to shared model lock object from its smodel.ModelAccess superclass. Once each MA has own
   // model lock object and executeCommand* implementations, we won't need this WMA parameter
   public MPSProject(@NotNull com.intellij.openapi.project.Project project) {
     super(project.getName(), MPSCoreComponents.getInstance().getPlatform(), false);
     myProject = project;
-    myProjectFileSystem = ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
+    myProjectFileSystem = IdeaFileSystem.getInstance();
     project.getService(ProjectRootListenerComponent.class).boostProjectRead(myProjectFileSystem);
     Platform platform = MPSCoreComponents.getInstance().getPlatform();
     final MPSModuleRepository extRepo = platform.findComponent(MPSModuleRepository.class);
     final SRepositoryRegistry registry = platform.findComponent(SRepositoryRegistry.class);
-    final ModelAccess projectMA = ((WorkbenchModelAccess) ApplicationManager.getApplication().getComponent(ModelAccess.class)).createForProject(MPSProject.this);
+    final ModelAccess projectMA = WorkbenchModelAccess.getInstance().createForProject(MPSProject.this);
     final ProjectRepository repo = new ProjectRepository(this, extRepo, registry, projectMA);
     repo.init();
     initRepository(repo);
+    repo.setConflictResolver(new ConflictResolverImpl(this, platform.findComponent(PersistenceRegistry.class), platform.findComponent(VFSManager.class)));
   }
 
   @Override
   public void initComponent() {
-    update();
+    // can't override projectOpened(), go with initComponent() now; have to fix ether of these anyway once get to ProjectComponent here
+    myFileSystemBridge = new FileSystemProjectBridge(this);
+    // FWIW, there's OnReloadingUndoCleaner (at least) that depends on this bridge present for a project
+    myFileSystemBridge.projectOpened();
   }
 
   public void disposeComponent() {
+    myFileSystemBridge.projectClosed();
+    myFileSystemBridge = null;
+    ((ProjectRepository) getRepository()).setConflictResolver(null);
     dispose();
   }
 
@@ -135,7 +149,16 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
 
   @Override
   public <T> T getComponent(Class<T> clazz) {
-    T rv = getProject().getComponent(clazz);;
+    if (isDisposed()) {
+      return null;
+    }
+    T rv;
+    if (clazz.getAnnotation(AccessAsPlatformService.class) != null) {
+      rv = getProject().getService(clazz);
+    } else {
+      //noinspection UnstableApiUsage
+      rv = getProject().getComponent(clazz);
+    }
     // though would be great to support both components and services, I didn't find a reliable
     // mechanism to detect whether supplied class is component or a service. Supplied interface may
     // not be assignable to BaseComponent, only its implementation implements respective component

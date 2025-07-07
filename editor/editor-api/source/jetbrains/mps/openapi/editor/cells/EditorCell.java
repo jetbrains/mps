@@ -17,6 +17,7 @@ package jetbrains.mps.openapi.editor.cells;
 
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLookup;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
@@ -211,6 +212,7 @@ public interface EditorCell {
 
   boolean isSingleNodeCell();
 
+  @Nullable
   SNode getSNode();
 
   void putUserObject(Object key, Object value);
@@ -253,6 +255,8 @@ public interface EditorCell {
    * @return a {@link TextBuilder} with the cell contents.
    */
   TextBuilder renderText();
+
+  HtmlTextBuilder renderHtml();
 
   /**
    * Marking current cell as "big" cell - the top-most cell available in the editor for associated node.

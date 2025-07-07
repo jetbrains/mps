@@ -52,9 +52,6 @@
         <property id="1229194968595" name="cellId" index="LIFWd" />
         <property id="1932269937152561478" name="useLabelSelection" index="OXtK3" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="5773579205429866751" name="jetbrains.mps.lang.test.structure.EditorComponentExpression" flags="nn" index="369mXd" />
       <concept id="1225467090849" name="jetbrains.mps.lang.test.structure.ProjectExpression" flags="nn" index="1jxXqW" />
       <concept id="1216989428737" name="jetbrains.mps.lang.test.structure.TestNode" flags="ng" index="1qefOq">
@@ -229,9 +226,6 @@
       </concept>
     </language>
   </registry>
-  <node concept="2XOHcx" id="BbjtfhcWeJ">
-    <property role="2XOHcw" value="${mps_home}" />
-  </node>
   <node concept="LiM7Y" id="5UD30_PQEip">
     <property role="TrG5h" value="RefactoringMenuItemBase_InapplicableRefactoring_CannotExecute" />
     <node concept="3clFbS" id="5UD30_PQEiP" role="LjaKd">

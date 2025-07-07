@@ -40,7 +40,7 @@ import jetbrains.mps.make.resources.IPropertiesPersistence;
 import jetbrains.mps.make.resources.IPropertiesAccessor;
 import jetbrains.mps.make.resources.IResourceWithProperties;
 
-@GeneratedClass(node = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)/6168415856807657480", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
+@GeneratedClass(nodeId = "6168415856807657480", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
 public class Script implements IScript {
   private static Logger LOG = Logger.getLogger(Script.class);
   public static final ITarget.Name TIME_STATISTIC_RESULT_NAME = new ITarget.Name("TIME_STATISTIC");
@@ -112,6 +112,9 @@ public class Script implements IScript {
       LOG.error("no such target: " + startingTarget);
     }
     return trg;
+  }
+  private boolean isRequestedTarget(ITarget trg) {
+    return targetRange.isRequested(trg.getName());
   }
   @Override
   public String toString() {
@@ -265,6 +268,10 @@ with_targets:
                   return;
                 }
               }
+            } else if (trg instanceof ITargetEx && ((ITargetEx) trg).isOptional() && !(isRequestedTarget(trg))) {
+              LOG.info(String.format("Skipping optional target '%s'.", trg.getName()));
+              results.addResult(trg.getName(), new IResult.SUCCESS(null));
+              continue with_targets;
             }
 
             ProgressMonitor subMonitor = monitor.subTask(workEstimate(trg));

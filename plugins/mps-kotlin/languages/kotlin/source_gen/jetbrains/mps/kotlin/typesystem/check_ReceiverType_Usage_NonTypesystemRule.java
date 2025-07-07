@@ -8,8 +8,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -23,9 +23,9 @@ public class check_ReceiverType_Usage_NonTypesystemRule extends AbstractNonTypes
   public check_ReceiverType_Usage_NonTypesystemRule() {
   }
   public void applyRule(final SNode receiverType, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((boolean) IType__BehaviorDescriptor.isExpression_id2J12cYi1t5p.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(receiverType, LINKS.type$NVFj)))))) {
+    if (!((boolean) IType__BehaviorDescriptor.isExpression_id3sYZzPj0plI.invoke(SLinkOperations.getTarget(receiverType, LINKS.type$NVFj)))) {
       SNode parentNode = SNodeOperations.getParent(receiverType);
-      if (!(SNodeOperations.isInstanceOf(parentNode, CONCEPTS.MemberNavigationOperation$7I)) && !(SNodeOperations.isInstanceOf(parentNode, CONCEPTS.NavigationOperation$4I))) {
+      if (!(SNodeOperations.isInstanceOf(parentNode, CONCEPTS.MemberNavigationExpression$7I)) && !(SNodeOperations.isInstanceOf(parentNode, CONCEPTS.NavigationOperation$4I))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(receiverType, BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(receiverType, LINKS.type$NVFj)) + " cannot be used as an standalone expression", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "3152810901740506414", null, errorTarget);
@@ -48,7 +48,7 @@ public class check_ReceiverType_Usage_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MemberNavigationOperation$7I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationOperation");
+    /*package*/ static final SConcept MemberNavigationExpression$7I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationExpression");
     /*package*/ static final SConcept NavigationOperation$4I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af450L, "jetbrains.mps.kotlin.structure.NavigationOperation");
     /*package*/ static final SConcept ReceiverType$$f = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, "jetbrains.mps.kotlin.structure.ReceiverType");
   }

@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)/775260118347134758", model = "r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)")
+@GeneratedClass(nodeId = "775260118347134758", model = "r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)")
 public abstract class AbstractInitializeFieldRefactoring {
 
   private List<SNode> doNotInitialize = new ArrayList<SNode>();

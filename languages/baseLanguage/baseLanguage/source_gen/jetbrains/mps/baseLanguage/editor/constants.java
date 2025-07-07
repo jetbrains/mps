@@ -21,6 +21,8 @@ import jetbrains.mps.smodel.presentation.IPropertyPresentationProvider;
 import org.jetbrains.mps.openapi.language.SType;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -30,6 +32,7 @@ import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
+import jetbrains.mps.util.StringUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -43,12 +46,14 @@ public class constants extends SubstituteMenuBase {
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_w0ulk7_a(), CONCEPTS.IntegerConstant$Na));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_w0ulk7_b(), CONCEPTS.LongLiteral$y2));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_w0ulk7_c(), CONCEPTS.FloatingPointConstant$3o));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_w0ulk7_d(), CONCEPTS.FloatingPointFloatConstant$Qh));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_w0ulk7_e(), CONCEPTS.StringLiteral$xu));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_w0ulk7_f(), CONCEPTS.BooleanConstant$n4));
-    result.add(new SMP_Group_w0ulk7_g());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_w0ulk7_b(), CONCEPTS.HexIntegerLiteral$yn));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_w0ulk7_c(), CONCEPTS.AbstractLongLiteral$g_));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_w0ulk7_d(), CONCEPTS.HexLongLiteral$8Z));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_w0ulk7_e(), CONCEPTS.FloatingPointConstant$3o));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_w0ulk7_f(), CONCEPTS.FloatingPointFloatConstant$Qh));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_w0ulk7_g(), CONCEPTS.StringLiteral$xu));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_w0ulk7_h(), CONCEPTS.BooleanConstant$n4));
+    result.add(new SMP_Group_w0ulk7_i());
     return result;
   }
 
@@ -120,7 +125,79 @@ public class constants extends SubstituteMenuBase {
     private class Item extends DefaultSubstituteMenuItem {
       private final SubstituteMenuContext _context;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.LongLiteral$y2, context);
+        super(CONCEPTS.HexIntegerLiteral$yn, context);
+        _context = context;
+      }
+
+      /*package*/ void resetTraceInfo() {
+        String description = "Substitute item: " + getMatchingText("");
+        updateTraceInfo(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "8353134822289354504"));
+      }
+
+      @Nullable
+      @Override
+      public SNode createNode(@NotNull String pattern) {
+        SNode intConst = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.HexIntegerLiteral$yn, null);
+        Object result = constants.this._additional_parseHexIntegerValue(pattern);
+        if (result == null || result == SType.NOT_A_VALUE) {
+          SPropertyOperations.set(intConst, PROPS.value$JSvS, "0");
+        } else {
+          SPropertyOperations.set(intConst, PROPS.value$JSvS, "" + pattern);
+        }
+        return intConst;
+      }
+
+      @Nullable
+      @Override
+      public String getMatchingText(@NotNull String pattern) {
+        return pattern;
+      }
+      @Override
+      public void select(@NotNull SNode createdNode, @NotNull String pattern) {
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.LAST_EDITABLE_CELL, -1);
+      }
+      @Override
+      public boolean canExecute(@NotNull String pattern) {
+        return canExecute_internal(pattern, false);
+      }
+      @Override
+      public boolean canExecuteStrictly(@NotNull String pattern) {
+        return canExecute_internal(pattern, true);
+      }
+      public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
+        if (!(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IntegerConstant$Na)) && !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.HexLongLiteral$8Z))) {
+          return false;
+        }
+        Object hexResult = constants.this._additional_parseHexIntegerValue(pattern);
+        Object intResult = constants.this._additional_parseIntegerValue(pattern);
+        if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IntegerConstant$Na)) {
+          if (intResult != SType.NOT_A_VALUE) {
+            // Do not make an int into hex int when the pattern is int
+            return false;
+          } else {
+            return (hexResult == null ? !(strictly) : (strictly) && hexResult != SType.NOT_A_VALUE);
+          }
+        }
+        if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.HexLongLiteral$8Z)) {
+          return (hexResult == null ? !(strictly) : hexResult != SType.NOT_A_VALUE);
+        }
+        return false;
+      }
+    }
+  }
+  private class SMP_Action_w0ulk7_c extends SingleItemSubstituteMenuPart {
+
+    @Nullable
+    @Override
+    protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+      Item item = new Item(_context);
+      item.resetTraceInfo();
+      return item;
+    }
+    private class Item extends DefaultSubstituteMenuItem {
+      private final SubstituteMenuContext _context;
+      public Item(SubstituteMenuContext context) {
+        super(CONCEPTS.AbstractLongLiteral$g_, context);
         _context = context;
       }
 
@@ -132,8 +209,16 @@ public class constants extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.LongLiteral$y2, null);
-        SPropertyOperations.assign(result, PROPS.value$b84M, pattern);
+        SNode result;
+        if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.HexIntegerLiteral$yn)) {
+          SNode lit = SNodeFactoryOperations.createNewNode(CONCEPTS.HexLongLiteral$8Z, null);
+          SPropertyOperations.assign(lit, PROPS.hexValue$ZIVH, pattern);
+          result = lit;
+        } else {
+          SNode lit = SNodeFactoryOperations.createNewNode(CONCEPTS.LongLiteral$y2, null);
+          SPropertyOperations.assign(lit, PROPS.value$b84M, pattern);
+          result = lit;
+        }
         return result;
       }
 
@@ -141,6 +226,10 @@ public class constants extends SubstituteMenuBase {
       @Override
       public String getMatchingText(@NotNull String pattern) {
         return pattern;
+      }
+      @Override
+      public void select(@NotNull SNode createdNode, @NotNull String pattern) {
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.LAST_EDITABLE_CELL, -1);
       }
       @Override
       public boolean canExecute(@NotNull String pattern) {
@@ -151,14 +240,68 @@ public class constants extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.LongLiteral$y2)) {
+        if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.AbstractLongLiteral$g_)) {
           return false;
         }
         return REGEXP.matcher(pattern).matches();
       }
     }
   }
-  private class SMP_Action_w0ulk7_c extends SingleItemSubstituteMenuPart {
+  private class SMP_Action_w0ulk7_d extends SingleItemSubstituteMenuPart {
+
+    @Nullable
+    @Override
+    protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+      Item item = new Item(_context);
+      item.resetTraceInfo();
+      return item;
+    }
+    private class Item extends DefaultSubstituteMenuItem {
+      private final SubstituteMenuContext _context;
+      public Item(SubstituteMenuContext context) {
+        super(CONCEPTS.HexLongLiteral$8Z, context);
+        _context = context;
+      }
+
+      /*package*/ void resetTraceInfo() {
+        String description = "Substitute item: " + getMatchingText("");
+        updateTraceInfo(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "8353134822275580989"));
+      }
+
+      @Nullable
+      @Override
+      public SNode createNode(@NotNull String pattern) {
+        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.HexLongLiteral$8Z, null);
+        SPropertyOperations.assign(result, PROPS.hexValue$ZIVH, pattern);
+        return result;
+      }
+
+      @Nullable
+      @Override
+      public String getMatchingText(@NotNull String pattern) {
+        return pattern;
+      }
+      @Override
+      public void select(@NotNull SNode createdNode, @NotNull String pattern) {
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.LAST_EDITABLE_CELL, -1);
+      }
+      @Override
+      public boolean canExecute(@NotNull String pattern) {
+        return canExecute_internal(pattern, false);
+      }
+      @Override
+      public boolean canExecuteStrictly(@NotNull String pattern) {
+        return canExecute_internal(pattern, true);
+      }
+      public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
+        if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.HexLongLiteral$8Z)) {
+          return false;
+        }
+        return !(REGEXP2.matcher(pattern).matches()) && REGEXP1.matcher(pattern).matches();
+      }
+    }
+  }
+  private class SMP_Action_w0ulk7_e extends SingleItemSubstituteMenuPart {
 
     @Nullable
     @Override
@@ -204,11 +347,11 @@ public class constants extends SubstituteMenuBase {
         if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.FloatingPointConstant$3o)) {
           return false;
         }
-        return REGEXP1.matcher(pattern).matches();
+        return REGEXP3.matcher(pattern).matches();
       }
     }
   }
-  private class SMP_Action_w0ulk7_d extends SingleItemSubstituteMenuPart {
+  private class SMP_Action_w0ulk7_f extends SingleItemSubstituteMenuPart {
 
     @Nullable
     @Override
@@ -254,11 +397,11 @@ public class constants extends SubstituteMenuBase {
         if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.FloatingPointFloatConstant$Qh)) {
           return false;
         }
-        return REGEXP2.matcher(pattern).matches();
+        return REGEXP4.matcher(pattern).matches();
       }
     }
   }
-  private class SMP_Action_w0ulk7_e extends SingleItemSubstituteMenuPart {
+  private class SMP_Action_w0ulk7_g extends SingleItemSubstituteMenuPart {
 
     @Nullable
     @Override
@@ -284,7 +427,7 @@ public class constants extends SubstituteMenuBase {
       public SNode createNode(@NotNull String pattern) {
         SNode stringLiteral = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.StringLiteral$xu, null);
         {
-          Pattern _pattern_0 = REGEXP3;
+          Pattern _pattern_0 = REGEXP5;
           Matcher _matcher_0 = _pattern_0.matcher(pattern);
           if (_matcher_0.matches()) {
             SPropertyOperations.set(stringLiteral, PROPS.value$w7MM, _matcher_0.group(1));
@@ -307,27 +450,27 @@ public class constants extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        return REGEXP4.matcher(pattern).matches();
+        return REGEXP6.matcher(pattern).matches();
       }
     }
   }
-  private class SMP_Param_w0ulk7_f extends ParameterizedMenuPart<Boolean, SubstituteMenuItem, SubstituteMenuContext> {
-    /*package*/ SMP_Param_w0ulk7_f() {
+  private class SMP_Param_w0ulk7_h extends ParameterizedMenuPart<Boolean, SubstituteMenuItem, SubstituteMenuContext> {
+    /*package*/ SMP_Param_w0ulk7_h() {
       super(new EditorMenuDescriptorBase("parameterized substitute menu part", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586958519")));
     }
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(Boolean parameter, SubstituteMenuContext context) {
-      return new SMP_Action_w0ulk7_a5(parameter).createItems(context);
+      return new SMP_Action_w0ulk7_a7(parameter).createItems(context);
     }
     @Nullable
     @Override
     protected Iterable<? extends Boolean> getParameters(SubstituteMenuContext _context) {
       return ListSequence.fromListAndArray(new ArrayList<Boolean>(), Boolean.TRUE, Boolean.FALSE);
     }
-    private class SMP_Action_w0ulk7_a5 extends SingleItemSubstituteMenuPart {
+    private class SMP_Action_w0ulk7_a7 extends SingleItemSubstituteMenuPart {
       private final Boolean myParameterObject;
-      public SMP_Action_w0ulk7_a5(Boolean parameterObject) {
+      public SMP_Action_w0ulk7_a7(Boolean parameterObject) {
         myParameterObject = parameterObject;
       }
 
@@ -382,8 +525,8 @@ public class constants extends SubstituteMenuBase {
     }
 
   }
-  public class SMP_Group_w0ulk7_g extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
-    public SMP_Group_w0ulk7_g() {
+  public class SMP_Group_w0ulk7_i extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_w0ulk7_i() {
       super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586959068")));
     }
     @Override
@@ -395,19 +538,44 @@ public class constants extends SubstituteMenuBase {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ArrayLiteral$Ey, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "ArrayLiteral", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586959115"))), CONCEPTS.ArrayLiteral$Ey));
     }
   }
+  private Object _additional_parseHexIntegerValue(String pattern) {
+    if (StringUtil.isEmpty(pattern)) {
+      return null;
+    }
+    try {
+      return Integer.parseInt(pattern, 16);
+    } catch (NumberFormatException e) {
+      return SType.NOT_A_VALUE;
+    }
+  }
+  private Object _additional_parseIntegerValue(String pattern) {
+    if (StringUtil.isEmpty(pattern)) {
+      return null;
+    }
+    try {
+      return Integer.parseInt(pattern);
+    } catch (NumberFormatException e) {
+      return SType.NOT_A_VALUE;
+    }
+  }
   private static final Pattern REGEXP = Pattern.compile("-?\\d+(?:l|L)", 0);
-  private static final Pattern REGEXP1 = Pattern.compile("-?[0-9]+\\.[0-9]*(?:[eE][\\-\\+]?[0-9]+)?[dD]?", 0);
-  private static final Pattern REGEXP2 = Pattern.compile("-?[0-9]+\\.[0-9]*(?:[eE][\\-\\+]?[0-9]+)?[fF]", 0);
-  private static final Pattern REGEXP3 = Pattern.compile("\"([^\\\\\"]*)\"?", 0);
-  private static final Pattern REGEXP4 = Pattern.compile("\"[^\\\\\"]*\"?", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("-?[0-9a-fA-F]+(?:l|L)", 0);
+  private static final Pattern REGEXP2 = Pattern.compile("-?\\d+(?:l|L)", 0);
+  private static final Pattern REGEXP3 = Pattern.compile("-?[0-9]+\\.[0-9]*(?:[eE][\\-\\+]?[0-9]+)?[dD]?", 0);
+  private static final Pattern REGEXP4 = Pattern.compile("-?[0-9]+\\.[0-9]*(?:[eE][\\-\\+]?[0-9]+)?[fF]", 0);
+  private static final Pattern REGEXP5 = Pattern.compile("\"([^\\\\\"]*)\"?", 0);
+  private static final Pattern REGEXP6 = Pattern.compile("\"[^\\\\\"]*\"?", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept IntegerConstant$Na = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
-    /*package*/ static final SConcept LongLiteral$y2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, "jetbrains.mps.baseLanguage.structure.LongLiteral");
+    /*package*/ static final SConcept HexIntegerLiteral$yn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129761e073L, "jetbrains.mps.baseLanguage.structure.HexIntegerLiteral");
+    /*package*/ static final SConcept AbstractLongLiteral$g_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x73ec4bdd32ac9e54L, "jetbrains.mps.baseLanguage.structure.AbstractLongLiteral");
+    /*package*/ static final SConcept HexLongLiteral$8Z = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x73ec4bdd32ac9ed3L, "jetbrains.mps.baseLanguage.structure.HexLongLiteral");
     /*package*/ static final SConcept FloatingPointConstant$3o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, "jetbrains.mps.baseLanguage.structure.FloatingPointConstant");
     /*package*/ static final SConcept FloatingPointFloatConstant$Qh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, "jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant");
     /*package*/ static final SConcept StringLiteral$xu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
     /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
+    /*package*/ static final SConcept LongLiteral$y2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, "jetbrains.mps.baseLanguage.structure.LongLiteral");
     /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
     /*package*/ static final SConcept ArrayLiteral$Ey = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, "jetbrains.mps.baseLanguage.structure.ArrayLiteral");
     /*package*/ static final SConcept AnnotationInstanceValue$T7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue");
@@ -416,6 +584,8 @@ public class constants extends SubstituteMenuBase {
 
   private static final class PROPS {
     /*package*/ static final SProperty value$jgCM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$JSvS = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129761e073L, 0x11297628b3cL, "value");
+    /*package*/ static final SProperty hexValue$ZIVH = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x73ec4bdd32ac9ed3L, 0x73ec4bdd32ac9f1cL, "hexValue");
     /*package*/ static final SProperty value$b84M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value");
     /*package*/ static final SProperty value$ENN8 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value");
     /*package*/ static final SProperty value$kirj = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");

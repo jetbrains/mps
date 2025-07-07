@@ -16,8 +16,9 @@ import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.smodel.FastNodeFinderManager;
 
-@GeneratedClass(node = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)/789530343628636149", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
+@GeneratedClass(nodeId = "789530343628636149", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
 /*package*/ abstract class IncrementalModelAccessBase implements IncrementalModelAccess {
   protected final ModelAccess myModelAccess;
   private Iterable<SModel> myModels;
@@ -58,6 +59,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
         runnable.run();
       } finally {
         ListSequence.fromList(modelsInUpdateMode).visitAll((it) -> it.leaveUpdateMode());
+        // FIXME this is a provisional hack to deal with the fact 'update mode' leaves FNF instances in incomplete/invalid state (not reflecting actual state)
+        Sequence.fromIterable(myModels).visitAll((it) -> FastNodeFinderManager.dispose(it));
       }
     });
   }

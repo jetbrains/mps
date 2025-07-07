@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -835,6 +835,7 @@ public class ModelListenerTest {
     }
   }
 
+  // XXX likely, shall become NodeChangeBridge + event visitor once we get to SModelAdapter removal
   private static class ChangeListener1 extends SModelAdapter {
     public final List<SNode> myAdded = new ArrayList<SNode>();
     public final List<SNode> myAddedRoots = new ArrayList<SNode>();

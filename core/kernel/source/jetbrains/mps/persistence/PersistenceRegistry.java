@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +18,11 @@ package jetbrains.mps.persistence;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.SModelId.ForeignSModelId;
 import jetbrains.mps.smodel.SModelId.IntegerSModelId;
+import jetbrains.mps.smodel.SModelId.ModelNameSModelId;
 import jetbrains.mps.smodel.SModelId.RegularSModelId;
 import jetbrains.mps.smodel.SModelId.RelativePathSModelId;
 import jetbrains.mps.smodel.SNodeId.Foreign;
@@ -54,9 +54,12 @@ import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceT
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+import java.util.function.Function;
 
 /**
  * evgeny, 10/23/12
@@ -74,6 +77,12 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
   private final Map<String, SNodeIdFactory> myNodeIdFactory = new HashMap<>();
   private final Set<FindUsagesParticipant> myFindUsagesParticipants = Collections.synchronizedSet(new LinkedHashSet<>());
   private final Set<NavigationParticipant> myNavigationParticipants = new LinkedHashSet<>();
+  private final Map<String, String> myModuleNameCache = new LinkedHashMap<>() {
+    @Override
+    protected boolean removeEldestEntry(Entry<String, String> eldest) {
+      return size() > 1000;
+    }
+  };
 
   private boolean isDisabled = false;
 
@@ -150,11 +159,19 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
 
   @Override
   public SModuleReference createModuleReference(@NotNull String text) {
-    return ModuleReference.parseReference(text);
+    return ModuleReference.parseReference(text, this);
   }
 
   @Override
-  public SModuleReference createModuleReference(@NotNull SModuleId moduleId, String moduleName) {
+  public SModuleReference createModuleReference(@NotNull SModuleId moduleId, @Nullable String moduleName) {
+    if (moduleName != null) {
+      // no idea if module name caching is really worth it, just a creative attempt to provide InternUtil alternative other than String.intern()
+      synchronized (myModuleNameCache) {
+        // could have used String::intern as function, but would need to deal with key then, and what would be the difference with using
+        // moduleName.intern() right away?
+        moduleName = myModuleNameCache.computeIfAbsent(moduleName, Function.identity());
+      }
+    }
     return new ModuleReference(moduleName, moduleId);
   }
 
@@ -182,7 +199,42 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
   @NotNull
   @Override
   public SModelReference createModelReference(@NotNull String text) {
-    return jetbrains.mps.smodel.SModelReference.parseReference(text);
+    final String[] p = jetbrains.mps.smodel.SModelReference.parseReferenceInternal(text);
+    if (p == null || p[1] == null) {
+      throw new IncorrectModelReferenceFormatException(text);
+    }
+
+    SModuleId moduleId = null;
+    SModelId modelId;
+    String moduleName = p[2];
+    String modelName = p[3];
+
+    if (p[0] != null && !p[0].isBlank()) {
+      try {
+        moduleId = createModuleId(p[0]);
+      } catch (IllegalArgumentException e) {
+        throw new IncorrectModelReferenceFormatException("Could not parse module id from the string " + text, e);
+      }
+    }
+
+    if (p[1].indexOf(':') >= 0) {
+      modelId = createModelId(p[1]);
+    } else {
+      // dead code? I suspect ModelNameSModelId, if any, would start with "m:" prefix and we'd never get into else clause
+      // OTOH, there seems to be a special hack in toString(), that persists ModelNameSModelId without the prefix
+      modelId = new ModelNameSModelId(p[1]);
+    }
+
+    if (modelName == null || modelName.isBlank()) {
+      modelName = modelId.getModelName();
+      if (modelName == null) {
+        throw new IncorrectModelReferenceFormatException("Incomplete model reference, the presentation part is absent");
+      }
+    }
+
+    SModuleReference moduleRef =
+        moduleId != null || moduleName != null ? new jetbrains.mps.project.structure.modules.ModuleReference(moduleName, moduleId) : null;
+    return new jetbrains.mps.smodel.SModelReference(moduleRef, modelId, modelName);
   }
 
   @Override

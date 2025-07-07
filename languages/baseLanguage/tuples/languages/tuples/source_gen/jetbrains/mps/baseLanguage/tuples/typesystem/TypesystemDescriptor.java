@@ -20,6 +20,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_LocalVariableDeclarationInTuple_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_NamedTupleComponentAccessOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }

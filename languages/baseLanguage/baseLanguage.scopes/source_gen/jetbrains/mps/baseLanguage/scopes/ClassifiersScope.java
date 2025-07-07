@@ -16,6 +16,7 @@ import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -110,7 +111,17 @@ public class ClassifiersScope extends FilteringScope {
       return resolved;
     }
     // try to use old logic
-    return ClassifierResolveUtils.resolveNonSpecialSyntax(refText, contextModel, (ModelPlusImportedScope) myWrapped);
+    SNode rv = ClassifierResolveUtils.resolveNonSpecialSyntax(refText, contextModel, (ModelPlusImportedScope) myWrapped);
+    if (rv != null) {
+      if (LOG.isDebugLevel()) {
+        LOG.debug(String.format("Failed to resolve '%s' in context of %s, but succeeded with legacy logic: %s", refText, INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(contextClassifier), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(rv)));
+      }
+    } else {
+      if (LOG.isDebugLevel()) {
+        LOG.debug(String.format("Failed to resolve '%s' in context of %s, and legacy logic didn't help", refText, INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(contextClassifier)));
+      }
+    }
+    return rv;
   }
 
   @Override

@@ -85,7 +85,7 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
     testModule(resolveLanguage(TEST_LANG), MPSExtentions.DOT_LANGUAGE);
   }
   @Test
-  public void test_cloneLanguageWithAcessoryModels() throws Exception {
+  public void test_cloneLanguageWithAccessoryModels() throws Exception {
     final Language originalLang = resolveLanguage(TEST_LANG_ACCESORIES);
 
     AbstractModule module = testModule(originalLang, MPSExtentions.DOT_LANGUAGE);
@@ -98,13 +98,13 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
       originalAccesoryModels.value = originalLang.getAccessoryModels();
       clonedAccesoryModels.value = clonedLang.getAccessoryModels();
     });
-    Assert.assertEquals("Different count of accesory models", originalAccesoryModels.value.size(), clonedAccesoryModels.value.size());
+    Assert.assertEquals("Different count of accessory models", Integer.valueOf(originalAccesoryModels.value.size()), Integer.valueOf(clonedAccesoryModels.value.size()));
     int size = originalAccesoryModels.value.size();
     for (int i = 0; i < size; i++) {
       SModel originalAccesoryModel = originalAccesoryModels.value.get(i);
       SModel clonedAccesoryModel = clonedAccesoryModels.value.get(i);
-      Assert.assertFalse("Same accesory models", originalAccesoryModel.equals(clonedAccesoryModel));
-      Assert.assertFalse("Same accesory model references", originalAccesoryModel.getReference().equals(clonedAccesoryModel.getReference()));
+      Assert.assertFalse("Same accessory models", originalAccesoryModel.equals(clonedAccesoryModel));
+      Assert.assertFalse("Same accessory model references", originalAccesoryModel.getReference().equals(clonedAccesoryModel.getReference()));
     }
   }
   @BeforeEach
@@ -167,7 +167,7 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
 
       String clonedModuleName = originalModule.getModuleName() + SUFFIX;
 
-      IFile copyLocation = clonedModulesDirectory.findChild(clonedModuleName + moduleFileNameExtension);
+      IFile copyLocation = clonedModulesDirectory.findChild(clonedModuleName).findChild(clonedModuleName + moduleFileNameExtension);
       CopyModuleHelper helper = new CopyModuleHelper(project, originalModule, clonedModuleName, copyLocation, "");
       try {
         clonedModule.value = helper.copy();

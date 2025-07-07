@@ -11,7 +11,7 @@ import jetbrains.mps.smodel.SModelHeader;
 import java.util.List;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 
-@GeneratedClass(node = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)/453110257780703213", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
+@GeneratedClass(nodeId = "453110257780703213", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
 public class ModelPersistence4 implements IModelPersistence, IPersistenceWithReader {
   @Override
   public XMLSAXHandler<ModelLoadResult> getModelReaderHandler(ModelLoadingState state, SModelHeader header) {

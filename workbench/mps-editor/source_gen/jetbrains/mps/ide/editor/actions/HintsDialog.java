@@ -29,7 +29,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Component;
 import org.jetbrains.annotations.NonNls;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/5724017946447267512", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "5724017946447267512", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class HintsDialog extends DialogWrapper {
   private ConceptEditorHintPreferencesPage myPage;
   private EditorComponent myComponent;

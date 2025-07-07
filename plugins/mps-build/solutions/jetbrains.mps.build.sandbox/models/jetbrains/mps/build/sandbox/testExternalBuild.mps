@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build" version="-1" />
-    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="7" />
+    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="8" />
   </languages>
   <imports>
     <import index="ffeo" ref="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)" />
@@ -91,7 +91,6 @@
       </concept>
       <concept id="868032131020265945" name="jetbrains.mps.build.mps.structure.BuildMPSPlugin" flags="ng" index="3b7kt6" />
       <concept id="5253498789149381388" name="jetbrains.mps.build.mps.structure.BuildMps_Module" flags="ng" index="3bQrTs">
-        <property id="1500819558096356884" name="doNotCompile" index="2GAjPV" />
         <child id="5253498789149547825" name="sources" index="3bR31x" />
         <child id="5253498789149547704" name="dependencies" index="3bR37C" />
       </concept>
@@ -151,7 +150,6 @@
       <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.build.sandbox" />
       <property role="3LESm3" value="d029512f-7357-432e-b758-ecdc37cc94f5" />
-      <property role="2GAjPV" value="false" />
       <node concept="55IIr" id="6ZfgptGZYOI" role="3LF7KH">
         <node concept="2Ry0Ak" id="6ZfgptGZYYD" role="iGT6I">
           <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
@@ -218,7 +216,7 @@
     <node concept="10PD9b" id="6ZfgptH0kgN" role="10PD9s" />
     <node concept="3b7kt6" id="6ZfgptH0kgP" role="10PD9s" />
     <node concept="2_Ic$z" id="7XMK9W6CC9X" role="3989C9">
-      <property role="TZNOO" value="11" />
+      <property role="TZNOO" value="21" />
     </node>
   </node>
   <node concept="1l3spW" id="70qJ_RossVc">
@@ -287,7 +285,6 @@
       <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.build.sandbox" />
       <property role="3LESm3" value="d029512f-7357-432e-b758-ecdc37cc94f5" />
-      <property role="2GAjPV" value="false" />
       <node concept="55IIr" id="70qJ_RossVo" role="3LF7KH">
         <node concept="2Ry0Ak" id="70qJ_RossVp" role="iGT6I">
           <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
@@ -342,7 +339,7 @@
     <node concept="10PD9b" id="70qJ_RossVr" role="10PD9s" />
     <node concept="3b7kt6" id="70qJ_RossVs" role="10PD9s" />
     <node concept="2_Ic$z" id="7XMK9W6CC9Y" role="3989C9">
-      <property role="TZNOO" value="11" />
+      <property role="TZNOO" value="21" />
     </node>
   </node>
 </model>

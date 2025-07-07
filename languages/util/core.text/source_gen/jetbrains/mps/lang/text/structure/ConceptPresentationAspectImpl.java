@@ -12,7 +12,10 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BulletLine;
   private ConceptPresentation props_BulletPoint;
   private ConceptPresentation props_EmptyParagraphLetter;
+  private ConceptPresentation props_Header;
+  private ConceptPresentation props_HtmlTag;
   private ConceptPresentation props_IHoldComment;
+  private ConceptPresentation props_IHoldDocumentation;
   private ConceptPresentation props_IHoldLines;
   private ConceptPresentation props_IHoldParagraphs;
   private ConceptPresentation props_IParagraph;
@@ -26,6 +29,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Paragraph;
   private ConceptPresentation props_Text;
   private ConceptPresentation props_TextElement;
+  private ConceptPresentation props_TextNodeReference;
   private ConceptPresentation props_TextualElement;
   private ConceptPresentation props_UrlTextualElement;
   private ConceptPresentation props_Word;
@@ -56,12 +60,33 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_EmptyParagraphLetter = cpb.create();
         }
         return props_EmptyParagraphLetter;
+      case LanguageConceptSwitch.Header:
+        if (props_Header == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Header");
+          props_Header = cpb.create();
+        }
+        return props_Header;
+      case LanguageConceptSwitch.HtmlTag:
+        if (props_HtmlTag == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("html tag");
+          cpb.rawPresentation("tag");
+          props_HtmlTag = cpb.create();
+        }
+        return props_HtmlTag;
       case LanguageConceptSwitch.IHoldComment:
         if (props_IHoldComment == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           props_IHoldComment = cpb.create();
         }
         return props_IHoldComment;
+      case LanguageConceptSwitch.IHoldDocumentation:
+        if (props_IHoldDocumentation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IHoldDocumentation = cpb.create();
+        }
+        return props_IHoldDocumentation;
       case LanguageConceptSwitch.IHoldLines:
         if (props_IHoldLines == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -150,6 +175,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TextElement = cpb.create();
         }
         return props_TextElement;
+      case LanguageConceptSwitch.TextNodeReference:
+        if (props_TextNodeReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("reference");
+          props_TextNodeReference = cpb.create();
+        }
+        return props_TextNodeReference;
       case LanguageConceptSwitch.TextualElement:
         if (props_TextualElement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

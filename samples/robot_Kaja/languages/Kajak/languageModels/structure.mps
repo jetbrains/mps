@@ -20,6 +20,7 @@
       </concept>
       <concept id="2756621024541674821" name="jetbrains.mps.lang.resources.structure.TextIcon" flags="ng" index="1irR5M">
         <property id="1358878980655415353" name="iconId" index="2$rrk2" />
+        <child id="8984883884167239995" name="newuiLayers" index="2rmM5M" />
         <child id="2756621024541675110" name="layers" index="1irR9h" />
       </concept>
       <concept id="2756621024541675105" name="jetbrains.mps.lang.resources.structure.Rect" flags="ng" index="1irR9m" />
@@ -103,9 +104,23 @@
     </node>
     <node concept="1irR5M" id="7XjY3bkmQ3" role="rwd14">
       <property role="2$rrk2" value="1" />
+      <node concept="1irR9m" id="4ewN6bBEhpF" role="2rmM5M">
+        <node concept="3PKj8D" id="4ewN6bBEhpG" role="3PKjn_">
+          <property role="3PKj8l" value="EFA0A0" />
+        </node>
+        <node concept="3PKj8D" id="4ewN6bBEhpH" role="3PKjnB">
+          <property role="3PKj8l" value="101010" />
+        </node>
+      </node>
+      <node concept="1irPie" id="4ewN6bBEhpI" role="2rmM5M">
+        <property role="1irPi9" value="S" />
+        <node concept="3PKj8D" id="4ewN6bBEhpJ" role="3PKjny">
+          <property role="3PKj8l" value="0A1A3F" />
+        </node>
+      </node>
       <node concept="1irR9m" id="7XjY3bkmRp" role="1irR9h">
         <node concept="3PKj8D" id="7XjY3bkmRu" role="3PKjn_">
-          <property role="3PKj8l" value="FA1111" />
+          <property role="3PKj8l" value="EFA0A0" />
         </node>
         <node concept="3PKj8D" id="7XjY3bkmRW" role="3PKjnB">
           <property role="3PKj8l" value="101010" />
@@ -412,7 +427,7 @@
       <property role="2$rrk2" value="928359275" />
       <node concept="1irR9m" id="7XjY3bkmTb" role="1irR9h">
         <node concept="3PKj8D" id="7XjY3bkmTc" role="3PKjn_">
-          <property role="3PKj8l" value="BFAACE" />
+          <property role="3PKj8l" value="CFBADE" />
         </node>
         <node concept="3PKj8D" id="7XjY3bkmTd" role="3PKjnB">
           <property role="3PKj8l" value="101010" />

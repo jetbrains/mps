@@ -6,10 +6,11 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
+import jetbrains.mps.textgen.trace.NodeTraceInfo;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 import com.sun.jdi.ReferenceType;
@@ -24,11 +25,11 @@ import com.sun.jdi.ClassNotPreparedException;
 import com.sun.jdi.ObjectCollectedException;
 import java.util.Objects;
 
-@GeneratedClass(node = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)/2891782949125147574", model = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)")
+@GeneratedClass(nodeId = "2891782949125147574", model = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)")
 public class FieldBreakpoint extends JavaBreakpoint implements ILocationBreakpoint {
   private static final Logger LOG = Logger.getLogger(FieldBreakpoint.class);
   private final SNodeReference myNode;
-  private BreakpointLocation myLocation;
+  private NodeTraceInfo myTargetCodeLocation;
 
   public FieldBreakpoint(@NotNull SNodeReference nodePointer, Project project) {
     super(project);
@@ -41,16 +42,21 @@ public class FieldBreakpoint extends JavaBreakpoint implements ILocationBreakpoi
   @NotNull
   @Override
   public BreakpointLocation getLocation() {
-    if (myLocation == null) {
-      myLocation = new BreakpointLocationUpdate(myNode, getRepository()).get();
+    return new BreakpointLocation(myNode);
+  }
+
+  @NotNull
+  protected NodeTraceInfo getTargetCodeLocation() {
+    if (myTargetCodeLocation == null) {
+      myTargetCodeLocation = new BreakpointLocationUpdate(myNode, getRepository()).get();
     }
-    return myLocation;
+    return myTargetCodeLocation;
   }
 
   @Override
   @Nullable
   protected String getClassNameToPrepare() {
-    return getLocation().getTargetUnitName();
+    return getTargetCodeLocation().getUnitName();
   }
   @NotNull
   @Override
@@ -64,7 +70,7 @@ public class FieldBreakpoint extends JavaBreakpoint implements ILocationBreakpoi
   @Override
   protected void createRequestForPreparedClass(EventsProcessor debugProcess, ReferenceType classType) {
     RequestManager requestManager = debugProcess.getRequestManager();
-    TraceablePositionInfo targetCodePosition = getLocation().getTargetCodePosition();
+    TraceablePositionInfo targetCodePosition = getTargetCodeLocation().getPosition();
     String fieldName = (targetCodePosition == null ? null : targetCodePosition.getPropertyString());
     if ((fieldName == null || fieldName.length() == 0)) {
       return;

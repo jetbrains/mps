@@ -81,7 +81,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599926144"), CONCEPTS.InputNode_C$zy, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -106,7 +106,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "4929591503636588644"), CONCEPTS.InputNode_C$zy, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -129,7 +129,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "4929591503636612447"), CONCEPTS.InputNode_C$zy, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_4(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

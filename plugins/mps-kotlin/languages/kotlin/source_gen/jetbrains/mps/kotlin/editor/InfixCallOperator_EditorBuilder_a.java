@@ -196,7 +196,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setDefaultText("<no name>");
         editorCell.setCellId("property_name");
         Style style = new StyleImpl();
-        new METHOD_CALL_StyleKey().apply(style);
+        new METHOD_CALL_StyleKey().apply(this, style);
         editorCell.getStyle().putAll(style);
         BinaryOperator_RemoveFromOperator.setCellActions(editorCell, myNode, getEditorContext());
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));

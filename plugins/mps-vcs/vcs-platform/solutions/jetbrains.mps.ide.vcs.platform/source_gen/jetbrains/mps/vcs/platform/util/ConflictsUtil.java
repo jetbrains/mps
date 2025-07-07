@@ -19,13 +19,15 @@ import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import com.intellij.openapi.application.AccessToken;
+import com.intellij.util.SlowOperations;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusManager;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
-@GeneratedClass(node = "r:e4939376-be00-4167-9510-67715eca6425(jetbrains.mps.vcs.platform.util)/6933307669479741763", model = "r:e4939376-be00-4167-9510-67715eca6425(jetbrains.mps.vcs.platform.util)")
+@GeneratedClass(nodeId = "6933307669479741763", model = "r:e4939376-be00-4167-9510-67715eca6425(jetbrains.mps.vcs.platform.util)")
 public final class ConflictsUtil {
   private ConflictsUtil() {
   }
@@ -60,8 +62,10 @@ public final class ConflictsUtil {
   }
 
   private static boolean isConflictedFile(@NotNull VirtualFile vf, @NotNull Project project) {
-    FileStatus status = FileStatusManager.getInstance(project).getStatus(vf);
-    return FileStatus.MERGED_WITH_CONFLICTS == status || FileStatus.MERGED_WITH_BOTH_CONFLICTS == status;
+    try (AccessToken ignored = SlowOperations.allowSlowOperations("known-issues")) {
+      FileStatus status = FileStatusManager.getInstance(project).getStatus(vf);
+      return FileStatus.MERGED_WITH_CONFLICTS == status || FileStatus.MERGED_WITH_BOTH_CONFLICTS == status;
+    }
   }
 
   private static List<VirtualFile> getConflictingFiles(Iterable<IFile> files, final Project project) {

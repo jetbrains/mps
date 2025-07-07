@@ -11,7 +11,7 @@ import java.awt.Dimension;
 import com.intellij.openapi.util.Disposer;
 import org.jetbrains.annotations.NonNls;
 
-@GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/6400105291801680525", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
+@GeneratedClass(nodeId = "6400105291801680525", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public class MoveNodesDialog extends ModelOrNodeChooserDialog {
   private SModel myModel;
   private ModelFilter myFilter;

@@ -15,30 +15,44 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root nodeRef="r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)/1289622777586550823">
     <file name="MPSBaseLanguage.java">
-      <node id="149206345651493318" at="14,0,15,0" concept="3" trace="mySuccessorIndex" />
-      <node id="1289622777586562755" at="19,22,20,17" concept="2" />
-      <node id="149206345651492458" at="20,17,21,56" concept="2" />
-      <node id="1692372853262412355" at="26,25,27,20" concept="2" />
-      <node id="1692372853262413202" at="27,20,28,28" concept="2" />
-      <node id="149206345651494532" at="34,70,35,51" concept="8" />
-      <node id="149206345651500995" at="36,5,37,16" concept="8" />
-      <node id="1289622777586550825" at="16,0,18,0" concept="1" trace="MPSBaseLanguage#()V" />
-      <node id="149206345651479395" at="33,86,36,5" concept="5" />
-      <node id="1289622777586562750" at="18,0,23,0" concept="6" trace="init#()V" />
-      <node id="1692372853262412348" at="25,0,30,0" concept="6" trace="dispose#()V" />
-      <node id="149206345651479106" at="31,0,39,0" concept="6" trace="findComponent#(Ljava/lang/Class;)null" />
-      <scope id="1289622777586550828" at="16,28,16,28" />
-      <scope id="149206345651479397" at="34,70,35,51" />
-      <scope id="1289622777586550825" at="16,0,18,0" />
-      <scope id="1289622777586562753" at="19,22,21,56" />
-      <scope id="1692372853262412352" at="26,25,28,28" />
-      <scope id="149206345651479118" at="33,86,37,16" />
-      <scope id="1289622777586562750" at="18,0,23,0" />
-      <scope id="1692372853262412348" at="25,0,30,0" />
-      <scope id="149206345651479106" at="31,0,39,0">
+      <node id="149206345651493318" at="16,0,17,0" concept="3" trace="mySuccessorIndex" />
+      <node id="3474473076929741143" at="17,0,18,0" concept="3" trace="myCodeStyleRegistry" />
+      <node id="7213166339297862534" at="19,28,20,111" concept="9" />
+      <node id="1289622777586562755" at="24,22,25,17" concept="2" />
+      <node id="149206345651492458" at="25,17,26,56" concept="2" />
+      <node id="3474473076929742820" at="26,56,27,64" concept="2" />
+      <node id="1692372853262412355" at="31,25,32,20" concept="2" />
+      <node id="3474473076929786989" at="32,20,33,31" concept="2" />
+      <node id="1692372853262413202" at="33,31,34,28" concept="2" />
+      <node id="149206345651494532" at="40,70,41,51" concept="8" />
+      <node id="3474473076929762933" at="43,75,44,54" concept="8" />
+      <node id="149206345651500995" at="45,5,46,16" concept="8" />
+      <node id="7213166339297840269" at="52,64,53,35" concept="8" />
+      <node id="1289622777586550825" at="19,0,22,0" concept="1" trace="MPSBaseLanguage#()V" />
+      <node id="149206345651479395" at="39,86,42,5" concept="5" />
+      <node id="3474473076929748064" at="42,5,45,5" concept="5" />
+      <node id="7213166339297836762" at="50,0,55,0" concept="6" trace="create#(Ljetbrains/mps/components/ComponentHost;)Ljetbrains/mps/components/ComponentPlugin;" />
+      <node id="1289622777586562750" at="23,0,29,0" concept="6" trace="init#()V" />
+      <node id="1692372853262412348" at="30,0,36,0" concept="6" trace="dispose#()V" />
+      <node id="149206345651479106" at="37,0,48,0" concept="6" trace="findComponent#(Ljava/lang/Class;)null" />
+      <scope id="1289622777586550828" at="19,28,20,111" />
+      <scope id="149206345651479397" at="40,70,41,51" />
+      <scope id="3474473076929748066" at="43,75,44,54" />
+      <scope id="7213166339297836770" at="52,64,53,35" />
+      <scope id="1289622777586550825" at="19,0,22,0" />
+      <scope id="1289622777586562753" at="24,22,27,64" />
+      <scope id="1692372853262412352" at="31,25,34,28" />
+      <scope id="7213166339297836762" at="50,0,55,0">
+        <var name="host" id="7213166339297836767" />
+      </scope>
+      <scope id="1289622777586562750" at="23,0,29,0" />
+      <scope id="1692372853262412348" at="30,0,36,0" />
+      <scope id="149206345651479118" at="39,86,46,16" />
+      <scope id="149206345651479106" at="37,0,48,0">
         <var name="componentClass" id="149206345651479113" />
       </scope>
-      <unit id="1289622777586550823" at="12,0,40,0" name="jetbrains.mps.baseLanguage.search.MPSBaseLanguage" />
+      <unit id="4132939098463451518" at="49,0,56,0" name="jetbrains.mps.baseLanguage.search.MPSBaseLanguage$Factory" />
+      <unit id="1289622777586550823" at="14,0,57,0" name="jetbrains.mps.baseLanguage.search.MPSBaseLanguage" />
     </file>
   </root>
   <root nodeRef="r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)/3161373106581137350">

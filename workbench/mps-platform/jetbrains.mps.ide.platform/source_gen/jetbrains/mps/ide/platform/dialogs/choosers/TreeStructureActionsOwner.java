@@ -13,7 +13,7 @@ import com.intellij.ide.util.treeView.smartTree.Sorter;
 /**
  * * @author Konstantin Bulenkov
  */
-@GeneratedClass(node = "r:bfb6ca7e-5411-4ee0-a5c0-1edd33370efd(jetbrains.mps.ide.platform.dialogs.choosers)/121110127371584518", model = "r:bfb6ca7e-5411-4ee0-a5c0-1edd33370efd(jetbrains.mps.ide.platform.dialogs.choosers)")
+@GeneratedClass(nodeId = "121110127371584518", model = "r:bfb6ca7e-5411-4ee0-a5c0-1edd33370efd(jetbrains.mps.ide.platform.dialogs.choosers)")
 /*package*/ class TreeStructureActionsOwner implements TreeActionsOwner {
   private final Set<TreeAction> myActions = new HashSet<TreeAction>();
   private final StructureViewModel myModel;
@@ -37,7 +37,7 @@ import com.intellij.ide.util.treeView.smartTree.Sorter;
         return true;
       }
     }
-    return Sorter.ALPHA_SORTER_ID.equals(name);
+    return Sorter.getAlphaSorterId().equals(name);
   }
   public void setActionIncluded(final TreeAction filter, final boolean selected) {
     if (selected) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,10 @@ import jetbrains.mps.generator.impl.RuleUtil;
 import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import jetbrains.mps.generator.impl.query.ScriptCodeBlock;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateMappingScript;
 import jetbrains.mps.generator.template.MappingScriptContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -61,17 +62,17 @@ public class TemplateMappingScriptInterpreted implements TemplateMappingScript {
   }
 
   @Override
-  public void apply(SModel model, TemplateExecutionEnvironment env) throws GenerationFailureException {
+  public void apply(@NotNull SModel model, @NotNull TemplateContext templateContext) throws GenerationFailureException {
     if (myMissingCodeBlock) {
-      env.getLogger().warning(getScriptNode(), String.format("cannot run script '%s' : no code-block", scriptNode.getName()));
+      templateContext.getEnvironment().getLogger().warning(getScriptNode(), String.format("cannot run script '%s' : no code-block", scriptNode.getName()));
       return;
     }
     if (myCodeBlock == null) {
       SNode codeBlock = RuleUtil.getMappingScript_CodeBlock(scriptNode);
       QueryKey identity = codeBlock == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getScriptNode(), codeBlock.getNodeId());
-      myCodeBlock = env.getQueryProvider(getScriptNode()).getScriptCodeBlock(identity);
+      myCodeBlock = templateContext.getEnvironment().getQueryProvider(getScriptNode()).getScriptCodeBlock(identity);
     }
-    myCodeBlock.invoke(new MappingScriptContext(model, getScriptNode(), env));
+    myCodeBlock.invoke(new MappingScriptContext(model, getScriptNode(), templateContext));
   }
 
   @Override

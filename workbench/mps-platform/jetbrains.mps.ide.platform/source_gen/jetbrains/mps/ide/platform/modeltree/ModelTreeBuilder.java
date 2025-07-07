@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:e180cc3d-e9f2-4c0c-91b4-6730d80d9b23(jetbrains.mps.ide.platform.modeltree)/4288082098349207686", model = "r:e180cc3d-e9f2-4c0c-91b4-6730d80d9b23(jetbrains.mps.ide.platform.modeltree)")
+@GeneratedClass(nodeId = "4288082098349207686", model = "r:e180cc3d-e9f2-4c0c-91b4-6730d80d9b23(jetbrains.mps.ide.platform.modeltree)")
 public abstract class ModelTreeBuilder implements TreeExpansionListener {
   private JTree myTree;
   public ModelTreeBuilder(JTree tree) {

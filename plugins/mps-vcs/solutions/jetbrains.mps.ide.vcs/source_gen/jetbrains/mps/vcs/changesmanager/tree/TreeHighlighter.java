@@ -43,7 +43,7 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNodeListener;
 import com.intellij.util.containers.MultiMap;
 import com.intellij.ide.ui.LafManager;
 
-@GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/9200516641177001205", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
+@GeneratedClass(nodeId = "9200516641177001205", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   private static final Logger LOG = Logger.getLogger(TreeHighlighter.class);
 

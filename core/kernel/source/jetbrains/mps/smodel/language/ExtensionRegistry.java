@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.smodel.language;
 
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
+import jetbrains.mps.classloading.MPSModuleClassLoader;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.logging.Logger;
@@ -109,12 +110,16 @@ public class ExtensionRegistry extends BaseExtensionRegistry implements CoreComp
     monitor.done();
   }
 
-  private ExtensionDescriptor findExtensionDescriptor(SModule mod) {
-    if (mod instanceof ReloadableModule && SModuleOperations.canSupplyExtensionsForMPS(mod)) {
+  private static ExtensionDescriptor findExtensionDescriptor(ReloadableModule mod) {
+    if (SModuleOperations.canSupplyExtensionsForMPS(mod.getModule())) {
       // TODO: more flexible way of loading extensions from a module
       String namespace = mod.getModuleName();
+      // FIXME quick-n-dirty hack for MPS-38457, until I come up with a mechanism to configure location where to take ExtensionDescriptor from
+      if ("jetbrains.mps.ide.refactoring.platform".equals(namespace)) {
+        namespace = "jetbrains.mps.refactoring.participant";
+      }
       String className = namespace + ".plugin.ExtensionDescriptor";
-      Object compiled = getObjectByClassName(className, (ReloadableModule) mod);
+      Object compiled = getObjectByClassName(className, mod.getClassLoader());
       if (compiled instanceof ExtensionDescriptor) {
         return (ExtensionDescriptor) compiled;
       }
@@ -124,9 +129,9 @@ public class ExtensionRegistry extends BaseExtensionRegistry implements CoreComp
   }
 
   @Nullable
-  private static Object getObjectByClassName(String className, ReloadableModule module) {
+  private static Object getObjectByClassName(String className, MPSModuleClassLoader moduleCL) {
     try {
-      Class<?> clazz = module.getOwnClass(className);
+      Class<?> clazz = moduleCL.loadOwnClass(className);
       return clazz.getDeclaredConstructor().newInstance();
     } catch (Throwable e) {
       LOG.trace("error loading class\"" + className + "\"", e);

@@ -13,7 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
  * Scope filtering commented out nodes from the results. It applies only if the provided context node is not commented out,
  * otherwise all nodes are accessible.
  */
-@GeneratedClass(node = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/8607579606528368776", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
+@GeneratedClass(nodeId = "8607579606528368776", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
 public class FilterCommentedScope extends FilteringScope {
   private boolean excludeCommentedOut;
   public FilterCommentedScope(SNode contextNode, @NotNull Scope scope) {

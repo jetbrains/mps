@@ -9,7 +9,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.SModelOperations;
 
-@GeneratedClass(node = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)/5447047924422371423", model = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)")
+@GeneratedClass(nodeId = "5447047924422371423", model = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)")
 public class ReferenceResolverUtils {
   /**
    * In fact, just a check if there are no unknown model imports

@@ -8,7 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/source" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/jetbrains.mps.ide.platform/source_gen" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/migration/source" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -33,6 +32,7 @@
     <orderEntry type="module" module-name="ant-mps-common" />
     <orderEntry type="module" module-name="editing-runtime" />
     <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
-    <orderEntry type="module" module-name="migrations-runtime" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
+    <orderEntry type="module" module-name="vfs-tracking" />
   </component>
 </module>

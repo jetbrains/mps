@@ -13,7 +13,6 @@
     <import index="kart" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:org.xml.sax(JDK/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="mdm6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.persistence.lines(MPS.Core/)" />
-    <import index="5fzo" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.persistence.def(MPS.Core/)" />
     <import index="4it6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.loading(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
@@ -21,6 +20,7 @@
     <import index="llmc" ref="r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)" />
     <import index="iho" ref="r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)" />
     <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
+    <import index="m9tn" ref="r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -91,6 +91,9 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
@@ -147,9 +150,7 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
-      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk">
-        <child id="1212687122400" name="typeParameter" index="1pMfVU" />
-      </concept>
+      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
@@ -291,14 +292,14 @@
       <node concept="3uibUv" id="6FRttwSkizp" role="CQp6X">
         <ref role="3uigEE" to="33ny:~ArrayList" resolve="ArrayList" />
         <node concept="3uibUv" id="6FRttwSkiEV" role="11_B2D">
-          <ref role="3uigEE" to="5fzo:~IReferencePersister" resolve="IReferencePersister" />
+          <ref role="3uigEE" to="m9tn:3l_uSvPr8Lf" resolve="IReferencePersister" />
         </node>
       </node>
     </node>
     <node concept="CQp6Y" id="3pcVzyPOfM9" role="CQp1A">
       <property role="TrG5h" value="visibleModelElements" />
       <node concept="3uibUv" id="3pcVzyPOfMb" role="CQp6X">
-        <ref role="3uigEE" to="5fzo:~SAXVisibleModelElements" resolve="SAXVisibleModelElements" />
+        <ref role="3uigEE" to="m9tn:3l_uSvPr3_1" resolve="SAXVisibleModelElements" />
       </node>
     </node>
     <node concept="CQp6Y" id="3vSwQtv$CKJ" role="CQp1A">
@@ -341,29 +342,33 @@
               </node>
             </node>
             <node concept="3clFbF" id="1YV9CnIzGe2" role="3cqZAp">
-              <node concept="2OqwBi" id="1YV9CnIzGe4" role="3clFbG">
-                <node concept="2OqwBi" id="7FmuP_qrooX" role="2Oq$k0">
-                  <node concept="CQp63" id="5WIcYaGh_f8" role="2Oq$k0">
-                    <ref role="CQp62" node="3vSwQtv$CKJ" resolve="model" />
-                  </node>
-                  <node concept="liA8E" id="7FmuP_qroAq" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~SModel.getImplicitImportsSupport()" resolve="getImplicitImportsSupport" />
-                  </node>
+              <node concept="2OqwBi" id="7FmuP_qrooX" role="3clFbG">
+                <node concept="CQp63" id="5WIcYaGh_f8" role="2Oq$k0">
+                  <ref role="CQp62" node="3vSwQtv$CKJ" resolve="model" />
                 </node>
-                <node concept="liA8E" id="1YV9CnIzGe8" role="2OqNvi">
-                  <ref role="37wK5l" to="w1kc:~ImplicitImportsLegacyHolder.addAdditionalModelVersion(org.jetbrains.mps.openapi.model.SModelReference,int)" resolve="addAdditionalModelVersion" />
-                  <node concept="2YIFZM" id="3I8E8teX1xy" role="37wK5m">
-                    <ref role="37wK5l" to="iho:3I8E8teWORk" resolve="createModelReference" />
-                    <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
-                    <node concept="AH0OO" id="3I8E8teX1Bh" role="37wK5m">
-                      <node concept="3cmrfG" id="3I8E8teX1DH" role="AHEQo">
-                        <property role="3cmrfH" value="0" />
+                <node concept="liA8E" id="7FmuP_qroAq" role="2OqNvi">
+                  <ref role="37wK5l" to="w1kc:~SModel.addModelImport(jetbrains.mps.smodel.SModel$ImportElement)" resolve="addModelImport" />
+                  <node concept="2ShNRf" id="4y5aVLu_FTG" role="37wK5m">
+                    <node concept="1pGfFk" id="4y5aVLu_GS7" role="2ShVmc">
+                      <property role="373rjd" value="true" />
+                      <ref role="37wK5l" to="w1kc:~SModel$ImportElement.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModelReference,int,int)" resolve="SModel.ImportElement" />
+                      <node concept="2YIFZM" id="3I8E8teX1xy" role="37wK5m">
+                        <ref role="37wK5l" to="iho:3I8E8teWORk" resolve="createModelReference" />
+                        <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
+                        <node concept="AH0OO" id="3I8E8teX1Bh" role="37wK5m">
+                          <node concept="3cmrfG" id="3I8E8teX1DH" role="AHEQo">
+                            <property role="3cmrfH" value="0" />
+                          </node>
+                          <node concept="CQp6Q" id="3I8E8teX1zo" role="AHHXb" />
+                        </node>
                       </node>
-                      <node concept="CQp6Q" id="3I8E8teX1zo" role="AHHXb" />
+                      <node concept="3cmrfG" id="4y5aVLu_Iym" role="37wK5m">
+                        <property role="3cmrfH" value="-1" />
+                      </node>
+                      <node concept="37vLTw" id="4y5aVLu_IQT" role="37wK5m">
+                        <ref role="3cqZAo" node="1YV9CnIzGfv" resolve="version" />
+                      </node>
                     </node>
-                  </node>
-                  <node concept="37vLTw" id="3GM_nagTzLD" role="37wK5m">
-                    <ref role="3cqZAo" node="1YV9CnIzGfv" resolve="version" />
                   </node>
                 </node>
               </node>
@@ -521,10 +526,8 @@
               </node>
               <node concept="2ShNRf" id="6FRttwSkoLu" role="37vLTx">
                 <node concept="1pGfFk" id="6FRttwSkoLw" role="2ShVmc">
+                  <property role="373rjd" value="true" />
                   <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
-                  <node concept="3uibUv" id="6FRttwSkoLy" role="1pMfVU">
-                    <ref role="3uigEE" to="5fzo:~IReferencePersister" resolve="IReferencePersister" />
-                  </node>
                 </node>
               </node>
             </node>
@@ -535,8 +538,8 @@
                 <ref role="CQp62" node="3pcVzyPOfM9" resolve="visibleModelElements" />
               </node>
               <node concept="2ShNRf" id="3pcVzyPOfMT" role="37vLTx">
-                <node concept="1pGfFk" id="3pcVzyPOfMV" role="2ShVmc">
-                  <ref role="37wK5l" to="5fzo:~SAXVisibleModelElements.&lt;init&gt;()" resolve="SAXVisibleModelElements" />
+                <node concept="HV5vD" id="3l_uSvPssKt" role="2ShVmc">
+                  <ref role="HV5vE" to="m9tn:3l_uSvPr3_1" resolve="SAXVisibleModelElements" />
                 </node>
               </node>
             </node>
@@ -590,7 +593,7 @@
             <node concept="3cpWsn" id="3pcVzyPOfMX" role="1Duv9x">
               <property role="TrG5h" value="referencePersister" />
               <node concept="3uibUv" id="3pcVzyPOfN0" role="1tU5fm">
-                <ref role="3uigEE" to="5fzo:~IReferencePersister" resolve="IReferencePersister" />
+                <ref role="3uigEE" to="m9tn:3l_uSvPr8Lf" resolve="IReferencePersister" />
               </node>
             </node>
             <node concept="CQp63" id="3pcVzyPOfN1" role="1DdaDG">
@@ -603,7 +606,7 @@
                     <ref role="3cqZAo" node="3pcVzyPOfMX" resolve="referencePersister" />
                   </node>
                   <node concept="liA8E" id="3pcVzyPOfN8" role="2OqNvi">
-                    <ref role="37wK5l" to="5fzo:~IReferencePersister.createReferenceInModel(jetbrains.mps.smodel.SModel,jetbrains.mps.smodel.persistence.def.VisibleModelElements)" resolve="createReferenceInModel" />
+                    <ref role="37wK5l" to="m9tn:3l_uSvPr8LN" resolve="createReferenceInModel" />
                     <node concept="CQp63" id="4bcSNcchNj1" role="37wK5m">
                       <ref role="CQp62" node="3vSwQtv$CKJ" resolve="model" />
                     </node>
@@ -1242,7 +1245,7 @@
                 <ref role="CQp62" node="3pcVzyPOfM9" resolve="visibleModelElements" />
               </node>
               <node concept="liA8E" id="3pcVzyPOfME" role="2OqNvi">
-                <ref role="37wK5l" to="5fzo:~SAXVisibleModelElements.addVisible(int,java.lang.String)" resolve="addVisible" />
+                <ref role="37wK5l" to="m9tn:3l_uSvPr3_l" resolve="addVisible" />
                 <node concept="2YIFZM" id="3pcVzyPOfMG" role="37wK5m">
                   <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String)" resolve="parseInt" />
                   <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />

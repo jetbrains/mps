@@ -94,6 +94,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       style.set(StyleAttributes.LAYOUT_CONSTRAINT, "punctuation");
       style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.blue));
       editorCell.getStyle().putAll(style);
+      editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.HexIntegerLiteral$yn));
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
@@ -113,6 +114,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept IntegerLiteral$73 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129778b846L, "jetbrains.mps.baseLanguage.structure.IntegerLiteral");
+    /*package*/ static final SConcept HexIntegerLiteral$yn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129761e073L, "jetbrains.mps.baseLanguage.structure.HexIntegerLiteral");
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 

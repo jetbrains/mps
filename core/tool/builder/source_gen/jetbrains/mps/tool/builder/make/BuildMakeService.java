@@ -18,7 +18,7 @@ import jetbrains.mps.make.dependencies.MakeSequence;
 import jetbrains.mps.make.service.CoreMakeTask;
 import jetbrains.mps.internal.make.runtime.util.FutureValue;
 
-@GeneratedClass(node = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)/878521226301293123", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
+@GeneratedClass(nodeId = "878521226301293123", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
 public class BuildMakeService extends AbstractMakeService implements IMakeService {
   public BuildMakeService() {
     // FIXME once we install it as IMakeService and use through CoreComponent, don't need to 

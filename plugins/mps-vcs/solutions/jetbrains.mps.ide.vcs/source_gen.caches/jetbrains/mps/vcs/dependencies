@@ -23,6 +23,7 @@
   <uses module="8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)" kind="dp" />
   <uses module="85836058-a162-41d7-bb1d-52e99d873f28(jetbrains.mps.ide.vcs.core)" kind="dp" />
   <uses module="6fd1293f-7f65-4ffd-99dc-4719eca7c171(jetbrains.mps.ide.vcs.platform)" kind="dp" />
+  <uses module="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b(jetbrains.mps.vcs.idea.stubs)" kind="dp" />
   <uses module="f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)" kind="dp" />
 </dependenciesRoot>
 

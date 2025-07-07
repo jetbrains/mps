@@ -20,7 +20,7 @@ public class EnumerationDescriptor_NodePresentationOptions extends EnumerationDe
   private final EnumerationDescriptor.MemberDescriptor myMember_custom__0 = new EnumerationDescriptor.MemberDescriptor("custom_", "custom", 0x10f3fd4377aL, "r:00000000-0000-4000-0000-011c895902bc(jetbrains.mps.lang.sharedConcepts.structure)/4241665505353447423");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10f3fd43778L, 0x10f3fd43779L, 0x10f3fd51d4bL, 0x10f3fd4377aL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_default__0, myMember_referent__0, myMember_custom__0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_default__0, myMember_referent__0, myMember_custom__0);
 
   @Nullable
   @Override

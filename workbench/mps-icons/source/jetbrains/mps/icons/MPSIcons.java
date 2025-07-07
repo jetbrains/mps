@@ -24,7 +24,7 @@ import javax.swing.Icon;
 public class MPSIcons {
   private static Icon load(String path) {
     // XXX used to be IconLoader.getIcon(), but c.i.icons.AllIcons uses IconManager, why wouldn't MPS then?
-    return IconManager.getInstance().getIcon(path, MPSIcons.class);
+    return IconManager.getInstance().getIcon(path, MPSIcons.class.getClassLoader());
   }
   
   public static class Ant {
@@ -116,12 +116,13 @@ public class MPSIcons {
     public static final Icon Structure = load("/nodes/structure.png");
     public static final Icon TestModel = new LayeredIcon(Nodes.Model, AllIcons.Nodes.JunitTestMark);
     public static final Icon TextGen = load("/nodes/textGen.png");
-    public static final Icon TransientModule = load("/nodes/transient.png");
-    public static final Icon TransientModuleDisabled = load("/nodes/transientDisable.png");
+    public static final Icon TransientModule = load("/nodes/transient.svg");
+    public static final Icon TransientModuleDisabled = load("/nodes/transientDisable.svg");
     public static final Icon Type = load("/nodes/type.png");
     public static final Icon Unknown = load("/nodes/unknown.png");
     public static final Icon UsagesResultOverlay = load("/nodes/usages-result-overlay.png");
     public static final Icon UsagesFinder = load("/nodes/usagesFinder.png");
+    public static final Icon TrackRunningTests = load("nodes/jsf/renderer.svg");
 
     public static class Models {
       public static final Icon AspectModel = load("/nodes/models/aspect.png");

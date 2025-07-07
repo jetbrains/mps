@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,15 +21,21 @@ import jetbrains.mps.smodel.IllegalModelAccessException;
 import jetbrains.mps.smodel.InvalidSModel;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.NodeIdentityComponent;
+import jetbrains.mps.smodel.event.DependencyChangeBridge;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
 import jetbrains.mps.smodel.event.ModelListenerDispatch;
+import jetbrains.mps.smodel.event.SModelDevKitEvent;
+import jetbrains.mps.smodel.event.SModelImportEvent;
+import jetbrains.mps.smodel.event.SModelLanguageEvent;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelListener;
+import org.jetbrains.mps.openapi.model.SModelListener.DependencyChange;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -37,6 +43,7 @@ import org.jetbrains.mps.openapi.model.SNodeAccessListener;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -80,7 +87,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   protected SModelBase(@NotNull SModelReference modelReference, @NotNull DataSource source) {
     myModelReference = modelReference;
     mySource = source;
-    myNodeEventDispatch = new ModelEventDispatch(this);
+    myNodeEventDispatch = new ModelEventDispatch(this, this::fireModelNodesChanged);
     myModelEventDispatch = new ModelListenerDispatch();
   }
 
@@ -164,21 +171,18 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   @Override
   @NotNull
   public SModelReference getReference() {
-//    assertCanRead(); model reference is read-only attribute, why care about read lock?
     return myModelReference;
   }
 
   @NotNull
   @Override
   public SModelId getModelId() {
-//    assertCanRead(); model reference is read-only attribute, why care about read lock?
     return myModelReference.getModelId();
   }
 
   @Override
   @Deprecated
   public String getModelName() {
-//    assertCanRead(); model reference is read-only attribute, why care about read lock?
     return myModelReference.getModelName();
   }
 
@@ -191,7 +195,6 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   @Override
   @NotNull
   public DataSource getSource() {
-//    assertCanRead(); Is source access truly read operation over model?
     return mySource;
   }
 
@@ -245,8 +248,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
 
   @Override
   public boolean isReadOnly() {
-//    assertCanRead(); no apparent reason why we shall demand read lock here. Few subclasses, that override the method, do not check access at all.
-    return true;
+    return getSource().isReadOnly(); // reasonable default
   }
 
   /**
@@ -415,6 +417,40 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   }
 
   @Override
+  protected void fireUsedLanguageAdded(SLanguage language) {
+    myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelLanguageEvent(this, language, true)));
+  }
+
+  @Override
+  protected void fireUsedLanguageRemoved(SLanguage language) {
+    myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelLanguageEvent(this, language, false)));
+  }
+
+  @Override
+  protected void fireDevKitAdded(SModuleReference ref) {
+    myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelDevKitEvent(this, ref, true)));
+  }
+
+  @Override
+  protected void fireDevKitRemoved(SModuleReference ref) {
+    myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelDevKitEvent(this, ref, false)));
+  }
+
+  @Override
+  protected void fireModelImportAdded(SModelReference ref) {
+    myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelImportEvent(this, ref, true)));
+  }
+
+  @Override
+  protected void fireModelImportRemoved(SModelReference ref) {
+    myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelImportEvent(this, ref, false)));
+  }
+
+  protected void fireModelNodesChanged() {
+    myModelEventDispatch.nodesChanged(this);
+  }
+
+  @Override
   public void changeModelReference(SModelReference newModelReference) {
     super.changeModelReference(newModelReference);
     myModelReference = newModelReference;
@@ -448,7 +484,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
    * XXX there are two uses in subclasses of not-so-nice EditableSModelBase (lazy and custom) that can't get replaced readily with
    * nice and convenient RegularModelDescriptor.replace() call.
    */
-  protected synchronized void replaceModelAndFireEvent(jetbrains.mps.smodel.SModel oldModel, jetbrains.mps.smodel.SModel newModel) {
+  protected void replaceModelAndFireEvent(jetbrains.mps.smodel.SModel oldModel, jetbrains.mps.smodel.SModel newModel) {
     if (oldModel != null) {
       oldModel.dispose();
     }
@@ -456,7 +492,12 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
       newModel.setModelDescriptor(this, getNodeEventDispatch());
     }
 
-    fireModelReplaced();
+    if (oldModel != null && newModel != null) {
+      // there are events like model 'loaded' (null to something) and 'unloaded' (something to null), I don't see a reason
+      // to distrubute 'replaced' unless both are 'something'. However, there are exceptions (defects), see #unload(),
+      // where explicit fireModelReplaced() is necessary
+      fireModelReplaced();
+    }
 
     if (getRepository() instanceof MPSModuleRepository) { // for a model not yet visible to anyone, no reason to drop a cache
       // FIXME cache invalidation shall be a repository listener, and not done forcefully on model change
@@ -500,7 +541,6 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
 
   /**
    * CLIENTS SHALL NOT USE THIS METHOD. It's public merely to overcome java package boundaries (those of SModelData implementation and this class).
-   * FIXME Once deprecated SModel.setModelDescriptor is removed, visibility shall be changed to protected
    * FIXME This is a hack. We shall pass myEventDispatch the moment internal model is initialized.
    * However, it's tricky to find out exact moment with present approach (getSModelInternal() either
    * returns existing or creates new), fireModeStateChanged is feasible option, but misguiding as well.
@@ -509,7 +549,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
    * loading whole model.
    */
   @NotNull
-  public final ModelEventDispatch getNodeEventDispatch() {
+  protected final ModelEventDispatch getNodeEventDispatch() {
     return myNodeEventDispatch;
   }
 }

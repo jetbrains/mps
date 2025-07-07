@@ -7,7 +7,7 @@ import java.util.concurrent.Executor;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.smodel.ModelAccessBase;
 
-@GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/6543077529522285868", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
+@GeneratedClass(nodeId = "6543077529522285868", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class DefaultReadExecutor implements Executor {
 
   private final ModelAccess myModelAccess;

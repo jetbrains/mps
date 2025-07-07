@@ -9,7 +9,7 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4241451198545478085", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "4241451198545478085", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class ModelAttributeChange extends MetadataChange {
   private static final Logger LOG = Logger.getLogger(ModelAttributeChange.class);
   private final String myKey;

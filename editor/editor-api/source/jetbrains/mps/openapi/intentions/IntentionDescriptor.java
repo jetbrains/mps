@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,12 +37,6 @@ public interface IntentionDescriptor {
   Kind getKind();
 
   boolean isAvailableInChildNodes();
-
-  @ToRemove(version = 2021.1)
-  @Deprecated
-  default boolean isApplicable(SNode node, EditorContext editorContext) {
-    return true;
-  }
 
   @Nullable
   SNodeReference getIntentionNodeReference();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,27 @@
  */
 package jetbrains.mps.project.structure;
 
+import jetbrains.mps.extapi.model.GeneratableSModel;
+import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SnapshotModelData;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
-import org.jetbrains.mps.annotations.Internal;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleRuntime.Extension.MatchRequest;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -50,10 +55,15 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
   private final SModelId myDescriptorModelId = new IntegerSModelId(0x0f040404);
 
   private final Map<SModelReference, DescriptorModel> myModels = Collections.synchronizedMap(new HashMap<>());
+  private final LanguageRegistry myLanguageRegistry;
+
+  public GenericDescriptorModelProvider(LanguageRegistry languageRegistry) {
+    myLanguageRegistry = languageRegistry;
+  }
 
   @Override
   public boolean isApplicable(SModule module) {
-    if (module.isPackaged()) {
+    if (module.isPackaged() || module.isReadOnly() /*isn't isReadOnly enough? isPackaged has to imply r/o, I guess*/) {
       return false;
     }
     // PROVISIONAL, I'd like to test it for solutions first, then would expand to other module kinds.
@@ -61,7 +71,7 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
       return false;
     }
     // For solutions not managed by MPS, no reason to assume generation of descriptor class intended for MPS management.
-    return SModuleOperations.canSupplyExtensionsForMPS(module) && module.getFacet(JavaModuleFacet.class).getLoadClasses() == LoadClasses.ManagedByMPS;
+    return SModuleOperations.canSupplyExtensionsForMPS(module);
     // FIXME LoadClasses.ManagedByMPS is a quick HACK to get solutions like bl.runtime, closures.rt and collections.rt to generate
     //       without any difference. canSupplyExtensionsForMPS() ceased to use CCLF != as a condition,
     //       IDEA-loaded modules that need to contribute into MPS shall use explicit SolutionKind (it's a guess, seems
@@ -80,7 +90,7 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
     SModelReference modelReference = getModelReference(module);
     DescriptorModel dm = myModels.get(modelReference);
     if (dm != null) {
-      dm.invalidate();
+      dm.updateContents(myLanguageRegistry, this);
     } else {
       dm = new DescriptorModel(modelReference, module);
       /*
@@ -96,6 +106,7 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
       // Perhaps, shall add lang.descriptor conditionally once there
       // are extensions/extpoints/lang.plugin elements in the solution?
       dm.addEngagedOnGenerationLanguage(BootstrapLanguages.getLanguageDescriptorLang());
+      dm.updateContents(myLanguageRegistry, this);
       myModels.put(modelReference, dm);
       ((SModuleBase) module).registerModel(dm);
     }
@@ -137,19 +148,81 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
     return new jetbrains.mps.smodel.SModelReference(module.getModuleReference(), myDescriptorModelId, new SModelName(moduleName, SModelStereotype.DESCRIPTOR));
   }
 
-  @Internal
-  public static class DescriptorModel extends TrivialModelDescriptor /*implements GeneratableSModel*/ {
+  /*package*/ static class DescriptorModel extends TrivialModelDescriptor implements GeneratableSModel {
     private final SModule myModule;
     private String myHash;
+
+    private boolean myShallGenerate = false;
 
     DescriptorModel(SModelReference modelReference, SModule module) {
       super(new SnapshotModelData(modelReference));
       myModule = module;
     }
 
-    /*package*/ void invalidate() {
+    @Override
+    public void addRootNode(@NotNull SNode node) {
+      // see LanguageDescriptorModelProvider
+      assertCanChange();
+      getModelData().addRootNode(node);
+    }
 
+    /*package*/ void updateContents(LanguageRegistry languageRegistry, GenericDescriptorModelProvider provider) {
+      myHash = null;
+      myShallGenerate = false;
+      SModelData m = getModelData();
+      ArrayList<SNode> roots = new ArrayList<>();
+      m.getRootNodes().forEach(roots::add);
+      roots.forEach(SNode::delete);
+      languageRegistry.withAvailableExtensions(DescriptorModelContributor.class,
+                                                 new MatchRequest() { /*"solution", "@descriptor" */},
+                                                 e -> e.contribute(provider, myModule, this));
+      myShallGenerate = getRootNodes().iterator().hasNext();
+    }
+
+    @Override
+    public boolean isGeneratable() {
+      return myShallGenerate;
+    }
+
+    @Override
+    public boolean isGenerateIntoModelFolder() {
+      return false;
+    }
+
+    @Override
+    public void setGenerateIntoModelFolder(boolean value) {
+      throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public String getModelHash() {
+      // XXX Language and Generator take module descriptor content/file into account. As long as there's nothing generated from module itself (rather models)
+      //     is there a reason to look into MD then?
+      String hash = myHash;
+      if (hash != null) {
+        return hash;
+      }
+      BigInteger modelHash = BigInteger.ZERO;
+      for (SModel m : myModule.getModels()) {
+        if (m instanceof GeneratableSModel && !SModelStereotype.isDescriptorModel(m)) {
+          String h = ((GeneratableSModel) m).getModelHash();
+          if (h != null) {
+            modelHash = modelHash.xor(new BigInteger(h, Character.MAX_RADIX));
+          }
+        }
+      }
+      myHash = hash = modelHash.toString(Character.MAX_RADIX);
+      return hash;
+    }
+
+    @Override
+    public void setDoNotGenerate(boolean value) {
+      // no-op
+    }
+
+    @Override
+    public boolean isDoNotGenerate() {
+      return false;
     }
   }
-
 }

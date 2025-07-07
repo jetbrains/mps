@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -19,7 +19,7 @@ import org.junit.Assert;
 @MPSLaunch
 public class DefaultCellInfoTest_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(DefaultCellInfoTest_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(DefaultCellInfoTest_Test.class).projectPath(null).modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
 
   public DefaultCellInfoTest_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -39,7 +39,7 @@ public class DefaultCellInfoTest_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5560058483159205760", "5560058483159208304");
-      EditorComponent inspector = myProject.getComponent(InspectorTool.class).getInspector();
+      EditorComponent inspector = InspectorTool.getInstance(myProject).getInspector();
       Set<EditorCell> errorCells = inspector.getCellTracker().getErrorCells();
       Assert.assertTrue(!(errorCells.isEmpty()));
 

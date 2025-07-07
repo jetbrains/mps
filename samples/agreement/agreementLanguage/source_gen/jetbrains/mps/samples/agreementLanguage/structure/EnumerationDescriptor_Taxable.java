@@ -19,7 +19,7 @@ public class EnumerationDescriptor_Taxable extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_tax_free_0 = new EnumerationDescriptor.MemberDescriptor("tax_free", "TAXFREE", 0x103ecb84c9eL, "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/4241665505353448295");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x103ecb77bbfL, 0x103ecb77bc0L, 0x103ecb84c9eL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_taxable_0, myMember_tax_free_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_taxable_0, myMember_tax_free_0);
 
   @Nullable
   @Override

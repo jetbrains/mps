@@ -30,8 +30,10 @@ import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.build.workflow.generator.util.CycleHelper;
 import jetbrains.mps.build.workflow.generator.util.TaskLibrariesHelper;
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
+import jetbrains.mps.generator.runtime.PatternMatch;
 import jetbrains.mps.generator.template.PatternRuleContext;
+import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import java.util.Set;
 import java.util.HashSet;
@@ -47,7 +49,6 @@ import jetbrains.mps.generator.template.MapRootRuleContext;
 import jetbrains.mps.generator.impl.query.PatternRuleQuery;
 import jetbrains.mps.generator.impl.query.ScriptCodeBlock;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.Collection;
 import jetbrains.mps.util.IterableUtil;
@@ -454,33 +455,61 @@ public class QueriesGenerated extends QueryProviderBase {
       new TaskLibrariesHelper(n, _context).importLibs();
     }
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_0(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0le(_quotation_createNode_x583g4_a0a0a0le());
+  public static PatternMatch patternRule_Condition_0_0(final PatternRuleContext _context) {
+    final GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0le(_quotation_createNode_x583g4_a0a0a0le());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
-    return pattern;
+    PatternMatch rv = new PatternMatch() {
+      @Nullable
+      @Override
+      public Object getValue(String name) {
+        return pattern.getFieldValue(name);
+      }
+    };
+    return rv;
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_1(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0me(_quotation_createNode_x583g4_a0a0a0me());
+  public static PatternMatch patternRule_Condition_0_1(final PatternRuleContext _context) {
+    final GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0me(_quotation_createNode_x583g4_a0a0a0me());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
-    return pattern;
+    PatternMatch rv = new PatternMatch() {
+      @Nullable
+      @Override
+      public Object getValue(String name) {
+        return pattern.getFieldValue(name);
+      }
+    };
+    return rv;
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_2(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0ne(_quotation_createNode_x583g4_a0a0a0ne());
+  public static PatternMatch patternRule_Condition_0_2(final PatternRuleContext _context) {
+    final GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0ne(_quotation_createNode_x583g4_a0a0a0ne());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
-    return pattern;
+    PatternMatch rv = new PatternMatch() {
+      @Nullable
+      @Override
+      public Object getValue(String name) {
+        return pattern.getFieldValue(name);
+      }
+    };
+    return rv;
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_3(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0oe(_quotation_createNode_x583g4_a0a0a0oe());
+  public static PatternMatch patternRule_Condition_0_3(final PatternRuleContext _context) {
+    final GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0oe(_quotation_createNode_x583g4_a0a0a0oe());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
-    return pattern;
+    PatternMatch rv = new PatternMatch() {
+      @Nullable
+      @Override
+      public Object getValue(String name) {
+        return pattern.getFieldValue(name);
+      }
+    };
+    return rv;
   }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
     StringBuilder res = new StringBuilder();
@@ -584,7 +613,7 @@ public class QueriesGenerated extends QueryProviderBase {
       this.methodKey = methodKey;
     }
     @Override
-    public GeneratedMatchingPattern pattern(@NotNull PatternRuleContext ctx) throws GenerationFailureException {
+    public PatternMatch match(@NotNull PatternRuleContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
           return QueriesGenerated.patternRule_Condition_0_0(ctx);

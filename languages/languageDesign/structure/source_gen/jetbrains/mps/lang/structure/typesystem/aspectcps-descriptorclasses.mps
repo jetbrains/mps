@@ -10985,7 +10985,7 @@
                         <uo k="s:originTrace" v="n:1075010451650597102" />
                       </node>
                       <node concept="liA8E" id="OS" role="2OqNvi">
-                        <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object):void" resolve="putValue" />
+                        <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object)" resolve="putValue" />
                         <uo k="s:originTrace" v="n:1075010451650614547" />
                         <node concept="2OqwBi" id="OT" role="37wK5m">
                           <uo k="s:originTrace" v="n:1075010451650615785" />
@@ -11025,7 +11025,7 @@
                           <uo k="s:originTrace" v="n:1588368162885982721" />
                         </node>
                         <node concept="liA8E" id="P6" role="2OqNvi">
-                          <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object):void" resolve="putValue" />
+                          <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object)" resolve="putValue" />
                           <uo k="s:originTrace" v="n:1588368162885982722" />
                           <node concept="2OqwBi" id="P7" role="37wK5m">
                             <uo k="s:originTrace" v="n:1588368162885982723" />
@@ -11095,7 +11095,7 @@
                         <uo k="s:originTrace" v="n:1075010451650621983" />
                       </node>
                       <node concept="liA8E" id="Pn" role="2OqNvi">
-                        <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object):void" resolve="putValue" />
+                        <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object)" resolve="putValue" />
                         <uo k="s:originTrace" v="n:1075010451650639015" />
                         <node concept="2OqwBi" id="Po" role="37wK5m">
                           <uo k="s:originTrace" v="n:1075010451650640470" />
@@ -11136,7 +11136,7 @@
               <uo k="s:originTrace" v="n:1075010451650847367" />
             </node>
             <node concept="liA8E" id="Pw" role="2OqNvi">
-              <ref role="37wK5l" to="yg2w:~MultiMap.entrySet():java.util.Set" resolve="entrySet" />
+              <ref role="37wK5l" to="yg2w:~MultiMap.entrySet()" resolve="entrySet" />
               <uo k="s:originTrace" v="n:1075010451650849240" />
             </node>
           </node>
@@ -11161,7 +11161,7 @@
                     <uo k="s:originTrace" v="n:1075010451650850081" />
                   </node>
                   <node concept="liA8E" id="PC" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~Map$Entry.getValue():java.lang.Object" resolve="getValue" />
+                    <ref role="37wK5l" to="33ny:~Map$Entry.getValue()" resolve="getValue" />
                     <uo k="s:originTrace" v="n:1075010451650955954" />
                   </node>
                 </node>
@@ -11286,7 +11286,7 @@
               <uo k="s:originTrace" v="n:1075010451651620236" />
             </node>
             <node concept="liA8E" id="Qd" role="2OqNvi">
-              <ref role="37wK5l" to="yg2w:~MultiMap.entrySet():java.util.Set" resolve="entrySet" />
+              <ref role="37wK5l" to="yg2w:~MultiMap.entrySet()" resolve="entrySet" />
               <uo k="s:originTrace" v="n:1075010451651608052" />
             </node>
           </node>
@@ -11311,7 +11311,7 @@
                     <uo k="s:originTrace" v="n:1075010451651608059" />
                   </node>
                   <node concept="liA8E" id="Ql" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~Map$Entry.getValue():java.lang.Object" resolve="getValue" />
+                    <ref role="37wK5l" to="33ny:~Map$Entry.getValue()" resolve="getValue" />
                     <uo k="s:originTrace" v="n:1075010451651608060" />
                   </node>
                 </node>

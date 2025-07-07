@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 @MPSLaunch
 public class Pattern_References_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(Pattern_References_Test.class, "${mps_home}", "r:ef0e231b-e6bd-436f-9003-b53de4081716(jetbrains.mps.lang.pattern.test)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Pattern_References_Test.class).projectPath(null).modelRef("r:ef0e231b-e6bd-436f-9003-b53de4081716(jetbrains.mps.lang.pattern.test)").reopenProject(null).build());
 
   public Pattern_References_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -46,16 +46,21 @@ public class Pattern_References_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8950533135207579924");
+    }
+
     public void test_toHangingNode() throws Exception {
-      runWithinCommand(() -> addNodeById("8950533135207579924"));
+      initTestNodes();
       runWithinCommand(() -> {
         SNode vd = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"));
         boolean matches;
         {
-          SNode matchedNode_kxljzf_c0a = _quotation_createNode_1sosjx_a0a0c0a0b0d8(vd);
+          SNode matchedNode_kxljzf_c0a = _quotation_createNode_1sosjx_a0a0c0a0b0f8(vd);
           {
             boolean matches_kxljzf_a2a0 = false;
-            GeneratedMatchingPattern matchingPattern_kxljzf_a2a0 = new Pattern_kxljzf_a0b0b0c0a(_quotation_createNode_1sosjx_a0a0b0b0c0a0b0d8(vd));
+            GeneratedMatchingPattern matchingPattern_kxljzf_a2a0 = new Pattern_kxljzf_a0b0b0c0a(_quotation_createNode_1sosjx_a0a0b0b0c0a0b0f8(vd));
             matches_kxljzf_a2a0 = matchingPattern_kxljzf_a2a0.match(matchedNode_kxljzf_c0a);
             if (matches_kxljzf_a2a0) {
               matches = true;
@@ -68,14 +73,14 @@ public class Pattern_References_Test extends BaseTransformationTest {
       });
     }
     public void test_toRepositoryNode() throws Exception {
-      runWithinCommand(() -> addNodeById("8950533135207579924"));
+      initTestNodes();
       runWithinCommand(() -> {
         boolean matches;
         {
-          SNode matchedNode_kxljzf_b0b = _quotation_createNode_1sosjx_a0a0b0a0b0e8(getNodeById("8950533135207579936"));
+          SNode matchedNode_kxljzf_b0b = _quotation_createNode_1sosjx_a0a0b0a0b0g8(getAnnotatedNode("variableToReference"));
           {
             boolean matches_kxljzf_a1a1 = false;
-            GeneratedMatchingPattern matchingPattern_kxljzf_a1a1 = new Pattern_kxljzf_a0b0b0b0b(_quotation_createNode_1sosjx_a0a0b0b0b0a0b0e8(getNodeById("8950533135207579936")));
+            GeneratedMatchingPattern matchingPattern_kxljzf_a1a1 = new Pattern_kxljzf_a0b0b0b0b(_quotation_createNode_1sosjx_a0a0b0b0b0a0b0g8(getAnnotatedNode("variableToReference")));
             matches_kxljzf_a1a1 = matchingPattern_kxljzf_a1a1.match(matchedNode_kxljzf_b0b);
             if (matches_kxljzf_a1a1) {
               matches = true;
@@ -88,14 +93,14 @@ public class Pattern_References_Test extends BaseTransformationTest {
       });
     }
     public void test_toOwnNode() throws Exception {
-      runWithinCommand(() -> addNodeById("8950533135207579924"));
+      initTestNodes();
       runWithinCommand(() -> {
         boolean matches;
         {
-          SNode matchedNode_kxljzf_b0c = _quotation_createNode_1sosjx_a0a0b0a0b0f8();
+          SNode matchedNode_kxljzf_b0c = _quotation_createNode_1sosjx_a0a0b0a0b0h8();
           {
             boolean matches_kxljzf_a1a2 = false;
-            GeneratedMatchingPattern matchingPattern_kxljzf_a1a2 = new Pattern_kxljzf_a0b0b0b0c(_quotation_createNode_1sosjx_a0a0b0b0b0a0b0f8());
+            GeneratedMatchingPattern matchingPattern_kxljzf_a1a2 = new Pattern_kxljzf_a0b0b0b0c(_quotation_createNode_1sosjx_a0a0b0b0b0a0b0h8());
             matches_kxljzf_a1a2 = matchingPattern_kxljzf_a1a2.match(matchedNode_kxljzf_b0c);
             if (matches_kxljzf_a1a2) {
               matches = true;
@@ -108,7 +113,7 @@ public class Pattern_References_Test extends BaseTransformationTest {
       });
     }
 
-    private static SNode _quotation_createNode_1sosjx_a0a0c0a0b0d8(Object parameter_1) {
+    private static SNode _quotation_createNode_1sosjx_a0a0c0a0b0f8(Object parameter_1) {
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
       SNode quotedNode_4 = null;
@@ -128,7 +133,7 @@ public class Pattern_References_Test extends BaseTransformationTest {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), quotedNode_3);
       return quotedNode_2;
     }
-    private static SNode _quotation_createNode_1sosjx_a0a0b0b0c0a0b0d8(Object parameter_1) {
+    private static SNode _quotation_createNode_1sosjx_a0a0b0b0c0a0b0f8(Object parameter_1) {
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
       SNode quotedNode_4 = null;
@@ -148,7 +153,7 @@ public class Pattern_References_Test extends BaseTransformationTest {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), quotedNode_3);
       return quotedNode_2;
     }
-    private static SNode _quotation_createNode_1sosjx_a0a0b0a0b0e8(Object parameter_1) {
+    private static SNode _quotation_createNode_1sosjx_a0a0b0a0b0g8(Object parameter_1) {
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
       SNode quotedNode_4 = null;
@@ -168,7 +173,7 @@ public class Pattern_References_Test extends BaseTransformationTest {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), quotedNode_3);
       return quotedNode_2;
     }
-    private static SNode _quotation_createNode_1sosjx_a0a0b0b0b0a0b0e8(Object parameter_1) {
+    private static SNode _quotation_createNode_1sosjx_a0a0b0b0b0a0b0g8(Object parameter_1) {
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
       SNode quotedNode_4 = null;
@@ -188,7 +193,7 @@ public class Pattern_References_Test extends BaseTransformationTest {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), quotedNode_3);
       return quotedNode_2;
     }
-    private static SNode _quotation_createNode_1sosjx_a0a0b0a0b0f8() {
+    private static SNode _quotation_createNode_1sosjx_a0a0b0a0b0h8() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
@@ -208,7 +213,7 @@ public class Pattern_References_Test extends BaseTransformationTest {
       quotedNode_4.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), quotedNode_2);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_1sosjx_a0a0b0b0b0a0b0f8() {
+    private static SNode _quotation_createNode_1sosjx_a0a0b0b0b0a0b0h8() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;

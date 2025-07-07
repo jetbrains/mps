@@ -45,7 +45,7 @@ import java.util.Collections;
  * Conclusion: we have to gradually move to the group listeners and group vfs notifications
  * AP
  */
-@GeneratedClass(node = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/7799350397880363259", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
+@GeneratedClass(nodeId = "7799350397880363259", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
 public class FileSystemListenersContainer {
   private final ReadWriteLock myLock = new ReentrantReadWriteLock();
   private final Node myRootNode = new Node(null, null);

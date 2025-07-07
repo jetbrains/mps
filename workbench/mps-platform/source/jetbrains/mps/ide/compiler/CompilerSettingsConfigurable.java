@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,8 @@ import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent.JavaVersion;
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.compiler.CompilerSettingsComponent.CompilerState;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -50,12 +52,6 @@ public class CompilerSettingsConfigurable implements SearchableConfigurable {
   @Override
   public String getId() {
     return "mps.compiler";
-  }
-
-  @Nullable
-  @Override
-  public Runnable enableSearch(String option) {
-    return null;
   }
 
   @Nls
@@ -93,7 +89,7 @@ public class CompilerSettingsConfigurable implements SearchableConfigurable {
     }
     CompilerSettingsComponent instance = CompilerSettingsComponent.getInstance(myProject);
     MPSProject project = ProjectHelper.fromIdeaProject(myProject);
-    JavaVersion oldJavaVer = JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(project).getTargetJavaVersion();
+    JavaVersion oldJavaVer = MPSCoreComponents.getInstance().getPlatform().findComponent(JavaCompilerOptionsComponent.class).getJavaCompilerOptions(project).getTargetJavaVersion();
     instance.loadState(compilerState);
     if (selectedTargetJavaVersion != oldJavaVer) {
       UIUtil.invokeLaterIfNeeded(() -> {
@@ -111,10 +107,6 @@ public class CompilerSettingsConfigurable implements SearchableConfigurable {
   @Override
   public void reset() {
     getPreferencePage().reset();
-  }
-
-  @Override
-  public void disposeUIResources() {
   }
 
   private CompilerSettingsPreferencePage getPreferencePage() {

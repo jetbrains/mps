@@ -28,7 +28,7 @@ import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)/846214144107996102", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
+@GeneratedClass(nodeId = "846214144107996102", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
 public abstract class EvaluationContainer implements IEvaluationContainer {
   protected final Project myProject;
   protected final SModuleReference myContainerModule;

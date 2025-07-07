@@ -24,7 +24,7 @@ import com.intellij.execution.process.ProcessEvent;
 import java.util.concurrent.TimeUnit;
 import com.intellij.openapi.application.ApplicationManager;
 
-@GeneratedClass(node = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)/3908032508224771422", model = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)")
+@GeneratedClass(nodeId = "3908032508224771422", model = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)")
 public class ProcessHandlerBuilder {
   private static final Logger LOG = Logger.getLogger(ProcessHandlerBuilder.class);
 

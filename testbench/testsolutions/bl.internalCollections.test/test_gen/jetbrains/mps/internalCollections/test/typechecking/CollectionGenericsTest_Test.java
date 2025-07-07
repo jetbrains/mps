@@ -6,22 +6,20 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckTypesAction;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.project.ProjectBase;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.Arrays;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 
 @MPSLaunch
 public class CollectionGenericsTest_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(CollectionGenericsTest_Test.class, "${mps_home}", "r:ea0833ca-e474-4ae3-b6d3-3f8d18af5a89(jetbrains.mps.internalCollections.test.typechecking@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CollectionGenericsTest_Test.class).projectPath(null).modelRef("r:ea0833ca-e474-4ae3-b6d3-3f8d18af5a89(jetbrains.mps.internalCollections.test.typechecking@tests)").reopenProject(null).build());
 
   public CollectionGenericsTest_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -46,30 +44,24 @@ public class CollectionGenericsTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeTypeCheck6802806833293299754() throws Exception {
-      runWithinCommand(() -> addNodeById("6802806833293299878"));
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6802806833293238268");
+    }
 
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("6802806833293297796");
-        SNode operation = getRealNodeById("6802806833293299754");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("6802806833293299878"));
-      });
+    public void test_NodeTypeCheck6802806833293299754() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("6802806833293297796")).checkTypeIs(getNodeById("6802806833293299878")));
     }
     public void test_NodeTypeCheck6802806833293340692() throws Exception {
-      runWithinCommand(() -> addNodeById("6802806833293341030"));
-
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("6802806833293339382");
-        SNode operation = getRealNodeById("6802806833293340692");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("6802806833293341030"));
-      });
+      initTestNodes();
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("6802806833293339382")).checkTypeIs(getNodeById("6802806833293341030")));
     }
     public void test_ErrorMessagesCheck6802806833293252920() throws Exception {
-
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("6802806833293238277");
-        SNode operation = getRealNodeById("6802806833293252920");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+        SNode nodeToCheck = getNodeById("6802806833293238277");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
       });
     }
 

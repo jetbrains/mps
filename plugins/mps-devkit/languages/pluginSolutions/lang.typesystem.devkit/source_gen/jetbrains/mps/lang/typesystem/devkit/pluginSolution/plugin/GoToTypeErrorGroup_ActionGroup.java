@@ -33,6 +33,7 @@ public class GoToTypeErrorGroup_ActionGroup extends GeneratedActionGroup {
     setIsAlwaysVisible(false);
     setIsInternal(false);
     setPopup(true);
+    getTemplatePresentation().setHideGroupIfEmpty(true);
   }
   public void doUpdate(AnActionEvent event) {
     removeAll();
@@ -73,9 +74,5 @@ public class GoToTypeErrorGroup_ActionGroup extends GeneratedActionGroup {
   }
   public boolean isStrict() {
     return false;
-  }
-  @Override
-  public boolean hideIfNoVisibleChildren() {
-    return true;
   }
 }

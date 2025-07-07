@@ -4,7 +4,7 @@ package jetbrains.mps.make.resources;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:4ea5a78b-cb8a-4831-b227-f7860a22491d(jetbrains.mps.make.resources)/2958721966247231626", model = "r:4ea5a78b-cb8a-4831-b227-f7860a22491d(jetbrains.mps.make.resources)")
+@GeneratedClass(nodeId = "2958721966247231626", model = "r:4ea5a78b-cb8a-4831-b227-f7860a22491d(jetbrains.mps.make.resources)")
 public interface IResourceWithProperties {
   IPropertiesIO getProperties();
 }

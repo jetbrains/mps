@@ -19,21 +19,22 @@
   <name>MPS Core</name>
   <category>Custom Languages</category>
   <description>The plugin provides support for MPS in IDEA</description>
-  <version>2023.2.4</version>
+  <version>2025.1</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="232.1" until-build="233.1"/>
+  <idea-version since-build="251.1" until-build="252.1"/>
 
   <depends optional="true" config-file="idea-support.xml">com.intellij.modules.java</depends>
   <depends optional="true" config-file="intellij-ides-support.xml">com.intellij.modules.platform</depends>
 
   <application-components>
-    <component>
+    <!--component>
+      Now an App Service, and no longer part of mps-workbench, rather mps-platform (contributed by j.m.ide.platform module activator)
       <interface-class>jetbrains.mps.make.IMakeService</interface-class>
       <implementation-class>jetbrains.mps.ide.make.WorkbenchMakeService</implementation-class>
-    </component>
-    <component>
+    </component -->
+    <!-- component>
       <implementation-class>jetbrains.mps.idea.core.navigation.NavigationSupportImpl</implementation-class>
-    </component>
+    </component -->
     <component>
       <implementation-class>jetbrains.mps.idea.core.refactoring.RefactoringAccessImpl$Plug</implementation-class>
     </component>
@@ -50,9 +51,6 @@
       <implementation-class>jetbrains.mps.idea.core.project.stubs.JdkStubSolutionManager</implementation-class>
     </component>
 
-    <component>
-      <implementation-class>jetbrains.mps.repository.RepositoryInPluginInitializer</implementation-class>
-    </component>
     <component>
       <implementation-class>jetbrains.mps.idea.core.project.PluginsPathMacroCrutch</implementation-class>
     </component>
@@ -135,7 +133,7 @@
     -->
     <!-- IMPORTANT keep it in sync with build.xml runTests target, otherwise jps tests fill fail -->
     <compileServer.plugin
-            classpath="jps/mps-core-jps-plugin.jar;jps/mps-core-jps-plugin-j8.jar;mps-common.jar;mpsant/mps-tool.jar;mps-core.jar;mps-references.jar;mps-openapi.jar;mps-collections.jar;mps-closures.jar;mps-tuples.jar;mps-editor-api.jar;mps-platform.jar;mps-behavior-api.jar;mps-behavior-runtime.jar;mps-boot-util.jar;mps-annotations.jar;mps-project-check.jar;mps-generator.jar;mps-textgen.jar;mps-persistence.jar;mps-constraints-runtime.jar;mps-context.jar;mps-feedback-api.jar;mps-messages-api.jar;mps-problem.jar;mps-messages-for-rules.jar;mps-messages-for-structure.jar;mps-messages-for-legacy-constraints.jar"/>
+            classpath="jps/mps-core-jps-plugin.jar;jps/mps-core-jps-plugin-j8.jar;mps-common.jar;mpsant/mps-tool.jar;mps-core.jar;mps-references.jar;mps-openapi.jar;mps-collections.jar;mps-closures.jar;mps-tuples.jar;mps-editor-api.jar;mps-platform.jar;mps-behavior-api.jar;mps-behavior-runtime.jar;mps-boot-util.jar;mps-annotations.jar;mps-project-check.jar;mps-generator.jar;mps-textgen.jar;mps-persistence.jar;mps-constraints-runtime.jar;mps-context.jar;mps-feedback-api.jar;mps-messages-api.jar;mps-problem.jar;mps-messages-for-rules.jar;mps-messages-for-structure.jar;mps-messages-for-legacy-constraints.jar;mps-scripts-rt.jar"/>
     <buildProcess.parametersProvider implementation="jetbrains.mps.idea.build.MPSBuildProcessParametersProvider"/>
     <library.type implementation="jetbrains.mps.idea.core.library.ModuleLibraryType"/>
     <projectConfigurable parentId="preferences.sourceCode" displayName="MPS" instance="jetbrains.mps.ide.codeStyle.CodeStyleSettingsConfigurable" order="first"/>
@@ -212,18 +210,6 @@
               class="jetbrains.mps.idea.core.actions.NewModelAction"/>
       <action id="jetbrains.mps.idea.core.actions.MakeDirAModel"
               class="jetbrains.mps.idea.core.actions.MakeDirAModel"/>
-      <action id="jetbrains.mps.idea.core.actions.AddFirstLanguageImport"
-              class="jetbrains.mps.idea.core.actions.AddFirstLanguageImport">
-      </action>
     </group>
-    <unregister id="jetbrains.mps.ide.editor.actions.AddLanguageImport_Action"/>
-    <action id="jetbrains.mps.idea.core.actions.UseLanguageAction"
-            class="jetbrains.mps.idea.core.actions.UseLanguageAction">
-      <!-- Copied from AddLanguageImport_Action declaration at MPSEditorActions.xml-->
-      <keyboard-shortcut first-keystroke="ctrl L" keymap="$default" />
-      <keyboard-shortcut first-keystroke="ctrl L" keymap="Mac OS X" />
-      <keyboard-shortcut first-keystroke="ctrl L" keymap="Mac OS X 10.5+" />
-      <add-to-group group-id="jetbrains.mps.ide.editor.actions.IDE_Edit_ActionGroup" anchor="after" relative-to-action="jetbrains.mps.ide.editor.actions.AddModelImportByRoot_Action"/>
-    </action>
   </actions>
 </idea-plugin>

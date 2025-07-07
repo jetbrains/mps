@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 import java.util.Objects;
 import java.util.regex.Matcher;
 
-@GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/315679020132025010", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
+@GeneratedClass(nodeId = "315679020132025010", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public class FqName {
   private static Pattern NAMESPACE = Pattern.compile("(.+)\\.(.+)$");
   private static final String DEFAULT_NS = "<default>";

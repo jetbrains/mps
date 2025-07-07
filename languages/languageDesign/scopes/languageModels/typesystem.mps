@@ -30,6 +30,7 @@
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
+      <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -277,28 +278,27 @@
             </node>
           </node>
         </node>
-        <node concept="3fqX7Q" id="70qA1hy$CJF" role="3clFbw">
-          <node concept="2OqwBi" id="70qA1hy$CJG" role="3fr31v">
-            <node concept="2OqwBi" id="70qA1hy$CJH" role="2Oq$k0">
-              <node concept="2OqwBi" id="70qA1hy$CJI" role="2Oq$k0">
-                <node concept="1YBJjd" id="70qA1hy$CJS" role="2Oq$k0">
-                  <ref role="1YBMHb" node="70qA1hy$CJz" resolve="expr" />
-                </node>
-                <node concept="2Xjw5R" id="70qA1hy$CJK" role="2OqNvi">
-                  <node concept="1xMEDy" id="70qA1hy$CJL" role="1xVPHs">
-                    <node concept="chp4Y" id="70qA1hy$CJM" role="ri$Ld">
-                      <ref role="cht4Q" to="1i04:hP3i0lY" resolve="ConceptMethodDeclaration" />
+        <node concept="3fqX7Q" id="15yj99ykzXj" role="3clFbw">
+          <node concept="1eOMI4" id="15yj99ykzXt" role="3fr31v">
+            <node concept="17R0WA" id="15yj99ykzhW" role="1eOMHV">
+              <node concept="2OqwBi" id="70qA1hy$CJH" role="3uHU7B">
+                <node concept="2OqwBi" id="70qA1hy$CJI" role="2Oq$k0">
+                  <node concept="1YBJjd" id="70qA1hy$CJS" role="2Oq$k0">
+                    <ref role="1YBMHb" node="70qA1hy$CJz" resolve="expr" />
+                  </node>
+                  <node concept="2Xjw5R" id="70qA1hy$CJK" role="2OqNvi">
+                    <node concept="1xMEDy" id="70qA1hy$CJL" role="1xVPHs">
+                      <node concept="chp4Y" id="70qA1hy$CJM" role="ri$Ld">
+                        <ref role="cht4Q" to="1i04:hP3i0lY" resolve="ConceptMethodDeclaration" />
+                      </node>
                     </node>
                   </node>
                 </node>
+                <node concept="3TrcHB" id="70qA1hy$CJN" role="2OqNvi">
+                  <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                </node>
               </node>
-              <node concept="3TrcHB" id="70qA1hy$CJN" role="2OqNvi">
-                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
-              </node>
-            </node>
-            <node concept="liA8E" id="70qA1hy$CJO" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-              <node concept="Xl_RD" id="70qA1hy$CJP" role="37wK5m">
+              <node concept="Xl_RD" id="70qA1hy$CJP" role="3uHU7w">
                 <property role="Xl_RC" value="getScope" />
               </node>
             </node>

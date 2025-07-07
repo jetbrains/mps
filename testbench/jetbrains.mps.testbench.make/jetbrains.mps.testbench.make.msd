@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.testbench.make" uuid="79f9d103-4ff6-4def-9c1a-27070f9ba255" moduleVersion="0" generatorOutputPath="${mps_home}/testbench/tests_gen">
+<solution name="jetbrains.mps.testbench.make" uuid="79f9d103-4ff6-4def-9c1a-27070f9ba255" moduleVersion="0" generatorOutputPath="${module}/tests_gen">
   <compileInIDEA />
   <models>
     <modelRoot contentPath="${module}" type="default">

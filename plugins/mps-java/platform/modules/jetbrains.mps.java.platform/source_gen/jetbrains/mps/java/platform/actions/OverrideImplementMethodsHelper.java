@@ -18,12 +18,14 @@ import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Map;
 import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -31,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/8838506468326693471", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
+@GeneratedClass(nodeId = "8838506468326693471", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class OverrideImplementMethodsHelper {
   private Project myProject;
   /*package*/ SNode myClassifier;
@@ -94,7 +96,9 @@ public class OverrideImplementMethodsHelper {
         }
       }
       if (isNeedAddAnnotation) {
-        ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$K49I)).addElement(_quotation_createNode_tfz3o4_a0a0a2a2a11());
+        SNode oa = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance"));
+        SLinkOperations.setTarget(oa, LINKS.annotation$12Ek, SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override"), SNodeOperations.getModel(method).getRepository()));
+        ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$K49I)).addElement(oa);
       }
     }
 
@@ -182,13 +186,6 @@ public class OverrideImplementMethodsHelper {
     for (SNode child : SNodeOperations.getChildren(node)) {
       setVariableNames(child, usedNames);
     }
-  }
-  private static SNode _quotation_createNode_tfz3o4_a0a0a2a2a11() {
-    SNode quotedNode_1 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x114a6b4ccabL, "AnnotationInstance"));
-    quotedNode_1 = nb.getResult();
-    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Override");
-    return quotedNode_1;
   }
   private static SNode _quotation_createNode_tfz3o4_a0a0a0a4a11(Object parameter_1) {
     SNode quotedNode_2 = null;

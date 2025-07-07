@@ -11,7 +11,7 @@ import org.apache.tools.ant.Task;
  * Logs both output and error streams of a forked process as calls to {@code log} method.
  * This is done so as to emulate the same behaviour of running test locally as well as on TeamCity. 
  */
-@GeneratedClass(node = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)/1651753373022306807", model = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)")
+@GeneratedClass(nodeId = "1651753373022306807", model = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)")
 public class OutputLoggingStreamHandler extends MyExecuteStreamHandler implements ExecuteStreamHandler {
   public OutputLoggingStreamHandler(Task task) {
     super(task);

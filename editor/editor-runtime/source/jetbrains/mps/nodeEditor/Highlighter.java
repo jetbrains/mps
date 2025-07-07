@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,12 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.diagnostic.StartUpPerformanceService;
 import com.intellij.ide.PowerSaveMode;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationListener;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.CommandEvent;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.IndexNotReadyException;
@@ -30,14 +30,10 @@ import com.intellij.util.ConcurrencyUtil;
 import com.intellij.util.concurrency.EdtExecutorService;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.DeployListener;
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.MakeServiceComponent;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.nodeEditor.checking.EditorChecker;
 import jetbrains.mps.nodeEditor.highlighter.EditorCheckerWrapper;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
@@ -50,14 +46,18 @@ import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.smodel.event.SModelImportEvent;
 import jetbrains.mps.smodel.event.SModelReplacedEvent;
-import org.jetbrains.annotations.NonNls;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentChange;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
+import jetbrains.mps.util.annotation.AccessAsPlatformService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.repository.CommandListener;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -68,13 +68,12 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class Highlighter implements IHighlighter, ProjectComponent {
+@AccessAsPlatformService
+public class Highlighter implements IHighlighter, Disposable {
   private static final Logger LOG = Logger.getLogger(Highlighter.class);
 
   private volatile boolean myPaused;
-  private final com.intellij.openapi.command.CommandListener myCommandListener = new PauseDuringCommandOrUndoTransparentAction();
-
-  private final ClassLoaderManager myClassLoaderManager;
+  private volatile boolean initialEntireFileHighlightingReported = false;
   private ScheduledExecutorService myBackgroundExecutor;
   private ScheduleHighlighterUpdate myScheduleHighlighterUpdate;
 
@@ -83,15 +82,20 @@ public class Highlighter implements IHighlighter, ProjectComponent {
 
   private final List<EditorCheckerWrapper> myCheckers = new CopyOnWriteArrayList<>();
 
+  private final List<HighlighterContribution> myContributors = new ArrayList<>();
+
   /**
    * Whether to force running all checkers in power-save mode. Accessed from the highlighter thread only, therefore non-volatile.
    */
   private boolean myForceUpdateInPowerSaveModeFlag = false;
-  private InspectorTool myInspectorTool;
 
-  private final DeployListener myClassesListener = new DeployListener() {
+  private InspectorTool getInspectorTool() {
+    return InspectorTool.getInstance(myMPSProject);
+  };
+
+  private final ModuleDeploymentListener myClassesListener = new ModuleDeploymentListener() {
     @Override
-    public void onUnloaded(@NotNull Set<ReloadableModule> modules, @NotNull ProgressMonitor monitor) {
+    public void deploymentStateChanged(@NotNull ModuleDeploymentChange change) {
       addPendingAction(() -> {
         myEditorTracker.markEverythingUnchecked();
         myEditorList.clearAdditionalEditors();
@@ -113,24 +117,28 @@ public class Highlighter implements IHighlighter, ProjectComponent {
   }
 
   public Highlighter(Project project) {
+    this(project, false);
+  }
+
+  protected Highlighter(Project project, boolean emptyHighlighter) {
     // it's important that MPSProject is initialized before this component, and un-initialized after
     myMPSProject = ProjectHelper.fromIdeaProjectOrFail(project);
     myProject = project;
     myEditorList = new HighlighterEditorList(FileEditorManager.getInstance(project));
-    MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
-    myClassLoaderManager = coreComponents.getClassLoaderManager();
-    myMakeComponent = coreComponents.getPlatform().findComponent(MakeServiceComponent.class);
-  }
+    myMakeComponent = myMPSProject.getPlatform().findComponent(MakeServiceComponent.class);
 
-  @Override
-  public void projectOpened() {
-    myClassLoaderManager.addListener(myClassesListener);
+    if (emptyHighlighter) {
+      return;
+    }
+    Disposer.register(this, myDisposable);
+
+    myMPSProject.getPlatform().findComponent(LanguageRegistry.class).addRegistryListener(myClassesListener);
     myEventCollector.startListening(myMPSProject.getRepository());
 
-    myInspectorTool = myProject.getComponent(InspectorTool.class);
     // perhaps, should register myDisposable with myProject as parent not to rely
     // solely on projectClose()?
     MessageBusConnection mbCon = myProject.getMessageBus().connect(myDisposable);
+    // XXX I wonder if EditorComponentLifecycleListener suites the task better
     mbCon.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new EditorComponentCreateListener() {
       @Override
       public void editorComponentCreated(@NotNull EditorComponent editorComponent) {
@@ -145,35 +153,41 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     });
 
     ApplicationManager.getApplication().addApplicationListener(new PauseDuringWriteAction(), myDisposable);
-    mbCon.subscribe(com.intellij.openapi.command.CommandListener.TOPIC, myCommandListener);
+    mbCon.subscribe(com.intellij.openapi.command.CommandListener.TOPIC, new PauseDuringCommandOrUndoTransparentAction());
     myMPSProject.getModelAccess().addCommandListener(myCommandWatcher);
+    //
+    startUpdater();
+
+    // I didn't find an easy way to make these contributions stateless, checkers often need some initialization code,
+    // and using non-dynamic ext. point is ok for our purposes at the moment (it's not a primary contribution
+    // mechanism, after all - proper clients register with MPS own reloadable plugin project parts)
+    for (HighlighterContribution hc : HighlighterContribution.EP.getExtensionList(myProject)) {
+      myContributors.add(hc);
+      try {
+        hc.install(this);
+      } catch (Exception ex) {
+        LOG.error(String.format("Failed to install highlighters from %s", hc.getClass()), ex);
+      }
+    }
   }
 
   @Override
-  public void projectClosed() {
+  public void dispose() {
+    for (HighlighterContribution hc : myContributors) {
+      try {
+        hc.uninstall(this);
+      } catch (Exception ex) {
+        LOG.error(String.format("Failed to install highlighters from %s", hc.getClass()), ex);
+      }
+    }
+    myContributors.clear();
+
+    stopUpdater();
+    // our own Disposable instance has been disposed already, removing all associated listeners (including those from message bus)
     myMPSProject.getModelAccess().removeCommandListener(myCommandWatcher);
-    // remove all listeners associated with our own Disposable instance, including those from message buss
     Disposer.dispose(myDisposable);
     myEventCollector.stopListening(myMPSProject.getRepository());
-    myClassLoaderManager.removeListener(myClassesListener);
-    myInspectorTool = null;
-  }
-
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "MPS Highlighter";
-  }
-
-  @Override
-  public void initComponent() {
-    startUpdater();
-  }
-
-  @Override
-  public void disposeComponent() {
-    stopUpdater();
+    myMPSProject.getPlatform().findComponent(LanguageRegistry.class).removeRegistryListener(myClassesListener);
   }
 
   @Override
@@ -288,6 +302,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
 
   public void stopUpdater() {
     myScheduleHighlighterUpdate = null;
+    initialEntireFileHighlightingReported = false;
     myBackgroundExecutor.shutdown();
     try {
       myBackgroundExecutor.awaitTermination(100, TimeUnit.MILLISECONDS);
@@ -297,7 +312,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
   }
 
   @NotNull
-  private HighlighterUpdateSession createUpdateSession(List<EditorComponent> activeEditors, boolean essentialOnly) {
+  private HighlighterUpdateSession createUpdateSession(List<EditorComponent> activeEditors, @Nullable EditorComponent inspector,  boolean essentialOnly) {
     processAccumulatedEvents();
 
     final Set<EditorCheckerWrapper> checkers = new LinkedHashSet<>();
@@ -321,7 +336,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     } else {
       myEditorTracker.markOnlyEditorsChecked(activeEditors);
     }
-    return new HighlighterUpdateSession(Highlighter.this, checkers, activeEditors, getInspector());
+    return new HighlighterUpdateSession(Highlighter.this, checkers, activeEditors, inspector);
   }
 
   public void resetCheckedStateInBackground(final EditorComponent editorComponent) {
@@ -349,10 +364,10 @@ public class Highlighter implements IHighlighter, ProjectComponent {
   }
 
   private EditorComponent getInspector() {
-    if (myInspectorTool == null) {
+    if (getInspectorTool() == null) {
       return null;
     }
-    return myInspectorTool.getInspector();
+    return getInspectorTool().getInspector();
   }
 
   /**
@@ -363,7 +378,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     List<SModelEvent> events = myEventCollector.drainEvents();
 
     for (SModelEvent event : events) {
-      if (event instanceof SModelReplacedEvent) {
+      if (event instanceof SModelReplacedEvent || event instanceof SModelImportEvent) {
         final SModelReference mref = event.getModel().getReference();
         myEditorTracker.markEditorsOfModelUnchecked(mref);
       }
@@ -404,12 +419,12 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     private int myLevel = 0;
 
     @Override
-    public void commandStarted(CommandEvent event) {
+    public void commandStarted(@NotNull CommandEvent event) {
       increaseLevel();
     }
 
     @Override
-    public void commandFinished(CommandEvent event) {
+    public void commandFinished(@NotNull CommandEvent event) {
       decreaseLevel();
     }
 
@@ -480,6 +495,11 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     }
 
     private void update(List<EditorComponent> activeEditors) {
+      EditorComponent inspector = getInspector();
+      if (myMPSProject.getProject().isDisposed()) {
+        // it may happen that after trying to get the InspectorTool service the project switches to DISPOSED state (if it's just being closed for example)
+        return;
+      }
       try {
         final boolean updateAllCheckers = myCommandWatcher.getAndClearHasChangesFlag();
         // there had been changes, ensure we check with all possible checkers and do it asap.
@@ -487,13 +507,17 @@ public class Highlighter implements IHighlighter, ProjectComponent {
           // I reset grace period here, prior to update to ensure we fire check again soon in case something goes wrong
           myCommandWatcher.resetGracePeriod();
         }
-        createUpdateSession(activeEditors, !updateAllCheckers).update();
+        createUpdateSession(activeEditors, inspector, !updateAllCheckers).update();
         // XXX in fact, would be better to check if update() had succeeded and only then extend grace period.
         myCommandWatcher.extendGracePeriod();
       } catch (IndexNotReadyException ex) {
         myCommandWatcher.resetGracePeriod();
         myEditorTracker.markEverythingUnchecked();
       } finally {
+        if(!initialEntireFileHighlightingReported) {
+          initialEntireFileHighlightingReported = true;
+          ApplicationManager.getApplication().getService(StartUpPerformanceService.class).editorRestoringTillHighlighted();
+        }
         scheduleNext();
       }
     }

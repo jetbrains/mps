@@ -26,7 +26,6 @@ import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.scopes.signed.TopLevelVisibility;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
-import jetbrains.mps.kotlin.api.members.TypeExpander;
 import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
@@ -72,7 +71,7 @@ public final class IClassLike__BehaviorDescriptor extends BaseBHDescriptor {
       // Only non-inner classes (otherwise, belongs to instance functions)
       Iterable<SNode> constructors = Sequence.fromIterable(SNodeOperations.ofConcept(IDeclarationHolder__BehaviorDescriptor.getMembers_id213J8chg2xy.invoke(__thisNode__), CONCEPTS.IClassLike$go)).where((klass) -> !((boolean) IClassLike__BehaviorDescriptor.hasModifier_id2NtWm0y2Y2A.invoke(klass, CONCEPTS.InnerClassModifier$wL))).translate((klass) -> (Iterable<SNode>) IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(klass)).where((cons) -> TopLevelVisibility.visibleTo(cons, contextNode));
 
-      return SignatureBuilder.create(constructors, FunctionSignature.class).withSignature((SNode it) -> new FunctionSignature(KotlinFunctionDeclaration.of(it), (TypeExpander) null)).withAttribute(SignatureAttributeKey.VISIBILITY, (FunctionSignature _sig, SNode node) -> {
+      return SignatureBuilder.create(constructors, FunctionSignature.class).withSignature((SNode it) -> new FunctionSignature(KotlinFunctionDeclaration.of(it))).withAttribute(SignatureAttributeKey.VISIBILITY, (FunctionSignature _sig, SNode node) -> {
         // Class as constructors may have special visibility handling
         SConcept overrideVisibility = IClassLike__BehaviorDescriptor.getConstructorDefaultVisibility_idu1nygduECM.invoke(SNodeOperations.as(node, CONCEPTS.IClassLike$go));
         if (overrideVisibility != null) {

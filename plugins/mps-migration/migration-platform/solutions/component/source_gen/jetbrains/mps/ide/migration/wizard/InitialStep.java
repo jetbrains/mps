@@ -12,6 +12,7 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
+import com.intellij.ui.border.IdeaTitledBorder;
 import com.intellij.ui.IdeBorderFactory;
 import javax.swing.Box;
 import java.util.List;
@@ -35,13 +36,14 @@ import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.icons.MPSIcons;
 import com.intellij.ide.wizard.AbstractWizardStepEx;
 import com.intellij.ide.wizard.CommitStepException;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/6781485246382121550", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
+@GeneratedClass(nodeId = "6781485246382121550", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public class InitialStep extends BaseStep {
   public static final String ID = "initial";
 
@@ -65,7 +67,9 @@ public class InitialStep extends BaseStep {
     mainPanel.add(migrationsPanel, BorderLayout.CENTER);
 
     migrationsPanel.setLayout(new BoxLayout(migrationsPanel, BoxLayout.Y_AXIS));
-    migrationsPanel.setBorder(IdeBorderFactory.createTitledBorder("Migrations to be applied", false));
+    IdeaTitledBorder border = IdeBorderFactory.createTitledBorder("Migrations to be applied", false);
+    border.setShowLine(false);
+    migrationsPanel.setBorder(border);
 
     JPanel infoPanel = new JPanel();
     infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.X_AXIS));
@@ -171,6 +175,7 @@ public class InitialStep extends BaseStep {
         } else {
           setIcon((expanded ? IdeIcons.OPENED_FOLDER : IdeIcons.CLOSED_FOLDER));
         }
+        setBackgroundNonSelectionColor(tree.getBackground());
         return this;
       }
     });
@@ -217,10 +222,10 @@ public class InitialStep extends BaseStep {
     final Map<SLanguage, DefaultMutableTreeNode> l2n = MapSequence.fromMap(new HashMap<SLanguage, DefaultMutableTreeNode>());
     List<AppliedScript> msrScripts = Sequence.fromIterable(scripts).where((it) -> it.scriptReference() instanceof MigrationScriptReference).toList();
     Iterable<MigrationScriptReference> seq = ListSequence.fromList(msrScripts).select((this0) -> this0.scriptReference()).ofType(MigrationScriptReference.class);
-    Sequence.fromIterable(seq).select((this0) -> this0.getLanguage()).distinct().visitAll((it) -> MapSequence.fromMap(l2n).put(it, new MyTreeNode(NameUtil.compactNamespace(it.getQualifiedName()), Icons.Language)));
+    Sequence.fromIterable(seq).select((this0) -> this0.getLanguage()).distinct().visitAll((it) -> MapSequence.fromMap(l2n).put(it, new MyTreeNode(NameUtil.compactNamespace(it.getQualifiedName()), MPSIcons.Nodes.Language)));
     ListSequence.fromList(msrScripts).visitAll((it) -> {
       MigrationScriptReference msr = (MigrationScriptReference) it.scriptReference();
-      String caption = (it.scriptPresent() ? it.caption() : String.format("Missing: <script for version %d", msr.getFromVersion()));
+      String caption = (it.scriptPresent() ? it.caption() : String.format("Missing: <script for version %d>", msr.getFromVersion()));
       MapSequence.fromMap(l2n).get(msr.getLanguage()).add(new MyTreeNode(caption, migrationIcon));
     });
     int migratedModulesNum = ListSequence.fromList(msrScripts).translate((this0) -> this0.affectedModules()).distinct().count();

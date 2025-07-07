@@ -34,7 +34,7 @@ public final class Word__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode normalize_id3yV2h2COV$s(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.value$zQr_).contains(" ")) {
+    if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$zQr_)) && SPropertyOperations.getString(__thisNode__, PROPS.value$zQr_).contains(" ")) {
       String[] chunks = SPropertyOperations.getString(__thisNode__, PROPS.value$zQr_).split(" ");
       if (chunks.length == 0) {
         return __thisNode__;

@@ -62,6 +62,7 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
   private final SNode myFirstNode;
   private final SNode myLastNode;
   private final SNode myParentNode;
+  private final List<SNode> mySelectedNodes = new ArrayList<>();
   private final SContainmentLink myRole;
   private final String myModelReference;
   private final RangeSelectionFilter myFilter;
@@ -155,10 +156,12 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
         }
       }
       if (withinSelection) {
+        mySelectedNodes.add(child);
         EditorCell editorCell = getEditorComponent().findNodeCell(child);
         if (editorCell == null) {
           throw new CellNotFoundException(child);
         }
+        editorCell = jetbrains.mps.nodeEditor.NodeEditorActions.findTopmostAttributeCell(editorCell, child);
         selectedCells.add(editorCell);
       }
       if (breakLoop) {
@@ -289,6 +292,7 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
       throw new IllegalStateException("Cannot load classes from the module " + module);
     }
     try {
+      // FIXME see SelectionInfoImpl#createSelection for refactoring considerations
       return (Class<? extends RangeSelectionFilter>) ((ReloadableModule) module).getOwnClass(className);
     } catch (ClassNotFoundException e) {
       Logger.getLogger(NodeRangeSelection.class).debug("Class not found:" + className + " from " + module, e);
@@ -309,6 +313,15 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
       throw new SelectionRestoreException();
     }
     return sNode;
+  }
+
+  /**
+   * List of selected cells cannot be used to compute list of selected nodes (the default behavior) in case a node has attributes.
+   * In this case list of selected cells contains the cell of an attribute, but we want its parent node to be in list of selected nodes (not the attribute node).
+   */
+  @Override
+  public @NotNull List<SNode> getSelectedNodes() {
+    return mySelectedNodes;
   }
 
   private void performDeleteAction(final CellActionType type) {

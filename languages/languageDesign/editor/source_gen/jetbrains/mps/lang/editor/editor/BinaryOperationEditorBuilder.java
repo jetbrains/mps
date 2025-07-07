@@ -13,10 +13,13 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.references.Reference;
+import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.LanguageAspect;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectSupport;
+import jetbrains.mps.smodel.language.CreateAspectContext;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -145,16 +148,23 @@ public class BinaryOperationEditorBuilder {
       };
     }
 
-    public void commit() {
+    public void commit(EditorContext context) {
       ListSequence.fromList(myActionMaps).visitAll((it) -> SModelOperations.addRootNode(myModel, it));
       SNodeOperations.replaceWithAnother(myPlaceholderNode, getMainCell());
 
-      Language declaringLanguage = SModelUtil.getDeclaringLanguage(getConcept());
-      SModel actionsModel = LanguageAspect.ACTIONS.get(declaringLanguage);
+      final SModule langModule = myModel.getModule();
+      SModel actionsModel = SModuleOperations.getAspect(langModule, "actions");
       if (actionsModel == null) {
-        actionsModel = LanguageAspect.ACTIONS.createNew(declaringLanguage);
+        LanguageAspectDescriptor ad = LanguageAspectSupport.getAspectDescriptorById("actions");
+        CreateAspectContext cac = CreateAspectContext.create(langModule, context.getOperationContext().getProject().getPlatform(), null);
+        if (ad != null && ad.canCreate(cac)) {
+          ad.create(cac);
+          actionsModel = SModuleOperations.getAspect(langModule, "actions");
+        }
       }
-      SModelOperations.addRootNode(actionsModel, myNodeFactories);
+      if (actionsModel != null) {
+        SModelOperations.addRootNode(actionsModel, myNodeFactories);
+      }
     }
   }
   private static SNode _quotation_createNode_d1zfxg_a0a0n(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4, Object parameter_5, Object parameter_6) {

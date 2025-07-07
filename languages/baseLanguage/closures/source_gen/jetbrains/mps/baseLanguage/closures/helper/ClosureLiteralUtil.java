@@ -25,7 +25,9 @@ import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.closures.util.FunctionalInterfaceHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.scope.ModelsScope;
 import java.util.Set;
@@ -166,7 +168,8 @@ public class ClosureLiteralUtil {
   }
 
   public static boolean canTargetJavaLambda(final SNode node, @NotNull SNode targetType, TemplateQueryContext genContext) {
-    if (!(new BaseLanguageEnvironmentHelper().getLanguageLevel(genContext.getOriginalInputModel()).doTargetLambda())) {
+    JavaLanguageLevel languageLevel = new BaseLanguageEnvironmentHelper().getLanguageLevel(genContext.getOriginalInputModel());
+    if (languageLevel != null && !(languageLevel.doTargetLambda())) {
       return false;
     }
 
@@ -197,7 +200,7 @@ public class ClosureLiteralUtil {
     }
 
     // Scope conflict
-    Iterable<String> names = ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableDeclaration$Y0, false, new SAbstractConcept[]{CONCEPTS.IClassifier$MF, CONCEPTS.ClosureLiteral$rp})).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)).where((it) -> it != null);
+    Iterable<String> names = ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableDeclaration$Y0, false, new SAbstractConcept[]{CONCEPTS.IClassifier$MF, CONCEPTS.ClosureLiteral$rp})).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)).where(new NotNullWhereFilter());
     final Scope scope = ModelsScope.getScope(SNodeOperations.getParent(node), node, CONCEPTS.VariableDeclaration$Y0);
 
     // Any name defined in parent scope -> need anonymous class

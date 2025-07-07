@@ -18,7 +18,7 @@ import com.intellij.openapi.vcs.merge.MergeSession;
 import com.intellij.openapi.vcs.merge.MergeProvider2;
 import com.intellij.openapi.progress.ProgressManager;
 
-@GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/3906168775482822123", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
+@GeneratedClass(nodeId = "3906168775482822123", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class MPSVcsHelper extends AbstractVcsHelperImpl {
   public MPSVcsHelper(Project project) {
     super(project);

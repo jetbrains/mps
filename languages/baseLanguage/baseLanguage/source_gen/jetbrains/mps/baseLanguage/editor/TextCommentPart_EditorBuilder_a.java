@@ -67,7 +67,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
       new TODOStyleClass(this).apply(style, editorCell);
       style.set(StyleAttributes.SPELLCHECK, true);
       editorCell.getStyle().putAll(style);
-      HandleInsert.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);

@@ -7,7 +7,7 @@ import jetbrains.mps.make.IHName;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-@GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/922321631991212011", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
+@GeneratedClass(nodeId = "922321631991212011", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public abstract class DefaultHName<T> implements IHName<T> {
   private static Pattern FQNAME = Pattern.compile("(.+)\\.([^\\.]+)");
   private T parentName;

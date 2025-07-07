@@ -143,16 +143,16 @@ public class List_Test extends Util_Test {
     List<Integer> test = ListSequence.fromListAndArray(new ArrayList<Integer>(), 1, 2, 3, 5);
     Assert.assertEquals(Arrays.asList(new Integer[]{1, 2, 3, 5}), test);
     int insElm = ListSequence.fromList(test).insertElement(3, 4);
-    Assert.assertEquals(4, insElm);
+    Assert.assertEquals(Integer.valueOf(4), Integer.valueOf(insElm));
     Assert.assertEquals(Arrays.asList(new Integer[]{1, 2, 3, 4, 5}), test);
     int setElm = ListSequence.fromList(test).setElement(2, 0);
-    Assert.assertEquals(0, setElm);
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(setElm));
   }
   @Test
   public void test_elementAccess() throws Exception {
     List<Integer> test = ListSequence.fromListAndArray(new ArrayList<Integer>(), 1, 2, 3, 5);
     int val = ListSequence.fromList(test).getElement(3);
-    Assert.assertEquals(5, val);
+    Assert.assertEquals(Integer.valueOf(5), Integer.valueOf(val));
     ListSequence.fromList(test).setElement(3, 4);
     Assert.assertEquals(Arrays.asList(new Integer[]{1, 2, 3, 4}), test);
     List<Integer> foo = ListSequence.fromList(new ArrayList<Integer>());
@@ -186,7 +186,7 @@ public class List_Test extends Util_Test {
   public void test_nonEmptyLinkedList() throws Exception {
     List<String> llist = ListSequence.fromListAndArray(new LinkedList<String>(), "A", "B", "C");
     Assert.assertFalse(ListSequence.fromList(llist).isEmpty());
-    Assert.assertEquals(3, ListSequence.fromList(llist).count());
+    Assert.assertEquals(Integer.valueOf(3), Integer.valueOf(ListSequence.fromList(llist).count()));
   }
   @Test
   public void test_clear() throws Exception {
@@ -236,7 +236,7 @@ public class List_Test extends Util_Test {
     test = TEST;
     int[] arr = ArrayUtils.toIntArray(ListSequence.fromList(test));
     List<Character> cempty = ListSequence.fromList(new ArrayList<Character>());
-    Assert.assertEquals(0, ListSequence.fromList(cempty).toGenericArray(Character.class).length);
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(ListSequence.fromList(cempty).toGenericArray(Character.class).length));
     List<Byte> bempty = ListSequence.fromList(new LinkedList<Byte>());
   }
   @Test

@@ -8,7 +8,7 @@ import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.make.facet.ITarget;
 
-@GeneratedClass(node = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)/9122198050634442574", model = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)")
+@GeneratedClass(nodeId = "9122198050634442574", model = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)")
 public final class TextGenFacetInitializer implements PropertyPoolInitializer {
   private Boolean myDebugInfo;
 

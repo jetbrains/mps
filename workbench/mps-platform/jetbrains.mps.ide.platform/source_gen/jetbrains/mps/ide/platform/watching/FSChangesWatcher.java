@@ -22,7 +22,7 @@ import com.intellij.openapi.vfs.newvfs.events.VFileDeleteEvent;
 import com.intellij.openapi.vfs.newvfs.events.VFileCopyEvent;
 import com.intellij.openapi.vfs.newvfs.events.VFileMoveEvent;
 
-@GeneratedClass(node = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/8474613039627890958", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
+@GeneratedClass(nodeId = "8474613039627890958", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
 public final class FSChangesWatcher implements BulkFileListener {
   private static final Logger LOG = Logger.getLogger(FSChangesWatcher.class);
 
@@ -41,8 +41,7 @@ public final class FSChangesWatcher implements BulkFileListener {
     }
     ReloadManager.getInstance().runReload(getClass().getName(), new Supplier<FileProcessor>() {
       public FileProcessor get() {
-        IdeaFileSystem ideaFileSystem = ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
-        return new FileProcessor(ideaFileSystem);
+        return new FileProcessor(IdeaFileSystem.getInstance());
       }
     }, new ReloadAction<FileProcessor>() {
       public void runAction(final FileProcessor participant) {

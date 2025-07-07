@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.core.aspects.behaviour.SConceptC3StarMRO;
 import jetbrains.mps.core.context.Context;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.language.ConceptInLoadingStorage;
+import jetbrains.mps.smodel.language.ConstraintsRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.jetbrains.annotations.NotNull;
@@ -41,12 +42,15 @@ public final class RulesConstraintsRegistry {
 
   private final LanguageRegistry myLanguageRegistry;
   private final SConceptC3StarMRO myMro;
+  private final ConstraintsRegistry myConstraintsRegistry;
   private final Map<SAbstractConcept, RulesConstraintsDescriptor> myDescriptors = new ConcurrentHashMap<>();
   private final ConceptInLoadingStorage<SAbstractConcept> myStorage = new ConceptInLoadingStorage<>();
 
-  public RulesConstraintsRegistry(@NotNull LanguageRegistry languageRegistry, @NotNull SConceptC3StarMRO mro) {
+  public RulesConstraintsRegistry(@NotNull LanguageRegistry languageRegistry, @NotNull SConceptC3StarMRO mro, @NotNull ConstraintsRegistry constraintsRegistry) {
     myLanguageRegistry = languageRegistry;
     myMro = mro;
+    // needed as long as there's delegation from RulesConstraintsDescriptor to legacy constraints
+    myConstraintsRegistry = constraintsRegistry;
   }
 
   @NotNull
@@ -78,7 +82,7 @@ public final class RulesConstraintsRegistry {
         descriptor = new EmptyRuleConstraintsDescriptor(concept);
         descriptor.init(this);
       }
-      var newVal = new LegacyAndRulesConstraintsDescriptor(myMro, concept, descriptor);
+      var newVal = new LegacyAndRulesConstraintsDescriptor(myMro, concept, descriptor, myConstraintsRegistry);
       myDescriptors.put(concept, newVal);
       return newVal;
     } finally {

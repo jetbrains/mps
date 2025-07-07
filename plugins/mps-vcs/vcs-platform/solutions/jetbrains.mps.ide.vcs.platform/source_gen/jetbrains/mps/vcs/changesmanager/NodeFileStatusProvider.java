@@ -11,14 +11,13 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
-import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.editor.MPSEditorUtil;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 
-@GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/2722286076674338626", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
+@GeneratedClass(nodeId = "2722286076674338626", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public class NodeFileStatusProvider implements FileStatusProvider {
   private MPSProject myProject;
   private NodeFileStatusMapping myMapping;
@@ -33,9 +32,6 @@ public class NodeFileStatusProvider implements FileStatusProvider {
     if (!(file instanceof MPSNodeVirtualFile)) {
       return null;
     }
-    if (!(ThreadUtils.isInEDT())) {
-      return FileStatus.NOT_CHANGED;
-    }
 
     final MPSNodeVirtualFile nodeFile = (MPSNodeVirtualFile) file;
 
@@ -43,7 +39,7 @@ public class NodeFileStatusProvider implements FileStatusProvider {
       public FileStatus compute() {
         SNode root = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(myProject.getProject(), nodeFile);
         if (root == null) {
-          root = check_8p3pkg_a0a0b0a0a0a0f0f(nodeFile.getNode());
+          root = check_8p3pkg_a0a0b0a0a0a0e0f(nodeFile.getNode());
         }
         if (root == null || !(SNodeUtil.isAccessible(root, myProject.getRepository()))) {
           return null;
@@ -52,7 +48,7 @@ public class NodeFileStatusProvider implements FileStatusProvider {
       }
     });
   }
-  private static SNode check_8p3pkg_a0a0b0a0a0a0f0f(SNode checkedDotOperand) {
+  private static SNode check_8p3pkg_a0a0b0a0a0a0e0f(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getContainingRoot();
     }

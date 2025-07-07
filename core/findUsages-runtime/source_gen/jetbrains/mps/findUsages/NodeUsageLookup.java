@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.model.SNodeUtil;
  * Find and report usages of given nodes throughout models.
  * @author Artem Tikhomirov
  */
-@GeneratedClass(node = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)/8568892084424435270", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
+@GeneratedClass(nodeId = "8568892084424435270", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
 public final class NodeUsageLookup {
   private final Set<SNodeReference> myNodesToFind;
   private final Consumer<SReference> myOutcomeConsumer;

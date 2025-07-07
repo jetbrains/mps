@@ -1,3 +1,6 @@
+/*
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ */
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.smodel.TestModelFactory.TestModelAccess;
@@ -10,10 +13,14 @@ import org.junit.Test;
 import org.junit.rules.ErrorCollector;
 
 import java.util.Random;
-import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Tests for {@link AbstractModelAccess} base implementation of Open-API's {@link org.jetbrains.mps.openapi.module.ModelAccess}.
@@ -71,35 +78,47 @@ public class ModelAccessTest {
   }
 
   // for parallel reads, make sure readStarted notification comes first, before any other read thread get a chance to execute.
+  @SuppressWarnings("CallToPrintStackTrace")
   @Test
   public void testReadNotificationCompletesFirst() throws Exception{
-    final ConcurrentLinkedDeque<String > messages = new ConcurrentLinkedDeque<>();
+    final int totalThreads = 5;
+    final ArrayBlockingQueue<String > messages = new ArrayBlockingQueue<>(totalThreads + 2 /*START and END */ + totalThreads*2 /*just in case anything goes not as expected*/ );
     CountDownLatch listenerLatch = new CountDownLatch(2);
     myTestModelAccess.addReadActionListener(new ReadActionListener() {
       @Override
       public void readStarted() {
-        messages.offer("START");
+        messages.offer(String.format("START[%s]", threadName()));
         listenerLatch.countDown();
       }
 
       @Override
       public void readFinished() {
-        messages.offer("END");
+        messages.offer(String.format("END[%s", threadName()));
         listenerLatch.countDown();
+      }
+
+      private String threadName() {
+        String name = Thread.currentThread().getName();
+        Matcher m = Pattern.compile(".*-(\\d+)$").matcher(name);
+        if (m.find()) {
+          return m.group(1);
+        }
+        return name;
       }
     });
 
     final Random rnd = new Random();
-    final int totalThreads = 4;
     final CountDownLatch cdl = new CountDownLatch(totalThreads);
+    final CyclicBarrier syncStart = new CyclicBarrier(totalThreads, null);
     for (int i = 0; i < totalThreads; i++) {
-      final int delay = 5 + rnd.nextInt(10000)/1000;
+      final int delay = 15 + rnd.nextInt(10000)/1000;
       final int threadIndex = i;
       final Runnable readAction = () -> {
         try {
+          syncStart.await();
           messages.offer(String.format("T[%d]:%d", threadIndex, delay));
           Thread.sleep(delay);
-        } catch (InterruptedException e) {
+        } catch (InterruptedException | BrokenBarrierException e) {
           e.printStackTrace();
           Assert.fail();
         } finally {
@@ -120,7 +139,7 @@ public class ModelAccessTest {
     final boolean listenerDone = listenerLatch.await(500, TimeUnit.MILLISECONDS);
     myErrors.checkThat(listenerDone, CoreMatchers.equalTo(true));
     myErrors.checkThat(messages.toString(), messages.size(), CoreMatchers.equalTo(totalThreads + 2)); // message from each thread + start/end messages.
-    myErrors.checkThat(messages.toString(), messages.peekFirst(), CoreMatchers.equalTo("START"));
-    myErrors.checkThat(messages.toString(), messages.peekLast(), CoreMatchers.equalTo("END"));
+    myErrors.checkThat(messages.toString(), messages.peek(), CoreMatchers.startsWith("START["));
+    myErrors.checkThat(messages.toString(), messages.stream().skip(totalThreads+1).findAny().orElseThrow(), CoreMatchers.startsWith("END["));
   }
 }

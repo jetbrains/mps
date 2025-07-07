@@ -4,7 +4,7 @@ package jetbrains.mps.lang.script.pluginSolution.plugin;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.project.DumbAware;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.script.runtime.RefactoringScript;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -12,42 +12,46 @@ import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SearchScope;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
+import java.util.Collections;
+import com.intellij.openapi.project.Project;
+import jetbrains.mps.workbench.MPSDataKeys;
+import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.ArrayList;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 public class RunMigrationScriptAction extends BaseAction implements DumbAware {
-  private SNode myScript;
+  private final RefactoringScript myScript;
   private boolean myApplyToSelection;
   private List<SModel> myModels;
   private List<SModule> myModules;
+  private Object[] mySelectedItems;
   private MPSProject myProject;
-  public RunMigrationScriptAction(SNode script, String name, boolean applyToSelection) {
-    super(name);
+
+  public RunMigrationScriptAction(RefactoringScript script, boolean applyToSelection) {
+    super(script.getName());
     myScript = script;
     myApplyToSelection = applyToSelection;
+
   }
   @Override
   protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
-    SearchScope scope;
-    if (myApplyToSelection) {
-      scope = AbstractMigrationScriptHelper.createMigrationScope(myModules, myModels);
-    } else {
-      scope = AbstractMigrationScriptHelper.createMigrationScope(myProject);
-    }
+    SearchScope scope = myProject.getModelAccess().computeReadAction(() -> MigrationScriptHelper.combineModulesModelsSelectedItemsIntoScope(!(myApplyToSelection), myProject, mySelectedItems, myModules, myModels));
+
     if (!(scope.getModels().iterator().hasNext())) {
       return;
     }
-    List<SNode> scripts = new ArrayList<SNode>();
-    scripts.add(myScript);
-    AbstractMigrationScriptHelper.doRunScripts(scripts, scope, myProject);
+    ProjectPluginManager.getInstance(myProject.getProject()).getTool(MigrationScriptsTool_Tool.class).startMigration(Collections.singleton(myScript), scope);
   }
   @Override
   protected boolean collectActionData(AnActionEvent e, Map<String, Object> _params) {
     if (!(super.collectActionData(e, _params))) {
       return false;
     }
-    myProject = e.getData(MPSCommonDataKeys.MPS_PROJECT);
+    Project ideaProject = e.getData(MPSDataKeys.PROJECT);
+    myProject = ProjectHelper.fromIdeaProject(ideaProject);
+    // MPSCommonDataKeys.MPS_PROJECT in not available when other than Logical View is active or a non-MPS-model file is open in the editor
     if (myProject == null) {
       return false;
     }
@@ -63,6 +67,7 @@ public class RunMigrationScriptAction extends BaseAction implements DumbAware {
         myModules.add(module);
       }
     }
+    mySelectedItems = e.getData(MPSCommonDataKeys.SELECTED_ITEMS);
     return true;
   }
 }

@@ -21,7 +21,7 @@ import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.project.AbstractModule;
 
-@GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/2620437876316539590", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
+@GeneratedClass(nodeId = "2620437876316539590", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public class MigrationsMissingError extends MigrationError {
   private List<ScriptApplied> myErrors;
   private SRepository myRepository;

@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:5c426f30-a9c9-463b-90a5-2fae21a10696(jetbrains.mps.ide.migration.check)/2620437876317548374", model = "r:5c426f30-a9c9-463b-90a5-2fae21a10696(jetbrains.mps.ide.migration.check)")
+@GeneratedClass(nodeId = "2620437876317548374", model = "r:5c426f30-a9c9-463b-90a5-2fae21a10696(jetbrains.mps.ide.migration.check)")
 public abstract class MissingMigrationProblem extends Problem<SModuleReference> implements ModuleReportItem {
 
   public MissingMigrationProblem(SModuleReference migrationProvider) {

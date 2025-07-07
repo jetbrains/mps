@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,12 +62,6 @@ public abstract class EditableModelDescriptor extends RegularModelDescriptor imp
   }
 
   @Override
-  public boolean isReadOnly() {
-    // FIXME why not this code in SModelBase? Looks pretty general, IMO.
-    return getSource().isReadOnly();
-  }
-
-  @Override
   public void addChangeListener(SNodeChangeListener listener) {
     getNodeEventDispatch().addChangeListener(listener);
   }
@@ -75,5 +69,11 @@ public abstract class EditableModelDescriptor extends RegularModelDescriptor imp
   @Override
   public void removeChangeListener(SNodeChangeListener listener) {
     getNodeEventDispatch().removeChangeListener(listener);
+  }
+
+  @Override
+  public void rename(@NotNull String newModelName, boolean changeFile) {
+    // this method is for EditableSModelBase implementation of EditableSModel only, no reason to force my subclasses override it.
+    throw new UnsupportedOperationException();
   }
 }

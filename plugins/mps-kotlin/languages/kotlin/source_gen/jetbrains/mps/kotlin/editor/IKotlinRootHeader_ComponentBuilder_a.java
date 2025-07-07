@@ -271,7 +271,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       editorCell.setCellId("ReadOnlyModelAccessor_72kg18_b0d0");
       Style style = new StyleImpl();
       style.set(StyleAttributes.EDITABLE, true);
-      new LINE_COMMENT_StyleKey().apply(style);
+      new LINE_COMMENT_StyleKey().apply(this, style);
       editorCell.getStyle().putAll(style);
       editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.IKotlinFile$wS, "jetbrains.mps.kotlin.editor.KotlinRoot_SetPackage"));
       return editorCell;

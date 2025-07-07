@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,7 @@ package jetbrains.mps.vfs.tracking;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import jetbrains.mps.extapi.model.EditableSModelBase;
+import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -27,13 +26,14 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.ProjectRepository;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
-import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.testbench.ProjectCloneSupport;
 import jetbrains.mps.tool.environment.Environment;
@@ -109,7 +109,6 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   private DefaultSModel myModelBackup;
   private StreamDataSource myOriginalModelDataSource;
 
-  private volatile ModelStorageConflictsListener myOldModelStorageListener; // to preserve the model conflict logic as it was in @afterTest
   private volatile DiskMemoryDialogExposer myExposer = (a, b, c, d) -> UserChoice.MEMORY_CHOSEN; // will be changed from test to test
   private ConflictResolverImpl myResolver;
 
@@ -156,7 +155,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   }
 
   private void attachConflictResolver() {
-    MPSCoreComponents coreComponents = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+    MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
     VFSManager vfsManager = coreComponents.getPlatform().findComponent(VFSManager.class);
     DiskMemoryDialogExposer diskMemoryDialogExposer = (parentComponent, m, source, backupFile) -> myExposer.askUser(parentComponent, m, source, backupFile);
     myResolver = new ConflictResolverImpl(getMPSProject(),
@@ -164,7 +163,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
                                           vfsManager,
                                           diskMemoryDialogExposer);
 
-    myModelAccess.runReadAction(() -> ((EditableSModelBase) getModel()).setConflictResolver(myResolver::resolve));
+    ((ProjectRepository) myRepository).setConflictResolver(myResolver);
     myConflictListener = new ConflictResolverListener();
     myResolver.addListener(myConflictListener);
   }
@@ -173,6 +172,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   public void afterTest() {
 //    checkInitialState();
     myResolver.removeListener(myConflictListener);
+    ((ProjectRepository) myRepository).setConflictResolver(null);
     ourProject.closeAndDelete();
   }
 
@@ -301,8 +301,18 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
   private SNode getField() {
     SNode node = SNodeOperations.cast(new SNodePointer("r:21cf9f47-5464-40f2-9509-d94ba20bfe82(simpleModel)", "6010389230754495463").resolve(myRepository), CONCEPTS.ClassConcept$IY);
-    SNode theField = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(node, CONCEPTS.ClassConcept$IY,
-                                                                                   SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$IY, "4_LVZ3pC27C")))).first();
+    // FIXME rewrite in MPS, to get rid of manually coded reflective invocation of `ClassConcept.fields()` method
+    SNode theField = null;
+    //noinspection removal
+    for (SMethod<?> dm : myEnv.getPlatform()
+                              .findComponent(ConceptRegistry.class)
+                              .getBehaviorRegistry()
+                              .getBHDescriptor(CONCEPTS.ClassConcept$IY)
+                              .getDeclaredMethods()) {
+      if ("fields".equals(dm.getName()) && !dm.isPrivate() && !dm.isAbstract()) {
+        theField = Sequence.fromIterable(((Iterable<SNode>) dm.invoke(node))).first();
+      }
+    }
     return theField;
   }
 

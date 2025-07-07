@@ -20,7 +20,7 @@ public class EnumerationDescriptor_Side extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_both_sides_0 = new EnumerationDescriptor.MemberDescriptor("both_sides", "both sides", 0x32175ac2e8d71494L, "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/4241665505353445587");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11b07b3d491L, 0x11b07b3d492L, 0x11b07b4a65bL, 0x32175ac2e8d71494L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_right_0, myMember_left_0, myMember_both_sides_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_right_0, myMember_left_0, myMember_both_sides_0);
 
   @Nullable
   @Override

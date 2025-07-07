@@ -5,7 +5,6 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.extapi.model.SModelData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;

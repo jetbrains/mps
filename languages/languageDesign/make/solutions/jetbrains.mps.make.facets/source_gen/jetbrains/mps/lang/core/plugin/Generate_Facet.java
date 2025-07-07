@@ -434,7 +434,7 @@ public class Generate_Facet extends IFacet.Stub {
 
                     ArrayList<GeneratorTask> rv = new ArrayList<GeneratorTask>();
                     for (MResource res : input) {
-                      final boolean cleanResourceMake = res.getValue(MakeKeys.CLEAN_MAKE);
+                      final boolean cleanResourceMake = (res.hasKey(MakeKeys.CLEAN_MAKE) ? res.getValue(MakeKeys.CLEAN_MAKE) : false);
                       GeneratorTask.Factory<GeneratorTask> factory = new GeneratorTask.Factory<GeneratorTask>() {
                         public GeneratorTask create(SModel model) {
                           return new GenTaskImpl(model, cleanResourceMake);

@@ -19,7 +19,7 @@ public class EnumerationDescriptor_TestEnum_WODefault extends EnumerationDescrip
   private final EnumerationDescriptor.MemberDescriptor myMember_name_2_0 = new EnumerationDescriptor.MemberDescriptor("name_2", "presentation_2", 0x61fc446ba477f2deL, "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/7060593544921608926");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, 0x61fc446ba477f2ddL, 0x61fc446ba477f2deL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_name_1_0, myMember_name_2_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_name_1_0, myMember_name_2_0);
 
   @Nullable
   @Override

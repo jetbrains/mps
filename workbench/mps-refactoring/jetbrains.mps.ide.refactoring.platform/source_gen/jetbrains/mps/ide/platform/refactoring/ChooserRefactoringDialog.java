@@ -17,7 +17,7 @@ import jetbrains.mps.workbench.goTo.ui.MpsPopupFactory;
 import com.intellij.openapi.util.Disposer;
 import org.jetbrains.annotations.NonNls;
 
-@GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/5284818426851121720", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
+@GeneratedClass(nodeId = "5284818426851121720", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public abstract class ChooserRefactoringDialog<T> extends RefactoringDialog {
   protected final MPSProject myMpsProject;
   protected final Iterable<T> myVariants;

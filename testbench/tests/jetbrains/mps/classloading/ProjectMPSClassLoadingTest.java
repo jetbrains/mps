@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
-import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.module.ReloadableModule.DeploymentStatus;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.SModuleOperations;
@@ -46,8 +46,8 @@ import java.util.TreeMap;
 import static org.junit.Assert.fail;
 
 public class ProjectMPSClassLoadingTest implements EnvironmentAware {
-  private static final Set<String> IGNORE_LIST = new LinkedHashSet<>(Arrays.asList("jetbrains.mps.samples.xmlPersistence [solution]",
-      "TestBehaviorReflective [solution]"));
+  private static final Set<String> IGNORE_LIST = new LinkedHashSet<>(/*Arrays.asList("jetbrains.mps.samples.xmlPersistence [solution]",
+      "TestBehaviorReflective [solution]")*/);
 
   private final Map<String, String> myModuleNamesToErrors = new TreeMap<>();
   private Project project;
@@ -71,12 +71,14 @@ public class ProjectMPSClassLoadingTest implements EnvironmentAware {
   @Test
   public void classesAreLoadedStress() {
     project = myEnvironment.openProject(new File(PathManager.getHomePath()));
-    ClassLoaderManager clm = myEnvironment.getPlatform().findComponent(ClassLoaderManager.class);
-    SRepositoryListener crazyListener = ModulesReloadTestStress.createCrazyListener(clm);
+    SRepositoryListener crazyListener = ModulesReloadTestStress.createCrazyListener(getCLM());
     project.getRepository().addRepositoryListener(crazyListener);
-    doTest();
-    project.getRepository().removeRepositoryListener(crazyListener);
-    myEnvironment.closeProject(project);
+    try {
+      doTest();
+    } finally {
+      project.getRepository().removeRepositoryListener(crazyListener);
+      myEnvironment.closeProject(project);
+    }
   }
 
   private void doTest() {
@@ -98,11 +100,11 @@ public class ProjectMPSClassLoadingTest implements EnvironmentAware {
     if (isIgnored(module.toString())) {
       return;
     }
-    if (module instanceof ReloadableModule && SModuleOperations.canSupplyExtensionsForMPS(module)) {
-      ReloadableModule reloadableModule = (ReloadableModule) module;
-      //noinspection removal
-      if (reloadableModule.getClassLoader() == null) {
-        myModuleNamesToErrors.put(module.toString(), "No class loader for the module");
+    if (SModuleOperations.classesAvailableToMPS(module) /* seems that have to mimic CLM.myWatchableCondition */) {
+      DeploymentStatus ds = getCLM().getStatus(module);
+      if (!ds.isDeployed()) {
+        // XXX in fact, seems that canBeDeployed() is good as well (if I'd like to drop isDeployed() api)
+        myModuleNamesToErrors.put(module.toString(), "module is not deployed: " + ds.getMessage());
         return;
       }
     }
@@ -126,6 +128,10 @@ public class ProjectMPSClassLoadingTest implements EnvironmentAware {
 
   private LanguageRegistry getLanguageRegistry() {
     return myEnvironment.getPlatform().findComponent(LanguageRegistry.class);
+  }
+
+  private ClassLoaderManager getCLM() {
+    return myEnvironment.getPlatform().findComponent(ClassLoaderManager.class);
   }
 
   private void checkIsRegistered(Language language) throws AssertionFailedException {

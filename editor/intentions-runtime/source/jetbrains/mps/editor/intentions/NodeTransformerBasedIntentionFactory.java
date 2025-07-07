@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,14 +73,6 @@ public class NodeTransformerBasedIntentionFactory implements IntentionFactory {
     return myFactory.isAvailableInChildren();
   }
 
-  @Override
-  public boolean isApplicable(SNode node, EditorContext editorContext) {
-    if (isAvailableInChildNodes() && node != editorContext.getSelectedNode()) {
-      return myFactory.isAvailableInChild(node, editorContext.getSelectedNode(), editorContext);
-    }
-    return myFactory.isApplicable(node, editorContext);
-  }
-
   @Nullable
   @Override
   public SNodeReference getIntentionNodeReference() {
@@ -102,6 +94,14 @@ public class NodeTransformerBasedIntentionFactory implements IntentionFactory {
     @Override
     public void execute(SNode node, EditorContext editorContext) {
       myTransformer.execute();
+    }
+
+    @Override
+    public boolean isApplicable(SNode node, EditorContext editorContext) {
+      if (myFactory.isAvailableInChildren() && node != editorContext.getSelectedNode()) {
+        return myFactory.isAvailableInChild(node, editorContext.getSelectedNode(), editorContext);
+      }
+      return myFactory.isApplicable(node, editorContext);
     }
 
     @Override

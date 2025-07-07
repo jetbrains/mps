@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,6 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -41,6 +39,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -128,13 +127,11 @@ public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstan
   }
 
   public SModule getModule(@NotNull final SModuleReference ref) {
-    Computable<SModule> c = () -> myRepo.getModule(ref.getModuleId());
+    Supplier<SModule> c = () -> myRepo.getModule(ref.getModuleId());
     if (myRepo.getModelAccess().canRead()) {
-      return c.compute();
+      return c.get();
     }
-    ComputeRunnable<SModule> r = new ComputeRunnable<>(c);
-    myRepo.getModelAccess().runReadAction(r);
-    return r.getResult();
+    return myRepo.getModelAccess().computeReadAction(c);
   }
 
   public <T extends SModule> T getModule(SModuleReference ref, Class<T> cls) {

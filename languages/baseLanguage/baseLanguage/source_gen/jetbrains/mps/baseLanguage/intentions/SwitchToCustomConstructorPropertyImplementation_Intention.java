@@ -15,6 +15,8 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -58,6 +60,9 @@ public final class SwitchToCustomConstructorPropertyImplementation_Intention ext
       SNode replacingNode = SNodeFactoryOperations.replaceWithNewChild(toBeReplaced, CONCEPTS.CustomSetterPropertyImplementation$6N);
       if (SNodeOperations.isInstanceOf(toBeReplaced, CONCEPTS.CustomPropertyImplementation$Au)) {
         SLinkOperations.setTarget(replacingNode, LINKS.setAccessor$G$8l, SLinkOperations.getTarget(SNodeOperations.cast(toBeReplaced, CONCEPTS.CustomPropertyImplementation$Au), LINKS.setAccessor$W5F$));
+      } else {
+        SLinkOperations.setTarget(replacingNode, LINKS.setAccessor$G$8l, SNodeFactoryOperations.createNewNode(CONCEPTS.SetAccessor$jF, null));
+        SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(replacingNode, LINKS.setAccessor$G$8l), SelectionManager.FIRST_EDITABLE_CELL);
       }
     }
 
@@ -91,5 +96,6 @@ public final class SwitchToCustomConstructorPropertyImplementation_Intention ext
     /*package*/ static final SConcept DefaultPropertyImplementation$g_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, "jetbrains.mps.baseLanguage.structure.DefaultPropertyImplementation");
     /*package*/ static final SConcept CustomSetterPropertyImplementation$6N = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation");
     /*package*/ static final SConcept CustomPropertyImplementation$Au = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, "jetbrains.mps.baseLanguage.structure.CustomPropertyImplementation");
+    /*package*/ static final SConcept SetAccessor$jF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117bd9ac3d9L, "jetbrains.mps.baseLanguage.structure.SetAccessor");
   }
 }

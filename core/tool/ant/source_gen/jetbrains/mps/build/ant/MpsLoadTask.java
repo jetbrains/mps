@@ -43,7 +43,7 @@ import java.util.Scanner;
  * Hence, the idea of the task is to get worker's classpath ready to use whatever MPS functionality needed.
  * Specific task subclasses may control exact classpath with {@link jetbrains.mps.build.ant.MpsLoadTask#calculateClassPath(boolean) } based on their worker's demand.
  */
-@GeneratedClass(node = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/4003657351907890310", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
+@GeneratedClass(nodeId = "4003657351907890310", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public class MpsLoadTask extends Task {
   public static final String CONFIGURATION_NAME = "configuration.name";
   public static final String BUILD_NUMBER = "build.number";
@@ -253,11 +253,12 @@ public class MpsLoadTask extends Task {
       commandLine.add(sb.toString());
       if (myOpenPackages) {
         // list taken from MPS own run configuration
-        final String[] packages = {"java.base/java.io", "java.base/java.lang", "java.base/java.lang.reflect", "java.base/java.net", "java.base/java.nio", "java.base/java.nio.charset", "java.base/java.text", "java.base/java.time", "java.base/java.util", "java.base/java.util.concurrent", "java.base/java.util.concurrent.atomic", "java.base/jdk.internal.vm", "java.base/sun.nio.ch", "java.base/sun.nio.fs", "java.base/sun.security.ssl", "java.base/sun.security.util", "java.desktop/com.apple.eawt", "java.desktop/com.apple.eawt.event", "java.desktop/com.apple.laf", "java.desktop/sun.awt.X11", "java.desktop/java.awt", "java.desktop/java.awt.dnd.peer", "java.desktop/java.awt.event", "java.desktop/java.awt.image", "java.desktop/java.awt.peer", "java.desktop/javax.swing", "java.desktop/javax.swing.plaf.basic", "java.desktop/javax.swing.text.html", "java.desktop/sun.awt.datatransfer", "java.desktop/sun.awt.image", "java.desktop/sun.awt.windows", "java.desktop/sun.awt", "java.desktop/sun.font", "java.desktop/sun.java2d", "java.desktop/sun.swing", "jdk.attach/sun.tools.attach", "jdk.compiler/com.sun.tools.javac.api", "jdk.internal.jvmstat/sun.jvmstat.monitor", "jdk.jdi/com.sun.tools.jdi"};
+        final String[] packages = {"java.base/java.io", "java.base/java.lang", "java.base/java.lang.reflect", "java.base/java.net", "java.base/java.nio", "java.base/java.nio.charset", "java.base/java.text", "java.base/java.time", "java.base/java.util", "java.base/java.util.concurrent", "java.base/java.util.concurrent.atomic", "java.base/jdk.internal.vm", "java.base/sun.nio.ch", "java.base/sun.nio.fs", "java.base/sun.security.ssl", "java.base/sun.security.util", "java.desktop/com.apple.eawt", "java.desktop/com.apple.eawt.event", "java.desktop/com.apple.laf", "java.desktop/sun.awt.X11", "java.desktop/java.awt", "java.desktop/java.awt.dnd.peer", "java.desktop/java.awt.event", "java.desktop/java.awt.image", "java.desktop/java.awt.peer", "java.desktop/javax.swing", "java.desktop/javax.swing.plaf.basic", "java.desktop/javax.swing.text", "java.desktop/javax.swing.text.html", "java.desktop/sun.awt.datatransfer", "java.desktop/sun.awt.image", "java.desktop/sun.awt.windows", "java.desktop/sun.awt", "java.desktop/sun.font", "java.desktop/sun.java2d", "java.desktop/sun.swing", "jdk.attach/sun.tools.attach", "jdk.compiler/com.sun.tools.javac.api", "jdk.internal.jvmstat/sun.jvmstat.monitor", "jdk.jdi/com.sun.tools.jdi"};
         for (String p : packages) {
           commandLine.add("--add-opens=" + p + "=ALL-UNNAMED");
         }
       }
+      commandLine.add("-Dintellij.platform.load.app.info.from.resources=true");
       if ((myJnaLibraryPath != null && myJnaLibraryPath.length() > 0)) {
         String fullPath = new File(getMpsHome_Checked(), myJnaLibraryPath).getAbsolutePath();
         commandLine.add("-Djna.boot.library.path=" + fullPath);
@@ -460,14 +461,7 @@ public class MpsLoadTask extends Task {
   private void checkMpsHome(File mpsHome) {
     // the following code checks mps home is specified correctly
     assert mpsHome != null : "MPS home folder must be specified. Use either mpshome task attribute or mps_home or mps.home Ant property to specify home folder.";
-    boolean containsBuildTxt = false;
-    for (File child : mpsHome.listFiles()) {
-      if (child.getPath().equals("build.txt")) {
-        containsBuildTxt = true;
-        break;
-      }
-    }
-    assert containsBuildTxt : "MPS home folder is the folder where build.txt file is located. Please correct mpshome attribute, mps_home/mps.home property, depending on which was set";
+    assert new File(mpsHome, "build.txt").exists() : "MPS home folder is the folder where build.txt file is located. Please correct mpshome attribute, mps_home/mps.home property, depending on which was set";
 
     outputBuildNumber(mpsHome);
   }

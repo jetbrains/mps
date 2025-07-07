@@ -36,6 +36,7 @@ import jetbrains.mps.nodeEditor.cells.collections.EmptyContainer;
 import jetbrains.mps.nodeEditor.cells.collections.SingletonContainer;
 import jetbrains.mps.nodeEditor.cells.collections.UnmodifiableIterator;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -700,6 +701,11 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
   @Override
   public TextBuilder renderText() {
     return myCellLayout.doLayoutText(this);
+  }
+
+  @Override
+  public HtmlTextBuilder renderHtml() {
+    return myCellLayout.doLayoutHtml(this);
   }
 
   @Override

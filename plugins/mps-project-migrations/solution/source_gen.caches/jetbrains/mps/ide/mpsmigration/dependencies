@@ -18,6 +18,8 @@
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
   <uses module="0c495a8c-90c6-4330-9351-2acbf72e5bb8(jetbrains.mps.ide.mpsmigration)" kind="dp" />
   <uses module="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="rt" />
+  <uses module="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="dp" />
   <uses module="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
+  <uses module="a5b1c28d-abeb-49a6-a58c-559039616d64(jetbrains.mps.migration.component)" kind="dp" />
 </dependenciesRoot>
 

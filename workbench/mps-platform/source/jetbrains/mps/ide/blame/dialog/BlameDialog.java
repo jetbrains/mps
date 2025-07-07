@@ -24,6 +24,7 @@ import com.intellij.ide.passwordSafe.PasswordSafe;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.application.ApplicationInfo;
+import com.intellij.openapi.application.ApplicationNamesInfo;
 import com.intellij.openapi.application.ex.ApplicationInfoEx;
 import com.intellij.openapi.extensions.PluginDescriptor;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -47,6 +48,7 @@ import com.intellij.uiDesigner.core.Spacer;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.IdeBundle;
+import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.blame.api.Reporter;
 import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
@@ -58,6 +60,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.HyperlinkEvent;
 import java.awt.BorderLayout;
 import java.awt.Dialog;
@@ -74,6 +77,7 @@ import java.util.List;
 
 public class BlameDialog extends DialogWrapper {
   private static final String CAPTION = "Submit System Exception to Developers";
+  private static final String FULL_PRODUCT_NAME = "JetBrains MPS";
 
   private JPanel myPanel;
   private JTextField myTitleField;
@@ -96,7 +100,7 @@ public class BlameDialog extends DialogWrapper {
   private List<File> myFilesToAttach = new ArrayList<>();
   private String mySubsystem = null;
   private PluginDescriptor myPluginDescriptor;
-  private String myToken = null;
+  private volatile String myToken;
 
   public BlameDialog(Project project, Dialog dialog) {
     super(dialog, true);
@@ -296,8 +300,11 @@ public class BlameDialog extends DialogWrapper {
       myException.setText(builder.toString());
     }
 
-    myToken = PasswordSafe.getInstance().getPassword(getCredentialAttributes());
-    updateCredentialsPane();
+    myCredentialsLabel.setHtmlText(IdeBundle.message("blame.dialog.submit.error.loading"));
+    ThreadUtils.submitToBGT(() -> {
+      myToken = PasswordSafe.getInstance().getPassword(getCredentialAttributes());
+      SwingUtilities.invokeLater(BlameDialog.this::updateCredentialsPane);
+    });
 
     Dimension size = DimensionService.getInstance().getSize(getDimensionServiceKey());
     if (size == null) {
@@ -470,7 +477,8 @@ public class BlameDialog extends DialogWrapper {
     final String summary = myTitleField.getText();
     final String descript = description.toString();
     final boolean hidden = myHiddenCheckBox.isSelected();
-    final String affectedVersion = ApplicationInfo.getInstance().getFullVersion();
+    // add version only if it is JetBrains MPS application itself, not other application or IDEA plugin
+    final String affectedVersion = FULL_PRODUCT_NAME.equals(ApplicationNamesInfo.getInstance().getFullProductName()) ? ApplicationInfo.getInstance().getFullVersion() : null;
     final String subsystem = mySubsystem;
     final File[] files = myFilesToAttach.toArray(new File[0]);
 

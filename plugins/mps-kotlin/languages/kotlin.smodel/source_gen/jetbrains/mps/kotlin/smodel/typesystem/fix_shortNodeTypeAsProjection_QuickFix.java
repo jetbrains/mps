@@ -6,7 +6,7 @@ import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.kotlin.smodel.behavior.IBehaviorMethodCaller__BehaviorDescriptor;
+import jetbrains.mps.kotlin.smodel.behavior.ShortNodeType__BehaviorDescriptor;
 
 public class fix_shortNodeTypeAsProjection_QuickFix extends QuickFix_Runtime {
   public fix_shortNodeTypeAsProjection_QuickFix() {
@@ -16,6 +16,6 @@ public class fix_shortNodeTypeAsProjection_QuickFix extends QuickFix_Runtime {
     return "Use concept notation";
   }
   public void execute(SNode node) {
-    SNodeOperations.replaceWithAnother(((SNode) fix_shortNodeTypeAsProjection_QuickFix.this.getField("shortType")[0]), IBehaviorMethodCaller__BehaviorDescriptor.getConceptType_id28CvMylq0Pm.invoke(((SNode) fix_shortNodeTypeAsProjection_QuickFix.this.getField("shortType")[0])));
+    SNodeOperations.replaceWithAnother(((SNode) fix_shortNodeTypeAsProjection_QuickFix.this.getField("shortType")[0]), ShortNodeType__BehaviorDescriptor.getConceptType_id4VnyIrvoQ8N.invoke(((SNode) fix_shortNodeTypeAsProjection_QuickFix.this.getField("shortType")[0])));
   }
 }

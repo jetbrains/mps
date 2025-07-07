@@ -8,7 +8,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.WeakHashMap;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 
-@GeneratedClass(node = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/3257040239274145603", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
+@GeneratedClass(nodeId = "3257040239274145603", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
 public class ClosureHoldingNodeUtil {
 
   private static ClosureHoldingNodeUtil myInstance;

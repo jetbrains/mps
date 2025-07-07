@@ -28,26 +28,29 @@
       <node id="2604223389415773010" at="36,64,37,90" concept="7" />
       <node id="2604223389415773010" at="37,90,38,63" concept="7" />
       <node id="2604223389416300839" at="40,79,41,112" concept="7" />
-      <node id="2604223389416330561" at="43,40,44,149" concept="2" />
+      <node id="2604223389416330561" at="43,215,44,239" concept="2" />
       <node id="2604223389416058310" at="46,11,47,78" concept="2" />
       <node id="2604223389415934967" at="49,85,50,77" concept="2" />
       <node id="2604223389415943971" at="52,87,53,79" concept="2" />
       <node id="2604223389418345996" at="55,84,56,76" concept="2" />
       <node id="2604223389415760761" at="61,50,62,143" concept="8" />
-      <node id="2604223389415760761" at="66,0,67,0" concept="10" trace="BuildMps_Branding$M0" />
-      <node id="2604223389415760761" at="70,0,71,0" concept="10" trace="product$RfQu" />
-      <node id="2604223389415760761" at="71,0,72,0" concept="10" trace="parts$uJA0" />
-      <node id="2604223389415760761" at="72,0,73,0" concept="10" trace="script$MlVT" />
-      <node id="2604223389415760761" at="73,0,74,0" concept="10" trace="icon32opaque$a0k7" />
-      <node id="2604223389415760761" at="74,0,75,0" concept="10" trace="iconToolWindow$w980" />
-      <node id="2604223389415760761" at="75,0,76,0" concept="10" trace="editorBGUrl$529d" />
-      <node id="2604223389415760761" at="79,0,80,0" concept="10" trace="text$lRuU" />
+      <node id="7941512660939131049" at="65,55,66,43" concept="8" />
+      <node id="2604223389415760761" at="70,0,71,0" concept="10" trace="BuildMps_Branding$M0" />
+      <node id="2604223389415760761" at="71,0,72,0" concept="10" trace="BuildTextStringPart$3R" />
+      <node id="2604223389415760761" at="75,0,76,0" concept="10" trace="product$RfQu" />
+      <node id="2604223389415760761" at="76,0,77,0" concept="10" trace="parts$uJA0" />
+      <node id="2604223389415760761" at="77,0,78,0" concept="10" trace="script$MlVT" />
+      <node id="2604223389415760761" at="78,0,79,0" concept="10" trace="icon32opaque$a0k7" />
+      <node id="2604223389415760761" at="79,0,80,0" concept="10" trace="iconToolWindow$w980" />
+      <node id="2604223389415760761" at="80,0,81,0" concept="10" trace="editorBGUrl$529d" />
+      <node id="2604223389415760761" at="84,0,85,0" concept="10" trace="text$lRuU" />
       <node id="2604223389415760761" at="23,0,26,0" concept="6" trace="getCaption#()Ljava/lang/String;" />
       <node id="2604223389416326893" at="42,89,45,13" concept="5" />
       <node id="2604223389415924176" at="48,9,51,9" concept="5" />
       <node id="2604223389415943964" at="51,9,54,9" concept="5" />
       <node id="2604223389418345989" at="54,9,57,9" concept="5" />
       <node id="2604223389415760761" at="61,0,64,0" concept="6" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="7941512660939131049" at="65,0,68,0" concept="11" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
       <node id="2604223389415760761" at="26,0,30,0" concept="6" trace="isRerunnable#()Z" />
       <node id="2604223389415760761" at="30,0,34,0" concept="6" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2604223389416315529" at="41,112,46,11" concept="4" />
@@ -57,15 +60,19 @@
       <node id="2604223389415760761" at="34,0,61,0" concept="6" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
       <scope id="2604223389415760761" at="23,30,24,23" />
       <scope id="2604223389415760761" at="27,33,28,16" />
-      <scope id="2604223389416326895" at="43,40,44,149" />
+      <scope id="2604223389416326895" at="43,215,44,239" />
       <scope id="2604223389415924178" at="49,85,50,77" />
       <scope id="2604223389415943970" at="52,87,53,79" />
       <scope id="2604223389418345995" at="55,84,56,76" />
       <scope id="2604223389415760761" at="61,50,62,143" />
+      <scope id="7941512660939131049" at="65,55,66,43" />
       <scope id="2604223389415760761" at="30,41,32,16" />
       <scope id="2604223389415760761" at="23,0,26,0" />
       <scope id="2604223389416315531" at="42,89,45,13" />
       <scope id="2604223389415760761" at="61,0,64,0" />
+      <scope id="7941512660939131049" at="65,0,68,0">
+        <var name="str" id="7941512660939131049" />
+      </scope>
       <scope id="2604223389415760761" at="26,0,30,0" />
       <scope id="2604223389415760761" at="30,0,34,0">
         <var name="m" id="2604223389415760761" />
@@ -89,10 +96,10 @@
       <scope id="2604223389415760761" at="34,0,61,0">
         <var name="m" id="2604223389415760761" />
       </scope>
-      <unit id="2604223389415760761" at="65,0,68,0" name="jetbrains.mps.build.mps.migration.UpdateListOfBrandingProperties$CONCEPTS" />
-      <unit id="2604223389415760761" at="78,0,81,0" name="jetbrains.mps.build.mps.migration.UpdateListOfBrandingProperties$PROPS" />
-      <unit id="2604223389415760761" at="69,0,77,0" name="jetbrains.mps.build.mps.migration.UpdateListOfBrandingProperties$LINKS" />
-      <unit id="2604223389415760761" at="21,0,82,0" name="jetbrains.mps.build.mps.migration.UpdateListOfBrandingProperties" />
+      <unit id="2604223389415760761" at="83,0,86,0" name="jetbrains.mps.build.mps.migration.UpdateListOfBrandingProperties$PROPS" />
+      <unit id="2604223389415760761" at="69,0,73,0" name="jetbrains.mps.build.mps.migration.UpdateListOfBrandingProperties$CONCEPTS" />
+      <unit id="2604223389415760761" at="74,0,82,0" name="jetbrains.mps.build.mps.migration.UpdateListOfBrandingProperties$LINKS" />
+      <unit id="2604223389415760761" at="21,0,87,0" name="jetbrains.mps.build.mps.migration.UpdateListOfBrandingProperties" />
     </file>
   </root>
   <root nodeRef="r:6b4c7cba-3f3c-4384-aa02-e68ac5ea8ee8(jetbrains.mps.build.mps.migration)/3570488090022661665">
@@ -683,6 +690,61 @@
       <unit id="8488591998066742467" at="60,0,64,0" name="jetbrains.mps.build.mps.migration.ModuleXml_classpathEntry$LINKS" />
       <unit id="8488591998066742467" at="53,0,59,0" name="jetbrains.mps.build.mps.migration.ModuleXml_classpathEntry$CONCEPTS" />
       <unit id="8488591998066742467" at="23,0,69,0" name="jetbrains.mps.build.mps.migration.ModuleXml_classpathEntry" />
+    </file>
+  </root>
+  <root nodeRef="r:6b4c7cba-3f3c-4384-aa02-e68ac5ea8ee8(jetbrains.mps.build.mps.migration)/8705992975793912946">
+    <file name="ReplaceDoNotCompileFlagWithEnum.java">
+      <node id="8705992975793912946" at="20,0,21,0" concept="3" trace="description" />
+      <node id="8705992975793912946" at="21,30,22,23" concept="8" />
+      <node id="8705992975793912946" at="25,33,26,16" concept="8" />
+      <node id="8705992975793912946" at="28,41,29,17" concept="2" />
+      <node id="8705992975793912946" at="29,17,30,16" concept="8" />
+      <node id="8705992975793926557" at="33,5,34,64" concept="7" />
+      <node id="8705992975793926557" at="34,64,35,90" concept="7" />
+      <node id="8705992975793926557" at="35,90,36,63" concept="7" />
+      <node id="8705992975794104548" at="37,159,38,27" concept="7" />
+      <node id="8705992975794058840" at="40,77,41,103" concept="2" />
+      <node id="8705992975794074350" at="42,11,43,58" concept="2" />
+      <node id="8705992975793912946" at="48,50,49,143" concept="8" />
+      <node id="8705992975793912946" at="53,0,54,0" concept="10" trace="BuildMps_Module$JW" />
+      <node id="8705992975793912946" at="57,0,58,0" concept="10" trace="doNotCompile$4EF" />
+      <node id="8705992975793912946" at="58,0,59,0" concept="10" trace="javaCode$OceX" />
+      <node id="8705992975793912946" at="21,0,24,0" concept="6" trace="getCaption#()Ljava/lang/String;" />
+      <node id="8705992975794023487" at="39,56,42,11" concept="5" />
+      <node id="8705992975793912946" at="48,0,51,0" concept="6" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="8705992975793912946" at="24,0,28,0" concept="6" trace="isRerunnable#()Z" />
+      <node id="8705992975793912946" at="28,0,32,0" concept="6" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="8705992975794108422" at="38,27,44,9" concept="5" />
+      <node id="8705992975793969600" at="36,63,45,9" concept="2" />
+      <node id="8705992975793926557" at="32,42,46,5" concept="0" />
+      <node id="8705992975793912946" at="32,0,48,0" concept="6" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <scope id="8705992975793912946" at="21,30,22,23" />
+      <scope id="8705992975793912946" at="25,33,26,16" />
+      <scope id="8705992975794023489" at="40,77,41,103" />
+      <scope id="8705992975793912946" at="48,50,49,143" />
+      <scope id="8705992975793912946" at="28,41,30,16" />
+      <scope id="8705992975793912946" at="21,0,24,0" />
+      <scope id="8705992975793912946" at="48,0,51,0" />
+      <scope id="8705992975793912946" at="24,0,28,0" />
+      <scope id="8705992975793912946" at="28,0,32,0">
+        <var name="m" id="8705992975793912946" />
+      </scope>
+      <scope id="8705992975794108424" at="39,56,43,58" />
+      <scope id="8705992975794104547" at="37,159,44,9">
+        <var name="snode" id="8705992975794104549" />
+      </scope>
+      <scope id="8705992975793926557" at="33,5,45,9">
+        <var name="context" id="8705992975793926557" />
+        <var name="scope_zfg0y1_a0e" id="8705992975793926557" />
+        <var name="scope_zfg0y1_a0e_0" id="8705992975793926557" />
+      </scope>
+      <scope id="8705992975793912946" at="32,42,46,5" />
+      <scope id="8705992975793912946" at="32,0,48,0">
+        <var name="m" id="8705992975793912946" />
+      </scope>
+      <unit id="8705992975793912946" at="52,0,55,0" name="jetbrains.mps.build.mps.migration.ReplaceDoNotCompileFlagWithEnum$CONCEPTS" />
+      <unit id="8705992975793912946" at="56,0,60,0" name="jetbrains.mps.build.mps.migration.ReplaceDoNotCompileFlagWithEnum$PROPS" />
+      <unit id="8705992975793912946" at="19,0,61,0" name="jetbrains.mps.build.mps.migration.ReplaceDoNotCompileFlagWithEnum" />
     </file>
   </root>
 </debug-info>

@@ -19,8 +19,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.structure.util.ConceptIdHelper;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectSupport;
+import jetbrains.mps.smodel.language.CreateAspectContext;
+import jetbrains.mps.ide.MPSCoreComponents;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -71,14 +74,20 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
 
     SModule fromModule = SNodeOperations.getModel(from).getModule();
     assert fromModule instanceof Language;
-    SModel editorModel = LanguageAspect.EDITOR.getOrCreate((Language) fromModule);
+    // FIXME in fact, LSMP.MigrationBuilder does the same for 'migration' aspect, and, perhaps, can share some configuration (like CH) here
+    LanguageAspectDescriptor lad = LanguageAspectSupport.getAspectDescriptorById("editor");
+    if (lad.getAspectModels(fromModule).isEmpty()) {
+      CreateAspectContext cac = CreateAspectContext.create(fromModule, MPSCoreComponents.getInstance().getPlatform(), null);
+      lad.create(cac);
+    }
+    SModel editorModel = lad.getAspectModels(fromModule).iterator().next();
     addEmptySubstituteMenu(editorModel, from);
 
     if (ListSequence.fromList(selectedOptions).contains(WriteSubconceptMigrationParticipant.OPTION)) {
       if (SNodeOperations.isInstanceOf(from, CONCEPTS.ConceptDeclaration$gH) && SNodeOperations.isInstanceOf(to, CONCEPTS.ConceptDeclaration$gH)) {
         SLinkOperations.setTarget(SNodeOperations.cast(to, CONCEPTS.ConceptDeclaration$gH), LINKS.extends$_Isg, SNodeOperations.cast(from, CONCEPTS.ConceptDeclaration$gH));
       } else if (SNodeOperations.isInstanceOf(from, CONCEPTS.InterfaceConceptDeclaration$CG) && SNodeOperations.isInstanceOf(to, CONCEPTS.InterfaceConceptDeclaration$CG)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(to, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU)).addElement(createInterfaceConceptReference_c4c66o_a0a0a0a0l0c(SNodeOperations.cast(from, CONCEPTS.InterfaceConceptDeclaration$CG)));
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(to, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU)).addElement(createInterfaceConceptReference_c4c66o_a0a0a0a0o0c(SNodeOperations.cast(from, CONCEPTS.InterfaceConceptDeclaration$CG)));
       } else {
         throw new IllegalStateException();
       }
@@ -93,12 +102,12 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     ConceptId__BehaviorDescriptor.setConcept_id5e7X3XCIPOJ.invoke(oldId, from);
     SNode newId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId"));
     ConceptId__BehaviorDescriptor.setConcept_id5e7X3XCIPOJ.invoke(newId, to);
-    migrationBuilder.addPart(from, to, createMoveConcept_c4c66o_c0a71a2(oldId, newId));
+    migrationBuilder.addPart(from, to, createMoveConcept_c4c66o_c0a02a2(oldId, newId));
   }
   private void addEmptySubstituteMenu(SModel editorModel, final SNode from) {
     SNode existingSubstituteMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu$EF)).where((it) -> SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == from && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it)).first();
     if (existingSubstituteMenu == null) {
-      existingSubstituteMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Default$sV)).where((it) -> SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == from).first();
+      existingSubstituteMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu$EF)).where((it) -> SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == from && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it)).first();
     }
     if (existingSubstituteMenu != null) {
       List<SNode> parts = ListSequence.fromList(SLinkOperations.getChildren(existingSubstituteMenu, LINKS.parts$yGO4)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenuPart_Placeholder$yH))).toList();
@@ -124,12 +133,12 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     n0.setProperty(PROPS.comment$Ux58, p0);
     return n0.getResult();
   }
-  private static SNode createInterfaceConceptReference_c4c66o_a0a0a0a0l0c(SNode p0) {
+  private static SNode createInterfaceConceptReference_c4c66o_a0a0a0a0o0c(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$O4);
     n0.setReferenceTarget(LINKS.intfc$zM4e, p0);
     return n0.getResult();
   }
-  private static SNode createMoveConcept_c4c66o_c0a71a2(SNode p0, SNode p1) {
+  private static SNode createMoveConcept_c4c66o_c0a02a2(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MoveConcept$i2);
     n0.forChild(LINKS.sourceId$Qvsb).initNode(p0, CONCEPTS.ConceptId$6E, true);
     n0.forChild(LINKS.targetId$Qw9e).initNode(p1, CONCEPTS.ConceptId$6E, true);
@@ -155,7 +164,6 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
     /*package*/ static final SConcept SubstituteMenu$EF = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
-    /*package*/ static final SConcept SubstituteMenu_Default$sV = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default");
     /*package*/ static final SConcept SubstituteMenuPart_Placeholder$yH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x25c7da75de4cff05L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Placeholder");
     /*package*/ static final SConcept InterfaceConceptReference$O4 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, "jetbrains.mps.lang.structure.structure.InterfaceConceptReference");
     /*package*/ static final SConcept MoveConcept$i2 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, "jetbrains.mps.lang.migration.structure.MoveConcept");

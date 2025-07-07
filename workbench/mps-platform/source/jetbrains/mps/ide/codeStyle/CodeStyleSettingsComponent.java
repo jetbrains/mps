@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,25 +16,23 @@
 package jetbrains.mps.ide.codeStyle;
 
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.code.CodeStyleSettings;
-import jetbrains.mps.ide.code.CodeStyleSettingsRegistry;
-import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.baseLanguage.util.CodeStyleSettings;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * On-demand service; responsible for {@link jetbrains.mps.baseLanguage.util.CodeStyleSettingsRegistry} MPS CC settings persistence.
+ */
 @State(
     name = "CodeStyleSettings",
     storages = @Storage("codeStyleSettings.xml")
 )
-public class CodeStyleSettingsComponent implements PersistentStateComponent<CodeStyleSettings>, ProjectComponent {
+public class CodeStyleSettingsComponent implements PersistentStateComponent<CodeStyleSettings> {
   private CodeStyleSettings myState = new CodeStyleSettings();
-  private Project myProject;
 
   public CodeStyleSettingsComponent(Project project) {
-    myProject = project;
   }
 
   @Override
@@ -46,32 +44,7 @@ public class CodeStyleSettingsComponent implements PersistentStateComponent<Code
   public void loadState(@NotNull CodeStyleSettings state) {
     myState = state;
   }
-
-  @Override
-  public void projectOpened() {
-    CodeStyleSettingsRegistry.registerSettings(ProjectHelper.toMPSProject(myProject), myState);
-  }
-
-  @Override
-  public void projectClosed() {
-    CodeStyleSettingsRegistry.unregisterSettings(ProjectHelper.toMPSProject(myProject));
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "Code Style Settings Configurable";
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
   public static CodeStyleSettingsComponent getInstance(Project project) {
-    return project.getComponent(CodeStyleSettingsComponent.class);
+    return project.getService(CodeStyleSettingsComponent.class);
   }
 }

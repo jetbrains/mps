@@ -47,5 +47,8 @@
       </src>
       <classpath refid="path.java.library.aaa" />
     </javac>
+    <copy todir="${build.tmp}/java/out/testModuleWithAbcde">
+      <fileset dir="${basedir}/jetbrains.mps.build.sandbox/samples/buildA/src" excludes="**/*.java" />
+    </copy>
   </target>
 </project>

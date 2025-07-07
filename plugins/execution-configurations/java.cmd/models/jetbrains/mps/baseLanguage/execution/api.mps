@@ -4260,8 +4260,8 @@
                     <property role="Xl_RC" value="" />
                   </node>
                   <node concept="2YIFZM" id="7jEXsfiNRpV" role="3K4Cdx">
-                    <ref role="1Pybhc" to="fyhk:~InternalFlag" resolve="InternalFlag" />
-                    <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode()" resolve="isInternalMode" />
+                    <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+                    <ref role="37wK5l" to="fyhk:~RuntimeFlags.isInternalMode()" resolve="isInternalMode" />
                   </node>
                 </node>
               </node>

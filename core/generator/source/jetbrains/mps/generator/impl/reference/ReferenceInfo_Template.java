@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -112,6 +112,7 @@ public class ReferenceInfo_Template extends ReferenceInfo {
         generator.getLogger().warning(myTemplateSourceNode, "references across templates for different roots are not allowed: use mapping labels, " +
             "source root: " + (inputSourceRoot == null ? "<conditional root>" : SNodeOperations.getDebugText(inputSourceRoot)) +
             ", target root: " + (inputTargetRoot == null ? "<conditional root>" : SNodeOperations.getDebugText(inputTargetRoot)),
+            GeneratorUtil.describe(myTemplateSourceNode, "template node"),
             GeneratorUtil.describeIfExists(ref.getSourceNode(), "source"),
             GeneratorUtil.describeIfExists(outputTarget, "target"));
       }

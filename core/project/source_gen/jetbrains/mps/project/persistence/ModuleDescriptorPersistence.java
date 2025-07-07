@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.io.IOException;
 
-@GeneratedClass(node = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)/842994667883031742", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
+@GeneratedClass(nodeId = "842994667883031742", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
 public class ModuleDescriptorPersistence {
   private static final Logger LOG = Logger.getLogger(ModuleDescriptorPersistence.class);
   private static final String HEADER_PATTERN = ".*<(language|dev-kit|solution)[^>]+(namespace|name)=\\\"([^\"]+)\\\"[^>]+uuid=\\\"([^\"]+)\\\".*";
@@ -156,11 +156,12 @@ public class ModuleDescriptorPersistence {
     }
   }
 
-  public static List<ModelRootDescriptor> loadModelRoots(Iterable<Element> modelRootElements, MacroHelper macroHelper) {
+  public static List<ModelRootDescriptor> loadModelRoots(Iterable<Element> modelRootElements) {
+    MacroHelper macroHelper = null;
     List<ModelRootDescriptor> result = ListSequence.fromList(new ArrayList<ModelRootDescriptor>());
     for (Element element : modelRootElements) {
       Memento m = new MementoImpl();
-      readMemento(m, element, macroHelper);
+      readMemento(m, element);
       String type = element.getAttributeValue("type");
       if (type == null) {
         // This is debug code to find out cause of https://youtrack.jetbrains.com/issue/MPS-22589.
@@ -175,11 +176,11 @@ public class ModuleDescriptorPersistence {
     return result;
   }
 
-  public static List<ModuleFacetDescriptor> loadFacets(Iterable<Element> facetElements, MacroHelper macroHelper) {
+  public static List<ModuleFacetDescriptor> loadFacets(Iterable<Element> facetElements) {
     List<ModuleFacetDescriptor> result = ListSequence.fromList(new ArrayList<ModuleFacetDescriptor>());
     for (Element element : facetElements) {
       Memento m = new MementoImpl();
-      readMemento(m, element, macroHelper);
+      readMemento(m, element);
       String type = element.getAttributeValue("type");
       if (type != null) {
         ListSequence.fromList(result).addElement(new ModuleFacetDescriptor(type, m));
@@ -188,78 +189,44 @@ public class ModuleDescriptorPersistence {
     return result;
   }
 
-  public static void readMemento(Memento memento, Element element, final MacroHelper macroHelper) {
-    for (Attribute attr : (List<Attribute>) element.getAttributes()) {
-      String name = attr.getName();
-      if (isPathAttribute(name)) {
-        memento.put(name, macroHelper.expandPath(attr.getValue()));
-        memento.putPathSpec(name, attr.getValue());
-      } else {
-        memento.put(name, attr.getValue());
-      }
+  public static void readMemento(Memento memento, Element element) {
+    for (Attribute attr : element.getAttributes()) {
+      memento.put(attr.getName(), attr.getValue());
     }
-    for (Element elem : (List<Element>) element.getChildren()) {
+    for (Element elem : element.getChildren()) {
       Memento child = memento.createChild(elem.getName());
-      readMemento(child, elem, macroHelper);
+      readMemento(child, elem);
     }
   }
 
-  public static void writeMemento(Memento memento, Element element, final MacroHelper macroHelper) {
+  public static void writeMemento(Memento memento, Element element) {
     for (String key : memento.getKeys()) {
-      if (isPathAttribute(key)) {
-        element.setAttribute(key, macroHelper.shrinkPath(memento.get(key), memento.getPathSpec(key)));
-      } else {
-        if (key.startsWith(Memento.PATH_SPEC_PREFIX)) {
-          // don't serialize internal values
-          // XXX could use macro name from the value as a hint for macroHelper, until get rid of all full path value uses
-          //     (i.e. switch them to path specification)
-          continue;
-        }
-        element.setAttribute(key, memento.get(key));
-      }
+      element.setAttribute(key, memento.get(key));
     }
     for (Memento childMemento : memento.getChildren()) {
       Element child = new Element(childMemento.getType());
-      writeMemento(childMemento, child, macroHelper);
+      writeMemento(childMemento, child);
       element.addContent(child);
     }
   }
 
-  private static boolean isPathAttribute(String name) {
-    return name.equals("path") || name.endsWith("Path");
-  }
-
-  public static void saveFacets(Element result, Collection<ModuleFacetDescriptor> facets, MacroHelper macroHelper) {
+  public static void saveFacets(Element result, Collection<ModuleFacetDescriptor> facets) {
     for (ModuleFacetDescriptor facet : CollectionSequence.fromCollection(facets)) {
       Memento memento = facet.getMemento();
       Element facetElement = new Element("facet");
-      writeMemento(memento, facetElement, macroHelper);
-      String type = facet.getType();
-      facetElement.setAttribute("type", type);
+      facetElement.setAttribute("type", facet.getType());
+      writeMemento(memento, facetElement);
       result.addContent(facetElement);
     }
   }
 
-  public static void saveModelRoots(Element result, Collection<ModelRootDescriptor> modelRoots, MacroHelper macroHelper) {
+  public static void saveModelRoots(Element result, Collection<ModelRootDescriptor> modelRoots) {
     for (ModelRootDescriptor root : CollectionSequence.fromCollection(modelRoots)) {
       Memento memento = root.getMemento();
       Element modelRoot = new Element("modelRoot");
-      writeMemento(memento, modelRoot, macroHelper);
-      String type = root.getType();
-      if ((type != null && type.length() > 0) && !("obsolete".equals(type))) {
-        modelRoot.setAttribute("type", type);
-      } else {
-        modelRoot.removeAttribute("type");
-      }
+      writeMemento(memento, modelRoot);
+      modelRoot.setAttribute("type", root.getType());
       result.addContent(modelRoot);
-    }
-  }
-
-  public static void saveStubModelEntries(Element result, Collection<String> entries, MacroHelper macroHelper) {
-    for (String root : entries) {
-      Element stubModelEntry = new Element("stubModelEntry");
-      stubModelEntry.setAttribute("path", macroHelper.shrinkPath((root == null ? "" : root)));
-      result.addContent(stubModelEntry);
     }
   }
 

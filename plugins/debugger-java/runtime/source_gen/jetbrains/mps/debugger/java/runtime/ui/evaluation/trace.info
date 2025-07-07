@@ -139,37 +139,38 @@
       <node id="5600062460044309484" at="38,34,39,30" concept="2" />
       <node id="5600062460044309511" at="47,29,48,40" concept="2" />
       <node id="2757277907255793368" at="52,6,53,242" concept="8" />
-      <node id="2906125741921844207" at="53,242,54,62" concept="2" />
-      <node id="3738676476220330582" at="54,62,55,0" concept="11" />
-      <node id="3738676476220330585" at="55,0,56,51" concept="2" />
-      <node id="3738676476220330608" at="56,51,57,55" concept="2" />
-      <node id="5600062460044309551" at="61,64,62,26" concept="2" />
-      <node id="5600062460044309567" at="67,64,68,22" concept="2" />
-      <node id="5600062460044309544" at="60,27,63,5" concept="5" />
-      <node id="5600062460044309560" at="66,26,69,5" concept="5" />
+      <node id="6359975287109605406" at="53,242,54,44" concept="2" />
+      <node id="2906125741921844207" at="54,44,55,62" concept="2" />
+      <node id="3738676476220330582" at="55,62,56,0" concept="11" />
+      <node id="3738676476220330585" at="56,0,57,51" concept="2" />
+      <node id="3738676476220330608" at="57,51,58,55" concept="2" />
+      <node id="5600062460044309551" at="62,64,63,26" concept="2" />
+      <node id="5600062460044309567" at="68,64,69,22" concept="2" />
+      <node id="5600062460044309544" at="61,27,64,5" concept="5" />
+      <node id="5600062460044309560" at="67,26,70,5" concept="5" />
       <node id="5600062460044309440" at="32,0,36,0" concept="7" trace="watchUpdated#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="5600062460044309507" at="46,0,50,0" concept="7" trace="run#()V" />
       <node id="5600062460044309462" at="36,0,41,0" concept="7" trace="watchRemoved#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="5600062460044309409" at="26,0,32,0" concept="7" trace="watchAdded#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="5600062460044309500" at="44,31,50,11" concept="2" />
-      <node id="5600062460044309540" at="59,0,65,0" concept="7" trace="update#()V" />
-      <node id="5600062460044309556" at="65,0,71,0" concept="7" trace="evaluate#()V" />
+      <node id="5600062460044309540" at="60,0,66,0" concept="7" trace="update#()V" />
+      <node id="5600062460044309556" at="66,0,72,0" concept="7" trace="evaluate#()V" />
       <node id="5600062460044309496" at="43,0,52,0" concept="7" trace="doDispose#()V" />
       <node id="5600062460044309490" at="41,7,52,6" concept="2" />
       <node id="5600062460044309402" at="24,26,41,7" concept="2" />
-      <node id="5600062460044309387" at="21,0,59,0" concept="1" trace="WatchesPanel#(Ljetbrains/mps/debugger/java/runtime/evaluation/EvaluationProvider;)V" />
+      <node id="5600062460044309387" at="21,0,60,0" concept="1" trace="WatchesPanel#(Ljetbrains/mps/debugger/java/runtime/evaluation/EvaluationProvider;)V" />
       <scope id="5600062460044309445" at="33,66,34,24" />
       <scope id="5600062460044309510" at="47,29,48,40" />
-      <scope id="5600062460044309550" at="61,64,62,26" />
-      <scope id="5600062460044309566" at="67,64,68,22" />
+      <scope id="5600062460044309550" at="62,64,63,26" />
+      <scope id="5600062460044309566" at="68,64,69,22" />
       <scope id="5600062460044309467" at="37,66,39,30" />
       <scope id="5600062460044309414" at="27,64,30,24" />
-      <scope id="5600062460044309543" at="60,27,63,5" />
-      <scope id="5600062460044309544" at="60,27,63,5">
+      <scope id="5600062460044309543" at="61,27,64,5" />
+      <scope id="5600062460044309544" at="61,27,64,5">
         <var name="model" id="5600062460044309548" />
       </scope>
-      <scope id="5600062460044309559" at="66,26,69,5" />
-      <scope id="5600062460044309560" at="66,26,69,5">
+      <scope id="5600062460044309559" at="67,26,70,5" />
+      <scope id="5600062460044309560" at="67,26,70,5">
         <var name="model" id="5600062460044309564" />
       </scope>
       <scope id="5600062460044309440" at="32,0,36,0">
@@ -183,19 +184,19 @@
         <var name="model" id="5600062460044309412" />
       </scope>
       <scope id="5600062460044309499" at="44,31,50,11" />
-      <scope id="5600062460044309540" at="59,0,65,0" />
-      <scope id="5600062460044309556" at="65,0,71,0" />
+      <scope id="5600062460044309540" at="60,0,66,0" />
+      <scope id="5600062460044309556" at="66,0,72,0" />
       <scope id="5600062460044309496" at="43,0,52,0" />
-      <scope id="5600062460044309392" at="21,58,57,55">
+      <scope id="5600062460044309392" at="21,58,58,55">
         <var name="toolbar" id="2757277907255793369" />
       </scope>
-      <scope id="5600062460044309387" at="21,0,59,0">
+      <scope id="5600062460044309387" at="21,0,60,0">
         <var name="provider" id="5600062460044309390" />
       </scope>
       <unit id="5600062460044309506" at="45,60,50,9" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.WatchesPanel$2$1" />
       <unit id="5600062460044309495" at="42,32,52,5" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.WatchesPanel$2" />
       <unit id="5600062460044309408" at="25,36,41,5" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.WatchesPanel$1" />
-      <unit id="5600062460044309378" at="17,0,72,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.WatchesPanel" />
+      <unit id="5600062460044309378" at="17,0,73,0" name="jetbrains.mps.debugger.java.runtime.ui.evaluation.WatchesPanel" />
     </file>
   </root>
   <root nodeRef="r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)/5849716370568348282">

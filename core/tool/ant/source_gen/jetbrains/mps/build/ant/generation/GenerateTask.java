@@ -14,7 +14,7 @@ import jetbrains.mps.tool.common.Script;
 import jetbrains.mps.tool.common.GeneratorProperties;
 import jetbrains.mps.tool.common.JavaCompilerProperties;
 
-@GeneratedClass(node = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)/4263887295358464059", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
+@GeneratedClass(nodeId = "4263887295358464059", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
 public class GenerateTask extends MpsLoadTask {
   private String myTargetJavaVersion = null;
   private GeneratorSettings mySettings;

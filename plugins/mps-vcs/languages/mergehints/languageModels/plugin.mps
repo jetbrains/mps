@@ -156,7 +156,7 @@
       <property role="1iqoE4" value="${module}/icons/commit.png" />
     </node>
     <node concept="1sEMCm" id="46nPloex5BF" role="1fTXyH">
-      <property role="1sEMCp" value="/mergehints.html" />
+      <property role="1sEMCp" value="mergehints.html" />
       <ref role="1fZFei" node="46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>

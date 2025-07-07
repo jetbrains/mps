@@ -5,7 +5,6 @@ package jetbrains.mps.vcs.platform.mergedriver;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.project.Project;
 import com.intellij.notification.Notification;
-import com.intellij.ide.util.PropertiesComponent;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -23,7 +22,7 @@ import javax.swing.event.HyperlinkEvent;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.notification.Notifications;
 
-@GeneratedClass(node = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/6989360587247930283", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
+@GeneratedClass(nodeId = "6989360587247930283", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
 public class MergeDriverNotification {
   private static final String SUPPRESSED_PROPERTY_NAME = "merge.driver.suppressed.notification";
   private Project myProject;
@@ -31,17 +30,8 @@ public class MergeDriverNotification {
   private Notification myLastNotification;
   private MergeDriverNotification(Project project) {
     myProject = project;
-    unsetObsoleteProperty();
   }
-  /**
-   * 
-   * @deprecated 
-   */
-  @Deprecated(since = "2020.1", forRemoval = true)
-  private static void unsetObsoleteProperty() {
-    // this property removed in 2019.2, we wait for two releases till it will be cleared from config file
-    PropertiesComponent.getInstance().unsetValue(SUPPRESSED_PROPERTY_NAME);
-  }
+
   private void calculateCompositeState() {
     myCompositeState = MergeDriverInstaller.getCompositeState(myProject, false);
   }

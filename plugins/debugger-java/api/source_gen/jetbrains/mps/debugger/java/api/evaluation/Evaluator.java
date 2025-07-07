@@ -13,7 +13,7 @@ import com.sun.jdi.VirtualMachine;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy;
 
-@GeneratedClass(node = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)/4727801710070563175", model = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)")
+@GeneratedClass(nodeId = "4727801710070563175", model = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)")
 public abstract class Evaluator {
   private JavaUiState myUiState;
   private IObjectValueProxy myThisObject;

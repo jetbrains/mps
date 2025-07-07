@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -299,7 +299,8 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
   }
 
   public void executeScript(TemplateMappingScript script) throws GenerationFailureException {
-    getDefaultExecutionContext().executeScript(script, myInputModel, newExecutionEnvironment(getDefaultExecutionContext()));
+    TemplateContext tc = new DefaultTemplateContext(newExecutionEnvironment(getDefaultExecutionContext()), null, null);
+    getDefaultExecutionContext().executeScript(script, myInputModel, tc);
   }
 
   protected void applyReductions(boolean isPrimary) throws GenerationCanceledException, GenerationFailureException {
@@ -1209,6 +1210,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
         handledReferences = new HashSet<>();
         DefaultTemplateContext templateContext = new DefaultTemplateContext(myEnv, inputNode, null);
         for (ReferenceReductionRule rule : referenceRules) {
+          // XXX I wonder why didn't I pass RRR.isApplicable through QueryExecutionContext?!
           if (rule.isApplicable(templateContext)) {
             handledReferences.add(rule.getApplicableLink());
             rule.apply(templateContext, outputNode);
@@ -1228,6 +1230,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
           if (inputReference instanceof DynamicReference || external) {
             // dynamic & external references don't need validation => replace input model with output
             SModelReference targetModelReference = external ? inputReference.getTargetSModelReference() : myOutputModelRef;
+            // FIXME ^^^ external == false ==> it's DynamicReference - why do we care to set myOutputModelRef?!
             if (inputReference instanceof StaticReference) {
               if (targetModelReference == null) {
                 reportBrokenRef(inputNode, inputReference);

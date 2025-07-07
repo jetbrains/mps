@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
-import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.ModelComputeRunnable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -33,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/8201881142991326455", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+@GeneratedClass(nodeId = "8201881142991326455", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class IntelligentNodeMover {
   @NotNull
   private final Collection<SNode> myNodesToMove;
@@ -71,7 +70,7 @@ public class IntelligentNodeMover {
     if (!(myIsValid)) {
       throw new IllegalStateException("IntelligentNodeMover has invalid state. Nodes to move have different parents of different containment links");
     }
-    ComputeRunnable<Boolean> mover = new ModelComputeRunnable<Boolean>(() -> {
+    ModelComputeRunnable<Boolean> mover = new ModelComputeRunnable<Boolean>(() -> {
       PlaceToMove placeToMove = findPlaceToMove();
       if (placeToMove == null) {
         return false;

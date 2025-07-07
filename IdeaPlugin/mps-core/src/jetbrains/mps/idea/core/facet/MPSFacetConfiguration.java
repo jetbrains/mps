@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.PathUtil;
-import jetbrains.mps.ide.vfs.IdeaFileSystem;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.idea.core.facet.MPSConfigurationBean.State;
 import jetbrains.mps.idea.core.facet.ui.MPSFacetCommonTabUI;
 import jetbrains.mps.persistence.DefaultModelRoot;
@@ -152,7 +152,7 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
     }
 
     if (myState.getModelRootDescriptors().isEmpty()) {
-      final IdeaFileSystem ideaFS = myMpsFacet.getProject().getFileSystem();
+      final FileSystemBridge ideaFS = myMpsFacet.getProject().getFileSystem();
       final ContentEntry[] contentEntries = ModuleRootManager.getInstance(myMpsFacet.getModule()).getContentEntries();
       ArrayList<ModelRootDescriptor> modelRootDescriptors = new ArrayList<>(contentEntries.length);
 

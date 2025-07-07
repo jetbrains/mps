@@ -2,7 +2,7 @@
 <model ref="r:96c2681b-d258-4b28-81fb-0850456a3cee(jetbrains.mps.debugger.java.api.ui)">
   <persistence version="9" />
   <languages>
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -143,15 +143,15 @@
       </node>
     </node>
     <node concept="Wx3nA" id="15fzu3GFwxo" role="jymVt">
-      <property role="TrG5h" value="THREAD_AT_BREAKPOINT" />
+      <property role="TrG5h" value="THREAD_CURRENT" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="15fzu3GFwxp" role="1tU5fm">
         <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
       </node>
       <node concept="3Tm1VV" id="15fzu3GFwxq" role="1B3o_S" />
-      <node concept="10M0yZ" id="7tJbp6UEwcx" role="33vP2m">
+      <node concept="10M0yZ" id="29Sl4s9L4wK" role="33vP2m">
+        <ref role="3cqZAo" to="z2i8:~AllIcons$Debugger.ThreadCurrent" resolve="ThreadCurrent" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Debugger" resolve="AllIcons.Debugger" />
-        <ref role="3cqZAo" to="z2i8:~AllIcons$Debugger.ThreadAtBreakpoint" resolve="ThreadAtBreakpoint" />
       </node>
     </node>
     <node concept="3clFbW" id="2Y$mRnICmiq" role="jymVt">

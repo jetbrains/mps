@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.idea.core.psi.impl;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.TransactionGuard;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiManager;
@@ -32,9 +31,6 @@ import jetbrains.mps.idea.core.psi.impl.events.SModelEventProcessor;
 import jetbrains.mps.idea.core.psi.impl.events.SModelEventProcessor.ModelProvider;
 import jetbrains.mps.idea.core.psi.impl.events.SModelEventProcessor.ReloadableModel;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.smodel.ModelsEventsCollector;
-import jetbrains.mps.smodel.RepoListenerRegistrar;
-import jetbrains.mps.smodel.event.SModelEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -46,12 +42,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.module.ModelAccess;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
-import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.function.Consumer;
@@ -70,71 +61,8 @@ public class MPSPsiProvider implements Disposable {
     return project.getService(MPSPsiProvider.class);
   }
 
-  private SModelEventProcessor myEventProcessor;
-
-  /**
-   * We're notifying about changes in PSI via
-   * {@link com.intellij.psi.impl.PsiModificationTrackerImpl#incCounter()}).
-   * It asserts {@link com.intellij.openapi.application.TransactionGuardImpl#assertWriteActionAllowed()
-   * The problem is the command which created the events we're reacting to might have been either
-   * inside a transaction or not. Currently, most MPS actions don't invoke a transaction. Moreover,
-   * calls to runWriteInEDT() and the like, which happen to exist in MPS actions, run the given code
-   * via LaterInvocator and the code is executed not in a transaction.
-   * <p>
-   * Thus, we should expect both scenarios.
-   * <p>
-   * In the future, maybe we should drop the case when we're creating our own fake transaction here.
-   * It can be done either by removing runWriteInEDT in actions (because every action is wrapped
-   * in {@link com.intellij.openapi.application.TransactionGuardImpl#performUserActivity(Runnable)})
-   * or by invoking a transaction explicitly in the action.
-   */
-  class MyModeEventsCollector extends ModelsEventsCollector {
-    MyModeEventsCollector(ModelAccess modelAccess) {
-      super(modelAccess);
-    }
-
-    @Override
-    protected void eventsHappened(List<SModelEvent> events) {
-      Runnable processEvents = () -> myEventProcessor.process(events);
-      if (TransactionGuard.getInstance().getContextTransaction() != null) {
-        // the command that caused the events was in a transaction
-        processEvents.run();
-      } else {
-        // hackish, might be dropped in the future
-        TransactionGuard.submitTransaction(myProject, () -> {
-          SRepository repository = ProjectHelper.getProjectRepository(myProject);
-          if (repository != null) {
-            repository.getModelAccess().runWriteAction(processEvents);
-          }
-        });
-      }
-
-      // TODO PsiModificationTrackerImpl.incCounter/incOutOfCodeBlockModificationCounter (see JavaCodeBlockModificationListener)
-      // TODO notify ANY_PSI_CHANGE_TOPIC
-    }
-  };
-  private ModelsEventsCollector myEventsCollector;
-
-  private final SRepositoryContentAdapter myRepoListener = new SRepositoryContentAdapter() {
-    @Override
-    protected boolean isIncluded(SModule module) {
-      return !module.isReadOnly();
-    }
-
-    @Override
-    protected void startListening(SModel model) {
-      myEventsCollector.startListeningToModel(model);
-    }
-
-    @Override
-    protected void stopListening(SModel model) {
-      myEventsCollector.stopListeningToModel(model);
-    }
-  };
-
   public MPSPsiProvider(Project project) {
     myProject = project;
-    myEventProcessor = createEventProcessor();
     PsiManager psiManager = PsiManagerEx.getInstance(project);
     this.myModificationTracker = (PsiModificationTrackerImpl) psiManager.getModificationTracker();
     initComponent();
@@ -146,14 +74,9 @@ public class MPSPsiProvider implements Disposable {
   }
 
   private void initComponent() {
-    myEventsCollector = new MyModeEventsCollector(ProjectHelper.getModelAccess(myProject));
-    new RepoListenerRegistrar(ProjectHelper.getProjectRepository(myProject), myRepoListener).attach();
   }
 
   private void disposeComponent() {
-    new RepoListenerRegistrar(ProjectHelper.getProjectRepository(myProject), myRepoListener).detach();
-    myEventsCollector.dispose();
-    myEventsCollector = null;
   }
 
   public PsiElement getPsi(SNodeReference nodeRef) {
@@ -265,46 +188,6 @@ public class MPSPsiProvider implements Disposable {
       }
       return result;
     }
-  }
-
-  private SModelEventProcessor createEventProcessor() {
-    return new SModelEventProcessor(new ModelProvider() {
-      @Override
-      public ReloadableModel lookupModel(SModelReference modelReference) {
-        // must be alright concurrency-wise, because ConcurrentHashMap creates a memory barrier
-        final MPSPsiModel psiModel = models.get(modelReference);
-        if (psiModel == null) return null;
-
-        // MPPsiModel.reload() relies on roots' virtual files being up-to-date, so we save the model in case
-        // root name might have changed
-        return new ReloadableModel() {
-          @Override
-          public void reload(SNodeId sNodeId) {
-            MPSPsiNode oldPsiNode = psiModel.lookupNode(sNodeId);
-            if (oldPsiNode != null && psiModel.isRoot(oldPsiNode)) {
-              // sNodeId corresponds to root node
-              save(psiModel);
-            }
-            MPSPsiNode psiNode = psiModel.reload(sNodeId);
-            notifyPsiChanged(psiModel, psiNode);
-          }
-
-          @Override
-          public void reloadAll() {
-            save(psiModel);
-            psiModel.reloadAll();
-            notifyPsiChanged(psiModel, null);
-          }
-
-          private void save(MPSPsiModel psiModel) {
-            SModel smodel = psiModel.getSModelReference().resolve(ProjectHelper.getProjectRepository(psiModel.getProject()));
-            if (smodel instanceof EditableSModel) {
-              ((EditableSModel) smodel).save();
-            }
-          }
-        };
-      }
-    });
   }
 
   void notifyPsiChanged(MPSPsiModel model, MPSPsiNodeBase node) {

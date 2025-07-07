@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.plugins;
 
 import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -63,7 +62,7 @@ public class PluginSorter {
         if (dependency instanceof ReloadableModule) {
           // FIXME myModules.contains hides transitive dependencies, is it what we need here?!
           if (myModules.contains(dependency) && !myVisited.contains(dependency)) {
-            dfs0((ReloadableModuleBase) dependency);
+            dfs0((ReloadableModule) dependency);
           }
         }
       }

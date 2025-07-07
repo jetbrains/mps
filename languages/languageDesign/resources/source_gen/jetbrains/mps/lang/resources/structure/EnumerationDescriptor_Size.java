@@ -20,7 +20,7 @@ public class EnumerationDescriptor_Size extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_small_0 = new EnumerationDescriptor.MemberDescriptor("small", "small", 0x15d013b3c3eb278fL, "r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)/4241665505353447282");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x15d013b3c3eb278aL, 0x15d013b3c3eb278bL, 0x15d013b3c3eb278cL, 0x15d013b3c3eb278fL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_big_0, myMember_medium_0, myMember_small_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_big_0, myMember_medium_0, myMember_small_0);
 
   @Nullable
   @Override

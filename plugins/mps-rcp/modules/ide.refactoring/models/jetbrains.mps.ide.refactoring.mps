@@ -2494,7 +2494,7 @@
             </node>
             <node concept="2ShNRf" id="4$oa5rtwh0s" role="33vP2m">
               <node concept="1pGfFk" id="4$oa5rtwh0t" role="2ShVmc">
-                <ref role="37wK5l" to="smoa:~Renamer.&lt;init&gt;(jetbrains.mps.project.Project,jetbrains.mps.project.AbstractModule,java.util.function.Consumer)" resolve="Renamer" />
+                <ref role="37wK5l" to="smoa:~Renamer.&lt;init&gt;(jetbrains.mps.project.MPSProject,jetbrains.mps.project.AbstractModule,java.util.function.Consumer)" resolve="Renamer" />
                 <node concept="37vLTw" id="4$oa5rtwh0u" role="37wK5m">
                   <ref role="3cqZAo" node="2sTGsLqeK$D" resolve="myProject" />
                 </node>
@@ -2656,7 +2656,7 @@
             <node concept="2ShNRf" id="4$oa5rtup2r" role="33vP2m">
               <node concept="1pGfFk" id="4$oa5rtuBkp" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="smoa:~Renamer.&lt;init&gt;(jetbrains.mps.project.Project,jetbrains.mps.project.AbstractModule,java.util.function.Consumer)" resolve="Renamer" />
+                <ref role="37wK5l" to="smoa:~Renamer.&lt;init&gt;(jetbrains.mps.project.MPSProject,jetbrains.mps.project.AbstractModule,java.util.function.Consumer)" resolve="Renamer" />
                 <node concept="37vLTw" id="4$oa5rtuCLH" role="37wK5m">
                   <ref role="3cqZAo" node="2sTGsLqeK$D" resolve="myProject" />
                 </node>

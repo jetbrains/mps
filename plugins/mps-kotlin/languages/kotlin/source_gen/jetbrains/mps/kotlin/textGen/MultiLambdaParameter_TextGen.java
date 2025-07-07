@@ -15,8 +15,11 @@ public class MultiLambdaParameter_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("(");
     KotlinTextGen.arguments(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.variables$EO9Z), ctx);
-    tgs.append("):");
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$CMFM));
+    tgs.append(")");
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$CMFM) != null)) {
+      tgs.append(": ");
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$CMFM));
+    }
   }
 
   private static final class LINKS {

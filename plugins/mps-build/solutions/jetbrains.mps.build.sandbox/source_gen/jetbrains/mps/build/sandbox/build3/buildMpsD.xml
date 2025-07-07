@@ -48,5 +48,8 @@
         <fileset file="${artifacts.JarFromA}/buildA/abcde.jar" />
       </classpath>
     </javac>
+    <copy todir="${build.tmp}/java/out/mps_D_using_lib_from_C">
+      <fileset dir="${basedir}/jetbrains.mps.build.sandbox/samples/buildA/src" excludes="**/*.java" />
+    </copy>
   </target>
 </project>

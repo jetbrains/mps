@@ -13,7 +13,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.cells.contextAssistant.ContextAssistantSettings;
 import jetbrains.mps.openapi.editor.assist.ContextAssistant;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/4263287172782578316", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "4263287172782578316", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class JumpToContextAssistant_Action extends BaseAction {
   private static final Icon ICON = null;
 

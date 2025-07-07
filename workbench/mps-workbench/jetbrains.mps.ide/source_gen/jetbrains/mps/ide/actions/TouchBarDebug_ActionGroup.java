@@ -7,7 +7,7 @@ import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3201523885428189497", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "3201523885428189497", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class TouchBarDebug_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.TouchBarDebug_ActionGroup";
   public static final String LABEL_ID_debug = ID + "debug";

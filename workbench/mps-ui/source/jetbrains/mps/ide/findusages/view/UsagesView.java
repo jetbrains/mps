@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import com.intellij.ide.TreeExpander;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKey;
@@ -361,6 +362,11 @@ public class UsagesView implements IExternalizeable {
       public boolean isSelected(@NotNull AnActionEvent e) {
         return myTree.isAutoscroll();
       }
+
+      @Override
+      public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
+      }
     });
     return actionGroup;
   }
@@ -392,8 +398,13 @@ public class UsagesView implements IExternalizeable {
     }
 
     @Override
+    @NotNull
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+
+    @Override
     public void update(@NotNull AnActionEvent e) {
-      super.update(e);
       e.getPresentation().setEnabled(mySearchTask != null);
     }
 
@@ -524,6 +535,12 @@ public class UsagesView implements IExternalizeable {
     }
 
     @Override
+    @NotNull
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+
+    @Override
     public void update(@NotNull AnActionEvent e) {
       e.getPresentation().setEnabled(myMakeSession.get() == null && !myMakeComponent.isSessionActive());
     }
@@ -538,10 +555,10 @@ public class UsagesView implements IExternalizeable {
             models.add(modelDescriptor);
           }
         }
-        return new ModelsToResources(models).resources();
+        return new ModelsToResources(models, true).resources();
       });
 
-      if (myMakeSession.compareAndSet(null, new MakeSession(mpsProject, new DefaultMakeMessageHandler(mpsProject), false))) {
+      if (myMakeSession.compareAndSet(null, new MakeSession(mpsProject, new DefaultMakeMessageHandler(mpsProject), true))) {
         try {
           IMakeService makeService = mpsProject.getComponent(MakeServiceComponent.class).get();
           if (makeService.openNewSession(myMakeSession.get())) {

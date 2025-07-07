@@ -12,10 +12,10 @@ import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
-@GeneratedClass(node = "r:8ff33705-85bf-4855-805c-06d68fbe233c(jetbrains.mps.editor.runtime.descriptor)/4302900529822367990", model = "r:8ff33705-85bf-4855-805c-06d68fbe233c(jetbrains.mps.editor.runtime.descriptor)")
+@GeneratedClass(nodeId = "4302900529822367990", model = "r:8ff33705-85bf-4855-805c-06d68fbe233c(jetbrains.mps.editor.runtime.descriptor)")
 public abstract class AbstractEditorBuilder implements EditorBuilderEnvironment {
   @NotNull
-  private EditorContext myEditorContext;
+  private final EditorContext myEditorContext;
 
   public AbstractEditorBuilder(@NotNull EditorContext editorContext) {
     myEditorContext = editorContext;
@@ -37,7 +37,7 @@ public abstract class AbstractEditorBuilder implements EditorBuilderEnvironment 
 
   @Override
   public StyleRegistry getStyleRegistry() {
-    return StyleRegistry.getInstance();
+    return myEditorContext.getEditorComponent().getStyleRegistry();
   }
 
   protected void setInnerCellsContext(EditorCell_Collection cells) {

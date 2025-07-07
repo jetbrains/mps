@@ -9,15 +9,11 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
-import jetbrains.mps.kotlin.api.members.SignatureCollector;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.scopes.signed.ScopeCollector;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.kotlin.scopes.signed.TopLevelVisibility;
-import jetbrains.mps.kotlin.signatures.PropertySignature;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -26,64 +22,48 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class ObjectDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af364L, "jetbrains.mps.kotlin.structure.ObjectDeclaration");
 
-  public static final SMethod<Boolean> isLocal_id1vYW8S3rTh_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLocal").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1729083799690515557L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Void> populateDeclarations_id213J8cgCCAN = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2324909103759133107L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<TypeReference> getType_id1TQsu41FTV5 = new SMethodBuilder<TypeReference>(new SJavaCompoundTypeImpl(TypeReference.class)).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2195067079599562437L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<String> getNestedName_id1d2BQ0ZyA$g = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNestedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1387846870915246352L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<SNode> getImportRoot_id1d2BQ0ZAmKw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getImportRoot").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1387846870916230176L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
   public static final SMethod<String> getPackageName_id74Z9X$ygjTm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPackageName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8160284863354715734L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, populateDeclarations_id213J8cgCCAN, getType_id1TQsu41FTV5, getNestedName_id1d2BQ0ZyA$g, getImportRoot_id1d2BQ0ZAmKw, getPackageName_id74Z9X$ygjTm, collectScope_id7DyvjiA20yV);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNestedName_id1d2BQ0ZyA$g, getPresentation_idhEwIMiw, getImportRoot_id1d2BQ0ZAmKw, getPackageName_id74Z9X$ygjTm, collectScope_id7DyvjiA20yV);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static boolean isLocal_id1vYW8S3rTh_(@NotNull SNode __thisNode__) {
-    // It does not make sense to consider this local: type is fully known so smart cast would be of little help
-    return false;
-  }
-  /*package*/ static void populateDeclarations_id213J8cgCCAN(@NotNull SNode __thisNode__, SignatureCollector collector, SNode contextNode) {
-    if (TopLevelVisibility.visibleTo(__thisNode__, contextNode)) {
-      PropertySignature.declareTo(__thisNode__, null, collector);
-    }
-  }
-  @NotNull
-  /*package*/ static TypeReference getType_id1TQsu41FTV5(@NotNull SNode __thisNode__) {
-    return new ThisTypeReference(__thisNode__);
-  }
   /*package*/ static String getNestedName_id1d2BQ0ZyA$g(@NotNull SNode __thisNode__, KtEnvironmentConfig configuration) {
     // If root node
-    if ((SNodeOperations.getParent(__thisNode__) == null)) {
+    if (((boolean) IKotlinRoot__BehaviorDescriptor.isRoot_id7_XheqBfExI.invoke(__thisNode__))) {
       return configuration.getName(__thisNode__);
     }
 
-    return IIdentifier__BehaviorDescriptor.getNestedName_id1d2BQ0ZyA$g.invoke0(__thisNode__, CONCEPTS.IVariableIdentifier$v2, configuration);
+    return IIdentifier__BehaviorDescriptor.getNestedName_id1d2BQ0ZyA$g.invoke0(__thisNode__, CONCEPTS.IObject$38, configuration);
+  }
+  /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
+    return IIdentifier__BehaviorDescriptor.getNestedName_id1d2BQ0ZyA$g.invoke(__thisNode__, KtEnvironmentConfig.Kotlin);
   }
   /*package*/ static SNode getImportRoot_id1d2BQ0ZAmKw(@NotNull SNode __thisNode__, KtEnvironmentConfig configuration) {
-    if ((SNodeOperations.getParent(__thisNode__) == null)) {
+    if (((boolean) IKotlinRoot__BehaviorDescriptor.isRoot_id7_XheqBfExI.invoke(__thisNode__))) {
       return __thisNode__;
     }
 
-    return IIdentifier__BehaviorDescriptor.getImportRoot_id1d2BQ0ZAmKw.invoke0(__thisNode__, CONCEPTS.IVariableIdentifier$v2, configuration);
+    return IIdentifier__BehaviorDescriptor.getImportRoot_id1d2BQ0ZAmKw.invoke0(__thisNode__, CONCEPTS.IObject$38, configuration);
   }
-  /*package*/ static String getPackageName_id74Z9X$ygjTm(@NotNull SNode __thisNode__) {
-    SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IKotlinRoot$xV, false, false);
-    if ((ancestor == null)) {
-      IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV);
-    }
+  /*package*/ static String getPackageName_id74Z9X$ygjTm(@NotNull final SNode __thisNode__) {
     // Inherit ancestor package name
-    return IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(ancestor);
+    return IKotlinRoot__BehaviorDescriptor.enclosingRoot_id7_XheqBfOCk.invoke(__thisNode__).map((root) -> (String) IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(root)).orElseGet(() -> ((String) IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV)));
   }
   /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull SNode __thisNode__, ScopeCollector collector, SNode childNode) {
     boolean res = ((boolean) ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IObject$38, collector, childNode));
 
-    // Only if root
-    if ((SNodeOperations.getParent(__thisNode__) == null)) {
-      ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV, collector, childNode);
+    if (((boolean) IKotlinRoot__BehaviorDescriptor.isRoot_id7_XheqBfExI.invoke(__thisNode__))) {
+      // Note: will yield something is collectPublicScope is implemented (not the case here)
+      return ((boolean) ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV, collector, childNode));
+    } else {
+      return res;
     }
-
-    return res;
   }
 
   /*package*/ ObjectDeclaration__BehaviorDescriptor() {
@@ -102,19 +82,14 @@ public final class ObjectDeclaration__BehaviorDescriptor extends BaseBHDescripto
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((Boolean) isLocal_id1vYW8S3rTh_(node));
-      case 1:
-        populateDeclarations_id213J8cgCCAN(node, (SignatureCollector) parameters[0], (SNode) parameters[1]);
-        return null;
-      case 2:
-        return (T) ((TypeReference) getType_id1TQsu41FTV5(node));
-      case 3:
         return (T) ((String) getNestedName_id1d2BQ0ZyA$g(node, (KtEnvironmentConfig) parameters[0]));
-      case 4:
+      case 1:
+        return (T) ((String) getPresentation_idhEwIMiw(node));
+      case 2:
         return (T) ((SNode) getImportRoot_id1d2BQ0ZAmKw(node, (KtEnvironmentConfig) parameters[0]));
-      case 5:
+      case 3:
         return (T) ((String) getPackageName_id74Z9X$ygjTm(node));
-      case 6:
+      case 4:
         return (T) ((Boolean) collectScope_id7DyvjiA20yV(node, (ScopeCollector) parameters[0], (SNode) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -146,8 +121,7 @@ public final class ObjectDeclaration__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IVariableIdentifier$v2 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc83114d2ab6L, "jetbrains.mps.kotlin.structure.IVariableIdentifier");
-    /*package*/ static final SInterfaceConcept IKotlinRoot$xV = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x713f27d92240e539L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
     /*package*/ static final SInterfaceConcept IObject$38 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1ba36e493d40fea4L, "jetbrains.mps.kotlin.structure.IObject");
+    /*package*/ static final SInterfaceConcept IKotlinRoot$xV = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x713f27d92240e539L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
   }
 }

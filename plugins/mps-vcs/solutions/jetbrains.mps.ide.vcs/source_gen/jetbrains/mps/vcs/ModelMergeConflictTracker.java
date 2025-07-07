@@ -32,7 +32,7 @@ import com.intellij.openapi.application.ModalityState;
  * This is a replacement to notorious SuspiciousModelIndex which did VCS bridging (in quite extravagant singleton, albeit common in MPS, way) among other stuff.
  * Note, this class resembles ModelTracking and ModelStorageProblemsListener from VFS, perhaps, we need to come up with an unified solution and single repo listener.
  */
-@GeneratedClass(node = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)/5008401335905583648", model = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)")
+@GeneratedClass(nodeId = "5008401335905583648", model = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)")
 public final class ModelMergeConflictTracker implements StartupActivity.Background {
   public ModelMergeConflictTracker() {
   }

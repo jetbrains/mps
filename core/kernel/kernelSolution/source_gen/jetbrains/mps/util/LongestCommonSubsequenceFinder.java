@@ -13,7 +13,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 
-@GeneratedClass(node = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)/4972886494893373483", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
+@GeneratedClass(nodeId = "4972886494893373483", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
 public class LongestCommonSubsequenceFinder<E> {
   private List<E> myA;
   private List<E> myB;

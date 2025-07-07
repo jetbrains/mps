@@ -14,7 +14,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 
-@GeneratedClass(node = "r:39c01cc7-82c8-4706-9a38-48a33acb0535(jetbrains.mps.ide.findusages.view.optionseditor)/28859145781927653", model = "r:39c01cc7-82c8-4706-9a38-48a33acb0535(jetbrains.mps.ide.findusages.view.optionseditor)")
+@GeneratedClass(nodeId = "28859145781927653", model = "r:39c01cc7-82c8-4706-9a38-48a33acb0535(jetbrains.mps.ide.findusages.view.optionseditor)")
 public class DefaultOptionsContainer {
   private static final Logger LOG = Logger.getLogger(DefaultOptionsContainer.class);
   private static final String DEFAULT_SEARCH_OPTIONS = "default_search_options";

@@ -9,7 +9,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
-@GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/8914091101145773413", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
+@GeneratedClass(nodeId = "8914091101145773413", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 /*package*/ class PostponedState {
   private boolean versionUpdate;
   private Collection<ScriptApplied> scripts;

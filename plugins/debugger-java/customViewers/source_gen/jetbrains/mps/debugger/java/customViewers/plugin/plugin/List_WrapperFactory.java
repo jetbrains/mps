@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.PrimitiveValueProxy;
 import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
 
-@GeneratedClass(node = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)/2929731761237869240", model = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)")
+@GeneratedClass(nodeId = "2929731761237869240", model = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)")
 public class List_WrapperFactory extends ValueWrapperFactory {
   public List_WrapperFactory() {
   }

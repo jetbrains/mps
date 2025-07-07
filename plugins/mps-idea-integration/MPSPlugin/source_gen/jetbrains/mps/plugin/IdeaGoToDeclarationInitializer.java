@@ -8,7 +8,7 @@ import jetbrains.mps.ide.editor.actions.GoToDeclarationHandlerRegistry;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/1710949916357471507", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "1710949916357471507", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 public class IdeaGoToDeclarationInitializer implements ApplicationComponent {
   private GoToDeclarationHandlerRegistry.GoToDeclarationHandler myHandler = new DefaultGoToDeclarationHandler();
   @Override

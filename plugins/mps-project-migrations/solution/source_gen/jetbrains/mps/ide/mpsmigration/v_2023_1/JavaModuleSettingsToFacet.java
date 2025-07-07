@@ -44,40 +44,27 @@ public class JavaModuleSettingsToFacet extends BaseProjectMigration {
         continue;
       }
       ModuleDescriptor md = ((AbstractModule) pm).getModuleDescriptor();
-      if (md == null || (md.getJavaLibOriginalValues().isEmpty() && md.getSourcePathOriginalValue().isEmpty())) {
-        continue;
-      }
-      if (md.getJavaLibOriginalValues().size() != md.getJavaLibPersistedValues().size()) {
-        // perhaps, user already modified MD.getJavaLibs(), don't want to migrate inconsistent set of libraries,
-        // let the migration run automatically again.
-        success = false;
-      }
-      if (md.getSourcePathOriginalValue().size() != md.getSourcePathPersistedValue().size()) {
-        // same idea as for java libs, above
-        success = false;
-      }
-      if (!(success)) {
+      if (md == null || (md.getJavaLibPersistedValues().isEmpty() && md.getSourcePathPersistedValue().isEmpty())) {
         continue;
       }
       ArrayList<PathSpec> translated1 = new ArrayList<>();
       ArrayList<PathSpec> translated2 = new ArrayList<>();
-      for (String jl : md.getJavaLibOriginalValues()) {
+      for (String jl : md.getJavaLibPersistedValues()) {
         // can bother with project.getFS and translate string to IFile, just see no point in going to IFile
         // here as the only plan is to get these values moved to a different location in the module descriptor
-        // and use of original value from MD helps to keep original macro specification
+        // Prior to 23.3, we used original value from MD to keep original macro specification, now we use expanded path 
+        // and let JMF resolve this string to IFile. 
         translated1.add(new PathSpec(jl));
       }
-      for (String sp : md.getSourcePathOriginalValue()) {
+      for (String sp : md.getSourcePathPersistedValue()) {
         translated2.add(new PathSpec(sp));
       }
       if (!(translated1.isEmpty())) {
         jmf.setJavaLibrarySpec(new PathSpecBundle(translated1));
-        md.getJavaLibOriginalValues().clear();
         md.getJavaLibPersistedValues().clear();
       }
       if (!(translated2.isEmpty())) {
         jmf.setSourcePathSpec(new PathSpecBundle(translated2));
-        md.getSourcePathOriginalValue().clear();
         md.getSourcePathPersistedValue().clear();
       }
       // hope this is enough to get modules saved at the end of the write action/migration step,

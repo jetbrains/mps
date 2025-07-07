@@ -23,6 +23,9 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
+      <concept id="418049251856799813" name="jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute" flags="ig" index="1AhYRh">
+        <property id="418049251856799817" name="comment" index="1AhYRt" />
+      </concept>
       <concept id="5583843313507852240" name="jetbrains.mps.lang.structure.structure.MarkerInterfaceAttribute" flags="ng" index="3MrDgS" />
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
@@ -103,6 +106,30 @@
     <node concept="3MrDgS" id="5Z6N5M4XbT2" role="lGtFl" />
     <node concept="t5JxF" id="5Z6N5M4XbT4" role="lGtFl">
       <property role="t5JxN" value="Denotes a root contributed into descriptor model by a language aspect to facilitate its generation as part of module descriptor processing" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="IR$DxXuVkC">
+    <property role="EcuMT" value="844304638793200936" />
+    <property role="TrG5h" value="ModuleActivator" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="IR$DxXuVkF" role="1TKVEi">
+      <property role="IQ2ns" value="844304638793200939" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="extensions" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fzclF80" resolve="StatementList" />
+    </node>
+    <node concept="1AhYRh" id="IR$DxXuVkD" role="lGtFl" />
+  </node>
+  <node concept="PlHQZ" id="3e7$st3rkg8">
+    <property role="EcuMT" value="3713096702806017032" />
+    <property role="TrG5h" value="ActivatorUnit" />
+    <node concept="3MrDgS" id="3e7$st3rkgc" role="lGtFl" />
+    <node concept="1AhYRh" id="3e7$st3rkga" role="lGtFl">
+      <property role="1AhYRt" value="much like AspectDescriptor, to trigger generation of ModuleActivator code" />
+    </node>
+    <node concept="t5JxF" id="3e7$st3rnII" role="lGtFl">
+      <property role="t5JxN" value="Piece of work/feature of a ModuleActivator" />
     </node>
   </node>
 </model>

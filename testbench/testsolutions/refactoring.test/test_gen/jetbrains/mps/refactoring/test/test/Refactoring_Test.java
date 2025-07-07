@@ -29,6 +29,9 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.Map;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectSupport;
+import jetbrains.mps.smodel.Language;
 import java.util.Collection;
 import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -106,13 +109,15 @@ public class Refactoring_Test extends AbstractRefactoringTest {
   public void test_moveClassUpdateReferences() throws Exception {
     runCommand(() -> {
       SModel targetModel = SModuleOperations.getAspect(myTargetLanguage, "constraints");
-      Assert.assertNotNull(targetModel);
+      Assert.assertNull(targetModel);
+      LanguageAspectDescriptor cad = LanguageAspectSupport.getAspectDescriptorById("constraints");
+      Assert.assertNotNull(cad);
       List<SNode> nodesToMove = ListSequence.fromListAndArray(new ArrayList<SNode>(), SPointerOperations.resolveNode(new SNodePointer("r:bd146201-753a-4f62-9de3-080d0101373f(SourceLanguage.constraints)", "3794080752246611243"), project.getRepository()));
       Assert.assertFalse(ListSequence.fromList(nodesToMove).contains(null));
 
       List<RefactoringParticipant.Option> options = ListSequence.fromListAndArray(new ArrayList<RefactoringParticipant.Option>(), UpdateReferencesParticipantBase.UpdateReferencesParticipant.OPTION);
 
-      MoveNodesUtil.moveTo(project, "", MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project), nodesToMove)), new HeadlessRefactoringUI(options));
+      MoveNodesUtil.moveTo(project, "", MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRootWithAspectModelCreation((Language) myTargetLanguage, cad), project), nodesToMove)), new HeadlessRefactoringUI(options));
     });
 
     // not really needed, but still let's end the transaction before checking

@@ -19,6 +19,15 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.EditorPanelManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.Language;
+import java.util.List;
+import org.jetbrains.mps.openapi.model.SModel;
+import java.util.ArrayList;
+import jetbrains.mps.smodel.Generator;
+import java.util.Objects;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -70,6 +79,7 @@ public final class ConvertConceptAndInterface_Intention extends AbstractIntentio
         ListSequence.fromList(SLinkOperations.getChildren(cd, LINKS.implements$u_P2)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU)));
         created = cd;
       }
+      this._additional_updateReferences(node, created);
       SNodeOperations.deleteNode(node);
 
       EditorPanelManager epm = editorContext.getEditorPanelManager();
@@ -91,6 +101,32 @@ public final class ConvertConceptAndInterface_Intention extends AbstractIntentio
     }
 
 
+    private void _additional_updateReferences(final SNode original, final SNode createdNode) {
+      SModule module = SNodeOperations.getModel(original).getModule();
+      if (module == null || !(module instanceof Language)) {
+        return;
+      }
+      Language lang = ((Language) module);
+      List<SModel> allModels = ListSequence.fromList(new ArrayList<SModel>());
+      ListSequence.fromList(allModels).addSequence(ListSequence.fromList(lang.getModels()));
+      ListSequence.fromList(allModels).addSequence(ListSequence.fromList(lang.getAccessoryModels()));
+      for (Generator generator : lang.getGenerators()) {
+        ListSequence.fromList(allModels).addSequence(ListSequence.fromList(generator.getModels()));
+      }
+      for (SModel currentModel : allModels) {
+        Iterable<SNode> nodesWithRefs = ListSequence.fromList(SModelOperations.nodes(currentModel, null)).where((n) -> !(Objects.equals(n, original)) && ListSequence.fromList(SNodeOperations.getReferences(n)).any((ref) -> Objects.equals(SLinkOperations.getTargetNode(ref), original)));
+        Sequence.fromIterable(nodesWithRefs).visitAll((referingNode) -> {
+          Iterable<? extends SReference> references = referingNode.getReferences();
+          for (SReference r : references) {
+            if (Objects.equals(SLinkOperations.getTargetNode(r), original)) {
+              referingNode.setReferenceTarget(r.getLink(), null);
+              referingNode.setReferenceTarget(r.getLink(), createdNode);
+            }
+          }
+        });
+
+      }
+    }
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertConceptAndInterface_Intention.this;

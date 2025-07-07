@@ -9,6 +9,7 @@ import com.intellij.icons.AllIcons;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
+import jetbrains.mps.vcs.diff.merge.ModelLot;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.ui.JBSplitter;
@@ -20,7 +21,6 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.GoToNeighbourRootActions;
-import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import com.intellij.diff.DiffEditorTitleCustomizer;
 import com.intellij.diff.merge.TextMergeRequest;
 import java.awt.BorderLayout;
@@ -31,18 +31,23 @@ import com.intellij.openapi.diff.DiffBundle;
 import com.intellij.diff.util.DiffUserDataKeysEx;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
+import jetbrains.mps.smodel.RepositoryFacade;
+import java.util.function.BiFunction;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.vcs.diff.ui.MetadataUtil;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import java.util.ArrayList;
 import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.ui.Messages;
-import jetbrains.mps.smodel.ModelAccessHelper;
+import java.util.Arrays;
 import com.intellij.ui.ScrollPaneFactory;
 import java.awt.Dimension;
 import com.intellij.openapi.util.DimensionService;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.changes.MetadataChange;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -50,7 +55,6 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelTree;
 import jetbrains.mps.util.NameUtil;
-import java.util.Arrays;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import com.intellij.ui.SimpleTextAttributes;
@@ -58,7 +62,7 @@ import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
 import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
 
-@GeneratedClass(node = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)/2657001694103488033", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
+@GeneratedClass(nodeId = "2657001694103488033", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
 public class MergeModelsPanel extends JPanel {
   public static final Icon APPLY_NON_CONFLICTS = AllIcons.Diff.ApplyNotConflicts;
   public static final Icon RESET = AllIcons.Actions.Rollback;
@@ -66,6 +70,7 @@ public class MergeModelsPanel extends JPanel {
   private final Project myProject;
   private final SRepository myProjectRepository;
   private MergeSession myMergeSession;
+  private final ModelLot myMetadataModels;
   private MergeSession myMetadataMergeSession;
   private MergeSession.MergeSessionFullState myInitialState;
   private MergeSession.MergeSessionFullState myMetadataInitialState;
@@ -85,10 +90,6 @@ public class MergeModelsPanel extends JPanel {
 
   private final List<String> myContentTitles;
 
-  private final SModel myBaseModel;
-  private final SModel myMineModel;
-  private final SModel myRepoModel;
-  private final MergeTemporaryModel myResultModel;
   private boolean myMergeModeIsChanging;
 
   private List<DiffEditorTitleCustomizer> myTitleCustomizers;
@@ -96,14 +97,10 @@ public class MergeModelsPanel extends JPanel {
 
   public MergeModelsPanel(Project project, final SModel baseModel, final SModel mineModel, final SModel repoModel, TextMergeRequest request, final boolean fixReferences) {
     super(new BorderLayout());
-    myBaseModel = baseModel;
-    myMineModel = mineModel;
-    myRepoModel = repoModel;
     myProject = project;
     myContentTitles = (List<String>) MergeUtil.notNullizeContentTitles(request.getContentTitles());
     ListSequence.fromList(myContentTitles).setElement(ThreeSide.BASE.getIndex(), DiffBundle.message("merge.version.title.merged.result"));
     myTitleCustomizers = request.getUserData(DiffUserDataKeysEx.EDITORS_TITLE_CUSTOMIZER);
-    myResultModel = MergeSession.createTemporaryResultModel(baseModel, mineModel, repoModel);
     assert ListSequence.fromList(myContentTitles).count() == 3;
     // FIXME code below requires thorough refactoring. Models that come here are IMO loaded from disk and are not
     // attached to any repository, hence there's no reason to grab lock to deal with them. OTOH, there's code that
@@ -111,25 +108,44 @@ public class MergeModelsPanel extends JPanel {
     // requires model lock.
     myProjectRepository = ProjectHelper.getProjectRepository(project);
     assert myProjectRepository != null;
-    myProjectRepository.getModelAccess().runReadAction(() -> myMergeSession = MergeSession.createMergeSession(baseModel, mineModel, repoModel, myResultModel, DiffSettingsUtil.getTrackMovedNodesMergeOption()));
+    myMergeSession = myProjectRepository.getModelAccess().computeReadAction(() -> MergeSession.createMergeSession(baseModel, mineModel, repoModel, DiffSettingsUtil.getTrackMovedNodesMergeOption()));
 
+    // XXX once we use distinct repo for both MergeSessions, shall use this repo for all read/write operations
+    RepositoryFacade repo = RepositoryFacade.createPlainRegistrationRepo();
+    myMetadataModels = new ModelLot(repo);
     // create metamodels before renaming the models in order to avoid problems
     // with stereotypes like in MPS-32651 and MPS-33991
     if (ListSequence.fromList(myMergeSession.getMetadataChanges()).isNotEmpty()) {
-      myProjectRepository.getModelAccess().runWriteAction(() -> {
-        SModel baseMetaModel = MetadataUtil.createMetadataModel(myBaseModel, "metadata_base", false);
-        SModel mineMetaModel = MetadataUtil.createMetadataModel(myMineModel, "metadata_mine", false);
-        SModel repoMetaModel = MetadataUtil.createMetadataModel(myRepoModel, "metadata_repo", false);
-        myMetadataMergeSession = MergeSession.createMergeSession(baseMetaModel, mineMetaModel, repoMetaModel);
-        DiffModelUtil.renameModelAndRegister(myMetadataMergeSession.getResultModel(), "metadata_result");
+      // XXX is there need for project repo read - we do access models of a merge session, but aren't they come detached?
+      myProjectRepository.getModelAccess().runReadAction(() -> {
+        BiFunction<SModelReference, SModel, MergeTemporaryModel> mmFactory = (mp, m) -> {
+          MergeTemporaryModel mm = new MergeTemporaryModel(mp, true);
+          MetadataUtil.populate(mm, m);
+          // XXX it looks isChanged used as indication whether there's anything in the model to apply.
+          // If yes, why not use dedicated flag in MergeTemporaryModel, and cease being EditableSModel?
+          // Check MetadataUtil.createMetadataModel for history.
+          mm.setChanged(false);
+          return mm;
+        };
+        SModel m1 = myMetadataModels.deriveModel(myMergeSession.getBaseModel(), "metadata_base", mmFactory);
+        SModel m2 = myMetadataModels.deriveModel(myMergeSession.getMyModel(), "metadata_mine", mmFactory);
+        SModel m3 = myMetadataModels.deriveModel(myMergeSession.getRepositoryModel(), "metadata_repo", mmFactory);
+        MergeTemporaryModel m4 = MergeSession.createTemporaryResultModel(m1, m2, m3);
+        // FIXME refactor this DiffModelUtil use as well, but have to deal with logic inside createTemporaryResultModel() first
+        //      to produce MTM with proper reference right away. Shall address PersistenceVersionAware case as well, although PWA is not essential to track model attributes!
+        //      Therefore, keep old logic as a first step.
+        DiffModelUtil.renameModel(m4, "metadata_result");
+        myMetadataModels.track(m4);
+        myMetadataMergeSession = MergeSession.createMergeSession(m1, m2, m3, m4, false);
+        myMetadataModels.registerModels();
         myMetadataInitialState = myMetadataMergeSession.getCurrentFullState();
       });
     }
     myProjectRepository.getModelAccess().runWriteAction(() -> {
-      DiffModelUtil.renameModelAndRegister(myBaseModel, "base", fixReferences);
-      DiffModelUtil.renameModelAndRegister(myMineModel, "mine", fixReferences);
-      DiffModelUtil.renameModelAndRegister(myRepoModel, "repo", fixReferences);
-      DiffModelUtil.renameModelAndRegister(myResultModel, "result", fixReferences);
+      DiffModelUtil.renameModelAndRegister(myMergeSession.getBaseModel(), "base", fixReferences);
+      DiffModelUtil.renameModelAndRegister(myMergeSession.getMyModel(), "mine", fixReferences);
+      DiffModelUtil.renameModelAndRegister(myMergeSession.getRepositoryModel(), "repo", fixReferences);
+      DiffModelUtil.renameModelAndRegister(myMergeSession.getResultModel(), "result", fixReferences);
       myInitialState = myMergeSession.getCurrentFullState();
     });
 
@@ -141,13 +157,14 @@ public class MergeModelsPanel extends JPanel {
     init();
   }
 
+
   public void trackMovedNodes() {
 
     if (myMergeModeIsChanging) {
       return;
     }
 
-    final boolean trackMovedNodes = DiffSettingsUtil.getTrackMovedNodesMergeOption();
+    final boolean trackMovedNodes = myMergeSession.tracksMovedNodes();
     if (myMergeSession.hasResolvedChanges()) {
       String confirmationDialogTitle = (trackMovedNodes ? "" : "");
       String confirmationDialogMessage = "Merge process was already started for this model. Changing the option will discard all applied changes and restart merge process from scratch.\nAre you sure you’d like to continue?";
@@ -159,9 +176,9 @@ public class MergeModelsPanel extends JPanel {
     DiffSettingsUtil.setTrackMovedNodesMergeOption(!(trackMovedNodes));
     myMergeModeIsChanging = true;
 
-    new ModelAccessHelper(myProjectRepository).runReadAction(() -> {
+    myProjectRepository.getModelAccess().runReadAction(() -> {
       myMergeSession.restoreFullState(myInitialState);
-      myMergeSession = MergeSession.createMergeSession(myBaseModel, myMineModel, myRepoModel, myResultModel, !(trackMovedNodes));
+      myMergeSession = MergeSession.createMergeSession(myMergeSession, !(trackMovedNodes));
       if (myMetadataMergeSession != null) {
         myMetadataMergeSession.restoreFullState(myMetadataInitialState);
       }
@@ -187,6 +204,7 @@ public class MergeModelsPanel extends JPanel {
   protected void init() {
     myPanel.setSplitterProportionKey(getClass().getName() + "ModelTreeSplitter");
     myMergeTree = new MergeModelsTree(myProjectRepository);
+    myMergeTree.withModelName(Arrays.asList(myMergeSession.getBaseModel(), myMergeSession.getMyModel(), myMergeSession.getRepositoryModel()));
     myPanel.setFirstComponent(ScrollPaneFactory.createScrollPane(myMergeTree));
     myPanel.setSecondComponent(myNoRootPanel);
     // the rebuild of the tree should not happen before the second component of the panel
@@ -248,7 +266,7 @@ public class MergeModelsPanel extends JPanel {
     });
     DiffModelUtil.restoreModelName(resultModel);
     // fix???
-    for (SModel m : new SModel[]{myMineModel, myRepoModel}) {
+    for (SModel m : new SModel[]{myMergeSession.getMyModel(), myMergeSession.getRepositoryModel()}) {
       DiffModelUtil.fixModelReferences(resultModel, SModelOperations.getPointer(m));
     }
     return resultModel;
@@ -256,16 +274,11 @@ public class MergeModelsPanel extends JPanel {
 
   private void unregisterModels() {
     myProjectRepository.getModelAccess().runWriteAction(() -> {
-      if (myMetadataMergeSession != null) {
-        DiffModelUtil.unregisterModel(myMetadataMergeSession.getResultModel());
-        MetadataUtil.dispose(myMetadataMergeSession.getRepositoryModel());
-        MetadataUtil.dispose(myMetadataMergeSession.getMyModel());
-        MetadataUtil.dispose(myMetadataMergeSession.getBaseModel());
-      }
+      myMetadataModels.discard();
       DiffModelUtil.unregisterModel(myMergeSession.getResultModel());
-      DiffModelUtil.unregisterModel(myRepoModel);
-      DiffModelUtil.unregisterModel(myMineModel);
-      DiffModelUtil.unregisterModel(myBaseModel);
+      DiffModelUtil.unregisterModel(myMergeSession.getRepositoryModel());
+      DiffModelUtil.unregisterModel(myMergeSession.getMyModel());
+      DiffModelUtil.unregisterModel(myMergeSession.getBaseModel());
     });
   }
 
@@ -362,8 +375,8 @@ public class MergeModelsPanel extends JPanel {
       applyUnresolvedChanges(myMetadataMergeSession, myMetadataMergeSession.getAllChanges(), mine);
       applyMetadataChanges();
     }
-    // XXX tree.rebuildNow as model command, really?
-    myProjectRepository.getModelAccess().executeCommand(() -> myMergeTree.rebuildNow());
+    // this method is invoked from an action that runs in EDT, hence 'now'
+    myMergeTree.rebuildNow();
   }
 
   private void applyMetadataChanges() {
@@ -371,7 +384,7 @@ public class MergeModelsPanel extends JPanel {
       if (myMetadataMergeSession != null) {
         MetadataUtil.applyMetadataChanges(myMergeSession.getResultModel(), myMetadataMergeSession.getResultModel());
         // hack to fix language versions in merged models
-        MetadataUtil.fixLanguageImportVersionsAfterMerge(myMergeSession.getResultModel(), myMineModel, myRepoModel);
+        MetadataUtil.fixLanguageImportVersionsAfterMerge(myMergeSession.getResultModel(), myMergeSession.getMyModel(), myMergeSession.getRepositoryModel());
       }
     });
   }
@@ -491,7 +504,7 @@ public class MergeModelsPanel extends JPanel {
     }
     @Override
     protected Iterable<SModel> getModels() {
-      return Arrays.asList(myBaseModel, myMineModel, myRepoModel);
+      return Arrays.asList(myMergeSession.getBaseModel(), myMergeSession.getMyModel(), myMergeSession.getRepositoryModel());
     }
     @Override
     protected Iterable<SNodeId> getAffectedRoots() {

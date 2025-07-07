@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 package jetbrains.mps.ide.editor.warningPanel;
 
 import com.intellij.ui.HyperlinkLabel;
+import com.intellij.util.ui.JBInsets;
+import com.intellij.util.ui.JBUI.CurrentTheme.Editor.Notification;
 import com.intellij.xml.util.XmlStringUtil;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,15 +37,14 @@ public final class WarningPanel extends JPanel {
 
   // FWIW, 'provider' here is mere identity object, to tell warnings from different origins.
   public WarningPanel(@NotNull EditorWarningsProvider provider, @NotNull String text, @Nullable String linkText, @Nullable final Runnable handler) {
+    super(new BorderLayout());
     myProvider = provider;
     myText = text;
-    setLayout(new BorderLayout());
-    final Style wpStyle = StyleRegistry.getInstance().getStyle("WARNING_PANEL");
-    setBackground(wpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR));
-    setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+
+    JBInsets jbInsets = Notification.borderInsetsWithoutStatus();
+    setBorder(BorderFactory.createEmptyBorder(jbInsets.top, jbInsets.left, jbInsets.bottom, jbInsets.right));
 
     final JLabel label = new JLabel("<html>" + XmlStringUtil.escapeString(text) + "</html>");
-    label.setForeground(wpStyle.get(StyleAttributes.TEXT_COLOR));
     add(label, BorderLayout.CENTER);
 
     if (linkText != null && handler != null) {

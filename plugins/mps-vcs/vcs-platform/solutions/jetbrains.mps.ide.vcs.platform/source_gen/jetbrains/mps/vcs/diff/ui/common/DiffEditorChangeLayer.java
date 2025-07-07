@@ -18,7 +18,7 @@ import com.intellij.diff.util.TextDiffTypeFactory;
 import com.intellij.util.ui.UIUtil;
 import java.awt.Graphics2D;
 
-@GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/1801212291201505984", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
+@GeneratedClass(nodeId = "1801212291201505984", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 /*package*/ final class DiffEditorChangeLayer {
 
   @NotNull

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.module.SRepositoryBase;
@@ -23,7 +22,6 @@ import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.adapter.BootstrapAdapterFactory;
 import jetbrains.mps.smodel.event.SModelListener;
-import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -39,10 +37,7 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.persistence.ModelSaveException;
-import org.jetbrains.mps.openapi.persistence.NullDataSource;
 
-import java.io.IOException;
 import java.util.ArrayDeque;
 
 /**
@@ -211,42 +206,61 @@ final class TestModelFactory {
 
   // FIXME node add/remove operations don't require EditableSModelBase to dispatch events any more, and we may get back SModelBase as superclass
   // however, at the moment, there are still casts in #clearEditableChanged() and #isEditableChanged and unless we drop these,
-  // the class has to be of EditableSModel
+  // the class has to be of EditableSModel.
+  // UPDATE ^^^: now there's no use of EditableSModelBase, but the story of different test models (editable and not-editable) isn't complete, revisit.
   @Deprecated(since = "3.3", forRemoval = true)
-  private static class TestModelBase extends EditableSModelBase {
-    private final jetbrains.mps.smodel.SModel myModelData;
+  private static class TestModelBase extends TrivialModelDescriptor implements EditableSModel {
+    private boolean myChanged = false;
 
     public TestModelBase(jetbrains.mps.smodel.SModel modelData) {
-      super(modelData.getReference(), new NullDataSource());
-      myModelData = modelData;
-      myModelData.setModelDescriptor(this, getNodeEventDispatch());
-      setLoadingState(ModelLoadingState.FULLY_LOADED);
+      super(modelData);
     }
 
     @Override
-    public jetbrains.mps.smodel.SModel getSModel() {
-      return myModelData;
-    }
-
-    @Nullable
-    @Override
-    protected jetbrains.mps.smodel.SModel getCurrentModelInternal() {
-      return myModelData;
+    public boolean isChanged() {
+      return myChanged;
     }
 
     @Override
-    protected void doUnload() {
+    public void setChanged(boolean changed) {
+      myChanged = changed;
+    }
+
+    @Override
+    public void addRootNode(@NotNull org.jetbrains.mps.openapi.model.SNode node) {
+      assertCanChange();
+      getModelData().addRootNode(node);
+    }
+
+    @Override
+    public void removeRootNode(@NotNull org.jetbrains.mps.openapi.model.SNode node) {
+      assertCanChange();
+      getModelData().removeRootNode(node);
+    }
+
+    @Override
+    public void addChangeListener(SNodeChangeListener listener) {
+      getNodeEventDispatch().addChangeListener(listener);
+    }
+
+    @Override
+    public void removeChangeListener(SNodeChangeListener listener) {
+      getNodeEventDispatch().removeChangeListener(listener);
+    }
+
+    @Override
+    public void reloadFromSource() {
       // no-op
     }
 
     @Override
-    protected void reloadContents() {
+    public void save() {
       // no-op
     }
 
     @Override
-    protected boolean saveModel() throws IOException, ModelSaveException {
-      return false;
+    public void rename(@NotNull String newModelName, boolean changeFile) {
+      throw new UnsupportedOperationException();
     }
   }
 
@@ -372,7 +386,7 @@ final class TestModelFactory {
     }
 
     @Override
-    public void executeCommandInEDT(Runnable r) {
+    public void executeCommandInEDT(@NotNull Runnable r) {
       executeCommand(r);
     }
 

@@ -54,7 +54,7 @@ public class CellAction_PasteNodeRelative extends AbstractCellAction {
     if (anchorNode == null) {
       return false;
     }
-    List<SNode> pasteNodes = CopyPasteUtil.getNodesFromClipboard(anchorNode.getModel());
+    List<SNode> pasteNodes = CopyPasteUtil.getNodesFromClipboard();
     if (pasteNodes == null || pasteNodes.isEmpty()) {
       return false;
     }
@@ -73,7 +73,7 @@ public class CellAction_PasteNodeRelative extends AbstractCellAction {
     EditorCell selectedCell = editorComponent.getSelectedCell();
     SNode anchorNode = selectedCell.getSNode();
 
-    final PasteNodeData pasteNodeData = CopyPasteUtil.getPasteNodeDataFromClipboard(anchorNode.getModel());
+    final PasteNodeData pasteNodeData = CopyPasteUtil.getPasteNodeData();
     if (pasteNodeData == null || pasteNodeData.getNodes().isEmpty()) {
       return;
     }

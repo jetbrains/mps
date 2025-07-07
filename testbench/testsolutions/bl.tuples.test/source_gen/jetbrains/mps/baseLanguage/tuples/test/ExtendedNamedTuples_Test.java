@@ -30,7 +30,7 @@ public class ExtendedNamedTuples_Test {
     bar.size(0.123456);
 
     Foo foo = bar;
-    Assert.assertEquals(1234, (int) foo.num());
+    Assert.assertEquals(Integer.valueOf(1234), Integer.valueOf((int) foo.num()));
     Assert.assertEquals("xyz", foo.str());
 
     Assert.assertEquals("ABCDEF", bar.id());

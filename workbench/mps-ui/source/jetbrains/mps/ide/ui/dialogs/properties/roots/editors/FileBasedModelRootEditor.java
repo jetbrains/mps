@@ -6,6 +6,7 @@ package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 import com.intellij.icons.AllIcons.Actions;
 import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.idea.ActionsBundle;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -27,7 +28,6 @@ import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.ScrollPaneFactory;
-import com.intellij.ui.TreeSpeedSearch;
 import com.intellij.ui.roots.ToolbarPanel;
 import com.intellij.ui.treeStructure.Tree;
 import com.intellij.util.ui.tree.TreeUtil;
@@ -72,7 +72,6 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     myEditingActionsGroup = new DefaultActionGroup();
 
     TreeUtil.installActions(myTree);
-    new TreeSpeedSearch(myTree);
 
     myTreePanel = new MyPanel(new BorderLayout());
     final JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(myTree);
@@ -105,6 +104,11 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
             @Override
             protected SourceRootKind getKind() {
               return kind;
+            }
+
+            @Override
+            public @NotNull ActionUpdateThread getActionUpdateThread() {
+              return ActionUpdateThread.EDT;
             }
           };
 //      modelRootAnAction.registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.ALT_MASK)), myTree);
@@ -153,7 +157,11 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
       }
     };
 
-    myFileSystemTree = new FileSystemTreeImpl(null, myDescriptor, myTree, getModelRootEntryCellRenderer(), init, null);
+    myFileSystemTree = new FileSystemTreeImpl(null, myDescriptor, myTree, null, init, null);
+    // We have to provide our customized renderer like thid because any renderer passed into the constructor forces the FileSystemTreeImpl instance to use
+    // StructureTreeModel instead of FileTreeModel
+    myTree.setCellRenderer(getModelRootEntryCellRenderer());
+
     myFileSystemTree.showHiddens(true);
     Disposer.register(myFileBasedModelRootEntry, myFileSystemTree);
 

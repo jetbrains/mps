@@ -5,26 +5,32 @@ package jetbrains.mps.baseLanguage.search;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.baseLanguage.util.CodeStyleSettingsRegistry;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.components.CoreComponent;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.components.ComponentPluginFactory;
 
-@GeneratedClass(node = "r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)/1289622777586550823", model = "r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)")
+@GeneratedClass(nodeId = "1289622777586550823", model = "r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)")
 public final class MPSBaseLanguage extends ComponentPlugin implements ComponentHost {
   private ClassifierSuccessors mySuccessorIndex;
+  private CodeStyleSettingsRegistry myCodeStyleRegistry;
 
   public MPSBaseLanguage() {
+    // XXX could be package-local once 23.3 is out, although there's nothing really bad in direct instantiation
   }
+
   @Override
   public void init() {
     super.init();
     mySuccessorIndex = init(new ClassifierSuccessors());
+    myCodeStyleRegistry = init(new CodeStyleSettingsRegistry());
   }
-
 
   @Override
   public void dispose() {
     super.dispose();
+    myCodeStyleRegistry = null;
     mySuccessorIndex = null;
   }
 
@@ -34,6 +40,17 @@ public final class MPSBaseLanguage extends ComponentPlugin implements ComponentH
     if (ClassifierSuccessors.class.isAssignableFrom(componentClass)) {
       return componentClass.cast(mySuccessorIndex);
     }
+    if (CodeStyleSettingsRegistry.class.isAssignableFrom(componentClass)) {
+      return componentClass.cast(myCodeStyleRegistry);
+    }
     return null;
+  }
+
+  public static final class Factory implements ComponentPluginFactory {
+    @Nullable
+    @Override
+    public ComponentPlugin create(@NotNull ComponentHost host) {
+      return new MPSBaseLanguage();
+    }
   }
 }

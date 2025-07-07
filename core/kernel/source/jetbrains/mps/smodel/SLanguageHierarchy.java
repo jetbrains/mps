@@ -193,11 +193,6 @@ public class SLanguageHierarchy {
       }
       sad.reportDependencies(new Dependencies() {
         @Override
-        public void extendedLanguage(long hiBits, long lowBits, String name) {
-
-        }
-
-        @Override
         public void aggregatedLanguage(long hiBits, long lowBits, String name) {
           rv.add(MetaAdapterFactory.getLanguage(hiBits, lowBits, name));
         }

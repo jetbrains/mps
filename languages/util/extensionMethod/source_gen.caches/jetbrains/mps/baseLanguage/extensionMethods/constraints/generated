@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-41ykj7qyyzu6y92x5h75ykaomaop1x9">
-  <files names="ConstraintsAspectDescriptor.java:ExtensionMethodCall_Constraints.java:ExtensionMethodDeclaration_Constraints.java:ExtensionStaticFieldReference_Constraints.java:LocalExtendedMethodCall_Constraints.java:ThisExtensionExpression_Constraints.java:TypeExtension_Constraints.java" />
-</product>
-

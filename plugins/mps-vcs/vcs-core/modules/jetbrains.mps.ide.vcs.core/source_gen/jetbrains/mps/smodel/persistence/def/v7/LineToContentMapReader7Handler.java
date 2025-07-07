@@ -15,7 +15,7 @@ import org.xml.sax.SAXParseException;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodeId;
 
-@GeneratedClass(node = "r:b11ed8aa-3bfd-4e32-9f42-fbe92f0be58c(jetbrains.mps.smodel.persistence.def.v7)/5797832288566425370", model = "r:b11ed8aa-3bfd-4e32-9f42-fbe92f0be58c(jetbrains.mps.smodel.persistence.def.v7)")
+@GeneratedClass(nodeId = "5797832288566425370", model = "r:b11ed8aa-3bfd-4e32-9f42-fbe92f0be58c(jetbrains.mps.smodel.persistence.def.v7)")
 public class LineToContentMapReader7Handler extends XMLSAXHandler<List<LineContent>> {
   private ModelElementHandler modelHandler = new ModelElementHandler();
   private RootsElementHandler rootsHandler = new RootsElementHandler();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.project.structure.modules;
 
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -141,5 +142,16 @@ public class DevkitDescriptor extends ModuleDescriptor {
     if (stream.readByte() != 0x1e) {
       throw new IOException("bad stream: no module descriptor end marker");
     }
+  }
+
+  @Override
+  @NotNull
+  public ModuleDescriptor copy() {
+    DevkitDescriptor copy = copy0(DevkitDescriptor::new);
+    copy.myExportedLanguages.addAll(myExportedLanguages);
+    copy.myExportedSolutions.addAll(myExportedSolutions);
+    copy.myExtendedDevkits.addAll(myExtendedDevkits);
+    copy.myAssociatedGenerationPlan = myAssociatedGenerationPlan;
+    return copy;
   }
 }

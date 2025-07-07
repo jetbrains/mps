@@ -33,18 +33,22 @@ public final class IFunctionDeclaration__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<SNode> getReturnType_id6QVUYzas5Of = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReturnType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7907172955840339215L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> getReturnExpression_id6yQJbFyGtec = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReturnExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7545425736559088524L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> getReceiverType_id2gj5XQXMFhP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiverType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2599447651062297717L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isExtension_id4Cl0D9hBslM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExtension").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5338175760775366002L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> getClass_id4vugIDehkCF = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5178650195625593387L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<SAbstractConcept>> getModifiers_id4q11fqJUzWN = new SMethodBuilder<Iterable<SAbstractConcept>>(new SJavaCompoundTypeImpl((Class<Iterable<SAbstractConcept>>) ((Class) Object.class))).name("getModifiers").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5080347312210460467L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<String> getFunctionPresentation_id7uO8z1BmwrX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8625556777609070333L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_id6f3juM$_Kx4, getReturnType_id6QVUYzas5Of, getReturnExpression_id6yQJbFyGtec, getReceiverType_id2gj5XQXMFhP, getClass_id4vugIDehkCF, getModifiers_id4q11fqJUzWN, getPresentation_idhEwIMiw, getFunctionPresentation_id7uO8z1BmwrX);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_id6f3juM$_Kx4, getReturnType_id6QVUYzas5Of, getReturnExpression_id6yQJbFyGtec, getReceiverType_id2gj5XQXMFhP, isExtension_id4Cl0D9hBslM, getClass_id4vugIDehkCF, getModifiers_id4q11fqJUzWN, getPresentation_idhEwIMiw, getFunctionPresentation_id7uO8z1BmwrX);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static SNode getReturnExpression_id6yQJbFyGtec(@NotNull SNode __thisNode__) {
     return null;
+  }
+  /*package*/ static boolean isExtension_id4Cl0D9hBslM(@NotNull SNode __thisNode__) {
+    return false;
   }
   /*package*/ static SNode getClass_id4vugIDehkCF(@NotNull SNode __thisNode__) {
     {
@@ -95,10 +99,12 @@ public final class IFunctionDeclaration__BehaviorDescriptor extends BaseBHDescri
       case 2:
         return (T) ((SNode) getReturnExpression_id6yQJbFyGtec(node));
       case 4:
+        return (T) ((Boolean) isExtension_id4Cl0D9hBslM(node));
+      case 5:
         return (T) ((SNode) getClass_id4vugIDehkCF(node));
-      case 6:
-        return (T) ((String) getPresentation_idhEwIMiw(node));
       case 7:
+        return (T) ((String) getPresentation_idhEwIMiw(node));
+      case 8:
         return (T) ((String) getFunctionPresentation_id7uO8z1BmwrX(node, ((boolean) (Boolean) parameters[0])));
       default:
         throw new BHMethodNotFoundException(this, method);

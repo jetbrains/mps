@@ -24,7 +24,7 @@ public class MigrationIssueHandler_ProjectPluginPart extends ProjectPluginPart {
     if (MigrationIssueHandler_ProjectPluginPart.this.migrationTrigger == null) {
       return;
     }
-    MigrationIssueHandler_ProjectPluginPart.this.migrationTrigger.setRebuildHandler(null);
+    MigrationIssueHandler_ProjectPluginPart.this.migrationTrigger.setProblemHandler(null);
     MigrationIssueHandler_ProjectPluginPart.this.migrationTrigger = null;
   }
 }

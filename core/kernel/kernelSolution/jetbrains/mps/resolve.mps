@@ -40,9 +40,14 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -206,6 +211,9 @@
       </concept>
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -1027,6 +1035,30 @@
         <node concept="3cpWs6" id="1$3BPv3Ve2Y" role="3cqZAp">
           <node concept="37vLTw" id="2BHiRxeooL3" role="3cqZAk">
             <ref role="3cqZAo" node="3bMB$t1c_NQ" resolve="INSTANCE" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="3qjkba81y78" role="lGtFl">
+        <node concept="TZ5HI" id="3qjkba81y79" role="3nqlJM">
+          <node concept="TZ5HA" id="3qjkba81y7a" role="3HnX3l">
+            <node concept="1dT_AC" id="3qjkba81yrl" role="1dT_Ay">
+              <property role="1dT_AB" value="ResolverComponent is CoreComponent, access its instance via ComponentHost" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3qjkba81y7b" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+        <node concept="2B6LJw" id="3qjkba81CVN" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="3qjkba81GhL" role="2B70Vg">
+            <property role="Xl_RC" value="2023.3" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="3qjkba81Git" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="3qjkba81Gl$" role="2B70Vg">
+            <property role="3clFbU" value="true" />
           </node>
         </node>
       </node>

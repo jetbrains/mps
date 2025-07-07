@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import jetbrains.mps.make.facets.MPSMake;
 import jetbrains.mps.persistence.MPSPersistence;
 import jetbrains.mps.persistence.ModelDigestHelper;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.language.ExtensionRegistry;
 import jetbrains.mps.text.impl.MPSTextGenerator;
 import jetbrains.mps.typechecking.internal.MPSTypechecking;
 import jetbrains.mps.typesystem.MPSTypesystem;
@@ -70,7 +71,6 @@ class PlatformBase implements Platform {
           initAndRegister(new MPSProjectValidation(PlatformBase.this));
           initAndRegister(new MPSMake(myCore.getLanguageRegistry()));
           MPSTypechecking mpsTypechecking = new MPSTypechecking(myCore.getLanguageRegistry(),
-                                                                myCore.getClassLoaderManager(),
                                                                 myCore.findComponent(MPSModuleRepository.class));
           initAndRegister(mpsTypechecking);
           initAndRegister(new MPSTypesystem(myCore.getLanguageRegistry(), myCore.getClassLoaderManager(), mpsTypechecking));
@@ -106,6 +106,11 @@ class PlatformBase implements Platform {
     while (!myComponentPlugins.isEmpty()) {
       myComponentPlugins.pop().dispose();
     }
+  }
+
+  @Override
+  public void install(ComponentPlugin componentPlugin) {
+    initAndRegister(componentPlugin);
   }
 
   private <T extends ComponentPlugin> T initAndRegister(T plugin) {

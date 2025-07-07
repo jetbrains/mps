@@ -13,7 +13,7 @@ import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchTask;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 
-@GeneratedClass(node = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)/1109674566565303509", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
+@GeneratedClass(nodeId = "1109674566565303509", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
 public class EmptyRefactoringUI implements RefactoringUI {
   private List<RefactoringParticipant.Option> mySelectedOptions;
   private _FunctionTypes._void_P1_E0<? super Runnable> myTaskRunner;

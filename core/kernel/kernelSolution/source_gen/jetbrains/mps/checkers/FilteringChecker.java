@@ -9,7 +9,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
-@GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/8195773907765928169", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
+@GeneratedClass(nodeId = "8195773907765928169", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class FilteringChecker<O, I extends ReportItem> implements IAbstractChecker<O, I> {
   private IAbstractChecker<O, ? extends I> myOrigin;
   private _FunctionTypes._return_P2_E0<? extends Boolean, ? super I, ? super SRepository> myAccept;

@@ -17,17 +17,17 @@ import jetbrains.mps.make.script.ScriptBuilder;
 import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.util.JavaNameUtil;
+import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.smodel.resources.ModelsToResources;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.module.ReloadableModule;
 import java.util.concurrent.ExecutionException;
 import java.lang.reflect.InvocationTargetException;
 import jetbrains.mps.debugger.java.api.evaluation.InvocationTargetEvaluationException;
 
-@GeneratedClass(node = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)/846214144107996118", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
+@GeneratedClass(nodeId = "846214144107996118", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
 public class GeneratorUtil {
   @Nullable
   public static Class generateAndLoadEvaluatorClass(Project project, final SModel model, String className) throws EvaluationException {
@@ -44,13 +44,15 @@ public class GeneratorUtil {
     if (makeService.openNewSession(makeSession)) {
       final String fullClassName = JavaNameUtil.packageName(model) + '.' + className;
       try {
+        final ClassLoaderManager clm = project.getComponent(ClassLoaderManager.class);
         Iterable<IResource> resources = new ModelsToResources(Sequence.<SModel>singleton(model)).canGenerateCondition((SModel m) -> true).resources();
         IResult result = makeService.make(makeSession, resources).get();
         if (result.isSucessful()) {
           Class<?> rv = new ModelAccessHelper(model.getRepository()).runReadAction(() -> {
             try {
               // although model.getModule doesn't require model read, module classloader deep down there does
-              return ((ReloadableModule) model.getModule()).getClassLoader().loadClass(fullClassName);
+              // FIXME revisit, likely CLM.getClassLoader could live w/o model read
+              return clm.getClassLoader(model.getModule()).loadOwnClass(fullClassName);
             } catch (ClassNotFoundException ex) {
               // ignore
             }

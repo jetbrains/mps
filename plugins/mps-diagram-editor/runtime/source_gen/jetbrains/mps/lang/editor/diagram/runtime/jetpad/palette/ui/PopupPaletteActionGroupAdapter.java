@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.ui;
 
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.Toggleable;
-import com.intellij.openapi.actionSystem.AlwaysVisibleActionGroup;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.openapi.PaletteActionGroup;
 import java.util.List;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -14,8 +13,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
+import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 
-/*package*/ class PopupPaletteActionGroupAdapter extends ActionGroup implements Toggleable, AlwaysVisibleActionGroup {
+/*package*/ class PopupPaletteActionGroupAdapter extends ActionGroup implements Toggleable {
   private DiagramPalette myPalette;
   private PaletteActionGroup myPaletteActionGroup;
   private List<AnAction> myChildren = ListSequence.fromList(new ArrayList<AnAction>());
@@ -41,15 +43,23 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
     ListSequence.fromList(myChildren).clear();
   }
 
+  @NotNull
+  @Override
+  public ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
+  }
+
   @Override
   public void update(AnActionEvent event) {
     super.update(event);
+    Presentation presentation = event.getPresentation();
+    presentation.putClientProperty(ActionUtil.ALWAYS_VISIBLE_GROUP, true);
     if (mySelectedAction != null) {
-      event.getPresentation().setIcon(mySelectedAction.getTemplatePresentation().getIcon());
-      event.getPresentation().putClientProperty(SELECTED_PROPERTY, true);
+      presentation.setIcon(mySelectedAction.getTemplatePresentation().getIcon());
+      Toggleable.setSelected(presentation, true);
     } else {
-      event.getPresentation().setIcon(getTemplatePresentation().getIcon());
-      event.getPresentation().putClientProperty(SELECTED_PROPERTY, false);
+      presentation.setIcon(getTemplatePresentation().getIcon());
+      Toggleable.setSelected(presentation, false);
     }
   }
   /*package*/ void setSelectedAction(AnAction action) {

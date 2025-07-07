@@ -8,13 +8,14 @@
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="y3sp" ref="r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)" />
-    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="frkw" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi(JDK-tools/)" />
+    <import index="9ti4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.extensions(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
@@ -25,6 +26,7 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
@@ -35,13 +37,12 @@
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <property id="1075300953594" name="abstractClass" index="1sVAO0" />
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
-        <child id="1095933932569" name="implementedInterface" index="EKbjA" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
+        <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
-      <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -72,11 +73,13 @@
       </concept>
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
+        <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
+      <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
@@ -91,35 +94,32 @@
     <property role="TrG5h" value="CustomViewersManager" />
     <property role="1sVAO0" value="true" />
     <property role="1EXbeo" value="false" />
+    <node concept="Wx3nA" id="1MgGTZ24nks" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="EXT_POINT" />
+      <node concept="3Tm1VV" id="1MgGTZ24nt$" role="1B3o_S" />
+      <node concept="3uibUv" id="1MgGTZ24n$D" role="1tU5fm">
+        <ref role="3uigEE" to="9ti4:~ExtensionPointName" resolve="ExtensionPointName" />
+        <node concept="3uibUv" id="1MgGTZ24oJJ" role="11_B2D">
+          <ref role="3uigEE" to="y3sp:2Y$mRnICmxQ" resolve="ValueWrapperFactory" />
+        </node>
+      </node>
+      <node concept="2YIFZM" id="1MgGTZ24nRR" role="33vP2m">
+        <ref role="37wK5l" to="9ti4:~ExtensionPointName.create(java.lang.String)" resolve="create" />
+        <ref role="1Pybhc" to="9ti4:~ExtensionPointName" resolve="ExtensionPointName" />
+        <node concept="Xl_RD" id="1MgGTZ24nVT" role="37wK5m">
+          <property role="Xl_RC" value="jetbrains.mps.debugger.valueViewer" />
+        </node>
+      </node>
+    </node>
     <node concept="3Tm1VV" id="2Y$mRnICmv_" role="1B3o_S" />
+    <node concept="2tJIrI" id="1MgGTZ24np3" role="jymVt" />
     <node concept="3clFbW" id="2Y$mRnICmvN" role="jymVt">
-      <node concept="3Tm1VV" id="2Y$mRnICmvO" role="1B3o_S" />
+      <node concept="3Tmbuc" id="2I1kig2xj07" role="1B3o_S" />
       <node concept="3cqZAl" id="2Y$mRnICmvP" role="3clF45" />
       <node concept="3clFbS" id="2Y$mRnICmvQ" role="3clF47" />
     </node>
-    <node concept="3clFb_" id="2Y$mRnICmvV" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getComponentName" />
-      <property role="DiZV1" value="false" />
-      <node concept="17QB3L" id="65unOfq59Jw" role="3clF45" />
-      <node concept="3Tm1VV" id="2Y$mRnICmvW" role="1B3o_S" />
-      <node concept="3clFbS" id="2Y$mRnICmvY" role="3clF47">
-        <node concept="3cpWs6" id="2Y$mRnICmvZ" role="3cqZAp">
-          <node concept="Xl_RD" id="2Y$mRnICmw0" role="3cqZAk">
-            <property role="Xl_RC" value="Custom Viewers Manager" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="2Y$mRnICmw1" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
-      </node>
-      <node concept="2AHcQZ" id="2Y$mRnICmw2" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_UpDA" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
+    <node concept="2tJIrI" id="2I1kig2xiTq" role="jymVt" />
     <node concept="3clFb_" id="2Y$mRnICmwg" role="jymVt">
       <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="addFactory" />
@@ -200,7 +200,7 @@
               <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
             </node>
             <node concept="liA8E" id="2Y$mRnICmwe" role="2OqNvi">
-              <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+              <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
               <node concept="3VsKOn" id="2Y$mRnICmwf" role="37wK5m">
                 <ref role="3VsUkX" node="2Y$mRnICm2F" resolve="CustomViewersManager" />
               </node>
@@ -208,9 +208,6 @@
           </node>
         </node>
       </node>
-    </node>
-    <node concept="3uibUv" id="uoZ$WyGuS1" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ApplicationComponent" resolve="ApplicationComponent" />
     </node>
   </node>
 </model>

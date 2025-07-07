@@ -24,10 +24,9 @@ import javax.swing.SwingUtilities;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.TestDescriptorWrapper;
 import java.util.LinkedList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeEvent;
+import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.baseLanguage.unitTest.execution.TerminationTestEvent;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
@@ -230,11 +229,7 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
   }
 
   public boolean hasNotPassedTests() {
-    return MapSequence.fromMap(myTests2State).any(new _FunctionTypes._return_P1_E0<Boolean, IMapping<ITestNodeWrapper, TestState>>() {
-      public Boolean invoke(IMapping<ITestNodeWrapper, TestState> it) {
-        return it.value() != TestState.PASSED;
-      }
-    });
+    return MapSequence.fromMap(myTests2State).any((it) -> it.value() != TestState.PASSED);
   }
 
   /*package*/ boolean isPassed(@NotNull ITestNodeWrapper node) {
@@ -263,11 +258,7 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
 
   private void selectFirstFailedTestIfNeeded() {
     if (UnitTestOptions.isSelectFirstFailed()) {
-      IMapping<ITestNodeWrapper, TestState> state = MapSequence.fromMap(myTests2State).findFirst(new _FunctionTypes._return_P1_E0<Boolean, IMapping<ITestNodeWrapper, TestState>>() {
-        public Boolean invoke(IMapping<ITestNodeWrapper, TestState> it) {
-          return it.value() != TestState.PASSED;
-        }
-      });
+      IMapping<ITestNodeWrapper, TestState> state = MapSequence.fromMap(myTests2State).findFirst((it) -> it.value() != TestState.PASSED);
       if (state == null) {
         return;
       }

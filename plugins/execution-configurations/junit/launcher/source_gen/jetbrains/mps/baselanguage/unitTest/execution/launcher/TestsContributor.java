@@ -8,6 +8,15 @@ public interface TestsContributor {
 
   Iterable<Request> gatherTests() throws Exception;
 
+  default boolean newAPI() {
+    return false;
+  }
 
+  default Iterable<ExecutorScript.TestRecord> tests() throws Exception {
+    throw new UnsupportedOperationException();
+  }
 
+  default ClassLoader classLoader(ExecutorScript.TestRecord tr) throws Exception {
+    throw new UnsupportedOperationException();
+  }
 }

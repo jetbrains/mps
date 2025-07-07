@@ -10,7 +10,7 @@ import java.util.Collections;
 import org.jetbrains.org.objectweb.asm.Type;
 import java.util.List;
 
-@GeneratedClass(node = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/6849912058625332189", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
+@GeneratedClass(nodeId = "6849912058625332189", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
 public class ASMAnnotation {
   private ASMType myType;
   private Map<String, Object> myValues;

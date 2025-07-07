@@ -17,8 +17,9 @@
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="tpcq" ref="r:00000000-0000-4000-0000-011c89590286(jetbrains.mps.lang.core.plugin)" />
     <import index="fy8e" ref="r:89c0fb70-0977-7777-a076-5906f9d8630f(jetbrains.mps.make.facets)" />
-    <import index="2o" ref="3669929d-7269-4de9-a160-f80b04ef909d/java:difflib(DiffUtils/)" />
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
+    <import index="u30c" ref="3669929d-7269-4de9-a160-f80b04ef909d/java:com.github.difflib.patch(DiffUtils/)" />
+    <import index="9kde" ref="3669929d-7269-4de9-a160-f80b04ef909d/java:com.github.difflib(DiffUtils/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -1876,15 +1877,15 @@
                           <node concept="3cpWsn" id="1TaHNgiI6l5" role="3cpWs9">
                             <property role="TrG5h" value="patch" />
                             <node concept="3uibUv" id="65IE4qV8i$r" role="1tU5fm">
-                              <ref role="3uigEE" to="2o:~Patch" resolve="Patch" />
+                              <ref role="3uigEE" to="u30c:~Patch" resolve="Patch" />
                             </node>
-                            <node concept="2YIFZM" id="65IE4qV8kn9" role="33vP2m">
-                              <ref role="37wK5l" to="2o:~DiffUtils.diff(java.util.List,java.util.List)" resolve="diff" />
-                              <ref role="1Pybhc" to="2o:~DiffUtils" resolve="DiffUtils" />
-                              <node concept="37vLTw" id="65IE4qV8kna" role="37wK5m">
+                            <node concept="2YIFZM" id="6$uW8oJQDBD" role="33vP2m">
+                              <ref role="37wK5l" to="9kde:~DiffUtils.diff(java.util.List,java.util.List)" resolve="diff" />
+                              <ref role="1Pybhc" to="9kde:~DiffUtils" resolve="DiffUtils" />
+                              <node concept="37vLTw" id="6$uW8oJQDBE" role="37wK5m">
                                 <ref role="3cqZAo" node="1TaHNgiI6kR" resolve="olines" />
                               </node>
-                              <node concept="37vLTw" id="65IE4qV8knb" role="37wK5m">
+                              <node concept="37vLTw" id="6$uW8oJQDBF" role="37wK5m">
                                 <ref role="3cqZAo" node="1TaHNgiI6kX" resolve="rlines" />
                               </node>
                             </node>
@@ -1899,8 +1900,8 @@
                                 </node>
                                 <node concept="X8dFx" id="1TaHNgiI6lf" role="2OqNvi">
                                   <node concept="2YIFZM" id="65IE4qV8k_C" role="25WWJ7">
-                                    <ref role="37wK5l" to="2o:~DiffUtils.generateUnifiedDiff(java.lang.String,java.lang.String,java.util.List,difflib.Patch,int)" resolve="generateUnifiedDiff" />
-                                    <ref role="1Pybhc" to="2o:~DiffUtils" resolve="DiffUtils" />
+                                    <ref role="37wK5l" to="9kde:~UnifiedDiffUtils.generateUnifiedDiff(java.lang.String,java.lang.String,java.util.List,com.github.difflib.patch.Patch,int)" resolve="generateUnifiedDiff" />
+                                    <ref role="1Pybhc" to="9kde:~UnifiedDiffUtils" resolve="UnifiedDiffUtils" />
                                     <node concept="2OqwBi" id="65IE4qV8k_D" role="37wK5m">
                                       <node concept="37vLTw" id="65IE4qV8k_E" role="2Oq$k0">
                                         <ref role="3cqZAo" node="1TaHNgiI6kw" resolve="onext" />
@@ -1938,7 +1939,7 @@
                                   <ref role="3cqZAo" node="1TaHNgiI6l5" resolve="patch" />
                                 </node>
                                 <node concept="liA8E" id="1TaHNgiI6lu" role="2OqNvi">
-                                  <ref role="37wK5l" to="2o:~Patch.getDeltas()" resolve="getDeltas" />
+                                  <ref role="37wK5l" to="u30c:~Patch.getDeltas()" resolve="getDeltas" />
                                 </node>
                               </node>
                               <node concept="liA8E" id="1TaHNgiI6lv" role="2OqNvi">

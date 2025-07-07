@@ -4,6 +4,7 @@
 package jetbrains.mps.nodeEditor;
 
 import com.intellij.codeInsight.hint.TooltipController;
+import com.intellij.codeInsight.hint.TooltipGroup;
 import com.intellij.codeInsight.hint.TooltipRenderer;
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.Disposable;
@@ -40,10 +41,17 @@ import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.util.NlsSafe;
+import com.intellij.openapi.wm.impl.IdeRootPane;
 import com.intellij.ui.HintHint;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.accessibility.ScreenReader;
+import jetbrains.mps.editor.runtime.DocumentationProvider;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.smodel.CancellableReadAction;
+import jetbrains.mps.util.Reference;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -51,6 +59,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
+import java.awt.Component;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -60,17 +69,31 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Point2D;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
-final class PlatformEditorEmulation implements Editor {
+public final class PlatformEditorEmulation implements Editor {
   private final EditorComponent myEditorComponent;
   private List<EditorMouseListener> myMouseListeners = ContainerUtil.createLockFreeCopyOnWriteList();
   private final PlatformScrollingModelEmulation myScrollingModel;
   private final MouseMotionListener myMouseMotionAdapter = new MyMouseMotionAdapter();
   private final MouseListener myMouseListener = new MyMouseAdapter();
+  private HintPopupController myHintPopupController = new HintPopupController(this::showInfoToolTip);
 
   PlatformEditorEmulation(@NotNull EditorComponent editorComponent) {
     myEditorComponent = editorComponent;
     myScrollingModel = new PlatformScrollingModelEmulation(this);
+  }
+
+  public void installListeners(Component owner) {
+    owner.addMouseListener(myMouseListener);
+    owner.addMouseMotionListener(myMouseMotionAdapter);
+    myHintPopupController.installListeners(owner);
+  }
+
+  public void uninstallListeners(Component owner) {
+    owner.removeMouseListener(myMouseListener);
+    owner.removeMouseMotionListener(myMouseMotionAdapter);
+    myHintPopupController.uninstallListeners(owner);
   }
 
   MouseMotionListener getMouseMotionListener() {
@@ -82,10 +105,6 @@ final class PlatformEditorEmulation implements Editor {
   }
 
   private class MyMouseMotionAdapter extends MouseMotionAdapter {
-    @Override
-    public void mouseMoved(MouseEvent e) {
-      showToolTip(e);
-    }
   }
 
   JScrollPane getScrollPane() {
@@ -509,6 +528,7 @@ final class PlatformEditorEmulation implements Editor {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+      MPSDocumentationManager.getInstance().cancelAll();
       EditorMouseEvent editorMouseEvent = createEditorMouseEvent(e);
       myMouseListeners.forEach(it -> it.mouseClicked(editorMouseEvent));
     }
@@ -623,6 +643,11 @@ final class PlatformEditorEmulation implements Editor {
 
   }
 
+  /**
+   * This implementation of tooltips has been superseded with the one relying on MPSDocumentationManager
+   * @param e
+   */
+  @Deprecated(forRemoval = true)
   private void showToolTip(@NotNull MouseEvent e) {
 
     boolean isGutter = e.getSource() == myEditorComponent.getLeftEditorHighlighter();
@@ -649,6 +674,86 @@ final class PlatformEditorEmulation implements Editor {
         .setPreferredPosition(tooltipProvider.getPreferredPosition())
         .setRequestFocus(ScreenReader.isActive());
     controller.showTooltipByMouseMove(this, showPoint, tr, false, tooltipProvider.getTooltipGroup(), hint);
+  }
+
+  public void cancelShowInfoToolTipRequest() {
+    myHintPopupController.cancelAllRequests();
+  }
+
+  private void showInfoToolTip(@NotNull MouseEvent event) {
+    if (isNotInMainEditorPane() || MPSDocumentationManager.getInstance().isQuickDocPopupShown()) {
+      return;
+    }
+
+    boolean isGutter = event.getSource() == myEditorComponent.getLeftEditorHighlighter();
+    final EditorTooltipProvider tooltipProvider =
+        isGutter ? myEditorComponent.getLeftEditorHighlighter().getTooltipProvider() : myEditorComponent.getTooltipProvider();
+    if (tooltipProvider == null) {
+      // TODO how is this possible?
+      return;
+    }
+
+    final TooltipRenderer tooltipRenderer = tooltipProvider.getTooltipRenderer(event);
+    final TooltipGroup tooltipGroup = tooltipProvider.getTooltipGroup();
+    final DocumentationProvider provider = getDocumentationProvider(event);
+    if ((tooltipRenderer == null && (provider == null || !provider.hasDocumentation())) || this.isDisposed()) {
+      return;
+    }
+
+    final RelativePoint showPoint = getShowPoint(event, isGutter);
+    Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(myEditorComponent.getRepository()));
+    myHintPopupController.showInfoToolTip(project, this, provider, tooltipRenderer, tooltipGroup, showPoint);
+  }
+
+  private boolean isNotInMainEditorPane() {
+    return getComponent().getRootPane() == null || !(getComponent().getRootPane() instanceof IdeRootPane);
+  }
+
+  @NotNull
+  private RelativePoint getShowPoint(@NotNull MouseEvent event, boolean isGutter) {
+    EditorCell hoverCell = getEditorCellAtXY(event.getX(), event.getY());
+    int yCoordinate = hoverCell == null ? event.getY() : hoverCell.getBottom() - 1;
+    Point pointToShow = new Point(event.getX(), yCoordinate);
+    return new RelativePoint(isGutter ? myEditorComponent.getLeftEditorHighlighter() : myEditorComponent, pointToShow);
+  }
+
+  private EditorCell getEditorCellAtXY(int x, int y) {
+    final Reference<EditorCell> rv = new Reference<>(null);
+    myEditorComponent.getRepository().getModelAccess().runReadAction(new CancellableReadAction() {
+      @Override
+      protected void execute() {
+        if (isDisposed()) {
+          return;
+        }
+        jetbrains.mps.openapi.editor.cells.EditorCell cell = myEditorComponent.getRootCell().findLeaf(x, y);
+        rv.set(cell);
+      }
+    });
+    return rv.get();
+  }
+  
+  @Nullable
+  private DocumentationProvider getDocumentationProvider(MouseEvent event) {
+    final Reference<DocumentationProvider> providerRef = new Reference<>(null);
+    myEditorComponent.getRepository().getModelAccess().runReadAction(new CancellableReadAction() {
+      @Override
+      protected void execute() {
+        if (isDisposed()) {
+          return;
+        }
+        final jetbrains.mps.nodeEditor.cells.EditorCell rootCell = myEditorComponent.getRootCell();
+        if (rootCell == null) {
+          return;
+        }
+        jetbrains.mps.openapi.editor.cells.EditorCell cell = rootCell.findLeaf(event.getX(), event.getY());
+        if (cell == null) {
+          return;
+        }
+        DocumentationProvider provider = new DocumentationProvider(myEditorComponent.getRepository(), cell);
+        providerRef.set(provider);
+      }
+    });
+    return providerRef.get();
   }
 
   public void release() {

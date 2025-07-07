@@ -13,10 +13,10 @@ import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -44,7 +44,7 @@ public class Switch_ReduceDirectionEnum extends TemplateSwitchBase implements Te
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "7060824959896330160"), CONCEPTS.Looking$z7, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_27_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -61,7 +61,7 @@ public class Switch_ReduceDirectionEnum extends TemplateSwitchBase implements Te
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "7060824959896165449"), CONCEPTS.Looking$z7, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_27_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -78,7 +78,7 @@ public class Switch_ReduceDirectionEnum extends TemplateSwitchBase implements Te
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "7060824959896333437"), CONCEPTS.Looking$z7, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_27_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -95,7 +95,7 @@ public class Switch_ReduceDirectionEnum extends TemplateSwitchBase implements Te
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "7060824959896333389"), CONCEPTS.Looking$z7, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_27_3(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

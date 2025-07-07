@@ -20,8 +20,6 @@ import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.kotlin.signatures.AccessorKind;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -62,65 +60,15 @@ public final class ClassDeclaration__BehaviorDescriptor extends BaseBHDescriptor
 
     if ((primary != null)) {
       // General properties
-      SignatureBuilder<PropertySignature, SNode> builder = SignatureBuilder.create(ListSequence.fromList(SLinkOperations.getChildren(primary, LINKS.parameters$$EEQ)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.isProperty$MCKN)), PropertySignature.class).withSignatures((SNode it) -> {
-        return (Iterable<PropertySignature>) () -> {
-          return new YieldingIterator<PropertySignature>() {
-            private int __CP__ = 0;
-            protected boolean moveToNext() {
-__loop__:
-              do {
-__switch__:
-                switch (this.__CP__) {
-                  case -1:
-                    assert false : "Internal error";
-                    return false;
-                  case 2:
-                    if (SPropertyOperations.getBoolean(it, PROPS.isProperty$MCKN)) {
-                      this.__CP__ = 3;
-                      break;
-                    }
-                    this.__CP__ = 1;
-                    break;
-                  case 5:
-                    if (!(SPropertyOperations.getBoolean(it, PROPS.isReadOnly$MDeP))) {
-                      this.__CP__ = 6;
-                      break;
-                    }
-                    this.__CP__ = 1;
-                    break;
-                  case 4:
-                    this.__CP__ = 5;
-                    this.yield(new PropertySignature(SPropertyOperations.getString(it, PROPS.name$MnvL), AccessorKind.GETTER));
-                    return true;
-                  case 7:
-                    this.__CP__ = 1;
-                    this.yield(new PropertySignature(SPropertyOperations.getString(it, PROPS.name$MnvL), AccessorKind.SETTER));
-                    return true;
-                  case 0:
-                    this.__CP__ = 2;
-                    break;
-                  case 3:
-                    this.__CP__ = 4;
-                    break;
-                  case 6:
-                    this.__CP__ = 7;
-                    break;
-                  default:
-                    break __loop__;
-                }
-              } while (true);
-              return false;
-            }
-          };
-        };
-      });
+      SignatureBuilder<PropertySignature, SNode> builder = SignatureBuilder.create(ListSequence.fromList(SLinkOperations.getChildren(primary, LINKS.parameters$$EEQ)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.isProperty$MCKN)), PropertySignature.class).withSignatures((SNode it) -> PropertySignature.signaturesOf(it, !(SPropertyOperations.getBoolean(it, PROPS.isReadOnly$MDeP)), null));
+
       ClassMemberSignatures.addClassMemberAttributes(builder, (it) -> it, (it) -> it, (it) -> SPropertyOperations.getBoolean(it, PROPS.isOverride$Os0k));
       builder.declareTo(visitor);
 
       // Data class: parameter also expose componentN functions
       if (((boolean) IClassLike__BehaviorDescriptor.hasModifier_id2NtWm0y2Y2A.invoke(__thisNode__, CONCEPTS.DataClassModifier$wi))) {
         // componentN() functions
-        SignatureBuilder.create(SLinkOperations.getChildren(primary, LINKS.parameters$$EEQ), FunctionSignature.class).withSignature((SNode parameter) -> new FunctionSignature(new ComponentFunction(parameter), "")).declareTo(visitor);
+        SignatureBuilder.create(SLinkOperations.getChildren(primary, LINKS.parameters$$EEQ), FunctionSignature.class).withSignature((SNode parameter) -> new FunctionSignature(new ComponentFunction(parameter))).declareTo(visitor);
 
         // copy() function
         SignatureBuilder.create(primary, FunctionSignature.class).withSignature((_node) -> new FunctionSignature(new CopyFunctionDeclaration(primary), visitor)).declareTo(visitor);
@@ -165,9 +113,9 @@ __switch__:
   /*package*/ static Iterable<SNode> getConstructors_id2NtWm0y9fFa(@NotNull SNode __thisNode__) {
     Iterable<SNode> secondary = SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.members$gqdV), CONCEPTS.SecondaryConstructor$Lg);
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc) != null)) {
-      return Sequence.fromIterable(secondary).concat(Sequence.fromIterable(Sequence.<SNode>singleton(SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc))));
+      return Sequence.fromIterable(secondary).concat(Sequence.fromIterable(Sequence.singleton(SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc))));
     } else if (Sequence.fromIterable(secondary).isEmpty()) {
-      return Sequence.<SNode>singleton(__thisNode__);
+      return Sequence.singleton(__thisNode__);
     }
     return secondary;
   }
@@ -265,10 +213,10 @@ __switch__:
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isProperty$MCKN = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d08L, "isProperty");
     /*package*/ static final SProperty isReadOnly$MDeP = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d0aL, "isReadOnly");
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isProperty$MCKN = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d08L, "isProperty");
     /*package*/ static final SProperty isOverride$Os0k = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x72f0fe6918f8a61aL, "isOverride");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

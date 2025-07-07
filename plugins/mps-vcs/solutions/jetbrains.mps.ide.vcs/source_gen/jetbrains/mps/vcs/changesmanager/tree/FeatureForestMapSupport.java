@@ -37,7 +37,7 @@ import java.util.Set;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
-@GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/3751911615136892572", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
+@GeneratedClass(nodeId = "3751911615136892572", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public class FeatureForestMapSupport implements Disposable {
   private final Project myProject;
   private final FeaturesFromVcs myMap;

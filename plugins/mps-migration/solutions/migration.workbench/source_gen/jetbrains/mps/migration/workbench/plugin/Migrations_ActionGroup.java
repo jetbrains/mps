@@ -14,7 +14,7 @@ public class Migrations_ActionGroup extends GeneratedActionGroup {
   public Migrations_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Migrations", ID, plugin);
     setIsInternal(false);
-    setMnemonic("m".charAt(0));
+    setMnemonic('m');
     setPopup(true);
     Migrations_ActionGroup.this.addAction("jetbrains.mps.migration.workbench.plugin.ExecuteRerunnableMigrations_Action");
     addNamedAnchor(LABEL_ID_projectMigrations);

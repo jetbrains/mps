@@ -1,13 +1,9 @@
 <idea-plugin>
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.ide.findusages.view.UsagesViewTool</implementation-class>
-    </component>
-  </project-components>
   <extensions defaultExtensionNs="com.intellij">
     <projectService serviceImplementation="jetbrains.mps.ide.messages.navigation.NavigationManager"/>
     <projectService serviceImplementation="jetbrains.mps.ide.messages.MessagesViewTool"/>
     <postStartupActivity implementation="jetbrains.mps.ide.messages.MessagesViewTool$MessageViewToolInitialization"/>
+    <toolWindow id="Usages" anchor="bottom" icon="AllIcons.Toolwindows.ToolWindowFind" factoryClass="jetbrains.mps.ide.findusages.view.UsagesViewTool$Factory" doNotActivateOnStart="false" canCloseContents="true"/>
   </extensions>
 
   <applicationListeners>
@@ -56,10 +52,12 @@
     <mps.facetTabFactory facetType="generator" className="jetbrains.mps.ide.generator.CustomGenFacetTabFactory"/>
     <mps.facetTabFactory facetType="unknown" className="jetbrains.mps.ide.ui.dialogs.properties.tabs.UnknownFacetTabFactory"/>
     <mps.facetTabFactory facetType="plaintext" className="jetbrains.mps.ide.plaintext.PlainTextFacetTabFactory"/>
+    <mps.facetTabFactory facetType="documentation" className="jetbrains.mps.ide.documentation.DocumentationFacetTabFactory"/>
     <mps.projectGroupTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.SolutionProjectsGroup"/>
     <mps.solutionProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.DefaultSolutionProjectTemplate"/>
     <mps.projectGroupTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.OtherProjectsGroup"/>
     <mps.otherProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.EmptyProjectTemplate"/>
+    <iconMapper mappingFile="MPSIconsIconMappings.json"/>
   </extensions>
 
   <extensions defaultExtensionNs="com.intellij">
@@ -69,5 +67,6 @@
     <registryKey key="mps.ProjectPane.show.descriptor.generator" defaultValue="false" description="Show @descriptor model in Generator modules" restartRequired="false"/>
     <registryKey key="mps.ProjectPane.show.descriptor.solution" defaultValue="false" description="Show @descriptor model in Solution modules" restartRequired="false"/>
     <registryKey key="ide.favorites.tool.window.applicable" defaultValue="true" description="Allows to enable the Favorites tool window" restartRequired="false"/>
+    <registryKey key="mps.projectView.generationRequired.icon" defaultValue="false" description="Display blue dot instead of (generation required)" restartRequired="false"/>
   </extensions>
 </idea-plugin>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ public final class ModulePath {
   private final String myVirtualFolder; // virtual folder, optional, never null
 
   public ModulePath(@NotNull IFile file, @Nullable String virtualFolder) {
+    // XXX I wonder if PathSpec would be better fit intead of IFile?
     myPath = file;
     myVirtualFolder = StringUtil.emptyIfNull(virtualFolder);
   }
@@ -46,17 +47,6 @@ public final class ModulePath {
   @NotNull
   public IFile getFile() {
     return myPath;
-  }
-
-  /**
-   * @deprecated Use {@link #getFile()}.
-   *             No uses in MPS or mbeddr
-   */
-  @NotNull
-  @Deprecated(since = "2022.1", forRemoval = true)
-  public String getPath() {
-    // a path corresponding with the path format returned by IFile.getPath(): absolute, no odd "." and "..", straight slashes etc. FSes other than file/jar are not yet supported
-    return myPath.getPath();
   }
 
   @NotNull

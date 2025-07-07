@@ -9,6 +9,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import java.awt.Color;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 
 public class TooltipComponent extends JComponent {
   private static final int X_PADDING = 4;
@@ -33,6 +35,12 @@ public class TooltipComponent extends JComponent {
       if (!(myTooltipCell.getEditorComponent().isDisposed())) {
         EditorComponent.turnOnAliasingIfPossible(graphicsCopy);
         graphicsCopy.translate(-myTooltipCell.getX() + X_PADDING, -myTooltipCell.getY() + Y_PADDING);
+        Color bgColor = myTooltipCell.getStyle().get(StyleAttributes.BACKGROUND_COLOR);
+        if (bgColor != null) {
+          this.setBackground(bgColor);
+          graphicsCopy.setColor(bgColor);
+          graphicsCopy.fillRect(myTooltipCell.getX() - X_PADDING, myTooltipCell.getY() - Y_PADDING, myTooltipCell.getWidth() + X_PADDING * 2, myTooltipCell.getHeight() + Y_PADDING * 2);
+        }
         myTooltipCell.paint(graphicsCopy);
       }
     } finally {

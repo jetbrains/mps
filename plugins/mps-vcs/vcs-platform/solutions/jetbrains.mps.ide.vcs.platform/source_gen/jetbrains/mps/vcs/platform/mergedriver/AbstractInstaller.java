@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/1376744028423385490", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
+@GeneratedClass(nodeId = "1376744028423385490", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
 /*package*/ abstract class AbstractInstaller {
   protected Project myProject;
   protected AbstractInstaller(@NotNull Project project) {

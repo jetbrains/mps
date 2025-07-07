@@ -30,11 +30,11 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af529L, "jetbrains.mps.kotlin.structure.KotlinFile");
 
   public static final SMethod<List<SNode>> getMembers_id213J8chg2xy = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2324909103769462882L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Void> getLocalSignatureScope_id58ySuOXQyMi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("getLocalSignatureScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5918541269379460242L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> collectPublicScope_id58ySuOXQyMi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectPublicScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5918541269379460242L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> isRunnable_idoITd3IthrB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRunnable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(445544999161239271L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<String> getClassName_id7klTmOSHg_9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8436901734214076745L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_id213J8chg2xy, getLocalSignatureScope_id58ySuOXQyMi, isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_id213J8chg2xy, collectPublicScope_id58ySuOXQyMi, isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -42,7 +42,7 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<SNode> getMembers_id213J8chg2xy(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.declarations$NgHw);
   }
-  /*package*/ static void getLocalSignatureScope_id58ySuOXQyMi(@NotNull SNode __thisNode__, ScopeCollector collector, SNode origin) {
+  /*package*/ static void collectPublicScope_id58ySuOXQyMi(@NotNull SNode __thisNode__, ScopeCollector collector, SNode origin) {
     ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IDeclarationHolder$mj, collector, origin);
   }
   /*package*/ static boolean isRunnable_idoITd3IthrB(@NotNull SNode __thisNode__) {
@@ -57,7 +57,7 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
 
     ScopeCollector collector = new ScopeCollector(filter);
     // origin = null -> must be a public function (only kind that will be visible even with a null source)
-    IKotlinRoot__BehaviorDescriptor.getLocalSignatureScope_id58ySuOXQyMi.invoke(__thisNode__, collector, null);
+    IKotlinRoot__BehaviorDescriptor.collectPublicScope_id58ySuOXQyMi.invoke(__thisNode__, collector, null);
     return ListSequence.fromList(collector.getScopes()).any((it) -> Sequence.fromIterable(it.getElements("main")).isNotEmpty());
   }
   /*package*/ static String getClassName_id7klTmOSHg_9(@NotNull SNode __thisNode__, KtEnvironmentConfig envConfig) {
@@ -82,7 +82,7 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
       case 0:
         return (T) ((List<SNode>) getMembers_id213J8chg2xy(node));
       case 1:
-        getLocalSignatureScope_id58ySuOXQyMi(node, (ScopeCollector) parameters[0], (SNode) parameters[1]);
+        collectPublicScope_id58ySuOXQyMi(node, (ScopeCollector) parameters[0], (SNode) parameters[1]);
         return null;
       case 2:
         return (T) ((Boolean) isRunnable_idoITd3IthrB(node));

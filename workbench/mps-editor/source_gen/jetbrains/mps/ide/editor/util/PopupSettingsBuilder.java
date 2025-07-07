@@ -25,7 +25,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import java.awt.Point;
 import com.intellij.openapi.actionSystem.impl.ActionMenuItem;
 
-@GeneratedClass(node = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/6984321651747218595", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
+@GeneratedClass(nodeId = "6984321651747218595", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
 public final class PopupSettingsBuilder {
   /*package*/ final MPSProject myProject;
   /*package*/ SearchQuery query;

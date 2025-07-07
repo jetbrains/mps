@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.editor;
 
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.util.containers.MultiMap;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.logging.Logger;
@@ -31,7 +30,7 @@ import java.util.HashSet;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class EditorExtensionRegistryImpl implements EditorExtensionRegistry, ProjectComponent {
+public class EditorExtensionRegistryImpl implements EditorExtensionRegistry {
   private static final Logger LOG = Logger.getLogger(EditorExtensionRegistryImpl.class);
 
   private final Set<EditorExtension> myExtensions = new HashSet<>();
@@ -39,28 +38,10 @@ public class EditorExtensionRegistryImpl implements EditorExtensionRegistry, Pro
   private final EditorDisposeListener myUnextendOnEditorDisposeListener = new UnextendOnEditorDisposeListener();
 
   @Override
-  public void projectOpened() {
-  }
-
-  @Override
-  public void projectClosed() {
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
+  public void dispose() {
     for (EditorExtension extensionLeft : myExtensions) {
       LOG.error("The editor extension left unregistered: " + extensionLeft);
     }
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return EditorExtensionRegistry.class.getSimpleName();
   }
 
   @Override
@@ -120,13 +101,23 @@ public class EditorExtensionRegistryImpl implements EditorExtensionRegistry, Pro
 
   private void installExtensions(EditorComponent editorComponent, Iterable<EditorExtension> applicableExtensions) {
     for (EditorExtension extension : applicableExtensions) {
-      extension.install(editorComponent);
+      try {
+        extension.install(editorComponent);
+      } catch (Throwable e) {
+        LOG.error("Exception on editor extension installation: " + extension, e);
+        e.printStackTrace();
+      }
     }
   }
 
   private void uninstallExtensions(EditorComponent editorComponent, Iterable<EditorExtension> extensions) {
     for (EditorExtension extension : extensions) {
-      extension.uninstall(editorComponent);
+      try {
+        extension.uninstall(editorComponent);
+      } catch (Throwable e) {
+        LOG.error("Exception on editor extension deinstallation: " + extension, e);
+        e.printStackTrace();
+      }
     }
   }
 

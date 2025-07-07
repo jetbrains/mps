@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import jetbrains.mps.languageScope.LanguageScopeExecutor;
+import jetbrains.mps.languageScope.LanguageScopeFactory;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.newTypesystem.state.State;
@@ -293,8 +294,11 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
 
   // true iff was fully executed (not cancelled)
   public boolean applyNonTypeSystemRulesToRoot(final TypeCheckingContext typeCheckingContext, final SNode rootNode, final Cancellable c, TypecheckingObservable observable) {
-    if (rootNode == null) return false;
-    return LanguageScopeExecutor.execWithModelScope(rootNode.getModel(), () -> applyRulesToRoot(typeCheckingContext, rootNode, c, observable));
+    if (rootNode == null) {
+      return false;
+    }
+    final LanguageScopeFactory sf = typeCheckingContext.getTypeCheckerHelper().getScopeFactory();
+    return LanguageScopeExecutor.execWithModelScope(rootNode.getModel(), () -> applyRulesToRoot(typeCheckingContext, rootNode, c, observable), sf);
   }
 
   // true iff fully executed

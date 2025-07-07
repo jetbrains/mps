@@ -19,7 +19,7 @@ public class Generics1_Test {
     IntegerSequence ints = new IntegerSequence();
     int count = 0;
     for (Integer i : Sequence.fromIterable(ints.get())) {
-      Assert.assertEquals(count, i.intValue());
+      Assert.assertEquals(Integer.valueOf(count), Integer.valueOf(i.intValue()));
       count++;
     }
   }

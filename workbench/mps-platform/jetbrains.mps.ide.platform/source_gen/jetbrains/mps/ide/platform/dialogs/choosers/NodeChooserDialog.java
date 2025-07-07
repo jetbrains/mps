@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 import java.awt.Dimension;
 
-@GeneratedClass(node = "r:bfb6ca7e-5411-4ee0-a5c0-1edd33370efd(jetbrains.mps.ide.platform.dialogs.choosers)/397101727194120959", model = "r:bfb6ca7e-5411-4ee0-a5c0-1edd33370efd(jetbrains.mps.ide.platform.dialogs.choosers)")
+@GeneratedClass(nodeId = "397101727194120959", model = "r:bfb6ca7e-5411-4ee0-a5c0-1edd33370efd(jetbrains.mps.ide.platform.dialogs.choosers)")
 public class NodeChooserDialog extends DialogWrapper {
   private static final Logger LOG = Logger.getLogger(NodeChooserDialog.class);
   private final ChooseByNamePanel myChooser;

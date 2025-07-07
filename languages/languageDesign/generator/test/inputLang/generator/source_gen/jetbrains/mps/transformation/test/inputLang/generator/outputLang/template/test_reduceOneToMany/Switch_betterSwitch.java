@@ -52,7 +52,7 @@ public class Switch_betterSwitch extends TemplateSwitchBase implements TemplateS
       super(new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "8371596541809066877"), CONCEPTS.InputNode_A$Jt, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_6_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

@@ -60,11 +60,11 @@ public class HighlightCellDependencies_Action extends BaseAction {
     final SRepository repo = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditorContext().getRepository();
     repo.getModelAccess().runReadAction(() -> {
       EditorMessageOwner messageOwner = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getHighlightMessagesOwner();
-      highlightManager.mark(event.getData(MPSEditorDataKeys.EDITOR_CELL).getSNode(), HighlightConstants.NODE_COLOR, "node", messageOwner);
+      highlightManager.mark(event.getData(MPSEditorDataKeys.EDITOR_CELL).getSNode(), HighlightConstants.getSearchResultsSourceBackgroundColor(), "node", messageOwner);
       Set<SNode> nodes = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getNodesCellDependOn(event.getData(MPSEditorDataKeys.EDITOR_CELL));
       if (nodes != null) {
         for (SNode node : SetSequence.fromSet(nodes)) {
-          highlightManager.mark(node, HighlightConstants.DEPENDENCY_COLOR, "usage", messageOwner);
+          highlightManager.mark(node, HighlightConstants.getSearchResultsBackgroundColor(), "usage", messageOwner);
         }
       }
       Set<SNodeReference> copyOfRefTargets = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getCopyOfRefTargetsCellDependsOn(event.getData(MPSEditorDataKeys.EDITOR_CELL));
@@ -72,7 +72,7 @@ public class HighlightCellDependencies_Action extends BaseAction {
         for (SNodeReference nodePointer : SetSequence.fromSet(copyOfRefTargets)) {
           SNode tgt = nodePointer.resolve(repo);
           if (tgt != null) {
-            highlightManager.mark(tgt, HighlightConstants.DEPENDENCY_COLOR, "usage", messageOwner);
+            highlightManager.mark(tgt, HighlightConstants.getSearchResultsBackgroundColor(), "usage", messageOwner);
           }
         }
       }

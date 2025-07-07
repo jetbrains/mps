@@ -220,7 +220,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.PUNCTUATION_LEFT, true);
       new testParentStyleStyleClass(this).apply(style, editorCell);
       new testStyleStyleClass(this).apply(style, editorCell);
-      new testKey_StyleKey().apply(style);
+      new testKey_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_i8r80j_a2a0a(prevNode, nextNode)) {
         new testStyleStyleClass(this).apply(style, editorCell);
       }
@@ -311,7 +311,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
       style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
       new testStyleStyleClass(this).unapply(style, editorCell);
-      new testKey_StyleKey().unapply(style);
+      new testKey_StyleKey().unapply(this, style);
       style.set(StyleAttributes.UNDERLINED, false);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09a0a(prevNode, nextNode));
       editorCell.getStyle().putAll(style);
@@ -560,7 +560,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("Constant_i8r80j_e1a0a");
       Style style = new StyleImpl();
       new testStyleStyleClass(this).apply(style, editorCell);
-      new testKey_StyleKey().apply(style);
+      new testKey_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_i8r80j_a2e1a0a()) {
         new testStyleStyleClass(this).apply(style, editorCell);
       }
@@ -651,7 +651,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
       style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
       new testStyleStyleClass(this).unapply(style, editorCell);
-      new testKey_StyleKey().unapply(style);
+      new testKey_StyleKey().unapply(this, style);
       style.set(StyleAttributes.UNDERLINED, false);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09e1a0a());
       editorCell.getStyle().putAll(style);
@@ -1021,7 +1021,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("Error_i8r80j_e4a0a");
       Style style = new StyleImpl();
       new testStyleStyleClass(this).apply(style, editorCell);
-      new testKey_StyleKey().apply(style);
+      new testKey_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_i8r80j_a2e4a0a()) {
         new testStyleStyleClass(this).apply(style, editorCell);
       }
@@ -1112,7 +1112,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
       style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
       new testStyleStyleClass(this).unapply(style, editorCell);
-      new testKey_StyleKey().unapply(style);
+      new testKey_StyleKey().unapply(this, style);
       style.set(StyleAttributes.UNDERLINED, false);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09e4a0a());
       editorCell.getStyle().putAll(style);
@@ -1557,7 +1557,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("ModelAccess_i8r80j_e7a0a");
       Style style = new StyleImpl();
       new testStyleStyleClass(this).apply(style, editorCell);
-      new testKey_StyleKey().apply(style);
+      new testKey_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_i8r80j_a2e7a0a()) {
         new testStyleStyleClass(this).apply(style, editorCell);
       }
@@ -1648,7 +1648,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
       style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
       new testStyleStyleClass(this).unapply(style, editorCell);
-      new testKey_StyleKey().unapply(style);
+      new testKey_StyleKey().unapply(this, style);
       style.set(StyleAttributes.UNDERLINED, false);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09e7a0a());
       editorCell.getStyle().putAll(style);
@@ -2044,7 +2044,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("ReadOnlyModelAccessor_i8r80j_d01a0a");
       Style style = new StyleImpl();
       new testStyleStyleClass(this).apply(style, editorCell);
-      new testKey_StyleKey().apply(style);
+      new testKey_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_i8r80j_a2d01a0a()) {
         new testStyleStyleClass(this).apply(style, editorCell);
       }
@@ -2135,7 +2135,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
       style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
       new testStyleStyleClass(this).unapply(style, editorCell);
-      new testKey_StyleKey().unapply(style);
+      new testKey_StyleKey().unapply(this, style);
       style.set(StyleAttributes.UNDERLINED, false);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09d01a0a());
       editorCell.getStyle().putAll(style);
@@ -2339,6 +2339,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
           editorCell = EditorCell_Property.create(getEditorContext(), modelAccessor, myNode);
           editorCell.setCellId("TransactionalProperty_i8r80j_a31a0a");
           editorCell.setDefaultText("<no theProperty>");
+
           setCellContext(editorCell);
           editorCell.setCommitInCommand(false);
         }
@@ -2375,6 +2376,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
           editorCell = EditorCell_Property.create(getEditorContext(), modelAccessor, myNode);
           editorCell.setCellId("TransactionalProperty_i8r80j_b31a0a");
           editorCell.setDefaultText("<no theProperty>");
+
           setCellContext(editorCell);
           editorCell.setCommitInCommand(true);
         }
@@ -2631,6 +2633,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
           new testParentStyleStyleClass(this).apply(style, editorCell);
           editorCell.getStyle().putAll(style);
           editorCell.setDefaultText("<no theProperty>");
+
           setCellContext(editorCell);
           editorCell.setCommitInCommand(false);
         }
@@ -2664,7 +2667,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
           editorCell.setCellId("TransactionalProperty_i8r80j_e31a0a");
           Style style = new StyleImpl();
           new testStyleStyleClass(this).apply(style, editorCell);
-          new testKey_StyleKey().apply(style);
+          new testKey_StyleKey().apply(this, style);
           if (_StyleParameter_QueryFunction_i8r80j_a2e31a0a()) {
             new testStyleStyleClass(this).apply(style, editorCell);
           }
@@ -2755,11 +2758,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
           style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
           style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
           new testStyleStyleClass(this).unapply(style, editorCell);
-          new testKey_StyleKey().unapply(style);
+          new testKey_StyleKey().unapply(this, style);
           style.set(StyleAttributes.UNDERLINED, false);
           style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09e31a0a());
           editorCell.getStyle().putAll(style);
           editorCell.setDefaultText("<no theProperty>");
+
           setCellContext(editorCell);
           editorCell.setCommitInCommand(false);
         }
@@ -3432,7 +3436,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("RNLLWR_refNodeList_children3");
       Style style = new StyleImpl();
       new testStyleStyleClass(this).apply(style, editorCell);
-      new testKey_StyleKey().apply(style);
+      new testKey_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_i8r80j_a2a3q0a0()) {
         new testStyleStyleClass(this).apply(style, editorCell);
       }
@@ -3523,7 +3527,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
       style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
       new testStyleStyleClass(this).unapply(style, editorCell);
-      new testKey_StyleKey().unapply(style);
+      new testKey_StyleKey().unapply(this, style);
       style.set(StyleAttributes.UNDERLINED, false);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09a3q0a0());
       editorCell.getStyle().putAll(style);

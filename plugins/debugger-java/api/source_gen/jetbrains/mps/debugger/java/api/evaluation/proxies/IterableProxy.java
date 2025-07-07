@@ -8,7 +8,7 @@ import java.util.Iterator;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationException;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationRuntimeException;
 
-@GeneratedClass(node = "r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)/4727801710070560831", model = "r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)")
+@GeneratedClass(nodeId = "4727801710070560831", model = "r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)")
 public class IterableProxy<T extends IValueProxy> implements Iterable<T> {
   private final IObjectValueProxy myValueProxy;
   private final ThreadReference myThreadReference;

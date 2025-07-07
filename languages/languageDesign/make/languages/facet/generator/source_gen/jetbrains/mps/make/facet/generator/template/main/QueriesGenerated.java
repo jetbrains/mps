@@ -695,7 +695,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
     rtqMethods.put("1894767564088468594", new RTQ(0, "IFacet"));
-    rtqMethods.put("671853460608694390", new RTQ(1, "Target_"));
+    rtqMethods.put("671853460608694390", new RTQ(1, "Facet.Target_"));
     rtqMethods.put("1521318412423322789", new RTQ(2, "Object"));
     rtqMethods.put("1521318412423322768", new RTQ(3, "Object"));
     rtqMethods.put("44444360532543318", new RTQ(4, "Object"));
@@ -703,10 +703,10 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("7764221452833388115", new RTQ(6, "IResource"));
     rtqMethods.put("2457327449352637582", new RTQ(7, "Object"));
     rtqMethods.put("2457327449352637534", new RTQ(8, "Object"));
-    rtqMethods.put("1173174768519413408", new RTQ(9, "Parameters"));
+    rtqMethods.put("1173174768519413408", new RTQ(9, "Facet.Parameters"));
     rtqMethods.put("1173174768519486751", new RTQ(10, "Object"));
     rtqMethods.put("671853460608813109", new RTQ(11, "Facet_"));
-    rtqMethods.put("1173174768520635090", new RTQ(12, "Target_"));
+    rtqMethods.put("1173174768520635090", new RTQ(12, "Facet.Target_"));
     rtqMethods.put("1521318412423323269", new RTQ(13, "tuple"));
     rtqMethods.put("1521318412423323378", new RTQ(14, "component"));
     rtqMethods.put("6929395112410164476", new RTQ(15, "store"));

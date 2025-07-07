@@ -27,9 +27,14 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.Presentation;
 import jetbrains.mps.logging.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.event.InputEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class ActionUtils {
   private static final Logger LOG = Logger.getLogger(ActionUtils.class);
@@ -40,7 +45,7 @@ public class ActionUtils {
     } catch (Throwable t) {
       LOG.error(t);
     }
-    for (AnAction child : group.getChildren(null)) {
+    for (AnAction child : getChildren(group)) {
       try {
         child.update(e);
       } catch (Throwable t) {
@@ -87,6 +92,15 @@ public class ActionUtils {
     }
   }
 
+  public static @NotNull List<AnAction> getChildren(@NotNull ActionGroup container) {
+    // assume all MPS actions are contained in DefaultActionGroups (IJPL-148333 - avoid calling group.getChildren(null))
+    if (container instanceof DefaultActionGroup dag) {
+      return Arrays.asList(dag.getChildren(ActionManager.getInstance()));
+    } else {
+      return Collections.emptyList();
+    }
+  }
+
   public static boolean contains(ActionGroup container, ActionGroup what) {
     if (container == what) return true;
 
@@ -94,9 +108,9 @@ public class ActionUtils {
     //todo the unregistration code should be rewritten in such a manner that additiona are registered and on unregistration we just remove our actions from the places we already know
     if (container instanceof RecentProjectsGroup) return false;
 
-    for (AnAction child : container.getChildren(null)) {
-      if (child instanceof ActionGroup) {
-        if (contains((ActionGroup) child, what)) return true;
+    for (AnAction child : getChildren(container)) {
+      if (child instanceof ActionGroup group) {
+        if (contains(group, what)) return true;
       }
     }
     return false;

@@ -22,6 +22,12 @@ public class LinkedListSequence<T> extends AbstractListSequence<T> implements IL
     super(list);
   }
   @Override
+  public LinkedListSequence<T> reversed() {
+    LinkedListSequence<T> reversed = new LinkedListSequence<T>(this);
+    reversed._reverse();
+    return reversed;
+  }
+  @Override
   public void addFirst(T t) {
     getList().addFirst(t);
   }

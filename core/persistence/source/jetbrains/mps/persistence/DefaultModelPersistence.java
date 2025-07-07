@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MetaModelInfoProvider.MetaInfoLoadingOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
-import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.SModelHeader;
@@ -44,6 +43,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.persistence.ContentOption;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.DataSourceNotSupportedProblem;
 import org.jetbrains.mps.openapi.persistence.MFProblem;
@@ -85,9 +85,16 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     INTERFACE_ONLY
   }
 
+  private final PersistenceFacade myPersistenceRegistry;
+
   @Internal
   public DefaultModelPersistence() {
-    // do not delete, it is a java service
+    // FIXME refactor single use in tests
+    this(PersistenceFacade.getInstance());
+  }
+
+  public DefaultModelPersistence(@NotNull PersistenceFacade persistenceRegistry) {
+    myPersistenceRegistry = persistenceRegistry;
   }
 
   @Override
@@ -119,7 +126,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     }
 
     final SModelHeader header = SModelHeader.create(ModelPersistence.LAST_VERSION);
-    final SModelReference modelReference = PersistenceFacade.getInstance().createModelReference(null, SModelId.generate(), modelName.getValue());
+    final SModelReference modelReference = myPersistenceRegistry.createModelReference(null, SModelId.generate(), modelName);
     header.setModelReference(modelReference);
     final DefaultSModelDescriptor rv = new DefaultSModelDescriptor(new PersistenceFacility(this, (StreamDataSource) dataSource), header);
     // Hack to ensure newly created model is indeed empty. Otherwise, with StreamDataSource pointing to existing model stream, an attempt to
@@ -139,16 +146,29 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
   @Override
   public SModel load(@NotNull DataSource dataSource, @NotNull ModelLoadingOption... options) throws UnsupportedDataSourceException,
                                                                                                     ModelLoadException {
-    if (!(dataSource instanceof StreamDataSource)) {
+    if (!(dataSource instanceof StreamDataSource source)) {
       throw new UnsupportedDataSourceException(dataSource);
     }
 
-    StreamDataSource source = (StreamDataSource) dataSource;
+    if (ContentOption.CONTENT_ONLY.presentIn(options)) {
+      // aka parseSingleStream(), just with extra option to keep MMIP
+      try (InputStream is = source.openInputStream()) {
+        SModelData modelData = ModelPersistence.getModelData(is, MetaInfoLoadingOption.KEEP_READ.presentIn(options));
+        if (modelData instanceof DefaultSModel dsm) {
+          return new ContentOnlySModelDescriptor(dsm, this);
+        }
+        // fall-through, try regular path
+      } catch (IOException | ModelReadException ex) {
+        // if it fails to read, why bother with another attempt
+        throw new ModelLoadException(ex.getMessage());
+      }
+    }
+
     PersistenceFacility persistenceFacility = new PersistenceFacility(this, source);
     SModelHeader header = readHeader(dataSource, source, persistenceFacility);
     LOG.debug("Getting model " + header.getModelReference() + " from " + dataSource.getLocation());
 
-    if (Arrays.asList(options).contains(MetaInfoLoadingOption.KEEP_READ)) {
+    if (MetaInfoLoadingOption.KEEP_READ.presentIn(options)) {
       header.setMetaInfoProvider(new StuffedMetaModelInfo(new RegularMetaModelInfo()));
     }
 
@@ -181,7 +201,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     try {
       header = pf.readHeader();
     } catch (ModelReadException e) {
-      LOG.error("Can't read model: ", e);
+      LOG.info("Can't read model: " + e.getMessage());
       throw new ModelLoadException("Can't read model header from the '" + dataSource + "'", Collections.emptyList(), e);
     }
     if (header.getModelReference() == null) {
@@ -271,7 +291,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
 
   @Override
   public SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException, ModelReadException {
-    return ModelPersistence.getModelData(input);
+    return ModelPersistence.getModelData(input, false);
   }
 
   @NotNull
@@ -326,15 +346,6 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     if (dataSource.isReadOnly()) {
       throw new ModelSaveException(PersistenceProblem.errorSave(String.format("`%s' is read-only", dataSource.getLocation()), dataSource));
     }
-  }
-
-  /**
-   * hack, @see BinaryModelPersistence#createFromHeader for details
-   */
-  public static SModel createFromHeader(@NotNull SModelHeader header, @NotNull StreamDataSource dataSource) {
-    final ModelFactory modelFactory = PersistenceFacade.getInstance().getModelFactory(MPSExtentions.MODEL);
-    assert modelFactory instanceof DefaultModelPersistence;
-    return new DefaultSModelDescriptor(new PersistenceFacility((DefaultModelPersistence) modelFactory, dataSource), header.createCopy());
   }
 
   private static class PersistenceFacility extends LazyLoadFacility {

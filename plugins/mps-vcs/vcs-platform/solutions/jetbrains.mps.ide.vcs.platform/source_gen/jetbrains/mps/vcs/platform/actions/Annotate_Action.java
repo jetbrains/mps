@@ -8,17 +8,18 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import jetbrains.mps.nodeEditor.EditorComponent;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
 import com.intellij.openapi.vcs.impl.VcsBackgroundableActions;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/4551090891612013049", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "4551090891612013049", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class Annotate_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -34,13 +35,14 @@ public class Annotate_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    if (VcsActionsUtil.getAnnotationColumn(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT)) != null) {
+    EditorComponent component = Annotate_Action.this.findEditorComponent(event);
+    if (VcsActionsUtil.getAnnotationColumn(component) != null) {
       return true;
     }
     if (Annotate_Action.this.getAnnotateRootLock(event).isLocked()) {
       return false;
     }
-    final SNode editedNode = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode();
+    final SNode editedNode = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT).getEditorComponent().getEditedNode();
     NodeHistoryUtil nh = new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT));
     nh.initFileAndVcs(editedNode);
     return nh.isHistoryTracked();
@@ -59,12 +61,15 @@ public class Annotate_Action extends BaseAction {
       if (editorComponent != null && editorComponent.isInvalid()) {
         editorComponent = null;
       }
-      if (editorComponent == null) {
+    }
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      if (p == null) {
         return false;
       }
     }
     {
-      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      EditorContext p = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT);
       if (p == null) {
         return false;
       }
@@ -73,17 +78,26 @@ public class Annotate_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    AnnotationColumn annotationColumn = VcsActionsUtil.getAnnotationColumn(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
+    EditorComponent component = Annotate_Action.this.findEditorComponent(event);
+    AnnotationColumn annotationColumn = VcsActionsUtil.getAnnotationColumn(component);
     if (annotationColumn != null) {
       annotationColumn.close();
       return;
     }
-    final SNode editedNode = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode();
+    final SNode editedNode = component.getEditedNode();
     NodeHistoryUtil nh = new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT));
     nh.initFileAndVcs(editedNode);
-    nh.runAnnotate(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), Annotate_Action.this.getAnnotateRootLock(event));
+    nh.runAnnotate(component, Annotate_Action.this.getAnnotateRootLock(event));
   }
   private BackgroundableActionLock getAnnotateRootLock(final AnActionEvent event) {
-    return BackgroundableActionLock.getLock(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), VcsBackgroundableActions.ANNOTATE, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getName());
+    return BackgroundableActionLock.getLock(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), VcsBackgroundableActions.ANNOTATE, Annotate_Action.this.findEditorComponent(event).getEditedNode().getName());
+  }
+  private EditorComponent findEditorComponent(final AnActionEvent event) {
+    EditorComponent component = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT);
+    if (component == null) {
+      jetbrains.mps.openapi.editor.EditorComponent editorComponent = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT).getEditorComponent();
+      component = ((EditorComponent) editorComponent);
+    }
+    return component;
   }
 }

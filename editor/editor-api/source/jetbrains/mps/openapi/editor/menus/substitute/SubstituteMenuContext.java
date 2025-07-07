@@ -70,6 +70,7 @@ public interface SubstituteMenuContext extends TraceMenuContext {
 
   Collection<EditorMenuItemCustomizer> getCustomizers();
 
+  @NotNull
   default EditorMenuTrace getEditorMenuTrace() {
     // need to keep this method until no more references from templates (I believe mbeddr might be referencing this method)
     return TraceMenuContext.super.getEditorMenuTrace();

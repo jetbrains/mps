@@ -8,7 +8,7 @@ import java.util.Set;
 import jetbrains.mps.library.contributor.LibDescriptor;
 import java.util.Collections;
 
-@GeneratedClass(node = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)/5900076103425675110", model = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)")
+@GeneratedClass(nodeId = "5900076103425675110", model = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)")
 public class SetLibraryContributor implements LibraryContributor {
   private final String myName;
   private final Set<LibDescriptor> myLibraryPaths;

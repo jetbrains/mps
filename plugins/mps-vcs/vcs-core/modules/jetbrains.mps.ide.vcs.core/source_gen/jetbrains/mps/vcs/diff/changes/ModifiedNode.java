@@ -16,7 +16,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4676109734476338389", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "4676109734476338389", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public final class ModifiedNode {
 
   private final boolean myIsNewModel;
@@ -61,7 +61,7 @@ public final class ModifiedNode {
     return result;
   }
 
-  public void setParent(ModifiedNode parent) {
+  private void setParent(ModifiedNode parent) {
     myParent = parent;
   }
 
@@ -71,6 +71,7 @@ public final class ModifiedNode {
 
   public void addChild(ModifiedNode child) {
     CollectionSequence.fromCollection(myChildren).addElement(child);
+    child.setParent(this);
   }
 
   public SNodeId getParentId() {

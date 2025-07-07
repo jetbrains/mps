@@ -14,6 +14,9 @@ public class Mpsdevkit_ProjectPlugin extends BaseProjectPlugin {
   }
   public List<BaseTool> initAllTools1(Project project) {
     List<BaseTool> tools = ListSequence.fromList(new ArrayList<BaseTool>());
+    ListSequence.fromList(tools).addElement(new CellExplorerTool_Tool(project));
+    ListSequence.fromList(tools).addElement(new EditorMenuTrace_Tool(project));
+    ListSequence.fromList(tools).addElement(new GenerationTracerViewTool_Tool(project));
     ListSequence.fromList(tools).addElement(new NodeExplorer_Tool(project));
     ListSequence.fromList(tools).addElement(new TraceTool_Tool(project));
     return tools;

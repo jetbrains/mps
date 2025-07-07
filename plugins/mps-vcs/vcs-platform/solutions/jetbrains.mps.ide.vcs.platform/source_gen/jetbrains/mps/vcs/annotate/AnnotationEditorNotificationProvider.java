@@ -16,7 +16,7 @@ import jetbrains.mps.ide.editor.MPSFileNodeEditor;
 import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
 import jetbrains.mps.openapi.editor.Editor;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/1354028796368172122", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "1354028796368172122", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class AnnotationEditorNotificationProvider extends EditorNotifications.Provider<AnnotationNotificationPanel> {
 
   public static final Key<AnnotationNotificationPanel> KEY = Key.create("mps.annotate.editing.notification.panel");

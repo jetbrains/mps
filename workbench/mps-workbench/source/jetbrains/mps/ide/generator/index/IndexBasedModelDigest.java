@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,9 @@
  */
 package jetbrains.mps.ide.generator.index;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.startup.StartupActivity;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.indexing.FileBasedIndex;
@@ -27,6 +25,7 @@ import com.intellij.util.indexing.ID;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.ModelDigestHelper;
@@ -44,7 +43,7 @@ import java.util.Map;
  * PersistenceFacility/LazyLoadFacility.getModelHash) and could easily drift away.
  * Again, here would be great to have indexing built on top of model layer, rather than vfs layer
  */
-public class IndexBasedModelDigest implements StartupActivity.Background {
+public class IndexBasedModelDigest extends MPSProjectActivity {
 
   @Override
   public void runActivity(@NotNull Project project) {
@@ -52,7 +51,7 @@ public class IndexBasedModelDigest implements StartupActivity.Background {
     if (mpsProject == null) {
       return;
     }
-    final ComponentHost mpsPlaf = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform();
+    final ComponentHost mpsPlaf = MPSCoreComponents.getInstance().getPlatform();
     final ModelDigestHelper mdHelper = mpsPlaf.findComponent(ModelDigestHelper.class);
     if (mdHelper == null) {
       return;

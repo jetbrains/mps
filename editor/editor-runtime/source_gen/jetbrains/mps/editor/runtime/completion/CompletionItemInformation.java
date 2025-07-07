@@ -5,7 +5,7 @@ package jetbrains.mps.editor.runtime.completion;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
-@GeneratedClass(node = "r:6f792c44-2a5d-40e8-9f05-33f7d4ae26ec(jetbrains.mps.editor.runtime.completion)/7825776669670531989", model = "r:6f792c44-2a5d-40e8-9f05-33f7d4ae26ec(jetbrains.mps.editor.runtime.completion)")
+@GeneratedClass(nodeId = "7825776669670531989", model = "r:6f792c44-2a5d-40e8-9f05-33f7d4ae26ec(jetbrains.mps.editor.runtime.completion)")
 public class CompletionItemInformation {
   private final Object myParameterObject;
   private final SAbstractConcept myOutputConcept;

@@ -46,6 +46,7 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="i8bi" ref="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
+    <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -538,15 +539,15 @@
           <node concept="22lmx$" id="5zpsdFy5CzG" role="3clFbw">
             <node concept="3clFbC" id="5zpsdFy5CzH" role="3uHU7w">
               <node concept="2OqwBi" id="5zpsdFy5CzI" role="3uHU7w">
-                <node concept="2OqwBi" id="5zpsdFy5CzJ" role="2Oq$k0">
-                  <node concept="liA8E" id="5zpsdFy5CzL" role="2OqNvi">
-                    <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                    <node concept="3VsKOn" id="5zpsdFy5CzM" role="37wK5m">
-                      <ref role="3VsUkX" to="exr9:~InspectorTool" resolve="InspectorTool" />
+                <node concept="2YIFZM" id="oeXz_6fUZw" role="2Oq$k0">
+                  <ref role="37wK5l" to="exr9:~InspectorTool.getInstance(jetbrains.mps.project.Project)" resolve="getInstance" />
+                  <ref role="1Pybhc" to="exr9:~InspectorTool" resolve="InspectorTool" />
+                  <node concept="2YIFZM" id="oeXz_6fZFo" role="37wK5m">
+                    <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+                    <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+                    <node concept="37vLTw" id="oeXz_6g05_" role="37wK5m">
+                      <ref role="3cqZAo" node="31IQ8dwSR4A" resolve="myProject" />
                     </node>
-                  </node>
-                  <node concept="37vLTw" id="31IQ8dwT4YU" role="2Oq$k0">
-                    <ref role="3cqZAo" node="31IQ8dwSR4A" resolve="myProject" />
                   </node>
                 </node>
                 <node concept="liA8E" id="5zpsdFy5CzN" role="2OqNvi">
@@ -2582,7 +2583,7 @@
       <node concept="3Tm6S6" id="K9wxfKEuYS" role="1B3o_S" />
       <node concept="10Oyi0" id="K9wxfKEuYT" role="1tU5fm" />
       <node concept="3cmrfG" id="K9wxfKEuYU" role="33vP2m">
-        <property role="3cmrfH" value="9" />
+        <property role="3cmrfH" value="4" />
       </node>
     </node>
     <node concept="Wx3nA" id="K9wxfKEuYV" role="jymVt">

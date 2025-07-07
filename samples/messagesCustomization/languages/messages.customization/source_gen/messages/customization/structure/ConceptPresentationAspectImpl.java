@@ -14,6 +14,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_CardinalityTestConcept;
   private ConceptPresentation props_CardinalityTestConcept0;
   private ConceptPresentation props_IncorrectTargetTestConcept;
+  private ConceptPresentation props_NamedContainer;
   private ConceptPresentation props_TestConcept;
   private ConceptPresentation props_TestConcept0;
 
@@ -56,6 +57,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IncorrectTargetTestConcept = cpb.create();
         }
         return props_IncorrectTargetTestConcept;
+      case LanguageConceptSwitch.NamedContainer:
+        if (props_NamedContainer == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_NamedContainer = cpb.create();
+        }
+        return props_NamedContainer;
       case LanguageConceptSwitch.TestConcept:
         if (props_TestConcept == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

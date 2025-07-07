@@ -12,19 +12,13 @@ import java.awt.Frame;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
+import com.intellij.openapi.actionSystem.PlatformCoreDataKeys;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SearchScope;
-import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.lang.script.runtime.RefactoringScript;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.awt.Component;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
-import org.jetbrains.mps.openapi.language.SProperty;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RunMigrationScripts_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -64,43 +58,34 @@ public class RunMigrationScripts_Action extends BaseAction {
     {
       List<SModule> p = event.getData(MPSCommonDataKeys.MODULES);
     }
+    {
+      Object[] p = event.getData(PlatformCoreDataKeys.SELECTED_ITEMS);
+    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final Wrappers._T<SearchScope> scope = new Wrappers._T<SearchScope>();
-    final Wrappers._T<List<SNodeReference>> allScripts = new Wrappers._T<List<SNodeReference>>();
     final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-    mpsProject.getRepository().getModelAccess().runReadAction(() -> {
-      if (RunMigrationScripts_Action.this.global) {
-        scope.value = AbstractMigrationScriptHelper.createMigrationScope(event.getData(MPSCommonDataKeys.MODULES), event.getData(MPSCommonDataKeys.MODELS));
-      } else {
-        scope.value = AbstractMigrationScriptHelper.createMigrationScope(mpsProject);
-      }
-      if (!(scope.value.getModels().iterator().hasNext())) {
-        return;
-      }
-
-      ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(mpsProject, RunMigrationScripts_Action.this.global);
-      allScripts.value = ListSequence.fromList(menuBuilder.getAllScripts()).sort((it) -> (SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$NwlS)) == null ? "" : SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$NwlS))), true).alsoSort((it) -> (SPropertyOperations.getString(it, PROPS.toBuild$NwNU) == null ? "" : SPropertyOperations.getString(it, PROPS.toBuild$NwNU)), true).select((it) -> it.getReference()).toList();
-    });
+    SearchScope scope = mpsProject.getModelAccess().computeReadAction(() -> MigrationScriptHelper.combineModulesModelsSelectedItemsIntoScope(RunMigrationScripts_Action.this.global, mpsProject, event.getData(PlatformCoreDataKeys.SELECTED_ITEMS), event.getData(MPSCommonDataKeys.MODULES), event.getData(MPSCommonDataKeys.MODELS)));
+    if (!(scope.getModels().iterator().hasNext())) {
+      return;
+    }
+    ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(mpsProject);
     final Frame frame = event.getData(MPSCommonDataKeys.FRAME);
-    final RunMigrationScriptsDialog dialog = new RunMigrationScriptsDialog(mpsProject, frame, allScripts.value);
+    RunMigrationScriptsDialog dialog = new RunMigrationScriptsDialog(mpsProject, frame, menuBuilder.getAllScripts());
     int x = frame.getX() + frame.getWidth() / 2 - dialog.getWidth() / 2;
     int y = frame.getY() + frame.getHeight() / 2 - dialog.getHeight() / 2;
-    // cast to Component eliminates out of search scope error in Java8 vs Java6
-    //  setLocation() has got implementation in Window class since Java7
-    ((Component) dialog).setLocation(x, y);
+    dialog.setLocation(x, y);
     dialog.setVisible(true);
-    mpsProject.getRepository().getModelAccess().executeCommand(() -> {
-      if (dialog.isRunChecked()) {
-        List<SNodeReference> checked = dialog.getCheckedScripts();
-        AbstractMigrationScriptHelper.doRunScripts(ListSequence.fromList(checked).select((it) -> SNodeOperations.cast(it.resolve(mpsProject.getRepository()), CONCEPTS.MigrationScript$KR)).toList(), scope.value, mpsProject);
-      } else if (dialog.isOpenSelected()) {
-        SNodeReference selectedScript = ListSequence.fromList(dialog.getSelectedScripts()).first();
-        new EditorNavigator(mpsProject).shallFocus(true).shallSelect(true).open(selectedScript);
+    if (dialog.isRunChecked()) {
+      List<RefactoringScript> checked = dialog.getCheckedScripts();
+      ProjectPluginManager.getInstance(mpsProject.getProject()).getTool(MigrationScriptsTool_Tool.class).startMigration(checked, scope);
+    } else if (dialog.isOpenSelected()) {
+      RefactoringScript selectedScript = ListSequence.fromList(dialog.getSelectedScripts()).findFirst((it) -> it.getScriptNode() != null);
+      if (selectedScript != null) {
+        new EditorNavigator(mpsProject).shallFocus(true).shallSelect(true).open(selectedScript.getScriptNode());
       }
-    });
+    }
   }
   @NotNull
   public String getActionId() {
@@ -110,14 +95,5 @@ public class RunMigrationScripts_Action extends BaseAction {
     res.append(((Object) this.global).toString());
     res.append("!");
     return res.toString();
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty type$NwlS = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type");
-    /*package*/ static final SProperty toBuild$NwNU = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081155L, "toBuild");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept MigrationScript$KR = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, "jetbrains.mps.lang.script.structure.MigrationScript");
   }
 }

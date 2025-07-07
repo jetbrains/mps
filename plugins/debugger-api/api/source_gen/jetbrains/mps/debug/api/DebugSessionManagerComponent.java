@@ -4,26 +4,30 @@ package jetbrains.mps.debug.api;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.Disposable;
+import com.intellij.util.messages.Topic;
 import java.util.Map;
 import com.intellij.execution.process.ProcessHandler;
 import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
+import com.intellij.util.EventDispatcher;
 import com.intellij.execution.ui.RunContentWithExecutorListener;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.ui.RunContentDescriptor;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.execution.ui.RunContentManager;
+import org.jetbrains.annotations.Nullable;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.EventListener;
 import com.intellij.execution.Executor;
 
-@GeneratedClass(node = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)/4474271214082913702", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
+@GeneratedClass(nodeId = "4474271214082913702", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
 public class DebugSessionManagerComponent implements Disposable {
+  @Topic.ProjectLevel
+  public static final Topic<DebugSessionListener> TOPIC = Topic.create("Debug Session", DebugSessionListener.class);
+
   private final Map<ProcessHandler, AbstractDebugSession> myProcessesToSessions = new HashMap<ProcessHandler, AbstractDebugSession>(1);
-  private final List<DebugSessionListener> myCurrentDebugSessionListeners = new ArrayList<DebugSessionListener>();
+  private final EventDispatcher<DebugSessionListener> mySessionListeners = EventDispatcher.create(DebugSessionListener.class);
   private final RunContentWithExecutorListener myRunContentListener = new MyRunContentListener();
   private final Project myProject;
 
@@ -37,7 +41,9 @@ public class DebugSessionManagerComponent implements Disposable {
 
   public DebugSessionManagerComponent(Project project) {
     myProject = project;
-    addRunContentListener();
+    MessageBusConnection mbc = myProject.getMessageBus().connect(this);
+    mbc.subscribe(RunContentManager.TOPIC, myRunContentListener);
+    mbc.subscribe(TOPIC, mySessionListeners.getMulticaster());
   }
 
   public Project getProject() {
@@ -58,25 +64,19 @@ public class DebugSessionManagerComponent implements Disposable {
     return getDebugSession(mySelectedContent.getProcessHandler());
   }
 
-  private void addRunContentListener() {
-    MessageBusConnection mbc = myProject.getMessageBus().connect(this);
-    mbc.subscribe(RunContentManager.TOPIC, myRunContentListener);
+
+  private DebugSessionListener getEventPublisher() {
+    return myProject.getMessageBus().syncPublisher(TOPIC);
   }
 
   private void fireSelectedDebugSessionChanged(AbstractDebugSession debugSession) {
-    for (DebugSessionListener listener : getAllCurrentDebugSessionListeners()) {
-      listener.currentSessionChanged(debugSession);
-    }
+    getEventPublisher().currentSessionChanged(debugSession);
   }
   private void fireSessionDetached(AbstractDebugSession debugSession) {
-    for (DebugSessionListener listener : getAllCurrentDebugSessionListeners()) {
-      listener.detached(debugSession);
-    }
+    getEventPublisher().detached(debugSession);
   }
   private void fireSessionRegistered(AbstractDebugSession debugSession) {
-    for (DebugSessionListener listener : getAllCurrentDebugSessionListeners()) {
-      listener.registered(debugSession);
-    }
+    getEventPublisher().registered(debugSession);
   }
   public AbstractDebugSession getDebugSession(ProcessHandler processHandler) {
     return myProcessesToSessions.get(processHandler);
@@ -101,24 +101,19 @@ public class DebugSessionManagerComponent implements Disposable {
     myProcessesToSessions.remove(session.getProcessHandler());
   }
   public void addDebugSessionListener(DebugSessionListener listener) {
-    synchronized (myCurrentDebugSessionListeners) {
-      myCurrentDebugSessionListeners.add(listener);
-    }
+    mySessionListeners.addListener(listener);
   }
   public void removeDebugSessionListener(DebugSessionListener listener) {
-    synchronized (myCurrentDebugSessionListeners) {
-      myCurrentDebugSessionListeners.remove(listener);
-    }
+    mySessionListeners.removeListener(listener);
   }
-  public List<DebugSessionListener> getAllCurrentDebugSessionListeners() {
-    synchronized (myCurrentDebugSessionListeners) {
-      return new ArrayList<DebugSessionListener>(myCurrentDebugSessionListeners);
+
+  public interface DebugSessionListener extends EventListener {
+    default void registered(AbstractDebugSession session) {
     }
-  }
-  public interface DebugSessionListener {
-    void registered(AbstractDebugSession session);
-    void currentSessionChanged(AbstractDebugSession session);
-    void detached(AbstractDebugSession session);
+    default void currentSessionChanged(AbstractDebugSession session) {
+    }
+    default void detached(AbstractDebugSession session) {
+    }
   }
   public static abstract class DebugSessionAdapter implements DebugSessionListener {
     public DebugSessionAdapter() {

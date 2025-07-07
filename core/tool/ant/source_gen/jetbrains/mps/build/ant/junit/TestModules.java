@@ -12,7 +12,7 @@ import org.apache.tools.ant.types.Resource;
 import org.apache.tools.ant.types.resources.FileResource;
 import java.util.Collections;
 
-@GeneratedClass(node = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)/6060921217236313228", model = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)")
+@GeneratedClass(nodeId = "6060921217236313228", model = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)")
 public class TestModules {
 
   private final Resources myResources = new Resources();

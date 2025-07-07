@@ -11,7 +11,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.make.IMakeService;
-import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.debug.api.breakpoints.IBreakpointListener;
 import jetbrains.mps.debug.api.BreakpointManagerComponent;
 import org.jetbrains.annotations.NotNull;
@@ -21,10 +21,8 @@ import jetbrains.mps.debug.api.AbstractDebugSession;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
 import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.MakeNotification;
-import jetbrains.mps.classloading.DeployListener;
-import java.util.Set;
-import jetbrains.mps.module.ReloadableModule;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentChange;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.make.MakeServiceComponent;
 import org.jetbrains.annotations.Nullable;
@@ -35,13 +33,13 @@ import jetbrains.mps.debugger.api.ui.icons.Icons;
 /**
  * Project Service "Breakpoints Icon Cache"
  */
-@GeneratedClass(node = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)/6951057689129812782", model = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)")
+@GeneratedClass(nodeId = "6951057689129812782", model = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)")
 public class BreakpointsIconCache implements Disposable {
   private final Map<IBreakpoint, Icon> myCache = MapSequence.fromMap(new HashMap<IBreakpoint, Icon>());
   private final Project myProject;
 
   private IMakeService myMakeService;
-  private ClassLoaderManager myClassloaderManager;
+  private LanguageRegistry myDeployManager;
 
   private final IBreakpointListener myBreakpointListener = new IBreakpointListener() {
     @Override
@@ -85,21 +83,17 @@ public class BreakpointsIconCache implements Disposable {
       myUpdateFromCurrent.invoke();
     }
   };
-  private final IMakeNotificationListener myMakeListener = new IMakeNotificationListener.Stub() {
+  private final IMakeNotificationListener myMakeListener = new IMakeNotificationListener() {
     @Override
     public void scriptFinished(MakeNotification notification) {
       myUpdateFromCurrent.invoke();
     }
   };
-  private DeployListener myDeployListener = new DeployListener() {
+  private ModuleDeploymentListener myDeployListener = new ModuleDeploymentListener() {
+
     @Override
-    public void onUnloaded(Set<ReloadableModule> set, @NotNull ProgressMonitor monitor) {
-      // FIXME not sure it's proper moment to invalidate BP icons here (modules are still loaded, would any BP report it's no longer valid?)
-      // nor do I think it's a nice idea to handle icons the way they are handled now. Just don't want to get too deep into all this crap.
-      myUpdateFromCurrent.invoke();
-    }
-    @Override
-    public void onLoaded(Set<ReloadableModule> set, @NotNull ProgressMonitor monitor) {
+    public void deploymentStateChanged(@NotNull ModuleDeploymentChange change) {
+      // FIXME I don't think it's a nice idea to handle icons the way they are handled now. Just don't want to get too deep into all this crap.
       myUpdateFromCurrent.invoke();
     }
   };
@@ -109,8 +103,8 @@ public class BreakpointsIconCache implements Disposable {
     BreakpointManagerComponent.getInstance(myProject).addChangeListener(myBreakpointsManagerListener);
     DebugSessionManagerComponent.getInstance(myProject).addDebugSessionListener(myDebugSessionAdapter);
     MPSCoreComponents cc = MPSCoreComponents.getInstance();
-    myClassloaderManager = cc.getClassLoaderManager();
-    myClassloaderManager.addListener(myDeployListener);
+    myDeployManager = cc.getPlatform().findComponent(LanguageRegistry.class);
+    myDeployManager.addRegistryListener(myDeployListener);
     myMakeService = cc.getPlatform().findComponent(MakeServiceComponent.class).get();
     if (myMakeService != null) {
       // [artem] in fact, I'm not sure there's reason to listen to IMakeService, provided
@@ -125,8 +119,8 @@ public class BreakpointsIconCache implements Disposable {
       myMakeService.removeListener(myMakeListener);
       myMakeService = null;
     }
-    myClassloaderManager.removeListener(myDeployListener);
-    myClassloaderManager = null;
+    myDeployManager.removeRegistryListener(myDeployListener);
+    myDeployManager = null;
     DebugSessionManagerComponent.getInstance(myProject).removeDebugSessionListener(myDebugSessionAdapter);
     BreakpointManagerComponent.getInstance(myProject).removeChangeListener(myBreakpointsManagerListener);
   }

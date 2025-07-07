@@ -1207,7 +1207,7 @@
                   <ref role="3cqZAo" node="6Gg5Klvua3y" resolve="metaProperty" />
                 </node>
                 <node concept="liA8E" id="121FNPYBIsl" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:~SProperty.getType():org.jetbrains.mps.openapi.language.SDataType" resolve="getType" />
+                  <ref role="37wK5l" to="c17a:~SProperty.getType()" resolve="getType" />
                 </node>
               </node>
             </node>
@@ -1251,7 +1251,7 @@
                   <ref role="3cqZAo" node="121FNPYBNl8" resolve="property" />
                 </node>
                 <node concept="liA8E" id="121FNPYBNOf" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:~SProperty.getDeclarationNode():org.jetbrains.mps.openapi.model.SNode" resolve="getDeclarationNode" />
+                  <ref role="37wK5l" to="c17a:~SProperty.getDeclarationNode()" resolve="getDeclarationNode" />
                 </node>
               </node>
               <node concept="3Tqbb2" id="121FNPYBPjd" role="10QFUM">
@@ -1374,7 +1374,7 @@
                 <ref role="3cqZAo" node="121FNPYBNl8" resolve="property" />
               </node>
               <node concept="liA8E" id="121FNPYBQ4W" role="2OqNvi">
-                <ref role="37wK5l" to="c17a:~SProperty.getType():org.jetbrains.mps.openapi.language.SDataType" resolve="getType" />
+                <ref role="37wK5l" to="c17a:~SProperty.getType()" resolve="getType" />
               </node>
             </node>
           </node>

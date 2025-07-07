@@ -24,7 +24,10 @@ public class supertypesOf_SequenceType_ClassifierTypeIterable_SubtypingRule exte
     if (SNodeOperations.isInstanceOf(elemType, CONCEPTS.PrimitiveType$sR)) {
       elemType = Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(elemType);
     }
-    return _quotation_createNode_gxg199_a2a1(elemType);
+    if ((elemType == null)) {
+      elemType = _quotation_createNode_gxg199_a0a0c0b();
+    }
+    return _quotation_createNode_gxg199_a3a1(elemType);
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.SequenceType$_s;
@@ -35,7 +38,14 @@ public class supertypesOf_SequenceType_ClassifierTypeIterable_SubtypingRule exte
   public boolean isWeak() {
     return true;
   }
-  private static SNode _quotation_createNode_gxg199_a2a1(Object parameter_1) {
+  private static SNode _quotation_createNode_gxg199_a0a0c0b() {
+    SNode quotedNode_1 = null;
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
+    return quotedNode_1;
+  }
+  private static SNode _quotation_createNode_gxg199_a3a1(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));

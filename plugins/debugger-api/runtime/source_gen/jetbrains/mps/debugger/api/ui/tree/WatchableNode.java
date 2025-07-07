@@ -7,7 +7,6 @@ import jetbrains.mps.debug.api.programState.IWatchable;
 import jetbrains.mps.debug.api.AbstractUiState;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.debug.api.programState.Watchable2;
 import jetbrains.mps.debug.api.programState.IValue;
 import javax.swing.tree.TreeModel;
 import com.intellij.ui.tree.AsyncTreeModel;
@@ -21,7 +20,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 
-@GeneratedClass(node = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)/4474271214083120082", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
+@GeneratedClass(nodeId = "4474271214083120082", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
 public class WatchableNode extends AbstractWatchableNode {
   private boolean myInitialized;
   private final IWatchable myWatchable;
@@ -29,7 +28,7 @@ public class WatchableNode extends AbstractWatchableNode {
   private final TextTreeNode myEvaluateInProgress;
 
   public WatchableNode(@NotNull IWatchable w, AbstractUiState state) {
-    super((w instanceof Watchable2 ? ((Watchable2) w).getSourceNode() : ((w.getNode() == null ? null : w.getNode().getReference()))));
+    super(w.getSourceNode());
     myWatchable = w;
     myState = state;
     setNodeIdentifier(calculateNodeId(w));

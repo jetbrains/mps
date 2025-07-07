@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.ide.ui.dialogs.properties;
 import com.intellij.icons.AllIcons;
 import com.intellij.icons.AllIcons.Actions;
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.CommonShortcuts;
 import com.intellij.openapi.actionSystem.ShortcutSet;
 import com.intellij.openapi.options.Configurable;
@@ -59,7 +60,7 @@ import jetbrains.mps.ide.ui.dialogs.properties.tables.models.UsedLangsTableModel
 import jetbrains.mps.ide.ui.dialogs.properties.tables.models.UsedLangsTableModel.ValidImportCondition;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import jetbrains.mps.project.DevKit;
-import jetbrains.mps.project.Project;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.util.NotCondition;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -98,12 +99,12 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
   private final Disposable myDisposable = Disposer.newDisposable(MPSPropertiesConfigurable.class.getName());
   private final TabbedPaneWrapper myTabbedPaneWrapper = new TabbedPaneWrapper(myDisposable);
   private final List<Tab> myTabs = new ArrayList<>();
-  protected final Project myMPSProject;
+  protected final MPSProject myMPSProject;
   private DialogWrapper myParentForCallBack = null;
 
   protected boolean myIsReadOnly;
 
-  public MPSPropertiesConfigurable(Project project) {
+  public MPSPropertiesConfigurable(MPSProject project) {
     myMPSProject = project;
   }
 
@@ -169,6 +170,10 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     return myTabs.get(index);
   }
 
+  public final int getSelectedTabIndex() {
+    return myTabbedPaneWrapper.getSelectedIndex();
+  }
+
   public void selectTab(Tab tab) {
     selectTab(indexOfTab(tab));
   }
@@ -202,6 +207,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     }
 
     if (!myTabs.contains(tab)) {
+
       myTabs.add(tab);
     }
     if (myTabbedPaneWrapper.indexOfComponent(tab.getTabComponent()) < 0) {
@@ -589,6 +595,11 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
       this.getTemplatePresentation().setText(PropertiesBundle.message("model.dependencies.find.text"));
       setEnabled(true);
       setVisible(true);
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
     }
 
     @Override

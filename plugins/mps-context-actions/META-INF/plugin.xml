@@ -4,12 +4,15 @@
   <name>MPS Context Actions Tool</name>
   <description>The Context Actions sidebar shows context-dependent actions when editing MPS models</description>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
+  <dependencies>
+    <plugin id="jetbrains.mps.core"/>
+  </dependencies>
 
   <depends>jetbrains.mps.core</depends>
 
   <extensions defaultExtensionNs="com.intellij">
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
-    <mps.LanguageLibrary dir="" hide="true"/>
+    <mps.LanguageLibrary dir="/" hide="true"/>
   </extensions>
 
 </idea-plugin>

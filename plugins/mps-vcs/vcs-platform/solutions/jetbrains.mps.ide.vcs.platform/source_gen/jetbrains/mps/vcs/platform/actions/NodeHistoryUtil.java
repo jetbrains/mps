@@ -30,7 +30,7 @@ import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
 import com.intellij.openapi.progress.ProgressManager;
 import jetbrains.mps.vcs.annotate.AnnotateBackgroundableTask;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/3612072891625285929", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "3612072891625285929", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public final class NodeHistoryUtil {
   private final MPSProject myProject;
   private VirtualFile myIdeaFile;

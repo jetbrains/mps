@@ -85,7 +85,7 @@ __skip__:
     List<String> ls = ListSequence.fromListAndArray(new ArrayList<String>(), "A", "BB", "CCC", "DDDD");
     final Wrappers._int len = new Wrappers._int(0);
     this.forEach(ls, (String s) -> len.value += s.length());
-    Assert.assertEquals(10, len.value);
+    Assert.assertEquals(Integer.valueOf(10), Integer.valueOf(len.value));
   }
   @Test
   public void test_typing() throws Exception {

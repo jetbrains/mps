@@ -9,7 +9,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.GenerationStatus;
 
 @Deprecated
-@GeneratedClass(node = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/7544464876071189843", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
+@GeneratedClass(nodeId = "7544464876071189843", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
 public interface IGResource extends IResource {
   SModule module();
   SModel model();

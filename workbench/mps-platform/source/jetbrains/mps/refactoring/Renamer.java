@@ -22,12 +22,10 @@ import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.project.ProjectBase;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.io.DescriptorIOFacade;
-import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.refactoring.ModuleRenameInfo.NameMatch;
 import jetbrains.mps.refactoring.Renamer.RenameProblem.Severity;
 import jetbrains.mps.smodel.Generator;
@@ -35,7 +33,6 @@ import jetbrains.mps.smodel.ModuleInstanceFactory;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.UndoRunnable;
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
@@ -50,6 +47,7 @@ import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -84,7 +82,7 @@ public final class Renamer {
   private static final Logger LOG = Logger.getLogger(Renamer.class);
 
   private final Consumer<RenameProblem> myHandler;
-  private final Project myProject;
+  private final MPSProject myProject;
 
   private final AbstractModule myModule;
 
@@ -95,7 +93,7 @@ public final class Renamer {
   // modules that are not directly affected by change of primary rename but may need an update in their name/file/dir anyway
   private List<ModuleRenameInfo> myRelatedRenames;
 
-  public Renamer(@NotNull Project project, @NotNull AbstractModule module, @Nullable Consumer<RenameProblem> handler) {
+  public Renamer(@NotNull MPSProject project, @NotNull AbstractModule module, @Nullable Consumer<RenameProblem> handler) {
     myProject = project;
     myModule = module;
     myHandler = handler == null ? DEFAULT_PROBLEM_HANDLER : handler;
@@ -357,10 +355,15 @@ public final class Renamer {
           ri.descriptorFile = target.findChild(ri.descriptorFile.getName());
           continue;
         }
-        final String msg = String.format("Can't rename module folder '%s' as target '%s' already exists", ri.moduleDir, newDirName);
-        handleProblem(new NaiveRenameProblem(Severity.NON_CRITICAL, msg));
-        continue;
-
+        try {
+          if (!isCaseSensitiveRenameOnCaseInsensitiveFS(ri.moduleDir, target, newDirName)) {
+            final String msg = String.format("Can't rename module folder '%s' as target '%s' already exists", ri.moduleDir, newDirName);
+            handleProblem(new NaiveRenameProblem(Severity.NON_CRITICAL, msg));
+            continue;
+          }
+        } catch (MalformedURLException e) {
+          throw new RuntimeException(e);
+        }
       }
       // REVISIT: renameModuleFolderIfNeeded() assumed
       //    "here we must have already unregistered all the file system listeners from below this folder"
@@ -377,6 +380,11 @@ public final class Renamer {
     }
   }
 
+  private static boolean isCaseSensitiveRenameOnCaseInsensitiveFS(IFile existingFile, IFile target, String newName) throws MalformedURLException {
+    // The important guarantee is that on case-insensitive FS getPath() returns the same string for the same physical file, irrespective of the IFile instances being different objects
+    return target.getPath().equals(existingFile.getPath()) && !newName.equals(existingFile.getName()) && newName.equalsIgnoreCase(existingFile.getName());
+  }
+
   private void renameDescriptorFiles(Collection<ModuleRenameInfo> modules) {
     Map<IFile, IFile> justRenamed = new HashMap<>();
     for (ModuleRenameInfo ri : modules) {
@@ -391,10 +399,16 @@ public final class Renamer {
           ri.descriptorFile = target;
           continue;
         }
-        final String fmt = "'%s' descriptor file could not be renamed to the '%s' since the target '%s' already exists on disk, ignored";
-        final String msg = String.format(fmt, ri.descriptorFile, newFileName, target);
-        handleProblem(new NaiveRenameProblem(Severity.NON_CRITICAL, msg));
-        continue;
+        try {
+          if (!isCaseSensitiveRenameOnCaseInsensitiveFS(ri.descriptorFile, target, newFileName)) {
+            final String fmt = "'%s' descriptor file could not be renamed to the '%s' since the target '%s' already exists on disk, ignored";
+            final String msg = String.format(fmt, ri.descriptorFile, newFileName, target);
+            handleProblem(new NaiveRenameProblem(Severity.NON_CRITICAL, msg));
+            continue;
+          }
+        } catch (MalformedURLException e) {
+          throw new RuntimeException(e);
+        }
       }
       IFile newFile = ri.descriptorFile.rename1(newFileName);
       if (!newFileName.equals(newFile.getName())) {
@@ -410,7 +424,9 @@ public final class Renamer {
 
   // if module name is a prefix of it's model's name or they are equals - rename the model, too
   private void renameModelsIfNeeded(@NotNull AbstractModule module, @NotNull String oldModuleName, @NotNull String newModuleName) {
-    for (SModel m : module.getModels()) {
+    final List<SModel> allModels = module.getModels();
+    final List<String> allOldLongNames = allModels.stream().map(SModel::getName).map(SModelName::getLongName).collect(Collectors.toList());
+    for (SModel m : allModels) {
       if (!m.isReadOnly()) {
         SModelName oldModelName = m.getName();
         if (oldModelName.getNamespace().startsWith(oldModuleName) || oldModelName.getLongName().equals(oldModuleName)) {
@@ -437,7 +453,9 @@ public final class Renamer {
               newModelName = oldModelName.getSimpleName();
             }
             SModelName newSModelName = new SModelName(newModelNamespace, newModelName, oldModelName.getStereotype());
-            ((EditableSModel) m).rename(newSModelName.getValue(), m.getSource() instanceof FileDataSource);
+            if (!allOldLongNames.contains(newSModelName.getLongName())) {
+              ((EditableSModel) m).rename(newSModelName.getValue(), m.getSource() instanceof FileDataSource);
+            }
           }
         }
       }
@@ -504,12 +522,8 @@ public final class Renamer {
         module.updateExternalReferences();
 
         for (SModel sm : m.getModels()) {
-          if (!sm.isReadOnly()) {
-            final SModelInternal model = (SModelInternal) sm;
-            if ((sm instanceof EditableSModel) && model.updateExternalReferences(mpsProject.getRepository())) {
-              // FIXME why SModelInternal.updateExternalReferences can't setChanged(true) itself?
-              ((EditableSModel) sm).setChanged(true);
-            }
+          if (!sm.isReadOnly() && sm instanceof SModelInternal) {
+            ((SModelInternal) sm).updateExternalReferences(mpsProject.getRepository());
           }
         }
       }
@@ -559,7 +573,7 @@ public final class Renamer {
 
   private void removeFromProject(Collection<ModuleRenameInfo> modules) {
     for (ModuleRenameInfo ri : modules) {
-      final String vf = ((ProjectBase) myProject).getVirtualFolder(ri.module);
+      final String vf = myProject.getVirtualFolder(ri.module);
       ri.virtualFolderInProject = vf;
       myProject.removeModule(ri.module);
     }
@@ -568,7 +582,7 @@ public final class Renamer {
   private void assignBackToProject(Collection<ModuleRenameInfo> modules) {
     for (ModuleRenameInfo ri : modules) {
       myProject.addModule(ri.module);
-      ((ProjectBase) myProject).setVirtualFolder(ri.module, ri.virtualFolderInProject);
+      myProject.setVirtualFolder(ri.module, ri.virtualFolderInProject);
     }
   }
 

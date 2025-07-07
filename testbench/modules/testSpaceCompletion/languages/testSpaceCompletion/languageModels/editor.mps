@@ -2,7 +2,7 @@
 <model ref="r:06189444-c0d9-4e18-8ce5-a0f3e9b2c913(testSpaceCompletion.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -39,7 +39,7 @@
     </language>
   </registry>
   <node concept="24kQdi" id="374E0BAghk3">
-    <ref role="1XX52x" to="pzbl:374E0BAggTL" resolve="ABC" />
+    <ref role="1XX52x" to="pzbl:374E0BAggTL" resolve="TABC" />
     <node concept="3EZMnI" id="374E0BAghk9" role="2wV5jI">
       <node concept="l2Vlx" id="374E0BAghka" role="2iSdaV" />
       <node concept="3F0ifn" id="374E0BAghkb" role="3EZMnx">
@@ -69,7 +69,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="374E0BAghtK">
-    <ref role="1XX52x" to="pzbl:374E0BAghtc" resolve="ABCDE" />
+    <ref role="1XX52x" to="pzbl:374E0BAghtc" resolve="TABCDE" />
     <node concept="3EZMnI" id="374E0BAghuJ" role="2wV5jI">
       <node concept="l2Vlx" id="374E0BAghuK" role="2iSdaV" />
       <node concept="3F0ifn" id="374E0BAghuL" role="3EZMnx">
@@ -99,7 +99,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="374E0BAghvq">
-    <ref role="1XX52x" to="pzbl:374E0BAghto" resolve="ABCDEF" />
+    <ref role="1XX52x" to="pzbl:374E0BAghto" resolve="TABCDEF" />
     <node concept="3EZMnI" id="374E0BAghvs" role="2wV5jI">
       <node concept="l2Vlx" id="374E0BAghvt" role="2iSdaV" />
       <node concept="3F0ifn" id="374E0BAghvu" role="3EZMnx">
@@ -129,7 +129,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="374E0BAghw7">
-    <ref role="1XX52x" to="pzbl:374E0BAghtk" resolve="ABCDEG" />
+    <ref role="1XX52x" to="pzbl:374E0BAghtk" resolve="TABCDEG" />
     <node concept="3EZMnI" id="374E0BAghw9" role="2wV5jI">
       <node concept="l2Vlx" id="374E0BAghwa" role="2iSdaV" />
       <node concept="3F0ifn" id="374E0BAghwb" role="3EZMnx">
@@ -159,7 +159,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="6CRh2MD_Dqy">
-    <ref role="1XX52x" to="pzbl:6CRh2MD_DpS" resolve="ABCEEG" />
+    <ref role="1XX52x" to="pzbl:6CRh2MD_DpS" resolve="TABCEEG" />
     <node concept="3EZMnI" id="6CRh2MD_Drk" role="2wV5jI">
       <node concept="l2Vlx" id="6CRh2MD_Drl" role="2iSdaV" />
       <node concept="3F0ifn" id="6CRh2MD_Drm" role="3EZMnx">
@@ -189,7 +189,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="7JSB7mhI2QH">
-    <ref role="1XX52x" to="pzbl:7JSB7mhI2Q5" resolve="BAC" />
+    <ref role="1XX52x" to="pzbl:7JSB7mhI2Q5" resolve="TBAC" />
     <node concept="3EZMnI" id="7JSB7mhI2RE" role="2wV5jI">
       <node concept="l2Vlx" id="7JSB7mhI2RF" role="2iSdaV" />
       <node concept="3F0ifn" id="7JSB7mhI2RG" role="3EZMnx">
@@ -219,7 +219,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="7JSB7mhI4zF">
-    <ref role="1XX52x" to="pzbl:7JSB7mhI4zj" resolve="BCA" />
+    <ref role="1XX52x" to="pzbl:7JSB7mhI4zj" resolve="TBCA" />
     <node concept="3EZMnI" id="7JSB7mhI4zH" role="2wV5jI">
       <node concept="l2Vlx" id="7JSB7mhI4zI" role="2iSdaV" />
       <node concept="3F0ifn" id="7JSB7mhI4zJ" role="3EZMnx">

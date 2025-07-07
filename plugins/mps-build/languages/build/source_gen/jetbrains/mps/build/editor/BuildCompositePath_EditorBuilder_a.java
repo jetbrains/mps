@@ -34,6 +34,7 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.build.behavior.BuildCompositePath__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
 import jetbrains.mps.nodeEditor.MPSColors;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_PropertyValues;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
@@ -127,7 +128,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return MPSColors.BLACK;
     }
     if (f.exists()) {
-      return new Color(0, 0, 0x80);
+      return new JBColor(0x000080, 0x9e5181);
     }
     return MPSColors.RED;
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +53,11 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
 
   //----------plugin id------------
 
+  // FIXME the only place we use (and abuse) PluginId is MPSAction.unregisterActions(), where we pass
+  //       this non-IDEA identity to IDEA's ActionManagerEx. Once/if IDEA starts to expect proper PluginId
+  //       there (e.g. the one for known/installed plugin), we are screwed as this getId() here reflects
+  //       name of the MPS module, and not necessarily match distribution plugin id (let alone not all
+  //       MPS modules get distributed as IDEA plugins)
   @NotNull
   protected abstract PluginId getId();
 
@@ -62,7 +67,7 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
     try {
       createGroups();
     } catch (Throwable th) {
-      LOG.error(String.format("Failed to crate groups of plugin %s", getId()), th);
+      LOG.error(String.format("Failed to create groups of plugin %s", getId()), th);
     }
   }
 

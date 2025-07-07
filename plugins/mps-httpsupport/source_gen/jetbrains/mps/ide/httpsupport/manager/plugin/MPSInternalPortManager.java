@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.ide.BuiltInServerManager;
 import com.intellij.openapi.application.ApplicationManager;
 
-@GeneratedClass(node = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)/4427830474126321388", model = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)")
+@GeneratedClass(nodeId = "4427830474126321388", model = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)")
 public class MPSInternalPortManager extends CustomPortServerManagerBase {
 
   private static final String PORT_KEY = "ide.httpsupport.internalPort";

@@ -12,7 +12,7 @@ import jetbrains.mps.annotations.GeneratedClass;
  * provide search result by means other that Finder and SearchQuery.
  * Use {@link jetbrains.mps.ide.findusages.model.SearchTask#canExecute() } and {@link jetbrains.mps.ide.findusages.model.SearchTask#execute(ProgressMonitor) }.
  */
-@GeneratedClass(node = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)/8821602715297203211", model = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)")
+@GeneratedClass(nodeId = "8821602715297203211", model = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)")
 public interface SearchTask {
   boolean canExecute();
   SearchResults execute(ProgressMonitor progressMonitor);

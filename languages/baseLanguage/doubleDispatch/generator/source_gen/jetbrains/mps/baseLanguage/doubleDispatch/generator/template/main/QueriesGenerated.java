@@ -6,12 +6,12 @@ import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.doubleDispatch.generator.util.DispatchGenUtil;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
@@ -43,7 +43,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    boolean methodHasDispatchModifier = SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P), LINKS.modifiers$F5MM)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DispatchModifier$PK));
+    boolean methodHasDispatchModifier = SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P), LINKS.modifiers$F5MM), CONCEPTS.DispatchModifier$PK)).isNotEmpty();
 
     return methodHasDispatchModifier && Sequence.fromIterable(DispatchGenUtil.getMatchingMethods(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P))).isNotEmpty();
   }
@@ -117,13 +117,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SLinkOperations.getChildren(((SNode) _context.getVariable("methodDecl")), LINKS.parameter$5xBj)).skip(1);
   }
   public static Object varMacro_Value_2_0(final TemplateVarContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P), LINKS.parameter$5xBj)).first();
+    return SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P);
   }
   public static Object varMacro_Value_2_1(final TemplateVarContext _context) {
-    return DispatchGenUtil.getMatchingMethods(((SNode) _context.getVariable("var:methodDecl")));
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P), LINKS.parameter$5xBj)).first();
   }
   public static Object varMacro_Value_2_2(final TemplateVarContext _context) {
-    return SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P);
+    return DispatchGenUtil.getMatchingMethods(((SNode) _context.getVariable("var:methodDecl")));
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -299,9 +299,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, VariableValueQuery> vvqMethods = new HashMap<String, VariableValueQuery>();
   {
-    vvqMethods.put("2409421742521898865", new VVQ(0));
-    vvqMethods.put("2409421742521898869", new VVQ(1));
-    vvqMethods.put("2409421742521898874", new VVQ(2));
+    vvqMethods.put("2409421742521898874", new VVQ(0));
+    vvqMethods.put("2409421742521898865", new VVQ(1));
+    vvqMethods.put("2409421742521898869", new VVQ(2));
   }
   @NotNull
   @Override
@@ -330,10 +330,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, CallArgumentQuery> caqMethods = new HashMap<String, CallArgumentQuery>();
   {
-    caqMethods.put("2323553266848892790", new CAQ(0));
-    caqMethods.put("2323553266848938513", new CAQ(1));
-    caqMethods.put("2323553266849248473", new CAQ(2));
-    caqMethods.put("2323553266849259845", new CAQ(3));
+    caqMethods.put("2323553266848898770", new CAQ(0));
+    caqMethods.put("2323553266848951298", new CAQ(1));
+    caqMethods.put("2323553266849252691", new CAQ(2));
+    caqMethods.put("7866188537680636713", new CAQ(3));
   }
   @NotNull
   @Override

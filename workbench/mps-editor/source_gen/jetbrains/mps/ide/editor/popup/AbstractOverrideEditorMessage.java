@@ -14,7 +14,7 @@ import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:579b6612-4f9e-4479-8e4c-5ef2ee0f9722(jetbrains.mps.ide.editor.popup)/8432634623182578751", model = "r:579b6612-4f9e-4479-8e4c-5ef2ee0f9722(jetbrains.mps.ide.editor.popup)")
+@GeneratedClass(nodeId = "8432634623182578751", model = "r:579b6612-4f9e-4479-8e4c-5ef2ee0f9722(jetbrains.mps.ide.editor.popup)")
 public abstract class AbstractOverrideEditorMessage extends AbstractLeftEditorHighlighterMessage {
   private final Condition<EditorCell> myReturnTypeCellCondition;
 

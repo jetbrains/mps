@@ -25,5 +25,6 @@
     <orderEntry type="module" module-name="kernel-resources" />
     <orderEntry type="module" module-name="debuginfo-impl" />
     <orderEntry type="module" module-name="java-stub" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
   </component>
 </module>

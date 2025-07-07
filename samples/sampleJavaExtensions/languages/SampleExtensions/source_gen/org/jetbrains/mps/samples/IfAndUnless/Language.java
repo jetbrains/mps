@@ -9,8 +9,6 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
-import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
-import org.jetbrains.mps.samples.IfAndUnless.dataFlow.DataFlowAspectDescriptorImpl;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import org.jetbrains.mps.samples.IfAndUnless.editor.EditorAspectDescriptorImpl;
 import jetbrains.mps.openapi.intentions.IntentionAspectDescriptor;
@@ -20,6 +18,8 @@ import org.jetbrains.mps.samples.IfAndUnless.typesystem.TypesystemDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import org.jetbrains.mps.samples.IfAndUnless.structure.ConceptPresentationAspectImpl;
+import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
+import org.jetbrains.mps.samples.IfAndUnless.dataFlow.DataFlowAspectDescriptorImpl;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.language.LanguageExtensions;
 
@@ -54,9 +54,6 @@ public class Language extends LanguageRuntime {
     if (aspectClass == BehaviorAspectDescriptor.class) {
       return aspectClass.cast(new org.jetbrains.mps.samples.IfAndUnless.behavior.BehaviorAspectDescriptor());
     }
-    if (aspectClass == DataFlowAspectDescriptor.class) {
-      return aspectClass.cast(new DataFlowAspectDescriptorImpl());
-    }
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());
     }
@@ -71,6 +68,9 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass == ConceptPresentationAspect.class) {
       return aspectClass.cast(new ConceptPresentationAspectImpl());
+    }
+    if (aspectClass == DataFlowAspectDescriptor.class) {
+      return aspectClass.cast(new DataFlowAspectDescriptorImpl());
     }
     return null;
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,9 @@
 package jetbrains.mps.reloading;
 
 import jetbrains.mps.util.ClassType;
-import jetbrains.mps.util.PathManager;
-import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
-import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.mps.annotations.Internal;
 
-import java.io.File;
-import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -70,14 +64,5 @@ public final class CommonPaths {
 
   private static List<QualifiedPath> getJDKPathInternal() {
     return SDKDiscovery.discover();
-  }
-
-  private static void addIfExists(Collection<QualifiedPath> item, String path) {
-    for (String basePath : PathManager.getHomePaths()) {
-      String fullPath = PathUtil.toSystemIndependent(basePath) + IFileSystem.SEPARATOR + path;
-      if (new File(fullPath).exists()) {
-        item.add(new QualifiedPath(path.endsWith(".jar") ? VFSManager.JAR_FS : VFSManager.FILE_FS, fullPath));
-      }
-    }
   }
 }

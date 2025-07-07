@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,10 +68,6 @@ public class JpsSolutionIdea extends Solution {
     super(descriptor, null);
     myModule = module;
     myCompileContext = compileCtx;
-  }
-
-  public JpsModule getModule() {
-    return myModule;
   }
 
   public SModel getModelByPath(String path) {
@@ -149,27 +145,6 @@ public class JpsSolutionIdea extends Solution {
     }
 
     return dependencies;
-  }
-
-  @NotNull
-  @Override
-  protected SModuleFacet loadAndAttachIfNeeded(@NotNull SModuleFacet facet, Memento memento) {
-    if (facet instanceof JavaModuleFacet) {
-      // see SolutionIdea for reasons why memento replaced subclass.
-      // I don't feel there's use for JMF.getClassesGen() as MPS Make in JPS excludes JavaCompile facet (see ReducedMakeFacetConfiguration)
-      // which is the primary client for the method. However, decided to keep this piece of knowledge just in case.
-      File outputDir = ProjectPaths.getModuleOutputDir(myModule, false); // FIX hard-coded forTests=false
-      if (outputDir != null) {
-        MPSCompilerUtil.debug(myCompileContext, " ClassesGen from module " + outputDir.getPath());
-        // In-line values of JavaModuleFacetImpl.CLASSES_KEY and other keys
-        final Memento c = memento.createChild("classes");
-        c.put("generated", "true");
-        c.put("path", outputDir.getPath());
-        return super.loadAndAttachIfNeeded(facet, c);
-      }
-      // fall-through
-    }
-    return super.loadAndAttachIfNeeded(facet, memento);
   }
 
   @Override

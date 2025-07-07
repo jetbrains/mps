@@ -28,7 +28,7 @@ import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.ui.Messages;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236348386008", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1236348386008", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class OptimizeModelImports_Action extends BaseAction {
   private static final Icon ICON = null;
 

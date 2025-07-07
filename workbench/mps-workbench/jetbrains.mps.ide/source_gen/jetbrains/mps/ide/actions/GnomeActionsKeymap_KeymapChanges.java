@@ -5,7 +5,7 @@ package jetbrains.mps.ide.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6874470910152579882", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "6874470910152579882", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public final class GnomeActionsKeymap_KeymapChanges extends BaseKeymapChanges {
   public GnomeActionsKeymap_KeymapChanges() {
     replace("jetbrains.mps.ide.actions.FastFindNodeUsages_Action", "alt shift 7");

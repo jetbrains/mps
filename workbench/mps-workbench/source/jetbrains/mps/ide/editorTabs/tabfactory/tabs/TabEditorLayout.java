@@ -23,7 +23,9 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * tabs, edited and selection nodes for particular editor instance
@@ -57,8 +59,19 @@ public class TabEditorLayout {
     return rv;
   }
 
+  public boolean hasEditor(SNodeReference reference) {
+    if (reference == null) { return false; }
+    return myEntries.stream().map(Entry::getEditNode).anyMatch(reference::equals);
+  }
+
+  public SNodeReference getFirstEditNode() {
+    if (myEntries.isEmpty()) { throw new NoSuchElementException(); }
+    return myEntries.get(0).getEditNode();
+  }
+
   /*package*/void add(@NotNull RelationDescriptor tab, @NotNull SNodeReference editorNode, @Nullable Collection<SNodeReference> selectionNodes) {
     myEntries.add(new Entry(tab, editorNode, selectionNodes));
+    myEntries.sort(Comparator.comparing(Entry::getDescriptor));
   }
 
   /**

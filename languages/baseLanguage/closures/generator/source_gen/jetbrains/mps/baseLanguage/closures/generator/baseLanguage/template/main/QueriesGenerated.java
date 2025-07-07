@@ -223,12 +223,12 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_30_3(final BaseMappingRuleContext _context) {
     SNode cl = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClosureLiteral$rp, false, false);
-    SNode cc = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassConcept$bK, false, false);
-    return cc != null && cl != null && SNodeOperations.getNodeAncestor(cl, CONCEPTS.ClassConcept$bK, false, false) == cc && !(SNodeOperations.isInstanceOf(cc, CONCEPTS.AnonymousClass$Bt));
+    SNode cc = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Classifier$Ix, false, false);
+    return cc != null && cl != null && SNodeOperations.getNodeAncestor(cl, CONCEPTS.Classifier$Ix, false, false) == cc && !(SNodeOperations.isInstanceOf(cc, CONCEPTS.AnonymousClass$Bt));
   }
   public static boolean rule_Condition_30_4(final BaseMappingRuleContext _context) {
     SNode cl = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClosureLiteral$rp, false, false);
-    SNode cc = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassConcept$bK, false, false);
+    SNode cc = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Classifier$Ix, false, false);
     return cc == null && cl == null;
   }
   public static boolean rule_Condition_30_5(final BaseMappingRuleContext _context) {
@@ -599,7 +599,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$pyYw);
   }
   public static Object referenceMacro_GetReferent_31_0(final ReferenceMacroContext _context) {
-    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassConcept$bK, false, false);
+    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Classifier$Ix, false, false);
   }
   public static Object referenceMacro_GetReferent_33_0(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(SNodeOperations.cast(ClassifierTypeUtil.getTypeCoercedToClassifierType(FunctionMethodDeclaration__BehaviorDescriptor.functionType_id2uAWGxT6YKz.invoke(SNodeOperations.cast(_context.getNode(), CONCEPTS.FunctionMethodDeclaration$ee))), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
@@ -2921,14 +2921,14 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept YieldAllStatement$J1 = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11e25fc6c63L, "jetbrains.mps.baseLanguage.closures.structure.YieldAllStatement");
     /*package*/ static final SInterfaceConcept IStatementListContainer$xz = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
     /*package*/ static final SConcept YieldStatement$yx = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11797183e82L, "jetbrains.mps.baseLanguage.closures.structure.YieldStatement");
-    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept FieldReferenceOperation$fU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
     /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
     /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
     /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
-    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept SuperConstructorInvocation$wU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation");
     /*package*/ static final SConcept ForeachStatement$Po = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
     /*package*/ static final SConcept ThrowStatement$Zy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");

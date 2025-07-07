@@ -17,24 +17,17 @@ package jetbrains.mps.project.dependency;
 
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
-import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.ErrorHandler;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.LanguageModuleScanner;
-import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -74,7 +67,7 @@ public final class UsedModulesCollector {
   }
 
   /**
-   *  Combination of {@link #collectModuleDependencies(SModule, boolean, Collection)} and {@link #collectRuntimeOfUsedLanguages(SModule, Collection)}
+   *  Combination of {@link #collectModuleDependencies(SModule, boolean, Collection)} and {@link #runtimeModulesOfUsedLanguages(SModule)}
    */
   @NotNull
   public Collection<SModule> directlyUsedModules(@NotNull SModule module, boolean includeNonReexport, boolean runtimes) {
@@ -95,7 +88,17 @@ public final class UsedModulesCollector {
         }
       }
       if (runtimes) {
-        collectRuntimeOfUsedLanguages(module, result);
+        final Set<SModuleReference> rtUsed = runtimeModulesOfUsedLanguages(module);
+        final SRepository contextRepo = module.getRepository();
+        assert contextRepo != null;
+        for (SModuleReference mr : rtUsed) {
+          SModule m = mr.resolve(contextRepo);
+          if (m == null) {
+            myErrorHandler.runtimeDependencyCannotBeFound(mr);
+          } else {
+            result.add(m);
+          }
+        }
       }
     }
 
@@ -115,83 +118,15 @@ public final class UsedModulesCollector {
           result.add(dependencyModule);
         }
       } else {
-        if (scope != GENERATES_INTO && scope != DESIGN) {
+        if (scope != GENERATES_INTO && scope != DESIGN) { // aka CLDependencies.isClassLoadingDependency()
           myErrorHandler.depCannotBeResolved(module, dependency);
         }
       }
     }
   }
 
-  public void collectRuntimeOfUsedLanguages(@NotNull SModule module, @NotNull final Collection<SModule> result) {
+  public Set<SModuleReference> runtimeModulesOfUsedLanguages(@NotNull SModule module) {
     assert myLanguageRuntimesCache != null;
-    SRepository contextRepo = module.getRepository();
-    assert contextRepo != null;
-    final RuntimesOfUsedLanguageCalculator rtCalc = new RuntimesOfUsedLanguageCalculator(myLanguageRuntimesCache, myErrorHandler);
-    final Set<SModuleReference> rtUsed = rtCalc.invoke(module);
-    // Unless I make sure runtimes in DD include those of generator-engaged languages, I keep this code to walk models here.
-    //    Although indeed it's place is in SourceStrategy of RuntimesOfUsedLanguageCalculator
-    // Primary client for these RTs is @descriptor model (MPS-32851). As long as we didn't use @descriptor model for packaged modules, and their dependencies
-    // (lacking RTs of engaged) were so far sufficient to compile user modules, I think I'm safe to keep this code to SourceStrategy only.
-    // However, there were some reports that mbeddr guys need to duplicate 'engaged' as 'used', and I'd need to clear these first.
-    // XXX this comment relates to code in employedLanguages(), below, as well
-    ArrayList<SLanguage> engagedInGenerator = new ArrayList<>();
-    for (SModel m : module.getModels()) {
-      engagedInGenerator.addAll(new ModelImports(m).getLanguagesEngagedOnGeneration());
-    }
-    engagedInGenerator.forEach(l -> myLanguageRuntimesCache.walkRuntimeModules(l, rtUsed::add));
-    //
-    for (SModuleReference mr : rtUsed) {
-      SModule m = mr.resolve(contextRepo);
-      if (m == null) {
-        myErrorHandler.runtimeDependencyCannotBeFound(mr);
-      } else {
-        result.add(m);
-      }
-    }
-  }
-
-  // reports languages reported as used by module, including mentioned directly in module's models as 'engaged'
-  // doesn't include extended languages unless explicitly mentioned along with extending
-  // Note, 'reported' means specified either as 'used' or through devkit. This code doesn't analyze actual language uses in models.
-  /*package*/ Set<SLanguage> employedLanguages(Collection<SModule> modules) {
-    // although there's no real need to keep this code in this class, it's here as it I need
-    // to share logic about engagedOnGeneration languages until I get it fixed properly
-    HashSet<SLanguage> employedLanguages = new HashSet<>();
-    for (SModule module : modules) {
-      employedLanguages.addAll(module.getUsedLanguages());
-      // see comment in collectRuntimeOfUsedLanguages(), above
-      for (SModel model : module.getModels()) {
-        employedLanguages.addAll(new ModelImports(model).getLanguagesEngagedOnGeneration());
-      }
-    }
-    return employedLanguages;
-  }
-
-  /*package*/ void collectRuntimeModules(SRepository deployedModulesRepo, Collection<SLanguage> languages, Collection<SModule> result) {
-    final LanguageRegistry languageRegistry = LanguageRegistry.getInstance(deployedModulesRepo);
-    // FIXME source module not found is not exactly what 'language is not deployed' intends to convey,
-    //       need to get back to error reporting anyway (intend to introduce callback code to use same
-    //       code for AnalyzeModuleDep tool).
-    final Set<SLanguage> all = new SLanguageHierarchy(languageRegistry, languages).getExtendedLangs(myErrorHandler::langSourceModuleCannotBeResolved);
-    HashSet<SModuleReference> seen = new HashSet<>();
-    for (SLanguage l : all) {
-      final SModuleReference smr = l.getSourceModuleReference();
-      final SModule sm = smr == null ? null : smr.resolve(deployedModulesRepo);
-      if (false == sm instanceof Language) {
-        myErrorHandler.langSourceModuleCannotBeResolved(l);
-        continue;
-      }
-      for (SModuleReference rmr : ((Language) sm).getRuntimeModulesReferences()) {
-        if (!seen.add(rmr)) {
-          continue;
-        }
-        final SModule rm = rmr.resolve(deployedModulesRepo);
-        if (rm == null) {
-          myErrorHandler.runtimeDependencyCannotBeFound(l, rmr);
-          continue;
-        }
-        result.add(rm);
-      }
-    }
+    return new RuntimesOfUsedLanguageCalculator(myLanguageRuntimesCache, myErrorHandler).invoke(module);
   }
 }

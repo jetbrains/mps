@@ -25,7 +25,7 @@ import java.util.Collections;
  * This should probably be gone.
  * It listens for library changes, class reloads and refreshes library watched paths.
  */
-@GeneratedClass(node = "r:b41d4b6d-4038-4cd8-94d3-475689babea3(jetbrains.mps.watching)/6793838228148720923", model = "r:b41d4b6d-4038-4cd8-94d3-475689babea3(jetbrains.mps.watching)")
+@GeneratedClass(nodeId = "6793838228148720923", model = "r:b41d4b6d-4038-4cd8-94d3-475689babea3(jetbrains.mps.watching)")
 public class WatchedRootsUpdater implements Disposable {
   private final Map<Library, LocalFileSystem.WatchRequest> myLibrariesRequests = new HashMap<Library, LocalFileSystem.WatchRequest>();
   private final Map<Library, LocalFileSystem.WatchRequest> myProjectLibrariesRequests = new HashMap<Library, LocalFileSystem.WatchRequest>();

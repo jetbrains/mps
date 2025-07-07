@@ -25,7 +25,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2533953941693774358", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "2533953941693774358", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ForceSaveAll_Action extends BaseAction {
   private static final Icon ICON = null;
 

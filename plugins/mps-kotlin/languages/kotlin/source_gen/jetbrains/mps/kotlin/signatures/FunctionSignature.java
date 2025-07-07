@@ -4,14 +4,14 @@ package jetbrains.mps.kotlin.signatures;
 
 import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
 import jetbrains.mps.references.Reference;
+import java.util.function.Supplier;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.api.members.TypeExpander;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Objects;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
+import java.util.Objects;
+import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 
 /**
  * Signature of a function. Keeps a reference to function descriptor so it may be used later on.
@@ -38,45 +38,61 @@ public class FunctionSignature implements MemberSignature {
       }
     };
   }
-  private final String signature;
+  private Supplier<String> signature;
 
-  public FunctionSignature(@NotNull FunctionDeclaration declaration, TypeExpander expander) {
-    this(declaration, erasureOf(declaration, expander));
+  public FunctionSignature(@NotNull FunctionDeclaration declaration) {
+    this(declaration, TypeExpander.DEFAULT);
   }
-
-  public FunctionSignature(@NotNull FunctionDeclaration declaration, String parameterErasure) {
-    signature = declaration.getName() + "#" + Sequence.fromIterable(declaration.getParameters()).count() + "#" + parameterErasure;
+  public FunctionSignature(@NotNull final FunctionDeclaration declaration, @NotNull final TypeExpander expander) {
+    // Lazy initializer: function presentation might be expensive to compute especially if not required later
+    final Wrappers._T<String> initializedSignature = new Wrappers._T<String>(null);
+    signature = () -> {
+      if (initializedSignature.value == null) {
+        initializedSignature.value = declaration.getFunctionPresentation(false, expander);
+      }
+      return initializedSignature.value;
+    };
+    setFunctionDeclaration(declaration);
+  }
+  protected FunctionSignature(@NotNull FunctionDeclaration declaration, @Nullable final String signatureString) {
+    signature = () -> signatureString;
     setFunctionDeclaration(declaration);
   }
 
   @Override
   public String getDescriptionText() {
-    return getFunctionDeclaration().getFunctionPresentation(false);
+    return signature.get();
+  }
+  @Override
+  public String getPresentationText() {
+    return "fun " + getFunctionDeclaration().getFunctionPresentation(false, TypeExpander.DEFAULT);
+  }
+
+  @Override
+  public SNode getExtensionReceiver() {
+    if (getFunctionDeclaration().isExtension()) {
+      return getFunctionDeclaration().getReceiverType();
+    }
+    return null;
   }
 
   @Override
   public int hashCode() {
-    return signature.hashCode();
+    return signature.get().hashCode();
   }
 
   @Override
   public boolean equals(Object obj) {
     if (obj instanceof FunctionSignature) {
       FunctionSignature other = (FunctionSignature) obj;
-      return Objects.equals(this.signature, other.signature);
+      return Objects.equals(this.signature.get(), other.signature.get());
     }
     return false;
   }
 
   public String toString() {
-    return "fun{" + this.signature + "}";
-  }
-
-  public static String erasureOf(FunctionDeclaration declaration, final TypeExpander expander) {
-    Iterable<SNode> types = Sequence.fromIterable(declaration.getParameters()).select((this0) -> this0.getType()).where(new NotNullWhereFilter());
-    if (expander != null) {
-      types = Sequence.fromIterable(types).select((it) -> expander.expandType(it));
-    }
-    return IterableUtils.join(Sequence.fromIterable(types).select((it) -> (String) IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(it, ((boolean) true))), ",");
+    // TODO if this is important in some use case, keep this.signature and document why
+    LogContext.with(FunctionSignature.class, new Throwable(), null, null).error("FunctionSignature called");
+    return "fun{" + this.signature.get() + "}";
   }
 }

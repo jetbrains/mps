@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ public abstract class EnvironmentTest {
   public void testAddNodeInCommand() {
     final Project dummyProject = myEnvironment.createEmptyProject();
     ThreadUtils.runInUIThreadAndWait(() -> dummyProject.getModelAccess().executeCommand(() -> {
-      SModel sModel = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.nonReloadableModule());
+      SModel sModel = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.nonReloadableModule(dummyProject.getRepository()));
       assert sModel.getRepository() != null;
       SConcept templateDeclarationConcept = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L,
                                                                           "jetbrains.mps.lang.generator.structure.TemplateDeclaration");

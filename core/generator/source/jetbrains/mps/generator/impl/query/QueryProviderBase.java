@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.generator.impl.query;
 
 import jetbrains.mps.generator.impl.GenerationFailureException;
+import jetbrains.mps.generator.runtime.PatternMatch;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
 import jetbrains.mps.generator.template.DropAttributeRuleContext;
 import jetbrains.mps.generator.template.DropRootRuleContext;
@@ -38,7 +39,6 @@ import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.generator.template.WeavingAnchorContext;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -253,8 +253,9 @@ public abstract class QueryProviderBase implements GeneratorQueryProvider {
       return null;
     }
 
+    @Nullable
     @Override
-    public GeneratedMatchingPattern pattern(@NotNull PatternRuleContext ctx) {
+    public PatternMatch match(@NotNull PatternRuleContext ctx) throws GenerationFailureException {
       return null;
     }
 

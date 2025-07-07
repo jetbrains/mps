@@ -13,7 +13,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.util.NameUtil;
 import com.intellij.openapi.ui.Messages;
 
-@GeneratedClass(node = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)/708166622413812651", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
+@GeneratedClass(nodeId = "708166622413812651", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
 public class MergeConfirmation {
   public static final int RETURN = 0;
   public static final int SAVE_AS_IS = 1;

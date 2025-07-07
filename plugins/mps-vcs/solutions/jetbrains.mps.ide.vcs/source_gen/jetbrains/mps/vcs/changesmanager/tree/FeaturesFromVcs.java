@@ -27,7 +27,7 @@ import jetbrains.mps.vcs.diff.changes.ChangeType;
  * This is a map from 'Feature'to model change.
  * Serves as a source of vcs change for different trees vcs highlighting (project tree, usages tree, etc.)
  */
-@GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/3751911615136891847", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
+@GeneratedClass(nodeId = "3751911615136891847", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public class FeaturesFromVcs {
   private static final Logger LOG = Logger.getLogger(FeaturesFromVcs.class);
   private static boolean ourLoggingEnabled;

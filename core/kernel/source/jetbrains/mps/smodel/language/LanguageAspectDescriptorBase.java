@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel.language;
 
@@ -66,14 +66,10 @@ public abstract class LanguageAspectDescriptorBase extends LanguageAspectDescrip
     return rv;
   }
 
-  public boolean canCreate(SModule language) {
+  @Override
+  public boolean canCreate(@NotNull CreateAspectContext context) {
+    SModule language = context.getOwner();
     return language instanceof Language && !language.isReadOnly() && getAspectModels(language).isEmpty();
-  }
-
-  @SuppressWarnings("removal")
-  public void create(SModule language) {
-    // keep for another release until all uses get a chance to update to new API
-    doCreate(language);
   }
 
   private EditableSModel doCreate(SModule language) {

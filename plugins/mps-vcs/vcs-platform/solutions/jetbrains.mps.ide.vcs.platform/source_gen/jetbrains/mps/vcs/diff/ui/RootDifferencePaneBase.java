@@ -30,9 +30,10 @@ import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.project.DumbAware;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.diff.DiffBundle;
 import com.intellij.openapi.actionSystem.Presentation;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -54,7 +55,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/8817948936268058313", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "8817948936268058313", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public abstract class RootDifferencePaneBase implements RootDifferencePane, PropertyChangeListener {
   private static final String PARAM_SHOW_INSPECTOR = RootDifferencePaneBase.class.getName() + "ShowInspector";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = RootDifferencePaneBase.class.getName() + "InspectorSplitterPosition";
@@ -168,6 +169,11 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
     public void setSelected(AnActionEvent e, boolean b) {
       showInspector(b);
     }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
   }
 
   private class SyncScrollingAction extends ToggleAction implements DumbAware {
@@ -187,6 +193,12 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
     public void update(@NotNull AnActionEvent e) {
       super.update(e);
       enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
+    }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
     }
   }
 

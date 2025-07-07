@@ -18,6 +18,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.scopes.runtime.HidingByNameScope;
+import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -40,7 +42,8 @@ public final class PatternSwitchCase__BehaviorDescriptor extends BaseBHDescripto
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PatternBuilderVariable$VU)) {
-      return new NamedElementsScope(AbstractPatternProvider__BehaviorDescriptor.getVariables_id2r4rhgaEVoa.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$8mhm)));
+      NamedElementsScope varScope = new NamedElementsScope(AbstractPatternProvider__BehaviorDescriptor.getVariables_id2r4rhgaEVoa.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$8mhm)));
+      return new HidingByNameScope(CONCEPTS.PatternBuilderVariable$VU, kind, varScope, ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
     return null;
   }

@@ -186,6 +186,7 @@
       <concept id="1722980698497626400" name="jetbrains.mps.lang.generator.structure.ITemplateCall" flags="ngI" index="v9R3L">
         <reference id="1722980698497626483" name="template" index="v9R2y" />
       </concept>
+      <concept id="5133195082121471908" name="jetbrains.mps.lang.generator.structure.LabelMacro" flags="ln" index="2ZBi8u" />
       <concept id="1167168920554" name="jetbrains.mps.lang.generator.structure.BaseMappingRule_Condition" flags="in" index="30G5F_" />
       <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
       <concept id="1167169308231" name="jetbrains.mps.lang.generator.structure.BaseMappingRule" flags="ng" index="30H$t8">
@@ -218,7 +219,6 @@
       <concept id="1167514355419" name="jetbrains.mps.lang.generator.structure.Root_MappingRule" flags="lg" index="3lhOvk">
         <reference id="1167514355421" name="template" index="3lhOvi" />
       </concept>
-      <concept id="1131073187192" name="jetbrains.mps.lang.generator.structure.MapSrcNodeMacro" flags="ln" index="1pdMLZ" />
       <concept id="1195499912406" name="jetbrains.mps.lang.generator.structure.MappingScript" flags="lg" index="1pmfR0">
         <property id="1195595592106" name="scriptKind" index="1v3f2W" />
         <property id="1195595611951" name="modifiesModel" index="1v3jST" />
@@ -1129,7 +1129,7 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="1pdMLZ" id="hMuAI2C" role="lGtFl">
+                  <node concept="2ZBi8u" id="6MbZi$kLN5I" role="lGtFl">
                     <ref role="2rW$FS" node="hG0dCHL" resolve="matcher" />
                   </node>
                 </node>
@@ -1162,7 +1162,6 @@
               </node>
             </node>
             <node concept="raruj" id="h5QqMHK" role="lGtFl" />
-            <node concept="1pdMLZ" id="hMuAJT3" role="lGtFl" />
           </node>
         </node>
         <node concept="3Tm1VV" id="h9AO$qs" role="1B3o_S" />
@@ -1563,7 +1562,7 @@
                     </node>
                   </node>
                 </node>
-                <node concept="1pdMLZ" id="hMunMvG" role="lGtFl">
+                <node concept="2ZBi8u" id="6MbZi$kLMCA" role="lGtFl">
                   <ref role="2rW$FS" node="hG0dCHL" resolve="matcher" />
                 </node>
               </node>
@@ -1790,7 +1789,7 @@
                     </node>
                   </node>
                 </node>
-                <node concept="1pdMLZ" id="hMunf$_" role="lGtFl">
+                <node concept="2ZBi8u" id="6MbZi$kLMhV" role="lGtFl">
                   <ref role="2rW$FS" node="hG0dCHL" resolve="matcher" />
                 </node>
               </node>
@@ -2510,7 +2509,7 @@
             <node concept="3uibUv" id="3Hqlh1$CCQU" role="1tU5fm">
               <ref role="3uigEE" to="ni5j:~Matcher" resolve="Matcher" />
             </node>
-            <node concept="1pdMLZ" id="2fFuTuK0lk6" role="lGtFl">
+            <node concept="2ZBi8u" id="6MbZi$kLM7a" role="lGtFl">
               <ref role="2rW$FS" node="hG0dCHL" resolve="matcher" />
             </node>
           </node>

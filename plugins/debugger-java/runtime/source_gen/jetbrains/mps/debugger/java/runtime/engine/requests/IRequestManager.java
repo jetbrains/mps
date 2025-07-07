@@ -4,6 +4,6 @@ package jetbrains.mps.debugger.java.runtime.engine.requests;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)/6460341978864598530", model = "r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)")
+@GeneratedClass(nodeId = "6460341978864598530", model = "r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)")
 public interface IRequestManager {
 }

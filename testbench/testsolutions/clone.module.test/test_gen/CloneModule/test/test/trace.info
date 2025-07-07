@@ -42,7 +42,7 @@
       <node id="7758424077468256168" at="79,87,80,63" concept="7" />
       <node id="7758424077468174076" at="80,63,81,197" concept="0" />
       <node id="1646528537537052186" at="84,53,85,71" concept="0" />
-      <node id="961556563572191643" at="88,71,89,72" concept="5" />
+      <node id="961556563572191643" at="88,72,89,72" concept="5" />
       <node id="961556563572185623" at="89,72,90,0" concept="8" />
       <node id="961556563571683549" at="90,0,91,81" concept="5" />
       <node id="961556563571698351" at="91,81,92,86" concept="0" />
@@ -52,12 +52,12 @@
       <node id="961556563572262998" at="95,93,96,91" concept="5" />
       <node id="4805177242719697886" at="97,28,98,71" concept="0" />
       <node id="4805177242719705350" at="98,71,99,67" concept="0" />
-      <node id="961556563572299036" at="100,7,101,134" concept="0" />
-      <node id="961556563572439599" at="101,134,102,51" concept="5" />
+      <node id="961556563572299036" at="100,7,101,169" concept="0" />
+      <node id="961556563572439599" at="101,169,102,51" concept="5" />
       <node id="4805177242719678908" at="103,36,104,73" concept="5" />
       <node id="4805177242719688064" at="104,73,105,69" concept="5" />
-      <node id="961556563572492302" at="105,69,106,100" concept="0" />
-      <node id="961556563572566161" at="106,100,107,140" concept="0" />
+      <node id="961556563572492302" at="105,69,106,101" concept="0" />
+      <node id="961556563572566161" at="106,101,107,141" concept="0" />
       <node id="5167083683070684444" at="111,23,112,79" concept="0" />
       <node id="2977992321850864245" at="112,79,113,101" concept="0" />
       <node id="2977992321850867427" at="116,26,117,60" concept="0" />
@@ -85,8 +85,8 @@
       <node id="1646528537536957796" at="166,28,167,0" concept="8" />
       <node id="1646528537536957797" at="167,0,168,72" concept="5" />
       <node id="1646528537536957805" at="168,72,169,0" concept="8" />
-      <node id="1646528537536957806" at="169,0,170,104" concept="5" />
-      <node id="1646528537536957815" at="170,104,171,114" concept="5" />
+      <node id="1646528537536957806" at="169,0,170,132" concept="5" />
+      <node id="1646528537536957815" at="170,132,171,114" concept="5" />
       <node id="961556563571637059" at="172,11,173,43" concept="0" />
       <node id="3288955118346385778" at="174,45,175,160" concept="0" />
       <node id="3288955118346139166" at="176,7,177,0" concept="8" />
@@ -118,7 +118,7 @@
       <node id="2977992321850854103" at="131,0,145,0" concept="4" trace="executeUnderLock#(Ljava/lang/Runnable;)V" />
       <node id="1762173286576715700" at="67,0,83,0" concept="4" trace="test_cloneFacets#()V" />
       <node id="1646528537536957780" at="165,87,183,7" concept="0" />
-      <node id="961556563571552934" at="87,0,110,0" concept="4" trace="test_cloneLanguageWithAcessoryModels#()V" />
+      <node id="961556563571552934" at="87,0,110,0" concept="4" trace="test_cloneLanguageWithAccessoryModels#()V" />
       <node id="1646528537536957846" at="163,0,186,0" concept="4" trace="testModule#(Ljetbrains/mps/project/AbstractModule;Ljava/lang/String;)Ljetbrains/mps/project/AbstractModule;" />
       <scope id="8449002106978666093" at="56,56,57,65" />
       <scope id="1646528537536960642" at="60,60,61,70" />
@@ -152,7 +152,7 @@
       <scope id="1646528537536960639" at="59,0,63,0" />
       <scope id="1646528537536960647" at="63,0,67,0" />
       <scope id="8449002106978666999" at="83,0,87,0" />
-      <scope id="961556563572471050" at="103,36,107,140">
+      <scope id="961556563572471050" at="103,36,107,141">
         <var name="clonedAccesoryModel" id="4805177242719688065" />
         <var name="originalAccesoryModel" id="4805177242719678909" />
       </scope>
@@ -198,7 +198,7 @@
         <var name="copyLocation" id="1646528537536957807" />
         <var name="helper" id="1646528537536957816" />
       </scope>
-      <scope id="961556563571552937" at="88,71,108,5">
+      <scope id="961556563571552937" at="88,72,108,5">
         <var name="clonedAccesoryModels" id="961556563572263004" />
         <var name="clonedLang" id="961556563571717168" />
         <var name="module" id="961556563571683550" />

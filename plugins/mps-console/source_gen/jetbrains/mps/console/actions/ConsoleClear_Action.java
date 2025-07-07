@@ -14,7 +14,7 @@ import jetbrains.mps.console.tool.MPSConsoleDataKeys;
 import jetbrains.mps.console.tool.DialogConsoleTab;
 import jetbrains.mps.console.tool.BaseConsoleTab;
 
-@GeneratedClass(node = "r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)/7908305341670079752", model = "r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)")
+@GeneratedClass(nodeId = "7908305341670079752", model = "r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)")
 public class ConsoleClear_Action extends BaseAction {
   private static final Icon ICON = null;
 

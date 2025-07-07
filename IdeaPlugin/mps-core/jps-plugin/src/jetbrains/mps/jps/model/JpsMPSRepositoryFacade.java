@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,7 +79,6 @@ public class JpsMPSRepositoryFacade implements MPSModuleOwner {
   public static final UUID JDK_UUID = UUID.fromString("6354ebe7-c22a-4a0f-ac54-50b52ab9b065");
 
   private Platform myPlatform;
-  private MPSBaseLanguage myMPSBaseLanguage;
   private volatile boolean isInitialized = false;
   private CachedRepositoryData myRepo;
   private Map<JpsModule, JpsSolutionIdea> myJpsToMpsModules = new HashMap<JpsModule, JpsSolutionIdea>();
@@ -368,13 +367,10 @@ public class JpsMPSRepositoryFacade implements MPSModuleOwner {
 
   private void initMPS() {
     myPlatform = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
-
-    myMPSBaseLanguage = new MPSBaseLanguage();
-    myMPSBaseLanguage.init();
+    myPlatform.install(new MPSBaseLanguage());
   }
 
   private void disposeMPS() {
-    myMPSBaseLanguage.dispose();
     myPlatform.dispose();
   }
 

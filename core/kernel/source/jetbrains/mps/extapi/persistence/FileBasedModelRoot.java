@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,30 +18,32 @@ package jetbrains.mps.extapi.persistence;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.project.MementoWithFS;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.util.MacroHelper;
+import jetbrains.mps.util.MacroHelper.MacroNoHelper;
 import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.path.Path;
-import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.vfs.refresh.FileEventProcessor;
+import jetbrains.mps.vfs.refresh.FileListener;
 import jetbrains.mps.vfs.refresh.FileListeningPreferences;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
-import jetbrains.mps.vfs.refresh.FileSystemListener;
-import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
 
 import static jetbrains.mps.util.FileUtil.getAbsolutePath;
 import static jetbrains.mps.util.FileUtil.getUnixPath;
@@ -74,9 +76,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   @Deprecated
   public static final String EXCLUDED = "excluded";
 
-  // FIXME right now necessary for MPS-as-IDEA-plugin scenario, where we don't use MementoWithFS and
-  //       need to edit MR instance w/o SModule being ready/initialized yet (new MPSFacet story)
-  private /*final*/ FileSystem myFileSystem = jetbrains.mps.vfs.FileSystem.getInstance(); // TODO not read from memento
+  private final PathListener myFileListener = new PathListener();
 
   /**
    * This is a private model root persistence notation, ought to be concealed from the general public
@@ -88,17 +88,16 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   private static final String PATH = "path";
 
   /**
-   * Ancestor for all the source paths
-   * Commonly it is a module root folder and 'models' directory is its default source root
+   * Ancestor for all relatinve source paths.
+   * Commonly it is a module root folder and 'models' directory is its default source root.
+   * Not necessarily specfied if all source paths are absolute.
    *
    * @see SourceRoot
    */
-  private IFile myContentDir; // might be null when just created
-
-  private String myContentDirPathSpec = null;
+  private PathSpec myContentDir;
 
   private final SourcePaths mySourcePathStorage;
-  private final List<PathListener> myListeners = new ArrayList<>();
+  private final List<IFile> myTrackedFiles = new ArrayList<>();
 
   private Memento memento;
   private boolean myBrokenState = false;
@@ -109,24 +108,12 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
 
   @Nullable
   public final IFile getContentDirectory() {
-    return myContentDir;
+    return myContentDir != null && myContentDir.resolved() ? myContentDir.resolvedFile() : null;
   }
 
   public final void setContentDirectory(@NotNull IFile contentDir) {
     checkNotRegistered();
-    myContentDir = contentDir;
-  }
-
-  /**
-   * @deprecated use of this method is discouraged.
-   *    On one hand, it's reasonable to expect that FileBasedModelRoot knows about FileSystem,
-   *    on the other, uses seem to deal with limitation of the class itself (e.g. api to add source roots),
-   *    rather than need for MR to expose FS.
-   */
-  @NotNull
-  @Deprecated(since = "2021.3")
-  public final FileSystem getFileSystem() {
-    return myFileSystem;
+    myContentDir = new PathSpec(contentDir);
   }
 
   /**
@@ -177,10 +164,24 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     return rv;
   }
 
+  // FIXME perhaps, just 1 factory method that takes IFile and decides whether it's absolute/relative?
+  public final SourceRoot createRelativeSourceRoot(@NotNull String relativePath) {
+    if (myContentDir == null) {
+      throw new IllegalArgumentException("Can't create relative source root unless content directory specified");
+    }
+    return new DefaultSourceRoot(relativePath, myContentDir);
+  }
+
+  public final SourceRoot createAbsoluteSourceRoot(@NotNull PathSpec path) {
+    return new DefaultSourceRoot(path);
+  }
+
   @Override
   public final String getPresentation() {
-    IFile contentDirectory = getContentDirectory();
-    return contentDirectory == null ? "no content dir" : contentDirectory.getPath();
+    if (myContentDir != null) {
+      return myContentDir.resolved() ? myContentDir.resolvedPath() : myContentDir.value();
+    }
+    return "no content dir";
   }
 
   private static void copyMemento(Memento from, Memento to) {
@@ -195,33 +196,39 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   }
 
   @Override
-  public void save(@NotNull Memento memento) {
-    memento.put("type", getType());
+  public void save(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    super.save(memento, context); // support subclasses that override save(Memento)
     if (myBrokenState) {
       assert this.memento != null;
       copyMemento(this.memento, memento);
       return;
     }
+    // detached model root instance (no module) likely shall not shrink paths at all - use of global variables
+    // would be of no help once memento populates another root instance
+    final MacroHelper mh = getModule() == null ? new MacroNoHelper() : MacrosFactory.forModule(getModule());
     if (myContentDir != null) {
-      memento.put(CONTENT_PATH, myContentDir.getPath());
-      if (myContentDirPathSpec != null) {
-        memento.putPathSpec(CONTENT_PATH, myContentDirPathSpec);
-      }
+      memento.put(CONTENT_PATH, myContentDir.shrink(mh));
     }
     for (SourceRootKind kind : getSupportedFileKinds1()) {
       for (SourceRoot root : getSourceRoots(kind)) {
         Memento modelRootMemento = memento.createChild(kind.getName());
-        String sourceRootPath = root.getAbsolutePath().getPath(); // must go away as soon as we allow relative paths
-        if (myContentDir != null && FileUtil.isAncestor(myContentDir.getPath(), sourceRootPath)) {
-          String relPath = relativize(sourceRootPath, myContentDir);
-          if (relPath.isEmpty()) {
-            relPath = MPSExtentions.DOT;
+        if (root instanceof DefaultSourceRoot) {
+          final DefaultSourceRoot dsr = (DefaultSourceRoot) root;
+          if (dsr.isAbsolute()) {
+            modelRootMemento.put(PATH, dsr.rootSpec().shrink(mh));
+          } else {
+            modelRootMemento.put(LOCATION, dsr.relativePath().isEmpty() ? "." : dsr.relativePath());
           }
-          modelRootMemento.put(LOCATION, relPath);
         } else {
-          modelRootMemento.put(PATH, sourceRootPath);
-          if (root instanceof DefaultSourceRoot && ((DefaultSourceRoot) root).getOriginalPathSpec() != null) {
-            modelRootMemento.putPathSpec(PATH, ((DefaultSourceRoot) root).getOriginalPathSpec());
+          String sourceRootPath = root.getPath();
+          if (myContentDir != null && FileUtil.isAncestor(myContentDir.value(), sourceRootPath)) {
+            String relPath = relativize(sourceRootPath, myContentDir.value());
+            if (relPath.isEmpty()) {
+              relPath = MPSExtentions.DOT;
+            }
+            modelRootMemento.put(LOCATION, relPath);
+          } else {
+            modelRootMemento.put(PATH, mh.shrinkPath(sourceRootPath, null));
           }
         }
       }
@@ -229,113 +236,70 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   }
 
   @Override
-  public void load(@NotNull Memento memento) {
+  public void load(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    super.load(memento, context); // support subclasses that override load(Memento)
     checkNotRegistered();
 
+    this.memento = null;
+    myBrokenState = false;
     mySourcePathStorage.clearAll(); // AP: I'd rather force a single invocation of the #load method
 
-    this.memento = memento.copy();
-    // delay proper initialization until we've got SModule instance (setModule() followed by attach())
-    // but provide some minimalistic defaults to facilitate new MPSFacet scenario, when there's no
-    // associated solution yet and no way to resolve paths, but we still need to edit the root in UI
-    // MPS-as-IDEA-plugin functionality.
-    // FIXME indeed, this code duplicates code in setModule(), I just care for the 22.3 to get out now,
-    //       need a proper fix (the one that bounds myFileSystem init, use of IFile/Path/String and editing
-    //       approach for MR/MRD, both attached and detached (from a module, MPSFacet case in IdeaPlugin) scenario)
+    // FIXME need a proper fix (use of IFile/Path/String and editing approach for MR/MRD,
+    //       both attached and detached (from a module, MPSFacet case in IdeaPlugin) scenario)
     try {
       final String cpString = memento.get(CONTENT_PATH);
-      if (cpString != null && !MacrosFactory.containsMacro(cpString)) {
-        myContentDir = myFileSystem.getFile(cpString);
-        // keep this value just in case there's 'save()' right next to 'load()' to ensure there's matching value
-        // in memento for equals() purposes
-        myContentDirPathSpec = memento.getPathSpec(CONTENT_PATH);
-        for (SourceRootKind kind : getSupportedFileKinds1()) {
-          for (Memento root : memento.getChildren(kind.getName())) {
-            String relPath = root.get(LOCATION);
-            DefaultSourceRoot dsr = null;
-            if (relPath != null) {
-              // relative
-              dsr = new DefaultSourceRoot(relPath, myContentDir);
-            } else if (root.get(PATH) != null) {
-              // absolute
-              final String origPath = root.get(PATH);
-              if (origPath != null && !MacrosFactory.containsMacro(origPath)) {
-                dsr = new DefaultSourceRoot(myFileSystem.getFile(origPath));
-              }
+      if (cpString != null) {
+        myContentDir = new PathSpec(cpString);
+      }
+      for (SourceRootKind kind : getSupportedFileKinds1()) {
+        for (Memento root : memento.getChildren(kind.getName())) {
+          final DefaultSourceRoot dsr;
+          if (root.get(LOCATION) != null) {
+            // relative
+            if (myContentDir == null) {
+              Logger.getLogger(getClass()).error(String.format("relative location=%s needs 'contentPath' value specified; ignored", root.get(LOCATION)));
+              // report and ignore the root, go on.
+              myBrokenState = true;
+              continue;
             }
-            if (dsr != null) {
-              // see below for reason to use mySourcePathStorage directly
-              mySourcePathStorage.addSourceRoot(kind, dsr);
-            }
+            dsr = new DefaultSourceRoot(root.get(LOCATION), myContentDir);
+          } else if (root.get(PATH) != null) {
+            // absolute
+            dsr = new DefaultSourceRoot(new PathSpec(root.get(PATH)));
+          } else {
+            continue;
+          }
+          // NOTE, can't use addSourceRoot() here as we are still in initialization of a model root and shall
+          //      not notify module about changes (AM.setChanged() in addSourceRoot); use mySourcePathStorage directly.
+          mySourcePathStorage.addSourceRoot(kind, dsr);
+        }
+      }
+      // resolve PathSpec with actual IFile
+      final Function<String, IFile> path2file = PersistenceContextImpl.pathResolveFunction(context);
+      if (myContentDir != null) {
+        myContentDir.resolve(path2file);
+      }
+      for (SourceRootKind kind : getSupportedFileKinds1()) {
+        for (SourceRoot sourceRoot : mySourcePathStorage.getByKind(kind)) {
+          if (sourceRoot instanceof DefaultSourceRoot) {
+            // XXX in fact, could be re-resolve of myContentDir. Perhaps, shall record created unique PathSpec, above, and resolve only these?
+            ((DefaultSourceRoot) sourceRoot).resolve(path2file);
           }
         }
       }
-    } catch (PathFormatException ex) {
+    } catch (Exception ex) {
       // here I hope to get setModule() later, hence info. As setModule call is not always the case (new MPSFacet),
       // get a chance to see if anything is wrong with values provided at facet creation.
-      Logger.getLogger(getClass()).info(String.format("Failed to load configuration of model root in %s: bad path %s", getModule().getModuleName(), ex.getProblemPath()));
+      Logger.getLogger(getClass()).info(String.format("Failed to load configuration of model root: %s", ex.getMessage()));
       // keep this.memento values
+      this.memento = memento.copy();
       myBrokenState = true;
     }
   }
 
-  @SuppressWarnings("removal")
   @Override
   public void setModule(@NotNull SModuleBase module) {
     super.setModule(module);
-    if (memento != null) {
-      // memento can legitimately be null when MR is manually constructed w/o load(), see JavaToMpsUtils.checkStubModels()
-      if (memento instanceof MementoWithFS) {
-        myFileSystem = ((MementoWithFS) memento).getFileSystem();
-      }
-      String path;
-      myContentDirPathSpec = memento.getPathSpec(CONTENT_PATH);
-      if (myContentDirPathSpec != null && !myContentDirPathSpec.isBlank() && MacrosFactory.containsMacro(memento.get(CONTENT_PATH))) {
-        path = MacrosFactory.forModule(getModule()).expandPath(myContentDirPathSpec);
-      } else {
-        path = memento.get(CONTENT_PATH);
-      }
-
-      // we are going to re-initialize it compared to basic configuration of load()
-      mySourcePathStorage.clearAll();
-
-      try {
-        myContentDir = (path != null) ? myFileSystem.getFile(path) : null;
-        for (SourceRootKind kind : getSupportedFileKinds1()) {
-          for (Memento root : memento.getChildren(kind.getName())) {
-            String relPath = root.get(LOCATION);
-            DefaultSourceRoot dsr = null;
-            if (relPath != null) {
-              // relative
-              assert myContentDir != null;
-              dsr = new DefaultSourceRoot(relPath, myContentDir);
-            } else if (root.get(PATH) != null) {
-              // absolute
-              String absPath;
-              final String origPath;
-              if ((origPath = root.getPathSpec(PATH)) != null) {
-                absPath = MacrosFactory.forModule(getModule()).expandPath(root.getPathSpec(PATH));
-              } else {
-                absPath = root.get(PATH);
-              }
-              dsr = new DefaultSourceRoot(myFileSystem.getFile(absPath));
-              dsr.setOriginalPathSpec(origPath);
-            }
-            if (dsr != null) {
-              // NOTE, can't use addSourceRoot() here as we are still in initialization of a model root and shall
-              //      not notify module about changes (AM.setChanged() in addSourceRoot); use mySourcePathStorage directly.
-              mySourcePathStorage.addSourceRoot(kind, dsr);
-            }
-          }
-        }
-        this.memento = null; // XXX see equals(), perhaps, it's not necessary?
-      } catch (PathFormatException ex) {
-        // FIXME much more fruitful approach would be InvalidFile or Path object to let MR behave as close to usual as possible
-        Logger.getLogger(getClass()).warning(String.format("Failed to initialize model root in %s: bad path %s", getModule().getModuleName(), ex.getProblemPath()));
-        // keep this.memento values
-        myBrokenState = true;
-      }
-    }
   }
 
   @Override
@@ -351,23 +315,16 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
                             .forEach(kind -> {
                               for (SourceRoot sourceRoot : getSourceRoots(kind)) {
                                 IFile file = sourceRoot.getAbsolutePath();
-                                PathListener listener = new PathListener(file);
-                                myListeners.add(listener);
-                                if (myFileSystem instanceof CachingFileSystem) {
-                                  ((CachingFileSystem) myFileSystem).addListener(listener);
-                                }
+                                myTrackedFiles.add(file);
+                                file.addListener(myFileListener);
                               }
                             });
   }
 
   @Override
   public void dispose() {
-    if (myFileSystem instanceof CachingFileSystem) {
-      for (PathListener listener : myListeners) {
-        ((CachingFileSystem) myFileSystem).removeListener(listener);
-      }
-    }
-    myListeners.clear();
+    myTrackedFiles.forEach(f -> f.removeListener(myFileListener));
+    myTrackedFiles.clear();
     super.dispose();
   }
 
@@ -400,10 +357,14 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     }
 
     FileBasedModelRoot that = (FileBasedModelRoot) o;
+    if (myContentDir != null && that.myContentDir == null || myContentDir == null && that.myContentDir != null) {
+      return false;
+    }
+    if (myContentDir != null /*other != null as well */ && !myContentDir.value().equals(that.myContentDir.value())) {
+      return false;
+    }
 
-    return Objects.equals(myContentDir, that.myContentDir)
-           && Objects.equals(mySourcePathStorage, that.mySourcePathStorage)
-           && Objects.equals(myFileSystem, that.myFileSystem)
+    return Objects.equals(mySourcePathStorage, that.mySourcePathStorage)
            // AM.doUpdateModelRoots() relies on equals for attached and detached MR, and these might
            // have completely different memento value. XXX perhaps, shall not clear this.memento in setModule()?
            && (memento == null || that.memento == null || Objects.equals(memento, that.memento));
@@ -411,7 +372,8 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
 
   @Override
   public final int hashCode() {
-    return Objects.hash(myContentDir, mySourcePathStorage);
+    // Note, hashCode/equals is essential piece of functionality to make sure roots/editors kept open once unrelated attributes in ModuleDescriptor change
+    return Objects.hash(myContentDir == null ? null : myContentDir.value(), mySourcePathStorage);
   }
 
 
@@ -435,11 +397,8 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     return getUnixPath(getAbsolutePath(path));
   }
 
-  private final class PathListener implements FileSystemListener {
-    private final IFile myPath;
-
-    private PathListener(@NotNull IFile path) {
-      myPath = path;
+  private final class PathListener implements FileListener {
+    PathListener() {
     }
 
     @NotNull
@@ -452,20 +411,9 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
                                      .build();
     }
 
-    @NotNull
-    @Override
-    public IFile getFileToListen() {
-      return myPath;
-    }
-
     @Override
     public void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event) {
       event.notify(FileBasedModelRoot.this);
-    }
-
-    @Override
-    public String toString() {
-      return "[PathListener: path: " + myPath + "; modelRoot: " + FileBasedModelRoot.this + "]";
     }
   }
 }

@@ -36,7 +36,7 @@ import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.function.Supplier;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/3207605520775490246", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "3207605520775490246", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class ShowSurroundWithIntentions_Action extends BaseAction {
   private static final Icon ICON = null;
 

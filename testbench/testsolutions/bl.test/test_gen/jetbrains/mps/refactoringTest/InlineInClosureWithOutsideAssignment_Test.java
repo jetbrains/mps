@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -22,7 +22,7 @@ import jetbrains.mps.lang.test.matcher.NodesMatcher;
 @MPSLaunch
 public class InlineInClosureWithOutsideAssignment_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(InlineInClosureWithOutsideAssignment_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(InlineInClosureWithOutsideAssignment_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public InlineInClosureWithOutsideAssignment_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -39,17 +39,19 @@ public class InlineInClosureWithOutsideAssignment_Test extends BaseTransformatio
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7093131866560585772", "7093131866560585816");
+    }
+
     public void test_InlineInClosureWithOutsideAssingmentTest() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        addNodeById("7093131866560585772");
-        addNodeById("7093131866560585816");
-      });
-      runWithinCommand(() -> {
-        InlineVariableRefactoring ref = new InlineVariableReferenceRefactoring(getNodeById("7093131866560585802"));
+        InlineVariableRefactoring ref = new InlineVariableReferenceRefactoring(getAnnotatedNode("inline"));
         ref.doRefactoring();
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("7093131866560585780"));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("7093131866560585820"));
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("before"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("after"));
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
       });

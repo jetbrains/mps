@@ -79,7 +79,7 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ static void declareToCollector_id4oNDtEQKIUN(@NotNull final SNode __thisNode__, SignatureCollector collector, boolean isInstance) {
     final boolean mutable = ((boolean) IVariableConstraintHolder__BehaviorDescriptor.isChildVariableAssignable_idCy8Bus9qei.invoke(__thisNode__));
 
-    SignatureBuilder<PropertySignature, SNode> signatureBuilder = SignatureBuilder.create(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv), PropertySignature.class).withExtensionReceiverType(SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT)).withSignatures((SNode it) -> PropertySignature.signaturesOf(it, mutable));
+    SignatureBuilder<PropertySignature, SNode> signatureBuilder = SignatureBuilder.create(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv), PropertySignature.class).withSignatures((SNode it) -> PropertySignature.signaturesOf(it, mutable, SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT)));
 
     // Attributes only matter in an instance context
     if (isInstance) {
@@ -95,10 +95,10 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
 
     signatureBuilder.declareTo(collector);
 
-    SNode functionTypeReceiver = PropertySignature.receivedFunctionType(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv));
+    final SNode functionTypeReceiver = PropertySignature.receivedFunctionType(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv));
     if (functionTypeReceiver != null) {
       // Additional getter with visibility
-      SignatureBuilder.create(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv), PropertySignature.class).withExtensionReceiverType(functionTypeReceiver).withSignature((SNode it) -> new PropertySignature(SPropertyOperations.getString(it, PROPS.name$MnvL), AccessorKind.GETTER)).withAttribute(SignatureAttributeKey.VISIBILITY, (PropertySignature signature, SNode node) -> SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$vnSV))).declareTo(collector);
+      SignatureBuilder.create(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv), PropertySignature.class).withSignature((SNode it) -> new PropertySignature(SPropertyOperations.getString(it, PROPS.name$MnvL), AccessorKind.GETTER, functionTypeReceiver)).withAttribute(SignatureAttributeKey.VISIBILITY, (PropertySignature signature, SNode node) -> SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$vnSV))).declareTo(collector);
     }
   }
   /*package*/ static List<SNode> getDeclarations_id7RZWrHVaXCH(@NotNull SNode __thisNode__) {
@@ -157,7 +157,7 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ static SConcept getDefaultVisibility_id2WVyZr43qIN(@NotNull SNode __thisNode__) {
     if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$4zN7)) {
       // Visibility here is the one of the getter by default
-      MemberSignature signature = new PropertySignature(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv), PROPS.name$MnvL), AccessorKind.GETTER);
+      MemberSignature signature = new PropertySignature(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv), PROPS.name$MnvL), AccessorKind.GETTER, null);
       SConcept inherited = InheritorHelper.findInheritedVisibility(__thisNode__, signature);
       if (inherited != null) {
         return inherited;
@@ -169,7 +169,7 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
   @NotNull
   /*package*/ static SAbstractConcept getDefaultInheritance_id6jE_6dusz0P(@NotNull SNode __thisNode__) {
     if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$4zN7)) {
-      PropertySignature signature = new PropertySignature(__thisNode__, AccessorKind.GETTER);
+      PropertySignature signature = new PropertySignature(__thisNode__, AccessorKind.GETTER, null);
       SAbstractConcept parent = InheritorHelper.findInheritedInheritanceModifier(__thisNode__, signature);
       if (parent != null) {
         return parent;

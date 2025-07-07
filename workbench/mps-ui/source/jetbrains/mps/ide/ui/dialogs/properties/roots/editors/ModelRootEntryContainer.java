@@ -59,12 +59,11 @@ import static java.awt.GridBagConstraints.RELATIVE;
 public final class ModelRootEntryContainer implements ModelRootEntryListener {
   static final Color SOURCES_COLOR = new JBColor(new Color(0x0A50A1), DarculaColors.BLUE);
   static final Color EXCLUDED_COLOR = new JBColor(new Color(0x992E00), DarculaColors.RED);
-  static final Color TESTS_COLOR = new Color(0x008C2E);
-  static final Color SELECTED_CONTENT_COLOR = new Color(0xF0F9FF);
+  static final Color SELECTED_CONTENT_COLOR = new JBColor(new Color(0xF0F9FF), UIUtil.getPanelBackground());
   private static final Color SELECTED_HEADER_COLOR = new JBColor(new Color(0xDEF2FF), UIUtil.getPanelBackground().darker());
   private static final Color HEADER_COLOR = new JBColor(new Color(0xF5F5F5), Gray._82);
   private static final Color CONTENT_COLOR = new JBColor(Color.WHITE, UIUtil.getPanelBackground());
-  private static final Color UNSELECTED_TEXT_COLOR = Gray._51;
+  private static final Color UNSELECTED_TEXT_COLOR = new JBColor(Gray._51, Gray._186);
 
   private final ModelRootEntry myModelRootEntry;
   private EventDispatcher<ContentEntryEditorListener> myEventDispatcher;
@@ -160,8 +159,7 @@ public final class ModelRootEntryContainer implements ModelRootEntryListener {
   protected void setSelected(boolean selected) {
     if (selected) {
       myHeader.setBackground(SELECTED_HEADER_COLOR);
-//      myMainPanel.setBackground(UIUtil.isUnderDarcula() ? UIUtil.getPanelBackground() : SELECTED_CONTENT_COLOR);
-      myDetailsComponent.setBackground(UIUtil.isUnderDarcula() ? UIUtil.getPanelBackground() : SELECTED_CONTENT_COLOR);
+      myDetailsComponent.setBackground(SELECTED_CONTENT_COLOR);
       myBottom.setBackground(SELECTED_HEADER_COLOR);
       if (myModelRootEntry instanceof ModelRootEntryExt) {
         ((ModelRootEntryExt) myModelRootEntry).resetForegroundColor();

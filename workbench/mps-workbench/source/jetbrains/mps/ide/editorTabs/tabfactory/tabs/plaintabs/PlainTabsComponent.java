@@ -128,7 +128,9 @@ public class PlainTabsComponent extends BaseTabsComponent<PlainEditorTab> {
     if (myLastEmptyTab != null) {
       return myLastEmptyTab;
     }
-    final int i = myTabs.getIndexOf(myTabs.getSelectedInfo());
+    TabInfo selectedInfo = myTabs.getSelectedInfo();
+    if (selectedInfo == null) return null;
+    final int i = myTabs.getIndexOf(selectedInfo);
     return i == -1 ? null : myRealTabs.get(i).getTab();
   }
 
@@ -161,6 +163,7 @@ public class PlainTabsComponent extends BaseTabsComponent<PlainEditorTab> {
   //this is synchronized because we change myJbTabs here (while disposing)
   @Override
   public synchronized void dispose() {
+    removeContent(myTabs);
     Disposer.dispose(myJbTabsDisposable);
     super.dispose();
   }
@@ -247,7 +250,7 @@ public class PlainTabsComponent extends BaseTabsComponent<PlainEditorTab> {
     if (selectedNode != null && selectedNode.resolve(repository) != null) {
       for (PlainEditorTab tab : myRealTabs) {
         if (selectedNode.equals(tab.getNode())) {
-          myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(tab)), true);
+          myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(tab)), false);
           selectionRestored = true;
           break;
         }
@@ -255,7 +258,7 @@ public class PlainTabsComponent extends BaseTabsComponent<PlainEditorTab> {
     }
 
     if (!selectionRestored && myTabs.getTabCount() > 0) {
-      myTabs.select(myTabs.getTabAt(0), true);
+      myTabs.select(myTabs.getTabAt(0), false);
       selectionRestored = true;
     }
 
@@ -273,13 +276,13 @@ public class PlainTabsComponent extends BaseTabsComponent<PlainEditorTab> {
 
     for (PlainEditorTab t : myRealTabs) {
       if (t.getNode() != null && t.getNode().equals(getEditedNode())) {
-        myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(t)), true);
+        myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(t)), false);
         return;
       }
     }
     for (PlainEditorTab t : myRealTabs) {
       if (t.getNode() == null && t.getTab().equals(myLastEmptyTab)) {
-        myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(t)), true);
+        myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(t)), false);
         return;
       }
     }

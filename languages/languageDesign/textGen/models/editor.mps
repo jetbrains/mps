@@ -4,7 +4,7 @@
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <engage id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" />
@@ -2188,6 +2188,26 @@
   <node concept="22mcaB" id="1wEcoXjJxJo">
     <ref role="aqKnT" to="2omo:hY4Spyd" resolve="AbstractTextGenParameter" />
     <node concept="22hDWj" id="xzgvwPPpKo" role="22hAXT" />
+  </node>
+  <node concept="24kQdi" id="4URE8v9faf2">
+    <property role="3GE5qa" value="operation" />
+    <ref role="1XX52x" to="2omo:4URE8v98gJD" resolve="BinaryWriteOperation" />
+    <node concept="3EZMnI" id="4URE8v9faji" role="2wV5jI">
+      <node concept="3F0ifn" id="4URE8v9falT" role="3EZMnx">
+        <property role="3F0ifm" value="write" />
+        <ref role="1k5W1q" node="hWXehqE" resolve="TextGenOperation" />
+      </node>
+      <node concept="3F1sOY" id="4URE8v9faxJ" role="3EZMnx">
+        <ref role="1NtTu8" to="2omo:4URE8v98h6s" resolve="data" />
+      </node>
+      <node concept="3F0ifn" id="4URE8v9faEe" role="3EZMnx">
+        <property role="3F0ifm" value=";" />
+        <node concept="3$7fVu" id="4URE8v9faJk" role="3F10Kt">
+          <property role="3$6WeP" value="-1.0" />
+        </node>
+      </node>
+      <node concept="l2Vlx" id="4URE8v9faMH" role="2iSdaV" />
+    </node>
   </node>
 </model>
 

@@ -19,7 +19,7 @@ public class EnumerationDescriptor_BuildMps_GeneratorOptions_SkipUnmodifiedModel
   private final EnumerationDescriptor.MemberDescriptor myMember_never_0 = new EnumerationDescriptor.MemberDescriptor("never", "never", 0x37b3e610a73c6cdL, "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/4241665505353447979");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37b3e610a73c6cbL, 0x37b3e610a73c6ccL, 0x37b3e610a73c6cdL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_use_mps_generator_skipUnmodifiedModels_macro_0, myMember_never_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_use_mps_generator_skipUnmodifiedModels_macro_0, myMember_never_0);
 
   @Nullable
   @Override

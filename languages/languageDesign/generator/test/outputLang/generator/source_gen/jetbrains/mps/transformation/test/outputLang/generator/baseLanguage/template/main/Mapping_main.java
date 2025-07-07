@@ -25,7 +25,7 @@ import jetbrains.mps.generator.impl.reference.RefResolver;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
+import jetbrains.mps.generator.runtime.PatternMatch;
 import jetbrains.mps.generator.template.PatternRuleContext;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.runtime.MapRootRuleBase;
@@ -88,7 +88,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "8900764248744322637"), CONCEPTS.OutputNode$Ou, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_3(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -215,7 +215,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_0(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_0(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -233,7 +233,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_1(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_1(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -292,7 +292,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_2(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_2(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -323,7 +323,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_3(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_3(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -344,7 +344,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_4(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_4(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -392,7 +392,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_5(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_5(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -409,7 +409,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_6(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_6(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -447,7 +447,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_7(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_7(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -483,16 +483,16 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3571912445009918064"), CONCEPTS.BlockStatement$u4, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_0(new WeavingMappingRuleContext(context, getRuleNode()));
     }
-    @NotNull
     @Override
-    public SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context) {
-      return QueriesGenerated.weavingRule_ContextQuery_0_0(new WeavingMappingRuleContext(context, getRuleNode()));
-    }
-    @Override
-    public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
+    public boolean apply(@NotNull final TemplateContext context) throws GenerationException {
+      final SNode outputContextNode = QueriesGenerated.weavingRule_ContextQuery_0_0(new WeavingMappingRuleContext(context, getRuleNode()));
+      if (!(checkContextNode(context, outputContextNode))) {
+        return false;
+      }
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
       Iterable<SNode> weaveEachList = QueriesGenerated.sourceNodesQuery_0_0(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3571912445009918068")));
       final TemplateCallSite callSite = environment.callSite(new Template_weave_Statement(), new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3571912445009918068"));
       boolean result = false;
@@ -513,16 +513,16 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "6458924870076051564"), CONCEPTS.BlockStatement$u4, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_1(new WeavingMappingRuleContext(context, getRuleNode()));
     }
-    @NotNull
     @Override
-    public SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context) {
-      return QueriesGenerated.weavingRule_ContextQuery_0_1(new WeavingMappingRuleContext(context, getRuleNode()));
-    }
-    @Override
-    public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
+    public boolean apply(@NotNull final TemplateContext context) throws GenerationException {
+      final SNode outputContextNode = QueriesGenerated.weavingRule_ContextQuery_0_1(new WeavingMappingRuleContext(context, getRuleNode()));
+      if (!(checkContextNode(context, outputContextNode))) {
+        return false;
+      }
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
       Iterable<SNode> weaveEachList = QueriesGenerated.sourceNodesQuery_0_1(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "6458924870076075773")));
       final TemplateCallSite callSite = environment.callSite(new Template_weave_StmtToCons(), new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "6458924870076075773"));
       boolean result = false;

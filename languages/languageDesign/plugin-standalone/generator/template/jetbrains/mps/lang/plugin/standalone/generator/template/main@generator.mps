@@ -16,7 +16,6 @@
     <import index="cddg" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.plugins.applicationplugins(MPS.Workbench/)" />
     <import index="xj2j" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.plugins.projectplugins(MPS.Workbench/)" />
     <import index="k6zk" ref="r:2d25e22e-2ee8-4e84-89da-295e3fc8de94(jetbrains.mps.lang.plugin.standalone.generator.util)" />
-    <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="obo9" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.plugins.actions(MPS.Platform/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
@@ -25,7 +24,6 @@
     <import index="wzm8" ref="r:c38b095a-620d-449b-83bf-eebdb57fa62c(jetbrains.mps.lang.plugin.generator.util)" />
     <import index="9ti4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.extensions(MPS.IDEA/)" />
     <import index="tp4s" ref="r:00000000-0000-4000-0000-011c89590360(jetbrains.mps.lang.plugin.behavior)" />
-    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="sclo" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.plugins.prefs(MPS.Platform/)" />
     <import index="tp4h" ref="r:00000000-0000-4000-0000-011c8959036d(jetbrains.mps.baseLanguage.classifiers.behavior)" />
     <import index="tp4l" ref="r:00000000-0000-4000-0000-011c89590369(jetbrains.mps.lang.plugin.generator.baseLanguage.template.main@generator)" />
@@ -173,9 +171,6 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
-      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
-        <reference id="1116615189566" name="classifier" index="3VsUkX" />
-      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="479c7a8c-02f9-43b5-9139-d910cb22f298" name="jetbrains.mps.core.xml">
@@ -971,16 +966,12 @@
           </node>
         </node>
       </node>
-      <node concept="3clFbF" id="2TmYHHddUvi" role="3cqZAp">
-        <node concept="2OqwBi" id="2TmYHHddUvj" role="3clFbG">
-          <node concept="2OqwBi" id="2TmYHHddUvk" role="2Oq$k0">
-            <node concept="liA8E" id="2TmYHHddUvl" role="2OqNvi">
-              <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-              <node concept="3VsKOn" id="2TmYHHddUwl" role="37wK5m">
-                <ref role="3VsUkX" to="xj2j:~ProjectPluginManager" resolve="ProjectPluginManager" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="3GM_nagTrmz" role="2Oq$k0">
+      <node concept="3clFbF" id="70GTXuBbc6N" role="3cqZAp">
+        <node concept="2OqwBi" id="70GTXuBbeKV" role="3clFbG">
+          <node concept="2YIFZM" id="70GTXuBbdVC" role="2Oq$k0">
+            <ref role="37wK5l" to="xj2j:~ProjectPluginManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+            <ref role="1Pybhc" to="xj2j:~ProjectPluginManager" resolve="ProjectPluginManager" />
+            <node concept="37vLTw" id="3GM_nagTrmz" role="37wK5m">
               <ref role="3cqZAo" node="2TmYHHddUvM" resolve="project" />
               <node concept="29HgVG" id="2TmYHHddUw6" role="lGtFl">
                 <node concept="3NFfHV" id="2TmYHHddUw7" role="3NFExx">
@@ -998,7 +989,7 @@
               </node>
             </node>
           </node>
-          <node concept="liA8E" id="2TmYHHddUvy" role="2OqNvi">
+          <node concept="liA8E" id="70GTXuBbg2i" role="2OqNvi">
             <ref role="37wK5l" to="xj2j:~ProjectPluginManager.getTool(java.lang.Class)" resolve="getTool" />
             <node concept="1OoodG" id="4gD2fissWeL" role="37wK5m">
               <node concept="2eloPW" id="4gD2fissWeW" role="1Ooz5N">
@@ -1045,7 +1036,7 @@
                           <node concept="3cpWs6" id="29M5tb0R_$B" role="3cqZAp">
                             <node concept="2tJFMh" id="29M5tb0RITk" role="3cqZAk">
                               <node concept="ZC_QK" id="29M5tb0RKs8" role="2tJFKM">
-                                <ref role="2aWVGs" to="eqyk:~GeneratedTool" resolve="GeneratedTool" />
+                                <ref role="2aWVGs" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
                               </node>
                             </node>
                           </node>
@@ -1067,7 +1058,7 @@
                       <node concept="3cpWs6" id="29M5tb0RC1F" role="3cqZAp">
                         <node concept="2tJFMh" id="29M5tb0RE$z" role="3cqZAk">
                           <node concept="ZC_QK" id="29M5tb0RG11" role="2tJFKM">
-                            <ref role="2aWVGs" to="71xd:~BaseTool" resolve="BaseTool" />
+                            <ref role="2aWVGs" to="eqyk:~GeneratedTool" resolve="GeneratedTool" />
                           </node>
                         </node>
                       </node>
@@ -1077,7 +1068,7 @@
               </node>
             </node>
           </node>
-          <node concept="raruj" id="2TmYHHddUvI" role="lGtFl" />
+          <node concept="raruj" id="70GTXuBbgeM" role="lGtFl" />
         </node>
       </node>
     </node>
@@ -1092,38 +1083,13 @@
           <node concept="3cpWsn" id="2TmYHHddRBZ" role="3cpWs9">
             <property role="TrG5h" value="project" />
             <node concept="3uibUv" id="4My7loyoQyS" role="1tU5fm">
-              <ref role="3uigEE" to="z1c4:~Project" resolve="Project" />
+              <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="2TmYHHddRC1" role="3cqZAp">
           <node concept="2OqwBi" id="2TmYHHddRC2" role="3clFbG">
             <node concept="raruj" id="2TmYHHddRC3" role="lGtFl" />
-            <node concept="2OqwBi" id="2TmYHHddRC4" role="2Oq$k0">
-              <node concept="37vLTw" id="3GM_nagTtkr" role="2Oq$k0">
-                <ref role="3cqZAo" node="2TmYHHddRBZ" resolve="project" />
-                <node concept="29HgVG" id="2TmYHHddRC6" role="lGtFl">
-                  <node concept="3NFfHV" id="2TmYHHddRC7" role="3NFExx">
-                    <node concept="3clFbS" id="2TmYHHddRC8" role="2VODD2">
-                      <node concept="3clFbF" id="2TmYHHddRC9" role="3cqZAp">
-                        <node concept="2OqwBi" id="2TmYHHddRCa" role="3clFbG">
-                          <node concept="2qgKlT" id="2TmYHHddRCc" role="2OqNvi">
-                            <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
-                          </node>
-                          <node concept="30H73N" id="2TmYHHddRCb" role="2Oq$k0" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="liA8E" id="2TmYHHddUn$" role="2OqNvi">
-                <ref role="37wK5l" to="z1c4:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="2TmYHHddUnF" role="37wK5m">
-                  <ref role="3VsUkX" to="xj2j:~ProjectPluginManager" resolve="ProjectPluginManager" />
-                </node>
-              </node>
-            </node>
             <node concept="liA8E" id="2TmYHHddRCe" role="2OqNvi">
               <ref role="37wK5l" to="xj2j:~ProjectPluginManager.getPrefsComponent(java.lang.Class)" resolve="getPrefsComponent" />
               <node concept="1OoodG" id="2TcvkTvIepE" role="37wK5m">
@@ -1147,6 +1113,27 @@
                               <ref role="37wK5l" to="tp4s:4gD2fissWfp" resolve="getGeneratedClassFQName" />
                             </node>
                           </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2YIFZM" id="4fcW_bU0Osh" role="2Oq$k0">
+              <ref role="37wK5l" to="xj2j:~ProjectPluginManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="xj2j:~ProjectPluginManager" resolve="ProjectPluginManager" />
+              <node concept="37vLTw" id="3GM_nagTtkr" role="37wK5m">
+                <ref role="3cqZAo" node="2TmYHHddRBZ" resolve="project" />
+                <node concept="29HgVG" id="2TmYHHddRC6" role="lGtFl">
+                  <node concept="3NFfHV" id="2TmYHHddRC7" role="3NFExx">
+                    <node concept="3clFbS" id="2TmYHHddRC8" role="2VODD2">
+                      <node concept="3clFbF" id="2TmYHHddRC9" role="3cqZAp">
+                        <node concept="2OqwBi" id="2TmYHHddRCa" role="3clFbG">
+                          <node concept="2qgKlT" id="2TmYHHddRCc" role="2OqNvi">
+                            <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                          </node>
+                          <node concept="30H73N" id="2TmYHHddRCb" role="2Oq$k0" />
                         </node>
                       </node>
                     </node>

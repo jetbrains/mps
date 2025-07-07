@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="6" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
@@ -16,7 +16,6 @@
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="5b0" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.presentation(MPS.Core/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="fnmy" ref="r:89c0fb70-0977-4113-a076-5906f9d8630f(jetbrains.mps.baseLanguage.scopes)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
@@ -1897,70 +1896,8 @@
     <ref role="1M2myG" to="tpee:fKRm8J8" resolve="EnumConstantReference" />
     <node concept="1N5Pfh" id="hDMFLSP" role="1Mr941">
       <ref role="1N5Vy1" to="tpee:fKRm8Ja" resolve="enumConstantDeclaration" />
-      <node concept="3dgokm" id="5Vvmn_Qkhz$" role="1N6uqs">
-        <node concept="3clFbS" id="5Vvmn_Qkhz_" role="2VODD2">
-          <node concept="3clFbJ" id="5Vvmn_QkhzA" role="3cqZAp">
-            <node concept="3clFbS" id="5Vvmn_QkhzB" role="3clFbx">
-              <node concept="3cpWs6" id="5Vvmn_QkhzC" role="3cqZAp">
-                <node concept="2ShNRf" id="5Vvmn_QkhzD" role="3cqZAk">
-                  <node concept="1pGfFk" id="5Vvmn_QkhzE" role="2ShVmc">
-                    <ref role="37wK5l" to="6xgk:7lHSllLpTWM" resolve="NamedElementsScope" />
-                    <node concept="2YIFZM" id="5Vvmn_QkhzF" role="37wK5m">
-                      <ref role="1Pybhc" to="fnmy:2BGX2rDG2lb" resolve="Members" />
-                      <ref role="37wK5l" to="fnmy:2BGX2rDG48S" resolve="visibleEnumConstants" />
-                      <node concept="2OqwBi" id="5Vvmn_QkhzG" role="37wK5m">
-                        <node concept="1PxgMI" id="5Vvmn_QkhzH" role="2Oq$k0">
-                          <node concept="2rP1CM" id="5Vvmn_QkhzI" role="1m5AlR" />
-                          <node concept="chp4Y" id="5Vvmn_QkhzJ" role="3oSUPX">
-                            <ref role="cht4Q" to="tpee:fKRm8J8" resolve="EnumConstantReference" />
-                          </node>
-                        </node>
-                        <node concept="3TrEf2" id="5Vvmn_QkhzK" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tpee:gDPx2zY" resolve="enumClass" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="1Wc70l" id="5Vvmn_QkhzL" role="3clFbw">
-              <node concept="2OqwBi" id="5Vvmn_QkhzM" role="3uHU7w">
-                <node concept="2OqwBi" id="5Vvmn_QkhzN" role="2Oq$k0">
-                  <node concept="1PxgMI" id="5Vvmn_QkhzO" role="2Oq$k0">
-                    <node concept="2rP1CM" id="5Vvmn_QkhzP" role="1m5AlR" />
-                    <node concept="chp4Y" id="5Vvmn_QkhzQ" role="3oSUPX">
-                      <ref role="cht4Q" to="tpee:fKRm8J8" resolve="EnumConstantReference" />
-                    </node>
-                  </node>
-                  <node concept="3TrEf2" id="5Vvmn_QkhzR" role="2OqNvi">
-                    <ref role="3Tt5mk" to="tpee:gDPx2zY" resolve="enumClass" />
-                  </node>
-                </node>
-                <node concept="3x8VRR" id="5Vvmn_QkhzS" role="2OqNvi" />
-              </node>
-              <node concept="2OqwBi" id="5Vvmn_QkhzT" role="3uHU7B">
-                <node concept="2rP1CM" id="5Vvmn_QkhzU" role="2Oq$k0" />
-                <node concept="1mIQ4w" id="5Vvmn_QkhzV" role="2OqNvi">
-                  <node concept="chp4Y" id="5Vvmn_QkhzW" role="cj9EA">
-                    <ref role="cht4Q" to="tpee:fKRm8J8" resolve="EnumConstantReference" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="9aQIb" id="5Vvmn_QkhzX" role="9aQIa">
-              <node concept="3clFbS" id="5Vvmn_QkhzY" role="9aQI4">
-                <node concept="3cpWs6" id="5Vvmn_QkhzZ" role="3cqZAp">
-                  <node concept="2ShNRf" id="5Vvmn_Qkh$0" role="3cqZAk">
-                    <node concept="1pGfFk" id="5Vvmn_Qkh$1" role="2ShVmc">
-                      <ref role="37wK5l" to="o8zo:7ipADkTfAzT" resolve="EmptyScope" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
+      <node concept="1dDu$B" id="3f8fofOEuXz" role="1N6uqs">
+        <ref role="1dDu$A" to="tpee:fKQsSyN" resolve="EnumConstantDeclaration" />
       </node>
     </node>
   </node>

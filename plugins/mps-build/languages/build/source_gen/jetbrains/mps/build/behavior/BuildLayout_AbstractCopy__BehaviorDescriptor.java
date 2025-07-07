@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
-import jetbrains.mps.build.util.LocalSourcePathArtifact;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -82,16 +81,7 @@ public final class BuildLayout_AbstractCopy__BehaviorDescriptor extends BaseBHDe
         }
       }
     }
-    if (object instanceof LocalSourcePathArtifact) {
-      LocalSourcePathArtifact art = (LocalSourcePathArtifact) object;
-      if (art.getRoot() != SNodeOperations.getContainingRoot(__thisNode__)) {
-        return false;
-      }
-
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U) && !(art.isFolder())) {
-        return Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U), LINKS.path$dYr6)));
-      }
-    }
+    // see BuildLayout_File.exports() for LocalSourcePathArtifact branch comment
     return false;
   }
 

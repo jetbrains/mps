@@ -66,4 +66,8 @@ public class ProgressMonitorDecorator implements ProgressMonitor {
   public ProgressMonitor subTask(int work, SubProgressKind kind) {
     return myDelegate.subTask(work, kind);
   }
+
+  protected ProgressMonitor getDelegate() {
+    return myDelegate;
+  }
 }

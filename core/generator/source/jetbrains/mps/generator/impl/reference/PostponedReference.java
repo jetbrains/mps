@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,8 +98,6 @@ public final class PostponedReference {
     if (myReplacementTarget != null) {
       mySourceNode.setReference(myLink, myReplacementTarget);
     } else {
-      // XXX seems that implementation triggers 'ref changed' event regardless of link presence. Is that what I want here?
-      //     Perhaps, shall check for link presence and clean it only when there's one.
       mySourceNode.dropReference(myLink);
     }
   }

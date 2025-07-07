@@ -110,10 +110,24 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
-          intentions[0] = new CreateScript_Intention();
+          intentions[0] = new MapSrcListToLoop_Intention();
         }
         break;
       case 10:
+        if (true) {
+          // concept
+          intentions = new IntentionFactory[1];
+          intentions[0] = new BlankMapSrcToLabel_Intention();
+        }
+        break;
+      case 11:
+        if (true) {
+          // concept
+          intentions = new IntentionFactory[1];
+          intentions[0] = new CreateScript_Intention();
+        }
+        break;
+      case 12:
         if (true) {
           // concept
           intentions = new IntentionFactory[2];
@@ -121,35 +135,35 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[1] = new NewTemplateInSwitchCase_Intention();
         }
         break;
-      case 11:
+      case 13:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new UnwrapQueryExpression_Intention();
         }
         break;
-      case 12:
+      case 14:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertTemplateDeclRefToInlineTemplate_Intention();
         }
         break;
-      case 13:
+      case 15:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInSwitchDefault_Intention();
         }
         break;
-      case 14:
+      case 16:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInWeaveEach_Intention();
         }
         break;
-      case 15:
+      case 17:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
@@ -165,7 +179,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[29];
+    IntentionFactory[] rv = new IntentionFactory[31];
     rv[0] = new ConvertInlineTemplateToTemplateFragment_Intention();
     rv[1] = new ConvertTemplateDeclRefToInlineTemplate_Intention();
     rv[2] = new AddNodeMacro_Intention();
@@ -195,7 +209,9 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[26] = new UnwrapQueryExpression_Intention();
     rv[27] = new ConvertToReferenceCall_Intention();
     rv[28] = new ToggleNeedCallSite_Intention();
+    rv[29] = new BlankMapSrcToLabel_Intention();
+    rv[30] = new MapSrcListToLoop_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11dc0f7933bL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fdbf49L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L), MetaIdFactory.conceptId(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x380132d742e8ccb0L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013906056L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11dc0f7933bL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fdbf49L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L), MetaIdFactory.conceptId(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x107ce4fbf98L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x380132d742e8ccb0L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013906056L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L), MetaIdFactory.conceptId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L)).seal();
 }

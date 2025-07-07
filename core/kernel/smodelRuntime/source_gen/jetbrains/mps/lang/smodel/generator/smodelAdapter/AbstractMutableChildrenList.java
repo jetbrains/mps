@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import java.util.ListIterator;
 
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6135675736569312103", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "6135675736569312103", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
   @Override
   public int size() {
@@ -237,5 +237,5 @@ public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
 
   protected abstract void insertBefore(SNode node, SNode anchor);
 
-  protected abstract void addFirst(SNode node);
+  public abstract void addFirst(SNode node);
 }

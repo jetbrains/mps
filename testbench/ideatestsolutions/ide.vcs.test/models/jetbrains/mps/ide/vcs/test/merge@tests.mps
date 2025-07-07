@@ -60,6 +60,9 @@
     <import index="i8bi" ref="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
+    <import index="1038" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.changes(jetbrains.mps.vcs.idea.stubs/)" />
+    <import index="qv1u" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.impl.projectlevelman(jetbrains.mps.vcs.idea.stubs/)" />
+    <import index="j86p" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.impl(jetbrains.mps.vcs.idea.stubs/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
@@ -724,7 +727,7 @@
       <property role="TrG5h" value="myChangeListManager" />
       <node concept="3Tmbuc" id="7HgS$Vk38ek" role="1B3o_S" />
       <node concept="3uibUv" id="5xKkC$6gQRf" role="1tU5fm">
-        <ref role="3uigEE" to="1037:~ChangeListManagerImpl" resolve="ChangeListManagerImpl" />
+        <ref role="3uigEE" to="1038:~ChangeListManagerImpl" resolve="ChangeListManagerImpl" />
       </node>
     </node>
     <node concept="312cEg" id="3oUomEoMJrS" role="jymVt">
@@ -1010,7 +1013,7 @@
               <ref role="3cqZAo" node="3oUomEoMAZS" resolve="myChangeListManager" />
             </node>
             <node concept="liA8E" id="4g0Mut8A69N" role="2OqNvi">
-              <ref role="37wK5l" to="1037:~ChangeListManagerImpl.ensureUpToDate()" resolve="ensureUpToDate" />
+              <ref role="37wK5l" to="1038:~ChangeListManagerImpl.ensureUpToDate()" resolve="ensureUpToDate" />
             </node>
           </node>
         </node>
@@ -1318,8 +1321,8 @@
               <ref role="3cqZAo" node="3oUomEoMAZS" resolve="myChangeListManager" />
             </node>
             <node concept="2YIFZM" id="5xKkC$6gRy3" role="37vLTx">
-              <ref role="1Pybhc" to="1037:~ChangeListManagerImpl" resolve="ChangeListManagerImpl" />
-              <ref role="37wK5l" to="1037:~ChangeListManagerImpl.getInstanceImpl(com.intellij.openapi.project.Project)" resolve="getInstanceImpl" />
+              <ref role="1Pybhc" to="1038:~ChangeListManagerImpl" resolve="ChangeListManagerImpl" />
+              <ref role="37wK5l" to="1038:~ChangeListManagerImpl.getInstanceImpl(com.intellij.openapi.project.Project)" resolve="getInstanceImpl" />
               <node concept="37vLTw" id="2BHiRxeukm9" role="37wK5m">
                 <ref role="3cqZAo" node="3oUomEoMJuI" resolve="myIdeaProject" />
               </node>
@@ -1381,8 +1384,8 @@
             </node>
             <node concept="2OqwBi" id="3oUomEoMJu6" role="37vLTx">
               <node concept="2YIFZM" id="3oUomEoMJu7" role="2Oq$k0">
-                <ref role="1Pybhc" to="qv1t:~AllVcses" resolve="AllVcses" />
-                <ref role="37wK5l" to="qv1t:~AllVcses.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                <ref role="1Pybhc" to="qv1u:~AllVcses" resolve="AllVcses" />
+                <ref role="37wK5l" to="qv1u:~AllVcses.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
                 <node concept="37vLTw" id="2BHiRxeuyOo" role="37wK5m">
                   <ref role="3cqZAo" node="3oUomEoMJuI" resolve="myIdeaProject" />
                 </node>
@@ -1553,7 +1556,7 @@
                   <ref role="3cqZAo" node="5qjuzPoksoa" resolve="projectVcsManager" />
                 </node>
                 <node concept="3uibUv" id="5qjuzPokMzT" role="2ZW6by">
-                  <ref role="3uigEE" to="j86o:~ProjectLevelVcsManagerImpl" resolve="ProjectLevelVcsManagerImpl" />
+                  <ref role="3uigEE" to="j86p:~ProjectLevelVcsManagerImpl" resolve="ProjectLevelVcsManagerImpl" />
                 </node>
               </node>
               <node concept="3clFbS" id="5qjuzPoksok" role="3clFbx">
@@ -1565,12 +1568,12 @@
                           <ref role="3cqZAo" node="5qjuzPoksoa" resolve="projectVcsManager" />
                         </node>
                         <node concept="3uibUv" id="5qjuzPoksop" role="10QFUM">
-                          <ref role="3uigEE" to="j86o:~ProjectLevelVcsManagerImpl" resolve="ProjectLevelVcsManagerImpl" />
+                          <ref role="3uigEE" to="j86p:~ProjectLevelVcsManagerImpl" resolve="ProjectLevelVcsManagerImpl" />
                         </node>
                       </node>
                     </node>
                     <node concept="liA8E" id="5qjuzPokOug" role="2OqNvi">
-                      <ref role="37wK5l" to="j86o:~ProjectLevelVcsManagerImpl.waitForInitialized()" resolve="waitForInitialized" />
+                      <ref role="37wK5l" to="j86p:~ProjectLevelVcsManagerImpl.waitForInitialized()" resolve="waitForInitialized" />
                     </node>
                   </node>
                 </node>
@@ -1637,7 +1640,7 @@
               <ref role="3cqZAo" node="3oUomEoMAZS" resolve="myChangeListManager" />
             </node>
             <node concept="liA8E" id="4g0Mut8AUue" role="2OqNvi">
-              <ref role="37wK5l" to="1037:~ChangeListManagerImpl.waitEverythingDoneInTestMode()" resolve="waitEverythingDoneInTestMode" />
+              <ref role="37wK5l" to="1038:~ChangeListManagerImpl.waitEverythingDoneInTestMode()" resolve="waitEverythingDoneInTestMode" />
             </node>
           </node>
         </node>
@@ -2395,7 +2398,7 @@
                 <ref role="3cqZAo" node="3oUomEoMAZS" resolve="myChangeListManager" />
               </node>
               <node concept="liA8E" id="7HgS$VjMeL5" role="2OqNvi">
-                <ref role="37wK5l" to="1037:~ChangeListManagerImpl.getChange(com.intellij.openapi.vfs.VirtualFile)" resolve="getChange" />
+                <ref role="37wK5l" to="1038:~ChangeListManagerImpl.getChange(com.intellij.openapi.vfs.VirtualFile)" resolve="getChange" />
                 <node concept="37vLTw" id="13_Xm7whLV2" role="37wK5m">
                   <ref role="3cqZAo" node="7HgS$Vkatzs" resolve="modelFile" />
                 </node>
@@ -3090,12 +3093,16 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="27IppHbm$l5" role="3cqZAp">
-          <node concept="2YIFZM" id="1jLye1tLY32" role="3clFbG">
-            <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
-            <ref role="37wK5l" to="fyhk:~RuntimeFlags.setMergeDriverMode(boolean)" resolve="setMergeDriverMode" />
-            <node concept="3clFbT" id="1jLye1tLYv3" role="37wK5m">
-              <property role="3clFbU" value="true" />
+        <node concept="1X3_iC" id="7k0BSM1Eb3n" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3clFbF" id="27IppHbm$l5" role="8Wnug">
+            <node concept="2YIFZM" id="1jLye1tLY32" role="3clFbG">
+              <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+              <ref role="37wK5l" to="fyhk:~RuntimeFlags.setMergeDriverMode(boolean)" resolve="setMergeDriverMode" />
+              <node concept="3clFbT" id="1jLye1tLYv3" role="37wK5m">
+                <property role="3clFbU" value="true" />
+              </node>
             </node>
           </node>
         </node>

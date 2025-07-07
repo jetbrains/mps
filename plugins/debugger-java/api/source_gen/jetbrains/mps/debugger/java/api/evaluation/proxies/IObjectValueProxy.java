@@ -8,7 +8,7 @@ import jetbrains.mps.debugger.java.api.evaluation.InvalidEvaluatedExpressionExce
 import com.sun.jdi.ThreadReference;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationException;
 
-@GeneratedClass(node = "r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)/4727801710070563570", model = "r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)")
+@GeneratedClass(nodeId = "4727801710070563570", model = "r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)")
 public interface IObjectValueProxy extends IValueProxy {
   @Nullable
   IValueProxy getFieldValue(String fieldName) throws InvalidEvaluatedExpressionException;

@@ -21,7 +21,7 @@ import java.io.File;
  * If employed directly, needs module reference and class name from the module that perform actual work.
  * Supports few predefined approaches to instantiate the actual work class and fire its execution.
  */
-@GeneratedClass(node = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)/6744798568372185045", model = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)")
+@GeneratedClass(nodeId = "6744798568372185045", model = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)")
 public class CoreWorker extends WorkerBase {
   private final String myModuleRef;
   private final String myClassName;

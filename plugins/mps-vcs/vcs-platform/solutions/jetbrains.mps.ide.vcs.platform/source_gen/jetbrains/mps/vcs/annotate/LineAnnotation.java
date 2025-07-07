@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.history.CommitsGraphNode;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/6338414166361132708", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "6338414166361132708", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ final class LineAnnotation {
 
   @NotNull

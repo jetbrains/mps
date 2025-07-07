@@ -20,6 +20,7 @@ import jetbrains.mps.nodeEditor.cells.collections.AbstractContainerParameterized
 import jetbrains.mps.nodeEditor.cells.collections.CellContainer;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -404,6 +405,11 @@ public class ContainerTests<T> extends AbstractContainerParameterizedTest<T> {
 
     @Override
     public TextBuilder renderText() {
+      return null;
+    }
+
+    @Override
+    public HtmlTextBuilder renderHtml() {
       return null;
     }
 

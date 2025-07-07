@@ -113,7 +113,7 @@ public class ResolveUtil {
     SNode result = SNodeOperations.copyNode(method);
 
     ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.modifiers$F5MM)).clear();
-    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.annotation$K49I)).where((it) -> (SLinkOperations.getTarget(it, LINKS.annotation$12Ek) == null) && Objects.equals((SLinkOperations.getResolveInfo(SNodeOperations.getReference(it, LINKS.annotation$12Ek))), "HotSpotIntrinsicCandidate")).visitAll((it) -> SNodeOperations.deleteNode(it));
+    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.annotation$K49I)).where((it) -> (SLinkOperations.getTarget(it, LINKS.annotation$12Ek) == null) && (Objects.equals((SLinkOperations.getResolveInfo(SNodeOperations.getReference(it, LINKS.annotation$12Ek))), "HotSpotIntrinsicCandidate") || Objects.equals((SLinkOperations.getResolveInfo(SNodeOperations.getReference(it, LINKS.annotation$12Ek))), "IntrinsicCandidate"))).visitAll((it) -> SNodeOperations.deleteNode(it));
 
     List<SNode> initialClassifierTypes = ListSequence.fromList(new ArrayList<SNode>());
     if (SNodeOperations.isInstanceOf(enclosingClassifier, CONCEPTS.ClassConcept$bK)) {

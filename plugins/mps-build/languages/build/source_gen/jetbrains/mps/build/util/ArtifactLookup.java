@@ -41,7 +41,7 @@ public class ArtifactLookup {
     }
     SNode containingRoot = SNodeOperations.getContainingRoot(path);
     while (current != null) {
-      result = findArtifact(new LocalSourcePathArtifact(containingRoot, BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(current), true));
+      result = findArtifact(new LocalSourcePathArtifact(containingRoot, BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(current)));
       if (result != null) {
         return MultiTuple.<SNode,String>from(result, suffix.toString());
       }

@@ -29,6 +29,7 @@
   <uses module="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" kind="dp" />
   <uses module="cc7da2f6-419f-4133-a811-31fcd3295a85(jetbrains.mps.debugger.api.api)" kind="dp" />
   <uses module="25891414-2b70-48c7-b1cc-8dc0c127d669(jetbrains.mps.debugger.api.runtime)" kind="dp" />
+  <uses module="2a8426d7-9821-433c-b388-dc3b0cd9e395(jetbrains.mps.debugger.core)" kind="dp" />
   <uses module="36c11d2d-1875-4a95-8bdb-70ea1ac63222(jetbrains.mps.execution.api)" kind="dp" />
   <uses module="bfbdd672-7ff5-403f-af4f-16da5226f34c(jetbrains.mps.findUsages.runtime)" kind="dp" />
   <uses module="019b622b-0aef-4dd3-86d0-4eef01f3f6bb(jetbrains.mps.ide)" kind="dp" />
@@ -40,6 +41,5 @@
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
   <uses module="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
-  <uses module="f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)" kind="dp" />
 </dependenciesRoot>
 

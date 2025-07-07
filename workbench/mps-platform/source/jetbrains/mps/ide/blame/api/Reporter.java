@@ -148,11 +148,13 @@ public class Reporter {
     // create array of custom fields
     List<API.IssueCustomField> customFields = new ArrayList<>();
     // Affected version
-    API.IssueCustomField fieldVersion = new API.IssueCustomField();
-    fieldVersion.name = AFFECTED_VERSIONS_FIELD;
-    fieldVersion.$type = AFFECTED_VERSIONS_FIELD_TYPE;
-    fieldVersion.value = new API.BundleElement[] { new API.BundleElement(affectedVersion) };
-    customFields.add(fieldVersion);
+    if (affectedVersion != null) {
+      API.IssueCustomField fieldVersion = new API.IssueCustomField();
+      fieldVersion.name = AFFECTED_VERSIONS_FIELD;
+      fieldVersion.$type = AFFECTED_VERSIONS_FIELD_TYPE;
+      fieldVersion.value = new API.BundleElement[]{new API.BundleElement(affectedVersion)};
+      customFields.add(fieldVersion);
+    }
     // Type
     if (type != null) {
       API.IssueCustomField fieldType = new API.IssueCustomField();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,6 @@ import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SReference;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -47,14 +46,6 @@ import java.util.function.Supplier;
 public class BareNodeReader {
   protected final Supplier<SModelReference> myModelReference;
   protected final ModelInputStream myIn;
-
-  /**
-   * @deprecated use {@link #BareNodeReader(Supplier, ModelInputStream)} instead
-   */
-@Deprecated(since = "2020.2", forRemoval = true)
-  public BareNodeReader(@NotNull SModelReference modelReference, @NotNull ModelInputStream is) {
-    this (() -> modelReference, is);
-  }
 
   public BareNodeReader(@NotNull Supplier<SModelReference> localModelRef, @NotNull ModelInputStream is) {
     myModelReference = localModelRef;

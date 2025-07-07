@@ -71,7 +71,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
     rtqMethods.put("4636242761502876135", new RTQ(0, "getValue"));
-    rtqMethods.put("4636242761502876145", new RTQ(1, "Def"));
+    rtqMethods.put("4636242761502876145", new RTQ(1, "DescriptorClass.Def"));
     rtqMethods.put("546470471387639841", new RTQ(2, "getClass"));
   }
   @NotNull

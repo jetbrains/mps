@@ -19,8 +19,10 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import jetbrains.mps.plugins.projectplugins.BaseProjectPlugin;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
+import jetbrains.mps.util.ModuleNameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,15 +32,27 @@ import java.util.Properties;
 /*package*/ final class ModulePluginContributor2 extends PluginContributor {
   private static final Logger LOG = Logger.getLogger(ModulePluginContributor2.class);
 
+  private static final String PLUGIN_STRING = ".plugin.";
+  private static final String PROJECT_PLUGIN_SUFFIX = "_ProjectPlugin";
+  private static final String APP_PLUGIN_SUFFIX = "_ApplicationPlugin";
+
   private final ModuleRuntime myModule;
 
-  @NotNull
-  public ModuleRuntime getModule() {
-    return myModule;
+  private static String getProjectPluginClassName(SModuleReference module) {
+    return String.format("%s%s%s%s", module.getModuleName(), PLUGIN_STRING, ModuleNameUtil.getModuleShortName(module), PROJECT_PLUGIN_SUFFIX);
+  }
+
+  private static String getApplicationPluginClassName(SModuleReference module) {
+    return String.format("%s%s%s%s", module.getModuleName(), PLUGIN_STRING, ModuleNameUtil.getModuleShortName(module), APP_PLUGIN_SUFFIX);
   }
 
   public ModulePluginContributor2(@NotNull ModuleRuntime module) {
     myModule = module;
+  }
+
+  @NotNull
+  public ModuleRuntime getModule() {
+    return myModule;
   }
 
   @Override
@@ -48,7 +62,7 @@ import java.util.Properties;
     Properties cfg = getComponentStartupConfiguration();
     if (cfg == null || (pluginClassName = cfg.getProperty("init.application")) == null) {
       // fallback to legacy, name convention approach
-      pluginClassName = ModulePluginContributor.getApplicationPluginClassName(myModule.getSourceModule());
+      pluginClassName = getApplicationPluginClassName(myModule.getSourceModule());
       nameByConvention = true;
     }
     return pluginClassName == null ? null : createPlugin(BaseApplicationPlugin.class, pluginClassName, nameByConvention);
@@ -61,7 +75,7 @@ import java.util.Properties;
     Properties cfg = getComponentStartupConfiguration();
     if (cfg == null || (pluginClassName = cfg.getProperty("init.project")) == null) {
       // fallback to legacy, name convention approach
-      pluginClassName = ModulePluginContributor.getProjectPluginClassName(myModule.getSourceModule());
+      pluginClassName = getProjectPluginClassName(myModule.getSourceModule());
       nameByConvention = true;
     }
     return pluginClassName == null ? null : createPlugin(BaseProjectPlugin.class, pluginClassName, nameByConvention);

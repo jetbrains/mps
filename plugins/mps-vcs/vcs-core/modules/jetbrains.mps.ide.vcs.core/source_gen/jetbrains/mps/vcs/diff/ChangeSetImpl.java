@@ -31,7 +31,7 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.vcs.diff.changes.HierarchicalNodeGroupChange;
 
-@GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/7082523601896740167", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
+@GeneratedClass(nodeId = "7082523601896740167", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 public class ChangeSetImpl implements ModelChangeSet {
   private final SModel myOldModel;
   private final SModel myNewModel;

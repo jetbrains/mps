@@ -31,12 +31,9 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.SReferenceBase;
-import java.util.Objects;
+import jetbrains.mps.smodel.SNodeImplAccess;
 
 public class UpdateDependentModelsRefactoringParticipant extends RefactoringParticipantBase<SModelReference, SModelReference, SModel, SModel> implements MoveModelRefactoringParticipant<SModelReference, SModelReference> {
 
@@ -109,9 +106,10 @@ public class UpdateDependentModelsRefactoringParticipant extends RefactoringPart
     }).toList();
   }
 
-  public static void updateUsages(EditableSModel usageModel, final SModelReference oldModelReference, final SModelReference newModelReference) {
-    Iterable<SNode> nodes = (Iterable<SNode>) SNodeUtil.getDescendants(usageModel);
-    Sequence.fromIterable(nodes).translate((it) -> SNodeOperations.getReferences(it)).ofType(SReferenceBase.class).where((it) -> Objects.equals(it.getTargetSModelReference(), oldModelReference)).visitAll((it) -> it.setTargetSModelReference(newModelReference));
+  public static void updateUsages(@NotNull EditableSModel usageModel, @NotNull SModelReference oldModelReference, @NotNull SModelReference newModelReference) {
+    for (SNode r : usageModel.getRootNodes()) {
+      new SNodeImplAccess(r).rerouteAssociationDeep(oldModelReference, newModelReference);
+    }
     usageModel.setChanged(true);
   }
 

@@ -154,15 +154,24 @@ public interface ModelGenerationPlan {
 
   final class Fork implements Step {
     private final List<Step> myBranch;
+    private String myGenerationTarget;
 
     public Fork(List<Step> branch) {
       myBranch = branch;
+    }
+
+    public Fork(List<Step> branch, String generationTarget) {
+      this(branch);
+      myGenerationTarget = generationTarget;
     }
 
     public List<Step> getBranch() {
       return myBranch;
     }
 
+    public String getGenerationTarget() {
+      return myGenerationTarget;
+    }
   }
 
   /**

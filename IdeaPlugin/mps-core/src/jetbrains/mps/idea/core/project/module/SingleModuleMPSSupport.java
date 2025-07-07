@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
-import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.project.SolutionIdea;
 import jetbrains.mps.messages.MessageKind;
@@ -100,8 +99,7 @@ public class SingleModuleMPSSupport extends ModuleMPSSupport {
 
     SolutionDescriptor descriptor = new SolutionDescriptor();
     descriptor.setId(ModuleId.foreign(module.getName()));
-    descriptor.setOutputPath(outputPath);
-    descriptor.setCompileInMPS(false);
+    descriptor.setOutputRoot(outputPath);
 
     ArrayList<IFile> sourceRoots = new ArrayList<>();
 

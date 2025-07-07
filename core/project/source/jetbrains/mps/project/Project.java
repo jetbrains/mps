@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.BaseScope;
 import jetbrains.mps.smodel.Language;
@@ -95,7 +96,17 @@ public abstract class Project implements MPSModuleOwner, IProject {
     return myName;
   }
 
+  /**
+   * Generic access MPS and IDEA components.
+   */
   public abstract <T> T getComponent(Class<T> t);
+
+  /**
+   * @return gives access to {@link jetbrains.mps.components.CoreComponent components} that constitute MPS platform
+   * @since 2023.3
+   */
+  @NotNull
+  public abstract ComponentHost getPlatform();
 
   /**
    * @deprecated use {@link #getProjectModules)} instead
@@ -168,7 +179,7 @@ public abstract class Project implements MPSModuleOwner, IProject {
   }
 
   /**
-   * Project-sensitive replacement for {@code CachingFileSystem.scheduleUpdateForWrittenFiles(Iterable<IFile> writtenFiles)}.
+   * Project-sensitive replacement for app-wide {@code CachingFileSystem.scheduleUpdateForWrittenFiles(Iterable<IFile> writtenFiles)}.
    * Tells project that its certain files were likely modified by external code and need a refresh.
    * Primary purpose of the method is to let IDEA-backed project implementation to let VCS know about file changes
    * that had happened not through IDEA VFS mechanism (see MPS-14247 and MPS-29564)

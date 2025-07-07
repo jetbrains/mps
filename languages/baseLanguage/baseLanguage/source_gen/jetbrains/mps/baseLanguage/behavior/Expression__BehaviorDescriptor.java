@@ -9,9 +9,9 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -28,6 +28,7 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<String> getVariableExpectedName_idhEwJgm_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVariableExpectedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877519781L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> isLValue_idhEwJgmE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877519786L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isChildAssignedInAssignment_id79$CF9VcmHc = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isChildAssignedInAssignment").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8242892105449565004L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> isCompileTimeConstant_idi1LOPRp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCompileTimeConstant").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238860258777L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Object> getCompileTimeConstantValue_idi1LP2xI = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getCompileTimeConstantValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238860310638L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SModule.class, ""));
   public static final SMethod<Boolean> isLegalAsStatement_idi26MfYG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLegalAsStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239211900844L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
@@ -41,7 +42,7 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getExpressionWhereThisIsTheLeftMost_id7q$fTYjOrRt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpressionWhereThisIsTheLeftMost").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8549027947268390365L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getExpressionWhereThisIsTheRightMost_id6bbTzIwEwNG = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpressionWhereThisIsTheRightMost").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7119036779762158828L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, isLValue_idhEwJgmE, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, isLegalAsStatement_idi26MfYG, lvalue_id1653mnvAgpj, legalAsStatement_id1653mnvAgqK, constant_id1653mnvAgr2, singleValue_id1o8Ht9sES3u, getPrecedenceLevel_id1O90zDONSxM, isLeftMostExpression_id7q$fTYk8pKO, isRightMostExpression_id6bbTzIwEnym, getExpressionWhereThisIsTheLeftMost_id7q$fTYjOrRt, getExpressionWhereThisIsTheRightMost_id6bbTzIwEwNG);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, isLValue_idhEwJgmE, isChildAssignedInAssignment_id79$CF9VcmHc, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, isLegalAsStatement_idi26MfYG, lvalue_id1653mnvAgpj, legalAsStatement_id1653mnvAgqK, constant_id1653mnvAgr2, singleValue_id1o8Ht9sES3u, getPrecedenceLevel_id1O90zDONSxM, isLeftMostExpression_id7q$fTYk8pKO, isRightMostExpression_id6bbTzIwEnym, getExpressionWhereThisIsTheLeftMost_id7q$fTYjOrRt, getExpressionWhereThisIsTheRightMost_id6bbTzIwEwNG);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -51,6 +52,9 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean isLValue_idhEwJgmE(@NotNull SNode __thisNode__) {
     return (boolean) Expression__BehaviorDescriptor.lvalue_id1653mnvAgpj.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)));
+  }
+  /*package*/ static boolean isChildAssignedInAssignment_id79$CF9VcmHc(@NotNull SNode __thisNode__, SNode child) {
+    return false;
   }
   /*package*/ static boolean isCompileTimeConstant_idi1LOPRp(@NotNull SNode __thisNode__) {
     return (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)));
@@ -148,18 +152,20 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
       case 1:
         return (T) ((Boolean) isLValue_idhEwJgmE(node));
       case 2:
-        return (T) ((Boolean) isCompileTimeConstant_idi1LOPRp(node));
+        return (T) ((Boolean) isChildAssignedInAssignment_id79$CF9VcmHc(node, (SNode) parameters[0]));
       case 3:
-        return (T) ((Object) getCompileTimeConstantValue_idi1LP2xI(node, (SModule) parameters[0]));
+        return (T) ((Boolean) isCompileTimeConstant_idi1LOPRp(node));
       case 4:
+        return (T) ((Object) getCompileTimeConstantValue_idi1LP2xI(node, (SModule) parameters[0]));
+      case 5:
         return (T) ((Boolean) isLegalAsStatement_idi26MfYG(node));
-      case 10:
-        return (T) ((Boolean) isLeftMostExpression_id7q$fTYk8pKO(node));
       case 11:
-        return (T) ((Boolean) isRightMostExpression_id6bbTzIwEnym(node));
+        return (T) ((Boolean) isLeftMostExpression_id7q$fTYk8pKO(node));
       case 12:
-        return (T) ((SNode) getExpressionWhereThisIsTheLeftMost_id7q$fTYjOrRt(node));
+        return (T) ((Boolean) isRightMostExpression_id6bbTzIwEnym(node));
       case 13:
+        return (T) ((SNode) getExpressionWhereThisIsTheLeftMost_id7q$fTYjOrRt(node));
+      case 14:
         return (T) ((SNode) getExpressionWhereThisIsTheRightMost_id6bbTzIwEwNG(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -173,15 +179,15 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 5:
-        return (T) ((Boolean) lvalue_id1653mnvAgpj(concept));
       case 6:
-        return (T) ((Boolean) legalAsStatement_id1653mnvAgqK(concept));
+        return (T) ((Boolean) lvalue_id1653mnvAgpj(concept));
       case 7:
-        return (T) ((Boolean) constant_id1653mnvAgr2(concept));
+        return (T) ((Boolean) legalAsStatement_id1653mnvAgqK(concept));
       case 8:
-        return (T) ((Boolean) singleValue_id1o8Ht9sES3u(concept));
+        return (T) ((Boolean) constant_id1653mnvAgr2(concept));
       case 9:
+        return (T) ((Boolean) singleValue_id1o8Ht9sES3u(concept));
+      case 10:
         return (T) ((PrecedenceUtil.Precedence) getPrecedenceLevel_id1O90zDONSxM(concept));
       default:
         throw new BHMethodNotFoundException(this, method);

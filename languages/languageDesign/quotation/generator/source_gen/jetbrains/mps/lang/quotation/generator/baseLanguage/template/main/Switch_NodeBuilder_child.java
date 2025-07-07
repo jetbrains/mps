@@ -67,7 +67,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101627334"), CONCEPTS.NodeBuilderInitValueChild$Hw, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_5_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

@@ -11,6 +11,7 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -21,21 +22,24 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.behavior.ITypeArguments__BehaviorDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class JavaDefaultConstructorSuperSpecifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x5b64d6b00d756286L, "jetbrains.mps.kotlin.javaRefs.structure.JavaDefaultConstructorSuperSpecifier");
 
   public static final SMethod<SNode> getInheritedType_id5q426iHvzD9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInheritedType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6234117012688091721L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> convertToNonConstructor_id1$jFvlEUFDL = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("convertToNonConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145078061681L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<FunctionDeclaration> getConstructorDescriptor_idnhyiqudFLy = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getConstructorDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(419267039278316642L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<FunctionDeclaration> getFunctionDescriptor_id26mUjU3xhgD = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunctionDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2420378304462001193L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SReferenceLink> getTargetLink_id5D4bOjrrcOr = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getTargetLink").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734615461147L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<String> getFunctionName_id4nn3FPlEjh5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5032507314958578757L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInheritedType_id5q426iHvzD9, convertToNonConstructor_id1$jFvlEUFDL, getConstructorDescriptor_idnhyiqudFLy);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInheritedType_id5q426iHvzD9, convertToNonConstructor_id1$jFvlEUFDL, getFunctionDescriptor_id26mUjU3xhgD, getTargetLink_id5D4bOjrrcOr, getFunctionName_id4nn3FPlEjh5);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -51,11 +55,17 @@ public final class JavaDefaultConstructorSuperSpecifier__BehaviorDescriptor exte
     SLinkOperations.setTarget(specifier, LINKS.classifier$dpcA, SLinkOperations.getTarget(__thisNode__, LINKS.classifier$ZmfH));
     return specifier;
   }
-  /*package*/ static FunctionDeclaration getConstructorDescriptor_idnhyiqudFLy(@NotNull SNode __thisNode__) {
+  /*package*/ static FunctionDeclaration getFunctionDescriptor_id26mUjU3xhgD(@NotNull SNode __thisNode__) {
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.classifier$ZmfH) == null)) {
       return null;
     }
     return new JavaDefaultConstructorDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$ZmfH));
+  }
+  /*package*/ static SReferenceLink getTargetLink_id5D4bOjrrcOr(@NotNull SNode __thisNode__) {
+    return LINKS.classifier$ZmfH;
+  }
+  /*package*/ static String getFunctionName_id4nn3FPlEjh5(@NotNull SNode __thisNode__) {
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$ZmfH), PROPS.name$MnvL);
   }
 
   /*package*/ JavaDefaultConstructorSuperSpecifier__BehaviorDescriptor() {
@@ -78,7 +88,11 @@ public final class JavaDefaultConstructorSuperSpecifier__BehaviorDescriptor exte
       case 1:
         return (T) ((SNode) convertToNonConstructor_id1$jFvlEUFDL(node));
       case 2:
-        return (T) ((FunctionDeclaration) getConstructorDescriptor_idnhyiqudFLy(node));
+        return (T) ((FunctionDeclaration) getFunctionDescriptor_id26mUjU3xhgD(node));
+      case 3:
+        return (T) ((SReferenceLink) getTargetLink_id5D4bOjrrcOr(node));
+      case 4:
+        return (T) ((String) getFunctionName_id4nn3FPlEjh5(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -117,5 +131,9 @@ public final class JavaDefaultConstructorSuperSpecifier__BehaviorDescriptor exte
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept JavaClassSuperSpecifier$BW = MetaAdapterFactory.getConcept(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0xfd0b6783f85b1faL, "jetbrains.mps.kotlin.javaRefs.structure.JavaClassSuperSpecifier");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

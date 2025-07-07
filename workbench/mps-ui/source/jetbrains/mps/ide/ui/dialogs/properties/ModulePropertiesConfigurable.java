@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,6 +58,7 @@ import jetbrains.mps.VisibleModuleRegistry;
 import jetbrains.mps.extapi.module.FacetsRegistry;
 import jetbrains.mps.findUsages.CompositeFinder;
 import jetbrains.mps.icons.MPSIcons.General;
+import jetbrains.mps.ide.documentation.DocumentationFacetTab;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.holders.GenericHolder;
@@ -87,12 +88,12 @@ import jetbrains.mps.ide.ui.finders.LanguageModelImportFinder;
 import jetbrains.mps.ide.ui.finders.LanguageUsagesFinder;
 import jetbrains.mps.ide.ui.finders.ModelUsagesFinder;
 import jetbrains.mps.ide.ui.finders.ModuleUsagesFinder;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ModuleInstanceCondition;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.VisibleModuleCondition;
 import jetbrains.mps.project.structure.modules.Dependency;
@@ -114,13 +115,15 @@ import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.ConditionalIterable;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.ToStringComparator;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
@@ -137,6 +140,7 @@ import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SearchScope;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 import org.jetbrains.mps.openapi.ui.Modifiable;
 import org.jetbrains.mps.openapi.ui.persistence.Tab;
 
@@ -196,8 +200,9 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
    */
   private final SRepository myModuleRepository;
   private final Project myIdeaProject;
-  private final List<FacetCheckBox> myCheckBoxes = new ArrayList<>();
   private final FacetTabsPersistence myFacetTabsPersistence;
+
+  private AddFacetsTab myControlTab;
 
   // We are tightly coupled with IDEA IDE here, no reason to be shy about project kind.
   public ModulePropertiesConfigurable(SModule module, MPSProject project) {
@@ -226,6 +231,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         registerTabs(new GeneratorAdvancesTab((Generator) myModule, new GeneratorDependencyProvider(moduleDependenciesTab)));
       }
     }
+    // facet tabs and managing AddFacetTab get updated on each apply to reflect actual SModuleFacet instances, see #apply(), below
     for (SModuleFacet moduleFacet : myModule.getFacets()) {
       Tab facetTab = myFacetTabsPersistence.getFacetTab(moduleFacet);
       if (facetTab != null) {
@@ -233,7 +239,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       }
     }
 
-    registerTabs(new AddFacetsTab());
+    registerTabs(myControlTab = new AddFacetsTab());
   }
 
   @Override
@@ -245,13 +251,40 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
   }
 
   @Override
+  public void apply() {
+    super.apply();
+    final int selectedTabIndex = getSelectedTabIndex();
+    myFacetTabsPersistence.forEachTab(this::removeTab);
+    myFacetTabsPersistence.clearTabs();
+    removeTab(myControlTab);
+    myModuleRepository.getModelAccess().runReadAction(() -> {
+      // unlike similar code in the cons, above, we init() and add tabs right away
+      for (SModuleFacet moduleFacet : myModule.getFacets()) {
+        Tab facetTab = myFacetTabsPersistence.getFacetTab(moduleFacet);
+        if (facetTab != null) {
+          facetTab.init();
+          addTab(facetTab);
+        }
+      }
+      myControlTab = new AddFacetsTab();
+      myControlTab.init();
+      addTab(myControlTab);
+    });
+    if (getTabsCount() > selectedTabIndex) {
+      // XXX indeed, not a very nice assumption that new tabs are in the same order, just didn't find a better way to keep actual tab open
+      selectTab(selectedTabIndex);
+    }
+  }
+
+  @Override
   protected void save() {
     // let facet instances serialize their data into facet descriptors. Would be better to do that for
     // changed (Tab.isModified()) facets only, but there's no (easy?) way to figure out module facet from a tab, thus
     // we save all module facets with active descriptors (it's AddFacetTab#apply() responsibility to add facet descriptors
     // for newly added facets, and to remove descriptors for unchecked facets. This sharing is questionable, perhaps, could do both here).
+    ModulePersistenceContext mpc = PersistenceContextImpl.forModule(myModule);
     for (SModuleFacet moduleFacet : myModule.getFacets()) {
-      myModuleDescriptor.updateFacetDescriptor(moduleFacet);
+      myModuleDescriptor.updateFacetDescriptor(moduleFacet, mpc);
     }
 
     if (myModule instanceof Language) {
@@ -455,8 +488,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     }
 
     private String getGenOutPath() {
-      String outputDir = ProjectPathUtil.getGeneratorOutputPath(myModuleDescriptor);
-      return outputDir != null ? FileUtil.getCanonicalPath(outputDir) : "";
+      IFile outputDir = myModule.getOutputPath();
+      return outputDir != null ? FileUtil.getCanonicalPath(outputDir.getPath()) : "";
     }
 
     @Override
@@ -520,8 +553,21 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         if (myGenOut != null) {
           String genOut = PathUtil.toSystemIndependent(myGenOut.getText());
           if (!genOut.equals(getGenOutPath())) {
-            // here we imply getGenOutPath uses ProjectPathUtil.getGeneratorOutputPath
-            ProjectPathUtil.setGeneratorOutputPath(myModuleDescriptor, genOut);
+            if (genOut.isEmpty()) {
+              myModule.setOutputPath(null);
+              // this comes as MPS-36789 fix, the reason is save(), above, first set MD, which triggers update of field values
+              // of AM from MD, effectively clearing AM.outputPath
+              myModuleDescriptor.setOutputRoot(genOut);
+            } else {
+              // here we imply getGenOutPath() method uses AM.getOutputPath()
+              IFileSystem localFS = myMPSProject.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
+              // can not use IDEA's LocalFileSystem here as it's not friendly with non-existent files
+              IFile vfGenOut = localFS.getFile(myGenOut.getText());
+              // XXX in fact, due to save()/setMD logic (see comment above), there's no real need to set IFile, can do MD.setOutputRoot only!
+              // utilize the fact AM keeps IFile (perhaps, shall resort to PathSpec, instead?)
+              myModule.setOutputPath(vfGenOut);
+              myModuleDescriptor.setOutputRoot(genOut); // see above, have to decide how we edit a module
+            }
           }
         }
         if (myLanguageVersion != null) {
@@ -543,13 +589,12 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         if (myGeneratorAlias != null) {
           ((GeneratorDescriptor) myModuleDescriptor).setAlias(myGeneratorAlias.getText().trim());
         }
-        // XXX utilize the fact getModelRootDescriptors() gives by-reference value.
-        myModuleDescriptor.getModelRootDescriptors().clear();
+        myModuleDescriptor.clearModelRootDescriptors();
         myEntriesEditor.apply(myModuleDescriptor.getModelRootDescriptors());
       }
       if (renameTo != null) {
         final String finalRenameTo = renameTo;
-        Renamer r = new Renamer(myMPSProject, myModule, null);
+        Renamer r = new Renamer((MPSProject) myMPSProject, myModule, null);
         myMPSProject.getModelAccess().runReadAction(r::collectRenames);
         r.prepareRename(finalRenameTo);
         if (r.hasPrimaryRename() || r.hasDependantRenames()) {
@@ -612,10 +657,10 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         if (isDevkit) {
           selectionSet = new ConditionalIterable<>(selectionSet, new VisibleModuleCondition());
         }
-        ComputeRunnable<List<SModuleReference>> c = new ComputeRunnable<>(new ModuleCollector(selectionSet));
-        myMPSProject.getModelAccess().runReadAction(c);
+
+        final List<SModuleReference> c = myMPSProject.getModelAccess().computeReadAction(new ModuleCollector(selectionSet));
         final String dialogTitle = isDevkit ? "Choose DevKit contents" : "Choose modules";
-        final List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, dialogTitle, c.getResult());
+        final List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, dialogTitle, c);
         if (list.isEmpty()) {
           return;
         }
@@ -797,9 +842,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       decorator.setAddAction(anActionButton -> {
         Iterable<SModule> modules = new ConditionalIterable<>(getProjectModules(), new ModuleInstanceCondition(Solution.class));
         modules = new ConditionalIterable<>(modules, new VisibleModuleCondition());
-        ComputeRunnable<List<SModuleReference>> c = new ComputeRunnable<>(new ModuleCollector(modules));
-        myMPSProject.getModelAccess().runReadAction(c);
-        List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, "Choose solutions", c.getResult());
+        List<SModuleReference> c = myMPSProject.getModelAccess().computeReadAction(new ModuleCollector(modules));
+        List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, "Choose solutions", c);
         for (SModuleReference reference : list) {
           myRuntimeTableModel.addItem(reference);
         }
@@ -1124,7 +1168,6 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       myTable.setAutoscrolls(true);
       myTable.getTableHeader().setReorderingAllowed(false);
 
-
       myPrioritiesTableModel = new GenPrioritiesTableModel(myGenerator.getModuleDescriptor());
       myTable.setModel(myPrioritiesTableModel);
 
@@ -1165,10 +1208,10 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
             GeneratorPrioritiesTree.expandAllRows(checkboxTree);
 
-            // TODO: find better solution: this introduces bug, when row can't be resized to smaller height
-            table.setRowHeight(
-                row, Math.max(checkboxTree.getPreferredSize().height + 10, table.getRowHeight(row))
-            );
+//            // TODO: find better solution: this introduces bug, when row can't be resized to smaller height
+//            table.setRowHeight(
+//                row, Math.max(checkboxTree.getPreferredSize().height + 10, table.getRowHeight(row))
+//            );
 
             // Needed to set background color
             checkboxTree.setOpaque(true);
@@ -1302,7 +1345,6 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         myPrioritiesTableModel.fireTableDataChanged();
       }).setRemoveAction(new RemoveEntryAction(myTable));
       decorator.setToolbarBorder(IdeBorderFactory.createBorder());
-      decorator.setPreferredSize(new Dimension(500, 300));
 
       panel.add(decorator.createPanel(), new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -1319,6 +1361,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
                 new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
                                     GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 
+      panel.setPreferredSize(new Dimension(500, 300));
       setTabComponent(panel);
     }
 
@@ -1461,6 +1504,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
   }
 
   public class AddFacetsTab extends BaseTab {
+    private final List<FacetCheckBox> myCheckBoxes = new ArrayList<>();
 
     public AddFacetsTab() {
       super(PropertiesBundle.message("module.facets.title"), Nodes.Plugin, PropertiesBundle.message("module.facets.tip"));
@@ -1556,17 +1600,29 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     public void apply() {
       for (FacetCheckBox checkBox : myCheckBoxes) {
         SModuleFacet facet = checkBox.getFacet();
+        Tab tab = checkBox.getTab();
         if (checkBox.isNewlyCreated()) {
-          Tab tab = checkBox.getTab();
           if (tab != null) {
             // not all facets necessarily feature UI component, but in case they do, let the tab populate facet with updated values.
             // The reason is that apply() for AddFacetsTab comes earlier than apply to any newly added tab (due to natural order of tab addition).
             // Should not be an issue to apply twice (once here and subsequently from MPSPropertiesConfigurable#apply())
             tab.apply();
+            if (tab instanceof DocumentationFacetTab) {
+              // DocumentationFacetTab#apply() requires SModule, which is unavailable
+              // due to `DocumentationFacet.module` being null.
+              // That's why I use DocumentationFacetTab#apply(SModule).
+              ((DocumentationFacetTab) tab).apply(myModule);
+            }
           }
           myModuleDescriptor.addFacetDescriptor(facet);
           checkBox.created();
         } else if (checkBox.isExistingToRemove()) {
+          if (tab != null) {
+            tab.unapply();
+            if (tab instanceof DocumentationFacetTab){
+              ((DocumentationFacetTab) tab).unapply(myModule);
+            }
+          }
           myModuleDescriptor.removeFacetDescriptor(checkBox.getFacet());
           checkBox.existingRemoved();
         }
@@ -1639,7 +1695,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
           // (2) not to use Facet instance to represent a tab but rather ModuleFacetDescriptor (the code that adds facet in apply
           // goes from Facet instance through MFD anyway). Latter change is far greater and would expose memento keys to UI
           // (now FacetTab could use typed access of Facet instance), which is not perfect either.
-          myFacet.load(new MementoImpl());
+          // XXX I wonder why not to extend ModuleFacet interface with another, explicit `loadDefaults()` method?
+          myFacet.load(new MementoImpl(), PersistenceContextImpl.forModule(myModule));
         }
         if (myFacetTab == null) {
           myFacetTab = myFacetTabsPersistence.getFacetTab(myFacet);

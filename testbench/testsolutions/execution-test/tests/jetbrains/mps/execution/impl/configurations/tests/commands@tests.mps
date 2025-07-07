@@ -21,7 +21,6 @@
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="go48" ref="r:fc6b4266-fe93-4e02-bc36-aebff4c903c3(jetbrains.mps.baseLanguage.execution.api)" />
     <import index="uu3z" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.process(MPS.IDEA/)" />
-    <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
     <import index="3v5a" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution(MPS.IDEA/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
@@ -31,14 +30,11 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="ni5j" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.regex(JDK/)" />
-    <import index="mioz" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.debugger.impl(MPS.IDEA/)" />
+    <import index="lxc5" ref="r:b25f8540-4e18-427d-a8ac-60f947a3fbc1(jetbrains.mps.baselanguage.unitTest.execution)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="1225467090849" name="jetbrains.mps.lang.test.structure.ProjectExpression" flags="nn" index="1jxXqW" />
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
         <property id="2616911529524314943" name="accessMode" index="3DII0k" />
@@ -1813,7 +1809,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4e85Rl_tNV6" role="2OqNvi">
-                <ref role="37wK5l" to="tpnd:2Zbjobgq4VN" resolve="getQualifiedName" />
+                <ref role="37wK5l" to="lxc5:2Zbjobgq4VN" resolve="getQualifiedName" />
               </node>
             </node>
           </node>
@@ -1907,7 +1903,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4e85Rl_tRDt" role="2OqNvi">
-                <ref role="37wK5l" to="tpnd:2Zbjobgq4VN" resolve="getQualifiedName" />
+                <ref role="37wK5l" to="lxc5:2Zbjobgq4VN" resolve="getQualifiedName" />
               </node>
             </node>
           </node>
@@ -2001,7 +1997,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4e85Rl_tWFU" role="2OqNvi">
-                <ref role="37wK5l" to="tpnd:2Zbjobgq4VN" resolve="getQualifiedName" />
+                <ref role="37wK5l" to="lxc5:2Zbjobgq4VN" resolve="getQualifiedName" />
               </node>
             </node>
           </node>
@@ -2202,9 +2198,6 @@
     <node concept="3uibUv" id="4e85Rl_sjv5" role="1zkMxy">
       <ref role="3uigEE" to="sfqd:4e85Rl_r7L4" resolve="TestStateAdapter" />
     </node>
-  </node>
-  <node concept="2XOHcx" id="1vx7prqViv8">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
 </model>
 

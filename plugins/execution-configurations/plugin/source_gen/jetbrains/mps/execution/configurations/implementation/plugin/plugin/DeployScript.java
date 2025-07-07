@@ -85,9 +85,7 @@ public class DeployScript {
       IResult result = null;
       try {
         result = future.get();
-      } catch (CancellationException ignore) {
-      } catch (InterruptedException ignore) {
-      } catch (ExecutionException ignore) {
+      } catch (CancellationException | InterruptedException | ExecutionException ignore) {
       }
       if (result == null || !(result.isSucessful())) {
         if (LOG.isErrorLevel()) {
@@ -121,8 +119,16 @@ public class DeployScript {
 
     private TemporalModuleWithDescriptorFile(@NotNull IFile baseDir) {
       super(baseDir.findChild("module.msd"));
+      // unusual example of AM subclass that doesn't need MD, just a file (likely, to address build lang peculiarities for paths in BuildProject)
+      // however, absence of MD makes ModelDependencyUpdate.updateModuleDepenencies() call, above, pointless.
       setModuleReference(new ModuleReference("Temp module for assembling plugins", ModuleId.regular()));
+      // FIXME I wonder if JMF is what we need here, not some PlainTextTargetFacet.
+      //      besides, what about AM.getOutputPath()
       myJavaModuleFacet = new NaiveJavaModuleFacet(this, baseDir.findChild("MODULE_SOURCE_GEN"), baseDir.findChild("MODULE_CLASSES_GEN"));
+    }
+
+    @Override
+    protected void updateFacets() {
     }
 
     @NotNull

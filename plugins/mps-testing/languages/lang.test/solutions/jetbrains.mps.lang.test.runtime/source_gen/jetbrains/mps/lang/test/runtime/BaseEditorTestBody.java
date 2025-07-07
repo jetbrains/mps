@@ -11,6 +11,7 @@ import jetbrains.mps.ide.editor.MPSFileNodeEditor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.ThreadUtils;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import jetbrains.mps.nodeEditor.NodeEditorComponent;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -116,11 +117,14 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   private void doInitEditor(final String before, final String after) throws Exception {
-    addNodeById(before);
-    if (!(after.equals(""))) {
-      addNodeById(after);
-    }
     myProject.getModelAccess().runWriteAction(() -> {
+      ArrayList<String> toCopy = new ArrayList<>();
+      toCopy.add(before);
+      if (!(after.equals(""))) {
+        toCopy.add(after);
+      }
+      prepareTestNodes(toCopy.toArray(new String[toCopy.size()]));
+
       myBefore = getNodeById(before);
       myStart = findCellReference(getRealNodeById(before));
       if (myStart == null) {
@@ -276,7 +280,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
     runUndoableCommandInEDTAndWait(() -> {
       SNode checkedNode = getEditorContext().getSelectedNode();
       SRepository repository = SNodeOperations.getModel(checkedNode).getRepository();
-      TestsErrorsChecker checker = new TestsErrorsChecker(myBefore);
+      TestsErrorsChecker checker = new TestsErrorsChecker(myBefore, myProject.getPlatform());
       Iterable<NodeReportItem> reports = checker.getErrors(checkedNode);
       QuickFixBase fixToRun = null;
       for (NodeReportItem report : Sequence.fromIterable(reports)) {
@@ -401,7 +405,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   public void runUndoableInEDTAndWait(final Runnable runnable) throws InvocationTargetException, InterruptedException {
     UndoManagerImpl undoManager = (UndoManagerImpl) UndoManager.getInstance(ProjectHelper.toIdeaProject(myProject));
     CurrentEditorProvider oldEditorProvider = undoManager.getEditorProvider();
-    undoManager.setEditorProvider(new CurrentEditorProvider() {
+    undoManager.setOverriddenEditorProvider(new CurrentEditorProvider() {
       public FileEditor getCurrentEditor() {
         return myFileNodeEditor;
       }
@@ -413,7 +417,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
     flushEDTEvents();
     // some actions (Copy/Paste) are running one more command later
     flushEDTEvents();
-    undoManager.setEditorProvider(oldEditorProvider);
+    undoManager.setOverriddenEditorProvider(oldEditorProvider);
   }
 
   private CachingAppender installAppender() {

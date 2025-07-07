@@ -3,6 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
   <imports>
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
@@ -23,6 +24,7 @@
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
     <import index="4tc7" ref="r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)" />
     <import index="ao3" ref="7124e466-fc92-4803-a656-d7a6b7eb3910/java:jetbrains.mps.text(MPS.TextGen/)" />
+    <import index="z2i8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.icons(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -114,6 +116,7 @@
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
+      <concept id="1068580123157" name="jetbrains.mps.baseLanguage.structure.Statement" flags="nn" index="3clFbH" />
       <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
         <child id="1068580123160" name="condition" index="3clFbw" />
         <child id="1068580123161" name="ifTrue" index="3clFbx" />
@@ -2047,12 +2050,37 @@
               <node concept="1pGfFk" id="19IglfvZ0w0" role="2ShVmc">
                 <ref role="37wK5l" to="qqrq:~JBCheckBox.&lt;init&gt;(java.lang.String)" resolve="JBCheckBox" />
                 <node concept="Xl_RD" id="19IglfvZ0w1" role="37wK5m">
-                  <property role="Xl_RC" value="Disable Make On Startup" />
+                  <property role="Xl_RC" value="Do not compile on startup" />
                 </node>
               </node>
             </node>
             <node concept="37vLTw" id="19IglfvZ0w2" role="37vLTJ">
               <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="311V6Zi0bGe" role="3cqZAp">
+          <node concept="3cpWsn" id="311V6Zi0bGd" role="3cpWs9">
+            <property role="3TUv4t" value="true" />
+            <property role="TrG5h" value="tooltipMessage" />
+            <node concept="3uibUv" id="311V6Zi0bGf" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+            </node>
+            <node concept="Xl_RD" id="311V6Zi0bGg" role="33vP2m">
+              <property role="Xl_RC" value="Use with caution. Please read the documentation (press F1) before enabling." />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="311V6Zi0bGh" role="3cqZAp">
+          <node concept="2OqwBi" id="311V6Zi0ns$" role="3clFbG">
+            <node concept="37vLTw" id="311V6Zi0mA7" role="2Oq$k0">
+              <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
+            </node>
+            <node concept="liA8E" id="311V6Zi0ns_" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~JComponent.setToolTipText(java.lang.String)" resolve="setToolTipText" />
+              <node concept="37vLTw" id="311V6Zi0nsA" role="37wK5m">
+                <ref role="3cqZAo" node="311V6Zi0bGd" resolve="tooltipMessage" />
+              </node>
             </node>
           </node>
         </node>
@@ -2074,19 +2102,116 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="19IglfvZ0wa" role="3cqZAp">
-          <node concept="2OqwBi" id="19IglfvZ0wb" role="3clFbG">
-            <node concept="37vLTw" id="19IglfvZ0wc" role="2Oq$k0">
-              <ref role="3cqZAo" node="2qvp1d_lGJD" resolve="p" />
+        <node concept="3clFbH" id="311V6Zi0p64" role="3cqZAp" />
+        <node concept="3cpWs8" id="311V6Zi0r81" role="3cqZAp">
+          <node concept="3cpWsn" id="311V6Zi0r80" role="3cpWs9">
+            <property role="3TUv4t" value="true" />
+            <property role="TrG5h" value="wrapper" />
+            <node concept="3uibUv" id="311V6Zi0r82" role="1tU5fm">
+              <ref role="3uigEE" to="qqrq:~JBPanel" resolve="JBPanel" />
             </node>
-            <node concept="liA8E" id="19IglfvZ0wd" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
-              <node concept="37vLTw" id="19IglfvZ0we" role="37wK5m">
+            <node concept="2ShNRf" id="311V6Zi0xAm" role="33vP2m">
+              <node concept="1pGfFk" id="311V6Zi0xAt" role="2ShVmc">
+                <ref role="37wK5l" to="qqrq:~JBPanel.&lt;init&gt;()" resolve="JBPanel" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="311V6Zi0r84" role="3cqZAp">
+          <node concept="2OqwBi" id="311V6Zi0ziB" role="3clFbG">
+            <node concept="37vLTw" id="311V6Zi0xA1" role="2Oq$k0">
+              <ref role="3cqZAo" node="311V6Zi0r80" resolve="wrapper" />
+            </node>
+            <node concept="liA8E" id="311V6Zi0ziC" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.setLayout(java.awt.LayoutManager)" resolve="setLayout" />
+              <node concept="2ShNRf" id="311V6Zi0ziD" role="37wK5m">
+                <node concept="1pGfFk" id="311V6Zi0ziE" role="2ShVmc">
+                  <ref role="37wK5l" to="z60i:~FlowLayout.&lt;init&gt;(int,int,int)" resolve="FlowLayout" />
+                  <node concept="10M0yZ" id="311V6Zi0ziF" role="37wK5m">
+                    <ref role="1PxDUh" to="z60i:~FlowLayout" resolve="FlowLayout" />
+                    <ref role="3cqZAo" to="z60i:~FlowLayout.LEFT" resolve="LEFT" />
+                  </node>
+                  <node concept="3cmrfG" id="311V6Zi0ziG" role="37wK5m">
+                    <property role="3cmrfH" value="0" />
+                  </node>
+                  <node concept="3cmrfG" id="311V6Zi0ziH" role="37wK5m">
+                    <property role="3cmrfH" value="5" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="311V6Zi0r8a" role="3cqZAp">
+          <node concept="2OqwBi" id="311V6Zi0z57" role="3clFbG">
+            <node concept="37vLTw" id="311V6Zi0xAg" role="2Oq$k0">
+              <ref role="3cqZAo" node="311V6Zi0r80" resolve="wrapper" />
+            </node>
+            <node concept="liA8E" id="311V6Zi0z58" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
+              <node concept="37vLTw" id="311V6Zi0z59" role="37wK5m">
                 <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
               </node>
-              <node concept="10M0yZ" id="5Cdkp1SZYlM" role="37wK5m">
-                <ref role="3cqZAo" to="z60i:~BorderLayout.SOUTH" resolve="SOUTH" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="311V6Zi0r8e" role="3cqZAp">
+          <node concept="3cpWsn" id="311V6Zi0r8d" role="3cpWs9">
+            <property role="3TUv4t" value="true" />
+            <property role="TrG5h" value="icon" />
+            <node concept="3uibUv" id="311V6Zi0r8f" role="1tU5fm">
+              <ref role="3uigEE" to="qqrq:~JBLabel" resolve="JBLabel" />
+            </node>
+            <node concept="2ShNRf" id="311V6Zi0rJg" role="33vP2m">
+              <node concept="1pGfFk" id="311V6Zi0x_w" role="2ShVmc">
+                <ref role="37wK5l" to="qqrq:~JBLabel.&lt;init&gt;(javax.swing.Icon)" resolve="JBLabel" />
+                <node concept="10M0yZ" id="311V6Zi0Qej" role="37wK5m">
+                  <ref role="3cqZAo" to="z2i8:~AllIcons$General.Warning" resolve="Warning" />
+                  <ref role="1PxDUh" to="z2i8:~AllIcons$General" resolve="AllIcons.General" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="311V6Zi0r8i" role="3cqZAp">
+          <node concept="2OqwBi" id="311V6Zi0zx8" role="3clFbG">
+            <node concept="37vLTw" id="311V6Zi0x_B" role="2Oq$k0">
+              <ref role="3cqZAo" node="311V6Zi0r8d" resolve="icon" />
+            </node>
+            <node concept="liA8E" id="311V6Zi0zx9" role="2OqNvi">
+              <ref role="37wK5l" to="qqrq:~JBLabel.setToolTipText(java.lang.String)" resolve="setToolTipText" />
+              <node concept="37vLTw" id="311V6Zi0zxa" role="37wK5m">
+                <ref role="3cqZAo" node="311V6Zi0bGd" resolve="tooltipMessage" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="311V6Zi0r8l" role="3cqZAp">
+          <node concept="2OqwBi" id="311V6Zi0zIL" role="3clFbG">
+            <node concept="37vLTw" id="311V6Zi0x_J" role="2Oq$k0">
+              <ref role="3cqZAo" node="311V6Zi0r80" resolve="wrapper" />
+            </node>
+            <node concept="liA8E" id="311V6Zi0zIM" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
+              <node concept="37vLTw" id="311V6Zi0zIN" role="37wK5m">
+                <ref role="3cqZAo" node="311V6Zi0r8d" resolve="icon" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="311V6Zi0r8o" role="3cqZAp">
+          <node concept="2OqwBi" id="311V6Zi0yMr" role="3clFbG">
+            <node concept="37vLTw" id="311V6Zi0x_R" role="2Oq$k0">
+              <ref role="3cqZAo" node="2qvp1d_lGJD" resolve="p" />
+            </node>
+            <node concept="liA8E" id="311V6Zi0yMs" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
+              <node concept="37vLTw" id="311V6Zi0yMt" role="37wK5m">
+                <ref role="3cqZAo" node="311V6Zi0r80" resolve="wrapper" />
+              </node>
+              <node concept="10M0yZ" id="311V6Zi0_go" role="37wK5m">
                 <ref role="1PxDUh" to="z60i:~BorderLayout" resolve="BorderLayout" />
+                <ref role="3cqZAo" to="z60i:~BorderLayout.SOUTH" resolve="SOUTH" />
               </node>
             </node>
           </node>

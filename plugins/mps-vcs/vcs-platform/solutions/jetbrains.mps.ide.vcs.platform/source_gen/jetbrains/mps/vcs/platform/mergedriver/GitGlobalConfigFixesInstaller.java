@@ -12,7 +12,7 @@ import git4idea.crlf.GitCrlfUtil;
 import com.intellij.openapi.vcs.VcsException;
 import com.intellij.openapi.ui.Messages;
 
-@GeneratedClass(node = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/6590770702563546491", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
+@GeneratedClass(nodeId = "6590770702563546491", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
 /*package*/ class GitGlobalConfigFixesInstaller extends AbstractInstaller {
   private static final Logger LOG = Logger.getLogger(GitGlobalConfigFixesInstaller.class);
   public GitGlobalConfigFixesInstaller(Project project) {

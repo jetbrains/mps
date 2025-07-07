@@ -22,7 +22,7 @@ import jetbrains.mps.debug.api.programState.IValue;
 import javax.swing.Icon;
 import jetbrains.mps.debug.api.programState.WatchablesCategory;
 
-@GeneratedClass(node = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)/7129857096177041157", model = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)")
+@GeneratedClass(nodeId = "7129857096177041157", model = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)")
 public class ObjectWrapperFactory extends ValueWrapperFactory {
   @Override
   public boolean canWrapValue(@NotNull IValueProxy value) {

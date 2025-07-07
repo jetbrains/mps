@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect" version="2" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -91,7 +91,7 @@
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />
     </node>
     <node concept="1sEMCm" id="46nPloex5BD" role="1fTXyH">
-      <property role="1sEMCp" value="/textgen.html" />
+      <property role="1sEMCp" value="textgen.html" />
       <ref role="1fZFei" node="46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
     <node concept="T9mpH" id="33Cba0CiWLi" role="TkT64">

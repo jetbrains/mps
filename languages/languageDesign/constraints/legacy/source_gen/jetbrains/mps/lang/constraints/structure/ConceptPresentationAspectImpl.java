@@ -72,7 +72,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateAggregation(0x341b038f9307e5d8L, "alternativeIcon");
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL);
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a0b0zb);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_ConceptConstraints = cpb.create();
         }
         return props_ConceptConstraints;
@@ -392,7 +392,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ModelScopeEval:
         if (props_ModelScopeEval == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("ModelScopeEval");
+          cpb.rawPresentation("for model");
           props_ModelScopeEval = cpb.create();
         }
         return props_ModelScopeEval;

@@ -38,13 +38,7 @@ final class MyScrollBar extends JBScrollBar implements IdeGlassPane.TopComponent
 
   @Override
   public String getToolTipText(MouseEvent mouseEvent) {
-    // XXX do we need setPersistentUI() and myPersistentUI if we use regular getUI() here?
-    if (getUI() instanceof MessagesGutter) {
-      // FIXME odd direct use of MessagesGutter; need to get rid of in ScrollBarUI subclass(es?), too.
-      //       I'm not sure ScrollBarUI is the one to report tooltips, we'd rather stick to JComponent
-      //       and use ScrollBarUI just to find out editor location.
-      return ((MessagesGutter) getUI()).getMPSTooltipText(mouseEvent);
-    }
+    // no default tooltip
     return null;
   }
 }

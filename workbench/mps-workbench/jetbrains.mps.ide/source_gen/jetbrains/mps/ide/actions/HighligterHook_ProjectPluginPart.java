@@ -7,7 +7,7 @@ import jetbrains.mps.plugins.part.ProjectPluginPart;
 import jetbrains.mps.ide.highlighters.behavior.ConceptInheritanceHighlighter;
 import jetbrains.mps.project.MPSProject;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1401464578588050605", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1401464578588050605", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class HighligterHook_ProjectPluginPart extends ProjectPluginPart {
   private ConceptInheritanceHighlighter highlighter;
   public HighligterHook_ProjectPluginPart() {

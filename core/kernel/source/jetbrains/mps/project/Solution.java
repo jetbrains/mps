@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package jetbrains.mps.project;
 
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
-public class Solution extends ReloadableModuleBase {
+public class Solution extends AbstractModule implements ReloadableModule {
   private SolutionDescriptor mySolutionDescriptor;
   public static final String SOLUTION_MODELS = "models";
 
@@ -72,7 +72,7 @@ public class Solution extends ReloadableModuleBase {
     super.save();
 
     try {
-      DescriptorIO<SolutionDescriptor> io = DescriptorIOFacade.getInstance().standardProvider().solutionDescriptorIO();
+      DescriptorIO<SolutionDescriptor> io = new DescriptorIOFacade().standardProvider().solutionDescriptorIO();
       io.writeToFile(getModuleDescriptor(), getDescriptorFile());
     } catch (Exception ex) {
       Logger.getLogger(getClass()).error("Save failed", ex);
@@ -96,12 +96,5 @@ public class Solution extends ReloadableModuleBase {
     // there are uses of the method in JMFI to set up defaults
     // Logger.getLogger(getClass()).warnDeprecatedUse("Solution.getKind() and SolutionKind are deprecated, don't use");
     return getModuleDescriptor().getKind();
-  }
-
-  @Override
-  public boolean canLoadClasses() {
-    Logger.getLogger(Solution.class).warnDeprecatedUse("ReloadableModule.canLoadClasses() is scheduled for removal");
-    // TODO mps facet from this [like IDEA plugin facet]
-    return SModuleOperations.canSupplyExtensionsForMPS(this);
   }
 }

@@ -30,7 +30,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 
-@GeneratedClass(node = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)/8568892084424438073", model = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)")
+@GeneratedClass(nodeId = "8568892084424438073", model = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)")
 public final class FindersManager implements CoreComponent, LanguageRegistryListener {
   private static final Logger LOG = Logger.getLogger(FindersManager.class);
   private static FindersManager INSTANCE;

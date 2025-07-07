@@ -11,7 +11,7 @@ import jetbrains.mps.debug.api.programState.WatchablesCategory;
 import jetbrains.mps.debug.api.programState.IValue;
 import javax.swing.Icon;
 
-@GeneratedClass(node = "r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)/3187167456722650105", model = "r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)")
+@GeneratedClass(nodeId = "3187167456722650105", model = "r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)")
 public class JavaWatchpointValueWatchable extends JavaWatchable implements IWatchable {
   private final JavaValue myCachedValue;
   private final boolean myIsOld;

@@ -25,7 +25,7 @@ import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.internal.make.runtime.util.FilesDelta;
 import jetbrains.mps.textgen.trace.TraceInfoCache;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.WriteTransaction;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.make.script.IConfig;
 import java.util.Map;
@@ -104,7 +104,7 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
                 }
                 // XXX likely, this facet has to report files, and leave it up to subsequent facets to 
                 // perform actual copy
-                FileSystem.getInstance().runWriteTransaction(() -> {
+                new WriteTransaction(monitor.getSession().getProject().getPlatform(), () -> {
                   ListSequence.fromList(toCreate).visitAll((it) -> it.mkdirs());
                   ListSequence.fromList(toCopy).visitAll((ftc) -> IFileUtil.copyFileContent(ftc._0(), ftc._1()));
                 });

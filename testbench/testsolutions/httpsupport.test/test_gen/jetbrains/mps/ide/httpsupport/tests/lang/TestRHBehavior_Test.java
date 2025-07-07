@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.jetbrains.ide.BuiltInServerManager;
@@ -27,7 +27,7 @@ import jetbrains.mps.ide.httpsupport.tests.plugin.testConverter_Converter;
 @MPSLaunch
 public class TestRHBehavior_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(TestRHBehavior_Test.class, "${mps_home}", "r:9e9ac0ea-b755-4d57-b406-d0cd74445963(jetbrains.mps.ide.httpsupport.tests.lang@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestRHBehavior_Test.class).projectPath(null).modelRef("r:9e9ac0ea-b755-4d57-b406-d0cd74445963(jetbrains.mps.ide.httpsupport.tests.lang@tests)").reopenProject(null).build());
 
   public TestRHBehavior_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -101,25 +101,34 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_testRHSimple() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         String url = TestBody.this.buildRequest("/handlerTest/simple");
         TestBody.this.testRequestResponse(url, 200, "handled");
       });
     }
     public void test_testRHPost() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         String url = TestBody.this.buildRequest("/handlerTest/simplePost");
         TestBody.this.testRequestResponse(url, "POST", 200, "handled");
       });
     }
     public void test_testRHPostWithGet() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         String url = TestBody.this.buildRequest("/handlerTest/simplePost");
         TestBody.this.testRequestResponse(url, "GET", 404, null);
       });
     }
     public void test_testRHPostOrGet() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         String url = TestBody.this.buildRequest("/handlerTest/simplePostGet");
         TestBody.this.testRequestResponse(url, "POST", 200, "handled");
@@ -127,6 +136,7 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
       });
     }
     public void test_testRHAnyMethod() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         String url = TestBody.this.buildRequest("/handlerTest/anyMethod");
         TestBody.this.testRequestResponse(url, "POST", 200, "handled");
@@ -134,24 +144,28 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
       });
     }
     public void test_testRHNoRequiredParams() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         String url = TestBody.this.buildRequest("/handlerTest/requiredParams");
-        TestBody.this.testRequestResponse(url, 404, null);
+        TestBody.this.testRequestResponse(url, 400, null);
       });
     }
     public void test_testRHRequiredParams() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         String url = TestBody.this.buildRequest("/handlerTest/requiredParams?param=a");
         TestBody.this.testRequestResponse(url, 200, "handled");
       });
     }
     public void test_testRHException() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         String url = TestBody.this.buildRequest("/handlerTest/exception");
         TestBody.this.testRequestResponse(url, 500, null);
       });
     }
     public void test_testRHTurnBack1() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         String test = "testString";
         String url = TestBody.this.buildRequest("/handlerTest/turnBack1?param=" + test);
@@ -159,6 +173,7 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
       });
     }
     public void test_testRHTurnBack2() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         String test = "testString";
         String url = TestBody.this.buildRequest("/handlerTest/turnBack2?param=" + test);
@@ -166,27 +181,30 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
       });
     }
     public void test_testURlBuilder1() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         String test = "testString";
-        String url = buildRequest_17tcaj_a0a1a0a0a31u(test);
+        String url = buildRequest_17tcaj_a0a1a0a1a51u(test);
         TestBody.this.testRequestResponse(url, 200, test);
       });
     }
     public void test_testURlBuilder2() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         String test = "testString";
-        String url = buildRequest_17tcaj_a0a1a0a0a41u(test);
+        String url = buildRequest_17tcaj_a0a1a0a1a61u(test);
         TestBody.this.testRequestResponse(url, 200, test + " serialized deserialized");
       });
     }
     public void test_testRHConflicts() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         PingStorage.reset();
         String url = TestBody.this.buildRequest("/handlerTest/conflict");
         TestBody.this.testRequestResponse(url, 200, "handled");
 
         // If request handlers conflict with each other, only one of them should handle incoming request
-        Assert.assertEquals(PingStorage.pingCount(), 1);
+        Assert.assertEquals(Integer.valueOf(PingStorage.pingCount()), Integer.valueOf(1));
       });
     }
 
@@ -196,11 +214,11 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
     public void testRequestResponse(String requestUrl, String method, int exectedRetCode, String expectedResponse) {
       try {
         URL obj = new URL(requestUrl);
-        HttpURLConnection con = as_17tcaj_a0a1a0a81u(obj.openConnection(), HttpURLConnection.class);
+        HttpURLConnection con = as_17tcaj_a0a1a0a02u(obj.openConnection(), HttpURLConnection.class);
         con.setRequestMethod(method);
         con.connect();
 
-        Assert.assertEquals(exectedRetCode, con.getResponseCode());
+        Assert.assertEquals(Integer.valueOf(exectedRetCode), Integer.valueOf(con.getResponseCode()));
         if (expectedResponse != null) {
           BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
           String inputLine;
@@ -220,21 +238,21 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
     public String buildRequest(String path) {
       return "http://localhost:" + BuiltInServerManager.getInstance().getPort() + path;
     }
-    private static String buildRequest_17tcaj_a0a1a0a0a31u(String param) {
+    private static String buildRequest_17tcaj_a0a1a0a1a51u(String param) {
       QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + BuiltInServerManager.getInstance().getPort() + "/handlerTest/turnBack1");
 
       encoder.addParam("param", param);
 
       return encoder.toString();
     }
-    private static String buildRequest_17tcaj_a0a1a0a0a41u(String param) {
+    private static String buildRequest_17tcaj_a0a1a0a1a61u(String param) {
       QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + BuiltInServerManager.getInstance().getPort() + "/handlerTest/turnBack2");
 
       encoder.addParam("param", testConverter_Converter.serialize(param));
 
       return encoder.toString();
     }
-    private static <T> T as_17tcaj_a0a1a0a81u(Object o, Class<T> type) {
+    private static <T> T as_17tcaj_a0a1a0a02u(Object o, Class<T> type) {
       return (type.isInstance(o) ? (T) o : null);
     }
   }

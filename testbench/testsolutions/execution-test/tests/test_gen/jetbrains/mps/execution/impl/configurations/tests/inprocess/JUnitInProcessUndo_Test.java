@@ -7,7 +7,7 @@ import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import jetbrains.mps.logging.Logger;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -37,7 +37,7 @@ import com.intellij.execution.ExecutionException;
 public class JUnitInProcessUndo_Test extends BaseTransformationTest {
   private static final Logger LOG = Logger.getLogger(JUnitInProcessUndo_Test.class);
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(JUnitInProcessUndo_Test.class, "${mps_home}", "r:ff98d12f-bc65-4639-94c3-dee022b33791(jetbrains.mps.execution.impl.configurations.tests.inprocess@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JUnitInProcessUndo_Test.class).projectPath(null).modelRef("r:ff98d12f-bc65-4639-94c3-dee022b33791(jetbrains.mps.execution.impl.configurations.tests.inprocess@tests)").reopenProject(null).build());
 
   public JUnitInProcessUndo_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -54,7 +54,13 @@ public class JUnitInProcessUndo_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_startTrickyTestCase() throws Exception {
+      initTestNodes();
       List<ITestNodeWrapper> wrappedTests = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", "4177017564823046256"));
       this.checkTests(wrappedTests, ListSequence.fromList(new ArrayList<ITestNodeWrapper>()));
     }
@@ -80,11 +86,11 @@ public class JUnitInProcessUndo_Test extends BaseTransformationTest {
           runState.addListener(checkListener.value);
         });
         process.addProcessListener(new UnitTestProcessListener(runState));
-        int exitcode = ProcessHandlerBuilder.startAndWait(process, 30 * 1000);
-        if (exitcode != ListSequence.fromList(failure).count()) {
-          Assert.fail("Exit code must be equal to " + ListSequence.fromList(failure).count() + ", not to " + exitcode);
-        } else if (exitcode < 0) {
+        int exitcode = ProcessHandlerBuilder.startAndWait(process, 60 * 1000);
+        if (exitcode < 0) {
           Assert.fail("Process is running for too long");
+        } else if (exitcode != ListSequence.fromList(failure).count()) {
+          Assert.fail("Exit code must be equal to " + ListSequence.fromList(failure).count() + ", not to " + exitcode);
         }
         if (!(checkListener.value.getMessages().equals(""))) {
           Assert.fail(checkListener.value.getMessages());

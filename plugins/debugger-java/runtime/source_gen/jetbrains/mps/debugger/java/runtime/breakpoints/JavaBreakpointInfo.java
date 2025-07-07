@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.BreakpointInfo;
 import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
 
-@GeneratedClass(node = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)/2891782949125149284", model = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)")
+@GeneratedClass(nodeId = "2891782949125149284", model = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)")
 public class JavaBreakpointInfo extends BreakpointInfo {
   public int mySuspendPolicy;
   public boolean myIsLogMessage;

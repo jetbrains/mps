@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.languageScope.LanguageScopeFactory;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.typechecking.backend.TypecheckingBackend.ProviderLevel;
 import jetbrains.mps.typechecking.backend.TypecheckingBackend.ProviderToken;
@@ -34,7 +35,6 @@ public final class MPSTypesystem extends ComponentPlugin implements ComponentHos
 
   // dependencies
   private final LanguageRegistry myLanguageRegistry;
-  private final ClassLoaderManager myClassLoaderManager;
   private final MPSTypechecking myMPSTypechecking;
 
   // sub-components
@@ -47,7 +47,6 @@ public final class MPSTypesystem extends ComponentPlugin implements ComponentHos
                        @NotNull ClassLoaderManager classLoaderManager,
                        @NotNull MPSTypechecking mpsTypechecking) {
     myLanguageRegistry = languageRegistry;
-    myClassLoaderManager = classLoaderManager;
     myMPSTypechecking = mpsTypechecking;
   }
 
@@ -56,7 +55,9 @@ public final class MPSTypesystem extends ComponentPlugin implements ComponentHos
     super.init();
     myTypeChecker = init(new TypeChecker());
     myTypeContextManager = init(new TypeContextManager());
-    myProviderToken = myMPSTypechecking.getBackend().installProvider(new LegacyTypecheckingProvider(myClassLoaderManager, myLanguageRegistry), new DefaultProviderLevel());
+    final LanguageScopeFactory scopeFactory = myMPSTypechecking.findComponent(LanguageScopeFactory.class);
+    final LegacyTypecheckingProvider lpt = new LegacyTypecheckingProvider(myLanguageRegistry, scopeFactory);
+    myProviderToken = myMPSTypechecking.getBackend().installProvider(lpt, new DefaultProviderLevel());
   }
 
   @Override

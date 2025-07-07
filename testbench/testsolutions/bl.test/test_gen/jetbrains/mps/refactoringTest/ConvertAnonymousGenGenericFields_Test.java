@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -21,7 +21,7 @@ import jetbrains.mps.lang.test.matcher.NodesMatcher;
 @MPSLaunch
 public class ConvertAnonymousGenGenericFields_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(ConvertAnonymousGenGenericFields_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ConvertAnonymousGenGenericFields_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public ConvertAnonymousGenGenericFields_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -38,16 +38,18 @@ public class ConvertAnonymousGenGenericFields_Test extends BaseTransformationTes
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5907083257159818799", "5907083257159818958");
+    }
+
     public void test_TypeParametersTest() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        addNodeById("5907083257159818799");
-        addNodeById("5907083257159818958");
-      });
-      runWithinCommand(() -> {
-        new ConvertAnonymousRefactoring(getNodeById("5907083257159818820"), "MyIterable").doRefactor();
+        new ConvertAnonymousRefactoring(getAnnotatedNode("convert"), "MyIterable").doRefactor();
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("5907083257159818800"));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("5907083257159818959"));
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("before"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("after"));
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
       });

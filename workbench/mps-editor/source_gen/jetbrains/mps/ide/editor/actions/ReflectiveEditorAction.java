@@ -10,12 +10,13 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.selection.Selection;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/1854313877475823618", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "1854313877475823618", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 /*package*/ class ReflectiveEditorAction {
   private final List<ReflectiveHintsAction> myActions;
   private final EditorComponent myEditorComponent;
@@ -62,10 +63,22 @@ import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
       event.getPresentation().setEnabled(false);
     }
   }
+  private boolean isRestorable(Selection selection) {
+    if (selection == null) {
+      return false;
+    }
+    List<SNode> nodes = selection.getSelectedNodes();
+    int size = nodes.size();
+    return size == 1 || size > 1 && SNodeOperations.getParent(nodes.get(0)) == SNodeOperations.getParent(nodes.get(size - 1));
+  }
   private void recordSelectionStack() {
     SelectionManager selectionManager = myEditorComponent.getEditorContext().getSelectionManager();
+    // to avoid confusion only keep the selection stack if the current selection can be restored
+    if (!(isRestorable(selectionManager.getSelection()))) {
+      return;
+    }
     for (Selection selection : selectionManager.getSelectionStackIterable()) {
-      if (mySelectionStack.isEmpty() || !(selection.getSelectedNodes().equals(mySelectionStack.get(mySelectionStack.size() - 1)))) {
+      if (isRestorable(selection) && (mySelectionStack.isEmpty() || !(selection.getSelectedNodes().equals(mySelectionStack.get(mySelectionStack.size() - 1))))) {
         mySelectionStack.add(selection.getSelectedNodes());
       }
     }

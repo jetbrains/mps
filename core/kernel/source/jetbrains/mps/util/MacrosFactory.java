@@ -19,6 +19,7 @@ import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.PathMacros;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.util.PathFormatChecker;
@@ -81,20 +82,15 @@ public final class MacrosFactory implements MacroHelper.Source {
   public static MacroHelper forModule(SModule module) {
     // XXX would be great to adapt/cast SModule to MacroHelper (or anything that could be source of macro values, so that we don't need to expose 'descriptorFile')
     if (module instanceof AbstractModule && ((AbstractModule) module).getDescriptorFile() != null) {
+      IFile anchorFile = ((AbstractModule) module).getDescriptorFile();
+      final ModuleDescriptor md = ((AbstractModule) module).getModuleDescriptor();
+      if (md != null && md.getDeploymentDescriptor() != null) {
+        anchorFile = ModulesMiner.getSourceDescriptorFile(anchorFile, md.getDeploymentDescriptor());
+      }
       // no need to go through checks of  #forModuleFile(IFile) when we know for sure it is, indeed.
-      return new MacroHelperImpl(((AbstractModule) module).getDescriptorFile(), new ModuleMacros(PathMacros.getInstance()));
+      return new MacroHelperImpl(anchorFile, new ModuleMacros(PathMacros.getInstance()));
     }
     return getGlobal();
-  }
-
-  /**
-   * @deprecated why would anyone care to cast openapi.SModule to AbstractModule? Use {@link #forModule(SModule)} instead.
-   */
-@Deprecated(since = "2018.1", forRemoval = true)
-  public static MacroHelper forModule(AbstractModule module) {
-    // todo: if descriptor file == null?
-    IFile file = module.getDescriptorFile();
-    return file == null ? null : forModuleFile(file);
   }
 
   public static MacroHelper forProjectFile(IFile projectFile) {
@@ -159,6 +155,9 @@ public final class MacrosFactory implements MacroHelper.Source {
         // I'm not sure if I agree with this, but without a change in IFileSystem we'd better guard it here
         final String grandParentPrefix = anchorParent.getParent().getPath();
         if (pathStartsWith(absolutePath, grandParentPrefix)) {
+          // FIXME there's corner case when anchorFile is /a/module/module.msd; "/a".getParent() gives "/", any absolute path starts with it,
+          //       but shrink->FileUtil.getRelativePath fails with exception. Although it's not quite common to keep modules that close to
+          //       the root, worth fixing. Use CloneModule_Test for check
           alternatives.add(MODULE + "/../.." + shrink(absolutePath, grandParentPrefix));
         }
       }

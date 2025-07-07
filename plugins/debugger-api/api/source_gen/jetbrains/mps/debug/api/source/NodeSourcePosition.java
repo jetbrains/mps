@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.Objects;
 
-@GeneratedClass(node = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)/4701043456212926012", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
+@GeneratedClass(nodeId = "4701043456212926012", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
 public class NodeSourcePosition extends SourcePosition {
   private final SNodeReference myNode;
   public NodeSourcePosition(SNodeReference node) {

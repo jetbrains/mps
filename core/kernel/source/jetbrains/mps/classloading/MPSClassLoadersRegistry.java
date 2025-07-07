@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,14 +19,12 @@ import jetbrains.mps.classloading.DeployListener.ResourceTrackerCallback;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
 import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.util.Consumer;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -34,8 +32,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +39,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -53,17 +51,15 @@ import java.util.stream.Collectors;
  *
  * {@code ClassLoaderManager#myLoadableCondition}
  */
-class MPSClassLoadersRegistry {
+final class MPSClassLoadersRegistry {
   private static final Logger LOG = Logger.getLogger(MPSClassLoadersRegistry.class);
 
   private final Map<SModuleReference, ModuleClassLoaderSupport> myMPSClassLoaders = new HashMap<>();
   private final Map<SModuleReference, MPSModuleClassLoader> myIDEAClassLoaders = new HashMap<>();
   private final Map<SModuleReference, ClassLoadingProgress> myMPSLoadableModules = new HashMap<>();
-  private final ModulesWatcher myModulesWatcher;
   private final ModuleClassLoaderDisposer myModuleClassLoaderDisposer = new ModuleClassLoaderDisposer(this);
 
-  public MPSClassLoadersRegistry(ModulesWatcher modulesWatcher) {
-    myModulesWatcher = modulesWatcher;
+  public MPSClassLoadersRegistry() {
   }
 
   /*package*/ MPSModuleClassLoader getClassLoader(@NotNull SModuleReference mref) {
@@ -78,6 +74,16 @@ class MPSClassLoadersRegistry {
       return myIDEAClassLoaders.get(mref);
     }
   }
+
+  /*package*/ Predicate<SModule> getUnloadedCondition() {
+    return (m -> getClassLoadingProgress(m.getModuleReference()) == ClassLoadingProgress.UNLOADED);
+  }
+
+  // LAZY_LOADED or LOADED
+  /*package*/ Predicate<SModule> getLoadedCondition() {
+    return (m -> getClassLoadingProgress(m.getModuleReference()) != ClassLoadingProgress.UNLOADED);
+  }
+
 
   @Nullable
   private ModuleClassLoader getModuleClassLoader(@NotNull SModuleReference mref) {
@@ -105,10 +111,12 @@ class MPSClassLoadersRegistry {
   }
 
   /**
+   * Note, this method doesn't destroy any CL, it merely records a fact there are no CL for a module and forgets their instances
+   *
    * @param toUnload for these modules ModuleClassLoaders were disposed
    * @return modules which changed their ClassLoadingProgress from LAZY_LOADED or LOADED to UNLOADED.
    */
-  public void doUnloadModules(Collection<SModuleReference> toUnload) {
+  /*package*/ void forgetClassLoaders(Collection<SModuleReference> toUnload) {
     for (SModuleReference mRef : toUnload) {
       if (!myMPSLoadableModules.containsKey(mRef)) {
         LOG.error("", new IllegalStateException("Module " + mRef + " is not loaded -- cannot unload"));
@@ -134,36 +142,25 @@ class MPSClassLoadersRegistry {
   }
 
   /**
-   * @param toLoadLazy for these modules only notifications {@link DeployListener#onLoaded(Set, ProgressMonitor)} were sent,
-   *                   so for {@link DeployListener} clients these modules appear to be loaded.
-   *                   No actual loading is performed for these modules.
-   * @return modules which changed their ClassLoadingProgress from UNLOADED to LAZY_LOADED
-   *         *AND* are suitable for dispatch with {@link DeployListener#onLoaded(Set, ProgressMonitor)} (for the
-   *         time being, we notify about modules with MPS-managed CL only).
+   * just a change of internal state to let the registry know certain modules are deemed for CL
+   * @param toLoadLazy modules to tranition from UNLOADED state to LAZY_LOADED
    */
-  public Set<ReloadableModule> onLazyLoaded(Collection<ReloadableModule> toLoadLazy) {
-    Set<ReloadableModule> lazyLoaded2Notify = new LinkedHashSet<>();
-    for (ReloadableModule module : toLoadLazy) {
-      SModuleReference mRef = module.getModuleReference();
+  /*package*/ void markLazyLoaded(Collection<SModuleReference> toLoadLazy) {
+    for (SModuleReference mRef : toLoadLazy) {
       ClassLoadingProgress classLoadingProgress = myMPSLoadableModules.get(mRef);
       if (classLoadingProgress != null) {
-        LOG.error("Illegal state: module is already loaded " + module, new Throwable());
+        throw new IllegalStateException(String.format("Module %s is already tracked as %s", mRef.getModuleName(), classLoadingProgress));
       } else {
         myMPSLoadableModules.put(mRef, ClassLoadingProgress.LAZY_LOADED);
-        final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
-        assert jmf != null && jmf.getLoadClasses().classesAvailable();
-//        if (jmf.getCompile() == Compile.MPS) {
-          lazyLoaded2Notify.add(module);
-//        }
       }
     }
-    return lazyLoaded2Notify;
   }
 
   /**
    * @param toLoad for these modules ModuleClassLoaders were actually created
+   * @param deps answers with dependencies of a module
    */
-  public void doLoadModules(final Collection<? extends ReloadableModule> toLoad) {
+  /*package*/ void createClassLoaders(final Collection<? extends ReloadableModule> toLoad, Function<SModuleReference, Collection<SModuleReference>> deps) {
     ArrayList<ReloadableModule> forExtLoader = new ArrayList<>();
     for (ReloadableModule module : toLoad) {
       SModuleReference moduleReference = module.getModuleReference();
@@ -173,7 +170,7 @@ class MPSClassLoadersRegistry {
       } else if (progress == ClassLoadingProgress.LAZY_LOADED) {
         final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
         if (jmf.getLoadClasses() == LoadClasses.ManagedByMPS) {
-          ModuleClassLoaderSupport clSupport = prepareModuleClassLoader(module);
+          ModuleClassLoaderSupport clSupport = prepareModuleClassLoader(module, deps);
           myMPSClassLoaders.put(moduleReference, clSupport);
         } else if (jmf.getLoadClasses() == LoadClasses.ManagedByContributor) {
           forExtLoader.add(module); // do these at once later
@@ -187,11 +184,12 @@ class MPSClassLoadersRegistry {
     prepareExternalClassLoader(forExtLoader);
   }
 
-  private ModuleClassLoaderSupport prepareModuleClassLoader(@NotNull ReloadableModule module) {
+  private ModuleClassLoaderSupport prepareModuleClassLoader(@NotNull ReloadableModule module, Function<SModuleReference, Collection<SModuleReference>> dependencies) {
     LOG.debug("Creating ModuleClassLoader for " + module);
-    Collection<SModuleReference> deps = myModulesWatcher.getDependencies(Collections.singletonList(module.getModuleReference()));
+    final Collection<SModuleReference> deps = dependencies.apply(module.getModuleReference());
     // we don't need SModule/ReloadableModule instance for dependencies, all CLs (or at least their respective support)
     // have to be initialized the moment we ask for dependencies
+    // XXX I wonder if for dependencies we have to go through CLM.getClassLoader() instead of this.getClassLoader(), for uniformity.
     final ModuleClassLoaderSupport support = ModuleClassLoaderSupport.create(module, () -> deps.stream()
                                                                                                .map(this::getClassLoader)
                                                                                                .distinct()
@@ -206,14 +204,14 @@ class MPSClassLoadersRegistry {
     if (jmf != null && jmf.getLoadClasses() == LoadClasses.ManagedByContributor) {
       // FIXME refactor this code to avoid unnecessary nesting of classloaders (if possible)
       final ClassLoader classLoader = new RootClassloaderLookup(module).get();
-      return new IDEADelegatingModuleClassLoader(classLoader);
+      return new IDEADelegatingModuleClassLoader(module, classLoader);
     }
     // FIXME this piece of code is to address uses of IPMF still out there, e.g. in MPS-as-IDEA-plugin scenario
     CustomClassLoadingFacet customClassLoadingFacet = module.getFacet(CustomClassLoadingFacet.class);
     if (customClassLoadingFacet != null) {
       ClassLoader dd;
       if (customClassLoadingFacet.isValid() && (dd = customClassLoadingFacet.getClassLoader()) != null) {
-        return new IDEADelegatingModuleClassLoader(dd);
+        return new IDEADelegatingModuleClassLoader(module, dd);
       }
     }
     return null;
@@ -237,11 +235,12 @@ class MPSClassLoadersRegistry {
     }
 
     DisposeSession createSession(@NotNull Set<ReloadableModule> modulesToUnload, @Nullable Consumer<DisposeSession> onDisposed) {
-      List<ModuleClassLoader> classLoaders = modulesToUnload.stream()
+      // modulesToUnload are both LAZY_LOADED and LOADED, myRegistry::getModuleClassLoader() may have not been initialized for LAZY
+      Set<ModuleClassLoader> classLoaders = modulesToUnload.stream()
                                                             .map(SModule::getModuleReference)
                                                             .map(myRegistry::getModuleClassLoader)
                                                             .filter(Objects::nonNull)
-                                                            .collect(Collectors.toList());
+                                                            .collect(Collectors.toSet());
 
       final DisposeSession ds = new DisposeSession(modulesToUnload, classLoaders, onDisposed);
       mySessions.add(ds);
@@ -257,7 +256,7 @@ class MPSClassLoadersRegistry {
     static final class DisposeSession {
       private static final int MAX_MINUTES_FOR_STALE_CLASSLOADERS = 5;
       private final Set<ReloadableModule> myModulesToUnload;
-      private final List<ModuleClassLoader> myModuleClassloaders2Dispose;
+      private final Set<ModuleClassLoader> myModuleClassloaders2Dispose;
       private final ConcurrentMap<Object, Boolean> myBlockingRequestors = new ConcurrentHashMap<>();
       private final Instant myCreationTime;
       @Nullable
@@ -270,58 +269,68 @@ class MPSClassLoadersRegistry {
         @NotNull
         @Override
         public Set<ReloadableModule> acquire(@NotNull Object requestor) {
-          if (null != myBlockingRequestors.putIfAbsent(requestor, Boolean.TRUE)) {
-            throw new IllegalStateException(String.format("Requestor '%s' has invoked #acquire more than once", requestor));
-          }
-          return myModulesToUnload;
+          doAquire(requestor);
+          return Collections.unmodifiableSet(myModulesToUnload);
         }
 
         @NotNull
         @Override
         public Set<ModuleClassLoader> acquire2(@NotNull Object requestor) {
-          if (null != myBlockingRequestors.putIfAbsent(requestor, Boolean.TRUE)) {
-            throw new IllegalStateException(String.format("Requestor '%s' has invoked #acquire more than once", requestor));
-          }
-
-          return new HashSet<>(myModuleClassloaders2Dispose);
+          doAquire(requestor);
+          return Collections.unmodifiableSet(myModuleClassloaders2Dispose);
         }
 
         @Override
         public void release(@NotNull Object requestor) {
-          myBlockingRequestors.remove(requestor);
-          synchronized (DisposeSession.this) {
-            if (isNotBlocked() && isReadyToDispose()) {
-              doDispose();
-            }
-          }
+          doRelease(requestor);
         }
       };
 
       public DisposeSession(@NotNull Set<ReloadableModule> modulesToUnload,
-                            @NotNull List<ModuleClassLoader> theirClassloaders,
+                            @NotNull Set<ModuleClassLoader> theirClassloaders,
                             @Nullable Consumer<DisposeSession> onDisposed) {
         myOnDisposed = onDisposed;
         myCreationTime = Instant.now();
-        myModulesToUnload = Collections.unmodifiableSet(modulesToUnload);
+        myModulesToUnload = modulesToUnload;
         myModuleClassloaders2Dispose = theirClassloaders;
       }
+
+      /*package*/ void doAquire(@NotNull Object requestor) {
+        if (null != myBlockingRequestors.putIfAbsent(requestor, Boolean.TRUE)) {
+          throw new IllegalStateException(String.format("Requestor '%s' has invoked #acquire more than once", requestor));
+        }
+        if (myActualDisposalTime != null || myDisposeHappened) {
+          throw new IllegalStateException(String.format("Requestor '%s' tries to #acquire already disposed session", requestor));
+        }
+      }
+
+      /*package*/ void doRelease(@NotNull Object requestor) {
+        // we can get here from multiple threads at the same time
+        Boolean value = myBlockingRequestors.remove(requestor);
+        if (value == null) {
+          LOG.warning("Please report next message and the steps that lead to it to MPS-36887");
+          LOG.error("DisposeSession release comes from an unknown (already removed?) requestor " + requestor);
+        }
+        checkAndDisposeIfReady();
+      }
+
+      private synchronized void checkAndDisposeIfReady() {
+        if (isReadyToDispose() && myBlockingRequestors.isEmpty() && !myDisposeHappened) {
+          doDispose();
+        } // else we wait for the last #release
+      }
+
 
       public synchronized void readyToDispose() {
         assert myCreationTime != null;
         assert myPlanningDisposalTime == null;
         myPlanningDisposalTime = Instant.now();
-        if (isNotBlocked()) {
-          doDispose();
-        } // else we wait for the last #release
+        checkAndDisposeIfReady();
       }
 
       // shall answer true iff readyToDispose() was signaled
       private boolean isReadyToDispose() {
         return myPlanningDisposalTime != null;
-      }
-
-      private boolean isNotBlocked() {
-        return myBlockingRequestors.isEmpty();
       }
 
       public synchronized void destroy() {
@@ -343,12 +352,14 @@ class MPSClassLoadersRegistry {
         assert myCreationTime != null;
         assert myPlanningDisposalTime != null;
         assert !myDisposeHappened : "Dispose has already been done.";
+        myActualDisposalTime = Instant.now();
         LOG.debug("Disposing " + myModuleClassloaders2Dispose.size() + " class loaders");
         for (ModuleClassLoader classLoader : myModuleClassloaders2Dispose) {
           classLoader.dispose();
         }
+        // help GC by removing references to CL
         myModuleClassloaders2Dispose.clear();
-        myActualDisposalTime = Instant.now();
+        myModulesToUnload.clear();
         myDisposeHappened = true;
         if (myOnDisposed != null) {
           myOnDisposed.consume(this);

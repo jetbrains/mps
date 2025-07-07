@@ -14,14 +14,19 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.baseLanguage.scopes.Members;
 import jetbrains.mps.scope.EmptyScope;
+import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class EnumConstantReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference");
@@ -36,7 +41,10 @@ public final class EnumConstantReference__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    return ((SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$bGAj) != null) ? new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$bGAj))) : new EmptyScope());
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.EnumConstantDeclaration$MW)) {
+      return ((SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$bGAj) != null) ? new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$bGAj))) : new EmptyScope());
+    }
+    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child);
   }
   /*package*/ static SNode getClassifier_id7S22xyoLQG7(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$bGAj);
@@ -98,5 +106,10 @@ public final class EnumConstantReference__BehaviorDescriptor extends BaseBHDescr
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink enumClass$bGAj = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SInterfaceConcept ScopeProvider$aq = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
   }
 }

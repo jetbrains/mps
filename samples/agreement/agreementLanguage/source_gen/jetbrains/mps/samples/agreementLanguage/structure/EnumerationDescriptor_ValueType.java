@@ -19,7 +19,7 @@ public class EnumerationDescriptor_ValueType extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_Money_0 = new EnumerationDescriptor.MemberDescriptor("Money", "MONEY", 0x102dc055e26L, "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/4241665505353448286");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc04d86aL, 0x102dc04f5a7L, 0x102dc055e26L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_Quantity_0, myMember_Money_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_Quantity_0, myMember_Money_0);
 
   @Nullable
   @Override

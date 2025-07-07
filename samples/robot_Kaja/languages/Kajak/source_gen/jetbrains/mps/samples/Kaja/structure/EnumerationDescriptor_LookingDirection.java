@@ -21,7 +21,7 @@ public class EnumerationDescriptor_LookingDirection extends EnumerationDescripto
   private final EnumerationDescriptor.MemberDescriptor myMember_west_0 = new EnumerationDescriptor.MemberDescriptor("west", "west", 0x61fd16e423a3803dL, "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/4241665505353448631");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x61fd16e423a34c05L, 0x61fd16e423a34c44L, 0x61fd16e423a38036L, 0x61fd16e423a38039L, 0x61fd16e423a3803dL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_north_0, myMember_east_0, myMember_south_0, myMember_west_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_north_0, myMember_east_0, myMember_south_0, myMember_west_0);
 
   @Nullable
   @Override

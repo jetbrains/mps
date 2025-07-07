@@ -41,7 +41,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748335691", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
+@GeneratedClass(nodeId = "4652592318748335691", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class ChangeEditorMessage extends EditorMessageWithTarget {
   @Nullable
   private final ModelChange myChange;
@@ -320,6 +320,7 @@ __switch__:
             };
           }
         };
+
       }
     }.invoke(editor.getRootCell());
 

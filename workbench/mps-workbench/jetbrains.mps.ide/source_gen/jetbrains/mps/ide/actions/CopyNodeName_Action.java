@@ -14,7 +14,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236184638750", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1236184638750", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CopyNodeName_Action extends BaseAction {
   private static final Icon ICON = null;
 

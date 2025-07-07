@@ -46,14 +46,6 @@ public class CompletionActionItemUtil {
     return null;
   }
 
-  /**
-   * @deprecated Use {@link #getVisibleMatchingText(CompletionActionItem, String)} instead.
-   */
-@Deprecated(since = "2017.2", forRemoval = true)
-  public static String getVisibleMatchingText(CompletionActionItem item) {
-    return getVisibleMatchingText(item, "");
-  }
-
   public static String getVisibleMatchingText(CompletionActionItem item, String pattern) {
     if (item instanceof SubstituteMenuItemAsActionItem) {
       final SubstituteMenuItem substituteItem = ((SubstituteMenuItemAsActionItem) item).getSubstituteItem();

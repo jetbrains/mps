@@ -9,6 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.behavior.EnumConstantDeclaration__BehaviorDescriptor;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
@@ -30,22 +31,11 @@ public class check_EnumConstantMustUseExplicitConstructor_NonTypesystemRule exte
       return;
     }
     SNode constructorDeclaration = SLinkOperations.getTarget(enumConstant, LINKS.baseMethodDeclaration$pyYw);
-
-    if ((constructorDeclaration != null)) {
-      if (Objects.equals(SNodeOperations.getParent(SLinkOperations.getTarget(enumConstant, LINKS.baseMethodDeclaration$pyYw)), enumClass)) {
-        return;
-      }
-      if (Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(enumClass)).isNotEmpty()) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(enumConstant, "explicit constructor should be used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1994695549479969067", null, errorTarget);
-          {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveDefaultEnumConstructor_QuickFix", "1994695549479969070", true);
-            _reporter_2309309498.addIntentionProvider(intentionProvider);
-          }
-        }
-      }
-    } else {
+    SNode candidateConstructor = EnumConstantDeclaration__BehaviorDescriptor.findSuitableConstructor_idFdL0MDGgE3.invoke(enumConstant);
+    if (Objects.equals(candidateConstructor, constructorDeclaration)) {
+      return;
+    }
+    if (candidateConstructor != null) {
       if (Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(enumClass)).isEmpty()) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -55,9 +45,35 @@ public class check_EnumConstantMustUseExplicitConstructor_NonTypesystemRule exte
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
+      } else {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(enumConstant, "the requested constructor is not available", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6510682441484681043", null, errorTarget);
+          {
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SetExplicitEnumConstructurToEnumConstant_QuickFix", "6510682441484701216", true);
+            intentionProvider.putArgument("constructorToSet", candidateConstructor);
+            _reporter_2309309498.addIntentionProvider(intentionProvider);
+          }
+        }
       }
-      // MethodCallsFixer_Rule takes care of the missing reference, if the constructor reference is null
+    } else {
+      if ((constructorDeclaration != null) && Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(enumClass)).isNotEmpty()) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(enumConstant, "explicit constructor should be used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1994695549479969067", null, errorTarget);
+          {
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveDefaultEnumConstructor_QuickFix", "1994695549479969070", true);
+            _reporter_2309309498.addIntentionProvider(intentionProvider);
+          }
+        }
+      } else {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(enumConstant, "no suitable constructor is available", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "778493869271325059", null, errorTarget);
+        }
+      }
     }
+    // MethodCallsFixer_Rule takes care of the missing reference, if the constructor reference is null
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.EnumConstantDeclaration$MW;

@@ -5,7 +5,7 @@ package jetbrains.mps.debugger.api.ui.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 
-@GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/4073774232572770202", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
+@GeneratedClass(nodeId = "4073774232572770202", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public final class Debugger_KeymapChanges extends BaseKeymapChanges {
   public Debugger_KeymapChanges() {
     add("jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action", "alt F8");

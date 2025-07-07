@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -487,6 +487,8 @@ public class FileUtil {
    */
   @Deprecated
   public static String getRelativePath(@NotNull String targetPath, @NotNull String basePath, @NotNull String pathSeparator) {
+    // FTR, targetPath["/a/b/c"].startsWith(basePath["/"]) but getRelativePath() fails with exception
+    //      (split gives empty base[] in this case, while target has "" as first element)
     String[] base = basePath.split(Pattern.quote(pathSeparator));
     String[] target = targetPath.split(Pattern.quote(pathSeparator));
 

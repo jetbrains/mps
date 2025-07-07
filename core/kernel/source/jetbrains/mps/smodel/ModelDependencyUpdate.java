@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,16 +56,27 @@ public final class ModelDependencyUpdate {
   }
 
   /**
-   * Alternative limited only to dependencies of a node tree.
+   * Alternative limited only to dependencies of a single node.
    *
    * @param model target of import update
    * @param node where to take dependencies from, may be detached node (any reference treated as cross-model then)
    * @since 2021.3
    */
   public ModelDependencyUpdate(@NotNull org.jetbrains.mps.openapi.model.SModel model, @NotNull SNode node) {
+    this(model, Collections.singleton(node));
+  }
+
+  /**
+   * Alternative limited only to dependencies of a set of nodes (could be descendants subtree).
+   *
+   * @param model target of import update
+   * @param nodes nodes where to take dependencies from
+   * @since 2025.1
+   */
+  public ModelDependencyUpdate(@NotNull org.jetbrains.mps.openapi.model.SModel model, @NotNull Iterable<SNode> nodes) {
     myModel = model;
     myModelScanner = new ModelDependencyScanner();
-    myModelScanner.crossModelReferences(true).usedLanguages(true).walk(Collections.singleton(node));
+    myModelScanner.crossModelReferences(true).usedLanguages(true).walk(nodes);
   }
 
   public ModelDependencyUpdate updateUsedLanguages() {
@@ -110,6 +121,7 @@ public final class ModelDependencyUpdate {
         if (false == languageModule instanceof Language) {
           continue;
         }
+        // FIXME I wonder if this is necessary, provided myModelScanner detects accessory model references among x-model refs
         for (SModel am : ((Language) languageModule).getAccessoryModels()) {
           importedModels.add(am.getReference());
         }

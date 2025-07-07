@@ -37,7 +37,7 @@ import javax.swing.JList;
 import javax.swing.JComponent;
 import jetbrains.mps.ide.IdeBundle;
 
-@GeneratedClass(node = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)/7081154005682232171", model = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)")
+@GeneratedClass(nodeId = "7081154005682232171", model = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)")
 public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
 
   @NotNull
@@ -106,11 +106,14 @@ public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
     });
     myModelRoots.setModel(model);
 
-    constraints.setRow(constraints.getRow() + 1);
-    mySettingsPanel.add(new JLabel(modelNameText()), constraints);
-
-    JPanel nameAndStereotype = new JPanel(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
+    JPanel nameAndStereotype = new JPanel(new GridLayoutManager(2, 3, new Insets(0, 0, 0, 0), -1, -1));
     GridConstraints nameConstraints = new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null);
+
+    nameAndStereotype.add(new JLabel(modelNameText()), nameConstraints);
+    nameConstraints.setColumn(2);
+    nameAndStereotype.add(new JLabel(modelStereotypeText()), nameConstraints);
+    nameConstraints.setColumn(0);
+    nameConstraints.setRow(1);
 
     nameAndStereotype.add(myModelName, nameConstraints);
     myModelName.setText(modelName);
@@ -220,6 +223,10 @@ public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
 
   private static String modelNameText() {
     return IdeBundle.message("dialogs.model.new.settings.modelname");
+  }
+
+  private static String modelStereotypeText() {
+    return IdeBundle.message("dialogs.model.new.settings.stereotype");
   }
 
   private static String storageFormatText() {

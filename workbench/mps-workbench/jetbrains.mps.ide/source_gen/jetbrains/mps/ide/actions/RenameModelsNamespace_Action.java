@@ -8,22 +8,23 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.IdeBundle;
-import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.ide.ui.tree.DiscoveryValueProvider;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.ide.projectPane.ProjectPane;
-import jetbrains.mps.project.MPSProject;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
-import javax.swing.tree.TreeNode;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import java.util.List;
+import java.util.stream.Collectors;
 import com.intellij.openapi.ui.InputValidatorEx;
 import com.intellij.openapi.ui.Messages;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -31,13 +32,18 @@ import jetbrains.mps.ide.refactoring.ModelNameValidator;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.refactoring.Renamer;
+import com.intellij.openapi.ui.popup.BalloonBuilder;
+import com.intellij.openapi.ui.popup.JBPopupFactory;
+import com.intellij.ui.LightColors;
+import com.intellij.openapi.ui.popup.Balloon;
+import jetbrains.mps.ide.projectPane.ProjectPane;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6595589484395587263", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "6595589484395587263", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class RenameModelsNamespace_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public RenameModelsNamespace_Action() {
-    super("Rename", "", ICON);
+    super("Rename Model Namespace", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
@@ -48,8 +54,7 @@ public class RenameModelsNamespace_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText(IdeBundle.message("actions.virtual.package.rename.on.models.text"));
-    NamespaceTextNode ntn = ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode"));
-    return ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))) != null && !(ntn.isFinalName()) && !(ntn.hasModulesUnder()) && ntn.hasModelsUnder();
+    return !(Sequence.fromIterable(Sequence.fromStream(((DiscoveryValueProvider) MapSequence.fromMap(_params).get("selectedObject")).discoverValuesOfType(SModel.class))).isEmpty());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -68,12 +73,22 @@ public class RenameModelsNamespace_Action extends BaseAction {
       }
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
-      MapSequence.fromMap(_params).put("treeNode", p);
+      Object p = event.getData(MPSCommonDataKeys.VALUE);
+      MapSequence.fromMap(_params).put("selectedValue", p);
       if (p == null) {
         return false;
       }
-      if (p != null && !(p instanceof NamespaceTextNode)) {
+      if (p != null && !(p instanceof VirtualFolder.Models)) {
+        return false;
+      }
+    }
+    {
+      Object p = event.getData(MPSCommonDataKeys.USER_OBJECT);
+      MapSequence.fromMap(_params).put("selectedObject", p);
+      if (p == null) {
+        return false;
+      }
+      if (p != null && !(p instanceof DiscoveryValueProvider)) {
         return false;
       }
     }
@@ -88,10 +103,10 @@ public class RenameModelsNamespace_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final NamespaceTextNode ntn = ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode"));
-    final String originalNamespacePrefix = ntn.getNamespace();
+    final String originalNamespacePrefix = ((VirtualFolder.Models) MapSequence.fromMap(_params).get("selectedValue")).getName();
+    final List<SModel> models = ((DiscoveryValueProvider) MapSequence.fromMap(_params).get("selectedObject")).discoverValuesOfType(SModel.class).collect(Collectors.<SModel>toList());
 
-    InputValidatorEx inputValidator = new ModelNamespaceInputValidator(ntn, originalNamespacePrefix);
+    InputValidatorEx inputValidator = new ModelNamespaceInputValidator(models, originalNamespacePrefix);
     final String modifiedNamespacePrefix = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.virtual.package.rename.on.models.text"), IdeBundle.message("dialogs.virtual.package.rename.on.models.title"), null, originalNamespacePrefix, inputValidator);
 
     // Allow passing of an empty string which will result in virtual folder removal
@@ -103,7 +118,7 @@ public class RenameModelsNamespace_Action extends BaseAction {
     final List<String> errors = ListSequence.fromList(new ArrayList<String>());
     modelAccess.executeCommand(() -> {
       ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
-      for (SModel model : ListSequence.fromList(ntn.getModelsUnder())) {
+      for (SModel model : ListSequence.fromList(models)) {
         if (model instanceof EditableSModel) {
           SModelName originalModelName = model.getName();
           SModelName modifiedModelName = new SModelName(NamespaceRenameHelper.withReplacedPrefix(originalModelName.getNamespace(), originalNamespacePrefix, modifiedNamespacePrefix), originalModelName.getSimpleName(), originalModelName.getStereotype());
@@ -135,7 +150,7 @@ public class RenameModelsNamespace_Action extends BaseAction {
     if (result == Messages.YES) {
       modelAccess.executeCommand(() -> {
         ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
-        for (SModel model : ListSequence.fromList(ntn.getModelsUnder())) {
+        for (SModel model : ListSequence.fromList(models)) {
           if (model instanceof EditableSModel) {
             SModelName originalModelName = model.getName();
             SModelName modifiedModelName = new SModelName(NamespaceRenameHelper.withReplacedPrefix(originalModelName.getNamespace(), originalNamespacePrefix, modifiedNamespacePrefix), originalModelName.getSimpleName(), originalModelName.getStereotype());
@@ -155,14 +170,17 @@ public class RenameModelsNamespace_Action extends BaseAction {
         ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
       });
       if (ListSequence.fromList(errors).isNotEmpty()) {
-        StringBuilder builder = new StringBuilder("<html><p>Some models were not be renamed:</p><ul>");
+        StringBuilder builder = new StringBuilder("<html><p>Some models could not be renamed because of name collisions:</p><ul>");
         for (String error : errors) {
           builder.append("<li>");
           builder.append(error);
           builder.append("</li>");
         }
         builder.append("</ul></html>");
-        Messages.showWarningDialog(builder.toString(), IdeBundle.message("dialogs.virtual.package.rename.on.models.title"));
+        BalloonBuilder bb = JBPopupFactory.getInstance().createHtmlTextBalloonBuilder(builder.toString(), null, LightColors.YELLOW, null).setHideOnAction(true).setHideOnClickOutside(true).setHideOnKeyOutside(true);
+        bb.setFadeoutTime(15000);
+        final Balloon balloon = bb.createBalloon();
+        balloon.show(ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).getTree().getRootPane().getLayeredPane());
       }
     }
   }

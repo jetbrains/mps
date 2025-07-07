@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,11 +34,12 @@ import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
+import jetbrains.mps.smodel.runtime.ModuleRuntime.Extension;
+import jetbrains.mps.smodel.runtime.ModuleRuntime.Extension.MatchRequest;
 import jetbrains.mps.smodel.runtime.ModuleRuntime.Flags;
 import jetbrains.mps.smodel.runtime.ModuleRuntime.ModuleRuntimeContext;
 import jetbrains.mps.smodel.runtime.impl.GeneratorRuntimeActivator;
 import jetbrains.mps.smodel.runtime.impl.LanguageRuntimeActivator;
-import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -60,6 +61,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -67,6 +69,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.String.format;
@@ -107,6 +110,8 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   }
 
   private final Map<SLanguageId, LanguageRuntime> myLanguagesById = new HashMap<>();
+
+  private final Set<SModuleReference> myLanguagesNoRuntime = new HashSet<>();
 
   private final Map<SModuleReference, ModuleRuntime> myModuleRuntime = new HashMap<>();
 
@@ -181,7 +186,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   }
 
   @Nullable
-  private static LanguageRuntime createRuntime(Language l) {
+  private LanguageRuntime createRuntime(Language l) {
     final String rtClassName = l.getModuleName() + ".Language";
     // Here, we consider few cases:
     // (a) there's no LR class
@@ -193,11 +198,18 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
     // We aim to support binary compatibility between any two subsequent releases, thus failures for (b)
     // shall serve as an indicator we failed to maintain binary compatibility between releases
     try {
-      final Class<?> rtClass = l.getOwnClass(rtClassName);
+      final Class<?> rtClass = myClassLoaderManager.getClassLoader(l).loadOwnClass(rtClassName);
       if (LanguageRuntime.class.isAssignableFrom(rtClass)) {
         return rtClass.asSubclass(LanguageRuntime.class).getDeclaredConstructor().newInstance();
       }
       LOG.error(String.format("Incompatible language runtime class for module %s; returning null", l.getModuleName()));
+      final Class<?> rtSuper = rtClass.getSuperclass();
+      if (rtSuper != null) {
+        // generally it is mylang.Language extends smodel.language.LanguageRuntime; this extra information here helps to detect
+        // cases when [mps-core].LanguageRuntime class got erroneously loaded through some other CL.
+        final String m = "Loaded class %s comes from CL %s, its superclass %s from CL %s";
+        LOG.info(String.format(m, rtClass.getSimpleName(), rtClass.getClassLoader(), rtSuper.getSimpleName(), rtSuper.getClassLoader()));
+      }
       return null;
     } catch (NoSuchMethodException | ClassNotFoundException ex) {
       // would like to have error + exception here, but there are tests (e.g. ModulesReloadTest) that legitimately expect non-compiled modules
@@ -255,7 +267,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
     final String rtClassName = NameUtil.longNameFromNamespaceAndShortName(mn, "Generator");
 
     try {
-      Class<?> rtClass = g.getOwnClass(rtClassName);
+      Class<?> rtClass = myClassLoaderManager.getClassLoader(g).loadOwnClass(rtClassName);
       if (GeneratorRuntime.class.isAssignableFrom(rtClass)) {
         final Class<? extends GeneratorRuntime> aClass = rtClass.asSubclass(GeneratorRuntime.class);
         final LanguageRuntime sourceLanguageRuntime = getLanguage(sourceLanguage);
@@ -322,7 +334,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
 
   @Nullable
   private ModuleRuntime createRuntime(Solution solution) {
-    return new ModuleRuntime(solution.getModuleReference(), solution.getClassLoader(), deduceRuntimeFlags(solution));
+    return new ModuleRuntime(solution.getModuleReference(), myClassLoaderManager.getClassLoader(solution), deduceRuntimeFlags(solution));
   }
 
   private static Flags[] deduceRuntimeFlags(AbstractModule am) {
@@ -400,6 +412,21 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
       }
     });
   }
+
+  /**
+   * Access specific present (non-null) aspect instance of all available languages.
+   * @since 2023.3
+   */
+  public <T extends ILanguageAspect> void withAvailableAspects(@NotNull Class<T> aspectClass, @NotNull Consumer<T> aspectOperation) {
+    withAvailableLanguages(lr -> {
+      final T aspectInstance = lr.getAspect(aspectClass);
+      if (aspectInstance != null) {
+        aspectOperation.accept(aspectInstance);
+      }
+    });
+  }
+
+
   /**
    * @return snapshot of languages known to the registry at the given moment.
    *         May not reflect actual state (a language might get unloaded), but as long as it's about identity objects, it's not that important to
@@ -480,7 +507,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
       myRuntimeInstanceAccess.writeLock().lock();
       monitor.start("Solution Runtime", 5);
       final UnloadRecord modulesToUnload = new UnloadRecord();
-      for (Solution s : CollectionUtil.filter(Solution.class, unloadedModules)) {
+      for (Solution s : collectSolutionModules(unloadedModules)) {
         // get, not remove as we notify all first, and only then remove them.
         final ModuleRuntime moduleRuntime = myModuleRuntime.get(s.getModuleReference());
         if (moduleRuntime == null) {
@@ -515,7 +542,9 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
       for (Language language : collectLanguageModules(unloadedModules)) {
         SLanguageId sl = MetaIdByDeclaration.getLanguageId(language);
         if (!myLanguagesById.containsKey(sl)) {
-          LOG.warning("No language with id " + sl + " to unload");
+          if (!myLanguagesNoRuntime.remove(language.getModuleReference())) {
+            LOG.warning(String.format("No language %s to unload", language.getModuleReference()));
+          } // we've seen this langauge, but there's no runtime class (e.g. broken or missing), no reason to warn then
         } else {
           languagesToUnload.add(myLanguagesById.get(sl));
         }
@@ -584,6 +613,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
         try {
           LanguageRuntime langRuntime = createRuntime(language);
           if (langRuntime == null) {
+            myLanguagesNoRuntime.add(language.getModuleReference());
             continue;
           }
           SLanguageId sl = langRuntime.getId();
@@ -595,7 +625,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
           myLanguagesById.put(sl, langRuntime);
           final LanguageRuntimeActivator activator = new LanguageRuntimeActivator(langRuntime);
           ModuleRuntime.ActivatorFactory af = (mr,ctx) -> activator;
-          loadedRuntimes.add(new ModuleRuntime(language.getModuleReference(),language.getClassLoader(), af, Flags.WithExtensions), true);
+          loadedRuntimes.add(new ModuleRuntime(language.getModuleReference(),myClassLoaderManager.getClassLoader(language), af, Flags.WithExtensions), true);
           // perhaps, has to be part of loadedRuntimes cycle, below, but this is the place I've got Language instance,
           // don't want to bother recording Pairs
           fixupLanguageRuntime(language, langRuntime);
@@ -628,12 +658,12 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
         LanguageRuntime srcLangRuntime = generatorRuntime.getSourceLanguage();
         srcLangRuntime.register(generatorRuntime);
         GeneratorRuntimeActivator activator = new GeneratorRuntimeActivator(generatorRuntime);
-        loadedRuntimes.add(new ModuleRuntime(generator.getModuleReference(), generator.getClassLoader(), (mr, ctx)->activator, Flags.NoExtensions), false);
+        loadedRuntimes.add(new ModuleRuntime(generator.getModuleReference(), myClassLoaderManager.getClassLoader(generator), (mr, ctx)->activator, Flags.NoExtensions), false);
       }
       monitor.advance(1);
 
       monitor.step("Solution Runtime");
-      for (Solution s : CollectionUtil.filter(Solution.class, loadedModules)) {
+      for (Solution s : collectSolutionModules(loadedModules)) {
         ModuleRuntime moduleRuntime = createRuntime(s);
         if (moduleRuntime == null) {
           continue;
@@ -668,12 +698,18 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
     myDeploymentNotification.dispatch(false, () -> {});
   }
 
-  private Collection<Language> collectLanguageModules(Set<? extends SModule> modules) {
-    return CollectionUtil.filter(Language.class, modules);
+  private static Collection<Language> collectLanguageModules(Collection<ReloadableModule> modules) {
+    return collectModules(Language.class, modules);
   }
-
-  private Collection<Generator> collectGeneratorModules(Set<? extends SModule> modules) {
-    return CollectionUtil.filter(Generator.class, modules);
+  private static Collection<Generator> collectGeneratorModules(Collection<ReloadableModule> modules) {
+    return collectModules(Generator.class, modules);
+  }
+  private static Collection<Solution> collectSolutionModules(Collection<ReloadableModule> modules) {
+    return collectModules(Solution.class, modules);
+  }
+  private static <E extends SModule> Collection<E> collectModules(Class<E> cls, Collection<ReloadableModule> modules) {
+    // I assume no SModule duplicates comes from CLM dispatch, but in case it's not true, toSet() might be better
+    return modules.stream().map(ReloadableModule::getModule).filter(cls::isInstance).map(cls::cast).collect(Collectors.toList());
   }
 
   private void reinitialize() {
@@ -734,7 +770,30 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
     } finally {
       myRuntimeInstanceAccess.readLock().unlock();
     }
+  }
 
+  /**
+   * Generified {@link #withAvailableLanguages(Stream, Consumer)} for any module runtime.
+   * @param operation invoked for each discovered module runtime
+   * @since 2023.3
+   */
+  public void withModuleRuntime(Stream<SModuleReference> modules, Consumer<ModuleRuntime> operation) {
+    try {
+      myRuntimeInstanceAccess.readLock().lock();
+      modules.map(myModuleRuntime::get).filter(Objects::nonNull).forEach(operation);
+    } finally {
+      myRuntimeInstanceAccess.readLock().unlock();
+    }
+  }
+
+  public <T> void withAvailableExtensions(final Class<T> kind, final MatchRequest matchRequest, Consumer<T> operation) {
+    try {
+      myRuntimeInstanceAccess.readLock().lock();
+      myModuleRuntime.values().stream().filter(ModuleRuntime::withExtensions).flatMap(mr -> mr.extensionsFor(kind)).filter(e -> e.matches(matchRequest))
+                     .map(Extension::get).filter(Optional::isPresent).map(Optional::get).forEach(operation);
+    } finally {
+      myRuntimeInstanceAccess.readLock().unlock();
+    }
   }
 
   private static void processLinkageErrorForLanguage(Language language, LinkageError linkageError) {

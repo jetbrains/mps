@@ -20,7 +20,7 @@ public class EnumerationDescriptor_InequalityProperty extends EnumerationDescrip
   private final EnumerationDescriptor.MemberDescriptor myMember_opposite_to_inequality_0 = new EnumerationDescriptor.MemberDescriptor("opposite_to_inequality", "opposite to inequality", 0x6b67310af31422a7L, "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4241665505353447940");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x6b67310af31422a4L, 0x6b67310af31422a5L, 0x6b67310af31422a6L, 0x6b67310af31422a7L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_as_is_0, myMember_same_as_inequality_0, myMember_opposite_to_inequality_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_as_is_0, myMember_same_as_inequality_0, myMember_opposite_to_inequality_0);
 
   @Nullable
   @Override

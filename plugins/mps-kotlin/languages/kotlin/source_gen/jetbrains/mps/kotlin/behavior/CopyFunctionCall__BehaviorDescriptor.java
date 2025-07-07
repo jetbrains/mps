@@ -12,19 +12,21 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.scopes.signed.NavigationHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class CopyFunctionCall__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4aeece466834176cL, "jetbrains.mps.kotlin.structure.CopyFunctionCall");
@@ -33,7 +35,7 @@ public final class CopyFunctionCall__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<SReferenceLink> getTargetLink_id5D4bOjrrcOr = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getTargetLink").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734615461147L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<MemberReceiver> getReceiver_id5D4bOjrrgiZ = new SMethodBuilder<MemberReceiver>(new SJavaCompoundTypeImpl(MemberReceiver.class)).name("getReceiver").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734615475391L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<FunctionDeclaration> getFunctionDescriptor_id26mUjU3xhgD = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunctionDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2420378304462001193L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Iterable<SignatureScope>> getFunctionScopeParts_id6dAo8EmAhT7 = new SMethodBuilder<Iterable<SignatureScope>>(new SJavaCompoundTypeImpl((Class<Iterable<SignatureScope>>) ((Class) Object.class))).name("getFunctionScopeParts").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7162518405727723079L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
+  public static final SMethod<Iterable<SignatureScope>> getFunctionScopeParts_id6dAo8EmAhT7 = new SMethodBuilder<Iterable<SignatureScope>>(new SJavaCompoundTypeImpl((Class<Iterable<SignatureScope>>) ((Class) Object.class))).name("getFunctionScopeParts").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7162518405727723079L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(FullScopeContext.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, getFunctionDescriptor_id26mUjU3xhgD, getFunctionScopeParts_id6dAo8EmAhT7);
 
@@ -52,19 +54,16 @@ public final class CopyFunctionCall__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static FunctionDeclaration getFunctionDescriptor_id26mUjU3xhgD(@NotNull SNode __thisNode__) {
     return new CopyFunctionDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.constructor$NFWJ));
   }
-  /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, SNode referenceNode, SNode contextNode, SContainmentLink containment) {
-    SNode context = SNodeOperations.as((((referenceNode == null) ? contextNode : SNodeOperations.getParent(referenceNode))), CONCEPTS.NavigationOperation$4I);
-    if (ReceiverTypeHelper.isStaticReceiver(SLinkOperations.getTarget(context, LINKS.operand$YS5t))) {
-      return null;
-    }
-
-    SNode type = NavigationOperation__BehaviorDescriptor.getContextType_id7ubb0gUcL0j.invoke(context);
-    if (type == null) {
-      return null;
-    }
-
+  /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, final FullScopeContext context) {
+    // TODO use KotlinScopes?
     // No receiver type scope here, we only care about data class constructor
-    return IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, new SignatureFilterImpl<FunctionSignature>(FunctionSignature.class), contextNode, ((boolean) false));
+    return NavigationHelper.withCallReceiver(context, (operand) -> {
+      if (ReceiverTypeHelper.isStaticReceiver(operand)) {
+        return null;
+      }
+
+      return (Iterable<SignatureScope>) IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(operand), CONCEPTS.IType$Ni), new SignatureFilterImpl<FunctionSignature>(FunctionSignature.class), context, ((boolean) false));
+    }, () -> (Iterable<SignatureScope>) null);
   }
 
   /*package*/ CopyFunctionCall__BehaviorDescriptor() {
@@ -103,7 +102,7 @@ public final class CopyFunctionCall__BehaviorDescriptor extends BaseBHDescriptor
     }
     switch (methodIndex) {
       case 4:
-        return (T) ((Iterable<SignatureScope>) getFunctionScopeParts_id6dAo8EmAhT7(concept, (SNode) parameters[0], (SNode) parameters[1], (SContainmentLink) parameters[2]));
+        return (T) ((Iterable<SignatureScope>) getFunctionScopeParts_id6dAo8EmAhT7(concept, (FullScopeContext) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -123,10 +122,9 @@ public final class CopyFunctionCall__BehaviorDescriptor extends BaseBHDescriptor
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink constructor$NFWJ = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4aeece466834176cL, 0x4aeece46683491abL, "constructor");
-    /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NavigationOperation$4I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af450L, "jetbrains.mps.kotlin.structure.NavigationOperation");
+    /*package*/ static final SInterfaceConcept IType$Ni = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af441L, "jetbrains.mps.kotlin.structure.IType");
   }
 }

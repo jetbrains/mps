@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1818770337282928852", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1818770337282928852", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 /*package*/ final class OverrideConceptMethodsHelper {
   private final SNode myClassConcept;
   private final SNode myContextMethod;

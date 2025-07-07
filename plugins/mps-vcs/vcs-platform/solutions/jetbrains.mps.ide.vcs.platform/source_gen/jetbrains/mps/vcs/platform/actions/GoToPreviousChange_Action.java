@@ -15,7 +15,7 @@ import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.project.MPSProject;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/8230098746512808952", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "8230098746512808952", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class GoToPreviousChange_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.PreviousOccurence;
 

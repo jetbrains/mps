@@ -13,6 +13,7 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.collections.plugin.CollectionsLanguage;
+import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -55,7 +56,10 @@ with_ctParams:
     })));
   }
   public static Iterable<SNode> containerDeclarations(SModel model, final SNode type) {
-    return ListSequence.fromList(CollectionsLanguage.getInstance().getCustomContainersRegistry().accessibleCustomContainerDeclarations(model)).where((ccd) -> SNodeOperations.getConcept(SLinkOperations.getTarget(ccd, LINKS.containerType$WQze)) == SNodeOperations.getConcept(type));
+    return ListSequence.fromList(CollectionsLanguage.getInstance().getCustomContainersRegistry().accessibleCustomContainerDeclarations(model)).where((ccd) -> {
+      // null type == no constraint
+      return (type == null) || Objects.equals(SNodeOperations.getConcept(SLinkOperations.getTarget(ccd, LINKS.containerType$WQze)), SNodeOperations.getConcept(type));
+    });
   }
 
   private static final class LINKS {

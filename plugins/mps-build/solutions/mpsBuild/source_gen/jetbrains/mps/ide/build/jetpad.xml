@@ -5,6 +5,7 @@
   <property name="build.layout" location="${build.dir}/artifacts/jetpad" />
   <property name="idea_home" location="" />
   <property name="mps_home" location="${basedir}" />
+  <property name="kotlinc_home" location="${mps_home}/plugins/mps-kotlin/kotlinc" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
   <property name="artifacts.mpsCore" location="${build.dir}/artifacts/mpsCore" />
   <property name="artifacts.IDEA" location="${idea_home}" />
@@ -19,9 +20,7 @@
   
   <path id="path.mps.ant.path">
     <pathelement location="${artifacts.mpsBootstrapCore}/lib/ant/lib/ant-mps.jar" />
-    <fileset dir="${artifacts.IDEA}/lib">
-      <include name="util-8.jar" />
-    </fileset>
+    <pathelement location="${artifacts.IDEA}/lib/util-8.jar" />
   </path>
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
@@ -30,10 +29,6 @@
   
   <target name="assemble" depends="classes, declare-mps-tasks">
     <mkdir dir="${build.layout}/jetpad" />
-    <mkdir dir="${build.layout}/jetpad/META-INF" />
-    <copy todir="${build.layout}/jetpad/META-INF">
-      <fileset file="${mps_home}/plugins/jetpad/META-INF/plugin.xml" />
-    </copy>
     <mkdir dir="${build.layout}/jetpad/lib" />
     <jar destfile="${build.layout}/jetpad/lib/jetpad.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/plugins/jetpad/META-INF/plugin.xml" prefix="META-INF" />
@@ -107,13 +102,9 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
-      <library file="${artifacts.mpsBootstrapCore}/languages/mps-stubs.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.constraints.rules.runtime.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.feedback.context.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.feedback.problem.legacy-constraints.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.feedback.problem.rt.jar" />
+      <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <chunk>
         <module file="${mps_home}/plugins/jetpad/solutions/jetbrains.jetpad/jetbrains.jetpad.msd" />
       </chunk>
@@ -124,6 +115,7 @@
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />
       <macro name="mps_home" path="${mps_home}" />
+      <macro name="kotlinc_home" path="${kotlinc_home}" />
     </generate>
   </target>
   

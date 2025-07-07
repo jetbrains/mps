@@ -15,10 +15,14 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class TemplateQueryBase__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11b4d0ca830L, "jetbrains.mps.lang.generator.structure.TemplateQueryBase");
@@ -36,9 +40,18 @@ public final class TemplateQueryBase__BehaviorDescriptor extends BaseBHDescripto
     return true;
   }
   /*package*/ static Scope getScope_id52_Geb4QFgX(@NotNull SNode __thisNode__, SAbstractConcept kind, SContainmentLink role, int index) {
+    // generally, TemplateQueryBase serves as a boundary to avoid template context nodes polluting the function scope, 
+    // (empty scope introduced due to MPS-16711, 67f60e4712c88), however, for certain scenarios we pierce a hole in this border
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VarDeclaration$$D)) {
+      // delegate to default ancestor-traversal logic
+      return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invokeSuper(__thisNode__, CONCEPTS.TemplateQueryBase$zY, kind, role, ((int) index));
+    }
     return new EmptyScope();
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VarDeclaration$$D)) {
+      return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.TemplateQueryBase$zY, kind, child);
+    }
     return new EmptyScope();
   }
 
@@ -90,5 +103,10 @@ public final class TemplateQueryBase__BehaviorDescriptor extends BaseBHDescripto
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept TemplateQueryBase$zY = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11b4d0ca830L, "jetbrains.mps.lang.generator.structure.TemplateQueryBase");
+    /*package*/ static final SConcept VarDeclaration$$D = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration");
   }
 }

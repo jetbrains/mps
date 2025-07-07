@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5idwlu7xcqllez9pxdfsjxsib2cj3tm">
+<product version="3" modelHash="dncty2x9cchwzuksggn36wontun7bss">
   <files names="ClassScopeHelper.java:DelegatedSignatureFilter.java:InheritorHelper.java:SignatureFilter.java:SignatureFilterImpl.java:SuperTypesGenericVisitor.java:SuperTypesVisitorImpl.java:TypeMembersVisitor.java:VisibilityAccess.java" />
 </product>
 

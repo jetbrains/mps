@@ -8,7 +8,7 @@ import java.rmi.RemoteException;
 import java.rmi.Naming;
 import jetbrains.mps.ide.ThreadUtils;
 
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/8632185942131070856", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "8632185942131070856", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 public class MPSPlugin {
   private static final Logger LOG = Logger.getLogger(MPSPlugin.class);
   private static MPSPlugin ourInstance;
