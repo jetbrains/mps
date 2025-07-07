@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD:languages/baseLanguage/constructors/solutions/jetbrains.mps.baseLanguage.constructors.sandbox/jetbrains.mps.baseLanguage.constructors.sandbox.msd
 <solution name="jetbrains.mps.baseLanguage.constructors.sandbox" uuid="d86d62ff-fc1b-40f2-9d7b-717df57c08bc" moduleVersion="0">
   <models>
     <modelRoot contentPath="${module}" type="default">
@@ -23,5 +24,15 @@
     <module reference="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" version="0" />
     <module reference="d86d62ff-fc1b-40f2-9d7b-717df57c08bc(jetbrains.mps.baseLanguage.constructors.sandbox)" version="0" />
   </dependencyVersions>
+=======
+<solution name="jetbrains.mps.baseLanguage.constructors.sandbox" uuid="d86d62ff-fc1b-40f2-9d7b-717df57c08bc" extenallyVisible="true" compileInMPS="true" java-stubs-enabled="false">
+  <models>
+    <modelRoot path="${solution_descriptor}/" namespacePrefix="" />
+  </models>
+  <sourcePath />
+  <usedLanguages>
+    <usedLanguage>0ae47ad3-5abd-486c-ac0f-298884f39393(jetbrains.mps.baseLanguage.constructors)</usedLanguage>
+  </usedLanguages>
+>>>>>>> origin/MPS1.5:core/baseLanguage/constructors/solutions/jetbrains.mps.baseLanguage.constructors.sandbox/jetbrains.mps.baseLanguage.constructors.sandbox.msd
 </solution>
 

@@ -38,6 +38,7 @@
 classes
 classes_gen
 testclasses
+<<<<<<< HEAD
 kotlin_compiled_cache.xml
 teamcity-info.xml
 *.hprof
@@ -112,3 +113,7 @@ teamcity-info.xml
 
 # scripts for mac signing
 /build/tools/mac
+=======
+*.iws
+.idea/workspace.xml
+>>>>>>> origin/MPS1.5

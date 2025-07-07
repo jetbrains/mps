@@ -155,10 +155,15 @@ public abstract class CompletionTextField extends JTextField {
 
   @Override
   public void removeNotify() {
+<<<<<<< HEAD:workbench/mps-ui/source/jetbrains/mps/ide/ui/CompletionTextField.java
     if (myContainerWindow != null) {
       myContainerWindow.removeComponentListener(myListener);
       myContainerWindow = null;
     }
+=======
+    myContainerWindow.removeComponentListener(myListener);
+    myContainerWindow = null;
+>>>>>>> origin/MPS1.5:workbench/source/jetbrains/mps/ide/ui/CompletionTextField.java
     super.removeNotify();
   }
 
