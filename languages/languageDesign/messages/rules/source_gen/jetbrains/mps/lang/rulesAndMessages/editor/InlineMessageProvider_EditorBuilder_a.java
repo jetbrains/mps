@@ -63,7 +63,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, " -> when fails show");
     editorCell.setCellId("Constant_mv64ie_a0");
     Style style = new StyleImpl();
-    new WhenHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new WhenHintStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.9, Measure.SPACES));
     editorCell.getStyle().putAll(style);
     InlineMessageProvider_actions.setCellActions(editorCell, myNode, getEditorContext());

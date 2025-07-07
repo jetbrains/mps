@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.smodel.persistence.def;
 
 import jetbrains.mps.smodel.SModelHeader;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
@@ -44,14 +43,5 @@ public class ModelReadException extends Exception {
   @Nullable
   public SModelReference getModelReference() {
     return myModelReference;
-  }
-
-  /**
-   * @deprecated use {@link #getMessage()}
-   */
-  @Deprecated
-  @ToRemove(version = 2020.1)
-  public String getMessageEx() {
-    return getMessage();
   }
 }

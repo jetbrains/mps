@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -19,9 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.HashMap;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -34,18 +33,14 @@ public class LowLevelVariableReference_Constraints extends BaseConstraintsDescri
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseVariableDeclaration$v20M, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseVariableDeclaration$v20M, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_8w715n_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:edfcb13b-e239-462c-8aae-e4b4a03e7c8b(jetbrains.mps.debugger.java.evaluation.constraints)", "6836281137582821249");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -53,11 +48,7 @@ public class LowLevelVariableReference_Constraints extends BaseConstraintsDescri
             if (SPropertyOperations.getBoolean(evaluator, PROPS.isShowContext$I6Gy)) {
               return ListScope.forResolvableElements(SLinkOperations.getChildren(evaluator, LINKS.variables$I5Ku));
             }
-            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(evaluator, LINKS.variables$I5Ku)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(SPropertyOperations.getBoolean(it, PROPS.isOutOfScope$49K_));
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(evaluator, LINKS.variables$I5Ku)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.isOutOfScope$49K_))));
           }
         };
       }
@@ -66,7 +57,6 @@ public class LowLevelVariableReference_Constraints extends BaseConstraintsDescri
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_8w715n_a0a0a0a0a1a0a0a0c = new SNodePointer("r:edfcb13b-e239-462c-8aae-e4b4a03e7c8b(jetbrains.mps.debugger.java.evaluation.constraints)", "6836281137582821249");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept LowLevelVariableReference$GJ = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7d9a547f857a394bL, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariableReference");

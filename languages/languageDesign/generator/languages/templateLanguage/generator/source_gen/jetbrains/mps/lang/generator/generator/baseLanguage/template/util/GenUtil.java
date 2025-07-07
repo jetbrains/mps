@@ -22,7 +22,7 @@ public class GenUtil {
   public GenUtil() {
   }
   public static String getVar(TemplateQueryContext context, SNode node, int skipMacro) {
-    List<SNode> macros = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(node), CONCEPTS.NodeMacro$qU)).toListSequence();
+    List<SNode> macros = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(node), CONCEPTS.NodeMacro$qU)).toList();
     SNode real = (ListSequence.fromList(macros).count() <= skipMacro ? node : ListSequence.fromList(macros).getElement(skipMacro));
     return (String) context.getTransientObject(MultiTuple.<String,SNode>from(KEY, real));
   }

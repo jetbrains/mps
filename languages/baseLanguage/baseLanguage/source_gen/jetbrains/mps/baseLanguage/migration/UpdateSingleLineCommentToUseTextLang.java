@@ -12,14 +12,12 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SModelInternal;
 import java.util.Collection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -52,52 +50,38 @@ public class UpdateSingleLineCommentToUseTextLang extends MigrationScriptBase {
     {
       SearchScope scope_ldzx6u_b0e = CommandUtil.createScope(m);
       final SearchScope scope_ldzx6u_b0e_0 = new EditableFilteringScope(scope_ldzx6u_b0e);
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_ldzx6u_b0e_0;
-        }
-      };
+      final QueryExecutionContext context = () -> scope_ldzx6u_b0e_0;
 
-      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).visitAll(new IVisitor<SModel>() {
-        public void visit(final SModel currentModel) {
-          final Wrappers._boolean importsUpdated = new Wrappers._boolean(false);
+      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).visitAll((final SModel currentModel) -> {
+        final Wrappers._boolean importsUpdated = new Wrappers._boolean(false);
 
-          CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.SingleLineComment$Kw, false)).visitAll(new IVisitor<SNode>() {
-            public void visit(final SNode slc) {
-              if (ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$Ib1g)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$Ib1g)).any(new IWhereFilter<SNode>() {
-                public boolean accept(SNode part) {
-                  return ListSequence.fromList(SLinkOperations.getChildren(part, LINKS.smodelAttribute$KJ43)).isNotEmpty();
-                }
-              })) {
-                return;
-              }
+        CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.SingleLineComment$Kw, false)).visitAll((final SNode slc) -> {
+          if (ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$Ib1g)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$Ib1g)).any((part) -> ListSequence.fromList(SLinkOperations.getChildren(part, LINKS.smodelAttribute$KJ43)).isNotEmpty())) {
+            return;
+          }
 
-              if (!(importsUpdated.value)) {
-                SModelInternal currentModelInternal = (SModelInternal) (currentModel);
-                Collection<SLanguage> usedLanguages = currentModelInternal.importedLanguageIds();
-                if (!(usedLanguages.contains(bl))) {
-                  currentModelInternal.addLanguage(bl);
-                }
-                importsUpdated.value = true;
-              }
+          if (!(importsUpdated.value)) {
+            SModelInternal currentModelInternal = (SModelInternal) (currentModel);
+            Collection<SLanguage> usedLanguages = currentModelInternal.importedLanguageIds();
+            if (!(usedLanguages.contains(bl))) {
+              currentModelInternal.addLanguage(bl);
+            }
+            importsUpdated.value = true;
+          }
 
-              SNode l = SLinkOperations.addNewChild(slc, LINKS.text$XpYF, CONCEPTS.Line$yC);
-              ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).clear();
-              ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$Ib1g)).visitAll(new IVisitor<SNode>() {
-                public void visit(SNode part) {
-                  if (SNodeOperations.isInstanceOf(part, CONCEPTS.TextCommentPart$LX)) {
-                    SingleLineComment__BehaviorDescriptor.parseAndAddWordsIntoLines_id45vN3dBFprj.invoke(slc, SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.TextCommentPart$LX), PROPS.text$ag2i));
-                  }
-                }
-              });
-              if (ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).isEmpty()) {
-                SLinkOperations.addNewChild(l, LINKS.elements$_j45, CONCEPTS.Word$Dn);
-
-              }
-              ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$Ib1g)).clear();
+          SNode l = SLinkOperations.addNewChild(slc, LINKS.text$XpYF, CONCEPTS.Line$yC);
+          ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).clear();
+          ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$Ib1g)).visitAll((part) -> {
+            if (SNodeOperations.isInstanceOf(part, CONCEPTS.TextCommentPart$LX)) {
+              SingleLineComment__BehaviorDescriptor.parseAndAddWordsIntoLines_id45vN3dBFprj.invoke(slc, SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.TextCommentPart$LX), PROPS.text$ag2i));
             }
           });
-        }
+          if (ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).isEmpty()) {
+            SLinkOperations.addNewChild(l, LINKS.elements$_j45, CONCEPTS.Word$Dn);
+
+          }
+          ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$Ib1g)).clear();
+        });
       });
     }
   }
@@ -107,29 +91,19 @@ public class UpdateSingleLineCommentToUseTextLang extends MigrationScriptBase {
     {
       SearchScope scope_ldzx6u_b0f = CommandUtil.createScope(m);
       final SearchScope scope_ldzx6u_b0f_0 = new EditableFilteringScope(scope_ldzx6u_b0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_ldzx6u_b0f_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SingleLineComment$Kw, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.commentPart$Ib1g)).isNotEmpty();
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode slc) {
-          ListSequence.fromList(problems).addElement(new NotMigratedNode(slc) {
-            @Override
-            public String getMessage() {
-              return "The SingleLineComment could not be migrated automatically, as there are attributes attached to the text of the comment.";
-            }
-          });
-        }
+      QueryExecutionContext context = () -> scope_ldzx6u_b0f_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SingleLineComment$Kw, false)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.commentPart$Ib1g)).isNotEmpty()).visitAll((slc) -> {
+        ListSequence.fromList(problems).addElement(new NotMigratedNode(slc) {
+          @Override
+          public String getMessage() {
+            return "The SingleLineComment could not be migrated automatically, as there are attributes attached to the text of the comment.";
+          }
+        });
       });
       return problems;
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 8);
   }
 

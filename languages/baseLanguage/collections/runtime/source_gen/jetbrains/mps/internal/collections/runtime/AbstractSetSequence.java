@@ -36,10 +36,6 @@ public abstract class AbstractSetSequence<T> extends AbstractCollectionSequence<
     return set.containsAll(c);
   }
   @Override
-  public boolean equals(Object o) {
-    return set.equals(o);
-  }
-  @Override
   public int hashCode() {
     return set.hashCode();
   }

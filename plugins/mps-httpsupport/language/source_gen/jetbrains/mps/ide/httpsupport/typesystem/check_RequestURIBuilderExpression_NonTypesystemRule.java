@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.ide.httpsupport.behavior.RequestURLBuilderExpression__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.ide.httpsupport.behavior.RequestHandler__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -26,11 +25,7 @@ public class check_RequestURIBuilderExpression_NonTypesystemRule extends Abstrac
   public void applyRule(final SNode requestURIBuilderExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SLinkOperations.getTarget(requestURIBuilderExpression, LINKS.requestHandler$_UKL) != null) {
       final Iterable<SNode> initializedParameters = RequestURLBuilderExpression__BehaviorDescriptor.getInitializedParameters_id40BYgt09_iZ.invoke(requestURIBuilderExpression);
-      boolean allRequiredParams = Sequence.fromIterable(RequestHandler__BehaviorDescriptor.getRequieredParameters_id40BYgsZXRLw.invoke(SLinkOperations.getTarget(requestURIBuilderExpression, LINKS.requestHandler$_UKL))).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Sequence.fromIterable(initializedParameters).contains(it);
-        }
-      });
+      boolean allRequiredParams = Sequence.fromIterable(RequestHandler__BehaviorDescriptor.getRequieredParameters_id40BYgsZXRLw.invoke(SLinkOperations.getTarget(requestURIBuilderExpression, LINKS.requestHandler$_UKL))).all((it) -> Sequence.fromIterable(initializedParameters).contains(it));
 
       if (!(allRequiredParams)) {
         final MessageTarget errorTarget = new NodeMessageTarget();

@@ -4,48 +4,53 @@ package jetbrains.mps.ide.migration;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.migration.global.MigrationOptions;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1244156871960204835", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
-/*package*/ class MigrationSessionImpl extends MigrationSession.MigrationSessionBase {
-  private final MPSProject myMpsProject;
-  private final MigrationRegistry myMigrationRegistry;
-  private MigrationCheckerImpl myChecker;
-  private MigrationExecutorImpl myExecutor;
-  private final MigrationOptions myOptions = new MigrationOptions();
+public class MigrationSessionImpl extends MigrationSession.MigrationSessionBase {
+  private final Project myMpsProject;
+  private final MigrationSetup myMigrationConfig;
+  private final MigrationChecker myChecker;
+  private final MigrationExecutor myExecutor;
 
-  public MigrationSessionImpl(MPSProject mpsProject, MigrationRegistry migrationRegistry, boolean resave, boolean migrate) {
+  public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationConfig, boolean forceSave, boolean updateVersions, boolean migrate) {
+    this(mpsProject, migrationConfig, new MigrationCheckerImpl(mpsProject, migrationConfig), new MigrationExecutorImpl(mpsProject), forceSave, updateVersions, migrate);
+  }
+
+  public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationConfig, MigrationChecker checker, MigrationExecutor executor, boolean forceSave, boolean updateVersions, boolean migrate) {
     myMpsProject = mpsProject;
-    myMigrationRegistry = migrationRegistry;
-    myChecker = new MigrationCheckerImpl(mpsProject, migrationRegistry);
-    myExecutor = new MigrationExecutorImpl(mpsProject);
-    if (resave) {
-      getRequiredSteps().add(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
+    myMigrationConfig = migrationConfig;
+    myChecker = checker;
+    myExecutor = executor;
+    if (forceSave) {
+      SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.FORCE_SAVE);
+    }
+    if (updateVersions) {
+      SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
     }
     if (migrate) {
-      getRequiredSteps().add(MigrationSession.MigrationStepKind.MIGRATE);
+      SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.MIGRATE);
     }
   }
+
   @Override
   public Project getProject() {
     return myMpsProject;
   }
+
   @Override
-  public MigrationRegistry getMigrationRegistry() {
-    return myMigrationRegistry;
+  protected MigrationSetup getConfiguration() {
+    return myMigrationConfig;
   }
-  @Override
-  public MigrationOptions getOptions() {
-    return myOptions;
-  }
+
   @Override
   public MigrationChecker getChecker() {
     return myChecker;
   }
+
   @Override
-  public MigrationExecutor getExecutor() {
+  protected MigrationExecutor getExecutor() {
     return myExecutor;
   }
 }

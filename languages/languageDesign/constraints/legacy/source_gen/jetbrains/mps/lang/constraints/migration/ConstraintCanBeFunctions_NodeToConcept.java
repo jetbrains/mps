@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -43,22 +42,16 @@ public class ConstraintCanBeFunctions_NodeToConcept extends MigrationScriptBase 
     {
       SearchScope scope_lwl7bs_b0f = CommandUtil.createScope(m);
       final SearchScope scope_lwl7bs_b0f_0 = new EditableFilteringScope(scope_lwl7bs_b0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_lwl7bs_b0f_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode node) {
-          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeChild$kqlq), problems);
-          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeParent$fXfw), problems);
-          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeAncestor$gbks), problems);
-        }
+      QueryExecutionContext context = () -> scope_lwl7bs_b0f_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false)).visitAll((node) -> {
+        ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeChild$kqlq), problems);
+        ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeParent$fXfw), problems);
+        ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeAncestor$gbks), problems);
       });
     }
     return problems;
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"), 0);
   }
 

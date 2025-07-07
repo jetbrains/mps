@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,10 @@
 package jetbrains.mps.ide.project;
 
 import com.intellij.openapi.wm.WindowManager;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.ProjectRepository;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -35,7 +35,7 @@ public class ProjectHelper {
     if (p instanceof MPSProject) {
       return ((MPSProject) p).getProject();
     }
-    LogManager.getLogger(ProjectHelper.class).debug("The project " + p + " is not an instance of MPSProject");
+    Logger.getLogger(ProjectHelper.class).debug("The project " + p + " is not an instance of MPSProject");
     return null;
   }
 

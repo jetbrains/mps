@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,6 +107,11 @@ import java.util.stream.StreamSupport;
 
   public void forEachWithInput(BiConsumer<String, NodeMap> f) {
     myMap.forEach(f);
+  }
+
+  // FIXME provisional, need to review access methods.
+  /*package*/ Stream<NodeMap> streamWithInput(String label) {
+    return myMap.entrySet().stream().filter(e -> Objects.equals(label, e.getKey())).map(Entry::getValue);
   }
 
   @Nullable

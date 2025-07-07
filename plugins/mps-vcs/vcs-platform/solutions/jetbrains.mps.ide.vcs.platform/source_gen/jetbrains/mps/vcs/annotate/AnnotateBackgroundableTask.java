@@ -8,18 +8,24 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vcs.AbstractVcs;
 import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
-import jetbrains.mps.vcs.history.RootCommitsGraphTraverser;
-import com.intellij.openapi.vcs.history.VcsFileRevision;
 import jetbrains.mps.project.MPSProject;
-import org.jetbrains.annotations.Nls;
+import com.intellij.openapi.project.Project;
+import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.ide.editor.util.EditorComponentUtil;
+import com.intellij.openapi.fileEditor.FileEditorManager;
+import jetbrains.mps.nodeEditor.NodeEditorComponent;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import java.util.List;
+import com.intellij.openapi.vcs.history.VcsFileRevision;
 import com.intellij.openapi.vcs.VcsException;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.vcs.history.CommitsGraph;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.ModelAccess;
+import jetbrains.mps.vcs.history.RootCommitsGraphTraverser;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import git4idea.log.GitCommitTooltipLinkHandler;
 import com.intellij.openapi.application.ApplicationManager;
@@ -38,34 +44,43 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
   private final BackgroundableActionLock myLock;
   private final String myRootName;
   private boolean myAnnotateComplete;
-  private RootCommitsGraphTraverser.AnnotateModelReadException myAnnotateException;
-  private final VcsFileRevision myRevision;
+  private Exception myException;
   private final MPSProject myMpsProject;
 
 
-  public AnnotateBackgroundableTask(MPSProject mpsProject, @Nls(capitalization = Nls.Capitalization.Sentence) @NotNull String rootName, EditorComponent editor, VirtualFile file, AbstractVcs vcs, BackgroundableActionLock lock, VcsFileRevision revision) {
-    super(mpsProject.getProject(), getTitle(rootName), true, ALWAYS_BACKGROUND);
+  public AnnotateBackgroundableTask(MPSProject mpsProject, EditorComponent editor, VirtualFile file, AbstractVcs vcs, BackgroundableActionLock lock) {
+    super(mpsProject.getProject(), "Retrieving annotations", true, ALWAYS_BACKGROUND);
     myMpsProject = mpsProject;
-    myEditor = editor;
     myActualFile = file;
     myActiveVcs = vcs;
     myLock = lock;
-    myRootName = rootName;
-    myRevision = revision;
+    myEditor = getMainEditorComponent(editor, mpsProject.getProject());
+    myRootName = myEditor.getEditedNode().getPresentation();
+    setTitle("Retrieving annotations for " + myRootName);
   }
 
-  private static String getTitle(String rootName) {
-    return "Retrieving annotations for " + rootName;
+  private static EditorComponent getMainEditorComponent(final EditorComponent editorComponent, final Project project) {
+    if (editorComponent instanceof InspectorEditorComponent) {
+      final List<EditorComponent> components = ListSequence.fromList(new ArrayList<EditorComponent>());
+      editorComponent.getEditorContext().getRepository().getModelAccess().runReadAction(() -> ListSequence.fromList(components).addSequence(ListSequence.fromList(EditorComponentUtil.findComponentForNode(editorComponent.getEditedNode().getContainingRoot(), FileEditorManager.getInstance(project)))));
+      return ListSequence.fromList(components).where((it) -> it instanceof NodeEditorComponent).first();
+    } else {
+      return editorComponent;
+    }
   }
 
   @Override
   public void run(@NotNull final ProgressIndicator indicator) {
 
+    if (myEditor == null) {
+      return;
+    }
+
     final Wrappers._boolean wasCanceled = new Wrappers._boolean(false);
 
     final Wrappers._T<List<VcsFileRevision>> revisions = new Wrappers._T<List<VcsFileRevision>>();
     try {
-      revisions.value = getFileRevisions(myRevision);
+      revisions.value = getFileRevisions();
     } catch (VcsException e) {
       myAnnotateComplete = false;
       return;
@@ -74,40 +89,43 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
       return;
     }
 
+    CommitsGraph commitsGraph;
+    try {
+      commitsGraph = new CommitsGraph(myProject, myActualFile, revisions.value);
+    } catch (CommitsGraph.BuildException e) {
+      myException = e;
+      return;
+    }
+
     SNodeId rootId = myEditor.getEditedNode().getNodeId();
     ModelAccess modelAccess = myEditor.getEditorContext().getRepository().getModelAccess();
-    final RootAnnotation rootAnnotation = new RootAnnotation(myActualFile, rootId, modelAccess, myProject);
-    EditorAnnotation editorAnnotation = new EditorAnnotation(myEditor, myActualFile, myActiveVcs, myMpsProject, rootAnnotation, revisions.value);
-    final AnnotationColumn annotationColumn = new AnnotationColumn(myProject, myEditor.getLeftEditorHighlighter(), editorAnnotation);
+    final RootAnnotation rootAnnotation = new RootAnnotation(myActualFile, rootId, modelAccess, commitsGraph);
+    EditorAnnotation editorAnnotation = new EditorAnnotation(myEditor, myActualFile, myActiveVcs, myMpsProject, rootAnnotation, revisions.value, null);
+    final AnnotationColumn annotationColumn = new AnnotationColumn(myProject, myEditor.getLeftEditorHighlighter(), editorAnnotation, null);
 
     final Wrappers._int processedRevisionsCount = new Wrappers._int(0);
 
-    rootAnnotation.addUpdateListener(new RootAnnotation.RootAnnotationUpdateListener() {
-      public void revisionProcessed(RevisionChanges changes) {
-        updateIndicator(indicator, ++processedRevisionsCount.value, ListSequence.fromList(revisions.value).count());
-        if (indicator.isCanceled()) {
-          rootAnnotation.cancelAnnotate();
-          wasCanceled.value = true;
-          annotationColumn.setCloseActionListener(null);
-          annotationColumn.close();
-        }
+    rootAnnotation.addUpdateListener((RevisionChanges changes) -> {
+      updateIndicator(indicator, ++processedRevisionsCount.value, ListSequence.fromList(revisions.value).count());
+      if (indicator.isCanceled()) {
+        rootAnnotation.cancelAnnotate();
+        wasCanceled.value = true;
+        annotationColumn.setCloseActionListener(null);
       }
     });
 
-    annotationColumn.setCloseActionListener(new Runnable() {
-      public void run() {
-        rootAnnotation.cancelAnnotate();
-        wasCanceled.value = true;
-        if (!(indicator.isCanceled())) {
-          indicator.cancel();
-        }
+    annotationColumn.setCloseActionListener(() -> {
+      rootAnnotation.cancelAnnotate();
+      wasCanceled.value = true;
+      if (!(indicator.isCanceled())) {
+        indicator.cancel();
       }
     });
 
     try {
-      rootAnnotation.annotate(revisions.value, (myRevision == null ? myEditor.getEditorContext().getModel() : null), check_afjffg_c0a0a91a61(myRevision));
-    } catch (RootCommitsGraphTraverser.AnnotateModelReadException e) {
-      myAnnotateException = e;
+      rootAnnotation.annotate(revisions.value, myEditor.getEditorContext().getModel());
+    } catch (RootCommitsGraphTraverser.ModelReadException e) {
+      myException = e;
       wasCanceled.value = true;
     } finally {
       annotationColumn.setCloseActionListener(null);
@@ -117,15 +135,21 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
     }
   }
 
-  private void showWarning(RootCommitsGraphTraverser.AnnotateModelReadException e) {
-    VcsRevisionNumber number = e.getRevision().getRevisionNumber();
-    final String warning = myRootName + " annotation not complete.\n" + "Couldn't read root's model for commit " + GitCommitTooltipLinkHandler.createLink(number.asString(), number) + ":\n" + e.getText();
+  private void handleException() {
+    String warning = myRootName + " annotation not complete\n";
+    if (myException instanceof RootCommitsGraphTraverser.ModelReadException) {
+      RootCommitsGraphTraverser.ModelReadException e = as_afjffg_a0a0a1a71(myException, RootCommitsGraphTraverser.ModelReadException.class);
+      VcsRevisionNumber number = e.getRevision().getRevisionNumber();
+      warning += "Couldn't read root's model for commit " + GitCommitTooltipLinkHandler.createLink(number.asString(), number) + ":\n" + e.getText();
+    }
+    if (myException instanceof CommitsGraph.BuildException) {
+      warning += "Annotation is not available until indices are built";
+    }
+    showWarning(warning);
+  }
 
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        ToolWindowManager.getInstance(myActiveVcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, warning);
-      }
-    });
+  private void showWarning(final String warning) {
+    ApplicationManager.getApplication().invokeLater(() -> ToolWindowManager.getInstance(myActiveVcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, warning));
   }
 
   private void showCompleteNotification() {
@@ -138,8 +162,8 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
     if (myAnnotateComplete) {
       showCompleteNotification();
     }
-    if (myAnnotateException != null) {
-      showWarning(myAnnotateException);
+    if (myException != null) {
+      handleException();
     }
   }
 
@@ -151,24 +175,15 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
     super.onFinished();
   }
 
-  private List<VcsFileRevision> getFileRevisions(VcsFileRevision revision) throws VcsException {
-    return VcsCachingHistory.collect(myActiveVcs, VcsUtil.getFilePath(myActualFile), check_afjffg_c0a0ab(revision));
+  private List<VcsFileRevision> getFileRevisions() throws VcsException {
+    return VcsCachingHistory.collect(myActiveVcs, VcsUtil.getFilePath(myActualFile), null);
   }
 
   private void updateIndicator(ProgressIndicator indicator, int processedRevisionsCount, int revisionsCount) {
     String text = String.format(": analyzing revision %d/%d ...", processedRevisionsCount, revisionsCount);
     indicator.setText(getTitle() + text);
   }
-  private static VcsRevisionNumber check_afjffg_c0a0a91a61(VcsFileRevision checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getRevisionNumber();
-    }
-    return null;
-  }
-  private static VcsRevisionNumber check_afjffg_c0a0ab(VcsFileRevision checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getRevisionNumber();
-    }
-    return null;
+  private static <T> T as_afjffg_a0a0a1a71(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

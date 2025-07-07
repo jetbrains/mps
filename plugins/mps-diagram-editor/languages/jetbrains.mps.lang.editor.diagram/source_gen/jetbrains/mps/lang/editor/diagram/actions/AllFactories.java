@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class AllFactories {
   public static class NodeFactory_1497735617372820936 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.INamedConcept$Kd)) {
         SPropertyOperations.assign(newNode, PROPS.name$MnvL, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL));
       }

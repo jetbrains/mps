@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,28 +44,11 @@ class DefaultConceptSubstituteMenuPart implements SubstituteMenuPart {
   public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<>();
     if (myConcept instanceof SConcept && !myConcept.isAbstract()) {
-      result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new DefaultSimpleConceptSubstituteMenuPart(), myConcept));
+      final EditorMenuDescriptorBase emd = new EditorMenuDescriptorBase("simple substitute menu part for concept: " + myConcept.getName(), null);
+      final SimpleConceptSubstituteMenuPart mp = new SimpleConceptSubstituteMenuPart(myConcept, emd);
+      result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(mp, myConcept));
     }
     result.add(new DefaultConceptMenusSubstituteMenuPart(ConceptDescendantsCache.getInstance().getDirectDescendants(myConcept)));
     return new CompositeMenuPart<>(result).createItems(context);
-  }
-
-  private class DefaultSimpleConceptSubstituteMenuPart extends SimpleConceptSubstituteMenuPart{
-
-    public DefaultSimpleConceptSubstituteMenuPart() {
-      super(myConcept);
-    }
-
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + myConcept.getName(), null));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
   }
 }

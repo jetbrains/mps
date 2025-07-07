@@ -2581,9 +2581,9 @@
   </root>
   <root nodeRef="r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)/8649343297855554552">
     <file name="AdapterClass.java">
-      <node id="8649343297855554553" at="7,0,8,0" concept="0" trace="value#()Ljava/lang/String;" />
-      <scope id="8649343297855554553" at="7,0,8,0" />
-      <unit id="8649343297855554552" at="6,0,9,0" name="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
+      <node id="8649343297855554553" at="12,0,13,0" concept="0" trace="value#()Ljava/lang/String;" />
+      <scope id="8649343297855554553" at="12,0,13,0" />
+      <unit id="8649343297855554552" at="10,0,14,0" name="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     </file>
   </root>
 </debug-info>

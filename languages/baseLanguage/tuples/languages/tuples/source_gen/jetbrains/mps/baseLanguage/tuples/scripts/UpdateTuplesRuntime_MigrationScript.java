@@ -9,13 +9,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -51,11 +49,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return "jetbrains.mps.baseLanguage.tuples.runtime.Tuples".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).matches("_[0-9]+");
-          }
-        }));
+        return "jetbrains.mps.baseLanguage.tuples.runtime.Tuples".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).matches("_[0-9]+")));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -81,21 +75,13 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
 
           SNode extendIfc = null;
           if (ifc != null) {
-            extendIfc = _quotation_createNode_yti4yq_a0a0l0b0a0(ListSequence.fromList(typerefs).cut(1).toListSequence(), ifc);
+            extendIfc = _quotation_createNode_yti4yq_a0a0l0b0a0(ListSequence.fromList(typerefs).cut(1).toList(), ifc);
           }
 
           ifc = _quotation_createNode_yti4yq_a0n0b0a0(extendIfc, typedecls, "_" + i, methods);
 
-          List<SNode> extParams = ListSequence.fromList(typerefs).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode tr) {
-              return _quotation_createNode_yti4yq_a0a0a0a0p0b0a0(SNodeOperations.copyNode(tr));
-            }
-          }).toListSequence();
-          ListSequence.fromList(SLinkOperations.getChildren(ifc, LINKS.member$L_2d)).addElement(_quotation_createNode_yti4yq_a0a61a1a0a(extParams, ifc, ListSequence.fromList(typerefs).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SNodeOperations.copyNode(it);
-            }
-          }).toListSequence(), ifc));
+          List<SNode> extParams = ListSequence.fromList(typerefs).select((tr) -> _quotation_createNode_yti4yq_a0a0a0a0p0b0a0(SNodeOperations.copyNode(tr))).toList();
+          ListSequence.fromList(SLinkOperations.getChildren(ifc, LINKS.member$L_2d)).addElement(_quotation_createNode_yti4yq_a0a61a1a0a(extParams, ifc, ListSequence.fromList(typerefs).select((it) -> SNodeOperations.copyNode(it)).toList(), ifc));
 
           ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(ifc);
         }
@@ -134,11 +120,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
         final int MAX_TUPLE_COMPONENTS = 10;
         // Here I assume these updaters (aka refactoring scripts) are executed sequentially, and TupleInterface has been executed already
         final SNode[] tupleIfaces = new SNode[MAX_TUPLE_COMPONENTS];
-        SNode tuplesCC = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.ClassConcept$bK)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return "Tuples".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-          }
-        });
+        SNode tuplesCC = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.ClassConcept$bK)).findFirst((it) -> "Tuples".equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
         for (SNode ti : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(tuplesCC, LINKS.member$L_2d), CONCEPTS.Interface$db))) {
           if (!(SPropertyOperations.getString(ti, PROPS.name$MnvL).matches("_[0-9]+"))) {
             continue;
@@ -260,20 +242,12 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
           SNode ifFalse = SLinkOperations.setNewChild(SLinkOperations.setNewChild(s1, LINKS.ifFalseStatement$psZK, CONCEPTS.BlockStatement$u4), LINKS.statements$q65M, null);
           SNode assignValuesCall = SLinkOperations.setNewChild(SLinkOperations.addNewChild(ifFalse, LINKS.statement$53DE, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M, CONCEPTS.LocalMethodCall$zT);
           SLinkOperations.setPointer(assignValuesCall, LINKS.baseMethodDeclaration$pyYw, new SNodePointer("r:33366a6f-09e8-45e7-ae7f-cb8cf0c7ed05(jetbrains.mps.baseLanguage.tuples.runtime)", "3715638535252606646"));
-          List<SNode> tupleIfaceGetters = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(tupleIfaces[i], LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty();
-            }
-          }).toListSequence();
+          List<SNode> tupleIfaceGetters = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(tupleIfaces[i], LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty()).toList();
           for (int j = 0; j < i; j++) {
             SNode arg = SLinkOperations.addNewChild(assignValuesCall, LINKS.actualArgument$pzdx, CONCEPTS.DotExpression$yW);
             SLinkOperations.setTarget(SLinkOperations.setNewChild(arg, LINKS.operand$w6IR, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, assignMethodParam);
             final String getMethodName = "_" + j;
-            SLinkOperations.setTarget(SLinkOperations.setNewChild(arg, LINKS.operation$gs9E, CONCEPTS.InstanceMethodCallOperation$uu), LINKS.baseMethodDeclaration$pyYw, ListSequence.fromList(tupleIfaceGetters).findFirst(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return getMethodName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-              }
-            }));
+            SLinkOperations.setTarget(SLinkOperations.setNewChild(arg, LINKS.operation$gs9E, CONCEPTS.InstanceMethodCallOperation$uu), LINKS.baseMethodDeclaration$pyYw, ListSequence.fromList(tupleIfaceGetters).findFirst((it) -> getMethodName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL))));
           }
           // uf, what a piece of code...
 

@@ -14,32 +14,33 @@ import java.util.ArrayList;
 import org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.ASTNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.Statement;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.eclipse.jdt.internal.compiler.ast.EmptyStatement;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.eclipse.jdt.internal.core.util.RecordedParsingInformation;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Comparator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.eclipse.jdt.internal.compiler.ast.ImportReference;
 import org.jetbrains.annotations.Nullable;
+import java.util.Set;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import java.util.Deque;
 import jetbrains.mps.internal.collections.runtime.DequeSequence;
 import java.util.LinkedList;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.SModelInternal;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SConcept;
 
 @GeneratedClass(node = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)/3493766494546492073", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
 public class JavaParser {
@@ -109,7 +110,7 @@ public class JavaParser {
         ASTNode[] astNodes = util.parseClassBodyDeclarations(source, 0, source.length, settings, true, recovery);
         // type decl (inner), field, method
         if (astNodes != null && astNodes.length > 0) {
-          resultNodes = converter.convertClassContents(astNodes, context);
+          resultNodes = converter.convertClassContents(astNodes, SNodeOperations.cast(context, CONCEPTS.Classifier$Ix));
         }
         attachComments(source, converter, util.recordedParsingInformation);
 
@@ -124,27 +125,32 @@ public class JavaParser {
 
         Statement[] stmts = absMethod.statements;
 
+        SNode stmtList = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"));
         if (stmts != null && stmts.length > 0) {
           // TODO construct typeResolver from parent node context
-          SNode stmtList = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"));
           ((FullASTConverter) converter).convertStatementsInto(absMethod, stmtList);
-          attachComments(source, converter, util.recordedParsingInformation);
-          resultNodes = ListSequence.fromList(new ArrayList<SNode>());
-          // stmtList may have new statements (comments) by now, after attachComments
-          for (SNode stmt : ListSequence.fromList(SLinkOperations.getChildren(stmtList, LINKS.statement$53DE))) {
-            SNodeOperations.deleteNode(stmt);
-            ListSequence.fromList(resultNodes).addElement(stmt);
+
+        } else {
+          if (util.recordedParsingInformation.commentPositions != null && util.recordedParsingInformation.commentPositions.length > 0) {
+            // Insert a dummy empty line in order for the comments to be able to be added to the model
+            absMethod.statements = new Statement[1];
+            absMethod.statements[0] = new EmptyStatement(source.length, source.length);
+            ((FullASTConverter) converter).convertStatementsInto(absMethod, stmtList);
           }
-
         }
-
+        attachComments(source, converter, util.recordedParsingInformation);
+        resultNodes = ListSequence.fromList(new ArrayList<SNode>());
+        // stmtList may have new statements (comments) by now, after attachComments
+        for (SNode stmt : ListSequence.fromList(SLinkOperations.getChildren(stmtList, LINKS.statement$53DE))) {
+          SNodeOperations.deleteNode(stmt);
+          ListSequence.fromList(resultNodes).addElement(stmt);
+        }
         break;
-
       default:
         throw new IllegalArgumentException("Parsing other than class and statements is not supported yet ");
     }
 
-    return new JavaParseResult(resultNodes, resultPackageName, problemDescription(util.recordedParsingInformation));
+    return new JavaParseResult(resultNodes, converter.getAdditionalLanguages(), resultPackageName, problemDescription(util.recordedParsingInformation));
   }
   public void attachComments(char[] source, ASTConverter converter, RecordedParsingInformation parseInfo) {
 
@@ -161,11 +167,7 @@ public class JavaParser {
       positions.value = ((FullASTConverter) converter).getPositions();
     }
 
-    Iterable<FullASTConverter.CodeBlock> blcks = Sequence.fromIterable(blocks).sort(new Comparator<FullASTConverter.CodeBlock>() {
-      public int compare(FullASTConverter.CodeBlock a, FullASTConverter.CodeBlock b) {
-        return a.getEndPos() - b.getEndPos();
-      }
-    }, true);
+    Iterable<FullASTConverter.CodeBlock> blcks = Sequence.fromIterable(blocks).sort((a, b) -> a.getEndPos() - b.getEndPos(), true);
     for (int[] comment : comments) {
       if (comment[1] > 0) {
         // javadoc
@@ -196,19 +198,31 @@ public class JavaParser {
         }
       }
       if ((block != null)) {
-        int pos = ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$53DE)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(MapSequence.fromMap(positions.value).containsKey(it)) || Math.abs(MapSequence.fromMap(positions.value).get(it)) <= linestart;
-          }
-        }).count();
-        for (String line : CommentHelper.processComment(CommentHelper.splitString(content, lineends, linestart, Math.abs(comment[1])))) {
+        int pos = ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$53DE)).where((it) -> !(MapSequence.fromMap(positions.value).containsKey(it)) || Math.abs(MapSequence.fromMap(positions.value).get(it)) <= linestart).count();
+
+        List<String> commentsToProcess = CommentHelper.processComment(CommentHelper.splitString(content, lineends, linestart, Math.abs(comment[1])));
+        SNode multiLineComment;
+        if (ListSequence.fromList(commentsToProcess).count() > 1) {
+          multiLineComment = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, "jetbrains.mps.baseLanguage.structure.MultiLineComment"));
+          ListSequence.fromList(SLinkOperations.getChildren(multiLineComment, LINKS.lines$lpTr)).clear();
+        } else {
+          multiLineComment = null;
+        }
+        for (String line : commentsToProcess) {
           String line_ = line;
           if (line.startsWith(" ")) {
             line_ = line.substring(1);
           }
-          SNode commentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
-          BHReflection.invoke0(commentLine, CONCEPTS.SingleLineComment$Kw, SMethodTrimmedId.create("parseAndAddWords", CONCEPTS.SingleLineComment$Kw, "13gAna0o0W6"), line_);
-          ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$53DE)).insertElement(pos++, commentLine);
+          if (ListSequence.fromList(commentsToProcess).count() == 1) {
+            SNode commentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
+            BHReflection.invoke0(commentLine, CONCEPTS.SingleLineComment$Kw, SMethodIdV2.create("parseAndAddWords", 1211637016821763846L, 0x5745e3015c8914d3L), line_);
+            ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$53DE)).insertElement(pos++, commentLine);
+          } else {
+            BHReflection.invoke0(multiLineComment, CONCEPTS.MultiLineComment$_e, SMethodIdV2.create("parseAndAddWordsAsNewLine", 554369471807607880L, 0x5745e3015c8914d3L), line_);
+          }
+        }
+        if (ListSequence.fromList(commentsToProcess).count() > 1) {
+          ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$53DE)).insertElement(pos++, multiLineComment);
         }
       } else {
         // no place to insert comment
@@ -290,6 +304,7 @@ public class JavaParser {
     private List<SNode> nodes;
     private String pakage;
     private String errorMsg;
+    private Set<SLanguage> languages;
     public JavaParseResult(List<SNode> ns, String error) {
       nodes = ns;
       errorMsg = error;
@@ -298,9 +313,17 @@ public class JavaParser {
       this(ns, error);
       pakage = pkg;
     }
+    public JavaParseResult(List<SNode> ns, Set<SLanguage> langs, String pkg, String error) {
+      this(ns, pkg, error);
+      languages = langs;
+    }
+
     @NotNull
     public List<SNode> getNodes() {
       return nodes;
+    }
+    public Set<SLanguage> getLanguages() {
+      return languages;
     }
     public String getPackage() {
       return pakage;
@@ -311,7 +334,7 @@ public class JavaParser {
   }
 
   public static void tryResolveDynamicRefs(Iterable<SNode> nodes) {
-    Deque<SNode> stack = DequeSequence.fromDequeNew(new LinkedList<SNode>());
+    Deque<SNode> stack = DequeSequence.fromDeque(new LinkedList<SNode>());
     DequeSequence.fromDequeNew(stack).addSequence(Sequence.fromIterable(nodes));
 
     while (DequeSequence.fromDequeNew(stack).isNotEmpty()) {
@@ -340,10 +363,17 @@ public class JavaParser {
     }
   }
 
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept SingleLineComment$Kw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
+    /*package*/ static final SConcept MultiLineComment$_e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, "jetbrains.mps.baseLanguage.structure.MultiLineComment");
+  }
+
   private static final class LINKS {
     /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
     /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
     /*package*/ static final SContainmentLink body$OAGp = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
+    /*package*/ static final SContainmentLink lines$lpTr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
     /*package*/ static final SContainmentLink entries$neZo = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries");
     /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
@@ -353,9 +383,5 @@ public class JavaParser {
     /*package*/ static final SProperty onDemand$Gmdi = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand");
     /*package*/ static final SProperty static$JAuQ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x4d5c30eb30af1572L, "static");
     /*package*/ static final SProperty tokens$J1uk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept SingleLineComment$Kw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
   }
 }

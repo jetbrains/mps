@@ -10,17 +10,14 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -47,58 +44,24 @@ public class RemoveUsagesOfDeprecatedProperty extends MigrationScriptBase {
     {
       SearchScope scope_pu917e_a0e = CommandUtil.createScope(m);
       final SearchScope scope_pu917e_a0e_0 = new EditableFilteringScope(scope_pu917e_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_pu917e_a0e_0;
+      QueryExecutionContext context = () -> scope_pu917e_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.isDeprecated$drG3) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(it, CONCEPTS.HasAnnotation$Dg, true, false), LINKS.annotation$K49I)).all((annotation) -> {
+        SNode annotationLink = SLinkOperations.getTarget(annotation, LINKS.annotation$12Ek);
+        if ((annotation == null) || (annotationLink == null) || SPropertyOperations.getString(annotationLink, PROPS.name$MnvL) == null) {
+          return true;
         }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.isDeprecated$drG3) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(it, CONCEPTS.HasAnnotation$Dg, true, false), LINKS.annotation$K49I)).all(new IWhereFilter<SNode>() {
-            public boolean accept(SNode annotation) {
-              SNode annotationLink = SLinkOperations.getTarget(annotation, LINKS.annotation$12Ek);
-              if ((annotation == null) || (annotationLink == null) || SPropertyOperations.getString(annotationLink, PROPS.name$MnvL) == null) {
-                return true;
-              }
-              return !(SPropertyOperations.getString(annotationLink, PROPS.name$MnvL).equals("Deprecated"));
-            }
-          });
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(it);
-          SPropertyOperations.set(it, PROPS.isDeprecated$drG3, false);
-        }
+        return !(SPropertyOperations.getString(annotationLink, PROPS.name$MnvL).equals("Deprecated"));
+      })).visitAll((it) -> {
+        IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(it);
+        SPropertyOperations.set(it, PROPS.isDeprecated$drG3, false);
       });
 
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.isDeprecated$drG3) && ListSequence.fromList(SNodeOperations.getChildren(it)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.BaseDocComment$bU);
-            }
-          }).translate(new ITranslator2<SNode, SNode>() {
-            public Iterable<SNode> translate(SNode it) {
-              return SNodeOperations.getNodeDescendants(it, CONCEPTS.DeprecatedBlockDocTag$8n, false, new SAbstractConcept[]{});
-            }
-          }).isEmpty();
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(it);
-          SPropertyOperations.set(it, PROPS.isDeprecated$drG3, false);
-        }
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).where((deprecatable) -> SPropertyOperations.getBoolean(deprecatable, PROPS.isDeprecated$drG3) && ListSequence.fromList(SNodeOperations.getChildren(deprecatable)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BaseDocComment$bU)).translate((it) -> SNodeOperations.getNodeDescendants(it, CONCEPTS.DeprecatedBlockDocTag$8n, false, new SAbstractConcept[]{})).isEmpty()).visitAll((it) -> {
+        IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(it);
+        SPropertyOperations.set(it, PROPS.isDeprecated$drG3, false);
       });
 
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.isDeprecated$drG3);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SPropertyOperations.set(it, PROPS.isDeprecated$drG3, false);
-        }
-      });
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.isDeprecated$drG3)).visitAll((it) -> SPropertyOperations.set(it, PROPS.isDeprecated$drG3, false));
     }
   }
   @Override
@@ -106,23 +69,15 @@ public class RemoveUsagesOfDeprecatedProperty extends MigrationScriptBase {
     {
       SearchScope scope_pu917e_a0f = CommandUtil.createScope(m);
       final SearchScope scope_pu917e_a0f_0 = new EditableFilteringScope(scope_pu917e_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_pu917e_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.isDeprecated$drG3);
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_pu917e_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.isDeprecated$drG3)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedProperty(it, PROPS.isDeprecated$drG3);
         }
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 2);
   }
 

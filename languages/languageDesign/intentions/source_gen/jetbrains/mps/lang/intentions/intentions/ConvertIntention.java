@@ -9,7 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -58,7 +57,7 @@ public class ConvertIntention extends IntentionsFactory {
 
 
   private boolean isApplicableHelper(SNode node, EditorContext editorContext) {
-    return true;
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.fieldDeclaration$sOzg)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.methodDeclaration$ydlK)).isEmpty();
   }
 
 
@@ -72,11 +71,7 @@ public class ConvertIntention extends IntentionsFactory {
 
 
   public void copyFunctionBody(SNode from, SNode to) {
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(to, LINKS.body$5xQk), LINKS.statement$53DE)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.statement$53DE)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.copyNode(it);
-      }
-    }));
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(to, LINKS.body$5xQk), LINKS.statement$53DE)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.statement$53DE)).select((it) -> SNodeOperations.copyNode(it)));
   }
   public SNode createParameterReference(List<SNode> parameters, int argumentNumber) {
     SNode nodeRef = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
@@ -207,6 +202,8 @@ public class ConvertIntention extends IntentionsFactory {
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink methodDeclaration$ydlK = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x118c255bfb5L, "methodDeclaration");
+    /*package*/ static final SContainmentLink fieldDeclaration$sOzg = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x4ffeb1df376f7495L, "fieldDeclaration");
     /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
     /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
     /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");

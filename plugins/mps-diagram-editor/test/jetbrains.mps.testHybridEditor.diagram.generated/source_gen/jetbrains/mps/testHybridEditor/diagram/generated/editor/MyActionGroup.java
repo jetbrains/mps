@@ -10,7 +10,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import javax.swing.Icon;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -29,11 +28,7 @@ public class MyActionGroup implements PaletteActionGroup {
   @Override
   public PaletteElement[] getElements() {
     final List<PaletteElement> paletteElements = ListSequence.fromList(new ArrayList<PaletteElement>());
-    for (SNode node : Sequence.fromIterable(myNodes).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.MetaBlock$17);
-      }
-    })) {
+    for (SNode node : Sequence.fromIterable(myNodes).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.MetaBlock$17))) {
       ListSequence.fromList(paletteElements).addElement(new MyBlockCreationAction(myDiagramCell, SNodeOperations.cast(node, CONCEPTS.MetaBlock$17)));
     }
     return ListSequence.fromList(paletteElements).toGenericArray(PaletteElement.class);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ import java.util.List;
 
 public class ModelPersistence9 implements IModelPersistence, XMLPersistence {
   // per-root
-  public static final String FILE_CONTENT = "content";
+  public static final String FILE_CONTENT = ModelPersistence.PER_ROOT_CONTENT;
 
   // elements
   public static final String MODEL = ModelPersistence.MODEL;
@@ -84,17 +84,6 @@ public class ModelPersistence9 implements IModelPersistence, XMLPersistence {
   @Override
   public int getVersion() {
     return 9;
-  }
-
-  @Override
-  public IModelWriter getModelWriter(@Nullable SModelHeader header) {
-    final MetaModelInfoProvider mmiProvider;
-    if (header != null && header.getMetaInfoProvider() != null) {
-      mmiProvider = header.getMetaInfoProvider();
-    } else {
-      mmiProvider = new RegularMetaModelInfo();
-    }
-    return getModelWriter(mmiProvider);
   }
 
   @Override

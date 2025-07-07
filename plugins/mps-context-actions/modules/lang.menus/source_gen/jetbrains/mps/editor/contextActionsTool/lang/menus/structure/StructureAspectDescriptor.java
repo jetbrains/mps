@@ -63,9 +63,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForQueryFunction_TransformationMenu_Icon() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.editor.contextActionsTool.lang.menus", "QueryFunction_TransformationMenu_Icon", 0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1acaL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Extensible", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a36971630L);
+    // extends: jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Extensible
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a36971630L);
     b.origin("r:f51d1da3-b7ae-4ffa-81c1-3bf3a665f2dd(jetbrains.mps.editor.contextActionsTool.lang.menus.structure)/8954657570916342474");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("query");
     return b.create();
@@ -73,9 +74,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForQueryFunction_TransformationMenu_Tooltip() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.editor.contextActionsTool.lang.menus", "QueryFunction_TransformationMenu_Tooltip", 0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x652f322a3695c3acL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Extensible", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a36971630L);
+    // extends: jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Extensible
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a36971630L);
     b.origin("r:f51d1da3-b7ae-4ffa-81c1-3bf3a665f2dd(jetbrains.mps.editor.contextActionsTool.lang.menus.structure)/7291101478621922220");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("query");
     return b.create();
@@ -83,9 +85,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForTransformationFeature_Icon() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.editor.contextActionsTool.lang.menus", "TransformationFeature_Icon", 0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1ac7L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.structure.TransformationFeature", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa5L);
+    // extends: jetbrains.mps.lang.editor.structure.TransformationFeature
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa5L);
     b.origin("r:f51d1da3-b7ae-4ffa-81c1-3bf3a665f2dd(jetbrains.mps.editor.contextActionsTool.lang.menus.structure)/8954657570916342471");
-    b.version(2);
+    b.version(3);
     b.aggregate("query", 0x7c45559defbb1da3L).target(0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1acaL).optional(true).ordered(true).multiple(false).origin("8954657570916343203").done();
     b.alias("icon");
     return b.create();
@@ -93,9 +96,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForTransformationFeature_Tooltip() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.editor.contextActionsTool.lang.menus", "TransformationFeature_Tooltip", 0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1da5L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.structure.TransformationFeature", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa5L);
+    // extends: jetbrains.mps.lang.editor.structure.TransformationFeature
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa5L);
     b.origin("r:f51d1da3-b7ae-4ffa-81c1-3bf3a665f2dd(jetbrains.mps.editor.contextActionsTool.lang.menus.structure)/8954657570916343205");
-    b.version(2);
+    b.version(3);
     b.aggregate("query", 0x7c45559defbb1da6L).target(0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x652f322a3695c3acL).optional(true).ordered(true).multiple(false).origin("8954657570916343206").done();
     b.alias("tooltip");
     return b.create();
@@ -103,9 +107,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForTransformationLocation_ContextActionsTool() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.editor.contextActionsTool.lang.menus", "TransformationLocation_ContextActionsTool", 0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1da8L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.structure.TransformationLocation", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L);
+    // extends: jetbrains.mps.lang.editor.structure.TransformationLocation
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L);
     b.origin("r:f51d1da3-b7ae-4ffa-81c1-3bf3a665f2dd(jetbrains.mps.editor.contextActionsTool.lang.menus.structure)/8954657570916343208");
-    b.version(2);
+    b.version(3);
     b.alias("context actions tool");
     return b.create();
   }

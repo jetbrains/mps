@@ -22,6 +22,7 @@ public class CopyStackTraceToClipboard_Action extends BaseAction {
     super("Copy Stacktrace to Clipboard", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

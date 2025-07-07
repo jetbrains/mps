@@ -35,11 +35,7 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
     {
       SearchScope scope_mymgc3_a0e = CommandUtil.createScope(m);
       final SearchScope scope_mymgc3_a0e_0 = new EditableFilteringScope(scope_mymgc3_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_mymgc3_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_mymgc3_a0e_0;
       new PropertyPatternVariableMigration<SNode>() {
         @Override
         protected Iterable<SNode> getUsagesToMigrate() {
@@ -63,7 +59,7 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
   public Iterable<MigrationScriptReference> executeAfter() {
     return ListSequence.fromListAndArray(new ArrayList<MigrationScriptReference>(), new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 8));
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x9074634404fd4286L, 0x97d5b46ae6a81709L, "jetbrains.mps.lang.migration"), 1);
   }
 

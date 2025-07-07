@@ -9,7 +9,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -35,11 +34,7 @@ public class MappingLabelUtil {
       SNode mc;
       List<SNode> localMCs = SModelOperations.roots(SNodeOperations.getModel(templateNode), CONCEPTS.MappingConfiguration$7j);
       if (ListSequence.fromList(localMCs).isNotEmpty()) {
-        mc = ListSequence.fromList(localMCs).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.mappingLabel$Wvfj)).isNotEmpty();
-          }
-        }).first();
+        mc = ListSequence.fromList(localMCs).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.mappingLabel$Wvfj)).isNotEmpty()).first();
         if (mc == null) {
           mc = ListSequence.fromList(localMCs).first();
         }

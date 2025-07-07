@@ -10,37 +10,31 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class MakeNumberedPoint_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public MakeNumberedPoint_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)", "6746006958027551993"));
   }
+
   @Override
   public String getPresentation() {
     return "MakeNumberedPoint";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.getContainingLink(SNodeOperations.getParent(node)).isMultiple() && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Paragraph$XF) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.NumberedPoint$ku));
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -50,18 +44,35 @@ public final class MakeNumberedPoint_Intention extends AbstractIntentionDescript
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Numbered Point";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(node), CONCEPTS.NumberedPoint$ku);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SNodeOperations.getContainingLink(SNodeOperations.getParent(node)).isMultiple() && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Paragraph$XF) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.NumberedPoint$ku));
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return MakeNumberedPoint_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

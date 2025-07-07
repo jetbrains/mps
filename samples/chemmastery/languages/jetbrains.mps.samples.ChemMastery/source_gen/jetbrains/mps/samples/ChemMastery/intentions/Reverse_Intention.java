@@ -22,21 +22,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class Reverse_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public Reverse_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:50fc5aab-7eb0-44b3-a36e-a92932aa0d2b(jetbrains.mps.samples.ChemMastery.intentions)", "3709490473851753781"));
   }
+
   @Override
   public String getPresentation() {
     return "Reverse";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -46,10 +46,12 @@ public final class Reverse_Intention extends AbstractIntentionDescriptor impleme
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Reverse Equation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       List<SNode> t = new ArrayList<SNode>();
@@ -59,10 +61,19 @@ public final class Reverse_Intention extends AbstractIntentionDescriptor impleme
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.left$jiYj)).clear();
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.left$jiYj)).addSequence(ListSequence.fromList(t));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return Reverse_Intention.this;
     }
+
   }
 
   private static final class LINKS {

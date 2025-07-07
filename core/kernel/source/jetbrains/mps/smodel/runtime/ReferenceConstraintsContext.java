@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,16 +57,23 @@ public interface ReferenceConstraintsContext {
   SNode getReferenceNode();
 
   /**
-   *
-   * @return context model
-   * @deprecated  use {@code context.getContextNode().getModel()} instead
+   * @return context model, just a shorthand for {@code getContextNode().getModel()}
    */
-  @Deprecated
-  SModel getModel();
+  default SModel getModel() {
+    return getContextNode().getModel();
+  }
 
   /**
    * @deprecated equals to {@code getReferenceNode() != null ? getReferenceNode().getParent() : getContextNode()}
    */
   @Deprecated
   SNode getEnclosingNode();
+
+  /**
+   * @since 2021.2
+   */
+  @NotNull
+  default EvaluateScopeContext getScopeEvaluationContext() {
+    return new EvaluateScopeContext();
+  }
 }

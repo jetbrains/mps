@@ -9,7 +9,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -26,6 +26,7 @@ public class ExecuteActionAttachedToCurrentNode_Action extends BaseAction {
     super("Execute Attached Action", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -33,7 +34,7 @@ public class ExecuteActionAttachedToCurrentNode_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((boolean) (Boolean) BHReflection.invoke0(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.IActionHolder$VD, SMethodTrimmedId.create("canExecute", null, "2QdC0h7dh1h")));
+    return ((boolean) (Boolean) BHReflection.invoke0(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.IActionHolder$VD, SMethodIdV2.create("canExecute", 3282455643657932881L, 0x6d1c0cbc11348977L)));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -64,11 +65,7 @@ public class ExecuteActionAttachedToCurrentNode_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<Runnable> action = new Wrappers._T<Runnable>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        action.value = ((Runnable) BHReflection.invoke0(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.IActionHolder$VD, SMethodTrimmedId.create("execute", null, "7oNS25df64x"), event.getData(MPSCommonDataKeys.MPS_PROJECT)));
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> action.value = ((Runnable) BHReflection.invoke0(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.IActionHolder$VD, SMethodIdV2.create("execute", 8517397753922085153L, 0x6d1c0cbc11348977L), event.getData(MPSCommonDataKeys.MPS_PROJECT))));
     action.value.run();
   }
 

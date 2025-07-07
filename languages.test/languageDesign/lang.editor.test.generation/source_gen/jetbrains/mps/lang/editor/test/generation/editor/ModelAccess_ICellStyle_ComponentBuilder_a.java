@@ -50,7 +50,7 @@ import jetbrains.mps.lang.editor.test.generation.editor.TestTargetStyleSheet_Sty
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ModelAccess_eenn1o_a");
     Style style = new StyleImpl();
-    new testParentStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new testParentStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

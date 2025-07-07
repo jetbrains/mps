@@ -6,8 +6,9 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.Language;
@@ -16,8 +17,6 @@ import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -26,18 +25,26 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @GeneratedClass(node = "r:cb40950c-9102-4caf-8d31-b0388f359313(jetbrains.mps.kernel.language)/616772488614529103", model = "r:cb40950c-9102-4caf-8d31-b0388f359313(jetbrains.mps.kernel.language)")
 public class ConceptAspectsHelper {
   public static SNode attachNewConceptAspect(SNode conceptNode, SNode aspectNode, SModel aspectModel) {
-    BHReflection.invoke0(aspectNode, CONCEPTS.IConceptAspect$Z3, SMethodTrimmedId.create("setBaseConcept", null, "5r_35Ihc58c"), conceptNode);
+    BHReflection.invoke0(aspectNode, CONCEPTS.IConceptAspect$Z3, SMethodIdV2.create("setBaseConcept", 6261424444345963020L, 0x44a456bea0df1cf0L), conceptNode);
     if (SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$EkXl) != null) {
       SPropertyOperations.assign(aspectNode, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$EkXl));
     }
-    SModelOperations.addRootNode(aspectModel, aspectNode);
+    if (SNodeOperations.getModel(aspectNode) == null) {
+      // aspectNode could be result of `new initialized root` op and have model assigned already
+      SModelOperations.addRootNode(aspectModel, aspectNode);
+    }
     return aspectNode;
   }
 
+  /**
+   * 
+   * @deprecated use LanguageAspectDescriptor#create() instead
+   */
+  @Deprecated
   public static <T extends SNode> T attachNewConceptAspect(LanguageAspect aspect, SNode conceptNode, T aspectNode) {
     // [MM] this LanguageAspect usage is reviewed
     Language language = SModelUtil.getDeclaringLanguage(conceptNode);
-    assert language != null : "Language shouldn't be null for " + conceptNode;
+    assert language != null : "Language shouldn't be null for " + SNodeOperations.present(conceptNode);
 
     SModel md = aspect.get(language);
     if (md == null) {
@@ -47,7 +54,7 @@ public class ConceptAspectsHelper {
     return aspectNode;
   }
   public static ConceptPresentation getPresentationAspect(SNode n) {
-    SRepository repo = check_b9zw68_a0a0a3(check_b9zw68_a0a0a0d(n)).getRepository();
+    SRepository repo = check_b9zw68_a0a0d(check_b9zw68_a0a0a3(n));
     if (repo == null) {
       return null;
     }
@@ -56,13 +63,13 @@ public class ConceptAspectsHelper {
     return check_b9zw68_a4a3(check_b9zw68_a0e0d(lang), n);
   }
 
-  private static SModule check_b9zw68_a0a0a3(SModel checkedDotOperand) {
+  private static SRepository check_b9zw68_a0a0d(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.getModule();
+      return checkedDotOperand.getRepository();
     }
     return null;
   }
-  private static SModel check_b9zw68_a0a0a0d(SNode checkedDotOperand) {
+  private static SModel check_b9zw68_a0a0a3(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModel();
     }

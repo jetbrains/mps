@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ConceptMethod {
   public static class NodeFactory_1238617792578 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNode behaviour = SNodeOperations.cast(SNodeOperations.getContainingRoot(enclosingNode), CONCEPTS.ConceptBehavior$2);
       SNodeFactoryOperations.setNewChild(newNode, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
       if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(behaviour, LINKS.concept$u6dL))), CONCEPTS.InterfaceConceptDeclaration$CG)) {

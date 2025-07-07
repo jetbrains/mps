@@ -31,10 +31,9 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.project.ModelImporter;
 import java.awt.Component;
 import jetbrains.mps.openapi.editor.EditorComponent;
-import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.openapi.wm.WindowManager;
 import jetbrains.mps.resolve.ResolverComponent;
-import jetbrains.mps.resolve.ReferenceResolverUtils;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.editor.runtime.ReferenceResolveInEditor;
 
 @GeneratedClass(node = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)/2855655749838535756", model = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)")
 public class RefScopeCheckerInEditor extends RefScopeChecker {
@@ -97,7 +96,7 @@ public class RefScopeCheckerInEditor extends RefScopeChecker {
       if (modelToImport == null || Objects.equals(sourceModel, modelToImport)) {
         return false;
       }
-      if (!((sourceModel instanceof SModelInternal)) || ((SModelInternal) sourceModel).getModelImports().contains(modelToImport.getReference())) {
+      if (!(sourceModel instanceof SModelInternal) || ((SModelInternal) sourceModel).getModelImports().contains(modelToImport.getReference())) {
         return false;
       }
       return !(ModelConstraints.getScope(reference).contains(reference.getTargetNode()));
@@ -105,47 +104,41 @@ public class RefScopeCheckerInEditor extends RefScopeChecker {
     @Override
     public void execute(final EditorContext editorContext) {
       final SRepository repository = editorContext.getRepository();
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          final Wrappers._boolean confirmed = new Wrappers._boolean(false);
-          repository.getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              if (isAlive(repository)) {
-                SNode sourceNode = mySourceNode.resolve(repository);
-                final SModel sourceModel = sourceNode.getModel();
-                ModelImporter mi = new ModelImporter(sourceModel);
-                mi.prepare(sourceNode.getReference(myLink).getTargetSModelReference());
+      ApplicationManager.getApplication().invokeLater(() -> {
+        final Wrappers._boolean confirmed = new Wrappers._boolean(false);
+        repository.getModelAccess().runReadAction(() -> {
+          if (isAlive(repository)) {
+            SNode sourceNode = mySourceNode.resolve(repository);
+            final SModel sourceModel = sourceNode.getModel();
+            ModelImporter mi = new ModelImporter(sourceModel);
+            mi.prepare(sourceNode.getReference(myLink).getTargetSModelReference());
 
-                boolean needsConfirmation = mi.affectsModuleDependencies();
-                if (!(needsConfirmation) || mi.confirmModuleChanges(getParentComponent(editorContext))) {
-                  confirmed.value = true;
-                }
-              }
+            boolean needsConfirmation = mi.affectsModuleDependencies();
+            if (!(needsConfirmation) || mi.confirmModuleChanges(getParentComponent(editorContext))) {
+              confirmed.value = true;
+            }
+          }
 
-            }
-          });
-          repository.getModelAccess().executeCommand(new Runnable() {
-            public void run() {
-              if (confirmed.value && isAlive(repository)) {
-                SNode sourceNode = mySourceNode.resolve(repository);
-                final SModel sourceModel = sourceNode.getModel();
-                ModelImporter mi = new ModelImporter(sourceModel);
-                mi.prepare(sourceNode.getReference(myLink).getTargetSModelReference());
-                mi.execute();
-              }
-            }
-          });
-        }
+        });
+        repository.getModelAccess().executeCommand(() -> {
+          if (confirmed.value && isAlive(repository)) {
+            SNode sourceNode = mySourceNode.resolve(repository);
+            final SModel sourceModel = sourceNode.getModel();
+            ModelImporter mi = new ModelImporter(sourceModel);
+            mi.prepare(sourceNode.getReference(myLink).getTargetSModelReference());
+            mi.execute();
+          }
+        });
       });
 
     }
     private Component getParentComponent(EditorContext editorContext) {
       EditorComponent ec = editorContext.getEditorComponent();
-      return (ec instanceof Component ? ((Component) ec) : ProjectHelper.toMainFrame(editorContext.getOperationContext().getProject()));
+      return (ec instanceof Component ? (Component) ec : WindowManager.getInstance().getMostRecentFocusedWindow());
     }
     @Override
     public void execute(SRepository repository) {
-      // this quickfix should be exucuted only inside editor
+      // this quickfix should be executed only inside editor
       throw new UnsupportedOperationException();
     }
   }
@@ -157,22 +150,11 @@ public class RefScopeCheckerInEditor extends RefScopeChecker {
     }
     @Override
     public void execute(EditorContext editorContext) {
+      // XXX this is basically what ResolverComponent.resolve() does, except for EditorComponent re-use
       if (ResolverComponent.getInstance().resolveScopesOnly(myReference, editorContext.getRepository())) {
         return;
       }
-      SNode sourceNode = myReference.getSourceNode();
-      if (sourceNode == null) {
-        return;
-      }
-      final String resolveInfo = ReferenceResolverUtils.getResolveInfo(myReference, sourceNode);
-      if (resolveInfo == null) {
-        return;
-      }
-      EditorCell cellWithRole = editorContext.getEditorComponent().findNodeCellWithRole(sourceNode, myReference.getLink());
-      if (cellWithRole == null) {
-        return;
-      }
-      EditorBasedReferenceResolverUtils.substituteCell(cellWithRole, resolveInfo, editorContext);
+      new ReferenceResolveInEditor(editorContext.getEditorComponent()).substitute(myReference);
     }
   }
 }

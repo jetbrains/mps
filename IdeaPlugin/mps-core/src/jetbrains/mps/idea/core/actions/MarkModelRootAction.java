@@ -16,6 +16,7 @@
 
 package jetbrains.mps.idea.core.actions;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
@@ -31,6 +32,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
 
 public class MarkModelRootAction extends AnAction {
   public MarkModelRootAction() {
@@ -91,5 +93,10 @@ public class MarkModelRootAction extends AnAction {
       }
       return true;
     });
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 }

@@ -4,8 +4,7 @@ package jetbrains.mps.vcs.plugin;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseAction;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
@@ -15,16 +14,14 @@ import jetbrains.mps.extapi.persistence.FileDataSource;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
@@ -44,7 +41,6 @@ import com.intellij.diff.DiffRequestFactory;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.diff.DiffManager;
 import java.io.IOException;
-import org.apache.log4j.Level;
 import com.intellij.diff.InvalidDiffRequestException;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.vfs.IFile;
@@ -52,13 +48,14 @@ import jetbrains.mps.generator.ModelDigestUtil;
 
 @GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035896082", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class ReRunMergeFromBackup_Action extends BaseAction {
-  private static final Logger LOG = LogManager.getLogger(ReRunMergeFromBackup_Action.class);
+  private static final Logger LOG = Logger.getLogger(ReRunMergeFromBackup_Action.class);
   private static final Icon ICON = null;
 
   public ReRunMergeFromBackup_Action() {
     super("Rerun Merge from Backup", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -73,7 +70,7 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
     if (manager.getAllVersionedRoots().length == 0) {
       return false;
     }
-    VirtualFile file = VirtualFileUtils.getProjectVirtualFile(ReRunMergeFromBackup_Action.this.getModelFile(_params));
+    VirtualFile file = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getFileSystem().asVirtualFile(ReRunMergeFromBackup_Action.this.getModelFile(_params));
     if (file == null) {
       return false;
     }
@@ -122,16 +119,17 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
     // FIXME prefer ModelFactory.save(openapi.SModel, in-memory stream data source); perhaps PersVersAware.getModelFactory()?
     // In fact, we need to use actual model persistence format, as strings in the zip are likely plain text from VCS, which,
     // for the same model, usually means same persistence as current (unless persistence has been changed).
-    String modelData = new ModelAccessHelper(((SModel) MapSequence.fromMap(_params).get("model")).getRepository()).runReadAction(new Computable<String>() {
-      public String compute() {
-        // FIXME as long as we use modelData to match against 'mine' content from merge backup, we implicitly assume here
-        //      that merge uses the same ModelFactory to save model into backup as we use here to obtain actual content
-        //      I'd say it has to use VCSPersistenceUtil.saveModel so that one can expect that persistence approach to backup and actual content matches
-        ModelFactory xmlPersistence = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getComponent(ModelFactoryService.class).getDefaultModelFactory(PreinstalledDataSourceTypes.MPS);
-        byte[] modelAsBytes = PersistenceUtil.modelAsBytes(((SModel) MapSequence.fromMap(_params).get("model")), xmlPersistence);
-        return (modelAsBytes == null ? null : new String(modelAsBytes, FileUtil.DEFAULT_CHARSET));
-      }
+    String modelData = new ModelAccessHelper(((SModel) MapSequence.fromMap(_params).get("model")).getRepository()).runReadAction(() -> {
+      // FIXME as long as we use modelData to match against 'mine' content from merge backup, we implicitly assume here
+      //      that merge uses the same ModelFactory to save model into backup as we use here to obtain actual content
+      //      I'd say it has to use VCSPersistenceUtil.saveModel so that one can expect that persistence approach to backup and actual content matches
+      ModelFactory xmlPersistence = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getComponent(ModelFactoryService.class).getDefaultModelFactory(PreinstalledDataSourceTypes.MPS);
+      byte[] modelAsBytes = PersistenceUtil.modelAsBytes(((SModel) MapSequence.fromMap(_params).get("model")), xmlPersistence);
+      return (modelAsBytes == null ? null : new String(modelAsBytes, FileUtil.DEFAULT_CHARSET));
     });
+
+    final VirtualFile file = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getFileSystem().asVirtualFile(ReRunMergeFromBackup_Action.this.getModelFile(_params));
+    assert file != null;
 
     for (File backupFile : Sequence.fromIterable(ReRunMergeFromBackup_Action.this.getBackupFiles(_params))) {
       try {
@@ -149,21 +147,19 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
         if (mine == null) {
           return;
         }
-        VirtualFile file = VirtualFileUtils.getProjectVirtualFile(ReRunMergeFromBackup_Action.this.getModelFile(_params));
-        assert file != null;
         List<String> contents = ListSequence.fromListAndArray(new ArrayList<String>(), mine, base, repository);
         List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), "Mine", "Base version", "Repository");
         MergeRequest request = DiffRequestFactory.getInstance().createMergeRequest(((Project) MapSequence.fromMap(_params).get("project")), file.getFileType(), FileDocumentManager.getInstance().getDocument(file), contents, null, titles, null);
         DiffManager.getInstance().showMerge(((Project) MapSequence.fromMap(_params).get("project")), request);
         return;
       } catch (IOException e) {
-        if (LOG.isEnabledFor(Level.WARN)) {
-          LOG.warn("", e);
+        if (LOG.isWarningLevel()) {
+          LOG.warning("", e);
         }
         // Skip this backup
         continue;
       } catch (InvalidDiffRequestException e) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
+        if (LOG.isErrorLevel()) {
           LOG.error("", e);
         }
       }

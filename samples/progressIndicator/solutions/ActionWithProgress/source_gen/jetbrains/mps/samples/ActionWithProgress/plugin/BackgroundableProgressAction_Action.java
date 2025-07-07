@@ -27,6 +27,7 @@ public class BackgroundableProgressAction_Action extends BaseAction {
     super("BackgroundableProgressAction", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -129,11 +130,7 @@ public class BackgroundableProgressAction_Action extends BaseAction {
     };
     // The execute() method of actions must be very quick
     // so every long calculation must be invoked outside of this method like this:
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        ProgressManager.getInstance().run(backgroundable);
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(() -> ProgressManager.getInstance().run(backgroundable));
   }
   private void doWork(final AnActionEvent event) {
     // 42 because it is ultimate answer to everything =)

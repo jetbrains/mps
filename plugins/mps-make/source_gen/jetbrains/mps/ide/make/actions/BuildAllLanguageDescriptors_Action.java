@@ -17,8 +17,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.util.SNodeOperations;
 
@@ -29,6 +28,7 @@ public class BuildAllLanguageDescriptors_Action extends BaseAction {
     super("Rebuild All Language Descriptors", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -50,23 +50,15 @@ public class BuildAllLanguageDescriptors_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<SModel>> models = new Wrappers._T<List<SModel>>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Iterable<? extends SModule> projectModules = event.getData(MPSCommonDataKeys.MPS_PROJECT).getModules();
-        models.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), Sequence.fromIterable(projectModules).ofType(Language.class).select(new ISelector<Language, SModel>() {
-          public SModel select(Language it) {
-            return Sequence.fromIterable(((Iterable<SModel>) it.getModels())).findFirst(new IWhereFilter<SModel>() {
-              public boolean accept(SModel it) {
-                return "descriptor".equals(SModelStereotype.getStereotype(it));
-              }
-            });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+      Iterable<? extends SModule> projectModules = event.getData(MPSCommonDataKeys.MPS_PROJECT).getModules();
+      models.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), Sequence.fromIterable(projectModules).ofType(Language.class).select((it) -> {
+        return Sequence.fromIterable(((Iterable<SModel>) it.getModels())).findFirst(new _FunctionTypes._return_P1_E0<Boolean, SModel>() {
+          public Boolean invoke(SModel it) {
+            return "descriptor".equals(SModelStereotype.getStereotype(it));
           }
-        }).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return it != null && SNodeOperations.isGeneratable(it);
-          }
-        }));
-      }
+        });
+      }).where((it) -> it != null && SNodeOperations.isGeneratable(it)));
     });
     new MakeActionImpl(new MakeActionParameters(event.getData(MPSCommonDataKeys.MPS_PROJECT)).models(models.value).cleanMake(true)).executeAction();
   }

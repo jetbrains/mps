@@ -4,15 +4,15 @@
   <languages>
     <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="-1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="-1" />
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="1" />
-    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
+    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="6" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
@@ -38,6 +38,7 @@
         <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
       </concept>
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
+        <property id="2616911529524314943" name="accessMode" index="3DII0k" />
         <child id="1216993439383" name="methods" index="1qtyYc" />
         <child id="1217501822150" name="nodesToCheck" index="1SKRRt" />
         <child id="1217501895093" name="testMethods" index="1SL9yI" />
@@ -98,7 +99,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
@@ -243,7 +244,7 @@
       </concept>
       <concept id="1081506762703" name="jetbrains.mps.baseLanguage.structure.GreaterThanExpression" flags="nn" index="3eOSWO" />
       <concept id="1081506773034" name="jetbrains.mps.baseLanguage.structure.LessThanExpression" flags="nn" index="3eOVzh" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -279,7 +280,7 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
@@ -307,6 +308,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1235746970280" name="jetbrains.mps.baseLanguage.closures.structure.CompactInvokeFunctionExpression" flags="nn" index="2Sg_IR">
         <child id="1235746996653" name="function" index="2SgG2M" />
         <child id="1235747002942" name="parameter" index="2SgHGx" />
@@ -334,7 +336,7 @@
     </language>
     <language id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers">
       <concept id="1205752633985" name="jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression" flags="nn" index="2WthIp" />
-      <concept id="1205756064662" name="jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation" flags="ng" index="2WEnae">
+      <concept id="1205756064662" name="jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation" flags="ngI" index="2WEnae">
         <reference id="1205756909548" name="member" index="2WH_rO" />
       </concept>
       <concept id="1205769003971" name="jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration" flags="ng" index="2XrIbr" />
@@ -409,7 +411,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7" />
@@ -457,7 +459,6 @@
       <concept id="1227022159410" name="jetbrains.mps.baseLanguage.collections.structure.AddFirstElementOperation" flags="nn" index="2Ke4WJ" />
       <concept id="1227022179634" name="jetbrains.mps.baseLanguage.collections.structure.AddLastElementOperation" flags="nn" index="2Ke9KJ" />
       <concept id="1227022210526" name="jetbrains.mps.baseLanguage.collections.structure.ClearAllElementsOperation" flags="nn" index="2Kehj3" />
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
@@ -494,6 +495,7 @@
   <node concept="1lH9Xt" id="hT$Pzkp">
     <property role="TrG5h" value="ChangeMethodParametersForStatement" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$Pzkq" role="1SKRRt">
       <node concept="312cEu" id="hT$Pzkr" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -889,6 +891,7 @@
   <node concept="1lH9Xt" id="hT$Pznl">
     <property role="TrG5h" value="ConceptFunctioParameterTest" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$Pznm" role="1SKRRt">
       <node concept="sE7Ow" id="hT$Pznn" role="1qenE9">
         <property role="TrG5h" value="Action" />
@@ -995,6 +998,7 @@
   <node concept="1lH9Xt" id="hT$Pzql">
     <property role="TrG5h" value="ExtractFromAnonymous" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="hT$Pzqm" role="1SL9yI">
       <property role="TrG5h" value="ExtractFromAnonymous" />
       <node concept="3cqZAl" id="hT$Pzqn" role="3clF45" />
@@ -1224,6 +1228,7 @@
   <node concept="1lH9Xt" id="hT$PzrK">
     <property role="TrG5h" value="ExtractFromStatements" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$PzrL" role="1SKRRt">
       <node concept="312cEu" id="hT$PzrM" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -1482,6 +1487,7 @@
   <node concept="1lH9Xt" id="hT$Pztu">
     <property role="TrG5h" value="ExtractMethodFromConstructor" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$Pztv" role="1SKRRt">
       <node concept="312cEu" id="hT$Pztw" role="1qenE9">
         <property role="TrG5h" value="Class" />
@@ -1613,6 +1619,7 @@
   <node concept="1lH9Xt" id="hT$PGyl">
     <property role="TrG5h" value="FindInputVariables" />
     <property role="3GE5qa" value="extractMethod.analyzer" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$PGym" role="1SKRRt">
       <node concept="312cEu" id="hT$PGyn" role="1qenE9">
         <property role="TrG5h" value="Class1" />
@@ -1778,6 +1785,7 @@
   <node concept="1lH9Xt" id="hT$PPk7">
     <property role="TrG5h" value="BreakStatement" />
     <property role="3GE5qa" value="extractMethod.break" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$PPk8" role="1SKRRt">
       <node concept="312cEu" id="hT$PPk9" role="1qenE9">
         <property role="TrG5h" value="Clazz" />
@@ -1932,6 +1940,7 @@
   <node concept="1lH9Xt" id="hT$PPlc">
     <property role="TrG5h" value="ExtractBreak" />
     <property role="3GE5qa" value="extractMethod.break" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$PPld" role="1SKRRt">
       <node concept="312cEu" id="hT$PPle" role="1qenE9">
         <property role="TrG5h" value="clazz" />
@@ -2170,6 +2179,7 @@
   <node concept="1lH9Xt" id="hT$PPmQ">
     <property role="TrG5h" value="ExtractContinue" />
     <property role="3GE5qa" value="extractMethod.break" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$PPmR" role="1SKRRt">
       <node concept="312cEu" id="hT$PPmS" role="1qenE9">
         <property role="TrG5h" value="clazz" />
@@ -2370,6 +2380,7 @@
   <node concept="1lH9Xt" id="hT$PWpa">
     <property role="TrG5h" value="ExtractDefaultClassifierMethodDeclaration" />
     <property role="3GE5qa" value="extractMethod.conceptFunction" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$PWpb" role="1SKRRt">
       <node concept="sE7Ow" id="hT$PWpc" role="1qenE9">
         <property role="TrG5h" value="Action" />
@@ -2403,6 +2414,7 @@
               </node>
             </node>
           </node>
+          <node concept="3Tm6S6" id="441vB8Me5MO" role="1B3o_S" />
         </node>
         <node concept="tnohg" id="hT$PWpl" role="tncku">
           <node concept="3clFbS" id="hT$PWpm" role="2VODD2">
@@ -2441,6 +2453,7 @@
               </node>
             </node>
           </node>
+          <node concept="3Tm6S6" id="441vB8Me5MP" role="1B3o_S" />
         </node>
         <node concept="2XrIbr" id="hT$PWpA" role="32lrUH">
           <property role="TrG5h" value="bar" />
@@ -2511,6 +2524,7 @@
               </node>
             </node>
           </node>
+          <node concept="3Tm6S6" id="441vB8Me5MQ" role="1B3o_S" />
         </node>
         <node concept="2XrIbr" id="hT$PWpY" role="32lrUH">
           <property role="TrG5h" value="boo" />
@@ -2704,6 +2718,7 @@
   <node concept="1lH9Xt" id="hT$Q6Oy">
     <property role="TrG5h" value="ExtractFromExpression" />
     <property role="3GE5qa" value="extractMethod.expression" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$Q6Oz" role="1SKRRt">
       <node concept="312cEu" id="hT$Q6O$" role="1qenE9">
         <property role="TrG5h" value="clazz" />
@@ -2908,6 +2923,7 @@
   <node concept="1lH9Xt" id="hT$Q6PW">
     <property role="TrG5h" value="ExtractFromExpressionWithoutReturn" />
     <property role="3GE5qa" value="extractMethod.expression" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$Q6PX" role="1SKRRt">
       <node concept="312cEu" id="hT$Q6PY" role="1qenE9">
         <property role="TrG5h" value="c" />
@@ -3075,6 +3091,7 @@
   <node concept="1lH9Xt" id="hT$QsKj">
     <property role="TrG5h" value="ExtractDifferentReturns" />
     <property role="3GE5qa" value="extractMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$QsKk" role="1SKRRt">
       <node concept="312cEu" id="hT$QsKl" role="1qenE9">
         <property role="TrG5h" value="clazz" />
@@ -3309,6 +3326,7 @@
   <node concept="1lH9Xt" id="hT$QsLT">
     <property role="TrG5h" value="ExtractFromStatementWithReturnValue" />
     <property role="3GE5qa" value="extractMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$QsLU" role="1SKRRt">
       <node concept="312cEu" id="hT$QsLV" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -3566,6 +3584,7 @@
   <node concept="1lH9Xt" id="hT$QsNR">
     <property role="TrG5h" value="ExtractFromStatementsEndsWithReturn" />
     <property role="3GE5qa" value="extractMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$QsNS" role="1SKRRt">
       <node concept="312cEu" id="hT$QsNT" role="1qenE9">
         <property role="TrG5h" value="extractMethod" />
@@ -3710,6 +3729,7 @@
   <node concept="1lH9Xt" id="hT$QsOO">
     <property role="TrG5h" value="MethodsWithoutReturnStatement" />
     <property role="3GE5qa" value="extractMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$QsOP" role="1SKRRt">
       <node concept="312cEu" id="hT$QsOQ" role="1qenE9">
         <property role="TrG5h" value="Clazz" />
@@ -3878,6 +3898,7 @@
   <node concept="1lH9Xt" id="hT$QsPY">
     <property role="TrG5h" value="OneReturnStatement" />
     <property role="3GE5qa" value="extractMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$QsPZ" role="1SKRRt">
       <node concept="312cEu" id="hT$QsQ0" role="1qenE9">
         <property role="TrG5h" value="clazz" />
@@ -4063,6 +4084,7 @@
   <node concept="1lH9Xt" id="hT$QsRf">
     <property role="TrG5h" value="OneReturnTransformation" />
     <property role="3GE5qa" value="extractMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$QsRg" role="1SKRRt">
       <node concept="312cEu" id="hT$QsRh" role="1qenE9">
         <property role="TrG5h" value="clazz" />
@@ -4267,6 +4289,7 @@
   <node concept="1lH9Xt" id="hT$QsSC">
     <property role="TrG5h" value="ReturnStatement" />
     <property role="3GE5qa" value="extractMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$QsSD" role="1SKRRt">
       <node concept="312cEu" id="hT$QsSE" role="1qenE9">
         <property role="TrG5h" value="Clazz" />
@@ -4524,6 +4547,7 @@
   <node concept="1lH9Xt" id="hT$QBaC">
     <property role="TrG5h" value="ExtractFromIntention" />
     <property role="3GE5qa" value="extractMethod.staticContainer" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="hT$QBaD" role="1SL9yI">
       <property role="TrG5h" value="extractExpression" />
       <node concept="3cqZAl" id="hT$QBaE" role="3clF45" />
@@ -4755,6 +4779,7 @@
   <node concept="1lH9Xt" id="hT$QBee">
     <property role="TrG5h" value="staticContainerClassTest" />
     <property role="3GE5qa" value="extractMethod.staticContainer" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$QBef" role="1SKRRt">
       <node concept="13h7C7" id="hT$QBeg" role="1qenE9">
         <ref role="13h7C2" to="tpee:fHWc73I" resolve="AndExpression" />
@@ -5024,6 +5049,7 @@
   <node concept="1lH9Xt" id="hT$Rswd">
     <property role="TrG5h" value="AddThrowDeclaration" />
     <property role="3GE5qa" value="changeMethodSignature" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$Rswe" role="1SKRRt">
       <node concept="312cEu" id="hT$Rswf" role="1qenE9">
         <property role="TrG5h" value="class1" />
@@ -5147,6 +5173,7 @@
   <node concept="1lH9Xt" id="hT$Rsx1">
     <property role="TrG5h" value="ChangeMethodName" />
     <property role="3GE5qa" value="changeMethodSignature" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$Rsx2" role="1SKRRt">
       <node concept="312cEu" id="hT$Rsx3" role="1qenE9">
         <property role="TrG5h" value="c2" />
@@ -5263,6 +5290,7 @@
   <node concept="1lH9Xt" id="hT$RsxM">
     <property role="TrG5h" value="ChangeReturningType" />
     <property role="3GE5qa" value="changeMethodSignature" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RsxN" role="1SKRRt">
       <node concept="312cEu" id="hT$RsxO" role="1qenE9">
         <property role="TrG5h" value="Class1" />
@@ -5386,6 +5414,7 @@
   <node concept="1lH9Xt" id="hT$RsyA">
     <property role="TrG5h" value="ChangeSignatureOfStaticMethod" />
     <property role="3GE5qa" value="changeMethodSignature" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RsyB" role="1SKRRt">
       <node concept="312cEu" id="hT$RsyC" role="1qenE9">
         <property role="TrG5h" value="Clazz" />
@@ -5746,6 +5775,7 @@
   <node concept="1lH9Xt" id="hT$RAuj">
     <property role="TrG5h" value="AddParameter" />
     <property role="3GE5qa" value="changeMethodSignature.parameter" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RAuk" role="1SKRRt">
       <node concept="312cEu" id="hT$RAul" role="1qenE9">
         <property role="TrG5h" value="class1" />
@@ -5871,6 +5901,7 @@
   <node concept="1lH9Xt" id="hT$RAv9">
     <property role="TrG5h" value="ChangeParameterName" />
     <property role="3GE5qa" value="changeMethodSignature.parameter" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RAva" role="1SKRRt">
       <node concept="312cEu" id="hT$RAvb" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -6023,6 +6054,7 @@
   <node concept="1lH9Xt" id="hT$RAwb">
     <property role="TrG5h" value="ChangeParameterType" />
     <property role="3GE5qa" value="changeMethodSignature.parameter" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RAwc" role="1SKRRt">
       <node concept="312cEu" id="hT$RAwd" role="1qenE9">
         <property role="TrG5h" value="class1" />
@@ -6167,6 +6199,7 @@
   <node concept="1lH9Xt" id="hT$RAxa">
     <property role="TrG5h" value="ChangeParametersOrder" />
     <property role="3GE5qa" value="changeMethodSignature.parameter" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RAxb" role="1SKRRt">
       <node concept="312cEu" id="hT$RAxc" role="1qenE9">
         <property role="TrG5h" value="Class1" />
@@ -6474,6 +6507,7 @@
   <node concept="1lH9Xt" id="hT$RAzh">
     <property role="TrG5h" value="RemoveParameter" />
     <property role="3GE5qa" value="changeMethodSignature.parameter" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RAzi" role="1SKRRt">
       <node concept="312cEu" id="hT$RAzj" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -6592,6 +6626,7 @@
   <node concept="1lH9Xt" id="hT$RA$4">
     <property role="TrG5h" value="TwoParametersWithSameType" />
     <property role="3GE5qa" value="changeMethodSignature.parameter" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RA$5" role="1SKRRt">
       <node concept="312cEu" id="hT$RA$6" role="1qenE9">
         <property role="TrG5h" value="Class1" />
@@ -6776,6 +6811,7 @@
   <node concept="1lH9Xt" id="hT$RLxf">
     <property role="TrG5h" value="DeclarationVariablesInMethod" />
     <property role="3GE5qa" value="inlineMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RLxg" role="1SKRRt">
       <node concept="312cEu" id="hT$RLxh" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -6942,6 +6978,7 @@
   <node concept="1lH9Xt" id="hT$RLyp">
     <property role="TrG5h" value="InlineFromAnotherClass" />
     <property role="3GE5qa" value="inlineMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RLyq" role="1SKRRt">
       <node concept="312cEu" id="hT$RLyr" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -7141,6 +7178,7 @@
   <node concept="1lH9Xt" id="hT$RLzO">
     <property role="TrG5h" value="InlineFromExpression" />
     <property role="3GE5qa" value="inlineMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RLzP" role="1SKRRt">
       <node concept="312cEu" id="hT$RLzQ" role="1qenE9">
         <property role="TrG5h" value="TestClass" />
@@ -7378,6 +7416,7 @@
   <node concept="1lH9Xt" id="hT$RL_y">
     <property role="TrG5h" value="InlineRecursiveMethod" />
     <property role="3GE5qa" value="inlineMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RL_z" role="1SKRRt">
       <node concept="312cEu" id="hT$RL_$" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -7430,6 +7469,7 @@
   <node concept="1lH9Xt" id="hT$RL_U">
     <property role="TrG5h" value="InlineWithNoSourcesAttached" />
     <property role="3GE5qa" value="inlineMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RL_V" role="1SKRRt">
       <node concept="312cEu" id="hT$RL_W" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -7486,6 +7526,7 @@
   <node concept="1lH9Xt" id="hT$RLAm">
     <property role="TrG5h" value="SimpleInlineWithOneReturn" />
     <property role="3GE5qa" value="inlineMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RLAn" role="1SKRRt">
       <node concept="312cEu" id="hT$RLAo" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -7620,6 +7661,7 @@
   <node concept="1lH9Xt" id="hT$RY9b">
     <property role="TrG5h" value="InlineFromBehavior" />
     <property role="3GE5qa" value="inlineMethod.behavior" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RY9c" role="1SKRRt">
       <node concept="312cEu" id="hT$RY9d" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -7747,6 +7789,7 @@
   <node concept="1lH9Xt" id="hT$RY9Z">
     <property role="TrG5h" value="InlineFromBehaviorWithMethods" />
     <property role="3GE5qa" value="inlineMethod.behavior" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RYa0" role="1SKRRt">
       <node concept="13h7C7" id="hT$RYa1" role="1qenE9">
         <ref role="13h7C2" to="7j62:y9M3y44TpB" resolve="SandboxConcept" />
@@ -8022,6 +8065,7 @@
   <node concept="1lH9Xt" id="hT$RYbS">
     <property role="TrG5h" value="InlineInBehaviorWithThis" />
     <property role="3GE5qa" value="inlineMethod.behavior" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$RYbT" role="1SKRRt">
       <node concept="13h7C7" id="hT$RYbU" role="1qenE9">
         <ref role="13h7C2" to="7j62:y9M3y44TpB" resolve="SandboxConcept" />
@@ -8140,6 +8184,7 @@
   <node concept="1lH9Xt" id="hT$S641">
     <property role="TrG5h" value="InlineMethodThatChangesParameters" />
     <property role="3GE5qa" value="inlineMethod.parameters" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$S642" role="1SKRRt">
       <node concept="312cEu" id="hT$S643" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -8354,6 +8399,7 @@
   <node concept="1lH9Xt" id="hT$S65u">
     <property role="TrG5h" value="InlineModelWithConstants" />
     <property role="3GE5qa" value="inlineMethod.parameters" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$S65v" role="1SKRRt">
       <node concept="312cEu" id="hT$S65w" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -8559,6 +8605,7 @@
   <node concept="1lH9Xt" id="hT$S66S">
     <property role="TrG5h" value="OneReturnWithNotVariableParameters" />
     <property role="3GE5qa" value="inlineMethod.parameters" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$S66T" role="1SKRRt">
       <node concept="312cEu" id="hT$S66U" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -8774,6 +8821,7 @@
   <node concept="1lH9Xt" id="hT$S68r">
     <property role="TrG5h" value="OneReturnWithParameteres" />
     <property role="3GE5qa" value="inlineMethod.parameters" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$S68s" role="1SKRRt">
       <node concept="312cEu" id="hT$S68t" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -8952,6 +9000,7 @@
   <node concept="1lH9Xt" id="hT$SgeL">
     <property role="TrG5h" value="CheckStaticVisibility" />
     <property role="3GE5qa" value="inlineMethod.problems" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$SgeM" role="1SKRRt">
       <node concept="312cEu" id="hT$SgeN" role="1qenE9">
         <property role="TrG5h" value="Calss1" />
@@ -9115,6 +9164,7 @@
   <node concept="1lH9Xt" id="hT$SgfT">
     <property role="TrG5h" value="CheckVisibility" />
     <property role="3GE5qa" value="inlineMethod.problems" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$SgfU" role="1SKRRt">
       <node concept="312cEu" id="hT$SgfV" role="1qenE9">
         <property role="TrG5h" value="Class1" />
@@ -9379,6 +9429,7 @@
   <node concept="1lH9Xt" id="hT$SxVP">
     <property role="TrG5h" value="CheckInlineCanBePerformed" />
     <property role="3GE5qa" value="inlineMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$SxVQ" role="1SKRRt">
       <node concept="312cEu" id="hT$SxVR" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -10062,6 +10113,7 @@
   <node concept="1lH9Xt" id="hT$SxYw">
     <property role="TrG5h" value="CheckInlineWithThrow" />
     <property role="3GE5qa" value="inlineMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$SxYx" role="1SKRRt">
       <node concept="312cEu" id="hT$SxYy" role="1qenE9">
         <property role="TrG5h" value="class1" />
@@ -10158,6 +10210,7 @@
   <node concept="1lH9Xt" id="hT$SxZb">
     <property role="TrG5h" value="InlineManyReturns" />
     <property role="3GE5qa" value="inlineMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$SxZc" role="1SKRRt">
       <node concept="312cEu" id="hT$SxZd" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -10419,6 +10472,7 @@
   <node concept="1lH9Xt" id="hT$Sy0Z">
     <property role="TrG5h" value="InlineMethodWithReturnAtTheEnd" />
     <property role="3GE5qa" value="inlineMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$Sy10" role="1SKRRt">
       <node concept="312cEu" id="hT$Sy11" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -10659,6 +10713,7 @@
   <node concept="1lH9Xt" id="hT$Sy2C">
     <property role="TrG5h" value="InlineMethodWithVoidType" />
     <property role="3GE5qa" value="inlineMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$Sy2D" role="1SKRRt">
       <node concept="312cEu" id="hT$Sy2E" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -10870,6 +10925,7 @@
   <node concept="1lH9Xt" id="hT$Sy44">
     <property role="TrG5h" value="InlineWithVoidTypeAndBug" />
     <property role="3GE5qa" value="inlineMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$Sy45" role="1SKRRt">
       <node concept="312cEu" id="hT$Sy46" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -10992,6 +11048,7 @@
   <node concept="1lH9Xt" id="hT$Sy4W">
     <property role="TrG5h" value="InlineWithoutReturnStatement" />
     <property role="3GE5qa" value="inlineMethod.return" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="hT$Sy4X" role="1SL9yI">
       <property role="TrG5h" value="InlineWithoutReturnStatement" />
       <node concept="3cqZAl" id="hT$Sy4Y" role="3clF45" />
@@ -11114,6 +11171,7 @@
   <node concept="1lH9Xt" id="hT$SEQo">
     <property role="TrG5h" value="InlineStaticFromAnotherClass" />
     <property role="3GE5qa" value="extractMethod.static" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$SEQp" role="1SKRRt">
       <node concept="312cEu" id="hT$SEQq" role="1qenE9">
         <property role="TrG5h" value="AnotherClass" />
@@ -11227,6 +11285,7 @@
   <node concept="1lH9Xt" id="hT$SERb">
     <property role="TrG5h" value="StaticMethod" />
     <property role="3GE5qa" value="extractMethod.static" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$SERc" role="1SKRRt">
       <node concept="312cEu" id="hT$SERd" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -11384,6 +11443,7 @@
   <node concept="1lH9Xt" id="hT$SPeX">
     <property role="TrG5h" value="InlineFromConceptFunction" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$SPeY" role="1SKRRt">
       <node concept="2VMwT0" id="hT$SPeZ" role="1qenE9">
         <node concept="3clFbS" id="hT$SPf0" role="2VODD2">
@@ -11519,6 +11579,7 @@
   <node concept="1lH9Xt" id="hT$SPfO">
     <property role="TrG5h" value="InlineLocalVariableReferenceWithoutDeclarationDeleting" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="hT$SPfP" role="1SL9yI">
       <property role="TrG5h" value="InlineLocalVariableReferenceWithoutDeclarationDeleting" />
       <node concept="3cqZAl" id="hT$SPfQ" role="3clF45" />
@@ -11649,6 +11710,7 @@
   <node concept="1lH9Xt" id="hT$SPgH">
     <property role="TrG5h" value="InlineLocalVariableReferense" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$SPgI" role="1SKRRt">
       <node concept="312cEu" id="hT$SPgJ" role="1qenE9">
         <property role="TrG5h" value="TestClass" />
@@ -11762,6 +11824,7 @@
   <node concept="1lH9Xt" id="hT$SPhu">
     <property role="TrG5h" value="InlineReferenceWithAssignment" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="hT$SPhv" role="1SL9yI">
       <property role="TrG5h" value="InlineReferenceWithAssignment" />
       <node concept="3cqZAl" id="hT$SPhw" role="3clF45" />
@@ -11892,6 +11955,7 @@
   <node concept="1lH9Xt" id="hT$SPim">
     <property role="TrG5h" value="InlineWithoutDeclarationDeletion" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT$SPin" role="1SKRRt">
       <node concept="312cEu" id="hT$SPio" role="1qenE9">
         <property role="TrG5h" value="TestClass" />
@@ -12021,6 +12085,7 @@
   <node concept="1lH9Xt" id="hT$SPje">
     <property role="TrG5h" value="SimpleInlineVariable" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="hT$SPjf" role="1SL9yI">
       <property role="TrG5h" value="simpleInlineVariable" />
       <node concept="3cqZAl" id="hT$SPjg" role="3clF45" />
@@ -12134,6 +12199,7 @@
   <node concept="1lH9Xt" id="hT$SY3D">
     <property role="TrG5h" value="MoveMethodWithFields" />
     <property role="3GE5qa" value="moveMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="hT$SY3E" role="1SL9yI">
       <property role="TrG5h" value="MoveMethodWithFields" />
       <node concept="3cqZAl" id="hT$SY3F" role="3clF45" />
@@ -12272,6 +12338,7 @@
   <node concept="1lH9Xt" id="hT$SY4$">
     <property role="TrG5h" value="MoveMethodWithMethods" />
     <property role="3GE5qa" value="moveMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="hT$SY4_" role="1SL9yI">
       <property role="TrG5h" value="MoveMethodWithMethods" />
       <node concept="3cqZAl" id="hT$SY4A" role="3clF45" />
@@ -12411,6 +12478,7 @@
   <node concept="1lH9Xt" id="hT$SY5x">
     <property role="TrG5h" value="MoveMethodWithUssages" />
     <property role="3GE5qa" value="moveMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="hT$SY5y" role="1SL9yI">
       <property role="TrG5h" value="check" />
       <node concept="3cqZAl" id="hT$SY5z" role="3clF45" />
@@ -12556,6 +12624,7 @@
   <node concept="1lH9Xt" id="hT$SY6z">
     <property role="TrG5h" value="SimpleMoveMethod" />
     <property role="3GE5qa" value="moveMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="hT$SY6$" role="1SL9yI">
       <property role="TrG5h" value="check" />
       <node concept="3cqZAl" id="hT$SY6_" role="3clF45" />
@@ -12660,9 +12729,11 @@
   <node concept="1lH9Xt" id="hT_aPcK">
     <property role="TrG5h" value="InlineMethodInTest" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="hT_aPcL" role="1SKRRt">
       <node concept="1lH9Xt" id="hT_aPcM" role="1qenE9">
         <property role="TrG5h" value="test1" />
+        <property role="3DII0k" value="2hh8MJdVwqX/command" />
         <node concept="2XrIbr" id="hT_aPcN" role="1qtyYc">
           <property role="TrG5h" value="method" />
           <node concept="3cqZAl" id="hT_aPcO" role="3clF45" />
@@ -12699,6 +12770,7 @@
     <node concept="1qefOq" id="hT_aPd1" role="1SKRRt">
       <node concept="1lH9Xt" id="hT_aPd2" role="1qenE9">
         <property role="TrG5h" value="test1" />
+        <property role="3DII0k" value="2hh8MJdVwqX/command" />
         <node concept="2XrIbr" id="hT_aPd3" role="1qtyYc">
           <property role="TrG5h" value="method" />
           <node concept="3cqZAl" id="hT_aPd4" role="3clF45" />
@@ -12770,6 +12842,7 @@
   <node concept="1lH9Xt" id="3pSXUPzjuH$">
     <property role="TrG5h" value="ChangeSigantureOfInterface" />
     <property role="3GE5qa" value="changeMethodSignature" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="nfIF2FJbLr" role="1SL9yI">
       <property role="TrG5h" value="ChangeSigantureOfInterface" />
       <node concept="3cqZAl" id="nfIF2FJbLs" role="3clF45" />
@@ -12928,6 +13001,7 @@
   <node concept="1lH9Xt" id="7nBiwHq78yA">
     <property role="TrG5h" value="MoveStaticFieldSimpleTest" />
     <property role="3GE5qa" value="moveStaticField" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="7nBiwHq78zO" role="1SL9yI">
       <property role="TrG5h" value="SimpleTest" />
       <node concept="3cqZAl" id="7nBiwHq78zP" role="3clF45" />
@@ -13052,6 +13126,7 @@
   <node concept="1lH9Xt" id="7nBiwHq9qJ9">
     <property role="TrG5h" value="MoveStaticFieldWithUsageTest" />
     <property role="3GE5qa" value="moveStaticField" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="7nBiwHq9$VT" role="1SL9yI">
       <property role="TrG5h" value="UsageTest" />
       <node concept="3cqZAl" id="7nBiwHq9$VU" role="3clF45" />
@@ -13214,6 +13289,7 @@
   <node concept="1lH9Xt" id="4ttB5pAtJO2">
     <property role="TrG5h" value="MoveMethodWithParameters" />
     <property role="3GE5qa" value="moveMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="4ttB5pAtNxC" role="1SL9yI">
       <property role="TrG5h" value="check" />
       <node concept="3cqZAl" id="4ttB5pAtNxD" role="3clF45" />
@@ -13403,6 +13479,7 @@
   <node concept="1lH9Xt" id="5T02__$5Jf6">
     <property role="TrG5h" value="ConvertAnonymousInterfaceTest" />
     <property role="3GE5qa" value="convertAnonimous" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="5T02__$5MND" role="1SL9yI">
       <property role="TrG5h" value="InterfaceTest" />
       <node concept="3cqZAl" id="5T02__$5MNE" role="3clF45" />
@@ -13630,6 +13707,7 @@
   <node concept="1lH9Xt" id="5T02__$6Zdk">
     <property role="TrG5h" value="ConvertAnonymousAbstractClassTest" />
     <property role="3GE5qa" value="convertAnonimous" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="5T02__$724B" role="1SL9yI">
       <property role="TrG5h" value="AbstractClassTest" />
       <node concept="3cqZAl" id="5T02__$724C" role="3clF45" />
@@ -13942,6 +14020,7 @@
   <node concept="1lH9Xt" id="1VNYgVzkNe_">
     <property role="TrG5h" value="ConvertAnonymousWithTypeVariablesTest" />
     <property role="3GE5qa" value="convertAnonimous" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="1VNYgVzkQrW" role="1SL9yI">
       <property role="TrG5h" value="TypeVariablesTest" />
       <node concept="3cqZAl" id="1VNYgVzkQrX" role="3clF45" />
@@ -14204,6 +14283,7 @@
   <node concept="1lH9Xt" id="1VNYgVznHZ$">
     <property role="TrG5h" value="ConvertAnonymousToStaticTest" />
     <property role="3GE5qa" value="convertAnonimous" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="1VNYgVznKwa" role="1SL9yI">
       <property role="TrG5h" value="ToStaticTest" />
       <node concept="3cqZAl" id="1VNYgVznKwb" role="3clF45" />
@@ -14345,6 +14425,7 @@
   <node concept="1lH9Xt" id="2ICciS8kaah">
     <property role="TrG5h" value="ConvertAnonymousWithLocalVariablesTest" />
     <property role="3GE5qa" value="convertAnonimous" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="2ICciS8lVwF" role="1SL9yI">
       <property role="TrG5h" value="WithLocalVariablesTest" />
       <node concept="3cqZAl" id="2ICciS8lVwG" role="3clF45" />
@@ -14704,6 +14785,7 @@
   <node concept="1lH9Xt" id="2ICciS8oI0m">
     <property role="TrG5h" value="ConvertAnonymousAbstractClassWithConstructorTest" />
     <property role="3GE5qa" value="convertAnonimous" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="2ICciS8qv39" role="1SL9yI">
       <property role="TrG5h" value="AbstractClassWithConstructorTest" />
       <node concept="3cqZAl" id="2ICciS8qv3a" role="3clF45" />
@@ -15042,6 +15124,7 @@
   <node concept="1lH9Xt" id="3OXbVrRFhJI">
     <property role="TrG5h" value="InlineMethodWithUnusedParameters" />
     <property role="3GE5qa" value="inlineMethod.parameters" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="3OXbVrRFibZ" role="1SKRRt">
       <node concept="312cEu" id="3OXbVrRFic7" role="1qenE9">
         <property role="TrG5h" value="A" />
@@ -15221,6 +15304,7 @@
   <node concept="1lH9Xt" id="3OXbVrRKasH">
     <property role="TrG5h" value="InlineMethodWithConceptFunctionParameters" />
     <property role="3GE5qa" value="inlineMethod.parameters" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="3OXbVrRKaT2" role="1SKRRt">
       <node concept="312cEu" id="3OXbVrRKaT4" role="1qenE9">
         <property role="TrG5h" value="Test" />
@@ -15333,6 +15417,7 @@
   <node concept="1lH9Xt" id="7r09Rd8wFMW">
     <property role="TrG5h" value="SimpleFindForExtractFromExpression" />
     <property role="3GE5qa" value="findDuplicates.method" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="7r09Rd8wIeg" role="1SL9yI">
       <property role="TrG5h" value="SimpleFindForExtractFromExpressionTest" />
       <node concept="3cqZAl" id="7r09Rd8wIeh" role="3clF45" />
@@ -15732,6 +15817,7 @@
   <node concept="1lH9Xt" id="7r09Rd8wN4H">
     <property role="TrG5h" value="SimpleFindForExtractFromStatement" />
     <property role="3GE5qa" value="findDuplicates.method" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="7r09Rd8wN75" role="1SL9yI">
       <property role="TrG5h" value="SimpleFindForExtractFromStatementTest" />
       <node concept="3cqZAl" id="7r09Rd8wN76" role="3clF45" />
@@ -16131,6 +16217,7 @@
   <node concept="1lH9Xt" id="1IW1cqatXCV">
     <property role="TrG5h" value="SimpleFindForExtractWithReturn" />
     <property role="3GE5qa" value="findDuplicates.method" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="1IW1cqatY7e" role="1SL9yI">
       <property role="TrG5h" value="SimpleFindForExtractWithReturnTest" />
       <node concept="3cqZAl" id="1IW1cqatY7f" role="3clF45" />
@@ -16539,6 +16626,7 @@
   <node concept="1lH9Xt" id="6KAw2ghiimZ">
     <property role="TrG5h" value="SimpleFindForExtractFromManyStatements" />
     <property role="3GE5qa" value="findDuplicates.method" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="6KAw2ghikLP" role="1SL9yI">
       <property role="TrG5h" value="SimpleFindForExtractFromManyStatementsTest" />
       <node concept="3cqZAl" id="6KAw2ghikLQ" role="3clF45" />
@@ -16868,6 +16956,7 @@
   <node concept="1lH9Xt" id="74Jo7gqYxc3">
     <property role="TrG5h" value="ExtractMethodWithOutputVaryableFromStatement" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="74Jo7gqYxEj" role="1SL9yI">
       <property role="TrG5h" value="ExtractMethodWithOutputVaryableFromStatementTest" />
       <node concept="3cqZAl" id="74Jo7gqYxEk" role="3clF45" />
@@ -17066,6 +17155,7 @@
   <node concept="1lH9Xt" id="74Jo7gr3aSg">
     <property role="TrG5h" value="ReplaceOutputVaryable" />
     <property role="3GE5qa" value="findDuplicates.method" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="74Jo7gr3etB" role="1SL9yI">
       <property role="TrG5h" value="ReplaceOutputVaryableTest" />
       <node concept="3cqZAl" id="74Jo7gr3etC" role="3clF45" />
@@ -17405,6 +17495,7 @@
   <node concept="1lH9Xt" id="74Jo7gr6DYG">
     <property role="TrG5h" value="ExtractMethodWithOutputVaryableFromExpression" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="74Jo7gr6Es5" role="1SL9yI">
       <property role="TrG5h" value="ExtractMethodWithOutputVaryableFromStatementTest" />
       <node concept="3cqZAl" id="74Jo7gr6Es6" role="3clF45" />
@@ -17611,6 +17702,7 @@
   <node concept="1lH9Xt" id="6$9BoLqJl1R">
     <property role="TrG5h" value="SimpleFindAndMoveForIntroduceLocalVar" />
     <property role="3GE5qa" value="findDuplicates.variable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="6$9BoLqJl3X" role="1SL9yI">
       <property role="TrG5h" value="SimpleFindAndMoveForIntroduceLocalVarTest" />
       <node concept="3cqZAl" id="6$9BoLqJl3Y" role="3clF45" />
@@ -17859,6 +17951,7 @@
   <node concept="1lH9Xt" id="6$9BoLqJpMX">
     <property role="TrG5h" value="SimpleFindForIntroduceConstant" />
     <property role="3GE5qa" value="findDuplicates.variable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="6$9BoLqJpOq" role="1SL9yI">
       <property role="TrG5h" value="SimpleFindForIntroduceConstantTest" />
       <node concept="3cqZAl" id="6$9BoLqJpOr" role="3clF45" />
@@ -18199,6 +18292,7 @@
   <node concept="1lH9Xt" id="6$9BoLqJzo2">
     <property role="TrG5h" value="SimpleFindForIntroduceLocalVariable" />
     <property role="3GE5qa" value="findDuplicates.variable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="6$9BoLqJzon" role="1SL9yI">
       <property role="TrG5h" value="SimpleFindAndMoveForIntroduceLocalVariableTest" />
       <node concept="3cqZAl" id="6$9BoLqJzoo" role="3clF45" />
@@ -18392,6 +18486,7 @@
   <node concept="1lH9Xt" id="6$9BoLqJBG0">
     <property role="TrG5h" value="FindAndMoveFromIfForIntroduceLocalVar" />
     <property role="3GE5qa" value="findDuplicates.variable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="6$9BoLqJBGF" role="1SL9yI">
       <property role="TrG5h" value="SimpleFindAndMoveForIntroduceLocalVarTest" />
       <node concept="3cqZAl" id="6$9BoLqJBGG" role="3clF45" />
@@ -18643,6 +18738,7 @@
   <node concept="1lH9Xt" id="2GBYV6rKlYL">
     <property role="TrG5h" value="IntroduceVariableFromAnonimousClass" />
     <property role="3GE5qa" value="introduceVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="2GBYV6rKmRv" role="1SL9yI">
       <property role="TrG5h" value="IntroduceVariableFromAnonimousClassTest" />
       <node concept="3cqZAl" id="2GBYV6rKmRw" role="3clF45" />
@@ -18878,6 +18974,7 @@
   <node concept="1lH9Xt" id="2GBYV6rL8t$">
     <property role="TrG5h" value="ConvertAnonymousWithLocalVariables" />
     <property role="3GE5qa" value="convertAnonimous" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="2GBYV6rL8v4" role="1SL9yI">
       <property role="TrG5h" value="AbstractClassTest" />
       <node concept="3cqZAl" id="2GBYV6rL8v5" role="3clF45" />
@@ -19097,6 +19194,7 @@
   <node concept="1lH9Xt" id="1S4GctIhVsk">
     <property role="TrG5h" value="IntroduceConstantFromAnonimousClass" />
     <property role="3GE5qa" value="introduceVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="1S4GctIhVvs" role="1SL9yI">
       <property role="TrG5h" value="IntroduceConstantFromAnonimousClassTest" />
       <node concept="3cqZAl" id="1S4GctIhVvt" role="3clF45" />
@@ -19450,6 +19548,7 @@
   <node concept="1lH9Xt" id="5nUhQ_x7tKT">
     <property role="TrG5h" value="ExtractAddingNewDeclaration" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="5nUhQ_x7tMo" role="1SL9yI">
       <property role="TrG5h" value="ExtractAddingNewDeclaration" />
       <node concept="3cqZAl" id="5nUhQ_x7tMp" role="3clF45" />
@@ -19679,6 +19778,7 @@
   <node concept="1lH9Xt" id="5nUhQ_x7yMD">
     <property role="TrG5h" value="FindForMethodWithOutputVariable" />
     <property role="3GE5qa" value="findDuplicates.method" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="5nUhQ_x7yO9" role="1SL9yI">
       <property role="TrG5h" value="FindForMethodWithOutputVariableTest" />
       <node concept="3cqZAl" id="5nUhQ_x7yOa" role="3clF45" />
@@ -20187,6 +20287,7 @@
   <node concept="1lH9Xt" id="18cHK6YSoRM">
     <property role="TrG5h" value="FindForMethodWithIVariableLikeNodes" />
     <property role="3GE5qa" value="findDuplicates.method" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="18cHK6YSoTd" role="1SL9yI">
       <property role="TrG5h" value="FindForMethodWithIVariableLikeNodesTest" />
       <node concept="3cqZAl" id="18cHK6YSoTe" role="3clF45" />
@@ -20633,6 +20734,7 @@
   <node concept="1lH9Xt" id="7DOvmMx35Dy">
     <property role="TrG5h" value="ExtractMethodWithThrows" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="7DOvmMx35Fx" role="1SL9yI">
       <property role="TrG5h" value="ExtractMethodWithThrowsTest" />
       <node concept="3cqZAl" id="7DOvmMx35Fy" role="3clF45" />
@@ -20866,6 +20968,7 @@
   <node concept="1lH9Xt" id="69JRtC3mdYX">
     <property role="TrG5h" value="InlineInsideClosure" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="69JRtC3me05" role="1SL9yI">
       <property role="TrG5h" value="InlineInsideClosureTest" />
       <node concept="3cqZAl" id="69JRtC3me06" role="3clF45" />
@@ -21062,6 +21165,7 @@
   <node concept="1lH9Xt" id="69JRtC3me0F">
     <property role="TrG5h" value="InlineInClosureWithOutsideAssignment" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="69JRtC3me1V" role="1SL9yI">
       <property role="TrG5h" value="InlineInClosureWithOutsideAssingmentTest" />
       <node concept="3cqZAl" id="69JRtC3me1W" role="3clF45" />
@@ -21258,6 +21362,7 @@
   <node concept="1lH9Xt" id="7UcKRu2POzI">
     <property role="TrG5h" value="InlineAssignmentWithClosures" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="7UcKRu2PP0H" role="1SL9yI">
       <property role="TrG5h" value="InlineAssingmentWithClosures" />
       <node concept="3cqZAl" id="7UcKRu2PP0I" role="3clF45" />
@@ -21486,6 +21591,7 @@
   <node concept="1lH9Xt" id="5w_nepi1Hna">
     <property role="TrG5h" value="InlineAssignmentInClosure" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="5w_nepi1Ho5" role="1SL9yI">
       <property role="TrG5h" value="InlineAssingmentInClosure" />
       <node concept="3cqZAl" id="5w_nepi1Ho6" role="3clF45" />
@@ -21617,6 +21723,7 @@
   <node concept="1lH9Xt" id="RgCVMjld1H">
     <property role="TrG5h" value="ConvertAnonymousWithParameterReference" />
     <property role="3GE5qa" value="convertAnonimous" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="RgCVMjld3O" role="1SL9yI">
       <property role="TrG5h" value="WithParameterReferenceTest" />
       <node concept="3cqZAl" id="RgCVMjld3P" role="3clF45" />
@@ -21852,6 +21959,7 @@
   <node concept="1lH9Xt" id="639v8iJcA6v">
     <property role="TrG5h" value="IntroduceVariableFromWildcards" />
     <property role="3GE5qa" value="introduceVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="639v8iJcCXr" role="1SL9yI">
       <property role="TrG5h" value="IntroduceVariableFromWildcardsTest" />
       <node concept="3cqZAl" id="639v8iJcCXs" role="3clF45" />
@@ -22271,6 +22379,7 @@
   <node concept="1lH9Xt" id="4uwyJ44v6ih">
     <property role="TrG5h" value="ExtractMethodFromClosure" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="4uwyJ44v6kt" role="1SL9yI">
       <property role="TrG5h" value="ExtractMethodFromClosure" />
       <node concept="3cqZAl" id="4uwyJ44v6ku" role="3clF45" />
@@ -22492,7 +22601,7 @@
                           <node concept="2JrnkZ" id="4uwyJ44v6iL" role="33vP2m">
                             <node concept="2OqwBi" id="4uwyJ44v6iM" role="2JrQYb">
                               <node concept="37vLTw" id="2BHiRxglJX7" role="2Oq$k0">
-                                <ref role="3cqZAo" node="4uwyJ44v6iV" resolve="node" />
+                                <ref role="3cqZAo" node="5W7E4fV0Y1e" resolve="node" />
                               </node>
                               <node concept="I4A8Y" id="4uwyJ44v6iO" role="2OqNvi" />
                             </node>
@@ -22521,9 +22630,9 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="4uwyJ44v6iV" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0Y1e" role="1bW2Oz">
                       <property role="TrG5h" value="node" />
-                      <node concept="2jxLKc" id="1P4c1XrzTfW" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0Y1f" role="1tU5fm" />
                     </node>
                   </node>
                 </node>
@@ -22576,7 +22685,7 @@
                         <node concept="1rXfSq" id="51A6nVvR8UE" role="3clFbG">
                           <ref role="37wK5l" node="4uwyJ44v6k3" resolve="foo" />
                           <node concept="37vLTw" id="2BHiRxghizP" role="37wK5m">
-                            <ref role="3cqZAo" node="4uwyJ44v6k1" resolve="node" />
+                            <ref role="3cqZAo" node="5W7E4fV0Y1g" resolve="node" />
                           </node>
                           <node concept="37vLTw" id="4uwyJ44v6k0" role="37wK5m">
                             <ref role="3cqZAo" node="4uwyJ44v6jL" resolve="models" />
@@ -22584,9 +22693,9 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="4uwyJ44v6k1" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0Y1g" role="1bW2Oz">
                       <property role="TrG5h" value="node" />
-                      <node concept="2jxLKc" id="1P4c1XrzTfl" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0Y1h" role="1tU5fm" />
                     </node>
                   </node>
                 </node>
@@ -22647,6 +22756,7 @@
   <node concept="1lH9Xt" id="2BlmHfBMvSZ">
     <property role="TrG5h" value="SimpleMoveStaticMethod" />
     <property role="3GE5qa" value="moveStaticMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="2BlmHfBMvUy" role="1SL9yI">
       <property role="TrG5h" value="SimpleMoveStaticMethod" />
       <node concept="3cqZAl" id="2BlmHfBMvUz" role="3clF45" />
@@ -22866,6 +22976,7 @@
   <node concept="1lH9Xt" id="3waFG77kiZl">
     <property role="TrG5h" value="IntroduceFinalLocalVariable" />
     <property role="3GE5qa" value="introduceVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="3waFG77kj00" role="1SL9yI">
       <property role="TrG5h" value="IntroduceFinalLocalVariable" />
       <node concept="3cqZAl" id="3waFG77kj01" role="3clF45" />
@@ -23018,6 +23129,7 @@
   <node concept="1lH9Xt" id="3waFG77kqjB">
     <property role="TrG5h" value="IntroduceFinalField" />
     <property role="3GE5qa" value="introduceVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="3waFG77kqkn" role="1SL9yI">
       <property role="TrG5h" value="IntroduceFinalField" />
       <node concept="3cqZAl" id="3waFG77kqko" role="3clF45" />
@@ -23200,6 +23312,7 @@
   <node concept="1lH9Xt" id="1JigIWwgeYC">
     <property role="TrG5h" value="ExtractMethodWithUnusedAssignments" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="1JigIWwgfJb" role="1SL9yI">
       <property role="TrG5h" value="ExtractMethodWithUnusedAssignmentsTest" />
       <node concept="3cqZAl" id="1JigIWwgfJc" role="3clF45" />
@@ -23437,6 +23550,7 @@
   <node concept="1lH9Xt" id="7WwC0JsgiG_">
     <property role="TrG5h" value="ConvertAnonymousWithTypeParameters" />
     <property role="3GE5qa" value="convertAnonimous" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="7WwC0JshhwT" role="1SL9yI">
       <property role="TrG5h" value="TypeParametersTest" />
       <node concept="3cqZAl" id="7WwC0JshhwU" role="3clF45" />
@@ -23973,6 +24087,7 @@
   <node concept="1lH9Xt" id="57UbeNxELRB">
     <property role="TrG5h" value="ConvertAnonymousGenGenericFields" />
     <property role="3GE5qa" value="convertAnonimous" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="57UbeNxEYR_" role="1SL9yI">
       <property role="TrG5h" value="TypeParametersTest" />
       <node concept="3cqZAl" id="57UbeNxEYRA" role="3clF45" />
@@ -24499,6 +24614,7 @@
   <node concept="1lH9Xt" id="_7nsw4gLhZ">
     <property role="TrG5h" value="InlineFromAnotherBehavior" />
     <property role="3GE5qa" value="inlineMethod.behavior" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="_7nsw4gLi0" role="1SKRRt">
       <node concept="13h7C7" id="_7nsw4gLi1" role="1qenE9">
         <ref role="13h7C2" to="7j62:y9M3y44TpB" resolve="SandboxConcept" />
@@ -24647,6 +24763,7 @@
   <node concept="1lH9Xt" id="6uYZMF1F6kn">
     <property role="TrG5h" value="ExtractWithFieldReference" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="6uYZMF1F6ko" role="1SKRRt">
       <node concept="312cEu" id="6uYZMF1F6kp" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -24857,6 +24974,7 @@
   <node concept="1lH9Xt" id="6uYZMF1Fnfo">
     <property role="TrG5h" value="ExtractWithStaticFieldReference" />
     <property role="3GE5qa" value="extractMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="6uYZMF1Fnfp" role="1SKRRt">
       <node concept="312cEu" id="6uYZMF1Fnfq" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -25064,6 +25182,7 @@
   <node concept="1lH9Xt" id="1I5CUWKh1C">
     <property role="TrG5h" value="VariableDeclarationInitializer" />
     <property role="3GE5qa" value="inlineMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="1I5CUWKh1D" role="1SKRRt">
       <node concept="312cEu" id="1I5CUWKh1E" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -25258,6 +25377,7 @@
   <node concept="1lH9Xt" id="1I5CUWKie4">
     <property role="TrG5h" value="OperandOfDotExpression" />
     <property role="3GE5qa" value="inlineMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="1I5CUWKie5" role="1SKRRt">
       <node concept="312cEu" id="1I5CUWKie6" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -25442,6 +25562,7 @@
   <node concept="1lH9Xt" id="2Pw8TrfesIX">
     <property role="TrG5h" value="InlineAssignment" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="2Pw8TrfesIY" role="1SL9yI">
       <property role="TrG5h" value="InlineAssingmentInClosure" />
       <node concept="3cqZAl" id="2Pw8TrfesIZ" role="3clF45" />
@@ -25555,6 +25676,7 @@
   <node concept="1lH9Xt" id="60kAm402rk8">
     <property role="TrG5h" value="InlineVariableBinaryInBinary" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="60kAm402rk9" role="1SL9yI">
       <property role="TrG5h" value="simpleInlineVariable" />
       <node concept="3cqZAl" id="60kAm402rka" role="3clF45" />
@@ -25680,6 +25802,7 @@
   <node concept="1lH9Xt" id="60kAm402JDQ">
     <property role="TrG5h" value="InlineVariableBinaryInCast" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="60kAm402JDR" role="1SL9yI">
       <property role="TrG5h" value="simpleInlineVariable" />
       <node concept="3cqZAl" id="60kAm402JDS" role="3clF45" />
@@ -25829,6 +25952,7 @@
   <node concept="1lH9Xt" id="60kAm402L4Z">
     <property role="TrG5h" value="InlineVariableBinaryInCastOnDeclaration" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="60kAm402L50" role="1SL9yI">
       <property role="TrG5h" value="simpleInlineVariable" />
       <node concept="3cqZAl" id="60kAm402L51" role="3clF45" />
@@ -25978,6 +26102,7 @@
   <node concept="1lH9Xt" id="60kAm402Zfu">
     <property role="TrG5h" value="InlineVariableBinaryInBinaryOnDeclaration" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="60kAm402Zfv" role="1SL9yI">
       <property role="TrG5h" value="simpleInlineVariable" />
       <node concept="3cqZAl" id="60kAm402Zfw" role="3clF45" />
@@ -26103,6 +26228,7 @@
   <node concept="1lH9Xt" id="60kAm4031kw">
     <property role="TrG5h" value="InlineFieldOperationBinary" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="60kAm4031kx" role="1SL9yI">
       <property role="TrG5h" value="simpleInlineVariable" />
       <node concept="3cqZAl" id="60kAm4031ky" role="3clF45" />
@@ -26225,6 +26351,7 @@
   <node concept="1lH9Xt" id="60kAm40360$">
     <property role="TrG5h" value="InlineFieldOperationBinaryOnDeclaration" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="60kAm40360_" role="1SL9yI">
       <property role="TrG5h" value="simpleInlineVariable" />
       <node concept="3cqZAl" id="60kAm40360A" role="3clF45" />
@@ -26346,6 +26473,7 @@
   <node concept="1lH9Xt" id="60kAm4038dJ">
     <property role="TrG5h" value="InlineFieldBinary" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="60kAm4038dK" role="1SL9yI">
       <property role="TrG5h" value="simpleInlineVariable" />
       <node concept="3cqZAl" id="60kAm4038dL" role="3clF45" />
@@ -26464,6 +26592,7 @@
   <node concept="1lH9Xt" id="60kAm403aoM">
     <property role="TrG5h" value="InlineFieldBinaryOnDeclaration" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="60kAm403aoN" role="1SL9yI">
       <property role="TrG5h" value="simpleInlineVariable" />
       <node concept="3cqZAl" id="60kAm403aoO" role="3clF45" />
@@ -26582,6 +26711,7 @@
   <node concept="1lH9Xt" id="60kAm403c05">
     <property role="TrG5h" value="InlineVariableBinaryInTernary" />
     <property role="3GE5qa" value="inlineVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="60kAm403c06" role="1SL9yI">
       <property role="TrG5h" value="simpleInlineVariable" />
       <node concept="3cqZAl" id="60kAm403c07" role="3clF45" />
@@ -26729,6 +26859,7 @@
   <node concept="1lH9Xt" id="5oA_ryeuJpD">
     <property role="TrG5h" value="MoveMethodWithFieldInTarget" />
     <property role="3GE5qa" value="moveMethod" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="5oA_ryeuJpE" role="1SL9yI">
       <property role="TrG5h" value="MoveMethodWithFields2" />
       <node concept="3cqZAl" id="5oA_ryeuJpF" role="3clF45" />
@@ -26862,6 +26993,7 @@
   <node concept="1lH9Xt" id="7bjhXcU7KNr">
     <property role="TrG5h" value="IntroduceFinalFieldNoConstructor1" />
     <property role="3GE5qa" value="introduceVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="7bjhXcU7KNs" role="1SL9yI">
       <property role="TrG5h" value="IntroduceFinalField" />
       <node concept="3cqZAl" id="7bjhXcU7KNt" role="3clF45" />
@@ -27062,6 +27194,7 @@
   <node concept="1lH9Xt" id="7bjhXcU8pvA">
     <property role="TrG5h" value="IntroduceFinalFieldConstructor" />
     <property role="3GE5qa" value="introduceVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="7bjhXcU8pvB" role="1SL9yI">
       <property role="TrG5h" value="IntroduceFinalField" />
       <node concept="3cqZAl" id="7bjhXcU8pvC" role="3clF45" />
@@ -27267,6 +27400,7 @@
   <node concept="1lH9Xt" id="7tn8PtWPf2i">
     <property role="TrG5h" value="IntroduceFinalFieldFromVar" />
     <property role="3GE5qa" value="introduceVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="7tn8PtWPf2j" role="1SL9yI">
       <property role="TrG5h" value="IntroduceFinalField" />
       <node concept="3cqZAl" id="7tn8PtWPf2k" role="3clF45" />
@@ -27465,6 +27599,7 @@
   <node concept="1lH9Xt" id="7tn8PtWQ$dL">
     <property role="TrG5h" value="IntroduceFinalFieldConstructorFomVar" />
     <property role="3GE5qa" value="introduceVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="7tn8PtWQ$dM" role="1SL9yI">
       <property role="TrG5h" value="IntroduceFinalField" />
       <node concept="3cqZAl" id="7tn8PtWQ$dN" role="3clF45" />
@@ -27686,6 +27821,7 @@
   <node concept="1lH9Xt" id="7tn8PtWQXRD">
     <property role="TrG5h" value="IntroduceFinalFieldNoConstructor2" />
     <property role="3GE5qa" value="introduceVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="7tn8PtWQXRE" role="1SL9yI">
       <property role="TrG5h" value="IntroduceFinalField" />
       <node concept="3cqZAl" id="7tn8PtWQXRF" role="3clF45" />
@@ -27902,6 +28038,7 @@
   <node concept="1lH9Xt" id="2b4WAA1qAma">
     <property role="TrG5h" value="IntroduceFieldFromVarNoInitializer" />
     <property role="3GE5qa" value="introduceVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="2b4WAA1qAmb" role="1SL9yI">
       <property role="TrG5h" value="IntroduceFinalField" />
       <node concept="3cqZAl" id="2b4WAA1qAmc" role="3clF45" />
@@ -28081,6 +28218,7 @@
   <node concept="1lH9Xt" id="2b4WAA1qEnn">
     <property role="TrG5h" value="IntroduceFieldFromVarAbstractInitializer" />
     <property role="3GE5qa" value="introduceVariable" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="2b4WAA1qEno" role="1SL9yI">
       <property role="TrG5h" value="IntroduceFinalField" />
       <node concept="3cqZAl" id="2b4WAA1qEnp" role="3clF45" />
@@ -28272,6 +28410,7 @@
   <node concept="1lH9Xt" id="38AIgLOS_4m">
     <property role="3GE5qa" value="changeMethodSignature.parameter" />
     <property role="TrG5h" value="AddParameterWithDefault" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="38AIgLOSRzV" role="1SL9yI">
       <property role="TrG5h" value="AddParameterWithDefault" />
       <node concept="3cqZAl" id="38AIgLOSRzW" role="3clF45" />
@@ -28538,6 +28677,7 @@
                 <node concept="37vLTw" id="38AIgLOWo5R" role="37wK5m">
                   <ref role="3cqZAo" node="38AIgLOV4F2" resolve="defaultValues" />
                 </node>
+                <node concept="3clFbT" id="nsS9FvG8cl" role="37wK5m" />
               </node>
             </node>
           </node>
@@ -28716,6 +28856,7 @@
   <node concept="1lH9Xt" id="5xnP_piOP4q">
     <property role="3GE5qa" value="changeMethodSignature.parameter" />
     <property role="TrG5h" value="KeepVarArgParameters" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="5xnP_piOP4r" role="1SL9yI">
       <property role="TrG5h" value="AddParameterWithDefault" />
       <node concept="3cqZAl" id="5xnP_piOP4s" role="3clF45" />
@@ -28802,7 +28943,7 @@
               <ref role="3cqZAo" node="5xnP_piPj$N" resolve="parameters" />
             </node>
             <node concept="liA8E" id="5xnP_piPjxW" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(int,java.lang.Object)" resolve="add" />
               <node concept="3cmrfG" id="5xnP_piPmYh" role="37wK5m">
                 <property role="3cmrfH" value="1" />
               </node>
@@ -28955,7 +29096,7 @@
                                 <ref role="cht4Q" to="tpee:fzclF8j" resolve="ExpressionStatement" />
                               </node>
                               <node concept="37vLTw" id="5xnP_piPSI_" role="1m5AlR">
-                                <ref role="3cqZAo" node="5xnP_piPRZV" resolve="it" />
+                                <ref role="3cqZAo" node="5W7E4fV0Y1i" resolve="it" />
                               </node>
                             </node>
                             <node concept="3TrEf2" id="5xnP_piPU0c" role="2OqNvi">
@@ -28965,9 +29106,9 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="5xnP_piPRZV" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0Y1i" role="1bW2Oz">
                       <property role="TrG5h" value="it" />
-                      <node concept="2jxLKc" id="5xnP_piPRZW" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0Y1j" role="1tU5fm" />
                     </node>
                   </node>
                 </node>
@@ -29013,6 +29154,7 @@
                 <node concept="37vLTw" id="5xnP_piOP6b" role="37wK5m">
                   <ref role="3cqZAo" node="5xnP_piOP5e" resolve="defaultValues" />
                 </node>
+                <node concept="3clFbT" id="nsS9FvGgGA" role="37wK5m" />
               </node>
             </node>
           </node>
@@ -29248,6 +29390,7 @@
   <node concept="1lH9Xt" id="2Dvjqpp19Fz">
     <property role="3GE5qa" value="changeMethodSignature.parameter" />
     <property role="TrG5h" value="AddVarArgParameter" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="2Dvjqpp19F$" role="1SL9yI">
       <property role="TrG5h" value="AddParameterWithDefault" />
       <node concept="3cqZAl" id="2Dvjqpp19F_" role="3clF45" />
@@ -29387,7 +29530,7 @@
                                 <ref role="cht4Q" to="tpee:fzclF8j" resolve="ExpressionStatement" />
                               </node>
                               <node concept="37vLTw" id="2Dvjqpp19He" role="1m5AlR">
-                                <ref role="3cqZAo" node="2Dvjqpp19Hg" resolve="it" />
+                                <ref role="3cqZAo" node="5W7E4fV0Y1k" resolve="it" />
                               </node>
                             </node>
                             <node concept="3TrEf2" id="2Dvjqpp19Hf" role="2OqNvi">
@@ -29397,9 +29540,9 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="2Dvjqpp19Hg" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0Y1k" role="1bW2Oz">
                       <property role="TrG5h" value="it" />
-                      <node concept="2jxLKc" id="2Dvjqpp19Hh" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0Y1l" role="1tU5fm" />
                     </node>
                   </node>
                 </node>
@@ -29609,6 +29752,7 @@
   <node concept="1lH9Xt" id="5potcpOGtsI">
     <property role="TrG5h" value="RemoveUsedParameter" />
     <property role="3GE5qa" value="changeMethodSignature.parameter" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="5potcpOGtsJ" role="1SKRRt">
       <node concept="312cEu" id="5potcpOGtsK" role="1qenE9">
         <property role="TrG5h" value="c1" />
@@ -29637,7 +29781,7 @@
                           <node concept="3cpWs3" id="5potcpOISKL" role="3clFbG">
                             <node concept="2OqwBi" id="5potcpOIZ61" role="3uHU7w">
                               <node concept="37vLTw" id="5potcpOISL7" role="2Oq$k0">
-                                <ref role="3cqZAo" node="5potcpOILxr" resolve="it" />
+                                <ref role="3cqZAo" node="5W7E4fV0Y1m" resolve="it" />
                               </node>
                               <node concept="liA8E" id="5potcpOJ5yU" role="2OqNvi">
                                 <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
@@ -29653,9 +29797,9 @@
                         <property role="TrG5h" value="s" />
                         <node concept="10Oyi0" id="5potcpOILB6" role="1tU5fm" />
                       </node>
-                      <node concept="Rh6nW" id="5potcpOILxr" role="1bW2Oz">
+                      <node concept="gl6BB" id="5W7E4fV0Y1m" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="5potcpOILxs" role="1tU5fm" />
+                        <node concept="2jxLKc" id="5W7E4fV0Y1n" role="1tU5fm" />
                       </node>
                     </node>
                     <node concept="3cmrfG" id="5potcpOILxQ" role="1MDeny">
@@ -29755,7 +29899,7 @@
                           <node concept="3cpWs3" id="5potcpOJjdd" role="3clFbG">
                             <node concept="2OqwBi" id="5potcpOJjde" role="3uHU7w">
                               <node concept="37vLTw" id="5potcpOJjdf" role="2Oq$k0">
-                                <ref role="3cqZAo" node="5potcpOJjdk" resolve="it" />
+                                <ref role="3cqZAo" node="5W7E4fV0Y1o" resolve="it" />
                               </node>
                               <node concept="liA8E" id="5potcpOJjdg" role="2OqNvi">
                                 <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
@@ -29771,9 +29915,9 @@
                         <property role="TrG5h" value="s" />
                         <node concept="10Oyi0" id="5potcpOJjdj" role="1tU5fm" />
                       </node>
-                      <node concept="Rh6nW" id="5potcpOJjdk" role="1bW2Oz">
+                      <node concept="gl6BB" id="5W7E4fV0Y1o" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="5potcpOJjdl" role="1tU5fm" />
+                        <node concept="2jxLKc" id="5W7E4fV0Y1p" role="1tU5fm" />
                       </node>
                     </node>
                     <node concept="3cmrfG" id="5potcpOJjdm" role="1MDeny">

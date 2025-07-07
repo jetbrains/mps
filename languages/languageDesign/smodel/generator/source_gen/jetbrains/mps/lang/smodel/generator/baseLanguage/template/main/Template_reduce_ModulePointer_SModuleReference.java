@@ -52,7 +52,7 @@ public class Template_reduce_ModulePointer_SModuleReference extends TemplateDecl
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
-            SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_89_0(new PropertyMacroContext(context2, "", propertyMacro_xrggdz_c0a2a0a1a2a1a2a2a6)));
+            SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_89_0(new PropertyMacroContext(context2, "", propertyMacro)));
             environment.aggregate(tnode3, myAggregationLinks[1], tnode4);
           }
         }
@@ -103,5 +103,5 @@ public class Template_reduce_ModulePointer_SModuleReference extends TemplateDecl
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_xrggdz_c0a2a0a1a2a1a2a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1678062499342615992");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1678062499342615992");
 }

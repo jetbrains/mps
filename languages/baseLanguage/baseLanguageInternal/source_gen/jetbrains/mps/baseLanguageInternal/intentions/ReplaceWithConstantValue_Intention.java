@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ReplaceWithConstantValue_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ReplaceWithConstantValue_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:f0d79467-678d-44a3-9372-d1b2fb477d99(jetbrains.mps.baseLanguageInternal.intentions)", "5332097447638335764"));
   }
+
   @Override
   public String getPresentation() {
     return "ReplaceWithConstantValue";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,20 +45,31 @@ public final class ReplaceWithConstantValue_Intention extends AbstractIntentionD
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace with Constant Value";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode fieldDecl = SLinkOperations.getTarget(node, LINKS.variableDeclaration$N1XG);
       SNode constantValue = SNodeOperations.replaceWithNewChild(node, CONCEPTS.ConstantValue$Pq);
       SLinkOperations.setTarget(constantValue, LINKS.constant$fw$M, fieldDecl);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ReplaceWithConstantValue_Intention.this;
     }
+
   }
 
   private static final class LINKS {

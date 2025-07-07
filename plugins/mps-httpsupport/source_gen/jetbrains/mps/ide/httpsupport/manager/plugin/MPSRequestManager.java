@@ -4,8 +4,7 @@ package jetbrains.mps.ide.httpsupport.manager.plugin;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.ide.HttpRequestHandler;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Arrays;
@@ -21,11 +20,10 @@ import java.io.IOException;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
 import io.netty.handler.codec.http.HttpResponseStatus;
-import org.apache.log4j.Level;
 
 @GeneratedClass(node = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)/4060668212259736923", model = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)")
 public class MPSRequestManager extends HttpRequestHandler {
-  private static final Logger LOG = LogManager.getLogger(MPSRequestManager.class);
+  private static final Logger LOG = Logger.getLogger(MPSRequestManager.class);
 
   private static final Set<String> TRUSTED = new HashSet<String>(Arrays.asList("youtrack.jetbrains.com", "teamcity.jetbrains.com"));
 
@@ -90,7 +88,7 @@ public class MPSRequestManager extends HttpRequestHandler {
     String errorHeader = "Request handler '" + factory.getHandlerName() + "' throws exception";
 
     request.sendErrorResponse(HttpResponseStatus.INTERNAL_SERVER_ERROR, errorHeader, e);
-    if (LOG.isEnabledFor(Level.ERROR)) {
+    if (LOG.isErrorLevel()) {
       LOG.error(errorHeader, e);
     }
   }

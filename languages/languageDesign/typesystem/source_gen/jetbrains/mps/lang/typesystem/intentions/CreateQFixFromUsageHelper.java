@@ -11,12 +11,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.openapi.editor.Editor;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.editor.EditorPanelManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -59,7 +58,7 @@ public class CreateQFixFromUsageHelper {
 
     // check err cell
     EditorCell cell = myEditorContext.getContextCell();
-    if (!((cell instanceof EditorCell_Label))) {
+    if (!(cell instanceof EditorCell_Label)) {
       return false;
     }
 
@@ -72,31 +71,27 @@ public class CreateQFixFromUsageHelper {
 
     boolean created = false;
     final Wrappers._T<SNode> createdQFix = new Wrappers._T<SNode>(null);
-    if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ReportErrorStatement$v1) && cell.isErrorState() && cell.getSRole().equals(LINKS.helginsIntention_old$EFV_)) {
+    if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ReportErrorStatement$v1) && cell.isErrorState() && cell.getSRole().equals(LINKS.helginsIntention$WhDe)) {
       created = true;
-      ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-        public SNode invoke() {
-          createdQFix.value = createQFix(qFixName);
-          return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ReportErrorStatement$v1), LINKS.helginsIntention_old$EFV_)).addElement(createTypesystemIntention_5x9eia_a0a1a0a0b0p0l(createdQFix.value));
-        }
-      }));
+      ex.exec(() -> {
+        createdQFix.value = createQFix(qFixName);
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ReportErrorStatement$v1), LINKS.helginsIntention$WhDe)).addElement(createTypesystemIntention_5x9eia_a0a1a0a0b0p0l(createdQFix.value));
+      });
     } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.TypesystemIntention$sw)) {
       created = true;
-      ex.exec(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          createdQFix.value = createQFix(qFixName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.TypesystemIntention$sw), LINKS.quickFix$ClX6, createdQFix.value);
-        }
+      ex.exec(() -> {
+        createdQFix.value = createQFix(qFixName);
+        SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.TypesystemIntention$sw), LINKS.quickFix$ClX6, createdQFix.value);
       });
     }
     if (!(created)) {
       return false;
     }
 
-    ex.exec(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), createdQFix.value, true, false);
-        editor.getEditorContext().selectWRTFocusPolicy(createdQFix.value);
+    ex.exec(() -> {
+      EditorPanelManager epm = myEditorContext.getEditorPanelManager();
+      if (epm != null) {
+        epm.openAndSelect(createdQFix.value);
       }
     });
 
@@ -147,7 +142,7 @@ public class CreateQFixFromUsageHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink helginsIntention_old$EFV_ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e7L, "helginsIntention_old");
+    /*package*/ static final SContainmentLink helginsIntention$WhDe = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
     /*package*/ static final SReferenceLink quickFix$ClX6 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");
     /*package*/ static final SContainmentLink executeBlock$oqWd = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b361a1836L, "executeBlock");
     /*package*/ static final SContainmentLink body$e68K = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");

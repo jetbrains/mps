@@ -30,6 +30,17 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Serves as the central point for registering global checkers as instances of {@link IChecker}.
+ * <p>
+ * NB! Internally adds the "core" checkers that are always present in the list returned by {@link #getCheckers()}.
+ * <ul>
+ *   <li>{@link TargetConceptChecker2}</li>
+ *   <li>{@link UsedLanguagesChecker}</li>
+ *   <li>{@link RefScopeChecker}</li>
+ *   <li>{@link SuppressErrorsChecker}</li>
+ * </ul>
+ */
 public final class CheckerRegistry implements CoreComponent {
   private final MultiMap<CheckerCategory, IChecker<?, ?>> myCheckers = new MultiMap<>();
   private final MultiMap<CheckerCategory, AbstractNodeCheckerInEditor> myEditorCheckers = new MultiMap<>();
@@ -77,6 +88,12 @@ public final class CheckerRegistry implements CoreComponent {
     return new ArrayList<>(myCheckers.values());
   }
 
+  /**
+   * Returns a list of all editor checkers (instances of {@link AbstractNodeCheckerInEditor}) registered with this registry.
+   * <p>
+   *   See {@link jetbrains.mps.ide.editor.MPSValidationComponent}
+   * </p>
+   */
   public List<AbstractNodeCheckerInEditor> getEditorCheckers() {
     ArrayList<AbstractNodeCheckerInEditor> result = new ArrayList<>(myEditorCheckers.values());
     for (IChecker<?, ?> checker: myCheckers.values()){

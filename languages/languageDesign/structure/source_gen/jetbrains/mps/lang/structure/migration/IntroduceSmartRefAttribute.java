@@ -16,7 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.regex.Matcher;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -45,11 +44,7 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
     {
       SearchScope scope_nopsft_a0e = CommandUtil.createScope(m);
       final SearchScope scope_nopsft_a0e_0 = new EditableFilteringScope(scope_nopsft_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_nopsft_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_nopsft_a0e_0;
       Collection<SNode> conceptNodes = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false);
 
       for (SNode conceptNode : CollectionSequence.fromCollection(conceptNodes)) {
@@ -68,11 +63,7 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
 
         if (smartAliasMatcher.matches()) {
           final String role = smartAliasMatcher.group(2);
-          SNode characteristicLink = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(conceptNode)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return hasRole(it, role);
-            }
-          });
+          SNode characteristicLink = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(conceptNode)).findFirst((it) -> hasRole(it, role));
 
           if ((characteristicLink != null)) {
             String prefix = smartAliasMatcher.group(1);
@@ -89,7 +80,7 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 4);
   }
 

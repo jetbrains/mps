@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.persistence.def.v9;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.registry.ConceptInfo;
 import jetbrains.mps.persistence.registry.IdInfoRegistry;
@@ -31,6 +32,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -41,7 +43,7 @@ import org.jetbrains.mps.openapi.model.SReference;
  * Populate a data structure that keeps meta-information actually used for the nodes supplied.
  * Cares about meta-model source alternatives, and consults {@link jetbrains.mps.persistence.MetaModelInfoProvider} for actual
  * meta-model information necessary for current persistence session.
- *
+ * <br/>
  * XXX in fact, ConceptInfo and other are pretty much what we keep in MetaModelInfoProvider. Perhaps, better code would emerge
  * if there is hierarchy of ConceptInfo, PropertyInfo plus two distinct mechanism to fill it: one for regular use, with ConceptDescriptors and alike,
  * and second for ant/merge, which populates exactly same structure but from information extracted from other models.
@@ -63,6 +65,7 @@ public class IdInfoCollector {
       fillProperties(n1);
       fillAssociations(n1);
       if (n1.getParent() != null) {
+        // FIXME pass smodel here or assert parent == null for input nodes and remove this if() altogether
         fillAggregation(n1);
       }
       for (SNode n2 : SNodeUtil.getDescendants(n1, null, false)) {
@@ -86,6 +89,10 @@ public class IdInfoCollector {
   private void fillProperties(SNode n) {
     for (SProperty prop : n.getProperties()) {
       SPropertyId propId = MetaIdHelper.getProperty(prop);
+      if (myMetaInfoProvider.isTransient(propId)) {
+        myRegistry.markTransient(prop);
+        continue;
+      }
       final ConceptInfo conceptInfo = registerConcept(prop, propId);
       if (!conceptInfo.knows(propId)) {
         final String propertyName = myMetaInfoProvider.getPropertyName(propId);
@@ -97,6 +104,10 @@ public class IdInfoCollector {
     for (SReference ref : n.getReferences()) {
       final SReferenceLink l = ref.getLink();
       SReferenceLinkId linkId = MetaIdHelper.getAssociation(l);
+      if (myMetaInfoProvider.isTransient(linkId)) {
+        myRegistry.markTransient(l);
+        continue;
+      }
       final ConceptInfo conceptInfo = registerConcept(l, linkId);
       if (!conceptInfo.knows(linkId)) {
         final String name = myMetaInfoProvider.getAssociationName(linkId);
@@ -109,6 +120,11 @@ public class IdInfoCollector {
   private void fillAggregation(SNode n) {
     final SContainmentLink l = n.getContainmentLink();
     SContainmentLinkId linkId = MetaIdHelper.getAggregation(l);
+    if (myMetaInfoProvider.isTransient(linkId)) {
+      // FIXME not quite effective to do it for each child in the role, but decided not to address performance issues until they show up
+      myRegistry.markTransient(l);
+      return;
+    }
     final ConceptInfo conceptInfo = registerConcept(l, linkId);
     if (!conceptInfo.knows(linkId)) {
       final String name = myMetaInfoProvider.getAggregationName(linkId);
@@ -118,6 +134,8 @@ public class IdInfoCollector {
 
   /**
    * find info object for already registered concept, or register both concept and its language if it's the first time we see the concept.
+   * Deals with identity objects and MMIP, doesn't care if concepts exists/known/valid (well, it's up to MMIP where it takes
+   * necessary meta-information)
    */
   @NotNull
   private ConceptInfo registerConcept(SConceptId concept) {
@@ -144,6 +162,10 @@ public class IdInfoCollector {
     final StaticScope scope = myMetaInfoProvider.getScope(concept);
     final ConceptKind kind = myMetaInfoProvider.getKind(concept);
     ci.setImplementationKind(scope, kind);
+    final Boolean interfaceConcept = myMetaInfoProvider.isInterfaceConcept(concept);
+    if (interfaceConcept != null && interfaceConcept) {
+      ci.markAsInterfaceConcept();
+    }
     if (kind == ConceptKind.IMPLEMENTATION_WITH_STUB) {
       ci.setStubCounterpart(myMetaInfoProvider.getStubConcept(concept));
     }
@@ -151,11 +173,23 @@ public class IdInfoCollector {
 
   private ConceptInfo registerConcept(SAbstractConcept c) {
     final SConceptId conceptId = MetaIdHelper.getConcept(c);
-    if (c.isValid() || MetaIdHelper.unrecognized(c)) {
+    if (myRegistry.knows(conceptId)) {
+      return myRegistry.get(conceptId);
+    }
+    if (MetaIdHelper.unrecognized(c)) {
       return registerConcept(conceptId);
     }
+    // accessing 'c' instance with care. We might be in a 'persistence-only' mode w/o access to
+    // ConceptRegistry/ConceptDescriptor and as long as some SAbstractConcept impl methods resort
+    // to CD for reply, we may face IllegalConceptDescriptor errors (see MPS-35421). However, as we delegate
+    // most of the queries to MMIP, it's subject to correct external configuration (caller to supply properly
+    // configured MMIP to avoid accessing CR/CD)
     if (!myRegistry.knows(conceptId.getLanguageId())) {
-      myRegistry.registerLanguage(conceptId.getLanguageId(), c.getLanguage().getQualifiedName());
+      String langName = myMetaInfoProvider.getLanguageName(conceptId.getLanguageId());
+      if (langName == null || langName.isEmpty()) {
+        langName = c.getLanguage().getQualifiedName();
+      }
+      myRegistry.registerLanguage(conceptId.getLanguageId(), langName);
     }
     String conceptName = myMetaInfoProvider.getConceptName(conceptId);
     ConceptInfo ci = myRegistry.registerConcept(conceptId, conceptName == null || conceptName.isEmpty() ? c.getQualifiedName() : conceptName);
@@ -163,11 +197,26 @@ public class IdInfoCollector {
     //     however, it's all the same for a concept with isValid() == false, there's no place to extract this data from either
     //     therefore, I resort here to the same code as in a general case
     fillFromMMMIP(ci, conceptId);
+    if (c instanceof SInterfaceConcept && !ci.isInterfaceConcept()) {
+      // XXX here we could do ci.markAsInterfaceConcept() based on c instanceof SInterfaceConcept, but as long as we rely on MMIP for
+      //     other attributes (like scope, kind, etc), follow the same approach (i.e. consult ConceptDescriptor) for SConcept/SInterfaceConcept as well.
+      // OTOH, MMIP is expected to answer null when doesn't know, perhaps, shall respect this case here (like it's done for conceptName, above)?
+      Logger.getLogger(getClass()).warning(String.format("InterfaceConcept %s was not recognized as such. MMIP answer: %s", c, myMetaInfoProvider.isInterfaceConcept(conceptId)));
+    }
     return ci;
   }
 
   // XXX would be great to have SConceptFeatureWithId interface
   private ConceptInfo registerConcept(SConceptFeature cf, SConceptFeatureId cfId) {
+    if (myRegistry.knows(cfId.getConceptId())) {
+      // if we already know the concept, don't try to get into getOwner(). In a persistence-only scenario, w/o languages available,
+      // (e.g. copyModels task or cmd-line merge) we may face proper SReferenceAdapterById, e.g. the one hard-coded in
+      // SNodeUtil.ref_SNodeType_concept (or elsewhere in the Java code). Attempt to get its owner results in IllegalConceptDescriptor warning
+      // Here we cover scenarios when the concept of such reference is already known (which is the case with SNodeType), however, it's possible
+      // to face a SConceptFeature here with concept we didn't encounter yet, and then we'll face ICD warning again.
+      // FIXME I consider this fix sufficient for MPS-35421 in 2022.3 timeframe, but need to refactor this code in the future
+      return myRegistry.get(cfId.getConceptId());
+    }
     final SAbstractConcept c = cf.getOwner();
     if (MetaIdHelper.unrecognized(c)) {
       // we can not get proper information about owner of the concept feature (irrespective whether there's ConceptDescriptor runtime counterpart or not),

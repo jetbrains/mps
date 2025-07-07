@@ -8,19 +8,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.vcs.diff.changes.StructureChange;
+import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.LinkedList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.vcs.diff.changes.HierarchicalNodeGroupChange;
-import jetbrains.mps.vcs.diff.changes.ModifiedNode;
-import jetbrains.mps.vcs.diff.changes.ChangeType;
-import jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/9170101780449072521", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class ChangeEditorMessageFactory {
@@ -29,23 +21,14 @@ public class ChangeEditorMessageFactory {
   public static List<ChangeEditorMessage> createMessages(final SModel editedModel, final boolean isOldEditor, final ModelChange change, final EditorMessageOwner owner, final ChangeEditorMessage.ConflictChecker conflictChecker, final boolean highlighted) {
 
     if (!(change instanceof StructureChange)) {
-      return ListSequence.fromList(new LinkedList<ChangeEditorMessage>());
+      return Collections.emptyList();
     }
 
-    return ListSequence.fromList(((StructureChange) change).createMessageTargetsWithIds(!(isOldEditor))).where(new IWhereFilter<Tuples._2<SNodeId, MessageTarget>>() {
-      public boolean accept(Tuples._2<SNodeId, MessageTarget> it) {
-        return editedModel.getNode(it._0()) != null || (change instanceof AddRootChange && isOldEditor) || (change instanceof DeleteRootChange && !(isOldEditor));
-      }
-    }).select(new ISelector<Tuples._2<SNodeId, MessageTarget>, ChangeEditorMessage>() {
-      public ChangeEditorMessage select(Tuples._2<SNodeId, MessageTarget> it) {
-        if (change instanceof HierarchicalNodeGroupChange && !(((HierarchicalNodeGroupChange) change).isEmpty(!(isOldEditor)))) {
-          ModifiedNode node = ((HierarchicalNodeGroupChange) change).getModifiedNode(it._0(), !(isOldEditor));
-          ChangeType type = (change instanceof NodeGroupWrapChange ? node.getType() : change.getType());
-          return new ChangeEditorMessage(editedModel.getNode(it._0()), it._1(), owner, change, conflictChecker, type, highlighted);
-        }
-        return new ChangeEditorMessage(editedModel.getNode(it._0()), it._1(), owner, change, conflictChecker, highlighted);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(((StructureChange) change).createMessageTargetsWithIds(!(isOldEditor))).where((it) -> changeCanHaveMessageForId(change, it._0(), editedModel, isOldEditor)).select((it) -> new ChangeEditorMessage(editedModel.getNode(it._0()), it._1(), owner, change, conflictChecker, highlighted)).toList();
+  }
+
+  private static boolean changeCanHaveMessageForId(ModelChange change, SNodeId nodeId, SModel editedModel, boolean isOldEditor) {
+    return editedModel.getNode(nodeId) != null || (change instanceof AddRootChange && isOldEditor) || (change instanceof DeleteRootChange && !(isOldEditor));
   }
 
   public static List<ChangeEditorMessage> createMessages(SModel editedModel, boolean isOldEditor, ModelChange change, EditorMessageOwner owner, ChangeEditorMessage.ConflictChecker conflictChecker) {

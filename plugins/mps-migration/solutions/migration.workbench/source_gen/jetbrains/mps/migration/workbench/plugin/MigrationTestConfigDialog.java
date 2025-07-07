@@ -208,7 +208,7 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     public static class LMigration {
       public SLanguage language;
       public boolean error;
-      public boolean[] applyToModules = new boolean[3];
+      public boolean[] applyToModules;
       public int version;
 
       public LMigration(SLanguage l, int version, boolean error1, boolean[] applyTo) {

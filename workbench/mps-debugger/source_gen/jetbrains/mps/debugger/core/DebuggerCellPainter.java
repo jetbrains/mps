@@ -31,12 +31,49 @@ public abstract class DebuggerCellPainter<E> extends AbstractAdditionalPainter<E
   private Map<EditorComponent, EditorCell> myCells = MapSequence.fromMap(new HashMap<EditorComponent, EditorCell>());
   public DebuggerCellPainter() {
   }
+  /**
+   * 
+   * @deprecated replaced with similar method that takes EditorComponent instance, override that one, instead
+   */
   @Nullable
-  protected abstract Color getCellBackgroundColor();
+  @Deprecated
+  protected Color getCellBackgroundColor() {
+    return null;
+  }
   @Nullable
-  protected abstract Color getStripeBackgroundColor();
+  protected Color getCellBackgroundColor(jetbrains.mps.openapi.editor.EditorComponent ec) {
+    // transition code until 22.3 is out, remove the body and deprecated method, make this one abstract
+    return getCellBackgroundColor();
+  }
+  /**
+   * 
+   * @deprecated replaced with similar method that takes EditorComponent instance, override that one, instead
+   */
   @Nullable
-  protected abstract Color getFrameColor();
+  @Deprecated
+  protected Color getStripeBackgroundColor() {
+    return null;
+  }
+  @Nullable
+  protected Color getStripeBackgroundColor(jetbrains.mps.openapi.editor.EditorComponent ec) {
+    // transition code until 22.3 is out, remove the body and deprecated method, make this one abstract
+    return getStripeBackgroundColor();
+  }
+  /**
+   * 
+   * @deprecated replaced with similar method that takes EditorComponent instance, override that one, instead
+   */
+  @Nullable
+  @Deprecated
+  protected Color getFrameColor() {
+    return null;
+  }
+  @Nullable
+  protected Color getFrameColor(jetbrains.mps.openapi.editor.EditorComponent ec) {
+    // transition code until 22.3 is out, remove the body and deprecated method, make this one abstract
+    return getFrameColor();
+  }
+
   @Nullable
   protected abstract SNodeReference getSNode();
 
@@ -61,7 +98,7 @@ public abstract class DebuggerCellPainter<E> extends AbstractAdditionalPainter<E
       return;
     }
 
-    Color frameColor = getFrameColor();
+    Color frameColor = getFrameColor(editorComponent);
     if (frameColor == null) {
       return;
     }
@@ -81,11 +118,9 @@ public abstract class DebuggerCellPainter<E> extends AbstractAdditionalPainter<E
   private void setComponentParameters(final EditorComponent editorComponent) {
     final SRepository repository = editorComponent.getEditorContext().getRepository();
     ModelAccess ma = repository.getModelAccess();
-    ma.runReadAction(new Runnable() {
-      public void run() {
-        SNode node = (getSNode() == null ? null : getSNode().resolve(repository));
-        MapSequence.fromMap(myCells).put(editorComponent, (node == null ? null : editorComponent.getBigValidCellForNode(node)));
-      }
+    ma.runReadAction(() -> {
+      SNode node = (getSNode() == null ? null : getSNode().resolve(repository));
+      MapSequence.fromMap(myCells).put(editorComponent, (node == null ? null : editorComponent.getBigValidCellForNode(node)));
     });
   }
   private void resetComponentParameters(EditorComponent editorComponent) {
@@ -93,7 +128,7 @@ public abstract class DebuggerCellPainter<E> extends AbstractAdditionalPainter<E
   }
   private void paintCellBackground(Graphics graphics, EditorComponent editorComponent) {
     if (isInCellMode(editorComponent)) {
-      Color cellBackgroundColor = getCellBackgroundColor();
+      Color cellBackgroundColor = getCellBackgroundColor(editorComponent);
       if (cellBackgroundColor == null) {
         return;
       }
@@ -112,7 +147,7 @@ public abstract class DebuggerCellPainter<E> extends AbstractAdditionalPainter<E
       return;
     }
 
-    Color stripeBackgroundColor = getStripeBackgroundColor();
+    Color stripeBackgroundColor = getStripeBackgroundColor(editorComponent);
     if (stripeBackgroundColor == null) {
       return;
     }

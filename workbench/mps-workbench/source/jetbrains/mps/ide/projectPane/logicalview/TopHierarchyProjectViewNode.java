@@ -1,0 +1,262 @@
+/*
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ */
+package jetbrains.mps.ide.projectPane.logicalview;
+
+import com.intellij.icons.AllIcons;
+import com.intellij.icons.AllIcons.Nodes;
+import com.intellij.ide.projectView.PresentationData;
+import com.intellij.ide.projectView.ViewSettings;
+import com.intellij.ide.util.treeView.AbstractTreeNode;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectUtil;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.SimpleTextAttributes;
+import jetbrains.mps.VisibleModuleRegistry;
+import jetbrains.mps.generator.TransientModelsModule;
+import jetbrains.mps.generator.TransientModelsModule.TransientSModelDescriptor;
+import jetbrains.mps.icons.MPSIcons;
+import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.ui.tree.VirtualFolder;
+import jetbrains.mps.ide.ui.tree.VirtualFolder.DevKitsModulesPool;
+import jetbrains.mps.ide.ui.tree.VirtualFolder.LanguagesModulesPool;
+import jetbrains.mps.ide.ui.tree.VirtualFolder.ModulesPool;
+import jetbrains.mps.ide.ui.tree.VirtualFolder.SolutionsModulesPool;
+import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.GlobalScope;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.SObject;
+import jetbrains.mps.project.Solution;
+import jetbrains.mps.scope.ConditionalScope;
+import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.util.NameUtil;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModule;
+
+import java.util.Collection;
+import java.util.Objects;
+import java.util.function.Supplier;
+
+/**
+ * Top node in the project tree.
+ * 
+ * @author Fedor Isakov
+ */
+public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectViewNode<Value> {
+
+  protected TopHierarchyProjectViewNode(Project project, @NotNull Value value, ViewSettings viewSettings) {
+    super(project, value, viewSettings);
+  }
+
+  protected static class TopProjectViewNode extends TopHierarchyProjectViewNode<MPSProject> {
+
+    protected TopProjectViewNode(@NotNull Project project, ViewSettings viewSettings) {
+      super(project, ProjectHelper.fromIdeaProject(project), viewSettings);
+    }
+
+    @Override
+    protected boolean canRepresentSObject(SObject sObject) {
+      return false;
+    }
+
+    @Override
+    protected boolean containsSObject(SObject sObject) {
+      return sObject.testIfHasSModule(sModule -> getValue().isProjectModule(sModule));
+    }
+
+    @Override
+    protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
+      AbstractVirtualFolderHierarchy<SModule> hierarchy = new ModulesVirtualFolderHierarchy(getValue().getProjectModules(), module -> getValue().getVirtualFolder(module));
+      hierarchy.fillChildren("", children);
+    }
+
+    @Override
+    protected void update(@NotNull PresentationData presentation) {
+      presentation.setIcon(Nodes.HomeFolder);
+      presentation.addText(getValue().getName(), SimpleTextAttributes.REGULAR_BOLD_ATTRIBUTES);
+      VirtualFile projectDir = ProjectUtil.guessProjectDir(getProject());
+      if (projectDir != null) {
+        presentation.addText(String.format(" (%s)", projectDir.getPresentableUrl()), SimpleTextAttributes.GRAYED_ATTRIBUTES);
+      }
+    }
+
+    @Override
+    public int getTypeSortWeight(boolean sortByType) {
+      return ProjectViewWeights.TOP_PROJECT_WEIGHT;
+    }
+  }
+
+  protected static class ModulesPoolProjectViewNode extends TopHierarchyProjectViewNode<ModulesPool> {
+
+    protected ModulesPoolProjectViewNode(@NotNull Project project, ViewSettings viewSettings) {
+      super(project, new ModulesPool(), viewSettings);
+    }
+
+    @Override
+    protected boolean canRepresentSObject(SObject sObject) {
+      return false;
+    }
+
+    @Override
+    protected boolean containsSObject(SObject sObject) {
+      return sObject.testIfHasSModule(this::containsSModule);
+    }
+
+    private Boolean containsSModule(SModule sModule) {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      return mpsProject.getModelAccess().computeReadAction(() -> {
+        if (mpsProject.isProjectModule(sModule)) {
+          return false; // only support "select in" for non-project modules
+        }
+
+        VisibleModuleRegistry visibleModules = VisibleModuleRegistry.getInstance();
+        GlobalScope globalScope = new GlobalScope(mpsProject.getRepository());
+        ConditionalScope conditionalScope = new ConditionalScope(globalScope, visibleModules::isVisible, null);
+        return IterableUtil.indexOf(conditionalScope.getModules(), sModule) >= 0;
+      });
+    }
+
+    @Override
+    protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      VisibleModuleRegistry visibleModules = VisibleModuleRegistry.getInstance();
+      GlobalScope globalScope = new GlobalScope(mpsProject.getRepository());
+      ConditionalScope visibleScope = new ConditionalScope(globalScope, visibleModules::isVisible, null);
+
+      ConditionalScope solutionsScope = new ConditionalScope(visibleScope, Solution.class::isInstance, null);
+      children.add(new ModulesPoolFolderProjectViewNode(getProject(), new SolutionsModulesPool(), getSettings(), 0,
+                                                        () -> IterableUtil.asList(solutionsScope.getModules())));
+
+      ConditionalScope languagesScope = new ConditionalScope(visibleScope, Language.class::isInstance, null);
+      children.add(new ModulesPoolFolderProjectViewNode(getProject(), new LanguagesModulesPool(), getSettings(), 1,
+                                                        () -> IterableUtil.asList(languagesScope.getModules())));
+
+      ConditionalScope devkitsScope = new ConditionalScope(visibleScope, DevKit.class::isInstance, null);
+      children.add(new ModulesPoolFolderProjectViewNode(getProject(), new DevKitsModulesPool(), getSettings(), 2,
+                                                        () -> IterableUtil.asList(devkitsScope.getModules())));
+    }
+
+    @Override
+    public int getTypeSortWeight(boolean sortByType) {
+      return ProjectViewWeights.MODULES_POOL_WEIGHT;
+    }
+
+    @SuppressWarnings("DialogTitleCapitalization")
+    @Override
+    protected void update(@NotNull PresentationData presentation) {
+      presentation.setIcon(Nodes.ModuleGroup);
+      presentation.addText("Modules Pool", SimpleTextAttributes.REGULAR_ATTRIBUTES);
+    }
+
+  }
+
+  protected static class ModulesPoolFolderProjectViewNode extends TopHierarchyProjectViewNode<VirtualFolder> {
+
+    private final int myOrdinal;
+    private final Supplier<Collection<SModule>> myModulesSupplier;
+
+    protected ModulesPoolFolderProjectViewNode(@NotNull Project project, VirtualFolder virtualFolder, ViewSettings viewSettings, int ordinal, Supplier<Collection<SModule>> modulesSupplier) {
+      super(project, virtualFolder, viewSettings);
+      myOrdinal = ordinal;
+      myModulesSupplier = modulesSupplier;
+    }
+
+    @Override
+    protected boolean canRepresentSObject(SObject sObject) {
+      return false;
+    }
+
+    @Override
+    protected boolean containsSObject(SObject sObject) {
+      return sObject.testIfHasSModule(this::containsSModule);
+    }
+
+    private Boolean containsSModule(SModule sModule) {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      return mpsProject.getModelAccess().computeReadAction(() ->
+                myModulesSupplier.get().contains(sModule) && !mpsProject.isProjectModule(sModule));
+    }
+
+    @Override
+    protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
+      AbstractVirtualFolderHierarchy<SModule> hierarchy = new ModulesVirtualFolderHierarchy(myModulesSupplier.get(), this::getVirtualFolder);
+      hierarchy.fillChildren("", children);
+    }
+
+    @Override
+    protected void update(@NotNull PresentationData presentation) {
+      presentation.setIcon(Nodes.Folder);
+      presentation.addText(getValue().getName(), SimpleTextAttributes.REGULAR_ATTRIBUTES);
+    }
+
+    @SuppressWarnings("rawtypes")
+    @Override
+    public @Nullable Comparable getSortKey() {
+      return myOrdinal;
+    }
+
+    @Override
+    public @Nullable Comparable getTypeSortKey() {
+      return myOrdinal;
+    }
+
+    private String getVirtualFolder(SModule module) {
+      String fqName = module.getModuleName();
+      if (module instanceof Generator && fqName.indexOf('#') > 0) {
+        fqName = fqName.substring(0, fqName.indexOf('#'));
+      }
+      return NameUtil.namespaceFromLongName(fqName);
+    }
+
+  }
+
+  protected static class TransientModuleProjectViewNode extends BaseModuleProjectViewNode<TransientModelsModule> {
+
+    protected TransientModuleProjectViewNode(Project project, TransientModelsModule module, ViewSettings viewSettings) {
+      super(project, module, viewSettings);
+    }
+
+    @Override
+    protected boolean containsSObject(SObject sObject) {
+      return sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
+    }
+    
+    @Override
+    protected boolean canRepresentSObject(SObject sObject) {
+      return !sObject.hasSModel() && sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
+    }
+
+    @Override
+    protected void fillChildren(Collection<AbstractTreeNode<?>> children, Collection<SModel> models) {
+      AbstractVirtualFolderHierarchy<?> hierarchy = new ModelsVirtualFolderHierarchy(models, this::getVirtualFolder);
+      hierarchy.fillChildren("", children);
+    }
+
+    protected String getVirtualFolder(SModel model) {
+      // original comment:
+      // FIXME I know I'm not supposed to use TransientSModelDescriptor directly, rather extapi.TransientSModel
+      //       but there's no mechanism to access serial through that interface yet
+      int branch = model instanceof TransientSModelDescriptor ? ((TransientSModelDescriptor) model).getBranchSerial() : 0;
+      return branch == 0 ? "" : String.format("Transformation branch #%d", branch);
+    }
+
+    @Override
+    protected void update(@NotNull PresentationData presentation) {
+      String moduleName = getValue().getModuleName();
+      presentation.setPresentableText(moduleName != null ? moduleName : "transient");
+      presentation.setIcon(MPSIcons.Nodes.TransientModule);
+    }
+
+    @Override
+    public int getTypeSortWeight(boolean sortByType) {
+      return ProjectViewWeights.TRANSIENT_MODELS_WEIGHT;
+    }
+
+  }
+
+}

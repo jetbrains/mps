@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,27 @@
  */
 package jetbrains.mps.lang.editor.menus;
 
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
+import jetbrains.mps.openapi.editor.menus.EditorMenuTrace;
+import jetbrains.mps.openapi.editor.menus.TraceMenuContext;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
 
 public abstract class GroupMenuPart<ItemT, ContextT> implements MenuPart<ItemT, ContextT> {
+  private final EditorMenuDescriptor myMenuDescriptor;
+
+  protected GroupMenuPart() {
+    // see e.g. ParameterizedMenuPart for details
+    myMenuDescriptor = null;
+  }
+
+  protected GroupMenuPart(@NotNull EditorMenuDescriptor menuDescriptor) {
+    myMenuDescriptor = menuDescriptor;
+  }
+
   @NotNull
   @Override
   public List<ItemT> createItems(ContextT context) {
@@ -34,7 +48,22 @@ public abstract class GroupMenuPart<ItemT, ContextT> implements MenuPart<ItemT, 
       Logger.getLogger(getClass()).error("Exception while executing code of the group " + this, t);
       return Collections.emptyList();
     }
-    return new CompositeMenuPart<>(getParts()).createItems(context);
+    final EditorMenuTrace menuTrace;
+    if (myMenuDescriptor != null && context instanceof TraceMenuContext) {
+      // see ParameterizedMenuPart for reasons why instanceof, not <ContextT extends TraceMenuContext>
+      menuTrace = ((TraceMenuContext) context).getEditorMenuTrace();
+      menuTrace.pushTraceInfo();
+      menuTrace.setDescriptor(myMenuDescriptor);
+    } else {
+      menuTrace = null;
+    }
+    try {
+      return new CompositeMenuPart<>(getParts()).createItems(context);
+    } finally {
+      if (menuTrace != null) {
+        menuTrace.popTraceInfo();
+      }
+    }
   }
 
   protected void initialize(ContextT context) {

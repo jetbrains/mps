@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@ public class ImplicitSubstituteMenu extends SubstituteMenuBase {
   private final SAbstractConcept myConcept;
 
   public ImplicitSubstituteMenu(@NotNull SAbstractConcept concept) {
+    super(false, new EditorMenuDescriptorBase(getPresentableDescription(concept), concept.getSourceNode(), true));
     myConcept = concept;
   }
 
@@ -46,22 +47,10 @@ public class ImplicitSubstituteMenu extends SubstituteMenuBase {
   }
 
   @NotNull
-  @Override
-  public List<SubstituteMenuItem> createMenuItems(@NotNull SubstituteMenuContext context) {
-    context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(getPresentableDescription(), myConcept.getSourceNode(), true));
-    try {
-      return super.createMenuItems(context);
-    } finally {
-      context.getEditorMenuTrace().popTraceInfo();
-    }
-  }
-
-  @NotNull
-  private String getPresentableDescription() {
-    StringBuilder builder = new StringBuilder("Implicit substitute menu for " + myConcept.getName());
+  private static String getPresentableDescription(SAbstractConcept concept) {
+    StringBuilder builder = new StringBuilder("Implicit substitute menu for " + concept.getName());
     builder.append(": include menu for the subconcepts");
-    if (myConcept instanceof SConcept && !myConcept.isAbstract()){
+    if (concept instanceof SConcept && !concept.isAbstract()){
       builder.append(" and the simple action for the concept");
     }
     return builder.toString();

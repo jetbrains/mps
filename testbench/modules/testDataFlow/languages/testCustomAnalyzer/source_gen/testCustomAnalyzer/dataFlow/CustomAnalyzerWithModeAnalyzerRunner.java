@@ -51,14 +51,5 @@ public class CustomAnalyzerWithModeAnalyzerRunner extends CustomAnalyzerRunner<I
     public AnalysisDirection getDirection() {
       return AnalysisDirection.FORWARD;
     }
-
-    /**
-     * 
-     * @deprecated 
-     */
-    @Deprecated
-    public static String getId() {
-      return "testCustomAnalyzer.dataFlow.CustomAnalyzerWithMode";
-    }
   }
 }

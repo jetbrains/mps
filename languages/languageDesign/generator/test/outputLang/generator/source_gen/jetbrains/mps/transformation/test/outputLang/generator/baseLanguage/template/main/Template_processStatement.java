@@ -75,7 +75,7 @@ public class Template_processStatement extends TemplateDeclarationBase {
               {
                 final SNode tnode7 = environment.createOutputNode(myConcepts[6]);
                 {
-                  SNodeAccessUtil.setPropertyValue(tnode7, myProperties[1], QueriesGenerated.propertyMacro_GetValue_3_0(new PropertyMacroContext(context5, "nvar", propertyMacro_iblz6q_c0a2a0a1a1a1a2a1a1a2a7)));
+                  SNodeAccessUtil.setPropertyValue(tnode7, myProperties[1], QueriesGenerated.propertyMacro_GetValue_3_0(new PropertyMacroContext(context5, "nvar", propertyMacro)));
                   TemplateContext context6 = context5.subContext();
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
@@ -83,8 +83,8 @@ public class Template_processStatement extends TemplateDeclarationBase {
                   }
                   {
                     Collection<SNode> tlist9 = null;
-                    final SNode copySrcInput9 = QueriesGenerated.sourceNodeQuery_3_0(new SourceSubstituteMacroNodeContext(context6, copySrcMacro_iblz6q_b0a0c0d0b0b0b0c0b0b0c0h));
-                    tlist9 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput9), copySrcMacro_iblz6q_b0a0c0d0b0b0b0c0b0b0c0h, "tpl/r:00000000-0000-4000-0000-011c89590606/2681305894288695053", context6);
+                    final SNode copySrcInput9 = QueriesGenerated.sourceNodeQuery_3_0(new SourceSubstituteMacroNodeContext(context6, copySrcMacro));
+                    tlist9 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput9), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590606/2681305894288695053", context6);
                     environment.aggregate(tnode7, myAggregationLinks[4], tlist9);
                   }
                 }
@@ -139,7 +139,7 @@ public class Template_processStatement extends TemplateDeclarationBase {
                   TemplateContext context6 = context5.subContext();
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[10]);
-                    environment.resolveInTemplateLater(tnode8, myAssociationLinks[0], templateNode_iblz6q_c0a0a1a1a1a1a1a2a1a1a2a8, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980649133", "e", context6);
+                    environment.resolveInTemplateLater(tnode8, myAssociationLinks[0], templateNode, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980649133", "e", context6);
                     environment.aggregate(tnode7, myAggregationLinks[7], tnode8);
                   }
                   {
@@ -227,7 +227,7 @@ public class Template_processStatement extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_iblz6q_c0a2a0a1a1a1a2a1a1a2a7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695039");
-  private static final SNodePointer copySrcMacro_iblz6q_b0a0c0d0b0b0b0c0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695055");
-  private static final SNodePointer templateNode_iblz6q_c0a0a1a1a1a1a1a2a1a1a2a8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4265636116363100026");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695039");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695055");
+  private static final SNodePointer templateNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4265636116363100026");
 }

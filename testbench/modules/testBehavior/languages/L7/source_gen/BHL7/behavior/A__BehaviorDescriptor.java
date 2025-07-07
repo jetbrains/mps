@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import UtilSolution.util.TestResults;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -24,16 +23,16 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class A__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x559729dec0466d3cL, "BHL7.structure.A");
 
-  public static final SMethod<Integer> nonVirtualMethod_id5mnatV0hAPp = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("nonVirtualMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5mnatV0hAPp").build();
-  public static final SMethod<Object> virtualMethod_id5mnatV0hAPC = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("virtualMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5mnatV0hAPC").build();
-  public static final SMethod<Integer> staticMethod_id5mnatV0hAQH = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("staticMethod").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5mnatV0hAQH").build();
-  public static final SMethod<Object> staticVirtualMethod_id5mnatV0hATt = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("staticVirtualMethod").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5mnatV0hATt").build();
-  public static final SMethod<Void> justVoidReturnTypeMethod1_id5mnatV0hB9t = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("justVoidReturnTypeMethod1").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5mnatV0hB9t").build();
-  public static final SMethod<Void> justVoidReturnTypeMethod2_id4XEqvthVyKi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("justVoidReturnTypeMethod2").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4XEqvthVyKi").build();
-  public static final SMethod<Boolean> boolMethod1_id2eC$PxWCtoT = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("boolMethod1").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2eC$PxWCtoT").build();
-  public static final SMethod<Boolean> boolMethod2_idjZ8XPdgmd$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("boolMethod2").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("jZ8XPdgmd$").build();
-  public static final SMethod<Iterable<Boolean>> seqMethod_id2eC$PxWCGmD = new SMethodBuilder<Iterable<Boolean>>(new SJavaCompoundTypeImpl((Class<Iterable<Boolean>>) ((Class) Object.class))).name("seqMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2eC$PxWCGmD").build();
-  public static final SMethod<Iterable<Boolean>> seqMethod2_id2eC$PxWDDfD = new SMethodBuilder<Iterable<Boolean>>(new SJavaCompoundTypeImpl((Class<Iterable<Boolean>>) ((Class) Object.class))).name("seqMethod2").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2eC$PxWDDfD").build();
+  public static final SMethod<Integer> nonVirtualMethod_id5mnatV0hAPp = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("nonVirtualMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6167444251392503129L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
+  public static final SMethod<Object> virtualMethod_id5mnatV0hAPC = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("virtualMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6167444251392503144L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
+  public static final SMethod<Integer> staticMethod_id5mnatV0hAQH = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("staticMethod").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6167444251392503213L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
+  public static final SMethod<Object> staticVirtualMethod_id5mnatV0hATt = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("staticVirtualMethod").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6167444251392503389L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
+  public static final SMethod<Void> justVoidReturnTypeMethod1_id5mnatV0hB9t = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("justVoidReturnTypeMethod1").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6167444251392504413L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
+  public static final SMethod<Void> justVoidReturnTypeMethod2_id4XEqvthVyKi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("justVoidReturnTypeMethod2").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5722502787480038418L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
+  public static final SMethod<Boolean> boolMethod1_id2eC$PxWCtoT = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("boolMethod1").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2569465595672254009L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
+  public static final SMethod<Boolean> boolMethod2_idjZ8XPdgmd$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("boolMethod2").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(360045928603804516L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
+  public static final SMethod<Iterable<Boolean>> seqMethod_id2eC$PxWCGmD = new SMethodBuilder<Iterable<Boolean>>(new SJavaCompoundTypeImpl((Class<Iterable<Boolean>>) ((Class) Object.class))).name("seqMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2569465595672315305L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
+  public static final SMethod<Iterable<Boolean>> seqMethod2_id2eC$PxWDDfD = new SMethodBuilder<Iterable<Boolean>>(new SJavaCompoundTypeImpl((Class<Iterable<Boolean>>) ((Class) Object.class))).name("seqMethod2").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2569465595672564713L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(nonVirtualMethod_id5mnatV0hAPp, virtualMethod_id5mnatV0hAPC, staticMethod_id5mnatV0hAQH, staticVirtualMethod_id5mnatV0hATt, justVoidReturnTypeMethod1_id5mnatV0hB9t, justVoidReturnTypeMethod2_id4XEqvthVyKi, boolMethod1_id2eC$PxWCtoT, boolMethod2_idjZ8XPdgmd$, seqMethod_id2eC$PxWCGmD, seqMethod2_id2eC$PxWDDfD);
 
@@ -68,18 +67,10 @@ public final class A__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static Iterable<Boolean> seqMethod_id2eC$PxWCGmD(@NotNull final SNode __thisNode__) {
-    return Sequence.fromIterable(Sequence.fromIterable(Collections.<Boolean>emptyList())).select(new ISelector<Boolean, Boolean>() {
-      public Boolean select(Boolean it) {
-        return ((boolean) A__BehaviorDescriptor.boolMethod1_id2eC$PxWCtoT.invoke(__thisNode__));
-      }
-    });
+    return Sequence.fromIterable(Sequence.fromIterable(Collections.<Boolean>emptyList())).select((it) -> ((boolean) A__BehaviorDescriptor.boolMethod1_id2eC$PxWCtoT.invoke(__thisNode__)));
   }
   /*package*/ static Iterable<Boolean> seqMethod2_id2eC$PxWDDfD(@NotNull final SNode __thisNode__) {
-    return Sequence.fromIterable(Sequence.fromIterable(Collections.<Boolean>emptyList())).select(new ISelector<Boolean, Boolean>() {
-      public Boolean select(Boolean it) {
-        return ((boolean) A__BehaviorDescriptor.boolMethod1_id2eC$PxWCtoT.invoke(__thisNode__));
-      }
-    });
+    return Sequence.fromIterable(Sequence.fromIterable(Collections.<Boolean>emptyList())).select((it) -> ((boolean) A__BehaviorDescriptor.boolMethod1_id2eC$PxWCtoT.invoke(__thisNode__)));
   }
 
   /*package*/ A__BehaviorDescriptor() {

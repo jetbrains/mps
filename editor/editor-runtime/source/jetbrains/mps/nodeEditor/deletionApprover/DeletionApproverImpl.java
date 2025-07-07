@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,18 @@
  */
 package jetbrains.mps.nodeEditor.deletionApprover;
 
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.DefaultEditorMessage;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.nodeEditor.NodeHighlightManager;
 import jetbrains.mps.openapi.editor.DeletionApprover;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.openapi.editor.selection.SelectionListener;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import jetbrains.mps.openapi.editor.style.Style;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.Color;
@@ -38,22 +41,28 @@ import java.util.Collections;
  */
 public class DeletionApproverImpl implements DeletionApprover, EditorMessageOwner {
 
-  private EditorContext myEditorContext;
-  private EditorComponent myEditorComponent;
-  private SelectionListener mySelectionListener;
+  private final EditorContext myEditorContext;
+  private final NodeHighlightManager myHighlightManager;
+  private final SelectionListener mySelectionListener;
   private EditorCell myCellToBeDeleted;
 
   /**
    * Constructing deletion highlighter instance
+   * @deprecated Awful javadoc. Just kidding, EditorContext is the right context, not JComponent
    *
    * @param anEditorComponent editor component
    */
+  @Deprecated(forRemoval = true, since = "2022.3")
   public DeletionApproverImpl(@NotNull EditorComponent anEditorComponent) {
-    myEditorComponent = anEditorComponent;
-    myEditorContext = anEditorComponent.getEditorContext();
-    mySelectionListener = (editorComponent, oldSelection, newSelection) -> {
-      clear();
-    };
+    this(anEditorComponent.getEditorContext(), anEditorComponent.getHighlightManager());
+    // I don't expect any uses of this constructor, but doesn't hurt to keep it for 1 release.
+    Logger.getLogger(getClass()).warnDeprecatedUse("This constructor has been deprecated and scheduled for removal");
+  }
+
+  public DeletionApproverImpl(@NotNull EditorContext editorContext, @NotNull NodeHighlightManager highlightManager) {
+    myEditorContext = editorContext;
+    myHighlightManager = highlightManager;
+    mySelectionListener = (editorComponent, oldSelection, newSelection) -> clear();
   }
 
   /**
@@ -70,10 +79,11 @@ public class DeletionApproverImpl implements DeletionApprover, EditorMessageOwne
    */
   public void approveForDeletion(@NotNull EditorCell cell) {
     myCellToBeDeleted = cell;
-    myEditorComponent.getHighlightManager().clearForOwner(this);
-    Color color = StyleRegistry.getInstance().isDarkTheme() ? Color.GREEN : Color.RED;
-    myEditorComponent.getHighlightManager().mark(new DeletionApproverMessage(cell, color, "to be deleted", this));
-    myEditorComponent.getHighlightManager().repaintAndRebuildEditorMessages();
+    myHighlightManager.clearForOwner(this);
+    final Style daStyle = cell.getEditorComponent().getStyleRegistry().getStyle("DELETION_APPROVER");
+    final Color c = daStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR);
+    myHighlightManager.mark(new ApproveDeleteMessage(cell, c, "to be deleted", this));
+    myHighlightManager.repaintAndRebuildEditorMessages();
   }
 
   /**
@@ -96,8 +106,8 @@ public class DeletionApproverImpl implements DeletionApprover, EditorMessageOwne
    */
   public void clear() {
     myCellToBeDeleted = null;
-    myEditorComponent.getHighlightManager().clearForOwner(this);
-    myEditorComponent.getHighlightManager().repaintAndRebuildEditorMessages();
+    myHighlightManager.clearForOwner(this);
+    myHighlightManager.repaintAndRebuildEditorMessages();
   }
 
   /**
@@ -107,11 +117,11 @@ public class DeletionApproverImpl implements DeletionApprover, EditorMessageOwne
     myEditorContext.getSelectionManager().removeSelectionListener(mySelectionListener);
   }
 
-  private static class DeletionApproverMessage extends DefaultEditorMessage {
+  private static class ApproveDeleteMessage extends DefaultEditorMessage {
 
     private final EditorCell myCell;
 
-    public DeletionApproverMessage(EditorCell cell, Color color, String message, EditorMessageOwner owner) {
+    ApproveDeleteMessage(EditorCell cell, Color color, String message, EditorMessageOwner owner) {
       super(cell.getSNode(), color, message, owner);
       myCell = cell;
     }
@@ -119,9 +129,7 @@ public class DeletionApproverImpl implements DeletionApprover, EditorMessageOwne
     @Override
     public void paint(Graphics g, EditorComponent editorComponent, EditorCell cell) {
       if (cell instanceof jetbrains.mps.nodeEditor.cells.EditorCell) {
-        Color color = new Color(getColor().getRed(), getColor().getGreen(), getColor().getBlue(), getColor().getAlpha() / 5);
-        ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).paintSelection(g, color, false);
-
+        ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).paintSelection(g, getColor(), false);
       } else {
         super.paint(g, editorComponent, cell);
       }
@@ -137,7 +145,7 @@ public class DeletionApproverImpl implements DeletionApprover, EditorMessageOwne
       if (message == this) {
         return true;
       }
-      return message instanceof DeletionApproverMessage && myCell == ((DeletionApproverMessage) message).myCell;
+      return message instanceof ApproveDeleteMessage && myCell == ((ApproveDeleteMessage) message).myCell;
     }
 
     @Override

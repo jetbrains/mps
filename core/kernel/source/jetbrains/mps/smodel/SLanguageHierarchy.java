@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,14 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
@@ -31,7 +30,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Build a closure of extended or extending languages for a given set of language.
@@ -46,8 +47,22 @@ import java.util.stream.Collectors;
  * @author Artem Tikhomirov
  */
 public class SLanguageHierarchy {
-  private final static Logger LOG = LogManager.getLogger(SLanguageHierarchy.class);
-  private final static ErrorHandler DEFAULT_HANDLER = language -> LOG.warn(String.format("The language '%s' is not deployed", language));
+  private final static Logger LOG = Logger.getLogger(SLanguageHierarchy.class);
+  private final static class DefaultErrorHandler implements ErrorHandler {
+    private final String mySource;
+    private final HashSet<SLanguage> myReported = new HashSet<>();
+
+    private DefaultErrorHandler(Collection<SLanguage> languages) {
+      mySource = languages.stream().map(SLanguage::getQualifiedName).map(NameUtil::compactNamespace).collect(Collectors.joining(",", "[", "]"));
+    }
+
+    @Override
+    public void handleLanguageIsNotDeployed(SLanguage language) {
+      if (myReported.add(language)) {
+        LOG.warning(String.format("The language '%s' is not deployed when analyzing %s", language, mySource));
+      }
+    }
+  };
 
   private final LanguageRegistry myRegistry;
   private final Collection<SLanguage> myLanguages;
@@ -57,8 +72,7 @@ public class SLanguageHierarchy {
     myLanguages = languages;
   }
 
-  @Deprecated
-  @ToRemove(version = 0)
+@Deprecated(since = "0", forRemoval = true)
   public SLanguageHierarchy(@NotNull Collection<SLanguage> languages) {
     this(LanguageRegistry.getInstance(), languages);
   }
@@ -76,7 +90,47 @@ public class SLanguageHierarchy {
    */
   @NotNull
   public Set<SLanguage> getExtended() {
-    return getExtendedLangs(DEFAULT_HANDLER);
+    return getExtendedLangs(new DefaultErrorHandler(getInitial()));
+  }
+
+  /**
+   * Gives access to {@link #getExtended() set of extended} languages in their runtime form.
+   * Delivers runtime instances within respective {@code LanguageRegistry}'s lock (see {@link LanguageRegistry#withAvailableLanguages(Consumer)}.
+   * @since 2023.1
+   */
+  public void forEachExtended(@NotNull final HierarchyVisitor visitor) {
+    final boolean[] found = new boolean[1];
+    final HierarchyVisitor unique = new HierarchyVisitor() {
+      private final HashSet<LanguageRuntime> mySeen1 = new HashSet<>();
+      private final HashSet<SLanguage> mySeen2 = new HashSet<>();
+      @Override
+      public void accept(LanguageRuntime languageRuntime) {
+        if (mySeen1.add(languageRuntime)) {
+          visitor.accept(languageRuntime);
+        }
+      }
+
+      @Override
+      public void acceptMissing(@NotNull SLanguage missingRuntime) {
+        if (mySeen2.add(missingRuntime)) {
+          visitor.acceptMissing(missingRuntime);
+        }
+      }
+    };
+    // XXX I don't like individual lock per language from myLanguages, OTOH (a) common scenario is to pass single language to this class
+    //     (b) fine-grained lock granularity might not be bad per se.
+    //     Need this as I want to notify missing runtimes
+    for (SLanguage l : myLanguages) {
+      found[0] = false;
+      myRegistry.withAvailableLanguages(Stream.of(l), lr -> {
+        found[0] = true;
+        unique.accept(lr);
+        lr.getExtendedLanguages().forEach(unique);
+      });
+      if (!found[0]) {
+         unique.acceptMissing(l);
+      }
+    }
   }
 
   @NotNull
@@ -139,11 +193,6 @@ public class SLanguageHierarchy {
       }
       sad.reportDependencies(new Dependencies() {
         @Override
-        public void extendedLanguage(long hiBits, long lowBits, String name) {
-
-        }
-
-        @Override
         public void aggregatedLanguage(long hiBits, long lowBits, String name) {
           rv.add(MetaAdapterFactory.getLanguage(hiBits, lowBits, name));
         }
@@ -157,5 +206,11 @@ public class SLanguageHierarchy {
      * @param language -- the language which is not deployed (LanguageRegistry does not contain it)
      */
     void handleLanguageIsNotDeployed(SLanguage language);
+  }
+
+  public interface HierarchyVisitor extends Consumer<LanguageRuntime> {
+    default void acceptMissing(@NotNull SLanguage missingRuntime) {
+      // no-op
+    }
   }
 }

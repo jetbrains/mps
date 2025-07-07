@@ -21,6 +21,7 @@ public class StepInto_Action extends BaseAction {
     super("Step Into", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

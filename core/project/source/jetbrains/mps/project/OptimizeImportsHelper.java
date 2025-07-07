@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +23,6 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -55,8 +52,7 @@ public class OptimizeImportsHelper {
    * @param repository -- is a context repository which contains the modules/models the client want to resolve
    * @deprecated
    */
-  @Deprecated
-  @ToRemove(version = 2020.1)
+@Deprecated(since = "2020.1", forRemoval = true)
   public OptimizeImportsHelper(@NotNull SRepository repository) {
     myRepository = repository;
     myAutoImports = null;
@@ -82,8 +78,7 @@ public class OptimizeImportsHelper {
    * Optimizes project imports. Might take some time.
    * @deprecated use {@link #optimizeProjectImports(Project, ProgressMonitor)} instead
    */
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   public String optimizeProjectImports(Project p) {
     return optimizeProjectImports(p, new EmptyProgressMonitor());
   }
@@ -107,8 +102,7 @@ public class OptimizeImportsHelper {
    * Optimizes imports for a list of models. Might take some time, so please pass the monitor parameter
    * @deprecated use {@link #optimizeModelsImports(List, ProgressMonitor)}
    */
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   @NotNull
   public String optimizeModelsImports(List<SModel> modelsToOptimize) {
     return optimizeModelsImports(modelsToOptimize, new EmptyProgressMonitor());

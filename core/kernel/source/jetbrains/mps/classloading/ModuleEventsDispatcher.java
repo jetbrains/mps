@@ -83,6 +83,9 @@ public class ModuleEventsDispatcher implements WriteActionListener {
     }
   }
 
+  /**
+   * requires exclusive (write) access to CL repository
+   */
   public boolean flush() {
     final List<SRepositoryEvent> batchedEvents = myBatchEventsProcessor.flush();
     if (batchedEvents.isEmpty()) return false;

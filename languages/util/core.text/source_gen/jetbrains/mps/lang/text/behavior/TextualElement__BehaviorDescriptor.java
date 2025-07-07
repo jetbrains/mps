@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -28,9 +27,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class TextualElement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
 
-  public static final SMethod<String> getTextualRepresentation_id69wk_bF5sg9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("69wk_bF5sg9").build();
-  public static final SMethod<SNode> findPreviousWordStart_id3VJiP1sDlYQ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findPreviousWordStart").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3VJiP1sDlYQ").build();
-  public static final SMethod<SNode> findNextWordEnd_id3VJiP1sDz5g = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findNextWordEnd").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3VJiP1sDz5g").build();
+  public static final SMethod<String> getTextualRepresentation_id69wk_bF5sg9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7088756329566028809L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<SNode> findPreviousWordStart_id3VJiP1sDlYQ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findPreviousWordStart").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4534926158309187510L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<SNode> findNextWordEnd_id3VJiP1sDz5g = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findNextWordEnd").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4534926158309241168L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_id69wk_bF5sg9, findPreviousWordStart_id3VJiP1sDlYQ, findNextWordEnd_id3VJiP1sDz5g);
 
@@ -38,11 +37,7 @@ public final class TextualElement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode findPreviousWordStart_id3VJiP1sDlYQ(@NotNull SNode __thisNode__) {
-    SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(__thisNode__, false), CONCEPTS.TextualElement$9C)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd)) || Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$kd), PROPS.value$X7Tp), " ");
-      }
-    }).last();
+    SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(__thisNode__, false), CONCEPTS.TextualElement$9C)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd)) || Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$kd), PROPS.value$X7Tp), " ")).last();
     if ((closest == null)) {
       return SNodeOperations.as(ListSequence.fromList(SNodeOperations.getPrevSiblings(__thisNode__, true)).first(), CONCEPTS.TextualElement$9C);
     } else {
@@ -53,11 +48,7 @@ public final class TextualElement__BehaviorDescriptor extends BaseBHDescriptor {
     if ((SNodeOperations.getNextSibling(__thisNode__) == null)) {
       return __thisNode__;
     }
-    SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(__thisNode__, false), CONCEPTS.TextualElement$9C)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd)) || Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$kd), PROPS.value$X7Tp), " ");
-      }
-    }).first();
+    SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(__thisNode__, false), CONCEPTS.TextualElement$9C)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd)) || Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$kd), PROPS.value$X7Tp), " ")).first();
     if ((closest == null)) {
       return SNodeOperations.as(ListSequence.fromList(SNodeOperations.getNextSiblings(__thisNode__, false)).last(), CONCEPTS.TextualElement$9C);
     } else {

@@ -15,7 +15,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class DeclarationFactories {
   public static class NodeFactory_850862791448416028 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.LinkDeclaration$1p)) {
         SNode sampleLink = SNodeOperations.cast(sampleNode, CONCEPTS.LinkDeclaration$1p);
         SPropertyOperations.assignEnum(newNode, PROPS.metaClass$PeKc, SPropertyOperations.getEnum(sampleLink, PROPS.metaClass$PeKc));
@@ -26,7 +26,7 @@ public class DeclarationFactories {
     }
   }
   public static class NodeFactory_850862791450337452 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.PropertyDeclaration$1S)) {
         SNode sampleProperty = SNodeOperations.cast(sampleNode, CONCEPTS.PropertyDeclaration$1S);
         SLinkOperations.setTarget(newNode, LINKS.dataType$5j5Y, SLinkOperations.getTarget(sampleProperty, LINKS.dataType$5j5Y));

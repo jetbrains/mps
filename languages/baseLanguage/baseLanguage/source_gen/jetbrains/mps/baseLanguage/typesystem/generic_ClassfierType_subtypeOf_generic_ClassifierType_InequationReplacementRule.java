@@ -22,7 +22,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.typesystem.runtime.HUtil;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -43,7 +43,7 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
     {
       SNode coercedNode_e5spwb_c0a = TypecheckingFacade.getFromContext().coerceType(subtype, CONCEPTS.ClassifierType$bL);
       if (coercedNode_e5spwb_c0a != null) {
-        if (!(((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(coercedNode_e5spwb_c0a, LINKS.classifier$cxMr), SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr))))) {
+        if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(coercedNode_e5spwb_c0a, LINKS.classifier$cxMr), SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr)))) {
           return false;
         }
         if (SLinkOperations.getTarget(coercedNode_e5spwb_c0a, LINKS.classifier$cxMr) == SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr)) {
@@ -196,13 +196,13 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
               result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isStrongSubtype((SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H), (SNode) leftParam);
             }
           } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.LowerBoundType$nl)) {
-            result_14532009 = result_14532009 && MatchingUtil.matchNodes((SNode) rightParam, (SNode) leftParam);
+            result_14532009 = result_14532009 && new SNodeMatcher().match((SNode) rightParam, (SNode) leftParam);
           } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.WildCardType$uV)) {
             // nothing to do
           } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
-            result_14532009 = result_14532009 && MatchingUtil.matchNodes((SNode) leftParam, (SNode) rightParam);
+            result_14532009 = result_14532009 && new SNodeMatcher().match((SNode) leftParam, (SNode) rightParam);
           } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
-            result_14532009 = result_14532009 && MatchingUtil.matchNodes((SNode) leftParam, (SNode) rightParam);
+            result_14532009 = result_14532009 && new SNodeMatcher().match((SNode) leftParam, (SNode) rightParam);
           } else {
             // TODO this is actually an equivalence relation
             result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) leftParam, (SNode) rightParam);

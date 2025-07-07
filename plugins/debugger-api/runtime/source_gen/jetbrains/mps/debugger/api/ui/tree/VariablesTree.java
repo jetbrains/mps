@@ -29,7 +29,6 @@ import jetbrains.mps.debug.api.programState.WatchablesCategory;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.debug.api.programState.Watchable2;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -44,6 +43,7 @@ import jetbrains.mps.ide.messages.Icons;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.tree.TreePath;
 import org.jetbrains.annotations.NonNls;
+import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 
 @GeneratedClass(node = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)/4474271214083118048", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
@@ -98,7 +98,7 @@ public class VariablesTree extends MPSTree implements DataProvider {
     Map<WatchablesCategory, Map<SNodeReference, List<IWatchable>>> nodeToVarsMapByCategory = MapSequence.fromMap(new HashMap<WatchablesCategory, Map<SNodeReference, List<IWatchable>>>());
     for (IWatchable watchable : watchables) {
       WatchablesCategory category = watchable.getCategory();
-      SNodeReference node = (watchable instanceof Watchable2 ? ((Watchable2) watchable).getSourceNode() : ((watchable.getNode() == null ? null : watchable.getNode().getReference())));
+      SNodeReference node = watchable.getSourceNode();
       if (node == null) {
         List<IWatchable> orphanes = MapSequence.fromMap(orphanesByCategory).get(category);
         if (orphanes == null) {
@@ -188,20 +188,22 @@ public class VariablesTree extends MPSTree implements DataProvider {
   @Override
   @Nullable
   public Object getData(@NonNls String dataId) {
-    if (MPSCommonDataKeys.NODE.is(dataId)) {
-      AbstractWatchableNode selectedNode = findSelectedNode();
-      if (selectedNode != null && selectedNode.getNode() != null) {
-        return selectedNode.getNode().resolve(ProjectHelper.getProjectRepository(getProject()));
+    AbstractWatchableNode selectedNode = findSelectedNode();
+    if (selectedNode == null) {
+      return null;
+    }
+
+    if (SNodeActionData.KEY.is(dataId)) {
+      SNodeReference node = selectedNode.getNode();
+      if (node != null) {
+        return SNodeActionData.from(node);
       }
     } else if (MPS_DEBUGGER_VALUE.is(dataId)) {
-      AbstractWatchableNode selectedNode = findSelectedNode();
-      if (selectedNode != null) {
-        if (selectedNode instanceof WatchableNode) {
-          return ((WatchableNode) selectedNode).getValue();
-        }
+      if (selectedNode instanceof WatchableNode) {
+        return ((WatchableNode) selectedNode).getValue();
       }
     } else if (MPSCommonDataKeys.TREE_NODE.is(dataId)) {
-      return findSelectedNode();
+      return selectedNode;
     }
     return null;
   }

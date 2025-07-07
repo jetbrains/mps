@@ -87,7 +87,7 @@ public abstract class AbstractMapSequence<U, V> extends AbstractSequence<IMappin
   }
   @Override
   public boolean isNotEmpty() {
-    return !((map.isEmpty()));
+    return !(map.isEmpty());
   }
   @Override
   public Iterator<IMapping<U, V>> iterator() {

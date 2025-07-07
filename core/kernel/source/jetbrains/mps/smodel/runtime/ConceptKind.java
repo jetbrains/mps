@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,27 @@
 package jetbrains.mps.smodel.runtime;
 
 /**
- *
+ * Mechanism to strip/hide implementation of a language.
  */
 public enum ConceptKind {
+  // no idea what's the difference with INTERFACE, except for special treatment
   NORMAL,
+  /**
+   * concepts that are fully visible in the generated models
+   */
   INTERFACE,
+  /**
+   * concept instances get removed from the generated models
+   */
   IMPLEMENTATION,
+  /**
+   * concept instances get replaced with stubs that may indicate hidden implementation (by means of a custom editor)
+   */
   IMPLEMENTATION_WITH_STUB
+
+
+  /*
+     ImplNote: in binary persistence, there are 3 bits available to store ordinal of the member.
+     I don't expect this enum to grow, but just in case it does, keep in mind that up to 8 members is ok
+   */
 }

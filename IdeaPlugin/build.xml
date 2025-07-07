@@ -20,7 +20,7 @@
         ant -Dhome.idea_ce={IDEA_HOME_DIR} -Dhome.idea_ce.plugins={IDEA_PLUGINS_FOLDER} <task>
 
         e.g. for MacOs it will be:
-        ant -Dhome.idea_ce=/Applications/IntelliJ\ IDEA\ CE\ 2021.1.app/Contents/ -Dhome.idea_ce.plugins=~/Library/Application Support/IdeaIC2021.1 <task>
+        ant -Dhome.idea_ce=/Applications/IntelliJ\ IDEA\ CE\ 2023.2.app/Contents/ -Dhome.idea_ce.plugins=~/Library/Application Support/IdeaIC2023.2 <task>
 
      2. To run tests locally, it's sufficient to set home.idea_ce and home.jdk:
         ant -Dhome.idea_ce=/IDEAXX/ -Dhome.jdk=/Library/Java/Home/ -f IdeaPlugin/build.xml clean zip runTests
@@ -77,10 +77,10 @@
   </target>
 
   <target name="buildLibs" depends="checkLibs" unless="core.libs.found">
-    <antcall target="copyLibsFromLocalBuild"/>
+    <antcall target="buildLocalAndCopy"/>
   </target>
 
-  <target name="copyLibsFromLocalBuild" depends="buildCore, buildTests, loadIdeaPathVar">
+  <target name="buildLocalAndCopy" depends="buildCore, buildTests, loadIdeaPathVar">
     <mkdir dir="${base_dir}/IdeaPlugin/mps-core/lib"/>
     <copy todir="${base_dir}/IdeaPlugin/mps-core/lib">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsBootstrapCore/lib"/>
@@ -97,19 +97,15 @@
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsBootstrapCore/languages"/>
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsCore/mps-core/languages"/>
     </copy>
-    <copy todir="${base_dir}/IdeaPlugin/mps-java/META-INF">
-      <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsJavaPlatform/META-INF">
-        <include name="**/*.xml"/>
-      </fileset>
-    </copy>
     <copy todir="${base_dir}/IdeaPlugin/mps-java/lib">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsJavaPlatform/lib">
         <include name="**/*.jar"/>
       </fileset>
     </copy>
-    <copy todir="${base_dir}/IdeaPlugin/mps-vcs/META-INF">
-      <file file="${base_dir}/IdeaPlugin/build/artifacts/mpsIdeaVcs/mps-vcs/META-INF/MPSVcs.xml"/>
-      <file file="${base_dir}/IdeaPlugin/build/artifacts/mpsIdeaVcs/mps-vcs/META-INF/MPSVcsGit.xml"/>
+    <copy todir="${base_dir}/IdeaPlugin/mps-java/">
+      <zipfileset src="${base_dir}/IdeaPlugin/build/artifacts/mpsJavaPlatform/lib/java-platform.jar">
+        <include name="META-INF/*.xml"/>
+      </zipfileset>
     </copy>
     <mkdir dir="${base_dir}/IdeaPlugin/mps-vcs/languages"/>
     <copy todir="${base_dir}/IdeaPlugin/mps-vcs/languages">
@@ -126,14 +122,27 @@
     <copy todir="${base_dir}/IdeaPlugin/mps-migration/META-INF">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsMigrationCore/migration-platform/META-INF"/>
     </copy>
+    <copy todir="${base_dir}/IdeaPlugin/mps-junit5">
+      <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsTesting/mps-junit5"/>
+    </copy>
     <copy todir="${base_dir}/IdeaPlugin/mps-testing">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsTesting/mps-testing"/>
     </copy>
     <copy todir="${base_dir}/IdeaPlugin/mps.editor.tests">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsEditorTestsPlugin/mps.editor.tests"/>
     </copy>
+    <!--
+      Developers with IDEA for macOS have build.txt under <app>/Contents/Resources/, whereas
+      Linux and Windows keep this file as a sibling to bin/, lib/ and plugins/
+    -->
+    <condition property="idea-build-txt-location" value="${ideaPath}/Resources/build.txt" else="${ideaPath}/build.txt">
+      <and>
+        <os family="mac"/>
+        <os family="unix"/>
+      </and>
+    </condition>
     <copy todir="${base_dir}/IdeaPlugin/idea_home" failonerror="false" overwrite="true">
-      <file file="${ideaPath}/build.txt"/>
+      <file file="${idea-build-txt-location}"/>
     </copy>
   </target>
 
@@ -144,6 +153,9 @@
     <copy todir="${base_dir}/IdeaPlugin/mps-core/languages">
       <fileset dir="${ideaPlugins}/mps-core/languages"/>
     </copy>
+    <copy todir="${base_dir}/IdeaPlugin/mps-junit5">
+      <fileset dir="${ideaPlugins}/mps-junit5"/>
+    </copy>
     <copy todir="${base_dir}/IdeaPlugin/mps-testing">
       <fileset dir="${ideaPlugins}/mps-testing"/>
     </copy>
@@ -153,13 +165,14 @@
     <copy todir="${base_dir}/IdeaPlugin/mps-vcs/lib">
       <fileset dir="${ideaPlugins}/mps-vcs/lib"/>
     </copy>
+    <!-- XXX why there's no copy for mps-migration libraries?! -->
   </target>
 
-  <target name="clean" depends="cleanLibs, cleanSendbox">
+  <target name="clean" depends="cleanLibs, cleanSandbox">
     <delete dir="${build.home}"/>
   </target>
 
-  <target name="cleanSendbox">
+  <target name="cleanSandbox">
     <delete dir="${sandbox.dir}"/>
   </target>
 
@@ -170,8 +183,6 @@
     <delete file="${base_dir}/IdeaPlugin/mps-java/META-INF/JavaPlatform.xml"/>
     <delete dir="${base_dir}/IdeaPlugin/mps-java/META-INF/platform"/>
     <delete dir="${base_dir}/IdeaPlugin/mps-java/lib"/>
-    <delete file="${base_dir}/IdeaPlugin/mps-vcs/META-INF/MPSVcs.xml"/>
-    <delete file="${base_dir}/IdeaPlugin/mps-vcs/META-INF/MPSVcsGit.xml"/>
     <delete dir="${base_dir}/IdeaPlugin/mps-vcs/languages"/>
     <delete dir="${base_dir}/IdeaPlugin/mps-vcs/lib"/>
     <delete includeemptydirs="true">
@@ -293,20 +304,60 @@
       <jvmarg value="-Xmx1024m"/>
       <jvmarg value="${junit.debug.arg}"/>
       <jvmarg value="-Didea.log.perf.stats=false"/>
+      <jvmarg value="--add-opens=java.base/java.io=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.net=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.nio=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.nio.charset=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.text=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.time=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.util=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/sun.security.ssl=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/sun.security.util=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.event=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.image=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/javax.swing=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/com.apple.laf=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED" />
       <formatter type="xml"/>
+      <sysproperty key="idea.force.use.core.classloader" value="true"/>
+      <sysproperty key="jna.boot.library.path" value="${ideaPath}/lib/jna/${os.arch}"/>
       <sysproperty key="jdk.home.path" value="${jdkPath}"/>
       <sysproperty key="idea.platform.prefix" value="Idea"/>
       <sysproperty key="idea.config.path" value="${test.platform.sandbox.dir}/config"/>
       <sysproperty key="idea.system.path" value="${test.platform.sandbox.dir}/system"/>
       <sysproperty key="idea.plugins.path" value="${test.platform.sandbox.dir}/plugins"/>
       <sysproperty key="idea.log.path" value="${test.platform.sandbox.dir}/log"/>
-      <sysproperty key="idea.home.path" value="${base_dir}/IdeaPlugin/idea_home"/>
+      <sysproperty key="idea.home.path" value="${ideaPath}"/>
+      <sysproperty key="java.system.class.loader" value="com.intellij.util.lang.PathClassLoader"/>
       <sysproperty key="idea.load.plugins.id" value="jetbrains.mps.core,jetbrains.mps.testing,jetbrains.mps.idea.java,com.intellij.java"/>
       <sysproperty key="idea.launcher.bin.path" value="${ideaPath}/bin"/>
       <sysproperty key="file.encoding" value="UTF-8"/>
       <classpath>
         <fileset dir="${ideaPath}/lib">
           <include name="**/*.jar"/>
+          <exclude name="frontend/**"/>
         </fileset>
         <fileset dir="${ideaPath}/plugins/java/lib">
           <include name="**/*.jar"/>
@@ -335,14 +386,53 @@
       <jvmarg value="-Xmx1024m"/>
       <jvmarg value="${junit.debug.arg}"/>
       <jvmarg value="-Didea.log.perf.stats=false"/>
+      <jvmarg value="--add-opens=java.base/java.io=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.net=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.nio=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.nio.charset=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.text=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.time=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.util=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/sun.security.ssl=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/sun.security.util=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.event=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.image=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/javax.swing=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/com.apple.laf=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED" />
       <formatter type="xml"/>
+      <sysproperty key="idea.force.use.core.classloader" value="true"/>
+      <sysproperty key="jna.boot.library.path" value="${ideaPath}/lib/jna/${os.arch}"/>
       <sysproperty key="jdk.home.path" value="${jdkPath}"/>
       <sysproperty key="idea.platform.prefix" value="Idea"/>
       <sysproperty key="idea.config.path" value="${test.platform.sandbox.dir}/config"/>
       <sysproperty key="idea.system.path" value="${test.platform.sandbox.dir}/system"/>
       <sysproperty key="idea.plugins.path" value="${test.platform.sandbox.dir}/plugins"/>
       <sysproperty key="idea.log.path" value="${test.platform.sandbox.dir}/log"/>
-      <sysproperty key="idea.home.path" value="${base_dir}/IdeaPlugin/idea_home"/>
+      <sysproperty key="idea.home.path" value="${ideaPath}"/>
+      <sysproperty key="java.system.class.loader" value="com.intellij.util.lang.PathClassLoader"/>
       <sysproperty key="idea.load.plugins.id" value="jetbrains.mps.core,com.intellij.java"/>
       <sysproperty key="idea.launcher.bin.path" value="${ideaPath}/bin"/>
       <sysproperty key="file.encoding" value="UTF-8"/>
@@ -352,6 +442,7 @@
       <classpath>
         <fileset dir="${ideaPath}/lib">
           <include name="**/*.jar"/>
+          <exclude name="frontend/**"/>
         </fileset>
         <fileset dir="${ideaPath}/plugins/java/lib">
           <include name="**/*.jar"/>
@@ -374,23 +465,60 @@
       <jvmarg value="-Xmx1024m"/>
       <jvmarg value="${junit.debug.arg}"/>
       <jvmarg value="-Didea.log.perf.stats=false"/>
+      <jvmarg value="--add-opens=java.base/java.io=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.net=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.nio=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.nio.charset=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.text=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.time=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.util=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/sun.security.ssl=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/sun.security.util=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.event=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.image=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/javax.swing=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/com.apple.laf=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED" />
       <formatter type="xml"/>
+      <sysproperty key="idea.force.use.core.classloader" value="true"/>
+      <sysproperty key="jna.boot.library.path" value="${ideaPath}/lib/jna/${os.arch}"/>
       <sysproperty key="jdk.home.path" value="${jdkPath}"/>
       <sysproperty key="file.encoding" value="UTF-8"/>
       <sysproperty key="idea.system.path" value="${test.platform.sandbox.jps}/system"/>
       <sysproperty key="idea.log.path" value="${test.platform.sandbox.jps}/log"/>
-      <sysproperty key="idea.home.path" value="${base_dir}/IdeaPlugin/idea_home"/>
+      <sysproperty key="idea.home.path" value="${ideaPath}"/>
+      <sysproperty key="java.system.class.loader" value="com.intellij.util.lang.PathClassLoader"/>
 
       <classpath>
         <fileset dir="${ideaPath}/lib">
           <include name="**/*.jar"/>
+          <exclude name="frontend/**"/>
           <exclude name="rt/jps-plugin-system.jar"/>
         </fileset>
         <fileset dir="${ideaPath}/plugins/java/lib">
           <include name="**/*.jar"/>
-        </fileset>
-        <fileset dir="${ideaPath}/plugins/devkit/lib">
-          <include name="devkit-jps.jar"/>
         </fileset>
         <!-- all JPS jars as specified in plugin.xmlS -->
         <pathelement path="${jps.classpath}"/>
@@ -404,26 +532,65 @@
       <test name="jetbrains.mps.jps.make.tests.JpsMakeTestSuite"/>
     </junit>
 
-    <junit fork="true"
+    <java classname="jetbrains.mps.idea.core.tests.PluginsTestSuite"
+            fork="true"
            dir="."
-           haltonfailure="false"
-           showoutput="true"
-           enableTestListenerEvents="false">
+           failonerror="false">
+      <redirector alwayslog="true"/>
       <jvmarg value="-ea"/>
       <jvmarg value="-Xss1024k"/>
       <jvmarg value="-Xmx1024m"/>
       <jvmarg value="${junit.debug.arg}"/>
       <jvmarg value="-Didea.log.perf.stats=false"/>
-      <formatter type="xml"/>
+      <jvmarg value="--add-opens=java.base/java.io=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.net=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.nio=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.nio.charset=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.text=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.time=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.util=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/sun.security.ssl=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.base/sun.security.util=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.event=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.image=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/javax.swing=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED" /> <!-- only here as other suites pass ok w/o this line-->
+      <jvmarg value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/com.apple.laf=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED" />
+      <sysproperty key="idea.force.use.core.classloader" value="true"/>
+      <sysproperty key="jna.boot.library.path" value="${ideaPath}/lib/jna/${os.arch}"/>
       <sysproperty key="jdk.home.path" value="${jdkPath}"/>
       <sysproperty key="idea.platform.prefix" value="Idea"/>
       <sysproperty key="idea.config.path" value="${test.platform.sandbox.dir}/config"/>
       <sysproperty key="idea.system.path" value="${test.platform.sandbox.dir}/system"/>
       <sysproperty key="idea.plugins.path" value="${test.platform.sandbox.dir}/plugins"/>
       <sysproperty key="idea.log.path" value="${test.platform.sandbox.dir}/log"/>
-      <sysproperty key="idea.home.path" value="${base_dir}/IdeaPlugin/idea_home"/>
+      <sysproperty key="idea.home.path" value="${ideaPath}"/>
+      <sysproperty key="java.system.class.loader" value="com.intellij.util.lang.PathClassLoader"/>
       <sysproperty key="idea.load.plugins.id"
-                   value="jetbrains.mps.core,jetbrains.mps.testing,jetbrains.mps.lang.editor.tests,com.intellij.java"/>
+                   value="jetbrains.mps.core,jetbrains.mps.ide,jetbrains.mps.junit5,jetbrains.mps.testing,jetbrains.mps.lang.editor.tests,com.intellij.java"/>
       <sysproperty key="idea.launcher.bin.path" value="${ideaPath}/bin"/>
       <sysproperty key="file.encoding" value="UTF-8"/>
       <!-- TODO: remove property after investigation and fix MPS-25217 -->
@@ -433,12 +600,18 @@
                    value="jetbrains.mps.lang.editor.tests,jetbrains.mps.lang.editor.multiple.tests,jetbrains.mps.console.test,jetbrains.mps.lang.actions.test,jetbrains.mps.lang.editor.table.tests,jetbrains.mps.baseLanguage.test"/>
       <classpath>
         <fileset dir="${ideaPath}/lib">
+          <exclude name="junit.jar"/>
           <include name="**/*.jar"/>
+          <exclude name="frontend/**"/>
         </fileset>
         <fileset dir="${ideaPath}/plugins/java/lib">
           <include name="**/*.jar"/>
         </fileset>
         <fileset dir="${test.platform.sandbox.dir}/plugins/mps-core/lib">
+          <include name="*.jar"/>
+          <include name="mpsant/mps-tool.jar"/>
+        </fileset>
+        <fileset dir="${test.platform.sandbox.dir}/plugins/mps-junit5/lib">
           <include name="*.jar"/>
         </fileset>
         <fileset dir="${test.platform.sandbox.dir}/plugins/mps-testing/lib">
@@ -446,8 +619,7 @@
         </fileset>
         <pathelement path="${java.class.path}"/>
       </classpath>
-      <test name="jetbrains.mps.idea.core.tests.PluginsTestSuite"/>
-    </junit>
+    </java>
   </target>
 
   <target name="zip" depends="loadIdeaPathVar, build">

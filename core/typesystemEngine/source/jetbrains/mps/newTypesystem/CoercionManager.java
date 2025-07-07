@@ -18,7 +18,7 @@ package jetbrains.mps.newTypesystem;
 import gnu.trove.THashSet;
 import jetbrains.mps.lang.pattern.IMatchingPattern;
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
 import jetbrains.mps.typesystem.inference.util.SubtypingCache;
@@ -36,12 +36,12 @@ import java.util.List;
 import java.util.Set;
 
 public class CoercionManager {
-  private final TypeChecker myTypeChecker;
+  private final TypeCheckerHelper myTypeCheckerHelper;
   // TODO: why this dependency?
   private final SubTypingManagerNew mySubTyping;
 
-  public CoercionManager(TypeChecker typeChecker, SubTypingManagerNew subTyping) {
-    myTypeChecker = typeChecker;
+  public CoercionManager(TypeCheckerHelper typeCheckerHelper, SubTypingManagerNew subTyping) {
+    myTypeCheckerHelper = typeCheckerHelper;
     mySubTyping = subTyping;
   }
 
@@ -82,7 +82,7 @@ public class CoercionManager {
       CoercionMatcher coercionMatcher = new CoercionMatcher(pattern);
       SNode result = searchInSuperTypes(subtype, coercionMatcher, isWeak);
       //writing to the cache
-      SubtypingCache subtypingCache = myTypeChecker.getSubtypingCache();
+      SubtypingCache subtypingCache = myTypeCheckerHelper.getSubtypingCache();
       if (subtypingCache != null) {
         subtypingCache.cacheCoerce(subtype, pattern, result, isWeak);
       }
@@ -92,7 +92,7 @@ public class CoercionManager {
 
   @Nullable
   Pair<Boolean, SNode> getCoerceCacheAnswer(SNode subtype, IMatchingPattern pattern, boolean isWeak) {
-    SubtypingCache cache = myTypeChecker.getSubtypingCache();
+    SubtypingCache cache = myTypeCheckerHelper.getSubtypingCache();
     if (cache != null) {
       Pair<Boolean, SNode> coerced = cache.getCoerced(subtype, pattern, isWeak);
       if (coerced != null) {

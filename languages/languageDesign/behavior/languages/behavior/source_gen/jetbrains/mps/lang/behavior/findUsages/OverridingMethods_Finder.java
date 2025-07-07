@@ -14,10 +14,10 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.ide.findusages.view.FindUtils;
-import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -62,31 +62,25 @@ public class OverridingMethods_Finder extends GeneratedFinder {
   protected void doFind0(@NotNull SNode node, final SearchScope scope, final IFinder.FindCallback callback, final ProgressMonitor monitor) {
     try {
       monitor.start("Looking for method implementations", 10);
-      FindUtils.searchForResults(monitor.subTask(10), new IFinder.FindCallback() {
-        public void onUsageFound(@NotNull SearchResult<?> searchResult) {
-          SNode nodeParam = (SNode) searchResult.getObject();
-          new _FunctionTypes._void_P1_E0<SNode>() {
-            public void invoke(SNode candidate) {
-              if (SNodeOperations.isInstanceOf(candidate, CONCEPTS.ConceptMethodDeclaration$N0) && SLinkOperations.getTarget(SNodeOperations.cast(candidate, CONCEPTS.ConceptMethodDeclaration$N0), LINKS.overriddenMethod$quKH) == ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(node)) {
+      FindUtils.searchForResults(monitor.subTask(10), (searchResult) -> {
+        SNode nodeParam = (SNode) searchResult.getObject();
+        ((_FunctionTypes._void_P1_E0<SNode>) (SNode candidate) -> {
+          if (SNodeOperations.isInstanceOf(candidate, CONCEPTS.ConceptMethodDeclaration$N0) && SLinkOperations.getTarget(SNodeOperations.cast(candidate, CONCEPTS.ConceptMethodDeclaration$N0), LINKS.overriddenMethod$quKH) == ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(node)) {
 
-                callback.onUsageFound(createSingleResult(candidate));
-                FindUtils.searchForResults(new EmptyProgressMonitor(), new IFinder.FindCallback() {
-                  public void onUsageFound(@NotNull SearchResult<?> searchResult) {
-                    SNode nodeParam = (SNode) searchResult.getObject();
-                    new _FunctionTypes._void_P1_E0<SNode>() {
-                      public void invoke(SNode method) {
-                        if (monitor.isCanceled()) {
-                          return;
-                        }
-                        callback.onUsageFound(createSingleResult(method));
-                      }
-                    }.invoke(nodeParam);
+            callback.onUsageFound(createSingleResult(candidate));
+            FindUtils.searchForResults(new EmptyProgressMonitor(), new IFinder.FindCallback() {
+              public void onUsageFound(SearchResult<?> searchResult) {
+                SNode nodeParam = (SNode) searchResult.getObject();
+                ((_FunctionTypes._void_P1_E0<SNode>) (SNode method) -> {
+                  if (monitor.isCanceled()) {
+                    return;
                   }
-                }, new SearchQuery(candidate, scope), FindUtils.getFinder("jetbrains.mps.lang.behavior.findUsages.OverridingMethods_Finder"));
+                  callback.onUsageFound(createSingleResult(method));
+                }).invoke(nodeParam);
               }
-            }
-          }.invoke(nodeParam);
-        }
+            }, new SearchQuery(candidate, scope), FindUtils.getFinder("jetbrains.mps.lang.behavior.findUsages.OverridingMethods_Finder"));
+          }
+        }).invoke(nodeParam);
       }, new SearchQuery(node, scope), FindUtils.getFinder("jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder"));
     } finally {
       monitor.done();

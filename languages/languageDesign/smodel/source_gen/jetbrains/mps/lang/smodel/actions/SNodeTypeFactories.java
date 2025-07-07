@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class SNodeTypeFactories {
   public static class NodeFactory_8153066124498048370 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode nodeType = sampleNode;
         if (SNodeOperations.isInstanceOf(nodeType, CONCEPTS.SNodeType$hR)) {
@@ -29,7 +29,7 @@ public class SNodeTypeFactories {
     }
   }
   public static class NodeFactory_3320646261220621242 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode nodePointerType = sampleNode;
         if (SNodeOperations.isInstanceOf(nodePointerType, CONCEPTS.SNodePointerType$3X)) {
@@ -45,7 +45,7 @@ public class SNodeTypeFactories {
     }
   }
   public static class NodeFactory_3320646261220827861 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode nodeType = sampleNode;
         if (SNodeOperations.isInstanceOf(nodeType, CONCEPTS.SNodeType$hR)) {

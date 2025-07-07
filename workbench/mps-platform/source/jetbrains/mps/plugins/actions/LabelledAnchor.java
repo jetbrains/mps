@@ -28,6 +28,13 @@ public class LabelledAnchor extends BaseAction {
     myId = id;
   }
 
+  @Deprecated(since = "2021.1", forRemoval = true)
+  public String getId() {
+    // keep this method for at least a year, old generated code for action groups may use it,
+    // need to wait till libraries build with 2020.3 and earlier MPS versions fade away
+    return myId;
+  }
+
   @Override
   public String getActionId() {
     // that's what BaseApplicationPlugin.addAction() uses to identify the action

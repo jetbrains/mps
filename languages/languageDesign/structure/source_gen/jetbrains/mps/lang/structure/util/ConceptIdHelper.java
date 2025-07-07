@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -25,11 +24,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class ConceptIdHelper {
   public static long generateConceptId(@Nullable SModel m, @Nullable final SNode c) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(c));
-    while (ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.AbstractConceptDeclaration$KA)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != c && Objects.equals(SPropertyOperations.getString(it, PROPS.conceptId$rrGe), result.value + "");
-      }
-    })) {
+    while (ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.AbstractConceptDeclaration$KA)).any((it) -> it != c && Objects.equals(SPropertyOperations.getString(it, PROPS.conceptId$rrGe), result.value + ""))) {
       result.value = randomLong();
     }
     return result.value;
@@ -37,11 +32,7 @@ public class ConceptIdHelper {
 
   public static long generateDatatypeId(@Nullable SModel m, @Nullable final SNode c) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(c));
-    while (ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.DataTypeDeclaration$AD)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != c && Objects.equals(SPropertyOperations.getString(it, PROPS.datatypeId$$gBg), result.value + "");
-      }
-    })) {
+    while (ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.DataTypeDeclaration$AD)).any((it) -> it != c && Objects.equals(SPropertyOperations.getString(it, PROPS.datatypeId$$gBg), result.value + ""))) {
       result.value = randomLong();
     }
     return result.value;
@@ -49,11 +40,7 @@ public class ConceptIdHelper {
 
   public static long generatePropertyId(@Nullable SNode c, final SNode p) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(p));
-    while (ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.propertyDeclaration$YUgg)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != p && Objects.equals(SPropertyOperations.getString(it, PROPS.propertyId$m5HU), result.value + "");
-      }
-    })) {
+    while (ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.propertyDeclaration$YUgg)).any((it) -> it != p && Objects.equals(SPropertyOperations.getString(it, PROPS.propertyId$m5HU), result.value + ""))) {
       result.value = randomLong();
     }
     return result.value;
@@ -61,11 +48,7 @@ public class ConceptIdHelper {
 
   public static long generateLinkId(@Nullable SNode c, final SNode l) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(l));
-    while (ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.linkDeclaration$YU1f)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != l && Objects.equals(SPropertyOperations.getString(it, PROPS.linkId$mi9g), result.value + "");
-      }
-    })) {
+    while (ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.linkDeclaration$YU1f)).any((it) -> it != l && Objects.equals(SPropertyOperations.getString(it, PROPS.linkId$mi9g), result.value + ""))) {
       result.value = randomLong();
     }
     return result.value;
@@ -73,11 +56,7 @@ public class ConceptIdHelper {
 
   public static long generateEnumMemberId(@Nullable SNode e, final SNode m) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(m));
-    while (ListSequence.fromList(SLinkOperations.getChildren(e, LINKS.members$wmsL)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != m && Objects.equals(SPropertyOperations.getString(it, PROPS.memberId$LVXV), result.value + "");
-      }
-    })) {
+    while (ListSequence.fromList(SLinkOperations.getChildren(e, LINKS.members$wmsL)).any((it) -> it != m && Objects.equals(SPropertyOperations.getString(it, PROPS.memberId$LVXV), result.value + ""))) {
       result.value = randomLong();
     }
     return result.value;

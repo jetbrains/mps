@@ -39,7 +39,7 @@ import jetbrains.mps.execution.common.editor.RunConfigurations_StyleSheet.operat
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new operationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new operationStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

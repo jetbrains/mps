@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,16 +21,19 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Wrappers for the SConcept hierarchy
  *
  * @author apyshkin
  */
-/*package*/ public abstract class _SAbstractConcept implements AbstractConceptLike {
+public final class _SAbstractConcept implements AbstractConceptLike {
   @NotNull
   private final SAbstractConcept myPeer;
 
-  protected _SAbstractConcept(@NotNull SAbstractConcept peer) {
+  /*package*/ _SAbstractConcept(@NotNull SAbstractConcept peer) {
     myPeer = peer;
   }
 
@@ -45,14 +48,27 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return myPeer.getName();
   }
 
+  public boolean isAbstract() {
+    return myPeer.isAbstract();
+  }
+
+  @NotNull
+  @Override
+  public List<AbstractConceptLike> getImmediateParents() {
+    ArrayList<AbstractConceptLike> rv = new ArrayList<>();
+    for (SInterfaceConcept si : myPeer.getSuperInterfaces()) {
+      rv.add(wrap(si));
+    }
+    SConcept superConcept = myPeer.getSuperConcept();
+    if (superConcept != null) {
+      rv.add(wrap(superConcept));
+    }
+    return rv;
+  }
+
   @NotNull
   public static _SAbstractConcept wrap(@NotNull SAbstractConcept concept) {
-    if (concept instanceof SInterfaceConcept) {
-      return new _SInterfaceConcept((SInterfaceConcept) concept);
-    } else if (concept instanceof SConcept) {
-      return new _SConcept((SConcept) concept);
-    }
-    throw new UnknownConceptException(concept);
+    return new _SAbstractConcept(concept);
   }
 
   @Override
@@ -78,7 +94,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return wrapper.getPeer();
   }
 
-  public final boolean isSubConceptOf(_SAbstractConcept curConcept) {
+  public boolean isSubConceptOf(_SAbstractConcept curConcept) {
     return myPeer.isSubConceptOf(curConcept.getPeer());
   }
 }

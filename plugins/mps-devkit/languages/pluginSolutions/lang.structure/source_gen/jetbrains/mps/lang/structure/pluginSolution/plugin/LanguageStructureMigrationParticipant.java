@@ -26,9 +26,6 @@ import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.SModelInternal;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.annotations.NotNull;
@@ -118,27 +115,17 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
       String refactoringName = session.getRefactoringName();
       String migrationScriptName = (refactoringName == null ? "MigrationScript" : "Migrate_" + NameUtil.toValidCamelIdentifier(refactoringName));
       myRefactoringStep = createPureMigrationScript_kz6lmo_a0d0f01(languageVersion, migrationScriptName + "_" + languageVersion);
-      session.registerChange(new Runnable() {
-        public void run() {
-          SModel migrationModel = LanguageAspect.MIGRATION.getOrCreate(language);
-          SModelInternal sm = (SModelInternal) (SModel) migrationModel;
-          for (SModelReference reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myRefactoringStep, null, true, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
-            public Iterable<SReference> translate(SNode it) {
-              return SNodeOperations.getReferences(it);
-            }
-          }).select(new ISelector<SReference, SModelReference>() {
-            public SModelReference select(SReference it) {
-              return it.getTargetSModelReference();
-            }
-          }).distinct()) {
-            if (!(SModelOperations.getImportedModelUIDs(migrationModel).contains(reference))) {
-              sm.addModelImport(reference);
-            }
+      session.registerChange(() -> {
+        SModel migrationModel = LanguageAspect.MIGRATION.getOrCreate(language);
+        SModelInternal sm = (SModelInternal) (SModel) migrationModel;
+        for (SModelReference reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myRefactoringStep, null, true, new SAbstractConcept[]{})).translate((it) -> SNodeOperations.getReferences(it)).select((it) -> it.getTargetSModelReference()).distinct()) {
+          if (!(SModelOperations.getImportedModelUIDs(migrationModel).contains(reference))) {
+            sm.addModelImport(reference);
           }
-          SPropertyOperations.assign(myRefactoringStep, PROPS.description$l$Pt, myDescription.description);
-          jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(migrationModel, myRefactoringStep);
-          language.setLanguageVersion(languageVersion + 1);
         }
+        SPropertyOperations.assign(myRefactoringStep, PROPS.description$l$Pt, myDescription.description);
+        jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(migrationModel, myRefactoringStep);
+        language.setLanguageVersion(languageVersion + 1);
       });
     }
     public void addPart(@NotNull SNode initialStateNode, @NotNull SNode finalStateNode, SNode specialization) {
@@ -178,43 +165,39 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
   @Override
   public List<List<RefactoringParticipant.Change<SNodeReference, SNodeReference>>> getChanges(final List<SNodeReference> initialStates, final SRepository repository, final List<RefactoringParticipant.Option> selectedOptions, SearchScope searchScope, ProgressMonitor progressMonitor) {
     if (!(ListSequence.fromList(selectedOptions).contains(OPTION))) {
-      return ListSequence.fromList(initialStates).select(new ISelector<SNodeReference, List<RefactoringParticipant.Change<SNodeReference, SNodeReference>>>() {
-        public List<RefactoringParticipant.Change<SNodeReference, SNodeReference>> select(SNodeReference it) {
-          List<RefactoringParticipant.Change<SNodeReference, SNodeReference>> list = ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, SNodeReference>>());
-          return list;
-        }
-      }).toListSequence();
+      return ListSequence.fromList(initialStates).select((it) -> {
+        List<RefactoringParticipant.Change<SNodeReference, SNodeReference>> list = ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, SNodeReference>>());
+        return list;
+      }).toList();
     }
     final boolean updateModelImports = ListSequence.fromList(selectedOptions).contains(UpdateModelImports.OPTION);
 
-    return ListSequence.fromList(initialStates).select(new ISelector<SNodeReference, List<RefactoringParticipant.Change<SNodeReference, SNodeReference>>>() {
-      public List<RefactoringParticipant.Change<SNodeReference, SNodeReference>> select(final SNodeReference initialState) {
-        final Language sourceModule = as_kz6lmo_a0a0a0a0a0a0d0p(check_kz6lmo_a0a0a0a0a3a51(check_kz6lmo_a0a0a0a0a0d0p(SPointerOperations.resolveNode(initialState, repository))), Language.class);
+    return ListSequence.fromList(initialStates).select((final SNodeReference initialState) -> {
+      final Language sourceModule = as_kz6lmo_a0a0a0a0a3a51(check_kz6lmo_a0a0a0a0a3a51(check_kz6lmo_a0a0a0a0a0d0p(SPointerOperations.resolveNode(initialState, repository))), Language.class);
 
-        // todo: write guard migration with 'execute after'
-        RefactoringParticipant.Change<SNodeReference, SNodeReference> change = new MoveNodeRefactoringParticipant.ChangeBase<SNodeReference, SNodeReference>() {
-          public SearchResults getSearchResults() {
-            SearchResults results = new SearchResults();
-            return (sourceModule == null ? results : results.addSearchResult(new SearchResult<SModule>(sourceModule, "migration script")));
+      // todo: write guard migration with 'execute after'
+      RefactoringParticipant.Change<SNodeReference, SNodeReference> change = new MoveNodeRefactoringParticipant.ChangeBase<SNodeReference, SNodeReference>() {
+        public SearchResults getSearchResults() {
+          SearchResults results = new SearchResults();
+          return (sourceModule == null ? results : results.addSearchResult(new SearchResult<SModule>(sourceModule, "migration script")));
+        }
+        public RefactoringParticipant.KeepOldNodes needsToPreserveOldNode() {
+          return RefactoringParticipant.KeepOldNodes.KEEP;
+        }
+        public void confirm(SNodeReference finalState, SRepository repository, RefactoringSession refactoringSession) {
+          SNode sourceNode = SPointerOperations.resolveNode(initialState, repository);
+          Language sourceModule = as_kz6lmo_a0a1a2a0a0d0a0a0d0p(check_kz6lmo_a0a1a2a0a0d0a0a0d0p(check_kz6lmo_a0a0b0c0a0a3a0a0a3a51(sourceNode)), Language.class);
+          SNode targetNode = SPointerOperations.resolveNode(finalState, repository);
+          Language targetModule = as_kz6lmo_a0a3a2a0a0d0a0a0d0p(check_kz6lmo_a0a3a2a0a0d0a0a0d0p(check_kz6lmo_a0a0d0c0a0a3a0a0a3a51(targetNode)), Language.class);
+          if (sourceModule != null && targetModule != null) {
+            MigrationBuilder logBuilder = MigrationBuilder.getBuilder(refactoringSession, sourceModule);
+            myStructureSpecialization.updateMigrationDescription(sourceNode, targetNode, logBuilder);
+            myStructureSpecialization.confirm(selectedOptions, initialState, finalState, repository, logBuilder, updateModelImports);
           }
-          public RefactoringParticipant.KeepOldNodes needsToPreserveOldNode() {
-            return RefactoringParticipant.KeepOldNodes.KEEP;
-          }
-          public void confirm(SNodeReference finalState, SRepository repository, RefactoringSession refactoringSession) {
-            SNode sourceNode = SPointerOperations.resolveNode(initialState, repository);
-            Language sourceModule = as_kz6lmo_a0a1a2a0a0d0a0a0a0a3a51(check_kz6lmo_a0a1a2a0a0d0a0a0d0p(check_kz6lmo_a0a0b0c0a0a3a0a0a3a51(sourceNode)), Language.class);
-            SNode targetNode = SPointerOperations.resolveNode(finalState, repository);
-            Language targetModule = as_kz6lmo_a0a3a2a0a0d0a0a0a0a3a51(check_kz6lmo_a0a3a2a0a0d0a0a0d0p(check_kz6lmo_a0a0d0c0a0a3a0a0a3a51(targetNode)), Language.class);
-            if (sourceModule != null && targetModule != null) {
-              MigrationBuilder logBuilder = MigrationBuilder.getBuilder(refactoringSession, sourceModule);
-              myStructureSpecialization.updateMigrationDescription(sourceNode, targetNode, logBuilder);
-              myStructureSpecialization.confirm(selectedOptions, initialState, finalState, repository, logBuilder, updateModelImports);
-            }
-          }
-        };
-        return (List<RefactoringParticipant.Change<SNodeReference, SNodeReference>>) ListSequence.fromListAndArray(new ArrayList<RefactoringParticipant.Change<SNodeReference, SNodeReference>>(), change);
-      }
-    }).toListSequence();
+        }
+      };
+      return (List<RefactoringParticipant.Change<SNodeReference, SNodeReference>>) ListSequence.fromListAndArray(new ArrayList<RefactoringParticipant.Change<SNodeReference, SNodeReference>>(), change);
+    }).toList();
   }
   private static SModule check_kz6lmo_a0a0a0a0a3a51(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
@@ -252,13 +235,13 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
     }
     return null;
   }
-  private static <T> T as_kz6lmo_a0a0a0a0a0a0d0p(Object o, Class<T> type) {
+  private static <T> T as_kz6lmo_a0a0a0a0a3a51(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_kz6lmo_a0a1a2a0a0d0a0a0a0a3a51(Object o, Class<T> type) {
+  private static <T> T as_kz6lmo_a0a1a2a0a0d0a0a0d0p(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_kz6lmo_a0a3a2a0a0d0a0a0a0a3a51(Object o, Class<T> type) {
+  private static <T> T as_kz6lmo_a0a3a2a0a0d0a0a0d0p(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

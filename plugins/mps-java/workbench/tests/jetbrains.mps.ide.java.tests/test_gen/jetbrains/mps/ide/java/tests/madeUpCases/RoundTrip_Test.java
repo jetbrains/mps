@@ -4,24 +4,21 @@ package jetbrains.mps.ide.java.tests.madeUpCases;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.ide.java.tests.utility.JavaToMpsUtils;
 
 @MPSLaunch
 public class RoundTrip_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(RoundTrip_Test.class, "${mps_home}", "r:62acf462-bd7b-40b0-b72a-892ef900fe37(jetbrains.mps.ide.java.tests.madeUpCases@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(RoundTrip_Test.class, "${mps_home}", "r:62acf462-bd7b-40b0-b72a-892ef900fe37(jetbrains.mps.ide.java.tests.madeUpCases@tests)", false));
 
   public RoundTrip_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -48,6 +45,14 @@ public class RoundTrip_Test extends BaseTransformationTest {
   public void test_VarargMethods() throws Throwable {
     new TestBody(this).test_VarargMethods();
   }
+  @Test
+  public void test_MethodReferences() throws Throwable {
+    new TestBody(this).test_MethodReferences();
+  }
+  @Test
+  public void test_DiamondOp() throws Throwable {
+    new TestBody(this).test_DiamondOp();
+  }
 
   /*package*/ static class TestBody extends BaseTestBody {
 
@@ -55,65 +60,66 @@ public class RoundTrip_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4795297196607456975", "4795297196607508738", "8083368042256391113", "7030568040400121706", "1369191534307039900", "1369191534311251473", "5418740741038055163", "2811173755046273008");
+    }
+
     public void test_Simple() throws Exception {
-      addNodeById("4795297196607456975");
-      addNodeById("4795297196607508738");
-      addNodeById("8083368042256391113");
-      addNodeById("7030568040400121706");
-      addNodeById("1369191534307039900");
-      addNodeById("1369191534311251473");
-      String genCode = JavaToMpsUtils.generateCode(getNodeById("4795297196607508732"));
-      new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getNodeById("4795297196607508732"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("SimpleClass"));
+        new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getAnnotatedNode("SimpleClass"));
+      });
     }
     public void test_Methods() throws Exception {
-      addNodeById("4795297196607456975");
-      addNodeById("4795297196607508738");
-      addNodeById("8083368042256391113");
-      addNodeById("7030568040400121706");
-      addNodeById("1369191534307039900");
-      addNodeById("1369191534311251473");
-      String genCode = JavaToMpsUtils.generateCode(getNodeById("4795297196607508741"));
-      new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getNodeById("4795297196607508741"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("ClassMethods"));
+        new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getAnnotatedNode("ClassMethods"));
+      });
     }
     public void test_Fields() throws Exception {
-      addNodeById("4795297196607456975");
-      addNodeById("4795297196607508738");
-      addNodeById("8083368042256391113");
-      addNodeById("7030568040400121706");
-      addNodeById("1369191534307039900");
-      addNodeById("1369191534311251473");
-      String genCode = JavaToMpsUtils.generateCode(getNodeById("8083368042256391114"));
-      new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getNodeById("8083368042256391114"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("ClassFields"));
+        new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getAnnotatedNode("ClassFields"));
+      });
     }
     public void test_TypeVars() throws Exception {
-      addNodeById("4795297196607456975");
-      addNodeById("4795297196607508738");
-      addNodeById("8083368042256391113");
-      addNodeById("7030568040400121706");
-      addNodeById("1369191534307039900");
-      addNodeById("1369191534311251473");
-      String genCode = JavaToMpsUtils.generateCode(getNodeById("7030568040400121707"));
-      new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getNodeById("7030568040400121707"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("TypeVars"));
+        new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getAnnotatedNode("TypeVars"));
+      });
     }
     public void test_OuterClassThis() throws Exception {
-      addNodeById("4795297196607456975");
-      addNodeById("4795297196607508738");
-      addNodeById("8083368042256391113");
-      addNodeById("7030568040400121706");
-      addNodeById("1369191534307039900");
-      addNodeById("1369191534311251473");
-      String genCode = JavaToMpsUtils.generateCode(getNodeById("1369191534307040156"));
-      new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getNodeById("1369191534307040156"), false);
+      initTestNodes();
+      runWithinCommand(() -> {
+        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("OuterClassThis"));
+        new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getAnnotatedNode("OuterClassThis"), false);
+      });
     }
     public void test_VarargMethods() throws Exception {
-      addNodeById("4795297196607456975");
-      addNodeById("4795297196607508738");
-      addNodeById("8083368042256391113");
-      addNodeById("7030568040400121706");
-      addNodeById("1369191534307039900");
-      addNodeById("1369191534311251473");
-      String genCode = JavaToMpsUtils.generateCode(getNodeById("1369191534311251786"));
-      new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getNodeById("1369191534311251786"), false);
+      initTestNodes();
+      runWithinCommand(() -> {
+        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("VarargMethods"));
+        new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getAnnotatedNode("VarargMethods"), false);
+      });
+    }
+    public void test_MethodReferences() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("MethodRefs"));
+        new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getAnnotatedNode("MethodRefs"), false);
+      });
+    }
+    public void test_DiamondOp() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("DiamondOp"));
+        new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getAnnotatedNode("DiamondOp"), false);
+      });
     }
 
   }

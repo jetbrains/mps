@@ -24,27 +24,20 @@
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
       <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
         <property id="1421157252384165432" name="memberId" index="3tVfz5" />
-        <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
+        <property id="1225118929411" name="build" index="YLPcu" />
+        <property id="1225118933224" name="comment" index="YLQ7P" />
+      </concept>
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
-      </concept>
-      <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old" flags="ng" index="AxPO7">
-        <reference id="1083171729157" name="memberDataType" index="M4eZT" />
-        <child id="1083172003582" name="member" index="M5hS2" />
-      </concept>
-      <concept id="1588368162884797030" name="jetbrains.mps.lang.structure.structure.EnumMigrationInfo" flags="ng" index="2JgGob">
-        <property id="6491077959634662372" name="valueOpMigration" index="3scbB" />
-        <property id="6491077959634650670" name="nameOpMigration" index="3sfsH" />
-        <child id="6491077959632451996" name="oldEnum" index="3lCyv" />
-      </concept>
-      <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old" flags="ig" index="M4N5e">
-        <property id="1083923523172" name="externalValue" index="1uS6qo" />
-        <property id="1083923523171" name="internalValue" index="1uS6qv" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
@@ -85,7 +78,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -500,6 +493,10 @@
       <property role="20kJfa" value="modelsToGenerateBlock" />
       <property role="IQ2ns" value="616550569928923871" />
       <ref role="20lvS9" node="1tqCfgymEov" resolve="ModelsToGenerateClause" />
+      <node concept="asaX9" id="jWK6aBOzMk" role="lGtFl">
+        <property role="YLQ7P" value="to be removed" />
+        <property role="YLPcu" value="2022.3" />
+      </node>
     </node>
     <node concept="1TJgyj" id="1Mi4csyrrJT" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -659,6 +656,10 @@
     <property role="34LRSv" value="models to generate" />
     <property role="EcuMT" value="1682834381185132063" />
     <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+    <node concept="asaX9" id="jWK6aBOwhu" role="lGtFl">
+      <property role="YLQ7P" value="Respective IRefactoring method is not in use" />
+      <property role="YLPcu" value="2022.3" />
+    </node>
   </node>
   <node concept="1TIwiD" id="72p_rFnslum">
     <property role="R5$K7" value="false" />
@@ -679,6 +680,10 @@
     <property role="34LRSv" value="models from usages" />
     <property role="EcuMT" value="4347648036456711197" />
     <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="asaX9" id="jWK6aBNmzt" role="lGtFl">
+      <property role="YLQ7P" value="no-op, just don't use" />
+      <property role="YLPcu" value="2022.3" />
+    </node>
   </node>
   <node concept="1TIwiD" id="3ds86G2J2R_">
     <property role="R5$K7" value="false" />
@@ -732,6 +737,15 @@
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6598645150040036518" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="1TJgyj" id="4xB7mi2rWjH" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="project" />
+      <property role="IQ2ns" value="5217171010854307053" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+      <node concept="t5JxF" id="4xB7mi2rWjP" role="lGtFl">
+        <property role="t5JxN" value="FIXME make mandatory once mbeddr switches to MPS 2022.3" />
+      </node>
     </node>
     <node concept="1TJgyj" id="5Ij6cQ6Zp5Y" role="1TKVEi">
       <property role="20kJfa" value="refactoring" />
@@ -790,59 +804,25 @@
     <property role="3GE5qa" value="Deprecated" />
     <property role="3F6X1D" value="1209559274358" />
     <ref role="1H5jkz" node="3Ftr4R6BFs5" resolve="node" />
-    <node concept="2JgGob" id="3Ftr4R6BFs4" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3fo/by_custom_methods" />
-      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
-      <node concept="AxPO7" id="hAvmtdQ" role="3lCyv">
-        <property role="TrG5h" value="RefactoringTargetKind_Enum" />
-        <property role="3GE5qa" value="Deprecated" />
-        <property role="3F6X1D" value="1209559274358" />
-        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-        <node concept="M4N5e" id="hAvmtdR" role="M5hS2">
-          <property role="1uS6qo" value="node" />
-        </node>
-        <node concept="M4N5e" id="hAvmDMm" role="M5hS2">
-          <property role="1uS6qv" value="model" />
-          <property role="1uS6qo" value="model" />
-        </node>
-        <node concept="M4N5e" id="hAYDNUR" role="M5hS2">
-          <property role="1uS6qv" value="language" />
-          <property role="1uS6qo" value="language" />
-        </node>
-        <node concept="M4N5e" id="hAYDOvK" role="M5hS2">
-          <property role="1uS6qv" value="solution" />
-          <property role="1uS6qo" value="solution" />
-        </node>
-        <node concept="M4N5e" id="hAYDOKQ" role="M5hS2">
-          <property role="1uS6qv" value="devkit" />
-          <property role="1uS6qo" value="devkit" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFs5" role="25R1y">
       <property role="TrG5h" value="node" />
       <property role="3tVfz5" value="1209559274359" />
-      <ref role="2wpffI" node="hAvmtdR" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFs6" role="25R1y">
       <property role="TrG5h" value="model" />
       <property role="3tVfz5" value="1209559325846" />
-      <ref role="2wpffI" node="hAvmDMm" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFs7" role="25R1y">
       <property role="TrG5h" value="language" />
       <property role="3tVfz5" value="1210084441783" />
-      <ref role="2wpffI" node="hAYDNUR" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFs8" role="25R1y">
       <property role="TrG5h" value="solution" />
       <property role="3tVfz5" value="1210084444144" />
-      <ref role="2wpffI" node="hAYDOvK" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFs9" role="25R1y">
       <property role="TrG5h" value="devkit" />
       <property role="3tVfz5" value="1210084445238" />
-      <ref role="2wpffI" node="hAYDOKQ" />
     </node>
   </node>
 </model>

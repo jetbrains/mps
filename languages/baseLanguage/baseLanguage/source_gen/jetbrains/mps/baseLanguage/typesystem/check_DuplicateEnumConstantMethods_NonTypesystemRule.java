@@ -9,9 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -29,19 +27,13 @@ public class check_DuplicateEnumConstantMethods_NonTypesystemRule extends Abstra
   public check_DuplicateEnumConstantMethods_NonTypesystemRule() {
   }
   public void applyRule(final SNode enumConstant, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$pGvv)).visitAll(new IVisitor<SNode>() {
-      public void visit(final SNode method) {
-        final String erasureSignature = BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(method);
-        SNode foundDuplicate = ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$pGvv)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode other) {
-            return other != method && Objects.equals(SPropertyOperations.getString(other, PROPS.name$MnvL), SPropertyOperations.getString(method, PROPS.name$MnvL)) && erasureSignature.equals(BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(other));
-          }
-        });
-        if ((foundDuplicate != null)) {
-          {
-            final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "method has duplicate erasure with " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(SNodeOperations.getParent(enumConstant), CONCEPTS.EnumClass$Vk)) + "." + SPropertyOperations.getString(enumConstant, PROPS.name$MnvL) + "." + SPropertyOperations.getString(foundDuplicate, PROPS.name$MnvL) + "(" + BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(foundDuplicate) + ")", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8960718351576519802", null, errorTarget);
-          }
+    ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$pGvv)).visitAll((final SNode method) -> {
+      final String erasureSignature = BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(method);
+      SNode foundDuplicate = ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$pGvv)).findFirst((other) -> other != method && Objects.equals(SPropertyOperations.getString(other, PROPS.name$MnvL), SPropertyOperations.getString(method, PROPS.name$MnvL)) && erasureSignature.equals(BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(other)));
+      if ((foundDuplicate != null)) {
+        {
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "method has duplicate erasure with " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(SNodeOperations.getParent(enumConstant), CONCEPTS.EnumClass$Vk)) + "." + SPropertyOperations.getString(enumConstant, PROPS.name$MnvL) + "." + SPropertyOperations.getString(foundDuplicate, PROPS.name$MnvL) + "(" + BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(foundDuplicate) + ")", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8960718351576519802", null, errorTarget);
         }
       }
     });

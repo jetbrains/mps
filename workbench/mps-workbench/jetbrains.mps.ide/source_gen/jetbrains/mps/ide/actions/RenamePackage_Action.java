@@ -7,16 +7,15 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import javax.swing.tree.TreeNode;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
-import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
+import jetbrains.mps.ide.ui.tree.ContextValueProvider;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import java.awt.Frame;
-import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import javax.swing.JOptionPane;
+import com.intellij.openapi.ui.Messages;
+import com.intellij.icons.AllIcons;
 import java.util.Collection;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import java.util.Collections;
@@ -41,7 +40,7 @@ public class RenamePackage_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((TreeNode) MapSequence.fromMap(_params).get("ppNode")) instanceof PackageNode && ((PackageNode) ((TreeNode) MapSequence.fromMap(_params).get("ppNode"))).getAncestor(SModelTreeNode.class) != null;
+    return ((ContextValueProvider) event.getData(MPSCommonDataKeys.USER_OBJECT)).contextValueOfType(SModel.class).isPresent();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -54,22 +53,31 @@ public class RenamePackage_Action extends BaseAction {
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
     }
     {
       Frame p = event.getData(MPSCommonDataKeys.FRAME);
-      MapSequence.fromMap(_params).put("frame", p);
       if (p == null) {
         return false;
       }
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
-      MapSequence.fromMap(_params).put("ppNode", p);
+      Object p = event.getData(MPSCommonDataKeys.VALUE);
       if (p == null) {
+        return false;
+      }
+      if (p != null && !(p instanceof VirtualFolder.Nodes)) {
+        return false;
+      }
+    }
+    {
+      Object p = event.getData(MPSCommonDataKeys.USER_OBJECT);
+      if (p == null) {
+        return false;
+      }
+      if (p != null && !(p instanceof ContextValueProvider)) {
         return false;
       }
     }
@@ -77,45 +85,42 @@ public class RenamePackage_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    PackageNode treeNode = (PackageNode) ((TreeNode) MapSequence.fromMap(_params).get("ppNode"));
-    final SModel model = treeNode.getAncestor(SModelTreeNode.class).getModel();
+    final SModel model = ((ContextValueProvider) event.getData(MPSCommonDataKeys.USER_OBJECT)).contextValueOfType(SModel.class).get();
     if (model == null) {
       return;
     }
-    final String packageName = treeNode.getPackage();
-    ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-    final String newName = JOptionPane.showInputDialog(((Frame) MapSequence.fromMap(_params).get("frame")), "Enter New Package Name", packageName);
+    final String packageName = ((VirtualFolder.Nodes) event.getData(MPSCommonDataKeys.VALUE)).getName();
+    ModelAccess modelAccess = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess();
+    final String newName = (String) Messages.showInputDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), "Enter virtual folder name", "Rename Virtual Folder", AllIcons.General.InformationDialog, packageName, null);
     if (newName == null) {
       return;
     }
 
-    modelAccess.executeCommandInEDT(new Runnable() {
-      public void run() {
-        final Collection<SModel> modelsToConsider;
-        if (LanguageAspectSupport.isAspectModel(model)) {
-          // the idea is to change package name in all aspect models simultaneously if we rename a package in an aspect model
-          modelsToConsider = LanguageAspectSupport.getAspectModels(model.getModule());
-        } else {
-          modelsToConsider = Collections.singleton(model);
-        }
-        ArrayList<SNode> nodesUnderPackage = new ArrayList<SNode>();
-        for (SModel am : modelsToConsider) {
-          for (SNode root : am.getRootNodes()) {
-            String rootPack = SPropertyOperations.getString(root, PROPS.virtualPackage$EkXl);
-            if (rootPack != null && rootPack.startsWith(packageName)) {
-              assert rootPack.length() >= packageName.length();
-              if (rootPack.length() == packageName.length() || rootPack.charAt(packageName.length()) == '.') {
-                nodesUnderPackage.add(root);
-              }
+    modelAccess.executeCommandInEDT(() -> {
+      final Collection<SModel> modelsToConsider;
+      if (LanguageAspectSupport.isAspectModel(model)) {
+        // the idea is to change package name in all aspect models simultaneously if we rename a package in an aspect model
+        modelsToConsider = LanguageAspectSupport.getAspectModels(model.getModule());
+      } else {
+        modelsToConsider = Collections.singleton(model);
+      }
+      ArrayList<SNode> nodesUnderPackage = new ArrayList<SNode>();
+      for (SModel am : modelsToConsider) {
+        for (SNode root : am.getRootNodes()) {
+          String rootPack = SPropertyOperations.getString(root, PROPS.virtualPackage$EkXl);
+          if (rootPack != null && rootPack.startsWith(packageName)) {
+            assert rootPack.length() >= packageName.length();
+            if (rootPack.length() == packageName.length() || rootPack.charAt(packageName.length()) == '.') {
+              nodesUnderPackage.add(root);
             }
           }
         }
+      }
 
-        for (SNode node : nodesUnderPackage) {
-          String oldPackage = SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl);
-          String newPackage = newName + oldPackage.substring(packageName.length());
-          SPropertyOperations.assign(node, PROPS.virtualPackage$EkXl, (newPackage.length() > 0 ? newPackage : null));
-        }
+      for (SNode node : nodesUnderPackage) {
+        String oldPackage = SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl);
+        String newPackage = newName + oldPackage.substring(packageName.length());
+        SPropertyOperations.assign(node, PROPS.virtualPackage$EkXl, (newPackage.length() > 0 ? newPackage : null));
       }
     });
   }

@@ -24,14 +24,11 @@ public final class LanguageConceptSwitch {
   public static final int IconResourceExpression = 12;
   public static final int Image = 13;
   public static final int NodeIconResourceExpression = 14;
-  public static final int OldIconBundle = 15;
-  public static final int OldIconDeclaration = 16;
-  public static final int OldIconReference = 17;
-  public static final int Primitive = 18;
-  public static final int Rect = 19;
-  public static final int Resource = 20;
-  public static final int Text = 21;
-  public static final int TextIcon = 22;
+  public static final int Primitive = 15;
+  public static final int Rect = 16;
+  public static final int Resource = 17;
+  public static final int Text = 18;
+  public static final int TextIcon = 19;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x982eb8df2c964bd7L, 0x996311712ea622e5L);
@@ -50,9 +47,6 @@ public final class LanguageConceptSwitch {
     builder.put(0x52fb86deea79455eL, IconResourceExpression);
     builder.put(0xb8b96b5078f3367L, Image);
     builder.put(0x7ce019825925c1aL, NodeIconResourceExpression);
-    builder.put(0x7c8b08a50a39c6bdL, OldIconBundle);
-    builder.put(0x7c8b08a50a39c6c0L, OldIconDeclaration);
-    builder.put(0x7c8b08a50a39c6c7L, OldIconReference);
     builder.put(0x26417c37742e28b1L, Primitive);
     builder.put(0x26417c37742e0e61L, Rect);
     builder.put(0x7c8b08a50a39c6caL, Resource);

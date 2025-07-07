@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,11 @@
  */
 package jetbrains.mps.generator.impl;
 
-import jetbrains.mps.extapi.model.ModelWithAttributes;
+import jetbrains.mps.extapi.model.ResolveInfoUpdater;
+import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.impl.cache.MappingsMemento;
 import jetbrains.mps.generator.impl.plan.CheckpointState;
-import jetbrains.mps.generator.impl.plan.CheckpointVault;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
-import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.util.SNodePresentationComparator;
@@ -46,13 +45,16 @@ class CheckpointStateBuilder {
   private final ModelTransitions myTransitionTrace;
   private final SModel myTransientModel;
   private final SModel myCheckpointModel;
+  private final IGeneratorLogger myLogger;
   private boolean myCloneDone = false;
+  private SNode myDebugMappingNode; // optional, we don't keep any extra node unless there are label info to record.
 
-  public CheckpointStateBuilder(@NotNull SModel transientModel, @NotNull SModel blankCheckpointModel, @NotNull ModelTransitions transitionTrace) {
+  public CheckpointStateBuilder(@NotNull SModel transientModel, @NotNull SModel blankCheckpointModel, @NotNull ModelTransitions transitionTrace, @NotNull IGeneratorLogger log) {
     myTransientModel = transientModel;
     myCheckpointModel = blankCheckpointModel;
     myTransitionTrace = transitionTrace;
     myMemento = new MappingsMemento();
+    myLogger = log;
   }
 
   public void record(SNode inputNode, String mappingLabel, SNode outputNode) {
@@ -107,9 +109,8 @@ class CheckpointStateBuilder {
    * Optional, for a hypothetical (didn't check/think over too much) scenario when CP comes as the very first step.
    *  @param originalInputModel non-null
    * @param stepLabels non-null
-   * @param messageHandler likely shall relocate to cons arguments
    */
-  /*package*/ void addMappings(SModel originalInputModel, GeneratorMappings stepLabels, IMessageHandler messageHandler) {
+  /*package*/ void addMappings(SModel originalInputModel, GeneratorMappings stepLabels) {
     // FIXME likely, GeneratorMappings shall care about MappingMemento only (pass TransitionTrace there as well).
     //
     // FIXME stepLabels.export is commented out as we restore MappingsMemento for the CPState through persisted state and MappingLabelExtractor, to get
@@ -120,14 +121,23 @@ class CheckpointStateBuilder {
     // reference targets from transient model to that in CP model (see DMB.substitute)
     cloneTransientToCheckpoint();
     new ModelImports(myCheckpointModel).addModelImport(originalInputModel.getReference());
-    DebugMappingsBuilder dmb = new DebugMappingsBuilder(originalInputModel.getRepository(), myTransitionTrace.getActiveTransition(), messageHandler);
-    SNode debugMappings = dmb.build(myCheckpointModel, stepLabels);
-    myTransitionTrace.saveActiveTransition(myCheckpointModel);
-    myCheckpointModel.addRootNode(debugMappings);
+    DebugMappingsBuilder dmb = new DebugMappingsBuilder(originalInputModel.getRepository(), myTransitionTrace.getActiveTransition(), myLogger);
+    myDebugMappingNode = dmb.build(myCheckpointModel, stepLabels);
   }
 
   /*package*/ CheckpointState create(CheckpointIdentity step) {
     cloneTransientToCheckpoint();
+    // need saveActiveTransition() call to prepare transitions regardless of node<DebugMappings> root presence.
+    myTransitionTrace.saveActiveTransition(myCheckpointModel);
+    if (myDebugMappingNode != null) {
+      if (myCheckpointModel.getRootNodes().iterator().hasNext() || myDebugMappingNode.getFirstChild() != null) {
+        // not a nice way to deal with non-empty input model that has all its roots abandoned and no LMs recorded.
+        // there's empty myDebugMappingNode then, and CheckpointVaule.updateCheckpointsOf() + CheckpointState.isEmptyCheckpoint()
+        // could not detect blank CP model and proceed to serialize it, leading to effects of MPS-35118 (see 'feedback'/ProblemKind part)
+        // Perhaps, better way to fix this is to modify isEmptyCheckpoint() to detect empty GeneratorDebug_Mappings instance?
+        myCheckpointModel.addRootNode(myDebugMappingNode);
+      }
+    }
     ConsistentNodeIdentityHelper consistentNodeIdentity = new ConsistentNodeIdentityHelper(new SNodePresentationComparator());
     consistentNodeIdentity.apply(myCheckpointModel);
     //
@@ -140,6 +150,8 @@ class CheckpointStateBuilder {
     // RR would not change list of languages, hence no updateUsedLanguages() call. And we don't care about explicit
     // imports of language's accessory models either.
     new ModelDependencyUpdate(myCheckpointModel).updateImportedModels(null);
+
+    new ResolveInfoUpdater().updateResolveInfoInRefs(myCheckpointModel);
 
     // XXX in fact, both prevCheckpoint and step CPs are already coded inside myCheckpointModel, see CME.createBlankCheckpointModel
     CheckpointIdentity prevCheckpoint = myTransitionTrace.getMostRecentCheckpoint();

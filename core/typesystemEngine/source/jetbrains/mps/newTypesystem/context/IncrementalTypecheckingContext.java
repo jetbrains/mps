@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,10 @@ import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.typechecking.TypecheckingObservable;
+import jetbrains.mps.newTypesystem.state.blocks.WhenConcreteBlock;
 import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.util.Computable;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.util.Consumer;
@@ -32,7 +31,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IncrementalTypecheckingContext extends ReportingTypecheckingContext<State, IncrementalTypechecking> {
-  private static Logger LOG = LogManager.getLogger(IncrementalTypecheckingContext.class);
   private final ClassLoaderManager myClassManager;
   private Consumer<SNode> myTypeInvalidatedNotifier = null;
 
@@ -42,8 +40,8 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
   private Map<Object, Integer> myRequesting = new HashMap<>();
   private Integer myOldHash = 0;
 
-  public IncrementalTypecheckingContext(SNode node, TypeChecker typeChecker, ClassLoaderManager clManager) {
-    super(node, typeChecker);
+  public IncrementalTypecheckingContext(SNode node, TypeCheckerHelper typeCheckerHelper, ClassLoaderManager clManager) {
+    super(node, typeCheckerHelper);
     myClassManager = clManager;
   }
 
@@ -53,7 +51,7 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
 
   @Override
   protected IncrementalTypechecking createTypechecking() {
-    return new IncrementalTypechecking(getNode(), getState(), getTypeChecker(), myClassManager, myTypeInvalidatedNotifier);
+    return new IncrementalTypechecking(getNode(), getState(), myClassManager, myTypeInvalidatedNotifier);
   }
 
   @Override
@@ -61,12 +59,8 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
     return false;
   }
 
-  public TypeChecker getTypeChecker() {
-    return myTypeChecker;
-  }
-
   public SubTypingManagerNew getSubTyping() {
-    return (SubTypingManagerNew) myTypeChecker.getSubtypingManager();
+    return (SubTypingManagerNew) myTypeCheckerHelper.getSubtypingManager();
   }
 
   @Override
@@ -84,6 +78,27 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
   @Override
   public void addDependencyForCurrent(SNode node) {
     getTypechecking().addDependencyForCurrent(node);
+  }
+  
+  @Override
+  public void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId) {
+    ContextRunnable runnable = new ContextRunnable(getTypechecking().getContextNode(), r);
+    WhenConcreteBlock block = new WhenConcreteBlock(getState(), runnable, nodeModel, nodeId, argument, false, false);
+    getState().addBlock(block);
+  }
+
+  @Override
+  public void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError) {
+    ContextRunnable runnable = new ContextRunnable(getTypechecking().getContextNode(), r);
+    WhenConcreteBlock block = new WhenConcreteBlock(getState(), runnable, nodeModel, nodeId, argument, isShallow, skipError);
+    getState().addBlock(block);
+  }
+
+  @Override
+  public void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError, String warningMessage) {
+    ContextRunnable runnable = new ContextRunnable(getTypechecking().getContextNode(), r);
+    WhenConcreteBlock block = new WhenConcreteBlock(getState(), runnable, nodeModel, nodeId, argument, isShallow, skipError, warningMessage);
+    getState().addBlock(block);
   }
 
   @Override
@@ -189,5 +204,23 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
   @Override
   protected void applyNonTypesystemRules() {
     getTypechecking().applyNonTypesystemRulesToRoot(this);
+  }
+
+  private class ContextRunnable implements Runnable {
+    private final SNode myContextNode;
+    private final Runnable myToRun;
+
+    public ContextRunnable(SNode contextNode, Runnable toRun) {
+      myContextNode = contextNode;
+      myToRun = toRun;
+    }
+
+    @Override
+    public void run() {
+     getTypechecking()
+         .getTypecheckingComponent()
+         .runWithAccessTracking(myContextNode,
+                                () ->  getTypechecking().runApplyRulesTo(myContextNode, myToRun));
+    }
   }
 }

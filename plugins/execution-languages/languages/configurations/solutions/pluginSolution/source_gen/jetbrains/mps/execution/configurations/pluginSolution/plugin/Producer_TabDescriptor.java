@@ -10,9 +10,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.ArrayList;
+import jetbrains.mps.plugins.relations.CreateAspectContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -44,11 +44,7 @@ public class Producer_TabDescriptor extends RelationDescriptor {
   }
   public List<SNode> getNodes(SNode node) {
     final SNode nodeFinal = node;
-    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.RunConfigurationProducer$AW)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.configuration$H39x), LINKS.persistentConfiguration$QL_P) == nodeFinal;
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.RunConfigurationProducer$AW)).where((it) -> SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.configuration$H39x), LINKS.persistentConfiguration$QL_P) == nodeFinal).toList();
   }
   public boolean isSingle() {
     return false;
@@ -56,10 +52,10 @@ public class Producer_TabDescriptor extends RelationDescriptor {
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
     return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.RunConfigurationProducer$AW);
   }
-  public SNode createAspect(final SNode node, final SConcept concept) {
+  protected SNode doCreateAspect(final CreateAspectContext _context) {
     SNode producer = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer"));
-    SLinkOperations.setTarget(producer, LINKS.configuration$H39x, createPersistentConfigurationType_rqzr2x_a0b0a0(node));
-    SModelOperations.addRootNode(SNodeOperations.getModel(node), producer);
+    SLinkOperations.setTarget(producer, LINKS.configuration$H39x, createPersistentConfigurationType_rqzr2x_a0b0a0(_context.getBaseNode()));
+    SModelOperations.addRootNode(SNodeOperations.getModel(_context.getBaseNode()), producer);
     return producer;
   }
   private static SNode createPersistentConfigurationType_rqzr2x_a0b0a0(SNode p0) {

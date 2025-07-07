@@ -1,10 +1,7 @@
-<components>
+<idea-plugin>
   <project-components>
     <component>
       <implementation-class>jetbrains.mps.ide.findusages.view.UsagesViewTool</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.platform.actions.AnalyzeDependenciesViewTool</implementation-class>
     </component>
   </project-components>
   <extensions defaultExtensionNs="com.intellij">
@@ -45,11 +42,11 @@
         <keyboard-shortcut first-keystroke="DELETE" keymap="$default"/>
       </action>
       <action id="jetbrains.mps.ui.usage.tree.selected-only" text="Include selected only" class="jetbrains.mps.ide.findusages.view.SelectedOnlyAction"/>
+      <action id="jetbrains.mps.ui.usage.tree.copy"
+              text="Copy Text"
+              class="jetbrains.mps.ide.findusages.view.CopyUsagesTextAction"
+              icon="AllIcons.Actions.Copy"/>
     </group>
-    <action id="PreviousOccurence" class="jetbrains.mps.ide.findusages.view.InspectorRespectingPreviousOccurrenceAction"
-            icon="AllIcons.Actions.PreviousOccurence" overrides="true"/>
-    <action id="NextOccurence" class="jetbrains.mps.ide.findusages.view.InspectorRespectingNextOccurrenceAction"
-            icon="AllIcons.Actions.NextOccurence" overrides="true"/>
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
@@ -58,10 +55,13 @@
     <mps.facetTabFactory facetType="java" className="jetbrains.mps.ide.java.ui.JavaModuleFacetTabFactory"/>
     <mps.facetTabFactory facetType="generator" className="jetbrains.mps.ide.generator.CustomGenFacetTabFactory"/>
     <mps.facetTabFactory facetType="unknown" className="jetbrains.mps.ide.ui.dialogs.properties.tabs.UnknownFacetTabFactory"/>
+    <mps.facetTabFactory facetType="plaintext" className="jetbrains.mps.ide.plaintext.PlainTextFacetTabFactory"/>
+    <mps.facetTabFactory facetType="documentation" className="jetbrains.mps.ide.documentation.DocumentationFacetTabFactory"/>
     <mps.projectGroupTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.SolutionProjectsGroup"/>
     <mps.solutionProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.DefaultSolutionProjectTemplate"/>
     <mps.projectGroupTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.OtherProjectsGroup"/>
     <mps.otherProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.EmptyProjectTemplate"/>
+    <iconMapper mappingFile="MPSIconsIconMappings.json"/>
   </extensions>
 
   <extensions defaultExtensionNs="com.intellij">
@@ -70,5 +70,7 @@
     <registryKey key="mps.ProjectPane.messages.error.only" defaultValue="false" description="Do not show warning and informational messages in the project tree" restartRequired="false"/>
     <registryKey key="mps.ProjectPane.show.descriptor.generator" defaultValue="false" description="Show @descriptor model in Generator modules" restartRequired="false"/>
     <registryKey key="mps.ProjectPane.show.descriptor.solution" defaultValue="false" description="Show @descriptor model in Solution modules" restartRequired="false"/>
+    <registryKey key="ide.favorites.tool.window.applicable" defaultValue="true" description="Allows to enable the Favorites tool window" restartRequired="false"/>
+    <registryKey key="mps.projectView.generationRequired.icon" defaultValue="false" description="Display blue dot instead of (generation required)" restartRequired="false"/>
   </extensions>
-</components>
+</idea-plugin>

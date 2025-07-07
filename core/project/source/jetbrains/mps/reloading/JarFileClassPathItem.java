@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,11 @@
 package jetbrains.mps.reloading;
 
 import gnu.trove.THashSet;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.ReadUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedOutputStream;
@@ -43,7 +42,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 public class JarFileClassPathItem extends RealClassPathItem {
-  private static final Logger LOG = LogManager.getLogger(JarFileClassPathItem.class);
+  private static final Logger LOG = Logger.getLogger(JarFileClassPathItem.class);
 
   //computed during init
   private boolean myIsInitialized = false;
@@ -117,7 +116,7 @@ public class JarFileClassPathItem extends RealClassPathItem {
     InputStream inp = null;
     ZipFile zf = null;
     if (!myFile.exists()) {
-      LOG.warn("Classbytes file '" + myFile + "' does not exist");
+      LOG.warning("Classbytes file '" + myFile + "' does not exist");
       return null;
     }
     try {
@@ -183,9 +182,7 @@ public class JarFileClassPathItem extends RealClassPathItem {
 
   @Override
   public List<RealClassPathItem> flatten() {
-    List<RealClassPathItem> result = new ArrayList<>();
-    result.add(this);
-    return result;
+    return Collections.singletonList(this);
   }
 
   public String toString() {
@@ -222,7 +219,7 @@ public class JarFileClassPathItem extends RealClassPathItem {
             className = name.substring(packEnd + 1, name.length() - MPSExtentions.DOT_CLASSFILE.length());
           }
 
-          myCache.addClass(pack, InternUtil.intern(className));
+          myCache.addClass(pack, className);
         }
       }
     } catch (IOException e) {
@@ -274,9 +271,9 @@ public class JarFileClassPathItem extends RealClassPathItem {
       Entry e = myTopPackage;
       PackageNameIterator it = new PackageNameIterator(pack);
       while (it.hasNext()) {
-        e = e.createSubPackage(it.next());
+        e = e.createSubPackage(it.next().intern()); // if anything, it's a package name that we see a lot.
       }
-      e.addClass(className);
+      e.addClass(className.intern());
     }
   }
 

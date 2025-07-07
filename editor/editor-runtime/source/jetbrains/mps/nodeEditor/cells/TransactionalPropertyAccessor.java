@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.smodel.ModelCommandContext;
 import jetbrains.mps.smodel.ModelCommandContext.Provider;
-import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -32,9 +31,17 @@ public class TransactionalPropertyAccessor extends PropertyAccessor implements T
 
   private EditorCell myEditorCell;
 
+  /**
+   * @deprecated use cons w/o EditorContext
+   */
+  @Deprecated(since = "2023.2", forRemoval = true)
   public TransactionalPropertyAccessor(SNode node, SProperty property, boolean readOnly, boolean allowEmptyText,
                                        EditorContext editorContext) {
-    super(node, property, readOnly, allowEmptyText, editorContext);
+    super(node, property, readOnly, allowEmptyText);
+  }
+
+  public TransactionalPropertyAccessor(SNode node, SProperty property, boolean readOnly, boolean allowEmptyText) {
+    super(node, property, readOnly, allowEmptyText);
   }
 
   void setCell(EditorCell editorCell) {
@@ -74,13 +81,14 @@ public class TransactionalPropertyAccessor extends PropertyAccessor implements T
     if (myHasValueToCommit) {
       doCommit0(myOldValue, myUncommittedValue);
 
-      final ModelAccess modelAccess = getRepository().getModelAccess();
-      modelAccess.executeCommand(new ChangePropertyEditorCommand(myEditorCell.getContext(), getGroupId()) {
+      final EditorContext editorCellContext = myEditorCell.getContext();
+      final ModelAccess modelAccess = editorCellContext.getRepository().getModelAccess();
+      modelAccess.executeCommand(new ChangePropertyEditorCommand(editorCellContext, getGroupId()) {
         @Override
         protected void doExecute() {
           resetUncommittedValue();
           if (modelAccess instanceof ModelCommandContext.Provider) {
-            final ModelCommandContext cc = ((Provider) modelAccess).getCommandContext(myEditorCell.getContext().getModel());
+            final ModelCommandContext cc = ((Provider) modelAccess).getCommandContext(editorCellContext.getModel());
             if (cc != null) {
               cc.registerActionWithUndo(new DummyUndoableAction(getNode()));
             }
@@ -94,12 +102,7 @@ public class TransactionalPropertyAccessor extends PropertyAccessor implements T
   }
 
   protected void doCommit0(Object oldValue, Object newValue) {
-    SDataType type = getProperty().getType();
-    doCommit(type.toString(oldValue), type.toString(newValue));
-  }
-
-  @Deprecated
-  protected void doCommit(String oldValue, String newValue) {
+    // no-op, subclasses shall override
   }
 
   private void synchronizeCell() {

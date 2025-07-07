@@ -5,7 +5,6 @@ package jetbrains.mps.internal.make.runtime.util;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.regex.Pattern;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.io.File;
@@ -19,15 +18,7 @@ public class DirUtil {
   private static final char SLASH_CHAR = '/';
   private static final String SLASH = "/";
   public static String[] sortDirs(Iterable<String> dirPaths) {
-    return Sequence.fromIterable(dirPaths).select(new ISelector<String, String>() {
-      public String select(String p) {
-        return asDir(straighten(urlToPath(p)));
-      }
-    }).sort(new ISelector<String, String>() {
-      public String select(String p) {
-        return p;
-      }
-    }, true).toGenericArray(String.class);
+    return Sequence.fromIterable(dirPaths).select((p) -> asDir(straighten(urlToPath(p)))).sort((p) -> p, true).toGenericArray(String.class);
   }
   public static int findPrefixAsDir(String dirPath, String[] sortedPaths) {
     String dir = asDir(straighten(urlToPath(dirPath)));

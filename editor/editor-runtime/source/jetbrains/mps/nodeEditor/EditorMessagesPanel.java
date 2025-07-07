@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,18 +45,17 @@ import java.util.Map;
 
 class EditorMessagesPanel extends JPanel implements IMessageHandler {
 
-  private final EditorComponent myEditorComponent;
-  private final jetbrains.mps.project.Project myMPSProject;
+  private EditorComponent myEditorComponent;
+  private jetbrains.mps.project.Project myMPSProject;
   private final Map<SNodeId, JComponent> reportedNodes = new HashMap<>();
   private final JPanel myErrorsPanel = new JPanel();
 
-  EditorMessagesPanel(@NotNull EditorComponent editorComponent) {
-    this.myEditorComponent = editorComponent;
-    this.myMPSProject = ProjectHelper.getProject(myEditorComponent.getRepository());
+  EditorMessagesPanel() {
   }
 
   @Override
   public void handle(@NotNull IMessage msg) {
+    // XXX quite suspicious assumption that message hint is always SNodeReference
     SNodeReference node = (SNodeReference) msg.getHintObject();
     SNodeId nodeId = node.getNodeId();
     removeReport(nodeId);
@@ -114,7 +113,10 @@ class EditorMessagesPanel extends JPanel implements IMessageHandler {
     this.setPreferredSize(preferredSize);
   }
 
-  void init() {
+  void init(@NotNull EditorComponent editorComponent) {
+    myEditorComponent = editorComponent;
+    myMPSProject = ProjectHelper.getProject(editorComponent.getRepository());
+
     this.setVisible(false);
     BoxLayout layout = new BoxLayout(myErrorsPanel, BoxLayout.Y_AXIS);
     myErrorsPanel.setLayout(layout);
@@ -127,7 +129,7 @@ class EditorMessagesPanel extends JPanel implements IMessageHandler {
     this.add(scrollPane, BorderLayout.CENTER);
   }
 
-  void clear() {
+  void clearAndHide() {
     myErrorsPanel.removeAll();
     reportedNodes.clear();
     setVisible(false);

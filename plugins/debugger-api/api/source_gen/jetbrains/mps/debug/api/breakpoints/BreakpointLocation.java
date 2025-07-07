@@ -51,15 +51,6 @@ public class BreakpointLocation {
     return myTargetCodeLocation.getUnitName();
   }
 
-  /**
-   * 
-   * @deprecated meaningless and unused
-   */
-  @Deprecated
-  public boolean isValid() {
-    return getTargetCodePosition() != null;
-  }
-
   public int getLineIndexInFile() {
     TraceablePositionInfo pos = getTargetCodePosition();
     return (pos == null ? -1 : pos.getStartLine() + 1);

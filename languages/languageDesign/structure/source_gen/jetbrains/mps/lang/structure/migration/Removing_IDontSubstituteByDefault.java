@@ -10,11 +10,10 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -40,42 +39,34 @@ public class Removing_IDontSubstituteByDefault extends MigrationScriptBase {
     {
       SearchScope scope_c264be_a0e = CommandUtil.createScope(m);
       final SearchScope scope_c264be_a0e_0 = new EditableFilteringScope(scope_c264be_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_c264be_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          List<SNode> toRemove = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.implements$u_P2)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.hasPointer(it, LINKS.intfc$zM4e, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1835621062190663819"));
-            }
-          }).toListSequence();
-          ListSequence.fromList(toRemove).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.deleteNode(it);
-            }
-          });
-        }
+      QueryExecutionContext context = () -> scope_c264be_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false)).visitAll((it) -> {
+        List<SNode> toRemove = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.implements$u_P2)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+          public Boolean invoke(SNode it) {
+            return SLinkOperations.hasPointer(it, LINKS.intfc$zM4e, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1835621062190663819"));
+          }
+        }).toList();
+        ListSequence.fromList(toRemove).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+          public void invoke(SNode it) {
+            SNodeOperations.deleteNode(it);
+          }
+        });
       });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.InterfaceConceptDeclaration$CG, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          List<SNode> toRemove = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.extends$nawU)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.hasPointer(it, LINKS.intfc$zM4e, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1835621062190663819"));
-            }
-          }).toListSequence();
-          ListSequence.fromList(toRemove).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.deleteNode(it);
-            }
-          });
-        }
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.InterfaceConceptDeclaration$CG, false)).visitAll((it) -> {
+        List<SNode> toRemove = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.extends$nawU)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+          public Boolean invoke(SNode it) {
+            return SLinkOperations.hasPointer(it, LINKS.intfc$zM4e, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1835621062190663819"));
+          }
+        }).toList();
+        ListSequence.fromList(toRemove).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+          public void invoke(SNode it) {
+            SNodeOperations.deleteNode(it);
+          }
+        });
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 6);
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,44 @@
 package jetbrains.mps.util;
 
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.MacroProcessor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 
 import java.util.regex.Pattern;
 
-public interface MacroHelper extends MacroProcessor {
-  Pattern MACRO_PATTERN = MacroProcessor.MACRO_PATTERN;
+public interface MacroHelper {
+  // XXX is it intentional to match "${}" sequence (note *, not +)?
+  Pattern MACRO_PATTERN = Pattern.compile("(\\$\\{[^${]*})");
 
   String expandPath(@Nullable String path);
-  String shrinkPath(@Nullable String absolutePath);
+
+  /**
+   * @deprecated use {@link #shrinkPath(IFile, String)} or {@link #shrinkPath(String, String)} instead
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
+  default String shrinkPath(@Nullable String absolutePath) {
+    return shrinkPath(absolutePath, null);
+  }
+
+  /**
+   * Please override this method instead of {@link #shrinkPath(String)}
+   * Optional hint with original path helps to pick proper macro value (to preserve original one in case there are few pointing to the same location)
+   * @since 2022.3
+   */
+  default String shrinkPath(@Nullable String absolutePath, @Nullable String hintOriginalPath) {
+    // not abstract method to facilitate transition of clients in case they got own MacroHelper implementation.
+    // can remove the body once the method is around for a while.
+    return shrinkPath(absolutePath);
+  }
+
+  /**
+   * Capture explicit scenarios where we got IFile for path shrinking, to get rid of string paths eventually.
+   * @since 2022.3
+   */
+  default String shrinkPath(@Nullable IFile absolutePath, @Nullable String hintOriginalPath) {
+    return shrinkPath(absolutePath == null ? null : absolutePath.getPath(), hintOriginalPath);
+  }
 
   /**
    * leaves the path unchanged
@@ -39,7 +65,8 @@ public interface MacroHelper extends MacroProcessor {
     }
 
     @Override
-    public String shrinkPath(@Nullable String absolutePath) {
+    public String shrinkPath(@Nullable String absolutePath, @Nullable String hintOriginalPath) {
+      // XXX perhaps, `hint != null ? hint : absolutePath` would be more close to the idea of the class?
       return absolutePath;
     }
   }

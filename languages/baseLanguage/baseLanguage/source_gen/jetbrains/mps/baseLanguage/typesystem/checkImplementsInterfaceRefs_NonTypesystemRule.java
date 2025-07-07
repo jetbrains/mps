@@ -15,7 +15,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -33,9 +32,9 @@ public class checkImplementsInterfaceRefs_NonTypesystemRule extends AbstractNonT
   public void applyRule(final SNode classifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> extendedInterfaces;
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$db)) {
-      extendedInterfaces = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.Interface$db), LINKS.extendedInterface$PDVO)).toListSequence();
+      extendedInterfaces = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.Interface$db), LINKS.extendedInterface$PDVO)).toList();
     } else if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK)) {
-      extendedInterfaces = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK), LINKS.implementedInterface$rujG)).toListSequence();
+      extendedInterfaces = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK), LINKS.implementedInterface$rujG)).toList();
     } else {
       return;
     }
@@ -47,11 +46,7 @@ public class checkImplementsInterfaceRefs_NonTypesystemRule extends AbstractNonT
           continue;
         }
         SetSequence.fromSet(seen).addElement(singleIntfc);
-        Iterable<SNode> duplicates = ListSequence.fromList(extendedInterfaces).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.classifier$cxMr) == singleIntfc;
-          }
-        });
+        Iterable<SNode> duplicates = ListSequence.fromList(extendedInterfaces).where((it) -> SLinkOperations.getTarget(it, LINKS.classifier$cxMr) == singleIntfc);
         if (Sequence.fromIterable(duplicates).count() > 1) {
           for (SNode dup : Sequence.fromIterable(duplicates)) {
             {

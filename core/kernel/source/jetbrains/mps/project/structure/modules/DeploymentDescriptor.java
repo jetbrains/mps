@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.project.structure.modules;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
@@ -159,20 +160,31 @@ public final class DeploymentDescriptor implements CopyableDescriptor<Deployment
    * @return collection of jar files, as written in the deployment descriptor (with no path unwrap/expand done).
    */
   @NotNull
-  public final List<String> getLibraries() {
+  public List<String> getLibraries() {
     return myLibraries;
   }
 
-
   /**
-   * Locations with module's own classes, relative to module home. Value "." indicates module home itself.
-   * Empty value means there are no classes in the module (however, classes still could be loaded through {@link #getLibraries() libraries}).
-   *
-   * XXX not sure whether we shall keep libraries and classpath distinct, perhaps, one is enough (provided ModulesMiner#loadDeploymentDescriptor doesn't
-   * expose libraries as stubs)
-   *
-   * @return Locations with module's own classes
+   * PROVISIONAL HACK
+   * ModulesMiner resolves library paths, although it has to be responsibility of DeployedJMF instead.
+   * As I want to keep MM code updating MD.javaLibs for now, and don't want to duplicate the code in JMF.load(), I decided to keep values, once
+   * expanded by MM, for later consumption by JMF
    */
+  public List<IFile> getLibrariesResolved() {
+    return myResolvedLibraries;
+  }
+  private final ArrayList<IFile> myResolvedLibraries = new ArrayList<>();
+
+
+    /**
+     * Locations with module's own classes, relative to module home. Value "." indicates module home itself.
+     * Empty value means there are no classes in the module (however, classes still could be loaded through {@link #getLibraries() libraries}).
+     *
+     * XXX not sure whether we shall keep libraries and classpath distinct, perhaps, one is enough (provided ModulesMiner#loadDeploymentDescriptor doesn't
+     * expose libraries as stubs)
+     *
+     * @return Locations with module's own classes
+     */
   @NotNull
   public List<String> getClasspath() {
     return myClasspath;

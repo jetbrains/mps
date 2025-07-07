@@ -136,11 +136,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.SelectionChild$4z;
     }
-    public SNode createNodeToInsert(EditorContext editorContext) {
-      return nodeFactory();
+    public SNode createNodeToInsert(EditorContext editorContext, SNode prevNode, SNode nextNode, int index) {
+      return nodeFactory(prevNode, nextNode, index);
     }
 
-    public SNode nodeFactory() {
+    public SNode nodeFactory(SNode prevNode, SNode nextNode, int index) {
       SNode ch = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x617705b269dc8251L, "jetbrains.mps.lang.editor.editorTest.structure.SelectionChild"));
       SPropertyOperations.assign(ch, PROPS.flag$ufVd, true);
       return ch;

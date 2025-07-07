@@ -32,7 +32,7 @@ public class check_KajaDataflow_NonTypesystemRule extends AbstractNonTypesystemR
       if (program.size() > 400) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(SNodeOperations.getParent(commandList), "This node is too complex too analyze by data flow algorithm", "r:af5f8eb9-49c0-4279-87d3-3c80b1a56988(jetbrains.mps.samples.Kaja.typesystem)", "6067900799350600197", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(SNodeOperations.getParent(commandList), "This node is too complex to analyze by the data flow algorithm", "r:af5f8eb9-49c0-4279-87d3-3c80b1a56988(jetbrains.mps.samples.Kaja.typesystem)", "6067900799350600197", null, errorTarget);
         }
         return;
       }

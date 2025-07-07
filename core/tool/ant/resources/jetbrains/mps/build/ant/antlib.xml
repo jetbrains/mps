@@ -3,6 +3,7 @@
   <typedef name="jvmarg" classname="jetbrains.mps.build.ant.Arg" />
   <typedef name="jvmargs" classname="jetbrains.mps.build.ant.JvmArgs" />
   <typedef name="macro" classname="jetbrains.mps.build.ant.Macro" />
+  <typedef name="project" classname="jetbrains.mps.build.ant.ProjectPath" />
 
   <taskdef name="migrate" classname="jetbrains.mps.build.ant.MigrationTask" />
 
@@ -20,4 +21,17 @@
   <typedef name="chunk" classname="jetbrains.mps.build.ant.generation.Chunk" />
   <typedef name="module" classname="jetbrains.mps.build.ant.generation.ModuleChunkPart" />
   <typedef name="plugin" classname="jetbrains.mps.build.ant.Plugin" />
+
+  <!-- since 2021.3 -->
+  <typedef name="generator-settings" classname="jetbrains.mps.build.ant.GeneratorSettings" />
+  <taskdef name="mps.make" classname="jetbrains.mps.build.ant.MakeTask" />
+
+  <!-- since 2022.2.2 -->
+  <!-- this is internal functionality, not API, don't use outside of MPS -->
+  <taskdef name="mps.run-worker" classname="jetbrains.mps.build.ant.MpsLoadTask"/>
+
+  <!-- since 2022.3 -->
+  <taskdef name="launchtests" classname="jetbrains.mps.build.ant.junit.LaunchTestTask" />
+  <typedef name="testmodules" classname="jetbrains.mps.build.ant.junit.TestModules" />
+
 </antlib>

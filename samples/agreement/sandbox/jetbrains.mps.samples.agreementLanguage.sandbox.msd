@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.samples.agreementLanguage.sandbox" uuid="8297e161-d142-4e1a-83a1-5f3e5124f9cf" moduleVersion="0" compileInMPS="true">
+<solution name="jetbrains.mps.samples.agreementLanguage.sandbox" uuid="8297e161-d142-4e1a-83a1-5f3e5124f9cf" moduleVersion="0">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models/postingrules" />
     </modelRoot>
   </models>
   <facets>
-    <facet type="java">
+    <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="true">b1a9bc47-8a26-4792-8b68-4660c531090a(jetbrains.mps.samples.formulaLanguage)</dependency>
   </dependencies>

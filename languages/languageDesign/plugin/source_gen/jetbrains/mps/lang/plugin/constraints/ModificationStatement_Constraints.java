@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -18,13 +19,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.HashMap;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -36,58 +36,42 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.point$muzj, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.point$muzj, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_184bjp_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "6836281137582795096");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode contents = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(_context.getReferenceNode(), CONCEPTS.ModificationStatement$sT), LINKS.modifiedGroup$VNVK), LINKS.contents$WkC6);
             if (SNodeOperations.isInstanceOf(contents, CONCEPTS.ElementListContents$NF)) {
-              return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contents, CONCEPTS.ElementListContents$NF), LINKS.reference$XMYO)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return SNodeOperations.isInstanceOf(it, CONCEPTS.GroupAnchor$JV);
-                }
-              }).toListSequence());
+              return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contents, CONCEPTS.ElementListContents$NF), LINKS.reference$XMYO)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.GroupAnchor$JV)).toList());
             }
             return ListScope.forResolvableElements(new ArrayList<SNode>());
           }
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.modifiedGroup$VNVK, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.modifiedGroup$VNVK, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_184bjp_a0a0a0a0a1a0a0b0c;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "6836281137582795790");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> actionGroupDeclarations = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ActionGroupDeclaration$VO);
             SNode groupDeclaration = SNodeOperations.getNodeAncestor(_context.getReferenceNode(), CONCEPTS.ActionGroupDeclaration$VO, false, false);
-            List<SNode> thisGroupChildGroups = ((List<SNode>) ListSequence.fromList(SNodeOperations.getNodeDescendants(groupDeclaration, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.ActionGroupDeclaration$VO);
-              }
-            }).toListSequence());
+            List<SNode> thisGroupChildGroups = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNodeDescendants(groupDeclaration, null, false, new SAbstractConcept[]{}), CONCEPTS.ActionGroupDeclaration$VO)).toList();
             ListSequence.fromList(thisGroupChildGroups).addElement(groupDeclaration);
-            return ListScope.forResolvableElements(ListSequence.fromList(actionGroupDeclarations).subtract(ListSequence.fromList(thisGroupChildGroups)).toListSequence());
+            return ListScope.forResolvableElements(ListSequence.fromList(actionGroupDeclarations).subtract(ListSequence.fromList(thisGroupChildGroups)).toList());
           }
         };
       }
@@ -97,8 +81,6 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
     references.put(d1.getReference(), d1);
     return references;
   }
-  private static final SNodePointer breakingNode_184bjp_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "6836281137582795096");
-  private static final SNodePointer breakingNode_184bjp_a0a0a0a0a1a0a0b0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "6836281137582795790");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ModificationStatement$sT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181de4920dL, "jetbrains.mps.lang.plugin.structure.ModificationStatement");

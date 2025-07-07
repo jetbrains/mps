@@ -6,10 +6,9 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -18,7 +17,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -39,21 +37,17 @@ public class MigrateConceptNodeParameter extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    Sequence.fromIterable(getNodesToMigrate(m)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.replaceWithAnother(it, _quotation_createNode_q4h85_a0a0a0a0a0g(it));
-      }
-    });
+    Sequence.fromIterable(getNodesToMigrate(m)).visitAll((it) -> SNodeOperations.replaceWithAnother(it, _quotation_createNode_q4h85_a0a0a0a0a0g(it)));
   }
   @Override
   public Iterable<Problem> check(SModule m) {
-    return Sequence.fromIterable(getNodesToMigrate(m)).select(new ISelector<SNode, Problem>() {
-      public Problem select(SNode it) {
+    return Sequence.fromIterable(getNodesToMigrate(m)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+      public Problem invoke(SNode it) {
         return DeprecatedConceptMemberNotMigratedProblem.deprecatedProperty(it, PROPS.isDeprecated$drG3);
       }
     });
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, "jetbrains.mps.debugger.api.lang"), 0);
   }
 
@@ -63,16 +57,8 @@ public class MigrateConceptNodeParameter extends MigrationScriptBase {
     {
       SearchScope scope_q4h85_b0j = CommandUtil.createScope(m);
       final SearchScope scope_q4h85_b0j_0 = new EditableFilteringScope(scope_q4h85_b0j);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_q4h85_b0j_0;
-        }
-      };
-      nodes = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptFunctionParameter_Concept$RF, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !((SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.DotExpression$yW) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(it), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.AsNodeOperation$Uq)));
-        }
-      });
+      QueryExecutionContext context = () -> scope_q4h85_b0j_0;
+      nodes = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptFunctionParameter_Concept$RF, false)).where((it) -> !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.DotExpression$yW) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(it), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.AsNodeOperation$Uq)));
     }
     return nodes;
   }

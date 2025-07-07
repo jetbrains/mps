@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelDevKitEvent;
 import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.smodel.event.SModelFileChangedEvent;
 import jetbrains.mps.smodel.event.SModelImportEvent;
 import jetbrains.mps.smodel.event.SModelLanguageEvent;
 import jetbrains.mps.smodel.event.SModelListener;
@@ -215,16 +214,6 @@ public abstract class ModelsEventsCollector {
     }
 
     @Override
-    public void beforeModelFileChanged(SModelFileChangedEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void modelFileChanged(SModelFileChangedEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
     public void propertyChanged(SModelPropertyEvent event) {
       listenerInvoked(event);
     }
@@ -275,8 +264,10 @@ public abstract class ModelsEventsCollector {
       checkNotDisposed();
 
       if (event != null) {
-        if (!myIsInCommand && !(event instanceof SModelFileChangedEvent)) {
-          throw new IllegalStateException("Event outside of a command");
+        if (!myIsInCommand) {
+          // just ignore, now we can get here inside a write (no longer requirement to modify model inside a command)
+          // and I assume intention of this ModelsEventsCollector was to figure out changes during command only
+          return;
         }
         synchronized (myEventsLock) {
           myEvents.add(event);

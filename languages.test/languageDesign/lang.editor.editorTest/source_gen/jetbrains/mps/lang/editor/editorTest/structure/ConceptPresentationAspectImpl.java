@@ -52,6 +52,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DeleteLineTestRoot;
   private ConceptPresentation props_DeleteWrapperChild;
   private ConceptPresentation props_DeleteWrapperRoot;
+  private ConceptPresentation props_FactoryElement;
+  private ConceptPresentation props_FactoryNode;
+  private ConceptPresentation props_FactoryTop;
   private ConceptPresentation props_FoldedCell;
   private ConceptPresentation props_FoldingContainer;
   private ConceptPresentation props_Foo;
@@ -449,6 +452,27 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_DeleteWrapperRoot = cpb.create();
         }
         return props_DeleteWrapperRoot;
+      case LanguageConceptSwitch.FactoryElement:
+        if (props_FactoryElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("FactoryElement");
+          props_FactoryElement = cpb.create();
+        }
+        return props_FactoryElement;
+      case LanguageConceptSwitch.FactoryNode:
+        if (props_FactoryNode == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("FactoryNode");
+          props_FactoryNode = cpb.create();
+        }
+        return props_FactoryNode;
+      case LanguageConceptSwitch.FactoryTop:
+        if (props_FactoryTop == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("FactoryTop");
+          props_FactoryTop = cpb.create();
+        }
+        return props_FactoryTop;
       case LanguageConceptSwitch.FoldedCell:
         if (props_FoldedCell == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

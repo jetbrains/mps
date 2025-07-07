@@ -8,19 +8,25 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.IdeBundle;
-import javax.swing.tree.TreeNode;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.ide.ui.tree.DiscoveryValueProvider;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import java.util.List;
+import java.util.stream.Collectors;
 import com.intellij.openapi.ui.Messages;
 import java.util.Objects;
-import org.jetbrains.mps.openapi.module.ModelAccess;
-import jetbrains.mps.project.StandaloneMPSProject;
-import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.undo.NamedCommand;
+import com.intellij.openapi.command.undo.DocumentReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import com.intellij.openapi.command.undo.UndoManager;
+import com.intellij.openapi.command.undo.UndoableAction;
+import com.intellij.openapi.command.undo.UnexpectedUndoException;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/142393105344666009", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -39,7 +45,7 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText(IdeBundle.message("actions.virtual.package.rename.on.modules.text"));
-    return ((TreeNode) MapSequence.fromMap(_params).get("treeNode")) instanceof NamespaceTextNode && RenameModulesVirtualFolder_Action.this.getProjectPane(_params) != null && !(((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).isFinalName()) && ((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).hasModulesUnder();
+    return !(Sequence.fromIterable(Sequence.fromStream(((DiscoveryValueProvider) MapSequence.fromMap(_params).get("selectedObject")).discoverValuesOfType(SModule.class))).isEmpty());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -58,9 +64,22 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
       }
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
-      MapSequence.fromMap(_params).put("treeNode", p);
+      Object p = event.getData(MPSCommonDataKeys.VALUE);
+      MapSequence.fromMap(_params).put("selectedValue", p);
       if (p == null) {
+        return false;
+      }
+      if (p != null && !(p instanceof VirtualFolder.Modules)) {
+        return false;
+      }
+    }
+    {
+      Object p = event.getData(MPSCommonDataKeys.USER_OBJECT);
+      MapSequence.fromMap(_params).put("selectedObject", p);
+      if (p == null) {
+        return false;
+      }
+      if (p != null && !(p instanceof DiscoveryValueProvider)) {
         return false;
       }
     }
@@ -75,8 +94,8 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final NamespaceTextNode node = ((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode")));
-    final String originalVFolder = node.getNamespace();
+    final String originalVFolder = ((VirtualFolder.Modules) MapSequence.fromMap(_params).get("selectedValue")).getName();
+    final List<SModule> modules = ((DiscoveryValueProvider) MapSequence.fromMap(_params).get("selectedObject")).discoverValuesOfType(SModule.class).collect(Collectors.<SModule>toList());
 
     final String modifiedVFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.virtual.package.rename.on.modules.title"), null, originalVFolder, null);
 
@@ -85,16 +104,47 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
       return;
     }
 
-    final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-    modelAccess.executeCommandInEDT(new Runnable() {
+    final MPSProject mpsProject = ((MPSProject) MapSequence.fromMap(_params).get("project"));
+    NamedCommand command = new NamedCommand("Rename virtual folder to " + modifiedVFolder, true) {
+      @Override
       public void run() {
-        final StandaloneMPSProject mpsProject = (StandaloneMPSProject) ((MPSProject) MapSequence.fromMap(_params).get("project"));
-        for (SModule module : ListSequence.fromList(node.getModulesUnder())) {
-          mpsProject.setFolderFor(module, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getFolderFor(module), originalVFolder, modifiedVFolder));
+        final DocumentReference[] myDocumentReferences = NamespaceInternalActionsUtil.obtainDocumentReferences(modules, mpsProject);
+        for (SModule module : ListSequence.fromList(modules)) {
+          mpsProject.setVirtualFolder(module, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getVirtualFolder(module), originalVFolder, modifiedVFolder));
         }
-        RenameModulesVirtualFolder_Action.this.getProjectPane(_params).rebuild();
+
+        UndoManager um = UndoManager.getInstance(mpsProject.getProject());
+        um.undoableActionPerformed(new UndoableAction() {
+          @Override
+          public void undo() throws UnexpectedUndoException {
+            for (SModule m : modules) {
+              mpsProject.setVirtualFolder(m, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getVirtualFolder(m), modifiedVFolder, originalVFolder));
+            }
+            ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
+          }
+
+          @Override
+          public void redo() throws UnexpectedUndoException {
+            for (SModule m : modules) {
+              mpsProject.setVirtualFolder(m, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getVirtualFolder(m), originalVFolder, modifiedVFolder));
+            }
+            ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
+          }
+
+          @Override
+          public DocumentReference[] getAffectedDocuments() {
+            return myDocumentReferences;
+          }
+
+          @Override
+          public boolean isGlobal() {
+            return true;
+          }
+        });
       }
-    });
+    };
+    mpsProject.getRepository().getModelAccess().executeCommand(command);
+    RenameModulesVirtualFolder_Action.this.getProjectPane(_params).rebuild();
   }
   private ProjectPane getProjectPane(final Map<String, Object> _params) {
     return ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project")));

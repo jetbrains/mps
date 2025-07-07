@@ -9,14 +9,15 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
-import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TextualFactories {
   public static class NodeFactory_9189109070801858976 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode l = sampleNode;
         if (SNodeOperations.isInstanceOf(l, CONCEPTS.Letter$kd)) {
@@ -28,7 +29,7 @@ public class TextualFactories {
     }
   }
   public static class NodeFactory_3129707072769713286 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode p = sampleNode;
         if (SNodeOperations.isInstanceOf(p, CONCEPTS.Paragraph$XF)) {
@@ -39,17 +40,20 @@ public class TextualFactories {
     }
   }
   public static class NodeFactory_1094247804558658408 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode l = sampleNode;
         if (SNodeOperations.isInstanceOf(l, CONCEPTS.Line$yC)) {
           Line__BehaviorDescriptor.addAllTextElements_idWJz9iAYdPl.invoke(newNode, Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(l));
         }
       }
+      if ((sampleNode == null)) {
+        Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(newNode, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
+      }
     }
   }
   public static class NodeFactory_6746006958027564752 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode p = sampleNode;
         if (SNodeOperations.isInstanceOf(p, CONCEPTS.IndentedPoint$BF)) {

@@ -17,7 +17,6 @@ import jetbrains.jetpad.projectional.diagram.view.block.BlockView;
 import jetbrains.jetpad.values.Color;
 import jetbrains.jetpad.projectional.diagram.view.RootTrait;
 import jetbrains.jetpad.projectional.diagram.view.MoveHandler;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.jetpad.projectional.view.ViewTraitBuilder;
 import jetbrains.jetpad.projectional.view.ViewEvents;
 import jetbrains.jetpad.projectional.view.ViewEventHandler;
@@ -106,11 +105,7 @@ public abstract class BlockCell extends AbstractJetpadCell {
         requestRelayout();
       }
     });
-    configureView(blockView, new _FunctionTypes._return_P0_E0<Boolean>() {
-      public Boolean invoke() {
-        return true;
-      }
-    });
+    configureView(blockView, () -> true);
 
     blockView.prop(JetpadUtils.CONNECTABLE).set(Boolean.TRUE);
     blockView.rect.prop(JetpadUtils.SOURCE).set(getSNode());

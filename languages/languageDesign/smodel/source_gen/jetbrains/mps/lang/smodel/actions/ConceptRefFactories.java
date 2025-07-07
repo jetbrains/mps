@@ -13,14 +13,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ConceptRefFactories {
   public static class NodeFactory_2356801005208152816 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ConceptIdRefExpression$h$)) {
         SLinkOperations.setTarget(newNode, LINKS.conceptDeclaration$8CqL, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ConceptIdRefExpression$h$), LINKS.conceptDeclaration$l13w));
       }
     }
   }
   public static class NodeFactory_3634671212091137140 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ConceptRefExpression$Aa)) {
         SLinkOperations.setTarget(newNode, LINKS.conceptDeclaration$l13w, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ConceptRefExpression$Aa), LINKS.conceptDeclaration$8CqL));
       }

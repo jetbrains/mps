@@ -14,9 +14,7 @@ import java.awt.HeadlessException;
 import javax.swing.tree.DefaultMutableTreeNode;
 import jetbrains.mps.ide.platform.modeltree.ModelTreeNode;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.ide.platform.modeltree.ModelTreeBuilder;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
@@ -65,15 +63,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private DefaultMutableTreeNode createRootNode() {
     ModelTreeNode rootNode = new ModelTreeNode("Root");
-    for (SModel descriptor : SetSequence.fromSet(myVisibleModels).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return !(SModelStereotype.isStubModel(it));
-      }
-    }).sort(new ISelector<SModel, String>() {
-      public String select(SModel it) {
-        return it.getReference().toString();
-      }
-    }, true)) {
+    for (SModel descriptor : SetSequence.fromSet(myVisibleModels).where((it) -> !(SModelStereotype.isStubModel(it))).sort((it) -> it.getReference().toString(), true)) {
       rootNode.add(ModelTreeBuilder.createSModelTreeNode(descriptor));
     }
     return rootNode;
@@ -85,11 +75,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   @Override
   protected JComponent createCenterPanel() {
     final Wrappers._T<DefaultMutableTreeNode> rootNode = new Wrappers._T<DefaultMutableTreeNode>();
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        rootNode.value = createRootNode();
-      }
-    });
+    myProject.getRepository().getModelAccess().runReadAction(() -> rootNode.value = createRootNode());
     myTree = new SimpleTree(new DefaultTreeModel(rootNode.value));
     myTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
     myTree.setCellRenderer(new ModelTreeCellRenderer());
@@ -109,11 +95,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       private void initModelDescriptorNode(ModelTreeNode node, SModel descriptor) {
         SModel sModel = descriptor;
-        for (SNode nextRoot : Sequence.fromIterable(ModelTreeBuilder.sortChildNodes(ListSequence.fromList(SModelOperations.roots(sModel, CONCEPTS.BaseConcept$gP)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return isAcceptable(it);
-          }
-        })))) {
+        for (SNode nextRoot : Sequence.fromIterable(ModelTreeBuilder.sortChildNodes(ListSequence.fromList(SModelOperations.roots(sModel, CONCEPTS.BaseConcept$gP)).where((it) -> isAcceptable(it))))) {
           ModelTreeNode modelRootTreeNode = ModelTreeBuilder.createSNodeTreeNode(nextRoot);
           modelRootTreeNode.setLeafPosition(true);
           ModelTreeBuilder.insertChildSNodeTreeNode(node, modelRootTreeNode, SPropertyOperations.getString(nextRoot, PROPS.virtualPackage$EkXl));

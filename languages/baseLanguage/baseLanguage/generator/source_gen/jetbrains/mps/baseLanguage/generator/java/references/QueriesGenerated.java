@@ -21,7 +21,6 @@ import jetbrains.mps.generator.template.WeavingAnchorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import java.util.Map;
@@ -300,12 +299,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_context.getMainContextNode(), CONCEPTS.StatementList$m_), LINKS.statement$53DE)).first();
   }
   public static void mappingScript_CodeBlock_2(final MappingScriptContext _context) {
-    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.PassByRefExpression$$K)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode reqVar) {
-        SNode decl = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(reqVar, LINKS.expr$KVqL), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
-        if (SNodeOperations.isInstanceOf(decl, CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(decl, CONCEPTS.ParameterDeclaration$RG)) {
-          LocalDeclarationToReferenceMarker.mark(_context, decl);
-        }
+    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.PassByRefExpression$$K)).visitAll((reqVar) -> {
+      SNode decl = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(reqVar, LINKS.expr$KVqL), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
+      if (SNodeOperations.isInstanceOf(decl, CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(decl, CONCEPTS.ParameterDeclaration$RG)) {
+        LocalDeclarationToReferenceMarker.mark(_context, decl);
       }
     });
   }

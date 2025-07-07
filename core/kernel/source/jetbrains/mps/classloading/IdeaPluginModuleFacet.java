@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,10 @@
 package jetbrains.mps.classloading;
 
 /**
+ * @deprecated about cease to exist in a coming version of MPS
  * evgeny, 2/28/13
  */
+@Deprecated(since = "2022.3", forRemoval = true)
 public interface IdeaPluginModuleFacet extends CustomClassLoadingFacet {
   String FACET_TYPE = "ideaPlugin";
 

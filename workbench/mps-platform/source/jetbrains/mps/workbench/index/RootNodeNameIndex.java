@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@ import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromPath;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.IndexAwareModelFactory;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
@@ -43,8 +44,6 @@ import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.workbench.goTo.index.SNodeDescriptor;
 import jetbrains.mps.workbench.index.ModelRootsData.Entry;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -70,7 +69,7 @@ import java.util.stream.Collectors;
 public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelRootsData> {
   @NonNls
   private static final ID<Integer, ModelRootsData> NAME = ID.create("mps.RootNodeName");
-  private static final Logger LOG = LogManager.getLogger(RootNodeNameIndex.class);
+  private static final Logger LOG = Logger.getLogger(RootNodeNameIndex.class);
   private static final Key<SModelData> PARSED_MODEL = new Key<>("parsed-model");
 
   public static SModelData doModelParsing(ComponentHost mpsPlatform, FileContent inputData) {
@@ -142,7 +141,7 @@ public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelR
     }
     if (descriptors.size() > 1) {
       final String m = descriptors.stream().map(ModelRootsData::getModelReference).map(Objects::toString).collect(Collectors.joining(","));
-      LOG.warn(String.format("Unexpected %d sets of data inside a single model file: %s", descriptors.size(), m));
+      LOG.warning(String.format("Unexpected %d sets of data inside a single model file: %s", descriptors.size(), m));
     }
     ModelRootsData modelEntry = descriptors.iterator().next(); // key is unique for the model
     Collection<Entry> entries = modelEntry.getEntries();

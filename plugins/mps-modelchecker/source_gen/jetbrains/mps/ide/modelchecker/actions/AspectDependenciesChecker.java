@@ -6,9 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.modelchecker.platform.actions.SpecificChecker;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.project.Project;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.util.PathManager;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -29,13 +27,12 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.extapi.persistence.FileDataSource;
+import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)/2843918448603437373", model = "r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)")
 public class AspectDependenciesChecker extends SpecificChecker {
@@ -45,13 +42,9 @@ public class AspectDependenciesChecker extends SpecificChecker {
   private static int WORKBENCH = 3;
   private static int OTHER = 4;
   private final Project myProject;
-  private final SModule coreModule;
-  private final SModule editorModule;
   private final String languagesUtilPath;
   public AspectDependenciesChecker(@NotNull Project mpsProject) {
     myProject = mpsProject;
-    this.coreModule = PersistenceFacade.getInstance().createModuleReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)").resolve(mpsProject.getRepository());
-    this.editorModule = PersistenceFacade.getInstance().createModuleReference("1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)").resolve(mpsProject.getRepository());
     this.languagesUtilPath = PathManager.getHomePath() + "/languages/util/";
   }
   @Override
@@ -78,11 +71,7 @@ public class AspectDependenciesChecker extends SpecificChecker {
         }
         SNode targetNode = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
         if (targetNode == null) {
-          ListSequence.fromList(results).addElement(new UnresolvedReferenceReportItem(ref, new Runnable() {
-            public void run() {
-              ResolverComponent.getInstance().resolve(ref, myProject.getRepository());
-            }
-          }));
+          ListSequence.fromList(results).addElement(new UnresolvedReferenceReportItem(ref, () -> ResolverComponent.getInstance().resolve(ref, myProject.getRepository())));
           continue;
         }
 
@@ -158,49 +147,16 @@ public class AspectDependenciesChecker extends SpecificChecker {
       if (moduleFqName.equals("MPS.Workbench")) {
         return WORKBENCH;
       }
-      if (moduleFqName.equals("MPS.Classpath")) {
-        SNode refTargetRoot = reference.getTargetNode().getContainingRoot();
-        if (SNodeOperations.isInstanceOf(refTargetRoot, CONCEPTS.Classifier$Ix)) {
-          String cName = SPropertyOperations.getString(SNodeOperations.cast(refTargetRoot, CONCEPTS.Classifier$Ix), PROPS.name$MnvL);
-          String modelName = model.getModelName();
-          if (findInModule(coreModule, modelName, cName)) {
-            return CORE;
-          }
-          if (findInModule(editorModule, modelName, cName)) {
-            return EDITOR;
-          }
-          return WORKBENCH;
-        }
-        return OTHER;
-      }
 
-      Solution sol = (Solution) module;
-      switch (sol.getKind()) {
-        case NONE:
-          return OTHER;
-        case PLUGIN_CORE:
-          return CORE;
-        case PLUGIN_EDITOR:
-          return EDITOR;
-        case PLUGIN_OTHER:
-          return WORKBENCH;
-        default:
+      if (jetbrains.mps.project.SModuleOperations.canSupplyExtensionsForMPS(module)) {
+        return WORKBENCH;
       }
+      if (jetbrains.mps.project.SModuleOperations.classloadingManagedByMPS(module)) {
+        return CORE;
+      }
+      return OTHER;
     }
     return OTHER;
-  }
-  public static boolean findInModule(SModule module, String modelName, String rootName) {
-    for (SModel d : module.getModels()) {
-      if (d.getModelName().equals(modelName)) {
-        for (SNode _n : d.getRootNodes()) {
-          SNode n = (SNode) _n;
-          if (SNodeOperations.isInstanceOf(n, CONCEPTS.Classifier$Ix) && SPropertyOperations.getString(SNodeOperations.cast(n, CONCEPTS.Classifier$Ix), PROPS.name$MnvL).equals(rootName)) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
   }
   public static String kindToString(int kind) {
     switch (kind) {
@@ -217,10 +173,5 @@ public class AspectDependenciesChecker extends SpecificChecker {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ReferenceMacro$30 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro");
-    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

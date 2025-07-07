@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.javadoc.migration;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -17,42 +16,18 @@ public class JavaDocConverter {
     }
   }
   private static void convertCommonTags(final SNode comment) {
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.author$lgjQ)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
-      }
-    });
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.since$M6dH)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
-      }
-    });
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.version$M6sI)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
-      }
-    });
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.see$H9Bg)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.author$lgjQ)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it));
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.since$M6dH)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it));
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.version$M6sI)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it));
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.see$H9Bg)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it));
   }
   public static void convertFieldTags(SNode comment) {
     convertTags(comment);
   }
   public static void convertMethodTags(final SNode comment) {
     convertCommonTags(comment);
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.param$LRA1)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
-      }
-    });
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.throwsTag$gRkU)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.param$LRA1)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it));
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.throwsTag$gRkU)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it));
     if ((SLinkOperations.getTarget(comment, LINKS.deprecated$M8kQ) != null)) {
       ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(SLinkOperations.getTarget(comment, LINKS.deprecated$M8kQ));
     }
@@ -62,11 +37,7 @@ public class JavaDocConverter {
   }
   public static void convertClassifierTags(final SNode comment) {
     convertCommonTags(comment);
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.param$Wb3e)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.param$Wb3e)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it));
     if ((SLinkOperations.getTarget(comment, LINKS.deprecated$M8kQ) != null)) {
       ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(SLinkOperations.getTarget(comment, LINKS.deprecated$M8kQ));
     }

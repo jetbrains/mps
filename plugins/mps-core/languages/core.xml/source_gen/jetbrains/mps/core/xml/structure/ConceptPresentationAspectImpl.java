@@ -32,6 +32,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_XmlProcessingInstruction;
   private ConceptPresentation props_XmlProlog;
   private ConceptPresentation props_XmlPrologElement;
+  private ConceptPresentation props_XmlSingleLineText;
   private ConceptPresentation props_XmlText;
   private ConceptPresentation props_XmlTextValue;
   private ConceptPresentation props_XmlValuePart;
@@ -205,6 +206,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_XmlPrologElement = cpb.create();
         }
         return props_XmlPrologElement;
+      case LanguageConceptSwitch.XmlSingleLineText:
+        if (props_XmlSingleLineText == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("single line");
+          cpb.rawPresentation("single line text");
+          props_XmlSingleLineText = cpb.create();
+        }
+        return props_XmlSingleLineText;
       case LanguageConceptSwitch.XmlText:
         if (props_XmlText == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

@@ -13,10 +13,8 @@ import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -41,11 +39,7 @@ public final class ClassContainer {
   public ClassContainer(@NotNull SNode classifier, TemplateQueryContext genContext) {
     myClassifier = classifier;
     myGenContext = genContext;
-    SetSequence.fromSet(myUsedNestedNames).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(classifier)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }));
+    SetSequence.fromSet(myUsedNestedNames).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(classifier)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)));
   }
 
   @Nullable
@@ -79,11 +73,7 @@ public final class ClassContainer {
       myGenContext.showWarningMessage(expr, "Provide the unique name for the field");
       return null;
     }
-    SNode field = Sequence.fromIterable(Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(container)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name);
-      }
-    }).first();
+    SNode field = Sequence.fromIterable(Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(container)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name)).first();
     if (field == null) {
       field = createField(expr, name);
       ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.member$L_2d)).addElement(field);

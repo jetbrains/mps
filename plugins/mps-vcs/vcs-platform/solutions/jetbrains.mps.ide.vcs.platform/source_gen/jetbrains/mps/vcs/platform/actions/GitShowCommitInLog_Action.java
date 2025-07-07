@@ -77,8 +77,11 @@ public class GitShowCommitInLog_Action extends BaseAction {
   private AnnotatedCellMessage getCellMessage(final AnActionEvent event) {
     return VcsActionsUtil.getMessageForCell(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), event.getData(MPSEditorDataKeys.EDITOR_CELL));
   }
-  /*package*/ boolean isApplicable(final AnActionEvent event) {
+  private boolean isApplicable(final AnActionEvent event) {
     if (GitShowCommitInLog_Action.this.getCellMessage(event) == null) {
+      return false;
+    }
+    if (GitShowCommitInLog_Action.this.getCellMessage(event).getCommitsGraphNode().isLocalRevision()) {
       return false;
     }
     AnnotationColumn annotationColumn = VcsActionsUtil.getAnnotationColumn(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));

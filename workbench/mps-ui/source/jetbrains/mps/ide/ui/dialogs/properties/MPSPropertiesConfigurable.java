@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.ide.ui.dialogs.properties;
 import com.intellij.icons.AllIcons;
 import com.intellij.icons.AllIcons.Actions;
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.CommonShortcuts;
 import com.intellij.openapi.actionSystem.ShortcutSet;
 import com.intellij.openapi.options.Configurable;
@@ -26,6 +27,7 @@ import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.ui.AnActionButton;
 import com.intellij.ui.AnActionButtonRunnable;
+import com.intellij.ui.AnActionButtonUpdater;
 import com.intellij.ui.BooleanTableCellRenderer;
 import com.intellij.ui.ErrorLabel;
 import com.intellij.ui.IdeBorderFactory;
@@ -59,7 +61,6 @@ import jetbrains.mps.ide.ui.dialogs.properties.tables.models.UsedLangsTableModel
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NotCondition;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -87,8 +88,9 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Configuration page consisting of {@link Tab tabs}.
@@ -96,9 +98,11 @@ import java.util.List;
 public abstract class MPSPropertiesConfigurable implements Configurable {
   private final Disposable myDisposable = Disposer.newDisposable(MPSPropertiesConfigurable.class.getName());
   private final TabbedPaneWrapper myTabbedPaneWrapper = new TabbedPaneWrapper(myDisposable);
-  private List<Tab> myTabs = new ArrayList<>();
+  private final List<Tab> myTabs = new ArrayList<>();
   protected final Project myMPSProject;
   private DialogWrapper myParentForCallBack = null;
+
+  protected boolean myIsReadOnly;
 
   public MPSPropertiesConfigurable(Project project) {
     myMPSProject = project;
@@ -115,6 +119,10 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     ThreadUtils.runInUIThreadNoWait(() -> myParentForCallBack.doCancelAction());
   }
 
+  protected final void setReadOnly(boolean isReadOnly) {
+    myIsReadOnly = isReadOnly;
+  }
+
   @Override
   public String getHelpTopic() {
     return null;
@@ -124,12 +132,13 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
    * Subclasses may choose whether to instantiate initial tabs on demand with {@link #createInitialTabs()}
    * or register them at once with this method. Supplied tabs would get a chance to build UI
    * at a proper moment some time later (with {@link Modifiable#init()} call.
+   * <p>FWIW, tab initialization happens inside EDT and with model read.
    * <p>
    * The method may be invoked few times before the UI is created, registered tabs sum up.
    *
    * @param tabs initial set of tabs
    */
-  protected void registerTabs(Tab... tabs) {
+  protected final void registerTabs(Tab... tabs) {
     myTabs.addAll(Arrays.asList(tabs));
   }
 
@@ -144,10 +153,12 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
 
   @Override
   public final JComponent createComponent() {
-    for (Tab tab : createInitialTabs()) {
-      tab.init();
-      addTab(tab);
-    }
+    myMPSProject.getModelAccess().runReadAction(() -> {
+      for (Tab tab : createInitialTabs()) {
+        tab.init();
+        addTab(tab);
+      }
+    });
     return myTabbedPaneWrapper.getComponent();
   }
 
@@ -192,6 +203,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     }
 
     if (!myTabs.contains(tab)) {
+
       myTabs.add(tab);
     }
     if (myTabbedPaneWrapper.indexOfComponent(tab.getTabComponent()) < 0) {
@@ -241,13 +253,14 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
 
   @Override
   public boolean isModified() {
-    for (Tab tab : myTabs) {
-      if (tab.isModified()) {
-        return true;
+    return myMPSProject.getModelAccess().computeReadAction(() -> {
+      for (Tab tab : myTabs) {
+        if (tab.isModified()) {
+          return true;
+        }
       }
-    }
-
-    return false;
+      return false;
+    });
   }
 
   @Override
@@ -427,6 +440,11 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
       if (findActionButton != null) {
         decorator.addExtraAction(findActionButton);
       }
+      if (myIsReadOnly) {
+        final AnActionButtonUpdater disableEdit = (u) -> false;
+        decorator.setAddActionUpdater(disableEdit);
+        decorator.setRemoveActionUpdater(disableEdit);
+      }
 
       decorator.setPreferredSize(new Dimension(500, 300));
 
@@ -534,25 +552,33 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
       return myUsedLangsTableModel.isModified();
     }
 
-    protected final List<SLanguage> getSelectedLanguages() {
-      final List<SLanguage> languages = new LinkedList<>();
-      myMPSProject.getModelAccess().runReadAction(() -> {
-        for (int i : myUsedLangsTable.getSelectedRows()) {
-          Object value = myUsedLangsTableModel.getValueAt(i, UsedLangsTableModel.ITEM_COLUMN);
-          if (value instanceof Import) {
-            final Import entry = (Import) value;
-            if (entry.myLanguage != null) {
-              languages.add(entry.myLanguage);
-            } else {
-              final SModule devkit = entry.myDevKit.resolve(myMPSProject.getRepository());
-              if (devkit instanceof DevKit) {
-                languages.addAll(IterableUtil.asCollection(((DevKit) devkit).getAllExportedLanguageIds()));
-              }
+    protected final List<SLanguage> toLanguages(Collection<Import> entries) {
+      ArrayList<SLanguage> rv = new ArrayList<>();
+      ArrayList<SModuleReference> devkits = new ArrayList<>();
+      for (Import entry : entries) {
+        if (entry.myLanguage != null) {
+          rv.add(entry.myLanguage);
+        } else {
+          devkits.add(entry.myDevKit);
+        }
+      }
+      if (!devkits.isEmpty()) {
+        final SRepository repo = myMPSProject.getRepository();
+        repo.getModelAccess().runReadAction(() -> {
+          for (SModuleReference mr : devkits) {
+            final SModule devkit = mr.resolve(repo);
+            if (devkit instanceof DevKit) {
+              ((DevKit) devkit).getAllExportedLanguageIds().forEach(rv::add);
             }
           }
-        }
-      });
-      return languages;
+        });
+      }
+      return rv;
+    }
+
+    protected final List<SLanguage> getSelectedLanguages() {
+      final IntStream selectedRows = IntStream.of(myUsedLangsTable.getSelectedRows());
+      return toLanguages(selectedRows.mapToObj(myUsedLangsTableModel::getValueAt).collect(Collectors.toList()));
     }
   }
 
@@ -561,9 +587,15 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
 
     public FindActionButton(JBTable table) {
       myTable = table;
-      this.getTemplatePresentation().setEnabledAndVisible(true);
       this.getTemplatePresentation().setIcon(Actions.Find);
       this.getTemplatePresentation().setText(PropertiesBundle.message("model.dependencies.find.text"));
+      setEnabled(true);
+      setVisible(true);
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
     }
 
     @Override
@@ -594,20 +626,16 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     }
 
     @Override
-    protected int convertIndexToModel(int viewIndex) {
-      return myComponent.convertRowIndexToModel(viewIndex);
+    protected int getElementCount() {
+      final TableModel tableModel = myComponent.getModel();
+      return tableModel.getRowCount();
     }
 
-    @NotNull
     @Override
-    public Object[] getAllElements() {
+    protected Object getElementAt(int viewIndex) {
       final TableModel tableModel = myComponent.getModel();
-      final int count = tableModel.getRowCount();
-      Object[] elements = new Object[count];
-      for (int idx = 0; idx < count; idx++) {
-        elements[idx] = tableModel.getValueAt(idx, myColumnIndex);
-      }
-      return elements;
+      // XXX not sure if need convertRowIndexToModel? I assume as long as I query tableModel than it's not viewIndex.
+      return tableModel.getValueAt(myComponent.convertRowIndexToModel(viewIndex), myColumnIndex);
     }
 
     @Override

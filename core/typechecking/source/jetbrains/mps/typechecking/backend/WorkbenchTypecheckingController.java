@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,12 @@
  */
 package jetbrains.mps.typechecking.backend;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.TypecheckingSession.Handle;
-import org.apache.log4j.Logger;
+import jetbrains.mps.typechecking.backend.TypecheckingProvider.AuxDataContainer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -27,6 +28,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Handles the sessions requested by the editor.
@@ -34,7 +36,7 @@ import java.util.Map;
  *
  * @author Fedor Isakov
  */
-public class WorkbenchTypecheckingController extends DefaultTypecheckingController {
+public class WorkbenchTypecheckingController extends DefaultTypecheckingController implements ParametersDiscoverable {
 
   private static final Logger LOG = Logger.getLogger(WorkbenchTypecheckingController.class);
 
@@ -46,10 +48,7 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
 
   @Override
   public void dispose() {
-    for (TypecheckingSessionImpl session : myRootSessions.values()) {
-      session.dispose();
-    }
-    myRootSessions.clear();
+    disposeAllSessions();
   }
 
   @NotNull
@@ -64,9 +63,26 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
     }
   }
 
+  @Override
+  public Map<String, ?> discoverParameters(SNode anchor) {
+    SNode containingRoot = anchor.getContainingRoot();
+    TypecheckingSessionImpl session = myRootSessions.get(new SNodeHandle(containingRoot));
+    if (session == null) {
+      // sometimes root is not the "containing root"
+      session = myRootSessions.get(new SNodeHandle(anchor));
+    }
+    if (session != null) {
+      return session.flags().getParamsMap();
+    }
+    return myRootSessions.values().stream()
+                         .map((s) -> s.flags().getParamsMap())
+                         .filter(Objects::nonNull).findFirst()
+                         .orElse(null);
+  }
+
   @NotNull
   @Override
-  protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
+  protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept, Flags flags) {
     SNode containingRoot = src.getContainingRoot();
     TypecheckingSessionImpl session = myRootSessions.get(new SNodeHandle(containingRoot));
     if (session == null) {
@@ -77,22 +93,48 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
       return session.getQueries(src, trg, trgConcept);
 
     } else {
-      return super.getQueries(src, trg, trgConcept);
+      return super.getQueries(src, trg, trgConcept, flags);
     }
+  }
+
+  @Override
+  protected AuxDataContainer getDataContainer(TypecheckingProvider<?> provider) {
+    return super.getDataContainer(provider);
+  }
+
+  private void disposeAllSessions() {
+    for (TypecheckingSessionImpl session : myRootSessions.values()) {
+      session.dispose();
+    }
+    myRootSessions.clear();
+    super.dispose();
   }
 
   private synchronized TypecheckingSessionImpl getOrCreateSession(Flags flags) {
     return myRootSessions.computeIfAbsent(new SNodeHandle(flags.getRoot()),
-                                          (key) -> new TypecheckingSessionImpl(this, flags));
+                                          (key) -> new TypecheckingSessionImpl(this, flags) {
+                                            @Override
+                                            public <C> C getData(Class<? extends C> dataClass) {
+                                              return WorkbenchTypecheckingController.this.getData(dataClass);
+                                            }
+                                          });
   }
 
-  private synchronized void releaseSession(@NotNull TypecheckingSessionImpl session, boolean forceDispose) {
+  private synchronized void releaseSession(@NotNull TypecheckingSessionImpl session, boolean forceRemoval) {
     SNodeHandle key = new SNodeHandle(session.flags().getRoot());
-    TypecheckingSessionImpl knownSession = myRootSessions.get(key);
-    if (session != knownSession) {
-      LOG.error("Uknown session: " + session, new IllegalArgumentException());
-    } else if (forceDispose || session.decUsages() <= 0) {
-      myRootSessions.remove(key).dispose();
+    if (!session.isDisposed() && !session.isOrphaned()) {
+      if (session != myRootSessions.get(key)) {
+        LOG.error("Unknown session: " + session, new IllegalArgumentException());
+
+      } else if (session.decUsages() <= 0) {
+        myRootSessions.remove(key);
+        session.dispose();
+
+      } else if (forceRemoval) {
+        // the session may still be in use
+        myRootSessions.remove(key);
+        session.disown();
+      }
     }
   }
 

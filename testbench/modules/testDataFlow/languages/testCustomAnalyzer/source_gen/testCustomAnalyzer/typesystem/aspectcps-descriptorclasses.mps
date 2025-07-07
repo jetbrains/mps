@@ -7,12 +7,12 @@
   <languages />
   <imports>
     <import index="6mj8" ref="r:6ac8df16-203b-470e-8af3-57784a2fb1f4(testCustomAnalyzer.typesystem)" />
-    <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
+    <import index="9fia" ref="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)" />
     <import index="2gg1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors(MPS.Core/)" />
-    <import index="dau9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)" />
     <import index="zavc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.messageTargets(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="8qxk" ref="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)" />
     <import index="qurh" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.typesystem.runtime(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
@@ -115,7 +115,7 @@
       </concept>
       <concept id="1081506762703" name="jetbrains.mps.baseLanguage.structure.GreaterThanExpression" flags="nn" index="3eOSWO" />
       <concept id="1081506773034" name="jetbrains.mps.baseLanguage.structure.LessThanExpression" flags="nn" index="3eOVzh" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -134,7 +134,7 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
@@ -197,7 +197,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -478,7 +478,7 @@
             <property role="TrG5h" value="result" />
             <uo k="s:originTrace" v="n:6628579460233858816" />
             <node concept="3uibUv" id="1A" role="1tU5fm">
-              <ref role="3uigEE" to="1fjm:~AnalysisResult" resolve="AnalysisResult" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8trJ" resolve="AnalysisResult" />
               <uo k="s:originTrace" v="n:6628579460233858783" />
               <node concept="3uibUv" id="1C" role="11_B2D">
                 <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
@@ -492,7 +492,7 @@
                 <uo k="s:originTrace" v="n:6628579460233858818" />
               </node>
               <node concept="liA8E" id="1E" role="2OqNvi">
-                <ref role="37wK5l" to="1fjm:~AnalyzerRunner.analyze()" resolve="analyze" />
+                <ref role="37wK5l" to="8qxk:3yaa4ph8u6A" resolve="analyze" />
                 <uo k="s:originTrace" v="n:6628579460233858819" />
               </node>
             </node>
@@ -507,7 +507,7 @@
               <ref role="3uigEE" to="33ny:~List" resolve="List" />
               <uo k="s:originTrace" v="n:6628579460233866825" />
               <node concept="3uibUv" id="1I" role="11_B2D">
-                <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+                <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                 <uo k="s:originTrace" v="n:6628579460233866828" />
               </node>
             </node>
@@ -525,7 +525,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1K" role="2OqNvi">
-                <ref role="37wK5l" to="1fjm:~Program.getInstructions()" resolve="getInstructions" />
+                <ref role="37wK5l" to="8qxk:3yaa4ph8t$L" resolve="getInstructions" />
                 <uo k="s:originTrace" v="n:6628579460233866850" />
               </node>
             </node>
@@ -555,7 +555,7 @@
                     <uo k="s:originTrace" v="n:6628579460233869951" />
                   </node>
                   <node concept="liA8E" id="1X" role="2OqNvi">
-                    <ref role="37wK5l" to="1fjm:~AnalysisResult.get(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction)" resolve="get" />
+                    <ref role="37wK5l" to="8qxk:3yaa4ph8tsB" resolve="get" />
                     <uo k="s:originTrace" v="n:6628579460233869952" />
                     <node concept="2GrUjf" id="1Y" role="37wK5m">
                       <ref role="2Gs0qQ" node="1N" resolve="instruction" />
@@ -584,7 +584,7 @@
                         <uo k="s:originTrace" v="n:5783684243118792878" />
                       </node>
                       <node concept="liA8E" id="26" role="2OqNvi">
-                        <ref role="37wK5l" to="dau9:~Instruction.getSource()" resolve="getSource" />
+                        <ref role="37wK5l" to="9fia:3yaa4ph8tRD" resolve="getSource" />
                         <uo k="s:originTrace" v="n:5783684243118792879" />
                       </node>
                     </node>
@@ -971,7 +971,7 @@
             <property role="TrG5h" value="result" />
             <uo k="s:originTrace" v="n:2955426575106086747" />
             <node concept="3uibUv" id="3R" role="1tU5fm">
-              <ref role="3uigEE" to="1fjm:~AnalysisResult" resolve="AnalysisResult" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8trJ" resolve="AnalysisResult" />
               <uo k="s:originTrace" v="n:2955426575106086748" />
               <node concept="3uibUv" id="3T" role="11_B2D">
                 <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
@@ -985,7 +985,7 @@
                 <uo k="s:originTrace" v="n:2955426575106086751" />
               </node>
               <node concept="liA8E" id="3V" role="2OqNvi">
-                <ref role="37wK5l" to="1fjm:~AnalyzerRunner.analyze()" resolve="analyze" />
+                <ref role="37wK5l" to="8qxk:3yaa4ph8u6A" resolve="analyze" />
                 <uo k="s:originTrace" v="n:2955426575106086752" />
               </node>
             </node>
@@ -1000,7 +1000,7 @@
               <ref role="3uigEE" to="33ny:~List" resolve="List" />
               <uo k="s:originTrace" v="n:2955426575106086755" />
               <node concept="3uibUv" id="3Z" role="11_B2D">
-                <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+                <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                 <uo k="s:originTrace" v="n:2955426575106086756" />
               </node>
             </node>
@@ -1018,7 +1018,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="41" role="2OqNvi">
-                <ref role="37wK5l" to="1fjm:~Program.getInstructions()" resolve="getInstructions" />
+                <ref role="37wK5l" to="8qxk:3yaa4ph8t$L" resolve="getInstructions" />
                 <uo k="s:originTrace" v="n:2955426575106086761" />
               </node>
             </node>
@@ -1048,7 +1048,7 @@
                     <uo k="s:originTrace" v="n:2955426575106086769" />
                   </node>
                   <node concept="liA8E" id="4e" role="2OqNvi">
-                    <ref role="37wK5l" to="1fjm:~AnalysisResult.get(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction)" resolve="get" />
+                    <ref role="37wK5l" to="8qxk:3yaa4ph8tsB" resolve="get" />
                     <uo k="s:originTrace" v="n:2955426575106086770" />
                     <node concept="2GrUjf" id="4f" role="37wK5m">
                       <ref role="2Gs0qQ" node="44" resolve="instruction" />
@@ -1077,7 +1077,7 @@
                         <uo k="s:originTrace" v="n:2955426575106086778" />
                       </node>
                       <node concept="liA8E" id="4n" role="2OqNvi">
-                        <ref role="37wK5l" to="dau9:~Instruction.getSource()" resolve="getSource" />
+                        <ref role="37wK5l" to="9fia:3yaa4ph8tRD" resolve="getSource" />
                         <uo k="s:originTrace" v="n:2955426575106086779" />
                       </node>
                     </node>

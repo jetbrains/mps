@@ -5,11 +5,9 @@ package jetbrains.mps.baseLanguage.actions;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import jetbrains.mps.baseLanguage.behavior.IContainsStatementList__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -33,21 +31,13 @@ public class AlterStatementListContainerFactoryUtils {
 
   private static SNode getCondition(SNode node) {
     assert hasCondition(node);
-    return SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getChildren(node)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Expression$mB);
-      }
-    }).first(), CONCEPTS.Expression$mB);
+    return SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getChildren(node)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Expression$mB)).first(), CONCEPTS.Expression$mB);
   }
 
   public static void buildContainer(SNode sampleNode, final SNode newNode) {
     Iterable<SNode> commentedOutNodes = CommentUtil.uncommentAll(IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(sampleNode));
     try {
-      ListSequence.fromList(SLinkOperations.getChildren(IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(sampleNode), LINKS.statement$53DE)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          ListSequence.fromList(SLinkOperations.getChildren(IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(newNode), LINKS.statement$53DE)).addElement(it);
-        }
-      });
+      ListSequence.fromList(SLinkOperations.getChildren(IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(sampleNode), LINKS.statement$53DE)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(newNode), LINKS.statement$53DE)).addElement(it));
       if (hasCondition(sampleNode) && hasCondition(newNode)) {
         SNode originalCondition = getCondition(sampleNode);
         if (originalCondition != null) {
@@ -79,12 +69,13 @@ public class AlterStatementListContainerFactoryUtils {
         if (SNodeOperations.isInstanceOf(inputSequence, CONCEPTS.VariableReference$TC)) {
           inputSequenceDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(inputSequence, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
         } else {
-          inputSequenceDeclaration = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$41, null);
-          SLinkOperations.setTarget(inputSequenceDeclaration, LINKS.type$a1UY, TypecheckingFacade.getFromContext().getTypeOf(inputSequence));
-          SPropertyOperations.set(inputSequenceDeclaration, PROPS.name$MnvL, "inputCollection");
-          SLinkOperations.setTarget(inputSequenceDeclaration, LINKS.initializer$2twD, SNodeOperations.copyNode(inputSequence));
+          SNode lvd = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$41, null);
+          inputSequenceDeclaration = lvd;
+          SLinkOperations.setTarget(lvd, LINKS.type$a1UY, TypecheckingFacade.getFromContext().getTypeOf(inputSequence));
+          SPropertyOperations.set(lvd, PROPS.name$MnvL, "inputCollection");
+          SLinkOperations.setTarget(lvd, LINKS.initializer$2twD, SNodeOperations.copyNode(inputSequence));
           SNode v = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclarationStatement$4w, null);
-          SLinkOperations.setTarget(v, LINKS.localVariableDeclaration$RpjM, inputSequenceDeclaration);
+          SLinkOperations.setTarget(v, LINKS.localVariableDeclaration$RpjM, lvd);
           SNodeOperations.insertPrevSiblingChild(sampleNode, v);
         }
         if (SNodeOperations.isInstanceOf(collectionType, CONCEPTS.ArrayType$rh)) {
@@ -102,24 +93,8 @@ public class AlterStatementListContainerFactoryUtils {
           final SNode a = createArrayAccessExpression_kz5t2g_a0l0k0c0b0e();
           SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(a, LINKS.array$tTQe), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, inputSequenceDeclaration);
           SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(a, LINKS.index$LbBP), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, iteratorVar);
-          ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == loopVariable.value;
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.replaceWithAnother(it, SNodeOperations.copyNode(a));
-            }
-          });
-          ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), CONCEPTS.ForEachVariableReference$CR, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.variable$j6kA) == loopVariable.value;
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.replaceWithAnother(it, SNodeOperations.copyNode(a));
-            }
-          });
+          ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == loopVariable.value).visitAll((it) -> SNodeOperations.replaceWithAnother(it, SNodeOperations.copyNode(a)));
+          ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), CONCEPTS.ForEachVariableReference$CR, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variable$j6kA) == loopVariable.value).visitAll((it) -> SNodeOperations.replaceWithAnother(it, SNodeOperations.copyNode(a)));
 
         } else {
           SPropertyOperations.set(iteratorVar, PROPS.name$MnvL, "loopIterator");
@@ -143,24 +118,8 @@ public class AlterStatementListContainerFactoryUtils {
           SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, iteratorVar);
           ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), LINKS.statement$53DE)).insertElement(0, vd);
 
-          ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == loopVariable.value;
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM));
-            }
-          });
-          ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), CONCEPTS.ForEachVariableReference$CR, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.variable$j6kA) == loopVariable.value;
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SLinkOperations.setTarget(SNodeFactoryOperations.replaceWithNewChild(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM));
-            }
-          });
+          ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == loopVariable.value).visitAll((it) -> SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM)));
+          ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), CONCEPTS.ForEachVariableReference$CR, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variable$j6kA) == loopVariable.value).visitAll((it) -> SLinkOperations.setTarget(SNodeFactoryOperations.replaceWithNewChild(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM)));
         }
       }
     } finally {

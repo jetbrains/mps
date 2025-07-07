@@ -18,6 +18,8 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
       switch (concept.getName()) {
         case "ClosureLiteral":
           return Collections.<NodeFactory>singletonList(new initialize_ClosureLiteral.NodeFactory_876385242039333159());
+        case "InferredClosureParameterDeclaration":
+          return Collections.<NodeFactory>singletonList(new initialize_ClosureLiteral.NodeFactory_8992394414545768356());
         default:
       }
     }

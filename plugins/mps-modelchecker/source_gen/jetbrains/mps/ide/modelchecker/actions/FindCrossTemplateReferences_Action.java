@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
@@ -31,6 +30,7 @@ public class FindCrossTemplateReferences_Action extends BaseAction {
     super("Find Cross-template References", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -57,11 +57,7 @@ public class FindCrossTemplateReferences_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    List<SModel> models = ListSequence.fromListWithValues(new ArrayList<SModel>(), Sequence.fromIterable(((Iterable<SModel>) event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModels())).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel md) {
-        return SModelStereotype.isGeneratorModel(md) && GenerationFacade.canGenerate(md);
-      }
-    }));
+    List<SModel> models = ListSequence.fromListWithValues(new ArrayList<SModel>(), Sequence.fromIterable(((Iterable<SModel>) event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModels())).where((md) -> SModelStereotype.isGeneratorModel(md) && GenerationFacade.canGenerate(md)));
 
     ModelCheckerTool.getInstance(event.getData(CommonDataKeys.PROJECT)).checkModelsAndShowResult(models, new GeneratorTemplatesChecker());
   }

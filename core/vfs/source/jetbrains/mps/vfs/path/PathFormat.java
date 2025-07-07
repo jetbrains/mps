@@ -66,4 +66,10 @@ public interface PathFormat {
    * @throws PathParseException if the path cannot be parsed for some reason
    */
   @NotNull Path fromString(@NotNull String path);
+
+  void validateRoot(@Nullable String rootPart);
+
+  void validateNonRoot(@NotNull String nonRootPart);
+
+  void validatePath(@NotNull String path);
 }

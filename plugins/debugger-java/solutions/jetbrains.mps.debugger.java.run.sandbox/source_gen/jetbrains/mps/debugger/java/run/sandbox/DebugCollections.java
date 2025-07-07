@@ -54,7 +54,7 @@ public class DebugCollections {
     System.out.println(strings);
   }
   private static void testLinkedList() {
-    Deque<String> strings = LinkedListSequence.fromLinkedListNew(new LinkedList<String>());
+    Deque<String> strings = LinkedListSequence.fromLinkedList(new LinkedList<String>());
     LinkedListSequence.fromLinkedListNew(strings).addElement("alpha");
     LinkedListSequence.fromLinkedListNew(strings).addElement("beta");
     LinkedListSequence.fromLinkedListNew(strings).addElement("gamma");

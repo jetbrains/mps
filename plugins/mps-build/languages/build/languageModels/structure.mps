@@ -19,7 +19,6 @@
       <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
         <property id="1421157252384165432" name="memberId" index="3tVfz5" />
         <property id="672037151186491528" name="presentation" index="1L1pqM" />
-        <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
@@ -38,24 +37,8 @@
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
-      <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old" flags="ng" index="AxPO7">
-        <property id="1212080844762" name="hasNoDefaultMember" index="PDuV0" />
-        <property id="1212087449254" name="noValueText" index="Q2FuW" />
-        <property id="1197591154882" name="memberIdentifierPolicy" index="3lZH7k" />
-        <reference id="1083171729157" name="memberDataType" index="M4eZT" />
-        <child id="1083172003582" name="member" index="M5hS2" />
-      </concept>
       <concept id="1082978499127" name="jetbrains.mps.lang.structure.structure.ConstrainedDataTypeDeclaration" flags="ng" index="Az7Fb">
         <property id="1083066089218" name="constraint" index="FLfZY" />
-      </concept>
-      <concept id="1588368162884797030" name="jetbrains.mps.lang.structure.structure.EnumMigrationInfo" flags="ng" index="2JgGob">
-        <property id="6491077959634662372" name="valueOpMigration" index="3scbB" />
-        <property id="6491077959634650670" name="nameOpMigration" index="3sfsH" />
-        <child id="6491077959632451996" name="oldEnum" index="3lCyv" />
-      </concept>
-      <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old" flags="ig" index="M4N5e">
-        <property id="1083923523172" name="externalValue" index="1uS6qo" />
-        <property id="1083923523171" name="internalValue" index="1uS6qv" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
@@ -102,7 +85,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -312,6 +295,14 @@
     <property role="34LRSv" value="java module" />
     <property role="EcuMT" value="7389400916848073784" />
     <ref role="1TJDcQ" node="6qcrfIJFdK8" resolve="BuildProjectPart" />
+    <node concept="1TJgyi" id="77zDu6tvKfz" role="1TKVEl">
+      <property role="IQ2nx" value="8206585334427747299" />
+      <property role="TrG5h" value="conditionalCompile" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="77zDu6tvKtN" role="lGtFl">
+        <property role="t5JxN" value="Experimental mechanism to mark modules that we don't need to compile (compiled by another task, not &lt;javac&gt;); MPSI-36" />
+      </node>
+    </node>
     <node concept="1TJgyj" id="6qcrfIJFdLy" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="sources" />
@@ -331,6 +322,15 @@
       <property role="20kJfa" value="options" />
       <property role="IQ2ns" value="1659807394254323962" />
       <ref role="20lvS9" node="1s8OwvM5SHi" resolve="BuildSource_JavaModuleOptions" />
+    </node>
+    <node concept="1TJgyj" id="3XLirLmtFB7" role="1TKVEi">
+      <property role="IQ2ns" value="4571516170011064775" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="outputFolder" />
+      <ref role="20lvS9" node="1ZTcb8AgV3Z" resolve="BuildInputSingleFolder" />
+      <node concept="t5JxF" id="3XLirLmtG0H" role="lGtFl">
+        <property role="t5JxN" value="Experimental mechanism to address MPSI-36" />
+      </node>
     </node>
     <node concept="PrWs8" id="6qcrfIJFdLz" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -422,7 +422,7 @@
         <node concept="1TJgyi" id="4zlO3QTanjV" role="3l_iP">
           <property role="TrG5h" value="kind" />
           <property role="IQ2nx" value="5248329904288265467" />
-          <ref role="AX2Wp" node="4zlO3QTanjR" resolve="BuildSource_JavaContentFolderKind" />
+          <ref role="AX2Wp" node="3Ftr4R6BFDM" resolve="BuildSource_JavaContentFolderKind" />
         </node>
       </node>
     </node>
@@ -1079,6 +1079,11 @@
     <node concept="PrWs8" id="2fQZjorRPWA" role="PrDN$">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
+    <node concept="1TJgyi" id="6EK__xlPv4N" role="1TKVEl">
+      <property role="IQ2nx" value="7687809870062809395" />
+      <property role="TrG5h" value="withKotlin" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
   </node>
   <node concept="1TIwiD" id="5WMFzVNtKRk">
     <property role="TrG5h" value="BuildSource_JavaDependencyExternalJar" />
@@ -1326,6 +1331,11 @@
     <node concept="1QGGSu" id="4Q8sAA5iJQO" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/javaOptions.png" />
     </node>
+    <node concept="1TJgyi" id="1FkcQH_$3_5" role="1TKVEl">
+      <property role="IQ2nx" value="1933226676407253317" />
+      <property role="TrG5h" value="generatorJvmOptions" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
   </node>
   <node concept="1TIwiD" id="1s8OwvM5SHi">
     <property role="TrG5h" value="BuildSource_JavaModuleOptions" />
@@ -1544,7 +1554,7 @@
         <node concept="1TJgyi" id="1HQQX4XU8$C" role="3l_iP">
           <property role="TrG5h" value="compression" />
           <property role="IQ2nx" value="1979010778009209128" />
-          <ref role="AX2Wp" node="1HQQX4XU8$$" resolve="BuildLayout_TarCompression" />
+          <ref role="AX2Wp" node="3Ftr4R6BFDY" resolve="BuildLayout_TarCompression" />
         </node>
       </node>
     </node>
@@ -1572,7 +1582,7 @@
         <node concept="1TJgyi" id="3D3G23Q8WAQ" role="3l_iP">
           <property role="TrG5h" value="eol" />
           <property role="IQ2nx" value="4198392933254416822" />
-          <ref role="AX2Wp" node="3D3G23Q8WAI" resolve="BuildLayout_CopyFilterEolStyle" />
+          <ref role="AX2Wp" node="3Ftr4R6BFDR" resolve="BuildLayout_CopyFilterEolStyle" />
         </node>
       </node>
     </node>
@@ -1728,13 +1738,14 @@
   <node concept="1TIwiD" id="d_WKSiP3Fn">
     <property role="TrG5h" value="BuildVariableMacroInitWithValueFromFile" />
     <property role="3GE5qa" value="Macro" />
-    <property role="34LRSv" value="load from file" />
+    <property role="34LRSv" value="load property file" />
     <property role="EcuMT" value="244868996532550359" />
     <ref role="1TJDcQ" node="2oW$psGOu6E" resolve="BuildVariableMacroInitValue" />
     <node concept="1TJgyi" id="d_WKSiP3Fq" role="1TKVEl">
-      <property role="TrG5h" value="propertyName" />
+      <property role="TrG5h" value="unused" />
       <property role="IQ2nx" value="244868996532550362" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="asaX9" id="1zevWKaY0ZV" role="lGtFl" />
     </node>
     <node concept="1TJgyj" id="d_WKSiP3Fo" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -1754,6 +1765,9 @@
       <property role="TrG5h" value="text" />
       <property role="IQ2nx" value="9126048691954700811" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="PrWs8" id="3W5q5oTL70F" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3W5q5oTL9mp" resolve="IGenericComment" />
     </node>
   </node>
   <node concept="1TIwiD" id="7UAfeVQUc3H">
@@ -2153,45 +2167,17 @@
     <property role="TrG5h" value="BuildSource_JavaContentFolderKind" />
     <property role="3GE5qa" value="Project.Java.Sources" />
     <property role="3F6X1D" value="5248329904288265463" />
-    <node concept="2JgGob" id="3Ftr4R6BFDN" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
-      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
-      <node concept="AxPO7" id="4zlO3QTanjR" role="3lCyv">
-        <property role="Q2FuW" value="&lt;no kind&gt;" />
-        <property role="3lZH7k" value="hrlZj6Q/derive_from_internal_value" />
-        <property role="PDuV0" value="true" />
-        <property role="TrG5h" value="BuildSource_JavaContentFolderKind" />
-        <property role="3GE5qa" value="Project.Java.Sources" />
-        <property role="3F6X1D" value="5248329904288265463" />
-        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-        <node concept="M4N5e" id="4zlO3QTanjS" role="M5hS2">
-          <property role="1uS6qv" value="source" />
-          <property role="1uS6qo" value="source" />
-        </node>
-        <node concept="M4N5e" id="4zlO3QTanjT" role="M5hS2">
-          <property role="1uS6qv" value="test" />
-          <property role="1uS6qo" value="test" />
-        </node>
-        <node concept="M4N5e" id="4zlO3QTanjU" role="M5hS2">
-          <property role="1uS6qv" value="excluded" />
-          <property role="1uS6qo" value="excluded" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFDO" role="25R1y">
       <property role="TrG5h" value="source" />
       <property role="3tVfz5" value="5248329904288265464" />
-      <ref role="2wpffI" node="4zlO3QTanjS" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFDP" role="25R1y">
       <property role="TrG5h" value="test" />
       <property role="3tVfz5" value="5248329904288265465" />
-      <ref role="2wpffI" node="4zlO3QTanjT" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFDQ" role="25R1y">
       <property role="TrG5h" value="excluded" />
       <property role="3tVfz5" value="5248329904288265466" />
-      <ref role="2wpffI" node="4zlO3QTanjU" />
     </node>
   </node>
   <node concept="25R3W" id="3Ftr4R6BFDR">
@@ -2199,67 +2185,30 @@
     <property role="3GE5qa" value="Layout.File.Handlers" />
     <property role="3F6X1D" value="4198392933254416814" />
     <ref role="1H5jkz" node="3Ftr4R6BFDT" resolve="local" />
-    <node concept="2JgGob" id="3Ftr4R6BFDS" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
-      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
-      <node concept="AxPO7" id="3D3G23Q8WAI" role="3lCyv">
-        <property role="3lZH7k" value="hrlZj6Q/derive_from_internal_value" />
-        <property role="PDuV0" value="false" />
-        <property role="TrG5h" value="BuildLayout_CopyFilterEolStyle" />
-        <property role="3GE5qa" value="Layout.File.Handlers" />
-        <property role="3F6X1D" value="4198392933254416814" />
-        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-        <node concept="M4N5e" id="3D3G23Q8Zi_" role="M5hS2">
-          <property role="1uS6qv" value="local" />
-          <property role="1uS6qo" value="use local system line separator" />
-        </node>
-        <node concept="M4N5e" id="3D3G23Q8WAJ" role="M5hS2">
-          <property role="1uS6qv" value="asis" />
-          <property role="1uS6qo" value="leave as is" />
-        </node>
-        <node concept="M4N5e" id="3D3G23Q8WAK" role="M5hS2">
-          <property role="1uS6qv" value="cr" />
-          <property role="1uS6qo" value="convert to a single CR" />
-        </node>
-        <node concept="M4N5e" id="3D3G23Q8WAL" role="M5hS2">
-          <property role="1uS6qv" value="lf" />
-          <property role="1uS6qo" value="convert to a single LF" />
-        </node>
-        <node concept="M4N5e" id="3D3G23Q8WAM" role="M5hS2">
-          <property role="1uS6qv" value="crlf" />
-          <property role="1uS6qo" value="convert to the pair CRLF" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFDT" role="25R1y">
       <property role="TrG5h" value="local" />
       <property role="1L1pqM" value="use local system line separator" />
       <property role="3tVfz5" value="4198392933254427813" />
-      <ref role="2wpffI" node="3D3G23Q8Zi_" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFDU" role="25R1y">
       <property role="TrG5h" value="asis" />
       <property role="1L1pqM" value="leave as is" />
       <property role="3tVfz5" value="4198392933254416815" />
-      <ref role="2wpffI" node="3D3G23Q8WAJ" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFDV" role="25R1y">
       <property role="TrG5h" value="cr" />
       <property role="1L1pqM" value="convert to a single CR" />
       <property role="3tVfz5" value="4198392933254416816" />
-      <ref role="2wpffI" node="3D3G23Q8WAK" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFDW" role="25R1y">
       <property role="TrG5h" value="lf" />
       <property role="1L1pqM" value="convert to a single LF" />
       <property role="3tVfz5" value="4198392933254416817" />
-      <ref role="2wpffI" node="3D3G23Q8WAL" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFDX" role="25R1y">
       <property role="TrG5h" value="crlf" />
       <property role="1L1pqM" value="convert to the pair CRLF" />
       <property role="3tVfz5" value="4198392933254416818" />
-      <ref role="2wpffI" node="3D3G23Q8WAM" />
     </node>
   </node>
   <node concept="25R3W" id="3Ftr4R6BFDY">
@@ -2267,43 +2216,17 @@
     <property role="3GE5qa" value="Layout.File" />
     <property role="3F6X1D" value="1979010778009209124" />
     <ref role="1H5jkz" node="3Ftr4R6BFE0" resolve="none" />
-    <node concept="2JgGob" id="3Ftr4R6BFDZ" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
-      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
-      <node concept="AxPO7" id="1HQQX4XU8$$" role="3lCyv">
-        <property role="3lZH7k" value="hrlZj6Q/derive_from_internal_value" />
-        <property role="TrG5h" value="BuildLayout_TarCompression" />
-        <property role="3GE5qa" value="Layout.File" />
-        <property role="3F6X1D" value="1979010778009209124" />
-        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-        <node concept="M4N5e" id="1HQQX4XU8$_" role="M5hS2">
-          <property role="1uS6qv" value="none" />
-          <property role="1uS6qo" value="none" />
-        </node>
-        <node concept="M4N5e" id="1HQQX4XU8$A" role="M5hS2">
-          <property role="1uS6qv" value="gzip" />
-          <property role="1uS6qo" value="gzip" />
-        </node>
-        <node concept="M4N5e" id="1HQQX4XU8$B" role="M5hS2">
-          <property role="1uS6qv" value="bzip2" />
-          <property role="1uS6qo" value="bzip2" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFE0" role="25R1y">
       <property role="TrG5h" value="none" />
       <property role="3tVfz5" value="1979010778009209125" />
-      <ref role="2wpffI" node="1HQQX4XU8$_" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFE1" role="25R1y">
       <property role="TrG5h" value="gzip" />
       <property role="3tVfz5" value="1979010778009209126" />
-      <ref role="2wpffI" node="1HQQX4XU8$A" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFE2" role="25R1y">
       <property role="TrG5h" value="bzip2" />
       <property role="3tVfz5" value="1979010778009209127" />
-      <ref role="2wpffI" node="1HQQX4XU8$B" />
     </node>
   </node>
 </model>

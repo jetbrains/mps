@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -36,34 +35,14 @@ public class ConvertDeprecatedCollectionsOperations extends MigrationScriptBase 
     {
       SearchScope scope_oas78t_a0e = CommandUtil.createScope(m);
       final SearchScope scope_oas78t_a0e_0 = new EditableFilteringScope(scope_oas78t_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_oas78t_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AddSetElementOperation$fa, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0a0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$dp1k))));
-        }
-      });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AddAllSetElementsOperation$TC, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0b0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$sATI))));
-        }
-      });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.RemoveSetElementOperation$lF, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0c0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$7Jlk))));
-        }
-      });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.RemoveAllSetElementsOperation$yY, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0d0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$sItp))));
-        }
-      });
+      QueryExecutionContext context = () -> scope_oas78t_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AddSetElementOperation$fa, false)).visitAll((it) -> SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0a0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$dp1k)))));
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AddAllSetElementsOperation$TC, false)).visitAll((it) -> SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0b0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$sATI)))));
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.RemoveSetElementOperation$lF, false)).visitAll((it) -> SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0c0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$7Jlk)))));
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.RemoveAllSetElementsOperation$yY, false)).visitAll((it) -> SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0d0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$sItp)))));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0);
   }
 

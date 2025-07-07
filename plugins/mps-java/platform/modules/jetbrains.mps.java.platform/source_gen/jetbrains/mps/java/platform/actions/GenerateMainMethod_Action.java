@@ -11,8 +11,7 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -47,11 +46,7 @@ public class GenerateMainMethod_Action extends BaseAction {
     if (classConcept == null) {
       return false;
     }
-    return !(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("staticMethods", CONCEPTS.ClassConcept$bK, "4_LVZ3pCeXr")))).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return "main".equals(SPropertyOperations.getString(it, PROPS.name$MnvL)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == 1 && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).first(), LINKS.type$a1UY), CONCEPTS.ArrayType$rh);
-      }
-    })) && !(SNodeOperations.isInstanceOf(classConcept, CONCEPTS.AnonymousClass$Bt));
+    return !(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("staticMethods", 5292274854859435867L, 0x5745e3015c8914d3L)))).any((it) -> "main".equals(SPropertyOperations.getString(it, PROPS.name$MnvL)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == 1 && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).first(), LINKS.type$a1UY), CONCEPTS.ArrayType$rh))) && !(SNodeOperations.isInstanceOf(classConcept, CONCEPTS.AnonymousClass$Bt));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

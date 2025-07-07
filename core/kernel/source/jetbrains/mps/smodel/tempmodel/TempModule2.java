@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,10 +34,13 @@ import org.jetbrains.annotations.Nullable;
  * and spends noticeable time in ModuleUpdater#updateAdded -> updateAllEdges. {@link TempModule} is {@link jetbrains.mps.module.ReloadableModule}, and there's
  * no other temp module. TransformationTests (like NodesTestCase, EditorTestCase) use modeling facilities only and don't need to load classes for test nodes,
  * however I can't tell for sure other clients of TempModule do not, therefore a change in TempModule would be dangerous. Another alternative is to use
- * {@link ReloadableModule#canLoadClasses()} ()} and corresponding setting in TempModuleOptions, but there's no clear contract for willLoad(), besides, it might get
+ * {@code ReloadableModule#canLoadClasses()} and corresponding setting in TempModuleOptions, but there's no clear contract for willLoad(), besides, it might get
  * changed with respect to improved module classloading story. Yet another alternative is to use TransientModuleProvider and TransientModelsModule (which
  * is not ReloadableModule as well). Though this seems the most appropriate way forward, it's not viable right now. First, due to single provider instance,
  * second, due to greater changes in the tests.
+ *
+ * As of 22.3, we are going to refactor CL story, where {@code canLoadClasses()} is no longer relevant, and, in fact, CL would get
+ * controlled completely by JavaModuleFacet.
  *
  * @author Artem Tikhomirov
  * @since 2018.2

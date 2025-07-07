@@ -24,9 +24,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class OrRegexp__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0d780L, "jetbrains.mps.baseLanguage.regexp.structure.OrRegexp");
 
-  public static final SMethod<String> getString_idhMuDF1A = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hMuDF1A").build(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> needParentheses_id1b8uQvZynii = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needParentheses").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1b8uQvZynii").build();
-  public static final SMethod<Boolean> inParentheses_id1b8uQvZyDXU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("inParentheses").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1b8uQvZyDXU").build();
+  public static final SMethod<String> getString_idhMuDF1A = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1222432436326L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> needParentheses_id1b8uQvZynii = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needParentheses").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1353467374623880338L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2();
+  public static final SMethod<Boolean> inParentheses_id1b8uQvZyDXU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("inParentheses").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1353467374623956858L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getString_idhMuDF1A, needParentheses_id1b8uQvZynii, inParentheses_id1b8uQvZyDXU);
 

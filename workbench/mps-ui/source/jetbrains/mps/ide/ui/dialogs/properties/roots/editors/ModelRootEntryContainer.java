@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,11 +67,10 @@ public final class ModelRootEntryContainer implements ModelRootEntryListener {
   private static final Color UNSELECTED_TEXT_COLOR = Gray._51;
 
   private final ModelRootEntry myModelRootEntry;
-  protected ModelRootEntryEditor myEditor;
   private EventDispatcher<ContentEntryEditorListener> myEventDispatcher;
   private boolean myIsSelected = false;
 
-  protected JPanel myMainPanel;
+  private JPanel myMainPanel;
   private JComponent myHeader;
   private JComponent myDetailsComponent;
   private JComponent myBottom;
@@ -187,10 +186,6 @@ public final class ModelRootEntryContainer implements ModelRootEntryListener {
   }
 
   public ModelRootEntryEditor getEditor() {
-    return myModelRootEntry.getEditor();
-  }
-
-  protected ModelRootEntryEditor createEditor() {
     return myModelRootEntry.getEditor();
   }
 

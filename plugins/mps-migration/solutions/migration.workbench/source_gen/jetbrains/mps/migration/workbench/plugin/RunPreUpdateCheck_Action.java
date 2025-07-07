@@ -26,6 +26,7 @@ public class RunPreUpdateCheck_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
     this.setMnemonic("c".charAt(0));
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -52,7 +53,7 @@ public class RunPreUpdateCheck_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final MigrationTrigger mt = ((MigrationTrigger) event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(IStartupMigrationExecutor.class));
+    final MigrationTrigger mt = (MigrationTrigger) IStartupMigrationExecutor.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT));
     ProgressManager.getInstance().run(new Task.Modal(event.getData(CommonDataKeys.PROJECT), "Pre-Update Check", true) {
       public void run(@NotNull ProgressIndicator progressIndicator) {
         mt.performProjectPreUpdateCheck(new ProgressMonitorAdapter(progressIndicator));

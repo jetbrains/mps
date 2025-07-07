@@ -4,8 +4,7 @@ package jetbrains.mps.debugger.java.runtime.breakpoints;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
 import org.jetbrains.annotations.NotNull;
@@ -23,12 +22,11 @@ import com.sun.jdi.request.AccessWatchpointRequest;
 import com.sun.jdi.request.ModificationWatchpointRequest;
 import com.sun.jdi.ClassNotPreparedException;
 import com.sun.jdi.ObjectCollectedException;
-import com.sun.jdi.InternalException;
 import java.util.Objects;
 
 @GeneratedClass(node = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)/2891782949125147574", model = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)")
 public class FieldBreakpoint extends JavaBreakpoint implements ILocationBreakpoint {
-  private static final Logger LOG = LogManager.getLogger(FieldBreakpoint.class);
+  private static final Logger LOG = Logger.getLogger(FieldBreakpoint.class);
   private final SNodeReference myNode;
   private BreakpointLocation myLocation;
 
@@ -78,14 +76,12 @@ public class FieldBreakpoint extends JavaBreakpoint implements ILocationBreakpoi
       requestManager.enableRequest(fieldAccessRequest);
       requestManager.enableRequest(fieldModificationRequest);
     } catch (ClassNotPreparedException ex) {
-      LOG.warn("ClassNotPreparedException: " + ex.getMessage());
+      LOG.warning("ClassNotPreparedException: " + ex.getMessage());
       //  there's a chance to add a breakpoint when the class is prepared
     } catch (ObjectCollectedException ex) {
-      LOG.warn("ObjectCollectedException: " + ex.getMessage());
-    } catch (InternalException ex) {
-      LOG.error(null, ex);
+      LOG.warning("ObjectCollectedException: " + ex.getMessage());
     } catch (Exception ex) {
-      LOG.error(null, ex);
+      LOG.error(ex);
     }
   }
   @Override

@@ -36,6 +36,7 @@ import java.util.concurrent.Semaphore;
  * Use {@link #attach(jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode)} and {@link #detach(jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode)}
  * to include/exclude given node from update.
  */
+@Deprecated(forRemoval = true)
 public final class ModuleNodeListeners {
   private final List<ProjectModuleTreeNode> myNodes = new ArrayList<>();
   private final Semaphore myListAccess;

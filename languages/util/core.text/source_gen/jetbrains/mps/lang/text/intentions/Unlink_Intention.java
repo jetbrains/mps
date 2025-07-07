@@ -22,21 +22,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class Unlink_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public Unlink_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)", "1491601438750119114"));
   }
+
   @Override
   public String getPresentation() {
     return "Unlink";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -46,19 +46,30 @@ public final class Unlink_Intention extends AbstractIntentionDescriptor implemen
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Unlink";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       Paragraph__BehaviorDescriptor.merge_id4HqBHuNzqyK.invoke(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.Paragraph$XF), SLinkOperations.getTarget(node, LINKS.text$A10X), node, ((boolean) false));
       SNodeOperations.deleteNode(node);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return Unlink_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

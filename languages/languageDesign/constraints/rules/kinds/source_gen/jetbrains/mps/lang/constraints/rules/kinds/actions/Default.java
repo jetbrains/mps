@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Default {
   public static class NodeFactory_8018723092206046483 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SLinkOperations.setTarget(newNode, LINKS.context$axR$, SNodeFactoryOperations.createNewNode(CONCEPTS.Context$Tz, null));
     }
   }

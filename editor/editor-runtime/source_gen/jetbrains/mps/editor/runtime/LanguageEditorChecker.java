@@ -5,8 +5,7 @@ package jetbrains.mps.editor.runtime;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.checking.BaseEditorChecker;
 import jetbrains.mps.nodeEditor.checking.DisposableEditorChecker;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.Set;
 import jetbrains.mps.checkers.AbstractNodeCheckerInEditor;
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +26,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
-import org.apache.log4j.Level;
 import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.checkers.LanguageErrorsComponent;
@@ -46,9 +44,19 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.nodeEditor.EditorSettings;
 
+/**
+ * A composite editor checker (see {@link jetbrains.mps.nodeEditor.checking.EditorChecker }) that delegates all 
+ * work to instances of {@link jetbrains.mps.checkers.AbstractNodeCheckerInEditor } that are passed as a parameter
+ * to the only constructor of this class.
+ * <p>
+ * Also applies quickfixes.
+ * <p>
+ * See {@link jetbrains.mps.errors.item.QuickFixReportItem }<br>
+ * See {@code jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerViewer}<br>
+ */
 @GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/7390982340086719450", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class LanguageEditorChecker extends BaseEditorChecker implements DisposableEditorChecker {
-  private static final Logger LOG = LogManager.getLogger(LanguageEditorChecker.class);
+  private static final Logger LOG = Logger.getLogger(LanguageEditorChecker.class);
   private boolean myMessagesChanged = false;
   private boolean myForceRunQuickFixes = false;
   private Set<AbstractNodeCheckerInEditor> myRules;
@@ -114,7 +122,7 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     SNode editedNode = editorComponent.getEditedNode();
 
     if (editedNode == null) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("edited node is null");
       }
       return Collections.emptySet();
@@ -190,23 +198,17 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     final boolean wasForceRunQuickFixes = myForceRunQuickFixes;
     myForceRunQuickFixes = false;
     if (ListSequence.fromList(quickFixesToExecute).isNotEmpty()) {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          editorContext.getRepository().getModelAccess().executeUndoTransparentCommand(new Runnable() {
-            public void run() {
-              for (QuickFixBase fix : quickFixesToExecute) {
-                if (fix.isAlive(editorContext.getRepository())) {
-                  QuickFixRuntimeEditorWrapper.getInstance(fix).execute(editorContext, false);
-                  if (wasForceRunQuickFixes) {
-                    // forcing to execute quickFixes for all errors reported on the modified model
-                    myForceRunQuickFixes = true;
-                  }
-                }
-              }
+      ApplicationManager.getApplication().invokeLater(() -> editorContext.getRepository().getModelAccess().executeUndoTransparentCommand(() -> {
+        for (QuickFixBase fix : quickFixesToExecute) {
+          if (fix.isAlive(editorContext.getRepository())) {
+            QuickFixRuntimeEditorWrapper.getInstance(fix).execute(editorContext, false);
+            if (wasForceRunQuickFixes) {
+              // forcing to execute quickFixes for all errors reported on the modified model
+              myForceRunQuickFixes = true;
             }
-          });
+          }
         }
-      });
+      }));
     }
     return result;
   }

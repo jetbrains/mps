@@ -18,5 +18,6 @@ public class View_ActionGroup extends GeneratedActionGroup {
     View_ActionGroup.this.addSeparator();
     View_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowParameters_Action");
     View_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowNodeInfo_Action");
+    View_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowQuickDocumentation_Action");
   }
 }

@@ -10,14 +10,12 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -40,21 +38,11 @@ public class LightQuotation_InitProperyExpression extends MigrationScriptBase {
     {
       SearchScope scope_u6isg4_a0e = CommandUtil.createScope(m);
       final SearchScope scope_u6isg4_a0e_0 = new EditableFilteringScope(scope_u6isg4_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_u6isg4_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$xv, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.initValue$fqch), CONCEPTS.NodeBuilderInitPropertyValue$uj));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression"));
-          SLinkOperations.setTarget(replacement, LINKS.expression$fBB$, SLinkOperations.getTarget(it, LINKS.initValue$fqch));
-          SLinkOperations.setTarget(it, LINKS.initValue$fqch, replacement);
-        }
+      QueryExecutionContext context = () -> scope_u6isg4_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$xv, false)).where((it) -> !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.initValue$fqch), CONCEPTS.NodeBuilderInitPropertyValue$uj))).visitAll((it) -> {
+        SNode replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression"));
+        SLinkOperations.setTarget(replacement, LINKS.expression$fBB$, SLinkOperations.getTarget(it, LINKS.initValue$fqch));
+        SLinkOperations.setTarget(it, LINKS.initValue$fqch, replacement);
       });
     }
   }
@@ -63,17 +51,9 @@ public class LightQuotation_InitProperyExpression extends MigrationScriptBase {
     {
       SearchScope scope_u6isg4_a0f = CommandUtil.createScope(m);
       final SearchScope scope_u6isg4_a0f_0 = scope_u6isg4_a0f;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_u6isg4_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$xv, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.initValue$fqch), CONCEPTS.NodeBuilderInitPropertyValue$uj));
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_u6isg4_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$xv, false)).where((it) -> !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.initValue$fqch), CONCEPTS.NodeBuilderInitPropertyValue$uj))).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           Problem problem = new NotMigratedNode(it) {
             @Override
             public String getMessage() {
@@ -85,7 +65,7 @@ public class LightQuotation_InitProperyExpression extends MigrationScriptBase {
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, "jetbrains.mps.lang.quotation"), 4);
   }
 

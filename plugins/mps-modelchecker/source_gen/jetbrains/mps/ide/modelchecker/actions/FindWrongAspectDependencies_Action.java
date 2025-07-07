@@ -16,13 +16,9 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.SolutionKind;
 
 @GeneratedClass(node = "r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)/2843918448603437232", model = "r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)")
 public class FindWrongAspectDependencies_Action extends BaseAction {
@@ -32,6 +28,7 @@ public class FindWrongAspectDependencies_Action extends BaseAction {
     super("Find Wrong Aspect Dependencies", "Finds wrong references between core, editor and workbench", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -54,29 +51,9 @@ public class FindWrongAspectDependencies_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadInEDT(new Runnable() {
       public void run() {
-        List<SModel> models = ListSequence.fromListWithValues(new ArrayList<SModel>(), Sequence.fromIterable(((Iterable<SModule>) event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModules())).where(new IWhereFilter<SModule>() {
-          public boolean accept(SModule it) {
-            return FindWrongAspectDependencies_Action.this.needsProcessing(it, event);
-          }
-        }).translate(new ITranslator2<SModule, SModel>() {
-          public Iterable<SModel> translate(SModule it) {
-            return it.getModels();
-          }
-        }).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel md) {
-            return !(SModelStereotype.isStubModel(md));
-          }
-        }));
+        List<SModel> models = ListSequence.fromListWithValues(new ArrayList<SModel>(), Sequence.fromIterable(((Iterable<SModule>) event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModules())).where((it) -> SModuleOperations.canSupplyExtensionsForMPS(it)).translate((it) -> it.getModels()).where((md) -> !(SModelStereotype.isStubModel(md))));
         ModelCheckerTool.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).checkModelsAndShowResult(models, new AspectDependenciesChecker(event.getData(MPSCommonDataKeys.MPS_PROJECT)));
       }
     });
-  }
-  /*package*/ boolean needsProcessing(SModule module, final AnActionEvent event) {
-    if (module instanceof Language) {
-      return true;
-    } else if (module instanceof Solution) {
-      return ((Solution) module).getKind() != SolutionKind.NONE;
-    }
-    return false;
   }
 }

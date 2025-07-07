@@ -17,6 +17,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_AssertThrows_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_TestIsCompiledAndLoadedByMPS_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }

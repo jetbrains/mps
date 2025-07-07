@@ -7,13 +7,12 @@ import java.util.List;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.ArrayList;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import java.util.function.Predicate;
-import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.selection.Selection;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
 
@@ -32,11 +31,7 @@ import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
     myEditorComponent = editorComponent;
     myIsReflective = isReflective;
     myIsForSubtree = isForSubtree;
-    myActions = affectedNodes.stream().map(new Function<SNode, ReflectiveHintsAction>() {
-      public ReflectiveHintsAction apply(SNode node) {
-        return getAction(node);
-      }
-    }).collect(Collectors.<ReflectiveHintsAction>toList());
+    myActions = affectedNodes.stream().map((SNode node) -> getAction(node)).collect(Collectors.<ReflectiveHintsAction>toList());
   }
   @NotNull
   private ReflectiveHintsAction getAction(SNode node) {
@@ -48,11 +43,7 @@ import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
   }
   /*package*/ void update(AnActionEvent event) {
     boolean multipleNodes = myActions.size() > 1;
-    boolean canMake = myActions.stream().anyMatch(new Predicate<ReflectiveHintsAction>() {
-      public boolean test(ReflectiveHintsAction action) {
-        return action.isApplicable();
-      }
-    }) && !((multipleNodes && !(myIsForSubtree)));
+    boolean canMake = myActions.stream().anyMatch((ReflectiveHintsAction action) -> action.isApplicable()) && !(multipleNodes && !(myIsForSubtree));
     if (canMake) {
       String caption = String.format("Show %s Editor", (myIsReflective ? "Reflective" : "Regular"));
       if (multipleNodes) {
@@ -72,10 +63,22 @@ import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
       event.getPresentation().setEnabled(false);
     }
   }
+  private boolean isRestorable(Selection selection) {
+    if (selection == null) {
+      return false;
+    }
+    List<SNode> nodes = selection.getSelectedNodes();
+    int size = nodes.size();
+    return size == 1 || size > 1 && SNodeOperations.getParent(nodes.get(0)) == SNodeOperations.getParent(nodes.get(size - 1));
+  }
   private void recordSelectionStack() {
     SelectionManager selectionManager = myEditorComponent.getEditorContext().getSelectionManager();
+    // to avoid confusion only keep the selection stack if the current selection can be restored
+    if (!(isRestorable(selectionManager.getSelection()))) {
+      return;
+    }
     for (Selection selection : selectionManager.getSelectionStackIterable()) {
-      if (mySelectionStack.isEmpty() || !(selection.getSelectedNodes().equals(mySelectionStack.get(mySelectionStack.size() - 1)))) {
+      if (isRestorable(selection) && (mySelectionStack.isEmpty() || !(selection.getSelectedNodes().equals(mySelectionStack.get(mySelectionStack.size() - 1))))) {
         mySelectionStack.add(selection.getSelectedNodes());
       }
     }

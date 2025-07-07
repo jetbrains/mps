@@ -39,6 +39,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+@Deprecated(forRemoval = true)
 public abstract class SNodeTreeUpdater<T extends MPSTreeNode> {
   protected final Project myProject;
   protected T myTreeNode;
@@ -69,7 +70,7 @@ public abstract class SNodeTreeUpdater<T extends MPSTreeNode> {
 
   public void addAndRemoveVisibleChildren(Set<SNode> removedNodes, Set<SNode> addedNodes) {
     if (getTree() == null) return;
-    DefaultTreeModel treeModel = getTree().getModel();
+    DefaultTreeModel treeModel = getTree().getDFTreeModel();
     for (SNode removed : removedNodes) {
       SNodeTreeNode node = (SNodeTreeNode) myTreeNode.findDescendantWith(removed.getNodeId().toString());
       if (node == null) continue;
@@ -104,7 +105,7 @@ public abstract class SNodeTreeUpdater<T extends MPSTreeNode> {
 
   public void updateChangedPresentations(Set<SNode> nodesWithChangedPresentations) {
     if (getTree() == null) return;
-    DefaultTreeModel treeModel = getTree().getModel();
+    DefaultTreeModel treeModel = getTree().getDFTreeModel();
     for (SNode node : nodesWithChangedPresentations) {
       SNodeTreeNode treeNode = (SNodeTreeNode) myTreeNode.findDescendantWith(node.getNodeId().toString());
       if (treeNode == null) continue;

@@ -10,11 +10,9 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -44,52 +42,30 @@ public class UpdateSingleLineCommentToUseLinePerComment extends MigrationScriptB
     {
       SearchScope scope_ropth0_a0e = CommandUtil.createScope(m);
       final SearchScope scope_ropth0_a0e_0 = new EditableFilteringScope(scope_ropth0_a0e);
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_ropth0_a0e_0;
-        }
-      };
+      final QueryExecutionContext context = () -> scope_ropth0_a0e_0;
 
-      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).visitAll(new IVisitor<SModel>() {
-        public void visit(SModel currentModel) {
+      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).visitAll((currentModel) -> {
 
-          CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.SingleLineComment$Kw, false)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.text$XpYF)).isNotEmpty();
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(final SNode slc) {
+        CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.SingleLineComment$Kw, false)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.text$XpYF)).isNotEmpty()).visitAll((final SNode slc) -> {
 
-              final SNode firstLine = ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$XpYF)).first();
-              if (SLinkOperations.getTarget(slc, LINKS.line$9eiT) == null) {
-                SLinkOperations.setTarget(slc, LINKS.line$9eiT, firstLine);
-              } else {
-                ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(slc, LINKS.line$9eiT), LINKS.elements$_j45)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$_j45)).where(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return (SNodeOperations.isInstanceOf(it, CONCEPTS.Word$Dn) ? isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$Dn), PROPS.value$zQr_)) : true);
-                  }
-                }));
-              }
+          final SNode firstLine = ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$XpYF)).first();
+          if (SLinkOperations.getTarget(slc, LINKS.line$9eiT) == null) {
+            SLinkOperations.setTarget(slc, LINKS.line$9eiT, firstLine);
+          } else {
+            ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(slc, LINKS.line$9eiT), LINKS.elements$_j45)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$_j45)).where((it) -> (SNodeOperations.isInstanceOf(it, CONCEPTS.Word$Dn) ? isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$Dn), PROPS.value$zQr_)) : true)));
+          }
 
-              ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$XpYF)).reversedList().where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return !(Objects.equals(it, firstLine));
-                }
-              }).visitAll(new IVisitor<SNode>() {
-                public void visit(SNode line) {
-                  SNode comment = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
-                  SNodeOperations.insertNextSiblingChild(slc, comment);
-                  SLinkOperations.setTarget(comment, LINKS.line$9eiT, line);
-                }
-              });
-              ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$XpYF)).clear();
-            }
+          ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$XpYF)).reversedList().where((it) -> !(Objects.equals(it, firstLine))).visitAll((line) -> {
+            SNode comment = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
+            SNodeOperations.insertNextSiblingChild(slc, comment);
+            SLinkOperations.setTarget(comment, LINKS.line$9eiT, line);
           });
-        }
+          ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$XpYF)).clear();
+        });
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 9);
   }
 

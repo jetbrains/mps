@@ -20,7 +20,7 @@ import jetbrains.mps.ide.findusages.view.optionseditor.FindUsagesOptions;
 import jetbrains.mps.ide.findusages.view.optionseditor.options.FindersOptions;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -74,24 +74,22 @@ public class FindConceptInstances_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        new FindUsagesHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))) {
-          @Override
-          protected DefaultOptionsContainer getDefaultOptions() {
-            final DefaultOptionsContainer container = DefaultSearchOptionsComponent.getOptions(((MPSProject) MapSequence.fromMap(_params).get("project")));
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(() -> {
+      new FindUsagesHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))) {
+        @Override
+        protected DefaultOptionsContainer getDefaultOptions() {
+          final DefaultOptionsContainer container = DefaultSearchOptionsComponent.getOptions(((MPSProject) MapSequence.fromMap(_params).get("project")));
 
-            return new DefaultOptionsContainer() {
-              @Override
-              public FindUsagesOptions getDefaultSearchOptions(String concept) {
-                FindUsagesOptions findUsagesOptions = container.getDefaultSearchOptions(concept);
-                findUsagesOptions.setFindersOptions(new FindersOptions(((String) BHReflection.invoke0(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959028e(jetbrains.mps.lang.structure.findUsages)", "1197632773078"), CONCEPTS.FinderDeclaration$R8, SMethodTrimmedId.create("getGeneratedClassLongName", CONCEPTS.FinderDeclaration$R8, "hEwIc4S")))));
-                return findUsagesOptions;
-              }
-            };
-          }
-        }.prepareOptions(((EditorCell) MapSequence.fromMap(_params).get("cell")), FindConceptInstances_Action.this.getConceptDeclaration(_params)).invoke();
-      }
+          return new DefaultOptionsContainer() {
+            @Override
+            public FindUsagesOptions getDefaultSearchOptions(String concept) {
+              FindUsagesOptions findUsagesOptions = container.getDefaultSearchOptions(concept);
+              findUsagesOptions.setFindersOptions(new FindersOptions(((String) BHReflection.invoke0(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959028e(jetbrains.mps.lang.structure.findUsages)", "1197632773078"), CONCEPTS.FinderDeclaration$R8, SMethodIdV2.create("getGeneratedClassLongName", 1213877240120L, 0xcb2bea4cbf4e6043L)))));
+              return findUsagesOptions;
+            }
+          };
+        }
+      }.prepareOptions(((EditorCell) MapSequence.fromMap(_params).get("cell")), FindConceptInstances_Action.this.getConceptDeclaration(_params)).invoke();
     });
   }
   private SNode getConceptDeclaration(final Map<String, Object> _params) {
@@ -114,7 +112,7 @@ public class FindConceptInstances_Action extends BaseAction {
     {
       final SNode conceptAspect = node;
       if (SNodeOperations.isInstanceOf(conceptAspect, CONCEPTS.IConceptAspect$Z3)) {
-        return ((SNode) BHReflection.invoke0(conceptAspect, CONCEPTS.IConceptAspect$Z3, SMethodTrimmedId.create("getBaseConcept", null, "2hxg_BDjKM8")));
+        return ((SNode) BHReflection.invoke0(conceptAspect, CONCEPTS.IConceptAspect$Z3, SMethodIdV2.create("getBaseConcept", 2621449412040133768L, 0x44a456bea0df1cf0L)));
       }
     }
 

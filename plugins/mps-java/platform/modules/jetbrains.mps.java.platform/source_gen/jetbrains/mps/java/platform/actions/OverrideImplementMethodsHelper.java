@@ -11,15 +11,13 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Map;
 import jetbrains.mps.util.JavaNameUtil;
@@ -55,7 +53,7 @@ public class OverrideImplementMethodsHelper {
     int index = (myContextMember != null && SNodeOperations.getParent(myContextMember) == myClassifier ? ListSequence.fromList(SLinkOperations.getChildren(myClassifier, LINKS.member$L_2d)).indexOf(myContextMember) + 1 : -1);
     List<SNode> result = new ArrayList<SNode>();
     for (SNode baseMethod : baseMethods) {
-      SNode method = ((SNode) BHReflection.invoke0(baseMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("getMethodToImplement", CONCEPTS.BaseMethodDeclaration$kD, "3RE744JWbF"), myClassifier));
+      SNode method = ((SNode) BHReflection.invoke0(baseMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("getMethodToImplement", 69709522611978987L, 0x5745e3015c8914d3L), myClassifier));
       SLinkOperations.setTarget(method, LINKS.body$5xQk, SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(myClassifier), CONCEPTS.StatementList$m_, null));
       if (SNodeOperations.isInstanceOf(method, CONCEPTS.InstanceMethodDeclaration$39)) {
         SPropertyOperations.assign(SNodeOperations.cast(method, CONCEPTS.InstanceMethodDeclaration$39), PROPS.isAbstract$VtH_, createAbstractMethods);
@@ -79,11 +77,7 @@ public class OverrideImplementMethodsHelper {
   /*package*/ void update(SNode method, SNode baseMethod) {
     if (SModelStereotype.isStubModel(SNodeOperations.getModel(baseMethod))) {
       // we only need to find good names for parameters, if they are cryptic e.g. java_sourcestubs deliver proper names
-      final SNode startNode = (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$MnvL).matches("p[0-9]+");
-        }
-      }) ? method : SLinkOperations.getTarget(method, LINKS.body$5xQk));
+      final SNode startNode = (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).all((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).matches("p[0-9]+")) ? method : SLinkOperations.getTarget(method, LINKS.body$5xQk));
       setVariableNames(startNode, MapSequence.fromMap(new HashMap<String, Integer>()));
     }
     if (myRemoveAttributes) {
@@ -104,32 +98,24 @@ public class OverrideImplementMethodsHelper {
       }
     }
 
-    Iterable<SNode> paramList = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return _quotation_createNode_tfz3o4_a0a0a0a4a11(it);
-      }
-    });
+    Iterable<SNode> paramList = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select((it) -> _quotation_createNode_tfz3o4_a0a0a0a4a11(it));
     if (SNodeOperations.isInstanceOf(baseMethod, CONCEPTS.InstanceMethodDeclaration$39)) {
-      boolean isAbstractMethod = ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(baseMethod, CONCEPTS.InstanceMethodDeclaration$39), CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl")));
+      boolean isAbstractMethod = ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(baseMethod, CONCEPTS.InstanceMethodDeclaration$39), CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)));
       SNode defaultExpr = null;
       if (isAbstractMethod) {
-        defaultExpr = ((SNode) BHReflection.invoke0(SLinkOperations.getTarget(baseMethod, LINKS.returnType$5xoi), CONCEPTS.Type$bu, SMethodTrimmedId.create("createDefaultTypeExpression", null, "2UvJdVpqUA4")));
+        defaultExpr = ((SNode) BHReflection.invoke0(SLinkOperations.getTarget(baseMethod, LINKS.returnType$5xoi), CONCEPTS.Type$bu, SMethodIdV2.create("createDefaultTypeExpression", 3359611512358152580L, 0x5745e3015c8914d3L)));
       } else {
         if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(baseMethod), CONCEPTS.Interface$db)) {
           SNode curClassifier = SNodeOperations.cast(SNodeOperations.getParent(method), CONCEPTS.Classifier$Ix);
           final SNode baseInterface = SNodeOperations.cast(SNodeOperations.getParent(baseMethod), CONCEPTS.Interface$db);
-          List<SNode> directAncestors = ((List<SNode>) BHReflection.invoke0(curClassifier, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("getExtendedClassifierTypes", null, "1UeCwxlWKny")));
-          SNode directParentWhichExtendsBase = ListSequence.fromList(directAncestors).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return ListSequence.fromList(((List<SNode>) BHReflection.invoke0(SNodeOperations.cast(((SNode) BHReflection.invoke0(it, CONCEPTS.IClassifierType$B1, SMethodTrimmedId.create("getClassifier", null, "6r77ob2URY9"))), CONCEPTS.Classifier$Ix), CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("getAllSuperClassifiers", CONCEPTS.Classifier$Ix, "59G_UM6ah0X")))).contains(baseInterface);
-            }
-          });
-          if (directParentWhichExtendsBase != null && SNodeOperations.isInstanceOf(((SNode) BHReflection.invoke0(directParentWhichExtendsBase, CONCEPTS.IClassifierType$B1, SMethodTrimmedId.create("getClassifier", null, "6r77ob2URY9"))), CONCEPTS.Interface$db)) {
-            defaultExpr = _quotation_createNode_tfz3o4_a0a0e0a0a2a5a11(Sequence.fromIterable(paramList).toListSequence(), ((SNode) BHReflection.invoke0(directParentWhichExtendsBase, CONCEPTS.IClassifierType$B1, SMethodTrimmedId.create("getClassifier", null, "6r77ob2URY9"))), baseMethod);
+          List<SNode> directAncestors = ((List<SNode>) BHReflection.invoke0(curClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("getExtendedClassifierTypes", 2201875424516179426L, 0x5745e3015c8914d3L)));
+          SNode directParentWhichExtendsBase = ListSequence.fromList(directAncestors).findFirst((it) -> ListSequence.fromList(((List<SNode>) BHReflection.invoke0(SNodeOperations.cast(((SNode) BHReflection.invoke0(it, CONCEPTS.IClassifierType$B1, SMethodIdV2.create("getClassifier", 7405920559687237513L, 0x5745e3015c8914d3L))), CONCEPTS.Classifier$Ix), CONCEPTS.Classifier$Ix, SMethodIdV2.create("getAllSuperClassifiers", 5939288775835848765L, 0x5745e3015c8914d3L)))).contains(baseInterface));
+          if (directParentWhichExtendsBase != null && SNodeOperations.isInstanceOf(((SNode) BHReflection.invoke0(directParentWhichExtendsBase, CONCEPTS.IClassifierType$B1, SMethodIdV2.create("getClassifier", 7405920559687237513L, 0x5745e3015c8914d3L))), CONCEPTS.Interface$db)) {
+            defaultExpr = _quotation_createNode_tfz3o4_a0a0e0a0a2a5a11(Sequence.fromIterable(paramList).toList(), ((SNode) BHReflection.invoke0(directParentWhichExtendsBase, CONCEPTS.IClassifierType$B1, SMethodIdV2.create("getClassifier", 7405920559687237513L, 0x5745e3015c8914d3L))), baseMethod);
           }
         }
         if (defaultExpr == null) {
-          defaultExpr = _quotation_createNode_tfz3o4_a0a0b0a2a5a11(baseMethod, Sequence.fromIterable(paramList).toListSequence());
+          defaultExpr = _quotation_createNode_tfz3o4_a0a0b0a2a5a11(baseMethod, Sequence.fromIterable(paramList).toList());
         }
       }
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF)) {
@@ -141,7 +127,7 @@ public class OverrideImplementMethodsHelper {
       }
     } else {
       if (SNodeOperations.isInstanceOf(baseMethod, CONCEPTS.ConstructorDeclaration$yG)) {
-        SNode superConstructor = _quotation_createNode_tfz3o4_a0a0a0a5a11(Sequence.fromIterable(paramList).toListSequence());
+        SNode superConstructor = _quotation_createNode_tfz3o4_a0a0a0a5a11(Sequence.fromIterable(paramList).toList());
         SLinkOperations.setTarget(superConstructor, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(baseMethod, CONCEPTS.ConstructorDeclaration$yG));
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(superConstructor);
       }
@@ -175,7 +161,7 @@ public class OverrideImplementMethodsHelper {
       SNode variable = SNodeOperations.cast(node, CONCEPTS.VariableDeclaration$Y0);
       SNode nodeType = SLinkOperations.getTarget(variable, LINKS.type$a1UY);
       if (nodeType != null) {
-        String name = ListSequence.fromList(((List<String>) BHReflection.invoke0(nodeType, CONCEPTS.Type$bu, SMethodTrimmedId.create("getVariableSuffixes", null, "hEwIzNo")))).first();
+        String name = ListSequence.fromList(((List<String>) BHReflection.invoke0(nodeType, CONCEPTS.Type$bu, SMethodIdV2.create("getVariableSuffixes", 1213877337304L, 0x5745e3015c8914d3L)))).first();
         if (JavaNameUtil.isJavaReserved(name)) {
           name = "a" + NameUtil.capitalize(NameUtil.toValidIdentifier(name));
         }
@@ -187,8 +173,8 @@ public class OverrideImplementMethodsHelper {
         } else {
           MapSequence.fromMap(usedNames).put(name, 0);
         }
-        String prefix = ((String) BHReflection.invoke0(variable, CONCEPTS.VariableDeclaration$Y0, SMethodTrimmedId.create("getPrefix", null, "2Bet8mWh2lw"), myProject));
-        String suffix = ((String) BHReflection.invoke0(variable, CONCEPTS.VariableDeclaration$Y0, SMethodTrimmedId.create("getSuffix", null, "2Bet8mWh3pg"), myProject));
+        String prefix = ((String) BHReflection.invoke0(variable, CONCEPTS.VariableDeclaration$Y0, SMethodIdV2.create("getPrefix", 3012473318495495520L, 0x5745e3015c8914d3L), myProject));
+        String suffix = ((String) BHReflection.invoke0(variable, CONCEPTS.VariableDeclaration$Y0, SMethodIdV2.create("getSuffix", 3012473318495499856L, 0x5745e3015c8914d3L), myProject));
         String mainName = ((prefix == null || prefix.length() == 0) ? name : NameUtil.capitalize(name));
         SPropertyOperations.set(variable, PROPS.name$MnvL, prefix + mainName + suffix);
       }

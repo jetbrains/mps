@@ -26,7 +26,7 @@ public class check_TestIsCompiledAndLoadedByMPS_NonTypesystemRule extends Abstra
     if (!(SModuleOperations.isCompileInMps(module))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(testCase, "Tests must be created in modules which are compileInMPS=true", "r:2b2539c5-00c8-487d-9567-ecc2b9274c7b(jetbrains.mps.baseLanguage.unitTest.typesystem)", "8797237962361641928", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(testCase, "Tests must be created in modules compiled by MPS", "r:2b2539c5-00c8-487d-9567-ecc2b9274c7b(jetbrains.mps.baseLanguage.unitTest.typesystem)", "8797237962361641928", null, errorTarget);
       }
     }
   }

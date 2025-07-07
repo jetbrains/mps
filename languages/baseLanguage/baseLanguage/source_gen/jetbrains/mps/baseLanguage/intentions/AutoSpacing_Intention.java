@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AutoSpacing_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AutoSpacing_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "4211685044944889934"));
   }
+
   @Override
   public String getPresentation() {
     return "AutoSpacing";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,10 +48,12 @@ public final class AutoSpacing_Intention extends AbstractIntentionDescriptor imp
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Auto Indent Members";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       boolean previousIsMethodLike = false;
@@ -63,10 +65,19 @@ public final class AutoSpacing_Intention extends AbstractIntentionDescriptor imp
         previousIsMethodLike = currentIsMethodLike;
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AutoSpacing_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

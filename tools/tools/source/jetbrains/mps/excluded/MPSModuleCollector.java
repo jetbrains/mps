@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,8 @@ import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.MacroHelper;
+import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
@@ -37,6 +39,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * Utility to gather path information from MPS module files (.mpl, .msd, etc) relevant for generation of IDEA configuration files.
@@ -79,16 +82,16 @@ class MPSModuleCollector {
         continue;
       }
       // XXX what's the reason for custom MyMacroHelper, why not MacrosFactory.forModuleFile()
-      MacroHelper expander = new MyMacroHelper(moduleIFile);
+      final MacroHelper expander = new MyMacroHelper(moduleIFile);
       ModuleDescriptor md;
       try {
-        md = myDescriptorIO.readFromModuleFile(expander, moduleIFile);
-        if (md == null) {
-          // well, this is embarrassing. the contract of DescriptorIOFacade and that of DescriptorIO is flawed, undocumented and inconsistent.
-          // Generally, DescriptorIO.readFromFile returns !null, e.g. a matching empty object with load exception set, except for .iml case, when it
-          // produces null. I can fix this, but just don't want to spend another day dealing with irrelevant bad API.
-          continue; // treat this as legal case as we face a lot of .iml files during GeneratorsRunner job, and none of these are of interest anyway.
-        }
+        md = myDescriptorIO.fromFileType(moduleIFile).readFromFile(moduleIFile);
+//        if (md == null) {
+//          // well, this is embarrassing. the contract of DescriptorIOFacade and that of DescriptorIO is flawed, undocumented and inconsistent.
+//          // Generally, DescriptorIO.readFromFile returns !null, e.g. a matching empty object with load exception set, except for .iml case, when it
+//          // produces null. I can fix this, but just don't want to spend another day dealing with irrelevant bad API.
+//          continue; // treat this as legal case as we face a lot of .iml files during GeneratorsRunner job, and none of these are of interest anyway.
+//        }
         if (md.getLoadException() != null) {
           throw new RuntimeException(String.format("Failed to read %s", moduleIFile), md.getLoadException());
         }
@@ -102,16 +105,16 @@ class MPSModuleCollector {
         // don't handle devkits at the moment, and they are not 'compiledInMPS', anyway
         continue;
       }
-      if (!md.getCompileInMPS()) {
+      if (!JavaModuleFacetImpl.isCompileInMPS(md)) {
         // may face UOE here if some unexpected MPS module descriptor is in the project, though
-        // I doubt myDescriptorIO would let aus get that far
+        // I doubt myDescriptorIO would let us get that far
         continue;
       }
 
       IFile moduleDir = moduleIFile.getParent();
-      IFile classesGenDir = classGenOrLegacy(md, moduleIFile);
+      IFile classesGenDir = classGenOrLegacy(md, expander);
       DescriptorEntry de = new DescriptorEntry(moduleDir);
-      String srcPath = ProjectPathUtil.getGeneratorOutputPath(md);
+      String srcPath = getGeneratorOutputPath(md, expander);
       de.addSourcePath(getCanonicalPath(srcPath));
       final IFile testsOutputPath = TestsFacetImpl.getTestsOutputPath(md, moduleIFile);
       if (testsOutputPath != null) {
@@ -122,24 +125,34 @@ class MPSModuleCollector {
       if (md instanceof LanguageDescriptor) {
         LanguageDescriptor ld = ((LanguageDescriptor) md);
         for (GeneratorDescriptor generator : ld.getGenerators()) {
-          String generatorSrcPath = getCanonicalPath(ProjectPathUtil.getGeneratorOutputPath(generator));
+          String generatorSrcPath = getCanonicalPath(getGeneratorOutputPath(generator, expander));
           de.addSourcePath(generatorSrcPath);
-          de.addClassGenPath(classGenOrLegacy(generator, moduleIFile));
+          de.addClassGenPath(classGenOrLegacy(generator, expander));
         }
       }
       myResult.add(de);
     }
   }
 
-  private static IFile classGenOrLegacy(ModuleDescriptor md, IFile moduleFile) {
-    IFile classesGenDir = JavaModuleFacetImpl.classGenPath(md, moduleFile);
+  @SuppressWarnings("removal")
+  private static String getGeneratorOutputPath(final ModuleDescriptor md, final MacroHelper macroHelper) {
+    if (md.getOutputRoot() != null) {
+      return macroHelper.expandPath(md.getOutputRoot());
+    }
+    final String p = ProjectPathUtil._getGeneratorOutputPathPrim(md);
+    return p == null ? null : macroHelper.expandPath(p);
+  }
+
+  private IFile classGenOrLegacy(final ModuleDescriptor md, final MacroHelper macroHelper) {
+    final Function<String, IFile> path2file = s -> myFileSystem.getFile(macroHelper.expandPath(s));
+    PathSpec classesGenDir = JavaModuleFacetImpl.classGenPath(md);
     if (classesGenDir != null) {
-      return classesGenDir;
+      return classesGenDir.resolve(path2file).orElse(null);
     }
     // Generally, contemporary modules shall have path specified in their Java facet,
     // however, there are still quite few modules around without serialized values (e.g. modules for migration tests),
     // resort to legacy default (don't want to keep that in JavaModuleFacetImpl.classGenPath as I need this only here
-    return moduleFile.getParent().findChild(AbstractModule.CLASSES_GEN);
+    return new PathSpec(MacrosFactory.MODULE + '/' + AbstractModule.CLASSES_GEN).resolve(path2file).orElse(null);
   }
 
   private static String getCanonicalPath(String path) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,17 @@
  */
 package jetbrains.mps.util;
 
+/**
+ * @deprecated see {@link #intern(String)} for explanation
+ */
+@Deprecated(since = "2024.1")
 public class InternUtil {
   private static final Interner ourInterner = new Interner(20000);
 
+  /**
+   * NOTE, use of this method is discouraged. This code builds an independent set of unique strings (doesn't share JVM string pool) which, w/o clear usage
+   * pattern, just results in a bunch of strings hanging in memory for uncertain time, and another GC root to never get cleaned.
+   */
   public static String intern(String s) {
     return ourInterner.intern(s);
   }

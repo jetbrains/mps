@@ -16,7 +16,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class FieldConversions {
   public static class NodeFactory_3207672282897614589 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode field = sampleNode;
         if (SNodeOperations.isInstanceOf(field, CONCEPTS.FieldDeclaration$ie)) {
@@ -33,7 +33,7 @@ public class FieldConversions {
     }
   }
   public static class NodeFactory_3207672282897664378 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode staticField = sampleNode;
         if (SNodeOperations.isInstanceOf(staticField, CONCEPTS.StaticFieldDeclaration$jR)) {

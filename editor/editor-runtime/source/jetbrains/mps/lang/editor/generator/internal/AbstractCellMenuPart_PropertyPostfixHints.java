@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,22 @@
  */
 package jetbrains.mps.lang.editor.generator.internal;
 
-import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
+import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.AbstractNodeSubstituteAction;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
+import jetbrains.mps.smodel.constraints.ConstraintsChildAndPropFacade;
 import jetbrains.mps.smodel.presentation.IPropertyPresentationProvider;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.PatternUtil;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -42,7 +38,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +46,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class AbstractCellMenuPart_PropertyPostfixHints implements SubstituteInfoPartExt {
-  private static final Logger LOG = LogManager.getLogger(AbstractCellMenuPart_PropertyPostfixHints.class);
+  private static final Logger LOG = Logger.getLogger(AbstractCellMenuPart_PropertyPostfixHints.class);
 
   @Override
   public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
@@ -79,24 +74,12 @@ public abstract class AbstractCellMenuPart_PropertyPostfixHints implements Subst
   }
 
   @Nullable
-  protected List<String> getPostfixes(SNode node, EditorContext editorContext) {
-    // FIXME shall become abstract once 2020.3 is out
-    return getPostfixes(node, editorContext.getOperationContext(), editorContext);
-  }
-
-  /**
-   * @deprecated override {@link #getPostfixes(SNode, EditorContext)} instead
-   */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.2)
-  public List<String> getPostfixes(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-    return null;
-  }
+  protected abstract List<String> getPostfixes(SNode node, EditorContext editorContext);
 
   public static class PostfixGroup {
-    private List<String> myPostfixes;
+    private final List<String> myPostfixes;
     private String myCurrentPattern = null;
-    private Map<String, String> myModel = new HashMap<>();
+    private final Map<String, String> myModel = new HashMap<>();
     private boolean myShowUnpostfixed;
     private boolean myUnpostfixedFirst;
 
@@ -202,7 +185,8 @@ public abstract class AbstractCellMenuPart_PropertyPostfixHints implements Subst
     public boolean canSubstitute(String pattern) {
       if (myPostfixGroup.canSubstitute(pattern, myPostfix)) {
         String text = myPostfixGroup.getMatchingText(pattern, myPostfix);
-        return ModelConstraints.validatePropertyValue(getSourceNode(), myProperty, myPresentationProvider.fromPresentation(text));
+        FailingPropertyConstraintContext context = new FailingPropertyConstraintContext(getSourceNode(), myProperty, myPresentationProvider.fromPresentation(text));
+        return ConstraintsChildAndPropFacade.checkPropertyValue(context).isEmpty();
       } else {
         return false;
       }

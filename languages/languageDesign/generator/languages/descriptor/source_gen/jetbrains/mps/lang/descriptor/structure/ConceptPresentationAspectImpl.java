@@ -9,15 +9,31 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_ActivatorUnit;
+  private ConceptPresentation props_AspectDescriptor;
   private ConceptPresentation props_GeneratorDescriptor;
   private ConceptPresentation props_GeneratorInternal_Aspect;
   private ConceptPresentation props_LanguageDescriptor;
+  private ConceptPresentation props_ModuleActivator;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.ActivatorUnit:
+        if (props_ActivatorUnit == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
+          props_ActivatorUnit = cpb.create();
+        }
+        return props_ActivatorUnit;
+      case LanguageConceptSwitch.AspectDescriptor:
+        if (props_AspectDescriptor == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_AspectDescriptor = cpb.create();
+        }
+        return props_AspectDescriptor;
       case LanguageConceptSwitch.GeneratorDescriptor:
         if (props_GeneratorDescriptor == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -39,6 +55,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_LanguageDescriptor = cpb.create();
         }
         return props_LanguageDescriptor;
+      case LanguageConceptSwitch.ModuleActivator:
+        if (props_ModuleActivator == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
+          cpb.rawPresentation("ModuleActivator");
+          props_ModuleActivator = cpb.create();
+        }
+        return props_ModuleActivator;
     }
     return null;
   }

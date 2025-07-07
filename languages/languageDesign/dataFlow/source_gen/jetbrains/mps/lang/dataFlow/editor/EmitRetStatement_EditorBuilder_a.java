@@ -37,7 +37,7 @@ import jetbrains.mps.lang.dataFlow.editor.DataFlow_StyleSheet.InstructionStyleCl
     editorCell.setBig(true);
     setCellContext(editorCell);
     Style style = new StyleImpl();
-    new InstructionStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new InstructionStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

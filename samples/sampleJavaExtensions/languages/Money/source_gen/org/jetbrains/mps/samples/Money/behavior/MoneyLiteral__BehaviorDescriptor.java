@@ -28,8 +28,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class MoneyLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe559135132L, "org.jetbrains.mps.samples.Money.structure.MoneyLiteral");
 
-  public static final SMethod<String> getVariableExpectedName_idhEwJgm_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVariableExpectedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwJgm_").build();
-  /*package*/ static final SMethod<String> convertAmountAdvanced_idx3u75dl$Hd = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("convertAmountAdvanced").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("x3u75dl$Hd").build(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<String> getVariableExpectedName_idhEwJgm_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVariableExpectedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877519781L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  /*package*/ static final SMethod<String> convertAmountAdvanced_idx3u75dl$Hd = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("convertAmountAdvanced").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(595452003767176013L).languageId(0x955872c65c7a681eL, 0x662a9f2b58024d16L).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, convertAmountAdvanced_idx3u75dl$Hd);
 
@@ -42,9 +42,9 @@ public final class MoneyLiteral__BehaviorDescriptor extends BaseBHDescriptor {
     return text;
   }
   /*package*/ static String convertAmountAdvanced_idx3u75dl$Hd(@NotNull SNode __thisNode__, final int amount) {
-    Map<Integer, String> smallConversion = MapSequence.<Integer, String>fromMapAndKeysArray(new HashMap<Integer, String>(), 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).withValues("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten");
-    Map<Integer, String> mediumConversion = MapSequence.<Integer, String>fromMapAndKeysArray(new HashMap<Integer, String>(), 11, 12, 13, 14, 15, 16, 17, 18, 19).withValues("eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen");
-    Map<Integer, String> tensConversion = MapSequence.<Integer, String>fromMapAndKeysArray(new HashMap<Integer, String>(), 20, 30, 40, 50, 60, 70, 80, 90).withValues("twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety");
+    Map<Integer, String> smallConversion = MapSequence.fromMapAndEntryArray(new HashMap<Integer, String>(), Map.entry(1, "one"), Map.entry(2, "two"), Map.entry(3, "three"), Map.entry(4, "four"), Map.entry(5, "five"), Map.entry(6, "six"), Map.entry(7, "seven"), Map.entry(8, "eight"), Map.entry(9, "nine"), Map.entry(10, "ten"));
+    Map<Integer, String> mediumConversion = MapSequence.fromMapAndEntryArray(new HashMap<Integer, String>(), Map.entry(11, "eleven"), Map.entry(12, "twelve"), Map.entry(13, "thirteen"), Map.entry(14, "fourteen"), Map.entry(15, "fifteen"), Map.entry(16, "sixteen"), Map.entry(17, "seventeen"), Map.entry(18, "eighteen"), Map.entry(19, "nineteen"));
+    Map<Integer, String> tensConversion = MapSequence.fromMapAndEntryArray(new HashMap<Integer, String>(), Map.entry(20, "twenty"), Map.entry(30, "thirty"), Map.entry(40, "fourty"), Map.entry(50, "fifty"), Map.entry(60, "sixty"), Map.entry(70, "seventy"), Map.entry(80, "eighty"), Map.entry(90, "ninety"));
     String text;
     if (amount > 0 && amount <= 10) {
       return MapSequence.fromMap(smallConversion).get(amount);

@@ -4,13 +4,11 @@ package jetbrains.mps.execution.api.configurations;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.execution.configurations.ConfigurationFactory;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.openapi.project.Project;
 import java.lang.reflect.Constructor;
-import org.apache.log4j.Level;
 import com.intellij.execution.configurations.UnknownRunConfiguration;
 import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
@@ -24,7 +22,7 @@ import java.lang.reflect.InvocationTargetException;
  */
 @GeneratedClass(node = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)/897795129551183473", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
 /*package*/ final class ConfigFactoryEnvoy extends ConfigurationFactory {
-  private static final Logger LOG = LogManager.getLogger(ConfigFactoryEnvoy.class);
+  private static final Logger LOG = Logger.getLogger(ConfigFactoryEnvoy.class);
   private boolean myIsIvalid;
   private final Class<? extends BaseMpsRunConfiguration> myDelegateClass;
   private final String myName;
@@ -70,7 +68,7 @@ import java.lang.reflect.InvocationTargetException;
       Constructor<? extends BaseMpsRunConfiguration> c = myDelegateClass.getConstructor(Project.class, ConfigurationFactory.class, String.class);
       return c.newInstance(project, this, "");
     } catch (Exception ex) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error(String.format("Failed to instantiate run configuration %s of type %s", myDelegateClass.getName(), getId()), ex);
       }
       return new UnknownRunConfiguration(this, project);

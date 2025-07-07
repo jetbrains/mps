@@ -5,127 +5,159 @@ package jetbrains.mps.vcs.diff.changes;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import java.util.Collections;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.LinkedList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import java.util.Objects;
+import java.util.Map;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/5759241003042619496", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
-public final class ModifiedNodesGroup {
+public class ModifiedNodesGroup {
   @NotNull
   private final List<ModifiedNode> myNodes;
+  @NotNull
+  private SNodeId myParentId;
+  @NotNull
+  private final SContainmentLink myLink;
+  @NotNull
+  private final ChangeType myType;
+  @NotNull
+  private final SModel myModel;
+  private final Set<SModel> myAppliedToModels = SetSequence.fromSet(new HashSet<SModel>());
+  private final Set<ModifiedNodesGroup> myDependantGroups = SetSequence.fromSet(new HashSet<ModifiedNodesGroup>());
+
   @Nullable
   private SNodeId myNextNodeId;
-  private final SNodeId myParentId;
-  private final SContainmentLink myRole;
-  private final ChangeType myType;
+  @Nullable
   private ModifiedNodesGroup myNextGroup;
-  private boolean myIsApplied;
-  private SModel myModel;
-  private Set<ModifiedNodesGroup> myDependantGroups = SetSequence.fromSet(new HashSet<ModifiedNodesGroup>());
+  @Nullable
+  private ModifiedNodesGroup myPrevGroup;
+  @Nullable
+  private WrappingNodesGroup myWrappingGroup;
+  @Nullable
+  private WrappingNodesGroup myOppositeWrappingGroup;
+  @Nullable
+  private ModifiedNodesGroup myOppositeMove;
+  @Nullable
+  private ModifiedNodesGroup myReplacingGroup;
+  @Nullable
+  private IdChangeGroup myParentIdChangeGroup;
+  private boolean myIsWrappedMove;
 
 
-  public ModifiedNodesGroup(SModel model, @NotNull List<ModifiedNode> nodes, @Nullable SNodeId nextNodeId) {
+  public ModifiedNodesGroup(@NotNull SModel model, @NotNull List<ModifiedNode> nodes, @Nullable SNodeId nextNodeId) {
     myModel = model;
     myNextNodeId = nextNodeId;
     assert ListSequence.fromList(nodes).isNotEmpty();
     ModifiedNode first = ListSequence.fromList(nodes).first();
     myNodes = nodes;
     myParentId = first.getParentId();
-    myRole = first.getLink();
+    myLink = first.getLink();
     myType = first.getType();
   }
 
-  public ModifiedNodesGroup(SModel model, SNodeId nextNodeId, SNodeId parentId, SContainmentLink role, ChangeType type) {
+  public ModifiedNodesGroup(@NotNull SModel model, @Nullable SNodeId nextNodeId, @NotNull SNodeId parentId, @NotNull SContainmentLink link, @NotNull ChangeType type) {
     myModel = model;
     myNextNodeId = nextNodeId;
-    myNodes = ListSequence.fromList(new ArrayList<ModifiedNode>());
+    myNodes = Collections.emptyList();
     myParentId = parentId;
-    myRole = role;
+    myLink = link;
     myType = type;
   }
 
-  public ModifiedNodesGroup makeCopy() {
-    final Wrappers._T<ModifiedNodesGroup> copy = new Wrappers._T<ModifiedNodesGroup>();
-    if (isEmpty()) {
-      assert !(isMove());
-      copy.value = new ModifiedNodesGroup(myModel, myNextNodeId, myParentId, myRole, myType);
-    } else {
-      copy.value = new ModifiedNodesGroup(myModel, ListSequence.fromList(myNodes).select(new ISelector<ModifiedNode, ModifiedNode>() {
-        public ModifiedNode select(ModifiedNode it) {
-          return it.makeCopy();
-        }
-      }).toListSequence(), myNextNodeId);
-    }
-    copy.value.myNextGroup = myNextGroup;
-    SetSequence.fromSet(myDependantGroups).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup group) {
-        copy.value.addDependantGroup(group);
-      }
-    });
-    return copy.value;
-  }
-
-  public SModel getModel() {
-    return myModel;
-  }
-
+  @NotNull
   public List<ModifiedNode> getModifiedNodes() {
     return myNodes;
   }
 
+  @Nullable
   public SNodeId getNextNodeId() {
     return myNextNodeId;
   }
 
-  public void setNextNodeId(SNodeId nextNodeId) {
-    myNextNodeId = nextNodeId;
+  public SNodeId getActualNextNodeId() {
+    ModifiedNodesGroup nextGroup = myNextGroup;
+    while (nextGroup != null) {
+      if (nextGroup instanceof WrappingNodesGroup || nextGroup instanceof IdChangeGroup) {
+        return nextGroup.getFirstNodeId();
+      }
+      if (nextGroup.isWrappedMove()) {
+        return nextGroup.getFirstNodeId();
+      }
+      nextGroup = nextGroup.getNextGroup();
+    }
+    return myNextNodeId;
   }
 
+  public void setParentId(@NotNull SNodeId parentId) {
+    myParentId = parentId;
+  }
+
+  public void setNextNodeId(SNodeId nextNodeId) {
+    myNextNodeId = nextNodeId;
+    ModifiedNodesGroup prevGroup = myPrevGroup;
+    while (prevGroup != null) {
+      prevGroup.setNextNodeId(nextNodeId);
+      prevGroup = prevGroup.getPrevGroup();
+    }
+  }
+
+  @Nullable
   public ModifiedNodesGroup getNextGroup() {
     return myNextGroup;
+  }
+
+  @Nullable
+  public ModifiedNodesGroup getPrevGroup() {
+    return myPrevGroup;
   }
 
   public boolean isEmpty() {
     return ListSequence.fromList(myNodes).isEmpty();
   }
 
+  public int getSize() {
+    return ListSequence.fromList(myNodes).count();
+  }
+
   public boolean isNotEmpty() {
     return !(isEmpty());
   }
 
+  @NotNull
   public List<SNodeId> getIds() {
-    return ListSequence.fromList(myNodes).select(new ISelector<ModifiedNode, SNodeId>() {
-      public SNodeId select(ModifiedNode it) {
-        return it.getNodeId();
-      }
-    }).toListSequence();
+    return ListSequence.fromList(myNodes).select((it) -> it.getNodeId()).toList();
   }
 
   public void setNextGroup(ModifiedNodesGroup nextGroup) {
     myNextGroup = nextGroup;
+    if (nextGroup != null) {
+      nextGroup.myPrevGroup = this;
+    }
   }
 
+  public void setPrevGroup(@Nullable ModifiedNodesGroup prevGroup) {
+    myPrevGroup = prevGroup;
+  }
+
+  @NotNull
   public ChangeType getType() {
     return myType;
   }
@@ -134,148 +166,220 @@ public final class ModifiedNodesGroup {
     return myType == ChangeType.MOVE;
   }
 
-  public SContainmentLink getRole() {
-    return myRole;
+  public boolean isInsertOrDelete() {
+    return !(isMove()) && !(this instanceof WrappingNodesGroup) && !(this instanceof IdChangeGroup);
   }
 
+  public boolean isNew() {
+    return (isMove() ? ListSequence.fromList(getModifiedNodes()).first().isNew() : myType == ChangeType.ADD);
+  }
+
+  @NotNull
+  public SContainmentLink getLink() {
+    return myLink;
+  }
+
+  @NotNull
   public SNodeId getParentId() {
     return myParentId;
   }
 
-  public SNode getParent() {
+  public SNode getParentNode() {
     return myModel.getNode(myParentId);
   }
 
   public List<SNodeId> getSiblings() {
-    SNode parent = getParent();
+    SNode parent = getParentNode();
     if (parent == null) {
       return ListSequence.fromList(new LinkedList<SNodeId>());
     }
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, myRole)).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, myLink)).select((it) -> it.getNodeId()).toList();
   }
 
   public int getEnd() {
+    return getBegin() + ListSequence.fromList(myNodes).count();
+  }
+
+  private int getNextIdIndex() {
     List<SNodeId> siblings = getSiblings();
     return (myNextNodeId != null ? ListSequence.fromList(siblings).indexOf(myNextNodeId) : ListSequence.fromList(siblings).count());
   }
 
   public int getBegin() {
-    if (ListSequence.fromList(myNodes).isEmpty()) {
-      return getEnd();
-    }
-    return ListSequence.fromList(getSiblings()).indexOf(ListSequence.fromList(getIds()).first());
-  }
-
-
-  private SNodeId getEffectiveBeforeAnchorId(SModel model) {
-    if (myNextGroup != null) {
-      return myNextGroup.getFirstAppliedNodeId(model);
-    }
-    return myNextNodeId;
+    int nextBegin = (myNextGroup == null ? getNextIdIndex() : myNextGroup.getBegin());
+    return nextBegin - ListSequence.fromList(myNodes).count();
   }
 
   public boolean isApplied(SModel model) {
-    return myIsApplied;
+    return SetSequence.fromSet(myAppliedToModels).contains(model);
   }
 
-  private SNodeId getFirstAppliedNodeId(SModel model) {
-    if (isApplied(model) && ListSequence.fromList(myNodes).isNotEmpty()) {
-      return check_1a4m4r_a0a0a65(ListSequence.fromList(myNodes).first());
-    }
-    return getEffectiveBeforeAnchorId(model);
+  @Nullable
+  public SNodeId getFirstNodeId() {
+    return ListSequence.fromList(getIds()).first();
   }
 
   public void setIsApplied(SModel model) {
-    myIsApplied = true;
+    SetSequence.fromSet(myAppliedToModels).addElement(model);
   }
 
-  public void insertIntoModel(@NotNull SModel model, @NotNull final NodeCopier nodeCopier) {
+  public void setIsNotApplied(SModel model) {
+    SetSequence.fromSet(myAppliedToModels).removeElement(model);
+  }
 
-    final List<SNode> copiedNodes = ListSequence.fromList(new ArrayList<SNode>());
+  public void insertCopyIntoModel(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
+    if (this.isEmpty()) {
+      return;
+    }
+    List<SNode> copiedNodes = this.copyNodes(nodeCopier);
+    this.insertNodes(copiedNodes, model, nodeCopier);
+    StructureChange.fixInnerModelReferences(copiedNodes, SModelOperations.getPointer(myModel), model);
+  }
 
-    ListSequence.fromList(myNodes).visitAll(new IVisitor<ModifiedNode>() {
-      public void visit(ModifiedNode modifiedNode) {
-        SNode copiedNode = nodeCopier.copyNode(modifiedNode.getNode());
-        ListSequence.fromList(copiedNodes).addElement(copiedNode);
-      }
-    });
-
+  @NotNull
+  private List<SNode> copyNodes(@NotNull final NodeCopier nodeCopier) {
+    List<SNode> copiedNodes = ListSequence.fromList(myNodes).select((it) -> nodeCopier.copyNode(it.getNode())).toList();
     //  insert only really new nodes, the moved nodes should be moved separately
     final Set<SNodeId> dependantIds = SetSequence.fromSet(new HashSet<SNodeId>());
-    SetSequence.fromSet(dependantIds).addSequence(SetSequence.fromSet(myDependantGroups).translate(new ITranslator2<ModifiedNodesGroup, SNodeId>() {
-      public Iterable<SNodeId> translate(ModifiedNodesGroup it) {
-        return it.getIds();
-      }
-    }).toListSequence());
-    SetSequence.fromSet(dependantIds).addSequence(SetSequence.fromSet(dependantIds).select(new ISelector<SNodeId, SNodeId>() {
-      public SNodeId select(SNodeId id) {
-        return nodeCopier.getReplacementId(id);
-      }
-    }).toListSequence());
-    ListSequence.fromList(copiedNodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode node) {
-        deleteDependantNodes(node, nodeCopier, dependantIds);
-      }
-    });
+    SetSequence.fromSet(dependantIds).addSequence(ListSequence.fromList(SetSequence.fromSet(myDependantGroups).translate((it) -> it.getIds()).toList()));
+    SetSequence.fromSet(dependantIds).addSequence(ListSequence.fromList(SetSequence.fromSet(dependantIds).select((id) -> nodeCopier.getReplacementId(id)).toList()));
+    ListSequence.fromList(copiedNodes).visitAll((node) -> deleteDependantNodes(node, nodeCopier, dependantIds));
+    return copiedNodes;
+  }
 
-    SNodeId beforeAnchorId = getEffectiveBeforeAnchorId(model);
-    SNode beforeAnchor;
-    if (beforeAnchorId != null) {
-      beforeAnchor = nodeCopier.getNode(model, beforeAnchorId);
+  public void deleteFromModel(@NotNull final SModel model) {
+    ListSequence.fromList(myNodes).select((it) -> it.getNodeId()).visitAll((id) -> check_1a4m4r_a0a0a0a0fd(model.getNode(id)));
+  }
 
-      if (beforeAnchor == null) {
-        // this can happen in the merge process if the node was deleted in another branch and that change was accepted
-        // in this case we don't know where to insert. we could use the index of the anchor id in the base model, however it's also does not look as a good solution
-        //  let us keep the anchor == null, i.e. insert at the end.
-      }
-    } else {
-      beforeAnchor = null;
+  /*package*/ void insertNodes(@NotNull List<SNode> nodes, @NotNull SModel model, @NotNull NodeCopier nodeCopier) {
+    SNode parent = nodeCopier.getNode(model, getInsertParentId(model));
+    if (parent == null) {
+      return;
+    }
+    SNodeId beforeAnchorId = this.getNextInsertedNodeId(model);
+    SNode beforeAnchor = (beforeAnchorId == null ? null : nodeCopier.getNode(model, beforeAnchorId));
+
+    // It may happen during merging that a number of sibling nodes were wrapped by another node.
+    // In this case the parent is changed but we still can apply a change if the anchor is not null.
+    // If the anchor is null then this change should conflict with the wrapping change.
+    // if the anchor was moved to another parent or deleted then this also should be a conflict with
+    //  current change.
+    if (beforeAnchor != null && SNodeOperations.getParent(beforeAnchor) != parent) {
+      parent = SNodeOperations.getParent(beforeAnchor);
     }
 
-    SNode parent = nodeCopier.getNode(model, getParentId());
-    for (SNode copiedNode : ListSequence.fromList(copiedNodes)) {
-      insertNodeBeforeAnchor(parent, copiedNode, beforeAnchor);
+    for (SNode node : ListSequence.fromList(nodes).where(new NotNullWhereFilter())) {
+      // nodes of type ChildAttribute can be inserted to 'smodelAttribute' role only.
+      // still, we want to show the commented nodes in the same changed group with regular nodes, see MPS-26874
+      SContainmentLink link = (node.isInstanceOfConcept(CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : this.getLink());
+      parent.insertChildBefore(link, node, beforeAnchor);
     }
-    StructureChange.fixInnerModelReferences(copiedNodes, SModelOperations.getPointer(myModel), model);
+  }
 
-    setIsApplied(model);
+  private WrappingNodesGroup getCurrentOppositeGroup(SModel model) {
+    WrappingNodesGroup oppositeGroup = myOppositeWrappingGroup;
+    while (oppositeGroup != null) {
+      if (model.getNode(oppositeGroup.getFirstNodeId()) != null) {
+        return oppositeGroup;
+      }
+      oppositeGroup = oppositeGroup.getWrappingGroup();
+    }
+    return null;
+  }
+
+  /*package*/ SNodeId getNextInsertedNodeId(SModel model) {
+
+    // this group is last wrapped group
+    if (myWrappingGroup != null && model.getNode(myWrappingGroup.getFirstNodeId()) == null && ListSequence.fromList(myWrappingGroup.getWrappedGroups()).last() == this) {
+      return myWrappingGroup.getNextInsertedNodeId(model);
+    }
+
+    // this group is last unwrapped group
+    WrappingNodesGroup oppositeWrappingGroup = getCurrentOppositeGroup(model);
+    if (oppositeWrappingGroup != null && ListSequence.fromList(oppositeWrappingGroup.getUnwrappedGroups()).last() == this) {
+      return null;
+    }
+
+    if (myNextGroup == null) {
+      return getNextNodeId();
+    }
+
+    if (myNextGroup.isApplied(model)) {
+      return (myNextGroup.isNotEmpty() ? myNextGroup.getFirstNodeId() : myNextGroup.getNextInsertedNodeId(model));
+    }
+
+    WrappingNodesGroup nextOppositeWrappingGroup = myNextGroup.getOppositeWrappingGroup();
+
+    if (nextOppositeWrappingGroup != null && model.getNode(nextOppositeWrappingGroup.getFirstNodeId()) != null && ListSequence.fromList(nextOppositeWrappingGroup.getUnwrappedGroups()).first() == myNextGroup) {
+      boolean isInternalWrap = false;
+      while (nextOppositeWrappingGroup.getWrappingGroup() != null && model.getNode(nextOppositeWrappingGroup.getWrappingGroup().getFirstNodeId()) != null) {
+        if (nextOppositeWrappingGroup.getWrappingGroup() == myOppositeWrappingGroup) {
+          isInternalWrap = true;
+          break;
+        }
+        nextOppositeWrappingGroup = nextOppositeWrappingGroup.getWrappingGroup();
+      }
+      return (isInternalWrap ? nextOppositeWrappingGroup.getFirstNodeId() : myNextGroup.getOppositeWrappingGroup().getFirstNodeId());
+    }
+
+    if (myNextGroup.getWrappingGroup() != null && myNextGroup.isWrappedMove()) {
+      return myNextGroup.getFirstNodeId();
+    }
+
+    if (myNextGroup.getOppositeWrappingGroup() != null && myNextGroup.isWrappedMove()) {
+      return myNextGroup.getFirstNodeId();
+    }
+
+    if (myNextGroup instanceof IdChangeGroup) {
+      return ((IdChangeGroup) myNextGroup).getOppositeGroup().getId();
+    }
+
+    if (myNextGroup instanceof WrappingNodesGroup) {
+      return ((WrappingNodesGroup) myNextGroup).getFirstUnwrappedGroup().getFirstNodeId();
+    }
+
+    if (myNextGroup.getReplacingGroup() != null && myNextGroup.getReplacingGroup().isNotEmpty()) {
+      return myNextGroup.getReplacingGroup().getFirstNodeId();
+    }
+
+    return myNextGroup.getNextInsertedNodeId(model);
+  }
+
+  /*package*/ SNodeId getInsertParentId(SModel model) {
+
+    if (check_1a4m4r_a0a1a19(myParentIdChangeGroup) != null && !(myParentIdChangeGroup.getOppositeGroup().isApplied(model))) {
+      return myParentIdChangeGroup.getOppositeGroup().getId();
+    }
+
+    if (myWrappingGroup != null) {
+      return (model.getNode(myWrappingGroup.getFirstNodeId()) != null ? myWrappingGroup.getWrappedParentId() : myWrappingGroup.getInsertParentId(model));
+    }
+
+    if (myOppositeWrappingGroup != null) {
+      return (model.getNode(myOppositeWrappingGroup.getFirstNodeId()) != null ? myOppositeWrappingGroup.getWrappedParentId() : myOppositeWrappingGroup.getInsertParentId(model));
+    }
+
+    return getParentId();
+  }
+
+  @NotNull
+  /*package*/ List<SNode> extractNodes(@NotNull final SModel model, @NotNull final NodeCopier nodeCopier) {
+    List<SNode> nodes = ListSequence.fromList(getIds()).select((id) -> nodeCopier.getNode(model, id)).toList();
+    ListSequence.fromList(nodes).visitAll((it) -> SNodeOperations.deleteNode(it));
+    return nodes;
+  }
+
+  public Set<SNodeId> getDependantGroupNodeIds() {
+    return SetSequence.fromSetWithValues(new HashSet<SNodeId>(), SetSequence.fromSet(myDependantGroups).translate((it) -> it.getIds()));
   }
 
   private void deleteDependantNodes(SNode insertedNode, final NodeCopier nodeCopier, final Set<SNodeId> dependantIds) {
-    ListSequence.fromList(SNodeOperations.getChildren(insertedNode)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode child) {
-        SNodeId childId = child.getNodeId();
-        if (SetSequence.fromSet(dependantIds).contains(childId)) {
-          nodeCopier.deleteNode(child);
-        } else {
-          deleteDependantNodes(child, nodeCopier, dependantIds);
-        }
-      }
-    });
-  }
-
-  public boolean isAnchestorOf(ModifiedNodesGroup group) {
-    if (group.isEmpty()) {
-      return false;
-    }
-    final Set<SNodeId> descendantIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(myNodes).translate(new ITranslator2<ModifiedNode, SNodeId>() {
-      public Iterable<SNodeId> translate(ModifiedNode it) {
-        SNode node = it.getNode();
-        return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNodeId>() {
-          public SNodeId select(SNode it) {
-            return it.getNodeId();
-          }
-        });
-      }
-    }));
-
-    return ListSequence.fromList(group.getIds()).all(new IWhereFilter<SNodeId>() {
-      public boolean accept(SNodeId it) {
-        return SetSequence.fromSet(descendantIds).contains(it);
+    ListSequence.fromList(SNodeOperations.getChildren(insertedNode)).visitAll((child) -> {
+      SNodeId childId = child.getNodeId();
+      if (SetSequence.fromSet(dependantIds).contains(childId)) {
+        nodeCopier.deleteNode(child);
+      } else {
+        deleteDependantNodes(child, nodeCopier, dependantIds);
       }
     });
   }
@@ -284,65 +388,129 @@ public final class ModifiedNodesGroup {
     SetSequence.fromSet(myDependantGroups).addElement(group);
   }
 
-  public SNode getParentOrRenamedParent(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
-    return nodeCopier.getNode(model, getParentId());
+  public boolean isWrappedMove() {
+    return myIsWrappedMove;
   }
 
-  public void deleteFromModel(@NotNull final SModel model) {
-    ListSequence.fromList(myNodes).select(new ISelector<ModifiedNode, SNodeId>() {
-      public SNodeId select(ModifiedNode it) {
-        return it.getNodeId();
-      }
-    }).visitAll(new IVisitor<SNodeId>() {
-      public void visit(SNodeId id) {
-        check_1a4m4r_a0a0a0a0sc(model.getNode(id));
-      }
-    });
+  public void setIsWrappedMove() {
+    myIsWrappedMove = true;
   }
 
-  protected void insertNodeBeforeAnchor(SNode parent, SNode newNode, SNode anchor) {
-    SContainmentLink link = (SNodeOperations.isInstanceOf(newNode, CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : getRole());
-    parent.insertChildBefore(link, newNode, anchor);
+  @Nullable
+  public WrappingNodesGroup getWrappingGroup() {
+    return myWrappingGroup;
+  }
+
+  public void setWrappingGroup(@Nullable WrappingNodesGroup wrappingGroup) {
+    myWrappingGroup = wrappingGroup;
+  }
+
+  @Nullable
+  public WrappingNodesGroup getOppositeWrappingGroup() {
+    return myOppositeWrappingGroup;
+  }
+
+  public void setOppositeWrappingGroup(@Nullable WrappingNodesGroup wrappingGroup) {
+    myOppositeWrappingGroup = wrappingGroup;
+  }
+
+  @Nullable
+  public IdChangeGroup getParentIdChangeGroup() {
+    return myParentIdChangeGroup;
+  }
+
+  public void setParentIdChangeGroup(@Nullable IdChangeGroup group) {
+    myParentIdChangeGroup = group;
+  }
+
+  @Nullable
+  public ModifiedNodesGroup getOppositeMove() {
+    return myOppositeMove;
+  }
+
+  public void setOppositeMove(@Nullable ModifiedNodesGroup group) {
+    myOppositeMove = group;
+  }
+
+  public void setReplacingGroup(@Nullable ModifiedNodesGroup group) {
+    myReplacingGroup = group;
+  }
+
+  @Nullable
+  public ModifiedNodesGroup getReplacingGroup() {
+    return myReplacingGroup;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     if (isMove()) {
-      sb.append("moved ");
+      sb.append("Moved ");
     } else if (myType == ChangeType.ADD) {
-      sb.append("added");
+      if (isEmpty()) {
+        sb.append("New empty ");
+      } else {
+        sb.append("Added ");
+      }
     } else if (myType == ChangeType.DELETE) {
-      sb.append("deleted");
+      if (isEmpty()) {
+        sb.append("Old empty ");
+      } else {
+        sb.append("Deleted ");
+      }
     }
     sb.append("group of ");
-    sb.append(myRole.getName() + "s ");
-    sb.append(IterableUtils.join(ListSequence.fromList(getIds()).select(new ISelector<SNodeId, String>() {
-      public String select(SNodeId id) {
-        return "#" + id;
-      }
-    }), ", "));
+    sb.append(myLink.getName() + "s ");
+    sb.append(IterableUtils.join(ListSequence.fromList(getIds()).select((id) -> "#" + id), ", "));
     sb.append(" of parent #").append(myParentId);
     return sb.toString();
   }
-  private static SNodeId check_1a4m4r_a0a0a65(ModifiedNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getNodeId();
+
+  public boolean intersectsWith(ModifiedNodesGroup other) {
+    if (!(Objects.equals(this.getParentId(), other.getParentId())) || !(Objects.equals(this.getLink(), other.getLink()))) {
+      return false;
     }
-    return null;
+    if ((this.getEnd() == other.getBegin() || this.getBegin() == other.getEnd())) {
+      return true;
+    }
+    return this.getEnd() > other.getBegin() && this.getBegin() < other.getEnd();
   }
-  private static void check_1a4m4r_a0a0a0a0sc(SNode checkedDotOperand) {
+
+  public boolean hasCommonAnchorWith(ModifiedNodesGroup other, Map<SNodeId, SNodeId> symmetricIds) {
+
+    if (!(Objects.equals(myParentId, other.getParentId())) && (!(MapSequence.fromMap(symmetricIds).containsKey(myParentId)) || !(Objects.equals(MapSequence.fromMap(symmetricIds).get(myParentId), other.getParentId())))) {
+      return false;
+    }
+
+    SNodeId anchorId = getAnchorId();
+    SNodeId otherAnchorId = other.getAnchorId();
+    return (Objects.equals(anchorId, otherAnchorId) || (MapSequence.fromMap(symmetricIds).containsKey(anchorId) && MapSequence.fromMap(symmetricIds).get(anchorId) == otherAnchorId));
+  }
+
+  private SNodeId getAnchorId() {
+    if (myNextGroup == null) {
+      return myNextNodeId;
+    }
+    return myNextGroup.getFirstNodeId();
+  }
+  private static void check_1a4m4r_a0a0a0a0fd(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.delete();
     }
 
   }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+  private static IdChangeGroup check_1a4m4r_a0a1a19(IdChangeGroup checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getOppositeGroup();
+    }
+    return null;
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

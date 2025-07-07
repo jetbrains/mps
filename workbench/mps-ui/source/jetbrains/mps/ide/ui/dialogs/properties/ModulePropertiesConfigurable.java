@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.EmptyRunnable;
 import com.intellij.refactoring.RefactoringBundle;
 import com.intellij.ui.AnActionButtonRunnable;
+import com.intellij.ui.AnActionButtonUpdater;
 import com.intellij.ui.CheckboxTree;
 import com.intellij.ui.CheckboxTreeBase.CheckPolicy;
 import com.intellij.ui.CheckedTreeNode;
@@ -49,7 +50,6 @@ import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.table.JBTable;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import com.intellij.util.WaitForProgressToShow;
 import com.intellij.util.ui.AbstractTableCellEditor;
 import com.intellij.util.ui.ItemRemovable;
 import com.intellij.util.ui.JBUI;
@@ -58,6 +58,7 @@ import jetbrains.mps.VisibleModuleRegistry;
 import jetbrains.mps.extapi.module.FacetsRegistry;
 import jetbrains.mps.findUsages.CompositeFinder;
 import jetbrains.mps.icons.MPSIcons.General;
+import jetbrains.mps.ide.documentation.DocumentationFacetTab;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.holders.GenericHolder;
@@ -92,7 +93,6 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ModuleInstanceCondition;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.VisibleModuleCondition;
 import jetbrains.mps.project.structure.modules.Dependency;
@@ -114,14 +114,13 @@ import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.ConditionalIterable;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.ToStringComparator;
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
@@ -212,6 +211,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     myModule = (AbstractModule) module;
     myModuleDescriptor = myModule.getModuleDescriptor();
     myFacetTabsPersistence = new FacetTabsPersistence(project).initFromEP();
+
+    setReadOnly(module.isReadOnly());
 
     registerTabs(new ModuleCommonTab());
 
@@ -306,7 +307,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
   /*package*/ void findLanguageUsages(List<SLanguage> languages) {
     ModelsScope scope = new ModelAccessHelper(myModuleRepository).runReadAction(() -> new ModelsScope(myModule.getModels()));
-    final SearchQuery query = new SearchQuery(new GenericHolder<Collection<SLanguage>>(languages, "Languages"), scope);
+    final SearchQuery query = new SearchQuery(new GenericHolder<>(languages, "Languages"), scope);
     final IResultProvider provider =
         FindUtils.makeProvider(new CompositeFinder(new LanguageModelImportFinder()), new CompositeFinder(new LanguageUsagesFinder()));
     showUsageImpl(query, provider);
@@ -346,7 +347,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         myModuleDependenciesTab.init(); // init to avoid myModuleDependenciesTab.getTabComponent() == null
         return myModuleDependenciesTab.getTabComponent();
       } else {
-        myEntriesEditor = new ModelRootContentEntriesEditor(myModuleDescriptor, (MPSProject) myMPSProject);
+        myEntriesEditor = new ModelRootContentEntriesEditor(myModule, (MPSProject) myMPSProject);
         Disposer.register(getDisposable(), myEntriesEditor);
         return myEntriesEditor.getComponent();
       }
@@ -454,8 +455,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     }
 
     private String getGenOutPath() {
-      String outputDir = ProjectPathUtil.getGeneratorOutputPath(myModuleDescriptor);
-      return outputDir != null ? FileUtil.getCanonicalPath(outputDir) : "";
+      IFile outputDir = myModule.getOutputPath();
+      return outputDir != null ? FileUtil.getCanonicalPath(outputDir.getPath()) : "";
     }
 
     @Override
@@ -519,8 +520,10 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         if (myGenOut != null) {
           String genOut = PathUtil.toSystemIndependent(myGenOut.getText());
           if (!genOut.equals(getGenOutPath())) {
-            // here we imply getGenOutPath uses ProjectPathUtil.getGeneratorOutputPath
-            ProjectPathUtil.setGeneratorOutputPath(myModuleDescriptor, genOut);
+            // here we imply getGenOutPath uses AM.getOutputPath()
+            // TODO utilize the fact AM keeps IFile (or, perhaps, resort to PathSpec?)
+            myModule.setOutputPath(myModule.getFileSystem().getFile(genOut));
+            myModuleDescriptor.setOutputRoot(genOut);
           }
         }
         if (myLanguageVersion != null) {
@@ -542,29 +545,33 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         if (myGeneratorAlias != null) {
           ((GeneratorDescriptor) myModuleDescriptor).setAlias(myGeneratorAlias.getText().trim());
         }
-        myEntriesEditor.apply();
+        // XXX utilize the fact getModelRootDescriptors() gives by-reference value.
+        myModuleDescriptor.getModelRootDescriptors().clear();
+        myEntriesEditor.apply(myModuleDescriptor.getModelRootDescriptors());
       }
       if (renameTo != null) {
-        String finalRenameTo = renameTo;
-        ApplicationManager.getApplication().invokeLater(() -> {
-          String renameTitle = RefactoringBundle.message("rename.title");
-          int dialogResult = Messages.showOkCancelDialog(myIdeaProject, Renamer.getSubmodulesInfoHtml(myMPSProject, myModule),
-                                                         renameTitle, renameTitle, Messages.CANCEL_BUTTON, UIUtil.getInformationIcon());
-          if (Messages.OK == dialogResult) {
-            ProgressManager.getInstance().run(new Task.Modal(myIdeaProject, "Renaming...", false) {
-              @Override
-              public void run(@NotNull ProgressIndicator indicator) {
-                WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> {
-                  myMPSProject.getModelAccess().executeCommand(() -> {
-                    new Renamer(myMPSProject).renameModule(myModule, finalRenameTo);
-                  });
-                });
-              }
-            });
-          } else {
-            myTextFieldName.setText(myModule.getModuleName());
-          }
-        });
+        final String finalRenameTo = renameTo;
+        Renamer r = new Renamer((MPSProject) myMPSProject, myModule, null);
+        myMPSProject.getModelAccess().runReadAction(r::collectRenames);
+        r.prepareRename(finalRenameTo);
+        if (r.hasPrimaryRename() || r.hasDependantRenames()) {
+          final Task.Modal renameTask = new Task.Modal(myIdeaProject, "Renaming...", false) {
+            @Override
+            public void run(@NotNull ProgressIndicator indicator) {
+              ApplicationManager.getApplication().invokeAndWait(r::runRenameCommand);
+            }
+          };
+          ApplicationManager.getApplication().invokeLater(() -> {
+            String renameTitle = RefactoringBundle.message("rename.title");
+            int dialogResult = Messages.showOkCancelDialog(myIdeaProject, r.getDependantRenamesHTML(),
+                                                           renameTitle, renameTitle, Messages.getCancelButton(), UIUtil.getInformationIcon());
+            if (Messages.OK == dialogResult) {
+              ProgressManager.getInstance().run(renameTask);
+            } else {
+              myTextFieldName.setText(myModule.getModuleName());
+            }
+          });
+        }
       }
     }
   }
@@ -607,10 +614,10 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         if (isDevkit) {
           selectionSet = new ConditionalIterable<>(selectionSet, new VisibleModuleCondition());
         }
-        ComputeRunnable<List<SModuleReference>> c = new ComputeRunnable<>(new ModuleCollector(selectionSet));
-        myMPSProject.getModelAccess().runReadAction(c);
+
+        final List<SModuleReference> c = myMPSProject.getModelAccess().computeReadAction(new ModuleCollector(selectionSet));
         final String dialogTitle = isDevkit ? "Choose DevKit contents" : "Choose modules";
-        final List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, dialogTitle, c.getResult());
+        final List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, dialogTitle, c);
         if (list.isEmpty()) {
           return;
         }
@@ -659,10 +666,14 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
             return isExtendsDep && !scanTask.getExtendsSet().contains(moduleImport.getModuleReference());
           }, DependencyCellState.SUPERFLUOUS_EXTENDS);
         }
-        cellRender.addCellState(
-            moduleImport -> !scanTask.getGenerationTargets().contains(moduleImport.getModuleReference()) &&
-                            !scanTask.getCrossModuleSet().contains(moduleImport.getModuleReference()),
-            DependencyCellState.UNUSED);
+        if (false == myModule instanceof DevKit) {
+          // unused imports make no sense for devkit. Perhaps, for other modules, too, but
+          // this is the way we've got MPS now
+          cellRender.addCellState(
+              moduleImport -> !scanTask.getGenerationTargets().contains(moduleImport.getModuleReference()) &&
+                              !scanTask.getCrossModuleSet().contains(moduleImport.getModuleReference()),
+              DependencyCellState.UNUSED);
+        }
         myDependTableModel.fireTableDataChanged();
         ModuleDependenciesTab.this.setTableContentIsLoading(false);
       };
@@ -788,9 +799,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       decorator.setAddAction(anActionButton -> {
         Iterable<SModule> modules = new ConditionalIterable<>(getProjectModules(), new ModuleInstanceCondition(Solution.class));
         modules = new ConditionalIterable<>(modules, new VisibleModuleCondition());
-        ComputeRunnable<List<SModuleReference>> c = new ComputeRunnable<>(new ModuleCollector(modules));
-        myMPSProject.getModelAccess().runReadAction(c);
-        List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, "Choose solutions", c.getResult());
+        List<SModuleReference> c = myMPSProject.getModelAccess().computeReadAction(new ModuleCollector(modules));
+        List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, "Choose solutions", c);
         for (SModuleReference reference : list) {
           myRuntimeTableModel.addItem(reference);
         }
@@ -804,6 +814,11 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
           findModuleUsages(modules);
         }
       });
+      if (myIsReadOnly) {
+        final AnActionButtonUpdater disableEdit = (u) -> false;
+        decorator.setAddActionUpdater(disableEdit);
+        decorator.setRemoveActionUpdater(disableEdit);
+      }
       decorator.setPreferredSize(new Dimension(500, 150));
 
       JPanel table = decorator.createPanel();
@@ -854,6 +869,12 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
           findModelUsages(models);
         }
       });
+      if (myIsReadOnly) {
+        final AnActionButtonUpdater disableEdit = (u) -> false;
+        decoratorForAccessories.setAddActionUpdater(disableEdit);
+        decoratorForAccessories.setRemoveActionUpdater(disableEdit);
+      }
+
       decoratorForAccessories.setPreferredSize(new Dimension(500, 150));
 
       table = decoratorForAccessories.createPanel();
@@ -1024,8 +1045,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
     @Override
     protected UsedLangsTableModel getUsedLangsTableModel() {
-      final List<SLanguage> usedLanguages = new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(
-          (Computable<List<SLanguage>>) () -> new ArrayList<>(myModule.getUsedLanguages()));
+      final List<SLanguage> usedLanguages = new ArrayList<>(myModule.getUsedLanguages());
       final UsedLangsTableModel rv = new UsedLangsTableModel(myMPSProject.getRepository());
       usedLanguages.sort(new ToStringComparator());
       rv.init(usedLanguages, Collections.emptySet());
@@ -1456,8 +1476,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
       final FacetsRegistry facetsRegistry = myMPSProject.getComponent(FacetsRegistry.class);
 
-      Set<String> applicableFacetTypes = new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(
-          () -> facetsRegistry.getApplicableFacetTypes(myModule.getUsedLanguages()));
+      Set<String> applicableFacetTypes = facetsRegistry.getApplicableFacetTypes(myModule.getUsedLanguages());
 
       for (String facetType : facetsRegistry.getFacetTypes()) {
         if (!facetsRegistry.getFacetFactory(facetType).isApplicable(myModule)) {
@@ -1487,13 +1506,17 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         myCheckBoxes.add(checkBox);
       }
 
-      Collections.sort(myCheckBoxes);
       final JPanel panel = new JPanel();
       panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
       final int i = 5;
       panel.setBorder(BorderFactory.createEmptyBorder(i, i, i, i));
-      for (FacetCheckBox checkBox : myCheckBoxes) {
-        checkBox.addTo(panel);
+      if (myCheckBoxes.isEmpty()) {
+        panel.add(new JBLabel("No facets suitable for the module found"));
+      } else {
+        Collections.sort(myCheckBoxes);
+        for (FacetCheckBox checkBox : myCheckBoxes) {
+          checkBox.addTo(panel);
+        }
       }
 
       setTabComponent(panel);
@@ -1505,7 +1528,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
      * This is temporary helper method for transition period.
      * Should be removed alongside with {@link FacetsFacade#addFactory(String, FacetsFacade.FacetFactory)}.
      */
-    @ToRemove(version = 2020.1)
+    @Deprecated(since = "2020.1", forRemoval = true)
     private String type2PresentationConverter(String facetType) {
       final StringBuilder builder = new StringBuilder(facetType.length());
       if (!facetType.isEmpty()) {
@@ -1534,17 +1557,29 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     public void apply() {
       for (FacetCheckBox checkBox : myCheckBoxes) {
         SModuleFacet facet = checkBox.getFacet();
+        Tab tab = checkBox.getTab();
         if (checkBox.isNewlyCreated()) {
-          Tab tab = checkBox.getTab();
           if (tab != null) {
             // not all facets necessarily feature UI component, but in case they do, let the tab populate facet with updated values.
             // The reason is that apply() for AddFacetsTab comes earlier than apply to any newly added tab (due to natural order of tab addition).
             // Should not be an issue to apply twice (once here and subsequently from MPSPropertiesConfigurable#apply())
             tab.apply();
+            if (tab instanceof DocumentationFacetTab) {
+              // DocumentationFacetTab#apply() requires SModule, which is unavailable
+              // due to `DocumentationFacet.module` being null.
+              // That's why I use DocumentationFacetTab#apply(SModule).
+              ((DocumentationFacetTab) tab).apply(myModule);
+            }
           }
           myModuleDescriptor.addFacetDescriptor(facet);
           checkBox.created();
         } else if (checkBox.isExistingToRemove()) {
+          if (tab != null) {
+            tab.unapply();
+            if (tab instanceof DocumentationFacetTab){
+              ((DocumentationFacetTab) tab).unapply(myModule);
+            }
+          }
           myModuleDescriptor.removeFacetDescriptor(checkBox.getFacet());
           checkBox.existingRemoved();
         }
@@ -1617,6 +1652,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
           // (2) not to use Facet instance to represent a tab but rather ModuleFacetDescriptor (the code that adds facet in apply
           // goes from Facet instance through MFD anyway). Latter change is far greater and would expose memento keys to UI
           // (now FacetTab could use typed access of Facet instance), which is not perfect either.
+          // XXX I wonder why not to extend ModuleFacet interface with another, explicit `loadDefaults()` method?
           myFacet.load(new MementoImpl());
         }
         if (myFacetTab == null) {

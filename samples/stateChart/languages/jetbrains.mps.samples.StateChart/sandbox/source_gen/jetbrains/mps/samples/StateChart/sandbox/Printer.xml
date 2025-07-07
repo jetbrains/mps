@@ -1,5 +1,4 @@
-<scxml version="1.0" datamodel="ecmascript" initial="Off">
-  
+<scxml version="1.0" datamodel="ecmascript" initial="Off">  
   <final id="Off">
     <transition event="Turn On" target="On">
       <log expr="Starting"></log>

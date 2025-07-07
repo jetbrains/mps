@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,8 @@
 package jetbrains.mps.core.aspects.behaviour.api;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Unites the concept hierarchy (sources node<>/deployed SAbstractConcept)
@@ -30,34 +27,10 @@ import java.util.stream.Collectors;
 public interface AbstractConceptLike {
   @NotNull String getName();
 
-  @NotNull List<InterfaceConceptLike> getSuperInterfaces();
+  boolean isAbstract(); // is there need for the method?
 
-  @NotNull default <C extends AbstractConceptLike> List<C> getImmediateParents() {
-    return getSuperInterfaces().stream()
-                               .map(it -> (C) it)
-                               .collect(Collectors.toList());
-  }
-
-  interface InterfaceConceptLike extends AbstractConceptLike {
-  }
-
-  interface ConceptLike extends AbstractConceptLike {
-    @NotNull
-    @Override
-    default <C extends AbstractConceptLike> List<C> getImmediateParents() {
-      List<C> res = AbstractConceptLike.super.getImmediateParents();
-      ConceptLike superConcept = getSuperConcept();
-      if (superConcept != null) {
-        res.add((C) superConcept);
-      }
-      return res;
-    }
-
-    boolean isAbstract();
-
-    /**
-     * @return null iff it is a root
-     */
-    @Nullable ConceptLike getSuperConcept();
-  }
+  // XXX Perhaps, shall parameterize AbstractConceptLike with <C extends ACL>
+  // and use List<C> here to facilitate _SAbstractConcept.getImmediateParents():List<_SAbstractConcept>
+  @NotNull
+  List<AbstractConceptLike> getImmediateParents();
 }

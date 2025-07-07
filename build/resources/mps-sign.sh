@@ -13,7 +13,7 @@ rm -rf ${WORKDIR}/${EXPLODED}
 mkdir ${WORKDIR}/${EXPLODED}
 echo "Unzipping $1.zip to ${EXPLODED}..."
 unzip -q $1.zip -d ${WORKDIR}/${EXPLODED}/
-#rm $1.zip
+rm $1.zip
 BUILD_NAME=$(ls ${WORKDIR}/${EXPLODED}/)
 JB_CERT="Developer ID Application: JetBrains"
 BUNDLE_ID="com.jetbrains.mps"
@@ -41,7 +41,16 @@ for f in \
   "Contents/jdk/Contents/Home/lib" "Contents/jdk/Contents/Home/jre" "Contents/jdk/Contents/MacOS" \
   "Contents/jbr/Contents/Home/lib" "Contents/jbr/Contents/MacOS" \
   "Contents/jbr/Contents/Home/Frameworks" \
-  "Contents/jbr/Contents/Frameworks" \
+  "Contents/jbr/Contents/Frameworks"; do
+  if [ -d "$APP_DIRECTORY/$f" ]; then
+    find "$APP_DIRECTORY/$f" \
+      -type f \( -name "*.jnilib" -o -name "*.dylib" -o -name "*.so" -o -name "*.tbd" -o -perm +111 \) \
+      -exec codesign --timestamp \
+      -v -s "$JB_CERT" --options=runtime \
+      --entitlements entitlements.xml {} \;
+  fi
+done
+for f in \
   "Contents/Home/Frameworks" \
   "Contents/Frameworks" \
   "Contents/plugins" "Contents/lib"; do
@@ -49,6 +58,7 @@ for f in \
     find "$APP_DIRECTORY/$f" \
       -type f \( -name "*.jnilib" -o -name "*.dylib" -o -name "*.so" -o -name "*.tbd" -o -perm +111 \) \
       -exec codesign --timestamp \
+      --force \
       -v -s "$JB_CERT" --options=runtime \
       --entitlements entitlements.xml {} \;
   fi
@@ -64,11 +74,11 @@ find "$APP_DIRECTORY" -name '*.jar' \
   while IFS= read -r -d $'\0' file; do
     echo "Processing libraries in $file"
 
-    rm -rf jarfolder jar.jar
+    rm -rf jarfolder
     mkdir jarfolder
     filename="${file##*/}"
     echo "Filename: $filename"
-    cp "$file" jarfolder && (cd jarfolder && jar xf "$filename" && rm "$filename")
+    cp "$file" jarfolder && (cd jarfolder && jar xf "$filename")
 
     find jarfolder \
       -type f \( -name "*.jnilib" -o -name "*.dylib" -o -name "*.so" -o -name "*.tbd" -o -name "jattach" \) \
@@ -77,10 +87,9 @@ find "$APP_DIRECTORY" -name '*.jar' \
       -v -s "$JB_CERT" --options=runtime \
       --entitlements entitlements.xml {} \;
 
-    (cd jarfolder; zip -q -r -o ../jar.jar .)
-    mv jar.jar "$file"
+    (cd jarfolder; zip -r -o "$file" *.jnilib *.dylib *.so *.tbd jattach)
   done
-rm -rf jarfolder jar.jar
+rm -rf jarfolder
 
 echo "Signing other files..."
 for f in \
@@ -144,4 +153,4 @@ cd ${EXPLODED}
 ditto -c -k --sequesterRsrc --keepParent "${BUILD_NAME}" ../$1.sit
 cd ..
 
-rm -rf ${WORKDIR}/${EXPLODED}
+#rm -rf ${WORKDIR}/${EXPLODED}

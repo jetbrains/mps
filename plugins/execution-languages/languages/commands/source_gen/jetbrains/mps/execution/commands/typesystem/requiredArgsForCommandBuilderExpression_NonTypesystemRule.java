@@ -11,7 +11,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.execution.commands.behavior.CommandParameterDeclaration__BehaviorDescriptor;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -30,11 +29,7 @@ public class requiredArgsForCommandBuilderExpression_NonTypesystemRule extends A
     for (final SNode argDeclaration : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(commandBuilderExpression, LINKS.commandPart$UR1f), LINKS.parameterDeclaration$lr1c))) {
       if ((boolean) CommandParameterDeclaration__BehaviorDescriptor.isRequired_id7c4O8d8q0tV.invoke(argDeclaration)) {
         List<SNode> argument = SLinkOperations.getChildren(commandBuilderExpression, LINKS.argument$Zwec);
-        if (!(ListSequence.fromList(argument).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.parameterDeclaration$Zibc) == argDeclaration;
-          }
-        }))) {
+        if (!(ListSequence.fromList(argument).any((it) -> SLinkOperations.getTarget(it, LINKS.parameterDeclaration$Zibc) == argDeclaration))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(commandBuilderExpression, "The required argument '" + SPropertyOperations.getString(argDeclaration, PROPS.name$MnvL) + "' is not set", "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "7947003018421368856", null, errorTarget);

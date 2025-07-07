@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,9 +22,8 @@ import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.DeployedL
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModelNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModuleNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -37,7 +36,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class PathProvider {
-  private static final Logger LOG = LogManager.getLogger(PathProvider.class);
   private final PathItem.Factory<SNode> myNodeElementFactory;
   private final PathItem.Factory<SModelReference> myModelElementFactory;
   private final PathItem.Factory<SModuleReference> myModuleElementFactory;
@@ -134,7 +132,7 @@ public class PathProvider {
     try {
       name = node.getName();
     } catch (Throwable t) {
-      LOG.error(null, t);
+      Logger.getLogger(PathProvider.class).error(t);
       name = "<getName() caused an exception on this node>";
     }
     if (name != null) {

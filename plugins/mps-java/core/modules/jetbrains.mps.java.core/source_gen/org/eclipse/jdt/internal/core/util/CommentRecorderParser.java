@@ -39,7 +39,7 @@ public class CommentRecorderParser extends Parser {
   }
   public void checkComment() {
     // discard obsolete comments while inside methods or fields initializer (see bug 74369)
-    if (!((this.diet && this.dietInt == 0)) && this.scanner.commentPtr >= 0) {
+    if (!(this.diet && this.dietInt == 0) && this.scanner.commentPtr >= 0) {
       flushCommentsDefinedPriorTo(this.endStatementPosition);
     }
     boolean deprecated = false;

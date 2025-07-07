@@ -11,12 +11,11 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.baseLanguage.util.plugin.refactorings.MoveRefactoringUtils;
+import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,16 +41,14 @@ public class OverrideConceptMethodsAction {
     final Wrappers._T<SNode> contextMethod = new Wrappers._T<SNode>();
     final Wrappers._T<SNodeReference[]> methods = new Wrappers._T<SNodeReference[]>();
 
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        contextClass.value = SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.ConceptBehavior$2, true, false);
-        contextMethod.value = SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.ConceptMethodDeclaration$N0, true, false);
-        List<SNode> methodsToOverride = ((List<SNode>) BHReflection.invoke0(contextClass.value, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToImplement", null, "4GM03FJm5q2")));
-        if (myIsOverride) {
-          ListSequence.fromList(methodsToOverride).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(contextClass.value, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))));
-        }
-        methods.value = OverrideConceptMethodsDialog.toNodePointers(OverrideConceptMethodsDialog.sortMethods(contextClass.value, methodsToOverride));
+    myProject.getModelAccess().runReadAction(() -> {
+      contextClass.value = SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.ConceptBehavior$2, true, false);
+      contextMethod.value = SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.ConceptMethodDeclaration$N0, true, false);
+      List<SNode> methodsToOverride = ((List<SNode>) BHReflection.invoke0(contextClass.value, CONCEPTS.IMemberContainer$yM, SMethodIdV2.create("getMethodsToImplement", 5418393554803775106L, 0x5745e3015c8914d3L)));
+      if (myIsOverride) {
+        ListSequence.fromList(methodsToOverride).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(contextClass.value, CONCEPTS.IMemberContainer$yM, SMethodIdV2.create("getMethodsToOverride", 5418393554803767537L, 0x5745e3015c8914d3L)))));
       }
+      methods.value = OverrideConceptMethodsDialog.toNodePointers(OverrideConceptMethodsDialog.sortMethods(contextClass.value, methodsToOverride));
     });
 
     final OverrideConceptMethodsDialog dialog = new OverrideConceptMethodsDialog(methods.value, ProjectHelper.toIdeaProject(myProject)) {
@@ -66,31 +63,28 @@ public class OverrideConceptMethodsAction {
     if (dialog.isOK()) {
       final Iterable<SNodeReference> selectedElements = (Iterable<SNodeReference>) dialog.getSelectedElements();
 
-      myProject.getModelAccess().executeCommandInEDT(new Runnable() {
-        public void run() {
-          List<SNode> selection = Sequence.fromIterable(selectedElements).select(new ISelector<SNodeReference, SNode>() {
-            public SNode select(SNodeReference it) {
-              return SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$kD);
-            }
-          }).toListSequence();
-          OverrideConceptMethodsHelper helper = new OverrideConceptMethodsHelper(myProject, contextClass.value, contextMethod.value, dialog.isRemoveAttributes(), dialog.isAddReturn());
-          List<SNode> insertedMethods = helper.insertMethods(selection);
-          if (insertedMethods.isEmpty()) {
-            return;
-          }
-
-          MoveRefactoringUtils.fixImportsFromNode(contextClass.value);
-
-          SNode firstMethod = ListSequence.fromList(insertedMethods).first();
-          SNode nodeToSelect;
-          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).isNotEmpty()) {
-            nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).first();
-          } else {
-            nodeToSelect = firstMethod;
-          }
-          myEditorContext.flushEvents();
-          myEditorContext.getSelectionManager().setSelection(nodeToSelect);
+      myProject.getModelAccess().executeCommandInEDT(() -> {
+        List<SNode> selection = Sequence.fromIterable(selectedElements).select((it) -> SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$kD)).toList();
+        OverrideConceptMethodsHelper helper = new OverrideConceptMethodsHelper(myProject, contextClass.value, contextMethod.value, dialog.isRemoveAttributes(), dialog.isAddReturn());
+        List<SNode> insertedMethods = helper.insertMethods(selection);
+        if (insertedMethods.isEmpty()) {
+          return;
         }
+
+        ModelDependencyUpdate mdu = new ModelDependencyUpdate(SNodeOperations.getModel(contextClass.value), contextClass.value);
+        // XXX MoveRefactoringUtils.fixImports didn't bother to update used languages, is it correct?
+        mdu.updateImportedModels(myProject.getRepository());
+        mdu.updateModuleDependencies(myProject.getRepository());
+
+        SNode firstMethod = ListSequence.fromList(insertedMethods).first();
+        SNode nodeToSelect;
+        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).isNotEmpty()) {
+          nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).first();
+        } else {
+          nodeToSelect = firstMethod;
+        }
+        myEditorContext.flushEvents();
+        myEditorContext.getSelectionManager().setSelection(nodeToSelect);
       });
     }
   }

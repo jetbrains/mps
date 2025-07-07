@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,9 @@ package jetbrains.mps.migration;
 
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.testbench.junit.suites.BaseCheckModulesTest;
-import jetbrains.mps.util.ClassType;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -30,9 +29,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BootstrapSolutionsNotMigratedTest extends BaseCheckModulesTest {
@@ -70,16 +67,11 @@ public class BootstrapSolutionsNotMigratedTest extends BaseCheckModulesTest {
   @Parameters
   public static List<Object[]> testParameters() throws InvocationTargetException, InterruptedException {
     initEnvironment();
-    // 'bootstrap' here means 'solutiun that needs some custom code to get populated', rather than 'solution MPS needs to bootstrap itself'
-    final Set<SModuleReference> bootstrapSolutuions = new HashSet<>();
-    for (ClassType ct : ClassType.values()) {
-      final SModuleReference s = BootstrapLanguages.bootstrapSolutionRef(ct);
-      if (s != null) {
-        bootstrapSolutuions.add(s);
-      }
-    }
-    return createTestParametersFromModules(getContextProject().getProjectModulesWithGenerators().stream().filter(
-        (module) -> bootstrapSolutuions.contains(module.getModuleReference())).collect(Collectors.toList()));
+    // 'bootstrap' in the name means 'MPS-distributed solution with stub models', rather than 'solution MPS needs to bootstrap itself'
+    // for these solutions, we don't keep cached record of imports/languages versions as we do for other modules.
+    // Don't try to understand the naming reason, it's historical artifact.
+    return createTestParametersFromModules(getContextProject().getProjectModules(Solution.class).stream().filter(
+        (module) -> module.getModuleDescriptor().isReadOnlyStubModule()).collect(Collectors.toList()));
   }
 
 }

@@ -10,13 +10,13 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -25,27 +25,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class AddDefaultResources_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddDefaultResources_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:e8fca550-89ba-41bb-ae28-dc9cae640a8a(jetbrains.mps.build.mps.intentions)", "6118848850553113137"));
   }
+
   @Override
   public String getPresentation() {
     return "AddDefaultResources";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.sources$mT1j), CONCEPTS.BuildMps_ModuleResources$M6)).isEmpty();
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -55,10 +49,12 @@ public final class AddDefaultResources_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add default module resources";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode mr = SLinkOperations.addNewChild(node, LINKS.sources$mT1j, CONCEPTS.BuildMps_ModuleResources$M6);
@@ -67,10 +63,25 @@ public final class AddDefaultResources_Intention extends AbstractIntentionDescri
       SLinkOperations.setTarget(files, LINKS.dir$e6r$, BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(SLinkOperations.getTarget(node, LINKS.path$iYKB)));
       SPropertyOperations.set(SLinkOperations.addNewChild(files, LINKS.selectors$hp_C, CONCEPTS.BuildFileIncludesSelector$kb), PROPS.pattern$u5_$, "icons/**");
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.sources$mT1j), CONCEPTS.BuildMps_ModuleResources$M6)).isEmpty();
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddDefaultResources_Intention.this;
     }
+
   }
 
   private static final class LINKS {

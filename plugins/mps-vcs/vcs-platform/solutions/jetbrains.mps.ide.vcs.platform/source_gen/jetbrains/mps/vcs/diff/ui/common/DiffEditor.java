@@ -12,40 +12,46 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.project.MPSProject;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
-import java.awt.Dimension;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
+import org.jetbrains.mps.openapi.model.SNode;
+import java.awt.Dimension;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
 import javax.swing.JPanel;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collections;
 import java.awt.event.MouseEvent;
 import java.awt.Point;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.openapi.editor.message.FormattingOptions;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import java.util.ArrayList;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.nodeEditor.EditorTooltipProvider;
+import com.intellij.codeInsight.hint.TooltipGroup;
+import com.intellij.codeInsight.hint.TooltipRenderer;
+import java.util.Objects;
+import com.intellij.codeInsight.hint.TooltipController;
+import com.intellij.codeInsight.hint.LineTooltipRenderer;
+import com.intellij.openapi.ui.popup.Balloon;
+import javax.swing.JScrollPane;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.openapi.editor.cells.CellAction;
-import javax.swing.JScrollPane;
-import com.intellij.ui.ScrollPaneFactory;
+import com.intellij.util.ui.JBUI;
 import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import java.util.function.Predicate;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
@@ -65,33 +71,39 @@ public class DiffEditor implements EditorMessageOwner {
   private String myTitle;
   private final JComponent myTitleComponent;
   private final Map<ModelChange, List<ChangeEditorMessage>> myChangeToMessages = MapSequence.fromMap(new HashMap<ModelChange, List<ChangeEditorMessage>>());
+  private final MPSProject myMpsProject;
+  private final boolean myRightToLeft;
+  private final JLabel myFailedToLoadModelPanel = new JLabel("Failed to load model", SwingConstants.CENTER);
 
 
-  public DiffEditor(final MPSProject project, SNode node, String contentTitle, boolean rightToLeft, boolean isInspectorShown) {
+  public DiffEditor(final MPSProject project, @Nullable SModel model, @Nullable SNodeId nodeId, String contentTitle, boolean rightToLeft, boolean readOnly, boolean isInspectorShown) {
+    myMpsProject = project;
+    myRightToLeft = rightToLeft;
     myIsInspectorShown = isInspectorShown;
     myTitle = contentTitle;
-    myMainEditorComponent = new MainEditorComponent(project.getRepository(), rightToLeft);
-    myInspectorComponent = new MyInspectorEditorComponent(project.getRepository(), rightToLeft);
-    Sequence.fromIterable(getEditorComponents()).visitAll(new IVisitor<EditorComponent>() {
-      public void visit(EditorComponent ec) {
-        EditorExtensionUtil.extendUsingProject(ec, project);
-      }
-    });
+    myMainEditorComponent = new MainEditorComponent(project.getRepository(), rightToLeft, readOnly);
+    myInspectorComponent = new MyInspectorEditorComponent(project.getRepository(), rightToLeft, readOnly);
+    Sequence.fromIterable(getEditorComponents()).visitAll((ec) -> EditorExtensionUtil.extendUsingProject(ec, project));
 
-    myMainEditorComponent.editNode(node);
+    if (model != null) {
+      SNode node = (model == null || nodeId == null ? null : model.getNode(nodeId));
+      myMainEditorComponent.editNode(node);
+    }
     myInspectorComponent.getExternalComponent().setPreferredSize(new Dimension());
-    Sequence.fromIterable(getEditorComponents()).visitAll(new IVisitor<EditorComponent>() {
-      public void visit(EditorComponent ec) {
-        ec.getLeftEditorHighlighter().setDefaultPaintersEnabled(false);
-      }
-    });
+    Sequence.fromIterable(getEditorComponents()).visitAll((ec) -> ec.getLeftEditorHighlighter().setDefaultPaintersEnabled(false));
 
     myTitleComponent = new JLabel(((contentTitle == null || contentTitle.length() == 0) ? "" : contentTitle));
 
-    myPanel.setFirstComponent(getTopComponent());
+    myFailedToLoadModelPanel.setBackground(EditorColorsManager.getInstance().getSchemeForCurrentUITheme().getDefaultBackground());
+    myFailedToLoadModelPanel.setOpaque(true);
+    myPanel.setFirstComponent((model != null ? getTopComponent() : myFailedToLoadModelPanel));
     if (isInspectorShown) {
       myPanel.setSecondComponent(getBottomComponent());
     }
+  }
+
+  /*package*/ boolean isRightToLeft() {
+    return myRightToLeft;
   }
 
   public JPanel getPanel() {
@@ -101,7 +113,7 @@ public class DiffEditor implements EditorMessageOwner {
   @NotNull
   /*package*/ List<DiffEditorChangeLayer> getLayers(boolean inspector) {
     LayersHolder layersHolder = (inspector ? myInspectorComponent : myMainEditorComponent);
-    return (layersHolder.getLayers() == null ? Sequence.fromIterable(Sequence.fromIterable(Collections.<DiffEditorChangeLayer>emptyList())).toListSequence() : layersHolder.getLayers());
+    return (layersHolder.getLayers() == null ? Sequence.fromIterable(Sequence.fromIterable(Collections.<DiffEditorChangeLayer>emptyList())).toList() : layersHolder.getLayers());
   }
 
   /*package*/ void setLayers(List<DiffEditorChangeLayer> layers, boolean inspector) {
@@ -112,23 +124,11 @@ public class DiffEditor implements EditorMessageOwner {
   @NotNull
   /*package*/ List<DiffEditorChangeLayer> getLayersUnderMouse(MouseEvent e, boolean inspector) {
     final Point p = e.getPoint();
-    return ListSequence.fromList(ListSequence.fromList(getLayers(inspector)).where(new IWhereFilter<DiffEditorChangeLayer>() {
-      public boolean accept(DiffEditorChangeLayer layer) {
-        return p.y >= layer.getY() && p.y <= layer.getY() + layer.getHeight();
-      }
-    }).toListSequence()).reversedList();
+    return ListSequence.fromList(ListSequence.fromList(getLayers(inspector)).where((layer) -> p.y >= layer.getY() && p.y <= layer.getY() + layer.getHeight()).toList()).reversedList();
   }
 
   /*package*/ String getToolTipTextFromSelectedLayers(boolean inspector) {
-    String text = IterableUtils.join(ListSequence.fromList(getLayers(inspector)).where(new IWhereFilter<DiffEditorChangeLayer>() {
-      public boolean accept(DiffEditorChangeLayer it) {
-        return it.isSelected();
-      }
-    }).select(new ISelector<DiffEditorChangeLayer, String>() {
-      public String select(DiffEditorChangeLayer it) {
-        return it.getDescription();
-      }
-    }), "\n\n");
+    String text = IterableUtils.join(ListSequence.fromList(getLayers(inspector)).where((it) -> it.isSelected()).select((it) -> it.getDescription(DiffSettingsUtil.getUseShortDescriptionsOption())), "\n\n");
     return EditorMessage.formatMessage(text, FormattingOptions.PLAIN_TEXT);
   }
 
@@ -165,7 +165,12 @@ public class DiffEditor implements EditorMessageOwner {
     return getMainEditor().getEditedNode();
   }
 
-  public void editRoot(@Nullable SNodeId rootId, @NotNull SModel model) {
+  public void editRoot(@Nullable SNodeId rootId, @Nullable SModel model) {
+    if (model == null) {
+      myPanel.setFirstComponent(myFailedToLoadModelPanel);
+      return;
+    }
+    myPanel.setFirstComponent(getTopComponent());
     SNode root = (rootId == null ? null : model.getNode(rootId));
     getMainEditor().editNode(root);
   }
@@ -204,64 +209,42 @@ public class DiffEditor implements EditorMessageOwner {
     return (inspector ? getBottomComponent() : getTopComponent());
   }
 
-  public int getMessagesPanelOffset(boolean inspector) {
-    return (inspector ? myInspectorComponent.getMessagesPanelOffset() : myMainEditorComponent.getMessagesPanelOffset());
+  public int getScrollPanelOffset(boolean inspector) {
+    return (inspector ? myInspectorComponent.getScrollPaneOffset() : myMainEditorComponent.getScrollPaneOffset());
   }
 
   public EditorComponent getEditorComponent(boolean inspector) {
     return (inspector ? myInspectorComponent : myMainEditorComponent);
   }
 
-  public void highlightChange(SModel model, ModelChange change, boolean isOldEditor, ChangeEditorMessage.ConflictChecker conflictChecker) {
-    final List<ChangeEditorMessage> messages = ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, this, conflictChecker);
+  public void highlightChange(final SModel model, final ModelChange change, final boolean isOldEditor, final ChangeEditorMessage.ConflictChecker conflictChecker) {
+    final List<ChangeEditorMessage> messages = new ModelAccessHelper(myMpsProject.getRepository()).runReadAction(() -> ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, DiffEditor.this, conflictChecker));
     if (ListSequence.fromList(messages).isEmpty()) {
       return;
     }
     MapSequence.fromMap(myChangeToMessages).put(change, messages);
-    Sequence.fromIterable(getEditorComponents()).visitAll(new IVisitor<EditorComponent>() {
-      public void visit(final EditorComponent ec) {
-        ListSequence.fromList(messages).visitAll(new IVisitor<ChangeEditorMessage>() {
-          public void visit(ChangeEditorMessage m) {
-            ec.getHighlightManager().mark(m);
-          }
-        });
-      }
-    });
+    Sequence.fromIterable(getEditorComponents()).visitAll((final EditorComponent ec) -> ListSequence.fromList(messages).visitAll((m) -> ec.getHighlightManager().mark(m)));
   }
 
-  public void highlightChanges(final SModel model, Iterable<ModelChange> changes, final boolean isOldEditor, final ChangeEditorMessage.ConflictChecker conflictChecker) {
+  public void highlightChanges(final SModel model, final Iterable<ModelChange> changes, final boolean isOldEditor, final ChangeEditorMessage.ConflictChecker conflictChecker) {
     final List<ChangeEditorMessage> allMessages = ListSequence.fromList(new ArrayList<ChangeEditorMessage>());
-    Sequence.fromIterable(changes).visitAll(new IVisitor<ModelChange>() {
-      public void visit(ModelChange change) {
-        List<ChangeEditorMessage> messages = ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, DiffEditor.this, conflictChecker);
-        if (ListSequence.fromList(messages).isEmpty()) {
-          return;
-        }
-        MapSequence.fromMap(myChangeToMessages).put(change, messages);
-        ListSequence.fromList(allMessages).addSequence(ListSequence.fromList(messages));
+    new ModelAccessHelper(myMpsProject.getRepository()).runReadAction(() -> Sequence.fromIterable(changes).visitAll((change) -> {
+      List<ChangeEditorMessage> messages = ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, DiffEditor.this, conflictChecker);
+      if (ListSequence.fromList(messages).isEmpty()) {
+        return;
       }
-    });
+      MapSequence.fromMap(myChangeToMessages).put(change, messages);
+      ListSequence.fromList(allMessages).addSequence(ListSequence.fromList(messages));
+    }));
     if (ListSequence.fromList(allMessages).isEmpty()) {
       return;
     }
-    Sequence.fromIterable(getEditorComponents()).visitAll(new IVisitor<EditorComponent>() {
-      public void visit(final EditorComponent ec) {
-        ListSequence.fromList(allMessages).visitAll(new IVisitor<ChangeEditorMessage>() {
-          public void visit(ChangeEditorMessage m) {
-            ec.getHighlightManager().mark(m);
-          }
-        });
-      }
-    });
+    Sequence.fromIterable(getEditorComponents()).visitAll((final EditorComponent ec) -> ListSequence.fromList(allMessages).visitAll((m) -> ec.getHighlightManager().mark(m)));
   }
 
 
   public void repaintAndRebuildEditorMessages() {
-    Sequence.fromIterable(getEditorComponents()).visitAll(new IVisitor<EditorComponent>() {
-      public void visit(EditorComponent ec) {
-        ec.getHighlightManager().repaintAndRebuildEditorMessages();
-      }
-    });
+    Sequence.fromIterable(getEditorComponents()).visitAll((ec) -> ec.getHighlightManager().repaintAndRebuildEditorMessages());
   }
 
   public List<ChangeEditorMessage> getMessagesForChange(ModelChange change) {
@@ -269,11 +252,7 @@ public class DiffEditor implements EditorMessageOwner {
   }
 
   public void unhighlightAllChanges() {
-    Sequence.fromIterable(getEditorComponents()).visitAll(new IVisitor<EditorComponent>() {
-      public void visit(EditorComponent ec) {
-        ec.getHighlightManager().clearForOwner(DiffEditor.this);
-      }
-    });
+    Sequence.fromIterable(getEditorComponents()).visitAll((ec) -> ec.getHighlightManager().clearForOwner(DiffEditor.this));
     MapSequence.fromMap(myChangeToMessages).clear();
   }
 
@@ -290,12 +269,52 @@ public class DiffEditor implements EditorMessageOwner {
     return type == CellActionType.FOLD_RECURSIVELY || type == CellActionType.FOLD_ALL || type == CellActionType.FOLD || type == CellActionType.UNFOLD || type == CellActionType.UNFOLD_RECURSIVELY || type == CellActionType.UNFOLD_ALL;
   }
 
-  /*package*/ interface TooltipProvider {
-    String getTooltipText(MouseEvent mouseEvent);
-  }
+  private class MyTooltipProvider implements EditorTooltipProvider {
 
-  /*package*/ interface TooltipConsumer {
-    void setTooltipProvider(TooltipProvider tooltipProvider);
+    private final boolean myInspector;
+    private final TooltipGroup myTooltipGroup;
+    private List<DiffEditorChangeLayer> mySelectedLayers;
+
+    private MyTooltipProvider(boolean inspector) {
+      myInspector = inspector;
+      myTooltipGroup = new TooltipGroup((inspector ? "INSPECTOR_TOOLTIP_GROUP" : "MAIN_TOOLTIP_GROUP"), 0);
+    }
+
+    @Override
+    public TooltipRenderer getTooltipRenderer(MouseEvent e) {
+
+      List<DiffEditorChangeLayer> selectedLayers = ListSequence.fromList(getLayers(myInspector)).where((it) -> it.isSelected()).toList();
+      if (!(Objects.equals(selectedLayers, mySelectedLayers))) {
+        TooltipController.getInstance().cancelTooltip(myTooltipGroup, e, true);
+        mySelectedLayers = selectedLayers;
+      }
+      if (ListSequence.fromList(selectedLayers).isEmpty()) {
+        TooltipController.getInstance().cancelTooltip(myTooltipGroup, e, false);
+        return null;
+      }
+      LineTooltipRenderer bigRenderer = null;
+
+      for (DiffEditorChangeLayer layer : selectedLayers) {
+        String text = layer.getDescription(DiffSettingsUtil.getUseShortDescriptionsOption());
+        EditorMessage.formatMessage(text, FormattingOptions.PLAIN_TEXT);
+        if (bigRenderer == null) {
+          bigRenderer = new LineTooltipRenderer(text, new Object[]{text});
+        } else {
+          bigRenderer.addBelow(text);
+        }
+      }
+      return bigRenderer;
+    }
+
+    @Override
+    public Balloon.Position getPreferredPosition() {
+      return Balloon.Position.atRight;
+    }
+
+    @Override
+    public TooltipGroup getTooltipGroup() {
+      return myTooltipGroup;
+    }
   }
 
   /*package*/ interface LayersHolder {
@@ -304,25 +323,20 @@ public class DiffEditor implements EditorMessageOwner {
     void setLayers(List<DiffEditorChangeLayer> layers);
   }
 
-  public class MyInspectorEditorComponent extends InspectorEditorComponent implements TooltipConsumer, LayersHolder {
+  @Nullable
+  /*package*/ JScrollPane getScrollPane(boolean inspector) {
+    return (inspector ? myInspectorComponent.getScrollPane() : myMainEditorComponent.getScrollPane());
+  }
 
-    @Nullable
-    private TooltipProvider myTooltipProvider;
+  public final class MyInspectorEditorComponent extends InspectorEditorComponent implements LayersHolder {
+
     @Nullable
     private List<DiffEditorChangeLayer> myLayers;
 
-
-    public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft) {
-      super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).showSelectionLine(false).build());
-    }
-
-    @Override
-    public String getToolTipText(MouseEvent event) {
-      String text = super.getToolTipText(event);
-      if (text != null && (text != null && text.length() > 0)) {
-        return text;
-      }
-      return (myTooltipProvider != null ? myTooltipProvider.getTooltipText(event) : null);
+    public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft, boolean readOnly) {
+      super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).showSelectionLine(false).readOnly(readOnly).showLightBulb(false).build());
+      setTooltipProvider(new MyTooltipProvider(true));
+      getHighlighter().setPaused(true);
     }
 
     @Override
@@ -335,12 +349,10 @@ public class DiffEditor implements EditorMessageOwner {
 
     @Override
     protected JScrollPane createScrollPane() {
-      return ScrollPaneFactory.createScrollPane(null, true);
-    }
-
-    @Override
-    public void setTooltipProvider(TooltipProvider tooltipProvider) {
-      myTooltipProvider = tooltipProvider;
+      JScrollPane scrollPane = super.createScrollPane();
+      scrollPane.setBorder(JBUI.Borders.empty());
+      scrollPane.setViewportBorder(JBUI.Borders.empty());
+      return scrollPane;
     }
 
     @Override
@@ -355,38 +367,27 @@ public class DiffEditor implements EditorMessageOwner {
     }
   }
 
-  public class MainEditorComponent extends EditorComponent implements TooltipConsumer, LayersHolder {
+  public final class MainEditorComponent extends EditorComponent implements LayersHolder {
     private DiffFileEditor myDiffFileEditor;
     private CommandContextWithVF myCommandContext;
     @Nullable
-    private TooltipProvider myTooltipProvider;
-    @Nullable
     private List<DiffEditorChangeLayer> myLayers;
 
-
-    public MainEditorComponent(SRepository repository, boolean rightToLeft) {
-      super(repository, new EditorConfigurationBuilder().showErrorsGutter(true).showSelectionLine(false).rightToLeft(rightToLeft).build());
+    public MainEditorComponent(SRepository repository, boolean rightToLeft, boolean readOnly) {
+      super(repository, new EditorConfigurationBuilder().showErrorsGutter(true).showSelectionLine(false).rightToLeft(rightToLeft).readOnly(readOnly).showLightBulb(false).build());
       myDiffFileEditor = new DiffFileEditor(this);
-      setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$VO, SMethodTrimmedId.create("getGeneratedClassFQName", CONCEPTS.ActionGroupDeclaration$VO, "hEwJa8g"))));
-      getMessagesGutter().setMessageThicknessProvider(new Predicate<SimpleEditorMessage>() {
-        public boolean test(SimpleEditorMessage m) {
-          return false;
-        }
-      });
+      setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$VO, SMethodIdV2.create("getGeneratedClassFQName", 1213877494288L, 0x8643ee8702577820L))));
+      getMessagesGutter().setMessageThicknessProvider((SimpleEditorMessage m) -> false);
+      setTooltipProvider(new MyTooltipProvider(false));
+      getHighlighter().setPaused(true);
     }
 
     @Override
     protected JScrollPane createScrollPane() {
-      return ScrollPaneFactory.createScrollPane(null, true);
-    }
-
-    @Override
-    public String getToolTipText(MouseEvent event) {
-      String text = super.getToolTipText(event);
-      if (text != null && (text != null && text.length() > 0)) {
-        return text;
-      }
-      return (myTooltipProvider != null ? myTooltipProvider.getTooltipText(event) : null);
+      JScrollPane scrollPane = super.createScrollPane();
+      scrollPane.setBorder(JBUI.Borders.empty());
+      scrollPane.setViewportBorder(JBUI.Borders.empty());
+      return scrollPane;
     }
 
     @Override
@@ -417,11 +418,6 @@ public class DiffEditor implements EditorMessageOwner {
 
     public MPSNodeVirtualFile getVirtualFile() {
       return myCommandContext.getContextVirtualFile();
-    }
-
-    @Override
-    public void setTooltipProvider(TooltipProvider tooltipProvider) {
-      myTooltipProvider = tooltipProvider;
     }
 
     @Override

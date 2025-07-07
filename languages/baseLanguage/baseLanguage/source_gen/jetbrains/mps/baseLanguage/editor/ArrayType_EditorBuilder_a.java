@@ -112,7 +112,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "[]");
     editorCell.setCellId("Constant_5rfjfg_b0");
     Style style = new StyleImpl();
-    new BracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new BracketStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     editorCell.getStyle().putAll(style);
     if (true) {

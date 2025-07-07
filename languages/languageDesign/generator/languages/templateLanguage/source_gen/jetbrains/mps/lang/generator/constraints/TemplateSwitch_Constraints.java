@@ -19,11 +19,11 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -34,11 +34,7 @@ public class TemplateSwitch_Constraints extends BaseConstraintsDescriptor {
 
   public static class NeedCallSite_Property extends BasePropertyConstraintsDescriptor {
     public NeedCallSite_Property(ConstraintsDescriptor container) {
-      super(PROPS.needCallSite$fSr_, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.needCallSite$fSr_, container, true, true, false);
     }
     @Override
     public Object getValue(SNode node) {
@@ -46,10 +42,6 @@ public class TemplateSwitch_Constraints extends BaseConstraintsDescriptor {
         return SPropertyOperations.getBoolean(SLinkOperations.getTarget(node, LINKS.modifiedSwitch$h3H5), PROPS.needCallSite$fSr_);
       }
       return SPropertyOperations.getBoolean(node, PROPS.needCallSite$fSr_);
-    }
-    @Override
-    public boolean hasOwnSetter() {
-      return true;
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {
@@ -70,18 +62,14 @@ public class TemplateSwitch_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.modifiedSwitch$h3H5, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.modifiedSwitch$h3H5, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_phmuaq_a0a0a0a0a1a0a0a0e;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)", "6836281137582788743");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -94,7 +82,6 @@ public class TemplateSwitch_Constraints extends BaseConstraintsDescriptor {
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_phmuaq_a0a0a0a0a1a0a0a0e = new SNodePointer("r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)", "6836281137582788743");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TemplateSwitch$j_ = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch");

@@ -5,8 +5,6 @@ package jetbrains.mps.tool.common;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import org.jdom.Document;
 import java.io.File;
 import org.jdom.JDOMException;
@@ -24,28 +22,21 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import org.jdom.output.XMLOutputter;
-import org.jdom.output.Format;
 import org.jetbrains.annotations.NotNull;
+import org.jdom.output.Format;
 import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/8797607015334522630", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
 public class JDOMUtil {
   public static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
-  private static final Logger LOG = LogManager.getLogger(JDOMUtil.class);
 
   public JDOMUtil() {
   }
 
   public static Document loadDocument(File file) throws JDOMException, IOException {
     SAXBuilder saxBuilder = createBuilder();
-    FileInputStream in = new FileInputStream(file);
-    try {
+    try (FileInputStream in = new FileInputStream(file)) {
       return saxBuilder.build(new InputStreamReader(in, DEFAULT_CHARSET));
-    } catch (JDOMException | IOException e) {
-      LOG.error("FAILED TO LOAD FILE : " + file.getAbsolutePath());
-      throw new RuntimeException(e);
-    } finally {
-      in.close();
     }
   }
 
@@ -67,11 +58,8 @@ public class JDOMUtil {
     if (!(file.exists())) {
       file.createNewFile();
     }
-    OutputStream stream = new BufferedOutputStream(new FileOutputStream(file));
-    try {
+    try (OutputStream stream = new BufferedOutputStream(new FileOutputStream(file))) {
       writeDocument(document, stream);
-    } finally {
-      stream.close();
     }
   }
 
@@ -81,26 +69,23 @@ public class JDOMUtil {
 
   public static void writeDocument(Document document, Writer writer) throws IOException {
     XMLOutputter xmlOutputter = createOutputter();
-    if (xmlOutputter == null) {
-      LOG.error("Could not create XMLOutputter");
-    } else
     if (document == null) {
-      LOG.error("Document is null");
-    } else
-    if (writer == null) {
-      LOG.error("Writer is null");
-      return;
-    } else {
-      xmlOutputter.output(document, writer);
+      throw new IllegalArgumentException("Document is null");
     }
+    if (writer == null) {
+      throw new IllegalArgumentException("Writer is null");
+    }
+    xmlOutputter.output(document, writer);
     writer.close();
   }
 
+  @NotNull
   public static XMLOutputter createOutputter() {
     XMLOutputter xmlOutputter = new MyXMLOutputter();
     xmlOutputter.setFormat(Format.getPrettyFormat().setLineSeparator(System.getProperty("line.separator")));
     return xmlOutputter;
   }
+
   public static class MyXMLOutputter extends XMLOutputter {
     public MyXMLOutputter() {
     }

@@ -5,6 +5,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
@@ -15,7 +16,7 @@
       <unit at="10,0,34,0" name="jetbrains.mps.lang.editor.menus.extras.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="14,0,102,0" name="jetbrains.mps.lang.editor.menus.extras.structure.StructureAspectDescriptor" />
+      <unit at="14,0,106,0" name="jetbrains.mps.lang.editor.menus.extras.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:8333260e-1c41-48f8-b34d-821761a2600f(jetbrains.mps.lang.editor.menus.extras.structure)/2319156231054332300">
@@ -33,27 +34,28 @@
       <scope id="2319156231054332300" at="38,69,45,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2319156231054332300" at="14,0,15,0" concept="5" trace="TransformationMenuPart_PluginAction" />
+      <node id="2319156231054332300" at="14,0,15,0" concept="6" trace="TransformationMenuPart_PluginAction" />
       <node id="2319156231054332300" at="20,71,21,74" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2319156231054332300" at="17,0,18,0" concept="1" trace="myConceptTransformationMenuPart_PluginAction" />
       <node id="2319156231054332300" at="45,69,46,60" concept="4" />
-      <node id="2319156231054332300" at="79,93,80,208" concept="3" />
-      <node id="2319156231054332300" at="80,208,81,34" concept="0" />
-      <node id="2319156231054332300" at="81,34,82,138" concept="0" />
-      <node id="2319156231054332300" at="82,138,83,76" concept="0" />
-      <node id="2319156231054332300" at="83,76,84,125" concept="0" />
-      <node id="2319156231054332300" at="84,125,85,17" concept="0" />
-      <node id="2319156231054332308" at="85,17,86,165" concept="0" />
-      <node id="2319156231054332300" at="86,165,87,29" concept="0" />
-      <node id="2319156231054332300" at="87,29,88,22" concept="4" />
-      <node id="2319156231054332300" at="79,0,90,0" concept="6" trace="createDescriptorForTransformationMenuPart_PluginAction#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="2319156231054332300" at="81,93,82,208" concept="3" />
+      <node id="2319156231054332300" at="82,208,83,34" concept="0" />
+      <node id="2319156231054332300" at="83,34,84,74" concept="5" />
+      <node id="2319156231054332300" at="84,74,85,76" concept="0" />
+      <node id="2319156231054332300" at="85,76,86,76" concept="0" />
+      <node id="2319156231054332300" at="86,76,87,125" concept="0" />
+      <node id="2319156231054332300" at="87,125,88,17" concept="0" />
+      <node id="2319156231054332308" at="88,17,89,165" concept="0" />
+      <node id="2319156231054332300" at="89,165,90,29" concept="0" />
+      <node id="2319156231054332300" at="90,29,91,22" concept="4" />
+      <node id="2319156231054332300" at="81,0,93,0" concept="7" trace="createDescriptorForTransformationMenuPart_PluginAction#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="2319156231054332300" at="45,69,46,60" />
-      <scope id="2319156231054332300" at="79,93,88,22">
+      <scope id="2319156231054332300" at="81,93,91,22">
         <var name="b" id="2319156231054332300" />
       </scope>
-      <scope id="2319156231054332300" at="79,0,90,0" />
+      <scope id="2319156231054332300" at="81,0,93,0" />
     </file>
   </root>
   <root nodeRef="r:8333260e-1c41-48f8-b34d-821761a2600f(jetbrains.mps.lang.editor.menus.extras.structure)/2468431357014363369">
@@ -71,7 +73,7 @@
       <scope id="2468431357014363369" at="22,76,29,64" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2468431357014363369" at="12,0,13,0" concept="5" trace="QueryFunctionParameter_IntentionExecutable" />
+      <node id="2468431357014363369" at="12,0,13,0" concept="6" trace="QueryFunctionParameter_IntentionExecutable" />
       <node id="2468431357014363369" at="18,116,19,81" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
@@ -79,17 +81,18 @@
       <node id="2468431357014363369" at="41,76,42,67" concept="4" />
       <node id="2468431357014363369" at="59,100,60,215" concept="3" />
       <node id="2468431357014363369" at="60,215,61,34" concept="0" />
-      <node id="2468431357014363369" at="61,34,62,136" concept="0" />
-      <node id="2468431357014363369" at="62,136,63,125" concept="0" />
-      <node id="2468431357014363369" at="63,125,64,17" concept="0" />
-      <node id="2468431357014363369" at="64,17,65,35" concept="0" />
-      <node id="2468431357014363369" at="65,35,66,22" concept="4" />
-      <node id="2468431357014363369" at="59,0,68,0" concept="6" trace="createDescriptorForQueryFunctionParameter_IntentionExecutable#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="2468431357014363369" at="61,34,62,77" concept="5" />
+      <node id="2468431357014363369" at="62,77,63,71" concept="0" />
+      <node id="2468431357014363369" at="63,71,64,125" concept="0" />
+      <node id="2468431357014363369" at="64,125,65,17" concept="0" />
+      <node id="2468431357014363369" at="65,17,66,35" concept="0" />
+      <node id="2468431357014363369" at="66,35,67,22" concept="4" />
+      <node id="2468431357014363369" at="59,0,69,0" concept="7" trace="createDescriptorForQueryFunctionParameter_IntentionExecutable#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="2468431357014363369" at="41,76,42,67" />
-      <scope id="2468431357014363369" at="59,100,66,22">
+      <scope id="2468431357014363369" at="59,100,67,22">
         <var name="b" id="2468431357014363369" />
       </scope>
-      <scope id="2468431357014363369" at="59,0,68,0" />
+      <scope id="2468431357014363369" at="59,0,69,0" />
     </file>
   </root>
   <root nodeRef="r:8333260e-1c41-48f8-b34d-821761a2600f(jetbrains.mps.lang.editor.menus.extras.structure)/2926686622729992785">
@@ -107,27 +110,28 @@
       <scope id="2926686622729992785" at="30,66,37,54" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2926686622729992785" at="13,0,14,0" concept="5" trace="TransformationMenuPart_Intention" />
+      <node id="2926686622729992785" at="13,0,14,0" concept="6" trace="TransformationMenuPart_Intention" />
       <node id="2926686622729992785" at="19,81,20,71" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2926686622729992785" at="16,0,17,0" concept="1" trace="myConceptTransformationMenuPart_Intention" />
       <node id="2926686622729992785" at="43,66,44,57" concept="4" />
-      <node id="2926686622729992785" at="68,90,69,205" concept="3" />
-      <node id="2926686622729992785" at="69,205,70,34" concept="0" />
-      <node id="2926686622729992785" at="70,34,71,138" concept="0" />
-      <node id="2926686622729992785" at="71,138,72,76" concept="0" />
-      <node id="2926686622729992785" at="72,76,73,125" concept="0" />
-      <node id="2926686622729992785" at="73,125,74,17" concept="0" />
-      <node id="2926686622729992786" at="74,17,75,173" concept="0" />
-      <node id="2926686622729992785" at="75,173,76,25" concept="0" />
-      <node id="2926686622729992785" at="76,25,77,22" concept="4" />
-      <node id="2926686622729992785" at="68,0,79,0" concept="6" trace="createDescriptorForTransformationMenuPart_Intention#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="2926686622729992785" at="69,90,70,205" concept="3" />
+      <node id="2926686622729992785" at="70,205,71,34" concept="0" />
+      <node id="2926686622729992785" at="71,34,72,74" concept="5" />
+      <node id="2926686622729992785" at="72,74,73,76" concept="0" />
+      <node id="2926686622729992785" at="73,76,74,76" concept="0" />
+      <node id="2926686622729992785" at="74,76,75,125" concept="0" />
+      <node id="2926686622729992785" at="75,125,76,17" concept="0" />
+      <node id="2926686622729992786" at="76,17,77,173" concept="0" />
+      <node id="2926686622729992785" at="77,173,78,25" concept="0" />
+      <node id="2926686622729992785" at="78,25,79,22" concept="4" />
+      <node id="2926686622729992785" at="69,0,81,0" concept="7" trace="createDescriptorForTransformationMenuPart_Intention#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="2926686622729992785" at="43,66,44,57" />
-      <scope id="2926686622729992785" at="68,90,77,22">
+      <scope id="2926686622729992785" at="69,90,79,22">
         <var name="b" id="2926686622729992785" />
       </scope>
-      <scope id="2926686622729992785" at="68,0,79,0" />
+      <scope id="2926686622729992785" at="69,0,81,0" />
     </file>
   </root>
   <root nodeRef="r:8333260e-1c41-48f8-b34d-821761a2600f(jetbrains.mps.lang.editor.menus.extras.structure)/4736696158595695479">
@@ -145,27 +149,28 @@
       <scope id="4736696158595695479" at="46,68,53,56" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4736696158595695479" at="15,0,16,0" concept="5" trace="TransformationMenuPart_Refactoring" />
+      <node id="4736696158595695479" at="15,0,16,0" concept="6" trace="TransformationMenuPart_Refactoring" />
       <node id="4736696158595695479" at="21,74,22,73" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4736696158595695479" at="18,0,19,0" concept="1" trace="myConceptTransformationMenuPart_Refactoring" />
       <node id="4736696158595695479" at="47,68,48,59" concept="4" />
-      <node id="4736696158595695479" at="90,92,91,207" concept="3" />
-      <node id="4736696158595695479" at="91,207,92,34" concept="0" />
-      <node id="4736696158595695479" at="92,34,93,138" concept="0" />
-      <node id="4736696158595695479" at="93,138,94,76" concept="0" />
-      <node id="4736696158595695479" at="94,76,95,125" concept="0" />
-      <node id="4736696158595695479" at="95,125,96,17" concept="0" />
-      <node id="4736696158595695482" at="96,17,97,175" concept="0" />
-      <node id="4736696158595695479" at="97,175,98,27" concept="0" />
-      <node id="4736696158595695479" at="98,27,99,22" concept="4" />
-      <node id="4736696158595695479" at="90,0,101,0" concept="6" trace="createDescriptorForTransformationMenuPart_Refactoring#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="4736696158595695479" at="93,92,94,207" concept="3" />
+      <node id="4736696158595695479" at="94,207,95,34" concept="0" />
+      <node id="4736696158595695479" at="95,34,96,74" concept="5" />
+      <node id="4736696158595695479" at="96,74,97,76" concept="0" />
+      <node id="4736696158595695479" at="97,76,98,76" concept="0" />
+      <node id="4736696158595695479" at="98,76,99,125" concept="0" />
+      <node id="4736696158595695479" at="99,125,100,17" concept="0" />
+      <node id="4736696158595695482" at="100,17,101,175" concept="0" />
+      <node id="4736696158595695479" at="101,175,102,27" concept="0" />
+      <node id="4736696158595695479" at="102,27,103,22" concept="4" />
+      <node id="4736696158595695479" at="93,0,105,0" concept="7" trace="createDescriptorForTransformationMenuPart_Refactoring#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="4736696158595695479" at="47,68,48,59" />
-      <scope id="4736696158595695479" at="90,92,99,22">
+      <scope id="4736696158595695479" at="93,92,103,22">
         <var name="b" id="4736696158595695479" />
       </scope>
-      <scope id="4736696158595695479" at="90,0,101,0" />
+      <scope id="4736696158595695479" at="93,0,105,0" />
     </file>
   </root>
 </debug-info>

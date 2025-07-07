@@ -12,6 +12,11 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
+/**
+ * Redefines the API for checkers that are expected to be run from within an editor context. 
+ * <p>
+ * See {@link jetbrains.mps.checkers.LanguageErrorsCollector }
+ */
 @GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/7390982340086720780", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public abstract class AbstractNodeCheckerInEditor extends IChecker.AbstractNodeChecker<NodeReportItem> {
   public static final IChecker.AbstractNodeChecker.ErrorSkipCondition SKIP_CONSTRAINTS_CONDITION = new IChecker.AbstractNodeChecker.ErrorSkipCondition() {

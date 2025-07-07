@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +18,10 @@ package jetbrains.mps.module;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.MPSModuleClassLoader;
 import jetbrains.mps.classloading.ModuleClassLoader;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.vfs.openapi.FileSystem;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,7 +33,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author apyshkin
  */
 public class ReloadableModuleBase extends AbstractModule implements ReloadableModule {
-  private final static Logger LOG = LogManager.getLogger(ReloadableModuleBase.class);
+  private final static Logger LOG = Logger.getLogger(ReloadableModuleBase.class);
+  // the plan is to drop myManager field altogether, once ReloadableModule is reduced to a slim,
+  // independent of SModule, interface for use solely in CLM's own hierarchy
   private final ClassLoaderManager myManager = ClassLoaderManager.getInstance(); // to remove this I need to insert CLM into constructor and that is not an easy task
   private final List<SModuleDependenciesListener> myListeners = new CopyOnWriteArrayList<>();
 
@@ -59,12 +60,6 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
   }
 
   @NotNull
-  @Override
-  public ClassLoaderManager getCLM() {
-    return myManager;
-  }
-
-  @NotNull
   protected Class<?> getClass(String classFqName, boolean ownClassOnly) throws ClassNotFoundException {
     ClassLoader classLoader = getClassLoader();
     if (classLoader == null) {
@@ -83,30 +78,15 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
 
   @NotNull
   @Override
-  public final MPSModuleClassLoader getClassLoader0() {
+  public final MPSModuleClassLoader getClassLoader() {
     return myManager.getClassLoader(this);
-  }
-
-  @Override
-  public final void reload() {
-    if (!canLoadClasses()) {
-      LOG.warn(String.format("The module %s can not load classes -- impossible to reload the module", this));
-      return;
-    }
-    LOG.info("Reloading module " + this);
-    myManager.reloadModule(this);
-  }
-
-  @NotNull
-  @Override
-  public final DeploymentStatus getStatus() {
-    return myManager.getStatus(this);
   }
 
   @Override
   protected void dependenciesChanged() {
     super.dependenciesChanged();
-    if (canLoadClasses()) {
+    // XXX quite questionable code, why would I want to reload code when design dependency changes?
+    if (SModuleOperations.canSupplyExtensionsForMPS(this)) {
       fireDependenciesChanged();
     }
   }

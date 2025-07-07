@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.WeakSet;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -54,7 +53,7 @@ import java.util.WeakHashMap;
  * Date: 03/09/14
  */
 public class UpdaterImpl implements Updater {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(UpdaterImpl.class));
+  private static final Logger LOG = Logger.getLogger(UpdaterImpl.class);
 
   @NotNull
   private final EditorComponent myEditorComponent;
@@ -111,9 +110,9 @@ public class UpdaterImpl implements Updater {
     if (editedNode == null || editedNode.getModel() == null) {
       myEditorComponent.setRootCell(myEditorComponent.createEmptyCell());
     } else {
-      EditorComponentState state = getEditorContext().getEditorComponentState();
+      EditorComponentState state = myEditorComponent.captureState();
       myEditorComponent.setRootCell(updateRootCell(editedNode, events));
-      getEditorContext().restoreEditorComponentState(state);
+      myEditorComponent.restoreState(state);
     }
   }
 

@@ -7,8 +7,9 @@ import jetbrains.mps.workbench.action.BaseGroup;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.vcs.VcsBundle;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
+import com.intellij.openapi.vcs.VcsBundle;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4433480198085290549", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ class ViewActionGroup extends BaseGroup {
@@ -41,6 +42,11 @@ import org.jetbrains.annotations.NotNull;
     @Override
     public boolean isSelected(AnActionEvent event) {
       return mySubcolumn.isEnabled();
+    }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
     }
   }
 
@@ -81,6 +87,11 @@ import org.jetbrains.annotations.NotNull;
         AnnotationOptions.getInstance().setColorMode(myColorMode);
       }
     }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
   }
 
   private class ShortNameOption extends ToggleAction {
@@ -101,6 +112,11 @@ import org.jetbrains.annotations.NotNull;
       if (b) {
         AnnotationOptions.getInstance().setShortNameType(myShortNameType);
       }
+    }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
     }
   }
 }

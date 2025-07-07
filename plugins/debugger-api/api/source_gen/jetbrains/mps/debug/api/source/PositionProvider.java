@@ -12,9 +12,8 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.debug.api.programState.ILocation;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debug.api.AbstractDebugSession;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.NonNls;
 
 @GeneratedClass(node = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)/7048882195103545633", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
@@ -29,26 +28,14 @@ public class PositionProvider {
   public SourcePosition getPosition(@Nullable ILocation location, @NotNull final AbstractDebugSession session) {
     List<PositionProviderBean> providers = ListSequence.fromListWithValues(new ArrayList<PositionProviderBean>(), myLegacyProviders);
     ListSequence.fromList(providers).addSequence(ListSequence.fromList(EP.getExtensionList()));
-    for (final String key : ListSequence.fromList(providers).select(new ISelector<PositionProviderBean, String>() {
-      public String select(PositionProviderBean it) {
-        return it.getKey();
-      }
-    }).distinct()) {
-      Iterable<PositionProviderBean> forKeyWeightSorted = ListSequence.fromList(providers).where(new IWhereFilter<PositionProviderBean>() {
-        public boolean accept(PositionProviderBean it) {
-          return key.equals(it.getKey());
-        }
-      }).sort(new ISelector<PositionProviderBean, Integer>() {
-        public Integer select(PositionProviderBean it) {
-          return it.getWeight();
-        }
-      }, false);
-      IPositionProvider provider = Sequence.fromIterable(forKeyWeightSorted).select(new ISelector<PositionProviderBean, IPositionProvider>() {
-        public IPositionProvider select(PositionProviderBean it) {
+    for (final String key : ListSequence.fromList(providers).select((it) -> it.getKey()).distinct()) {
+      Iterable<PositionProviderBean> forKeyWeightSorted = ListSequence.fromList(providers).where((it) -> key.equals(it.getKey())).sort((it) -> it.getWeight(), false);
+      IPositionProvider provider = Sequence.fromIterable(forKeyWeightSorted).select(new _FunctionTypes._return_P1_E0<IPositionProvider, PositionProviderBean>() {
+        public IPositionProvider invoke(PositionProviderBean it) {
           return it.getProvider();
         }
-      }).findFirst(new IWhereFilter<IPositionProvider>() {
-        public boolean accept(IPositionProvider it) {
+      }).findFirst(new _FunctionTypes._return_P1_E0<Boolean, IPositionProvider>() {
+        public Boolean invoke(IPositionProvider it) {
           return it.accepts(session);
         }
       });
@@ -77,11 +64,7 @@ public class PositionProvider {
    */
   @Deprecated
   public boolean removeProvider(@NotNull final IPositionProvider provider) {
-    ListSequence.fromList(myLegacyProviders).removeWhere(new IWhereFilter<PositionProviderBean>() {
-      public boolean accept(PositionProviderBean it) {
-        return it.getProvider() == provider;
-      }
-    });
+    ListSequence.fromList(myLegacyProviders).removeWhere((it) -> it.getProvider() == provider);
     return false;
   }
 

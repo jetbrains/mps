@@ -39,7 +39,7 @@ class GenerationTaskAdapter implements Runnable {
 
   @Override
   public void run() {
-    Handle typecheckingSessionToken = TypecheckingFacade.getFromContext().requestNewSession(TypecheckingSession.Flags.generator());
+    Handle typecheckingSessionToken = TypecheckingFacade.getFromContext().requestNewSession(TypecheckingSession.Flags.generatorWorker());
     try {
       myTask.run();
     } catch (Throwable th) {

@@ -8,7 +8,6 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import org.jetbrains.annotations.NotNull;
@@ -22,6 +21,7 @@ public class ShowNodeInInspector_Action extends BaseAction {
     super("Inspect Node", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -34,7 +34,6 @@ public class ShowNodeInInspector_Action extends BaseAction {
     }
     {
       SNode p = event.getData(MPSCommonDataKeys.NODE);
-      MapSequence.fromMap(_params).put("node", p);
       if (p == null) {
         return false;
       }
@@ -44,7 +43,6 @@ public class ShowNodeInInspector_Action extends BaseAction {
       if (editorComponent != null && editorComponent.isInvalid()) {
         editorComponent = null;
       }
-      MapSequence.fromMap(_params).put("editor", editorComponent);
       if (editorComponent == null) {
         return false;
       }
@@ -53,16 +51,14 @@ public class ShowNodeInInspector_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    if (!(((EditorComponent) MapSequence.fromMap(_params).get("editor")) instanceof InspectorEditorComponent)) {
-      ((EditorComponent) MapSequence.fromMap(_params).get("editor")).getEditorContext().openInspector();
+    if (!(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT) instanceof InspectorEditorComponent)) {
+      event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditorContext().openInspector();
       return;
     }
-    ((EditorComponent) MapSequence.fromMap(_params).get("editor")).getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        InspectorEditorComponent inspectorComponent = ((InspectorEditorComponent) ((EditorComponent) MapSequence.fromMap(_params).get("editor")));
-        inspectorComponent.getUpdater().setInitialEditorHints(inspectorComponent.getEditorHintsForNode(((SNode) MapSequence.fromMap(_params).get("node"))));
-        inspectorComponent.editNode(((SNode) MapSequence.fromMap(_params).get("node")));
-      }
+    event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+      InspectorEditorComponent inspectorComponent = ((InspectorEditorComponent) event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
+      inspectorComponent.getUpdater().setInitialEditorHints(inspectorComponent.getEditorHintsForNode(event.getData(MPSCommonDataKeys.NODE)));
+      inspectorComponent.editNode(event.getData(MPSCommonDataKeys.NODE));
     });
   }
 }

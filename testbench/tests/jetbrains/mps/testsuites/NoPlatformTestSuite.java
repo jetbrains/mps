@@ -42,6 +42,7 @@ import org.junit.runners.Suite.SuiteClasses;
     jetbrains.mps.reloading.JarClassPathItemTest.class,
     jetbrains.mps.core.platform.DynamicComponentsTest.class,
     jetbrains.mps.make.JavaCompilerTest.class,
-    jetbrains.mps.ide.ThreadUtilsTest.class})
+    jetbrains.mps.ide.ThreadUtilsTest.class
+})
 public class NoPlatformTestSuite {
 }

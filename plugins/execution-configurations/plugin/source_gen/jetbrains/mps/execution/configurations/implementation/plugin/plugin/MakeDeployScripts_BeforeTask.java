@@ -49,15 +49,7 @@ public class MakeDeployScripts_BeforeTask extends BaseMpsBeforeTaskProvider<Make
       final Wrappers._T<DeployScript> script = new Wrappers._T<DeployScript>();
       final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(project);
 
-      ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-        public void run() {
-          mpsProject.getModelAccess().executeCommand(new Runnable() {
-            public void run() {
-              script.value = new DeployScript(mpsProject, myPlugins);
-            }
-          });
-        }
-      }, ModalityState.defaultModalityState());
+      ApplicationManager.getApplication().invokeAndWait(() -> mpsProject.getModelAccess().executeCommand(() -> script.value = new DeployScript(mpsProject, myPlugins)), ModalityState.defaultModalityState());
 
       String deployScriptLocation = script.value.make();
       if ((deployScriptLocation == null || deployScriptLocation.length() == 0)) {

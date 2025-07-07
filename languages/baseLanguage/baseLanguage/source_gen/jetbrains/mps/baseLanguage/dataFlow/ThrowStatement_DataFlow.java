@@ -20,7 +20,7 @@ public class ThrowStatement_DataFlow extends DataFlowBuilder {
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.throwable$kKKg));
     SNode interrupt = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.IControlFlowInterrupter$Ra, false, false);
     SNode tryCatch = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ITryCatchStatement$pH, false, false);
-    if (tryCatch != null && (interrupt == null || ListSequence.fromList(SNodeOperations.getNodeAncestors(tryCatch, null, false)).contains(interrupt))) {
+    if (tryCatch != null && ListSequence.fromList(ITryCatchStatement__BehaviorDescriptor.getCatchClauses_id3eptmOG0XgA.invoke(tryCatch)).all((it) -> !(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, false)).contains(it))) && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, false)).contains(ITryCatchStatement__BehaviorDescriptor.getFinallyClause_id7LX8cXzsyj1.invoke(tryCatch))) && (interrupt == null || ListSequence.fromList(SNodeOperations.getNodeAncestors(tryCatch, null, false)).contains(interrupt))) {
       for (SNode catchClause : ITryCatchStatement__BehaviorDescriptor.getCatchClauses_id3eptmOG0XgA.invoke(tryCatch)) {
         for (SNode caughtType : AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(catchClause)) {
           if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.throwable$kKKg)), caughtType)) {

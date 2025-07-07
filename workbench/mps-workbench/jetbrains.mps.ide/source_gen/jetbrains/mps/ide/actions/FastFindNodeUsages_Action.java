@@ -64,10 +64,6 @@ public class FastFindNodeUsages_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        new FindUsagesHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).prepareOptions(((EditorCell) MapSequence.fromMap(_params).get("cell")), ((SNode) MapSequence.fromMap(_params).get("node"))).invoke();
-      }
-    });
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(() -> new FindUsagesHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).prepareOptions(((EditorCell) MapSequence.fromMap(_params).get("cell")), ((SNode) MapSequence.fromMap(_params).get("node"))).invoke());
   }
 }

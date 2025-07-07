@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -31,25 +30,18 @@ public class typeof_UnaryMinus_InferenceRule extends AbstractInferenceRule_Runti
     }
     {
       final SNode exType = typeCheckingContext.getRepresentative(expressionType_typevar_7602524515424797598);
-      typeCheckingContext.whenConcrete(exType, new Runnable() {
-        public void run() {
-          SNode type = typeCheckingContext.getOverloadedOperationType(minus, typeCheckingContext.getExpandedNode(exType), _quotation_createNode_2vfzm_c0a0a0a0a1a0b0c0b(), new IRuleConflictWarningProducer() {
-            public void produceWarning(String modelId, String ruleId) {
-              typeCheckingContext.reportWarning(minus, "coflicting rules for overloaded operation type", modelId, ruleId, null, new NodeMessageTarget());
-
-            }
-          });
-          if (type != null) {
-            {
-              SNode _nodeToCheck_1029348928467 = minus;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3860149536565525538", 0, null);
-              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3860149536565525541", true), (SNode) type, _info_12389875345);
-            }
-          } else {
-            {
-              final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(minus, "- can't be applied to these operands.", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3860149536565525553", null, errorTarget);
-            }
+      typeCheckingContext.whenConcrete(exType, () -> {
+        SNode type = typeCheckingContext.getOverloadedOperationType(minus, typeCheckingContext.getExpandedNode(exType), _quotation_createNode_2vfzm_c0a0a0b0a1a2a1(), (modelId, ruleId) -> typeCheckingContext.reportWarning(minus, "conflicting rules for overloaded operation type", modelId, ruleId, null, new NodeMessageTarget()));
+        if (type != null) {
+          {
+            SNode _nodeToCheck_1029348928467 = minus;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3860149536565525538", 0, null);
+            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3860149536565525541", true), (SNode) type, _info_12389875345);
+          }
+        } else {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(minus, "- can't be applied to these operands.", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3860149536565525553", null, errorTarget);
           }
         }
       }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3860149536565525509", false, false);
@@ -64,7 +56,7 @@ public class typeof_UnaryMinus_InferenceRule extends AbstractInferenceRule_Runti
   public boolean overrides() {
     return true;
   }
-  private static SNode _quotation_createNode_2vfzm_c0a0a0a0a1a0b0c0b() {
+  private static SNode _quotation_createNode_2vfzm_c0a0a0b0a1a2a1() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();

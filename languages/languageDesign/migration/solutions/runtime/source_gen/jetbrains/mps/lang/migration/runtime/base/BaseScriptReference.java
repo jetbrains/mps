@@ -7,5 +7,7 @@ import jetbrains.mps.project.Project;
 
 @GeneratedClass(node = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)/7201972523299410541", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
 public interface BaseScriptReference<T extends BaseScript> {
+
+  @Deprecated(forRemoval = true, since = "2023.1")
   T resolve(Project p, boolean silent);
 }

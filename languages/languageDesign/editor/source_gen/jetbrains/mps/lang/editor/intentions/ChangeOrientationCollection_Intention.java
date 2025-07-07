@@ -10,10 +10,10 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.editor.behavior.CellModel_Collection__BehaviorDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -23,27 +23,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ChangeOrientationCollection_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ChangeOrientationCollection_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959029b(jetbrains.mps.lang.editor.intentions)", "1227110056528"));
   }
+
   @Override
   public String getPresentation() {
     return "ChangeOrientationCollection";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$Of4I), CONCEPTS.CellLayout_Horizontal$43) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$Of4I), CONCEPTS.CellLayout_Vertical$Fs);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,10 +47,12 @@ public final class ChangeOrientationCollection_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$Of4I), CONCEPTS.CellLayout_Vertical$Fs) ? "Make Horizontal" : "Make Vertical");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((boolean) CellModel_Collection__BehaviorDescriptor.isVertical_idi0pAV23.invoke(node)) {
@@ -65,10 +61,25 @@ public final class ChangeOrientationCollection_Intention extends AbstractIntenti
         SLinkOperations.setTarget(node, LINKS.cellLayout$Of4I, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$Fs, null));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$Of4I), CONCEPTS.CellLayout_Horizontal$43) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$Of4I), CONCEPTS.CellLayout_Vertical$Fs);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ChangeOrientationCollection_Intention.this;
     }
+
   }
 
   private static final class LINKS {
@@ -76,7 +87,7 @@ public final class ChangeOrientationCollection_Intention extends AbstractIntenti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellLayout_Horizontal$43 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dcf685L, "jetbrains.mps.lang.editor.structure.CellLayout_Horizontal");
     /*package*/ static final SConcept CellLayout_Vertical$Fs = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dd4cbeL, "jetbrains.mps.lang.editor.structure.CellLayout_Vertical");
+    /*package*/ static final SConcept CellLayout_Horizontal$43 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dcf685L, "jetbrains.mps.lang.editor.structure.CellLayout_Horizontal");
   }
 }

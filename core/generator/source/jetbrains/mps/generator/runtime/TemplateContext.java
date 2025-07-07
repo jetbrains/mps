@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.generator.runtime;
 
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -47,6 +48,7 @@ public interface TemplateContext {
    */
   TemplateContext withNewExecutionPath();
 
+  @Nullable
   SNode getInput();
 
   String getInputName();
@@ -107,9 +109,16 @@ public interface TemplateContext {
   SNode getCallSiteNode();
 
   /**
+   * @deprecated use {@link #subContext(PatternMatch)} instead
    * @return new context that preserves input, but discards {@link #getInputName() mapping label}
    */
-  TemplateContext subContext(GeneratedMatchingPattern pattern);
+  @Deprecated(since = "2024.1", forRemoval = true)
+  default TemplateContext subContext(GeneratedMatchingPattern pattern) {
+    // once usages of GMP gone, we can drop [pattern-runtime] dependency of [generator-engine]
+    return subContext(pattern::getFieldValue);
+  }
+
+  TemplateContext subContext(PatternMatch pattern);
 
   /**
    * Reset input name, unlike {@link #subContext(String)} and {@link #subContext(String, org.jetbrains.mps.openapi.model.SNode)} that
@@ -124,5 +133,5 @@ public interface TemplateContext {
    * @param newInputNode new input
    * @return context with desired input and present input name
    */
-  TemplateContext subContext(SNode newInputNode);
+  TemplateContext subContext(@Nullable SNode newInputNode);
 }

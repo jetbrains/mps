@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,17 +17,17 @@ package jetbrains.mps.core.aspects.constraints.rules;
 
 import jetbrains.mps.core.aspects.behaviour.SConceptC3StarMRO;
 import jetbrains.mps.core.context.Context;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.smodel.language.ConceptInLoadingStorage;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
 import static java.util.Objects.requireNonNull;
@@ -38,11 +38,11 @@ import static java.util.Objects.requireNonNull;
  * @author apyshkin
  */
 public final class RulesConstraintsRegistry {
-  private static final Logger LOG = LogManager.getLogger(RulesConstraintsRegistry.class);
 
   private final LanguageRegistry myLanguageRegistry;
   private final SConceptC3StarMRO myMro;
-  private final Map<SAbstractConcept, RulesConstraintsDescriptor> myDescriptors = new HashMap<>();
+  private final Map<SAbstractConcept, RulesConstraintsDescriptor> myDescriptors = new ConcurrentHashMap<>();
+  private final ConceptInLoadingStorage<SAbstractConcept> myStorage = new ConceptInLoadingStorage<>();
 
   public RulesConstraintsRegistry(@NotNull LanguageRegistry languageRegistry, @NotNull SConceptC3StarMRO mro) {
     myLanguageRegistry = languageRegistry;
@@ -51,34 +51,39 @@ public final class RulesConstraintsRegistry {
 
   @NotNull
   public RulesConstraintsDescriptor getRulesDescriptor(@NotNull SAbstractConcept concept) {
-    if (myDescriptors.containsKey(concept)) {
-      return myDescriptors.get(concept);
+    var descriptor = myDescriptors.get(concept);
+    if (descriptor != null) {
+      return descriptor;
     }
-    RulesConstraintsDescriptor descriptor = null;
-    LanguageRuntime conceptLang = myLanguageRegistry.getLanguage(concept.getLanguage());
-    if (conceptLang == null) {
-      LOG.warn("No language for: " + concept + ", while looking for constraints descriptor.");
-    } else {
-      RulesConstraintsAspect aspect = conceptLang.getAspect(RulesConstraintsAspect.class);
-      if (aspect != null) {
-        descriptor = aspect.getDescriptor(concept);
-      }
-      if (descriptor != null) {
-        //noinspection SynchronizationOnLocalVariableOrMethodParameter
-        synchronized (descriptor) {
+    if (!myStorage.startLoading(concept)) {
+      return new EmptyRuleConstraintsDescriptor(concept);
+    }
+
+    try {
+      LanguageRuntime conceptLang = myLanguageRegistry.getLanguage(concept.getLanguage());
+      if (conceptLang == null) {
+        Logger.getLogger(RulesConstraintsRegistry.class).warning("No language for: " + concept + ", while looking for constraints descriptor.");
+      } else {
+        RulesConstraintsAspect aspect = conceptLang.getAspect(RulesConstraintsAspect.class);
+        if (aspect != null) {
+          descriptor = aspect.getDescriptor(concept);
+        }
+        if (descriptor != null) {
           if (!descriptor.isInitialized()) {
             descriptor.init(this);
           }
         }
       }
+      if (descriptor == null) {
+        descriptor = new EmptyRuleConstraintsDescriptor(concept);
+        descriptor.init(this);
+      }
+      var newVal = new LegacyAndRulesConstraintsDescriptor(myMro, concept, descriptor);
+      myDescriptors.put(concept, newVal);
+      return newVal;
+    } finally {
+      myStorage.finishLoading(concept);
     }
-    if (descriptor == null) {
-      descriptor = new EmptyRuleConstraintsDescriptor(concept);
-      descriptor.init(this);
-    }
-    LegacyAndRulesConstraintsDescriptor composite = new LegacyAndRulesConstraintsDescriptor(myMro, concept, descriptor);
-    myDescriptors.putIfAbsent(concept, composite);
-    return myDescriptors.get(concept);
   }
 
   @NotNull

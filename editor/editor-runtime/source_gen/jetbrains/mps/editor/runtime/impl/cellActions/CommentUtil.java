@@ -7,15 +7,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -33,7 +30,7 @@ public class CommentUtil {
   public static SNode commentOut(@NotNull SNode node) {
     SNode parent = SNodeOperations.getParent(node);
     if (parent == null) {
-      throw new IllegalArgumentException("Node to comment has no parent. Node: " + ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + node.getNodeId());
+      throw new IllegalArgumentException("Node to comment has no parent. Node: " + ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL))) + " Node id: " + node.getNodeId());
     }
     SContainmentLink containmentLink = node.getContainmentLink();
     assert containmentLink != null;
@@ -52,31 +49,19 @@ public class CommentUtil {
   public static SNode uncomment(@NotNull SNode attribute) {
     SNode parent = SNodeOperations.getParent(attribute);
     if (parent == null) {
-      throw new IllegalArgumentException("Node to uncomment has no parent. Node: " + ((String) BHReflection.invoke0(attribute, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + attribute.getNodeId());
+      throw new IllegalArgumentException("Node to uncomment has no parent. Node: " + ((String) BHReflection.invoke0(attribute, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL))) + " Node id: " + attribute.getNodeId());
     }
     return new NodeUncommenter(attribute).uncomment();
   }
 
   public static Iterable<SNode> uncommentAll(SNode container) {
     List<SNode> uncommented = ListSequence.fromList(new ArrayList<SNode>());
-    ListSequence.fromList(uncommented).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getChildren(container)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BaseCommentAttribute$nv);
-      }
-    }), CONCEPTS.BaseCommentAttribute$nv)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return uncomment(it);
-      }
-    }));
+    ListSequence.fromList(uncommented).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getChildren(container)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BaseCommentAttribute$nv)), CONCEPTS.BaseCommentAttribute$nv)).select((it) -> uncomment(it)));
     return uncommented;
   }
 
   public static void commentOutAll(Iterable<SNode> nodes) {
-    Sequence.fromIterable(nodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        commentOut(it);
-      }
-    });
+    Sequence.fromIterable(nodes).visitAll((it) -> commentOut(it));
   }
 
   public static boolean isComment(SNode node) {

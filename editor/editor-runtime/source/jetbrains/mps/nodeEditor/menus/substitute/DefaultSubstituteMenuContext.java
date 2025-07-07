@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,27 +17,26 @@ package jetbrains.mps.nodeEditor.menus.substitute;
 
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.lang.editor.menus.transformation.InUsedLanguagesPredicate;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.nodeEditor.cellMenu.CompletionItemCustomizationUtil;
 import jetbrains.mps.nodeEditor.menus.CachingPredicate;
 import jetbrains.mps.nodeEditor.menus.CanBeChildPredicate;
 import jetbrains.mps.nodeEditor.menus.CanBeParentPredicate;
 import jetbrains.mps.nodeEditor.menus.IsSubconceptOfPredicate;
 import jetbrains.mps.nodeEditor.menus.MenuItemFactory;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTrace;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -51,17 +50,17 @@ import java.util.function.Predicate;
  * @author simon
  */
 public class DefaultSubstituteMenuContext implements SubstituteMenuContext {
-  private EditorContext myEditorContext;
+  private final EditorContext myEditorContext;
 
-  private SContainmentLink myContainmentLink;
-  private SNode myParentNode;
-  private SNode myCurrentChild;
-  private MenuItemFactory<SubstituteMenuItem, SubstituteMenuContext, SubstituteMenuLookup> myMenuItemFactory;
+  private final SContainmentLink myContainmentLink;
+  private final SNode myParentNode;
+  private final SNode myCurrentChild;
+  private final MenuItemFactory<SubstituteMenuItem, SubstituteMenuContext, SubstituteMenuLookup> myMenuItemFactory;
   private Predicate<SAbstractConcept> mySuitableForConstraintsPredicate;
-  private SAbstractConcept myTargetConcept;
-  private EditorMenuTrace myEditorMenuTrace;
-  private Set<SubstituteMenuLookup> myUsedLookups = new HashSet<>();
-  private Set<EditorMenuItemCustomizer> myEditorMenuItemCustomizers = new HashSet<>();
+  private final SAbstractConcept myTargetConcept;
+  private final EditorMenuTrace myEditorMenuTrace;
+  private final Set<SubstituteMenuLookup> myUsedLookups = new HashSet<>();
+  private final Set<EditorMenuItemCustomizer> myEditorMenuItemCustomizers = new HashSet<>();
 
   private static final Logger LOG = Logger.getLogger(DefaultSubstituteMenuContext.class);
 
@@ -79,9 +78,8 @@ public class DefaultSubstituteMenuContext implements SubstituteMenuContext {
   }
 
   @NotNull
-  private Predicate<SAbstractConcept> createSuitableForConstraintsPredicate(SNode parentNode, SContainmentLink containmentLink, SRepository repository) {
-    Predicate<SAbstractConcept> predicate = new CanBeChildPredicate(parentNode, containmentLink).and(new CanBeParentPredicate(parentNode, containmentLink,
-                                                                                                                                 repository));
+  private Predicate<SAbstractConcept> createSuitableForConstraintsPredicate(SNode parentNode, SContainmentLink containmentLink) {
+    Predicate<SAbstractConcept> predicate = new CanBeChildPredicate(parentNode, containmentLink).and(new CanBeParentPredicate(parentNode, containmentLink));
     if (myContainmentLink != null) {
       predicate = predicate.and(new IsSubconceptOfPredicate(getTargetConcept()));
     }
@@ -154,7 +152,7 @@ public class DefaultSubstituteMenuContext implements SubstituteMenuContext {
   public Predicate<SAbstractConcept> getConstraintsCheckingPredicate() {
     if (mySuitableForConstraintsPredicate == null) {
       mySuitableForConstraintsPredicate =
-          new CachingPredicate<>(createSuitableForConstraintsPredicate(myParentNode, myContainmentLink, myEditorContext.getRepository()));
+          new CachingPredicate<>(createSuitableForConstraintsPredicate(myParentNode, myContainmentLink));
     }
     return mySuitableForConstraintsPredicate;
   }
@@ -180,13 +178,7 @@ public class DefaultSubstituteMenuContext implements SubstituteMenuContext {
   public static DefaultSubstituteMenuContext createInitialContextForNode(SContainmentLink containmentLink, SAbstractConcept targetConcept, SNode parentNode,
                                                                          SNode currentChild, EditorContext editorContext, EditorMenuTrace trace) {
     Set<EditorMenuItemCustomizer> customizers = new HashSet<>();
-    LanguageRegistry.getInstance(editorContext.getRepository()).withAvailableLanguages(languageRuntime -> {
-      EditorAspectDescriptor aspect = languageRuntime.getAspect(EditorAspectDescriptor.class);
-      if (aspect != null) {
-        Collection<EditorMenuItemCustomizer> editorMenuItemCustomizers = aspect.getEditorMenuItemCustomizers();
-        customizers.addAll(editorMenuItemCustomizers);
-      }
-    });
+    CompletionItemCustomizationUtil.apply(LanguageRegistry.getInstance(editorContext.getRepository()), customizers::add);
     return new DefaultSubstituteMenuContextBuilder(parentNode, editorContext)
                .setContainmentLink(containmentLink)
                .setTargetConcept(targetConcept)

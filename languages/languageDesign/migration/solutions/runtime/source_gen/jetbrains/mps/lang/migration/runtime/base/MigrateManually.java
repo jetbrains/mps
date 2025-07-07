@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -17,10 +17,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class MigrateManually extends Problem<SNode> implements NodeReportItem {
   private String myMsg;
   public MigrateManually(SNode annotation) {
-    this(((String) BHReflection.invoke0(annotation, CONCEPTS.MigrationAnnotation_old$2i, SMethodTrimmedId.create("getResultsMessage", null, "29O0pTxWdnZ"))), SNodeOperations.getParent(annotation));
+    this(((String) BHReflection.invoke0(annotation, CONCEPTS.MigrationAnnotation_old$2i, SMethodIdV2.create("getResultsMessage", 2482611074347619839L, 0x553941aeb020c32eL))), SNodeOperations.getParent(annotation));
   }
   public static MigrateManually fromAnnotation(SNode annotation) {
-    return new MigrateManually(((String) BHReflection.invoke0(annotation, CONCEPTS.MigrationAnnotation_old$2i, SMethodTrimmedId.create("getResultsMessage", null, "29O0pTxWdnZ"))), SNodeOperations.getParent(annotation));
+    return new MigrateManually(((String) BHReflection.invoke0(annotation, CONCEPTS.MigrationAnnotation_old$2i, SMethodIdV2.create("getResultsMessage", 2482611074347619839L, 0x553941aeb020c32eL))), SNodeOperations.getParent(annotation));
   }
   public MigrateManually(String message, SNode node) {
     super(node);

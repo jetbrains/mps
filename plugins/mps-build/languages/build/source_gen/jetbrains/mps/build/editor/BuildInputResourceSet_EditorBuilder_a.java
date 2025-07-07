@@ -36,19 +36,17 @@ import jetbrains.mps.editor.runtime.cells.BigCellUtil;
   }
 
   private EditorCell createCustom_0() {
-    AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<AbstractCellProvider>() {
-      public AbstractCellProvider invoke() {
-        return new AbstractCellProvider(myNode) {
-          @Override
-          public EditorCell createEditorCell(EditorContext context) {
-            EditorCell_Error result = new EditorCell_Error(context, myNode, "<no " + SConceptOperations.conceptAlias(SNodeOperations.getConcept(myNode)) + ">");
-            result.getStyle().set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
-            result.getStyle().set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
-            return result;
-          }
-        };
-      }
-    }.invoke();
+    AbstractCellProvider provider = ((_FunctionTypes._return_P0_E0<AbstractCellProvider>) () -> {
+      return new AbstractCellProvider(myNode) {
+        @Override
+        public EditorCell createEditorCell(EditorContext context) {
+          EditorCell_Error result = new EditorCell_Error(context, myNode, "<no " + SConceptOperations.conceptAlias(SNodeOperations.getConcept(myNode)) + ">");
+          result.getStyle().set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
+          result.getStyle().set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
+          return result;
+        }
+      };
+    }).invoke();
     EditorCell editorCell = provider.createEditorCell(getEditorContext());
     editorCell.setCellId("Custom_vpc9oa_a");
     EditorCell bigCell = BigCellUtil.findBigCell(editorCell, getNode());

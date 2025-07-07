@@ -13,7 +13,6 @@ import jetbrains.mps.project.Project;
 import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.Collection;
 import jetbrains.mps.make.MakeSession;
@@ -23,27 +22,27 @@ import jetbrains.mps.make.facet.IFacet;
 import java.util.ArrayList;
 import jetbrains.mps.make.script.PropertyPoolInitializer;
 import jetbrains.mps.internal.make.cfg.MakeFacetInitializer;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.internal.make.cfg.JavaCompileFacetInitializer;
 import jetbrains.mps.make.script.IScriptController;
 import java.util.concurrent.Future;
 import jetbrains.mps.make.script.IResult;
 import java.util.concurrent.ExecutionException;
-import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.make.MPSCompilationResult;
+import jetbrains.mps.classloading.ClassLoaderManager;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.tool.common.ScriptProperties;
 import jetbrains.mps.messages.IMessageHandler;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.tool.builder.unittest.ITestReporter;
 import jetbrains.mps.tool.builder.unittest.XmlTestReporter;
@@ -78,11 +77,7 @@ public class GenTestWorker extends BaseGeneratorWorker {
     setGenerationProperties();
     final Project project = createDummyProject();
 
-    Set<SModule> modules = new ModelAccessHelper(project.getModelAccess()).runWriteAction(new Computable<Set<SModule>>() {
-      public Set<SModule> compute() {
-        return collectFromModuleFiles(project.getRepository());
-      }
-    });
+    Set<SModule> modules = new ModelAccessHelper(project.getModelAccess()).runWriteAction(() -> collectFromModuleFiles(project.getRepository()));
 
     if (!(modules.isEmpty())) {
       loadAndMake(project, modules);
@@ -132,21 +127,13 @@ public class GenTestWorker extends BaseGeneratorWorker {
       }
     };
     ArrayList<PropertyPoolInitializer> ppi = new ArrayList<PropertyPoolInitializer>();
-    ppi.add(new MakeFacetInitializer().setPathToFile(new _FunctionTypes._return_P1_E0<IFile, String>() {
-      public IFile invoke(String path) {
-        return tmpFile(path);
-      }
-    }));
+    ppi.add(new MakeFacetInitializer().setFileToFile((IFile f) -> tmpFile(f)));
     if (isShowDiff()) {
       PropertyPoolInitializer diffFacetInit = new PropertyPoolInitializer() {
         public void populate(IPropertiesPool ppool) {
           Tuples._2<_FunctionTypes._return_P1_E0<? extends String, ? super IFile>, Set<File>> dparams = (Tuples._2<_FunctionTypes._return_P1_E0<? extends String, ? super IFile>, Set<File>>) ppool.properties(new ITarget.Name("jetbrains.mps.tool.gentest.Diff.diff"), Object.class);
           if (dparams != null) {
-            dparams._0(new _FunctionTypes._return_P1_E0<String, IFile>() {
-              public String invoke(IFile f) {
-                return pathOfTmpFile(f);
-              }
-            });
+            dparams._0(((_FunctionTypes._return_P1_E0<String, IFile>) (IFile f) -> pathOfTmpFile(f)));
             dparams._1(myWhatToDo.getExcludedFromDiffFiles());
           }
         }
@@ -173,33 +160,15 @@ public class GenTestWorker extends BaseGeneratorWorker {
     }
   }
 
-  private void loadAndMake(final Project project, final Collection<SModule> modules) {
-    ModelAccess access = project.getRepository().getModelAccess();
-    access.runReadAction(new Runnable() {
-      public void run() {
-        new ModuleMaker().make(modules, new EmptyProgressMonitor() {
-          @Override
-          public void step(String text) {
-            // silently
-          }
-          @Override
-          public void start(@NotNull String taskName, int work) {
-            // silently
-          }
-        }, myJavaCompilerOptions);
-      }
-    });
-    access.runWriteAction(new Runnable() {
-      public void run() {
-        // the following updates stub models that could change due to the compilation happened (webr, 3.0 migration case)
-        for (SModule m : project.getRepository().getModules()) {
-          if (!((m instanceof AbstractModule))) {
-            continue;
-          }
-          ((AbstractModule) m).updateModelsSet();
-        }
-      }
-    });
+  private void loadAndMake(Project project, final Collection<SModule> modules) {
+    final ModuleMaker mm = new ModuleMaker();
+    mm.options(myJavaCompilerOptions);
+    project.getModelAccess().runReadAction(() -> mm.prepare(modules, true, new EmptyProgressMonitor()));
+    MPSCompilationResult res = mm.make(new EmptyProgressMonitor());
+    // here used to be suspicious code "to update stub models that could change due to the compilation happened (webr, 3.0 migration case)"
+    // replaced with a CLM approach, much like DefaultMakeTask does. Don't quite understand why would need to reload models only
+    // without class reloading - why would I care to compile code then?
+    getPlatform().findComponent(ClassLoaderManager.class).reload(res.getAffectedModules(), new EmptyProgressMonitor());
   }
 
   private void cleanUp() {
@@ -218,39 +187,39 @@ public class GenTestWorker extends BaseGeneratorWorker {
     MapSequence.fromMap(path2tmp).clear();
   }
 
-  private IFile tmpFile(String path) {
+  private IFile tmpFile(IFile ff) {
+    IFileSystem fs = ff.getFS();
+    final String path = ff.getPath();
     if (MapSequence.fromMap(path2tmp).containsKey(path)) {
-      return FileSystem.getInstance().getFile(MapSequence.fromMap(path2tmp).get(path));
+      return fs.getFile(MapSequence.fromMap(path2tmp).get(path));
     }
-    int idx = path.indexOf("/");
+    int idx = path.indexOf('/');
     if (idx > 0) {
       throw new IllegalArgumentException("not an absolute path '" + path + "'");
     }
     idx = (idx < 0 ? path.indexOf(File.separator) : idx);
-    if (idx > "C:\\".length() && path.indexOf(":") < 0) {
+    if (idx > "C:\\".length() && path.indexOf(':') < 0) {
       throw new IllegalArgumentException("not an absolute path '" + path + "'");
     }
     String tmp = tmpPath + "/" + ((idx != 0 ? path.replace(":", "_w_") : path.substring(1)));
     MapSequence.fromMap(path2tmp).put(path, tmp);
-    return FileSystem.getInstance().getFile(tmp);
+    return fs.getFile(tmp);
   }
 
   private String pathOfTmpFile(IFile file) {
+    final IFileSystem fs = file.getFS();
     String p = file.getPath();
     if (!(p.startsWith(tmpPath))) {
       throw new IllegalArgumentException("unknown tmp path '" + file.getParent() + "'");
     }
     p = p.substring(tmpPath.length() + 1);
     if (p.contains("_w_")) {
-      return FileSystem.getInstance().getFile(p.replace("_w_", ":")).getPath();
+      return fs.getFile(p.replace("_w_", ":")).getPath();
     }
     String prefix = (File.separatorChar == '/' ? "/" : "\\\\");
-    return FileSystem.getInstance().getFile(prefix + p).getPath();
+    return fs.getFile(prefix + p).getPath();
   }
 
-  private boolean isRunningOnTeamCity() {
-    return myWhatToDo.getProperty("teamcity.version") != null;
-  }
 
   private boolean isShowDiff() {
     return Boolean.parseBoolean(myWhatToDo.getProperty(ScriptProperties.SHOW_DIFF));

@@ -10,12 +10,12 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.editor.behavior.CellModel_ListWithRole__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -23,27 +23,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ChangeOrientationList_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ChangeOrientationList_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959029b(jetbrains.mps.lang.editor.intentions)", "1227111401175"));
   }
+
   @Override
   public String getPresentation() {
     return "ChangeOrientationList";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$ZXkU), CONCEPTS.CellLayout_Horizontal$43) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$ZXkU), CONCEPTS.CellLayout_Vertical$Fs);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,10 +47,12 @@ public final class ChangeOrientationList_Intention extends AbstractIntentionDesc
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return ((boolean) CellModel_ListWithRole__BehaviorDescriptor.isVertical_idi2IdWzG.invoke(node) ? "Make Horizontal" : "Make Vertical");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((boolean) CellModel_ListWithRole__BehaviorDescriptor.isVertical_idi2IdWzG.invoke(node)) {
@@ -65,10 +61,25 @@ public final class ChangeOrientationList_Intention extends AbstractIntentionDesc
         SLinkOperations.setTarget(node, LINKS.cellLayout$ZXkU, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$Fs, null));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$ZXkU), CONCEPTS.CellLayout_Horizontal$43) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$ZXkU), CONCEPTS.CellLayout_Vertical$Fs);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ChangeOrientationList_Intention.this;
     }
+
   }
 
   private static final class LINKS {

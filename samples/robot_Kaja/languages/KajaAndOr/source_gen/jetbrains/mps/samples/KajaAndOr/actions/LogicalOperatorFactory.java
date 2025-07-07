@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class LogicalOperatorFactory {
   public static class NodeFactory_642541832606605338 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.LogicalOperator$a0)) {
         SNode oldNode = SNodeOperations.cast(sampleNode, CONCEPTS.LogicalOperator$a0);
         SLinkOperations.setTarget(newNode, LINKS.left$uKQf, SLinkOperations.getTarget(oldNode, LINKS.left$uKQf));

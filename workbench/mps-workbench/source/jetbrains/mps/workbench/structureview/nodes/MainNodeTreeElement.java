@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,12 @@ package jetbrains.mps.workbench.structureview.nodes;
 import com.intellij.ide.structureView.StructureViewTreeElement;
 import com.intellij.ide.util.treeView.smartTree.TreeElement;
 import com.intellij.navigation.ItemPresentation;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -34,7 +33,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainNodeTreeElement implements StructureViewTreeElement {
-  private static final Logger LOG = LogManager.getLogger(MainNodeTreeElement.class);
 
   private final MPSProject myProject;
   private final SNodeReference myNode;
@@ -64,7 +62,7 @@ public class MainNodeTreeElement implements StructureViewTreeElement {
             result.add(new AspectTreeElement(MainNodeTreeElement.this, aspectNode, tab, bijection));
           }
         } catch (Throwable t) {
-          LOG.error("Exception in extension: ", t);
+          Logger.getLogger(MainNodeTreeElement.class).error("Exception in extension: ", t);
         }
       }
     });

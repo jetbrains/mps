@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,7 @@
  */
 package jetbrains.mps.util;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 
@@ -28,7 +27,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Immutable
 public final class NamedThreadFactory implements ThreadFactory {
-  private final static Logger LOG = LogManager.getLogger(NamedThreadFactory.class);
+  private final static Logger LOG = Logger.getLogger(NamedThreadFactory.class);
 
   private final ThreadGroup myGroup;
   private final AtomicInteger myThreadNumber = new AtomicInteger(1);

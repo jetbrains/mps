@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import jetbrains.mps.intentions.IntentionsVisitor.GetHighestAvailableIntentionTy
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import jetbrains.mps.lang.script.runtime.RefactoringScript;
 import jetbrains.mps.lang.script.runtime.ScriptAspectDescriptor;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.HighlighterMessage;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -37,14 +38,12 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
 import jetbrains.mps.openapi.intentions.Kind;
+import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -70,7 +69,7 @@ import java.util.stream.Collectors;
     storages = @Storage("intentions.xml")
 )
 public class IntentionsManager implements PersistentStateComponent<IntentionsManager.MyState> {
-  private static final Logger LOG = LogManager.getLogger(IntentionsManager.class);
+  private static final Logger LOG = Logger.getLogger(IntentionsManager.class);
 
   public static String getDescriptorClassName(SModuleReference langRef) {
     return "IntentionsDescriptor";
@@ -307,7 +306,8 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
     ArrayList<IntentionAspectDescriptor> activeIntentionAspects = new ArrayList<>();
     // respect migration scripts from imported languages only
     ArrayList<MigrationRefactoringIntentions> activeIntentionsFromMigrationScripts = new ArrayList<>();
-    for (SLanguage l : new SLanguageHierarchy(languageRegistry, SModelOperations.getAllLanguageImports(node.getModel())).getExtended()) {
+    ModelDependencyResolver mdr = new ModelDependencyResolver(languageRegistry, editorContext.getRepository());
+    for (SLanguage l : new SLanguageHierarchy(languageRegistry, mdr.usedLanguages(node.getModel())).getExtended()) {
       final LanguageRuntime lr = languageRegistry.getLanguage(l);
       if (lr == null) {
         continue;
@@ -345,16 +345,6 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
           continue;
         }
 
-        boolean isApplicable = false;
-        try {
-          isApplicable = intentionFactory.isApplicable(node, editorContext);
-        } catch (Throwable t) {
-          LOG.error("Failed to evaluate isApplicable for " + intentionFactory.getClass().getName(), t);
-        }
-        if (!isApplicable) {
-          continue;
-        }
-
         if (!visitor.visit(intentionFactory, node)) {
           return false;
         }
@@ -375,7 +365,7 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
       Collection<EditorQuickFix> intentionProviders = TypesystemReportItemAdapter.FLAVOUR_EDITOR_QUICKFIX.getCollection(message);
       for (EditorQuickFix intentionProvider : intentionProviders) {
         QuickFixAdapter intention = new QuickFixAdapter(intentionProvider, message.getSeverity());
-        if (!filter.accept(intention) || (isAncestor && !intention.isAvailableInChildNodes()) || !intention.isApplicable(node, context)) {
+        if (!filter.accept(intention) || (isAncestor && !intention.isAvailableInChildNodes())) {
           continue;
         }
         if (!visitor.visit(intention, node)) {

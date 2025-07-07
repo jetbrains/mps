@@ -5,14 +5,17 @@
         >
 <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
   <id>jetbrains.mps.ide.mpsmigration</id>
-  <name>Migration 2021.1</name>
+  <name>Migration 2024.1</name>
   <description>Provides actions to migrate models and languages developed using previous versions of MPS</description>
-  <version>2021.1</version>
+  <version>2024.1</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="211.1" until-build="212.1"/>
+  <idea-version since-build="241.1" until-build="242.1"/>
+
+  <depends>jetbrains.mps.ide.migration.workbench</depends>
 
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="/solution" hide="true"/>
+    <mps.LanguageLibrary dir="/languages" hide="true"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"></errorHandler>
   </extensions>
 </idea-plugin>

@@ -8,7 +8,7 @@ import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import javax.swing.Icon;
-import jetbrains.mps.ide.editor.popup.IconResourceBundle_OverrideImplements;
+import jetbrains.mps.ide.editor.popup.OverrideImplementsIcons;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -26,7 +26,7 @@ public class OverriddenMethodEditorMessage extends AbstractOverrideEditorMessage
 
   @Override
   public Icon getIcon() {
-    return (myOverridenFlag ? IconResourceBundle_OverrideImplements.getInstance().getResource("OVERRIDDEN") : IconResourceBundle_OverrideImplements.getInstance().getResource("IMPLEMENTED"));
+    return (myOverridenFlag ? OverrideImplementsIcons.OVERRIDDEN : OverrideImplementsIcons.IMPLEMENTED);
   }
 
   @Override

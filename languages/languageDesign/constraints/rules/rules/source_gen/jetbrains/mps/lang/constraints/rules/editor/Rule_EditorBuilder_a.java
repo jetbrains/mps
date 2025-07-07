@@ -22,7 +22,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -79,7 +78,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "rule");
     editorCell.setCellId("Constant_z0m96w_a0");
     Style style = new StyleImpl();
-    new RuleStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RuleStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     deleteRuleWithBlockAllTogether.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
@@ -104,11 +103,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -122,7 +117,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "is");
     editorCell.setCellId("Constant_z0m96w_b1a");
     Style style = new StyleImpl();
-    new RuleStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RuleStyleStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_LEFT, new Padding(1, Measure.SPACES));
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.5, Measure.SPACES));
     editorCell.getStyle().putAll(style);
@@ -211,7 +206,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "applies");
     editorCell.setCellId("Constant_z0m96w_a3a");
     Style style = new StyleImpl();
-    new AndDefsAreDefinedHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new AndDefsAreDefinedHintStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_LEFT, new Padding(1.5, Measure.SPACES));
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
@@ -222,7 +217,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "applies");
     editorCell.setCellId("Constant_z0m96w_a3a_0");
     Style style = new StyleImpl();
-    new RuleStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RuleStyleStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_LEFT, new Padding(1.5, Measure.SPACES));
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
@@ -232,7 +227,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.constraints.rules.editor.IsApplicable");
     Style style = new StyleImpl();
-    new RuleStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RuleStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

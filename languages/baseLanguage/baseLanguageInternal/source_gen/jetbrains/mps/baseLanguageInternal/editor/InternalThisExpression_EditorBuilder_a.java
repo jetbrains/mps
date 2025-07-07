@@ -45,7 +45,7 @@ import jetbrains.mps.baseLanguageInternal.editor.StyleSheet_StyleSheet.InternalK
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "_this");
     editorCell.setCellId("Constant_w8nkik_a0");
     Style style = new StyleImpl();
-    new InternalKeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new InternalKeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

@@ -1,29 +1,12 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.jdom.Document;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.annotations.Singleton;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,30 +18,16 @@ import java.util.Collection;
  */
 @Singleton
 public final class PathManager {
-  private static final Logger LOG = LogManager.getLogger(PathManager.class);
-
-//  I am in doubt whether we need this (e.g in copymodels)
+  //  I am in doubt whether we need this (e.g in copymodels)
 //  private static final String PROPERTY_HOME_PATH = "mps.home.path";
 
   private static final String FILE = "file";
-  public static final String JAR = "jar";
-  private static final String JAR_DELIMITER = "!";
   public static final String DOT_JAR = ".jar";
 
-  private static final String PROTOCOL_DELIMITER = ":";
-  private static final String PLUGINS_PATH = "plugins";
-  private static final String PROPERTIES_FILE_NAME = "idea.properties";
+  private static final String PROPERTIES_FILE_NAME = com.intellij.openapi.application.PathManager.PROPERTIES_FILE_NAME;
+  public static final String LAUNCHER_CLASS = "jetbrains/mps/Launcher.class";
 
   private static String ourHomePath;
-  private static String ourIdeaPath;
-  private static String ourPlatformLibPath;
-
-  /**
-   * @deprecatedto be be removed withour replacement, just inline one if you care.
-   */
-  @ToRemove(version = 2019.2)
-  @Deprecated
-  public static final FilenameFilter JAR_FILE_FILTER = (dir, name) -> name.endsWith(DOT_JAR);
 
   private PathManager() {
   }
@@ -81,32 +50,28 @@ public final class PathManager {
       return ourHomePath;
     }
 
-//    if (System.getProperty(PathManager.PROPERTY_HOME_PATH) != null) {
-//      ourHomePath = FileUtil.getAbsolutePath(System.getProperty(PathManager.PROPERTY_HOME_PATH));
-//    } else {
-      String rootPath = getContainingJar(PathManager.class);
+    String rootPath = getContainingJar(PathManager.class);
 
-      File root = new File(rootPath);
-      root = root.getAbsoluteFile();
+    File root = new File(rootPath);
+    root = root.getAbsoluteFile();
 
-      if (rootPath.endsWith(DOT_JAR)) {
-        // {mps_home}/lib
+    if (rootPath.endsWith(DOT_JAR)) {
+      // {mps_home}/lib
+      root = root.getParentFile();
+      if (root != null) {
+        // {mps_home}             -
         root = root.getParentFile();
-        if (root != null) {
-          // {mps_home}
-          root = root.getParentFile();
-        }
-      } else {
-        while ((!isMpsDir(root)) && (root.getParentFile() != null)) {
-          root = root.getParentFile();
-        }
       }
+    } else {
+      while ((!isMpsDir(root)) && (root.getParentFile() != null)) {
+        root = root.getParentFile();
+      }
+    }
 
-      ourHomePath = root.getAbsolutePath();
-      if ("/".equals(ourHomePath)) {
-        throw new IllegalStateException("cannot detect MPS location");
-      }
-//    }
+    ourHomePath = root.getAbsolutePath();
+    if ("/".equals(ourHomePath)) {
+      throw new IllegalStateException("cannot detect MPS location");
+    }
     return ourHomePath;
   }
 
@@ -115,32 +80,30 @@ public final class PathManager {
    */
   @Internal
   public static boolean isFromSources() {
-    final URL launcherURL = ClassLoader.getSystemResource("jetbrains/mps/Launcher.class");
+    final URL launcherURL = ClassLoader.getSystemResource(LAUNCHER_CLASS);
     return launcherURL != null && launcherURL.getProtocol().equals(FILE);
   }
 
-  private static String getContainingJar(Class aClass) {
+  /**
+   * Returns the classpath entry corresponding to {@link jetbrains.mps.Launcher} class used to bootstrap MPS.
+   * Only makes sense if {@link PathManager.isFromSources()} returns true.
+   */
+  @Internal
+  public static String getLauncherClassPathEntry() {
+    URL launcherURL = ClassLoader.getSystemResource(LAUNCHER_CLASS);
+    if (launcherURL != null && launcherURL.getProtocol().equals(FILE)) {
+      return launcherURL.getFile().substring(0, launcherURL.getFile().length() - LAUNCHER_CLASS.length() - 1); // drop trailing File.separator
+    }
+    
+    return null;
+  }
+
+  private static String getContainingJar(Class<?> aClass) {
     return getResourceRoot(aClass, "/" + aClass.getName().replace('.', '/') + ".class");
   }
 
   public static String getIdeaPath() {
-    if (ourIdeaPath != null) {
-      return ourIdeaPath;
-    }
-
-    // {idea_home}/lib
-    File root = new File(getPlatformLibPath());
-    root = root.getAbsoluteFile();
-    // {idea_home}
-    root = root.getParentFile();
-
-    if (root == null) {
-      ourIdeaPath = getHomePath();
-    } else {
-      ourIdeaPath = root.getAbsolutePath();
-    }
-
-    return ourIdeaPath;
+    return com.intellij.openapi.application.PathManager.getHomePath();
   }
 
   public static String getLibExtPath() {
@@ -151,23 +114,7 @@ public final class PathManager {
    * @return <MPS or IDEA home>/lib location, where IDEA platform jars reside. May be the same as {@link #getLibPath()}
    */
   public static String getPlatformLibPath() {
-    if (ourPlatformLibPath != null) {
-      return ourPlatformLibPath;
-    }
-
-    // {idea_home}/lib/jdom.jar
-    String rootPath = getContainingJar(Document.class);
-    if (rootPath != null) {
-      File root = new File(rootPath);
-      root = root.getAbsoluteFile();
-
-      // {idea_home}/lib
-      root = root.getParentFile();
-      if (root != null) {
-        return ourPlatformLibPath = root.getAbsolutePath();
-      }
-    }
-    return ourPlatformLibPath = getHomePath() + "/lib";
+    return com.intellij.openapi.application.PathManager.getLibPath();
   }
 
   public static String[] getHomePaths() {
@@ -228,56 +175,12 @@ public final class PathManager {
   /**
    * Attempts to detect classpath entry which contains given resource
    */
-  public static String getResourceRoot(Class context, String path) {
-    URL url = context.getResource(path);
-    if (url == null) {
-      url = ClassLoader.getSystemResource(path.substring(1));
-    }
-    if (url == null) {
-      return null;
-    }
-    return extractRoot(url, path);
-  }
-
-  /**
-   * Attempts to extract classpath entry part from passed URL.
-   */
-  private static String extractRoot(URL resourceURL, String resourcePath) {
-    if (!(resourcePath.startsWith("/") || resourcePath.startsWith("\\"))) {
-      LOG.error("precondition failed for" + resourcePath);
-      return null;
-    }
-    String protocol = resourceURL.getProtocol();
-    String resultPath = null;
-
-    if (FILE.equals(protocol)) {
-      String path = resourceURL.getFile();
-      String testPath = path.replace('\\', '/').toLowerCase();
-      String testResourcePath = resourcePath.replace('\\', '/').toLowerCase();
-      if (testPath.endsWith(testResourcePath)) {
-        resultPath = path.substring(0, path.length() - resourcePath.length());
-      }
-    } else if (JAR.equals(protocol)) {
-      String fullPath = resourceURL.getFile();
-      int delimiter = fullPath.indexOf(JAR_DELIMITER);
-      if (delimiter >= 0) {
-        String archivePath = fullPath.substring(0, delimiter);
-        if (archivePath.startsWith(FILE + PROTOCOL_DELIMITER)) {
-          resultPath = archivePath.substring(FILE.length() + PROTOCOL_DELIMITER.length());
-        }
-      }
-    }
-
-    if (resultPath != null && resultPath.endsWith(File.separator)) {
-      resultPath = resultPath.substring(0, resultPath.length() - 1);
-    }
-
-    resultPath = resultPath != null ? StringUtil.replace(resultPath, "%20", " ") : null;
-    return resultPath;
+  private static String getResourceRoot(Class<?> context, String path) {
+    return com.intellij.openapi.application.PathManager.getResourceRoot(context, path);
   }
 
   public static String getPreInstalledPluginsPath() {
-    return getHomePath() + File.separator + PLUGINS_PATH;
+    return com.intellij.openapi.application.PathManager.getPreInstalledPluginsPath();
   }
 
   public static String getUserDir() {

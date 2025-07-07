@@ -26,6 +26,7 @@ public class CopyNode_Action extends BaseAction {
     super("Copy", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -69,5 +70,7 @@ public class CopyNode_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     CopyPasteUtil.copyNodesToClipboard(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
+    //  sort of hack. indicate nodes copied into clipboard are present elsewhere (as if were cut and pasted back)
+    CopyPasteUtil.getPasteNodeData().consume();
   }
 }

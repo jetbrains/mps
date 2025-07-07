@@ -9,7 +9,6 @@ import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -33,11 +32,7 @@ public class _ClassConcept_Extends_Delete {
           return;
         }
         SLinkOperations.setTarget(node, LINKS.superclass$Mp9$, null);
-        ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.superclass$Mp9$).list(node)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SNodeOperations.deleteNode(it);
-          }
-        });
+        ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.superclass$Mp9$).list(node)).visitAll((it) -> SNodeOperations.deleteNode(it));
         if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.implementedInterface$rujG)).isNotEmpty()) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "ImplementsCell", 0);
         } else {

@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 public final class ConceptMRO extends C3StarAncestorResolutionOrder<AbstractConceptWrap> {
-  private static final ConceptWrap BASECONCEPT_WRAP = new ConceptWrap(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
+  private static final AbstractConceptWrap BASECONCEPT_WRAP = AbstractConceptWrap.wrap(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
 
   @NotNull
   @Override

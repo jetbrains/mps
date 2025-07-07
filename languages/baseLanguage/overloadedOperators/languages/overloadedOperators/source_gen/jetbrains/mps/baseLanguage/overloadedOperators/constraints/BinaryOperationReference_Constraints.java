@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
@@ -26,12 +27,10 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.scope.ListScope;
 import java.util.HashMap;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -43,18 +42,14 @@ public class BinaryOperationReference_Constraints extends BaseConstraintsDescrip
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.binaryOperation$5SHJ, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.binaryOperation$5SHJ, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_4xi24e_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:9b7a7baa-7b52-4b41-8293-5aa14d41220f(jetbrains.mps.baseLanguage.overloadedOperators.constraints)", "6836281137582776736");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -70,11 +65,7 @@ public class BinaryOperationReference_Constraints extends BaseConstraintsDescrip
               SModule langModule = language.getSourceModuleReference().resolve(repo);
               if (langModule instanceof Language) {
                 SModel sm = SModuleOperations.getAspect(langModule, "structure");
-                ListSequence.fromList(result).addSequence(ListSequence.fromList(SModelOperations.roots(sm, CONCEPTS.ConceptDeclaration$gH)).where(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(it, CONCEPTS.BinaryOperation$W1) && !(SPropertyOperations.getBoolean(it, PROPS.abstract$ibpT));
-                  }
-                }));
+                ListSequence.fromList(result).addSequence(ListSequence.fromList(SModelOperations.roots(sm, CONCEPTS.ConceptDeclaration$gH)).where((it) -> (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(it, CONCEPTS.BinaryOperation$W1) && !(SPropertyOperations.getBoolean(it, PROPS.abstract$ibpT))));
               }
             }
             return ListScope.forResolvableElements(result);
@@ -86,7 +77,6 @@ public class BinaryOperationReference_Constraints extends BaseConstraintsDescrip
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_4xi24e_a0a0a0a0a1a0a0a0c = new SNodePointer("r:9b7a7baa-7b52-4b41-8293-5aa14d41220f(jetbrains.mps.baseLanguage.overloadedOperators.constraints)", "6836281137582776736");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BinaryOperationReference$wm = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d23eb4L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.BinaryOperationReference");

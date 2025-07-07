@@ -8,9 +8,9 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.featureStatistics.FeatureUsageTracker;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.ModuleInstanceCondition;
@@ -20,7 +20,6 @@ import jetbrains.mps.project.DevKit;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.scope.ConditionalScope;
 import jetbrains.mps.FilteredGlobalScope;
-import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.workbench.choose.ChooseByNameData;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.workbench.choose.ModulesPresentation;
@@ -39,6 +38,7 @@ public class GoToModule_Action extends BaseAction {
     super("Go to Module", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -51,7 +51,6 @@ public class GoToModule_Action extends BaseAction {
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
       if (p == null) {
         return false;
       }
@@ -62,21 +61,21 @@ public class GoToModule_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.module");
 
+    final SRepository repo = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository();
     // PsiDocumentManager.getInstance(project).commitAllDocuments();
     final Condition<SModule> knownModules = new ModuleInstanceCondition(Solution.class, Language.class, DevKit.class);
-    final SearchScope localScope = new ConditionalScope(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getScope(), knownModules, null);
-    final SearchScope globalScope = new ConditionalScope(new FilteredGlobalScope(), knownModules, null);
+    final SearchScope localScope = new ConditionalScope(event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope(), knownModules, null);
+    final SearchScope globalScope = new ConditionalScope(new FilteredGlobalScope(repo), knownModules, null);
 
-    final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
     final ChooseByNameData<SModuleReference> gotoData = new ChooseByNameData<SModuleReference>(new ModulesPresentation(repo));
     gotoData.derivePrompts("module").setScope(new ModuleScopeIterable(localScope, repo), new ModuleScopeIterable(globalScope, repo));
 
-    final ChooseByNamePopup popup = MpsPopupFactory.createPackagePopup(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProject(), gotoData, GoToModule_Action.this);
+    final ChooseByNamePopup popup = MpsPopupFactory.createPackagePopup(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), gotoData, GoToModule_Action.this);
 
     popup.invoke(new ChooseByNamePopupComponent.Callback() {
       public void elementChosen(Object p0) {
         if (p0 instanceof SModuleReference) {
-          new ProjectPaneNavigator(((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).shallFocus(true).select((SModuleReference) p0);
+          new ProjectPaneNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).select((SModuleReference) p0);
         }
       }
     }, ModalityState.current(), false);

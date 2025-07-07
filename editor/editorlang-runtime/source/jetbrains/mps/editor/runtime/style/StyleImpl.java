@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,12 @@
 package jetbrains.mps.editor.runtime.style;
 
 import jetbrains.mps.editor.runtime.style.StyleAttributeMap.DiscardValue;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleAttribute;
 import jetbrains.mps.openapi.editor.style.StyleChangeEvent;
 import jetbrains.mps.openapi.editor.style.StyleListener;
 import jetbrains.mps.util.containers.EmptyIterator;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,7 +39,7 @@ import java.util.Set;
  * Date: 1/11/13
  */
 public class StyleImpl implements Style {
-  private static final Logger LOG = LogManager.getLogger(StyleImpl.class);
+  private static final Logger LOG = Logger.getLogger(StyleImpl.class);
 
   private Style myParent;
   private List<Style> myChildren = null;
@@ -195,7 +194,7 @@ public class StyleImpl implements Style {
       try {
         l.styleChanged(e);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }

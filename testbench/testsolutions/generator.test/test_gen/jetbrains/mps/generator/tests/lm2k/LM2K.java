@@ -4,11 +4,13 @@ package jetbrains.mps.generator.tests.lm2k;
 
 import jetbrains.mps.lang.test.generator.rt.BaseGeneratorTest;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.generator.rt.TransformHelper;
+import jetbrains.mps.lang.test.generator.rt.ModelAssert;
 
 public class LM2K extends BaseGeneratorTest {
+
 
 
   private SModel myArg_IN;
@@ -16,7 +18,7 @@ public class LM2K extends BaseGeneratorTest {
   private SModel myArg_GP_Interpreted;
 
 
-  @Before
+  @BeforeEach
   public void prepareArguments() {
     myArg_IN = findModel("IN", "r:287e7b56-af80-4914-8746-82e9872f3c42(jetbrains.mps.generator.tests.lm2k.m1)");
     myArg_OUT = findModel("OUT", "r:76e4b3a9-13b6-469f-88e9-4702b400179a(jetbrains.mps.generator.tests.lm2k.m2)");
@@ -31,7 +33,8 @@ public class LM2K extends BaseGeneratorTest {
     t.setPlanProvider(planProviderFromModel(myArg_GP_Interpreted));
     t.transform();
     SModel rm = myArg_OUT;
-    assertMatch(t.getOutputModel(), rm);
+    ModelAssert ma = new ModelAssert(t.getResult().getOutputRepository());
+    ma.assertMatch(t.getOutputModel(), rm);
   }
 
 }

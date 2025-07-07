@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.diagram.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -18,16 +19,15 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.PortDecoratorView;
 import jetbrains.jetpad.projectional.view.View;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.nodeEditor.cells.jetpad.JetpadUtils;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.SelectionFrameView;
 
 @MPSLaunch
 public class PortDecoratorTest_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(PortDecoratorTest_Test.class, "${mps_home}", "r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(PortDecoratorTest_Test.class, "${mps_home}", "r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)", false));
 
   public PortDecoratorTest_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -45,11 +45,7 @@ public class PortDecoratorTest_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("1560508619094015368", "1560508619094015372");
       final Wrappers._T<SNode> node = new Wrappers._T<SNode>();
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          node.value = getNodeById("1560508619094050075");
-        }
-      });
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> node.value = getAnnotatedNode("port"));
 
       Mapper descendantMapper;
       descendantMapper = DecoratorTestRunner.prepareAndGetMapper(node.value, getEditorComponent(), PortCell.class);
@@ -59,11 +55,7 @@ public class PortDecoratorTest_Test extends BaseTransformationTest {
       Assert.assertTrue(descendantMapper.getTarget() instanceof PortDecoratorView);
       PortDecoratorView portDecoratorView = ((PortDecoratorView) descendantMapper.getTarget());
       Assert.assertTrue(portDecoratorView.hasError.get());
-      View errorView = Sequence.fromIterable(JetpadUtils.getAllChildren(portDecoratorView)).findFirst(new IWhereFilter<View>() {
-        public boolean accept(View it) {
-          return it instanceof SelectionFrameView;
-        }
-      });
+      View errorView = Sequence.fromIterable(JetpadUtils.getAllChildren(portDecoratorView)).findFirst((it) -> it instanceof SelectionFrameView);
       Assert.assertTrue(errorView != null);
       Assert.assertTrue(errorView.visible().get());
 

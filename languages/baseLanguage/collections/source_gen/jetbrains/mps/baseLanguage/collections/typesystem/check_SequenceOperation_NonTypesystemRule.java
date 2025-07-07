@@ -13,7 +13,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.baseLanguage.collections.behavior.IApplicableToNothing__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -29,17 +28,13 @@ public class check_SequenceOperation_NonTypesystemRule extends AbstractNonTypesy
     if (SNodeOperations.isInstanceOf(so, CONCEPTS.IApplicableToNothing$j7)) {
       // casting twice to avoid "not comparable" type error
       SAbstractConcept conceptNode = SNodeOperations.getConcept(so);
-      if (!(SetSequence.fromSet((IApplicableToNothing__BehaviorDescriptor.getAllApplicableTypes_id5cL0w3DYWgB.invoke(SNodeOperations.asSConcept((SAbstractConcept) conceptNode)))).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return TypecheckingFacade.getFromContext().isStrongSubtype(opType, it);
-        }
-      }))) {
+      if (!(SetSequence.fromSet((IApplicableToNothing__BehaviorDescriptor.getAllApplicableTypes_id5cL0w3DYWgB.invoke(SNodeOperations.asSConcept((SAbstractConcept) conceptNode)))).any((it) -> TypecheckingFacade.getFromContext().isStrongSubtype(opType, it)))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(so, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809122235508", null, errorTarget);
       }
 
     } else {
-      if (!((TypecheckingFacade.getFromContext().strongCoerceType(opType, CONCEPTS.SequenceType$_s) != null))) {
+      if (!(TypecheckingFacade.getFromContext().strongCoerceType(opType, CONCEPTS.SequenceType$_s) != null)) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(so, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809122243464", null, errorTarget);
       }

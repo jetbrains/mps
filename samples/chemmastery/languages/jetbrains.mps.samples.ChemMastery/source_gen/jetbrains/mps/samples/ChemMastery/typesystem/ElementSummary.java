@@ -10,11 +10,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -28,20 +25,14 @@ public class ElementSummary {
   public ElementSummary(Iterable<SNode> compounds) {
     for (SNode c : compounds) {
       final int compoundCardinality = (SPropertyOperations.getBoolean(c, PROPS.cardinalityVisible$7IlK) ? SPropertyOperations.getInteger(c, PROPS.cardinality$ubQr) : 1);
-      Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(c, LINKS.elements$pq2w), CONCEPTS.CompoundComponentWithCardinality$_V)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode el) {
-          if (SNodeOperations.isInstanceOf(el, CONCEPTS.ElementRef$EZ)) {
-            SNode elementRef = SNodeOperations.as(el, CONCEPTS.ElementRef$EZ);
-            addElementToMap(elementRef, compoundCardinality);
-          } else if (SNodeOperations.isInstanceOf(el, CONCEPTS.Parens$mL)) {
-            SNode parens = SNodeOperations.as(el, CONCEPTS.Parens$mL);
-            final int parensCardinality = (SPropertyOperations.getBoolean(parens, PROPS.cardinalityVisible$Vfns) ? SPropertyOperations.getInteger(parens, PROPS.cardinality$Vf8r) : 1);
-            Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(parens, LINKS.elements$p7zr), CONCEPTS.ElementRef$EZ)).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode elementRef) {
-                addElementToMap(elementRef, parensCardinality * compoundCardinality);
-              }
-            });
-          }
+      Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(c, LINKS.elements$pq2w), CONCEPTS.CompoundComponentWithCardinality$_V)).visitAll((el) -> {
+        if (SNodeOperations.isInstanceOf(el, CONCEPTS.ElementRef$EZ)) {
+          SNode elementRef = SNodeOperations.as(el, CONCEPTS.ElementRef$EZ);
+          addElementToMap(elementRef, compoundCardinality);
+        } else if (SNodeOperations.isInstanceOf(el, CONCEPTS.Parens$mL)) {
+          SNode parens = SNodeOperations.as(el, CONCEPTS.Parens$mL);
+          final int parensCardinality = (SPropertyOperations.getBoolean(parens, PROPS.cardinalityVisible$Vfns) ? SPropertyOperations.getInteger(parens, PROPS.cardinality$Vf8r) : 1);
+          Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(parens, LINKS.elements$p7zr), CONCEPTS.ElementRef$EZ)).visitAll((elementRef) -> addElementToMap(elementRef, parensCardinality * compoundCardinality));
         }
       });
     }
@@ -61,33 +52,9 @@ public class ElementSummary {
 
   public String comparisonReport(final ElementSummary other) {
     final StringBuilder builder = new StringBuilder();
-    SetSequence.fromSet(MapSequence.fromMap(this.elementCounts).keySet()).where(new IWhereFilter<String>() {
-      public boolean accept(String k) {
-        return !(SetSequence.fromSet(MapSequence.fromMap(other.elementCounts).keySet()).contains(k));
-      }
-    }).visitAll(new IVisitor<String>() {
-      public void visit(String k) {
-        builder.append("Element " + k + " is on the left side but not on the right side.\n");
-      }
-    });
-    SetSequence.fromSet(MapSequence.fromMap(other.elementCounts).keySet()).where(new IWhereFilter<String>() {
-      public boolean accept(String k) {
-        return !(SetSequence.fromSet(MapSequence.fromMap(ElementSummary.this.elementCounts).keySet()).contains(k));
-      }
-    }).visitAll(new IVisitor<String>() {
-      public void visit(String k) {
-        builder.append("Element " + k + " is on the right side but not on the left side.\n");
-      }
-    });
-    MapSequence.fromMap(this.elementCounts).where(new IWhereFilter<IMapping<String, Integer>>() {
-      public boolean accept(IMapping<String, Integer> el) {
-        return MapSequence.fromMap(other.elementCounts).containsKey(el.key()) && el.value() != MapSequence.fromMap(other.elementCounts).get(el.key());
-      }
-    }).visitAll(new IVisitor<IMapping<String, Integer>>() {
-      public void visit(IMapping<String, Integer> el) {
-        builder.append("Element " + el.key() + " occurs " + el.value() + " times on the left side, but " + MapSequence.fromMap(other.elementCounts).get(el.key()) + " times on the right side.\n");
-      }
-    });
+    SetSequence.fromSet(MapSequence.fromMap(this.elementCounts).keySet()).where((k) -> !(SetSequence.fromSet(MapSequence.fromMap(other.elementCounts).keySet()).contains(k))).visitAll((k) -> builder.append("Element " + k + " is on the left side but not on the right side.\n"));
+    SetSequence.fromSet(MapSequence.fromMap(other.elementCounts).keySet()).where((k) -> !(SetSequence.fromSet(MapSequence.fromMap(ElementSummary.this.elementCounts).keySet()).contains(k))).visitAll((k) -> builder.append("Element " + k + " is on the right side but not on the left side.\n"));
+    MapSequence.fromMap(this.elementCounts).where((el) -> MapSequence.fromMap(other.elementCounts).containsKey(el.key()) && el.value() != MapSequence.fromMap(other.elementCounts).get(el.key())).visitAll((el) -> builder.append("Element " + el.key() + " occurs " + el.value() + " times on the left side, but " + MapSequence.fromMap(other.elementCounts).get(el.key()) + " times on the right side.\n"));
     return builder.toString();
   }
 

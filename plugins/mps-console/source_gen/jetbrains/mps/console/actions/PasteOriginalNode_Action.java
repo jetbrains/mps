@@ -76,10 +76,6 @@ public class PasteOriginalNode_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((Project) MapSequence.fromMap(_params).get("project")).getComponent(ConsoleTool.class).runWithoutPasteAsRef(new Runnable() {
-      public void run() {
-        ActionUtils.updateAndPerformAction(ActionManager.getInstance().getAction(IdeActions.ACTION_PASTE), event);
-      }
-    });
+    ((Project) MapSequence.fromMap(_params).get("project")).getComponent(ConsoleTool.class).runWithoutPasteAsRef(() -> ActionUtils.updateAndPerformAction(ActionManager.getInstance().getAction(IdeActions.ACTION_PASTE), event));
   }
 }

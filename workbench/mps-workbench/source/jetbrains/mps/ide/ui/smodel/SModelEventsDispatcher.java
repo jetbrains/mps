@@ -17,7 +17,6 @@ package jetbrains.mps.ide.ui.smodel;
 
 import jetbrains.mps.smodel.ModelsEventsCollector;
 import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -35,8 +34,7 @@ import java.util.Set;
  * User: Alexander Shatalin
  * Date: 16.04.2010
  */
-@Deprecated
-@ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
 public class SModelEventsDispatcher {
   private final SRepository myRepo;
   private ModelsEventsCollector myModelsEventsCollector;

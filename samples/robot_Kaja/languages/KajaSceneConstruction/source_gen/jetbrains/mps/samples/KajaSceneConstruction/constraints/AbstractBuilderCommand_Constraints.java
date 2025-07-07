@@ -5,10 +5,10 @@ package jetbrains.mps.samples.KajaSceneConstruction.constraints;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.SNodePointer;
 import JavaKaja.runtime.KajaFrame;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -24,18 +24,13 @@ public class AbstractBuilderCommand_Constraints extends BaseConstraintsDescripto
 
   public static class Col_Property extends BasePropertyConstraintsDescriptor {
     public Col_Property(ConstraintsDescriptor container) {
-      super(PROPS.col$N9FQ, container);
+      super(PROPS.col$N9FQ, container, false, false, true);
     }
-    @Override
-    public boolean hasOwnValidator() {
-      return true;
-    }
-    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:84a4ed3f-fed0-4bb5-977e-0cf55665a49a(jetbrains.mps.samples.KajaSceneConstruction.constraints)", "3210697320273648136");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
       boolean result = staticValidateProperty(node, SPropertyOperations.castInteger(propertyValue));
       if (!(result) && checkingNodeContext != null) {
-        checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
+        checkingNodeContext.setBreakingNode(new SNodePointer("r:84a4ed3f-fed0-4bb5-977e-0cf55665a49a(jetbrains.mps.samples.KajaSceneConstruction.constraints)", "3210697320273648136"));
       }
       return result;
     }
@@ -45,18 +40,13 @@ public class AbstractBuilderCommand_Constraints extends BaseConstraintsDescripto
   }
   public static class Row_Property extends BasePropertyConstraintsDescriptor {
     public Row_Property(ConstraintsDescriptor container) {
-      super(PROPS.row$N9sP, container);
+      super(PROPS.row$N9sP, container, false, false, true);
     }
-    @Override
-    public boolean hasOwnValidator() {
-      return true;
-    }
-    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:84a4ed3f-fed0-4bb5-977e-0cf55665a49a(jetbrains.mps.samples.KajaSceneConstruction.constraints)", "3210697320273648165");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
       boolean result = staticValidateProperty(node, SPropertyOperations.castInteger(propertyValue));
       if (!(result) && checkingNodeContext != null) {
-        checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
+        checkingNodeContext.setBreakingNode(new SNodePointer("r:84a4ed3f-fed0-4bb5-977e-0cf55665a49a(jetbrains.mps.samples.KajaSceneConstruction.constraints)", "3210697320273648165"));
       }
       return result;
     }

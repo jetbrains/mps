@@ -9,7 +9,6 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.util.NameUtil;
 import com.intellij.openapi.ui.Messages;
@@ -22,29 +21,13 @@ public class MergeConfirmation {
   private MergeConfirmation() {
   }
   public static int showMergeConfirmationAndTakeAction(Component parent, final MergeSession mergeSession, Iterable<ModelChange> allRelevantChanges, @Nullable final MergeSession mergeSession2, Iterable<ModelChange> allRelevantChanges2) {
-    List<ModelChange> changes = Sequence.fromIterable(allRelevantChanges).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange ch) {
-        return !(mergeSession.isChangeResolved(ch));
-      }
-    }).toListSequence();
+    List<ModelChange> changes = Sequence.fromIterable(allRelevantChanges).where((ch) -> !(mergeSession.isChangeResolved(ch))).toList();
     int nChanges = ListSequence.fromList(changes).count();
-    int nConflicts = ListSequence.fromList(changes).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange ch) {
-        return Sequence.fromIterable(mergeSession.getConflictedWith(ch)).isNotEmpty();
-      }
-    }).count();
+    int nConflicts = ListSequence.fromList(changes).where((ch) -> Sequence.fromIterable(mergeSession.getConflictedWith(ch)).isNotEmpty()).count();
     if (mergeSession2 != null) {
-      changes = Sequence.fromIterable(allRelevantChanges2).where(new IWhereFilter<ModelChange>() {
-        public boolean accept(ModelChange ch) {
-          return !(mergeSession2.isChangeResolved(ch));
-        }
-      }).toListSequence();
+      changes = Sequence.fromIterable(allRelevantChanges2).where((ch) -> !(mergeSession2.isChangeResolved(ch))).toList();
       nChanges += ListSequence.fromList(changes).count();
-      nConflicts += ListSequence.fromList(changes).where(new IWhereFilter<ModelChange>() {
-        public boolean accept(ModelChange ch) {
-          return Sequence.fromIterable(mergeSession2.getConflictedWith(ch)).isNotEmpty();
-        }
-      }).count();
+      nConflicts += ListSequence.fromList(changes).where((ch) -> Sequence.fromIterable(mergeSession2.getConflictedWith(ch)).isNotEmpty()).count();
     }
 
     int result = MergeConfirmation.showMergeConfirmationIfNeeded(parent, nChanges, nConflicts);

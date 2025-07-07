@@ -132,7 +132,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -168,7 +168,7 @@
       <ref role="PrY4T" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJ9HKD" role="bvy1s">
-      <property role="1sEMCp" value="editor.html" />
+      <property role="1sEMCp" value="editor.html#editoroverview" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -593,7 +593,7 @@
       <ref role="PrY4T" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJg8Ae" role="bvy1s">
-      <property role="1sEMCp" value="editor.html" />
+      <property role="1sEMCp" value="editor.html#editoroverview" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -698,7 +698,7 @@
       <ref role="20lvS9" node="gyPxRd_" resolve="CellKeyMapItem" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJg8_E" role="bvy1s">
-      <property role="1sEMCp" value="editor.html" />
+      <property role="1sEMCp" value="editor.html#keymaps" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -1008,7 +1008,7 @@
       <ref role="20lvS9" node="g_hA7BD" resolve="CellActionMapItem" />
     </node>
     <node concept="1sEMCm" id="11Atn_WK8fg" role="bvy1s">
-      <property role="1sEMCp" value="editor.html" />
+      <property role="1sEMCp" value="editor.html#actionmaps" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -1288,19 +1288,6 @@
     <property role="EcuMT" value="1162497113192" />
     <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
   </node>
-  <node concept="1TIwiD" id="gUEiZyM">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="CellMenuPart_ReplaceChild_defaultConceptOfChild" />
-    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
-    <property role="3GE5qa" value="CellMenu" />
-    <property role="34LRSv" value="defaultConceptOfChild_deprecated" />
-    <property role="EcuMT" value="1162498275506" />
-    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
-    <node concept="asaX9" id="31F3x8CXY$W" role="lGtFl">
-      <property role="YLPcu" value="3.5" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="gVGJtLf">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
@@ -1491,7 +1478,7 @@
         <node concept="1TJgyi" id="gXezIA2" role="3l_iP">
           <property role="TrG5h" value="presentation" />
           <property role="IQ2nx" value="1165254125954" />
-          <ref role="AX2Wp" to="tpcw:gWZP3tS" resolve="NodePresentationOptions" />
+          <ref role="AX2Wp" to="tpcw:3Ftr4R6BFvV" resolve="NodePresentationOptions" />
         </node>
       </node>
     </node>
@@ -1710,7 +1697,7 @@
       <ref role="PrY4T" to="tpce:hOIDzy1" resolve="IStructureDeprecatable" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJg8_I" role="bvy1s">
-      <property role="1sEMCp" value="editor.html" />
+      <property role="1sEMCp" value="editor.html#cellmenus" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -1953,6 +1940,9 @@
     <property role="34LRSv" value="postfixes" />
     <property role="EcuMT" value="1180616057533" />
     <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+    <node concept="PrWs8" id="3eCjKC6V$ZC" role="PzmwI">
+      <ref role="PrY4T" node="1PvcgmUaKhb" resolve="IEditorContextAccessQualifier" />
+    </node>
   </node>
   <node concept="1TIwiD" id="hd07P1K">
     <property role="R5$K7" value="false" />
@@ -2017,7 +2007,7 @@
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJ9HKF" role="bvy1s">
-      <property role="1sEMCp" value="editor.html" />
+      <property role="1sEMCp" value="editor.html#styles" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -3057,7 +3047,7 @@
       <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJg8Hd" role="bvy1s">
-      <property role="1sEMCp" value="editor.html" />
+      <property role="1sEMCp" value="editor.html#3ab2b85e" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -3188,7 +3178,7 @@
     <property role="TrG5h" value="CellLayout_Superscript" />
     <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="CellLayout" />
-    <property role="34LRSv" value="superscript" />
+    <property role="34LRSv" value="super/subscript" />
     <property role="EcuMT" value="1886960078078641793" />
     <ref role="1TJDcQ" node="g6iR17a" resolve="CellLayout" />
   </node>
@@ -3252,7 +3242,7 @@
         <node concept="1TJgyi" id="5UApK7d2wMb" role="3l_iP">
           <property role="TrG5h" value="tableComponent" />
           <property role="IQ2nx" value="6820251943131810955" />
-          <ref role="AX2Wp" node="5UApK7d2wM7" resolve="TableComponentEnum" />
+          <ref role="AX2Wp" node="3Ftr4R6BFed" resolve="TableComponentEnum" />
         </node>
       </node>
     </node>
@@ -3444,7 +3434,7 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="1sEMCm" id="1pfhW8h7fW_" role="bvy1s">
-      <property role="1sEMCp" value="editor.html" />
+      <property role="1sEMCp" value="editor.html#styles" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -3510,7 +3500,7 @@
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJg8Aa" role="bvy1s">
-      <property role="1sEMCp" value="editor.html" />
+      <property role="1sEMCp" value="editor-cookbook.html#howtodefinemultipleeditorsforthesameconcept" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -4293,6 +4283,16 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1638911550608572412" />
       <ref role="20lvS9" node="6V0bp$oHeYW" resolve="TransformationMenuSection" />
+    </node>
+    <node concept="1TJgyj" id="1KUls24SVHE" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="methodDeclaration" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="2034032467062799210" />
+      <ref role="20lvS9" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+    </node>
+    <node concept="PrWs8" id="1KUls24TcI4" role="PrDN$">
+      <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
     </node>
   </node>
   <node concept="1TIwiD" id="1qY_lWSjJNx">
@@ -5528,8 +5528,18 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="n0c53aH5hE" resolve="SubstituteMenuPart" />
     </node>
+    <node concept="1TJgyj" id="hz2lrYP" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="methodDeclaration" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="1205851242421" />
+      <ref role="20lvS9" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+    </node>
     <node concept="PrWs8" id="1quYWADmNv8" role="PrDN$">
       <ref role="PrY4T" node="1quYWAD18x6" resolve="IMenu" />
+    </node>
+    <node concept="PrWs8" id="1KUls24TcF9" role="PrDN$">
+      <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
     </node>
   </node>
   <node concept="1TIwiD" id="5N5pDMJPfSO">
@@ -6376,7 +6386,7 @@
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJg8A7" role="bvy1s">
-      <property role="1sEMCp" value="/editor.html" />
+      <property role="1sEMCp" value="/editor.html#86272b50" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -8103,6 +8113,54 @@
     <node concept="PrWs8" id="5cAVTFhA5jt" role="PzmwI">
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="AV1oJuQyTS">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="TransparentStyleSheetItem" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="3GE5qa" value="Stylesheet" />
+    <property role="34LRSv" value="transparent" />
+    <property role="EcuMT" value="701160265283677816" />
+    <ref role="1TJDcQ" node="hgVOiwV" resolve="BooleanStyleSheetItem" />
+  </node>
+  <node concept="1TIwiD" id="7I1om2Aqt7L">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="function parameter" />
+    <property role="TrG5h" value="ConceptFunctionParameter_index" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="3GE5qa" value="QueryFunction.Parameters" />
+    <property role="34LRSv" value="index" />
+    <property role="EcuMT" value="8899501406397518321" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
+  <node concept="1TIwiD" id="2xkx6pX7zvC">
+    <property role="EcuMT" value="2906093235281475560" />
+    <property role="3GE5qa" value="Stylesheet" />
+    <property role="TrG5h" value="SpellCheckStyle" />
+    <property role="34LRSv" value="spellcheck" />
+    <ref role="1TJDcQ" node="hgVOiwV" resolve="BooleanStyleSheetItem" />
+  </node>
+  <node concept="1TIwiD" id="6m5Zb4otLWd">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="SeparatorRightStyleClassItem" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="3GE5qa" value="Stylesheet" />
+    <property role="34LRSv" value="separator-right" />
+    <property role="EcuMT" value="7315531007283109645" />
+    <ref role="1TJDcQ" node="hgVOiwV" resolve="BooleanStyleSheetItem" />
+  </node>
+  <node concept="1TIwiD" id="6hHPzJjZ$mY">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="PlaceholderStyleSheetItem" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="3GE5qa" value="Stylesheet" />
+    <property role="34LRSv" value="placeholder" />
+    <property role="EcuMT" value="7236675728702326206" />
+    <ref role="1TJDcQ" node="hgVOiwV" resolve="BooleanStyleSheetItem" />
   </node>
 </model>
 

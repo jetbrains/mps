@@ -14,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.annotations.Nullable;
@@ -55,11 +54,7 @@ public class ConstructorUsages_Finder extends GeneratedFinder {
       // WORKAROUND - FIND SUPER() CALLS
       for (SNode subclassResult : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.StraightDerivedClasses_Finder", SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false), scope, monitor.subTask(1)))) {
         for (SNode constructorNode : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(subclassResult, CONCEPTS.ClassConcept$bK)))) {
-          for (SNode invocation : ListSequence.fromList(SNodeOperations.getNodeDescendants(constructorNode, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.SuperConstructorInvocation$wU);
-            }
-          })) {
+          for (SNode invocation : ListSequence.fromList(SNodeOperations.getNodeDescendants(constructorNode, null, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.SuperConstructorInvocation$wU))) {
             boolean thisConstructor = true;
             SNode invocationNode = SNodeOperations.cast(invocation, CONCEPTS.SuperConstructorInvocation$wU);
             if (ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$pzdx)).count() == ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$5xBj)).count()) {

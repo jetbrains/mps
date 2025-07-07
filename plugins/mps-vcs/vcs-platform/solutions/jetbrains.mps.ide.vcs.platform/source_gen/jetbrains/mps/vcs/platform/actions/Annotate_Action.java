@@ -9,21 +9,13 @@ import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import com.intellij.openapi.vfs.VirtualFile;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import com.intellij.openapi.vcs.AbstractVcs;
-import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.project.MPSProject;
-import java.util.List;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
-import com.intellij.openapi.progress.ProgressManager;
-import jetbrains.mps.vcs.annotate.AnnotateBackgroundableTask;
 import com.intellij.openapi.vcs.impl.VcsBackgroundableActions;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/4551090891612013049", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
@@ -34,33 +26,24 @@ public class Annotate_Action extends BaseAction {
     super("Annotate", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.READ_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
     return true;
   }
   @Override
-  public boolean isApplicable(final AnActionEvent event, final Map<String, Object> _params) {
+  public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     if (VcsActionsUtil.getAnnotationColumn(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT)) != null) {
       return true;
-    }
-    final Wrappers._T<VirtualFile> vf = new Wrappers._T<VirtualFile>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        vf.value = VcsActionsUtil.getFileFromModel(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODES));
-      }
-    });
-    if (vf.value == null) {
-      return false;
     }
     if (Annotate_Action.this.getAnnotateRootLock(event).isLocked()) {
       return false;
     }
-    AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getVcsFor(vf.value);
-    if (activeVCS == null) {
-      return false;
-    }
-    return AbstractVcs.fileInVcsByFileStatus(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), vf.value);
+    final SNode editedNode = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode();
+    NodeHistoryUtil nh = new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT));
+    nh.initFileAndVcs(editedNode);
+    return nh.isHistoryTracked();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -86,21 +69,6 @@ public class Annotate_Action extends BaseAction {
         return false;
       }
     }
-    {
-      List<SNode> p = event.getData(MPSCommonDataKeys.NODES);
-      if (p == null) {
-        return false;
-      }
-      if (p.isEmpty()) {
-        return false;
-      }
-    }
-    {
-      SModel p = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
-      if (p == null) {
-        return false;
-      }
-    }
     return true;
   }
   @Override
@@ -110,19 +78,12 @@ public class Annotate_Action extends BaseAction {
       annotationColumn.close();
       return;
     }
-    final Wrappers._T<VirtualFile> vf = new Wrappers._T<VirtualFile>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        vf.value = VcsActionsUtil.getFileFromModel(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODES));
-      }
-    });
-    AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getVcsFor(vf.value);
-    String taskName = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getPresentation();
-    BackgroundableActionLock actionLock = Annotate_Action.this.getAnnotateRootLock(event);
-    actionLock.lock();
-    ProgressManager.getInstance().run(new AnnotateBackgroundableTask(event.getData(MPSCommonDataKeys.MPS_PROJECT), taskName, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), vf.value, activeVCS, actionLock, null));
+    final SNode editedNode = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode();
+    NodeHistoryUtil nh = new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT));
+    nh.initFileAndVcs(editedNode);
+    nh.runAnnotate(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), Annotate_Action.this.getAnnotateRootLock(event));
   }
-  /*package*/ BackgroundableActionLock getAnnotateRootLock(final AnActionEvent event) {
+  private BackgroundableActionLock getAnnotateRootLock(final AnActionEvent event) {
     return BackgroundableActionLock.getLock(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), VcsBackgroundableActions.ANNOTATE, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getName());
   }
 }

@@ -2,7 +2,8 @@
 <model ref="r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
   <imports>
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
@@ -16,16 +17,18 @@
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="fglx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.fileTypes(MPS.IDEA/)" />
-    <import index="ao3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.text(MPS.Core/)" />
     <import index="xick" ref="r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)" />
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="qqrq" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.components(MPS.IDEA/)" />
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
     <import index="4tc7" ref="r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)" />
+    <import index="ao3" ref="7124e466-fc92-4803-a656-d7a6b7eb3910/java:jetbrains.mps.text(MPS.TextGen/)" />
+    <import index="z2i8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.icons(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
@@ -35,7 +38,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
@@ -113,6 +116,7 @@
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
+      <concept id="1068580123157" name="jetbrains.mps.baseLanguage.structure.Statement" flags="nn" index="3clFbH" />
       <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
         <child id="1068580123160" name="condition" index="3clFbw" />
         <child id="1068580123161" name="ifTrue" index="3clFbx" />
@@ -140,7 +144,7 @@
       <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -165,7 +169,7 @@
       <concept id="1184952934362" name="jetbrains.mps.baseLanguage.structure.DimensionExpression" flags="nn" index="3$GHV9">
         <child id="1184953288404" name="expression" index="3$I4v7" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -183,7 +187,7 @@
       <concept id="1178893518978" name="jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" flags="nn" index="1VxSAg" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -1899,6 +1903,13 @@
         <ref role="3uigEE" to="dxuu:~JCheckBox" resolve="JCheckBox" />
       </node>
     </node>
+    <node concept="312cEg" id="19IglfvYYOG" role="jymVt">
+      <property role="TrG5h" value="myDisableMakeOnStartup" />
+      <node concept="3Tm6S6" id="19IglfvYYOH" role="1B3o_S" />
+      <node concept="3uibUv" id="19IglfvYYOI" role="1tU5fm">
+        <ref role="3uigEE" to="dxuu:~JCheckBox" resolve="JCheckBox" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="3C9NgOqWilU" role="jymVt" />
     <node concept="3clFbW" id="3C9NgOqWjox" role="jymVt">
       <node concept="37vLTG" id="2qvp1d_np8R" role="3clF46">
@@ -2033,6 +2044,178 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="19IglfvZ0vX" role="3cqZAp">
+          <node concept="37vLTI" id="19IglfvZ0vY" role="3clFbG">
+            <node concept="2ShNRf" id="19IglfvZ0vZ" role="37vLTx">
+              <node concept="1pGfFk" id="19IglfvZ0w0" role="2ShVmc">
+                <ref role="37wK5l" to="qqrq:~JBCheckBox.&lt;init&gt;(java.lang.String)" resolve="JBCheckBox" />
+                <node concept="Xl_RD" id="19IglfvZ0w1" role="37wK5m">
+                  <property role="Xl_RC" value="Do not compile on startup" />
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="19IglfvZ0w2" role="37vLTJ">
+              <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="311V6Zi0bGe" role="3cqZAp">
+          <node concept="3cpWsn" id="311V6Zi0bGd" role="3cpWs9">
+            <property role="3TUv4t" value="true" />
+            <property role="TrG5h" value="tooltipMessage" />
+            <node concept="3uibUv" id="311V6Zi0bGf" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+            </node>
+            <node concept="Xl_RD" id="311V6Zi0bGg" role="33vP2m">
+              <property role="Xl_RC" value="Use with caution. Please read the documentation (press F1) before enabling." />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="311V6Zi0bGh" role="3cqZAp">
+          <node concept="2OqwBi" id="311V6Zi0ns$" role="3clFbG">
+            <node concept="37vLTw" id="311V6Zi0mA7" role="2Oq$k0">
+              <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
+            </node>
+            <node concept="liA8E" id="311V6Zi0ns_" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~JComponent.setToolTipText(java.lang.String)" resolve="setToolTipText" />
+              <node concept="37vLTw" id="311V6Zi0nsA" role="37wK5m">
+                <ref role="3cqZAo" node="311V6Zi0bGd" resolve="tooltipMessage" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="19IglfvZ0w3" role="3cqZAp">
+          <node concept="2OqwBi" id="19IglfvZ0w4" role="3clFbG">
+            <node concept="37vLTw" id="19IglfvZ0w5" role="2Oq$k0">
+              <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
+            </node>
+            <node concept="liA8E" id="19IglfvZ0w6" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~AbstractButton.setSelected(boolean)" resolve="setSelected" />
+              <node concept="2OqwBi" id="19IglfvZ0w7" role="37wK5m">
+                <node concept="37vLTw" id="19IglfvZ0w8" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
+                </node>
+                <node concept="liA8E" id="19IglfvZ0w9" role="2OqNvi">
+                  <ref role="37wK5l" to="4tc7:19IglfvX2ED" resolve="isDisableMakeOnStartup" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="311V6Zi0p64" role="3cqZAp" />
+        <node concept="3cpWs8" id="311V6Zi0r81" role="3cqZAp">
+          <node concept="3cpWsn" id="311V6Zi0r80" role="3cpWs9">
+            <property role="3TUv4t" value="true" />
+            <property role="TrG5h" value="wrapper" />
+            <node concept="3uibUv" id="311V6Zi0r82" role="1tU5fm">
+              <ref role="3uigEE" to="qqrq:~JBPanel" resolve="JBPanel" />
+            </node>
+            <node concept="2ShNRf" id="311V6Zi0xAm" role="33vP2m">
+              <node concept="1pGfFk" id="311V6Zi0xAt" role="2ShVmc">
+                <ref role="37wK5l" to="qqrq:~JBPanel.&lt;init&gt;()" resolve="JBPanel" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="311V6Zi0r84" role="3cqZAp">
+          <node concept="2OqwBi" id="311V6Zi0ziB" role="3clFbG">
+            <node concept="37vLTw" id="311V6Zi0xA1" role="2Oq$k0">
+              <ref role="3cqZAo" node="311V6Zi0r80" resolve="wrapper" />
+            </node>
+            <node concept="liA8E" id="311V6Zi0ziC" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.setLayout(java.awt.LayoutManager)" resolve="setLayout" />
+              <node concept="2ShNRf" id="311V6Zi0ziD" role="37wK5m">
+                <node concept="1pGfFk" id="311V6Zi0ziE" role="2ShVmc">
+                  <ref role="37wK5l" to="z60i:~FlowLayout.&lt;init&gt;(int,int,int)" resolve="FlowLayout" />
+                  <node concept="10M0yZ" id="311V6Zi0ziF" role="37wK5m">
+                    <ref role="1PxDUh" to="z60i:~FlowLayout" resolve="FlowLayout" />
+                    <ref role="3cqZAo" to="z60i:~FlowLayout.LEFT" resolve="LEFT" />
+                  </node>
+                  <node concept="3cmrfG" id="311V6Zi0ziG" role="37wK5m">
+                    <property role="3cmrfH" value="0" />
+                  </node>
+                  <node concept="3cmrfG" id="311V6Zi0ziH" role="37wK5m">
+                    <property role="3cmrfH" value="5" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="311V6Zi0r8a" role="3cqZAp">
+          <node concept="2OqwBi" id="311V6Zi0z57" role="3clFbG">
+            <node concept="37vLTw" id="311V6Zi0xAg" role="2Oq$k0">
+              <ref role="3cqZAo" node="311V6Zi0r80" resolve="wrapper" />
+            </node>
+            <node concept="liA8E" id="311V6Zi0z58" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
+              <node concept="37vLTw" id="311V6Zi0z59" role="37wK5m">
+                <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="311V6Zi0r8e" role="3cqZAp">
+          <node concept="3cpWsn" id="311V6Zi0r8d" role="3cpWs9">
+            <property role="3TUv4t" value="true" />
+            <property role="TrG5h" value="icon" />
+            <node concept="3uibUv" id="311V6Zi0r8f" role="1tU5fm">
+              <ref role="3uigEE" to="qqrq:~JBLabel" resolve="JBLabel" />
+            </node>
+            <node concept="2ShNRf" id="311V6Zi0rJg" role="33vP2m">
+              <node concept="1pGfFk" id="311V6Zi0x_w" role="2ShVmc">
+                <ref role="37wK5l" to="qqrq:~JBLabel.&lt;init&gt;(javax.swing.Icon)" resolve="JBLabel" />
+                <node concept="10M0yZ" id="311V6Zi0Qej" role="37wK5m">
+                  <ref role="3cqZAo" to="z2i8:~AllIcons$General.Warning" resolve="Warning" />
+                  <ref role="1PxDUh" to="z2i8:~AllIcons$General" resolve="AllIcons.General" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="311V6Zi0r8i" role="3cqZAp">
+          <node concept="2OqwBi" id="311V6Zi0zx8" role="3clFbG">
+            <node concept="37vLTw" id="311V6Zi0x_B" role="2Oq$k0">
+              <ref role="3cqZAo" node="311V6Zi0r8d" resolve="icon" />
+            </node>
+            <node concept="liA8E" id="311V6Zi0zx9" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~JComponent.setToolTipText(java.lang.String)" resolve="setToolTipText" />
+              <node concept="37vLTw" id="311V6Zi0zxa" role="37wK5m">
+                <ref role="3cqZAo" node="311V6Zi0bGd" resolve="tooltipMessage" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="311V6Zi0r8l" role="3cqZAp">
+          <node concept="2OqwBi" id="311V6Zi0zIL" role="3clFbG">
+            <node concept="37vLTw" id="311V6Zi0x_J" role="2Oq$k0">
+              <ref role="3cqZAo" node="311V6Zi0r80" resolve="wrapper" />
+            </node>
+            <node concept="liA8E" id="311V6Zi0zIM" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
+              <node concept="37vLTw" id="311V6Zi0zIN" role="37wK5m">
+                <ref role="3cqZAo" node="311V6Zi0r8d" resolve="icon" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="311V6Zi0r8o" role="3cqZAp">
+          <node concept="2OqwBi" id="311V6Zi0yMr" role="3clFbG">
+            <node concept="37vLTw" id="311V6Zi0x_R" role="2Oq$k0">
+              <ref role="3cqZAo" node="2qvp1d_lGJD" resolve="p" />
+            </node>
+            <node concept="liA8E" id="311V6Zi0yMs" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
+              <node concept="37vLTw" id="311V6Zi0yMt" role="37wK5m">
+                <ref role="3cqZAo" node="311V6Zi0r80" resolve="wrapper" />
+              </node>
+              <node concept="10M0yZ" id="311V6Zi0_go" role="37wK5m">
+                <ref role="1PxDUh" to="z60i:~BorderLayout" resolve="BorderLayout" />
+                <ref role="3cqZAo" to="z60i:~BorderLayout.SOUTH" resolve="SOUTH" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs6" id="2qvp1d_pQcV" role="3cqZAp">
           <node concept="37vLTw" id="2qvp1d_pUl4" role="3cqZAk">
             <ref role="3cqZAo" node="2qvp1d_lGJD" resolve="p" />
@@ -2050,21 +2233,41 @@
       <node concept="10P_77" id="3C9NgOqUAnB" role="3clF45" />
       <node concept="3clFbS" id="3C9NgOqUAnC" role="3clF47">
         <node concept="3clFbF" id="3C9NgOqWl4Z" role="3cqZAp">
-          <node concept="3y3z36" id="2qvp1d_llh2" role="3clFbG">
-            <node concept="2OqwBi" id="2qvp1d_sO7s" role="3uHU7w">
-              <node concept="37vLTw" id="2qvp1d_sJSH" role="2Oq$k0">
-                <ref role="3cqZAo" node="2qvp1d_s9V6" resolve="myMakeInBackground" />
+          <node concept="22lmx$" id="19IglfvZ94O" role="3clFbG">
+            <node concept="3y3z36" id="2qvp1d_llh2" role="3uHU7B">
+              <node concept="2OqwBi" id="2qvp1d_lbcg" role="3uHU7B">
+                <node concept="37vLTw" id="2qvp1d_pCP_" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
+                </node>
+                <node concept="liA8E" id="2qvp1d_pI1u" role="2OqNvi">
+                  <ref role="37wK5l" to="4tc7:2UA$I15W_rA" resolve="isMakeInBackground" />
+                </node>
               </node>
-              <node concept="liA8E" id="2qvp1d_sTSH" role="2OqNvi">
-                <ref role="37wK5l" to="dxuu:~AbstractButton.isSelected()" resolve="isSelected" />
+              <node concept="2OqwBi" id="2qvp1d_sO7s" role="3uHU7w">
+                <node concept="37vLTw" id="2qvp1d_sJSH" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2qvp1d_s9V6" resolve="myMakeInBackground" />
+                </node>
+                <node concept="liA8E" id="2qvp1d_sTSH" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~AbstractButton.isSelected()" resolve="isSelected" />
+                </node>
               </node>
             </node>
-            <node concept="2OqwBi" id="2qvp1d_lbcg" role="3uHU7B">
-              <node concept="37vLTw" id="2qvp1d_pCP_" role="2Oq$k0">
-                <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
+            <node concept="3y3z36" id="19IglfvZ9Ti" role="3uHU7w">
+              <node concept="2OqwBi" id="19IglfvZ9Tj" role="3uHU7w">
+                <node concept="37vLTw" id="19IglfvZ9Tk" role="2Oq$k0">
+                  <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
+                </node>
+                <node concept="liA8E" id="19IglfvZ9Tl" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~AbstractButton.isSelected()" resolve="isSelected" />
+                </node>
               </node>
-              <node concept="liA8E" id="2qvp1d_pI1u" role="2OqNvi">
-                <ref role="37wK5l" to="4tc7:2UA$I15W_rA" resolve="isMakeInBackground" />
+              <node concept="2OqwBi" id="19IglfvZ9Tm" role="3uHU7B">
+                <node concept="37vLTw" id="19IglfvZ9Tn" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
+                </node>
+                <node concept="liA8E" id="19IglfvZ9To" role="2OqNvi">
+                  <ref role="37wK5l" to="4tc7:19IglfvX2ED" resolve="isDisableMakeOnStartup" />
+                </node>
               </node>
             </node>
           </node>
@@ -2098,6 +2301,24 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="19IglfvZeIv" role="3cqZAp">
+          <node concept="2OqwBi" id="19IglfvZeIw" role="3clFbG">
+            <node concept="37vLTw" id="19IglfvZeIx" role="2Oq$k0">
+              <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
+            </node>
+            <node concept="liA8E" id="19IglfvZeIy" role="2OqNvi">
+              <ref role="37wK5l" to="4tc7:19IglfvX2EJ" resolve="setDisableMakeOnStartup" />
+              <node concept="2OqwBi" id="19IglfvZeIz" role="37wK5m">
+                <node concept="37vLTw" id="19IglfvZeI$" role="2Oq$k0">
+                  <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
+                </node>
+                <node concept="liA8E" id="19IglfvZeI_" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~AbstractButton.isSelected()" resolve="isSelected" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="2AHcQZ" id="3C9NgOqUAnL" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
@@ -2122,6 +2343,24 @@
                 </node>
                 <node concept="liA8E" id="2qvp1d_vEOU" role="2OqNvi">
                   <ref role="37wK5l" to="4tc7:2UA$I15W_rA" resolve="isMakeInBackground" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="19IglfvZi9q" role="3cqZAp">
+          <node concept="2OqwBi" id="19IglfvZi9r" role="3clFbG">
+            <node concept="37vLTw" id="19IglfvZi9s" role="2Oq$k0">
+              <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
+            </node>
+            <node concept="liA8E" id="19IglfvZi9t" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~AbstractButton.setSelected(boolean)" resolve="setSelected" />
+              <node concept="2OqwBi" id="19IglfvZi9u" role="37wK5m">
+                <node concept="37vLTw" id="19IglfvZi9v" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
+                </node>
+                <node concept="liA8E" id="19IglfvZi9w" role="2OqNvi">
+                  <ref role="37wK5l" to="4tc7:19IglfvX2ED" resolve="isDisableMakeOnStartup" />
                 </node>
               </node>
             </node>

@@ -493,7 +493,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_MappingConfiguration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a15b0fe);
+          cpb.helpUrl(HELP_URL);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a15b0fe);
           props_MappingConfiguration = cpb.create();
         }
@@ -517,7 +517,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_MappingScript == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a45b0fe);
+          cpb.helpUrl(HELP_URL1);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a45b0fe);
           props_MappingScript = cpb.create();
         }
         return props_MappingScript;
@@ -725,7 +726,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_TemplateDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a48b0fe);
+          cpb.helpUrl(HELP_URL2);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a48b0fe);
           props_TemplateDeclaration = cpb.create();
         }
         return props_TemplateDeclaration;
@@ -803,7 +805,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_TemplateSwitch == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a59b0fe);
+          cpb.helpUrl(HELP_URL3);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a59b0fe);
           props_TemplateSwitch = cpb.create();
         }
         return props_TemplateSwitch;
@@ -900,5 +903,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a15b0fe = URLFunction_HelpCenterDocUrl.getUrl() + "mps-generator.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "mps-generator.html#mappingconfiguration";
+  private static final String HELP_URL1 = URLFunction_HelpCenterDocUrl.getUrl() + "mps-generator.html#mappingscript";
+  private static final String HELP_URL2 = URLFunction_HelpCenterDocUrl.getUrl() + "mps-generator.html#externaltemplate";
+  private static final String HELP_URL3 = URLFunction_HelpCenterDocUrl.getUrl() + "mps-generator.html#templateswitch";
 }

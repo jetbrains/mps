@@ -24,6 +24,7 @@ public class RollbackChanges_Action extends BaseAction {
     super("Rollback", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(EditorActionAccess.UNDO_EDITOR);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

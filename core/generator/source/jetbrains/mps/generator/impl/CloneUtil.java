@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,18 +19,19 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.util.SNodeOperations;
-import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 
 public class CloneUtil {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(CloneUtil.class));
+  private static final Logger LOG = Logger.getLogger(CloneUtil.class);
 
   private final SModel myInputModel;
   private final SModel myOutputModel;
@@ -88,12 +89,10 @@ public class CloneUtil {
       TracingUtil.putInputNode(outputNode, inputNode);
     }
     for (SReference reference : inputNode.getReferences()) {
-      boolean ext = inputNode.getModel() == null || !inputNode.getModel().getReference().equals(reference.getTargetSModelReference());
-      SModelReference targetModelReference = ext ? reference.getTargetSModelReference() : myOutputModelRef;
-      SReference outRef = myFactory.create(reference, outputNode, targetModelReference);
-      if (outRef != null) {
-        outputNode.setReference(outRef.getLink(), outRef);
-      }
+      final boolean ext = inputNode.getModel() == null || !inputNode.getModel().getReference().equals(reference.getTargetSModelReference());
+      final SModelReference targetModelReference = ext ? reference.getTargetSModelReference() : myOutputModelRef;
+      // FIXME once there's no distinction between creating static and dynamic reference, no need for factory indirection.
+      myFactory.create(reference, outputNode, targetModelReference);
     }
 
     for (SNode child : inputNode.getChildren()) {
@@ -104,19 +103,9 @@ public class CloneUtil {
     return outputNode;
   }
 
-  public static DynamicReference create(SNode outputNode, SModelReference targetModelRef, DynamicReference prototype) {
-    DynamicReference outputReference = new DynamicReference(
-        prototype.getLink(),
-        outputNode,
-        targetModelRef,
-        prototype.getResolveInfo());
-    outputReference.setOrigin(prototype.getOrigin());
-    return outputReference;
-  }
-
   public interface Factory {
     SNode create(SNode prototype);
-    SReference create(SReference prototype, SNode outputNode, SModelReference targetModelRef);
+    void create(SReference prototype, SNode outputNode, SModelReference targetModelRef);
   }
 
   public static class RegularSModelFactory implements Factory {
@@ -127,28 +116,25 @@ public class CloneUtil {
     }
 
     @Override
-    public SReference create(SReference prototype, SNode outputNode, SModelReference targetModelRef) {
+    public void create(SReference prototype, SNode outputNode, SModelReference targetModelRef) {
       // [model] clone mechanism in smodel.SReference or elsewhere not to perform instanceof
       // Besides, what if there's custom openapi.SReference impl (GenSReference) I'm not aware of? How am I supposed to clone it here?
       if (prototype instanceof StaticReference) {
         if (targetModelRef == null) {
-          LOG.warning("broken reference '" + prototype.getLink().getName() + "' in " + SNodeOperations.getDebugText(prototype.getSourceNode()), prototype.getSourceNode());
-        } else {
-          StaticReference outputReference = new StaticReference(
-              prototype.getLink(),
-              outputNode,
-              targetModelRef,
-              prototype.getTargetNodeId(),
-              ((StaticReference) prototype).getResolveInfo());
-          return outputReference;
+          // Note, this warning makes sense only for static references. For dynamic, targetModelRef always null
+          // but we still need to clone them.
+          final SNode sourceNode = prototype.getSourceNode();
+          LOG.warning("broken reference '" + prototype.getLink().getName() + "' in " + SNodeOperations.getDebugText(sourceNode), sourceNode);
+          return;
         }
+        final SNodePointer ptr = new SNodePointer(targetModelRef, prototype.getTargetNodeId());
+        outputNode.setReference(prototype.getLink(), ResolveInfo.of(ptr, ((StaticReference) prototype).getResolveInfo()));
       } else if (prototype instanceof DynamicReference) {
-        return CloneUtil.create(outputNode, targetModelRef, (DynamicReference) prototype);
+        outputNode.setReference(prototype.getLink(), prototype.describeTarget());
       } else {
         LOG.error("internal error: can't clone reference '" + prototype.getLink().getName() + "' in " + SNodeOperations.getDebugText(prototype.getSourceNode()), prototype.getSourceNode());
         LOG.error(" -- was reference class : " + prototype.getClass().getName());
       }
-      return null;
     }
   }
 }

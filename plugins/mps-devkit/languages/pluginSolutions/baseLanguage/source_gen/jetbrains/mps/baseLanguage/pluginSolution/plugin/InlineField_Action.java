@@ -109,33 +109,31 @@ public class InlineField_Action extends BaseAction {
     String messageDialogTitle = "Inline Field";
     final Wrappers._T<String> infoMessage = new Wrappers._T<String>(null);
     final Wrappers._T<String> yesNoMessage = new Wrappers._T<String>(null);
-    modelAccess.runReadAction(new Runnable() {
-      public void run() {
-        if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldDeclaration$ie) || SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.StaticFieldDeclaration$jR)) {
-          SNode fieldDeclaration = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableDeclaration$Y0);
-          InlineFieldAssignmentRefactoring inlineVARef = new InlineFieldAssignmentRefactoring(fieldDeclaration);
+    modelAccess.runReadAction(() -> {
+      if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldDeclaration$ie) || SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.StaticFieldDeclaration$jR)) {
+        SNode fieldDeclaration = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableDeclaration$Y0);
+        InlineFieldAssignmentRefactoring inlineVARef = new InlineFieldAssignmentRefactoring(fieldDeclaration);
 
-          if ((SLinkOperations.getTarget(fieldDeclaration, LINKS.initializer$2twD) == null)) {
-            isAvailable.value = false;
-          }
-
-          String fieldName = SPropertyOperations.getString(fieldDeclaration, PROPS.name$MnvL);
-          int nodesCount = Sequence.fromIterable(inlineVARef.findAllReferences(fieldDeclaration)).count() + Sequence.fromIterable(inlineVARef.findAllReferenceOperations(fieldDeclaration)).count();
-          if (nodesCount == 0) {
-            infoMessage.value = "Field " + fieldName + " is never used";
-          } else {
-            if (nodesCount > 1) {
-              yesNoMessage.value = "Inline field '" + fieldName + "'? (" + NameUtil.formatNumericalString(nodesCount, "occurrence") + ")";
-            }
-          }
-
-          ref.value = inlineVARef;
-        } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$fU)) {
-          ref.value = new InlineFieldReferenceOperationRefactoring(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$fU));
-        } else {
-          SNode localVariableReference = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC);
-          ref.value = new InlineFieldReferenceRefactoring(localVariableReference);
+        if ((SLinkOperations.getTarget(fieldDeclaration, LINKS.initializer$2twD) == null)) {
+          isAvailable.value = false;
         }
+
+        String fieldName = SPropertyOperations.getString(fieldDeclaration, PROPS.name$MnvL);
+        int nodesCount = Sequence.fromIterable(inlineVARef.findAllReferences(fieldDeclaration)).count() + Sequence.fromIterable(inlineVARef.findAllReferenceOperations(fieldDeclaration)).count();
+        if (nodesCount == 0) {
+          infoMessage.value = "Field " + fieldName + " is never used";
+        } else {
+          if (nodesCount > 1) {
+            yesNoMessage.value = "Inline field '" + fieldName + "'? (" + NameUtil.formatNumericalString(nodesCount, "occurrence") + ")";
+          }
+        }
+
+        ref.value = inlineVARef;
+      } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$fU)) {
+        ref.value = new InlineFieldReferenceOperationRefactoring(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$fU));
+      } else {
+        SNode localVariableReference = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC);
+        ref.value = new InlineFieldReferenceRefactoring(localVariableReference);
       }
     });
     if (!(isAvailable.value)) {

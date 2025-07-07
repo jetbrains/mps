@@ -7,8 +7,6 @@ import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
@@ -17,12 +15,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -54,11 +53,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_6_0(final CreateRootRuleContext _context) {
-    return !(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SubstringExpression$uY).isEmpty()) || ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9507L));
-      }
-    });
+    return !(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SubstringExpression$uY).isEmpty()) || ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any((it) -> !(SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9507L)));
   }
   public static boolean rule_Condition_6_0(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.BaseStringOperation$Ae);
@@ -101,7 +96,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getOutputNodeByInputNodeAndMappingLabel(firstOp, "IsNotEmptyExtractExpr"), LINKS.method$yoGN);
   }
   public static Object referenceMacro_GetReferent_11_0(final ReferenceMacroContext _context) {
-    // To destinguish generated isEmpty of the same session in different classes, need an object we've replaced
+    // To distinguish generated isEmpty of the same session in different classes, need an object we've replaced
     // with extract statement. With it, can get output by label and input
     SNode firstOp = (SNode) _context.getSessionObject(((String) _context.getVariable("var:methodNameKey")));
     return SLinkOperations.getTarget(_context.getOutputNodeByInputNodeAndMappingLabel(firstOp, "IsEmptyExtractExpr"), LINKS.method$yoGN);
@@ -117,18 +112,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.startIndex$vALN) != null;
   }
   public static boolean ifMacro_Condition_9_0(final IfMacroContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9508L);
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9508L));
   }
   public static boolean ifMacro_Condition_9_1(final IfMacroContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9509L);
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9509L));
   }
   public static boolean ifMacro_Condition_9_2(final IfMacroContext _context) {
     return !(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SubstringExpression$uY).isEmpty());
@@ -216,21 +203,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.arguments$3huj);
   }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
-    return SPropertyOperations.getString(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it);
-      }
-    }).first(), PROPS.name$MnvL) + ".IsNotEmptyStringMethod";
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$bK, false)).where((it) -> (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)).first()) + ".IsNotEmptyStringMethod";
   }
   public static Object varMacro_Value_11_0(final TemplateVarContext _context) {
     // ExtractStaticMethodExpression looks for first non static class
     // and as long as there's no alternative to ESME, this code shall
     // respect the way ContextUtil.getContextForMethod works
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it);
-      }
-    }).first()) + ".IsEmptyStringMethod";
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$bK, false)).where((it) -> (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)).first()) + ".IsEmptyStringMethod";
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -594,7 +573,6 @@ public class QueriesGenerated extends QueryProviderBase {
 
   private static final class PROPS {
     /*package*/ static final SProperty trimKind$5DDk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47e0122aL, 0x11d47e0122dL, "trimKind");
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {

@@ -4,8 +4,7 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.project.structure.modules.Copyable;
 import jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration;
 import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters_Configuration;
 import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
@@ -24,7 +23,6 @@ import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.ui.ConsoleView;
 import jetbrains.mps.execution.api.configurations.ConsoleCreator;
 import jetbrains.mps.ide.actions.StandaloneMPSStackTraceFilter;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import com.intellij.execution.configurations.RuntimeConfigurationError;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.configurations.ConfigurationFactory;
@@ -43,8 +41,7 @@ import com.intellij.execution.BeforeRunTask;
 import jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask;
 import java.io.File;
 
-public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
-  private static final Logger LOG = LogManager.getLogger(JUnitTests_Configuration.class);
+public final class JUnitTests_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<JUnitTests_Configuration> {
   private JUnitSettings_Configuration myJUnitSettings = new JUnitSettings_Configuration(this.getProject());
   private JavaRunParameters_Configuration myJavaRunParameters = createJavaRunParameters();
   private DeployPluginsSettings_Configuration myDeploySettings = new DeployPluginsSettings_Configuration(this.getProject());
@@ -79,35 +76,14 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    {
-      Element fieldElement = element.getChild("myJUnitSettings");
-      if (fieldElement != null) {
-        myJUnitSettings.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "myJUnitSettings" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myJUnitSettings") != null) {
+      myJUnitSettings.readExternal(element.getChild("myJUnitSettings"));
     }
-    {
-      Element fieldElement = element.getChild("myJavaRunParameters");
-      if (fieldElement != null) {
-        myJavaRunParameters.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "myJavaRunParameters" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myJavaRunParameters") != null) {
+      myJavaRunParameters.readExternal(element.getChild("myJavaRunParameters"));
     }
-    {
-      Element fieldElement = element.getChild("myDeploySettings");
-      if (fieldElement != null) {
-        myDeploySettings.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "myDeploySettings" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myDeploySettings") != null) {
+      myDeploySettings.readExternal(element.getChild("myDeploySettings"));
     }
   }
 
@@ -122,11 +98,9 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   public UnitTestViewComponent createTestViewComponent(TestRunState runState, final ProcessHandler process, Executor executor, RunConfiguration rc) {
     ConsoleView console = ConsoleCreator.createConsoleView(this.getProject(), false);
     console.addMessageFilter(new StandaloneMPSStackTraceFilter(this.getProject()));
-    return new UnitTestViewComponent(this.getProject(), rc, executor, console, runState, new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        if (process != null) {
-          process.destroyProcess();
-        }
+    return new UnitTestViewComponent(this.getProject(), rc, executor, console, runState, () -> {
+      if (process != null) {
+        process.destroyProcess();
       }
     });
   }
@@ -136,12 +110,20 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
     }
   }
   @Override
+  @Deprecated
   public JUnitTests_Configuration clone() {
-    JUnitTests_Configuration clone = createCloneTemplate();
-    clone.myJUnitSettings = (JUnitSettings_Configuration) myJUnitSettings.clone();
-    clone.myJavaRunParameters = (JavaRunParameters_Configuration) myJavaRunParameters.clone();
-    clone.myDeploySettings = (DeployPluginsSettings_Configuration) myDeploySettings.clone();
-    return clone;
+    return copy();
+  }
+
+  @Override
+  public JUnitTests_Configuration copy() {
+    JUnitTests_Configuration cloneTemplate = createCloneTemplate();
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
+    // the value of myState, and != clone as regular Java passer-by would expect.
+    cloneTemplate.myJUnitSettings = ((Copyable<JUnitSettings_Configuration>) myJUnitSettings).copy();
+    cloneTemplate.myJavaRunParameters = ((Copyable<JavaRunParameters_Configuration>) myJavaRunParameters).copy();
+    cloneTemplate.myDeploySettings = ((Copyable<DeployPluginsSettings_Configuration>) myDeploySettings).copy();
+    return cloneTemplate;
   }
 
   public JUnitSettings_Configuration getJUnitSettings() {
@@ -190,11 +172,7 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   @Override
   public void checkConfiguration() throws RuntimeConfigurationException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(new PersistentConfigurationContext() {
-      public jetbrains.mps.project.Project getProject() {
-        return mpsProject;
-      }
-    });
+    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

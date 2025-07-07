@@ -14,7 +14,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ModifiersFactories {
   public static class NodeFactory_8823436878019221504 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNode propertyDescriptor = SNodeOperations.getNodeAncestor(enclosingNode, CONCEPTS.PropertyDescriptor$B2, true, false);
       if ((propertyDescriptor != null)) {
         SLinkOperations.setTarget(newNode, LINKS.value$urNO, SNodeOperations.cast(DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(propertyDescriptor, model), CONCEPTS.PropertyInstance$7w));

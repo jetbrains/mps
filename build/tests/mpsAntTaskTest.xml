@@ -24,10 +24,12 @@
   <property name="artifacts.mpsCore" location="${build.dir}/artifacts/mpsCore"/>
   <property name="artifacts.IDEA" location="${idea_home}"/>
 
-  <path id="path.mps.ant.path">
-    <pathelement location="${mps_build_home}/lib/ant/lib/ant-mps.jar"/>
-    <pathelement location="${mps_build_home}/lib/jdom.jar"/>
-    <pathelement location="${mps_build_home}/lib/log4j.jar"/>
+ <path id="path.mps.ant.path">
+    <pathelement location="${mps_build_home}/lib/ant/lib/ant-mps.jar" />
+    <fileset dir="${mps_build_home}/lib">
+      <include name="util-8.jar" />
+      <include name="3rd-party-rt.jar" />
+    </fileset>
   </path>
 
   <path id="test_classpath">
@@ -38,11 +40,11 @@
     <pathelement path="${test_classes}"/>
   </path>
 
-  <taskdef name="custom" classname="jetbrains.mps.build.ant.CustomMPSLoadTask" classpathref="path.mps.ant.path"/>
+  <taskdef name="custom" classname="jetbrains.mps.build.ant.MpsLoadTask" classpathref="path.mps.ant.path"/>
 
   <target name="compileTestClasses">
     <mkdir dir="${test_classes}"/>
-    <javac destdir="${test_classes}" fork="false" includeantruntime="false" source="1.6" target="1.6">
+    <javac destdir="${test_classes}" fork="false" includeantruntime="false" source="1.7" target="1.7">
       <compilerarg value="-Xlint:none"/>
       <classpath refid="test_classpath"/>
       <src>

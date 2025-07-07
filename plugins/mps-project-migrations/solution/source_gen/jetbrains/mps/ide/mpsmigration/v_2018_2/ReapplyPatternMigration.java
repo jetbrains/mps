@@ -32,11 +32,7 @@ public class ReapplyPatternMigration extends BaseProjectMigration implements Cle
     {
       SearchScope scope_idu4d8_a0e = CommandUtil.createScope(project);
       final SearchScope scope_idu4d8_a0e_0 = new EditableFilteringScope(scope_idu4d8_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_idu4d8_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_idu4d8_a0e_0;
       for (SNode pattern : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PatternExpression$YJ, false))) {
         Iterable<? extends SNode> deprecatedChildren = pattern.getChildren(MetaAdapterFactory.getContainmentLink(-3143127453834064983L, -5836335846783251545L, 1136720037777L, 1136720037778L, "patternNode"));
         if (Sequence.fromIterable(deprecatedChildren).count() == 1 && SLinkOperations.getTarget(pattern, LINKS.pattern$GuFI) == null) {

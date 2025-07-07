@@ -20,6 +20,7 @@ public class Pause_Action extends BaseAction {
     super("Pause", "Pause Execution", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

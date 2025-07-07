@@ -9,8 +9,6 @@ import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.traceable.behavior.UnitConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -40,11 +38,7 @@ public class MessageSequence_TextGen extends TextGenDescriptorBase {
     tgs.append("public static void main(String[] args) {");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
-    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.messages$gURn)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        tgs.appendNode(it);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.messages$gURn)).visitAll((it) -> tgs.appendNode(it));
     ctx.getBuffer().area().decreaseIndent();
     tgs.indent();
     tgs.append("}");

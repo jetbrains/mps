@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package jetbrains.mps.nodeEditor.cells;
 
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
+import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes;
 import jetbrains.mps.smodel.presentation.IPropertyPresentationProvider;
 import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.util.annotation.Hack;
@@ -28,6 +28,7 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import java.util.Objects;
 
 /**
+ * FWIW, there's almost identical PropertyAccessor, with some extra (albeit questionable) logic
  * User: shatalin
  * Date: 21/01/15
  */
@@ -35,8 +36,8 @@ public class SPropertyAccessor implements ModelAccessor, IPropertyAccessor {
 
   private final SProperty myProperty;
   private final SNode myNode;
-  private boolean myReadOnly;
-  private boolean myAllowEmptyText;
+  private final boolean myReadOnly;
+  private final boolean myAllowEmptyText;
   private final IPropertyPresentationProvider myPresentationProvider;
 
   public SPropertyAccessor(SNode node, SProperty property, boolean readOnly, boolean allowEmptyText) {
@@ -44,12 +45,17 @@ public class SPropertyAccessor implements ModelAccessor, IPropertyAccessor {
     myProperty = property;
     myReadOnly = readOnly;
     myAllowEmptyText = allowEmptyText;
-    myPresentationProvider = IPropertyPresentationProvider.getPresentationProviderFor(property);
+    // FIXME property == null doesn't make any sense, nor uses of the field suggest null is possible, however,
+    //       right now I want to replace few uses of PropertyAccessor with this class, and as PropertyAccessor tolerates null,
+    //       I decided to account for null here, too.
+    myPresentationProvider = property == null ? IPropertyPresentationProvider.getDefaultPresentationProvider(SPrimitiveTypes.STRING)
+                                              : IPropertyPresentationProvider.getPresentationProviderFor(property);
   }
 
   @Override
   public String getText() {
     Object value = doGetValue();
+    // XXX I wonder why there's no same logic in PropertyAccessor. NOT_A_VALUE.toString() doesn't give null
     if (value == SType.NOT_A_VALUE) {
       return null;
     }
@@ -60,7 +66,7 @@ public class SPropertyAccessor implements ModelAccessor, IPropertyAccessor {
   public void setText(String text) {
     if (!myReadOnly && isValidEmptyText(text)) {
       Object value = myPresentationProvider.fromPresentation(StringUtil.nullIfEmpty(text));
-      if (ModelConstraints.validatePropertyValue(myNode, myProperty, value)) {
+      if (PropertyAccessor.validatePropertyValue(myNode, myProperty, value)) {
         doSetValue(value);
       }
     }
@@ -99,7 +105,7 @@ public class SPropertyAccessor implements ModelAccessor, IPropertyAccessor {
       return Objects.equals(StringUtil.nullIfEmpty(getText()), text);
     }
 
-    return ModelConstraints.validatePropertyValue(myNode, myProperty, myPresentationProvider.fromPresentation(text));
+    return PropertyAccessor.validatePropertyValue(myNode, myProperty, myPresentationProvider.fromPresentation(text));
   }
 
   @Hack

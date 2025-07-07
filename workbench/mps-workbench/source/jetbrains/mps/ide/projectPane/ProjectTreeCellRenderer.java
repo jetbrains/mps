@@ -38,6 +38,7 @@ import java.util.function.Supplier;
  * @author Artem Tikhomirov
  * @since 2020.3
  */
+@Deprecated(forRemoval = true)
 /*package*/ class ProjectTreeCellRenderer extends NewMPSTreeCellRenderer {
   private boolean myEnabled = false;
   private final ErrorStateComponent myIndicator;

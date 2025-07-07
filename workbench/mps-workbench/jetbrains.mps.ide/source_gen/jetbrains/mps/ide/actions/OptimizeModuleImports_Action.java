@@ -9,7 +9,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
@@ -37,6 +36,7 @@ public class OptimizeModuleImports_Action extends BaseAction {
     super("Optimize Imports", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -49,7 +49,6 @@ public class OptimizeModuleImports_Action extends BaseAction {
     }
     {
       List<SModule> p = event.getData(MPSCommonDataKeys.MODULES);
-      MapSequence.fromMap(_params).put("modules", p);
       if (p == null) {
         return false;
       }
@@ -59,14 +58,12 @@ public class OptimizeModuleImports_Action extends BaseAction {
     }
     {
       Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("ideaProject", p);
       if (p == null) {
         return false;
       }
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
@@ -76,59 +73,41 @@ public class OptimizeModuleImports_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<String> report = new Wrappers._T<String>("");
-    final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
-    final Task.Modal task = new Task.Modal(((Project) MapSequence.fromMap(_params).get("ideaProject")), "Optimizing module imports", true) {
+    final SRepository repo = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository();
+    final Task.Modal task = new Task.Modal(event.getData(CommonDataKeys.PROJECT), "Optimizing module imports", true) {
       public void run(@NotNull ProgressIndicator indicator) {
         ProgressMonitorAdapter monitor = new ProgressMonitorAdapter(indicator);
         try {
-          int modulesNumber = ((List<SModule>) MapSequence.fromMap(_params).get("modules")).size();
+          int modulesNumber = event.getData(MPSCommonDataKeys.MODULES).size();
           monitor.start("Optimizing the imports of the " + modulesNumber + " modules", modulesNumber + 1);
-          WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-            public void run() {
-            }
+          WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> {
           });
-          final OptimizeImportsHelper helper = new OptimizeImportsHelper(repo, ((MPSProject) MapSequence.fromMap(_params).get("project")).getComponent(ModelsAutoImportsManager.class));
-          for (final SModule module : ((List<SModule>) MapSequence.fromMap(_params).get("modules"))) {
+          final OptimizeImportsHelper helper = new OptimizeImportsHelper(repo, event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ModelsAutoImportsManager.class));
+          for (final SModule module : event.getData(MPSCommonDataKeys.MODULES)) {
             monitor.step("Optimizing imports of the " + module);
-            ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-              public void run() {
-                repo.getModelAccess().executeCommand(new Runnable() {
-                  public void run() {
-                    if (module instanceof Solution) {
-                      report.value += helper.optimizeSolutionImports(((Solution) module));
-                    } else if (module instanceof Language) {
-                      report.value += helper.optimizeLanguageImports(((Language) module));
-                    }
-                  }
-                });
+            ApplicationManager.getApplication().invokeAndWait(() -> repo.getModelAccess().executeCommand(() -> {
+              if (module instanceof Solution) {
+                report.value += helper.optimizeSolutionImports(((Solution) module));
+              } else if (module instanceof Language) {
+                report.value += helper.optimizeLanguageImports(((Language) module));
               }
-            }, ModalityState.defaultModalityState());
+            }), ModalityState.defaultModalityState());
             monitor.advance(1);
             if (monitor.isCanceled()) {
               return;
             }
           }
           monitor.step("Saving...");
-          WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-            public void run() {
-              repo.getModelAccess().executeCommand(new Runnable() {
-                public void run() {
-                  repo.saveAll();
-                }
-              });
-            }
-          });
+          WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> repo.getModelAccess().executeCommand(() -> repo.saveAll()));
           monitor.advance(1);
         } finally {
           monitor.done();
         }
       }
     };
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        ProgressManager.getInstance().run(task);
-        Messages.showMessageDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), (report.value.equals("") ? "Nothing to optimize" : report.value), "Optimize Imports", Messages.getInformationIcon());
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      ProgressManager.getInstance().run(task);
+      Messages.showMessageDialog(event.getData(CommonDataKeys.PROJECT), (report.value.equals("") ? "Nothing to optimize" : report.value), "Optimize Imports", Messages.getInformationIcon());
     }, ModalityState.defaultModalityState());
   }
 }

@@ -10,14 +10,12 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,23 +40,13 @@ public class CopyIconsToResources extends MigrationScriptBase {
     {
       SearchScope scope_n70cuq_a0e = CommandUtil.createScope(m);
       final SearchScope scope_n70cuq_a0e_0 = new EditableFilteringScope(scope_n70cuq_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_n70cuq_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isNotEmptyString(SPropertyOperations.getString(it, PROPS.iconPath$WAri));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          // we re-shrink paths to convert ${language_descriptoe} to ${module} at the same time
-          MacroHelper macros = MacrosFactory.forModule(m);
-          String newPath = macros.shrinkPath(macros.expandPath(SPropertyOperations.getString(it, PROPS.iconPath$WAri)));
-          SPropertyOperations.assign(SLinkOperations.setNewChild(it, LINKS.icon$HKhR, CONCEPTS.FileIcon$Z0), PROPS.file$686H, newPath);
-          it.setProperty(PROPS.iconPath$WAri, null);
-        }
+      QueryExecutionContext context = () -> scope_n70cuq_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false)).where((it) -> isNotEmptyString(SPropertyOperations.getString(it, PROPS.iconPath$WAri))).visitAll((it) -> {
+        // we re-shrink paths to convert ${language_descriptoe} to ${module} at the same time
+        MacroHelper macros = MacrosFactory.forModule(m);
+        String newPath = macros.shrinkPath(macros.expandPath(SPropertyOperations.getString(it, PROPS.iconPath$WAri)));
+        SPropertyOperations.assign(SLinkOperations.setNewChild(it, LINKS.icon$HKhR, CONCEPTS.FileIcon$Z0), PROPS.file$686H, newPath);
+        it.setProperty(PROPS.iconPath$WAri, null);
       });
     }
   }
@@ -68,17 +56,9 @@ public class CopyIconsToResources extends MigrationScriptBase {
     {
       SearchScope scope_n70cuq_b0f = CommandUtil.createScope(m);
       final SearchScope scope_n70cuq_b0f_0 = new EditableFilteringScope(scope_n70cuq_b0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_n70cuq_b0f_0;
-        }
-      };
-      result = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isNotEmptyString(SPropertyOperations.getString(it, PROPS.iconPath$WAri));
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_n70cuq_b0f_0;
+      result = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false)).where((it) -> isNotEmptyString(SPropertyOperations.getString(it, PROPS.iconPath$WAri))).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return ((Problem) new NotMigratedNode(it) {
             public String getMessage() {
               return "Icon path was not migrated";
@@ -89,7 +69,7 @@ public class CopyIconsToResources extends MigrationScriptBase {
     }
     return result;
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 2);
   }
 

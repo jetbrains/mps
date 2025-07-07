@@ -24,15 +24,12 @@ import jetbrains.mps.nodeEditor.selection.SelectionInfoImpl;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -41,9 +38,7 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
@@ -192,12 +187,12 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     if (type == CellActionType.BACKSPACE || type == CellActionType.DELETE) {
       performDeleteAction(type);
     } else if (type == CellActionType.COPY) {
-      CopyPasteUtil.copyNodesAndTextToClipboard(wrapSelectedNodesInNewLines(), null, buildTextualRepresentationOfSelectedCells());
+      editorContext.getClipboard().put(wrapSelectedNodesInNewLines(), buildTextualRepresentationOfSelectedCells());
     } else if (type == CellActionType.CUT) {
       SNode prevSelectableNode = getNextSelectableNode(myFirstNode, false);
       SNode nextSelectableNode = getNextSelectableNode(myLastNode, true);
 
-      CopyPasteUtil.copyNodesAndTextToClipboard(wrapSelectedNodesInNewLines(), null, buildTextualRepresentationOfSelectedCells());
+      editorContext.getClipboard().put(wrapSelectedNodesInNewLines(), buildTextualRepresentationOfSelectedCells());
       for (SNode n : getSelectedNodes()) {
         SNodeOperations.deleteNode(n);
       }
@@ -237,7 +232,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     }
   }
 
-  private List<SNode> wrapSelectedNodesInNewLines() {
+  public List<SNode> wrapSelectedNodesInNewLines() {
     SNode artificialParent = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, "jetbrains.mps.lang.text.structure.Text"));
 
     final List<SNode> selectedNodes = getSelectedNodes();
@@ -252,22 +247,14 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     for (SNode l : lines) {
       SNode lc = SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(l), l);
       ListSequence.fromList(SLinkOperations.getChildren(lc, LINKS.elements$_j45)).clear();
-      ListSequence.fromList(SLinkOperations.getChildren(lc, LINKS.elements$_j45)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return selectedNodes.contains(it);
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.copyNode(it);
-        }
-      }));
+      ListSequence.fromList(SLinkOperations.getChildren(lc, LINKS.elements$_j45)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).where((it) -> selectedNodes.contains(it)).select((it) -> SNodeOperations.copyNode(it)));
       ListSequence.fromList(copiesOfLines).addElement(lc);
       ListSequence.fromList(SLinkOperations.getChildren(artificialParent, LINKS.lines$U$m7)).addElement(lc);
     }
     return copiesOfLines;
   }
 
-  private String buildTextualRepresentationOfSelectedCells() {
+  public String buildTextualRepresentationOfSelectedCells() {
     StringBuilder builder = new StringBuilder();
 
     SNode currentLine = null;
@@ -506,52 +493,24 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   }
 
   private static SNode findWordOnNonEmptyLine(SNode foundLine, boolean above) {
-    return Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(Sequence.fromIterable(SNodeOperations.ofConcept(((above ? ListSequence.fromList(SNodeOperations.getPrevSiblings(foundLine, false)).reversedList() : SNodeOperations.getNextSiblings(foundLine, false))), CONCEPTS.Line$yC)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(it)).isNotEmpty();
-      }
-    }))).first();
+    return Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(Sequence.fromIterable(SNodeOperations.ofConcept(((above ? ListSequence.fromList(SNodeOperations.getPrevSiblings(foundLine, false)).reversedList() : SNodeOperations.getNextSiblings(foundLine, false))), CONCEPTS.Line$yC)).findFirst((it) -> Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(it)).isNotEmpty()))).first();
   }
 
   public void turnBold() {
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-      public Boolean invoke(SNode w) {
-        return SPropertyOperations.getBoolean(w, PROPS.bold$SBR1);
-      }
-    };
-    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = new _FunctionTypes._void_P2_E0<SNode, Boolean>() {
-      public void invoke(SNode w, Boolean value) {
-        SPropertyOperations.assign(w, PROPS.bold$SBR1, value);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = (SNode w) -> SPropertyOperations.getBoolean(w, PROPS.bold$SBR1);
+    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = (SNode w, Boolean value) -> SPropertyOperations.assign(w, PROPS.bold$SBR1, value);
     turn(query, modifier);
   }
 
   public void turnItalics() {
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-      public Boolean invoke(SNode w) {
-        return SPropertyOperations.getBoolean(w, PROPS.italic$SC$4);
-      }
-    };
-    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = new _FunctionTypes._void_P2_E0<SNode, Boolean>() {
-      public void invoke(SNode w, Boolean value) {
-        SPropertyOperations.assign(w, PROPS.italic$SC$4, value);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = (SNode w) -> SPropertyOperations.getBoolean(w, PROPS.italic$SC$4);
+    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = (SNode w, Boolean value) -> SPropertyOperations.assign(w, PROPS.italic$SC$4, value);
     turn(query, modifier);
   }
 
   public void turnUnderlined() {
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-      public Boolean invoke(SNode w) {
-        return SPropertyOperations.getBoolean(w, PROPS.underlined$SQS1);
-      }
-    };
-    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = new _FunctionTypes._void_P2_E0<SNode, Boolean>() {
-      public void invoke(SNode w, Boolean value) {
-        SPropertyOperations.assign(w, PROPS.underlined$SQS1, value);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = (SNode w) -> SPropertyOperations.getBoolean(w, PROPS.underlined$SQS1);
+    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = (SNode w, Boolean value) -> SPropertyOperations.assign(w, PROPS.underlined$SQS1, value);
     turn(query, modifier);
   }
 
@@ -653,11 +612,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   }
 
   private boolean canExecute(final EditorContext editorContext, final CellAction action) {
-    return new ModelAccessHelper(editorContext.getRepository()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        return action.canExecute(editorContext);
-      }
-    });
+    return new ModelAccessHelper(editorContext.getRepository()).runReadAction(() -> action.canExecute(editorContext));
   }
   private boolean selectNode(SNode node, boolean startPosition) {
     if (node != null) {
@@ -680,11 +635,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     return null;
   }
   private Iterable<? extends SNode> getChildIterable() {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(myFirstParentNode, true), CONCEPTS.Line$yC)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode line) {
-        return SLinkOperations.getChildren(line, LINKS.elements$_j45);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(myFirstParentNode, true), CONCEPTS.Line$yC)).translate((line) -> SLinkOperations.getChildren(line, LINKS.elements$_j45));
   }
   @Override
   public void ensureVisible() {
@@ -704,11 +655,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   }
 
   public static Iterable<? extends SNode> getChildIterable(SNode lines) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(lines, true), CONCEPTS.Line$yC)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode p) {
-        return (Iterable<SNode>) Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(p);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(lines, true), CONCEPTS.Line$yC)).translate((p) -> (Iterable<SNode>) Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(p));
   }
 
   private static final class CONCEPTS {

@@ -20,6 +20,7 @@ public class ShowHelpForNode_Action extends BaseAction {
     super("Show Help for Node", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -60,10 +61,6 @@ public class ShowHelpForNode_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        HelpHelper.showHelpForNode(event.getData(MPSCommonDataKeys.NODE));
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> HelpHelper.showHelpForNode(event.getData(MPSCommonDataKeys.NODE)));
   }
 }

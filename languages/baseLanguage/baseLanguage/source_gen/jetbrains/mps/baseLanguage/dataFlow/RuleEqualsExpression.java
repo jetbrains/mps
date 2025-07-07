@@ -28,7 +28,7 @@ public class RuleEqualsExpression implements DataFlowConstructor {
     if (otherThanNull == null) {
       return;
     }
-    if (!((SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IConditional$CG)))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IConditional$CG))) {
       return;
     }
     NextProgramPoint point = IConditional__BehaviorDescriptor.getNextProgramPoint_id3F8BxGibk8h.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IConditional$CG), node, ((boolean) true));

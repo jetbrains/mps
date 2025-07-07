@@ -8,7 +8,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.editor.behavior.IMenu_Concept__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.behavior.IMenu_Contribution__BehaviorDescriptor;
@@ -26,30 +25,14 @@ public class MenuRoots {
     if (isTransformation) {
       legacyConcept.value = (takeDefault ? CONCEPTS.TransformationMenu_Default$TY : CONCEPTS.TransformationMenu_Named$dh);
       referenceConcept.value = (takeDefault ? CONCEPTS.TransformationMenuReference_Default$sG : CONCEPTS.TransformationMenuReference_Named$rf);
-      menus = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.TransformationMenu$bn)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.TransformationMenu_Default$TY)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.TransformationMenu_Named$dh)) && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it) == takeDefault;
-        }
-      });
+      menus = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.TransformationMenu$bn)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.TransformationMenu_Default$TY)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.TransformationMenu_Named$dh)) && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it) == takeDefault);
     } else {
       legacyConcept.value = (takeDefault ? CONCEPTS.SubstituteMenu_Default$sV : CONCEPTS.SubstituteMenu_Named$cm);
       referenceConcept.value = (takeDefault ? CONCEPTS.SubstituteMenuReference_Default$5l : CONCEPTS.SubstituteMenuReference_Named$5O);
-      menus = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.SubstituteMenu$EF)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenu_Default$sV)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenu_Named$cm)) && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it) == takeDefault;
-        }
-      });
+      menus = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.SubstituteMenu$EF)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenu_Default$sV)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenu_Named$cm)) && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it) == takeDefault);
     }
-    Iterable<SNode> legacyMenus = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.IMenu$HX)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(legacyConcept.value));
-      }
-    });
-    Iterable<SNode> contributions = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.IMenu_Contribution$Qb)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(IMenu_Contribution__BehaviorDescriptor.getMenuReference_id1quYWAD2_PI.invoke(it), SNodeOperations.asSConcept(referenceConcept.value));
-      }
-    });
+    Iterable<SNode> legacyMenus = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.IMenu$HX)).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(legacyConcept.value)));
+    Iterable<SNode> contributions = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.IMenu_Contribution$Qb)).where((it) -> SNodeOperations.isInstanceOf(IMenu_Contribution__BehaviorDescriptor.getMenuReference_id1quYWAD2_PI.invoke(it), SNodeOperations.asSConcept(referenceConcept.value)));
     return Sequence.fromIterable(legacyMenus).concat(Sequence.fromIterable(menus)).concat(Sequence.fromIterable(contributions));
   }
 

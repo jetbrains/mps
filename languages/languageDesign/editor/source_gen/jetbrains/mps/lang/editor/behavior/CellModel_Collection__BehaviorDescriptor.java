@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -29,20 +28,20 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CellModel_Collection__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
 
-  public static final SMethod<String> getOpeningText_idhKxU$w9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOpeningText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKxU$w9").build();
-  public static final SMethod<String> getClosingText_idhKxUEwj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClosingText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKxUEwj").build();
-  public static final SMethod<Boolean> isVertical_idi0pAV23 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVertical").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i0pAV23").build();
-  public static final SMethod<Boolean> isVerticalGrid_idi2IbWq8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVerticalGrid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i2IbWq8").build();
-  public static final SMethod<Boolean> isHorizontal_idi0pB4gH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isHorizontal").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i0pB4gH").build();
-  public static final SMethod<Boolean> isIndentLayout_idi0pB9jQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isIndentLayout").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i0pB9jQ").build();
-  public static final SMethod<Boolean> isFoldingEnabled_id1_9L3A4DrOF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFoldingEnabled").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1_9L3A4DrOF").build();
-  public static final SMethod<Boolean> isVerticalIndent_idi0tOX1j = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVerticalIndent").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i0tOX1j").build();
-  public static final SMethod<Boolean> shellBeSynchronized_id3TPTV99_TMT = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shellBeSynchronized").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3TPTV99_TMT").build();
-  /*package*/ static final SMethod<Boolean> shellBeSynchronized_id3TPTV99Aiv4 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shellBeSynchronized").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("3TPTV99Aiv4").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> canBeSynchronized_id3wXm3h1AYM7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeSynchronized").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3wXm3h1AYM7").build();
-  /*package*/ static final SMethod<Boolean> canBeSynchronized_id3wXm3h1BRps = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeSynchronized").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("3wXm3h1BRps").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> canBeUsedAsEmptyCell_id6RO52Mcgrfa = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeUsedAsEmptyCell").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6RO52Mcgrfa").build();
-  public static final SMethod<SNode> getLayout_iditlittTD4U = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLayout").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("itlittTD4U").build();
+  public static final SMethod<String> getOpeningText_idhKxU$w9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOpeningText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220339714057L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<String> getClosingText_idhKxUEwj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClosingText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220339738643L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isVertical_idi0pAV23 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVertical").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237380214915L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isVerticalGrid_idi2IbWq8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVerticalGrid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239872947848L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isHorizontal_idi0pB4gH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isHorizontal").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237380252717L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isIndentLayout_idi0pB9jQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isIndentLayout").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237380273398L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isFoldingEnabled_id1_9L3A4DrOF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFoldingEnabled").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1822203275565710635L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isVerticalIndent_idi0tOX1j = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVerticalIndent").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237451001939L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> shellBeSynchronized_id3TPTV99_TMT = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shellBeSynchronized").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4500758155551546553L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  /*package*/ static final SMethod<Boolean> shellBeSynchronized_id3TPTV99Aiv4 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shellBeSynchronized").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(4500758155551647684L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> canBeSynchronized_id3wXm3h1AYM7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeSynchronized").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4052492221165595783L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  /*package*/ static final SMethod<Boolean> canBeSynchronized_id3wXm3h1BRps = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeSynchronized").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(4052492221165827676L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> canBeUsedAsEmptyCell_id6RO52Mcgrfa = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeUsedAsEmptyCell").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7922979826015777738L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SNode> getLayout_iditlittTD4U = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLayout").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(332515575062761786L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOpeningText_idhKxU$w9, getClosingText_idhKxUEwj, isVertical_idi0pAV23, isVerticalGrid_idi2IbWq8, isHorizontal_idi0pB4gH, isIndentLayout_idi0pB9jQ, isFoldingEnabled_id1_9L3A4DrOF, isVerticalIndent_idi0tOX1j, shellBeSynchronized_id3TPTV99_TMT, shellBeSynchronized_id3TPTV99Aiv4, canBeSynchronized_id3wXm3h1AYM7, canBeSynchronized_id3wXm3h1BRps, canBeUsedAsEmptyCell_id6RO52Mcgrfa, getLayout_iditlittTD4U);
 
@@ -83,7 +82,7 @@ public final class CellModel_Collection__BehaviorDescriptor extends BaseBHDescri
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.usesFolding$P9Na) || (SLinkOperations.getTarget(__thisNode__, LINKS.usesFoldingCondition$v3yC) != null);
   }
   /*package*/ static boolean isVerticalIndent_idi0tOX1j(@NotNull SNode __thisNode__) {
-    if (!(((boolean) CellModel_Collection__BehaviorDescriptor.isIndentLayout_idi0pB9jQ.invoke(__thisNode__)))) {
+    if (!((boolean) CellModel_Collection__BehaviorDescriptor.isIndentLayout_idi0pB9jQ.invoke(__thisNode__))) {
       return false;
     }
     if (((boolean) EditorCellModel__BehaviorDescriptor.isNewLineChildren_idi0pNGlC.invoke(__thisNode__))) {
@@ -100,21 +99,13 @@ public final class CellModel_Collection__BehaviorDescriptor extends BaseBHDescri
     return false;
   }
   /*package*/ static boolean shellBeSynchronized_id3TPTV99_TMT(@NotNull final SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$HAw7)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ((boolean) CellModel_Collection__BehaviorDescriptor.shellBeSynchronized_id3TPTV99Aiv4.invokeSpecial(__thisNode__, it));
-      }
-    }) || ((boolean) CellModel_Collection__BehaviorDescriptor.shellBeSynchronized_id3TPTV99Aiv4.invokeSpecial(__thisNode__, SLinkOperations.getTarget(__thisNode__, LINKS.foldedCellModel$csI5)));
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$HAw7)).any((it) -> ((boolean) CellModel_Collection__BehaviorDescriptor.shellBeSynchronized_id3TPTV99Aiv4.invokeSpecial(__thisNode__, it))) || ((boolean) CellModel_Collection__BehaviorDescriptor.shellBeSynchronized_id3TPTV99Aiv4.invokeSpecial(__thisNode__, SLinkOperations.getTarget(__thisNode__, LINKS.foldedCellModel$csI5)));
   }
   /*package*/ static boolean shellBeSynchronized_id3TPTV99Aiv4(@NotNull SNode __thisNode__, SNode childCell) {
     return childCell != null && SNodeOperations.isInstanceOf(childCell, CONCEPTS.Synchronizeable$kF) && (boolean) Synchronizeable__BehaviorDescriptor.shellBeSynchronized_id3TPTV99_TMT.invoke(SNodeOperations.cast(childCell, CONCEPTS.Synchronizeable$kF));
   }
   /*package*/ static boolean canBeSynchronized_id3wXm3h1AYM7(@NotNull final SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$HAw7)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ((boolean) CellModel_Collection__BehaviorDescriptor.canBeSynchronized_id3wXm3h1BRps.invokeSpecial(__thisNode__, it));
-      }
-    }) && ((boolean) CellModel_Collection__BehaviorDescriptor.canBeSynchronized_id3wXm3h1BRps.invokeSpecial(__thisNode__, SLinkOperations.getTarget(__thisNode__, LINKS.foldedCellModel$csI5)));
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$HAw7)).all((it) -> ((boolean) CellModel_Collection__BehaviorDescriptor.canBeSynchronized_id3wXm3h1BRps.invokeSpecial(__thisNode__, it))) && ((boolean) CellModel_Collection__BehaviorDescriptor.canBeSynchronized_id3wXm3h1BRps.invokeSpecial(__thisNode__, SLinkOperations.getTarget(__thisNode__, LINKS.foldedCellModel$csI5)));
   }
   /*package*/ static boolean canBeSynchronized_id3wXm3h1BRps(@NotNull SNode __thisNode__, SNode childCell) {
     return childCell == null || (SNodeOperations.isInstanceOf(childCell, CONCEPTS.Synchronizeable$kF) && (boolean) Synchronizeable__BehaviorDescriptor.canBeSynchronized_id3wXm3h1AYM7.invoke(SNodeOperations.cast(childCell, CONCEPTS.Synchronizeable$kF)));

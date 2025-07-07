@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.smodel.runtime;
 
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public interface ReferenceDescriptor {
@@ -29,4 +30,18 @@ public interface ReferenceDescriptor {
   boolean isOptional();
 
   SNodeReference getSourceNode();
+
+  /**
+   * Gives identity of a specialized link, if any.
+   * Target link is not necessarily the 'origin' one, and may further specialize another one.
+   * since 2021.3
+   */
+  @Nullable
+  SReferenceLinkId getSpecializedLink();
+
+  /**
+   * Indicates association that doesn't need to get reflected in persistence (no target information gets recorded)
+   * @since 2023.1
+   */
+  boolean isTransient();
 }

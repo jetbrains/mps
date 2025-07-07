@@ -21,11 +21,7 @@ public class Circle_Constraints extends BaseConstraintsDescriptor {
 
   public static class Radius_Property extends BasePropertyConstraintsDescriptor {
     public Radius_Property(ConstraintsDescriptor container) {
-      super(PROPS.radius$ww3I, container);
-    }
-    @Override
-    public boolean hasOwnSetter() {
-      return true;
+      super(PROPS.radius$ww3I, container, false, true, false);
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {

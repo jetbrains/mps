@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -133,6 +134,9 @@ public class TemplateQueryContext {
     return myGenerator.findOutputNode(inputModel, label);
   }
 
+  /*
+   * entry point for {@code genContext.get output by input and label}, single input node, single output
+   */
   public SNode getOutputNodeByInputNodeAndMappingLabel(SNode inputNode, String label) {
     if (inputNode == null || label == null) {
       // FIXME if we enforce inputNode != null here, why does findOutputNodeByInputNodeAndMappingName() tolerates null inputNode then?
@@ -152,12 +156,17 @@ public class TemplateQueryContext {
     return myGenerator.findOutputNodeByInputNodeAndMappingName(inputNode, label);
   }
 
+  /*
+   * entry point for {@code genContext.get output by input and label}, two input nodes, single output
+   * @since 2020.3
+   */
   public SNode getOutputForInputAndLabel(String label, Object key1, Object key2) {
     if (!myGenerator.areMappingsAvailable()) {
       myGenerator.getLogger().error(getTemplateNodeRef(), "'get output by input and label' cannot be used here");
     }
     if (myEnv != null) {
-      final SNode localRecord = ((TemplateExecutionEnvironmentImpl) myEnv).findLocalOutputRecordSingle(label, key1, key2);
+      // FIXME it's not 'local' as long as we perform delegation to shared labels through generator instance there
+      final SNode localRecord = ((TemplateExecutionEnvironmentImpl) myEnv).findOutputRecordSingle(label, key1, key2);
       if (localRecord != null) {
         return localRecord;
       }
@@ -166,6 +175,9 @@ public class TemplateQueryContext {
     return null; // XXX shared composite labels are accessed through TEEI now (unlike getOutputNodeByInputNodeAndMappingLabel)
   }
 
+  /*
+   * entry point for {@code genContext.get all output by input and label}, single input, all known output nodes
+   */
   public List<SNode> getAllOutputNodesByInputNodeAndMappingLabel(SNode inputNode, String label) {
     if (inputNode == null) return null;
     if (!myGenerator.areMappingsAvailable()) {
@@ -174,16 +186,31 @@ public class TemplateQueryContext {
     return myGenerator.findAllOutputNodesByInputNodeAndMappingName(inputNode, label);
   }
 
+  /*
+   * entry point for {@code genContext.get all output by input and label}, two input nodes, all known output nodes
+   */
+  public List<SNode> getOutputListForInputAndLabel(String label, Object key1, Object key2) {
+    if (!myGenerator.areMappingsAvailable()) {
+      myGenerator.getLogger().error(getTemplateNodeRef(), "'get output by input and label' cannot be used here");
+    }
+    if (myContext != null) {
+      return ((TemplateExecutionEnvironmentImpl) myContext.getEnvironment()).findOutputRecordList(label, key1, key2);
+    }
+    // multi-keyed LMs are part of regular transformation sequence, do not account for their use in MC condition or a script
+    // Once I make TQC to use TEE, this won't make any difference
+    return Collections.emptyList();
+  }
+
   public void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode) {
     // technically, we could do myGenerator.isStrict() && myGenerator.areMappingsAvailable() -> fail "no more labels once transformation is over"
     // but this would expose knowledge that areMappingsAvailable is meaningful only in strict mode.
     // Since we do not restrict registration of mapping labels e.g. in TEEImpl, I decided not to keep a check here
-    if (myEnv == null) {
-      // FIXME now that we use TEE for scripts, we can avoid direct ITemplateGenerator,
-      //       left this code until compiled templates switch to TEE (once 2021.1 is out)
-      myGenerator.registerMappingLabel(inputNode, mappingName, outputNode);
-    } else {
+    if (myEnv != null) {
       myEnv.registerLabel(inputNode, outputNode, mappingName);
+    } else {
+      // with Scripts using TQC initialized with TEE (since 21.1) and they are primary clients of this operation,
+      // the only scenario we get here is compiled templates from 20.3 or earlier.
+      throw new IllegalStateException("ML registration is not possible here");
     }
   }
 

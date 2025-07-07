@@ -101,20 +101,12 @@ import java.awt.event.ActionEvent;
     p.add(myStepModuleKind.getComponent());
     p.add(myStepGranularityKind.getComponent());
 
-    Condition<SModel> isStub = new Condition<SModel>() {
-      public boolean met(SModel m) {
-        return SModelStereotype.isStubModel(m);
-      }
-    };
-    Condition<SModel> isDescriptor = new Condition<SModel>() {
-      public boolean met(SModel m) {
-        return SModelStereotype.isDescriptorModel(m);
-      }
-    };
+    Condition<SModel> isStub = (SModel m) -> SModelStereotype.isStubModel(m);
+    Condition<SModel> isDescriptor = (SModel m) -> SModelStereotype.isDescriptorModel(m);
     Condition<SModel> filter = new AndCondition<SModel>(NotCondition.negate(isStub), NotCondition.negate(isDescriptor));
 
     ConditionalScope localScope = new ConditionalScope(myProject.getScope(), null, filter);
-    ConditionalScope globalScope = new ConditionalScope(new FilteredGlobalScope(), null, filter);
+    ConditionalScope globalScope = new ConditionalScope(new FilteredGlobalScope(myProject.getRepository()), null, filter);
     SRepository repo = myProject.getRepository();
     ChooseByNameData<SModelReference> gotoData = new ChooseByNameData<SModelReference>(new ModelsPresentation(repo));
     gotoData.derivePrompts("model").setScope(new ModelScopeIterable(localScope, repo), new ModelScopeIterable(globalScope, repo));

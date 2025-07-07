@@ -14,9 +14,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.search.ClassifierSuccessors;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -55,40 +53,16 @@ public class DerivedMethods_Finder extends GeneratedFinder {
         if (monitor.isCanceled()) {
           return;
         }
-        Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(derivedClassifier)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(instanceMethod, it);
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            callback.onUsageFound(createSingleResult(it));
-          }
-        });
+        Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(derivedClassifier)).where((it) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(instanceMethod, it)).visitAll((it) -> callback.onUsageFound(createSingleResult(it)));
         if (SNodeOperations.isInstanceOf(derivedClassifier, CONCEPTS.EnumClass$Vk)) {
           for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(derivedClassifier, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW))) {
-            ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$pGvv)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(instanceMethod, it);
-              }
-            }).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                callback.onUsageFound(createSingleResult(it));
-              }
-            });
+            ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$pGvv)).where((it) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(instanceMethod, it)).visitAll((it) -> callback.onUsageFound(createSingleResult(it)));
           }
         }
       }
       if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$Vk)) {
         for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW))) {
-          ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$pGvv)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(instanceMethod, it);
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              callback.onUsageFound(createSingleResult(it));
-            }
-          });
+          ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$pGvv)).where((it) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(instanceMethod, it)).visitAll((it) -> callback.onUsageFound(createSingleResult(it)));
         }
       }
     } finally {

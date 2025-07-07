@@ -12,7 +12,6 @@
       <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
         <property id="1421157252384165432" name="memberId" index="3tVfz5" />
         <property id="672037151186491528" name="presentation" index="1L1pqM" />
-        <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
@@ -21,24 +20,15 @@
       <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
         <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
       </concept>
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9" />
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
+        <property id="1225118929411" name="build" index="YLPcu" />
+        <property id="1225118933224" name="comment" index="YLQ7P" />
+      </concept>
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
-      </concept>
-      <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old" flags="ng" index="AxPO7">
-        <property id="1197591154882" name="memberIdentifierPolicy" index="3lZH7k" />
-        <reference id="1083171729157" name="memberDataType" index="M4eZT" />
-        <child id="1083172003582" name="member" index="M5hS2" />
-      </concept>
-      <concept id="1588368162884797030" name="jetbrains.mps.lang.structure.structure.EnumMigrationInfo" flags="ng" index="2JgGob">
-        <property id="6491077959634662372" name="valueOpMigration" index="3scbB" />
-        <property id="6491077959634650670" name="nameOpMigration" index="3sfsH" />
-        <child id="6491077959632451996" name="oldEnum" index="3lCyv" />
-      </concept>
-      <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old" flags="ig" index="M4N5e">
-        <property id="1192116978809" name="javaIdentifier" index="2fHolG" />
-        <property id="1083923523172" name="externalValue" index="1uS6qo" />
-        <property id="1083923523171" name="internalValue" index="1uS6qv" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
@@ -73,7 +63,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -126,6 +116,10 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1855399583446017641" />
       <ref role="20lvS9" node="1AZH1sZHigy" resolve="StubEntry" />
+      <node concept="asaX9" id="6jQ5SYbIfxw" role="lGtFl">
+        <property role="YLPcu" value="2023.1" />
+        <property role="YLQ7P" value="Wrong name (it's java libraries). Drop unless there's sound usecase (tell me about one!) " />
+      </node>
     </node>
     <node concept="1TJgyj" id="eY0iPzBvYZ" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -265,6 +259,19 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1855399583446016271" />
       <ref role="20lvS9" node="1AZH1sZHi4c" resolve="ModuleReference" />
+      <node concept="t5JxF" id="1DGIPkVYvPv" role="lGtFl">
+        <property role="t5JxN" value="subset of Module.dependencies, Extends dependency to a generator module" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="1DGIPkVTU8m" role="1TKVEi">
+      <property role="IQ2ns" value="1904102717222527510" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="employedGenerators" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="1AZH1sZHi4c" resolve="ModuleReference" />
+      <node concept="t5JxF" id="1DGIPkVTU8q" role="lGtFl">
+        <property role="t5JxN" value="subset of Module.dependencies, regular (aka Default) dependency that point to a generator module." />
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="5xDtKQA7vSB">
@@ -374,7 +381,7 @@
         <node concept="1TJgyi" id="5xDtKQA7vSX" role="3l_iP">
           <property role="TrG5h" value="type" />
           <property role="IQ2nx" value="6370754048397540925" />
-          <ref role="AX2Wp" node="5xDtKQA7vST" resolve="RuleType" />
+          <ref role="AX2Wp" node="3Ftr4R6BFrE" resolve="RuleType" />
         </node>
       </node>
     </node>
@@ -533,71 +540,30 @@
     <property role="3GE5qa" value="generator" />
     <property role="3F6X1D" value="6370754048397540921" />
     <ref role="1H5jkz" node="3Ftr4R6BFrG" resolve="strictly_before" />
-    <node concept="2JgGob" id="3Ftr4R6BFrF" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
-      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
-      <node concept="AxPO7" id="5xDtKQA7vST" role="3lCyv">
-        <property role="3lZH7k" value="hrlZpEz/custom" />
-        <property role="TrG5h" value="RuleType" />
-        <property role="3GE5qa" value="generator" />
-        <property role="3F6X1D" value="6370754048397540921" />
-        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-        <node concept="M4N5e" id="5xDtKQA7vSU" role="M5hS2">
-          <property role="1uS6qv" value="strictly_before" />
-          <property role="2fHolG" value="strictly_before" />
-          <property role="1uS6qo" value="before (&lt;)" />
-        </node>
-        <node concept="M4N5e" id="5xDtKQA7vSV" role="M5hS2">
-          <property role="1uS6qv" value="strictly_together" />
-          <property role="2fHolG" value="strictly_together" />
-          <property role="1uS6qo" value="together with (=)" />
-        </node>
-        <node concept="M4N5e" id="5xDtKQA7vSW" role="M5hS2">
-          <property role="1uS6qv" value="before_or_together" />
-          <property role="2fHolG" value="before_or_together" />
-          <property role="1uS6qo" value="before or together (&lt;=)" />
-        </node>
-        <node concept="M4N5e" id="2iI_8zFG7Cu" role="M5hS2">
-          <property role="1uS6qv" value="after_or_together" />
-          <property role="2fHolG" value="after_or_together" />
-          <property role="1uS6qo" value="after or together (&gt;=)" />
-        </node>
-        <node concept="M4N5e" id="2iI_8zFG7Cv" role="M5hS2">
-          <property role="1uS6qv" value="strictly_after" />
-          <property role="2fHolG" value="strictly_after" />
-          <property role="1uS6qo" value="after (&gt;)" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFrG" role="25R1y">
       <property role="TrG5h" value="strictly_before" />
       <property role="1L1pqM" value="before (&lt;)" />
       <property role="3tVfz5" value="6370754048397540922" />
-      <ref role="2wpffI" node="5xDtKQA7vSU" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFrH" role="25R1y">
       <property role="TrG5h" value="strictly_together" />
       <property role="1L1pqM" value="together with (=)" />
       <property role="3tVfz5" value="6370754048397540923" />
-      <ref role="2wpffI" node="5xDtKQA7vSV" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFrI" role="25R1y">
       <property role="TrG5h" value="before_or_together" />
       <property role="1L1pqM" value="before or together (&lt;=)" />
       <property role="3tVfz5" value="6370754048397540924" />
-      <ref role="2wpffI" node="5xDtKQA7vSW" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFrJ" role="25R1y">
       <property role="TrG5h" value="after_or_together" />
       <property role="1L1pqM" value="after or together (&gt;=)" />
       <property role="3tVfz5" value="2643213347103734302" />
-      <ref role="2wpffI" node="2iI_8zFG7Cu" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFrK" role="25R1y">
       <property role="TrG5h" value="strictly_after" />
       <property role="1L1pqM" value="after (&gt;)" />
       <property role="3tVfz5" value="2643213347103734303" />
-      <ref role="2wpffI" node="2iI_8zFG7Cv" />
     </node>
   </node>
 </model>

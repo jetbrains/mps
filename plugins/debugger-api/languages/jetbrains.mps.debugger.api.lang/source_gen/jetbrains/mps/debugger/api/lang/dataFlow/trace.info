@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <root>
+    <file name="DataFlowAspectDescriptorImpl.java">
+      <unit at="15,0,32,0" name="jetbrains.mps.debugger.api.lang.dataFlow.DataFlowAspectDescriptorImpl" />
+    </file>
+  </root>
+  <root nodeRef="r:76ebff81-84e4-4473-b151-6230641fb25f(jetbrains.mps.debugger.api.lang.dataFlow)/1564648967342925932">
+    <file name="DebuggerConfiguration_DataFlow.java">
+      <node id="1564648967342926167" at="13,60,14,108" concept="0" />
+      <node id="1564648967342925932" at="18,0,19,0" concept="2" trace="debugger$wxrA" />
+      <node id="1564648967342925932" at="13,0,16,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1564648967342925934" at="13,60,14,108" />
+      <scope id="1564648967342925932" at="13,0,16,0">
+        <var name="_context" id="1564648967342925932" />
+      </scope>
+      <unit id="1564648967342925932" at="17,0,20,0" name="jetbrains.mps.debugger.api.lang.dataFlow.DebuggerConfiguration_DataFlow$LINKS" />
+      <unit id="1564648967342925932" at="12,0,21,0" name="jetbrains.mps.debugger.api.lang.dataFlow.DebuggerConfiguration_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:76ebff81-84e4-4473-b151-6230641fb25f(jetbrains.mps.debugger.api.lang.dataFlow)/1564648967342955370">
+    <file name="CreateBreakpointOperation_DataFlow.java">
+      <node id="1564648967342955535" at="13,60,14,114" concept="0" />
+      <node id="1564648967342957321" at="14,114,15,117" concept="0" />
+      <node id="1564648967342955370" at="19,0,20,0" concept="2" trace="nodeExpression$yOFs" />
+      <node id="1564648967342955370" at="20,0,21,0" concept="2" trace="projectExpression$yOUt" />
+      <node id="1564648967342955370" at="13,0,17,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1564648967342955372" at="13,60,15,117" />
+      <scope id="1564648967342955370" at="13,0,17,0">
+        <var name="_context" id="1564648967342955370" />
+      </scope>
+      <unit id="1564648967342955370" at="18,0,22,0" name="jetbrains.mps.debugger.api.lang.dataFlow.CreateBreakpointOperation_DataFlow$LINKS" />
+      <unit id="1564648967342955370" at="12,0,23,0" name="jetbrains.mps.debugger.api.lang.dataFlow.CreateBreakpointOperation_DataFlow" />
+    </file>
+  </root>
+</debug-info>
+

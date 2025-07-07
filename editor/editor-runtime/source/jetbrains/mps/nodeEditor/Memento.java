@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.TransactionalPropertyAccessor;
 import jetbrains.mps.nodeEditor.selection.SelectionInfoImpl;
 import jetbrains.mps.openapi.editor.EditorComponentState;
-import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellInfo;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
@@ -68,15 +67,22 @@ class Memento implements EditorComponentState {
   private Memento() {
   }
 
+  public boolean hasErrors() {
+    return !myErrors.isEmpty();
+  }
+
   @Override
   public void clearSessionState() {
     mySaveSessionState = false;
   }
 
-  Memento(EditorContext context, boolean saveEditedNode) {
-    EditorComponent nodeEditor = (EditorComponent) context.getEditorComponent();
+  public Memento( EditorComponent nodeEditor, boolean saveEditedNode) {
+    // FIXME why not nodeEditor. getEditedNodePointer()?
+    // XXX why we save state (foldable, errors, braces) when editedNode == null and saveEditedNode == false?
+    // XXX the only thing saveEditedNode affects is myEditedNodeReference. Not big deal to save it anyway, and
+    // restore only when necessary!
     SNode editedNode = nodeEditor.getEditedNode();
-    if (editedNode == null || SNodeUtil.isAccessible(editedNode, context.getRepository())) {
+    if (editedNode == null || SNodeUtil.isAccessible(editedNode, nodeEditor.getRepository())) {
       if (saveEditedNode && editedNode != null) {
         myEditedNodeReference = editedNode.getReference();
       }

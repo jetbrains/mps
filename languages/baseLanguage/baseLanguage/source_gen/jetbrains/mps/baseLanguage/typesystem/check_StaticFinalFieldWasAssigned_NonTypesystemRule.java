@@ -9,6 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -31,7 +32,7 @@ public class check_StaticFinalFieldWasAssigned_NonTypesystemRule extends Abstrac
     if (!(SPropertyOperations.getBoolean(field, PROPS.isFinal$gvTP))) {
       return;
     }
-    if (SLinkOperations.getTarget(field, LINKS.initializer$2twD) != null) {
+    if (SLinkOperations.getTarget(field, LINKS.initializer$2twD) != null || SModelStereotype.isStubModel(SNodeOperations.getModel(field))) {
       return;
     }
     SNode classifier = SNodeOperations.getNodeAncestor(field, CONCEPTS.ClassConcept$bK, false, false);
@@ -52,7 +53,7 @@ public class check_StaticFinalFieldWasAssigned_NonTypesystemRule extends Abstrac
     }
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(field, "Variable '" + SPropertyOperations.getString(field, PROPS.name$MnvL) + "' might not have been initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047680817", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(field, String.format("Variable '%s' might not have been initialized", SPropertyOperations.getString(field, PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047680817", null, errorTarget);
       {
         BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.InitializeVariable_QuickFix", "6911873060799512521", false);
         _reporter_2309309498.addIntentionProvider(intentionProvider);

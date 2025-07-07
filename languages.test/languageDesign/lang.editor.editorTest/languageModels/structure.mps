@@ -79,7 +79,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -1926,6 +1926,62 @@
       <property role="IQ2nx" value="8036481050509059201" />
       <property role="TrG5h" value="message" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7PHI2cMyMuT">
+    <property role="EcuMT" value="9038082488513800121" />
+    <property role="TrG5h" value="FactoryTop" />
+    <property role="3GE5qa" value="factories" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="7PHI2cMyMuW" role="1TKVEi">
+      <property role="IQ2ns" value="9038082488513800124" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="prevNodeElements" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="7PHI2cMyMuV" resolve="FactoryElement" />
+    </node>
+    <node concept="1TJgyj" id="7PHI2cMDJn9" role="1TKVEi">
+      <property role="IQ2ns" value="9038082488515622345" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="nextNodeElements" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="7PHI2cMyMuV" resolve="FactoryElement" />
+    </node>
+    <node concept="1TJgyj" id="7PHI2cMDJnk" role="1TKVEi">
+      <property role="IQ2ns" value="9038082488515622356" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="indexElements" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="7PHI2cMyMuV" resolve="FactoryElement" />
+    </node>
+    <node concept="1TJgyj" id="7PHI2cMI7C_" role="1TKVEi">
+      <property role="IQ2ns" value="9038082488516770341" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="children" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="7PHI2cMyMuU" resolve="FactoryNode" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7PHI2cMyMuU">
+    <property role="EcuMT" value="9038082488513800122" />
+    <property role="TrG5h" value="FactoryNode" />
+    <property role="3GE5qa" value="factories" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="7PHI2cMHfgO" role="1TKVEl">
+      <property role="IQ2nx" value="9038082488516539444" />
+      <property role="TrG5h" value="ordinal" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7PHI2cMyMuV">
+    <property role="EcuMT" value="9038082488513800123" />
+    <property role="TrG5h" value="FactoryElement" />
+    <property role="3GE5qa" value="factories" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="7PHI2cM$hSv" role="1TKVEl">
+      <property role="IQ2nx" value="9038082488514190879" />
+      <property role="TrG5h" value="ordinal" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
     </node>
   </node>
 </model>

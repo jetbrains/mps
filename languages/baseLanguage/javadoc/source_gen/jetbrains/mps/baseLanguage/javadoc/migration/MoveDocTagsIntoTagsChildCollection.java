@@ -7,9 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
@@ -19,9 +17,8 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -43,139 +40,67 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     Iterable<SModel> models = m.getModels();
-    Sequence.fromIterable(models).ofType(SModel.class).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(model, CONCEPTS.ClassifierDocComment$mh);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        JavaDocConverter.convertClassifierTags(it);
-      }
-    });
-    Sequence.fromIterable(models).ofType(SModel.class).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(model, CONCEPTS.MethodDocComment$HI);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        JavaDocConverter.convertMethodTags(it);
-      }
-    });
-    Sequence.fromIterable(models).ofType(SModel.class).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(model, CONCEPTS.FieldDocComment$wl);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        JavaDocConverter.convertFieldTags(it);
-      }
-    });
-    Sequence.fromIterable(models).ofType(SModel.class).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(model, CONCEPTS.BaseDocComment$bU);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        JavaDocConverter.convertTags(it);
-      }
-    });
+    Sequence.fromIterable(models).ofType(SModel.class).translate((model) -> SModelOperations.nodes(model, CONCEPTS.ClassifierDocComment$mh)).visitAll((it) -> JavaDocConverter.convertClassifierTags(it));
+    Sequence.fromIterable(models).ofType(SModel.class).translate((model) -> SModelOperations.nodes(model, CONCEPTS.MethodDocComment$HI)).visitAll((it) -> JavaDocConverter.convertMethodTags(it));
+    Sequence.fromIterable(models).ofType(SModel.class).translate((model) -> SModelOperations.nodes(model, CONCEPTS.FieldDocComment$wl)).visitAll((it) -> JavaDocConverter.convertFieldTags(it));
+    Sequence.fromIterable(models).ofType(SModel.class).translate((model) -> SModelOperations.nodes(model, CONCEPTS.BaseDocComment$bU)).visitAll((it) -> JavaDocConverter.convertTags(it));
   }
   @Override
   public Iterable<Problem> check(SModule m) {
     {
       SearchScope scope_i7tkk0_a0f = CommandUtil.createScope(m);
       final SearchScope scope_i7tkk0_a0f_0 = new EditableFilteringScope(scope_i7tkk0_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_i7tkk0_a0f_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_i7tkk0_a0f_0;
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ClassifierDocComment$mh, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.param$Wb3e)).isNotEmpty();
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ClassifierDocComment$mh, false)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.param$Wb3e)).isNotEmpty()).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.param$Wb3e);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MethodDocComment$HI, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.param$LRA1)).isNotEmpty();
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MethodDocComment$HI, false)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.param$LRA1)).isNotEmpty()).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.param$LRA1);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MethodDocComment$HI, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.throwsTag$gRkU)).isNotEmpty();
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MethodDocComment$HI, false)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.throwsTag$gRkU)).isNotEmpty()).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.throwsTag$gRkU);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MethodDocComment$HI, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.return$h3ZK) != null);
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MethodDocComment$HI, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS.return$h3ZK) != null)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.return$h3ZK);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.deprecated$M8kQ) != null);
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS.deprecated$M8kQ) != null)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.deprecated$M8kQ);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.author$lgjQ)).isNotEmpty();
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.author$lgjQ)).isNotEmpty()).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.author$lgjQ);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.since$M6dH)).isNotEmpty();
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.since$M6dH)).isNotEmpty()).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.since$M6dH);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.version$M6sI)).isNotEmpty();
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.version$M6sI)).isNotEmpty()).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.version$M6sI);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.see$H9Bg)).isNotEmpty();
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.see$H9Bg)).isNotEmpty()).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.see$H9Bg);
         }
       }));
       return result;
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc"), 1);
   }
 

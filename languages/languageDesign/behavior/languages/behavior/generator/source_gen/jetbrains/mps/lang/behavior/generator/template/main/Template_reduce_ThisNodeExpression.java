@@ -39,7 +39,7 @@ public class Template_reduce_ThisNodeExpression extends TemplateDeclarationBase 
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = Collections.emptyList();
-    if (QueriesGenerated.ifMacro_Condition_2_0(new IfMacroContext(context, ifMacroRef_pajot2_b0a0c0g))) {
+    if (QueriesGenerated.ifMacro_Condition_2_0(new IfMacroContext(context, ifMacroRef))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       {
         TemplateContext context1 = context.subContext();
@@ -106,5 +106,5 @@ public class Template_reduce_ThisNodeExpression extends TemplateDeclarationBase 
       return rv;
     }
   }
-  private static final SNodePointer ifMacroRef_pajot2_b0a0c0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "5722502787474197942");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "5722502787474197942");
 }

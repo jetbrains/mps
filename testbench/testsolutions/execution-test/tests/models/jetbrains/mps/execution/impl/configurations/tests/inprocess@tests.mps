@@ -4,12 +4,12 @@
   <languages>
     <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="-1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="22e72e4c-0f69-46ce-8403-6750153aa615" name="jetbrains.mps.execution.configurations" version="2" />
   </languages>
   <imports>
@@ -38,6 +38,7 @@
       </concept>
       <concept id="1225467090849" name="jetbrains.mps.lang.test.structure.ProjectExpression" flags="nn" index="1jxXqW" />
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
+        <property id="2616911529524314943" name="accessMode" index="3DII0k" />
         <property id="6339244025081158986" name="needsNoWriteAction" index="3OwPAg" />
         <child id="1216993439383" name="methods" index="1qtyYc" />
         <child id="1217501895093" name="testMethods" index="1SL9yI" />
@@ -60,7 +61,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1188220165133" name="jetbrains.mps.baseLanguage.structure.ArrayLiteral" flags="nn" index="2BsdOp">
@@ -159,7 +160,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -180,7 +181,7 @@
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
@@ -211,7 +212,7 @@
     </language>
     <language id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers">
       <concept id="1205752633985" name="jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression" flags="nn" index="2WthIp" />
-      <concept id="1205756064662" name="jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation" flags="ng" index="2WEnae">
+      <concept id="1205756064662" name="jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation" flags="ngI" index="2WEnae">
         <reference id="1205756909548" name="member" index="2WH_rO" />
       </concept>
       <concept id="1205769003971" name="jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration" flags="ng" index="2XrIbr" />
@@ -237,7 +238,7 @@
       </concept>
     </language>
     <language id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest">
-      <concept id="1216130694486" name="jetbrains.mps.baseLanguage.unitTest.structure.ITestCase" flags="ng" index="B2rLd">
+      <concept id="1216130694486" name="jetbrains.mps.baseLanguage.unitTest.structure.ITestCase" flags="ngI" index="B2rLd">
         <property id="6427619394892729757" name="canNotRunInProcess" index="26Nn1l" />
       </concept>
       <concept id="1171981022339" name="jetbrains.mps.baseLanguage.unitTest.structure.AssertTrue" flags="nn" index="3vwNmj">
@@ -247,7 +248,7 @@
       <concept id="1172073500303" name="jetbrains.mps.baseLanguage.unitTest.structure.Message" flags="ng" index="3_1$Yv">
         <child id="1172073511101" name="message" index="3_1BAH" />
       </concept>
-      <concept id="1172075514136" name="jetbrains.mps.baseLanguage.unitTest.structure.MessageHolder" flags="ng" index="3_9gw8">
+      <concept id="1172075514136" name="jetbrains.mps.baseLanguage.unitTest.structure.MessageHolder" flags="ngI" index="3_9gw8">
         <child id="1172075534298" name="message" index="3_9lra" />
       </concept>
     </language>
@@ -270,7 +271,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -302,6 +303,7 @@
     <property role="TrG5h" value="JUnitInProcess" />
     <property role="3OwPAg" value="true" />
     <property role="26Nn1l" value="true" />
+    <property role="3DII0k" value="2hh8MJdVwqT/none" />
     <node concept="2XrIbr" id="5vTxdEzyTYn" role="1qtyYc">
       <property role="TrG5h" value="checkTests" />
       <node concept="3cqZAl" id="5vTxdEzyTYo" role="3clF45" />
@@ -722,7 +724,7 @@
                       <node concept="3cpWs3" id="5vTxdEzyTZI" role="3uHU7B">
                         <node concept="3cpWs3" id="5vTxdEzyTZJ" role="3uHU7B">
                           <node concept="Xl_RD" id="5vTxdEzyTZK" role="3uHU7B">
-                            <property role="Xl_RC" value="The number of failed tests be equal to " />
+                            <property role="Xl_RC" value="The number of failed tests must be equal to " />
                           </node>
                           <node concept="37vLTw" id="2SyXq5Nj$ga" role="3uHU7w">
                             <ref role="3cqZAo" node="2SyXq5NjyAj" resolve="failedMustBe" />
@@ -780,19 +782,16 @@
                           <ref role="3cqZAo" node="5vTxdEzyTYB" resolve="runState" />
                         </node>
                         <node concept="liA8E" id="2SyXq5NjpGv" role="2OqNvi">
-                          <ref role="37wK5l" to="sfqd:7B_GGkKFYTc" resolve="getFailedTests" />
+                          <ref role="37wK5l" to="sfqd:7B_GGkKFCvn" resolve="getCompletedTests" />
                         </node>
                       </node>
                       <node concept="3cpWs3" id="2SyXq5NjpGw" role="3uHU7B">
                         <node concept="3cpWs3" id="2SyXq5NjpGx" role="3uHU7B">
                           <node concept="Xl_RD" id="2SyXq5NjpGy" role="3uHU7B">
-                            <property role="Xl_RC" value="The number of completed tests be equal to " />
+                            <property role="Xl_RC" value="The number of completed tests must be equal to " />
                           </node>
-                          <node concept="2OqwBi" id="2SyXq5NjpGz" role="3uHU7w">
-                            <node concept="37vLTw" id="2SyXq5NjpG$" role="2Oq$k0">
-                              <ref role="3cqZAo" node="5vTxdEzyU0s" resolve="failure" />
-                            </node>
-                            <node concept="34oBXx" id="2SyXq5NjpG_" role="2OqNvi" />
+                          <node concept="37vLTw" id="3WF3aHSmObd" role="3uHU7w">
+                            <ref role="3cqZAo" node="2SyXq5NjwJP" resolve="completedMustBe" />
                           </node>
                         </node>
                         <node concept="Xl_RD" id="2SyXq5NjpGA" role="3uHU7w">
@@ -842,11 +841,8 @@
                       <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessages" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="5vTxdEzyU0e" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                    <node concept="Xl_RD" id="5vTxdEzyU0f" role="37wK5m">
-                      <property role="Xl_RC" value="" />
-                    </node>
+                  <node concept="liA8E" id="3WF3aHSmSO4" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~String.isEmpty()" resolve="isEmpty" />
                   </node>
                 </node>
               </node>
@@ -1015,6 +1011,7 @@
     <property role="TrG5h" value="JUnitInProcessTermination" />
     <property role="3OwPAg" value="true" />
     <property role="26Nn1l" value="true" />
+    <property role="3DII0k" value="2hh8MJdVwqT/none" />
     <node concept="2XrIbr" id="5vTxdEzz100" role="1qtyYc">
       <property role="TrG5h" value="startAndTerminate" />
       <node concept="3cqZAl" id="5vTxdEzz101" role="3clF45" />
@@ -1639,6 +1636,7 @@
     <property role="TrG5h" value="JUnitInProcessUndo" />
     <property role="3OwPAg" value="true" />
     <property role="26Nn1l" value="true" />
+    <property role="3DII0k" value="2hh8MJdVwqT/none" />
     <node concept="2XrIbr" id="5XEoQWrnKZ" role="1qtyYc">
       <property role="TrG5h" value="getMyModel" />
       <node concept="H_c77" id="5XEoQWrnL0" role="3clF45" />

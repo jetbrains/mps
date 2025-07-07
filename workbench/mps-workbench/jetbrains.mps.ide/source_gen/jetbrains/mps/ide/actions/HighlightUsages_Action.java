@@ -9,7 +9,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.project.MPSProject;
@@ -38,6 +37,7 @@ public class HighlightUsages_Action extends BaseAction {
     super("Highlight Usages", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -53,28 +53,24 @@ public class HighlightUsages_Action extends BaseAction {
       if (editorComponent != null && editorComponent.isInvalid()) {
         editorComponent = null;
       }
-      MapSequence.fromMap(_params).put("editorComponent", editorComponent);
       if (editorComponent == null) {
         return false;
       }
     }
     {
       EditorCell p = event.getData(MPSEditorDataKeys.EDITOR_CELL);
-      MapSequence.fromMap(_params).put("editorCell", p);
       if (p == null) {
         return false;
       }
     }
     {
       SModel p = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
-      MapSequence.fromMap(_params).put("model", p);
       if (p == null) {
         return false;
       }
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
@@ -84,35 +80,33 @@ public class HighlightUsages_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("editing.highlightUsages");
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        NodeHighlightManager highlightManager = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager();
-        EditorMessageOwner messageOwner = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightMessagesOwner();
-        SNode node = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("editorCell")));
-        Set<SReference> usages = FindUsagesFacade.getInstance().findUsages(new ModelsScope(((SModel) MapSequence.fromMap(_params).get("model"))), Collections.<SNode>singleton(node), new EmptyProgressMonitor());
-        boolean highlight = highlightManager.getMessagesFor(node, messageOwner).isEmpty();
-        if (SNodeOperations.getContainingRoot(node) == ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getRootCell().getSNode().getContainingRoot()) {
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
+      NodeHighlightManager highlightManager = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getHighlightManager();
+      EditorMessageOwner messageOwner = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getHighlightMessagesOwner();
+      SNode node = APICellAdapter.getSNodeWRTReference(event.getData(MPSEditorDataKeys.EDITOR_CELL));
+      Set<SReference> usages = FindUsagesFacade.getInstance().findUsages(new ModelsScope(event.getData(MPSCommonDataKeys.CONTEXT_MODEL)), Collections.<SNode>singleton(node), new EmptyProgressMonitor());
+      boolean highlight = highlightManager.getMessagesFor(node, messageOwner).isEmpty();
+      if (SNodeOperations.getContainingRoot(node) == event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getRootCell().getSNode().getContainingRoot()) {
+        if (highlight) {
+          highlightManager.mark(node, HighlightConstants.NODE_COLOR, "source node", messageOwner);
+        } else {
+          for (SimpleEditorMessage message : ListSequence.fromList(highlightManager.getMessagesFor(node, messageOwner))) {
+            highlightManager.unmark(message);
+          }
+        }
+      }
+      for (SReference ref : SetSequence.fromSet(usages)) {
+        if (ref.getSourceNode().getContainingRoot() == event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getRootCell().getSNode().getContainingRoot()) {
           if (highlight) {
-            highlightManager.mark(node, HighlightConstants.NODE_COLOR, "source node", messageOwner);
+            highlightManager.mark(((SNode) ref.getSourceNode()), HighlightConstants.USAGES_COLOR, "usage", messageOwner);
           } else {
-            for (SimpleEditorMessage message : ListSequence.fromList(highlightManager.getMessagesFor(node, messageOwner))) {
+            for (SimpleEditorMessage message : ListSequence.fromList(highlightManager.getMessagesFor(((SNode) ref.getSourceNode()), messageOwner))) {
               highlightManager.unmark(message);
             }
           }
         }
-        for (SReference ref : SetSequence.fromSet(usages)) {
-          if (ref.getSourceNode().getContainingRoot() == ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getRootCell().getSNode().getContainingRoot()) {
-            if (highlight) {
-              highlightManager.mark(((SNode) ref.getSourceNode()), HighlightConstants.USAGES_COLOR, "usage", messageOwner);
-            } else {
-              for (SimpleEditorMessage message : ListSequence.fromList(highlightManager.getMessagesFor(((SNode) ref.getSourceNode()), messageOwner))) {
-                highlightManager.unmark(message);
-              }
-            }
-          }
-        }
-        highlightManager.repaintAndRebuildEditorMessages();
       }
+      highlightManager.repaintAndRebuildEditorMessages();
     });
   }
 }

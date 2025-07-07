@@ -15,7 +15,6 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -42,11 +41,7 @@ public class MappingConfigFinder implements IFinder {
   public SearchResults<SNode> find(SearchQuery query, ProgressMonitor monitor) {
     List<SearchResult<SNode>> results = new ArrayList<SearchResult<SNode>>();
     Iterable<SModel> ownTemplateModels = myGenerator.getOwnTemplateModels();
-    Iterable<SNode> mappingConfigs = Sequence.fromIterable(ownTemplateModels).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(((SModel) it), CONCEPTS.MappingConfiguration$7j);
-      }
-    });
+    Iterable<SNode> mappingConfigs = Sequence.fromIterable(ownTemplateModels).translate((it) -> SModelOperations.roots(((SModel) it), CONCEPTS.MappingConfiguration$7j));
     List<SNode> nodesToCheck = new ArrayList<SNode>();
     for (SNode mappingConfig : mappingConfigs) {
       for (SNode rule : SNodeOperations.ofConcept(SNodeOperations.getChildren(mappingConfig), CONCEPTS.BaseMappingRule$O5)) {

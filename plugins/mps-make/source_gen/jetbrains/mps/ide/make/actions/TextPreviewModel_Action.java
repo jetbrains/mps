@@ -55,6 +55,7 @@ public class TextPreviewModel_Action extends BaseAction {
     super("Preview Generated Text", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -112,7 +113,7 @@ public class TextPreviewModel_Action extends BaseAction {
     final SNodeReference contextNode = (event.getData(MPSCommonDataKeys.NODE) == null ? null : event.getData(MPSCommonDataKeys.NODE).getReference());
     IMakeService makeService = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(MakeServiceComponent.class).get();
     if (makeService.openNewSession(session)) {
-      IScript scr = new ScriptBuilder(mpsProject.getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGenToMemory")).toScript();
+      IScript scr = new ScriptBuilder(mpsProject.getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.make.facets.Generate"), new IFacet.Name("jetbrains.mps.make.facets.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.TextGen.textGenToMemory")).toScript();
       SModel model = TextPreviewModel_Action.this.modelToGenerate(event);
       final SModelReference model2generateRef = model.getReference();
       final Future<IResult> future = makeService.make(session, new ModelsToResources(Sequence.<SModel>singleton(model)).resources(), scr);

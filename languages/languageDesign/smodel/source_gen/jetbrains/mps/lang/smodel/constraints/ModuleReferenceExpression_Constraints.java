@@ -22,11 +22,7 @@ public class ModuleReferenceExpression_Constraints extends BaseConstraintsDescri
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$cM30, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.name$cM30, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {

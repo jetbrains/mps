@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import java.util.Map;
@@ -50,7 +49,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return String.format(_context.getTemplateValue(), SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.clz$Kh$s), PROPS.name$MnvL), SPropertyOperations.getString(_context.getNode(), PROPS.namespace$Ki2u));
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
-    return String.format(_context.getTemplateValue(), SPropertyOperations.getString(((SNode) _context.getVariable("var:key")), PROPS.namespace$Ki2u), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));
+    return String.format(_context.getTemplateValue(), SPropertyOperations.getString((SNode) _context.getVariable("loop:inputNode"), PROPS.namespace$Ki2u), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
     return String.format(_context.getTemplateValue(), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));
@@ -63,7 +62,11 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
     // node here is ClassExport
-    return _context.getOutputForInputAndLabel("EXPORTED_METHOD", ((SNode) _context.getVariable("var:loopInput")), _context.getNode());
+    return _context.getOutputForInputAndLabel("EXPORTED_METHOD_UNIQ", ((SNode) _context.getVariable("var:loopInput")), _context.getNode());
+  }
+  public static Object referenceMacro_GetReferent_2_1(final ReferenceMacroContext _context) {
+    SNode firstMethod = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.methods$YPx5)).first();
+    return ListSequence.fromList(_context.getOutputListForInputAndLabel("EXPORTED_METHOD_MANY", _context.getNode(), firstMethod)).last();
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.ClassExport$s7);
@@ -77,14 +80,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
     // FIXME I'd like to use LOOP.inputNode here once MPS-32699 is merged into master
     final SNode rtc = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.RefTestClass$MJ);
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ClassExport$s7)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.clz$Kh$s) == rtc;
-      }
-    });
-  }
-  public static Object varMacro_Value_1_0(final TemplateVarContext _context) {
-    return _context.getNode();
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ClassExport$s7)).where((it) -> SLinkOperations.getTarget(it, LINKS.clz$Kh$s) == rtc);
   }
   public static Object varMacro_Value_2_0(final TemplateVarContext _context) {
     return _context.getNode();
@@ -95,8 +91,15 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getNode();
   }
   public static SNode labelMapNode1_1(final TemplateQueryContext _context) {
-    // FIXME I'd like to use LOOP.inputNode once MPS-32699 is merged into master
-    return ((SNode) _context.getVariable("var:key"));
+    return (SNode) _context.getVariable("loop:inputNode");
+  }
+  public static SNode labelMapNode1_2(final TemplateQueryContext _context) {
+    // RefTestClass
+    return SLinkOperations.getTarget((SNode) _context.getVariable("loop:inputNode"), LINKS.clz$Kh$s);
+  }
+  public static SNode labelMapNode1_3(final TemplateQueryContext _context) {
+    // RefTestMethod
+    return _context.getNode();
   }
   private final Map<String, CreateRootCondition> crcMethods = new HashMap<String, CreateRootCondition>();
   {
@@ -199,6 +202,7 @@ public class QueriesGenerated extends QueryProviderBase {
   {
     rtqMethods.put("7424854434325180241", new RTQ(0, null));
     rtqMethods.put("7424854434325140594", new RTQ(1, null));
+    rtqMethods.put("2735079070568456143", new RTQ(2, null));
   }
   @NotNull
   @Override
@@ -219,6 +223,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.referenceMacro_GetReferent_1_0(ctx);
         case 1:
           return QueriesGenerated.referenceMacro_GetReferent_2_0(ctx);
+        case 2:
+          return QueriesGenerated.referenceMacro_GetReferent_2_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -226,8 +232,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, VariableValueQuery> vvqMethods = new HashMap<String, VariableValueQuery>();
   {
-    vvqMethods.put("7424854434324659623", new VVQ(0));
-    vvqMethods.put("7424854434325145669", new VVQ(1));
+    vvqMethods.put("7424854434325145669", new VVQ(0));
   }
   @NotNull
   @Override
@@ -244,8 +249,6 @@ public class QueriesGenerated extends QueryProviderBase {
     public Object evaluate(@NotNull TemplateVarContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
-          return QueriesGenerated.varMacro_Value_1_0(ctx);
-        case 1:
           return QueriesGenerated.varMacro_Value_2_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -256,6 +259,8 @@ public class QueriesGenerated extends QueryProviderBase {
   {
     liqMethods.put("7424854434324670253", new LIQ(0));
     liqMethods.put("7424854434324672472", new LIQ(1));
+    liqMethods.put("2735079070568378201", new LIQ(2));
+    liqMethods.put("2735079070568381166", new LIQ(3));
   }
   @NotNull
   @Override
@@ -276,6 +281,10 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.labelMapNode1_0(ctx);
         case 1:
           return QueriesGenerated.labelMapNode1_1(ctx);
+        case 2:
+          return QueriesGenerated.labelMapNode1_2(ctx);
+        case 3:
+          return QueriesGenerated.labelMapNode1_3(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }

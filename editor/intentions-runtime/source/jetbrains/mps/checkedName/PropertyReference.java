@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,12 @@
 package jetbrains.mps.checkedName;
 
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public class PropertyReference {
-  private SNode myNode;
-  private SProperty myProperty;
-
-  @Deprecated
-  @ToRemove(version = 2019.2)
-  public PropertyReference(SNode node, String propertyName) {
-    myNode = node;
-    ConceptMetaInfoConverter concept = (ConceptMetaInfoConverter) node.getConcept();
-    myProperty = concept.convertProperty(propertyName);
-  }
+  private final SNode myNode;
+  private final SProperty myProperty;
 
   public PropertyReference(SNode node, SProperty property) {
     myNode = node;
@@ -44,5 +35,4 @@ public class PropertyReference {
   public SProperty getProperty() {
     return myProperty;
   }
-
 }

@@ -10,20 +10,18 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.generator.helper.GeneratorFragmentLookup;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import java.util.Map;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -47,59 +45,33 @@ public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements Mo
       return false;
     }
     final Wrappers._boolean result = new Wrappers._boolean();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        result.value = ListSequence.fromList(target).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$KA) || SNodeOperations.isInstanceOf(it, CONCEPTS.DataTypeDeclaration$AD);
-          }
-        });
-      }
-    });
+    project.getRepository().getModelAccess().runReadAction(() -> result.value = ListSequence.fromList(target).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$KA) || SNodeOperations.isInstanceOf(it, CONCEPTS.DataTypeDeclaration$AD)));
     return result.value;
   }
   public void execute(final MPSProject project, List<SNode> nodesToMove) {
-    final List<SNode> conceptsToMove = Sequence.fromIterable(SNodeOperations.ofConcept(nodesToMove, CONCEPTS.AbstractConceptDeclaration$KA)).toListSequence();
-    final List<SNode> datatypesToMove = Sequence.fromIterable(SNodeOperations.ofConcept(nodesToMove, CONCEPTS.DataTypeDeclaration$AD)).toListSequence();
+    final List<SNode> conceptsToMove = Sequence.fromIterable(SNodeOperations.ofConcept(nodesToMove, CONCEPTS.AbstractConceptDeclaration$KA)).toList();
+    final List<SNode> datatypesToMove = Sequence.fromIterable(SNodeOperations.ofConcept(nodesToMove, CONCEPTS.DataTypeDeclaration$AD)).toList();
 
     String name = chooseName(conceptsToMove, datatypesToMove);
 
     final Wrappers._T<List<SModelReference>> structureModels = new Wrappers._T<List<SModelReference>>();
     final Wrappers._boolean hasGenerator = new Wrappers._boolean(false);
     final Wrappers._boolean notDeployed = new Wrappers._boolean();
-    project.getRepository().getModelAccess().runReadAction(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<List<SModelReference>>() {
-      public List<SModelReference> invoke() {
-        notDeployed.value = ListSequence.fromList(conceptsToMove).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(checkDeployed(project, it, true));
-          }
-        });
-        hasGenerator.value = ListSequence.fromList(conceptsToMove).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode node) {
-            return ListSequence.fromList(new GeneratorFragmentLookup(node).collect()).isNotEmpty();
-          }
-        });
-        Iterable<SModule> modules = project.getProjectModules();
-        return structureModels.value = Sequence.fromIterable(modules).ofType(Language.class).select(new ISelector<Language, SModelReference>() {
-          public SModelReference select(Language it) {
-            return check_xd29i2_a0a0a0a0a3a0i0f(SModuleOperations.getAspect(it, "structure"));
-          }
-        }).where(new NotNullWhereFilter<SModelReference>()).toListSequence();
-      }
-    }));
+    project.getRepository().getModelAccess().runReadAction(() -> {
+      notDeployed.value = ListSequence.fromList(conceptsToMove).any((it) -> !(checkDeployed(project, it, true)));
+      hasGenerator.value = ListSequence.fromList(conceptsToMove).any((node) -> ListSequence.fromList(new GeneratorFragmentLookup(node).collect()).isNotEmpty());
+      Iterable<SModule> modules = project.getProjectModules();
+      structureModels.value = Sequence.fromIterable(modules).ofType(Language.class).select((it) -> check_xd29i2_a0a0a0a0a3a0i0f(SModuleOperations.getAspect(it, "structure"))).where(new NotNullWhereFilter()).toList();
+    });
     final SModelReference targetModelRef = new MoveConceptDialog(project, name, structureModels.value, hasGenerator.value, notDeployed.value).showAndGetSelected();
     if (targetModelRef == null) {
       return;
     }
 
     final Wrappers._T<SModel> targetModel = new Wrappers._T<SModel>();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        targetModel.value = targetModelRef.resolve(project.getRepository());
-      }
-    });
+    project.getRepository().getModelAccess().runReadAction(() -> targetModel.value = targetModelRef.resolve(project.getRepository()));
 
-    MoveNodesUtil.moveTo(project, name, MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel.value), project)).withValues(nodesToMove));
+    MoveNodesUtil.moveTo(project, name, MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel.value), project), nodesToMove)));
   }
   private static String chooseName(final List<SNode> conceptsToMove, final List<SNode> datatypesToMove) {
     int size = ListSequence.fromList(conceptsToMove).count() + ListSequence.fromList(datatypesToMove).count();

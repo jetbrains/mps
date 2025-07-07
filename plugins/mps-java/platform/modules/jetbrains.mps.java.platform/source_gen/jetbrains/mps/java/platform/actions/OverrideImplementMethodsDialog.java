@@ -11,17 +11,15 @@ import com.intellij.ui.NonFocusableCheckBox;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Comparator;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.Objects;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -38,11 +36,7 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
 
   @Override
   protected void initOptions() {
-    try {
-      myOptions = myProject.getComponent(OverrideImplementMethodComponent.class).getState();
-    } catch (Exception e) {
-      myOptions = null;
-    }
+    myOptions = OverrideImplementMethodComponent.getInstance(myProject).getState();
 
     myAddReturn = new NonFocusableCheckBox("Add return keyword");
     myAddReturn.setMnemonic('r');
@@ -56,7 +50,7 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
   @Override
   protected String getText(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$Ix)) {
-      return ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+      return ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
     }
     return super.getText(node);
   }
@@ -82,11 +76,10 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
 
   @Override
   public void dispose() {
-    if (myOptions != null) {
-      myOptions.addOverrideAnnotation = myInsertOverride.isSelected();
-      myOptions.addReturnsOnImplement = myAddReturn.isSelected();
-      myOptions.removeAttributes = myRemoveAttributes.isSelected();
-    }
+    // imply getState gave us direct instance so we can modify options
+    myOptions.addOverrideAnnotation = myInsertOverride.isSelected();
+    myOptions.addReturnsOnImplement = myAddReturn.isSelected();
+    myOptions.removeAttributes = myRemoveAttributes.isSelected();
     super.dispose();
   }
 
@@ -96,37 +89,31 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
     for (SNode c : allSuperClassifiers) {
       MapSequence.fromMap(containerIndex).put(c, i++);
     }
-    return Sequence.fromIterable(methods).sort(new Comparator<SNode>() {
-      public int compare(SNode a, SNode b) {
-        SNode parentA = SNodeOperations.getParent(a);
-        SNode parentB = SNodeOperations.getParent(b);
-        if (parentA == parentB) {
-          SContainmentLink aRole = SNodeOperations.getContainingLink(a);
-          SContainmentLink bRole = SNodeOperations.getContainingLink(b);
+    return Sequence.fromIterable(methods).sort((a, b) -> {
+      SNode parentA = SNodeOperations.getParent(a);
+      SNode parentB = SNodeOperations.getParent(b);
+      if (parentA == parentB) {
+        SContainmentLink aRole = SNodeOperations.getContainingLink(a);
+        SContainmentLink bRole = SNodeOperations.getContainingLink(b);
 
-          if (!(Objects.equals(aRole, bRole))) {
-            return aRole.getName().compareTo(bRole.getName());
-          }
-
-          return new Integer(IterableUtil.asList(parentA.getChildren(aRole)).indexOf(a)).compareTo(IterableUtil.asList(parentB.getChildren(bRole)).indexOf(b));
+        if (!(Objects.equals(aRole, bRole))) {
+          return aRole.getName().compareTo(bRole.getName());
         }
-        int iA = (parentA != null && MapSequence.fromMap(containerIndex).containsKey(parentA) ? MapSequence.fromMap(containerIndex).get(parentA) : 0);
-        int iB = (parentB != null && MapSequence.fromMap(containerIndex).containsKey(parentB) ? MapSequence.fromMap(containerIndex).get(parentB) : 0);
-        return new Integer(iA).compareTo(iB);
+
+        return new Integer(IterableUtil.asList(parentA.getChildren(aRole)).indexOf(a)).compareTo(IterableUtil.asList(parentB.getChildren(bRole)).indexOf(b));
       }
+      int iA = (parentA != null && MapSequence.fromMap(containerIndex).containsKey(parentA) ? MapSequence.fromMap(containerIndex).get(parentA) : 0);
+      int iB = (parentB != null && MapSequence.fromMap(containerIndex).containsKey(parentB) ? MapSequence.fromMap(containerIndex).get(parentB) : 0);
+      return new Integer(iA).compareTo(iB);
     }, true);
   }
 
   public static Iterable<SNode> sortMethods(SNode baseClassifier, Iterable<SNode> methods) {
-    return sortMethods(((List<SNode>) BHReflection.invoke0(baseClassifier, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("getAllSuperClassifiers", CONCEPTS.Classifier$Ix, "59G_UM6ah0X"))), methods);
+    return sortMethods(((List<SNode>) BHReflection.invoke0(baseClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("getAllSuperClassifiers", 5939288775835848765L, 0x5745e3015c8914d3L))), methods);
   }
 
   public static SNodeReference[] toNodePointers(Iterable<SNode> methods) {
-    return Sequence.fromIterable(methods).select(new ISelector<SNode, SNodeReference>() {
-      public SNodeReference select(SNode it) {
-        return SNodeOperations.getPointer(it);
-      }
-    }).toGenericArray(SNodeReference.class);
+    return Sequence.fromIterable(methods).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
   }
 
   private static final class CONCEPTS {

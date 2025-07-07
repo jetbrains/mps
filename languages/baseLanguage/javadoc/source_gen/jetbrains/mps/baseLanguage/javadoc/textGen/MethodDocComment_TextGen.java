@@ -8,7 +8,6 @@ import jetbrains.mps.text.impl.TextGenSupport;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -20,36 +19,20 @@ public class MethodDocComment_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     DocCommentTextGen.docCommentStart(ctx.getPrimaryInput(), ctx);
 
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterBlockDocTag$ie);
-      }
-    })) {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterBlockDocTag$ie))) {
       tgs.appendNode(item);
     }
     for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.param$LRA1)) {
       tgs.appendNode(item);
     }
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ThrowsBlockDocTag$bu);
-      }
-    })) {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ThrowsBlockDocTag$bu))) {
       tgs.appendNode(item);
     }
     for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.throwsTag$gRkU)) {
       tgs.appendNode(item);
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$stUD)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnBlockDocTag$KD);
-      }
-    })) {
-      tgs.appendNode(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnBlockDocTag$KD);
-        }
-      }).first());
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$stUD)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnBlockDocTag$KD))) {
+      tgs.appendNode(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnBlockDocTag$KD)).first());
     } else {
       if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.return$h3ZK) != null)) {
         tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.return$h3ZK));

@@ -13,8 +13,8 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.make.MakeSession;
+import jetbrains.mps.tool.builder.WorkerMessageHandler;
 import jetbrains.mps.internal.make.cfg.JavaCompileFacetInitializer;
 import jetbrains.mps.make.script.IScriptController;
 import java.util.concurrent.Future;
@@ -28,10 +28,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.smodel.resources.ModelsToResources;
-import jetbrains.mps.messages.IMessageHandler;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.messages.IMessage;
-import jetbrains.mps.tool.builder.WorkerBase;
 
 @GeneratedClass(node = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)/878521226301293996", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
 public abstract class BaseGeneratorWorker extends CoreWorker {
@@ -64,7 +60,14 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
     settings.setShowBadChildWarning(warnings);
     settings.setCreateStaticReferences(useStaticRefs);
     settings.setCheckModelsBeforeGeneration(false);
-    info(String.format("Generating: strict mode is %s, parallel generation is %s (%d threads), in-place is %s, warnings are %s, static references to replace dynamic is %s, skip unmodified models is %s", onoff[(strictMode ? 0 : 1)], onoff[(parallelMode ? 0 : 1)], (parallelMode ? threadCount : 1), onoff[(inplace ? 0 : 1)], onoff[(warnings ? 0 : 1)], onoff[(useStaticRefs ? 0 : 1)], onoff[(mySkipUnmodifiedModels ? 0 : 1)]));
+    if ("info".equalsIgnoreCase(gp.getMessageLevel())) {
+      settings.setShowInfo(true);
+      settings.setShowWarnings(true);
+    }
+    if ("warn".equalsIgnoreCase(gp.getMessageLevel())) {
+      settings.setShowWarnings(true);
+    }
+    info(String.format("Generating: strict mode is %s, parallel generation is %s (%d threads), in-place is %s, child warnings are %s, static references to replace dynamic is %s, skip unmodified models is %s", onoff[(strictMode ? 0 : 1)], onoff[(parallelMode ? 0 : 1)], (parallelMode ? threadCount : 1), onoff[(inplace ? 0 : 1)], onoff[(warnings ? 0 : 1)], onoff[(useStaticRefs ? 0 : 1)], onoff[(mySkipUnmodifiedModels ? 0 : 1)]));
   }
 
   protected void showStatistic() {
@@ -78,18 +81,14 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
       s.append(m);
     }
     info(s.toString());
-    Iterable<MResource> resources = Sequence.fromIterable(collectResources(project, modules)).toListSequence();
-    if (mySkipUnmodifiedModels && Sequence.fromIterable(resources).all(new IWhereFilter<MResource>() {
-      public boolean accept(MResource it) {
-        return Sequence.fromIterable(it.models()).isEmpty();
-      }
-    })) {
+    Iterable<MResource> resources = Sequence.fromIterable(collectResources(project, modules)).toList();
+    if (mySkipUnmodifiedModels && Sequence.fromIterable(resources).all((it) -> Sequence.fromIterable(it.models()).isEmpty())) {
       info("No models to generate. Skipping generation.");
       return;
     }
 
     myEnvironment.flushAllEvents();
-    final MakeSession session = new MakeSession(project, new MyMessageHandler(), true);
+    final MakeSession session = new MakeSession(project, new WorkerMessageHandler(this), true);
     JavaCompileFacetInitializer jcfi = new JavaCompileFacetInitializer().skipCompilation(mySkipCompilation).setJavaCompileOptions(myJavaCompilerOptions);
     IScriptController controller = new IScriptController.Stub2(session, jcfi);
     Future<IResult> res = new BuildMakeService().make(session, resources, null, controller, new EmptyProgressMonitor());
@@ -109,20 +108,18 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
     // FIXME it's odd to have distinct set of modules but lock repository to access its modules.
     // Shall rather keem modules as part of the project
     final Wrappers._T<Iterable<SModel>> models = new Wrappers._T<Iterable<SModel>>(null);
-    project.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        for (SModule mod : modules) {
-          models.value = Sequence.fromIterable(models.value).concat(Sequence.fromIterable(mod.getModels()));
-        }
+    project.getModelAccess().runReadAction(() -> {
+      for (SModule mod : modules) {
+        models.value = Sequence.fromIterable(models.value).concat(Sequence.fromIterable(mod.getModels()));
+      }
 
-        if (mySkipUnmodifiedModels) {
-          List<SModel> modelsList = (models.value == null ? ListSequence.fromList(new ArrayList<SModel>()) : Sequence.fromIterable(models.value).toListSequence());
-          int numberOfAllModels = ListSequence.fromList(modelsList).count();
+      if (mySkipUnmodifiedModels) {
+        List<SModel> modelsList = (models.value == null ? ListSequence.fromList(new ArrayList<SModel>()) : Sequence.fromIterable(models.value).toList());
+        int numberOfAllModels = ListSequence.fromList(modelsList).count();
 
-          ModelGenerationStatusManager mgsm = project.getComponent(ModelGenerationStatusManager.class);
-          models.value = mgsm.getModifiedModels(modelsList);
-          info("Found " + Sequence.fromIterable(models.value).count() + " modified models out of " + numberOfAllModels + " total models.");
-        }
+        ModelGenerationStatusManager mgsm = project.getComponent(ModelGenerationStatusManager.class);
+        models.value = mgsm.getModifiedModels(modelsList);
+        info("Found " + Sequence.fromIterable(models.value).count() + " modified models out of " + numberOfAllModels + " total models.");
       }
     });
 
@@ -130,28 +127,4 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
     return Sequence.fromIterable(new ModelsToResources(models.value).resources()).ofType(MResource.class);
   }
 
-  private class MyMessageHandler implements IMessageHandler {
-    /*package*/ MyMessageHandler() {
-    }
-
-    @Override
-    public void handle(@NotNull IMessage msg) {
-      switch (msg.getKind()) {
-        case ERROR:
-          if (msg.getException() != null) {
-            BaseGeneratorWorker.this.error(WorkerBase.extractStackTrace(msg.getException()).toString());
-          } else {
-            BaseGeneratorWorker.this.error(msg.getText());
-          }
-          break;
-        case WARNING:
-          BaseGeneratorWorker.this.warning(msg.getText());
-          break;
-        case INFORMATION:
-          BaseGeneratorWorker.this.info(msg.getText());
-          break;
-        default:
-      }
-    }
-  }
 }

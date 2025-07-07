@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.extapi.model.TransientSModel;
-import jetbrains.mps.project.structure.LanguageDescriptorModelProvider;
+import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
@@ -43,7 +43,7 @@ public class InternalModelsFindUsagesParticipant implements Disposable, FindUsag
           processedConsumer.consume(model);
         }
       } else
-      if (model instanceof LanguageDescriptorModelProvider.LanguageModelDescriptor) {
+      if (SModelStereotype.isDescriptorModel(model)) {
         // FIXME why on earth do we consume descriptor model here? Though it's internal model indeed, why there's assumption it's empty and what's wrong with an empty model
         //        not processed by a general 'walk-it' mechanism? What's that "optimization" (5fa1980f) was about?
         // language descriptor models are empty
@@ -55,7 +55,7 @@ public class InternalModelsFindUsagesParticipant implements Disposable, FindUsag
   @Override
   public void findInstances(Collection<SModel> scope, Set<SAbstractConcept> concepts, Consumer<SNode> consumer, Consumer<SModel> processedConsumer) {
     for (SModel model : scope) {
-      if (model instanceof LanguageDescriptorModelProvider.LanguageModelDescriptor) {
+      if (SModelStereotype.isDescriptorModel(model)) {
         // FIXME see above
         // language descriptor models are empty
         processedConsumer.consume(model);
@@ -67,7 +67,7 @@ public class InternalModelsFindUsagesParticipant implements Disposable, FindUsag
   @Override
   public void findModelUsages(Collection<SModel> scope, Set<SModelReference> modelReferences, Consumer<SModel> consumer, Consumer<SModel> processedConsumer) {
     for (SModel model : scope) {
-      if (model instanceof LanguageDescriptorModelProvider.LanguageModelDescriptor) {
+      if (SModelStereotype.isDescriptorModel(model)) {
         // language descriptor models are empty
         processedConsumer.consume(model);
       }

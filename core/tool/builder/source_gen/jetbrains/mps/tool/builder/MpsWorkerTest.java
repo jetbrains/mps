@@ -29,16 +29,14 @@ public class MpsWorkerTest extends CoreWorker {
     final MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
     PersistenceRegistry pf = myEnvironment.getPlatform().findComponent(PersistenceRegistry.class);
     final SModuleReference moduleRef = pf.createModuleReference(myModuleRef);
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        try {
-          SModule module = moduleRef.resolve(repo);
-          if (module == null ^ myIsPresent) {
-            new File("result.txt").createNewFile();
-          }
-        } catch (Exception e) {
-          e.printStackTrace();
+    repo.getModelAccess().runReadAction(() -> {
+      try {
+        SModule module = moduleRef.resolve(repo);
+        if (module == null ^ myIsPresent) {
+          new File("result.txt").createNewFile();
         }
+      } catch (Exception e) {
+        e.printStackTrace();
       }
     });
   }

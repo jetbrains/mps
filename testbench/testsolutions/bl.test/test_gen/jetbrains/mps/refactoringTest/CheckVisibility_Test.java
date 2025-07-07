@@ -4,11 +4,10 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.InlineMethodRefactoring;
@@ -16,13 +15,11 @@ import org.junit.Assert;
 
 @MPSLaunch
 public class CheckVisibility_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(CheckVisibility_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(CheckVisibility_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false));
 
   public CheckVisibility_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -36,15 +33,21 @@ public class CheckVisibility_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053114874", "1230053114900");
+    }
+
     public void test_CheckVisibility() throws Exception {
-      addNodeById("1230053114874");
-      addNodeById("1230053114900");
-      InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230053114888"));
-      Assert.assertTrue(ref.getProblems().length() > 0);
-      ref = new InlineMethodRefactoring(getNodeById("1230053114893"));
-      Assert.assertTrue(ref.getProblems().length() > 0);
-      ref = new InlineMethodRefactoring(getNodeById("1230053114898"));
-      Assert.assertTrue(ref.getProblems().length() == 0);
+      initTestNodes();
+      runWithinCommand(() -> {
+        InlineMethodRefactoring ref = new InlineMethodRefactoring(getAnnotatedNode("call1"));
+        Assert.assertTrue(ref.getProblems().length() > 0);
+        ref = new InlineMethodRefactoring(getAnnotatedNode("call2"));
+        Assert.assertTrue(ref.getProblems().length() > 0);
+        ref = new InlineMethodRefactoring(getAnnotatedNode("call3"));
+        Assert.assertTrue(ref.getProblems().length() == 0);
+      });
     }
 
   }

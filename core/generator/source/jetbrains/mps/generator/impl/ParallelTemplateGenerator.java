@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -114,7 +114,10 @@ public class ParallelTemplateGenerator extends TemplateGenerator {
   private void pushTask(RootGenerationTask task, Pair<SNode, SNodeReference> pair) {
     if (myTracePerformancePerRoot) {
       PerformanceTracer pt = new PerformanceTracer("");
-      task.configure(pt, new QueryExecutionContextWithTracing(getDefaultExecutionContext(), pt));
+      // I'm not quite fond of unwrap() approach, but don't want to resort to cast/instanceof
+      // to get to raw QEC. I need raw QEC to avoid sharing PerformanceTracer instance of the main thread
+      // with all the other per-root threads.
+      task.configure(pt, new QueryExecutionContextWithTracing(getDefaultExecutionContext().unwrap(), pt));
     } else {
       task.configure(null, getDefaultExecutionContext());
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
   private final ProjectFileIndex myProjectFileIndex;
 
   /*package*/ ProjectScope(@NotNull MPSProject mpsProject) {
+    super(mpsProject.getProject());
     myProjectFileIndex = ProjectRootManager.getInstance(mpsProject.getProject()).getFileIndex();
   }
 

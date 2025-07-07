@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.console.actions.ClosureHoldingNodeUtil;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.ide.findusages.model.SearchResults;
@@ -82,15 +81,7 @@ public class ConsoleStreamImpl implements ConsoleStream {
     if (resultsCount == 0) {
       addText("empty sequence");
     } else {
-      addClosure(new Runnable() {
-        public void run() {
-          project.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              ConsoleUtil.show(project, results);
-            }
-          });
-        }
-      }, resultsCount + " " + resultDescription);
+      addClosure(() -> project.getRepository().getModelAccess().runReadAction(() -> ConsoleUtil.show(project, results)), resultsCount + " " + resultDescription);
     }
   }
 

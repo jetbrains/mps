@@ -8,7 +8,7 @@ import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
 public class KeymapUtil {
 
   public static String serializeKeymap(SEnumerationLiteral keymap) {
-    switch (enumSwitchIndex_cql3qn_a0a0b.indexNullable(keymap)) {
+    switch (enumSwitchIndex.indexNullable(keymap)) {
       case 0:
         return "Mac OS X";
       case 1:
@@ -25,5 +25,5 @@ public class KeymapUtil {
         return null;
     }
   }
-  private static final EnumerationLiteralsIndex enumSwitchIndex_cql3qn_a0a0b = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, 0x15afe07f2a9bb079L, 0x2b52ed8175294e87L, 0x1a8587bfae037330L, 0x1a8587bfae037331L, 0x1a8587bfae037332L, 0x21ea68327baf70c0L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, 0x15afe07f2a9bb079L, 0x2b52ed8175294e87L, 0x1a8587bfae037330L, 0x1a8587bfae037331L, 0x1a8587bfae037332L, 0x21ea68327baf70c0L);
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,20 +57,14 @@ famila
  */
 public class MPSCompilerComponent implements ProjectComponent {
   private final Project myProject;
-  private final CompilerManager compilerManager;
-  private final CompilerConfiguration compilerConfiguration;
-  private final MPSCoreComponents myCoreComponents;
 
-  public MPSCompilerComponent(Project project, CompilerManager compilerManager, CompilerConfiguration compilerConfiguration, MPSCoreComponents mpsCore) {
+  public MPSCompilerComponent(Project project) {
     myProject = project;
-    this.compilerManager = compilerManager;
-    this.compilerConfiguration = compilerConfiguration;
-    myCoreComponents = mpsCore;
   }
 famila
   @Override currently
   public void projectOpened() {
-<ranch: MPS2.5.3.1
+branch: MPS2.5.3.1
     CompilerManager compilerManager = CompilerManager.getInstance(project);
     compilerManager.addBeforeTask(new CompileTask() {
       @Override
@@ -86,7 +80,18 @@ famila
 famila
     myProject.getMessageBus().connect().subscribe(CustomBuilderMessageHandler.TOPIC, new RefreshFilesCompilationStatusListener());
     myProject.getMessageBus().connect().subscribe(CustomBuilderMessageHandler.TOPIC, new NavigateToNodesWithErrors(errorMessages));
-famila
+    Company: MMG
+  <description>MPS Core</description
+   branch: MPS2.5.3.1
+  <version>2.5.3.1</version>
+  <vendor url="http://www.jetbrains.com/mps/" logo="/MPS_16.png">JetBrains</vendor>
+  <idea-version since-build="117.105"></idea-version>
+=======human resources 
+  <version>2021.1</version>
+=======human resources
+  <description>The plugin provides support for MPS in IDEA</description>
+  <version>2023</version>
+  branch: master
     compilerManager.addCompilableFileType(MPSFileTypeFactory.MPS_FILE_TYPE);
     compilerManager.addCompilableFileType(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE);
     for (String ext : Arrays.asList(MPSExtentions.MODEL, MPSExtentions.MODEL_ROOT, MPSExtentions.MODEL_HEADER)) {
@@ -106,7 +111,7 @@ famila
       final File repositoryCache = new File(CompilerPaths.getCompilerSystemDirectory(myProject), "mps_repository.dat");
       final long start = System.nanoTime();
       final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
-      final MPSModuleRepository deploymentRepo = myCoreComponents.getPlatform().findComponent(MPSModuleRepository.class);
+      final MPSModuleRepository deploymentRepo = MPSCoreComponents.getInstance().getPlatform().findComponent(MPSModuleRepository.class);
       deploymentRepo.getModelAccess().runReadAction(() -> {
         CachedRepositoryData cachedRepositoryData = new MPSRepositoryUtil(context).buildData(deploymentRepo.getModules(), mpsProject.getProjectModules());
         ModelOutputStream mos = null;
@@ -146,17 +151,7 @@ famila
   public void projectClosed() {
   }
 famila
-  @Override
-  public void initComponent() {
-  }
-famila
-  @Override null
-  public void disposeComponent() {
-  }
-famila
-  @Override checkout
-  @...
-  public String getComponentName() {
+  @Override public String getComponentName() {
     return "MPS Compiler Component";
   }
 famila
@@ -201,3 +196,16 @@ owner @Override classes
 }
 famila
 famila
+99%
+  public void initComponent() {
+  }
+famila
+  @Override home
+  public void disposeComponent() {
+  }
+famila
+  @Override checkout
+  @...
+=======CD
+  @...
+branch: master

@@ -2,10 +2,10 @@
 <model ref="r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)">
   <persistence version="9" />
   <languages>
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="dcb5a83a-19a8-44ff-a4cb-fc7d324ecc63" name="jetbrains.mps.core.xml.sax" version="0" />
     <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
@@ -13,14 +13,14 @@
     <import index="kart" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:org.xml.sax(JDK/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="mdm6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.persistence.lines(MPS.Core/)" />
-    <import index="5fzo" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.persistence.def(MPS.Core/)" />
     <import index="4it6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.loading(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
-    <import index="mmaq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jdom(MPS.Core/)" />
     <import index="7a2w" ref="r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)" />
     <import index="llmc" ref="r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)" />
     <import index="iho" ref="r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)" />
+    <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
+    <import index="m9tn" ref="r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -40,7 +40,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
@@ -90,6 +90,9 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -143,13 +146,11 @@
         <child id="1154542793668" name="componentType" index="3g7fb8" />
         <child id="1154542803372" name="initValue" index="3g7hyw" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
-      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk">
-        <child id="1212687122400" name="typeParameter" index="1pMfVU" />
-      </concept>
+      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
@@ -164,7 +165,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -237,7 +238,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -291,14 +292,14 @@
       <node concept="3uibUv" id="6FRttwSkizp" role="CQp6X">
         <ref role="3uigEE" to="33ny:~ArrayList" resolve="ArrayList" />
         <node concept="3uibUv" id="6FRttwSkiEV" role="11_B2D">
-          <ref role="3uigEE" to="5fzo:~IReferencePersister" resolve="IReferencePersister" />
+          <ref role="3uigEE" to="m9tn:3l_uSvPr8Lf" resolve="IReferencePersister" />
         </node>
       </node>
     </node>
     <node concept="CQp6Y" id="3pcVzyPOfM9" role="CQp1A">
       <property role="TrG5h" value="visibleModelElements" />
       <node concept="3uibUv" id="3pcVzyPOfMb" role="CQp6X">
-        <ref role="3uigEE" to="5fzo:~SAXVisibleModelElements" resolve="SAXVisibleModelElements" />
+        <ref role="3uigEE" to="m9tn:3l_uSvPr3_1" resolve="SAXVisibleModelElements" />
       </node>
     </node>
     <node concept="CQp6Y" id="3vSwQtv$CKJ" role="CQp1A">
@@ -521,10 +522,8 @@
               </node>
               <node concept="2ShNRf" id="6FRttwSkoLu" role="37vLTx">
                 <node concept="1pGfFk" id="6FRttwSkoLw" role="2ShVmc">
+                  <property role="373rjd" value="true" />
                   <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
-                  <node concept="3uibUv" id="6FRttwSkoLy" role="1pMfVU">
-                    <ref role="3uigEE" to="5fzo:~IReferencePersister" resolve="IReferencePersister" />
-                  </node>
                 </node>
               </node>
             </node>
@@ -535,8 +534,8 @@
                 <ref role="CQp62" node="3pcVzyPOfM9" resolve="visibleModelElements" />
               </node>
               <node concept="2ShNRf" id="3pcVzyPOfMT" role="37vLTx">
-                <node concept="1pGfFk" id="3pcVzyPOfMV" role="2ShVmc">
-                  <ref role="37wK5l" to="5fzo:~SAXVisibleModelElements.&lt;init&gt;()" resolve="SAXVisibleModelElements" />
+                <node concept="HV5vD" id="3l_uSvPssKt" role="2ShVmc">
+                  <ref role="HV5vE" to="m9tn:3l_uSvPr3_1" resolve="SAXVisibleModelElements" />
                 </node>
               </node>
             </node>
@@ -590,7 +589,7 @@
             <node concept="3cpWsn" id="3pcVzyPOfMX" role="1Duv9x">
               <property role="TrG5h" value="referencePersister" />
               <node concept="3uibUv" id="3pcVzyPOfN0" role="1tU5fm">
-                <ref role="3uigEE" to="5fzo:~IReferencePersister" resolve="IReferencePersister" />
+                <ref role="3uigEE" to="m9tn:3l_uSvPr8Lf" resolve="IReferencePersister" />
               </node>
             </node>
             <node concept="CQp63" id="3pcVzyPOfN1" role="1DdaDG">
@@ -603,7 +602,7 @@
                     <ref role="3cqZAo" node="3pcVzyPOfMX" resolve="referencePersister" />
                   </node>
                   <node concept="liA8E" id="3pcVzyPOfN8" role="2OqNvi">
-                    <ref role="37wK5l" to="5fzo:~IReferencePersister.createReferenceInModel(jetbrains.mps.smodel.SModel,jetbrains.mps.smodel.persistence.def.VisibleModelElements)" resolve="createReferenceInModel" />
+                    <ref role="37wK5l" to="m9tn:3l_uSvPr8LN" resolve="createReferenceInModel" />
                     <node concept="CQp63" id="4bcSNcchNj1" role="37wK5m">
                       <ref role="CQp62" node="3vSwQtv$CKJ" resolve="model" />
                     </node>
@@ -1242,7 +1241,7 @@
                 <ref role="CQp62" node="3pcVzyPOfM9" resolve="visibleModelElements" />
               </node>
               <node concept="liA8E" id="3pcVzyPOfME" role="2OqNvi">
-                <ref role="37wK5l" to="5fzo:~SAXVisibleModelElements.addVisible(int,java.lang.String)" resolve="addVisible" />
+                <ref role="37wK5l" to="m9tn:3l_uSvPr3_l" resolve="addVisible" />
                 <node concept="2YIFZM" id="3pcVzyPOfMG" role="37wK5m">
                   <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String)" resolve="parseInt" />
                   <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />

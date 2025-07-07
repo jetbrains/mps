@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +53,13 @@ public class Status implements IStatus {
   public static class OK extends Status {
     public OK() {
       super(Code.OK, "");
+    }
+
+    /**
+     * @since 2022.1
+     */
+    public OK(String message) {
+      super(Code.OK, message == null ? "" : message);
     }
 
     public OK(Object userObject) {

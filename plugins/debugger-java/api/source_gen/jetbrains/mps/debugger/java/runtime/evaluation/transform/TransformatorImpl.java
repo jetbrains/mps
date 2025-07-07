@@ -16,15 +16,12 @@ import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -47,7 +44,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     myModel = SNodeOperations.getModel(node);
     // I know the exact way to reproduce a bug:
     // write an assertion with a comment 'this can't happen'
-    assert myModel != null : "This can't happen. " + node;
+    assert myModel != null : "This can't happen. " + SNodeOperations.present(node);
     myWhatToEvaluate = node;
   }
   @Override
@@ -120,11 +117,11 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
 
   private static void addLanguageImport(SModel model, SLanguage language) {
-    if (!((model instanceof SModelInternal))) {
+    if (!(model instanceof SModelInternal)) {
       return;
     }
     SModelInternal modelInternal = (SModelInternal) model;
-    if (!((modelInternal.importedLanguageIds().contains(language)))) {
+    if (!(modelInternal.importedLanguageIds().contains(language))) {
       modelInternal.addLanguage(language);
     }
   }
@@ -163,11 +160,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     }
 
     // and for all assignments
-    for (SNode baseAssignment : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.BaseAssignmentExpression$PA, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AssignmentExpression$SE));
-      }
-    })) {
+    for (SNode baseAssignment : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.BaseAssignmentExpression$PA, false, new SAbstractConcept[]{})).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.AssignmentExpression$SE)))) {
       baseAssignment.putUserObject(TransformatorImpl.LTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$splI)))));
       baseAssignment.putUserObject(TransformatorImpl.RTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(baseAssignment, LINKS.rValue$spNK)))));
     }
@@ -189,18 +182,14 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     }
 
     // last statement might become return statement during generation
-    SNode statement = ((SNode) BHReflection.invoke0(evaluateMethod, CONCEPTS.IMethodLike$L7, SMethodTrimmedId.create("getLastStatement", null, "i2fhS7A")));
+    SNode statement = ((SNode) BHReflection.invoke0(evaluateMethod, CONCEPTS.IMethodLike$L7, SMethodIdV2.create("getLastStatement", 1239354409446L, 0x5745e3015c8914d3L)));
     if (TransformationUtil.canMakeReturnStatement(statement)) {
       TransformationUtil.replaceReturnedExpressionIfNeeded(SLinkOperations.getTarget(SNodeOperations.cast(statement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M));
     }
 
   }
   private void replaceConstructors() {
-    for (SNode newExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.GenericNewExpression$Fh, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it) && TransformationUtil.isUnprocessed(SLinkOperations.getTarget(it, LINKS.creator$BsHW));
-      }
-    })) {
+    for (SNode newExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.GenericNewExpression$Fh, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it) && TransformationUtil.isUnprocessed(SLinkOperations.getTarget(it, LINKS.creator$BsHW)))) {
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(newExpression, LINKS.creator$BsHW), CONCEPTS.ClassCreator$ZG) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(newExpression), CONCEPTS.ThrowStatement$Zy))) {
         SNode constructor = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$BsHW), CONCEPTS.ClassCreator$ZG), LINKS.baseMethodDeclaration$pyYw);
         SNode fqNameNode = TransformationUtil.createClassFqNameNode(myModel, SNodeOperations.getNodeAncestor(constructor, CONCEPTS.ClassConcept$bK, false, false));
@@ -234,49 +223,25 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       }
     }
 
-    for (SNode newExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalNewExpression$Oj, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode newExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalNewExpression$Oj, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(newExpression), CONCEPTS.ThrowStatement$Zy))) {
-        TransformationUtil.replaceConstructor(newExpression, TransformationUtil.createStringLiteral(SPropertyOperations.getString(newExpression, PROPS.fqClassName$8kK7)), TransformationUtil.createStringLiteral(TransformationUtil.getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(newExpression, LINKS.actualArgument$HO1L)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(it), CONCEPTS.Type$bu);
-          }
-        }), _quotation_createNode_s72qk1_b0c0a0a0c0o())), SLinkOperations.getChildren(newExpression, LINKS.actualArgument$HO1L));
+        TransformationUtil.replaceConstructor(newExpression, TransformationUtil.createStringLiteral(SPropertyOperations.getString(newExpression, PROPS.fqClassName$8kK7)), TransformationUtil.createStringLiteral(TransformationUtil.getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(newExpression, LINKS.actualArgument$HO1L)).select((it) -> SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(it), CONCEPTS.Type$bu)), _quotation_createNode_s72qk1_b0c0a0a0c0o())), SLinkOperations.getChildren(newExpression, LINKS.actualArgument$HO1L));
       }
     }
   }
   private void replaceThis() {
-    for (SNode thisExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.IThisExpression$8h, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode thisExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.IThisExpression$8h, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       TransformationUtil.replaceThisExpression(thisExpression);
     }
-    for (SNode thisExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.EvaluatorsThisExpression$N4, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode thisExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.EvaluatorsThisExpression$N4, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       TransformationUtil.replaceThisExpression(thisExpression);
     }
-    for (SNode thisExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalThisExpression$eE, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode thisExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalThisExpression$eE, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       TransformationUtil.replaceThisExpression(thisExpression);
     }
   }
   private void replaceSupers() {
-    for (SNode superMethodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.EvaluatorsSuperMethodCall$PI, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode superMethodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.EvaluatorsSuperMethodCall$PI, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       SNode returnType = SLinkOperations.getTarget(SLinkOperations.getTarget(superMethodCall, LINKS.baseMethodDeclaration$pyYw), LINKS.returnType$5xoi);
       String methodName = SPropertyOperations.getString(SLinkOperations.getTarget(superMethodCall, LINKS.baseMethodDeclaration$pyYw), PROPS.name$MnvL);
       String jniSignature = TransformationUtil.getJniSignature(SLinkOperations.getTarget(superMethodCall, LINKS.baseMethodDeclaration$pyYw));
@@ -284,11 +249,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     }
   }
   private void replaceLowLevelVariableReferences() {
-    for (SNode variableRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.BaseVariableReference$lU, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode variableRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.BaseVariableReference$lU, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       if ((TransformationUtil.isLowLevelVariableReference(variableRef))) {
         String variableName;
         if (SNodeOperations.isInstanceOf(variableRef, CONCEPTS.LowLevelVariableReference$GJ) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(variableRef, CONCEPTS.LowLevelVariableReference$GJ), LINKS.baseVariableDeclaration$v20M), LINKS.type$a1UY), PROPS.isHigh$CLIU)) {
@@ -302,51 +263,27 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       }
     }
 
-    for (SNode variableRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalVariableReference$3n, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode variableRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalVariableReference$3n, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       TransformationUtil.replaceLowLevelVariableReference(SPropertyOperations.getString(variableRef, PROPS.name$H5iD), SLinkOperations.getTarget(variableRef, LINKS.type$6UeL), variableRef);
     }
   }
   private void replaceAssignmentsWithBinaryOperations() {
-    for (SNode baseAssignment : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.BaseAssignmentExpression$PA, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.AssignmentExpression$SE));
-      }
-    })) {
+    for (SNode baseAssignment : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.BaseAssignmentExpression$PA, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.AssignmentExpression$SE)))) {
       TransformationUtil.replaceAssignment(baseAssignment);
     }
   }
   private void replaceClassExpressions() {
-    for (SNode classifierClassExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.ClassifierClassExpression$lN, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode classifierClassExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.ClassifierClassExpression$lN, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       SNode classFqNameNode = TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(classifierClassExpression, LINKS.classifier$7Ex9));
       TransformationUtil.replaceClassExpression(classifierClassExpression, classFqNameNode);
     }
-    for (SNode classExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalClassExpression$oc, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode classExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalClassExpression$oc, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       TransformationUtil.replaceClassExpression(classExpression, TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(classExpression, LINKS.type$OzhB), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)));
     }
   }
   private void replaceLocalMemberReferences() {
     // convert local static method calls to qualified static method calls
-    for (SNode localStaticMethodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.StaticMethodDeclaration$FJ);
-      }
-    }).toListSequence().where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode localStaticMethodCall : ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where((SNode it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.StaticMethodDeclaration$FJ)).toList()).where((it) -> TransformationUtil.isUnprocessed(it))) {
       SNode staticMethodCall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
       // some concepts, such as :eq: extract static methods
       if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(myWhatToEvaluate), CONCEPTS.StaticMethodDeclaration$FJ, false, new SAbstractConcept[]{})).contains(SNodeOperations.cast(SLinkOperations.getTarget(localStaticMethodCall, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.StaticMethodDeclaration$FJ))) {
@@ -359,15 +296,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       SNodeOperations.replaceWithAnother(localStaticMethodCall, staticMethodCall);
     }
     // convert local instance method calls to qualified instance method calls
-    for (SNode localInstanceMethodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39);
-      }
-    }).toListSequence().where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode localInstanceMethodCall : ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where((SNode it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39)).toList()).where((it) -> TransformationUtil.isUnprocessed(it))) {
       SNode instanceMethodCall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
       SLinkOperations.setTarget(instanceMethodCall, LINKS.baseMethodDeclaration$pyYw, SLinkOperations.getTarget(localInstanceMethodCall, LINKS.baseMethodDeclaration$pyYw));
       ListSequence.fromList(SLinkOperations.getChildren(instanceMethodCall, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(localInstanceMethodCall, LINKS.actualArgument$pzdx)));
@@ -375,15 +304,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       SNodeOperations.replaceWithAnother(localInstanceMethodCall, _quotation_createNode_s72qk1_a0a4a3a02(instanceMethodCall, TransformationUtil.createThisNodeReplacement()));
     }
     // convert local static field references to static field references
-    for (SNode localStaticFieldReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode localStaticFieldReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR)).where((it) -> TransformationUtil.isUnprocessed(it))) {
       SNode staticFieldReference = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
       SLinkOperations.setTarget(staticFieldReference, LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(localStaticFieldReference, LINKS.variableDeclaration$N1XG));
       SLinkOperations.setTarget(staticFieldReference, LINKS.classifier$BPY8, SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(localStaticFieldReference, LINKS.variableDeclaration$N1XG)), CONCEPTS.ClassConcept$bK));
@@ -391,15 +312,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       SNodeOperations.replaceWithAnother(localStaticFieldReference, staticFieldReference);
     }
     // convert local instance field references to fied reference operations
-    for (SNode localInstanceFieldReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie);
-      }
-    }).toListSequence().where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode localInstanceFieldReference : ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie)).toList()).where((it) -> TransformationUtil.isUnprocessed(it))) {
       SNode fieldReferenceOperation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation"));
       SLinkOperations.setTarget(fieldReferenceOperation, LINKS.fieldDeclaration$H7Ag, SLinkOperations.getTarget(localInstanceFieldReference, LINKS.variableDeclaration$N1XG));
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6).setNew(fieldReferenceOperation);
@@ -408,22 +321,14 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   private boolean replaceLocalVariableDeclarations() {
     boolean finished = true;
-    for (SNode variableDeclaration : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it) && (SLinkOperations.getTarget(it, LINKS.initializer$2twD) != null);
-      }
-    })) {
+    for (SNode variableDeclaration : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it) && (SLinkOperations.getTarget(it, LINKS.initializer$2twD) != null))) {
       finished &= TransformationUtil.replaceAssignment(variableDeclaration, SLinkOperations.getTarget(variableDeclaration, LINKS.initializer$2twD));
     }
     return finished;
   }
   public boolean replaceForeachVariable() {
     boolean finished = true;
-    for (SNode foreachStatement : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.ForeachStatement$Po, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode foreachStatement : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.ForeachStatement$Po, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$mImK)), _quotation_createNode_s72qk1_b0a0a0b0w()) && !(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$JNH6), LINKS.type$a1UY), _quotation_createNode_s72qk1_b0a0a0a1a22()))) {
         TransformationUtil.replaceForEachStatement(foreachStatement);
         finished = false;
@@ -433,11 +338,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   private boolean replaceAssignments() {
     boolean finished = true;
-    for (SNode assignment : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.AssignmentExpression$SE, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode assignment : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.AssignmentExpression$SE, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       finished &= TransformationUtil.replaceAssignment(TransformationUtil.getVariableDeclaration(SLinkOperations.getTarget(assignment, LINKS.lValue$splI)), SLinkOperations.getTarget(assignment, LINKS.rValue$spNK));
     }
     return finished;
@@ -445,11 +346,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   private boolean replaceNotExpressions() {
     boolean finished = true;
     {
-      Iterator<SNode> notExpression_it = ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.NotExpression$Pc, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return TransformationUtil.isUnprocessed(it);
-        }
-      }).iterator();
+      Iterator<SNode> notExpression_it = ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.NotExpression$Pc, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it)).iterator();
       SNode notExpression_var;
       while (notExpression_it.hasNext()) {
         notExpression_var = notExpression_it.next();
@@ -463,11 +360,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   private boolean replaceBinaryOperations() {
     boolean finished = true;
-    for (SNode binaryOperation : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.BinaryOperation$W1, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode binaryOperation : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.BinaryOperation$W1, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$sEj));
       SNode rightType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$nvX));
       if (SNodeOperations.isInstanceOf(binaryOperation, CONCEPTS.EqualsExpression$MF) && TypecheckingFacade.getFromContext().isSubtype(leftType, _quotation_createNode_s72qk1_b0a0a2a1a52()) && TypecheckingFacade.getFromContext().isSubtype(rightType, _quotation_createNode_s72qk1_b0a0c0b0z())) {
@@ -504,11 +397,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   public boolean replaceTernaryOperators() {
     boolean finished = true;
-    for (SNode ternaryOperator : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.TernaryOperatorExpression$aq, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode ternaryOperator : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.TernaryOperatorExpression$aq, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       SNode ctype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ternaryOperator, LINKS.condition$nwNI));
       if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(ternaryOperator, LINKS.condition$nwNI)) && TypecheckingFacade.getFromContext().isSubtype(ctype, _quotation_createNode_s72qk1_b0a0b0b0ab())) {
         SLinkOperations.setTarget(ternaryOperator, LINKS.condition$nwNI, _quotation_createNode_s72qk1_a0a0a1a1a62(SLinkOperations.getTarget(ternaryOperator, LINKS.condition$nwNI)));
@@ -532,11 +421,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   private boolean replaceStaticFieldReferences() {
     boolean finished = true;
-    for (SNode staticFieldReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.StaticFieldReference$cU, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode staticFieldReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.StaticFieldReference$cU, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       // TODO we really process all(?) static field references now, so might wanna move this code out of while cycle
       TransformationUtil.replaceStaticFieldReference(staticFieldReference, SPropertyOperations.getString(SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$N1XG), PROPS.name$MnvL), SLinkOperations.getTarget(SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$N1XG), LINKS.type$a1UY), TransformationUtil.createClassFqNameNode(myModel, SNodeOperations.cast(SLinkOperations.getTarget(staticFieldReference, LINKS.classifier$BPY8), CONCEPTS.ClassConcept$bK)));
       finished = false;
@@ -545,11 +430,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   private boolean replaceInternalPartialFieldReferences() {
     boolean finished = true;
-    for (SNode fieldReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalPartialFieldReference$s1, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode fieldReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalPartialFieldReference$s1, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       TransformationUtil.replaceFieldReference(fieldReference, SLinkOperations.getTarget(fieldReference, LINKS.instance$1zge), SPropertyOperations.getString(fieldReference, PROPS.fieldName$aSWx), SLinkOperations.getTarget(fieldReference, LINKS.fieldType$dHXe));
       finished = false;
     }
@@ -557,11 +438,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   private boolean replaceFieldReferenceOperations() {
     boolean finished = true;
-    for (SNode fieldReferenceOperation : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.FieldReferenceOperation$fU, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode fieldReferenceOperation : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.FieldReferenceOperation$fU, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(fieldReferenceOperation, CONCEPTS.DotExpression$yW, false, false), LINKS.operand$w6IR)), _quotation_createNode_s72qk1_b0a0a1a03())) {
         TransformationUtil.replaceFieldReference(SNodeOperations.getParent(fieldReferenceOperation), SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(fieldReferenceOperation), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR), SPropertyOperations.getString(SLinkOperations.getTarget(fieldReferenceOperation, LINKS.fieldDeclaration$H7Ag), PROPS.name$MnvL), SLinkOperations.getTarget(SLinkOperations.getTarget(fieldReferenceOperation, LINKS.fieldDeclaration$H7Ag), LINKS.type$a1UY));
         finished = false;
@@ -571,27 +448,15 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   private boolean replaceInternalStaticMethodCalls() {
     boolean finished = true;
-    for (SNode staticMethodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalStaticMethodCall$15, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
-      TransformationUtil.replaceStaticMethodCall(staticMethodCall, TransformationUtil.createStringLiteral(SPropertyOperations.getString(staticMethodCall, PROPS.fqClassName$g9YT)), SPropertyOperations.getString(staticMethodCall, PROPS.methodName$nuiK), TransformationUtil.getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$WmKf)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(it), CONCEPTS.Type$bu);
-        }
-      }), SLinkOperations.getTarget(staticMethodCall, LINKS.returnType$mTRy)), SLinkOperations.getTarget(staticMethodCall, LINKS.returnType$mTRy), SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$WmKf));
+    for (SNode staticMethodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalStaticMethodCall$15, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
+      TransformationUtil.replaceStaticMethodCall(staticMethodCall, TransformationUtil.createStringLiteral(SPropertyOperations.getString(staticMethodCall, PROPS.fqClassName$g9YT)), SPropertyOperations.getString(staticMethodCall, PROPS.methodName$nuiK), TransformationUtil.getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$WmKf)).select((it) -> SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(it), CONCEPTS.Type$bu)), SLinkOperations.getTarget(staticMethodCall, LINKS.returnType$mTRy)), SLinkOperations.getTarget(staticMethodCall, LINKS.returnType$mTRy), SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$WmKf));
       finished = false;
     }
     return finished;
   }
   private boolean replaceStaticMethodCalls() {
     boolean finished = true;
-    for (SNode staticMethodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.StaticMethodCall$Fg, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode staticMethodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.StaticMethodCall$Fg, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       // TODO what if we are inside of an inner class?
       TransformationUtil.replaceStaticMethodCall(staticMethodCall, TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(staticMethodCall, LINKS.classConcept$M5BC)), SPropertyOperations.getString(SLinkOperations.getTarget(staticMethodCall, LINKS.baseMethodDeclaration$pyYw), PROPS.name$MnvL), TransformationUtil.getJniSignature(SLinkOperations.getTarget(staticMethodCall, LINKS.baseMethodDeclaration$pyYw)), SLinkOperations.getTarget(SLinkOperations.getTarget(staticMethodCall, LINKS.baseMethodDeclaration$pyYw), LINKS.returnType$5xoi), SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$pzdx));
       finished = false;
@@ -600,27 +465,15 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   private boolean replaceInternalPartialInstanceMethodCalls() {
     boolean finished = true;
-    for (SNode methodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalPartialInstanceMethodCall$s_, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
-      TransformationUtil.replaceMethodCall(methodCall, SLinkOperations.getTarget(methodCall, LINKS.instance$oRHo), methodCall, SPropertyOperations.getString(methodCall, PROPS.methodName$lufi), TransformationUtil.getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$gHks)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(it), CONCEPTS.Type$bu);
-        }
-      }), SLinkOperations.getTarget(methodCall, LINKS.returnType$aGX)), SLinkOperations.getTarget(methodCall, LINKS.returnType$aGX), SLinkOperations.getChildren(methodCall, LINKS.actualArgument$gHks));
+    for (SNode methodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalPartialInstanceMethodCall$s_, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
+      TransformationUtil.replaceMethodCall(methodCall, SLinkOperations.getTarget(methodCall, LINKS.instance$oRHo), methodCall, SPropertyOperations.getString(methodCall, PROPS.methodName$lufi), TransformationUtil.getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$gHks)).select((it) -> SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(it), CONCEPTS.Type$bu)), SLinkOperations.getTarget(methodCall, LINKS.returnType$aGX)), SLinkOperations.getTarget(methodCall, LINKS.returnType$aGX), SLinkOperations.getChildren(methodCall, LINKS.actualArgument$gHks));
       finished = false;
     }
     return finished;
   }
   private boolean replaceInstanceMethodCalls() {
     boolean finished = true;
-    for (SNode methodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InstanceMethodCallOperation$uu, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode methodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InstanceMethodCallOperation$uu, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       // TODO should we check for parameter types, like we did for static method calls?
       if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(methodCall, CONCEPTS.DotExpression$yW, false, false), LINKS.operand$w6IR)), _quotation_createNode_s72qk1_b0a1a1a43())) {
 
@@ -633,11 +486,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     return finished;
   }
   private void replaceInstanceofs() {
-    for (SNode instanceofExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InstanceOfExpression$cu, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode instanceofExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InstanceOfExpression$cu, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(instanceofExpression, LINKS.leftExpression$StkV))) {
         SNodeOperations.replaceWithAnother(instanceofExpression, _quotation_createNode_s72qk1_a0a0a0a0a53(TransformationUtil.createStringLiteral(TransformationUtil.getJniSignatureFromType(SLinkOperations.getTarget(instanceofExpression, LINKS.classType$StzW))), SLinkOperations.getTarget(instanceofExpression, LINKS.leftExpression$StkV)));
       }
@@ -645,11 +494,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   private boolean replaceArrayOperations() {
     boolean finished = true;
-    for (SNode arrayAccess : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.ArrayAccessExpression$Eu, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode arrayAccess : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.ArrayAccessExpression$Eu, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(arrayAccess, LINKS.array$tTQe)), _quotation_createNode_s72qk1_b0a0a1a63())) {
         SNode returnType = _quotation_createNode_s72qk1_a0a0a0b0kb();
         if (arrayAccess.getUserObject(TransformatorImpl.LTYPE) != null) {
@@ -659,11 +504,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         finished = false;
       }
     }
-    for (SNode arrayLength : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.ArrayLengthOperation$fn, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode arrayLength : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.ArrayLengthOperation$fn, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(arrayLength), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), _quotation_createNode_s72qk1_b0a0a2a63())) {
         SNodeOperations.replaceWithAnother(SNodeOperations.getParent(arrayLength), _quotation_createNode_s72qk1_a0a0a0a2a63(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(arrayLength), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)));
         finished = false;
@@ -673,11 +514,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
   private boolean replaceCasts() {
     boolean finished = true;
-    for (SNode cast : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.CastExpression$$8, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it);
-      }
-    })) {
+    for (SNode cast : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.CastExpression$$8, false, new SAbstractConcept[]{})).where((it) -> TransformationUtil.isUnprocessed(it))) {
       SNode expression = SLinkOperations.getTarget(cast, LINKS.expression$XDmN);
       SNode expressionType = TypecheckingFacade.getFromContext().getTypeOf(expression);
       SNode castType = SLinkOperations.getTarget(cast, LINKS.type$XD7M);
@@ -698,32 +535,22 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     return finished;
   }
   private static void normalizeAllDotExpressions(SNode root) {
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.DotExpression$yW, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.DotExpression$yW));
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        normalizeDotExpression(it);
-      }
-    });
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.DotExpression$yW, false, new SAbstractConcept[]{})).where((it) -> !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.DotExpression$yW))).visitAll((it) -> normalizeDotExpression(it));
   }
   private static void normalizeDotExpression(SNode dotExpression) {
     List<SNode> order = getOrder(dotExpression, ListSequence.fromList(new ArrayList<SNode>()));
     final Wrappers._T<SNode> normalizedDotExpression = new Wrappers._T<SNode>(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")));
     final Wrappers._boolean firstTime = new Wrappers._boolean(true);
-    ListSequence.fromList(order).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode node) {
-        if (firstTime.value) {
-          // we are at the first node in the order
-          SLinkOperations.setTarget(normalizedDotExpression.value, LINKS.operand$w6IR, SNodeOperations.cast(node, CONCEPTS.Expression$mB));
-          firstTime.value = false;
-        } else {
-          SNode newDotExpression = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
-          SLinkOperations.setTarget(newDotExpression, LINKS.operand$w6IR, normalizedDotExpression.value);
-          SLinkOperations.setTarget(normalizedDotExpression.value, LINKS.operation$gs9E, SNodeOperations.cast(node, CONCEPTS.IOperation$ga));
-          normalizedDotExpression.value = newDotExpression;
-        }
+    ListSequence.fromList(order).visitAll((node) -> {
+      if (firstTime.value) {
+        // we are at the first node in the order
+        SLinkOperations.setTarget(normalizedDotExpression.value, LINKS.operand$w6IR, SNodeOperations.cast(node, CONCEPTS.Expression$mB));
+        firstTime.value = false;
+      } else {
+        SNode newDotExpression = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
+        SLinkOperations.setTarget(newDotExpression, LINKS.operand$w6IR, normalizedDotExpression.value);
+        SLinkOperations.setTarget(normalizedDotExpression.value, LINKS.operation$gs9E, SNodeOperations.cast(node, CONCEPTS.IOperation$ga));
+        normalizedDotExpression.value = newDotExpression;
       }
     });
     SNodeOperations.replaceWithAnother(dotExpression, SLinkOperations.getTarget(normalizedDotExpression.value, LINKS.operand$w6IR));

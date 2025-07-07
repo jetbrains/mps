@@ -10,7 +10,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debugger.api.ui.breakpoints.BreakpointsBrowserDialog;
 import com.intellij.openapi.application.ApplicationManager;
@@ -24,6 +23,7 @@ public class ViewBreakpoints_Action extends BaseAction {
     super("View Breakpoints", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -36,7 +36,6 @@ public class ViewBreakpoints_Action extends BaseAction {
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
       if (p == null) {
         return false;
       }
@@ -45,7 +44,7 @@ public class ViewBreakpoints_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final BreakpointsBrowserDialog dialog = new BreakpointsBrowserDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+    final BreakpointsBrowserDialog dialog = new BreakpointsBrowserDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT));
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       @Override
       public void run() {

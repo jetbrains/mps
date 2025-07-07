@@ -4,102 +4,162 @@ package jetbrains.mps.vcs.diff.ui;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseGroup;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.icons.IdeIcons;
-import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.AnAction;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 import com.intellij.openapi.actionSystem.ToggleAction;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.project.DumbAware;
+import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/4621883088124559446", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
-public class DiffEditorSettingsAction extends BaseGroup {
+/*package*/ final class DiffEditorSettingsAction extends BaseGroup {
 
+  @NotNull
   private final IHighlighter myHighlighter;
-  public static final String HIDE_ID_CHANGES = "vcs.hide.id.changes";
-  public static final String HIDE_RESOLVE_INFO_CHANGES = "vcs.hide.resolve.info.changes";
-  public static final String HIDE_UNORDERED_MOVES = "vcs.hide.unordered.moves";
-  public static final String TRACK_MOVED_NODES = "vcs.diff.track.moved.nodes";
+
+  private static final String HIDE_ID_CHANGES_CAPTION = "Hide Non-Functional ID Changes";
+  private static final String HIDE_RESOLVE_INFO_CHANGES_CAPTION = "Hide Non-Functional Resolve Info Changes";
+  private static final String TRACK_MOVED_NODES_CAPTION = "Track Moved Nodes";
+  private static final String HIDE_UNORDERED_MOVES_CAPTION = "Hide Unordered Moves";
+  private static final String USE_SHORT_DESCRIPTIONS_CAPTION = "Use Short Change Descriptions";
 
 
-  public DiffEditorSettingsAction(IHighlighter highlighter) {
+  /*package*/ DiffEditorSettingsAction(@NotNull IHighlighter highlighter) {
     super("Settings", null, IdeIcons.GEAR_PLAIN_ICON);
     myHighlighter = highlighter;
     setPopup(true);
   }
 
-  public boolean getHideIdChangesOption() {
-    return PropertiesComponent.getInstance().getBoolean(HIDE_ID_CHANGES, false);
-  }
-
-  public boolean getHideResolveInfoChangesOption() {
-    return PropertiesComponent.getInstance().getBoolean(HIDE_RESOLVE_INFO_CHANGES, false);
-  }
-
-  public boolean getHideUnorderedMovesOption() {
-    return PropertiesComponent.getInstance().getBoolean(HIDE_UNORDERED_MOVES, false);
-  }
-
   @Override
   public AnAction[] getChildren(@Nullable AnActionEvent event) {
-    List<AnAction> actions = ListSequence.fromList(new ArrayList<AnAction>());
-    ListSequence.fromList(actions).addElement(new ToggleAction("Hide Non-Functional ID Changes") {
-      @Override
-      public boolean isSelected(@NotNull AnActionEvent p0) {
-        return PropertiesComponent.getInstance().getBoolean(HIDE_ID_CHANGES, false);
-      }
-      @Override
-      public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
-        PropertiesComponent.getInstance().setValue(HIDE_ID_CHANGES, p1);
-        myHighlighter.rehighlightInReadAction(false);
-      }
-    });
-    ListSequence.fromList(actions).addElement(new ToggleAction("Hide Non-Functional Resolve Info Changes") {
-      @Override
-      public boolean isSelected(@NotNull AnActionEvent p0) {
-        return PropertiesComponent.getInstance().getBoolean(HIDE_RESOLVE_INFO_CHANGES, false);
-      }
-
-      @Override
-      public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
-        PropertiesComponent.getInstance().setValue(HIDE_RESOLVE_INFO_CHANGES, p1);
-        myHighlighter.rehighlightInReadAction(false);
-      }
-    });
-    ListSequence.fromList(actions).addElement(new ToggleAction("Track Moved Nodes") {
-      @Override
-      public boolean isSelected(@NotNull AnActionEvent p1) {
-        return PropertiesComponent.getInstance().getBoolean(TRACK_MOVED_NODES, false);
-      }
-
-      @Override
-      public void setSelected(@NotNull AnActionEvent p1, boolean p2) {
-        PropertiesComponent.getInstance().setValue(TRACK_MOVED_NODES, p2);
-        myHighlighter.rehighlightInReadAction(true);
-      }
-    });
-    ListSequence.fromList(actions).addElement(new ToggleAction("Hide Unordered Moves") {
-      @Override
-      public boolean isSelected(@NotNull AnActionEvent p0) {
-        return PropertiesComponent.getInstance().getBoolean(HIDE_UNORDERED_MOVES, false);
-      }
-
-      @Override
-      public void update(@NotNull AnActionEvent e) {
-        super.update(e);
-        e.getPresentation().setEnabled(PropertiesComponent.getInstance().getBoolean(TRACK_MOVED_NODES, false));
-      }
-
-      @Override
-      public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
-        PropertiesComponent.getInstance().setValue(HIDE_UNORDERED_MOVES, p1);
-        myHighlighter.rehighlightInReadAction(false);
-      }
-    });
-    return ListSequence.fromList(actions).toGenericArray(AnAction.class);
+    return new AnAction[]{new UseShortChangeDescriptionsAction(), new HideIdChangesAction(), new HideResolveInfoOnlyAction(), new TrackMovedNodesAction(), new HideUnorderedMovesAction()};
   }
 
+  private static class UseShortChangeDescriptionsAction extends ToggleAction implements DumbAware {
+
+    private UseShortChangeDescriptionsAction() {
+      super(USE_SHORT_DESCRIPTIONS_CAPTION);
+    }
+
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent p1) {
+      return DiffSettingsUtil.getUseShortDescriptionsOption();
+    }
+
+    @Override
+    public void setSelected(@NotNull AnActionEvent p1, boolean p2) {
+      DiffSettingsUtil.setUseShortDescriptionsOption(p2);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+  }
+
+  private class HideIdChangesAction extends ToggleAction implements DumbAware {
+
+    private HideIdChangesAction() {
+      super(HIDE_ID_CHANGES_CAPTION);
+    }
+
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent p0) {
+      return DiffSettingsUtil.getHideIdChangesOption();
+    }
+
+    @Override
+    public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
+      DiffSettingsUtil.setHideIdChangesOption(p1);
+      myHighlighter.rehighlightInReadAction(false);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+  }
+
+  private class HideResolveInfoOnlyAction extends ToggleAction implements DumbAware {
+
+    private HideResolveInfoOnlyAction() {
+      super(HIDE_RESOLVE_INFO_CHANGES_CAPTION);
+    }
+
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent p0) {
+      return DiffSettingsUtil.getHideResolveInfoChangesOption();
+    }
+
+    @Override
+    public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
+      DiffSettingsUtil.setHideResolveInfoChangesOption(p1);
+      myHighlighter.rehighlightInReadAction(false);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+  }
+
+  private class TrackMovedNodesAction extends ToggleAction implements DumbAware {
+
+    private TrackMovedNodesAction() {
+      super(TRACK_MOVED_NODES_CAPTION);
+    }
+
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent p1) {
+      return DiffSettingsUtil.getTrackMovedNodesDiffOption();
+    }
+
+    @Override
+    public void setSelected(@NotNull AnActionEvent p1, boolean p2) {
+      DiffSettingsUtil.setTrackMovedNodesDiffOption(p2);
+      myHighlighter.rehighlightInReadAction(true);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+  }
+
+  private class HideUnorderedMovesAction extends ToggleAction implements DumbAware {
+
+    private HideUnorderedMovesAction() {
+      super(HIDE_UNORDERED_MOVES_CAPTION);
+    }
+
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent p0) {
+      return DiffSettingsUtil.getHideUnorderedMovesOption();
+    }
+
+    @Override
+    public void update(@NotNull AnActionEvent e) {
+      super.update(e);
+      e.getPresentation().setEnabled(DiffSettingsUtil.getTrackMovedNodesDiffOption());
+    }
+
+    @Override
+    public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
+      DiffSettingsUtil.setHideUnorderedMovesOption(p1);
+      myHighlighter.rehighlightInReadAction(false);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+  }
 }

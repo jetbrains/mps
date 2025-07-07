@@ -4,22 +4,20 @@ package jetbrains.mps.vcs.changesmanager.roots;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
-import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.logging.Logger;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.FileStatusManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
-import org.apache.log4j.Level;
 
 @GeneratedClass(node = "r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)/2722286076674321023", model = "r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)")
 public class NodeFileStatusMappingExt extends NodeFileStatusMapping {
-  private static final Logger LOG = LogManager.getLogger(NodeFileStatusMappingExt.class);
+  private static final Logger LOG = Logger.getLogger(NodeFileStatusMappingExt.class);
 
-  public NodeFileStatusMappingExt(MPSProject project) {
-    super(project);
+  public NodeFileStatusMappingExt(Project ideaProject) {
+    super(ideaProject);
   }
 
   @Override
@@ -30,7 +28,7 @@ public class NodeFileStatusMappingExt extends NodeFileStatusMapping {
       try {
         baseNode = d.getBaseNode(currentNode);
       } catch (Throwable t) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
+        if (LOG.isErrorLevel()) {
           LOG.error("Exception in extension: ", t);
         }
       }

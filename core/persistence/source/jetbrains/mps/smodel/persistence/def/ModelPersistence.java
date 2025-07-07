@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.smodel.persistence.def;
 
 import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelData;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
@@ -34,8 +35,6 @@ import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.util.xml.BreakParseSAXException;
 import jetbrains.mps.util.xml.XMLSAXHandler;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -81,7 +80,7 @@ import java.util.List;
  * See VCSPersistenceSupport for an example.
  */
 public class ModelPersistence {
-  private static final Logger LOG = LogManager.getLogger(ModelPersistence.class);
+  private static final Logger LOG = Logger.getLogger(ModelPersistence.class);
 
   public static final String MODEL = "model";
   public static final String REF = "ref";
@@ -91,6 +90,11 @@ public class ModelPersistence {
 
   public static final String PERSISTENCE = "persistence";
   public static final String PERSISTENCE_VERSION = "version";
+
+  // attribute for <model> tag we use to denote type of per-root content (header or a root).
+  // have to process individually not to get the value into header's properties (i.e. until we keep the code to
+  // copy <model> attributes as header's properties)
+  public static final String PER_ROOT_CONTENT = "content";
 
   public static final int FIRST_SUPPORTED_VERSION = 9;
   public static final int LAST_VERSION = 9;
@@ -247,9 +251,14 @@ public class ModelPersistence {
   /**
    * Serialize model into xml, conformant to actual model's persistence version, if any, or current persistence version otherwise.
    * The method doesn't update persistence version of the model (as it used to do)
+   * @deprecated fate of the method is uncertain. Does anyone need it? What for? If you care to keep it, stand up, otherwise
+   *             we remove it in coming releases
    */
   @NotNull
+  @Deprecated(since = "2021.2", forRemoval = true)
   public static Document saveModel(@NotNull SModel sourceModel) {
+    // XXX is there need for the method? Who might care to get XML Document for a model except our own
+    //     implementation code (addressed by modelToXml() method)?
     int persistenceVersion = -1;
     if (sourceModel instanceof DefaultSModel) {
       persistenceVersion = ((DefaultSModel) sourceModel).getSModelHeader().getPersistenceVersion();
@@ -260,6 +269,7 @@ public class ModelPersistence {
     try {
       return modelToXml(sourceModel, persistenceVersion);
     } catch (ModelSaveException ex) {
+      // XXX oh, really? Replace checked, openapi Exception with undocumented ISE?
       LOG.error(ex.getMessage(), ex);
       throw new IllegalStateException(ex);
     }
@@ -316,10 +326,6 @@ public class ModelPersistence {
     return (DefaultSModel) readModel(header, new InputSource(new StringReader(content)), state).getModel();
   }
 
-  @NotNull
-  public static String modelToString(@NotNull final SModel model) {
-    return JDOMUtil.asString(saveModel(model));
-  }
 
   // propagates exceptions that had happened during read, except for special case when we deliberately stop parsing process
   // wrap certain errors as exceptions to facilitate broken model instead of broken MPS
@@ -349,7 +355,7 @@ public class ModelPersistence {
       parseAndHandleExceptions(source, new HeaderOnlyHandler(header));
       IModelPersistence mp = getPersistence(header.getPersistenceVersion());
       if (!(mp instanceof XMLPersistence)) {
-        LOG.warn("Can't index old persistence. Please update persistence of old models.\n" +
+        LOG.warning("Can't index old persistence. Please update persistence of old models.\n" +
                  "Persistence version: " + header.getPersistenceVersion() + "\n" +
                  "Model: " + header.getModelReference().getModelName());
         return;
@@ -392,13 +398,13 @@ public class ModelPersistence {
           if (MODEL_UID.equals(name) || ModelPersistence9.REF.equals(name)) {
             final SModelReference mr = value == null ? null : PersistenceFacade.getInstance().createModelReference(value);
             myResult.setModelReference(mr);
-          } else if (SModelHeader.DO_NOT_GENERATE.equals(name)) {
-            myResult.setOptionalProperty(name, value);
-          } else if ("version".equals(name)) {
-            // old model version
-            // [AP] copied as is from the VCSPersistenceSupport: I have know idea whether this branch is necessary
-            // nop
+          } else if (PER_ROOT_CONTENT.equals(name)) {
+            // ignore the value; this is our implementation tag, we don't want to have it in header's properties
+            // Complete reader uses the value to setContentKind of ModelLoadResult.
+            continue;
           } else {
+            // XXX in fact, with dedicated <attribute> child support since 2018, we may drop
+            //     this fallback here. Perhaps, shall keep one for legacy persistence versions (in VCS)?
             myResult.setOptionalProperty(name, StringUtil.unescapeXml(value));
           }
         }

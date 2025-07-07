@@ -8,9 +8,7 @@
   </languages>
   <imports>
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
-    <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
-    <import index="vndm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)" />
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="v4w5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.aspects(MPS.Core/)" />
     <import index="hfbu" ref="r:2ea71bfd-fe13-4525-9346-023b05757b39(jetbrains.mps.lang.aspect.structure)" implicit="true" />
@@ -43,7 +41,7 @@
       <concept id="8264762413010669353" name="jetbrains.mps.baseLanguage.lightweightdsl.structure.PlaceholderModifier" flags="ng" index="QcxE9">
         <property id="8264762413010669653" name="caption" index="QcwnP" />
       </concept>
-      <concept id="8264762413010642119" name="jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLClassMember" flags="ng" index="QNr5B">
+      <concept id="8264762413010642119" name="jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLClassMember" flags="ngI" index="QNr5B">
         <child id="3402736933911577960" name="modifier" index="2IRzpu" />
       </concept>
     </language>
@@ -60,7 +58,7 @@
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -162,26 +160,6 @@
       </node>
       <node concept="QcxE9" id="ghIDlF6Hf$" role="2IRzpu">
         <property role="QcwnP" value="&lt;no additional languages&gt;" />
-      </node>
-    </node>
-    <node concept="qMXn0" id="4r8JClTmU7T" role="QNr5C" />
-    <node concept="q3mfq" id="4r8JClTmU6H" role="QNr5C">
-      <property role="TrG5h" value="getGenerator" />
-      <node concept="QcxE9" id="5KGdJjE2Btn" role="2IRzpu">
-        <property role="QcwnP" value="aspect not generated" />
-      </node>
-      <node concept="3uibUv" id="4YpmBa67cMA" role="q3mfk">
-        <ref role="3uigEE" to="vndm:~LanguageAspectGenerator" resolve="LanguageAspectGenerator" />
-      </node>
-    </node>
-    <node concept="qMXn0" id="4r8JClTmU99" role="QNr5C" />
-    <node concept="q3mfq" id="ghIDlF6GE1" role="QNr5C">
-      <property role="TrG5h" value="getIcon" />
-      <node concept="3uibUv" id="ghIDlF6GEd" role="q3mfk">
-        <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
-      </node>
-      <node concept="QcxE9" id="ghIDlF6HcF" role="2IRzpu">
-        <property role="QcwnP" value="&lt;deprecated&gt;" />
       </node>
     </node>
     <node concept="qMXn0" id="2DdXZ8RD1X_" role="QNr5C" />

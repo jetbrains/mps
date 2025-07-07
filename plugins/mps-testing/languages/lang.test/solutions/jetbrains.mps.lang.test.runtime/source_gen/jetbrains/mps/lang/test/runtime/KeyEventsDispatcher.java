@@ -6,16 +6,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.awt.event.KeyEvent;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ArrayUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import javax.swing.KeyStroke;
 import java.awt.Component;
 import java.lang.reflect.Method;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.junit.Assert;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -29,70 +25,62 @@ public class KeyEventsDispatcher {
   }
 
   public void typeString(final String text) throws InterruptedException, InvocationTargetException {
-    Iterable<KeyEvent> events = Sequence.fromIterable(ArrayUtils.fromCharacterArray(text.toCharArray())).select(new ISelector<Character, KeyEvent>() {
-      public KeyEvent select(Character it) {
-        return new KeyEvent(myEditorTest.getEditorComponent(), KeyEvent.KEY_TYPED, 0, 0, 0, it);
-      }
-    });
+    Iterable<KeyEvent> events = Sequence.fromIterable(ArrayUtils.fromCharacterArray(text.toCharArray())).select((it) -> new KeyEvent(myEditorTest.getEditorComponent(), KeyEvent.KEY_TYPED, 0, 0, 0, it));
     processKeyEvents(events);
   }
 
   public void pressKeys(final List<String> keyStrokes) throws InterruptedException, InvocationTargetException {
-    Iterable<KeyEvent> events = ListSequence.fromList(keyStrokes).translate(new ITranslator2<String, KeyEvent>() {
-      public Iterable<KeyEvent> translate(final String it) {
-        return new Iterable<KeyEvent>() {
-          public Iterator<KeyEvent> iterator() {
-            return new YieldingIterator<KeyEvent>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    Iterable<KeyEvent> events = ListSequence.fromList(keyStrokes).translate((it) -> {
+      return (Iterable<KeyEvent>) () -> {
+        return new YieldingIterator<KeyEvent>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 6:
-                      if (_5_keyChar == KeyEvent.CHAR_UNDEFINED && _4_keyCode != KeyEvent.VK_UNDEFINED && ((_4_keyCode >= KeyEvent.VK_0 && _4_keyCode <= KeyEvent.VK_9) || (_4_keyCode >= KeyEvent.VK_A && _4_keyCode <= KeyEvent.VK_Z))) {
-                        this.__CP__ = 7;
-                        break;
-                      }
-                      this.__CP__ = 8;
-                      break;
-                    case 8:
-                      this.__CP__ = 10;
-                      this.yield(new KeyEvent(myEditorTest.getEditorComponent(), KeyEvent.KEY_PRESSED, 0, _3_stroke.getModifiers(), _4_keyCode, _5_keyChar));
-                      return true;
-                    case 10:
-                      this.__CP__ = 1;
-                      this.yield(new KeyEvent(myEditorTest.getEditorComponent(), KeyEvent.KEY_RELEASED, 0, _3_stroke.getModifiers(), _4_keyCode, _5_keyChar));
-                      return true;
-                    case 0:
-                      this._3_stroke = KeyStroke.getKeyStroke(it);
-                      this._4_keyCode = _3_stroke.getKeyCode();
-                      this._5_keyChar = _3_stroke.getKeyChar();
-                      this.__CP__ = 6;
-                      break;
-                    case 7:
-                      // todo it may be worthwhile to also detect other unicode chars from keyCode and supply them into keyChar
-                      // There is currently no good complete cross-platform code to char conversion utility, it seems
-                      // KEY_PRESSED events may or may not contain a concrete keyChar. Its presence is definitely not a problem
-                      _5_keyChar = (char) _4_keyCode;
-                      this.__CP__ = 8;
-                      break;
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 6:
+                  if (_5_keyChar == KeyEvent.CHAR_UNDEFINED && _4_keyCode != KeyEvent.VK_UNDEFINED && ((_4_keyCode >= KeyEvent.VK_0 && _4_keyCode <= KeyEvent.VK_9) || (_4_keyCode >= KeyEvent.VK_A && _4_keyCode <= KeyEvent.VK_Z))) {
+                    this.__CP__ = 7;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this.__CP__ = 8;
+                  break;
+                case 8:
+                  this.__CP__ = 10;
+                  this.yield(new KeyEvent(myEditorTest.getEditorComponent(), KeyEvent.KEY_PRESSED, 0, _3_stroke.getModifiers(), _4_keyCode, _5_keyChar));
+                  return true;
+                case 10:
+                  this.__CP__ = 1;
+                  this.yield(new KeyEvent(myEditorTest.getEditorComponent(), KeyEvent.KEY_RELEASED, 0, _3_stroke.getModifiers(), _4_keyCode, _5_keyChar));
+                  return true;
+                case 0:
+                  this._3_stroke = KeyStroke.getKeyStroke(it);
+                  this._4_keyCode = _3_stroke.getKeyCode();
+                  this._5_keyChar = _3_stroke.getKeyChar();
+                  this.__CP__ = 6;
+                  break;
+                case 7:
+                  // todo it may be worthwhile to also detect other unicode chars from keyCode and supply them into keyChar
+                  // There is currently no good complete cross-platform code to char conversion utility, it seems
+                  // KEY_PRESSED events may or may not contain a concrete keyChar. Its presence is definitely not a problem
+                  _5_keyChar = (char) _4_keyCode;
+                  this.__CP__ = 8;
+                  break;
+                default:
+                  break __loop__;
               }
-              private KeyStroke _3_stroke;
-              private int _4_keyCode;
-              private char _5_keyChar;
-            };
+            } while (true);
+            return false;
           }
+          private KeyStroke _3_stroke;
+          private int _4_keyCode;
+          private char _5_keyChar;
         };
-      }
+      };
     });
     processKeyEvents(events);
   }
@@ -102,34 +90,26 @@ __switch__:
     final Method processKeyEventMethod = KeyEventsDispatcher.getProcessKeyEventMethod(eventTargetComponent);
     final boolean[] eventsPassed = new boolean[]{true};
     if (eventTargetComponent == null) {
-      myEditorTest.runUndoableInEDTAndWait(new Runnable() {
-        public void run() {
-          Sequence.fromIterable(events).visitAll(new IVisitor<KeyEvent>() {
-            public void visit(KeyEvent it) {
-              if (it.getID() == KeyEvent.KEY_TYPED) {
-                myEditorTest.getEditorComponent().processKeyTyped(it);
-              } else if (it.getID() == KeyEvent.KEY_PRESSED) {
-                myEditorTest.getEditorComponent().processKeyPressed(it);
-              } else if (it.getID() == KeyEvent.KEY_RELEASED) {
-                myEditorTest.getEditorComponent().processKeyReleased(it);
-              } else {
-                assert false : "Wrong Id " + it.getID();
-              }
-            }
-          });
+      myEditorTest.runUndoableInEDTAndWait(() -> Sequence.fromIterable(events).visitAll((it) -> {
+        if (it.getID() == KeyEvent.KEY_TYPED) {
+          myEditorTest.getEditorComponent().processKeyTyped(it);
+        } else if (it.getID() == KeyEvent.KEY_PRESSED) {
+          myEditorTest.getEditorComponent().processKeyPressed(it);
+        } else if (it.getID() == KeyEvent.KEY_RELEASED) {
+          myEditorTest.getEditorComponent().processKeyReleased(it);
+        } else {
+          assert false : "Wrong Id " + it.getID();
         }
-      });
+      }));
     } else {
-      myEditorTest.runUndoableInEDTAndWait(new Runnable() {
-        public void run() {
-          for (KeyEvent event : Sequence.fromIterable(events)) {
-            try {
-              processKeyEventMethod.invoke(eventTargetComponent, event);
-            } catch (InvocationTargetException e) {
-              eventsPassed[0] = false;
-            } catch (IllegalAccessException e) {
-              eventsPassed[0] = false;
-            }
+      myEditorTest.runUndoableInEDTAndWait(() -> {
+        for (KeyEvent event : Sequence.fromIterable(events)) {
+          try {
+            processKeyEventMethod.invoke(eventTargetComponent, event);
+          } catch (InvocationTargetException e) {
+            eventsPassed[0] = false;
+          } catch (IllegalAccessException e) {
+            eventsPassed[0] = false;
           }
         }
       });

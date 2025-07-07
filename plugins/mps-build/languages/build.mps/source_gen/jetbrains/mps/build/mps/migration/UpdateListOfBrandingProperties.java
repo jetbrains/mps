@@ -35,11 +35,7 @@ public class UpdateListOfBrandingProperties extends MigrationScriptBase {
     {
       SearchScope scope_2tnex2_a0e = CommandUtil.createScope(m);
       final SearchScope scope_2tnex2_a0e_0 = new EditableFilteringScope(scope_2tnex2_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_2tnex2_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_2tnex2_a0e_0;
       for (SNode branding : CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMps_Branding$M0, true)) {
         if ((SLinkOperations.getTarget(branding, LINKS.script$MlVT) == null)) {
           SNode productCopy = SNodeOperations.copyNode(SLinkOperations.getTarget(branding, LINKS.product$RfQu));
@@ -62,7 +58,7 @@ public class UpdateListOfBrandingProperties extends MigrationScriptBase {
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 6);
   }
 

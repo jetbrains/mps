@@ -156,6 +156,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Node_IsOperation;
   private ConceptPresentation props_Node_IsRoleOperation;
   private ConceptPresentation props_Node_PointerOperation;
+  private ConceptPresentation props_Node_PresentationOperation;
   private ConceptPresentation props_Node_ReplaceWithAnotherOperation;
   private ConceptPresentation props_Node_ReplaceWithNewOperation;
   private ConceptPresentation props_OfConceptOperation;
@@ -1301,6 +1302,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Node_PointerOperation = cpb.create();
         }
         return props_Node_PointerOperation;
+      case LanguageConceptSwitch.Node_PresentationOperation:
+        if (props_Node_PresentationOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("string representation");
+          cpb.rawPresentation("presentation");
+          props_Node_PresentationOperation = cpb.create();
+        }
+        return props_Node_PresentationOperation;
       case LanguageConceptSwitch.Node_ReplaceWithAnotherOperation:
         if (props_Node_ReplaceWithAnotherOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

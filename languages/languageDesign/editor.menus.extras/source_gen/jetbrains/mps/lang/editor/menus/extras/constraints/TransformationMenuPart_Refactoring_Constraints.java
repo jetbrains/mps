@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.FilteringScope;
@@ -21,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.HashMap;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.behavior.IMenu__BehaviorDescriptor;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -34,31 +34,27 @@ public class TransformationMenuPart_Refactoring_Constraints extends BaseConstrai
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.refactoring$YX8k, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.refactoring$YX8k, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_w30ll_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:bb97162f-2dcb-4ef8-802a-23987a8537bd(jetbrains.mps.lang.editor.menus.extras.constraints)", "6836281137582782370");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.Refactoring$bM)) {
               @Override
               public boolean isExcluded(SNode node) {
-                SNode refactoringConcept = check_w30ll_a0a0a0a0a0b0a0a0b0a0a0a2(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Refactoring$bM), LINKS.target$qEUa), CONCEPTS.NodeTarget$gN));
+                SNode refactoringConcept = check_w30ll_a0a0a0a0a0b0a0a0a0a0a0a2(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Refactoring$bM), LINKS.target$qEUa), CONCEPTS.NodeTarget$gN));
                 if ((refactoringConcept == null)) {
                   return true;
                 }
 
                 SNode menu = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ITransformationMenu$xi, false, false);
-                return !(check_w30ll_a0e0a0a0a0b0a0a0b0a0a0a2(check_w30ll_a0a4a0a0a0a1a0a0a1a0a0a0c(menu), refactoringConcept));
+                return !(check_w30ll_a0e0a0a0a0b0a0a0a0a0a0a2(check_w30ll_a0a4a0a0a0a1a0a0a0a0a0a0c(menu), refactoringConcept));
               }
             };
           }
@@ -69,25 +65,24 @@ public class TransformationMenuPart_Refactoring_Constraints extends BaseConstrai
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static SNode check_w30ll_a0a0a0a0a0b0a0a0b0a0a0a2(SNode checkedDotOperand) {
+  private static SNode check_w30ll_a0a0a0a0a0b0a0a0a0a0a0a2(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getTarget(checkedDotOperand, LINKS.concept$wG_L);
     }
     return null;
   }
-  private static boolean check_w30ll_a0e0a0a0a0b0a0a0b0a0a0a2(SNode checkedDotOperand, SNode refactoringConcept) {
+  private static boolean check_w30ll_a0e0a0a0a0b0a0a0a0a0a0a2(SNode checkedDotOperand, SNode refactoringConcept) {
     if (null != checkedDotOperand) {
       return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(checkedDotOperand, refactoringConcept);
     }
     return false;
   }
-  private static SNode check_w30ll_a0a4a0a0a0a1a0a0a1a0a0a0c(SNode checkedDotOperand) {
+  private static SNode check_w30ll_a0a4a0a0a0a1a0a0a0a0a0a0c(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(checkedDotOperand);
     }
     return null;
   }
-  private static final SNodePointer breakingNode_w30ll_a0a0a0a0a1a0a0a0c = new SNodePointer("r:bb97162f-2dcb-4ef8-802a-23987a8537bd(jetbrains.mps.lang.editor.menus.extras.constraints)", "6836281137582782370");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TransformationMenuPart_Refactoring$8K = MetaAdapterFactory.getConcept(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x41bc200f660dc377L, "jetbrains.mps.lang.editor.menus.extras.structure.TransformationMenuPart_Refactoring");

@@ -1,4 +1,4 @@
-<components>
+<idea-plugin>
   <actions>
     <action id="jetbrains.mps.ide.editor.actions.AddLanguageImport_Action" class="jetbrains.mps.ide.editor.actions.AddLanguageImport_Action">
       <keyboard-shortcut first-keystroke="ctrl L" keymap="$default" />
@@ -47,7 +47,8 @@
     </action>
     <action id="jetbrains.mps.ide.editor.actions.DeleteLine_Action" class="jetbrains.mps.ide.editor.actions.DeleteLine_Action">
       <keyboard-shortcut first-keystroke="ctrl Y" keymap="$default" />
-      <keyboard-shortcut first-keystroke="ctrl BACK_SPACE" keymap="Mac OS X 10.5+" replace-all="true" />
+      <keyboard-shortcut first-keystroke="meta BACK_SPACE" keymap="Mac OS X 10.5+" replace-all="true" />
+      <keyboard-shortcut first-keystroke="ctrl BACK_SPACE" keymap="Mac OS X 10.5+" />
     </action>
     <action id="jetbrains.mps.ide.editor.actions.DeleteToWordEnd_Action" class="jetbrains.mps.ide.editor.actions.DeleteToWordEnd_Action">
       <keyboard-shortcut first-keystroke="ctrl DELETE" keymap="$default" />
@@ -399,4 +400,4 @@
       <add-to-group group-id="EditorPopup_ActionGrouprefactoring" anchor="last" />
     </group>
   </actions>
-</components>
+</idea-plugin>

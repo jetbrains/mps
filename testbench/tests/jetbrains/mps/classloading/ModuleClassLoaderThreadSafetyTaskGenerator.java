@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,10 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.reloading.FakeClassPathItem;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.reloading.FakeClassPathItem;
 import jetbrains.mps.smodel.ExecutorServiceShutdownHelper;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ import java.util.concurrent.TimeUnit;
  * @since 31/12/16
  */
 final class ModuleClassLoaderThreadSafetyTaskGenerator extends TaskGenerator {
-  private static final Logger LOG = LogManager.getLogger(ModuleClassLoaderThreadSafetyTaskGenerator.class);
+  private static final Logger LOG = Logger.getLogger(ModuleClassLoaderThreadSafetyTaskGenerator.class);
   private static final int nThreads = 8;
   private static final long TIMEOUT_LOADING = 200;
 
@@ -54,13 +53,13 @@ final class ModuleClassLoaderThreadSafetyTaskGenerator extends TaskGenerator {
           tasks.add(() -> {
             long current = System.nanoTime();
             Class<?> aClass = cl.loadClass(FIRST.class.getName());
-            if (LOG.isTraceEnabled()) {
+            if (LOG.isTraceLevel()) {
               LOG.trace(String.format("%d-th thread loaded %s", threadNumber, aClass));
             }
             long duration = System.nanoTime() - current;
             long durationMs = TimeUnit.MILLISECONDS.convert(duration, TimeUnit.NANOSECONDS);
             if (durationMs > 500) {
-              LOG.warn(String.format("LOOKS SUSPICIOUS -- loading class took %d", durationMs));
+              LOG.warning(String.format("LOOKS SUSPICIOUS -- loading class took %d", durationMs));
             }
             return null;
           });
@@ -85,7 +84,7 @@ final class ModuleClassLoaderThreadSafetyTaskGenerator extends TaskGenerator {
     ModuleClassLoaderSupport support = new ModuleClassLoaderSupport(module,
                                                                     Collections::emptyList,
                                                                     new FakeClassPathItem(aClass));
-    return new ModuleClassLoader(support);
+    return support.getModuleClassLoader();
   }
 
   @NotNull

@@ -4,8 +4,7 @@ package jetbrains.mps.debugger.java.runtime.breakpoints;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
 import com.intellij.openapi.project.Project;
@@ -18,7 +17,6 @@ import com.sun.jdi.request.MethodEntryRequest;
 import com.sun.jdi.request.MethodExitRequest;
 import com.sun.jdi.ClassNotPreparedException;
 import com.sun.jdi.ObjectCollectedException;
-import com.sun.jdi.InternalException;
 import jetbrains.mps.textgen.trace.TraceablePositionInfo;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventContext;
 import com.sun.jdi.event.LocatableEvent;
@@ -29,7 +27,7 @@ import java.util.Objects;
 
 @GeneratedClass(node = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)/2891782949125146029", model = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)")
 public class MethodBreakpoint extends JavaBreakpoint implements ILocationBreakpoint {
-  private static final Logger LOG = LogManager.getLogger(MethodBreakpoint.class);
+  private static final Logger LOG = Logger.getLogger(MethodBreakpoint.class);
   private final SNodeReference myNode;
   private BreakpointLocation myLocation;
   private String myMethodName = null;
@@ -77,14 +75,12 @@ public class MethodBreakpoint extends JavaBreakpoint implements ILocationBreakpo
       requestManager.enableRequest(methodEntryRequest);
       requestManager.enableRequest(methodExitRequest);
     } catch (ClassNotPreparedException ex) {
-      LOG.warn("ClassNotPreparedException: " + ex.getMessage());
+      LOG.warning("ClassNotPreparedException: " + ex.getMessage());
       //  there's a chance to add a breakpoint when the class is prepared
     } catch (ObjectCollectedException ex) {
-      LOG.warn("ObjectCollectedException: " + ex.getMessage());
-    } catch (InternalException ex) {
-      LOG.error(null, ex);
+      LOG.warning("ObjectCollectedException: " + ex.getMessage());
     } catch (Exception ex) {
-      LOG.error(null, ex);
+      LOG.error(ex);
     }
   }
 
@@ -122,7 +118,7 @@ public class MethodBreakpoint extends JavaBreakpoint implements ILocationBreakpo
     if (event instanceof MethodExitEvent) {
       method = ((MethodExitEvent) event).method();
     }
-    return !((method == null || !(accept(method))));
+    return !(method == null || !(accept(method)));
   }
   private boolean accept(Method method) {
     return method.name().equals(myMethodName) && method.signature().equals(myJniSignature);

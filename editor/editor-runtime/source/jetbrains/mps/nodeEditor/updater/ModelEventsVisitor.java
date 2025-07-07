@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,11 @@
  */
 package jetbrains.mps.nodeEditor.updater;
 
-import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelDevKitEvent;
 import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.smodel.event.SModelEventVisitor;
-import jetbrains.mps.smodel.event.SModelFileChangedEvent;
 import jetbrains.mps.smodel.event.SModelImportEvent;
 import jetbrains.mps.smodel.event.SModelLanguageEvent;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
@@ -120,7 +118,7 @@ class ModelEventsVisitor implements SModelEventVisitor {
     myIsPropertyModification = Boolean.TRUE;
     myModifiedProperty = new Pair<>(new SNodePointer(event.getNode()), event.getPropertyName());
     myIsPropertyAddedRemoved =
-        SModelUtil_new.isEmptyPropertyValue(event.getOldPropertyValue()) != SModelUtil_new.isEmptyPropertyValue(event.getNewPropertyValue());
+        SModelPropertyEvent.isEmptyPropertyValue(event.getOldPropertyValue()) != SModelPropertyEvent.isEmptyPropertyValue(event.getNewPropertyValue());
   }
 
   @Override
@@ -135,11 +133,6 @@ class ModelEventsVisitor implements SModelEventVisitor {
 
   @Override
   public void visitImportEvent(SModelImportEvent event) {
-    visitNonPropertyEvent();
-  }
-
-  @Override
-  public void visitModelFileEvent(SModelFileChangedEvent event) {
     visitNonPropertyEvent();
   }
 

@@ -48,6 +48,8 @@ public final class WordIndexEntry {
     int iter = 0;
     for (int i = from; i < to; i++, iter++) {
       final char c = Character.toLowerCase(text.charAt(i));
+      // Using + rather than << was intentional, to allow matching trigrams with different order. This currently does not change the result of searching by text
+      // but could be used in the future, or replaced by << in case running into performance problems.
       h3 = h2 + c;
       h2 = h1 + c;
       h1 = c;

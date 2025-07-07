@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -54,11 +53,7 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
     {
       SearchScope scope_b3phj_d0e = CommandUtil.createScope(m);
       final SearchScope scope_b3phj_d0e_0 = new EditableFilteringScope(scope_b3phj_d0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_b3phj_d0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_b3phj_d0e_0;
 
       Collection<SNode> conceptNodes = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false);
 
@@ -68,11 +63,7 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
           SNode menu = null;
           SModel editorModel = SModuleOperations.getAspect(SNodeOperations.getModel(conceptNode).getModule(), "editor");
 
-          SNode alreadyGeneratedMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Named$cm)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.GeneratedSubstituteMenuAttribute$Ya).get(it) != null) && SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == conceptNode;
-            }
-          });
+          SNode alreadyGeneratedMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Named$cm)).findFirst((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.GeneratedSubstituteMenuAttribute$Ya).get(it) != null) && SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == conceptNode);
           if ((alreadyGeneratedMenu != null)) {
             menu = alreadyGeneratedMenu;
           } else {
@@ -117,7 +108,7 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
   public Iterable<MigrationScriptReference> executeAfter() {
     return ListSequence.fromListAndArray(new ArrayList<MigrationScriptReference>(), new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 4));
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 8);
   }
 
@@ -125,11 +116,7 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
   private Collection<SNode> SCAs = null;
 
   private boolean hasSCAUsages(final SNode conceptNode) {
-    return CollectionSequence.fromCollection(SCAs).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$r48r), conceptNode);
-      }
-    }).isNotEmpty();
+    return CollectionSequence.fromCollection(SCAs).where((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$r48r), conceptNode)).isNotEmpty();
   }
 
   private static Collection<SNode> extractSCAs(SModule currentModule) {
@@ -139,11 +126,7 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
   }
 
   private boolean hasDefaultMenu(SModel editorModel, final SNode conceptNode) {
-    return ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Default$sV)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E), conceptNode);
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Default$sV)).where((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E), conceptNode)).isNotEmpty();
   }
 
   private static final RefPresentationFunctionUtil.ParameterReplacer_Smart REPLACER = new RefPresentationFunctionUtil.ParameterReplacer_Smart(false);

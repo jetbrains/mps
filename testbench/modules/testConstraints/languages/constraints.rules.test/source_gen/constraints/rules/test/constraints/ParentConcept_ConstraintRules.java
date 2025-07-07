@@ -53,6 +53,7 @@ public final class ParentConcept_ConstraintRules extends BaseRulesConstraintsDes
     public boolean appliesTo(@NotNull ContainmentContext context) {
       return true;
     }
+
   }
 
   public static final class Rule_propIsTrue extends BaseRule<ContainmentContext> {
@@ -72,6 +73,7 @@ public final class ParentConcept_ConstraintRules extends BaseRulesConstraintsDes
     public boolean appliesTo(@NotNull ContainmentContext context) {
       return true;
     }
+
   }
 
   /*package*/ ParentConcept_ConstraintRules() {

@@ -4,97 +4,36 @@ package jetbrains.mps.lang.smodel.generator.smodelAdapter;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.util.annotation.ToRemove;
-import java.util.List;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
+import java.util.List;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6407023681582958584", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public class AttributeOperations {
   private AttributeOperations() {
   }
-  /**
-   * 
-   * @deprecated  use {@code  IAttributeDescriptor} 
-   */
-  @Deprecated
-  public static SNode getAttribute(SNode node, IAttributeDescriptor descriptor) {
-    return descriptor.get(node);
-  }
-  /**
-   * 
-   * @deprecated  use {@code  IAttributeDescriptor.set()} instead
-   */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
-  public static SNode setAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
-    return descriptor.set(node, value);
-  }
-  /**
-   * 
-   * @deprecated  use {@code  IAttributeDescriptor}
-   */
-  @Deprecated
-  public static List<SNode> getAttributeList(SNode node, IAttributeDescriptor descriptor) {
-    return descriptor.list(node);
-  }
-  /**
-   * 
-   * @deprecated  use {@code  IAttributeDescriptor.setNew()} instead
-   */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
-  public static SNode createAndSetAttrbiute(SNode node, IAttributeDescriptor descriptor, SConcept newConcept) {
-    return descriptor.setNew(node, newConcept);
-  }
-  /**
-   * 
-   * @deprecated  use {@code  IAttributeDescriptor.addNew} instead
-   */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
-  public static SNode createAndAddAttribute(SNode node, IAttributeDescriptor descriptor, SConcept newConcept) {
-    return descriptor.addNew(node, newConcept);
-  }
+
   public static Iterable<SNode> getChildNodesAndAttributes(SNode parent, final SContainmentLink link) {
     Iterable<? extends SNode> children = parent.getChildren();
-    return Sequence.fromIterable(children).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        if (isChildAttribute(it)) {
-          return Objects.equals(((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(it, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf"))), link);
-        } else {
-          return Objects.equals(SNodeOperations.getContainingLink(it), link);
-        }
+    return Sequence.fromIterable(children).where((SNode it) -> {
+      if (isChildAttribute(it)) {
+        return Objects.equals(((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(it, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL))), link);
+      } else {
+        return Objects.equals(SNodeOperations.getContainingLink(it), link);
       }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return it;
-      }
-    });
+    }).select((it) -> it);
   }
 
 
-  /**
-   * 
-   * @deprecated use {@code IAttributeDescriptor.add()}
-   */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
-  public static SNode addAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
-    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).addElement(value);
-    descriptor.update(value);
-    return value;
-  }
+
   public static boolean isAttribute(SNode node) {
     if (node == null) {
       return false;
@@ -126,25 +65,13 @@ public class AttributeOperations {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.NodeAttribute$x2);
   }
   public static Iterable<SNode> getPropertyAttributes(SNode node, final SProperty property) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.PropertyAttribute$Gb)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(((SProperty) BHReflection.invoke0(it, CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$Gb, "1avfQ4BBzOo"))), property);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.PropertyAttribute$Gb)).where((it) -> Objects.equals(((SProperty) BHReflection.invoke0(it, CONCEPTS.PropertyAttribute$Gb, SMethodIdV2.create("getProperty", 1341860900488756504L, 0x553941aeb020c32eL))), property));
   }
   public static Iterable<SNode> getLinkAttributes(SNode node, final SReferenceLink link) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.LinkAttribute$v_)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(((SReferenceLink) BHReflection.invoke0(it, CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$v_, "1avfQ4BEFo6"))), link);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.LinkAttribute$v_)).where((it) -> Objects.equals(((SReferenceLink) BHReflection.invoke0(it, CONCEPTS.LinkAttribute$v_, SMethodIdV2.create("getLink", 1341860900489573894L, 0x553941aeb020c32eL))), link));
   }
   public static Iterable<SNode> getChildAttributes(SNode node, final SContainmentLink link) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(((SContainmentLink) BHReflection.invoke0(it, CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf"))), link);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where((it) -> Objects.equals(((SContainmentLink) BHReflection.invoke0(it, CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL))), link));
   }
   public static boolean hasPropertyAttributes(SNode node) {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.PropertyAttribute$Gb)).isNotEmpty();
@@ -190,14 +117,14 @@ public class AttributeOperations {
 
     @Override
     public boolean remove(Object o) {
-      if (!((o instanceof SNode))) {
+      if (!(o instanceof SNode)) {
         return false;
       }
       SNode n = (SNode) o;
       if (n.getParent() != myNode) {
         return false;
       }
-      if (!((SNodeOperations.isInstanceOf(n, CONCEPTS.Attribute$g1)))) {
+      if (!(SNodeOperations.isInstanceOf(n, CONCEPTS.Attribute$g1))) {
         return false;
       }
 

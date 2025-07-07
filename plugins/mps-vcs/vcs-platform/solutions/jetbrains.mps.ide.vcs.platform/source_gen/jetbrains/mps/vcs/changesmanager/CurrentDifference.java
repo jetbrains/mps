@@ -99,11 +99,7 @@ public class CurrentDifference {
       if (enabled) {
         scheduleFullUpdate(true);
       } else {
-        myCommandQueue.addTask(new Runnable() {
-          public void run() {
-            setChangeSet(null);
-          }
-        });
+        myCommandQueue.addTask(() -> setChangeSet(null));
       }
       return true;
     }
@@ -112,11 +108,7 @@ public class CurrentDifference {
 
   /*package*/ void scheduleFullUpdate(final boolean force) {
     if (myEnabled.get()) {
-      myCommandQueue.addTask(new Runnable() {
-        public void run() {
-          myTracking.update(force);
-        }
-      }, myModelDescriptor.getReference());
+      myCommandQueue.addTask(() -> myTracking.update(force), myModelDescriptor.getReference());
     }
   }
 

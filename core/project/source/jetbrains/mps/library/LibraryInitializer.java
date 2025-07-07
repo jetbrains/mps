@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +20,10 @@ import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.library.contributor.LibDescriptor;
 import jetbrains.mps.library.contributor.LibraryContributor;
 import jetbrains.mps.library.contributor.RepositoryContributor;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.io.DescriptorIOFacade;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.refresh.FileRefresh;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 
@@ -45,7 +43,7 @@ import java.util.stream.Collectors;
  * FIXME need to separate up these two.
  */
 public final class LibraryInitializer implements CoreComponent, RepositoryReader<LibraryContributor> {
-  private static final Logger LOG = LogManager.getLogger(LibraryInitializer.class);
+  private static final Logger LOG = Logger.getLogger(LibraryInitializer.class);
 
   private final SRepositoryExt myRepository;
   private final ModelAccess myModelAccess;
@@ -80,8 +78,7 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
    * @deprecated use {@link #load(List)} instead
    */
   @Override
-  @ToRemove(version = 2017.3)
-  @Deprecated
+@Deprecated(since = "2017.3", forRemoval = true)
   public void loadRefreshed(List<LibraryContributor> contributors) {
     for (LibraryContributor contributor : contributors) {
       addContributor(contributor);

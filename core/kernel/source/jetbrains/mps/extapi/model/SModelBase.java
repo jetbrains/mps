@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,13 @@
 package jetbrains.mps.extapi.model;
 
 import jetbrains.mps.extapi.module.SModuleBase;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.IllegalModelAccessException;
 import jetbrains.mps.smodel.InvalidSModel;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
 import jetbrains.mps.smodel.event.ModelListenerDispatch;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -55,7 +54,7 @@ import java.util.Collections;
  * TODO relocate to [smodel]
  */
 public abstract class SModelBase extends SModelDescriptorStub implements SModel {
-  private static final Logger LOG = LogManager.getLogger(SModelBase.class);
+  private static final Logger LOG = Logger.getLogger(SModelBase.class);
 
   private final ModelEventDispatch myNodeEventDispatch;
   // XXX when necessary, shall get exposed with protected accessor. fire* methods kept for now as some of them do delegation to legacy
@@ -107,7 +106,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
 
   public void attach(@NotNull SRepository repo) {
     if (myRepository == repo) {
-      LOG.warn("The model " + this + " is already attached to the repository " + repo);
+      LOG.warning("The model " + this + " is already attached to the repository " + repo);
       return;
     }
     if (myRepository != null) {
@@ -125,6 +124,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
       myRepository = null;
     }
     fireBeforeModelDisposed(this);
+    setModelRoot(null);
     jetbrains.mps.smodel.SModel model = getCurrentModelInternal();
     if (model != null) {
       // XXX In fact, seems reasonable to call doUnload() here, as subclasses might need to clear their state on detach in
@@ -137,6 +137,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
       setLoadingState(ModelLoadingState.NOT_LOADED);
     }
     clearListeners();
+    setModule(null);
   }
 
   @Override
@@ -417,6 +418,26 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
     super.changeModelReference(newModelReference);
     myModelReference = newModelReference;
   }
+
+  @Override
+  public boolean isDisposed() {
+    final jetbrains.mps.smodel.SModel mi = getCurrentModelInternal();
+    if (mi == null) {
+      return false;
+    }
+    return mi.isDisposed();
+  }
+
+  @Override
+  @Nullable
+  public final StackTraceElement[] getDisposedStacktrace() {
+    final jetbrains.mps.smodel.SModel mi = getCurrentModelInternal();
+    if (mi == null) {
+      return null;
+    }
+    return mi.getDisposedStacktrace();
+  }
+
 
   /**
    * This method does nothing about model load state, it updates model descriptor of the models passed and dispatches a notification.

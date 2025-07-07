@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@ import com.intellij.ide.IdeBundle;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
@@ -40,7 +42,6 @@ import com.intellij.ui.TreeSpeedSearch;
 import com.intellij.ui.speedSearch.SpeedSearchUtil;
 import com.intellij.ui.treeStructure.Tree;
 import com.intellij.util.PlatformIcons;
-import com.intellij.util.containers.Convertor;
 import com.intellij.util.containers.FactoryMap;
 import com.intellij.util.containers.HashMap;
 import com.intellij.util.ui.UIUtil;
@@ -81,8 +82,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -293,8 +292,9 @@ public class GroupedNodesChooser extends DialogWrapper {
       myTree);
     group.add(collapseAllAction);
 
-    panel.add(ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, true).getComponent(),
-      BorderLayout.NORTH);
+    final ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.POPUP, group, true);
+    actionToolbar.setTargetComponent(panel);
+    panel.add(actionToolbar.getComponent(), BorderLayout.NORTH);
 
     // Tree
 
@@ -664,8 +664,14 @@ public class GroupedNodesChooser extends DialogWrapper {
 
   private class SortEmAction extends ToggleAction {
     public SortEmAction() {
+      // 'action.sort.alphabetically' comes from app.jar!/messages/IdeDeprecatedMessagesBundle.properties
       super(IdeBundle.message("action.sort.alphabetically"),
-        IdeBundle.message("action.sort.alphabetically"), IconLoader.getIcon("/objectBrowser/sorted.png"));
+        IdeBundle.message("action.sort.alphabetically"), IconLoader.getIcon("/objectBrowser/sorted.png", GroupedNodesChooser.class));
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
     }
 
     @Override
@@ -689,6 +695,11 @@ public class GroupedNodesChooser extends DialogWrapper {
     }
 
     @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+
+    @Override
     public boolean isSelected(AnActionEvent event) {
       return myShowContainers;
     }
@@ -709,7 +720,7 @@ public class GroupedNodesChooser extends DialogWrapper {
   private class ExpandAllAction extends AnAction {
     public ExpandAllAction() {
       super(IdeBundle.message("action.expand.all"), IdeBundle.message("action.expand.all"),
-        IconLoader.getIcon("/actions/expandall.png"));
+        IconLoader.getIcon("/actions/expandall.png", GroupedNodesChooser.class));
     }
 
     @Override
@@ -721,7 +732,7 @@ public class GroupedNodesChooser extends DialogWrapper {
   private class CollapseAllAction extends AnAction {
     public CollapseAllAction() {
       super(IdeBundle.message("action.collapse.all"), IdeBundle.message("action.collapse.all"),
-        IconLoader.getIcon("/actions/collapseall.png"));
+        IconLoader.getIcon("/actions/collapseall.png", GroupedNodesChooser.class));
     }
 
     @Override

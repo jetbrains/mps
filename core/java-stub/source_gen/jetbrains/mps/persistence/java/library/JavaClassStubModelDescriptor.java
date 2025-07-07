@@ -15,7 +15,6 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.baseLanguage.javastub.ASMModelLoader;
-import jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap;
 import java.util.function.Function;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import jetbrains.mps.baseLanguage.javastub.Documentation;
@@ -105,7 +104,7 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
         try {
           ASMModelLoader loader = new ASMModelLoader(getModule(), getSource().getAffectedFiles());
           loader.skipPrivateMembers(mySkipPrivate);
-          SModel completeModelData = new SModel(getReference(), new MigratingJavaStubRefsNodeIdMap());
+          SModel completeModelData = new SModel(getReference());
           Function<ASMClass, Documentation> docSupplier;
           if (myDocSupplier != null) {
             myDocSupplier.acquire();
@@ -143,7 +142,7 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
   @Override
   @NotNull
   protected ModelLoadResult<SModel> createModel() {
-    SModel model = new SModel(getReference(), new MigratingJavaStubRefsNodeIdMap());
+    SModel model = new SModel(getReference());
     for (SLanguage l : getLanguagesToImport()) {
       model.addLanguage(l);
     }
@@ -181,18 +180,16 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
       // XXX same code is in EitableSModelBase, could I refactor to avoid that?
       return;
     }
-    repo.getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        if (getSource().getPaths().isEmpty()) {
-          SModule module = getModule();
-          if (module instanceof SModuleBase) {
-            ((SModuleBase) module).unregisterModel(JavaClassStubModelDescriptor.this);
-          }
-          return;
+    repo.getModelAccess().runWriteAction(() -> {
+      if (getSource().getPaths().isEmpty()) {
+        SModule module = getModule();
+        if (module instanceof SModuleBase) {
+          ((SModuleBase) module).unregisterModel(JavaClassStubModelDescriptor.this);
         }
-        reload();
-        myTimestampTracker.updateTimestamp(getSource());
+        return;
       }
+      reload();
+      myTimestampTracker.updateTimestamp(getSource());
     });
   }
 

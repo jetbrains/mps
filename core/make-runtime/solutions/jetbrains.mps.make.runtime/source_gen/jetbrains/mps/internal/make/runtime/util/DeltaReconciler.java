@@ -8,11 +8,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.make.delta.IDelta;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.make.delta.IDeltaVisitor;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 @GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/505174985642691359", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public class DeltaReconciler {
@@ -26,25 +23,13 @@ public class DeltaReconciler {
     DeltaContainer.insert(delta, topContainer);
   }
   public final void addAll(Iterable<IDelta> toReconcile) {
-    Sequence.fromIterable(toReconcile).visitAll(new IVisitor<IDelta>() {
-      public void visit(IDelta d) {
-        DeltaContainer.insert(d, topContainer);
-      }
-    });
+    Sequence.fromIterable(toReconcile).visitAll((d) -> DeltaContainer.insert(d, topContainer));
   }
   public void reconcileAll() {
-    ListSequence.fromList(topContainer).visitAll(new IVisitor<DeltaContainer>() {
-      public void visit(DeltaContainer dc) {
-        dc.mergeContent().reconcile();
-      }
-    });
+    ListSequence.fromList(topContainer).visitAll((dc) -> dc.mergeContent().reconcile());
   }
   public void visitAll(final IDeltaVisitor visitor) {
-    ListSequence.fromList(topContainer).visitAll(new IVisitor<DeltaContainer>() {
-      public void visit(DeltaContainer dc) {
-        dc.mergeContent().acceptVisitor(visitor);
-      }
-    });
+    ListSequence.fromList(topContainer).visitAll((dc) -> dc.mergeContent().acceptVisitor(visitor));
   }
   private static class DeltaContainer {
     private IDelta delta;
@@ -53,11 +38,7 @@ public class DeltaReconciler {
       this.delta = delta;
     }
     private IDelta mergeContent() {
-      return ListSequence.fromList(content).foldLeft(this.delta, new ILeftCombinator<DeltaContainer, IDelta>() {
-        public IDelta combine(IDelta d, DeltaContainer dc) {
-          return d.merge(dc.mergeContent());
-        }
-      });
+      return ListSequence.fromList(content).foldLeft(this.delta, (IDelta d, DeltaContainer dc) -> d.merge(dc.mergeContent()));
     }
     private boolean tryInsert(IDelta delta) {
       if (this.delta.contains(delta)) {
@@ -80,11 +61,7 @@ public class DeltaReconciler {
       }
       if (dc != null) {
         ListSequence.fromList(into).addElement(dc);
-      } else if (!(ListSequence.fromList(into).any(new IWhereFilter<DeltaContainer>() {
-        public boolean accept(DeltaContainer it) {
-          return it.tryInsert(delta);
-        }
-      }))) {
+      } else if (!(ListSequence.fromList(into).any((it) -> it.tryInsert(delta)))) {
         ListSequence.fromList(into).addElement(new DeltaContainer(delta));
       }
     }

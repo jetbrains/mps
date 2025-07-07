@@ -18,15 +18,16 @@
       <node id="410791833644985012" at="27,0,28,0" concept="5" trace="PatternBuilderVariable$VU" />
       <node id="410791833644985012" at="31,0,32,0" concept="5" trace="name$MnvL" />
       <node id="410791833644988380" at="18,42,21,9" concept="2" />
-      <node id="410791833644988380" at="16,91,22,7" concept="0" />
-      <node id="410791833644985013" at="16,0,24,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="410791833644988380" at="16,102,22,7" concept="0" />
+      <node id="410791833644985013" at="16,0,24,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="410791833644988384" at="19,89,20,121" />
       <scope id="410791833644988380" at="17,7,21,9">
         <var name="variable" id="410791833644988380" />
       </scope>
-      <scope id="410791833644985013" at="16,91,22,7" />
+      <scope id="410791833644985013" at="16,102,22,7" />
       <scope id="410791833644985013" at="16,0,24,0">
         <var name="enclosingNode" id="410791833644985013" />
+        <var name="index" id="410791833644985013" />
         <var name="model" id="410791833644985013" />
         <var name="newNode" id="410791833644985013" />
         <var name="sampleNode" id="410791833644985013" />

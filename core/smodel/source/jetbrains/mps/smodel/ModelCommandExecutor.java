@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,39 +17,22 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.util.Computable;
 
+import java.util.function.Supplier;
+
 /**
  * Evgeny Gryaznov, Sep 3, 2010
  */
 public interface ModelCommandExecutor {
-  // Despite most of the methods come from openapi.ModelAccess, can not remove them as long as there are uses of these methods in mbeddr.
 
-  boolean canRead(); // == openapi.ModelAccess
-
-  void checkReadAccess(); // == openapi.ModelAccess
-
-  boolean canWrite(); // == openapi.ModelAccess
-
-  void checkWriteAccess(); // == openapi.ModelAccess
-
-  // read
-
-  void runReadAction(Runnable r); // == openapi.ModelAccess
-
+  /**
+   * @deprecated use {@link org.jetbrains.mps.openapi.module.ModelAccess#computeReadAction(Supplier)} instead
+   */
+  @Deprecated(forRemoval = true, since = "2023.3")
   <T> T runReadAction(Computable<T> c); // extends openapi.ModelAccess with Computable support
 
   /**
-   * Run read asynchronously, in EDT thread
+   * @deprecated use {@link org.jetbrains.mps.openapi.module.ModelAccess#computeWriteAction(Supplier)} instead
    */
-  void runReadInEDT(Runnable r); // == openapi.ModelAccess
-
-  // write
-
-  void runWriteAction(Runnable r); // == openapi.ModelAccess
-
+  @Deprecated(forRemoval = true, since = "2023.3")
   <T> T runWriteAction(Computable<T> c); // extends openapi.ModelAccess with Computable support
-
-  /**
-   * Run write asynchronously, in EDT thread
-   */
-  void runWriteInEDT(Runnable r); // == openapi.ModelAccess
 }

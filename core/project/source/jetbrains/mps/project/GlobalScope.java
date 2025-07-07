@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,7 @@
  */
 package jetbrains.mps.project;
 
-import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.smodel.BaseScope;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.iterable.CollectManyIterator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,36 +30,12 @@ import java.util.Iterator;
 /**
  * Global in a sense 'global for a given repository'. Since we used to have single repository, deemed 'global'.
  */
-public class GlobalScope extends BaseScope implements CoreComponent {
-  private static GlobalScope INSTANCE;
-
-  /**
-   * @deprecated there ain't no such thing as 'global' scope, use {@link #GlobalScope(SRepository)}
-   */
-  @Deprecated
-  @ToRemove(version = 2019.1)
-  public static GlobalScope getInstance() {
-    return INSTANCE;
-  }
+public class GlobalScope extends BaseScope {
 
   protected final SRepository myRepository;
 
   public GlobalScope(SRepository moduleRepository) {
     myRepository = moduleRepository;
-  }
-
-  @Override
-  public void init() {
-    if (INSTANCE != null) {
-      throw new IllegalStateException("double initialization");
-    }
-
-    INSTANCE = this;
-  }
-
-  @Override
-  public void dispose() {
-    INSTANCE = null;
   }
 
   public String toString() {
@@ -77,7 +51,7 @@ public class GlobalScope extends BaseScope implements CoreComponent {
   @NotNull
   @Override
   public Iterable<SModel> getModels() {
-    return () -> new CollectManyIterator<SModule, SModel>(getModules()) {
+    return () -> new CollectManyIterator<>(getModules()) {
       @Nullable
       @Override
       protected Iterator<SModel> translate(SModule module) {

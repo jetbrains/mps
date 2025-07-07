@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,14 +24,14 @@ import jetbrains.mps.ide.undo.WorkbenchUndoHandler;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.undo.DefaultUndoContext;
 import jetbrains.mps.smodel.undo.UndoContext;
-import jetbrains.mps.util.ComputeRunnable;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.util.RunWithOutcome;
 
 import java.math.BigDecimal;
+import java.util.concurrent.Callable;
 
 import static java.math.BigDecimal.valueOf;
 
@@ -82,14 +82,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       myCancellableReads.removeIfCanCancel(r);
       return;
     }
-    ApplicationManager.getApplication().runReadAction(() -> {
-      getReadLock().lock();
-      try {
-        myReadActionDispatcher.dispatch(r);
-      } finally {
-        getReadLock().unlock();
-      }
-    });
+    ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(new LockRunnable(getReadLock(), myReadActionDispatcher.wrap(r))));
     myCancellableReads.removeIfCanCancel(r);
   }
 
@@ -103,9 +96,9 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     myCancellableReads.cancel();
     final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), wrapWithModelWriteDispatch(r));
     if (isInEDT()) {
-      myPlatformWriteHelper.runWrite(lockRunnable);
+      myPlatformWriteHelper.runWrite(new PlatformCancelBlock(lockRunnable));
     } else {
-      ApplicationManager.getApplication().runReadAction(lockRunnable);
+      ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(lockRunnable));
     }
   }
 
@@ -116,7 +109,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     return myWriteActionDispatcher.wrap(r);
   }
 
-  @ToRemove(version = 201)
+  @Deprecated(since = "201", forRemoval = true)
   @Internal
   public void forceFlush() {
     myEDTExecutor.forceFlush();
@@ -170,7 +163,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     // 1 ms is pretty short to be considered 'try'
     final LockRunnable lockRunnable = new LockRunnable(getReadLock(), 1, myReadActionDispatcher.wrap(r));
     // XXX likely, shall try to grab IDEA's read lock much like tryWrite does
-    ApplicationManager.getApplication().runReadAction(lockRunnable);
+    ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(lockRunnable));
     if (lockRunnable.wasExecuted()) {
       myCancellableReads.removeIfCanCancel(r);
       return true;
@@ -179,6 +172,14 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   }
 
   private boolean tryWrite(final Runnable r) {
+    if (canRead() && !canWrite()) {
+      // This is an attempt to prevent scenarios like MPS-35610, when attempt to start a write operation leads to read operation being cancelled.
+      // We addressed this on the spot, for popup menu in EC, but generally may face same issue elsewhere.
+      // When/if we decide to rewrite scheduling and the way we interact with IDEA reads/writes, we'd better take this scenario into account.
+      //  To me, it looks like our write requests get executed even in nested EDT pump (~ modal?), and likely this makes IDEA "uneasy".
+      return false;
+    }
+
     final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, wrapWithModelWriteDispatch(r));
 
     // XXX there's only 1 use of the method, and it's from EDT executor, are there any chance not to be in EDT here?
@@ -189,7 +190,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     try {
       // in fact, there are 2 lock attempts, one to grab IDEA's platform lock (myPlatformWriteHelper.tryWrite),
       // and another is to grab MPS write lock with lockRunnable
-      myPlatformWriteHelper.tryWrite(lockRunnable);
+      myPlatformWriteHelper.tryWrite(new PlatformCancelBlock(lockRunnable));
     } catch (WriteTimeOutException e) {
       // XXX why not return false to indicate failed attempt?
       throw new TimeOutRuntimeException(String.format(IDEA_WRITE_LOCK_FAIL, taskTimer.secondsElapsed()), e);
@@ -221,12 +222,8 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     TaskTimer taskTimer = new TaskTimer();
     // tryWrite ensures our command runnable would be executed from a distinct thread and hence would be 'top' one
     final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, wrapWithModelWriteDispatch(wrapTopCommandRunnable(r, project)));
-    ComputeRunnable<WriteTimeOutException> computable = new ComputeRunnable<>(() -> {
-      try {
-        myPlatformWriteHelper.tryWrite(lockRunnable);
-      } catch (WriteTimeOutException e) {
-        return e;
-      }
+    RunWithOutcome<Object> computable = new RunWithOutcome<>((Callable<?>) () -> {
+      myPlatformWriteHelper.tryWrite(new PlatformCancelBlock(lockRunnable));
       return null;
     });
     // XXX unlike #executeCommand(Runnable, Project), we don't respect UndoRunnable options here, why?
@@ -241,15 +238,17 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       }
     }
     CommandProcessor.getInstance().executeCommand(project.getProject(), computable, name, groupId, confirmUndo);
-    if (computable.getResult() != null) {
+    if (computable.getException() != null) {
       // XXX why on earth do we report platform lock timeout with an exception, while model lock timeout with mere boolean wasExecuted?
-      throw new TimeOutRuntimeException(String.format(IDEA_WRITE_LOCK_FAIL, taskTimer.secondsElapsed()), computable.getResult());
+      throw new TimeOutRuntimeException(String.format(IDEA_WRITE_LOCK_FAIL, taskTimer.secondsElapsed()), computable.getException());
     }
     return lockRunnable.wasExecuted();
   }
 
   @Override
   public void executeCommand(Runnable r) {
+    LOG.warning("Command are associated with a project. Use ModelAccess from a repository associated with a Project rather than global ModelAccess instance", new Throwable());
+    // much like smodel.ModelAccess#executeCommandInEDT(), shall not be invoked through WMA instance, rather with ProjectModelAccess only.
     executeCommand(r, CurrentProjectAccessUtil.getMPSProjectFromUI());
   }
 
@@ -299,9 +298,13 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       // a failed assertion.
       ApplicationManager.getApplication().assertWriteAccessAllowed();
       // just go on with cmd as is
+      if (myCommandActionDispatcher.isInsideNotificationDispatch()) {
+        // ... unless we're inside previous command notification. See MPS-33474 and MPS-33432 for reasons.
+        throw new IllegalModelAccessException("Do not start a new command while start/finish notification for another command is in process");
+      }
     } else {
       final LockRunnable withModelLock = new LockRunnable(getWriteLock(), wrapWithModelWriteDispatch(cmd));
-      cmd = myPlatformWriteHelper.withPlatformWrite(withModelLock);
+      cmd = myPlatformWriteHelper.withPlatformWrite(new PlatformCancelBlock((withModelLock)));
     }
     CommandProcessor.getInstance().executeCommand(project.getProject(), cmd, name, groupId, confirmUndo);
   }
@@ -315,7 +318,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     myCancellableReads.cancel();
 
     final LockRunnable withModelLock = new LockRunnable(getWriteLock(), wrapWithModelWriteDispatch(wrapTopCommandRunnable(r, project)));
-    CommandProcessor.getInstance().runUndoTransparentAction(myPlatformWriteHelper.withPlatformWrite(withModelLock));
+    CommandProcessor.getInstance().runUndoTransparentAction(myPlatformWriteHelper.withPlatformWrite(new PlatformCancelBlock(withModelLock)));
   }
 
   @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 public class ClassLoadingDescriptorChangedTest implements EnvironmentAware {
   private Environment myEnvironment;
@@ -53,7 +52,8 @@ public class ClassLoadingDescriptorChangedTest implements EnvironmentAware {
 
   @After
   public void afterTest() {
-    myProject.dispose();
+    myEnvironment.closeProject(myProject);
+    myProject = null;
   }
 
   /**
@@ -62,7 +62,7 @@ public class ClassLoadingDescriptorChangedTest implements EnvironmentAware {
    * class from the generators G1 and G2.
    */
   @Test
-  public void testClassLoadingDescriptorChanged() {
+  public void testClassLoadingDescriptorChanged() throws ClassNotFoundException {
     final Language language1 = getLanguage("L1");
     assert language1 != null;
     final Language language2 = getLanguage("L2");
@@ -82,15 +82,14 @@ public class ClassLoadingDescriptorChangedTest implements EnvironmentAware {
     myProject.getModelAccess().runWriteAction(language2::reloadAfterDescriptorChange);
   }
 
-  private void performCheck(Generator generator1) {
-    try {
-      Class<?> aClass = generator1.getClass("L1.generator.template.main.QueriesGenerated");
-      Class<?> aClass2 = generator1.getClass("L2.generator.template.main.QueriesGenerated");
-      assertNotNull(aClass);
-      assertNotNull(aClass2);
-    } catch (ClassNotFoundException e) {
-      throw new RuntimeException(e);
-    }
+  private void performCheck(Generator generator1) throws ClassNotFoundException{
+    final ClassLoaderManager clm = myEnvironment.getPlatform().findComponent(ClassLoaderManager.class);
+    final MPSModuleClassLoader generatorCL = clm.getClassLoader(generator1);
+    Class<?> aClass = generatorCL.loadClass("L1.generator.template.main.QueriesGenerated");
+    Class<?> aClass2 = generatorCL.loadClass("L2.generator.template.main.QueriesGenerated");
+    // loadClass != null, assert is useless?
+    assertNotNull(aClass);
+    assertNotNull(aClass2);
   }
 
   private class TakeGenerator implements Runnable {

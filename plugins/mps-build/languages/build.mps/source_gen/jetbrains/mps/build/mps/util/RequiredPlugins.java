@@ -37,7 +37,7 @@ public class RequiredPlugins {
     for (SNode plugin : ListSequence.fromList(myPlugins)) {
       collectDependencies(plugin, visited);
     }
-    SetSequence.fromSet(myDependencies).addSequence(SetSequence.fromSet(visited).subtract(ListSequence.fromList(myPlugins)).where(new NotNullWhereFilter<SNode>()).toListSequence());
+    SetSequence.fromSet(myDependencies).addSequence(ListSequence.fromList(SetSequence.fromSet(visited).subtract(ListSequence.fromList(myPlugins)).where(new NotNullWhereFilter()).toList()));
   }
 
   public Iterable<SNode> returnDependencies() {
@@ -45,7 +45,7 @@ public class RequiredPlugins {
     for (SNode plugin : ListSequence.fromList(myPlugins)) {
       collectDependencies(plugin, visited);
     }
-    return SetSequence.fromSet(visited).subtract(ListSequence.fromList(myPlugins)).where(new NotNullWhereFilter<SNode>()).toListSequence();
+    return SetSequence.fromSet(visited).subtract(ListSequence.fromList(myPlugins)).where(new NotNullWhereFilter()).toList();
   }
 
   public Iterable<SNode> returnDepsWithInitial() {

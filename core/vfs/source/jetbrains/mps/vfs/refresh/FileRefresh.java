@@ -1,6 +1,5 @@
 /*
- *
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,10 +14,9 @@
  */
 package jetbrains.mps.vfs.refresh;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -32,7 +30,7 @@ import java.util.stream.Stream;
  * @author Artem Tikhomirov
  */
 public final class FileRefresh implements Runnable {
-  private final static Logger LOG = LogManager.getLogger(FileRefresh.class);
+  private final static Logger LOG = Logger.getLogger(FileRefresh.class);
 
   @NotNull private final List<IFile> myFiles;
   private final DefaultCachingContext myDefaultCachingContext = new DefaultCachingContext(true, false);
@@ -64,7 +62,7 @@ public final class FileRefresh implements Runnable {
         fs.refresh(myDefaultCachingContext, cachingFiles);
         cachingFiles = cachingFiles.stream().flatMap(
             file -> {
-              if (!file.isInArchive() && file.isDirectory()) {
+              if (!file.isInZipArchive() && file.isDirectory()) {
                 List<IFile> children = file.getChildren();
                 return children != null ? children.stream().map(iFile -> (CachingFile) iFile) : Stream.empty();
               } else if (IFileUtil.isJarFile(file)) {

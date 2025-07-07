@@ -35,6 +35,6 @@ import org.junit.runners.Suite;
   MpsIncrementalChangeModelTestCase.class,
   MpsIncrementalRemoveModelTestCase.class,
   MpsRebuildChangedModel.class,
-  RebuildIdeaPluginTestCase.class})
+})
 public class JpsMakeTestSuite {
 }

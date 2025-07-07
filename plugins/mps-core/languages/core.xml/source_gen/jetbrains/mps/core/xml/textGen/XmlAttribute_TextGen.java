@@ -22,7 +22,7 @@ public class XmlAttribute_TextGen extends TextGenDescriptorBase {
       tgs.indent();
       tgs.append("\t");
     }
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.attrName$omjx));
+    tgs.append(XmlCharEscape.escapeIdentifier(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.attrName$omjx)));
     tgs.append("=\"");
     for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.value$1h4D)) {
       tgs.appendNode(item);

@@ -20,25 +20,23 @@ import jetbrains.mps.scope.SimpleRoleScope;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class RequestHandler__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L, "jetbrains.mps.ide.httpsupport.structure.RequestHandler");
 
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> getRequieredParameters_id40BYgsZXRLw = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getRequieredParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("40BYgsZXRLw").build();
-  public static final SMethod<Iterable<SNode>> supportedMethodsOrDefault_id22cXLi_Q1OU = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("supportedMethodsOrDefault").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("22cXLi_Q1OU").build();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<SNode>> getRequieredParameters_id40BYgsZXRLw = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getRequieredParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4622937352052374624L).languageId(0x98a115e9f32231f1L, 0x817e4e70961e4a95L).build2();
+  public static final SMethod<Iterable<SNode>> supportedMethodsOrDefault_id22cXLi_Q1OU = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("supportedMethodsOrDefault").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2345521174006996282L).languageId(0x98a115e9f32231f1L, 0x817e4e70961e4a95L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getRequieredParameters_id40BYgsZXRLw, supportedMethodsOrDefault_id22cXLi_Q1OU);
 
@@ -53,26 +51,14 @@ public final class RequestHandler__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Iterable<SNode> getRequieredParameters_id40BYgsZXRLw(@NotNull SNode __thisNode__) {
     Iterable<SNode> ret = SLinkOperations.getChildren(__thisNode__, LINKS.queryParameters$sPtY);
-    return Sequence.fromIterable(ret).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.required$LWmw);
-      }
-    });
+    return Sequence.fromIterable(ret).where((it) -> SPropertyOperations.getBoolean(it, PROPS.required$LWmw));
   }
   /*package*/ static Iterable<SNode> supportedMethodsOrDefault_id22cXLi_Q1OU(@NotNull SNode __thisNode__) {
     if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.handledMethods$d9i1)).isEmpty()) {
       return Sequence.<SNode>singleton(createHttpMethod_Get_4j846j_a0a0a0a2());
     }
     if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.handledMethods$d9i1), CONCEPTS.HttpMethod_ANY$pV)).isNotEmpty()) {
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.HttpMethod$WL, SNodeOperations.getModel(__thisNode__))).where(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          return !(it.isAbstract()) && !(Objects.equals(it, CONCEPTS.HttpMethod_ANY$pV));
-        }
-      }).select(new ISelector<SConcept, SNode>() {
-        public SNode select(SConcept it) {
-          return SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(it));
-        }
-      });
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.HttpMethod$WL, SNodeOperations.getModel(__thisNode__))).where((it) -> !(it.isAbstract()) && !(Objects.equals(it, CONCEPTS.HttpMethod_ANY$pV))).select((it) -> SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(it)));
     }
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.handledMethods$d9i1)).distinct();
   }

@@ -16,11 +16,7 @@ public class CoerceStatement_DataFlow extends DataFlowBuilder {
     _context.getBuilder().emitIfJump(_context.getBuilder().label(_context.getNode(), "endOfTrue"), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/1220448058969");
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$ZsV9));
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.elseClause$41Ml) != null)) {
-      _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-        public void run() {
-          _context.getBuilder().emitJump(_context.getBuilder().after(SLinkOperations.getTarget(_context.getNode(), LINKS.elseClause$41Ml)), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/1228490477783");
-        }
-      });
+      _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().after(SLinkOperations.getTarget(_context.getNode(), LINKS.elseClause$41Ml)), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/1228490477783"));
     }
     _context.getBuilder().emitLabel("endOfTrue");
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.elseClause$41Ml) != null)) {

@@ -7,6 +7,7 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
+import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -22,7 +23,7 @@ public class check_ComeFromExpression_NonTypesystemRule extends AbstractNonTypes
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // todo: do right stuff! =(
-    if (!(SPropertyOperations.getString(SNodeOperations.getNodeAncestor(expr, CONCEPTS.ConceptMethodDeclaration$N0, false, false), PROPS.name$MnvL).equals("getScope"))) {
+    if (!(Objects.equals(SPropertyOperations.getString(SNodeOperations.getNodeAncestor(expr, CONCEPTS.ConceptMethodDeclaration$N0, false, false), PROPS.name$MnvL), "getScope"))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expr, "Should be in getScope method", "r:c2d05fc3-fe25-4093-95ce-8e3356e61084(jetbrains.mps.lang.scopes.typesystem)", "8077936094962945000", null, errorTarget);

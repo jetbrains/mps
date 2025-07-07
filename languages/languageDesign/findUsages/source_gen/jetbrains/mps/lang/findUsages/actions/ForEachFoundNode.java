@@ -12,7 +12,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ForEachFoundNode {
   public static class NodeFactory_1237139122106539383 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNodeFactoryOperations.addNewChild(newNode, LINKS.parameter$b4Y3, CONCEPTS.ForEachNodeFoundClosureParameterDeclaration$PJ);
     }
   }

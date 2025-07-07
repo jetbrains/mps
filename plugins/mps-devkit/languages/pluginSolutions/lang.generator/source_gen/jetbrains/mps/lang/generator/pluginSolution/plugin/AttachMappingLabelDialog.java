@@ -102,23 +102,21 @@ public class AttachMappingLabelDialog extends DialogWrapper {
   }
 
   protected void doAttachMappingLabel() {
-    myEditorContext.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        SNode mappingLabel = MappingLabelUtil.findOrCreateMappingLabelForName(AttachMappingLabelDialog.this.myTemplateNode, AttachMappingLabelDialog.this.myResultLabelName);
-        SNode existingMacro = ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(AttachMappingLabelDialog.this.myTemplateNode)).last();
-        if (existingMacro != null) {
-          SLinkOperations.setTarget(existingMacro, LINKS.mappingLabel$jbOO, mappingLabel);
-          return;
-        }
-        SNode templateFragment = new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(AttachMappingLabelDialog.this.myTemplateNode);
-        if (templateFragment != null) {
-          SLinkOperations.setTarget(templateFragment, LINKS.labelDeclaration$ORJN, mappingLabel);
-          return;
-        }
-        // create new Label macro
-        SNode newMacro = SNodeFactoryOperations.addNewAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU), CONCEPTS.LabelMacro$Lz);
-        SLinkOperations.setTarget(newMacro, LINKS.mappingLabel$jbOO, mappingLabel);
+    myEditorContext.getRepository().getModelAccess().executeCommand(() -> {
+      SNode mappingLabel = MappingLabelUtil.findOrCreateMappingLabelForName(AttachMappingLabelDialog.this.myTemplateNode, AttachMappingLabelDialog.this.myResultLabelName);
+      SNode existingMacro = ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(AttachMappingLabelDialog.this.myTemplateNode)).last();
+      if (existingMacro != null) {
+        SLinkOperations.setTarget(existingMacro, LINKS.mappingLabel$jbOO, mappingLabel);
+        return;
       }
+      SNode templateFragment = new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(AttachMappingLabelDialog.this.myTemplateNode);
+      if (templateFragment != null) {
+        SLinkOperations.setTarget(templateFragment, LINKS.labelDeclaration$ORJN, mappingLabel);
+        return;
+      }
+      // create new Label macro
+      SNode newMacro = SNodeFactoryOperations.addNewAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU), CONCEPTS.LabelMacro$Lz);
+      SLinkOperations.setTarget(newMacro, LINKS.mappingLabel$jbOO, mappingLabel);
     });
   }
 

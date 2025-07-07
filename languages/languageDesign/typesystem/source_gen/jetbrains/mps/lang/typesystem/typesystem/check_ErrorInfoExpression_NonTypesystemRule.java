@@ -19,7 +19,7 @@ public class check_ErrorInfoExpression_NonTypesystemRule extends AbstractNonType
   public check_ErrorInfoExpression_NonTypesystemRule() {
   }
   public void applyRule(final SNode errorInfoExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((SNodeOperations.getNodeAncestor(errorInfoExpression, CONCEPTS.InequationReplacementRule$m3, false, false) != null))) {
+    if (!(SNodeOperations.getNodeAncestor(errorInfoExpression, CONCEPTS.InequationReplacementRule$m3, false, false) != null)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(errorInfoExpression, "error info expression allowed only inside replacement rules", "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1201618438931", null, errorTarget);
     }

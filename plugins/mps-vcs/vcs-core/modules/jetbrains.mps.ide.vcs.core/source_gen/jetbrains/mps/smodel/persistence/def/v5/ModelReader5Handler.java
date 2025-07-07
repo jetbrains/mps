@@ -147,7 +147,7 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     @Override
     protected ModelLoadResult createObject(Attributes attrs) throws SAXException {
-      my_referenceDescriptorsField = new ArrayList<IReferencePersister>();
+      my_referenceDescriptorsField = new ArrayList<>();
       my_visibleModelElementsField = new SAXVisibleModelElements();
       my_modelField = new DefaultSModel(VCSPersistenceUtil.createModelReference(attrs.getValue("modelUID")), my_headerParam);
       return new ModelLoadResult((SModel) my_modelField, ModelLoadingState.FULLY_LOADED);

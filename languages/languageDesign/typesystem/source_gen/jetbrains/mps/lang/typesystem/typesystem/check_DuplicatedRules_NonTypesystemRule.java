@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -28,11 +27,7 @@ public class check_DuplicatedRules_NonTypesystemRule extends AbstractNonTypesyst
     if ((name == null || name.length() == 0)) {
       return;
     }
-    if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(abstractRule), CONCEPTS.AbstractRule$o9)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != abstractRule && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$MnvL));
-      }
-    })) {
+    if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(abstractRule), CONCEPTS.AbstractRule$o9)).any((it) -> it != abstractRule && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$MnvL)))) {
       {
         final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(abstractRule, "Duplicated name of the typesystem rule", "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "8433157989202147284", null, errorTarget);

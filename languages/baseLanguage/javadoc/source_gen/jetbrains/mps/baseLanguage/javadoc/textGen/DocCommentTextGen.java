@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.javadoc.behavior.BaseDocComment__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.IDeprecatable__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -41,51 +40,31 @@ public abstract class DocCommentTextGen {
       DocCommentTextGen.javadocIndent(ctx);
     }
 
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.AuthorBlockDocTag$jR);
-      }
-    })) {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.AuthorBlockDocTag$jR))) {
       tgs.appendNode(item);
     }
     for (SNode item : SLinkOperations.getChildren(node, LINKS.author$lgjQ)) {
       tgs.appendNode(item);
     }
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.SinceBlockDocTag$KR);
-      }
-    })) {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.SinceBlockDocTag$KR))) {
       tgs.appendNode(item);
     }
     for (SNode item : SLinkOperations.getChildren(node, LINKS.since$M6dH)) {
       tgs.appendNode(item);
     }
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.VersionBlockDocTag$wp);
-      }
-    })) {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.VersionBlockDocTag$wp))) {
       tgs.appendNode(item);
     }
     for (SNode item : SLinkOperations.getChildren(node, LINKS.version$M6sI)) {
       tgs.appendNode(item);
     }
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.SeeBlockDocTag$fI);
-      }
-    })) {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.SeeBlockDocTag$fI))) {
       tgs.appendNode(item);
     }
     for (SNode item : SLinkOperations.getChildren(node, LINKS.see$H9Bg)) {
       tgs.appendNode(item);
     }
-    SNode deprecationTag = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n);
-      }
-    }).first();
+    SNode deprecationTag = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n)).first();
     if ((deprecationTag != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$ah) && (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$ah))) {
       tgs.appendNode(deprecationTag);
     } else {

@@ -155,11 +155,11 @@ public class XmlTestReporter implements ITestReporter {
     return sb;
   }
   private String shortName(String testFQname) {
-    Matcher matcher = REGEXP_rw4j9x_a0a0a74.matcher(testFQname);
+    Matcher matcher = REGEXP.matcher(testFQname);
     return (matcher.matches() ? matcher.group(1) : testFQname);
   }
   private String prefix(String testFQname) {
-    Matcher matcher = REGEXP_rw4j9x_a0a0a84.matcher(testFQname);
+    Matcher matcher = REGEXP1.matcher(testFQname);
     return (matcher.matches() ? matcher.group(1) : testFQname);
   }
   public String seconds(long millis) {
@@ -182,6 +182,6 @@ public class XmlTestReporter implements ITestReporter {
     }
     return this.hostname;
   }
-  private static final Pattern REGEXP_rw4j9x_a0a0a74 = Pattern.compile(".+\\.([^\\.]+)$", 0);
-  private static final Pattern REGEXP_rw4j9x_a0a0a84 = Pattern.compile("(.*)\\.[^\\.]+$", 0);
+  private static final Pattern REGEXP = Pattern.compile(".+\\.([^\\.]+)$", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("(.*)\\.[^\\.]+$", 0);
 }

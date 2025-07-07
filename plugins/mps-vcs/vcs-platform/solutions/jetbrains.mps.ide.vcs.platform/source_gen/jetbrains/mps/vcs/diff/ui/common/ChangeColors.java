@@ -7,17 +7,16 @@ import java.util.Map;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.awt.Color;
 import java.util.EnumMap;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import com.intellij.openapi.editor.colors.EditorColors;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
+import com.intellij.openapi.editor.colors.EditorColors;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748335554", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class ChangeColors {
@@ -25,10 +24,11 @@ public class ChangeColors {
   private final Map<ChangeType, Color> myTreeColors = new EnumMap<ChangeType, Color>(ChangeType.class);
   private final Map<ChangeType, Color> myGutterColors = new EnumMap<ChangeType, Color>(ChangeType.class);
   private final Map<ChangeType, Color> myErrorStripeColors = new EnumMap<ChangeType, Color>(ChangeType.class);
+  private final Color MOVE_COLOR = new Color(255, 255, 224);
 
 
   private ChangeColors() {
-    updateEditorColors(EditorColorsManager.getInstance().getGlobalScheme());
+    updateEditorColors(null);
     MapSequence.fromMap(myTreeColors).put(ChangeType.ADD, FileStatus.ADDED.getColor());
     MapSequence.fromMap(myTreeColors).put(ChangeType.DELETE, FileStatus.DELETED.getColor());
     MapSequence.fromMap(myTreeColors).put(ChangeType.CHANGE, FileStatus.MODIFIED.getColor());
@@ -64,16 +64,20 @@ public class ChangeColors {
       }
       scheme = EditorColorsManager.getInstance().getGlobalScheme();
     }
+    TextAttributes taDiffInsert = scheme.getAttributes(TextAttributesKey.find("DIFF_INSERTED"));
+    TextAttributes taDiffDelete = scheme.getAttributes(TextAttributesKey.find("DIFF_DELETED"));
+    TextAttributes taDiffChange = scheme.getAttributes(TextAttributesKey.find("DIFF_MODIFIED"));
+    TextAttributes taDiffConflict = scheme.getAttributes(TextAttributesKey.find("DIFF_CONFLICT"));
 
-    MapSequence.fromMap(myDiffColors).put(ChangeType.ADD, StyleRegistry.getInstance().getStyle("DIFF_INSERTED").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
+    MapSequence.fromMap(myDiffColors).put(ChangeType.ADD, taDiffInsert.getBackgroundColor());
 
-    MapSequence.fromMap(myDiffColors).put(ChangeType.DELETE, StyleRegistry.getInstance().getStyle("DIFF_DELETED").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
+    MapSequence.fromMap(myDiffColors).put(ChangeType.DELETE, taDiffDelete.getBackgroundColor());
 
-    MapSequence.fromMap(myDiffColors).put(ChangeType.CHANGE, StyleRegistry.getInstance().getStyle("DIFF_MODIFIED").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
+    MapSequence.fromMap(myDiffColors).put(ChangeType.CHANGE, taDiffChange.getBackgroundColor());
 
-    MapSequence.fromMap(myDiffColors).put(ChangeType.CONFLICTED, StyleRegistry.getInstance().getStyle("DIFF_CONFLICT").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
+    MapSequence.fromMap(myDiffColors).put(ChangeType.CONFLICTED, taDiffConflict.getBackgroundColor());
 
-    MapSequence.fromMap(myDiffColors).put(ChangeType.MOVE, new Color(255, 255, 224));
+    MapSequence.fromMap(myDiffColors).put(ChangeType.MOVE, MOVE_COLOR);
 
     MapSequence.fromMap(myGutterColors).put(ChangeType.ADD, scheme.getColor(EditorColors.ADDED_LINES_COLOR));
 
@@ -81,11 +85,13 @@ public class ChangeColors {
 
     MapSequence.fromMap(myGutterColors).put(ChangeType.CHANGE, scheme.getColor(EditorColors.MODIFIED_LINES_COLOR));
 
-    MapSequence.fromMap(myGutterColors).put(ChangeType.MOVE, new Color(255, 255, 224));
+    MapSequence.fromMap(myGutterColors).put(ChangeType.MOVE, MOVE_COLOR);
 
-    MapSequence.fromMap(myErrorStripeColors).put(ChangeType.ADD, scheme.getAttributes(TextAttributesKey.createTextAttributesKey("DIFF_INSERTED")).getErrorStripeColor());
-    MapSequence.fromMap(myErrorStripeColors).put(ChangeType.DELETE, scheme.getAttributes(TextAttributesKey.createTextAttributesKey("DIFF_DELETED")).getErrorStripeColor());
-    MapSequence.fromMap(myErrorStripeColors).put(ChangeType.CHANGE, scheme.getAttributes(TextAttributesKey.createTextAttributesKey("DIFF_MODIFIED")).getErrorStripeColor());
+    MapSequence.fromMap(myErrorStripeColors).put(ChangeType.ADD, taDiffInsert.getErrorStripeColor());
+    MapSequence.fromMap(myErrorStripeColors).put(ChangeType.DELETE, taDiffDelete.getErrorStripeColor());
+    MapSequence.fromMap(myErrorStripeColors).put(ChangeType.CHANGE, taDiffChange.getErrorStripeColor());
+    MapSequence.fromMap(myErrorStripeColors).put(ChangeType.CONFLICTED, taDiffConflict.getErrorStripeColor());
+    MapSequence.fromMap(myErrorStripeColors).put(ChangeType.MOVE, MOVE_COLOR);
 
   }
 }

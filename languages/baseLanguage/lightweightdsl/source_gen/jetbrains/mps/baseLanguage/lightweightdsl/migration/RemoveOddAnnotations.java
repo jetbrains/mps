@@ -11,11 +11,9 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -39,20 +37,8 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
     {
       SearchScope scope_gqzzto_a0e = CommandUtil.createScope(m);
       final SearchScope scope_gqzzto_a0e_0 = new EditableFilteringScope(scope_gqzzto_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_gqzzto_a0e_0;
-        }
-      };
-      Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AutoInitDSLClass$Ms, false), CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it) != null);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it));
-        }
-      });
+      QueryExecutionContext context = () -> scope_gqzzto_a0e_0;
+      Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AutoInitDSLClass$Ms, false), CONCEPTS.ClassConcept$bK)).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it) != null)).visitAll((it) -> SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it)));
     }
   }
   @Override
@@ -60,17 +46,9 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
     {
       SearchScope scope_gqzzto_a0f = CommandUtil.createScope(m);
       final SearchScope scope_gqzzto_a0f_0 = new EditableFilteringScope(scope_gqzzto_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_gqzzto_a0f_0;
-        }
-      };
-      return Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AutoInitDSLClass$Ms, false), CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it) != null);
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_gqzzto_a0f_0;
+      return Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AutoInitDSLClass$Ms, false), CONCEPTS.ClassConcept$bK)).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it) != null)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return ((Problem) new NotMigratedNode(it) {
             public String getMessage() {
               return "Unnecessary @dslclass annotation was not migrated";
@@ -80,7 +58,7 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, "jetbrains.mps.baseLanguage.lightweightdsl"), 0);
   }
 

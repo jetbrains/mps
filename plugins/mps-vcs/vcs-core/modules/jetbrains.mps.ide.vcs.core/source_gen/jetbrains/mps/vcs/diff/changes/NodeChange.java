@@ -52,4 +52,18 @@ public abstract class NodeChange extends StructureChange {
   public ChangeType getType() {
     return ChangeType.CHANGE;
   }
+
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    if (super.conflictsWith(otherChange)) {
+      return true;
+    }
+    return (otherChange instanceof NodeGroupChange && (as_mmglrt_a0a0a0a1a51(otherChange, NodeGroupChange.class)).containsDeletedNode(this.getAffectedNodeId(false))) || (otherChange instanceof NodeGroupNotMoveChange && (as_mmglrt_a0a0a0a1a51_0(otherChange, NodeGroupNotMoveChange.class)).containsDeletedNode(this.getAffectedNodeId(false)));
+  }
+  private static <T> T as_mmglrt_a0a0a0a1a51(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_mmglrt_a0a0a0a1a51_0(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
 }

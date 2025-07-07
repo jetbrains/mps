@@ -10,10 +10,9 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 import com.intellij.openapi.progress.ProgressIndicator;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.ide.migration.check.MissingMigrationProblem;
@@ -38,46 +37,33 @@ public class MigrationsMissingError extends MigrationError {
     return "Some migration scripts are missing.\n" + "Missing scripts will be shown in ModelChecker after the migration wizard is closed.\n\n" + "Migration can't continue.";
   }
   public Iterable<IssueKindReportItem> getProblems(ProgressIndicator progressIndicator) {
-    final List<SModule> modules = ListSequence.fromList(myErrors).select(new ISelector<ScriptApplied, SModule>() {
-      public SModule select(ScriptApplied it) {
+    final List<SModule> modules = ListSequence.fromList(myErrors).select(new _FunctionTypes._return_P1_E0<SModule, ScriptApplied>() {
+      public SModule invoke(ScriptApplied it) {
         return it.getModule(myRepository);
       }
-    }).toListSequence();
-    List<BaseScriptReference> sRefs = ListSequence.fromList(myErrors).select(new ISelector<ScriptApplied, BaseScriptReference>() {
-      public BaseScriptReference select(ScriptApplied it) {
+    }).toList();
+    List<BaseScriptReference> sRefs = ListSequence.fromList(myErrors).select(new _FunctionTypes._return_P1_E0<BaseScriptReference, ScriptApplied>() {
+      public BaseScriptReference invoke(ScriptApplied it) {
         return it.getScriptReference();
       }
-    }).distinct().toListSequence();
-    return ListSequence.fromList(sRefs).ofType(MigrationScriptReference.class).select(new ISelector<MigrationScriptReference, IssueKindReportItem>() {
-      public IssueKindReportItem select(final MigrationScriptReference it) {
-        List<SModule> languageUsages = ListSequence.fromList(modules).where(new IWhereFilter<SModule>() {
-          public boolean accept(SModule module) {
-            return SetSequence.fromSet(MigrationModuleUtil.getUsedLanguages(module)).contains(it.getLanguage());
+    }).distinct().toList();
+    // TODO
+    // 1 all modules of a given AppliedScript use language of AS.scriptRef, so first where for languageUsages doesn't make much sense
+    // 2 there could be another AS with valid script, just AS for some version is missing, and there's a use of a language. Do we need to report min version used?
+    // like, there's AS(ver=15, present) and AS(ver=16, missing). Apparently, there are modules using version 15 (otherwise we would not construct it in the first place)
+    // is it relevant to report this number? If we get here AS with missing script, it's not an easy task to find out min used version w/o this magic:
+    return ListSequence.fromList(sRefs).ofType(MigrationScriptReference.class).select((final MigrationScriptReference it) -> {
+      List<SModule> languageUsages = ListSequence.fromList(modules).where((module) -> SetSequence.fromSet(MigrationModuleUtil.getUsedLanguages(module)).contains(it.getLanguage())).toList();
+      return (IssueKindReportItem) new MissingMigrationProblem.MissingMigrationScriptProblem(it, Collections.min(ListSequence.fromList(languageUsages).select((module) -> MigrationModuleUtil.getUsedLanguageVersion(module, it.getLanguage())).toList()));
+    }).concat(ListSequence.fromList(sRefs).ofType(RefactoringScriptReference.class).select((final RefactoringScriptReference it) -> {
+      List<SModule> languageUsages = ListSequence.fromList(modules).where((module) -> {
+        return SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module)).select(new _FunctionTypes._return_P1_E0<SModuleReference, SModule>() {
+          public SModuleReference invoke(SModule it) {
+            return it.getModuleReference();
           }
-        }).toListSequence();
-        return (IssueKindReportItem) new MissingMigrationProblem.MissingMigrationScriptProblem(it, Collections.min(ListSequence.fromList(languageUsages).select(new ISelector<SModule, Integer>() {
-          public Integer select(SModule module) {
-            return module.getUsedLanguageVersion(it.getLanguage());
-          }
-        }).toListSequence()));
-      }
-    }).concat(ListSequence.fromList(sRefs).ofType(RefactoringScriptReference.class).select(new ISelector<RefactoringScriptReference, IssueKindReportItem>() {
-      public IssueKindReportItem select(final RefactoringScriptReference it) {
-        List<SModule> languageUsages = ListSequence.fromList(modules).where(new IWhereFilter<SModule>() {
-          public boolean accept(SModule module) {
-            return SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module)).select(new ISelector<SModule, SModuleReference>() {
-              public SModuleReference select(SModule it) {
-                return it.getModuleReference();
-              }
-            }).contains(it.getModuleReference());
-          }
-        }).toListSequence();
-        return (IssueKindReportItem) new MissingMigrationProblem.MissingRefactoringLogProblem(it, Collections.min(ListSequence.fromList(languageUsages).select(new ISelector<SModule, Integer>() {
-          public Integer select(SModule module) {
-            return ((AbstractModule) module).getDependencyVersion(it.getModule(module.getRepository()));
-          }
-        }).toListSequence()));
-      }
+        }).contains(it.getModuleReference());
+      }).toList();
+      return (IssueKindReportItem) new MissingMigrationProblem.MissingRefactoringLogProblem(it, Collections.min(ListSequence.fromList(languageUsages).select((module) -> ((AbstractModule) module).getDependencyVersion(it.getModule(module.getRepository()))).toList()));
     }));
   }
   @Override

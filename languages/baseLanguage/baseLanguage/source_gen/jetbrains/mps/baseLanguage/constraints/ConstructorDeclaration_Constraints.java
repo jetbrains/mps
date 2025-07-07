@@ -64,11 +64,7 @@ public class ConstructorDeclaration_Constraints extends BaseConstraintsDescripto
   }
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$MnvL, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.name$MnvL, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {
@@ -81,11 +77,7 @@ public class ConstructorDeclaration_Constraints extends BaseConstraintsDescripto
   }
   public static class NestedName_Property extends BasePropertyConstraintsDescriptor {
     public NestedName_Property(ConstraintsDescriptor container) {
-      super(PROPS.nestedName$rT$z, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.nestedName$rT$z, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {
@@ -94,11 +86,7 @@ public class ConstructorDeclaration_Constraints extends BaseConstraintsDescripto
   }
   public static class ResolveInfo_Property extends BasePropertyConstraintsDescriptor {
     public ResolveInfo_Property(ConstraintsDescriptor container) {
-      super(PROPS.resolveInfo$lW9a, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.resolveInfo$lW9a, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import com.intellij.icons.AllIcons.General;
 import com.intellij.icons.AllIcons.Toolwindows;
 import com.intellij.ide.actions.PinActiveTabAction;
 import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
@@ -36,8 +37,6 @@ import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
-import com.intellij.ui.content.Content;
-import com.intellij.ui.content.ContentManager;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -54,10 +53,11 @@ import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTreeChangesNotifier
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
-import org.apache.log4j.Logger;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -74,7 +74,7 @@ import java.util.List;
     name = "UsagesViewTool",
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
-public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateComponent<Element> {
+public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentStateComponent<Element> {
 
   private static final String VERSION_NUMBER = "1";
   private static final String VERSION = "version";
@@ -93,34 +93,36 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
   //----CONSTRUCT STUFF----
 
   public UsagesViewTool(Project project) {
-    super(project, TOOL_WINDOW_ID, 3, Toolwindows.ToolWindowFind, ToolWindowAnchor.BOTTOM, true);
+    super(project, TOOL_WINDOW_ID, shortcutsFromNumber(3), Toolwindows.ToolWindowFind, ToolWindowAnchor.BOTTOM, true);
   }
 
-  @Override
-  protected UsagesView getUsagesView(int index) {
-    return myUsageViewsData.get(index).myUsagesView;
-  }
-
-  private void register(UsageViewData viewData) {
+  /*package*/ void register(UsageViewData viewData) {
     if (myUsageViewsData.isEmpty()) {
       new RepoListenerRegistrar(ProjectHelper.getProjectRepository(getProject()), myChangeTracker).attach();
     }
     myUsageViewsData.add(viewData);
   }
 
-  @Override
-  protected void onRemove(int index) {
-    myUsageViewsData.remove(index);
+  /*package*/ void unregister(UsageViewData viewData) {
+    myUsageViewsData.remove(viewData);
     if (myUsageViewsData.isEmpty()) {
       new RepoListenerRegistrar(ProjectHelper.getProjectRepository(getProject()), myChangeTracker).detach();
     }
   }
 
-  //----TOOL STUFF----
-
-  public int getPriority() {
-    return 0;
+  @Override
+  public void disposeComponent() {
+    super.disposeComponent();
+    // if any data left (e.g. data restored but not visualized by addTab() - still in the myUsagesViewsData)
+    ArrayList<UsageViewData> copy = new ArrayList<>(myUsageViewsData);
+    // pretty much the same what we do in Tab.disposeTab(), below
+    copy.forEach(this::unregister);
+    for (UsageViewData uv : copy) {
+      uv.myUsagesView.dispose();
+    }
   }
+
+  //----TOOL STUFF----
 
   @Override
   protected boolean isInitiallyAvailable() {
@@ -166,7 +168,7 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
     if (options.myRunAgain && searchTask == null) {
       throw new IllegalStateException("Search task should be provided to allow rerunning.");
     }
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(getProject());
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
     int resCount = searchResults.getSearchResults2().size();
     if (resCount == 0) {
       final ToolWindowManager manager = ToolWindowManager.getInstance(getProject());
@@ -181,25 +183,30 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
       }
       // FALL THROUGH (single result we can't navigate to)
     }
-    int index = getCurrentTabIndex();
     UsagesView usagesView = createUsageView(options.myRunAgain ? searchTask : null);
     usagesView.setCustomNodeRepresentator(representator);
-    UsageViewData usageViewData = new UsageViewData(usagesView, options.myRunAgain ? searchTask : null);
+    final UsageViewData usageViewData = new UsageViewData(usagesView, options.myRunAgain ? searchTask : null);
     usageViewData.setTransientView(options.myTransientView);
     register(usageViewData);
 
     usagesView.setContents(searchResults);
 
+    addTab(usageViewData, options.myForceNewTab, true);
+  }
+
+  private void addTab(final UsageViewData usageViewData, boolean forceNewTab, boolean openTool) {
+    UsagesView usagesView = usageViewData.myUsagesView;
     Icon icon = usagesView.getIcon();
     String caption = usagesView.getCaption();
     JComponent component = usagesView.getComponent();
-    Content content = addContent(component, caption, icon, true);
-    getContentManager().setSelectedContent(content);
-
-    if (!options.myForceNewTab) {
-      closeLastUnpinnedTab(index);
-    }
-    openTool(true);
+    addTab(new Tab(component, caption, icon) {
+      @Override
+      public void disposeTab() {
+        UsagesView uv = usageViewData.myUsagesView;
+        unregister(usageViewData);
+        uv.dispose();
+      }
+    }, forceNewTab, openTool);
   }
 
   //---END FIND STUFF----
@@ -227,27 +234,25 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
           continue;
         }
         register(usageViewData);
-
-        ApplicationManager.getApplication().invokeLater(() -> {
-          final String caption = usageViewData.myUsagesView.getCaption();
-          final Icon icon = usageViewData.myUsagesView.getIcon();
-          addContent(usageViewData.myUsagesView.getComponent(), caption, icon, true);
-        });
       }
     }
 
     Element defaultViewOptionsXML = element.getChild(DEFAULT_VIEW_OPTIONS);
     myDefaultViewOptions.read(defaultViewOptionsXML, project);
 
-    ApplicationManager.getApplication().invokeLater(() -> {
-      ContentManager cm = getContentManager();
-      if (cm == null) {
-        return;
-      }
-      if (cm.getContentCount() == 0) {
-        makeUnavailableLater();
-      }
-    });
+    if (!myUsageViewsData.isEmpty()) {
+      // XXX not really nice to assume myUsagesViewData doesn't change between here and EDT when we add tabs,
+      //     but I'm not ready for a thorough refactoring of this piece now. Likely, need to collect UVD
+      //     into a list here, and register+addTab later from EDT to ensure the state is consistent
+      ApplicationManager.getApplication().invokeLater(() -> {
+        for (UsageViewData d : myUsageViewsData) {
+          // we re-open tabs here, shall force new tab for each restored data element, but no need to bring tool to front
+          UsagesViewTool.this.addTab(d, true, false);
+        }
+      });
+    } else {
+      makeUnavailableLater();
+    }
   }
 
   private void write(Element element, jetbrains.mps.project.Project project) {
@@ -277,7 +282,7 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
 
   @Override
   public Element getState() {
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(getProject());
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
     final Element state = new Element("state");
     mpsProject.getModelAccess().runReadAction(() -> write(state, mpsProject));
     return state;
@@ -304,19 +309,13 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
       final RerunAction rerunAction = new RerunAction(view, "Run again");
       rerunAction.setRunOptions(searchTask);
       actions.add(rerunAction);
+      view.setCaption(searchTask.getCaption());
     }
     actions.add(new RebuildAction(view));
     actions.add(new AnAction("Close", "", Actions.Cancel) {
       @Override
       public void actionPerformed(@NotNull AnActionEvent e) {
-        int i = 0;
-        for (UsageViewData vd : myUsageViewsData) {
-          if (vd.myUsagesView == view) {
-            UsagesViewTool.this.closeTab(i);
-            break;
-          }
-          i++;
-        }
+        closeTab(view.getComponent());
       }
     });
     actions.add(new PinActiveTabAction.TW());
@@ -402,6 +401,11 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
     }
 
     @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+
+    @Override
     public void actionPerformed(final AnActionEvent e) {
       if (!mySearchTask.canExecute()) {
         return;
@@ -423,6 +427,12 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
           }
           // if a caller asks for an SNode, I assume it has appropriate model read, otherwise what would be SNode for?
           if (MPSCommonDataKeys.NODE.is(dataId)) {
+            // FIXME have to keep this code (legacy NODE DataKey) as long as our own actions query NODE, not SNodeActionData.
+            //    Once templates for actions switch to SNodeActionData, shall fix this code to handle respective KEY.
+            //    Besides, this is dynamic context, not visible to IDEA's PreCachedDataContext, no need to worry it
+            //    is accessed in not appropriate moment of time
+            // FIXME this code traces back to 5ec439b5 (2013), and I'm confused whether we still need it
+            //    or can contribute FIND_USAGES_WITH_DIALOG_ACTION action by regular IDEA means (contributor to toolbar?)
             return searchedNode.resolve(myRepository);
           }
           return myDelegate.getData(dataId);

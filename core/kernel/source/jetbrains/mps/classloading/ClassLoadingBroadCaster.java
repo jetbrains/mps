@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,9 @@ package jetbrains.mps.classloading;
 import jetbrains.mps.classloading.DeployListener.ResourceTrackerCallback;
 import jetbrains.mps.classloading.MPSClassLoadersRegistry.ModuleClassLoaderDisposer;
 import jetbrains.mps.classloading.MPSClassLoadersRegistry.ModuleClassLoaderDisposer.DisposeSession;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.ReloadableModuleBase;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -41,11 +40,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * Guarantees that the listeners are invoked in write action
  */
 public class ClassLoadingBroadCaster {
-  private static final Logger LOG = LogManager.getLogger(ClassLoadingBroadCaster.class);
+  private static final Logger LOG = Logger.getLogger(ClassLoadingBroadCaster.class);
   private static final int MAX_SESSIONS_ALIVE = 100; // fixme to be fixed in 201, PluginLoaderRegistry is not up to the desired CLM model
   private static boolean ourCheckMemLeaks = true;
 
-  private final LinkedHashSet<ReloadableModule> myLoadedModules = new LinkedHashSet<>();
   private final ModelAccess myModelAccess;
   private final ModuleClassLoaderDisposer myDisposer;
 
@@ -67,22 +65,13 @@ public class ClassLoadingBroadCaster {
     ourCheckMemLeaks = check;
   }
 
-  public Set<ReloadableModule> onUnload(Collection<? extends SModuleReference> refsToUnload, @NotNull ProgressMonitor monitor) {
-    if (refsToUnload.isEmpty()) return Collections.emptySet();
-
-    myModelAccess.checkWriteAccess();
-    final Set<ReloadableModule> modulesToUnload = new LinkedHashSet<>();
-    for (ReloadableModule loadedModule : myLoadedModules) {
-      SModuleReference mRef = loadedModule.getModuleReference();
-      if (refsToUnload.contains(mRef)) {
-        modulesToUnload.add(loadedModule);
-      }
-    }
-    if (modulesToUnload.size() < refsToUnload.size()) {
-      LOG.error("", new IllegalArgumentException("Broken contract : some of the passed module references have not been loaded"));
+  public void onUnload(Collection<? extends ReloadableModule> toUnload, @NotNull ProgressMonitor monitor) {
+    if (toUnload.isEmpty()) {
+      return;
     }
 
-    myLoadedModules.removeAll(modulesToUnload);
+    myModelAccess.checkWriteAccess(); // DeployListener precondition
+    final Set<ReloadableModule> modulesToUnload = new LinkedHashSet<>(toUnload);
 
     try {
       monitor.start("Broadcasting Unload Events", 2 * myDeployListeners.size());
@@ -106,19 +95,12 @@ public class ClassLoadingBroadCaster {
     } finally {
       monitor.done();
     }
-
-    return new LinkedHashSet<>(modulesToUnload);
   }
 
   public void onLoad(Set<ReloadableModule> toLoad, @NotNull ProgressMonitor monitor) {
     if (toLoad.isEmpty()) return;
 
-    myModelAccess.checkWriteAccess();
-    final Set<ReloadableModuleBase> modulesToLoad = new LinkedHashSet<>(toLoad.size());
-    for (ReloadableModule module : toLoad) {
-      modulesToLoad.add((ReloadableModuleBase) module);
-    }
-    myLoadedModules.addAll(modulesToLoad);
+    myModelAccess.checkWriteAccess(); // DeployListener precondition
 
     try {
       monitor.start("Broadcasting Load Events", myDeployListeners.size());

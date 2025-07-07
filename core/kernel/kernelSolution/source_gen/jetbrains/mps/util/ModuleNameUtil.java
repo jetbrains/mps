@@ -8,6 +8,7 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.Generator;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 @GeneratedClass(node = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)/5755638771828906585", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
 public class ModuleNameUtil {
@@ -32,7 +33,13 @@ public class ModuleNameUtil {
   }
 
   public static String getModuleShortName(SModule module) {
-    String moduleName = module.getModuleName();
+    return getModuleShortName(module.getModuleReference());
+  }
+  public static String getModuleShortName(SModuleReference moduleRef) {
+    String moduleName = moduleRef.getModuleName();
+    if (moduleName == null) {
+      moduleName = "None";
+    }
     int sharp = moduleName.indexOf('#');
     String shortName = NameUtil.shortNameFromLongName((sharp > 0 ? moduleName.substring(0, sharp) : moduleName));
     String normalShortName = NameUtil.toValidIdentifier(shortName);

@@ -12,6 +12,7 @@ import jetbrains.mps.openapi.editor.descriptor.TransformationMenu;
 import jetbrains.mps.openapi.editor.descriptor.NamedMenuId;
 import java.util.Arrays;
 import jetbrains.mps.openapi.editor.descriptor.SubstituteMenu;
+import jetbrains.mps.openapi.editor.cells.KeyMap;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
@@ -75,6 +76,11 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       default:
     }
     return Collections.<SubstituteMenu>emptyList();
+  }
+  @NotNull
+  @Override
+  public Collection<KeyMap> getDeclaredKeyMaps() {
+    return Arrays.<KeyMap>asList(new LiteralMessageExpression_KeyMap(), new MacroMessageExpression_completeTextToLiteralAndPercentToMacro());
   }
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL), MetaIdFactory.conceptId(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L), MetaIdFactory.conceptId(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L), MetaIdFactory.conceptId(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc4L)).seal();

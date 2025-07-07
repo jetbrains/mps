@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product version="3" modelHash="c71inqbrcgo7fxklk192hqsx3c9i1pv">
+  <files names="AssignmentExpression.java:Expression.java:ExpressionProgramBuilder.java:IfExpression.java:NopExpression.java:SeqExpression.java:VariableExpression.java:WhileExpression.java" />
+</product>
+

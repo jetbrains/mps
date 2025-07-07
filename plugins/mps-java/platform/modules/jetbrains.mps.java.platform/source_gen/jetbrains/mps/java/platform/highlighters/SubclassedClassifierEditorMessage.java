@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import javax.swing.Icon;
-import jetbrains.mps.ide.editor.popup.IconResourceBundle_OverrideImplements;
+import jetbrains.mps.ide.editor.popup.OverrideImplementsIcons;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
@@ -38,7 +38,7 @@ public class SubclassedClassifierEditorMessage extends AbstractLeftEditorHighlig
 
   @Override
   public Icon getIcon() {
-    return (myInterfaceFlag ? IconResourceBundle_OverrideImplements.getInstance().getResource("IMPLEMENTED") : IconResourceBundle_OverrideImplements.getInstance().getResource("OVERRIDDEN"));
+    return (myInterfaceFlag ? OverrideImplementsIcons.IMPLEMENTED : OverrideImplementsIcons.OVERRIDDEN);
   }
 
   @Override

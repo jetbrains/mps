@@ -15,9 +15,12 @@
  */
 package jetbrains.mps.typechecking;
 
+import jetbrains.mps.util.performance.IPerformanceTracer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
+
+import java.util.Map;
 
 /**
  * @author Fedor Isakov
@@ -26,7 +29,7 @@ public interface TypecheckingSession {
 
   Flags flags();
 
-  <Q extends TypecheckingQueries> Q getQueries(Class<? extends Q> providerClass);
+  <Q extends TypecheckingQueries> Q getQueries(Class<? extends Q> queriesClass);
 
   TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept);
 
@@ -34,10 +37,12 @@ public interface TypecheckingSession {
 
   TypecheckingQueries getQueries(@NotNull SNode node);
 
-  /**
-   * Instances of this class must never be shared with other clients.
-   * Provides possibility to invalidate and release session.
-   */
+  <C> C getData(Class<? extends C> dataClass);
+
+    /**
+     * Instances of this class must never be shared with other clients.
+     * Provides possibility to invalidate and release session.
+     */
   interface Handle {
 
     /**
@@ -70,9 +75,12 @@ public interface TypecheckingSession {
     public static long FLAG_CACHING       = 0x1 << 2;
     public static long FLAG_INCREMENTAL   = 0x1 << 3;
     public static long FLAG_GENERATOR     = 0x1 << 4;
+    public static long FLAG_GENERATOR_WORKER     = 0x1 << 5;
 
     private long myFlags;
     private SNode myRoot;
+    private IPerformanceTracer myTracer;
+    private Map<String, ?> myParamsMap;
 
     @NotNull
     public static Flags basic() {
@@ -82,6 +90,11 @@ public interface TypecheckingSession {
     @NotNull
     public static Flags generator() {
       return new Flags(FLAG_GENERATOR);
+    }
+
+    @NotNull
+    public static Flags generatorWorker() {
+      return new Flags(FLAG_GENERATOR | FLAG_GENERATOR_WORKER);
     }
 
     @NotNull
@@ -101,6 +114,16 @@ public interface TypecheckingSession {
       return this;
     }
 
+    public Flags withTracer(IPerformanceTracer ttrace) {
+      this.myTracer = ttrace;
+      return this;
+    }
+
+    public Flags withParameters(Map<String, ?> paramsMap) {
+      myParamsMap = paramsMap;
+      return this;
+    }
+
     public SNode getRoot() {
       return myRoot;
     }
@@ -117,8 +140,26 @@ public interface TypecheckingSession {
       return (myFlags & FLAG_INCREMENTAL) != 0;
     }
 
+    public boolean isOverride() { return (myFlags & FLAG_GENERATOR) != 0; }
+
     public boolean isGenerator() {
       return (myFlags & FLAG_GENERATOR) != 0;
+    }
+
+    public boolean isGeneratorMain() {
+      return (myFlags & FLAG_GENERATOR) != 0 && (myFlags & FLAG_GENERATOR_WORKER) == 0 ;
+    }
+
+    public boolean isGeneratorWorker() {
+      return (myFlags & FLAG_GENERATOR_WORKER) != 0;
+    }
+
+    public IPerformanceTracer getTracer() {
+      return myTracer;
+    }
+
+    public Map<String, ?> getParamsMap() {
+      return myParamsMap;
     }
 
     @Override
@@ -129,6 +170,8 @@ public interface TypecheckingSession {
     protected Flags(Flags copyFrom) {
       this.myRoot = copyFrom.myRoot;
       this.myFlags = copyFrom.myFlags;
+      this.myTracer = copyFrom.myTracer;
+      this.myParamsMap = copyFrom.myParamsMap;
     }
 
     private Flags(long flags) {

@@ -21,27 +21,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ToggleConceptAbstract_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ToggleConceptAbstract_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:dbb111e4-8af4-4e6d-b49d-e07620d0c285(jetbrains.mps.lang.behavior.intentions)", "8014340958386989491"));
   }
+
   @Override
   public String getPresentation() {
     return "ToggleConceptAbstract";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -51,19 +45,36 @@ public final class ToggleConceptAbstract_Intention extends AbstractIntentionDesc
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String conceptName = SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.concept$u6dL), PROPS.name$MnvL);
       return (SPropertyOperations.getBoolean(SLinkOperations.getTarget(node, LINKS.concept$u6dL), PROPS.abstract$ibpT) ? "Make '" + conceptName + "' not abstract" : "Make '" + conceptName + "' abstract");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SPropertyOperations.set(SLinkOperations.getTarget(node, LINKS.concept$u6dL), PROPS.abstract$ibpT, !(SPropertyOperations.getBoolean(SLinkOperations.getTarget(node, LINKS.concept$u6dL), PROPS.abstract$ibpT)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ToggleConceptAbstract_Intention.this;
     }
+
   }
 
   private static final class LINKS {

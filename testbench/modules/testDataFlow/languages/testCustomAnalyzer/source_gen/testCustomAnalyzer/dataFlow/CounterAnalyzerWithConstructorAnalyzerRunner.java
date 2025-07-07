@@ -53,14 +53,5 @@ public class CounterAnalyzerWithConstructorAnalyzerRunner extends CustomAnalyzer
     public AnalysisDirection getDirection() {
       return AnalysisDirection.FORWARD;
     }
-
-    /**
-     * 
-     * @deprecated 
-     */
-    @Deprecated
-    public static String getId() {
-      return "testCustomAnalyzer.dataFlow.CounterAnalyzerWithConstructor";
-    }
   }
 }

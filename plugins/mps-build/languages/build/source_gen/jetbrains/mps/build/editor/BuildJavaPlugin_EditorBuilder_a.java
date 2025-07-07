@@ -45,7 +45,7 @@ import jetbrains.mps.build.editor.buildStyles_StyleSheet.pluginStyleClass;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "java");
     editorCell.setCellId("Constant_gciqt0_a0");
     Style style = new StyleImpl();
-    new pluginStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new pluginStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

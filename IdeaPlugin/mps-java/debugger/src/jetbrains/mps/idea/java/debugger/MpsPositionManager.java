@@ -44,11 +44,11 @@ public class MpsPositionManager implements PositionManager {
   @Override
   public SourcePosition getSourcePosition(@Nullable final Location location) throws NoDataException {
     if (location == null) {
-      throw new NoDataException();
+      throw NoDataException.INSTANCE;
     }
     ReferenceType referenceType = location.declaringType();
     if (referenceType == null) {
-      throw new NoDataException();
+      throw NoDataException.INSTANCE;
     }
     try {
       MpsSourcePosition position = MpsSourcePosition.createPosition(myProject, referenceType.name(), location.sourceName(), location.lineNumber());
@@ -57,25 +57,25 @@ public class MpsPositionManager implements PositionManager {
       }
     } catch (AbsentInformationException e) {
       // todo
-      throw new NoDataException();
+      throw NoDataException.INSTANCE;
     }
-    throw new NoDataException();
+    throw NoDataException.INSTANCE;
   }
 
   @NotNull
   @Override
   public List<ReferenceType> getAllClasses(SourcePosition sourcePosition) throws NoDataException {
-    throw new NoDataException();
+    throw NoDataException.INSTANCE;
   }
 
   @NotNull
   @Override
   public List<Location> locationsOfLine(ReferenceType referenceType, SourcePosition sourcePosition) throws NoDataException {
-    throw new NoDataException();
+    throw NoDataException.INSTANCE;
   }
 
   @Override
   public ClassPrepareRequest createPrepareRequest(ClassPrepareRequestor classPrepareRequestor, SourcePosition sourcePosition) throws NoDataException {
-    throw new NoDataException();
+    throw NoDataException.INSTANCE;
   }
 }

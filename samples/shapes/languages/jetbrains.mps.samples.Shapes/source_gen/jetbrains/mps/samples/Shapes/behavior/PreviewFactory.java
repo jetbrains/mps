@@ -8,7 +8,6 @@ import java.awt.Graphics;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.awt.Dimension;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
@@ -22,15 +21,7 @@ public final class PreviewFactory {
       @Override
       protected void paintComponent(final Graphics graphics) {
         super.paintComponent(graphics);
-        SNodeOperations.getModel(thisCanvas).getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            ListSequence.fromList(SLinkOperations.getChildren(thisCanvas, LINKS.shapes$8c6y)).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                Shape__BehaviorDescriptor.drawShape_idW6XMzE_hbz.invoke(it, graphics);
-              }
-            });
-          }
-        });
+        SNodeOperations.getModel(thisCanvas).getRepository().getModelAccess().runReadAction(() -> ListSequence.fromList(SLinkOperations.getChildren(thisCanvas, LINKS.shapes$8c6y)).visitAll((it) -> Shape__BehaviorDescriptor.drawShape_idW6XMzE_hbz.invoke(it, graphics)));
       }
 
       @Override

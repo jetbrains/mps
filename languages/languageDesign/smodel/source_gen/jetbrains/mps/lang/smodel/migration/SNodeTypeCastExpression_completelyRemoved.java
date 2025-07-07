@@ -5,13 +5,6 @@ package jetbrains.mps.lang.smodel.migration;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
-import jetbrains.mps.project.EditableFilteringScope;
-import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
-import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Collections;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -30,30 +23,8 @@ public class SNodeTypeCastExpression_completelyRemoved extends MigrationScriptBa
     return null;
   }
   public void doExecute(final SModule m) {
-    {
-      SearchScope scope_7r12i8_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_7r12i8_a0e_0 = new EditableFilteringScope(scope_7r12i8_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_7r12i8_a0e_0;
-        }
-      };
-    }
   }
-  @Override
-  public Iterable<Problem> check(SModule m) {
-    {
-      SearchScope scope_7r12i8_a0f = CommandUtil.createScope(m);
-      final SearchScope scope_7r12i8_a0f_0 = new EditableFilteringScope(scope_7r12i8_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_7r12i8_a0f_0;
-        }
-      };
-      return Sequence.fromIterable(Collections.<Problem>emptyList());
-    }
-  }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 2);
   }
   public static boolean isMovedConcept(SAbstractConcept c) {

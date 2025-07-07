@@ -44,7 +44,7 @@ import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.headerStyleClass;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "Style:");
     editorCell.setCellId("Constant_zdjsuv_a0");
     Style style = new StyleImpl();
-    new headerStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new headerStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

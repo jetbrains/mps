@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,10 +27,10 @@ import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.ui.popup.Balloon.Position;
 import com.intellij.openapi.ui.popup.BalloonBuilder;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.intellij.ui.HintHint;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.logicalview.ProjectTree;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.ProjectPaneTreeHighlighter;
@@ -38,6 +38,7 @@ import jetbrains.mps.ide.ui.smodel.ConceptTreeNode;
 import jetbrains.mps.ide.ui.smodel.PropertiesTreeNode;
 import jetbrains.mps.ide.ui.smodel.ReferencesTreeNode;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
 import jetbrains.mps.ide.ui.tree.TreeErrorMessage;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.module.SModelsSubtree;
@@ -96,6 +97,11 @@ import java.util.stream.Collectors;
  * need move to ProjectPane, as it's project stuff and needs Idea's project Message bus), integration with
  * editor (activation, auto-select/expand), etc.
  */
+
+/**
+ * @deprecated obsolete component
+ */
+@Deprecated(forRemoval = true)
 public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider, ProjectModuleTreeNode.ModuleNodeChildrenProvider {
   private final ProjectPane myProjectPane;
   private final ProjectTreeCellRenderer myCellRenderer;
@@ -136,8 +142,8 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
     addKeyListener(myKeyListener);
 
     //drag support is alive while the tree is alive
-    DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, new MyDragGestureListener());
-    new DropTarget(this, new ProjectPaneDnDListener(this, new MyTransferable(null).getTransferDataFlavors()[0]));
+//    DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, new MyDragGestureListener());
+//    new DropTarget(this, new ProjectPaneDnDListener(this, new MyTransferable(null).getTransferDataFlavors()[0]));
 
     MessageBusConnection connection = project.getMessageBus().connect(this);
     connection.subscribe(DumbService.DUMB_MODE, new DumbModeListener() {
@@ -248,17 +254,16 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
     }
     sb.append("</html>");
 
-    // using awtTooltip just because I found similar code elsewhere in MPS, no idea what it means
-    final HintHint hintHint = new HintHint(e).setAwtTooltip(true).setForcePopup(true);
-//    final JEditorPane content = IdeTooltipManager.initPane(sb.toString(), hintHint, null);
     final JLabel content = new JLabel(sb.toString());
+    content.setForeground(UIUtil.getToolTipForeground());
     // XXX perhaps, shall use JBPopupFactory.createHtmlTextBalloonBuilder()
     // FWIW, there's also JBPopupFactory.createComponentPopupBuilder, used in IDEA's HelpTooltip.
     //       I don't know what's difference between the two.
     final BalloonBuilder bb = JBPopupFactory.getInstance().createBalloonBuilder(content);
     bb.setDisposable(this);
     // BalloonPopupBuilderImpl cons set default fill color, have to override even though content has proper background color
-    bb.setFadeoutTime(15000).setFillColor(hintHint.getTextBackground());
+    bb.setFadeoutTime(15000).setFillColor(UIUtil.getToolTipBackground());
+
     final Balloon b = bb.setHideOnClickOutside(true).setShowCallout(true).setHideOnKeyOutside(true).createBalloon();
     b.show(new RelativePoint(e), Position.above);
   }
@@ -308,6 +313,11 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
         treeNode.add(treeNode.createChildTreeNode(child));
       }
     }
+  }
+
+  @Override
+  public boolean isShowMembers() {
+    return myProjectPane.showNodeStructure();
   }
 
   @Override
@@ -389,68 +399,70 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
     }
   }
 
-  private class MyDragGestureListener implements DragGestureListener {
-    @Override
-    public void dragGestureRecognized(final DragGestureEvent dge) {
-      if ((dge.getDragAction() & DnDConstants.ACTION_COPY_OR_MOVE) == 0) {
-        return;
-      }
-      ProjectView projectView = ProjectView.getInstance(myProjectPane.getProject());
-      if (projectView == null) {
-        return;
-      }
-      final AbstractProjectViewPane currentPane = projectView.getCurrentProjectViewPane();
-      if (!(currentPane instanceof BaseLogicalViewProjectPane)) {
-        return;
-      }
-
-      final List<Pair<SNodeReference, String>> result = new ArrayList<>();
-
-      getProject().getModelAccess().runReadAction(() -> {
-        for (SNode node : myProjectPane.getSelectedSNodes()) {
-          result.add(new Pair<>(new jetbrains.mps.smodel.SNodePointer(node), ""));
-        }
-        SModel contextDescriptor = myProjectPane.getContextModel();
-        if (contextDescriptor != null) {
-          for (PackageNode treeNode : myProjectPane.getSelectedTreeNodes(PackageNode.class)) {
-            String searchedPack = treeNode.getFullPackage();
-            if (treeNode.getChildCount() == 0 || searchedPack == null) {
-              continue;
-            }
-            for (final SNode node : contextDescriptor.getRootNodes()) {
-              String nodePack = SNodeAccessUtil.getProperty(node, SNodeUtil.property_BaseConcept_virtualPackage);
-              if (nodePack == null) {
-                continue;
-              }
-              if (!nodePack.startsWith(searchedPack)) {
-                continue;
-              }
-
-              StringBuilder basePack = new StringBuilder();
-              String firstPart = treeNode.getPackage();
-              String secondPart = "";
-              String prefix = searchedPack + ".";
-              if (nodePack.startsWith(prefix)) {
-                secondPart = nodePack.substring(prefix.length());
-              }
-              basePack.append(firstPart);
-              if (!firstPart.isEmpty() && !secondPart.isEmpty()) {
-                basePack.append('.');
-              }
-              basePack.append(secondPart);
-              result.add(new Pair<>(new jetbrains.mps.smodel.SNodePointer(node), basePack.toString()));
-            }
-          }
-        }
-      });
-      if (result.isEmpty()) {
-        return;
-      }
-
-      try {
-        dge.startDrag(DragSource.DefaultMoveNoDrop, new MyTransferable(result), new MyDragSourceListener());
-      } catch (InvalidDnDOperationException ignored) {
-      }
-    }
-  }
+//  private class MyDragGestureListener implements DragGestureListener {
+//    @Override
+//    public void dragGestureRecognized(final DragGestureEvent dge) {
+//      if ((dge.getDragAction() & DnDConstants.ACTION_COPY_OR_MOVE) == 0) {
+//        return;
+//      }
+//      ProjectView projectView = ProjectView.getInstance(myProjectPane.getProject());
+//      if (projectView == null) {
+//        return;
+//      }
+//      final AbstractProjectViewPane currentPane = projectView.getCurrentProjectViewPane();
+//      if (!(currentPane instanceof BaseLogicalViewProjectPane)) {
+//        return;
+//      }
+//
+//      final List<Pair<SNodeReference, String>> result = new ArrayList<>();
+//
+//      getProject().getModelAccess().runReadAction(() -> {
+//        for (MPSTreeNodeEx node : myProjectPane.getSelectedTreeNodes(MPSTreeNodeEx.class)) {
+//          if (node.getNodePointer() != null) {
+//            result.add(new Pair<>(node.getNodePointer(), ""));
+//          }
+//        }
+//        SModel contextDescriptor = myProjectPane.getContextModel();
+//        if (contextDescriptor != null) {
+//          for (PackageNode treeNode : myProjectPane.getSelectedTreeNodes(PackageNode.class)) {
+//            String searchedPack = treeNode.getFullPackage();
+//            if (treeNode.getChildCount() == 0 || searchedPack == null) {
+//              continue;
+//            }
+//            for (final SNode node : contextDescriptor.getRootNodes()) {
+//              String nodePack = SNodeAccessUtil.getProperty(node, SNodeUtil.property_BaseConcept_virtualPackage);
+//              if (nodePack == null) {
+//                continue;
+//              }
+//              if (!nodePack.startsWith(searchedPack)) {
+//                continue;
+//              }
+//
+//              StringBuilder basePack = new StringBuilder();
+//              String firstPart = treeNode.getPackage();
+//              String secondPart = "";
+//              String prefix = searchedPack + ".";
+//              if (nodePack.startsWith(prefix)) {
+//                secondPart = nodePack.substring(prefix.length());
+//              }
+//              basePack.append(firstPart);
+//              if (!firstPart.isEmpty() && !secondPart.isEmpty()) {
+//                basePack.append('.');
+//              }
+//              basePack.append(secondPart);
+//              result.add(new Pair<>(node.getReference(), basePack.toString()));
+//            }
+//          }
+//        }
+//      });
+//      if (result.isEmpty()) {
+//        return;
+//      }
+//
+//      try {
+//        dge.startDrag(DragSource.DefaultMoveNoDrop, new MyTransferable(result), new MyDragSourceListener());
+//      } catch (InvalidDnDOperationException ignored) {
+//      }
+//    }
+//  }
 }

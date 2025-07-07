@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
 /**
- * To implement this interface, consider extending {@link SModuleListenerBase}.
+ * Notifications about {@link SModule} changes
  */
 public interface SModuleListener {
 

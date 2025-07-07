@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@ import java.util.Collection;
 /**
  * IDEA service to get contributed from MPS-IDEA plugin to tweak EditorComponent.getData() response
  * No idea why it's done that way, and what's the task this class serves ("fix alt-f1 in MPS" doesn't help to understand)
+ * TODO move out of [mps-platform] into IdeaPlugin, where it's used (provided there's still a need, didn't check that).
  */
 //todo throw away when there's per-node persistence or include into MPSCore.xml when migrated to Idea ProjectView
 public class ProjectViewSelectInProvider {

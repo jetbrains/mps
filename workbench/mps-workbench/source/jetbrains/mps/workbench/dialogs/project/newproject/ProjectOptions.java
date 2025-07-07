@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,6 +108,9 @@ public class ProjectOptions {
     return mySolutionPath;
   }
 
+  // FIXME I see clients got IFile for path, and ProjectFactory with getSolutionPath needs IFile as well. Why do I care to convert to string?
+  //       However, CreateProjectWizard doesn't create new solution by means of this options (uses MPSProjectTemplate instead)
+  //       and it makes this whole ProjectOptions thing quite dubious (why can't we go with a single mechanism)?
   public void setSolutionPath(String solutionPath) {
     mySolutionPath = solutionPath;
   }

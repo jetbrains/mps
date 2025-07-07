@@ -13,20 +13,21 @@
   </root>
   <root nodeRef="r:9b4da6e7-bc84-432e-b77f-5106630513ea(jetbrains.mps.lang.feedback.problem.childAndProp.actions)/7716791493892398446">
     <file name="Default.java">
-      <node id="7716791493892398464" at="17,91,18,199" concept="0" />
+      <node id="7716791493892398464" at="17,102,18,199" concept="0" />
       <node id="7876643722001847398" at="19,26,20,15" concept="4" />
       <node id="1054866243096622789" at="21,7,22,56" concept="3" />
       <node id="1054866243096648198" at="22,56,23,178" concept="0" />
       <node id="1054866243096655006" at="23,178,24,25" concept="0" />
       <node id="7716791493892398446" at="29,0,30,0" concept="5" trace="kind$EscU" />
       <node id="7876643722001847272" at="18,199,21,7" concept="1" />
-      <node id="7716791493892398447" at="17,0,26,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="7716791493892398447" at="17,0,26,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="7876643722001847274" at="19,26,20,15" />
-      <scope id="7716791493892398447" at="17,91,24,25">
+      <scope id="7716791493892398447" at="17,102,24,25">
         <var name="importer" id="1054866243096622790" />
       </scope>
       <scope id="7716791493892398447" at="17,0,26,0">
         <var name="enclosingNode" id="7716791493892398447" />
+        <var name="index" id="7716791493892398447" />
         <var name="model" id="7716791493892398447" />
         <var name="newNode" id="7716791493892398447" />
         <var name="sampleNode" id="7716791493892398447" />

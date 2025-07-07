@@ -37,7 +37,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MoveReferenceLinkSpecialization extends MoveConceptMemberSpecialization<SReferenceLink> {
   public Tuples._2<SReferenceLink, SNodeReference> fetchState(SNode movingNode, boolean filterOutInvalid) {
-    if (!((SNodeOperations.isInstanceOf(movingNode, CONCEPTS.LinkDeclaration$1p) && SNodeOperations.hasRole(movingNode, LINKS.linkDeclaration$YU1f) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), PROPS.metaClass$PeKc), 0xfc6f4e95b8L) && (SLinkOperations.getTarget(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), LINKS.specializedLink$7ZCN) == null) && SNodeOperations.getModel(movingNode).getModule() instanceof Language))) {
+    if (!(SNodeOperations.isInstanceOf(movingNode, CONCEPTS.LinkDeclaration$1p) && SNodeOperations.hasRole(movingNode, LINKS.linkDeclaration$YU1f) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), PROPS.metaClass$PeKc), 0xfc6f4e95b8L) && (SLinkOperations.getTarget(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), LINKS.specializedLink$7ZCN) == null) && SNodeOperations.getModel(movingNode).getModule() instanceof Language)) {
       return null;
     }
     SReferenceLink deployedReferenceLink = MetaAdapterByDeclaration.getReferenceLink(movingNode);
@@ -73,12 +73,8 @@ public class MoveReferenceLinkSpecialization extends MoveConceptMemberSpecializa
     {
       SearchScope scope_w90w7j_a0e = CommandUtil.createScope(searchScope);
       final SearchScope scope_w90w7j_a0e_0 = new EditableFilteringScope(scope_w90w7j_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_w90w7j_a0e_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(oldLink.getOwner()), false)).toListSequence();
+      QueryExecutionContext context = () -> scope_w90w7j_a0e_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(oldLink.getOwner()), false)).toList();
     }
   }
   public void doReplaceInstance(SNode instance, SReferenceLink oldLink, SReferenceLink newLink) {

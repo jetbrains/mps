@@ -13,7 +13,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.references.Reference;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.kernel.model.SModelUtil;
@@ -147,11 +146,7 @@ public class BinaryOperationEditorBuilder {
     }
 
     public void commit() {
-      ListSequence.fromList(myActionMaps).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SModelOperations.addRootNode(myModel, it);
-        }
-      });
+      ListSequence.fromList(myActionMaps).visitAll((it) -> SModelOperations.addRootNode(myModel, it));
       SNodeOperations.replaceWithAnother(myPlaceholderNode, getMainCell());
 
       Language declaringLanguage = SModelUtil.getDeclaringLanguage(getConcept());

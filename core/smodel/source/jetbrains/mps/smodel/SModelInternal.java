@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -89,9 +89,10 @@ public interface SModelInternal extends ModelWithDisposeInfo  {
 
   /**
    * Model has a chance to bring its external dependencies to a state manifested by supplied repository
-   * @return <code>true</code> if anything has been changed
    */
-  boolean updateExternalReferences(@NotNull SRepository repository);
+  default void updateExternalReferences(@NotNull SRepository repository) {
+    // need a default impl to keep using same branch for mps-extensions 23.2 and 23.3
+  }
 
   void changeModelReference(SModelReference newModelReference);
 }

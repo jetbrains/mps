@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,8 @@
  */
 package jetbrains.mps.generator.impl.interpreted;
 
-import jetbrains.mps.generator.impl.NodeWeaveSupport;
 import jetbrains.mps.generator.impl.RuleUtil;
 import jetbrains.mps.generator.impl.TemplateContainer;
-import jetbrains.mps.generator.impl.WeaveTemplateContainer;
 import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateContext;
@@ -72,12 +70,11 @@ public final class TemplateDeclarationInterpreted extends TemplateDeclarationBas
 
   @Override
   public void apply(TemplateContext context, ApplySink sink) throws GenerationException {
-    // FIXME finally, have to deal with distinction b/w TC and WTC, with 2020.1 out, would need weaving to go through regular apply(TC,AS)
-    final TemplateContainer tc = sink instanceof NodeWeaveSupport ? new WeaveTemplateContainer(myTemplateNode) : getTemplates();
+    final TemplateContainer tc = getTemplates();
     // FIXME weave() in generated templates is not recorded into trace
     //       There's GenerationTrace.trace updated inside TemplateContainer.apply(), but it happens for interpreted templates only.
     //       Besides, I believe it's also true for regular TD.apply(), at least I see no access to GenerationTrace in generated code.
-    //       Well, CALL/LOOM macro do record trace in interpreted mode, and trace for compiled reduction rules is handled in TEEI.tryToReduce
+    //       Well, CALL/LOOP macro do record trace in interpreted mode, and trace for compiled reduction rules is handled in TEEI.tryToReduce
     tc.apply(sink, context);
   }
 }

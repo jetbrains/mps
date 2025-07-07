@@ -21,17 +21,17 @@
         <property id="1186403771423" name="style" index="Vbekb" />
       </concept>
       <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
-      <concept id="1630016958697344083" name="jetbrains.mps.lang.editor.structure.IMenu_Concept" flags="ng" index="2ZABuq">
+      <concept id="1630016958697344083" name="jetbrains.mps.lang.editor.structure.IMenu_Concept" flags="ngI" index="2ZABuq">
         <reference id="6591946374543067572" name="conceptDeclaration" index="aqKnT" />
         <child id="5991739802479788259" name="type" index="22hAXT" />
       </concept>
       <concept id="3383245079137382180" name="jetbrains.mps.lang.editor.structure.StyleClass" flags="ig" index="14StLt" />
-      <concept id="1219418625346" name="jetbrains.mps.lang.editor.structure.IStyleContainer" flags="ng" index="3F0Thp">
+      <concept id="1219418625346" name="jetbrains.mps.lang.editor.structure.IStyleContainer" flags="ngI" index="3F0Thp">
         <child id="1219418656006" name="styleItem" index="3F10Kt" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -70,10 +70,6 @@
   <node concept="22mcaB" id="1wEcoXjJMCR">
     <ref role="aqKnT" to="tpcw:uYrIA378mk" resolve="ConceptFunctionParameter_progressMonitor" />
     <node concept="22hDWj" id="xzgvwPPpDe" role="22hAXT" />
-  </node>
-  <node concept="22mcaB" id="1wEcoXjJMCS">
-    <ref role="aqKnT" to="tpcw:gTQ799U" resolve="ConceptFunctionParameter_operationContext" />
-    <node concept="22hDWj" id="xzgvwPPpDf" role="22hAXT" />
   </node>
   <node concept="22mcaB" id="1wEcoXjJMCT">
     <ref role="aqKnT" to="tpcw:gTQ7B__" resolve="ConceptFunctionParameter_scope" />

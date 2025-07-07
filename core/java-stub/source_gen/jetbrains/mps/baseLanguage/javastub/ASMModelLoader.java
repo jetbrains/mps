@@ -4,8 +4,7 @@ package jetbrains.mps.baseLanguage.javastub;
 
 import org.jetbrains.mps.annotations.Immutable;
 import jetbrains.mps.annotations.GeneratedClass;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
 import java.util.Collection;
 import jetbrains.mps.vfs.IFile;
@@ -17,15 +16,15 @@ import org.jetbrains.mps.openapi.model.SModel;
 import java.util.function.Function;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import jetbrains.mps.java.stub.StubReferenceFactory;
+import jetbrains.mps.smodel.SModelStereotype;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
 @Immutable
 @GeneratedClass(node = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/7241381882860001930", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
 public final class ASMModelLoader {
-  private static final Logger LOG = LogManager.getLogger(ASMModelLoader.class);
+  private static final Logger LOG = Logger.getLogger(ASMModelLoader.class);
 
   private final AbstractModule myModule;
   private final Collection<IFile> myPaths;
@@ -48,9 +47,12 @@ public final class ASMModelLoader {
   }
 
   public void populateRoots(SModelData modelData) {
+    // I don't care to keep this factory for completeModel, even if this means duplicating ids for top-level classes.
+    // keeping instance of this map outside of this class likely annoy more than do any good.
+    ASMNodeIdFactory nodeIdFactory = new ASMNodeIdFactory(50);
     // XXX may pass openapi.SModel in addition to SModelData so that ClassifierLoader may use model as factory
     for (IFile classfile : getTopClassFiles()) {
-      ClassifierLoader loader = new ClassifierLoader(classfile, myOnlyPublic, mySkipPrivate);
+      ClassifierLoader loader = new ClassifierLoader(classfile, myOnlyPublic, mySkipPrivate, nodeIdFactory);
       SNode c = loader.createClassifier();
       if (c != null) {
         modelData.addRootNode(c);
@@ -60,9 +62,10 @@ public final class ASMModelLoader {
 
   public Collection<SModelReference> completeModel(SModel partialModel, SModelData completeModelData, Function<ASMClass, Documentation> docSupplier) {
     try {
-      StubReferenceFactory refFactory = new StubReferenceFactory(myModule, partialModel);
+      StubReferenceFactory refFactory = new StubReferenceFactory(myModule, partialModel, SModelStereotype.JAVA_STUB);
+      ASMNodeIdFactory nodeIdFactory = new ASMNodeIdFactory(100);
       for (IFile classfile : getTopClassFiles()) {
-        ClassifierLoader rootLoader = new ClassifierLoader(classfile, myOnlyPublic, mySkipPrivate);
+        ClassifierLoader rootLoader = new ClassifierLoader(classfile, myOnlyPublic, mySkipPrivate, nodeIdFactory);
         SNode c = rootLoader.createClassifier();
         if (c != null) {
           rootLoader.updateClassifier(c, refFactory, docSupplier);
@@ -71,24 +74,30 @@ public final class ASMModelLoader {
       }
       return refFactory.getImports();
     } catch (Throwable e) {
-      LOG.error("Exception for model " + partialModel.getReference(), e);
+      if (LOG.isErrorLevel()) {
+        LOG.error("Exception for model " + partialModel.getReference(), e);
+      }
     }
     return Collections.emptyList();
   }
 
   public Iterable<IFile> getTopClassFiles() {
-    return CollectionSequence.fromCollection(myPaths).where(new IWhereFilter<IFile>() {
-      public boolean accept(IFile it) {
-        return it != null;
-      }
-    }).translate(new ITranslator2<IFile, IFile>() {
-      public Iterable<IFile> translate(IFile it) {
-        return it.getChildren();
-      }
-    }).where(new IWhereFilter<IFile>() {
-      public boolean accept(IFile it) {
-        return !(it.isDirectory()) && it.getName().endsWith(".class") && !(ClassifierLoader.getClassName(it).contains("$"));
-      }
-    });
+    return CollectionSequence.fromCollection(myPaths).where(new NotNullWhereFilter()).translate((it) -> it.getChildren()).where((file) -> ASMModelLoader.isTopClass(file));
+  }
+
+  private static boolean isTopClass(IFile file) {
+    if (file.isDirectory()) {
+      return false;
+    }
+    String name = file.getName();
+    if (!(name.endsWith(".class"))) {
+      return false;
+    }
+    if (name.indexOf('$') > 0) {
+      // anonymous/inner class
+      // see ASMNodeIdFactory.createTopClassifierId() for scenario when top-level classes start with '$', hence >0
+      return false;
+    }
+    return !("package-info.class".equals(name));
   }
 }

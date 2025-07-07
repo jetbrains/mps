@@ -92,7 +92,7 @@ public class GenSrcPathValidator extends ProjectStructureValidator {
   }
 
   private Place createPlace(Project project) {
-    FacetStructureConfigurable fsc = FacetStructureConfigurable.getInstance(project);
+    FacetStructureConfigurable fsc = ProjectStructureConfigurable.getInstance(project).getFacetStructureConfigurable();
     return new Place().putPath(ProjectStructureConfigurable.CATEGORY, fsc);
   }
 }

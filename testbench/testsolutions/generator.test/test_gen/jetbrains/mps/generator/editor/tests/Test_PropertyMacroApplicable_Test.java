@@ -4,9 +4,10 @@ package jetbrains.mps.generator.editor.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.junit.Assert;
@@ -14,11 +15,11 @@ import jetbrains.mps.lang.generator.helper.EditingUtil;
 
 @MPSLaunch
 public class Test_PropertyMacroApplicable_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(Test_PropertyMacroApplicable_Test.class, "${mps_home}", "r:cbdcb51c-64a3-4f95-8704-5b9a754c9773(jetbrains.mps.generator.editor.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(Test_PropertyMacroApplicable_Test.class, "${mps_home}", "r:cbdcb51c-64a3-4f95-8704-5b9a754c9773(jetbrains.mps.generator.editor.tests@tests)", false));
 
   public Test_PropertyMacroApplicable_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -35,11 +36,9 @@ public class Test_PropertyMacroApplicable_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("2617465934949249950", "");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertTrue(EditingUtil.isPropertyMacroApplicable(getEditorComponent().getSelectedNode(), getEditorComponent().getSelectedCell()));
-          Assert.assertFalse(EditingUtil.isReferenceMacroApplicable(getEditorComponent().getSelectedNode(), getEditorComponent().getSelectedCell()));
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        Assert.assertTrue(EditingUtil.isPropertyMacroApplicable(getEditorComponent().getSelectedNode(), getEditorComponent().getSelectedCell()));
+        Assert.assertFalse(EditingUtil.isReferenceMacroApplicable(getEditorComponent().getSelectedNode(), getEditorComponent().getSelectedCell()));
       });
 
     }

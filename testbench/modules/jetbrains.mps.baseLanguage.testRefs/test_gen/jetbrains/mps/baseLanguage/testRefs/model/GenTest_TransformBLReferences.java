@@ -4,11 +4,13 @@ package jetbrains.mps.baseLanguage.testRefs.model;
 
 import jetbrains.mps.lang.test.generator.rt.BaseGeneratorTest;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.generator.rt.TransformHelper;
+import jetbrains.mps.lang.test.generator.rt.ModelAssert;
 
 public class GenTest_TransformBLReferences extends BaseGeneratorTest {
+
 
 
   private SModel myArg_input;
@@ -16,7 +18,7 @@ public class GenTest_TransformBLReferences extends BaseGeneratorTest {
   private SModel myArg_gp;
 
 
-  @Before
+  @BeforeEach
   public void prepareArguments() {
     myArg_input = findModel("input", "r:83830430-11ab-43c1-b57b-a12f13d84af1(jetbrains.mps.baseLanguage.testRefs.data)");
     myArg_output = findModel("output", "r:6cfa5502-ffb4-4f98-816d-56135c6acadb(jetbrains.mps.baseLanguage.testRefs.outputData)");
@@ -30,7 +32,8 @@ public class GenTest_TransformBLReferences extends BaseGeneratorTest {
     t.setInput(i);
     t.transform();
     SModel rm = myArg_output;
-    assertMatch(t.getOutputModel(), rm);
+    ModelAssert ma = new ModelAssert(t.getResult().getOutputRepository());
+    ma.assertMatch(t.getOutputModel(), rm);
   }
   @Test
   public void testTransformAndMatch1() {
@@ -40,7 +43,8 @@ public class GenTest_TransformBLReferences extends BaseGeneratorTest {
     t.setPlanProvider(planProviderFromModel(myArg_gp));
     t.transform();
     SModel rm = myArg_output;
-    assertMatch(t.getOutputModel(), rm);
+    ModelAssert ma = new ModelAssert(t.getResult().getOutputRepository());
+    ma.assertMatch(t.getOutputModel(), rm);
   }
 
 }

@@ -13,8 +13,7 @@ import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.DataFlow;
 import java.util.List;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
-import jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction;
-import jetbrains.mps.lang.dataFlow.framework.instructions.IfJumpInstruction;
+import jetbrains.mps.lang.dataFlow.framework.instructions.AbstractJumpInstruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.RetInstruction;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -31,19 +30,20 @@ public class check_Expression_NonTypesystemRule extends AbstractNonTypesystemRul
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((SNodeOperations.hasRole(expr, LINKS.condition$5R17) || SNodeOperations.hasRole(expr, LINKS.condition$k0T9) || SNodeOperations.hasRole(expr, LINKS.condition$KEkM) || SNodeOperations.hasRole(expr, LINKS.condition$UPf8) || SNodeOperations.hasRole(expr, LINKS.condition$wARE))) {
-      Boolean conditionConstant = ConditionUtil.getConditionConstant(expr);
+      Boolean conditionConstant = ConditionUtil.getConditionEffectivelyConstantValue(expr);
       if (conditionConstant != null) {
         if ((SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), CONCEPTS.WhileStatement$Ay) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), CONCEPTS.DoWhileStatement$9p) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), CONCEPTS.ForStatement$qV))) {
-          boolean isInfiniteLoop = true;
+          boolean isInfiniteLoop = conditionConstant.booleanValue();
           Program program = DataFlow.buildProgram(SNodeOperations.cast(SNodeOperations.getParent(expr), CONCEPTS.AbstractLoopStatement$Xv));
           List<Instruction> instructions = program.getInstructions();
           int endInstructionIndex = instructions.size() - 1;
 
           for (Instruction instruction : instructions) {
-            if ((instruction instanceof JumpInstruction && ((JumpInstruction) instruction).getJumpTo() == endInstructionIndex) || (instruction instanceof IfJumpInstruction && ((IfJumpInstruction) instruction).getJumpTo() == endInstructionIndex) || instruction instanceof RetInstruction) {
+            if ((instruction instanceof AbstractJumpInstruction && ((AbstractJumpInstruction) instruction).getJumpTo() == endInstructionIndex) || instruction instanceof RetInstruction) {
               isInfiniteLoop = false;
               break;
             }
+
           }
           if (isInfiniteLoop) {
             {

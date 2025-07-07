@@ -9,7 +9,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -46,11 +45,7 @@ public class Children {
     List<SNode> children1 = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(statement, LINKS.expression$5L7M), null, false, new SAbstractConcept[]{});
     List<SNode> children2 = SNodeOperations.getNodeDescendants(statement, CONCEPTS.BooleanConstant$n4, false, new SAbstractConcept[]{});
     List<SNode> children3 = SNodeOperations.getNodeDescendants(statement, CONCEPTS.BooleanConstant$n4, true, new SAbstractConcept[]{});
-    Iterable<SNode> children4 = ListSequence.fromList(SNodeOperations.getNodeDescendants(statement, CONCEPTS.BooleanConstant$n4, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.value$5y_M) == true;
-      }
-    });
+    Iterable<SNode> children4 = ListSequence.fromList(SNodeOperations.getNodeDescendants(statement, CONCEPTS.BooleanConstant$n4, false, new SAbstractConcept[]{})).where((it) -> SPropertyOperations.getBoolean(it, PROPS.value$5y_M) == true);
     SNode abcdef;
     SNodeOperations.getNodeDescendants(statement, SNodeOperations.asSConcept(SNodeOperations.getConcept(statement)), false, new SAbstractConcept[]{});
     SNodeOperations.getNodeDescendants(statement, null, false, new SAbstractConcept[]{});

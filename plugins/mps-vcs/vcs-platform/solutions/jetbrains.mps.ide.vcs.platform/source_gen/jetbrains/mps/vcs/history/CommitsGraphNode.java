@@ -18,11 +18,8 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import com.intellij.openapi.vcs.history.CurrentRevision;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Collection;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import git4idea.GitRevisionNumber;
@@ -31,17 +28,18 @@ import com.intellij.openapi.vcs.VcsException;
 import java.io.IOException;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import com.intellij.diff.contents.DiffContent;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vcs.AbstractVcs;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.diff.contents.EmptyContent;
-import jetbrains.mps.vfs.tracking.ModelDiffContent;
+import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
 import com.intellij.openapi.vcs.history.VcsFileRevisionEx;
 import java.util.Date;
-import com.intellij.openapi.project.Project;
 import git4idea.GitFileRevision;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.vcs.log.impl.VcsLogApplicationSettings;
 import com.intellij.vcs.log.impl.CommonUiProperties;
-import git4idea.annotate.AnnotationTooltipBuilder;
-import com.intellij.util.containers.Convertor;
+import com.intellij.openapi.vcs.annotate.AnnotationTooltipBuilder;
 import git4idea.log.GitCommitTooltipLinkHandler;
 import com.intellij.openapi.vcs.VcsBundle;
 import com.intellij.util.text.DateFormatUtil;
@@ -92,28 +90,18 @@ public final class CommitsGraphNode implements Comparable {
   }
 
   public void setIdChanges(Iterable<ModelChange> modelChanges) {
-    SetSequence.fromSet(myChildren).visitAll(new IVisitor<CommitsGraphNode>() {
-      public void visit(CommitsGraphNode child) {
-        MapSequence.fromMap(child.getNodeWithLoadedModel().getChangedIds()).visitAll(new IVisitor<IMapping<SNodeId, Set<SNodeId>>>() {
-          public void visit(IMapping<SNodeId, Set<SNodeId>> it) {
-            addChangedIds(it.key(), it.value());
-          }
-        });
+    SetSequence.fromSet(myChildren).visitAll((child) -> MapSequence.fromMap(child.getNodeWithLoadedModel().getChangedIds()).visitAll((it) -> addChangedIds(it.key(), it.value())));
+    Sequence.fromIterable(modelChanges).ofType(NodeIdChange.class).visitAll((nodeIdChange) -> {
+      SNodeId oldId = nodeIdChange.getNodeId(false);
+      SNodeId newId = nodeIdChange.getNodeId(true);
+      Set<SNodeId> newIds = SetSequence.fromSet(new HashSet<SNodeId>());
+      if (MapSequence.fromMap(myChangedIds).containsKey(newId)) {
+        SetSequence.fromSet(newIds).addSequence(SetSequence.fromSet(MapSequence.fromMap(myChangedIds).get(newId)));
+        MapSequence.fromMap(myChangedIds).removeKey(newId);
+      } else {
+        SetSequence.fromSet(newIds).addElement(newId);
       }
-    });
-    Sequence.fromIterable(modelChanges).ofType(NodeIdChange.class).visitAll(new IVisitor<NodeIdChange>() {
-      public void visit(NodeIdChange nodeIdChange) {
-        SNodeId oldId = nodeIdChange.getNodeId(false);
-        SNodeId newId = nodeIdChange.getNodeId(true);
-        Set<SNodeId> newIds = SetSequence.fromSet(new HashSet<SNodeId>());
-        if (MapSequence.fromMap(myChangedIds).containsKey(newId)) {
-          SetSequence.fromSet(newIds).addSequence(SetSequence.fromSet(MapSequence.fromMap(myChangedIds).get(newId)));
-          MapSequence.fromMap(myChangedIds).removeKey(newId);
-        } else {
-          SetSequence.fromSet(newIds).addElement(newId);
-        }
-        addChangedIds(oldId, newIds);
-      }
+      addChangedIds(oldId, newIds);
     });
   }
 
@@ -136,11 +124,7 @@ public final class CommitsGraphNode implements Comparable {
   }
 
   public List<CommitsGraphNode> getParentsWithRoot() {
-    return ListSequence.fromList(myParents).where(new IWhereFilter<CommitsGraphNode>() {
-      public boolean accept(CommitsGraphNode it) {
-        return !(it.isIgnored());
-      }
-    }).toListSequence();
+    return ListSequence.fromList(myParents).where((it) -> !(it.isIgnored())).toList();
   }
 
   public Collection<CommitsGraphNode> getChildren() {
@@ -162,7 +146,7 @@ public final class CommitsGraphNode implements Comparable {
     }
   }
 
-  /*package*/ boolean isDescendantOf(CommitsGraphNode node) {
+  public boolean isDescendantOf(CommitsGraphNode node) {
     return SetSequence.fromSet(getAncestors()).contains(node);
   }
 
@@ -258,18 +242,25 @@ public final class CommitsGraphNode implements Comparable {
     return ListSequence.fromList(myIgnoredByChildren).contains(child);
   }
 
-  public List<DiffContent> createContents(String fileExtension) {
+  public List<DiffContent> createContents(Project ideaProject, AbstractVcs vcs, VirtualFile vFile) throws VcsException {
     List<DiffContent> contents = ListSequence.fromList(new ArrayList<DiffContent>());
     if (ListSequence.fromList(myParents).isNotEmpty()) {
-      ListSequence.fromList(contents).addElement(createDiffContent(ListSequence.fromList(myParents).getElement(0).getRevision(), fileExtension));
+      ListSequence.fromList(contents).addElement(createDiffContent(ListSequence.fromList(myParents).getElement(0), ideaProject, vcs, vFile));
     } else {
       ListSequence.fromList(contents).addElement(new EmptyContent());
     }
-    ListSequence.fromList(contents).addElement(createDiffContent(myRevision, fileExtension));
+    ListSequence.fromList(contents).addElement(createDiffContent(this, ideaProject, vcs, vFile));
     if (ListSequence.fromList(myParents).count() == 2) {
-      ListSequence.fromList(contents).addElement(createDiffContent(ListSequence.fromList(myParents).getElement(1).getRevision(), fileExtension));
+      ListSequence.fromList(contents).addElement(createDiffContent(ListSequence.fromList(myParents).getElement(1), ideaProject, vcs, vFile));
     }
     return contents;
+  }
+
+  private static DiffContent createDiffContent(CommitsGraphNode node, Project ideaProject, AbstractVcs vcs, VirtualFile vFile) throws VcsException {
+    if (node.isLocalRevision()) {
+      return VcsActionsUtil.createCurrentContent(ideaProject, vFile);
+    }
+    return VcsActionsUtil.createRevisionContent(ideaProject, vcs, node.getRevision().getRevisionNumber(), vFile);
   }
 
   public List<String> createTitles() {
@@ -288,18 +279,6 @@ public final class CommitsGraphNode implements Comparable {
 
   private static String createTitle(@NotNull VcsFileRevision revision) {
     return revision.getRevisionNumber().asString();
-  }
-
-  @NotNull
-  private DiffContent createDiffContent(@NotNull VcsFileRevision revision, String fileExtension) {
-    SModel model;
-    try {
-      model = VCSPersistenceUtil.loadModel(revision.loadContent(), fileExtension);
-    } catch (Exception ex) {
-      return new EmptyContent();
-    }
-    // ModelDiffViewer doesn't tolerate reusable detached models, it registers and disposes such models solely on its own discretion
-    return ((model == null || !(model.isLoaded())) ? new EmptyContent() : new ModelDiffContent(model));
   }
 
   @Override
@@ -337,11 +316,7 @@ public final class CommitsGraphNode implements Comparable {
 
       AnnotationTooltipBuilder atb = new AnnotationTooltipBuilder(project, true);
 
-      atb.appendRevisionLine(myRevision.getRevisionNumber(), new Convertor<VcsRevisionNumber, String>() {
-        public String convert(VcsRevisionNumber number) {
-          return GitCommitTooltipLinkHandler.createLink(number.asString(), number);
-        }
-      });
+      atb.appendRevisionLine(myRevision.getRevisionNumber(), (VcsRevisionNumber number) -> GitCommitTooltipLinkHandler.createLink(number.asString(), number));
       atb.appendLine(VcsBundle.message("commit.description.tooltip.author", myRevision.getAuthor()));
       atb.appendLine(VcsBundle.message("commit.description.tooltip.date", DateFormatUtil.formatDate(date)));
       atb.appendCommitMessageBlock(myRevision.getCommitMessage());

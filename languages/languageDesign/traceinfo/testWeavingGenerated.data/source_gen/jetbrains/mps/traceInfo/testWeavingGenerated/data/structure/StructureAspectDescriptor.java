@@ -63,7 +63,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:b8c93b44-499b-404a-a011-c0847b38eb58(jetbrains.mps.traceInfo.testWeavingGenerated.data.structure)/6186432342008329116");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForChildConceptWeaveEach() {
@@ -71,7 +71,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:b8c93b44-499b-404a-a011-c0847b38eb58(jetbrains.mps.traceInfo.testWeavingGenerated.data.structure)/6186432342008329114");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForChildConceptWeaveEachMany() {
@@ -79,7 +79,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:b8c93b44-499b-404a-a011-c0847b38eb58(jetbrains.mps.traceInfo.testWeavingGenerated.data.structure)/6186432342008533347");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForChildConceptWeaveMany() {
@@ -87,7 +87,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:b8c93b44-499b-404a-a011-c0847b38eb58(jetbrains.mps.traceInfo.testWeavingGenerated.data.structure)/6186432342008533337");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForRootConcept() {
@@ -95,7 +95,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:b8c93b44-499b-404a-a011-c0847b38eb58(jetbrains.mps.traceInfo.testWeavingGenerated.data.structure)/6186432342008318668");
-    b.version(2);
+    b.version(3);
     b.aggregate("weave", 0x55da9f701c64f39eL).target(0xce517356fc9a4e78L, 0x86066e7a36ff0671L, 0x55da9f701c64f39cL).optional(true).ordered(true).multiple(true).origin("6186432342008329118").done();
     b.aggregate("weaveEach", 0x55da9f701c64f39fL).target(0xce517356fc9a4e78L, 0x86066e7a36ff0671L, 0x55da9f701c64f39aL).optional(true).ordered(true).multiple(true).origin("6186432342008329119").done();
     b.aggregate("weaveMany", 0x55da9f701c68116eL).target(0xce517356fc9a4e78L, 0x86066e7a36ff0671L, 0x55da9f701c681159L).optional(true).ordered(true).multiple(true).origin("6186432342008533358").done();

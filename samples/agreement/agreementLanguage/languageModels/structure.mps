@@ -13,7 +13,6 @@
       <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
         <property id="1421157252384165432" name="memberId" index="3tVfz5" />
         <property id="672037151186491528" name="presentation" index="1L1pqM" />
-        <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
@@ -24,22 +23,6 @@
       </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
-      </concept>
-      <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old" flags="ng" index="AxPO7">
-        <property id="1197591154882" name="memberIdentifierPolicy" index="3lZH7k" />
-        <reference id="1083171729157" name="memberDataType" index="M4eZT" />
-        <reference id="1083241965437" name="defaultMember" index="Qgau1" />
-        <child id="1083172003582" name="member" index="M5hS2" />
-      </concept>
-      <concept id="1588368162884797030" name="jetbrains.mps.lang.structure.structure.EnumMigrationInfo" flags="ng" index="2JgGob">
-        <property id="6491077959634662372" name="valueOpMigration" index="3scbB" />
-        <property id="6491077959634650670" name="nameOpMigration" index="3sfsH" />
-        <child id="6491077959632451996" name="oldEnum" index="3lCyv" />
-      </concept>
-      <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old" flags="ig" index="M4N5e">
-        <property id="1192116978809" name="javaIdentifier" index="2fHolG" />
-        <property id="1083923523172" name="externalValue" index="1uS6qo" />
-        <property id="1083923523171" name="internalValue" index="1uS6qv" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
@@ -75,7 +58,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -134,7 +117,7 @@
         <node concept="1TJgyi" id="gfGIgTS" role="3l_iP">
           <property role="TrG5h" value="taxable" />
           <property role="IQ2nx" value="1116368080504" />
-          <ref role="AX2Wp" node="gfGHRIZ" resolve="Taxable" />
+          <ref role="AX2Wp" node="3Ftr4R6BFH$" resolve="Taxable" />
         </node>
       </node>
     </node>
@@ -171,7 +154,7 @@
         <node concept="1TJgyi" id="gbs35k3" role="3l_iP">
           <property role="TrG5h" value="unit" />
           <property role="IQ2nx" value="1111793358083" />
-          <ref role="AX2Wp" node="gbs2Ca2" resolve="Unit" />
+          <ref role="AX2Wp" node="3Ftr4R6BFHv" resolve="Unit" />
         </node>
       </node>
     </node>
@@ -373,81 +356,32 @@
     <property role="TrG5h" value="Unit" />
     <property role="3F6X1D" value="1111793238658" />
     <ref role="1H5jkz" node="3Ftr4R6BFHx" resolve="USD_KWH" />
-    <node concept="2JgGob" id="3Ftr4R6BFHw" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
-      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
-      <node concept="AxPO7" id="gbs2Ca2" role="3lCyv">
-        <property role="3lZH7k" value="hrlZj6Q/derive_from_internal_value" />
-        <property role="TrG5h" value="Unit" />
-        <property role="3F6X1D" value="1111793238658" />
-        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-        <ref role="Qgau1" node="gbs2DMi" />
-        <node concept="M4N5e" id="gbs2DMi" role="M5hS2">
-          <property role="1uS6qv" value="USD_KWH" />
-          <property role="1uS6qo" value="USD_KWH" />
-        </node>
-        <node concept="M4N5e" id="gbs2QO3" role="M5hS2">
-          <property role="1uS6qv" value="USD" />
-          <property role="1uS6qo" value="USD" />
-        </node>
-        <node concept="M4N5e" id="gbs2VP7" role="M5hS2">
-          <property role="1uS6qv" value="KWH" />
-          <property role="1uS6qo" value="KWH" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFHx" role="25R1y">
       <property role="TrG5h" value="USD_KWH" />
       <property role="3tVfz5" value="1111793245330" />
-      <ref role="2wpffI" node="gbs2DMi" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFHy" role="25R1y">
       <property role="TrG5h" value="USD" />
       <property role="3tVfz5" value="1111793298691" />
-      <ref role="2wpffI" node="gbs2QO3" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFHz" role="25R1y">
       <property role="TrG5h" value="KWH" />
       <property role="3tVfz5" value="1111793319239" />
-      <ref role="2wpffI" node="gbs2VP7" />
     </node>
   </node>
   <node concept="25R3W" id="3Ftr4R6BFH$">
     <property role="TrG5h" value="Taxable" />
     <property role="3F6X1D" value="1116367977407" />
     <ref role="1H5jkz" node="3Ftr4R6BFHA" resolve="taxable" />
-    <node concept="2JgGob" id="3Ftr4R6BFH_" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3f6/boolean" />
-      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
-      <node concept="AxPO7" id="gfGHRIZ" role="3lCyv">
-        <property role="3lZH7k" value="hrlZpEz/custom" />
-        <property role="TrG5h" value="Taxable" />
-        <property role="3F6X1D" value="1116367977407" />
-        <ref role="M4eZT" to="tpck:fKAQMTB" resolve="boolean" />
-        <ref role="Qgau1" node="gfGHRJ0" />
-        <node concept="M4N5e" id="gfGHRJ0" role="M5hS2">
-          <property role="1uS6qv" value="true" />
-          <property role="2fHolG" value="taxable" />
-          <property role="1uS6qo" value="TAXABLE" />
-        </node>
-        <node concept="M4N5e" id="gfGI4Mu" role="M5hS2">
-          <property role="1uS6qv" value="false" />
-          <property role="2fHolG" value="tax_free" />
-          <property role="1uS6qo" value="TAXFREE" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFHA" role="25R1y">
       <property role="TrG5h" value="taxable" />
       <property role="1L1pqM" value="TAXABLE" />
       <property role="3tVfz5" value="1116367977408" />
-      <ref role="2wpffI" node="gfGHRJ0" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFHB" role="25R1y">
       <property role="TrG5h" value="tax_free" />
       <property role="1L1pqM" value="TAXFREE" />
       <property role="3tVfz5" value="1116368030878" />
-      <ref role="2wpffI" node="gfGI4Mu" />
     </node>
   </node>
 </model>

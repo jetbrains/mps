@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
+  <root nodeRef="r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)/3847617280526267717">
+    <file name="VisibleModelElements.java">
+      <node id="3847617280526267719" at="10,0,11,0" concept="2" trace="getModelUID#(I)Lorg/jetbrains/mps/openapi/model/SModelReference;" />
+      <node id="3847617280526267725" at="11,0,12,0" concept="2" trace="getVisibleModelIndex#(Lorg/jetbrains/mps/openapi/model/SModelReference;)I" />
+      <scope id="3847617280526267719" at="10,0,11,0">
+        <var name="importIndex" id="3847617280526267721" />
+      </scope>
+      <scope id="3847617280526267725" at="11,0,12,0">
+        <var name="targetModelReference" id="3847617280526267727" />
+      </scope>
+      <unit id="3847617280526267717" at="8,0,13,0" name="jetbrains.mps.smodel.persistence.def.VisibleModelElements" />
+    </file>
+  </root>
+  <root nodeRef="r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)/3847617280526268737">
+    <file name="SAXVisibleModelElements.java">
+      <node id="3847617280526268740" at="13,0,14,0" concept="1" trace="myVisibleModelElements" />
+      <node id="3847617280526268752" at="15,49,16,45" concept="3" />
+      <node id="3847617280526268763" at="18,54,19,102" concept="0" />
+      <node id="3847617280526268777" at="22,73,23,46" concept="4" />
+      <node id="3847617280526268757" at="18,0,21,0" concept="2" trace="addVisible#(ILjava/lang/String;)V" />
+      <node id="3847617280526268747" at="14,0,18,0" concept="2" trace="getModelUID#(I)Lorg/jetbrains/mps/openapi/model/SModelReference;" />
+      <node id="3847617280526268771" at="21,0,25,0" concept="2" trace="getVisibleModelIndex#(Lorg/jetbrains/mps/openapi/model/SModelReference;)I" />
+      <scope id="3847617280526268751" at="15,49,16,45" />
+      <scope id="3847617280526268762" at="18,54,19,102" />
+      <scope id="3847617280526268775" at="22,73,23,46" />
+      <scope id="3847617280526268757" at="18,0,21,0">
+        <var name="index" id="3847617280526268758" />
+        <var name="modelUID" id="3847617280526268760" />
+      </scope>
+      <scope id="3847617280526268747" at="14,0,18,0">
+        <var name="index" id="3847617280526268749" />
+      </scope>
+      <scope id="3847617280526268771" at="21,0,25,0">
+        <var name="targetModelReference" id="3847617280526268773" />
+      </scope>
+      <unit id="3847617280526268737" at="11,0,26,0" name="jetbrains.mps.smodel.persistence.def.SAXVisibleModelElements" />
+    </file>
+  </root>
+  <root nodeRef="r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)/3847617280526289999">
+    <file name="IReferencePersister.java">
+      <node id="3847617280526290001" at="13,0,14,0" concept="2" trace="fillFields#(Lorg/jdom/Element;Lorg/jetbrains/mps/openapi/model/SNode;Z)V" />
+      <node id="3847617280526290011" at="14,0,15,0" concept="2" trace="getImportIndex#()I" />
+      <node id="3847617280526290015" at="15,0,16,0" concept="2" trace="getSourceNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="3847617280526290019" at="16,0,17,0" concept="2" trace="getRole#()Ljava/lang/String;" />
+      <node id="3847617280526290023" at="17,0,18,0" concept="2" trace="getTargetId#()Ljava/lang/String;" />
+      <node id="3847617280526290027" at="18,0,19,0" concept="2" trace="getResolveInfo#()Ljava/lang/String;" />
+      <node id="3847617280526290031" at="19,0,20,0" concept="2" trace="getExtResolveInfo#()Ljava/lang/String;" />
+      <node id="3847617280526290035" at="20,0,21,0" concept="2" trace="createReferenceInModel#(Ljetbrains/mps/smodel/SModel;Ljetbrains/mps/smodel/persistence/def/VisibleModelElements;)V" />
+      <node id="3847617280526290043" at="21,0,22,0" concept="2" trace="saveReference#(Lorg/jdom/Element;Lorg/jetbrains/mps/openapi/model/SReference;ZLjetbrains/mps/smodel/persistence/def/VisibleModelElements;)V" />
+      <scope id="3847617280526290001" at="13,0,14,0">
+        <var name="linkElement" id="3847617280526290003" />
+        <var name="sourceNode" id="3847617280526290005" />
+        <var name="useUIDs" id="3847617280526290007" />
+      </scope>
+      <scope id="3847617280526290011" at="14,0,15,0" />
+      <scope id="3847617280526290015" at="15,0,16,0" />
+      <scope id="3847617280526290019" at="16,0,17,0" />
+      <scope id="3847617280526290023" at="17,0,18,0" />
+      <scope id="3847617280526290027" at="18,0,19,0" />
+      <scope id="3847617280526290031" at="19,0,20,0" />
+      <scope id="3847617280526290035" at="20,0,21,0">
+        <var name="model" id="3847617280526290037" />
+        <var name="visibleModelElements" id="3847617280526290039" />
+      </scope>
+      <scope id="3847617280526290043" at="21,0,22,0">
+        <var name="parentElement" id="3847617280526290045" />
+        <var name="reference" id="3847617280526290047" />
+        <var name="useUIDs" id="3847617280526290049" />
+        <var name="visibleModelElements" id="3847617280526290051" />
+      </scope>
+      <unit id="3847617280526289999" at="11,0,23,0" name="jetbrains.mps.smodel.persistence.def.IReferencePersister" />
+    </file>
+  </root>
+</debug-info>
+

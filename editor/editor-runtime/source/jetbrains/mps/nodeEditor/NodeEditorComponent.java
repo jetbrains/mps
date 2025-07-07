@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.LocalTimeCounter;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
@@ -32,7 +31,6 @@ import jetbrains.mps.nodeEditor.selection.SingularSelectionListenerAdapter;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.selection.SingularSelection;
 import jetbrains.mps.project.Project;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -40,11 +38,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.awt.event.HierarchyEvent;
-import java.awt.event.HierarchyListener;
 
 public class NodeEditorComponent extends EditorComponent {
-  private static Logger LOG = Logger.wrap(LogManager.getLogger(NodeEditorComponent.class));
-
   private SNode myLastInspectedNode = null;
   private CommandContextWithVF myCommandContext;
 
@@ -79,11 +74,6 @@ public class NodeEditorComponent extends EditorComponent {
       }
       adjustInspector();
     });
-  }
-
-  @Override
-  protected boolean notifiesCreation() {
-    return true;
   }
 
   private void adjustInspector() {
@@ -149,7 +139,6 @@ public class NodeEditorComponent extends EditorComponent {
 
   @Override
   public void dispose() {
-    notifyDisposal();
     InspectorTool inspectorTool = getInspectorTool();
     if (inspectorTool != null && inspectorTool.getInspector() != null) {
       if (inspectorTool.getInspector().getEditedNode() == this.getLastInspectedNode()) {
@@ -180,7 +169,11 @@ public class NodeEditorComponent extends EditorComponent {
   @Nullable
   @Override
   public Object getData(@NotNull @NonNls String dataId) {
-    if (dataId.equals(PlatformDataKeys.VIRTUAL_FILE_ARRAY.getName())) {
+    // FIXME there's a promise in IDEA that VIRTUAL_FILE_ARRAY is provided automatically when there's
+    //  a value for VIRTUAL_FILE. However, I'm afraid to remove this code without thorough check for
+    //  MPS-24343 fix (f5e279db). Perhaps, the fact we give VF_ARRAY based on active edited node
+    //  (unlike VF for editor, which is the same), is essential to fix Cut action?
+    if (PlatformDataKeys.VIRTUAL_FILE_ARRAY.is(dataId)) {
       return getVirtualFile() != null ? new VirtualFile[]{getVirtualFile()} : new VirtualFile[0];
     }
     return super.getData(dataId);

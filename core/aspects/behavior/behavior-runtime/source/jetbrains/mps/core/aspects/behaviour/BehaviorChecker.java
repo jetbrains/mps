@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import java.util.List;
  * @author apyshkin
  */
 final class BehaviorChecker {
+  // in fact, it's rather checkArguments()
   static <T> void checkParameters(@NotNull BHDescriptor originalDescriptor, @NotNull SMethod<T> method, @NotNull Object[] parameters) {
     List<SParameter> declaredParameters = method.getParameters();
     boolean hasVarArg = !declaredParameters.isEmpty() && declaredParameters.get(declaredParameters.size() - 1) instanceof SVarArgParameter;

@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -55,8 +54,7 @@ public class SModelStereotype {
   /**
    * @deprecated use {@link #isStubModel(SModel)} instead, plain strings instead of objects are just bad design
    */
-  @Deprecated
-  @ToRemove(version = 2018.2)
+@Deprecated(since = "2018.2", forRemoval = true)
   public static boolean isStubModelStereotype(String stereotype) {
     // there's 1 use in mbeddr
     return stereotype.endsWith(STUB_SUFFIX);
@@ -91,8 +89,7 @@ public class SModelStereotype {
    * @deprecated use {@link org.jetbrains.mps.openapi.model.SModelName#getStereotype()}
    */
   @NotNull
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public static String getStereotype(String modelName) {
     int atIndex = modelName.lastIndexOf('@');
     if (atIndex == -1) {

@@ -9,38 +9,26 @@ import java.util.Set;
 import jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
 @GeneratedClass(node = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)/7129857096176465096", model = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)")
 public class BaseLanguageCustomViewers implements ApplicationComponent {
   private final CustomViewersManager myCustomViewerManager;
   private final Set<ValueWrapperFactory> myFactories = SetSequence.fromSet(new HashSet<ValueWrapperFactory>());
-  public BaseLanguageCustomViewers(CustomViewersManager manager) {
-    myCustomViewerManager = manager;
+
+  public BaseLanguageCustomViewers() {
+    myCustomViewerManager = CustomViewersManager.getInstance();
   }
+
   public void initComponent() {
+    // Base Language Custom Viewers
     SetSequence.fromSet(myFactories).addElement(new ObjectWrapperFactory());
     SetSequence.fromSet(myFactories).addElement(new ArrayWrapperFactory());
     SetSequence.fromSet(myFactories).addElement(new PrimitiveWrapperFactory());
     SetSequence.fromSet(myFactories).addElement(new StringWrapperFactory());
-    SetSequence.fromSet(myFactories).visitAll(new IVisitor<ValueWrapperFactory>() {
-      public void visit(ValueWrapperFactory it) {
-        myCustomViewerManager.addFactory(it);
-      }
-    });
+    SetSequence.fromSet(myFactories).visitAll((it) -> myCustomViewerManager.addFactory(it));
   }
   public void disposeComponent() {
-    SetSequence.fromSet(myFactories).visitAll(new IVisitor<ValueWrapperFactory>() {
-      public void visit(ValueWrapperFactory it) {
-        myCustomViewerManager.removeFactory(it);
-      }
-    });
-  }
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "Base Language Custom Viewers";
+    SetSequence.fromSet(myFactories).visitAll((it) -> myCustomViewerManager.removeFactory(it));
+    SetSequence.fromSet(myFactories).clear();
   }
 }

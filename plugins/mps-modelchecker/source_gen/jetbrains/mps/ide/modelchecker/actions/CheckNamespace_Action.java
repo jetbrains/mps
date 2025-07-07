@@ -14,12 +14,13 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.List;
-import javax.swing.tree.TreeNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
 import java.util.ArrayList;
-import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
+import jetbrains.mps.ide.ui.tree.VirtualFolder;
+import jetbrains.mps.ide.ui.tree.DiscoveryValueProvider;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 
 @GeneratedClass(node = "r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)/7502735747194136940", model = "r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)")
 public class CheckNamespace_Action extends BaseAction {
@@ -55,8 +56,18 @@ public class CheckNamespace_Action extends BaseAction {
       }
     }
     {
-      List<TreeNode> p = event.getData(MPSCommonDataKeys.TREE_NODES);
-      MapSequence.fromMap(_params).put("treeNodes", p);
+      List<Object> p = event.getData(MPSCommonDataKeys.VALUES);
+      MapSequence.fromMap(_params).put("selectedValues", p);
+      if (p == null) {
+        return false;
+      }
+      if (p.isEmpty()) {
+        return false;
+      }
+    }
+    {
+      List<Object> p = event.getData(MPSCommonDataKeys.USER_OBJECTS);
+      MapSequence.fromMap(_params).put("selectedObjects", p);
       if (p == null) {
         return false;
       }
@@ -71,13 +82,16 @@ public class CheckNamespace_Action extends BaseAction {
     List<SModule> modules = CheckNamespace_Action.this.modules2check(_params);
     ModelCheckerTool.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).checkModulesAndShowResult(modules);
   }
-  /*package*/ List<SModule> modules2check(final Map<String, Object> _params) {
+  private List<SModule> modules2check(final Map<String, Object> _params) {
     List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
-    for (TreeNode node : ListSequence.fromList(((List<TreeNode>) MapSequence.fromMap(_params).get("treeNodes")))) {
-      if (!(node instanceof NamespaceTextNode)) {
-        return ListSequence.fromList(new ArrayList<SModule>());
+    if (!(((List<Object>) MapSequence.fromMap(_params).get("selectedValues")).stream().allMatch((v) -> v instanceof VirtualFolder.Modules))) {
+      return ListSequence.fromList(new ArrayList<SModule>());
+    }
+    for (Object selectedObject : ((List<Object>) MapSequence.fromMap(_params).get("selectedObjects"))) {
+      if (selectedObject instanceof DiscoveryValueProvider) {
+        DiscoveryValueProvider provider = ((DiscoveryValueProvider) selectedObject);
+        ListSequence.fromList(modules).addSequence(Sequence.fromIterable(Sequence.fromStream(provider.discoverValuesOfType(SModule.class))));
       }
-      ListSequence.fromList(modules).addSequence(ListSequence.fromList(((NamespaceTextNode) node).getModulesUnder()));
     }
     return modules;
   }

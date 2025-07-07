@@ -4,8 +4,7 @@ package jetbrains.mps.vcs.platform.integration;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.diff.merge.MergeTool;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import com.intellij.diff.merge.MergeContext;
 import com.intellij.diff.merge.TextMergeRequest;
 import jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel;
@@ -20,11 +19,13 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.diff.contents.FileContent;
 import java.io.File;
 import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
-import jetbrains.mps.persistence.FilePerRootDataSource;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.vcs.util.MergeConstants;
+import jetbrains.mps.extapi.model.SModelBase;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.vcs.diff.ui.merge.ISaveMergedModel;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.project.MPSProject;
@@ -34,10 +35,8 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import org.apache.log4j.Level;
 import java.io.IOException;
 import javax.swing.JComponent;
-import com.intellij.openapi.util.BooleanGetter;
 import javax.swing.Action;
 import com.intellij.diff.merge.MergeResult;
 import com.intellij.diff.merge.MergeUtil;
@@ -51,8 +50,7 @@ import com.intellij.openapi.vfs.CharsetToolkit;
 
 @GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/5085852630254873851", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class ModelMergeViewer implements MergeTool.MergeViewer {
-  private static final Logger LOG_276369528 = LogManager.getLogger(ModelMergeViewer.class);
-  private static final Logger LOG = LogManager.getLogger(ModelMergeViewer.class);
+  private static final Logger LOG = Logger.getLogger(ModelMergeViewer.class);
 
   private MergeContext myMergeContext;
   private TextMergeRequest myMergeRequest;
@@ -78,7 +76,7 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
       final String ext;
       // FIXME see VCSPersistenceUtil.saveModel, it's odd code that deals with persistence kind and extension both to select proper model factory
       //      Besides, there's similar code in ConflictinModelsUtil!
-      boolean perRootPersistenceFile = FilePerRootDataSource.isPerRootPersistenceFile(FileSystem.getInstance().getFile(file.getPath()));
+      boolean perRootPersistenceFile = ConflictingModelsUtil.isPerRootPersistenceFile(file);
       if (perRootPersistenceFile) {
         // load model partially from per-root persistence with "normal" persistence loading
         ext = MPSExtentions.MODEL;
@@ -89,6 +87,19 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
       SModel mineModel = loadModel(byteContents[MergeConstants.CURRENT], ext);
       SModel newModel = loadModel(byteContents[MergeConstants.LAST_REVISION], ext);
       if (baseModel != null && mineModel != null && newModel != null) {
+        if (MPSExtentions.MODEL_ROOT.equals(file.getExtension())) {
+          // fix imports and languages for per-root persistence root file to allow completion
+          SModel repoModel = baseModel.getReference().resolve(null);
+          for (jetbrains.mps.smodel.SModel.ImportElement imp : ListSequence.fromList(((SModelBase) repoModel).getSModel().importedModels())) {
+            ((SModelBase) baseModel).getSModel().addModelImport(imp);
+          }
+          for (SLanguage lang : CollectionSequence.fromCollection(((SModelBase) repoModel).getSModel().usedLanguages())) {
+            ((SModelBase) baseModel).getSModel().addLanguage(lang);
+          }
+          for (SModuleReference devkit : ListSequence.fromList(((SModelBase) repoModel).getSModel().importedDevkits())) {
+            ((SModelBase) baseModel).getSModel().addDevKit(devkit);
+          }
+        }
         final ModelMergeViewer viewer = new ModelMergeViewer(context, textRequest, baseModel, mineModel, newModel, perRootPersistenceFile);
 
         ISaveMergedModel saver = new ISaveMergedModel() {
@@ -120,20 +131,18 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
                     break;
                 }
               } else {
-                if (LOG_276369528.isEnabledFor(Level.ERROR)) {
-                  LOG_276369528.error("Cannot save merge resulting model " + SModelOperations.getModelName(resultModel), error);
+                if (LOG.isErrorLevel()) {
+                  LOG.error("Cannot save merge resulting model " + SModelOperations.getModelName(resultModel), error);
                 }
               }
             }
             if (resultContent.value != null) {
-              ApplicationManager.getApplication().runWriteAction(new Runnable() {
-                public void run() {
-                  try {
-                    file.setBinaryContent(resultContent.value);
-                  } catch (IOException e) {
-                    if (LOG_276369528.isEnabledFor(Level.ERROR)) {
-                      LOG_276369528.error("Cannot save merge result into " + file.getPath(), e);
-                    }
+              ApplicationManager.getApplication().runWriteAction(() -> {
+                try {
+                  file.setBinaryContent(resultContent.value);
+                } catch (IOException e) {
+                  if (LOG.isErrorLevel()) {
+                    LOG.error("Cannot save merge result into " + file.getPath(), e);
                   }
                 }
               });
@@ -148,7 +157,9 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
         return viewer;
       }
     } catch (IOException e) {
-      LOG.error(null, e);
+      if (LOG.isErrorLevel()) {
+        LOG.error("Failed to create merge view", e);
+      }
     }
     return null;
   }
@@ -167,11 +178,7 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
     MergeTool.ToolbarComponents components = new MergeTool.ToolbarComponents();
 
     components.toolbarActions = myPanel.getToolbarActions();
-    components.closeHandler = new BooleanGetter() {
-      public boolean get() {
-        return allowCancel();
-      }
-    };
+    components.closeHandler = () -> allowCancel();
     return components;
   }
   @Nullable

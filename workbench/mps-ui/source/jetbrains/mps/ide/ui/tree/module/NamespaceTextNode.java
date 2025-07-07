@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,11 +32,12 @@ import java.util.List;
 
 public class NamespaceTextNode extends TextTreeNode implements TreeElement {
 
+  // I eagerly hope this NamespaceNodeBuilder fades into the void
   public static NamespaceNodeBuilder<NamespaceTextNode> getBuilder() {
-    return new NamespaceNodeBuilder<NamespaceTextNode>() {
+    return new NamespaceNodeBuilder<>() {
       @Override
       public NamespaceTextNode createNamespaceNode(String text) {
-        return new NamespaceTextNode(text);
+        return new NamespaceTextNode(text.intern());
       }
 
       @Override
@@ -59,13 +60,13 @@ public class NamespaceTextNode extends TextTreeNode implements TreeElement {
   private String myName;
 
   public NamespaceTextNode(String name) {
-    super(name = InternUtil.intern(name));
-    setName(name);
+    super(name);
+    myName = name.intern();
   }
 
   public void setName(String newName) {
-    myName = InternUtil.intern(newName);
-    setText(newName);
+    myName = newName.intern(); // uses suggest it's never null
+    setText(myName);
   }
 
   @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -102,7 +102,7 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory,
 
     StreamDataSource source = (StreamDataSource) dataSource;
     final SModelHeader header = new SModelHeader();
-    SModelReference newModelRef = FACADE().createModelReference(null, SModelId.generate(), modelName.getValue());
+    SModelReference newModelRef = FACADE().createModelReference(null, SModelId.generate(), modelName);
     header.setModelReference(newModelRef);
     return new DefaultSModelDescriptor(new PersistenceFacility(this, source), header);
   }

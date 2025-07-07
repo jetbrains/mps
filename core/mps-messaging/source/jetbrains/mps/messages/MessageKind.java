@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,13 @@
  */
 package jetbrains.mps.messages;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Priority;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Types of messages reported through {@link IMessageHandler}.
  * Note, this is not a replacement for logging facilities. {@linkplain IMessage Messages} are intended for end-user
  * and thus levels other than 'severe issue', 'worth mentioning' and 'if you are curious' do not make sense here.
- * If you need trace/debug levels, use {@link org.apache.log4j.Logger}.
+ * If you need trace/debug levels, use {@link java.util.logging.Logger}.
  */
 public enum MessageKind {
   INFORMATION, WARNING, ERROR;
@@ -49,13 +47,12 @@ public enum MessageKind {
   }
 
   @NotNull
-  public static MessageKind fromPriority(Priority level) {
-    if (level.equals(Level.FATAL) || level.equals(Level.ERROR)) {
+  public static MessageKind fromPriority(java.util.logging.Level level) {
+    if (level.equals(java.util.logging.Level.SEVERE)) {
       return MessageKind.ERROR;
-    } else if (level.equals(Level.WARN)) {
+    } else if (level.equals(java.util.logging.Level.WARNING)) {
       return MessageKind.WARNING;
     }
     return MessageKind.INFORMATION;
   }
-
 }

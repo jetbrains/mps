@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -19,7 +20,6 @@ import jetbrains.mps.scope.ListScope;
 import java.util.HashMap;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -31,23 +31,19 @@ public class OrPatternVariableReference_Constraints extends BaseConstraintsDescr
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$8bs3, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$8bs3, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_8aolto_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c89590340(jetbrains.mps.lang.pattern.constraints)", "6836281137582794838");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode orPattern = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.OrPattern$Lk, false, false);
-            return ListScope.forResolvableElements(check_8aolto_a0b0b0a0a0b0a0a0a2(orPattern));
+            return ListScope.forResolvableElements(check_8aolto_a0b0b0a0a0a0a0a0a2(orPattern));
           }
         };
       }
@@ -56,13 +52,12 @@ public class OrPatternVariableReference_Constraints extends BaseConstraintsDescr
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static List<SNode> check_8aolto_a0b0b0a0a0b0a0a0a2(SNode checkedDotOperand) {
+  private static List<SNode> check_8aolto_a0b0b0a0a0a0a0a0a2(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getChildren(checkedDotOperand, LINKS.variable$fNCo);
     }
     return null;
   }
-  private static final SNodePointer breakingNode_8aolto_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590340(jetbrains.mps.lang.pattern.constraints)", "6836281137582794838");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept OrPatternVariableReference$O0 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3b2f5e7b070d317cL, "jetbrains.mps.lang.pattern.structure.OrPatternVariableReference");

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,6 +67,23 @@ public interface SAbstractConcept extends SNamedElement {
    * @return <code>true</code> for interfaces and abstract concepts.
    */
   boolean isAbstract();
+
+  /**
+   * XXX why not BaseConcept (at least in case of concept declaration, not interface) - the only case
+   * when we care is extends of BaseConcept itself (implementation returns null in that case). Can we handle it without forcing nullable?
+   * @return extended concept, if present; always {@code null} for interface concept declarations, as well as for BaseConcept
+   * @since 2021.2
+   */
+  @Nullable
+  SConcept getSuperConcept();
+
+  /**
+   * Returns directly implemented (in case of concept declaration)
+   * or extended (in case of interface concept declaration) interfaces.
+   * @since 2021.2
+   */
+  @NotNull
+  Iterable<SInterfaceConcept> getSuperInterfaces();
 
   /**
    * Returns the declaration node in case sources for this concept are present in IDE

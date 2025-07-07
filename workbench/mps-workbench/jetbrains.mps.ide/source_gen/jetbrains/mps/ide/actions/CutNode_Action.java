@@ -23,12 +23,13 @@ import org.jetbrains.mps.openapi.model.SModel;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5033107305426722313", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CutNode_Action extends BaseAction {
-  private static final Icon ICON = AllIcons.Actions.Menu_cut;
+  private static final Icon ICON = AllIcons.Actions.MenuCut;
 
   public CutNode_Action() {
     super("Cut", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -83,13 +84,6 @@ public class CutNode_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     CopyPasteUtil.copyNodesToClipboard(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
     for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))) {
-      if (node == ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).last()) {
-        ProjectPane pane = CutNode_Action.this.getProjectPane(_params);
-        if (ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).count() != 1) {
-          pane.rebuildTree();
-        }
-        pane.selectNextNode(node);
-      }
       SNodeOperations.deleteNode(node);
     }
   }

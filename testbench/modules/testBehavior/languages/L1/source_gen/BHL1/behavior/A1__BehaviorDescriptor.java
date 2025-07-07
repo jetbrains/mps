@@ -20,9 +20,9 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class A1__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x43359135f67c4a3dL, 0x9fdda3d7dba50995L, 0x7e5c09dfa07d591eL, "BHL1.structure.A1");
 
-  public static final SMethod<Void> bar_id6sCTYS3h6cj = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("bar").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6sCTYS3h6cj").build();
-  public static final SMethod<Float> foo_id3ZhVC3HVRva = new SMethodBuilder<Float>(new SJavaCompoundTypeImpl(Float.TYPE)).name("foo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3ZhVC3HVRva").build();
-  public static final SMethod<Integer> bar2_id3ZhVC3HVRvp = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("bar2").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3ZhVC3HVRvp").build();
+  public static final SMethod<Void> bar_id6sCTYS3h6cj = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("bar").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7433446194418049811L).languageId(0x9fdda3d7dba50995L, 0x43359135f67c4a3dL).build2();
+  public static final SMethod<Float> foo_id3ZhVC3HVRva = new SMethodBuilder<Float>(new SJavaCompoundTypeImpl(Float.TYPE)).name("foo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4598718932037105610L).languageId(0x9fdda3d7dba50995L, 0x43359135f67c4a3dL).build2();
+  public static final SMethod<Integer> bar2_id3ZhVC3HVRvp = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("bar2").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4598718932037105625L).languageId(0x9fdda3d7dba50995L, 0x43359135f67c4a3dL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(bar_id6sCTYS3h6cj, foo_id3ZhVC3HVRva, bar2_id3ZhVC3HVRvp);
 

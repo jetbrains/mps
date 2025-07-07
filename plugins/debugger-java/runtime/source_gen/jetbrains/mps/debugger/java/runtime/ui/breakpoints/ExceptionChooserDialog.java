@@ -29,7 +29,7 @@ public class ExceptionChooserDialog extends StubsClassChooserDialog {
   protected boolean isValid(SNode node) {
     final SNode throwableClassifier = new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable").resolve(myProject.getRepository());
     SNode base = node;
-    while (base != null && SNodeOperations.isInstanceOf(base, CONCEPTS.ClassConcept$bK) && !((Objects.equals(base, throwableClassifier)))) {
+    while (base != null && SNodeOperations.isInstanceOf(base, CONCEPTS.ClassConcept$bK) && !(Objects.equals(base, throwableClassifier))) {
       base = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(base, CONCEPTS.ClassConcept$bK), LINKS.superclass$Mp9$), LINKS.classifier$cxMr);
     }
     return (base != null) && SNodeOperations.isInstanceOf(base, CONCEPTS.ClassConcept$bK);

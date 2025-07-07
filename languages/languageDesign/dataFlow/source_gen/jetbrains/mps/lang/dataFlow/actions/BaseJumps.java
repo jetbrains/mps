@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class BaseJumps {
   public static class NodeFactory_2557916264116455381 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode jump = sampleNode;
         if (SNodeOperations.isInstanceOf(jump, CONCEPTS.BaseEmitJumpStatement$9e)) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.generator.runtime;
 
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.template.ITemplateGenerator;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -35,19 +34,7 @@ public interface TemplateMappingScript {
 
   int getKind();
 
-  /**
-   * @deprecated use {@link #apply(SModel, TemplateExecutionEnvironment)} instead
-   */
-  @ToRemove(version = 2021.1)
-  @Deprecated
-  default void apply(SModel model, ITemplateGenerator generator) throws GenerationFailureException {
-    // no-op to let subclasses not implement this one
-  }
-
-  default void apply(SModel model, TemplateExecutionEnvironment env) throws GenerationFailureException {
-    // remove the body once 2021.1 is out
-    apply(model, env.getGenerator());
-  }
+  void apply(SModel model, TemplateExecutionEnvironment env) throws GenerationFailureException;
 
   boolean modifiesModel();
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,9 @@
 package jetbrains.mps.nodeEditor.keymaps;
 
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
-import jetbrains.mps.editor.runtime.impl.LanguagesKeymapManager;
 import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
+import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
@@ -25,13 +26,12 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.KeyMap;
 import jetbrains.mps.openapi.editor.cells.KeyMap.ActionKey;
 import jetbrains.mps.openapi.editor.cells.KeyMapAction;
+import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.SModelOperations;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -42,36 +42,36 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 /**
  * User: shatalin
  * Date: 2/5/13
  */
 public abstract class KeymapHandler<E> {
-  private static final Logger LOG = LogManager.getLogger(KeymapHandler.class);
+  private static final Logger LOG = Logger.getLogger(KeymapHandler.class);
 
-  public Collection<KeyMapAction> getAllRegisteredActions(EditorCell selectedCell, EditorContext context) {
+  public Collection<KeyMapAction> getRegisteredActions(EditorCell selectedCell, EditorContext context, Predicate<KeyMapAction> filter) {
     Set<KeyMapAction> result = new HashSet<>();
-    for (Pair<KeyMap, EditorCell> pair : getRegisteredKeymaps(selectedCell, context)) {
-      result.addAll(pair.o1.getAllActions());
-    }
+    new ModelAccessHelper(context.getRepository()).runReadAction(() -> {
+      for (Pair<KeyMap, EditorCell> pair : getRegisteredKeymaps(selectedCell, context)) {
+        pair.o1.getAllActions().stream().filter(filter).forEach(result::add);
+      }
+    });
     return result;
   }
 
   public Collection<Pair<KeyMapAction, EditorCell>> getActions(final EditorCell selectedCell, E event, final EditorContext context) {
     final Collection<ActionKey> actionKeys = getActionKeys(event);
     assert !actionKeys.isEmpty();
-    return new ModelAccessHelper(context.getRepository()).runReadAction(new Computable<List<Pair<KeyMapAction, EditorCell>>>() {
-      @Override
-      public List<Pair<KeyMapAction, EditorCell>> compute() {
-        // collect all keymaps available
-        List<Pair<KeyMap, EditorCell>> keymapsAndCells = KeymapHandler.this.getRegisteredKeymaps(selectedCell, context);
-        if (keymapsAndCells.isEmpty()) {
-          return Collections.emptyList();
-        }
-
-        return KeymapHandler.this.selectActionsFromKeymaps(selectedCell, actionKeys, context, keymapsAndCells);
+    return new ModelAccessHelper(context.getRepository()).runReadAction(() -> {
+      // collect all keymaps available
+      List<Pair<KeyMap, EditorCell>> keymapsAndCells = KeymapHandler.this.getRegisteredKeymaps(selectedCell, context);
+      if (keymapsAndCells.isEmpty()) {
+        return Collections.emptyList();
       }
+
+      return KeymapHandler.this.selectActionsFromKeymaps(selectedCell, actionKeys, context, keymapsAndCells);
     });
   }
 
@@ -92,8 +92,8 @@ public abstract class KeymapHandler<E> {
    * @return List of pairs keymap/ownerCell
    */
   private List<Pair<KeyMap, EditorCell>> getRegisteredKeymaps(EditorCell selectedCell, EditorContext editorContext) {
-    Set<Class> addedKeymaps = new HashSet<>(); // don't duplicate keymaps
-    List<Pair<KeyMap, EditorCell>> keyMapsAndCells = new ArrayList<>();
+    final Set<Class<?>> addedKeymaps = new HashSet<>(); // don't duplicate keymaps
+    final List<Pair<KeyMap, EditorCell>> keyMapsAndCells = new ArrayList<>();
 
     EditorCell keymapOwnerCell = selectedCell;
     while (keymapOwnerCell != null) {
@@ -111,17 +111,16 @@ public abstract class KeymapHandler<E> {
       //  As long as our concept hierarchy mimics that of languages, it's ok to go through extended languages
       // to find out possible editors/keymaps declared for super-concepts. This code has to change into generated
       // factory for keymaps, so that we don't need to walk hierarchy here.
-      for (SLanguage l : new SLanguageHierarchy(SModelOperations.getAllLanguageImports(model)).getExtended()) {
-        List<KeyMap> keyMapsForNamespace = LanguagesKeymapManager.getInstance().getKeyMapsForLanguage(l);
-        if (keyMapsForNamespace != null) {
-          for (KeyMap keymap : keyMapsForNamespace) {
-            if (!addedKeymaps.contains(keymap.getClass())) {
-              keyMapsAndCells.add(new Pair<>(keymap, selectedCell));
-              addedKeymaps.add(keymap.getClass());
-            }
-          }
-        }
-      }
+      final LanguageRegistry languageRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
+      final ModelDependencyResolver mdr = new ModelDependencyResolver(languageRegistry, editorContext.getRepository());
+      final Set<SLanguage> extLangSet = new SLanguageHierarchy(languageRegistry, mdr.usedLanguages(model)).getExtended();
+      languageRegistry.withAvailableAspects(extLangSet.stream(), EditorAspectDescriptor.class, ead -> {
+        Collection<KeyMap> allKM = ead.getDeclaredKeyMaps();
+        allKM.stream().filter(KeyMap::isApplicableToEveryModel).filter(keymap -> !addedKeymaps.contains(keymap.getClass())).forEach(keymap -> {
+          keyMapsAndCells.add(new Pair<>(keymap, selectedCell));
+          addedKeymaps.add(keymap.getClass());
+        });
+      });
     }
 
     return keyMapsAndCells;
@@ -191,7 +190,7 @@ public abstract class KeymapHandler<E> {
           return actionCell;
         }
       } catch (Exception e) {
-        LOG.error(null, e);
+        LOG.error(e);
         return null;
       }
       if (actionCell == keymapOwnerCell) {

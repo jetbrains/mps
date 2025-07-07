@@ -16,8 +16,9 @@
 package jetbrains.mps.ide.make;
 
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.ide.util.MPSProjectActivity;
 
-public abstract class StartupModuleMaker {
+public abstract class StartupModuleMaker extends MPSProjectActivity {
   protected StartupModuleMaker() {
 
   }

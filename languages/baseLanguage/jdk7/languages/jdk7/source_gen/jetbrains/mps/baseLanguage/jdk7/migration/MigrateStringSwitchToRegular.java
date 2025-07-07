@@ -10,16 +10,14 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedLanguageNotMigratedProblem;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -44,21 +42,9 @@ public class MigrateStringSwitchToRegular extends MigrationScriptBase {
     {
       SearchScope scope_z8or4o_a0e = CommandUtil.createScope(m);
       final SearchScope scope_z8or4o_a0e_0 = new EditableFilteringScope(scope_z8or4o_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_z8or4o_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.StringSwitchStatement$Fm, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, createSwitchStatement_z8or4o_a0a0a0a0a0a0g(SLinkOperations.getChildren(it, LINKS.case$8PWE), SLinkOperations.getTarget(it, LINKS.defaultBlock$QOu8), SLinkOperations.getTarget(it, LINKS.expression$CjpY), SLinkOperations.getChildren(it, LINKS.smodelAttribute$KJ43), SLinkOperations.getTarget(it, LINKS.switchLabel$nNiT)));
-        }
-      });
-      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).visitAll(new IVisitor<SModelInternal>() {
-        public void visit(SModelInternal it) {
-          it.deleteLanguageId(MetaAdapterFactory.getLanguage(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, "jetbrains.mps.baseLanguage.jdk7"));
-        }
-      });
+      QueryExecutionContext context = () -> scope_z8or4o_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.StringSwitchStatement$Fm, false)).visitAll((it) -> SNodeOperations.replaceWithAnother(it, createSwitchStatement_z8or4o_a0a0a0a0a0a0g(SLinkOperations.getChildren(it, LINKS.case$8PWE), SLinkOperations.getTarget(it, LINKS.defaultBlock$QOu8), SLinkOperations.getTarget(it, LINKS.expression$CjpY), SLinkOperations.getChildren(it, LINKS.smodelAttribute$KJ43), SLinkOperations.getTarget(it, LINKS.switchLabel$nNiT))));
+      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).visitAll((it) -> it.deleteLanguageId(MetaAdapterFactory.getLanguage(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, "jetbrains.mps.baseLanguage.jdk7")));
     }
   }
   @Override
@@ -66,27 +52,19 @@ public class MigrateStringSwitchToRegular extends MigrationScriptBase {
     {
       SearchScope scope_z8or4o_a0f = CommandUtil.createScope(m);
       final SearchScope scope_z8or4o_a0f_0 = scope_z8or4o_a0f;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_z8or4o_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.StringSwitchStatement$Fm, false)).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_z8or4o_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.StringSwitchStatement$Fm, false)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return (Problem) new DeprecatedConceptNotMigratedProblem(it);
         }
-      }).concat(Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).where(new IWhereFilter<SModelInternal>() {
-        public boolean accept(SModelInternal it) {
-          return it.importedLanguageIds().contains(MetaAdapterFactory.getLanguage(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, "jetbrains.mps.baseLanguage.jdk7"));
-        }
-      }).select(new ISelector<SModelInternal, Problem>() {
-        public Problem select(SModelInternal it) {
+      }).concat(Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).where((it) -> it.importedLanguageIds().contains(MetaAdapterFactory.getLanguage(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, "jetbrains.mps.baseLanguage.jdk7"))).select(new _FunctionTypes._return_P1_E0<Problem, SModelInternal>() {
+        public Problem invoke(SModelInternal it) {
           return (Problem) new DeprecatedLanguageNotMigratedProblem((SModel) it, MetaAdapterFactory.getLanguage(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, "jetbrains.mps.baseLanguage.jdk7"));
         }
       }));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, "jetbrains.mps.baseLanguage.jdk7"), 0);
   }
 

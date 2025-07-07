@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCellFactory;
 import jetbrains.mps.openapi.editor.update.UpdateSession;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -32,6 +33,11 @@ public abstract class AbstractEditorBuilder implements EditorBuilderEnvironment 
   @Override
   public UpdateSession getUpdateSession() {
     return myEditorContext.getEditorComponent().getUpdater().getCurrentUpdateSession();
+  }
+
+  @Override
+  public StyleRegistry getStyleRegistry() {
+    return StyleRegistry.getInstance();
   }
 
   protected void setInnerCellsContext(EditorCell_Collection cells) {

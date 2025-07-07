@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,20 +18,29 @@ package jetbrains.mps.util;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 
+import java.util.function.Supplier;
+
 /**
+ * NOTE: Use of this class is discouraged, use {@link ModelAccess#computeReadAction(Supplier)} or {@link ModelAccess#computeWriteAction(Supplier)} instead.
+ *
  * A handy companion to ComputeRunnable which makes migration from
  * legacy ModelAccess.instance().run(Computable) straightforward.
- *
- * Although these methods might be part of {@link jetbrains.mps.util.ComputeRunnable} itself,
- * they were moved here to keep <code>ComputeRunnable</code> clear of any model-aware code
  *
  * FIXME {@link jetbrains.mps.smodel.ModelAccessHelper} - "There can be only one", you know.
  *
  * @author Artem Tikhomirov
  */
-public class ModelComputeRunnable<T> extends ComputeRunnable<T> {
+public final class ModelComputeRunnable<T> implements Runnable {
+  private final Computable<T> myComputable;
+  private T myResult;
+
   public ModelComputeRunnable(@NotNull Computable<T> computable) {
-    super(computable);
+    myComputable = computable;
+  }
+
+  @Override
+  public void run() {
+    myResult = myComputable.compute();
   }
 
   /**
@@ -50,5 +59,9 @@ public class ModelComputeRunnable<T> extends ComputeRunnable<T> {
   public T runWrite(@NotNull ModelAccess modelAccess) {
     modelAccess.runWriteAction(this);
     return getResult();
+  }
+
+  public T getResult() {
+    return myResult;
   }
 }

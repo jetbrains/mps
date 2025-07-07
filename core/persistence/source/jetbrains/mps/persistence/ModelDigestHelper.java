@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,28 +25,16 @@ import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ *  Gives actual (best-effort) 'digest' value for a model/file, usually based on workspace/project index values.
+ */
 // Left as an exercise: try to tell ModelDigestHelper from ModelDigestUtil
 public class ModelDigestHelper implements CoreComponent {
 
-  private static ModelDigestHelper ourInstance;
-  private List<DigestProvider> myProviders = new CopyOnWriteArrayList<>();
-
-  public static ModelDigestHelper getInstance() {
-    return ourInstance;
-  }
+  private final List<DigestProvider> myProviders = new CopyOnWriteArrayList<>();
 
   /*package*/ ModelDigestHelper() {
 
-  }
-
-  @Override
-  public void init() {
-    ourInstance = this;
-  }
-
-  @Override
-  public void dispose() {
-    ourInstance = null;
   }
 
   public void addDigestProvider(DigestProvider provider) {
@@ -68,6 +56,7 @@ public class ModelDigestHelper implements CoreComponent {
     return null;
   }
 
+  // no idea why 'model' hash here while it answers with 'generation' hash
   @Nullable
   public String getModelHash(@NotNull StreamDataSource source) {
     if (source instanceof FileDataSource) {

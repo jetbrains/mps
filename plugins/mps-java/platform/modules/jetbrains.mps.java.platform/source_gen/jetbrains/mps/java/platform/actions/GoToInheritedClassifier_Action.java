@@ -99,11 +99,7 @@ public class GoToInheritedClassifier_Action extends BaseAction {
     final ModelAccess modelAccess = ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess();
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.gotoImplementation");
     final Wrappers._boolean isClass = new Wrappers._boolean();
-    modelAccess.runReadAction(new Runnable() {
-      public void run() {
-        isClass.value = SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK);
-      }
-    });
+    modelAccess.runReadAction(() -> isClass.value = SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK));
     InputEvent inputEvent = event.getInputEvent();
     SRepository repository = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
     DefaultBLClassComparator comparator = new DefaultBLClassComparator(repository);

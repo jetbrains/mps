@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchResult;
@@ -87,34 +86,29 @@ public class UpdateLocalInstancesParticipant<I, F> extends RefactoringParticipan
     }
     Collection<SNode> instances = myStructureSpecialization.findInstances(initialState._0(), searchScope);
 
-    return CollectionSequence.fromCollection(instances).select(new ISelector<SNode, RefactoringParticipant.Change<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>>>() {
-      public RefactoringParticipant.Change<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>> select(SNode instance) {
-        final SNodeReference nodeRef = SNodeOperations.getPointer(instance);
-        final SearchResults searchResults = new SearchResults();
-        searchResults.add(new SearchResult<SNode>(instance, "instance"));
-        RefactoringParticipant.Change<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>> change = new MoveNodeRefactoringParticipant.ChangeBase<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>>() {
-          public MoveNodeRefactoringParticipant<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>> getParticipant() {
-            return UpdateLocalInstancesParticipant.this;
-          }
-          public SearchResults getSearchResults() {
-            return searchResults;
-          }
-          public void confirm(final Tuples._2<F, SNodeReference> finalState, final SRepository repository, final RefactoringSession refactoringSession) {
-            refactoringSession.registerChange(new Runnable() {
-              public void run() {
-                SNode node = nodeRef.resolve(repository);
-                NodeCopyTracker copyMap = NodeCopyTracker.get(refactoringSession);
-                if (node == null || MapSequence.fromMap(copyMap.getCopyMap()).containsKey(node)) {
-                  myStructureSpecialization.doReplaceInstance(MapSequence.fromMap(copyMap.getCopyMap()).get(node), initialState._0(), finalState._0());
-                }
-                myStructureSpecialization.doReplaceInstance(node, initialState._0(), finalState._0());
-              }
-            });
-          }
-        };
-        return change;
-      }
-    }).toListSequence();
+    return CollectionSequence.fromCollection(instances).select((instance) -> {
+      final SNodeReference nodeRef = SNodeOperations.getPointer(instance);
+      final SearchResults searchResults = SearchResults.singleton(new SearchResult<SNode>(instance, "instance"));
+      RefactoringParticipant.Change<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>> change = new MoveNodeRefactoringParticipant.ChangeBase<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>>() {
+        public MoveNodeRefactoringParticipant<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>> getParticipant() {
+          return UpdateLocalInstancesParticipant.this;
+        }
+        public SearchResults getSearchResults() {
+          return searchResults;
+        }
+        public void confirm(final Tuples._2<F, SNodeReference> finalState, final SRepository repository, final RefactoringSession refactoringSession) {
+          refactoringSession.registerChange(() -> {
+            SNode node = nodeRef.resolve(repository);
+            NodeCopyTracker copyMap = NodeCopyTracker.get(refactoringSession);
+            if (node == null || MapSequence.fromMap(copyMap.getCopyMap()).containsKey(node)) {
+              myStructureSpecialization.doReplaceInstance(MapSequence.fromMap(copyMap.getCopyMap()).get(node), initialState._0(), finalState._0());
+            }
+            myStructureSpecialization.doReplaceInstance(node, initialState._0(), finalState._0());
+          });
+        }
+      };
+      return change;
+    }).toList();
   }
 
 }

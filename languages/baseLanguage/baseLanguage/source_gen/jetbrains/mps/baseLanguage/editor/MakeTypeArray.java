@@ -13,13 +13,12 @@ import java.util.List;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -67,19 +66,11 @@ public class MakeTypeArray extends KeyMapImpl {
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       final String text = ((EditorCell_Label) editorContext.getSelectedCell()).getText();
-      boolean hasType = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Type$bu, SNodeOperations.getModel(node))).any(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          return Objects.equals(it.getConceptAlias(), text);
-        }
-      });
+      boolean hasType = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Type$bu, SNodeOperations.getModel(node))).any((it) -> Objects.equals(it.getConceptAlias(), text));
       if (hasType) {
         return true;
       }
-      boolean hasClassifier = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(node), CONCEPTS.Classifier$Ix)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), text);
-        }
-      });
+      boolean hasClassifier = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(node), CONCEPTS.Classifier$Ix)).any((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), text));
       return hasClassifier;
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
@@ -90,19 +81,11 @@ public class MakeTypeArray extends KeyMapImpl {
       SLinkOperations.setTarget(varStms, LINKS.localVariableDeclaration$RpjM, var);
       SLinkOperations.setTarget(var, LINKS.type$a1UY, SNodeFactoryOperations.createNewNode(CONCEPTS.ArrayType$rh, null));
 
-      SConcept t = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Type$bu, SNodeOperations.getModel(varStms))).where(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          return Objects.equals(it.getConceptAlias(), text);
-        }
-      }).first();
+      SConcept t = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Type$bu, SNodeOperations.getModel(varStms))).where((it) -> Objects.equals(it.getConceptAlias(), text)).first();
       if (t != null) {
         SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(var, LINKS.type$a1UY), CONCEPTS.ArrayType$rh), LINKS.componentType$F$Gi, SNodeFactoryOperations.createNewNode(t, null));
       } else {
-        SNode clazz = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(varStms), CONCEPTS.Classifier$Ix)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), text);
-          }
-        }).first();
+        SNode clazz = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(varStms), CONCEPTS.Classifier$Ix)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), text)).first();
         if (clazz != null) {
           SNode cT = SNodeFactoryOperations.createNewNode(CONCEPTS.ClassifierType$bL, null);
           SLinkOperations.setTarget(cT, LINKS.classifier$cxMr, clazz);
@@ -147,19 +130,11 @@ public class MakeTypeArray extends KeyMapImpl {
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       final String text = ((EditorCell_Label) editorContext.getSelectedCell()).getText();
-      boolean hasType = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Type$bu, SNodeOperations.getModel(node))).any(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          return Objects.equals(it.getConceptAlias(), text);
-        }
-      });
+      boolean hasType = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Type$bu, SNodeOperations.getModel(node))).any((it) -> Objects.equals(it.getConceptAlias(), text));
       if (hasType) {
         return true;
       }
-      boolean hasClassifier = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(node), CONCEPTS.Classifier$Ix)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), text);
-        }
-      });
+      boolean hasClassifier = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(node), CONCEPTS.Classifier$Ix)).any((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), text));
       return hasClassifier;
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
@@ -169,19 +144,11 @@ public class MakeTypeArray extends KeyMapImpl {
       SNode var = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$41, null);
       SLinkOperations.setTarget(varStms, LINKS.localVariableDeclaration$RpjM, var);
 
-      SConcept t = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Type$bu, SNodeOperations.getModel(varStms))).where(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          return Objects.equals(it.getConceptAlias(), text);
-        }
-      }).first();
+      SConcept t = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Type$bu, SNodeOperations.getModel(varStms))).where((it) -> Objects.equals(it.getConceptAlias(), text)).first();
       if (t != null) {
         SLinkOperations.setTarget(var, LINKS.type$a1UY, SNodeFactoryOperations.createNewNode(t, null));
       } else {
-        SNode clazz = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(varStms), CONCEPTS.Classifier$Ix)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), text);
-          }
-        }).first();
+        SNode clazz = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(varStms), CONCEPTS.Classifier$Ix)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), text)).first();
         if (clazz != null) {
           SNode cT = SNodeFactoryOperations.createNewNode(CONCEPTS.ClassifierType$bL, null);
           SLinkOperations.setTarget(cT, LINKS.classifier$cxMr, clazz);

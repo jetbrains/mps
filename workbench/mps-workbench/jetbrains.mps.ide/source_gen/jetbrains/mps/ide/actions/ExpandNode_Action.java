@@ -10,9 +10,8 @@ import java.util.Map;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.projectPane.ProjectPane;
-import jetbrains.mps.ide.ui.tree.MPSTree;
-import javax.swing.tree.TreePath;
-import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import javax.swing.JTree;
+import com.intellij.ui.TreeExpandCollapse;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215884802964", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ExpandNode_Action extends BaseAction {
@@ -22,6 +21,7 @@ public class ExpandNode_Action extends BaseAction {
     super("Expand All", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -43,11 +43,11 @@ public class ExpandNode_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     ProjectPane pane = ProjectPane.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT));
-    MPSTree tree = pane.getTree();
-    TreePath path = tree.getSelectionPath();
-    if (path == null) {
+    JTree tree = pane.getTree();
+    if (tree == null) {
       return;
     }
-    tree.expandAll((MPSTreeNode) path.getLastPathComponent());
+    // see FullyExpandTreeNodeAction
+    TreeExpandCollapse.expandAll(tree);
   }
 }

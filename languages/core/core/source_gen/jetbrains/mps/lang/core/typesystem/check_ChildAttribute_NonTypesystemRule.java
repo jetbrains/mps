@@ -15,7 +15,6 @@ import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.ChildAttribute__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -38,11 +37,7 @@ public class check_ChildAttribute_NonTypesystemRule extends AbstractNonTypesyste
       }
     } else {
       Iterable<SContainmentLink> links = SNodeOperations.getConcept(SNodeOperations.getParent(childAttribute)).getContainmentLinks();
-      SContainmentLink existingLink = Sequence.fromIterable(links).findFirst(new IWhereFilter<SContainmentLink>() {
-        public boolean accept(SContainmentLink it) {
-          return Objects.equals(it, ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(childAttribute));
-        }
-      });
+      SContainmentLink existingLink = Sequence.fromIterable(links).findFirst((it) -> Objects.equals(it, ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(childAttribute)));
       String reportName = ChildAttribute__BehaviorDescriptor.getNameForReporting_id5gACAVBz6xW.invoke(childAttribute);
       if (existingLink == null) {
         {

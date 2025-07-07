@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,10 +25,12 @@ import org.jetbrains.mps.openapi.model.SModelName;
  * the model but are not going to expose this model anywhere else.
  * [AT]
  *
+ * @deprecated unused for 5+ years
  * @see ModelFactory#create(DataSource, SModelName, ModelLoadingOption...)
  * @see ModelFactory#load(DataSource, ModelLoadingOption...)
  * @author apyshkin
  */
+@Deprecated(since = "2023.2", forRemoval = true)
 public enum ContentOption implements ModelLoadingOption {
   CONTENT_ONLY
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,35 +15,32 @@
  */
 package jetbrains.mps.make;
 
-import com.intellij.openapi.util.Condition;
 import com.intellij.util.CommonProcessors.CollectProcessor;
 import com.intellij.util.FilteringProcessor;
-import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.ModuleId;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.smodel.BaseMPSModuleOwner;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.GeneralModuleFactory;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.MPSModuleOwner;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.testbench.TestModuleFactoryBase;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.IFileUtil;
+import jetbrains.mps.util.PathSpec;
+import jetbrains.mps.util.PathSpecBundle;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -62,9 +59,8 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * I assume intention of this test, despite the 'Make' in the name, is to check parts of JavaCompile facet, pretending java files
@@ -72,10 +68,11 @@ import java.util.Set;
  * reference existing Java sources (i.e. to get existing Java projects into MPS world) and MPS shall compile these as well.
  * However, for that case I'd expect dependencies to be expressed in a way of module dependencies, not through language and its runtime solution.
  *
+ * NOTE, we don't check class loading here, just presence of .class files, see #checkModuleCompiled()
+ *
  * TODO rewrite module creation via existing functionality.
- * FIXME shall use TestModuleFactoryBase to create modules, and createEmptyProject() instead of temp dir and solutions added there.
- *       Once there's project, shall drop use of MPSModuleRepository (take one from Project),
- *       OTOH, TestModuleFactoryBase seems to have in-memory storage, while this test needs real files to compile.
+ * FIXME shall use LangaugeProducer/SolutionProducer instead of hand-crafted code
+ *
  * @see jetbrains.mps.classloading.ModulesReloadTest
  */
 public class TestMakeOnRealProject implements EnvironmentAware {
@@ -83,12 +80,11 @@ public class TestMakeOnRealProject implements EnvironmentAware {
 
   private Environment myEnvironment;
   private ModelAccess ourModelAccess;
-  private SRepositoryExt ourRepository;
+  private Project myProject;
   private IFile myTmpDir;
   private Solution myCreatedRuntimeSolution;
   private Language myCreatedLanguage;
   private Solution myCreatedSolution;
-  private MPSModuleOwner myModuleOwner = new BaseMPSModuleOwner();
 
   /**
    * @param env bare MPS environment suffice
@@ -100,47 +96,46 @@ public class TestMakeOnRealProject implements EnvironmentAware {
 
   @Before
   public void beforeTest() throws IOException {
-    // FIXME technically, don't need to be MPSModuleRepository, could be any repo that is capable to register modules. We don't check
-    //       class loading here, just presence of .class files, see #checkModuleCompiled()
-    ourRepository = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
-    ourModelAccess = ourRepository.getModelAccess();
+    myProject = myEnvironment.createEmptyProject();
+    ourModelAccess = myProject.getModelAccess();
     createTmpModules();
   }
 
   @After
-  public void afterTest() throws Exception {
-    ourModelAccess.runWriteAction(new Runnable() {
-      public void run() {
-        new ModuleRepositoryFacade(ourRepository).unregisterModules(myModuleOwner);
-      }
-    });
+  public void afterTest() {
+    myEnvironment.closeProject(myProject);
+    myProject = null;
+    ourModelAccess = null;
 
-    ourModelAccess.runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        myTmpDir.delete();
-        myTmpDir = null;
-      }
-    });
+    myTmpDir.delete();
+    myTmpDir = null;
   }
 
   /**
    * Compiles all solutions in project and check that it is ok.
    */
   private void doSolutionsCompilation() {
-    final Set<SModule> toCompile = new LinkedHashSet<SModule>();
-    toCompile.add(myCreatedSolution);
 
+    final ModuleMaker moduleMaker = new ModuleMaker();
+
+    // Perhaps,
+    //   new TestMakeUtil(myEnvironment.getPlatform()).make(myProject);
+    // would be better? OTOH, seems that I care to check ModuleMaker, and don't need CLM update
     ourModelAccess.runReadAction(new Runnable() {
       public void run() {
-        MPSCompilationResult result = new ModuleMaker().make(toCompile, new EmptyProgressMonitor());
-        Assert.assertTrue("Compilation is not ok!", result.isOk());
+        moduleMaker.prepare(myProject.getProjectModules(), true, new EmptyProgressMonitor());
       }
     });
+    MPSCompilationResult result = moduleMaker.make(new EmptyProgressMonitor());
+    Assert.assertTrue("Compilation is not ok!", result.isOk());
   }
 
   /**
-   * Checks that solutions and language are compiled (very basic check).
+   * FIXME Initial goal of the test was to check solutions and language are compiled (very basic check)
+   *    when compilation of a single solution that uses the language has been requested.
+   * Now, we shift to another approach, when clients explicitly tell ModuleMaker what they need to compile,
+   * while dependencies get considered elsewhere (if ever). I intend to get to the point when it's reasonable
+   * to pass Project.getProjectModules() to MM in most scenarios, and let MM decide what to compile.
    */
   @Test
   public void testSolutionAndItsDependency() {
@@ -159,8 +154,9 @@ public class TestMakeOnRealProject implements EnvironmentAware {
   public void testNothingToCompileAfterCompilation() throws InterruptedException {
     doSolutionsCompilation();
 
-    ModuleSources sources = new ModuleSources(myCreatedSolution, new Dependencies(Collections.emptyList()));
-    Assert.assertEquals(0, sources.getFilesToCompile().size());
+    ModuleSources sources = new ModuleSources(myCreatedSolution);
+    // getFilesToCompile() just gives set of found source files now; the test is no-op
+    Assert.assertEquals(1, sources.getFilesToCompile().size());
   }
 
   /**
@@ -177,7 +173,7 @@ public class TestMakeOnRealProject implements EnvironmentAware {
       Assert.fail("Can't touch the file " + javaFile);
     }
 
-    ModuleSources sources = new ModuleSources(myCreatedSolution, new Dependencies(Collections.emptyList()));
+    ModuleSources sources = new ModuleSources(myCreatedSolution);
     Collection<JavaFile> filesToCompile = sources.getFilesToCompile();
     Assert.assertEquals(1, filesToCompile.size());
   }
@@ -189,9 +185,14 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     IFile outputPath = myCreatedSolution.getFacet(JavaModuleFacet.class).getOutputRoot();
     outputPath.findChild(TEST_JAVA_FILE).delete();
 
-    ModuleSources sources = new ModelAccessHelper(ourModelAccess).runReadAction(() -> new ModuleSources(myCreatedSolution, new Dependencies(Collections.singleton((SModule) myCreatedSolution))));
-    Collection<File> filesToDelete = sources.getFilesToDelete();
-    Assert.assertEquals(1, filesToDelete.size());
+    ModuleSources sources = new ModuleSources(myCreatedSolution);
+    Collection<JavaFile> filesToCompile = sources.getFilesToCompile();
+    // XXX we used to walk output and notice present .class against missing .java to detect "files to delete"
+    //     as we don't walk output any longer, just make sure the file doesn't accidentally show up among those
+    //     to compile. This doesn't make much sense as we don't use ModuleSources at real ModuleMaker scenarios,
+    //     but I don't want to refactor these tests now.
+    Assert.assertFalse(filesToCompile.stream().map(JavaFile::getFile).map(File::getName).anyMatch(TEST_JAVA_FILE::equals));
+    Assert.assertEquals(0, filesToCompile.size());
   }
 
 
@@ -201,25 +202,27 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     IFile classesGen = facet.getClassesGen();
     assert classesGen != null;
     List<File> classes = collectSpecificFilesFromDir(new File(classesGen.getPath()), "class");
-    List<File> sources = new ArrayList<File>();
+    List<File> sources = new ArrayList<>();
     for (String path : SModuleOperations.getAllSourcePaths(module)) {
       collectSpecificFilesFromDir(new File(path), "java", sources);
+    }
+    if (classes.size() < sources.size()) {
+      System.out.printf("SOURCES:\n\t%s\n", sources.stream().map(File::getName).collect(Collectors.toList()));
+      System.out.printf("CLASSES:\n\t%s\n", classes.stream().map(File::getName).collect(Collectors.toList()));
     }
     Assert.assertTrue("classes_gen should contain one class", sources.size() <= classes.size());
   }
 
   private ArrayList<File> collectSpecificFilesFromDir(File file, final String extension) {
-    ArrayList<File> classes = new ArrayList<File>();
+    ArrayList<File> classes = new ArrayList<>();
     collectSpecificFilesFromDir(file, extension, classes);
     return classes;
   }
 
   private void collectSpecificFilesFromDir(File file, final String extension, Collection<File> classes) {
-    com.intellij.openapi.util.io.FileUtil.processFilesRecursively(file, new FilteringProcessor<File>(new Condition<File>() {
-      public boolean value(File file) {
-        return file.getName().endsWith("." + extension);
-      }
-    }, new CollectProcessor<File>(classes)));
+    com.intellij.openapi.util.io.FileUtil.processFilesRecursively(file,
+            new FilteringProcessor<>(file1 -> file1.getName().endsWith("." + extension),
+                new CollectProcessor<>(classes)));
   }
 
   private void createTmpModules() {
@@ -237,10 +240,12 @@ public class TestMakeOnRealProject implements EnvironmentAware {
         myCreatedSolution = createNewSolution();
         createJavaFiles(myCreatedSolution);
 
-        IFile generatorOutputPath = myCreatedSolution.getFacet(JavaModuleFacet.class).getOutputRoot();
-        // XXX where from comes the assumption resources/ dir is sibling to source_gen? Why this location is not part of any facet?
+        final JavaModuleFacetImpl solutionJMF = myCreatedSolution.getFacet(JavaModuleFacetImpl.class);
+        IFile generatorOutputPath = solutionJMF.getOutputRoot();
+        // resources/ dir as sibling of source_gen seems to be just an arbitrary location we choose to place
+        // under the module home as it's easy to construct path there.
         IFile resourceDir = generatorOutputPath.getParent().findChild("resources");
-        myCreatedSolution.getModuleDescriptor().getSourcePaths().add(resourceDir.getPath());
+        solutionJMF.setSourcePathSpec(new PathSpecBundle(Collections.singleton(new PathSpec(resourceDir))));
         createFile(resourceDir, "res.0.1/test.txt", "test");
       }
     });
@@ -282,7 +287,8 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     String name = fileName.substring(0, fileName.length() - 4);
     solutionDescriptor.setId(ModuleId.regular());
     solutionDescriptor.setNamespace(name);
-    solutionDescriptor.setOutputPath(runtimeSolutionDescriptorFile.getParent().findChild("src_gen").getPath());
+    // XXX can use {$module}/src_gen here, if necessary
+    solutionDescriptor.setOutputRoot(runtimeSolutionDescriptorFile.getParent().findChild("src_gen").getPath());
 
     solutionDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createSingleFolderDescriptor(runtimeSolutionDescriptorFile.getParent()));
     solutionDescriptor.getDependencies().add(new Dependency(BootstrapLanguages.jdkRef(), true));
@@ -290,7 +296,7 @@ public class TestMakeOnRealProject implements EnvironmentAware {
 
     runtimeSolutionDescriptorFile.createNewFile();
     Solution solution = (Solution) new GeneralModuleFactory().instantiate(solutionDescriptor, runtimeSolutionDescriptorFile);
-    ourRepository.registerModule(solution, myModuleOwner);
+    myProject.addModule(solution);
     solution.save();
     return solution;
   }
@@ -302,16 +308,16 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     d.setId(ModuleId.regular());
     d.setNamespace(languageNamespace);
     d.getRuntimeModules().add(myCreatedRuntimeSolution.getModuleReference());
-    d.setGenPath(descriptorFile.getParent().findChild("src_gen").getPath());
+    // XXX can use {$module}/src_gen here, if necessary
+    d.setOutputRoot(descriptorFile.getParent().findChild("src_gen").getPath());
     TestModuleFactoryBase.withJavaFacet(d);
-
 
     IFile languageModels = descriptorFile.getParent().findChild(Language.LANGUAGE_MODELS);
     d.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(languageModels.getParent(), languageModels));
 
     // XXX it's fine to use GeneralModuleFactory, not ModuleRepositoryFacade, as there are no generators to care about
     Language language = (Language) new GeneralModuleFactory().instantiate(d, descriptorFile);
-    ourRepository.registerModule(language, myModuleOwner);
+    myProject.addModule(language);
     language.save();
     return language;
   }
@@ -326,12 +332,13 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     String name = fileName.substring(0, fileName.length() - 4);
     solutionDescriptor.setNamespace(name);
     TestModuleFactoryBase.withJavaFacet(solutionDescriptor);
-    solutionDescriptor.setOutputPath(descriptorFile.getParent().findChild("src_gen").getPath());
+    // XXX can use {$module}/src_gen here, if necessary
+    solutionDescriptor.setOutputRoot(descriptorFile.getParent().findChild("src_gen").getPath());
 
     solutionDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createSingleFolderDescriptor(descriptorFile.getParent()));
     
     final Solution rv = (Solution) new GeneralModuleFactory().instantiate(solutionDescriptor, descriptorFile);
-    ourRepository.registerModule(rv, myModuleOwner);
+    myProject.addModule(rv);
     rv.save();
     final SModel m1 = rv.getModelRoots().iterator().next().createModel("m1");
     new ModelImports(m1).addUsedLanguage(MetaAdapterFactory.getLanguage(myCreatedLanguage.getModuleReference()));

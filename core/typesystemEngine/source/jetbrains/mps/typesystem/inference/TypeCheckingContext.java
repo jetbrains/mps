@@ -23,7 +23,6 @@ import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.newTypesystem.operation.AbstractOperation;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.util.Pair;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -32,6 +31,8 @@ import java.util.List;
 import java.util.Set;
 
 public abstract class TypeCheckingContext {
+
+  public abstract TypeCheckerHelper getTypeCheckerHelper();
 
   public abstract SNode getRepresentative(SNode node);
 
@@ -51,8 +52,7 @@ public abstract class TypeCheckingContext {
   /**
    * @deprecated use {@link #setNonTypesystemComputationMode(NonTypesystemComputationMode)}
    */
-  @ToRemove(version = 2020.2)
-  @Deprecated
+@Deprecated(since = "2020.2", forRemoval = true)
   public /*final*/ void setIsNonTypesystemComputation() {
     setNonTypesystemComputationMode(NonTypesystemComputationMode.NORMAL);
   }
@@ -60,8 +60,7 @@ public abstract class TypeCheckingContext {
   /**
    * @deprecated use {@link #setNonTypesystemComputationMode(NonTypesystemComputationMode)}
    */
-  @ToRemove(version = 2020.2)
-  @Deprecated
+@Deprecated(since = "2020.2", forRemoval = true)
   public /*final*/ void resetIsNonTypesystemComputation() {
     setNonTypesystemComputationMode(NonTypesystemComputationMode.OFF);
   }

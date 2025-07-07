@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,10 @@
 package jetbrains.mps.smodel;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SReference;
 
 /**
  * PROVISIONAL
@@ -40,7 +40,7 @@ public interface ModelCommandContext {
     }
 
     @Override
-    public void associationSet(SReference association) {
+    public void associationSet(SNode node, SReferenceLink link, AssociationData association) {
     }
 
     @Nullable
@@ -52,17 +52,23 @@ public interface ModelCommandContext {
     @Override
     public void registerActionWithUndo(SNodeUndoableAction action) {
     }
+
+    @Override
+    public void registerActionWithUndo(ModelRenameUndoableAction action) {
+    }
   };
 
   void nodeAttached(/*NotNull*/ SNode node);
   void nodeDetached(/*NotNull*/ SNode node);
 
-  void associationSet(/*NotNull*/ SReference association);
+  void associationSet(/*NotNull*/ SNode node, /*NotNull*/ SReferenceLink link, /*NotNull*/ AssociationData association);
 
   @Nullable
   SNode resolveUnregistered(/*NotNull*/ SNodeId nodeId);
 
   void registerActionWithUndo(/*NotNull*/ SNodeUndoableAction action);
+
+  void registerActionWithUndo(/*NotNull*/ ModelRenameUndoableAction action);
 
   interface Provider {
     // argument is never null

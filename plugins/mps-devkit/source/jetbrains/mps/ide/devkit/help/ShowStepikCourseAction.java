@@ -24,6 +24,6 @@ public class ShowStepikCourseAction extends ShowSiteAction {
 
   @Override
   protected String getSiteURL() {
-    return "https://stepik.org/course/71593";
+    return "https://cogniterra.org/course/28/";
   }
 }

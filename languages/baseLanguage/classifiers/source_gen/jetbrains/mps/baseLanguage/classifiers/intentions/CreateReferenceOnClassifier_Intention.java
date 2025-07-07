@@ -10,9 +10,9 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -21,27 +21,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class CreateReferenceOnClassifier_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CreateReferenceOnClassifier_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c89590372(jetbrains.mps.baseLanguage.classifiers.intentions)", "1218968276327"));
   }
+
   @Override
   public String getPresentation() {
     return "CreateReferenceOnClassifier";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SNodeOperations.getNodeAncestor(SNodeOperations.getNodeAncestor(node, CONCEPTS.IClassifier$BZ, false, false), CONCEPTS.IClassifier$BZ, false, false) != null);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -51,19 +45,36 @@ public final class CreateReferenceOnClassifier_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Create a Reference on Outer Classifier";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode outerConcept = SNodeOperations.getNodeAncestor(SNodeOperations.getNodeAncestor(node, CONCEPTS.IClassifier$BZ, false, false), CONCEPTS.IClassifier$BZ, false, false);
       SLinkOperations.setTarget(node, LINKS.classifier$FItT, outerConcept);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return (SNodeOperations.getNodeAncestor(SNodeOperations.getNodeAncestor(node, CONCEPTS.IClassifier$BZ, false, false), CONCEPTS.IClassifier$BZ, false, false) != null);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CreateReferenceOnClassifier_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

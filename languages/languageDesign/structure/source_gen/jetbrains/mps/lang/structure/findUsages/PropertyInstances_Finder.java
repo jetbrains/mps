@@ -39,7 +39,7 @@ public class PropertyInstances_Finder extends GeneratedFinder {
     try {
       final SProperty role = MetaAdapterByDeclaration.getProperty(node);
       SNode conceptDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$KA, false, false);
-      if (!((conceptDeclaration == null))) {
+      if (!(conceptDeclaration == null)) {
         for (SNode instance : FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder", conceptDeclaration, scope, monitor)) {
           if (instance.getProperty(role) != null) {
             callback.onUsageFound(createSingleResult(instance));

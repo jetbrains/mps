@@ -14,7 +14,6 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -32,16 +31,10 @@ public class typeof_ShowExpression_InferenceRule extends AbstractInferenceRule_R
     }
     {
       final SNode argType = typeCheckingContext.typeOf(SLinkOperations.getTarget(showExpression, LINKS.object$A1S4), "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "7989807750029968337", true);
-      typeCheckingContext.whenConcrete(argType, new Runnable() {
-        public void run() {
-          if (!(ShowingKind.getKind(typeCheckingContext.getExpandedNode(argType)) != null)) {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showExpression, LINKS.object$A1S4), "#show is applicable only to sequences of " + Sequence.fromIterable(Sequence.fromArray(ShowingKind.values())).select(new ISelector<ShowingKind, String>() {
-              public String select(ShowingKind it) {
-                return it.getKindLabel();
-              }
-            }), "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "7989807750030123140", null, errorTarget);
-          }
+      typeCheckingContext.whenConcrete(argType, () -> {
+        if (!(ShowingKind.getKind(typeCheckingContext.getExpandedNode(argType)) != null)) {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showExpression, LINKS.object$A1S4), "#show is applicable only to sequences of " + Sequence.fromIterable(Sequence.fromArray(ShowingKind.values())).select((it) -> it.getKindLabel()), "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "7989807750030123140", null, errorTarget);
         }
       }, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "7989807750029968262", false, false);
     }

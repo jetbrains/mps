@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,16 +48,9 @@ public abstract class SingleRoleCellProvider extends AbstractEditorBuilder imple
 
   protected final SContainmentLink myContainmentLink;
 
-  /**
-   * @deprecated since MPS 3.5 use {@link #getEditorContext()} method, this field will be removed in the next release
-   */
-  @Deprecated
-  protected final EditorContext myEditorContext;
-
   public SingleRoleCellProvider(final SContainmentLink containmentLink, EditorContext editorContext) {
     super(editorContext);
     myContainmentLink = containmentLink;
-    myEditorContext = editorContext;
   }
 
   protected EditorCell createChildCell(SNode child) {

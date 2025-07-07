@@ -4,8 +4,7 @@ package jetbrains.mps.debugger.java.api.state.proxy;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.programState.IThread;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import com.sun.jdi.ThreadReference;
 import org.jetbrains.annotations.Nullable;
@@ -22,7 +21,7 @@ import jetbrains.mps.debugger.java.api.ui.Icons;
 
 @GeneratedClass(node = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)/3432969378036014521", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
 public class JavaThread extends ProxyForJava implements IThread {
-  private static final Logger LOG = LogManager.getLogger(JavaThread.class);
+  private static final Logger LOG = Logger.getLogger(JavaThread.class);
   @NotNull
   private final ThreadReference myThreadReference;
   @Nullable
@@ -49,11 +48,11 @@ public class JavaThread extends ProxyForJava implements IThread {
         ListSequence.fromList(myStackFrames).addElement(new JavaStackFrame(this, i));
       }
     } catch (IncompatibleThreadStateException ex) {
-      if (LOG.isDebugEnabled()) {
+      if (LOG.isDebugLevel()) {
         LOG.debug("IncompatibleThreadStateException", ex);
       }
     } catch (AbsentInformationException e) {
-      if (LOG.isDebugEnabled()) {
+      if (LOG.isDebugLevel()) {
         LOG.debug("AbsecntInformationException", e);
       }
     }

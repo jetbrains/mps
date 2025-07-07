@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
+import java.util.ArrayDeque;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 /**
@@ -39,7 +41,16 @@ public class QueryProviderCache implements GeneratorQueryProvider.Source {
   private final IGeneratorLogger myLog;
 
   public QueryProviderCache(@NotNull ModelGenerationPlan plan, @NotNull IGeneratorLogger log) {
-    for (TemplateModule templateModule : plan.getGenerators()) {
+    LinkedHashSet<TemplateModule> modules = new LinkedHashSet<>();
+    ArrayDeque<TemplateModule> q = new ArrayDeque<>(plan.getGenerators());
+    while (!q.isEmpty()) {
+      TemplateModule templateModule = q.removeFirst();
+      if (modules.add(templateModule)) {
+        q.addAll(templateModule.getEmployedGenerators());
+        q.addAll(templateModule.getExtendedGenerators());
+      }
+    }
+    for (TemplateModule templateModule : modules) {
       for (TemplateModel templateModel : templateModule.getModels()) {
         myTemplateModels.put(templateModel.getSModelReference(), templateModel);
       }

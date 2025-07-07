@@ -25,27 +25,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ReplaceEqualityWithEquals_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ReplaceEqualityWithEquals_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "1199557092807"));
   }
+
   @Override
   public String getPresentation() {
     return "ReplaceEqualityWithEquals";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -55,10 +49,12 @@ public final class ReplaceEqualityWithEquals_Intention extends AbstractIntention
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace Equality with equals()";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode leftExpr = SLinkOperations.getTarget(node, LINKS.leftExpression$sEj);
@@ -70,10 +66,25 @@ public final class ReplaceEqualityWithEquals_Intention extends AbstractIntention
       ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.actualArgument$pzdx)).insertElement(0, rightExpression);
       SNodeOperations.replaceWithAnother(node, equalsExpression);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ReplaceEqualityWithEquals_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_1rm795_a0a0a0f0a() {
     SNode quotedNode_1 = null;

@@ -17,7 +17,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -31,6 +30,7 @@ public class CheckModel_Action extends BaseAction {
     super("Check Model", "Check model for unresolved references and typesystem rules", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
     this.addPlace(null);
   }
   @Override
@@ -81,12 +81,10 @@ public class CheckModel_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     // check all models in model
-    List<SModel> modelsToCheck = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess()).runReadAction(new Computable<List<SModel>>() {
-      public List<SModel> compute() {
-        List<SModel> rv = CheckModel_Action.this.selectedModels(_params);
-        CheckModel_Action.this.completeWithNested(rv, _params);
-        return rv;
-      }
+    List<SModel> modelsToCheck = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess()).runReadAction(() -> {
+      List<SModel> rv = CheckModel_Action.this.selectedModels(_params);
+      CheckModel_Action.this.completeWithNested(rv, _params);
+      return rv;
     });
     if (modelsToCheck.isEmpty()) {
       return;
@@ -94,7 +92,7 @@ public class CheckModel_Action extends BaseAction {
 
     ModelCheckerTool.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).checkModelsAndShowResult(modelsToCheck);
   }
-  /*package*/ List<SModel> selectedModels(final Map<String, Object> _params) {
+  private List<SModel> selectedModels(final Map<String, Object> _params) {
     List<SModel> modelsToCheck = new ArrayList<SModel>();
     if (((List<SModel>) MapSequence.fromMap(_params).get("models")) != null) {
       modelsToCheck.addAll(((List<SModel>) MapSequence.fromMap(_params).get("models")));
@@ -104,7 +102,7 @@ public class CheckModel_Action extends BaseAction {
     }
     return modelsToCheck;
   }
-  /*package*/ void completeWithNested(List<SModel> models, final Map<String, Object> _params) {
+  private void completeWithNested(List<SModel> models, final Map<String, Object> _params) {
     for (SModel model : models.toArray(new SModel[models.size()])) {
       String name = model.getName().getLongName();
       boolean isStub = SModelStereotype.isStubModel(model);

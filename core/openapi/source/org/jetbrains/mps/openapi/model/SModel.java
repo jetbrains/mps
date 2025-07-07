@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,6 +54,13 @@ public interface SModel {
   @NotNull
   SModelReference getReference();
 
+  /**
+   * Generally, it's a model root that contributes a model into a module, although modules are not limited to models
+   * that originate from a model root. For example, a hand-crafted model might get registered into a module without
+   * introducing any intermediate root.
+   * @return {@code null} indicates model is not coming from a model root
+   */
+  @Nullable
   ModelRoot getModelRoot();
 
   /**

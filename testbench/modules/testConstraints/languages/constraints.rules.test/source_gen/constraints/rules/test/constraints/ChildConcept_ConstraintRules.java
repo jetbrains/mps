@@ -50,6 +50,7 @@ public final class ChildConcept_ConstraintRules extends BaseRulesConstraintsDesc
     public boolean appliesTo(@NotNull ContainmentContext context) {
       return true;
     }
+
   }
 
   public static final class Rule_toleranceNotTooLow extends BaseRule<ContainmentContext> {
@@ -69,6 +70,7 @@ public final class ChildConcept_ConstraintRules extends BaseRulesConstraintsDesc
     public boolean appliesTo(@NotNull ContainmentContext context) {
       return true;
     }
+
   }
 
   /*package*/ ChildConcept_ConstraintRules() {

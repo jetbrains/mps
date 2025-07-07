@@ -14,8 +14,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -36,15 +34,7 @@ public class check_NamedTupleDeclaration_extends_NonTypesystemRule extends Abstr
       }
       for (final SNode cmp : ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx))) {
         if (cmp != null) {
-          if (!(!(ListSequence.fromList(allExtends).translate(new ITranslator2<SNode, SNode>() {
-            public Iterable<SNode> translate(SNode td) {
-              return SLinkOperations.getChildren(td, LINKS.component$wCHx);
-            }
-          }).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode c) {
-              return SPropertyOperations.getString(cmp, PROPS.name$MnvL) == SPropertyOperations.getString(c, PROPS.name$MnvL);
-            }
-          })))) {
+          if (!(!(ListSequence.fromList(allExtends).translate((td) -> SLinkOperations.getChildren(td, LINKS.component$wCHx)).any((c) -> SPropertyOperations.getString(cmp, PROPS.name$MnvL) == SPropertyOperations.getString(c, PROPS.name$MnvL))))) {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cmp, "duplicate component name", "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "7367153454745473486", null, errorTarget);
           }

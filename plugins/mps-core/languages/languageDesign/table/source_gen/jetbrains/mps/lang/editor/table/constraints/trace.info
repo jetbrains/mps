@@ -15,121 +15,85 @@
   </root>
   <root nodeRef="r:a310da22-eca6-4f58-b266-8f97a737583f(jetbrains.mps.lang.editor.table.constraints)/6216065619544939788">
     <file name="CellModel_HierarchycalTable_Constraints.java">
-      <node id="6216065619544939788" at="30,52,31,51" concept="7" />
-      <node id="6216065619544939789" at="38,44,39,20" concept="5" />
-      <node id="6216065619544939789" at="46,63,47,57" concept="5" />
-      <node id="6836281137582842122" at="52,47,53,104" concept="5" />
-      <node id="6216065619544941679" at="62,44,63,20" concept="5" />
-      <node id="6216065619544941679" at="70,63,71,57" concept="5" />
-      <node id="6836281137582842399" at="76,47,77,104" concept="5" />
-      <node id="6216065619544944313" at="86,44,87,20" concept="5" />
-      <node id="6216065619544944313" at="94,63,95,57" concept="5" />
-      <node id="6836281137582842410" at="99,115,100,26" concept="5" />
-      <node id="6836281137582842591" at="103,47,104,104" concept="5" />
-      <node id="6216065619544939788" at="110,6,111,131" concept="4" />
-      <node id="6216065619544939789" at="111,131,112,42" concept="1" />
-      <node id="6216065619544941679" at="112,42,113,42" concept="1" />
-      <node id="6216065619544944313" at="113,42,114,42" concept="1" />
-      <node id="6216065619544939788" at="114,42,115,22" concept="5" />
-      <node id="6216065619544939788" at="117,0,118,0" concept="6" trace="breakingNode_6tiwsq_a0a0a0a0a1a0a0a0c" />
-      <node id="6216065619544939788" at="118,0,119,0" concept="6" trace="breakingNode_6tiwsq_a0a0a0a0a1a0a0b0c" />
-      <node id="6216065619544939788" at="119,0,120,0" concept="6" trace="breakingNode_6tiwsq_a0a0a0a0a1a0a0c0c" />
-      <node id="6216065619544939788" at="122,0,123,0" concept="6" trace="CellModel_HierarchycalTable$aJ" />
-      <node id="6216065619544939788" at="126,0,127,0" concept="6" trace="headerRowLinkDeclaration$TTP$" />
-      <node id="6216065619544939788" at="127,0,128,0" concept="6" trace="rowsLinkDeclaration$TU4_" />
-      <node id="6216065619544939788" at="128,0,129,0" concept="6" trace="cellsInRowLinkDeclaration$TUjA" />
-      <node id="6216065619544939788" at="129,0,130,0" concept="6" trace="target$m40F" />
-      <node id="6216065619544939788" at="30,0,33,0" concept="0" trace="CellModel_HierarchycalTable_Constraints#()V" />
-      <node id="6836281137582842118" at="52,0,55,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="6836281137582842397" at="76,0,79,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="6836281137582842408" at="98,80,101,13" concept="2" />
-      <node id="6836281137582842589" at="103,0,106,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="6216065619544939789" at="37,0,41,0" concept="3" trace="hasOwnScopeProvider#()Z" />
-      <node id="6216065619544939789" at="45,0,49,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="6216065619544941679" at="61,0,65,0" concept="3" trace="hasOwnScopeProvider#()Z" />
-      <node id="6216065619544941679" at="69,0,73,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="6216065619544944313" at="85,0,89,0" concept="3" trace="hasOwnScopeProvider#()Z" />
-      <node id="6216065619544944313" at="93,0,97,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="6836281137582841574" at="50,80,55,33" concept="5" />
-      <node id="6836281137582842135" at="74,80,79,16" concept="5" />
-      <node id="6836281137582842417" at="101,13,106,16" concept="5" />
-      <node id="6216065619544939789" at="49,0,57,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="6216065619544941679" at="73,0,81,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="6216065619544944313" at="97,0,108,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="6216065619544939789" at="43,56,57,10" concept="5" />
-      <node id="6216065619544941679" at="67,56,81,10" concept="5" />
-      <node id="6216065619544944313" at="91,56,108,10" concept="5" />
-      <node id="6216065619544939789" at="41,0,59,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="6216065619544941679" at="65,0,83,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="6216065619544944313" at="89,0,110,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="6216065619544939789" at="35,90,59,6" concept="4" />
-      <node id="6216065619544941679" at="59,6,83,6" concept="4" />
-      <node id="6216065619544944313" at="83,6,110,6" concept="4" />
-      <node id="6216065619544939788" at="34,0,117,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="6216065619544939788" at="30,52,31,51" />
-      <scope id="6216065619544939789" at="38,44,39,20" />
-      <scope id="6216065619544939789" at="46,63,47,57" />
-      <scope id="6836281137582842121" at="52,47,53,104" />
-      <scope id="6216065619544941679" at="62,44,63,20" />
-      <scope id="6216065619544941679" at="70,63,71,57" />
-      <scope id="6836281137582842398" at="76,47,77,104" />
-      <scope id="6216065619544944313" at="86,44,87,20" />
-      <scope id="6216065619544944313" at="94,63,95,57" />
-      <scope id="6836281137582842409" at="99,115,100,26" />
-      <scope id="6836281137582842590" at="103,47,104,104" />
-      <scope id="6216065619544939788" at="30,0,33,0" />
-      <scope id="6836281137582842118" at="52,0,55,0">
-        <var name="it" id="6836281137582842118" />
-      </scope>
-      <scope id="6836281137582842397" at="76,0,79,0">
-        <var name="it" id="6836281137582842397" />
-      </scope>
-      <scope id="6836281137582842589" at="103,0,106,0">
-        <var name="it" id="6836281137582842589" />
-      </scope>
-      <scope id="6216065619544939789" at="37,0,41,0" />
-      <scope id="6216065619544939789" at="45,0,49,0" />
-      <scope id="6216065619544941679" at="61,0,65,0" />
-      <scope id="6216065619544941679" at="69,0,73,0" />
-      <scope id="6216065619544944313" at="85,0,89,0" />
-      <scope id="6216065619544944313" at="93,0,97,0" />
-      <scope id="6216065619544939789" at="50,80,55,33" />
-      <scope id="6216065619544941679" at="74,80,79,16" />
-      <scope id="6216065619544939789" at="49,0,57,0">
+      <node id="6216065619544939788" at="28,52,29,51" concept="7" />
+      <node id="6216065619544939789" at="40,63,41,146" concept="5" />
+      <node id="6836281137582841574" at="44,80,45,406" concept="5" />
+      <node id="6216065619544941679" at="56,63,57,146" concept="5" />
+      <node id="6836281137582842135" at="60,80,61,397" concept="5" />
+      <node id="6216065619544944313" at="72,63,73,146" concept="5" />
+      <node id="6836281137582842410" at="77,115,78,26" concept="5" />
+      <node id="6836281137582842417" at="79,13,80,400" concept="5" />
+      <node id="6216065619544939788" at="84,6,85,131" concept="4" />
+      <node id="6216065619544939789" at="85,131,86,42" concept="1" />
+      <node id="6216065619544941679" at="86,42,87,42" concept="1" />
+      <node id="6216065619544944313" at="87,42,88,42" concept="1" />
+      <node id="6216065619544939788" at="88,42,89,22" concept="5" />
+      <node id="6216065619544939788" at="93,0,94,0" concept="6" trace="CellModel_HierarchycalTable$aJ" />
+      <node id="6216065619544939788" at="97,0,98,0" concept="6" trace="headerRowLinkDeclaration$TTP$" />
+      <node id="6216065619544939788" at="98,0,99,0" concept="6" trace="rowsLinkDeclaration$TU4_" />
+      <node id="6216065619544939788" at="99,0,100,0" concept="6" trace="cellsInRowLinkDeclaration$TUjA" />
+      <node id="6216065619544939788" at="100,0,101,0" concept="6" trace="target$m40F" />
+      <node id="6216065619544939788" at="28,0,31,0" concept="0" trace="CellModel_HierarchycalTable_Constraints#()V" />
+      <node id="6836281137582842408" at="76,80,79,13" concept="2" />
+      <node id="6216065619544939789" at="39,0,43,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="6216065619544939789" at="43,0,47,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="6216065619544941679" at="55,0,59,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="6216065619544941679" at="59,0,63,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="6216065619544944313" at="71,0,75,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="6216065619544944313" at="75,0,82,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="6216065619544939789" at="37,56,47,10" concept="5" />
+      <node id="6216065619544941679" at="53,56,63,10" concept="5" />
+      <node id="6216065619544944313" at="69,56,82,10" concept="5" />
+      <node id="6216065619544939789" at="35,0,49,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="6216065619544941679" at="51,0,65,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="6216065619544939789" at="33,90,49,6" concept="4" />
+      <node id="6216065619544941679" at="49,6,65,6" concept="4" />
+      <node id="6216065619544944313" at="67,0,84,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="6216065619544944313" at="65,6,84,6" concept="4" />
+      <node id="6216065619544939788" at="32,0,91,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="6216065619544939788" at="28,52,29,51" />
+      <scope id="6216065619544939789" at="40,63,41,146" />
+      <scope id="6216065619544939789" at="44,80,45,406" />
+      <scope id="6216065619544941679" at="56,63,57,146" />
+      <scope id="6216065619544941679" at="60,80,61,397" />
+      <scope id="6216065619544944313" at="72,63,73,146" />
+      <scope id="6836281137582842409" at="77,115,78,26" />
+      <scope id="6216065619544939788" at="28,0,31,0" />
+      <scope id="6216065619544939789" at="39,0,43,0" />
+      <scope id="6216065619544939789" at="43,0,47,0">
         <var name="_context" id="6216065619544939789" />
       </scope>
-      <scope id="6216065619544941679" at="73,0,81,0">
+      <scope id="6216065619544941679" at="55,0,59,0" />
+      <scope id="6216065619544941679" at="59,0,63,0">
         <var name="_context" id="6216065619544941679" />
       </scope>
-      <scope id="6216065619544944313" at="98,80,106,16" />
-      <scope id="6216065619544944313" at="97,0,108,0">
+      <scope id="6216065619544944313" at="71,0,75,0" />
+      <scope id="6216065619544944313" at="76,80,80,400" />
+      <scope id="6216065619544944313" at="75,0,82,0">
         <var name="_context" id="6216065619544944313" />
       </scope>
-      <scope id="6216065619544939789" at="43,56,57,10" />
-      <scope id="6216065619544941679" at="67,56,81,10" />
-      <scope id="6216065619544944313" at="91,56,108,10" />
-      <scope id="6216065619544939789" at="41,0,59,0" />
-      <scope id="6216065619544941679" at="65,0,83,0" />
-      <scope id="6216065619544944313" at="89,0,110,0" />
-      <scope id="6216065619544939788" at="35,90,115,22">
+      <scope id="6216065619544939789" at="37,56,47,10" />
+      <scope id="6216065619544941679" at="53,56,63,10" />
+      <scope id="6216065619544944313" at="69,56,82,10" />
+      <scope id="6216065619544939789" at="35,0,49,0" />
+      <scope id="6216065619544941679" at="51,0,65,0" />
+      <scope id="6216065619544944313" at="67,0,84,0" />
+      <scope id="6216065619544939788" at="33,90,89,22">
         <var name="d0" id="6216065619544939789" />
         <var name="d1" id="6216065619544941679" />
         <var name="d2" id="6216065619544944313" />
         <var name="references" id="6216065619544939788" />
       </scope>
-      <scope id="6216065619544939788" at="34,0,117,0" />
-      <unit id="6216065619544939788" at="121,0,124,0" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$CONCEPTS" />
-      <unit id="6836281137582842118" at="51,310,55,13" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$1$1$1" />
-      <unit id="6836281137582842397" at="75,310,79,13" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$2$1$1" />
-      <unit id="6836281137582842589" at="102,313,106,13" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$3$1$1" />
-      <unit id="6216065619544939788" at="125,0,131,0" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$LINKS" />
-      <unit id="6216065619544939789" at="44,19,57,9" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$1$1" />
-      <unit id="6216065619544941679" at="68,19,81,9" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$2$1" />
-      <unit id="6216065619544944313" at="92,19,108,9" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$3$1" />
-      <unit id="6216065619544939789" at="36,48,59,5" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$1" />
-      <unit id="6216065619544941679" at="60,48,83,5" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$2" />
-      <unit id="6216065619544944313" at="84,48,110,5" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$3" />
-      <unit id="6216065619544939788" at="29,0,132,0" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints" />
+      <scope id="6216065619544939788" at="32,0,91,0" />
+      <unit id="6216065619544939788" at="92,0,95,0" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$CONCEPTS" />
+      <unit id="6216065619544939788" at="96,0,102,0" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$LINKS" />
+      <unit id="6216065619544939789" at="38,19,47,9" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$1$1" />
+      <unit id="6216065619544941679" at="54,19,63,9" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$2$1" />
+      <unit id="6216065619544944313" at="70,19,82,9" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$3$1" />
+      <unit id="6216065619544939789" at="34,48,49,5" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$1" />
+      <unit id="6216065619544941679" at="50,48,65,5" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$2" />
+      <unit id="6216065619544944313" at="66,48,84,5" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints$3" />
+      <unit id="6216065619544939788" at="27,0,103,0" name="jetbrains.mps.lang.editor.table.constraints.CellModel_HierarchycalTable_Constraints" />
     </file>
   </root>
 </debug-info>

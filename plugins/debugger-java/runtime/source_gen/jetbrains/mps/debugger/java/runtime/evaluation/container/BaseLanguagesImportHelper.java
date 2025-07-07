@@ -11,14 +11,11 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -33,11 +30,7 @@ public abstract class BaseLanguagesImportHelper {
   }
   public void tryToImport(SNode container, List<SNodeReference> nodesToImport) {
     final SRepository repository = SNodeOperations.getModel(container).getRepository();
-    List<SNode> nodes = CopyUtil.copy(ListSequence.fromList(nodesToImport).select(new ISelector<SNodeReference, SNode>() {
-      public SNode select(SNodeReference it) {
-        return (SNode) it.resolve(repository);
-      }
-    }).where(new NotNullWhereFilter<SNode>()).toListSequence());
+    List<SNode> nodes = CopyUtil.copy(ListSequence.fromList(nodesToImport).select((it) -> (SNode) it.resolve(repository)).where(new NotNullWhereFilter()).toList());
     for (SNode node : ListSequence.fromList(nodes)) {
       if (node == null) {
         continue;
@@ -83,15 +76,7 @@ public abstract class BaseLanguagesImportHelper {
   }
   private void transformNode(SNode node, final SModel containerModel) {
     // try to resolve variables
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SNodeOperations.getChildren(it)).isEmpty();
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        transformNodeToProperVariableReference(it, containerModel);
-      }
-    });
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, false, new SAbstractConcept[]{})).where((it) -> ListSequence.fromList(SNodeOperations.getChildren(it)).isEmpty()).visitAll((it) -> transformNodeToProperVariableReference(it, containerModel));
     // all links to subs -> to debugger stubs
     for (SNode d : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, true, new SAbstractConcept[]{}))) {
       replaceStubReferences(d, containerModel);

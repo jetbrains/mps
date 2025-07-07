@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.refactoring;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.core.platform.DynamicComponentWarden;
+import jetbrains.mps.core.platform.DynamicComponentWarden.Token;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchTask;
@@ -27,23 +28,35 @@ import jetbrains.mps.ide.platform.refactoring.RefactoringViewAction;
 import jetbrains.mps.idea.core.ui.ModelOrNodeChooser;
 import jetbrains.mps.idea.core.ui.RefactoringViewItemImpl;
 import jetbrains.mps.refactoring.framework.RefactoringContext;
+import jetbrains.mps.refactoring.runtime.access.RefactoringAccess;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
+
+import java.util.function.Supplier;
 
 /**
  * User: shatalin
  * Date: 2/20/12
  */
-public class RefactoringAccessImpl extends RefactoringAccessEx implements Disposable {
+public final class RefactoringAccessImpl extends RefactoringAccessEx {
 
-  public RefactoringAccessImpl(MPSCoreComponents coreComponents) {
-    super(coreComponents.getPlatform());
-    RefactoringAccessEx.setInstance(this);
+  // IDEA AppComponent to install RA as MPS CoreComponent in a dynamic fashion
+  public static final class Plug implements Disposable {
+    private final Token myAccessToken;
+
+    public Plug() {
+      final DynamicComponentWarden dcw = MPSCoreComponents.getInstance().getPlatform().findComponent(DynamicComponentWarden.class);
+      myAccessToken = dcw.publish(RefactoringAccess.class, (Supplier<? extends RefactoringAccess>) RefactoringAccessImpl::new);
+    }
+
+    @Override
+    public void dispose() {
+      myAccessToken.discard();
+    }
   }
 
-  @Override
-  public void dispose() {
-    RefactoringAccessEx.setInstance(null);
+  public RefactoringAccessImpl() {
+    super(MPSCoreComponents.getInstance().getPlatform());
   }
 
   @Override
@@ -66,14 +79,5 @@ public class RefactoringAccessImpl extends RefactoringAccessEx implements Dispos
   public void showRefactoringView(RefactoringContext refactoringContext, RefactoringViewAction callback, Runnable disposeAction, SearchResults searchResults, SearchTask searchTask, String name) {
     RefactoringViewItemImpl refactoringViewItem = new RefactoringViewItemImpl();
     refactoringViewItem.showRefactoringView(refactoringContext, callback, disposeAction, searchResults);
-  }
-
-  @Deprecated
-  public void showRefactoringView(Project project, RefactoringViewAction callback, SearchResults searchResults, boolean hasModelsToGenerate, String name) {
-    showRefactoringView(project, callback, null, searchResults, null, name);
-  }
-  @Deprecated
-  public void showRefactoringView(RefactoringContext refactoringContext, RefactoringViewAction callback, SearchResults searchResults, boolean hasModelsToGenerate, String name) {
-    showRefactoringView(refactoringContext, callback, null, searchResults, null, name);
   }
 }

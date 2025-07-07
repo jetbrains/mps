@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -27,9 +26,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class FigureAttribute__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a095b5a4L, "jetbrains.mps.lang.editor.figures.structure.FigureAttribute");
 
-  public static final SMethod<SNode> getFigureClass_id4H19mAwT6pg = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFigureClass").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4H19mAwT6pg").build();
-  public static final SMethod<Iterable<SNode>> getPrameterAttributes_id4H19mAwT3wD = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getPrameterAttributes").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4H19mAwT3wD").build();
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIMiw").build();
+  public static final SMethod<SNode> getFigureClass_id4H19mAwT6pg = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFigureClass").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5422656561931904592L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
+  public static final SMethod<Iterable<SNode>> getPrameterAttributes_id4H19mAwT3wD = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getPrameterAttributes").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5422656561931892777L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFigureClass_id4H19mAwT6pg, getPrameterAttributes_id4H19mAwT3wD, getPresentation_idhEwIMiw);
 
@@ -40,11 +39,7 @@ public final class FigureAttribute__BehaviorDescriptor extends BaseBHDescriptor 
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ClassConcept$bK);
   }
   /*package*/ static Iterable<SNode> getPrameterAttributes_id4H19mAwT3wD(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(ClassConcept__BehaviorDescriptor.getAllSuperClassifiers_id4fAeKISQjDi.invoke(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(__thisNode__))).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.getNodeDescendants(it, CONCEPTS.FigureParameterAttribute$tq, false, new SAbstractConcept[]{});
-      }
-    });
+    return ListSequence.fromList(ClassConcept__BehaviorDescriptor.getAllSuperClassifiers_id4fAeKISQjDi.invoke(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(__thisNode__))).translate((it) -> SNodeOperations.getNodeDescendants(it, CONCEPTS.FigureParameterAttribute$tq, false, new SAbstractConcept[]{}));
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(__thisNode__), PROPS.name$MnvL);

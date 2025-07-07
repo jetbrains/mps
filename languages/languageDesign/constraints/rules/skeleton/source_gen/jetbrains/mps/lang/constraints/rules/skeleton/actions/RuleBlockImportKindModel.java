@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 public class RuleBlockImportKindModel {
   public static class NodeFactory_6878448148913190351 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (model == null) {
         return;
       }

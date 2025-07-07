@@ -23,7 +23,7 @@ public class check_ResourceVariable_NonTypesystemRule extends AbstractNonTypesys
   public check_ResourceVariable_NonTypesystemRule() {
   }
   public void applyRule(final SNode resourceVariable, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((SLinkOperations.getTarget(resourceVariable, LINKS.initializer$2twD) != null))) {
+    if (!(SLinkOperations.getTarget(resourceVariable, LINKS.initializer$2twD) != null)) {
       final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.initializer$2twD);
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(resourceVariable, "Resource variable should be initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5351203823916850955", null, errorTarget);
     }

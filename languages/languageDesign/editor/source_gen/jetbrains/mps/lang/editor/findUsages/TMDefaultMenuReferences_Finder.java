@@ -43,7 +43,7 @@ public class TMDefaultMenuReferences_Finder extends GeneratedFinder {
   }
   @Override
   public boolean isApplicable(SNode node) {
-    return !((Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenu_Default$TY))) && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(node);
+    return !(Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenu_Default$TY)) && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(node);
   }
 
   @Override

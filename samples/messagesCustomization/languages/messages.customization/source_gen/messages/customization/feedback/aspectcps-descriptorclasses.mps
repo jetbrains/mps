@@ -26,7 +26,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
@@ -59,6 +59,9 @@
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
+      <concept id="8353134822275456723" name="jetbrains.mps.baseLanguage.structure.HexLongLiteral" flags="ng" index="11gdke">
+        <property id="8353134822275456796" name="hexValue" index="11gdj1" />
+      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
@@ -69,9 +72,6 @@
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
-      </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <child id="1068580123133" name="returnType" index="3clF45" />
@@ -87,7 +87,7 @@
         <child id="1068581517676" name="expression" index="3cqZAk" />
       </concept>
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
         <child id="4972241301747169160" name="typeArgument" index="3PaCim" />
@@ -102,7 +102,7 @@
         <reference id="1107535924139" name="classifier" index="3uigEE" />
         <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
@@ -153,7 +153,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -1511,20 +1511,20 @@
                     <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getProperty(long,long,long,long,java.lang.String)" resolve="getProperty" />
                     <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
                     <uo k="s:originTrace" v="n:7716791493893662507" />
-                    <node concept="1adDum" id="6E" role="37wK5m">
-                      <property role="1adDun" value="0x7cf7c95bc81e4da9L" />
+                    <node concept="11gdke" id="6E" role="37wK5m">
+                      <property role="11gdj1" value="7cf7c95bc81e4da9L" />
                       <uo k="s:originTrace" v="n:7716791493893662507" />
                     </node>
-                    <node concept="1adDum" id="6F" role="37wK5m">
-                      <property role="1adDun" value="0xa05645e480a7abd3L" />
+                    <node concept="11gdke" id="6F" role="37wK5m">
+                      <property role="11gdj1" value="a05645e480a7abd3L" />
                       <uo k="s:originTrace" v="n:7716791493893662507" />
                     </node>
-                    <node concept="1adDum" id="6G" role="37wK5m">
-                      <property role="1adDun" value="0x530a123e5fc34d34L" />
+                    <node concept="11gdke" id="6G" role="37wK5m">
+                      <property role="11gdj1" value="530a123e5fc34d34L" />
                       <uo k="s:originTrace" v="n:7716791493893662507" />
                     </node>
-                    <node concept="1adDum" id="6H" role="37wK5m">
-                      <property role="1adDun" value="0x50310db2af989958L" />
+                    <node concept="11gdke" id="6H" role="37wK5m">
+                      <property role="11gdj1" value="50310db2af989958L" />
                       <uo k="s:originTrace" v="n:7716791493893662507" />
                     </node>
                     <node concept="Xl_RD" id="6I" role="37wK5m">
@@ -1614,20 +1614,20 @@
                     <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String)" resolve="getReferenceLink" />
                     <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
                     <uo k="s:originTrace" v="n:1592627013225958137" />
-                    <node concept="1adDum" id="79" role="37wK5m">
-                      <property role="1adDun" value="0x7cf7c95bc81e4da9L" />
+                    <node concept="11gdke" id="79" role="37wK5m">
+                      <property role="11gdj1" value="7cf7c95bc81e4da9L" />
                       <uo k="s:originTrace" v="n:1592627013225958137" />
                     </node>
-                    <node concept="1adDum" id="7a" role="37wK5m">
-                      <property role="1adDun" value="0xa05645e480a7abd3L" />
+                    <node concept="11gdke" id="7a" role="37wK5m">
+                      <property role="11gdj1" value="a05645e480a7abd3L" />
                       <uo k="s:originTrace" v="n:1592627013225958137" />
                     </node>
-                    <node concept="1adDum" id="7b" role="37wK5m">
-                      <property role="1adDun" value="0x530a123e5fc34d34L" />
+                    <node concept="11gdke" id="7b" role="37wK5m">
+                      <property role="11gdj1" value="530a123e5fc34d34L" />
                       <uo k="s:originTrace" v="n:1592627013225958137" />
                     </node>
-                    <node concept="1adDum" id="7c" role="37wK5m">
-                      <property role="1adDun" value="0x161a25d497067a9eL" />
+                    <node concept="11gdke" id="7c" role="37wK5m">
+                      <property role="11gdj1" value="161a25d497067a9eL" />
                       <uo k="s:originTrace" v="n:1592627013225958137" />
                     </node>
                     <node concept="Xl_RD" id="7d" role="37wK5m">

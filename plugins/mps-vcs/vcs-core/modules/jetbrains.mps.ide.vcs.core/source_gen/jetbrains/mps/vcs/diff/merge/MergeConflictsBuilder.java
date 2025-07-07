@@ -24,27 +24,26 @@ import jetbrains.mps.vcs.diff.changes.NodeChange;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
+import jetbrains.mps.vcs.diff.DiffUtil;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.vcs.diff.changes.ImportedModelChange;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.vcs.diff.changes.ModuleDependencyChange;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.vcs.diff.changes.UsedLanguageChange;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.util.ArrayList;
 
 @GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/4124845871897264455", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
-public class MergeConflictsBuilder {
+public class MergeConflictsBuilder implements ChangeConflictsBuilder {
   private SModel myBaseModel;
   private SModel myMyModel;
   private SModel myRepositoryModel;
@@ -78,37 +77,22 @@ public class MergeConflictsBuilder {
     collectConflicts();
   }
 
-  public void rebuildChanges(boolean trackMovedNodes) {
-    // should be invoked from read action
-    ChangeSetBuilder.rebuildChangeSet(myMineChangeSet, trackMovedNodes);
-    ChangeSetBuilder.rebuildChangeSet(myRepositoryChangeSet, trackMovedNodes);
-    collectConflicts();
-  }
-
+  @Override
   public Map<ModelChange, List<ModelChange>> getConflictingChanges() {
     return myConflictingChanges;
   }
 
+  @Override
   public Map<ModelChange, List<ModelChange>> getSymmetricChanges() {
     return mySymmetricChanges;
   }
 
-  public SModel getBaseModel() {
-    return myBaseModel;
-  }
-
-  public SModel getMyModel() {
-    return myMyModel;
-  }
-
-  public SModel getRepositoryModel() {
-    return myRepositoryModel;
-  }
-
+  @Override
   public ChangeSet getMyChangeSet() {
     return myMineChangeSet;
   }
 
+  @Override
   public ChangeSet getRepositoryChangeSet() {
     return myRepositoryChangeSet;
   }
@@ -148,11 +132,7 @@ public class MergeConflictsBuilder {
   }
 
   private void collectGroupChangesWithOthersConflicts(Map<Tuples._2<SNodeId, SContainmentLink>, List<NodeGroupChange>> arrangedChanges, ChangeSet thisChangeSet, ChangeSet otherChangeSet) {
-    Map<SNodeId, DeleteRootChange> deleteRootChanges = MergeConflictsBuilder.<SNodeId,DeleteRootChange>arrangeChanges(thisChangeSet, new _FunctionTypes._return_P1_E0<SNodeId, DeleteRootChange>() {
-      public SNodeId invoke(DeleteRootChange drc) {
-        return drc.getRootId();
-      }
-    }, DeleteRootChange.class);
+    Map<SNodeId, DeleteRootChange> deleteRootChanges = MergeConflictsBuilder.<SNodeId,DeleteRootChange>arrangeChanges(thisChangeSet, (DeleteRootChange drc) -> drc.getRootId(), DeleteRootChange.class);
     for (ModelChange change : ListSequence.fromList(otherChangeSet.getModelChanges())) {
       if (MapSequence.fromMap(myConflictingChanges).containsKey(change)) {
         continue;
@@ -171,36 +151,33 @@ public class MergeConflictsBuilder {
       }
       SNode node = myBaseModel.getNode(nodeId);
       while (node != null) {
-        if (SNodeOperations.getParent(node) == null) {
+        final SNode parent = SNodeOperations.getParent(node);
+        if (parent == null) {
           DeleteRootChange conflicting = MapSequence.fromMap(deleteRootChanges).get(node.getNodeId());
           if (conflicting != null) {
             addPossibleConflict(change, conflicting);
           }
         } else {
-          Tuples._2<SNodeId, SContainmentLink> nodeRole = MultiTuple.<SNodeId,SContainmentLink>from(SNodeOperations.getParent(node).getNodeId(), SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(node));
-          final int index = SNodeOperations.getIndexInChildrenAndChildAttributesCollection(node);
-          NodeGroupChange conflicting = ListSequence.fromList(MapSequence.fromMap(arrangedChanges).get(nodeRole)).findFirst(new IWhereFilter<NodeGroupChange>() {
-            public boolean accept(NodeGroupChange ch) {
-              return ch.getBegin() <= index && index < ch.getEnd();
-            }
-          });
+          // FIXME In fact, shall use some configuration value instead of direct RT flag query. Perhaps, ChangeSet shall keep
+          //      the knowledge how it was constructed (with respect to ChildAttribute or not, e.g. based on 
+          //      ChangeSetBuilder.myRespectCommentedOutNodes
+          final SContainmentLink containingLink = (RuntimeFlags.isMergeDriverMode() ? SNodeOperations.getContainingLink(node) : SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(node));
+          Tuples._2<SNodeId, SContainmentLink> nodeRole = MultiTuple.<SNodeId,SContainmentLink>from(parent.getNodeId(), containingLink);
+          final int index = (RuntimeFlags.isMergeDriverMode() ? ListSequence.fromList(SNodeOperations.getChildren(parent, containingLink)).indexOf(node) : Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, containingLink)).indexOf(node));
+          NodeGroupChange conflicting = ListSequence.fromList(MapSequence.fromMap(arrangedChanges).get(nodeRole)).findFirst((ch) -> ch.getBegin() <= index && index < ch.getEnd());
           if (conflicting != null) {
             addPossibleConflict(change, conflicting);
             break;
           }
         }
-        node = SNodeOperations.getParent(node);
+        node = parent;
       }
     }
   }
 
   private void collectIdConflicts() {
     Tuples._2<Map<SNodeId, NodeIdChange>, Map<SNodeId, NodeIdChange>> arranged;
-    arranged = this.<SNodeId,NodeIdChange>arrangeChanges(new _FunctionTypes._return_P1_E0<SNodeId, NodeIdChange>() {
-      public SNodeId invoke(NodeIdChange nic) {
-        return nic.getNodeId(false);
-      }
-    }, NodeIdChange.class);
+    arranged = this.<SNodeId,NodeIdChange>arrangeChanges((NodeIdChange nic) -> nic.getNodeId(false), NodeIdChange.class);
     for (SNodeId nodeId : SetSequence.fromSet(MapSequence.fromMap(arranged._0()).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(arranged._1()).keySet()))) {
       NodeIdChange mineChange = MapSequence.fromMap(arranged._0()).get(nodeId);
       NodeIdChange repositoryChange = MapSequence.fromMap(arranged._1()).get(nodeId);
@@ -215,11 +192,7 @@ public class MergeConflictsBuilder {
 
   private void collectPropertyConflicts() {
     Tuples._2<Map<Tuples._2<SNodeId, String>, SetPropertyChange>, Map<Tuples._2<SNodeId, String>, SetPropertyChange>> arranged;
-    arranged = this.<Tuples._2<SNodeId, String>,SetPropertyChange>arrangeChanges(new _FunctionTypes._return_P1_E0<Tuples._2<SNodeId, String>, SetPropertyChange>() {
-      public Tuples._2<SNodeId, String> invoke(SetPropertyChange spc) {
-        return MultiTuple.<SNodeId,String>from(spc.getAffectedNodeId(), spc.getPropertyName());
-      }
-    }, SetPropertyChange.class);
+    arranged = this.<Tuples._2<SNodeId, String>,SetPropertyChange>arrangeChanges((SetPropertyChange spc) -> MultiTuple.<SNodeId,String>from(spc.getAffectedNodeId(), spc.getPropertyName()), SetPropertyChange.class);
     for (Tuples._2<SNodeId, String> nodeName : SetSequence.fromSet(MapSequence.fromMap(arranged._0()).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(arranged._1()).keySet()))) {
       SetPropertyChange mineChange = MapSequence.fromMap(arranged._0()).get(nodeName);
       SetPropertyChange repositoryChange = MapSequence.fromMap(arranged._1()).get(nodeName);
@@ -233,11 +206,7 @@ public class MergeConflictsBuilder {
 
   private void collectReferenceConflicts() {
     Tuples._2<Map<Tuples._2<SNodeId, String>, SetReferenceChange>, Map<Tuples._2<SNodeId, String>, SetReferenceChange>> arranged;
-    arranged = this.<Tuples._2<SNodeId, String>,SetReferenceChange>arrangeChanges(new _FunctionTypes._return_P1_E0<Tuples._2<SNodeId, String>, SetReferenceChange>() {
-      public Tuples._2<SNodeId, String> invoke(SetReferenceChange src) {
-        return MultiTuple.<SNodeId,String>from(src.getAffectedNodeId(), src.getRole());
-      }
-    }, SetReferenceChange.class);
+    arranged = this.<Tuples._2<SNodeId, String>,SetReferenceChange>arrangeChanges((SetReferenceChange src) -> MultiTuple.<SNodeId,String>from(src.getAffectedNodeId(), src.getRole()), SetReferenceChange.class);
     for (Tuples._2<SNodeId, String> nodeName : SetSequence.fromSet(MapSequence.fromMap(arranged._0()).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(arranged._1()).keySet()))) {
       SetReferenceChange mineChange = MapSequence.fromMap(arranged._0()).get(nodeName);
       SetReferenceChange repositoryChange = MapSequence.fromMap(arranged._1()).get(nodeName);
@@ -251,11 +220,7 @@ public class MergeConflictsBuilder {
 
   private void collectConceptConflicts() {
     Tuples._2<Map<SNodeId, SetConceptChange>, Map<SNodeId, SetConceptChange>> arranged;
-    arranged = this.<SNodeId,SetConceptChange>arrangeChanges(new _FunctionTypes._return_P1_E0<SNodeId, SetConceptChange>() {
-      public SNodeId invoke(SetConceptChange scc) {
-        return scc.getAffectedNodeId();
-      }
-    }, SetConceptChange.class);
+    arranged = this.<SNodeId,SetConceptChange>arrangeChanges((SetConceptChange scc) -> scc.getAffectedNodeId(), SetConceptChange.class);
     for (SNodeId nodeid : SetSequence.fromSet(MapSequence.fromMap(arranged._0()).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(arranged._1()).keySet()))) {
       SetConceptChange mineChange = MapSequence.fromMap(arranged._0()).get(nodeid);
       SetConceptChange repositoryChange = MapSequence.fromMap(arranged._1()).get(nodeid);
@@ -268,24 +233,16 @@ public class MergeConflictsBuilder {
   }
 
   private void collectSymmetricRootDeletes() {
-    collectSymmetricChanges(new _FunctionTypes._return_P1_E0<SNodeId, DeleteRootChange>() {
-      public SNodeId invoke(DeleteRootChange drc) {
-        return drc.getRootId();
-      }
-    }, DeleteRootChange.class);
+    collectSymmetricChanges((DeleteRootChange drc) -> drc.getRootId(), DeleteRootChange.class);
   }
 
   private void collectConflictingRootAdds() {
     Tuples._2<Map<SNodeId, AddRootChange>, Map<SNodeId, AddRootChange>> arranged;
-    arranged = this.<SNodeId,AddRootChange>arrangeChanges(new _FunctionTypes._return_P1_E0<SNodeId, AddRootChange>() {
-      public SNodeId invoke(AddRootChange drc) {
-        return drc.getRootId();
-      }
-    }, AddRootChange.class);
+    arranged = this.<SNodeId,AddRootChange>arrangeChanges((AddRootChange drc) -> drc.getRootId(), AddRootChange.class);
     for (SNodeId addedRoot : SetSequence.fromSet(MapSequence.fromMap(arranged._0()).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(arranged._1()).keySet()))) {
       AddRootChange mine = MapSequence.fromMap(arranged._0()).get(addedRoot);
       AddRootChange repository = MapSequence.fromMap(arranged._1()).get(addedRoot);
-      if (SNodeCompare.nodeEquals(myMyModel.getNode(mine.getRootId()), myRepositoryModel.getNode(repository.getRootId()))) {
+      if (DiffUtil.nodeEquals(myMyModel.getNode(mine.getRootId()), myRepositoryModel.getNode(repository.getRootId()))) {
         addSymmetric(mine, repository);
       } else {
         addPossibleConflict(mine, repository);
@@ -299,7 +256,7 @@ public class MergeConflictsBuilder {
         List<? extends SNode> myChildren = IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(((SNode) myMyModel.getNode(mine.getNewParentNodeId())), mine.getRoleLink()));
         List<? extends SNode> repositoryChildren = IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(((SNode) myRepositoryModel.getNode(repository.getNewParentNodeId())), repository.getRoleLink()));
         for (int o = 0; o < mine.getResultEnd() - mine.getResultBegin(); o++) {
-          if (!(SNodeCompare.nodeEquals(myChildren.get(mine.getResultBegin() + o), repositoryChildren.get(repository.getResultBegin() + o)))) {
+          if (!(DiffUtil.nodeEquals(myChildren.get(mine.getResultBegin() + o), repositoryChildren.get(repository.getResultBegin() + o)))) {
             return false;
           }
         }
@@ -310,34 +267,18 @@ public class MergeConflictsBuilder {
   }
 
   private void collectSymmetricImportedModelChanges() {
-    collectSymmetricChanges(new _FunctionTypes._return_P1_E0<SModelReference, ImportedModelChange>() {
-      public SModelReference invoke(ImportedModelChange imc) {
-        return imc.getModelReference();
-      }
-    }, ImportedModelChange.class);
+    collectSymmetricChanges((ImportedModelChange imc) -> imc.getModelReference(), ImportedModelChange.class);
   }
 
   private void collectSymmetricModuleDependencyChanges() {
-    collectSymmetricChanges(new _FunctionTypes._return_P1_E0<Tuples._2<SModuleReference, ModuleDependencyChange.DependencyType>, ModuleDependencyChange>() {
-      public Tuples._2<SModuleReference, ModuleDependencyChange.DependencyType> invoke(ModuleDependencyChange mdc) {
-        return MultiTuple.<SModuleReference,ModuleDependencyChange.DependencyType>from(mdc.getModuleReference(), mdc.getDependencyType());
-      }
-    }, ModuleDependencyChange.class);
+    collectSymmetricChanges((ModuleDependencyChange mdc) -> MultiTuple.<SModuleReference,ModuleDependencyChange.DependencyType>from(mdc.getModuleReference(), mdc.getDependencyType()), ModuleDependencyChange.class);
   }
 
   private void collectSymmetricAndConflictedUsedLanguageChanges() {
     final Map<SLanguage, UsedLanguageChange> mine = MapSequence.fromMap(new HashMap<SLanguage, UsedLanguageChange>());
     final Map<SLanguage, UsedLanguageChange> repo = MapSequence.fromMap(new HashMap<SLanguage, UsedLanguageChange>());
-    Sequence.fromIterable(myMineChangeSet.getModelChanges(UsedLanguageChange.class)).visitAll(new IVisitor<UsedLanguageChange>() {
-      public void visit(UsedLanguageChange ch) {
-        MapSequence.fromMap(mine).put(ch.getLanguage(), ch);
-      }
-    });
-    Sequence.fromIterable(myRepositoryChangeSet.getModelChanges(UsedLanguageChange.class)).visitAll(new IVisitor<UsedLanguageChange>() {
-      public void visit(UsedLanguageChange ch) {
-        MapSequence.fromMap(repo).put(ch.getLanguage(), ch);
-      }
-    });
+    Sequence.fromIterable(myMineChangeSet.getModelChanges(UsedLanguageChange.class)).visitAll((ch) -> MapSequence.fromMap(mine).put(ch.getLanguage(), ch));
+    Sequence.fromIterable(myRepositoryChangeSet.getModelChanges(UsedLanguageChange.class)).visitAll((ch) -> MapSequence.fromMap(repo).put(ch.getLanguage(), ch));
 
     for (SLanguage lang : SetSequence.fromSet(MapSequence.fromMap(mine).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(repo).keySet()))) {
       UsedLanguageChange mineChange = MapSequence.fromMap(mine).get(lang);
@@ -424,11 +365,7 @@ public class MergeConflictsBuilder {
 
   private static <K, C extends ModelChange> Map<K, C> arrangeChanges(ChangeSet changeSet, final _FunctionTypes._return_P1_E0<? extends K, ? super C> changeToKey, Class<C> changeClass) {
     final Map<K, C> map = MapSequence.fromMap(new HashMap<K, C>());
-    Sequence.fromIterable(changeSet.getModelChanges(changeClass)).visitAll(new IVisitor<C>() {
-      public void visit(C ch) {
-        MapSequence.fromMap(map).put(changeToKey.invoke(ch), ch);
-      }
-    });
+    Sequence.fromIterable(changeSet.getModelChanges(changeClass)).visitAll((ch) -> MapSequence.fromMap(map).put(changeToKey.invoke(ch), ch));
     return map;
   }
 }

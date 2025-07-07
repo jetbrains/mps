@@ -74,7 +74,7 @@ public class EditorComponentKeyboardHandler implements KeyboardHandler {
       return true;
     }
 
-    CellActionType actionType = editorContext.getNodeEditorComponent().getActionType(keyEvent, editorContext);
+    CellActionType actionType = editorContext.getEditorComponent().isAutomaticSubstitutionEnabled() ? editorContext.getNodeEditorComponent().getActionType(keyEvent, editorContext) : null;
     if (actionType != null) {
       // we only trigger autovalidation of an error cell when doing RIGHT_TRANSFORM (typing space at the end of an error cell)
       // trying to validate for LEFT_TRANSFORM will yield no results since the completion popup will not have an exact match available

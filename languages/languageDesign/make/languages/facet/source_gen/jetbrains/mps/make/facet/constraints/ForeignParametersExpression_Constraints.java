@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -18,10 +19,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.HashMap;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -33,36 +31,20 @@ public class ForeignParametersExpression_Constraints extends BaseConstraintsDesc
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$c87U, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$c87U, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_3lfdwm_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:6df86908-c97f-4644-97f0-5eff375e8e15(jetbrains.mps.make.facet.constraints)", "6836281137582791186");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode td = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TargetDeclaration$Kf, false, false);
             SNode fd = SNodeOperations.cast(SNodeOperations.getParent(td), CONCEPTS.FacetDeclaration$Nd);
-            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.targetDeclaration$z39X)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode sibl) {
-                return sibl != td;
-              }
-            }).concat(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.required$ll7a)).translate(new ITranslator2<SNode, SNode>() {
-              public Iterable<SNode> translate(SNode rfd) {
-                return SLinkOperations.getChildren(SLinkOperations.getTarget(rfd, LINKS.facet$Asbo), LINKS.targetDeclaration$z39X);
-              }
-            })).concat(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.optional$llmb)).translate(new ITranslator2<SNode, SNode>() {
-              public Iterable<SNode> translate(SNode rfd) {
-                return SLinkOperations.getChildren(SLinkOperations.getTarget(rfd, LINKS.facet$Asbo), LINKS.targetDeclaration$z39X);
-              }
-            })));
+            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.targetDeclaration$z39X)).where((sibl) -> sibl != td).concat(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.required$ll7a)).translate((rfd) -> SLinkOperations.getChildren(SLinkOperations.getTarget(rfd, LINKS.facet$Asbo), LINKS.targetDeclaration$z39X))).concat(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.optional$llmb)).translate((rfd) -> SLinkOperations.getChildren(SLinkOperations.getTarget(rfd, LINKS.facet$Asbo), LINKS.targetDeclaration$z39X))));
           }
         };
       }
@@ -71,7 +53,6 @@ public class ForeignParametersExpression_Constraints extends BaseConstraintsDesc
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_3lfdwm_a0a0a0a0a1a0a0a0c = new SNodePointer("r:6df86908-c97f-4644-97f0-5eff375e8e15(jetbrains.mps.make.facet.constraints)", "6836281137582791186");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ForeignParametersExpression$2$ = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x2e69d2eba535f3b0L, "jetbrains.mps.make.facet.structure.ForeignParametersExpression");

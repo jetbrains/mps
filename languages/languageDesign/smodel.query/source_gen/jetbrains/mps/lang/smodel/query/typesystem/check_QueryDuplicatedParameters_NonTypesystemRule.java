@@ -10,10 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -27,20 +24,8 @@ public class check_QueryDuplicatedParameters_NonTypesystemRule extends AbstractN
   }
   public void applyRule(final SNode queryParameterList, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final Iterable<SNode> parameters = SLinkOperations.getChildren(queryParameterList, LINKS.parameter$clir);
-    Iterable<SConcept> parameterConcepts = Sequence.fromIterable(parameters).select(new ISelector<SNode, SConcept>() {
-      public SConcept select(SNode it) {
-        return SNodeOperations.getConcept(it);
-      }
-    }).distinct();
-    Iterable<? extends Iterable<SNode>> groupedByConcepts = Sequence.fromIterable(parameterConcepts).select(new ISelector<SConcept, ISequence<SNode>>() {
-      public ISequence<SNode> select(final SConcept c) {
-        return Sequence.fromIterable(parameters).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode p) {
-            return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(p)), SNodeOperations.asSConcept(c));
-          }
-        });
-      }
-    });
+    Iterable<SConcept> parameterConcepts = Sequence.fromIterable(parameters).select((it) -> SNodeOperations.getConcept(it)).distinct();
+    Iterable<? extends Iterable<SNode>> groupedByConcepts = Sequence.fromIterable(parameterConcepts).select((final SConcept c) -> Sequence.fromIterable(parameters).where((p) -> SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(p)), SNodeOperations.asSConcept(c))));
 
     for (Iterable<SNode> group : Sequence.fromIterable(groupedByConcepts)) {
       if (Sequence.fromIterable(group).count() > 1) {

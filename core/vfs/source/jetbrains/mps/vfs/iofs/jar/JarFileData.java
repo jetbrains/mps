@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@ package jetbrains.mps.vfs.iofs.jar;
 
 import gnu.trove.THashMap;
 import gnu.trove.THashSet;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -28,6 +27,8 @@ import java.util.Collections;
 import java.util.Enumeration;
 import java.util.Map;
 import java.util.Set;
+import java.util.jar.JarFile;
+import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -36,7 +37,7 @@ import java.util.zip.ZipFile;
  * It stores cache with all subdirectories and all entries
  */
 class JarFileData extends AbstractJarFileData {
-  private static Logger LOG = LogManager.getLogger(JarFileData.class);
+  private static Logger LOG = Logger.getLogger(JarFileData.class);
 
   private final Object myLock = new Object();
   private boolean isInitialized = false;
@@ -109,6 +110,7 @@ class JarFileData extends AbstractJarFileData {
     ensureInitialized();
 
     ZipEntry entry = myEntries.get(path);
+    // XXX I wonder why not to count InputStream open()/close() to assess when zipFile might be ready to go/close().
     return new MyInputStream(entry);
   }
 
@@ -127,11 +129,10 @@ class JarFileData extends AbstractJarFileData {
 
       isInitialized = true;
       try {
-        myZipFileContainer.zipFile = new ZipFile(getFile());
-        Enumeration<? extends ZipEntry> entries = myZipFileContainer.zipFile.entries();
 
-        while (entries.hasMoreElements()) {
-          ZipEntry entry = entries.nextElement();
+        Stream<? extends ZipEntry> entries = doOpenArchive();
+
+        entries.forEach(entry -> {
           if (entry.isDirectory()) {
             String name = entry.getName();
             while (name.endsWith("/")) {
@@ -142,7 +143,7 @@ class JarFileData extends AbstractJarFileData {
               // jar tvf code/languages/com.mbeddr.mpsutil.inca/code/solutions/com.mbeddr.mpsutil.soot.runtime/lib/soot-trunk.jar | fgrep "./"
               // 0 Thu Jul 12 11:23:24 CEST 2012 ./
               // We faced dramatic slowdown in JavaClassStubsModelRoot, which goes ././././... over and over again (multiply number of folders in the jar).
-              continue;
+              return;
             }
 
             buildDirectoryCaches(name);
@@ -172,10 +173,23 @@ class JarFileData extends AbstractJarFileData {
               myEntries.put(fileName, entry);
             }
           }
-        }
+        });
       } catch (IOException e) {
         LOG.error(String.format("Bad jar '%s'", getFile()), e);
       }
+    }
+  }
+
+  private Stream<? extends ZipEntry> doOpenArchive() throws IOException {
+    final File archiveFile = getFile();
+    if (archiveFile.getName().endsWith(".jar")) {
+      JarFile zipFile = new JarFile(archiveFile, true, ZipFile.OPEN_READ, JarFile.runtimeVersion());
+      myZipFileContainer.zipFile = zipFile;
+      return zipFile.versionedStream();
+    } else {
+      final ZipFile zipFile = new ZipFile(archiveFile);
+      myZipFileContainer.zipFile = zipFile;
+      return zipFile.stream();
     }
   }
 

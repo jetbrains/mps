@@ -10,7 +10,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
@@ -32,6 +31,7 @@ public class HighlightInstances_Action extends BaseAction {
     super("Highlight Instances", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.READ_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -47,21 +47,18 @@ public class HighlightInstances_Action extends BaseAction {
       if (editorComponent != null && editorComponent.isInvalid()) {
         editorComponent = null;
       }
-      MapSequence.fromMap(_params).put("editorComponent", editorComponent);
       if (editorComponent == null) {
         return false;
       }
     }
     {
       SModel p = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
-      MapSequence.fromMap(_params).put("model", p);
       if (p == null) {
         return false;
       }
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      MapSequence.fromMap(_params).put("node", node);
       if (node == null) {
         return false;
       }
@@ -70,13 +67,13 @@ public class HighlightInstances_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    NodeHighlightManager highlightManager = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager();
-    EditorMessageOwner messageOwner = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightMessagesOwner();
+    NodeHighlightManager highlightManager = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getHighlightManager();
+    EditorMessageOwner messageOwner = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getHighlightMessagesOwner();
 
-    SAbstractConcept concept = ((SNode) MapSequence.fromMap(_params).get("node")).getConcept();
-    Set<SNode> usages = FindUsagesFacade.getInstance().findInstances(new ModelsScope(((SModel) MapSequence.fromMap(_params).get("model"))), Collections.singleton(concept), false, new EmptyProgressMonitor());
+    SAbstractConcept concept = event.getData(MPSCommonDataKeys.NODE).getConcept();
+    Set<SNode> usages = FindUsagesFacade.getInstance().findInstances(new ModelsScope(event.getData(MPSCommonDataKeys.CONTEXT_MODEL)), Collections.singleton(concept), false, new EmptyProgressMonitor());
     for (SNode ref : SetSequence.fromSet(usages)) {
-      if (ref.getContainingRoot() == ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getRootCell().getSNode().getContainingRoot()) {
+      if (ref.getContainingRoot() == event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getRootCell().getSNode().getContainingRoot()) {
         highlightManager.mark(((SNode) ref), HighlightConstants.INSTANCES_COLOR, "usage", messageOwner);
       }
     }

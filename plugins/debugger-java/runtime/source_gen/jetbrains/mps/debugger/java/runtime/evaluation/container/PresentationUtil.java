@@ -9,11 +9,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -36,7 +35,7 @@ public class PresentationUtil {
       return getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M)) + suffix;
     }
 
-    return ((String) BHReflection.invoke0(lastStatement, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + suffix;
+    return ((String) BHReflection.invoke0(lastStatement, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL))) + suffix;
   }
   public static String getExpressionPresentation(@Nullable SNode expression) {
     if (expression == null) {
@@ -60,14 +59,14 @@ public class PresentationUtil {
     }
 
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.GenericNewExpression$Fh)) {
-      return "new " + ((String) BHReflection.invoke0(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.GenericNewExpression$Fh), LINKS.creator$BsHW), CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+      return "new " + ((String) BHReflection.invoke0(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.GenericNewExpression$Fh), LINKS.creator$BsHW), CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
     }
 
-    if (((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(expression)), CONCEPTS.Expression$mB, SMethodTrimmedId.create("constant", null, "1653mnvAgr2")))) {
-      return ((Object) BHReflection.invoke0(expression, CONCEPTS.Expression$mB, SMethodTrimmedId.create("getCompileTimeConstantValue", null, "i1LP2xI"), SNodeOperations.getModel(expression).getModule())) + "";
+    if (((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(expression)), CONCEPTS.Expression$mB, SMethodIdV2.create("constant", 1262430001741498050L, 0x5745e3015c8914d3L)))) {
+      return ((Object) BHReflection.invoke0(expression, CONCEPTS.Expression$mB, SMethodIdV2.create("getCompileTimeConstantValue", 1238860310638L, 0x5745e3015c8914d3L), SNodeOperations.getModel(expression).getModule())) + "";
     }
 
-    return ((String) BHReflection.invoke0(expression, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+    return ((String) BHReflection.invoke0(expression, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
   }
   public static String getOperationPresentation(@Nullable SNode operation) {
     if (operation == null) {
@@ -77,13 +76,9 @@ public class PresentationUtil {
       return SConceptOperations.conceptAlias(SNodeOperations.getConcept(operation));
     }
     if (SNodeOperations.isInstanceOf(operation, CONCEPTS.IMethodCall$M9)) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.IMethodCall$M9), LINKS.baseMethodDeclaration$pyYw), PROPS.name$MnvL) + "(" + ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(operation, CONCEPTS.IMethodCall$M9), LINKS.actualArgument$pzdx)).foldLeft("", new ILeftCombinator<SNode, String>() {
-        public String combine(String s, SNode it) {
-          return (((s == null || s.length() == 0) ? "" : s + ",")) + getExpressionPresentation(it);
-        }
-      }) + ")";
+      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.IMethodCall$M9), LINKS.baseMethodDeclaration$pyYw), PROPS.name$MnvL) + "(" + ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(operation, CONCEPTS.IMethodCall$M9), LINKS.actualArgument$pzdx)).foldLeft("", (String s, SNode it) -> (((s == null || s.length() == 0) ? "" : s + ",")) + getExpressionPresentation(it)) + ")";
     }
-    return ((String) BHReflection.invoke0(operation, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+    return ((String) BHReflection.invoke0(operation, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

@@ -4,8 +4,6 @@ package jetbrains.mps.debugger.java.api.state.proxy;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.programState.IStackFrame;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.debug.api.programState.IWatchable;
 import java.util.List;
 import jetbrains.mps.debugger.java.api.state.watchables.JavaLocalVariable;
@@ -16,6 +14,7 @@ import jetbrains.mps.util.Pair;
 import com.sun.jdi.StackFrame;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.logging.Logger;
 import com.sun.jdi.IncompatibleThreadStateException;
 import com.sun.jdi.LocalVariable;
 import com.sun.jdi.ObjectReference;
@@ -26,7 +25,6 @@ import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
 
 @GeneratedClass(node = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)/3432969378036016687", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
 public class JavaStackFrame extends ProxyForJava implements IStackFrame {
-  private static final Logger LOG = LogManager.getLogger(JavaStackFrame.class);
   private final int myIndex;
   private final JavaLocation myLocation;
   private final JavaThread myThread;
@@ -59,7 +57,7 @@ public class JavaStackFrame extends ProxyForJava implements IStackFrame {
     try {
       return getFrame();
     } catch (Throwable t) {
-      LOG.error(null, t);
+      Logger.getLogger(JavaStackFrame.class).error(t);
       return null;
     }
   }

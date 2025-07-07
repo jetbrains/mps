@@ -56,7 +56,7 @@ public class WaveBorder implements Border {
   @Override
   public Insets getBorderInsets(Component c) {
     // no idea if JBInsets is worth using, just to satisfy inspection
-    return JBUI.insets(0, 0, ColorAndGraphicsUtil.WAVE_HEIGHT, 0);
+    return JBUI.insetsBottom(ColorAndGraphicsUtil.WAVE_HEIGHT);
   }
 
   @Override

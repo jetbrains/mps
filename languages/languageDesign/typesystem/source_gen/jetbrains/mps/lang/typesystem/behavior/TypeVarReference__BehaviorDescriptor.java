@@ -23,7 +23,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -31,8 +30,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class TypeVarReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f90b04cL, "jetbrains.mps.lang.typesystem.structure.TypeVarReference");
 
-  public static final SMethod<Boolean> suppress_id3612de_vrfV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3612de_vrfV").build(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
-  public static final SMethod<List<RuleIdFlavouredItem.TypesystemRuleId>> antiquotationSuppressRules_id2FXdWdhG0kq = new SMethodBuilder<List<RuleIdFlavouredItem.TypesystemRuleId>>(new SJavaCompoundTypeImpl((Class<List<RuleIdFlavouredItem.TypesystemRuleId>>) ((Class) Object.class))).name("antiquotationSuppressRules").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2FXdWdhG0kq").build();
+  public static final SMethod<Boolean> suppress_id3612de_vrfV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3567142084961743867L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
+  public static final SMethod<List<RuleIdFlavouredItem.TypesystemRuleId>> antiquotationSuppressRules_id2FXdWdhG0kq = new SMethodBuilder<List<RuleIdFlavouredItem.TypesystemRuleId>>(new SJavaCompoundTypeImpl((Class<List<RuleIdFlavouredItem.TypesystemRuleId>>) ((Class) Object.class))).name("antiquotationSuppressRules").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3097693430729409818L).languageId(0xab76d5ed1746f2b2L, 0x7a5dda6291404668L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(suppress_id3612de_vrfV, antiquotationSuppressRules_id2FXdWdhG0kq);
 
@@ -50,11 +49,7 @@ public final class TypeVarReference__BehaviorDescriptor extends BaseBHDescriptor
     List<SNodeReference> result = ListSequence.fromList(new ArrayList<SNodeReference>());
     ListSequence.fromList(result).addElement(new SNodePointer("r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "6019047980178724615"));
     ListSequence.fromList(result).addElement(new SNodePointer("r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "4649457259827193981"));
-    return ListSequence.fromList(result).select(new ISelector<SNodeReference, RuleIdFlavouredItem.TypesystemRuleId>() {
-      public RuleIdFlavouredItem.TypesystemRuleId select(SNodeReference it) {
-        return new RuleIdFlavouredItem.TypesystemRuleId(it);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(result).select((it) -> new RuleIdFlavouredItem.TypesystemRuleId(it)).toList();
   }
 
   /*package*/ TypeVarReference__BehaviorDescriptor() {

@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MakeFactories {
   public static class NodeFactory_5308946314782063424 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AbsractMake$uZ)) {
         SLinkOperations.setTarget(newNode, LINKS.argument$Y1rJ, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbsractMake$uZ), LINKS.argument$Y1rJ));
       }

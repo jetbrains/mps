@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,10 +21,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileListener;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFileSystem;
-import com.intellij.openapi.vfs.newvfs.BulkFileListener;
-import com.intellij.openapi.vfs.newvfs.events.VFileDeleteEvent;
 import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
-import com.intellij.openapi.vfs.newvfs.events.VFilePropertyChangeEvent;
 import com.intellij.util.LocalTimeCounter;
 import com.intellij.util.messages.MessageBus;
 import com.intellij.util.messages.Topic;
@@ -35,7 +32,6 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.event.NodeChangeCollector;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -80,7 +76,7 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
    * - do not dispatch beforeFileDeleted (utilize the fact FUP#fileDeleted does nothing for events like the one we send out).
    * This approach is quite fragile, though facilitates this class to behave mostly like a regular VFS.
    */
-  public static final Topic<BulkFileListener> NODE_FS_CHANGES = new Topic<>("MPS Node VFS changes", BulkFileListener.class);
+  public static final Topic<NodeFileEventListener> NODE_FS_CHANGES = new Topic<>("MPS Node VFS changes", NodeFileEventListener.class);
 
   public static NodeVirtualFileSystem getInstance() {
     return (NodeVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(NodeVirtualFileSystem.PROTOCOL);
@@ -100,7 +96,7 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
    * compatibility with existing code, that doesn't manage SRepository well. Shall drop as soon as MPSModuleRepository instance is history
    * (or at least managed and not exposed to user code).
    */
-  @ToRemove(version = 3.4)
+  @Deprecated(since = "3.4", forRemoval = true)
   private final RepositoryVirtualFiles myGlobalRepoFiles;
 
   private final Object myRepoVFLock = new Object();
@@ -108,7 +104,7 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
   private final List<RepositoryVirtualFiles> myPerRepositoryFiles = new CopyOnWriteArrayList<>();
   private final Map<RepositoryVirtualFiles, MyRepositoryListener> myFiles2ListenerMap = new HashMap<>();
   private final SRepositoryContentAdapter myRepositoryListener;
-  private final BulkFileListener myEventPublisher;
+  private final NodeFileEventListener myEventPublisher;
   private boolean myDisposed = false;
 
   public NodeVirtualFileSystem() {
@@ -566,27 +562,25 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
       // no reason to report changes for deleted.
       changedFiles.removeAll(deletedFiles);
 
-      ArrayList<VFileEvent> events = new ArrayList<>(deletedFiles.size() + changedFiles.size());
-      for (MPSNodeVirtualFile deletedFile : deletedFiles) {
-        events.add(new VFileDeleteEvent(mySource, deletedFile, false));
-      }
-      for (MPSNodeVirtualFile changedFile : changedFiles) {
-        String oldName = changedFile.getName();
-        changedFile.updateFields();
-        String newName = changedFile.getName();
-        if (!oldName.equals(newName)) {
-          // XXX this effectively reverts 0ec4b371f9acef4c82b644dfa3a295961b515efc, I wonder what's the reason not to send file rename events?
-          events.add(new VFilePropertyChangeEvent(mySource, changedFile, VirtualFile.PROP_NAME, oldName, newName, false));
-        }
-      }
+// XXX is there reason to check oldName != newName? I decided to send out every changed file, not only with changed name
+//      for (MPSNodeVirtualFile changedFile : changedFiles) {
+//        String oldName = changedFile.getName();
+//        changedFile.updateFields();
+//        String newName = changedFile.getName();
+//        if (!oldName.equals(newName)) {
+//          // XXX this effectively reverts 0ec4b371f9acef4c82b644dfa3a295961b515efc, I wonder what's the reason not to send file rename events?
+//          events.add(new VFilePropertyChangeEvent(mySource, changedFile, VirtualFile.PROP_NAME, oldName, newName, false));
+//        }
+//      }
       ApplicationManager.getApplication().assertWriteAccessAllowed(); // used to be in DeprecatedVirtualFileSystem.fireXXX methods
-      myEventPublisher.before(events);
+      myEventPublisher.beforeDelete(new ArrayList<>(deletedFiles));
 
       for (MPSNodeVirtualFile deletedFile : deletedFiles) {
         deletedFile.invalidate();
       }
 
-      myEventPublisher.after(events);
+      changedFiles.forEach(MPSNodeVirtualFile::updateFields);
+      myEventPublisher.changed(new ArrayList<>(changedFiles));
     }
 
     private boolean hasPendingNotifications() {

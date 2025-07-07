@@ -34,8 +34,8 @@ public class Template_reduce_CommandList extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    final Iterable<SNode> copyListInput1 = QueriesGenerated.sourceNodesQuery_18_0(new SourceSubstituteMacroNodesContext(context, copySrcListMacro_n3juy2_b0a0a2a6));
-    tlist1 = environment.copyNodes(copyListInput1, copySrcListMacro_n3juy2_b0a0a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039928814", context);
+    final Iterable<SNode> copyListInput1 = QueriesGenerated.sourceNodesQuery_18_0(new SourceSubstituteMacroNodesContext(context, copySrcListMacro));
+    tlist1 = environment.copyNodes(copyListInput1, copySrcListMacro, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039928814", context);
     FragmentResult rv = listFragment(0, tlist1);
     return rv;
   }
@@ -55,5 +55,5 @@ public class Template_reduce_CommandList extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer copySrcListMacro_n3juy2_b0a0a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039928822");
+  private static final SNodePointer copySrcListMacro = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039928822");
 }

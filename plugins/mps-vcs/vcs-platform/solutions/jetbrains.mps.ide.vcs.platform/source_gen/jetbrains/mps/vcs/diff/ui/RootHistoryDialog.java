@@ -51,9 +51,13 @@ import com.intellij.openapi.vcs.VcsActions;
 import com.intellij.ui.PopupHandler;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.util.BooleanGetter;
 import java.util.Collection;
+import jetbrains.mps.vcs.history.CommitsGraph;
 import com.intellij.openapi.progress.util.BackgroundTaskUtil;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.openapi.vcs.changes.ui.ChangesViewContentManager;
+import com.intellij.openapi.ui.MessageType;
 import com.intellij.util.ui.update.Update;
 import java.util.Collections;
 import com.intellij.diff.requests.NoDiffRequest;
@@ -198,23 +202,28 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     setComponent(mySplitter);
     setPreferredFocusedComponent(myList);
     closeOnEsc();
-    setOnCloseHandler(new BooleanGetter() {
-      public boolean get() {
-        return myRevisionsExtractor.stop();
-      }
-    });
+    setOnCloseHandler(() -> check_s4rg5p_a0a0a84a72(myRevisionsExtractor));
   }
 
   public void show(Collection<SNodeId> selection) {
     // for the moment, I support single node scenario. Moreover, root node, as DiffModelViewer (along with ChangeSet) is incapable to show changes for anything but root
     myRoot = selection.iterator().next();
-    myRevisionsExtractor = createHistoryExtractor();
+    try {
+      myRevisionsExtractor = createHistoryExtractor();
+    } catch (CommitsGraph.BuildException e) {
+      showWarning("Root history is not available until indices are built");
+      return;
+    }
     BackgroundTaskUtil.executeOnPooledThread(this, myRevisionsExtractor);
     updateRevisionList();
     show();
   }
 
-  private RevisionsExtractor createHistoryExtractor() {
+  private void showWarning(final String warning) {
+    ApplicationManager.getApplication().invokeLater(() -> ToolWindowManager.getInstance(myActiveVcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, warning));
+  }
+
+  private RevisionsExtractor createHistoryExtractor() throws CommitsGraph.BuildException {
     if (myCompareModels) {
       return new RootModelHistoryExtractor(myMPSProject, myRevisions, myRoot, myActualFile, getUpdateListener());
     } else {
@@ -223,16 +232,14 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   }
 
   private Runnable getUpdateListener() {
-    return new Runnable() {
-      public void run() {
-        myUpdateQueue.queue(new Update(this) {
-          @Override
-          public void run() {
-            updateStatusLine();
-            updateRevisionList();
-          }
-        });
-      }
+    return () -> {
+      myUpdateQueue.queue(new Update(this) {
+        @Override
+        public void run() {
+          updateStatusLine();
+          updateRevisionList();
+        }
+      });
     };
   }
 
@@ -298,7 +305,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
       ListSequence.fromList(contents).addElement(createDiffContent(oldRevision2));
       ListSequence.fromList(titles).addElement(createTitle(oldRevision2));
     }
-    if (ListSequence.fromList(contents).count() == ListSequence.fromList(contents).where(new NotNullWhereFilter<DiffContent>()).count()) {
+    if (ListSequence.fromList(contents).count() == ListSequence.fromList(contents).where(new NotNullWhereFilter()).count()) {
       SimpleDiffRequest rq = new SimpleDiffRequest(null, contents, titles);
       ModelDiffViewer.DIFF_SHOW_ROOTID.set(rq, myRoot);
       ModelDiffViewer.DIFF_SHOW_TREE.set(rq, false);
@@ -393,5 +400,11 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   public void dispose() {
     Disposer.dispose(myDiffPanel);
     super.dispose();
+  }
+  private static boolean check_s4rg5p_a0a0a84a72(RevisionsExtractor checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.stop();
+    }
+    return false;
   }
 }

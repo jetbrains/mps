@@ -5,7 +5,6 @@ package jetbrains.mps.smodel.persistence.def.v4;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.persistence.def.IReferencePersister;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jdom.Element;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
@@ -21,7 +20,7 @@ import org.jetbrains.mps.openapi.model.SReference;
 
 @GeneratedClass(node = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)/453110257780703469", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
 public class ReferencePersister4 implements IReferencePersister {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(ReferencePersister4.class));
+  private static final Logger LOG = Logger.getLogger(ReferencePersister4.class);
   protected SNode mySourceNode;
   protected String myRole;
   protected String myTargetId;

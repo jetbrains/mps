@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import jetbrains.mps.nodeEditor.selection.SingularSelectionUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleAttribute;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.Color;
@@ -39,7 +39,7 @@ public class BracesHighlighter {
   private final Set<EditorCell> myLeftHighlightedCells = new HashSet<>();
   private final EditorComponent myEditorComponent;
 
-  BracesHighlighter(EditorComponent editorComponent) {
+  BracesHighlighter(@NotNull EditorComponent editorComponent) {
     myEditorComponent = editorComponent;
     myEditorComponent.getSelectionManager().addSelectionListener((ec, oldSelection, newSelection) -> {
       if (oldSelection == newSelection) {
@@ -60,7 +60,7 @@ public class BracesHighlighter {
   }
 
   private void clearBracesSelection() {
-    Iterable<StyleAttribute> specifiedAttributes = StyleRegistry.getInstance().getStyle("MATCHED_BRACE_ATTRIBUTES").getSpecifiedAttributes();
+    Iterable<StyleAttribute> specifiedAttributes = myEditorComponent.getStyleRegistry().getStyle("MATCHED_BRACE_ATTRIBUTES").getSpecifiedAttributes();
     for (EditorCell editorCell : myHighlightedCells) {
 
       Style cellStyle = editorCell.getStyle();
@@ -109,22 +109,25 @@ public class BracesHighlighter {
 
   private void highlightInGutter(BracePair bracePair) {
     if (bracePair.myFirstCell.getY() != bracePair.mySecondCell.getY()) {
-      Style mba = StyleRegistry.getInstance().getStyle("MATCHED_BRACE_ATTRIBUTES");
+      Style mba = myEditorComponent.getStyleRegistry().getStyle("MATCHED_BRACE_ATTRIBUTES");
       EditorColorsScheme scheme = EditorColorsManager.getInstance().getGlobalScheme();
       Color c = mba.get(StyleAttributes.TEXT_BACKGROUND_COLOR);
       // Logic taken from com.intellij.openapi.editor.markup.DefaultLineMarkerRenderer
-      c = ColorUtil.isDark(scheme.getDefaultBackground()) ? ColorUtil.shift(c, 1.5d) : c.darker();
-      ((EditorComponent) bracePair.mySecondCell.getEditorComponent()).leftHighlightCells(
-          (jetbrains.mps.nodeEditor.cells.EditorCell) bracePair.mySecondCell,
-          (jetbrains.mps.nodeEditor.cells.EditorCell) bracePair.myFirstCell,
-          c);
-      myLeftHighlightedCells.add(bracePair.myFirstCell);
-      myLeftHighlightedCells.add(bracePair.mySecondCell);
+      c = c == null && mba.isSpecified(StyleAttributes.TEXT_COLOR) ? mba.get(StyleAttributes.TEXT_COLOR) : c;
+      if (c != null) {
+        c = ColorUtil.isDark(scheme.getDefaultBackground()) ? ColorUtil.shift(c, 1.5d) : c.darker();
+        ((EditorComponent) bracePair.mySecondCell.getEditorComponent()).leftHighlightCells(
+            (jetbrains.mps.nodeEditor.cells.EditorCell) bracePair.mySecondCell,
+            (jetbrains.mps.nodeEditor.cells.EditorCell) bracePair.myFirstCell,
+            c);
+        myLeftHighlightedCells.add(bracePair.myFirstCell);
+        myLeftHighlightedCells.add(bracePair.mySecondCell);
+      }
     }
   }
 
   private void highlightCell(EditorCell editorCell) {
-    Style mba = StyleRegistry.getInstance().getStyle("MATCHED_BRACE_ATTRIBUTES");
+    Style mba = myEditorComponent.getStyleRegistry().getStyle("MATCHED_BRACE_ATTRIBUTES");
     Iterable<StyleAttribute> specifiedAttributes = mba.getSpecifiedAttributes();
     Style cellStyle = editorCell.getStyle();
     int highestPriority = 0;

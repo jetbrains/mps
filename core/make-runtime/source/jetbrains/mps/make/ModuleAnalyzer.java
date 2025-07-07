@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.make;
 import jetbrains.mps.make.ModulesContainer.JavaModule;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
-import org.jetbrains.mps.openapi.module.SModule;
 
 import java.io.File;
 import java.util.Collection;
@@ -37,41 +36,25 @@ class ModuleAnalyzer {
   public ModuleAnalyzer() {
   }
 
-  public ModuleAnalyzerResult analyze(Stream<JavaModule> javaModules) {
-    boolean hasJavaToCompile = false;
-    boolean hasResourcesToUpdate = false;
-    Set<SModule> modulesWithRemovals = new HashSet<>();
-    Set<File> filesToDelete = new HashSet<>();
-
-    for (ModuleSources sources : javaModules.map(JavaModule::getSources).collect(Collectors.toList())) {
-      hasResourcesToUpdate |= !sources.isResourcesUpToDate();
-      hasJavaToCompile |= !sources.isJavaUpToDate();
-      Collection<File> filesToDelete0 = sources.getFilesToDelete();
-      if (!filesToDelete0.isEmpty()) {
-        filesToDelete.addAll(filesToDelete0);
-        modulesWithRemovals.add(sources.getModule());
-      }
-    }
-
-    return ModuleAnalyzerResult.build(hasJavaToCompile, hasResourcesToUpdate, modulesWithRemovals, filesToDelete);
-  }
-
   /**
    * FIXME JAVADOC
    */
   @Immutable
   final static class ModuleAnalyzerResult {
     public final boolean hasJavaToCompile;
+    public final boolean hasKotlinToCompile;
     public final boolean hasResourcesToUpdate;
-    @NotNull public final Set<SModule> modulesWithRemovals;
+    @NotNull public final Set<BaseModuleContainer.JavaModule> modulesWithRemovals;
     @NotNull public final Set<File> filesToDelete;
 
     private ModuleAnalyzerResult(
         boolean hasJavaToCompile,
+        boolean hasKotlinToCompile,
         boolean hasResourcesToUpdate,
-        @NotNull Set<SModule> modulesWithRemovals,
+        @NotNull Set<BaseModuleContainer.JavaModule> modulesWithRemovals,
         @NotNull Set<File> filesToDelete) {
       this.hasJavaToCompile = hasJavaToCompile;
+      this.hasKotlinToCompile = hasKotlinToCompile;
       this.hasResourcesToUpdate = hasResourcesToUpdate;
       this.modulesWithRemovals = modulesWithRemovals;
       this.filesToDelete = filesToDelete;
@@ -79,10 +62,11 @@ class ModuleAnalyzer {
 
     public static ModuleAnalyzerResult build(
         boolean hasJavaToCompile,
+        boolean hasKotlinToCompile,
         boolean hasResourcesToUpdate,
-        Set<SModule> modulesWithRemovals,
+        Set<BaseModuleContainer.JavaModule> modulesWithRemovals,
         Set<File> filesToDelete) {
-      return new ModuleAnalyzerResult(hasJavaToCompile, hasResourcesToUpdate, modulesWithRemovals, filesToDelete);
+      return new ModuleAnalyzerResult(hasJavaToCompile, hasKotlinToCompile, hasResourcesToUpdate, modulesWithRemovals, filesToDelete);
     }
   }
 

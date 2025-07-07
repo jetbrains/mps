@@ -64,7 +64,7 @@ public class FileSystemListenersContainer {
     /*package*/ final List<FileSystemListener> descendantsListeners = ListSequence.fromList(new ArrayList<FileSystemListener>());
 
     public List<FileSystemListener> getMeAndDescendants() {
-      return ListSequence.fromList(concretePathListeners).union(ListSequence.fromList(descendantsListeners)).toListSequence();
+      return ListSequence.fromList(concretePathListeners).union(ListSequence.fromList(descendantsListeners)).toList();
     }
   }
 
@@ -86,7 +86,7 @@ public class FileSystemListenersContainer {
     myLock.writeLock().lock();
     try {
       for (String part : normalizeAndSplit(path)) {
-        if (!((part == null || part.length() == 0))) {
+        if (!(part == null || part.length() == 0)) {
           currentNode = currentNode.child(part, true);
         }
       }
@@ -107,7 +107,7 @@ public class FileSystemListenersContainer {
     myLock.writeLock().lock();
     try {
       for (String part : normalizeAndSplit(path)) {
-        if (!((part == null || part.length() == 0))) {
+        if (!(part == null || part.length() == 0)) {
           currentNode = currentNode.child(part, false);
           if (currentNode == null) {
             return;
@@ -128,7 +128,7 @@ public class FileSystemListenersContainer {
     myLock.readLock().lock();
     try {
       for (String part : normalizeAndSplit(eventPath)) {
-        if (!((part == null || part.length() == 0))) {
+        if (!(part == null || part.length() == 0)) {
           currentNode.addListenersTo(result.ancestorListeners);
           currentNode = currentNode.child(part, false);
           if (currentNode == null) {

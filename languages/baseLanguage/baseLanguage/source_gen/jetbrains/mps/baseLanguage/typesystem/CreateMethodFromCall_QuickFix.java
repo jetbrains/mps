@@ -12,7 +12,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -53,11 +52,7 @@ public class CreateMethodFromCall_QuickFix extends QuickFix_Runtime {
       } else {
         currentParameter = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"));
         ListSequence.fromList(SLinkOperations.getChildren(newMethod, LINKS.parameter$5xBj)).addElement(currentParameter);
-        SPropertyOperations.assign(currentParameter, PROPS.name$MnvL, ParameterNameUtil.suggestParameterName(argument, SNodeOperations.as(argType, CONCEPTS.Type$bu), ListSequence.fromList(SLinkOperations.getChildren(newMethod, LINKS.parameter$5xBj)).select(new ISelector<SNode, String>() {
-          public String select(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL);
-          }
-        })));
+        SPropertyOperations.assign(currentParameter, PROPS.name$MnvL, ParameterNameUtil.suggestParameterName(argument, SNodeOperations.as(argType, CONCEPTS.Type$bu), ListSequence.fromList(SLinkOperations.getChildren(newMethod, LINKS.parameter$5xBj)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL))));
       }
       if (SLinkOperations.getTarget(currentParameter, LINKS.type$a1UY) == null || !(ListSequence.fromList(Type__BehaviorDescriptor.getSupertypes_id4w2h6RLlygH.invoke(SNodeOperations.as(argType, CONCEPTS.Type$bu))).contains(SLinkOperations.getTarget(currentParameter, LINKS.type$a1UY)))) {
         SLinkOperations.setTarget(currentParameter, LINKS.type$a1UY, SNodeOperations.as(argType, CONCEPTS.Type$bu));

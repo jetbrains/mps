@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -23,10 +24,8 @@ import java.util.Collections;
 import java.util.List;
 import jetbrains.mps.execution.settings.behavior.SettingsEditor__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.execution.settings.behavior.EditorOperationDeclaration__BehaviorDescriptor;
 import java.util.HashMap;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -38,18 +37,14 @@ public class EditorOperationCall_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.editorOperationDeclaration$1mIR, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.editorOperationDeclaration$1mIR, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_ow8wt3_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:26cd452e-c5c2-4d47-ad13-dda4362e8616(jetbrains.mps.execution.settings.constraints)", "6836281137582823054");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -59,11 +54,7 @@ public class EditorOperationCall_Constraints extends BaseConstraintsDescriptor {
               return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
             }
             List<SNode> operations = SettingsEditor__BehaviorDescriptor.getDeclaredOperations_idO$iR4J$gbn.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(editorType, LINKS.configuration$1ugl), LINKS.editor$QMzP));
-            return ListScope.forResolvableElements(ListSequence.fromList(operations).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return ((SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.SettingsEditor$nO, false, false) != null) ? (EditorOperationDeclaration__BehaviorDescriptor.getJavaMethod_idO$iR4J$gaJ.invoke(it) != null) : (EditorOperationDeclaration__BehaviorDescriptor.getPublicJavaMethod_idbkrofm9Fgz.invoke(it) != null));
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(operations).where((it) -> ((SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.SettingsEditor$nO, false, false) != null) ? (EditorOperationDeclaration__BehaviorDescriptor.getJavaMethod_idO$iR4J$gaJ.invoke(it) != null) : (EditorOperationDeclaration__BehaviorDescriptor.getPublicJavaMethod_idbkrofm9Fgz.invoke(it) != null))));
           }
         };
       }
@@ -72,7 +63,6 @@ public class EditorOperationCall_Constraints extends BaseConstraintsDescriptor {
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_ow8wt3_a0a0a0a0a1a0a0a0c = new SNodePointer("r:26cd452e-c5c2-4d47-ad13-dda4362e8616(jetbrains.mps.execution.settings.constraints)", "6836281137582823054");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept EditorOperationCall$Wd = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, "jetbrains.mps.execution.settings.structure.EditorOperationCall");

@@ -20,11 +20,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SearchScope;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -51,6 +53,19 @@ public final class ModelDependencyUpdate {
     myModel = model;
     myModelScanner = new ModelDependencyScanner();
     myModelScanner.crossModelReferences(true).usedLanguages(true).walk(model);
+  }
+
+  /**
+   * Alternative limited only to dependencies of a node tree.
+   *
+   * @param model target of import update
+   * @param node where to take dependencies from, may be detached node (any reference treated as cross-model then)
+   * @since 2021.3
+   */
+  public ModelDependencyUpdate(@NotNull org.jetbrains.mps.openapi.model.SModel model, @NotNull SNode node) {
+    myModel = model;
+    myModelScanner = new ModelDependencyScanner();
+    myModelScanner.crossModelReferences(true).usedLanguages(true).walk(Collections.singleton(node));
   }
 
   public ModelDependencyUpdate updateUsedLanguages() {

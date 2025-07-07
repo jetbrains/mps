@@ -7,6 +7,8 @@
   </languages>
   <imports>
     <import index="8psh" ref="r:785fbfdf-4d16-46ea-8112-f67d04b451d9(tooltips.example.structure)" implicit="true" />
+    <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" implicit="true" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -21,7 +23,17 @@
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
       </concept>
+      <concept id="1186403694788" name="jetbrains.mps.lang.editor.structure.ColorStyleClassItem" flags="ln" index="VaVBg">
+        <property id="1186403713874" name="color" index="Vb096" />
+      </concept>
+      <concept id="1186403751766" name="jetbrains.mps.lang.editor.structure.FontStyleStyleClassItem" flags="ln" index="Vb9p2">
+        <property id="1186403771423" name="style" index="Vbekb" />
+      </concept>
+      <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
       <concept id="1186414928363" name="jetbrains.mps.lang.editor.structure.SelectableStyleSheetItem" flags="ln" index="VPM3Z" />
+      <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ngI" index="1k5N5V">
+        <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
+      </concept>
       <concept id="1139848536355" name="jetbrains.mps.lang.editor.structure.CellModel_WithRole" flags="ng" index="1$h60E">
         <reference id="1140103550593" name="relationDeclaration" index="1NtTu8" />
       </concept>
@@ -33,7 +45,7 @@
         <property id="1073389577007" name="text" index="3F0ifm" />
       </concept>
       <concept id="1073389658414" name="jetbrains.mps.lang.editor.structure.CellModel_Property" flags="sg" stub="730538219796134133" index="3F0A7n" />
-      <concept id="1219418625346" name="jetbrains.mps.lang.editor.structure.IStyleContainer" flags="ng" index="3F0Thp">
+      <concept id="1219418625346" name="jetbrains.mps.lang.editor.structure.IStyleContainer" flags="ngI" index="3F0Thp">
         <child id="1219418656006" name="styleItem" index="3F10Kt" />
       </concept>
       <concept id="1073390211982" name="jetbrains.mps.lang.editor.structure.CellModel_RefNodeList" flags="sg" stub="2794558372793454595" index="3F2HdR" />
@@ -69,7 +81,7 @@
       <node concept="1v6uyg" id="2Twa_fm5RI1" role="3EZMnx">
         <property role="2oejA6" value="true" />
         <node concept="3F0ifn" id="2Twa_fm5RI2" role="wsdo6">
-          <property role="3F0ifm" value="i'm a tooltip" />
+          <property role="3F0ifm" value="I'm a tooltip" />
         </node>
         <node concept="3F0ifn" id="2Twa_fm5RI3" role="1j7Clw">
           <property role="3F0ifm" value="hover to see a tooltip" />
@@ -79,20 +91,29 @@
       <node concept="1v6uyg" id="2Twa_fm5RI8" role="3EZMnx">
         <property role="2oejA6" value="true" />
         <node concept="3F0ifn" id="2Twa_fm5RI9" role="wsdo6">
-          <property role="3F0ifm" value="the closer the cursor, the brighter the tooltip" />
+          <property role="3F0ifm" value="I'm also a tooltip" />
         </node>
         <node concept="3F0ifn" id="2Twa_fm5RIa" role="1j7Clw">
-          <property role="3F0ifm" value="enable a radar hint and hold ctrl to highlight the tooltip" />
+          <property role="3F0ifm" value="hold ctrl and move the mouse to highlight the available tooltips" />
         </node>
       </node>
       <node concept="3F0ifn" id="2QGNZMICNDk" role="3EZMnx" />
       <node concept="3EZMnI" id="64OBqEtPvHV" role="3EZMnx">
         <node concept="VPM3Z" id="64OBqEtPvHX" role="3F10Kt" />
         <node concept="3F0ifn" id="64OBqEtPvHZ" role="3EZMnx">
-          <property role="3F0ifm" value="property" />
+          <property role="3F0ifm" value="Property" />
+          <node concept="Vb9p2" id="27bWecHElB_" role="3F10Kt">
+            <property role="Vbekb" value="g1_k_vY/BOLD" />
+          </node>
         </node>
         <node concept="3F0A7n" id="64OBqEtPvIe" role="3EZMnx">
           <ref role="1NtTu8" to="8psh:64OBqEtPvHL" resolve="a" />
+          <node concept="Vb9p2" id="27bWecHEliT" role="3F10Kt">
+            <property role="Vbekb" value="g1_k_vY/BOLD" />
+          </node>
+          <node concept="VechU" id="27bWecHEluT" role="3F10Kt">
+            <property role="Vb096" value="g1_qVrt/darkMagenta" />
+          </node>
         </node>
         <node concept="3F0ifn" id="64OBqEtPvIm" role="3EZMnx">
           <property role="3F0ifm" value=":" />
@@ -106,6 +127,12 @@
             </node>
             <node concept="3F0A7n" id="64OBqEtPvJg" role="3EZMnx">
               <ref role="1NtTu8" to="8psh:64OBqEtPvHL" resolve="a" />
+              <node concept="Vb9p2" id="27bWecHEcKx" role="3F10Kt">
+                <property role="Vbekb" value="g1_tSyq/BOLD_ITALIC" />
+              </node>
+              <node concept="VechU" id="27bWecHEcOU" role="3F10Kt">
+                <property role="Vb096" value="g1_qVrt/darkMagenta" />
+              </node>
             </node>
           </node>
           <node concept="3F0ifn" id="64OBqEtPvIG" role="1j7Clw">
@@ -114,6 +141,10 @@
         </node>
         <node concept="2iRfu4" id="64OBqEtPvI0" role="2iSdaV" />
       </node>
+      <node concept="3F0ifn" id="27bWecHEiT2" role="3EZMnx">
+        <property role="3F0ifm" value="--------------------------------------" />
+        <ref role="1k5W1q" to="tpco:3VARyd8XcQs" resolve="Comment" />
+      </node>
       <node concept="2iRkQZ" id="2Twa_fm5Slk" role="2iSdaV" />
     </node>
   </node>
@@ -121,8 +152,14 @@
     <ref role="1XX52x" to="8psh:48_Shgpt1T$" resolve="Lists" />
     <node concept="3EZMnI" id="48_Shgpt1U5" role="2wV5jI">
       <node concept="2iRkQZ" id="48_Shgpt1U6" role="2iSdaV" />
-      <node concept="3F0ifn" id="48_Shgpt1Ub" role="3EZMnx">
-        <property role="3F0ifm" value="LISTS:" />
+      <node concept="3EZMnI" id="27bWecHE8B5" role="3EZMnx">
+        <node concept="2iRfu4" id="27bWecHE8B6" role="2iSdaV" />
+        <node concept="3F0ifn" id="48_Shgpt1Ub" role="3EZMnx">
+          <property role="3F0ifm" value="LISTS:" />
+        </node>
+        <node concept="3F0A7n" id="27bWecHE8xy" role="3EZMnx">
+          <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+        </node>
       </node>
       <node concept="3F2HdR" id="48_Shgpt1Uh" role="3EZMnx">
         <ref role="1NtTu8" to="8psh:48_Shgpt1TB" resolve="ls" />

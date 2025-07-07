@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,7 +64,7 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
     // holds true for the test run.
     project.getModelAccess().runWriteAction(() -> project.addModule(newModule));
     Assert.assertTrue(project.getProjectModules().contains(newModule));
-    project.dispose();
+    getEnvironment().closeProject(project);
   }
 
   @Test
@@ -76,16 +76,16 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
     project.getModelAccess().runWriteAction(() -> project.addModule(newModule));
     project.getModelAccess().runWriteAction(() -> project.removeModule(newModule));
     Assert.assertFalse(project.getProjectModules().contains(newModule));
-    project.dispose();
+    getEnvironment().closeProject(project);
   }
 
   @Test
   public void reopenProject() {
     Project project = getEnvironment().createEmptyProject();
-    project.dispose();
+    getEnvironment().closeProject(project);
     project = getEnvironment().createEmptyProject();
     Assert.assertFalse(project.isDisposed());
-    project.dispose();
+    getEnvironment().closeProject(project);
     Assert.assertTrue(project.isDisposed());
   }
 
@@ -93,15 +93,15 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
   public void openTwoProjects() {
     Project project1 = getEnvironment().createEmptyProject();
     Project project2 = getEnvironment().createEmptyProject();
-    project1.dispose();
-    project2.dispose();
+    getEnvironment().closeProject(project1);
+    getEnvironment().closeProject(project2);
   }
 
   @Test
   public void reopenMPSProject() {
     Project mpsProject = getEnvironment().openProject(new File(PathManager.getHomePath()));
     testWait();
-    mpsProject.dispose();
+    getEnvironment().closeProject(mpsProject);
   }
 
   @Test //turn off test
@@ -113,7 +113,7 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
 
     testWait();
 
-    mpsProject.dispose();
+    getEnvironment().closeProject(mpsProject);
 
     testWait();
 
@@ -122,7 +122,7 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
 
     testWait();
 
-    mpsProject.dispose();
+    getEnvironment().closeProject(mpsProject);
 
     testWait();
     getEnvironment().closeProject(emptyProject1);

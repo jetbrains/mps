@@ -12,9 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -85,24 +83,8 @@ public final class ConstraintsMigrationUtil {
     return migrateManually;
   }
 
-  public static void swapReferences(SNode oldNode, SNode newNode) {
-    // Uses in order to set the old node identity to the new node
-    // to avoid the necessity of updating references to the new node in other modules.
-    // Old node id is also changed due to old node can be attached to the module before the new one.
-    jetbrains.mps.smodel.SNode lNode = (jetbrains.mps.smodel.SNode) oldNode;
-    jetbrains.mps.smodel.SNode rNode = (jetbrains.mps.smodel.SNode) newNode;
-    SNodeId lNodeId = lNode.getNodeId();
-    SNodeId rNodeId = rNode.getNodeId();
-    lNode.setId(rNodeId);
-    rNode.setId(lNodeId);
-  }
-
   public static void findProblems(SNode context, List<Problem> collector) {
-    ListSequence.fromList(collector).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(context, CONCEPTS.ConstraintsMigration$ib, false, new SAbstractConcept[]{})).select(new ISelector<SNode, ConstraintsMigrationProblem>() {
-      public ConstraintsMigrationProblem select(SNode it) {
-        return new ConstraintsMigrationProblem(SNodeOperations.getParent(it));
-      }
-    }));
+    ListSequence.fromList(collector).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(context, CONCEPTS.ConstraintsMigration$ib, false, new SAbstractConcept[]{})).select((it) -> new ConstraintsMigrationProblem(SNodeOperations.getParent(it))));
   }
   private static SNode _quotation_createNode_3gs37h_a0a6a2a3(Object parameter_1) {
     SNode quotedNode_2 = null;

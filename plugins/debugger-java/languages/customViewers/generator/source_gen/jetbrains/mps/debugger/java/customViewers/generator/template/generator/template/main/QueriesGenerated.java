@@ -23,10 +23,8 @@ import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import java.util.HashMap;
@@ -185,11 +183,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static void mapSrcMacro_post_7_0(final MapSrcMacroPostProcContext _context) {
     new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getOutputNode(), null, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(it);
-      }
-    });
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getOutputNode(), null, false, new SAbstractConcept[]{})).visitAll((it) -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(it));
   }
   public static void mapSrcMacro_post_8_0(final MapSrcMacroPostProcContext _context) {
     new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
@@ -197,11 +191,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static void mappingScript_CodeBlock_4(final MappingScriptContext _context) {
     for (SNode classConcept : ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ClassConcept$bK))) {
       if (SLinkOperations.hasPointer(SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$), LINKS.classifier$cxMr, new SNodePointer("r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)", "3432969378036017270")) && SPropertyOperations.getString(classConcept, PROPS.name$MnvL).endsWith("_WrapperFactory")) {
-        for (SNode method : ListSequence.fromList(SNodeOperations.getNodeDescendants(classConcept, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).get(it) != null);
-          }
-        })) {
+        for (SNode method : ListSequence.fromList(SNodeOperations.getNodeDescendants(classConcept, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).get(it) != null))) {
           if ((method == null)) {
             continue;
           }
@@ -463,7 +453,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("8275758777999533504", new RTQ(0, "MyWatchable"));
+    rtqMethods.put("8275758777999533504", new RTQ(0, "map_CustomWatchablesContainer.MyWatchable"));
   }
   @NotNull
   @Override

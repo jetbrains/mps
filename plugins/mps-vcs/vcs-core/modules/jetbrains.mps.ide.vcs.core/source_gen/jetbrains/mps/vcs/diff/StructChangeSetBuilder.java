@@ -17,20 +17,19 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.changes.SetPropertyStructChange;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.vcs.diff.changes.SetReferenceStructChange;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.util.LongestCommonSubsequenceFinder;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.vcs.diff.changes.NodeGroupStructChange;
+import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import java.util.Iterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IMapping;
@@ -63,11 +62,7 @@ public class StructChangeSetBuilder {
   private void buildForReferences(Map<SNode, SNode> olToNewMap, SNode oldNode, SNode newNode) {
     List<SReference> oldReferences = (List<SReference>) oldNode.getReferences();
     List<SReference> newReferences = (List<SReference>) newNode.getReferences();
-    for (SReferenceLink role : ListSequence.fromList(oldReferences).concat(ListSequence.fromList(newReferences)).select(new ISelector<SReference, SReferenceLink>() {
-      public SReferenceLink select(SReference r) {
-        return r.getLink();
-      }
-    }).distinct()) {
+    for (SReferenceLink role : ListSequence.fromList(oldReferences).concat(ListSequence.fromList(newReferences)).select((r) -> r.getLink()).distinct()) {
       buildForReference(olToNewMap, oldNode, newNode, role);
     }
   }
@@ -77,7 +72,7 @@ public class StructChangeSetBuilder {
     if (!(equalsReference(oldReference, newReference, oldToNewMap, false))) {
       SModelReference targetModel = check_okvhpb_a0a0c0i(newReference);
       SNodeId targetId = (newReference instanceof DynamicReference ? null : check_okvhpb_a0a1a2a8(newReference));
-      ListSequence.fromList(myNewChanges).addElement(new SetReferenceStructChange(myChangeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, targetId, check_okvhpb_g0a0a2a2a8(((jetbrains.mps.smodel.SReference) newReference))));
+      ListSequence.fromList(myNewChanges).addElement(new SetReferenceStructChange(myChangeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, targetId, SLinkOperations.getResolveInfo(newReference)));
     }
   }
   private void buildForNode(final Map<SNode, SNode> oldToNewMap, @NotNull final SNode oldNode, @NotNull final SNode newNode) {
@@ -93,11 +88,7 @@ public class StructChangeSetBuilder {
     final Map<SContainmentLink, List<SNode>> roleToOldChildCollection = ChangeSetBuilder.getRoleToChildCollectionMap(oldNode);
     final Map<SContainmentLink, List<SNode>> roleToNewChildCollection = ChangeSetBuilder.getRoleToChildCollectionMap(newNode);
 
-    SetSequence.fromSet(MapSequence.fromMap(roleToOldChildCollection).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(roleToNewChildCollection).keySet())).distinct().visitAll(new IVisitor<SContainmentLink>() {
-      public void visit(SContainmentLink role) {
-        buildForNodeRole(oldToNewMap, roleToOldChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>())), roleToNewChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>())), oldNode.getNodeId(), newNode.getNodeId(), role);
-      }
-    });
+    SetSequence.fromSet(MapSequence.fromMap(roleToOldChildCollection).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(roleToNewChildCollection).keySet())).distinct().visitAll((role) -> buildForNodeRole(oldToNewMap, roleToOldChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>())), roleToNewChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>())), oldNode.getNodeId(), newNode.getNodeId(), role));
 
   }
 
@@ -118,16 +109,8 @@ outer:
       MapSequence.fromMap(nodeClasses).put(node, i++);
     }
 
-    List<Integer> oldClasses = ListSequence.fromList(oldChildren).select(new ISelector<SNode, Integer>() {
-      public Integer select(SNode n) {
-        return MapSequence.fromMap(nodeClasses).get(n);
-      }
-    }).toListSequence();
-    List<Integer> newClasses = ListSequence.fromList(newChildren).select(new ISelector<SNode, Integer>() {
-      public Integer select(SNode n) {
-        return MapSequence.fromMap(nodeClasses).get(n);
-      }
-    }).toListSequence();
+    List<Integer> oldClasses = ListSequence.fromList(oldChildren).select((n) -> MapSequence.fromMap(nodeClasses).get(n)).toList();
+    List<Integer> newClasses = ListSequence.fromList(newChildren).select((n) -> MapSequence.fromMap(nodeClasses).get(n)).toList();
     LongestCommonSubsequenceFinder<Integer> finder = new LongestCommonSubsequenceFinder<Integer>(oldClasses, newClasses);
 
     // add matched Nodes
@@ -141,20 +124,12 @@ outer:
       Tuples._2<Integer, Integer> oldIndices = indices._0();
       Tuples._2<Integer, Integer> newIndices = indices._1();
 
-      List<SConcept> oldC = ListSequence.fromList(oldChildren).page((int) oldIndices._0(), (int) oldIndices._1()).select(new ISelector<SNode, SConcept>() {
-        public SConcept select(SNode n) {
-          return n.getConcept();
-        }
-      }).toListSequence();
-      List<SConcept> newC = ListSequence.fromList(newChildren).page((int) newIndices._0(), (int) newIndices._1()).select(new ISelector<SNode, SConcept>() {
-        public SConcept select(SNode n) {
-          return n.getConcept();
-        }
-      }).toListSequence();
+      List<SConcept> oldC = ListSequence.fromList(oldChildren).page((int) oldIndices._0(), (int) oldIndices._1()).select((n) -> n.getConcept()).toList();
+      List<SConcept> newC = ListSequence.fromList(newChildren).page((int) newIndices._0(), (int) newIndices._1()).select((n) -> n.getConcept()).toList();
       LongestCommonSubsequenceFinder<SConcept> finder2 = new LongestCommonSubsequenceFinder<SConcept>(oldC, newC);
       // concepts were not matched:
       for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> ixs : ListSequence.fromList(finder2.getDifferentIndices())) {
-        ListSequence.fromList(myNewChanges).addElement(new NodeGroupStructChange(myChangeSet, parentId, newParentId, role, (int) oldIndices._0() + (int) ixs._0()._0(), (int) oldIndices._0() + (int) ixs._0()._1(), (int) newIndices._0() + (int) ixs._1()._0(), (int) newIndices._0() + (int) ixs._1()._1()));
+        ListSequence.fromList(myNewChanges).addElement(new NodeGroupChange(myChangeSet, parentId, newParentId, role, (int) oldIndices._0() + (int) ixs._0()._0(), (int) oldIndices._0() + (int) ixs._0()._1(), (int) newIndices._0() + (int) ixs._1()._0(), (int) newIndices._0() + (int) ixs._1()._1()));
       }
       // Finding changes for "matched" children
       for (Tuples._2<Integer, Integer> ixs : ListSequence.fromList(finder2.getCommonIndices())) {
@@ -192,7 +167,7 @@ outer:
   }
 
   private void removeMatchedRefChanges() {
-    for (SetReferenceStructChange ch : ListSequence.fromList(myNewChanges).ofType(SetReferenceStructChange.class).toListSequence()) {
+    for (SetReferenceStructChange ch : ListSequence.fromList(ListSequence.fromList(myNewChanges).ofType(SetReferenceStructChange.class).toList())) {
       SReference oldRef = myChangeSet.getOldModel().getNode(ch.getAffectedNodeId(false)).getReference(ch.getRoleLink());
       if (oldRef == null) {
         continue;
@@ -216,11 +191,7 @@ outer:
     }
   }
   private void commit() {
-    ListSequence.fromList(myNewChanges).visitAll(new IVisitor<ModelChange>() {
-      public void visit(ModelChange it) {
-        myChangeSet.add(it);
-      }
-    });
+    ListSequence.fromList(myNewChanges).visitAll((it) -> myChangeSet.add(it));
     myChangeSet.buildNodeMaps(myOldToNewMap);
     ListSequence.fromList(myNewChanges).clear();
     MapSequence.fromMap(myOldToNewMap).clear();
@@ -262,11 +233,7 @@ outer:
 
     SNode target1 = ref1.getTargetNode();
     SNode target2 = ref2.getTargetNode();
-    return target1 == target2 || MapSequence.fromMap(oldToNewMap).get(target1) == target2 || easy && ListSequence.fromList(SNodeOperations.getNodeAncestors(target1, null, true)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return MapSequence.fromMap(oldToNewMap).get(it);
-      }
-    }).intersect(ListSequence.fromList(SNodeOperations.getNodeAncestors(target2, null, true))).isNotEmpty();
+    return target1 == target2 || MapSequence.fromMap(oldToNewMap).get(target1) == target2 || easy && ListSequence.fromList(SNodeOperations.getNodeAncestors(target1, null, true)).select((it) -> MapSequence.fromMap(oldToNewMap).get(it)).intersect(ListSequence.fromList(SNodeOperations.getNodeAncestors(target2, null, true))).isNotEmpty();
   }
 
   private static boolean equalsNodeStructure(@NotNull SNode n1, @NotNull SNode n2, Map<SNode, SNode> oldToNewMap, boolean easyRef) {
@@ -281,18 +248,14 @@ outer:
     Iterable<SProperty> n1Properties = n1.getProperties();
     Iterable<SProperty> n2Properties = n2.getProperties();
     for (SProperty prop : Sequence.fromIterable(n1Properties).union(Sequence.fromIterable(n2Properties))) {
-      if (!((equalsProperty(n1, n2, prop)))) {
+      if (!(equalsProperty(n1, n2, prop))) {
         return false;
       }
     }
 
     List<SReference> n1References = (List<SReference>) n1.getReferences();
     List<SReference> n2References = (List<SReference>) n2.getReferences();
-    for (SReferenceLink role : ListSequence.fromList(n1References).concat(ListSequence.fromList(n2References)).select(new ISelector<SReference, SReferenceLink>() {
-      public SReferenceLink select(SReference r) {
-        return r.getLink();
-      }
-    }).distinct()) {
+    for (SReferenceLink role : ListSequence.fromList(n1References).concat(ListSequence.fromList(n2References)).select((r) -> r.getLink()).distinct()) {
       if (!(equalsReference(n1.getReference(role), n2.getReference(role), tempMap, easyRef))) {
         return false;
       }
@@ -334,12 +297,6 @@ outer:
   private static SNodeId check_okvhpb_a0a1a2a8(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
-    }
-    return null;
-  }
-  private static String check_okvhpb_g0a0a2a2a8(jetbrains.mps.smodel.SReference checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getResolveInfo();
     }
     return null;
   }

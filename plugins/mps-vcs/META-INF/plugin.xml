@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2020 JetBrains s.r.o.
+  ~ Copyright 2003-2021 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -25,20 +25,7 @@
   <depends optional="true">jetbrains.mps.ide.make</depends>
   <depends optional="true" config-file="langDesignOptional.xml">jetbrains.mps.ide.devkit</depends>
 
-  <xi:include href="MPSVcs.xml" xpointer="xpointer(/components/*)"/>
-
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.vcs.MPSVcsManager</implementation-class>
-    </component>
-    <component>
-      <interface-class>jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping</interface-class>
-      <implementation-class>jetbrains.mps.vcs.changesmanager.roots.NodeFileStatusMappingExt</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.vcs.integration.GeneratedFileConflictResolving</implementation-class>
-    </component>
-  </project-components>
+  <xi:include href="MPSVcs.xml"/>
 
   <applicationListeners>
     <listener class="jetbrains.mps.vcs.diff.ui.common.EditorSettingsEditorColorsListener"
@@ -51,6 +38,20 @@
     <listener class="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory$MyEditorComponentCreateListener"
               topic="jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener"
               activeInHeadlessMode="false"/>
+    <listener class="jetbrains.mps.vcs.integration.GeneratedFileConflictResolving$FileListener"
+              topic="com.intellij.openapi.vfs.newvfs.BulkFileListener"
+              activeInHeadlessMode="false"/>
+    <listener class="jetbrains.mps.vcs.fs.ExternalVcsRepoSynchronization"
+              topic="git4idea.repo.GitRepositoryChangeListener"
+              activeInHeadlessMode="false"/>
+    <listener class="jetbrains.mps.vcs.MPSVcsManager$FileStatusListener"
+              topic="com.intellij.openapi.vcs.FileStatusListener"
+              activeInHeadlessMode="false"
+              activeInTestMode="false"/>
+    <listener class="jetbrains.mps.vcs.MPSVcsManager$NotifyConfigChange"
+              topic="com.intellij.openapi.vcs.VcsMappingListener"
+              activeInHeadlessMode="false"
+              activeInTestMode="false"/>
   </projectListeners>
 
   <actions>
@@ -63,6 +64,9 @@
       <add-to-group group-id="ChangesViewPopupMenu" anchor="last"/>
       <add-to-group anchor="before" relative-to-action="SearchMenu" group-id="EditMenu"/>
     </group>
+    <action id="ChangesView.GroupBy.Extension" class="jetbrains.mps.vcs.actions.SetExtensionChangesGroupingAction">
+      <add-to-group group-id="ChangesView.GroupBy"/>
+    </action>
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
@@ -82,8 +86,17 @@
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.tree.FeatureForestMapSupport" />
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory" />
 
+    <projectService serviceInterface="jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping"
+                    serviceImplementation="jetbrains.mps.vcs.changesmanager.roots.NodeFileStatusMappingExt"/>
+
+    <projectService serviceImplementation="jetbrains.mps.vcs.MPSVcsManager" />
+    <backgroundPostStartupActivity implementation="jetbrains.mps.vcs.MPSVcsManager$OnStartup" />
+
     <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
     <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>
+    <editorNotificationProvider implementation="jetbrains.mps.vcs.annotate.AnnotationEditorNotificationProvider"/>
+
+    <changesGroupingPolicy key="extension" id="extension" weight="25" implementationClass="jetbrains.mps.vcs.integration.ExtensionChangesGroupingPolicy$Factory"/>
 
     <!--
       FIXME has to point to /languages as it's in build layout in mpsVcs but that would lead to module discovery errors when running from sources
@@ -95,7 +108,13 @@
     <vcs.fileStatusProvider implementation="jetbrains.mps.vcs.changesmanager.NodeFileStatusProvider"/>
     <mps.TabColorProvider implementation="jetbrains.mps.vcs.changesmanager.roots.NodeTabColorProvider"/>
     <mps.treeCreationHandler implementation="jetbrains.mps.vcs.changesmanager.tree.ChangesTreeCreationHandler"/>
-    <checkoutListener implementation="jetbrains.mps.vcs.integration.ProjectCheckoutListener"/>
+    <checkoutListener implementation="jetbrains.mps.vcs.integration.ProjectCheckoutListener" id="ProjectFileMPSCheckoutListener"
+                      order="after ProjectDirMPSCheckoutListener"/>
+    <checkoutListener implementation="jetbrains.mps.vcs.integration.ProjectDirMPSCheckoutListener"
+                      order="first, before ProjectDirCheckoutListener"
+                      id="ProjectDirMPSCheckoutListener"/>
+    <checkoutListener implementation="jetbrains.mps.vcs.integration.NonMPSProjectCheckoutListener"
+                      order="after ProjectFileMPSCheckoutListener, before PlatformProjectCheckoutListener"/>
     <checkinHandlerFactory implementation="jetbrains.mps.vcs.platform.integration.OptimizeImportsCheckinHandler$OptimizeImportsCheckinHandlerFactory"/>
     <mps.editorWarningsProvider implementation="jetbrains.mps.vcs.platform.integration.ConflictingModelsWarnings"/>
 
@@ -106,6 +125,7 @@
 
     <registryKey key="vcs.show.root.history.compare.models" defaultValue="true"
                  description="Show Root History action uses models comparison if true, otherwise the persisted files comparison is used."/>
+    <registryKey key="mps.sync.external.git.repos" defaultValue="true" description="Enables external vcs repo synchronization"/>
 
     <obsoleteStorage file="$WORKSPACE_FILE$" isProjectLevel="true">
       <components>

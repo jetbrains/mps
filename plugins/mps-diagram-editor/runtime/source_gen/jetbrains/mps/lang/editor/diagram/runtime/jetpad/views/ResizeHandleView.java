@@ -14,9 +14,8 @@ import jetbrains.jetpad.base.Registration;
 import jetbrains.jetpad.projectional.view.ViewTrait;
 import jetbrains.jetpad.projectional.view.ViewTraitBuilder;
 import jetbrains.jetpad.projectional.view.ViewEvents;
-import jetbrains.jetpad.projectional.view.ViewEventHandler;
-import jetbrains.jetpad.event.MouseEvent;
 import jetbrains.jetpad.projectional.view.View;
+import jetbrains.jetpad.event.MouseEvent;
 
 public class ResizeHandleView extends PolyLineView {
   public static final int DEFAULT_HALF_WIDTH = 3;
@@ -34,16 +33,8 @@ public class ResizeHandleView extends PolyLineView {
         super.registerSynchronizers(configuration);
         configuration.add(Synchronizers.forProperty(color, color()));
         configuration.add(Synchronizers.forProperty(backgroundColor, background()));
-        configuration.add(Synchronizers.forProperty(halfWidth, new Runnable() {
-          public void run() {
-            updateLocation(centerLocation.get(), halfWidth.get());
-          }
-        }));
-        configuration.add(Synchronizers.forProperty(centerLocation, new Runnable() {
-          public void run() {
-            updateLocation(centerLocation.get(), halfWidth.get());
-          }
-        }));
+        configuration.add(Synchronizers.forProperty(halfWidth, () -> updateLocation(centerLocation.get(), halfWidth.get())));
+        configuration.add(Synchronizers.forProperty(centerLocation, () -> updateLocation(centerLocation.get(), halfWidth.get())));
         configuration.add(Synchronizers.forProperty(dragHandler, new WritableProperty<DragHandler>() {
           private Registration myRegistration;
           public void set(DragHandler handler) {
@@ -67,20 +58,10 @@ public class ResizeHandleView extends PolyLineView {
     return dragHandler.get() != null;
   }
   private ViewTrait getResizeHandlingTrait() {
-    return new ViewTraitBuilder().on(ViewEvents.MOUSE_PRESSED, new ViewEventHandler<MouseEvent>() {
-      public void handle(View view, MouseEvent event) {
-        dragHandler.get().dragStarted(event.location());
-        event.consume();
-      }
-    }).on(ViewEvents.MOUSE_DRAGGED, new ViewEventHandler<MouseEvent>() {
-      public void handle(View view, MouseEvent event) {
-        dragHandler.get().updatePosition(event.location());
-      }
-    }).on(ViewEvents.MOUSE_RELEASED, new ViewEventHandler<MouseEvent>() {
-      public void handle(View view, MouseEvent event) {
-        dragHandler.get().dragStopped(event.location());
-      }
-    }).build();
+    return new ViewTraitBuilder().on(ViewEvents.MOUSE_PRESSED, (View view, MouseEvent event) -> {
+      dragHandler.get().dragStarted(event.location());
+      event.consume();
+    }).on(ViewEvents.MOUSE_DRAGGED, (View view, MouseEvent event) -> dragHandler.get().updatePosition(event.location())).on(ViewEvents.MOUSE_RELEASED, (View view, MouseEvent event) -> dragHandler.get().dragStopped(event.location())).build();
   }
   private void updateLocation(Vector location, int halfWidth) {
     points.clear();

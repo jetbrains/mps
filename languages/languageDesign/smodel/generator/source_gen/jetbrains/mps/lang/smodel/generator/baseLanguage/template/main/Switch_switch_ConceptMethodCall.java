@@ -41,7 +41,7 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
   public Collection<SNode> applyDefault(final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_4(new SourceSubstituteMacroNodeContext(context, callMacro_vddlfn_b0a0a2a5));
+    SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_4(new SourceSubstituteMacroNodeContext(context, callMacro));
     TemplateContext context1 = context;
     context1 = context1.subContext(null, callInputNode1);
     if (callInputNode1 != null) {
@@ -59,7 +59,7 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_0(new SourceSubstituteMacroNodeContext(context, callMacro_vddlfn_b0a0a2a1g));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_0(new SourceSubstituteMacroNodeContext(context, callMacro1));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -78,7 +78,7 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_1(new SourceSubstituteMacroNodeContext(context, callMacro_vddlfn_b0a0a2a1h));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_1(new SourceSubstituteMacroNodeContext(context, callMacro2));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -97,7 +97,7 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_2(new SourceSubstituteMacroNodeContext(context, callMacro_vddlfn_b0a0a2a1i));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_2(new SourceSubstituteMacroNodeContext(context, callMacro3));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -116,7 +116,7 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_3(new SourceSubstituteMacroNodeContext(context, callMacro_vddlfn_b0a0a2a1j));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_3(new SourceSubstituteMacroNodeContext(context, callMacro4));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -133,11 +133,11 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
 
 
   }
-  private static final SNodePointer callMacro_vddlfn_b0a0a2a5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743283");
-  private static final SNodePointer callMacro_vddlfn_b0a0a2a1g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525741554");
-  private static final SNodePointer callMacro_vddlfn_b0a0a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080033605");
-  private static final SNodePointer callMacro_vddlfn_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743045");
-  private static final SNodePointer callMacro_vddlfn_b0a0a2a1j = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080034666");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743283");
+  private static final SNodePointer callMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525741554");
+  private static final SNodePointer callMacro2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080033605");
+  private static final SNodePointer callMacro3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743045");
+  private static final SNodePointer callMacro4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080034666");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ThisNodeExpression$v1 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression");

@@ -79,7 +79,7 @@ public class SearchResult<T> {
   }
 
   public boolean equals(Object o) {
-    if (!((o instanceof SearchResult))) {
+    if (!(o instanceof SearchResult)) {
       return false;
     }
     SearchResult searchResult = (SearchResult) o;

@@ -14,7 +14,6 @@ import java.util.Collection;
 import jetbrains.mps.smodel.Generator;
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.util.ReferenceUpdater;
@@ -59,7 +58,7 @@ public final class CopyModuleHelper {
     copy = createModule(myCopyLocation, copyDescriptor);
     try {
       addModuleToProject(copy);
-      copyModelsAndFacets(copy);
+      copyModelRoots(copy);
       adjustReferences(copy);
     } catch (CopyNotSupportedException e) {
       return recover(e, copy);
@@ -70,9 +69,8 @@ public final class CopyModuleHelper {
     return copy;
   }
 
-  private void copyModelsAndFacets(AbstractModule copy) throws CopyNotSupportedException {
+  private void copyModelRoots(AbstractModule copy) throws CopyNotSupportedException {
     copyModelRoots(myOriginal, copy);
-    copyFacets(myOriginal, copy);
     if (myOriginal instanceof Language) {
       Collection<Generator> copyGenerators = ((Language) copy).getOwnedGenerators();
       Collection<Generator> originalGenerators = ((Language) myOriginal).getOwnedGenerators();
@@ -88,7 +86,6 @@ public final class CopyModuleHelper {
           newGen_var = newGen_it.next();
           oldGen_var = oldGen_it.next();
           copyModelRoots(oldGen_var, newGen_var);
-          copyFacets(oldGen_var, newGen_var);
         }
       }
     }
@@ -101,9 +98,7 @@ public final class CopyModuleHelper {
 
   private void addModuleToProject(AbstractModule result) {
     myProject.addModule(result);
-    if (myProject instanceof StandaloneMPSProject) {
-      ((StandaloneMPSProject) myProject).setFolderFor(result, myVirtualFolder);
-    }
+    myProject.setVirtualFolder(result, myVirtualFolder);
   }
 
   /**
@@ -150,13 +145,5 @@ public final class CopyModuleHelper {
       }
       target.setModuleDescriptor(targetDescriptor);
     }
-  }
-
-  /**
-   * TODO formally facets need to be copied in the same way model roots are now.
-   * However facets are going to become totally independent from the module
-   */
-  public static void copyFacets(AbstractModule source, AbstractModule target) throws CopyNotSupportedException {
-    // nop
   }
 }

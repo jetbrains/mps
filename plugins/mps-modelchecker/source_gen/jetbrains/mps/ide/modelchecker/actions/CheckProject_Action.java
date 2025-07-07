@@ -10,7 +10,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
 
@@ -22,6 +21,7 @@ public class CheckProject_Action extends BaseAction {
     super("Check Project", "Check project for unresolved references and typesystem rules", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
     this.addPlace(null);
   }
   @Override
@@ -35,7 +35,6 @@ public class CheckProject_Action extends BaseAction {
     }
     {
       Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
@@ -44,6 +43,6 @@ public class CheckProject_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ModelCheckerTool.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).checkProjectAndShowResults();
+    ModelCheckerTool.getInstance(event.getData(CommonDataKeys.PROJECT)).checkProjectAndShowResults();
   }
 }

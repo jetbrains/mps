@@ -15,7 +15,6 @@ import java.io.File;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.tool.builder.WorkerBase;
@@ -41,11 +40,7 @@ public class GeneratorWorker extends BaseGeneratorWorker {
       final SRepository repo = project.getRepository();
       // FIXME modules in processModuleFiles are registered with some internal owner, while here we shall use project.addModule(SModule) instead to
       //        get module properly registered
-      Set<SModule> modules = new ModelAccessHelper(repo).runWriteAction(new Computable<Set<SModule>>() {
-        public Set<SModule> compute() {
-          return processModuleFiles(repo, modulePaths);
-        }
-      });
+      Set<SModule> modules = new ModelAccessHelper(repo).runWriteAction(() -> processModuleFiles(repo, modulePaths));
       allModules.addAll(modules);
       Boolean bootstrap = chunk.value();
       if (bootstrap) {
@@ -64,11 +59,9 @@ public class GeneratorWorker extends BaseGeneratorWorker {
     // Disposing "project" modules first
     // XXX OTOH, processModuleFile didn't register the modules right into the project, but here we sort of assume we did.
     final ModuleRepositoryFacade repositoryFacade = new ModuleRepositoryFacade(project);
-    project.getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        for (SModule nextModule : SetSequence.fromSet(allModules)) {
-          repositoryFacade.unregisterModule(nextModule);
-        }
+    project.getModelAccess().runWriteAction(() -> {
+      for (SModule nextModule : SetSequence.fromSet(allModules)) {
+        repositoryFacade.unregisterModule(nextModule);
       }
     });
 

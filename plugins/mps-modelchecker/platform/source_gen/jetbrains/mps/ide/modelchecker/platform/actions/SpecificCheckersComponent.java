@@ -12,6 +12,13 @@ import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
+/**
+ * Responsible for registering a bunch of random "specific" checkers with {@link jetbrains.mps.errors.CheckerRegistry }
+ * <p>
+ * See {@link jetbrains.mps.ide.modelchecker.platform.actions.UnresolvedReferencesChecker }<br>
+ * See {@link jetbrains.mps.ide.modelchecker.platform.actions.GeneratorTemplatesChecker }<br>
+ * See {@link jetbrains.mps.ide.modelchecker.platform.actions.ProperGenPlanChecker }<br>
+ */
 @GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/611563321809061563", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class SpecificCheckersComponent implements BaseComponent {
   private List<IChecker<?, ?>> myCheckers;

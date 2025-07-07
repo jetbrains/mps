@@ -31,7 +31,7 @@ public class check_CompositeWithParentScopeExpression_NonTypesystemRule extends 
       }
     }
     SNode type = TypecheckingFacade.getFromContext().getTypeOf(expr);
-    if (!((TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_f3933j_b0a0a0a3a1()) || TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_f3933j_b0a0a0a3a1_0()) || TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_f3933j_b0a0a0d0b())))) {
+    if (!(TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_f3933j_b0a0a0a3a1()) || TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_f3933j_b0a0a0a3a1_0()) || TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_f3933j_b0a0a0d0b()))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expr, "Parameter should be subtype of Scope or node<> or sequence<node<>>", "r:c2d05fc3-fe25-4093-95ce-8e3356e61084(jetbrains.mps.lang.scopes.typesystem)", "8077936094962969415", null, errorTarget);

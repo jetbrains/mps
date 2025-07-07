@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,17 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.java.tests;
 
 import com.intellij.codeInsight.daemon.impl.quickfix.ImportClassFix;
 import com.intellij.codeInsight.intention.IntentionAction;
 import com.intellij.codeInsight.intention.IntentionActionDelegate;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.testFramework.PlatformTestCase;
 import com.intellij.testFramework.fixtures.JavaCodeInsightTestFixture;
 import com.intellij.testFramework.fixtures.impl.TempDirTestFixtureImpl;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.idea.core.tests.DataMPSFixtureTestCase;
 import jetbrains.mps.vfs.IFile;
 
@@ -74,7 +73,7 @@ public class ReferenceBLThingsFromJavaTest extends DataMPSFixtureTestCase {
 
   private void addBLClassImport(String expectedJavaFile, String classNameToType) {
     JavaCodeInsightTestFixture javaFixture = getMpsFixture().getCodeInsightTestFixture();
-    javaFixture.openFileInEditor(VirtualFileUtils.getVirtualFile(javafile));
+    javaFixture.openFileInEditor(LocalFileSystem.getInstance().findFileByPath(javafile.getPath()));
     int index = new StringBuilder(javaFixture.getEditor().getDocument().getCharsSequence()).indexOf("// here");
 
     javaFixture.getEditor().getCaretModel().moveToOffset(index + "// here".length());

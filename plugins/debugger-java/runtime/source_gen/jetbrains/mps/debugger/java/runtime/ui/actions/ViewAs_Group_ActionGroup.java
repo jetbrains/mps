@@ -21,8 +21,6 @@ import jetbrains.mps.debug.api.AbstractDebugSession;
 import jetbrains.mps.debugger.api.ui.DebugActionsUtil;
 import jetbrains.mps.debugger.java.api.state.JavaUiState;
 import jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.internal.collections.runtime.ICollectionSequence;
 import jetbrains.mps.debugger.java.runtime.state.customViewers.CustomViewersManagerImpl;
 import org.jetbrains.annotations.Nullable;
 
@@ -52,11 +50,7 @@ public class ViewAs_Group_ActionGroup extends GeneratedActionGroup {
 
     JavaUiState uiState = (JavaUiState) debugSession.getUiState();
     final Set<ValueWrapperFactory> factories = SetSequence.fromSet(new HashSet<ValueWrapperFactory>());
-    uiState.invokeEvaluationSynchronously(new _FunctionTypes._return_P0_E0<ICollectionSequence<ValueWrapperFactory>>() {
-      public ICollectionSequence<ValueWrapperFactory> invoke() {
-        return SetSequence.fromSet(factories).addSequence(SetSequence.fromSet(CustomViewersManagerImpl.getInstanceImpl().getValueWrapperFactories(((ValueWrapper) value).getValue())));
-      }
-    });
+    uiState.invokeEvaluationSynchronously(() -> SetSequence.fromSet(factories).addSequence(SetSequence.fromSet(CustomViewersManagerImpl.getInstanceImpl().getValueWrapperFactories(((ValueWrapper) value).getValue()))));
 
     if (SetSequence.fromSet(factories).count() <= 1) {
       event.getPresentation().setVisible(false);

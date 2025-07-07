@@ -31,7 +31,8 @@ import jetbrains.mps.ide.platform.watching.ReloadListener;
 
   public void activate() {
     myReloadManager.addReloadListener(myReloadListener);
-    myVirtualFileManager.addVirtualFileManagerListener(myVirtualFileManagerListener);
+    // TODO: 232 platform API change
+    myVirtualFileManager.addVirtualFileManagerListener(myVirtualFileManagerListener, null);
   }
 
   public void deactivate() {

@@ -5,14 +5,13 @@ package jetbrains.mps.samples.heating.constraints;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -29,27 +28,18 @@ public class Slot_Constraints extends BaseConstraintsDescriptor {
 
   public static class Start_Property extends BasePropertyConstraintsDescriptor {
     public Start_Property(ConstraintsDescriptor container) {
-      super(PROPS.start$f2z3, container);
+      super(PROPS.start$f2z3, container, false, false, true);
     }
-    @Override
-    public boolean hasOwnValidator() {
-      return true;
-    }
-    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:85427802-2815-4ede-beac-6d6b51b72018(jetbrains.mps.samples.heating.constraints)", "5726447348463760065");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
       boolean result = staticValidateProperty(node, SPropertyOperations.castInteger(propertyValue));
       if (!(result) && checkingNodeContext != null) {
-        checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
+        checkingNodeContext.setBreakingNode(new SNodePointer("r:85427802-2815-4ede-beac-6d6b51b72018(jetbrains.mps.samples.heating.constraints)", "5726447348463760065"));
       }
       return result;
     }
     private static boolean staticValidateProperty(final SNode node, final int propertyValue) {
-      return propertyValue >= 0 && propertyValue <= 24 && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.DailyPlan$zP), LINKS.items$4wAy)).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(it, node) || SPropertyOperations.getInteger(it, PROPS.start$f2z3) != propertyValue;
-        }
-      });
+      return propertyValue >= 0 && propertyValue <= 24 && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.DailyPlan$zP), LINKS.items$4wAy)).all((it) -> Objects.equals(it, node) || SPropertyOperations.getInteger(it, PROPS.start$f2z3) != propertyValue);
     }
   }
   @Override

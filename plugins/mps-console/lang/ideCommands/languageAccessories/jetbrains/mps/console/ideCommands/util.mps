@@ -6,19 +6,20 @@
   </languages>
   <imports>
     <import index="qgo0" ref="r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)" />
-    <import index="tft2" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.impl.plan(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="r99j" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)" />
     <import index="57ty" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.messages(MPS.Platform/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
-    <import index="ap4t" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="vndm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
+    <import index="tft2" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.impl.plan(MPS.Generator/)" />
+    <import index="ap4t" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator(MPS.Generator/)" />
+    <import index="r99j" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)" />
+    <import index="r99k" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)" />
     <import index="caxt" ref="r:135a606f-0376-4c5c-9ab8-4030f051a062(jetbrains.mps.console.ideCommands.structure)" implicit="true" />
     <import index="eynw" ref="r:359b1d2b-77c4-46df-9bf2-b25cbea32254(jetbrains.mps.console.base.structure)" implicit="true" />
   </imports>
@@ -148,7 +149,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -180,7 +181,7 @@
       <concept id="1184952934362" name="jetbrains.mps.baseLanguage.structure.DimensionExpression" flags="nn" index="3$GHV9">
         <child id="1184953288404" name="expression" index="3$I4v7" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -215,7 +216,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -438,7 +439,7 @@
             <property role="3TUv4t" value="false" />
             <property role="TrG5h" value="generator" />
             <node concept="3uibUv" id="4dzOCaryA4c" role="1tU5fm">
-              <ref role="3uigEE" to="r99j:~TemplateModule" resolve="TemplateModule" />
+              <ref role="3uigEE" to="r99k:~TemplateModule" resolve="TemplateModule" />
             </node>
           </node>
           <node concept="3clFbS" id="4dzOCaryA4d" role="2LFqv$">
@@ -457,7 +458,7 @@
                     <ref role="3cqZAo" node="4dzOCaryA4b" resolve="generator" />
                   </node>
                   <node concept="liA8E" id="4dzOCaryA4k" role="2OqNvi">
-                    <ref role="37wK5l" to="r99j:~TemplateModule.getPriorities()" resolve="getPriorities" />
+                    <ref role="37wK5l" to="r99k:~TemplateModule.getPriorities()" resolve="getPriorities" />
                   </node>
                 </node>
               </node>
@@ -864,7 +865,7 @@
                   <node concept="3uibUv" id="9BRzRqj6Jl" role="1tU5fm">
                     <ref role="3uigEE" to="33ny:~List" resolve="List" />
                     <node concept="3uibUv" id="9BRzRqj6Jm" role="11_B2D">
-                      <ref role="3uigEE" to="r99j:~TemplateMappingConfiguration" resolve="TemplateMappingConfiguration" />
+                      <ref role="3uigEE" to="r99k:~TemplateMappingConfiguration" resolve="TemplateMappingConfiguration" />
                     </node>
                   </node>
                   <node concept="2OqwBi" id="9BRzRqj6Jn" role="33vP2m">
@@ -896,7 +897,7 @@
                         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                       </node>
                       <node concept="3uibUv" id="9BRzRqj6Jy" role="11_B2D">
-                        <ref role="3uigEE" to="r99j:~TemplateMappingConfiguration" resolve="TemplateMappingConfiguration" />
+                        <ref role="3uigEE" to="r99k:~TemplateMappingConfiguration" resolve="TemplateMappingConfiguration" />
                       </node>
                     </node>
                   </node>
@@ -922,7 +923,7 @@
                       <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                     </node>
                     <node concept="3uibUv" id="9BRzRqj6JE" role="11_B2D">
-                      <ref role="3uigEE" to="r99j:~TemplateMappingConfiguration" resolve="TemplateMappingConfiguration" />
+                      <ref role="3uigEE" to="r99k:~TemplateMappingConfiguration" resolve="TemplateMappingConfiguration" />
                     </node>
                   </node>
                 </node>
@@ -946,7 +947,7 @@
                     <node concept="3cpWsn" id="3Ru5nj7d2t4" role="3cpWs9">
                       <property role="TrG5h" value="templateModule" />
                       <node concept="3uibUv" id="3Ru5nj7d2cv" role="1tU5fm">
-                        <ref role="3uigEE" to="r99j:~TemplateModule" resolve="TemplateModule" />
+                        <ref role="3uigEE" to="r99k:~TemplateModule" resolve="TemplateModule" />
                       </node>
                       <node concept="2OqwBi" id="3Ru5nj7d2t5" role="33vP2m">
                         <node concept="2OqwBi" id="3Ru5nj7d2t6" role="2Oq$k0">
@@ -959,11 +960,11 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="3Ru5nj7d2ta" role="2OqNvi">
-                            <ref role="37wK5l" to="r99j:~TemplateMappingConfiguration.getModel()" resolve="getModel" />
+                            <ref role="37wK5l" to="r99k:~TemplateMappingConfiguration.getModel()" resolve="getModel" />
                           </node>
                         </node>
                         <node concept="liA8E" id="3Ru5nj7d2tb" role="2OqNvi">
-                          <ref role="37wK5l" to="r99j:~TemplateModel.getModule()" resolve="getModule" />
+                          <ref role="37wK5l" to="r99k:~TemplateModel.getModule()" resolve="getModule" />
                         </node>
                       </node>
                     </node>
@@ -2327,7 +2328,7 @@
           <node concept="3cpWsn" id="3y9uGy1mwHc" role="1Duv9x">
             <property role="TrG5h" value="tm" />
             <node concept="3uibUv" id="3y9uGy1mwHg" role="1tU5fm">
-              <ref role="3uigEE" to="r99j:~TemplateModule" resolve="TemplateModule" />
+              <ref role="3uigEE" to="r99k:~TemplateModule" resolve="TemplateModule" />
             </node>
           </node>
           <node concept="37vLTw" id="3y9uGy1mwHh" role="1DdaDG">
@@ -2538,7 +2539,7 @@
         <node concept="3uibUv" id="3y9uGy1mo$k" role="1tU5fm">
           <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
           <node concept="3uibUv" id="3y9uGy1mo$n" role="11_B2D">
-            <ref role="3uigEE" to="r99j:~TemplateModule" resolve="TemplateModule" />
+            <ref role="3uigEE" to="r99k:~TemplateModule" resolve="TemplateModule" />
           </node>
         </node>
       </node>

@@ -15,11 +15,9 @@
  */
 package org.jetbrains.mps.openapi.model;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
-@Deprecated
-@ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
 public interface SModelScope {
 
   Iterable<? extends SModel> getModels();

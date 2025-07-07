@@ -11,12 +11,10 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.lang.test.intentions.MoveCheckToContainedNode;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.test.behavior.ITestAnnotationsContainer__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -41,21 +39,9 @@ public class CheckAnnotationOnContainerNode extends MigrationScriptBase {
     {
       SearchScope scope_kl3vza_a0e = CommandUtil.createScope(m);
       final SearchScope scope_kl3vza_a0e_0 = new EditableFilteringScope(scope_kl3vza_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_kl3vza_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_kl3vza_a0e_0;
       final MoveCheckToContainedNode intention = new MoveCheckToContainedNode();
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeOperationsContainer$aj, true)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return intention.isApplicable(it, null);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          intention.execute(it, null);
-        }
-      });
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeOperationsContainer$aj, true)).where((it) -> intention.isApplicable(it, null)).visitAll((it) -> intention.execute(it, null));
     }
   }
   @Override
@@ -63,17 +49,9 @@ public class CheckAnnotationOnContainerNode extends MigrationScriptBase {
     {
       SearchScope scope_kl3vza_a0f = CommandUtil.createScope(m);
       final SearchScope scope_kl3vza_a0f_0 = scope_kl3vza_a0f;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_kl3vza_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractTestNodeAnnotation$lh, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.hasRole(it, LINKS.smodelAttribute$KJ43) && !((boolean) ITestAnnotationsContainer__BehaviorDescriptor.canAddTestAnnotation_id143xXLdhXGe.invoke(SNodeOperations.asSConcept(CONCEPTS.ITestAnnotationsContainer$Db), SNodeOperations.getParent(it)));
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_kl3vza_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractTestNodeAnnotation$lh, false)).where((it) -> SNodeOperations.hasRole(it, LINKS.smodelAttribute$KJ43) && !((boolean) ITestAnnotationsContainer__BehaviorDescriptor.canAddTestAnnotation_id143xXLdhXGe.invoke(SNodeOperations.asSConcept(CONCEPTS.ITestAnnotationsContainer$Db), SNodeOperations.getParent(it)))).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           Problem problem = new NotMigratedNode(it) {
             @Override
             public String getMessage() {
@@ -85,7 +63,7 @@ public class CheckAnnotationOnContainerNode extends MigrationScriptBase {
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 4);
   }
 

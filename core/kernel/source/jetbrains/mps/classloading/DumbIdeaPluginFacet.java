@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.extapi.module.ModuleFacetBase;
-import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -24,11 +24,6 @@ import org.jetbrains.mps.openapi.persistence.Memento;
 
 public class DumbIdeaPluginFacet extends ModuleFacetBase implements IdeaPluginModuleFacet {
   private String pluginId;
-
-  @Deprecated(forRemoval = true)
-  public DumbIdeaPluginFacet() {
-    super(FACET_TYPE);
-  }
 
   public DumbIdeaPluginFacet(@NotNull SModule module) {
     super(FACET_TYPE, module);
@@ -42,7 +37,10 @@ public class DumbIdeaPluginFacet extends ModuleFacetBase implements IdeaPluginMo
   @Nullable
   @Override
   public ClassLoader getClassLoader() {
-    return ClassLoaderManager.class.getClassLoader();
+    Logger.getLogger(getClass()).warnDeprecatedUse("IdeaPluginModuleFacet.getClassLoader has been deprecated and shall not be used");
+    // if there's code still using this method, give the same value as others users of the CLM would see
+    // (check MPSClassLoadersRegistry#createIDEADelegateClassLoader)
+    return new RootClassloaderLookup(getModule()).get();
   }
 
   @Override

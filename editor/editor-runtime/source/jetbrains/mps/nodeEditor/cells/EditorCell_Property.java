@@ -21,7 +21,6 @@ import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
 import jetbrains.mps.smodel.NodeReadAccessInEditorListener;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -34,6 +33,7 @@ import org.jetbrains.mps.openapi.module.ModelAccess;
  */
 public class EditorCell_Property extends EditorCell_Label implements SynchronizeableEditorCell {
   private final ModelAccessor myModelAccessor;
+  private final boolean myValueFromModelMayBeInvalid;
   private boolean myCommitInProgress;
   private boolean myCommitInCommand = true;
   private String myLastModelText;
@@ -41,6 +41,7 @@ public class EditorCell_Property extends EditorCell_Label implements Synchronize
   public EditorCell_Property(EditorContext editorContext, ModelAccessor accessor, SNode node) {
     super(editorContext, node, null);
     myModelAccessor = accessor;
+    myValueFromModelMayBeInvalid = !(myModelAccessor instanceof ReadOnly);
     if (myModelAccessor instanceof TransactionalPropertyAccessor) {
       TransactionalPropertyAccessor propertyAccessor = (TransactionalPropertyAccessor) myModelAccessor;
       propertyAccessor.setCell(this);
@@ -78,9 +79,7 @@ public class EditorCell_Property extends EditorCell_Label implements Synchronize
   private void synchronizeViewWithModel_internal() {
     String text = myModelAccessor.getText();
     myLastModelText = text;
-    if (!(myModelAccessor instanceof ReadOnly)) {
-      setErrorState(!isValidText(text));
-    }
+    setErrorState(myValueFromModelMayBeInvalid && !isValidText(text));
     setText(text);
   }
 

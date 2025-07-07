@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.menus.style.tests.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
@@ -17,11 +18,11 @@ import java.util.ArrayList;
 
 @MPSLaunch
 public class TestCompletionCustomization_ContextMatcher_CustomActionNoFeatureNoStyling_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(TestCompletionCustomization_ContextMatcher_CustomActionNoFeatureNoStyling_Test.class, "${mps_home}", "r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(TestCompletionCustomization_ContextMatcher_CustomActionNoFeatureNoStyling_Test.class, "${mps_home}", "r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)", false));
 
   public TestCompletionCustomization_ContextMatcher_CustomActionNoFeatureNoStyling_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -39,13 +40,11 @@ public class TestCompletionCustomization_ContextMatcher_CustomActionNoFeatureNoS
     public void testMethodImpl() throws Exception {
       initEditorComponent("8373324885176752931", "8373324885177150308");
       getEditorComponent().getSelectedCell().setSubstituteInfo(CustomizationTestHelper.createTextPropertySubstituteInfo(getEditorComponent(), "with priority", "no priority"));
-      EditorTestUtil.runWithCompletionStyling(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
-          Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 3);
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
-        }
+      EditorTestUtil.runWithCompletionStyling(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
+        Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 3);
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
       }, false);
     }
   }

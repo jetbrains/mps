@@ -13,17 +13,15 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.project.MPSProject;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.workbench.actions.model.DeleteModelHelper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.ui.UIUtil;
-import com.intellij.util.PairFunction;
 import javax.swing.JCheckBox;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.ide.save.SaveRepositoryCommand;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.workbench.actions.model.DeleteModelHelper;
+import org.jetbrains.mps.openapi.module.SModule;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3575273646046443826", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class DeleteModels_Action extends BaseAction {
@@ -35,6 +33,7 @@ public class DeleteModels_Action extends BaseAction {
     this.forceSafe = forceSafe_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -47,6 +46,7 @@ public class DeleteModels_Action extends BaseAction {
     } else {
       event.getPresentation().setText((((List<SModel>) MapSequence.fromMap(_params).get("models")).size() == 1 ? IdeBundle.message("actions.model.delete.title") : IdeBundle.message("actions.model.delete.title.many")));
     }
+    // here we rely on always visible == false ^^^ to hide disabled action (e.g. if safe delete is not supported)
     setEnabledState(event.getPresentation(), DeleteModels_Action.this.isApplicable(_params));
   }
   @Override
@@ -57,13 +57,6 @@ public class DeleteModels_Action extends BaseAction {
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       MapSequence.fromMap(_params).put("project", p);
-      if (p == null) {
-        return false;
-      }
-    }
-    {
-      SModule p = event.getData(MPSCommonDataKeys.CONTEXT_MODULE);
-      MapSequence.fromMap(_params).put("contextModule", p);
       if (p == null) {
         return false;
       }
@@ -82,34 +75,33 @@ public class DeleteModels_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final Wrappers._boolean safeDelete = new Wrappers._boolean();
+    final boolean safeDelete;
     if (DeleteModels_Action.this.forceSafe) {
-      safeDelete.value = true;
-    } else {
-      int result = Messages.showCheckboxMessageDialog(IdeBundle.message("actions.model.delete.message"), IdeBundle.message("actions.model.delete.title.many"), new String[]{IdeBundle.message("actions.module.delete.ok.button.text"), Messages.CANCEL_BUTTON}, UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.model.delete.option.safe")), true, 0, 0, Messages.getQuestionIcon(), new PairFunction<Integer, JCheckBox, Integer>() {
-        public Integer fun(Integer exitCode, JCheckBox checkBox) {
-          return (exitCode == -1 || exitCode == 1 ? Messages.CANCEL : Boolean.compare(true, checkBox.isSelected()));
-        }
-      });
-
+      safeDelete = true;
+    } else if (DeleteModelHelper.safeDeleteSupported(((MPSProject) MapSequence.fromMap(_params).get("project")))) {
+      int result = Messages.showCheckboxMessageDialog(IdeBundle.message("actions.model.delete.message"), IdeBundle.message("actions.model.delete.title.many"), new String[]{IdeBundle.message("actions.module.delete.ok.button.text"), Messages.getCancelButton()}, UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.model.delete.option.safe")), true, 0, 0, Messages.getQuestionIcon(), (Integer exitCode, JCheckBox checkBox) -> (exitCode == -1 || exitCode == 1 ? Messages.CANCEL : Boolean.compare(true, checkBox.isSelected())));
       if (result == Messages.CANCEL) {
         return;
       }
 
-      safeDelete.value = result == Messages.YES;
+      safeDelete = result == Messages.YES;
+    } else {
+      safeDelete = false;
     }
 
     final SRepository repository = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
-    repository.getModelAccess().executeCommandInEDT(new Runnable() {
-      public void run() {
-        // see MPS-18743
-        new SaveRepositoryCommand(repository).execute();
-        for (SModel model : ListSequence.fromList(((List<SModel>) MapSequence.fromMap(_params).get("models")))) {
-          if (SModelStereotype.isStubModel(model) || SModelStereotype.isDescriptorModel(model)) {
-            continue;
-          }
-          DeleteModelHelper.deleteModel(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModule) MapSequence.fromMap(_params).get("contextModule")), model, safeDelete.value, true);
+    repository.getModelAccess().executeCommandInEDT(() -> {
+      // see MPS-18743
+      new SaveRepositoryCommand(repository).execute();
+      for (SModel model : ListSequence.fromList(((List<SModel>) MapSequence.fromMap(_params).get("models")))) {
+        if (SModelStereotype.isStubModel(model) || SModelStereotype.isDescriptorModel(model)) {
+          continue;
         }
+        SModule module = model.getModule();
+        if (module == null) {
+          continue;
+        }
+        DeleteModelHelper.deleteModel(((MPSProject) MapSequence.fromMap(_params).get("project")), module, model, safeDelete, true);
       }
     });
   }
@@ -123,6 +115,9 @@ public class DeleteModels_Action extends BaseAction {
     return res.toString();
   }
   public boolean isApplicable(final Map<String, Object> _params) {
+    if (DeleteModels_Action.this.forceSafe && !(DeleteModelHelper.safeDeleteSupported(((MPSProject) MapSequence.fromMap(_params).get("project"))))) {
+      return false;
+    }
     for (SModel m : ListSequence.fromList(((List<SModel>) MapSequence.fromMap(_params).get("models")))) {
       if (!(SModelStereotype.isStubModel(m)) && !(SModelStereotype.isDescriptorModel(m))) {
         return true;

@@ -50,7 +50,7 @@ class CreatePanel extends JPanel {
       @Override
       public void mouseClicked(final MouseEvent e) {
         ActionGroup group = new CreateGroupsBuilder(mpsProject, baseNode, callback).getCreateGroup(tab);
-        ActionPopupMenu popup = ActionManager.getInstance().createActionPopupMenu(ActionPlaces.UNKNOWN, group);
+        ActionPopupMenu popup = ActionManager.getInstance().createActionPopupMenu(ActionPlaces.EDITOR_TAB_POPUP, group);
         JPopupMenu popupComponent = popup.getComponent();
         popupComponent.show(e.getComponent(), e.getX(), e.getY());
       }

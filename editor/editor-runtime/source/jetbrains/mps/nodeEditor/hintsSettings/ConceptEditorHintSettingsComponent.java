@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,10 +28,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Semen Alperovich
- * 05 15, 2013
+ * FTR, this class has to live in [mps-editor], but as long as EditorComponent/Updater access it directly, keep it here.
+ * Need to refactor UpdaterImpl first to get hints supplied from outside all the time.
  */
-
 @State(
     name = "ConceptEditorHintSettings",
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
@@ -81,7 +80,7 @@ public class ConceptEditorHintSettingsComponent implements PersistentStateCompon
   }
 
   public static ConceptEditorHintSettingsComponent getInstance(Project project) {
-    return project.getComponent(ConceptEditorHintSettingsComponent.class);
+    return project.getService(ConceptEditorHintSettingsComponent.class);
   }
 
   public static class HintsState {

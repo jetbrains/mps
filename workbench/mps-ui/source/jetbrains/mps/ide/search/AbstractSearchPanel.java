@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,16 @@ package jetbrains.mps.ide.search;
 
 import com.intellij.icons.AllIcons.Actions;
 import com.intellij.icons.AllIcons.ToolbarDecorator;
-import com.intellij.openapi.actionSystem.*;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CustomShortcutSet;
+import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.actionSystem.IdeActions;
+import com.intellij.openapi.actionSystem.KeyboardShortcut;
+import com.intellij.openapi.actionSystem.Shortcut;
 import com.intellij.openapi.editor.impl.EditorHeaderComponent;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.text.StringUtil;
@@ -25,12 +34,25 @@ import com.intellij.ui.LightColors;
 import com.intellij.ui.components.panels.NonOpaquePanel;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.ui.CompletionTextField;
+import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
+import javax.swing.AbstractAction;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -80,6 +102,7 @@ public abstract class AbstractSearchPanel extends EditorHeaderComponent {
     }
 
     final ActionToolbar tb = ActionManager.getInstance().createActionToolbar("SearchBar", group, true);
+    tb.setTargetComponent(this);
     tb.setLayoutPolicy(ActionToolbar.NOWRAP_LAYOUT_POLICY);
     myToolbarComponent = tb.getComponent();
     myToolbarComponent.setBorder(null);
@@ -333,6 +356,12 @@ public abstract class AbstractSearchPanel extends EditorHeaderComponent {
     }
 
     @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
+    }
+
+    @Override
     public void update(final AnActionEvent e) {
       e.getPresentation().setEnabled(!myText.getProposals(null).isEmpty());
     }
@@ -352,6 +381,12 @@ public abstract class AbstractSearchPanel extends EditorHeaderComponent {
       registerCustomShortcutSet(
         new CustomShortcutSet(shortcuts.toArray(new Shortcut[0])),
         myText);
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
     }
 
     @Override
@@ -382,6 +417,12 @@ public abstract class AbstractSearchPanel extends EditorHeaderComponent {
     }
 
     @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
+    }
+
+    @Override
     public void update(AnActionEvent e) {
       e.getPresentation().setEnabled(!myText.completionIsVisible() && myText.getText().length() > 0);
     }
@@ -401,6 +442,12 @@ public abstract class AbstractSearchPanel extends EditorHeaderComponent {
       if (findNext != null) {
         registerCustomShortcutSet(findNext.getShortcutSet(), myText);
       }
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
     }
 
     @Override

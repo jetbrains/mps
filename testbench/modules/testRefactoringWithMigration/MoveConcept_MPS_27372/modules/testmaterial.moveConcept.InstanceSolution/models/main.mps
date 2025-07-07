@@ -17,12 +17,12 @@
       </concept>
       <concept id="1204068184860841" name="testmaterial.moveConcept.SourceLanguage.structure.MoveConcept_B" flags="ng" index="3StuYY" />
       <concept id="493339661774729920" name="testmaterial.moveConcept.SourceLanguage.structure.MovePropertyInstance" flags="ng" index="3Vqgce" />
-      <concept id="493339661774729917" name="testmaterial.moveConcept.SourceLanguage.structure.MovePropertyContainer" flags="ng" index="3VqgdN">
+      <concept id="493339661774729917" name="testmaterial.moveConcept.SourceLanguage.structure.MovePropertyContainer" flags="ngI" index="3VqgdN">
         <property id="493339661774729918" name="moveProperty" index="3VqgdK" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>

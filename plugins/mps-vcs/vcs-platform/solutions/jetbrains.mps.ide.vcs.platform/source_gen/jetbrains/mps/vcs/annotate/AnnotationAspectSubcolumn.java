@@ -4,9 +4,8 @@ package jetbrains.mps.vcs.annotate;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.vcs.history.CommitsGraphNode;
-import java.awt.FontMetrics;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/391337651435524407", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ abstract class AnnotationAspectSubcolumn {
@@ -32,12 +31,8 @@ import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
     return myWidth;
   }
 
-  public void computeWidth(final FontMetrics fontMetrics, Iterable<CommitsGraphNode> graphNodes) {
-    myWidth = Sequence.fromIterable(graphNodes).foldLeft(0, new ILeftCombinator<CommitsGraphNode, Integer>() {
-      public Integer combine(Integer s, CommitsGraphNode graphNode) {
-        return Math.max(s, fontMetrics.stringWidth(getText(graphNode)));
-      }
-    });
+  public void computeWidth(final _FunctionTypes._return_P1_E0<? extends Integer, ? super String> textWidthFunc, Iterable<CommitsGraphNode> graphNodes) {
+    myWidth = Sequence.fromIterable(graphNodes).foldLeft(0, (Integer s, CommitsGraphNode graphNode) -> Math.max(s, textWidthFunc.invoke(getText(graphNode))));
   }
 
   public boolean isEnabled() {

@@ -6,7 +6,6 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 public class MPS9808 {
   private List<_FunctionTypes._void_P2_E0<? super String, ? super Object[]>> beforeListeners = ListSequence.fromList(new ArrayList<_FunctionTypes._void_P2_E0<? super String, ? super Object[]>>());
@@ -14,17 +13,9 @@ public class MPS9808 {
   public MPS9808() {
   }
   protected void fireBefore(final String command, final Object[] params) {
-    ListSequence.fromList(beforeListeners).visitAll(new IVisitor<_FunctionTypes._void_P2_E0<? super String, ? super Object[]>>() {
-      public void visit(_FunctionTypes._void_P2_E0<? super String, ? super Object[]> it) {
-        it.invoke(command, params);
-      }
-    });
+    ListSequence.fromList(beforeListeners).visitAll((it) -> it.invoke(command, params));
   }
   protected void fireAfter(final String command, final Object[] params) {
-    ListSequence.fromList(afterListeners).visitAll(new IVisitor<_FunctionTypes._void_P2_E0<? super String, ? super Object[]>>() {
-      public void visit(_FunctionTypes._void_P2_E0<? super String, ? super Object[]> it) {
-        it.invoke(command, params);
-      }
-    });
+    ListSequence.fromList(afterListeners).visitAll((it) -> it.invoke(command, params));
   }
 }

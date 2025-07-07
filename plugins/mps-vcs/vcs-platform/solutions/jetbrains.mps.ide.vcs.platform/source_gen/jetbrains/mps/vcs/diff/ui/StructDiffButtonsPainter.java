@@ -9,18 +9,16 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout;
 import jetbrains.mps.vcs.diff.ui.common.FoldingAreaButton;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroup;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import javax.swing.Icon;
+import jetbrains.mps.vcs.diff.changes.ModelChange;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.changes.NodeCopier;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/3425763466219069294", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public class StructDiffButtonsPainter extends ButtonsPainter {
@@ -29,16 +27,8 @@ public class StructDiffButtonsPainter extends ButtonsPainter {
   }
   @Override
   protected Iterable<FoldingAreaButton> createButtonsForChangeGroup(ChangeGroup changeGroup, int y) {
-    boolean allInsert = ListSequence.fromList(changeGroup.getChanges()).all(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange c) {
-        return c.getType() == ChangeType.ADD;
-      }
-    });
-    boolean allDelete = ListSequence.fromList(changeGroup.getChanges()).all(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange c) {
-        return c.getType() == ChangeType.DELETE;
-      }
-    });
+    boolean allInsert = ListSequence.fromList(changeGroup.getChanges()).all((c) -> c.getType() == ChangeType.ADD);
+    boolean allDelete = ListSequence.fromList(changeGroup.getChanges()).all((c) -> c.getType() == ChangeType.DELETE);
     List<FoldingAreaButton> result = ListSequence.fromList(new ArrayList<FoldingAreaButton>());
     if (isHighlightLeft()) {
       if (!(allInsert)) {
@@ -69,11 +59,7 @@ public class StructDiffButtonsPainter extends ButtonsPainter {
     }
     @Override
     public void performAction() {
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          ModelChange.rollbackChanges(getChangeGroup().getChanges());
-        }
-      });
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(() -> ModelChange.rollbackChanges(getChangeGroup().getChanges()));
     }
   }
   private class MyButtonApply extends FoldingAreaButton {
@@ -82,23 +68,13 @@ public class StructDiffButtonsPainter extends ButtonsPainter {
     }
     @Override
     public void performAction() {
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          List<ModelChange> changes = getChangeGroup().getChanges();
-          final SModel model = ListSequence.fromList(changes).first().getChangeSet().getOldModel();
-          final NodeCopier nc = new NodeCopier(model);
-          ListSequence.fromList(changes).ofType(NodeGroupChange.class).visitAll(new IVisitor<NodeGroupChange>() {
-            public void visit(NodeGroupChange ch) {
-              ch.prepare();
-            }
-          });
-          ListSequence.fromList(changes).visitAll(new IVisitor<ModelChange>() {
-            public void visit(ModelChange ch) {
-              ch.apply(model, nc);
-            }
-          });
-          nc.restoreIds(true);
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(() -> {
+        List<ModelChange> changes = getChangeGroup().getChanges();
+        final SModel model = ListSequence.fromList(changes).first().getChangeSet().getOldModel();
+        final NodeCopier nc = new NodeCopier(model);
+        ListSequence.fromList(changes).ofType(NodeGroupChange.class).visitAll((ch) -> ch.prepare());
+        ListSequence.fromList(changes).visitAll((ch) -> ch.apply(model, nc));
+        nc.restoreIds(true);
       });
     }
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,14 @@ import jetbrains.mps.checkers.AbstractNodeCheckerInEditor;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.checkers.LanguageErrorsCollector;
 import jetbrains.mps.checkers.MessagesFacade;
+import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackAspectRegistry;
 import jetbrains.mps.core.aspects.feedback.messages.ChildCardinalityContext;
-import jetbrains.mps.core.aspects.feedback.messages.MissingRefContext;
 import jetbrains.mps.core.aspects.feedback.messages.InConceptProblem;
+import jetbrains.mps.core.aspects.feedback.messages.MissingChildContext;
+import jetbrains.mps.core.aspects.feedback.messages.MissingPropertyContext;
+import jetbrains.mps.core.aspects.feedback.messages.MissingRefContext;
 import jetbrains.mps.core.aspects.feedback.messages.PredefinedStructureProblemKind;
 import jetbrains.mps.core.aspects.feedback.messages.RefCardinalityContext;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -32,9 +35,8 @@ import jetbrains.mps.errors.item.LanguageAbsentInRepoProblem;
 import jetbrains.mps.errors.item.LanguageNotLoadedProblem;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.core.aspects.feedback.messages.MissingChildContext;
-import jetbrains.mps.core.aspects.feedback.messages.MissingPropertyContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -44,8 +46,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
+import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class StructureChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
@@ -136,11 +141,14 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
 
   private boolean checkMissingRuntimeLanguages(SRepository repository, SNode node, LanguageErrorsCollector errorsCollector) {
     SLanguage lang = node.getConcept().getLanguage();
-    if (!lang.isValid()) {
-      if (lang.getSourceModule() == null) {
+    LanguageRegistry lr = myHost == null ? null : myHost.findComponent(LanguageRegistry.class);
+    if (lr != null && lr.getLanguage(lang) == null) {
+      final SModule sourceLangModule = lang.getSourceModuleReference().resolve(repository);
+      if (sourceLangModule == null) {
         errorsCollector.addError(new LanguageAbsentInRepoProblem(lang, node));
       } else {
-        errorsCollector.addError(new LanguageNotLoadedProblem(repository, lang, node));
+        final String msg = createLanguageNotLoadedMessage(sourceLangModule);
+        errorsCollector.addError(new LanguageNotLoadedProblem(lang, node, msg));
       }
       return false;
     }
@@ -155,6 +163,30 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
     checkMissingChildren(node, errorsCollector, concept);
     checkMissingRefs(node, errorsCollector, concept);
     return true;
+  }
+
+  // FIXME quite suspicious code, I think it's enough to report dependency errors from CLM
+  private String createLanguageNotLoadedMessage(SModule langModule) {
+    assert myHost != null : "Can't get here w/o accessing LanguageRegistry";
+
+    String err = String.format("Language %s can't be loaded", langModule.getModuleName());
+
+    final SRepository repo = langModule.getRepository();
+    final ClassLoaderManager clm = myHost.findComponent(ClassLoaderManager.class);
+
+    HashSet<String> invalidDep = new HashSet<>();
+    for (SDependency dep : langModule.getDeclaredDependencies()) {
+      @Nullable SModule targetModule = dep.getTargetModule().resolve(repo);
+
+      if (targetModule == null || !clm.getStatus(targetModule).canBeDeployed()) {
+        invalidDep.add(dep.getTargetModule().getModuleName());
+      }
+    }
+    if (!(invalidDep.isEmpty())) {
+      err += String.format(": dependencies %s can't be loaded", invalidDep);
+    }
+
+    return err;
   }
 
   private void checkMissingRefs(SNode node, LanguageErrorsCollector errorsCollector, SConcept concept) {

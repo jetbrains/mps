@@ -14,11 +14,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.references.UnregisteredNodes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -62,20 +58,8 @@ public class NodeCopier {
 
   public void deleteNode(SNode nodeToDelete) {
     for (final SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(nodeToDelete, null, true, new SAbstractConcept[]{}))) {
-      List<SNodeId> sourceIds = MapSequence.fromMap(myIdReplacementCache).where(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
-        public boolean accept(IMapping<SNodeId, SNodeId> it) {
-          return Objects.equals(it.value(), node.getNodeId());
-        }
-      }).select(new ISelector<IMapping<SNodeId, SNodeId>, SNodeId>() {
-        public SNodeId select(IMapping<SNodeId, SNodeId> it) {
-          return it.key();
-        }
-      }).toListSequence();
-      ListSequence.fromList(sourceIds).visitAll(new IVisitor<SNodeId>() {
-        public void visit(SNodeId id) {
-          MapSequence.fromMap(myIdReplacementCache).removeKey(id);
-        }
-      });
+      List<SNodeId> sourceIds = MapSequence.fromMap(myIdReplacementCache).where((it) -> Objects.equals(it.value(), node.getNodeId())).select((it) -> it.key()).toList();
+      ListSequence.fromList(sourceIds).visitAll((id) -> MapSequence.fromMap(myIdReplacementCache).removeKey(id));
     }
     SNodeOperations.deleteNode(nodeToDelete);
   }
@@ -106,11 +90,7 @@ public class NodeCopier {
       if (affectOthers) {
         evictOtherDuplicates();
         softRestoreIds();
-        assert Sequence.fromIterable(MapSequence.fromMap(myIdReplacementCache).values()).all(new IWhereFilter<SNodeId>() {
-          public boolean accept(SNodeId id) {
-            return id == null;
-          }
-        });
+        assert Sequence.fromIterable(MapSequence.fromMap(myIdReplacementCache).values()).all((id) -> id == null);
       }
     } finally {
       UnregisteredNodes.setWarningLevel(oldWarningLevel);
@@ -151,11 +131,7 @@ public class NodeCopier {
 
   public Map<SNodeId, SNodeId> getState() {
     final Map<SNodeId, SNodeId> state = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>(MapSequence.fromMap(myIdReplacementCache).count()));
-    MapSequence.fromMap(myIdReplacementCache).visitAll(new IVisitor<IMapping<SNodeId, SNodeId>>() {
-      public void visit(IMapping<SNodeId, SNodeId> m) {
-        MapSequence.fromMap(state).put(m.key(), m.value());
-      }
-    });
+    MapSequence.fromMap(myIdReplacementCache).visitAll((m) -> MapSequence.fromMap(state).put(m.key(), m.value()));
     return state;
   }
 
@@ -165,11 +141,7 @@ public class NodeCopier {
   }
 
   public boolean hasIdsToRestore() {
-    return Sequence.fromIterable(MapSequence.fromMap(myIdReplacementCache).values()).any(new IWhereFilter<SNodeId>() {
-      public boolean accept(SNodeId id) {
-        return id != null;
-      }
-    });
+    return Sequence.fromIterable(MapSequence.fromMap(myIdReplacementCache).values()).any((id) -> id != null);
   }
 
   @Nullable

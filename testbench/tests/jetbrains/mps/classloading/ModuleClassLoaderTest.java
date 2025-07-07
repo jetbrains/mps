@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,7 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.tool.environment.Log4jInitializer;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -35,19 +33,11 @@ import java.util.concurrent.TimeUnit;
  * @author apyshkin
  */
 public final class ModuleClassLoaderTest {
-  private static final Logger LOG = LogManager.getLogger(ModuleClassLoaderTest.class);
+  private static final Logger LOG = Logger.getLogger(ModuleClassLoaderTest.class);
 
   private static final long TIME_OUT_MS = 1000;
   private static final int DELAY_MS_TO_CHECK_DEADLOCK = 500;
   private static final int NUMBER_OF_CHECKS = 0x1000;
-
-  static {
-    try {
-      Log4jInitializer.init();
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
-  }
 
   @Test
   public void moduleClassLoaderIsThreadSafe() {
@@ -129,7 +119,7 @@ public final class ModuleClassLoaderTest {
         StackTraceElement[] list = Thread.currentThread().getStackTrace();
         StackTraceElement element = list[3];
         if (element.getMethodName().equals("interrupt")) {
-          LOG.warn("CheckAccess to interrupt(Thread = " + t.getName() + ") - "
+          LOG.warning("CheckAccess to interrupt(Thread = " + t.getName() + ") - "
                    + element.getMethodName());
           dumpThreadStack(Thread.currentThread());
         }

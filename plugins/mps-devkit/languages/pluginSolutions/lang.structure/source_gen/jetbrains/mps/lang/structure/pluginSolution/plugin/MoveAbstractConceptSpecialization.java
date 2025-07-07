@@ -26,7 +26,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.behavior.ConceptId__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.behavior.IMenu_Concept__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import java.util.Collection;
@@ -45,7 +44,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MoveAbstractConceptSpecialization extends StructureSpecializationBase<SAbstractConcept> {
   public Tuples._2<SAbstractConcept, SNodeReference> fetchState(SNode movingNode, boolean filterOutInvalid) {
-    if (!((SNodeOperations.isInstanceOf(movingNode, CONCEPTS.AbstractConceptDeclaration$KA) && SNodeOperations.getModel(movingNode).getModule() instanceof Language))) {
+    if (!(SNodeOperations.isInstanceOf(movingNode, CONCEPTS.AbstractConceptDeclaration$KA) && SNodeOperations.getModel(movingNode).getModule() instanceof Language)) {
       return null;
     }
     SAbstractConcept deployedConcept = MetaAdapterByDeclaration.getConcept(movingNode);
@@ -97,24 +96,12 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     migrationBuilder.addPart(from, to, createMoveConcept_c4c66o_c0a71a2(oldId, newId));
   }
   private void addEmptySubstituteMenu(SModel editorModel, final SNode from) {
-    SNode existingSubstituteMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu$EF)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == from && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it);
-      }
-    }).first();
+    SNode existingSubstituteMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu$EF)).where((it) -> SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == from && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it)).first();
     if (existingSubstituteMenu == null) {
-      existingSubstituteMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Default$sV)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == from;
-        }
-      }).first();
+      existingSubstituteMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Default$sV)).where((it) -> SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == from).first();
     }
     if (existingSubstituteMenu != null) {
-      List<SNode> parts = ListSequence.fromList(SLinkOperations.getChildren(existingSubstituteMenu, LINKS.parts$yGO4)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenuPart_Placeholder$yH));
-        }
-      }).toListSequence();
+      List<SNode> parts = ListSequence.fromList(SLinkOperations.getChildren(existingSubstituteMenu, LINKS.parts$yGO4)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenuPart_Placeholder$yH))).toList();
       CommentUtil.commentOutAll(parts);
     } else {
       existingSubstituteMenu = SModelOperations.addRootNode(editorModel, createSubstituteMenu_c4c66o_a0a0a0a2a3(from));
@@ -125,16 +112,8 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     {
       SearchScope scope_c4c66o_a0e = CommandUtil.createScope(searchScope);
       final SearchScope scope_c4c66o_a0e_0 = new EditableFilteringScope(scope_c4c66o_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_c4c66o_a0e_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(concept), false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), SNodeOperations.asSConcept(concept));
-        }
-      }).toListSequence();
+      QueryExecutionContext context = () -> scope_c4c66o_a0e_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(concept), false)).where((it) -> SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), SNodeOperations.asSConcept(concept))).toList();
     }
   }
   public void doReplaceInstance(SNode instance, SAbstractConcept oldConcept, SAbstractConcept newConcept) {

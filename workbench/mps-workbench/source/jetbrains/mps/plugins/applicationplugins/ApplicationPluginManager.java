@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,11 +21,9 @@ import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.plugins.BasePluginManager;
 import jetbrains.mps.plugins.PluginContributor;
-import jetbrains.mps.plugins.PluginLoaderRegistry;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,22 +34,12 @@ import java.util.List;
  * Triggered from the superclass (#afterPluginsCreated)
  */
 public class ApplicationPluginManager extends BasePluginManager<BaseApplicationPlugin> implements BaseComponent {
-  private static final Logger LOG = LogManager.getLogger(ApplicationPluginManager.class);
+  private static final Logger LOG = Logger.getLogger(ApplicationPluginManager.class);
 
   private final Platform myPlatform;
 
-  public ApplicationPluginManager(MPSCoreComponents coreComponents, PluginLoaderRegistry pluginLoaderRegistry) {
-    super(pluginLoaderRegistry);
-    myPlatform = coreComponents.getPlatform();
-  }
-
-  public BaseApplicationPlugin getPlugin(PluginId id) {
-    for (BaseApplicationPlugin p : getPlugins()) {
-      if (p.getId().equals(id)) {
-        return p;
-      }
-    }
-    return null;
+  public ApplicationPluginManager() {
+    myPlatform = MPSCoreComponents.getInstance().getPlatform();
   }
 
   @Override
@@ -67,46 +55,16 @@ public class ApplicationPluginManager extends BasePluginManager<BaseApplicationP
   protected void afterPluginsCreated(List<BaseApplicationPlugin> plugins) {
     // XXX it's odd ProjectPluginManager does the same with single BaseProjectPlugin.init() call
     //     Why do we care about distinct steps of AppPlugin here?
-    createKeyMaps(plugins);
-    createGroups(plugins);
-    adjustGroups(plugins);
-    createCustomParts(plugins);
+    //     The only reason I can imagine is that some plugins got dependencies between
+    //     their groups, so that they need to create all groups prior to adjustGroups()
+    //     This is a pure guess, however; git blame doesn't support this idea (nor
+    //     contradicts it. As usual, just keeps silence).
+    plugins.forEach(BaseApplicationPlugin::createKeymaps);
+    plugins.forEach(BaseApplicationPlugin::createGroups1);
+    plugins.forEach(BaseApplicationPlugin::adjustGroups);
+    plugins.forEach(BaseApplicationPlugin::createCustomParts);
     GroupAdjuster.adjustTopLevelGroups();
     GroupAdjuster.refreshCustomizations();
-  }
-
-  private void createKeyMaps(List<BaseApplicationPlugin> plugins) {
-    for (BaseApplicationPlugin plugin : plugins) {
-      try {
-        plugin.createKeymaps();
-      } catch (Throwable t1) {
-        LOG.error("Plugin " + plugin + " threw an exception during key maps creating ", t1);
-      }
-    }
-  }
-
-  private void createGroups(List<BaseApplicationPlugin> plugins) {
-    for (BaseApplicationPlugin plugin : plugins) {
-      try {
-        plugin.createGroups();
-      } catch (Throwable t1) {
-        LOG.error("Plugin " + plugin + " threw an exception during groups creating ", t1);
-      }
-    }
-  }
-
-  private void adjustGroups(List<BaseApplicationPlugin> plugins) {
-    for (BaseApplicationPlugin plugin : plugins) {
-      try {
-        plugin.adjustGroups();
-      } catch (Throwable t1) {
-        LOG.error("Plugin " + plugin + " threw an exception during groups adjusting ", t1);
-      }
-    }
-  }
-
-  private void createCustomParts(List<BaseApplicationPlugin> plugins) {
-    plugins.forEach(BaseApplicationPlugin::createCustomParts);
   }
 
   @Override

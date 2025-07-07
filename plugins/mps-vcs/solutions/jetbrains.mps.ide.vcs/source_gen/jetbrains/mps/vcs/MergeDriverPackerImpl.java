@@ -22,7 +22,7 @@ public class MergeDriverPackerImpl extends MergeDriverPacker {
   protected String getVCSCorePluginPath() {
     IdeaPluginDescriptor vcsCorePlugin = PluginManagerCore.getPlugin(PluginId.getId("jetbrains.mps.vcs"));
     assert vcsCorePlugin != null;
-    return vcsCorePlugin.getPath().getPath();
+    return vcsCorePlugin.getPluginPath().toString();
   }
 
   @Override

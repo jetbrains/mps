@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,11 +56,11 @@ public class DepthFirstConceptIterator implements Iterable<SAbstractConcept>, It
   public SAbstractConcept next() {
     if (myCurrent == null) {
       final SInterfaceConcept rv = myInterfaces.removeFirst();
-      queue(rv.getSuperInterfaces());
+      queueSuperInterfaces(rv);
       return rv;
     } else {
       SConcept rv = myCurrent;
-      queue(myCurrent.getSuperInterfaces());
+      queueSuperInterfaces(myCurrent);
       myCurrent = myCurrent.getSuperConcept();
       return rv;
     }
@@ -71,13 +71,8 @@ public class DepthFirstConceptIterator implements Iterable<SAbstractConcept>, It
     throw new UnsupportedOperationException();
   }
 
-  private void queue(Iterable<SInterfaceConcept> superInterfaces) {
-    if (superInterfaces != null) {
-      //myInterfaces.addAll(IterableUtil.asList(superInterfaces));    IterableUtil shall move out from kernel module to some utility location
-      for (SInterfaceConcept ic : superInterfaces) {
-        myInterfaces.add(ic);
-      }
-    }
+  private void queueSuperInterfaces(SAbstractConcept ac) {
+    ac.getSuperInterfaces().forEach(myInterfaces::add);
   }
 
   @NotNull

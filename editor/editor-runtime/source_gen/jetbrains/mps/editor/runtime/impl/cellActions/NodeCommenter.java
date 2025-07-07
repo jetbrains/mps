@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.action.NodeFactoryManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -39,7 +39,7 @@ public class NodeCommenter {
   @NotNull
   public SNode commentOut(final boolean shouldCreateNewNodeInSingleRole) {
     if (!(isValid())) {
-      throw new IllegalStateException("Node commenter has invalid state. Node to comment has no parent. Node: " + ((String) BHReflection.invoke0(myNode, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + myNode.getNodeId());
+      throw new IllegalStateException("Node commenter has invalid state. Node to comment has no parent. Node: " + ((String) BHReflection.invoke0(myNode, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL))) + " Node id: " + myNode.getNodeId());
     }
     SNode comment = createNewComment();
     getParent().insertChildBefore(LINKS.smodelAttribute$KJ43, comment, myNode);
@@ -90,7 +90,7 @@ public class NodeCommenter {
 
   private SNode createNewComment() {
     SNode newComment = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"));
-    BHReflection.invoke0(newComment, CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzM"), getContainmentLink());
+    BHReflection.invoke0(newComment, CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("setLink", 709746936026609906L, 0x553941aeb020c32eL), getContainmentLink());
     return newComment;
   }
   private void moveNodeUnderComment(SNode comment) {

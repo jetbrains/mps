@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,27 +15,21 @@
  */
 package jetbrains.mps.project.structure.project;
 
-import gnu.trove.THashSet;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
- * Represents set of project modules ready for persistence.
- * Preserves order of module paths.
- * TODO make immutable
- * XXX why immutable? what for?
+ * Represents set of project modules to address project state persistence
  */
 public final class ProjectDescriptor {
   private final String myName;
   private final List<ModulePath> myPaths = new ArrayList<>();
-  // XXX added just to keep check in addModulePath(), as I don't understand the reason behind it. Remove once cleared.
-  private final Set<String> myKnownPaths = new THashSet<>();
 
   public ProjectDescriptor(@Nullable String name) {
     myName = name;
@@ -55,25 +49,26 @@ public final class ProjectDescriptor {
   }
 
   public void addModulePath(@NotNull ModulePath path) {
-    if (myKnownPaths.contains(path.getPath()) && isEmpty(path.getVirtualFolder())) {
-      LogManager.getLogger(ProjectDescriptor.class).warn("Not adding module path with an empty virtual folder; already have one");
-    } else {
-      if (myPaths.contains(path)) {
-        // Bad smell. We get here when project starts, and existing ProjectDescriptor serves as an input to populate Project (through ModuleLoader),
-        // which, in turn, in addModule() adds the path to the descriptor again. Shall rather tell 'load' from 'augment' scenario.
-        return;
+    final IFile candidate = path.getFile();
+    if (myPaths.stream().map(ModulePath::getFile).anyMatch(candidate::equals)) {
+      if (isEmpty(path.getVirtualFolder())) {
+        // I don't completely understand the reason for this warning, and what scenario may cause it.
+        Logger.getLogger(ProjectDescriptor.class).warning("Not adding module path with an empty virtual folder; already have one: " + candidate);
       }
-      myPaths.add(path);
-      myKnownPaths.add(path.getPath());
+      // FIXME Bad smell. We used to get here when project started, and existing ProjectDescriptor serves as an input to populate Project (through ModuleLoader),
+      //    which, in turn, in addModule() adds the path to the descriptor again. Shall rather tell 'load' from 'augment' scenario.
+      //    However, with updated PD scenario, might not be true any more.
+      return;
     }
+    myPaths.add(path);
   }
 
   public void removeModulePath(@NotNull ModulePath path) {
     myPaths.remove(path);
-    myKnownPaths.remove(path.getPath());
   }
 
-
+  // unlikely any possible use, PD is 'transient' now and there's no need to maintain its
+  // state/module ordering
   public void replacePath(@NotNull ModulePath modulePath, @NotNull ModulePath newPath) {
     int i = myPaths.indexOf(modulePath);
     assert i != -1;

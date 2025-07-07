@@ -15,7 +15,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class NodeBuilder_Replace {
   public static class NodeFactory_9079830899493053022 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode sampleBuilderNode = sampleNode;
         if (SNodeOperations.isInstanceOf(sampleBuilderNode, CONCEPTS.NodeBuilderNode$Sn)) {
@@ -26,7 +26,7 @@ public class NodeBuilder_Replace {
     }
   }
   public static class NodeFactory_410791833645398110 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode sampleBuilderNode = sampleNode;
         if (SNodeOperations.isInstanceOf(sampleBuilderNode, CONCEPTS.NodeBuilderNode$Sn)) {

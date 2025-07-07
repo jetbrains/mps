@@ -50,9 +50,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForTest_LValueExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.testRefs.testLang", "Test_LValueExpression", 0xb654d0ef89814c92L, 0x8304246f1dfe4618L, 0x1885e519eacbfceeL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    // extends: jetbrains.mps.baseLanguage.structure.Expression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
     b.origin("r:454eeb39-2931-426e-8179-7f8a88d87002(jetbrains.mps.baseLanguage.testRefs.testLang.structure)/1767070328288967918");
-    b.version(2);
+    b.version(3);
     b.aggregate("valueDeclReference", 0x745d0a037f5a099bL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L).optional(false).ordered(true).multiple(false).origin("8384869091371518363").done();
     b.aggregate("referenceDeclReference", 0x745d0a037f5a099dL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L).optional(false).ordered(true).multiple(false).origin("8384869091371518365").done();
     b.alias("testLValue");

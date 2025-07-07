@@ -23,12 +23,11 @@ import java.util.Map;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.internal.make.runtime.util.DeltaKey;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -62,7 +61,7 @@ public class GenerateImages_Facet extends IFacet.Stub {
     return null;
   }
   public Iterable<IFacet.Name> required() {
-    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.make.facets.Make"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.lang.core.Generate")});
+    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.make.facets.Make"), new IFacet.Name("jetbrains.mps.make.facets.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Generate")});
   }
   public Iterable<IFacet.Name> extended() {
     return null;
@@ -92,54 +91,47 @@ public class GenerateImages_Facet extends IFacet.Stub {
 
                 final Map<IFile, List<PrintNodeRunnable>> folder2PrintRunnables = MapSequence.fromMap(new HashMap<IFile, List<PrintNodeRunnable>>());
 
-                repository.getModelAccess().runReadAction(new Runnable() {
-                  public void run() {
-                    progressMonitor.step("Collecting models to print");
-                    // TODO: check status & outputPath... see TextGen facet
-                    Iterable<GResource> resourcesWithOutput = Sequence.fromIterable(input).where(new IWhereFilter<GResource>() {
-                      public boolean accept(GResource it) {
-                        return SModelOperations.getOutputLocation(it.model()) != null && it.status().getOutputModel() != null;
-                      }
-                    });
-                    Iterable<Tuples._2<SModel, SModel>> allModels = Sequence.fromIterable(resourcesWithOutput).select(new ISelector<GResource, Tuples._2<SModel, SModel>>() {
-                      public Tuples._2<SModel, SModel> select(GResource gResource) {
-                        SModel inputModel = gResource.model();
-                        SModel outputModel = gResource.status().getOutputModel();
-                        return MultiTuple.<SModel,SModel>from(inputModel, outputModel);
-                      }
-                    });
-                    progressMonitor.advance(1);
+                repository.getModelAccess().runReadAction(() -> {
+                  progressMonitor.step("Collecting models to print");
+                  // TODO: check status & outputPath... see TextGen facet
+                  Iterable<GResource> resourcesWithOutput = Sequence.fromIterable(input).where((it) -> it.status().getOutputModel() != null && GenerationTargetFacet.find(it.model()) != null && GenerationTargetFacet.find(it.model()).getOutputLocation(it.model()) != null);
+                  Iterable<Tuples._2<SModel, SModel>> allModels = Sequence.fromIterable(resourcesWithOutput).select((gResource) -> {
+                    SModel inputModel = gResource.model();
+                    SModel outputModel = gResource.status().getOutputModel();
+                    return MultiTuple.<SModel,SModel>from(inputModel, outputModel);
+                  });
+                  progressMonitor.advance(1);
 
-                    ProgressMonitor collectingNodesMonitor = progressMonitor.subTask(1);
-                    collectingNodesMonitor.start("Collecting nodes to print", Sequence.fromIterable(allModels).count());
-                    for (Tuples._2<SModel, SModel> modelsPair : Sequence.fromIterable(allModels)) {
-                      collectingNodesMonitor.step(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.getModelName(modelsPair._0()));
-                      // XXX what if there are multiple GenerationTargetFacet (now it's only JavaModuleFacet), shall we generate into each? Or identify them somehow?
-                      IFile modelOutputLocation = SModelOperations.getOutputLocation(modelsPair._0());
-                      IFile outputDir = Target_make.vars(pa.global()).pathToFile().invoke(modelOutputLocation.getPath());
-                      if (!(MapSequence.fromMap(folder2PrintRunnables).containsKey(outputDir))) {
-                        MapSequence.fromMap(folder2PrintRunnables).put(outputDir, ListSequence.fromList(new ArrayList<PrintNodeRunnable>()));
-                      }
-                      final DeltaKey dk = new DeltaKey(modelsPair._0().getModule(), modelsPair._0());
-                      for (SNode imageGenerator : ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(modelsPair._1(), CONCEPTS.ImageGenerator$Ng))) {
-                        SNodeId nodeId = PersistenceFacade.getInstance().createNodeId(SPropertyOperations.getString(imageGenerator, PROPS.id$7kFL));
-                        SNode node = modelsPair._0().getNode(nodeId);
-
-                        PrintNodeRunnable printRunnable = new PrintNodeRunnable(node.getReference(), repository, SPropertyOperations.getString(imageGenerator, PROPS.fileName$tsQ8), dk);
-                        if (SPropertyOperations.getString(imageGenerator, PROPS.imageFormat$1_1Y) != null) {
-                          printRunnable.setImageFormat(SPropertyOperations.getString(imageGenerator, PROPS.imageFormat$1_1Y));
-                        }
-                        if (SPropertyOperations.getString(imageGenerator, PROPS.scale$_U4l) != null) {
-                          printRunnable.setScale(Double.parseDouble(SPropertyOperations.getString(imageGenerator, PROPS.scale$_U4l)));
-                        }
-                        printRunnable.setBackgroundColor(255, 255, 255, 255);
-
-                        ListSequence.fromList(MapSequence.fromMap(folder2PrintRunnables).get(outputDir)).addElement(printRunnable);
-                      }
-                      collectingNodesMonitor.advance(1);
+                  ProgressMonitor collectingNodesMonitor = progressMonitor.subTask(1);
+                  collectingNodesMonitor.start("Collecting nodes to print", Sequence.fromIterable(allModels).count());
+                  for (Tuples._2<SModel, SModel> modelsPair : Sequence.fromIterable(allModels)) {
+                    collectingNodesMonitor.step(SModelOperations.getModelName(modelsPair._0()));
+                    // XXX deficient approach to handle multiple GenerationTargetFacet, just take the first one that answers with output location.
+                    //    Perhaps, we shall generate into each? Or identify them somehow?
+                    IFile modelOutputLocation = GenerationTargetFacet.find(modelsPair._0()).getOutputLocation(modelsPair._0());
+                    IFile outputDir = Target_make.vars(pa.global()).alternateOutput().invoke(modelOutputLocation);
+                    if (!(MapSequence.fromMap(folder2PrintRunnables).containsKey(outputDir))) {
+                      MapSequence.fromMap(folder2PrintRunnables).put(outputDir, ListSequence.fromList(new ArrayList<PrintNodeRunnable>()));
                     }
-                    collectingNodesMonitor.done();
+                    final DeltaKey dk = new DeltaKey(modelsPair._0().getModule(), modelsPair._0());
+                    for (SNode imageGenerator : ListSequence.fromList(SModelOperations.roots(modelsPair._1(), CONCEPTS.ImageGenerator$Ng))) {
+                      SNodeId nodeId = PersistenceFacade.getInstance().createNodeId(SPropertyOperations.getString(imageGenerator, PROPS.id$7kFL));
+                      SNode node = modelsPair._0().getNode(nodeId);
+
+                      PrintNodeRunnable printRunnable = new PrintNodeRunnable(node.getReference(), repository, SPropertyOperations.getString(imageGenerator, PROPS.fileName$tsQ8), dk);
+                      if (SPropertyOperations.getString(imageGenerator, PROPS.imageFormat$1_1Y) != null) {
+                        printRunnable.setImageFormat(SPropertyOperations.getString(imageGenerator, PROPS.imageFormat$1_1Y));
+                      }
+                      if (SPropertyOperations.getString(imageGenerator, PROPS.scale$_U4l) != null) {
+                        printRunnable.setScale(Double.parseDouble(SPropertyOperations.getString(imageGenerator, PROPS.scale$_U4l)));
+                      }
+                      printRunnable.setBackgroundColor(255, 255, 255, 255);
+
+                      ListSequence.fromList(MapSequence.fromMap(folder2PrintRunnables).get(outputDir)).addElement(printRunnable);
+                    }
+                    collectingNodesMonitor.advance(1);
                   }
+                  collectingNodesMonitor.done();
                 });
 
                 List<IDelta> deltaList = ListSequence.fromList(new ArrayList<IDelta>());
@@ -170,11 +162,7 @@ public class GenerateImages_Facet extends IFacet.Stub {
                 _output_7crsqe_a0a = Sequence.fromIterable(_output_7crsqe_a0a).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new DResource(deltaList))));
 
                 progressMonitor.step("Saving images");
-                if (!(FileSystem.getInstance().runWriteTransaction(new Runnable() {
-                  public void run() {
-                    fp.flushChanges();
-                  }
-                }))) {
+                if (!(FileSystem.getInstance().runWriteTransaction(() -> fp.flushChanges()))) {
                   monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("Failed to save files")));
                   return new IResult.FAILURE(_output_7crsqe_a0a);
                 }
@@ -196,7 +184,7 @@ public class GenerateImages_Facet extends IFacet.Stub {
       return null;
     }
     public Iterable<ITarget.Name> after() {
-      return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.lang.core.Generate.generate")});
+      return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.make.facets.Generate.generate")});
     }
     public Iterable<ITarget.Name> notBefore() {
       return null;

@@ -41,7 +41,7 @@ import jetbrains.mps.nodeEditor.MPSFonts;
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
     editorCell.getStyle().putAll(style);
     return editorCell;

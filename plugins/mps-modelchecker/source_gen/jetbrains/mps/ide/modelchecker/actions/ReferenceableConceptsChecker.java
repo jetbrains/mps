@@ -15,13 +15,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.item.NodeReportItemBase;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
@@ -62,11 +61,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
       IssueKindReportItem.ItemKind itemKind2 = getCategory().deriveItemKind("non-referenceable named concept");
 
       for (SNode concept : ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.AbstractConceptDeclaration$KA))) {
-        for (SNode ref : ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.linkDeclaration$YU1f)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
-          }
-        })) {
+        for (SNode ref : ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.linkDeclaration$YU1f)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L))) {
           SNode target = SLinkOperations.getTarget(ref, LINKS.target$m40F);
           if (SNodeOperations.isInstanceOf(target, CONCEPTS.ConceptDeclaration$gH)) {
             SNode decl = SNodeOperations.cast(target, CONCEPTS.ConceptDeclaration$gH);
@@ -77,7 +72,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
           }
         }
         if (SNodeOperations.isInstanceOf(concept, CONCEPTS.ConceptDeclaration$gH) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(concept, CONCEPTS.ConceptDeclaration$gH), PROPS.staticScope$PjQk), 0x4b014033eedc8becL)) {
-          if (((boolean) (Boolean) BHReflection.invoke0(concept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("isSubconceptOf", CONCEPTS.AbstractConceptDeclaration$KA, "4UTtJHK9fEJ"), CONCEPTS.INamedConcept$Kd))) {
+          if (((boolean) (Boolean) BHReflection.invoke0(concept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("isSubconceptOf", 5672696027940190895L, 0x44a456bea0df1cf0L), CONCEPTS.INamedConcept$Kd))) {
             ListSequence.fromList(results).addElement(NodeReportItemBase.warn("INamedConcept inheritors are usually reference targets, change scope from none", SNodeOperations.getPointer(concept), itemKind2));
           }
         }
@@ -116,16 +111,16 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
 
   private void checkNode(List<NodeReportItem> results, SNode node, SNode refNode, boolean isAncestor, SNode anchor) {
     SConcept cncpt = node.getConcept();
-    if (!((cncpt.isValid()))) {
+    if (!(cncpt.isValid())) {
       ListSequence.fromList(results).addElement(new ConceptMissingError(node, cncpt));
       return;
     }
     if (cncpt instanceof SInterfaceConcept) {
-      ListSequence.fromList(results).addElement(NodeReportItemBase.error("Interface instance found! " + node.toString(), SNodeOperations.getPointer(node), IssueKindReportItem.STRUCTURE.deriveItemKind("interface instance")));
+      ListSequence.fromList(results).addElement(NodeReportItemBase.error("Interface instance found! " + SNodeOperations.present(node), SNodeOperations.getPointer(node), IssueKindReportItem.STRUCTURE.deriveItemKind("interface instance")));
       return;
     }
     if (cncpt.isAbstract()) {
-      ListSequence.fromList(results).addElement(NodeReportItemBase.error("Abstract concept instance found! " + node.toString(), SNodeOperations.getPointer(node), IssueKindReportItem.STRUCTURE.deriveItemKind("abstract concept instance")));
+      ListSequence.fromList(results).addElement(NodeReportItemBase.error("Abstract concept instance found! " + SNodeOperations.present(node), SNodeOperations.getPointer(node), IssueKindReportItem.STRUCTURE.deriveItemKind("abstract concept instance")));
       return;
     }
     final IssueKindReportItem.ItemKind itemKind = getCategory().deriveItemKind("reference to a non-referenceable node");
@@ -137,7 +132,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
       ConceptDescriptor cd = ((SAbstractConceptAdapter) cncpt).getConceptDescriptor();
       if (cd.getStaticScope() == StaticScope.NONE) {
         ListSequence.fromList(results).addElement(NodeReportItemBase.error("Reference to a non-referenceable node found: " + cncpt.getName(), SNodeOperations.getPointer(anchor), itemKind));
-      } else if (cd.getStaticScope() == StaticScope.ROOT && !((SNodeOperations.getContainingRoot(node) == SNodeOperations.getContainingRoot(refNode)))) {
+      } else if (cd.getStaticScope() == StaticScope.ROOT && !(SNodeOperations.getContainingRoot(node) == SNodeOperations.getContainingRoot(refNode))) {
         ListSequence.fromList(results).addElement(NodeReportItemBase.error("Cross-root reference to a locally referenceable node found: " + cncpt.getName(), SNodeOperations.getPointer(anchor), itemKind));
       }
     }

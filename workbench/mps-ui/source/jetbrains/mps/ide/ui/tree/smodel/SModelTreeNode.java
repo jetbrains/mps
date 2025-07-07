@@ -160,7 +160,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
       myRootGroups.add(index, groupTreeNode);
 
       if (myInitialized || myInitializing) {
-        DefaultTreeModel treeModel = getTree().getModel();
+        DefaultTreeModel treeModel = getTree().getDFTreeModel();
         treeModel.insertNodeInto(groupTreeNode, this, index + myChildModelTreeNodes.size());
       }
     } else {
@@ -182,7 +182,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
       }
 
       if (myInitialized || myInitializing) {
-        DefaultTreeModel treeModel = getTree().getModel();
+        DefaultTreeModel treeModel = getTree().getDFTreeModel();
         treeModel.insertNodeInto(groupTreeNode, parent, index);
       } else {
         parent.insert(groupTreeNode, index);
@@ -191,7 +191,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
   }
 
   public void groupBecameEmpty(SNodeGroupTreeNode node) {
-    DefaultTreeModel treeModel = getTree().getModel();
+    DefaultTreeModel treeModel = getTree().getDFTreeModel();
 
     myRootGroups.remove(node);
 
@@ -320,8 +320,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
         }
       }
 
-      final DefaultTreeModel treeModel = getTree().getModel();
-      treeModel.nodeStructureChanged(this);
+      getTree().getDFTreeModel().nodeStructureChanged(this);
     } finally {
       myInitialized = true;
       myInitializing = false;
@@ -336,7 +335,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
   public void insertRoots(Set<SNode> addedRoots) {
     if (addedRoots.isEmpty()) return;
 
-    DefaultTreeModel treeModel = getTree().getModel();
+    DefaultTreeModel treeModel = getTree().getDFTreeModel();
 
     final ArrayList<SNode> allRoots = new ArrayList<>();
     for (SNode root1 : getModel().getRootNodes()) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -85,6 +85,15 @@ public final class PartialModelDataSupport<T extends SModelData & UpdateModeSupp
         }
         case INTERFACE_LOADED: {
           res = myLoader.doLoad(ModelLoadingState.INTERFACE_LOADED);
+          // though we request INTERFACE_LOADED, chances are some persistance may produce FULLY_LOADED model right away,
+          // therefore we let loader complete the model. Update mode is not really necessary, provided ModelData is detached,
+          // but doesn't hurt to follow method contract to the letter.
+          if (res.getState() == ModelLoadingState.FULLY_LOADED) {
+            T md = res.getModelData();
+            md.enterUpdateMode();
+            myLoader.completeUpdate(md);
+            md.leaveUpdateMode();
+          }
           break;
         }
         case FULLY_LOADED: {
@@ -94,11 +103,15 @@ public final class PartialModelDataSupport<T extends SModelData & UpdateModeSupp
             // no reason to go ahead and to try to update a model if there's nothing to update either in source or in destination
             res = fullModel;
           } else {
-            myModel.enterUpdateMode();   //not to send events on changes
-            fullModel.getModelData().enterUpdateMode();
-            new PartialModelUpdateFacility(myModel, fullModel.getModelData(), myModelDescriptor).update();
-            fullModel.getModelData().leaveUpdateMode();
-            myModel.leaveUpdateMode();  //enable events
+            try {
+              myModel.enterUpdateMode();   //not to send events on changes
+              fullModel.getModelData().enterUpdateMode();
+              new PartialModelUpdateFacility(myModel, fullModel.getModelData(), myModelDescriptor).update();
+              myLoader.completeUpdate(myModel);
+            } finally {
+              fullModel.getModelData().leaveUpdateMode();
+              myModel.leaveUpdateMode();  //enable events
+            }
             res = new ModelLoadResult<>(myModel, fullModel.getState());
           }
           break;
@@ -129,5 +142,17 @@ public final class PartialModelDataSupport<T extends SModelData & UpdateModeSupp
      */
     @NotNull
     jetbrains.mps.smodel.ModelLoadResult<U> doLoad(ModelLoadingState state);
+
+    /**
+     * invoked when {@code modelData} reached has been updated with all missing nodes and reached 'fully-loaded' state.
+     * implementers may decide to perform additional fixup/update for specific {@code U} model data type (the one beyound update
+     * of regular {@code SNode}s available to {@code SModelData}, e.g. model imports and alike.
+     * <p>This method is invoked inside {@link UpdateModeSupport#enterUpdateMode() 'update'} mode</p>
+     * <p>No-op by default</p>
+     * @since 2023.3
+     */
+    default void completeUpdate(U modelData) {
+      // no-op
+    }
   }
 }

@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import com.sun.jdi.ObjectReference;
 import com.sun.jdi.Field;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.debugger.java.api.state.watchables.JavaWatchable;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaValue;
 import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
@@ -48,15 +46,7 @@ public class ObjectWrapperFactory extends ValueWrapperFactory {
       if (ref != null) {
         List<Field> fieldList = ListSequence.fromList(new ArrayList<Field>());
         ListSequence.fromList(fieldList).addSequence(ListSequence.fromList(ref.referenceType().allFields()));
-        for (Field f : ListSequence.fromList(fieldList).where(new IWhereFilter<Field>() {
-          public boolean accept(Field it) {
-            return !(it.isStatic());
-          }
-        }).sort(new ISelector<Field, String>() {
-          public String select(Field it) {
-            return it.name();
-          }
-        }, true)) {
+        for (Field f : ListSequence.fromList(fieldList).where((it) -> !(it.isStatic())).sort((it) -> it.name(), true)) {
           watchables.add(new JavaField(f, ref, myThreadReference));
         }
       }

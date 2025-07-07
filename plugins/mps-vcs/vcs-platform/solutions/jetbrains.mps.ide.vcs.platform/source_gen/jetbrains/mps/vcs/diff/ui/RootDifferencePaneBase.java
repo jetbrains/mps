@@ -11,46 +11,46 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup;
 import javax.swing.JPanel;
 import com.intellij.ide.util.PropertiesComponent;
+import jetbrains.mps.vcs.diff.ModelChangeSet;
+import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
 import jetbrains.mps.vcs.diff.ui.common.TripleChangeGroupLayout;
-import jetbrains.mps.vcs.diff.ChangeSet;
-import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.smodel.SModelOperations;
-import java.util.Arrays;
-import java.util.Collections;
 import java.beans.PropertyChangeEvent;
 import com.intellij.openapi.ui.Splitter;
 import com.intellij.ui.JBSplitter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import com.intellij.diff.tools.util.DiffSplitter;
+import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.openapi.project.DumbAware;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import java.util.function.Supplier;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.diff.DiffBundle;
 import com.intellij.openapi.actionSystem.Presentation;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.AnAction;
+import jetbrains.mps.vcs.diff.changes.ModelChange;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.awt.Graphics;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.diff.ui.common.Bounds;
 import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.ide.project.ProjectHelper;
-import java.util.ArrayList;
+import jetbrains.mps.vcs.diff.ChangeSet;
 import java.util.Iterator;
 import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
-import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
-import jetbrains.mps.vcs.diff.ModelChangeSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Collections;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
+import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
@@ -60,7 +60,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   private static final String PARAM_SHOW_INSPECTOR = RootDifferencePaneBase.class.getName() + "ShowInspector";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = RootDifferencePaneBase.class.getName() + "InspectorSplitterPosition";
   private static final String PARAM_ENABLE_EDITORS_SCROLL_SYNC = RootDifferencePaneBase.class.getName() + "_EnableSync";
-  private static final boolean INSPECTOR_SHOWN_BY_DEFAULT = false;
+  private static final boolean INSPECTOR_SHOWN_BY_DEFAULT = true;
   private final MPSProject myMpsProject;
   private SNodeId myRootId;
 
@@ -71,8 +71,13 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   private DiffEditorsGroup myDiffEditorsGroup;
 
   private JPanel myPanel;
-  private boolean isInspectorShown = PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, true);
+  private boolean isInspectorShown = PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, INSPECTOR_SHOWN_BY_DEFAULT);
 
+  private final List<ModelChangeSet> myChangeSets;
+  private final List<ModelChangeSet> myMetadataChangeSets;
+  private final List<SModel> myModels;
+  private final List<SModel> myMetaModels;
+  private boolean myIsMetadataView;
   private DefaultActionGroup myActionGroup;
   private NextPreviousTraverser myTraverser;
 
@@ -80,38 +85,36 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   private TripleChangeGroupLayout myMainLayout;
   private TripleChangeGroupLayout myInspectorLayout;
   protected boolean myDisposed = false;
+  private final List<ChangeGroupMessages> myGutterMessagesRebuilders = ListSequence.fromList(new ArrayList<ChangeGroupMessages>());
 
 
-  public RootDifferencePaneBase(MPSProject project, SNodeId rootId, String rootName, List<String> titles, List<ChangeSet> changeSets, boolean isEditable) {
+  public RootDifferencePaneBase(MPSProject project, SNodeId rootId, boolean isMetadataView, List<String> titles, List<SModel> models, List<SModel> metadataModels, List<ModelChangeSet> changeSets, List<ModelChangeSet> metadataChangeSets) {
+    myIsMetadataView = isMetadataView;
     myRootId = rootId;
     myMpsProject = project;
-    List<SModel> models = getModels(changeSets);
     assert ListSequence.fromList(models).count() == ListSequence.fromList(titles).count();
     assert ListSequence.fromList(models).count() > 1;
-    myDiffEditorsGroup = createEditorsGroup(models, titles);
+    myModels = models;
+    myMetaModels = metadataModels;
+    myChangeSets = changeSets;
+    myMetadataChangeSets = metadataChangeSets;
+    myDiffEditorsGroup = createEditorsGroup((isMetadataView ? metadataModels : models), titles);
     myPanel = createPanel();
-    myMainChangeGroupLayouts = createChangeGroupLayouts(changeSets, false);
+    myMainChangeGroupLayouts = createChangeGroupLayouts(false);
     myMainLayout = createTripleLayout(false);
-    myInspectorChangeGroupLayouts = createChangeGroupLayouts(changeSets, true);
+    myInspectorChangeGroupLayouts = createChangeGroupLayouts(true);
     myInspectorLayout = createTripleLayout(true);
-    if (!(SModelOperations.isReadOnly(ListSequence.fromList(models).getElement(1)))) {
+    boolean isEditable = ListSequence.fromList(models).getElement(1) != null && !(SModelOperations.isReadOnly(ListSequence.fromList(models).getElement(1)));
+    if (isEditable) {
       addButtons();
     }
     myTraverser = new NextPreviousTraverser(myMainChangeGroupLayouts, ListSequence.fromList(getEditors()).getElement(1).getMainEditor());
     mySettingsAction = new DiffEditorSettingsAction(this);
-    myActionGroup = createActionGroup(isEditable, rootName);
+    myActionGroup = createActionGroup(isEditable);
   }
 
-  private static List<SModel> getModels(List<ChangeSet> changeSets) {
-    if (ListSequence.fromList(changeSets).count() == 1) {
-      return Arrays.asList(ListSequence.fromList(changeSets).first().getOldModel(), ListSequence.fromList(changeSets).first().getNewModel());
-    }
-    if (ListSequence.fromList(changeSets).count() == 2) {
-      ChangeSet myChangeSet = ListSequence.fromList(changeSets).getElement(0);
-      ChangeSet repoChangeSet = ListSequence.fromList(changeSets).getElement(1);
-      return Arrays.asList(myChangeSet.getOldModel(), myChangeSet.getNewModel(), repoChangeSet.getOldModel());
-    }
-    return Collections.emptyList();
+  protected List<SModel> getModels() {
+    return (myIsMetadataView ? myMetaModels : myModels);
   }
 
   @Override
@@ -120,11 +123,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
       return;
     }
     Splitter sourceSplitter = (Splitter) event.getSource();
-    for (JBSplitter splitter : ListSequence.fromList(getEditors()).select(new ISelector<DiffEditor, JBSplitter>() {
-      public JBSplitter select(DiffEditor it) {
-        return it.getSplitter();
-      }
-    })) {
+    for (JBSplitter splitter : ListSequence.fromList(getEditors()).select((it) -> it.getSplitter())) {
       if (splitter == sourceSplitter) {
         continue;
       }
@@ -141,49 +140,83 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   protected abstract JPanel createPanel();
 
   protected List<JComponent> getTitles() {
-    return ListSequence.fromList(getEditors()).select(new ISelector<DiffEditor, JComponent>() {
-      public JComponent select(DiffEditor it) {
-        return it.getTitleComponent();
-      }
-    }).toListSequence();
+    return ListSequence.fromList(getEditors()).select((it) -> it.getTitleComponent()).toList();
   }
 
-  protected DefaultActionGroup createActionGroup(boolean isEditable, String rootName) {
+  protected DefaultActionGroup createActionGroup(boolean isEditable) {
     DefaultActionGroup actionGroup = new DefaultActionGroup();
     actionGroup.addAll(myTraverser.previousAction(), myTraverser.nextAction());
     myTraverser.previousAction().registerCustomShortcutSet(NextPreviousTraverser.PREV_CHANGE_SHORTCUT, myPanel);
     myTraverser.nextAction().registerCustomShortcutSet(NextPreviousTraverser.NEXT_CHANGE_SHORTCUT, myPanel);
     actionGroup.addSeparator();
-    actionGroup.add(new ToggleAction("Show Inspector", "Show Inspector Windows", IdeIcons.INSPECTOR_ICON) {
-      public boolean isSelected(AnActionEvent e) {
-        return isInspectorShown;
-      }
-      public void setSelected(AnActionEvent e, boolean b) {
-        showInspector(b);
-      }
-    });
-    actionGroup.add(new ToggleAction(new Supplier<String>() {
-      public String get() {
-        return DiffBundle.message("synchronize.scrolling", new Object[0]);
-      }
-    }, Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
-      @Override
-      public boolean isSelected(@NotNull AnActionEvent p1) {
-        return isEditorsScrollingSyncOptionEnabled();
-      }
-      @Override
-      public void setSelected(@NotNull AnActionEvent e, boolean b) {
-        saveEditorsScrollingSyncOption(b);
-        enableEditorsScrollingSynchronization(b);
-      }
-      @Override
-      public void update(@NotNull AnActionEvent e) {
-        super.update(e);
-        enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
-      }
-    });
+    actionGroup.add(new ShowInspectorAction());
+    actionGroup.add(new SyncScrollingAction());
     actionGroup.add(mySettingsAction);
+    if (isEditable) {
+      actionGroup.addSeparator();
+      actionGroup.add(createRevertRootsAction());
+    }
     return actionGroup;
+  }
+
+  private class ShowInspectorAction extends ToggleAction implements DumbAware {
+    private ShowInspectorAction() {
+      super("Show Inspector", "Show Inspector Windows", IdeIcons.INSPECTOR_ICON);
+    }
+    public boolean isSelected(AnActionEvent e) {
+      return isInspectorShown;
+    }
+    public void setSelected(AnActionEvent e, boolean b) {
+      showInspector(b);
+    }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+  }
+
+  private class SyncScrollingAction extends ToggleAction implements DumbAware {
+    private SyncScrollingAction() {
+      super(() -> DiffBundle.message("synchronize.scrolling", new Object[0]), Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING);
+    }
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent p1) {
+      return isEditorsScrollingSyncOptionEnabled();
+    }
+    @Override
+    public void setSelected(@NotNull AnActionEvent e, boolean b) {
+      saveEditorsScrollingSyncOption(b);
+      enableEditorsScrollingSynchronization(b);
+    }
+    @Override
+    public void update(@NotNull AnActionEvent e) {
+      super.update(e);
+      enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
+    }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
+    }
+  }
+
+  private AnAction createRevertRootsAction() {
+    return new RevertRootsAction("") {
+      @Override
+      protected Iterable<ModelChange> getChanges() {
+        return ListSequence.fromList(getChangeSets()).where(new NotNullWhereFilter()).translate((it) -> it.getChangesForRoot(getRootId()));
+      }
+      @Override
+      protected void after() {
+        rehighlight(true);
+      }
+    };
+  }
+
+  protected List<ModelChangeSet> getChangeSets() {
+    return (myIsMetadataView ? myMetadataChangeSets : myChangeSets);
   }
 
   private TripleChangeGroupLayout getTripleLayout(boolean inspector) {
@@ -234,11 +267,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   public void navigateInitial(@Nullable final Bounds firstChange) {
     highlightAllChanges();
     if (firstChange != null) {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          myTraverser.goToBounds(firstChange);
-        }
-      });
+      ApplicationManager.getApplication().invokeLater(() -> myTraverser.goToBounds(firstChange));
     } else {
       myTraverser.goToFirstChangeLater();
     }
@@ -251,11 +280,15 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   public abstract void editRootId(SNodeId rootId);
 
   @Override
-  public void setRootId(SNodeId rootId) {
+  public void setRootId(SNodeId rootId, boolean isMetadataView) {
+    boolean rebuild = myIsMetadataView != isMetadataView;
+    myIsMetadataView = isMetadataView;
     myRootId = rootId;
-    updateLayouts();
+    if (rebuild) {
+      updateLayouts();
+    }
     editRootId(rootId);
-    rehighlight(true);
+    rehighlight(rebuild);
     myTraverser.goToFirstChangeLater();
   }
 
@@ -265,11 +298,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
     }
     isInspectorShown = show;
     PropertiesComponent.getInstance().setValue(PARAM_SHOW_INSPECTOR, show + "");
-    ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-      public void visit(DiffEditor it) {
-        it.showInspector(show);
-      }
-    });
+    ListSequence.fromList(getEditors()).visitAll((it) -> it.showInspector(show));
 
   }
 
@@ -293,13 +322,11 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   public void rehighlightInReadAction(final boolean rebuildChangeSet) {
     ModelAccess modelAccess = ProjectHelper.getModelAccess(myMpsProject.getProject());
     if (modelAccess != null) {
-      modelAccess.runReadInEDT(new Runnable() {
-        public void run() {
-          if (rebuildChangeSet) {
-            rehighlightWithRebuild();
-          } else {
-            rehighlightWithNoRebuild();
-          }
+      modelAccess.runReadInEDT(() -> {
+        if (rebuildChangeSet) {
+          rehighlightWithRebuild();
+        } else {
+          rehighlightWithNoRebuild();
         }
       });
     }
@@ -315,23 +342,31 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
 
   protected abstract ChangeSet getChangeSet(DiffEditor leftEditor, DiffEditor rightEditor);
 
-  private List<ChangeGroupLayout> createChangeGroupLayouts(List<ChangeSet> changeSets, boolean inspector) {
+  private List<ChangeGroupLayout> createChangeGroupLayouts(boolean inspector) {
     List<ChangeGroupLayout> layouts = ListSequence.fromList(new ArrayList<ChangeGroupLayout>());
     DiffEditor leftEditor = null;
     List<DiffEditor> editors = getEditors();
+    List<ModelChangeSet> changeSets = getChangeSets();
     assert ListSequence.fromList(editors).count() == ListSequence.fromList(changeSets).count() + 1;
-    Iterator<ChangeSet> changeSetsIt = ListSequence.fromList(changeSets).iterator();
+    Iterator<ModelChangeSet> changeSetsIt = ListSequence.fromList(changeSets).iterator();
     for (DiffEditor editor : ListSequence.fromList(getEditors())) {
       if (leftEditor != null) {
         assert changeSetsIt.hasNext();
         ChangeSet changeSet = changeSetsIt.next();
-        assert changeSet != null;
-        DiffChangeGroupLayout.SplitterRepainter splitterRepainter = getSplitterRepainter(leftEditor, editor);
-        DiffChangeGroupLayout layout = new DiffChangeGroupLayout(getConflictChecker(), changeSet, leftEditor, editor, splitterRepainter, inspector);
-        ChangeGroupMessages.startMaintaining(layout);
+        DiffChangeGroupLayout layout = null;
+        if (changeSet != null) {
+          DiffChangeGroupLayout.SplitterRepainter splitterRepainter = getSplitterRepainter(leftEditor, editor);
+          layout = new DiffChangeGroupLayout(getConflictChecker(), changeSet, leftEditor, editor, splitterRepainter, inspector);
+        }
         ListSequence.fromList(layouts).addElement(layout);
       }
       leftEditor = editor;
+    }
+    if (ListSequence.fromList(layouts).first() != null) {
+      ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(ListSequence.fromList(layouts).first(), true));
+    }
+    if (ListSequence.fromList(layouts).last() != null) {
+      ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(ListSequence.fromList(layouts).last(), false));
     }
     return layouts;
   }
@@ -347,44 +382,27 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   }
 
   private void addButtons() {
-    ListSequence.fromList(getLayouts(false)).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(final ChangeGroupLayout layout) {
-        ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-          public void visit(DiffEditor editor) {
-            DiffButtonsPainter.addTo(RootDifferencePaneBase.this, editor, layout, false);
-          }
-        });
-      }
-    });
-    ListSequence.fromList(getLayouts(true)).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(final ChangeGroupLayout layout) {
-        ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-          public void visit(DiffEditor editor) {
-            DiffButtonsPainter.addTo(RootDifferencePaneBase.this, editor, layout, true);
-          }
-        });
-      }
-    });
+    ListSequence.fromList(getLayouts(false)).where(new NotNullWhereFilter()).visitAll((final ChangeGroupLayout layout) -> ListSequence.fromList(getEditors()).visitAll((editor) -> DiffButtonsPainter.addTo(RootDifferencePaneBase.this, editor, layout, false)));
+    ListSequence.fromList(getLayouts(true)).where(new NotNullWhereFilter()).visitAll((final ChangeGroupLayout layout) -> ListSequence.fromList(getEditors()).visitAll((editor) -> DiffButtonsPainter.addTo(RootDifferencePaneBase.this, editor, layout, true)));
   }
 
   protected abstract DiffChangeGroupLayout.SplitterRepainter getSplitterRepainter(DiffEditor leftEditor, DiffEditor rightEditor);
 
   protected Iterable<ModelChange> getChangesToHighlight(ModelChangeSet changeSet) {
-    return Sequence.fromIterable(changeSet.getChangesForNode(myRootId)).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange change) {
-        return changeIsVisible(change);
-      }
-    });
+    if (changeSet == null) {
+      return Sequence.fromIterable(Collections.<ModelChange>emptyList());
+    }
+    return Sequence.fromIterable(changeSet.getChangesForNode(myRootId)).where((change) -> changeIsVisible(change));
   }
 
   protected boolean changeIsVisible(ModelChange change) {
-    if (change instanceof NodeIdChange && mySettingsAction.getHideIdChangesOption()) {
+    if (change instanceof NodeIdChange && DiffSettingsUtil.getHideIdChangesOption()) {
       return false;
     }
-    if (change instanceof SetReferenceChange && ((SetReferenceChange) change).isResolveInfoOnly() && mySettingsAction.getHideResolveInfoChangesOption()) {
+    if (change instanceof SetReferenceChange && ((SetReferenceChange) change).isResolveInfoOnly() && DiffSettingsUtil.getHideResolveInfoChangesOption()) {
       return false;
     }
-    if (change instanceof NodeGroupMoveChange && ((NodeGroupMoveChange) change).isUnordered() && mySettingsAction.getHideUnorderedMovesOption()) {
+    if (change instanceof NodeGroupMoveChange && ((NodeGroupMoveChange) change).isUnordered() && DiffSettingsUtil.getHideUnorderedMovesOption()) {
       return false;
     }
     return true;
@@ -401,6 +419,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
 
   public void dispose() {
     myDisposed = true;
+    ListSequence.fromList(myGutterMessagesRebuilders).visitAll((it) -> it.dispose());
     myActionGroup.removeAll();
     myActionGroup = null;
     myMainLayout.dispose();
@@ -409,38 +428,23 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   }
 
   protected void invalidateLayouts() {
-    ListSequence.fromList(getLayouts(false)).concat(ListSequence.fromList(getLayouts(true))).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(ChangeGroupLayout b) {
-        b.invalidate();
-      }
-    });
+    ListSequence.fromList(getLayouts(false)).concat(ListSequence.fromList(getLayouts(true))).where(new NotNullWhereFilter()).visitAll((b) -> b.invalidate());
   }
 
   public void repaintAndRebuildEditorMessages() {
-    ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-      public void visit(DiffEditor it) {
-        it.repaintAndRebuildEditorMessages();
-      }
-    });
+    ListSequence.fromList(getEditors()).visitAll((it) -> it.repaintAndRebuildEditorMessages());
   }
 
   private DiffEditorsGroup createEditorsGroup(List<SModel> models, List<String> titles) {
     DiffEditorsGroup group = new DiffEditorsGroup(myIsEditorsSyncEnabled);
-    boolean rightToLeft = true;
-    {
-      Iterator<SModel> model_it = ListSequence.fromList(models).iterator();
-      Iterator<String> title_it = ListSequence.fromList(titles).iterator();
-      SModel model_var;
-      String title_var;
-      while (model_it.hasNext() && title_it.hasNext()) {
-        model_var = model_it.next();
-        title_var = title_it.next();
-        DiffEditor editor = new DiffEditor(getMpsProject(), model_var.getNode(myRootId), title_var, rightToLeft, isInspectorShown());
-        editor.getSplitter().setSplitterProportionKey(PARAM_INSPECTOR_SPLITTER_POSITION);
-        editor.getSplitter().addPropertyChangeListener(Splitter.PROP_PROPORTION, this);
-        group.add(editor);
-        rightToLeft = false;
-      }
+    assert ListSequence.fromList(models).count() == ListSequence.fromList(titles).count();
+    for (int index = 0; index < ListSequence.fromList(models).count(); index++) {
+      // the first editor (index==0) should have left scrollbar and gutter
+      // it is only possible to edit second model (index==1) if it is not read only itself
+      DiffEditor editor = new DiffEditor(getMpsProject(), ListSequence.fromList(models).getElement(index), myRootId, ListSequence.fromList(titles).getElement(index), index == 0, index != 1, isInspectorShown());
+      editor.getSplitter().setSplitterProportionKey(PARAM_INSPECTOR_SPLITTER_POSITION);
+      editor.getSplitter().addPropertyChangeListener(Splitter.PROP_PROPORTION, this);
+      group.add(editor);
     }
     return group;
   }
@@ -450,7 +454,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   }
 
   protected boolean isInspectorShown() {
-    return PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, INSPECTOR_SHOWN_BY_DEFAULT);
+    return isInspectorShown;
   }
 
   protected ChangeEditorMessage.ConflictChecker getConflictChecker() {
@@ -462,14 +466,6 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   }
 
   protected void updateLayouts() {
-    ListSequence.fromList(getLayouts(false)).concat(ListSequence.fromList(getLayouts(true))).select(new ISelector<ChangeGroupLayout, DiffChangeGroupLayout>() {
-      public DiffChangeGroupLayout select(ChangeGroupLayout it) {
-        return (DiffChangeGroupLayout) it;
-      }
-    }).visitAll(new IVisitor<DiffChangeGroupLayout>() {
-      public void visit(DiffChangeGroupLayout it) {
-        it.setChangeSet(getChangeSet(it.getDiffEditor(true), it.getDiffEditor(false)));
-      }
-    });
+    ListSequence.fromList(getLayouts(false)).concat(ListSequence.fromList(getLayouts(true))).where(new NotNullWhereFilter()).select((it) -> (DiffChangeGroupLayout) it).visitAll((it) -> it.setChangeSet(getChangeSet(it.getDiffEditor(true), it.getDiffEditor(false))));
   }
 }

@@ -4,24 +4,25 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.ui.InputValidatorEx;
-import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
+import java.util.Collection;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6595589484396888089", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 /*package*/ final class ModelNamespaceInputValidator implements InputValidatorEx {
-  private final NamespaceTextNode myNode;
+
+  private final Collection<SModel> myAllModelsUnderNamespace;
   private final String myOriginalNamespacePrefix;
 
   private String myLastInput;
   private String myError;
 
-  public ModelNamespaceInputValidator(final NamespaceTextNode node, final String originalNamespacePrefix) {
-    myNode = node;
+  public ModelNamespaceInputValidator(final Collection<SModel> allModelsUnderNamespace, final String originalNamespacePrefix) {
+    myAllModelsUnderNamespace = allModelsUnderNamespace;
     myOriginalNamespacePrefix = originalNamespacePrefix;
   }
 
@@ -44,7 +45,7 @@ import org.jetbrains.mps.openapi.model.SModelName;
     }
     myError = null;
     myLastInput = input;
-    for (SModel model : ListSequence.fromList(myNode.getModelsUnder())) {
+    for (SModel model : CollectionSequence.fromCollection(myAllModelsUnderNamespace)) {
       if (model instanceof EditableSModel) {
         SModelName originalModelName = model.getName();
         String namespace = NamespaceRenameHelper.withReplacedPrefix(originalModelName.getNamespace(), myOriginalNamespacePrefix, input);

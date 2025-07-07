@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ import java.util.Collections;
 import static jetbrains.mps.errors.item.RuleIdFlavouredItem.FLAVOUR_RULE_ID;
 
 public class QuickFixAdapter extends OldBaseIntentionFactory {
-  private EditorQuickFix myQuickFix;
+  private final EditorQuickFix myQuickFix;
   private final MessageStatus myStatus;
 
   public QuickFixAdapter(@NotNull EditorQuickFix quickFix, @NotNull MessageStatus status) {
@@ -49,14 +49,6 @@ public class QuickFixAdapter extends OldBaseIntentionFactory {
   }
 
   @Override
-  public boolean isApplicable(SNode node, EditorContext editorContext) {
-    /*Quick fixes are added "manually" by typesystem rules.
-    * Having a quick fix in messages already means that is is applicable.
-    * So, return true.*/
-    return true;
-  }
-
-  @Override
   public boolean isAvailableInChildNodes() {
     return true;
   }
@@ -64,8 +56,9 @@ public class QuickFixAdapter extends OldBaseIntentionFactory {
   @Override
   public Kind getKind() {
     switch (myStatus) {
-      case OK: return Kind.QUICKFIX;
-      case WARNING: return Kind.QUICKFIX;
+      case OK:
+      case WARNING:
+        return Kind.QUICKFIX;
       case ERROR: return Kind.ERROR;
     }
     return Kind.NORMAL;

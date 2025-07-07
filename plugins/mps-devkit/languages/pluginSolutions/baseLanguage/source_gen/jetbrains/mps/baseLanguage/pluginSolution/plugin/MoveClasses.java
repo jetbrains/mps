@@ -9,10 +9,10 @@ import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
 import java.util.Map;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
@@ -43,28 +43,22 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
     return "Move Classes";
   }
   public boolean isApplicable(MPSProject project, List<SNode> nodes) {
-    return super.isApplicable(project, nodes) && ListSequence.fromList(nodes).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix) && (SNodeOperations.getParent(it) == null || SNodeOperations.hasRole(it, LINKS.member$L_2d));
-      }
-    });
+    return super.isApplicable(project, nodes) && ListSequence.fromList(nodes).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix) && (SNodeOperations.getParent(it) == null || SNodeOperations.hasRole(it, LINKS.member$L_2d)));
+  }
+  @Override
+  public void execute(final MPSProject project, final List<SNode> nodesToMove) {
+    execute(project, nodesToMove, null);
   }
 
   @Override
-  public void execute(final MPSProject project, final List<SNode> nodesToMove) {
+  public void execute(MPSProject project, final List<SNode> nodesToMove, Object destinationHint) {
     final Wrappers._T<NodeLocation> newLocation = new Wrappers._T<NodeLocation>();
     final Wrappers._boolean isMember = new Wrappers._boolean();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        isMember.value = SNodeOperations.hasRole(ListSequence.fromList(nodesToMove).first(), LINKS.member$L_2d);
-      }
-    });
+    project.getRepository().getModelAccess().runReadAction(() -> isMember.value = SNodeOperations.hasRole(ListSequence.fromList(nodesToMove).first(), LINKS.member$L_2d));
     if (isMember.value) {
-      project.getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          newLocation.value = new NodeLocation.NodeLocationRoot(SNodeOperations.getModel(ListSequence.fromList(nodesToMove).first()));
-        }
-      });
+      project.getRepository().getModelAccess().runReadAction(() -> newLocation.value = new NodeLocation.NodeLocationRoot(SNodeOperations.getModel(ListSequence.fromList(nodesToMove).first())));
+    } else if (destinationHint instanceof SModel) {
+      newLocation.value = new NodeLocation.NodeLocationRoot(((SModel) destinationHint));
     } else {
       newLocation.value = askLocation(project, nodesToMove);
     }
@@ -95,7 +89,7 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
 
       }
     };
-    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), processor).withValues(nodesToMove));
+    MoveNodesUtil.moveTo(project, getName(), MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(processor, nodesToMove)));
   }
 
   @Override

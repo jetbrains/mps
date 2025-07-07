@@ -27,10 +27,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BreakStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement");
 
-  public static final SMethod<SNode> getLoop_idhEwIHvD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLoop").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIHvD").build();
-  public static final SMethod<SNode> getSwitch_idhEwIHvX = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSwitch").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIHvX").build();
-  public static final SMethod<SNode> getLoopOrSwitch_idhEwIHwh = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLoopOrSwitch").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIHwh").build();
-  public static final SMethod<Boolean> isGuardClauseStatement_idi0z$q7V = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isGuardClauseStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i0z$q7V").build();
+  public static final SMethod<SNode> getLoop_idhEwIHvD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLoop").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877377001L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getSwitch_idhEwIHvX = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSwitch").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877377021L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getLoopOrSwitch_idhEwIHwh = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLoopOrSwitch").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877377041L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isGuardClauseStatement_idi0z$q7V = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isGuardClauseStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237547327995L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLoop_idhEwIHvD, getSwitch_idhEwIHvX, getLoopOrSwitch_idhEwIHwh, isGuardClauseStatement_idi0z$q7V);
 

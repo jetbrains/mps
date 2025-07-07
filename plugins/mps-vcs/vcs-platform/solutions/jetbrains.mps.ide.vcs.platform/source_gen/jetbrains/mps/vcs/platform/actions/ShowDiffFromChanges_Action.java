@@ -10,7 +10,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
@@ -26,6 +25,7 @@ public class ShowDiffFromChanges_Action extends BaseAction {
     super("Show Difference", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -38,14 +38,12 @@ public class ShowDiffFromChanges_Action extends BaseAction {
     }
     {
       EditorContext p = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT);
-      MapSequence.fromMap(_params).put("editorContext", p);
       if (p == null) {
         return false;
       }
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
       if (p == null) {
         return false;
       }
@@ -54,13 +52,11 @@ public class ShowDiffFromChanges_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final Bounds bounds = new ChangesStripActionsHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), ((EditorContext) MapSequence.fromMap(_params).get("editorContext"))).getCurrentChangeGroupPositionAndHidePopup();
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadInEDT(new Runnable() {
-      public void run() {
-        SNode editedNode = ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent().getEditedNode();
-        final VcsActionsUtil vau = new VcsActionsUtil(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), editedNode.getReference(), editedNode.getContainingRoot().getName());
-        vau.showRootDifference(bounds);
-      }
+    final Bounds bounds = new ChangesStripActionsHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSEditorDataKeys.EDITOR_CONTEXT)).getCurrentChangeGroupPositionAndHidePopup();
+    event.getData(MPSEditorDataKeys.EDITOR_CONTEXT).getRepository().getModelAccess().runReadInEDT(() -> {
+      SNode editedNode = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT).getEditorComponent().getEditedNode();
+      final VcsActionsUtil vau = new VcsActionsUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT), editedNode.getReference(), editedNode.getContainingRoot().getName());
+      vau.showRootDifference(bounds);
     });
   }
 }

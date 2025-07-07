@@ -2,7 +2,7 @@
 <model ref="r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -10,15 +10,15 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="mmaq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jdom(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="gp7a" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.dependency(MPS.Core/)" />
     <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
+    <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -39,7 +39,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1095950406618" name="jetbrains.mps.baseLanguage.structure.DivExpression" flags="nn" index="FJ1c_" />
@@ -128,7 +128,7 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -156,7 +156,7 @@
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -197,7 +197,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -1264,12 +1264,12 @@
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="log" />
             <node concept="3uibUv" id="7rEOvdELAAc" role="1tU5fm">
-              <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+              <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
             </node>
-            <node concept="2YIFZM" id="7rEOvdELIBZ" role="33vP2m">
-              <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-              <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-              <node concept="3VsKOn" id="7rEOvdELIC0" role="37wK5m">
+            <node concept="2YIFZM" id="53xcdKDHqPc" role="33vP2m">
+              <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+              <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+              <node concept="3VsKOn" id="53xcdKDHqPd" role="37wK5m">
                 <ref role="3VsUkX" node="7rEOvdELAzG" resolve="ModulesScope" />
               </node>
             </node>
@@ -1382,7 +1382,7 @@
                             <ref role="3cqZAo" node="7rEOvdELAAa" resolve="log" />
                           </node>
                           <node concept="liA8E" id="7rEOvdELIDU" role="2OqNvi">
-                            <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object)" resolve="warn" />
+                            <ref role="37wK5l" to="wwqx:~Logger.warning(java.lang.String)" resolve="warning" />
                             <node concept="3cpWs3" id="7rEOvdELIDV" role="37wK5m">
                               <node concept="Xl_RD" id="7rEOvdELIDW" role="3uHU7B">
                                 <property role="Xl_RC" value="module not found " />
@@ -1884,12 +1884,12 @@
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="log" />
             <node concept="3uibUv" id="7rEOvdELB1$" role="1tU5fm">
-              <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+              <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
             </node>
-            <node concept="2YIFZM" id="7rEOvdELIF8" role="33vP2m">
-              <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-              <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-              <node concept="3VsKOn" id="7rEOvdELIF9" role="37wK5m">
+            <node concept="2YIFZM" id="53xcdKDGl26" role="33vP2m">
+              <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+              <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+              <node concept="3VsKOn" id="53xcdKDGl27" role="37wK5m">
                 <ref role="3VsUkX" node="7rEOvdELB0i" resolve="ModelsScope" />
               </node>
             </node>
@@ -2002,7 +2002,7 @@
                             <ref role="3cqZAo" node="7rEOvdELB1y" resolve="log" />
                           </node>
                           <node concept="liA8E" id="7rEOvdELIFJ" role="2OqNvi">
-                            <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object)" resolve="warn" />
+                            <ref role="37wK5l" to="wwqx:~Logger.warning(java.lang.String)" resolve="warning" />
                             <node concept="3cpWs3" id="7rEOvdELIFK" role="37wK5m">
                               <node concept="Xl_RD" id="7rEOvdELIFL" role="3uHU7B">
                                 <property role="Xl_RC" value="model not found " />
@@ -2205,12 +2205,17 @@
       </node>
       <node concept="3clFbS" id="7rEOvdELBFL" role="3clF47">
         <node concept="1DcWWT" id="7rEOvdELBFM" role="3cqZAp">
-          <node concept="2OqwBi" id="7rEOvdELIGE" role="1DdaDG">
-            <node concept="37vLTw" id="7rEOvdELIGD" role="2Oq$k0">
-              <ref role="3cqZAo" node="7rEOvdELBFI" resolve="project" />
+          <node concept="2OqwBi" id="2c9NoV5Hq4z" role="1DdaDG">
+            <node concept="2OqwBi" id="7rEOvdELIGE" role="2Oq$k0">
+              <node concept="37vLTw" id="7rEOvdELIGD" role="2Oq$k0">
+                <ref role="3cqZAo" node="7rEOvdELBFI" resolve="project" />
+              </node>
+              <node concept="liA8E" id="7rEOvdELIGF" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~Project.getScope()" resolve="getScope" />
+              </node>
             </node>
-            <node concept="liA8E" id="7rEOvdELIGF" role="2OqNvi">
-              <ref role="37wK5l" to="z1c3:~Project.getModulesWithGenerators()" resolve="getModulesWithGenerators" />
+            <node concept="liA8E" id="2c9NoV5HqoY" role="2OqNvi">
+              <ref role="37wK5l" to="z1c3:~Project$ProjectScope.getModules()" resolve="getModules" />
             </node>
           </node>
           <node concept="3cpWsn" id="7rEOvdELBFS" role="1Duv9x">

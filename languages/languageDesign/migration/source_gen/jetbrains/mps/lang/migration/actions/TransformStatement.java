@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TransformStatement {
   public static class NodeFactory_1901572971594206036 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$b4Y3)).addElement(_quotation_createNode_md2x8h_a0a0a0a(TransformStatement__BehaviorDescriptor.getPatternConcept_id4SSaNAQl5wN.invoke(SNodeOperations.as(enclosingNode, CONCEPTS.TransformStatement$iG))));
       SPropertyOperations.assign(newNode, PROPS.forceMultiLine$AhIn, true);
     }

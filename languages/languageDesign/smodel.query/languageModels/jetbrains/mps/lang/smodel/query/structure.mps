@@ -51,7 +51,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -169,25 +169,6 @@
       <property role="YLPcu" value="2018.1" />
     </node>
   </node>
-  <node concept="1TIwiD" id="3J6h25Q6eOJ">
-    <property role="3GE5qa" value="query.parameter.scope.old" />
-    <property role="TrG5h" value="QueryParameterScope_old" />
-    <property role="34LRSv" value="scope" />
-    <property role="R4oN_" value="used search scope (deprecated)" />
-    <property role="EcuMT" value="4307205004132412719" />
-    <ref role="1TJDcQ" node="3J6h25Q2URP" resolve="QueryParameter" />
-    <node concept="1TJgyj" id="3J6h25QeYY9" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="value_old" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="4307205004134707081" />
-      <ref role="20lvS9" node="3J6h25QeHPb" resolve="ScopeParameter_old" />
-    </node>
-    <node concept="asaX9" id="238_VGTIKzU" role="lGtFl">
-      <property role="YLQ7P" value="use QueryParameterScope" />
-      <property role="YLPcu" value="2018.1" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="3J6h25QeHPb">
     <property role="3GE5qa" value="query.parameter.scope.old" />
     <property role="TrG5h" value="ScopeParameter_old" />
@@ -198,61 +179,6 @@
     <node concept="asaX9" id="238_VGTIKzK" role="lGtFl">
       <property role="YLQ7P" value="use QueryParameterScope" />
       <property role="YLPcu" value="2018.1" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="2oWvAovDHkX">
-    <property role="3GE5qa" value="query.parameter.scope.old" />
-    <property role="TrG5h" value="ModulesScope_old" />
-    <property role="34LRSv" value="modules" />
-    <property role="EcuMT" value="2755216049126692157" />
-    <ref role="1TJDcQ" node="3J6h25QeHPb" resolve="ScopeParameter_old" />
-    <node concept="1TJgyj" id="31Tct3TiJtC" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="modules_old" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="3492877759607928680" />
-      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-    </node>
-    <node concept="asaX9" id="238_VGTIK$4" role="lGtFl">
-      <property role="YLQ7P" value="use QueryParameterScope" />
-      <property role="YLPcu" value="2018.1" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="31Tct3Tk$xe">
-    <property role="3GE5qa" value="query.parameter.scope.old" />
-    <property role="TrG5h" value="ModelsScope_old" />
-    <property role="34LRSv" value="models" />
-    <property role="EcuMT" value="3492877759608408142" />
-    <ref role="1TJDcQ" node="3J6h25QeHPb" resolve="ScopeParameter_old" />
-    <node concept="1TJgyj" id="31Tct3Tk$xf" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="models_old" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="3492877759608408143" />
-      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-    </node>
-    <node concept="asaX9" id="238_VGTIK$e" role="lGtFl">
-      <property role="YLQ7P" value="use QueryParameterScope" />
-      <property role="YLPcu" value="2018.1" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="31Tct3Txnn9">
-    <property role="3GE5qa" value="query.parameter.scope.old" />
-    <property role="TrG5h" value="CustomScope_old" />
-    <property role="34LRSv" value="custom" />
-    <property role="R4oN_" value="? extends SearchScope" />
-    <property role="EcuMT" value="3492877759611762121" />
-    <ref role="1TJDcQ" node="3J6h25QeHPb" resolve="ScopeParameter_old" />
-    <node concept="1TJgyj" id="31Tct3Txpke" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="scope_old" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="3492877759611770126" />
-      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-    </node>
-    <node concept="asaX9" id="238_VGTIK$o" role="lGtFl">
-      <property role="YLPcu" value="2018.1" />
-      <property role="YLQ7P" value="use QueryParameterScope" />
     </node>
   </node>
   <node concept="PlHQZ" id="64VftqErqMg">

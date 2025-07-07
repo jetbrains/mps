@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,18 @@
 package jetbrains.mps.extapi.module;
 
 import jetbrains.mps.classloading.DumbIdeaPluginFacet;
+import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.facets.DocumentationFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
+import jetbrains.mps.project.facets.PlainTextTargetFacet;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.facets.TestsFacetImpl;
 import jetbrains.mps.smodel.BootstrapLanguages;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.containers.MultiMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -46,15 +52,18 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
   private final FacetFactory TESTS_FACET_FACTORY = new FacetFactory() {
     @Override
     public SModuleFacet create(@NotNull SModule module) {
-      final TestsFacetImpl rv = new TestsFacetImpl();
-      rv.setModule(module);
-      return rv;
+      return new TestsFacetImpl(module);
     }
 
     @NotNull
     @Override
     public String getPresentation() {
       return "Tests";
+    }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return !(module instanceof DevKit);
     }
   };
 
@@ -68,6 +77,47 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     @Override
     public String getPresentation() {
       return "Java";
+    }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return !(module instanceof DevKit);
+    }
+  };
+
+  private final FacetFactory myPlainTextFacetFactory = new FacetFactory() {
+    @Override
+    public SModuleFacet create(@NotNull SModule module) {
+       return new PlainTextTargetFacet(module);
+    }
+
+    @NotNull
+    @Override
+    public String getPresentation() {
+      return "Plain text output";
+    }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return module instanceof Solution;
+    }
+  };
+
+  private final FacetFactory DOCUMENTATION_FACET_FACTORY = new FacetFactory() {
+    @Override
+    public SModuleFacet create(@NotNull SModule module) {
+      return new DocumentationFacet(module);
+    }
+
+    @NotNull
+    @Override
+    public String getPresentation() {
+      return "Documentation";
+    }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return module instanceof Language;
     }
   };
 
@@ -159,15 +209,26 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
 
     addFactory(JavaModuleFacet.FACET_TYPE, JAVA_MODULE_FACET_FACTORY);
     addFactory(TestsFacet.FACET_TYPE, TESTS_FACET_FACTORY);
+    addFactory(PlainTextTargetFacet.FACET_TYPE, myPlainTextFacetFactory);
+    addFactory(DocumentationFacet.FACET_TYPE, DOCUMENTATION_FACET_FACTORY);
     setUpDumbIdeaFacet();
 
     registerLanguageFacet(BootstrapLanguages.getBaseLang(), JavaModuleFacet.FACET_TYPE);
   }
 
   private void setUpDumbIdeaFacet() {
-    FacetFactory existingFactory = getFacetFactory(DumbIdeaPluginFacet.FACET_TYPE);
+    // FIXME drop once 2022.3 is out
+    // NOTE there are uses of 'ideaPlugin' facet in mps-extensions and mbeddr branches mps/2022.2 we
+    // still use to build MPS 2023.1
+    FacetFactory existingFactory = getFacetFactory(IdeaPluginModuleFacet.FACET_TYPE);
     if (existingFactory == null) {
       DUMB_IDEA_PLUGIN_FACET_FACTORY = new FacetFactory() {
+        @Override
+        public boolean isApplicable(@NotNull SModule module) {
+          // false to prevent the facet showing up at 'Facets' tab of module properties, no need to add new instances
+          return false;
+        }
+
         @Override
         public SModuleFacet create(@NotNull SModule module) {
           return new DumbIdeaPluginFacet(module);
@@ -189,8 +250,10 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     if (DUMB_IDEA_PLUGIN_FACET_FACTORY != null) {
       removeFactory(DUMB_IDEA_PLUGIN_FACET_FACTORY);
     }
+    removeFactory(myPlainTextFacetFactory);
     removeFactory(TESTS_FACET_FACTORY);
     removeFactory(JAVA_MODULE_FACET_FACTORY);
+    removeFactory(DOCUMENTATION_FACET_FACTORY);
     INSTANCE = null;
   }
 }

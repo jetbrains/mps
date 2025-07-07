@@ -14,6 +14,7 @@ public class ModelActions_ActionGroup extends GeneratedActionGroup {
   public static final String LABEL_ID_make = ID + "make";
   public static final String LABEL_ID_paste = ID + "paste";
   public static final String LABEL_ID_modelUsages = ID + "modelUsages";
+  public static final String LABEL_ID_analyze = ID + "analyze";
   public static final String LABEL_ID_check = ID + "check";
   public static final String LABEL_ID_refactoring = ID + "refactoring";
   public static final String LABEL_ID_favorites = ID + "favorites";
@@ -38,7 +39,7 @@ public class ModelActions_ActionGroup extends GeneratedActionGroup {
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.PasteNode_Action");
     ModelActions_ActionGroup.this.addSeparator();
     addNamedAnchor(LABEL_ID_modelUsages);
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.platform.actions.AnalyzeDependencies_Action");
+    addNamedAnchor(LABEL_ID_analyze);
     addNamedAnchor(LABEL_ID_check);
     ModelActions_ActionGroup.this.addSeparator();
     addNamedAnchor(LABEL_ID_refactoring);
@@ -48,6 +49,7 @@ public class ModelActions_ActionGroup extends GeneratedActionGroup {
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.OptimizeModelImports_Action");
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FixModuleImports_Action");
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ConvertToFilePerRootPersistence_Action");
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ConvertToDefaultPersistence_Action");
     ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(false), false);
     ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(true), true);
     ModelActions_ActionGroup.this.addSeparator();

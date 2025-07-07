@@ -21,7 +21,6 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.ide.ui.tree.SortUtil;
 import com.intellij.diff.contents.DiffContent;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vfs.tracking.ModelDiffContent;
 import com.intellij.diff.requests.DiffRequest;
 import com.intellij.diff.requests.SimpleDiffRequest;
@@ -35,6 +34,7 @@ public class CompareTransientModels_Action extends BaseAction {
     super("Compare Models", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -75,16 +75,8 @@ public class CompareTransientModels_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     List<SModel> sortedModels = SortUtil.sortModels(((List<SModel>) MapSequence.fromMap(_params).get("models")));
-    List<DiffContent> contents = ListSequence.fromList(sortedModels).select(new ISelector<SModel, DiffContent>() {
-      public DiffContent select(SModel model) {
-        return (DiffContent) new ModelDiffContent(model);
-      }
-    }).toListSequence();
-    List<String> titles = ListSequence.fromList(sortedModels).select(new ISelector<SModel, String>() {
-      public String select(SModel model) {
-        return model.getName() + "";
-      }
-    }).toListSequence();
+    List<DiffContent> contents = ListSequence.fromList(sortedModels).select((model) -> (DiffContent) new ModelDiffContent(model)).toList();
+    List<String> titles = ListSequence.fromList(sortedModels).select((model) -> model.getName() + "").toList();
     DiffRequest request = new SimpleDiffRequest("", contents, titles);
     DiffManager.getInstance().showDiff(((Project) MapSequence.fromMap(_params).get("project")), request);
   }

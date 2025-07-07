@@ -102,7 +102,7 @@ import jetbrains.mps.lang.editor.styleTests.editor.TestStylesheet_StyleSheet.una
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
     editorCell.setCellId("Collection_58m68g_c1a");
     Style style = new StyleImpl();
-    new priorityStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new priorityStyleStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_3());
@@ -120,7 +120,7 @@ import jetbrains.mps.lang.editor.styleTests.editor.TestStylesheet_StyleSheet.una
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "sol");
     editorCell.setCellId("Constant_58m68g_b2b0");
     Style style = new StyleImpl();
-    new hugePriorityStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new hugePriorityStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -129,7 +129,7 @@ import jetbrains.mps.lang.editor.styleTests.editor.TestStylesheet_StyleSheet.una
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
     editorCell.setCellId("Collection_58m68g_c2b0");
     Style style = new StyleImpl();
-    new unapplyPriorityStyleCopyStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new unapplyPriorityStyleCopyStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_5());

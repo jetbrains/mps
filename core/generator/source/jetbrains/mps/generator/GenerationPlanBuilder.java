@@ -18,7 +18,6 @@ package jetbrains.mps.generator;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import jetbrains.mps.generator.plan.PlanIdentity;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -134,6 +133,14 @@ public interface GenerationPlanBuilder {
    * @return builder instance to handle separate branch of transformations
    */
   GenerationPlanBuilder fork();
+
+  /**
+   * Sets the generation target of a {@link #fork()}. Has no effect otherwise.
+   * @param targetHint generation target
+   */
+  default void setGenerationTarget(String targetHint) {
+    // NOP by default
+  }
 
   /**
    * Completes {@link ModelGenerationPlan} instance with any state information build is aware of (e.g. build extends relation between

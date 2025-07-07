@@ -1,4 +1,4 @@
-<component xmlns:xi="http://www.w3.org/2001/XInclude">
+<idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
   <actions>
     <group id="MPSToolbarRunGroup">
       <!--for integration purposes-->
@@ -11,10 +11,10 @@
               text="New Project"
               description="You can create a new project with this action"/>
       <action id="WelcomeScreen.OpenProject"
-              class="jetbrains.mps.workbench.actions.OpenMPSProjectAction"
+              class="jetbrains.mps.workbench.actions.OpenMPSProjectAction$OnMPSWelcomeScreen"
               text="Open"
               description="You can open existing project with this action"/>
       <add-to-group group-id="WelcomeScreen.QuickStart" anchor="first"/>
     </group>
   </actions>
-</component>
+</idea-plugin>

@@ -18,8 +18,6 @@ public class TouchBarDefault_shift_ActionGroup extends GeneratedActionGroup {
     super("TouchBarDefault_shift", ID, plugin);
     setIsInternal(false);
     setPopup(false);
-    TouchBarDefault_shift_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModel_Action");
-    TouchBarDefault_shift_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModule_Action");
     addNamedAnchor(LABEL_ID_rename);
     addNamedAnchor(LABEL_ID_refactoring);
     TouchBarDefault_shift_ActionGroup.this.addSeparator();

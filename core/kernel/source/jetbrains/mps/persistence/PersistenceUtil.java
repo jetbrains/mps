@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.JDOMUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
@@ -27,7 +26,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.ContentOption;
 import org.jetbrains.mps.openapi.persistence.DataSource;
-import org.jetbrains.mps.openapi.persistence.DataSourceListener;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
@@ -41,9 +39,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
@@ -53,7 +49,7 @@ import java.util.stream.Stream;
  * evgeny, 3/6/13
  */
 public final class PersistenceUtil {
-  private static final Logger LOG = LogManager.getLogger(PersistenceUtil.class);
+  private static final Logger LOG = Logger.getLogger(PersistenceUtil.class);
 
   private PersistenceUtil() {
   }
@@ -188,7 +184,7 @@ public final class PersistenceUtil {
     @NotNull
     @Override
     public InputStream openInputStream() throws IOException {
-      throw new UnsupportedOperationException("I am not able to read only to write " + this);
+      return getContentAsStream();
     }
 
     @NotNull

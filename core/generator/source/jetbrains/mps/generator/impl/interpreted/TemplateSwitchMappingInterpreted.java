@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,15 +77,7 @@ public class TemplateSwitchMappingInterpreted implements TemplateSwitchMapping {
   public Collection<SNode> applyDefault(TemplateContext context) throws GenerationException {
     SNode defaultConsequence = RuleUtil.getSwitchDefaultConsequence(mySwitch);
     if (defaultConsequence == null) {
-      SNodeReference modifies = getModifiesSwitch();
-      if (modifies == null) {
-        return null;
-      }
-      TemplateSwitchMapping switchMapping = context.getEnvironment().getGenerator().getSwitch(modifies);
-      if (switchMapping == null) {
-        return null;
-      }
-      return switchMapping.applyDefault(context);
+      return null;
     }
 
     try {

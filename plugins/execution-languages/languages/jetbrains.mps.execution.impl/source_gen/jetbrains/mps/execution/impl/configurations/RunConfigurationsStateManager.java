@@ -5,8 +5,7 @@ package jetbrains.mps.execution.impl.configurations;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.components.ProjectComponent;
 import jetbrains.mps.plugins.PluginReloadingListener;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.plugins.PluginLoaderRegistry;
 import java.util.List;
@@ -15,14 +14,11 @@ import jetbrains.mps.ide.ThreadUtils;
 import com.intellij.execution.ui.RunContentDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.ui.content.Content;
-import org.apache.log4j.Level;
 import com.intellij.execution.ExecutionManager;
 import com.intellij.execution.ui.RunContentManagerImpl;
 import com.intellij.execution.configurations.RunConfiguration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.classloading.ModuleClassLoader;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.ArrayList;
 import com.intellij.execution.impl.RunManagerImpl;
 import com.intellij.execution.RunManagerEx;
@@ -33,7 +29,7 @@ import com.intellij.execution.RunnerAndConfigurationSettings;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * This component allows to create reloadable (!) run configurations within MPS.
+ * This component allows us to create reloadable (!) run configurations within MPS.
  * It listens to the project plugins manager because we use custom project plugins to register custom 'before' tasks (like 'make' etc.)
  * It saves all run configurations at the plugin unload and then restores them at the plugin load event
  * Currently before tasks are saved but not loaded (they are loaded from template configurations) due to change in IDEA api
@@ -44,14 +40,15 @@ import org.jetbrains.annotations.Nullable;
  */
 @GeneratedClass(node = "r:c10c60c4-8193-4b28-a3f2-372a46125628(jetbrains.mps.execution.impl.configurations)/5145867626676099642", model = "r:c10c60c4-8193-4b28-a3f2-372a46125628(jetbrains.mps.execution.impl.configurations)")
 public class RunConfigurationsStateManager implements ProjectComponent, PluginReloadingListener {
-  private static final Logger LOG = LogManager.getLogger(RunConfigurationsStateManager.class);
+  private static final Logger LOG = Logger.getLogger(RunConfigurationsStateManager.class);
   private final Project myProject;
   private final PluginLoaderRegistry myRegistry;
   private final RunConfigurationsState myState = new RunConfigurationsState();
 
-  public RunConfigurationsStateManager(Project project, PluginLoaderRegistry registry) {
+  public RunConfigurationsStateManager(Project project) {
+    // to stop being ProjectComponent, need PluginLoaderRegistry to publish events on the bus
     myProject = project;
-    myRegistry = registry;
+    myRegistry = PluginLoaderRegistry.getInstance();
   }
 
   @Override
@@ -66,26 +63,22 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
 
   @Override
   public void beforePluginsUnloaded(List<PluginContributor> contributors) {
-    // the current contract is that this can be executed in "later", but only when it's not project disposal 
+    // same here
+    if (myProject.isDisposed()) {
+      return;
+    }
+
     disposeRunContentDescriptors();
   }
 
   @Override
   public void initComponent() {
-    myRegistry.addReloadingListener(RunConfigurationsStateManager.this);
+    myRegistry.addReloadingListener(this);
   }
 
   @Override
   public void disposeComponent() {
     myRegistry.removeReloadingListener(this);
-  }
-
-  @Override
-  public void projectOpened() {
-  }
-
-  @Override
-  public void projectClosed() {
   }
 
   private void disposeRunContentDescriptors() {
@@ -96,13 +89,13 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
     for (RunContentDescriptor descriptor : ListSequence.fromList(descriptors)) {
       Content attachedContent = descriptor.getAttachedContent();
       if (attachedContent == null) {
-        if (LOG.isEnabledFor(Level.WARN)) {
-          LOG.warn("Attached content of descriptor " + descriptor.getDisplayName() + " is null.");
+        if (LOG.isWarningLevel()) {
+          LOG.warning("Attached content of descriptor " + descriptor.getDisplayName() + " is null.");
         }
       } else
       if (attachedContent.getManager() == null) {
-        if (LOG.isEnabledFor(Level.WARN)) {
-          LOG.warn("Manager of attached content of descriptor " + descriptor.getDisplayName() + " is null.");
+        if (LOG.isWarningLevel()) {
+          LOG.warning("Manager of attached content of descriptor " + descriptor.getDisplayName() + " is null.");
         }
       } else {
         attachedContent.getManager().removeAllContents(true);
@@ -119,15 +112,7 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
     final RunContentManagerImpl contentManager = (RunContentManagerImpl) executionManager.getContentManager();
 
     Iterable<RunConfiguration> allConfigurationsList = getRunManager().getAllConfigurationsList();
-    final List<String> reloadableConfigurationNames = Sequence.fromIterable(allConfigurationsList).where(new IWhereFilter<RunConfiguration>() {
-      public boolean accept(RunConfiguration it) {
-        return it.getClass().getClassLoader() instanceof ModuleClassLoader;
-      }
-    }).select(new ISelector<RunConfiguration, String>() {
-      public String select(RunConfiguration it) {
-        return it.getName();
-      }
-    }).toListSequence();
+    final List<String> reloadableConfigurationNames = Sequence.fromIterable(allConfigurationsList).where((it) -> it.getClass().getClassLoader() instanceof ModuleClassLoader).select((it) -> it.getName()).toList();
     final List<RunContentDescriptor> descriptors = ListSequence.fromList(new ArrayList<RunContentDescriptor>());
     for (RunContentDescriptor descriptor : ListSequence.fromList(contentManager.getAllDescriptors())) {
       if (ListSequence.fromList(reloadableConfigurationNames).contains(descriptor.getDisplayName())) {

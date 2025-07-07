@@ -43,6 +43,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isAncestor(SNode ancestor, SNode node) {
+    // uses in mbeddr
     do {
       if (ancestor == node) {
         return true;
@@ -134,6 +135,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isRoot(SNode n) {
+    // uses in mbeddt
     return n.getModel() != null && n.getParent() == null;
   }
   /**
@@ -143,6 +145,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static String getDebugText(SNode node) {
+    // a lot of uses
     String roleText = "";
     if (node.getModel() != null) {
       SNode parent = node.getParent();
@@ -181,9 +184,10 @@ public class SNodeOperations {
    */
   @Deprecated
   public static Set<SContainmentLink> getChildRoles(SNode n, boolean includeAttributeRoles) {
+    // uses in mbeddr
     final Set<SContainmentLink> augend = new HashSet<SContainmentLink>();
     for (SNode child : n.getChildren()) {
-      if (includeAttributeRoles || !((AttributeOperations.isAttribute(child)))) {
+      if (includeAttributeRoles || !(AttributeOperations.isAttribute(child))) {
         augend.add(child.getContainmentLink());
       }
     }
@@ -215,16 +219,16 @@ public class SNodeOperations {
   }
   /**
    * This will be replaced by getting resolve info from a reference in a context containing it
+   * [artem] Well, I believe this one has to be replaced with Scope, with IResolveInfo being a default fallback. 
+   *   Neither this method nor SNodeUtil shall be used by MPS code as it makes an assumption scope impl complies with the way we build resolveInfo here.
+   *   Instead, it's Scope responsibility to build and process resolveInfo
    * 
-   * @deprecated use SNodeUtil.getResolveInfo (note it does not return name in case of !isInstanceOf(IResolveInfo))
+   * @deprecated use scopes to obtain actual resolveInfo; Use reference.resolveInfo to find out value stored with an association link instance.
    */
   @Deprecated
   public static String getResolveInfo(SNode n) {
-    String resolveInfo = SNodeUtil.getResolveInfo(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.IResolveInfo$$k));
-    if (resolveInfo != null) {
-      return resolveInfo;
-    }
-    return SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
+    String resolveInfo = SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.IResolveInfo$$k), PROPS.resolveInfo$lW9a);
+    return (resolveInfo != null ? resolveInfo : SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL));
   }
   /**
    * 
@@ -272,6 +276,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static String getModelLongName(SModel model) {
+    // uses in mbeddr
     // replaced NameUtil.getModelLongName didn't expect null and returned a qualified name w/o stereotype
     return model.getName().getLongName();
   }
@@ -309,6 +314,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isGeneratable(SModel model) {
+    // uses in mbeddr
     // I wonder why this method doesn't reside in SModelOperations
     return model instanceof GeneratableSModel && ((GeneratableSModel) model).isGeneratable();
   }
@@ -345,6 +351,7 @@ public class SNodeOperations {
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty resolveInfo$lW9a = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

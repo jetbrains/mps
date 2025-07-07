@@ -22,7 +22,8 @@ public class check_ParentScope_NonTypesystemRule extends AbstractNonTypesystemRu
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // todo: do right stuff! =(
-    if (!(SPropertyOperations.getString(SNodeOperations.getNodeAncestor(expr, CONCEPTS.ConceptMethodDeclaration$N0, false, false), PROPS.name$MnvL).equals("getScope"))) {
+    String name = SPropertyOperations.getString(SNodeOperations.getNodeAncestor(expr, CONCEPTS.ConceptMethodDeclaration$N0, false, false), PROPS.name$MnvL);
+    if (!("getScope".equals(name))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expr, "Should be in getScope method", "r:c2d05fc3-fe25-4093-95ce-8e3356e61084(jetbrains.mps.lang.scopes.typesystem)", "8077936094962911290", null, errorTarget);

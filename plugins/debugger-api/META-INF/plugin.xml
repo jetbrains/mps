@@ -9,49 +9,6 @@
   <depends>jetbrains.mps.core</depends>
   <depends>com.intellij.modules.mps</depends>
 
-  <application-components>
-    <!--api-->
-    <component>
-      <implementation-class>jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.debug.api.Debuggers</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.debug.api.BreakpointCreatorsManager</implementation-class>
-    </component>
-  </application-components>
-
-  <project-components>
-    <!--api-->
-    <component>
-      <implementation-class>jetbrains.mps.debug.api.BreakpointManagerComponent</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.debug.api.DebugSessionManagerComponent</implementation-class>
-    </component>
-
-    <!--runtime-->
-    <component>
-      <implementation-class>jetbrains.mps.debugger.api.ui.breakpoints.BreakpointsUiComponent</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.debugger.api.ui.breakpoints.BreakpointViewSettingsComponent
-      </implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.debugger.api.ui.executionPoint.CurrentLinePositionComponent
-      </implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.debugger.api.ui.executionPoint.InTextPositionComponent
-      </implementation-class>
-    </component>
-  </project-components>
-
   <actions>
     <!--for being able to use StopAction in j.m.debug.api-->
     <group id="DebugStopAction" popup="false">
@@ -75,9 +32,42 @@
     <programRunner id="defaultDebugRunner" implementation="jetbrains.mps.debugger.api.runner.MPSDebugRunner"
                    order="last"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
-    <mps.LanguageLibrary dir="" hide="true"/>
+    <mps.LanguageLibrary dir="/" hide="true"/>
     <mps.PluginComponentContributor application="jetbrains.mps.debugger.api.ui.actions.Runtime_ApplicationPlugin" />
+    <applicationService serviceImplementation="jetbrains.mps.debug.api.BreakpointCreatorsManager"/>
+    <applicationService serviceImplementation="jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager"/>
+    <applicationService serviceImplementation="jetbrains.mps.debug.api.Debuggers"/>
+    <projectService serviceImplementation="jetbrains.mps.debug.api.BreakpointManagerComponent"/>
+    <projectService serviceImplementation="jetbrains.mps.debug.api.DebugSessionManagerComponent"/>
+    <projectService serviceImplementation="jetbrains.mps.debugger.api.ui.breakpoints.BreakpointViewSettingsComponent"/>
+    <!-- BreakpointEditorIntegration service comes together with EditorIntegrationListener projectListener, below -->
+    <projectService serviceInterface="jetbrains.mps.debugger.core.breakpoints.BreakpointEditorIntegration"
+                    serviceImplementation="jetbrains.mps.debugger.api.ui.breakpoints.BreakpointsUiComponent"/>
+    <!-- CurrentLinePositionComponent and InTextPositionComponent rely on respective listeners, below -->
+    <projectService serviceImplementation="jetbrains.mps.debugger.api.ui.executionPoint.CurrentLinePositionComponent"/>
+    <projectService serviceImplementation="jetbrains.mps.debugger.api.ui.executionPoint.InTextPositionComponent"/>
   </extensions>
+
+  <projectListeners>
+    <!-- this listener works together with BreakpointEditorIntegration service, above-->
+    <listener class="jetbrains.mps.debugger.core.breakpoints.EditorIntegrationListener"
+              topic="jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+    <!-- next listeners are responsible to activate respective project services -->
+    <listener class="jetbrains.mps.debugger.api.ui.executionPoint.CurrentLinePositionComponent$DebugListener"
+              topic="jetbrains.mps.debug.api.DebugSessionManagerComponent$DebugSessionListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+    <listener class="jetbrains.mps.debugger.api.ui.executionPoint.InTextPositionComponent$DebugListener"
+              topic="jetbrains.mps.debug.api.DebugSessionManagerComponent$DebugSessionListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+    <listener class="jetbrains.mps.debugger.api.ui.executionPoint.InTextPositionComponent$FileEditorListener"
+              topic="com.intellij.openapi.fileEditor.FileEditorManagerListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+  </projectListeners>
 
   <extensions defaultExtensionNs="jetbrains.mps">
     <debugger.PositionProvider key="jetbrains.mps.debug.api.source.NodePositionProvider" class="jetbrains.mps.debug.api.source.NodePositionProvider"/>

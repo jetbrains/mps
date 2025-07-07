@@ -22,21 +22,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class MakeDotExpressionChecked_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public MakeDotExpressionChecked_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:e7b16359-4f7b-4995-8330-19c6bbadce25(jetbrains.mps.baseLanguage.checkedDots.intentions)", "1038097819968653124"));
   }
+
   @Override
   public String getPresentation() {
     return "MakeDotExpressionChecked";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -46,10 +46,12 @@ public final class MakeDotExpressionChecked_Intention extends AbstractIntentionD
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return (SNodeOperations.isInstanceOf(node, CONCEPTS.CheckedDotExpression$Du) ? "Make Dot Expression Not Checked" : "Make Dot Expression Checked");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.CheckedDotExpression$Du)) {
@@ -64,10 +66,19 @@ public final class MakeDotExpressionChecked_Intention extends AbstractIntentionD
         SNodeOperations.replaceWithAnother(node, checkedDot);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return MakeDotExpressionChecked_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

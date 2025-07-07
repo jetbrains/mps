@@ -9,7 +9,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -34,11 +33,7 @@ public class _ClassConcept_Implements_Delete_Last {
             return;
           }
           ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.implementedInterface$rujG)).clear();
-          ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.implementedInterface$rujG).list(clazz)).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.deleteNode(it);
-            }
-          });
+          ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.implementedInterface$rujG).list(clazz)).visitAll((it) -> SNodeOperations.deleteNode(it));
           if (SNodeOperations.isInstanceOf(clazz, CONCEPTS.EnumClass$Vk)) {
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, SNodeOperations.cast(clazz, CONCEPTS.EnumClass$Vk), "OpenBraceEnumCell", 0);
           } else {

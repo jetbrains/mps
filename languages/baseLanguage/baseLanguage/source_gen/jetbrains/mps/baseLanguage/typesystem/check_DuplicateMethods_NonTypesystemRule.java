@@ -12,7 +12,6 @@ import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Objects;
@@ -28,31 +27,19 @@ public class check_DuplicateMethods_NonTypesystemRule extends AbstractNonTypesys
   public void applyRule(final SNode classifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> ownMethods = Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(classifier);
 
-    Iterable<SNode> methods = Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classifier))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39) || SNodeOperations.isInstanceOf(it, CONCEPTS.StaticMethodDeclaration$FJ);
-      }
-    }).ofType(SNode.class);
+    Iterable<SNode> methods = Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classifier))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39) || SNodeOperations.isInstanceOf(it, CONCEPTS.StaticMethodDeclaration$FJ)).ofType(SNode.class);
 
     for (final SNode ownMethod : ownMethods) {
-      Iterable<SNode> ownDuplicates = ListSequence.fromList(Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(classifier)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(ownMethod, PROPS.name$MnvL));
-        }
-      });
+      Iterable<SNode> ownDuplicates = ListSequence.fromList(Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(classifier)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(ownMethod, PROPS.name$MnvL)));
       if (Sequence.fromIterable(ownDuplicates).count() > 1) {
-        RulesFunctions_BaseLanguage.checkDuplicates(typeCheckingContext, ownMethod, classifier, Sequence.fromIterable(ownDuplicates).toListSequence());
+        RulesFunctions_BaseLanguage.checkDuplicates(typeCheckingContext, ownMethod, classifier, Sequence.fromIterable(ownDuplicates).toList());
       }
 
-      Iterable<SNode> namesakes = Sequence.fromIterable(methods).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(ownMethod, PROPS.name$MnvL));
-        }
-      });
+      Iterable<SNode> namesakes = Sequence.fromIterable(methods).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(ownMethod, PROPS.name$MnvL)));
       if (Sequence.fromIterable(namesakes).count() < 2) {
         continue;
       }
-      RulesFunctions_BaseLanguage.checkDuplicates(typeCheckingContext, ownMethod, classifier, Sequence.fromIterable(namesakes).toListSequence());
+      RulesFunctions_BaseLanguage.checkDuplicates(typeCheckingContext, ownMethod, classifier, Sequence.fromIterable(namesakes).toList());
 
     }
   }

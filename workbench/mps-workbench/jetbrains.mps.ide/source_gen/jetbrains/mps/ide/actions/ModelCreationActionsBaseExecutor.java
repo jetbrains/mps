@@ -17,7 +17,6 @@ import com.intellij.openapi.options.ex.SingleConfigurableEditor;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 
 /**
  * Provides a generic template for building various model-creation actions.
@@ -51,20 +50,18 @@ public abstract class ModelCreationActionsBaseExecutor {
   }
 
   public final void execute() {
-    TransactionGuard.getInstance().submitTransactionAndWait(new Runnable() {
-      public void run() {
+    TransactionGuard.getInstance().submitTransactionAndWait(() -> {
 
-        SModule module = selectModule();
+      SModule module = selectModule();
 
-        if (module == null || !(canBeCreatedInModule(module))) {
-          return;
-        }
+      if (module == null || !(canBeCreatedInModule(module))) {
+        return;
+      }
 
-        SModel result = showDialog(module);
+      SModel result = showDialog(module);
 
-        if (result != null) {
-          onModelCreated(result);
-        }
+      if (result != null) {
+        onModelCreated(result);
       }
     });
   }
@@ -123,11 +120,7 @@ public abstract class ModelCreationActionsBaseExecutor {
    */
   protected void onModelCreated(@NotNull final SModel result) {
     // Model creation will lead to indexes update, navigation should be performed after that
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        showCreatedModelnProjectView(result);
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(() -> showCreatedModelnProjectView(result));
   }
 
   /**
@@ -142,10 +135,6 @@ public abstract class ModelCreationActionsBaseExecutor {
   }
 
   private boolean hasModelRoots(@NotNull final SModule module) {
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        return !(module.getModelRoots().iterator().hasNext());
-      }
-    });
+    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> !(module.getModelRoots().iterator().hasNext()));
   }
 }

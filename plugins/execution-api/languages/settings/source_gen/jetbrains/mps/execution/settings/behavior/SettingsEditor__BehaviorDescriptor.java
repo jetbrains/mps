@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class SettingsEditor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013dL, "jetbrains.mps.execution.settings.structure.SettingsEditor");
 
-  public static final SMethod<List<SNode>> getDeclaredOperations_idO$iR4J$gbn = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDeclaredOperations").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("O$iR4J$gbn").build();
+  public static final SMethod<List<SNode>> getDeclaredOperations_idO$iR4J$gbn = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDeclaredOperations").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156067031L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDeclaredOperations_idO$iR4J$gbn);
 

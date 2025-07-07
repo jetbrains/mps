@@ -1,6 +1,5 @@
 <idea-plugin>
   <extensions defaultExtensionNs="com.intellij">
-    <tipAndTrick file="Welcome.html"/>
     <tipAndTrick file="ProjectView.html"/>
     <tipAndTrick file="Organization.html"/>
     <tipAndTrick file="KindsOfModules.html"/>
@@ -61,6 +60,12 @@
     <tipAndTrick file="GenericPlaceholder.html"/>
     <tipAndTrick file="GenericPlaceholderComments.html"/>
     <tipAndTrick file="NodePointer.html"/>
+    <tipAndTrick file="Structure_ChildToReferenceAndBack.html"/>
+    <tipAndTrick file="Structure_ConceptToInterface.html"/>
+    <tipAndTrick file="Structure_ContextAssistant.html"/>
+    <tipAndTrick file="Structure_CreateReferenceConcept.html"/>
+    <tipAndTrick file="Structure_MakeConceptAbstract.html"/>
+    <tipAndTrick file="Structure_CreateEditor.html"/>
     <tipAndTrick file="HelpMenu.html"/>
     <tipAndTrick file="JetBrainsTV.html"/>
 

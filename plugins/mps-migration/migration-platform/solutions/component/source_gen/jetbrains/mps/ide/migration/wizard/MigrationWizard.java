@@ -9,10 +9,10 @@ import java.util.List;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import javax.swing.JButton;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/6781485246382122883", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public class MigrationWizard extends AbstractWizardEx {
@@ -22,13 +22,13 @@ public class MigrationWizard extends AbstractWizardEx {
   }
 
   private static List<BaseStep> createSteps(final MigrationSession session) {
-    Iterable<ProjectMigration> projectMig = session.getMigrationRegistry().getProjectMigrations();
-    Sequence.fromIterable(projectMig).ofType(ProjectMigrationWithOptions.class).translate(new ITranslator2<ProjectMigrationWithOptions, ProjectMigrationWithOptions.Option>() {
-      public Iterable<ProjectMigrationWithOptions.Option> translate(ProjectMigrationWithOptions it) {
+    Iterable<ProjectMigration> projectMig = session.getProjectMigrations();
+    Sequence.fromIterable(projectMig).ofType(ProjectMigrationWithOptions.class).translate(new _FunctionTypes._return_P1_E0<Iterable<ProjectMigrationWithOptions.Option>, ProjectMigrationWithOptions>() {
+      public Iterable<ProjectMigrationWithOptions.Option> invoke(ProjectMigrationWithOptions it) {
         return it.getOptions();
       }
-    }).visitAll(new IVisitor<ProjectMigrationWithOptions.Option>() {
-      public void visit(ProjectMigrationWithOptions.Option it) {
+    }).visitAll(new _FunctionTypes._void_P1_E0<ProjectMigrationWithOptions.Option>() {
+      public void invoke(ProjectMigrationWithOptions.Option it) {
         session.getOptions().addOption(it);
       }
     });
@@ -49,7 +49,9 @@ public class MigrationWizard extends AbstractWizardEx {
 
     String nextLabel = (getStep()).nextButtonLabel();
     if (nextLabel != null) {
-      getNextButton().setText(nextLabel);
+      JButton nextButton = getNextButton();
+      nextButton.setText(nextLabel);
+      nextButton.setMnemonic(nextLabel.charAt(0));
     }
     String cancelLabel = (getStep()).cancelButtonLabel();
     if (cancelLabel != null) {

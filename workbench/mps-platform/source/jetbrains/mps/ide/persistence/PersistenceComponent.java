@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,15 @@ package jetbrains.mps.ide.persistence;
 
 import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 /*
  * XXX likely shall get merged into ModelFactoryRegister, no reason for a distinct
  */
 public class PersistenceComponent implements ApplicationComponent {
-  private static final Logger LOG = LogManager.getLogger(PersistenceComponent.class);
+  private static final Logger LOG = Logger.getLogger(PersistenceComponent.class);
 
 
   public PersistenceComponent() {
@@ -37,20 +36,25 @@ public class PersistenceComponent implements ApplicationComponent {
     final MPSCoreComponents mpsCore = MPSCoreComponents.getInstance();
     PersistenceRegistry registry = mpsCore.getPlatform().findComponent(PersistenceRegistry.class);
 
+    final ModelIdFactoryExtension[] idFactories = ModelIdFactoryExtension.EXTENSION_POINT.getExtensions();
+    for (ModelIdFactoryExtension idFactory : idFactories) {
+      try {
+        registry.setModelIdFactory(idFactory.getType(), idFactory.createInstance());
+      } catch (RuntimeException ex) {
+        LOG.error(String.format("Failed to instantiate model id factory extension (class %s from plugin %s)", idFactory.myImplementationClass, idFactory.getPluginDescriptor().getPluginId()), ex);
+      }
+    }
+
     ModelRootFactoryEP[] extensions = ModelRootFactoryEP.EP_NAME.getExtensions();
     for (ModelRootFactoryEP extension : extensions) {
       try {
-        registry.setModelRootFactory(extension.rootType, extension.getFactory());
-      } catch (ClassNotFoundException ex) {
+        registry.setModelRootFactory(extension.rootType, extension.createInstance());
+      } catch (RuntimeException ex) {
         String f = "Failed to instantiate model root factory extension (class %s from plugin %s)";
         String m = String.format(f, extension.className, extension.getPluginDescriptor().getPluginId());
         LOG.error(m);
       }
     }
-  }
-
-  @Override
-  public void disposeComponent() {
   }
 
   @NotNull

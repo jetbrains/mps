@@ -4,17 +4,16 @@ package jetbrains.mps.ide.platform.watching;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.vfs.newvfs.BulkFileListener;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
-import org.apache.log4j.Level;
 import java.util.HashSet;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.newvfs.events.VFilePropertyChangeEvent;
 import java.util.ArrayDeque;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -29,7 +28,7 @@ import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
  */
 @GeneratedClass(node = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/8474613039627890805", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
 public final class ModelCacheReloader implements BulkFileListener {
-  private static final Logger LOG = LogManager.getLogger(ModelCacheReloader.class);
+  private static final Logger LOG = Logger.getLogger(ModelCacheReloader.class);
   private boolean myWarningPosted;
 
   @Override
@@ -38,8 +37,8 @@ public final class ModelCacheReloader implements BulkFileListener {
     final ModelGenerationStatusManager mgsm = mpsPlaf.findComponent(ModelGenerationStatusManager.class);
     if (mgsm == null) {
       if (!(myWarningPosted)) {
-        if (LOG.isEnabledFor(Level.WARN)) {
-          LOG.warn("Could not find ModelGenerationStatusManager component; no refresh for model hash files");
+        if (LOG.isWarningLevel()) {
+          LOG.warning("Could not find ModelGenerationStatusManager component; no refresh for model hash files");
         }
         myWarningPosted = true;
       }
@@ -49,12 +48,20 @@ public final class ModelCacheReloader implements BulkFileListener {
 
     HashSet<VirtualFile> files2invalidate = new HashSet<VirtualFile>();
     for (VFileEvent e : events) {
+      if (e instanceof VFilePropertyChangeEvent && !(VirtualFile.PROP_NAME.equals(((VFilePropertyChangeEvent) e).getPropertyName()))) {
+        // do not react to any property change event we can not handle anyway
+        // we've seen VfsEvent[property(CHILDREN_CASE_SENSITIVITY) for /Applications:UNKNOWN->INSENSITIVE]
+        // on Welcome screen (even without any project open). There's no reason to walk FS in this case.
+        continue;
+      }
       VirtualFile vf = e.getFile();
       // replacement for !ArchiveFileSystem check 
       if (vf == null || !(vf.isInLocalFileSystem())) {
         continue;
       }
       if (vf.isDirectory()) {
+        final long start = System.nanoTime();
+        boolean eventReported = false;
         ArrayDeque<VirtualFile> dirQueue = new ArrayDeque<VirtualFile>();
         dirQueue.add(vf);
         do {
@@ -66,7 +73,20 @@ public final class ModelCacheReloader implements BulkFileListener {
               files2invalidate.add(f);
             }
           }
+          if (!(eventReported) && (System.nanoTime() - start) / 1000 > 1000) {
+            if (LOG.isWarningLevel()) {
+              LOG.warning("UNEXPECTED: processing of VFS event takes too long: " + e);
+            }
+            eventReported = true;
+          }
         } while (!(dirQueue.isEmpty()));
+
+        if (eventReported) {
+          String m = String.format("Total time spent processing VFS event %s took %d ms", e, (System.nanoTime() - start) / 1000000);
+          if (LOG.isWarningLevel()) {
+            LOG.warning(m);
+          }
+        }
 
       } else if (isCacheFile(vf)) {
         files2invalidate.add(vf);

@@ -47,7 +47,7 @@ public class PluginStateMonitor implements ProjectComponent {
     if (myStatusBar == null) {
       return;
     }
-    myStatusBar.removeWidget(myWidget.ID());
+    myStatusBar.removeWidget(PluginStateWidget.WIDGET_ID);
   }
   @Nullable
   private StatusBar getStatusBar() {

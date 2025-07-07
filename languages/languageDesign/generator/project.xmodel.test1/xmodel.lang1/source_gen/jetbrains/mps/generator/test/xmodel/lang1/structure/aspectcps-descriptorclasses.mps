@@ -324,8 +324,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="C" role="3Kbmr1">
-              <ref role="3cqZAo" node="1U" resolve="Bean" />
               <ref role="1PxDUh" node="1S" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1U" resolve="Bean" />
             </node>
           </node>
           <node concept="3KbdKl" id="y" role="3KbHQx">
@@ -390,8 +390,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="10" role="3Kbmr1">
-              <ref role="3cqZAo" node="1V" resolve="Operation" />
               <ref role="1PxDUh" node="1S" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1V" resolve="Operation" />
             </node>
           </node>
           <node concept="3KbdKl" id="z" role="3KbHQx">
@@ -452,8 +452,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1p" role="3Kbmr1">
-              <ref role="3cqZAo" node="1W" resolve="Property" />
               <ref role="1PxDUh" node="1S" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1W" resolve="Property" />
             </node>
           </node>
         </node>
@@ -845,8 +845,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4g" role="3Kbmr1">
-              <ref role="3cqZAo" node="1U" resolve="Bean" />
               <ref role="1PxDUh" node="1S" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1U" resolve="Bean" />
             </node>
           </node>
           <node concept="3KbdKl" id="4b" role="3KbHQx">
@@ -858,8 +858,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4k" role="3Kbmr1">
-              <ref role="3cqZAo" node="1V" resolve="Operation" />
               <ref role="1PxDUh" node="1S" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1V" resolve="Operation" />
             </node>
           </node>
           <node concept="3KbdKl" id="4c" role="3KbHQx">
@@ -871,8 +871,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4o" role="3Kbmr1">
-              <ref role="3cqZAo" node="1W" resolve="Property" />
               <ref role="1PxDUh" node="1S" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1W" resolve="Property" />
             </node>
           </node>
           <node concept="2OqwBi" id="4d" role="3KbGdf">
@@ -1020,7 +1020,7 @@
             <node concept="liA8E" id="5f" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.version(int)" resolve="version" />
               <node concept="3cmrfG" id="5g" role="37wK5m">
-                <property role="3cmrfH" value="2" />
+                <property role="3cmrfH" value="3" />
               </node>
             </node>
           </node>
@@ -1243,7 +1243,7 @@
             <node concept="liA8E" id="6$" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.version(int)" resolve="version" />
               <node concept="3cmrfG" id="6_" role="37wK5m">
-                <property role="3cmrfH" value="2" />
+                <property role="3cmrfH" value="3" />
               </node>
             </node>
           </node>
@@ -1487,7 +1487,7 @@
             <node concept="liA8E" id="7Y" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.version(int)" resolve="version" />
               <node concept="3cmrfG" id="7Z" role="37wK5m">
-                <property role="3cmrfH" value="2" />
+                <property role="3cmrfH" value="3" />
               </node>
             </node>
           </node>

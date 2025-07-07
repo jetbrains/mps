@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,15 +19,15 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 /**
  * @author Kostik
  */
 public class CellExplorerTool extends BaseTabbedProjectTool {
-  public static final Logger LOG = LogManager.getLogger(CellExplorerTool.class);
+  // FIXME public LOG is nice, indeed
+  public static final Logger LOG = Logger.getLogger(CellExplorerTool.class);
 
   public CellExplorerTool(Project project) {
     super(project, "Cell Explorer", null, MPSIcons.ToolWindows.CellExplorer, ToolWindowAnchor.BOTTOM, false);

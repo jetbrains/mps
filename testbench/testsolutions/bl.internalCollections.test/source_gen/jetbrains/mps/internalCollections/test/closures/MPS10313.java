@@ -4,8 +4,6 @@ package jetbrains.mps.internalCollections.test.closures;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
@@ -19,33 +17,29 @@ public class MPS10313<T> {
       return false;
     }
     for (int i = 0; i < ListSequence.fromList(values).count(); i++) {
-      if (!((ListSequence.fromList(ListSequence.fromList(values).getElement(i)).containsSequence(ListSequence.fromList(ListSequence.fromList(myValues).getElement(i))) && ListSequence.fromList(ListSequence.fromList(myValues).getElement(i)).containsSequence(ListSequence.fromList(ListSequence.fromList(values).getElement(i)))))) {
+      if (!(ListSequence.fromList(ListSequence.fromList(values).getElement(i)).containsSequence(ListSequence.fromList(ListSequence.fromList(myValues).getElement(i))) && ListSequence.fromList(ListSequence.fromList(myValues).getElement(i)).containsSequence(ListSequence.fromList(ListSequence.fromList(values).getElement(i))))) {
         return false;
       }
     }
     return true;
   }
   protected boolean listIsSame(List<T> values) {
-    return tableIsSame(ListSequence.fromList(values).select(new ISelector<T, IListSequence<T>>() {
-      public IListSequence<T> select(T it) {
-        return ListSequence.fromListAndArray(new ArrayList<T>(), it);
-      }
-    }).toListSequence());
+    return tableIsSame(ListSequence.fromList(values).select((it) -> ListSequence.fromListAndArray(new ArrayList<T>(), it)).toList());
   }
   public void takesListOfExtendsListsOfT(List<? extends List<T>> list) {
   }
   public void test1() {
-    takesListOfExtendsListsOfT(Sequence.fromIterable(Sequence.fromIterable(Collections.<List<T>>emptyList())).toListSequence());
+    takesListOfExtendsListsOfT(Sequence.fromIterable(Sequence.fromIterable(Collections.<List<T>>emptyList())).toList());
   }
   public void takesListOfExtendsListsOfFoo(List<? extends List<Foo>> foos) {
   }
   public void test2() {
-    takesListOfExtendsListsOfFoo(Sequence.fromIterable(Sequence.fromIterable(Collections.<List<Foo>>emptyList())).toListSequence());
+    takesListOfExtendsListsOfFoo(Sequence.fromIterable(Sequence.fromIterable(Collections.<List<Foo>>emptyList())).toList());
   }
   public void takesListOfExtendsFoo(List<? extends Foo> foos) {
   }
   public void test3() {
-    takesListOfExtendsFoo(Sequence.fromIterable(Sequence.fromIterable(Collections.<Bar>emptyList())).toListSequence());
+    takesListOfExtendsFoo(Sequence.fromIterable(Sequence.fromIterable(Collections.<Bar>emptyList())).toList());
   }
   public static class Foo {
     public Foo() {

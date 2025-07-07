@@ -18,12 +18,12 @@
           <map>
             <entry key="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" value="5" />
             <entry key="l:446c26eb-2b7b-4bf0-9b35-f83fa582753e:jetbrains.mps.lang.modelapi" value="0" />
-            <entry key="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" value="17" />
+            <entry key="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" value="19" />
             <entry key="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" value="1" />
             <entry key="l:9ded098b-ad6a-4657-bfd9-48636cfe8bc3:jetbrains.mps.lang.traceable" value="0" />
             <entry key="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" value="2" />
             <entry key="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" value="2" />
-            <entry key="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" value="10" />
+            <entry key="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" value="12" />
             <entry key="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" value="0" />
           </map>
         </languageVersions>
@@ -87,7 +87,6 @@
             <entry key="bfbdd672-7ff5-403f-af4f-16da5226f34c(jetbrains.mps.findUsages.runtime)" value="0" />
             <entry key="c1969cf6-0de2-4f84-9a6b-4019c52c438c(mps-core)" value="0" />
             <entry key="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" value="0" />
-            <entry key="c7d01124-66d5-486d-8b50-7fdccb60b839(jetbrains.mps.baseLanguage.util)" value="0" />
             <entry key="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67(jetbrains.mps.baseLanguage.lightweightdsl)" value="0" />
             <entry key="c7fb639f-be78-4307-89b0-b5959c3fa8c8(jetbrains.mps.lang.text)" value="0" />
             <entry key="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" value="0" />
@@ -178,7 +177,7 @@
       <sourceFolder url="file://$MODULE_DIR$/testSrc" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/models" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source_gen" isTestSource="false" generated="true" />
     </content>
     <orderEntry type="jdk" jdkName="IDEA IC" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -193,8 +192,6 @@
     <orderEntry type="library" name="mps-openapi" level="project" />
     <orderEntry type="library" name="mps-java-platform" level="project" />
     <orderEntry type="library" name="mps-core" level="project" />
-    <orderEntry type="library" name="mps-logging" level="project" />
-    <orderEntry type="library" name="mps-messaging" level="project" />
     <orderEntry type="library" name="ant-mps" level="project" />
     <orderEntry type="library" name="mps-annotations" level="project" />
     <orderEntry type="library" name="diffutils" level="project" />
@@ -278,51 +275,31 @@
     <orderEntry type="library" name="mps.jetbrains.mps.refactoring.runtime_auto" level="project" />
     <orderEntry type="library" name="mps.jetbrains.mps.lang.typesystem_auto" level="project" />
     <orderEntry type="library" name="mps.Annotations_auto" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.3.41" level="project" />
     <orderEntry type="library" name="mps-closures" level="project" />
-    <orderEntry type="library" name="Gradle: org.objenesis:objenesis:2.6" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-html-common:0.6.12" level="project" />
     <orderEntry type="library" name="mps-stubs" level="project" />
     <orderEntry type="library" name="mps-editor-runtime" level="project" />
     <orderEntry type="library" name="mps-core" level="project" />
     <orderEntry type="library" name="mps-icons" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test-junit:1.3.41" level="project" />
     <orderEntry type="library" name="mps-vcs-core" level="project" />
     <orderEntry type="library" name="mps-platform" level="project" />
     <orderEntry type="library" name="mps-annotations" level="project" />
-    <orderEntry type="library" name="Gradle: org.mockito:mockito-core:3.0.0" level="project" />
     <orderEntry type="library" name="jpsPlatformTests" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test:1.3.41" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.3.41" level="project" />
     <orderEntry type="library" name="mps-migration" level="project" />
-    <orderEntry type="library" name="Gradle: net.bytebuddy:byte-buddy-agent:1.9.10" level="project" />
     <orderEntry type="library" name="mps-environment" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test-annotations-common:1.3.41" level="project" />
-    <orderEntry type="library" name="Gradle: net.bytebuddy:byte-buddy:1.9.10" level="project" />
-    <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="ideaJavaPlugin" level="project" />
     <orderEntry type="library" name="mps-project-check" level="project" />
-    <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-js:1.3.41" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.41" level="project" />
     <orderEntry type="library" name="mps-editor-api" level="project" />
     <orderEntry type="library" name="mps-behavior-runtime" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" name="ant-mps" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test-common:1.3.41" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.3.41" level="project" />
     <orderEntry type="library" name="mps-boot-util" level="project" />
     <orderEntry type="library" name="mps-test" level="project" />
     <orderEntry type="library" name="mps-java-platform" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.41" level="project" />
     <orderEntry type="library" name="mps-tool" level="project" />
     <orderEntry type="library" name="diffutils" level="project" />
     <orderEntry type="library" name="mps-messaging" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-html-js:0.6.12" level="project" />
     <orderEntry type="library" name="mps-collections" level="project" />
     <orderEntry type="library" name="mps-openapi" level="project" />
     <orderEntry type="library" name="mps-logging" level="project" />
-    <orderEntry type="library" name="Gradle: org.assertj:assertj-core:3.12.2" level="project" />
     <orderEntry type="library" name="mps-editor" level="project" />
     <orderEntry type="library" name="mps-tuples" level="project" />
     <orderEntry type="library" name="ideaVcs" level="project" />

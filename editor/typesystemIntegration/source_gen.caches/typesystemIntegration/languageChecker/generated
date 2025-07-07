@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-8abju58juolmbz2wj74u31vh4s9zms">
-  <files names="AutoResolver.java:EditorBasedReferenceResolverUtils.java:RefScopeCheckerInEditor.java" />
+<product version="3" modelHash="-7tuecr5dgmewmpoxlxzsv2v6v90buac">
+  <files names="AutoResolver.java:RefScopeCheckerInEditor.java" />
 </product>
 

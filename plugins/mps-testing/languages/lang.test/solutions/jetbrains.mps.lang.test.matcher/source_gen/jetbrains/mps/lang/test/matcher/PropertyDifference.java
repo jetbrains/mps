@@ -4,7 +4,7 @@ package jetbrains.mps.lang.test.matcher;
 
 import org.jetbrains.mps.openapi.language.SProperty;
 
-/*package*/ class PropertyDifference extends DifferenceItem {
+public final class PropertyDifference extends DifferenceItem {
   private final SProperty myProperty;
   private final Object myActualValue;
   private final Object myExpectedValue;
@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     if (obj == null) {
       return false;
     }
-    if (!((obj instanceof PropertyDifference))) {
+    if (!(obj instanceof PropertyDifference)) {
       return false;
     }
     PropertyDifference diff = (PropertyDifference) obj;

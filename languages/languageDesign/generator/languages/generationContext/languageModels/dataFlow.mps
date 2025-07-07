@@ -2,6 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c895902ef(jetbrains.mps.lang.generator.generationContext.dataFlow)">
   <persistence version="9" />
   <languages>
+    <use id="7fa12e9c-b949-4976-b4fa-19accbc320b4" name="jetbrains.mps.lang.dataFlow" version="1" />
     <devkit ref="00000000-0000-4000-0000-443879f56b80(jetbrains.mps.devkit.aspect.dataflow)" />
   </languages>
   <imports>
@@ -140,6 +141,14 @@
             </node>
           </node>
         </node>
+        <node concept="3AgYrR" id="2nOWYLLQ1En" role="3cqZAp">
+          <node concept="2OqwBi" id="2nOWYLLQ1Hd" role="3Ah4Yx">
+            <node concept="3__QtB" id="2nOWYLLQ1EY" role="2Oq$k0" />
+            <node concept="3TrEf2" id="2nOWYLLQ1ML" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpf3:2nOWYLLM$rg" resolve="input2" />
+            </node>
+          </node>
+        </node>
       </node>
     </node>
   </node>
@@ -190,6 +199,21 @@
             <node concept="3__QtB" id="11UMvNigQJ9" role="2Oq$k0" />
             <node concept="3TrEf2" id="11UMvNigQJa" role="2OqNvi">
               <ref role="3Tt5mk" to="tpf3:11UMvNigQBt" resolve="contextNode" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="3_zdsH" id="3Q06tl87RQq">
+    <ref role="3_znuS" to="tpf3:hHiwH3m" resolve="GenerationContextOp_GetOutputByLabel" />
+    <node concept="3__wT9" id="3Q06tl87RQr" role="3_A6iZ">
+      <node concept="3clFbS" id="3Q06tl87RQs" role="2VODD2">
+        <node concept="3AgYrR" id="3Q06tl87RW3" role="3cqZAp">
+          <node concept="2OqwBi" id="3Q06tl87S5j" role="3Ah4Yx">
+            <node concept="3__QtB" id="3Q06tl87RWy" role="2Oq$k0" />
+            <node concept="3TrEf2" id="3Q06tl87Sjt" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpf3:5Wn7$dQZ8U2" resolve="forModel" />
             </node>
           </node>
         </node>

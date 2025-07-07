@@ -10,7 +10,6 @@ import jetbrains.mps.lang.editor.tooltips.runtime.TooltipManager;
 import java.util.HashMap;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
-import java.util.function.Function;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionRegistry;
 
 public class ProjectPlugin_ProjectPluginPart extends ProjectPluginPart {
@@ -29,11 +28,7 @@ public class ProjectPlugin_ProjectPluginPart extends ProjectPluginPart {
       @Override
       public void install(@NotNull jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
         // make sure a TooltipManager is created for the EditorComponent
-        ProjectPlugin_ProjectPluginPart.this.managersPool.computeIfAbsent((EditorComponent) editorComponent, new Function<EditorComponent, TooltipManager>() {
-          public TooltipManager apply(EditorComponent key) {
-            return new TooltipManager(key);
-          }
-        });
+        ProjectPlugin_ProjectPluginPart.this.managersPool.computeIfAbsent((EditorComponent) editorComponent, (EditorComponent key) -> new TooltipManager(key));
       }
 
       @Override

@@ -23,21 +23,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class FontStyleQuery_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public FontStyleQuery_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959029b(jetbrains.mps.lang.editor.intentions)", "1221476558282"));
   }
+
   @Override
   public String getPresentation() {
     return "FontStyleQuery";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -47,6 +47,7 @@ public final class FontStyleQuery_Intention extends AbstractIntentionDescriptor 
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if ((SLinkOperations.getTarget(node, LINKS.query$VyI6) == null)) {
@@ -55,6 +56,7 @@ public final class FontStyleQuery_Intention extends AbstractIntentionDescriptor 
         return "Remove Query";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((SLinkOperations.getTarget(node, LINKS.query$VyI6) == null)) {
@@ -65,10 +67,19 @@ public final class FontStyleQuery_Intention extends AbstractIntentionDescriptor 
         SPropertyOperations.setEnum(node, PROPS.style$RebA, 0x1082a1c2aa1L, "PLAIN");
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return FontStyleQuery_Intention.this;
     }
+
   }
 
   private static final class LINKS {

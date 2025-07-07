@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,29 +15,21 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import com.intellij.ide.PowerSaveMode;
-import com.intellij.ide.ui.AntialiasingType;
-import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.FontPreferences;
-import com.intellij.openapi.editor.colors.ModifiableFontPreferences;
-import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
-import com.intellij.openapi.editor.ex.EditorSettingsExternalizable;
 import com.intellij.openapi.editor.ex.util.EditorUtil;
-import com.intellij.openapi.options.Configurable;
 import com.intellij.ui.JBColor;
+import com.intellij.util.xmlb.annotations.Transient;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorSettings.MyState;
 import jetbrains.mps.nodeEditor.cells.EditorFontMetricsImpl;
 import jetbrains.mps.nodeEditor.cells.FontRegistry;
+import jetbrains.mps.openapi.editor.EditorComponentSettings;
 import jetbrains.mps.openapi.editor.cells.EditorFontMetrics;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.TestOnly;
@@ -45,7 +37,6 @@ import org.jetbrains.annotations.TestOnly;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @State(
@@ -54,7 +45,7 @@ import java.util.List;
     reportStatistic = true
 )
 public class EditorSettings implements PersistentStateComponent<MyState> {
-  private static final Logger LOG = LogManager.getLogger(EditorSettings.class);
+  private static final Logger LOG = Logger.getLogger(EditorSettings.class);
   private static final Color DEFAULT_CARET_ROW_COLOR = new Color(255, 255, 215);
   private static final Color DEFAULT_CARET_COLOR = JBColor.BLACK;
 
@@ -81,7 +72,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       return testInstance;
     }
 
-    return ServiceManager.getService(EditorSettings.class);
+    return ApplicationManager.getApplication().getService(EditorSettings.class);
   }
 
   private final List<EditorSettingsListener> myListeners = new ArrayList<>();
@@ -174,25 +165,12 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
     myState.verticalBound = verticalBound;
   }
 
+  /**
+   * @deprecated Use {@link EditorComponentSettings#getRightMargin()} instead
+   */
+  @Deprecated(since = "2021.2")
   public int getVerticalBoundWidth() {
     return getSpacesWidth(getVerticalBound());
-  }
-
-  /**
-   * @deprecated Use {@link AntialiasingType#getKeyForCurrentScope(boolean)} instead
-   */
-  @ScheduledForRemoval(inVersion = "2020.3")
-  @Deprecated(since = "2020.2", forRemoval = true)
-  public boolean isUseAntialiasing() {
-    return myState.useAntialiasing;
-  }
-
-  /**
-   * @deprecated Use {@link UISettings#setEditorAAType(AntialiasingType)} instead
-   */
-  @ScheduledForRemoval(inVersion = "2020.3")
-  @Deprecated(since = "2020.2", forRemoval = true)
-  public void setUseAntialiasing(boolean useAntialiasing) {
   }
 
   public boolean isUseTwoStepDeletion() {
@@ -205,6 +183,14 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
 
   public void setTypeOverExistingText(boolean typeOverExistingText) {
     myState.typeOverExistingText = typeOverExistingText;
+  }
+
+  public void setSyncWithModelOnSelectionChange(boolean syncWithModelOnSelectionChange) {
+    myState.syncWithModelOnSelectionChange = syncWithModelOnSelectionChange;
+  }
+
+  public boolean isSyncWithModelOnSelectionChange() {
+    return myState.syncWithModelOnSelectionChange;
   }
 
   public boolean isTypeOverExistingText() {
@@ -235,25 +221,6 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
 
   public void setReflectiveEditorReadonly(boolean reflectiveEditorReadonly) {
     myState.reflectiveEditorReadonly = reflectiveEditorReadonly;
-  }
-
-  /**
-   * @deprecated Use {@link PowerSaveMode#isEnabled()} directly
-   */
-  @ScheduledForRemoval(inVersion = "2020.3")
-  @Deprecated(since = "2020.2", forRemoval = true)
-  public boolean isPowerSaveMode() {
-    return PowerSaveMode.isEnabled();
-  }
-
-  /**
-   * @deprecated Do not toggle <b>Power Save Mode</b> from code
-   */
-  @ScheduledForRemoval(inVersion = "2020.3")
-  @Deprecated(since = "2020.2", forRemoval = true)
-  public void setPowerSaveMode(boolean powerSaveMode) {
-    //TODO: add PowerSaveModeNotifier.notifyOnPowerSaveMode(e.getData(CommonDataKeys.PROJECT));
-    PowerSaveMode.setEnabled(powerSaveMode);
   }
 
   public boolean isAutoQuickFix() {
@@ -310,18 +277,6 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
     myState.showContextAssistant = showContextAssistant;
   }
 
-  @ScheduledForRemoval(inVersion = "2021.1")
-  @Deprecated(since = "2020.3", forRemoval = true)
-  public int getCaretBlinkPeriod() {
-    return myState.caretBlinkPeriod;
-  }
-
-  @ScheduledForRemoval(inVersion = "2021.1")
-  @Deprecated(since = "2020.3", forRemoval = true)
-  public void setCaretBlinkPeriod(int rate) {
-    myState.caretBlinkPeriod = rate;
-  }
-
   public Color getRangeSelectionForegroundColor() {
     return EditorColorsManager.getInstance().getGlobalScheme().getColor(EditorColors.SELECTION_FOREGROUND_COLOR);
   }
@@ -354,6 +309,10 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
     return getECM() == null ? DEFAULT_CARET_COLOR : getECM().getGlobalScheme().getColor(EditorColors.CARET_COLOR);
   }
 
+  /**
+   * @deprecated Use {@link EditorComponentSettings#getWidth(char, int)} instead
+   */
+  @Deprecated(since = "2021.2")
   public int getSpacesWidth(int size) {
     return getDefaultEditorFontMetrics().getWidth(' ', size);
   }
@@ -378,82 +337,20 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       try {
         l.settingsChanged();
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
-
-  private static boolean firstGetStateCall = true;
-  private boolean oldSettingsImported = false;
 
   @Override
   @NotNull
   public MyState getState() {
-    // TODO: Clean up in in 2020.3!
-    // This hack allows to clean only some of the fields in the state:
-    // Just right after first call of PersistentStateComponent#loadState platform calls
-    // PersistentStateComponent#getState to cache and check diffs with next getState calls.
-    // When non default old settings are detected on first load
-    // then old state returned on first getState call and Font & AA settings are set to default values.
-    // This makes platform re-save state with reset Font and AA so next load will ignore this settings.
-    if (firstGetStateCall) {
-      migrateCaretSettings();
-      firstGetStateCall = false;
-      if (oldSettingsImported) {
-        final MyState stateWOFontAndAA = new MyState();
-        stateWOFontAndAA.copyPartiallyFrom(myState); // reset unused options
-        MyState oldState = myState;
-        myState = stateWOFontAndAA; // use reset state
-        return oldState;
-      }
-    } else {
-      myState.caretBlinkPeriod = DEFAULT_CARET_BLINK_PERIOD;
-    }
-
     return myState;
-  }
-
-  private void migrateCaretSettings() {
-    if (myState.caretBlinkPeriod != DEFAULT_CARET_BLINK_PERIOD) {
-      EditorSettingsExternalizable settings = EditorSettingsExternalizable.getInstance();
-      settings.setBlinkPeriod(myState.caretBlinkPeriod);
-      settings.setBlinkCaret(true);
-    }
   }
 
   @Override
   public void loadState(@NotNull MyState state) {
     myState = state;
-
-    // TODO: Remove in 2020.3!
-    // Second check confirms that this is MPS to avoid setting Font from plugin:
-    // in plugin subclass configurable 'EditorSettingsConfigurableOptionsProvider' is used.
-    if (!oldSettingsImported && Configurable.APPLICATION_CONFIGURABLE.getExtensionList().stream().anyMatch(
-        configurable -> EditorSettingsConfigurable.class.getName().equals(configurable.instanceClass))) {
-      // Because old values are reset in the EditorSettings#getState method this code should be called only once
-      final MyState defaultState = new MyState();
-
-      // Try to detect non default values for Font set by user in old settings
-      if (!defaultState.fontFamily.equals(myState.fontFamily) || defaultState.fontSize != myState.fontSize || defaultState.lineSpacing != myState.lineSpacing) {
-        // Try to set Font settings defined by user to platform ones
-        if (AppEditorFontOptions.getInstance().getFontPreferences() instanceof ModifiableFontPreferences) {
-          final ModifiableFontPreferences fontPreferences = (ModifiableFontPreferences) AppEditorFontOptions.getInstance().getFontPreferences();
-          final String fontFamily = myState.fontFamily == null ? defaultState.fontFamily : myState.fontFamily;
-          fontPreferences.setEffectiveFontFamilies(Collections.singletonList(fontFamily));
-          fontPreferences.setRealFontFamilies(Collections.singletonList(fontFamily));
-          fontPreferences.setTemplateFontSize(myState.fontSize);
-          fontPreferences.resetFontSizes();
-          fontPreferences.setLineSpacing((float) myState.lineSpacing);
-          oldSettingsImported = true;
-        }
-      }
-
-      // Check if user turned of antialiasing
-      if (!myState.useAntialiasing) {
-        UISettings.getInstance().setEditorAAType(AntialiasingType.OFF);
-        oldSettingsImported = true;
-      }
-    }
     updateCachedValue();
   }
 
@@ -461,27 +358,29 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
     myFontMetrics = null;
   }
 
+  // FIXME once 2022.3 is out, remove fields denoted with @Transient
   @SuppressWarnings("WeakerAccess")
   public static class MyState {
-    @ScheduledForRemoval(inVersion = "2020.3")
     @Deprecated(since = "2020.2", forRemoval = true)
-    public String fontFamily = FontPreferences.DEFAULT_FONT_NAME;
-    @ScheduledForRemoval(inVersion = "2020.3")
+    @Transient
+    public String fontFamily;
     @Deprecated(since = "2020.2", forRemoval = true)
-    public int fontSize = FontPreferences.DEFAULT_FONT_SIZE;
-    @ScheduledForRemoval(inVersion = "2020.3")
+    @Transient
+    public int fontSize;
     @Deprecated(since = "2020.2", forRemoval = true)
-    public double lineSpacing = FontPreferences.DEFAULT_LINE_SPACING;
+    @Transient
+    public double lineSpacing;
 
     public int textWidth = 500;
-    @ScheduledForRemoval(inVersion = "2020.3")
     @Deprecated(since = "2020.2", forRemoval = true)
-    public boolean useAntialiasing = true;
+    @Transient
+    public boolean useAntialiasing;
 
     public boolean useBraces = true;
 
     public boolean useTwoStepDeletion = true;
     public boolean typeOverExistingText = true;
+    public boolean syncWithModelOnSelectionChange = false;
     public boolean myHighlightNodeUnderCursor = true;
     public boolean disableImmediateQuickFix = false;
 
@@ -496,31 +395,10 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
     public boolean show = true;
 
     public boolean showContextAssistant = true;
-    @Deprecated
-    public int caretBlinkPeriod = DEFAULT_CARET_BLINK_PERIOD;
+    @Deprecated(since = "2020.3", forRemoval = true)
+    @Transient
+    public int caretBlinkPeriod;
     public boolean reflectiveEditorReadonly = false;
-
-    /**
-     * Copy all but Font and Antialiasing settings
-     */
-    private void copyPartiallyFrom(@NotNull MyState myState) {
-      textWidth = myState.textWidth;
-      useBraces = myState.useBraces;
-      useTwoStepDeletion = myState.useTwoStepDeletion;
-      typeOverExistingText = myState.typeOverExistingText;
-      myHighlightNodeUnderCursor = myState.myHighlightNodeUnderCursor;
-      disableImmediateQuickFix = myState.disableImmediateQuickFix;
-      indentSize = myState.indentSize;
-      verticalBound = myState.verticalBound;
-      autoQuickFix = myState.autoQuickFix;
-      completionStyling = myState.completionStyling;
-      showPlain = myState.showPlain;
-      showGrayed = myState.showGrayed;
-      show = myState.show;
-      showContextAssistant = myState.showContextAssistant;
-      reflectiveEditorReadonly = myState.reflectiveEditorReadonly;
-      caretBlinkPeriod = myState.caretBlinkPeriod;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -533,16 +411,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
 
       MyState myState = (MyState) o;
 
-      if (fontSize != myState.fontSize) {
-        return false;
-      }
-      if (Double.compare(myState.lineSpacing, lineSpacing) != 0) {
-        return false;
-      }
       if (textWidth != myState.textWidth) {
-        return false;
-      }
-      if (useAntialiasing != myState.useAntialiasing) {
         return false;
       }
       if (useBraces != myState.useBraces) {
@@ -552,6 +421,9 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
         return false;
       }
       if (typeOverExistingText != myState.typeOverExistingText) {
+        return false;
+      }
+      if (syncWithModelOnSelectionChange != myState.syncWithModelOnSelectionChange) {
         return false;
       }
       if (myHighlightNodeUnderCursor != myState.myHighlightNodeUnderCursor) {
@@ -587,25 +459,17 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       if (reflectiveEditorReadonly != myState.reflectiveEditorReadonly) {
         return false;
       }
-      if (caretBlinkPeriod != myState.caretBlinkPeriod) {
-        return false;
-      }
-      return fontFamily != null ? fontFamily.equals(myState.fontFamily) : myState.fontFamily == null;
+      return true;
     }
 
     @Override
     public int hashCode() {
-      int result;
-      long temp;
-      result = fontFamily != null ? fontFamily.hashCode() : 0;
-      result = 31 * result + fontSize;
-      temp = Double.doubleToLongBits(lineSpacing);
-      result = 31 * result + (int) (temp ^ (temp >>> 32));
+      int result = 1;
       result = 31 * result + textWidth;
-      result = 31 * result + (useAntialiasing ? 1 : 0);
       result = 31 * result + (useBraces ? 1 : 0);
       result = 31 * result + (useTwoStepDeletion ? 1 : 0);
       result = 31 * result + (typeOverExistingText ? 1 : 0);
+      result = 31 * result + (syncWithModelOnSelectionChange ? 1 : 0);
       result = 31 * result + (myHighlightNodeUnderCursor ? 1 : 0);
       result = 31 * result + (disableImmediateQuickFix ? 1 : 0);
       result = 31 * result + indentSize;
@@ -617,7 +481,6 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       result = 31 * result + (show ? 1 : 0);
       result = 31 * result + (showContextAssistant ? 1 : 0);
       result = 31 * result + (reflectiveEditorReadonly ? 1 : 0);
-      result = 31 * result + caretBlinkPeriod;
       return result;
     }
   }

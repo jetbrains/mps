@@ -16,6 +16,7 @@
 package jetbrains.mps.generator;
 
 import jetbrains.mps.generator.GenerationOptions.OptionsBuilder;
+import jetbrains.mps.generator.ModelGenerationPlan.Provider;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
@@ -34,8 +35,10 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * For a given model, figure out generation plan associated either with module's custom facet or through devkit
@@ -115,6 +118,7 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
   private ModelGenerationPlan planFromDevKit(SModel model) {
     // plans associated directly with devkit property has higher precedence than plans coming from DevKit's facets plan providers
     ArrayList<ModelGenerationPlan.Provider> facetAssociatedPlan = new ArrayList<>();
+    ArrayList<ModelGenerationPlan.Provider> directPlan = new ArrayList<>();
     for (SModuleReference dkRef : ((SModelInternal) model).importedDevkits()) {
       if (myDevkitToPlan.containsKey(dkRef)) {
         final PlanProviderInfo rv = myDevkitToPlan.get(dkRef);
@@ -123,7 +127,7 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
           continue;
         }
         if (rv.isDirect) {
-          return rv.provider.getPlan(model);
+          directPlan.add(rv.provider);
         } else {
           facetAssociatedPlan.add(rv.provider);
           // FALL-THROUGH, continue;
@@ -140,7 +144,7 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
           myMessageHandler.handle(Message.info(GenPlanExtractor.class, String.format("Devkit %s has associated plan %s", devkit.getModuleName(), dkPlan.getName()), dkPlan, null));
           mgpProvider = new InterpretedPlanProvider(LanguageRegistry.getInstance(myRepository), myMessageHandler, dkPlan, myRepository);
           myDevkitToPlan.put(dkRef, new PlanProviderInfo(mgpProvider, true));
-          return mgpProvider.getPlan(model);
+          directPlan.add(mgpProvider);
         } else {
           mgpProvider = fromModuleFacets(devkit);
           if (mgpProvider != null) {
@@ -152,6 +156,15 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
           }
         }
       }
+    }
+    if (directPlan.size() == 1) {
+      return directPlan.get(0).getPlan(model);
+    }
+    else if (directPlan.size() > 1) {
+      // construct the composite provider
+      CompositeInterpretedPlanProvider planProvider =
+          new CompositeInterpretedPlanProvider(LanguageRegistry.getInstance(myRepository), myMessageHandler, directPlan);
+      return planProvider.getPlan(model);
     }
     //noinspection LoopStatementThatDoesntLoop
     for (ModelGenerationPlan.Provider p : facetAssociatedPlan) {

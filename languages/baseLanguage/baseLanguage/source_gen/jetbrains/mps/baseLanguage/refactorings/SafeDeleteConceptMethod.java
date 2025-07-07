@@ -6,8 +6,6 @@ import jetbrains.mps.refactoring.framework.BaseRefactoring;
 import jetbrains.mps.refactoring.framework.IRefactoringTarget;
 import jetbrains.mps.refactoring.framework.RefactoringContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.List;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.view.FindUtils;
@@ -27,9 +25,6 @@ public class SafeDeleteConceptMethod extends BaseRefactoring {
   public void refactor(final RefactoringContext refactoringContext) {
     SNode method = refactoringContext.getSelectedNode();
     new SafeDeleteMethod(refactoringContext.getCurrentScope(), method).doRefactor();
-  }
-  public List<SModel> getModelsToGenerate(final RefactoringContext refactoringContext) {
-    return (List<SModel>) refactoringContext.getModelsFromUsages(refactoringContext.getSelectedModel());
   }
   public SearchResults getAffectedNodes(final RefactoringContext refactoringContext) {
     SNode method = SNodeOperations.cast(refactoringContext.getSelectedNode(), CONCEPTS.ConceptMethodDeclaration$N0);

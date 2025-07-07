@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,11 @@ import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.SPropertySubstituteAction;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -46,12 +44,5 @@ public abstract class AbstractCellMenuPart_PropertyValues implements SubstituteI
     return actions;
   }
 
-  protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
-    // FIXME remove once 2020.3 is out
-    return getPropertyValues(node, editorContext.getOperationContext(), editorContext);
-  }
-
-  protected List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-    return Collections.emptyList();
-  }
+  protected abstract List<String> getPropertyValues(SNode node, EditorContext editorContext);
 }

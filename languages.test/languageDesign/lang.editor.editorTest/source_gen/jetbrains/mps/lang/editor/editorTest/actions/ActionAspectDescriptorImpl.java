@@ -18,6 +18,8 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
       switch (concept.getName()) {
         case "Container":
           return Collections.<NodeFactory>singletonList(new NF_Container.NodeFactory_7789927720474697827());
+        case "FactoryNode":
+          return Collections.<NodeFactory>singletonList(new FactoryTestFactories.NodeFactory_9038082488517076330());
         default:
       }
     }

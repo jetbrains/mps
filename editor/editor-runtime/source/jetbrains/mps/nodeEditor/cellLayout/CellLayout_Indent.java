@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
+import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.style.DefaultBaseLine;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -22,6 +23,7 @@ import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Basic;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Indent;
 import jetbrains.mps.nodeEditor.cells.GeometryUtil;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -166,7 +168,8 @@ public class CellLayout_Indent extends AbstractCellLayout {
       editorCells.setAscent(0);
       editorCells.setDescent(0);
     } else if (editorCells.getParent() == null || !(editorCells.getParent().getCellLayout() instanceof CellLayout_Indent)) {
-      new CellLayouter(editorCells, getMaxWidth(editorCells), getIndentSize()).layout();
+      int getIndentSize = editorCells.getEditorComponent().getEditorComponentSettings().getWidth(' ', EditorSettings.getInstance().getIndentSize());
+      new CellLayouter(editorCells, getMaxWidth(editorCells), getIndentSize).layout();
     }
   }
 
@@ -174,12 +177,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
     if (editorCells.getStyle().isSpecified(StyleAttributes.MAX_WIDTH)) {
       return editorCells.getX() + editorCells.getStyle().get(StyleAttributes.MAX_WIDTH);
     }
-    return editorCells.getRootParent().getX() + EditorSettings.getInstance().getVerticalBoundWidth();
-  }
-
-  private int getIndentSize() {
-    EditorSettings settings = EditorSettings.getInstance();
-    return settings.getSpacesWidth(settings.getIndentSize());
+    return editorCells.getRootParent().getX() + editorCells.getEditorComponent().getEditorComponentSettings().getRightMargin();
   }
 
   @Override
@@ -210,6 +208,43 @@ public class CellLayout_Indent extends AbstractCellLayout {
         }
 
         result.appendToTheRight(current.renderText(), PunctuationUtil.hasLeftGap(current));
+
+        if (isNewLineAfter(rootCell, current)) {
+          newLineAfter = true;
+        }
+      }
+    }
+    return result;
+  }
+
+  @Override
+  public HtmlTextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    Set<EditorCell> editorCellsSet = new HashSet<>();
+    for (EditorCell editorCell : editorCells) {
+      editorCellsSet.add(editorCell);
+    }
+    HtmlTextBuilder result = new HtmlTextBuilderImpl();
+    Iterator<EditorCell> iterator = editorCells.iterator();
+    if (iterator.hasNext()) {
+      boolean newLineAfter = false;
+      EditorCell_Collection rootCell = iterator.next().getParent();
+      for (EditorCell current : getIndentLeafs(rootCell)) {
+        EditorCell childCell = current;
+        while (childCell.getParent() != rootCell) {
+          childCell = childCell.getParent();
+        }
+        if (!editorCellsSet.contains(childCell)) {
+          continue;
+        }
+        if (isOnNewLine(rootCell, current) || newLineAfter) {
+          newLineAfter = false;
+          result.appendToTheRight(new TextBuilderImpl("\n"), true);
+          for (int i = 0; i < getIndent(rootCell, current, false); i++) {
+            result.appendToTheRight(new TextBuilderImpl(EditorCell_Indent.getIndentText()), false);
+          }
+        }
+
+        result.appendToTheRight(current.renderHtml(), PunctuationUtil.hasLeftGap(current));
 
         if (isNewLineAfter(rootCell, current)) {
           newLineAfter = true;

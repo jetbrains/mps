@@ -50,48 +50,50 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.styleTests.editor.StyleTestElement_EditorComponent".equals(editorComponentId)) {
+      return Collections.singletonList(new CustomFontContainer_EditorComponent());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.editor.styleTests.editor.StyleTestElement_EditorComponent":
+        return Collections.singletonList(new StyleTestElement_EditorComponent());
+      case "jetbrains.mps.lang.editor.styleTests.editor.StyleTest_EditorComponent":
+        return Collections.singletonList(new StyleTest_EditorComponent());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_2(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.styleTests.editor.StyleTestElement_EditorComponent".equals(editorComponentId)) {
+      return Collections.singletonList(new TestInheritedAttibute_EditorComponent());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_3(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.styleTests.editor.StyleTestElement_EditorComponent".equals(editorComponentId)) {
+      return Collections.singletonList(new TestISimpleAttribute_EditorComponent());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.styleTests.editor.StyleTestElement_EditorComponent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new CustomFontContainer_EditorComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.editor.styleTests.editor.StyleTestElement_EditorComponent":
-              return Collections.<ConceptEditorComponent>singletonList(new StyleTestElement_EditorComponent());
-            case "jetbrains.mps.lang.editor.styleTests.editor.StyleTest_EditorComponent":
-              return Collections.<ConceptEditorComponent>singletonList(new StyleTest_EditorComponent());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       case 2:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.styleTests.editor.StyleTestElement_EditorComponent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new TestInheritedAttibute_EditorComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_2(editorComponentId);
       case 3:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.styleTests.editor.StyleTestElement_EditorComponent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new TestISimpleAttribute_EditorComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_3(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   public StyleAttribute getStyleAttribute(String attributeName) {
     switch (attributeName) {

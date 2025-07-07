@@ -22,7 +22,7 @@ import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase implements EditorHintsProvider {
-  private Collection<ConceptEditorHint> myHints = Arrays.<ConceptEditorHint>asList(new ConceptEditorHintImpl("comment", "comment", false, "jetbrains.mps.lang.core.editor.BaseEditorContextHints.comment"), new ConceptEditorHintImpl("reflectiveEditor", "reflectiveEditor", false, "jetbrains.mps.lang.core.editor.BaseEditorContextHints.reflectiveEditor"), new ConceptEditorHintImpl("ShowSuppressedErrors", "Show Suppressed Errors", true, "jetbrains.mps.lang.core.editor.SuppressedHints.ShowSuppressedErrors"));
+  private Collection<ConceptEditorHint> myHints = Arrays.<ConceptEditorHint>asList(new ConceptEditorHintImpl("comment", "comment", false, "jetbrains.mps.lang.core.editor.BaseEditorContextHints.comment"), new ConceptEditorHintImpl("include_deprecated_elements", "Include deprecated elements", true, "jetbrains.mps.lang.core.editor.BaseEditorContextHints.include_deprecated_elements"), new ConceptEditorHintImpl("reflectiveEditor", "reflectiveEditor", false, "jetbrains.mps.lang.core.editor.BaseEditorContextHints.reflectiveEditor"), new ConceptEditorHintImpl("ShowSuppressedErrors", "Show Suppressed Errors", true, "jetbrains.mps.lang.core.editor.SuppressedHints.ShowSuppressedErrors"));
   @NotNull
   public Collection<ConceptEditor> getDeclaredEditors(SAbstractConcept concept) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
@@ -53,38 +53,38 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.core.editor.ImplementationRemovedInStubMessage":
+        return Collections.singletonList(new ImplementationRemovedInStubMessage());
+      case "jetbrains.mps.lang.core.editor.ShortDescriptionEditorComponent":
+        return Collections.singletonList(new ShortDescriptionEditorComponent());
+      case "jetbrains.mps.lang.core.editor.VirtualPackage":
+        return Collections.singletonList(new VirtualPackage());
+      case "jetbrains.mps.lang.core.editor.alias":
+        return Collections.singletonList(new alias());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    if ("jetbrains.mps.lang.core.editor.SuppressedErrorComponent".equals(editorComponentId)) {
+      return Collections.singletonList(new SuppressedErrorComponent());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.core.editor.ImplementationRemovedInStubMessage":
-              return Collections.<ConceptEditorComponent>singletonList(new ImplementationRemovedInStubMessage());
-            case "jetbrains.mps.lang.core.editor.ShortDescriptionEditorComponent":
-              return Collections.<ConceptEditorComponent>singletonList(new ShortDescriptionEditorComponent());
-            case "jetbrains.mps.lang.core.editor.VirtualPackage":
-              return Collections.<ConceptEditorComponent>singletonList(new VirtualPackage());
-            case "jetbrains.mps.lang.core.editor.alias":
-              return Collections.<ConceptEditorComponent>singletonList(new alias());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          if ("jetbrains.mps.lang.core.editor.SuppressedErrorComponent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new SuppressedErrorComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
   public Collection<ConceptEditorHint> getHints() {
     return myHints;
   }

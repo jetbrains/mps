@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@ package jetbrains.mps.ide.memtool;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -29,7 +28,7 @@ import java.util.function.Consumer;
 import static com.intellij.openapi.util.io.FileUtilRt.MEGABYTE;
 
 /*package*/ final class UnloadModelsActivity implements Runnable {
-  private static final Logger LOG = LogManager.getLogger(MemManager.class);
+  private static final Logger LOG = Logger.getLogger(MemManager.class);
   private final SRepository myRepo;
 
   /*package*/ UnloadModelsActivity(@NotNull SRepository repo) {
@@ -37,7 +36,7 @@ import static com.intellij.openapi.util.io.FileUtilRt.MEGABYTE;
   }
 
   /**
-   * XXX [artem] no idea what's the contract of the method in regart to threads, whether it has to be outside of EDT or not.
+   * XXX [artem] no idea what's the contract of the method in regard to threads, whether it has to be outside of EDT or not.
    *     Just copied the code outside of MemManager class, left invocation intact
    */
   @Override
@@ -77,9 +76,7 @@ import static com.intellij.openapi.util.io.FileUtilRt.MEGABYTE;
   private static void forEachModel(SRepository repo, Consumer<SModel> consumer) {
     repo.getModelAccess().runWriteAction(() -> {
       for (SModule module : repo.getModules()) {
-        for (SModel model : module.getModels()) {
-          consumer.accept(model);
-        }
+        module.forEachRegisteredModel(consumer);
       }
     });
   }

@@ -25,6 +25,8 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new DeriveGenPlanModel_Action());
     addAction(new NewCreateRootRule_Action());
     addAction(new NewRootMappingRule_Action());
+    addAction(new NewTemplateInCreateRootRule_Action());
+    addAction(new NewTemplateInRootMappingRoot_Action());
     // groups
     addGroup(new ShowAsIntentions_Generator_ActionGroup(this));
   }

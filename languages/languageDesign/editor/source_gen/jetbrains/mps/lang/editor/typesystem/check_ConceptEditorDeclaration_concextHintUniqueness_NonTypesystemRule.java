@@ -17,7 +17,6 @@ import jetbrains.mps.errors.IErrorReporter;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
@@ -29,9 +28,8 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -57,13 +55,9 @@ public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemR
       return;
     }
 
-    final Set<SNode> editorHintsSet = SetSequence.fromSetWithValues(new HashSet<SNode>(), ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, LINKS.contextHints$kxOz)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.hint$Facj);
-      }
-    }));
+    final Set<SNode> editorHintsSet = SetSequence.fromSetWithValues(new HashSet<SNode>(), ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, LINKS.contextHints$kxOz)).select((it) -> SLinkOperations.getTarget(it, LINKS.hint$Facj)));
     Collection<SNode> duplicatingEditorDeclarations = CollectionSequence.fromCollection(new ArrayList<SNode>());
-    Deque<Language> languagesToVisit = DequeSequence.fromDequeNew(new LinkedList<Language>());
+    Deque<Language> languagesToVisit = DequeSequence.fromDeque(new LinkedList<Language>());
     Set<String> visitedLanguages = SetSequence.fromSet(new HashSet<String>());
     DequeSequence.fromDequeNew(languagesToVisit).addLastElement(containingLanguage);
     SetSequence.fromSet(visitedLanguages).addElement(containingLanguage.getModuleName());
@@ -80,18 +74,12 @@ public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemR
       }
       SModel editorModel = SModuleOperations.getAspect(nextLanguage, "editor");
       if (editorModel != null) {
-        CollectionSequence.fromCollection(duplicatingEditorDeclarations).addSequence(ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.ConceptEditorDeclaration$BH)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$HJmJ) == SLinkOperations.getTarget(editorDeclaration, LINKS.conceptDeclaration$HJmJ) && it != editorDeclaration;
-          }
-        }).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SetSequence.fromSet(editorHintsSet).count() == ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.contextHints$kxOz)).distinct().count() && SetSequence.fromSet(editorHintsSet).containsSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.contextHints$kxOz)).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SLinkOperations.getTarget(it, LINKS.hint$Facj);
-              }
-            }));
-          }
+        CollectionSequence.fromCollection(duplicatingEditorDeclarations).addSequence(ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.ConceptEditorDeclaration$BH)).where((it) -> SLinkOperations.getTarget(it, LINKS.conceptDeclaration$HJmJ) == SLinkOperations.getTarget(editorDeclaration, LINKS.conceptDeclaration$HJmJ) && it != editorDeclaration).where((it) -> {
+          return SetSequence.fromSet(editorHintsSet).count() == ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.contextHints$kxOz)).distinct().count() && SetSequence.fromSet(editorHintsSet).containsSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.contextHints$kxOz)).select(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
+            public SNode invoke(SNode it) {
+              return SLinkOperations.getTarget(it, LINKS.hint$Facj);
+            }
+          }));
         }));
       }
     }
@@ -100,15 +88,7 @@ public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemR
       for (SNode duplicatingEditorDecl : CollectionSequence.fromCollection(duplicatingEditorDeclarations)) {
         {
           final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.conceptDeclaration$HJmJ);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorDeclaration, "Duplicate editor declaration. Editor for same set of context hints (" + ((ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, LINKS.contextHints$kxOz)).isEmpty() ? "<default>" : ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, LINKS.contextHints$kxOz)).select(new ISelector<SNode, String>() {
-            public String select(SNode it) {
-              return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.hint$Facj), PROPS.name$MnvL);
-            }
-          }).reduceLeft(new ILeftCombinator<String, String>() {
-            public String combine(String a, String b) {
-              return a + " & " + b;
-            }
-          }))) + ") was already defined in: " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(duplicatingEditorDecl), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6246554009626560906", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorDeclaration, "Duplicate editor declaration. Editor for same set of context hints (" + ((ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, LINKS.contextHints$kxOz)).isEmpty() ? "<default>" : ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, LINKS.contextHints$kxOz)).select((it) -> SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.hint$Facj), PROPS.name$MnvL)).reduceLeft((a, b) -> a + " & " + b))) + ") was already defined in: " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(duplicatingEditorDecl), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6246554009626560906", null, errorTarget);
         }
       }
     }

@@ -7,14 +7,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -46,15 +44,7 @@ public class EditorAssistantUtilities {
   }
 
   public boolean hasFeatures() {
-    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1156234966388"))) && !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1193676396447")));
-      }
-    }) || ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591170")));
-      }
-    });
+    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).any((it) -> !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1156234966388"))) && !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1193676396447")))) || ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).any((it) -> !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591170"))));
   }
 
   public <T> T getFirstCellValue(_FunctionTypes._return_P1_E0<? extends T, ? super SNode> valueCalculator) {
@@ -68,11 +58,7 @@ public class EditorAssistantUtilities {
           return value;
         }
       }
-      QueueSequence.fromQueue(editorComponents).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(nextComponent, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Component$d$, true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.editorComponent$DNa7);
-        }
-      }));
+      QueueSequence.fromQueue(editorComponents).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(nextComponent, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Component$d$, true, new SAbstractConcept[]{})).select((it) -> SLinkOperations.getTarget(it, LINKS.editorComponent$DNa7)));
     }
     return null;
   }
@@ -90,11 +76,7 @@ public class EditorAssistantUtilities {
           ListSequence.fromList(result).addElement(value);
         }
       }
-      QueueSequence.fromQueue(editorComponents).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(nextComponent, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Component$d$, true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.editorComponent$DNa7);
-        }
-      }));
+      QueueSequence.fromQueue(editorComponents).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(nextComponent, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Component$d$, true, new SAbstractConcept[]{})).select((it) -> SLinkOperations.getTarget(it, LINKS.editorComponent$DNa7)));
     }
     return result;
   }

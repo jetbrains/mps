@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -226,8 +226,7 @@ public class CrossModelEnvironment {
     mid &= 0x0FFFFFFF;
     mid |= 0x0F000000;
     final SModelReference mr = PersistenceFacade.getInstance()
-                                                .createModelReference(myModule.getModuleReference(), new IntegerSModelId(mid),
-                                                                      transientModelName.getValue());
+                                                .createModelReference(myModule.getModuleReference(), new IntegerSModelId(mid), transientModelName);
     SModel existing = myModule.getModel(mr.getModelId());
     if (existing != null) {
       // Why it's important to forget existing model? E.g. if a model being generated has been already generated and exposed as checkpoint, and
@@ -298,7 +297,7 @@ public class CrossModelEnvironment {
     } while (!discarded.isEmpty());
   }
 
-  public static class CacheGen implements CacheGenerator {
+  public static class CacheGen implements CacheGenerator<GenerationStatus> {
     @Override
     public void generateCache(GenerationStatus status, StreamHandler handler) {
       CrossModelEnvironment cme = status.getCrossModelEnvironment();

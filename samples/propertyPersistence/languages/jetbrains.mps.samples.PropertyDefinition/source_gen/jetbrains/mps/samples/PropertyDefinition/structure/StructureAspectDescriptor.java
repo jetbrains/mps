@@ -55,7 +55,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:09edfffb-929a-45e2-b9ab-6ad9c9ed2cc8(jetbrains.mps.samples.PropertyDefinition.structure)/5586542675088787185");
-    b.version(2);
+    b.version(3);
     b.property("value", 0x4d8762f6d73a46f4L).type(PrimitiveTypeId.STRING).origin("5586542675088787188").done();
     b.alias("key = value");
     return b.create();
@@ -65,7 +65,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:09edfffb-929a-45e2-b9ab-6ad9c9ed2cc8(jetbrains.mps.samples.PropertyDefinition.structure)/5586542675088787182");
-    b.version(2);
+    b.version(3);
     b.aggregate("properties", 0x4d8762f6d73a4730L).target(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46f1L).optional(true).ordered(true).multiple(true).origin("5586542675088787248").done();
     b.alias("Properties");
     return b.create();

@@ -4,13 +4,13 @@ package jetbrains.mps.ide.httpsupport.tests.lang;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
 import org.jetbrains.ide.BuiltInServerManager;
+import org.jetbrains.builtInWebServer.BuiltInServerOptions;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.ide.httpsupport.tests.plugin.PingStorage;
@@ -26,13 +26,11 @@ import jetbrains.mps.ide.httpsupport.tests.plugin.testConverter_Converter;
 
 @MPSLaunch
 public class TestRHBehavior_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(TestRHBehavior_Test.class, "${mps_home}", "r:9e9ac0ea-b755-4d57-b406-d0cd74445963(jetbrains.mps.ide.httpsupport.tests.lang@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(TestRHBehavior_Test.class, "${mps_home}", "r:9e9ac0ea-b755-4d57-b406-d0cd74445963(jetbrains.mps.ide.httpsupport.tests.lang@tests)", false));
 
   public TestRHBehavior_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -88,9 +86,13 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
     new TestBody(this).test_testRHConflicts();
   }
 
-  @BeforeClass
+  @BeforeAll
   public static void beforeTests() {
     BuiltInServerManager.getInstance().waitForStart();
+    // Without this option DefaultWebServerPathHandler.process() will process all unhandled requests
+    // resulting in UNAUTHORIZED (401) HTTP status code. This test was originally written with the 
+    // assumption that HTTP 404 status (not found) will be returned in this case. 
+    BuiltInServerOptions.getInstance().allowUnsignedRequests = true;
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -99,67 +101,111 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_testRHSimple() throws Exception {
-      String url = this.buildRequest("/handlerTest/simple");
-      this.testRequestResponse(url, 200, "handled");
+      initTestNodes();
+      runWithinCommand(() -> {
+        String url = TestBody.this.buildRequest("/handlerTest/simple");
+        TestBody.this.testRequestResponse(url, 200, "handled");
+      });
     }
     public void test_testRHPost() throws Exception {
-      String url = this.buildRequest("/handlerTest/simplePost");
-      this.testRequestResponse(url, "POST", 200, "handled");
+      initTestNodes();
+      runWithinCommand(() -> {
+        String url = TestBody.this.buildRequest("/handlerTest/simplePost");
+        TestBody.this.testRequestResponse(url, "POST", 200, "handled");
+      });
     }
     public void test_testRHPostWithGet() throws Exception {
-      String url = this.buildRequest("/handlerTest/simplePost");
-      this.testRequestResponse(url, "GET", 404, null);
+      initTestNodes();
+      runWithinCommand(() -> {
+        String url = TestBody.this.buildRequest("/handlerTest/simplePost");
+        TestBody.this.testRequestResponse(url, "GET", 404, null);
+      });
     }
     public void test_testRHPostOrGet() throws Exception {
-      String url = this.buildRequest("/handlerTest/simplePostGet");
-      this.testRequestResponse(url, "POST", 200, "handled");
-      this.testRequestResponse(url, "GET", 200, "handled");
+      initTestNodes();
+      runWithinCommand(() -> {
+        String url = TestBody.this.buildRequest("/handlerTest/simplePostGet");
+        TestBody.this.testRequestResponse(url, "POST", 200, "handled");
+        TestBody.this.testRequestResponse(url, "GET", 200, "handled");
+      });
     }
     public void test_testRHAnyMethod() throws Exception {
-      String url = this.buildRequest("/handlerTest/anyMethod");
-      this.testRequestResponse(url, "POST", 200, "handled");
-      this.testRequestResponse(url, "GET", 200, "handled");
+      initTestNodes();
+      runWithinCommand(() -> {
+        String url = TestBody.this.buildRequest("/handlerTest/anyMethod");
+        TestBody.this.testRequestResponse(url, "POST", 200, "handled");
+        TestBody.this.testRequestResponse(url, "GET", 200, "handled");
+      });
     }
     public void test_testRHNoRequiredParams() throws Exception {
-      String url = this.buildRequest("/handlerTest/requiredParams");
-      this.testRequestResponse(url, 404, null);
+      initTestNodes();
+      runWithinCommand(() -> {
+        String url = TestBody.this.buildRequest("/handlerTest/requiredParams");
+        TestBody.this.testRequestResponse(url, 404, null);
+      });
     }
     public void test_testRHRequiredParams() throws Exception {
-      String url = this.buildRequest("/handlerTest/requiredParams?param=a");
-      this.testRequestResponse(url, 200, "handled");
+      initTestNodes();
+      runWithinCommand(() -> {
+        String url = TestBody.this.buildRequest("/handlerTest/requiredParams?param=a");
+        TestBody.this.testRequestResponse(url, 200, "handled");
+      });
     }
     public void test_testRHException() throws Exception {
-      String url = this.buildRequest("/handlerTest/exception");
-      this.testRequestResponse(url, 500, null);
+      initTestNodes();
+      runWithinCommand(() -> {
+        String url = TestBody.this.buildRequest("/handlerTest/exception");
+        TestBody.this.testRequestResponse(url, 500, null);
+      });
     }
     public void test_testRHTurnBack1() throws Exception {
-      String test = "testString";
-      String url = this.buildRequest("/handlerTest/turnBack1?param=" + test);
-      this.testRequestResponse(url, 200, test);
+      initTestNodes();
+      runWithinCommand(() -> {
+        String test = "testString";
+        String url = TestBody.this.buildRequest("/handlerTest/turnBack1?param=" + test);
+        TestBody.this.testRequestResponse(url, 200, test);
+      });
     }
     public void test_testRHTurnBack2() throws Exception {
-      String test = "testString";
-      String url = this.buildRequest("/handlerTest/turnBack2?param=" + test);
-      this.testRequestResponse(url, 200, test + " deserialized");
+      initTestNodes();
+      runWithinCommand(() -> {
+        String test = "testString";
+        String url = TestBody.this.buildRequest("/handlerTest/turnBack2?param=" + test);
+        TestBody.this.testRequestResponse(url, 200, test + " deserialized");
+      });
     }
     public void test_testURlBuilder1() throws Exception {
-      String test = "testString";
-      String url = buildRequest_17tcaj_a0a1a31v(test);
-      this.testRequestResponse(url, 200, test);
+      initTestNodes();
+      runWithinCommand(() -> {
+        String test = "testString";
+        String url = buildRequest_17tcaj_a0a1a0a1a51u(test);
+        TestBody.this.testRequestResponse(url, 200, test);
+      });
     }
     public void test_testURlBuilder2() throws Exception {
-      String test = "testString";
-      String url = buildRequest_17tcaj_a0a1a41v(test);
-      this.testRequestResponse(url, 200, test + " serialized deserialized");
+      initTestNodes();
+      runWithinCommand(() -> {
+        String test = "testString";
+        String url = buildRequest_17tcaj_a0a1a0a1a61u(test);
+        TestBody.this.testRequestResponse(url, 200, test + " serialized deserialized");
+      });
     }
     public void test_testRHConflicts() throws Exception {
-      PingStorage.reset();
-      String url = this.buildRequest("/handlerTest/conflict");
-      this.testRequestResponse(url, 200, "handled");
+      initTestNodes();
+      runWithinCommand(() -> {
+        PingStorage.reset();
+        String url = TestBody.this.buildRequest("/handlerTest/conflict");
+        TestBody.this.testRequestResponse(url, 200, "handled");
 
-      // If request handlers conflict with each other, only one of them should handle incoming request
-      Assert.assertEquals(PingStorage.pingCount(), 1);
+        // If request handlers conflict with each other, only one of them should handle incoming request
+        Assert.assertEquals(PingStorage.pingCount(), 1);
+      });
     }
 
     public void testRequestResponse(String requestUrl, int exectedRetCode, String expectedResponse) {
@@ -168,7 +214,7 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
     public void testRequestResponse(String requestUrl, String method, int exectedRetCode, String expectedResponse) {
       try {
         URL obj = new URL(requestUrl);
-        HttpURLConnection con = as_17tcaj_a0a1a0a81v(obj.openConnection(), HttpURLConnection.class);
+        HttpURLConnection con = as_17tcaj_a0a1a0a02u(obj.openConnection(), HttpURLConnection.class);
         con.setRequestMethod(method);
         con.connect();
 
@@ -192,21 +238,21 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
     public String buildRequest(String path) {
       return "http://localhost:" + BuiltInServerManager.getInstance().getPort() + path;
     }
-    private static String buildRequest_17tcaj_a0a1a31v(String param) {
+    private static String buildRequest_17tcaj_a0a1a0a1a51u(String param) {
       QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + BuiltInServerManager.getInstance().getPort() + "/handlerTest/turnBack1");
 
       encoder.addParam("param", param);
 
       return encoder.toString();
     }
-    private static String buildRequest_17tcaj_a0a1a41v(String param) {
+    private static String buildRequest_17tcaj_a0a1a0a1a61u(String param) {
       QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + BuiltInServerManager.getInstance().getPort() + "/handlerTest/turnBack2");
 
       encoder.addParam("param", testConverter_Converter.serialize(param));
 
       return encoder.toString();
     }
-    private static <T> T as_17tcaj_a0a1a0a81v(Object o, Class<T> type) {
+    private static <T> T as_17tcaj_a0a1a0a02u(Object o, Class<T> type) {
       return (type.isInstance(o) ? (T) o : null);
     }
   }
