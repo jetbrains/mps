@@ -1,0 +1,29 @@
+Private-client-WF-same-base-foundation"': Unable to create 'C:/Users/Public/MPS/.git/refs/remotes/origin/"Wells-fargo-free-markets-san-fran-in-Fl-Private-client-WF-same-base-foundation".lock': Invalid argument
+From https://github.com/Usernvme-ship-it/MPS
+ ! [new branch]                "Wells-fargo-free-markets-san-fran-in-Fl-Private-client-WF-same-base-foundation" -> origin/"Wells-fargo-free-markets-san-fran-in-Fl-Private-client-WF-same-base-foundation"  (unable to update local ref)
+ * [new branch]                2020           -> origin/2020
+ * [new branch]                2023           -> origin/2023
+ * [new branch]                2023.1         -> origin/2023.1
+ * [new branch]                MMG            -> origin/MMG
+ * [new branch]                Mps251         -> origin/Mps251
+ * [new branch]                Private-Client -> origin/Private-Client
+ * [new branch]                Services       -> origin/Services
+ * [new branch]                Usernvme-ship-it-patch-4 -> origin/Usernvme-ship-it-patch-4
+   676a87ad7a87..212d12fdacf1  codespace-crispy-fiesta-x54q5rrvjr5gc6677 -> origin/codespace-crispy-fiesta-x54q5rrvjr5gc6677
+ * [new branch]                downstream     -> origin/downstream
+ * [new branch]                master         -> origin/master
+ * [new branch]                patch-10       -> origin/patch-10
+ * [new branch]                patch-11       -> origin/patch-11
+ * [new branch]                patch-12       -> origin/patch-12
+ * [new branch]                patch-13       -> origin/patch-13
+ * [new branch]                patch-14       -> origin/patch-14
+ * [new branch]                patch-15       -> origin/patch-15
+ * [new branch]                patch-16       -> origin/patch-16
+ * [new branch]                patch-17       -> origin/patch-17
+ * [new branch]                patch-18       -> origin/patch-18
+ * [new branch]                patch-6        -> origin/patch-6
+ * [new branch]                patch-7        -> origin/patch-7
+ * [new branch]                patch-8        -> origin/patch-8
+ * [new branch]                patch-9        -> origin/patch-9
+ * [new branch]                remastered     -> origin/remastered
+ * [new branch]                upstream       -> origin/upstream
