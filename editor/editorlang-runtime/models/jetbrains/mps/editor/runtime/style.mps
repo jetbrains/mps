@@ -598,6 +598,138 @@
       </node>
     </node>
     <node concept="2tJIrI" id="3w77Jl_svtW" role="jymVt" />
+<<<<<<< HEAD
+=======
+    <node concept="3clFb_" id="3w77Jl_soPp" role="jymVt">
+      <property role="TrG5h" value="apply" />
+      <node concept="3cqZAl" id="3w77Jl_soPr" role="3clF45" />
+      <node concept="3Tm1VV" id="3w77Jl_soPs" role="1B3o_S" />
+      <node concept="3clFbS" id="3w77Jl_soPt" role="3clF47">
+        <node concept="3SKdUt" id="15k4Dgy4Ldq" role="3cqZAp">
+          <node concept="1PaTwC" id="15k4Dgy4Ldr" role="1aUNEU">
+            <node concept="3oM_SD" id="15k4Dgy4LdN" role="1PaTwD">
+              <property role="3oM_SC" value="uses" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Lnc" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4LnJ" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4LnN" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4LnS" role="1PaTwD">
+              <property role="3oM_SC" value="would" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Loe" role="1PaTwD">
+              <property role="3oM_SC" value="fade" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4LoP" role="1PaTwD">
+              <property role="3oM_SC" value="away" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Lpd" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Lqr" role="1PaTwD">
+              <property role="3oM_SC" value="code" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Lq_" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Lrw" role="1PaTwD">
+              <property role="3oM_SC" value="regenerated" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4LrW" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Ls9" role="1PaTwD">
+              <property role="3oM_SC" value="new" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Lsn" role="1PaTwD">
+              <property role="3oM_SC" value="versions." />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4LtQ" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="15k4Dgy4L$z" role="3cqZAp">
+          <node concept="1PaTwC" id="15k4Dgy4L$a" role="1aUNEU">
+            <node concept="3oM_SD" id="15k4Dgy4L$9" role="1PaTwD">
+              <property role="3oM_SC" value="keep" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Lum" role="1PaTwD">
+              <property role="3oM_SC" value="old" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4LuR" role="1PaTwD">
+              <property role="3oM_SC" value="api" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Lvp" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Lwc" role="1PaTwD">
+              <property role="3oM_SC" value="2-3" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4LwK" role="1PaTwD">
+              <property role="3oM_SC" value="releases" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Lx5" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4LyU" role="1PaTwD">
+              <property role="3oM_SC" value="then" />
+            </node>
+            <node concept="3oM_SD" id="15k4Dgy4Lzh" role="1PaTwD">
+              <property role="3oM_SC" value="drop." />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="15k4Dgy4OoY" role="3cqZAp">
+          <node concept="1rXfSq" id="15k4Dgy4OoW" role="3clFbG">
+            <ref role="37wK5l" node="15k4Dgy4NIk" resolve="apply" />
+            <node concept="2YIFZM" id="3w77Jl_ssXr" role="37wK5m">
+              <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
+              <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
+            </node>
+            <node concept="37vLTw" id="15k4Dgy4QJS" role="37wK5m">
+              <ref role="3cqZAo" node="3w77Jl_spyG" resolve="toStyle" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="3w77Jl_spyG" role="3clF46">
+        <property role="TrG5h" value="toStyle" />
+        <node concept="3uibUv" id="3w77Jl_spyF" role="1tU5fm">
+          <ref role="3uigEE" to="hox0:~Style" resolve="Style" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="15k4Dgy4HEn" role="lGtFl">
+        <node concept="TZ5HI" id="15k4Dgy4HEo" role="3nqlJM">
+          <node concept="TZ5HA" id="15k4Dgy4HEp" role="3HnX3l">
+            <node concept="1dT_AC" id="15k4Dgy4JpE" role="1dT_Ay">
+              <property role="1dT_AB" value="use #apply(EditorBuilderEnvironment, Style) instead" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="15k4Dgy4HEq" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+        <node concept="2B6LJw" id="15k4Dgy4JpG" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="15k4Dgy4JqS" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="15k4Dgy4JqU" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="15k4Dgy4Jsq" role="2B70Vg">
+            <property role="Xl_RC" value="2023.3" />
+          </node>
+        </node>
+      </node>
+    </node>
+>>>>>>> upstream/2024.1_projectPane
     <node concept="3clFb_" id="15k4Dgy4NIk" role="jymVt">
       <property role="TrG5h" value="apply" />
       <node concept="3clFbS" id="15k4Dgy4NIn" role="3clF47">
@@ -699,6 +831,58 @@
       </node>
     </node>
     <node concept="2tJIrI" id="7Vnd$HXp2e1" role="jymVt" />
+<<<<<<< HEAD
+=======
+    <node concept="3clFb_" id="7Vnd$HXp2ot" role="jymVt">
+      <property role="TrG5h" value="unapply" />
+      <node concept="3cqZAl" id="7Vnd$HXp2ou" role="3clF45" />
+      <node concept="3Tm1VV" id="7Vnd$HXp2ov" role="1B3o_S" />
+      <node concept="3clFbS" id="7Vnd$HXp2ow" role="3clF47">
+        <node concept="3clFbF" id="15k4Dgy52iu" role="3cqZAp">
+          <node concept="1rXfSq" id="15k4Dgy52is" role="3clFbG">
+            <ref role="37wK5l" node="15k4Dgy4WCP" resolve="unapply" />
+            <node concept="2YIFZM" id="15k4Dgy4WCZ" role="37wK5m">
+              <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
+            </node>
+            <node concept="37vLTw" id="15k4Dgy52Q8" role="37wK5m">
+              <ref role="3cqZAo" node="7Vnd$HXp2oN" resolve="toStyle" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="7Vnd$HXp2oN" role="3clF46">
+        <property role="TrG5h" value="toStyle" />
+        <node concept="3uibUv" id="7Vnd$HXp2oO" role="1tU5fm">
+          <ref role="3uigEE" to="hox0:~Style" resolve="Style" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="15k4Dgy4UBn" role="lGtFl">
+        <node concept="TZ5HI" id="15k4Dgy4UBo" role="3nqlJM">
+          <node concept="TZ5HA" id="15k4Dgy4UBp" role="3HnX3l">
+            <node concept="1dT_AC" id="15k4Dgy4UKF" role="1dT_Ay">
+              <property role="1dT_AB" value="use #unapply(EditorBuilderEnvironment, Style) instead" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="15k4Dgy4UBq" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+        <node concept="2B6LJw" id="15k4Dgy4UKH" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="15k4Dgy4ULT" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="15k4Dgy4UMg" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="15k4Dgy4UNF" role="2B70Vg">
+            <property role="Xl_RC" value="2023.3" />
+          </node>
+        </node>
+      </node>
+    </node>
+>>>>>>> upstream/2024.1_projectPane
     <node concept="3clFb_" id="15k4Dgy4WCP" role="jymVt">
       <property role="TrG5h" value="unapply" />
       <node concept="3cqZAl" id="15k4Dgy4WCQ" role="3clF45" />

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:46b5a205-6da9-4b5a-ac93-05f04740d2d2(jetbrains.mps.kotlin.stubs.smodel.references)/2202586844996294808">
+    <file name="ClassStereotype.java">
+      <node id="2202586844996303457" at="16,153,17,65" concept="8" />
+      <node id="2202586844996306675" at="20,0,21,0" concept="2" trace="createKotlinType#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2202586844996444516" at="21,0,22,0" concept="2" trace="createKotlinAnnotation#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2202586844999415230" at="22,0,23,0" concept="2" trace="createKotlinNestedAnnotation#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2202586844996456757" at="23,0,24,0" concept="2" trace="createKotlinEnumConstantReference#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2202586844996444060" at="25,0,26,0" concept="2" trace="createJavaType#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2202586844996463189" at="26,0,27,0" concept="2" trace="createJavaAnnotation#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2202586844996465648" at="27,0,28,0" concept="2" trace="createJavaEnumConstantReference#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="3833041373528742342" at="28,0,29,0" concept="2" trace="createJavaClassQualifierReference#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2202586844996303424" at="16,0,19,0" concept="0" trace="ClassStereotype#(Lorg/jetbrains/mps/openapi/model/SNodeId;Lorg/jetbrains/mps/openapi/model/SNodeId;Ljava/lang/String;Ljava/util/List;)V" />
+      <scope id="2202586844996303456" at="16,153,17,65" />
+      <scope id="2202586844996306675" at="20,0,21,0">
+        <var name="resolved" id="2202586844996443602" />
+      </scope>
+      <scope id="2202586844996444516" at="21,0,22,0">
+        <var name="resolved" id="2202586844996444520" />
+      </scope>
+      <scope id="2202586844999415230" at="22,0,23,0">
+        <var name="resolved" id="2202586844999415234" />
+      </scope>
+      <scope id="2202586844996456757" at="23,0,24,0">
+        <var name="resolved" id="2202586844996456761" />
+      </scope>
+      <scope id="2202586844996444060" at="25,0,26,0">
+        <var name="resolved" id="2202586844996444064" />
+      </scope>
+      <scope id="2202586844996463189" at="26,0,27,0">
+        <var name="resolved" id="2202586844996463193" />
+      </scope>
+      <scope id="2202586844996465648" at="27,0,28,0">
+        <var name="classRef" id="2202586844996465652" />
+        <var name="constantRef" id="2202586844996469715" />
+      </scope>
+      <scope id="3833041373528742342" at="28,0,29,0">
+        <var name="classResolveInfo" id="3833041373528747401" />
+      </scope>
+      <scope id="2202586844996303424" at="16,0,19,0">
+        <var name="platforms" id="2202586844996303431" />
+        <var name="resolveInfo" id="2202586844996303434" />
+        <var name="targetNodeId" id="2202586844996303425" />
+        <var name="topClassifierId" id="2202586844996303428" />
+      </scope>
+      <unit id="2202586844996294808" at="14,0,30,0" name="jetbrains.mps.kotlin.stubs.smodel.references.ClassStereotype" />
+    </file>
+  </root>
+  <root nodeRef="r:46b5a205-6da9-4b5a-ac93-05f04740d2d2(jetbrains.mps.kotlin.stubs.smodel.references)/6616942641365770961">
+    <file name="KotlinClassReference.java">
+      <node id="5413391063753028659" at="17,79,18,107" concept="8" />
+      <node id="6616942641365771295" at="21,55,22,188" concept="3" />
+      <node id="6616942641365771283" at="22,188,23,50" concept="1" />
+      <node id="6616942641365771265" at="23,50,24,16" concept="4" />
+      <node id="6616942641365771251" at="27,61,28,189" concept="3" />
+      <node id="6616942641365771239" at="28,189,29,56" concept="1" />
+      <node id="6616942641365771217" at="29,56,30,16" concept="4" />
+      <node id="6616942641365771325" at="33,67,34,201" concept="3" />
+      <node id="6616942641365771347" at="34,201,35,53" concept="1" />
+      <node id="6616942641365771357" at="35,53,36,16" concept="4" />
+      <node id="6616942641365771198" at="39,72,40,200" concept="3" />
+      <node id="6616942641365771176" at="40,200,41,51" concept="1" />
+      <node id="6616942641365771140" at="41,51,42,16" concept="4" />
+      <node id="6616942641365771114" at="45,53,46,216" concept="3" />
+      <node id="6616942641365771080" at="46,216,47,55" concept="1" />
+      <node id="6616942641365771034" at="47,55,48,16" concept="4" />
+      <node id="6616942641365770859" at="51,59,52,25" concept="5" />
+      <node id="6616942641365771503" at="52,25,53,78" concept="5" />
+      <node id="6616942641365770799" at="53,78,54,16" concept="4" />
+      <node id="6616942641365771433" at="57,95,58,25" concept="5" />
+      <node id="6616942641365770849" at="58,25,59,16" concept="4" />
+      <node id="6616942641365771377" at="62,80,63,25" concept="5" />
+      <node id="6616942641365771501" at="63,25,64,16" concept="4" />
+      <node id="6616942641365770961" at="68,0,69,0" concept="6" trace="class$ExdX" />
+      <node id="6616942641365770961" at="69,0,70,0" concept="6" trace="constructor$F_F2" />
+      <node id="6616942641365770961" at="70,0,71,0" concept="6" trace="function$Weyv" />
+      <node id="6616942641365770961" at="71,0,72,0" concept="6" trace="target$xQFr" />
+      <node id="6616942641365770961" at="72,0,73,0" concept="6" trace="classifier$5Cta" />
+      <node id="5413391063753028655" at="17,0,20,0" concept="0" trace="KotlinClassReference#(Ljava/lang/String;Ljava/util/List;)V" />
+      <node id="6616942641365770990" at="56,0,61,0" concept="2" trace="createJavaEnumConstantReference#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365770891" at="61,0,66,0" concept="2" trace="createJavaClassQualifierReference#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365771305" at="20,0,26,0" concept="2" trace="createKotlinType#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365771263" at="26,0,32,0" concept="2" trace="createKotlinAnnotation#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365771319" at="32,0,38,0" concept="2" trace="createKotlinNestedAnnotation#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365771215" at="38,0,44,0" concept="2" trace="createKotlinEnumConstantReference#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365771136" at="44,0,50,0" concept="2" trace="createJavaType#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365771028" at="50,0,56,0" concept="2" trace="createJavaAnnotation#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="5413391063753028658" at="17,79,18,107" />
+      <scope id="6616942641365770974" at="57,95,59,16" />
+      <scope id="6616942641365770893" at="62,80,64,16" />
+      <scope id="5413391063753028655" at="17,0,20,0">
+        <var name="fqName" id="5413391063753028666" />
+        <var name="platforms" id="5413391063753031327" />
+      </scope>
+      <scope id="6616942641365771293" at="21,55,24,16">
+        <var name="type" id="6616942641365771289" />
+      </scope>
+      <scope id="6616942641365771249" at="27,61,30,16">
+        <var name="node" id="6616942641365771245" />
+      </scope>
+      <scope id="6616942641365771333" at="33,67,36,16">
+        <var name="node" id="6616942641365771329" />
+      </scope>
+      <scope id="6616942641365771194" at="39,72,42,16">
+        <var name="node" id="6616942641365771186" />
+      </scope>
+      <scope id="6616942641365771108" at="45,53,48,16">
+        <var name="node" id="6616942641365771096" />
+      </scope>
+      <scope id="6616942641365770996" at="51,59,54,16" />
+      <scope id="6616942641365770990" at="56,0,61,0">
+        <var name="classRef" id="6616942641365770980" />
+        <var name="constantRef" id="6616942641365770976" />
+      </scope>
+      <scope id="6616942641365770891" at="61,0,66,0">
+        <var name="classResolveInfo" id="6616942641365770899" />
+      </scope>
+      <scope id="6616942641365771305" at="20,0,26,0">
+        <var name="resolved" id="6616942641365771297" />
+      </scope>
+      <scope id="6616942641365771263" at="26,0,32,0">
+        <var name="resolved" id="6616942641365771253" />
+      </scope>
+      <scope id="6616942641365771319" at="32,0,38,0">
+        <var name="resolved" id="6616942641365771317" />
+      </scope>
+      <scope id="6616942641365771215" at="38,0,44,0">
+        <var name="resolved" id="6616942641365771202" />
+      </scope>
+      <scope id="6616942641365771136" at="44,0,50,0">
+        <var name="resolved" id="6616942641365771116" />
+      </scope>
+      <scope id="6616942641365771028" at="50,0,56,0">
+        <var name="resolved" id="6616942641365771004" />
+      </scope>
+      <unit id="6616942641365770961" at="67,0,74,0" name="jetbrains.mps.kotlin.stubs.smodel.references.KotlinClassReference$LINKS" />
+      <unit id="6616942641365770961" at="15,0,75,0" name="jetbrains.mps.kotlin.stubs.smodel.references.KotlinClassReference" />
+    </file>
+  </root>
+  <root nodeRef="r:46b5a205-6da9-4b5a-ac93-05f04740d2d2(jetbrains.mps.kotlin.stubs.smodel.references)/6616942641365771212">
+    <file name="JavaClassReference.java">
+      <node id="6616942641365770723" at="25,44,26,79" concept="5" />
+      <node id="6616942641365771353" at="26,79,27,406" concept="8" />
+      <node id="5413391063753096026" at="32,68,33,177" concept="4" />
+      <node id="6616942641365771561" at="37,55,38,201" concept="3" />
+      <node id="6616942641365770919" at="38,201,39,54" concept="1" />
+      <node id="6616942641365770871" at="39,54,40,16" concept="4" />
+      <node id="6616942641365770763" at="43,61,44,202" concept="3" />
+      <node id="6616942641365770767" at="44,202,45,55" concept="1" />
+      <node id="6616942641365770783" at="45,55,46,16" concept="4" />
+      <node id="6616942641365770955" at="49,67,50,214" concept="3" />
+      <node id="6616942641365770941" at="50,214,51,55" concept="1" />
+      <node id="6616942641365770933" at="51,55,52,16" concept="4" />
+      <node id="6616942641365770833" at="55,72,56,213" concept="3" />
+      <node id="6616942641365770823" at="56,213,57,53" concept="1" />
+      <node id="6616942641365770809" at="57,53,58,16" concept="4" />
+      <node id="6616942641365771481" at="61,53,62,194" concept="3" />
+      <node id="6616942641365771493" at="62,194,63,55" concept="1" />
+      <node id="6616942641365771477" at="63,55,64,16" concept="4" />
+      <node id="6616942641365770968" at="67,59,68,198" concept="3" />
+      <node id="6616942641365771411" at="68,198,69,55" concept="1" />
+      <node id="6616942641365771393" at="69,55,70,16" concept="4" />
+      <node id="6616942641365771589" at="73,95,74,200" concept="3" />
+      <node id="6616942641365771569" at="74,200,75,54" concept="1" />
+      <node id="6616942641365771527" at="75,54,76,71" concept="1" />
+      <node id="6616942641365771563" at="76,71,77,16" concept="4" />
+      <node id="6616942641365771447" at="80,80,81,63" concept="3" />
+      <node id="6616942641365770865" at="81,63,82,62" concept="1" />
+      <node id="6616942641365771463" at="82,62,83,15" concept="4" />
+      <node id="6616942641365770735" at="85,71,86,85" concept="3" />
+      <node id="6616942641365770735" at="86,85,87,55" concept="1" />
+      <node id="6616942641365770735" at="87,55,88,26" concept="4" />
+      <node id="6616942641365771212" at="92,0,93,0" concept="6" trace="javaClass$CQOW" />
+      <node id="6616942641365771212" at="93,0,94,0" concept="6" trace="annotation$XpH6" />
+      <node id="6616942641365771212" at="94,0,95,0" concept="6" trace="classifier$yYTH" />
+      <node id="6616942641365771212" at="95,0,96,0" concept="6" trace="constant$7EjP" />
+      <node id="6616942641365771212" at="96,0,97,0" concept="6" trace="classifier$cxMr" />
+      <node id="6616942641365771212" at="97,0,98,0" concept="6" trace="annotation$12Ek" />
+      <node id="6616942641365771212" at="98,0,99,0" concept="6" trace="enumClass$bGAj" />
+      <node id="6616942641365771212" at="99,0,100,0" concept="6" trace="enumConstantDeclaration$f1_N" />
+      <node id="6616942641365771212" at="100,0,101,0" concept="6" trace="classifier$7Ex9" />
+      <node id="6616942641365771212" at="104,0,105,0" concept="6" trace="ClassifierClassExpression$lN" />
+      <node id="6616942641365770743" at="25,0,29,0" concept="0" trace="JavaClassReference#(Ljava/lang/String;)V" />
+      <node id="4707288075100349963" at="30,0,35,0" concept="2" trace="possibleModelNames#(Ljava/lang/String;)Ljava/util/List;" />
+      <node id="6616942641365770735" at="85,0,90,0" concept="7" trace="createClassifierClassExpression_x3hznu_a0a0l#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365771227" at="36,0,42,0" concept="2" trace="createKotlinType#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365770747" at="42,0,48,0" concept="2" trace="createKotlinAnnotation#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365771150" at="48,0,54,0" concept="2" trace="createKotlinNestedAnnotation#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365771180" at="54,0,60,0" concept="2" trace="createKotlinEnumConstantReference#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365771078" at="60,0,66,0" concept="2" trace="createJavaType#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365771118" at="66,0,72,0" concept="2" trace="createJavaAnnotation#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365770873" at="79,0,85,0" concept="2" trace="createJavaClassQualifierReference#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6616942641365770998" at="72,0,79,0" concept="2" trace="createJavaEnumConstantReference#(Lorg/jetbrains/mps/openapi/model/ResolveInfo;Lorg/jetbrains/mps/openapi/model/ResolveInfo;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="4707288075100349975" at="32,68,33,177" />
+      <scope id="6616942641365770741" at="25,44,27,406" />
+      <scope id="6616942641365771158" at="37,55,40,16">
+        <var name="type" id="6616942641365771539" />
+      </scope>
+      <scope id="6616942641365770761" at="43,61,46,16">
+        <var name="node" id="6616942641365770757" />
+      </scope>
+      <scope id="6616942641365771188" at="49,67,52,16">
+        <var name="node" id="6616942641365770957" />
+      </scope>
+      <scope id="6616942641365771088" at="55,72,58,16">
+        <var name="node" id="6616942641365770835" />
+      </scope>
+      <scope id="6616942641365771126" at="61,53,64,16">
+        <var name="node" id="6616942641365771483" />
+      </scope>
+      <scope id="6616942641365771006" at="67,59,70,16">
+        <var name="node" id="6616942641365770970" />
+      </scope>
+      <scope id="6616942641365770863" at="80,80,83,15">
+        <var name="res" id="6616942641365771449" />
+      </scope>
+      <scope id="6616942641365770735" at="85,71,88,26">
+        <var name="n0" id="6616942641365770735" />
+      </scope>
+      <scope id="6616942641365770743" at="25,0,29,0">
+        <var name="fqName" id="6616942641365770713" />
+      </scope>
+      <scope id="6616942641365771040" at="73,95,77,16">
+        <var name="node" id="6616942641365771587" />
+      </scope>
+      <scope id="4707288075100349963" at="30,0,35,0">
+        <var name="pack" id="4707288075100349968" />
+      </scope>
+      <scope id="6616942641365770735" at="85,0,90,0" />
+      <scope id="6616942641365771227" at="36,0,42,0">
+        <var name="resolved" id="6616942641365771166" />
+      </scope>
+      <scope id="6616942641365770747" at="42,0,48,0">
+        <var name="resolved" id="6616942641365770749" />
+      </scope>
+      <scope id="6616942641365771150" at="48,0,54,0">
+        <var name="resolved" id="6616942641365771196" />
+      </scope>
+      <scope id="6616942641365771180" at="54,0,60,0">
+        <var name="resolved" id="6616942641365771100" />
+      </scope>
+      <scope id="6616942641365771078" at="60,0,66,0">
+        <var name="resolved" id="6616942641365771134" />
+      </scope>
+      <scope id="6616942641365771118" at="66,0,72,0">
+        <var name="resolved" id="6616942641365771014" />
+      </scope>
+      <scope id="6616942641365770873" at="79,0,85,0">
+        <var name="classResolveInfo" id="6616942641365770855" />
+      </scope>
+      <scope id="6616942641365770998" at="72,0,79,0">
+        <var name="classRef" id="6616942641365771060" />
+        <var name="constantRef" id="6616942641365771052" />
+      </scope>
+      <unit id="6616942641365771212" at="103,0,106,0" name="jetbrains.mps.kotlin.stubs.smodel.references.JavaClassReference$CONCEPTS" />
+      <unit id="6616942641365771212" at="91,0,102,0" name="jetbrains.mps.kotlin.stubs.smodel.references.JavaClassReference$LINKS" />
+      <unit id="6616942641365771212" at="23,0,107,0" name="jetbrains.mps.kotlin.stubs.smodel.references.JavaClassReference" />
+    </file>
+  </root>
+</debug-info>
+

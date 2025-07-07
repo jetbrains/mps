@@ -24424,6 +24424,44 @@
                           </node>
                           <node concept="13MTOL" id="6M4GgamnVxZ" role="2OqNvi">
                             <ref role="13MTZf" to="tp25:28aPEVv7nn$" resolve="members" />
+<<<<<<< HEAD
+=======
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1ps_y7" id="3gMN$AkzCkM" role="lGtFl">
+                <node concept="1ps_xZ" id="3gMN$AkzCkN" role="1ps_xO">
+                  <property role="TrG5h" value="datatypeId" />
+                  <node concept="2jfdEK" id="3gMN$AkzCkO" role="1ps_xN">
+                    <node concept="3clFbS" id="3gMN$AkzCkP" role="2VODD2">
+                      <node concept="3clFbF" id="3gMN$AkzCYi" role="3cqZAp">
+                        <node concept="2YIFZM" id="18KkhdDWl7k" role="3clFbG">
+                          <ref role="1Pybhc" to="e8bb:~MetaIdByDeclaration" resolve="MetaIdByDeclaration" />
+                          <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getDatatypeId(org.jetbrains.mps.openapi.model.SNode)" resolve="getDatatypeId" />
+                          <node concept="2OqwBi" id="28aPEVwaW7j" role="37wK5m">
+                            <node concept="1UdQGJ" id="28aPEVwaSYI" role="2Oq$k0">
+                              <node concept="1YaCAy" id="28aPEVwaV7g" role="1Ub_4A">
+                                <property role="TrG5h" value="type" />
+                                <ref role="1YaFvo" to="tp25:i2ZThgx" resolve="SEnumerationMemberType" />
+                              </node>
+                              <node concept="2OqwBi" id="28aPEVwaTLN" role="1Ub_4B">
+                                <node concept="2OqwBi" id="28aPEVwaU$n" role="2Oq$k0">
+                                  <node concept="30H73N" id="28aPEVwaTpO" role="2Oq$k0" />
+                                  <node concept="3TrEf2" id="28aPEVwaV55" role="2OqNvi">
+                                    <ref role="3Tt5mk" to="tp25:28aPEVv7nnw" resolve="enumExpression" />
+                                  </node>
+                                </node>
+                                <node concept="3JvlWi" id="28aPEVwaUsp" role="2OqNvi" />
+                              </node>
+                            </node>
+                            <node concept="3TrEf2" id="28aPEVwaXaJ" role="2OqNvi">
+                              <ref role="3Tt5mk" to="tp25:i2ZWj0V" resolve="enum" />
+                            </node>
+>>>>>>> upstream/2024.1_projectPane
                           </node>
                         </node>
                       </node>

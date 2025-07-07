@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="-1mixjum2znks0chrqrbh2l2bdihk7di">
+=======
+<product version="3" modelHash="-dgmy916inrdmei4munqpq69bupmvanx">
+>>>>>>> upstream/2024.1_projectPane
   <files names="ExtensionDescriptor.java:FacetAspectDescriptor.java:FacetManifest.java:GenTaskImpl.java:Generate_Facet.java:ModuleStaleFileManager.java:ResourceDeltaCollector.java:RetainedUtil.java:TextGenOutcomeResource.java:TextGen_Facet.java" />
 </product>
 

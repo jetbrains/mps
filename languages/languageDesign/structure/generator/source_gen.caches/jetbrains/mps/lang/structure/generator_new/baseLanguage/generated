@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="-ed76rtjg6ngj8uwilf2si2y0c43vosi">
+=======
+<product version="3" modelHash="abbjqzd5mfeqqlwyqpdzvqsrn1kd5op">
+>>>>>>> upstream/2024.1_projectPane
   <files names="QueriesGenerated.java" />
 </product>
 

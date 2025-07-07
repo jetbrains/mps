@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="-1a3cu4nhjk02rse3b9c2gbcva9o8y2k">
+=======
+<product version="3" modelHash="-2v5yc6bpfudjrhrbkg2ayisfi3eijp9">
+>>>>>>> upstream/2024.1_projectPane
   <files names="CompanionObjectScope_Test.java:Concepts_Test.java:Functions_Test.java:JavaFromKotlin_Test.java:KotlinFromJava_Test.java:ObjectScope_Test.java" />
 </product>
 

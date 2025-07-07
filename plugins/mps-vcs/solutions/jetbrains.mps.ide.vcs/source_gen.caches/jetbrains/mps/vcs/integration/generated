@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="x9fl9ic37a2dhbivxo9myyimmg0of8">
+=======
+<product version="3" modelHash="-eheofc2avcinz1omhrk5zgepgpdwz4q">
+>>>>>>> upstream/2024.1_projectPane
   <files names="ExtensionChangesBrowserNode.java:ExtensionChangesGroupingPolicy.java:GeneratedFileConflictResolving.java:ModuleVcsPathPresenter.java:NonMPSProjectCheckoutListener.java:ProjectCheckoutListener.java:ProjectDirMPSCheckoutListener.java" />
 </product>
 

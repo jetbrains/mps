@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="bh0gymvkekx0gewa1keg3wyeze5063g">
+=======
+<product version="3" modelHash="arxiokanfj7gtj37j6ptcmytverz9mn">
+>>>>>>> upstream/2024.1_projectPane
   <files names="EnvironmentAwareExtension.java:JUnitTestDiscoveryParticipants.java:ModuleActivator.java:TestNodeUtil.java" />
 </product>
 
