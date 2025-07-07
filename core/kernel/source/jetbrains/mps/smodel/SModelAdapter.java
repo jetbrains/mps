@@ -15,15 +15,26 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.event.*;
+import jetbrains.mps.smodel.event.SModelChildEvent;
+import jetbrains.mps.smodel.event.SModelDevKitEvent;
+import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.smodel.event.SModelFileChangedEvent;
+import jetbrains.mps.smodel.event.SModelImportEvent;
+import jetbrains.mps.smodel.event.SModelLanguageEvent;
+import jetbrains.mps.smodel.event.SModelListener;
+import jetbrains.mps.smodel.event.SModelPropertyEvent;
+import jetbrains.mps.smodel.event.SModelReferenceEvent;
+import jetbrains.mps.smodel.event.SModelRenamedEvent;
+import jetbrains.mps.smodel.event.SModelRootEvent;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
 
 /**
  * @author Kostik
  */
 public class SModelAdapter implements SModelListener {
-  private SModelListenerPriority myPriority;
+  private final SModelListenerPriority myPriority;
 
   public SModelAdapter() {
     this(SModelListenerPriority.CLIENT);
@@ -33,103 +44,121 @@ public class SModelAdapter implements SModelListener {
     myPriority = priority;
   }
 
+  @Override
   public void languageAdded(SModelLanguageEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
+  @Override
   public void languageRemoved(SModelLanguageEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
+  @Override
   public void importAdded(SModelImportEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
+  @Override
   public void importRemoved(SModelImportEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
+  @Override
   public void devkitAdded(SModelDevKitEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
 
+  @Override
   public void devkitRemoved(SModelDevKitEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
+  @Override
   public void rootAdded(SModelRootEvent event) {
     eventFired(event);
     modelChangedDramatically(event.getModel());
   }
 
+  @Override
   public void rootRemoved(SModelRootEvent event) {
     eventFired(event);
     modelChangedDramatically(event.getModel());
   }
 
+  @Override
   public void beforeRootRemoved(SModelRootEvent event) {
   }
 
+  @Override
   public void propertyChanged(SModelPropertyEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
+  @Override
   public void childAdded(SModelChildEvent event) {
     eventFired(event);
     modelChangedDramatically(event.getModel());
   }
 
+  @Override
   public void childRemoved(SModelChildEvent event) {
     eventFired(event);
     modelChangedDramatically(event.getModel());
   }
 
+  @Override
   public void beforeChildRemoved(SModelChildEvent event) {
   }
 
+  @Override
   public void referenceAdded(SModelReferenceEvent event) {
     eventFired(event);
     modelChangedDramatically(event.getModel());
   }
 
+  @Override
   public void referenceRemoved(SModelReferenceEvent event) {
     eventFired(event);
     modelChangedDramatically(event.getModel());
   }
 
+  @Override
   public void beforeModelRenamed(SModelRenamedEvent event) {
   }
 
+  @Override
   public void modelRenamed(SModelRenamedEvent event) {
     eventFired(event);
   }
 
+  @Override
   public void beforeModelFileChanged(SModelFileChangedEvent event) {
   }
 
+  @Override
   public void modelFileChanged(SModelFileChangedEvent event) {
     eventFired(event);
   }
 
-  public void modelLoadingStateChanged(SModelDescriptor sm, ModelLoadingState oldState, ModelLoadingState newState) {
+  @Override
+  public void modelLoadingStateChanged(SModel sm, ModelLoadingState newState) {
   }
 
+  @Override
   public void beforeModelDisposed(SModel sm) {
   }
 
   @Override
-  public void modelReplaced(SModelDescriptor md) {
-  }
-
-  public void modelSaved(SModelDescriptor sm) {
+  public void modelSaved(SModel sm) {
   }
 
   public void eventFired(SModelEvent event) {

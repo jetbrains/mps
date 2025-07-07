@@ -5,11 +5,10 @@ package jetbrains.mps.samples.formulaLanguage.api;
 
 public class DoubleConstant implements Function<Double> {
   private Double myDouble;
-
   public DoubleConstant(double d) {
     myDouble = d;
   }
-
+  @Override
   public Double compute(Object parm) {
     return myDouble;
   }

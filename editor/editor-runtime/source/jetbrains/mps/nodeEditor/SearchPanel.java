@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,32 +15,44 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.util.Pair;
+import com.intellij.openapi.editor.colors.EditorColors;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.search.AbstractSearchPanel;
 import jetbrains.mps.ide.search.SearchHistoryStorage;
 import jetbrains.mps.nodeEditor.cellLayout.PunctuationUtil;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.nodeEditor.text.TextRenderUtil;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
+import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.util.CollectionUtil;
-import jetbrains.mps.ide.search.AbstractSearchPanel;
+import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SearchPanel extends AbstractSearchPanel {
   private EditorComponent myEditor;
-  private List<SearchEntry> mySearchEntries = new ArrayList<SearchEntry>();
+  private List<SearchEntry> mySearchEntries = new ArrayList<>();
   private NodeHighlightManager myHighlightManager;
   private EditorMessageOwner myOwner;
+  private SearchHistoryStorage mySearchHistory;
 
   public SearchPanel(EditorComponent editor) {
     super();
@@ -49,16 +61,21 @@ public class SearchPanel extends AbstractSearchPanel {
 
   @Override
   protected SearchHistoryStorage getSearchHistory() {
-    IOperationContext operationContext = myEditor.getOperationContext();
-    if (operationContext == null) {
-      return new SearchHistoryComponent();
+    if (mySearchHistory == null) {
+      final MPSProject p = MPSCommonDataKeys.MPS_PROJECT.getData(DataManager.getInstance().getDataContext(myEditor));
+      if (p != null) {
+        mySearchHistory = p.getComponent(SearchHistoryComponent.class);
+      }
+      if (mySearchHistory == null) {
+        mySearchHistory = new SearchHistoryComponent();
+      }
     }
-    return operationContext.getProject().getComponent(SearchHistoryComponent.class);
+    return mySearchHistory;
   }
 
   private Pair<List<EditorCell_Label>, String> allCellsAndContent() {
     StringBuilder sb = new StringBuilder();
-    List<EditorCell_Label> cells = new ArrayList<EditorCell_Label>();
+    List<EditorCell_Label> cells = new ArrayList<>();
     EditorCell rootCell = myEditor.getRootCell();
     if (rootCell instanceof EditorCell_Label) {
       EditorCell_Label cell_label = (EditorCell_Label) rootCell;
@@ -70,13 +87,13 @@ public class SearchPanel extends AbstractSearchPanel {
       List<EditorCell_Label> editorCell_labelList = CollectionUtil.filter(EditorCell_Label.class, collection.dfsCells());
       for (EditorCell_Label label : editorCell_labelList) {
         if (PunctuationUtil.hasLeftGap(label)) {
-          sb.append(" ");
+          sb.append(' ');
         }
         sb.append(label.getRenderedText());
       }
       cells.addAll(editorCell_labelList);
     }
-    return new Pair<List<EditorCell_Label>, String>(cells, sb.toString());
+    return new Pair<>(cells, sb.toString());
   }
 
   @Override
@@ -84,25 +101,31 @@ public class SearchPanel extends AbstractSearchPanel {
     return true;
   }
 
+  @Override
   protected boolean canExportToFindTool() {
     return !getMessages().isEmpty();
   }
 
+  @Override
   public void goToPrevious() {
-    if (mySearchEntries.size() == 0) return;
+    if (mySearchEntries.size() == 0) {
+      return;
+    }
     addToHistory();
     EditorCell selectedCell = myEditor.getDeepestSelectedCell();
     int selectionStart = 0;
+    boolean isEmpty = false;
     if (selectedCell instanceof EditorCell_Label) {
       EditorCell_Label labelCell = (EditorCell_Label) selectedCell;
       selectionStart = labelCell.getSelectionStart();
+      isEmpty = labelCell.getText().isEmpty();
     }
     SearchEntry entryToSelect = null;
     for (ListIterator<SearchEntry> it = mySearchEntries.listIterator(mySearchEntries.size()); it.hasPrevious() && entryToSelect == null; ) {
       SearchEntry currentEntry = it.previous();
-      if (currentEntry.getStartLabel().equals(selectedCell)) {
+      if (CellTraversalUtil.compare(selectedCell, currentEntry.getStartLabel()) >= 0) {
         while (entryToSelect == null) {
-          if (!currentEntry.getStartLabel().equals(selectedCell) || selectionStart >= currentEntry.getFirstRange().getEndPosition()) {
+          if (!currentEntry.getStartLabel().equals(selectedCell) || (selectionStart >= currentEntry.getFirstRange().getEndPosition() && !isEmpty)) {
             entryToSelect = currentEntry;
           }
           if (it.hasPrevious()) {
@@ -119,21 +142,26 @@ public class SearchPanel extends AbstractSearchPanel {
     entryToSelect.select();
   }
 
+  @Override
   public void goToNext() {
-    if (mySearchEntries.size() == 0) return;
+    if (mySearchEntries.size() == 0) {
+      return;
+    }
     addToHistory();
     EditorCell selectedCell = myEditor.getDeepestSelectedCell();
     int selectionEnd = -1;
+    boolean isEmpty = false;
     if (selectedCell instanceof EditorCell_Label) {
       EditorCell_Label labelCell = (EditorCell_Label) selectedCell;
       selectionEnd = labelCell.getSelectionEnd();
+      isEmpty = labelCell.getText().isEmpty();
     }
     SearchEntry entryToSelect = null;
     for (ListIterator<SearchEntry> it = mySearchEntries.listIterator(); it.hasNext() && entryToSelect == null; ) {
       SearchEntry currentEntry = it.next();
-      if (currentEntry.getStartLabel().equals(selectedCell)) {
+      if (CellTraversalUtil.compare(selectedCell, currentEntry.getStartLabel()) <= 0) {
         while (entryToSelect == null) {
-          if (!currentEntry.getStartLabel().equals(selectedCell) || selectionEnd <= currentEntry.getFirstRange().getStartPosition()) {
+          if (!currentEntry.getStartLabel().equals(selectedCell) || (selectionEnd <= currentEntry.getFirstRange().getStartPosition() && !isEmpty)) {
             entryToSelect = currentEntry;
           }
           if (it.hasNext()) {
@@ -156,6 +184,7 @@ public class SearchPanel extends AbstractSearchPanel {
     }
   }
 
+  @Override
   protected void search() {
     search(true);
   }
@@ -165,10 +194,10 @@ public class SearchPanel extends AbstractSearchPanel {
     mySearchEntries.clear();
     if (myText.getText().length() == 0) {
       myFindResult.setText("");
-      myText.setBackground(Color.white);
+      myText.setBackground(myDefaultBackground);
       if (requestFocus) {
         myText.requestFocus();
-        myEditor.repaint();
+        myEditor.repaintExternalComponent();
       }
       return;
     }
@@ -182,12 +211,12 @@ public class SearchPanel extends AbstractSearchPanel {
 
   private void selectCell(boolean requestFocus) {
     Pair<List<EditorCell_Label>, String> pair = allCellsAndContent();
-    final List<EditorCell_Label> cells = pair.first;
-    List<Integer> startCellPosition = new ArrayList<Integer>();
-    List<Integer> endCellPosition = new ArrayList<Integer>();
-    String content = pair.second;
+    final List<EditorCell_Label> cells = pair.o1;
+    List<Integer> startCellPosition = new ArrayList<>();
+    List<Integer> endCellPosition = new ArrayList<>();
+    String content = pair.o2;
     int current = 0;
-    List<EditorCell> emptyCells = new ArrayList<EditorCell>();
+    List<EditorCell> emptyCells = new ArrayList<>();
     for (EditorCell_Label cell : cells) {
       if (cell.getRenderedText().isEmpty()) {
         emptyCells.add(cell);
@@ -195,7 +224,9 @@ public class SearchPanel extends AbstractSearchPanel {
     }
     cells.removeAll(emptyCells);
     for (EditorCell_Label cell : cells) {
-      if (current >= content.length()) break;
+      if (current >= content.length()) {
+        break;
+      }
       String contentPart = content.substring(current);
       int start = contentPart.indexOf(cell.getRenderedText()) + current;
       startCellPosition.add(start);
@@ -227,7 +258,7 @@ public class SearchPanel extends AbstractSearchPanel {
       EditorCell_Label startCell = cells.get(index);
       assert startCell != null;
 
-      List<TextRange> textRanges = new ArrayList<TextRange>();
+      List<TextRange> textRanges = new ArrayList<>();
       for (int rangeIndex = index; rangeIndex < startCellPosition.size() && startCellPosition.get(rangeIndex) < matcher.end(); rangeIndex++) {
         int startPosition = Math.max(0, matcher.start() - startCellPosition.get(rangeIndex));
         int endPosition = Math.min(matcher.end(), endCellPosition.get(rangeIndex)) - startCellPosition.get(rangeIndex);
@@ -254,31 +285,32 @@ public class SearchPanel extends AbstractSearchPanel {
   }
 
   private void highlight(final List<SearchEntry> searchEntries) {
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        myHighlightManager = myEditor.getHighlightManager();
-        List<EditorMessage> messages = new ArrayList<EditorMessage>();
-        Map<EditorCell_Label, List<Pair>> cellToPositions = new LinkedHashMap<EditorCell_Label, List<Pair>>();
-        for (SearchEntry searchEntry : searchEntries) {
-          for (TextRange range : searchEntry.getRangesIterator()) {
-            if (!cellToPositions.containsKey(range.getLabel())) {
-              cellToPositions.put(range.getLabel(), new ArrayList<Pair>());
-            }
-            cellToPositions.get(range.getLabel()).add(new Pair(range.getStartPosition(), range.getEndPosition()));
+    final SRepository editorRepo = myEditor.getEditorContext().getRepository();
+    editorRepo.getModelAccess().runReadAction(() -> {
+      myHighlightManager = myEditor.getHighlightManager();
+      List<EditorMessage> messages = new ArrayList<>();
+      Map<EditorCell_Label, List<Pair>> cellToPositions = new LinkedHashMap<>();
+      for (SearchEntry searchEntry : searchEntries) {
+        for (TextRange range : searchEntry.getRangesIterator()) {
+          if (!cellToPositions.containsKey(range.getLabel())) {
+            cellToPositions.put(range.getLabel(), new ArrayList<>());
           }
+          cellToPositions.get(range.getLabel()).add(new Pair(range.getStartPosition(), range.getEndPosition()));
         }
-        for (EditorCell_Label cell : cellToPositions.keySet()) {
-          messages.add(new SearchPanelEditorMessage(cell, cellToPositions.get(cell)));
-        }
-        myHighlightManager.mark(messages);
       }
+      for (EditorCell_Label cell : cellToPositions.keySet()) {
+        messages.add(new SearchPanelEditorMessage(cell, cellToPositions.get(cell)));
+      }
+      myHighlightManager.mark(messages);
     });
   }
 
   private List<SearchPanelEditorMessage> getMessages() {
-    final List<SearchPanelEditorMessage> searchMessages = new ArrayList<SearchPanelEditorMessage>();
-    if (myEditor == null) return searchMessages;
-    for (EditorMessage candidate : myEditor.getMessages()) {
+    final List<SearchPanelEditorMessage> searchMessages = new ArrayList<>();
+    if (myEditor == null) {
+      return searchMessages;
+    }
+    for (SimpleEditorMessage candidate : myEditor.getMessages()) {
       if (candidate instanceof SearchPanelEditorMessage) {
         searchMessages.add((SearchPanelEditorMessage) candidate);
       }
@@ -286,14 +318,14 @@ public class SearchPanel extends AbstractSearchPanel {
     return searchMessages;
   }
 
+  @Override
   public void exportToFindTool() {
     final List<SearchPanelEditorMessage> searchMessages = getMessages();
-    Collections.sort(searchMessages, new Comparator<SearchPanelEditorMessage>() {
-      public int compare(SearchPanelEditorMessage o1, SearchPanelEditorMessage o2) {
-        Integer i1 = allCellsAndContent().first.indexOf(o1.getCell(myEditor));
-        Integer i2 = allCellsAndContent().first.indexOf(o2.getCell(myEditor));
-        return i1.compareTo(i2);
-      }
+    final List<EditorCell_Label> editorLabels = allCellsAndContent().o1;
+    Collections.sort(searchMessages, (o1, o2) -> {
+      Integer i1 = editorLabels.indexOf(o1.getCell(myEditor));
+      Integer i2 = editorLabels.indexOf(o2.getCell(myEditor));
+      return i1.compareTo(i2);
     });
     // TODO FIXME
 //    UsagesViewTool usagesViewTool = new UsagesViewTool(ProjectHelper.toIdeaProject(myEditor.getOperationContext().getProject()));
@@ -320,6 +352,11 @@ public class SearchPanel extends AbstractSearchPanel {
 //    usagesViewTool.findUsages(baseNode, searchQuery, false, false, false, null);
   }
 
+  boolean isTextFieldFocused() {
+    return myText.isFocusOwner();
+  }
+
+  @Override
   public void deactivate() {
     setVisible(false);
     clearHighlight();
@@ -328,12 +365,13 @@ public class SearchPanel extends AbstractSearchPanel {
     }
     myFindResult.setText("");
     myText.setText("");
-    myText.setBackground(Color.white);
+    myText.setBackground(myDefaultBackground);
     revalidate();
     myEditor.removeUpperComponent(this);
     myEditor.requestFocus();
   }
 
+  @Override
   public void activate() {
     String initValue = "";
     if (myEditor.getDeepestSelectedCell() instanceof EditorCell_Label) {
@@ -358,39 +396,44 @@ public class SearchPanel extends AbstractSearchPanel {
     private EditorCell_Label myCell;
 
     public SearchPanelEditorMessage(@NotNull EditorCell_Label cell, @NotNull List<Pair> positions) {
-      super(cell.getSNode(), Color.yellow, "", SearchPanel.this.myOwner);
+      super(cell.getSNode(),
+          EditorColorsManager.getInstance().getGlobalScheme().getAttributes(EditorColors.SEARCH_RESULT_ATTRIBUTES).getBackgroundColor(),
+          "", SearchPanel.this.myOwner);
       myCell = cell;
       myPositions = positions;
     }
 
+    @Override
     public EditorCell getCell(EditorComponent editor) {
       return myCell;
     }
 
+    @Override
     public boolean acceptCell(EditorCell cell, EditorComponent editor) {
       return myCell == cell;
     }
 
+    @Override
     public void paint(Graphics g, EditorComponent editorComponent, EditorCell cell) {
-      if (cell == null || !(cell instanceof EditorCell_Label)) return;
+      if (!(cell instanceof EditorCell_Label)) {
+        return;
+      }
       EditorCell_Label editorCell = (EditorCell_Label) cell;
       for (Pair position : myPositions) {
-        int startPosition = (Integer) position.first;
-        int endPosition = (Integer) position.second;
+        int startPosition = (Integer) position.o1;
+        int endPosition = (Integer) position.o2;
         if (editorCell.getRenderedText().length() >= endPosition) {
           FontMetrics metrics = g.getFontMetrics();
           String text = editorCell.getRenderedText().substring(startPosition, endPosition);
           int prevStringWidth = metrics.stringWidth(editorCell.getRenderedText().
-            substring(0, startPosition));
+              substring(0, startPosition));
           int x = editorCell.getX() + editorCell.getLeftInset()
-            + prevStringWidth;
+              + prevStringWidth;
           int y = editorCell.getY();
           int height = editorCell.getHeight();
           int width = metrics.stringWidth(text);
 
-          Color color = getColor();
-          color = new Color(color.getRed(), color.getGreen(), color.getBlue());//, color.getAlpha() / 4);
-          g.setColor(color);
+          g.setColor(getColor());
           // Filling smaller rectangle to not cover frames created by other nessages
           g.fillRect(x + 1, y + 1, width - 2, height - 2);
         }
@@ -398,7 +441,7 @@ public class SearchPanel extends AbstractSearchPanel {
     }
 
     @Override
-    public boolean sameAs(EditorMessage message) {
+    public boolean sameAs(SimpleEditorMessage message) {
       return super.sameAs(message) && this.equals(message);
     }
 
@@ -414,15 +457,19 @@ public class SearchPanel extends AbstractSearchPanel {
 
     @Override
     public boolean equals(Object o) {
-      if (this == o) return true;
-      if (!(o instanceof SearchPanelEditorMessage)) return false;
+      if (this == o) {
+        return true;
+      }
+      if (!(o instanceof SearchPanelEditorMessage)) {
+        return false;
+      }
 
       SearchPanelEditorMessage that = (SearchPanelEditorMessage) o;
 
-      if (!myCell.equals(that.myCell)) return false;
-      if (!myPositions.equals(that.myPositions)) return false;
-
-      return true;
+      if (!myCell.equals(that.myCell)) {
+        return false;
+      }
+      return myPositions.equals(that.myPositions);
     }
 
     @Override
@@ -461,12 +508,20 @@ public class SearchPanel extends AbstractSearchPanel {
     public void select() {
       TextRange range = getFirstRange();
       myEditor.changeSelection(range.getLabel());
-      if (range.getLabel().isCaretPositionAllowed(range.getStartPosition())) {
+      boolean canSetCaretStart = range.getLabel().isCaretPositionAllowed(range.getStartPosition());
+      if (canSetCaretStart) {
         range.getLabel().setCaretPosition(range.getStartPosition());
       }
-      if (range.getLabel().isCaretPositionAllowed(range.getEndPosition())) {
-        range.getLabel().setCaretPosition(range.getEndPosition(), true);
+      boolean canSetCaretEnd = range.getLabel().isCaretPositionAllowed(range.getEndPosition());
+      if (canSetCaretEnd) {
+        range.getLabel().setCaretPosition(range.getEndPosition(), canSetCaretStart);
       }
+
+      if (!(canSetCaretStart && canSetCaretEnd)) {
+        range.getLabel().setSelectionStart(range.getStartPosition());
+        range.getLabel().setSelectionEnd(range.getEndPosition());
+      }
+
     }
   }
 

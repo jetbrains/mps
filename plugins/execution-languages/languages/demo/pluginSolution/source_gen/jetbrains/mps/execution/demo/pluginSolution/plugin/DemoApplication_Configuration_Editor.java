@@ -15,11 +15,6 @@ import com.intellij.openapi.options.ConfigurationException;
 public class DemoApplication_Configuration_Editor extends SettingsEditorEx<DemoApplication_Configuration> {
   private JLabel myLabel;
   private NodeByConcept_Configuration_Editor myNode;
-
-  public DemoApplication_Configuration_Editor(NodeByConcept_Configuration_Editor node) {
-    myNode = node;
-  }
-
   public void disposeEditor() {
     Disposer.dispose(myNode);
   }
@@ -40,5 +35,8 @@ public class DemoApplication_Configuration_Editor extends SettingsEditorEx<DemoA
 
   public void resetEditorFrom(final DemoApplication_Configuration configuration) {
     myNode.resetEditorFrom(configuration.getNode());
+  }
+  public DemoApplication_Configuration_Editor(NodeByConcept_Configuration_Editor node) {
+    myNode = node;
   }
 }

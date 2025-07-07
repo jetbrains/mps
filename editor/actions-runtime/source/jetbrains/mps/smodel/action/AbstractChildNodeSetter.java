@@ -15,15 +15,18 @@
  */
 package jetbrains.mps.smodel.action;
 
-import jetbrains.mps.smodel.IScope;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public abstract class AbstractChildNodeSetter implements IChildNodeSetter {
 
-  public final SNode execute(SNode parentNode, SNode oldChild, SNode newChild, IScope scope) {
-    SNode result = doExecute(parentNode, oldChild, newChild, scope);
-    return result;
+  @Override
+  public final SNode execute(SNode parentNode, SNode oldChild, SNode newChild, @Nullable EditorContext editorContext) {
+    return doExecute(parentNode, oldChild, newChild, editorContext);
   }
 
-  protected abstract SNode doExecute(SNode parentNode, SNode oldChild, SNode newChild, IScope scope);
+  protected SNode doExecute(SNode parentNode, SNode oldChild, SNode newChild, @Nullable EditorContext editorContext) {
+    throw new UnsupportedOperationException("");
+  }
 }

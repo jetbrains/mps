@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,84 +17,75 @@ package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
-import jetbrains.mps.generator.impl.cache.BrokenCacheException;
 import jetbrains.mps.generator.impl.cache.MappingsMemento;
-import jetbrains.mps.generator.impl.cache.TransientModelWithMetainfo;
-import jetbrains.mps.generator.impl.dependencies.DependenciesBuilder;
-import jetbrains.mps.smodel.SModel;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodeId;
-import jetbrains.mps.util.Pair;
+import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
+import jetbrains.mps.smodel.runtime.StaticScope;
+import jetbrains.mps.textgen.trace.TracingUtil;
+import jetbrains.mps.util.CollectConsumer;
+import jetbrains.mps.util.ToStringComparator;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.*;
-import java.util.Map.Entry;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 /**
+ * Runtime state of mapping labels at some transformation step.
+ * {@link MappingsMemento} is persistence-friendly companion.
+ *
  * Evgeny Gryaznov, Feb 16, 2010
  */
-public class GeneratorMappings {
-
-  /* mapping,input -> output */
-  private final ConcurrentMap<String, Map<SNode, Object>> myMappingNameAndInputNodeToOutputNodeMap = new ConcurrentHashMap<String, Map<SNode, Object>>();
+public final class GeneratorMappings {
+  private final IGeneratorLogger myLog;
 
   /* input -> output */
-  private final Map<SNode, Object> myCopiedOutputNodeForInputNode;
+  private final ConcurrentMap<SNode, Object> myCopiedOutputNodeForInputNode = new ConcurrentHashMap<>();
 
-  /* Object means multiple nodes for the template */
-  private final ConcurrentMap<SNode, Object> myTemplateNodeToOutputNodeMap = new ConcurrentHashMap<SNode, Object>();
+  /* templateId -> [input -> output,generation] */
+  private final ConcurrentMap<String, NodeTagCabinet> myTemplateNodeIdAndInputNodeToOutputNodeMap = new ConcurrentHashMap<>();
 
-  /* new style map: Object means multiple nodes for the template */
-  private final ConcurrentMap<String, Object> myTemplateNodeIdToOutputNodeMap = new ConcurrentHashMap<String, Object>();
+  private final LMCollector myLabeledMappings = new LMCollector();
 
-  /* template,input -> output */
-  private final ConcurrentMap<Pair<SNode, SNode>, SNode> myTemplateNodeAndInputNodeToOutputNodeMap = new ConcurrentHashMap<Pair<SNode, SNode>, SNode>();
-
-  /* new style map: template,input -> output */
-  private final ConcurrentMap<Pair<String, SNode>, SNode> myTemplateNodeIdAndInputNodeToOutputNodeMap = new ConcurrentHashMap<Pair<String, SNode>, SNode>();
-
-  public GeneratorMappings(int numberOfNodesInModel) {
-    /* we use non-default load factor to reduce memory usage */
-    myCopiedOutputNodeForInputNode = new ConcurrentHashMap<SNode, Object>(numberOfNodesInModel, 2);
+  public GeneratorMappings(IGeneratorLogger log) {
+    myLog = log;
   }
 
   // add methods
 
-  void addOutputNodeByTemplateNode(SNode templateNode, @NotNull SNode outputNode) {
-    if(myTemplateNodeToOutputNodeMap.putIfAbsent(templateNode, outputNode) != null) {
-      myTemplateNodeToOutputNodeMap.put(templateNode, this);
-    }
-  }
-
-  void addOutputNodeByTemplateNode(String templateNodeId, @NotNull SNode outputNode) {
-    if(myTemplateNodeIdToOutputNodeMap.putIfAbsent(templateNodeId, outputNode) != null) {
-      myTemplateNodeIdToOutputNodeMap.put(templateNodeId, this);
-    }
-  }
-
-  void addOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName, SNode outputNode) {
-    if (mappingName == null) return;
-    Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    if (currentMapping == null) {
-      myMappingNameAndInputNodeToOutputNodeMap.putIfAbsent(mappingName, new HashMap<SNode, Object>());
-      currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    }
-    synchronized (currentMapping) {
-      Object o = currentMapping.get(inputNode);
-      if (o == null) {
-        currentMapping.put(inputNode, outputNode);
-      } else if (o instanceof List) {
-        ((List<SNode>) o).add(outputNode);
-      } else if(o != outputNode) {
-        List<SNode> list = new ArrayList<SNode>(4);
-        list.add((SNode) o);
-        list.add(outputNode);
-        currentMapping.put(inputNode, list);
-      } else {
-        // TODO warning
+  void fillFrom(Collection<LMCollector> lmCollectors) {
+    for (LMCollector lmCollector : lmCollectors) {
+      if (lmCollector.isEmpty()) {
+        continue;
       }
+      lmCollector.forEachNoInput(myLabeledMappings::add);
+      lmCollector.forEachWithInput(myLabeledMappings::add);
+      // Bit of history:
+      // Here, we record labeled transformations, and chances are we get similar input/output nodes with the same ML
+      // (e.g. multipleLoopVarDecl rmt -> rmt_var) more than once - e.g. typesystem makes a copy of some rules
+      // to generate two methods, and if there's an MultiForLoop in the original code, we get two almost identical
+      // ML entries (presentation of output and key's original nodes are the same, see comparator in #getSortedMappingKeys(),
+      // below. Therefore, for nodes that are 'equal' that way, we need to keep an order they were registered at, and
+      // ut used to be LinkedHashMap here. Now, with output nodes coming from LMCollector in uncontrolled order (there's hash by SNode),
+      // I've introduced an extra condition into key comparator, that treats nodes with id matching one of their origin as preceding those with
+      // completely arbitrary node id. Indeed, this works only in scenarios when master node is not far from original model and still keeps its id.
+      // I don't think it's a drawback as I'd rather avoid template code that duplicates fragments of input models during transformation at all.
+      lmCollector.forEachComposite(myLabeledMappings::addComposite);
     }
   }
 
@@ -102,92 +93,101 @@ public class GeneratorMappings {
     if (outputNode == null) {
       return;
     }
-    synchronized (inputNode) {
-      Object o = myCopiedOutputNodeForInputNode.get(inputNode);
-      if (o == null) {
-        myCopiedOutputNodeForInputNode.put(inputNode, outputNode);
-      } else if (o instanceof List) {
-        //((List<SNode>) o).add(outputNode);
-      } else {
-        //List<SNode> list = new ArrayList<SNode>(2);
-        //list.add((SNode) o);
-        //list.add(outputNode);
-        //myCopiedOutputNodeForInputNode.put(inputNode, list);
-        myCopiedOutputNodeForInputNode.put(inputNode, Collections.singletonList((SNode)o));
-      }
+
+    Object prev = myCopiedOutputNodeForInputNode.putIfAbsent(inputNode, outputNode);
+    // It's possible for the same pair input->output to get registered more than once,
+    // e.g. when a rule does COPY-SRC for input. Both the copy macro and the rule would
+    // try to register same output, and we shall not treat this as ambiguity. Generally it's
+    // odd to use COPY-SRC for rule's primary transformation, we've had only 1 use like this
+    // (build language, mapBuildProject did $WEAVE$ $COPY-SRC$).
+    if (prev instanceof SNode && prev != outputNode) {
+      // ambiguity! store prev element (wrapped into Collection)
+      myCopiedOutputNodeForInputNode.put(inputNode, Collections.singletonList(prev));
     }
   }
 
-  void addOutputNodeByInputAndTemplateNode(SNode inputNode, SNode templateNode, SNode outputNode) {
-    // todo: combination of (templateN, inputN) -> outputN
-    // todo: is not unique
-    // todo: generator should report error on attempt to obtain not unique output-node
-    if (templateNode == null) return;
-    myTemplateNodeAndInputNodeToOutputNodeMap.put(new Pair(templateNode, inputNode), outputNode);
+  private NodeTagCabinet recordsOf(String templateNodeId) {
+    return myTemplateNodeIdAndInputNodeToOutputNodeMap.computeIfAbsent(templateNodeId, p -> new NodeTagCabinet());
   }
 
-  void addOutputNodeByInputAndTemplateNode(SNode inputNode, String templateNodeId, SNode outputNode) {
-    // todo: combination of (templateN, inputN) -> outputN
-    // todo: is not unique
-    // todo: generator should report error on attempt to obtain not unique output-node
-    if (templateNodeId == null) return;
-    myTemplateNodeIdAndInputNodeToOutputNodeMap.put(new Pair(templateNodeId, inputNode), outputNode);
-  }
-  
-  void addOutputNodeByIndirectInputAndTemplateNode(SNode inditectInputNode, SNode templateNode, SNode outputNode) {
-    // todo: combination of (templateN, inputN) -> outputN
-    // todo: is not unique
-    // todo: generator should report error on attempt to obtain not unique output-node
-    Pair key = new Pair(templateNode, inditectInputNode);
-    myTemplateNodeAndInputNodeToOutputNodeMap.putIfAbsent(key, outputNode);
+  private final ConcurrentHashMap<SConcept, Boolean> myConceptCouldNotBeTarget = new ConcurrentHashMap<>();
+
+  // Doesn't make any sense to record outputNode when its concept doesn't bear 'could be reference target' StaticScope
+  private boolean couldNotBeReferenceTarget(SConcept concept) {
+    return myConceptCouldNotBeTarget.computeIfAbsent(concept, c -> c instanceof SConceptAdapterById ? ((SConceptAdapterById) c).getConceptDescriptor().getStaticScope() == StaticScope.NONE : Boolean.FALSE);
   }
 
-  void addOutputNodeByIndirectInputAndTemplateNode(SNode inditectInputNode, String templateNodeId, SNode outputNode) {
-    // todo: combination of (templateN, inputN) -> outputN
-    // todo: is not unique
-    // todo: generator should report error on attempt to obtain not unique output-node
-    Pair key = new Pair(templateNodeId, inditectInputNode);
-    myTemplateNodeIdAndInputNodeToOutputNodeMap.putIfAbsent(key, outputNode);
+  // templateContext, templateNodeId != null
+  // generally, outputNode is outcome of preceding env.createOutputNode and assumed to be != null, too.
+  void addOutputNodeForContext(TemplateContext templateContext, String templateNodeId, SNode outputNode) {
+    if (couldNotBeReferenceTarget(outputNode.getConcept())) {
+      return;
+    }
+    final NodeTagCabinet templateRecords = recordsOf(templateNodeId);
+    final int tag = templateContext.executionPathIdentity();
+    if (templateContext.getInput() == null) {
+      // see addOutputNodeByTemplateNode() comment, below, for reasons we have to handle null input scenario
+      templateRecords.withoutInput(tag, outputNode);
+      return;
+    }
+    // == addOutputNodeByInputAndTemplateNode(templateContext, templateNodeId, outputNode);
+    templateRecords.put(templateContext.getInput(), tag, outputNode);
+    // ~38 cases in MPS itself when it's important, mostly for tests
+    for (SNode historyInputNode : templateContext.getInputHistory()) {
+      templateRecords.putIfAbsent(historyInputNode, tag, outputNode);
+    }
+      /*
+       recording output node for a template node traces back to 2007's RuleUtil (c2ebb2dbd9eb3b2607006768c84d3921b02fd7c5), with vague 'fixing some problems"
+       I see no reason to perform this mapping in case we do have input node, the only scenario is when a
+       new root is created (think QueriesGenerated or LanguageConceptSwitch) and referenced directly from templates.
+       MPS+mbeddr are fine without this; in this case the mechanism that helps to address CreateRoot scenario is dynamic references and proper resolve info
+       (we don't use MLs in all such cases). However, I prefer static references, therefore I handle null input scenario, above.
+       */
+//    addOutputNodeByTemplateNode(templateNodeId, outputNode);
   }
 
   // find methods
 
-  public SNode findOutputNodeByTemplateNodeUnique(SNode templateNode) {
-    Object o = myTemplateNodeToOutputNodeMap.get(templateNode);
-    return o instanceof SNode ? (SNode) o : null;
-  }
-
-  public SNode findOutputNodeByTemplateNodeUnique(String templateNode) {
-    Object o = myTemplateNodeIdToOutputNodeMap.get(templateNode);
-    return o instanceof SNode ? (SNode) o : null;
-  }
-
-  public SNode findOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName, IGeneratorLogger logger) {
-    if (mappingName == null) return null;
-    Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    if (currentMapping == null) return null;
-    Object o = currentMapping.get(inputNode);
-    if (o instanceof List) {
-      List<SNode> list = (List<SNode>) o;
-      ProblemDescription[] descr = new ProblemDescription[list.size()];
+  public SNode findOutputNodeByInputNodeAndMappingName(@Nullable SNode inputNode, @Nullable String mappingName) {
+    if (mappingName == null) {
+      return null;
+    }
+    if (inputNode == null) {
+      // don't see a reason to account for null input node in scenarios where input node is expected.
+      return null;
+    }
+    NodeMapRecord o = myLabeledMappings.record(mappingName, inputNode);
+    if (o == null || o.count() == 0) {
+      return null;
+    }
+    if (o.count() > 1) {
+      final List<SNode> list = o.valueStream().collect(Collectors.toList());
+      ProblemDescription[] descr = new ProblemDescription[list.size() + 1];
       for (int i = 0; i < list.size(); i++) {
-        descr[i] = new ProblemDescription(list.get(i), "output [" + i + "] : " + list.get(i).getDebugText());
+        descr[i] = GeneratorUtil.describe(list.get(i), "output");
       }
-      logger.warning(inputNode, "" + list.size() + " output nodes found for mapping label '" + mappingName + "' and input " + inputNode.getDebugText(), descr);
+      descr[list.size()] = GeneratorUtil.describe(inputNode, "input");
+      String msg = "%d  output nodes found for mapping label '%s'";
+      myLog.warning(inputNode == null ? null : inputNode.getReference(), String.format(msg, list.size(), mappingName), descr);
       return list.get(0);
     }
 
-    return (SNode) o;
+    return o.soleValue();
   }
 
   public List<SNode> findAllOutputNodesByInputNodeAndMappingName(SNode inputNode, String mappingName) {
-    if (mappingName == null) return null;
-    Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    if (currentMapping == null) return null;
-    Object o = currentMapping.get(inputNode);
-    if (o == null) return Collections.emptyList();
-    if (o instanceof List) return ((List<SNode>) o);
-    return Collections.singletonList((SNode) o);
+    if (mappingName == null) {
+      return null;
+    }
+    if (inputNode == null) {
+      // don't see a reason to account for null input node in scenarios where input node is expected.
+      return null;
+    }
+    NodeMapRecord o = myLabeledMappings.record(mappingName, inputNode);
+    if (o == null || o.count() == 0) {
+      return Collections.emptyList();
+    }
+    return o.valuesInto(new ArrayList<>(o.count()));
   }
 
   public SNode findCopiedOutputNodeForInputNode(@NotNull SNode inputNode) {
@@ -201,12 +201,44 @@ public class GeneratorMappings {
     return null;
   }
 
-  public SNode findOutputNodeByInputAndTemplateNode(SNode inputNode, SNode templateNode) {
-    return myTemplateNodeAndInputNodeToOutputNodeMap.get(new Pair(templateNode, inputNode));
-  }
 
-  public SNode findOutputNodeByInputAndTemplateNode(SNode inputNode, String templateNodeId) {
-    return myTemplateNodeIdAndInputNodeToOutputNodeMap.get(new Pair(templateNodeId, inputNode));
+  @Nullable
+  public SNode findOutputForTemplate(String templateNodeId, TemplateContext templateContext, @Nullable SNodeReference templateModelLocation) {
+    final NodeTagCabinet l = recordsOf(templateNodeId);
+    // try to find for the same inputNode
+    final int tag = templateContext.executionPathIdentity();
+    if (myLog.needsWarnings() && l.countWithTag(templateContext.getInput(), tag) > 1) {
+      // MPS-31826 generator should report error on attempt to obtain not unique output-node
+      // in fact, the text misses 'within an execution path', which seems too technical and rather confusing.
+      // XXX not sure if I need to report templateNodeId, it seems to be the target of a reference @templateModelLocation, why would I
+      //     get users frightened by something like "tpl:/..." then?
+      // XXX also I wonder if I shall move logging outside of GM completely, RI_Template could do this, instead
+      final String m = "Multiple output nodes recorded for template which is target of the resolved reference";
+      myLog.warning(templateModelLocation, m, GeneratorUtil.describeInput(templateContext));
+    }
+    // tc.input == null is ok, we do record 'unique' output for a template node in this case, see #addOutputNodeForContext(), above
+    SNode outputTargetNode = l.get(templateContext.getInput(), tag);
+    // Here comes a change compared to old GM/RI_Template behavior:
+    // Prior to the change, if template has been applied exactly once, then we had unique output node for each template node
+    //  (I've changed that to no-input scenario only, as it doesn't make sense to record both input and input-less mapping)
+    // The key was Pair(templateId, inputNode), and with no-input scenario it's basically templateId only.
+    // Now, with the change of executionPathIdentity, NodeTagCabinet.get() takes the tag into account, therefore same templates applied in different
+    // 'execution paths' are now 'unique', too. As they would have been non-unique before and not resolve then, I don't expect this to break anything,
+    // however, that may give too much freedom for a template author I don't really like to provide, hence this heads up.
+    if (outputTargetNode != null) {
+      return outputTargetNode;
+    }
+
+    // try to find for indirect input nodes
+    // FIXME likely, templateContext.getInput() we've checked already above, would come here again. check what's the contract of getInputHistory!
+    for (SNode historyInputNode : templateContext.getInputHistory()) {
+      outputTargetNode = l.get(historyInputNode, tag);
+      if (outputTargetNode != null) {
+        return outputTargetNode;
+      }
+    }
+
+    return null;
   }
 
   public boolean isInputNodeHasUniqueCopiedOutputNode(SNode inputNode) {
@@ -214,111 +246,299 @@ public class GeneratorMappings {
     return !(o instanceof List);
   }
 
+  @Nullable
+  public SNode findNewOutputNode(@Nullable String mappingLabel) {
+    if (mappingLabel == null) {
+      // all other methods tolerate null parameters, why this one would not?
+      return null;
+    }
+    return myLabeledMappings.streamNoInput(mappingLabel).findFirst().orElse(null);
+  }
+
+  // expose internal structure, to build GeneratorDebug_Mappings with MPS-coded DebugMappingsBuilder
+  /*package*/ Collection<String> getAvailableLabels() {
+    HashSet<String> rv = new HashSet<>();
+    myLabeledMappings.forEachWithInput((l, m) -> rv.add(l));
+    return rv;
+  }
+
+  @Nullable
+  /*package*/ NodeMap getMappingsForLabel(String label) {
+    AtomicReference<NodeMap> rv = new AtomicReference<>();
+    myLabeledMappings.forEachWithInput((ml, map) -> {
+      if (ml.equals(label)) {
+        assert rv.get() == null;
+        rv.compareAndSet(null, map);
+      }
+    });
+    return rv.get();
+  }
+
+  /*package*/List<SNode> getSortedMappingKeys(final String label) {
+    ArrayList<NodeMapRecord> l = new ArrayList<>();
+    CollectConsumer<NodeMapRecord> cc = new CollectConsumer<>(l);
+    myLabeledMappings.forEachWithInput((ml, map) -> {
+      if (ml.equals(label)) {
+        map.forEachRecord(cc);
+      }
+    });
+    l.sort(new Comparator<>() {
+      private final SNodeComparator myNodeComparator = new SNodeComparator();
+
+      @Override
+      public int compare(NodeMapRecord o1, NodeMapRecord o2) {
+        int v = myNodeComparator.compare(o1.key(), o2.key());
+        if (v == 0) {
+          // input node is the same (or indistinguishable), have to respect values to keep order consistent.
+          // E.g. a pattern in a typesystem rule is copied to to different methods, there are two output classes
+          // Pattern_nn7be_a0a0a0b0d and Pattern_nn7be_a0a0a0c, and label entry order is inconsistent
+          v = String.valueOf(o1.value()).compareTo(String.valueOf(o2.value()));
+          if (v == 0) {
+            // last resort, address scenario when input nodes were copied, and processed individually. Treat the one
+            // that served as a master one 'first', its copies 'subsequent'. Guess the master by node id matching the one
+            // of the original node.
+            final boolean b1 = SNodeComparator.nodeIdSameAsOriginal(o1.key());
+            final boolean b2 = SNodeComparator.nodeIdSameAsOriginal(o2.key());
+            if (b1 ^ b2) {
+              v = b1 ? -1 : 1;
+            }
+            // fall-through
+          }
+        }
+        return v;
+      }
+
+    });
+    return l.stream().map(NodeMapRecord::key).collect(Collectors.toList());
+  }
+
+  private static class SNodeComparator implements Comparator<SNode> {
+    private final ToStringComparator myToStringComparator = new ToStringComparator();
+
+    @Override
+    public int compare(SNode n1, SNode n2) {
+      int v = n1.getPresentation().compareTo(n2.getPresentation());
+      if (v == 0) {
+        // just in case presentation is the same (e.g. enumeration literals with the same name in different enums)
+        // Hope, there could be no two nodes with the same presentation and same node id.
+        SNodeReference o1, o2;
+        do {
+          o1 = TracingUtil.getInput(n1);
+          o2 = TracingUtil.getInput(n2);
+          n1 = n1.getParent();
+          n2 = n2.getParent();
+          // original input node is recorded for a top template node only, if a child template node serves as a ML key, we can't
+          // find its input here unless traverse to parent.
+          // highlevel sample: 'Car' is transformed with map_EditorDeclaration to ConceptEditorDeclaration with child CellModel_Collection, that
+          // later serves as a key for 'cellFactory.factoryMethod' ML. Presentation for any CellModel_Collection is 'collection', and as long as it's
+          // child template node of map_EditorDeclaration template, it doesn't get original input value (map_EditorDeclaration does).
+        } while (o1 == null && o2 == null && n1 != null && n2 != null);
+
+        if (o1 != null && o2 != null) {
+          // use original input, if possible - actual input is from transient model
+          v = myToStringComparator.compare(o1.getNodeId(), o2.getNodeId());
+        }
+      }
+      return v;
+    }
+
+    /*package*/ static boolean nodeIdSameAsOriginal(SNode n) {
+      final SNodeReference original = TracingUtil.getInput(n);
+      return original != null && Objects.equals(original.getNodeId(), n.getNodeId());
+    }
+  }
+
+  /*package*/Set<String> getConditionalRootLabels() {
+    HashSet<String> rv = new HashSet<>();
+    myLabeledMappings.forEachNoInput((l, v) -> rv.add(l));
+    return rv;
+  }
+  /*package*/List<SNode> getConditionalRoots(String label) {
+    return myLabeledMappings.streamNoInput(label).collect(Collectors.toList());
+  }
+
+  // for the time being, just mappings with composite keys
+  // TODO transition all MLs to LabelRecord
+  /*package*/ List<LabelRecord> getOrderedRecords() {
+    LabelRecord[] a = myLabeledMappings.compositeLabelsToArray();
+    Arrays.sort(a, new Comparator<LabelRecord>() {
+      private final SNodeComparator myNodeComparator = new SNodeComparator();
+      @Override
+      public int compare(LabelRecord o1, LabelRecord o2) {
+        int v = o1.label.compareTo(o2.label);
+        if (v == 0) {
+          v = myNodeComparator.compare(o1.key1, o2.key1);
+          if (v == 0) {
+            v = myNodeComparator.compare(o1.key2, o2.key2);
+            // I don't care to compare outputs as I do for regular MLs, I'd like to notice
+            // duplicating key pairs ASAP.
+          }
+        }
+        return v;
+      }
+    });
+    return Arrays.asList(a);
+  }
+
+  /*package*/ LMLookup getCompositeLabelsLookup(final String label) {
+    return myLabeledMappings.getLookup(label);
+  }
+
   // serialization
 
-  public void export(TransientModelWithMetainfo model, DependenciesBuilder builder) {
-    for (Entry<String, Map<SNode, Object>> o : myMappingNameAndInputNodeToOutputNodeMap.entrySet()) {
-      String label = o.getKey();
-      for(Entry<SNode, Object> i : o.getValue().entrySet()) {
-        SNode inputNode = i.getKey();
-        SNode originalRoot = inputNode == null ? null : builder.getOriginalForInput(inputNode.getTopmostAncestor());
-        MappingsMemento mappingsMemento = model.getMappingsMemento(originalRoot, true);
-        mappingsMemento.addOutputNodeByInputNodeAndMappingName(inputNode == null ? null : inputNode.getSNodeId(), label, i.getValue());
-      }
+  /**
+   * Record MLs into checkpoint state, assuming output nodes of the mappings are from the model being marked as 'checkpoint',
+   * and input nodes being traced with transitionTrace
+   */
+  public void export(CheckpointStateBuilder cp) {
+    myLabeledMappings.forEachWithInput((label, map) -> {
+      map.forEachRecord(i -> {
+        SNode inputNode = i.key();
+        if (inputNode == null) {
+          // FIXME shall I track nodes newly introduced at the given checkpoint step? Yes.
+          //       However, for newly introduced nodes we keep separate collection, and there should be no
+          //       null input nodes in this map. The check left just in case there's one (no check for null input in addOutput.. yet).
+          return;
+        }
+        // perhaps, would be useful to record mappings even without original node (marked as 'useless')
+        // to ease debug (once there's mechanism to show mapping labels as part of transient model/module)
+        if (i.count() == 1) {
+          cp.record(inputNode, label, i.soleValue());
+        } else if (i.count() > 1) {
+          @SuppressWarnings("unchecked")
+          Collection<SNode> collection = (Collection<SNode>) i.value();
+          cp.record(inputNode, label, collection);
+        }
+      });
+    });
+    myLabeledMappings.forEachNoInput(cp::record);
+  }
+
+  private static final class TagNodeList {
+    final static int INITIAL_SIZE = 10;
+    private int[] tags = new int[INITIAL_SIZE];
+    private SNode[] nodes = new SNode[INITIAL_SIZE];
+    private final Semaphore myChangeLock = new Semaphore(1);
+    private int count;
+
+    TagNodeList(SNode ignored) {
+
     }
 
-    for (Entry<SNode, Object> o : myCopiedOutputNodeForInputNode.entrySet()) {
-      SNode inputNode = o.getKey();
-      Object value = o.getValue();
-      if(value instanceof SNode) {
-        SNodeId targetId = ((SNode) value).getSNodeId();
-        if(inputNode.getSNodeId().equals(targetId)) {
-          continue; /* trivial */
-        }
-        MappingsMemento mappingsMemento = model.getMappingsMemento(builder.getOriginalForInput(inputNode.getTopmostAncestor()), true);
-        mappingsMemento.addOutputNodeByInputNode(inputNode.getSNodeId(), targetId, true);
-      } else if(value instanceof List) {
-        SNodeId targetId = ((List<SNode>) value).get(0).getSNodeId();
-        MappingsMemento mappingsMemento = model.getMappingsMemento(builder.getOriginalForInput(inputNode.getTopmostAncestor()), true);
-        mappingsMemento.addOutputNodeByInputNode(inputNode.getSNodeId(), targetId, false);
+    public void add(SNode n, int t) {
+      myChangeLock.acquireUninterruptibly();
+      implGrowAndAdd(n, t);
+      myChangeLock.release();
+    }
+
+    private void implGrowAndAdd(SNode n, int t) {
+      int capacity = tags.length;
+      if (count == capacity) {
+        capacity += INITIAL_SIZE;
+        tags = Arrays.copyOf(tags, capacity);
+        nodes = Arrays.copyOf(nodes, capacity);
       }
+      tags[count] = t;
+      nodes[count] = n;
+      count++;
+    }
+
+    public void addIfNewTag(final SNode n, final int t) {
+      final int[] cp = tags;
+      final int cpCnt = count;
+      for (int x = cpCnt - 1; x >= 0; x--) {
+        if (cp[x] == t) {
+          return;
+        }
+      }
+      myChangeLock.acquireUninterruptibly();
+      // repeat the search, just in case there's any change; check only those added
+      boolean alreadyThere = false;
+      if (cp != tags) {
+        // array has been copied, up to cpCnt it's the same, though.
+        for (int x = count - 1; x >= cpCnt; x--) {
+          if (tags[x] == t) {
+            alreadyThere = true;
+            break;
+          }
+        }
+      }
+      if (!alreadyThere) {
+        implGrowAndAdd(n, t);
+      }
+      myChangeLock.release();
+    }
+
+
+    SNode first() {
+      return nodes[0];
+    }
+
+    int countWithTag(final int tag) {
+      int rv = 0;
+      for (int i = 0; i < count; i++) {
+        if (tags[i] == tag) {
+          rv++;
+        }
+      }
+      return rv;
+    }
+
+    SNode lastWithTag(final int tag) {
+      for (int i = count - 1; i >= 0; i--) {
+        if (tags[i] == tag) {
+          return nodes[i];
+        }
+      }
+      return null;
+    }
+
+    int size() {
+      return count;
     }
   }
 
-  public void importPersisted(MappingsMemento val, SModel inputModel, SModel outputModel) throws BrokenCacheException {
+  // FIXME in fact, seems more fruitful to keep thread-local instances, don't bother with synchronize, and merge them before references get resolved
+  private static class NodeTagCabinet {
+    private final ConcurrentMap<SNode, TagNodeList> myMap = new ConcurrentHashMap<>();
+    private final TagNodeList myNoInput = new TagNodeList(null);
 
-    // labels
-    for(Entry<String, Map<SNodeId, Object>> e : val.getMappingNameAndInputNodeToOutputNodeMap().entrySet()) {
-      String mappingName = e.getKey();
-      Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-      if (currentMapping == null) {
-        myMappingNameAndInputNodeToOutputNodeMap.putIfAbsent(mappingName, new HashMap<SNode, Object>());
-        currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-      }
-      for(Entry<SNodeId,Object> n : e.getValue().entrySet()) {
-        SNodeId key = n.getKey();
-        SNode inputNode = null;
-        if(key != null) {
-          inputNode = inputModel.getNodeById(key);
-          if(inputNode == null) {
-            continue;
-          }
-        }
-        Object value = n.getValue();
-        if(value instanceof SNodeId) {
-          SNode outputNode = outputModel.getNodeById((SNodeId) value);
-          if(outputNode == null) {
-            continue;
-          }
-          addOutputNode(currentMapping, inputNode, outputNode);
-        } else if(value instanceof List) {
-          for(SNodeId id : (List<SNodeId>)value) {
-            SNode outputNode = outputModel.getNodeById(id);
-            if(outputNode == null) {
-              continue;
-            }
-            addOutputNode(currentMapping, inputNode, outputNode);
-          }
-        }
-      }
+    void put(final SNode key, final int tag, final SNode value) {
+      myMap.computeIfAbsent(key, TagNodeList::new).add(value, tag);
     }
 
-    // output for input
-    for(Entry<SNodeId, Object> e : val.getCopiedOutputNodeForInputNode().entrySet()) {
-      SNode inputNode = inputModel.getNodeById(e.getKey());
-      if(inputNode == null) {
-        continue;
-      }
-      Object value = e.getValue();
-      if(value instanceof SNodeId) {
-        SNode outputNode = outputModel.getNodeById((SNodeId) value);
-        if(outputNode == null) {
-          continue;
-        }
-        myCopiedOutputNodeForInputNode.put(inputNode, outputNode);
-      } else if(value instanceof List) {
-        SNode outputNode = outputModel.getNodeById(((List<SNodeId>) value).get(0));
-        if(outputNode == null) {
-          continue;
-        }
-        myCopiedOutputNodeForInputNode.put(inputNode, Collections.singletonList(outputNode));
-      }
+    void putIfAbsent(final SNode key, final int tag, final SNode value) {
+      myMap.computeIfAbsent(key, TagNodeList::new).addIfNewTag(value, tag);
     }
-  }
 
-  private void addOutputNode(@NotNull Map<SNode, Object> currentMapping, SNode inputNode, @NotNull SNode outputNode) throws BrokenCacheException {
-    Object o = currentMapping.get(inputNode);
-    if (o == null) {
-      currentMapping.put(inputNode, outputNode);
-    } else if (o instanceof List) {
-      ((List<SNode>) o).add(outputNode);
-    } else if(o != outputNode) {
-      List<SNode> list = new ArrayList<SNode>(4);
-      list.add((SNode) o);
-      list.add(outputNode);
-      currentMapping.put(inputNode, list);
-    } else {
-      // TODO ?
+    void withoutInput(final int tag, final SNode value) {
+      myNoInput.add(value, tag);
+    }
+
+    int countWithTag(SNode key, int tag) {
+      final TagNodeList l = key == null ? myNoInput : myMap.get(key);
+      if (l == null) {
+        return 0;
+      }
+      return l.countWithTag(tag);
+    }
+
+    @Nullable
+    SNode get(SNode key, int tag) {
+      final TagNodeList l = key == null ? myNoInput : myMap.get(key);
+      if (l == null) {
+        return null;
+      }
+
+      if (l.size() == 1) {
+        return l.first();
+      }
+      // get the last one, just in case same input node has been reduced to different output nodes in the same template
+      // I've seen that in Template_string_switch_template (jdk7), where
+      //    tnode1.addChild(myAggregationLinks[2], child7);
+      // changed to
+      //    tnode1.addChild(myAggregationLinks[2], child6);
+      return l.lastWithTag(tag);
     }
   }
 }

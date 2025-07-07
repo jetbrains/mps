@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,100 +23,137 @@ import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.project.DumbService;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.FileStatusListener;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.util.containers.MultiMap;
-import jetbrains.mps.ide.IdeMain;
-import jetbrains.mps.ide.IdeMain.TestMode;
+import com.intellij.util.messages.MessageBusConnection;
+import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.editor.MPSFileNodeEditor;
-import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.EditorComponent;
-import jetbrains.mps.reloading.ClassLoaderManager;
-import jetbrains.mps.reloading.ReloadAdapter;
-import jetbrains.mps.reloading.ReloadListener;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.workbench.nodesFs.MPSNodeVirtualFile;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.ModelReadRunnable;
+import jetbrains.mps.smodel.RepoListenerRegistrar;
+import jetbrains.mps.util.containers.MultiMap;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModel.Problem;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MPSEditorWarningsManager implements ProjectComponent {
-  public static final Logger LOG = Logger.getLogger(MPSEditorWarningsManager.class);
+  public static final Logger LOG = LogManager.getLogger(MPSEditorWarningsManager.class);
 
-  private FileEditorManager myFileEditorManager;
+  private final MPSProject myProject;
+  private final FileEditorManager myFileEditorManager;
+  private final FileStatusManager myFileStatusManager;
   private ClassLoaderManager myClassLoaderManager;
-  private ReloadListener myReloadListener = new MyReloadListener();
-  private MyFileStatusListener myFileStatusListener = new MyFileStatusListener();
-  private Project myProject;
+  private final DeployListener myClassesListener = new EditorWarningsListenerAdapter();
+  private final MyFileStatusListener myFileStatusListener = new MyFileStatusListener();
+  private MessageBusConnection myProjectBus;
+  // I don't truly need atomic boolean here, regular boolean would suffice in most cases, as requests generally come
+  // from same thread sequentially (e.g. modelLoaded). Nevertheless, it doesn't hurt to account for more complicated scenario.
+  private final AtomicBoolean myScheduledUpdateAllWarnings = new AtomicBoolean(false);
 
-  private MyFileEditorManagerListener myFileEditorManagerListener = new MyFileEditorManagerListener();
-  private MultiMap<MPSFileNodeEditor, WarningPanel> myWarnings = new MultiMap<MPSFileNodeEditor, WarningPanel>();
+  private final SRepositoryContentAdapter myRepoListener = new SRepositoryContentAdapter() {
+    @Override
+    protected void startListening(SModel model) {
+      model.addModelListener(this);
+    }
 
-  public MPSEditorWarningsManager(Project project, FileEditorManager fileEditorManager, MPSCoreComponents coreComponents) {
+    @Override
+    protected void stopListening(SModel model) {
+      model.removeModelListener(this);
+    }
+
+    @Override
+    public void modelLoaded(SModel model, boolean partially) {
+      updateAllWarningsLater();
+    }
+
+    @Override
+    public void modelUnloaded(SModel model) {
+      updateAllWarningsLater();
+    }
+
+    @Override
+    public void problemsDetected(SModel model, Iterable<Problem> problems) {
+      updateAllWarningsLater();
+    }
+
+    @Override
+    public void modelSaved(SModel model) {
+      updateAllWarningsLater();
+    }
+
+  };
+
+  private MultiMap<MPSFileNodeEditor, WarningPanel> myWarnings = new MultiMap<>();
+
+  public MPSEditorWarningsManager(MPSProject project, FileEditorManager fileEditorManager, FileStatusManager fileStatusManager, MPSCoreComponents coreComponents) {
     myProject = project;
     myFileEditorManager = fileEditorManager;
+    myFileStatusManager = fileStatusManager;
     myClassLoaderManager = coreComponents.getClassLoaderManager();
   }
 
+  @Override
   public void projectOpened() {
-    myFileEditorManager.addFileEditorManagerListener(myFileEditorManagerListener);
+    myProjectBus = myProject.getProject().getMessageBus().connect();
+    myProjectBus.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new MyFileEditorManagerListener());
+    myClassLoaderManager.addListener(myClassesListener);
+    myFileStatusManager.addFileStatusListener(myFileStatusListener);
+    new RepoListenerRegistrar(myProject.getRepository(), myRepoListener).attach();
   }
 
+  @Override
   public void projectClosed() {
-    myFileEditorManager.removeFileEditorManagerListener(myFileEditorManagerListener);
+    new RepoListenerRegistrar(myProject.getRepository(), myRepoListener).detach();
+    myFileStatusManager.removeFileStatusListener(myFileStatusListener);
+    myClassLoaderManager.removeListener(myClassesListener);
+    myProjectBus.disconnect();
   }
 
+  @Override
   @NonNls
   @NotNull
   public String getComponentName() {
     return "MPS Editor Warnings Manager";
   }
 
+  @Override
   public void initComponent() {
-    myClassLoaderManager.addReloadHandler(myReloadListener);
-    FileStatusManager.getInstance(myProject).addFileStatusListener(myFileStatusListener);
   }
 
+  @Override
   public void disposeComponent() {
-    FileStatusManager.getInstance(myProject).removeFileStatusListener(myFileStatusListener);
-    myClassLoaderManager.removeReloadHandler(myReloadListener);
   }
 
   private void updateWarnings(@NotNull final MPSFileNodeEditor editor) {
-    DumbService.getInstance(myProject).smartInvokeLater(new Runnable() {
-      public void run() {
-        final Runnable task = new Runnable() {
-          public void run() {
-            doUpdateWarnings(editor);
-          }
-        };
-        Boolean aBoolean = ModelAccess.instance().tryRead(new Computable<Boolean>() {
-          @Override
-          public Boolean compute() {
-            task.run();
-            return Boolean.TRUE;
-          }
-        });
-        if (aBoolean == null) {
-          ModelAccess.instance().runReadInEDT(task);
-        }
-      }
-    });
+    DumbService.getInstance(myProject.getProject()).smartInvokeLater(new ModelReadRunnable(myProject.getModelAccess(), () -> doUpdateWarnings(editor)));
   }
 
   private void doUpdateWarnings(final MPSFileNodeEditor editor) {
-    List<WarningPanel> newWarnings = new ArrayList<WarningPanel>();
+    List<WarningPanel> newWarnings = new ArrayList<>();
 
     Editor nodeEditor = editor.getNodeEditor();
     if (nodeEditor == null) return;
@@ -124,13 +161,19 @@ public class MPSEditorWarningsManager implements ProjectComponent {
     EditorComponent editorComponent = nodeEditor.getCurrentEditorComponent();
     if (editorComponent != null && editorComponent.isDisposed()) return;
 
-    SNode node = editor.getFile().getNode();
-    if (node == null) return;
+    SNode node;
+    if (editorComponent != null) {
+      node = editorComponent.getEditedNode();
+    } else {
+      MPSNodeVirtualFile file = editor.getFile();
+      node = file != null && file.isValid() ? file.getNode() : null;
+    }
+    if (node == null || !SNodeUtil.isAccessible(node, myProject.getRepository())) return;
 
     EditorWarningsProvider[] providers = Extensions.getExtensions(EditorWarningsProvider.EP_NAME);
 
     for (EditorWarningsProvider provider : providers) {
-      WarningPanel panel = provider.getWarningPanel(node, myProject);
+      WarningPanel panel = provider.getWarningPanel(node, myProject.getProject());
       if (panel != null) {
         newWarnings.add(panel);
       }
@@ -140,7 +183,7 @@ public class MPSEditorWarningsManager implements ProjectComponent {
   }
 
   private void updateAllWarnings(@Nullable VirtualFile vf) {
-    if (IdeMain.getTestMode() == TestMode.CORE_TEST) return;
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) return;
 
     for (FileEditor editor : myFileEditorManager.getAllEditors()) {
       if (editor instanceof MPSFileNodeEditor) {
@@ -154,15 +197,32 @@ public class MPSEditorWarningsManager implements ProjectComponent {
     }
   }
 
-  private void updateAllWarnings() {
+  // re-dispatch updateAllWarnings from an EDT thread
+  /*package*/ void updateAllWarningsLater() {
+    if (myScheduledUpdateAllWarnings.get()) {
+      // there's already scheduled update in the EDT queue
+      return;
+    }
+    myScheduledUpdateAllWarnings.set(true);
+    ThreadUtils.runInUIThreadNoWait(() -> {
+      myScheduledUpdateAllWarnings.set(false);
+      if (myProject.isDisposed()) {
+        return;
+      }
+      updateAllWarnings();
+    });
+
+  }
+
+  /*package*/ void updateAllWarnings() {
     updateAllWarnings(null);
   }
 
   private void replaceWarningPanels(MPSFileNodeEditor editor, List<WarningPanel> newPanels) {
     Collection<WarningPanel> oldPanels = myWarnings.get(editor);
-    List<WarningPanel> toRemove = new ArrayList<WarningPanel>(oldPanels);
+    List<WarningPanel> toRemove = new ArrayList<>(oldPanels);
     toRemove.removeAll(newPanels);
-    List<WarningPanel> toAdd = new ArrayList<WarningPanel>(newPanels);
+    List<WarningPanel> toAdd = new ArrayList<>(newPanels);
     toAdd.removeAll(oldPanels);
 
     for (WarningPanel panel : toRemove) {
@@ -177,7 +237,8 @@ public class MPSEditorWarningsManager implements ProjectComponent {
   }
 
   private class MyFileEditorManagerListener implements FileEditorManagerListener {
-    public void fileOpened(FileEditorManager source, VirtualFile file) {
+    @Override
+    public void fileOpened(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
       if (file instanceof MPSNodeVirtualFile) {
         for (FileEditor fe : myFileEditorManager.getEditors(file)) {
           if (fe instanceof MPSFileNodeEditor) {
@@ -187,23 +248,21 @@ public class MPSEditorWarningsManager implements ProjectComponent {
       }
     }
 
-    public void fileClosed(FileEditorManager source, VirtualFile file) {
+    @Override
+    public void fileClosed(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
       myWarnings.keySet().retainAll(Arrays.asList(source.getAllEditors()));
     }
 
-    public void selectionChanged(FileEditorManagerEvent event) {
+    @Override
+    public void selectionChanged(@NotNull FileEditorManagerEvent event) {
       updateAllWarnings();
     }
   }
 
-  private class MyReloadListener extends ReloadAdapter {
-    public void onAfterReload() {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          if (myProject.isDisposed()) return;
-          updateAllWarnings();
-        }
-      });
+  private class EditorWarningsListenerAdapter implements DeployListener {
+    @Override
+    public void onLoaded(@NotNull Set<ReloadableModule> modules, @NotNull ProgressMonitor monitor) {
+      updateAllWarningsLater();
     }
   }
 

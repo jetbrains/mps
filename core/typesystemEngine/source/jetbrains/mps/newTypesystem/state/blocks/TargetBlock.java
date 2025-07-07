@@ -17,7 +17,10 @@ package jetbrains.mps.newTypesystem.state.blocks;
 
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.newTypesystem.state.TargetState;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.Pair;
 
@@ -27,9 +30,24 @@ import java.util.Set;
 public class TargetBlock extends Block {
   private SNode myNode;
 
-  public TargetBlock(State state, SNode node) {
-    super(state, node.getModel().getLongName(), node.getId());
+  public TargetBlock(TargetState state, SNode node, SNode originalNode) {
+    super(state, getModelName(originalNode), getNodeId(originalNode));
     myNode = node;
+  }
+
+  @Override
+  protected TargetState getState() {
+    return (TargetState) super.getState();
+  }
+
+  private static String getNodeId(SNode originalNode) {
+    SNodeId nodeId = originalNode.getNodeId();
+    return nodeId == null ? "<unknown node>" : nodeId.toString();
+  }
+
+  private static String getModelName(SNode originalNode) {
+    SModel model = originalNode.getModel();
+    return model == null ? "<unknown_model>" : jetbrains.mps.util.SNodeOperations.getModelLongName(model);
   }
 
   @Override
@@ -54,8 +72,8 @@ public class TargetBlock extends Block {
 
   @Override
   public void performAction() {
-    myState.expandTargetNode();
-    myState.setTargetTypeCalculated();
+    getState().expandTargetNode();
+    getState().setTargetTypeCalculated();
 
   }
 
@@ -66,6 +84,6 @@ public class TargetBlock extends Block {
 
   @Override
   public Set<Pair<SNode, ConditionKind>> getInitialInputs() {
-    return CollectionUtil.set(new Pair<SNode, ConditionKind>(myNode, ConditionKind.CONCRETE));
+    return CollectionUtil.set(new Pair<>(myNode, ConditionKind.CONCRETE));
   }
 }

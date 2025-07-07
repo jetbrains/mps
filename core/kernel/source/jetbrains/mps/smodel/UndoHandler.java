@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,17 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.project.Project;
-import jetbrains.mps.util.Computable;
-import org.jetbrains.annotations.NotNull;
-
+/**
+ * A mechanism to have globally-accessible platform-specific UndoHandler implementation.
+ * Platform supplies proper UndoHandler instance with a help of UndoHelper singleton.
+ */
 public interface UndoHandler {
-  public void addUndoableAction(SNodeUndoableAction action);
-
-  public <T> T runNonUndoableAction(Computable<T> t);
-
-  boolean needRegisterUndo(@NotNull SModel model);
-
-  boolean isInsideUndoableCommand();
-
-  void flushCommand(Project p);
+  /**
+   * Receives information about a model change in a form suitable for undo.
+   * It's up to implementation to react, i.e. to use some platform mechanism to record the action, filter based on internal state or
+   * even to ignore it altogether.
+   *
+   * @param action never {@code null}
+   */
+  void addUndoableAction(SNodeUndoableAction action);
 }

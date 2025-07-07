@@ -4,42 +4,60 @@ package jetbrains.mps.baseLanguage.typesystem;
 
 import jetbrains.mps.lang.typesystem.runtime.AbstractNonTypesystemRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.baseLanguage.behavior.Type_Behavior;
+import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
+import jetbrains.mps.errors.BaseQuickFixProvider;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_InstanceOf_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_InstanceOf_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode instanceOfExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode classifierType = SLinkOperations.getTarget(instanceOfExpression, "classType", true);
+    SNode classifierType = SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$StzW);
     if ((classifierType != null)) {
-      if (!(Type_Behavior.call_isReifiable_2817265908000464118(classifierType))) {
-        MessageTarget errorTarget = new NodeMessageTarget();
+      if (!((boolean) Type__BehaviorDescriptor.isReifiable_id2soW6EObTNQ.invoke(classifierType))) {
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifierType, "parameterized type in instanceof is not allowed", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8918460683225653154", null, errorTarget);
       }
     }
-  }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.baseLanguage.structure.InstanceOfExpression";
-  }
-
-  public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConceptFqName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
+    SNode foundRoot = PrecedenceUtil.findDesiredInstanceOfExpressionRoot(instanceOfExpression);
+    if ((foundRoot != null)) {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(instanceOfExpression, "Invalid operator precedences for the instanceOf operator", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2643065713351096827", null, errorTarget);
+        {
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.FixInstanceOfExpressionPrecedences_QuickFix", "2643065713351099141", true);
+          intentionProvider.putArgument("expressionRoot", foundRoot);
+          _reporter_2309309498.addIntentionProvider(intentionProvider);
+        }
+      }
     }
   }
-
+  public SAbstractConcept getApplicableConcept() {
+    return CONCEPTS.InstanceOfExpression$cu;
+  }
+  public IsApplicableStatus isApplicableAndPattern(SNode argument) {
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
+  }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink classType$StzW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept InstanceOfExpression$cu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,37 +16,50 @@
 
 package jetbrains.mps.idea.core.ui;
 
-import com.intellij.ide.util.ChooseElementsDialog;
-import com.intellij.ui.*;
+import com.intellij.ui.ColoredTableCellRenderer;
+import com.intellij.ui.JBColor;
+import com.intellij.ui.SimpleTextAttributes;
+import com.intellij.ui.SpeedSearchBase;
+import com.intellij.ui.TableUtil;
 import com.intellij.ui.table.JBTable;
-import com.intellij.util.ui.UIUtil;
-import jetbrains.mps.smodel.ModelAccess;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.table.TableCellRenderer;
 import java.awt.Dimension;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 
 public abstract class MpsElementsTable<T> {
   private final Border NO_FOCUS_BORDER = BorderFactory.createEmptyBorder(1, 1, 1, 1);
 
-  private MpsElementsTableModel myElementsTableModel;
+  private MpsElementsTableModel<T> myElementsTableModel;
   private JBTable myElementsTable;
 
-  public JComponent createComponent() {
-    myElementsTableModel = new MpsElementsTableModel<T>(getComparator(), getRendererClass(), getColumnTitle());
+  protected MpsElementsTable() {
+  }
 
-    myElementsTable = new JBTable(myElementsTableModel);
-    myElementsTable.setShowGrid(false);
-    myElementsTable.setDragEnabled(false);
-    myElementsTable.setShowHorizontalLines(false);
-    myElementsTable.setShowVerticalLines(false);
-    myElementsTable.setIntercellSpacing(new Dimension(0, 0));
-    myElementsTable.setBorder(new LineBorder(UIUtil.getBorderColor()));
-    myElementsTable.setDefaultRenderer(getRendererClass(), createDefaultRenderer());
-    myElementsTable.getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+  public JComponent createComponent() {
+    myElementsTableModel = new MpsElementsTableModel<>(getComparator(), getRendererClass(), getColumnTitle());
+
+    JBTable table = new JBTable(myElementsTableModel);
+    table.setShowGrid(false);
+    table.setDragEnabled(false);
+    table.setShowHorizontalLines(false);
+    table.setShowVerticalLines(false);
+    table.setIntercellSpacing(new Dimension(0, 0));
+    table.setBorder(new LineBorder(JBColor.border()));
+    table.setDefaultRenderer(getRendererClass(), createDefaultRenderer());
+    table.getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+    myElementsTable = table;
 
     new SpeedSearchBase<JBTable>(myElementsTable) {
       public int getSelectedIndex() {
@@ -83,47 +96,7 @@ public abstract class MpsElementsTable<T> {
         }
       }
     };
-
-    ToolbarDecorator decorator = ToolbarDecorator.createDecorator(myElementsTable);
-    decorator.setAddAction(new AnActionButtonRunnable() {
-      @Override
-      public void run(AnActionButton anActionButton) {
-        ModelAccess.instance().runReadInEDT(new Runnable() {
-          @Override
-          public void run() {
-            final java.util.List<T> allElements = getAllVisibleElements();
-            Collections.sort(allElements, getComparator());
-
-            SwingUtilities.invokeLater(new Runnable() {
-              @Override
-              public void run() {
-                ChooseElementsDialog<T> chooseElementsDialog = new ChooseElementsDialog<T>(myElementsTable, allElements, getChooserMessage()) {
-                  @Override
-                  protected String getItemText(T item) {
-                    return getText(item);
-                  }
-
-                  @Override
-                  protected Icon getItemIcon(T item) {
-                    return getIcon(item);
-                  }
-                };
-                chooseElementsDialog.show();
-                Set<T> elementsToAdd = new HashSet<T>(chooseElementsDialog.getChosenElements());
-                doAddElements(elementsToAdd);
-              }
-            });
-          }
-        });
-      }
-    }).setRemoveAction(new AnActionButtonRunnable() {
-      @Override
-      public void run(AnActionButton anActionButton) {
-        TableUtil.removeSelectedItems(myElementsTable);
-        myElementsTableModel.fireTableDataChanged();
-      }
-    });
-    return postDecoratePanel(decorator.createPanel());
+    return myElementsTable;
   }
 
   protected TableCellRenderer createDefaultRenderer() {
@@ -147,14 +120,9 @@ public abstract class MpsElementsTable<T> {
 
   protected abstract Icon getIcon(T element);
 
-  // should be executed only inside MPS model read
-  protected abstract List<T> getAllVisibleElements();
-
   protected abstract Comparator<T> getComparator();
 
   protected abstract Class<T> getRendererClass();
-
-  protected abstract String getChooserMessage();
 
   protected void doAddElements(Set<T> elementsToAdd) {
     myElementsTableModel.addElements(elementsToAdd);
@@ -168,11 +136,6 @@ public abstract class MpsElementsTable<T> {
         }
       }
     }
-  }
-
-  protected JPanel postDecoratePanel(JPanel panel) {
-    panel.setBorder(null);
-    return panel;
   }
 
   protected String getColumnTitle() {
@@ -192,7 +155,7 @@ public abstract class MpsElementsTable<T> {
   }
 
   public boolean isModified(List<T> elements) {
-    List<T> sortedLanguagesList = new ArrayList<T>(elements);
+    List<T> sortedLanguagesList = new ArrayList<>(elements);
     Collections.sort(sortedLanguagesList, getComparator());
     return !getElements().equals(sortedLanguagesList);
   }

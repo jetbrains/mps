@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,50 +16,48 @@
 package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.GenerationCanceledException;
-
-import java.util.Deque;
-import java.util.LinkedList;
+import jetbrains.mps.generator.impl.ParallelTemplateGenerator.CompositeGenerationTask;
+import jetbrains.mps.util.Callback;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 
 /**
  * Evgeny Gryaznov, Mar 4, 2010
  */
 public interface IGenerationTaskPool {
 
-  public interface GenerationTask {
+  interface GenerationTask {
     void run() throws GenerationCanceledException, GenerationFailureException;
-
-    boolean requiresReadAccess();
   }
 
   void addTask(GenerationTask r);
 
   void waitForCompletion() throws GenerationCanceledException, GenerationFailureException;
 
-  boolean isCancelled();
-
   void dispose();
 
-  public static class SimpleGenerationTaskPool implements IGenerationTaskPool {
-    private Deque<GenerationTask> queue = new LinkedList<GenerationTask>();
+  class SimpleGenerationTaskPool implements IGenerationTaskPool {
+    private final CompositeGenerationTask myQueue = new CompositeGenerationTask();
+    private final ModelAccess myModelAccess;
 
-    public void addTask(GenerationTask r) {
-      queue.addFirst(r);
-    }
-
-    public void waitForCompletion() throws GenerationCanceledException, GenerationFailureException {
-      GenerationTask next;
-      try {
-        while ((next = queue.poll()) != null) {
-          next.run();
-        }
-      } finally {
-        queue.clear();
-      }
+    public SimpleGenerationTaskPool(@NotNull ModelAccess modelAccess) {
+      myModelAccess = modelAccess;
     }
 
     @Override
-    public boolean isCancelled() {
-      return false;
+    public void addTask(GenerationTask r) {
+      myQueue.addTask(r);
+    }
+
+    @Override
+    public void waitForCompletion() throws GenerationCanceledException, GenerationFailureException {
+      final Throwable[] exception = new Throwable[1];
+      // XXX I assume SimpleGenerationTaskPool is used from 'main' generation thread which already holds
+      // read lock, so that read lock fairness (GenerationTaskAdapter#run()) won't cause any deadlock here
+      myModelAccess.runReadAction(new GenerationTaskAdapter(myQueue, param -> exception[0] = param));
+      if (exception[0] != null) {
+        GenerationTaskAdapter.rethrow(exception[0]);
+      }
     }
 
     @Override
@@ -67,8 +65,7 @@ public interface IGenerationTaskPool {
     }
   }
 
-  public interface ITaskPoolProvider {
-
+  interface ITaskPoolProvider {
     IGenerationTaskPool getTaskPool();
   }
 }

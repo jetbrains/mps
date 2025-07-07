@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,101 +17,110 @@ package jetbrains.mps.workbench.languagesFs;
 
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
 public class MPSLanguageVirtualFile extends VirtualFile {
-  private Language myLanguage;
-  private String myPath;
-  private String myName;
+  private final SModuleReference myLanguage;
 
-  public MPSLanguageVirtualFile(@NotNull Language language) {
+  public MPSLanguageVirtualFile(@NotNull SModuleReference language) {
     myLanguage = language;
-    myPath = myLanguage.getModuleFqName();
-    myName = myLanguage.getModuleFqName();
   }
 
+  @NotNull
+  @Override
   public String getPath() {
-    return myPath;
+    return PersistenceFacade.getInstance().asString(myLanguage);
   }
 
+  @Override
   @NotNull
   public VirtualFileSystem getFileSystem() {
     return MPSLanguagesVirtualFileSystem.getInstance();
   }
 
+  @Override
   @NotNull
   @NonNls
   public String getName() {
     // language name could end with .java, .xml etc. which might confuse IDEA file system
     // see also MPS-11156
-    return myName + " (language) ";
+    return myLanguage.getModuleName() + " (language) ";
   }
 
+  @Override
   public boolean isDirectory() {
     return false;
   }
 
+  @Override
   public long getLength() {
     return 0;
   }
 
-  public InputStream getInputStream() throws IOException {
+  @Override
+  public InputStream getInputStream() {
     throw new UnsupportedOperationException();
   }
 
-  public OutputStream getOutputStream(Object requestor, long newModificationStamp, long newTimeStamp) throws IOException {
+  @NotNull
+  @Override
+  public OutputStream getOutputStream(Object requestor, long newModificationStamp, long newTimeStamp) {
     throw new UnsupportedOperationException();
   }
 
-  public byte[] contentsToByteArray() throws IOException {
+  @NotNull
+  @Override
+  public byte[] contentsToByteArray() {
     throw new UnsupportedOperationException();
   }
 
+  @Override
   @Nullable
   public VirtualFile getParent() {
     return null;
   }
 
+  @Override
   public VirtualFile[] getChildren() {
     return null;
   }
 
+  @Override
   public void refresh(boolean asynchronous, boolean recursive, Runnable postRunnable) {
     if (postRunnable != null) {
       postRunnable.run();
     }
   }
 
+  @Override
   public boolean isWritable() {
     return true;
   }
 
+  @Override
   public boolean isValid() {
     return true;
   }
 
+  @Override
   public long getTimeStamp() {
-    return ModelAccess.instance().runReadAction(new Computable<Long>() {
-      public Long compute() {
-        return System.currentTimeMillis();
-      }
-    });
+    return System.currentTimeMillis();
   }
 
+  @Override
   public long getModificationStamp() {
     return getTimeStamp();
   }
 
-  public Language getLanguage() {
+  public SModuleReference getLanguage() {
     return myLanguage;
   }
 }

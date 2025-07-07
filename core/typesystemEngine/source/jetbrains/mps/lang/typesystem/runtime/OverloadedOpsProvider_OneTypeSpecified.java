@@ -15,39 +15,48 @@
  */
 package jetbrains.mps.lang.typesystem.runtime;
 
+import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
+import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public abstract class OverloadedOpsProvider_OneTypeSpecified implements IOverloadedOpsTypesProvider {
   protected SNode myOperandType;
-  protected String myOperationConceptFQName;
+  @NotNull
+  protected SAbstractConcept myOperationConcept;
+
   protected boolean myTypeIsExact = false;
   protected boolean myIsStrong = false;
 
-  public String getApplicableConceptFQName() {
-    return myOperationConceptFQName;
+  protected String myRuleModelId;
+  protected String myRuleNodeId;
+
+  @Override
+  public SAbstractConcept getApplicableConcept() {
+    return myOperationConcept;
   }
 
+  @Override
   public boolean isApplicable(SubtypingManager subtypingManager, SNode leftOperandType, SNode rightOperandType) {
     if (myTypeIsExact) {
-      if (!(MatchingUtil.matchNodes(leftOperandType, myOperandType) || MatchingUtil.matchNodes(rightOperandType, myOperandType))) {
-        return false;
-      }
+      return MatchingUtil.matchNodes(leftOperandType, myOperandType) || MatchingUtil.matchNodes(rightOperandType, myOperandType);
     } else {
-      if (!(subtypingManager.isSubtype(leftOperandType, myOperandType, !myIsStrong)
-        || subtypingManager.isSubtype(rightOperandType, myOperandType, !myIsStrong))) {
-        return false;
-      }
+      return subtypingManager.isSubtype(leftOperandType, myOperandType, !myIsStrong)
+             || subtypingManager.isSubtype(rightOperandType, myOperandType, !myIsStrong);
     }
-    return true;
   }
 
+  @Override
   public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
     return isApplicable(subtypingManager, leftOperandType, rightOperandType);
   }
 
-  public int compareTo(IOverloadedOpsTypesProvider o) {
+  @Override
+  public int compareTo(@NotNull IOverloadedOpsTypesProvider o) {
     if (o instanceof OverloadedOpsProvider_OneTypeSpecified) {
       OverloadedOpsProvider_OneTypeSpecified o2 = (OverloadedOpsProvider_OneTypeSpecified) o;
       int i1 = (this.myTypeIsExact ? 1 : 0);
@@ -58,5 +67,10 @@ public abstract class OverloadedOpsProvider_OneTypeSpecified implements IOverloa
       return 1;
     }
     return 0;
+  }
+
+  @Override
+  public void reportConflict(IRuleConflictWarningProducer warningProducer) {
+    Logger.wrap(LogManager.getLogger(getApplicableConcept().getQualifiedName())).warning("conflicting rules for overloaded operation type detected " + String.valueOf(myOperandType));
   }
 }

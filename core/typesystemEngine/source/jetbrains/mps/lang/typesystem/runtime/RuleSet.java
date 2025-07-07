@@ -16,12 +16,16 @@
 package jetbrains.mps.lang.typesystem.runtime;
 
 import gnu.trove.THashSet;
-import jetbrains.mps.smodel.LanguageHierarchyCache;
-import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.languageScope.LanguageScope;
+import jetbrains.mps.newTypesystem.rules.SingleTermRules;
+import org.apache.log4j.Logger;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -30,87 +34,93 @@ import java.util.concurrent.ConcurrentMap;
  *  Synchronized.
  */
 public class RuleSet<T extends IApplicableToConcept> {
-    ConcurrentMap<String, Set<T>> myRules = new ConcurrentHashMap<String, /* synchronized */ Set<T>>();
-    ConcurrentMap<String, Set<T>> myRulesCache = new ConcurrentHashMap<String, /* unmodifiable */ Set<T>>();
 
-    public void addRuleSetItem(Set<T> rules) {
-        for (T rule : rules) {
-            addRule_internal(rule);
-        }
-        myRulesCache.clear();
+  private Logger LOG = Logger.getLogger(RuleSet.class);
+
+  private static final String TYPESYSTEM_SUFFIX = ".typesystem";
+  private ConcurrentMap<SAbstractConcept, Set<T>> myRules = new ConcurrentHashMap<>();
+
+  private SingleTermRules<T> mySingleTermRules = new SingleTermRules<T>() {
+
+    @Override
+    protected List<SAbstractConcept> getParents(SAbstractConcept nextConcept) {
+      return SConceptOperations.getDirectSuperConcepts(nextConcept, false);
     }
 
-    public void addRule(T rule) {
+    @Override
+    protected Iterable<T> allForConcept(SAbstractConcept concept, LanguageScope langScope) {
+      return getAllApplicableTo(concept, langScope);
+    }
+
+    @Override
+    protected boolean isOverriding(T rule) {
+      return rule instanceof ICheckingRule_Runtime && ((ICheckingRule_Runtime) rule).overrides();
+    }
+  };
+
+
+  public void addRuleSetItem(Set<T> rules) {
+    for (T rule : rules) {
+      try {
         addRule_internal(rule);
-        myRulesCache.clear();
+      }
+      catch (Throwable ex) {
+        LOG.error("Error initializing rule '"+String.valueOf(rule)+"'", ex);
+      }
     }
+    mySingleTermRules.purgeCache();
+  }
 
-    private void addRule_internal(T rule) {
-        String concept = rule.getApplicableConceptFQName();
-        Set<T> existingRules = myRules.get(concept);
-        while (existingRules == null) {
-            myRules.putIfAbsent(concept, Collections.synchronizedSet(new THashSet<T>(2)));
-            existingRules = myRules.get(concept);
+  @Deprecated
+  public void addRule(T rule) {
+    addRule_internal(rule);
+    mySingleTermRules.purgeCache();
+  }
+
+  private void addRule_internal(T rule) {
+    SAbstractConcept concept = rule.getApplicableConcept();
+    Set<T> existingRules = myRules.get(concept);
+    while (existingRules == null) {
+      myRules.putIfAbsent(concept, Collections.synchronizedSet(new THashSet<>(2)));
+      existingRules = myRules.get(concept);
+    }
+    existingRules.add(rule);
+  }
+
+  /**
+   * Returns a set of rules with predictable iteration order: on the node concept, from most specific to most generic.
+   * @param term
+   * @return
+   */
+  public Set<T> getRules(SNode term) {
+    return mySingleTermRules.lookupRules(term);
+  }
+
+  private Iterable<T> getAllApplicableTo(SAbstractConcept concept, LanguageScope scope) {
+    if (!myRules.containsKey(concept)) return Collections.emptyList();
+
+    List<T> result = new ArrayList<>(4);
+    Set<T> rules = myRules.get(concept);
+    synchronized (rules) {
+      for (T rule : rules) {
+        if (scope.containsNamespace(getNamespace(rule))) {
+          result.add(rule);
         }
-        existingRules.add(rule);
+      }
     }
+    return Collections.unmodifiableList(result);
+  }
 
-    public Set<T> getRules(SNode node) {
-        return get(node.getConceptFqName());
+  private String getNamespace(T rule) {
+    String pkg = rule.getClass().getPackage().getName();
+    if (pkg.endsWith(TYPESYSTEM_SUFFIX)) {
+      return pkg.substring(0, pkg.length() - TYPESYSTEM_SUFFIX.length());
     }
+    return pkg;
+  }
 
-    protected Set<T> get(final String key) {
-        Set<T> cachedResult = myRulesCache.get(key);
-        if (cachedResult != null) {
-            return cachedResult;
-        }
-        return NodeReadAccessCasterInEditor.runReadTransparentAction(new Computable<Set<T>>() {
-            @Override
-            public Set<T> compute() {
-                Set<T> result = Collections.unmodifiableSet(computeRuleSet(key));
-                myRulesCache.put(key, result);
-                return result;
-            }
-        });
-    }
-
-    private Set<T> computeRuleSet(String concept) {
-        Set<T> result = new THashSet<T>();
-        Set<String> frontier = new THashSet<String>();
-        Set<String> newFrontier = new THashSet<String>();
-        frontier.add(concept);
-
-        while (!frontier.isEmpty()) {
-            for (String abstractConcept : frontier) {
-                Set<T> rules = myRules.get(abstractConcept);
-                boolean overrides = false;
-                if (rules != null) {
-                    synchronized (rules) {
-                        result.addAll(rules);
-                        for (T rule : rules) {
-                            if (rule instanceof ICheckingRule_Runtime && ((ICheckingRule_Runtime) rule).overrides()) {
-                                overrides = true;
-                            }
-                        }
-                    }
-                }
-                //else {
-                if (overrides) {
-                    continue;
-                }
-
-                newFrontier.addAll(LanguageHierarchyCache.getParentsNames(abstractConcept));
-                //}
-
-            }
-            frontier = newFrontier;
-            newFrontier = new THashSet<String>();
-        }
-        return result;
-    }
-
-    public void clear() {
-        myRules.clear();
-        myRulesCache.clear();
-    }
+  public void clear() {
+    myRules.clear();
+    mySingleTermRules.purgeCache();
+  }
 }

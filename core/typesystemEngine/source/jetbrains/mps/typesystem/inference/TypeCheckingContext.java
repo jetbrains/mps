@@ -16,37 +16,59 @@
 package jetbrains.mps.typesystem.inference;
 
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.errors.QuickFixProvider;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.newTypesystem.NodeTypesComponent;
+import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
+import jetbrains.mps.newTypesystem.operation.AbstractOperation;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.SModel;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public abstract class TypeCheckingContext {
-  public abstract SubtypingManager getSubtypingManager();
-
-  public abstract SModel getRuntimeTypesModel();
-
-  public abstract Map<SNode, SNode> getMainContext();
 
   public abstract SNode getRepresentative(SNode node);
 
   public abstract boolean isIncrementalMode();
 
-  public abstract void setIsNonTypesystemComputation();
+  public enum NonTypesystemComputationMode {
+    OFF,
+    ON_THE_FLY,
+    NORMAL
+  }
 
-  public abstract void resetIsNonTypesystemComputation();
+  public abstract boolean setNonTypesystemComputationMode(@NotNull NonTypesystemComputationMode mode);
 
-  public abstract boolean isNonTypesystemComputation();
+  @NotNull
+  public abstract NonTypesystemComputationMode getNonTypesystemComputationMode();
+
+  /**
+   * @deprecated use {@link #setNonTypesystemComputationMode(NonTypesystemComputationMode)}
+   */
+  @ToRemove(version = 2020.2)
+  @Deprecated
+  public /*final*/ void setIsNonTypesystemComputation() {
+    setNonTypesystemComputationMode(NonTypesystemComputationMode.NORMAL);
+  }
+
+  /**
+   * @deprecated use {@link #setNonTypesystemComputationMode(NonTypesystemComputationMode)}
+   */
+  @ToRemove(version = 2020.2)
+  @Deprecated
+  public /*final*/ void resetIsNonTypesystemComputation() {
+    setNonTypesystemComputationMode(NonTypesystemComputationMode.OFF);
+  }
+
+  public /*final*/ boolean isNonTypesystemComputation() {
+    return getNonTypesystemComputationMode() != NonTypesystemComputationMode.OFF;
+  }
 
   //errors reporting
   public abstract IErrorReporter reportTypeError(SNode nodeWithError, String errorString, String ruleModel, String ruleId, QuickFixProvider intentionProvider, MessageTarget errorTarget);
@@ -55,80 +77,28 @@ public abstract class TypeCheckingContext {
 
   public abstract IErrorReporter reportInfo(SNode nodeWithInfo, String message, String ruleModel, String ruleId, QuickFixProvider intentionProvider, MessageTarget errorTarget);
 
-  public abstract void reportMessage(SNode nodeWithError, IErrorReporter errorReporter);
+  /**
+   * @param errorReporter valid errorReporter
+   */
+  public abstract void reportMessage(IErrorReporter errorReporter);
 
   public abstract SNode createNewRuntimeTypesVariable();
 
-  public abstract void registerTypeVariable(SNode variable);
+  public abstract void printToTrace(String message);
 
   //for special cases
   public abstract SNode typeOf(SNode node);
 
   public abstract SNode typeOf(SNode node, String ruleModel, String ruleId, boolean addDependency);
 
-  public abstract SNode[] getRegisteredTypeVariables(String varName);
-
   public abstract void addDependencyForCurrent(SNode node);
-
-  //deprecated eqs
-  @Deprecated
-  public abstract void createEquation(SNode node1,
-                                      SNode node2,
-                                      SNode nodeToCheck,
-                                      String errorString,
-                                      String ruleModel,
-                                      String ruleId,
-                                      QuickFixProvider intentionProvider);
-
-  @Deprecated
-  public abstract void createLessThanInequationStrong(SNode node1,
-                                                      SNode node2,
-                                                      SNode nodeToCheck,
-                                                      String errorString,
-                                                      String ruleModel,
-                                                      String ruleId,
-                                                      boolean checkOnly,
-                                                      int inequationPriority,
-                                                      QuickFixProvider intentionProvider);
-
-  @Deprecated
-  public abstract void createGreaterThanInequation(SNode node1,
-                                                   SNode node2,
-                                                   SNode nodeToCheck,
-                                                   String errorString,
-                                                   String ruleModel,
-                                                   String ruleId,
-                                                   boolean checkOnly,
-                                                   int inequationPriority,
-                                                   QuickFixProvider intentionProvider);
-
-  @Deprecated
-  public abstract void createComparableEquation(SNode node1,
-                                                SNode node2,
-                                                SNode nodeToCheck,
-                                                String errorString,
-                                                String ruleModel,
-                                                String ruleId,
-                                                QuickFixProvider intentionProvider);
 
   //new eqs
   public void createEquation(SNode node1, SNode node2, EquationInfo equationInfo) {
     createEquation(node1, node2, false, equationInfo);
   }
 
-  public abstract void printToTrace(String message);
-
   public abstract void createEquation(SNode node1, SNode node2, boolean checkOnly, EquationInfo equationInfo);
-
-  public abstract void createLessThanInequation(SNode node1, SNode node2, boolean checkOnly, EquationInfo equationInfo);
-
-  public abstract void createLessThanInequationStrong(SNode node1, SNode node2, boolean checkOnly, EquationInfo equationInfo);
-
-  public abstract void createGreaterThanInequation(SNode node1, SNode node2, boolean checkOnly, EquationInfo equationInfo);
-
-  public abstract void createGreaterThanInequationStrong(SNode node1, SNode node2, boolean checkOnly, EquationInfo equationInfo);
-
-  public abstract void createComparableEquation(SNode node1, SNode node2, EquationInfo equationInfo);
 
   public abstract void createComparableEquation(SNode node1, SNode node2, boolean inference, EquationInfo equationInfo);
 
@@ -148,11 +118,15 @@ public abstract class TypeCheckingContext {
 
   public abstract SNode getOverloadedOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType);
 
+  public abstract SNode getOverloadedOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType, IRuleConflictWarningProducer warningProducer);
+
   public abstract void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId);
 
   public abstract void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow);
 
   public abstract void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError);
+
+  public abstract void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError, String warningMessage);
 
   public abstract void whenConcrete(List<SNode> argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError);
 
@@ -164,17 +138,8 @@ public abstract class TypeCheckingContext {
 
   public abstract State getState();
 
-  public abstract NodeTypesComponent getNodeTypesComponent();
-
-  public abstract NodeTypesComponent getBaseNodeTypesComponent();
-
-  public abstract void setOperationContext(IOperationContext context);
-
-  public abstract IOperationContext getOperationContext();
-
-  public abstract void runTypeCheckingAction(Runnable r);
-
-  public abstract <T> T runTypeCheckingAction(Computable<T> c);
+  @Deprecated
+  public abstract IncrementalTypechecking getBaseNodeTypesComponent();
 
   /*package*/
   public abstract SNode computeTypeInferenceMode(SNode node);
@@ -182,23 +147,29 @@ public abstract class TypeCheckingContext {
   public abstract SNode getTypeOf(SNode node, TypeChecker typeChecker);
 
   @Nullable
-  protected abstract SNode getTypeOf_normalMode(SNode node);
+  public abstract SNode getTypeOf_normalMode(SNode node);
 
-  protected abstract SNode getTypeOf_generationMode(SNode node);
+  public abstract SNode getTypeOf_generationMode(SNode node);
+
+  public abstract SNode getTypeOf_resolveMode(SNode node, TypeChecker typeChecker);
 
   public abstract SNode getTypeInGenerationMode(SNode node);
 
-  protected abstract SNode getTypeOf_resolveMode(SNode node, TypeChecker typeChecker);
-
   public abstract boolean checkIfNotChecked(SNode node, boolean useNonTypesystemRules);
+
+  /**
+   * Do both checkRoot and applyNonTypesystemRules.
+   */
+  public abstract void checkAll(boolean refreshTypes, boolean useNonTypesystemRules);
 
   public abstract void checkRoot();
 
   public abstract void checkRoot(boolean refreshTypes);
 
+  @Deprecated
   public abstract Set<Pair<SNode, List<IErrorReporter>>> checkRootAndGetErrors(boolean refreshTypes);
 
-  public abstract Set<Pair<SNode, List<IErrorReporter>>> getNodesWithErrors();
+  public abstract Set<Pair<SNode, List<IErrorReporter>>> getNodesWithErrors(boolean typesystemErrors);
 
   public abstract boolean isCheckedRoot(boolean considerNonTypesystemRules);
 
@@ -213,8 +184,15 @@ public abstract class TypeCheckingContext {
   //returns the most serious error for node (warning if no errors, info if no warnings and errors)
   public abstract IErrorReporter getTypeMessageDontCheck(SNode node);
   public abstract boolean isSingleTypeComputation();
-  public abstract void setSingleTypeComputation(boolean isSingleTypeComputation);
   public abstract void clear();
+
+  public abstract AbstractOperation getOperation();
+
+  public abstract void checkRootInTraceMode(boolean refreshTypes);
+
+  public abstract TypeSubstitution getSubstitution(SNode origNode);
+
+  public abstract void reportEquationError(@NotNull EquationInfo info, jetbrains.mps.newTypesystem.state.State state, String before, SNode left, String between, SNode right, String after);
 
   public static class NodeInfo {
     SNode myNode;

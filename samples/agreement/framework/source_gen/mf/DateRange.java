@@ -7,42 +7,35 @@ import java.util.Arrays;
 
 public class DateRange implements Comparable {
   public static DateRange EMPTY = new DateRange(new MfDate(2000, 4, 1), new MfDate(2000, 1, 1));
-
   private MfDate myStart;
   private MfDate myEnd;
-
   public DateRange(Date start, Date end) {
     this(new MfDate(start), new MfDate(end));
   }
-
   public DateRange(MfDate start, MfDate end) {
     this.myStart = start;
     this.myEnd = end;
   }
-
   public MfDate end() {
     return myEnd;
   }
-
   public MfDate start() {
     return myStart;
   }
-
+  @Override
   public String toString() {
     if (isEmpty()) {
       return "Empty Date Range";
     }
     return myStart.toString() + " - " + myEnd.toString();
   }
-
   public boolean isEmpty() {
     return myStart.after(myEnd);
   }
-
   public boolean includes(MfDate arg) {
     return !(arg.before(myStart)) && !(arg.after(myEnd));
   }
-
+  @Override
   public boolean equals(Object arg) {
     if (!((arg instanceof DateRange))) {
       return false;
@@ -50,19 +43,16 @@ public class DateRange implements Comparable {
     DateRange other = (DateRange) arg;
     return myStart.equals(other.myStart) && myEnd.equals(other.myEnd);
   }
-
+  @Override
   public int hashCode() {
     return myStart.hashCode();
   }
-
   public boolean overlaps(DateRange arg) {
     return arg.includes(myStart) || arg.includes(myEnd) || this.includes(arg);
   }
-
   public boolean includes(DateRange arg) {
     return this.includes(arg.myStart) && this.includes(arg.myEnd);
   }
-
   public DateRange gap(DateRange arg) {
     if (this.overlaps(arg)) {
       return EMPTY;
@@ -78,7 +68,7 @@ public class DateRange implements Comparable {
     }
     return new DateRange(lower.myEnd.addDays(1), higher.myStart.addDays(-1));
   }
-
+  @Override
   public int compareTo(Object arg) {
     DateRange other = (DateRange) arg;
     if (!(myStart.equals(other.myStart))) {
@@ -86,26 +76,21 @@ public class DateRange implements Comparable {
     }
     return myEnd.compareTo(other.myEnd);
   }
-
   public boolean abuts(DateRange arg) {
     return !(this.overlaps(arg)) && this.gap(arg).isEmpty();
   }
-
   public boolean partitionedBy(DateRange[] args) {
     if (!(DateRange.isContiguous(args))) {
       return false;
     }
     return this.equals(DateRange.combination(args));
   }
-
   public static DateRange upTo(MfDate end) {
     return new DateRange(MfDate.PAST, end);
   }
-
   public static DateRange startingOn(MfDate start) {
     return new DateRange(start, MfDate.FUTURE);
   }
-
   public static DateRange combination(DateRange[] args) {
     Arrays.sort(args);
     if (!(DateRange.isContiguous(args))) {
@@ -113,7 +98,6 @@ public class DateRange implements Comparable {
     }
     return new DateRange(args[0].myStart, args[args.length - 1].myEnd);
   }
-
   public static boolean isContiguous(DateRange[] args) {
     Arrays.sort(args);
     for (int i = 0; i < args.length - 1; i++) {

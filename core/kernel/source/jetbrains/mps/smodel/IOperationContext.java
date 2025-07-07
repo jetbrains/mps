@@ -15,18 +15,25 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.project.IModule;
 import jetbrains.mps.project.Project;
-import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.module.SModule;
 
+/** @deprecated
+ *  It appears that we always have a project and a module instances in the scope, where IOperationContext is being used.
+ *  So in this case we should pass a project itself instead of passing an IOperationContext instance.
+ *  The same needs to be done with a module.
+ *  isValid and isTestMode are helping methods, which should be implemented in place.
+ *  getComponent method should be replaced by {@link jetbrains.mps.project.Project} method getComponent for now.
+ *  Later it needs to be replaced with a corresponding static method call getInstance of the component class {T}.
+ */
+@Deprecated
+@ToRemove(version = 3.5)
 public interface IOperationContext {
 
   Project getProject();
 
-  IModule getModule();
-
-  @NotNull
-  IScope getScope();
+  SModule getModule();
 
   boolean isValid();
 

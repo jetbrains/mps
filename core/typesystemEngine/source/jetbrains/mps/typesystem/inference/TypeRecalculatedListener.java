@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.typesystem.inference;
 
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public interface TypeRecalculatedListener {
-  public void typeWillBeRecalculatedForTerm(SNode term);
+  void typeWillBeRecalculatedForTerm(SNode term);
 }

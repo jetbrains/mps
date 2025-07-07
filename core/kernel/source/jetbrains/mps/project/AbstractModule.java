@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,661 +15,807 @@
  */
 package jetbrains.mps.project;
 
-import jetbrains.mps.kernel.model.MissingDependenciesFixer;
-import jetbrains.mps.library.ModulesMiner;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.SModelRoot.ManagerNotFoundException;
-import jetbrains.mps.project.dependency.modules.DependenciesManager;
-import jetbrains.mps.project.dependency.modules.ModuleDependenciesManager;
-import jetbrains.mps.project.listener.ModelCreationListener;
-import jetbrains.mps.project.persistence.ModuleReadException;
-import jetbrains.mps.project.structure.model.ModelRoot;
-import jetbrains.mps.project.structure.modules.*;
-import jetbrains.mps.reloading.ClassPathFactory;
-import jetbrains.mps.reloading.CompositeClassPathItem;
-import jetbrains.mps.reloading.IClassPathItem;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
-import jetbrains.mps.smodel.persistence.IModelRootManager;
-import jetbrains.mps.util.*;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.extapi.module.EditableSModule;
+import jetbrains.mps.extapi.module.ModuleFacetBase;
+import jetbrains.mps.extapi.module.SModuleBase;
+import jetbrains.mps.extapi.persistence.ModelRootBase;
+import jetbrains.mps.module.SDependencyImpl;
+import jetbrains.mps.persistence.MementoImpl;
+import jetbrains.mps.project.structure.model.ModelRootDescriptor;
+import jetbrains.mps.project.structure.modules.Dependency;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
+import jetbrains.mps.scope.VisibleDepsSearchScope;
+import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.util.annotation.Hack;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
-import org.apache.commons.lang.ObjectUtils;
+import jetbrains.mps.vfs.openapi.FileSystem;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Immutable;
+import org.jetbrains.mps.annotations.Mutable;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.FacetsFacade;
+import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SDependencyScope;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
+import org.jetbrains.mps.openapi.module.SModuleId;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.module.SearchScope;
+import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
+import org.jetbrains.mps.openapi.persistence.ModelRootFactory;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
-public abstract class AbstractModule implements IModule {
-  private static final Logger LOG = Logger.getLogger(AbstractModule.class);
+import static org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
+
+/**
+ * First of all, this class serves as a file-based module. Obviously it requires a file which contains a persisted
+ * module descriptor (see constructor).
+ * Secondly, this class provides a common implementation of the module editing. Not only the implementation of
+ * simple interface {@link EditableSModule} is here but also a special editing mechanism is suggested below.
+ * Nonetheless there are several flaws.
+ *
+ * 1. We need to separate FileBasedModule from the AbstractModule in order to make the AbstractModule truly abstract.
+ * 2. We need to enforce a special committing mechanism (for the module editing) which is only sketched in this class.
+ * The {@link #getModuleDescriptor()} method in fact is just a public property which discloses all the internals of the module.
+ * It is undoubtedly ought to be fixed.
+ * Moreover the implementations of this method return the original descriptor (copy they must return!). [not the problem of the abstract module per se]
+ * Suggestion [to be done]:
+ * Rather the {@link AbstractModule} must possess a special {@code #getEditingHandle} which returns a class which in turn is able to accumulate
+ * all the changes user desire to accomplish and when user is finished with editing commit all the changes with one invocation of {@code handle.commit()}.
+ * [or something like this]
+ * 3. Also this subclass serves another purpose: it introduces model roots and module facets into module.
+ * I guess this logic might migrate to <code>SModuleBase</code>.
+ *
+ * AP
+ *
+ * @see ModuleDescriptor for the details
+ */
+@Immutable
+public abstract class AbstractModule extends SModuleBase implements EditableSModule {
+  private static final Logger LOG = LogManager.getLogger(AbstractModule.class);
 
   public static final String MODULE_DIR = "module";
+  public static final String CLASSES_GEN = "classes_gen";
+  public static final String CLASSES = "classes";
 
-  protected IFile myDescriptorFile;
-  private ModuleReference myModuleReference;
-  private Set<SModelRoot> mySModelRoots = new LinkedHashSet<SModelRoot>();
-  private ModuleScope myScope = createScope();
+  /**
+   * All paths concerning a module must be either absolute or relative to this 'anchor' file.
+   * This is a rational idea since keeping the same information twice does not make sense.
+   *
+   * please do not mutate the field
+   */
+  @Nullable
+  @Immutable
+  private final IFile myDescriptorFile;
 
-  private final Object LOCK = new Object();
-  private Runnable myClasspathInvalidator = new Runnable() {
-    public void run() {
-      synchronized (LOCK) {
-        myCachedClassPathItem = null;
-      }
-    }
-  };
-  private CompositeClassPathItem myCachedClassPathItem;
+  @NotNull private final FileSystem myFileSystem;
+  private SModuleReference myModuleReference;
+  private final Set<ModelRoot> mySModelRoots = new LinkedHashSet<>();
+  private final Set<SModuleFacet> myFacets = new LinkedHashSet<>();
 
-  //----model creation
+  private boolean myChanged = false;
 
-  private static Set<ModelCreationListener> ourModelCreationListeners = new HashSet<ModelCreationListener>();
-
-  public static void registerModelCreationListener(ModelCreationListener listener) {
-    ourModelCreationListeners.add(listener);
+  private static jetbrains.mps.vfs.FileSystem getFSSingleton() {
+    return jetbrains.mps.vfs.FileSystem.getInstance();
   }
 
-  public static void unregisterModelCreationListener(ModelCreationListener creationListener) {
-    ourModelCreationListeners.remove(creationListener);
+  @Deprecated
+  protected AbstractModule() {
+    this(getFSSingleton());
   }
 
-  public final EditableSModelDescriptor createModel(SModelFqName name, SModelRoot root, ModelAdjuster adj) {
-    IModelRootManager manager = root.getManager();
-
-    if (!manager.canCreateModel(this, root.getModelRoot(), name)) {
-      LOG.error("Can't create a model " + name + " under model root " + root.getPath() + "[" + root.getManager().getClass().getSimpleName() + "]");
-      return null;
-    }
-
-    EditableSModelDescriptor model = (EditableSModelDescriptor) manager.createModel(this, root.getModelRoot(), name);
-    if (adj != null) {
-      adj.adjust(model);
-    }
-    SModelRepository.getInstance().registerModelDescriptor(model, this);
-    model.setChanged(true);
-
-    for (ModelCreationListener listener : ourModelCreationListeners) {
-      if (listener.isApplicable(this, model)) {
-        listener.onCreate(this, model);
-      }
-    }
-
-    model.save();
-
-    new MissingDependenciesFixer(model).fix(false);
-
-    return model;
+  protected AbstractModule(@NotNull FileSystem fileSystem) {
+    myDescriptorFile = null;
+    myFileSystem = fileSystem;
   }
 
-  //----reference
-
-  protected void setModuleReference(@NotNull ModuleReference reference) {
-    assert reference.getModuleId() != null : "module must have an id";
-    assert myModuleReference == null || reference.getModuleId().equals(myModuleReference.getModuleId()) : "module id can't be changed";
-
-    ModuleReference oldValue = myModuleReference;
-    myModuleReference = reference;
-    if (oldValue != null &&
-      oldValue.getModuleFqName() != null &&
-      !oldValue.getModuleFqName().equals(myModuleReference.getModuleFqName())) {
-
-      MPSModuleRepository.getInstance().moduleFqNameChanged(this, oldValue.getModuleFqName());
+  protected AbstractModule(@Nullable IFile descriptorFile) {
+    myDescriptorFile = descriptorFile;
+    if (descriptorFile != null) {
+      myFileSystem = descriptorFile.getFileSystem();
+    } else {
+      myFileSystem = getFSSingleton();
     }
   }
 
   @NotNull
+  public FileSystem getFileSystem() {
+    return myFileSystem;
+  }
+
+  //----reference
+  @NotNull
+  @Override
+  public SModuleId getModuleId() {
+//    assertCanRead(); @see getModuleReference()
+    return getModuleReference().getModuleId();
+  }
+
+  @Override
+  public String getModuleName() {
+//    assertCanRead(); @see getModuleReference()
+    return getModuleReference().getModuleName();
+  }
+
+  @Override
+  public Iterable<SDependency> getDeclaredDependencies() {
+    assertCanRead();
+    ModuleDescriptor descriptor = getModuleDescriptor();
+    if (descriptor == null) {
+      return Collections.emptyList();
+    }
+    HashSet<SDependency> result = new HashSet<>();
+    final SRepository repo = getRepository();
+    if (repo == null) {
+      throw new IllegalStateException("It is not possible to resolve all declared dependencies with a null repository : module " + this);
+    }
+
+    // add declared dependencies
+    for (Dependency d : descriptor.getDependencies()) {
+      result.add(new SDependencyImpl(d.getModuleRef(), repo, d.getScope(), d.isReexport()));
+    }
+
+    // add dependencies provided by devkits as nonreexport dependencies
+    for (SModuleReference usedDevkit : collectLanguagesAndDevkits().devkits) {
+      final SModule devkit = usedDevkit.resolve(repo);
+      if (DevKit.class.isInstance(devkit)) {
+        for (Solution solution : ((DevKit) devkit).getAllExportedSolutions()) {
+          result.add(new SDependencyImpl(solution.getModuleReference(), repo, SDependencyScope.DEFAULT, false));
+        }
+      }
+    }
+    return result;
+  }
+
+  @Override
+  public Set<SLanguage> getUsedLanguages() {
+    assertCanRead();
+    return collectLanguagesAndDevkits().languages;
+  }
+
+  // fills collections with of imported languages and devkits.
+  // Languages include directly imported and coming immediately through devkits; listed devkits are imported directly, without those they extend (why?).
+  public LangAndDevkits collectLanguagesAndDevkits() {
+    Set<SLanguage> usedLanguages = new LinkedHashSet<>();
+    Set<SModuleReference> devkits = new LinkedHashSet<>();
+
+    // perhaps, shall introduce ModuleImports similar to ModelImports to accomplish this?
+    for (SModel m : getModels()) {
+      final SModelInternal modelInternal = (SModelInternal) m;
+      usedLanguages.addAll(modelInternal.importedLanguageIds());
+      devkits.addAll(modelInternal.importedDevkits());
+    }
+    // XXX why don't we respect extended devkits here? DevKit.get*All*ExportedLanguageIds does this for us, but as long as we've got repository here
+    //     why let devkit module bother to get it again?
+    // XXX pretty similar to SModelOperations.getAllLanguageImports(sModel) and to ModelDependenciesManager#getAllImportedLanguagesIds()
+    final SRepository repository = getRepository();
+    if (repository != null) {
+      for (SModuleReference devkitRef : devkits) {
+        final SModule module = devkitRef.resolve(repository);
+        if (module instanceof DevKit) {
+          for (SLanguage l : ((DevKit) module).getAllExportedLanguageIds()) {
+            usedLanguages.add(l);
+          }
+        }
+      }
+    }
+    return new LangAndDevkits(usedLanguages, devkits);
+  }
+
+  public static class LangAndDevkits {
+    public final Set<SLanguage> languages;
+    public final Set<SModuleReference> devkits;
+
+    public LangAndDevkits(@NotNull Set<SLanguage> languages, @NotNull Set<SModuleReference> devkits) {
+      this.languages = languages;
+      this.devkits = devkits;
+    }
+  }
+
+  protected final void setModuleReference(@NotNull SModuleReference reference) {
+    assertCanChange();
+    assert myModuleReference == null || reference.getModuleId().equals(myModuleReference.getModuleId()) : "module id can't be changed: " + myModuleReference;
+    myModuleReference = reference;
+  }
+
+  @Override
+  @NotNull
   //module reference is immutable, so we cn return original
-  public ModuleReference getModuleReference() {
+  public SModuleReference getModuleReference() {
+//    assertCanRead(); ClassLoaderManager needs module reference. Do we need CLM to obtain read lock?
     return myModuleReference;
   }
 
-  public String getModuleFqName() {
-    return myModuleReference.getModuleFqName();
+  //----save
+
+  //todo move to EditableModule class
+  @Nullable
+  public ModuleDescriptor getModuleDescriptor() {
+    return null;
+  }
+
+  //todo should be replaced with events
+  // FIXME check if we always supply same MD instance module already has (it seems that the method is merely a means to tell 'reload state from memory/MD' after
+  //       MD has been changed.
+  // FIXME descive what happens module identity/reference is changed in the new MD
+  public final void setModuleDescriptor(@NotNull ModuleDescriptor moduleDescriptor) {
+    setModuleDescriptor(moduleDescriptor, true);
+  }
+
+  /**
+   * PROVISIONAL INTERNAL API, DON'T USE OUTSIDE OF MPS, TO BE CHANGED WITHOUT NOTICE
+   *
+   * sometimes we do not need to mark the reloaded module as changed (e.g. in the cases when we reload from the disk)
+   */
+  public final void setModuleDescriptor(@NotNull ModuleDescriptor moduleDescriptor, boolean setAsChanged) {
+    assertCanChange();
+    doSetModuleDescriptor(moduleDescriptor);
+    if (setAsChanged) {
+      setChanged();
+    }
+
+    reloadAfterDescriptorChange();
+    fireChanged();
+    dependenciesChanged();
+  }
+
+  // no notifications are sent
+  protected void doSetModuleDescriptor(ModuleDescriptor moduleDescriptor) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void setChanged() {
+    assertCanChange();
+    if (isReadOnly()) {
+      LOG.warn("Changing read-only module " + this);
+    }
+    if (!myChanged) {
+      myChanged = true;
+      fireChanged();
+    }
+  }
+
+  @Override
+  public void save() {
+    assertCanChange();
+    final ModuleDescriptor moduleDescriptor = getModuleDescriptor();
+    // ensure ModelRoot has a chance to serialize their changes, if any
+    // For now, we don't account for added/removed model roots as there's no API other than ModuleDescriptor, hence we only try to change matching MR-MRD pairs
+    if (moduleDescriptor != null) {
+      LinkedList<ModelRootDescriptor> descriptors = new LinkedList<>(moduleDescriptor.getModelRootDescriptors());
+      // I can't change MRD.memento, therefore need to replace MRD instance with new memento, next collection is to ensure root ordering persists.
+      ArrayList<ModelRootDescriptor> newDescriptors = new ArrayList<>(moduleDescriptor.getModelRootDescriptors().size());
+      for (ModelRoot mr : mySModelRoots) {
+        ModelRootDescriptor mrd = null;
+        // here we assume order of descriptors correspond to the order of loaded MR, and new descriptors, if any, are at the end of
+        // getModelRootDescriptors collection
+        for (Iterator<ModelRootDescriptor> it = descriptors.iterator(); it.hasNext(); ) {
+          ModelRootDescriptor next = it.next();
+          if (mr.getType().equals(next.getType())) {
+            mrd = next;
+            // in case there's more than 1 descriptor and MR with the same type, don't modify the same descriptor again and again with different MRs
+            it.remove();
+            break;
+          }
+        }
+        if (mrd == null) {
+          // now there's no way to add new MR other than by new MRD in MD, therefore mrd == null here means
+          // we likely got MR instance for removed root. Once there's a mechanism to add/remove MRs without need to deal with ModuleDescriptor,
+          // then shall uncomment the code below and review the code above to account for MD with stale MRDs.
+//          mrd = new ModelRootDescriptor(mr.getType(), new MementoImpl());
+//          // we've got a copy of original set, therefore can modify original value here
+//          moduleDescriptor.getModelRootDescriptors().add(mrd);
+          continue;
+        }
+        MementoImpl clearMemento = new MementoImpl();
+        mr.save(clearMemento);
+        if (!clearMemento.equals(mrd.getMemento())) {
+          // root settings changed
+          newDescriptors.add(new ModelRootDescriptor(mrd.getType(), clearMemento));
+        } else {
+          // just reuse existing instance
+          newDescriptors.add(mrd);
+        }
+      }
+      newDescriptors.addAll(descriptors);
+      moduleDescriptor.getModelRootDescriptors().clear();
+      moduleDescriptor.getModelRootDescriptors().addAll(newDescriptors);
+
+      // make sure module facets serialize their changes as well.
+      getFacets().forEach(moduleDescriptor::updateFacetDescriptor);
+    }
+    myChanged = false;
   }
 
   //----adding different deps
 
-  public void addDependency(@NotNull ModuleReference moduleRef, boolean reexport) {
+  /**
+   * FIXME module editing is generally done through descriptor and reload. Although I do not mind exposing add/remove methods here, it should be consistent!
+   * There's use in mbeddr
+   */
+  @Nullable
+  public Dependency addDependency(@NotNull SModuleReference moduleRef, boolean reexport) {
+    assertCanChange();
     ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor == null) return;
+    if (descriptor == null) {
+      return null;
+    }
+    if (this.getModuleReference().equals(moduleRef)) {
+      return null;
+    }
     for (Dependency dep : descriptor.getDependencies()) {
-      if (!ObjectUtils.equals(dep.getModuleRef(), moduleRef)) continue;
+      if (!Objects.equals(dep.getModuleRef(), moduleRef)) {
+        continue;
+      }
 
       if (reexport && !dep.isReexport()) {
         dep.setReexport(true);
-        invalidateCaches();
-        save();
+        dependenciesChanged();
+        fireChanged();
+        setChanged();
       }
-      return;
+      return dep;
     }
 
     Dependency dep = new Dependency();
     dep.setModuleRef(moduleRef);
     dep.setReexport(reexport);
     descriptor.getDependencies().add(dep);
-    //setModuleDescriptor(descriptor, true);
-    invalidateCaches();
-    save();
+
+    dependenciesChanged();
+    fireChanged();
+    setChanged();
+    return dep;
   }
 
-  public void addUsedLanguage(ModuleReference langRef) {
+  public void removeDependency(@NotNull Dependency dependency) {
+    assertCanChange();
     ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor == null) return;
-    if (descriptor.getUsedLanguages().contains(langRef)) return;
-
-    descriptor.getUsedLanguages().add(langRef);
-    invalidateCaches();
-//    setModuleDescriptor(descriptor, true);// removed as it follows to models disposing even after addChild()
-    save();
-  }
-
-  public void addUsedDevkit(ModuleReference devkitRef) {
-    ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor == null) return;
-    if (descriptor.getUsedDevkits().contains(devkitRef)) return;
-
-    descriptor.getUsedDevkits().add(devkitRef);
-    invalidateCaches();
-//    setModuleDescriptor(descriptor, true);
-    save();
-  }
-
-  //----get deps
-
-  public DependenciesManager getDependenciesManager() {
-    return new ModuleDependenciesManager(this);
-  }
-
-  public List<Dependency> getDependencies() {
-    ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor == null) return new ArrayList<Dependency>();
-    return new ArrayList<Dependency>(descriptor.getDependencies());
-  }
-
-  //----languages & devkits
-
-  public Collection<ModuleReference> getUsedLanguagesReferences() {
-    ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor == null) return Collections.emptySet();
-    return Collections.unmodifiableCollection(descriptor.getUsedLanguages());
-  }
-
-  public Collection<ModuleReference> getUsedDevkitReferences() {
-    ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor == null) return Collections.emptySet();
-    return Collections.unmodifiableCollection(descriptor.getUsedDevkits());
-  }
-
-  //----stubs
-
-  public Collection<String> getAllStubPaths() {
-    Set<String> result = new LinkedHashSet<String>();
-    result.addAll(getStubPaths());
-    result.addAll(getOwnStubPaths());
-    return result;
-  }
-
-  public Collection<String> getOwnStubPaths() {
-    if (!isCompileInMPS()) return Collections.emptyList();
-
-    IFile classFolder = getClassesGen();
-    if (classFolder == null) return Collections.emptyList();
-
-    return Collections.singletonList(classFolder.getPath());
-  }
-
-  public Collection<String> getStubPaths() {
-    ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor == null) return Collections.emptySet();
-
-    Collection<ModelRoot> stubModelEntries = descriptor.getStubModelEntries();
-    Collection<String> result = new LinkedHashSet<String>(stubModelEntries.size());
-    for (ModelRoot entry : stubModelEntries) {
-      result.add(entry.getPath());
+    if (descriptor == null) {
+      return;
     }
-    return result;
-  }
-
-  public static Collection<String> getStubPaths(ModuleDescriptor descriptor) {
-    if (descriptor != null) {
-      Collection<ModelRoot> stubModelEntries = descriptor.getStubModelEntries();
-      Collection<String> result = new LinkedHashSet<String>(stubModelEntries.size());
-      for (ModelRoot entry : stubModelEntries) {
-        result.add(entry.getPath());
-      }
-      return result;
-    }
-
-    return Collections.emptySet();
-  }
-
-  protected Collection<ModelRoot> getStubModelEntriesToIncludeOrExclude() {
-    ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor == null) return Collections.emptySet();
-    return descriptor.getStubModelEntries();
-  }
-
-  //----classpath
-
-  protected void invalidateClassPath() {
-    synchronized (LOCK) {
-      myCachedClassPathItem = null;
-    }
-  }
-
-  //todo check this code. Wy not to do it where we add jars?
-  protected void updatePackagedDescriptorClasspath() {
-    if (!isPackaged()) return;
-
-    ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor == null) return;
-
-    final IFile bundleHomeFile = getBundleHome();
-    if (bundleHomeFile == null) return;
-
-    IFile bundleParent = bundleHomeFile.getParent();
-    if (bundleParent == null || !bundleParent.exists()) return;
-
-    String packagedSourcesPath = bundleHomeFile.getPath();
-    if (packagedSourcesPath.endsWith(".jar")) {
-      packagedSourcesPath = (packagedSourcesPath.substring(0, packagedSourcesPath.length() - 4) + "-src.jar!/").toLowerCase();
-    } else {
-      packagedSourcesPath = null;
-    }
-
-    boolean addBundleAsModelRoot = false;
-    final DeploymentDescriptor dd = descriptor.getDeploymentDescriptor();
-    String libPath = dd == null ? FileUtil.getCanonicalPath(PathManager.getHomePath() + File.separator + "lib").toLowerCase() : null;
-
-    // stub libraries
-    List<ModelRoot> toRemove = new ArrayList<ModelRoot>();
-    for (ModelRoot sme : descriptor.getStubModelEntries()) {
-      String path = sme.getPath();
-      String canonicalPath = FileUtil.getCanonicalPath(path).toLowerCase();
-      if (packagedSourcesPath == null || !canonicalPath.startsWith(packagedSourcesPath)) {
-        String shrinked = MacrosFactory.forModuleFile(getDescriptorFile()).shrinkPath(path);
-        if (MacrosFactory.containsNonMPSMacros(shrinked)) continue;
-      }
-      if (dd == null && canonicalPath.startsWith(libPath)) {
-        continue;
-      }
-      toRemove.add(sme);
-    }
-    descriptor.getStubModelEntries().removeAll(toRemove);
-
-    // stub model roots
-    toRemove.clear();
-    for (ModelRoot sme : descriptor.getModelRoots()) {
-      if (!LanguageID.JAVA_MANAGER.equals(sme.getManager())) continue;
-      String path = sme.getPath();
-      String canonicalPath = FileUtil.getCanonicalPath(path).toLowerCase();
-
-      String suffix = descriptor.getCompileInMPS() ? "classes_gen" : "classes";
-      if (canonicalPath.endsWith(suffix)) {
-        IFile parent = dd == null ? getDescriptorFile().getParent() : ModulesMiner.getRealDescriptorFile(getDescriptorFile().getPath(), dd);
-        if (dd != null && parent != null) {
-          parent = parent.getParent();
-        }
-        IFile classes = parent != null ? parent.getDescendant(suffix) : null;
-        addBundleAsModelRoot = classes != null && FileUtil.getCanonicalPath(classes.getPath()).equalsIgnoreCase(canonicalPath);
-      } else if (FileUtil.getCanonicalPath(bundleHomeFile.getPath()).equalsIgnoreCase(canonicalPath)) {
-        addBundleAsModelRoot = true;
-      }
-
-      if (packagedSourcesPath == null || !canonicalPath.startsWith(packagedSourcesPath)) {
-        String shrinked = MacrosFactory.forModuleFile(getDescriptorFile()).shrinkPath(path);
-        if (MacrosFactory.containsNonMPSMacros(shrinked)) continue;
-      }
-      if (dd == null && canonicalPath.startsWith(libPath)) {
-        continue;
-      }
-      toRemove.add(sme);
-    }
-    descriptor.getModelRoots().removeAll(toRemove);
-
-    if (addBundleAsModelRoot) {
-      ClassPathEntry jarEntry = new ClassPathEntry();
-      jarEntry.setPath(bundleHomeFile.getPath());
-      ModelRoot mr = jetbrains.mps.project.structure.model.ModelRootUtil.fromClassPathEntry(jarEntry);
-      if (!descriptor.getModelRoots().contains(mr)) {
-        descriptor.getModelRoots().add(mr);
-      }
-    }
-    if (dd == null) {
+    if (!descriptor.getDependencies().contains(dependency)) {
       return;
     }
 
-    for (String jarFile : dd.getLibraries()) {
-      IFile jar = jarFile.startsWith("/")
-        ? FileSystem.getInstance().getFileByPath(PathManager.getHomePath() + jarFile)
-        : bundleParent.getDescendant(jarFile);
-      if (jar.exists()) {
-        ClassPathEntry jarEntry = new ClassPathEntry();
-        jarEntry.setPath(jar.getPath());
-        ModelRoot mr = jetbrains.mps.project.structure.model.ModelRootUtil.fromClassPathEntry(jarEntry);
-        descriptor.getStubModelEntries().add(mr);
-        descriptor.getModelRoots().add(mr);
-      }
-    }
+    descriptor.getDependencies().remove(dependency);
+
+    dependenciesChanged();
+    fireChanged();
+    setChanged();
   }
 
-  public IClassPathItem getClassPathItem() {
-    synchronized (LOCK) {
-      if (myCachedClassPathItem == null) {
-        myCachedClassPathItem = new CompositeClassPathItem();
-        myCachedClassPathItem.addInvalidationAction(myClasspathInvalidator);
-
-        for (String path : getAllStubPaths()) {
-          try {
-            IClassPathItem pathItem = ClassPathFactory.getInstance().createFromPath(path, this.getModuleFqName());
-            myCachedClassPathItem.add(pathItem);
-          } catch (IOException e) {
-            LOG.error(e.getMessage());
-          }
-        }
-      }
-
-      return myCachedClassPathItem;
-    }
-  }
-
-  public IClassPathItem getModuleWithDependenciesClassPathItem() {
-    return getDependenciesClasspath(CollectionUtil.set((IModule) this), false);
-  }
-
-  public static IClassPathItem getDependenciesClasspath(Set<IModule> modules, boolean includeStubSolutions) {
-    return new ClasspathCollector(modules).collect(includeStubSolutions);
-  }
-
-  public Class getClass(String className) {
-    //todo move to a subclass fully
-    throw new UnsupportedOperationException();
-  }
 //----
 
-  public Collection<SModelRoot> getSModelRoots() {
+  @Override
+  public Iterable<ModelRoot> getModelRoots() {
+    // We check read lock here because mySModelRoots is updated inside write.
+    assertCanRead();
     return Collections.unmodifiableCollection(mySModelRoots);
   }
 
   protected void reloadAfterDescriptorChange() {
-    updatePackagedDescriptorClasspath();
+    initFacetsAndModels();
+  }
+
+  private void initFacetsAndModels() {
+    updateFacets();
     updateModelsSet();
-    invalidateClassPath();
   }
 
-  public void onModuleLoad() {
-    updateSModelReferences();
-    updateModuleReferences();
-
-    if (!isPackaged()) {
-      Set<ModelRoot> visited = new HashSet<ModelRoot>();
-      List<ModelRoot> remove = new ArrayList<ModelRoot>();
-      ModuleDescriptor descriptor = getModuleDescriptor();
-      if (descriptor == null) return;
-      for (ModelRoot e : descriptor.getStubModelEntries()) {
-        if (visited.contains(e)) {
-          remove.add(e);
-        }
-
-        visited.add(e);
-      }
-
-      descriptor.getStubModelEntries().removeAll(remove);
-    }
-  }
-
-  public boolean isPackaged() {
-    return getDescriptorFile() != null && FileSystem.getInstance().isPackaged(getDescriptorFile());
-  }
-
-  public List<SModelDescriptor> getOwnModelDescriptors() {
-    return SModelRepository.getInstance().getModelDescriptors(this);
-  }
-
-  public List<SModelDescriptor> getHiddenModelDescriptors() {
-    return Collections.emptyList();
-  }
-
-  public IFile getClassesGen() {
-    return ProjectPathUtil.getClassesGenFolder(getDescriptorFile());
-  }
-
-  public Collection<SModelDescriptor> getImplicitlyImportedModelsFor(SModelDescriptor sm) {
-    return new LinkedHashSet<SModelDescriptor>();
-  }
-
-  public Collection<Language> getImplicitlyImportedLanguages(SModelDescriptor sm) {
-    Set<Language> result = new LinkedHashSet<Language>();
-    if (SModelStereotype.isGeneratorModel(sm)) {
-      result.add(BootstrapLanguages.generatorLanguage());
-    }
-    return result;
-  }
-
-  public IFile getDescriptorFile() {
-    return myDescriptorFile;
+  /**
+   * Mechanism for sublclasses to enforce certain facets for a module, if necessary.
+   * MPS itself respects actual facets for a module as defined in a ModuleDescriptor and doesn't impose any mandatory facet any longer
+   * (for a long time , it would force Java facet, which is essential for classloading mechanism). When needed, necessary module facets
+   * are added at module creation time.
+   * The method is no-op, subclasses are not obliged to invoke it as MPS unlikely ever to get back to mandatory facets.
+   * It's unlikely there's even a reason to keep this extension point, left in 2020.2 for compatibility and future consideration.
+   */
+  protected void collectMandatoryFacetTypes(@Mutable Set<String> types) {
   }
 
   @NotNull
-  public IScope getScope() {
-    return myScope;
+  protected SModuleFacet loadAndAttachIfNeeded(@NotNull SModuleFacet facet, Memento memento) {
+    if (!facet.isAttached()) {
+      assert (facet.getModule() == null);
+      facet.attach(this);
+    }
+    if (facet instanceof ModuleFacetBase) {
+      ((ModuleFacetBase) facet).attach(); // legacy, to remove in 203
+    }
+    facet.load(memento != null ? memento : new MementoImpl());
+    return facet;
   }
 
-  public void dispose() {
-    mySModelRoots.clear();
-    SModelRepository.getInstance().unRegisterModelDescriptors(this);
-  }
+  protected void updateFacets() {
+    assertCanChange();
 
-  public List<String> getSourcePaths() {
-    List<String> result = new ArrayList<String>();
     ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor != null) {
-      for (String p : descriptor.getSourcePaths()) {
-        result.add(p);
+    if (descriptor == null) {
+      return;
+    }
+
+    clearFacets();
+
+    Map<String, Memento> config = new HashMap<>();
+    for (ModuleFacetDescriptor facetDescriptors : descriptor.getModuleFacetDescriptors()) {
+      config.put(facetDescriptors.getType(), facetDescriptors.getMemento());
+    }
+
+    Set<String> types = new HashSet<>();
+    collectMandatoryFacetTypes(types);
+    types.addAll(config.keySet());
+
+    FacetsFacade facetsFacade = FacetsFacade.getInstance();
+    for (String facetType : types) {
+      FacetFactory factory = facetsFacade.getFacetFactory(facetType);
+      Memento memento = config.get(facetType);
+      if (factory == null) {
+        createUnknownFacet(facetsFacade, facetType, memento);
+      } else {
+        createAndLoadFacet(factory, memento);
       }
     }
-    if (getGeneratorOutputPath() != null) {
-      result.add(getGeneratorOutputPath());
+  }
+
+  private void createUnknownFacet(FacetsFacade facetsFacade, String facetType, Memento memento) {
+    LOG.warn(String.format("no registered factory for a facet with type=`%s'", facetType));
+    SModuleFacet unknownFacet = new UnknownFacet(facetType, this);
+    unknownFacet.load(memento);
+    myFacets.add(unknownFacet);
+    facetsFacade.callWhenFacetFactoryAppears(facetType, (facetFactory -> {
+      myFacets.remove(unknownFacet);
+      createAndLoadFacet(facetFactory, memento);
+    }));
+  }
+
+  private void createAndLoadFacet(FacetFactory factory, Memento memento) {
+    if (factory.isApplicable(this)) {
+      SModuleFacet facet = factory.create(this);
+      facet = loadAndAttachIfNeeded(facet, memento);
+      myFacets.add(facet);
+    } else {
+      LOG.error("This module is not applicable for the facet factory '" + factory + "'", new IllegalStateException());
     }
-    if (getTestsGeneratorOutputPath() != null) {
-      result.add(getTestsGeneratorOutputPath());
+  }
+
+  private void clearFacets() {
+    for (SModuleFacet facet : myFacets) {
+      facet.detach();
     }
-    return result;
+    myFacets.clear();
+  }
+
+  public void onModuleLoad() {
+    // FIXME any reason to update references for read-only (deployed) modules?
+    updateExternalReferences();
+  }
+
+  @Override
+  public boolean isReadOnly() {
+//    assertCanRead(); getModuleSourceDir() doesn't require read, why isPackaged() does?
+    return isPackaged();
+  }
+
+  @Override
+  public boolean isPackaged() {
+//    assertCanRead(); getModuleSourceDir() doesn't require read, why isPackaged() does?
+    return getModuleSourceDir() == null || getModuleSourceDir().isInArchive();
+  }
+
+  /**
+   * Module sources folder
+   * In case of working on sources == dir with module descriptor
+   * In case of working on distribution = {module-name}-src.jar/module/
+   * In case of Generator = sourceLanguage.getModuleSourceDir()
+   * ${module} expands to this method
+   */
+  public IFile getModuleSourceDir() {
+    return getDescriptorFile() != null ? getDescriptorFile().getParent() : null;
+  }
+
+  /**
+   * The use of the method is discouraged as it exposes some internal MPS infrastructure.
+   * Modules do not necessarily originate from files.
+   * There's no limitation of number of modules that share same descriptor file.
+   * <p>
+   * Note, the name of descriptor file for deployed module is not necessarily the same as for the same module in sources
+   * (e.g. META-INF/module.xml vs mylang/my.lang.mpl)
+   * </p>
+   * @return a file (might be shared with other module) we took module's description from, or {@code null} if no such information is available.
+   */
+  @Nullable
+  public final IFile getDescriptorFile() {
+//    assertCanRead();   if getModuleSourceDir doesn't require read, why getDescriptorFile does?
+    return myDescriptorFile;
+  }
+
+  public void setModuleVersion(int version) {
+    getModuleDescriptor().setModuleVersion(version);
+    fireChanged();
+    setChanged();
+  }
+
+  public int getModuleVersion() {
+    ModuleDescriptor descriptor = getModuleDescriptor();
+    return descriptor == null ? 0 : descriptor.getModuleVersion();
+  }
+
+  @NotNull
+  public SearchScope getScope() {
+    //    assertCanRead(); XXX There was no reason to guard access to the field, but now there's a class that initializes at construction time.
+    return new VisibleDepsSearchScope(getRepository(), this);
+  }
+
+  @Override
+  public void attach(@NotNull SRepository repository) {
+    super.attach(repository);
+    initFacetsAndModels();
+  }
+
+  @Override
+  public String toString() {
+    String namespace = getModuleName();
+    return namespace + " [module]";
+  }
+
+  @Override
+  public void dispose() {
+    assertCanChange();
+    LOG.trace("Disposing the module " + this);
+    clearFacets();
+    for (ModelRoot m : mySModelRoots) {
+      ((ModelRootBase) m).dispose();
+    }
+    mySModelRoots.clear();
+    super.dispose();
+  }
+
+  /**
+   * @deprecated though there are no uses, I still hesitate what's the right way to access source paths of a module
+   * ModuleDesciptor.getSourcePath(), actively in use, is the worst possible way, no MD shall get exposed to end-user.
+   * SModuleOperations.getAllSourcePaths(this) is better, yet not that discoverable.
+   * AbstractModule.getSourcePaths() is both discoverable and not exposing MD, but cast to AM is odd, and getSourcePaths is definitely
+   * not a part of SModule API. To me, it's rather part of JavaModuleFacet. Left as a reminder to refactor uses of other APIs prior to removing the method.
+   */
+  @Deprecated
+  public List<String> getSourcePaths() {
+    assertCanRead();
+    return new ArrayList<>(SModuleOperations.getAllSourcePaths(this));
   }
 
   public void updateModelsSet() {
-    mySModelRoots = doUpdateModelsSet();
-    fireModuleInitialized();
+    doUpdateModelsSet();
   }
 
-  protected Set<SModelRoot> doUpdateModelsSet() {
-    List<SModelReference> allLoadedModels = new ArrayList<SModelReference>();
+  protected Iterable<ModelRoot> loadRoots() {
     ModuleDescriptor descriptor = getModuleDescriptor();
-    Set<SModelRoot> result = new jetbrains.mps.util.misc.hash.HashSet<SModelRoot>();
-    if (descriptor != null) {
-      SModelRepository smRepo = SModelRepository.getInstance();
-      Collection<ModelRoot> roots = descriptor.getModelRoots();
-      for (ModelRoot modelRoot : roots) {
-        try {
-          SModelRoot root = new SModelRoot(modelRoot);
-          result.add(root);
-          IModelRootManager manager = root.getManager();
-          if (manager == null) continue;
-          //model with model root manager not yet loaded - should be loaded after classes reloading
+    if (descriptor == null) {
+      return Collections.emptyList();
+    }
 
-          Collection<SModelDescriptor> models = manager.load(root.getModelRoot(), this);
-          for (SModelDescriptor model : models) {
-            allLoadedModels.add(model.getSModelReference());
-            if (smRepo.getModelDescriptor(model.getSModelReference()) == null) {
-              smRepo.registerModelDescriptor(model, this);
-            }
-          }
-        } catch (ManagerNotFoundException e) {
-          //LOG.warning("Error loading models from root: prefix: \"" + modelRoot.getPrefix() + "\" path: \"" + modelRoot.getPath() + "\". Requested by: " + this, e);
-        } catch (Exception e) {
-          LOG.error("Error loading models from root: " + "\" path: \"" + modelRoot.getPath() + "\". Requested by: " + this, e);
+    List<ModelRoot> result = new ArrayList<>();
+    for (ModelRootDescriptor modelRoot : descriptor.getModelRootDescriptors()) {
+      try {
+        ModelRootFactory modelRootFactory = PersistenceFacade.getInstance().getModelRootFactory(modelRoot.getType());
+        if (modelRootFactory == null) {
+          LOG.error("Unknown model root type: `" + modelRoot.getType() + "'. Requested by: " + this);
+          continue;
         }
-      }
 
-      for (SModelDescriptor md : smRepo.getModelDescriptors(this)) {
-        if (allLoadedModels.contains(md.getSModelReference())) continue;
-        if (!(md instanceof BaseSModelDescriptorWithSource)) continue;
-        smRepo.unRegisterModelDescriptor(md, this);
+        ModelRoot root = modelRootFactory.create();
+        Memento mementoWithFS = new MementoWithFS(modelRoot.getMemento(), myFileSystem);
+        root.load(mementoWithFS);
+        result.add(root);
+      } catch (Exception e) {
+        LOG.error("Error loading models from root with type: `" + modelRoot.getType() + "'. Requested by: " + this, e);
       }
     }
     return result;
   }
 
-  protected void fireModuleInitialized() {
-    MPSModuleRepository.getInstance().fireModuleInitialized(this);
-  }
+  private void doUpdateModelsSet() {
+    assertCanChange();
 
-  public IFile getBundleHome() {
-    return FileSystem.getInstance().getBundleHome(getDescriptorFile());
-  }
-
-  public Collection<String> getIndexablePaths() {
-    ArrayList<String> result = new ArrayList<String>();
-
-    IFile home = getBundleHome();
-    if (home != null) {
-      String suffix = isPackaged() ? "!/" : "";
-      result.add(home.getPath() + suffix);
+    for (SModel model : getModels()) {
+      if (model instanceof EditableSModel && ((EditableSModel) model).isChanged()) {
+        LOG.warn(
+            "Trying to reload module " + getModuleName() + " which contains a non-saved model '" +
+                model.getName() + "'. To prevent data loss, MPS will not update models in this module. " +
+                "Please save your work and restart MPS. See MPS-18743 for details."
+        );
+        return;
+      }
     }
 
-    ModuleDescriptor d = getModuleDescriptor();
-    if (d == null) return result;
+    Set<ModelRoot> toRemove = new LinkedHashSet<>(mySModelRoots);
+    Set<ModelRoot> toUpdate = new LinkedHashSet<>(mySModelRoots);
+    Set<ModelRoot> toAttach = new LinkedHashSet<>();
 
-    for (ModelRoot root : d.getModelRoots()) {
-      String path = root.getPath();
-      String suffix = path.endsWith("." + MPSExtentions.MPS_ARCH) ? "!/" : "";
-      result.add(path + suffix);
+    for (ModelRoot root : loadRoots()) {
+      try {
+        if (mySModelRoots.contains(root)) {
+          toRemove.remove(root);
+        } else {
+          toAttach.add(root);
+        }
+      } catch (Exception e) {
+        LOG.error("Error loading models from root `" + root + "'. Requested by: " + this, e);
+      }
     }
+    toUpdate.removeAll(toRemove);
 
-    return result;
+    for (ModelRoot modelRoot : toRemove) {
+      ((ModelRootBase) modelRoot).dispose();
+    }
+    mySModelRoots.removeAll(toRemove);
+    for (ModelRoot modelRoot : toAttach) {
+      ModelRootBase rootBase = (ModelRootBase) modelRoot;
+      rootBase.setModule(this);
+      mySModelRoots.add(modelRoot);
+      rootBase.attach();
+    }
+    for (ModelRoot modelRoot : toUpdate) {
+      ((ModelRootBase) modelRoot).update();
+    }
   }
 
-  public boolean isCompileInMPS() {
-    return false;
+  // unlike similar method in SModel, doesn't take SRepository now
+  // according to present use cases, we iterate modules of a repository and update them,
+  // hence it's superficial  to pass repository in here (although might add one for consistency)
+  // TODO discuss: isn't it plain better to personally track all the dependency renames for each module (and model)?
+  //      or it could be #save where we re-resolve all the references in the descriptor
+  //  the current method exposes the persistence stuff of this module, which must be of noone's concern
+  public void updateExternalReferences() {
+    ModuleDescriptor moduleDescriptor = getModuleDescriptor();
+    final SRepository repository = getRepository();
+    if (moduleDescriptor == null || repository == null) {
+      return;
+    }
+    if (moduleDescriptor.updateModelRefs(repository)) {
+      setChanged();
+    }
+    if (moduleDescriptor.updateModuleRefs(repository)) {
+      setChanged();
+    }
   }
 
-  public boolean reloadClassesAfterGeneration() {
-    return true;
+  protected void dependenciesChanged() {
+    // todo: review all usages after migration!
+
+    // callback on dependencies (any of them) changed event
+    // you can override this method with some invalidation action
+    // call super.dependenciesChanged() at the end
+
+    // todo: as we haven't dependencies listeners...
   }
 
-  public void invalidateCaches() {
-    myScope.invalidateCaches();
+  @Override
+  public boolean isChanged() {
+    return myChanged;
   }
 
-  public boolean needReloading() {
-    if ((myDescriptorFile == null) || !myDescriptorFile.exists()) {
+  // used in mbeddr & mps
+  @Nullable
+  @Override
+  public <T extends SModuleFacet> T getFacet(@NotNull Class<T> clazz) {
+    return super.getFacet(clazz);
+  }
+
+  @NotNull
+  @Override // pass them here instead overriding?
+  public Iterable<SModuleFacet> getFacets() {
+    return Collections.unmodifiableSet(myFacets);
+  }
+
+  /**
+   * @deprecated this is internal method, ask ModuleDescriptor for persisted setting directly, if it's what you're
+   * looking for (check {@link ProjectPathUtil#getGeneratorOutputPath(ModuleDescriptor)}. There ain't no such thing as output path for a module in general.
+   *
+   * This method is no longer used in MPS, do not resurrect its uses. Although it's not part of openapi, AbstractModule is often deemed as 'almost api',
+   * left for one release.
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
+  public IFile getOutputPath() {
+    String outputPath = ProjectPathUtil.getGeneratorOutputPath(getModuleDescriptor());
+    return outputPath == null ? null : getFileSystem().getFile(outputPath);
+  }
+
+  @Override
+  public int getUsedLanguageVersion(@NotNull SLanguage usedLanguage) {
+    return getUsedLanguageVersion(usedLanguage, true);
+  }
+
+  /**
+   * has a fallback if the usedLanguage is absent in the module descriptor. if it happens then returns simply the current usedLanguage version
+   *
+   * @param check is whether to show error for not found version
+   * @deprecated hack for migration, will be gone after 3.4
+   */
+  @ToRemove(version = 3.4)
+  @Hack
+  @Deprecated
+  public int getUsedLanguageVersion(@NotNull SLanguage usedLanguage, boolean check) {
+    ModuleDescriptor moduleDescriptor = getModuleDescriptor();
+    if (!checkDescriptorNotNull(moduleDescriptor)) {
+      return -1;
+    }
+    Integer res = moduleDescriptor.getLanguageVersions().get(usedLanguage);
+    if (res == null) {
+      if (check) {
+        LOG.warn(String.format(
+            "#getUsedLanguageVersion can't find a version for language %s in module %s, so it is falling back to the current version of the language. " +
+                "Probably the language is not imported into this module or #validateLanguageVersions() was not called on this module in appropriate moment." +
+                "NB: there might be migrations which must be applied, however they are not going to.",
+            usedLanguage.getQualifiedName(), getModuleName()), new Throwable());
+      }
+      return usedLanguage.getLanguageVersion();
+    }
+    return res;
+  }
+
+  public int getDependencyVersion(@NotNull SModule dependency) {
+    return getDependencyVersion(dependency, true);
+  }
+
+  /**
+   * has a fallback if the dependency is absent in the module descriptor. if it happens then returns simply the current dep. module version
+   *
+   * @param check is whether to show error for not found version
+   */
+  public int getDependencyVersion(@NotNull SModule dependency, boolean check) {
+    ModuleDescriptor moduleDescriptor = getModuleDescriptor();
+    if (!checkDescriptorNotNull(moduleDescriptor)) {
+      return -1;
+    }
+    Integer res = moduleDescriptor.getDependencyVersions().get(dependency.getModuleReference());
+    if (res == null) {
+      if (check) {
+        LOG.error(
+            "#getDependencyVersion can't find a version for module " + dependency.getModuleName() +
+                " in module " + getModuleName() + "." +
+                " This can either mean that the module is not visible from this module or that " +
+                "#validateDependencyVersions() was not called on this module in appropriate moment.",
+            new Throwable());
+      }
+      return ((AbstractModule) dependency).getModuleVersion();
+    }
+    return res;
+  }
+
+  /**
+   * @return true iff descriptor is not null
+   */
+  @Contract("null -> false")
+  private boolean checkDescriptorNotNull(ModuleDescriptor moduleDescriptor) {
+    if (moduleDescriptor == null) {
+      LOG.warn("Descriptor is null " + this + "; returning -1");
       return false;
     }
-
-    final ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor == null) return false;
-
-    String timestampString;
-    if (ModelAccess.instance().canRead()) {
-      timestampString = descriptor.getTimestamp();
-    } else {
-      timestampString = ModelAccess.instance().runReadAction(new Computable<String>() {
-        public String compute() {
-          return descriptor.getTimestamp();
-        }
-      });
-    }
-    if (timestampString == null) return true;
-    long timestamp = Long.decode(timestampString);
-    return timestamp != myDescriptorFile.lastModified();
-  }
-
-  public String getOutputFor(SModelDescriptor model) {
-    if (SModelStereotype.isTestModel(model)) {
-      return getTestsGeneratorOutputPath();
-    } else {
-      return getGeneratorOutputPath();
-    }
-  }
-
-  public void reloadFromDisk(boolean reloadClasses) {
-    ModelAccess.instance().checkWriteAccess();
-    try {
-      ModuleDescriptor descriptor = loadDescriptor();
-      setModuleDescriptor(descriptor, reloadClasses);
-    } catch (ModuleReadException e) {
-      handleReadProblem(e, false);
-    }
-  }
-
-  private void handleReadProblem(Exception e, boolean isInConflict) {
-    SuspiciousModelHandler.getHandler().handleSuspiciousModule(this, isInConflict);
-    LOG.error(e.getMessage());
-    e.printStackTrace();
-  }
-
-  public boolean updateSModelReferences() {
-    if (getModuleDescriptor() == null) return false;
-    return getModuleDescriptor().updateModelRefs();
-  }
-
-  public boolean updateModuleReferences() {
-    if (getModuleDescriptor() == null) return false;
-    return getModuleDescriptor().updateModuleRefs();
-  }
-
-  public void invalidateDependencies() {
-    //do nothing by default
-  }
-
-  protected ModuleDescriptor loadDescriptor() {
-    return null;
-  }
-
-  protected ModuleScope createScope() {
-    return new ModuleScope();
-  }
-
-  public String getGeneratorOutputPath() {
-    return null;
-  }
-
-  public String getTestsGeneratorOutputPath() {
-    return null;
-  }
-
-  public class ModuleScope extends DefaultScope {
-    protected ModuleScope() {
-
-    }
-
-    public AbstractModule getModule() {
-      return AbstractModule.this;
-    }
-
-    protected Set<IModule> getInitialModules() {
-      Set<IModule> result = new HashSet<IModule>();
-      result.add(AbstractModule.this);
-      return result;
-    }
-
-    protected Set<Language> getInitialUsedLanguages() {
-      HashSet<Language> result = new HashSet<Language>(ModuleUtil.refsToLanguages(getUsedLanguagesReferences()));
-
-      if (AbstractModule.this instanceof Language) {
-        result.add((Language) AbstractModule.this);
-        result.addAll(ModuleUtil.refsToLanguages(Collections.singletonList(BootstrapLanguages.DESCRIPTOR)));
-      }
-
-      if (AbstractModule.this instanceof Generator) {
-        result.add(((Generator) AbstractModule.this).getSourceLanguage());
-      }
-
-      return result;
-    }
-
-    public String toString() {
-      return "Scope of module " + AbstractModule.this;
-    }
+    return true;
   }
 }

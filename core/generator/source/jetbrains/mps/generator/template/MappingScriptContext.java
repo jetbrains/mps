@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,24 @@
  */
 package jetbrains.mps.generator.template;
 
-import jetbrains.mps.smodel.SModel;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public class MappingScriptContext extends TemplateQueryContext {
-  private final SNode myScript;
-  private final SNodePointer myScriptPointer;
-  private SModel myModel;
+  private final SModel myModel;
 
-  public MappingScriptContext(SModel model, SNode mappingScript, ITemplateGenerator generator) {
-    super(null, null, null, generator);
-    myScript = mappingScript;
-    myScriptPointer = null;
+  @Deprecated
+  @ToRemove(version = 2021.1)
+  public MappingScriptContext(SModel model, @NotNull SNodeReference mappingScript, @NotNull ITemplateGenerator generator) {
+    super(mappingScript, generator);
     myModel = model;
   }
 
-  public MappingScriptContext(SModel model, SNodePointer mappingScript, ITemplateGenerator generator) {
-    super(null, null, null, generator);
-    myScript = null;
-    myScriptPointer = mappingScript;
+  public MappingScriptContext(@NotNull SModel model, @NotNull SNodeReference mappingScript, @NotNull TemplateExecutionEnvironment env) {
+    super(mappingScript, env);
     myModel = model;
   }
 
@@ -45,20 +43,13 @@ public class MappingScriptContext extends TemplateQueryContext {
     return myModel;
   }
 
-  public SNode getInputNode() {
-    return null;
-  }
-
+  @Override
   public SModel getInputModel() {
     return myModel;
   }
 
+  @Override
   public SModel getOutputModel() {
     return myModel;
-  }
-
-  public SNode getTemplateNodeForLogging() {
-    return myScript != null ? myScript :
-      myScriptPointer != null ? myScriptPointer.getNode() : null;
   }
 }

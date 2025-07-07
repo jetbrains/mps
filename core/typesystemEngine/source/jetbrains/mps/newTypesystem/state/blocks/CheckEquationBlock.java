@@ -17,7 +17,7 @@ package jetbrains.mps.newTypesystem.state.blocks;
 
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.Pair;
@@ -40,14 +40,14 @@ public class CheckEquationBlock extends RelationBlock {
     SNode left = getResolvedInput(myLeftNode);
     SNode right = getResolvedInput(myRightNode);
     if (!TypesUtil.match(left, right)) {
-      myState.getNodeMaps().reportEquationBroken(myEquationInfo, left, right);
+      getState().getNodeMaps().reportEquationBroken(myEquationInfo, left, right);
     }
   }
 
   @Override
   public Set<Pair<SNode, ConditionKind>> getInitialInputs() {
-    return CollectionUtil.set(new Pair<SNode, ConditionKind>(myLeftNode, ConditionKind.CONCRETE),
-      new Pair<SNode, ConditionKind>(myRightNode, ConditionKind.CONCRETE));
+    return CollectionUtil.set(new Pair<>(myLeftNode, ConditionKind.CONCRETE),
+                              new Pair<>(myRightNode, ConditionKind.CONCRETE));
   }
 
   @Override

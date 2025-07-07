@@ -15,12 +15,10 @@
  */
 package jetbrains.mps.datatransfer;
 
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.SModel;
-import jetbrains.mps.smodel.SModelReference;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -28,25 +26,26 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * XXX why is this data modifiable? emptyPasteNodeData creates a copy with
+ * modifiable collections, does it mean we intend to modify PasteNodeData after creation?
+ */
 public class PasteNodeData {
   private List<SNode> myNodes;
   private Set<SReference> myRequireResolveReferences;
-  private Set<ModuleReference> myNecessaryLanguages;
+  private Set<SLanguage> myNecessaryLanguages;
   private Set<SModelReference> myNecessaryModels;
-  private SModel myModelProperties;
-  private IModule mySourceModule;
+  private SModelReference mySourceModel;
 
   public PasteNodeData(List<SNode> nodes, Set<SReference> references,
-                       IModule sourceModule,
-                       SModel modelProperties,
-                       Set<ModuleReference> necessaryLanguages,
+                       SModelReference sourceModelRef,
+                       Set<SLanguage> necessaryLanguages,
                        Set<SModelReference> necessaryModels) {
     myNodes = nodes;
     myRequireResolveReferences = references;
-    mySourceModule = sourceModule;
+    mySourceModel = sourceModelRef;
     myNecessaryLanguages = necessaryLanguages;
     myNecessaryModels = necessaryModels;
-    myModelProperties = modelProperties;
   }
 
   public List<SNode> getNodes() {
@@ -58,16 +57,11 @@ public class PasteNodeData {
   }
 
   @Nullable
-  public IModule getSourceModule() {
-    return mySourceModule;
+  public SModelReference getSourceModel() {
+    return mySourceModel;
   }
 
-  @Nullable
-  public SModel getModelProperties() {
-    return myModelProperties;
-  }
-
-  public Set<ModuleReference> getNecessaryLanguages() {
+  public Set<SLanguage> getNecessaryLanguages() {
     return myNecessaryLanguages;
   }
 
@@ -75,12 +69,11 @@ public class PasteNodeData {
     return myNecessaryModels;
   }
 
-  public static PasteNodeData emptyPasteNodeData(IModule sourceModule, SModel model) {
-    return new PasteNodeData(new ArrayList<SNode>(),
-      new HashSet<SReference>(),
-      sourceModule,
-      model,
-      new HashSet<ModuleReference>(),
-      new HashSet<SModelReference>());
+  public static PasteNodeData emptyPasteNodeData(SModelReference sourceModel) {
+    return new PasteNodeData(new ArrayList<>(),
+                             new HashSet<>(),
+      sourceModel,
+                             new HashSet<>(),
+                             new HashSet<>());
   }
 }

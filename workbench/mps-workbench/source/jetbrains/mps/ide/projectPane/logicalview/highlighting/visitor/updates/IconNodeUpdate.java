@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates;
 
-import jetbrains.mps.ide.ui.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 
 import javax.swing.Icon;
 
@@ -26,10 +26,12 @@ public class IconNodeUpdate extends NodeUpdate {
     myIcon = icon;
   }
 
+  @Override
   public boolean needed(MPSTreeNode node) {
-    return node.getIcon(false) != myIcon;
+    return node.getIcon() != myIcon;
   }
 
+  @Override
   public void update(MPSTreeNode node) {
     node.setIcon(myIcon);
   }

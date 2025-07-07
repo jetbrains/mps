@@ -15,103 +15,63 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SReference;
-import jetbrains.mps.smodel.constraints.IReferencePresentation;
-import jetbrains.mps.smodel.constraints.ModelConstraintsUtil;
-import org.apache.commons.lang.ObjectUtils;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.smodel.action.IReferentPresentationProvider;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SNode;
 
-public class EditorCell_RefPresentation {
+import java.util.Objects;
 
-  public static EditorCell_Property create(EditorContext context, SNode node) {
-    MyAccessor accessor = new MyAccessor();
-    EditorCell_Property result = new EditorCell_Property(context, accessor, node) {
-      @Override
-      public boolean isInTree() {
-        return super.isInTree();
-      }
+public final class EditorCell_RefPresentation {
 
-      @Override
-      public void onAdd() {
-        super.onAdd();
-        synchronizeViewWithModel();
-      }
-    };
-    accessor.myContextCell = result;
-    return result;
+  private EditorCell_RefPresentation() {
   }
 
-  public static EditorCell_Property create(EditorContext context, SNode node, SNode refNode, SNode linkDeclaration) {
-    MyAccessor accessor = new MyAccessor(context, node, refNode, linkDeclaration);
-    EditorCell_Property result = EditorCell_Property.create(context, accessor, node);
-    return result;
+  private static SReferenceLink getLinkByRole(SConcept concept, String role) {
+    for (SReferenceLink link : concept.getReferenceLinks()) {
+      if (link.getName().equals(role)) {
+        return link;
+      }
+    }
+    return null;
+  }
+
+  @NotNull
+  public static EditorCell_Property create(@NotNull EditorContext context, @NotNull SNode node, @Nullable SNode refNode,
+                                           @NotNull IReferentPresentationProvider presentationProvider) {
+    MyAccessor accessor = new MyAccessor(node, refNode, presentationProvider);
+    return EditorCell_Property.create(context, accessor, node);
   }
 
   private static class MyAccessor implements ModelAccessor {
-    private EditorCell myContextCell;
     private SNode myNode;
     private SNode myRefNode;
-    private SNode myLinkDeclaration;
-    private EditorContext myContext;
+    private IReferentPresentationProvider myPresentationProvider;
 
-    public MyAccessor() {
-    }
-
-    public MyAccessor(EditorContext context, SNode node, SNode refNode, SNode linkDeclaration) {
-      myContext = context;
+    MyAccessor(SNode node, SNode refNode, IReferentPresentationProvider presentationProvider) {
       myNode = node;
       myRefNode = refNode;
-      myLinkDeclaration = linkDeclaration;
+      myPresentationProvider = presentationProvider;
     }
 
-    private EditorCell findCellWithLinkDeclaration() {
-      EditorCell current = myContextCell;
-      while (current != null && current.getLinkDeclaration() == null) {
-        current = current.getParent();
-      }
-      if (current == null) throw new IllegalStateException();
-      return current;
-    }
-
+    @Override
     public String getText() {
-      if (myRefNode != null) {
-        SReference ref = myRefNode.getReference(SModelUtil.getLinkDeclarationRole(myLinkDeclaration));
-        if(ref == null) {
-          // FIXME throw exception if reference is null
-          return myNode.getPresentation();
-        }
-        IReferencePresentation presentation = ModelConstraintsUtil.getReferenceDescriptor(ref, myContext.getOperationContext()).getReferencePresentation();
-        if (presentation == null) {
-          return myNode.getPresentation();
-        }
-        return presentation.getText(myNode, true, false, true);
+      if (myRefNode == null) {
+        return null;
       }
-      if (myContextCell == null || myContextCell.getParent() == null) return null;
-
-      EditorCell refNodeCell = findCellWithLinkDeclaration();
-      SNode referenceTarget = refNodeCell.getSNodeWRTReference();
-
-
-      SNode node = refNodeCell.getSNode();
-      SReference ref = node.getReference(SModelUtil.getGenuineLinkRole(refNodeCell.getLinkDeclaration()));
-      if(ref == null) {
-        // FIXME throw exception if reference is null
-        return referenceTarget.getPresentation();
-      }
-      IReferencePresentation presentation = ModelConstraintsUtil.getReferenceDescriptor(ref, myContext.getOperationContext()).getReferencePresentation();
-      if (presentation == null) {
-        return referenceTarget.getPresentation();
-      }
-      return presentation.getText(referenceTarget, true, false, true);
+      return myPresentationProvider.getPresentation(myRefNode, myNode);
     }
 
+    @Override
     public void setText(String text) {
     }
 
+    @Override
     public boolean isValidText(String text) {
-      return ObjectUtils.equals(getText(), text);
+      return Objects.equals(getText(), text);
     }
   }
 }

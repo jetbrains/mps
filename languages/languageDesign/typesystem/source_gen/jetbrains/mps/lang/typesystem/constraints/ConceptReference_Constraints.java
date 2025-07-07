@@ -4,53 +4,87 @@ package jetbrains.mps.lang.typesystem.constraints;
 
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import java.util.Map;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.IScope;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.scope.Scope;
+import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
+import jetbrains.mps.lang.structure.constraints.Scopes;
+import java.util.HashMap;
+import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ConceptReference_Constraints extends BaseConstraintsDescriptor {
   public ConceptReference_Constraints() {
-    super("jetbrains.mps.lang.typesystem.structure.ConceptReference");
+    super(CONCEPTS.ConceptReference$14);
   }
 
   @Override
-  protected Map<String, ReferenceConstraintsDescriptor> getNotDefaultReferences() {
-    Map<String, ReferenceConstraintsDescriptor> references = new HashMap();
-    references.put("concept", new BaseReferenceConstraintsDescriptor("concept", this) {
+  protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.concept$zIbV, this) {
       @Override
       public boolean hasOwnOnReferenceSetHandler() {
         return true;
       }
-
       @Override
-      public boolean validate(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode, final IScope scope) {
+      public boolean validate(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
         return true;
       }
-
       @Override
-      public void onReferenceSet(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode, final IScope scope) {
+      public void onReferenceSet(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
         if ((newReferentNode != null) && newReferentNode != oldReferentNode) {
-          SPropertyOperations.set(referenceNode, "name", NameUtil.decapitalize(SPropertyOperations.getString(newReferentNode, "name")));
-          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(referenceNode), "jetbrains.mps.lang.typesystem.structure.InferenceRule")) {
-            SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(referenceNode), "jetbrains.mps.lang.typesystem.structure.InferenceRule"), "name", "typeof_" + SPropertyOperations.getString(newReferentNode, "name"));
+          SPropertyOperations.set(referenceNode, PROPS.name$MnvL, NameUtil.decapitalize(SPropertyOperations.getString(newReferentNode, PROPS.name$MnvL)));
+          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(referenceNode), CONCEPTS.InferenceRule$S3)) {
+            SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(referenceNode), CONCEPTS.InferenceRule$S3), PROPS.name$MnvL, "typeof_" + SPropertyOperations.getString(newReferentNode, PROPS.name$MnvL));
           }
         }
       }
-
+      @Override
+      public boolean hasOwnScopeProvider() {
+        return true;
+      }
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
-        return new BaseScopeProvider();
+        return new BaseScopeProvider() {
+          @Override
+          public SNodeReference getSearchScopeValidatorNode() {
+            return breakingNode_dyivod_a0a0a0a0a4a0a0a0c;
+          }
+          @Override
+          public Scope createScope(final ReferenceConstraintsContext _context) {
+            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.AbstractConceptDeclaration$KA);
+          }
+        };
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
     return references;
+  }
+  private static final SNodePointer breakingNode_dyivod_a0a0a0a0a4a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "6836281137582806988");
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ConceptReference$14 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, "jetbrains.mps.lang.typesystem.structure.ConceptReference");
+    /*package*/ static final SConcept InferenceRule$S3 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink concept$zIbV = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependenciesRoot>
+  <dependency className="jetbrains.mps.ide.findusages.view.optionseditor.DefaultOptionsContainer">
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.HashMap" />
+    <classNode dependClassName="jetbrains.mps.InternalFlag" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.ide.findusages.CantLoadSomethingException" />
+    <classNode dependClassName="jetbrains.mps.ide.findusages.CantSaveSomethingException" />
+    <classNode dependClassName="jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent" />
+    <classNode dependClassName="jetbrains.mps.ide.findusages.view.optionseditor.FindUsagesOptions" />
+    <classNode dependClassName="jetbrains.mps.ide.findusages.view.optionseditor.options.FindersOptions" />
+    <classNode dependClassName="jetbrains.mps.ide.findusages.view.optionseditor.options.ScopeOptions" />
+    <classNode dependClassName="jetbrains.mps.ide.findusages.view.optionseditor.options.ViewOptions" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="org.apache.log4j.LogManager" />
+    <classNode dependClassName="org.apache.log4j.Logger" />
+    <classNode dependClassName="org.jdom.Element" />
+  </dependency>
+  <dependency className="jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent">
+    <classNode dependClassName="com.intellij.openapi.components.State" />
+    <classNode dependClassName="com.intellij.openapi.components.Storage" />
+    <classNode dependClassName="com.intellij.openapi.components.StoragePathMacros" />
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.ide.findusages.view.optionseditor.DefaultOptionsContainer" />
+    <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="org.jdom.Element" />
+    <classNode extendsClassName="com.intellij.openapi.components.PersistentStateComponent" />
+  </dependency>
+</dependenciesRoot>
+

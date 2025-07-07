@@ -15,15 +15,15 @@
  */
 package jetbrains.mps.typesystem.inference.util;
 
-import gnu.trove.THashSet;
 import jetbrains.mps.lang.pattern.util.IMatchModifier;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.*;
 
 public class StructuralNodeSet<T> implements Set<SNode> {
-  private Set<SNodeWrapper> myWrappers = new LinkedHashSet<SNodeWrapper>();
+  private Set<SNodeWrapper> myWrappers = new LinkedHashSet<>();
 
   public StructuralNodeSet() {
   }
@@ -63,74 +63,86 @@ public class StructuralNodeSet<T> implements Set<SNode> {
   }
 
   public void putAllStructurally(StructuralNodeSet<T> ourNodes) {
-    for (SNodeWrapper w : ourNodes.myWrappers) {
-      if (!myWrappers.contains(w)) {
-        myWrappers.add(w);
-      }
-    }
+    myWrappers.addAll(ourNodes.myWrappers);
   }
 
+  @Override
   public int size() {
     return myWrappers.size();
   }
 
+  @Override
   public boolean isEmpty() {
     return myWrappers.isEmpty();
   }
 
+  @Override
   public void clear() {
     myWrappers.clear();
   }
 
+  @Override
   public boolean contains(Object o) {
     if (!(o instanceof SNode)) return false;
     return containsStructurally((SNode) o);
   }
 
+  @NotNull
+  @Override
   public Iterator<SNode> iterator() {
     return getNodes().iterator();
   }
 
   private List<SNode> getNodes() {
-    List<SNode> nodes = new ArrayList<SNode>();
+    List<SNode> nodes = new ArrayList<>();
     for (SNodeWrapper w : myWrappers) {
       nodes.add(w.myNode);
     }
     return nodes;
   }
 
+  @Override
   public boolean add(SNode o) {
     return addStructurally(o);
   }
 
-  public boolean addAll(Collection<? extends SNode> c) {
+  @Override
+  public boolean addAll(@NotNull Collection<? extends SNode> c) {
     return addCollectionStructurally(c);
   }
 
 
+  @Override
   public boolean remove(Object o) {
     if (!(o instanceof SNode)) return false;
     return removeStructurally((SNode) o);
   }
 
 
+  @NotNull
+  @Override
   public Object[] toArray() {
     return getNodes().toArray();
   }
 
-  public <T> T[] toArray(T[] a) {
+  @NotNull
+  @Override
+  public <T> T[] toArray(@NotNull T[] a) {
     return getNodes().toArray(a);
   }
 
-  public boolean containsAll(Collection<?> c) {
+  @Override
+  public boolean containsAll(@NotNull Collection<?> c) {
     throw new UnsupportedOperationException();
   }
 
-  public boolean retainAll(Collection<?> c) {
+  @Override
+  public boolean retainAll(@NotNull Collection<?> c) {
     throw new UnsupportedOperationException();
   }
 
-  public boolean removeAll(Collection<?> c) {
+  @Override
+  public boolean removeAll(@NotNull Collection<?> c) {
     throw new UnsupportedOperationException();
   }
 
@@ -151,7 +163,7 @@ public class StructuralNodeSet<T> implements Set<SNode> {
 
     private SNodeWrapper(SNode node) {
       myNode = node;
-      myHashCode = MatchingUtil.hash(myNode, false);
+      myHashCode = MatchingUtil.hash(myNode);
     }
 
     @Override

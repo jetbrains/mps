@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,10 @@
  */
 package jetbrains.mps.workbench.structureview.adds;
 
+import com.intellij.icons.AllIcons.ObjectBrowser;
 import com.intellij.ide.util.treeView.smartTree.ActionPresentation;
 import com.intellij.ide.util.treeView.smartTree.ActionPresentationData;
 import com.intellij.ide.util.treeView.smartTree.Sorter;
-import jetbrains.mps.plugins.relations.RelationDescriptor;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.workbench.structureview.nodes.AspectTreeElement;
 import org.jetbrains.annotations.NotNull;
 
@@ -29,55 +26,46 @@ import java.util.Comparator;
 
 public class AspectNodeSorter implements Sorter {
 
+  @Override
   public Comparator getComparator() {
     return new EditorTabComparator();
   }
 
+  @Override
   public boolean isVisible() {
-    return false;
+    return true;
   }
 
+  @Override
   @NotNull
   public ActionPresentation getPresentation() {
-    return new ActionPresentationData("Sort Nodes by Aspect", "", jetbrains.mps.workbench.structureview.adds.icons.Icons.SORT_NODES_BY_ASPECT_ICON);
+    return new ActionPresentationData("Sort Nodes by Aspect", "", ObjectBrowser.SortByType);
   }
 
+  @Override
   @NotNull
   public String getName() {
     return "AspectNodesSorter";
   }
 
   private static class EditorTabComparator implements Comparator {
-    public int compare(Object o1, Object o2) {
-      if (!(o1 instanceof AspectTreeElement || o2 instanceof AspectTreeElement)) return 0;
 
-      if (!(o1 instanceof AspectTreeElement)) return 1;
-      if (!(o2 instanceof AspectTreeElement)) return -1;
+    @Override
+    public int compare(Object o1, Object o2) {
+      if (!(o1 instanceof AspectTreeElement || o2 instanceof AspectTreeElement)) {
+        return 0;
+      }
+
+      if (!(o1 instanceof AspectTreeElement)) {
+        return 1;
+      }
+      if (!(o2 instanceof AspectTreeElement)) {
+        return -1;
+      }
 
       final AspectTreeElement ate1 = (AspectTreeElement) o1;
-      RelationDescriptor d1 = ate1.getAspectDescriptor();
       final AspectTreeElement ate2 = (AspectTreeElement) o2;
-      RelationDescriptor d2 = ate2.getAspectDescriptor();
-
-      int r1 = d1.compareTo(d2);
-      int r2 = d2.compareTo(d1);
-
-      if ((r1 == 0) ^ (r2 == 0)) return r1 - r2;
-
-      assert r1 * r2 <= 0 : "can't determine order";
-
-      if (r1 != 0) return r1;
-
-      return ModelAccess.instance().runReadAction(new Computable<Integer>() {
-        public Integer compute() {
-          SNode n1 = ate1.getValue().getNode();
-          SNode n2 = ate2.getValue().getNode();
-
-          if (n1 == null || n2 == null) return 0;
-
-          return n1.getConceptFqName().compareTo(n2.getConceptFqName());
-        }
-      });
+      return ate1.compareTo(ate2);
     }
   }
 }

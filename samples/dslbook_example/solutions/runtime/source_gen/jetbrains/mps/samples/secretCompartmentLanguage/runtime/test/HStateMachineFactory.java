@@ -10,7 +10,7 @@ import jetbrains.mps.samples.secretCompartmentLanguage.runtime.State;
 public final class HStateMachineFactory extends StateMachineFactory {
   public HStateMachineFactory() {
   }
-
+  @Override
   public StateMachine getStateMachine() {
     Event doorClosed = new Event("doorClosed", "D1CL");
     Event drawOpened = new Event("drawOpened", "D2OP");

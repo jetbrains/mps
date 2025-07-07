@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,30 +15,24 @@
  */
 package jetbrains.mps.ide.navigation;
 
-import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.ModuleContext;
+import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.MPSModuleRepository;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 /**
 * evgeny, 11/6/11
 */
 public class ModuleNavigatable extends BaseNavigatable {
-  private ModuleReference moduleReference;
+  private SModuleReference myModuleReference;
 
-  public ModuleNavigatable(Project project, ModuleReference moduleReference) {
+  public ModuleNavigatable(@NotNull Project project, @NotNull SModuleReference moduleReference) {
     super(project);
-    this.moduleReference = moduleReference;
+    myModuleReference = moduleReference;
   }
 
   @Override
-  protected void doNavigate(boolean focus) {
-    IModule module = MPSModuleRepository.getInstance().getModule(moduleReference);
-    if (module == null) return;
-
-    ModuleContext context = new ModuleContext(module, project);
-    NavigationSupport.getInstance().selectInTree(context, module, focus);
+  public void navigate(boolean focus) {
+    new ProjectPaneNavigator(myProject).shallFocus(focus).select(myModuleReference);
   }
 }

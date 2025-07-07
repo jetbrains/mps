@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,16 @@
  */
 package jetbrains.mps.generator.impl.dependencies;
 
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.smodel.SModelReference;
-import jetbrains.mps.smodel.SNode;
 import org.jdom.Attribute;
 import org.jdom.Element;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 /**
+ * FIXME if we'd like to keep using this object, shall refactor all storage from string to native objects (e.g. SModelReference, SNodeId, etc)
+ * Strings consume quite a lot of memory on startup
  * Evgeny Gryaznov, Jun 1, 2010
  */
 public class GenerationRootDependencies {
@@ -91,12 +89,19 @@ public class GenerationRootDependencies {
   }
 
   public List<String> getFiles() {
-    return Collections.unmodifiableList(myGeneratedFiles);
+    return myGeneratedFiles == null ? Collections.emptyList() : Collections.unmodifiableList(myGeneratedFiles);
   }
 
   public void addGeneratedFile(String name) {
-    if (name == null) throw new IllegalArgumentException("name is null");
-    myGeneratedFiles.add(name);
+    if (name == null) {
+      throw new IllegalArgumentException("name is null");
+    }
+    if (myGeneratedFiles == null) {
+      myGeneratedFiles = new ArrayList<>(2);
+    }
+    if (!myGeneratedFiles.contains(name)) {
+      myGeneratedFiles.add(name);
+    }
   }
 
   public void saveTo(Element element) {
@@ -125,10 +130,13 @@ public class GenerationRootDependencies {
       node.setAttribute(ATTR_MODEL_ID, id);
       element.addContent(node);
     }
-    for (String file : myGeneratedFiles) {
-      Element node = new Element(NODE_FILE);
-      node.setAttribute(ATTR_NAME, file);
-      element.addContent(node);
+    if (myGeneratedFiles != null) {
+      Collections.sort(myGeneratedFiles);
+      for (String file : myGeneratedFiles) {
+        Element node = new Element(NODE_FILE);
+        node.setAttribute(ATTR_NAME, file);
+        element.addContent(node);
+      }
     }
   }
 
@@ -137,58 +145,32 @@ public class GenerationRootDependencies {
     return attr == null ? null : attr.getValue();
   }
 
-  public static GenerationRootDependencies fromXml(Element element, boolean isCommon) {
-    String rootId = isCommon ? null : getValue(element, ATTR_ID);
+  public static GenerationRootDependencies fromXml(Element element, boolean isCommon, Intern intern) {
+    String rootId = isCommon ? null : intern.value(getValue(element, ATTR_ID));
     String rootName = getValue(element, ATTR_NAME);
     String rootHash = getValue(element, ATTR_HASH);
     boolean dependsOnConditionals = "true".equals(getValue(element, ATTR_DEPENDS_ON_CONDITIONALS));
     boolean dependsOnNodes = "true".equals(getValue(element, ATTR_DEPENDS_ON_NODES));
-    List<String> local = new ArrayList<String>();
-    List<String> external = new ArrayList<String>();
-    List<String> files = new ArrayList<String>();
-    for (Element e : ((List<Element>) element.getChildren(NODE_DEPENDS_ON))) {
+    ArrayList<String> local = new ArrayList<>();
+    ArrayList<String> external = new ArrayList<>();
+    ArrayList<String> files = new ArrayList<>();
+    for (Element e : element.getChildren(NODE_DEPENDS_ON)) {
       Attribute attr = e.getAttribute(ATTR_ROOT_ID);
       if (attr != null) {
-        local.add(attr.getValue());
+        local.add(intern.value(attr.getValue()));
       } else if ((attr = e.getAttribute(ATTR_MODEL_ID)) != null) {
-        external.add(attr.getValue());
+        external.add(intern.value(attr.getValue()));
       }
     }
-    for (Element e : ((List<Element>) element.getChildren(NODE_FILE))) {
+    for (Element e : element.getChildren(NODE_FILE)) {
       String v = getValue(e, ATTR_NAME);
       if (v != null) {
-        files.add(v);
+        files.add(intern.value(v));
       }
     }
+    local.trimToSize();
+    external.trimToSize();
+    files.trimToSize();
     return new GenerationRootDependencies(rootId, rootName, rootHash, dependsOnConditionals, dependsOnNodes, local, external, files);
-  }
-
-  public static GenerationRootDependencies fromData(RootDependenciesBuilder l, List<String> generatedFiles) {
-    final Collection<SNode> localNodes = l.getDependsOn();
-    final Collection<SModelDescriptor> externalModels = l.getDependsOnModels();
-
-    List<String> local = new ArrayList<String>(localNodes.size());
-    for (SNode n : localNodes) {
-      local.add(n.getId());
-    }
-    Collections.sort(local);
-
-    List<String> external = new ArrayList<String>(externalModels.size());
-    for (SModelDescriptor m : externalModels) {
-      final SModelReference modelRef = m.getSModelReference();
-      if(modelRef == null) {
-        continue; // TODO report error?
-      }
-      external.add(modelRef.toString());
-    }
-    Collections.sort(external);
-    Collections.sort(generatedFiles);
-
-    final SNode originalRoot = l.getOriginalRoot();
-    return new GenerationRootDependencies(
-      originalRoot != null ? originalRoot.getId() : null,
-      originalRoot != null ? originalRoot.getName() : null,
-      l.getHash(), l.isDependsOnConditionals(), l.isDependsOnModelNodes(),
-      local, external, generatedFiles);
   }
 }

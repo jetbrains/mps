@@ -17,7 +17,7 @@ package jetbrains.mps.newTypesystem;
 
 import jetbrains.mps.lang.pattern.IMatchingPattern;
 import jetbrains.mps.lang.typesystem.runtime.RuntimeSupport;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 
@@ -34,24 +34,25 @@ public class RuntimeSupportNew extends RuntimeSupport {
     return subTyping.coerceSubTypingNew(subtype, pattern, isWeak, null);
   }
 
+  @Override
   public SNode coerce_(SNode subtype, IMatchingPattern pattern) {
     SubTypingManagerNew subTyping = (SubTypingManagerNew) myTypeChecker.getSubtypingManager();
     return subTyping.coerceSubTypingNew(subtype, pattern, true, null);
   }
 
+  @Override
   public SNode coerce_(SNode subtype, IMatchingPattern pattern, boolean isWeak, TypeCheckingContext typeCheckingContext) {
     if (typeCheckingContext == null) {
       return coerce_(subtype, pattern);
     }
-    TypeCheckingContextNew tcc = ((TypeCheckingContextNew) typeCheckingContext);
-    return tcc.getSubTyping().coerceSubTypingNew(subtype, pattern, isWeak, tcc.getState());
+    return ((SubTypingManagerNew)TypeChecker.getInstance().getSubtypingManager()).coerceSubTypingNew(subtype, pattern, isWeak, typeCheckingContext);
   }
 
+  @Override
   public SNode coerce_(SNode subtype, IMatchingPattern pattern, TypeCheckingContext typeCheckingContext) {
     if (typeCheckingContext == null) {
       return coerce_(subtype, pattern);
     }
-    TypeCheckingContextNew tcc = ((TypeCheckingContextNew) typeCheckingContext);
-    return tcc.getSubTyping().coerceSubTypingNew(subtype, pattern, true, tcc.getState());
+    return ((SubTypingManagerNew)TypeChecker.getInstance().getSubtypingManager()).coerceSubTypingNew(subtype, pattern, true, typeCheckingContext);
   }
 }

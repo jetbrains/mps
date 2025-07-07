@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,24 @@
  */
 package jetbrains.mps.generator.impl.cache;
 
-import jetbrains.mps.generator.TransientSModel;
-import jetbrains.mps.smodel.SModel;
-import jetbrains.mps.smodel.SModelReference;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.persistence.binary.BareNodeReader;
+import jetbrains.mps.persistence.binary.BareNodeWriter;
+import jetbrains.mps.util.io.ModelInputStream;
+import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.io.IOException;
 import java.util.List;
 
 /**
+ * Only TransientModelWithMetaInfo uses this class. As long as TransientModelWithMetaInfo is unused, no reason to strive for no deprecated api usages here
  * Evgeny Gryaznov, Sep 22, 2010
  */
-public class TransientModelPersistence {
+/*package*/ class TransientModelPersistence {
 
-  private static final int VERSION = 4;
+  private static final int VERSION = 6;
   private final SModelReference myModelReference;
 
   public TransientModelPersistence(@NotNull SModelReference modelReference) {
@@ -38,7 +41,7 @@ public class TransientModelPersistence {
 
   public void saveModel(List<SNode> roots, ModelOutputStream os) throws IOException {
     os.writeInt(VERSION);
-    new NodesWriter(myModelReference).writeNodes(roots, os);
+    new BareNodeWriter(myModelReference, os).writeNodes(roots);
   }
 
   public List<SNode> loadModel(ModelInputStream is) throws IOException {
@@ -46,10 +49,7 @@ public class TransientModelPersistence {
     if (version != VERSION) {
       return null;
     }
-
-    SModel m = new TransientSModel(myModelReference);
-    List<SNode> roots = new NodesReader(myModelReference).readNodes(m, is);
-    return roots;
+    return new BareNodeReader(myModelReference, is).readChildren(null);
   }
 
 }

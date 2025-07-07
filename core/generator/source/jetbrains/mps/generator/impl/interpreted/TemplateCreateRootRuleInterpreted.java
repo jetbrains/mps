@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,68 +16,49 @@
 package jetbrains.mps.generator.impl.interpreted;
 
 import jetbrains.mps.generator.GenerationCanceledException;
-import jetbrains.mps.generator.impl.*;
-import jetbrains.mps.generator.impl.TemplateProcessor.TemplateProcessingFailureException;
+import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
+import jetbrains.mps.generator.impl.GenerationFailureException;
+import jetbrains.mps.generator.impl.RuleUtil;
+import jetbrains.mps.generator.impl.query.CreateRootCondition;
+import jetbrains.mps.generator.impl.query.QueryKey;
+import jetbrains.mps.generator.impl.query.QueryKeyImpl;
+import jetbrains.mps.generator.runtime.CreateRootRuleBase;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateCreateRootRule;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
-import jetbrains.mps.generator.template.TemplateFunctionMethodName;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.util.QueryMethodGenerated;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
 
-/**
- * Evgeny Gryaznov, Nov 30, 2010
- */
-public class TemplateCreateRootRuleInterpreted implements TemplateCreateRootRule {
-
-  private final SNode ruleNode;
+public class TemplateCreateRootRuleInterpreted extends CreateRootRuleBase implements TemplateCreateRootRule {
+  private final SNode myRuleNode;
+  private final String myMappingName;
+  private CreateRootCondition myCondition;
 
   public TemplateCreateRootRuleInterpreted(SNode ruleNode) {
-    this.ruleNode = ruleNode;
+    super(ruleNode.getReference());
+    myRuleNode = ruleNode;
+    myMappingName = RuleUtil.getCreateRootRuleLabel(ruleNode);
   }
 
-  public SNodePointer getRuleNode() {
-    return new SNodePointer(ruleNode);
-  }
-
-  public boolean isApplicable(TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationFailureException {
-    SNode conditionFunction = RuleUtil.getCreateRootRuleCondition(ruleNode);
-    if (conditionFunction == null) {
-      return true;
+  @Override
+  public boolean isApplicable(@NotNull TemplateContext context) throws GenerationFailureException {
+    if (myCondition == null) {
+      SNode conditionFunction = RuleUtil.getCreateRootRuleCondition(myRuleNode);
+      QueryKey identity = conditionFunction == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getRuleNode(), conditionFunction.getNodeId());
+      myCondition = context.getEnvironment().getQueryProvider(getRuleNode()).getCreateRootRuleCondition(identity);
     }
-    String methodName = TemplateFunctionMethodName.createRootRule_Condition(conditionFunction);
-    try {
-      return (Boolean) QueryMethodGenerated.invoke(
-        methodName,
-        environment.getGenerator().getGeneratorSessionContext(),
-        new CreateRootRuleContext(ruleNode, environment.getGenerator()),
-        ruleNode.getModel(),
-        true);
-    } catch (ClassNotFoundException e) {
-      environment.getGenerator().getLogger().warning(ruleNode, "cannot find condition method '" + methodName + "' : evaluate to FALSE");
-    } catch (NoSuchMethodException e) {
-      environment.getGenerator().getLogger().warning(ruleNode, "cannot find condition method '" + methodName + "' : evaluate to FALSE");
-    } catch (Throwable t) {
-      environment.getGenerator().getLogger().handleException(t);
-      environment.getGenerator().getLogger().error(ruleNode, "error executing condition " + methodName + " (see exception)");
-      throw new GenerationFailureException(t);
-    }
-    return false;
+    return myCondition.check(new CreateRootRuleContext(context, getRuleNode()));
   }
 
-  public Collection<SNode> apply(TemplateExecutionEnvironment environment) throws GenerationCanceledException, TemplateProcessingFailureException, GenerationFailureException, DismissTopMappingRuleException {
-    SNode templateNode = RuleUtil.getCreateRootRuleTemplateNode(ruleNode);
+  @Override
+  public Collection<SNode> apply(TemplateContext context) throws GenerationCanceledException, GenerationFailureException, DismissTopMappingRuleException {
+    SNode templateNode = RuleUtil.getCreateRootRuleTemplateNode(myRuleNode);
     if (templateNode != null) {
-      String ruleMappingName = RuleUtil.getCreateRootRuleLabel(ruleNode);
-
-      return new TemplateProcessor(environment.getGenerator(), environment.getReductionContext())
-        .processTemplateNode(ruleMappingName, templateNode, new DefaultTemplateContext(null));
+      return context.getEnvironment().getTemplateProcessor().apply(templateNode, context.subContext(myMappingName));
     } else {
-      environment.getGenerator().showErrorMessage(null, null, ruleNode, "'create root' rule has no template");
+      context.getEnvironment().getLogger().error(getRuleNode(), "'create root' rule has no template");
       return null;
     }
   }

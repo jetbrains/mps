@@ -16,29 +16,29 @@
 package jetbrains.mps.lang.editor.cellProviders;
 
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteEasily;
-import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeletePropertyOrNode;
-import jetbrains.mps.nodeEditor.CellActionType;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
+import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSPropertyOrNode;
+import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode.DeleteDirection;
 import jetbrains.mps.nodeEditor.cells.EditorCell_URL;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.SNode;
 
-public class URLCellProvider extends PropertyCellProvider {  
-
-  public URLCellProvider(SNode node, EditorContext context) {
-    super(node, context);
+@SuppressWarnings("unused")
+//used as generation target
+public class URLCellProvider extends PropertyCellProvider {
+  public URLCellProvider(@NotNull SNode node, SProperty property, EditorContext context) {
+    super(node, property, context);
   }
 
-  public EditorCell createEditorCell(EditorContext context) {    
-    EditorCell_URL editorCell = EditorCell_URL.create(context, getSNode(), getPropertyName());
+  @Override
+  public EditorCell createEditorCell(EditorContext context) {
+    EditorCell_URL editorCell = EditorCell_URL.create(context, getSNode(), getProperty());
     editorCell.setDefaultText(myNoTargetText);
-    if (!myReadOnly) {
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeletePropertyOrNode(getSNode(), getPropertyName()));
-    } else {
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteEasily(getSNode()));
-    }
     return editorCell;
   }
-
 }
 

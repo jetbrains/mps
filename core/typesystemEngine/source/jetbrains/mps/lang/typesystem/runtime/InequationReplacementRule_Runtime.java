@@ -15,33 +15,23 @@
  */
 package jetbrains.mps.lang.typesystem.runtime;
 
-import jetbrains.mps.smodel.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public abstract class InequationReplacementRule_Runtime implements IRuleWithTwoApplicableNodes {
 
-  @Deprecated
-  public abstract void processInequation(SNode subtype, SNode supertype, EquationInfo errorInfo);
-
-  @Deprecated
-  public boolean checkInequation(SNode subtype, SNode supertype, EquationInfo equationInfo) {
+  // weak, lessThan, equationInfo parameters seem to be ignored
+  public boolean checkInequation(SNode subtype, SNode supertype, EquationInfo equationInfo, IsApplicable2Status status, boolean weak, boolean lessThan) {
     return false;
   }
 
-  public boolean checkInequation(SNode subtype, SNode supertype, EquationInfo equationInfo, IsApplicable2Status status, boolean weak, boolean lessThan) {
-    return checkInequation(subtype, supertype, equationInfo);
-  }
-
   //todo generate this method
-  public boolean checkInequation(SNode subtype, SNode supertype, EquationInfo equationInfo, IsApplicable2Status status, boolean weak) {
-    return checkInequation(subtype, supertype, equationInfo, status, weak, true);
+  public boolean checkInequation(SNode subtype, SNode supertype, IsApplicable2Status status, boolean weak) {
+    return checkInequation(subtype, supertype, null, status, weak, true);
   }
 
-  //todo generate this method
-  public boolean checkInequation(SNode subtype, SNode supertype, EquationInfo equationInfo, IsApplicable2Status status) {
-    return checkInequation(subtype, supertype, equationInfo, status, true, true);
-  }
-
+  @Override
   public IsApplicable2Status isApplicableAndPatterns(SNode node1, SNode node2) {
     IsApplicableStatus applicableStatus1 = isApplicableSubtypeAndPattern(node1);
     if (!applicableStatus1.isApplicable()) return IsApplicable2Status.FALSE_STATUS;
@@ -69,35 +59,32 @@ public abstract class InequationReplacementRule_Runtime implements IRuleWithTwoA
     return new IsApplicableStatus(b, null);
   }
 
-  public abstract String getApplicableSubtypeConceptFQName();
-
-  public abstract String getApplicableSupertypeConceptFQName();
-
+  @Override
   public boolean isApplicable1(SNode node) {
     return isApplicableSubtype(node);
   }
 
+  public abstract SAbstractConcept getApplicableSubtypeConcept();
+
+  public abstract SAbstractConcept getApplicableSupertypeConcept();
+
+  @Override
+  public SAbstractConcept getApplicableConcept1() {
+    return getApplicableSubtypeConcept();
+  }
+
+  @Override
+  public SAbstractConcept getApplicableConcept2() {
+    return getApplicableSupertypeConcept();
+  }
+
+  @Override
   public boolean isApplicable2(SNode node) {
     return isApplicableSupertype(node);
   }
 
-  public String getApplicableConceptFQName1() {
-    return getApplicableSubtypeConceptFQName();
-  }
-
-  public String getApplicableConceptFQName2() {
-    return getApplicableSupertypeConceptFQName();
-  }
-
-  @Deprecated
-  public boolean isApplicableCustom(SNode subtype, SNode supertype) {
-    return true;
-  }
-
   //todo generate this method
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return isApplicableCustom(subtype, supertype);
+    return true;
   }
-
-
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,87 +15,121 @@
  */
 package jetbrains.mps.generator.impl.reference;
 
-import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
+import jetbrains.mps.generator.impl.GeneratorMappings;
 import jetbrains.mps.generator.impl.GeneratorUtil;
 import jetbrains.mps.generator.impl.TemplateGenerator;
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.DynamicReference.DynamicReferenceOrigin;
+import jetbrains.mps.textgen.trace.TracingUtil;
+import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SReference;
 
 /**
+ * Restore a reference originally between template nodes
  * Evgeny Gryaznov, 11/19/10
  */
-public class ReferenceInfo_Template extends ReferenceInfo_TemplateBase {
-  private SNodePointer myTemplateSourceNode;
-  private String myTemplateTargetNode;
-  private TemplateContext myContext;
-  private String myResolveInfo;
+public class ReferenceInfo_Template extends ReferenceInfo {
+  private final SNodeReference myTemplateSourceNode;
+  private final String myTemplateTargetNode;
+  private final TemplateContext myContext;
+  private final String myResolveInfo;
 
 
-  public ReferenceInfo_Template(@NotNull SNode outputSourceNode, String role, SNodePointer sourceNode, String targetNodeId, String resolveInfo, TemplateContext context) {
-    super(outputSourceNode, role, context.getInput());
+  public ReferenceInfo_Template(SNodeReference sourceNode, String targetNodeId, String resolveInfo, TemplateContext context) {
     myContext = context;
     myTemplateSourceNode = sourceNode;
     myTemplateTargetNode = targetNodeId;
     myResolveInfo = resolveInfo;
   }
 
-  public SNode getInputTargetNode() {
-    throw new UnsupportedOperationException();
+  @Nullable
+  @Override
+  public SReference create(@NotNull PostponedReference ref) {
+    SNode outputTargetNode = doResolve_Straightforward(ref);
+    if (outputTargetNode != null) {
+      return createStaticReference(ref, outputTargetNode);
+    }
+    if (myResolveInfo != null) {
+      final SNodeReference inputNodeRef = myContext.getInput() == null ? null : myContext.getInput().getReference();
+      final SReference dr = createDynamicReference(ref, myResolveInfo, new DynamicReferenceOrigin(myTemplateSourceNode, inputNodeRef));
+      ref.getGenerator().registerDynamicReference(dr);
+      return dr; 
+    }
+    return createInvalidReference(ref, null);
   }
 
-  public SNode doResolve_Straightforward(TemplateGenerator generator) {
-    // try to find for the same inputNode
-    SNode outputTargetNode = generator.findOutputNodeByInputAndTemplateNode(getInputNode(), myTemplateTargetNode);
+  private SNode doResolve_Straightforward(PostponedReference ref) {
+    final TemplateGenerator generator = ref.getGenerator();
+    final GeneratorMappings mappings = generator.getMappings();
+
+    SNode outputTargetNode = mappings.findOutputForTemplate(myTemplateTargetNode, myContext, myTemplateSourceNode);
     if (outputTargetNode != null) {
-      checkCrossRootTemplateReference(outputTargetNode, generator);
+      checkCrossRootTemplateReference(outputTargetNode, ref);
       return outputTargetNode;
     }
 
-    // if template has been applied exactly once, then we have unique output node for each template node
-    outputTargetNode = generator.findOutputNodeByTemplateNodeUnique(myTemplateTargetNode);
-    if (outputTargetNode != null) {
-      checkCrossRootTemplateReference(outputTargetNode, generator);
-      return outputTargetNode;
+    return null;
+  }
+
+  private void checkCrossRootTemplateReference(@NotNull SNode outputTarget, PostponedReference ref) {
+    final TemplateGenerator generator = ref.getGenerator();
+    if (!generator.isStrict() /* here used to be !isIncremental() check, see commend below*/) {
+      return;
     }
 
-    // try to find for indirect input nodes
-    for (SNode historyInputNode : myContext.getInputHistory()) {
-      outputTargetNode = generator.findOutputNodeByInputAndTemplateNode(historyInputNode, myTemplateTargetNode);
-      if (outputTargetNode != null) {
-        checkCrossRootTemplateReference(outputTargetNode, generator);
-        return outputTargetNode;
+    // Additional check - reference target should be generated from the same root (required for incremental generation)
+    // I believe origin of this error is the chance next incremental generation may proceed target as unchanged, and there would be no
+    // output mapping for the given templateNodeId, and to prevent this case the error is reported.
+    // There are, however, legitimate references like this when target is known to be regenerated regardless of incremental
+    // mode (e.g. QueriesGenerated in generator) - target being a "common" dependency, the one that is affected by any model change.
+    SNode outputTargetRoot = outputTarget.getContainingRoot();
+    SNode outputSourceRoot = ref.getSourceNode().getContainingRoot();
+    SModel model = outputTargetRoot.getModel();
+    if (model == null || outputTargetRoot.getParent() != null) {
+      SNode inputSourceRoot = generator.getOriginalRootByGenerated(outputSourceRoot);
+      SNode inputTargetRoot = generator.getOriginalRootByGenerated(outputTargetRoot);
+      if (inputTargetRoot != inputSourceRoot) {
+        if (inputTargetRoot == null || inputSourceRoot == null) {
+          // this may happen when we are in in-place transformation mode, outputTargetRoot is not a root node, instead, it's just top-most
+          // replacement node we are going to inject into input model some time later. With that, getOriginalRootByGenerated fails to return any reasonable
+          // value and there's a confusing warning. Instead, just try to use 'originTrace' user object to see if both element originates from the same one.
+          // This covers quite narrow set of cases, I believe; the proper fix would be either to skip this check altogether in 'in-place' mode (but there's
+          // no easy way to figure out we're in that mode, nothing like generator.isStrict()), or to split valitation into separate function that can
+          // get invoked from PostponedReference#replace (i.e. once node tree is complete). Latter seems to much for maintenance branch; hence I resort
+          // to the fix that helps to address exact scenario (see MPS-32140)
+          SNodeReference n1 = firstOriginNode(ref.getSourceNode(), outputSourceRoot);
+          SNodeReference n2 = firstOriginNode(outputTarget, outputTargetRoot);
+          //
+          if (n1 != null && n1.equals(n2)) {
+            // originate at the same node of the input model
+            return;
+          }
+          // fall through if both are null or not the same
+        }
+        generator.getLogger().warning(myTemplateSourceNode, "references across templates for different roots are not allowed: use mapping labels, " +
+            "source root: " + (inputSourceRoot == null ? "<conditional root>" : SNodeOperations.getDebugText(inputSourceRoot)) +
+            ", target root: " + (inputTargetRoot == null ? "<conditional root>" : SNodeOperations.getDebugText(inputTargetRoot)),
+            GeneratorUtil.describeIfExists(ref.getSourceNode(), "source"),
+            GeneratorUtil.describeIfExists(outputTarget, "target"));
       }
     }
+  }
 
+  private static SNodeReference firstOriginNode(SNode ... nodes) {
+    for (SNode n : nodes) {
+      if (n == null) {
+        continue;
+      }
+      final SNodeReference origin = TracingUtil.getInput(n);
+      if (origin != null) {
+        return origin;
+      }
+    }
     return null;
-  }
-
-  public SNode doResolve_Tricky(TemplateGenerator generator) {
-    return null;
-  }
-
-  public String getResolveInfoForDynamicResolve() {
-    return myResolveInfo;
-  }
-
-  public String getResolveInfoForNothing() {
-    return myResolveInfo;
-  }
-
-  @Override
-  public ProblemDescription[] getErrorDescriptions() {
-    SNode inputNode = getInputNode();
-    return new ProblemDescription[]{
-      GeneratorUtil.describe(inputNode, "input node"),
-      GeneratorUtil.describe(myTemplateSourceNode.getNode(), "original reference")
-    };
-  }
-
-
-  @Override
-  protected SNode getTemplateNode() {
-    return myTemplateSourceNode != null ? myTemplateSourceNode.getNode() : null;
   }
 }

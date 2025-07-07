@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,82 +19,103 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.ide.bookmark.BookmarkManager.BookmarkListener;
 import jetbrains.mps.ide.icons.IdeIcons;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.ide.ui.MPSTree;
-import jetbrains.mps.ide.ui.MPSTreeNode;
-import jetbrains.mps.ide.ui.TextTreeNode;
-import jetbrains.mps.ide.ui.smodel.SNodeTreeNode;
+import jetbrains.mps.ide.ui.tree.MPSTree;
+import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.TextTreeNode;
+import jetbrains.mps.ide.ui.tree.smodel.NodeTargetProvider;
+import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.project.ProjectOperationContext;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.workbench.action.BaseAction;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.List;
 import java.util.Map;
 
 public class BookmarksTree extends MPSTree {
-
-  private BookmarkManager myBookmarkManager;
-  private Project myProject;
+  private final BookmarkManager myBookmarkManager;
+  private final Project myProject;
 
   public BookmarksTree(Project project, BookmarkManager bookmarkManager) {
     myBookmarkManager = bookmarkManager;
     myProject = project;
 
     myBookmarkManager.addBookmarkListener(new BookmarkListener() {
+      @Override
       public void bookmarkAdded(int number, SNode node) {
         rebuildBookmarksTree();
       }
 
+      @Override
       public void bookmarkRemoved(int number, SNode node) {
         rebuildBookmarksTree();
       }
-    });
-  }
 
-  private void rebuildBookmarksTree() {
-    ModelAccess.instance().runReadInEDT(new Runnable() {
-      public void run() {
-        BookmarksTree.this.rebuildNow();
+      private void rebuildBookmarksTree() {
+        BookmarksTree.this.rebuildLater();
       }
     });
   }
 
+  @Override
+  protected void doInit(MPSTreeNode node, Runnable nodeInitRunnable) {
+    super.doInit(node, new ModelReadRunnable(myProject.getModelAccess(), nodeInitRunnable));
+  }
+
+  @Override
+  protected void runRebuildAction(Runnable rebuildAction, boolean saveExpansion) {
+    super.runRebuildAction(new ModelReadRunnable(myProject.getModelAccess(), rebuildAction), saveExpansion);
+  }
+
+  @Override
+  protected ActionGroup createPopupActionGroup(final MPSTreeNode node) {
+    if (node instanceof BookmarkNode) {
+      BaseAction action = new BaseAction("Remove Bookmark") {
+        @Override
+        protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
+          ((BookmarkNode) node).removeBookmark();
+        }
+      };
+      return ActionUtils.groupFromActions(action);
+    } else if(!(node instanceof SNodeTreeNode)){
+      BaseAction hierarchyAction = new BaseAction("Remove All Bookmarks") {
+        @Override
+        protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
+          myBookmarkManager.clearBookmarks();
+        }
+      };
+      return ActionUtils.groupFromActions(hierarchyAction);
+    }
+    return null;
+  }
+
+  @Override
   protected MPSTreeNode rebuild() {
-    MPSTreeNode root = new TextTreeNode("no bookmarks") {
-      public ActionGroup getActionGroup() {
-        BaseAction hierarchyAction = new BaseAction("Remove All Bookmarks") {
-          protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
-            myBookmarkManager.clearBookmarks();
-          }
-        };
-        return ActionUtils.groupFromActions(hierarchyAction);
-      }
-    };
+    MPSTreeNode root = new TextTreeNode("no bookmarks");
     root.setIcon(IdeIcons.DEFAULT_ICON);
-    List<SNodePointer> nodePointers = myBookmarkManager.getAllNumberedBookmarks();
+    List<SNodeReference> nodePointers = myBookmarkManager.getAllNumberedBookmarks();
     boolean hasBookmarks = false;
     for (int i = 0; i < nodePointers.size(); i++) {
-      final SNodePointer nodePointer = nodePointers.get(i);
-      if (nodePointer != null && nodePointer.getNode() != null) {
+      final SNodeReference nodePointer = nodePointers.get(i);
+      if (nodePointer != null && nodePointer.resolve(myProject.getRepository()) != null) {
         hasBookmarks = true;
         TextTreeNode textTreeNode = new MyTextTreeNodeNumbered(i);
         textTreeNode.setIcon(BookmarkManager.getIcon(i));
-        textTreeNode.add(new MySNodeTreeNode(nodePointer.getNode(), null, new ProjectOperationContext(myProject)));
+        textTreeNode.add(new SNodeTreeNode(nodePointer.resolve(myProject.getRepository())));
         root.add(textTreeNode);
       }
     }
     nodePointers = myBookmarkManager.getAllUnnumberedBookmarks();
-    for (SNodePointer nodePointer : nodePointers) {
-      if (nodePointer != null && nodePointer.getNode() != null) {
+    for (SNodeReference nodePointer : nodePointers) {
+      if (nodePointer != null && nodePointer.resolve(myProject.getRepository()) != null) {
         hasBookmarks = true;
         TextTreeNode textTreeNode = new MyTextTreeNodeUnnumbered(nodePointer);
         textTreeNode.setIcon(BookmarkManager.getIcon(-1));
-        textTreeNode.add(new MySNodeTreeNode(nodePointer.getNode(), null, new ProjectOperationContext(myProject)));
+        textTreeNode.add(new SNodeTreeNode(nodePointer.resolve(myProject.getRepository())));
         root.add(textTreeNode);
       }
     }
@@ -107,12 +128,7 @@ public class BookmarksTree extends MPSTree {
   public void gotoSelectedBookmark() {
     final BookmarkNode node = getSelectedBookmarkNode();
     if (node != null) {
-      ModelAccess.instance().runWriteInEDT(new Runnable() {
-        @Override
-        public void run() {
-          node.navigateToBookmark();
-        }
-      });
+      node.navigateToBookmark();
     }
   }
 
@@ -134,10 +150,23 @@ public class BookmarksTree extends MPSTree {
     return null;
   }
 
-  private interface BookmarkNode {
-    public void navigateToBookmark();
+  @Override
+  protected void doubleClick(@NotNull MPSTreeNode nodeToClick) {
+    if (nodeToClick instanceof NodeTargetProvider) {
+      final SNodeReference navigationTarget = ((NodeTargetProvider) nodeToClick).getNavigationTarget();
+      if (navigationTarget != null) {
+        new EditorNavigator(myProject).shallFocus(true).selectIfChild().open(navigationTarget);
+        return;
+      }
+      // fall-through
+    }
+    super.doubleClick(nodeToClick);
+  }
 
-    public void removeBookmark();
+  private interface BookmarkNode {
+    void navigateToBookmark();
+
+    void removeBookmark();
   }
 
   private class MyTextTreeNodeNumbered extends TextTreeNode implements BookmarkNode {
@@ -149,82 +178,34 @@ public class BookmarksTree extends MPSTree {
       setNodeIdentifier("bookmark" + i);
     }
 
+    @Override
     public void removeBookmark() {
       myBookmarkManager.removeBookmark(myNumber);
     }
 
+    @Override
     public void navigateToBookmark() {
       myBookmarkManager.navigateToBookmark(myNumber);
-    }
-
-    public ActionGroup getActionGroup() {
-      BaseAction action = new BaseAction("Remove Bookmark") {
-        protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
-          removeBookmark();
-        }
-      };
-      return ActionUtils.groupFromActions(action);
     }
   }
 
   private class MyTextTreeNodeUnnumbered extends TextTreeNode implements BookmarkNode {
-    SNodePointer myNodePointer;
+    SNodeReference myNodePointer;
 
-    public MyTextTreeNodeUnnumbered(SNode node) {
-      super("bookmark");
-      myNodePointer = new SNodePointer(node);
-      setNodeIdentifier("bookmark_" + node.getId());
-    }
-
+    @Override
     public void removeBookmark() {
       myBookmarkManager.removeUnnumberedBookmark(myNodePointer);
     }
 
-    public MyTextTreeNodeUnnumbered(SNodePointer nodePointer) {
+    public MyTextTreeNodeUnnumbered(SNodeReference nodePointer) {
       super("bookmark");
       myNodePointer = nodePointer;
-      setNodeIdentifier("bookmark_" + nodePointer.getNodeId().toString());
+      setNodeIdentifier("bookmark_" + nodePointer.toString());
     }
 
+    @Override
     public void navigateToBookmark() {
-      SNode targetNode = myNodePointer.getNode();
-      if (targetNode != null) {
-        NavigationSupport.getInstance().openNode(new ProjectOperationContext(myProject), targetNode, true, true);
-      }
-    }
-
-    public ActionGroup getActionGroup() {
-      BaseAction action = new BaseAction("Remove Bookmark") {
-        protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
-          removeBookmark();
-        }
-      };
-      return ActionUtils.groupFromActions(action);
-    }
-  }
-
-  private static class MySNodeTreeNode extends SNodeTreeNode {
-    public MySNodeTreeNode(SNode node, String role, IOperationContext operationContext) {
-      super(node, role, operationContext);
-    }
-
-    public void doubleClick() {
-      ModelAccess.instance().runWriteInEDT(new Runnable() {
-        @Override
-        public void run() {
-          SNode openNode = getSNode();
-          if (openNode == null) return;
-          NavigationSupport.getInstance().openNode(getOperationContext(), openNode, true, !(openNode.isRoot()));
-        }
-      });
-    }
-
-    public ActionGroup getActionGroup() {
-      return null;
-    }
-
-    protected SNodeTreeNode createChildTreeNode(SNode childNode, String role, IOperationContext operationContext) {
-      return new MySNodeTreeNode(childNode, role, operationContext);
+      new EditorNavigator(myProject).shallFocus(true).shallSelect(true).open(myNodePointer);
     }
   }
 }

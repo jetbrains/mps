@@ -19,9 +19,11 @@ import com.intellij.ide.CopyPasteManagerEx;
 import com.intellij.ide.PasteProvider;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.logging.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,9 +32,10 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
 public class FilePanePasteProvider implements PasteProvider {
-  private final static Logger LOG = Logger.getLogger(FilePanePasteProvider.class);
+  private final static Logger LOG = LogManager.getLogger(FilePanePasteProvider.class);
 
-  public void performPaste(DataContext dataContext) {
+  @Override
+  public void performPaste(@NotNull DataContext dataContext) {
     CopyPasteFilesData data = getData(dataContext);
     if (data != null) {
       paste(data, getDir(dataContext));
@@ -53,10 +56,7 @@ public class FilePanePasteProvider implements PasteProvider {
           return null;
         }
 
-      } catch (UnsupportedFlavorException e) {
-        LOG.error("Exception", e);
-        return null;
-      } catch (IOException e) {
+      } catch (UnsupportedFlavorException | IOException e) {
         LOG.error("Exception", e);
         return null;
       }
@@ -77,26 +77,31 @@ public class FilePanePasteProvider implements PasteProvider {
   }
 
   private void paste(@NotNull CopyPasteFilesData data, @NotNull VirtualFile basedir) {
-    for (VirtualFile f : data.getFiles()) {
-      try {
-        if (!FileTypeManager.getInstance().isFileIgnored(f.getName())) {
-          if (!data.isCut()) {
-            f.copy(this, basedir, f.getName());
-          } else {
-            f.move(this, basedir);
+      for (VirtualFile f: data.getFiles()) {
+
+      if (!FileTypeManager.getInstance().isFileIgnored(f.getName())) {
+        ApplicationManager.getApplication().runWriteAction(() -> {
+          try {
+            if (!data.isCut()) {
+              f.copy(this, basedir, f.getName());
+            } else {
+              f.move(this, basedir);
+            }
+          } catch (IOException e) {
+            LOG.error(String.format("Error while pasting %s %n", f), e);
           }
-        }
-      } catch (IOException e) {
-        LOG.error("Error while pasting " + f + "\n", e);
+        });
       }
     }
   }
 
-  public boolean isPastePossible(DataContext dataContext) {
+  @Override
+  public boolean isPastePossible(@NotNull DataContext dataContext) {
     return (getDir(dataContext) != null) && (getData(dataContext) != null);
   }
 
-  public boolean isPasteEnabled(DataContext dataContext) {
+  @Override
+  public boolean isPasteEnabled(@NotNull DataContext dataContext) {
     return (getDir(dataContext) != null) && (getData(dataContext) != null);
   }
 }

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependenciesRoot>
+  <dependency className="testCustomAnalyzer.dataFlow.ChildIntraModeRule">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.ConceptDataFlowModeId" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.IDataFlowModeId" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.Program" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor" />
+  </dependency>
+  <dependency className="testCustomAnalyzer.dataFlow.ChildRule">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.Program" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.instructions.Instruction" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode dependClassName="testCustomAnalyzer.dataFlow.counterInstructionAInstruction" />
+    <classNode extendsClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor" />
+  </dependency>
+  <dependency className="testCustomAnalyzer.dataFlow.Child_IntraProceduralSpecific_BuilderMode_DataFlow">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilderContext" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.ConceptDataFlowModeId" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.IDataFlowModeId" />
+    <classNode extendsClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilder" />
+  </dependency>
+  <dependency className="testCustomAnalyzer.dataFlow.Child_IntraProcedural_BuilderMode_DataFlow">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilderContext" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.ConceptDataFlowModeId" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.IDataFlowModeId" />
+    <classNode extendsClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilder" />
+  </dependency>
+  <dependency className="testCustomAnalyzer.dataFlow.CounterAnalyzerWithConstructorAnalyzerRunner">
+    <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="java.lang.Integer" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Collections" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.MPSProgramFactory" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.AnalysisDirection" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowAnalyzerBase" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.IDataFlowModeId" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.NamedAnalyzerId" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.Program" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.ProgramFactory" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.ProgramState" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.analyzers.runtime.framework.CustomAnalyzerRunner" />
+  </dependency>
+  <dependency className="testCustomAnalyzer.dataFlow.CustomAnalyzerWithModeAnalyzerRunner">
+    <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="java.lang.Integer" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Collections" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.MPSProgramFactory" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.AnalysisDirection" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowAnalyzerBase" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.IDataFlowModeId" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.NamedAnalyzerId" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.Program" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.ProgramFactory" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.ProgramState" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.analyzers.runtime.framework.CustomAnalyzerRunner" />
+  </dependency>
+  <dependency className="testCustomAnalyzer.dataFlow.DataFlowAspectDescriptorImpl">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="java.util.Collections" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.IDataFlowBuilder" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.MetaIdFactory" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="testCustomAnalyzer.dataFlow.ChildIntraModeRule" />
+    <classNode dependClassName="testCustomAnalyzer.dataFlow.ChildRule" />
+    <classNode dependClassName="testCustomAnalyzer.dataFlow.Child_IntraProceduralSpecific_BuilderMode_DataFlow" />
+    <classNode dependClassName="testCustomAnalyzer.dataFlow.Child_IntraProcedural_BuilderMode_DataFlow" />
+    <classNode dependClassName="testCustomAnalyzer.dataFlow.OtherChild_IntraProcedural_BuilderMode_DataFlow" />
+    <classNode dependClassName="testCustomAnalyzer.dataFlow.OtherRoot_DataFlow" />
+    <classNode dependClassName="testCustomAnalyzer.dataFlow.OtherSubChild_IntraProceduralSpecific_BuilderMode_DataFlow" />
+    <classNode dependClassName="testCustomAnalyzer.dataFlow.Root_DataFlow" />
+    <classNode extendsClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptorBase" />
+  </dependency>
+  <dependency className="testCustomAnalyzer.dataFlow.OtherChild_IntraProcedural_BuilderMode_DataFlow">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilderContext" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.ConceptDataFlowModeId" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.IDataFlowModeId" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilder" />
+  </dependency>
+  <dependency className="testCustomAnalyzer.dataFlow.OtherRoot_DataFlow">
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilderContext" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilder" />
+  </dependency>
+  <dependency className="testCustomAnalyzer.dataFlow.OtherSubChild_IntraProceduralSpecific_BuilderMode_DataFlow">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilderContext" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.ConceptDataFlowModeId" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.IDataFlowModeId" />
+    <classNode extendsClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilder" />
+  </dependency>
+  <dependency className="testCustomAnalyzer.dataFlow.Root_DataFlow">
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilderContext" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilder" />
+  </dependency>
+  <dependency className="testCustomAnalyzer.dataFlow.counterInstructionAInstruction">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.StringBuilder" />
+    <classNode extendsClassName="jetbrains.mps.analyzers.runtime.framework.GeneratedInstruction" />
+  </dependency>
+  <dependency className="testCustomAnalyzer.dataFlow.counterInstructionBInstruction">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.StringBuilder" />
+    <classNode extendsClassName="jetbrains.mps.analyzers.runtime.framework.GeneratedInstruction" />
+  </dependency>
+</dependenciesRoot>
+

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,29 @@
  */
 package jetbrains.mps.nodeEditor.cellActions;
 
-import jetbrains.mps.nodeEditor.datatransfer.NodePaster;
-import jetbrains.mps.nodeEditor.selection.SelectionManager;
-import jetbrains.mps.resolve.ResolverComponent;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SReference;
-import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.datatransfer.PasteNodeData;
 import jetbrains.mps.datatransfer.PastePlaceHint;
+import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
+import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.nodeEditor.*;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
-import jetbrains.mps.nodeEditor.cells.CellFinders;
+import jetbrains.mps.nodeEditor.datatransfer.NodePaster;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.resolve.ResolverComponent;
+import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.List;
 import java.util.Set;
 
 
-public class CellAction_PasteNodeRelative extends EditorCellAction {
-  private static final Logger LOG = Logger.getLogger(CellAction_PasteNodeRelative.class);
+public class CellAction_PasteNodeRelative extends AbstractCellAction {
+  private static final Logger LOG = Logger.wrap(LogManager.getLogger(CellAction_PasteNodeRelative.class));
 
   PastePlaceHint myPastePlaceHint;
 
@@ -42,8 +45,9 @@ public class CellAction_PasteNodeRelative extends EditorCellAction {
     myPastePlaceHint = pasteBefore ? PastePlaceHint.BEFORE_ANCHOR : PastePlaceHint.AFTER_ANCHOR;
   }
 
+  @Override
   public boolean canExecute(EditorContext context) {
-    EditorCell selectedCell = context.getNodeEditorComponent().getSelectedCell();
+    EditorCell selectedCell = context.getSelectedCell();
     if (selectedCell == null) {
       return false;
     }
@@ -53,7 +57,7 @@ public class CellAction_PasteNodeRelative extends EditorCellAction {
     }
     List<SNode> pasteNodes = CopyPasteUtil.getNodesFromClipboard(anchorNode.getModel());
     if (pasteNodes == null || pasteNodes.isEmpty()) {
-      return CopyPasteUtil.isConversionAvailable(anchorNode.getModel(), anchorNode);
+      return false;
     }
 
     if (!new NodePaster(pasteNodes).canPasteRelative(anchorNode)) {
@@ -63,28 +67,28 @@ public class CellAction_PasteNodeRelative extends EditorCellAction {
     return true;
   }
 
+  @Override
   public void execute(EditorContext context) {
-    LOG.assertInCommand();
-    EditorComponent editorComponent = context.getNodeEditorComponent();
+    LOG.assertLog(context.getRepository().getModelAccess().isCommandAction(), "This action must be performed in command");
+    EditorComponent editorComponent = (EditorComponent) context.getEditorComponent();
     EditorCell selectedCell = editorComponent.getSelectedCell();
     SNode anchorNode = selectedCell.getSNode();
 
     PasteNodeData pasteNodeData = CopyPasteUtil.getPasteNodeDataFromClipboard(anchorNode.getModel());
     if (pasteNodeData == null || pasteNodeData.getNodes().isEmpty()) {
-      pasteNodeData = CopyPasteUtil.getConvertedFromClipboard(anchorNode.getModel(), context.getOperationContext().getProject());
-      if (pasteNodeData == null) return;
+      return;
     }
     List<SNode> pasteNodes = pasteNodeData.getNodes();
     Set<SReference> requireResolveReferences = pasteNodeData.getRequireResolveReferences();
 
     new NodePaster(pasteNodes).pasteRelative(anchorNode, myPastePlaceHint);
-    ResolverComponent.getInstance().resolveScopesOnly(requireResolveReferences, context.getOperationContext());
+    ResolverComponent.getInstance().resolveScopesOnly(requireResolveReferences, context.getRepository());
 
     // set selection
-    editorComponent.flushEvents();
+    editorComponent.getUpdater().flushModelEvents();
     EditorCell nodeCell = editorComponent.findNodeCell(pasteNodes.get(0));
     if (nodeCell == null) return; // after 'set reference'?
-    EditorCell_Label labelCell = nodeCell.findChild(CellFinders.byClass(EditorCell_Label.class, true));
+    EditorCell_Label labelCell = CellFinderUtil.findChildByClass(nodeCell, EditorCell_Label.class, true);
 
     if (labelCell != null) {
       editorComponent.changeSelection(labelCell);

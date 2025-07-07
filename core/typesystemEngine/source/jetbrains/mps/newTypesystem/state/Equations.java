@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,25 +19,34 @@ import gnu.trove.THashMap;
 import gnu.trove.THashSet;
 import jetbrains.mps.errors.SimpleErrorReporter;
 import jetbrains.mps.newTypesystem.TypesUtil;
-import jetbrains.mps.newTypesystem.operation.AddErrorOperation;
-import jetbrains.mps.newTypesystem.operation.TraceWarningOperation;
 import jetbrains.mps.newTypesystem.operation.equation.AddEquationOperation;
 import jetbrains.mps.newTypesystem.operation.equation.SubstituteEquationOperation;
 import jetbrains.mps.smodel.CopyUtil;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SReference;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.IVariableConverter_Runtime;
+import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystemEngine.util.LatticeUtil;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.Pair;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.openapi.model.SReference;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 public class Equations {
   @StateObject
-  private final Map<SNode, SNode> myRepresentatives = new THashMap<SNode, SNode>();
+  private final Map<SNode, SNode> myRepresentatives = new THashMap<>();
 
-  private final Map<String, SNode> myNamesToNodes = new HashMap<String, SNode>();
+  private final Map<String, SNode> myNamesToNodes = new HashMap<>();
   private final State myState;
 
   public Equations(State state) {
@@ -70,7 +79,11 @@ public class Equations {
   }
 
   public SNode getRepresentative(final SNode node) {
-    return getRepresentative(node,true);
+    return getRepresentative(node, true);
+  }
+
+  public SNode getRepresentativeNoShortenPaths(final SNode node) {
+    return getRepresentative(node,false);
   }
 
   private SNode getRepresentative(final SNode node, final boolean shortenPaths) {
@@ -78,16 +91,17 @@ public class Equations {
       return node;
     }
     SNode nameRepresentative = getNameRepresentative(node);
-    SNode parent = myRepresentatives.get(nameRepresentative);
+    SNode currentKey = nameRepresentative;
     SNode current = nameRepresentative;
-    if (parent != null) {
-      List<SNode> path = new LinkedList<SNode>();
-      while (parent != null) {
+    if (myRepresentatives.containsKey(currentKey)) {
+      List<SNode> path = new LinkedList<>();
+      while (myRepresentatives.containsKey(currentKey)) {
+        SNode parent = myRepresentatives.get(currentKey);
         if (current != nameRepresentative) {
           path.add(current);
         }
         current = parent;
-        parent = myRepresentatives.get(parent);
+        currentKey = parent;
       }
       if (path.size() > 1 && shortenPaths) {
         for (SNode elem : path) {
@@ -95,7 +109,7 @@ public class Equations {
         }
       }
     }
-    assert getNameRepresentative(current) == current;
+    assert getNameRepresentative(current) == current : "Wrong name representative in equations '" + current + "'";
     return current;
   }
 
@@ -110,11 +124,11 @@ public class Equations {
   public boolean addEquation(SNode left, SNode right, EquationInfo info) {
     SNode lRepresentative = getRepresentative(left);
     SNode rRepresentative = getRepresentative(right);
- /*   if (lRepresentative == null || rRepresentative == null) {
-      myState.executeOperation(new TraceWarningOperation("Equation was not added: " + lRepresentative + " = " + rRepresentative, info));
-      return false;
-    } */
-    if (lRepresentative !=null && lRepresentative.equals(rRepresentative)) {
+    /*   if (lRepresentative == null || rRepresentative == null) {
+     myState.executeOperation(new TraceWarningOperation("Equation was not added: " + lRepresentative + " = " + rRepresentative, info));
+     return false;
+   } */
+    if (lRepresentative != null && lRepresentative.equals(rRepresentative)) {
       return true;
     }
     if (TypesUtil.isVariable(lRepresentative)) {
@@ -133,13 +147,18 @@ public class Equations {
     if (left == right) {
       return true;
     }
-    return TypesUtil.match(left, right, this, info);
+    THashSet<Pair<SNode, SNode>> matchingPairs = new THashSet<>();
+    boolean match = TypesUtil.matchExpandingJoinAndMeet(left, right, matchingPairs);
+    if (match) {
+      addEquations(matchingPairs, info);
+    }
+    return match;
   }
 
   private boolean processEquation(SNode var, SNode type, EquationInfo info) {
     SNode source = myState.getNodeMaps().getNode(var);
     for (SNode innerVar : TypesUtil.getVariables(type, myState)) {
-      if (getRepresentative(innerVar, false).equals(var)){
+      if (getRepresentative(innerVar, false).equals(var)) {
         reportRecursiveType(source, info);
         return false;
       }
@@ -150,14 +169,19 @@ public class Equations {
   }
 
   public SNode expandNode(final SNode node, boolean finalExpansion) {
-    return expandNode(node, new THashSet<SNode>(), finalExpansion, true);
+    return expandNode(node, new THashSet<>(), finalExpansion, true);
   }
 
   private SNode expandNode(final SNode node, Set<SNode> variablesMet, boolean finalExpansion, boolean copy) {
     if (node == null) {
       return null;
     }
-    SNode type = getRepresentative(node);
+
+    SNode type = getRepresentativeNoShortenPaths(node);
+    if (finalExpansion && LatticeUtil.isMeet(type)) {
+      type = TypesUtil.cleanupMeet(type);
+    }
+
     if (type != node) {
       SNode result = expandNode(type, variablesMet, finalExpansion, copy);
       variablesMet.remove(type);
@@ -171,12 +195,13 @@ public class Equations {
   }
 
   private void replaceChildren(SNode node, Set<SNode> variablesMet, boolean finalExpansion, boolean copy) {
-    Map<SNode, SNode> childrenReplacement = new THashMap<SNode, SNode>();
+    Map<SNode, SNode> childrenReplacement = new THashMap<>();
     for (SNode child : node.getChildren()) {
       SNode newChild = expandNode(child, variablesMet, finalExpansion, copy);
       if (finalExpansion && TypesUtil.isVariable(newChild)) {
-        newChild = convertReferentVariable(node, child.getRole_(), child);
+        newChild = convertReferentVariable(node, child.getRoleInParent(), child);
       }
+
       if (newChild != child) {
         childrenReplacement.put(child, newChild);
       }
@@ -185,12 +210,12 @@ public class Equations {
       SNode parent = child.getParent();
       assert parent != null;
       SNode childReplacement = CopyUtil.copy(childrenReplacement.get(child));
-      parent.replaceChild(child, childReplacement);
+      SNodeUtil.replaceWithAnother(child, childReplacement);
     }
   }
 
   private void replaceReferences(SNode node, Set<SNode> variablesMet, boolean finalExpansion) {
-    List<SReference> references = new ArrayList<SReference>(node.getReferences());
+    List<? extends SReference> references = IterableUtil.copyToList(node.getReferences());
     for (SReference reference : references) {
       SNode oldNode = reference.getTargetNode();
       if (TypesUtil.isVariable(oldNode)) {
@@ -199,24 +224,24 @@ public class Equations {
           newNode = convertReferentVariable(node, reference.getRole(), newNode);
         }
         if (newNode != oldNode) {
-          String role = reference.getRole();
-          node.removeReference(reference);
-          node.setReferent(role, newNode);
+          SReferenceLink role = reference.getLink();
+          // no idea why set null/set newNode via constraints, not just set newNode.
+          node.dropReference(role);
+          SNodeAccessUtil.setReferenceTarget(node, role, newNode);
         }
       }
     }
   }
 
   private SNode convertReferentVariable(SNode sourceNode, String role, SNode variable) {
-    IVariableConverter_Runtime converter = myState.getTypeCheckingContext().getTypeChecker().getRulesManager().getVariableConverter(sourceNode, role, variable, false);
+    IVariableConverter_Runtime converter = TypeChecker.getInstance().getRulesManager().getVariableConverter(sourceNode, role, variable, false);
     if (converter == null) return variable;
     return converter.convert(sourceNode, role, variable, false);
   }
 
   void reportRecursiveType(SNode node, EquationInfo info) {  //todo
-    SimpleErrorReporter errorReporter = new SimpleErrorReporter(node, "Recursive types not allowed",
-                info == null? null:info.getRuleModel(), info == null? null:info.getRuleId());
-    myState.getTypeCheckingContext().reportMessage(node, errorReporter);
+    SimpleErrorReporter errorReporter = new SimpleErrorReporter(node, "Recursive types not allowed", info.getRuleNode());
+    myState.getTypeCheckingContext().reportMessage(errorReporter);
   }
 
   public void addEquations(Set<Pair<SNode, SNode>> childEqs, EquationInfo errorInfo) {
@@ -231,15 +256,16 @@ public class Equations {
   }
 
   public Set<Entry<SNode, Set<SNode>>> getEquationGroups() {
-    Set<SNode> all = new THashSet<SNode>();
-    List<String> result = new LinkedList<String>();
-    Map<SNode, Set<SNode>> map = new THashMap<SNode, Set<SNode>>();
+    Set<SNode> all = new THashSet<>();
+    List<String> result = new LinkedList<>();
+    Map<SNode, Set<SNode>> map = new THashMap<>();
     all.addAll(myRepresentatives.keySet());
     for (SNode node : all) {
-      SNode representative = getRepresentative(node);
+      SNode representative = getRepresentativeNoShortenPaths(node);
+      if (representative == null) continue;
       Set<SNode> value = map.get(representative);
       if (value == null) {
-        value = new THashSet<SNode>();
+        value = new THashSet<>();
         map.put(representative, value);
       }
       if (node != representative) {

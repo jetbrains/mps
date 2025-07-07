@@ -10,7 +10,6 @@ import jetbrains.mps.internal.collections.runtime.StopIteratingException;
 
 public class TranslatingSequence<U, V> extends AbstractChainedSequence<U, V> implements Iterable<V> {
   private final _FunctionTypes._return_P1_E0<? extends Iterable<V>, ? super U> translator;
-
   public TranslatingSequence(Iterable<U> input, _FunctionTypes._return_P1_E0<? extends Iterable<V>, ? super U> translator) {
     super(input);
     if (translator == null) {
@@ -18,20 +17,18 @@ public class TranslatingSequence<U, V> extends AbstractChainedSequence<U, V> imp
     }
     this.translator = translator;
   }
-
+  @Override
   public Iterator<V> iterator() {
-    return new TranslatingSequence.TranslatingIterator();
+    return new TranslatingIterator();
   }
-
   private class TranslatingIterator implements Iterator<V> {
     private Iterator<U> inputIt;
     private Iterator<V> transIt;
     private HasNextState hasNext = HasNextState.UNKNOWN;
     private V next;
-
     private TranslatingIterator() {
     }
-
+    @Override
     public boolean hasNext() {
       if (inputIt == null) {
         init();
@@ -41,7 +38,7 @@ public class TranslatingSequence<U, V> extends AbstractChainedSequence<U, V> imp
       }
       return hasNext.hasNext();
     }
-
+    @Override
     public V next() {
       if (inputIt == null) {
         init();
@@ -54,15 +51,13 @@ public class TranslatingSequence<U, V> extends AbstractChainedSequence<U, V> imp
       }
       return clearNext();
     }
-
+    @Override
     public void remove() {
       throw new UnsupportedOperationException();
     }
-
     private void init() {
       inputIt = getInput().iterator();
     }
-
     private void moveToNext() {
       hasNext = HasNextState.AT_END;
       next = null;
@@ -99,7 +94,6 @@ public class TranslatingSequence<U, V> extends AbstractChainedSequence<U, V> imp
         }
       } while (true);
     }
-
     private V clearNext() {
       V tmp = next;
       next = null;

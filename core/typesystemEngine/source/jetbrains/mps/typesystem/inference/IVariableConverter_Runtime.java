@@ -15,10 +15,10 @@
  */
 package jetbrains.mps.typesystem.inference;
 
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public interface IVariableConverter_Runtime {
-  public boolean isApplicable(SNode context, String role, SNode target, boolean isAggregation);
+  boolean isApplicable(SNode context, String role, SNode target, boolean isAggregation);
 
-  public SNode convert(SNode context, String role, SNode target, boolean isAggregation);
+  SNode convert(SNode context, String role, SNode target, boolean isAggregation);
 }

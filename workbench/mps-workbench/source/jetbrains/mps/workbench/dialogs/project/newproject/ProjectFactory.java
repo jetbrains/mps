@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,56 +16,73 @@
 package jetbrains.mps.workbench.dialogs.project.newproject;
 
 import com.intellij.ide.startup.StartupManagerEx;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
+import com.intellij.openapi.components.StorageScheme;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.openapi.startup.StartupManager;
-import com.intellij.platform.ProjectBaseDirectory;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.ProjectPane;
-import jetbrains.mps.library.LanguageDesign_DevKit;
-import jetbrains.mps.project.*;
-import jetbrains.mps.project.structure.modules.LanguageDescriptor;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
+import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.SModuleOperations;
+import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.StandaloneMPSProject;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 
 import java.io.File;
 
-/**
- * Added on Oct 16, 2010
- *
- * @author Evgeny Gerashchenko
- */
 public class ProjectFactory {
   private ProjectOptions myOptions;
-  private Project myCurrentProject;
   private Project myCreatedProject;
 
   private Language myCreatedLanguage;
   private Solution myCreatedSolution;
+  private DevKit myCreatedDevkit;
 
-  public ProjectFactory(Project currentProject, ProjectOptions options) {
-    myCurrentProject = currentProject;
+  public ProjectFactory(ProjectOptions options) {
     myOptions = options;
   }
 
   public Project createProject() throws ProjectNotCreatedException {
     final String[] error = new String[]{null};
-    ProgressManager.getInstance().run(new Task.Modal(myCurrentProject, "Creating", false) {
+    ProgressManager.getInstance().run(new Task.Modal(null, "Creating Project", false) {
+      @Override
       public void run(@NotNull() ProgressIndicator indicator) {
         indicator.setIndeterminate(true);
         error[0] = createDirs();
-        if (error[0] != null) return;
-        String projectFilePath = myOptions.getProjectPath() + File.separator + myOptions.getProjectName() + MPSExtentions.DOT_MPS_PROJECT;
-        myCreatedProject = ProjectManagerEx.getInstanceEx().newProject(myOptions.getProjectName(), projectFilePath, true, false);
+        if (error[0] != null) {
+          return;
+        }
+
+        final String projectFilePath = myOptions.getStorageScheme() == StorageScheme.DIRECTORY_BASED
+                                       ? myOptions.getProjectPath()
+                                       : myOptions.getProjectPath() + File.separator + myOptions.getProjectName() + MPSExtentions.DOT_MPS_PROJECT;
+        //MPS-22895 need to run in EDT
+        ApplicationManager.getApplication().invokeAndWait(() -> {
+          try {
+            ApplicationManager.getApplication().runWriteAction(() -> {
+              myCreatedProject = ProjectManagerEx.getInstanceEx().newProject(
+                  myOptions.getProjectName(), projectFilePath,
+                  true, false);
+            });
+          } catch (Exception e) {
+            throw new RuntimeException(e);
+          }
+        }, indicator.getModalityState());
       }
     });
 
@@ -73,71 +90,62 @@ public class ProjectFactory {
       throw new ProjectNotCreatedException(error[0]);
     }
 
-    boolean doNotSave = ApplicationManagerEx.getApplicationEx().isDoNotSave();
+    boolean saveAllowed = ApplicationManagerEx.getApplicationEx().isSaveAllowed();
     try {
-      ApplicationManagerEx.getApplicationEx().doNotSave(false);
+      ApplicationManagerEx.getApplicationEx().setSaveAllowed(true);
       myCreatedProject.save();
-    }
-    finally {
-      ApplicationManagerEx.getApplicationEx().doNotSave(doNotSave);
+    } finally {
+      ApplicationManagerEx.getApplicationEx().setSaveAllowed(saveAllowed);
     }
 
     //noinspection ConstantConditions
     final MPSProject mpsProject = myCreatedProject.getComponent(MPSProject.class);
+    assert mpsProject != null;
 
-    StartupManager.getInstance(myCreatedProject).registerPostStartupActivity(new Runnable() {
-      @Override
-      public void run() {
-        ModelAccess.instance().runWriteActionInCommand(new Runnable() {
-          public void run() {
-            if (myOptions.getCreateNewLanguage()) {
-              myCreatedLanguage = createNewLanguage(mpsProject);
-              mpsProject.addModule(myCreatedLanguage.getModuleReference());
-              myCreatedLanguage.save();
-            }
-
-            if (myOptions.getCreateNewSolution()) {
-              myCreatedSolution = createNewSolution(mpsProject);
-              myCreatedSolution.save();
-              mpsProject.addModule(myCreatedSolution.getModuleReference());
-            }
-
-            if (myCreatedSolution != null && myCreatedLanguage != null) {
-              myCreatedSolution.addUsedLanguage(myCreatedLanguage.getModuleReference());
-              myCreatedSolution.save();
-
-              if (myOptions.getCreateModel()) {
-                EditableSModelDescriptor model = myCreatedSolution.createModel(SModelFqName.fromString(myCreatedSolution.getModuleReference().getModuleFqName() + ".sandbox"), myCreatedSolution.getSModelRoots().iterator().next(), null);
-                model.getSModel().addLanguage(myCreatedLanguage.getModuleReference());
-                model.save();
-              }
-            }
-            if(myOptions.getCreateNewSolution() || myOptions.getCreateNewLanguage()) {
-              ((StandaloneMPSProject) mpsProject).update();
-            }
-          }
-        });
+    StartupManager.getInstance(myCreatedProject).registerPostStartupActivity(() -> mpsProject.getModelAccess().executeCommand(() -> {
+      if (myOptions.getCreateNewLanguage()) {
+        myCreatedLanguage = NewModuleUtil.createLanguage(myOptions.getLanguageNamespace(), myOptions.getLanguagePath(), mpsProject);
       }
-    });
+
+      if (myOptions.getCreateNewSolution()) {
+        myCreatedSolution = NewModuleUtil.createSolution(myOptions.getSolutionNamespace(), myOptions.getSolutionPath(), mpsProject);
+      }
+
+      if (myOptions.getCreateNewDevkit()) {
+        myCreatedDevkit = NewModuleUtil.createDevKit(myOptions.getDevkitNamespace(), myOptions.getDevkitPath(), mpsProject);
+      }
+
+      if (myCreatedSolution != null && myCreatedLanguage != null) {
+        myCreatedSolution.save();
+        if (myOptions.getCreateModel()) {
+          EditableSModel model = SModuleOperations.createModelWithAdjustments(
+              myCreatedSolution.getModuleReference().getModuleName() + ".sandbox",
+              myCreatedSolution.getModelRoots().iterator().next());
+          ((SModelInternal) model).addLanguage(MetaAdapterFactory.getLanguage(myCreatedLanguage.getModuleReference()));
+          model.save();
+        }
+      }
+      if (myOptions.getCreateNewSolution() || myOptions.getCreateNewLanguage() || myOptions.getCreateNewDevkit()) {
+        ((StandaloneMPSProject) mpsProject).update();
+      }
+    }));
     return myCreatedProject;
   }
 
   public void activate() {
-    if (myCreatedProject == null) return;
-    myCreatedProject.getComponent(MPSProjectVersion.class).setVersion(MPSProjectVersion.CURRENT);
-
-    ProjectBaseDirectory.getInstance(myCreatedProject).setBaseDir(myCreatedProject.getBaseDir());
+    if (myCreatedProject == null) {
+      return;
+    }
+    ProjectMigrationsRegistry.getInstance().applyMigrationsToNewProject(ProjectHelper.fromIdeaProject(myCreatedProject));
 
     ProjectManagerEx projectManager = ProjectManagerEx.getInstanceEx();
     boolean opened = projectManager.openProject(myCreatedProject);
 
     if (opened) {
       StartupManagerEx startupManager = StartupManagerEx.getInstanceEx(myCreatedProject);
-      Runnable projectPaneActivator = new Runnable() {
-        public void run() {
-          ProjectPane.getInstance(myCreatedProject).activate();
-        }
-      };
+      // extra .invokeLater() was added here (copied from IDEA platform) see: https://youtrack.jetbrains.com/issue/IDEA-158859
+      Runnable projectPaneActivator =
+          () -> ApplicationManager.getApplication().invokeLater(ProjectPane.getInstance(myCreatedProject)::activate, ModalityState.NON_MODAL);
       if (startupManager.postStartupActivityPassed()) {
         startupManager.runWhenProjectIsInitialized(projectPaneActivator);
       } else {
@@ -150,13 +158,17 @@ public class ProjectFactory {
   private String createDirs() {
     File projectDirFile = new File(myOptions.getProjectPath());
     if (!(projectDirFile.exists())) {
-      if (!projectDirFile.mkdirs()) return "Couldn't create project directory";
+      if (!projectDirFile.mkdirs()) {
+        return "Couldn't create project directory";
+      }
     }
 
     if (myOptions.getCreateNewLanguage()) {
       File languageDirFile = new File(myOptions.getLanguagePath());
       if (!(languageDirFile.exists())) {
-        if (!languageDirFile.mkdirs()) return "Couldn't create language directory";
+        if (!languageDirFile.mkdirs()) {
+          return "Couldn't create language directory";
+        }
       }
     }
 
@@ -165,40 +177,13 @@ public class ProjectFactory {
       File solutionDescriptorFile = new File(path);
       File dir = solutionDescriptorFile.getParentFile();
       if (!(dir.exists())) {
-        if (!dir.mkdirs()) return "Couldn't create solution directory";
+        if (!dir.mkdirs()) {
+          return "Couldn't create solution directory";
+        }
       }
     }
 
     return null;
-  }
-
-  private Solution createNewSolution(MPSProject mpsProject) {
-    String descriptorFileName = myOptions.getSolutionNamespace() + MPSExtentions.DOT_SOLUTION;
-    String descriptorPath = myOptions.getSolutionPath() + File.separator + descriptorFileName;
-    IFile descriptorFile = FileSystem.getInstance().getFileByPath(descriptorPath);
-
-    return NewModuleUtil.createNewSolution(myOptions.getSolutionNamespace(), descriptorFile, mpsProject);
-  }
-
-  private Language createNewLanguage(MPSProject mpsProject) {
-    String descriptorFileName = NameUtil.shortNameFromLongName(myOptions.getLanguageNamespace()) + MPSExtentions.DOT_LANGUAGE;
-    String descriptorPath = myOptions.getLanguagePath() + File.separator + descriptorFileName;
-    IFile descriptorFile = FileSystem.getInstance().getFileByPath(descriptorPath);
-
-    Language language = NewModuleUtil.createNewLanguage(myOptions.getLanguageNamespace(), descriptorFile, mpsProject);
-    LanguageDescriptor languageDescriptor = language.getModuleDescriptor();
-    languageDescriptor.getUsedDevkits().add(LanguageDesign_DevKit.MODULE_REFERENCE);
-    languageDescriptor.setDoNotGenerateAdapters(true);
-    
-    LanguageAspect.STRUCTURE.createNew(language, false);
-    LanguageAspect.EDITOR.createNew(language, false);
-    LanguageAspect.CONSTRAINTS.createNew(language, false);
-    LanguageAspect.BEHAVIOR.createNew(language, false);
-    LanguageAspect.TYPESYSTEM.createNew(language, false);
-    
-    language.setLanguageDescriptor(languageDescriptor, false);
-
-    return language;
   }
 
   public static class ProjectNotCreatedException extends Exception {

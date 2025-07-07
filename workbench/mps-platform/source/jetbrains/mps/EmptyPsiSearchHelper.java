@@ -15,7 +15,9 @@
  */
 package jetbrains.mps;
 
+import com.intellij.concurrency.AsyncFuture;
 import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiReference;
@@ -39,8 +41,14 @@ public class EmptyPsiSearchHelper implements PsiSearchHelper {
   }
 
   @Override
-  public boolean processCommentsContainingIdentifier(@NotNull String identifier, @NotNull SearchScope searchScope, @NotNull Processor<PsiElement> processor) {
+  public boolean processCommentsContainingIdentifier(@NotNull String identifier, @NotNull SearchScope searchScope, @NotNull Processor<? super PsiElement> processor) {
     return false;  //To change body of implemented methods use File | Settings | File Templates.
+  }
+
+  @Override
+  public boolean processCandidateFilesForText(@NotNull GlobalSearchScope scope, short searchContext, boolean caseSensitively, @NotNull String text,
+                                              @NotNull Processor<? super VirtualFile> processor) {
+    return false;
   }
 
   @NotNull
@@ -50,13 +58,13 @@ public class EmptyPsiSearchHelper implements PsiSearchHelper {
   }
 
   @Override
-  public void processUsagesInNonJavaFiles(@NotNull String qName, @NotNull PsiNonJavaFileReferenceProcessor processor, @NotNull GlobalSearchScope searchScope) {
-    //To change body of implemented methods use File | Settings | File Templates.
+  public boolean processUsagesInNonJavaFiles(@NotNull String qName, @NotNull PsiNonJavaFileReferenceProcessor processor, @NotNull GlobalSearchScope searchScope) {
+    return false;
   }
 
   @Override
-  public void processUsagesInNonJavaFiles(@Nullable PsiElement originalElement, @NotNull String qName, @NotNull PsiNonJavaFileReferenceProcessor processor, @NotNull GlobalSearchScope searchScope) {
-    //To change body of implemented methods use File | Settings | File Templates.
+  public boolean processUsagesInNonJavaFiles(@Nullable PsiElement originalElement, @NotNull String qName, @NotNull PsiNonJavaFileReferenceProcessor processor, @NotNull GlobalSearchScope searchScope) {
+    return false;
   }
 
   @NotNull
@@ -66,28 +74,34 @@ public class EmptyPsiSearchHelper implements PsiSearchHelper {
   }
 
   @Override
-  public void processAllFilesWithWord(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<PsiFile> processor, boolean caseSensitively) {
-    //To change body of implemented methods use File | Settings | File Templates.
+  public boolean processAllFilesWithWord(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<? super PsiFile> processor, boolean caseSensitively) {
+    return false;
   }
 
   @Override
-  public void processAllFilesWithWordInText(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<PsiFile> processor, boolean caseSensitively) {
-    //To change body of implemented methods use File | Settings | File Templates.
+  public boolean processAllFilesWithWordInText(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<? super PsiFile> processor, boolean caseSensitively) {
+    return false;
   }
 
   @Override
-  public void processAllFilesWithWordInComments(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<PsiFile> processor) {
-    //To change body of implemented methods use File | Settings | File Templates.
+  public boolean processAllFilesWithWordInComments(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<? super PsiFile> processor) {
+    return false;
   }
 
   @Override
-  public void processAllFilesWithWordInLiterals(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<PsiFile> processor) {
-    //To change body of implemented methods use File | Settings | File Templates.
+  public boolean processAllFilesWithWordInLiterals(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<? super PsiFile> processor) {
+    return false;
   }
 
   @Override
-  public boolean processRequests(@NotNull SearchRequestCollector request, @NotNull Processor<PsiReference> processor) {
-    return false;  //To change body of implemented methods use File | Settings | File Templates.
+  public boolean processRequests(@NotNull SearchRequestCollector request, @NotNull Processor<? super PsiReference> processor) {
+    return false;
+  }
+
+  @NotNull
+  @Override
+  public AsyncFuture<Boolean> processRequestsAsync(@NotNull SearchRequestCollector request, @NotNull Processor<? super PsiReference> processor) {
+    return null;
   }
 
   @Override
@@ -96,47 +110,21 @@ public class EmptyPsiSearchHelper implements PsiSearchHelper {
   }
 
   @Override
+  public boolean processElementsWithWord(@NotNull TextOccurenceProcessor processor, @NotNull SearchScope searchScope, @NotNull String text, short searchContext,
+      boolean caseSensitive, boolean processInjectedPsi) {
+    return false;
+  }
+
+  @NotNull
+  @Override
+  public AsyncFuture<Boolean> processElementsWithWordAsync(@NotNull TextOccurenceProcessor processor, @NotNull SearchScope searchScope, @NotNull String text,
+      short searchContext, boolean caseSensitive) {
+    return null;
+  }
+
+  @NotNull
+  @Override
   public SearchCostResult isCheapEnoughToSearch(@NotNull String name, @NotNull GlobalSearchScope scope, @Nullable PsiFile fileToIgnoreOccurencesIn, @Nullable ProgressIndicator progress) {
     return null;  //To change body of implemented methods use File | Settings | File Templates.
-  }
-
-  @NotNull
-  @Override
-  public PsiFile[] findFilesWithTodoItems() {
-    return new PsiFile[0];  //To change body of implemented methods use File | Settings | File Templates.
-  }
-
-  @NotNull
-  @Override
-  public TodoItem[] findTodoItems(@NotNull PsiFile file) {
-    return new TodoItem[0];  //To change body of implemented methods use File | Settings | File Templates.
-  }
-
-  @NotNull
-  @Override
-  public TodoItem[] findTodoItems(@NotNull PsiFile file, int startOffset, int endOffset) {
-    return new TodoItem[0];  //To change body of implemented methods use File | Settings | File Templates.
-  }
-
-  @NotNull
-  @Override
-  public TodoItem[] findTodoItemsLight(@NotNull PsiFile file) {
-    return new TodoItem[0];  //To change body of implemented methods use File | Settings | File Templates.
-  }
-
-  @NotNull
-  @Override
-  public TodoItem[] findTodoItemsLight(@NotNull PsiFile file, int startOffset, int endOffset) {
-    return new TodoItem[0];  //To change body of implemented methods use File | Settings | File Templates.
-  }
-
-  @Override
-  public int getTodoItemsCount(@NotNull PsiFile file) {
-    return 0;  //To change body of implemented methods use File | Settings | File Templates.
-  }
-
-  @Override
-  public int getTodoItemsCount(@NotNull PsiFile file, @NotNull TodoPattern pattern) {
-    return 0;  //To change body of implemented methods use File | Settings | File Templates.
   }
 }

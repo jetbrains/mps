@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,15 +26,21 @@ import com.intellij.openapi.roots.impl.DirectoryIndex;
 import com.intellij.openapi.roots.impl.DirectoryIndexExcludePolicy;
 import com.intellij.openapi.roots.impl.ModuleRootEventImpl;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileAdapter;
-import com.intellij.openapi.vfs.VirtualFileEvent;
 import com.intellij.openapi.vfs.VirtualFileManager;
+import com.intellij.openapi.vfs.newvfs.BulkFileListener;
+import com.intellij.openapi.vfs.newvfs.BulkFileListener.Adapter;
+import com.intellij.openapi.vfs.newvfs.events.VFileCreateEvent;
+import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import com.intellij.util.messages.MessageBus;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModuleRepositoryAdapter;
+import com.intellij.util.messages.MessageBusConnection;
+import jetbrains.mps.project.MPSProject;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -42,16 +48,19 @@ import java.util.List;
  *         Date: 30 June 11
  */
 public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
-  private MyModuleRepositoryListener myModuleRepositoryListener = new MyModuleRepositoryListener();
+  private final MPSProject myMpsProject;
+  private MyModuleRepositoryListener myRepositoryListener = new MyModuleRepositoryListener();
   private MessageBus myMessageBus;
-  private VirtualFileAdapter myVirtualFileListener = new MyVirtualFileListener();
+  private MessageBusConnection myConnection;
+  private BulkFileListener myFSListener = new BulkFileChangesListener();
   private DirectoryIndexExcludePolicy[] myExcludePolicies;
 
   private final Object LOCK = new Object();
   private boolean myInvalidated = false;
 
   private ApplicationListener myListener = new ApplicationAdapter() {
-    public void writeActionFinished(Object action) {
+    @Override
+    public void writeActionFinished(@NotNull Object action) {
       synchronized (LOCK) {
         if (!myInvalidated) return;
         myInvalidated = false;
@@ -60,32 +69,40 @@ public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
     }
   };
 
-  public DirectoryIndexExcludeUpdater(Project project, DirectoryIndex directoryIndex) {
+  public DirectoryIndexExcludeUpdater(Project project, DirectoryIndex directoryIndex, MPSProject mpsProject) {
     super(project);
+    myMpsProject = mpsProject;
     myMessageBus = myProject.getMessageBus();
 
     DirectoryIndexExcludePolicy[] allExcludePolicies = Extensions.getExtensions(DirectoryIndexExcludePolicy.EP_NAME, myProject);
-    List<DirectoryIndexExcludePolicy> excludePolicies = new ArrayList<DirectoryIndexExcludePolicy>();
+    List<DirectoryIndexExcludePolicy> excludePolicies = new ArrayList<>();
     for (DirectoryIndexExcludePolicy ep : allExcludePolicies) {
       if (ep instanceof BaseDirectoryIndexExcludePolicy) {
         excludePolicies.add(ep);
       }
     }
-    myExcludePolicies = excludePolicies.toArray(new DirectoryIndexExcludePolicy[excludePolicies.size()]);
+    myExcludePolicies = excludePolicies.toArray(new DirectoryIndexExcludePolicy[0]);
   }
 
   @Override
   public void initComponent() {
-    MPSModuleRepository.getInstance().addModuleRepositoryListener(myModuleRepositoryListener);
-    VirtualFileManager.getInstance().addVirtualFileListener(myVirtualFileListener);
+    final SRepository repository = getRepository();
+    repository.getModelAccess().runReadAction(() -> myRepositoryListener.subscribeTo(repository));
+    myConnection = myMessageBus.connect();
+    myConnection.subscribe(VirtualFileManager.VFS_CHANGES, myFSListener);
     ApplicationManager.getApplication().addApplicationListener(myListener);
   }
 
   @Override
   public void disposeComponent() {
     ApplicationManager.getApplication().removeApplicationListener(myListener);
-    VirtualFileManager.getInstance().removeVirtualFileListener(myVirtualFileListener);
-    MPSModuleRepository.getInstance().removeModuleRepositoryListener(myModuleRepositoryListener);
+    myConnection.disconnect();
+    final SRepository repository = getRepository();
+    repository.getModelAccess().runReadAction(() -> myRepositoryListener.unsubscribeFrom(repository));
+  }
+
+  private SRepository getRepository() {
+    return myMpsProject.getRepository();
   }
 
   private void notifyRootsChanged(boolean async) {
@@ -95,6 +112,8 @@ public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
           myInvalidated = true;
         }
       } else {
+        // MPS-24027: send event with beforeRootsChange() to avoid exception in com.intellij.psi.impl.file.impl.PsiVFSListener.MyModuleRootListener
+        myMessageBus.syncPublisher(ProjectTopics.PROJECT_ROOTS).beforeRootsChange(new ModuleRootEventImpl(myProject, false));
         myMessageBus.syncPublisher(ProjectTopics.PROJECT_ROOTS).rootsChanged(new ModuleRootEventImpl(myProject, false));
       }
     }
@@ -102,31 +121,42 @@ public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
 
   private boolean isExcluded(VirtualFile dir) {
     for (DirectoryIndexExcludePolicy ep : myExcludePolicies) {
-      if (ep.isExcludeRoot(dir)) {
+      if (Arrays.asList(ep.getExcludeRootsForProject()).contains(dir)) {
         return true;
       }
     }
     return false;
   }
 
-  private class MyVirtualFileListener extends VirtualFileAdapter {
+  private class BulkFileChangesListener extends Adapter {
     @Override
-    public void fileCreated(VirtualFileEvent event) {
-      if (event.getFile().isDirectory() && isExcluded(event.getFile())) {
-        notifyRootsChanged(false);
+    public void after(@NotNull final List<? extends VFileEvent> events) {
+      for (VFileEvent event : events) {
+        if (event instanceof VFileCreateEvent) {
+          VirtualFile file = event.getFile();
+          if (file != null && file.isDirectory() && isExcluded(file)) {
+            notifyRootsChanged(false);
+          }
+        }
       }
     }
   }
 
-  private class MyModuleRepositoryListener extends ModuleRepositoryAdapter {
+  private class MyModuleRepositoryListener extends SRepositoryContentAdapter {
     @Override
-    public void moduleAdded(IModule module) {
-      notifyRootsChanged(true);
+    public void moduleAdded(@NotNull SModule module) {
+      super.moduleAdded(module);
+      if (myMpsProject.isProjectModule(module)) {
+        notifyRootsChanged(true);
+      }
     }
 
     @Override
-    public void moduleChanged(IModule module) {
-      notifyRootsChanged(true);
+    public void moduleChanged(SModule module) {
+      super.moduleChanged(module);
+      if (myMpsProject.isProjectModule(module)) {
+        notifyRootsChanged(true);
+      }
     }
   }
 }

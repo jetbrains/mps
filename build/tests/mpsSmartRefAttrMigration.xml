@@ -1,0 +1,46 @@
+<project name="mpsSmartRefAttrMigration" default="check" basedir="../../">
+  <property name="env.JAVA_HOME" value="${java.home}/.."/>
+  <property name="jdk.home" value="${env.JAVA_HOME}"/>
+
+  <property name="test.project" location="${basedir}/testbench/modules/testSmartRefAttrMigration"/>
+
+  <!--this will be specified by test.xml-->
+  <property name="mps_build_home" location="build/artifacts/mps"/>
+  <property name="test_classes" location="${basedir}/testbench/testclasses"/>
+
+  <!--this is needed by migration task to run, see MPS-23341
+      the section should be removed as soon as the issue is fixed
+  -->
+  <property name="mps_home" location="${mps_build_home}"/>
+  <property name="build.dir" location=""/>
+  <property name="build.tmp" location="${build.dir}/tmp/mpsPlugins"/>
+  <property name="artifacts.mps" location="${mps_build_home}"/>
+  <property name="idea_home" location="${mps_home}"/>
+  <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore"/>
+  <property name="artifacts.mpsCore" location="${build.dir}/artifacts/mpsCore"/>
+  <property name="artifacts.IDEA" location="${idea_home}"/>
+
+  <path id="path.mps.ant.path">
+    <pathelement location="${mps_build_home}/lib/ant/lib/ant-mps.jar"/>
+    <pathelement location="${mps_build_home}/lib/jdom.jar"/>
+    <pathelement location="${mps_build_home}/lib/log4j.jar"/>
+  </path>
+
+  <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path"/>
+
+  <target name="check">
+    <migrate project="${test.project}">
+      <macro name="mps_home" path="${mps_build_home}"/>
+      <jvmargs>
+        <arg value="-Xmx1200m" />
+        <arg value="-ea" />
+      </jvmargs>
+    </migrate>
+
+    <ant antfile="build/tests/mpsSmartRefAttrMigration_gen.xml" inheritAll="true" useNativeBasedir="true">
+      <target name="build"/>
+      <target name="check"/>
+      <property name="mps_home" value="${mps_build_home}"/>
+    </ant>
+  </target>
+</project>

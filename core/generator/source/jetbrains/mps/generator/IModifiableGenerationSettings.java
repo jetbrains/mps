@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,13 @@
  */
 package jetbrains.mps.generator;
 
+/**
+ * Settings #isCheckModelsBeforeGeneration and #isGenerateDebugInfo are not generator-specific, but
+ * refer to tasks that runs along with generator. That's why they are not in IGenerationSettions.
+ * This, however, doesn't justify their presence ib IModifiableGenerationSettings, it requires one more
+ * refactoring to extract them into a separate entity
+ */
 public interface IModifiableGenerationSettings extends IGenerationSettings {
-  boolean isSaveTransientModels();
 
   void setSaveTransientModels(boolean saveTransientModels);
 
@@ -24,55 +29,42 @@ public interface IModifiableGenerationSettings extends IGenerationSettings {
 
   void setCheckModelsBeforeGeneration(boolean checkModelsBeforeGeneration);
 
-  boolean isParallelGenerator();
-
   void setParallelGenerator(boolean useNewGenerator);
-
-  boolean isStrictMode();
 
   void setStrictMode(boolean strictMode);
 
-  int getNumberOfParallelThreads();
-
   void setNumberOfParallelThreads(int coreNumber);
-
-  int getPerformanceTracingLevel();
 
   void setPerformanceTracingLevel(int performanceTracingLevel);
 
-  int getNumberOfModelsToKeep();
-
   void setNumberOfModelsToKeep(int numberOfModelsToKeep);
-
-  boolean isShowInfo();
 
   void setShowInfo(boolean showInfo);
 
-  boolean isShowWarnings();
-
   void setShowWarnings(boolean showWarnings);
-
-  boolean isKeepModelsWithWarnings();
 
   void setKeepModelsWithWarnings(boolean keepModelsWithWarnings);
 
-  boolean isIncremental();
-
-  void setIncremental(boolean isIncremental);
-
-  boolean isIncrementalUseCache();
-
-  void setIncrementalUseCache(boolean incrementalUseCache);
-
-  boolean isFailOnMissingTextGen();
-
-  void setFailOnMissingTextGen(boolean fail);
-
-  boolean isGenerateDebugInfo();
-
   void setGenerateDebugInfo(boolean generateDebugInfo);
 
-  boolean isShowBadChildWarning();
-
   void setShowBadChildWarning(boolean showBadChildWarning);
+
+  void enableInplaceTransformations(boolean enabled);
+
+  void setCreateStaticReferences(boolean createStaticRefs);
+
+  void warnDynamicToStaticReference(boolean enabled);
+
+  void addListener(Listener l);
+
+  void removeListener(Listener l);
+
+  interface Listener {
+    /**
+     * Event is dispatched after a change.
+     * Dispatching code does it best to ensure there's was an actual change in the settings, however
+     * it doesn't guarantee there's a change, treat this like 'most probably something has changed'.
+     */
+    void settingsChanged();
+  }
 }

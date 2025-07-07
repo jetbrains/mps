@@ -15,30 +15,53 @@
  */
 package jetbrains.mps.workbench.actions;
 
+import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileElement;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.project.MPSExtentions;
 
 import javax.swing.Icon;
 
-public class OpenMPSProjectFileChooserDescriptor extends FileChooserDescriptor{
+public class OpenMPSProjectFileChooserDescriptor extends FileChooserDescriptor {
   public OpenMPSProjectFileChooserDescriptor(boolean chooseFiles) {
     super(chooseFiles, true, chooseFiles, chooseFiles, false, false);
   }
 
   @Override
   public boolean isFileSelectable(VirtualFile file) {
-    return isMpsProjectFile(file);
+    return isMpsProjectFile(file) || isMpsProjectDirectory(file);
+  }
+
+  @Override
+  public Icon getIcon(VirtualFile file) {
+    if (isMpsProjectFile(file) || isMpsProjectDirectory(file)) {
+      return Nodes.IdeaProject;
+    }
+    return super.getIcon(file);
   }
 
   @Override
   public boolean isFileVisible(VirtualFile file, boolean showHiddenFiles) {
-    if (!showHiddenFiles && FileElement.isFileHidden(file)) return false;
-     return isMpsProjectFile(file) || super.isFileVisible(file, showHiddenFiles) && file.isDirectory();
+    if (!showHiddenFiles && FileElement.isFileHidden(file)) {
+      return false;
+    }
+    return isMpsProjectFile(file) || super.isFileVisible(file, showHiddenFiles) && file.isDirectory();
   }
 
-  private boolean isMpsProjectFile(VirtualFile file) {
-    return !file.isDirectory() && file.getName().toLowerCase().endsWith(MPSExtentions.DOT_MPS_PROJECT);
+  public static boolean isMpsProjectFile(VirtualFile file) {
+    return file.isValid() && !file.isDirectory() && file.getName().toLowerCase().endsWith(MPSExtentions.DOT_MPS_PROJECT);
+  }
+
+  public static boolean isMpsProjectDirectory(final VirtualFile file) {
+    /**
+     * <code>file.getParent() == null<code/> checks that root directory of any drive is never an MPS project
+     * */
+    if (!file.isValid() || file.getParent() == null || !file.isDirectory()) {
+      return false;
+    }
+
+    return file.findChild(Project.DIRECTORY_STORE_FOLDER) != null;
   }
 }

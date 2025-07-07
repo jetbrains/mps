@@ -17,7 +17,7 @@ package jetbrains.mps.newTypesystem.operation.equation;
 
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.operation.AbstractOperation;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 
 import java.util.LinkedList;
@@ -34,12 +34,14 @@ public abstract class AbstractEquationOperation extends AbstractOperation {
     setRule(info);
   }
 
+  @Override
   public String getShortPresentation() {
     return myChild + " = " + myParent;
   }
 
+  @Override
   public List<SNode> getVariables() {
-    LinkedList<SNode> nodes = new LinkedList<SNode>();
+    LinkedList<SNode> nodes = new LinkedList<>();
     if (TypesUtil.isVariable(myChild)) {
       nodes.add(myChild);
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,84 +15,101 @@
  */
 package jetbrains.mps.ide.ui.smodel;
 
-import jetbrains.mps.smodel.EventsCollector;
-import jetbrains.mps.smodel.SModelDescriptor;
+import jetbrains.mps.smodel.ModelsEventsCollector;
 import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 /**
+ * @deprecated Dispatches events using legacy {@link SModelEvent} classes and there's only 1 use (TreeStructureUpdate) which doesn't justify its existence
  * User: Alexander Shatalin
  * Date: 16.04.2010
  */
+@Deprecated
+@ToRemove(version = 2018.3)
 public class SModelEventsDispatcher {
-  private static SModelEventsDispatcher myInstance;
+  private final SRepository myRepo;
+  private ModelsEventsCollector myModelsEventsCollector;
+  private final Map<SModel, Set<SModelEventsListener>> myDescriptorsToListenersMap = new HashMap<>();
 
-  private EventsCollector myEventsCollector;
-  private Map<SModelDescriptor, Set<SModelEventsListener>> myDescriptorsToListenersMap = new HashMap<SModelDescriptor, Set<SModelEventsListener>>();
-
-  public static SModelEventsDispatcher getInstance() {
-    if (myInstance == null) {
-      myInstance = new SModelEventsDispatcher();
-    }
-    return myInstance;
+  public SModelEventsDispatcher(SRepository repo) {
+    myRepo = repo;
   }
 
   public void registerListener(SModelEventsListener l) {
-    SModelDescriptor modelDescriptor = l.getModelDescriptor();
+    SModel modelDescriptor = l.getModelDescriptor();
     Set<SModelEventsListener> listeners = myDescriptorsToListenersMap.get(modelDescriptor);
     if (listeners == null) {
       listeners = new HashSet();
       myDescriptorsToListenersMap.put(modelDescriptor, listeners);
-      getEventsCollector().add(modelDescriptor);
+      getModelsEventsCollector().startListeningToModel(modelDescriptor);
     }
     listeners.add(l);
   }
 
   public void unregisterListener(SModelEventsListener l) {
-    SModelDescriptor modelDescriptor = l.getModelDescriptor();
+    SModel modelDescriptor = l.getModelDescriptor();
     Set<SModelEventsListener> listeners = myDescriptorsToListenersMap.get(modelDescriptor);
     assert listeners != null : "specified listener was not registered";
     listeners.remove(l);
     if (listeners.isEmpty()) {
       myDescriptorsToListenersMap.remove(modelDescriptor);
-      getEventsCollector().remove(modelDescriptor);
+      getModelsEventsCollector().stopListeningToModel(modelDescriptor);
       if (myDescriptorsToListenersMap.isEmpty()) {
         disposeEventsCollector();
       }
     }
   }
 
-  private void disposeEventsCollector() {
-    myEventsCollector.dispose();
-    myEventsCollector = null;
+  public void dispose() {
+    disposeEventsCollector();
+    myDescriptorsToListenersMap.clear();
   }
 
-  private EventsCollector getEventsCollector() {
-    if (myEventsCollector == null) {
-      myEventsCollector = new MyEventsCollector();
+  private void disposeEventsCollector() {
+    if (myModelsEventsCollector != null) {
+      myModelsEventsCollector.dispose();
+      myModelsEventsCollector = null;
     }
-    return myEventsCollector;
+  }
+
+  private ModelsEventsCollector getModelsEventsCollector() {
+    if (myModelsEventsCollector == null) {
+      myModelsEventsCollector = new MyEventsCollector(myRepo);
+    }
+    return myModelsEventsCollector;
   }
 
   public interface SModelEventsListener {
 
     @NotNull
-    SModelDescriptor getModelDescriptor();
+    SModel getModelDescriptor();
 
     void eventsHappened(List<SModelEvent> events);
   }
 
 
-  private class MyEventsCollector extends EventsCollector {
+  private class MyEventsCollector extends ModelsEventsCollector {
+
+    /*package-local*/ MyEventsCollector(SRepository repo) {
+      super(repo.getModelAccess());
+    }
 
     @Override
     protected void eventsHappened(List<SModelEvent> events) {
-      Map<SModelDescriptor, List<SModelEvent>> descriptorsToEventsMap = new HashMap<SModelDescriptor, List<SModelEvent>>();
+      Map<SModel, List<SModelEvent>> descriptorsToEventsMap = new HashMap<>();
       for (SModelEvent event : events) {
-        SModelDescriptor descriptor = event.getModelDescriptor();
+        SModel descriptor = event.getModelDescriptor();
         List<SModelEvent> collectedEvents = descriptorsToEventsMap.get(descriptor);
         if (collectedEvents == null) {
           collectedEvents = new ArrayList();
@@ -100,7 +117,7 @@ public class SModelEventsDispatcher {
         }
         collectedEvents.add(event);
       }
-      for (Entry<SModelDescriptor, List<SModelEvent>> entry : descriptorsToEventsMap.entrySet()) {
+      for (Entry<SModel, List<SModelEvent>> entry : descriptorsToEventsMap.entrySet()) {
         Set<SModelEventsListener> listeners = myDescriptorsToListenersMap.get(entry.getKey());
         if (listeners != null) {
           for (SModelEventsListener listener : listeners) {

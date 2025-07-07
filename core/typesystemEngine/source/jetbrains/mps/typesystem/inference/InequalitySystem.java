@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,18 @@
 package jetbrains.mps.typesystem.inference;
 
 import gnu.trove.THashSet;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import jetbrains.mps.lang.typesystem.runtime.HUtil;
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
-import jetbrains.mps.newTypesystem.TypesUtil;
+import jetbrains.mps.newTypesystem.SubtypingUtil;
 import jetbrains.mps.newTypesystem.state.Equations;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.util.misc.hash.HashSet;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -44,13 +45,13 @@ public class InequalitySystem {
     return myHoleType;
   }
 
-  private Set<SNode> myEquals = new THashSet<SNode>();
-  private Set<SNode> mySubTypes = new THashSet<SNode>();
-  private Set<SNode> myStrongSubTypes = new THashSet<SNode>();
-  private Set<SNode> mySuperTypes = new THashSet<SNode>();
-  private Set<SNode> myStrongSuperTypes = new THashSet<SNode>();
-  private Set<SNode> myComparableTypes = new THashSet<SNode>();
-  private Set<SNode> myStrongComparableTypes = new THashSet<SNode>();
+  private Set<SNode> myEquals = new THashSet<>();
+  private Set<SNode> mySubTypes = new THashSet<>();
+  private Set<SNode> myStrongSubTypes = new THashSet<>();
+  private Set<SNode> mySuperTypes = new THashSet<>();
+  private Set<SNode> myStrongSuperTypes = new THashSet<>();
+  private Set<SNode> myComparableTypes = new THashSet<>();
+  private Set<SNode> myStrongComparableTypes = new THashSet<>();
 
   public void addEquation(SNode equalWrapper) {
     myEquals.add(equalWrapper);
@@ -112,11 +113,11 @@ public class InequalitySystem {
 
   private Set<SNode> expandSet(Set<SNode> set, Equations equations) {
     if (set.isEmpty()) return set;
-    Set<SNode> result = new HashSet<SNode>();
+    Set<SNode> result = new HashSet<>();
     for (SNode node : set) {
       SNode expanded = equations.expandNode(node, true);
       //if (!TypesUtil.isVariable(expanded)) {
-        result.add(expanded);
+      result.add(expanded);
       //}
     }
 
@@ -168,24 +169,24 @@ public class InequalitySystem {
     return result;
   }
 
-   public SNode getExpectedType() {
-     if (isEmpty()) return null;
-     SubTypingManagerNew subtypingManager = (SubTypingManagerNew)TypeChecker.getInstance().getSubtypingManager();
-     List<SNode> superTypes = new LinkedList<SNode>();
-     expandAll(myState.getEquations());
-     superTypes.addAll(mySuperTypes);
-     superTypes.addAll(myStrongSuperTypes);
-     if (superTypes.isEmpty()) {
-       superTypes.addAll(myComparableTypes);
-       superTypes.addAll(myStrongComparableTypes);
-     }
-     return subtypingManager.createLCS(superTypes, myState.getTypeCheckingContext());
-   }
-  
+  public SNode getExpectedType() {
+    if (isEmpty()) return null;
+    SubTypingManagerNew subtypingManager = (SubTypingManagerNew) TypeChecker.getInstance().getSubtypingManager();
+    List<SNode> superTypes = new LinkedList<>();
+    expandAll(myState.getEquations());
+    superTypes.addAll(mySuperTypes);
+    superTypes.addAll(myStrongSuperTypes);
+    if (superTypes.isEmpty()) {
+      superTypes.addAll(myComparableTypes);
+      superTypes.addAll(myStrongComparableTypes);
+    }
+    return SubtypingUtil.createLeastCommonSupertype(superTypes, myState.getTypeCheckingContext());
+  }
+
   public void replaceRefs(Map<SNode, SNode> mapping) {
-    Map<SNode, SNode> back = new HashMap<SNode, SNode>();    
+    Map<SNode, SNode> back = new HashMap<>();
     for (SNode key : mapping.keySet()) {
-      back.put(mapping.get(key), key);      
+      back.put(mapping.get(key), key);
     }
     replaceRefs(mySuperTypes, back);
     replaceRefs(myStrongSuperTypes, back);
@@ -199,13 +200,13 @@ public class InequalitySystem {
   private void replaceRefs(Set<SNode> nodes, Map<SNode, SNode> mapping) {
     for (SNode node : nodes) {
       for (SReference ref : node.getReferences()) {
-        SNode target = ref.getTargetNodeSilently();
+        SNode target = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
         SNode restored = mapping.get(target);
         if (restored != null) {
-          node.replaceReference(ref, new StaticReference(ref.getRole(), ref.getSourceNode(), restored));
+          node.setReferenceTarget(ref.getLink(), restored);
         }
       }
     }
-  } 
-  
+  }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,18 @@
 package jetbrains.mps.nodeEditor;
 
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.errors.QuickFixProvider;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
+import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Cyril.Konopko, 01.04.2008
@@ -34,39 +35,43 @@ import java.util.HashMap;
 public class DefaultEditorMessage implements EditorMessage {
   private static final int DEFAULT_MESSAGE_PRIORITY = 0;
 
-  private Color myColor;
-  private String myMessage;
-  private EditorMessageOwner myOwner;
-  private SNode myNode;
-  private List<QuickFixProvider> myIntentionProviders;
-  private MessageStatus myStatus = MessageStatus.OK;
+  private final Color myColor;
+  private final String myMessage;
+  private final EditorMessageOwner myOwner;
+  private final SNode myNode;
+  private final MessageStatus myStatus;
 
   private Map<Object, Object> myUserObjects;
 
   public DefaultEditorMessage(SNode node, Color color, String message, EditorMessageOwner owner) {
+    this(node, MessageStatus.OK, color, message, owner);
+  }
+
+  public DefaultEditorMessage(SNode node, MessageStatus status, Color color, String message, EditorMessageOwner owner) {
+    myStatus = status;
     myNode = node;
     myColor = color;
     myMessage = message;
     myOwner = owner;
   }
 
-  public DefaultEditorMessage(SNode node, MessageStatus status, Color color, String message, EditorMessageOwner owner) {
-    this(node, color, message, owner);
-    myStatus = status;
+  @Override
+  public boolean sameAs(SimpleEditorMessage message) {
+    return message.getNode() == getNode() &&
+           getOwner() == message.getOwner() &&
+           getStatus() == message.getStatus() &&
+           getMessage().equals(message.getMessage());
   }
 
-  public boolean sameAs(EditorMessage message) {
-    return message.getNode() == getNode() && getOwner() == message.getOwner() &&
-      getStatus() == message.getStatus() && getMessage().equals(message.getMessage());
-  }
-
+  @Override
   public void putUserObject(Object key, Object value) {
     if (myUserObjects == null) {
-      myUserObjects = new HashMap<Object, Object>(1);
+      myUserObjects = new HashMap<>(1);
     }
     myUserObjects.put(key, value);
   }
 
+  @Override
   public Object getUserObject(Object key) {
     if (myUserObjects == null) {
       return null;
@@ -74,23 +79,28 @@ public class DefaultEditorMessage implements EditorMessage {
     return myUserObjects.get(key);
   }
 
+  @Override
   public String getMessage() {
     return myMessage;
   }
 
+  @Override
   public Color getColor() {
     return myColor;
   }
 
+  @Override
   public EditorMessageOwner getOwner() {
     return myOwner;
   }
 
+  @Override
   public boolean isValid(EditorComponent editorComponent) {
     return getCellInBothWays(editorComponent) != null;
   }
 
-  public int getStart(EditorComponent editorComponent) {
+  @Override
+  public int getStart(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
     EditorCell editorCell = getCellInBothWays(editorComponent);
     if (editorCell == null) {
       return -1;
@@ -98,7 +108,8 @@ public class DefaultEditorMessage implements EditorMessage {
     return editorCell.getY();
   }
 
-  public int getHeight(EditorComponent editorComponent) {
+  @Override
+  public int getHeight(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
     EditorCell editorCell = getCellInBothWays(editorComponent);
     if (editorCell == null) {
       return -1;
@@ -106,53 +117,78 @@ public class DefaultEditorMessage implements EditorMessage {
     return editorCell.getHeight();
   }
 
+  @Override
   public void doNavigate(EditorComponent editorComponent) {
-    editorComponent.changeSelection(getCellInBothWays(editorComponent));
-  }
-
-  protected EditorCell getCellInBothWays(EditorComponent editor) {
-    EditorCell editorCell = getCell(editor);
+    EditorCell editorCell = getCellInBothWays(editorComponent);
     if (editorCell != null) {
-      return editorCell;
+      editorComponent.changeSelection(editorCell);
     }
-    return getCellForParentNodeInMainEditor(editor);
   }
 
+  protected EditorCell getCellInBothWays(final jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
+    if (false == editorComponent instanceof EditorComponent) {
+      return null;
+    }
+    EditorComponent editor = (EditorComponent) editorComponent;
+    return new ModelAccessHelper(editor.getRepository()).runReadAction(() -> {
+      EditorCell editorCell = getCell(editor);
+      if (editorCell != null) {
+        return editorCell;
+      }
+      return getCellForParentNodeInMainEditor(editor);
+    });
+  }
+
+  @Override
   public MessageStatus getStatus() {
     return myStatus;
   }
 
+  @Override
   public EditorCell getCell(EditorComponent editor) {
-    if (editor == null) return null;
+    if (editor == null) {
+      return null;
+    }
     return editor.getBigValidCellForNode(getNode());
   }
 
-  public EditorCell getCellForParentNodeInMainEditor(EditorComponent editor) {
-    if (getNode() == null) return null;
+  protected EditorCell getCellForParentNodeInMainEditor(final EditorComponent editor) {
     if (editor instanceof InspectorEditorComponent) {
       return null;
     }
+    if (getNode() == null) {
+      return null;
+    }
     SNode parent = getNode().getParent();
-    EditorCell result = null;
     while (parent != null) {
-      result = editor.getBigValidCellForNode(parent);
+      EditorCell result = editor.getBigValidCellForNode(parent);
       if (result != null) {
         return result;
       }
       parent = parent.getParent();
     }
-    return result;
+    return null;
   }
 
+  @Override
   public boolean acceptCell(EditorCell cell, EditorComponent editor) {
-    if (cell == null) return false;
-    return cell.isBigCell() && editor.isValid(cell) && cell.getSNode() == getNode();
+    if (cell == null) {
+      return false;
+    }
+    return cell.isBig() && editor.isValid(cell) && cell.getSNode() == getNode();
   }
 
+  @Override
   public SNode getNode() {
     return myNode;
   }
 
+  @Override
+  public boolean showInEditor() {
+    return true;
+  }
+
+  @Override
   public void paint(Graphics g, EditorComponent editorComponent, EditorCell cell) {
     paintWithColor(g, cell, getColor());
   }
@@ -169,33 +205,9 @@ public class DefaultEditorMessage implements EditorMessage {
     g.fillRect(x, y, width, height);
   }
 
+  @Override
   public boolean isBackground() {
     return false;
-  }
-
-  public void setIntentionProvider(QuickFixProvider intentionProvider) {
-    addIntentionProvider(intentionProvider);
-  }
-
-  public void addIntentionProvider(QuickFixProvider intentionProvider) {
-    if (myIntentionProviders == null) {
-      myIntentionProviders = new ArrayList<QuickFixProvider>(1);
-    }
-    myIntentionProviders.add(intentionProvider);
-  }
-
-  public QuickFixProvider getIntentionProvider() {
-    if (myIntentionProviders == null) return null;
-    if (myIntentionProviders.isEmpty()) return null;
-    return myIntentionProviders.get(0);
-  }
-
-  public List<QuickFixProvider> getIntentionProviders() {
-    ArrayList<QuickFixProvider> result = new ArrayList<QuickFixProvider>(1);
-    if (myIntentionProviders != null) {
-      result.addAll(myIntentionProviders);
-    }
-    return result;
   }
 
   @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.usages;
 
 
@@ -22,65 +21,54 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.pom.Navigatable;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.ModuleContext;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.workbench.choose.nodes.NodePresentation;
-import jetbrains.mps.workbench.nodesFs.MPSNodesVirtualFileSystem;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
+import jetbrains.mps.workbench.choose.NodePointerNavigationItem;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 public abstract class NodeNavigatable implements Navigatable {
-  protected SNode myNode;
+  protected final SNodeReference myNode;
+  protected final Project myProject;
   protected String myTextPresentation;
-  protected SNode myRootNode;
-  protected Project myProject;
-  protected VirtualFile myFile;
   protected ItemPresentation myItemPresentation;
+  protected SNodeReference myRootNode;
+  protected VirtualFile myFile;
 
-  public NodeNavigatable(@NotNull SNode node, @NotNull Project project) {
+  public NodeNavigatable(@NotNull SNodeReference node, @NotNull Project project) {
     myNode = node;
     myProject = project;
-    myItemPresentation = new NodePresentation(node);
-    myTextPresentation = myItemPresentation.getPresentableText();
-    ModelAccess.instance().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        myRootNode = myNode.getContainingRoot();
-        myFile = MPSNodesVirtualFileSystem.getInstance().getFileFor(myRootNode);
+    SRepository repository = ProjectHelper.fromIdeaProject(myProject).getRepository();
+    updateFields(repository);
+    myFile = myRootNode == null ? null : NodeVirtualFileSystem.getInstance().getFileFor(repository, myRootNode);
+  }
+
+  void updateFields(SRepository repository) {
+    repository.getModelAccess().runReadAction(() -> {
+      final SNode resolve = myNode.resolve(repository);
+      if (resolve != null) {
+        myRootNode = resolve.getContainingRoot().getReference();
+        myItemPresentation = new NodePointerNavigationItem(resolve);
+        myTextPresentation = myItemPresentation.getPresentableText();
+      } else {
+        myRootNode = null;
+        myItemPresentation = new NodePointerNavigationItem(myNode, "yet unresolved node", null);
+        myTextPresentation = myNode.toString();
       }
     });
   }
 
   @Override
   public void navigate(final boolean focus) {
-    ModelAccess.instance().runWriteInEDT(new Runnable() {
-      @Override
-      public void run() {
-        if (canNavigate()) {
-          openEditor(focus);
-        }
-      }
-    });
+    if (canNavigate()) {
+      openEditor(focus);
+    }
   }
 
-  public void openEditor(final boolean focus) {
-
-
-    SModelDescriptor modelDescriptor = myNode.getModel().getModelDescriptor();
-    if (modelDescriptor == null) return;
-
-    IModule module = modelDescriptor.getModule();
-    if (module == null) return;
-
-
-    jetbrains.mps.project.Project project = ProjectHelper.toMPSProject(myProject);
-    if (project == null) return;
-
-    ModuleContext context = new ModuleContext(module, project);
-    NavigationSupport.getInstance().openNode(context, myNode, focus, !myNode.isRoot());
+  private void openEditor(boolean focus) {
+    new EditorNavigator(ProjectHelper.fromIdeaProject(myProject)).shallFocus(focus).selectIfChild().open(myNode);
   }
 
   public abstract boolean isValid();

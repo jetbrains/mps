@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,24 +16,19 @@
 package jetbrains.mps.ide.editor.warningPanel;
 
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.smodel.SModel;
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.smodel.SNode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
 
+// initially, here used to be check for packaged module, hence the name
 public class PackagedModelWarningsProvider implements EditorWarningsProvider {
   @Override
   @Nullable
   public WarningPanel getWarningPanel(@NotNull SNode node, @NotNull Project project) {
     SModel model = node.getModel();
-    if (model != null) {
-      SModelDescriptor md = model.getModelDescriptor();
-      IModule module = md.getModule();
-      if (module != null && module.isPackaged()) {
-        return new WarningPanel(this, "Warning: the node is in a packaged model. Your changes won't be saved");
-      }
+    if (model != null && model.isReadOnly()) {
+      return new WarningPanel(this, "Warning: the node is in a read-only model. Your changes won't be saved");
     }
     return null;
   }

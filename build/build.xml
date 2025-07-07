@@ -1,31 +1,39 @@
-<project name="buildMPS" default="build">
+<project name="mps" default="build">
+  <property name="idea_home" location=".."/>
+  <property name="resources" location="${basedir}/resources"/>
 
-  <property name="idea_home" location=".." />
-
-  <target name="build">
-    <ant antfile="buildCore.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildCoreEx.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildWorkbench.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildStandalone.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildDates.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildTroveCollections.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildDevKit.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildExperimental.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildBuild.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildPlugins.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildMakePlugin.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildVcs.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildDebuggerPlugin.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildExecutionPlugin.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildObsolete.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildBuildUI.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildMPS.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildDistribution.xml" inheritAll="true" useNativeBasedir="true" />
-    <ant antfile="buildExe.xml" inheritAll="true" useNativeBasedir="true" />
+  <target name="platform">
+    <ant antfile="getDependencies.xml" target="install" inheritAll="true" useNativeBasedir="true"/>
   </target>
-  
+
+  <target name="getResourcesAndBuildAll">
+    <ant antfile="getResources.xml" inheritall="true" usenativebasedir="true" target="getOpenjdkWin" />
+    <ant antfile="mpsDistribution.xml" inheritAll="true" useNativeBasedir="true" target="buildDependents"/>
+  </target>
+
+  <target name="assemble">
+    <ant antfile="mpsDistribution.xml" inheritAll="true" useNativeBasedir="true" target="assemble"/>
+    <ant antfile="mpsDistribution.xml" inheritAll="true" useNativeBasedir="true" target="publishTCArtifacts"/>
+    <ant antfile="mpsMaven.xml" inheritAll="true" useNativeBasedir="true" target="assemble"/>
+    <ant antfile="mpsMaven.xml" inheritAll="true" useNativeBasedir="true" target="publishTCArtifact"/>
+  </target>
+
+  <target name="base" depends="platform, getResourcesAndBuildAll, assemble">
+  </target>
+
+  <target name="build" depends="platform, base"/>
+
+  <target name="exe" depends="base">
+    <property name="build.distribution" value="${basedir}/artifacts/mpsDistribution"/>
+    <ant antfile="buildExe.xml" inheritAll="true" useNativeBasedir="true"/>
+  </target>
+
   <target name="clean">
     <delete dir="tmp"/>
     <delete dir="artifacts"/>
+  </target>
+
+  <target name="cleanResources">
+    <delete dir="${resources}/openJDK"/>
   </target>
 </project>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,30 +16,28 @@
 package jetbrains.mps.generator.template;
 
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SearchScopeOperations;
-import jetbrains.mps.smodel.AttributesRolesUtil;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.search.ISearchScope;
+import jetbrains.mps.scope.Scope;
+import jetbrains.mps.smodel.constraints.ModelConstraints;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.List;
 
-public class ReferenceMacroContext extends TemplateQueryContextWithMacro {
-  private SNode myOutputNode;
-  private String myRole;
+/**
+ * What Reference Macro resolution code could expect to know about outer world.
+ */
+public final class ReferenceMacroContext extends TemplateQueryContext {
+  private final SNode myOutputNode;
+  private final SReferenceLink myRole;
 
-  public ReferenceMacroContext(SNode node, SNode outputNode, SNode macroNode, TemplateContext context, ITemplateGenerator generator) {
-    super(node, macroNode, context, generator);
-    myOutputNode = outputNode;
-    myRole = AttributeOperations.getLinkRole(macroNode);
-  }
-
-  public ReferenceMacroContext(SNode node, SNode outputNode, @NotNull SNodePointer macroNode, @NotNull String role, TemplateContext context, @NotNull ITemplateGenerator generator) {
-    super(node, macroNode, context, generator);
+  /**
+   * @since 3.3
+   */
+  public ReferenceMacroContext(@NotNull TemplateContext context, @NotNull SNode outputNode, @NotNull SNodeReference macroNode, @NotNull SReferenceLink role) {
+    super(macroNode, context);
     myOutputNode = outputNode;
     myRole = role;
   }
@@ -47,18 +45,24 @@ public class ReferenceMacroContext extends TemplateQueryContextWithMacro {
   /**
    * 'outputNode' mapping
    */
+  @Override
   public SNode getOutputNode() {
     return myOutputNode;
   }
 
-  public SNode getOutputNodeByInputNodeAndMappingLabelAndOutputNodeScope(SNode inputNode, String label, IOperationContext operationContext) {
+  /**
+   * "pick output <mapping label> for ( <input node> )"
+   * GenerationContextOp_GetOutputByLabelAndInputAndReferenceScope
+   */
+  @Nullable
+  public SNode getOutputNodeByInputNodeAndMappingLabelAndOutputNodeScope(SNode inputNode, String label) {
     List<SNode> outputNodes = this.getAllOutputNodesByInputNodeAndMappingLabel(inputNode, label);
-    if(outputNodes == null) return null;
-    SNode referenceSourceNode = getOutputNode();
-    String referenceRole = myRole;
-    ISearchScope referenceScope = SNodeOperations.getReferentSearchScope(referenceSourceNode, referenceRole, operationContext);
+    if(outputNodes == null) {
+      return null;
+    }
+    final Scope scope = ModelConstraints.getReferenceDescriptor(getOutputNode(), myRole).getScope();
     for (SNode outputNode : outputNodes) {
-      if (SearchScopeOperations.containsNode(referenceScope, outputNode)) {
+      if (scope.contains(outputNode)) {
         return outputNode;
       }
     }

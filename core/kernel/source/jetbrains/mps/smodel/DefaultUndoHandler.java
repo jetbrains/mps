@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,28 +15,8 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.project.Project;
-import jetbrains.mps.util.Computable;
-import org.jetbrains.annotations.Nullable;
-
 public class DefaultUndoHandler implements UndoHandler {
+  @Override
   public void addUndoableAction(SNodeUndoableAction action) {
-
-  }
-
-  public <T> T runNonUndoableAction(Computable<T> t) {
-    return t.compute();
-  }
-
-  public boolean needRegisterUndo(@Nullable SModel model) {
-    return false;
-  }
-
-  public boolean isInsideUndoableCommand() {
-    return false;
-  }
-
-  public void flushCommand(Project p) {
-
   }
 }

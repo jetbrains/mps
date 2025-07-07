@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,28 @@
  */
 package jetbrains.mps.errors.messageTargets;
 
+import jetbrains.mps.util.annotation.ToRemove;
+
 /**
  * Cyril.Konopko, 18.02.2010
  */
 public interface MessageTarget {
   // we can't just move IErrorTarget hereinto and rename it, 
   // because we need backward compatibility
-  public MessageTargetEnum getTarget();
+  /**
+   * @deprecated {@code MessageTarget} has to vary in implementation rather than exposing dubious 'target' kind.
+   *             For transition, may check {@code MessageTarget} instanceof respective subclass.
+   */
+  @Deprecated
+  @ToRemove(version = 2019.2)
+  MessageTargetEnum getTarget();
 
-  public String getRole();
+  /**
+   * @deprecated first of all, string meta-objects are legacy; second, {@code MessageTarget} shall hide its implementation inside rather than expose it.
+   */
+  @Deprecated
+  @ToRemove(version = 2019.2)
+  String getRole();
 
-  public boolean sameAs(MessageTarget messageTarget);
+  boolean sameAs(MessageTarget messageTarget);
 }

@@ -15,15 +15,14 @@
  */
 package jetbrains.mps.lang.typesystem.runtime;
 
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 
 public interface ICheckingRule_Runtime extends Rule_Runtime {
+  void applyRule(SNode argument, TypeCheckingContext typeCheckingContext, IsApplicableStatus status);
 
-  public void applyRule(SNode argument, TypeCheckingContext typeCheckingContext, IsApplicableStatus status);
-
-  @Deprecated
-  public abstract void applyRule(SNode argument, TypeCheckingContext typeCheckingContext);
-
-  public boolean overrides();
+  /**
+   * @return whether the rule overrides every other rule defined in superconcepts
+   */
+  boolean overrides();
 }

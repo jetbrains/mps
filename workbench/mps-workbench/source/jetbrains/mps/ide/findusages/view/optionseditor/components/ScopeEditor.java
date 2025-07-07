@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,28 @@
  */
 package jetbrains.mps.ide.findusages.view.optionseditor.components;
 
-import jetbrains.mps.InternalFlag;
+import com.intellij.ui.IdeBorderFactory;
 import jetbrains.mps.ide.findusages.view.optionseditor.options.ScopeOptions;
+import jetbrains.mps.ide.findusages.view.optionseditor.options.ScopeOptions.ScopeType;
 import jetbrains.mps.ide.ui.DefaultCompletionTextField;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.smodel.SModelRepository;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.util.NameUtil;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-import javax.swing.*;
+import javax.swing.AbstractAction;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 public class ScopeEditor extends BaseEditor<ScopeOptions> {
   private static final String GLOBAL_SCOPE = "Global";
@@ -42,7 +49,6 @@ public class ScopeEditor extends BaseEditor<ScopeOptions> {
   private JRadioButton myProjectScopeButton;
   private JRadioButton myModuleScopeButton;
   private JRadioButton myModelScopeButton;
-  private JRadioButton myBootstrapScopeButton = null;
   private ButtonGroup myButtonGroup;
 
   private DefaultCompletionTextField myModuleField;
@@ -50,62 +56,52 @@ public class ScopeEditor extends BaseEditor<ScopeOptions> {
   private List<String> myModuleNameList;
   private List<String> myModelNameList;
 
-  public ScopeEditor(ScopeOptions defaultOptions) {
+  public ScopeEditor(ScopeOptions defaultOptions, SRepository repository) {
     super(defaultOptions);
 
     myPanel = new JPanel();
     myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
-    myPanel.setBorder(
-      BorderFactory.createCompoundBorder(
-        BorderFactory.createTitledBorder("Scope"),
-        BorderFactory.createEmptyBorder(7, 3, 3, 3)));
+    myPanel.setBorder(IdeBorderFactory.createTitledBorder("Scope", false));
 
     myGlobalScopeButton = new JRadioButton(new AbstractAction(GLOBAL_SCOPE) {
+      @Override
       public void actionPerformed(ActionEvent e) {
         setCompletionFieldsState(false, false);
       }
     });
 
     myProjectScopeButton = new JRadioButton(new AbstractAction(PROJECT_SCOPE) {
+      @Override
       public void actionPerformed(ActionEvent e) {
         setCompletionFieldsState(false, false);
       }
     });
 
     myModuleScopeButton = new JRadioButton(new AbstractAction(MODULE_SCOPE) {
+      @Override
       public void actionPerformed(ActionEvent e) {
         setCompletionFieldsState(true, false);
       }
     });
 
     myModelScopeButton = new JRadioButton(new AbstractAction(MODEL_SCOPE) {
+      @Override
       public void actionPerformed(ActionEvent e) {
         setCompletionFieldsState(false, true);
       }
     });
-
-    if (InternalFlag.isInternalMode()) {
-      myBootstrapScopeButton = new JRadioButton(new AbstractAction(BOOTSTRAP_SCOPE) {
-        public void actionPerformed(ActionEvent e) {
-          setCompletionFieldsState(false, false);
-        }
-      });
-    }
 
     myButtonGroup = new ButtonGroup();
     myButtonGroup.add(myGlobalScopeButton);
     myButtonGroup.add(myProjectScopeButton);
     myButtonGroup.add(myModuleScopeButton);
     myButtonGroup.add(myModelScopeButton);
-    if (myBootstrapScopeButton != null) {
-      myButtonGroup.add(myBootstrapScopeButton);
-    }
 
-    Set<IModule> moduleList = MPSModuleRepository.getInstance().getAllModules();
-    List<String> moduleNameList = new ArrayList<String>();
+    Iterable<SModule> moduleList = repository.getModules();
+    List<String> moduleNameList = new ArrayList<>();
 
-    for (IModule iModule : moduleList) {
-      String namespace = iModule.getModuleFqName();
+    for (SModule iModule : moduleList) {
+      String namespace = iModule.getModuleName();
       if (namespace != null) {
         moduleNameList.add(namespace);
       }
@@ -116,12 +112,13 @@ public class ScopeEditor extends BaseEditor<ScopeOptions> {
     myModuleField = new DefaultCompletionTextField(moduleNameList);
     myModuleField.setText(ScopeOptions.DEFAULT_VALUE);
 
-    List<SModelDescriptor> modelList = SModelRepository.getInstance().getModelDescriptors();
-    myModelNameList = new ArrayList<String>();
+    Collection<SModel> modelList = new ModuleRepositoryFacade(repository).getAllModels();
+    myModelNameList = new ArrayList<>(modelList.size());
 
-    for (SModelDescriptor md : modelList) {
-      if (SModelStereotype.isStubModelStereotype(md.getStereotype())) continue;
-      myModelNameList.add(md.getLongName());
+    for (SModel md : modelList) {
+      if (!SModelStereotype.isStubModel(md)) {
+        myModelNameList.add(NameUtil.getModelLongName(md));
+      }
     }
 
     myModelNameList.add(0, ScopeOptions.DEFAULT_VALUE);
@@ -152,13 +149,6 @@ public class ScopeEditor extends BaseEditor<ScopeOptions> {
     row.add(myGlobalScopeButton, BorderLayout.WEST);
     myPanel.add(row);
 
-    if (InternalFlag.isInternalMode()) {
-      row = new JPanel();
-      row.setLayout(new BorderLayout());
-      row.add(myBootstrapScopeButton, BorderLayout.WEST);
-      myPanel.add(row);
-    }
-
     setDefaults(defaultOptions);
   }
 
@@ -171,24 +161,21 @@ public class ScopeEditor extends BaseEditor<ScopeOptions> {
     myModuleField.setText(defaultOptions.getModule());
     myModelField.setText(defaultOptions.getModel());
 
-    String scopeType = defaultOptions.getScopeType();
-    if (scopeType.equals(ScopeOptions.GLOBAL_SCOPE)) {
+    ScopeType scopeType = defaultOptions.getScopeType();
+    if (scopeType == ScopeType.GLOBAL) {
       setCurrentRadioButton(myGlobalScopeButton);
-    } else if (scopeType.equals(ScopeOptions.PROJECT_SCOPE)) {
+    } else if (scopeType == ScopeType.PROJECT) {
       setCurrentRadioButton(myProjectScopeButton);
-    } else if (scopeType.equals(ScopeOptions.MODULE_SCOPE)) {
+    } else if (scopeType == ScopeType.MODULE) {
       setCurrentRadioButton(myModuleScopeButton);
-    } else if (scopeType.equals(ScopeOptions.MODEL_SCOPE)) {
+    } else if (scopeType == ScopeType.MODEL) {
       setCurrentRadioButton(myModelScopeButton);
-    } else if (scopeType.equals(ScopeOptions.BOOTSTRAP_SCOPE)) {
-      if (myBootstrapScopeButton != null) {
-        setCurrentRadioButton(myBootstrapScopeButton);
-      } else {
-        setCurrentRadioButton(myGlobalScopeButton);
-      }
+    } else {
+      setCurrentRadioButton(myGlobalScopeButton);
     }
   }
 
+  @Override
   public ScopeOptions getOptions() {
     if (myModuleNameList.contains(myModuleField.getText())) {
       myOptions.setModule(myModuleField.getText());
@@ -203,19 +190,18 @@ public class ScopeEditor extends BaseEditor<ScopeOptions> {
     }
 
     ButtonModel selectedModel = myButtonGroup.getSelection();
-    String scopeType;
+    ScopeType scopeType;
     if (selectedModel == myGlobalScopeButton.getModel()) {
-      scopeType = ScopeOptions.GLOBAL_SCOPE;
+      scopeType = ScopeType.GLOBAL;
     } else if (selectedModel == myProjectScopeButton.getModel()) {
-      scopeType = ScopeOptions.PROJECT_SCOPE;
+      scopeType = ScopeType.PROJECT;
     } else if (selectedModel == myModuleScopeButton.getModel()) {
-      scopeType = ScopeOptions.MODULE_SCOPE;
+      scopeType = ScopeType.MODULE;
     } else if (selectedModel == myModelScopeButton.getModel()) {
-      scopeType = ScopeOptions.MODEL_SCOPE;
-    } else if (selectedModel == myBootstrapScopeButton.getModel()) {
-      scopeType = ScopeOptions.BOOTSTRAP_SCOPE;
+      scopeType = ScopeType.MODEL;
     } else {
-      throw new IllegalArgumentException();
+      //No need to throw exception - just use default value
+      scopeType = ScopeType.GLOBAL;
     }
     myOptions.setScopeType(scopeType);
 

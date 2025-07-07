@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="mps-platform">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/mps-core/lib/mps-platform.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mps-core/lib/mps-generator.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../workbench/mps-platform/source" />
+      <root url="file://$PROJECT_DIR$/../workbench/mps-platform/source_gen" />
+      <root url="file://$PROJECT_DIR$/../workbench/mps-ui/source" />
+      <root url="file://$PROJECT_DIR$/../workbench/mps-ui/source_gen" />
+      <root url="file://$PROJECT_DIR$/../workbench/mps-debugger/source_gen" />
+    </SOURCES>
+  </library>
+</component>

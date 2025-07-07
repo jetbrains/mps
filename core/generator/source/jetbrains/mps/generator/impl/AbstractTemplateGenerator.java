@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,136 +16,104 @@
 package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.GenerationCanceledException;
+import jetbrains.mps.generator.GenerationSessionContext;
 import jetbrains.mps.generator.IGeneratorLogger;
-import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
+import jetbrains.mps.generator.impl.RoleValidation.RoleValidator;
+import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
+import jetbrains.mps.generator.impl.query.GeneratorQueryProvider.Source;
+import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.template.ITemplateGenerator;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.progress.ProgressMonitor;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.smodel.search.SModelSearchUtil;
-import jetbrains.mps.util.containers.ConcurrentHashSet;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.List;
-import java.util.Set;
 
 public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
 
-  private IOperationContext myOperationContext;
-  private ProgressMonitor myProgressMonitor;
-  protected final IGeneratorLogger myLogger;
+  private final GenerationSessionContext myOperationContext;
+  protected ProgressMonitor myProgressMonitor;
 
   protected final SModel myInputModel;
   protected final SModel myOutputModel;
 
-  protected final GeneratorMappings myMappings;
+  private final RoleValidation myValidation;
+  private final GeneratorMappings myMappings;
+  // just for this generator instance, not shared between runs (collected data merged into GM at the end of step)
+  // FIXME refactor TemplateMappingScript to take TEE instead of just IGenerator, and remove this collection altogether
+  protected final LMCollector myLabeledMappings = new LMCollector();
+  private final Source myQuerySource;
 
-  private Set<SNode> myFailedRules = new ConcurrentHashSet<SNode>();
-  private final boolean myShowBadChildWarning;
-
-  protected AbstractTemplateGenerator(IOperationContext operationContext,
-                                      ProgressMonitor progressMonitor, IGeneratorLogger logger,
-                                      SModel inputModel, SModel outputModel, boolean showBadChildWarning) {
+  protected AbstractTemplateGenerator(GenerationSessionContext operationContext, SModel inputModel, SModel outputModel, GeneratorMappings mappings,
+                                      Source gqps, RoleValidation roleValidation) {
     myOperationContext = operationContext;
-    myProgressMonitor = progressMonitor;
-    myLogger = logger;
     myInputModel = inputModel;
     myOutputModel = outputModel;
-    myShowBadChildWarning = showBadChildWarning;
-    myMappings = new GeneratorMappings(inputModel.registeredNodesCount());
+    myValidation = roleValidation;
+    myMappings = mappings;
+    myQuerySource = gqps;
   }
 
-  public IOperationContext getOperationContext() {
+  @Override
+  public GenerationSessionContext getGeneratorSessionContext() {
     return myOperationContext;
   }
 
-  public IScope getScope() {
-    if (myOperationContext != null) {
-      return myOperationContext.getScope();
-    }
-    return null;
-  }
-
-  public ProgressMonitor getProgressMonitor() {
-    return myProgressMonitor;
-  }
-
   protected void checkMonitorCanceled() throws GenerationCanceledException {
-    if (myProgressMonitor.isCanceled()) throw new GenerationCanceledException();
+    if (myProgressMonitor != null && myProgressMonitor.isCanceled()) throw new GenerationCanceledException();
   }
 
-  protected boolean isCanceled() {
-    return myProgressMonitor.isCanceled();
-  }
-
-  public void showErrorIfStrict(SNode node, String message) {
-    if (isStrict()) {
-      myLogger.error(node, message);
-    } else {
-      myLogger.warning(node, message);
-    }
-  }
-
-  public void showErrorMessage(SNode inputNode, SNode templateNode, String message) {
-    showErrorMessage(inputNode, templateNode, null, message);
-  }
-
-  public void showErrorMessage(SNode inputNode, SNode templateNode, SNode ruleNode, String message) {
-    if (ruleNode != null && !myFailedRules.add(ruleNode)) {
-      // do not show duplicating messages
-      return;
-    }
-
-    myLogger.error((templateNode != null ? templateNode : ruleNode), message,
-      GeneratorUtil.describeIfExists(inputNode, "input node"),
-      GeneratorUtil.describeIfExists(ruleNode, "rule"),
-      GeneratorUtil.describeIfExists(templateNode, "template"));
-  }
-
+  @Override
   public IGeneratorLogger getLogger() {
-    return myLogger;
+    return myOperationContext.getLogger();
   }
 
+  @Override
   public SModel getInputModel() {
     return myInputModel;
   }
 
-  /**
-   * @deprecated
-   */
-  public SModel getSourceModel() {
-    return myInputModel;
-  }
 
+  @Override
   public SModel getOutputModel() {
     return myOutputModel;
   }
 
-  /**
-   * @deprecated
-   */
-  public SModel getTargetModel() {
-    return myOutputModel;
-  }
-
-  GeneratorMappings getMappings() {
+  public GeneratorMappings getMappings() {
     return myMappings;
   }
 
+  @NotNull
+  @Override
+  public GeneratorQueryProvider getQueryProvider(@NotNull SNodeReference templateNodeRef) {
+    return myQuerySource.getQueryProvider(templateNodeRef);
+  }
+
+  @Override
   public void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode) {
-    myMappings.addOutputNodeByInputNodeAndMappingName(inputNode, mappingName, outputNode);
-  }
-
-  public SNode findOutputNodeByTemplateNodeUnique(SNode templateNode) {
-    return myMappings.findOutputNodeByTemplateNodeUnique(templateNode);
-  }
-
-  public SNode findOutputNodeByTemplateNodeUnique(String templateNode) {
-    return myMappings.findOutputNodeByTemplateNodeUnique(templateNode);
+    if (mappingName == null || outputNode == null) {
+      return;
+    }
+    if (inputNode != null) {
+      myLabeledMappings.add(mappingName, inputNode, outputNode);
+    } else {
+      myLabeledMappings.add(mappingName, outputNode);
+    }
   }
 
   @Override
   public SNode findOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName) {
-    return myMappings.findOutputNodeByInputNodeAndMappingName(inputNode, mappingName, myLogger);
+    // FIXME guess, I shall check myLabeledMappings here first, pretty much like TQC consults TEE LMs first, and then resort to that known for all threads
+    if (inputNode != null) {
+      return myMappings.findOutputNodeByInputNodeAndMappingName(inputNode, mappingName);
+    } else {
+      return myMappings.findNewOutputNode(mappingName);
+    }
   }
 
   @Override
@@ -155,13 +123,29 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
 
   @Override
   public SNode findCopiedOutputNodeForInputNode(SNode inputNode) {
-    if(inputNode == null) return null;
+    if (inputNode == null) return null;
 
     SNode outputNode = myMappings.findCopiedOutputNodeForInputNode(inputNode);
     if (outputNode == null) {
-      outputNode = findOutputNodeById(inputNode.getSNodeId());
+      outputNode = findOutputNodeById(inputNode.getNodeId());
     }
     return outputNode;
+  }
+
+  protected void addCopiedOutputNodeForInputNode(SNode inputNode, SNode outputNode) {
+    myMappings.addCopiedOutputNodeForInputNode(inputNode, outputNode);
+  }
+
+  public void addOutputNodeByInputAndTemplateNode(TemplateContext templateContext, String templateNodeId, SNode outputNode) {
+    // in fact, no apparent reason not to use addOutputNodeForContext, as this method is in use from weaving rule, which is applied with fresh TC anyway
+    // and hence empty history
+    myMappings.addOutputNodeForContext(templateContext, templateNodeId, outputNode);
+  }
+
+  void nodeCopied(TemplateContext context, SNode outputNode, String templateNodeId) {
+    // FIXME if template node could not be referenced, no reason to record the mapping. In generated templates, we analyze incoming references,
+    //       in interpreted, can use concept's StaticScope
+    myMappings.addOutputNodeForContext(context, templateNodeId, outputNode);
   }
 
   public SNode findCopiedOutputNodeForInputNode_unique(SNode inputNode) {
@@ -170,82 +154,15 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
     return null;
   }
 
-  public SNode findOutputNodeByInputAndTemplateNode(SNode inputNode, SNode templateNode) {
-    return myMappings.findOutputNodeByInputAndTemplateNode(inputNode, templateNode);
-  }
-
-  public SNode findOutputNodeByInputAndTemplateNode(SNode inputNode, String templateNodeId) {
-    return myMappings.findOutputNodeByInputAndTemplateNode(inputNode, templateNodeId);
-  }
-
   public SNode findOutputNodeById(SNodeId nodeId) {
-    return myOutputModel.getNodeById(nodeId);
+    return getOutputModel().getNode(nodeId);
   }
 
-  public SNode findInputNodeById(SNodeId nodeId) {
-    return myInputModel.getNodeById(nodeId);
+  public RoleValidator getChildRoleValidator(SNode parent, SContainmentLink role) {
+    return myValidation.getValidator(parent, role);
   }
 
-
-  public RoleValidationStatus validateChild(SNode parent, String role, SNode child) {
-    return validateRole(parent, role, child, true);
+  public RoleValidator getReferentRoleValidator(SNode source, SReferenceLink role) {
+    return myValidation.getValidator(source, role);
   }
-
-  public RoleValidationStatus validateReferent(SNode reference, String role, SNode referent) {
-    return validateRole(reference, role, referent, false);
-  }
-
-  private RoleValidationStatus validateRole(SNode sourceNode, String role, SNode targetNode, boolean child) {
-    if (child && AttributesRolesUtil.isAttributeRole(role)) {
-      //unnecessary warning removed
-      return null; //todo maybe add check for attribule links
-    }
-    String relationKind = child ? "child" : "referent";
-    SNode concept = sourceNode.getConceptDeclarationNode();
-    if (concept == null) {
-      return new RoleValidationStatus(sourceNode, "cannot find concept '" + sourceNode.getConceptFqName() + "'");
-    }
-    SNode link = SModelSearchUtil.findMostSpecificLinkDeclaration(concept, role);
-    if (link == null) {
-      return new RoleValidationStatus(sourceNode, "concept '" + concept.getName() + "' cannot have " + relationKind + " with role '" + role + "'",
-        GeneratorUtil.describe(targetNode, relationKind + (child ? "" : " (hidden in editor)")));
-    }
-    if(!myShowBadChildWarning) {
-      // ignore
-      return null;
-    }
-    if (!SModelUtil.isAcceptableTarget(link, targetNode)) {
-      if (child && targetNode.getUserObject(DelayedChanges.MAP_SRC_TEMP_NODE) != null) {
-        // temporary child node, ignore
-        return null;
-      }
-      SNode linkDeclarationTarget = SModelUtil.getLinkDeclarationTarget(link);
-      String expected = linkDeclarationTarget != null ? linkDeclarationTarget.getName() : "<unknown>";
-      String was = targetNode.getConceptShortName();
-      return new RoleValidationStatus(sourceNode, relationKind + " '" + expected + "' is expected for role '" + role + "' but was '" + was + "'",
-        GeneratorUtil.describe(targetNode, relationKind));
-    }
-    return null;
-  }
-
-  public class RoleValidationStatus {
-    private SNode sourceNode;
-    private String message;
-    private ProblemDescription[] descriptions;
-
-    public RoleValidationStatus(SNode sourceNode, String message, ProblemDescription... descriptions) {
-      this.sourceNode = sourceNode;
-      this.message = message;
-      this.descriptions = descriptions;
-    }
-
-    public void reportProblem(boolean isError, String prefix, ProblemDescription... descriptions) {
-      if (isError) {
-        myLogger.error(sourceNode, prefix + message, GeneratorUtil.concat(this.descriptions, descriptions));
-      } else {
-        myLogger.warning(sourceNode, prefix + message, GeneratorUtil.concat(this.descriptions, descriptions));
-      }
-    }
-  }
-
 }

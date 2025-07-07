@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,54 +15,99 @@
  */
 package jetbrains.mps.ide.generator.index;
 
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.startup.StartupActivity;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.search.EverythingGlobalScope;
 import com.intellij.util.indexing.FileBasedIndex;
-import com.intellij.util.indexing.FileBasedIndex.ValueProcessor;
-import jetbrains.mps.generator.ModelDigestHelper;
-import jetbrains.mps.generator.ModelDigestHelper.DigestProvider;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
-import jetbrains.mps.smodel.IOperationContext;
+import com.intellij.util.indexing.ID;
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.vfs.IdeaFile;
+import jetbrains.mps.persistence.ModelDigestHelper;
+import jetbrains.mps.persistence.ModelDigestHelper.DigestProvider;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-public class IndexBasedModelDigest implements ApplicationComponent {
-  @NotNull
-  public String getComponentName() {
-    return "Index based model digest component";
-  }
+/**
+ * Index-backed DigestProvider to answer model's hash value quickly.
+ * The only drawback (as with other indexed model data) is that connection between model and its files is implicit
+ * Besides, the logic to build hash/digest value is duplicated (in the *ModelDigestIndex class and in model impl, see respective
+ * PersistenceFacility/LazyLoadFacility.getModelHash) and could easily drift away.
+ * Again, here would be great to have indexing built on top of model layer, rather then vfs layer
+ */
+public class IndexBasedModelDigest implements StartupActivity.Background {
 
-  public void initComponent() {
-    ModelDigestHelper.getInstance().addDigestProvider(new DigestProvider() {
-      @Override
-      public Map<String, String> getGenerationHashes(final IOperationContext operationContext, @NotNull IFile modelFile) {
-        try {
-          VirtualFile file = VirtualFileUtils.getVirtualFile(modelFile);
-          if (file == null) return null;
+  @Override
+  public void runActivity(@NotNull Project project) {
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
+    if (mpsProject == null) {
+      return;
+    }
+    final ComponentHost mpsPlaf = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform();
+    final ModelDigestHelper mdHelper = mpsPlaf.findComponent(ModelDigestHelper.class);
+    if (mdHelper == null) {
+      return;
+    }
+    // default model persistence (.mps files)
+    final BaseModelDigestProvider p1 = new BaseModelDigestProvider(mpsProject, ModelDigestIndex.NAME);
+    // binary model persistence (.mpb files)
+    final BaseModelDigestProvider p2 = new BaseModelDigestProvider(mpsProject, BinaryModelDigestIndex.NAME);
+    mdHelper.addDigestProvider(p1);
+    mdHelper.addDigestProvider(p2);
 
-          final Map<String, String>[] valueArray = new Map[]{null};
-          FileBasedIndex.getInstance().processValues(ModelDigestIndex.NAME, FileBasedIndex.getFileId(file), file, new ValueProcessor<Map<String, String>>() {
-            public boolean process(VirtualFile file, Map<String, String> values) {
-              valueArray[0] = values;
-              return true;
-            }
-          }, new EverythingGlobalScope());
-          return valueArray[0];
-        } catch (IndexNotReadyException e) {
-        } catch (ProcessCanceledException e) {
-        }
-        return null;
-      }
+    Disposer.register(project, () -> {
+      mdHelper.removeDigestProvider(p2);
+      mdHelper.removeDigestProvider(p1);
     });
-
   }
 
-  public void disposeComponent() {
+  private static class BaseModelDigestProvider implements DigestProvider {
+    private final MPSProject myProject;
+    private final ID<Integer, String> myIndexName;
 
+    private BaseModelDigestProvider(@NotNull MPSProject mpsProject, ID<Integer, String> name) {
+      myProject = mpsProject;
+      myIndexName = name;
+    }
+
+    @Override
+    public String getGenerationHash(@NotNull IFile iFile) {
+      try {
+        // FIXME MPSProject shall provide a mechanism to convert IFile to VirtualFile (in addition to existing VirtualFile->IFile)
+        if (!(iFile instanceof IdeaFile)) {
+          return null;
+        }
+        VirtualFile file = ((IdeaFile) iFile).getVirtualFile();
+        if (file == null) {
+          return null;
+        }
+        if (System.currentTimeMillis() - file.getTimeStamp() < 1000) {
+          // A hack to address MPS-32849. Models saved during MakeActionImpl.executeAction get old hash value
+          // for the first call to this method, indicating model doesn't require generation. Try to guess if model
+          // file is candidate for index refresh (has been modified recently). 1 sec is just a number I imagine as
+          // good enough, no science here. use of FileBasedIndexEx.ensureUpToDate(..., file) didn't help to get
+          // model file properly indexed (always 'true' with no effect on getFileData outcome), and no other method
+          // in FileBasedIndex seemed suitable for the task.
+          return null;
+        }
+        final Map<Integer, String> fd = FileBasedIndex.getInstance().getFileData(myIndexName, file, myProject.getProject());
+        return fd.isEmpty() ? null : fd.values().stream().findFirst().orElse(null);
+      } catch (IndexNotReadyException | ProcessCanceledException e) {
+        // generally, it's bad to get here (we'd rather check for dumb mode prior accessing the index
+        // however, there's nothing bad in returning null here as it's merely an indication of no cached
+        // hash value, and we can calculate it again, if needed. Hence, debug log level looks fine.
+        LogManager.getLogger(IndexBasedModelDigest.class).debug(e.getClass().getName(), e);
+      }
+      return null;
+    }
   }
 }

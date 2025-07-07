@@ -15,27 +15,35 @@
  */
 package jetbrains.mps.nodeEditor.text;
 
+import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
-import jetbrains.mps.nodeEditor.selection.Selection;
+import jetbrains.mps.openapi.editor.TextBuilder;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
+import jetbrains.mps.openapi.editor.selection.Selection;
 
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility methods to render an editor selection as text.
+ *
+ * @see EditorCell#renderText()
+ */
 public class TextRenderUtil {
 
   public static TextBuilder renderText(Selection selection) {
     if (selection == null || selection.getSelectedCells().size() == 0) {
-      TextBuilder.getEmptyTextBuilder();
+      return new TextBuilderImpl();
     }
-    List<EditorCell> selectedCells = selection.getSelectedCells();
+    List<EditorCell> selectedCells = new ArrayList<>(selection.getSelectedCells());
     EditorCell firstSelectedCell = selectedCells.get(0);
     if (selectedCells.size() == 1) {
       return firstSelectedCell.renderText();
     }
     EditorCell_Collection parentCell = firstSelectedCell.getParent();
-    CellLayout layout = parentCell.getCellLayout();
+    CellLayout layout = (CellLayout) parentCell.getCellLayout();
     return layout.doLayoutText(selectedCells);
   }
 

@@ -15,10 +15,12 @@
  */
 package jetbrains.mps.newTypesystem.state.blocks;
 
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.typesystem.runtime.HUtil;
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.typesystemEngine.util.LatticeUtil;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.*;
 
@@ -43,6 +45,26 @@ public enum ConditionKind {
         if (HUtil.isRuntimeTypeVariable(representative)) {
           return Arrays.asList(representative);
         }
+        else if (LatticeUtil.isMeet(representative)) {
+          List<SNode> result = new ArrayList<>();
+          for (SNode arg : LatticeUtil.getMeetArguments(representative)) {
+            final SNode argRpt = state.getRepresentative(arg);
+            if (HUtil.isRuntimeTypeVariable(argRpt)) {
+              result.add(argRpt);
+            }
+          }
+          return result;
+        }
+        else if (LatticeUtil.isJoin(representative)) {
+          List<SNode> result = new ArrayList<>();
+          for (SNode arg : LatticeUtil.getJoinArguments(representative)) {
+            final SNode argRpt = state.getRepresentative(arg);
+            if (HUtil.isRuntimeTypeVariable(argRpt)) {
+              result.add(argRpt);
+            }
+          }
+          return result;
+        }
       }
       return Collections.EMPTY_LIST;
     }
@@ -55,15 +77,15 @@ public enum ConditionKind {
   CONCRETE {
     @Override
     public List<SNode> getUnresolvedInputs(SNode node, State state) {
-      if (node == null) {
-        return new LinkedList<SNode>();
-      }
       SNode representative = state.getRepresentative(node);
+      if (node == null || representative == null) {
+        return new LinkedList<>();
+      }
       if (HUtil.isRuntimeTypeVariable(representative)) {
         return Arrays.asList(representative);
       }
-      List<SNode> result = new ArrayList<SNode>();
-      for (SNode referent : representative.getReferents()) {
+      List<SNode> result = new ArrayList<>();
+      for (SNode referent : TypesUtil.getNodeReferents(representative)) {
         if (referent != null) {
           SNode refRepresentative = state.getRepresentative(referent);
           if (HUtil.isRuntimeTypeVariable(refRepresentative)) {
@@ -74,7 +96,8 @@ public enum ConditionKind {
       if (TypesUtil.getVariables(node, state).contains(node)) {
         return result;
       }
-      for (SNode child : representative.getChildren(false)) {
+      for (SNode child : representative.getChildren()) {
+        if (AttributeOperations.isAttribute(child)) continue;
         result.addAll(getUnresolvedInputs(child, state));
       }
       return result;

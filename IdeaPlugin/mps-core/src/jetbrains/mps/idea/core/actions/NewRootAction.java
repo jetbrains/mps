@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,155 +16,207 @@
 
 package jetbrains.mps.idea.core.actions;
 
-import com.intellij.facet.FacetManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.DataKey;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.fileTypes.FileTypeRegistry;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.Pair;
+import com.intellij.openapi.util.Ref;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
-import jetbrains.mps.fileTypes.MPSFileTypeFactory;
-import jetbrains.mps.ide.icons.IconManager;
+import jetbrains.mps.icons.MPSIcons.Nodes;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.MPSBundle;
-import jetbrains.mps.idea.core.facet.MPSFacet;
-import jetbrains.mps.idea.core.facet.MPSFacetType;
+import jetbrains.mps.idea.core.project.module.ModuleMPSSupport;
 import jetbrains.mps.idea.core.ui.CreateFromTemplateDialog;
-import jetbrains.mps.project.ModuleContext;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.model.ModelRoot;
-import jetbrains.mps.smodel.*;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
+import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.action.NodeFactoryManager;
-import jetbrains.mps.smodel.constraints.ModelConstraintsManager;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
-import jetbrains.mps.smodel.presentation.NodePresentationUtil;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.smodel.constraints.ModelConstraints;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.HashMap;
-import java.util.List;
+import javax.swing.Icon;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class NewRootAction extends AnAction {
-    private EditableSModelDescriptor myModelDescriptor;
-    private Project myProject;
-    private IOperationContext myOperationContext;
-    private Map<String, SNodePointer> myConceptFqNameToNodePointerMap = new HashMap<String, SNodePointer>();
+  private EditableSModel myModel;
+  private Project myProject;
+  private Map<String, SAbstractConcept> myConceptFqNameToNodePointerMap = new LinkedHashMap<>();
 
-    public NewRootAction() {
-        super(MPSBundle.message("new.root.action"), null, IdeIcons.DEFAULT_ROOT_ICON);
+  public NewRootAction() {
+    super(MPSBundle.message("new.root.action"), null, IdeIcons.DEFAULT_ROOT_ICON);
+  }
+
+  @Override
+  public void actionPerformed(AnActionEvent e) {
+    Interaction interaction = ApplicationManager.getApplication().isUnitTestMode() ?
+      e.getData(HEADLESS_INTERACTION) : new UiInteraction();
+
+    assert interaction != null;
+
+    Pair<String, SAbstractConcept> choice = interaction.choose(myConceptFqNameToNodePointerMap);
+    if (choice == null) {
+      // cancelled
+      return;
+    }
+
+    String name = choice.first;
+    SAbstractConcept concept = choice.second;
+
+    Ref<SNodeReference> createdNode = new Ref<>();
+
+    ProjectHelper.getModelAccess(myProject).executeCommand(() -> {
+      SNode newNode = NodeFactoryManager.createNode(concept, null, null, myModel);
+      SNodeAccessUtil.setProperty(newNode, SNodeUtil.property_INamedConcept_name, name);
+      myModel.addRootNode(newNode);
+      myModel.save();
+
+      createdNode.set(newNode.getReference());
+    });
+
+    if (!createdNode.isNull() && !ApplicationManager.getApplication().isUnitTestMode()) {
+      FileEditorManager.getInstance(myProject).openFile(
+        NodeVirtualFileSystem.getInstance().getFileFor(ProjectHelper.getProjectRepository(myProject), createdNode.get()), true);
+    }
+  }
+
+  @Override
+  public void update(AnActionEvent e) {
+    updateFields(e);
+
+    boolean isVisible = myProject != null && myModel != null;
+    e.getPresentation().setVisible(isVisible);
+    e.getPresentation().setEnabled(!myConceptFqNameToNodePointerMap.isEmpty());
+
+    if (!isVisible) return;
+
+    e.getPresentation().setText(MPSBundle.message("new.root.action"));
+    e.getPresentation().setIcon(IdeIcons.DEFAULT_ROOT_ICON);
+  }
+
+  private void updateFields(AnActionEvent e) {
+    // cleaning all local fields
+    myModel = null;
+    myConceptFqNameToNodePointerMap.clear();
+    myProject = e.getData(PlatformDataKeys.PROJECT);
+
+    final SModel model = MPSCommonDataKeys.CONTEXT_MODEL.getData(e.getDataContext());
+    if (model != null && model.isReadOnly()) {
+      return;
+    }
+    if (model instanceof EditableSModel) {
+      myModel = (EditableSModel) model;
+    }
+
+    if (myProject == null || myModel == null) {
+      return;
+    }
+
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
+    if (mpsProject == null) {
+      return;
+    }
+
+    final Module module = e.getData(LangDataKeys.MODULE);
+    final VirtualFile[] vFiles = e.getData(PlatformDataKeys.VIRTUAL_FILE_ARRAY);
+    if (module == null ||
+      vFiles == null ||
+      vFiles.length != 1) {
+      return;
+    }
+
+    final ModuleMPSSupport mpsFacade = ModuleMPSSupport.getInstance();
+    if (mpsFacade == null || !mpsFacade.isMPSEnabled(module)) {
+      return;
+    }
+
+    String url = vFiles[0].getUrl();
+    if (!LocalFileSystem.PROTOCOL.equals(VirtualFileManager.extractProtocol(url))) {
+      return;
+    }
+
+    mpsProject.getModelAccess().runReadAction(() -> {
+      Set<SLanguage> modelLanguages = SModelOperations.getAllLanguageImports(model);
+      for (SLanguage language : modelLanguages) {
+        for (SAbstractConcept concept : language.getConcepts()) {
+          if (ModelConstraints.canBeRoot(concept, model)) {
+            myConceptFqNameToNodePointerMap.put(concept.getQualifiedName(), concept);
+          }
+        }
+      }
+    });
+  }
+
+  private class UiInteraction implements Interaction {
+    @Override
+    public Pair<String, SAbstractConcept> choose(Map<String, SAbstractConcept> concepts) {
+      MyCreateFromTemplateDialog dialog = new MyCreateFromTemplateDialog(myProject, concepts);
+      dialog.setTitle(MPSBundle.message("create.new.root.dialog.title"));
+
+      ProjectHelper.getModelAccess(myProject).runReadAction(() -> {
+        for (Map.Entry<String, SAbstractConcept> entry : concepts.entrySet()) {
+          String conceptFqName = entry.getKey();
+          SAbstractConcept concept = entry.getValue();
+          final GlobalIconManager globalIconManager = GlobalIconManager.getInstance();
+          final Icon conceptIcon = globalIconManager == null ? Nodes.RootNode : globalIconManager.getIconFor(concept);
+          dialog.getKindCombo().addItem(concept.getConceptAlias(), conceptIcon, conceptFqName);
+          dialog.setTemplateKindComponentsVisible(true);
+        }
+      });
+
+      dialog.show();
+      return dialog.getResult();
+    }
+  }
+
+  private class MyCreateFromTemplateDialog extends CreateFromTemplateDialog {
+    private Pair<String, SAbstractConcept> myResult = null;
+    private Map<String, SAbstractConcept> myConcepts;
+
+    protected MyCreateFromTemplateDialog(@NotNull Project project, @NotNull Map<String, SAbstractConcept> concepts) {
+      super(project);
+      myConcepts = concepts;
+    }
+
+    public Pair<String, SAbstractConcept> getResult() {
+      return myResult;
     }
 
     @Override
-    public void actionPerformed(AnActionEvent e) {
-        final CreateFromTemplateDialog dialog = new CreateFromTemplateDialog(myProject) {
-            @Override
-            protected void doOKAction() {
-                final SNodePointer conceptPointer = myConceptFqNameToNodePointerMap.get(getKindCombo().getSelectedName());
-                ModelAccess.instance().runWriteActionInCommand(new Runnable() {
-                    @Override
-                    public void run() {
-                        SNode concept = conceptPointer.getNode();
-                        SModel model = myModelDescriptor.getSModel();
-                        SNode newNode = NodeFactoryManager.createNode(concept, null, null, model, myOperationContext.getScope());
-                        newNode.setName(getNameField().getText());
-                        model.addRoot(newNode);
-                        myModelDescriptor.save();
-                    }
-                }, myOperationContext.getProject());
-                super.doOKAction();
-            }
-        };
-        dialog.setTitle(MPSBundle.message("create.new.root.dialog.title"));
-        ModelAccess.instance().runReadAction(new Runnable() {
-            @Override
-            public void run() {
-                for (Map.Entry<String, SNodePointer> entry : myConceptFqNameToNodePointerMap.entrySet()) {
-                    String conceptFqName = entry.getKey();
-                    SNode concept = entry.getValue().getNode();
-                    dialog.getKindCombo().addItem(NodePresentationUtil.matchingText(concept), IconManager.getIconForConceptFQName(conceptFqName), conceptFqName);
-                }
-            }
-        });
-        dialog.show();
+    protected void doOKAction() {
+      String name = getNameField().getText();
+      SAbstractConcept concept = myConcepts.get(getKindCombo().getSelectedName());
+      myResult = Pair.create(name, concept);
+      super.doOKAction();
     }
+  }
 
-    @Override
-    public void update(AnActionEvent e) {
-        updateFields(e);
+  public static final DataKey<Interaction> HEADLESS_INTERACTION = DataKey.create("newRootActionHeadlessInteraction");
 
-        e.getPresentation().setVisible(isEnabled());
-        e.getPresentation().setEnabled(!myConceptFqNameToNodePointerMap.isEmpty());
-    }
-
-    private void updateFields(AnActionEvent e) {
-        // cleaning all local fields
-        myOperationContext = null;
-        myModelDescriptor = null;
-        myConceptFqNameToNodePointerMap.clear();
-        myProject = e.getData(PlatformDataKeys.PROJECT);
-
-        if (myProject == null) {
-            return;
-        }
-        jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(myProject);
-        if (mpsProject == null) {
-            return;
-        }
-
-        Module module = e.getData(LangDataKeys.MODULE);
-        VirtualFile[] vFiles = e.getData(PlatformDataKeys.VIRTUAL_FILE_ARRAY);
-        if (module == null ||
-                vFiles == null ||
-                vFiles.length != 1 ||
-                vFiles[0].isDirectory() ||
-                FileTypeRegistry.getInstance().getFileTypeByFile(vFiles[0]) != MPSFileTypeFactory.MODEL_FILE_TYPE) {
-            return;
-        }
-
-        MPSFacet mpsFacet = FacetManager.getInstance(module).getFacetByType(MPSFacetType.ID);
-        if (mpsFacet == null || !mpsFacet.wasInitialized()) {
-            return;
-        }
-
-        String url = vFiles[0].getUrl();
-        if (!LocalFileSystem.PROTOCOL.equals(VirtualFileManager.extractProtocol(url))) {
-            return;
-        }
-        String path = VirtualFileManager.extractPath(url);
-        for (ModelRoot modelRoot : mpsFacet.getSolution().getModuleDescriptor().getModelRoots()) {
-            if (path.startsWith(modelRoot.getPath())) {
-                Solution solution = mpsFacet.getSolution();
-                myOperationContext = new ModuleContext(solution, mpsProject);
-                myModelDescriptor = SModelRepository.getInstance().findModel(FileSystem.getInstance().getFileByPath(vFiles[0].getPath()));
-                if (myModelDescriptor != null) {
-                  ModelAccess.instance().runReadAction(new Runnable() {
-                    @Override
-                    public void run() {
-                      SModel model = myModelDescriptor.getSModel();
-                      List<Language> modelLanguages = SModelOperations.getLanguages(model, myOperationContext.getScope());
-                      for (Language language : modelLanguages) {
-                        for (SNode concept : language.getConceptDeclarations()) {
-                          String conceptFqName = NameUtil.nodeFQName(concept);
-                          if (ModelConstraintsManager.canBeRoot(myOperationContext, conceptFqName, model)) {
-                            myConceptFqNameToNodePointerMap.put(conceptFqName, new SNodePointer(concept));
-                          }
-                        }
-                      }
-                    }
-                  });
-                }
-                return;
-            }
-        }
-    }
-
-    public boolean isEnabled() {
-        return myOperationContext != null && myModelDescriptor != null && myProject != null;
-    }
+  public interface Interaction {
+    /**
+     * @param concepts List of concepts that the dialog has to offer to new node creation
+     * @return Name and concept (from the map param) for the node to create; or null if cancelled
+     */
+    Pair<String, SAbstractConcept> choose(Map<String, SAbstractConcept> concepts);
+  }
 }

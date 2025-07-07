@@ -14,52 +14,90 @@
   ~ limitations under the License.
   -->
 
-<idea-plugin version="2" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <id>jetbrains.mps.java</id>
-  <name>MPS BaseLanguage support</name>
-  <description>Support of MPS baseLanguage</description>
+<idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+  <id>jetbrains.mps.idea.java</id>
+  <name>MPS BaseLanguage Support</name>
+  <description>Support of the MPS BaseLanguage (JAVA)</description>
   <category>Custom Languages</category>
-  <version>2.5.3</version>
-  <vendor url="http://www.jetbrains.com/mps/" logo="/MPS_16.png">JetBrains</vendor>
-  <idea-version since-build="117.105"></idea-version>
+  <version>2021.1</version>
+  <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
+  <idea-version since-build="211.1" until-build="212.1"/>
   <depends>jetbrains.mps.core</depends>
+  <depends>jetbrains.mps.ide.migration.idea</depends>
 
-  <xi:include href="../classes/jetbrains/mps/ide/java/actions/JavaActions.xml" xpointer="xpointer(/components/*)"/>
+  <xi:include href="JavaPlatform.xml" xpointer="xpointer(/components/*)"/>
 
   <application-components>
     <component>
-      <implementation-class>jetbrains.mps.ide.java.util.JavaCopyPasteDataConverter</implementation-class>
+      <implementation-class>jetbrains.mps.idea.java.fastFind.JavaPsiStubsNavigationContributor</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.java.platform.index.ClassifierSuccessorsFinder</implementation-class>
+      <implementation-class>jetbrains.mps.idea.java.fastFind.EmptyJavaStubsFindUsages</implementation-class>
     </component>
   </application-components>
 
   <project-components>
     <component>
-      <implementation-class>jetbrains.mps.idea.debugger.IdeaDebuggerPositionHighlighter</implementation-class>
+      <implementation-class>jetbrains.mps.idea.java.debugger.IdeaDebuggerPositionHighlighter</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.idea.debugger.breakpoints.IdeaBreakpointsUiComponent</implementation-class>
+      <implementation-class>jetbrains.mps.idea.java.debugger.breakpoints.IdeaBreakpointsUiComponent</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.idea.debugger.trace.TraceFilesManager</implementation-class>
+      <implementation-class>jetbrains.mps.idea.java.refactoring.MoveRenameBatch</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.java.actions.OverrideImplementMethodComponent</implementation-class>
+      <implementation-class>jetbrains.mps.idea.java.psi.PsiChangesWatcher</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.java.platform.highlighters.JavaHighlighters</implementation-class>
+      <implementation-class>jetbrains.mps.idea.java.refactoring.RegisterMoveStaticMemberPsiParticipant
+      </implementation-class>
     </component>
   </project-components>
 
   <actions>
+    <action id="jetbrains.mps.idea.scopes.CheckScopesAction"
+            class="jetbrains.mps.idea.scopes.CheckScopesAction">
+      <add-to-group group-id="ProjectViewPopupMenuSettingsGroup"/>
+    </action>
+    <action id="jetbrains.mps.idea.java.convert.ConvertPackageToModel"
+            class="jetbrains.mps.idea.java.convert.ConvertPackageToModel">
+      <add-to-group group-id="ProjectViewPopupMenuSettingsGroup"/>
+    </action>
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir=""/>
-    <debugger.positionManagerFactory implementation="jetbrains.mps.idea.debugger.MpsPositionManagerFactory"/>
-    <fileBasedIndex implementation="jetbrains.mps.ide.java.platform.index.ClassifierSuccessorsIndexer"/>
-    <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
+    <mps.modelRootContributor className="jetbrains.mps.idea.sourceStubs.JavaSourceModelRootContributor"/>
+    <mps.modelTemplateProvider implementation="jetbrains.mps.idea.java.JavaModelTemplateProvider"/>
+    <mps.psiFactory implementation="jetbrains.mps.idea.java.psi.impl.JavaMPSPsiNodeFactory"/>
+    <mps.psiSourceFinder implementation="jetbrains.mps.idea.java.fastFind.ClassStubPsiMapper"/>
+    <mps.psiSourceFinder implementation="jetbrains.mps.idea.java.psiStubs.Mapper"/>
+    <mps.renameRefactoringContributor className="jetbrains.mps.idea.java.refactoring.MethodRenameContributor" order="before mps-core-rename"/>
+    <debugger.positionManagerFactory implementation="jetbrains.mps.idea.java.debugger.MpsPositionManagerFactory"/>
+    <compileServer.plugin classpath="jps/mps-java-jps-plugin.jar;jps/mps-java-jps-plugin-j8.jar;java-platform.jar;java-core.jar"/>
+    <referencesSearch implementation="jetbrains.mps.idea.java.usages.MPSReferenceSearch"/>
+    <referencesSearch implementation="jetbrains.mps.idea.java.usages.IdPrefixSearch"/>
+    <java.elementFinder implementation="jetbrains.mps.idea.java.psi.impl.MPSJavaClassFinder"/>
+    <java.elementFinder implementation="jetbrains.mps.idea.java.psi.impl.MPSPackageFinder"/>
+    <java.shortNamesCache implementation="jetbrains.mps.idea.java.psi.impl.MPSJavaShortNamesCache"/>
+
+    <directClassInheritorsSearch implementation="jetbrains.mps.idea.java.usages.MPSJavaDirectInheritorsSearcher"/>
+    <methodReferencesSearch implementation="jetbrains.mps.idea.java.usages.MPSMethodReferencesSearch"/>
+    <fileBasedIndex implementation="jetbrains.mps.idea.java.index.MPSFQNameJavaClassIndex"/>
+    <fileBasedIndex implementation="jetbrains.mps.idea.java.index.MPSJavaPackageIndex"/>
+    <fileBasedIndex implementation="jetbrains.mps.idea.java.index.MPSShortNameJavaClassIndex"/>
+    <fileBasedIndex implementation="jetbrains.mps.idea.java.index.MPSJavaMethodIndex"/>
+    <fileBasedIndex implementation="jetbrains.mps.idea.java.index.MPSJavaFieldIndex"/>
+    <fileBasedIndex implementation="jetbrains.mps.idea.java.index.ForeignIdReferenceIndex"/>
+    <projectService serviceInterface="jetbrains.mps.idea.java.psi.ForeignIdReferenceCache"
+                    serviceImplementation="jetbrains.mps.idea.java.psi.impl.ForeignIdReferenceCacheImpl"/>
+    <findUsagesHandlerFactory implementation="jetbrains.mps.idea.java.usages.MPSFindUsagesHandlerFactory" id="mps"
+                              order="before java"/>
+    <refactoring.elementListenerProvider implementation="jetbrains.mps.idea.java.refactoring.PackageRenameListener"/>
   </extensions>
+
+  <extensions defaultExtensionNs="jetbrains.mps">
+    <nodeStructureViewProvider implementation="jetbrains.mps.idea.java.psi.structureView.MPSStructureViewFactory"/>
+  </extensions>
+
 </idea-plugin>

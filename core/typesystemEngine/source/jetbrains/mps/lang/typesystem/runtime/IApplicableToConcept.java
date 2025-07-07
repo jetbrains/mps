@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.lang.typesystem.runtime;
 
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+
 public interface IApplicableToConcept {
-  public String getApplicableConceptFQName();
+  SAbstractConcept getApplicableConcept();
 }

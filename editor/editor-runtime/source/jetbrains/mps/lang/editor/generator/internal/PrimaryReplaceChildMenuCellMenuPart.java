@@ -15,17 +15,20 @@
  */
 package jetbrains.mps.lang.editor.generator.internal;
 
-import jetbrains.mps.editor.runtime.impl.CellUtil;
 import jetbrains.mps.lang.editor.cellProviders.AggregationCellContext;
-import jetbrains.mps.nodeEditor.EditorContext;
+import jetbrains.mps.lang.editor.menus.transformation.SubstituteActionsCollector;
+import jetbrains.mps.lang.editor.menus.transformation.SubstituteItemsCollector;
 import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPart;
-import jetbrains.mps.smodel.IScope;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.action.AbstractChildNodeSetter;
-import jetbrains.mps.smodel.action.INodeSubstituteAction;
-import jetbrains.mps.smodel.action.ModelActions;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
+import jetbrains.mps.nodeEditor.menus.EditorMenuTraceImpl;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
+import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.List;
 
@@ -33,27 +36,26 @@ import java.util.List;
  * Igor Alshannikov
  * Date: Dec 1, 2006
  */
-public class PrimaryReplaceChildMenuCellMenuPart implements SubstituteInfoPart {
+public class PrimaryReplaceChildMenuCellMenuPart implements SubstituteInfoPartExt {
+  @Override
+  public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
+    SNode parentNode = cellContext.get(BasicCellContext.EDITED_NODE);
+    SContainmentLink containmentLink = cellContext.get(AggregationCellContext.LINK);
+    SAbstractConcept defaultConceptOfChild = cellContext.get(AggregationCellContext.CHILD_CONCEPT);
+    SNode currentChild = cellContext.getOpt(AggregationCellContext.CURRENT_CHILD_NODE);
+    EditorMenuTraceImpl editorMenuTrace = new EditorMenuTraceImpl();
+    editorMenuTrace.pushTraceInfo();
+    editorMenuTrace.setDescriptor(createEditorMenuDescriptor(cellContext, editorContext));
+    try {
+      List<TransformationMenuItem> transformationItems =
+          new SubstituteItemsCollector(parentNode, currentChild, containmentLink, defaultConceptOfChild, editorContext, null, editorMenuTrace).collect();
+      return new SubstituteActionsCollector(parentNode, transformationItems, editorContext.getRepository()).collect();
+    } finally {
+      editorMenuTrace.popTraceInfo();
+    }
+  }
 
-  public List<INodeSubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-    SNode parentNode = (SNode) cellContext.get(BasicCellContext.EDITED_NODE);
-    SNode linkDeclaration = (SNode) cellContext.get(AggregationCellContext.LINK_DECLARATION);
-    final String role = CellUtil.getLinkDeclarationRole(linkDeclaration);
-    SNode currentChild = (SNode) cellContext.getOpt(AggregationCellContext.CURRENT_CHILD_NODE);
-    return ModelActions.createChildSubstituteActions(
-            parentNode,
-            currentChild,
-            CellUtil.getLinkDeclarationTarget(linkDeclaration),
-            new AbstractChildNodeSetter() {
-              public SNode doExecute(SNode parentNode, SNode oldChild, SNode newChild, IScope scope) {
-                if (oldChild == null) {
-                  parentNode.setChild(role, newChild);
-                } else {
-                  parentNode.replaceChild(oldChild, newChild);
-                }
-                return newChild;
-              }
-            },
-            editorContext.getOperationContext());
+  protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
+    return null;
   }
 }

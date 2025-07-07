@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.lang.typesystem.runtime;
 
+import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.SNode;
+import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.util.CollectionUtil;
@@ -24,10 +26,10 @@ import jetbrains.mps.util.CollectionUtil;
 import java.util.*;
 
 public class OverloadedOperationsManager {
-  private static final Logger LOG = Logger.getLogger(OverloadedOperationsManager.class);
+  private static final Logger LOG = Logger.wrap(LogManager.getLogger(OverloadedOperationsManager.class));
 
   private RuleSet<IOverloadedOpsTypesProvider> myOperationsToTypeProviders =
-    new RuleSet<IOverloadedOpsTypesProvider>();
+      new RuleSet<>();
 
   private TypeChecker myTypeChecker;
 
@@ -45,12 +47,16 @@ public class OverloadedOperationsManager {
   }
 
   public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
+    return getOperationType(operation, leftOperandType, rightOperandType, IRuleConflictWarningProducer.NULL);
+  }
+
+  public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType, IRuleConflictWarningProducer warningProducer) {
     Set<IOverloadedOpsTypesProvider> operationsTypesProviderSet = myOperationsToTypeProviders.getRules(operation);
     if (operationsTypesProviderSet.isEmpty()) {
       return null;
     }
     SubtypingManager subtypingManager = myTypeChecker.getSubtypingManager();
-    List<IOverloadedOpsTypesProvider> filteredProviders = new ArrayList<IOverloadedOpsTypesProvider>();
+    List<IOverloadedOpsTypesProvider> filteredProviders = new ArrayList<>();
     for (IOverloadedOpsTypesProvider provider : operationsTypesProviderSet) {
       //first applicable method is from base class, second is custom
       if (provider.isApplicable(subtypingManager, leftOperandType, rightOperandType) &&
@@ -59,17 +65,19 @@ public class OverloadedOperationsManager {
       }
     }
     final boolean[] severalRules = new boolean[]{false};
-    Collections.sort(filteredProviders, new Comparator<IOverloadedOpsTypesProvider>() {
-      public int compare(IOverloadedOpsTypesProvider o1, IOverloadedOpsTypesProvider o2) {
-        int i = o1.compareTo(o2);
-        if (i == 0) {
-          severalRules[0] = true;
-        }
-        return i;
+    final IOverloadedOpsTypesProvider[] matchedProviders = new IOverloadedOpsTypesProvider[2];
+    Collections.sort(filteredProviders, (o1, o2) -> {
+      int i = o1.compareTo(o2);
+      if (i == 0) {
+        severalRules[0] = true;
+        matchedProviders[0] = o1;
+        matchedProviders[1] = o2;
       }
+      return i;
     });
     if (severalRules[0]) {
-      LOG.warning("several overloaded rules found for operation", operation);
+      matchedProviders[0].reportConflict(warningProducer);
+      matchedProviders[1].reportConflict(warningProducer);
     }
     for (IOverloadedOpsTypesProvider provider : filteredProviders) {
       SNode result = provider.getOperationType(operation, leftOperandType, rightOperandType);
@@ -81,9 +89,6 @@ public class OverloadedOperationsManager {
   }
 
   public void clear() {
-    myOperationsToTypeProviders = new RuleSet<IOverloadedOpsTypesProvider>();
-  }
-
-  public void makeConsistent() {
+    myOperationsToTypeProviders = new RuleSet<>();
   }
 }

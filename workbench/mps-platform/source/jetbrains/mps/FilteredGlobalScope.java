@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,73 +15,53 @@
  */
 package jetbrains.mps;
 
-import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.FilteredScope;
 import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.*;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.module.SearchScope;
+import org.jetbrains.mps.util.Condition;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class FilteredGlobalScope extends BaseScope implements IScope {
-  private GlobalScope myScope = GlobalScope.getInstance();
-
+/**
+ * A view of a repository modules, with some filtered out according to {@link VisibleModuleRegistry}
+ * (owner-manifested as hidden or matching a pattern from ext point)
+ *
+ * Use of this class is discouraged due to unfortunate naming and impl of negligible value.
+ * Indeed, it captures the knowledge about the way to find out what modules are 'hidden', but why for global repo only?
+ */
+public class FilteredGlobalScope extends FilteredScope {
+  private final Condition<SModule> myCondition;
+  /**
+   * @deprecated this cons assumes single global repository, which is a non-existent thing. Use {@link #FilteredGlobalScope(SRepository)} instead
+   */
+  @Deprecated
+  @ToRemove(version = 2019.1)
   public FilteredGlobalScope() {
+    this(GlobalScope.getInstance());
+  }
+
+  public FilteredGlobalScope(SRepository repository) {
+    // not that filtered *global* scope cares about a repo, but if you insist on using VR logic, and don't want to use deprecated cons,
+    // here's the one to use instead.
+    this(new GlobalScope(repository));
+  }
+
+  private FilteredGlobalScope(SearchScope delegate) {
+    super(delegate);
+    // To do: add headless VisibleModuleRegistry component
+    VisibleModuleRegistry registry = VisibleModuleRegistry.getInstance();
+    myCondition = registry == null ? Condition.always() : registry::isVisible;
   }
 
   @Override
-  public SModelDescriptor getModelDescriptor(SModelReference modelReference) {
-    return myScope.getModelDescriptor(modelReference);
+  protected boolean acceptModule(SModule module) {
+    return myCondition.met(module);
   }
 
   @Override
-  public Language getLanguage(ModuleReference moduleReference) {
-    return myScope.getLanguage(moduleReference);
-  }
-
-  @Override
-  public DevKit getDevKit(ModuleReference ref) {
-    return myScope.getDevKit(ref);
-  }
-
-  @Override
-  public Iterable<SModelDescriptor> getModelDescriptors() {
-    List<SModelDescriptor> result = new ArrayList<SModelDescriptor>();
-    for (SModelDescriptor modelDescriptor : myScope.getModelDescriptors()) {
-      if (VisibleModuleRegistry.getInstance().isVisible(modelDescriptor.getModule())) {
-         result.add(modelDescriptor);
-      }
-    }
-    return result;
-  }
-
-  @Override
-  public Iterable<Language> getVisibleLanguages() {
-    return filter(myScope.getVisibleLanguages());
-  }
-
-  public Iterable<Solution> getVisibleSolutions() {
-    return filter(myScope.getVisibleSolutions());
-  }
-
-  @Override
-  public Iterable<DevKit> getVisibleDevkits() {
-    return filter(myScope.getVisibleDevkits());
-  }
-
-  public Iterable<IModule> getVisibleModules() {
-    return filter(myScope.getVisibleModules());
-  }
-
-  private <T extends IModule> Iterable<T> filter(Iterable<T> list) {
-    List<T> result = new ArrayList<T>();
-    for (T module : list) {
-      if (VisibleModuleRegistry.getInstance().isVisible(module)) {
-        result.add(module);
-      }
-    }
-    return result;
+  protected boolean acceptModel(SModel model) {
+    return acceptModule(model.getModule());
   }
 }

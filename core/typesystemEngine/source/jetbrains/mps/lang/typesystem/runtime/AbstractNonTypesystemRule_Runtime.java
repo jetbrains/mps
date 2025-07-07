@@ -15,27 +15,26 @@
  */
 package jetbrains.mps.lang.typesystem.runtime;
 
-import jetbrains.mps.smodel.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public abstract class AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
-
   @Override
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    return new IsApplicableStatus(isApplicable(argument), null);
+    return new IsApplicableStatus(false, null);
   }
 
   @Override
   public void applyRule(SNode argument, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    applyRule(argument, typeCheckingContext);
   }
 
-  @Deprecated
-  public boolean isApplicable(SNode argument) {
+  @Override
+  public boolean overrides(NonTypesystemRule_Runtime rule) {
+    return overrides();
+  }
+
+  @Override
+  public boolean overrides() {
     return false;
-  }
-
-  @Deprecated
-  public void applyRule(SNode argument, TypeCheckingContext typeCheckingContext) {
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,162 +15,168 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.MPSCore;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.SModel.ImportElement;
-import jetbrains.mps.util.TreeIterator;
+import jetbrains.mps.util.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.openapi.model.SReference;
 
-import java.util.*;
-
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public final class CopyUtil {
   private CopyUtil() {
   }
 
   public static void copyModelContent(SModel from, SModel to) {
-    for (SNode root : from.roots()) {
-      to.addRoot(copy(root));
+    for (SNode root : from.getRootNodes()) {
+      to.addRootNode(copy(root));
     }
   }
 
-  private static void copyModelContentAndPreserveIds(SModel from, SModel to) {
-    for (SNode root : from.roots()) {
-//      HashMap<SNode, SNode> mapping = new HashMap<SNode, SNode>();
-//      SNode rootCopy = clone(root, mapping, true);
-//      for (SNode sourceNode : mapping.keySet()) {
-//        mapping.get(sourceNode).setId(sourceNode.getSNodeId());
-//      }
-      to.addRoot(copyAndPreserveId(root, true));
+  public static void copyModelContentAndUpdateCrossRootReferences(SModel from, SModel to) {
+    // copy content and update references for targets in the same model to point to copied counterparts
+    // we gonna record each cloned node, map would be huge
+    HashMap<SNode, SNode> nodeMap = new HashMap<>(1 << 10);
+    ArrayList<SNode> newRoots = new ArrayList<>();
+    ArrayDeque<SNode> queue = new ArrayDeque<>();
+    for (SNode r : from.getRootNodes()) {
+      queue.addLast(r);
+      while (!(queue.isEmpty())) {
+        SNode n = queue.removeFirst();
+        SNode copy = to.createNode(n.getConcept());
+        nodeMap.put(n, copy);
+        copyProperties(n, copy);
+        copyUserObjects(n, copy);
+        SContainmentLink ownerLink = n.getContainmentLink();
+        if (ownerLink == null) {
+          newRoots.add(copy);
+        } else {
+          // add a copy as a child into our parent's copy.
+          // We walk source model from top to bottom, no chance to lack mapping for parent node
+          nodeMap.get(n.getParent()).addChild(ownerLink, copy);
+        }
+        for (SNode ch : n.getChildren()) {
+          queue.addLast(ch);
+        }
+      }
+    }
+    // Once map is ready, we can update references, so that references between original nodes are restored to their copies
+    // despite lack of elements from newRoots, implicitly updates nodeMap.get(r) counterparts, i.e. new nodes
+    for (SNode n : SNodeUtil.getDescendants(from.getRootNodes())) {
+      // XXX would be great to re-use code of CloneUtil from generator
+      // This code is similar to CopyUtil.addReferences without odd arguments, static checks and dead branches.
+      SNode copy = nodeMap.get(n);
+      if (copy == null) {
+        continue;
+      }
+      for (SReference ref : n.getReferences()) {
+        SNode targetNode = SNodeOperations.getTargetNodeSilently(ref);
+        if (targetNode != null) {
+          SNode newTarget = nodeMap.getOrDefault(targetNode, targetNode);
+          copy.setReferenceTarget(ref.getLink(), newTarget);
+        } else {
+          String resolveInfo = (ref instanceof jetbrains.mps.smodel.SReference ? ((jetbrains.mps.smodel.SReference) ref).getResolveInfo() : null);
+          copy.setReference(ref.getLink(), jetbrains.mps.smodel.SReference.create(ref.getLink(), copy, ref.getTargetNodeReference(), resolveInfo));
+        }
+      }
+    }
+    for (SNode r : newRoots) {
+      to.addRootNode(r);
     }
   }
 
-  public static void clearModelProperties(SModel model) {
-    for (ImportElement ie : new ArrayList<ImportElement>(model.getAdditionalModelVersions())) {
-      model.deleteModelImport(ie.getModelReference());
+  public static void copyModelContentAndPreserveIds(SModel from, SModel to) {
+    for (SNode root : from.getRootNodes()) {
+      to.addRootNode(copyAndPreserveId(root, true));
     }
-    for (ImportElement ie : new ArrayList<ImportElement>(model.importedModels())) {
-      model.deleteModelImport(ie.getModelReference());
-    }
-    for (ModuleReference mr :  new ArrayList<ModuleReference>(model.importedDevkits())) {
-      model.deleteDevKit(mr);
-    }
-    for (ModuleReference mr : new ArrayList<ModuleReference>(model.importedLanguages())) {
-      model.deleteLanguage(mr);
-    }
-    for (ModuleReference mr : new ArrayList<ModuleReference>(model.engagedOnGenerationLanguages())) {
-      model.removeEngagedOnGenerationLanguage(mr);
-    }
-    model.calculateImplicitImports();
   }
 
-  public static void copyModelProperties(SModel from, SModel to) {
-    for (ImportElement ie : from.getAdditionalModelVersions()) {
-      to.addAdditionalModelVersion(new ImportElement(ie.getModelReference(),
-        ie.getReferenceID(), ie.getUsedVersion()));
+  private static void copyModelContentAndPreserveIds(jetbrains.mps.smodel.SModel from, jetbrains.mps.smodel.SModel to) {
+    for (SNode root : from.getRootNodes()) {
+      to.addRootNode(copyAndPreserveId(root, true));
     }
-    for (ImportElement ie : from.importedModels()) {
-      to.addModelImport(new ImportElement(ie.getModelReference(),
-        ie.getReferenceID(), ie.getUsedVersion()));
-    }
-    for (ModuleReference mr : from.importedDevkits()) {
-      to.addDevKit(mr);
-    }
-    for (ModuleReference mr : from.importedLanguages()) {
-      to.addLanguage(mr);
-    }
-    for (ModuleReference mr : from.engagedOnGenerationLanguages()) {
-      to.addEngagedOnGenerationLanguage(mr);
-    }
-    to.setPersistenceVersion(from.getPersistenceVersion());
-    to.getSModelHeader().setVersion(from.getSModelHeader().getVersion());
   }
 
-  public static SModel copyModel(SModel model) {
-    SModel copy = new SModel(model.getSModelReference());
+  public static void copyModelProperties(jetbrains.mps.smodel.SModel from, jetbrains.mps.smodel.SModel to) {
+    from.copyPropertiesTo(to);
+  }
+
+  public static jetbrains.mps.smodel.SModel copyModel(jetbrains.mps.smodel.SModel model) {
+    jetbrains.mps.smodel.SModel copy = model.createEmptyCopy();
     copyModelContentAndPreserveIds(model, copy);
     copyModelProperties(model, copy);
-    copy.setMaxImportIndex(model.getMaxImportIndex());
     return copy;
   }
 
-  public static void changeModelReference(SModel model, SModelReference modelReference) {
-    model.changeModelReference(modelReference);
-  }
-
   public static List<SNode> copy(List<SNode> nodes) {
-    return copy(nodes, new HashMap<SNode, SNode>());
-  }
-
-  public static <NA extends INodeAdapter> List<NA> copyAdapters(List<NA> adapters) {
-    return (List<NA>) BaseAdapter.toAdapters(copy(BaseAdapter.toNodes(adapters)));
+    return copy(nodes, new HashMap<>());
   }
 
   public static List<SNode> copy(List<SNode> nodes, Map<SNode, SNode> mapping) {
     List<SNode> result = clone(nodes, mapping);
-    for(SNode node : nodes) {
-      addReferences(node, mapping, true, false);
+    for (SNode node : nodes) {
+      addReferences(node, mapping, false);
     }
     return result;
   }
 
-  public static <BA extends BaseAdapter> BA copy(BA node) {
-    return (BA) copy(node.getNode()).getAdapter();
-  }
-
   public static SNode copy(SNode node) {
-    return copy(node, new HashMap<SNode, SNode>(), true);
+    return copy(node, new HashMap<>(), true);
   }
 
   public static SNode copyAndPreserveId(SNode node) {
     return copyAndPreserveId(node, true);
   }
-  
+
   public static SNode copyAndPreserveId(SNode node, boolean cloneRefs) {
-    HashMap<SNode, SNode> mapping = new HashMap<SNode, SNode>();
+    HashMap<SNode, SNode> mapping = new HashMap<>();
     SNode result = clone(node, mapping, true);
     for (SNode sourceNode : mapping.keySet()) {
-      mapping.get(sourceNode).setId(sourceNode.getSNodeId());
+      ((jetbrains.mps.smodel.SNode) mapping.get(sourceNode)).setId(sourceNode.getNodeId());
     }
-    addReferences(node, mapping, true, cloneRefs);
+    addReferences(node, mapping, cloneRefs);
     return result;
   }
 
   public static SNode copy(SNode node, boolean copyAttributes) {
-    return copy(node, new HashMap<SNode, SNode>(), copyAttributes);
+    return copy(node, new HashMap<>(), copyAttributes);
   }
 
   public static SNode copy(SNode node, Map<SNode, SNode> mapping, boolean copyAttributes) {
     SNode result = clone(node, mapping, copyAttributes);
-    addReferences(node, mapping, copyAttributes, false);
+    addReferences(node, mapping, false);
     return result;
   }
 
-  public static void copyAttributes(SNode fromNode, SNode toNode) {
-    if (fromNode == null || toNode == null) return;
-
-    HashMap<SNode, SNode> mapping = new HashMap<SNode, SNode>();
-    mapping.put(fromNode, toNode);
-
-    for (SNode child : fromNode.getChildren(true)) {
-      if (AttributeOperations.isAttribute(child)) {
-        String role = child.getRole_();
-        assert role != null;
-        toNode.addChild(role, CopyUtil.copy(child, mapping, true));
-      }
+  public static List<SNode> copyAndPreserveId(List<SNode> nodes, Map<SNode, SNode> mapping) {
+    List<SNode> result = clone(nodes, mapping);
+    for (SNode sourceNode : mapping.keySet()) {
+      ((jetbrains.mps.smodel.SNode) mapping.get(sourceNode)).setId(sourceNode.getNodeId());
     }
-
+    for (SNode node : nodes) {
+      addReferences(node, mapping, false);
+    }
+    return result;
   }
 
   private static SNode clone(SNode node, Map<SNode, SNode> mapping, boolean copyAttributes) {
     if (node == null) return null;
 
-    SNode result = new SNode(node.getModel(), node.getConceptFqName(), false);
+    jetbrains.mps.smodel.SNode result = new jetbrains.mps.smodel.SNode(node.getConcept());
     mapping.put(node, result);
-    result.putProperties(node);
-    result.putUserObjects(node);
-    for (SNode child : node.getChildren(copyAttributes)) {
-      String role = child.getRole_();
+    copyProperties(node, result);
+    copyUserObjects(node, result);
+    for (SNode child : node.getChildren()) {
+      if (!copyAttributes && AttributeOperations.isAttribute(child)) continue;
+      SContainmentLink role = child.getContainmentLink();
       assert role != null;
       result.addChild(role, clone(child, mapping, copyAttributes));
     }
@@ -179,49 +185,57 @@ public final class CopyUtil {
   }
 
   private static List<SNode> clone(List<? extends SNode> nodes, Map<SNode, SNode> mapping) {
-    List<SNode> results = new ArrayList<SNode>();
+    List<SNode> results = new ArrayList<>();
     for (SNode node : nodes) {
       results.add(clone(node, mapping, true));
     }
     return results;
   }
 
-  private static void addReferences(SNode root, Map<SNode, SNode> mapping, boolean copyAttributes, boolean forceCloneRefs) {
-    if(root == null) return;
-    final Iterator<SNode> nodesIterator = root.getDescendantsIterable(null, true).iterator();
-    while(nodesIterator.hasNext()) {
-      SNode inputNode = nodesIterator.next();
-      if (!copyAttributes && AttributeOperations.isAttribute(inputNode)) {
-        ((TreeIterator)nodesIterator).skipChildren();
+  public static void copyProperties(SNode from, SNode to) {
+    for (SProperty p : from.getProperties()) {
+      to.setProperty(p, from.getProperty(p));
+    }
+  }
+
+  public static void copyUserObjects(SNode from, final SNode to) {
+    for (Object key : from.getUserObjectKeys()) {
+      to.putUserObject(key, from.getUserObject(key));
+    }
+  }
+
+  public static void addReferences(SNode root, Map<SNode, SNode> mapping, boolean forceCloneRefs) {
+    if (root == null) {
+      return;
+    }
+    Iterable<SNode> thisAndDesc = SNodeUtil.getDescendants(root);
+    final boolean cloneRefs = forceCloneRefs || RuntimeFlags.isMergeDriverMode();
+    for (SNode inputNode : thisAndDesc) {
+      SNode outputNode = mapping.get(inputNode);
+      if (outputNode == null) {
         continue;
       }
-      SNode outputNode = mapping.get(inputNode);
-      if(outputNode == null) {
-        throw new IllegalStateException();
-      }
 
-      for (SReference ref : inputNode.getReferencesIterable()) {
-        boolean cloneRefs = forceCloneRefs || MPSCore.getInstance().isMergeDriverMode();
-        SNode inputTargetNode = cloneRefs ? null : ref.getTargetNodeSilently();
+      for (SReference ref : inputNode.getReferences()) {
+        SNode inputTargetNode = cloneRefs ? null : jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
         if (inputTargetNode == null) { //broken reference or need to clone
           if (ref instanceof StaticReference) {
             StaticReference statRef = (StaticReference) ref;
-            outputNode.addReference(new StaticReference(
-              statRef.getRole(),
-              outputNode,
-              statRef.getTargetSModelReference(),
-              statRef.getTargetNodeId(),
-              statRef.getResolveInfo()));
+            SReference reference = new StaticReference(
+                statRef.getLink(),
+                outputNode,
+                statRef.getTargetSModelReference(),
+                statRef.getTargetNodeId(),
+                statRef.getResolveInfo());
+            outputNode.setReference(reference.getLink(), reference);
           } else if (ref instanceof DynamicReference && cloneRefs) {
             DynamicReference dynRef = (DynamicReference) ref;
-            DynamicReference output = new DynamicReference(dynRef.getRole(), outputNode, dynRef.getTargetSModelReference(), dynRef.getResolveInfo());
+            DynamicReference output = new DynamicReference(dynRef.getLink(), outputNode, null, dynRef.getResolveInfo());
             output.setOrigin(dynRef.getOrigin());
-            outputNode.addReference(output);
+            outputNode.setReference(output.getLink(), output);
           }
-        } else if (mapping.containsKey(inputTargetNode)) {
-          outputNode.setReferent(ref.getRole(), mapping.get(inputTargetNode), false);
         } else {
-          outputNode.setReferent(ref.getRole(), inputTargetNode, false);
+          outputNode.setReferenceTarget(ref.getLink(), mapping.getOrDefault(inputTargetNode, inputTargetNode));
         }
       }
     }

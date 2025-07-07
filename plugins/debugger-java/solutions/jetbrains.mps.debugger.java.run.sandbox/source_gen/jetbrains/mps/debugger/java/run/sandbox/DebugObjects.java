@@ -7,9 +7,7 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 
 public class DebugObjects {
   private static int myStaticField = 1;
-
   private int myNonStaticField;
-
   public DebugObjects() {
     myStaticField++;
     this.myNonStaticField = myStaticField;
@@ -24,20 +22,30 @@ public class DebugObjects {
     System.err.println(stringVar + objectVar);
     objectVar = new Integer(2);
   }
-
   public void doStrangeThings() {
     System.err.println(this.myNonStaticField);
     while (true) {
     }
   }
-
   public static void main(String[] args) {
     new DebugObjects() {
       public Object answerToTheUltimateQuestionofLifeUniverseAndEverything() {
         return 42;
       }
-
       public void foo() {
+      }
+
+      @Override
+      public String toString() {
+        int i = 0;
+        try {
+          while (i < 1000) {
+            Thread.sleep(10);
+            i++;
+          }
+        } catch (InterruptedException e) {
+        }
+        return "toString is " + i;
       }
     }.answerToTheUltimateQuestionofLifeUniverseAndEverything();
   }

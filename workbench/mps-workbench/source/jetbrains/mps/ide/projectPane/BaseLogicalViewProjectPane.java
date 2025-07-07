@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,60 +20,86 @@ import com.intellij.ide.CutProvider;
 import com.intellij.ide.PasteProvider;
 import com.intellij.ide.projectView.ProjectView;
 import com.intellij.ide.projectView.impl.AbstractProjectViewPane;
-import com.intellij.ide.projectView.impl.ProjectViewImpl;
-import com.intellij.openapi.actionSystem.*;
+import com.intellij.ide.projectView.impl.ProjectViewState;
+import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFileManagerListener;
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.ide.actions.CopyNode_Action;
 import jetbrains.mps.ide.actions.CutNode_Action;
 import jetbrains.mps.ide.actions.PasteNode_Action;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.fileSystem.nodes.ProjectTreeNode;
-import jetbrains.mps.ide.projectPane.logicalview.nodes.ProjectModuleTreeNode;
-import jetbrains.mps.ide.projectPane.logicalview.nodes.TransientModelsTreeNode;
-import jetbrains.mps.ide.ui.MPSTree;
-import jetbrains.mps.ide.ui.MPSTreeNode;
-import jetbrains.mps.ide.ui.MPSTreeNodeEx;
-import jetbrains.mps.ide.ui.smodel.PackageNode;
-import jetbrains.mps.ide.ui.smodel.SModelTreeNode;
-import jetbrains.mps.ide.ui.smodel.SNodeTreeNode;
+import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
+import jetbrains.mps.ide.ui.tree.module.GeneratorTreeNode;
+import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
+import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
+import jetbrains.mps.ide.ui.tree.module.TransientModelsTreeNode;
+import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
+import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
+import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.IMakeNotificationListener.Stub;
-import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.make.MakeNotification;
+import jetbrains.mps.make.MakeServiceComponent;
+import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
-import jetbrains.mps.project.IModule;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.reloading.ClassLoaderManager;
-import jetbrains.mps.reloading.ReloadAdapter;
-import jetbrains.mps.reloading.ReloadListener;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.RepoListenerRegistrar;
+import jetbrains.mps.util.Pair;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.workbench.ActionPlace;
+import jetbrains.mps.workbench.FileSystemModelHelper;
 import jetbrains.mps.workbench.MPSDataKeys;
 import jetbrains.mps.workbench.action.ActionUtils;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
+import org.jetbrains.mps.openapi.repository.CommandListener;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
-import javax.swing.JTree;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane {
-  private MyModelAccessListener myModelAccessListener = new MyModelAccessListener();
-  private SModelRepositoryListener mySModelRepositoryListener = new MyModelRepositoryAdapter();
   private VirtualFileManagerListener myRefreshListener = new RefreshListener();
-  private boolean myNeedRebuild = false;
-  private MyModuleRepositoryListener myRepositoryListener = new MyModuleRepositoryListener();
+  private final MyRepositoryListener myRepositoryListener = new MyRepositoryListener();
   protected boolean myDisposed;
 
-  private ReloadListener myReloadListener = new ReloadAdapter() {
-    public void onAfterReload() {
+  private DeployListener myClassesListener = new DeployListener() {
+    @Override
+    public void onUnloaded(Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
+    }
+
+    @Override
+    public void onLoaded(Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
       rebuild();
     }
   };
@@ -86,39 +112,72 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     }
   };
 
+  /**
+   * @deprecated use {@link #BaseLogicalViewProjectPane(Project)} instead
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
+  protected BaseLogicalViewProjectPane(Project project, ProjectView projectView) {
+    super(project);
+  }
+
   protected BaseLogicalViewProjectPane(Project project) {
     super(project);
   }
 
-  public abstract Project getProject();
+  public Project getProject() {
+    return myProject;
+  }
 
-  public abstract ProjectView getProjectView();
+  public ProjectView getProjectView() {
+    return ProjectView.getInstance(myProject);
+  }
+
+  /*package*/ ProjectViewState getProjectViewState() {
+    return ProjectViewState.getInstance(getProject());
+  }
 
   public abstract void rebuild();
 
-  public abstract void selectNextModel(SModelDescriptor md);
-
+  @Override
   public Object getData(String dataId) {
     //MPSDK
-    if (dataId.equals(MPSDataKeys.NODE.getName())) return getSelectedSNode();
-    if (dataId.equals(MPSDataKeys.NODES.getName())) return getSelectedSNodes();
-
-    if (dataId.equals(MPSDataKeys.MODEL.getName())) return getSelectedModel();
-    if (dataId.equals(MPSDataKeys.CONTEXT_MODEL.getName())) return getContextModel();
-    if (dataId.equals(MPSDataKeys.MODELS.getName())) return getSelectedModels();
-
-    if (dataId.equals(MPSDataKeys.MODULE.getName())) return getSelectedModule();
-    if (dataId.equals(MPSDataKeys.CONTEXT_MODULE.getName())) return getContextModule();
-    if (dataId.equals(MPSDataKeys.MODULES.getName())) return getSelectedModules();
-
-    if (dataId.equals(MPSDataKeys.VIRTUAL_PACKAGE.getName())) {
-      List<String> selectedPackages = getSelectedPackages();
-      if (selectedPackages.size() != 1) return null;
-      return selectedPackages.get(0);
+    if (MPSDataKeys.NODE.is(dataId)) {
+      return getSelectedSNode();
     }
-    if (dataId.equals(MPSDataKeys.VIRTUAL_PACKAGES.getName())) return getSelectedPackages();
+    if (MPSDataKeys.NODES.is(dataId)) {
+      final List<SNode> selectedNodes = getSelectedSNodes();
+      return selectedNodes.isEmpty() ? null : selectedNodes;
+    }
 
-    if (dataId.equals(MPSDataKeys.NAMESPACE.getName())) {
+    if (MPSDataKeys.MODEL.is(dataId)) {
+      return getSelectedModel();
+    }
+    if (MPSDataKeys.CONTEXT_MODEL.is(dataId)) {
+      return getContextModel();
+    }
+    if (MPSDataKeys.MODELS.is(dataId)) {
+      final List<SModel> selectedModels = getSelectedModels();
+      return selectedModels.isEmpty() ? null : selectedModels;
+    }
+
+    if (MPSDataKeys.MODULE.is(dataId)) {
+      return getSelectedModule();
+    }
+    if (MPSDataKeys.CONTEXT_MODULE.is(dataId)) {
+      return getContextModule();
+    }
+    if (MPSDataKeys.MODULES.is(dataId)) {
+      final List<SModule> selectedModules = getSelectedModules();
+      return selectedModules.isEmpty() ? null : selectedModules;
+    }
+
+    if (MPSDataKeys.VIRTUAL_PACKAGES.is(dataId)) {
+      final List<Pair<SModel, String>> rv = getSelectedPackages();
+      return rv.isEmpty() ? null : rv;
+    }
+
+    if (MPSDataKeys.NAMESPACE.is(dataId)) {
       NamespaceTextNode selectedNamespaceNode = getSelectedTreeNode(NamespaceTextNode.class);
       if (selectedNamespaceNode != null) {
         return selectedNamespaceNode.getNamespace();
@@ -126,17 +185,40 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
       return null;
     }
 
-    if (dataId.equals(MPSDataKeys.OPERATION_CONTEXT.getName())) return getContextForSelection();
-    if (dataId.equals(MPSDataKeys.LOGICAL_VIEW_NODE.getName())) return getSelectedTreeNode(TreeNode.class);
-    if (dataId.equals(MPSDataKeys.LOGICAL_VIEW_NODES.getName())) return getSelectedTreeNodes(TreeNode.class);
-    if (dataId.equals(MPSDataKeys.LOGICAL_VIEW_SELECTION_SIZE.getName())) return getSelectionSize();
-    if (dataId.equals(MPSDataKeys.PLACE.getName())) return getPlace();
+    if (MPSDataKeys.TREE_NODE.is(dataId)) {
+      return getSelectedTreeNode(TreeNode.class);
+    }
+    if (MPSDataKeys.TREE_NODES.is(dataId)) {
+      final List<TreeNode> selectedTreeNodes = getSelectedTreeNodes(TreeNode.class);
+      return selectedTreeNodes.isEmpty() ? null : selectedTreeNodes;
+    }
+    if (MPSDataKeys.TREE_SELECTION_SIZE.is(dataId)) {
+      return getSelectionSize();
+    }
+    if (MPSDataKeys.PLACE.is(dataId)) {
+      return getPlace();
+    }
 
     //PDK
-    if (dataId.equals(PlatformDataKeys.COPY_PROVIDER.getName())) return new MyCopyProvider();
-    if (dataId.equals(PlatformDataKeys.PASTE_PROVIDER.getName())) return new MyPasteProvider();
-    if (dataId.equals(PlatformDataKeys.CUT_PROVIDER.getName())) return new MyCutProvider();
-    if (dataId.equals(PlatformDataKeys.VIRTUAL_FILE_ARRAY.getName())) return getSelectedFiles();
+    if (PlatformDataKeys.COPY_PROVIDER.is(dataId)) {
+      return new MyCopyProvider();
+    }
+    if (PlatformDataKeys.PASTE_PROVIDER.is(dataId)) {
+      return new MyPasteProvider();
+    }
+    if (PlatformDataKeys.CUT_PROVIDER.is(dataId)) {
+      return new MyCutProvider();
+    }
+    if (PlatformDataKeys.VIRTUAL_FILE_ARRAY.is(dataId)) {
+      return getSelectedFiles();
+    }
+
+    // if project pane doesn't answer its Project, chances are some LocationRule could start looking
+    //    for a project in inappropriate DataProvider, and end up producing MPSLocation solely with MPSProject
+    //    (as it could not obtain node/model/module from any other DataProvider in Project View hierarchy)
+    if (CommonDataKeys.PROJECT.is(dataId)) {
+      return getProject();
+    }
 
     //not found
     return null;
@@ -146,11 +228,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return myDisposed;
   }
 
-  //todo:the same thing for nodes & modules
-  protected void onBeforeModelWillBeDeleted(SModelDescriptor sm) {
-    // unselect model if it was selected ?
-  }
-
+  @Override
   public void dispose() {
     if (isComponentCreated()) {
       removeListeners();
@@ -159,143 +237,165 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     super.dispose();
   }
 
-  public boolean isShowPropertiesAndReferences() {
-    return getProjectView().isShowMembers(getId());
+  public boolean showNodeStructure() {
+    // re-use IDEA's 'show members' for 'show node structure'
+    return !isDisposed() && getProjectView().isShowMembers(getId());
   }
 
-  public boolean isSortByType() {
-    return getProjectView().isSortByType(getId());
+  public boolean isSortByConcept() {
+    // we re-use IDEA's sort by type for MPS 'sort by root concept'
+    // However, can not re-use it by getProjectView.isSortByType because we have to override supportsSortByType() to return false
+    // not to get IDEA's UI action contributed (we've got our own), but IDEA doesn't set the option unless supportsSortByType() gives true,
+    // see ProjectViewImpl.mySortByType.isEnabled and ProjectViewImpl.Option.isEnabled(), therefore we resort right to view state implementation
+    return getProjectViewState().getSortByType();
   }
 
   @Override
   public void installComparator() {
-    // Overrid to avoid NPE
+    // Overrode to avoid NPE
   }
 
-  @Nullable
-  public Comparator<Object> getTreeChildrenComparator() {
-    return new Comparator<Object>() {
-      @Override
-      public int compare(final Object o1, final Object o2) {
-        if (isSortByType()) {
-          if (o1 instanceof SNode && o2 instanceof SNode) {
-            final SNode node1 = (SNode) o1;
-            final SNode node2 = (SNode) o2;
-            return ModelAccess.instance().runReadAction(new Computable<Integer>() {
-              @Override
-              public Integer compute() {
-                String concept1 = node1.getConceptFqName();
-                String concept2 = node2.getConceptFqName();
-                return concept1.compareTo(concept2);
-              }
-            });
-          }
-        }
-        return 0;
-      }
-    };
+  @Override
+  public boolean supportsSortByType() {
+    // we've got our custom replacement, SortByTypeToggleAction, that uses projectView.isSortByType setting,
+    // but different mechanism to build the tree (not treeBuilder+comparator, hence #installComparator(), above, is no-op)
+    // false is to remove IDEA's provided action
+    return false;
   }
 
+  @Override
   public void addToolbarActions(final DefaultActionGroup group) {
-    group.add(new PropertiesAndReferencesToggleAction());
     group.addAction(new SortByTypeToggleAction()).setAsSecondary(true);
   }
 
   protected void removeListeners() {
-    ClassLoaderManager.getInstance().removeReloadHandler(myReloadListener);
-    SModelRepository.getInstance().removeModelRepositoryListener(mySModelRepositoryListener);
-    ModelAccess.instance().removeCommandListener(myModelAccessListener);
-    MPSModuleRepository.getInstance().removeModuleRepositoryListener(myRepositoryListener);
-    if (IMakeService.INSTANCE.hasMakeService()) {
-      IMakeService.INSTANCE.get().removeListener(myMakeNotificationListener);
-    }
+    jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    mpsProject.getComponent(ClassLoaderManager.class).removeListener(myClassesListener);
+    mpsProject.getModelAccess().removeCommandListener(myRepositoryListener);
+    new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).detach();
+    mpsProject.getComponent(MakeServiceComponent.class).get().removeListener(myMakeNotificationListener);
     VirtualFileManager.getInstance().removeVirtualFileManagerListener(myRefreshListener);
   }
 
   protected void addListeners() {
     VirtualFileManager.getInstance().addVirtualFileManagerListener(myRefreshListener);
-    SModelRepository.getInstance().addModelRepositoryListener(mySModelRepositoryListener);
-    ModelAccess.instance().addCommandListener(myModelAccessListener);
-    MPSModuleRepository.getInstance().addModuleRepositoryListener(myRepositoryListener);
-    if (IMakeService.INSTANCE.isSessionActive()) {
-      IMakeService.INSTANCE.get().addListener(myMakeNotificationListener);
-    }
-    ClassLoaderManager.getInstance().addReloadHandler(myReloadListener);
+    jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).attach();
+    mpsProject.getModelAccess().addCommandListener(myRepositoryListener);
+    // XXX here used to be a hasMakeService() check, which I found superfluous,
+    //     as we always have make service in UI (at least, we never check for it in other locations)
+    //     However, the idea to keep listeners inside MakeServiceComponent and install them into active
+    //     IMakeService once it's updated looks nice
+    mpsProject.getComponent(MakeServiceComponent.class).get().addListener(myMakeNotificationListener);
+    mpsProject.getComponent(ClassLoaderManager.class).addListener(myClassesListener);
   }
 
   public SNode getSelectedSNode() {
-    MPSTreeNodeEx selectedTreeNode = getSelectedTreeNode(MPSTreeNodeEx.class);
-    if (selectedTreeNode == null) return null;
-    return selectedTreeNode.getSNode();
+    List<SNode> result = getSelectedSNodes();
+    if (result.size() != 1) {
+      return null;
+    }
+    return result.get(0);
   }
 
+  @NotNull
   public List<SNode> getSelectedSNodes() {
-    List<SNode> result = new ArrayList<SNode>();
-    for (MPSTreeNodeEx node : getSelectedTreeNodes(MPSTreeNodeEx.class)) {
+    final List<MPSTreeNodeEx> selectedTreeNodes = getSelectedTreeNodes(MPSTreeNodeEx.class);
+    if (selectedTreeNodes.isEmpty()) {
+      return Collections.emptyList();
+    }
+    List<SNode> result = new ArrayList<>(selectedTreeNodes.size());
+    for (MPSTreeNodeEx node : selectedTreeNodes) {
       SNode snode = node.getSNode();
-      if (snode == null) continue;
+      if (snode == null) {
+        continue;
+      }
       result.add(snode);
     }
     return result;
   }
 
-  public List<SModelDescriptor> getSelectedModels() {
-    List<SModelDescriptor> result = new ArrayList<SModelDescriptor>();
-    for (SModelTreeNode node : getSelectedTreeNodes(SModelTreeNode.class)) {
-      result.add(node.getSModelDescriptor());
+  @NotNull
+  public List<SModel> getSelectedModels() {
+    final List<SModelTreeNode> selectedTreeNodes = getSelectedTreeNodes(SModelTreeNode.class);
+    if(selectedTreeNodes.isEmpty()) {
+      return Collections.emptyList();
+    }
+    List<SModel> result = new ArrayList<>(selectedTreeNodes.size());
+    for (SModelTreeNode node : selectedTreeNodes) {
+      result.add(node.getModel());
     }
     return result;
   }
 
-  public SModelDescriptor getSelectedModel() {
+  @Nullable
+  public SModel getSelectedModel() {
     SModelTreeNode selectedTreeNode = getSelectedTreeNode(SModelTreeNode.class);
-    if (selectedTreeNode == null) return null;
-    return selectedTreeNode.getSModelDescriptor();
+    if (selectedTreeNode == null) {
+      return null;
+    }
+    return selectedTreeNode.getModel();
   }
 
-  public SModelDescriptor getContextModel() {
+  @Nullable
+  public SModel getContextModel() {
     MPSTreeNode treeNode = (MPSTreeNode) getSelectedTreeNode(TreeNode.class);
     while (treeNode != null && !(treeNode instanceof SModelTreeNode)) {
       treeNode = (MPSTreeNode) treeNode.getParent();
     }
-    if (treeNode == null) return null;
-    return ((SModelTreeNode) treeNode).getSModelDescriptor();
+    if (treeNode == null) {
+      return null;
+    }
+    return ((SModelTreeNode) treeNode).getModel();
   }
 
-  public IModule getSelectedModule() {
+  @Nullable
+  public SModule getSelectedModule() {
     ProjectModuleTreeNode selectedTreeNode = getSelectedTreeNode(ProjectModuleTreeNode.class);
-    if (selectedTreeNode == null) return null;
+    if (selectedTreeNode == null) {
+      return null;
+    }
     return selectedTreeNode.getModule();
   }
 
-  public IModule getContextModule() {
+  @Nullable
+  public SModule getContextModule() {
     MPSTreeNode treeNode = (MPSTreeNode) getSelectedTreeNode(TreeNode.class);
-    while (treeNode != null && !(treeNode instanceof jetbrains.mps.ide.projectPane.logicalview.nodes.ProjectModuleTreeNode)) {
+    while (treeNode != null && !(treeNode instanceof ProjectModuleTreeNode)) {
       treeNode = (MPSTreeNode) treeNode.getParent();
     }
-    if (treeNode == null) return null;
+    if (treeNode == null) {
+      return null;
+    }
     return ((ProjectModuleTreeNode) treeNode).getModule();
   }
 
-  public List<IModule> getSelectedModules() {
-    List<IModule> result = new ArrayList<IModule>();
-    for (ProjectModuleTreeNode node : getSelectedTreeNodes(ProjectModuleTreeNode.class)) {
+  @NotNull
+  public List<SModule> getSelectedModules() {
+    final List<ProjectModuleTreeNode> selectedTreeNodes = getSelectedTreeNodes(ProjectModuleTreeNode.class);
+    if (selectedTreeNodes.isEmpty()) {
+      return Collections.emptyList();
+    }
+    List<SModule> result = new ArrayList<>(selectedTreeNodes.size());
+    for (ProjectModuleTreeNode node : selectedTreeNodes) {
       result.add(node.getModule());
     }
     return result;
   }
 
-  public List<String> getSelectedPackages() {
-    List<String> result = new ArrayList<String>();
+  @NotNull
+  public List<Pair<SModel, String>> getSelectedPackages() {
+    List<Pair<SModel, String>> result = new ArrayList<>();
     TreePath[] paths = getTree().getSelectionPaths();
-    if (paths == null) return result;
+    SRepository projectRepo = ProjectHelper.getProjectRepository(getProject());
+    if (paths == null || projectRepo == null) {
+      return result;
+    }
     for (TreePath path : paths) {
       MPSTreeNode node = (MPSTreeNode) path.getLastPathComponent();
-      while (node != null && !(node instanceof PackageNode)) {
-        node = (MPSTreeNode) node.getParent();
-      }
-      if (node != null) {
-        result.add(((PackageNode) node).getFullPackage());
+      if (node instanceof PackageNode) {
+        PackageNode pn = (PackageNode) node;
+        result.add(new Pair<>(pn.getModelReference().resolve(projectRepo), pn.getFullPackage()));
       }
     }
     return result;
@@ -306,22 +406,14 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return selection == null ? 0 : selection.length;
   }
 
-  private IOperationContext getContextForSelection() {
-    TreePath[] selection = getTree().getSelectionPaths();
-    if (selection == null) return null;
-    if (selection.length > 0) {
-      MPSTreeNode lastPathComponent = (MPSTreeNode) selection[0].getLastPathComponent();
-      return lastPathComponent.getOperationContext();
-    }
-    return null;
-  }
-
+  @Nullable
   private <T extends TreeNode> T getSelectedTreeNode(Class<T> nodeClass) {
     TreePath selectionPath = getTree().getSelectionPath();
-    if (selectionPath == null) return null;
+    if (selectionPath == null) {
+      return null;
+    }
     Object selectedNode = selectionPath.getLastPathComponent();
-    if (!(nodeClass.isInstance(selectedNode))) return null;
-    return (T) selectedNode;
+    return nodeClass.isInstance(selectedNode) ? nodeClass.cast(selectedNode) : null;
   }
 
   private ActionPlace getPlace() {
@@ -330,9 +422,9 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
       return ActionPlace.PROJECT_PANE_SNODE;
     } else if (treeNode instanceof SModelTreeNode) {
       return ActionPlace.PROJECT_PANE_SMODEL;
-    } else if ((treeNode instanceof ProjectTreeNode) || (treeNode instanceof jetbrains.mps.ide.projectPane.logicalview.nodes.ProjectTreeNode)) {
+    } else if ((treeNode instanceof ProjectTreeNode) || (treeNode instanceof jetbrains.mps.ide.ui.tree.module.ProjectTreeNode)) {
       return ActionPlace.PROJECT_PANE_PROJECT;
-    } else if (treeNode instanceof jetbrains.mps.ide.projectPane.logicalview.nodes.GeneratorTreeNode) {
+    } else if (treeNode instanceof GeneratorTreeNode) {
       return ActionPlace.PROJECT_PANE_GENERATOR;
     } else if (treeNode instanceof TransientModelsTreeNode) {
       return ActionPlace.PROJECT_PANE_TRANSIENT_MODULES;
@@ -341,7 +433,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     } else if (treeNode instanceof NamespaceTextNode) {
       return ActionPlace.PROJECT_PANE_NAMESPACE;
     } else if (treeNode instanceof ProjectModuleTreeNode) {
-      IModule module = getSelectedModule();
+      SModule module = getSelectedModule();
       if (module instanceof Language) {
         return ActionPlace.PROJECT_PANE_LANGUAGE;
       } else if (module instanceof DevKit) {
@@ -353,207 +445,195 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return ActionPlace.PROJECT_PANE;
   }
 
-  public void editNode(final SNode node, final IOperationContext context, final boolean focus) {
-    ModelAccess.assertLegalWrite();
-    NavigationSupport.getInstance().openNode(context, node, focus, !node.isRoot());
-  }
-
+  @NotNull
   public <T extends TreeNode> List<T> getSelectedTreeNodes(Class<T> nodeClass) {
     TreePath[] selectionPaths = getTree().getSelectionPaths();
-    if (selectionPaths == null) return new ArrayList<T>();
+    if (selectionPaths == null) {
+      return Collections.emptyList();
+    }
 
-    List<T> selectedTreeNodes = new ArrayList<T>(selectionPaths.length);
+    List<T> selectedTreeNodes = new ArrayList<>(selectionPaths.length);
 
     for (TreePath selectionPath : selectionPaths) {
-      if (selectionPath == null) continue;
+      if (selectionPath == null) {
+        continue;
+      }
       Object selectedNode = selectionPath.getLastPathComponent();
-      if (!(nodeClass.isInstance(selectedNode))) continue;
-      selectedTreeNodes.add((T) selectedNode);
+      if (nodeClass.isInstance(selectedNode)) {
+        selectedTreeNodes.add(nodeClass.cast(selectedNode));
+      }
     }
     return selectedTreeNodes;
   }
 
+  @Nullable
   private VirtualFile[] getSelectedFiles() {
-    List<VirtualFile> selectedFilesList = new LinkedList<VirtualFile>();
+    List<IFile> selectedFilesList = new LinkedList<>();
 
     // add selected model files
-    List<SModelDescriptor> descriptors = getSelectedModels();
+    List<SModel> descriptors = getSelectedModels();
     if (descriptors != null) {
-      for (SModelDescriptor descriptor : descriptors) {
-        if (!(descriptor instanceof EditableSModelDescriptor)) continue;
-        EditableSModelDescriptor emd = (EditableSModelDescriptor) descriptor;
-        IFile ifile = emd.getModelFile();
-        if (ifile == null) continue;
-        VirtualFile vfile = VirtualFileUtils.getVirtualFile(ifile);
-        if (vfile == null) continue;
-        selectedFilesList.add(vfile);
+      for (SModel descriptor : descriptors) {
+        selectedFilesList.addAll(new FileSystemModelHelper(descriptor).getFiles());
       }
     }
 
     // add selected modules files
-    List<IModule> modules = getSelectedModules();
+    List<SModule> modules = getSelectedModules();
     if (modules != null) {
-      for (IModule module : modules) {
-        IFile home = module.getBundleHome();
+      for (SModule m : modules) {
+        if (!(m instanceof AbstractModule)) {
+          continue;
+        }
+        AbstractModule module = (AbstractModule) m;
+        IFile home = module.getModuleSourceDir();
         if (home != null) {
-          VirtualFile vfile = VirtualFileUtils.getVirtualFile(home);
-          if (vfile != null) {
-            selectedFilesList.add(vfile);
-          }
+          selectedFilesList.add(home);
         }
         IFile ifile = module.getDescriptorFile();
         if (ifile != null) {
-          VirtualFile vfile = VirtualFileUtils.getVirtualFile(ifile);
-          if (vfile != null) {
-            selectedFilesList.add(vfile);
-          }
+          selectedFilesList.add(ifile);
         }
       }
     }
 
-    if (selectedFilesList.size() == 0) {
+    if (selectedFilesList.isEmpty()) {
       return null;
     }
 
-    return selectedFilesList.toArray(new VirtualFile[selectedFilesList.size()]);
+    final IdeaFileSystem fs = ProjectHelper.fromIdeaProject(myProject).getFileSystem();
+    return selectedFilesList.stream().map(fs::asVirtualFile).filter(Objects::nonNull).toArray(VirtualFile[]::new);
   }
 
-  private AnActionEvent createEvent(DataContext context) {
+  /*package*/
+  static AnActionEvent createEvent(DataContext context) {
     return ActionUtils.createEvent(ActionPlaces.PROJECT_VIEW_POPUP, context);
   }
 
   protected abstract boolean isComponentCreated();
 
-  private class MyCopyProvider implements CopyProvider {
+  private static class MyCopyProvider implements CopyProvider {
     private CopyNode_Action myAction = new CopyNode_Action();
 
-    public void performCopy(DataContext dataContext) {
+    @Override
+    public void performCopy(@NotNull DataContext dataContext) {
       AnActionEvent event = createEvent(dataContext);
       ActionUtils.updateAndPerformAction(myAction, event);
     }
 
-    public boolean isCopyEnabled(DataContext dataContext) {
+    @Override
+    public boolean isCopyEnabled(@NotNull DataContext dataContext) {
       AnActionEvent event = createEvent(dataContext);
       myAction.update(event);
       return event.getPresentation().isEnabled();
     }
 
-    public boolean isCopyVisible(DataContext dataContext) {
+    @Override
+    public boolean isCopyVisible(@NotNull DataContext dataContext) {
       return true;
     }
   }
 
-  private class MyPasteProvider implements PasteProvider {
+  private static class MyPasteProvider implements PasteProvider {
     private PasteNode_Action myAction = new PasteNode_Action();
 
-    public void performPaste(DataContext dataContext) {
+    @Override
+    public void performPaste(@NotNull DataContext dataContext) {
       AnActionEvent event = createEvent(dataContext);
       ActionUtils.updateAndPerformAction(myAction, event);
     }
 
-    public boolean isPastePossible(DataContext dataContext) {
+    @Override
+    public boolean isPastePossible(@NotNull DataContext dataContext) {
       return true;
     }
 
-    public boolean isPasteEnabled(DataContext dataContext) {
+    @Override
+    public boolean isPasteEnabled(@NotNull DataContext dataContext) {
       AnActionEvent event = createEvent(dataContext);
       myAction.update(event);
       return event.getPresentation().isEnabled();
     }
   }
 
-  private class MyCutProvider implements CutProvider {
+  private static class MyCutProvider implements CutProvider {
     private CutNode_Action myAction = new CutNode_Action();
 
-    public void performCut(DataContext dataContext) {
+    @Override
+    public void performCut(@NotNull DataContext dataContext) {
       AnActionEvent event = createEvent(dataContext);
       ActionUtils.updateAndPerformAction(myAction, event);
     }
 
-    public boolean isCutEnabled(DataContext dataContext) {
+    @Override
+    public boolean isCutEnabled(@NotNull DataContext dataContext) {
       AnActionEvent event = createEvent(dataContext);
       myAction.update(event);
       return event.getPresentation().isEnabled();
     }
 
-    public boolean isCutVisible(DataContext dataContext) {
+    @Override
+    public boolean isCutVisible(@NotNull DataContext dataContext) {
       return true;
     }
   }
 
-  private class MyModuleRepositoryListener extends ModuleRepositoryAdapter {
-    public void moduleAdded(IModule module) {
+  private class MyRepositoryListener extends SRepositoryContentAdapter implements CommandListener {
+    private boolean myNeedRebuild = false;
+
+    /*package*/ void rebuildTreeIfNeeded() {
+      if (myNeedRebuild) {
+        rebuild();
+        myNeedRebuild = false;
+      }
+    }
+
+    @Override
+    public void repositoryChanged() {
       myNeedRebuild = true;
     }
 
-    public void moduleRemoved(IModule module) {
+    @Override
+    public void modelRenamed(SModule module, SModel model, SModelReference oldRef) {
       myNeedRebuild = true;
     }
-  }
 
-  private class MyModelAccessListener extends ModelAccessAdapter {
+    @Override
+    protected void startListening(SModel model) {
+      if (!model.isReadOnly()) {
+        model.addModelListener(this);
+      }
+    }
+
+    @Override
+    protected void stopListening(SModel model) {
+      model.removeModelListener(this);
+    }
+
+    @Override
+    public void modelReplaced(SModel model) {
+      myNeedRebuild = true;
+    }
+
+    @Override
     public void commandStarted() {
       myNeedRebuild = false;
     }
 
+    @Override
     public void commandFinished() {
-      if (!myNeedRebuild) return;
-      JTree tree = getTree();
-      if (tree instanceof MPSTree) {
-        ((MPSTree) tree).rebuildLater();
-      }
-      myNeedRebuild = false;
+      rebuildTreeIfNeeded();
     }
   }
-
-  //----listeners----
-
-  private class MyModelRepositoryAdapter extends SModelRepositoryAdapter {
-    public void modelRepositoryChanged(SModelDescriptor modelDescriptor) {
-      if (!SModelStereotype.INTERNAL.equals(modelDescriptor.getStereotype())) {
-        myNeedRebuild = true;
-      }
-    }
-
-    public void beforeModelDeleted(SModelDescriptor modelDescriptor) {
-      onBeforeModelWillBeDeleted(modelDescriptor);
-    }
-  }
-
-  //----copy-paste----
 
   private class RefreshListener implements VirtualFileManagerListener {
-    public void beforeRefreshStart(boolean asynchonous) {
-
+    @Override
+    public void beforeRefreshStart(boolean asynchronous) {
     }
 
-    public void afterRefreshFinish(boolean asynchonous) {
-      if (myNeedRebuild) {
-        JTree tree = getTree();
-        if (tree instanceof MPSTree) {
-          ((MPSTree) tree).rebuildLater();
-        }
-        myNeedRebuild = false;
-      }
-    }
-  }
-
-  private class PropertiesAndReferencesToggleAction extends ToggleAction {
-    public PropertiesAndReferencesToggleAction() {
-      super("Show Properties and References", "Show properties and references", Icons.PROP_AND_REF);
-    }
-
-    public boolean isSelected(@Nullable AnActionEvent e) {
-      return isShowPropertiesAndReferences();
-    }
-
-    public void setSelected(@Nullable AnActionEvent e, boolean state) {
-      if (state != isShowPropertiesAndReferences()) {
-        if (getProjectView() instanceof ProjectViewImpl) {
-          ((ProjectViewImpl) getProjectView()).setShowMembers(state, getId());
-        }
-        rebuild();
-      }
+    @Override
+    public void afterRefreshFinish(boolean asynchronous) {
+      myRepositoryListener.rebuildTreeIfNeeded();
     }
   }
 
@@ -562,13 +642,15 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
       super("Sort Roots by Concept", "Sort root nodes by concept", null);
     }
 
+    @Override
     public boolean isSelected(@Nullable AnActionEvent e) {
-      return isSortByType();
+      return isSortByConcept();
     }
 
+    @Override
     public void setSelected(@Nullable AnActionEvent e, boolean state) {
-      if (state != isSortByType()) {
-        getProjectView().setSortByType(getId(), state);
+      if (state != isSortByConcept()) {
+        getProjectViewState().setSortByType(state);
         rebuild();
       }
     }

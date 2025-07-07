@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,42 +16,80 @@
 package jetbrains.mps.ide.editorTabs.tabfactory.emptytabs;
 
 import com.intellij.openapi.editor.Document;
-import jetbrains.mps.plugins.relations.RelationDescriptor;
+import jetbrains.mps.ide.editorTabs.tabfactory.NodeChangeCallback;
 import jetbrains.mps.ide.editorTabs.tabfactory.TabsComponent;
 import jetbrains.mps.ide.undo.MPSUndoUtil;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.plugins.relations.RelationDescriptor;
+import jetbrains.mps.project.Project;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.JComponent;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Class for 'Do not show tabs' option in Editor 'Aspect tabs' setting.
+ * Only store SNodeReference to current editing node and calls myCallback.changeNode() when it changed.
+ *
+ * Does not have own JComponent. It just delegate everything.
+ */
 public class EmptyTabsComponent implements TabsComponent {
-  private SNodePointer myNode;
+  private SNodeReference myNode;
+  private final NodeChangeCallback myCallback;
+  private final Project myProject;
 
-  public EmptyTabsComponent(SNodePointer node) {
+  /**
+   * @param node Node to show.
+   * @param callback Callback to call TabbedEditor.showNodeInternal()
+   */
+  public EmptyTabsComponent(SNodeReference node, NodeChangeCallback callback, Project mpsProject) {
     myNode = node;
+    myCallback = callback;
+    myProject = mpsProject;
   }
 
+  @Override
   public RelationDescriptor getCurrentTabAspect() {
-    throw new UnsupportedOperationException();
+    return null;
   }
 
+  @Override
   public void dispose() {
 
   }
 
-  public List<SNodePointer> getAllEditedNodes() {
-    return Collections.singletonList(myNode);
+  @NotNull
+  @Override
+  public Collection<SNodeReference> getSelectionFor(RelationDescriptor tabDescriptor, SNodeReference editedNode) {
+    return Collections.emptyList();
   }
 
+  @Override
   public List<Document> getAllEditedDocuments() {
-    return Collections.singletonList(MPSUndoUtil.getDoc(myNode));
+    return Collections.singletonList(MPSUndoUtil.getDoc(myProject.getRepository(), myNode));
   }
 
-  public void setLastNode(SNodePointer sNodePointer) {
-
+  @Override
+  public void editNode(SNodeReference sNodePointer) {
+    myNode = sNodePointer;
+    myCallback.changeNode(sNodePointer);
   }
 
+  @Override
+  public void updateTabs() {
+  }
+
+  @Override
+  public void updateTabs(Collection<SNodeReference> changedRoots) {
+  }
+
+  @Override
+  public void updateTabColors() {
+  }
+
+  @Override
   public JComponent getComponent() {
     return null;
   }

@@ -16,15 +16,15 @@ import com.intellij.execution.ExecutionException;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.process.ProcessHandler;
 import jetbrains.mps.baseLanguage.execution.api.Java_Command;
+import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.execution.ui.ConsoleView;
 import jetbrains.mps.execution.api.configurations.ConsoleCreator;
-import jetbrains.mps.execution.api.configurations.ConsoleProcessListener;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionResult;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionConsole;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debug.api.run.IDebuggerConfiguration;
 import jetbrains.mps.debug.api.IDebuggerSettings;
-import jetbrains.mps.debug.runtime.settings.LocalConnectionSettings;
+import jetbrains.mps.debugger.java.api.settings.LocalConnectionSettings;
 import jetbrains.mps.debug.api.IDebugger;
 import jetbrains.mps.debug.api.Debuggers;
 import com.intellij.execution.executors.DefaultRunExecutor;
@@ -53,9 +53,9 @@ public class DemoApplication_Configuration_RunProfileState extends DebuggerRunPr
   public ExecutionResult execute(Executor executor, @NotNull ProgramRunner runner) throws ExecutionException {
     Project project = myEnvironment.getProject();
     {
-      ProcessHandler _processHandler = new Java_Command().setProgramParameter_String("Julia").setVirtualMachineParameter_String(myDebuggerSettings.getCommandLine(true)).createProcess(myConfiguration.getNode().getNodePointer());
+      ProcessHandler _processHandler = new Java_Command().setProgramParameter_String("Julia").setVirtualMachineParameter_String(myDebuggerSettings.getCommandLine(true)).setProject_Project(ProjectHelper.fromIdeaProject(project)).createProcess(myConfiguration.getNode().getNodeRef(), ProjectHelper.getProjectRepository(project));
       final ConsoleView _consoleView = ConsoleCreator.createConsoleView(project, false);
-      _processHandler.addProcessListener(new ConsoleProcessListener(_consoleView));
+      _consoleView.attachToProcess(_processHandler);
       return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           _consoleView.dispose();
@@ -71,7 +71,6 @@ public class DemoApplication_Configuration_RunProfileState extends DebuggerRunPr
       public IDebuggerSettings createDebuggerSettings() {
         return new LocalConnectionSettings(true);
       }
-
       public IDebugger getDebugger() {
         return Debuggers.getInstance().getDebuggerByName("Java");
       }

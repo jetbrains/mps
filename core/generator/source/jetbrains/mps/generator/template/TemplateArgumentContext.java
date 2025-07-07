@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,24 +16,18 @@
 package jetbrains.mps.generator.template;
 
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 /**
  * Evgeny Gryaznov, 12/21/10
  */
 public class TemplateArgumentContext extends TemplateQueryContext {
 
-  private final SNodePointer myTemplateNode;
-
-  public TemplateArgumentContext(SNode inputNode, @NotNull SNodePointer templateNode, TemplateContext context, ITemplateGenerator generator) {
-    super(inputNode, null, context, generator);
-    myTemplateNode = templateNode;
-  }
-
-  @Override
-  public SNode getTemplateNode() {
-    return myTemplateNode.getNode();
+  /**
+   * @since 3.1
+   */
+  public TemplateArgumentContext(@NotNull TemplateContext context, @NotNull SNodeReference templateNode) {
+    super(templateNode, context);
   }
 }

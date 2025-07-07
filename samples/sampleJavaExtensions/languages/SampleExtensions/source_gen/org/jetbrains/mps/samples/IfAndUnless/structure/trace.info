@@ -1,177 +1,204 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="IfAndUnless_Language.java" startLine="9" startPosition="0" endLine="16" endPosition="0" unitName="org.jetbrains.mps.samples.IfAndUnless.structure.IfAndUnless_Language" />
-  <unitInfo fileName="StructureAspectDescriptor.java" startLine="10" startPosition="0" endLine="33" endPosition="0" unitName="org.jetbrains.mps.samples.IfAndUnless.structure.StructureAspectDescriptor" />
-  <root nodeId="393299394024627213" modelId="r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)">
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="13" startPosition="48" endLine="14" endPosition="105" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="14" startPosition="105" endLine="15" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="CONDITION" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="15" startPosition="53" endLine="16" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="BODY" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="18" startPosition="38" endLine="19" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="22" startPosition="36" endLine="23" endPosition="83" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="26" startPosition="45" endLine="27" endPosition="52" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="30" startPosition="34" endLine="31" endPosition="84" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="34" startPosition="43" endLine="35" endPosition="47" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="38" startPosition="70" endLine="39" endPosition="191" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="42" startPosition="56" endLine="43" endPosition="50" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="17" startPosition="0" endLine="20" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="UnlessStatement#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="21" startPosition="0" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getCondition#()Ljetbrains/mps/smodel/INodeAdapter;" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="25" startPosition="0" endLine="29" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setCondition#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="29" startPosition="0" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getBody#()Ljetbrains/mps/smodel/INodeAdapter;" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="33" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setBody#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="37" startPosition="0" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Lorg/jetbrains/mps/samples/IfAndUnless/structure/UnlessStatement;" />
-    <nodeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="41" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Lorg/jetbrains/mps/samples/IfAndUnless/structure/UnlessStatement;" />
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="18" startPosition="38" endLine="19" endPosition="16" />
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="22" startPosition="36" endLine="23" endPosition="83" />
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="26" startPosition="45" endLine="27" endPosition="52" />
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="30" startPosition="34" endLine="31" endPosition="84" />
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="34" startPosition="43" endLine="35" endPosition="47" />
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="38" startPosition="70" endLine="39" endPosition="191" />
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="42" startPosition="56" endLine="43" endPosition="50" />
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="17" startPosition="0" endLine="20" endPosition="3">
-      <varInfo nodeId="393299394024627213" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="21" startPosition="0" endLine="25" endPosition="0" />
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="25" startPosition="0" endLine="29" endPosition="0">
-      <varInfo nodeId="393299394024627213" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="29" startPosition="0" endLine="33" endPosition="0" />
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="33" startPosition="0" endLine="37" endPosition="0">
-      <varInfo nodeId="393299394024627213" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="37" startPosition="0" endLine="41" endPosition="0">
-      <varInfo nodeId="393299394024627213" varName="init" />
-      <varInfo nodeId="393299394024627213" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="41" startPosition="0" endLine="45" endPosition="0">
-      <varInfo nodeId="393299394024627213" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="393299394024627213" fileName="UnlessStatement.java" startLine="13" startPosition="0" endLine="46" endPosition="0" unitName="org.jetbrains.mps.samples.IfAndUnless.structure.UnlessStatement" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root>
+    <file name="ConceptPresentationAspectImpl.java">
+      <unit at="11,0,61,0" name="org.jetbrains.mps.samples.IfAndUnless.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <unit at="10,0,36,0" name="org.jetbrains.mps.samples.IfAndUnless.structure.LanguageConceptSwitch" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <unit at="16,0,118,0" name="org.jetbrains.mps.samples.IfAndUnless.structure.StructureAspectDescriptor" />
+    </file>
   </root>
-  <root nodeId="954830572075912394" modelId="r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)">
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="12" startPosition="46" endLine="13" endPosition="103" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="13" startPosition="103" endLine="14" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="CONDITION" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="14" startPosition="53" endLine="15" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="BODY" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="15" startPosition="43" endLine="16" endPosition="57" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="ALTERNATIVE" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="18" startPosition="36" endLine="19" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="22" startPosition="36" endLine="23" endPosition="81" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="26" startPosition="45" endLine="27" endPosition="50" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="30" startPosition="29" endLine="31" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="34" startPosition="38" endLine="35" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="38" startPosition="37" endLine="39" endPosition="81" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="42" startPosition="46" endLine="43" endPosition="52" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="46" startPosition="68" endLine="47" endPosition="187" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="50" startPosition="54" endLine="51" endPosition="48" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="17" startPosition="0" endLine="20" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MyIfStatement#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="21" startPosition="0" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getCondition#()Ljetbrains/mps/smodel/INodeAdapter;" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="25" startPosition="0" endLine="29" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setCondition#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="29" startPosition="0" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getBody#()Ljetbrains/mps/smodel/INodeAdapter;" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="33" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setBody#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="37" startPosition="0" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAlternative#()Ljetbrains/mps/smodel/INodeAdapter;" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="41" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setAlternative#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="45" startPosition="0" endLine="49" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Lorg/jetbrains/mps/samples/IfAndUnless/structure/MyIfStatement;" />
-    <nodeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="49" startPosition="0" endLine="53" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Lorg/jetbrains/mps/samples/IfAndUnless/structure/MyIfStatement;" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="18" startPosition="36" endLine="19" endPosition="16" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="22" startPosition="36" endLine="23" endPosition="81" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="26" startPosition="45" endLine="27" endPosition="50" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="30" startPosition="29" endLine="31" endPosition="72" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="34" startPosition="38" endLine="35" endPosition="45" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="38" startPosition="37" endLine="39" endPosition="81" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="42" startPosition="46" endLine="43" endPosition="52" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="46" startPosition="68" endLine="47" endPosition="187" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="50" startPosition="54" endLine="51" endPosition="48" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="17" startPosition="0" endLine="20" endPosition="3">
-      <varInfo nodeId="954830572075912394" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="21" startPosition="0" endLine="25" endPosition="0" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="25" startPosition="0" endLine="29" endPosition="0">
-      <varInfo nodeId="954830572075912394" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="29" startPosition="0" endLine="33" endPosition="0" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="33" startPosition="0" endLine="37" endPosition="0">
-      <varInfo nodeId="954830572075912394" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="37" startPosition="0" endLine="41" endPosition="0" />
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="41" startPosition="0" endLine="45" endPosition="0">
-      <varInfo nodeId="954830572075912394" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="45" startPosition="0" endLine="49" endPosition="0">
-      <varInfo nodeId="954830572075912394" varName="init" />
-      <varInfo nodeId="954830572075912394" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="49" startPosition="0" endLine="53" endPosition="0">
-      <varInfo nodeId="954830572075912394" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="954830572075912394" fileName="MyIfStatement.java" startLine="12" startPosition="0" endLine="54" endPosition="0" unitName="org.jetbrains.mps.samples.IfAndUnless.structure.MyIfStatement" />
+  <root nodeRef="r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)/393299394024627213">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="393299394024627213" at="16,0,17,0" concept="1" trace="props_UnlessStatement" />
+      <node id="393299394024627213" at="51,44,52,76" concept="3" />
+      <node id="393299394024627213" at="52,76,53,40" concept="0" />
+      <node id="393299394024627213" at="53,40,54,47" concept="0" />
+      <node id="393299394024627213" at="55,9,56,37" concept="4" />
+      <node id="393299394024627213" at="50,49,55,9" concept="2" />
+      <scope id="393299394024627213" at="51,44,54,47">
+        <var name="cpb" id="393299394024627213" />
+      </scope>
+      <scope id="393299394024627213" at="50,49,56,37" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="393299394024627213" at="16,0,17,0" concept="5" trace="UnlessStatement" />
+      <node id="393299394024627213" at="23,46,24,53" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="393299394024627213" at="21,0,22,0" concept="1" trace="myConceptUnlessStatement" />
+      <node id="393299394024627213" at="52,49,53,40" concept="4" />
+      <node id="393299394024627213" at="105,73,106,186" concept="3" />
+      <node id="393299394024627213" at="106,186,107,34" concept="0" />
+      <node id="393299394024627213" at="107,34,108,120" concept="0" />
+      <node id="393299394024627213" at="108,120,109,123" concept="0" />
+      <node id="393299394024627213" at="109,123,110,17" concept="0" />
+      <node id="393299394024627214" at="110,17,111,195" concept="0" />
+      <node id="393299394024627228" at="111,195,112,190" concept="0" />
+      <node id="393299394024627213" at="112,190,113,49" concept="0" />
+      <node id="393299394024627213" at="113,49,114,22" concept="0" />
+      <node id="393299394024627213" at="114,22,115,22" concept="4" />
+      <node id="393299394024627213" at="105,0,117,0" concept="6" trace="createDescriptorForUnlessStatement#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="393299394024627213" at="52,49,53,40" />
+      <scope id="393299394024627213" at="105,73,115,22">
+        <var name="b" id="393299394024627213" />
+      </scope>
+      <scope id="393299394024627213" at="105,0,117,0" />
+    </file>
   </root>
-  <root nodeId="954830572075912399" modelId="r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)">
-    <nodeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="11" startPosition="41" endLine="12" endPosition="94" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="12" startPosition="94" endLine="13" endPosition="49" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="CPR_Title" />
-    <nodeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="15" startPosition="27" endLine="16" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="19" startPosition="59" endLine="20" endPosition="169" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="23" startPosition="45" endLine="24" endPosition="39" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="14" startPosition="0" endLine="17" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="Flow#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="18" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Lorg/jetbrains/mps/samples/IfAndUnless/structure/Flow;" />
-    <nodeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="22" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Lorg/jetbrains/mps/samples/IfAndUnless/structure/Flow;" />
-    <scopeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="15" startPosition="27" endLine="16" endPosition="16" />
-    <scopeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="19" startPosition="59" endLine="20" endPosition="169" />
-    <scopeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="23" startPosition="45" endLine="24" endPosition="39" />
-    <scopeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="14" startPosition="0" endLine="17" endPosition="3">
-      <varInfo nodeId="954830572075912399" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="18" startPosition="0" endLine="22" endPosition="0">
-      <varInfo nodeId="954830572075912399" varName="init" />
-      <varInfo nodeId="954830572075912399" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="954830572075912399" fileName="Flow.java" startLine="22" startPosition="0" endLine="26" endPosition="0">
-      <varInfo nodeId="954830572075912399" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="954830572075912399" fileName="Flow.java" startLine="11" startPosition="0" endLine="27" endPosition="0" unitName="org.jetbrains.mps.samples.IfAndUnless.structure.Flow" />
+  <root nodeRef="r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)/954830572075912394">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="954830572075912394" at="14,0,15,0" concept="1" trace="props_MyIfStatement" />
+      <node id="954830572075912394" at="37,42,38,76" concept="3" />
+      <node id="954830572075912394" at="38,76,39,39" concept="0" />
+      <node id="954830572075912394" at="39,39,40,45" concept="0" />
+      <node id="954830572075912394" at="41,9,42,35" concept="4" />
+      <node id="954830572075912394" at="36,47,41,9" concept="2" />
+      <scope id="954830572075912394" at="37,42,40,45">
+        <var name="cpb" id="954830572075912394" />
+      </scope>
+      <scope id="954830572075912394" at="36,47,42,35" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="954830572075912394" at="14,0,15,0" concept="5" trace="MyIfStatement" />
+      <node id="954830572075912394" at="21,42,22,51" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="954830572075912394" at="19,0,20,0" concept="1" trace="myConceptMyIfStatement" />
+      <node id="954830572075912394" at="48,47,49,38" concept="4" />
+      <node id="954830572075912394" at="83,71,84,184" concept="3" />
+      <node id="954830572075912394" at="84,184,85,34" concept="0" />
+      <node id="954830572075912394" at="85,34,86,120" concept="0" />
+      <node id="954830572075912394" at="86,120,87,123" concept="0" />
+      <node id="954830572075912394" at="87,123,88,17" concept="0" />
+      <node id="954830572075912397" at="88,17,89,195" concept="0" />
+      <node id="954830572075912398" at="89,195,90,195" concept="0" />
+      <node id="954830572075974221" at="90,195,91,202" concept="0" />
+      <node id="954830572075912394" at="91,202,92,49" concept="0" />
+      <node id="954830572075912394" at="92,49,93,21" concept="0" />
+      <node id="954830572075912394" at="93,21,94,22" concept="4" />
+      <node id="954830572075912394" at="83,0,96,0" concept="6" trace="createDescriptorForMyIfStatement#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="954830572075912394" at="48,47,49,38" />
+      <scope id="954830572075912394" at="83,71,94,22">
+        <var name="b" id="954830572075912394" />
+      </scope>
+      <scope id="954830572075912394" at="83,0,96,0" />
+    </file>
   </root>
-  <root nodeId="954830572075998495" modelId="r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)">
-    <nodeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="10" startPosition="36" endLine="11" endPosition="98" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="13" startPosition="31" endLine="14" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="17" startPosition="63" endLine="18" endPosition="177" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="21" startPosition="49" endLine="22" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="12" startPosition="0" endLine="15" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="TrueFlow#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="16" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Lorg/jetbrains/mps/samples/IfAndUnless/structure/TrueFlow;" />
-    <nodeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="20" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Lorg/jetbrains/mps/samples/IfAndUnless/structure/TrueFlow;" />
-    <scopeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="13" startPosition="31" endLine="14" endPosition="16" />
-    <scopeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="17" startPosition="63" endLine="18" endPosition="177" />
-    <scopeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="21" startPosition="49" endLine="22" endPosition="43" />
-    <scopeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="12" startPosition="0" endLine="15" endPosition="3">
-      <varInfo nodeId="954830572075998495" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="16" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="954830572075998495" varName="init" />
-      <varInfo nodeId="954830572075998495" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="20" startPosition="0" endLine="24" endPosition="0">
-      <varInfo nodeId="954830572075998495" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="954830572075998495" fileName="TrueFlow.java" startLine="10" startPosition="0" endLine="25" endPosition="0" unitName="org.jetbrains.mps.samples.IfAndUnless.structure.TrueFlow" />
+  <root nodeRef="r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)/954830572075912399">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="954830572075912399" at="13,0,14,0" concept="1" trace="props_Flow" />
+      <node id="954830572075912399" at="31,33,32,76" concept="3" />
+      <node id="954830572075912399" at="32,76,33,36" concept="0" />
+      <node id="954830572075912399" at="34,9,35,26" concept="4" />
+      <node id="954830572075912399" at="30,38,34,9" concept="2" />
+      <scope id="954830572075912399" at="31,33,33,36">
+        <var name="cpb" id="954830572075912399" />
+      </scope>
+      <scope id="954830572075912399" at="30,38,35,26" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="954830572075912399" at="13,0,14,0" concept="5" trace="Flow" />
+      <node id="954830572075912399" at="20,47,21,42" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="954830572075912399" at="18,0,19,0" concept="1" trace="myConceptFlow" />
+      <node id="954830572075912399" at="46,38,47,29" concept="4" />
+      <node id="954830572075912399" at="73,62,74,175" concept="3" />
+      <node id="954830572075912399" at="74,175,75,33" concept="0" />
+      <node id="954830572075912399" at="75,33,76,124" concept="0" />
+      <node id="954830572075912399" at="76,124,77,76" concept="0" />
+      <node id="954830572075912399" at="77,76,78,123" concept="0" />
+      <node id="954830572075912399" at="78,123,79,17" concept="0" />
+      <node id="954830572075912399" at="79,17,80,54" concept="0" />
+      <node id="954830572075912399" at="80,54,81,22" concept="4" />
+      <node id="954830572075912399" at="73,0,83,0" concept="6" trace="createDescriptorForFlow#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="954830572075912399" at="46,38,47,29" />
+      <scope id="954830572075912399" at="73,62,81,22">
+        <var name="b" id="954830572075912399" />
+      </scope>
+      <scope id="954830572075912399" at="73,0,83,0" />
+    </file>
   </root>
-  <root nodeId="954830572075998500" modelId="r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)">
-    <nodeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="10" startPosition="37" endLine="11" endPosition="99" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="13" startPosition="32" endLine="14" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="17" startPosition="64" endLine="18" endPosition="179" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="21" startPosition="50" endLine="22" endPosition="44" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="12" startPosition="0" endLine="15" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="FalseFlow#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="16" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Lorg/jetbrains/mps/samples/IfAndUnless/structure/FalseFlow;" />
-    <nodeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="20" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Lorg/jetbrains/mps/samples/IfAndUnless/structure/FalseFlow;" />
-    <scopeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="13" startPosition="32" endLine="14" endPosition="16" />
-    <scopeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="17" startPosition="64" endLine="18" endPosition="179" />
-    <scopeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="21" startPosition="50" endLine="22" endPosition="44" />
-    <scopeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="12" startPosition="0" endLine="15" endPosition="3">
-      <varInfo nodeId="954830572075998500" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="16" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="954830572075998500" varName="init" />
-      <varInfo nodeId="954830572075998500" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="20" startPosition="0" endLine="24" endPosition="0">
-      <varInfo nodeId="954830572075998500" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="954830572075998500" fileName="FalseFlow.java" startLine="10" startPosition="0" endLine="25" endPosition="0" unitName="org.jetbrains.mps.samples.IfAndUnless.structure.FalseFlow" />
+  <root nodeRef="r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)/954830572075998495">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="954830572075998495" at="15,0,16,0" concept="1" trace="props_TrueFlow" />
+      <node id="954830572075998495" at="44,37,45,76" concept="3" />
+      <node id="954830572075998495" at="45,76,46,42" concept="0" />
+      <node id="954830572075998495" at="46,42,47,40" concept="0" />
+      <node id="954830572075998495" at="48,9,49,30" concept="4" />
+      <node id="954830572075998495" at="43,42,48,9" concept="2" />
+      <scope id="954830572075998495" at="44,37,47,40">
+        <var name="cpb" id="954830572075998495" />
+      </scope>
+      <scope id="954830572075998495" at="43,42,49,30" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="954830572075998495" at="15,0,16,0" concept="5" trace="TrueFlow" />
+      <node id="954830572075998495" at="22,51,23,46" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="954830572075998495" at="20,0,21,0" concept="1" trace="myConceptTrueFlow" />
+      <node id="954830572075998495" at="50,42,51,33" concept="4" />
+      <node id="954830572075998495" at="96,66,97,179" concept="3" />
+      <node id="954830572075998495" at="97,179,98,34" concept="0" />
+      <node id="954830572075998495" at="98,34,99,131" concept="0" />
+      <node id="954830572075998495" at="99,131,100,123" concept="0" />
+      <node id="954830572075998495" at="100,123,101,17" concept="0" />
+      <node id="954830572075998495" at="101,17,102,54" concept="0" />
+      <node id="954830572075998495" at="102,54,103,22" concept="4" />
+      <node id="954830572075998495" at="96,0,105,0" concept="6" trace="createDescriptorForTrueFlow#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="954830572075998495" at="50,42,51,33" />
+      <scope id="954830572075998495" at="96,66,103,22">
+        <var name="b" id="954830572075998495" />
+      </scope>
+      <scope id="954830572075998495" at="96,0,105,0" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)/954830572075998500">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="954830572075998500" at="12,0,13,0" concept="1" trace="props_FalseFlow" />
+      <node id="954830572075998500" at="24,38,25,76" concept="3" />
+      <node id="954830572075998500" at="25,76,26,43" concept="0" />
+      <node id="954830572075998500" at="26,43,27,41" concept="0" />
+      <node id="954830572075998500" at="28,9,29,31" concept="4" />
+      <node id="954830572075998500" at="23,43,28,9" concept="2" />
+      <scope id="954830572075998500" at="24,38,27,41">
+        <var name="cpb" id="954830572075998500" />
+      </scope>
+      <scope id="954830572075998500" at="23,43,29,31" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="954830572075998500" at="12,0,13,0" concept="5" trace="FalseFlow" />
+      <node id="954830572075998500" at="19,116,20,47" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="954830572075998500" at="17,0,18,0" concept="1" trace="myConceptFalseFlow" />
+      <node id="954830572075998500" at="44,43,45,34" concept="4" />
+      <node id="954830572075998500" at="64,67,65,180" concept="3" />
+      <node id="954830572075998500" at="65,180,66,34" concept="0" />
+      <node id="954830572075998500" at="66,34,67,131" concept="0" />
+      <node id="954830572075998500" at="67,131,68,123" concept="0" />
+      <node id="954830572075998500" at="68,123,69,17" concept="0" />
+      <node id="954830572075998500" at="69,17,70,54" concept="0" />
+      <node id="954830572075998500" at="70,54,71,22" concept="4" />
+      <node id="954830572075998500" at="64,0,73,0" concept="6" trace="createDescriptorForFalseFlow#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="954830572075998500" at="44,43,45,34" />
+      <scope id="954830572075998500" at="64,67,71,22">
+        <var name="b" id="954830572075998500" />
+      </scope>
+      <scope id="954830572075998500" at="64,0,73,0" />
+    </file>
+  </root>
+</debug-info>
 

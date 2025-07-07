@@ -15,9 +15,9 @@
  */
 package jetbrains.mps.ide.findusages.view.optionseditor.components;
 
+import com.intellij.ui.IdeBorderFactory;
 import jetbrains.mps.ide.findusages.view.optionseditor.options.ViewOptions;
 
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -34,25 +34,14 @@ public class ViewOptionsEditor extends BaseEditor<ViewOptions> {
     myPanel = new JPanel();
     myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
 
-    myPanel.setBorder(
-      BorderFactory.createCompoundBorder(
-        BorderFactory.createTitledBorder("View Options"),
-        BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+    myPanel.setBorder(IdeBorderFactory.createTitledBorder("View Options", false));
 
-    myShowOneResult = new JCheckBox("Skip results tab with one usages", !myOptions.myShowOneResult);
-    myShowOneResult.addChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
-        myOptions.myShowOneResult = !((JCheckBox) e.getSource()).isSelected();
-      }
-    });
+    myShowOneResult = new JCheckBox("Skip results tab with one usage", !myOptions.myShowOneResult);
+    myShowOneResult.addChangeListener(e -> myOptions.myShowOneResult = !((JCheckBox) e.getSource()).isSelected());
     myPanel.add(myShowOneResult);
 
-    myNewTab = new JCheckBox("New tab", myOptions.myNewTab);
-    myNewTab.addChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
-        myOptions.myNewTab = ((JCheckBox) e.getSource()).isSelected();
-      }
-    });
+    myNewTab = new JCheckBox("Open in new tab", myOptions.myNewTab);
+    myNewTab.addChangeListener(e -> myOptions.myNewTab = ((JCheckBox) e.getSource()).isSelected());
     myPanel.add(myNewTab);
   }
 }

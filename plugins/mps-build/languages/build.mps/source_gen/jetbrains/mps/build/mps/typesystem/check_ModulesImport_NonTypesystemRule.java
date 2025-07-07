@@ -4,88 +4,140 @@ package jetbrains.mps.build.mps.typesystem;
 
 import jetbrains.mps.lang.typesystem.runtime.AbstractNonTypesystemRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.build.mps.util.VisibleModules;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.build.behavior.BuildProject_Behavior;
+import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.build.mps.util.ModuleLoader;
-import jetbrains.mps.build.mps.util.PathConverter;
-import jetbrains.mps.errors.BaseQuickFixProvider;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.messages.IMessage;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.messages.MessageKind;
+import jetbrains.mps.build.mps.util.ModuleChecker;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.project.structure.modules.DevkitDescriptor;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.generator.impl.GenPlanTranslator;
+import jetbrains.mps.generator.impl.plan.DependencyCollectorPlanBuilder;
+import jetbrains.mps.build.mps.util.VisibleModules;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ModulesImport_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode buildProject, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.getModel(buildProject).isTransient() || SModelStereotype.isGeneratorModel(SNodeOperations.getModel(buildProject)) || !(SNodeOperations.getModel(buildProject).getModelDescriptor().isGeneratable())) {
+    if (SNodeOperations.getModel(buildProject).getModule() instanceof TransientSModule || SModelStereotype.isGeneratorModel(SNodeOperations.getModel(buildProject)) || !(jetbrains.mps.util.SNodeOperations.isGeneratable(SNodeOperations.getModel(buildProject)))) {
       return;
     }
 
-    VisibleModules visible = null;
-    String workingDir = null;
-    for (final SNode module : ListSequence.fromList(SNodeOperations.getDescendants(buildProject, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule", false, new String[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, "path", true) != null);
+    String workingDir = BuildProject__BehaviorDescriptor.getBasePath_id4jjtc7WZOyG.invoke(buildProject, Context.defaultContext());
+    if ((workingDir == null || workingDir.length() == 0)) {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(buildProject, "working directory is unavailable", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "2531699772406302731", null, errorTarget);
+      }
+      return;
+    }
+
+    final SRepository repo = SNodeOperations.getModel(buildProject).getRepository();
+
+    ModuleLoader ml = new ModuleLoader(buildProject, null, new IMessageHandler() {
+      public void handle(IMessage msg) {
+        SNode location = buildProject;
+        if (repo != null && msg.getHintObject() instanceof SNodeReference) {
+          location = ((SNodeReference) msg.getHintObject()).resolve(repo);
+        }
+        if (msg.getKind() == MessageKind.ERROR) {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(location, msg.getText(), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "7141285424006551198", null, errorTarget);
+          }
+        } else if (msg.getKind() == MessageKind.WARNING) {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(location, msg.getText(), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "2799875068636550272", null, errorTarget);
+          }
+        }
+      }
+    });
+    ml.checkAllModules(ModuleChecker.CheckType.CHECK);
+    for (SNode dk : ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$mGDj)).translate(new ITranslator2<SNode, SNode>() {
+      public Iterable<SNode> translate(SNode it) {
+        return SNodeOperations.getNodeDescendants(it, CONCEPTS.BuildMps_DevKit$jc, true, new SAbstractConcept[]{});
       }
     })) {
-      if (visible == null) {
-        visible = new VisibleModules(buildProject, null);
-        visible.collect();
-        workingDir = BuildProject_Behavior.call_getBasePath_4959435991187146924(buildProject, Context.defaultContext());
-        if ((workingDir == null || workingDir.length() == 0)) {
+      // XXX would be great not to create ModuleChecker here
+      ModuleDescriptor md = ml.createModuleChecker(dk).getModuleDescriptor();
+      if (false == md instanceof DevkitDescriptor) {
+        continue;
+      }
+      SModelReference associatedGenPlan = ((DevkitDescriptor) md).getAssociatedGenPlan();
+      if (associatedGenPlan == null) {
+        continue;
+      }
+      SModel gp = associatedGenPlan.resolve(repo);
+      if (gp == null || !(gp.getRootNodes().iterator().hasNext())) {
+        continue;
+      }
+      SNode planNode = gp.getRootNodes().iterator().next();
+      // use stub classes of j.m.generator.impl, available through MPS.Core, to avoid dependency to j.m.generator solution
+      // FIXME once these classes are not part of MPS.Core (generator shall get separate stub), need to figure out proper approach to perform this check
+      // the code below is the same as in ValidationUtil
+      GenPlanTranslator gpt = new GenPlanTranslator(planNode);
+      DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
+      gpt.feed(dcpb);
+      final VisibleModules visibleModules = ml.getVisibleModules();
+      for (SLanguage l : dcpb.getRequiredLanguages()) {
+        if (visibleModules.resolve(l) == null) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(buildProject, "working directory is unavailable", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "2531699772406302731", null, errorTarget);
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dk, String.format("Generation plan requires language %s, which is not available in the project", l.getQualifiedName()), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "5023854759223204350", null, errorTarget);
           }
-          return;
         }
       }
-      final StringBuilder messages = new StringBuilder();
-      new ModuleLoader(module, visible, new PathConverter(buildProject), null) {
-        @Override
-        protected void report(String message, SNode node, Exception cause) {
-          if (messages.length() > 0) {
-            messages.append("\n");
-          }
-          messages.append(message);
-        }
-      }.checkModule();
-      if (messages.length() > 0) {
-        {
-          MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(module, messages.toString(), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "2531699772406302922", null, errorTarget);
+      for (SModuleReference g : dcpb.getRequiredGenerators()) {
+        if (visibleModules.resolve(g) == null) {
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.typesystem.ReloadRequired_QuickFix", false);
-            _reporter_2309309498.addIntentionProvider(intentionProvider);
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dk, String.format("Generation plan requires generator %s, which is not available in the project", g.getModuleName()), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "5023854759223218811", null, errorTarget);
           }
         }
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.build.structure.BuildProject";
+  public SAbstractConcept getApplicableConcept() {
+    return CONCEPTS.BuildProject$ae;
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConceptFqName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink parts$mGDj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BuildMps_DevKit$jc = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, "jetbrains.mps.build.mps.structure.BuildMps_DevKit");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,77 +15,75 @@
  */
 package jetbrains.mps;
 
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
-import jetbrains.mps.library.contributor.LibraryContributor.LibDescriptor;
-import jetbrains.mps.library.contributor.PluginLibrariesContributor;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.smodel.Language;
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.util.text.StringUtil;
 import jetbrains.mps.smodel.MPSModuleOwner;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.util.Computable;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModule;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 import java.util.regex.Pattern;
 
-public class VisibleModuleRegistry implements ApplicationComponent {
-  ConcurrentMap<String, Boolean> myCache = new ConcurrentHashMap<String, Boolean>();
+public class VisibleModuleRegistry implements Disposable {
+  private final Map<String, Boolean> myCache = new ConcurrentHashMap<>();
+  private final List<Pattern> myPatterns;
 
-  public boolean isVisible(final IModule module) {
-    if (module == null) return false;
+  public VisibleModuleRegistry() {
+    List<VisibleModuleMask> extensions = VisibleModuleMask.EP_VISIBLE_MODULES.getExtensionList();
+    myPatterns = new ArrayList<>(extensions.size());
+    for (VisibleModuleMask e : extensions) {
+      myPatterns.add(Pattern.compile(e.mask));
+    }
+  }
+
+  public boolean isVisible(@Nullable final SModule module) {
+    if (module == null) {
+      return false;
+    }
+
     //project modules
     //contributed by plugin
-    Set<MPSModuleOwner> moduleOwners = ModelAccess.instance().runReadAction(new Computable<Set<MPSModuleOwner>>() {
-      @Override
-      public Set<MPSModuleOwner> compute() {
-        return ModuleRepositoryFacade.getInstance().getModuleOwners(module);
+    if (module.getRepository() != null) {
+      // FWIW, getModuleOwners checks read access
+      Set<MPSModuleOwner> moduleOwners = new ModelAccessHelper(module.getRepository()).runReadAction(
+          () -> new ModuleRepositoryFacade(module.getRepository()).getModuleOwners(module));
+      for (MPSModuleOwner owner : moduleOwners) {
+        if (!owner.isHidden()) {
+          return true;
+        }
       }
-    });
-    for (MPSModuleOwner owner : moduleOwners) {
-      if (owner instanceof Language) {
-        return isVisible((Language) owner);
-      }
-      if (!owner.isHidden()) return true;
     }
-    String moduleFqName = module.getModuleFqName();
+
+    final String moduleFqName = module.getModuleName();
+    // Null or empty names are not allowed - they can't be checked by name
+    if (StringUtil.isEmpty(moduleFqName)) {
+      return false;
+    }
+
+    //Satisfying a mask
     Boolean result = myCache.get(moduleFqName);
-    if (result != null) return  result;
-    result = matchesMask(module);
+    if (result != null) {
+      return result;
+    }
+    result = myPatterns.parallelStream().anyMatch(pattern -> pattern.matcher(moduleFqName).matches());
     myCache.put(moduleFqName, result);
     return result;
   }
 
-  private boolean matchesMask(final IModule module) {
-    //satisfying a mask
-    VisibleModuleMask[] extensions = VisibleModuleMask.EP_VISIBLE_MODULES.getExtensions();
-    for (VisibleModuleMask e:extensions) {
-      Pattern p = Pattern.compile(e.mask);
-      if (p.matcher(module.getModuleFqName()).matches()) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  public static VisibleModuleRegistry getInstance(){
-    return ApplicationManager.getApplication().getComponent(VisibleModuleRegistry.class);
+  public static VisibleModuleRegistry getInstance() {
+    return ServiceManager.getService(VisibleModuleRegistry.class);
   }
 
   @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return VisibleModuleRegistry.class.getSimpleName();
+  public void dispose() {
+    myCache.clear();
+    myPatterns.clear();
   }
 }

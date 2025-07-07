@@ -17,55 +17,57 @@ package jetbrains.mps.lang.typesystem.runtime;
 
 import gnu.trove.THashSet;
 import jetbrains.mps.typesystem.inference.IVariableConverter_Runtime;
-import jetbrains.mps.typesystem.inference.util.IDependency_Runtime;
 
 import java.util.Collections;
 import java.util.Set;
 
 public class BaseHelginsDescriptor implements IHelginsDescriptor {
-  protected Set<InferenceRule_Runtime> myInferenceRules = new THashSet<InferenceRule_Runtime>();
-  protected Set<NonTypesystemRule_Runtime> myNonTypesystemRules = new THashSet<NonTypesystemRule_Runtime>();
-  protected Set<AbstractDependentComputation_Runtime> myDependentComputations = new THashSet<AbstractDependentComputation_Runtime>();
-  protected Set<SubtypingRule_Runtime> mySubtypingRules = new THashSet<SubtypingRule_Runtime>();
-  protected Set<ComparisonRule_Runtime> myComparisonRules = new THashSet<ComparisonRule_Runtime>();
-  protected Set<InequationReplacementRule_Runtime> myInequationReplacementRules = new THashSet<InequationReplacementRule_Runtime>();
-  protected Set<IDependency_Runtime> myDependencies = new THashSet<IDependency_Runtime>();
-  protected Set<IVariableConverter_Runtime> myVariableConverters = new THashSet<IVariableConverter_Runtime>();
-  protected Set<IOverloadedOpsTypesProvider> myOverloadedOperationsTypesProviders = new THashSet<IOverloadedOpsTypesProvider>();
+  protected Set<InferenceRule_Runtime> myInferenceRules = new THashSet<>();
+  protected Set<NonTypesystemRule_Runtime> myNonTypesystemRules = new THashSet<>();
+  protected Set<SubtypingRule_Runtime> mySubtypingRules = new THashSet<>();
+  protected Set<SubstituteType_Runtime> mySubstituteTypeRules = new THashSet<>();
+  protected Set<ComparisonRule_Runtime> myComparisonRules = new THashSet<>();
+  protected Set<InequationReplacementRule_Runtime> myInequationReplacementRules = new THashSet<>();
+  protected Set<IVariableConverter_Runtime> myVariableConverters = new THashSet<>();
+  protected Set<IOverloadedOpsTypesProvider> myOverloadedOperationsTypesProviders = new THashSet<>();
 
+  @Override
   public Set<InferenceRule_Runtime> getInferenceRules() {
     return Collections.unmodifiableSet(this.myInferenceRules);
   }
 
+  @Override
   public Set<NonTypesystemRule_Runtime> getNonTypesystemRules() {
     return Collections.unmodifiableSet(this.myNonTypesystemRules);
   }
 
+  @Override
   public Set<SubtypingRule_Runtime> getSubtypingRules() {
     return Collections.unmodifiableSet(this.mySubtypingRules);
   }
 
+  @Override
+  public Set<SubstituteType_Runtime> getSubstituteTypeRules() {
+    return Collections.unmodifiableSet(this.mySubstituteTypeRules);
+  }
+
+  @Override
   public Set<ComparisonRule_Runtime> getComparisonRules() {
     return Collections.unmodifiableSet(this.myComparisonRules);
   }
 
-  public Set<IDependency_Runtime> getDependencies() {
-    return Collections.unmodifiableSet(this.myDependencies);
-  }
-
+  @Override
   public Set<InequationReplacementRule_Runtime> getEliminationRules() {
     return Collections.unmodifiableSet(this.myInequationReplacementRules);
   }
 
+  @Override
   public Set<IVariableConverter_Runtime> getVariableConverters() {
     return Collections.unmodifiableSet(this.myVariableConverters);
   }
 
+  @Override
   public Set<IOverloadedOpsTypesProvider> getOverloadedOperationsTypesProviders() {
     return Collections.unmodifiableSet(this.myOverloadedOperationsTypesProviders);
-  }
-
-  public Set<AbstractDependentComputation_Runtime> getDependentComputations() {
-    return Collections.unmodifiableSet(this.myDependentComputations);
   }
 }

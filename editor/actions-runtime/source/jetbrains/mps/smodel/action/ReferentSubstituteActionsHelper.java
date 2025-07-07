@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,64 +15,72 @@
  */
 package jetbrains.mps.smodel.action;
 
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.logging.Logger;
+import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
+import jetbrains.mps.lang.editor.menus.transformation.ReferenceTransformationMenuItem;
+import jetbrains.mps.nodeEditor.cellMenu.CompletionActionItemAsSubstituteAction;
+import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.IScope;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.constraints.IReferencePresentation;
-import jetbrains.mps.smodel.constraints.ModelConstraintsUtil;
-import jetbrains.mps.smodel.constraints.ModelConstraintsUtil.ReferenceDescriptor;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import jetbrains.mps.smodel.constraints.ModelConstraints;
+import jetbrains.mps.smodel.constraints.ReferenceDescriptor;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
-/*package*/ class ReferentSubstituteActionsHelper {
-  private static final Logger LOG = Logger.getLogger(ReferentSubstituteActionsHelper.class);
+class ReferentSubstituteActionsHelper {
+  private static final Logger LOG = LogManager.getLogger(ReferentSubstituteActionsHelper.class);
 
-  public static List<INodeSubstituteAction> createActions(SNode referenceNode, SNode currentReferent, SNode linkDeclaration, IOperationContext context) {
-    IScope scope = context.getScope();
-
-    // proceed with custom builders
-    SNode referenceNodeConcept = referenceNode.getConceptDeclarationNode();
-    Language primaryLanguage = SModelUtil.getDeclaringLanguage(referenceNodeConcept);
-    if (primaryLanguage == null) {
-      LOG.error("Couldn't build actions : couldn't get declaring language for concept " + referenceNodeConcept.getDebugText());
-      return new LinkedList<INodeSubstituteAction>();
-    }
-
+  public static List<SubstituteAction> createActions(SNode referenceNode, SReferenceLink link,
+                                                     IReferentPresentationProvider matchingTextProvider,
+                                                     IReferentPresentationProvider visibleMatchingTextProvider, EditorContext editorContext) {
     // search scope
-    ReferenceDescriptor refDescriptor = ModelConstraintsUtil.getReferenceDescriptor(referenceNode, SModelUtil.getLinkDeclarationRole(linkDeclaration), 0, context);
+    // ModelConstraints works with valid links that should be taken from genuine link declaration
+    SReferenceLink association = MetaAdapterByDeclaration.getReferenceLink(link.getDeclarationNode());
+    ReferenceDescriptor refDescriptor = ModelConstraints.getReferenceDescriptor(referenceNode, association);
     Scope searchScope = refDescriptor.getScope();
     if (searchScope instanceof ErrorScope) {
       LOG.error("Couldn't create referent search scope : " + ((ErrorScope) searchScope).getMessage());
-      return new LinkedList<INodeSubstituteAction>();
-    }
-
-    IReferencePresentation presentation = refDescriptor.getReferencePresentation();
-    return createActions(referenceNode, currentReferent, linkDeclaration, searchScope, presentation, scope);
-  }
-
-  private static List<INodeSubstituteAction> createActions(
-    SNode referenceNode, SNode currentReferent, SNode linkDeclaration,
-    Scope searchScope, IReferencePresentation presentation, final IScope scope) {
-
-    final SNode referentConcept = SModelUtil.getLinkDeclarationTarget(linkDeclaration);
-    if (referentConcept == null) {
       return Collections.emptyList();
     }
-    String referentConceptFqName = NameUtil.nodeFQName(referentConcept);
-    Iterable<SNode> nodes = searchScope.getAvailableElements(null);
-    List<INodeSubstituteAction> actions = new ArrayList<INodeSubstituteAction>();
-    for (SNode node : nodes) {
-      if (node == null || !node.isInstanceOfConcept(referentConceptFqName)) continue;
-      actions.add(new DefaultReferentNodeSubstituteAction(node, referenceNode, currentReferent, linkDeclaration, presentation));
+    return createActions(referenceNode, association, refDescriptor, matchingTextProvider, visibleMatchingTextProvider, editorContext);
+  }
+
+  private static List<SubstituteAction> createActions(SNode referenceNode, SReferenceLink association,
+                                                      ReferenceDescriptor descriptor, IReferentPresentationProvider matchingTextProvider,
+                                                      IReferentPresentationProvider visibleMatchingTextProvider, EditorContext editorContext) {
+
+    final SAbstractConcept targetConcept = association.getTargetConcept();
+    Iterable<SNode> nodes = descriptor.getScope().getAvailableElements(null);
+    List<SubstituteAction> actions = new ArrayList<>();
+    for (SNode targetNode : nodes) {
+      if (targetNode == null || !targetNode.getConcept().isSubConceptOf(targetConcept)) {
+        continue;
+      }
+      final String matchingText = matchingTextProvider.getPresentation(referenceNode, targetNode);
+      final String visibleMatchingText = visibleMatchingTextProvider.getPresentation(referenceNode, targetNode);
+      EditorMenuTraceInfoImpl traceInfo = new EditorMenuTraceInfoImpl();
+      traceInfo.setDescriptor(new EditorMenuDescriptorBase("default reference action with target node: " + targetNode.getPresentation(), null));
+      actions.add(new CompletionActionItemAsSubstituteAction(new ReferenceTransformationMenuItem(referenceNode, editorContext, association, targetNode, traceInfo){
+        @Override
+        public String getLabelText(String pattern) {
+          return matchingText;
+        }
+
+        @Override
+        public String getVisibleText(@NotNull String pattern) {
+          return visibleMatchingText;
+        }
+      }, referenceNode, editorContext.getRepository()));
     }
     return actions;
   }

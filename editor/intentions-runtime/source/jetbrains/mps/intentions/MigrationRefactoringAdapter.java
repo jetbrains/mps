@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,78 +16,88 @@
 package jetbrains.mps.intentions;
 
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import jetbrains.mps.openapi.intentions.IntentionExecutable;
+import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.util.NameUtil;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
-public class MigrationRefactoringAdapter extends BaseIntention {
-  private AbstractMigrationRefactoring myRefactoring;
-  private SNode myMigrationScript;  //todo: do we really need migration script i.e. a link to SNode here?
+public class MigrationRefactoringAdapter extends OldBaseIntentionFactory {
+  private final AbstractMigrationRefactoring myRefactoring;
+  private final SNodeReference myIntentionNodeReference;
+  private final String myPresentation;
 
-  public MigrationRefactoringAdapter(AbstractMigrationRefactoring refactoring, SNode migrationScript) {
+  /*package*/ MigrationRefactoringAdapter(AbstractMigrationRefactoring refactoring, @Nullable SNodeReference migrationReference) {
     myRefactoring = refactoring;
-    myMigrationScript = migrationScript;
+    myIntentionNodeReference = migrationReference;
+    myPresentation = refactoring.getName();
   }
 
-  public String getConcept() {
-    return myRefactoring.getFqNameOfConceptToSearchInstances();
+  /*package*/ AbstractMigrationRefactoring getRefactoring() {
+    return myRefactoring;
   }
 
-  public boolean isParameterized() {
-    return false;  
-  }
-
-  public String getDescription(SNode node, EditorContext editorContext) {
-    return "Migration: " + NameUtil.multiWordCapitalize(myRefactoring.getName());
-  }
-
+  @Override
   public boolean isApplicable(SNode node, EditorContext editorContext) {
     return myRefactoring.isApplicableInstanceNode(node);
   }
 
+  @Override
   public boolean isAvailableInChildNodes() {
     return false;
   }
 
-  public List parameter(SNode node, EditorContext editorContext) {
-    return null;
+  @Override
+  public Kind getKind() {
+    return Kind.MIGRATION;
   }
 
-  public void execute(SNode node, EditorContext editorContext) {
-    List<SNode> allParents = new ArrayList<SNode>();
-    for (SNode currentNode = node; currentNode != null; currentNode = currentNode.getParent()) {
-      allParents.add(currentNode);
+  @Override
+  public String getPersistentStateKey() {
+    return myRefactoring.getClass().getName();
+  }
+
+  @Override
+  public SNodeReference getIntentionNodeReference() {
+    return myIntentionNodeReference;
+  }
+
+  @Override
+  public String getPresentation() {
+    return myPresentation;
+  }
+
+  @Override
+  public boolean isSurroundWith() {
+    return false;
+  }
+
+  @Override
+  public Collection<IntentionExecutable> instances(SNode node, EditorContext editorContext) {
+    return Collections.singleton(new Executable());
+  }
+
+  private class Executable implements IntentionExecutable {
+
+    @Override
+    public String getDescription(SNode node, EditorContext editorContext) {
+      return "Enhancement: " + NameUtil.multiWordCapitalize(myRefactoring.getName());
     }
-    myRefactoring.doUpdateInstanceNode(node);
-    // Node was removed/replaced - trying to select first parent remaining in model
-    if (node != null && node.getContainingRoot() == null) {
-      for (SNode predecessor : allParents) {
-        if (predecessor.getContainingRoot() != null) {
-          editorContext.selectWRTFocusPolicy(predecessor);
-          break;
-        }
-      }
+
+    @Override
+    public void execute(SNode node, EditorContext editorContext) {
+      myRefactoring.doUpdateInstanceNode(node);
     }
-  }
 
-  public IntentionType getType() {
-    return IntentionType.MIGRATION;
-  }
-
-  public String getLocationString() {
-    return myMigrationScript.getModel().getLongName();
-  }
-
-  public SNode getNodeByIntention() {
-    return null;
-  }
-
-  public List<Intention> getParameterizedInstances(SNode node, EditorContext editorContext) {
-    List<Intention> list = new ArrayList<Intention>();
-    list.add(this);
-    return list;
+    @Override
+    public IntentionDescriptor getDescriptor() {
+      return MigrationRefactoringAdapter.this;
+    }
   }
 }

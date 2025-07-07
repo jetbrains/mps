@@ -16,47 +16,52 @@
 package jetbrains.mps.workbench.editors;
 
 import com.intellij.openapi.fileEditor.*;
+import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.workbench.languagesFs.MPSLanguageVirtualFile;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-public class MPSLanguageEditorProvider implements FileEditorProvider {
+public class MPSLanguageEditorProvider implements FileEditorProvider, DumbAware {
+  @Override
   public boolean accept(@NotNull Project project, @NotNull VirtualFile file) {
     return file instanceof MPSLanguageVirtualFile;
   }
 
+  @Override
   @NotNull
   public FileEditor createEditor(@NotNull Project project, @NotNull VirtualFile file) {
-    return new MPSLanguageEditor(project, (MPSLanguageVirtualFile) file);
+    return new MPSLanguageEditor(ProjectHelper.fromIdeaProject(project), (MPSLanguageVirtualFile) file);
   }
 
+  @Override
   public void disposeEditor(@NotNull FileEditor editor) {
     Disposer.dispose(editor);
   }
 
+  @Override
   @NotNull
   public FileEditorState readState(@NotNull Element sourceElement, @NotNull Project project, @NotNull VirtualFile file) {
-    return new FileEditorState() {
-      public boolean canBeMergedWith(FileEditorState otherState, FileEditorStateLevel level) {
-        return false;
-      }
-    };
+    return (otherState, level) -> false;
   }
 
+  @Override
   public void writeState(@NotNull FileEditorState state, @NotNull Project project, @NotNull Element targetElement) {
 
   }
 
+  @Override
   @NotNull
   @NonNls
   public String getEditorTypeId() {
     return "MPSLanguageFileEditor";
   }
 
+  @Override
   @NotNull
   public FileEditorPolicy getPolicy() {
     return FileEditorPolicy.HIDE_DEFAULT_EDITOR;

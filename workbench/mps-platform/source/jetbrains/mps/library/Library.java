@@ -15,42 +15,52 @@
  */
 package jetbrains.mps.library;
 
-public class Library implements Cloneable {
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+/**
+ * Bean class for {@link jetbrains.mps.library.BaseLibraryManager.LibraryState}
+ * Do not remove the default constructor and setters/getters
+ */
+public final class Library {
   private String myName;
   private String myPath;
 
   public Library() {
   }
 
-  public Library(String name) {
+  public Library(@NotNull String name) {
     myName = name;
   }
 
-  public void setName(String name) {
+  public Library(@NotNull String name, @Nullable String path) {
     myName = name;
+    myPath = path;
   }
 
   public String getName() {
     return myName;
   }
 
+  @Nullable
   public String getPath() {
     return myPath;
   }
 
-  public void setPath(String path) {
+  public void setPath(@NotNull String path) {
     myPath = path;
   }
 
-  public String toString() {
-    return myName;
+  public void setName(@NotNull String name) {
+    myName = name;
   }
 
+  public String toString() {
+    return myName + " [" + myPath + "]";
+  }
+
+  @NotNull
   public Library copy() {
-    try {
-      return (Library) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new RuntimeException(e);
-    }
+    return new Library(myName, myPath);
   }
 }

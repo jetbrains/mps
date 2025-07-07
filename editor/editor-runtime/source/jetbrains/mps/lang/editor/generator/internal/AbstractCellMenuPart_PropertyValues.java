@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,40 +15,43 @@
  */
 package jetbrains.mps.lang.editor.generator.internal;
 
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPart;
-import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.smodel.action.INodeSubstituteAction;
-import jetbrains.mps.smodel.action.PropertySubstituteAction;
+import jetbrains.mps.nodeEditor.cellMenu.CellContext;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.IScope;
+import jetbrains.mps.smodel.action.SPropertySubstituteAction;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.LinkedList;
 
 /**
  * Igor Alshannikov
  * Date: Nov 29, 2006
  */
-public abstract class AbstractCellMenuPart_PropertyValues implements SubstituteInfoPart {
-
-  public List<INodeSubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-    SNode node = (SNode) cellContext.get(PropertyCellContext.EDITED_NODE);
-    SNode property = (SNode) cellContext.get(PropertyCellContext.PROPERTY_DECLARATION);
-    if (property == null) {
-      return Collections.emptyList();
-    }
-    IOperationContext context = editorContext.getOperationContext();
-    List<String> values = this.getPropertyValues(node, context.getScope(), context);
-    List<INodeSubstituteAction> actions = new LinkedList<INodeSubstituteAction>();
+public abstract class AbstractCellMenuPart_PropertyValues implements SubstituteInfoPartExt {
+  @Override
+  public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
+    SNode node = cellContext.get(PropertyCellContext.EDITED_NODE);
+    SProperty property = cellContext.get(PropertyCellContext.PROPERTY_DECLARATION);
+    List<String> values = getPropertyValues(node, editorContext);
+    List<SubstituteAction> actions = new ArrayList<>(values.size());
     for (String value : values) {
-      actions.add(new PropertySubstituteAction(node, property.getName(), value));
+      actions.add(new SPropertySubstituteAction(node, property, value));
     }
     return actions;
   }
 
-  protected abstract List<String> getPropertyValues(SNode node, IScope scope, IOperationContext operationContext);
+  protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
+    // FIXME remove once 2020.3 is out
+    return getPropertyValues(node, editorContext.getOperationContext(), editorContext);
+  }
+
+  protected List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    return Collections.emptyList();
+  }
 }

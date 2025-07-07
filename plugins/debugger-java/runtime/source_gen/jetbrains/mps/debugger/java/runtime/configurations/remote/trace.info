@@ -1,79 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <root nodeId="6391517972808555635" modelId="r:40062e7d-2d40-4964-a55f-255e1fee23d7(jetbrains.mps.debugger.java.runtime.configurations.remote)">
-    <nodeInfo nodeId="6391517972808555638" fileName="RemoteProcessHandler.java" startLine="16" startPosition="58" endLine="17" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.FieldDeclaration" propertyString="myProject" />
-    <nodeInfo nodeId="6391517972808555647" fileName="RemoteProcessHandler.java" startLine="19" startPosition="48" endLine="20" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6391517972808555655" fileName="RemoteProcessHandler.java" startLine="23" startPosition="29" endLine="24" endPosition="106" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6391517972808555660" fileName="RemoteProcessHandler.java" startLine="24" startPosition="106" endLine="25" endPosition="113" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6391517972808555665" fileName="RemoteProcessHandler.java" startLine="25" startPosition="113" endLine="26" endPosition="84" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6391517972808555677" fileName="RemoteProcessHandler.java" startLine="27" startPosition="50" endLine="28" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6391517972808555706" fileName="RemoteProcessHandler.java" startLine="32" startPosition="72" endLine="33" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6391517972808555711" fileName="RemoteProcessHandler.java" startLine="33" startPosition="53" endLine="34" endPosition="36" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6391517972808555714" fileName="RemoteProcessHandler.java" startLine="37" startPosition="8" endLine="38" endPosition="48" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6391517972808555738" fileName="RemoteProcessHandler.java" startLine="39" startPosition="11" endLine="40" endPosition="28" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6391517972808555721" fileName="RemoteProcessHandler.java" startLine="41" startPosition="17" endLine="42" endPosition="98" conceptFqName="jetbrains.mps.baseLanguage.structure.SingleLineComment" />
-    <nodeInfo nodeId="6391517972808555723" fileName="RemoteProcessHandler.java" startLine="42" startPosition="98" endLine="43" endPosition="48" conceptFqName="jetbrains.mps.baseLanguage.structure.SingleLineComment" />
-    <nodeInfo nodeId="6391517972808555730" fileName="RemoteProcessHandler.java" startLine="44" startPosition="34" endLine="45" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6391517972808555735" fileName="RemoteProcessHandler.java" startLine="45" startPosition="55" endLine="46" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6391517972808555744" fileName="RemoteProcessHandler.java" startLine="52" startPosition="39" endLine="53" endPosition="114" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6391517972808555757" fileName="RemoteProcessHandler.java" startLine="54" startPosition="31" endLine="55" endPosition="30" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6391517972808555766" fileName="RemoteProcessHandler.java" startLine="59" startPosition="38" endLine="60" endPosition="114" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6391517972808555779" fileName="RemoteProcessHandler.java" startLine="61" startPosition="31" endLine="62" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6391517972808555788" fileName="RemoteProcessHandler.java" startLine="66" startPosition="36" endLine="67" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6391517972808555794" fileName="RemoteProcessHandler.java" startLine="70" startPosition="41" endLine="71" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6391517972808555641" fileName="RemoteProcessHandler.java" startLine="18" startPosition="0" endLine="21" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="RemoteProcessHandler#(Lcom/intellij/openapi/project/Project;)V" />
-    <nodeInfo nodeId="6391517972808555752" fileName="RemoteProcessHandler.java" startLine="53" startPosition="114" endLine="56" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="6391517972808555774" fileName="RemoteProcessHandler.java" startLine="60" startPosition="114" endLine="63" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="6391517972808555698" fileName="RemoteProcessHandler.java" startLine="31" startPosition="100" endLine="35" endPosition="11" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="6391517972808555725" fileName="RemoteProcessHandler.java" startLine="43" startPosition="48" endLine="47" endPosition="9" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="6391517972808555784" fileName="RemoteProcessHandler.java" startLine="65" startPosition="0" endLine="69" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="detachIsDefault#()Z" />
-    <nodeInfo nodeId="6391517972808555790" fileName="RemoteProcessHandler.java" startLine="69" startPosition="0" endLine="73" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getProcessInput#()Ljava/io/OutputStream;" />
-    <nodeInfo nodeId="6391517972808555740" fileName="RemoteProcessHandler.java" startLine="51" startPosition="0" endLine="58" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="destroyProcessImpl#()V" />
-    <nodeInfo nodeId="6391517972808555762" fileName="RemoteProcessHandler.java" startLine="58" startPosition="0" endLine="65" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="detachProcessImpl#()V" />
-    <nodeInfo nodeId="6391517972808555689" fileName="RemoteProcessHandler.java" startLine="29" startPosition="70" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="processDetached#(Ljetbrains/mps/debugger/java/runtime/DebugVMEventsProcessor;Z)V" />
-    <nodeInfo nodeId="6391517972808555683" fileName="RemoteProcessHandler.java" startLine="28" startPosition="66" endLine="37" endPosition="8" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6391517972808555719" fileName="RemoteProcessHandler.java" startLine="38" startPosition="48" endLine="48" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.TryStatement" />
-    <nodeInfo nodeId="6391517972808555672" fileName="RemoteProcessHandler.java" startLine="26" startPosition="84" endLine="49" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="6391517972808555651" fileName="RemoteProcessHandler.java" startLine="22" startPosition="0" endLine="51" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="startNotify#()V" />
-    <scopeInfo nodeId="6391517972808555646" fileName="RemoteProcessHandler.java" startLine="19" startPosition="48" endLine="20" endPosition="24" />
-    <scopeInfo nodeId="6391517972808555737" fileName="RemoteProcessHandler.java" startLine="39" startPosition="11" endLine="40" endPosition="28" />
-    <scopeInfo nodeId="6391517972808555756" fileName="RemoteProcessHandler.java" startLine="54" startPosition="31" endLine="55" endPosition="30" />
-    <scopeInfo nodeId="6391517972808555778" fileName="RemoteProcessHandler.java" startLine="61" startPosition="31" endLine="62" endPosition="31" />
-    <scopeInfo nodeId="6391517972808555787" fileName="RemoteProcessHandler.java" startLine="66" startPosition="36" endLine="67" endPosition="16" />
-    <scopeInfo nodeId="6391517972808555793" fileName="RemoteProcessHandler.java" startLine="70" startPosition="41" endLine="71" endPosition="16" />
-    <scopeInfo nodeId="6391517972808555705" fileName="RemoteProcessHandler.java" startLine="32" startPosition="72" endLine="34" endPosition="36" />
-    <scopeInfo nodeId="6391517972808555729" fileName="RemoteProcessHandler.java" startLine="44" startPosition="34" endLine="46" endPosition="34" />
-    <scopeInfo nodeId="6391517972808555641" fileName="RemoteProcessHandler.java" startLine="18" startPosition="0" endLine="21" endPosition="3">
-      <varInfo nodeId="6391517972808555644" varName="project" />
-    </scopeInfo>
-    <scopeInfo nodeId="6391517972808555697" fileName="RemoteProcessHandler.java" startLine="31" startPosition="100" endLine="35" endPosition="11" />
-    <scopeInfo nodeId="6391517972808555743" fileName="RemoteProcessHandler.java" startLine="52" startPosition="39" endLine="56" endPosition="5">
-      <varInfo nodeId="6391517972808555745" varName="debugProcess" />
-    </scopeInfo>
-    <scopeInfo nodeId="6391517972808555765" fileName="RemoteProcessHandler.java" startLine="59" startPosition="38" endLine="63" endPosition="5">
-      <varInfo nodeId="6391517972808555767" varName="debugProcess" />
-    </scopeInfo>
-    <scopeInfo nodeId="6391517972808555784" fileName="RemoteProcessHandler.java" startLine="65" startPosition="0" endLine="69" endPosition="0" />
-    <scopeInfo nodeId="6391517972808555790" fileName="RemoteProcessHandler.java" startLine="69" startPosition="0" endLine="73" endPosition="0" />
-    <scopeInfo nodeId="6391517972808555720" fileName="RemoteProcessHandler.java" startLine="41" startPosition="17" endLine="47" endPosition="9" />
-    <scopeInfo nodeId="6391517972808555740" fileName="RemoteProcessHandler.java" startLine="51" startPosition="0" endLine="58" endPosition="0" />
-    <scopeInfo nodeId="6391517972808555762" fileName="RemoteProcessHandler.java" startLine="58" startPosition="0" endLine="65" endPosition="0" />
-    <scopeInfo nodeId="6391517972808555689" fileName="RemoteProcessHandler.java" startLine="29" startPosition="70" endLine="37" endPosition="0">
-      <varInfo nodeId="6391517972808555695" varName="closedByUser" />
-      <varInfo nodeId="6391517972808555692" varName="process" />
-    </scopeInfo>
-    <scopeInfo nodeId="6391517972808555676" fileName="RemoteProcessHandler.java" startLine="27" startPosition="50" endLine="48" endPosition="7">
-      <varInfo nodeId="6391517972808555684" varName="listener" />
-      <varInfo nodeId="6391517972808555678" varName="session" />
-    </scopeInfo>
-    <scopeInfo nodeId="6391517972808555654" fileName="RemoteProcessHandler.java" startLine="23" startPosition="29" endLine="49" endPosition="5">
-      <varInfo nodeId="6391517972808555666" varName="abstractSession" />
-      <varInfo nodeId="6391517972808555656" varName="debugManager" />
-      <varInfo nodeId="6391517972808555661" varName="vmManager" />
-    </scopeInfo>
-    <scopeInfo nodeId="6391517972808555651" fileName="RemoteProcessHandler.java" startLine="22" startPosition="0" endLine="51" endPosition="0" />
-    <unitInfo nodeId="6391517972808555688" fileName="RemoteProcessHandler.java" startLine="29" startPosition="47" endLine="37" endPosition="7" unitName="jetbrains.mps.debugger.java.runtime.configurations.remote.RemoteProcessHandler$1" />
-    <unitInfo nodeId="6391517972808555635" fileName="RemoteProcessHandler.java" startLine="16" startPosition="0" endLine="74" endPosition="0" unitName="jetbrains.mps.debugger.java.runtime.configurations.remote.RemoteProcessHandler" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
+  <root nodeRef="r:40062e7d-2d40-4964-a55f-255e1fee23d7(jetbrains.mps.debugger.java.runtime.configurations.remote)/6391517972808555635">
+    <file name="RemoteProcessHandler.java">
+      <node id="6391517972808555638" at="19,0,20,0" concept="2" trace="myProject" />
+      <node id="6391517972808555647" at="20,48,21,24" concept="1" />
+      <node id="6391517972808555655" at="24,29,25,106" concept="5" />
+      <node id="6391517972808555660" at="25,106,26,113" concept="5" />
+      <node id="6391517972808555665" at="26,113,27,84" concept="5" />
+      <node id="6391517972808555677" at="28,50,29,66" concept="5" />
+      <node id="6391517972808555706" at="33,65,34,53" concept="1" />
+      <node id="6391517972808555711" at="34,53,35,36" concept="1" />
+      <node id="6391517972808555714" at="38,8,39,48" concept="1" />
+      <node id="6391517972808555738" at="40,11,41,28" concept="1" />
+      <node id="6391517972808555721" at="42,17,43,97" concept="7" />
+      <node id="6391517972808555723" at="43,97,44,47" concept="7" />
+      <node id="6391517972808555730" at="45,34,46,55" concept="1" />
+      <node id="6391517972808555735" at="46,55,47,34" concept="1" />
+      <node id="6391517972808555744" at="53,39,54,114" concept="5" />
+      <node id="6391517972808555757" at="55,31,56,30" concept="1" />
+      <node id="6391517972808555766" at="60,38,61,114" concept="5" />
+      <node id="6391517972808555779" at="62,31,63,31" concept="1" />
+      <node id="6391517972808555788" at="67,36,68,16" concept="6" />
+      <node id="6391517972808555794" at="71,41,72,16" concept="6" />
+      <node id="6391517972808555641" at="20,0,23,0" concept="0" trace="RemoteProcessHandler#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="6391517972808555752" at="54,114,57,5" concept="3" />
+      <node id="6391517972808555774" at="61,114,64,5" concept="3" />
+      <node id="6391517972808555698" at="32,93,36,11" concept="3" />
+      <node id="6391517972808555725" at="44,47,48,9" concept="3" />
+      <node id="6391517972808555784" at="66,0,70,0" concept="4" trace="detachIsDefault#()Z" />
+      <node id="6391517972808555790" at="70,0,74,0" concept="4" trace="getProcessInput#()Ljava/io/OutputStream;" />
+      <node id="6391517972808555689" at="31,0,38,0" concept="4" trace="processDetached#(Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;Z)V" />
+      <node id="6391517972808555740" at="52,0,59,0" concept="4" trace="destroyProcessImpl#()V" />
+      <node id="6391517972808555762" at="59,0,66,0" concept="4" trace="detachProcessImpl#()V" />
+      <node id="6391517972808555683" at="29,66,38,8" concept="5" />
+      <node id="6391517972808555719" at="39,48,49,7" concept="8" />
+      <node id="6391517972808555672" at="27,84,50,5" concept="3" />
+      <node id="6391517972808555651" at="23,0,52,0" concept="4" trace="startNotify#()V" />
+      <scope id="6391517972808555646" at="20,48,21,24" />
+      <scope id="6391517972808555737" at="40,11,41,28" />
+      <scope id="6391517972808555756" at="55,31,56,30" />
+      <scope id="6391517972808555778" at="62,31,63,31" />
+      <scope id="6391517972808555787" at="67,36,68,16" />
+      <scope id="6391517972808555793" at="71,41,72,16" />
+      <scope id="6391517972808555705" at="33,65,35,36" />
+      <scope id="6391517972808555729" at="45,34,47,34" />
+      <scope id="6391517972808555641" at="20,0,23,0">
+        <var name="project" id="6391517972808555644" />
+      </scope>
+      <scope id="6391517972808555697" at="32,93,36,11" />
+      <scope id="6391517972808555743" at="53,39,57,5">
+        <var name="debugProcess" id="6391517972808555745" />
+      </scope>
+      <scope id="6391517972808555765" at="60,38,64,5">
+        <var name="debugProcess" id="6391517972808555767" />
+      </scope>
+      <scope id="6391517972808555784" at="66,0,70,0" />
+      <scope id="6391517972808555790" at="70,0,74,0" />
+      <scope id="6391517972808555720" at="42,17,48,9" />
+      <scope id="6391517972808555689" at="31,0,38,0">
+        <var name="closedByUser" id="6391517972808555695" />
+        <var name="process" id="6391517972808555692" />
+      </scope>
+      <scope id="6391517972808555740" at="52,0,59,0" />
+      <scope id="6391517972808555762" at="59,0,66,0" />
+      <scope id="6391517972808555676" at="28,50,49,7">
+        <var name="listener" id="6391517972808555684" />
+        <var name="session" id="6391517972808555678" />
+      </scope>
+      <scope id="6391517972808555654" at="24,29,50,5">
+        <var name="abstractSession" id="6391517972808555666" />
+        <var name="debugManager" id="6391517972808555656" />
+        <var name="vmManager" id="6391517972808555661" />
+      </scope>
+      <scope id="6391517972808555651" at="23,0,52,0" />
+      <unit id="6391517972808555688" at="30,47,38,7" name="jetbrains.mps.debugger.java.runtime.configurations.remote.RemoteProcessHandler$1" />
+      <unit id="6391517972808555635" at="17,0,75,0" name="jetbrains.mps.debugger.java.runtime.configurations.remote.RemoteProcessHandler" />
+    </file>
   </root>
-</debugInfo>
+</debug-info>
 

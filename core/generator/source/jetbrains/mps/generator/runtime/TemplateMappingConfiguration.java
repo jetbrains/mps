@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.generator.runtime;
 
+import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.template.ITemplateGenerator;
-import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.Collection;
 
@@ -27,9 +29,9 @@ public interface TemplateMappingConfiguration {
 
   boolean isTopPriority();
 
-  SNodePointer getMappingNode();
+  SNodeReference getMappingNode();
 
-  boolean isApplicable(ITemplateGenerator generator) throws GenerationException;
+  boolean isApplicable(@NotNull ITemplateGenerator generator) throws GenerationFailureException;
 
   String getName();
 
@@ -48,4 +50,16 @@ public interface TemplateMappingConfiguration {
   Collection<TemplateMappingScript> getPostScripts();
 
   TemplateModel getModel();
+
+  /**
+   * @return rules to drop node attributes that are otherwise copied during transformation.
+   */
+  @NotNull
+  Collection<TemplateDropAttributeRule> getDropAttributeRules();
+
+  /**
+   * @return rules to reduce references of copied nodes
+   */
+  @NotNull
+  Collection<ReferenceReductionRule> getReferenceReductionRules();
 }

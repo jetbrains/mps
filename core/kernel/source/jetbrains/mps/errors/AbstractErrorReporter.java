@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,88 +15,74 @@
  */
 package jetbrains.mps.errors;
 
-import jetbrains.mps.util.Pair;
+import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Cyril.Konopko, 10.02.2010
  */
 public abstract class AbstractErrorReporter implements IErrorReporter {
-  private List<Pair<String, String>> myAdditionalRuleIds = null;
+  private List<SNodeReference> myAdditionalRuleIds = null;
   private List<QuickFixProvider> myIntentionProviders;
-  private String myRuleModel;
-  private String myRuleId;
+  private final SNodeReference myRuleNode;
 
-  public AbstractErrorReporter(String model, String id) {
-    myRuleId = id;
-    myRuleModel = model;
+  public AbstractErrorReporter(@Nullable SNodeReference ruleNode) {
+    myRuleNode = ruleNode;
   }
 
-  public void setIntentionProvider(QuickFixProvider intentionProvider) {
-    addIntentionProvider(intentionProvider);
+  @Deprecated
+  public AbstractErrorReporter(String model, String id) {
+    if (model != null && id != null) {
+      myRuleNode = new SNodePointer(model, id);
+    } else {
+      myRuleNode = null;
+    }
   }
 
   @Override
   public void addIntentionProvider(QuickFixProvider intentionProvider) {
     if (intentionProvider == null) return;
     if (myIntentionProviders == null) {
-      myIntentionProviders = new ArrayList<QuickFixProvider>(1);
+      myIntentionProviders = new ArrayList<>(1);
     }
     myIntentionProviders.add(intentionProvider);
   }
 
-  public QuickFixProvider getIntentionProvider() {
-    if (myIntentionProviders == null) return null;
-    if (myIntentionProviders.isEmpty()) return null;
-    return myIntentionProviders.get(0);
-  }
-
   @Override
   public List<QuickFixProvider> getIntentionProviders() {
-    ArrayList<QuickFixProvider> result = new ArrayList<QuickFixProvider>(1);
+    ArrayList<QuickFixProvider> result = new ArrayList<>(1);
     if (myIntentionProviders != null) {
       result.addAll(myIntentionProviders);
     }
     return result;
   }
 
-  public void addAdditionalRuleId(String ruleModel, String ruleId) {
-    Pair<String, String> pair = new Pair<String, String>(ruleModel, ruleId);
+  @Override
+  public void additionalRule(@NotNull SNodeReference rulePointer) {
     if (myAdditionalRuleIds == null) {
-      myAdditionalRuleIds = new ArrayList<Pair<String, String>>(2);
+      myAdditionalRuleIds = new ArrayList<>(2);
     }
-    myAdditionalRuleIds.add(pair);
+    myAdditionalRuleIds.add(rulePointer);
   }
 
-  public List<Pair<String, String>> getAdditionalRulesIds() {
-    if (myAdditionalRuleIds == null) return new ArrayList<Pair<String, String>>(0);
-    return new ArrayList<Pair<String, String>>(myAdditionalRuleIds);
-  }
-
-  public List<Pair<String, String>> getAdditionalRulesIdsInReverseOrder() {
-    ArrayList<Pair<String, String>> result = new ArrayList<Pair<String, String>>(myAdditionalRuleIds);
-    Collections.reverse(result);
-    return result;
-  }
-
-  public void setAdditionalRulesIds(List<Pair<String, String>> ids) {
-    if (ids != null && !ids.isEmpty()) {
-      myAdditionalRuleIds = new ArrayList<Pair<String, String>>(ids);
-    } else {
-      myAdditionalRuleIds = null;
+  @Override
+  public List<SNodeReference> getAdditionalRulesIds() {
+    if (myAdditionalRuleIds == null) {
+      return Collections.emptyList();
     }
+    return Collections.unmodifiableList(myAdditionalRuleIds);
   }
 
-
-  public String getRuleId() {
-    return myRuleId;
-  }
-
-  public String getRuleModel() {
-    return myRuleModel;
+  @Nullable
+  @Override
+  public SNodeReference getRuleNode() {
+    return myRuleNode;
   }
 
 }

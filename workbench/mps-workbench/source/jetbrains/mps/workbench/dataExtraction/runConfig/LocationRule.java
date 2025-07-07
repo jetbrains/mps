@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,37 +17,69 @@ package jetbrains.mps.workbench.dataExtraction.runConfig;
 
 import com.intellij.ide.impl.dataRules.GetDataRule;
 import com.intellij.openapi.actionSystem.DataProvider;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.wm.IdeFrame;
 import jetbrains.mps.plugins.runconfigs.MPSLocation;
-import jetbrains.mps.project.IModule;
+import jetbrains.mps.plugins.runconfigs.MPSPsiElement;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.workbench.MPSDataKeys;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SModule;
 
 import java.util.List;
 
+/**
+ * Provides values for {@link com.intellij.execution.Location#DATA_KEY "Location"} key.
+ */
 public class LocationRule implements GetDataRule {
+  @Override
   @Nullable
-  public Object getData(DataProvider dataProvider) {
-    Project project = (Project) dataProvider.getData(MPSDataKeys.PROJECT.getName());
-    if (project == null) {
-      IdeFrame frame = (IdeFrame) dataProvider.getData(MPSDataKeys.FRAME.getName());
-      if (frame != null) project = frame.getProject();
+  public Object getData(@NotNull DataProvider dataProvider) {
+    final MPSProject mpsProject = MPSDataKeys.MPS_PROJECT.getData(dataProvider);
+    if (mpsProject == null) {
+      // if dataProvider is not capable to give us MPS_PROJECT, don't try to get any
+      //    MPS data from it. There would be another DataProvider (up in hierarchy of
+      //    components/DataProviders, see DataManagerImpl.getData(String,Component))
+      //    that is capable to answer MPS_PROJECT (or just PROJECT, see MPSProjectRule)
+      //    and that would be provider to query MPS relevant data from.
+      //
+      // Here used to be code that obtained project from active frame. FrameRule
+      //    is/was capable to answer Frame for any DataProvider, we got MPS_PROJECT here,
+      //    but as long dataProvider could not answer anything (e.g. if it was some
+      //    intermediate component in Project Pane hierarchy), we ended up with
+      //    MPSLocation(mpsProject) for any selected element (see MPS-32710)
+      // However, the assumption of DP giving MPSProject/Project (MPSProjectRule makes these equivalent,
+      //    see DataManagerImpl.getDataFromProvider+getDataRule)
+      //    is not perfect as it's sort of implicit knowledge, easy to overlook - i.e. if we do not to answer
+      //    Project from ProjectPane, this LocationRule won't get a chance to ask proper dataProvider (the one
+      //    of ProjectPane) for NODES/NODE/etc keys.
+      //    Perhaps, instead of KEY.getData(dataProvider), we shall recurse into DataManager again, so that
+      //    it would walk component/DataProvider hierarchy again to access correct DP that could answer e.g. 'NODES'
+      //    What I don't like in this approch (even if feasible) is the fact it makes moment this rule shall get
+      //    active completely illogical, especially if Project from FRAME logic is brought back. Shall it answer
+      //    with MPSLocation for any DataProvider then?
+      return null;
     }
-    if (project == null) return null;
-    List<SNode> nodes = (List<SNode>) dataProvider.getData(MPSDataKeys.NODES.getName());
-    if (nodes != null && nodes.size() > 1) return new MPSLocation(project, nodes);
-    SNode node = (SNode) dataProvider.getData(MPSDataKeys.NODE.getName());
-    if (node != null) return new MPSLocation(project, node);
-    SModelDescriptor model = (SModelDescriptor) dataProvider.getData(MPSDataKeys.MODEL.getName());
-    if (model != null) return new MPSLocation(project, model.getSModelReference());
-    IModule module = (IModule) dataProvider.getData(MPSDataKeys.MODULE.getName());
-    if (module != null) return new MPSLocation(project, module);
-    MPSProject mpsProject = (MPSProject) dataProvider.getData(MPSDataKeys.MPS_PROJECT.getName());
-    if (mpsProject != null) return new MPSLocation(project, mpsProject);
-    return null;
+    return new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(() -> {
+      List<SNode> nodes = MPSDataKeys.NODES.getData(dataProvider);
+      if (nodes != null && nodes.size() > 1) {
+        return new MPSLocation(mpsProject, new MPSPsiElement(nodes, mpsProject));
+      }
+      SNode node = MPSDataKeys.NODE.getData(dataProvider);
+      if (node != null) {
+        return new MPSLocation(mpsProject, new MPSPsiElement(node, mpsProject));
+      }
+      SModel model =  MPSDataKeys.MODEL.getData(dataProvider);
+      if (model != null) {
+        return new MPSLocation(mpsProject, new MPSPsiElement(model, mpsProject));
+      }
+      SModule module = MPSDataKeys.MODULE.getData(dataProvider);
+      if (module != null) {
+        return new MPSLocation(mpsProject, new MPSPsiElement(module, mpsProject));
+      }
+      return new MPSLocation(mpsProject, new MPSPsiElement(mpsProject));
+    });
   }
 }

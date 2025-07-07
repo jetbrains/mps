@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,27 +15,30 @@
  */
 package jetbrains.mps.generator.runtime;
 
-import jetbrains.mps.generator.impl.interpreted.TemplateModuleInterpreted;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.project.structure.modules.mappingpriorities.*;
-import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.language.LanguageRuntime;
+import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_AbstractRef;
+import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_ExternalRef;
+import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_RefAllGlobal;
+import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_RefAllLocal;
+import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_RefSet;
+import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_SimpleRef;
+import jetbrains.mps.project.structure.modules.mappingpriorities.MappingPriorityRule;
+import jetbrains.mps.project.structure.modules.mappingpriorities.RuleType;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Evgeny Gryaznov, 10/28/10
  */
 public class TemplateUtil {
 
-  private static final Logger LOG = Logger.getLogger(TemplateUtil.class);
-
   public static Collection<SNode> singletonList(SNode node) {
-    return node != null ? Collections.singletonList(node) : Collections.<SNode>emptyList();
+    return node != null ? Collections.singletonList(node) : Collections.emptyList();
   }
 
   public static Collection<SNode> asList(SNode... nodes) {
@@ -43,7 +46,7 @@ public class TemplateUtil {
       return Collections.emptyList();
     }
 
-    List<SNode> result = new ArrayList<SNode>(nodes.length);
+    List<SNode> result = new ArrayList<>(nodes.length);
     for (SNode node : nodes) {
       if (node != null) {
         result.add(node);
@@ -74,7 +77,7 @@ public class TemplateUtil {
       }
     }
 
-    List<SNode> result = new ArrayList<SNode>(size);
+    List<SNode> result = new ArrayList<>(size);
     for (Object o : nodesOrCollectionOfNodes) {
       if (o instanceof SNode) {
         result.add((SNode) o);
@@ -90,30 +93,11 @@ public class TemplateUtil {
   }
 
   public static <T> Iterable<T> asNotNull(final Iterable<T> objects) {
-    return objects == null ? Collections.<T>emptyList() : objects;
+    return objects == null ? Collections.emptyList() : objects;
   }
 
   public static <T> Collection<T> asCollection(final T... objects) {
-    return new AbstractCollection<T>() {
-      @Override
-      public Iterator<T> iterator() {
-        return new ArrayIterator<T>(objects);
-      }
-
-      @Override
-      public int size() {
-        return objects.length;
-      }
-    };
-  }
-
-  public static TemplateModule createInterpretedGenerator(LanguageRuntime sourceLanguage, String moduleReference) {
-    Generator g = ModuleRepositoryFacade.getInstance().getModule(ModuleReference.fromString(moduleReference), Generator.class);
-    if (g == null) {
-      LOG.error("language " + sourceLanguage.getNamespace() + " doesn't contain generator `" + moduleReference + "': try to regenerate language");
-      return null;
-    }
-    return new TemplateModuleInterpreted(sourceLanguage, g);
+    return Arrays.asList(objects);
   }
 
   public static TemplateMappingPriorityRule createStrictlyBeforeRule(TemplateMappingConfigRef left, TemplateMappingConfigRef right) {
@@ -172,41 +156,18 @@ public class TemplateUtil {
     return result;
   }
 
-  public static TemplateMappingConfigRef createRefNormal(String modelUID, String nodeUID) {
+  public static TemplateMappingConfigRef createRefNormal(String modelUID, String nodeUID, String mapConfigName) {
     MappingConfig_SimpleRef result = new MappingConfig_SimpleRef();
     result.setModelUID(modelUID);
     result.setNodeID(nodeUID);
+    result.setMapConfigName(mapConfigName);
     return result;
   }
 
   public static TemplateMappingConfigRef createRefExternal(String moduleReference, TemplateMappingConfigRef inner) {
     MappingConfig_ExternalRef result = new MappingConfig_ExternalRef();
-    result.setGenerator(ModuleReference.fromString(moduleReference));
+    result.setGenerator(PersistenceFacade.getInstance().createModuleReference(moduleReference));
     result.setMappingConfig((MappingConfig_AbstractRef) inner);
     return result;
-  }
-
-  private static class ArrayIterator<T> implements Iterator<T> {
-    private int idx = 0;
-    private Object array;
-    private int length;
-
-    private ArrayIterator(Object array) {
-      this.array = array;
-      this.length = Array.getLength(array);
-    }
-
-    public boolean hasNext() {
-      return idx < length;
-    }
-
-    @SuppressWarnings(value = "unchecked")
-    public T next() {
-      return (T) Array.get(array, idx++);
-    }
-
-    public void remove() {
-      throw new UnsupportedOperationException();
-    }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,115 +15,70 @@
  */
 package jetbrains.mps.generator.impl.dependencies;
 
-import jetbrains.mps.cleanup.CleanupListener;
-import jetbrains.mps.cleanup.CleanupManager;
 import jetbrains.mps.generator.GenerationStatus;
-import jetbrains.mps.generator.ModelGenerationStatusManager;
-import jetbrains.mps.generator.cache.XmlBasedModelCache;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.smodel.SModelRepository;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.IFile;
-import org.jdom.Element;
+import jetbrains.mps.generator.cache.BaseModelCache;
+import jetbrains.mps.generator.cache.CacheGenerator;
+import jetbrains.mps.generator.cache.ParseFacility;
+import jetbrains.mps.generator.cache.ParseFacility.Parser;
+import jetbrains.mps.generator.generationTypes.StreamHandler;
+import jetbrains.mps.util.JDOMUtil;
+import org.jdom.Document;
+import org.jdom.JDOMException;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Evgeny Gryaznov, May 14, 2010
  */
-public class GenerationDependenciesCache extends XmlBasedModelCache<GenerationDependencies> {
+public class GenerationDependenciesCache extends BaseModelCache<GenerationDependencies> {
+  public static final String CACHE_FILE_NAME = "generated";
 
-  private static GenerationDependenciesCache INSTANCE;
-
-  public static GenerationDependenciesCache getInstance() {
-    return INSTANCE;
-  }
-
-  private List<CachePathRedirect> myCachePathRedirects = Collections.synchronizedList(new ArrayList<CachePathRedirect>());
-
-  public GenerationDependenciesCache(SModelRepository modelRepository) {
-    super(modelRepository);
+  public GenerationDependenciesCache() {
   }
 
   @Override
-  public void init() {
-    if (INSTANCE != null) {
-      throw new IllegalStateException("double initialization");
-    }
-
-    INSTANCE = this;
-    super.init();
-    CleanupManager.getInstance().addCleanupListener(new CleanupListener() {
-      public void performCleanup() {
-        cleanup();
-      }
-    });
-  }
-
-  @Override
-  public void dispose() {
-    super.dispose();
-    INSTANCE = null;
-  }
-
   @NotNull
   public String getCacheFileName() {
-    return "generated";
+    return CACHE_FILE_NAME;
   }
 
-  public void registerCachePathRedirect(CachePathRedirect cdl) {
-    myCachePathRedirects.add(cdl);
-  }
-
-  public void unregisterCachePathRedirect(CachePathRedirect cdl) {
-    myCachePathRedirects.remove(cdl);
-  }
-
-  protected Element toXml(GenerationDependencies dependencies) {
-    return dependencies.toXml();
-  }
-
-  protected GenerationDependencies fromXml(Element e) {
-    return GenerationDependencies.fromXml(e);
-  }
-
-  protected GenerationDependencies generateCache(GenerationStatus status) {
-    return status.getDependencies();
-  }
-
+  @Nullable
   @Override
-  public SModelDescriptor invalidateCacheForFile(IFile file) {
-    SModelDescriptor md = super.invalidateCacheForFile(file);
-    if (md != null && md.getModule() != null) {
-      ModelGenerationStatusManager.getInstance().invalidateData(Arrays.asList(md));
-    }
-    return md;
+  protected GenerationDependencies readCache(SModel sm) {
+    return new ParseFacility<>(getClass(), new CacheParser()).input(getCacheFile(sm)).parseSilently();
   }
 
-  public IFile findCachesPathRedirect(IFile cachesPath) {
-    IFile redir;
-    for (CachePathRedirect cdl: myCachePathRedirects) {
-      if ((redir = cdl.redirectTo(cachesPath)) != null) {
-        return redir;
+  public CacheGenerator getGenerator() {
+    return new CacheGen();
+  }
+
+  private class CacheGen implements CacheGenerator {
+
+    @Override
+    public void generateCache(GenerationStatus status, StreamHandler handler) {
+      GenerationDependencies cache = status.getDependencies();
+      if (cache == null) {
+        return;
+      }
+      update(status.getInputModel(), cache);
+
+      handler.saveStream(getCacheFileName(), cache.toXml());
+    }
+  }
+
+  private static class CacheParser implements Parser<GenerationDependencies> {
+    @Override
+    public GenerationDependencies load(InputStream is) throws IOException {
+      try {
+        Document doc = JDOMUtil.loadDocument(is);
+        return GenerationDependencies.fromXml(doc.getRootElement());
+      } catch (JDOMException e) {
+        throw new IOException(e);
       }
     }
-    return null;
-  }
-  
-  @Override
-  protected IFile getCachesDirInternal(IModule module, String outputPath) {
-    IFile cachesPath = super.getCachesDirInternal(module, outputPath);
-    if (cachesPath == null) { return null; }
-    IFile redir = findCachesPathRedirect(cachesPath);
-    return redir != null ? redir : cachesPath;
-  }
-
-  public static interface CachePathRedirect {
-    IFile redirectTo(IFile outputPath);
   }
 }

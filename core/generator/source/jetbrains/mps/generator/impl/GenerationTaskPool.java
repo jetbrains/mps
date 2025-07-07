@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,94 +16,44 @@
 package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.GenerationCanceledException;
-import jetbrains.mps.progress.ProgressMonitor;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.smodel.SharedReadModelAccess;
+import jetbrains.mps.util.NamedThreadFactory;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Evgeny Gryaznov, Feb 23, 2010
  */
 public class GenerationTaskPool implements IGenerationTaskPool {
+  public GenerationTaskPool(int numberOfThreads) {
+    this(numberOfThreads, new SharedReadModelAccess() {
+      @Override
+      public boolean canRead() {
+        return true;
+      }
 
-  private static class ModelReadThreadFactory implements ThreadFactory {
-    final ThreadGroup group;
-    final AtomicInteger threadNumber = new AtomicInteger(1);
-    final String namePrefix;
+      @Override
+      public void release() {
 
-    ModelReadThreadFactory() {
-      group = Thread.currentThread().getThreadGroup();
-      namePrefix = "generation-thread-";
-    }
+      }
 
-    public Thread newThread(final Runnable original) {
-      Thread t = new Thread(group, original, namePrefix + threadNumber.getAndIncrement());
-      if (t.isDaemon())
-        t.setDaemon(false);
-      if (t.getPriority() != Thread.NORM_PRIORITY)
-        t.setPriority(Thread.NORM_PRIORITY);
-      return t;
-    }
+      @Override
+      public void execute(@NotNull Runnable command) {
+        command.run();
+      }
+    });
   }
 
-  final static AtomicLong seq = new AtomicLong();
-
-  private class GenerationTaskAdapter implements Runnable/*, Comparable<GenerationTaskAdapter>*/ {
-    private GenerationTask myTask;
-//    final long seqNum;
-
-    private GenerationTaskAdapter(GenerationTask task) {
-      myTask = task;
-//      seqNum = seq.getAndIncrement();
-    }
-
-    private void runInternal() {
-      try {
-        TypeChecker.getInstance().generationWorkerStarted();
-        myTask.run();
-      } catch (GenerationCanceledException e) {
-        reportException(e);
-      } catch (GenerationFailureException e) {
-        reportException(e);
-      } catch (Throwable th) {
-        reportException(th);
-      } finally {
-        TypeChecker.getInstance().generationWorkerFinished();
-      }
-    }
-
-    @Override
-    public void run() {
-      if (myTask.requiresReadAccess()) {
-        boolean oldFlag = ModelAccess.instance().setReadEnabledFlag(true);
-        try {
-          runInternal();
-        }
-        finally {
-          ModelAccess.instance().setReadEnabledFlag(oldFlag);
-        }
-      } else {
-        runInternal();
-      }
-    }
-
-//    @Override
-//    public int compareTo(GenerationTaskAdapter oth) {
-//      return (seqNum < oth.seqNum ? -1 : 1);
-//    }
-  }
-
-  private final ProgressMonitor cancellationMonitor;
-  private volatile boolean isCancelled = false;
-
-  public GenerationTaskPool(ProgressMonitor cancellationMonitor, int numberOfThreads) {
-    this.cancellationMonitor = cancellationMonitor;
-    myExecutor = new ThreadPoolExecutor(numberOfThreads, numberOfThreads, 10, TimeUnit.SECONDS, queue, new ModelReadThreadFactory()) {
+  public GenerationTaskPool(int numberOfThreads, @NotNull SharedReadModelAccess modelAccess) {
+    myExecutor = new ThreadPoolExecutor(numberOfThreads, numberOfThreads, 10, TimeUnit.SECONDS, queue, new NamedThreadFactory("generation-thread-")) {
       @Override
       protected void afterExecute(Runnable r, Throwable t) {
         long tasksLeft = tasksInQueue.decrementAndGet();
@@ -114,26 +64,41 @@ public class GenerationTaskPool implements IGenerationTaskPool {
         }
       }
     };
+    mySharedModelReadAccess = modelAccess;
   }
 
-  final BlockingQueue<Runnable> queue = new LinkedBlockingQueue<Runnable>();
-  ThreadPoolExecutor myExecutor;
+  private volatile boolean isCancelled = false;
+
+  final BlockingQueue<Runnable> queue = new LinkedBlockingQueue<>();
+  final ThreadPoolExecutor myExecutor;
+  private final SharedReadModelAccess mySharedModelReadAccess;
 
   final AtomicLong tasksInQueue = new AtomicLong();
   final Object objectLock = new Object();
+  final List<Throwable> exceptions = new LinkedList<>();
 
   @Override
   public void addTask(GenerationTask r) {
-    if (isCancelled) return;
+    if (isCancelled) {
+      return;
+    }
     tasksInQueue.incrementAndGet();
-    myExecutor.execute(new GenerationTaskAdapter(r));
+    GenerationTaskAdapter gta = new GenerationTaskAdapter(r, this::handleException);
+    myExecutor.execute(new ModelReadAdapter(mySharedModelReadAccess, gta));
+  }
+
+  /*package*/ void handleException(Throwable param) {
+    synchronized (objectLock) {
+      exceptions.add(param);
+      objectLock.notifyAll();
+    }
   }
 
   @Override
   public void waitForCompletion() throws GenerationCanceledException, GenerationFailureException {
     Throwable th = null;
     synchronized (objectLock) {
-      while (exceptions.size() == 0 && tasksInQueue.get() != 0 && !cancellationMonitor.isCanceled()) {
+      while (exceptions.size() == 0 && tasksInQueue.get() != 0) {
         try {
           objectLock.wait(1000);
         } catch (InterruptedException e) {
@@ -142,8 +107,6 @@ public class GenerationTaskPool implements IGenerationTaskPool {
       }
       if (exceptions.size() != 0) {
         th = exceptions.get(0);
-      } else if (cancellationMonitor.isCanceled()) {
-        th = new GenerationCanceledException();
       }
 
       if (th != null) {
@@ -161,32 +124,30 @@ public class GenerationTaskPool implements IGenerationTaskPool {
 
     // rethrow
     if (th != null) {
-      if (th instanceof GenerationCanceledException) {
-        throw (GenerationCanceledException) th;
-      } else if (th instanceof GenerationFailureException) {
-        throw (GenerationFailureException) th;
-      } else if (th instanceof RuntimeException) {
-        throw (RuntimeException) th;
-      }
+      GenerationTaskAdapter.rethrow(th);
     }
-  }
-
-  private List<Throwable> exceptions = new LinkedList<Throwable>();
-
-  private void reportException(Throwable thr) {
-    synchronized (objectLock) {
-      exceptions.add(thr);
-      objectLock.notifyAll();
-    }
-  }
-
-  @Override
-  public boolean isCancelled() {
-    return isCancelled;
   }
 
   @Override
   public void dispose() {
     myExecutor.shutdownNow();
+  }
+
+  // XXX could be generic WithExecutorRunnable, as it needs only Executor service.
+  //     OTOH, if we add MAT#execute(Runnable, Callback<> onInterrupt), we'd better use MAT here
+  // much like ModelReadRunnable, but we can't use regular MA.runReadAction directly (see ModelReadFlagLegacyAccess above)
+  private static class ModelReadAdapter implements Runnable {
+    private final Executor myAccessExecutor;
+    private final Runnable myDelegate;
+
+    ModelReadAdapter(Executor accessExecutor, Runnable delegate) {
+      myAccessExecutor = accessExecutor;
+      myDelegate = delegate;
+    }
+
+    @Override
+    public void run() {
+      myAccessExecutor.execute(myDelegate);
+    }
   }
 }

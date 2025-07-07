@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,44 +15,32 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.style.StyleAttributes;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.util.Macros;
+import com.intellij.openapi.util.IconLoader;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.nodeEditor.EditorSettings;
+import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import javax.swing.SwingUtilities;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.ImageObserver;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Map;
 
 public class EditorCell_Image extends EditorCell_Basic {
-
   private ImageAlignment myAlignment = ImageAlignment.justify;
-  private Image myImage;
-  private ImageObserver mySizeObserver = new ImageObserver() {
-    public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
-      int mask = ImageObserver.HEIGHT | ImageObserver.WIDTH;
-      boolean done = (infoflags & mask) == mask;
-      if (done) {
-        SwingUtilities.invokeLater(new Runnable() {
-
-          public void run() {
-            ModelAccess.instance().runReadAction(new Runnable() {
-              public void run() {
-                getEditor().rebuildEditorContent();
-              }
-            });
-          }
-        });
-      }
-      return done;
-    }
-  };
+  private Icon myIcon;
 
   private int myDescent = -1;
 
@@ -62,10 +50,31 @@ public class EditorCell_Image extends EditorCell_Basic {
     getStyle().set(StyleAttributes.PUNCTUATION_RIGHT, true);
   }
 
+  /**
+   * @param imageFileName path to an image with respect to macros of {@code node's} module.
+   */
   public static EditorCell_Image createImageCell(EditorContext editorContext, SNode node, String imageFileName) {
-    EditorCell_Image result = new EditorCell_Image(editorContext, node);
-    result.setImageFileName(expandIconPath(imageFileName, node));
-    return result;
+    SModule module = getModule(node);
+    if (module == null) {
+      return createImageCell(editorContext, node, (Image) null);
+    }
+    return createImageCell(editorContext, node, new ModuleImageDescriptor(module, imageFileName));
+  }
+
+  @Nullable
+  private static SModule getModule(SNode node) {
+    SModel model = node.getModel();
+    if (model == null) {
+      return null;
+    }
+    return model.getModule();
+  }
+
+  /**
+   * @param imagePath path is expanded with respect to macros of {@code imageModule} context.
+   */
+  public static EditorCell_Image createImageCell(EditorContext editorContext, SNode node, @NotNull SModule imageModule, String imagePath) {
+    return createImageCell(editorContext, node, new ModuleImageDescriptor(imageModule, imagePath));
   }
 
   public static EditorCell_Image createImageCell(EditorContext editorContext, SNode node, Image image) {
@@ -74,17 +83,31 @@ public class EditorCell_Image extends EditorCell_Basic {
     return result;
   }
 
-  public void paintContent(Graphics g, ParentSettings parentSettings) {
-    if (myImage == null) return;
+  public static EditorCell_Image createImageCell(EditorContext editorContext, SNode node, @NotNull ImageDescriptor image) {
+    EditorCell_Image result = new EditorCell_Image(editorContext, node);
+    result.setIcon(image.loadIcon(editorContext, node));
+    return result;
+  }
+
+  @Override
+  protected void paintContent(Graphics g, ParentSettings parentSettings) {
+    if (myIcon == null) {
+      return;
+    }
     switch (myAlignment) {
       case justify: {
-        g.drawImage(myImage, myX, myY, myWidth, myHeight, getEditor());
+        if ((myWidth != -1 && myWidth != myIcon.getIconWidth())
+            || (myHeight != -1 && myHeight != myIcon.getIconHeight())) {
+          paintIconScaled(g);
+        } else {
+          myIcon.paintIcon(getEditor(), g, myX, myY);
+        }
         break;
       }
       case center: {
-        int x = myX + (myWidth - myImage.getWidth(getEditor())) / 2;
-        int y = myY + (myHeight - myImage.getHeight(getEditor())) / 2;
-        g.drawImage(myImage, x, y, getEditor());
+        int x = myX + (myWidth - myIcon.getIconWidth()) / 2;
+        int y = myY + (myHeight - myIcon.getIconHeight()) / 2;
+        myIcon.paintIcon(getEditor(), g, x, y);
         break;
       }
       case title: {
@@ -93,24 +116,49 @@ public class EditorCell_Image extends EditorCell_Basic {
     }
   }
 
+  private void paintIconScaled(Graphics g) {
+    int iconWidth = myIcon.getIconWidth();
+    int iconHeight = myIcon.getIconHeight();
+
+    if (iconWidth <= 0 || iconHeight <= 0) {
+      return;
+    }
+
+    double sx = (double) myWidth / (double) iconWidth;
+    double sy = (double) myHeight / (double) iconHeight;
+    Graphics2D gscaled = (Graphics2D) g.create();
+    gscaled.translate(myX, myY);
+    gscaled.scale(sx, sy);
+    myIcon.paintIcon(getEditor(), gscaled, 0, 0);
+  }
+
+  @Override
   protected void relayoutImpl() {
-    if (myImage == null) return;
+    if (myIcon == null) {
+      return;
+    }
     if (myAlignment == ImageAlignment.justify) {
-      int width = myImage.getWidth(mySizeObserver);
+      int width = myIcon.getIconWidth();
       if (width != -1) {
         myWidth = width;
       }
-      int height = myImage.getHeight(mySizeObserver);
+      int height = myIcon.getIconHeight();
       if (height != -1) {
         myHeight = height;
       }
     }
+
+    if (myDescent < 0) {
+      myDescent = EditorSettings.getInstance().getDefaultEditorFontMetrics().getDescent();
+    }
   }
 
+  @Override
   public int getAscent() {
     return myHeight - getDescent();
   }
 
+  @Override
   public int getDescent() {
     return myDescent >= 0 ? myDescent : 0;
   }
@@ -123,40 +171,80 @@ public class EditorCell_Image extends EditorCell_Basic {
     myAlignment = alignment;
   }
 
-  protected void setImageFileName(String fileName) {
-    if (fileName != null && FileSystem.getInstance().getFileByPath(fileName).exists()) {
-      myImage = Toolkit.getDefaultToolkit().getImage(fileName);
+  protected void setImage(Image image) {
+    setIcon(image == null ? null : new ImageIcon(image));
+  }
+
+  protected void setIcon(Icon icon) {
+    myIcon = icon;
+  }
+
+  public Icon getIcon() {
+    return myIcon;
+  }
+
+  public enum ImageAlignment {
+    justify, center, title
+  }
+
+  /**
+   * Abstracts mechanism to describe image source and control its loading
+   */
+  public interface ImageDescriptor {
+    @Nullable
+    Icon loadIcon(EditorContext context, SNode node);
+  }
+
+  /**
+   * Loads an image from a path expanded with respect to module macros.
+   */
+  public static final class ModuleImageDescriptor implements ImageDescriptor {
+
+    private final SModule myModule;
+    private final SModuleReference myModuleRef;
+    private final String myPath;
+
+    public ModuleImageDescriptor(@NotNull SModule module, @Nullable String path) {
+      myModule = module;
+      myModuleRef = null;
+      myPath = path;
     }
-  }
 
-  private static String expandIconPath(String path, SNode sourceNode) {
-    IModule module = findAnchorModule(sourceNode.getModel());
-    final Macros macros = MacrosFactory.moduleDescriptor(module);
-    return module == null ? null : macros.expandPath(path, module.getDescriptorFile());
-  }
+    public ModuleImageDescriptor(@NotNull SModuleReference module, @Nullable String path) {
+      myModuleRef = module;
+      myModule = null;
+      myPath = path;
+    }
 
-  private static IModule findAnchorModule(SModel sourceModel) {
-    IModule module = null;
-    SModelDescriptor modelDescriptor = sourceModel.getModelDescriptor();
-    Language modelLang = Language.getLanguageFor(modelDescriptor);
-    if (modelLang != null) {
-      module = modelLang;
-    } else {
-      if (modelDescriptor != null) {
-        module = modelDescriptor.getModule();
-        if (!(module instanceof Solution)) {
-          module = null;
+    @Nullable
+    @Override
+    public Icon loadIcon(EditorContext context, SNode node) {
+      assert myModule != null || myModuleRef != null;
+      SModule m = myModule != null ? myModule : myModuleRef.resolve(context.getRepository());
+      if (m == null) {
+        return null;
+      }
+      String fullPath = MacrosFactory.forModule(m).expandPath(myPath);
+      if (fullPath == null) {
+        return null;
+      }
+      jetbrains.mps.nodeEditor.EditorContext ec = (jetbrains.mps.nodeEditor.EditorContext) context;
+      Map<String, Icon> iconCache = ec.getIconCache();
+      if (!iconCache.containsKey(fullPath)) {
+        IFile iconFile = FileSystem.getInstance().getFile(fullPath);
+        if (!iconFile.exists()) {
+          LOG.error("image file not found: " + fullPath);
+          return null;
+        }
+
+        try {
+          URL iconUrl = iconFile.getUrl();
+          iconCache.put(fullPath, IconLoader.findIcon(iconUrl, true /* Should be false. IDEA-252868 workaround until fixed. */));
+        } catch (MalformedURLException e) {
+          LOG.error("can't convert icon path to url: " + fullPath, e);
         }
       }
+      return iconCache.get(fullPath);
     }
-    return module;
-  }
-
-  protected void setImage(Image image) {
-    myImage = image;
-  }
-
-  public static enum ImageAlignment {
-    justify, center, title;
   }
 }

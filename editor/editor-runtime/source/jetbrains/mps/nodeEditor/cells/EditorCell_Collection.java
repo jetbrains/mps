@@ -15,55 +15,72 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import jetbrains.mps.nodeEditor.*;
-import jetbrains.mps.nodeEditor.cellLayout.*;
-import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteInfo;
+import com.intellij.ui.JBColor;
+import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
+import jetbrains.mps.editor.runtime.style.Padding;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.editor.runtime.style.StyleImpl;
+import jetbrains.mps.nodeEditor.EditorCell_WithComponent;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.nodeEditor.cellLayout.CellLayout;
+import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Flow;
+import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
+import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
+import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Superscript;
+import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Table;
+import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
-import jetbrains.mps.nodeEditor.selection.Selection;
-import jetbrains.mps.nodeEditor.selection.SelectionListener;
-import jetbrains.mps.nodeEditor.style.Padding;
-import jetbrains.mps.nodeEditor.style.Style;
-import jetbrains.mps.nodeEditor.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.text.TextBuilder;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.util.ArrayWrapper;
-import jetbrains.mps.util.Condition;
+import jetbrains.mps.nodeEditor.cells.collections.Container;
+import jetbrains.mps.nodeEditor.cells.collections.EmptyContainer;
+import jetbrains.mps.nodeEditor.cells.collections.SingletonContainer;
+import jetbrains.mps.nodeEditor.cells.collections.UnmodifiableIterator;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.TextBuilder;
+import jetbrains.mps.openapi.editor.cells.CellAction;
+import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.openapi.editor.cells.CellInfo;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
+import jetbrains.mps.openapi.editor.cells.traversal.CellTreeIterable;
+import jetbrains.mps.openapi.editor.selection.Selection;
+import jetbrains.mps.openapi.editor.selection.SelectionListener;
+import jetbrains.mps.openapi.editor.style.Style;
+import jetbrains.mps.util.ConditionalIterable;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SConceptFeature;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.util.TreeIterator;
+import org.jetbrains.mps.util.Condition;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Queue;
 
 /**
  * Author: Sergey Dmitriev
  * Created Sep 14, 2003
  */
-public class EditorCell_Collection extends EditorCell_Basic implements Iterable<EditorCell> {
+public class EditorCell_Collection extends EditorCell_Basic implements jetbrains.mps.openapi.editor.cells.EditorCell_Collection, SynchronizeableEditorCell {
+  private static Logger LOG = LogManager.getLogger(EditorCell_Collection.class);
+
   public static final String FOLDED_TEXT = "...";
 
-  private EditorCell[] myEditorCells = EditorCell.EMPTY_ARRAY;
-  private List<EditorCell> myEditorCellsWrapper = new ArrayWrapper<EditorCell>() {
-    protected EditorCell[] getArray() {
-      return myEditorCells;
-    }
-
-    protected void setArray(EditorCell[] newArray) {
-      myEditorCells = newArray;
-    }
-
-    protected EditorCell[] newArray(int size) {
-      return new EditorCell[size];
-    }
-  };
-
-  private List<EditorCell> myFoldedCellCollection;
+  private Container<EditorCell> myEditorCells;
   private EditorCell myFoldedCell;
 
+  @NotNull
   protected CellLayout myCellLayout;
   private AbstractCellListHandler myCellListHandler;
 
@@ -76,22 +93,14 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
 
   private int myArtificialBracesIndent = 0;
 
-  private boolean myFolded = false;
+  private Boolean myCollapsed;
+  private boolean myInitiallyCollapsed = false;
   private boolean myCanBeFolded = false;
 
   private int myAscent = -1;
   private int myDescent = -1;
   private MouseListener myUnfoldCollectionMouseListener;
-
-  @SuppressWarnings({"UnusedDeclaration"})
-  public static EditorCell_Collection createVertical(EditorContext editorContext, SNode node, EditorCellListHandler handler) {
-    return new EditorCell_Collection(editorContext, node, new CellLayout_Vertical(), handler);
-  }
-
-  @SuppressWarnings({"UnusedDeclaration"})
-  public static EditorCell_Collection createHorizontal(EditorContext editorContext, SNode node, EditorCellListHandler handler) {
-    return new EditorCell_Collection(editorContext, node, new CellLayout_Horizontal(), handler);
-  }
+  private boolean myCanBeSynchronized;
 
   public static EditorCell_Collection createVertical(EditorContext editorContext, SNode node) {
     return new EditorCell_Collection(editorContext, node, new CellLayout_Vertical(), null);
@@ -113,11 +122,6 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     return new EditorCell_Collection(editorContext, node, new CellLayout_Table(), null);
   }
 
-  @SuppressWarnings({"UnusedDeclaration"})
-  public static EditorCell_Collection createFlow(EditorContext editorContext, SNode node, EditorCellListHandler handler) {
-    return new EditorCell_Collection(editorContext, node, new CellLayout_Flow(), handler);
-  }
-
   public static EditorCell_Collection createFlow(EditorContext editorContext, SNode node) {
     return new EditorCell_Collection(editorContext, node, new CellLayout_Flow(), null);
   }
@@ -126,33 +130,35 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     return new EditorCell_Collection(editorContext, node, cellLayout, handler);
   }
 
-  public boolean isFolded() {
-    return myFolded;
+  public boolean isCollapsed() {
+    return isDefaultCollapsedValueChanged() ? myCollapsed : myInitiallyCollapsed;
   }
 
-  private List<EditorCell> getEditorCells() {
-    return myEditorCellsWrapper;
+  /**
+   * visibility: package-local for testing purposes only
+   */
+  @NotNull
+  Container<EditorCell> getEditorCells() {
+    if (myEditorCells == null) {
+      myEditorCells = new EditorCell_Collection_Container(this);
+    }
+    return myEditorCells;
   }
 
   @NotNull
-  private List<EditorCell> getFoldedCellCollection() {
-    if (!hasFoldedCell()) {
-      return Collections.emptyList();
-    }
-    if (myFoldedCellCollection == null) {
-      myFoldedCellCollection = Collections.singletonList(getFoldedCell());
-    }
-    return myFoldedCellCollection;
+  private Container<EditorCell> getFoldedCellCollection() {
+    return hasFoldedCell() ? SingletonContainer.getInstance(getFoldedCell()) : EmptyContainer.getInstance();
   }
 
   private EditorCell getFoldedCell() {
     assert hasFoldedCell();
     if (myFoldedCell == null) {
-      EditorCell_Constant foldedCell = new EditorCell_Constant(getEditorContext(), getSNode(), FOLDED_TEXT);
+      EditorCell_Constant foldedCell = new EditorCell_Constant(getContext(), getSNode(), FOLDED_TEXT);
       Style style = foldedCell.getStyle();
+      // COLORS: Remove hardcoded colors & font
       style.set(StyleAttributes.FONT_STYLE, Font.BOLD);
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, Color.lightGray);
-      style.set(StyleAttributes.TEXT_COLOR, Color.darkGray);
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, JBColor.LIGHT_GRAY);
+      style.set(StyleAttributes.TEXT_COLOR, JBColor.DARK_GRAY);
       style.set(StyleAttributes.SELECTABLE, Boolean.FALSE);
       setFoldedCell(foldedCell);
     }
@@ -173,28 +179,14 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     return myCanBeFolded;
   }
 
-  private List<EditorCell> getVisibleChildCells() {
-    return isFolded() ? getFoldedCellCollection() : getEditorCells();
+  private Container<EditorCell> getVisibleChildCells() {
+    return isCollapsed() ? getFoldedCellCollection() : getEditorCells();
   }
 
-  public int getChildCount() {
-    return getVisibleChildCells().size();
-  }
-
-  public EditorCell getChildAt(int i) {
-    return getVisibleChildCells().get(i);
-  }
-
-  public int indexOf(EditorCell cell) {
-    return getVisibleChildCells().indexOf(cell);
-  }
-
+  @NotNull
+  @Override
   public CellLayout getCellLayout() {
     return myCellLayout;
-  }
-
-  public boolean isLeaf() {
-    return false;
   }
 
   @SuppressWarnings({"UnusedDeclaration"})
@@ -206,25 +198,20 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     return myCellListHandler != null;
   }
 
+  @Deprecated
+  @ToRemove(version = 2018.3)
   public String getCellNodesRole() {
-    if (myCellListHandler == null) return null;
+    if (myCellListHandler == null) {
+      return null;
+    }
     return myCellListHandler.getElementRole();
   }
 
-  public int getCellNumber(EditorCell cell) {
-    if (usesBraces()) {
-      return indexOf(cell) - 1;
-    } else {
-      return indexOf(cell);
-    }
-  }
-
-  public EditorCell getCellAt(int number) {
-    try {
-      return getChildAt(usesBraces() ? number + 1 : number);
-    } catch (IndexOutOfBoundsException e) {
+  public SConceptFeature getCellNodesSRole() {
+    if (myCellListHandler == null) {
       return null;
     }
+    return myCellListHandler.getElementSRole();
   }
 
   public void setGridLayout(boolean gridLayout) {
@@ -233,38 +220,55 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     }
   }
 
+  @Override
   public void setArtificialBracesIndent(int indent) {
     myArtificialBracesIndent = indent;
   }
 
+  @Override
+  public boolean isAncestorOf(EditorCell cell) {
+    while (cell != null) {
+      cell = cell.getParent();
+      if (cell == this) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @Override
   public int getBracesIndent() {
     int naturalIndent = usesBraces() ? myOpeningBrace.getWidth() : 0;
     return Math.max(myArtificialBracesIndent, naturalIndent);
   }
 
-  protected EditorCell_Collection(EditorContext editorContext, SNode node, CellLayout cellLayout, AbstractCellListHandler handler) {
+  public EditorCell_Collection(EditorContext editorContext, SNode node, @NotNull CellLayout cellLayout) {
     super(editorContext, node);
     myCellLayout = cellLayout;
-    myCellListHandler = handler;
     this.setAction(CellActionType.LOCAL_HOME, new SelectFirstChild());
     this.setAction(CellActionType.LOCAL_END, new SelectLastChild());
   }
 
-  private void setBraces() {
-    myOpeningBrace = new EditorCell_Brace(getEditorContext(), getSNode(), true);
-    myClosingBrace = new EditorCell_Brace(getEditorContext(), getSNode(), false);
+  public EditorCell_Collection(EditorContext editorContext, SNode node, @NotNull CellLayout cellLayout, AbstractCellListHandler handler) {
+    this(editorContext, node, cellLayout);
+    myCellListHandler = handler;
+  }
+
+  private void addBraces() {
+    myOpeningBrace = new EditorCell_Brace(getContext(), getSNode(), true);
+    myClosingBrace = new EditorCell_Brace(getContext(), getSNode(), false);
 
     if (myLastCellSelectionListener == null) {
       myLastCellSelectionListener = new MyLastCellSelectionListener();
     }
-    addCellAt(0, myOpeningBrace, true);
-    addCellAt(getChildCount(), myClosingBrace, true);
+    addEditorCellBefore(myOpeningBrace, firstCell());
+    addEditorCellAfter(myClosingBrace, lastCell());
   }
 
   private void removeBraces() {
     removeCell(myOpeningBrace);
     removeCell(myClosingBrace);
-    getEditor().getSelectionManager().removeSelectionListener(myLastCellSelectionListener);
+    getEditorComponent().getSelectionManager().removeSelectionListener(myLastCellSelectionListener);
 
     myOpeningBrace = null;
     myClosingBrace = null;
@@ -280,6 +284,7 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     setBracesEnabled(true);
     myOpeningBrace.setEnabled(true);
     myClosingBrace.setEnabled(true);
+    // COLORS: Remove hardcoded color
     getEditor().leftHighlightCell(this, new Color(80, 0, 120));
   }
 
@@ -294,198 +299,279 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     return myBracesEnabled;
   }
 
+  @Override
   public EditorCell getOpeningBrace() {
     return myOpeningBrace;
   }
 
+  @Override
   public EditorCell getClosingBrace() {
     return myClosingBrace;
   }
 
+  @Override
   public int getAscent() {
     return myAscent;
   }
 
+  @Override
   public void setAscent(int newAscent) {
     myAscent = newAscent;
   }
 
+  @Override
   public int getDescent() {
     return myDescent;
   }
 
+  @Override
   public void setDescent(int newDescent) {
     myDescent = newDescent;
   }
 
-  public Iterable<EditorCell> contentCells() {
-    if (usesBraces()) {
-      return new Iterable<EditorCell>() {
-        public Iterator<EditorCell> iterator() {
-          return new Iterator<EditorCell>() {//iterates from second to before last
-            private Iterator<EditorCell> myIterator = EditorCell_Collection.this.iterator();
-            private EditorCell myNext;
-
-            {
-              myIterator.next();
-              myNext = myIterator.next();
-            }
-
-            public boolean hasNext() {
-              return myIterator.hasNext();
-            }
-
-            public EditorCell next() {
-              if (!hasNext()) throw new NoSuchElementException();
-              EditorCell result = myNext;
-              myNext = myIterator.next();
-              return result;
-            }
-
-            public void remove() {
-              throw new UnsupportedOperationException();
-            }
-          };
-        }
-      };
-    } else return this;
-  }
-
+  @NotNull
+  @Override
   public Iterator<EditorCell> iterator() {
-    return new UnmodifiableIterator(getVisibleChildCells(), false);
+    return new UnmodifiableIterator<>(getVisibleChildCells().iterator());
   }
 
-  public Iterator<EditorCell> cells() {
-    return iterator();
+  public Iterator<EditorCell> iterator(EditorCell anchor, boolean forward) {
+    return new UnmodifiableIterator<>(getVisibleChildCells().iterator(anchor, forward));
   }
 
-  public Iterator<EditorCell> reverseCellIterator() {
-    return new UnmodifiableIterator(getVisibleChildCells(), true);
+  @Override
+  public Iterator<EditorCell> reverseIterator() {
+    return new UnmodifiableIterator<>(getVisibleChildCells().iterator(null, false));
   }
 
-  public EditorCell[] getContentCells() {
-    if (usesBraces()) {
-      EditorCell[] result = new EditorCell[getChildCount() - 2];
-      for (int i = 0; i < result.length; i++) {
-        result[i] = getChildAt(i + 1);
-      }
-      return result;
-    } else {
-      return getCells();
+  @Override
+  public boolean isEmpty() {
+    return getVisibleChildCells().isEmpty();
+  }
+
+  @Override
+  public EditorCell firstCell() {
+    Container<EditorCell> visibleChildCells = getVisibleChildCells();
+    return visibleChildCells.isEmpty() ? null : visibleChildCells.getFirst();
+  }
+
+  @Override
+  public EditorCell lastCell() {
+    Container<EditorCell> visibleChildCells = getVisibleChildCells();
+    return visibleChildCells.isEmpty() ? null : visibleChildCells.getLast();
+  }
+
+  @Override
+  public void addEditorCell(EditorCell editorCell) {
+    if (editorCell == null) {
+      return;
+    }
+    detachFromParent(editorCell);
+    getEditorCells().add(editorCell);
+  }
+
+  private void detachFromParent(EditorCell editorCell) {
+    if (editorCell.getParent() != null) {
+      editorCell.getParent().removeCell(editorCell);
     }
   }
 
-  public EditorCell[] getCells() {
-    return getVisibleChildCells().toArray(new EditorCell[getVisibleChildCells().size()]);
+  @Override
+  public void addEditorCellBefore(EditorCell editorCell, EditorCell anchor) {
+    detachFromParent(editorCell);
+    getEditorCells().addBefore(editorCell, anchor);
   }
 
-  public List<EditorCell> dfsCells() {
-    List<EditorCell> result = new ArrayList<EditorCell>();
+  @Override
+  public void addEditorCellAfter(EditorCell editorCell, EditorCell anchor) {
+    detachFromParent(editorCell);
+    Iterator<EditorCell> iterator = getEditorCells().iterator(anchor, true);
+    getEditorCells().addBefore(editorCell, iterator.hasNext() ? iterator.next() : null);
+  }
+
+  @Override
+  public void removeCell(EditorCell cellToRemove) {
+    getEditorCells().remove(cellToRemove);
+  }
+
+  @Override
+  public int getCellsCount() {
+    return getVisibleChildCells().size();
+  }
+
+  @Override
+  public Iterable<EditorCell> getContentCells() {
+    if (usesBraces() && !isCollapsed()) {
+      return new ConditionalIterable<>(this, item -> getEditorCells().isEmpty() || getEditorCells().getFirst() != item && getEditorCells().getLast() != item);
+    } else {
+      // TODO: either return getEditorCells() or use getVisibleChildCells() in all other content-related methods
+      return this;
+    }
+  }
+
+  public jetbrains.mps.nodeEditor.cells.EditorCell[] getCells() {
+    jetbrains.mps.nodeEditor.cells.EditorCell[] result = new jetbrains.mps.nodeEditor.cells.EditorCell[getVisibleChildCells().size()];
+    int i = 0;
+    for (EditorCell editorCell : getVisibleChildCells()) {
+      result[i++] = (jetbrains.mps.nodeEditor.cells.EditorCell) editorCell;
+    }
+    return result;
+  }
+
+  public List<jetbrains.mps.nodeEditor.cells.EditorCell> dfsCells() {
+    List<jetbrains.mps.nodeEditor.cells.EditorCell> result = new ArrayList<>();
     for (EditorCell cell : getVisibleChildCells()) {
       if (cell instanceof EditorCell_Collection) {
-        result.add(cell);
+        result.add((jetbrains.mps.nodeEditor.cells.EditorCell) cell);
         result.addAll(((EditorCell_Collection) cell).dfsCells());
       } else {
-        result.add(cell);
+        result.add((jetbrains.mps.nodeEditor.cells.EditorCell) cell);
       }
     }
     return result;
   }
 
-  public void addEditorCell(EditorCell editorCell) {
-    if (editorCell == null) return;
-    addCell(editorCell);
-    ((EditorCell_Basic) editorCell).setParent(this);
-  }
-
-  public boolean containsCell(EditorCell editorCell) {
-    return getVisibleChildCells().contains(editorCell);
-  }
-
-  public int getCellsCount() {
-    return getChildCount();
-  }
-
-  public int getContentCellsCount() {
-    int count = getCellsCount();
-    if (usesBraces()) {
-      return count - 2;
-    } else {
-      return count;
+  public boolean containsCell(jetbrains.mps.nodeEditor.cells.EditorCell editorCell) {
+    for (EditorCell cell : getVisibleChildCells()) {
+      if (cell.equals(editorCell)) {
+        return true;
+      }
     }
+    return false;
   }
 
+  @Override
   protected void relayoutImpl() {
     myCellLayout.doLayout(this);
     myAscent = myCellLayout.getAscent(this);
     myDescent = myCellLayout.getDescent(this);
+    for (EditorCell childCell : this) {
+      if (childCell.wasRelayoutRequested()) {
+        LOG.error("Some child cells of " + this + " cell with the layout: " + myCellLayout + " still needs re-layout", new Throwable());
+        return;
+      }
+    }
   }
 
+  public void setInitiallyCollapsed(boolean collapsed) {
+    if (myInitiallyCollapsed == collapsed) {
+      return;
+    }
+    myInitiallyCollapsed = collapsed;
+    if (isDefaultCollapsedValueChanged()) {
+      // Collapsed value was changed by user. After initiallyCollapsed value change user value become "default",
+      // so should be removed from editor "folded" map. Editor state will not change in this case.
+      myCollapsed = null;
+      if (isInTree()) {
+        getEditor().resetCollapseState(this);
+      }
+    } else {
+      if (isInTree()) {
+        requestRelayout();
+        collapsedStateChanged();
+      }
+    }
+  }
+
+  @Override
+  public boolean isInitiallyCollapsed() {
+    return myInitiallyCollapsed;
+  }
+
+  private boolean isDefaultCollapsedValueChanged() {
+    return myCollapsed != null;
+  }
 
   public void fold() {
-    fold(false);
+    toggleCollapsed(true);
   }
 
   public void unfold() {
-    unfold(false);
+    toggleCollapsed(false);
   }
 
-  private void setFolded(boolean folded) {
-    if (myFolded == folded) {
+  public void toggleCollapsed(boolean collapsed) {
+    if (!isFoldable() || isCollapsed() == collapsed) {
       return;
     }
-    myFolded = folded;
-    getEditor().setFolded(this, folded);
+
+    myCollapsed = collapsed == myInitiallyCollapsed ? null : collapsed;
+
+    if (!isInTree()) {
+      return;
+    }
+
+    getEditor().setCollapseState(this, myCollapsed);
     requestRelayout();
+
+    collapsedStateChanged();
+    updateSelectionOnCollapseChange();
   }
 
-  public void fold(boolean programmaticaly) {
-    if (!canBePossiblyFolded()) return;
-    if (isFolded()) {
-      // updating editor's myFoldedCells set (sometimes this method is called from Memento) 
-      getEditor().setFolded(this, true);
+  private void collapsedStateChanged() {
+    // should be called only is this cell isInTree()
+    if (isUnderFolded()) {
       return;
     }
-    setFolded(true);
-    if (!isUnderFolded()) {
+
+    boolean collapsed = isCollapsed();
+    if (collapsed) {
       addUnfoldingListener();
-      removeFoldingListenerForChildren();
+    } else {
+      removeUnfoldingListener();
     }
-    if (!programmaticaly) {
-      getEditorContext().flushEvents();
-      getEditor().relayout();
-      adjustSelectionToFoldingState(getEditor());
-    }
+    updateSubtreeOnCollapsedStateChange(getEditorCells().iterator(), collapsed);
+    updateSubtreeOnCollapsedStateChange(getFoldedCellCollection().iterator(), !collapsed);
   }
 
-  private void addUnfoldingListenerForChildren() {
-    Queue<EditorCell> children = new LinkedList<EditorCell>(getEditorCells());
-    while (!children.isEmpty()) {
-      EditorCell child = children.poll();
-      if (!(child instanceof EditorCell_Collection)) {
-        continue;
-      }
-      EditorCell_Collection childCollection = (EditorCell_Collection) child;
-      if (childCollection.isFolded()) {
-        childCollection.addUnfoldingListener();
-      } else {
-        children.addAll(childCollection.getEditorCells());
+  private void updateSelectionOnCollapseChange() {
+    // should be called only is this cell isInTree()
+    getContext().flushEvents();
+    getEditor().relayout();
+    if (!isDescendantCellSelected(getEditor())) {
+      return;
+    }
+
+    getEditor().clearSelectionStack();
+    for (EditorCell nextCell : new CellTreeIterable(this, CellTraversalUtil.getFirstLeaf(this), true)) {
+      if (nextCell.isSelectable()) {
+        getEditor().changeSelection(nextCell);
+        nextCell.home();
+        return;
       }
     }
+
+    getEditor().changeSelection(this);
+    home();
   }
 
-  private void removeFoldingListenerForChildren() {
-    Queue<EditorCell> children = new LinkedList<EditorCell>(getEditorCells());
-    while (!children.isEmpty()) {
-      EditorCell child = children.poll();
-      if (!(child instanceof EditorCell_Collection)) {
-        continue;
-      }
-      EditorCell_Collection childCollection = (EditorCell_Collection) child;
-      if (childCollection.isFolded()) {
-        childCollection.removeUnfoldingListener();
-      } else {
-        children.addAll(childCollection.getEditorCells());
+  protected boolean isUnderFolded() {
+    return CellTraversalUtil.getFoldedParent(this) != null;
+  }
+
+  private void updateSubtreeOnCollapsedStateChange(Iterator<EditorCell> subtreeRootsIterator, boolean collapsed) {
+    while (subtreeRootsIterator.hasNext()) {
+      EditorCell nextSubtreeRootCell = subtreeRootsIterator.next();
+      for (TreeIterator<EditorCell> iterator = new CellTreeIterable(nextSubtreeRootCell, nextSubtreeRootCell, true).iterator(); iterator.hasNext(); ) {
+        EditorCell child = iterator.next();
+        if (child instanceof EditorCell_WithComponent) {
+          if (collapsed) {
+            ((EditorCell_WithComponent) child).onCollapse();
+          } else {
+            ((EditorCell_WithComponent) child).onExpand();
+          }
+        }
+        if (child instanceof EditorCell_Collection) {
+          EditorCell_Collection childCollection = (EditorCell_Collection) child;
+          if (childCollection.isCollapsed()) {
+            if (collapsed) {
+              childCollection.removeUnfoldingListener();
+            } else {
+              childCollection.addUnfoldingListener();
+            }
+            iterator.skipChildren();
+          }
+        }
       }
     }
   }
@@ -504,8 +590,9 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     }
     final EditorComponent editorComponent = getEditor();
     editorComponent.addMouseListener(myUnfoldCollectionMouseListener = new MouseAdapter() {
+      @Override
       public void mouseClicked(MouseEvent e) {
-        if (getBounds().contains(e.getPoint())) {
+        if (GeometryUtil.contains(EditorCell_Collection.this, e.getX(), e.getY())) {
           editorComponent.clearSelectionStack();
           editorComponent.changeSelection(getFoldedCell());
           unfold();
@@ -514,85 +601,62 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     });
   }
 
-  private void adjustSelectionToFoldingState(EditorComponent editorComponent) {
-    if (isDescendantCellSelected(editorComponent)) {
-      editorComponent.clearSelectionStack();
-      EditorCell editorCellToSelect = getFirstLeaf(CellConditions.SELECTABLE);
-      if (editorCellToSelect != null) {
-        editorComponent.changeSelection(editorCellToSelect);
-        editorCellToSelect.home();
-      } else {
-        editorComponent.changeSelection(this);
-        home();
-      }
-    }
-  }
-
-  private boolean isDescendantCellSelected(EditorComponent editorComponent) {
+  private boolean isDescendantCellSelected(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
     EditorCell selectedCell = editorComponent.getDeepestSelectedCell();
-    return selectedCell != null && selectedCell.findParent(new Condition<EditorCell_Collection>() {
-      @Override
-      public boolean met(EditorCell_Collection object) {
-        return object == EditorCell_Collection.this;
-      }
-    }) != null;
+    return selectedCell != null && CellFinderUtil.findParent(selectedCell, object -> object == EditorCell_Collection.this) != null;
   }
 
-  public boolean canBePossiblyFolded() {
+  @Override
+  public boolean isFoldable() {
     return myCanBeFolded && myCellLayout.canBeFolded();
   }
 
-  public void setCanBeFolded(boolean canBeFolded) {
-    boolean wasPossiblyFolded = canBePossiblyFolded();
-    myCanBeFolded = canBeFolded;
+  public void setFoldable(boolean foldable) {
+    boolean wasPossiblyFolded = isFoldable();
+    myCanBeFolded = foldable;
 
     if (isInTree()) {
-      if (wasPossiblyFolded && !canBePossiblyFolded()) {
+      if (wasPossiblyFolded && !isFoldable()) {
         getEditor().getCellTracker().removeFoldableCell(this);
       }
-      if (!wasPossiblyFolded && canBePossiblyFolded()) {
+      if (!wasPossiblyFolded && isFoldable()) {
         getEditor().getCellTracker().addFoldableCell(this);
       }
     }
   }
 
-  public void unfold(boolean programmaticaly) {
-    if (!isFolded()) {
-      return;
-    }
-    setFolded(false);
-    if (!isUnderFolded()) {
-      removeUnfoldingListener();
-      addUnfoldingListenerForChildren();
-    }
-
-    if (!programmaticaly) {
-      getEditorContext().flushEvents();
-      getEditor().relayout();
-      adjustSelectionToFoldingState(getEditor());
-    }
-  }
-
-  public boolean isUnfoldedCollection() {
-    return !isFolded();
-  }
-
-  public void paint(Graphics g, ParentSettings parentSettings) {
-    ParentSettings settings = isSelectionPaintedOnAncestor(parentSettings);
-    if (!settings.isSelectionPainted()) {
-      settings = (paintBackground(g, parentSettings));
-    }
-    paintSelectionIfRequired(g, parentSettings);
+  @Override
+  public void paintCell(Graphics g, ParentSettings parentSettings) {
+    ParentSettings settings = fillBackground(g, parentSettings);
     paintContent(g, parentSettings);
+    paintChildCells(g, settings);
+  }
 
+  protected void paintChildCells(Graphics g, ParentSettings settings) {
     for (EditorCell child : this) {
-      if (g.hitClip(child.getX(), child.getY(), child.getWidth(), child.getHeight())) {
-        child.paint(g, settings);
+      jetbrains.mps.nodeEditor.cells.EditorCell childInternal = (jetbrains.mps.nodeEditor.cells.EditorCell) child;
+      if (childInternal.isInClipRegion(g)) {
+        childInternal.paintCell(g, settings);
       }
     }
-    paintDecorations(g);
   }
 
+  @Override
+  public void paintDecorations(Graphics g) {
+    super.paintDecorations(g);
+    paintChildDecorations(g);
+  }
+
+  protected void paintChildDecorations(Graphics g) {
+    for (EditorCell child : this) {
+      jetbrains.mps.nodeEditor.cells.EditorCell childInternal = (jetbrains.mps.nodeEditor.cells.EditorCell) child;
+      if (childInternal.isInClipRegion(g)) {
+        childInternal.paintDecorations(g);
+      }
+    }
+  }
+
+  @Override
   public void moveTo(int x, int y) {
     if (x == myX && y == myY) {
       return;
@@ -601,38 +665,30 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     int xOld = myX;
     int yOld = myY;
     super.moveTo(x, y);
-    for (EditorCell myEditorCell : getCells()) {
-      myEditorCell.moveTo(myEditorCell.getX() + x - xOld, myEditorCell.getY() + y - yOld);
-      if (((EditorCell_Basic) myEditorCell).isNeedsRelayout()) {
-        markNeedsRelayout();
-      }
-    }
-    adjustNeedsRelayout(xOld, yOld, x, y);
-  }
 
-  private void adjustNeedsRelayout(int oldX, int oldY, int newX, int newY) {
-    if (isNeedsRelayout()) {
+    if (wasRelayoutRequested()) {
       return;
     }
-    if (oldX != newX && (myCellLayout instanceof CellLayout_Indent || myCellLayout instanceof CellLayout_Indent_Old)) {
-      markNeedsRelayout();
+
+    for (EditorCell myEditorCell : this) {
+      myEditorCell.moveTo(myEditorCell.getX() + x - xOld, myEditorCell.getY() + y - yOld);
     }
+    getCellLayout().move(this, x - xOld, y - yOld);
   }
 
-  public void paintContent(Graphics g, ParentSettings parentSettings) {
+  @Override
+  protected void paintContent(Graphics g, ParentSettings parentSettings) {
   }
 
+  @Override
   public void paintSelection(Graphics g, Color c, boolean drawBorder, ParentSettings parentSettings) {
-    if (drawBorder && g instanceof Graphics2D) {
-      g = new SelectionGraphics((Graphics2D) g);
-    }
-
-    List<? extends EditorCell> selectionCells = myCellLayout instanceof CellLayoutExt ? ((CellLayoutExt) myCellLayout).getSelectionCells(this) : null;
+    List<? extends EditorCell> selectionCells = myCellLayout.getSelectionCells(this);
     if (selectionCells != null) {
       ParentSettings selection = isSelectionPaintedOnAncestor(parentSettings);
       for (EditorCell cell : selectionCells) {
-        if (g.hitClip(cell.getX(), cell.getY(), cell.getWidth(), cell.getHeight())) {
-          cell.paintSelection(g, c, false, selection);
+        jetbrains.mps.nodeEditor.cells.EditorCell cellInternal = (jetbrains.mps.nodeEditor.cells.EditorCell) cell;
+        if (cellInternal.isInClipRegion(g)) {
+          cellInternal.paintSelection(g, c, false, selection);
         }
       }
     } else {
@@ -642,166 +698,128 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
         g.fillRect(part.x, part.y, part.width, part.height);
       }
     }
+  }
 
-    if (g instanceof SelectionGraphics) {
-      SelectionGraphics selectionGraphics = (SelectionGraphics) g;
-      selectionGraphics.getOriginalGraphics().setColor(c.darker());
-      selectionGraphics.getOriginalGraphics().draw(selectionGraphics.getSelectionArea());
+  @Override
+  protected void paintBackground(Graphics g) {
+    List<Rectangle> selection = myCellLayout.getSelectionBounds(this);
+    for (Rectangle part : selection) {
+      g.fillRect(part.x, part.y, part.width, part.height);
     }
   }
 
-  public ParentSettings paintBackground(Graphics g, ParentSettings parentSettings) {
-    if (!parentSettings.isSkipBackground()) {
-      if (getCellBackgroundColor() != null) {
-        g.setColor(getCellBackgroundColor());
-        List<Rectangle> selection = myCellLayout.getSelectionBounds(this);
-        for (Rectangle part : selection) {
-          g.fillRect(part.x, part.y, part.width, part.height);
-        }
-      }
-    }
-    boolean hasMessages = false;
-
-    List<EditorMessage> messages = getMessages();
-    for (EditorMessage message : messages) {
-      if (message != null && message.isBackground()) {
-        message.paint(g, getEditor(), this);
-        hasMessages = true;
-      }
-    }
-    return ParentSettings.createBackgroundlessSetting(hasMessages).combineWith(parentSettings);
-  }
-
+  @Override
   public TextBuilder renderText() {
     return myCellLayout.doLayoutText(this);
   }
 
+  @Override
   public void synchronizeViewWithModel() {
     for (EditorCell myEditorCell : getEditorCells()) {
-      myEditorCell.synchronizeViewWithModel();
+      ((jetbrains.mps.nodeEditor.cells.EditorCell) myEditorCell).synchronizeViewWithModel();
     }
     if (hasFoldedCell()) {
-      getFoldedCell().synchronizeViewWithModel();
+      ((jetbrains.mps.nodeEditor.cells.EditorCell) getFoldedCell()).synchronizeViewWithModel();
     }
   }
 
-  public EditorCell findLeaf(int x, int y, Condition<EditorCell> condition) {
-    if (myX <= x && x < myX + myWidth && myY <= y && y < myY + myHeight) {
-      for (EditorCell child : getVisibleChildCells()) {
-        EditorCell result = child.findLeaf(x, y, condition);
+  @Override
+  public EditorCell findLeaf(int x, int y) {
+    if (getX() <= x && x < getX() + getWidth() && getY() <= y && y < getY() + getHeight()) {
+      for (EditorCell child : this) {
+        EditorCell result = child.findLeaf(x, y);
         if (result != null) {
           return result;
         }
       }
     }
-
     return null;
   }
 
-  public void addCellAt(int i, EditorCell cellToAdd, boolean ignoreBraces) {
-    int j = i;
-    if (usesBraces() && !ignoreBraces) {
-      j = i - 1;
-    }
-    ((EditorCell_Basic) cellToAdd).setParent(this);
-    getEditorCells().add(j, cellToAdd);
-    getStyle().add(cellToAdd.getStyle());
+  @Override
+  public EditorCell findNearestLeafOnLine(int x, int y, Condition<EditorCell> condition) {
+    if (getY() <= y && y < getY() + getHeight()) {
+      List<EditorCell> candidates = new ArrayList<>();
+      for (EditorCell child : this) {
+        EditorCell nextCandidate = child.findNearestLeafOnLine(x, y, condition);
+        if (nextCandidate != null) {
+          candidates.add(nextCandidate);
+        }
+      }
 
-    if (isInTree()) {
-      ((EditorCell_Basic) cellToAdd).onAdd();
+      EditorCell best = null;
+      int bestDistance = Integer.MAX_VALUE;
+      for (EditorCell next : candidates) {
+        int distance = GeometryUtil.getHorizontalDistance(next, x);
+        if (distance < bestDistance) {
+          best = next;
+          bestDistance = distance;
+        }
+      }
+      return best;
     }
+    return null;
   }
 
-  public void removeCell(EditorCell cellToRemove) {
-    ((EditorCell_Basic) cellToRemove).setParent(null);
-    getEditorCells().remove(cellToRemove);
-    getStyle().remove(cellToRemove.getStyle());
-
-    if (isInTree()) {
-      ((EditorCell_Basic) cellToRemove).onRemove();
-    }
-  }
-
-  public void removeAllCells() {
-    for (EditorCell cell : getCells()) {
-      removeCell(cell);
-    }
-  }
-
-  private void addCell(EditorCell cellToAdd) {
-    addCellAt(getChildCount(), cellToAdd, false);
-  }
-
+  @Override
   public boolean usesBraces() {
-    return isFolded() ? false : myUsesBraces;
+    return !isCollapsed() && myUsesBraces;
   }
 
   public void setUsesBraces(boolean b) {
     if (myUsesBraces != b) {
       myUsesBraces = b;
       if (myUsesBraces) {
-        setBraces();
+        addBraces();
       } else {
         removeBraces();
       }
     }
   }
 
-  public EditorCell firstCell() {
-    return getFirstChild();
-  }
-
-  public EditorCell lastCell() {
-    return getLastChild();
-  }
-
+  @Override
   @SuppressWarnings({"UnusedDeclaration"})
   public EditorCell firstContentCell() {
-    int shift = 0;
-    int size = 0;
-    if (usesBraces()) {
-      shift = 1;
-      size = 2;
+    if (!usesBraces()) {
+      return firstCell();
     }
-    if (getChildCount() > size) {
-      return getChildAt(shift);
+
+    Iterator<EditorCell> iterator = getEditorCells().iterator();
+    if (!iterator.hasNext()) {
+      return null;
     }
-    return null;
+    iterator.next();
+    if (!iterator.hasNext()) {
+      return null;
+    }
+    EditorCell result = iterator.next();
+    return iterator.hasNext() ? result : null;
   }
 
+  @Override
   public EditorCell lastContentCell() {
-    int shift = 0;
-    int size = 0;
-    if (usesBraces()) {
-      shift = 1;
-      size = 2;
+    if (!usesBraces()) {
+      return lastCell();
     }
-    if (getChildCount() > size) {
-      return getChildAt(getChildCount() - (1 + shift));
+
+    Iterator<EditorCell> iterator = getEditorCells().iterator(null, false);
+    if (!iterator.hasNext()) {
+      return null;
     }
-    return null;
-  }
+    iterator.next();
 
-  public EditorCell getFirstLeaf() {
-    return getChildCount() > 0 ? getFirstChild().getFirstLeaf() : this;
-  }
-
-  public EditorCell getLastLeaf() {
-    return getChildCount() > 0 ? getLastChild().getLastLeaf() : this;
-  }
-
-  public EditorCell getLastChild() {
-    return getChildCount() > 0 ? getChildAt(getChildCount() - 1) : null;
-  }
-
-  public EditorCell getFirstChild() {
-    return getChildCount() > 0 ? getChildAt(0) : null;
+    if (!iterator.hasNext()) {
+      return null;
+    }
+    EditorCell result = iterator.next();
+    return iterator.hasNext() ? result : null;
   }
 
   public String toString() {
     return NameUtil.shortNameFromLongName(getClass().getName());
   }
 
+  @Override
   public void onAdd() {
     super.onAdd();
     for (EditorCell child : getEditorCells()) {
@@ -814,60 +832,94 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
       getEditor().getSelectionManager().addSelectionListener(myLastCellSelectionListener);
     }
 
-    if (canBePossiblyFolded()) {
+    if (isFoldable()) {
       getEditor().getCellTracker().addFoldableCell(this);
+      if (isDefaultCollapsedValueChanged()) {
+        getEditor().setCollapseState(this, isCollapsed());
+      }
+
+      if (!isUnderFolded() && isCollapsed()) {
+        addUnfoldingListener();
+      }
     }
   }
 
+  @Override
   public void onRemove() {
-    if (canBePossiblyFolded()) {
-      getEditor().getCellTracker().removeFoldableCell(this);
-    }
     removeUnfoldingListener();
-    if (isFolded()) {
-      getEditor().setFolded(this, false);
+    if (isDefaultCollapsedValueChanged()) {
+      getEditor().resetCollapseState(this);
+    }
+
+    if (isFoldable()) {
+      getEditor().getCellTracker().removeFoldableCell(this);
     }
 
     if (myLastCellSelectionListener != null) {
       setBracesEnabled(false);
       getEditor().getSelectionManager().removeSelectionListener(myLastCellSelectionListener);
     }
-    for (EditorCell child : getEditorCells()) {
-      ((EditorCell_Basic) child).onRemove();
-    }
     if (hasFoldedCell()) {
       ((EditorCell_Basic) getFoldedCell()).onRemove();
+    }
+    for (EditorCell child : getEditorCells()) {
+      ((EditorCell_Basic) child).onRemove();
     }
     super.onRemove();
   }
 
-  private class SelectFirstChild extends EditorCellAction {
-    public boolean canExecute(EditorContext context) {
-      return EditorCell_Collection.this.isSelected() && findChild(CellFinders.FIRST_SELECTABLE_LEAF) != null;
+  @Override
+  public void synchronize() {
+    for (EditorCell cell : getEditorCells()) {
+      ((SynchronizeableEditorCell) cell).synchronize();
     }
-
-    public void execute(EditorContext context) {
-      context.getNodeEditorComponent().clearSelectionStack();
-      context.getNodeEditorComponent().changeSelection(findChild(CellFinders.FIRST_SELECTABLE_LEAF));
-    }
-  }
-
-  private class SelectLastChild extends EditorCellAction {
-    public boolean canExecute(EditorContext context) {
-      return EditorCell_Collection.this.isSelected() && findChild(CellFinders.LAST_SELECTABLE_LEAF) != null;
-    }
-
-    public void execute(EditorContext context) {
-      context.getNodeEditorComponent().clearSelectionStack();
-      context.getNodeEditorComponent().changeSelection(findChild(CellFinders.LAST_SELECTABLE_LEAF));
+    if (hasFoldedCell()) {
+      ((SynchronizeableEditorCell) getFoldedCell()).synchronize();
     }
   }
 
   @Override
-  public void setSubstituteInfo(NodeSubstituteInfo substitueInfo) {
+  public boolean canBeSynchronized() {
+    return myCanBeSynchronized;
+  }
+
+  public void setCanBeSynchronized(boolean canBeSynchronized) {
+    myCanBeSynchronized = canBeSynchronized;
+  }
+
+  private class SelectFirstChild extends AbstractCellAction {
+    @Override
+    public boolean canExecute(EditorContext context) {
+      return EditorCell_Collection.this.isSelected() && CellFinderUtil.findFirstSelectableLeaf(EditorCell_Collection.this) != null;
+    }
+
+    @Override
+    public void execute(EditorContext context) {
+      EditorComponent editorComponent = (EditorComponent) context.getEditorComponent();
+      editorComponent.clearSelectionStack();
+      editorComponent.changeSelection(CellFinderUtil.findFirstSelectableLeaf(EditorCell_Collection.this));
+    }
+  }
+
+  private class SelectLastChild extends AbstractCellAction {
+    @Override
+    public boolean canExecute(EditorContext context) {
+      return EditorCell_Collection.this.isSelected() && CellFinderUtil.findLastSelectableLeaf(EditorCell_Collection.this) != null;
+    }
+
+    @Override
+    public void execute(EditorContext context) {
+      EditorComponent editorComponent = (EditorComponent) context.getEditorComponent();
+      editorComponent.clearSelectionStack();
+      editorComponent.changeSelection(CellFinderUtil.findLastSelectableLeaf(EditorCell_Collection.this));
+    }
+  }
+
+  @Override
+  public void setSubstituteInfo(SubstituteInfo substitueInfo) {
     super.setSubstituteInfo(substitueInfo);
     if (isTransparentCollection()) {
-      for (EditorCell child : getEditorCells()) {
+      for (EditorCell child : this) {
         if (child.getSNode() == getSNode()) {
           child.setSubstituteInfo(substitueInfo);
         }
@@ -875,10 +927,11 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     }
   }
 
-  public void setAction(CellActionType type, EditorCellAction action) {
+  @Override
+  public void setAction(CellActionType type, CellAction action) {
     super.setAction(type, action);
     if (isTransparentCollection()) {
-      for (EditorCell child : getEditorCells()) {
+      for (EditorCell child : this) {
         if (child.getSNode() == getSNode()) {
           child.setAction(type, action);
         }
@@ -886,12 +939,19 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     }
   }
 
-  public boolean isTransparentCollection() {
-    return getChildCount() == 1 && getStyle().get(StyleAttributes.SELECTABLE);
+  @Override
+  public void requestRelayout() {
+    if (wasRelayoutRequested()) {
+      return;
+    }
+    super.requestRelayout();
+    getCellLayout().requestRelayout(this);
   }
 
-
-
+  @Override
+  public boolean isTransparentCollection() {
+    return getCellsCount() == 1 && getStyle().get(StyleAttributes.SELECTABLE);
+  }
 
   class EditorCell_Brace extends EditorCell_Constant {
     public static final String OPENING_TEXT = "(";
@@ -905,18 +965,22 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
       myIsOpening = isOpening;
       String text = getBraceText();
 
-      Style style = new Style();
+      Style style = new StyleImpl();
+      // COLORS: Remove hardcoded color & font
       style.set(StyleAttributes.TEXT_COLOR, Color.BLUE);
       style.set(StyleAttributes.FONT_STYLE, Font.BOLD);
       style.set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
       style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
 
-      myBraceTextLine = new TextLine(text, style, false);
+      myBraceTextLine = new TextLine(text, style, false, editorContext.getEditorComponent().getEditorComponentSettings());
       myBraceTextLine.setCaretEnabled(false);
       setEditable(false);
       setEnabled(false);
+      setSelectable(false);
     }
 
+    @NotNull
+    @Override
     public CellInfo getCellInfo() {
       return new BraceCellInfo(EditorCell_Brace.this);
     }
@@ -927,11 +991,13 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
 
     public void setEnabled(boolean enabled) {
       myIsEnabled = enabled;
-      setSelectable(enabled);
     }
 
-    public void paintContent(Graphics g, ParentSettings parentSettings) {
-      if (!myIsEnabled) return;
+    @Override
+    protected void paintContent(Graphics g, ParentSettings parentSettings) {
+      if (!myIsEnabled) {
+        return;
+      }
       TextLine textLine = getRenderedTextLine();
       boolean toShowCaret = toShowCaret();
       int overlapping = getOverlapping();
@@ -950,6 +1016,7 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
       }
     }
 
+    @Override
     public void relayoutImpl() {
       super.relayoutImpl();
       myBraceTextLine.relayout();
@@ -976,9 +1043,12 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
       myCollectionCellInfo = cell.getParent().getCellInfo();
     }
 
-    public EditorCell findCell(EditorComponent editorComponent) {
+    @Override
+    public EditorCell findCell(@NotNull jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
       EditorCell cell = myCollectionCellInfo.findCell(editorComponent);
-      if (!(cell instanceof EditorCell_Collection)) return null;
+      if (!(cell instanceof EditorCell_Collection)) {
+        return null;
+      }
       EditorCell_Collection parent = (EditorCell_Collection) cell;
       if (myOpeningBrace) {
         return parent.myOpeningBrace;
@@ -992,76 +1062,34 @@ public class EditorCell_Collection extends EditorCell_Basic implements Iterable<
     }
 
     public boolean equals(Object o) {
-      if (!(o instanceof BraceCellInfo)) return false;
-      BraceCellInfo cellInfo = ((BraceCellInfo) o);
-      return myCollectionCellInfo.equals(cellInfo.myCollectionCellInfo) && myOpeningBrace == cellInfo.myOpeningBrace;
+      if (this == o) {
+        return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+        return false;
+      }
+      BraceCellInfo that = ((BraceCellInfo) o);
+      return super.equals(that) && myCollectionCellInfo.equals(that.myCollectionCellInfo) && myOpeningBrace == that.myOpeningBrace;
     }
   }
 
-
   private class MyLastCellSelectionListener implements SelectionListener {
-    public final CellFinder<EditorCell> FIRST_SELECTABLE_LEAF_EXCLUDING_BRACE = CellFinders.byCondition(new Condition<EditorCell>() {
-      @Override
-      public boolean met(EditorCell cell) {
-        return myOpeningBrace != cell && cell.isSelectable() && !(cell instanceof EditorCell_Collection);
-      }
-    }, true);
-    public final CellFinder<EditorCell> LAST_SELECTABLE_LEAF_EXCLUDING_BRACE = CellFinders.byCondition(new Condition<EditorCell>() {
-      @Override
-      public boolean met(EditorCell cell) {
-        return myClosingBrace != cell && cell.isSelectable() && !(cell instanceof EditorCell_Collection);
-      }
-    }, false);
+    public final Condition<EditorCell> SELECTABLE_LEAF_EXCLUDING_BRACE =
+        cell -> myOpeningBrace != cell && myClosingBrace != cell && cell.isSelectable() && !(cell instanceof EditorCell_Collection);
+
     @Override
-    public void selectionChanged(EditorComponent editorComponent, Selection oldSelection, Selection newSelection) {
-      if (myClosingBrace.isSelected() || myOpeningBrace.isSelected()) {
-        enableBraces();
+    public void selectionChanged(jetbrains.mps.openapi.editor.EditorComponent editorComponent, Selection oldSelection, Selection newSelection) {
+      if (oldSelection == newSelection) {
         return;
       }
+
       EditorCell deepestSelection = editorComponent.getDeepestSelectedCell();
-      EditorCell lastSelectableLeaf = findChild(LAST_SELECTABLE_LEAF_EXCLUDING_BRACE);
-      EditorCell firstSelectableLeaf = findChild(FIRST_SELECTABLE_LEAF_EXCLUDING_BRACE);
-      if (deepestSelection instanceof EditorCell_Brace) {
-        EditorCell_Collection braceOwner = deepestSelection.getParent();
-        if (braceOwner.myClosingBrace == deepestSelection && braceOwner.findChild(LAST_SELECTABLE_LEAF_EXCLUDING_BRACE) == lastSelectableLeaf) {
-          enableBraces();
-          return;
-        }
-        if (braceOwner.myOpeningBrace == deepestSelection && braceOwner.findChild(FIRST_SELECTABLE_LEAF_EXCLUDING_BRACE) == firstSelectableLeaf) {
-          enableBraces();
-          return;
-        }
-      }
-      if (lastSelectableLeaf == deepestSelection || firstSelectableLeaf == deepestSelection) {
+      if (CellFinderUtil.findChildByCondition(EditorCell_Collection.this, SELECTABLE_LEAF_EXCLUDING_BRACE, true) == deepestSelection ||
+          CellFinderUtil.findChildByCondition(EditorCell_Collection.this, SELECTABLE_LEAF_EXCLUDING_BRACE, false) == deepestSelection) {
         enableBraces();
       } else {
         disableBraces();
       }
-    }
-  }
-
-  private class UnmodifiableIterator<T> implements Iterator<T> {
-    private ListIterator<T> myIterator;
-    private boolean myReverse;
-
-    private UnmodifiableIterator(List<T> list, boolean reverse) {
-      myReverse = reverse;
-      myIterator = myReverse ? list.listIterator(list.size()) : list.listIterator();
-    }
-
-    @Override
-    public boolean hasNext() {
-      return myReverse ? myIterator.hasPrevious() : myIterator.hasNext();
-    }
-
-    @Override
-    public T next() {
-      return myReverse ? myIterator.previous() : myIterator.next();
-    }
-
-    @Override
-    public void remove() {
-      throw new UnsupportedOperationException();
     }
   }
 }

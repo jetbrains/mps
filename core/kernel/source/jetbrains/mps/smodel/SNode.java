@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,1234 +15,223 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.MPSCore;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.language.ConceptRegistry;
-import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
-import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.runtime.illegal.IllegalReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.search.SModelSearchUtil;
-import jetbrains.mps.util.*;
-import jetbrains.mps.util.annotation.UseCarefully;
-import org.apache.commons.lang.ObjectUtils;
+import jetbrains.mps.logging.Log4jUtil;
+import jetbrains.mps.util.containers.EmptyIterable;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
 
-public final class SNode {
-  private static final Logger LOG = Logger.getLogger(SNode.class);
+import static jetbrains.mps.util.SNodeOperations.getDebugText;
 
-  @Deprecated
-  public static final String PACK = SNodeUtil.property_BaseConcept_virtualPackage;
-
-  public static final SNode[] EMPTY_ARRAY = new SNode[0];
-
-  private static NodeMemberAccessModifier ourMemberAccessModifier = null;
-
-  private static ThreadLocal<Set<Pair<SNode, String>>> ourPropertySettersInProgress = new InProgressThreadLocal();
-  private static ThreadLocal<Set<Pair<SNode, String>>> ourPropertyGettersInProgress = new InProgressThreadLocal();
-  private static ThreadLocal<Set<Pair<SNode, String>>> ourSetReferentEventHandlersInProgress = new InProgressThreadLocal();
-  private static final String[] EMPTY_STRING_ARRAY = new String[0];
-
-  public static void setNodeMemberAccessModifier(NodeMemberAccessModifier modifier) {
-    ourMemberAccessModifier = modifier;
-  }
-
-  private String myRoleInParent;
-  private SNode myParent;
+/**
+ * As a tribute to legacy code, we do allow access to constant and meta-info objects of a node without read access.
+ * It's not encouraged for a new code, though, and might change in future, that's why it's stated here and not in openapi.SNode
+ *
+ * How come this one is in [kernel], not [smodel]?
+ */
+public class SNode implements org.jetbrains.mps.openapi.model.SNode {
+  private static final Logger LOG = LogManager.getLogger(SNode.class);
+  private static final String[] EMPTY_ARRAY = new String[0];
+  private static final Object USER_OBJECT_LOCK = new Object();
 
   /**
-   * access only in getFirstChild()
+   * For an attached node, owner of the node and all its children is the same, the same instance of AttachedNodeOwner.
+   * For a detached node, owner is DetachedNodeOwner. Its children, however, may be FreeFloatNodeOwner.
+   * For a newly created, free-floating node, owner if FreeFloatNodeOwner. Children of a free-floating node, however, could have DetachedNodeOwner in case
+   * they were previously removed (aka detached) from a model.
+   * Once node is attached to a model, {@link AttachedNodeOwner#registerNode(SNode)} is responsible to ensure complete hierarchy of added node, whether it's
+   * detached, free-floating or mixed, is initialized with the same AttachedNodeOwner of the model itself.
    */
-  private SNode myFirstChild;
-
-  private SNode myNextSibling;  // == null only for the last child in the list
-  private SNode myPrevSibling;  // notNull, myFirstChild.myPrevSibling = the last child
-  private SReference[] myReferences = SReference.EMPTY_ARRAY;
-
-  private String[] myProperties = null;
-
-  private boolean myDisposed = false;
-  private boolean myRegisteredInModelFlag;
-  private SModel myModel;
-  private SNodeId myId;
-
-  private Object[] myUserObjects; // key,value,key,value ; !copy-on-write
-
   @NotNull
-  private String myConceptFqName;
+  private SNodeOwner myOwner = FreeFloatNodeOwner.INSTANCE;
+  private SContainmentLink myRoleInParent;
+  private jetbrains.mps.smodel.SReference[] myReferences = jetbrains.mps.smodel.SReference.EMPTY_ARRAY;
+  private Object[] myProperties = null;
+  private org.jetbrains.mps.openapi.model.SNodeId myId;
 
-  private BaseAdapter myAdapter;
+  /**
+   * seems to be ok, and still extremely fragile since it is important to reset the reference to the field on _any_ element change.
+   * I'd rather use some atomic array primitive from java.lang.concurrent
+   */
+  @SuppressWarnings("VolatileArrayField")
+  private volatile Object[] myUserObjects; // key,value,key,value ; copy-on-write (!)
+  private final SConcept myConcept;
+  private SNode parent;
+  /**
+   * access only in firstChild()/firstChildInRole(role)
+   */
+  private SNode first;
+  private SNode next;  // == null only for the last child in the list
+  private SNode prev;  // notNull, myFirstChild.myLeftSibling = the last child
 
-  public SNode(SModel model, @NotNull String conceptFqName, boolean callIntern) {
-    myModel = model;
-    if (callIntern) {
-      myConceptFqName = InternUtil.intern(conceptFqName);
-    } else {
-      myConceptFqName = conceptFqName;
-    }
+  public SNode(@NotNull SConcept concept) {
+    this(concept, SModel.generateUniqueId());
   }
 
-  public SNode(SModel model, String conceptFqName) {
-    this(model, conceptFqName, true);
-  }
-
-  public void changeModel(SModel newModel) {
-    if (myModel == newModel) return;
-    LOG.assertLog(!isRegistered(), "couldn't change model of registered node " + getDebugText());
-
-    SModel wasModel = myModel;
-    myModel = newModel;
-    for (SNode child = getFirstChild(); child != null; child = child.myNextSibling) {
-      child.changeModel(newModel);
-    }
-  }
-
-  public boolean isRoot() {
-    return myRegisteredInModelFlag && myParent == null && myModel.isRoot(this);
-  }
-
-  public void addNextSibling(SNode newSibling) {
-    myParent.insertChild(this, myRoleInParent, newSibling);
-  }
-
-  public void addPrevSibling(SNode newSibling) {
-    myParent.insertChild(this, myRoleInParent, newSibling, true);
-  }
-
-  public SModel getModel() {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    return myModel;
-  }
-
-  //MUST NOT be used,except from ModelAccess
-
-  SModel getModelInternal() {
-    return myModel;
-  }
-
-  public StackTraceElement[] getModelDisposedTrace() {
-    if (myModel != null) {
-      return myModel.getDisposedStacktrace();
-    } else {
-      return null;
-    }
-  }
-
-  public String getRoleOf(SNode node) {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    fireNodeUnclassifiedReadAccess();
-    if (node.getParent() == this) {
-      String role = node.getRole_();
-      assert role != null;
-      return role;
-    }
-    if (myReferences != null) {
-      for (SReference reference : myReferences) {
-        if (reference.getTargetNode() == node) return reference.getRole();
-      }
-    }
-
-    return "<no role>";
-  }
-
-  public Set<String> getChildRoles(boolean includeAttributeRoles) {
-    return addChildRoles(new HashSet<String>(), includeAttributeRoles);
-  }
-
-  public Set<String> addChildRoles(final Set<String> augend, boolean includeAttributeRoles) {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    fireNodeUnclassifiedReadAccess();
-
-    for (SNode child = getFirstChild(); child != null; child = child.myNextSibling) {
-      String roleOf = child.getRole_();
-      assert roleOf != null;
-      if (includeAttributeRoles || !(AttributeOperations.isAttribute(child))) {
-        augend.add(roleOf);
-      }
-    }
-    return augend;
-  }
-
-  public Set<String> getChildRoles() {
-    return getChildRoles(false);
-  }
-
-  public Set<String> addChildRoles(final Set<String> augend) {
-    return addChildRoles(augend, false);
-  }
-
-  public Set<String> getReferenceRoles() {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    Set<String> result = new HashSet<String>();
-    if (myReferences != null) {
-      for (SReference ref : myReferences) {
-        result.add(ref.getRole());
-      }
-    }
-    result.addAll(AttributeOperations.getLinkNamesFromAttributes(this));
-    return result;
-  }
-
-  public boolean isAncestorOf(SNode child) {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    if (child == this) return true;
-    SNode parentOfChild = child.getParent();
-    if (parentOfChild == null) return false;
-    return isAncestorOf(parentOfChild);
+  public SNode(@NotNull SConcept concept, @NotNull org.jetbrains.mps.openapi.model.SNodeId id) {
+    myConcept = concept;
+    myId = id;
   }
 
   @NotNull
-  public final SNode getTopmostAncestor() {
-    SNode current = this;
-    while (current.myParent != null) {
-      assert current != current.myParent;
-      current = current.myParent;
-    }
-    return current;
+  @Override
+  public SConcept getConcept() {
+    // deliberately no assertCanRead(). It's constant field and meta-info.
+    return myConcept;
   }
 
+  @Override
+  public boolean isInstanceOfConcept(@NotNull SAbstractConcept c) {
+    return getConcept().isSubConceptOf(c);
+  }
+
+  @Override
+  public void insertChildAfter(@NotNull SContainmentLink role, @NotNull org.jetbrains.mps.openapi.model.SNode child,
+      @Nullable org.jetbrains.mps.openapi.model.SNode anchor) {
+    if (anchor == null) {
+      insertChildBefore(role, child, getFirstChild());
+    } else {
+      insertChildBefore(role, child, anchor.getNextSibling());
+    }
+  }
+
+  protected final void assertCanRead() {
+    myOwner.assertLegalRead();
+  }
+
+  private void assertCanChange() {
+    myOwner.assertLegalChange();
+  }
+
+  @Override
+  public org.jetbrains.mps.openapi.model.SNodeId getNodeId() {
+    // deliberately no assertCanRead. It's constant field and sort of meta-info, why to constraint to read access?
+    return myId;
+  }
+
+  @Override
+  @NotNull
   public SNode getContainingRoot() {
-    ModelAccess.assertLegalRead(this);
+    assertCanRead();
 
     SNode current = this;
 
     while (true) {
-      current.fireNodeReadAccess();
-      if (current.myParent == null) {
-        if (getModel().isRoot(current)) {
-          return current;
-        } else {
-          return null;
-        }
-      } else {
-        current = current.myParent;
-      }
+      if (current.treeParent() == null) return current;
+
+      current = current.treeParent();
+      myOwner.fireNodeRead(current, false);
     }
   }
 
-  public List<SNode> getAncestors(boolean includeThis) {
-    List<SNode> result = new ArrayList<SNode>();
-    if (includeThis) {
-      result.add(this);
-    }
-    if (myParent != null) {
-      result.addAll(myParent.getAncestors(true));
-    }
-    return result;
-  }
-
-  public void replaceChild(SNode oldChild, SNode newChild) {
-    SNode anchor = oldChild == getFirstChild() ? null : oldChild.myPrevSibling;
-    String role = oldChild.getRole_();
-    assert role != null;
-    // old and new child can have the same node Id
-    // thus it is important to remove old child first
-    removeChild(oldChild);
-    insertChild(anchor, role, newChild);
-  }
-
-  public void replaceChild(SNode oldChild, List<SNode> newChildren) {
-    assert oldChild.myParent == this;
-    String oldChildRole = oldChild.getRole_();
-    assert oldChildRole != null;
-    SNode prevChild = oldChild;
-    for (SNode newChild : newChildren) {
-      insertChild(prevChild, oldChildRole, newChild);
-      prevChild = newChild;
-    }
-    removeChild(oldChild);
-  }
-
-  public void setName(String name) {
-    setProperty(SNodeUtil.property_INamedConcept_name, name);
-  }
-
+  @Override
   public String getName() {
-    return getProperty(SNodeUtil.property_INamedConcept_name);
-  }
+    assertCanRead();
 
-  public String getResolveInfo() {
-    String resolveInfo = SNodeUtil.getResolveInfo(this);
-    if (resolveInfo != null) {
-      return resolveInfo;
-    }
-    // tmp hack
-    return getPersistentProperty(SNodeUtil.property_INamedConcept_name);
-  }
-
-  public String getRole_() {
-    return myRoleInParent;
-  }
-
-  public SNode getRoleLink() {
-    if (getRole_() == null) return null;
-    if (getParent() == null) return null;
-    return getParent().getLinkDeclaration(getRole_());
-  }
-
-  public Map<String, String> getProperties() {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    if (myProperties == null) return Collections.emptyMap();
-    return new PropertiesMap(myProperties);
-  }
-
-  public void putProperties(SNode fromNode) {
-    ModelChange.assertLegalNodeChange(this);
-
-    if (fromNode == null || fromNode.myProperties == null) return;
-
-    String[] addedProps = fromNode.myProperties;
-    String[] oldProperties = myProperties == null ? EMPTY_STRING_ARRAY : myProperties;
-    myProperties = new String[oldProperties.length + addedProps.length];
-    System.arraycopy(oldProperties, 0, myProperties, 0, oldProperties.length);
-    System.arraycopy(addedProps, 0, myProperties, oldProperties.length, addedProps.length);
-  }
-
-  public Set<String> getPropertyNames() {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    Set<String> result = AttributeOperations.getPropertyNamesFromAttributes(this);
-    if (myProperties != null) {
-      for (int i = 0; i < myProperties.length; i += 2) {
-        result.add(myProperties[i]);
-      }
-    }
-    return result;
-  }
-
-  public boolean getBooleanProperty(String propertyName) {
-    String value = getProperty(propertyName);
-    return "true".equals(value);
-  }
-
-  public void setBooleanProperty(String propertyName, boolean value) {
-    setProperty(propertyName, value ? "" + value : null);
-  }
-
-  public int getIntegerProperty(String propertyName) {
-    String value = getProperty(propertyName);
-    try {
-      return Integer.parseInt(value);
-    } catch (Exception e) {
-      return 0;
-    }
-  }
-
-  public void setIntegerProperty(String propertyName, int value) {
-    setProperty(propertyName, "" + value);
-  }
-
-  public final boolean hasProperty(String propertyName) {
-    ModelAccess.assertLegalRead(this);
-
-    NodeReadAccessCasterInEditor.firePropertyReadAccessed(this, propertyName, true);
-    String property_internal = getProperty_internal(propertyName);
-    return !SModelUtil_new.isEmptyPropertyValue(property_internal);
-  }
-
-  public final String getProperty(String propertyName) {
-    ModelAccess.assertLegalRead(this);
-
-    NodeReadAccessCasterInEditor.firePropertyReadAccessed(this, propertyName, false);
-
-    try {
-      String propertyValue;
-      if (MPSCore.getInstance().isMergeDriverMode()) {
-        propertyValue = getProperty_simple(propertyName);
-      } else {
-        propertyValue = getProperty_internal(propertyName);
-      }
-      NodeReadEventsCaster.fireNodePropertyReadAccess(this, propertyName, propertyValue);
-      return propertyValue;
-    } catch (Throwable t) {
-      LOG.error(t);
-      return getPersistentProperty(propertyName);
-    }
-  }
-
-  private String getProperty_internal(String propertyName) {
-    Set<Pair<SNode, String>> getters = ourPropertyGettersInProgress.get();
-    Pair<SNode, String> current = new Pair<SNode, String>(this, propertyName);
-    if (getters.contains(current)) return getPersistentProperty(propertyName);
-
-    getters.add(current);
-    try {
-      PropertyConstraintsDescriptor descriptor = ConceptRegistry.getInstance().getConstraintsDescriptor(this.getConceptFqName()).getProperty(propertyName);
-      Object getterValue = descriptor.getValue(this, GlobalScope.getInstance());
-      return getterValue == null ? null : String.valueOf(getterValue);
-    } finally {
-      getters.remove(current);
-    }
-  }
-
-  public String getPersistentProperty(String propertyName) {
-    if (myProperties == null) return null;
-    if (ourMemberAccessModifier != null) {
-      propertyName = ourMemberAccessModifier.getNewPropertyName(myModel, myConceptFqName, propertyName);
-    }
-    return getProperty_simple(propertyName);
-  }
-
-  private String getProperty_simple(String propertyName) {
-    int index = getPropertyIndex(propertyName);
-    if (index == -1) return null;
-    return myProperties[index + 1];
-  }
-
-  private int getPropertyIndex(String propertyName) {
-    if (myProperties == null) return -1;
-    for (int i = 0; i < myProperties.length; i += 2) {
-      if (ObjectUtils.equals(myProperties[i], propertyName)) return i;
-    }
-    return -1;
-  }
-
-  void changePropertyName(String oldPropertyName, String newPropertyName) {
-    //todo make undo?
-    if (myProperties == null) return;
-    int index = getPropertyIndex(oldPropertyName);
-    if (index == -1) return;
-    myProperties[index] = newPropertyName;
-  }
-
-  public void setProperty(final String propertyName, String propertyValue) {
-    setProperty(propertyName, propertyValue, true);
-  }
-
-  public void setProperty(String propertyName, String propertyValue, boolean usePropertySetter) {
-    propertyName = InternUtil.intern(propertyName);
-    ModelChange.assertLegalNodeChange(this);
-    propertyValue = InternUtil.intern(propertyValue);
-    if (usePropertySetter) {
-      Set<Pair<SNode, String>> threadSet = ourPropertySettersInProgress.get();
-      Pair<SNode, String> pair = new Pair<SNode, String>(this, propertyName);
-      if (!threadSet.contains(pair) && myModel.canFireEvent()) {
-        PropertyConstraintsDescriptor descriptor = ConceptRegistry.getInstance().getConstraintsDescriptor(this.getConceptFqName()).getProperty(propertyName);
-        threadSet.add(pair);
-        try {
-          descriptor.setValue(this, propertyValue, GlobalScope.getInstance());
-          return;
-        } catch (Exception t) {
-          LOG.error(t);
-        } finally {
-          threadSet.remove(pair);
-        }
-      }
-    }
-    if (ourMemberAccessModifier != null) {
-      propertyName = ourMemberAccessModifier.getNewPropertyName(myModel, myConceptFqName, propertyName);
-    }
-    int index = getPropertyIndex(propertyName);
-    final String oldValue = index == -1 ? null : myProperties[index + 1];
-    if (propertyValue == null && oldValue == null) return;
-
-    if (propertyValue == null) {
-      removeProperty(index);
-    } else if (oldValue == null) {
-      addProperty(propertyName, propertyValue);
+    if (getConcept().isSubConceptOf(SNodeUtil.concept_INamedConcept)) {
+      return SNodeAccessUtil.getProperty(this, SNodeUtil.property_INamedConcept_name);
     } else {
-      myProperties[index + 1] = propertyValue;
-    }
-
-    SModel model = getModel();
-    if (model == null) return;
-
-    model.performUndoableAction(new PropertyChangeUndoableAction(this, propertyName, oldValue, propertyValue));
-
-    if (ModelChange.needFireEvents(model, this)) {
-      model.firePropertyChangedEvent(this, propertyName, oldValue, propertyValue);
+      myOwner.fireNodeRead(this, false);
+      return null;
     }
   }
 
-  private void removeProperty(int index) {
-    String[] oldProperties = myProperties;
-    int newLength = oldProperties.length - 2;
-    if (newLength == 0) {
-      myProperties = null;
-      return;
-    }
-    myProperties = new String[newLength];
-    System.arraycopy(oldProperties, 0, myProperties, 0, index);
-    System.arraycopy(oldProperties, index + 2, myProperties, index, newLength - index);
-  }
-
-  private void addProperty(String propertyName, String propertyValue) {
-    String[] oldProperties = myProperties == null ? EMPTY_STRING_ARRAY : myProperties;
-    myProperties = new String[oldProperties.length + 2];
-    System.arraycopy(oldProperties, 0, myProperties, 0, oldProperties.length);
-    myProperties[myProperties.length - 2] = propertyName;
-    myProperties[myProperties.length - 1] = propertyValue;
-  }
-
+  @Override
   final public SNode getParent() {
-    return myParent;
-  }
+    assertCanRead();
 
-  private void enforceModelLoad() {
-    if (!isRoot()) return;
-    myModel.enforceFullLoad();
-  }
+    SNode parent = treeParent();
 
-  //all access to myFirstChild should be via this method
-  private SNode getFirstChild() {
-    enforceModelLoad();
-    return myFirstChild;
-  }
-
-  public void setChild(String role, SNode childNode) {
-    SNode oldChild = getChild(role);
-    if (oldChild != null) {
-      removeChild(oldChild);
+    if (parent != null) {
+      myOwner.fireNodeRead(parent, true);
     }
-    if (childNode != null) {
-      addChild(role, childNode);
-    }
-  }
-
-  public SNode getChild(String role) {
-    ModelAccess.assertLegalRead(this);
-    if (ourMemberAccessModifier != null) {
-      role = ourMemberAccessModifier.getNewChildRole(myModel, myConceptFqName, role);
-    }
-    fireNodeReadAccess();
-    int count = 0;
-    SNode foundChild = null;
-    boolean isOldAttributeRole = AttributeOperations.isOldAttributeRole(role);
-    for (SNode child = getFirstChild(); child != null; child = child.myNextSibling) {
-      if (role.equals(child.getRole_())) {
-        foundChild = child;
-        count++;
-      } else if (isOldAttributeRole && AttributeOperations.isOldRoleForNewAttribute(child, role)) {
-        foundChild = child;
-        count++;
-      }
-    }
-    if (count > 1) {
-      String errorMessage = "ERROR: SNode.getChild() executed when there are " + count + " children for role " + role + " in " + NameUtil.shortNameFromLongName(getClass().getName()) + "[" + getId() + "] " + getModel().getSModelReference() + "\n";
-      errorMessage += "they are : " + getChildren(role);
-      LOG.error(errorMessage, new Throwable(), this);
-    }
-    NodeReadEventsCaster.fireNodeChildReadAccess(this, role, foundChild);
-    return foundChild;
-  }
-
-  public SNode getChildAt(int index) {
-    for (SNode child = getFirstChild(); child != null; child = child.myNextSibling) {
-      if (index-- == 0) {
-        return child;
-      }
-    }
-    return null;
-  }
-
-  public void addChild(String role, SNode child) {
-    SNode firstChild = getFirstChild();
-    insertChild(firstChild == null ? null : firstChild.myPrevSibling, role, child);
-  }
-
-  public void insertChild(SNode anchorChild, String role, SNode child, boolean insertBefore) {
-    if (insertBefore) {
-      insertChild(getFirstChild() == anchorChild ? null : anchorChild.myPrevSibling, role, child);
-    } else {
-      insertChild(anchorChild, role, child);
-    }
-  }
-
-  public int getChildCount(String role) {
-    if (ourMemberAccessModifier != null) {
-      role = ourMemberAccessModifier.getNewChildRole(myModel, myConceptFqName, role);
-    }
-    int count = 0;
-
-    boolean isOldAttributeRole = AttributeOperations.isOldAttributeRole(role);
-    for (SNode child = getFirstChild(); child != null; child = child.myNextSibling) {
-      if (role.equals(child.getRole_())) {
-        count++;
-      } else if (isOldAttributeRole && AttributeOperations.isOldRoleForNewAttribute(child, role)) {
-        count++;
-      }
-    }
-    return count;
-  }
-
-  public int getIndexOfChild(SNode child_) {
-    ModelAccess.assertLegalRead(this);
-    fireNodeReadAccess();
-    fireNodeUnclassifiedReadAccess();
-
-    String role_ = child_.getRole_();
-    if (role_ == null) return -1;
-    int count = 0;
-
-    for (SNode child = getFirstChild(); child != null; child = child.myNextSibling) {
-      if (child == child_) return count;
-      if (role_.equals(child.getRole_())) {
-        count++;
-      }
-    }
-    return -1;
-  }
-
-  public List<SNode> getChildren() {
-    return getChildren(true);
-  }
-
-  private List<SReference> _reference() {
-    return new MyReferencesWrapper();
-  }
-
-  public Iterable<SNode> getChildrenIterable() {
-    return new Iterable<SNode>() {
-      public Iterator<SNode> iterator() {
-        return new Iterator<SNode>() {
-          private SNode current = getFirstChild();
-
-          public boolean hasNext() {
-            return current != null;
-          }
-
-          public SNode next() {
-            SNode result = current;
-            current = current.myNextSibling;
-            return result;
-          }
-
-          public void remove() {
-            throw new UnsupportedOperationException();
-          }
-        };
-      }
-    };
-  }
-
-  public List<SNode> getChildren(boolean includeAttributes) {
-    ModelAccess.assertLegalRead(this);
-    fireNodeReadAccess();
-    fireNodeUnclassifiedReadAccess();
-
-    SNode firstChild = getFirstChild();
-    if (includeAttributes) {
-      return new ChildrenList(firstChild);
-    } else {
-      return new SkipAttributesChildrenList(firstChild);
-    }
-  }
-
-  private void fireNodeUnclassifiedReadAccess() {
-    if (!myModel.canFireEvent()) return;
-    NodeReadEventsCaster.fireNodeUnclassifiedReadAccess(this);
-  }
-
-  public int getChildCount() {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    fireNodeUnclassifiedReadAccess();
-
-    int count = 0;
-
-    for (SNode child = getFirstChild(); child != null; child = child.myNextSibling) {
-      count++;
-    }
-    return count;
-  }
-
-  private void fireNodeReadAccess() {
-    if (!myModel.canFireEvent()) return;
-    NodeReadAccessCasterInEditor.fireNodeReadAccessed(this);
-  }
-
-  @NotNull
-  public List<SNode> getChildren(String role) {
-    ModelAccess.assertLegalRead(this);
-    if (ourMemberAccessModifier != null) {
-      role = ourMemberAccessModifier.getNewChildRole(myModel, myConceptFqName, role);
-    }
-    fireNodeReadAccess();
-    fireNodeUnclassifiedReadAccess();
-    SNode firstChild = getFirstChild();
-    if (firstChild == null) return Collections.emptyList();
-    List<SNode> result = new ArrayList<SNode>();
-
-    boolean isOldAttributeRole = AttributeOperations.isOldAttributeRole(role);
-    for (SNode child = firstChild; child != null; child = child.myNextSibling) {
-      if (role.equals(child.getRole_())) {
-        result.add(child);
-        child.fireNodeReadAccess();
-        NodeReadEventsCaster.fireNodeChildReadAccess(this, role, child);
-      } else if (isOldAttributeRole && AttributeOperations.isOldRoleForNewAttribute(child, role)) {
-        result.add(child);
-        child.fireNodeReadAccess();
-        NodeReadEventsCaster.fireNodeChildReadAccess(this, role, child);
-      }
-    }
-    return result;
-  }
-
-  public SNode getNextChild(SNode child) {
-    String childRole = child.getRole_();
-    assert childRole != null : "role must be not null";
-    List<SNode> children = getChildren(childRole);
-    int index = children.indexOf(child);
-    if (index < 0 || index >= children.size() - 1) return null;
-    return children.get(index + 1);
-  }
-
-  public SNode getPrevChild(SNode child) {
-    String childRole = child.getRole_();
-    assert childRole != null : "role must be not null";
-    List<SNode> children = getChildren(childRole);
-    int index = children.indexOf(child);
-    if (index <= 0) return null;
-    return children.get(index - 1);
+    return parent;
   }
 
   /**
    * Removes child from current node. This affects only link between current node and its child, but not links in
    * subtree of child node.
    * <p/>
-   * Differs from {@link SNode#delete()}.
+   * Differs from {@link SNode#delete()}. FIXME please explain how it differs from delete()
    *
-   * @param wasChild
+   * @param child
    */
-  public void removeChild(SNode wasChild) {
-    if (wasChild.myParent != this) return;
-    ModelChange.assertLegalNodeChange(this);
-    final String wasRole = wasChild.getRole_();
-    SNode anchor = getFirstChild() == wasChild ? null : wasChild.myPrevSibling;
+  @Override
+  public void removeChild(@NotNull org.jetbrains.mps.openapi.model.SNode child) {
+    assertCanChange();
+    assert
+        child.getParent() == this :
+        "Can't remove a node not from it's parent node: removing " + child.getReference().toString() + " from " + getReference().toString();
+
+    final SNode wasChild = (SNode) child;
+    final SContainmentLink wasRole = wasChild.getContainmentLink();
+    final SNode anchorPrev = firstChild() == wasChild ? null : wasChild.treePrevious();
+    final SNode anchorNext = wasChild.treeNext();
 
     assert wasRole != null;
-    SModel model = getModel();
-    if (model != null && ModelChange.needFireEvents(model, this)) {
-      model.fireBeforeChildRemovedEvent(this, wasRole, wasChild, anchor);
-    }
+    myOwner.fireBeforeNodeRemove(this, wasRole, wasChild, anchorPrev);
 
     children_remove(wasChild);
     wasChild.myRoleInParent = null;
-    wasChild.unRegisterFromModel();
 
-    if (model == null) return;
+    myOwner.unregisterNode(wasChild);
 
-    model.performUndoableAction(new RemoveChildUndoableAction(this, anchor, wasRole, wasChild));
-
-    if (ModelChange.needFireEvents(model, this)) {
-      model.fireChildRemovedEvent(this, wasRole, wasChild, anchor);
-    }
-  }
-
-  public void insertChild(final SNode anchor, String _role, final SNode child) {
-    enforceModelLoad();
-
-    if (ourMemberAccessModifier != null) {
-      _role = ourMemberAccessModifier.getNewChildRole(myModel, myConceptFqName, _role);
-    }
-    final String role = _role;
-    SNode parentOfChild = child.getParent();
-    if (parentOfChild != null) {
-      throw new RuntimeException(child.getDebugText() + " already has parent: " + parentOfChild.getDebugText() + "\n" +
-        "Couldn't add it to: " + this.getDebugText());
-    }
-
-    if (child.isRoot()) {
-      throw new RuntimeException(child.getDebugText() + " is root node. Can't add it as a child");
-    }
-
-    if (getTopmostAncestor() == child) {
-      throw new RuntimeException("Trying to create a cyclic tree");
-    }
-
-    ModelChange.assertLegalNodeChange(this);
-
-    children_insertAfter(anchor, child);
-    child.myRoleInParent = InternUtil.intern(role);
-
-    SModel model = getModel();
-    if (isRegistered()) {
-      child.registerInModel(model);
-    } else {
-      child.changeModel(model);
-    }
-
-    if (model == null) return;
-
-    model.performUndoableAction(new InsertChildAtUndoableAction(this, anchor, _role, child));
-
-    if (ModelChange.needFireEvents(model, this)) {
-      model.fireChildAddedEvent(this, role, child, anchor);
-    }
-  }
-
-  void unRegisterFromModel() {
-    if (!myRegisteredInModelFlag) return;
-    UnregisteredNodes.instance().put(this);
-    myRegisteredInModelFlag = false;
-
-    if (myAdapter != null) {
-      UnregisteredNodesWithAdapters.getInstance().add(this);
-    }
-
-    myModel.unregisterNode(this);
-
-    for (SNode child = getFirstChild(); child != null; child = child.myNextSibling) {
-      child.unRegisterFromModel();
-    }
-  }
-
-  void registerInModel(SModel model) {
-    if (myRegisteredInModelFlag) {
-      if (model != myModel) {
-        LOG.errorWithTrace("couldn't register node which is already registered in '" + myModel.getSModelReference() + "'");
-      }
-      return;
-    }
-
-    SModel wasModel = myModel;
-    myModel = model;
-    myModel.registerNode(this);
-    myRegisteredInModelFlag = true;
-
-    UnregisteredNodes.instance().remove(this);
-
-    if (myAdapter != null) {
-      UnregisteredNodesWithAdapters.getInstance().remove(this);
-    }
-
-    for (SNode child = getFirstChild(); child != null; child = child.myNextSibling) {
-      child.registerInModel(model);
-    }
-  }
-
-  void dispose() {
-    //myModel = null;
-    //myRegisteredInModelFlag = false;
-    //myChildren = null;
-    //myReferences = null;
-    //myProperties = null;
-    myDisposed = true;
-    myAdapter = null;
-    myUserObjects = null;
-  }
-
-  public boolean isDisposed() {
-    return myDisposed;
-  }
-
-  public boolean shouldHaveBeenDisposed() {
-    return isDisposed() || myModel.isDisposed();
-  }
-
-  public boolean isDetached() {
-    return getContainingRoot() == null;
-  }
-
-  public boolean isRegistered() {
-    return myRegisteredInModelFlag;
-  }
-
-  public List<SReference> getReferences() {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    fireNodeUnclassifiedReadAccess();
-    return new ArrayList<SReference>(_reference());
-  }
-
-  public SReference[] getReferencesArray() {
-    SReference[] references = new SReference[myReferences.length];
-    System.arraycopy(myReferences, 0, references, 0, myReferences.length);
-    return references;
-  }
-
-  public Collection<SReference> getReferencesIterable() {
-    return new AbstractList<SReference>() {
-      public SReference get(int index) {
-        return myReferences[index];
-      }
-
-      public int size() {
-        return myReferences.length;
-      }
-    };
-  }
-
-  public SReference setReferent(String role, SNode newReferent) {
-    return setReferent(role, newReferent, true);
-  }
-
-  public SReference setReferent(String role, SNode newReferent, boolean useHandler) {
-    if (ourMemberAccessModifier != null) {
-      role = ourMemberAccessModifier.getNewReferentRole(myModel, myConceptFqName, role);
-    }
-    // remove old references
-    List<SReference> toDelete = new ArrayList<SReference>();
-    if (myReferences != null) {
-      for (SReference reference : myReferences) {
-        if (reference.getRole().equals(role)) {
-          toDelete.add(reference);
-        }
-      }
-    }
-    SNode oldReferent = null;
-    if (!toDelete.isEmpty()) {
-      oldReferent = toDelete.get(0).getTargetNodeSilently();
-    }
-    if (toDelete.size() > 1) {
-      LOG.errorWithTrace("ERROR! " + toDelete.size() + " references found for role '" + role + "' in " + this.getDebugText());
-    }
-    SReference resultReference = null;
-    boolean handlerFound = false;
-
-    if (useHandler && myModel.canFireEvent()) {
-      // invoke custom referent set event handler
-      Set<Pair<SNode, String>> threadSet = ourSetReferentEventHandlersInProgress.get();
-      Pair<SNode, String> pair = new Pair<SNode, String>(this, role);
-      if (!threadSet.contains(pair)) {
-        ReferenceConstraintsDescriptor descriptor = ConceptRegistry.getInstance().getConstraintsDescriptor(this.getConceptFqName()).getReference(role);
-
-        if (!(descriptor instanceof IllegalReferenceConstraintsDescriptor)) {
-          handlerFound = true;
-          threadSet.add(pair);
-
-          try {
-            if (descriptor.validate(this, oldReferent, newReferent, GlobalScope.getInstance())) {
-              resultReference = doSetReference(role, newReferent, toDelete);
-              descriptor.onReferenceSet(this, oldReferent, newReferent, GlobalScope.getInstance());
-            } else {
-              if (myReferences != null) {
-                for (SReference reference : myReferences) {
-                  if (reference.getRole().equals(role)) {
-                    resultReference = reference;
-                    break;
-                  }
-                }
-              }
-            }
-          } finally {
-            threadSet.remove(pair);
-          }
-        } else {
-          // todo: ?
-        }
-      }
-    }
-
-    if (!handlerFound) {
-      resultReference = doSetReference(role, newReferent, toDelete);
-    }
-
-    return resultReference;
-  }
-
-  private SReference doSetReference(String role, SNode newReferent, List<SReference> toDelete) {
-    for (SReference reference : toDelete) {
-      int index = _reference().indexOf(reference);
-      removeReferenceAt(index);
-    }
-
-    SReference resultReference = null;
-    if (newReferent != null) {
-      resultReference = SReference.create(role, this, newReferent);
-      insertReferenceAt(myReferences == null ? 0 : myReferences.length, resultReference);
-    }
-    return resultReference;
-  }
-
-  public SNode getReferent(String role) {
-    SReference reference = getReference(role);
-    SNode result = reference == null ? null : reference.getTargetNode();
-    if (result != null) {
-      NodeReadEventsCaster.fireNodeReferentReadAccess(this, role, result);
-    }
-    return result;
-  }
-
-  public SReference getReference(String role) {
-    ModelAccess.assertLegalRead(this);
-    if (ourMemberAccessModifier != null) {
-      role = ourMemberAccessModifier.getNewReferentRole(myModel, myConceptFqName, role);
-    }
-    fireNodeReadAccess();
-    SReference result = null;
-    int count = 0; // paranoid check
-    if (myReferences != null) {
-      for (SReference reference : myReferences) {
-        if (reference.getRole().equals(role)) {
-          result = reference;
-          count++;
-        }
-      }
-    }
-
-    if (count > 1) {
-      LOG.errorWithTrace("ERROR: " + count + " referents for role '" + role + "' in " + getDebugText());
-    }
-
-    NodeReadEventsCaster.fireNodeReferentReadAccess(this, role, null);
-    return result;
-  }
-
-  public void addReference(SReference reference) {
-    assert reference.getSourceNode() == this;
-    insertReferenceAt(myReferences == null ? 0 : myReferences.length, reference);
-  }
-
-  public void removeReferent(String role) {
-    if (ourMemberAccessModifier != null) {
-      role = ourMemberAccessModifier.getNewReferentRole(myModel, myConceptFqName, role);
-    }
-    if (myReferences != null) {
-      for (SReference reference : myReferences) {
-        if (reference.getRole().equals(role)) {
-          int index = _reference().indexOf(reference);
-          removeReferenceAt(index);
-          break;
-        }
-      }
-    }
-  }
-
-  public void removeReference(SReference referenceToRemove) {
-    if (myReferences != null) {
-      for (SReference reference : myReferences) {
-        if (reference.equals(referenceToRemove)) {
-          int index = _reference().indexOf(reference);
-          removeReferenceAt(index);
-          break;
-        }
-      }
-    }
-  }
-
-  public void replaceReference(SReference referenceToRemove, @NotNull SReference referenceToAdd) {
-    if (myReferences != null) {
-      for (SReference reference : myReferences) {
-        if (reference.equals(referenceToRemove)) {
-          int index = _reference().indexOf(reference);
-          replaceReferenceAt(index, referenceToAdd);
-          break;
-        }
-      }
-    }
-  }
-
-  public List<SNode> getReferents() {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    fireNodeUnclassifiedReadAccess();
-    List<SNode> result = new ArrayList<SNode>();
-    if (myReferences != null) {
-      for (SReference reference : myReferences) {
-        SNode targetNode = reference.getTargetNode();
-        if (targetNode != null) result.add(targetNode);
-      }
-    }
-    return result;
-  }
-
-  void insertReferenceAt(final int i, final SReference reference) {
-    ModelChange.assertLegalNodeChange(this);
-
-    _reference().add(i, reference);
-
-    SModel model = getModel();
-    if (model == null) return;
-
-    model.performUndoableAction(new InsertReferenceAtUndoableAction(this, i, reference));
-
-    if (ModelChange.needFireEvents(model, this)) {
-      model.fireReferenceAddedEvent(reference);
-    }
-  }
-
-  private void replaceReferenceAt(int index, @NotNull SReference referenceToAdd) {
-    ModelChange.assertLegalNodeChange(this);
-
-    if (UndoHelper.getInstance().needRegisterUndo(getModel()) || ModelChange.needFireEvents(getModel(), this)) {
-      removeReferenceAt(index);
-      insertReferenceAt(index, referenceToAdd);
-    } else {
-      myReferences[index] = referenceToAdd;
-    }
-  }
-
-  void removeReferenceAt(final int i) {
-    ModelChange.assertLegalNodeChange(this);
-    final SReference reference = myReferences[i];
-    _reference().remove(reference);
-
-    SModel model = getModel();
-    if (model == null) return;
-
-    model.performUndoableAction(new RemoveReferenceAtUndoableAction(this, i, reference));
-
-    if (ModelChange.needFireEvents(model, this)) {
-      model.fireReferenceRemovedEvent(reference);
-    }
+    myOwner.performUndoableAction(new RemoveChildUndoableAction(this, anchorNext, wasRole, wasChild));
+    myOwner.fireNodeRemove(this, wasRole, wasChild, anchorPrev);
   }
 
   /**
-   * Deletes all nodes in subtree starting with current. Differs from {@link SNode#removeChild(SNode)}.
+   * Deletes all nodes in subtree starting with current. Differs from {@link SNode#removeChild(org.jetbrains.mps.openapi.model.SNode)}.
    */
+  @Override
   public void delete() {
-    delete_internal();
-  }
+    assertCanChange();
 
-  private void delete_internal() {
-    //delete all children
-    List<SNode> children = new ArrayList<SNode>(getChildren());
-    for (SNode child : children) {
-      child.delete_internal();
-    }
-
-    //remove all references
-    removeAllReferences();
-
-    //remove from parent
-    SNode parent = getParent();
-    if (parent != null) {
-      parent.removeChild(this);
-    } else if (getModel().isRoot(this)) {
-      getModel().removeRoot(this);
-    }
-
-    // really delete
-    UnregisteredNodes.instance().remove(this);
-  }
-
-
-  private void removeAllReferences() {
-    while (_reference().size() > 0) {
-      removeReferenceAt(0);
+    SNode p = getParent();
+    if (p != null) {
+      p.removeChild(this);
+    } else if (myOwner.getModel() != null) {
+      myOwner.getModel().removeRootNode(this);
     }
   }
 
-
-  public boolean isDeleted() {
-    return (_reference().size() == 0) && myParent == null && !getModel().isRoot(this);
-  }
-
-  public String getDebugText() {
-    String roleText = "";
-    if (isRegistered()) {
-      String s = getRole_();
-      roleText = s == null ? "[root]" : "[" + s + "]";
-    }
-    String nameText;
-    try {
-      if ("jetbrains.mps.bootstrap.structureLanguage.structure.LinkDeclaration".equals(getConceptFqName())) {
-        // !!! use *safe* getRole !!!
-        String role = myProperties == null ? null : getProperty_simple("role");
-        nameText = (role == null) ? "<no role>" : '"' + role + '"';
-      } else {
-        // !!! use *safe* getName !!!
-        String name = myProperties == null ? null : getProperty_simple("name");
-        nameText = (name == null) ? "<no name>" : '"' + name + '"';
-      }
-      // !!! use *safe* getId !!!
-      nameText = nameText + "[" + myId + "]";
-
-    } catch (Exception e) {
-      //e.printStackTrace();
-      nameText = "<??name??>";
-    }
-    return roleText + " " + NameUtil.shortNameFromLongName(getConceptShortName()) + " " + nameText + " in " + myModel.getSModelFqName();
-  }
-
-  public boolean hasId() {
-    return myId != null;
-  }
-
-  public String getId() {
-    return getSNodeId().toString();
-  }
-
-  public SNodeId getSNodeId() {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    if (myId == null && !isRegistered()) {
-      // TODO remove id generation
-      myId = SModel.generateUniqueId();
-      //LOG.error(new IllegalStateException("cannot generate id for unregistered node"));
-    }
-    return myId;
-  }
-
-  public void setId(@Nullable SNodeId id) {
-    if (ObjectUtils.equals(id, myId)) return;
-
-    if (!isRegistered()) {
-      myId = id;
-    } else {
-      LOG.error("can't set id to registered node " + getDebugText(), new Throwable());
-    }
-  }
-
+  @Override
   public String getPresentation() {
-    return getPresentation(false);
-  }
-
-  public String getPresentation(boolean detailed) {
-    if (SNodeOperations.isUnknown(this)) {
-      String persistentName = getPersistentProperty(SNodeUtil.property_INamedConcept_name);
-      if (persistentName == null) {
-        return "?" + getConceptShortName() + "?";
-      }
-      return "?" + persistentName + "?";
+    if (!getConcept().isValid()) {
+      String persistentName = findProperty(SNodeUtil.property_INamedConcept_name);
+      return String.format("%s (concept is not found)", persistentName != null ? persistentName : myConcept.getName());
     }
 
-    try {
-/*
- Warning:
- BaseConcept_Behavior class will be loaded using platform classloader here.
- As a result this class will be loaded twice - once using own BundleClassLoader and one more time - here.
- */
-      if (detailed) {
-        return "" + SNodeUtil.getDetailedPresentation(this);
-      } else {
-        return "" + SNodeUtil.getPresentation(this);
-      }
-    } catch (RuntimeException t) {
-      LOG.error(t);
-      return "[can't calculate presentation : " + t.getMessage() + "]";
-    }
+    return String.valueOf(SNodeUtil.getPresentation(this));
   }
 
+  @Override
   public String toString() {
-    ModelAccess.assertLegalRead(this);
-    fireNodeReadAccess();
-
     String s = null;
     try {
-      s = getPersistentProperty(SNodeUtil.property_BaseConcept_alias);
+      s = findProperty(SNodeUtil.property_INamedConcept_name);
       if (s == null) {
-        s = getPresentation();
+        s = String.format("(instance of %s)", getConcept().getName());
       }
     } catch (RuntimeException t) {
-      LOG.error(t, this);
+      LOG.error(Log4jUtil.createMessageObject("Failed to get string presentation of a node", this), t);
     }
     if (s == null) {
       return "???";
@@ -1250,460 +239,59 @@ public final class SNode {
     return s;
   }
 
-  public List<SNode> getDescendants() {
-    return getDescendants(null);
-  }
-
-  public Iterable<SNode> getDescendantsIterable(@Nullable final Condition<SNode> condition, final boolean includeFirst) {
-    return new DescendantsIterable(this, includeFirst ? this : getFirstChild(), condition);
-  }
-
-  public List<SNode> getDescendants(Condition<SNode> condition) {
-    ModelAccess.assertLegalRead(this);
-    fireNodeReadAccess();
-    fireNodeUnclassifiedReadAccess();
-
-    List<SNode> list = new ArrayList<SNode>();
-    collectDescendants(condition, list);
-    return list;
-  }
-
-  private void collectDescendants(Condition<SNode> condition, List<SNode> list) {
-    // depth-first traversal
-    for (SNode child = getFirstChild(); child != null; child = child.myNextSibling) {
-      if (condition == null || condition == Condition.TRUE_CONDITION || condition.met(child)) {
-        list.add(child);
-      }
-      child.collectDescendants(condition, list);
-    }
-  }
-
-  public boolean isDescendantOf(SNode node, boolean includeThis) {
-    SNode current;
-    if (includeThis) {
-      current = this;
-    } else {
-      current = getParent();
-    }
-    while (current != null) {
-      if (current == node) {
-        return true;
-      }
-      current = current.getParent();
-    }
-    return false;
-  }
-
-  public Language getNodeLanguage() {
-    SNode concept = getConceptDeclarationNode();
-    return SModelUtil.getDeclaringLanguage(concept);
-  }
-
   @NotNull
-  public String getConceptFqName() {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    fireNodeUnclassifiedReadAccess();
-    return myConceptFqName;
+  @Override
+  public SNodeReference getReference() {
+    return new jetbrains.mps.smodel.SNodePointer(myOwner.lastKnownModel(), myId);
   }
 
-  public ModuleReference getConceptLanguage() {
-    return new ModuleReference(getLanguageNamespace());
-  }
-
-  @NotNull
-  public String getConceptShortName() {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    return NameUtil.shortNameFromLongName(myConceptFqName);
-  }
-
-  @NotNull
-  public String getLanguageNamespace() {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    return InternUtil.intern(NameUtil.namespaceFromConceptFQName(myConceptFqName));
-  }
-
-  @UseCarefully
-  void setConceptFqName(@NotNull String conceptFQName) {
-    myConceptFqName = InternUtil.intern(conceptFQName);
-    myAdapter = null;
-    SModelRepository.getInstance().markChanged(getModel());
-  }
-
-  public boolean isInstanceOfConcept(SNode concept) {
-    return isInstanceOfConcept(NameUtil.nodeFQName(concept));
-  }
-
-  public boolean isInstanceOfConcept(String conceptFqName) {
-    return SModelUtil.isAssignableConcept(myConceptFqName, conceptFqName);
-  }
-
-  public SNode getConceptDeclarationNode() {
-    return SModelUtil.findConceptDeclaration(getConceptFqName(), GlobalScope.getInstance());
-  }
-
-  public SNode getPropertyDeclaration(String propertyName) {
-    return SModelSearchUtil.findPropertyDeclaration(getConceptDeclarationNode(), propertyName);
-  }
-
-  public SNode getLinkDeclaration(String role) {
-    return SModelSearchUtil.findLinkDeclaration(getConceptDeclarationNode(), role);
-  }
-
-  public SNode findParent(Condition<SNode> condition) {
-    SNode parent = getParent();
-    while (parent != null) {
-      if (condition.met(parent)) {
-        return parent;
-      }
-      parent = parent.getParent();
-    }
-    return null;
-  }
-
-  public SNode findChildByPath(String path) {
-    if (path == null) return null;
-    String residual = path;
-    SNode current = this;
-    while (!residual.equals("") && current != null) {
-      residual = residual.substring(1);
-      int index = residual.indexOf("/");
-      String roleAndNumber = index == -1 ? residual : residual.substring(0, index);
-      residual = residual.substring(roleAndNumber.length());
-
-      int numberIndex = roleAndNumber.indexOf("#");
-      String role = numberIndex == -1 ? roleAndNumber : roleAndNumber.substring(0, numberIndex);
-      String numberString = numberIndex == -1 ? "-1" : roleAndNumber.substring(numberIndex + 1);
-      int number = Integer.parseInt(numberString);
-
-      if (number == -1) {
-        current = current.getChild(role);
-      } else {
-        List<SNode> childrenForRole = current.getChildren(role);
-        if (number < childrenForRole.size()) {
-          current = childrenForRole.get(number);
-        } else {
-          current = null;
-        }
-      }
-    }
-    return current;
-  }
-
-  public String getNodePath(SNode child) {
-    StringBuilder sb = new StringBuilder();
-    SNode current = child;
-    while (current != this && current != null) {
-      String role = current.getRole_();
-      SNode currentParent = current.getParent();
-      List<SNode> children = currentParent == null || role == null ? new ArrayList<SNode>() : currentParent.getChildren(role);
-      String numberString = children.size() <= 1 ? "" : "#" + children.indexOf(current);
-      sb.insert(0, "/" + role + numberString);
-      current = currentParent;
-    }
-    return sb.toString();
-  }
-
-  public boolean isReferentRequired(String role) {
-    SNode conceptDeclaration = getConceptDeclarationNode();
-    SNode linkDeclaration = SModelSearchUtil.findLinkDeclaration(conceptDeclaration, role);
-    if (linkDeclaration == null) {
-      LOG.error("couldn't find link declaration for role \"" + role + "\" in hierarchy of concept " + conceptDeclaration.getDebugText());
-      return false;
-    }
-    SNode genuineLinkDeclaration = SModelUtil.getGenuineLinkDeclaration(linkDeclaration);
-    return SNodeUtil.getLinkDeclaration_IsAtLeastOneMultiplicity(genuineLinkDeclaration);
-  }
-
-  public Language getLanguage() {
-    String languageNamespace = getLanguageNamespace();
-    return ModuleRepositoryFacade.getInstance().getModule(languageNamespace, Language.class);
-  }
-
-  public void setRoleInParent(String newRoleInParent) {//todo add undo
-    myRoleInParent = InternUtil.intern(newRoleInParent);
-  }
-
-  public SNode prevSibling() {
-    if (myParent == null) return null;
-    return myParent.getFirstChild() == this ? null : myPrevSibling;
-  }
-
-  public SNode nextSibling() {
-    return myNextSibling;
-  }
-
-  private class MyReferencesWrapper extends ArrayWrapper<SReference> {
-    protected SReference[] getArray() {
-      return myReferences;
-    }
-
-    protected void setArray(SReference[] newArray) {
-      myReferences = newArray;
-    }
-
-    protected SReference[] newArray(int size) {
-      return new SReference[size];
-    }
-  }
-
-  private void children_insertAfter(SNode anchor, @NotNull SNode node) {
-    //be sure that getFirstChild is called before any access to myFirstChild
-    SNode firstChild = getFirstChild();
-    if (anchor == null) {
-      if (firstChild != null) {
-        node.myPrevSibling = firstChild.myPrevSibling;
-        firstChild.myPrevSibling = node;
-      } else {
-        node.myPrevSibling = node;
-      }
-      node.myNextSibling = firstChild;
-      myFirstChild = node;
-    } else {
-      node.myPrevSibling = anchor;
-      node.myNextSibling = anchor.myNextSibling;
-      if (anchor.myNextSibling == null) {
-        firstChild.myPrevSibling = node;
-      } else {
-        anchor.myNextSibling.myPrevSibling = node;
-      }
-      anchor.myNextSibling = node;
-    }
-    node.myParent = this;
-  }
-
-  private void children_remove(@NotNull SNode node) {
-    //be sure that getFirstChild is called before any access to myFirstChild
-    SNode firstChild = getFirstChild();
-    if (firstChild == node) {
-      myFirstChild = node.myNextSibling;
-      if (myFirstChild != null) {
-        myFirstChild.myPrevSibling = node.myPrevSibling;
-      }
-    } else {
-      node.myPrevSibling.myNextSibling = node.myNextSibling;
-      if (node.myNextSibling != null) {
-        node.myNextSibling.myPrevSibling = node.myPrevSibling;
-      } else {
-        firstChild.myPrevSibling = node.myPrevSibling;
-      }
-    }
-    node.myPrevSibling = node.myNextSibling = null;
-    node.myParent = null;
-  }
-
-  private static class ChildrenList extends AbstractImmutableList<SNode> {
-    public ChildrenList(SNode first) {
-      super(first);
-    }
-
-    public ChildrenList(SNode first, int size) {
-      super(first, size);
-    }
-
-    @Override
-    protected SNode next(SNode node) {
-      return node.myNextSibling;
-    }
-
-    @Override
-    protected SNode prev(SNode node) {
-      return node.myPrevSibling;
-    }
-
-    @Override
-    protected AbstractImmutableList<SNode> subList(SNode elem, int size) {
-      return new ChildrenList(elem, size);
-    }
-  }
-
-  private static class SkipAttributesChildrenList extends AbstractImmutableList<SNode> {
-    public SkipAttributesChildrenList(SNode first) {
-      super(skipAttributes(first));
-    }
-
-    public SkipAttributesChildrenList(SNode first, int size) {
-      super(skipAttributes(first), size);
-    }
-
-    private static SNode skipAttributes(SNode node) {
-      while (node != null && AttributeOperations.isAttribute(node)) {
-        node = node.myNextSibling;
-      }
-      return node;
-    }
-
-    protected SNode next(SNode node) {
-      return skipAttributes(node.myNextSibling);
-    }
-
-    protected SNode prev(SNode node) {
-      SNode result = myFirst == node ? null : node.myPrevSibling;
-      while (result != null && AttributeOperations.isAttribute(result)) {
-        result = myFirst == result ? null : result.myPrevSibling;
-      }
-      return result;
-    }
-
-    protected AbstractImmutableList<SNode> subList(SNode elem, int size) {
-      return new SkipAttributesChildrenList(elem, size);
-    }
-  }
-
-  private static class InProgressThreadLocal extends ThreadLocal<Set<Pair<SNode, String>>> {
-    protected Set<Pair<SNode, String>> initialValue() {
-      return new HashSet<Pair<SNode, String>>();
-    }
-  }
-
-  private static class DescendantsIterable implements TreeIterator<SNode>, Iterable<SNode> {
-    private SNode original;
-    private SNode current;
-    private Condition<SNode> condition;
-    private SNode prev;
-
-    DescendantsIterable(SNode original, SNode first, @Nullable Condition<SNode> condition) {
-      this.original = original;
-      this.current = first;
-      this.condition = condition;
-      while (current != null && condition != null && !condition.met(current)) {
-        current = nextInternal(current, false);
-      }
-    }
-
-    public boolean hasNext() {
-      return current != null;
-    }
-
-    public SNode next() {
-      SNode result = current;
-      do {
-        current = nextInternal(current, false);
-      } while (current != null && condition != null && !condition.met(current));
-      prev = result;
-      return result;
-    }
-
-    public void skipChildren() {
-      if (prev == null) throw new IllegalStateException("no element");
-      current = nextInternal(prev, true);
-      while (current != null && condition != null && !condition.met(current)) {
-        current = nextInternal(current, false);
-      }
-    }
-
-    private SNode nextInternal(SNode curr, boolean skipChildren) {
-      if (curr == null) return null;
-      if (!skipChildren) {
-        SNode firstChild = curr.getFirstChild();
-        if (firstChild != null) return firstChild;
-      }
-      if (curr == original) return null;
-      do {
-        if (curr.myNextSibling != null) {
-          return curr.myNextSibling;
-        }
-        curr = curr.myParent;
-      } while (curr != original);
-      return null;
-    }
-
-    public void remove() {
-      throw new UnsupportedOperationException();
-    }
-
-    public Iterator<SNode> iterator() {
-      return this;
-    }
-  }
-
-  //------------adapters-------------
-
-  public BaseAdapter getAdapter() {
-    ModelAccess.assertLegalRead(this);
-    BaseAdapter adapter = myAdapter;
-    if (adapter != null) return adapter;
-    Constructor c = null;
-    if (languageCanGenerateAdapters()) {
-      c = QueryMethodGenerated.getAdapterConstructor(getConceptFqName());
-    }
-    if (c == null) c = QueryMethodGenerated.getAdapterConstructor(SNodeUtil.concept_BaseConcept);
-    if (c == null) return new BaseAdapter(this) {
-    };
-
-    synchronized (this) {
-      adapter = myAdapter;
-      if (adapter != null) return adapter;
-      try {
-        adapter = (BaseAdapter) c.newInstance(this);
-        assert adapter.getNode() == this;
-
-        if (!myRegisteredInModelFlag) {
-          UnregisteredNodesWithAdapters.getInstance().add(this);
-        }
-        myAdapter = adapter;
-        return adapter;
-      } catch (IllegalAccessException e) {
-        LOG.error(e);
-      } catch (InvocationTargetException e) {
-        LOG.error(e);
-      } catch (InstantiationException e) {
-        LOG.error(e);
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-    return new BaseAdapter(this) {
-    };
-  }
-
-  private boolean languageCanGenerateAdapters() {
-    SNode conceptDeclaration = getConceptDeclarationNode();
-    if (conceptDeclaration == null) return true;
-    SModel model = conceptDeclaration.getModel();
-    if (model == null) return true;
-    SModelDescriptor modelDescriptor = model.getModelDescriptor();
-    if (modelDescriptor == null) return true;
-    IModule module = modelDescriptor.getModule();
-    return !(module instanceof Language) || ((Language) module).isGenerateAdapters();
-  }
-
-  void clearAdapter() {
-    myAdapter = null;
-  }
-
-  //------------user objects-------------
-
+  @Override
   public Object getUserObject(Object key) {
-    ModelAccess.assertLegalRead(this);
-
-    fireNodeReadAccess();
-    if (myUserObjects == null) return null;
-    for (int i = 0; i < myUserObjects.length; i += 2) {
-      if (myUserObjects[i].equals(key)) {
-        return myUserObjects[i + 1];
+    final Object[] userObjects = myUserObjects;
+    if (userObjects == null) return null;
+    for (int i = 0; i < userObjects.length; i += 2) {
+      if (userObjects[i].equals(key)) {
+        return userObjects[i + 1];
       }
     }
     return null;
   }
 
-  public void putUserObject(Object key, Object value) {
-    if (value == null) {
-      removeUserObject(key);
-      return;
-    }
-    if (myUserObjects == null) {
-      myUserObjects = new Object[]{key, value};
-    } else {
+  @Override
+  public void putUserObject(Object key, @Nullable Object value) {
+    synchronized (USER_OBJECT_LOCK) {
+      if (value == null) {
+        if (myUserObjects == null) return;
+        for (int i = 0; i < myUserObjects.length; i += 2) {
+          if (myUserObjects[i].equals(key)) {
+            Object[] newarr = new Object[myUserObjects.length - 2];
+            if (i > 0) {
+              System.arraycopy(myUserObjects, 0, newarr, 0, i);
+            }
+            if (i + 2 < myUserObjects.length) {
+              System.arraycopy(myUserObjects, i + 2, newarr, i, newarr.length - i);
+            }
+            myUserObjects = newarr;
+            break;
+          }
+        }
+        if (myUserObjects.length == 0) {
+          myUserObjects = null;
+        }
+        return;
+      }
+
+      if (myUserObjects == null) {
+        myUserObjects = new Object[]{key, value};
+        return;
+      }
+
       for (int i = 0; i < myUserObjects.length; i += 2) {
         if (myUserObjects[i].equals(key)) {
-          myUserObjects = Arrays.copyOf(myUserObjects, myUserObjects.length, Object[].class);
-          myUserObjects[i + 1] = value;
+          Object[] newarr = new Object[myUserObjects.length];
+          System.arraycopy(myUserObjects, 0, newarr, 0, myUserObjects.length);
+          newarr[i + 1] = value;
+          myUserObjects = newarr;
           return;
         }
       }
@@ -1715,84 +303,645 @@ public final class SNode {
     }
   }
 
-  public void putUserObjects(SNode fromNode) {
-    if (fromNode == null || fromNode.myUserObjects == null) return;
-    if (myUserObjects == null) {
-      myUserObjects = fromNode.myUserObjects;
-    } else {
-      for (int i = 0; i < fromNode.myUserObjects.length; i += 2) {
-        putUserObject(fromNode.myUserObjects[i], fromNode.myUserObjects[i + 1]);
+  @NotNull
+  @Override
+  public List<SNode> getChildren() {
+    return getChildren((SContainmentLink) null);
+  }
+
+  @NotNull
+  @Override
+  public List<jetbrains.mps.smodel.SReference> getReferences() {
+    assertCanRead();
+
+    myOwner.fireNodeRead(this, true);
+
+    return Arrays.asList(myReferences);
+  }
+
+  @Override
+  public org.jetbrains.mps.openapi.model.SNode getFirstChild() {
+    assertCanRead();
+
+    SNode child = firstChild();
+    if (child != null) {
+      myOwner.fireNodeRead(child, false);
+    }
+    return child;
+  }
+
+  @Override
+  public org.jetbrains.mps.openapi.model.SNode getLastChild() {
+    assertCanRead();
+
+    SNode fc = firstChild();
+    if (fc == null) {
+      return null;
+    }
+
+    SNode lc = fc.treePrevious();
+    if (lc != null) {
+      myOwner.fireNodeRead(lc, false);
+    }
+    return lc;
+  }
+
+  @Override
+  public SNode getPrevSibling() {
+    assertCanRead();
+
+    SNode p = treeParent();
+    if (p == null) {
+      return null;
+    }
+
+    myOwner.fireNodeRead(p, true);
+
+    SNode tp = treePrevious();
+    SNode ps = tp.next == null ? null : tp;
+    if (ps != null) {
+      myOwner.fireNodeRead(ps, true);
+    }
+    return ps;
+  }
+
+  @Override
+  public SNode getNextSibling() {
+    assertCanRead();
+
+    SNode p = treeParent();
+    if (p == null) {
+      return null;
+    }
+
+    myOwner.fireNodeRead(p, true);
+
+    SNode tn = treeNext();
+    if (tn != null) {
+      myOwner.fireNodeRead(tn, true); // although it used to send 2, not 3 notification, don't see any reason to have it different for parent and sibling
+    }
+    return tn;
+  }
+
+  @Override
+  public Iterable<Object> getUserObjectKeys() {
+    assertCanRead();
+
+    final Object[] userObjects = myUserObjects;
+    if (userObjects == null || userObjects.length == 0) return EmptyIterable.getInstance();
+    return () -> new Iterator<Object>() {
+      private int myIndex = 0;
+
+      @Override
+      public boolean hasNext() {
+        return myIndex < userObjects.length;
       }
+
+      @Override
+      public Object next() {
+        myIndex += 2;
+        return userObjects[myIndex - 2];
+      }
+
+      @Override
+      public void remove() {
+        throw new UnsupportedOperationException();
+      }
+    };
+  }
+
+  @Override
+  public org.jetbrains.mps.openapi.model.SModel getModel() {
+    final SModel persistenceModel = myOwner.getModel();
+    return persistenceModel == null ? null : persistenceModel.getModelDescriptor();
+  }
+
+  //----------------------------------------------------------
+  //----------------USAGES IN REFACTORINGS ONLY---------------
+  //----------------------------------------------------------
+
+  public void setId(@Nullable org.jetbrains.mps.openapi.model.SNodeId id) {
+    if (Objects.equals(id, myId)) return;
+
+    if (myOwner.getModel() == null) {
+      myId = id;
+    } else {
+      LOG.error("can't set id to registered node " + getDebugText(this), new Throwable());
     }
   }
 
-  public void removeUserObject(Object key) {
-    if (myUserObjects == null) return;
-    for (int i = 0; i < myUserObjects.length; i += 2) {
-      if (myUserObjects[i].equals(key)) {
-        Object[] newarr = new Object[myUserObjects.length - 2];
-        if (i > 0) {
-          System.arraycopy(myUserObjects, 0, newarr, 0, i);
-        }
-        if (i + 2 < myUserObjects.length) {
-          System.arraycopy(myUserObjects, i + 2, newarr, i, newarr.length - i);
-        }
-        myUserObjects = newarr;
+  /**
+   * for a subtree starting at this node, ask all references to establish identity-backed target information, rather than instance-backed.
+   * This operation usually follows attachment of a node/subtree
+   */
+  final void makeReferencesIndirect() {
+    for (SReference ref : myReferences) {
+      ref.makeIndirect();
+    }
+
+    for (SNode child = firstChild(); child != null; child = child.treeNext()) {
+      child.makeReferencesIndirect();
+    }
+  }
+
+  /**
+   * for a subtree starting at this node, ask all references to point to an actual target node object instead of by-name/by-id value.
+   * This operation usually precedes detachment of a node/subtree. Direct object pointer then facilitates reference access operations from
+   * the detached nodes just in case there's need.
+   */
+  final void makeReferencesDirect() {
+    for (SReference ref : myReferences) {
+      ref.makeDirect();
+    }
+    for (SNode child = firstChild(); child != null; child = child.treeNext()) {
+      child.makeReferencesDirect();
+    }
+  }
+
+//  final void forEachInSubtree(Consumer<SNode> c) {
+//    c.accept(this);
+//    for (SNode child = firstChild(); child != null; child = child.treeNext()) {
+//      child.forEachInSubtree(c);
+//    }
+//  }
+
+  @NotNull
+  /*package*/ SNodeOwner getNodeOwner() {
+    // FIXME for consistency, shall use same approach to dispatch events from e.g. getParent(), where I use
+    // owner of the child node (in assumption owner is identical for the whole tree) myOwner.fireNodeRead(parent, true);
+    // and in ChildrenIterator, which I don't want to make non-static, nor don't want to pass SNodeOwner in there right now
+    // FIXME revisit uses of this method, re-consider approach. E.g. perhaps SModel shall keep SNodeOwner instance?
+    return myOwner;
+  }
+
+  /*package*/ void setNodeOwner(/*NotNull*/ SNodeOwner owner) {
+    myOwner = owner;
+  }
+
+  //--------private-------
+
+  // perform inner structures update, doesn't dispatch any events
+  private void addReferenceInternal(final SReference reference) {
+    int oldLen = myReferences.length;
+    jetbrains.mps.smodel.SReference[] newArray = new jetbrains.mps.smodel.SReference[oldLen + 1];
+    System.arraycopy(myReferences, 0, newArray, 0, oldLen);
+    newArray[oldLen] = reference;
+    myReferences = newArray;
+
+    myOwner.performUndoableAction(new InsertReferenceAtUndoableAction(this, reference));
+  }
+
+  // perform inner structures update, doesn't dispatch any events
+  private void removeReferenceInternal(final SReference ref) {
+    int index = -1;
+    for (int i = 0; i < myReferences.length; i++) {
+      if (myReferences[i] == ref) {
+        index = i;
         break;
       }
     }
-    if (myUserObjects.length == 0) {
-      myUserObjects = null;
+
+    if (index == -1) {
+      LOG.error("ref not found " + ref, new Throwable());
+      return;
     }
+
+    jetbrains.mps.smodel.SReference[] newArray = new jetbrains.mps.smodel.SReference[myReferences.length - 1];
+    System.arraycopy(myReferences, 0, newArray, 0, index);
+    System.arraycopy(myReferences, index + 1, newArray, index, myReferences.length - index - 1);
+    myReferences = newArray;
+
+    myOwner.performUndoableAction(new RemoveReferenceAtUndoableAction(this, ref));
   }
 
-  public void removeAllUserObjects() {
-    myUserObjects = null;
+  protected SNode firstChild() {
+    return first;
   }
 
-  public Map<Object, Object> getUserObjects() {
-    Map<Object, Object> userObjects = new LinkedHashMap<Object, Object>();
-    if (myUserObjects == null) {
-      return userObjects;
-    }
-    for (int i = 0; i < myUserObjects.length; i += 2) {
-      userObjects.put(myUserObjects[i], myUserObjects[i + 1]);
-    }
-    return userObjects;
+  protected SNode treePrevious() {
+    return prev;
   }
 
-  //------------concept properties-------------
+  public SNode treeNext() {
+    return next;
+  }
 
-  public boolean hasConceptProperty(String propertyName) {
-    if ("root".equals(propertyName)) {
-      if (SNodeUtil.isInstanceOfConceptDeclaration(this)) {
-        return SNodeUtil.getConceptDeclaration_IsRootable(this);
+  protected SNode treeParent() {
+    return parent;
+  }
+
+  //-------------new methods working by id-----------------
+
+  protected void children_insertBefore(SNode anchor, @NotNull SNode node) {
+    //be sure that getFirstChild is called before any access to myFirstChild
+    SNode firstChild = firstChild();
+
+    node.parent = this;
+
+    if (firstChild == null) {
+      assert anchor == null;
+      first = node;
+      node.next = null;
+      node.prev = node;
+      return;
+    }
+
+    if (anchor == null) {
+      SNode lastChild = firstChild.prev;
+      node.next = null;
+      node.prev = lastChild;
+      firstChild.prev = node;
+      lastChild.next = node;
+      return;
+    }
+
+    node.next = anchor;
+    node.prev = anchor.prev;
+    if (anchor != firstChild) {
+      anchor.prev.next = node;
+    } else {
+      first = node;
+    }
+    anchor.prev = node;
+  }
+
+  protected void children_remove(@NotNull SNode node) {
+    //be sure that getFirstChild is called before any access to myFirstChild
+    SNode firstChild = firstChild();
+    if (firstChild == node) {
+      first = node.next;
+      if (first != null) {
+        first.prev = node.prev;
+      }
+    } else {
+      node.prev.next = node.next;
+      if (node.next != null) {
+        node.next.prev = node.prev;
       } else {
-        SNode conceptDeclaration = getConceptDeclarationNode();
-        if (SNodeUtil.isInstanceOfConceptDeclaration(conceptDeclaration)) {
-          return SNodeUtil.getConceptDeclaration_IsRootable(conceptDeclaration);
+        firstChild.prev = node.prev;
+      }
+    }
+    node.prev = node.next = null;
+    node.parent = null;
+  }
+
+  @Override
+  public SContainmentLink getContainmentLink() {
+    return myRoleInParent;
+  }
+
+  @Override
+  public boolean hasProperty(@NotNull SProperty property) {
+    assertCanRead();
+
+    String val = findProperty(property);
+    myOwner.firePropertyRead(this, property, val, true);
+    return !SModelUtil_new.isEmptyPropertyValue(val);
+  }
+
+  @Override
+  public String getProperty(@NotNull SProperty property) {
+    assertCanRead();
+
+    String value = findProperty(property);
+    myOwner.firePropertyRead(this, property, value, false);
+    return value;
+  }
+
+  /**
+   * Bare access, no notifications nor checks
+   */
+  private String findProperty(SProperty property) {
+    if (myProperties != null) {
+      int index = getPropertyIndex(property);
+      if (index != -1) {
+        return (String) myProperties[index + 1];
+      }
+    }
+    return null;
+  }
+
+  @Override
+  public void setProperty(@NotNull final SProperty property, String propertyValue) {
+    assertCanChange();
+
+    int index = getPropertyIndex(property);
+    final String oldValue = index == -1 ? null : (String) myProperties[index + 1];
+    if (Objects.equals(oldValue, propertyValue)) return;
+
+    if (propertyValue == null) {
+      Object[] oldProperties = myProperties;
+      int newLength = oldProperties.length - 2;
+      if (newLength == 0) {
+        myProperties = null;
+      } else {
+        myProperties = new Object[newLength];
+        System.arraycopy(oldProperties, 0, myProperties, 0, index);
+        System.arraycopy(oldProperties, index + 2, myProperties, index, newLength - index);
+      }
+    } else if (oldValue == null) {
+      Object[] oldProperties = myProperties == null ? EMPTY_ARRAY : myProperties;
+      myProperties = new Object[oldProperties.length + 2];
+      System.arraycopy(oldProperties, 0, myProperties, 0, oldProperties.length);
+      myProperties[myProperties.length - 2] = property;
+      myProperties[myProperties.length - 1] = propertyValue;
+    } else {
+      myProperties[index + 1] = propertyValue;
+    }
+
+    myOwner.performUndoableAction(new PropertyChangeUndoableAction(this, property, oldValue, propertyValue));
+
+    myOwner.firePropertyChange(this, property, oldValue, propertyValue);
+  }
+
+  @NotNull
+  @Override
+  public Iterable<SProperty> getProperties() {
+    assertCanRead();
+
+    myOwner.fireNodeRead(this, true);
+
+    if (myProperties == null) return new EmptyIterable<>();
+    List<SProperty> result = new ArrayList<>(myProperties.length / 2);
+    for (int i = 0; i < myProperties.length; i += 2) {
+      result.add((SProperty) myProperties[i]);
+    }
+    return result;
+  }
+
+  @Override
+  public void setReferenceTarget(@NotNull SReferenceLink role, @Nullable org.jetbrains.mps.openapi.model.SNode target) {
+    assertCanChange();
+
+    SReference toDelete = null;
+    if (myReferences != null) {
+      for (SReference reference : myReferences) {
+        if (!reference.getLink().equals(role)) continue;
+        toDelete = reference;
+        break;
+      }
+    }
+    if (toDelete == null && target == null) {
+      return;
+    }
+
+    if (toDelete != null) {
+      removeReferenceInternal(toDelete);
+    }
+    SReference newValue = null;
+    if (target != null) {
+      newValue = SReference.create(role, this, target);
+      addReferenceInternal(newValue);
+    }
+
+    myOwner.fireReferenceChange(this, role, toDelete, newValue);
+  }
+
+  @Override
+  public void setReference(@NotNull SReferenceLink role, ResolveInfo resolveInfo) {
+    String ri = resolveInfo instanceof ResolveInfo.S ? ((ResolveInfo.S) resolveInfo).getValue() : null;
+    setReference(role, DynamicReference.createDynamicReference(role, this, null, ri));
+  }
+
+  @Override
+  public void setReference(@NotNull SReferenceLink role, @NotNull SNodeReference target) {
+    assertCanChange();
+
+    SReference toDelete = null;
+    if (myReferences != null) {
+      for (SReference reference : myReferences) {
+        if (reference.getLink().equals(role)) {
+          toDelete = reference;
+          break;
         }
       }
-      return false;
     }
 
-    return findConceptProperty(propertyName) != null;
-  }
-
-  public String getConceptProperty(String propertyName) {
-    SNode conceptProperty = findConceptProperty(propertyName);
-    Object o = SNodeUtil.getConceptPropertyValue(conceptProperty);
-    return o != null ? o.toString() : null;
-  }
-
-  public SNode findConceptProperty(String propertyName) {
-    SNode conceptDeclaration;
-    if (myConceptFqName.equals(SNodeUtil.concept_ConceptDeclaration) || myConceptFqName.equals(SNodeUtil.concept_InterfaceConceptDeclaration)) {
-      conceptDeclaration = this;
-    } else {
-      conceptDeclaration = SModelUtil.findConceptDeclaration(myConceptFqName, GlobalScope.getInstance());
+    if (toDelete != null) {
+      removeReferenceInternal(toDelete);
     }
-    return SModelSearchUtil.findConceptProperty(conceptDeclaration, propertyName);
+    SReference newValue = SReference.create(role, this, target, null);
+    addReferenceInternal(newValue);
+
+    myOwner.fireReferenceChange(this, role, toDelete, newValue);
   }
 
+  @Override
+  public SNode getReferenceTarget(@NotNull SReferenceLink role) {
+    assertCanRead();
+
+    SReference reference = findReference(role);
+    SNode result = reference == null ? null : (SNode) reference.getTargetNode();
+    myOwner.fireReferenceRead(this, role, result);
+    return result;
+  }
+
+  @Override
+  public SReference getReference(@NotNull SReferenceLink role) {
+    assertCanRead();
+
+    SReference result = findReference(role);
+    myOwner.fireReferenceRead(this, role, null);
+    return result;
+  }
+
+  /**
+   * Bare access, no notifications nor checks
+   */
+  private SReference findReference(@NotNull SReferenceLink role) {
+    for (SReference reference : myReferences) {
+      if (role.equals(reference.getLink())) {
+        return reference;
+      }
+    }
+    return null;
+  }
+
+  // FIXME odd to have role parameter, while SReference.getLink gives exactly what's needed (and doesn't violate consistency)
+  // to clear reference, one could use setReferenceTarget(). Alternatively, SReference shall not keep
+  // the meta-object, and query its source node for role instead (as a free-floating Reference shall not answer its SReferenceLink).
+  @Override
+  public void setReference(@NotNull SReferenceLink role, org.jetbrains.mps.openapi.model.SReference toAdd) {
+    assertCanChange();
+
+    SReference toRemove = null;
+    for (SReference r : myReferences) {
+      if (!r.getLink().equals(role)) continue;
+      toRemove = r;
+      break;
+    }
+
+    if (toRemove != null) {
+      removeReferenceInternal(toRemove);
+    }
+
+    if (toAdd != null) {
+      assert toAdd.getSourceNode() == this;
+      assert role.equals(toAdd.getLink());
+      addReferenceInternal((SReference) toAdd);
+    }
+
+    myOwner.fireReferenceChange(this, role, toRemove, toAdd);
+  }
+
+  @Override
+  public void dropReference(@NotNull SReferenceLink role) {
+    setReference(role, (org.jetbrains.mps.openapi.model.SReference) null);
+  }
+
+  public void insertChildBefore(@NotNull final SContainmentLink role, @NotNull org.jetbrains.mps.openapi.model.SNode child,
+                                @Nullable final org.jetbrains.mps.openapi.model.SNode anchor) {
+    assertCanChange();
+
+    final SNode schild = (SNode) child;
+    SNode parentOfChild = schild.getParent();
+    if (parentOfChild != null) {
+      final String fmt = "%s already has parent: %s\nCouldn't add it to: %s";
+      final String m = String.format(fmt, getDebugText(schild), getDebugText(parentOfChild), getDebugText(this));
+      throw new IllegalModelAccessException(m);
+    }
+    final SModel childModel = schild.getNodeOwner().getModel();
+    if (childModel != null) {
+      if (childModel.isRoot(schild)) {
+        final String fmt = "Attempt to add root %s from model %s to node %s.";
+        throw new IllegalModelAccessException(String.format(fmt, getDebugText(schild), childModel, getDebugText(this)));
+      } else {
+        final String fmt = "Node to add (%s) belongs to a model. Couldn't add it to %s. Shall detach it/remove from the model %s first.";
+        throw new IllegalModelAccessException(String.format(fmt, getDebugText(schild), getDebugText(this), childModel));
+      }
+    }
+
+    if (getContainingRoot() == child) {
+      throw new IllegalModelAccessException("Trying to create a cyclic tree");
+    }
+
+    if (anchor != null) {
+      if (anchor.getParent() != this) {
+        throw new IllegalModelAccessException(
+            "anchor is not a child of this node" + " | " +
+                "this: " + getDebugText(this) + " | " +
+                "anchor: " + getDebugText(anchor)
+        );
+      }
+    }
+
+    schild.myRoleInParent = role;
+    children_insertBefore(((SNode) anchor), schild);
+
+    myOwner.registerNode(schild);
+
+    myOwner.performUndoableAction(new InsertChildAtUndoableAction(this, anchor, role, child));
+
+    myOwner.fireNodeAdd(this, role, schild, (SNode) anchor);
+  }
+
+  @Override
+  public void addChild(@NotNull SContainmentLink role, @NotNull org.jetbrains.mps.openapi.model.SNode child) {
+    insertChildBefore(role, child, null);
+  }
+
+  @Override
+  @NotNull
+  public List<SNode> getChildren(SContainmentLink role) {
+    SNode firstChild = firstChild();
+
+    if (role != null) {
+      while (firstChild != null && !role.equals(firstChild.getContainmentLink())) {
+        firstChild = firstChild.treeNext();
+      }
+    }
+
+    if (firstChild == null) {
+      return Collections.emptyList();
+    }
+
+    return new ImmutableChildrenList(firstChild, role);
+  }
+
+  private int getPropertyIndex(SProperty id) {
+    if (myProperties == null) return -1;
+    for (int i = 0; i < myProperties.length; i += 2) {
+      if (id.equals(myProperties[i])) return i;
+    }
+    return -1;
+  }
+
+  @Deprecated
+  @Override
+  public String getRoleInParent() {
+    SContainmentLink cl = getContainmentLink();
+    if (cl == null) return null;
+    return cl.getRoleName();
+  }
+
+  @Deprecated
+  @Override
+  public final boolean hasProperty(String propertyName) {
+    return new SNodeLegacy(this).hasProperty(propertyName);
+  }
+
+  @Deprecated
+  @Override
+  public final String getProperty(String propertyName) {
+    return new SNodeLegacy(this).getProperty(propertyName);
+  }
+
+  @Deprecated
+  @Override
+  public void setProperty(String propertyName, String propertyValue) {
+    new SNodeLegacy(this).setProperty(propertyName, propertyValue);
+  }
+
+  @Deprecated
+  @Override
+  public Collection<String> getPropertyNames() {
+    List<String> res = new ArrayList<>(myProperties == null ? 0 : myProperties.length / 2);
+    for (SProperty p : getProperties()) {
+      res.add(p.getName());
+    }
+    return res;
+  }
+
+  @Deprecated
+  @Override
+  public void setReferenceTarget(String role, @Nullable org.jetbrains.mps.openapi.model.SNode target) {
+    new SNodeLegacy(this).setReferenceTarget(role, target);
+  }
+
+  @Deprecated
+  @Override
+  public SNode getReferenceTarget(String role) {
+    return new SNodeLegacy(this).getReferenceTarget(role);
+  }
+
+  @Deprecated
+  @Override
+  public SReference getReference(String role) {
+    return new SNodeLegacy(this).getReference(role);
+  }
+
+  @Deprecated
+  @Override
+  public void setReference(String role, @Nullable org.jetbrains.mps.openapi.model.SReference reference) {
+    new SNodeLegacy(this).setReference(role, reference);
+  }
+
+  @Deprecated
+  public void insertChildBefore(@NotNull String role, org.jetbrains.mps.openapi.model.SNode child,
+      @Nullable final org.jetbrains.mps.openapi.model.SNode anchor) {
+    new SNodeLegacy(this).insertChildBefore(role, child, anchor);
+  }
+
+  @Deprecated
+  @Override
+  public void addChild(String role, org.jetbrains.mps.openapi.model.SNode child) {
+    new SNodeLegacy(this).insertChildBefore(role, child, null);
+  }
+
+  @Deprecated
+  @Override
+  @NotNull
+  public List<SNode> getChildren(String role) {
+    return new SNodeLegacy(this).getChildren(role);
+  }
 }

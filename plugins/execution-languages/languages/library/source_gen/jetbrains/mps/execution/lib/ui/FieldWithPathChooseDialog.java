@@ -4,61 +4,41 @@ package jetbrains.mps.execution.lib.ui;
 
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
-import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import com.intellij.openapi.fileChooser.FileChooserDialog;
 import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.vfs.VirtualFile;
-import javax.swing.JTextField;
-import com.intellij.openapi.Disposable;
 
-public class FieldWithPathChooseDialog extends BaseFieldWithButtonComponent {
-  private final TextFieldWithBrowseButton.NoPathCompletion myField;
+public class FieldWithPathChooseDialog extends TextFieldWithBrowseButton.NoPathCompletion {
   private final FileChooserDescriptor myChooser;
-
   public FieldWithPathChooseDialog() {
     this(new FileChooserDescriptor(false, true, false, false, false, false));
   }
-
   public FieldWithPathChooseDialog(FileChooserDescriptor descriptor) {
-    this.setLayout(new BorderLayout());
     this.myChooser = descriptor;
-    this.myField = new TextFieldWithBrowseButton.NoPathCompletion(new ActionListener() {
+    addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent p0) {
-        FileChooserDialog dialog = FileChooserFactory.getInstance().createFileChooser(FieldWithPathChooseDialog.this.myChooser, FieldWithPathChooseDialog.this);
-        VirtualFile[] selectedFiles = dialog.choose(null, null);
+        FileChooserDialog dialog = FileChooserFactory.getInstance().createFileChooser(FieldWithPathChooseDialog.this.myChooser, null, FieldWithPathChooseDialog.this);
+        VirtualFile[] selectedFiles = dialog.choose(null);
         if (selectedFiles.length > 0 && selectedFiles[0] != null) {
           FieldWithPathChooseDialog.this.setText(selectedFiles[0].getPath());
         }
       }
     });
-    this.add(this.myField, BorderLayout.CENTER);
   }
-
   public void setEditable(boolean editable) {
-    this.myField.setEditable(editable);
-    this.myField.getButton().setEnabled(editable);
+    super.setEditable(editable);
+    getButton().setEnabled(editable);
   }
-
   public boolean getEditable() {
-    return this.myField.isEditable();
+    return isEditable();
   }
-
   public void setTitle(String title) {
     this.myChooser.setTitle(title);
   }
-
   public String getTitle() {
     return this.myChooser.getTitle();
-  }
-
-  public JTextField getTextField() {
-    return this.myField.getTextField();
-  }
-
-  @Override
-  public Disposable getDisposableComponent() {
-    return this.myField;
   }
 }

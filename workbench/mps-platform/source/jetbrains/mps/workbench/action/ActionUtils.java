@@ -17,25 +17,28 @@ package jetbrains.mps.workbench.action;
 
 import com.intellij.ide.DataManager;
 import com.intellij.ide.actions.RecentProjectsGroup;
+import com.intellij.ide.ui.customization.CustomActionsSchema;
 import com.intellij.openapi.actionSystem.*;
-import jetbrains.mps.logging.Logger;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.event.InputEvent;
 
 public class ActionUtils {
-  private static final Logger LOG = Logger.getLogger(ActionUtils.class);
+  private static final Logger LOG = LogManager.getLogger(ActionUtils.class);
 
   public static void updateGroup(ActionGroup group, AnActionEvent e) {
     try {
       group.update(e);
     } catch (Throwable t) {
-      LOG.error(t);
+      LOG.error(null, t);
     }
     for (AnAction child : group.getChildren(null)) {
       try {
         child.update(e);
       } catch (Throwable t) {
-        LOG.error(t);
+        LOG.error(null, t);
       }
       if (child instanceof ActionGroup) updateGroup((ActionGroup) child, e);
     }
@@ -45,8 +48,9 @@ public class ActionUtils {
     return ((BaseGroup) ActionManager.getInstance().getAction(id));
   }
 
-  public static DefaultActionGroup getDefaultGroup(String id) {
-    return ((DefaultActionGroup) ActionManager.getInstance().getAction(id));
+  @Nullable
+  public static ActionGroup getDefaultGroup(String id) {
+    return (ActionGroup) CustomActionsSchema.getInstance().getCorrectedAction(id);
   }
 
   public static DefaultActionGroup groupFromActions(AnAction... actions) {

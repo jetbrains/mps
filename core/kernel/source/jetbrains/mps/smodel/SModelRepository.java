@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,260 +15,134 @@
  */
 package jetbrains.mps.smodel;
 
-import gnu.trove.THashMap;
-import jetbrains.mps.InternalFlag;
-import jetbrains.mps.MPSCore;
-import jetbrains.mps.cleanup.CleanupManager;
-import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.reloading.ClassLoaderManager;
-import jetbrains.mps.reloading.ReloadAdapter;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
-import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.smodel.event.SModelFileChangedEvent;
-import jetbrains.mps.smodel.event.SModelListener;
-import jetbrains.mps.smodel.event.SModelRenamedEvent;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.IFileUtils;
+import jetbrains.mps.extapi.persistence.DataSourceBase;
+import jetbrains.mps.smodel.SModelId.ModelNameSModelId;
+import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelId;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SaveOptions;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
+import org.jetbrains.mps.openapi.persistence.DataSource;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
-public class SModelRepository implements CoreComponent {
-  private static final Logger LOG = Logger.getLogger(SModelRepository.class);
-  private ClassLoaderManager myManager;
-  private final ReloadAdapter myHandler;
-
-  public static SModelRepository getInstance() {
-    return MPSCore.getInstance().getModelRepository();
-  }
-
-  private final Map<String, EditableSModelDescriptor> myCanonicalPathsToModelDescriptorMap = new ConcurrentHashMap<String, EditableSModelDescriptor>();
-  private final Map<SModelId, SModelDescriptor> myIdToModelDescriptorMap = new ConcurrentHashMap<SModelId, SModelDescriptor>();
-  private final Map<SModelFqName, SModelDescriptor> myFqNameToModelDescriptorMap = new ConcurrentHashMap<SModelFqName, SModelDescriptor>();
+// not deprecated yet, despite access and methods are, as it might be reasonable to
+// keep a facility that gives access to all models of an SRepository (alternative to SRepository.getAllModels method). Or do it with SearchScope?
+// XXX shall become model-centric view of an SRepository. E.g. would be possible to attach listeners to all models, to keep a snapshot of all models
+// or to track changes (i.e. that would be too much for a search scope, hence need a separate class). The view, perhaps, could be filtered (e.g. by
+// Condition<SModel>). Non thread-safe
+public class SModelRepository {
+  private static final Logger LOG = LogManager.getLogger(SModelRepository.class);
 
   private final Object myModelsLock = new Object();
-  private final Map<SModelDescriptor, List<ModelOwner>> myModelsWithOwners = new THashMap<SModelDescriptor, List<ModelOwner>>();
-  private final Map<ModelOwner, Set<SModelDescriptor>> myModelsByOwner = new THashMap<ModelOwner, Set<SModelDescriptor>>();
+  private final List<SModel> myAllModels = new ArrayList<>();
+  private final Map<SModelId, SModel> myIdToModelDescriptorMap = new ConcurrentHashMap<>();
 
-  private final Object myListenersLock = new Object();
-  private final List<SModelRepositoryListener> mySModelRepositoryListeners = new ArrayList<SModelRepositoryListener>();
+  /*
+   * SModelRepository used to be global repo listener. With ProjectRepository exposing all modules visible from a project?
+   * however, closing a project (and repository disposal) lead to all models from all modules visible in other projects
+   * to be unregistered from this SModelRepository, and subsequent resolve() of uuid model references (that end up here)
+   * fail, leading to unresolved references. For now, as we still keep single MPSModuleRepository instance, just listen to it
+   * and ignore project repositories, and once we switch to multiple repositories, there would be no SModelRepository.
+   */
+  private final GlobalRepositoriesListener myRepositoriesListener = new GlobalRepositoriesListener();
 
-  private SModelListener myModelsListener = new ModelChangeListener();
-  private boolean myWasError = false;
+  private static SModelRepository INSTANCE;
+  private final MPSModuleRepository myRepository;
 
-  public SModelRepository(ClassLoaderManager manager) {
-    myManager = manager;
-    myHandler = new ReloadAdapter() {
-      public void unload() {
-        refreshModels();
-      }
-    };
+  /**
+   * @deprecated global collection of SModels doesn't allow us to move forward. Do not use.
+   */
+  @Deprecated
+  @ToRemove(version = 3.3)
+  public static SModelRepository getInstance() {
+    LOG.error("SModelRepository.getInstance() has been deprecated since MPS 3.3 (4 years ago!) and will be removed in MPS 2019.3. Please refactor your code!");
+    return INSTANCE;
   }
 
-  public void init() {
-    myManager.addReloadHandler(myHandler);
+  /*package*/ SModelRepository(@NotNull MPSModuleRepository moduleRepository) {
+    myRepository = moduleRepository;
   }
 
-  public void dispose() {
-    myManager.removeReloadHandler(myHandler);
-  }
-
-  //--------------------register/unregister----------------------
-
-  public void registerModelDescriptor(SModelDescriptor modelDescriptor, ModelOwner owner) {
-    synchronized (myModelsLock) {
-      List<ModelOwner> owners = myModelsWithOwners.get(modelDescriptor);
-      if (owners != null && owners.contains(owner)) return;
-
-      SModelReference modelReference = modelDescriptor.getSModelReference();
-      SModelDescriptor registeredModel = getModelDescriptor(modelReference);
-
-      LOG.assertLog(registeredModel == null || registeredModel == modelDescriptor,
-        "Another model \"" + modelReference + "\" is already registered for " + owner);
-
-      LOG.assertLog(owners == null || !owners.contains(owner),
-        "Another model \"" + modelReference + "\" is already registered for " + owner);
-
-      if (owners == null) {
-        owners = new ArrayList<ModelOwner>(1);
-        myModelsWithOwners.put(modelDescriptor, owners);
-      }
-
-      Set<SModelDescriptor> ownerModels = myModelsByOwner.get(owner);
-      if (ownerModels == null) {
-        ownerModels = new HashSet<SModelDescriptor>();
-        myModelsByOwner.put(owner, ownerModels);
-      }
-
-      ownerModels.add(modelDescriptor);
-      owners.add(owner);
-
-      if (modelReference.getSModelId() != null) {
-        myIdToModelDescriptorMap.put(modelReference.getSModelId(), modelDescriptor);
-        if (modelDescriptor instanceof BaseSModelDescriptor) {
-          ((BaseSModelDescriptor) modelDescriptor).setRegistered(true);
-        }
-      }
-      if (modelReference.getSModelFqName() != null) {
-        myFqNameToModelDescriptorMap.put(modelReference.getSModelFqName(), modelDescriptor);
-      }
-
-      if (modelDescriptor instanceof EditableSModelDescriptor) {
-        addModelToFileCache(((EditableSModelDescriptor) modelDescriptor));
-      }
-      modelDescriptor.addModelListener(myModelsListener);
+  // open to our MPSModuleRepository friend only, to mimic SModelRepository.getInstance behavior for legacy code. MPS SHALL NOT USE SINGLETON ANY MORE!
+  /*package*/ void init() {
+    if (INSTANCE != null) {
+      throw new IllegalStateException("double initialization");
     }
-    fireModelAdded(modelDescriptor);
+
+    INSTANCE = this;
+    new RepoListenerRegistrar(myRepository, myRepositoriesListener).attach();
   }
 
-  public void unRegisterModelDescriptor(SModelDescriptor md, ModelOwner owner) {
-    synchronized (myModelsLock) {
-      List<ModelOwner> owners = myModelsWithOwners.get(md);
-      if (!owners.remove(owner)) throw new IllegalStateException();
-      Set<SModelDescriptor> ownerModels = myModelsByOwner.get(owner);
-      if (!ownerModels.remove(md)) throw new IllegalStateException();
-
-      if (owners.isEmpty()) {
-        removeModelDescriptor(md);
-      }
-    }
-  }
-
-  public void removeModelDescriptor(SModelDescriptor md) {
-    synchronized (myModelsLock) {
-      fireBeforeModelRemoved(md);
-      List<ModelOwner> owners = myModelsWithOwners.get(md);
-      if (owners != null) {
-        for (ModelOwner owner : owners) {
-          Set<SModelDescriptor> ownerModels = myModelsByOwner.get(owner);
-          if (!ownerModels.remove(md)) throw new IllegalStateException();
-        }
-      }
-      myModelsWithOwners.remove(md);
-      if (md.getSModelReference().getSModelId() != null) {
-        myIdToModelDescriptorMap.remove(md.getSModelReference().getSModelId());
-        if (md instanceof BaseSModelDescriptor) {
-          ((BaseSModelDescriptor) md).setRegistered(false);
-        }
-      }
-      myFqNameToModelDescriptorMap.remove(md.getSModelReference().getSModelFqName());
-      if (md instanceof EditableSModelDescriptor) {
-        boolean result = removeModelFromFileCache(((EditableSModelDescriptor) md));
-        LOG.assertLog(result, "model " + md + " do not have a path in file cache");
-      }
-      md.removeModelListener(myModelsListener);
-      fireModelRemoved(md);
-      md.dispose();
-    }
-  }
-
-  public void unRegisterModelDescriptors(ModelOwner owner) {
-    for (SModelDescriptor sm : getModelDescriptors(owner)) {
-      unRegisterModelDescriptor(sm, owner);
-    }
-  }
-
-  public void deleteModel(SModelDescriptor modelDescriptor) {
-    ModelAccess.assertLegalWrite();
-
-    fireModelWillBeDeletedEvent(modelDescriptor);
-    removeModelDescriptor(modelDescriptor);
-
-    if (modelDescriptor instanceof EditableSModelDescriptor) {
-      IFile modelFile = ((EditableSModelDescriptor) modelDescriptor).getModelFile();
-      if (modelFile != null && modelFile.exists()) {
-        modelFile.delete();
-      }
-    }
-    SModelRepository.getInstance().fireModelDeletedEvent(modelDescriptor);
+  /*package*/ void dispose() {
+    new RepoListenerRegistrar(myRepository, myRepositoriesListener).detach();
+    INSTANCE = null;
   }
 
   //----------------------------get-----------------------------
 
-  public EditableSModelDescriptor findModel(IFile modelFile) {
-    String canonicalPath = IFileUtils.getCanonicalPath(modelFile);
-    return myCanonicalPathsToModelDescriptorMap.get(canonicalPath);
-  }
 
-  public List<SModelDescriptor> getModelDescriptors() {
+  public List<SModel> getModelDescriptors() {
     synchronized (myModelsLock) {
-      return new ArrayList<SModelDescriptor>(myModelsWithOwners.keySet());
+      return new ArrayList<>(myAllModels);
     }
   }
 
-  public List<SModelDescriptor> getModelDescriptorsByModelName(String modelName) {
-    List<SModelDescriptor> result = new ArrayList<SModelDescriptor>();
-    for (SModelDescriptor d : getModelDescriptors()) {
-      if (modelName.equals(d.getLongName())) {
-        result.add(d);
-      }
+  /**
+   * @deprecated this method makes sense for {@link SModelId#isGloballyUnique() globally unique} model id only, but doesn't manifest this contract.
+   * Use {@link SModelReference#resolve(SRepository)} instead
+   */
+  @Deprecated
+  @Nullable
+  public SModel getModelDescriptor(@NotNull SModelReference modelReference) {
+    return getModelDescriptor(modelReference.getModelId());
+  }
+
+  /**
+   * @deprecated this method makes sense for {@link SModelId#isGloballyUnique() globally unique} model id only, but doesn't manifest this contract.
+   * Use {@link SModelReference#resolve(SRepository)} instead
+   */
+  @Deprecated
+  public SModel getModelDescriptor(SModelId id) {
+    SModel value = myIdToModelDescriptorMap.get(id);
+    if (value == null && id instanceof ModelNameSModelId) {
+      // inexact search...
+      value = getModelDescriptor(id.getModelName());
     }
-    return result;
+    return value;
   }
 
-  public SModelDescriptor getModelDescriptor(SModelReference modelReference) {
-    if (modelReference == null) return null;
-    SModelId id = modelReference.getSModelId();
 
-    //todo remove this code
-    if (id == null) {
-      SModelFqName fqName = modelReference.getSModelFqName();
-      if (fqName == null) return null;
-
-      if (InternalFlag.isInternalMode()) {
-        if (!myWasError) {
-          myWasError = true;
-          LOG.warning("getModelDescriptor() is executed by fqName. This is likely to cause problems. And it is veeery slow.");
-        }
-      }
-
-      return getModelDescriptor(fqName);
-    }
-
-    return myIdToModelDescriptorMap.get(id);
+  // XXX there are uses in mbeddr
+  @Deprecated
+  public List<SModel> getModelDescriptorsByModelName(String modelName) {
+    LOG.warn("Use of SModelRepository.getModelDescriptorsByModelName is ineffective, please refactor to use SModelReference");
+    return getModelDescriptors().stream().filter(m -> modelName.equals(m.getName().getLongName())).collect(Collectors.toList());
   }
 
-  public List<SModelDescriptor> getModelDescriptors(ModelOwner modelOwner) {
-    synchronized (myModelsLock) {
-      Set<SModelDescriptor> result = myModelsByOwner.get(modelOwner);
-      if (result == null || result.size() == 0) return Collections.emptyList();
-      return new ArrayList<SModelDescriptor>(result);
-    }
+  // there's 1 use in mbeddr
+  public List<SModel> getModelDescriptors(SModule module) {
+    return IterableUtil.asList(module.getModels());
   }
 
-  public Set<ModelOwner> getOwners(SModelDescriptor modelDescriptor) {
-    synchronized (myModelsLock) {
-      List<ModelOwner> modelOwners = myModelsWithOwners.get(modelDescriptor);
-      if (modelOwners == null || modelOwners.size() == 0) return Collections.emptySet();
-      if (modelOwners.size() == 1) return Collections.singleton(modelOwners.get(0));
-      return new HashSet<ModelOwner>(modelOwners);
-    }
-  }
-
-  //----------------------------stuff-----------------------------
-
-  private void addModelToFileCache(EditableSModelDescriptor modelDescriptor) {
-    IFile modelFile = modelDescriptor.getModelFile();
-    if (modelFile == null) return;
-    myCanonicalPathsToModelDescriptorMap.put(IFileUtils.getCanonicalPath(modelFile), modelDescriptor);
-  }
-
-  private boolean removeModelFromFileCache(EditableSModelDescriptor modelDescriptor) {
-    IFile modelFile = modelDescriptor.getModelFile();
-    if (modelFile == null) return true;
-    SModelDescriptor sd = myCanonicalPathsToModelDescriptorMap.remove(IFileUtils.getCanonicalPath(modelFile));
-    return sd == modelDescriptor;
-  }
-
-  private List<EditableSModelDescriptor> getModelsToSave() {
-    List<EditableSModelDescriptor> modelsToSave = new ArrayList<EditableSModelDescriptor>();
-    for (SModelDescriptor md : myModelsWithOwners.keySet()) {
-      if (md instanceof EditableSModelDescriptor) {
-        EditableSModelDescriptor emd = ((EditableSModelDescriptor) md);
-        // HOTFIX MPS-13326
+  private List<EditableSModel> getModelsToSave() {
+    var modelsToSave = new ArrayList<EditableSModel>();
+    for (SModel md : getModelDescriptors()) {
+      if (md instanceof EditableSModel) {
+        EditableSModel emd = ((EditableSModel) md);
         if (emd.isChanged() && !emd.isReadOnly()) {
           modelsToSave.add(emd);
         }
@@ -278,20 +152,16 @@ public class SModelRepository implements CoreComponent {
   }
 
   public void saveAll() {
-    ModelAccess.assertLegalWrite();
-
-    List<EditableSModelDescriptor> modelsToRefresh;
     synchronized (myModelsLock) {
-      modelsToRefresh = getModelsToSave();
-    }
-    for (EditableSModelDescriptor emd : modelsToRefresh) {
-      FileSystem.getInstance().refresh(emd.getModelFile());
-    }
-
-    synchronized (myModelsLock) {
-      for (EditableSModelDescriptor emd : getModelsToSave()) {
+      var modelsToRefresh = getModelsToSave();
+      for (EditableSModel emd : modelsToRefresh) {
         try {
-          emd.save();
+          emd.save(new SaveOptions() {
+            @Override
+            public boolean refreshDataSource() {
+              return true;
+            }
+          });
         } catch (Throwable t) {
           LOG.error(t);
         }
@@ -299,161 +169,37 @@ public class SModelRepository implements CoreComponent {
     }
   }
 
-  public void refreshModels() {
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      public void run() {
-        LOG.debug("Model refresh");
-
-        for (SModelDescriptor m : getModelDescriptors()) {
-          m.refresh();
-        }
-
-        LOG.debug("Model refresh done");
-      }
-    });
-  }
-
   //---------------------------events----------------------------
 
-  public void addModelRepositoryListener(@NotNull SModelRepositoryListener l) {
-    synchronized (myListenersLock) {
-      mySModelRepositoryListeners.add(l);
+  // FIXME Why this method is different in implementation from #getModelDescriptorsByModelName(String modelName)?
+  //       This one takes full name, including stereotype, while getModelDescriptorsByModelName() cares about fqn only
+  public SModel getModelDescriptor(String modelName) {
+    if (modelName == null) {
+      return null;
     }
+    LOG.warn("Use of SModelRepository.getModelDescriptor(String) is ineffective, please refactor to use SModelReference");
+    return getModelDescriptors().stream().filter(m -> m.getName().getValue().equals(modelName)).findFirst().orElse(null);
   }
 
-  public void removeModelRepositoryListener(@NotNull SModelRepositoryListener l) {
-    synchronized (myListenersLock) {
-      mySModelRepositoryListeners.remove(l);
-    }
-  }
+  private class GlobalRepositoriesListener extends SRepositoryContentAdapter {
 
-  private List<SModelRepositoryListener> listeners() {
-    synchronized (myListenersLock) {
-      return new ArrayList<SModelRepositoryListener>(mySModelRepositoryListeners);
-    }
-  }
-
-  private void fireBeforeModelRemoved(SModelDescriptor modelDescriptor) {
-    for (SModelRepositoryListener l : listeners()) {
-      try {
-        l.beforeModelRemoved(modelDescriptor);
-      } catch (Throwable t) {
-        LOG.error(t);
+    @Override
+    protected void startListening(SModel model) {
+      SModelId modelId = model.getModelId();
+      if (modelId.isGloballyUnique()) {
+        myIdToModelDescriptorMap.put(modelId, model);
       }
-    }
-  }
-
-  private void fireModelRemoved(SModelDescriptor modelDescriptor) {
-    for (SModelRepositoryListener l : listeners()) {
-      try {
-        l.modelRemoved(modelDescriptor);
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void fireModelAdded(SModelDescriptor modelDescriptor) {
-    for (SModelRepositoryListener l : listeners()) {
-      try {
-        l.modelAdded(modelDescriptor);
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void fireModelRenamed(SModelDescriptor modelDescriptor) {
-    for (SModelRepositoryListener l : listeners()) {
-      try {
-        l.modelRenamed(modelDescriptor);
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void fireModelDeletedEvent(SModelDescriptor modelDescriptor) {
-    for (SModelRepositoryListener listener : listeners()) {
-      try {
-        listener.modelDeleted(modelDescriptor);
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void fireModelWillBeDeletedEvent(SModelDescriptor modelDescriptor) {
-    for (SModelRepositoryListener listener : listeners()) {
-      try {
-        listener.beforeModelDeleted(modelDescriptor);
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  //-------todo: changed functionality - is better to be moved to SModelDescriptor fully
-
-  @Deprecated
-  public void markChanged(SModel model) {
-    SModelDescriptor modelDescriptor = model.getModelDescriptor();
-    if (modelDescriptor instanceof EditableSModelDescriptor) {
-      ((EditableSModelDescriptor) modelDescriptor).setChanged(true);
-    }
-  }
-
-  public SModelDescriptor getModelDescriptor(SModelFqName fqName) {
-    if (fqName == null) return null;
-    return myFqNameToModelDescriptorMap.get(fqName);
-  }
-
-  private class ModelChangeListener extends SModelAdapter {
-    public ModelChangeListener() {
-      super(SModelListenerPriority.PLATFORM);
-    }
-
-    public void modelChanged(SModel model) {
-      markChanged(model);
-    }
-
-    public void modelChangedDramatically(SModel model) {
-      markChanged(model);
-    }
-
-    public void beforeModelRenamed(SModelRenamedEvent event) {
-      SModelDescriptor md = event.getModelDescriptor();
-      if (!(md instanceof EditableSModelDescriptor)) return;
-      removeModelFromFileCache(((EditableSModelDescriptor) md));
-    }
-
-    public void modelRenamed(SModelRenamedEvent event) {
       synchronized (myModelsLock) {
-        myFqNameToModelDescriptorMap.remove(event.getOldName());
-        myFqNameToModelDescriptorMap.put(event.getNewName(), event.getModelDescriptor());
-      }
-      SModelDescriptor md = event.getModelDescriptor();
-      if (md instanceof EditableSModelDescriptor) {
-        addModelToFileCache(((EditableSModelDescriptor) md));
-      }
-      fireModelRenamed(md);
-
-      CleanupManager.getInstance().cleanup();
-      MPSModuleRepository.getInstance().invalidateCaches();
-    }
-
-    public void beforeModelFileChanged(SModelFileChangedEvent event) {
-      SModelDescriptor md = event.getModelDescriptor();
-      if (md instanceof EditableSModelDescriptor) {
-        removeModelFromFileCache(((EditableSModelDescriptor) md));
+        myAllModels.add(model);
       }
     }
 
-    public void modelFileChanged(SModelFileChangedEvent event) {
-      SModelDescriptor md = event.getModelDescriptor();
-      if (md instanceof EditableSModelDescriptor) {
-        addModelToFileCache(((EditableSModelDescriptor) md));
+    @Override
+    protected void stopListening(SModel model) {
+      synchronized (myModelsLock) {
+        myAllModels.remove(model);
       }
+      myIdToModelDescriptorMap.remove(model.getModelId());
     }
   }
 }

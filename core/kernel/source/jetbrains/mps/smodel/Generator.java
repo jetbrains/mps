@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,109 +15,102 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.ModuleId;
-import jetbrains.mps.project.ModuleUtil;
-import jetbrains.mps.project.dependency.modules.GeneratorDependenciesManager;
-import jetbrains.mps.project.dependency.modules.ModuleDependenciesManager;
-import jetbrains.mps.project.structure.modules.*;
-import jetbrains.mps.project.structure.modules.mappingpriorities.*;
+import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.module.SDependencyImpl;
+import jetbrains.mps.project.ModelsAutoImportsManager.AutoImportsContributor;
+import jetbrains.mps.project.io.DescriptorIO;
+import jetbrains.mps.project.io.DescriptorIOFacade;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
+import jetbrains.mps.project.structure.modules.LanguageDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SDependencyScope;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public class Generator extends AbstractModule {
-  public static final Logger LOG = Logger.getLogger(Generator.class);
+public class Generator extends ReloadableModuleBase {
+  public static final Logger LOG = LogManager.getLogger(Generator.class);
 
+  /**
+   * @deprecated have to use SLanguage to facilitate standalone generator modules
+   */
+  @Deprecated
   private Language mySourceLanguage;
+  /**
+   * though SLanguage is runtime identity, and here we deal with source model presentation (where SModuleReference would be better
+   * match to represent source language module), I stick to SLanguage as it's pretty much the same as SModuleReference anyway, and, perhaps,
+   * we would need to add generators to deployed languages some day. Besides, as long as we use SModule instances for deployed modules as well,
+   * it's convenient to have SLanguage here for that purpose, too.
+   */
+  @NotNull
+  private SLanguage mySourceLanguage0;
+
   private GeneratorDescriptor myGeneratorDescriptor;
 
-  Generator(Language sourceLanguage, GeneratorDescriptor generatorDescriptor) {
-    mySourceLanguage = sourceLanguage;
+  /**
+   * this is pretty much how generator instantiation would look like (once we drop Language module).
+   * with this, we support standalone generators story
+   */
+  /*package*/ Generator(@NotNull SLanguage sourceLanguage, @NotNull GeneratorDescriptor generatorDescriptor, @Nullable IFile descriptorFile, @Nullable Language langModuleToBeRemoved) {
+    super(descriptorFile);
+    mySourceLanguage = langModuleToBeRemoved;
+    mySourceLanguage0 = sourceLanguage;
     myGeneratorDescriptor = generatorDescriptor;
-
-    String uid = myGeneratorDescriptor.getGeneratorUID();
-    if (uid == null) {
-      myGeneratorDescriptor.setGeneratorUID(generateGeneratorUID(mySourceLanguage));
-    }
-
-    ModuleId uuid = myGeneratorDescriptor.getId();
-    if (uuid == null) {
-      uuid = ModuleId.regular();
-      myGeneratorDescriptor.setId(uuid);
-    }
-    ModuleReference mp = new ModuleReference(myGeneratorDescriptor.getGeneratorUID(), uuid);
-    setModuleReference(mp);
-
-    upgradeGeneratorDescriptor();
-    reloadAfterDescriptorChange();
+    setModuleReference(myGeneratorDescriptor.getModuleReference());
   }
 
-  public String getPluginPath() {
-    return getSourceLanguage().getPluginPath();
-  }
 
-  private void upgradeGeneratorDescriptor() {
-    for (MappingPriorityRule mappingPriorityRule : myGeneratorDescriptor.getPriorityRules()) {
-      MappingConfig_AbstractRef lesser = mappingPriorityRule.getRight();
-      MappingConfig_AbstractRef greater = mappingPriorityRule.getLeft();
-      if (upgradeMappingConfigRef(lesser)) {
-      }
-      if (upgradeMappingConfigRef(greater)) {
-      }
+  @Override
+  public void attach(@NotNull SRepository repository) {
+    super.attach(repository);
+    if (mySourceLanguage != null) {
+      mySourceLanguage.register(this);
     }
-  }
-
-  private boolean upgradeMappingConfigRef(MappingConfig_AbstractRef ref) {
-    boolean descriptorChanged = false;
-    if (ref instanceof MappingConfig_SimpleRef) {
-      if (upgradeMappingConfigSimpleRef((MappingConfig_SimpleRef) ref)) {
-        descriptorChanged = true;
-      }
-    }
-    if (ref instanceof MappingConfig_RefSet) {
-      for (MappingConfig_AbstractRef simpleRef : ((MappingConfig_RefSet) ref).getMappingConfigs()) {
-        if (upgradeMappingConfigRef(simpleRef)) {
-          descriptorChanged = true;
-        }
-      }
-    }
-    if (ref instanceof MappingConfig_ExternalRef) {
-      MappingConfig_ExternalRef extRef = (MappingConfig_ExternalRef) ref;
-      if (upgradeMappingConfigRef(extRef.getMappingConfig())) {
-        descriptorChanged = true;
-      }
-    }
-    return descriptorChanged;
-  }
-
-  private boolean upgradeMappingConfigSimpleRef(MappingConfig_SimpleRef simpleRef) {
-    boolean descriptorChanged = false;
-    String s = simpleRef.getModelUID();
-    SModelReference modelReference = SModelReference.fromString(s);
-    if (modelReference.getStereotype().equals(SModelStereotype.TEMPLATES)) {
-      modelReference = new SModelReference(modelReference.getLongName(), SModelStereotype.GENERATOR);
-      s = modelReference.toString();
-      simpleRef.setModelUID(s);
-      descriptorChanged = true;
-    }
-    return descriptorChanged;
-  }
-
-  public boolean isPackaged() {
-    return getSourceLanguage().isPackaged();
   }
 
   @Override
-  public Collection<String> getStubPaths() {
-    return getSourceLanguage().getRuntimeStubPaths();
+  public void dispose() {
+    if (mySourceLanguage != null) {
+      mySourceLanguage.unregister(this);
+    }
+    super.dispose();
   }
 
-  public List<SModelDescriptor> getOwnTemplateModels() {
-    List<SModelDescriptor> templateModels = new ArrayList<SModelDescriptor>();
-    for (SModelDescriptor modelDescriptor : getOwnModelDescriptors()) {
+  /*package*/ void setSourceLanguageInstance(@Nullable Language language) {
+    if (language == null && mySourceLanguage != null) {
+      // XXX perhaps, shall unregister regardless of language == null.
+      //     Is it possible that Generator instance had mySourceLanguage module set != null, and then re-set to another != null, without null in between?
+      mySourceLanguage.unregister(this);
+      mySourceLanguage = null;
+    }
+    if (language != null) {
+      assert sourceLanguage().equals(MetaAdapterFactory.getLanguage(language.getModuleReference()));
+      mySourceLanguage = language;
+      mySourceLanguage.register(this);
+    }
+  }
+
+  public List<SModel> getOwnTemplateModels() {
+    List<SModel> templateModels = new ArrayList<>();
+    for (SModel modelDescriptor : getModels()) {
       if (SModelStereotype.isGeneratorModel(modelDescriptor)) {
         templateModels.add(modelDescriptor);
       }
@@ -125,174 +118,180 @@ public class Generator extends AbstractModule {
     return templateModels;
   }
 
+  @NotNull
+  @Override
   public GeneratorDescriptor getModuleDescriptor() {
     return myGeneratorDescriptor;
   }
 
   @Override
-  public void reloadFromDisk(boolean reloadClasses) {
-    //do nothing. reloaded by containing language
-  }
-
-  public void setModuleDescriptor(ModuleDescriptor moduleDescriptor, boolean reloadClasses) {
+  protected void doSetModuleDescriptor(ModuleDescriptor moduleDescriptor) {
     assert moduleDescriptor instanceof GeneratorDescriptor;
-
-    LanguageDescriptor languageDescriptor = getSourceLanguage().getModuleDescriptor();
-    int index = languageDescriptor.getGenerators().indexOf(getModuleDescriptor());
-    languageDescriptor.getGenerators().remove(index);
-    languageDescriptor.getGenerators().add(index, (GeneratorDescriptor) moduleDescriptor);
-    getSourceLanguage().setLanguageDescriptor(languageDescriptor, reloadClasses);
-
-    invalidateDependencies();
-  }
-
-  public String getName() {
-    return myGeneratorDescriptor.getNamespace();
+    if (false == moduleDescriptor instanceof GeneratorDescriptor) {
+      return;
+    }
+    final GeneratorDescriptor oldGD = myGeneratorDescriptor;
+    final GeneratorDescriptor generatorDescriptor = (GeneratorDescriptor) moduleDescriptor;
+    myGeneratorDescriptor = generatorDescriptor;
+    if (generatorDescriptor.isStandaloneModule()) {
+      // base setModuleDescriptor() does reloadAfterDescriptorChange()
+      return;
+    }
+    if (mySourceLanguage == null) {
+      // this module lost its source language connection (or never had one), can not update anything
+      return;
+    }
+    LanguageDescriptor languageDescriptor = mySourceLanguage.getModuleDescriptor();
+    int index = languageDescriptor.getGenerators().indexOf(oldGD);
+    if (index != -1) {
+      languageDescriptor.getGenerators().remove(index);
+      languageDescriptor.getGenerators().add(index, generatorDescriptor);
+    }
+    // Beware, we don't need to do setModuleDescriptor() for source language, its MD has not been changed (doing otherwise would be a hack).
+    // We still need language to reload its generators (Language.revalidateGenerators()), and as long as revalidateGenerators does this for ALL
+    // generators, not only directly owned, I keep this call outside of index != -1 check.
+    // In any case, it's odd to do anything about source language in doSetModuleDescriptor() operation this one has to be focused on MD change, rather than
+    // to care about source language reload, shall fix this as standalone generator story evolves.
+    mySourceLanguage.reloadAfterDescriptorChange();
   }
 
   public String getAlias() {
-    String name = myGeneratorDescriptor.getNamespace();
-    return getSourceLanguage().getModuleFqName() + "/" + (name == null ? "<no name>" : name);
+    String name = myGeneratorDescriptor.getAlias();
+    // with standalone generators in mind, sourceLanguage.qualifiedName + alias make much more sense than for 'language-owned'
+    // generators, where namespace reflects source language name anyway. Once we have arbitrary module names for Generators,
+    // use of alias with the name of source language gives some valuable info.
+    return sourceLanguage().getQualifiedName() + '/' + (name == null ? "<no name>" : name);
   }
 
-  public static String generateGeneratorUID(Language sourceLanguage) {
-    return sourceLanguage.getModuleFqName() + "#" + SModel.generateUniqueId();
+  public SLanguage sourceLanguage() {
+    return mySourceLanguage0;
   }
 
+  /**
+   * @deprecated Hard link to Language module makes Generator modules inflexible and bound to Language presence.
+   *             Use {@link #sourceLanguage()} instead
+   *             XXX what's the contract of the method, is it supposed to give source language of a generator that is part of a language or
+   *             for it shall give Language for standalone generator as well?
+   */
+  @Deprecated
+  @ToRemove(version = 2019.1)
+  @Nullable
   public Language getSourceLanguage() {
     return mySourceLanguage;
   }
 
+  /**
+   * @return <code>true</code> if templates for this generator should be generated into Java code instead of being interpreted at runtime
+   */
+  public boolean generateTemplates() {
+    return myGeneratorDescriptor.isGenerateTemplates();
+  }
+
   public String toString() {
-    return getAlias();
+    return getAlias() + " [generator]";
   }
 
+  /**
+   * fixme why generator saves language??
+   * generator is contained in language it must be the other way around!
+   */
+  @Override
   public void save() {
-    mySourceLanguage.save();
-  }
-
-  public List<Dependency> getDependencies() {
-    List<Dependency> result = super.getDependencies();
-    for (ModuleReference ref : getSourceLanguage().getRuntimeModulesReferences()) {
-      result.add(new Dependency(ref, false));
-    }
-    return result;
-  }
-
-  public ModuleDependenciesManager getDependenciesManager() {
-    return new GeneratorDependenciesManager(this);
-  }
-
-  public List<ModuleReference> getReferencedGeneratorUIDs() {
-    return new ArrayList<ModuleReference>(myGeneratorDescriptor.getDepGenerators());
-  }
-
-  public List<Generator> getReferencedGenerators() {
-    List<Generator> result = new ArrayList<Generator>();
-    for (ModuleReference guid : getReferencedGeneratorUIDs()) {
-      IModule module = MPSModuleRepository.getInstance().getModule(guid);
-      if (module instanceof Generator) {
-        result.add((Generator) module);
+    super.save();
+    if (getModuleDescriptor().isStandaloneModule() && getDescriptorFile() != null) {
+      if (getModuleDescriptor().getLoadException() != null){
+        return;
+      }
+      try {
+        DescriptorIO<GeneratorDescriptor> io = DescriptorIOFacade.getInstance().standardProvider().generatorDescriptorIO();
+        io.writeToFile(getModuleDescriptor(), getDescriptorFile());
+      } catch (Exception ex) {
+        Logger.getLogger(getClass()).error("Save failed", ex);
+      }
+    } else {
+      if (mySourceLanguage != null) {
+        // FIXME odd...
+        mySourceLanguage.save();
       }
     }
-    return result;
   }
 
-  public boolean isCompileInMPS() {
-    // generator is always compiled in MPS
-    return true;
-  }
+  @Override
+  public Iterable<SDependency> getDeclaredDependencies() {
+    HashSet<SDependency> rv = new HashSet<>(IterableUtil.asCollection(super.getDeclaredDependencies()));
+    final SRepository repo = getRepository();
 
-  public IFile getBundleHome() {
-    return null;
-  }
-
-  public String getGeneratorOutputPath() {
-    return mySourceLanguage.getGeneratorOutputPath();
-  }
-
-  public String getTestsGeneratorOutputPath() {
-    return mySourceLanguage.getTestsGeneratorOutputPath();
-  }
-
-  public IFile getClassesGen() {
-    return mySourceLanguage.getClassesGen();
-  }
-
-  public Collection<SModelDescriptor> getImplicitlyImportedModelsFor(SModelDescriptor sm) {
-    Set<SModelDescriptor> result = new LinkedHashSet<SModelDescriptor>(super.getImplicitlyImportedModelsFor(sm));
-
-    SModelDescriptor structureModelDescriptor = getSourceLanguage().getStructureModelDescriptor();
-    if (structureModelDescriptor != null) {
-      result.add(structureModelDescriptor);
+    // generator sees its source language
+    rv.add(new SDependencyImpl(mySourceLanguage0.getSourceModuleReference(), repo, SDependencyScope.DEFAULT, false));
+    for (SModuleReference rt : mySourceLanguage0.getLanguageRuntimes()) {
+      rv.add(new SDependencyImpl(rt, repo, SDependencyScope.RUNTIME, false));
     }
 
-    SModelDescriptor constraints = LanguageAspect.CONSTRAINTS.get(getSourceLanguage());
-    if (constraints != null) {
-      result.add(constraints);
+    // generator sees all dependent generators as non-reexport
+    for (SModuleReference refGenerator : getReferencedGeneratorUIDs()) {
+      // XXX not sure it's right to resolve modules through global repository if this module is not attached anywhere
+      // FIXME all referenced generators are of 'extends' dependency at the moment
+      // but this might need a change once we store extended generators as a regular SDependency
+      // instead of hacky getReferencedGeneratorUIDs
+      rv.add(new SDependencyImpl(refGenerator, repo, SDependencyScope.EXTENDS, false));
+    }
+    return rv;
+  }
+
+  public List<SModuleReference> getReferencedGeneratorUIDs() {
+    return new ArrayList<>(myGeneratorDescriptor.getDepGenerators());
+  }
+
+  /**
+   * Internal method, used from the process of re-validating generators from the language module.
+   *
+   * We cannot call Generator.setModuleDescriptor() method from there because it is implemented to call
+   * Language.setModuleDescriptor() starting generators re-validation process.
+   *
+   * This method can be removed if we separate generator module persistence from the language module persistence.
+   *
+   */
+  final void updateGeneratorDescriptor(GeneratorDescriptor generatorDescriptor) {
+    myGeneratorDescriptor = generatorDescriptor;
+    setModuleReference(myGeneratorDescriptor.getModuleReference());
+    reloadAfterDescriptorChange();
+  }
+
+  public static class GeneratorModelsAutoImports extends AutoImportsContributor {
+
+    @Override
+    public boolean isApplicable(SModule module) {
+      return module instanceof Generator;
     }
 
-    for (Language language : ModuleUtil.refsToLanguages(getSourceLanguage().getExtendedLanguageRefs())) {
-      SModelDescriptor structure = language.getStructureModelDescriptor();
-      if (structure != null) {
-        result.add(structure);
+    @Override
+    public Set<SModel> getAutoImportedModels(SModule contextGenerator, SModel model) {
+      // likely, one needs to reference concepts of the source language:
+      if (SModelStereotype.isGeneratorModel(model) && contextGenerator.getRepository() != null) {
+        final SModuleReference sourceLangRef = ((Generator) contextGenerator).sourceLanguage().getSourceModuleReference();
+        SModule langModule = sourceLangRef == null ? null : sourceLangRef.resolve(contextGenerator.getRepository());
+        // FIXME MM, please tell me what to use instead! SModuleOperations.getAspect(SModule, "structure") isn't nice alternative for hand-written code.
+        SModel structureAspect = langModule instanceof Language ? LanguageAspect.STRUCTURE.get(((Language) langModule)) : null;
+        if (structureAspect != null) {
+          // XXX when source language used to be 'used language', we've imported all extended languages as well. Shall we
+          // import structures of extended language modules here as well?
+          return Collections.singleton(structureAspect);
+        }
       }
-
-      SModelDescriptor constr = LanguageAspect.CONSTRAINTS.get(language);
-      if (constr != null) {
-        result.add(constr);
-      }
+      return Collections.emptySet();
     }
 
-    for (Language language : SModelOperations.getLanguages(sm.getSModel(), getScope())) {
-      SModelDescriptor struc = language.getStructureModelDescriptor();
-      if (struc != null) {
-        result.add(struc);
-      }
+    @NotNull
+    @Override
+    public Collection<SLanguage> getLanguages(SModule contextGenerator, SModel model) {
+      // languages we are going to write templates at are not known at this moment,
+      // generator languages are imported with dedicated templates devkit
+      return Collections.emptySet();
     }
 
-    return result;
-  }
-
-  public Class getClass(String fqName) {
-    return mySourceLanguage.getClass(fqName);
-  }
-
-  public Collection<Language> getImplicitlyImportedLanguages(SModelDescriptor sm) {
-    Set<Language> result = new LinkedHashSet<Language>(super.getImplicitlyImportedLanguages(sm));
-    if (SModelStereotype.isGeneratorModel(sm)) {
-      result.add(getSourceLanguage());
-
-      result.addAll(ModuleUtil.refsToLanguages(getSourceLanguage().getExtendedLanguageRefs()));
+    @Override
+    public Collection<SModuleReference> getDevKits(SModule contextModule, SModel forModel) {
+      return Collections.singleton(BootstrapLanguages.getGeneratorTemplatesDevKit());
     }
-    return result;
-  }
-
-  public boolean deleteReferenceFromPriorities(SModelReference ref) {
-    boolean[] descriptorChanged = new boolean[]{false};
-    Iterator<MappingPriorityRule> it = myGeneratorDescriptor.getPriorityRules().iterator();
-    while (it.hasNext()) {
-      MappingPriorityRule rule = it.next();
-      MappingConfig_AbstractRef right = rule.getRight();
-      MappingConfig_AbstractRef left = rule.getLeft();
-      if (right.removeModelReference(ref, descriptorChanged) || left.removeModelReference(ref, descriptorChanged)) {
-        it.remove();
-      }
-    }
-    return descriptorChanged[0];
-  }
-
-  public List<SModelDescriptor> getGeneratorModels() {
-    List<SModelDescriptor> result = new ArrayList<SModelDescriptor>();
-    List<SModelDescriptor> ownModels = this.getOwnModelDescriptors();
-    for (SModelDescriptor ownModel : ownModels) {
-      if (SModelStereotype.isGeneratorModel(ownModel)) {
-        result.add((ownModel));
-      } else if (SModelStereotype.isUserModel(ownModel)) {
-        // normal model goes first
-        result.add(0, ownModel);
-      }
-    }
-    return result;
   }
 }

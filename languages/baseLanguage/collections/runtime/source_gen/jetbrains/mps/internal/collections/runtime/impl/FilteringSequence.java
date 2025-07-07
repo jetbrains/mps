@@ -8,7 +8,6 @@ import java.util.NoSuchElementException;
 
 public class FilteringSequence<U> extends AbstractChainedSequence<U, U> implements Iterable<U> {
   private final _FunctionTypes._return_P1_E0<? extends Boolean, ? super U> filter;
-
   public FilteringSequence(Iterable<U> input, _FunctionTypes._return_P1_E0<? extends Boolean, ? super U> filter) {
     super(input);
     if (filter == null) {
@@ -16,19 +15,17 @@ public class FilteringSequence<U> extends AbstractChainedSequence<U, U> implemen
     }
     this.filter = filter;
   }
-
+  @Override
   public Iterator<U> iterator() {
-    return new FilteringSequence.FilteringIterator();
+    return new FilteringIterator();
   }
-
   private class FilteringIterator implements Iterator<U> {
     private Iterator<U> inputIterator;
     private HasNextState hasNext = HasNextState.UNKNOWN;
     private U next;
-
     private FilteringIterator() {
     }
-
+    @Override
     public boolean hasNext() {
       if (inputIterator == null) {
         init();
@@ -38,7 +35,7 @@ public class FilteringSequence<U> extends AbstractChainedSequence<U, U> implemen
       }
       return hasNext.hasNext();
     }
-
+    @Override
     public U next() {
       if (inputIterator == null) {
         init();
@@ -51,15 +48,13 @@ public class FilteringSequence<U> extends AbstractChainedSequence<U, U> implemen
       }
       return clearNext();
     }
-
+    @Override
     public void remove() {
       throw new UnsupportedOperationException();
     }
-
     private void init() {
       inputIterator = getInput().iterator();
     }
-
     private void moveToNext() {
       hasNext = HasNextState.AT_END;
       next = null;
@@ -72,7 +67,6 @@ public class FilteringSequence<U> extends AbstractChainedSequence<U, U> implemen
         }
       }
     }
-
     private U clearNext() {
       U tmp = next;
       next = null;

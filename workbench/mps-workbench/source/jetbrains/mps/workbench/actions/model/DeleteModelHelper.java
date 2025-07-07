@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,39 +15,51 @@
  */
 package jetbrains.mps.workbench.actions.model;
 
-import com.intellij.openapi.project.Project;
-import jetbrains.mps.generator.fileGenerator.FileGenerationUtil;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.specific.ModelUsagesFinder;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.messages.MessagesViewTool;
-import jetbrains.mps.ide.platform.refactoring.RefactoringAccess;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.logging.Logger;
+import jetbrains.mps.ide.ui.finders.ModelImportsUsagesFinder;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
+import jetbrains.mps.model.ModelDeleteHelper;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.ProjectOperationContext;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.refactoring.framework.*;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
+import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_AbstractRef;
+import jetbrains.mps.project.structure.modules.mappingpriorities.MappingPriorityRule;
+import jetbrains.mps.refactoring.framework.BaseRefactoring;
+import jetbrains.mps.refactoring.framework.IRefactoring;
+import jetbrains.mps.refactoring.framework.IRefactoringTarget;
+import jetbrains.mps.refactoring.framework.RefactoringContext;
+import jetbrains.mps.refactoring.runtime.access.RefactoringAccess;
+import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.SModelStereotype;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.FindUsagesFacade;
+import org.jetbrains.mps.openapi.module.SModule;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Set;
 
 public class DeleteModelHelper {
-  private static final Logger LOG = Logger.getLogger(DeleteModelHelper.class);
+  private static final Logger LOG = LogManager.getLogger(DeleteModelHelper.class);
 
-  public static void deleteModel(Project project, IModule contextModule, SModelDescriptor modelDescriptor, boolean safeDelete, boolean deleteFiles) {
-    LanguageAspect aspect = Language.getModelAspect(modelDescriptor);
-
-    if (aspect == LanguageAspect.STRUCTURE) {
-      Message msg = new Message(MessageKind.WARNING, DeleteModelHelper.class, "Can't delete structure model " + modelDescriptor.getLongName());
-      project.getComponent(MessagesViewTool.class).add(msg);
+  public static void deleteModel(Project project, SModule contextModule, SModel modelDescriptor, boolean safeDelete, boolean deleteFiles) {
+    if (LanguageAspect.STRUCTURE.is(modelDescriptor)) {
+      Message msg = new Message(MessageKind.WARNING, DeleteModelHelper.class, "Can't delete structure model " + modelDescriptor.getModelName());
+      MessagesViewTool.getInstance(project).add(msg);
       return;
     }
 
@@ -58,17 +70,7 @@ public class DeleteModelHelper {
     }
   }
 
-  public static void deleteGeneratedFiles(SModelDescriptor modelDescriptor) {
-    String moduleOutputPath = modelDescriptor.getModule().getOutputFor(modelDescriptor);
-    if (moduleOutputPath == null) {
-      return;
-    }
-    IFile moduleOutput = FileSystem.getInstance().getFileByPath(moduleOutputPath);
-    FileGenerationUtil.getDefaultOutputDir(modelDescriptor, moduleOutput).delete();
-    FileGenerationUtil.getDefaultOutputDir(modelDescriptor, FileGenerationUtil.getCachesDir(moduleOutput)).delete();
-  }
-
-  public static void delete(IModule contextModule, SModelDescriptor modelDescriptor, boolean deleteFiles) {
+  public static void delete(SModule contextModule, SModel modelDescriptor, boolean deleteFiles) {
     boolean deleteIfAsked = true;
     if (contextModule instanceof Language) {
       deleteIfAsked = deleteModelFromLanguage((Language) contextModule, modelDescriptor);
@@ -77,36 +79,32 @@ public class DeleteModelHelper {
     } else if (contextModule instanceof Generator) {
       deleteModelFromGenerator((Generator) contextModule, modelDescriptor);
     } else {
-      LOG.warning("Module type " + contextModule.getClass().getSimpleName() + " is not supported by delete refactoring. Changes will not be saved automatically for modules of this type.");
+      LOG.warn("Module type " + contextModule.getClass().getSimpleName() + " is not supported by delete refactoring." +
+               "Changes will not be saved automatically for modules of this type.");
     }
 
-    if (deleteFiles && deleteIfAsked) {
-      deleteGeneratedFiles(modelDescriptor);
-      SModelRepository.getInstance().deleteModel(modelDescriptor);
+    if (!modelDescriptor.isReadOnly()) {
+      if (deleteFiles && deleteIfAsked) {
+        new ModelDeleteHelper(modelDescriptor).delete();
+      }
     }
   }
 
-  public static void safeDelete(final Project project, final SModelDescriptor modelDescriptor, boolean deleteFiles) {
+  public static void safeDelete(final Project project, final SModel modelDescriptor, boolean deleteFiles) {
     IRefactoring ref = new SafeDeleteModelRefactoring(deleteFiles);
-    final RefactoringContext context = new RefactoringContext(ref);
+    final RefactoringContext context = new RefactoringContext(project, ref);
     context.setSelectedModel(modelDescriptor);
     context.setSelectedModule(modelDescriptor.getModule());
-    context.setSelectedProject(ProjectHelper.toMPSProject(project));
-    context.setCurrentOperationContext(new ProjectOperationContext(ProjectHelper.toMPSProject(project)));
-    ModelAccess.instance().runWriteInEDT(new Runnable() {
-      @Override
-      public void run() {
-        if (!(modelDescriptor.isRegistered())){
-          return;
-        }
+
+    project.getRepository().getModelAccess().runWriteInEDT(() -> {
+      if (modelDescriptor.getReference().resolve(project.getRepository()) == modelDescriptor) {
         RefactoringAccess.getInstance().getRefactoringFacade().execute(context);
       }
     });
-
   }
 
-  private static boolean deleteModelFromLanguage(Language language, SModelDescriptor modelDescriptor) {
-    if (language.isAccessoryModel(modelDescriptor.getSModelReference())) {
+  private static boolean deleteModelFromLanguage(Language language, SModel modelDescriptor) {
+    if (language.isAccessoryModel(modelDescriptor.getReference())) {
       language.removeAccessoryModel(modelDescriptor);
       return false;
     } else {
@@ -114,23 +112,43 @@ public class DeleteModelHelper {
     }
   }
 
-  private static void deleteModelFromSolution(Solution solution, SModelDescriptor modelDescriptor) {
+  private static void deleteModelFromSolution(Solution solution, SModel modelDescriptor) {
 
   }
 
-  private static void deleteModelFromGenerator(Generator generator, SModelDescriptor modelDescriptor) {
-    generator.deleteReferenceFromPriorities(modelDescriptor.getSModelReference());
+  private static void deleteModelFromGenerator(Generator generator, SModel modelDescriptor) {
+    // XXX used to be a method in Generator, and, perhaps, should be there, if Generator module class with all its related stuff comes from [generator-engine],
+    // otherwise it's odd to keep a generator-specific classes in [kernel] (or to make [kernel] dependent from [generator-engine]
+    // XXX in fact, as long as Generator lives in [kernel], we shall keep MappingPriorityRule in [kernel] as well. Just would be odd to move
+    // generator.runtime.TemplateMappingPriorityRule there as well, hence those kept in [generator-engine], with code relevant to [generator], [kernel] and
+    // [project] being moved outside of these three.
+    final SModelReference ref = modelDescriptor.getReference();
+    final GeneratorDescriptor generatorDescriptor = generator.getModuleDescriptor();
+    boolean[] descriptorChanged = new boolean[]{false};
+    Iterator<MappingPriorityRule> it = generatorDescriptor.getPriorityRules().iterator();
+    while (it.hasNext()) {
+      MappingPriorityRule rule = it.next();
+      MappingConfig_AbstractRef right = rule.getRight();
+      MappingConfig_AbstractRef left = rule.getLeft();
+      // FIXME revisit boolean[] descriptorChanged, which seems to be of no use
+      if (right.removeModelReference(ref, descriptorChanged) || left.removeModelReference(ref, descriptorChanged)) {
+        it.remove();
+      }
+    }
   }
 
   private static class SafeDeleteModel_Target implements IRefactoringTarget {
+    @Override
     public IRefactoringTarget.TargetType getTarget() {
       return TargetType.MODEL;
     }
 
+    @Override
     public boolean allowMultipleTargets() {
       return false;
     }
 
+    @Override
     public boolean isApplicable(final Object entity) {
       return true;
     }
@@ -155,49 +173,36 @@ public class DeleteModelHelper {
 
     @Override
     public void refactor(RefactoringContext refactoringContext) {
-      SModelDescriptor modelDescriptor = refactoringContext.getSelectedModel();
-      Set<ModelOwner> owners = SModelRepository.getInstance().getOwners(modelDescriptor);
-      for (ModelOwner modelOwner : owners) {
-        if (!(modelOwner instanceof IModule)) {
-          LOG.warning("Model owner type " + modelOwner.getClass().getSimpleName() + " is not supported by delete refactoring. Changes will not be saved automatically for owners of this type.");
-          continue;
-        }
-        if ((IModule) modelOwner instanceof Language) {
-          deleteModelFromLanguage((Language) (IModule) modelOwner, modelDescriptor);
-        } else if ((IModule) modelOwner instanceof Solution) {
-          deleteModelFromSolution((Solution) (IModule) modelOwner, modelDescriptor);
-        } else if ((IModule) modelOwner instanceof Generator) {
-          deleteModelFromGenerator((Generator) (IModule) modelOwner, modelDescriptor);
-        } else {
-          LOG.warning("Module type " + ((IModule) modelOwner).getClass().getSimpleName() + " is not supported by delete refactoring. Changes will not be saved automatically for modules of this type.");
-        }
-      }
+      SModel modelDescriptor = refactoringContext.getSelectedModel();
+      SModule modelOwner = modelDescriptor.getModule();
 
       // delete imports from available models, helps if there are no references to deleted model
-      for (SModelDescriptor md : SModelRepository.getInstance().getModelDescriptors()) {
-        if (SModelStereotype.isUserModel(md) && new ModelFindOperations(md).hasImportedModel(modelDescriptor)) {
-          md.getSModel().deleteModelImport(modelDescriptor.getSModelReference());
+      Set<SModel> usages = FindUsagesFacade.getInstance().findModelUsages(
+          GlobalScope.getInstance(),
+          Collections.singleton(modelDescriptor.getReference()),
+          new EmptyProgressMonitor());
+      for (SModel md : usages) {
+        if (!SModelStereotype.isStubModel(md)) {
+          new ModelImports(md).removeModelImport(modelDescriptor.getReference());
         }
       }
-
-      if (myDeleteFiles) {
-        SModelRepository.getInstance().deleteModel(modelDescriptor);
-      }
+      delete(modelOwner, modelDescriptor, myDeleteFiles);
 
       //todo: check correctness - they are not ALL model owners
-      for (ModelOwner modelOwner : owners) {
-        if (modelOwner instanceof IModule) {
-          ((IModule) modelOwner).save();
-        }
+      if (modelOwner instanceof AbstractModule) {
+        ((AbstractModule) modelOwner).save();
       }
     }
 
-
+    @Nullable
     @Override
     public SearchResults getAffectedNodes(RefactoringContext refactoringContext) {
-      SearchQuery searchQuery = new SearchQuery(refactoringContext.getSelectedModel().getSModel(), GlobalScope.getInstance());
-      return FindUtils.getSearchResults(new EmptyProgressMonitor(), searchQuery, new ModelUsagesFinder());
+      if (refactoringContext.getSelectedModel() == null) {
+        return null;
+      }
+
+      SearchQuery searchQuery = new SearchQuery(refactoringContext.getSelectedModel().getReference(), GlobalScope.getInstance());
+      return FindUtils.getSearchResults(new EmptyProgressMonitor(), searchQuery, new ModelImportsUsagesFinder());
     }
   }
-
 }

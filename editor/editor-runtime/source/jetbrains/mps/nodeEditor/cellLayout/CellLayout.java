@@ -15,23 +15,51 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
-import jetbrains.mps.nodeEditor.text.TextBuilder;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.TextBuilder;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
+import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
+import java.awt.Rectangle;
 import java.util.List;
 
-public interface CellLayout {
+public interface CellLayout extends jetbrains.mps.openapi.editor.cells.CellLayout {
 
   void doLayout(EditorCell_Collection editorCells);
 
   TextBuilder doLayoutText(Iterable<EditorCell> editorCells);
 
   int getAscent(EditorCell_Collection editorCells);
+
   int getDescent(EditorCell_Collection editorCell_collection);
 
   List<Rectangle> getSelectionBounds(EditorCell_Collection editorCells);
 
   boolean canBeFolded();
+
+  @Nullable
+  List<? extends EditorCell> getSelectionCells(EditorCell_Collection editorCells);
+
+  /**
+   * Used to notify {@link jetbrains.mps.nodeEditor.cellLayout.CellLayout} that re-layout of corresponding
+   * {@link jetbrains.mps.openapi.editor.cells.EditorCell_Collection} was requested.
+   * <p/>
+   * Can be used to include additional (child) cells into re-layout process by calling
+   * {@link jetbrains.mps.openapi.editor.cells.EditorCell#requestRelayout()} method on corresponding cells.
+   *
+   * @param editorCells EditorCell_Collection to re-layout
+   */
+  void requestRelayout(EditorCell_Collection editorCells);
+
+  /**
+   * Used to notify {@link jetbrains.mps.nodeEditor.cellLayout.CellLayout} that {@link jetbrains.mps.openapi.editor.cells.EditorCell#moveTo(int, int)}
+   * of corresponding {@link jetbrains.mps.openapi.editor.cells.EditorCell_Collection} was performed.
+   * <p/>
+   * Can be used to trigger re-layout for some child cells if layout logic depends on cell x/y coordinates.
+   *
+   * @param editorCells EditorCell_Collection to re-layout
+   * @param deltaX      change of X-coordinate (newX - oldX) for <code>editorCells</code>
+   * @param deltaY      change of Y-coordinate (newY - oldY) for <code>editorCells</code>
+   */
+  void move(EditorCell_Collection editorCells, int deltaX, int deltaY);
 }

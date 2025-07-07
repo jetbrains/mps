@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,50 +15,103 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.nodeEditor.EditorContext;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Label.DummyUndoableAction;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.smodel.ModelCommandContext;
+import jetbrains.mps.smodel.ModelCommandContext.Provider;
+import org.jetbrains.mps.openapi.language.SDataType;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 
 public class TransactionalPropertyAccessor extends PropertyAccessor implements TransactionalModelAccessor {
-  private String myOldValue;
-  private String myUncommitedValue;
+  private Object myOldValue;
+  private Object myUncommittedValue;
   private boolean myHasValueToCommit = false;
 
-  public TransactionalPropertyAccessor(SNode node, String propertyName, boolean readOnly, boolean allowEmptyText, EditorContext editorContext) {
-    super(node, propertyName, readOnly, allowEmptyText, editorContext);
+  private EditorCell myEditorCell;
+
+  public TransactionalPropertyAccessor(SNode node, SProperty property, boolean readOnly, boolean allowEmptyText,
+                                       EditorContext editorContext) {
+    super(node, property, readOnly, allowEmptyText, editorContext);
   }
 
-  public TransactionalPropertyAccessor(SNode node, String propertyName, boolean readOnly, boolean allowEmptyText, IOperationContext context) {
-    super(node, propertyName, readOnly, allowEmptyText, context);
+  void setCell(EditorCell editorCell) {
+    myEditorCell = editorCell;
   }
 
-  protected String doGetValue() {
+  @Override
+  public Object doGetValue() {
     if (myHasValueToCommit) {
-      return myUncommitedValue;
+      return myUncommittedValue;
     }
     return super.doGetValue();
   }
 
-  protected void doSetValue(String newText) {
+  @Override
+  public void doSetValue(Object newValue) {
+    myUncommittedValue = newValue;
     myHasValueToCommit = true;
-    myUncommitedValue = newText;
     myOldValue = super.doGetValue();
   }
 
-  public void commit() {
+  @Override
+  public boolean hasValueToCommit() {
+    return myHasValueToCommit;
+  }
+
+  @Override
+  public void resetUncommittedValue() {
     if (myHasValueToCommit) {
-      doCommit(myOldValue, myUncommitedValue);
-      myUncommitedValue = null;
+      myUncommittedValue = null;
       myHasValueToCommit = false;
-      ModelAccess.instance().runReadAction(new Runnable() {
-        public void run() {
-          myOldValue = doGetValue();
-        }
-      });
     }
   }
 
+  @Override
+  public void commit() {
+    if (myHasValueToCommit) {
+      doCommit0(myOldValue, myUncommittedValue);
+
+      final ModelAccess modelAccess = getRepository().getModelAccess();
+      modelAccess.executeCommand(new ChangePropertyEditorCommand(myEditorCell.getContext(), getGroupId()) {
+        @Override
+        protected void doExecute() {
+          resetUncommittedValue();
+          if (modelAccess instanceof ModelCommandContext.Provider) {
+            final ModelCommandContext cc = ((Provider) modelAccess).getCommandContext(myEditorCell.getContext().getModel());
+            if (cc != null) {
+              cc.registerActionWithUndo(new DummyUndoableAction(getNode()));
+            }
+          }
+        }
+      });
+
+      myOldValue = null;
+      synchronizeCell();
+    }
+  }
+
+  protected void doCommit0(Object oldValue, Object newValue) {
+    SDataType type = getProperty().getType();
+    doCommit(type.toString(oldValue), type.toString(newValue));
+  }
+
+  @Deprecated
   protected void doCommit(String oldValue, String newValue) {
+  }
+
+  private void synchronizeCell() {
+    if (myEditorCell instanceof SynchronizeableEditorCell) {
+      ((SynchronizeableEditorCell) myEditorCell).synchronize();
+    }
+  }
+
+  private String getGroupId() {
+    if (myEditorCell instanceof EditorCell_Label) {
+      return ((EditorCell_Label) myEditorCell).getCommandGroupId();
+    }
+    return null;
   }
 }

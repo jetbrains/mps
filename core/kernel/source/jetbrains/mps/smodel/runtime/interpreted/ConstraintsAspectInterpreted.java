@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,14 @@
  */
 package jetbrains.mps.smodel.runtime.interpreted;
 
-import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
+import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
-public class ConstraintsAspectInterpreted implements ConstraintsAspectDescriptor {
+public class ConstraintsAspectInterpreted extends BaseConstraintsAspectDescriptor {
   private static final ConstraintsAspectInterpreted INSTANCE = new ConstraintsAspectInterpreted();
 
   private ConstraintsAspectInterpreted() {
@@ -29,9 +32,7 @@ public class ConstraintsAspectInterpreted implements ConstraintsAspectDescriptor
     return INSTANCE;
   }
 
-  @Override
-  public ConstraintsDescriptor getDescriptor(String fqName) {
-    // todo: illegal?
-    return new BaseConstraintsDescriptor(fqName);
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept) {
+    return new BaseConstraintsDescriptor(concept);
   }
 }

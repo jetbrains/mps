@@ -9,9 +9,9 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 public class SeveralThreads {
   public SeveralThreads() {
   }
-
   public static void main(String[] args) {
     new Thread(new Runnable() {
+      @Override
       public void run() {
         int i = 0;
         int j;
@@ -42,7 +42,6 @@ public class SeveralThreads {
       doSomething();
     }
   }
-
   public static void doSomething() {
     try {
       Thread.sleep((long) (1000 * Math.random()));

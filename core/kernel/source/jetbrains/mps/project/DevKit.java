@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,99 +15,63 @@
  */
 package jetbrains.mps.project;
 
-import jetbrains.mps.library.ModulesMiner;
-import jetbrains.mps.library.ModulesMiner.ModuleHandle;
-import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.project.persistence.DevkitDescriptorPersistence;
+import jetbrains.mps.project.io.DescriptorIO;
+import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.reloading.ClassLoaderManager;
-import jetbrains.mps.smodel.*;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.ToStringComparator;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.Logger;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class DevKit extends AbstractModule implements MPSModuleOwner {
+public class DevKit extends AbstractModule {
   private DevkitDescriptor myDescriptor;
-  private IFile myDescriptorFile;
-  private MPSModuleOwner myGenerationOnlyModelsModelOwner = this;
 
   /* TODO make package local, move to appropriate package */
   public DevKit(DevkitDescriptor descriptor, IFile file) {
-    myDescriptorFile = file;
+    super(file);
     myDescriptor = descriptor;
     setModuleReference(descriptor.getModuleReference());
   }
 
-  public IFile getDescriptorFile() {
-    return myDescriptorFile;
-  }
-
+  @Override
   public DevkitDescriptor getModuleDescriptor() {
     return myDescriptor;
   }
 
-  public void setModuleDescriptor(ModuleDescriptor moduleDescriptor, boolean reloadClasses) {
-    setDevKitDescriptor((DevkitDescriptor) moduleDescriptor, reloadClasses);
-  }
-
-  public void setDevKitDescriptor(DevkitDescriptor descriptor, boolean reloadClasses) {
-    MPSModuleRepository moduleRepo = MPSModuleRepository.getInstance();
-    ModuleRepositoryFacade.getInstance().unregisterModules(this);
-    ModuleRepositoryFacade.getInstance().unregisterModules(myGenerationOnlyModelsModelOwner);
-
-    myDescriptor = descriptor;
+  @Override
+  public void doSetModuleDescriptor(ModuleDescriptor moduleDescriptor) {
+    myDescriptor = (DevkitDescriptor) moduleDescriptor;
 
     if (myDescriptor.getNamespace() != null) {
-      ModuleReference mp = new ModuleReference(myDescriptor.getNamespace(), myDescriptor.getId());
+      SModuleReference mp = new jetbrains.mps.project.structure.modules.ModuleReference(myDescriptor.getNamespace(), myDescriptor.getId());
       setModuleReference(mp);
     }
-
-    reloadAfterDescriptorChange();
-    moduleRepo.fireModuleChanged(this);
-
-    if (reloadClasses) {
-      ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
-    }
-
-    invalidateDependencies();
-  }
-
-  public String getGeneratorOutputPath() {
-    return null;
-  }
-
-  public String getTestsGeneratorOutputPath() {
-    return null;
-  }
-
-  //why?   [Mihail Muhin]
-  protected void reloadAfterDescriptorChange() {
-    ModuleRepositoryFacade.getInstance().unregisterModules(this);
-    super.reloadAfterDescriptorChange();
-  }
-
-  public void dispose() {
-    ModuleRepositoryFacade.getInstance().unregisterModules(this);
-    ModuleRepositoryFacade.getInstance().unregisterModules(myGenerationOnlyModelsModelOwner);
-
-    super.dispose();
-  }
-
-  @Override
-  protected ModuleDescriptor loadDescriptor() {
-    return ModulesMiner.getInstance().loadModuleDescriptor(getDescriptorFile());
   }
 
   public List<Language> getExportedLanguages() {
-    List<Language> langs = new ArrayList<Language>();
-    for (ModuleReference l : myDescriptor.getExportedLanguages()) {
-      ModuleReference ref = ModuleReference.fromString(l.getModuleFqName());
-      Language lang = ModuleRepositoryFacade.getInstance().getModule(ref, Language.class);
+    SRepository repo = getRepository();
+    if (repo == null) {
+      return Collections.emptyList();
+    }
+    List<Language> langs = new ArrayList<>();
+    ModuleRepositoryFacade repoFacade = new ModuleRepositoryFacade(repo);
+    // FIXME in fact, shall produce SLanguage, not Language module here
+    // there are two uses in mbeddr that need to get fixed first
+    for (SModuleReference l : myDescriptor.getExportedLanguages()) {
+      Language lang = repoFacade.getModule(l, Language.class);
       if (lang != null) {
         langs.add(lang);
       }
@@ -116,8 +80,16 @@ public class DevKit extends AbstractModule implements MPSModuleOwner {
     return langs;
   }
 
+  /**
+   *
+   * @deprecated use {@link #getAllExportedLanguageIds()} instead.
+   * Once there are no uses, rename getAllExportedLanguageIds to this method and deprecate the former. And, please, stop using Iterable when there's Collection.
+   * It's plain stupid to write for() just to add all elements of the iterable to another collection (and don't get me started about IterableUtil.asCollection)
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
   public List<Language> getAllExportedLanguages() {
-    List<Language> result = new ArrayList<Language>();
+    List<Language> result = new ArrayList<>();
     for (DevKit dk : getAllExtendedDevkits()) {
       for (Language l : dk.getExportedLanguages()) {
         if (!result.contains(l)) {
@@ -128,23 +100,26 @@ public class DevKit extends AbstractModule implements MPSModuleOwner {
     return result;
   }
 
-  Iterable<ModuleReference> getExtendedDevKits_internal() {
-    return myDescriptor.getExtendedDevkits();
-  }
-
-  Iterable<ModuleReference> getExportedSolutions_internal() {
-    return myDescriptor.getExportedSolutions();
-  }
-
-  Iterable<ModuleReference> getExportedLanguages_internal() {
-    return myDescriptor.getExportedLanguages();
+  public Iterable<SLanguage> getAllExportedLanguageIds() {
+    Set<SLanguage> result = new HashSet<>();
+    for (DevKit dk : getAllExtendedDevkits()) {
+      for (SModuleReference l : dk.myDescriptor.getExportedLanguages()) {
+        SLanguage lang = MetaAdapterFactory.getLanguage(l);
+        result.add(lang);
+      }
+    }
+    return result;
   }
 
   public List<DevKit> getExtendedDevKits() {
-    List<DevKit> result = new ArrayList<DevKit>();
-    for (ModuleReference ref : myDescriptor.getExtendedDevkits()) {
-      String uid = ref.getModuleFqName();
-      DevKit devKit = ModuleRepositoryFacade.getInstance().getModule(uid, DevKit.class);
+    SRepository repo = getRepository();
+    if (repo == null) {
+      return Collections.emptyList();
+    }
+    ModuleRepositoryFacade repoFacade = new ModuleRepositoryFacade(repo);
+    List<DevKit> result = new ArrayList<>();
+    for (SModuleReference ref : myDescriptor.getExtendedDevkits()) {
+      DevKit devKit = repoFacade.getModule(ref, DevKit.class);
       if (devKit != null) {
         result.add(devKit);
       }
@@ -153,13 +128,15 @@ public class DevKit extends AbstractModule implements MPSModuleOwner {
   }
 
   public List<DevKit> getAllExtendedDevkits() {
-    List<DevKit> result = new ArrayList<DevKit>();
+    List<DevKit> result = new ArrayList<>();
     collectDevKits(result);
     return result;
   }
 
   private void collectDevKits(List<DevKit> result) {
-    if (result.contains(this)) return;
+    if (result.contains(this)) {
+      return;
+    }
     result.add(this);
     for (DevKit dk : getExtendedDevKits()) {
       dk.collectDevKits(result);
@@ -167,18 +144,23 @@ public class DevKit extends AbstractModule implements MPSModuleOwner {
   }
 
   public List<Solution> getExportedSolutions() {
-    List<Solution> result = new ArrayList<Solution>();
-    for (ModuleReference ref : myDescriptor.getExportedSolutions()) {
-      String uid = ref.getModuleFqName();
-      Solution solution = ModuleRepositoryFacade.getInstance().getModule(uid, Solution.class);
-      if (solution == null) continue;
-      result.add(solution);
+    SRepository repo = getRepository();
+    if (repo == null) {
+      return Collections.emptyList();
+    }
+    ModuleRepositoryFacade repoFacade = new ModuleRepositoryFacade(repo);
+    List<Solution> result = new ArrayList<>();
+    for (SModuleReference ref : myDescriptor.getExportedSolutions()) {
+      Solution solution = repoFacade.getModule(ref, Solution.class);
+      if (solution != null) {
+        result.add(solution);
+      }
     }
     return result;
   }
 
   public List<Solution> getAllExportedSolutions() {
-    List<Solution> result = new ArrayList<Solution>();
+    List<Solution> result = new ArrayList<>();
     for (DevKit dk : getAllExtendedDevkits()) {
       for (Solution s : dk.getExportedSolutions()) {
         if (result.contains(s)) continue;
@@ -188,32 +170,30 @@ public class DevKit extends AbstractModule implements MPSModuleOwner {
     return result;
   }
 
-  public List<String> getLanguageNamespaces() {
-    List<String> result = new ArrayList<String>();
-    for (Language l : getExportedLanguages()) {
-      result.add(l.getModuleFqName());
-    }
-    return result;
-  }
-
+  @Override
   public void save() {
-    DevkitDescriptorPersistence.saveDevKitDescriptor(myDescriptorFile, getModuleDescriptor());
-  }
+    super.save();
+    if (isReadOnly()) {
+      return;
+    }
 
-  public String getName() {
-    return myDescriptor.getNamespace();
+    // does this mean than once loaded with error, we have no chance to fix the module?
+    if (myDescriptor.getLoadException() != null){
+      return;
+    }
+    try {
+      DescriptorIO<DevkitDescriptor> io = DescriptorIOFacade.getInstance().standardProvider().devkitDescriptorIO();
+      io.writeToFile(getModuleDescriptor(), getDescriptorFile());
+    } catch (Exception ex) {
+      Logger.getLogger(getClass()).error("Save failed", ex);
+    }
   }
 
   public String toString() {
-    return getName();
+    return getModuleName() + " [devkit]";
   }
 
   public boolean isHidden() {
     return false;
-  }
-
-  @Deprecated
-  public static DevKit newInstance(ModuleHandle handle, MPSModuleOwner moduleOwner) {
-    return (DevKit) ModuleRepositoryFacade.createModule(handle, moduleOwner);
   }
 }

@@ -15,27 +15,21 @@
  */
 package jetbrains.mps.smodel.action;
 
-import jetbrains.mps.smodel.IScope;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public abstract class DefaultSimpleSubstituteAction extends DefaultChildNodeSubstituteAction {
-  // since MPS 2.0
-  @Deprecated
-  public DefaultSimpleSubstituteAction(Object parameterObject, SNode parentNode, SNode currentChild, IChildNodeSetter setter, IScope scope) {
-    super(parameterObject, parentNode, currentChild, setter, scope);
-  }
-
   /**
    * @param concept instanceof AbstractConceptDeclaration
    */
-  public DefaultSimpleSubstituteAction(SNode concept, SNode parentNode, SNode currentChild, IChildNodeSetter setter, IScope scope) {
-    super(concept, parentNode, currentChild, setter, scope);
+  public DefaultSimpleSubstituteAction(SNode concept, SNode parentNode, SNode currentChild, IChildNodeSetter setter) {
+    super(concept, parentNode, currentChild, setter);
   }
 
   public boolean hasSubstitute() {
     return false;
   }
 
+  @Override
   public boolean canSubstituteStrictly(String pattern) {
     if (hasSubstitute()) {
       return canSubstitute_internal(pattern, true);
@@ -43,6 +37,7 @@ public abstract class DefaultSimpleSubstituteAction extends DefaultChildNodeSubs
     return super.canSubstituteStrictly(pattern);
   }
 
+  @Override
   public boolean canSubstitute(String pattern) {
     if (hasSubstitute()) {
       return canSubstitute_internal(pattern, false);
@@ -53,4 +48,5 @@ public abstract class DefaultSimpleSubstituteAction extends DefaultChildNodeSubs
   protected boolean canSubstitute_internal(String pattern, boolean strictly) {
     return false;
   }
+
 }

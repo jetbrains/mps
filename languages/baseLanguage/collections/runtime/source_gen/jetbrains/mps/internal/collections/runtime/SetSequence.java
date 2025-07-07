@@ -4,176 +4,26 @@ package jetbrains.mps.internal.collections.runtime;
 
 import java.util.Set;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.impl.NullSetSequence;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Arrays;
+import java.util.Collection;
 
-public class SetSequence<T> extends CollectionSequence<T> implements ISetSequence<T>, Set<T>, Serializable {
-  private static final long serialVersionUID = -5489490742621116508L;
-
-  private Set<T> set;
-
+public class SetSequence<T> extends AbstractSetSequence<T> implements ISetSequence<T>, Set<T>, Serializable {
+  private static final long serialVersionUID = 541380543157727748L;
   protected SetSequence(Set<T> set) {
-    this.set = set;
+    super(set);
   }
-
-  protected SetSequence(SetSequence<T> other) {
-    set = new HashSet<T>(other.set);
-  }
-
-  public boolean addAll(Collection<? extends T> c) {
-    return set.addAll(c);
-  }
-
-  public void clear() {
-    set.clear();
-  }
-
-  public boolean contains(Object o) {
-    return set.contains(o);
-  }
-
-  public boolean containsAll(Collection<?> c) {
-    return set.containsAll(c);
-  }
-
-  public boolean equals(Object o) {
-    return set.equals(o);
-  }
-
-  public int hashCode() {
-    return set.hashCode();
-  }
-
-  public boolean isEmpty() {
-    return set.isEmpty();
-  }
-
-  public Iterator<T> iterator() {
-    return set.iterator();
-  }
-
-  public boolean removeAll(Collection<?> c) {
-    return set.removeAll(c);
-  }
-
-  public boolean retainAll(Collection<?> c) {
-    return set.retainAll(c);
-  }
-
-  public int size() {
-    return set.size();
-  }
-
-  public Object[] toArray() {
-    return set.toArray();
-  }
-
-  public <U> U[] toArray(U[] a) {
-    return set.toArray(a);
-  }
-
-  @Override
-  public int count() {
-    return set.size();
-  }
-
-  @Override
-  public ISequence<T> disjunction(ISequence<T> that) {
-    return super.disjunction(that);
-  }
-
-  @Override
-  public ISequence<T> distinct() {
-    return this;
-  }
-
-  @Override
-  public ISequence<T> intersect(ISequence<T> that) {
-    return super.intersect(that);
-  }
-
-  @Override
-  public boolean isNotEmpty() {
-    return count() > 0;
-  }
-
-  @Override
-  public ISequence<T> subtract(ISequence<T> that) {
-    return super.subtract(that);
-  }
-
-  @Override
-  public ISequence<T> union(ISequence<T> that) {
-    return super.union(that);
-  }
-
-  public ISetSequence<T> addSequence(ISequence<? extends T> seq) {
-    if (Sequence.USE_NULL_SEQUENCE) {
-      if (seq == null) {
-        return this;
-      }
-    }
-    for (T t : seq.toIterable()) {
-      if (Sequence.IGNORE_NULL_VALUES) {
-        if (t == null) {
-          continue;
-        }
-      }
-      set.add(t);
-    }
-    return this;
-  }
-
-  public ISetSequence<T> removeSequence(ISequence<? extends T> seq) {
-    if (Sequence.USE_NULL_SEQUENCE) {
-      if (seq == null) {
-        return this;
-      }
-    }
-    for (T t : seq.toIterable()) {
-      set.remove(t);
-    }
-    return this;
-  }
-
-  @SuppressWarnings(value = "unchecked")
-  public T[] toGenericArray() {
-    return (T[]) set.toArray();
-  }
-
-  @SuppressWarnings(value = "unchecked")
-  public T[] toGenericArray(Class<T> runtimeClass) {
-    T[] arr = (T[]) ArrayUtils.newArrayInstance(runtimeClass, set.size());
-    return set.toArray(arr);
-  }
-
-  public Set<T> toSet() {
-    return set;
-  }
-
   @Override
   public ISetSequence<T> asUnmodifiable() {
-    return new SetSequence(Collections.unmodifiableSet(getSet()));
+    return new SetSequence<T>(Collections.unmodifiableSet(getSet()));
   }
-
   @Override
   public ISetSequence<T> asSynchronized() {
-    return new SetSequence(Collections.unmodifiableSet(getSet()));
+    return new SetSequence<T>(Collections.unmodifiableSet(getSet()));
   }
-
-  protected Set<T> getSet() {
-    return set;
-  }
-
-  protected Collection<T> getCollection() {
-    return set;
-  }
-
   public static <U> ISetSequence<U> fromArray(U... array) {
     if (Sequence.USE_NULL_SEQUENCE) {
       if (array == null) {
@@ -182,7 +32,6 @@ public class SetSequence<T> extends CollectionSequence<T> implements ISetSequenc
     }
     return SetSequence.fromSetAndArray(new HashSet<U>(), array);
   }
-
   public static <U> ISetSequence<U> fromSet(Set<U> set) {
     if (Sequence.USE_NULL_SEQUENCE) {
       if (set == null) {
@@ -194,7 +43,6 @@ public class SetSequence<T> extends CollectionSequence<T> implements ISetSequenc
     }
     return new SetSequence<U>(set);
   }
-
   public static <U> ISetSequence<U> fromSetAndArray(Set<U> set, U... array) {
     if (Sequence.NULL_ARRAY_IS_SINGLETON) {
       if (array == null) {
@@ -230,7 +78,6 @@ public class SetSequence<T> extends CollectionSequence<T> implements ISetSequenc
     }
     return new SetSequence<U>(set);
   }
-
   public static <U> ISetSequence<U> fromIterable(Iterable<U> it) {
     if (Sequence.USE_NULL_SEQUENCE) {
       if (it == null) {
@@ -257,7 +104,6 @@ public class SetSequence<T> extends CollectionSequence<T> implements ISetSequenc
     }
     return new SetSequence<U>(set);
   }
-
   public static <U> ISetSequence<U> fromSetWithValues(Set<U> set, Iterable<? extends U> it) {
     Set<U> tmp = set;
     if (Sequence.USE_NULL_SEQUENCE) {

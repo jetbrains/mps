@@ -1,74 +1,97 @@
+/*
+ * Copyright 2003-2016 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package jetbrains.mps.plugins.runconfigs;
 
+import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiFile;
 import com.intellij.psi.impl.FakePsiElement;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.IModule;
+import jetbrains.mps.extapi.model.TransientSModel;
+import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.*;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.Mapper;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class MPSPsiElement<T> extends FakePsiElement {
-  private static final Logger LOG = Logger.getLogger(MPSPsiElement.class);
+/**
+ * FIXME rewrite into several classes instead of this with Object field
+ */
+public class MPSPsiElement extends FakePsiElement {
+  private final MPSProject myMPSProject;
+  private final SRepository myRepository;
+  private final Object myItem; // AP: always a reference to node, model, module OR simply MPSProject
+  private final boolean myIsTransientElement;
 
-  private Object myItem;
-
-  public MPSPsiElement(SNode node) {
-    LOG.assertCanRead();
-    myItem = new SNodePointer(node);
+  public MPSPsiElement(SNode node, MPSProject project) {
+    this(project, node.getReference(), node.getModel() instanceof TransientSModel);
   }
 
-  public MPSPsiElement(List<SNode> nodes) {
-    LOG.assertCanRead();
-    myItem = map(nodes, new Mapper<SNode, SNodePointer>() {
-      public SNodePointer value(SNode key) {
-        return new SNodePointer(key);
-      }
-    });
+  public MPSPsiElement(List<SNode> nodes, MPSProject project) {
+    this(project, nodes.stream().map(SNode::getReference).collect(Collectors.toList()), false);
   }
 
-  public MPSPsiElement(SModel model) {
-    LOG.assertCanRead();
-    myItem = model.getSModelReference();
+  public MPSPsiElement(SModel model, MPSProject project) {
+    this(project, model.getReference(), model instanceof TransientSModel);
   }
 
-  public MPSPsiElement(IModule module) {
-    LOG.assertCanRead();
-    myItem = module.getModuleReference();
+  public MPSPsiElement(SModule module, MPSProject project) {
+    this(project, module.getModuleReference(), module instanceof TransientSModule);
   }
 
-  public MPSPsiElement(MPSProject project) {
-    LOG.assertCanRead();
-    myItem = project;
+  public MPSPsiElement(@NotNull MPSProject project) {
+    this(project, project, false);
   }
 
-  private MPSPsiElement(Object item) {
+  private MPSPsiElement(MPSProject project, Object item, boolean isTransient) {
+    myMPSProject = project;
+    myRepository = project.getRepository();
     myItem = item;
+    myIsTransientElement = isTransient;
   }
 
+  /**
+   * @return <code>true</code> when the MPS object wrapped  with this PSI element comes from transient origin (e.g. temporary/transient model)
+   */
+  public boolean isTransientElement() {
+    return myIsTransientElement;
+  }
+
+  /**
+   * @return always resolved item
+   */
   public Object getMPSItem() {
-    if (myItem instanceof SNodePointer) {
-      return ((SNodePointer) myItem).getNode();
+    if (myItem instanceof SNodeReference) {
+      return ((SNodeReference) myItem).resolve(myRepository);
     } else if (myItem instanceof List) {
-      return map((List<SNodePointer>) myItem, new Mapper<SNodePointer, SNode>() {
-        public SNode value(SNodePointer key) {
-          return key.getNode();
-        }
-      });
+      return ((List<SNodeReference>) myItem).stream().map(key -> key.resolve(myRepository)).collect(Collectors.toList());
     } else if (myItem instanceof SModelReference) {
-      SModelReference ref = (SModelReference) myItem;
-      SModelDescriptor descriptor = SModelRepository.getInstance().getModelDescriptor(ref);
-      if (descriptor == null) {
-        return null;
-      }
-      return descriptor.getSModel();
-    } else if (myItem instanceof ModuleReference) {
-      return MPSModuleRepository.getInstance().getModule(((ModuleReference) myItem));
+      return ((SModelReference) myItem).resolve(myRepository);
+    } else if (myItem instanceof SModuleReference) {
+      return ((SModuleReference) myItem).resolve(myRepository);
     } else if (myItem instanceof MPSProject) {
       return myItem;
     }
@@ -78,62 +101,68 @@ public class MPSPsiElement<T> extends FakePsiElement {
     ));
   }
 
+  @NotNull
+  @Override
+  public Project getProject() {
+    return myMPSProject.getProject();
+  }
+
+  @NotNull
+  public MPSProject getMPSProject() {
+    return myMPSProject;
+  }
+
+  @Override
+  public boolean isValid() {
+    if (myItem instanceof SNode) {
+      boolean exists = new ModelAccessHelper(myRepository).runReadAction(() -> ((SNodeReference) myItem).resolve(myRepository) != null);
+      return exists;
+    }
+    return true;
+  }
+
+  @Override
+  public PsiFile getContainingFile() {
+    return null;
+  }
+
+  @Override
   public PsiElement getParent() {
-    if (!((myItem instanceof SNodePointer))) {
+    if (!((myItem instanceof SNodeReference))) {
       return null;
     }
-    return ModelAccess.instance().runReadAction(new Computable<PsiElement>() {
-      public PsiElement compute() {
-        SNodePointer pointer = (SNodePointer) myItem;
-        SNode node = pointer.getNode();
-        if (node == null) {
-          return null;
-        }
-        SNode parent = node.getParent();
-        if (parent == null) {
-          return null;
-        }
-        return new MPSPsiElement(new SNodePointer(parent));
+    return new ModelAccessHelper(myRepository).runReadAction((Computable<PsiElement>) () -> {
+      SNodeReference pointer = (SNodeReference) myItem;
+      SNode node = pointer.resolve(myRepository);
+      if (node == null) {
+        return null;
       }
+      SNode parent = node.getParent();
+      if (parent == null) {
+        return null;
+      }
+      return new MPSPsiElement(parent, myMPSProject);
     });
   }
 
-  private <K, V> List<V> map(List<K> list, Mapper<K, V> mapper) {
-    List<V> result = new ArrayList<V>();
-    for (K k : list) {
-      result.add(mapper.value(k));
-    }
-    return result;
-  }
-
-  public static MPSPsiElement createFor(Object o) {
-    LOG.assertCanRead();
+  public static MPSPsiElement createFor(Object o, MPSProject mpsProject) {
     if (o instanceof SNode) {
-      return new MPSPsiElement((SNode) o);
+      return new MPSPsiElement((SNode) o, mpsProject);
     }
     if (o instanceof SModel) {
-      return new MPSPsiElement((SModel) o);
+      return new MPSPsiElement((SModel) o, mpsProject);
     }
-    if (o instanceof IModule) {
-      return new MPSPsiElement((IModule) o);
+    if (o instanceof SModule) {
+      return new MPSPsiElement((SModule) o, mpsProject);
     }
     if (o instanceof MPSProject) {
-      return new MPSPsiElement((MPSProject) o);
+      if (o != mpsProject) {
+        throw new IllegalArgumentException("MPSProject must be the same : " + o + " ; mpsProject : " + mpsProject);
+      }
+      return new MPSPsiElement(mpsProject);
     }
     if (MPSPsiElement.isListOf(o, SNode.class)) {
-      return new MPSPsiElement(((List<SNode>) o));
-    }
-    if (o instanceof SNodePointer) {
-      return new MPSPsiElement(o);
-    }
-    if (o instanceof SModelReference) {
-      return new MPSPsiElement(o);
-    }
-    if (o instanceof ModuleReference) {
-      return new MPSPsiElement(o);
-    }
-    if (MPSPsiElement.isListOf(o, SNodePointer.class)) {
-      return new MPSPsiElement(((List<SNodePointer>) o));
+      return new MPSPsiElement(((List<SNode>) o), mpsProject);
     }
     throw new IllegalArgumentException(o.getClass().getName());
   }
@@ -148,5 +177,17 @@ public class MPSPsiElement<T> extends FakePsiElement {
       }
     }
     return true;
+  }
+
+  /**
+   * returns the typed UNRESOLVED item if it is of a given type
+   * as opposed to the {@link #getMPSItem()} the reference types are not resolved
+   */
+  @Nullable
+  public <T> T getUnresolvedItem(Class<T> itemType) {
+    if (itemType.isInstance(myItem)) {
+      return itemType.cast(myItem);
+    }
+    return null;
   }
 }

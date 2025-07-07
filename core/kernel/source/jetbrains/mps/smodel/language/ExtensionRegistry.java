@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,53 +15,59 @@
  */
 package jetbrains.mps.smodel.language;
 
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.classloading.DeployListener;
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.ClassLoadingModule;
-import jetbrains.mps.project.IModule;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.reloading.ClassLoaderManager;
-import jetbrains.mps.reloading.ReloadAdapter;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.ModuleRepositoryAdapter;
 import jetbrains.mps.smodel.structure.ExtensionDescriptor;
-import jetbrains.mps.util.misc.hash.HashMap;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
-import java.util.HashSet;
-import java.util.Map;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * Registry of extensions populated by classes loaded from compiled and deployed modules
+ */
 public class ExtensionRegistry extends BaseExtensionRegistry implements CoreComponent {
-  private static Logger LOG = Logger.getLogger(ExtensionRegistry.class);
+  private static final Logger LOG = LogManager.getLogger(ExtensionRegistry.class);
 
   private static ExtensionRegistry INSTANCE;
 
-  private Map<IModule, String> myModuleToNamespace = new HashMap<IModule, String>();
-  private HashMap<String, ExtensionDescriptor> myExtensionDescriptors = new HashMap<String, ExtensionDescriptor>();
-  private AtomicBoolean myInitialLoadHappened = new AtomicBoolean(false);
-  private ModuleRepositoryAdapter myListener = new MyModuleRepositoryAdapter();
-  @Nullable
-  private ClassLoaderManager myClm;
-  @Nullable
-  private MPSModuleRepository myRepo;
-  private ReloadAdapter myHandler = new ReloadAdapter() {
-    public void unload() {
-      reloadExtensionDescriptors();
+  private final HashMap<SModuleReference, ExtensionDescriptor> myExtensionDescriptors = new HashMap<>();
+  private final ClassLoaderManager myClm;
+  private final DeployListener myClassesListener = new DeployListener() {
+
+    @Override
+    public void onUnloaded(Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
+      unloadExtensionDescriptors(unloadedModules, monitor);
+    }
+
+    @Override
+    public void onLoaded(Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
+      loadExtensionDescriptors(loadedModules, monitor);
     }
   };
 
+  /**
+   * @deprecated avoid static access, replace with {@link ComponentHost#findComponent(Class) componentHost.findComponent(ExtensionRegistry.class)}
+   */
+  @Deprecated
   public static ExtensionRegistry getInstance() {
     return INSTANCE;
   }
 
-  public ExtensionRegistry(@Nullable ClassLoaderManager clm,@Nullable MPSModuleRepository repo) {
+  public ExtensionRegistry(@NotNull ClassLoaderManager clm) {
     myClm = clm;
-    myRepo = repo;
   }
 
   @Override
@@ -69,78 +75,47 @@ public class ExtensionRegistry extends BaseExtensionRegistry implements CoreComp
     if (INSTANCE != null) {
       throw new IllegalStateException("double initialization");
     }
-    if (myRepo != null) {
-      myRepo.addModuleRepositoryListener(myListener);
-    }
-    if (myClm != null) {
-      myClm.addReloadHandler(myHandler);
-    }
+    myClm.addListener(myClassesListener);
     INSTANCE = this;
   }
 
   @Override
   public void dispose() {
+    myClm.removeListener(myClassesListener);
     INSTANCE = null;
-    if (myClm != null) {
-      myClm.removeReloadHandler(myHandler);
-    }
-    if (myRepo != null) {
-      myRepo.addModuleRepositoryListener(myListener);
-    }
   }
 
-  // can be called multiple times
-  public void loadExtensionDescriptors() {
-    if (!myInitialLoadHappened.compareAndSet(false, true)) return;
-    reloadExtensionDescriptors();
-  }
-
-  public void reloadExtensionDescriptors() {
-    ModelAccess.assertLegalWrite();
-
-    for (ExtensionDescriptor desc : myExtensionDescriptors.values()) {
-      unregisterExtensionDescriptor(desc);
+  private void unloadExtensionDescriptors(Collection<ReloadableModule> unloadedModules, ProgressMonitor monitor) {
+    monitor.start("Unregister extensions...", unloadedModules.size());
+    for (SModule module : unloadedModules) {
+      final ExtensionDescriptor desc = myExtensionDescriptors.remove(module.getModuleReference());
+      if (desc != null) {
+        unregisterExtensionDescriptor(desc);
+      }
+      monitor.advance(1);
     }
-    myExtensionDescriptors.clear();
+    monitor.done();
+  }
 
-    Set<IModule> existing = new HashSet<IModule>(myModuleToNamespace.keySet());
-    for (IModule mod : MPSModuleRepository.getInstance().getAllModules()) {
-      String namespace = mod.getModuleFqName();
-
-      // duplicate module, ignore
-      if (myExtensionDescriptors.containsKey(namespace)) continue;
-
-      existing.remove(mod);
-      ExtensionDescriptor desc = findExtensionDescriptor(mod);
-      if (desc == null) continue;
-
-      myModuleToNamespace.put(mod, namespace);
-      myExtensionDescriptors.put(namespace, desc);
-      registerExtensionDescriptor(desc);
+  private void loadExtensionDescriptors(Collection<ReloadableModule> loadedModules, ProgressMonitor monitor) {
+    monitor.start("Register extensions...", loadedModules.size());
+    for (ReloadableModule module : loadedModules) {
+      ExtensionDescriptor desc = findExtensionDescriptor(module);
+      if (desc != null) {
+        assert !myExtensionDescriptors.containsKey(module.getModuleReference()) : "Double registration of extensions for the same module";
+        myExtensionDescriptors.put(module.getModuleReference(), desc);
+        registerExtensionDescriptor(desc);
+      }
+      monitor.advance(1);
     }
-    for (IModule mod : existing) {
-      myModuleToNamespace.remove(mod);
-    }
+    monitor.done();
   }
 
-  @SuppressWarnings("unchecked")
-    /*package for tests*/ void registerExtensionDescriptor(ExtensionDescriptor extensionDescriptor) {
-    registerExtensions(extensionDescriptor.getExtensions());
-    registerExtensionPoints(extensionDescriptor.getExtensionPoints());
-  }
-
-  @SuppressWarnings("unchecked")
-    /*package for tests*/ void unregisterExtensionDescriptor(ExtensionDescriptor extensionDescriptor) {
-    unregisterExtensionPoints(extensionDescriptor.getExtensionPoints());
-    unregisterExtensions(extensionDescriptor.getExtensions());
-  }
-
-  private ExtensionDescriptor findExtensionDescriptor(IModule mod) {
+  private ExtensionDescriptor findExtensionDescriptor(SModule mod) {
     if (mod instanceof Language) {
       return findLanguageExtensionDescriptor((Language) mod);
     } else if (mod instanceof Solution) {
-      SolutionDescriptor sdesc = (SolutionDescriptor) mod.getModuleDescriptor();
-      switch (sdesc.getKind()) {
+      switch (((Solution) mod).getKind()) {
         case PLUGIN_CORE:
         case PLUGIN_EDITOR:
         case PLUGIN_OTHER:
@@ -155,9 +130,9 @@ public class ExtensionRegistry extends BaseExtensionRegistry implements CoreComp
 
   private ExtensionDescriptor findPluginSolutionExtensionDescriptor(Solution solution) {
     // TODO: more flexible way of loading extensions from plugin solution
-    String namespace = solution.getModuleFqName();
+    String namespace = solution.getModuleName();
     String className = namespace + ".plugin.ExtensionDescriptor";
-    Object compiled = getObjectByClassName(className, solution, true);
+    Object compiled = getObjectByClassName(className, solution);
     if (compiled instanceof ExtensionDescriptor) {
       return (ExtensionDescriptor) compiled;
     }
@@ -165,9 +140,9 @@ public class ExtensionRegistry extends BaseExtensionRegistry implements CoreComp
   }
 
   private ExtensionDescriptor findLanguageExtensionDescriptor(Language lang) {
-    String namespace = lang.getModuleFqName();
+    String namespace = lang.getModuleName();
     String className = namespace + ".plugin.ExtensionDescriptor";
-    Object compiled = getObjectByClassName(className, lang, true);
+    Object compiled = getObjectByClassName(className, lang);
     if (compiled instanceof ExtensionDescriptor) {
       return (ExtensionDescriptor) compiled;
     }
@@ -175,52 +150,13 @@ public class ExtensionRegistry extends BaseExtensionRegistry implements CoreComp
   }
 
   @Nullable
-  public static Object getObjectByClassName(String className, @Nullable IModule module, boolean avoidLogErrors) {
+  private static Object getObjectByClassName(String className, ReloadableModule module) {
     try {
-      if (module == null) {
-        return null;
-      }
-
-      if (!(module instanceof ClassLoadingModule)) return null;
-      ClassLoadingModule clm  = ((ClassLoadingModule) module);
-
-      Class clazz = clm.getClass(className);
-      if (clazz == null) {
-        return null;
-      }
-
+      Class clazz = module.getOwnClass(className);
       return clazz.newInstance();
     } catch (Throwable e) {
-      LOG.debug("error loading class\"" + className + "\"", e);
+      LOG.trace("error loading class\"" + className + "\"", e);
     }
     return null;
-  }
-
-  private class MyModuleRepositoryAdapter extends ModuleRepositoryAdapter {
-    @Override
-    public void moduleAdded(IModule module) {
-      String namespace = module.getModuleFqName();
-      // avoid duplicates in registry
-      if (myExtensionDescriptors.containsKey(namespace)) return;
-
-      ExtensionDescriptor desc = findExtensionDescriptor(module);
-      if (desc == null) return;
-
-      myExtensionDescriptors.put(namespace, desc);
-      myModuleToNamespace.put(module, namespace);
-      registerExtensionDescriptor(desc);
-    }
-
-    @Override
-    public void moduleRemoved(IModule module) {
-      String namespace = myModuleToNamespace.get(module);
-      if (namespace == null) return;
-
-      ExtensionDescriptor desc = myExtensionDescriptors.remove(namespace);
-      if (desc == null) return;
-
-      unregisterExtensionDescriptor(desc);
-      myModuleToNamespace.remove(module);
-    }
   }
 }

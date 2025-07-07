@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.ide.projectPane.fileSystem.actions.providers;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -28,15 +30,19 @@ class VirtualFileTransferable implements Transferable {
     myData = data;
   }
 
+  @Override
   public DataFlavor[] getTransferDataFlavors() {
     return new DataFlavor[]{VIRTUAL_FILE_DATA_FLAVOR};
   }
 
+  @Override
   public boolean isDataFlavorSupported(DataFlavor flavor) {
     return VIRTUAL_FILE_DATA_FLAVOR.equals(flavor);
   }
 
-  public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
+  @NotNull
+  @Override
+  public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException {
     if (VIRTUAL_FILE_DATA_FLAVOR.equals(flavor)) {
       return myData.getPresentation();
     }

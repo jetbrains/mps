@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,187 +15,87 @@
  */
 package jetbrains.mps.project;
 
-import jetbrains.mps.ClasspathReader;
-import jetbrains.mps.MPSCore;
-import jetbrains.mps.library.ModulesMiner;
-import jetbrains.mps.library.ModulesMiner.ModuleHandle;
-import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.project.persistence.SolutionDescriptorPersistence;
-import jetbrains.mps.project.structure.model.ModelRoot;
-import jetbrains.mps.project.structure.modules.*;
-import jetbrains.mps.reloading.ClassLoaderManager;
-import jetbrains.mps.reloading.CommonPaths;
-import jetbrains.mps.smodel.MPSModuleOwner;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.classloading.CustomClassLoadingFacet;
+import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.project.io.DescriptorIO;
+import jetbrains.mps.project.io.DescriptorIOFacade;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import java.util.*;
-
-/**
- * Igor Alshannikov
- * Aug 26, 2005
- */
-public class Solution extends ClassLoadingModule {
+public class Solution extends ReloadableModuleBase {
   private SolutionDescriptor mySolutionDescriptor;
   public static final String SOLUTION_MODELS = "models";
 
-  private static Map<ModuleReference, ClasspathReader.ClassType> bootstrapCP = initBootstrapSolutions();
-
-  private static Map<ModuleReference, ClasspathReader.ClassType> initBootstrapSolutions() {
-    Map<ModuleReference, ClasspathReader.ClassType> result = new HashMap<ModuleReference, ClasspathReader.ClassType>();
-    result.put(new ModuleReference("JDK",
-      ModuleId.fromString("6354ebe7-c22a-4a0f-ac54-50b52ab9b065")), ClasspathReader.ClassType.JDK);
-    result.put(new ModuleReference("MPS.Core",
-      ModuleId.fromString("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea")), ClasspathReader.ClassType.CORE);
-    result.put(new ModuleReference("MPS.Editor",
-      ModuleId.fromString("1ed103c3-3aa6-49b7-9c21-6765ee11f224")), ClasspathReader.ClassType.EDITOR);
-    result.put(new ModuleReference("MPS.Platform",
-      ModuleId.fromString("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61")), ClasspathReader.ClassType.PLATFORM);
-    result.put(new ModuleReference("MPS.Workbench",
-      ModuleId.fromString("86441d7a-e194-42da-81a5-2161ec62a379")), ClasspathReader.ClassType.WORKBENCH);
-    result.put(new ModuleReference("Testbench",
-      ModuleId.fromString("920eaa0e-ecca-46bc-bee7-4e5c59213dd6")), ClasspathReader.ClassType.TEST);
-    return result;
-  }
-
   /* TODO make package local, move to appropriate package */
-  public Solution(SolutionDescriptor descriptor, IFile file) {
-    myDescriptorFile = file;
+  public Solution(SolutionDescriptor descriptor, @Nullable IFile file) {
+    super(file);
     mySolutionDescriptor = descriptor;
     setModuleReference(descriptor.getModuleReference());
   }
 
+  @NotNull
+  @Override
   public SolutionDescriptor getModuleDescriptor() {
     return mySolutionDescriptor;
   }
 
-  public void setModuleDescriptor(ModuleDescriptor moduleDescriptor, boolean reloadClasses) {
-    setSolutionDescriptor((SolutionDescriptor) moduleDescriptor, reloadClasses);
-  }
-
-  public void setSolutionDescriptor(SolutionDescriptor newDescriptor, boolean reloadClasses) {
-    mySolutionDescriptor = newDescriptor;
-
-    ModuleReference mp;
+  @Override
+  protected void doSetModuleDescriptor(ModuleDescriptor moduleDescriptor) {
+    mySolutionDescriptor = (SolutionDescriptor) moduleDescriptor;
+    SModuleReference mp;
     if (mySolutionDescriptor.getNamespace() != null) {
-      mp = new ModuleReference(mySolutionDescriptor.getNamespace(), mySolutionDescriptor.getId());
+      mp = new jetbrains.mps.project.structure.modules.ModuleReference(mySolutionDescriptor.getNamespace(), mySolutionDescriptor.getId());
     } else {
-      assert myDescriptorFile != null;
-      mp = new ModuleReference(myDescriptorFile.getPath(), mySolutionDescriptor.getId());
+      IFile descriptorFile = getDescriptorFile();
+      assert descriptorFile != null;
+      mp = new jetbrains.mps.project.structure.modules.ModuleReference(descriptorFile.getPath(), mySolutionDescriptor.getId());
     }
 
     setModuleReference(mp);
-
-    reloadAfterDescriptorChange();
-
-    MPSModuleRepository.getInstance().fireModuleChanged(this);
-
-    if (reloadClasses) {
-      ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
-    }
-
-    invalidateCaches();
-    invalidateDependencies();
-  }
-
-  public void save() {
-    SolutionDescriptorPersistence.saveSolutionDescriptor(myDescriptorFile, getModuleDescriptor(), MacrosFactory.forModuleFile(myDescriptorFile));
   }
 
   @Override
-  public void updateModelsSet() {
-    updateBootstrapSolutionLibraries();
-    super.updateModelsSet();
+  public void save() {
+    // in StubSolutions myDescriptorFile is null, so preventing NPE here (MPS-16793)
+    if (getDescriptorFile() == null || isReadOnly()) {
+      return;
+    }
+    if (mySolutionDescriptor.getLoadException() != null){
+      return;
+    }
+
+    super.save();
+
+    try {
+      DescriptorIO<SolutionDescriptor> io = DescriptorIOFacade.getInstance().standardProvider().solutionDescriptorIO();
+      io.writeToFile(getModuleDescriptor(), getDescriptorFile());
+    } catch (Exception ex) {
+      Logger.getLogger(getClass()).error("Save failed", ex);
+    }
   }
 
-  private void updateBootstrapSolutionLibraries() {
-    // temp HACK
-
-    ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor == null) return;
-
-    ClasspathReader.ClassType classType = bootstrapCP.get(descriptor.getModuleReference());
-    if (classType == null) return;
-
-    List<String> javaCP = CommonPaths.getMPSPaths(classType);
-    descriptor.getModelRoots().clear();
-    descriptor.getStubModelEntries().clear();
-
-    for (String path : javaCP) {
-      ClassPathEntry entry = new ClassPathEntry();
-      entry.setPath(path);
-      ModelRoot mr = jetbrains.mps.project.structure.model.ModelRootUtil.fromClassPathEntry(entry);
-      descriptor.getStubModelEntries().add(mr);
-      descriptor.getModelRoots().add(mr);
-    }
+  @Override
+  public boolean isReadOnly() {
+    return super.isReadOnly() || getModuleDescriptor().isReadOnlyStubModule();
   }
 
   public String toString() {
-    String namespace = mySolutionDescriptor.getNamespace();
-    if (namespace != null && namespace.length() != 0) return namespace;
-    assert myDescriptorFile != null;
-    namespace = myDescriptorFile.getName();
-    return namespace;
+    return getModuleName() + " [solution]";
+  }
+
+  public SolutionKind getKind() {
+    return getModuleDescriptor().getKind();
   }
 
   @Override
-  public Collection<String> getOwnStubPaths() {
-    if (isPackaged()) {
-      return Collections.singletonList(FileSystem.getInstance().getBundleHome(getDescriptorFile()).getPath());
-    }
-
-    if (!isCompileInMPS()) {
-      IFile classes = ProjectPathUtil.getClassesFolder(getDescriptorFile());
-      if (classes != null && classes.exists()) {
-        return Collections.singletonList(classes.getPath());
-      }
-      return Collections.emptyList();
-    }
-
-    return super.getOwnStubPaths();
-  }
-
-  @Override
-  public boolean isCompileInMPS() {
-    ModuleDescriptor descriptor = getModuleDescriptor();
-    return descriptor != null && descriptor.getCompileInMPS();
-  }
-
-  public String getGeneratorOutputPath() {
-    IFile result = ProjectPathUtil.getGeneratorOutputPath(getDescriptorFile(), getModuleDescriptor());
-    return result != null ? result.getPath() : null;
-  }
-
-  public String getTestsGeneratorOutputPath() {
-    IFile result = ProjectPathUtil.getGeneratorTestsOutputPath(getDescriptorFile(), getModuleDescriptor());
-    return result != null ? result.getPath() : null;
-  }
-
-  public boolean reloadClassesAfterGeneration() {
-    SolutionDescriptor descriptor = getModuleDescriptor();
-    return descriptor != null && descriptor.getKind() != SolutionKind.NONE;
-  }
-
-  @Override
-  protected SolutionDescriptor loadDescriptor() {
-    IFile file = getDescriptorFile();
-    assert file != null;
-    return (SolutionDescriptor) ModulesMiner.getInstance().loadModuleDescriptor(file);
-  }
-
-  public boolean canLoadFromSelf() {
-    return getModuleDescriptor().getCompileInMPS();
-  }
-
-  public boolean canLoad() {
-    return MPSCore.getInstance().isTestMode() || getModuleDescriptor().getKind() != SolutionKind.NONE;
-  }
-
-  @Deprecated
-  public static Solution newInstance(ModuleHandle handle, MPSModuleOwner moduleOwner) {
-    return (Solution) ModuleRepositoryFacade.createModule(handle, moduleOwner);
+  public boolean canLoadClasses() {
+    // TODO mps facet from this [like IDEA plugin facet]
+    return getKind() != SolutionKind.NONE || getFacet(CustomClassLoadingFacet.class) != null;
   }
 }

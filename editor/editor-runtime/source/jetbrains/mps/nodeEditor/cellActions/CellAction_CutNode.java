@@ -15,10 +15,11 @@
  */
 package jetbrains.mps.nodeEditor.cellActions;
 
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples._3;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples._4;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.openapi.editor.EditorContext;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.List;
 import java.util.Map;
@@ -26,17 +27,41 @@ import java.util.Set;
 
 public class CellAction_CutNode extends CellAction_CopyNode {
 
+  @Override
   public boolean canExecute(EditorContext context) {
-    return super.canExecute(context);
+    if (!super.canExecute(context)) {
+      return false;
+    }
+    List<SNode> selectedNodes = context.getSelectionManager().getSelection().getSelectedNodes();
+    if (selectedNodes.isEmpty()) {
+      return false;
+    }
+    SNode node = selectedNodes.get(0);
+    return SNodeOperations.getParent(node) != null && context.getEditorComponent().getEditedNode() != node;
     // todo: what about read-only models?
   }
 
+  @Override
   public void execute(EditorContext context) {
-    _3<List<SNode>, Map<SNode, Set<SNode>>, String> tuple = extractSelection(context);
+    _4<List<SNode>, List<SNode>, Map<SNode, Set<SNode>>, String> tuple = extractSelection(context);
     if (tuple == null) return;
-    CopyPasteUtil.copyNodesAndTextToClipboard(tuple._0(), tuple._1(), tuple._2());
-    for (SNode node : tuple._0()) {
+    final List<SNode> sNodes = tuple._1();
+    CopyPasteUtil.copyNodesAndTextToClipboard(tuple._0(), tuple._2(), tuple._3());
+    SNode nodeToSelect = null;
+    for (SNode node : sNodes) {
+      nodeToSelect = findNodeToSelect(node);
       node.delete();
     }
+    if(nodeToSelect!=null) {
+      context.selectWRTFocusPolicy(nodeToSelect);
+    }
+  }
+
+  private SNode findNodeToSelect(SNode node) {
+    SNode candidate = node.getNextSibling();
+    if(candidate==null) {
+      candidate = node.getParent();
+    }
+    return candidate;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,29 @@
 
 package jetbrains.mps.idea.core.project.stubs;
 
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationType;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.roots.impl.libraries.ApplicationLibraryTable;
 import com.intellij.openapi.roots.libraries.LibraryTable;
+import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.idea.core.MPSBundle;
+import jetbrains.mps.smodel.MPSModuleRepository;
 
 public class MPSGlobalLibImporter extends BaseLibImporter implements ApplicationComponent {
-  private ApplicationLibraryTable myTable;
+  private final ApplicationLibraryTable myTable;
+  private final MPSCoreComponents myCoreComponents;
 
-  @SuppressWarnings("UnusedParameters") //creation time dependency
   public MPSGlobalLibImporter(MPSCoreComponents core, ApplicationLibraryTable table) {
+    super(core);
+    myCoreComponents = core;
     myTable = table;
+  }
+
+  @Override
+  protected SRepositoryExt getRepository() {
+    return myCoreComponents.getPlatform().findComponent(MPSModuleRepository.class);
   }
 
   protected LibraryTable getLibTable() {
@@ -36,5 +48,18 @@ public class MPSGlobalLibImporter extends BaseLibImporter implements Application
   @Override
   public boolean isHidden() {
     return false;
+  }
+
+  @Override
+  protected void handleModuleNameTaken(StubModuleNameTakenException exception) {
+    String message = String.format(
+        MPSBundle.message("mps.stub.warning.duplicate.global.lib.message"),
+        exception.getLibraryName(),
+        exception.getNamespace());
+    new Notification(
+      MPSBundle.message("mps.stub.warning.group.display.id"),
+      MPSBundle.message("mps.stub.warning.duplicate.global.lib.title"),
+      message,
+      NotificationType.WARNING).notify(null);
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,17 +17,20 @@
 package jetbrains.mps.nodeEditor;
 
 import com.intellij.application.options.editor.EditorOptionsProvider;
-import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SearchableConfigurable;
+import com.intellij.openapi.util.Disposer;
+import jetbrains.mps.nodeEditor.resources.EditorSettingsBundle;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.Icon;
 import javax.swing.JComponent;
 
 public class EditorSettingsConfigurable implements SearchableConfigurable {
+  private EditorSettingsPreferencesPage mySettingsPreferencesPage;
+
   @NotNull
   @Override
   public String getId() {
@@ -42,13 +45,7 @@ public class EditorSettingsConfigurable implements SearchableConfigurable {
   @Nls
   @Override
   public String getDisplayName() {
-    return "Editor";
-  }
-
-  @Nullable
-  @Override
-  public Icon getIcon() {
-    return null;
+    return EditorSettingsBundle.message("title.editor.settings");
   }
 
   @Nullable
@@ -60,38 +57,44 @@ public class EditorSettingsConfigurable implements SearchableConfigurable {
 
   @Override
   public JComponent createComponent() {
-    return EditorSettings.getInstance().getPreferencesPage().getComponent();
+    mySettingsPreferencesPage = new EditorSettingsPreferencesPage();
+    return mySettingsPreferencesPage.getComponent();
   }
 
   @Override
   public boolean isModified() {
-    return EditorSettings.getInstance().getPreferencesPage().isModified();
+    return mySettingsPreferencesPage.isModified();
   }
 
   @Override
-  public void apply() throws ConfigurationException {
-    EditorSettings.getInstance().getPreferencesPage().commit();
+  public void apply() {
+    mySettingsPreferencesPage.commit();
   }
 
   @Override
   public void reset() {
-    EditorSettings.getInstance().getPreferencesPage().reset();
+    mySettingsPreferencesPage.reset();
   }
 
   @Override
   public void disposeUIResources() {
-    EditorSettings.getInstance().disposeUi();
+    Disposer.dispose(mySettingsPreferencesPage);
+    mySettingsPreferencesPage = null;
   }
 
   /**
    * For usage in IDEA plugin where our editor settings are represented by a page in editor settings.
    * They also have a different name in IDEA plugin ("MPS" rather then just "Editor").
+   *
+   * @deprecated not used any more, use {@link EditorSettingsConfigurable} instead
    */
+  @ScheduledForRemoval(inVersion = "2021.1")
+  @Deprecated(since = "2020.3", forRemoval = true)
   public static class EditorSettingsConfigurableOptionsProvider extends EditorSettingsConfigurable implements EditorOptionsProvider {
     @Nls
     @Override
     public String getDisplayName() {
-      return "MPS";
+      return EditorSettingsBundle.message("title.editor.settings.in.plugin");
     }
   }
 }

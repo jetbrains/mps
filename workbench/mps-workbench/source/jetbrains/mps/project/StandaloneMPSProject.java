@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,280 +15,168 @@
  */
 package jetbrains.mps.project;
 
-import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.MPSCore;
-import jetbrains.mps.cleanup.CleanupManager;
-import jetbrains.mps.library.ModulesMiner;
-import jetbrains.mps.library.ModulesMiner.ModuleHandle;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.progress.EmptyProgressMonitor;
+import com.intellij.openapi.util.InvalidDataException;
+import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
+import jetbrains.mps.ide.vfs.ProjectRootListenerComponent;
 import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
-import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.project.structure.project.Path;
+import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
-import jetbrains.mps.reloading.ClassLoaderManager;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.VFSManager;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jdom.Element;
+import org.jdom.JDOMException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModule;
 
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 /**
+ * This class is for MPS as a standalone IDE, while MPSProject is in use in MPS as IDEA plugin.
+ * Note for AP from MM: at least I've added a difference in how module file changes are handled.
+ *
+ * It must save/load its state only via the platform methods #saveState, #loadState
+ * The project may be changed externally via addModule/removeModule methods,
+ *
+ * ProjectDescriptor of the Project is supposed to be always in sync with the project state.
+ *
  * evgeny, 11/10/11
  */
 @State(
   name = "MPSProject",
-  storages = {
-    @Storage(
-      id = "other",
-      file = "$PROJECT_FILE$"
-    )
-  },
-  reloadable = false
+  storages = @Storage("modules.xml")
 )
 public class StandaloneMPSProject extends MPSProject implements PersistentStateComponent<Element> {
-  private static final Logger LOG = Logger.getLogger(StandaloneMPSProject.class);
+  private static final Logger LOG = LogManager.getLogger(StandaloneMPSProject.class);
+  private ProjectModuleFileChangeListener myListener;
+  private final VFSManager myManager;
 
-  // project data
-  private String myErrors = null;
-  private Element myProjectElement;
-  protected ProjectDescriptor myProjectDescriptor;
-
-  private final Map<ModuleReference, Path> myModuleToPath = new HashMap<ModuleReference, Path>();
-
-  public StandaloneMPSProject(Project project) {
-    super(project);
+  @SuppressWarnings("UnusedParameters")
+  public StandaloneMPSProject(final Project project, ProjectLibraryManager projectLibraryManager, ProjectRootListenerComponent unused,
+                              MPSCoreComponents mpsCore, IdeaFileSystem ideaFS) {
+    super(project, unused, mpsCore, ideaFS);
+    myManager = mpsCore.getPlatform().findComponent(VFSManager.class);
   }
 
-  public List<String> getWatchedModulesPaths() {
-    List<String> result = new ArrayList<String>();
-    for (Path p : getAllModulePaths()) {
-      result.add(p.getPath());
-    }
-    return result;
-  }
-
+  @Override
   public Element getState() {
-    if (myProject.getPresentableUrl() == null || myProjectDescriptor == null) {
-      return myProjectElement;
+    if (getProject().isDefault()) {
+      return null;
     }
+    return new ModelAccessHelper(getModelAccess()).runReadAction(() -> {
+      ProjectDescriptor descriptor = getProjectDescriptor();
 
-    return ModelAccess.instance().runReadAction(new Computable<Element>() {
-      public Element compute() {
-        ProjectDescriptor descriptor = getProjectDescriptor();
-        return ProjectDescriptorPersistence.saveProjectDescriptorToElement(descriptor,
-          FileSystem.getInstance().getFileByPath(myProject.getPresentableUrl()));
-      }
+      String presentableUrl = getProject().getPresentableUrl();
+      assert presentableUrl != null; // by contract the project is default <=> url == null
+      File projectFile = new File(presentableUrl);
+      IFile file = myManager.getFileSystem(VFSManager.FILE_FS).getFile(projectFile);
+      return new ProjectDescriptorPersistence(projectFile, MacrosFactory.forProjectFile(file)).save(descriptor);
     });
   }
 
-  public void loadState(Element state) {
-    myProjectElement = state;
+  @Override
+  public void loadState(@NotNull Element state) {
+    LOG.info("Loading the project '" + getName() + "' from disk");
+    if (!getProject().isDefault()) {
+      loadDescriptor(new ElementProjectDataSource(state, getProjectFile()));
+      if (ProjectManager.getInstance().getOpenedProjects().contains(this)) {
+        update();
+      }
+    }
   }
 
+  /**
+   * @deprecated remove in 3.4 and make final
+   */
+  @NotNull
+  @Deprecated
+  public String getErrors() {
+    return super.getErrors();
+  }
+
+  @Override
   public void initComponent() {
+    myListener = new ProjectModuleFileChangeListener(this);
+    addListener(myListener);
     super.initComponent();
   }
 
+  @Override
   public void disposeComponent() {
     super.disposeComponent();
-  }
-
-  @Override
-  public void projectOpened() {
-    super.projectOpened();
-    initProject();
-  }
-
-  private void initProject() {
-    String url = myProject.getPresentableUrl();
-    ProjectDescriptor descriptor = new ProjectDescriptor();
-    if (url != null) {
-      final IFile projectFile = FileSystem.getInstance().getFileByPath(url);
-      ProjectDescriptorPersistence.loadProjectDescriptorFromElement(descriptor, projectFile, myProjectElement);
-    }
-    init(descriptor);
-  }
-
-  // public for tests only!
-  public void init(final ProjectDescriptor projectDescriptor) {
-    if (myProject.isDefault()) return;
-
-    assert !isDisposed();
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      public void run() {
-        myProjectDescriptor = projectDescriptor;
-
-        readModules();
-
-        // TODO FIXME get rid of onModuleLoad
-        for (IModule m : getModules()) {
-          m.onModuleLoad();
-        }
-      }
-    });
+    removeListener(myListener);
   }
 
   @NotNull
-  public List<Path> getAllModulePaths() {
-    return Collections.unmodifiableList(myProjectDescriptor.getModules());
+  public List<ModulePath> getAllModulePaths() {
+    return Collections.unmodifiableList(myProjectDescriptor.getModulePaths());
   }
 
-  @Override
-  public void addModule(ModuleReference ref) {
-    IModule module = MPSModuleRepository.getInstance().getModule(ref);
-    if (module != null) {
-      super.addModule(ref);
-      IFile descriptorFile = module.getDescriptorFile();
-      assert descriptorFile != null;
-      myProjectDescriptor.addModule(descriptorFile.getPath());
-    }
-  }
-
-  @Override
-  public void removeModule(ModuleReference ref) {
-    IModule module = MPSModuleRepository.getInstance().getModule(ref);
-    if (module != null) {
-      super.removeModule(ref);
-      IFile descriptorFile = module.getDescriptorFile();
-      assert descriptorFile != null;
-      myProjectDescriptor.removeModule(descriptorFile.getPath());
-    }
-
-    myModuleToPath.remove(ref);
-  }
-
-  protected void readModules() {
-    myErrors = null;
-
-    // load solutions
-    Set<ModuleReference> existingModules = getModuleReferences();
-    for (Path modulePath : myProjectDescriptor.getModules()) {
-      String path = modulePath.getPath();
-      IFile descriptorFile = FileSystem.getInstance().getFileByPath(path);
-      if (descriptorFile.exists()) {
-        ModuleDescriptor descriptor = ModulesMiner.getInstance().loadModuleDescriptor(descriptorFile);
-        if (descriptor != null) {
-          ModuleHandle handle = new ModuleHandle(descriptorFile, descriptor);
-          IModule module = ModuleRepositoryFacade.createModule(handle, this);
-          ModuleReference moduleReference = module.getModuleReference();
-          if (!existingModules.remove(moduleReference)) {
-            super.addModule(moduleReference);
-          }
-        } else {
-          error("Can't load module from " + descriptorFile.getPath() + " Unknown file type.");
-        }
-      } else {
-        error("Can't load module from " + descriptorFile.getPath() + " File doesn't exist.");
-      }
-    }
-    for (ModuleReference ref : existingModules) {
-      super.removeModule(ref);
-    }
-  }
-
-  private void error(String text) {
-    if (myErrors == null) {
-      myErrors = text;
-    } else {
-      myErrors += "\n" + text;
-    }
-    LOG.error(text);
-  }
-
-  public String getErrors() {
-    return myErrors;
-  }
-
+  // todo remove; project descriptor is its internal substance which represents the persistence data
   @NotNull
+  @ToRemove(version = 3.3)
   public ProjectDescriptor getProjectDescriptor() {
     return myProjectDescriptor;
   }
 
+  // todo remove
+  @ToRemove(version = 3.3)
   public void setProjectDescriptor(ProjectDescriptor projectDescriptor) {
     myProjectDescriptor = projectDescriptor;
     update();
   }
 
-  public void update() {
-    ModuleRepositoryFacade.getInstance().unregisterModules(this);
-
-    readModules();
-    ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
+  // AP fixme : public update exposes the project internals too much (as it looks for me)
+  public final void update() {
+    ProgressIndicator progressIndicator = ProgressManager.getInstance().getProgressIndicator();
+    long beginTime = System.nanoTime();
+    LOG.info("Updating " + getName());
+    try {
+      if (progressIndicator != null) {
+        progressIndicator.setText2("Loading project modules");
+      }
+      super.update();
+      if (progressIndicator != null) {
+        progressIndicator.setText2("");
+      }
+    } finally {
+      LOG.info(String.format("Updating %s took %.3f s", getName(), (System.nanoTime() - beginTime) / 1e9));
+    }
   }
 
+  public static StandaloneMPSProject open(@NotNull String projectPath) throws JDOMException, InvalidDataException, IOException {
+    return (StandaloneMPSProject) MPSProject.open(projectPath);
+  }
+
+  // AP: fixme these two methods are working with the UI virtual paths; I want them to be extracted somewhere else
   @Nullable
-  public String getFolderFor(IModule module) {
-    Path path = getPathForModule(module);
-    if (path != null) {
-      return path.getMPSFolder();
+  public String getFolderFor(@NotNull SModule module) {
+    ModulePath modulePath = getPath(module);
+    if (modulePath != null) {
+      return modulePath.getVirtualFolder();
     } else {
+      LOG.warn("Could not find module path for the module " + module);
       return null;
     }
   }
 
-  public void setFolderFor(IModule module, String newFolder) {
-    Path path = getPathForModule(module);
-    if (path != null) {
-      path.setMPSFolder(newFolder);
-    }
-  }
-
-  @Override
-  public void dispose() {
-    super.dispose();
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      public void run() {
-        ModuleRepositoryFacade.getInstance().unregisterModules(StandaloneMPSProject.this);
-
-        CleanupManager.getInstance().cleanup();
-
-        if (ProjectManager.getInstance().getOpenProjects().length > 0) {
-          ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
-        }
-      }
-    });
-
-    //todo hack
-    if (myProject != null) {
-      if (MPSCore.getInstance().isTestMode() && !(myProject.isDisposed())) {
-        //second check if for MPS-12881, we invoked this method reqursively and tried to dispose a disposed project
-        ProjectUtil.closeAndDispose(myProject);
-      }
-    }
-  }
-
-  private Path getPathForModule(IModule module) {
-    ModuleReference reference = module.getModuleReference();
-    if (myModuleToPath.containsKey(reference)) {
-      return myModuleToPath.get(reference);
-    } else {
-      Path result = getPathForModule_Internal(module);
-      myModuleToPath.put(reference, result);
-      return result;
-    }
-  }
-
-  private Path getPathForModule_Internal(IModule module) {
-    IFile file = module.getDescriptorFile();
-    assert file != null;
-    String path = file.getPath();
-    for (Path sp : getAllModulePaths()) {
-      if (FileSystem.getInstance().getFileByPath(sp.getPath()).getPath().equals(path)) {
-        return sp;
-      }
-    }
-    return null;
+  // XXX there's no reason to keep this method if ProjectBase#setVirtualFolder get exposed and MPS model references to this one get updated.
+  public void setFolderFor(@NotNull SModule module, String newFolder) {
+    super.setVirtualFolder(module, newFolder);
   }
 }

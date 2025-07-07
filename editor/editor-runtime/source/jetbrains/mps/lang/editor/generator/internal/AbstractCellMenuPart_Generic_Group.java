@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,23 @@
  */
 package jetbrains.mps.lang.editor.generator.internal;
 
-import jetbrains.mps.actions.runtime.impl.NodeIconUtil;
-import jetbrains.mps.ide.icons.IdeIcons;
-import jetbrains.mps.nodeEditor.EditorContext;
 import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPart;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
+import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
+import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.IScope;
-import jetbrains.mps.smodel.SModel;
-import jetbrains.mps.smodel.SNode;
 import jetbrains.mps.smodel.action.AbstractNodeSubstituteAction;
-import jetbrains.mps.smodel.action.INodeSubstituteAction;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
 
-import javax.swing.Icon;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -37,35 +39,45 @@ import java.util.List;
  * Igor Alshannikov
  * Date: Nov 29, 2006
  */
-public abstract class AbstractCellMenuPart_Generic_Group implements SubstituteInfoPart {
-
-  public List<INodeSubstituteAction> createActions(CellContext cellContext, final EditorContext editorContext) {
-    final SNode node = (SNode) cellContext.get(BasicCellContext.EDITED_NODE);
-    final IOperationContext context = editorContext.getOperationContext();
-    List parameterObjects = createParameterObjects(node, context.getScope(), context);
+public abstract class AbstractCellMenuPart_Generic_Group implements SubstituteInfoPartExt {
+  @Override
+  public List<SubstituteAction> createActions(CellContext cellContext, final EditorContext editorContext) {
+    final SNode node = cellContext.get(BasicCellContext.EDITED_NODE);
+    List parameterObjects = createParameterObjects(node, editorContext);
     if (parameterObjects == null) {
-      return new LinkedList<INodeSubstituteAction>();
+      return Collections.emptyList();
     }
 
-    List<INodeSubstituteAction> actions = new LinkedList<INodeSubstituteAction>();
+    List<SubstituteAction> actions = new LinkedList<>();
     for (final Object parameterObject : parameterObjects) {
       actions.add(new AbstractNodeSubstituteAction(null, parameterObject, node) {
 
+        @Override
         protected String getMatchingText(String pattern, boolean referent_presentation, boolean visible) {
           return AbstractCellMenuPart_Generic_Group.this.getMatchingText(parameterObject);
         }
 
+        @Override
         public String getDescriptionText(String pattern) {
           return AbstractCellMenuPart_Generic_Group.this.getDescriptionText(parameterObject);
         }
 
-        public Icon getIconFor(String pattern, boolean referent_presentation) {
-          return AbstractCellMenuPart_Generic_Group.this.getIconFor(parameterObject);
+        @Override
+        public boolean isReferentPresentation() {
+          return AbstractCellMenuPart_Generic_Group.this.isReferentPresentation();
         }
 
-        public SNode doSubstitute(String pattern) {
-          handleAction(parameterObject, node, node.getModel(), context.getScope(), context, editorContext);
+        @Override
+        public SNode doSubstitute(@Nullable final EditorContext editorContext, String pattern) {
+          handleAction(parameterObject, node, node.getModel(), editorContext);
           return null;
+        }
+
+        @Override
+        public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+          EditorMenuTraceInfoImpl info = new EditorMenuTraceInfoImpl();
+          info.setDescriptor(AbstractCellMenuPart_Generic_Group.this.getEditorMenuDescriptor(parameterObject));
+          return info;
         }
       });
     }
@@ -75,7 +87,7 @@ public abstract class AbstractCellMenuPart_Generic_Group implements SubstituteIn
 
   protected String getMatchingText(Object parameterObject) {
     if (parameterObject instanceof SNode) {
-      return NodePresentationUtil.matchingText((SNode) parameterObject, isReferentPresentation());
+      return NodePresentationUtil.visibleMatchingText((SNode) parameterObject, null);
     }
     return "" + parameterObject;
   }
@@ -83,28 +95,52 @@ public abstract class AbstractCellMenuPart_Generic_Group implements SubstituteIn
 
   protected String getDescriptionText(Object parameterObject) {
     if (parameterObject instanceof SNode) {
-      return NodePresentationUtil.descriptionText((SNode) parameterObject, isReferentPresentation());
+      return NodePresentationUtil.descriptionText((SNode) parameterObject);
     }
     return "";
   }
 
-  protected Icon getIconFor(Object parameterObject) {
-    if (parameterObject instanceof SNode) {
-      return NodeIconUtil.getIcon((SNode) parameterObject, isReferentPresentation());
-    }
-    return IdeIcons.DEFAULT_ICON;
+  @Nullable
+  protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+    // FIXME once 2020.3 is out, decide whether return null or make abstract
+    return createParameterObjects(node, editorContext.getOperationContext(), editorContext);
   }
 
-  protected abstract List createParameterObjects(SNode node, IScope scope, IOperationContext operationContext);
+  /**
+   * @deprecated override {@link #createParameterObjects(SNode, EditorContext)} instead
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.2)
+  protected List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    return null;
+  }
 
+  protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+    // FIXME make method abstract once 2020.3 is out
+    handleAction(parameterObject, node, model, editorContext.getOperationContext(), editorContext);
+  }
+
+  /**
+   * @deprecated override {@link #handleAction(Object, SNode, SModel, EditorContext)} instead
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.2)
+  protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    // no-op, just can't be abstract to facilitate generation of new method override
+  }
+
+  /**
+   * @deprecated This method was used only to distinct concept declaration reference and concept that is given as node.
+   * Now we should use truly concepts in parameter objects, not concept nodes.
+   * [2020.2] can't remove as there are still uses in MPS
+   */
   @Deprecated
-  protected void handleAction(Object parameterObject, SNode node, SModel model, IScope scope, IOperationContext operationContext) {
-    throw new UnsupportedOperationException();
+  @ToRemove(version = 3.5)
+  protected boolean isReferentPresentation() {
+    return true;
   }
 
-  protected void handleAction(Object parameterObject, SNode node, SModel model, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
-    handleAction(parameterObject, node, model, scope, operationContext);
+  protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
+    return null;
   }
-
-  protected abstract boolean isReferentPresentation();
 }

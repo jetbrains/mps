@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,18 +27,12 @@ public class Status implements IStatus {
     myMessage = message;
   }
 
-  public boolean isOk() {
-    return myCode == Code.OK;
-  }
-
-  public boolean isError() {
-    return myCode == Code.ERROR;
-  }
-
+  @Override
   public Code getCode() {
     return myCode;
   }
 
+  @Override
   public String getMessage() {
     return myMessage;
   }
@@ -47,6 +41,7 @@ public class Status implements IStatus {
     myMessage = myMessage + "\n" + s;
   }
 
+  @Override
   public Object getUserObject() {
     return myUserObject;
   }

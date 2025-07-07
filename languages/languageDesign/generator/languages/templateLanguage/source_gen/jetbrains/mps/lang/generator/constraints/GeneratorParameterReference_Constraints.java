@@ -4,42 +4,31 @@ package jetbrains.mps.lang.generator.constraints;
 
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import java.util.Map;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
-import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.runtime.ReferencePresentationContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import java.util.HashMap;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GeneratorParameterReference_Constraints extends BaseConstraintsDescriptor {
   public GeneratorParameterReference_Constraints() {
-    super("jetbrains.mps.lang.generator.structure.GeneratorParameterReference");
+    super(CONCEPTS.GeneratorParameterReference$oD);
   }
 
   @Override
-  protected Map<String, ReferenceConstraintsDescriptor> getNotDefaultReferences() {
-    Map<String, ReferenceConstraintsDescriptor> references = new HashMap();
-    references.put("declaration", new BaseReferenceConstraintsDescriptor("declaration", this) {
-      @Nullable
-      @Override
-      public ReferenceScopeProvider getScopeProvider() {
-        return new BaseScopeProvider() {
-          @Override
-          public boolean hasPresentation() {
-            return true;
-          }
-
-          @Override
-          public String getPresentation(final IOperationContext operationContext, final ReferencePresentationContext _context) {
-            return SPropertyOperations.getString(_context.getParameterNode(), "name") + " : " + SLinkOperations.getTarget(_context.getParameterNode(), "type", true);
-          }
-        };
-      }
-    });
+  protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$Woky, this) {};
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
     return references;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept GeneratorParameterReference$oD = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283cbf8aL, "jetbrains.mps.lang.generator.structure.GeneratorParameterReference");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink declaration$Woky = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283cbf8aL, 0x90726ff283cbf8cL, "declaration");
   }
 }

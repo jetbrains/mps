@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,70 +16,85 @@
 
 package jetbrains.mps.idea.core.facet;
 
+import com.intellij.ProjectTopics;
 import com.intellij.facet.Facet;
 import com.intellij.facet.FacetType;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
-import com.intellij.internal.statistic.UsageTrigger;
-import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.module.Module;
-import com.intellij.openapi.startup.StartupManager;
+import com.intellij.openapi.project.ModuleListener;
+import com.intellij.openapi.project.Project;
+import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.project.SolutionIdea;
 import jetbrains.mps.messages.MessageKind;
-import jetbrains.mps.project.Project;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 /**
  * evgeny, 10/26/11
  */
 public class MPSFacet extends Facet<MPSFacetConfiguration> {
   private static final Logger LOG = Logger.getInstance(MPSFacet.class);
+  private final MPSProject myMpsProject;
   private Solution mySolution;
-  private Project myMpsProject;
 
   public MPSFacet(@NotNull FacetType facetType, @NotNull Module module, @NotNull String name, @NotNull MPSFacetConfiguration configuration, Facet underlyingFacet) {
     super(facetType, module, name, configuration, underlyingFacet);
+    myMpsProject = ProjectHelper.fromIdeaProject(module.getProject());
     configuration.setFacet(this);
+    MessageBusConnection busConnection = module.getProject().getMessageBus().connect(this);
+    busConnection.subscribe(ProjectTopics.MODULES, new ModuleListener() {
+      @Override
+      public void moduleAdded(@NotNull Project project, @NotNull Module module) {
+        if (!wasInitialized()) {
+          initFacet();
+        }
+      }
+    });
   }
 
   @Override
   public void initFacet() {
-    StartupManager.getInstance(getModule().getProject()).runWhenProjectIsInitialized(new Runnable() {
-      @Override
-      public void run() {
-        ModelAccess.instance().runWriteAction(new Runnable() {
-          @Override
-          public void run() {
-            SolutionDescriptor solutionDescriptor = getConfiguration().getState().getSolutionDescriptor();
-            Solution solution = new SolutionIdea(getModule(), solutionDescriptor);
-            com.intellij.openapi.project.Project project = getModule().getProject();
-            myMpsProject = ProjectHelper.toMPSProject(project);
+    myMpsProject.getModelAccess().runWriteAction(() -> {
+      SolutionDescriptor solutionDescriptor = getConfiguration().createSolutionDescriptor();
+      Solution solution = new SolutionIdea(getModule(), solutionDescriptor);
 
-            MPSModuleRepository repository = MPSModuleRepository.getInstance();
-            if (ModuleRepositoryFacade.getInstance().getModule(solutionDescriptor.getModuleReference()) != null) {
-              MessagesViewTool.log(project, MessageKind.ERROR, MPSBundle.message("facet.cannot.load.second.module", solutionDescriptor.getNamespace()));
-              return;
-            }
+      com.intellij.openapi.project.Project project = getModule().getProject();
 
-            repository.registerModule(mySolution = solution, myMpsProject);
-            myMpsProject.addModule(mySolution.getModuleReference());
-            LOG.info(MPSBundle.message("facet.module.loaded", MPSFacet.this.mySolution.getModuleFqName()));
-            IdeaPluginDescriptor descriptor = PluginManager.getPlugin(PluginManager.getPluginByClassName(MPSFacet.class.getName()));
-            String version = descriptor == null ? null : descriptor.getVersion();
-            UsageTrigger.trigger("MPS.initFacet."+version);
-          }
-        });
+      SRepository repository = myMpsProject.getRepository();
+      ModuleRepositoryFacade facade = new ModuleRepositoryFacade(repository);
+      SModule previousModule = facade.getModule(solutionDescriptor.getModuleReference());
+      if (previousModule != null) {
+        if (previousModule instanceof SolutionIdea && facade.getModuleOwners(previousModule).size() == 1) {
+          // Happens because upon .iml change, idea first initialises new facet and then disposes the old one.
+          // Thus, the solution from the old one under the same module reference is still in the repo.
+          // Deleting it here is dirty but likely safe, since MPSFacet is the only place that handles
+          // creation/deletion of SolutionIdea instances.
+          myMpsProject.removeModule(previousModule);
+        } else {
+          // fixme this is too silent, we are just left with a broken facet where solution is null
+          MessagesViewTool.log(project, MessageKind.ERROR, MPSBundle.message("facet.cannot.load.second.module", solutionDescriptor.getNamespace()));
+          return;
+        }
       }
+
+      myMpsProject.addModule(mySolution = solution);
+
+      new ModuleDependencyVersions(myMpsProject.getComponent(LanguageRegistry.class), myMpsProject.getRepository()).update(mySolution);
+
+      LOG.info(MPSBundle.message("facet.module.loaded", MPSFacet.this.mySolution.getModuleName()));
+      IdeaPluginDescriptor descriptor = PluginManager.getPlugin(PluginManager.getPluginByClassName(MPSFacet.class.getName()));
     });
   }
 
@@ -88,13 +103,13 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
     if (!wasInitialized()) {
       return;
     }
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        LOG.info(MPSBundle.message("facet.module.unloaded", mySolution.getModuleFqName()));
-        MPSModuleRepository.getInstance().unregisterModule(mySolution, myMpsProject);
-        mySolution = null;
+    SRepository repository = myMpsProject.getRepository();
+    repository.getModelAccess().runWriteAction(() -> {
+      LOG.info(MPSBundle.message("facet.module.unloaded", mySolution.getModuleName()));
+      if (!myMpsProject.isDisposed() && myMpsProject.getProjectModules().contains(mySolution)) {
+        myMpsProject.removeModule(mySolution);
       }
+      mySolution = null;
     });
   }
 
@@ -102,19 +117,31 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
     return mySolution != null;
   }
 
-  public void setConfiguration(final MPSConfigurationBean configurationBean) {
-    if (!wasInitialized()) {
+//  private List<ModelRoot> myContributedModelRoots = new ArrayList<ModelRoot>();
+//  public void contributeModelRoot(ModelRoot modelRoot) {
+//    myContributedModelRoots.add(modelRoot);
+//  }
+
+  public void updateModels() {
+    if (mySolution == null) {
       return;
     }
-    ModelAccess.instance().runWriteInEDT(new Runnable() {
-      @Override
-      public void run() {
-        mySolution.setSolutionDescriptor(configurationBean.getSolutionDescriptor(), false);
-      }
-    });
+    mySolution.updateModelsSet();
+  }
+
+  public void setConfiguration(final MPSConfigurationBean configurationBean) {
+    getConfiguration().loadState(configurationBean);
+    if (wasInitialized()) {
+      // then refresh SD according to bean status.
+      myMpsProject.getModelAccess().runWriteAction(() -> mySolution.setModuleDescriptor(getConfiguration().createSolutionDescriptor()));
+    }
   }
 
   public Solution getSolution() {
     return mySolution;
+  }
+
+  /*package*/ MPSProject getProject() {
+    return myMpsProject;
   }
 }

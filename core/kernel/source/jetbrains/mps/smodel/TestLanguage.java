@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,36 +15,42 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.extapi.module.SRepositoryExt;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
-import jetbrains.mps.vfs.IFile;
 
-public class TestLanguage extends Language {
-  private TestLanguage(LanguageDescriptor descriptor, IFile file) {
-    super(descriptor, file);
-  }
-
-  //this is for tests only. Can be later converted into subclass
-  public static Language newInstance(LanguageDescriptor descriptor, MPSModuleOwner moduleOwner) {
-    Language language = new TestLanguage(descriptor,null);
-
-    Language registered = MPSModuleRepository.getInstance().registerModule(language, moduleOwner);
-    if (registered==language){
-      language.setLanguageDescriptor(descriptor, false);
-    }
-
-    return registered;
-  }
-
-  public String getGeneratorOutputPath() {
-    return null;
-  }
-
-  public String getTestsGeneratorOutputPath() {
-    return null;
+/**
+ * INTENDED FOR INTERNAL USE, TESTS ONLY.
+ */
+public final class TestLanguage extends Language {
+  private TestLanguage(LanguageDescriptor descriptor) {
+    super(descriptor, null);
   }
 
   @Override
-  public void save() {
-    //do nothing
+  public boolean isPackaged() {
+    // test languages are always without a file, and modules without a file are deemed
+    // packed due to some perverted logic. Since packed gains more meaning now (deployment descriptor et al.)
+    // tell explicitly this one, constructed manually, is not packed.
+    return false;
+  }
+
+  /**
+   * Factory for a Language, deemed for use solely in tests.
+   */
+  public static Language newInstance(SRepositoryExt repo, LanguageDescriptor descriptor, MPSModuleOwner moduleOwner) {
+    Language newLanguage = new TestLanguage(descriptor);
+
+    Language language = repo.registerModule(newLanguage, moduleOwner);
+    assert language == newLanguage;
+    if (!descriptor.getGenerators().isEmpty()) {
+      final ModuleInstanceFactory mif = new ModuleRepositoryFacade(repo);
+      // FIXME ModuleRepositoryFacade shall deal with SRepository instance and keep the knowledge what to do with a registered module,
+      // shall not duplicate it here. MRF shall instantiate module instance classes (won't need TestLanguage nor public Generator)
+      for (GeneratorDescriptor gd : descriptor.getGenerators()) {
+        repo.registerModule(mif.instantiate(gd, null), moduleOwner);
+      }
+    }
+    return language;
   }
 }

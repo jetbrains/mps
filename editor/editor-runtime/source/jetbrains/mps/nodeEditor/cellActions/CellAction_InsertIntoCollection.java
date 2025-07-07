@@ -15,28 +15,30 @@
  */
 package jetbrains.mps.nodeEditor.cellActions;
 
+import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
+import jetbrains.mps.editor.runtime.cells.PredefinedInsertAction;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
-import jetbrains.mps.nodeEditor.EditorCellAction;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 
-public class CellAction_InsertIntoCollection extends EditorCellAction {
+public class CellAction_InsertIntoCollection extends AbstractCellAction implements PredefinedInsertAction {
   private AbstractCellListHandler myListHandler;
   private boolean myInsertBefore;
 
   public CellAction_InsertIntoCollection(AbstractCellListHandler listHandler, boolean insertBefore) {
-   this.myListHandler = listHandler;
+    myListHandler = listHandler;
     myInsertBefore = insertBefore;
   }
 
+  @Override
   public boolean canExecute(EditorContext context) {
     return true;
   }
 
+  @Override
   public void execute(EditorContext context) {
     boolean before = myInsertBefore;
-    EditorCell contextCell = context.getContextCell();    
-    myListHandler.startInsertMode(context, contextCell, before);
+    EditorCell contextCell = context.getSelectedCell();
+    myListHandler.insertNewChild(context, contextCell, before);
   }
 }

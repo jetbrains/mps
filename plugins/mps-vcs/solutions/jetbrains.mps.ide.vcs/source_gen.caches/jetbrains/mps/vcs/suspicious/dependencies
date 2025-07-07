@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependenciesRoot>
+  <dependency className="jetbrains.mps.vcs.suspicious.BaseTaskQueue">
+    <classNode dependClassName="com.intellij.concurrency.JobScheduler" />
+    <classNode dependClassName="java.lang.IllegalStateException" />
+    <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.concurrent.LinkedBlockingQueue" />
+    <classNode dependClassName="java.util.concurrent.ScheduledExecutorService" />
+    <classNode dependClassName="java.util.concurrent.ScheduledFuture" />
+    <classNode dependClassName="java.util.concurrent.Semaphore" />
+    <classNode dependClassName="java.util.concurrent.TimeUnit" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+  </dependency>
+  <dependency className="jetbrains.mps.vcs.suspicious.PlatformActivityTracker">
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="com.intellij.openapi.project.ProjectManager" />
+    <classNode dependClassName="com.intellij.openapi.vcs.ProjectLevelVcsManager" />
+    <classNode dependClassName="com.intellij.openapi.vfs.VirtualFileManager" />
+    <classNode dependClassName="com.intellij.openapi.vfs.VirtualFileManagerListener" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.ide.platform.watching.ReloadListener" />
+    <classNode dependClassName="jetbrains.mps.ide.platform.watching.ReloadManagerComponent" />
+  </dependency>
+</dependenciesRoot>
+

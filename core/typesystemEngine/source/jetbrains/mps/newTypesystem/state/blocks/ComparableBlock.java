@@ -18,8 +18,9 @@ package jetbrains.mps.newTypesystem.state.blocks;
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
 import jetbrains.mps.newTypesystem.operation.AddRemarkOperation;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
+import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.Pair;
 
@@ -41,28 +42,28 @@ public class ComparableBlock extends RelationBlock {
       return;
     }
 
-    SubTypingManagerNew subTyping = myState.getTypeCheckingContext().getSubTyping();
+    SubTypingManagerNew subTyping = (SubTypingManagerNew) TypeChecker.getInstance().getSubtypingManager();
     // if subType or superType
     boolean isWeak = myRelationKind.isWeak();
     if (subTyping.isComparable(left, right, isWeak)) {
-      myState.executeOperation(new AddRemarkOperation(left + " is comparable with " + right));
+      getState().executeOperation(new AddRemarkOperation(left + " is comparable with " + right));
       return;
     }
-    myState.getNodeMaps().reportComparableError(left, right, myEquationInfo, isWeak);
+    getState().getNodeMaps().reportComparableError(left, right, myEquationInfo, isWeak);
   }
 
   @Override
   public List<Pair<SNode, SNode>> getInputsAndOutputs() {
-    List<Pair<SNode, SNode>> result = new LinkedList<Pair<SNode, SNode>>();
-    result.add(new Pair<SNode, SNode>(myLeftNode, myRightNode));
-    result.add(new Pair<SNode, SNode>(myRightNode, myLeftNode));
+    List<Pair<SNode, SNode>> result = new LinkedList<>();
+    result.add(new Pair<>(myLeftNode, myRightNode));
+    result.add(new Pair<>(myRightNode, myLeftNode));
     return result;
   }
 
   @Override
   public Set<Pair<SNode, ConditionKind>> getInitialInputs() {
-    return CollectionUtil.set(new Pair<SNode, ConditionKind>(myLeftNode, ConditionKind.CONCRETE),
-      new Pair<SNode, ConditionKind>(myRightNode, ConditionKind.CONCRETE));
+    return CollectionUtil.set(new Pair<>(myLeftNode, ConditionKind.CONCRETE),
+                              new Pair<>(myRightNode, ConditionKind.CONCRETE));
   }
 
   @Override

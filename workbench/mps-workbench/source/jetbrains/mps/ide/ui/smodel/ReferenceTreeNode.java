@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,34 +15,47 @@
  */
 package jetbrains.mps.ide.ui.smodel;
 
-import com.intellij.openapi.actionSystem.ActionGroup;
-import com.intellij.openapi.actionSystem.ActionManager;
-import jetbrains.mps.ide.actions.ReferenceNodeActions_ActionGroup;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.ide.projectPane.Icons;
-import jetbrains.mps.ide.ui.TextTreeNode;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SReference;
+import com.intellij.icons.AllIcons.Nodes;
+import com.intellij.ide.PowerSaveMode;
+import com.intellij.ui.LayeredIcon;
+import jetbrains.mps.icons.MPSIcons;
+import jetbrains.mps.ide.icons.GlobalIconManager;
+import jetbrains.mps.ide.ui.tree.TextTreeNode;
+import jetbrains.mps.ide.ui.tree.smodel.NodeTargetProvider;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SReference;
 
-public class ReferenceTreeNode extends TextTreeNode {
+import javax.swing.Icon;
+
+public class ReferenceTreeNode extends TextTreeNode implements NodeTargetProvider {
   private final SReference myRef;
 
-  public ReferenceTreeNode(IOperationContext context, SReference ref) {
-    super(ref.getRole() + ": " + ref.getTargetNode(), context);
+  public ReferenceTreeNode(SReference ref) {
+    super(ref.getLink().getName() + ": " + ref.getTargetNode());
     myRef = ref;
-    setIcon(Icons.DEFAULT_ICON);
+    // In power save mode just use default node icon, otherwise try to get exact icon for target.
+    Icon iconForRef ;
+    if (PowerSaveMode.isEnabled()){
+      iconForRef = MPSIcons.Nodes.Node;
+    } else {
+      // TODO: reference to generated code. Extract some interface for icons to source code.
+      SNode node = ref.getTargetNode();
+      if (node == null){
+        iconForRef = MPSIcons.Nodes.Node;
+      } else{
+        iconForRef = GlobalIconManager.getInstance().getIconFor(node);
+      }
+    }
+    // Decorate icon with symlink pictogram
+    setIcon(LayeredIcon.create(iconForRef, Nodes.Symlink));
   }
 
-  public void doubleClick() {
-    ModelAccess.instance().runWriteInEDT(new Runnable() {
-      public void run() {
-        SNode target = myRef.getTargetNode();
-        if (target == null) return;
-        NavigationSupport.getInstance().openNode(getOperationContext(), target, true, !(target.isRoot()));
-      }
-    });
+  @Nullable
+  @Override
+  public SNodeReference getNavigationTarget() {
+    return myRef.getTargetNodeReference();
   }
 
   public SReference getRef() {
@@ -50,10 +63,6 @@ public class ReferenceTreeNode extends TextTreeNode {
   }
 
   @Override
-  public ActionGroup getActionGroup() {
-    return ((ActionGroup) ActionManager.getInstance().getAction(ReferenceNodeActions_ActionGroup.class.getName()));
-  }
-
   public boolean isLeaf() {
     return true;
   }

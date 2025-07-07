@@ -1,512 +1,649 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="TypesystemDescriptor.java" startLine="9" startPosition="0" endLine="37" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.TypesystemDescriptor" />
-  <root nodeId="1196267612159" modelId="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)">
-    <nodeInfo nodeId="1196268989250" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="23" startPosition="5" endLine="24" endPosition="107" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196268989250" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="24" startPosition="107" endLine="25" endPosition="200" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196268989250" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="25" startPosition="200" endLine="26" endPosition="370" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196267675385" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="28" startPosition="5" endLine="29" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196267675385" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="29" startPosition="53" endLine="30" endPosition="200" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196267675385" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="30" startPosition="200" endLine="31" endPosition="336" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="35" startPosition="46" endLine="36" endPosition="77" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="40" startPosition="5" endLine="41" endPosition="117" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="41" startPosition="117" endLine="42" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="46" startPosition="30" endLine="47" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="54" startPosition="76" endLine="55" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="55" startPosition="26" endLine="56" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="56" startPosition="67" endLine="57" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="58" startPosition="7" endLine="59" endPosition="163" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="59" startPosition="163" endLine="60" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="60" startPosition="43" endLine="61" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="62" startPosition="7" endLine="63" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="66" startPosition="31" endLine="67" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="67" startPosition="26" endLine="68" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="68" startPosition="67" endLine="69" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="70" startPosition="7" endLine="71" endPosition="163" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="71" startPosition="163" endLine="72" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="72" startPosition="43" endLine="73" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="74" startPosition="7" endLine="75" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="18" startPosition="124" endLine="20" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="typeof_ComplexExpression_InferenceRule#()V" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="50" startPosition="52" endLine="52" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="QuotationClass_l75no8_a0a0a0#()V" />
-    <nodeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="34" startPosition="0" endLine="38" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="39" startPosition="68" endLine="43" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="45" startPosition="0" endLine="49" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="overrides#()Z" />
-    <nodeInfo nodeId="1196268989250" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="22" startPosition="124" endLine="27" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196267675385" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="27" startPosition="5" endLine="32" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="57" startPosition="32" endLine="62" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="57" startPosition="32" endLine="62" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="69" startPosition="32" endLine="74" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="69" startPosition="32" endLine="74" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="38" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="53" startPosition="0" endLine="65" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createNode#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;)Ljetbrains/mps/smodel/SNode;" />
-    <nodeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="65" startPosition="0" endLine="77" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createNode#()Ljetbrains/mps/smodel/SNode;" />
-    <nodeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="21" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="applyRule#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-    <scopeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="19" startPosition="51" endLine="19" endPosition="51" />
-    <scopeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="51" startPosition="43" endLine="51" endPosition="43" />
-    <scopeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="35" startPosition="46" endLine="36" endPosition="77" />
-    <scopeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="46" startPosition="30" endLine="47" endPosition="17" />
-    <scopeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="18" startPosition="124" endLine="20" endPosition="3" />
-    <scopeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="40" startPosition="5" endLine="42" endPosition="45">
-      <varInfo nodeId="1196267612159" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="50" startPosition="52" endLine="52" endPosition="5" />
-    <scopeInfo nodeId="1196268989250" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="23" startPosition="5" endLine="26" endPosition="370">
-      <varInfo nodeId="1196268989250" varName="_info_12389875345" />
-      <varInfo nodeId="1196268989250" varName="_nodeToCheck_1029348928467" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196267675385" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="28" startPosition="5" endLine="31" endPosition="336">
-      <varInfo nodeId="1196267675385" varName="_info_12389875345" />
-      <varInfo nodeId="1196267675385" varName="_nodeToCheck_1029348928467" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="58" startPosition="7" endLine="61" endPosition="31">
-      <varInfo nodeId="1196268989257" varName="quotedNode1_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="70" startPosition="7" endLine="73" endPosition="31">
-      <varInfo nodeId="1196268989257" varName="quotedNode1_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="34" startPosition="0" endLine="38" endPosition="0" />
-    <scopeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="39" startPosition="68" endLine="43" endPosition="5" />
-    <scopeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="45" startPosition="0" endLine="49" endPosition="0" />
-    <scopeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="57" startPosition="32" endLine="62" endPosition="7" />
-    <scopeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="69" startPosition="32" endLine="74" endPosition="7" />
-    <scopeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="38" startPosition="0" endLine="45" endPosition="0">
-      <varInfo nodeId="1196267612159" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="54" startPosition="76" endLine="63" endPosition="20">
-      <varInfo nodeId="1196268989257" varName="_parameterValues_129834374" />
-      <varInfo nodeId="1196268989257" varName="quotedNode_1" />
-      <varInfo nodeId="1196268989257" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="66" startPosition="31" endLine="75" endPosition="20">
-      <varInfo nodeId="1196268989257" varName="_parameterValues_129834374" />
-      <varInfo nodeId="1196268989257" varName="quotedNode_1" />
-      <varInfo nodeId="1196268989257" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196267612160" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="22" startPosition="124" endLine="32" endPosition="5" />
-    <scopeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="53" startPosition="0" endLine="65" endPosition="0">
-      <varInfo nodeId="1196268989257" varName="typeCheckingContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="65" startPosition="0" endLine="77" endPosition="0" />
-    <scopeInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="21" startPosition="0" endLine="34" endPosition="0">
-      <varInfo nodeId="1196267612159" varName="nodeToCheck" />
-      <varInfo nodeId="1196267612159" varName="status" />
-      <varInfo nodeId="1196267612159" varName="typeCheckingContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1196268989257" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="50" startPosition="0" endLine="78" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.typeof_ComplexExpression_InferenceRule$QuotationClass_l75no8_a0a0a0" />
-    <unitInfo nodeId="1196267612159" fileName="typeof_ComplexExpression_InferenceRule.java" startLine="18" startPosition="0" endLine="79" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.typeof_ComplexExpression_InferenceRule" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root>
+    <file name="TypesystemDescriptor.java">
+      <unit at="9,0,57,0" name="jetbrains.mps.samples.complex.typesystem.TypesystemDescriptor" />
+    </file>
   </root>
-  <root nodeId="1196422182398" modelId="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)">
-    <nodeInfo nodeId="1196422206628" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="22" startPosition="5" endLine="23" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196422206628" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="23" startPosition="96" endLine="24" endPosition="200" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196422206628" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="24" startPosition="200" endLine="25" endPosition="352" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="29" startPosition="46" endLine="30" endPosition="77" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="34" startPosition="5" endLine="35" endPosition="117" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="35" startPosition="117" endLine="36" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="40" startPosition="30" endLine="41" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="48" startPosition="76" endLine="49" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="49" startPosition="26" endLine="50" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="50" startPosition="67" endLine="51" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="52" startPosition="7" endLine="53" endPosition="160" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="53" startPosition="160" endLine="54" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="54" startPosition="43" endLine="55" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="56" startPosition="7" endLine="57" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="60" startPosition="31" endLine="61" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="61" startPosition="26" endLine="62" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="62" startPosition="67" endLine="63" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="64" startPosition="7" endLine="65" endPosition="160" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="65" startPosition="160" endLine="66" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="66" startPosition="43" endLine="67" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="68" startPosition="7" endLine="69" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="17" startPosition="130" endLine="19" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="typeof_DegreeComplexExpression_InferenceRule#()V" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="44" startPosition="52" endLine="46" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="QuotationClass_12zmle_a0a0a0#()V" />
-    <nodeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="28" startPosition="0" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="33" startPosition="68" endLine="37" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="39" startPosition="0" endLine="43" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="overrides#()Z" />
-    <nodeInfo nodeId="1196422206628" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="21" startPosition="124" endLine="26" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="51" startPosition="32" endLine="56" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="51" startPosition="32" endLine="56" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="63" startPosition="32" endLine="68" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="63" startPosition="32" endLine="68" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="32" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="20" startPosition="0" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="applyRule#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="47" startPosition="0" endLine="59" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createNode#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;)Ljetbrains/mps/smodel/SNode;" />
-    <nodeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="59" startPosition="0" endLine="71" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createNode#()Ljetbrains/mps/smodel/SNode;" />
-    <scopeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="18" startPosition="57" endLine="18" endPosition="57" />
-    <scopeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="45" startPosition="43" endLine="45" endPosition="43" />
-    <scopeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="29" startPosition="46" endLine="30" endPosition="77" />
-    <scopeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="40" startPosition="30" endLine="41" endPosition="17" />
-    <scopeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="17" startPosition="130" endLine="19" endPosition="3" />
-    <scopeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="34" startPosition="5" endLine="36" endPosition="45">
-      <varInfo nodeId="1196422182398" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="44" startPosition="52" endLine="46" endPosition="5" />
-    <scopeInfo nodeId="1196422206628" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="22" startPosition="5" endLine="25" endPosition="352">
-      <varInfo nodeId="1196422206628" varName="_info_12389875345" />
-      <varInfo nodeId="1196422206628" varName="_nodeToCheck_1029348928467" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="52" startPosition="7" endLine="55" endPosition="31">
-      <varInfo nodeId="1196422212476" varName="quotedNode1_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="64" startPosition="7" endLine="67" endPosition="31">
-      <varInfo nodeId="1196422212476" varName="quotedNode1_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="28" startPosition="0" endLine="32" endPosition="0" />
-    <scopeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="33" startPosition="68" endLine="37" endPosition="5" />
-    <scopeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="39" startPosition="0" endLine="43" endPosition="0" />
-    <scopeInfo nodeId="1196422182399" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="21" startPosition="124" endLine="26" endPosition="5" />
-    <scopeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="51" startPosition="32" endLine="56" endPosition="7" />
-    <scopeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="63" startPosition="32" endLine="68" endPosition="7" />
-    <scopeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="32" startPosition="0" endLine="39" endPosition="0">
-      <varInfo nodeId="1196422182398" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="20" startPosition="0" endLine="28" endPosition="0">
-      <varInfo nodeId="1196422182398" varName="nodeToCheck" />
-      <varInfo nodeId="1196422182398" varName="status" />
-      <varInfo nodeId="1196422182398" varName="typeCheckingContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="48" startPosition="76" endLine="57" endPosition="20">
-      <varInfo nodeId="1196422212476" varName="_parameterValues_129834374" />
-      <varInfo nodeId="1196422212476" varName="quotedNode_1" />
-      <varInfo nodeId="1196422212476" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="60" startPosition="31" endLine="69" endPosition="20">
-      <varInfo nodeId="1196422212476" varName="_parameterValues_129834374" />
-      <varInfo nodeId="1196422212476" varName="quotedNode_1" />
-      <varInfo nodeId="1196422212476" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="47" startPosition="0" endLine="59" endPosition="0">
-      <varInfo nodeId="1196422212476" varName="typeCheckingContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="59" startPosition="0" endLine="71" endPosition="0" />
-    <unitInfo nodeId="1196422212476" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="44" startPosition="0" endLine="72" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.typeof_DegreeComplexExpression_InferenceRule$QuotationClass_12zmle_a0a0a0" />
-    <unitInfo nodeId="1196422182398" fileName="typeof_DegreeComplexExpression_InferenceRule.java" startLine="17" startPosition="0" endLine="73" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.typeof_DegreeComplexExpression_InferenceRule" />
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)/1196267612159">
+    <file name="TypesystemDescriptor.java">
+      <node id="1196267612159" at="19,5,20,89" concept="4" />
+      <node id="1196267612159" at="20,89,21,47" concept="2" />
+      <node id="1196267612159" at="18,5,22,5" concept="0" />
+      <scope id="1196267612159" at="19,5,21,47">
+        <var name="inferenceRule" id="1196267612159" />
+      </scope>
+    </file>
+    <file name="typeof_ComplexExpression_InferenceRule.java">
+      <node id="1196268989250" at="22,5,23,110" concept="4" />
+      <node id="1196268989250" at="23,110,24,200" concept="4" />
+      <node id="1196268989250" at="24,200,25,305" concept="2" />
+      <node id="1196267612159" at="28,50,29,47" concept="5" />
+      <node id="1196267612159" at="31,68,32,102" concept="5" />
+      <node id="1196267612159" at="34,30,35,17" concept="5" />
+      <node id="1196268989257" at="37,65,38,30" concept="4" />
+      <node id="1196268989257" at="38,30,39,225" concept="4" />
+      <node id="1196268989257" at="39,225,40,34" concept="2" />
+      <node id="1196268989257" at="40,34,41,24" concept="5" />
+      <node id="1196267612159" at="45,0,46,0" concept="6" trace="complexExpression$ieG0" />
+      <node id="1196267612159" at="49,0,50,0" concept="6" trace="SingleComplexExpression$8b" />
+      <node id="1196267612159" at="19,0,21,0" concept="1" trace="typeof_ComplexExpression_InferenceRule#()V" />
+      <node id="1196267612159" at="28,0,31,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1196267612159" at="31,0,34,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1196267612159" at="34,0,37,0" concept="3" trace="overrides#()Z" />
+      <node id="1196268989250" at="21,124,26,5" concept="0" />
+      <node id="1196268989257" at="37,0,43,0" concept="7" trace="_quotation_createNode_l75no8_a1a0c0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1196267612159" at="21,0,28,0" concept="3" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="1196267612159" at="19,51,19,51" />
+      <scope id="1196267612159" at="28,50,29,47" />
+      <scope id="1196267612159" at="31,68,32,102" />
+      <scope id="1196267612159" at="34,30,35,17" />
+      <scope id="1196267612159" at="19,0,21,0" />
+      <scope id="1196268989250" at="22,5,25,305">
+        <var name="_info_12389875345" id="1196268989250" />
+        <var name="_nodeToCheck_1029348928467" id="1196268989250" />
+      </scope>
+      <scope id="1196267612159" at="28,0,31,0" />
+      <scope id="1196267612159" at="31,0,34,0">
+        <var name="argument" id="1196267612159" />
+      </scope>
+      <scope id="1196267612159" at="34,0,37,0" />
+      <scope id="1196268989257" at="37,65,41,24">
+        <var name="nb" id="1196268989257" />
+        <var name="quotedNode_1" id="1196268989257" />
+      </scope>
+      <scope id="1196267612160" at="21,124,26,5" />
+      <scope id="1196268989257" at="37,0,43,0" />
+      <scope id="1196267612159" at="21,0,28,0">
+        <var name="nodeToCheck" id="1196267612159" />
+        <var name="status" id="1196267612159" />
+        <var name="typeCheckingContext" id="1196267612159" />
+      </scope>
+      <unit id="1196267612159" at="44,0,47,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ComplexExpression_InferenceRule$LINKS" />
+      <unit id="1196267612159" at="48,0,51,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ComplexExpression_InferenceRule$CONCEPTS" />
+      <unit id="1196267612159" at="18,0,52,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ComplexExpression_InferenceRule" />
+    </file>
   </root>
-  <root nodeId="1196427128503" modelId="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)">
-    <nodeInfo nodeId="1196427154993" fileName="subtype_ComplexType_SubtypingRule.java" startLine="19" startPosition="120" endLine="20" endPosition="111" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="23" startPosition="46" endLine="24" endPosition="61" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="28" startPosition="5" endLine="29" endPosition="117" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="29" startPosition="117" endLine="30" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="34" startPosition="27" endLine="35" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="42" startPosition="76" endLine="43" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="43" startPosition="26" endLine="44" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="44" startPosition="67" endLine="45" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="46" startPosition="7" endLine="47" endPosition="163" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="47" startPosition="163" endLine="48" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="48" startPosition="43" endLine="49" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="50" startPosition="7" endLine="51" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="54" startPosition="31" endLine="55" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="55" startPosition="26" endLine="56" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="56" startPosition="67" endLine="57" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="58" startPosition="7" endLine="59" endPosition="163" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="59" startPosition="163" endLine="60" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="60" startPosition="43" endLine="61" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="62" startPosition="7" endLine="63" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="15" startPosition="112" endLine="17" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="subtype_ComplexType_SubtypingRule#()V" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="38" startPosition="51" endLine="40" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="QuotationClass_roewzw_a0a0a#()V" />
-    <nodeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="18" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSubOrSuperType#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Ljetbrains/mps/smodel/SNode;" />
-    <nodeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="22" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="27" startPosition="68" endLine="31" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="33" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isWeak#()Z" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="45" startPosition="32" endLine="50" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="45" startPosition="32" endLine="50" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="57" startPosition="32" endLine="62" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="57" startPosition="32" endLine="62" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="26" startPosition="0" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="41" startPosition="0" endLine="53" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createNode#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;)Ljetbrains/mps/smodel/SNode;" />
-    <nodeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="53" startPosition="0" endLine="65" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createNode#()Ljetbrains/mps/smodel/SNode;" />
-    <scopeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="16" startPosition="46" endLine="16" endPosition="46" />
-    <scopeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="39" startPosition="42" endLine="39" endPosition="42" />
-    <scopeInfo nodeId="1196427128504" fileName="subtype_ComplexType_SubtypingRule.java" startLine="19" startPosition="120" endLine="20" endPosition="111" />
-    <scopeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="23" startPosition="46" endLine="24" endPosition="61" />
-    <scopeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="34" startPosition="27" endLine="35" endPosition="17" />
-    <scopeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="15" startPosition="112" endLine="17" endPosition="3" />
-    <scopeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="28" startPosition="5" endLine="30" endPosition="45">
-      <varInfo nodeId="1196427128503" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="38" startPosition="51" endLine="40" endPosition="5" />
-    <scopeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="46" startPosition="7" endLine="49" endPosition="31">
-      <varInfo nodeId="1196427158386" varName="quotedNode1_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="58" startPosition="7" endLine="61" endPosition="31">
-      <varInfo nodeId="1196427158386" varName="quotedNode1_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="18" startPosition="0" endLine="22" endPosition="0">
-      <varInfo nodeId="1196427128503" varName="doubleType" />
-      <varInfo nodeId="1196427128503" varName="status" />
-      <varInfo nodeId="1196427128503" varName="typeCheckingContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="22" startPosition="0" endLine="26" endPosition="0" />
-    <scopeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="27" startPosition="68" endLine="31" endPosition="5" />
-    <scopeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="33" startPosition="0" endLine="37" endPosition="0" />
-    <scopeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="45" startPosition="32" endLine="50" endPosition="7" />
-    <scopeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="57" startPosition="32" endLine="62" endPosition="7" />
-    <scopeInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="26" startPosition="0" endLine="33" endPosition="0">
-      <varInfo nodeId="1196427128503" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="42" startPosition="76" endLine="51" endPosition="20">
-      <varInfo nodeId="1196427158386" varName="_parameterValues_129834374" />
-      <varInfo nodeId="1196427158386" varName="quotedNode_1" />
-      <varInfo nodeId="1196427158386" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="54" startPosition="31" endLine="63" endPosition="20">
-      <varInfo nodeId="1196427158386" varName="_parameterValues_129834374" />
-      <varInfo nodeId="1196427158386" varName="quotedNode_1" />
-      <varInfo nodeId="1196427158386" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="41" startPosition="0" endLine="53" endPosition="0">
-      <varInfo nodeId="1196427158386" varName="typeCheckingContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="53" startPosition="0" endLine="65" endPosition="0" />
-    <unitInfo nodeId="1196427158386" fileName="subtype_ComplexType_SubtypingRule.java" startLine="38" startPosition="0" endLine="66" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.subtype_ComplexType_SubtypingRule$QuotationClass_roewzw_a0a0a" />
-    <unitInfo nodeId="1196427128503" fileName="subtype_ComplexType_SubtypingRule.java" startLine="15" startPosition="0" endLine="67" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.subtype_ComplexType_SubtypingRule" />
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)/1196422182398">
+    <file name="TypesystemDescriptor.java">
+      <node id="1196422182398" at="27,5,28,95" concept="4" />
+      <node id="1196422182398" at="28,95,29,47" concept="2" />
+      <node id="1196422182398" at="26,5,30,5" concept="0" />
+      <scope id="1196422182398" at="27,5,29,47">
+        <var name="inferenceRule" id="1196422182398" />
+      </scope>
+    </file>
+    <file name="typeof_DegreeComplexExpression_InferenceRule.java">
+      <node id="381326360563794655" at="22,5,23,53" concept="4" />
+      <node id="381326360563794655" at="23,53,24,205" concept="4" />
+      <node id="381326360563794655" at="24,205,25,286" concept="2" />
+      <node id="1196422206628" at="27,5,28,99" concept="4" />
+      <node id="1196422206628" at="28,99,29,200" concept="4" />
+      <node id="1196422206628" at="29,200,30,281" concept="2" />
+      <node id="1196422182398" at="33,50,34,47" concept="5" />
+      <node id="1196422182398" at="36,68,37,102" concept="5" />
+      <node id="1196422182398" at="39,30,40,17" concept="5" />
+      <node id="381326360563794745" at="42,65,43,30" concept="4" />
+      <node id="381326360563794745" at="43,30,44,225" concept="4" />
+      <node id="381326360563794745" at="44,225,45,34" concept="2" />
+      <node id="381326360563794745" at="45,34,46,24" concept="5" />
+      <node id="1196422212476" at="48,65,49,30" concept="4" />
+      <node id="1196422212476" at="49,30,50,221" concept="4" />
+      <node id="1196422212476" at="50,221,51,34" concept="2" />
+      <node id="1196422212476" at="51,34,52,24" concept="5" />
+      <node id="1196422182398" at="56,0,57,0" concept="6" trace="degree$oYgs" />
+      <node id="1196422182398" at="60,0,61,0" concept="6" trace="DegreeComplexExpression$r_" />
+      <node id="1196422182398" at="19,0,21,0" concept="1" trace="typeof_DegreeComplexExpression_InferenceRule#()V" />
+      <node id="1196422182398" at="33,0,36,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1196422182398" at="36,0,39,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1196422182398" at="39,0,42,0" concept="3" trace="overrides#()Z" />
+      <node id="381326360563794655" at="21,124,26,5" concept="0" />
+      <node id="1196422206628" at="26,5,31,5" concept="0" />
+      <node id="381326360563794745" at="42,0,48,0" concept="7" trace="_quotation_createNode_12zmle_a1a0c0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1196422212476" at="48,0,54,0" concept="7" trace="_quotation_createNode_12zmle_a1a0c0b0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1196422182398" at="21,0,33,0" concept="3" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="1196422182398" at="19,57,19,57" />
+      <scope id="1196422182398" at="33,50,34,47" />
+      <scope id="1196422182398" at="36,68,37,102" />
+      <scope id="1196422182398" at="39,30,40,17" />
+      <scope id="1196422182398" at="19,0,21,0" />
+      <scope id="381326360563794655" at="22,5,25,286">
+        <var name="_info_12389875345" id="381326360563794655" />
+        <var name="_nodeToCheck_1029348928467" id="381326360563794655" />
+      </scope>
+      <scope id="1196422206628" at="27,5,30,281">
+        <var name="_info_12389875345" id="1196422206628" />
+        <var name="_nodeToCheck_1029348928467" id="1196422206628" />
+      </scope>
+      <scope id="1196422182398" at="33,0,36,0" />
+      <scope id="1196422182398" at="36,0,39,0">
+        <var name="argument" id="1196422182398" />
+      </scope>
+      <scope id="1196422182398" at="39,0,42,0" />
+      <scope id="381326360563794745" at="42,65,46,24">
+        <var name="nb" id="381326360563794745" />
+        <var name="quotedNode_1" id="381326360563794745" />
+      </scope>
+      <scope id="1196422212476" at="48,65,52,24">
+        <var name="nb" id="1196422212476" />
+        <var name="quotedNode_1" id="1196422212476" />
+      </scope>
+      <scope id="381326360563794745" at="42,0,48,0" />
+      <scope id="1196422212476" at="48,0,54,0" />
+      <scope id="1196422182399" at="21,124,31,5" />
+      <scope id="1196422182398" at="21,0,33,0">
+        <var name="nodeToCheck" id="1196422182398" />
+        <var name="status" id="1196422182398" />
+        <var name="typeCheckingContext" id="1196422182398" />
+      </scope>
+      <unit id="1196422182398" at="55,0,58,0" name="jetbrains.mps.samples.complex.typesystem.typeof_DegreeComplexExpression_InferenceRule$LINKS" />
+      <unit id="1196422182398" at="59,0,62,0" name="jetbrains.mps.samples.complex.typesystem.typeof_DegreeComplexExpression_InferenceRule$CONCEPTS" />
+      <unit id="1196422182398" at="18,0,63,0" name="jetbrains.mps.samples.complex.typesystem.typeof_DegreeComplexExpression_InferenceRule" />
+    </file>
   </root>
-  <root nodeId="1196434481781" modelId="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)">
-    <nodeInfo nodeId="1196434496770" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="23" startPosition="121" endLine="24" endPosition="159" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="27" startPosition="46" endLine="28" endPosition="65" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="32" startPosition="5" endLine="33" endPosition="117" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="33" startPosition="117" endLine="34" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="38" startPosition="27" endLine="39" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="46" startPosition="76" endLine="47" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="47" startPosition="26" endLine="48" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="48" startPosition="67" endLine="49" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="50" startPosition="7" endLine="51" endPosition="173" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="51" startPosition="173" endLine="52" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="52" startPosition="43" endLine="53" endPosition="247" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="53" startPosition="247" endLine="54" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="55" startPosition="7" endLine="56" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="59" startPosition="31" endLine="60" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="60" startPosition="26" endLine="61" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="61" startPosition="67" endLine="62" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="63" startPosition="7" endLine="64" endPosition="173" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="64" startPosition="173" endLine="65" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="65" startPosition="43" endLine="66" endPosition="247" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="66" startPosition="247" endLine="67" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="68" startPosition="7" endLine="69" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="19" startPosition="111" endLine="21" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="Complex_is_Numeric_SubtypingRule#()V" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="42" startPosition="52" endLine="44" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="QuotationClass_5kk67h_a0a0a0#()V" />
-    <nodeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="22" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSubOrSuperType#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Ljetbrains/mps/smodel/SNode;" />
-    <nodeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="26" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="31" startPosition="68" endLine="35" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="37" startPosition="0" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isWeak#()Z" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="49" startPosition="32" endLine="55" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="49" startPosition="32" endLine="55" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="62" startPosition="32" endLine="68" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="62" startPosition="32" endLine="68" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="30" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="45" startPosition="0" endLine="58" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createNode#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;)Ljetbrains/mps/smodel/SNode;" />
-    <nodeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="58" startPosition="0" endLine="71" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createNode#()Ljetbrains/mps/smodel/SNode;" />
-    <scopeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="20" startPosition="45" endLine="20" endPosition="45" />
-    <scopeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="43" startPosition="43" endLine="43" endPosition="43" />
-    <scopeInfo nodeId="1196434481782" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="23" startPosition="121" endLine="24" endPosition="159" />
-    <scopeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="27" startPosition="46" endLine="28" endPosition="65" />
-    <scopeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="38" startPosition="27" endLine="39" endPosition="17" />
-    <scopeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="19" startPosition="111" endLine="21" endPosition="3" />
-    <scopeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="32" startPosition="5" endLine="34" endPosition="45">
-      <varInfo nodeId="1196434481781" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="42" startPosition="52" endLine="44" endPosition="5" />
-    <scopeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="22" startPosition="0" endLine="26" endPosition="0">
-      <varInfo nodeId="1196434481781" varName="complexType" />
-      <varInfo nodeId="1196434481781" varName="status" />
-      <varInfo nodeId="1196434481781" varName="typeCheckingContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="26" startPosition="0" endLine="30" endPosition="0" />
-    <scopeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="31" startPosition="68" endLine="35" endPosition="5" />
-    <scopeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="37" startPosition="0" endLine="41" endPosition="0" />
-    <scopeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="50" startPosition="7" endLine="54" endPosition="31">
-      <varInfo nodeId="1196434498632" varName="quotedNode1_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="63" startPosition="7" endLine="67" endPosition="31">
-      <varInfo nodeId="1196434498632" varName="quotedNode1_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="49" startPosition="32" endLine="55" endPosition="7" />
-    <scopeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="62" startPosition="32" endLine="68" endPosition="7" />
-    <scopeInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="30" startPosition="0" endLine="37" endPosition="0">
-      <varInfo nodeId="1196434481781" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="46" startPosition="76" endLine="56" endPosition="20">
-      <varInfo nodeId="1196434498632" varName="_parameterValues_129834374" />
-      <varInfo nodeId="1196434498632" varName="quotedNode_1" />
-      <varInfo nodeId="1196434498632" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="59" startPosition="31" endLine="69" endPosition="20">
-      <varInfo nodeId="1196434498632" varName="_parameterValues_129834374" />
-      <varInfo nodeId="1196434498632" varName="quotedNode_1" />
-      <varInfo nodeId="1196434498632" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="45" startPosition="0" endLine="58" endPosition="0">
-      <varInfo nodeId="1196434498632" varName="typeCheckingContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="58" startPosition="0" endLine="71" endPosition="0" />
-    <unitInfo nodeId="1196434498632" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="42" startPosition="0" endLine="72" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.Complex_is_Numeric_SubtypingRule$QuotationClass_5kk67h_a0a0a0" />
-    <unitInfo nodeId="1196434481781" fileName="Complex_is_Numeric_SubtypingRule.java" startLine="19" startPosition="0" endLine="73" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.Complex_is_Numeric_SubtypingRule" />
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)/1196427128503">
+    <file name="TypesystemDescriptor.java">
+      <node id="1196427128503" at="51,5,52,84" concept="4" />
+      <node id="1196427128503" at="52,84,53,47" concept="2" />
+      <node id="1196427128503" at="50,5,54,5" concept="0" />
+      <scope id="1196427128503" at="51,5,53,47">
+        <var name="subtypingRule" id="1196427128503" />
+      </scope>
+    </file>
+    <file name="subtype_ComplexType_SubtypingRule.java">
+      <node id="1196427154993" at="18,120,19,47" concept="5" />
+      <node id="1196427128503" at="21,50,22,34" concept="5" />
+      <node id="1196427128503" at="24,68,25,102" concept="5" />
+      <node id="1196427128503" at="27,27,28,17" concept="5" />
+      <node id="1196427158386" at="30,60,31,30" concept="4" />
+      <node id="1196427158386" at="31,30,32,225" concept="4" />
+      <node id="1196427158386" at="32,225,33,34" concept="2" />
+      <node id="1196427158386" at="33,34,34,24" concept="5" />
+      <node id="1196427128503" at="38,0,39,0" concept="6" trace="DoubleType$x0" />
+      <node id="1196427128503" at="16,0,18,0" concept="1" trace="subtype_ComplexType_SubtypingRule#()V" />
+      <node id="1196427128503" at="18,0,21,0" concept="3" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1196427128503" at="21,0,24,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1196427128503" at="24,0,27,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1196427128503" at="27,0,30,0" concept="3" trace="isWeak#()Z" />
+      <node id="1196427158386" at="30,0,36,0" concept="7" trace="_quotation_createNode_roewzw_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="1196427128503" at="16,46,16,46" />
+      <scope id="1196427128504" at="18,120,19,47" />
+      <scope id="1196427128503" at="21,50,22,34" />
+      <scope id="1196427128503" at="24,68,25,102" />
+      <scope id="1196427128503" at="27,27,28,17" />
+      <scope id="1196427128503" at="16,0,18,0" />
+      <scope id="1196427128503" at="18,0,21,0">
+        <var name="doubleType" id="1196427128503" />
+        <var name="status" id="1196427128503" />
+        <var name="typeCheckingContext" id="1196427128503" />
+      </scope>
+      <scope id="1196427128503" at="21,0,24,0" />
+      <scope id="1196427128503" at="24,0,27,0">
+        <var name="argument" id="1196427128503" />
+      </scope>
+      <scope id="1196427128503" at="27,0,30,0" />
+      <scope id="1196427158386" at="30,60,34,24">
+        <var name="nb" id="1196427158386" />
+        <var name="quotedNode_1" id="1196427158386" />
+      </scope>
+      <scope id="1196427158386" at="30,0,36,0" />
+      <unit id="1196427128503" at="37,0,40,0" name="jetbrains.mps.samples.complex.typesystem.subtype_ComplexType_SubtypingRule$CONCEPTS" />
+      <unit id="1196427128503" at="15,0,41,0" name="jetbrains.mps.samples.complex.typesystem.subtype_ComplexType_SubtypingRule" />
+    </file>
   </root>
-  <root nodeId="1196436222736" modelId="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)">
-    <nodeInfo nodeId="1196436242603" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="21" startPosition="5" endLine="22" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196436242603" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="22" startPosition="53" endLine="23" endPosition="200" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196436242603" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="23" startPosition="200" endLine="24" endPosition="342" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="28" startPosition="46" endLine="29" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="33" startPosition="5" endLine="34" endPosition="117" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="34" startPosition="117" endLine="35" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="39" startPosition="30" endLine="40" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="47" startPosition="76" endLine="48" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="48" startPosition="26" endLine="49" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="49" startPosition="67" endLine="50" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="51" startPosition="7" endLine="52" endPosition="163" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="52" startPosition="163" endLine="53" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="53" startPosition="43" endLine="54" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="55" startPosition="7" endLine="56" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="59" startPosition="31" endLine="60" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="60" startPosition="26" endLine="61" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="61" startPosition="67" endLine="62" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="63" startPosition="7" endLine="64" endPosition="163" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="64" startPosition="163" endLine="65" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="65" startPosition="43" endLine="66" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="67" startPosition="7" endLine="68" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="16" startPosition="120" endLine="18" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="typeof_ImaginaryUnit_InferenceRule#()V" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="43" startPosition="52" endLine="45" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="QuotationClass_ir5twi_a0a0a0#()V" />
-    <nodeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="27" startPosition="0" endLine="31" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="32" startPosition="68" endLine="36" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="38" startPosition="0" endLine="42" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="overrides#()Z" />
-    <nodeInfo nodeId="1196436242603" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="20" startPosition="124" endLine="25" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="50" startPosition="32" endLine="55" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="50" startPosition="32" endLine="55" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="62" startPosition="32" endLine="67" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="62" startPosition="32" endLine="67" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="31" startPosition="0" endLine="38" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="19" startPosition="0" endLine="27" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="applyRule#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="46" startPosition="0" endLine="58" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createNode#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;)Ljetbrains/mps/smodel/SNode;" />
-    <nodeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="58" startPosition="0" endLine="70" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createNode#()Ljetbrains/mps/smodel/SNode;" />
-    <scopeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="17" startPosition="47" endLine="17" endPosition="47" />
-    <scopeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="44" startPosition="43" endLine="44" endPosition="43" />
-    <scopeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="28" startPosition="46" endLine="29" endPosition="67" />
-    <scopeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="39" startPosition="30" endLine="40" endPosition="17" />
-    <scopeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="16" startPosition="120" endLine="18" endPosition="3" />
-    <scopeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="33" startPosition="5" endLine="35" endPosition="45">
-      <varInfo nodeId="1196436222736" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="43" startPosition="52" endLine="45" endPosition="5" />
-    <scopeInfo nodeId="1196436242603" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="21" startPosition="5" endLine="24" endPosition="342">
-      <varInfo nodeId="1196436242603" varName="_info_12389875345" />
-      <varInfo nodeId="1196436242603" varName="_nodeToCheck_1029348928467" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="51" startPosition="7" endLine="54" endPosition="31">
-      <varInfo nodeId="1196436252436" varName="quotedNode1_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="63" startPosition="7" endLine="66" endPosition="31">
-      <varInfo nodeId="1196436252436" varName="quotedNode1_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="27" startPosition="0" endLine="31" endPosition="0" />
-    <scopeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="32" startPosition="68" endLine="36" endPosition="5" />
-    <scopeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="38" startPosition="0" endLine="42" endPosition="0" />
-    <scopeInfo nodeId="1196436222737" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="20" startPosition="124" endLine="25" endPosition="5" />
-    <scopeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="50" startPosition="32" endLine="55" endPosition="7" />
-    <scopeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="62" startPosition="32" endLine="67" endPosition="7" />
-    <scopeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="31" startPosition="0" endLine="38" endPosition="0">
-      <varInfo nodeId="1196436222736" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="19" startPosition="0" endLine="27" endPosition="0">
-      <varInfo nodeId="1196436222736" varName="nodeToCheck" />
-      <varInfo nodeId="1196436222736" varName="status" />
-      <varInfo nodeId="1196436222736" varName="typeCheckingContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="47" startPosition="76" endLine="56" endPosition="20">
-      <varInfo nodeId="1196436252436" varName="_parameterValues_129834374" />
-      <varInfo nodeId="1196436252436" varName="quotedNode_1" />
-      <varInfo nodeId="1196436252436" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="59" startPosition="31" endLine="68" endPosition="20">
-      <varInfo nodeId="1196436252436" varName="_parameterValues_129834374" />
-      <varInfo nodeId="1196436252436" varName="quotedNode_1" />
-      <varInfo nodeId="1196436252436" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="46" startPosition="0" endLine="58" endPosition="0">
-      <varInfo nodeId="1196436252436" varName="typeCheckingContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="58" startPosition="0" endLine="70" endPosition="0" />
-    <unitInfo nodeId="1196436252436" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="43" startPosition="0" endLine="71" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.typeof_ImaginaryUnit_InferenceRule$QuotationClass_ir5twi_a0a0a0" />
-    <unitInfo nodeId="1196436222736" fileName="typeof_ImaginaryUnit_InferenceRule.java" startLine="16" startPosition="0" endLine="72" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.typeof_ImaginaryUnit_InferenceRule" />
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)/1196434481781">
+    <file name="Complex_is_Numeric_SubtypingRule.java">
+      <node id="1196434496770" at="20,121,21,98" concept="5" />
+      <node id="1196434481781" at="23,50,24,35" concept="5" />
+      <node id="1196434481781" at="26,68,27,102" concept="5" />
+      <node id="1196434481781" at="29,27,30,17" concept="5" />
+      <node id="1196434498632" at="32,61,33,30" concept="4" />
+      <node id="1196434498632" at="33,30,34,235" concept="4" />
+      <node id="1196434498632" at="34,235,35,34" concept="2" />
+      <node id="1196434498632" at="35,34,36,258" concept="2" />
+      <node id="1196434498632" at="36,258,37,24" concept="5" />
+      <node id="1196434481781" at="41,0,42,0" concept="6" trace="descriptor$M2vT" />
+      <node id="1196434481781" at="45,0,46,0" concept="6" trace="ComplexType$zx" />
+      <node id="1196434481781" at="18,0,20,0" concept="1" trace="Complex_is_Numeric_SubtypingRule#()V" />
+      <node id="1196434481781" at="20,0,23,0" concept="3" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1196434481781" at="23,0,26,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1196434481781" at="26,0,29,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1196434481781" at="29,0,32,0" concept="3" trace="isWeak#()Z" />
+      <node id="1196434498632" at="32,0,39,0" concept="7" trace="_quotation_createNode_5kk67h_a0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="1196434481781" at="18,45,18,45" />
+      <scope id="1196434481782" at="20,121,21,98" />
+      <scope id="1196434481781" at="23,50,24,35" />
+      <scope id="1196434481781" at="26,68,27,102" />
+      <scope id="1196434481781" at="29,27,30,17" />
+      <scope id="1196434481781" at="18,0,20,0" />
+      <scope id="1196434481781" at="20,0,23,0">
+        <var name="complexType" id="1196434481781" />
+        <var name="status" id="1196434481781" />
+        <var name="typeCheckingContext" id="1196434481781" />
+      </scope>
+      <scope id="1196434481781" at="23,0,26,0" />
+      <scope id="1196434481781" at="26,0,29,0">
+        <var name="argument" id="1196434481781" />
+      </scope>
+      <scope id="1196434481781" at="29,0,32,0" />
+      <scope id="1196434498632" at="32,61,37,24">
+        <var name="nb" id="1196434498632" />
+        <var name="quotedNode_1" id="1196434498632" />
+      </scope>
+      <scope id="1196434498632" at="32,0,39,0" />
+      <unit id="1196434481781" at="40,0,43,0" name="jetbrains.mps.samples.complex.typesystem.Complex_is_Numeric_SubtypingRule$LINKS" />
+      <unit id="1196434481781" at="44,0,47,0" name="jetbrains.mps.samples.complex.typesystem.Complex_is_Numeric_SubtypingRule$CONCEPTS" />
+      <unit id="1196434481781" at="17,0,48,0" name="jetbrains.mps.samples.complex.typesystem.Complex_is_Numeric_SubtypingRule" />
+    </file>
+    <file name="TypesystemDescriptor.java">
+      <node id="1196434481781" at="43,5,44,83" concept="4" />
+      <node id="1196434481781" at="44,83,45,47" concept="2" />
+      <node id="1196434481781" at="42,5,46,5" concept="0" />
+      <scope id="1196434481781" at="43,5,45,47">
+        <var name="subtypingRule" id="1196434481781" />
+      </scope>
+    </file>
   </root>
-  <root nodeId="7587029747152134035" modelId="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)">
-    <nodeInfo nodeId="7587029747152134039" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="22" startPosition="121" endLine="23" endPosition="114" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="26" startPosition="46" endLine="27" endPosition="65" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="31" startPosition="5" endLine="32" endPosition="117" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="32" startPosition="117" endLine="33" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="37" startPosition="27" endLine="38" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="45" startPosition="76" endLine="46" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="46" startPosition="26" endLine="47" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="47" startPosition="67" endLine="48" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="49" startPosition="7" endLine="50" endPosition="163" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="50" startPosition="163" endLine="51" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="51" startPosition="43" endLine="52" endPosition="225" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="52" startPosition="225" endLine="53" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="54" startPosition="7" endLine="55" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="58" startPosition="31" endLine="59" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="59" startPosition="26" endLine="60" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="60" startPosition="67" endLine="61" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="62" startPosition="7" endLine="63" endPosition="163" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="63" startPosition="163" endLine="64" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="64" startPosition="43" endLine="65" endPosition="225" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="65" startPosition="225" endLine="66" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="67" startPosition="7" endLine="68" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="18" startPosition="115" endLine="20" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="Complex_is_Object_weak_SubtypingRule#()V" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="41" startPosition="51" endLine="43" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="QuotationClass_f46hoj_a0a0a#()V" />
-    <nodeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="21" startPosition="0" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSubOrSuperType#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Ljetbrains/mps/smodel/SNode;" />
-    <nodeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="25" startPosition="0" endLine="29" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="30" startPosition="68" endLine="34" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="36" startPosition="0" endLine="40" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isWeak#()Z" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="48" startPosition="32" endLine="54" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="48" startPosition="32" endLine="54" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="61" startPosition="32" endLine="67" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="61" startPosition="32" endLine="67" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="29" startPosition="0" endLine="36" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="44" startPosition="0" endLine="57" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createNode#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;)Ljetbrains/mps/smodel/SNode;" />
-    <nodeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="57" startPosition="0" endLine="70" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createNode#()Ljetbrains/mps/smodel/SNode;" />
-    <scopeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="19" startPosition="49" endLine="19" endPosition="49" />
-    <scopeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="42" startPosition="42" endLine="42" endPosition="42" />
-    <scopeInfo nodeId="7587029747152134036" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="22" startPosition="121" endLine="23" endPosition="114" />
-    <scopeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="26" startPosition="46" endLine="27" endPosition="65" />
-    <scopeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="37" startPosition="27" endLine="38" endPosition="16" />
-    <scopeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="18" startPosition="115" endLine="20" endPosition="3" />
-    <scopeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="31" startPosition="5" endLine="33" endPosition="45">
-      <varInfo nodeId="7587029747152134035" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="41" startPosition="51" endLine="43" endPosition="5" />
-    <scopeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="21" startPosition="0" endLine="25" endPosition="0">
-      <varInfo nodeId="7587029747152134035" varName="complexType" />
-      <varInfo nodeId="7587029747152134035" varName="status" />
-      <varInfo nodeId="7587029747152134035" varName="typeCheckingContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="25" startPosition="0" endLine="29" endPosition="0" />
-    <scopeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="30" startPosition="68" endLine="34" endPosition="5" />
-    <scopeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="36" startPosition="0" endLine="40" endPosition="0" />
-    <scopeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="49" startPosition="7" endLine="53" endPosition="31">
-      <varInfo nodeId="7587029747152134041" varName="quotedNode1_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="62" startPosition="7" endLine="66" endPosition="31">
-      <varInfo nodeId="7587029747152134041" varName="quotedNode1_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="48" startPosition="32" endLine="54" endPosition="7" />
-    <scopeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="61" startPosition="32" endLine="67" endPosition="7" />
-    <scopeInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="29" startPosition="0" endLine="36" endPosition="0">
-      <varInfo nodeId="7587029747152134035" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="45" startPosition="76" endLine="55" endPosition="20">
-      <varInfo nodeId="7587029747152134041" varName="_parameterValues_129834374" />
-      <varInfo nodeId="7587029747152134041" varName="quotedNode_1" />
-      <varInfo nodeId="7587029747152134041" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="58" startPosition="31" endLine="68" endPosition="20">
-      <varInfo nodeId="7587029747152134041" varName="_parameterValues_129834374" />
-      <varInfo nodeId="7587029747152134041" varName="quotedNode_1" />
-      <varInfo nodeId="7587029747152134041" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="44" startPosition="0" endLine="57" endPosition="0">
-      <varInfo nodeId="7587029747152134041" varName="typeCheckingContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="57" startPosition="0" endLine="70" endPosition="0" />
-    <unitInfo nodeId="7587029747152134041" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="41" startPosition="0" endLine="71" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.Complex_is_Object_weak_SubtypingRule$QuotationClass_f46hoj_a0a0a" />
-    <unitInfo nodeId="7587029747152134035" fileName="Complex_is_Object_weak_SubtypingRule.java" startLine="18" startPosition="0" endLine="72" endPosition="0" unitName="jetbrains.mps.samples.complex.typesystem.Complex_is_Object_weak_SubtypingRule" />
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)/1196436222736">
+    <file name="TypesystemDescriptor.java">
+      <node id="1196436222736" at="35,5,36,85" concept="4" />
+      <node id="1196436222736" at="36,85,37,47" concept="2" />
+      <node id="1196436222736" at="34,5,38,5" concept="0" />
+      <scope id="1196436222736" at="35,5,37,47">
+        <var name="inferenceRule" id="1196436222736" />
+      </scope>
+    </file>
+    <file name="typeof_ImaginaryUnit_InferenceRule.java">
+      <node id="1196436242603" at="20,5,21,53" concept="4" />
+      <node id="1196436242603" at="21,53,22,200" concept="4" />
+      <node id="1196436242603" at="22,200,23,281" concept="2" />
+      <node id="1196436222736" at="26,50,27,37" concept="5" />
+      <node id="1196436222736" at="29,68,30,102" concept="5" />
+      <node id="1196436222736" at="32,30,33,17" concept="5" />
+      <node id="1196436252436" at="35,65,36,30" concept="4" />
+      <node id="1196436252436" at="36,30,37,225" concept="4" />
+      <node id="1196436252436" at="37,225,38,34" concept="2" />
+      <node id="1196436252436" at="38,34,39,24" concept="5" />
+      <node id="1196436222736" at="43,0,44,0" concept="6" trace="ImaginaryUnit$n2" />
+      <node id="1196436222736" at="17,0,19,0" concept="1" trace="typeof_ImaginaryUnit_InferenceRule#()V" />
+      <node id="1196436222736" at="26,0,29,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1196436222736" at="29,0,32,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1196436222736" at="32,0,35,0" concept="3" trace="overrides#()Z" />
+      <node id="1196436242603" at="19,124,24,5" concept="0" />
+      <node id="1196436252436" at="35,0,41,0" concept="7" trace="_quotation_createNode_ir5twi_a1a0c0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1196436222736" at="19,0,26,0" concept="3" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="1196436222736" at="17,47,17,47" />
+      <scope id="1196436222736" at="26,50,27,37" />
+      <scope id="1196436222736" at="29,68,30,102" />
+      <scope id="1196436222736" at="32,30,33,17" />
+      <scope id="1196436222736" at="17,0,19,0" />
+      <scope id="1196436242603" at="20,5,23,281">
+        <var name="_info_12389875345" id="1196436242603" />
+        <var name="_nodeToCheck_1029348928467" id="1196436242603" />
+      </scope>
+      <scope id="1196436222736" at="26,0,29,0" />
+      <scope id="1196436222736" at="29,0,32,0">
+        <var name="argument" id="1196436222736" />
+      </scope>
+      <scope id="1196436222736" at="32,0,35,0" />
+      <scope id="1196436252436" at="35,65,39,24">
+        <var name="nb" id="1196436252436" />
+        <var name="quotedNode_1" id="1196436252436" />
+      </scope>
+      <scope id="1196436222737" at="19,124,24,5" />
+      <scope id="1196436252436" at="35,0,41,0" />
+      <scope id="1196436222736" at="19,0,26,0">
+        <var name="nodeToCheck" id="1196436222736" />
+        <var name="status" id="1196436222736" />
+        <var name="typeCheckingContext" id="1196436222736" />
+      </scope>
+      <unit id="1196436222736" at="42,0,45,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ImaginaryUnit_InferenceRule$CONCEPTS" />
+      <unit id="1196436222736" at="16,0,46,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ImaginaryUnit_InferenceRule" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)/381326360563851979">
+    <file name="TypesystemDescriptor.java">
+      <node id="381326360563851979" at="15,5,16,85" concept="4" />
+      <node id="381326360563851979" at="16,85,17,47" concept="2" />
+      <node id="381326360563851979" at="14,5,18,5" concept="0" />
+      <scope id="381326360563851979" at="15,5,17,47">
+        <var name="inferenceRule" id="381326360563851979" />
+      </scope>
+    </file>
+    <file name="typeof_ArgExpression_InferenceRule.java">
+      <node id="381326360563853005" at="20,5,21,55" concept="4" />
+      <node id="381326360563853005" at="21,55,22,205" concept="4" />
+      <node id="381326360563853005" at="22,205,23,286" concept="2" />
+      <node id="381326360563851979" at="26,50,27,37" concept="5" />
+      <node id="381326360563851979" at="29,68,30,102" concept="5" />
+      <node id="381326360563851979" at="32,30,33,17" concept="5" />
+      <node id="381326360563853416" at="35,65,36,30" concept="4" />
+      <node id="381326360563853416" at="36,30,37,220" concept="4" />
+      <node id="381326360563853416" at="37,220,38,34" concept="2" />
+      <node id="381326360563853416" at="38,34,39,24" concept="5" />
+      <node id="381326360563851979" at="43,0,44,0" concept="6" trace="ArgExpression$ud" />
+      <node id="381326360563851979" at="17,0,19,0" concept="1" trace="typeof_ArgExpression_InferenceRule#()V" />
+      <node id="381326360563851979" at="26,0,29,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="381326360563851979" at="29,0,32,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="381326360563851979" at="32,0,35,0" concept="3" trace="overrides#()Z" />
+      <node id="381326360563853005" at="19,126,24,5" concept="0" />
+      <node id="381326360563853416" at="35,0,41,0" concept="7" trace="_quotation_createNode_onuwrv_a1a0c0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="381326360563851979" at="19,0,26,0" concept="3" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="381326360563851979" at="17,47,17,47" />
+      <scope id="381326360563851979" at="26,50,27,37" />
+      <scope id="381326360563851979" at="29,68,30,102" />
+      <scope id="381326360563851979" at="32,30,33,17" />
+      <scope id="381326360563851979" at="17,0,19,0" />
+      <scope id="381326360563853005" at="20,5,23,286">
+        <var name="_info_12389875345" id="381326360563853005" />
+        <var name="_nodeToCheck_1029348928467" id="381326360563853005" />
+      </scope>
+      <scope id="381326360563851979" at="26,0,29,0" />
+      <scope id="381326360563851979" at="29,0,32,0">
+        <var name="argument" id="381326360563851979" />
+      </scope>
+      <scope id="381326360563851979" at="32,0,35,0" />
+      <scope id="381326360563853416" at="35,65,39,24">
+        <var name="nb" id="381326360563853416" />
+        <var name="quotedNode_1" id="381326360563853416" />
+      </scope>
+      <scope id="381326360563851980" at="19,126,24,5" />
+      <scope id="381326360563853416" at="35,0,41,0" />
+      <scope id="381326360563851979" at="19,0,26,0">
+        <var name="argExpression" id="381326360563851979" />
+        <var name="status" id="381326360563851979" />
+        <var name="typeCheckingContext" id="381326360563851979" />
+      </scope>
+      <unit id="381326360563851979" at="42,0,45,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ArgExpression_InferenceRule$CONCEPTS" />
+      <unit id="381326360563851979" at="16,0,46,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ArgExpression_InferenceRule" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)/381326360563855902">
+    <file name="TypesystemDescriptor.java">
+      <node id="381326360563855902" at="23,5,24,98" concept="4" />
+      <node id="381326360563855902" at="24,98,25,47" concept="2" />
+      <node id="381326360563855902" at="22,5,26,5" concept="0" />
+      <scope id="381326360563855902" at="23,5,25,47">
+        <var name="inferenceRule" id="381326360563855902" />
+      </scope>
+    </file>
+    <file name="typeof_ConjugateComplexExpression_InferenceRule.java">
+      <node id="381326360563857201" at="20,5,21,68" concept="4" />
+      <node id="381326360563857201" at="21,68,22,205" concept="4" />
+      <node id="381326360563857201" at="22,205,23,286" concept="2" />
+      <node id="381326360563855902" at="26,50,27,50" concept="5" />
+      <node id="381326360563855902" at="29,68,30,102" concept="5" />
+      <node id="381326360563855902" at="32,30,33,17" concept="5" />
+      <node id="381326360563857263" at="35,65,36,30" concept="4" />
+      <node id="381326360563857263" at="36,30,37,225" concept="4" />
+      <node id="381326360563857263" at="37,225,38,34" concept="2" />
+      <node id="381326360563857263" at="38,34,39,24" concept="5" />
+      <node id="381326360563855902" at="43,0,44,0" concept="6" trace="ConjugateComplexExpression$Kl" />
+      <node id="381326360563855902" at="17,0,19,0" concept="1" trace="typeof_ConjugateComplexExpression_InferenceRule#()V" />
+      <node id="381326360563855902" at="26,0,29,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="381326360563855902" at="29,0,32,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="381326360563855902" at="32,0,35,0" concept="3" trace="overrides#()Z" />
+      <node id="381326360563857201" at="19,139,24,5" concept="0" />
+      <node id="381326360563857263" at="35,0,41,0" concept="7" trace="_quotation_createNode_w6pdt6_a1a0c0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="381326360563855902" at="19,0,26,0" concept="3" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="381326360563855902" at="17,60,17,60" />
+      <scope id="381326360563855902" at="26,50,27,50" />
+      <scope id="381326360563855902" at="29,68,30,102" />
+      <scope id="381326360563855902" at="32,30,33,17" />
+      <scope id="381326360563855902" at="17,0,19,0" />
+      <scope id="381326360563857201" at="20,5,23,286">
+        <var name="_info_12389875345" id="381326360563857201" />
+        <var name="_nodeToCheck_1029348928467" id="381326360563857201" />
+      </scope>
+      <scope id="381326360563855902" at="26,0,29,0" />
+      <scope id="381326360563855902" at="29,0,32,0">
+        <var name="argument" id="381326360563855902" />
+      </scope>
+      <scope id="381326360563855902" at="32,0,35,0" />
+      <scope id="381326360563857263" at="35,65,39,24">
+        <var name="nb" id="381326360563857263" />
+        <var name="quotedNode_1" id="381326360563857263" />
+      </scope>
+      <scope id="381326360563855903" at="19,139,24,5" />
+      <scope id="381326360563857263" at="35,0,41,0" />
+      <scope id="381326360563855902" at="19,0,26,0">
+        <var name="conjugateComplexExpression" id="381326360563855902" />
+        <var name="status" id="381326360563855902" />
+        <var name="typeCheckingContext" id="381326360563855902" />
+      </scope>
+      <unit id="381326360563855902" at="42,0,45,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ConjugateComplexExpression_InferenceRule$CONCEPTS" />
+      <unit id="381326360563855902" at="16,0,46,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ConjugateComplexExpression_InferenceRule" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)/381326360563857384">
+    <file name="TypesystemDescriptor.java">
+      <node id="381326360563857384" at="31,5,32,84" concept="4" />
+      <node id="381326360563857384" at="32,84,33,47" concept="2" />
+      <node id="381326360563857384" at="30,5,34,5" concept="0" />
+      <scope id="381326360563857384" at="31,5,33,47">
+        <var name="inferenceRule" id="381326360563857384" />
+      </scope>
+    </file>
+    <file name="typeof_ImExpression_InferenceRule.java">
+      <node id="381326360563858323" at="20,5,21,54" concept="4" />
+      <node id="381326360563858323" at="21,54,22,205" concept="4" />
+      <node id="381326360563858323" at="22,205,23,286" concept="2" />
+      <node id="381326360563857384" at="26,50,27,36" concept="5" />
+      <node id="381326360563857384" at="29,68,30,102" concept="5" />
+      <node id="381326360563857384" at="32,30,33,17" concept="5" />
+      <node id="381326360563858678" at="35,65,36,30" concept="4" />
+      <node id="381326360563858678" at="36,30,37,220" concept="4" />
+      <node id="381326360563858678" at="37,220,38,34" concept="2" />
+      <node id="381326360563858678" at="38,34,39,24" concept="5" />
+      <node id="381326360563857384" at="43,0,44,0" concept="6" trace="ImExpression$Zh" />
+      <node id="381326360563857384" at="17,0,19,0" concept="1" trace="typeof_ImExpression_InferenceRule#()V" />
+      <node id="381326360563857384" at="26,0,29,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="381326360563857384" at="29,0,32,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="381326360563857384" at="32,0,35,0" concept="3" trace="overrides#()Z" />
+      <node id="381326360563858323" at="19,125,24,5" concept="0" />
+      <node id="381326360563858678" at="35,0,41,0" concept="7" trace="_quotation_createNode_qu937k_a1a0c0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="381326360563857384" at="19,0,26,0" concept="3" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="381326360563857384" at="17,46,17,46" />
+      <scope id="381326360563857384" at="26,50,27,36" />
+      <scope id="381326360563857384" at="29,68,30,102" />
+      <scope id="381326360563857384" at="32,30,33,17" />
+      <scope id="381326360563857384" at="17,0,19,0" />
+      <scope id="381326360563858323" at="20,5,23,286">
+        <var name="_info_12389875345" id="381326360563858323" />
+        <var name="_nodeToCheck_1029348928467" id="381326360563858323" />
+      </scope>
+      <scope id="381326360563857384" at="26,0,29,0" />
+      <scope id="381326360563857384" at="29,0,32,0">
+        <var name="argument" id="381326360563857384" />
+      </scope>
+      <scope id="381326360563857384" at="32,0,35,0" />
+      <scope id="381326360563858678" at="35,65,39,24">
+        <var name="nb" id="381326360563858678" />
+        <var name="quotedNode_1" id="381326360563858678" />
+      </scope>
+      <scope id="381326360563857385" at="19,125,24,5" />
+      <scope id="381326360563858678" at="35,0,41,0" />
+      <scope id="381326360563857384" at="19,0,26,0">
+        <var name="imExpression" id="381326360563857384" />
+        <var name="status" id="381326360563857384" />
+        <var name="typeCheckingContext" id="381326360563857384" />
+      </scope>
+      <unit id="381326360563857384" at="42,0,45,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ImExpression_InferenceRule$CONCEPTS" />
+      <unit id="381326360563857384" at="16,0,46,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ImExpression_InferenceRule" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)/381326360563858780">
+    <file name="TypesystemDescriptor.java">
+      <node id="381326360563858780" at="39,5,40,84" concept="4" />
+      <node id="381326360563858780" at="40,84,41,47" concept="2" />
+      <node id="381326360563858780" at="38,5,42,5" concept="0" />
+      <scope id="381326360563858780" at="39,5,41,47">
+        <var name="inferenceRule" id="381326360563858780" />
+      </scope>
+    </file>
+    <file name="typeof_ReExpression_InferenceRule.java">
+      <node id="381326360563859212" at="20,5,21,54" concept="4" />
+      <node id="381326360563859212" at="21,54,22,205" concept="4" />
+      <node id="381326360563859212" at="22,205,23,286" concept="2" />
+      <node id="381326360563858780" at="26,50,27,36" concept="5" />
+      <node id="381326360563858780" at="29,68,30,102" concept="5" />
+      <node id="381326360563858780" at="32,30,33,17" concept="5" />
+      <node id="381326360563859251" at="35,65,36,30" concept="4" />
+      <node id="381326360563859251" at="36,30,37,220" concept="4" />
+      <node id="381326360563859251" at="37,220,38,34" concept="2" />
+      <node id="381326360563859251" at="38,34,39,24" concept="5" />
+      <node id="381326360563858780" at="43,0,44,0" concept="6" trace="ReExpression$jI" />
+      <node id="381326360563858780" at="17,0,19,0" concept="1" trace="typeof_ReExpression_InferenceRule#()V" />
+      <node id="381326360563858780" at="26,0,29,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="381326360563858780" at="29,0,32,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="381326360563858780" at="32,0,35,0" concept="3" trace="overrides#()Z" />
+      <node id="381326360563859212" at="19,125,24,5" concept="0" />
+      <node id="381326360563859251" at="35,0,41,0" concept="7" trace="_quotation_createNode_oi02vb_a1a0c0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="381326360563858780" at="19,0,26,0" concept="3" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="381326360563858780" at="17,46,17,46" />
+      <scope id="381326360563858780" at="26,50,27,36" />
+      <scope id="381326360563858780" at="29,68,30,102" />
+      <scope id="381326360563858780" at="32,30,33,17" />
+      <scope id="381326360563858780" at="17,0,19,0" />
+      <scope id="381326360563859212" at="20,5,23,286">
+        <var name="_info_12389875345" id="381326360563859212" />
+        <var name="_nodeToCheck_1029348928467" id="381326360563859212" />
+      </scope>
+      <scope id="381326360563858780" at="26,0,29,0" />
+      <scope id="381326360563858780" at="29,0,32,0">
+        <var name="argument" id="381326360563858780" />
+      </scope>
+      <scope id="381326360563858780" at="32,0,35,0" />
+      <scope id="381326360563859251" at="35,65,39,24">
+        <var name="nb" id="381326360563859251" />
+        <var name="quotedNode_1" id="381326360563859251" />
+      </scope>
+      <scope id="381326360563858781" at="19,125,24,5" />
+      <scope id="381326360563859251" at="35,0,41,0" />
+      <scope id="381326360563858780" at="19,0,26,0">
+        <var name="reExpression" id="381326360563858780" />
+        <var name="status" id="381326360563858780" />
+        <var name="typeCheckingContext" id="381326360563858780" />
+      </scope>
+      <unit id="381326360563858780" at="42,0,45,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ReExpression_InferenceRule$CONCEPTS" />
+      <unit id="381326360563858780" at="16,0,46,0" name="jetbrains.mps.samples.complex.typesystem.typeof_ReExpression_InferenceRule" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)/5584396657092301806">
+    <file name="TypesystemDescriptor.java">
+      <node id="5584396657092301806" at="11,5,12,85" concept="4" />
+      <node id="5584396657092301806" at="12,85,13,47" concept="2" />
+      <node id="5584396657092301806" at="10,33,14,5" concept="0" />
+      <scope id="5584396657092301806" at="11,5,13,47">
+        <var name="inferenceRule" id="5584396657092301806" />
+      </scope>
+    </file>
+    <file name="typeof_AbsExpression_InferenceRule.java">
+      <node id="5584396657092302817" at="20,5,21,55" concept="4" />
+      <node id="5584396657092302817" at="21,55,22,206" concept="4" />
+      <node id="5584396657092302817" at="22,206,23,287" concept="2" />
+      <node id="5584396657092301806" at="26,50,27,37" concept="5" />
+      <node id="5584396657092301806" at="29,68,30,102" concept="5" />
+      <node id="5584396657092301806" at="32,30,33,17" concept="5" />
+      <node id="5584396657092302861" at="35,65,36,30" concept="4" />
+      <node id="5584396657092302861" at="36,30,37,220" concept="4" />
+      <node id="5584396657092302861" at="37,220,38,34" concept="2" />
+      <node id="5584396657092302861" at="38,34,39,24" concept="5" />
+      <node id="5584396657092301806" at="43,0,44,0" concept="6" trace="AbsExpression$TY" />
+      <node id="5584396657092301806" at="17,0,19,0" concept="1" trace="typeof_AbsExpression_InferenceRule#()V" />
+      <node id="5584396657092301806" at="26,0,29,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="5584396657092301806" at="29,0,32,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="5584396657092301806" at="32,0,35,0" concept="3" trace="overrides#()Z" />
+      <node id="5584396657092302817" at="19,126,24,5" concept="0" />
+      <node id="5584396657092302861" at="35,0,41,0" concept="7" trace="_quotation_createNode_rj5chl_a1a0c0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5584396657092301806" at="19,0,26,0" concept="3" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="5584396657092301806" at="17,47,17,47" />
+      <scope id="5584396657092301806" at="26,50,27,37" />
+      <scope id="5584396657092301806" at="29,68,30,102" />
+      <scope id="5584396657092301806" at="32,30,33,17" />
+      <scope id="5584396657092301806" at="17,0,19,0" />
+      <scope id="5584396657092302817" at="20,5,23,287">
+        <var name="_info_12389875345" id="5584396657092302817" />
+        <var name="_nodeToCheck_1029348928467" id="5584396657092302817" />
+      </scope>
+      <scope id="5584396657092301806" at="26,0,29,0" />
+      <scope id="5584396657092301806" at="29,0,32,0">
+        <var name="argument" id="5584396657092301806" />
+      </scope>
+      <scope id="5584396657092301806" at="32,0,35,0" />
+      <scope id="5584396657092302861" at="35,65,39,24">
+        <var name="nb" id="5584396657092302861" />
+        <var name="quotedNode_1" id="5584396657092302861" />
+      </scope>
+      <scope id="5584396657092302067" at="19,126,24,5" />
+      <scope id="5584396657092302861" at="35,0,41,0" />
+      <scope id="5584396657092301806" at="19,0,26,0">
+        <var name="absExpression" id="5584396657092301806" />
+        <var name="status" id="5584396657092301806" />
+        <var name="typeCheckingContext" id="5584396657092301806" />
+      </scope>
+      <unit id="5584396657092301806" at="42,0,45,0" name="jetbrains.mps.samples.complex.typesystem.typeof_AbsExpression_InferenceRule$CONCEPTS" />
+      <unit id="5584396657092301806" at="16,0,46,0" name="jetbrains.mps.samples.complex.typesystem.typeof_AbsExpression_InferenceRule" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)/7587029747152134035">
+    <file name="Complex_is_Object_weak_SubtypingRule.java">
+      <node id="7587029747152134039" at="18,121,19,47" concept="5" />
+      <node id="7587029747152134035" at="21,50,22,35" concept="5" />
+      <node id="7587029747152134035" at="24,68,25,102" concept="5" />
+      <node id="7587029747152134035" at="27,27,28,16" concept="5" />
+      <node id="7587029747152134041" at="30,60,31,30" concept="4" />
+      <node id="7587029747152134041" at="31,30,32,225" concept="4" />
+      <node id="7587029747152134041" at="32,225,33,34" concept="2" />
+      <node id="7587029747152134041" at="33,34,34,214" concept="2" />
+      <node id="7587029747152134041" at="34,214,35,24" concept="5" />
+      <node id="7587029747152134035" at="39,0,40,0" concept="6" trace="ComplexType$zx" />
+      <node id="7587029747152134035" at="16,0,18,0" concept="1" trace="Complex_is_Object_weak_SubtypingRule#()V" />
+      <node id="7587029747152134035" at="18,0,21,0" concept="3" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7587029747152134035" at="21,0,24,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="7587029747152134035" at="24,0,27,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="7587029747152134035" at="27,0,30,0" concept="3" trace="isWeak#()Z" />
+      <node id="7587029747152134041" at="30,0,37,0" concept="7" trace="_quotation_createNode_f46hoj_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="7587029747152134035" at="16,49,16,49" />
+      <scope id="7587029747152134036" at="18,121,19,47" />
+      <scope id="7587029747152134035" at="21,50,22,35" />
+      <scope id="7587029747152134035" at="24,68,25,102" />
+      <scope id="7587029747152134035" at="27,27,28,16" />
+      <scope id="7587029747152134035" at="16,0,18,0" />
+      <scope id="7587029747152134035" at="18,0,21,0">
+        <var name="complexType" id="7587029747152134035" />
+        <var name="status" id="7587029747152134035" />
+        <var name="typeCheckingContext" id="7587029747152134035" />
+      </scope>
+      <scope id="7587029747152134035" at="21,0,24,0" />
+      <scope id="7587029747152134035" at="24,0,27,0">
+        <var name="argument" id="7587029747152134035" />
+      </scope>
+      <scope id="7587029747152134035" at="27,0,30,0" />
+      <scope id="7587029747152134041" at="30,60,35,24">
+        <var name="nb" id="7587029747152134041" />
+        <var name="quotedNode_1" id="7587029747152134041" />
+      </scope>
+      <scope id="7587029747152134041" at="30,0,37,0" />
+      <unit id="7587029747152134035" at="38,0,41,0" name="jetbrains.mps.samples.complex.typesystem.Complex_is_Object_weak_SubtypingRule$CONCEPTS" />
+      <unit id="7587029747152134035" at="15,0,42,0" name="jetbrains.mps.samples.complex.typesystem.Complex_is_Object_weak_SubtypingRule" />
+    </file>
+    <file name="TypesystemDescriptor.java">
+      <node id="7587029747152134035" at="47,5,48,87" concept="4" />
+      <node id="7587029747152134035" at="48,87,49,47" concept="2" />
+      <node id="7587029747152134035" at="46,5,50,5" concept="0" />
+      <scope id="7587029747152134035" at="47,5,49,47">
+        <var name="subtypingRule" id="7587029747152134035" />
+      </scope>
+    </file>
+  </root>
+</debug-info>
 

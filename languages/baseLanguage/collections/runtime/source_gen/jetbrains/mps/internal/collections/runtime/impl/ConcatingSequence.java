@@ -8,30 +8,27 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class ConcatingSequence<U> extends Sequence<U> {
-  private final ISequence<U> left;
-  private final ISequence<U> right;
-
-  public ConcatingSequence(ISequence<U> left, ISequence<U> right) {
+  private final ISequence<? extends U> left;
+  private final ISequence<? extends U> right;
+  public ConcatingSequence(ISequence<? extends U> left, ISequence<? extends U> right) {
     if (left == null || right == null) {
       throw new NullPointerException();
     }
     this.left = left;
     this.right = right;
   }
-
+  @Override
   public Iterator<U> iterator() {
-    return new ConcatingSequence.ConcatingIterator();
+    return new ConcatingIterator();
   }
-
   private class ConcatingIterator implements Iterator<U> {
     private U next;
     private HasNextState hasNext = HasNextState.UNKNOWN;
-    private Iterator<U> leftIt;
-    private Iterator<U> rightIt;
-
+    private Iterator<? extends U> leftIt;
+    private Iterator<? extends U> rightIt;
     private ConcatingIterator() {
     }
-
+    @Override
     public boolean hasNext() {
       if (leftIt == null || rightIt == null) {
         init();
@@ -41,7 +38,7 @@ public class ConcatingSequence<U> extends Sequence<U> {
       }
       return hasNext.hasNext();
     }
-
+    @Override
     public U next() {
       if (leftIt == null || rightIt == null) {
         init();
@@ -54,16 +51,14 @@ public class ConcatingSequence<U> extends Sequence<U> {
       }
       return clearNext();
     }
-
+    @Override
     public void remove() {
       throw new UnsupportedOperationException();
     }
-
     private void init() {
       leftIt = left.toIterable().iterator();
       rightIt = right.toIterable().iterator();
     }
-
     private void moveToNext() {
       next = null;
       hasNext = HasNextState.AT_END;
@@ -74,14 +69,12 @@ public class ConcatingSequence<U> extends Sequence<U> {
         setNext(rightIt.next());
       }
     }
-
     private U clearNext() {
       U tmp = next;
       next = null;
       hasNext = HasNextState.UNKNOWN;
       return tmp;
     }
-
     private void setNext(U next) {
       this.next = next;
       hasNext = HasNextState.HAS_NEXT;

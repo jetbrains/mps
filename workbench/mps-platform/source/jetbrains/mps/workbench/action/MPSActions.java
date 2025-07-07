@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,15 @@ package jetbrains.mps.workbench.action;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
 import com.intellij.openapi.extensions.PluginId;
-import jetbrains.mps.logging.Logger;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
+// FIXME make a CoreComponent, so that BaseApplicationPlugin.dispose doesn't need to
 public class MPSActions {
-  private static final Logger LOG = Logger.getLogger(MPSActions.class);
+  private static final Logger LOG = LogManager.getLogger(MPSActions.class);
 
   private static MPSActions ourInstance = new MPSActions();
 
@@ -58,7 +60,7 @@ public class MPSActions {
   public void unregisterGroups(List<BaseGroup> groups) {
     ActionManagerEx manager = ActionManagerEx.getInstanceEx();
 
-    List<BaseGroup> mpsGroups = new ArrayList<BaseGroup>();
+    List<BaseGroup> mpsGroups = new ArrayList<>();
     for (BaseGroup group : groups) {
       mpsGroups.add(group);
       manager.unregisterAction(group.getId());
@@ -67,7 +69,7 @@ public class MPSActions {
     //remove mps groups from IDEA groups
     for (String id : manager.getActionIds("")) {
       AnAction action = manager.getAction(id);
-      if (action instanceof ActionGroup && (!(action instanceof BaseGroup))) {
+      if (action instanceof ActionGroup) {
         ActionGroup staticGroup = (ActionGroup) action;
         removeGroupsFromGroup(staticGroup, mpsGroups);
       }

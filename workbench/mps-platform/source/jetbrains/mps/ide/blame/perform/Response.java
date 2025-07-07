@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,8 @@
  */
 package jetbrains.mps.ide.blame.perform;
 
-import jetbrains.mps.logging.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jdom.Attribute;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -25,12 +26,12 @@ import org.jetbrains.annotations.Nullable;
 import java.io.StringReader;
 
 public class Response {
-  private static final Logger LOG = Logger.getLogger(Response.class);
+  private static final Logger LOG = LogManager.getLogger(Response.class);
 
-  private boolean mySuccess = true;
-  private String myMessage = "";
-  private Throwable myThrowable = null;
-  private String myResponseString = null;
+  private boolean mySuccess;
+  private String myMessage;
+  private Throwable myThrowable;
+  private String myResponseString;
 
   public Response(String message, String response, boolean success, Throwable throwable) {
     myMessage = message;
@@ -58,29 +59,23 @@ public class Response {
   @Nullable
   public Element getResponseXml() {
     String responseString = getResponseString();
-    return responseAsElement(responseString);
-  }
-
-  public static Element responseAsElement(String responseString) {
     if (responseString == null || responseString.isEmpty()) {
       return null;
     }
-    SAXBuilder saxBuilder = new SAXBuilder();
-    Document document;
+
     try {
-      document = saxBuilder.build(new StringReader(responseString));
+      return new SAXBuilder().build(new StringReader(responseString)).getRootElement();
     } catch (Exception e) {
       LOG.error("Can't open created issue", e);
       return null;
     }
-    return document.getRootElement();
   }
 
   @Nullable
   public String getIssueId() {
-    final String ID = "id";
     Element responseXml = getResponseXml();
     if (responseXml != null) {
+      final String ID = "id";
       Attribute attribute = responseXml.getAttribute(ID);
       if (attribute != null) {
         return attribute.getValue();

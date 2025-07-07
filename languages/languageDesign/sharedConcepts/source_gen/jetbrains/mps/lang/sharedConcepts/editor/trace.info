@@ -1,39 +1,261 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <root nodeId="1203541329669" modelId="r:00000000-0000-4000-0000-011c895902bb(jetbrains.mps.lang.sharedConcepts.editor)">
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="12" startPosition="68" endLine="13" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="13" startPosition="34" endLine="14" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="14" startPosition="63" endLine="15" endPosition="59" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="15" startPosition="59" endLine="16" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="19" startPosition="68" endLine="20" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="20" startPosition="34" endLine="21" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="21" startPosition="66" endLine="22" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="25" startPosition="78" endLine="26" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="26" startPosition="34" endLine="27" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="27" startPosition="66" endLine="28" endPosition="59" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="28" startPosition="59" endLine="29" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="18" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getReferenceOnConcept#(Ljetbrains/mps/nodeEditor/cells/EditorCell;)Ljetbrains/mps/nodeEditor/style/Style;" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="11" startPosition="38" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getReferenceDecorated#(Ljetbrains/mps/nodeEditor/cells/EditorCell;)Ljetbrains/mps/nodeEditor/style/Style;" />
-    <nodeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="24" startPosition="0" endLine="31" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getReferenceOnConceptualFeature#(Ljetbrains/mps/nodeEditor/cells/EditorCell;)Ljetbrains/mps/nodeEditor/style/Style;" />
-    <scopeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="19" startPosition="68" endLine="22" endPosition="17">
-      <varInfo nodeId="1203541329669" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="12" startPosition="68" endLine="16" endPosition="17">
-      <varInfo nodeId="1203541329669" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="25" startPosition="78" endLine="29" endPosition="17">
-      <varInfo nodeId="1203541329669" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="18" startPosition="0" endLine="24" endPosition="0">
-      <varInfo nodeId="1203541329669" varName="cell" />
-    </scopeInfo>
-    <scopeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="11" startPosition="38" endLine="18" endPosition="0">
-      <varInfo nodeId="1203541329669" varName="cell" />
-    </scopeInfo>
-    <scopeInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="24" startPosition="0" endLine="31" endPosition="0">
-      <varInfo nodeId="1203541329669" varName="cell" />
-    </scopeInfo>
-    <unitInfo nodeId="1203541329669" fileName="SharedStyles_StyleSheet.java" startLine="11" startPosition="0" endLine="32" endPosition="0" unitName="jetbrains.mps.lang.sharedConcepts.editor.SharedStyles_StyleSheet" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
+  <root>
+    <file name="EditorAspectDescriptorImpl.java">
+      <unit at="15,0,42,0" name="jetbrains.mps.lang.sharedConcepts.editor.EditorAspectDescriptorImpl" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902bb(jetbrains.mps.lang.sharedConcepts.editor)/1203541329669">
+    <file name="SharedStyles_StyleSheet.java">
+      <node id="1203541368202" at="21,83,22,69" concept="3" />
+      <node id="1203541368202" at="22,69,23,88" concept="3" />
+      <node id="1203541368202" at="23,88,24,83" concept="1" />
+      <node id="1203541385314" at="31,83,32,69" concept="3" />
+      <node id="1203541385314" at="32,69,33,88" concept="3" />
+      <node id="1203541385314" at="33,88,34,83" concept="1" />
+      <node id="1221170124867" at="41,93,42,69" concept="3" />
+      <node id="1221170124867" at="42,69,43,88" concept="3" />
+      <node id="1221170124867" at="43,88,44,93" concept="1" />
+      <node id="1203541368202" at="48,82,49,33" concept="6" />
+      <node id="1203541368203" at="53,59,54,109" concept="1" />
+      <node id="1203541368204" at="54,109,55,61" concept="1" />
+      <node id="1203541385314" at="60,82,61,33" concept="6" />
+      <node id="1203541509378" at="65,59,66,112" concept="1" />
+      <node id="1221170124867" at="71,92,72,33" concept="6" />
+      <node id="1221170124868" at="76,59,77,112" concept="1" />
+      <node id="1221170145073" at="77,112,78,61" concept="1" />
+      <node id="1203541368202" at="48,0,51,0" concept="0" trace="ReferenceDecoratedStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1203541385314" at="60,0,63,0" concept="0" trace="ReferenceOnConceptStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1221170124867" at="71,0,74,0" concept="0" trace="ReferenceOnConceptualFeatureStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1203541385314" at="64,0,68,0" concept="2" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="1203541368202" at="52,0,57,0" concept="2" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="1221170124867" at="75,0,80,0" concept="2" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="1203541368202" at="20,0,26,0" concept="5" trace="apply_ReferenceDecorated#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="1203541385314" at="30,0,36,0" concept="5" trace="apply_ReferenceOnConcept#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="1221170124867" at="40,0,46,0" concept="5" trace="apply_ReferenceOnConceptualFeature#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="1203541368202" at="48,82,49,33" />
+      <scope id="1203541385314" at="60,82,61,33" />
+      <scope id="1203541385314" at="65,59,66,112" />
+      <scope id="1221170124867" at="71,92,72,33" />
+      <scope id="1203541368202" at="53,59,55,61" />
+      <scope id="1221170124867" at="76,59,78,61" />
+      <scope id="1203541368202" at="21,83,24,83">
+        <var name="editorContext" id="1203541368202" />
+        <var name="node" id="1203541368202" />
+      </scope>
+      <scope id="1203541385314" at="31,83,34,83">
+        <var name="editorContext" id="1203541385314" />
+        <var name="node" id="1203541385314" />
+      </scope>
+      <scope id="1221170124867" at="41,93,44,93">
+        <var name="editorContext" id="1221170124867" />
+        <var name="node" id="1221170124867" />
+      </scope>
+      <scope id="1203541368202" at="48,0,51,0">
+        <var name="editorContext" id="1203541368202" />
+        <var name="node" id="1203541368202" />
+      </scope>
+      <scope id="1203541385314" at="60,0,63,0">
+        <var name="editorContext" id="1203541385314" />
+        <var name="node" id="1203541385314" />
+      </scope>
+      <scope id="1221170124867" at="71,0,74,0">
+        <var name="editorContext" id="1221170124867" />
+        <var name="node" id="1221170124867" />
+      </scope>
+      <scope id="1203541385314" at="64,0,68,0">
+        <var name="editorCell" id="1203541385314" />
+        <var name="style" id="1203541385314" />
+      </scope>
+      <scope id="1203541368202" at="52,0,57,0">
+        <var name="editorCell" id="1203541368202" />
+        <var name="style" id="1203541368202" />
+      </scope>
+      <scope id="1221170124867" at="75,0,80,0">
+        <var name="editorCell" id="1221170124867" />
+        <var name="style" id="1221170124867" />
+      </scope>
+      <scope id="1203541368202" at="20,0,26,0">
+        <var name="editorCell" id="1203541368202" />
+        <var name="style" id="1203541368202" />
+      </scope>
+      <scope id="1203541385314" at="30,0,36,0">
+        <var name="editorCell" id="1203541385314" />
+        <var name="style" id="1203541385314" />
+      </scope>
+      <scope id="1221170124867" at="40,0,46,0">
+        <var name="editorCell" id="1221170124867" />
+        <var name="style" id="1221170124867" />
+      </scope>
+      <unit id="1203541385314" at="59,0,70,0" name="jetbrains.mps.lang.sharedConcepts.editor.SharedStyles_StyleSheet$ReferenceOnConceptStyleClass" />
+      <unit id="1203541368202" at="47,0,59,0" name="jetbrains.mps.lang.sharedConcepts.editor.SharedStyles_StyleSheet$ReferenceDecoratedStyleClass" />
+      <unit id="1221170124867" at="70,0,82,0" name="jetbrains.mps.lang.sharedConcepts.editor.SharedStyles_StyleSheet$ReferenceOnConceptualFeatureStyleClass" />
+      <unit id="1203541329669" at="15,0,83,0" name="jetbrains.mps.lang.sharedConcepts.editor.SharedStyles_StyleSheet" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902bb(jetbrains.mps.lang.sharedConcepts.editor)/1741258697587239478">
+    <file name="ConceptFunctionParameter_model_SubstituteMenu.java">
+      <node id="1741258697587239478" at="18,118,19,140" concept="3" />
+      <node id="1741258697587239478" at="19,140,20,18" concept="4" />
+      <node id="1741258697587239478" at="25,91,26,49" concept="1" />
+      <node id="1741258697587239478" at="26,49,27,269" concept="1" />
+      <node id="1741258697587239478" at="28,9,29,44" concept="4" />
+      <node id="1741258697587239478" at="30,15,31,50" concept="1" />
+      <node id="1741258697587239478" at="27,269,32,5" concept="7" />
+      <node id="1741258697587239478" at="16,0,22,0" concept="2" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="1741258697587239478" at="23,0,34,0" concept="2" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="1741258697587239478" at="28,9,29,44" />
+      <scope id="1741258697587239478" at="30,15,31,50" />
+      <scope id="1741258697587239478" at="18,118,20,18">
+        <var name="result" id="1741258697587239478" />
+      </scope>
+      <scope id="1741258697587239478" at="16,0,22,0">
+        <var name="_context" id="1741258697587239478" />
+      </scope>
+      <scope id="1741258697587239478" at="25,91,32,5" />
+      <scope id="1741258697587239478" at="23,0,34,0">
+        <var name="context" id="1741258697587239478" />
+      </scope>
+      <unit id="1741258697587239478" at="15,0,37,0" name="jetbrains.mps.lang.sharedConcepts.editor.ConceptFunctionParameter_model_SubstituteMenu" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902bb(jetbrains.mps.lang.sharedConcepts.editor)/1741258697587239479">
+    <file name="ConceptFunctionParameter_progressMonitor_SubstituteMenu.java">
+      <node id="1741258697587239479" at="18,118,19,140" concept="3" />
+      <node id="1741258697587239479" at="19,140,20,18" concept="4" />
+      <node id="1741258697587239479" at="25,91,26,49" concept="1" />
+      <node id="1741258697587239479" at="26,49,27,279" concept="1" />
+      <node id="1741258697587239479" at="28,9,29,44" concept="4" />
+      <node id="1741258697587239479" at="30,15,31,50" concept="1" />
+      <node id="1741258697587239479" at="27,279,32,5" concept="7" />
+      <node id="1741258697587239479" at="16,0,22,0" concept="2" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="1741258697587239479" at="23,0,34,0" concept="2" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="1741258697587239479" at="28,9,29,44" />
+      <scope id="1741258697587239479" at="30,15,31,50" />
+      <scope id="1741258697587239479" at="18,118,20,18">
+        <var name="result" id="1741258697587239479" />
+      </scope>
+      <scope id="1741258697587239479" at="16,0,22,0">
+        <var name="_context" id="1741258697587239479" />
+      </scope>
+      <scope id="1741258697587239479" at="25,91,32,5" />
+      <scope id="1741258697587239479" at="23,0,34,0">
+        <var name="context" id="1741258697587239479" />
+      </scope>
+      <unit id="1741258697587239479" at="15,0,37,0" name="jetbrains.mps.lang.sharedConcepts.editor.ConceptFunctionParameter_progressMonitor_SubstituteMenu" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902bb(jetbrains.mps.lang.sharedConcepts.editor)/1741258697587239480">
+    <file name="ConceptFunctionParameter_operationContext_SubstituteMenu.java">
+      <node id="1741258697587239480" at="18,118,19,140" concept="3" />
+      <node id="1741258697587239480" at="19,140,20,18" concept="4" />
+      <node id="1741258697587239480" at="25,91,26,49" concept="1" />
+      <node id="1741258697587239480" at="26,49,27,280" concept="1" />
+      <node id="1741258697587239480" at="28,9,29,44" concept="4" />
+      <node id="1741258697587239480" at="30,15,31,50" concept="1" />
+      <node id="1741258697587239480" at="27,280,32,5" concept="7" />
+      <node id="1741258697587239480" at="16,0,22,0" concept="2" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="1741258697587239480" at="23,0,34,0" concept="2" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="1741258697587239480" at="28,9,29,44" />
+      <scope id="1741258697587239480" at="30,15,31,50" />
+      <scope id="1741258697587239480" at="18,118,20,18">
+        <var name="result" id="1741258697587239480" />
+      </scope>
+      <scope id="1741258697587239480" at="16,0,22,0">
+        <var name="_context" id="1741258697587239480" />
+      </scope>
+      <scope id="1741258697587239480" at="25,91,32,5" />
+      <scope id="1741258697587239480" at="23,0,34,0">
+        <var name="context" id="1741258697587239480" />
+      </scope>
+      <unit id="1741258697587239480" at="15,0,37,0" name="jetbrains.mps.lang.sharedConcepts.editor.ConceptFunctionParameter_operationContext_SubstituteMenu" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902bb(jetbrains.mps.lang.sharedConcepts.editor)/1741258697587239481">
+    <file name="ConceptFunctionParameter_scope_SubstituteMenu.java">
+      <node id="1741258697587239481" at="18,118,19,140" concept="3" />
+      <node id="1741258697587239481" at="19,140,20,18" concept="4" />
+      <node id="1741258697587239481" at="25,91,26,49" concept="1" />
+      <node id="1741258697587239481" at="26,49,27,269" concept="1" />
+      <node id="1741258697587239481" at="28,9,29,44" concept="4" />
+      <node id="1741258697587239481" at="30,15,31,50" concept="1" />
+      <node id="1741258697587239481" at="27,269,32,5" concept="7" />
+      <node id="1741258697587239481" at="16,0,22,0" concept="2" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="1741258697587239481" at="23,0,34,0" concept="2" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="1741258697587239481" at="28,9,29,44" />
+      <scope id="1741258697587239481" at="30,15,31,50" />
+      <scope id="1741258697587239481" at="18,118,20,18">
+        <var name="result" id="1741258697587239481" />
+      </scope>
+      <scope id="1741258697587239481" at="16,0,22,0">
+        <var name="_context" id="1741258697587239481" />
+      </scope>
+      <scope id="1741258697587239481" at="25,91,32,5" />
+      <scope id="1741258697587239481" at="23,0,34,0">
+        <var name="context" id="1741258697587239481" />
+      </scope>
+      <unit id="1741258697587239481" at="15,0,37,0" name="jetbrains.mps.lang.sharedConcepts.editor.ConceptFunctionParameter_scope_SubstituteMenu" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902bb(jetbrains.mps.lang.sharedConcepts.editor)/1741258697587239482">
+    <file name="ConceptFunctionParameter_editorContext_SubstituteMenu.java">
+      <node id="1741258697587239482" at="18,118,19,140" concept="3" />
+      <node id="1741258697587239482" at="19,140,20,18" concept="4" />
+      <node id="1741258697587239482" at="25,91,26,49" concept="1" />
+      <node id="1741258697587239482" at="26,49,27,277" concept="1" />
+      <node id="1741258697587239482" at="28,9,29,44" concept="4" />
+      <node id="1741258697587239482" at="30,15,31,50" concept="1" />
+      <node id="1741258697587239482" at="27,277,32,5" concept="7" />
+      <node id="1741258697587239482" at="16,0,22,0" concept="2" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="1741258697587239482" at="23,0,34,0" concept="2" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="1741258697587239482" at="28,9,29,44" />
+      <scope id="1741258697587239482" at="30,15,31,50" />
+      <scope id="1741258697587239482" at="18,118,20,18">
+        <var name="result" id="1741258697587239482" />
+      </scope>
+      <scope id="1741258697587239482" at="16,0,22,0">
+        <var name="_context" id="1741258697587239482" />
+      </scope>
+      <scope id="1741258697587239482" at="25,91,32,5" />
+      <scope id="1741258697587239482" at="23,0,34,0">
+        <var name="context" id="1741258697587239482" />
+      </scope>
+      <unit id="1741258697587239482" at="15,0,37,0" name="jetbrains.mps.lang.sharedConcepts.editor.ConceptFunctionParameter_editorContext_SubstituteMenu" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902bb(jetbrains.mps.lang.sharedConcepts.editor)/1741258697587239483">
+    <file name="ConceptFunctionParameter_node_SubstituteMenu.java">
+      <node id="1741258697587239483" at="18,118,19,140" concept="3" />
+      <node id="1741258697587239483" at="19,140,20,18" concept="4" />
+      <node id="1741258697587239483" at="25,91,26,49" concept="1" />
+      <node id="1741258697587239483" at="26,49,27,268" concept="1" />
+      <node id="1741258697587239483" at="28,9,29,44" concept="4" />
+      <node id="1741258697587239483" at="30,15,31,50" concept="1" />
+      <node id="1741258697587239483" at="27,268,32,5" concept="7" />
+      <node id="1741258697587239483" at="16,0,22,0" concept="2" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="1741258697587239483" at="23,0,34,0" concept="2" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="1741258697587239483" at="28,9,29,44" />
+      <scope id="1741258697587239483" at="30,15,31,50" />
+      <scope id="1741258697587239483" at="18,118,20,18">
+        <var name="result" id="1741258697587239483" />
+      </scope>
+      <scope id="1741258697587239483" at="16,0,22,0">
+        <var name="_context" id="1741258697587239483" />
+      </scope>
+      <scope id="1741258697587239483" at="25,91,32,5" />
+      <scope id="1741258697587239483" at="23,0,34,0">
+        <var name="context" id="1741258697587239483" />
+      </scope>
+      <unit id="1741258697587239483" at="15,0,37,0" name="jetbrains.mps.lang.sharedConcepts.editor.ConceptFunctionParameter_node_SubstituteMenu" />
+    </file>
+  </root>
+</debug-info>
 

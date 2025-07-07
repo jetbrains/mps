@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,17 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodeUtil;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.misc.hash.HashSet;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class ChildrenCollectionFinder {
@@ -46,68 +48,60 @@ public class ChildrenCollectionFinder {
   }
 
   public EditorCell find() {
-    return ModelAccess.instance().runReadAction(new Computable<EditorCell>() {
-      public EditorCell compute() {
-        if (myCheckFirst && isMultipleCollectionCell(myCurrent)) {
-          return myCurrent;
-        }
-        SNode anchorNode = getLCA(myAnchor.getSNode(), myCurrent.getSNode());
-        if (anchorNode == null) {
-          return null;
-        }
-        // Note: traverser doesn't visit parent nodes of the current node,
-        // if our anchor is from another subtree, search parents (up to LCA) first
-        // TODO remove
-        if (anchorNode != myCurrent.getSNode()) {
-          EditorCell curr = myCurrent;
-          while (curr != null && curr.getSNode() != anchorNode) {
-            if (isMultipleCollectionCell(curr)) {
-              return curr;
-            }
-            curr = curr.getParent();
-          }
-          if (curr != null && curr.getSNode() == anchorNode && isMultipleCollectionCell(curr)) {
-            return curr;
-          }
-        }
-        DfsTraverser traverser = new DfsTraverser(myCurrent, myForward);
-        while (traverser.getCurrent() != null) {
-          EditorCell current = traverser.getCurrent();
-          SNode currentNode = current.getSNode();
-
-          if (!anchorNode.isAncestorOf(currentNode)) {
-            return null;
-          }
-
-          if (isMultipleCollectionCell(current)) {
-            return current;
-          }
-          traverser.next();
-        }
+    SRepository repo = myCurrent.getContext().getRepository();
+    return new ModelAccessHelper(repo).runReadAction(() -> {
+      if (myCheckFirst && isMultipleCollectionCell(myCurrent)) {
+        return myCurrent;
+      }
+      SNode anchorNode = getLCA(myAnchor.getSNode(), myCurrent.getSNode());
+      if (anchorNode == null) {
         return null;
       }
+      // Note: traverser doesn't visit parent nodes of the current node,
+      // if our anchor is from another subtree, search parents (up to LCA) first
+      // TODO remove
+      if (anchorNode != myCurrent.getSNode()) {
+        EditorCell curr = myCurrent;
+        while (curr != null && curr.getSNode() != anchorNode) {
+          if (isMultipleCollectionCell(curr)) {
+            return curr;
+          }
+          curr = curr.getParent();
+        }
+        if (curr != null && curr.getSNode() == anchorNode && isMultipleCollectionCell(curr)) {
+          return curr;
+        }
+      }
+
+      for (EditorCell current : CellTraversalUtil.iterateTree(null, myCurrent, myForward).skipStart()) {
+        SNode currentNode = current.getSNode();
+
+        if (!jetbrains.mps.util.SNodeOperations.isAncestor(anchorNode, currentNode)) {
+          return null;
+        }
+
+        if (isMultipleCollectionCell(current)) {
+          return current;
+        }
+      }
+      return null;
     });
   }
 
   private static boolean isMultipleCollectionCell(EditorCell current) {
-    if (current.getRole() != null) {
-      String role = current.getRole();
-      SNode currentNode = current.getSNode();
-      SNode linkDeclaration = currentNode.getLinkDeclaration(role);
-      if (linkDeclaration != null &&
-        !SNodeUtil.getLinkDeclaration_IsReference(linkDeclaration) &&
-        SModelUtil.isMultipleLinkDeclaration(linkDeclaration)) {
-        return true;
-      }
+    if (current.getSRole() == null) {
+      return false;
     }
-    return false;
+
+    SAbstractLink role = ((SAbstractLink) current.getSRole());
+    return role != null && (!(role instanceof SReferenceLink)) && role.isMultiple();
   }
 
   private static SNode getLCA(SNode left, SNode right) {
     if (left == right || right == null || left == null) {
       return left == null ? right : left;
     }
-    Set<SNode> parents = new HashSet<SNode>();
+    Set<SNode> parents = new HashSet<>();
     while (left != null) {
       parents.add(left);
       left = left.getParent();

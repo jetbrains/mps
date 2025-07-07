@@ -1,87 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="ConstraintsAspectDescriptor.java" startLine="9" startPosition="0" endLine="27" endPosition="0" unitName="jetbrains.mps.samples.xmlLiterals.constraints.ConstraintsAspectDescriptor" />
-  <root nodeId="9152904044274469613" modelId="r:522aace3-e88f-4df7-82be-4ab3d6ccd8bc(jetbrains.mps.samples.xmlLiterals.constraints)">
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="13" startPosition="70" endLine="14" endPosition="185" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="canBeChildBreakingPoint" />
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="16" startPosition="34" endLine="17" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="21" startPosition="43" endLine="22" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="26" startPosition="200" endLine="27" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="27" startPosition="96" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="29" startPosition="51" endLine="30" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="31" startPosition="5" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="32" startPosition="0" endLine="33" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="9152904044274484469" fileName="TextMacro_Constraints.java" startLine="36" startPosition="148" endLine="37" endPosition="132" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="15" startPosition="0" endLine="18" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="TextMacro_Constraints#()V" />
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="28" startPosition="0" endLine="31" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="35" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="static_canBeAChild#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="19" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnCanBeChildMethod#()Z" />
-    <nodeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="24" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="canBeChild#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-    <scopeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="16" startPosition="34" endLine="17" endPosition="67" />
-    <scopeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="21" startPosition="43" endLine="22" endPosition="16" />
-    <scopeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="29" startPosition="51" endLine="30" endPosition="67" />
-    <scopeInfo nodeId="9152904044274469615" fileName="TextMacro_Constraints.java" startLine="36" startPosition="148" endLine="37" endPosition="132" />
-    <scopeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="15" startPosition="0" endLine="18" endPosition="3" />
-    <scopeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="35" startPosition="0" endLine="39" endPosition="0">
-      <varInfo nodeId="9152904044274469613" varName="childConcept" />
-      <varInfo nodeId="9152904044274469613" varName="link" />
-      <varInfo nodeId="9152904044274469613" varName="node" />
-      <varInfo nodeId="9152904044274469613" varName="operationContext" />
-      <varInfo nodeId="9152904044274469613" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="19" startPosition="0" endLine="24" endPosition="0" />
-    <scopeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="26" startPosition="200" endLine="33" endPosition="18">
-      <varInfo nodeId="9152904044274469613" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="24" startPosition="0" endLine="35" endPosition="0">
-      <varInfo nodeId="9152904044274469613" varName="checkingNodeContext" />
-      <varInfo nodeId="9152904044274469613" varName="childConcept" />
-      <varInfo nodeId="9152904044274469613" varName="link" />
-      <varInfo nodeId="9152904044274469613" varName="node" />
-      <varInfo nodeId="9152904044274469613" varName="operationContext" />
-      <varInfo nodeId="9152904044274469613" varName="parentNode" />
-    </scopeInfo>
-    <unitInfo nodeId="9152904044274469613" fileName="TextMacro_Constraints.java" startLine="13" startPosition="0" endLine="40" endPosition="0" unitName="jetbrains.mps.samples.xmlLiterals.constraints.TextMacro_Constraints" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="ConstraintsAspectDescriptor.java">
+      <unit at="13,0,31,0" name="jetbrains.mps.samples.xmlLiterals.constraints.ConstraintsAspectDescriptor" />
+    </file>
   </root>
-  <root nodeId="9152904044274518160" modelId="r:522aace3-e88f-4df7-82be-4ab3d6ccd8bc(jetbrains.mps.samples.xmlLiterals.constraints)">
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="13" startPosition="73" endLine="14" endPosition="185" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="canBeChildBreakingPoint" />
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="16" startPosition="37" endLine="17" endPosition="70" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="21" startPosition="43" endLine="22" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="26" startPosition="200" endLine="27" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="27" startPosition="96" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="29" startPosition="51" endLine="30" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="31" startPosition="5" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="32" startPosition="0" endLine="33" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="9152904044274518163" fileName="ElementMacro_Constraints.java" startLine="36" startPosition="148" endLine="37" endPosition="132" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="15" startPosition="0" endLine="18" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ElementMacro_Constraints#()V" />
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="28" startPosition="0" endLine="31" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="35" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="static_canBeAChild#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="19" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnCanBeChildMethod#()Z" />
-    <nodeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="24" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="canBeChild#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-    <scopeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="16" startPosition="37" endLine="17" endPosition="70" />
-    <scopeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="21" startPosition="43" endLine="22" endPosition="16" />
-    <scopeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="29" startPosition="51" endLine="30" endPosition="67" />
-    <scopeInfo nodeId="9152904044274518162" fileName="ElementMacro_Constraints.java" startLine="36" startPosition="148" endLine="37" endPosition="132" />
-    <scopeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="15" startPosition="0" endLine="18" endPosition="3" />
-    <scopeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="35" startPosition="0" endLine="39" endPosition="0">
-      <varInfo nodeId="9152904044274518160" varName="childConcept" />
-      <varInfo nodeId="9152904044274518160" varName="link" />
-      <varInfo nodeId="9152904044274518160" varName="node" />
-      <varInfo nodeId="9152904044274518160" varName="operationContext" />
-      <varInfo nodeId="9152904044274518160" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="19" startPosition="0" endLine="24" endPosition="0" />
-    <scopeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="26" startPosition="200" endLine="33" endPosition="18">
-      <varInfo nodeId="9152904044274518160" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="24" startPosition="0" endLine="35" endPosition="0">
-      <varInfo nodeId="9152904044274518160" varName="checkingNodeContext" />
-      <varInfo nodeId="9152904044274518160" varName="childConcept" />
-      <varInfo nodeId="9152904044274518160" varName="link" />
-      <varInfo nodeId="9152904044274518160" varName="node" />
-      <varInfo nodeId="9152904044274518160" varName="operationContext" />
-      <varInfo nodeId="9152904044274518160" varName="parentNode" />
-    </scopeInfo>
-    <unitInfo nodeId="9152904044274518160" fileName="ElementMacro_Constraints.java" startLine="13" startPosition="0" endLine="40" endPosition="0" unitName="jetbrains.mps.samples.xmlLiterals.constraints.ElementMacro_Constraints" />
+  <root nodeRef="r:522aace3-e88f-4df7-82be-4ab3d6ccd8bc(jetbrains.mps.samples.xmlLiterals.constraints)/9152904044274469613">
+    <file name="TextMacro_Constraints.java">
+      <node id="9152904044274469613" at="20,34,21,33" concept="9" />
+      <node id="9152904044274469613" at="28,127,29,128" concept="4" />
+      <node id="9152904044274469613" at="29,128,30,0" concept="6" />
+      <node id="9152904044274469613" at="31,55,32,71" concept="1" />
+      <node id="9152904044274469613" at="33,9,34,0" concept="6" />
+      <node id="9152904044274469613" at="34,0,35,22" concept="5" />
+      <node id="1227128029536583056" at="39,128,40,102" concept="5" />
+      <node id="9152904044274469613" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
+      <node id="9152904044274469613" at="45,0,46,0" concept="7" trace="TextMacro$gT" />
+      <node id="9152904044274469613" at="46,0,47,0" concept="7" trace="XmlLiteral$4W" />
+      <node id="9152904044274469613" at="20,0,23,0" concept="0" trace="TextMacro_Constraints#()V" />
+      <node id="9152904044274469613" at="30,0,33,9" concept="2" />
+      <node id="9152904044274469613" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="9152904044274469613" at="27,0,37,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="9152904044274469613" at="25,103,37,6" concept="5" />
+      <node id="9152904044274469613" at="24,0,39,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <scope id="9152904044274469613" at="20,34,21,33" />
+      <scope id="9152904044274469613" at="31,55,32,71" />
+      <scope id="1227128029536583055" at="39,128,40,102" />
+      <scope id="9152904044274469613" at="20,0,23,0" />
+      <scope id="9152904044274469613" at="39,0,42,0">
+        <var name="childConcept" id="9152904044274469613" />
+        <var name="link" id="9152904044274469613" />
+        <var name="node" id="9152904044274469613" />
+        <var name="parentNode" id="9152904044274469613" />
+      </scope>
+      <scope id="9152904044274469613" at="28,127,35,22">
+        <var name="result" id="9152904044274469613" />
+      </scope>
+      <scope id="9152904044274469613" at="27,0,37,0">
+        <var name="checkingNodeContext" id="9152904044274469613" />
+        <var name="context" id="9152904044274469613" />
+      </scope>
+      <scope id="9152904044274469613" at="25,103,37,6" />
+      <scope id="9152904044274469613" at="24,0,39,0" />
+      <unit id="9152904044274469613" at="44,0,48,0" name="jetbrains.mps.samples.xmlLiterals.constraints.TextMacro_Constraints$CONCEPTS" />
+      <unit id="9152904044274469613" at="26,15,37,5" name="jetbrains.mps.samples.xmlLiterals.constraints.TextMacro_Constraints$1" />
+      <unit id="9152904044274469613" at="19,0,49,0" name="jetbrains.mps.samples.xmlLiterals.constraints.TextMacro_Constraints" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:522aace3-e88f-4df7-82be-4ab3d6ccd8bc(jetbrains.mps.samples.xmlLiterals.constraints)/9152904044274518160">
+    <file name="ElementMacro_Constraints.java">
+      <node id="9152904044274518160" at="20,37,21,36" concept="9" />
+      <node id="9152904044274518160" at="28,127,29,128" concept="4" />
+      <node id="9152904044274518160" at="29,128,30,0" concept="6" />
+      <node id="9152904044274518160" at="31,55,32,71" concept="1" />
+      <node id="9152904044274518160" at="33,9,34,0" concept="6" />
+      <node id="9152904044274518160" at="34,0,35,22" concept="5" />
+      <node id="1227128029536583067" at="39,128,40,102" concept="5" />
+      <node id="9152904044274518160" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
+      <node id="9152904044274518160" at="45,0,46,0" concept="7" trace="ElementMacro$U$" />
+      <node id="9152904044274518160" at="46,0,47,0" concept="7" trace="XmlLiteral$4W" />
+      <node id="9152904044274518160" at="20,0,23,0" concept="0" trace="ElementMacro_Constraints#()V" />
+      <node id="9152904044274518160" at="30,0,33,9" concept="2" />
+      <node id="9152904044274518160" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="9152904044274518160" at="27,0,37,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="9152904044274518160" at="25,103,37,6" concept="5" />
+      <node id="9152904044274518160" at="24,0,39,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <scope id="9152904044274518160" at="20,37,21,36" />
+      <scope id="9152904044274518160" at="31,55,32,71" />
+      <scope id="1227128029536583066" at="39,128,40,102" />
+      <scope id="9152904044274518160" at="20,0,23,0" />
+      <scope id="9152904044274518160" at="39,0,42,0">
+        <var name="childConcept" id="9152904044274518160" />
+        <var name="link" id="9152904044274518160" />
+        <var name="node" id="9152904044274518160" />
+        <var name="parentNode" id="9152904044274518160" />
+      </scope>
+      <scope id="9152904044274518160" at="28,127,35,22">
+        <var name="result" id="9152904044274518160" />
+      </scope>
+      <scope id="9152904044274518160" at="27,0,37,0">
+        <var name="checkingNodeContext" id="9152904044274518160" />
+        <var name="context" id="9152904044274518160" />
+      </scope>
+      <scope id="9152904044274518160" at="25,103,37,6" />
+      <scope id="9152904044274518160" at="24,0,39,0" />
+      <unit id="9152904044274518160" at="44,0,48,0" name="jetbrains.mps.samples.xmlLiterals.constraints.ElementMacro_Constraints$CONCEPTS" />
+      <unit id="9152904044274518160" at="26,15,37,5" name="jetbrains.mps.samples.xmlLiterals.constraints.ElementMacro_Constraints$1" />
+      <unit id="9152904044274518160" at="19,0,49,0" name="jetbrains.mps.samples.xmlLiterals.constraints.ElementMacro_Constraints" />
+    </file>
+  </root>
+</debug-info>
 

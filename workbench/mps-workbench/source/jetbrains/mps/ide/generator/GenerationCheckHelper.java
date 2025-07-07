@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,32 +15,28 @@
  */
 package jetbrains.mps.ide.generator;
 
+import jetbrains.mps.generator.GenerationSettingsProvider;
+import jetbrains.mps.generator.IModifiableGenerationSettings;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.SModelDescriptor;
+import org.jetbrains.mps.openapi.model.SModel;
 
 import java.util.List;
 
+/**
+ * Utility code to run model check prior to generation according to settings
+ */
 public class GenerationCheckHelper {
 
-  private static GenerationCheckHelper INSTANCE = new GenerationCheckHelper();
-
-  public static GenerationCheckHelper getInstance() {
-    return INSTANCE;
-  }
-
-  public boolean checkModelsBeforeGenerationIfNeeded(Project p, IOperationContext operationContext, List<SModelDescriptor> modelDescriptors, Runnable regenerationRunnable) {
+  public boolean checkModelsBeforeGenerationIfNeeded(Project p, List<SModel> modelDescriptors) {
+    final IModifiableGenerationSettings generationSettings = p.getComponent(GenerationSettingsProvider.class).getGenerationSettings();
+    if (!generationSettings.isCheckModelsBeforeGeneration()) {
+      return true;
+    }
     for (ModelValidator modelValidator : ModelValidator.EP_NAME.getExtensions()) {
-      if(!modelValidator.check(p, operationContext, modelDescriptors, regenerationRunnable)) {
+      if (!modelValidator.check(p, modelDescriptors)) {
         return false;
       }
     }
     return true;
-  }
-
-  public void checkModelsAndRun(Project p, IOperationContext operationContext, List<SModelDescriptor> modelDescriptors, Runnable runnable) {
-    if (checkModelsBeforeGenerationIfNeeded(p, operationContext, modelDescriptors, runnable)) {
-      runnable.run();
-    }
   }
 }

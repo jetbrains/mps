@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,92 +15,64 @@
  */
 package jetbrains.mps.generator.impl.interpreted;
 
+import jetbrains.mps.generator.impl.DefaultTemplateContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
+import jetbrains.mps.generator.impl.GeneratorUtil;
 import jetbrains.mps.generator.impl.RuleUtil;
-import jetbrains.mps.generator.impl.TemplateProcessor;
+import jetbrains.mps.generator.impl.query.MapRootRuleCondition;
+import jetbrains.mps.generator.impl.query.QueryKey;
+import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import jetbrains.mps.generator.runtime.GenerationException;
+import jetbrains.mps.generator.runtime.MapRootRuleBase;
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateRootMappingRule;
-import jetbrains.mps.generator.template.BaseMappingRuleContext;
-import jetbrains.mps.generator.template.TemplateFunctionMethodName;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.QueryMethodGenerated;
+import jetbrains.mps.generator.template.MapRootRuleContext;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
 
 /**
  * Evgeny Gryaznov, Nov 30, 2010
  */
-public class TemplateRootMappingRuleInterpreted implements TemplateRootMappingRule {
+public final class TemplateRootMappingRuleInterpreted extends MapRootRuleBase implements TemplateRootMappingRule {
 
-  private final SNode ruleNode;
-  private final SNode applicableConcept;
+  private final SNode myRuleNode;
+  private final String myMappingName;
+  private final SNode myTemplateNode;
+  private MapRootRuleCondition myCondition;
 
   public TemplateRootMappingRuleInterpreted(SNode rule) {
-    ruleNode = rule;
-    applicableConcept = RuleUtil.getBaseRuleApplicableConcept(rule);
+    super(rule.getReference(), MetaAdapterByDeclaration.getConcept(RuleUtil.getBaseRuleApplicableConcept(rule)),
+        RuleUtil.getBaseRuleApplyToConceptInheritors(rule), RuleUtil.getRootRuleKeepSourceRoot(rule));
+    myRuleNode = rule;
+    myMappingName = RuleUtil.getBaseRuleLabel(rule);
+    myTemplateNode = RuleUtil.getRootRuleTemplateNode(rule);
   }
 
   @Override
-  public SNodePointer getRuleNode() {
-    return new SNodePointer(ruleNode);
-  }
-
-  @Override
-  public String getApplicableConcept() {
-    return NameUtil.nodeFQName(this.applicableConcept);
-  }
-
-  @Override
-  public boolean applyToInheritors() {
-    return RuleUtil.getBaseRuleApplyToConceptInheritors(ruleNode);
-  }
-
-  @Override
-  public boolean keepSourceRoot() {
-    return RuleUtil.getRootRuleKeepSourceRoot(ruleNode);
-  }
-
-  @Override
-  public boolean isApplicable(TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationFailureException {
-    SNode condition = RuleUtil.getBaseRuleCondition(ruleNode);
-    if (condition == null) {
-      return true;
+  public boolean isApplicable(@NotNull TemplateContext context) throws GenerationFailureException {
+    if (myCondition == null) {
+      SNode condition = RuleUtil.getBaseRuleCondition(myRuleNode);
+      QueryKey identity = condition == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getRuleNode(), condition.getNodeId());
+      myCondition = context.getEnvironment().getQueryProvider(getRuleNode()).getMapRootRuleCondition(identity);
     }
-
-    String methodName = TemplateFunctionMethodName.baseMappingRule_Condition(condition);
-    try {
-      return (Boolean) QueryMethodGenerated.invoke(
-        methodName,
-        environment.getGenerator().getGeneratorSessionContext(),
-        new BaseMappingRuleContext(context.getInput(), ruleNode, environment.getGenerator()),
-        ruleNode.getModel(),
-        true);
-    } catch (ClassNotFoundException e) {
-      environment.getGenerator().getLogger().warning(condition, "cannot find condition method '" + methodName + "' : evaluate to FALSE");
-    } catch (NoSuchMethodException e) {
-      environment.getGenerator().getLogger().warning(condition, "cannot find condition method '" + methodName + "' : evaluate to FALSE");
-    } catch (Throwable t) {
-      environment.getGenerator().getLogger().handleException(t);
-      environment.getGenerator().getLogger().error(condition, "error executing condition " + methodName + " (see exception)");
-      throw new GenerationFailureException(t);
-    }
-    return false;
+    return myCondition.check(new MapRootRuleContext(context, getRuleNode()));
   }
 
+  @Nullable
   @Override
-  public Collection<SNode> apply(TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationException {
-    SNode templateNode = RuleUtil.getRootRuleTemplateNode(ruleNode);
-    if (templateNode != null) {
-      String ruleMappingName = RuleUtil.getBaseRuleLabel(ruleNode);
-
-      return new TemplateProcessor(environment.getGenerator(), environment.getReductionContext())
-        .processTemplateNode(ruleMappingName, templateNode, context);
+  public Collection<SNode> apply(@NotNull TemplateContext context) throws GenerationException {
+    if (myTemplateNode != null) {
+      // subContext(null) doesn't update mapping label, while we'd like to reset it for the rule.
+      // It's possible to do it another way: context = myMappingName == null ? context.subContext() : context.subContext(myMappingName);
+      // but it seems better to start rule with a fresh context anyway (unless we'd need to pass parameters - which would be odd as users
+      // have no control on which rules get applied and hence can't expect parameters present)
+      return context.getEnvironment().getTemplateProcessor().apply(myTemplateNode, new DefaultTemplateContext(context.getEnvironment(), context.getInput(), myMappingName));
     } else {
-      environment.getGenerator().showErrorMessage(context.getInput(), null, ruleNode, "no template is defined for the rule");
+      context.getEnvironment().getLogger().error(getRuleNode(), "no template is defined for the rule", GeneratorUtil.describeIfExists(context.getInput(), "input node"));
     }
     return null;
   }

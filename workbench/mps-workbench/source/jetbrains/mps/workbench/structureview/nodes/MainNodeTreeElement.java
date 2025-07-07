@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,41 +15,89 @@
  */
 package jetbrains.mps.workbench.structureview.nodes;
 
+import com.intellij.ide.structureView.StructureViewTreeElement;
 import com.intellij.ide.util.treeView.smartTree.TreeElement;
-import com.intellij.openapi.project.Project;
+import com.intellij.navigation.ItemPresentation;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainNodeTreeElement extends NodeTreeElement {
-  private Project myProject;
+public class MainNodeTreeElement implements StructureViewTreeElement {
+  private static final Logger LOG = LogManager.getLogger(MainNodeTreeElement.class);
 
-  public MainNodeTreeElement(Project project, SNodePointer node) {
-    super(node);
+  private final MPSProject myProject;
+  private final SNodeReference myNode;
+
+  public MainNodeTreeElement(MPSProject project, SNodeReference node) {
     myProject = project;
+    myNode = node;
   }
 
-  public TreeElement[] getChildren() {
-    final List<TreeElement> result = new ArrayList<TreeElement>();
+  @Override
+  public SNodeReference getValue() {
+    // if getValue() equal for root and leaf caching strategy in CachingChildrenTreeNode fail and you got infinite tree
+    return new jetbrains.mps.smodel.SNodePointer(null);
+  }
 
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        SNode node = myNode.getNode();
-        for (RelationDescriptor tab : ProjectPluginManager.getApplicableTabs(myProject, node)) {
+  @NotNull
+  @Override
+  public TreeElement[] getChildren() {
+    final List<TreeElement> result = new ArrayList<>();
+    myProject.getModelAccess().runReadAction(() -> {
+      SNode node = myNode.resolve(myProject.getRepository());
+      for (RelationDescriptor tab : ProjectPluginManager.getApplicableTabs(myProject.getProject(), node)) {
+        try {
           for (SNode aspectNode : tab.getNodes(node)) {
             SNode baseNode = tab.getBaseNode(aspectNode);
             boolean bijection = (baseNode == node || baseNode == null);
-            result.add(new AspectTreeElement(new SNodePointer(aspectNode), tab, bijection));
+            result.add(new AspectTreeElement(MainNodeTreeElement.this, aspectNode, tab, bijection));
           }
+        } catch (Throwable t) {
+          LOG.error("Exception in extension: ", t);
         }
       }
     });
 
-    return result.toArray(new TreeElement[result.size()]);
+    return result.toArray(new TreeElement[0]);
+  }
+
+  @NotNull
+  @Override
+  public ItemPresentation getPresentation() {
+    final SRepository repo = myProject.getRepository();
+    return new ModelAccessHelper(repo).runReadAction(() -> {
+      SNode resolved = myNode.resolve(repo);
+      return resolved == null ? new Presentation(myNode) : new Presentation(resolved);
+    });
+  }
+
+  @Override
+  public boolean canNavigate() {
+    return true;
+  }
+
+  @Override
+  public boolean canNavigateToSource() {
+    return true; // ??? why? Used to be that way in superclass.
+  }
+
+  @Override
+  public void navigate(boolean b) {
+    navigate(myNode);
+  }
+
+  /*package*/ void navigate(SNodeReference nodeRef) {
+    new EditorNavigator(myProject).shallFocus(true).shallSelect(true).open(nodeRef);
   }
 }

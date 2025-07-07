@@ -17,56 +17,36 @@
 package jetbrains.mps.idea.core.project.stubs;
 
 import com.intellij.openapi.components.BaseComponent;
-import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.project.IModule;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.roots.libraries.Library;
+import jetbrains.mps.extapi.module.SRepositoryExt;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.idea.core.project.StubSolutionIdea;
 import jetbrains.mps.project.ModuleId;
-import jetbrains.mps.project.StubSolution;
-import jetbrains.mps.project.structure.model.ModelRoot;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.smodel.*;
+import jetbrains.mps.project.Solution;
+import jetbrains.mps.smodel.MPSModuleOwner;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 /**
  * User: shatalin
  * Date: 4/30/12
  */
 public abstract class AbstractJavaStubSolutionManager implements MPSModuleOwner, BaseComponent {
-  public static void addModelRoots(SolutionDescriptor solutionDescriptor, VirtualFile[] roots) {
-    for (VirtualFile f : roots) {
-      ModelRoot modelRoot = new ModelRoot(getLocalPath(f), LanguageID.JAVA_MANAGER);
-      if (solutionDescriptor.getModelRoots().contains(modelRoot)) {
-        continue;
-      }
-      solutionDescriptor.getModelRoots().add(modelRoot);
-    }
-  }
-
-  private static String getLocalPath(VirtualFile f) {
-    String path = f.getPath();
-    int index = path.indexOf("!");
-    if (index < 0) return path;
-    return path.substring(0, index);
-  }
 
   @Override
   public void initComponent() {
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        init();
-      }
-    });
+    init();
   }
 
   @Override
   public void disposeComponent() {
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        dispose();
-      }
-    });
+    dispose();
   }
 
   @NotNull
@@ -77,20 +57,43 @@ public abstract class AbstractJavaStubSolutionManager implements MPSModuleOwner,
 
   protected abstract void init();
 
-  protected abstract void dispose();
+  protected void dispose() {
+    for (Project project : ProjectManager.getInstance().getOpenProjects()) {
+      SRepository repository = ProjectHelper.getProjectRepository(project);
+      if (repository == null) {
+        continue;
+      }
+      repository.getModelAccess().runWriteInEDT(new Runnable() {
+        @Override
+        public void run() {
+          new ModuleRepositoryFacade(repository).unregisterModules(AbstractJavaStubSolutionManager.this);
+        }
+      });
 
-  protected void addSolution(String name, VirtualFile[] roots) {
-    SolutionDescriptor sd = new SolutionDescriptor();
-    sd.setNamespace(name);
-    sd.setId(ModuleId.foreign(name));
-    addModelRoots(sd, roots);
-    StubSolution.newInstance(sd, this);
+    }
   }
 
-  protected void removeSolution(String name) {
-    ModuleReference ref = new ModuleReference(null, ModuleId.foreign(name));
-    MPSModuleRepository repository = MPSModuleRepository.getInstance();
-    IModule m = ModuleRepositoryFacade.getInstance().getModule(ref);
+  protected Solution addSolution(Library library, SRepositoryExt repository, @NotNull VFSManager vfsManager) {
+    try {
+      return StubSolutionIdea.newInstance(library, this, repository, vfsManager);
+    } catch (StubModuleNameTakenException e) {
+      handleModuleNameTaken(e);
+      return null;
+    }
+  }
+
+  protected abstract void handleModuleNameTaken(StubModuleNameTakenException exception);
+
+  protected Solution addSolution(Sdk sdk, SRepositoryExt repository, @NotNull VFSManager vfsManager) {
+    return StubSolutionIdea.newInstance(sdk, null, this, repository, vfsManager);
+  }
+
+  protected Solution replaceJdkSolution(Sdk sdk, SRepositoryExt repository, @NotNull VFSManager vfsManager) {
+    return StubSolutionIdea.newInstanceForJdk(sdk, this, repository, vfsManager);
+  }
+
+  protected void removeSolution(String name, SRepositoryExt repository) {
+    SModule m = repository.getModule(ModuleId.foreign(name));
     if (m == null) {
       return;
     }

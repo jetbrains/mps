@@ -1,311 +1,418 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <root nodeId="1234198385755" modelId="r:00000000-0000-4000-0000-011c8959029d(jetbrains.mps.lang.editor.scripts)">
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="18" startPosition="85" endLine="19" endPosition="38" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="21" startPosition="31" endLine="22" endPosition="38" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="25" startPosition="41" endLine="26" endPosition="38" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="29" startPosition="59" endLine="30" endPosition="80" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234791364190" fileName="HorizontalGapMigration_MigrationScript.java" startLine="33" startPosition="59" endLine="34" endPosition="135" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234791394534" fileName="HorizontalGapMigration_MigrationScript.java" startLine="37" startPosition="52" endLine="38" endPosition="41" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="41" startPosition="42" endLine="42" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="46" startPosition="31" endLine="47" endPosition="37" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="50" startPosition="41" endLine="51" endPosition="37" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="54" startPosition="59" endLine="55" endPosition="79" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234374120031" fileName="HorizontalGapMigration_MigrationScript.java" startLine="58" startPosition="59" endLine="59" endPosition="135" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234374127523" fileName="HorizontalGapMigration_MigrationScript.java" startLine="62" startPosition="52" endLine="63" endPosition="41" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="66" startPosition="42" endLine="67" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="71" startPosition="31" endLine="72" endPosition="52" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="75" startPosition="41" endLine="76" endPosition="52" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="79" startPosition="59" endLine="80" endPosition="88" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234365878171" fileName="HorizontalGapMigration_MigrationScript.java" startLine="83" startPosition="59" endLine="84" endPosition="69" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234365951639" fileName="HorizontalGapMigration_MigrationScript.java" startLine="87" startPosition="52" endLine="88" endPosition="132" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1234365987627" fileName="HorizontalGapMigration_MigrationScript.java" startLine="88" startPosition="132" endLine="89" endPosition="60" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234365997290" fileName="HorizontalGapMigration_MigrationScript.java" startLine="89" startPosition="60" endLine="90" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="93" startPosition="42" endLine="94" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="98" startPosition="31" endLine="99" endPosition="51" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="102" startPosition="41" endLine="103" endPosition="51" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="106" startPosition="59" endLine="107" endPosition="87" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234781753684" fileName="HorizontalGapMigration_MigrationScript.java" startLine="110" startPosition="59" endLine="111" endPosition="312" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1234366043062" fileName="HorizontalGapMigration_MigrationScript.java" startLine="111" startPosition="312" endLine="112" endPosition="121" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234366172738" fileName="HorizontalGapMigration_MigrationScript.java" startLine="115" startPosition="52" endLine="116" endPosition="133" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1234366206952" fileName="HorizontalGapMigration_MigrationScript.java" startLine="116" startPosition="133" endLine="117" endPosition="60" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234366218894" fileName="HorizontalGapMigration_MigrationScript.java" startLine="117" startPosition="60" endLine="118" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="121" startPosition="42" endLine="122" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="126" startPosition="31" endLine="127" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="130" startPosition="41" endLine="131" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="134" startPosition="59" endLine="135" endPosition="78" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234369974784" fileName="HorizontalGapMigration_MigrationScript.java" startLine="138" startPosition="59" endLine="139" endPosition="69" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234783755512" fileName="HorizontalGapMigration_MigrationScript.java" startLine="142" startPosition="52" endLine="143" endPosition="312" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1234783832280" fileName="HorizontalGapMigration_MigrationScript.java" startLine="144" startPosition="63" endLine="145" endPosition="135" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1234783854960" fileName="HorizontalGapMigration_MigrationScript.java" startLine="145" startPosition="135" endLine="146" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234783865492" fileName="HorizontalGapMigration_MigrationScript.java" startLine="146" startPosition="62" endLine="147" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234370033716" fileName="HorizontalGapMigration_MigrationScript.java" startLine="148" startPosition="9" endLine="149" endPosition="133" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1234370033722" fileName="HorizontalGapMigration_MigrationScript.java" startLine="149" startPosition="133" endLine="150" endPosition="61" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234370090071" fileName="HorizontalGapMigration_MigrationScript.java" startLine="150" startPosition="61" endLine="151" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="154" startPosition="42" endLine="155" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="159" startPosition="31" endLine="160" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="163" startPosition="41" endLine="164" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="167" startPosition="59" endLine="168" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234797313801" fileName="HorizontalGapMigration_MigrationScript.java" startLine="172" startPosition="136" endLine="173" endPosition="60" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1234797231546" fileName="HorizontalGapMigration_MigrationScript.java" startLine="174" startPosition="302" endLine="175" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234797403798" fileName="HorizontalGapMigration_MigrationScript.java" startLine="178" startPosition="404" endLine="179" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234797276127" fileName="HorizontalGapMigration_MigrationScript.java" startLine="182" startPosition="9" endLine="183" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234797443198" fileName="HorizontalGapMigration_MigrationScript.java" startLine="186" startPosition="52" endLine="187" endPosition="132" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1234797458200" fileName="HorizontalGapMigration_MigrationScript.java" startLine="187" startPosition="132" endLine="188" endPosition="60" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234797468064" fileName="HorizontalGapMigration_MigrationScript.java" startLine="188" startPosition="60" endLine="189" endPosition="103" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="192" startPosition="42" endLine="193" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1234797137769" fileName="HorizontalGapMigration_MigrationScript.java" startLine="173" startPosition="60" endLine="176" endPosition="11" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="1234797320703" fileName="HorizontalGapMigration_MigrationScript.java" startLine="177" startPosition="108" endLine="180" endPosition="13" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="20" startPosition="76" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="24" startPosition="0" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAdditionalInfo#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="28" startPosition="0" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getFqNameOfConceptToSearchInstances#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="32" startPosition="0" endLine="36" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableInstanceNode#(Ljetbrains/mps/smodel/SNode;)Z" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="36" startPosition="0" endLine="40" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="doUpdateInstanceNode#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="40" startPosition="0" endLine="44" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isShowAsIntention#()Z" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="45" startPosition="76" endLine="49" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="49" startPosition="0" endLine="53" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAdditionalInfo#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="53" startPosition="0" endLine="57" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getFqNameOfConceptToSearchInstances#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="57" startPosition="0" endLine="61" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableInstanceNode#(Ljetbrains/mps/smodel/SNode;)Z" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="61" startPosition="0" endLine="65" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="doUpdateInstanceNode#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="65" startPosition="0" endLine="69" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isShowAsIntention#()Z" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="70" startPosition="76" endLine="74" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="74" startPosition="0" endLine="78" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAdditionalInfo#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="78" startPosition="0" endLine="82" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getFqNameOfConceptToSearchInstances#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="82" startPosition="0" endLine="86" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableInstanceNode#(Ljetbrains/mps/smodel/SNode;)Z" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="92" startPosition="0" endLine="96" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isShowAsIntention#()Z" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="97" startPosition="76" endLine="101" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="101" startPosition="0" endLine="105" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAdditionalInfo#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="105" startPosition="0" endLine="109" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getFqNameOfConceptToSearchInstances#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="120" startPosition="0" endLine="124" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isShowAsIntention#()Z" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="125" startPosition="76" endLine="129" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="129" startPosition="0" endLine="133" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAdditionalInfo#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="133" startPosition="0" endLine="137" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getFqNameOfConceptToSearchInstances#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="137" startPosition="0" endLine="141" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableInstanceNode#(Ljetbrains/mps/smodel/SNode;)Z" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="153" startPosition="0" endLine="157" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isShowAsIntention#()Z" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="158" startPosition="76" endLine="162" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="162" startPosition="0" endLine="166" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAdditionalInfo#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="166" startPosition="0" endLine="170" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getFqNameOfConceptToSearchInstances#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="191" startPosition="0" endLine="195" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isShowAsIntention#()Z" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="109" startPosition="0" endLine="114" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableInstanceNode#(Ljetbrains/mps/smodel/SNode;)Z" />
-    <nodeInfo nodeId="1234783795991" fileName="HorizontalGapMigration_MigrationScript.java" startLine="143" startPosition="312" endLine="148" endPosition="9" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="1234797236241" fileName="HorizontalGapMigration_MigrationScript.java" startLine="176" startPosition="11" endLine="181" endPosition="11" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="86" startPosition="0" endLine="92" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="doUpdateInstanceNode#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="114" startPosition="0" endLine="120" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="doUpdateInstanceNode#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="185" startPosition="0" endLine="191" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="doUpdateInstanceNode#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="1234797097339" fileName="HorizontalGapMigration_MigrationScript.java" startLine="171" startPosition="59" endLine="182" endPosition="9" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="141" startPosition="0" endLine="153" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="doUpdateInstanceNode#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="170" startPosition="0" endLine="185" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableInstanceNode#(Ljetbrains/mps/smodel/SNode;)Z" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="19" startPosition="38" endLine="44" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="44" startPosition="7" endLine="69" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="69" startPosition="7" endLine="96" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="96" startPosition="7" endLine="124" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="124" startPosition="7" endLine="157" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="157" startPosition="7" endLine="195" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="17" startPosition="81" endLine="196" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="HorizontalGapMigration_MigrationScript#(Ljetbrains/mps/smodel/IOperationContext;)V" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="21" startPosition="31" endLine="22" endPosition="38" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="25" startPosition="41" endLine="26" endPosition="38" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="29" startPosition="59" endLine="30" endPosition="80" />
-    <scopeInfo nodeId="1234791358744" fileName="HorizontalGapMigration_MigrationScript.java" startLine="33" startPosition="59" endLine="34" endPosition="135" />
-    <scopeInfo nodeId="1234791340840" fileName="HorizontalGapMigration_MigrationScript.java" startLine="37" startPosition="52" endLine="38" endPosition="41" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="41" startPosition="42" endLine="42" endPosition="21" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="46" startPosition="31" endLine="47" endPosition="37" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="50" startPosition="41" endLine="51" endPosition="37" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="54" startPosition="59" endLine="55" endPosition="79" />
-    <scopeInfo nodeId="1234374119217" fileName="HorizontalGapMigration_MigrationScript.java" startLine="58" startPosition="59" endLine="59" endPosition="135" />
-    <scopeInfo nodeId="1234374055846" fileName="HorizontalGapMigration_MigrationScript.java" startLine="62" startPosition="52" endLine="63" endPosition="41" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="66" startPosition="42" endLine="67" endPosition="21" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="71" startPosition="31" endLine="72" endPosition="52" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="75" startPosition="41" endLine="76" endPosition="52" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="79" startPosition="59" endLine="80" endPosition="88" />
-    <scopeInfo nodeId="1234365873440" fileName="HorizontalGapMigration_MigrationScript.java" startLine="83" startPosition="59" endLine="84" endPosition="69" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="93" startPosition="42" endLine="94" endPosition="21" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="98" startPosition="31" endLine="99" endPosition="51" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="102" startPosition="41" endLine="103" endPosition="51" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="106" startPosition="59" endLine="107" endPosition="87" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="121" startPosition="42" endLine="122" endPosition="21" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="126" startPosition="31" endLine="127" endPosition="34" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="130" startPosition="41" endLine="131" endPosition="34" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="134" startPosition="59" endLine="135" endPosition="78" />
-    <scopeInfo nodeId="1234369967437" fileName="HorizontalGapMigration_MigrationScript.java" startLine="138" startPosition="59" endLine="139" endPosition="69" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="154" startPosition="42" endLine="155" endPosition="21" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="159" startPosition="31" endLine="160" endPosition="55" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="163" startPosition="41" endLine="164" endPosition="55" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="167" startPosition="59" endLine="168" endPosition="72" />
-    <scopeInfo nodeId="1234797137771" fileName="HorizontalGapMigration_MigrationScript.java" startLine="174" startPosition="302" endLine="175" endPosition="24" />
-    <scopeInfo nodeId="1234797320705" fileName="HorizontalGapMigration_MigrationScript.java" startLine="178" startPosition="404" endLine="179" endPosition="26" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="192" startPosition="42" endLine="193" endPosition="21" />
-    <scopeInfo nodeId="1234366040380" fileName="HorizontalGapMigration_MigrationScript.java" startLine="110" startPosition="59" endLine="112" endPosition="121">
-      <varInfo nodeId="1234781753685" varName="paddingRight" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234365773602" fileName="HorizontalGapMigration_MigrationScript.java" startLine="87" startPosition="52" endLine="90" endPosition="58">
-      <varInfo nodeId="1234365951640" varName="newNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234366008862" fileName="HorizontalGapMigration_MigrationScript.java" startLine="115" startPosition="52" endLine="118" endPosition="58">
-      <varInfo nodeId="1234366172739" varName="newNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234783795992" fileName="HorizontalGapMigration_MigrationScript.java" startLine="144" startPosition="63" endLine="147" endPosition="64">
-      <varInfo nodeId="1234783832281" varName="newNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234797236242" fileName="HorizontalGapMigration_MigrationScript.java" startLine="177" startPosition="108" endLine="180" endPosition="13" />
-    <scopeInfo nodeId="1234797058469" fileName="HorizontalGapMigration_MigrationScript.java" startLine="186" startPosition="52" endLine="189" endPosition="103">
-      <varInfo nodeId="1234797443199" varName="newNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="20" startPosition="76" endLine="24" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="24" startPosition="0" endLine="28" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="28" startPosition="0" endLine="32" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="32" startPosition="0" endLine="36" endPosition="0">
-      <varInfo nodeId="1234198385755" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="36" startPosition="0" endLine="40" endPosition="0">
-      <varInfo nodeId="1234198385755" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="40" startPosition="0" endLine="44" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="45" startPosition="76" endLine="49" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="49" startPosition="0" endLine="53" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="53" startPosition="0" endLine="57" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="57" startPosition="0" endLine="61" endPosition="0">
-      <varInfo nodeId="1234198385755" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="61" startPosition="0" endLine="65" endPosition="0">
-      <varInfo nodeId="1234198385755" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="65" startPosition="0" endLine="69" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="70" startPosition="76" endLine="74" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="74" startPosition="0" endLine="78" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="78" startPosition="0" endLine="82" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="82" startPosition="0" endLine="86" endPosition="0">
-      <varInfo nodeId="1234198385755" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="92" startPosition="0" endLine="96" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="97" startPosition="76" endLine="101" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="101" startPosition="0" endLine="105" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="105" startPosition="0" endLine="109" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="120" startPosition="0" endLine="124" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="125" startPosition="76" endLine="129" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="129" startPosition="0" endLine="133" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="133" startPosition="0" endLine="137" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="137" startPosition="0" endLine="141" endPosition="0">
-      <varInfo nodeId="1234198385755" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="153" startPosition="0" endLine="157" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="158" startPosition="76" endLine="162" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="162" startPosition="0" endLine="166" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="166" startPosition="0" endLine="170" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="191" startPosition="0" endLine="195" endPosition="0" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="109" startPosition="0" endLine="114" endPosition="0">
-      <varInfo nodeId="1234198385755" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="86" startPosition="0" endLine="92" endPosition="0">
-      <varInfo nodeId="1234198385755" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="114" startPosition="0" endLine="120" endPosition="0">
-      <varInfo nodeId="1234198385755" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="185" startPosition="0" endLine="191" endPosition="0">
-      <varInfo nodeId="1234198385755" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234369918850" fileName="HorizontalGapMigration_MigrationScript.java" startLine="142" startPosition="52" endLine="151" endPosition="63">
-      <varInfo nodeId="1234370033717" varName="newNode2" />
-      <varInfo nodeId="1234783755513" varName="paddingRigth" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234797097341" fileName="HorizontalGapMigration_MigrationScript.java" startLine="172" startPosition="136" endLine="181" endPosition="11">
-      <varInfo nodeId="1234797313802" varName="prev" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="141" startPosition="0" endLine="153" endPosition="0">
-      <varInfo nodeId="1234198385755" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234797085723" fileName="HorizontalGapMigration_MigrationScript.java" startLine="171" startPosition="59" endLine="183" endPosition="21" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="170" startPosition="0" endLine="185" endPosition="0">
-      <varInfo nodeId="1234198385755" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="18" startPosition="85" endLine="195" endPosition="7" />
-    <scopeInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="17" startPosition="81" endLine="196" endPosition="3">
-      <varInfo nodeId="1234198385755" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="20" startPosition="28" endLine="44" endPosition="5" unitName="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$1" />
-    <unitInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="45" startPosition="28" endLine="69" endPosition="5" unitName="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$2" />
-    <unitInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="70" startPosition="28" endLine="96" endPosition="5" unitName="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$3" />
-    <unitInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="97" startPosition="28" endLine="124" endPosition="5" unitName="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$4" />
-    <unitInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="125" startPosition="28" endLine="157" endPosition="5" unitName="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$5" />
-    <unitInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="158" startPosition="28" endLine="195" endPosition="5" unitName="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$6" />
-    <unitInfo nodeId="1234198385755" fileName="HorizontalGapMigration_MigrationScript.java" startLine="17" startPosition="0" endLine="198" endPosition="0" unitName="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="ScriptsDescriptor.java">
+      <unit at="11,0,26,0" name="jetbrains.mps.lang.editor.scripts.ScriptsDescriptor" />
+    </file>
   </root>
-  <root nodeId="1237726848485" modelId="r:00000000-0000-4000-0000-011c8959029d(jetbrains.mps.lang.editor.scripts)">
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="17" startPosition="86" endLine="18" endPosition="40" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="20" startPosition="31" endLine="21" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="24" startPosition="41" endLine="25" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="28" startPosition="59" endLine="29" endPosition="74" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1237727164119" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="32" startPosition="59" endLine="33" endPosition="285" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1237727562828" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="36" startPosition="52" endLine="37" endPosition="50" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="40" startPosition="42" endLine="41" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="45" startPosition="31" endLine="46" endPosition="49" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="49" startPosition="41" endLine="50" endPosition="49" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="53" startPosition="59" endLine="54" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1237817995003" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="57" startPosition="59" endLine="58" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1237818645808" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="61" startPosition="52" endLine="62" endPosition="157" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1237818634252" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="63" startPosition="63" endLine="64" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1237818564823" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="64" startPosition="64" endLine="65" endPosition="150" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1237910181714" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="65" startPosition="150" endLine="66" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1237818370039" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="66" startPosition="66" endLine="67" endPosition="109" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="71" startPosition="42" endLine="72" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="19" startPosition="76" endLine="23" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="23" startPosition="0" endLine="27" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAdditionalInfo#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="27" startPosition="0" endLine="31" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getFqNameOfConceptToSearchInstances#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="31" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableInstanceNode#(Ljetbrains/mps/smodel/SNode;)Z" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="35" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="doUpdateInstanceNode#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="39" startPosition="0" endLine="43" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isShowAsIntention#()Z" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="44" startPosition="76" endLine="48" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="48" startPosition="0" endLine="52" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAdditionalInfo#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="52" startPosition="0" endLine="56" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getFqNameOfConceptToSearchInstances#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="56" startPosition="0" endLine="60" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableInstanceNode#(Ljetbrains/mps/smodel/SNode;)Z" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="70" startPosition="0" endLine="74" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isShowAsIntention#()Z" />
-    <nodeInfo nodeId="1237818327316" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="62" startPosition="157" endLine="68" endPosition="9" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="60" startPosition="0" endLine="70" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="doUpdateInstanceNode#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="18" startPosition="40" endLine="43" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="43" startPosition="7" endLine="74" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="16" startPosition="82" endLine="75" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MigrationToIndentLayout_MigrationScript#(Ljetbrains/mps/smodel/IOperationContext;)V" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="20" startPosition="31" endLine="21" endPosition="45" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="24" startPosition="41" endLine="25" endPosition="45" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="28" startPosition="59" endLine="29" endPosition="74" />
-    <scopeInfo nodeId="1237727161094" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="32" startPosition="59" endLine="33" endPosition="285" />
-    <scopeInfo nodeId="1237726877652" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="36" startPosition="52" endLine="37" endPosition="50" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="40" startPosition="42" endLine="41" endPosition="21" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="45" startPosition="31" endLine="46" endPosition="49" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="49" startPosition="41" endLine="50" endPosition="49" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="53" startPosition="59" endLine="54" endPosition="75" />
-    <scopeInfo nodeId="1237817989292" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="57" startPosition="59" endLine="58" endPosition="75" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="71" startPosition="42" endLine="72" endPosition="21" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="19" startPosition="76" endLine="23" endPosition="0" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="23" startPosition="0" endLine="27" endPosition="0" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="27" startPosition="0" endLine="31" endPosition="0" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="31" startPosition="0" endLine="35" endPosition="0">
-      <varInfo nodeId="1237726848485" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="35" startPosition="0" endLine="39" endPosition="0">
-      <varInfo nodeId="1237726848485" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="39" startPosition="0" endLine="43" endPosition="0" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="44" startPosition="76" endLine="48" endPosition="0" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="48" startPosition="0" endLine="52" endPosition="0" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="52" startPosition="0" endLine="56" endPosition="0" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="56" startPosition="0" endLine="60" endPosition="0">
-      <varInfo nodeId="1237726848485" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1237818327317" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="63" startPosition="63" endLine="67" endPosition="109">
-      <varInfo nodeId="1237818564824" varName="indentStyle" />
-    </scopeInfo>
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="70" startPosition="0" endLine="74" endPosition="0" />
-    <scopeInfo nodeId="1237817800470" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="61" startPosition="52" endLine="68" endPosition="9" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="60" startPosition="0" endLine="70" endPosition="0">
-      <varInfo nodeId="1237726848485" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="17" startPosition="86" endLine="74" endPosition="7" />
-    <scopeInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="16" startPosition="82" endLine="75" endPosition="3">
-      <varInfo nodeId="1237726848485" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="19" startPosition="28" endLine="43" endPosition="5" unitName="jetbrains.mps.lang.editor.scripts.MigrationToIndentLayout_MigrationScript$1" />
-    <unitInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="44" startPosition="28" endLine="74" endPosition="5" unitName="jetbrains.mps.lang.editor.scripts.MigrationToIndentLayout_MigrationScript$2" />
-    <unitInfo nodeId="1237726848485" fileName="MigrationToIndentLayout_MigrationScript.java" startLine="16" startPosition="0" endLine="77" endPosition="0" unitName="jetbrains.mps.lang.editor.scripts.MigrationToIndentLayout_MigrationScript" />
+  <root nodeRef="r:00000000-0000-4000-0000-011c8959029d(jetbrains.mps.lang.editor.scripts)/1234198385755">
+    <file name="HorizontalGapMigration_MigrationScript.java">
+      <node id="1234198385755" at="26,51,27,38" concept="11" />
+      <node id="1234791340838" at="30,31,31,38" concept="7" />
+      <node id="1234791340838" at="34,41,35,38" concept="7" />
+      <node id="1234791340838" at="38,54,39,54" concept="7" />
+      <node id="1234791364190" at="42,59,43,153" concept="7" />
+      <node id="1234791394534" at="46,52,47,41" concept="2" />
+      <node id="1234791340838" at="50,42,51,21" concept="7" />
+      <node id="1234374055844" at="56,31,57,37" concept="7" />
+      <node id="1234374055844" at="60,41,61,37" concept="7" />
+      <node id="1234374055844" at="64,54,65,53" concept="7" />
+      <node id="1234374120031" at="68,59,69,153" concept="7" />
+      <node id="1234374127523" at="72,52,73,41" concept="2" />
+      <node id="1234374055844" at="76,42,77,21" concept="7" />
+      <node id="1234365773600" at="82,31,83,52" concept="7" />
+      <node id="1234365773600" at="86,41,87,52" concept="7" />
+      <node id="1234365773600" at="90,54,91,62" concept="7" />
+      <node id="1234365878171" at="94,59,95,78" concept="7" />
+      <node id="1234365951639" at="98,52,99,215" concept="6" />
+      <node id="1234365987627" at="99,215,100,67" concept="2" />
+      <node id="1234365997290" at="100,67,101,58" concept="2" />
+      <node id="1234365773600" at="104,42,105,21" concept="7" />
+      <node id="1234366008860" at="110,31,111,51" concept="7" />
+      <node id="1234366008860" at="114,41,115,51" concept="7" />
+      <node id="1234366008860" at="118,54,119,61" concept="7" />
+      <node id="1234781753684" at="122,59,123,226" concept="6" />
+      <node id="1234366043062" at="123,226,124,130" concept="7" />
+      <node id="1234366172738" at="127,52,128,216" concept="6" />
+      <node id="1234366206952" at="128,216,129,67" concept="2" />
+      <node id="1234366218894" at="129,67,130,58" concept="2" />
+      <node id="1234366008860" at="133,42,134,21" concept="7" />
+      <node id="1234369918848" at="139,31,140,34" concept="7" />
+      <node id="1234369918848" at="143,41,144,34" concept="7" />
+      <node id="1234369918848" at="147,54,148,52" concept="7" />
+      <node id="1234369974784" at="151,59,152,78" concept="7" />
+      <node id="1234783755512" at="155,52,156,226" concept="6" />
+      <node id="1234783832280" at="157,63,158,218" concept="6" />
+      <node id="1234783854960" at="158,218,159,69" concept="2" />
+      <node id="1234783865492" at="159,69,160,64" concept="2" />
+      <node id="1234370033716" at="161,9,162,216" concept="6" />
+      <node id="1234370033722" at="162,216,163,68" concept="2" />
+      <node id="1234370090071" at="163,68,164,63" concept="2" />
+      <node id="1234369918848" at="167,42,168,21" concept="7" />
+      <node id="1234797058467" at="173,31,174,55" concept="7" />
+      <node id="1234797058467" at="177,41,178,55" concept="7" />
+      <node id="1234797058467" at="181,54,182,46" concept="7" />
+      <node id="1234797313801" at="186,110,187,60" concept="6" />
+      <node id="1234797231546" at="188,216,189,24" concept="7" />
+      <node id="1234797403798" at="192,324,193,26" concept="7" />
+      <node id="1234797276127" at="196,9,197,21" concept="7" />
+      <node id="1234797443198" at="200,52,201,215" concept="6" />
+      <node id="1234797458200" at="201,215,202,67" concept="2" />
+      <node id="1234797468064" at="202,67,203,107" concept="2" />
+      <node id="1234797058467" at="206,42,207,21" concept="7" />
+      <node id="1234198385755" at="214,41,215,154" concept="7" />
+      <node id="1234198385755" at="219,0,220,0" concept="10" trace="PaddingRightStyleClassItem$3p" />
+      <node id="1234198385755" at="220,0,221,0" concept="10" trace="PaddingLeftStyleClassItem$cj" />
+      <node id="1234198385755" at="221,0,222,0" concept="10" trace="FirstPositionAllowedStyleClassItem$V0" />
+      <node id="1234198385755" at="222,0,223,0" concept="10" trace="LastPositionAllowedStyleClassItem$cz" />
+      <node id="1234198385755" at="223,0,224,0" concept="10" trace="IStyleContainer$rq" />
+      <node id="1234198385755" at="224,0,225,0" concept="10" trace="SelectableStyleSheetItem$Au" />
+      <node id="1234198385755" at="225,0,226,0" concept="10" trace="CellModel_Constant$4e" />
+      <node id="1234198385755" at="226,0,227,0" concept="10" trace="CellModel_Collection$Og" />
+      <node id="1234198385755" at="227,0,228,0" concept="10" trace="EditorCellModel$gN" />
+      <node id="1234198385755" at="228,0,229,0" concept="10" trace="CellModel_RefCell$7g" />
+      <node id="1234198385755" at="232,0,233,0" concept="10" trace="value$U7AO" />
+      <node id="1234198385755" at="233,0,234,0" concept="10" trace="flag$7SqM" />
+      <node id="1234198385755" at="237,0,238,0" concept="10" trace="editorComponent$$jf3" />
+      <node id="1234198385755" at="238,0,239,0" concept="10" trace="cellModel$L8Uc" />
+      <node id="1234198385755" at="239,0,240,0" concept="10" trace="styleItem$FgZD" />
+      <node id="1234797137769" at="187,60,190,11" concept="4" />
+      <node id="1234797320703" at="191,82,194,13" concept="4" />
+      <node id="1234791340838" at="29,0,33,0" concept="5" trace="getName#()Ljava/lang/String;" />
+      <node id="1234791340838" at="33,0,37,0" concept="5" trace="getAdditionalInfo#()Ljava/lang/String;" />
+      <node id="1234791340838" at="37,0,41,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1234791340838" at="41,0,45,0" concept="5" trace="isApplicableInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="1234791340838" at="45,0,49,0" concept="5" trace="doUpdateInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1234791340838" at="49,0,53,0" concept="5" trace="isShowAsIntention#()Z" />
+      <node id="1234374055844" at="55,0,59,0" concept="5" trace="getName#()Ljava/lang/String;" />
+      <node id="1234374055844" at="59,0,63,0" concept="5" trace="getAdditionalInfo#()Ljava/lang/String;" />
+      <node id="1234374055844" at="63,0,67,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1234374055844" at="67,0,71,0" concept="5" trace="isApplicableInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="1234374055844" at="71,0,75,0" concept="5" trace="doUpdateInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1234374055844" at="75,0,79,0" concept="5" trace="isShowAsIntention#()Z" />
+      <node id="1234365773600" at="81,0,85,0" concept="5" trace="getName#()Ljava/lang/String;" />
+      <node id="1234365773600" at="85,0,89,0" concept="5" trace="getAdditionalInfo#()Ljava/lang/String;" />
+      <node id="1234365773600" at="89,0,93,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1234365773600" at="93,0,97,0" concept="5" trace="isApplicableInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="1234365773600" at="103,0,107,0" concept="5" trace="isShowAsIntention#()Z" />
+      <node id="1234366008860" at="109,0,113,0" concept="5" trace="getName#()Ljava/lang/String;" />
+      <node id="1234366008860" at="113,0,117,0" concept="5" trace="getAdditionalInfo#()Ljava/lang/String;" />
+      <node id="1234366008860" at="117,0,121,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1234366008860" at="132,0,136,0" concept="5" trace="isShowAsIntention#()Z" />
+      <node id="1234369918848" at="138,0,142,0" concept="5" trace="getName#()Ljava/lang/String;" />
+      <node id="1234369918848" at="142,0,146,0" concept="5" trace="getAdditionalInfo#()Ljava/lang/String;" />
+      <node id="1234369918848" at="146,0,150,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1234369918848" at="150,0,154,0" concept="5" trace="isApplicableInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="1234369918848" at="166,0,170,0" concept="5" trace="isShowAsIntention#()Z" />
+      <node id="1234797058467" at="172,0,176,0" concept="5" trace="getName#()Ljava/lang/String;" />
+      <node id="1234797058467" at="176,0,180,0" concept="5" trace="getAdditionalInfo#()Ljava/lang/String;" />
+      <node id="1234797058467" at="180,0,184,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1234797058467" at="205,0,209,0" concept="5" trace="isShowAsIntention#()Z" />
+      <node id="1234366008860" at="121,0,126,0" concept="5" trace="isApplicableInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="1234783795991" at="156,226,161,9" concept="4" />
+      <node id="1234797236241" at="190,11,195,11" concept="4" />
+      <node id="1234198385755" at="212,0,217,0" concept="5" trace="getScriptNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="1234365773600" at="97,0,103,0" concept="5" trace="doUpdateInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1234366008860" at="126,0,132,0" concept="5" trace="doUpdateInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1234797058467" at="199,0,205,0" concept="5" trace="doUpdateInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1234797097339" at="185,59,196,9" concept="4" />
+      <node id="1234369918848" at="154,0,166,0" concept="5" trace="doUpdateInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1234797058467" at="184,0,199,0" concept="5" trace="isApplicableInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="1234791340838" at="27,38,53,7" concept="2" />
+      <node id="1234374055844" at="53,7,79,7" concept="2" />
+      <node id="1234365773600" at="79,7,107,7" concept="2" />
+      <node id="1234366008860" at="107,7,136,7" concept="2" />
+      <node id="1234369918848" at="136,7,170,7" concept="2" />
+      <node id="1234797058467" at="170,7,209,7" concept="2" />
+      <node id="1234198385755" at="26,0,211,0" concept="1" trace="HorizontalGapMigration_MigrationScript#()V" />
+      <scope id="1234791340838" at="30,31,31,38" />
+      <scope id="1234791340838" at="34,41,35,38" />
+      <scope id="1234791340838" at="38,54,39,54" />
+      <scope id="1234791358744" at="42,59,43,153" />
+      <scope id="1234791340840" at="46,52,47,41" />
+      <scope id="1234791340838" at="50,42,51,21" />
+      <scope id="1234374055844" at="56,31,57,37" />
+      <scope id="1234374055844" at="60,41,61,37" />
+      <scope id="1234374055844" at="64,54,65,53" />
+      <scope id="1234374119217" at="68,59,69,153" />
+      <scope id="1234374055846" at="72,52,73,41" />
+      <scope id="1234374055844" at="76,42,77,21" />
+      <scope id="1234365773600" at="82,31,83,52" />
+      <scope id="1234365773600" at="86,41,87,52" />
+      <scope id="1234365773600" at="90,54,91,62" />
+      <scope id="1234365873440" at="94,59,95,78" />
+      <scope id="1234365773600" at="104,42,105,21" />
+      <scope id="1234366008860" at="110,31,111,51" />
+      <scope id="1234366008860" at="114,41,115,51" />
+      <scope id="1234366008860" at="118,54,119,61" />
+      <scope id="1234366008860" at="133,42,134,21" />
+      <scope id="1234369918848" at="139,31,140,34" />
+      <scope id="1234369918848" at="143,41,144,34" />
+      <scope id="1234369918848" at="147,54,148,52" />
+      <scope id="1234369967437" at="151,59,152,78" />
+      <scope id="1234369918848" at="167,42,168,21" />
+      <scope id="1234797058467" at="173,31,174,55" />
+      <scope id="1234797058467" at="177,41,178,55" />
+      <scope id="1234797058467" at="181,54,182,46" />
+      <scope id="1234797137771" at="188,216,189,24" />
+      <scope id="1234797320705" at="192,324,193,26" />
+      <scope id="1234797058467" at="206,42,207,21" />
+      <scope id="1234198385755" at="214,41,215,154" />
+      <scope id="1234366040380" at="122,59,124,130">
+        <var name="paddingRight" id="1234781753685" />
+      </scope>
+      <scope id="1234365773602" at="98,52,101,58">
+        <var name="newNode" id="1234365951640" />
+      </scope>
+      <scope id="1234366008862" at="127,52,130,58">
+        <var name="newNode" id="1234366172739" />
+      </scope>
+      <scope id="1234783795992" at="157,63,160,64">
+        <var name="newNode" id="1234783832281" />
+      </scope>
+      <scope id="1234797236242" at="191,82,194,13" />
+      <scope id="1234797058469" at="200,52,203,107">
+        <var name="newNode" id="1234797443199" />
+      </scope>
+      <scope id="1234791340838" at="29,0,33,0" />
+      <scope id="1234791340838" at="33,0,37,0" />
+      <scope id="1234791340838" at="37,0,41,0" />
+      <scope id="1234791340838" at="41,0,45,0">
+        <var name="node" id="1234791340838" />
+      </scope>
+      <scope id="1234791340838" at="45,0,49,0">
+        <var name="node" id="1234791340838" />
+      </scope>
+      <scope id="1234791340838" at="49,0,53,0" />
+      <scope id="1234374055844" at="55,0,59,0" />
+      <scope id="1234374055844" at="59,0,63,0" />
+      <scope id="1234374055844" at="63,0,67,0" />
+      <scope id="1234374055844" at="67,0,71,0">
+        <var name="node" id="1234374055844" />
+      </scope>
+      <scope id="1234374055844" at="71,0,75,0">
+        <var name="node" id="1234374055844" />
+      </scope>
+      <scope id="1234374055844" at="75,0,79,0" />
+      <scope id="1234365773600" at="81,0,85,0" />
+      <scope id="1234365773600" at="85,0,89,0" />
+      <scope id="1234365773600" at="89,0,93,0" />
+      <scope id="1234365773600" at="93,0,97,0">
+        <var name="node" id="1234365773600" />
+      </scope>
+      <scope id="1234365773600" at="103,0,107,0" />
+      <scope id="1234366008860" at="109,0,113,0" />
+      <scope id="1234366008860" at="113,0,117,0" />
+      <scope id="1234366008860" at="117,0,121,0" />
+      <scope id="1234366008860" at="132,0,136,0" />
+      <scope id="1234369918848" at="138,0,142,0" />
+      <scope id="1234369918848" at="142,0,146,0" />
+      <scope id="1234369918848" at="146,0,150,0" />
+      <scope id="1234369918848" at="150,0,154,0">
+        <var name="node" id="1234369918848" />
+      </scope>
+      <scope id="1234369918848" at="166,0,170,0" />
+      <scope id="1234797058467" at="172,0,176,0" />
+      <scope id="1234797058467" at="176,0,180,0" />
+      <scope id="1234797058467" at="180,0,184,0" />
+      <scope id="1234797058467" at="205,0,209,0" />
+      <scope id="1234366008860" at="121,0,126,0">
+        <var name="node" id="1234366008860" />
+      </scope>
+      <scope id="1234198385755" at="212,0,217,0" />
+      <scope id="1234365773600" at="97,0,103,0">
+        <var name="node" id="1234365773600" />
+      </scope>
+      <scope id="1234366008860" at="126,0,132,0">
+        <var name="node" id="1234366008860" />
+      </scope>
+      <scope id="1234797058467" at="199,0,205,0">
+        <var name="node" id="1234797058467" />
+      </scope>
+      <scope id="1234369918850" at="155,52,164,63">
+        <var name="newNode2" id="1234370033717" />
+        <var name="paddingRigth" id="1234783755513" />
+      </scope>
+      <scope id="1234797097341" at="186,110,195,11">
+        <var name="prev" id="1234797313802" />
+      </scope>
+      <scope id="1234369918848" at="154,0,166,0">
+        <var name="node" id="1234369918848" />
+      </scope>
+      <scope id="1234797085723" at="185,59,197,21" />
+      <scope id="1234797058467" at="184,0,199,0">
+        <var name="node" id="1234797058467" />
+      </scope>
+      <scope id="1234198385755" at="26,51,209,7" />
+      <scope id="1234198385755" at="26,0,211,0" />
+      <unit id="1234198385755" at="231,0,235,0" name="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$PROPS" />
+      <unit id="1234198385755" at="236,0,241,0" name="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$LINKS" />
+      <unit id="1234198385755" at="218,0,230,0" name="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$CONCEPTS" />
+      <unit id="1234791340838" at="28,28,53,5" name="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$1" />
+      <unit id="1234374055844" at="54,28,79,5" name="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$2" />
+      <unit id="1234365773600" at="80,28,107,5" name="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$3" />
+      <unit id="1234366008860" at="108,28,136,5" name="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$4" />
+      <unit id="1234369918848" at="137,28,170,5" name="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$5" />
+      <unit id="1234797058467" at="171,28,209,5" name="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript$6" />
+      <unit id="1234198385755" at="25,0,242,0" name="jetbrains.mps.lang.editor.scripts.HorizontalGapMigration_MigrationScript" />
+    </file>
+    <file name="ScriptsDescriptor.java">
+      <node id="1234198385755" at="15,52,16,75" concept="2" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:00000000-0000-4000-0000-011c8959029d(jetbrains.mps.lang.editor.scripts)/5076612878471698562">
+    <file name="ScriptsDescriptor.java">
+      <node id="5076612878471698562" at="16,75,17,83" concept="2" />
+    </file>
+    <file name="SmartRefGeneratedMenuMigration_MigrationScript.java">
+      <node id="5076612878471698562" at="33,59,34,57" concept="11" />
+      <node id="5076612878472197035" at="37,31,38,50" concept="7" />
+      <node id="5076612878472197035" at="41,41,42,50" concept="7" />
+      <node id="5076612878472197035" at="45,54,46,60" concept="7" />
+      <node id="5076612878472197035" at="49,59,50,20" concept="7" />
+      <node id="5076612878472197232" at="53,52,54,41" concept="2" />
+      <node id="5076612878472197035" at="57,42,58,20" concept="7" />
+      <node id="5076612878472126629" at="63,31,64,39" concept="7" />
+      <node id="5076612878472126629" at="67,41,68,39" concept="7" />
+      <node id="5076612878472126629" at="71,54,72,60" concept="7" />
+      <node id="5076612878472126629" at="75,59,76,20" concept="7" />
+      <node id="5486166368171977402" at="79,52,80,115" concept="6" />
+      <node id="916425739034827706" at="80,115,81,93" concept="8" />
+      <node id="916425739034832418" at="81,93,82,96" concept="8" />
+      <node id="916425739034837134" at="82,96,83,108" concept="8" />
+      <node id="916425739034841869" at="83,108,84,64" concept="8" />
+      <node id="916425739034846608" at="84,64,85,99" concept="8" />
+      <node id="916425739034813721" at="85,99,86,104" concept="6" />
+      <node id="5486166368171912162" at="86,104,87,182" concept="6" />
+      <node id="5486166368171920803" at="87,182,88,70" concept="6" />
+      <node id="5486166368171947430" at="90,55,91,34" concept="7" />
+      <node id="5486166368172140784" at="94,41,95,49" concept="7" />
+      <node id="5486166368171963791" at="98,48,99,0" concept="9" />
+      <node id="5076612878472177774" at="99,0,100,90" concept="6" />
+      <node id="5486166368172235893" at="102,15,103,41" concept="6" />
+      <node id="5486166368172317711" at="105,346,106,172" concept="2" />
+      <node id="5076612878472192186" at="109,15,110,72" concept="2" />
+      <node id="5076612878472194160" at="111,13,112,52" concept="2" />
+      <node id="5486166368171989554" at="114,11,115,43" concept="2" />
+      <node id="5076612878472126629" at="118,42,119,20" concept="7" />
+      <node id="5076612878471698562" at="126,41,127,160" concept="7" />
+      <node id="5076612878471698562" at="131,0,132,0" concept="10" trace="GeneratedSubstituteMenuAttribute$Ya" />
+      <node id="5076612878471698562" at="132,0,133,0" concept="10" trace="SubstituteMenu_Named$cm" />
+      <node id="5076612878471698562" at="133,0,134,0" concept="10" trace="SubstituteMenuReference_Named$5O" />
+      <node id="5076612878471698562" at="134,0,135,0" concept="10" trace="SubstituteMenuPart_IncludeMenu$kn" />
+      <node id="5076612878471698562" at="135,0,136,0" concept="10" trace="AbstractOutputConceptContainerSubstituteMenuPart$lB" />
+      <node id="5076612878471698562" at="136,0,137,0" concept="10" trace="ISubstituteMenu$Jl" />
+      <node id="5076612878471698562" at="140,0,141,0" concept="10" trace="parts$yGO4" />
+      <node id="5076612878471698562" at="141,0,142,0" concept="10" trace="outputConcept$Srk5" />
+      <node id="5486166368171947239" at="90,0,93,0" concept="5" trace="select#(Ljetbrains/mps/ide/findusages/model/SearchResult;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5486166368172139621" at="94,0,97,0" concept="5" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5486166368172368412" at="104,120,107,19" concept="4" />
+      <node id="5076612878472197035" at="36,0,40,0" concept="5" trace="getName#()Ljava/lang/String;" />
+      <node id="5076612878472197035" at="40,0,44,0" concept="5" trace="getAdditionalInfo#()Ljava/lang/String;" />
+      <node id="5076612878472197035" at="44,0,48,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="5076612878472197035" at="48,0,52,0" concept="5" trace="isApplicableInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="5076612878472197035" at="52,0,56,0" concept="5" trace="doUpdateInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="5076612878472197035" at="56,0,60,0" concept="5" trace="isShowAsIntention#()Z" />
+      <node id="5076612878472126629" at="62,0,66,0" concept="5" trace="getName#()Ljava/lang/String;" />
+      <node id="5076612878472126629" at="66,0,70,0" concept="5" trace="getAdditionalInfo#()Ljava/lang/String;" />
+      <node id="5076612878472126629" at="70,0,74,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="5076612878472126629" at="74,0,78,0" concept="5" trace="isApplicableInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="5076612878472126629" at="117,0,121,0" concept="5" trace="isShowAsIntention#()Z" />
+      <node id="5486166368172235893" at="103,41,108,17" concept="4" />
+      <node id="5076612878471698562" at="124,0,129,0" concept="5" trace="getScriptNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="5486166368172235893" at="101,61,109,15" concept="0" />
+      <node id="5076612878472191565" at="100,90,111,13" concept="3" />
+      <node id="5486166368171963581" at="98,0,114,0" concept="5" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="5076612878472197035" at="34,57,60,7" concept="2" />
+      <node id="5486166368171941402" at="88,70,114,11" concept="2" />
+      <node id="5076612878472126629" at="78,0,117,0" concept="5" trace="doUpdateInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="5076612878472126629" at="60,7,121,7" concept="2" />
+      <node id="5076612878471698562" at="33,0,123,0" concept="1" trace="SmartRefGeneratedMenuMigration_MigrationScript#()V" />
+      <scope id="5076612878472197035" at="37,31,38,50" />
+      <scope id="5076612878472197035" at="41,41,42,50" />
+      <scope id="5076612878472197035" at="45,54,46,60" />
+      <scope id="5076612878472197035" at="49,59,50,20" />
+      <scope id="5076612878472197039" at="53,52,54,41" />
+      <scope id="5076612878472197035" at="57,42,58,20" />
+      <scope id="5076612878472126629" at="63,31,64,39" />
+      <scope id="5076612878472126629" at="67,41,68,39" />
+      <scope id="5076612878472126629" at="71,54,72,60" />
+      <scope id="5076612878472126629" at="75,59,76,20" />
+      <scope id="5486166368171947240" at="90,55,91,34" />
+      <scope id="5486166368172139622" at="94,41,95,49" />
+      <scope id="5486166368172368414" at="105,346,106,172" />
+      <scope id="5076612878472126629" at="118,42,119,20" />
+      <scope id="5076612878471698562" at="126,41,127,160" />
+      <scope id="5486166368171947239" at="90,0,93,0">
+        <var name="it" id="5486166368171947239" />
+      </scope>
+      <scope id="5486166368172139621" at="94,0,97,0">
+        <var name="it" id="5486166368172139621" />
+      </scope>
+      <scope id="5486166368172235897" at="104,120,107,19" />
+      <scope id="5076612878472197035" at="36,0,40,0" />
+      <scope id="5076612878472197035" at="40,0,44,0" />
+      <scope id="5076612878472197035" at="44,0,48,0" />
+      <scope id="5076612878472197035" at="48,0,52,0">
+        <var name="node" id="5076612878472197035" />
+      </scope>
+      <scope id="5076612878472197035" at="52,0,56,0">
+        <var name="node" id="5076612878472197035" />
+      </scope>
+      <scope id="5076612878472197035" at="56,0,60,0" />
+      <scope id="5076612878472126629" at="62,0,66,0" />
+      <scope id="5076612878472126629" at="66,0,70,0" />
+      <scope id="5076612878472126629" at="70,0,74,0" />
+      <scope id="5076612878472126629" at="74,0,78,0">
+        <var name="node" id="5076612878472126629" />
+      </scope>
+      <scope id="5076612878472126629" at="117,0,121,0" />
+      <scope id="5076612878471698562" at="124,0,129,0" />
+      <scope id="5486166368172235893" at="102,15,108,17">
+        <var name="aPart" id="5486166368172235893" />
+      </scope>
+      <scope id="5076612878472191571" at="101,61,110,72" />
+      <scope id="5076612878472191565" at="100,90,111,13">
+        <var name="part" id="5076612878472191567" />
+      </scope>
+      <scope id="5486166368171963582" at="98,48,112,52">
+        <var name="parts" id="5076612878472177777" />
+      </scope>
+      <scope id="5486166368171963581" at="98,0,114,0">
+        <var name="includeMenu" id="5486166368171963581" />
+      </scope>
+      <scope id="5076612878472126631" at="79,52,115,43">
+        <var name="parent" id="5486166368171977403" />
+        <var name="projectRepository" id="916425739034813722" />
+        <var name="results" id="5486166368171912163" />
+        <var name="usages" id="5486166368171920806" />
+      </scope>
+      <scope id="5076612878472126629" at="78,0,117,0">
+        <var name="node" id="5076612878472126629" />
+      </scope>
+      <scope id="5076612878471698562" at="33,59,121,7" />
+      <scope id="5076612878471698562" at="33,0,123,0" />
+      <unit id="5486166368171947239" at="89,145,93,9" name="jetbrains.mps.lang.editor.scripts.SmartRefGeneratedMenuMigration_MigrationScript$2$1" />
+      <unit id="5486166368172139621" at="93,67,97,9" name="jetbrains.mps.lang.editor.scripts.SmartRefGeneratedMenuMigration_MigrationScript$2$2" />
+      <unit id="5076612878471698562" at="139,0,143,0" name="jetbrains.mps.lang.editor.scripts.SmartRefGeneratedMenuMigration_MigrationScript$LINKS" />
+      <unit id="5076612878471698562" at="130,0,138,0" name="jetbrains.mps.lang.editor.scripts.SmartRefGeneratedMenuMigration_MigrationScript$CONCEPTS" />
+      <unit id="5486166368171963581" at="97,70,114,9" name="jetbrains.mps.lang.editor.scripts.SmartRefGeneratedMenuMigration_MigrationScript$2$3" />
+      <unit id="5076612878472197035" at="35,28,60,5" name="jetbrains.mps.lang.editor.scripts.SmartRefGeneratedMenuMigration_MigrationScript$1" />
+      <unit id="5076612878472126629" at="61,28,121,5" name="jetbrains.mps.lang.editor.scripts.SmartRefGeneratedMenuMigration_MigrationScript$2" />
+      <unit id="5076612878471698562" at="32,0,144,0" name="jetbrains.mps.lang.editor.scripts.SmartRefGeneratedMenuMigration_MigrationScript" />
+    </file>
+  </root>
+</debug-info>
 

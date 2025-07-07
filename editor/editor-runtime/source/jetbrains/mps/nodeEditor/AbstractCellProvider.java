@@ -15,26 +15,22 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
+import jetbrains.mps.nodeEditor.cellMenu.CellContext;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public abstract class AbstractCellProvider {
+  @NotNull
   private SNode myNode;
 
-  public AbstractCellProvider(SNode node) {
+  public AbstractCellProvider(@NotNull SNode node) {
     myNode = node;
   }
 
-  public AbstractCellProvider() {
-
-  }
-
-  public void setSNode(SNode node) {
-    myNode = node;
-  }
-
+  @NotNull
   public SNode getSNode() {
     return myNode;
   }

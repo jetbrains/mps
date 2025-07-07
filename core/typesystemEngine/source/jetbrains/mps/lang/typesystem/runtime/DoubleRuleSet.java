@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,16 @@
  */
 package jetbrains.mps.lang.typesystem.runtime;
 
-import gnu.trove.THashSet;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.newTypesystem.rules.DoubleTermRules;
+import jetbrains.mps.languageScope.LanguageScope;
 import jetbrains.mps.util.Pair;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -36,110 +33,62 @@ import java.util.concurrent.ConcurrentMap;
  *   Synchronized.
  */
 public class DoubleRuleSet<T extends IApplicableTo2Concepts> {
+  private static final String TYPESYSTEM_SUFFIX = ".typesystem";
+  ConcurrentMap<Pair<SAbstractConcept, SAbstractConcept>, Set<T>> myRules = new ConcurrentHashMap<>();
 
-    ConcurrentMap<Pair<String, String>, Set<T>> myRules = new ConcurrentHashMap<Pair<String, String>, /* synchronized */ Set<T>>();
-    ConcurrentMap<Pair<String, String>, Set<T>> myRulesCache = new ConcurrentHashMap<Pair<String, String>, /* unmodifiable */ Set<T>>();
+  private DoubleTermRules<T> myDoubleTermRules = new DoubleTermRules<T>() {
 
-    public void addRuleSetItem(Set<T> rules) {
-        for (T rule : rules) {
-            String concept1 = rule.getApplicableConceptFQName1();
-            String concept2 = rule.getApplicableConceptFQName2();
-            Pair<String, String> pair = new Pair<String, String>(concept1, concept2);
-            Set<T> existingRules = myRules.get(pair);
-            while (existingRules == null) {
-                myRules.putIfAbsent(pair, Collections.synchronizedSet(new HashSet<T>(1)));
-                existingRules = myRules.get(pair);
-            }
-            existingRules.add(rule);
+    @Override
+    protected Iterable<T> allForConceptPair(SAbstractConcept leftConcept, SAbstractConcept rightConcept, LanguageScope langScope) {
+      return getAllApplicableTo(leftConcept, rightConcept, langScope);
+    }
+  };
+
+  public void addRuleSetItem(Set<T> rules) {
+    for (T rule : rules) {
+      SAbstractConcept concept1 = rule.getApplicableConcept1();
+      SAbstractConcept concept2 = rule.getApplicableConcept2();
+      Pair<SAbstractConcept, SAbstractConcept> pair = new Pair<>(concept1, concept2);
+      Set<T> existingRules = myRules.get(pair);
+      while (existingRules == null) {
+        myRules.putIfAbsent(pair, Collections.synchronizedSet(new HashSet<>(1)));
+        existingRules = myRules.get(pair);
+      }
+      existingRules.add(rule);
+    }
+    myDoubleTermRules.purgeCache();
+  }
+
+  public Set<T> getRules(SNode leftTerm, SNode righTerm) {
+    return myDoubleTermRules.lookupRules(leftTerm, righTerm);
+  }
+
+  private Iterable<T> getAllApplicableTo(SAbstractConcept leftConcept, SAbstractConcept rightConcept, LanguageScope scope) {
+    Pair<SAbstractConcept, SAbstractConcept> conceptPair = new Pair<>(leftConcept, rightConcept);
+    if (!myRules.containsKey(conceptPair)) return Collections.emptyList();
+
+    List<T> result = new ArrayList<>(4);
+    Set<T> rules = myRules.get(conceptPair);
+    synchronized (rules) {
+      for (T rule : rules) {
+        if (scope.containsNamespace(getNamespace(rule))) {
+          result.add(rule);
         }
-        myRulesCache.clear();
+      }
     }
+    return Collections.unmodifiableList(result);
+  }
 
-    public Set<T> getRules(SNode node1, SNode node2) {
-        return get(new Pair<String, String>(node1.getConceptFqName(), node2.getConceptFqName()));
+  private String getNamespace(T rule) {
+    String pkg = rule.getClass().getPackage().getName();
+    if (pkg.endsWith(TYPESYSTEM_SUFFIX)) {
+      return pkg.substring(0, pkg.length() - TYPESYSTEM_SUFFIX.length());
     }
+    return pkg;
+  }
 
-    protected Set<T> get(@NotNull final Pair<String, String> key) {
-        Set<T> result = myRulesCache.get(key);
-        if (result != null) {
-            return result;
-        }
-
-        return NodeReadAccessCasterInEditor.runReadTransparentAction(new Computable<Set<T>>() {
-            @Override
-            public Set<T> compute() {
-                Set<T> result;
-                String c1 = key.o1;
-                String c2 = key.o2;
-                if (!isInterfaceConcept(c1) && !isInterfaceConcept(c2)) {
-                    for (String conceptDeclaration1 = c1; conceptDeclaration1 != null; conceptDeclaration1 = getSuperConcept(conceptDeclaration1)) {
-                        for (String conceptDeclaration2 = c2; conceptDeclaration2 != null; conceptDeclaration2 = getSuperConcept(conceptDeclaration2)) {
-                            Pair<String, String> newKey =
-                                    new Pair<String, String>(conceptDeclaration1, conceptDeclaration2);
-                            result = myRules.get(newKey);
-                            if (result != null && !result.isEmpty()) {
-                                if (!conceptDeclaration1.equals(key.o1) || !conceptDeclaration2.equals(key.o2)) {
-                                    myRules.putIfAbsent(key, result);
-                                }
-                                // synchronized collection (result) requires external synchronization for iteration/clone
-                                synchronized (result) {
-                                    Set<T> clone = Collections.unmodifiableSet(new THashSet<T>(result));
-                                    myRulesCache.putIfAbsent(key, clone);
-                                    return clone;
-                                }
-                            }
-                        }
-                    }
-                }
-                myRules.putIfAbsent(key, Collections.synchronizedSet(new HashSet<T>(1)));
-                myRulesCache.putIfAbsent(key, Collections.<T>emptySet());
-                return Collections.emptySet();
-            }
-        });
-    }
-
-    public void makeConsistent() {
-        for (Pair<String, String> pair : myRules.keySet()) {
-            if (pair == null) {
-                continue;
-            }
-            Set<T> rules = myRules.get(pair);
-            if (rules == null) continue;
-            if (isInterfaceConcept(pair.o1) || isInterfaceConcept(pair.o2)) continue;
-
-            for (String conceptDeclaration1 = pair.o1; conceptDeclaration1 != null; conceptDeclaration1 = getSuperConcept(conceptDeclaration1)) {
-                for (String conceptDeclaration2 = pair.o2; conceptDeclaration2 != null; conceptDeclaration2 = getSuperConcept(conceptDeclaration2)) {
-                    Set<T> parentRules = myRules.get(new Pair<String, String>(conceptDeclaration1, conceptDeclaration2));
-                    if (parentRules != null) {
-                        if (conceptDeclaration1 != pair.o1 || conceptDeclaration2 != pair.o2) {
-                            Set<T> clone;
-                            synchronized (parentRules) {
-                                clone = new THashSet<T>(parentRules);
-                            }
-                            rules.addAll(clone);
-                        }
-                    }
-                }
-            }
-        }
-        myRulesCache.clear();
-    }
-
-    // TODO rewrite using ConceptDescriptor
-    private boolean isInterfaceConcept(String conceptFqName) {
-        SNode conceptDeclaration = SModelUtil.findConceptDeclaration(conceptFqName, GlobalScope.getInstance());
-        return !SNodeUtil.isInstanceOfConceptDeclaration(conceptDeclaration);
-    }
-
-    // TODO rewrite using ConceptDescriptor
-    private String getSuperConcept(String conceptFqName) {
-        SNode conceptDeclaration = SModelUtil.findConceptDeclaration(conceptFqName, GlobalScope.getInstance());
-        SNode superConcept = SNodeUtil.isInstanceOfConceptDeclaration(conceptDeclaration) ? SNodeUtil.getConceptDeclaration_Extends(conceptDeclaration) : null;
-        return superConcept != null ? NameUtil.nodeFQName(superConcept) : null;
-    }
-
-    public void clear() {
-        myRules.clear();
-        myRulesCache.clear();
-    }
+  public void clear() {
+    myRules.clear();
+    myDoubleTermRules.purgeCache();
+  }
 }

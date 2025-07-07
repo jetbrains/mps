@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.baseLanguage.sandbox.internal.InternalAnonymousClassUsage" file="InternalAnonymousClassUsage.java">
+  <dependency className="jetbrains.mps.baseLanguage.sandbox.internal.InternalAnonymousClassUsage">
     <classNode dependClassName="java.io.Closeable" />
     <classNode dependClassName="java.io.IOException" />
     <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.Readable" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.System" />
     <classNode dependClassName="java.nio.CharBuffer" />
-    <classNode extendsClassName="java.lang.Readable" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.sandbox.internal.InternalAnonymousClassUsage.ReadableImpl" />
   </dependency>
 </dependenciesRoot>
 

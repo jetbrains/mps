@@ -15,22 +15,25 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
+import jetbrains.mps.nodeEditor.cells.GeometryUtil;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 
 import java.awt.Rectangle;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class AbstractCellLayout implements CellLayout, CellLayoutExt {
+public abstract class AbstractCellLayout implements CellLayout {
+  @Override
   public int getAscent(EditorCell_Collection editorCells) {
     int ascent = 0;
-    for (EditorCell cell : editorCells.getCells()) {
+    for (EditorCell cell : editorCells) {
       ascent = Math.max(ascent, cell.getAscent());
     }
     return ascent;
   }
 
+  @Override
   public int getDescent(EditorCell_Collection editorCells) {
     return editorCells.getHeight() - getAscent(editorCells);
   }
@@ -40,23 +43,29 @@ public abstract class AbstractCellLayout implements CellLayout, CellLayoutExt {
     return null;
   }
 
+  @Override
   public List<Rectangle> getSelectionBounds(EditorCell_Collection editorCells) {
-    return Arrays.asList(editorCells.getBounds());
+    return Arrays.asList(GeometryUtil.getBounds(editorCells));
   }
 
   public int getRightInternalInset(EditorCell_Collection editorCell_collection) {
-    EditorCell editorCell = editorCell_collection.lastCell();
-    if (editorCell == null) return 0;
-    return editorCell.getRightInset();
+    return editorCell_collection.isEmpty() ? 0 : editorCell_collection.lastCell().getRightInset();
   }
 
   public int getLeftInternalInset(EditorCell_Collection editorCell_collection) {
-    EditorCell editorCell = editorCell_collection.firstCell();
-    if (editorCell == null) return 0;
-    return editorCell.getLeftInset();
+    return editorCell_collection.isEmpty() ? 0 : editorCell_collection.firstCell().getLeftInset();
   }
 
+  @Override
   public boolean canBeFolded() {
     return false;
+  }
+
+  @Override
+  public void requestRelayout(EditorCell_Collection editorCells) {
+  }
+
+  @Override
+  public void move(EditorCell_Collection editorCells, int deltaX, int deltaY) {
   }
 }

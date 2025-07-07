@@ -17,7 +17,7 @@ package jetbrains.mps.newTypesystem.operation.equation;
 
 import jetbrains.mps.newTypesystem.operation.AbstractOperation;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public class SubstituteEquationOperation extends AbstractOperation {
   private final AddEquationOperation myAdded;
@@ -29,16 +29,19 @@ public class SubstituteEquationOperation extends AbstractOperation {
     mySource = source;
   }
 
+  @Override
   public void doUndo(State state) {
     myAdded.doUndo(state);
     myRemoved.doUndo(state);
   }
 
+  @Override
   public void doRedo(State state) {
     myRemoved.doRedo(state);
     myAdded.doRedo(state);
   }
 
+  @Override
   public String getPresentation() {
     return myRemoved.getShortPresentation() + " substituted with " +
       myAdded.getShortPresentation();

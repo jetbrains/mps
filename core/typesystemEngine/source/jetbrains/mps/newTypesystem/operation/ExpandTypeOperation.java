@@ -16,7 +16,7 @@
 package jetbrains.mps.newTypesystem.operation;
 
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 
 public class ExpandTypeOperation extends AssignTypeOperation {
@@ -27,18 +27,22 @@ public class ExpandTypeOperation extends AssignTypeOperation {
     myOldType = oldType;
   }
 
+  @Override
   public String getPresentationKind() {
     return PresentationKind.TYPE_EXPANDED;
   }
 
+  @Override
   public String getPresentation() {
     return "Type expanded: " + myNode + " ------> " + myType;
   }
 
+  @Override
   public void doRedo(State state) {
     state.getNodeMaps().assignNodeTypeDontChangeSource(myNode, myType);
   }
 
+  @Override
   public void doUndo(State state) {
     state.getNodeMaps().assignNodeTypeDontChangeSource(myNode, myOldType);
   }

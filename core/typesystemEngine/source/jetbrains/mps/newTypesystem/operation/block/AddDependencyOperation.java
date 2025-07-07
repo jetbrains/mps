@@ -18,7 +18,7 @@ package jetbrains.mps.newTypesystem.operation.block;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.newTypesystem.state.blocks.Block;
 import jetbrains.mps.newTypesystem.state.blocks.ConditionKind;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public class AddDependencyOperation extends AbstractBlockOperation {
   private final SNode myVar;
@@ -31,14 +31,17 @@ public class AddDependencyOperation extends AbstractBlockOperation {
     myConditionKind = conditionKind;
   }
 
+  @Override
   public String getPresentation() {
     return "Block dependency added: " + myVar + " -> [" + myBlock.getPresentation() + "]";
   }
 
+  @Override
   public void doUndo(State state) {
     state.removeDependency(myBlock, myVar, myConditionKind);
   }
 
+  @Override
   public void doRedo(State state) {
     state.addDependency(myBlock, myVar, myConditionKind);
   }

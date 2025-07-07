@@ -18,55 +18,68 @@ package jetbrains.mps.typesystem.inference.util;
 import gnu.trove.THashMap;
 import gnu.trove.THashSet;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
 public class StructuralNodeMap<T> implements Map<SNode, T> {
-  private Map<SNode, SNode> myRepresentatorsMap = new THashMap<SNode, SNode>();
-  private Map<SNode, T> myMap = new THashMap<SNode, T>();
-  private Set<SNode> myAbsentNodes = new THashSet<SNode>();
+  private Map<SNode, SNode> myRepresentatorsMap = new THashMap<>();
+  private Map<SNode, T> myMap = new THashMap<>();
+  private Set<SNode> myAbsentNodes = new THashSet<>();
 
   public SNode getKeyRepresentator(SNode node) {
     return myRepresentatorsMap.get(node);
   }
 
+  @Override
   public int size() {
     return myMap.size();
   }
 
+  @Override
   public boolean isEmpty() {
     return myMap.isEmpty();
   }
 
+  @Override
   public boolean containsValue(Object value) {
     return myMap.containsValue(value);
   }
 
-  public void putAll(Map<? extends SNode, ? extends T> t) {
+  @Override
+  public void putAll(@NotNull Map<? extends SNode, ? extends T> t) {
     throw new UnsupportedOperationException();
   }
 
+  @NotNull
+  @Override
   public Set<SNode> keySet() {
     return myMap.keySet();
   }
 
+  @Override
   public void clear() {
     myRepresentatorsMap.clear();
     myMap.clear();
     myAbsentNodes.clear();
   }
 
+  @NotNull
+  @Override
   public Collection<T> values() {
     return myMap.values();
   }
 
+  @NotNull
+  @Override
   public Set<Entry<SNode, T>> entrySet() {
     return myMap.entrySet();
   }
 
+  @Override
   public T get(Object key) {
     if (!(key instanceof SNode)) return null;
     SNode keyNode = (SNode) key;
@@ -87,6 +100,7 @@ public class StructuralNodeMap<T> implements Map<SNode, T> {
     return myMap.get(representator);
   }
 
+  @Override
   public T put(SNode keyNode, T value) {
     SNode representator = getKeyRepresentator(keyNode);
     if (representator == null) {
@@ -105,6 +119,7 @@ public class StructuralNodeMap<T> implements Map<SNode, T> {
     return myMap.put(representator, value);
   }
 
+  @Override
   public T remove(Object key) {
     if (!(key instanceof SNode)) return null;
     SNode keyNode = (SNode) key;
@@ -122,6 +137,7 @@ public class StructuralNodeMap<T> implements Map<SNode, T> {
     return myMap.remove(representator);
   }
 
+  @Override
   public boolean containsKey(Object key) {
     if (!(key instanceof SNode)) return false;
     SNode keyNode = (SNode) key;

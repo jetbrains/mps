@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,120 +15,96 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
+import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes;
+import jetbrains.mps.smodel.constraints.ModelConstraints;
+import jetbrains.mps.smodel.presentation.IPropertyPresentationProvider;
+import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.util.annotation.Hack;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-public class PropertyAccessor implements ModelAccessor {
+import java.util.Objects;
+
+public class PropertyAccessor implements ModelAccessor, IPropertyAccessor {
   private SNode myNode;
-  private String myPropertyName;
+  private SProperty myProperty;
   private boolean myReadOnly;
   private boolean myAllowEmptyText;
-  private final SNodePointer myPropertyDeclaration;
-  private IScope myScope;
+  private final SRepository myRepository;
+  private final IPropertyPresentationProvider myPresentationProvider;
 
-  public PropertyAccessor(SNode node, String propertyName, boolean readOnly, boolean allowEmptyText, EditorContext editorContext) {
+  public PropertyAccessor(SNode node, SProperty property, boolean readOnly, boolean allowEmptyText, EditorContext editorContext) {
     myNode = node;
-    myPropertyName = propertyName;
-    myReadOnly = readOnly || node.getModel().isNotEditable() || editorContext.getNodeEditorComponent().isReadOnly();
+    myProperty = property;
+    myReadOnly = readOnly || SModelOperations.isReadOnly(node.getModel()) || editorContext.getEditorComponent().isReadOnly();
     myAllowEmptyText = allowEmptyText;
-    myPropertyDeclaration = new SNodePointer(node.getPropertyDeclaration(propertyName));
-    myScope = editorContext.getScope();
-  }
-
-  public PropertyAccessor(SNode node, String propertyName, boolean readOnly, boolean allowEmptyText, IOperationContext context) {
-    myNode = node;
-    myPropertyName = propertyName;
-    myReadOnly = readOnly || node.getModel().isNotEditable();
-    myAllowEmptyText = allowEmptyText;
-    myPropertyDeclaration = new SNodePointer(node.getPropertyDeclaration(propertyName));
-    myScope = context.getScope();
+    myRepository = editorContext.getRepository();
+    myPresentationProvider = property == null ? IPropertyPresentationProvider.getDefaultPresentationProvider(SPrimitiveTypes.STRING)
+                                              : IPropertyPresentationProvider.getPresentationProviderFor(property);
   }
 
   public SNode getNode() {
     return myNode;
   }
 
-  public String getPropertyName() {
-    return myPropertyName;
+  protected SRepository getRepository() {
+    return myRepository;
   }
 
+  public SProperty getProperty(){
+    return myProperty;
+  }
+
+  @Override
   public String getText() {
-    return fromInternal(doGetValue());
+    return myPresentationProvider.getPresentation(doGetValue());
   }
 
+  @Override
   public void setText(String text) {
-    if (!myReadOnly) {
-      isValidText(text);
-      if (text != null && text.length() == 0) {
-        text = null;
-      }
-      if (isValidText_internal(text)) {
-        doSetValue(toInternal(text));
+    if (!myReadOnly && isValidEmptyText(text)) {
+      Object value = myPresentationProvider.fromPresentation(StringUtil.nullIfEmpty(text));
+      if (ModelConstraints.validatePropertyValue(myNode, myProperty, value)) {
+        doSetValue(value);
       }
     }
   }
 
-  protected String doGetValue() {
-    return NodeReadAccessCasterInEditor.runCleanPropertyAccessAction(new Computable<String>() {
-      @Override
-      public String compute() {
-        if (myNode == null) {
-          return null;
-        }
-        return myNode.getProperty(myPropertyName);
+  protected Object doGetValue() {
+    return NodeReadAccessCasterInEditor.runCleanPropertyAccessAction(() -> {
+      if (myNode == null) {
+        return null;
       }
+      return SNodeAccessUtil.getPropertyValue(myNode, myProperty);
     });
   }
 
-  protected void doSetValue(String newText) {
-    myNode.setProperty(myPropertyName, newText);
+  protected void doSetValue(Object newValue) {
+    SNodeAccessUtil.setPropertyValue(myNode, myProperty, newValue);
   }
 
+  @Override
   @Hack
   public boolean isValidText(String text) {
-    return (isValidText_internal(text) && !isInvalidEmptyText(text));
+    return isValidText_internal(text) && isValidEmptyText(text);
   }
 
   private boolean isValidText_internal(String text) {
-    if (text != null && text.length() == 0) {
-      text = null;
-    }
-
+    text = StringUtil.nullIfEmpty(text);
     if (myReadOnly) {
-      String propertyValue = getText();
-      return (text == null && (propertyValue == null || propertyValue.isEmpty())) || (text != null && text.equals(propertyValue));
+      return Objects.equals(StringUtil.nullIfEmpty(getText()), text);
     }
 
-    SNode node = myPropertyDeclaration.getNode();
-    if (node != null) {
-      PropertySupport propertySupport = PropertySupport.getPropertySupport(node);
-      return propertySupport.canSetValue(myNode, myPropertyName, text, myScope);
-    }
-    return true;
+    return ModelConstraints.validatePropertyValue(myNode, myProperty, myPresentationProvider.fromPresentation(text));
   }
 
   @Hack
-  private boolean isInvalidEmptyText(String text) {
-    return !myAllowEmptyText && (text == null || text.length() == 0);
-  }
-
-  private String fromInternal(String value) {
-    SNode node = myPropertyDeclaration.getNode();
-    if (node != null) {
-      PropertySupport propertySupport = PropertySupport.getPropertySupport(node);
-      return propertySupport.fromInternalValue(value);
-    }
-    return value;
-  }
-
-  private String toInternal(String value) {
-    SNode node = myPropertyDeclaration.getNode();
-    if (node != null) {
-      PropertySupport propertySupport = PropertySupport.getPropertySupport(node);
-      return propertySupport.toInternalValue(value);
-    }
-    return value;
+  private boolean isValidEmptyText(String text) {
+    return myAllowEmptyText || !StringUtil.isEmpty(text);
   }
 }

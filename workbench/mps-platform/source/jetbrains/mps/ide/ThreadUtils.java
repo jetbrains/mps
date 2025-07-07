@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,56 +15,119 @@
  */
 package jetbrains.mps.ide;
 
-import jetbrains.mps.logging.Logger;
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.SwingUtilities;
+import java.lang.reflect.InvocationTargetException;
 
+/**
+ * Interface to platform-specific access to Event Dispatch Thread.
+ * For IDEA, use <code>ApplicationManager.getApplication()</code>
+ */
 public class ThreadUtils {
-  private static final Logger LOG = Logger.getLogger(ThreadUtils.class);
-
-  public static boolean runInUIThreadAndWait(Runnable r) {
-    if (SwingUtilities.isEventDispatchThread()) {
-      try {
-          r.run();
-      } catch (Exception e) {
-        LOG.error(e);
-        return false;
-      }
+  @Nullable
+  public static Exception runInUIThreadAndWait(Runnable r) {
+    LogExceptionsRunnable wrap = new LogExceptionsRunnable(LogManager.getLogger(ThreadUtils.class), r);
+    if (ApplicationManager.getApplication() != null) {
+      // Application#invokeAndWait() executes runnable immediately if in EDT thread (well, at least it is stated in javadoc)
+      ApplicationManager.getApplication().invokeAndWait(wrap, ModalityState.defaultModalityState());
     } else {
-      try {
-        SwingUtilities.invokeAndWait(r);
-      } catch (Exception e) {
-        LOG.error(e);
-        return false;
+      if (isInEDT()) {
+        wrap.run();
+      } else {
+        try {
+          SwingUtilities.invokeAndWait(wrap);
+        } catch (InterruptedException | InvocationTargetException e) {
+          LogManager.getLogger(ThreadUtils.class).error(e.getMessage(), e);
+          return e;
+        }
       }
     }
-    return true;
+    return wrap.getException();
   }
 
   public static void runInUIThreadNoWait(Runnable r) {
-    if (SwingUtilities.isEventDispatchThread()) {
-      r.run();
+    LogExceptionsRunnable wrap = new LogExceptionsRunnable(LogManager.getLogger(ThreadUtils.class), r);
+    if (isInEDT()) {
+      wrap.run();
     } else {
-      try {
-        SwingUtilities.invokeLater(r);
-      } catch (Exception e) {
-        LOG.error(e);
+      if (ApplicationManager.getApplication() != null) {
+        ApplicationManager.getApplication().invokeLater(wrap);
+      } else {
+        SwingUtilities.invokeLater(wrap);
       }
+    }
+  }
+
+  private static class LogExceptionsRunnable implements Runnable {
+    private final Logger myLog;
+    private final Runnable myDelegate;
+    private Exception myException;
+
+    public LogExceptionsRunnable(Logger log, Runnable delegate) {
+      myLog = log;
+      myDelegate = delegate;
+    }
+
+    @Override
+    public void run() {
+      try {
+        myDelegate.run();
+      } catch (Exception e) {
+        myLog.error(ThreadUtils.class.getName(), e);
+        myException = e;
+      }
+    }
+
+    @Nullable
+    public Exception getException() {
+      return myException;
     }
   }
 
   /**
-   * use ModelAccess.instance().isInEDT()
-   * @return
+   * Handy wrap for {@link #runInUIThreadAndWait(Runnable)} and {@link #runInUIThreadNoWait(Runnable)} as a Runnable
+   * one could pass to a facility that accepts Runnable
    */
-  @Deprecated
-  public static boolean isEventDispatchThread() {
-    return SwingUtilities.isEventDispatchThread();
+  public static class RunInUIRunnable implements Runnable {
+    private final Runnable myDelegate;
+    private final boolean myWaitDelegateToComplete;
+
+    public RunInUIRunnable(@NotNull Runnable delegate, boolean wait) {
+      myDelegate = delegate;
+      myWaitDelegateToComplete = wait;
+    }
+
+    @Override
+    public void run() {
+      if (myWaitDelegateToComplete) {
+        runInUIThreadAndWait(myDelegate);
+      } else {
+        runInUIThreadNoWait(myDelegate);
+      }
+    }
+  }
+
+  public static boolean isInEDT() {
+    final Application ideaApp = ApplicationManager.getApplication();
+    return ideaApp == null ? SwingUtilities.isEventDispatchThread() : ideaApp.isDispatchThread();
   }
 
   public static void assertEDT() {
-    if(!isEventDispatchThread()) {
-      LOG.error(new IllegalStateException("must be called from EDT"));
+    final Application ideaApp = ApplicationManager.getApplication();
+    if (ideaApp != null) {
+      ideaApp.assertIsDispatchThread();
+    } else {
+      if (!SwingUtilities.isEventDispatchThread()) {
+        LogManager.getLogger(ThreadUtils.class).error("NOT EDT THREAD", new Throwable());
+      }
+      assert false;
     }
   }
 }

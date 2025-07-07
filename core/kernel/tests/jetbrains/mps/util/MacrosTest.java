@@ -15,27 +15,36 @@
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.BaseMPSTest;
-import jetbrains.mps.TestMain;
-import jetbrains.mps.ide.IdeMain;
-import jetbrains.mps.ide.IdeMain.TestMode;
+import jetbrains.mps.tool.environment.Environment;
+import jetbrains.mps.tool.environment.EnvironmentAware;
+import jetbrains.mps.vfs.IFileSystem;
+import org.jetbrains.annotations.NotNull;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MacrosTest extends BaseMPSTest {
+import static org.junit.Assert.fail;
 
+public class MacrosTest implements EnvironmentAware {
+
+  /**
+   * @param ignored bare MPS environment suffice
+   */
   @Override
-  protected void setUp() throws Exception {
-    IdeMain.setTestMode(TestMode.CORE_TEST);
-    TestMain.configureMPS();
+  public void setEnvironment(@NotNull Environment ignored) {
+    // This tests used to create MPS environment. Although it doesn't use Environment directly at the moment,
+    // I made it EnvironmentAware as we likely would need Platform some day to access MacrosFactory (which now implicitly uses
+    // PathMacros CoreComponent through its deprecated getInstance()). In case this test could be rewritten to test other than global
+    // MacroHelper implementation, we may move the test to environment-independent suite (now j.m.testsuites.NoPlatformTestSuite).
   }
 
+  @Test
   public void testExpand() {
     List<String> tests = generateExpandTests();
     for (String test : tests) {
-      String result = MacrosFactory.mpsHomeMacros().expandPath(test, new File(PathManager.getHomePath()));
+      String result = MacrosFactory.getGlobal().expandPath(test);
       if (!checkExpandSeperatorsCorrectness(result)) {
         fail(getFailMessgae("Expand separators:", test, result));
       }
@@ -45,10 +54,11 @@ public class MacrosTest extends BaseMPSTest {
     }
   }
 
+  @Test
   public void testShrink() {
     List<String> tests = generateShrinkTests();
     for (String test : tests) {
-      String result = MacrosFactory.mpsHomeMacros().shrinkPath(test, new File(PathManager.getHomePath()));
+      String result = MacrosFactory.getGlobal().shrinkPath(test);
       if (!checkShrinkSeperatorsCorrectness(result)) {
         fail(getFailMessgae("Shrink separators:", test, result));
       }
@@ -88,7 +98,7 @@ public class MacrosTest extends BaseMPSTest {
   }
 
   private boolean checkShrinkSeperatorsCorrectness(String s) {
-    return s.indexOf(negateSeparator(Macros.SEPARATOR_CHAR)) == -1;
+    return s.indexOf(negateSeparator(IFileSystem.SEPARATOR.charAt(0))) == -1;
   }
 
   private boolean checkExpandSeperatorsCorrectness(String s) {
@@ -96,7 +106,7 @@ public class MacrosTest extends BaseMPSTest {
   }
 
   private boolean checkMacroPresence(String s) {
-    return s.indexOf("${") != -1;
+    return s.contains("${");
   }
 
   private char negateSeparator(char c) {

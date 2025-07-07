@@ -31,35 +31,39 @@ import com.intellij.usages.UsagePresentation;
 import com.intellij.usages.rules.MergeableUsage;
 import com.intellij.usages.rules.UsageInModule;
 import jetbrains.mps.ide.editor.MPSFileNodeEditor;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.usages.rules.UsageByCategory;
 import jetbrains.mps.idea.core.usages.rules.UsageInMPS;
 import jetbrains.mps.idea.core.usages.rules.UsageInModel;
 import jetbrains.mps.idea.core.usages.rules.UsageInRoot;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SModel;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;import org.jetbrains.mps.openapi.model.SNodeId;import org.jetbrains.mps.openapi.model.SNodeReference;import org.jetbrains.mps.openapi.model.SReference;import org.jetbrains.mps.openapi.model.SModelId;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModelReference;import jetbrains.mps.smodel.*;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.Icon;
 import java.util.ArrayList;
 
 public class NodeUsage extends NodeNavigatable implements Usage, UsagePresentation, UsageInMPS, UsageInModule, MergeableUsage, UsageInRoot, UsageInModel, UsageByCategory, Comparable<NodeUsage> {
-  private SModel myModel;
+  private SModelReference myModel;
   private TextChunk[] myChunks;
   private boolean myIsValid;
   private String myParentPresentation;
   private String myRole;
   private String myCategory;
 
-  public NodeUsage(@NotNull SNode node, @NotNull Project project, String category) {
+  public NodeUsage(@NotNull SNodeReference node, @NotNull Project project, String category) {
     super(node, project);
-    ModelAccess.instance().runReadAction(new Runnable() {
+    SRepository repository = ProjectHelper.getProjectRepository(project);
+    repository.getModelAccess().runReadAction(new Runnable() {
       @Override
       public void run() {
-        myModel = myNode.getModel();
-        myParentPresentation = myNode.getParent().getPresentation();
-        myRole = myNode.getRole_();
+        myModel = myNode.getModelReference();
+        SNode targetNode = myNode.resolve(repository);
+        if (targetNode != null) {
+          myParentPresentation = targetNode.getParent().getPresentation();
+          myRole = targetNode.getRoleInParent();
+        }
       }
     });
     myIsValid = isValid();
@@ -161,16 +165,16 @@ public class NodeUsage extends NodeNavigatable implements Usage, UsagePresentati
 
   @Override
   public void reset() {
-
   }
-
 
   @Override
   public boolean isValid() {
-    return ModelAccess.instance().runReadAction(new Computable<Boolean>() {
+    SRepository repository = ProjectHelper.getProjectRepository(myProject);
+    return new ModelAccessHelper(repository.getModelAccess()).runReadAction(new Computable<Boolean>() {
       @Override
       public Boolean compute() {
-        return !myNode.isDetached();
+        SNode node = myNode.resolve(repository);
+        return node != null && !(node.getModel() == null);
       }
     });
   }
@@ -182,11 +186,11 @@ public class NodeUsage extends NodeNavigatable implements Usage, UsagePresentati
 
   @Override
   public SModel getModel() {
-    return myModel;
+    return myModel.resolve(ProjectHelper.getProjectRepository(myProject));
   }
 
   @Override
-  public SNode getRoot() {
+  public SNodeReference getRoot() {
     return myRootNode;
   }
 

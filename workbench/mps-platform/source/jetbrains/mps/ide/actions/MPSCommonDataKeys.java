@@ -18,14 +18,14 @@ package jetbrains.mps.ide.actions;
 import com.intellij.openapi.actionSystem.DataKey;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.messages.IMessage;
-import jetbrains.mps.project.IModule;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.IScope;
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.smodel.SNode;
 import jetbrains.mps.workbench.ActionPlace;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SModule;
 
+import javax.swing.tree.TreeNode;
 import java.awt.Frame;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -38,27 +38,33 @@ import java.util.List;
  */
 public class MPSCommonDataKeys extends PlatformDataKeys {
 
-  @Description(description = "operation context")
+  /**
+   *   @deprecated IOperationContext has been deprecated and will be removed in the next release
+   */
+  @Description(description = "operation context. IOperationContext has been deprecated and will be removed in the next release")
+  @Deprecated
   public static final DataKey<IOperationContext> OPERATION_CONTEXT = DataKey.create("MPS_IOperationContext");
   @Description(description = "current MPS project")
   public static final DataKey<MPSProject> MPS_PROJECT = DataKey.create("MPS_MPSProject");
 
-  @Description(description = "selected node")
+  @Description(description = "selected node (null if multiple or no selection)")
   public static final DataKey<SNode> NODE = DataKey.create("MPS_SNode");
   @Description(description = "selected nodes")
   public static final DataKey<List<SNode>> NODES = DataKey.create("MPS_SNode_List");
 
   @Description(description = "context model")
-  public static final DataKey<SModelDescriptor> CONTEXT_MODEL = DataKey.create("MPS_Context_SModelDescriptor");
+  public static final DataKey<SModel> CONTEXT_MODEL = DataKey.create("MPS_Context_SModel");
   @Description(description = "context module")
-  public static final DataKey<IModule> CONTEXT_MODULE = DataKey.create("MPS_Context_IModule");
+  public static final DataKey<SModule> CONTEXT_MODULE = DataKey.create("MPS_Context_SModule");
   @Description(description = "selected module")
-  public static final DataKey<IModule> MODULE = DataKey.create("MPS_IModule");
+  public static final DataKey<SModule> MODULE = DataKey.create("MPS_SModule");
+  @Description(description = "selected modules")
+  public static final DataKey<List<SModule>> MODULES = DataKey.create("MPS_SModule_List");
 
   @Description(description = "selected model")
-  public static final DataKey<SModelDescriptor> MODEL = DataKey.create("MPS_SModelDescriptor");
+  public static final DataKey<SModel> MODEL = DataKey.create("MPS_SModel");
   @Description(description = "selected models")
-  public static final DataKey<List<SModelDescriptor>> MODELS = DataKey.create("MPS_SModelDescriptor_List");
+  public static final DataKey<List<SModel>> MODELS = DataKey.create("MPS_SModel_List");
 
   @Description(description = "throwable in select message")
   public static final DataKey<Throwable> EXCEPTION = DataKey.create("MPS_Exception");
@@ -70,8 +76,14 @@ public class MPSCommonDataKeys extends PlatformDataKeys {
 
   @Description(description = "main window's Frame")
   public static final DataKey<Frame> FRAME = DataKey.create("MPS_Frame");
-  @Description(description = "scope")
-  public static final DataKey<IScope> SCOPE = DataKey.create("MPS_IScope");
+
+  @Description(description = "node selected in the tree")
+  public static final DataKey<TreeNode> TREE_NODE = DataKey.create("MPS_TreeNode");
+  @Description(description = "nodes selected in the tree")
+  public static final DataKey<List<TreeNode>> TREE_NODES = DataKey.create("MPS_TreeNodes");
+  @Description(description = "number of selected items in the tree")
+  public static final DataKey<Integer> TREE_SELECTION_SIZE = DataKey.create("MPS_SelectedItemsNum");
+
 
   @Retention(RetentionPolicy.RUNTIME)
   @Target(ElementType.FIELD)

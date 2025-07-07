@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,206 +13,203 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.actions;
 
-import com.intellij.facet.FacetManager;
-import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.ide.projectView.ProjectView;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.module.Module;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileManager;
+import com.intellij.psi.PsiDirectory;
+import jetbrains.mps.extapi.persistence.FileDataSource;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.extapi.persistence.SourceRoot;
+import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
+import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.fileTypes.FileIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.MPSBundle;
-import jetbrains.mps.idea.core.facet.MPSFacet;
-import jetbrains.mps.idea.core.facet.MPSFacetType;
-import jetbrains.mps.idea.core.icons.MPSIcons;
+import jetbrains.mps.idea.core.project.module.ModuleMPSSupport;
 import jetbrains.mps.idea.core.ui.CreateFromTemplateDialog;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.SModelRoot;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
+import jetbrains.mps.kernel.model.MissingDependenciesFixer;
+import jetbrains.mps.persistence.ModelCannotBeCreatedException;
+import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
+import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.ModelsAutoImportsManager;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.Computable;
+import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.persistence.DataSource;
+import org.jetbrains.mps.openapi.persistence.ModelFactory;
+import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
 import javax.lang.model.SourceVersion;
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
-public class NewModelAction extends AnAction {
-    private String myModelPrefix;
-    private Project myProject;
-    private SModelRoot myModelRoot;
-    private Solution mySolution;
+/**
+ * Created by danilla on 28/10/15.
+ */
+public class NewModelAction extends NewModelActionBase {
+  private static Logger LOG = LogManager.getLogger(NewModelAction.class);
 
-    public NewModelAction() {
-        super(MPSBundle.message("new.model.action"), null, FileIcons.MODEL_ICON);
-    }
+  private static final ModelTemplate EMPTY_MODEL = new ModelTemplateBase("EMPTY", MPSBundle.message("new.model.template.empty.presentation"), FileIcons.MODEL_ICON);
 
-    @Override
-    public void update(AnActionEvent e) {
-        setModelRoot(e);
-        setProject(e);
+  public NewModelAction() {
+    super(MPSBundle.message("new.model.action"), null, FileIcons.MODEL_ICON);
+  }
 
-        boolean enabled = isEnabled();
-        e.getPresentation().setVisible(enabled);
-        e.getPresentation().setEnabled(enabled);
-    }
-
-    private void setProject(AnActionEvent event) {
-        myProject = event.getData(PlatformDataKeys.PROJECT);
-    }
-
-    private void setModelRoot(AnActionEvent e) {
-        mySolution = null;
-        myModelRoot = null;
-        myModelPrefix = null;
-        Module module = e.getData(LangDataKeys.MODULE);
-        VirtualFile[] vFiles = e.getData(PlatformDataKeys.VIRTUAL_FILE_ARRAY);
-        if (module == null || vFiles == null || vFiles.length != 1 || !vFiles[0].isDirectory()) {
-            return;
+  @Override
+  public void actionPerformed(final AnActionEvent anActionEvent) {
+    SRepository repository = ProjectHelper.getProjectRepository(myProject);
+    final ModuleRepositoryFacade repositoryFacade = new ModuleRepositoryFacade(repository);
+    Map<String, ModelTemplate> namesToTemplates = new HashMap<String, ModelTemplate>();
+    final Module ideaModule = anActionEvent.getData(LangDataKeys.MODULE); // not null ensured by isEnabled in superclass
+    CreateFromTemplateDialog dialog = new CreateFromTemplateDialog(myProject) {
+      @Override
+      protected void doOKAction() {
+        final ModelTemplate template = namesToTemplates.get(getKindCombo().getSelectedName());
+        String shortModelName = getNameField().getText().trim();
+        final String modelName = myModelPrefix.isEmpty() ? shortModelName : myModelPrefix + "." + shortModelName;
+        if (!isModelNameValid(repositoryFacade, modelName)) {
+          return;
         }
 
-        MPSFacet mpsFacet = FacetManager.getInstance(module).getFacetByType(MPSFacetType.ID);
-        if (mpsFacet == null || !mpsFacet.wasInitialized()) {
-            return;
-        }
+        final SModel newModel = new ModelAccessHelper(repository.getModelAccess()).executeCommand(new Computable<SModel>() {
+          @Override
+          public SModel compute() {
+            final String path = ((PsiDirectory) anActionEvent.getData(LangDataKeys.PSI_ELEMENT)).getVirtualFile().getPath();
 
-        String url = vFiles[0].getUrl();
-        if (!LocalFileSystem.PROTOCOL.equals(VirtualFileManager.extractProtocol(url))) {
-            return;
-        }
-        String path = VirtualFileManager.extractPath(url);
-        for (SModelRoot modelRoot : mpsFacet.getSolution().getSModelRoots()) {
-            if (path.startsWith(modelRoot.getPath())) {
-                mySolution = mpsFacet.getSolution();
-                myModelRoot = modelRoot;
-                myModelPrefix = path.substring(modelRoot.getPath().length());
-                while (myModelPrefix.startsWith("/") || myModelPrefix.startsWith("\\")) {
-                    myModelPrefix = myModelPrefix.substring(1);
-                }
-                while (myModelPrefix.endsWith("/") || myModelPrefix.endsWith("\\")) {
-                    myModelPrefix = myModelPrefix.substring(0, myModelPrefix.length());
-                }
-                myModelPrefix = myModelPrefix.replaceAll("/", ".");
-                myModelPrefix = myModelPrefix.replaceAll("\\\\", ".");
-                if (!myModelPrefix.isEmpty()) {
-                    myModelPrefix += ".";
-                }
-                return;
-            }
-        }
-    }
-
-    @Override
-    public void actionPerformed(AnActionEvent anActionEvent) {
-        CreateFromTemplateDialog dialog = new CreateFromTemplateDialog(myProject) {
-            @Override
-            protected void doOKAction() {
-                final ModelTemplates template = ModelTemplates.valueOf(getKindCombo().getSelectedName());
-                final SModelFqName modelFqName = new SModelFqName(getNameField().getText().trim(), "");
-                if (!isModelNameValid(modelFqName)) {
-                    return;
-                }
-
-                SModelDescriptor newModelDescriptor = ModelAccess.instance().runWriteActionInCommand(new Computable<SModelDescriptor>() {
-                    @Override
-                    public SModelDescriptor compute() {
-                        EditableSModelDescriptor descriptor = mySolution.createModel(modelFqName, myModelRoot, null);
-                        template.preConfigure(descriptor.getSModel(), mySolution);
-                        descriptor.save();
-                        return descriptor;
-                    }
-                }, ProjectHelper.toMPSProject(myProject));
-                if (newModelDescriptor == null) {
-                    return;
-                }
-
-                processDoNotAskOnOk(OK_EXIT_CODE);
-                if (getOKAction().isEnabled()) {
-                    close(OK_EXIT_CODE);
-                }
+            EditableSModel model = null;
+            try {
+              // repository != null means there's MPSProject, and its getComponent is capable to answer CoreComponents
+              ModelFactory modelFactory = ProjectHelper.fromIdeaProject(myProject).getComponent(ModelFactoryService.class).getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
+              SModelName sModelName = new SModelName(modelName);
+              model = (EditableSModel) myModelRoot.createModel(sModelName, mySourceRoot, createDataSourceFactory(), modelFactory);
+            } catch (ModelCannotBeCreatedException e) {
+              LOG.error("Can't create model " + modelName + " under " + path, e);
+              return null;
             }
 
-            private boolean isModelNameValid(SModelFqName modelFqName) {
-                String modelName = modelFqName.getLongName();
-                if (modelName.length() == 0) {
-                    showError(MPSBundle.message("create.new.model.dialog.error.empty.name"));
-                    return false;
-                }
+            // FIXME something bad: see MPS-18545 SModel api: createModel(), setChanged(), isLoaded(), save()
+            // model.getSModel() ?
+            template.preConfigure(model);
 
-                if (SModelRepository.getInstance().getModelDescriptor(modelFqName) != null) {
-                    showError(MPSBundle.message("create.new.model.dialog.error.model.exists", modelName));
-                    return false;
-                }
+            // likely, model.isChanged == true, but just in case it's not, force save
+            // I'm not even sure it's the right moment to save, why not after all the imports has been fixed/auto-added, but
+            // this is the way it was prior to 585b7169 I'm about to revert.
+            model.setChanged(true);
+            model.save();
 
-                if (modelName.lastIndexOf(".") == modelName.length()) {
-                    showError(MPSBundle.message("create.new.model.dialog.error.empty.short.name"));
-                    return false;
-                }
-
-                if (!(SourceVersion.isName(modelName))) {
-                    showError(MPSBundle.message("create.new.model.dialog.error.invalid.java", modelName));
-                    return false;
-                }
-                return true;
+            final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
+            if (mpsProject != null) {
+              mpsProject.getComponent(ModelsAutoImportsManager.class).performImports(myModelRoot.getModule(), model);
             }
-        };
+            new MissingDependenciesFixer(model).fixModuleDependencies();
 
+            model.save(); // just in case performImports or fixModuleDependencies touched the model and didn't save it - fixImports, below
+            // may reload module (when/if project libraries change), and AbstractModule.doUpdateModelsSet doesn't reload models in changed state.
 
-        dialog.setTitle(MPSBundle.message("create.new.model.dialog.title"));
-        for (ModelTemplates template : ModelTemplates.values()) {
-            dialog.getKindCombo().addItem(template.getPresentation(), template.getIcon(), template.name());
-        }
-        dialog.getNameField().setText(myModelPrefix);
-        dialog.show();
-    }
-
-    public boolean isEnabled() {
-        return myModelRoot != null && myProject != null;
-    }
-
-    private enum ModelTemplates {
-        EMPTY(MPSBundle.message("new.model.template.empty.presentation"), FileIcons.MODEL_ICON),
-        JAVA(MPSBundle.message("new.model.template.java.presentation"), MPSIcons.JAVA_MODEL_ICON, "jetbrains.mps.baseLanguage");
-
-        private final String myPresentation;
-        private final Icon myIcon;
-        private List<ModuleReference> myLanguagesToImport = new ArrayList<ModuleReference>();
-
-        private ModelTemplates(String presentation, Icon icon, String... languagesToImport) {
-            myPresentation = presentation;
-            myIcon = icon;
-
-            for (String languageNamespace : languagesToImport) {
-                Language language = ModuleRepositoryFacade.getInstance().getModule(languageNamespace,Language.class);
-                assert language != null : "Language required by model template is not in repository";
-                myLanguagesToImport.add(language.getModuleReference());
+            final Collection<SLanguage> usedLanguages = new ModelImports(model).getUsedLanguages();
+            if (usedLanguages.isEmpty()) {
+              return model;
             }
+            final SModelReference modelReference = model.getReference();
+
+            ModuleMPSSupport.getInstance().fixImports(ideaModule, usedLanguages);
+            // chances are fixImports reloads module with the model, therefore need to take the new one
+            return modelReference.resolve(repository);
+          }
+        });
+        if (newModel == null) {
+          return;
         }
 
-        public String getPresentation() {
-            return myPresentation;
+        processDoNotAskOnOk(OK_EXIT_CODE);
+        if (getOKAction().isEnabled()) {
+          close(OK_EXIT_CODE);
         }
 
-        public Icon getIcon() {
-            return myIcon;
-        }
+        // Not sure there's a need to do it explicitly, just a better alternative to postponed model.save and save listener to do the same
+        // (see fbe9056fa1184378a2256f75a6ffd6f04f01cf88)
+        ApplicationManager.getApplication().invokeLater(() -> ProjectView.getInstance(myProject).refresh());
+      }
 
-        public void preConfigure(SModel smodel, IModule module) {
-            for (ModuleReference languageReference : myLanguagesToImport) {
-                if (module.getScope().getLanguage(languageReference) == null) {
-                    module.addUsedLanguage(languageReference);
-                }
-                smodel.addLanguage(languageReference);
-            }
+      private boolean isModelNameValid(final ModuleRepositoryFacade repositoryFacade, final String modelName) {
+        try {
+          if (modelName.length() == 0) {
+            showError(MPSBundle.message("create.new.model.dialog.error.empty.name"));
+            return false;
+          }
+
+          if (modelName.endsWith(".")) {
+            showError(MPSBundle.message("create.new.model.dialog.error.empty.short.name"));
+            return false;
+          }
+
+          final SModelName mn = new SModelName(modelName);
+          if (!(SourceVersion.isName(mn.getLongName()))) {
+            showError(MPSBundle.message("create.new.model.dialog.error.invalid.java", modelName));
+            return false;
+          }
+          if (new ModelAccessHelper(repositoryFacade.getRepository()).runReadAction(() -> !repositoryFacade.getModelsByName(mn).isEmpty())) {
+            showError(MPSBundle.message("create.new.model.dialog.error.model.exists", modelName));
+            return false;
+          }
+        } catch (Exception ex) {
+          showError(ex.getMessage());
+          return false;
         }
+        return true;
+      }
+    };
+
+    dialog.setTitle(MPSBundle.message("create.new.model.dialog.title"));
+    dialog.getKindCombo().addItem(EMPTY_MODEL.getPresentation(), EMPTY_MODEL.getIcon(), EMPTY_MODEL.getName());
+    namesToTemplates.put(EMPTY_MODEL.getName(), EMPTY_MODEL);
+    for (ModelTemplateProvider provider : ModelTemplateProvider.EP_NAME.getExtensions()) {
+      for (ModelTemplate template : provider.getTemplates()) {
+        dialog.getKindCombo().addItem(template.getPresentation(), template.getIcon(), template.getName());
+        dialog.setTemplateKindComponentsVisible(true);
+        namesToTemplates.put(template.getName(), template);
+      }
     }
+    dialog.show();
+  }
+
+  @NotNull
+  private DataSourceFactoryFromName createDataSourceFactory() {
+    return new DataSourceFactoryFromName() {
+      @NotNull
+      @Override
+      public DataSourceType getType() {
+        return PreinstalledDataSourceTypes.MPS;
+      }
+
+      @NotNull
+      @Override
+      public DataSource create(@NotNull SModelName modelName, @NotNull SourceRoot sourceRoot) {
+        String modelFilePath = modelName.getLongName();
+        modelFilePath = modelFilePath.replace('.', File.separatorChar) + MPSExtentions.DOT_MODEL;
+        modelFilePath = sourceRoot.getAbsolutePath().getPath() + File.separator + modelFilePath;
+        IFile modelFile = sourceRoot.getAbsolutePath().getFileSystem().getFile(modelFilePath);
+        return new FileDataSource(modelFile);
+      }
+    };
+  }
+
 }

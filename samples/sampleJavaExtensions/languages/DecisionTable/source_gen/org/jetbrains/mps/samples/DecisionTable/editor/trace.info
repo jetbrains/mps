@@ -1,140 +1,229 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <root nodeId="1987251859606934921" modelId="r:b96dcc7d-bee1-45db-9bae-10fd8574af99(org.jetbrains.mps.samples.DecisionTable.editor)">
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="48" startPosition="58" endLine="48" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="65" startPosition="58" endLine="65" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1987251859606934921" fileName="DecisionTable_Editor.java" startLine="22" startPosition="79" endLine="23" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="26" startPosition="89" endLine="27" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="27" startPosition="96" endLine="28" endPosition="48" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="27" startPosition="96" endLine="28" endPosition="48" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="28" startPosition="48" endLine="29" endPosition="80" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="28" startPosition="48" endLine="29" endPosition="80" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="29" startPosition="80" endLine="30" endPosition="81" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="29" startPosition="80" endLine="30" endPosition="81" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="30" startPosition="81" endLine="31" endPosition="80" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="30" startPosition="81" endLine="31" endPosition="80" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="31" startPosition="80" endLine="32" endPosition="78" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="31" startPosition="80" endLine="32" endPosition="78" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="32" startPosition="78" endLine="33" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8238782355405136128" fileName="DecisionTable_Editor.java" startLine="36" startPosition="88" endLine="37" endPosition="94" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="8238782355405136128" fileName="DecisionTable_Editor.java" startLine="37" startPosition="94" endLine="38" endPosition="47" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="8238782355405136128" fileName="DecisionTable_Editor.java" startLine="37" startPosition="94" endLine="38" endPosition="47" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8238782355405136128" fileName="DecisionTable_Editor.java" startLine="38" startPosition="47" endLine="39" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8238782355405136128" fileName="DecisionTable_Editor.java" startLine="39" startPosition="34" endLine="40" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="43" startPosition="87" endLine="44" endPosition="81" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="44" startPosition="81" endLine="45" endPosition="37" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="45" startPosition="37" endLine="46" endPosition="50" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="46" startPosition="50" endLine="47" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="47" startPosition="26" endLine="48" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="48" startPosition="58" endLine="49" endPosition="73" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="49" startPosition="73" endLine="50" endPosition="57" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="50" startPosition="57" endLine="51" endPosition="59" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="52" startPosition="35" endLine="53" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="53" startPosition="72" endLine="54" endPosition="78" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="54" startPosition="78" endLine="55" endPosition="105" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="56" startPosition="10" endLine="57" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="60" startPosition="87" endLine="61" endPosition="81" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="61" startPosition="81" endLine="62" endPosition="37" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="62" startPosition="37" endLine="63" endPosition="50" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="63" startPosition="50" endLine="64" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="64" startPosition="26" endLine="65" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="65" startPosition="58" endLine="66" endPosition="73" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="66" startPosition="73" endLine="67" endPosition="57" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="67" startPosition="57" endLine="68" endPosition="59" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="69" startPosition="35" endLine="70" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="70" startPosition="72" endLine="71" endPosition="78" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="71" startPosition="78" endLine="72" endPosition="105" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="73" startPosition="10" endLine="74" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1987251859606942532" fileName="DecisionTable_Editor.java" startLine="79" startPosition="87" endLine="80" endPosition="410" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="82" startPosition="6" endLine="83" endPosition="147" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="83" startPosition="147" endLine="84" endPosition="46" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="83" startPosition="147" endLine="84" endPosition="46" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="84" startPosition="46" endLine="85" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="47" startPosition="26" endLine="49" endPosition="73" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="64" startPosition="26" endLine="66" endPosition="73" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1987251859606934921" fileName="DecisionTable_Editor.java" startLine="21" startPosition="61" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createEditorCell#(Ljetbrains/mps/nodeEditor/EditorContext;Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/nodeEditor/cells/EditorCell;" />
-    <nodeInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="78" startPosition="57" endLine="82" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getTable#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/nodeEditor/EditorContext;)Ljetbrains/mps/lang/editor/table/runtime/TableModel;" />
-    <nodeInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="77" startPosition="85" endLine="82" endPosition="6" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="51" startPosition="59" endLine="57" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="68" startPosition="59" endLine="74" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="8238782355405136128" fileName="DecisionTable_Editor.java" startLine="35" startPosition="0" endLine="42" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createConstant_h1ymql_b0#(Ljetbrains/mps/nodeEditor/EditorContext;Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/nodeEditor/cells/EditorCell;" />
-    <nodeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="25" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createCollection_h1ymql_a#(Ljetbrains/mps/nodeEditor/EditorContext;Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/nodeEditor/cells/EditorCell;" />
-    <nodeInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="76" startPosition="0" endLine="87" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createTable_h1ymql_d0#(Ljetbrains/mps/nodeEditor/EditorContext;Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/nodeEditor/cells/EditorCell;" />
-    <nodeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="42" startPosition="0" endLine="59" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createRefNode_h1ymql_a0#(Ljetbrains/mps/nodeEditor/EditorContext;Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/nodeEditor/cells/EditorCell;" />
-    <nodeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="59" startPosition="0" endLine="76" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createRefNode_h1ymql_c0#(Ljetbrains/mps/nodeEditor/EditorContext;Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/nodeEditor/cells/EditorCell;" />
-    <scopeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="48" startPosition="58" endLine="48" endPosition="58" />
-    <scopeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="65" startPosition="58" endLine="65" endPosition="58" />
-    <scopeInfo nodeId="1987251859606934921" fileName="DecisionTable_Editor.java" startLine="22" startPosition="79" endLine="23" endPosition="63" />
-    <scopeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="27" startPosition="96" endLine="28" endPosition="48" />
-    <scopeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="28" startPosition="48" endLine="29" endPosition="80" />
-    <scopeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="29" startPosition="80" endLine="30" endPosition="81" />
-    <scopeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="30" startPosition="81" endLine="31" endPosition="80" />
-    <scopeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="31" startPosition="80" endLine="32" endPosition="78" />
-    <scopeInfo nodeId="8238782355405136128" fileName="DecisionTable_Editor.java" startLine="37" startPosition="94" endLine="38" endPosition="47" />
-    <scopeInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="79" startPosition="87" endLine="80" endPosition="410" />
-    <scopeInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="83" startPosition="147" endLine="84" endPosition="46" />
-    <scopeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="47" startPosition="26" endLine="49" endPosition="73" />
-    <scopeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="64" startPosition="26" endLine="66" endPosition="73" />
-    <scopeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="52" startPosition="35" endLine="55" endPosition="105">
-      <varInfo nodeId="1987251859606934926" varName="manager" />
-      <varInfo nodeId="1987251859606934926" varName="opContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="69" startPosition="35" endLine="72" endPosition="105">
-      <varInfo nodeId="1987251859606934928" varName="manager" />
-      <varInfo nodeId="1987251859606934928" varName="opContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1987251859606934921" fileName="DecisionTable_Editor.java" startLine="21" startPosition="61" endLine="25" endPosition="0">
-      <varInfo nodeId="1987251859606934921" varName="editorContext" />
-      <varInfo nodeId="1987251859606934921" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8238782355405136128" fileName="DecisionTable_Editor.java" startLine="36" startPosition="88" endLine="40" endPosition="22">
-      <varInfo nodeId="8238782355405136128" varName="editorCell" />
-    </scopeInfo>
-    <scopeInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="78" startPosition="57" endLine="82" endPosition="0">
-      <varInfo nodeId="1987251859606934930" varName="editorContext" />
-      <varInfo nodeId="1987251859606934930" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="26" startPosition="89" endLine="33" endPosition="22">
-      <varInfo nodeId="1987251859606934923" varName="editorCell" />
-    </scopeInfo>
-    <scopeInfo nodeId="8238782355405136128" fileName="DecisionTable_Editor.java" startLine="35" startPosition="0" endLine="42" endPosition="0">
-      <varInfo nodeId="8238782355405136128" varName="editorContext" />
-      <varInfo nodeId="8238782355405136128" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="77" startPosition="85" endLine="85" endPosition="22">
-      <varInfo nodeId="1987251859606934930" varName="creator" />
-      <varInfo nodeId="1987251859606934930" varName="editorCell" />
-    </scopeInfo>
-    <scopeInfo nodeId="1987251859606934923" fileName="DecisionTable_Editor.java" startLine="25" startPosition="0" endLine="35" endPosition="0">
-      <varInfo nodeId="1987251859606934923" varName="editorContext" />
-      <varInfo nodeId="1987251859606934923" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="76" startPosition="0" endLine="87" endPosition="0">
-      <varInfo nodeId="1987251859606934930" varName="editorContext" />
-      <varInfo nodeId="1987251859606934930" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="43" startPosition="87" endLine="57" endPosition="22">
-      <varInfo nodeId="1987251859606934926" varName="attributeConcept" />
-      <varInfo nodeId="1987251859606934926" varName="attributeKind" />
-      <varInfo nodeId="1987251859606934926" varName="editorCell" />
-      <varInfo nodeId="1987251859606934926" varName="provider" />
-    </scopeInfo>
-    <scopeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="60" startPosition="87" endLine="74" endPosition="22">
-      <varInfo nodeId="1987251859606934928" varName="attributeConcept" />
-      <varInfo nodeId="1987251859606934928" varName="attributeKind" />
-      <varInfo nodeId="1987251859606934928" varName="editorCell" />
-      <varInfo nodeId="1987251859606934928" varName="provider" />
-    </scopeInfo>
-    <scopeInfo nodeId="1987251859606934926" fileName="DecisionTable_Editor.java" startLine="42" startPosition="0" endLine="59" endPosition="0">
-      <varInfo nodeId="1987251859606934926" varName="editorContext" />
-      <varInfo nodeId="1987251859606934926" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1987251859606934928" fileName="DecisionTable_Editor.java" startLine="59" startPosition="0" endLine="76" endPosition="0">
-      <varInfo nodeId="1987251859606934928" varName="editorContext" />
-      <varInfo nodeId="1987251859606934928" varName="node" />
-    </scopeInfo>
-    <unitInfo nodeId="1987251859606934930" fileName="DecisionTable_Editor.java" startLine="78" startPosition="36" endLine="82" endPosition="5" unitName="org.jetbrains.mps.samples.DecisionTable.editor.DecisionTable_Editor$1" />
-    <unitInfo nodeId="1987251859606934921" fileName="DecisionTable_Editor.java" startLine="21" startPosition="0" endLine="88" endPosition="0" unitName="org.jetbrains.mps.samples.DecisionTable.editor.DecisionTable_Editor" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
+  <root>
+    <file name="EditorAspectDescriptorImpl.java">
+      <unit at="15,0,31,0" name="org.jetbrains.mps.samples.DecisionTable.editor.EditorAspectDescriptorImpl" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:b96dcc7d-bee1-45db-9bae-10fd8574af99(org.jetbrains.mps.samples.DecisionTable.editor)/1987251859606934921">
+    <file name="DecisionTable_Editor.java">
+      <node id="1987251859606934921" at="11,79,12,79" concept="6" />
+      <node id="1987251859606934921" at="11,0,14,0" concept="4" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="1987251859606934921" at="11,79,12,79" />
+      <scope id="1987251859606934921" at="11,0,14,0">
+        <var name="editorContext" id="1987251859606934921" />
+        <var name="node" id="1987251859606934921" />
+      </scope>
+      <unit id="1987251859606934921" at="10,0,15,0" name="org.jetbrains.mps.samples.DecisionTable.editor.DecisionTable_Editor" />
+    </file>
+    <file name="DecisionTable_EditorBuilder_a.java">
+      <node id="1987251859606934921" at="31,93,32,19" concept="8" />
+      <node id="1987251859606934921" at="32,19,33,18" concept="1" />
+      <node id="1987251859606934921" at="38,26,39,18" concept="6" />
+      <node id="1987251859606934921" at="42,39,43,32" concept="6" />
+      <node id="1987251859606934921" at="46,43,47,118" concept="5" />
+      <node id="1987251859606934921" at="47,118,48,48" concept="1" />
+      <node id="1987251859606934921" at="48,48,49,28" concept="1" />
+      <node id="1987251859606934921" at="49,28,50,31" concept="1" />
+      <node id="1987251859606934926" at="50,31,51,48" concept="1" />
+      <node id="8238782355405136128" at="51,48,52,49" concept="1" />
+      <node id="1987251859606934928" at="52,49,53,48" concept="1" />
+      <node id="1987251859606934930" at="53,48,54,46" concept="1" />
+      <node id="1987251859606934921" at="54,46,55,22" concept="6" />
+      <node id="1987251859606934921" at="57,40,58,135" concept="5" />
+      <node id="1987251859606934921" at="58,135,59,33" concept="6" />
+      <node id="1987251859606934921" at="65,126,66,38" concept="8" />
+      <node id="1987251859606934921" at="66,38,67,25" concept="1" />
+      <node id="1987251859606934921" at="72,28,73,20" concept="6" />
+      <node id="1987251859606934921" at="76,55,77,76" concept="5" />
+      <node id="1987251859606934921" at="77,76,78,121" concept="1" />
+      <node id="1987251859606934921" at="78,121,79,124" concept="1" />
+      <node id="1987251859606934921" at="79,124,80,48" concept="1" />
+      <node id="1987251859606934921" at="80,48,81,24" concept="6" />
+      <node id="1987251859606934921" at="87,118,88,137" concept="1" />
+      <node id="1987251859606934921" at="90,42,91,53" concept="1" />
+      <node id="1987251859606934921" at="95,44,96,41" concept="1" />
+      <node id="1987251859606934921" at="96,41,97,112" concept="1" />
+      <node id="1987251859606934921" at="98,11,99,56" concept="5" />
+      <node id="1987251859606934921" at="99,56,100,51" concept="1" />
+      <node id="1987251859606934921" at="100,51,101,48" concept="1" />
+      <node id="1987251859606934921" at="101,48,102,35" concept="1" />
+      <node id="1987251859606934921" at="102,35,103,26" concept="6" />
+      <node id="1987251859606934921" at="104,17,105,42" concept="1" />
+      <node id="1987251859606934921" at="108,40,109,33" concept="6" />
+      <node id="8238782355405136128" at="112,41,113,101" concept="5" />
+      <node id="8238782355405136128" at="113,101,114,47" concept="1" />
+      <node id="8238782355405136128" at="114,47,115,34" concept="1" />
+      <node id="8238782355405136128" at="115,34,116,22" concept="6" />
+      <node id="1987251859606934921" at="118,40,119,135" concept="5" />
+      <node id="1987251859606934921" at="119,135,120,33" concept="6" />
+      <node id="1987251859606934921" at="126,126,127,38" concept="8" />
+      <node id="1987251859606934921" at="127,38,128,25" concept="1" />
+      <node id="1987251859606934921" at="133,28,134,20" concept="6" />
+      <node id="1987251859606934921" at="137,55,138,76" concept="5" />
+      <node id="1987251859606934921" at="138,76,139,121" concept="1" />
+      <node id="1987251859606934921" at="139,121,140,124" concept="1" />
+      <node id="1987251859606934921" at="140,124,141,48" concept="1" />
+      <node id="1987251859606934921" at="141,48,142,24" concept="6" />
+      <node id="1987251859606934921" at="148,118,149,137" concept="1" />
+      <node id="1987251859606934921" at="151,42,152,53" concept="1" />
+      <node id="1987251859606934921" at="156,44,157,41" concept="1" />
+      <node id="1987251859606934921" at="157,41,158,112" concept="1" />
+      <node id="1987251859606934921" at="159,11,160,56" concept="5" />
+      <node id="1987251859606934921" at="160,56,161,51" concept="1" />
+      <node id="1987251859606934921" at="161,51,162,48" concept="1" />
+      <node id="1987251859606934921" at="162,48,163,35" concept="1" />
+      <node id="1987251859606934921" at="163,35,164,26" concept="6" />
+      <node id="1987251859606934921" at="165,17,166,42" concept="1" />
+      <node id="1987251859606934921" at="169,40,170,33" concept="6" />
+      <node id="1987251859606942532" at="175,44,176,132" concept="6" />
+      <node id="1987251859606934930" at="178,6,179,178" concept="5" />
+      <node id="1987251859606934930" at="179,178,180,46" concept="1" />
+      <node id="1987251859606934930" at="180,46,181,22" concept="6" />
+      <node id="1987251859606934921" at="185,0,186,0" concept="7" trace="expectedType$2Lhp" />
+      <node id="1987251859606934921" at="186,0,187,0" concept="7" trace="defaultValue$2Lwq" />
+      <node id="1987251859606934921" at="187,0,188,0" concept="7" trace="colHeaders$2LJr" />
+      <node id="1987251859606934921" at="188,0,189,0" concept="7" trace="rowHeaders$2LYs" />
+      <node id="1987251859606934921" at="189,0,190,0" concept="7" trace="resultValues$2Mdt" />
+      <node id="1987251859606934921" at="28,0,30,0" concept="2" trace="myNode" />
+      <node id="1987251859606934921" at="62,0,64,0" concept="2" trace="myNode" />
+      <node id="1987251859606934921" at="123,0,125,0" concept="2" trace="myNode" />
+      <node id="1987251859606934921" at="42,0,45,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1987251859606934921" at="86,87,89,7" concept="3" />
+      <node id="1987251859606934921" at="89,7,92,7" concept="3" />
+      <node id="1987251859606934921" at="108,0,111,0" concept="4" trace="getNoTargetText#()Ljava/lang/String;" />
+      <node id="1987251859606934921" at="147,87,150,7" concept="3" />
+      <node id="1987251859606934921" at="150,7,153,7" concept="3" />
+      <node id="1987251859606934921" at="169,0,172,0" concept="4" trace="getNoTargetText#()Ljava/lang/String;" />
+      <node id="1987251859606934930" at="175,0,178,0" concept="4" trace="createTableModel#()Ljetbrains/mps/lang/editor/table/runtime/TableModel;" />
+      <node id="1987251859606934921" at="31,0,35,0" concept="0" trace="DecisionTable_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1987251859606934921" at="57,0,61,0" concept="4" trace="createRefNode_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1987251859606934921" at="65,0,69,0" concept="0" trace="expectedTypeSingleRoleHandler_h1ymql_a0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="1987251859606934921" at="118,0,122,0" concept="4" trace="createRefNode_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1987251859606934921" at="126,0,130,0" concept="0" trace="defaultValueSingleRoleHandler_h1ymql_c0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="1987251859606934921" at="36,0,41,0" concept="4" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1987251859606934921" at="70,0,75,0" concept="4" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1987251859606934921" at="131,0,136,0" concept="4" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1987251859606934930" at="173,38,178,6" concept="5" />
+      <node id="8238782355405136128" at="112,0,118,0" concept="4" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1987251859606934921" at="76,0,83,0" concept="4" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1987251859606934921" at="137,0,144,0" concept="4" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1987251859606934921" at="86,0,94,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
+      <node id="1987251859606934921" at="147,0,155,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
+      <node id="1987251859606934921" at="97,112,106,7" concept="9" />
+      <node id="1987251859606934921" at="158,112,167,7" concept="9" />
+      <node id="1987251859606934930" at="173,0,183,0" concept="4" trace="createTable_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1987251859606934921" at="46,0,57,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1987251859606934921" at="94,0,108,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1987251859606934921" at="155,0,169,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="1987251859606934921" at="38,26,39,18" />
+      <scope id="1987251859606934921" at="42,39,43,32" />
+      <scope id="1987251859606934921" at="72,28,73,20" />
+      <scope id="1987251859606934921" at="87,118,88,137" />
+      <scope id="1987251859606934921" at="90,42,91,53" />
+      <scope id="1987251859606934921" at="104,17,105,42" />
+      <scope id="1987251859606934921" at="108,40,109,33" />
+      <scope id="1987251859606934921" at="133,28,134,20" />
+      <scope id="1987251859606934921" at="148,118,149,137" />
+      <scope id="1987251859606934921" at="151,42,152,53" />
+      <scope id="1987251859606934921" at="165,17,166,42" />
+      <scope id="1987251859606934921" at="169,40,170,33" />
+      <scope id="1987251859606934930" at="175,44,176,132" />
+      <scope id="1987251859606934921" at="31,93,33,18" />
+      <scope id="1987251859606934921" at="57,40,59,33">
+        <var name="provider" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934921" at="65,126,67,25" />
+      <scope id="1987251859606934921" at="118,40,120,33">
+        <var name="provider" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934921" at="126,126,128,25" />
+      <scope id="1987251859606934921" at="42,0,45,0" />
+      <scope id="1987251859606934921" at="108,0,111,0" />
+      <scope id="1987251859606934921" at="169,0,172,0" />
+      <scope id="1987251859606934930" at="175,0,178,0" />
+      <scope id="1987251859606934921" at="31,0,35,0">
+        <var name="context" id="1987251859606934921" />
+        <var name="node" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934921" at="57,0,61,0" />
+      <scope id="1987251859606934921" at="65,0,69,0">
+        <var name="containmentLink" id="1987251859606934921" />
+        <var name="context" id="1987251859606934921" />
+        <var name="ownerNode" id="1987251859606934921" />
+      </scope>
+      <scope id="8238782355405136128" at="112,41,116,22">
+        <var name="editorCell" id="8238782355405136128" />
+      </scope>
+      <scope id="1987251859606934921" at="118,0,122,0" />
+      <scope id="1987251859606934921" at="126,0,130,0">
+        <var name="containmentLink" id="1987251859606934921" />
+        <var name="context" id="1987251859606934921" />
+        <var name="ownerNode" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934921" at="36,0,41,0" />
+      <scope id="1987251859606934921" at="70,0,75,0" />
+      <scope id="1987251859606934921" at="76,55,81,24">
+        <var name="editorCell" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934921" at="98,11,103,26">
+        <var name="editorCell" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934921" at="131,0,136,0" />
+      <scope id="1987251859606934921" at="137,55,142,24">
+        <var name="editorCell" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934921" at="159,11,164,26">
+        <var name="editorCell" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934921" at="86,87,92,7" />
+      <scope id="8238782355405136128" at="112,0,118,0" />
+      <scope id="1987251859606934921" at="147,87,153,7" />
+      <scope id="1987251859606934921" at="76,0,83,0">
+        <var name="child" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934921" at="137,0,144,0">
+        <var name="child" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934921" at="86,0,94,0">
+        <var name="child" id="1987251859606934921" />
+        <var name="editorCell" id="1987251859606934921" />
+        <var name="isEmpty" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934921" at="147,0,155,0">
+        <var name="child" id="1987251859606934921" />
+        <var name="editorCell" id="1987251859606934921" />
+        <var name="isEmpty" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934930" at="173,38,181,22">
+        <var name="creator" id="1987251859606934930" />
+        <var name="editorCell" id="1987251859606934930" />
+      </scope>
+      <scope id="1987251859606934921" at="46,43,55,22">
+        <var name="editorCell" id="1987251859606934921" />
+      </scope>
+      <scope id="1987251859606934930" at="173,0,183,0" />
+      <scope id="1987251859606934921" at="46,0,57,0" />
+      <scope id="1987251859606934921" at="95,44,106,7" />
+      <scope id="1987251859606934921" at="156,44,167,7" />
+      <scope id="1987251859606934921" at="94,0,108,0" />
+      <scope id="1987251859606934921" at="155,0,169,0" />
+      <unit id="1987251859606934930" at="174,36,178,5" name="org.jetbrains.mps.samples.DecisionTable.editor.DecisionTable_EditorBuilder_a$1" />
+      <unit id="1987251859606934921" at="184,0,191,0" name="org.jetbrains.mps.samples.DecisionTable.editor.DecisionTable_EditorBuilder_a$LINKS" />
+      <unit id="1987251859606934921" at="61,0,112,0" name="org.jetbrains.mps.samples.DecisionTable.editor.DecisionTable_EditorBuilder_a$expectedTypeSingleRoleHandler_h1ymql_a0" />
+      <unit id="1987251859606934921" at="122,0,173,0" name="org.jetbrains.mps.samples.DecisionTable.editor.DecisionTable_EditorBuilder_a$defaultValueSingleRoleHandler_h1ymql_c0" />
+      <unit id="1987251859606934921" at="27,0,192,0" name="org.jetbrains.mps.samples.DecisionTable.editor.DecisionTable_EditorBuilder_a" />
+    </file>
+  </root>
+</debug-info>
 

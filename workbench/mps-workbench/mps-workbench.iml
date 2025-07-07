@@ -1,43 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
-    <output url="file://$MODULE_DIR$/classes" />
-    <output-test url="file://$MODULE_DIR$/testclasses" />
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/jetbrains.mps.ide/classes" />
+    <output-test url="file://$MODULE_DIR$/jetbrains.mps.ide/testclasses" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$">
+    <content url="file://$MODULE_DIR$/jetbrains.mps.ide">
+      <sourceFolder url="file://$MODULE_DIR$/jetbrains.mps.ide/source_gen" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/source">
       <sourceFolder url="file://$MODULE_DIR$/source" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/source_gen" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/tests">
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Idea-plaform" level="project" />
-    <orderEntry type="module" module-name="mps-platform" />
-    <orderEntry type="module" module-name="mps-editor" />
+    <orderEntry type="library" name="Idea-platform" level="project" />
+    <orderEntry type="module" module-name="mps-platform" exported="" />
+    <orderEntry type="module" module-name="mps-editor" exported="" />
+    <orderEntry type="module" module-name="mps-ui" exported="" />
     <orderEntry type="module" module-name="kernel" />
-    <orderEntry type="library" name="JDOM" level="project" />
-    <orderEntry type="library" name="Commons-logging" level="project" />
-    <orderEntry type="library" name="Commons-httpclient" level="project" />
-    <orderEntry type="library" name="Trove" level="project" />
     <orderEntry type="module" module-name="generator-engine" />
-    <orderEntry type="library" name="Commons-lang" level="project" />
     <orderEntry type="module" module-name="editor-runtime" />
     <orderEntry type="module" module-name="collections-runtime" />
-    <orderEntry type="module" module-name="Closures-runtime" />
-    <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
+    <orderEntry type="module" module-name="closures-runtime" />
     <orderEntry type="module" module-name="testbench" scope="TEST" />
-    <orderEntry type="library" name="Beansbinding" level="project" />
-    <orderEntry type="module" module-name="uiLanguage-runtime" />
     <orderEntry type="module" module-name="findUsages-runtime" />
     <orderEntry type="module" module-name="actions-runtime" />
     <orderEntry type="module" module-name="make-runtime" />
     <orderEntry type="module" module-name="refactoring-runtime" />
     <orderEntry type="module" module-name="baseLanguage-util" />
-    <orderEntry type="module" module-name="Tuples-runtime" />
+    <orderEntry type="module" module-name="tuples-runtime" />
     <orderEntry type="module" module-name="typesystemEngine" />
-    <orderEntry type="library" name="Annotations" level="project" />
+    <orderEntry type="module" module-name="openapi" />
+    <orderEntry type="module" module-name="persistence" />
+    <orderEntry type="module" module-name="resources" />
+    <orderEntry type="module" module-name="mps-icons" />
+    <orderEntry type="module" module-name="kernel-resources" />
+    <orderEntry type="module" module-name="dataflow-rt" />
+    <orderEntry type="module" module-name="textgen" />
+    <orderEntry type="module" module-name="debuginfo-impl" />
+    <orderEntry type="module" module-name="make-facets" />
+    <orderEntry type="module" module-name="scripts-runtime" />
+    <orderEntry type="module" module-name="refactoring" />
+    <orderEntry type="module" module-name="model" />
+    <orderEntry type="module" module-name="module" />
+    <orderEntry type="module" module-name="project-check" />
+    <orderEntry type="library" name="JDOM" level="project" />
+    <orderEntry type="library" name="Commons-httpclient" level="project" />
+    <orderEntry type="library" name="Trove" level="project" />
     <orderEntry type="library" name="ASM" level="project" />
-    <orderEntry type="library" name="Log4j" level="project" />
+    <orderEntry type="library" name="Eclipse-compiler" level="project" />
+    <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
+    <orderEntry type="module" module-name="environment" scope="TEST" />
+    <orderEntry type="module" module-name="typechecking" />
+    <orderEntry type="module" module-name="resources_en" />
   </component>
 </module>
-

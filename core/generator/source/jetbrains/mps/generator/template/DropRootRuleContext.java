@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,15 @@
  */
 package jetbrains.mps.generator.template;
 
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.generator.runtime.TemplateContext;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public class DropRootRuleContext extends TemplateQueryContextWithRule {
-
-  public DropRootRuleContext(SNode inputNode, SNode ruleNode, ITemplateGenerator generator) {
-    super(inputNode, ruleNode, generator);
-  }
-
-  public DropRootRuleContext(SNode inputNode, @NotNull SNodePointer ruleNode, @NotNull ITemplateGenerator generator) {
-    super(inputNode, ruleNode, generator);
+  /**
+   * @since 3.1
+   */
+  public DropRootRuleContext(@NotNull TemplateContext context, @NotNull SNodeReference ruleNode) {
+    super(context, ruleNode);
   }
 }

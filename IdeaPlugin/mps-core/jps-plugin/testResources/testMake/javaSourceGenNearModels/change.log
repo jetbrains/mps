@@ -1,0 +1,19 @@
+[COMPILED/MPS]
+  models/MainJava/Main.java
+  models/MainJava/trace.info
+  mps-make/makeTests/source_gen.caches/MainJava/dependencies
+  mps-make/makeTests/source_gen.caches/MainJava/generated
+[DELETED]
+  models/MainJava/Main.java
+  models/MainJava/trace.info
+  mps-make/makeTests/source_gen.caches/MainJava/dependencies
+  mps-make/makeTests/source_gen.caches/MainJava/generated
+  out/production/makeTests/MainJava/Main.class
+  out/production/makeTests/MainJava/trace.info
+[COMPILED/MPS]
+  models/NonEmptyMainJava/Main.java
+  models/NonEmptyMainJava/trace.info
+  mps-make/makeTests/source_gen.caches/NonEmptyMainJava/dependencies
+  mps-make/makeTests/source_gen.caches/NonEmptyMainJava/generated
+[COMPILED/java]
+  models/NonEmptyMainJava/Main.java

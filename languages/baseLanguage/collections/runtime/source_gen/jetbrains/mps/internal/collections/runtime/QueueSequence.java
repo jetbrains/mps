@@ -4,104 +4,17 @@ package jetbrains.mps.internal.collections.runtime;
 
 import java.util.Queue;
 import java.io.Serializable;
-import jetbrains.mps.baseLanguage.closures.runtime.AdapterClass;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.impl.NullQueueSequence;
 import java.util.LinkedList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Arrays;
 
-public class QueueSequence<T> extends CollectionSequence<T> implements Queue<T>, IQueueSequence<T>, Serializable {
-  private static final long serialVersionUID = -7304432472048720900L;
-
-  private Queue<T> queue;
-
+public class QueueSequence<T> extends AbstractQueueSequence<T> implements Queue<T>, IQueueSequence<T>, Serializable {
+  private static final long serialVersionUID = 4639602987002419231L;
   protected QueueSequence(Queue<T> queue) {
-    setQueue(queue);
+    super(queue);
   }
-
-  public T element() {
-    return getQueue().element();
-  }
-
-  public boolean offer(T o) {
-    return getQueue().offer(o);
-  }
-
-  public T peek() {
-    return getQueue().peek();
-  }
-
-  public T poll() {
-    return getQueue().poll();
-  }
-
-  public T remove() {
-    return getQueue().remove();
-  }
-
-  public T addLastElement(T t) {
-    getQueue().add(t);
-    return t;
-  }
-
-  public T first() {
-    if (Sequence.NULL_WHEN_EMPTY) {
-      return getQueue().peek();
-    }
-    return getQueue().element();
-  }
-
-  public T removeFirstElement() {
-    if (Sequence.NULL_WHEN_EMPTY) {
-      return getQueue().poll();
-    }
-    return getQueue().remove();
-  }
-
-  @Override
-  public IQueueSequence<T> addSequence(ISequence<? extends T> seq) {
-    return (IQueueSequence<T>) super.addSequence(seq);
-  }
-
-  @Override
-  public IQueueSequence<T> removeSequence(ISequence<? extends T> seq) {
-    return (IQueueSequence<T>) super.removeSequence(seq);
-  }
-
-  @Override
-  public IQueueSequence<T> removeWhere(@AdapterClass(value = "IWhereFilter") _FunctionTypes._return_P1_E0<? extends Boolean, ? super T> filter) {
-    return (IQueueSequence<T>) super.removeWhere(filter);
-  }
-
-  @Override
-  public IQueueSequence<T> asUnmodifiable() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public IQueueSequence<T> asSynchronized() {
-    throw new UnsupportedOperationException();
-  }
-
-  public Queue<T> toQueue() {
-    return this;
-  }
-
-  @Override
-  protected Collection<T> getCollection() {
-    return queue;
-  }
-
-  protected Queue<T> getQueue() {
-    return queue;
-  }
-
-  private void setQueue(Queue<T> queue) {
-    this.queue = queue;
-  }
-
   public static <U> IQueueSequence<U> fromQueue(Queue<U> queue) {
     if (Sequence.USE_NULL_SEQUENCE) {
       if (queue == null) {
@@ -113,7 +26,6 @@ public class QueueSequence<T> extends CollectionSequence<T> implements Queue<T>,
     }
     return new QueueSequence<U>(queue);
   }
-
   public static <U> IQueueSequence<U> fromIterable(Iterable<U> it) {
     if (Sequence.USE_NULL_SEQUENCE) {
       if (it == null) {
@@ -140,7 +52,6 @@ public class QueueSequence<T> extends CollectionSequence<T> implements Queue<T>,
     }
     return new QueueSequence<U>(queue);
   }
-
   public static <U> IQueueSequence<U> fromQueueAndArray(Queue<U> queue, U... array) {
     if (Sequence.NULL_ARRAY_IS_SINGLETON) {
       if (array == null) {
@@ -176,7 +87,6 @@ public class QueueSequence<T> extends CollectionSequence<T> implements Queue<T>,
     }
     return new QueueSequence<U>(queue);
   }
-
   public static <U> IQueueSequence<U> fromQueueWithValues(Queue<U> queue, Iterable<? extends U> it) {
     Queue<U> tmp = queue;
     if (Sequence.USE_NULL_SEQUENCE) {

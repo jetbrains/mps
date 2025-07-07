@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,129 +15,145 @@
  */
 package jetbrains.mps.ide.bookmark;
 
+import com.intellij.ide.bookmarks.Bookmark;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
-import com.intellij.openapi.project.Project;
+import com.intellij.openapi.components.StoragePathMacros;
+import com.intellij.openapi.editor.colors.EditorColors;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.ui.ColorUtil;
+import com.intellij.ui.JBColor;
+import com.intellij.ui.RetrievableIcon;
+import com.intellij.util.IconUtil;
+import com.intellij.util.PlatformIcons;
+import com.intellij.util.ui.JBCachingScalableIcon;
 import jetbrains.mps.ide.bookmark.BookmarkManager.MyState;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.projectPane.Icons;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.Highlighter;
-import jetbrains.mps.project.ProjectOperationContext;
-import jetbrains.mps.smodel.SModelReference;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodeId;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.util.Pair;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.Icon;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.font.FontRenderContext;
+import java.awt.font.GlyphVector;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static com.intellij.ui.scale.ScaleType.OBJ_SCALE;
+import static java.lang.Math.ceil;
 
+/* TODO: think of reusing com.intellij.ide.bookmarks.Bookmark:
+ * 1. A lot of copy paste from that class due to restricted visibility
+ * 2. UI is the same only underlying editor is different
+ * */
 @State(
-  name = "BookmarkManager",
-  storages = {
-    @Storage(
-      id = "other",
-      file = "$WORKSPACE_FILE$"
-    )
-  }
+    name = "MPSBookmarkManager",
+    storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
 public class BookmarkManager implements ProjectComponent, PersistentStateComponent<MyState> {
-  private static final Logger LOG = Logger.getLogger(BookmarkManager.class);
+  private static final Logger LOG = LogManager.getLogger(BookmarkManager.class);
 
-  private static Icon[] myBookmarkIcons = new Icon[]{
-    Icons.BOOKMARK_0,
-    Icons.BOOKMARK_1,
-    Icons.BOOKMARK_2,
-    Icons.BOOKMARK_3,
-    Icons.BOOKMARK_4,
-    Icons.BOOKMARK_5,
-    Icons.BOOKMARK_6,
-    Icons.BOOKMARK_7,
-    Icons.BOOKMARK_8,
-    Icons.BOOKMARK_9
-  };
+  private static final Icon DEFAULT_ICON = new MyCheckedIcon();
 
-  private static Icon myUnnumberedBookmarkIcon = Icons.BOOKMARK_UNNUMBERED;
+  private List<BookmarkListener> myBookmarkListeners = new ArrayList<>();
 
-  private List<BookmarkListener> myBookmarkListeners = new ArrayList<BookmarkListener>();
+  private SNodeReference[] myBookmarks = new SNodeReference[10];
 
-  private SNodePointer[] myBookmarks = new SNodePointer[10];
+  private List<SNodeReference> myUnnumberedBookmarks = new ArrayList<>();
 
-  private List<SNodePointer> myUnnumberedBookmarks = new ArrayList<SNodePointer>();
-
-  private Project myProject;
+  private final MPSProject myProject;
   private Highlighter myHighlighter;
   private BookmarksHighlighter myChecker;
 
-  public BookmarkManager(Project project, Highlighter highlighter) {
+  public BookmarkManager(MPSProject project, Highlighter highlighter) {
     myProject = project;
     myHighlighter = highlighter;
   }
 
+  @Override
   public void projectOpened() {
   }
 
+  @Override
   public void projectClosed() {
   }
 
+  @Override
   @NonNls
   @NotNull
   public String getComponentName() {
     return getClass().getName();
   }
 
+  @Override
   public void initComponent() {
     myChecker = new BookmarksHighlighter(this);
     myHighlighter.addChecker(myChecker);
   }
 
+  @Override
   public void disposeComponent() {
     myHighlighter.removeChecker(myChecker);
     myChecker.dispose();
   }
 
+  /**
+   * assumes model read access
+   */
   public List<Pair<SNode, Integer>> getBookmarks(SNode root) {
-    if (root == null) return Collections.emptyList();
-    List<Pair<SNode, Integer>> result = new ArrayList<Pair<SNode, Integer>>();
+    if (root == null) {
+      return Collections.emptyList();
+    }
+    List<Pair<SNode, Integer>> result = new ArrayList<>();
     for (int i = 0; i <= 9; i++) {
-      SNodePointer nodePointer = myBookmarks[i];
+      SNodeReference nodePointer = myBookmarks[i];
       if (nodePointer != null) {
-        SNode node = nodePointer.getNode();
+        SNode node = nodePointer.resolve(myProject.getRepository());
         if (node != null && node.getContainingRoot() == root) {
-          result.add(new Pair<SNode, Integer>(node, i));
+          result.add(new Pair<>(node, i));
         }
       }
     }
-    for (SNodePointer nodePointer : myUnnumberedBookmarks) {
+    for (SNodeReference nodePointer : myUnnumberedBookmarks) {
       if (nodePointer != null) {
-        SNode node = nodePointer.getNode();
+        SNode node = nodePointer.resolve(myProject.getRepository());
         if (node != null && node.getContainingRoot() == root) {
-          result.add(new Pair<SNode, Integer>(node, -1));
+          result.add(new Pair<>(node, -1));
         }
       }
     }
     return result;
   }
 
+  /**
+   * assumes model read access
+   */
   public void setUnnumberedBookmark(SNode node) {
     if (node == null) {
       LOG.error("node to bookmark is null");
       return;
     }
-    SNodePointer newBookmark = new SNodePointer(node);
+    SNodeReference newBookmark = node.getReference();
     boolean bookmarkRemoved = false;
     for (int i = 0; i < 10; i++) {
-      if (myBookmarks[i] != null && myBookmarks[i].getNode() == node) {
+      if (myBookmarks[i] != null && myBookmarks[i].resolve(myProject.getRepository()) == node) {
         myBookmarks[i] = null;
         bookmarkRemoved = true;
         fireBookmarkRemoved(i, node);
@@ -146,14 +162,17 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
     if (myUnnumberedBookmarks.contains(newBookmark)) {
       myUnnumberedBookmarks.remove(newBookmark);
       bookmarkRemoved = true;
-      fireBookmarkRemoved(-1, newBookmark.getNode());
+      fireBookmarkRemoved(-1, newBookmark.resolve(myProject.getRepository()));
     }
     if (!bookmarkRemoved) {
       myUnnumberedBookmarks.add(newBookmark);
-      fireBookmarkAdded(-1, newBookmark.getNode());
+      fireBookmarkAdded(-1, newBookmark.resolve(myProject.getRepository()));
     }
   }
 
+  /**
+   * XXX assumes model read action as there's SNode argument
+   */
   public void setBookmark(SNode node, int number) {
     if (node == null) {
       LOG.error("node to bookmark is null");
@@ -164,11 +183,11 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
       return;
     }
 
-    SNodePointer newBookmark = new SNodePointer(node);
+    SNodeReference newBookmark = new jetbrains.mps.smodel.SNodePointer(node);
 
     for (int i = 0; i < 10; i++) {
-      SNodePointer bookmark = myBookmarks[i];
-      if (i != number && bookmark != null && bookmark.getNode() == node) {
+      SNodeReference bookmark = myBookmarks[i];
+      if (i != number && bookmark != null && bookmark.resolve(myProject.getRepository()) == node) {
         return;
       }
     }
@@ -176,11 +195,11 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
       return;
     }
 
-    SNodePointer oldBookmark = myBookmarks[number];
+    SNodeReference oldBookmark = myBookmarks[number];
     SNode oldNode = null;
     myBookmarks[number] = null;
     if (oldBookmark != null) {
-      oldNode = oldBookmark.getNode();
+      oldNode = oldBookmark.resolve(myProject.getRepository());
       fireBookmarkRemoved(number, oldNode);
     }
     if (!node.equals(oldNode)) {
@@ -190,71 +209,76 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
   }
 
   public void clearBookmarks() {
-    for (int i = 0; i < myBookmarks.length; i++) {
-      SNodePointer pointer = myBookmarks[i];
-      if (pointer != null) {
-        myBookmarks[i] = null;
-        fireBookmarkRemoved(i, pointer.getNode());
+    myProject.getModelAccess().runReadAction(() -> {
+      for (int i = 0; i < myBookmarks.length; i++) {
+        SNodeReference pointer = myBookmarks[i];
+        if (pointer != null) {
+          myBookmarks[i] = null;
+          fireBookmarkRemoved(i, pointer.resolve(myProject.getRepository()));
+        }
       }
-    }
-    ArrayList<SNodePointer> nodePointers = new ArrayList<SNodePointer>(myUnnumberedBookmarks);
-    myUnnumberedBookmarks.clear();
-    for (SNodePointer pointer : nodePointers) {
-      if (pointer != null) {
-        fireBookmarkRemoved(-1, pointer.getNode());
+      ArrayList<SNodeReference> nodePointers = new ArrayList<>(myUnnumberedBookmarks);
+      myUnnumberedBookmarks.clear();
+      for (SNodeReference pointer : nodePointers) {
+        if (pointer != null) {
+          fireBookmarkRemoved(-1, pointer.resolve(myProject.getRepository()));
+        }
       }
-    }
+    });
   }
 
   public void removeBookmark(int i) {
-    if (i > 9) return;
-    SNodePointer pointer = myBookmarks[i];
+    if (i > 9) {
+      return;
+    }
+    SNodeReference pointer = myBookmarks[i];
     if (pointer != null) {
       myBookmarks[i] = null;
-      fireBookmarkRemoved(i, pointer.getNode());
+      myProject.getModelAccess().runReadAction(() -> fireBookmarkRemoved(i, pointer.resolve(myProject.getRepository())));
     }
   }
 
-  public void removeUnnumberedBookmark(SNodePointer nodePointer) {
+  public void removeUnnumberedBookmark(SNodeReference nodePointer) {
     if (myUnnumberedBookmarks.contains(nodePointer)) {
       myUnnumberedBookmarks.remove(nodePointer);
-      fireBookmarkRemoved(-1, nodePointer.getNode());
+      myProject.getModelAccess().runReadAction(() -> fireBookmarkRemoved(-1, nodePointer.resolve(myProject.getRepository())));
     }
   }
 
-  public List<SNodePointer> getAllBookmarks() {
-    List<SNodePointer> nodePointers = getAllNumberedBookmarks();
+  public List<SNodeReference> getAllBookmarks() {
+    List<SNodeReference> nodePointers = getAllNumberedBookmarks();
     nodePointers.addAll(getAllUnnumberedBookmarks());
     return nodePointers;
   }
 
-  public List<SNodePointer> getAllNumberedBookmarks() {
+  public List<SNodeReference> getAllNumberedBookmarks() {
     return Arrays.asList(myBookmarks);
   }
 
-  public List<SNodePointer> getAllUnnumberedBookmarks() {
-    return new ArrayList<SNodePointer>(myUnnumberedBookmarks);
+  public List<SNodeReference> getAllUnnumberedBookmarks() {
+    return new ArrayList<>(myUnnumberedBookmarks);
   }
 
   public static Icon getIcon(int bookmarkNumber) {
     if (bookmarkNumber == -1) {
-      return myUnnumberedBookmarkIcon;
+      return BookmarkManager.DEFAULT_ICON;
     }
-    return myBookmarkIcons[bookmarkNumber];
+    return MnemonicIcon.getIcon(bookmarkNumber);
   }
 
-  public SNodePointer getBookmark(int number) {
+  public SNodeReference getBookmark(int number) {
     return myBookmarks[number];
   }
 
   public void navigateToBookmark(int number) {
-    if (number < 0 || number > 9) return;
-    SNodePointer pointer = myBookmarks[number];
-    if (pointer == null) return;
-    SNode targetNode = pointer.getNode();
-    if (targetNode != null) {
-      NavigationSupport.getInstance().openNode(new ProjectOperationContext(ProjectHelper.toMPSProject(myProject)), targetNode, true, true);
+    if (number < 0 || number > 9) {
+      return;
     }
+    SNodeReference pointer = myBookmarks[number];
+    if (pointer == null) {
+      return;
+    }
+    new EditorNavigator(myProject).shallFocus(true).shallSelect(true).open(pointer);
   }
 
   public void addBookmarkListener(BookmarkListener listener) {
@@ -281,25 +305,22 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
     }
   }
 
+  @Override
   public MyState getState() {
     MyState state = new MyState();
     for (int i = 0; i < myBookmarks.length; i++) {
-      SNodePointer pointer = myBookmarks[i];
+      SNodeReference pointer = myBookmarks[i];
       if (pointer != null) {
-        SModelReference sModelReference = pointer.getModelReference();
-        SNodeId id = pointer.getNodeId();
-        state.myBookmarkInfos[i] = new BookmarkInfo(sModelReference.toString(), id.toString(), i);
+        state.myBookmarkInfos[i] = new BookmarkInfo(pointer, i);
       } else {
         state.myBookmarkInfos[i] = new BookmarkInfo();
       }
     }
     state.myUnnumberedBookmarkInfos = new BookmarkInfo[myUnnumberedBookmarks.size()];
     for (int i = 0; i < myUnnumberedBookmarks.size(); i++) {
-      SNodePointer pointer = myUnnumberedBookmarks.get(i);
+      SNodeReference pointer = myUnnumberedBookmarks.get(i);
       if (pointer != null) {
-        SModelReference sModelReference = pointer.getModelReference();
-        SNodeId id = pointer.getNodeId();
-        state.myUnnumberedBookmarkInfos[i] = new BookmarkInfo(sModelReference.toString(), id.toString(), -1);
+        state.myUnnumberedBookmarkInfos[i] = new BookmarkInfo(pointer, -1);
       } else {
         state.myUnnumberedBookmarkInfos[i] = new BookmarkInfo();
       }
@@ -307,12 +328,13 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
     return state;
   }
 
-  public void loadState(MyState state) {
+  @Override
+  public void loadState(@NotNull MyState state) {
     for (int i = 0; i < state.myBookmarkInfos.length; i++) {
       BookmarkInfo bookmarkInfo = state.myBookmarkInfos[i];
       if (!bookmarkInfo.myIsNull) {
         assert i == bookmarkInfo.myNumber;
-        myBookmarks[i] = new SNodePointer(bookmarkInfo.myModelReference, bookmarkInfo.myNodeId);
+        myBookmarks[i] = bookmarkInfo.myNodeRef;
       } else {
         myBookmarks[i] = null;
       }
@@ -320,15 +342,15 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
     myUnnumberedBookmarks.clear();
     for (BookmarkInfo bookmarkInfo : state.myUnnumberedBookmarkInfos) {
       if (bookmarkInfo != null) {
-        myUnnumberedBookmarks.add(new SNodePointer(bookmarkInfo.myModelReference, bookmarkInfo.myNodeId));
+        myUnnumberedBookmarks.add(bookmarkInfo.myNodeRef);
       }
     }
   }
 
   public interface BookmarkListener {
-    public void bookmarkAdded(int number, SNode node);
+    void bookmarkAdded(int number, SNode node);
 
-    public void bookmarkRemoved(int number, SNode node);
+    void bookmarkRemoved(int number, SNode node);
   }
 
   public static class MyState {
@@ -337,23 +359,171 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
   }
 
   public static class BookmarkInfo {
-
-    public String myModelReference;
-    public String myNodeId;
+    private SNodeReference myNodeRef;
     public int myNumber;
-    public boolean myIsNull = true;
+    public boolean myIsNull;
 
     public BookmarkInfo() {
       myIsNull = true;
     }
 
-    public BookmarkInfo(String modelReference, String nodeId, int number) {
-      myModelReference = modelReference;
-      myNodeId = nodeId;
+    public BookmarkInfo(SNodeReference nodeRef, int number) {
+      myNodeRef = nodeRef;
       myNumber = number;
       myIsNull = false;
     }
 
+    //for serialization/deserialization
+    @SuppressWarnings("UnusedDeclaration")
+    public String getNodeRef() {
+      if (myNodeRef == null) {
+        return "";
+      }
+      return jetbrains.mps.smodel.SNodePointer.serialize(myNodeRef);
+    }
 
+    //for serialization/deserialization
+    @SuppressWarnings("UnusedDeclaration")
+    public void setNodeRef(String nodeRef) {
+      if (nodeRef.isEmpty()) {
+        return;
+      }
+      myNodeRef = jetbrains.mps.smodel.SNodePointer.deserialize(nodeRef);
+    }
+  }
+
+  // TODO: remove copy/paste see todo on class
+
+  /**
+   * Partly copy/paste of {@link Bookmark.MnemonicIcon}
+   */
+  private final static class MnemonicIcon extends JBCachingScalableIcon<MnemonicIcon> {
+    private static final MnemonicIcon[] CACHE = new MnemonicIcon[]{
+        new MnemonicIcon('0'), new MnemonicIcon('1'),
+        new MnemonicIcon('2'), new MnemonicIcon('3'),
+        new MnemonicIcon('4'), new MnemonicIcon('5'),
+        new MnemonicIcon('6'), new MnemonicIcon('7'),
+        new MnemonicIcon('8'), new MnemonicIcon('9')
+    };
+
+    private final char myMnemonic;
+
+    @NotNull
+    @Override
+    public MnemonicIcon copy() {
+      return new MnemonicIcon(myMnemonic);
+    }
+
+    @NotNull
+    static MnemonicIcon getIcon(int digit) {
+      return CACHE[digit];
+    }
+
+    private MnemonicIcon(char mnemonic) {
+      myMnemonic = mnemonic;
+    }
+
+    @Override
+    public void paintIcon(Component c, Graphics g, int x, int y) {
+      int width = getIconWidth();
+      int height = getIconHeight();
+
+      g.setColor(new JBColor(() -> {
+        //noinspection UseJBColor
+        return !darkBackground() ? new Color(0xffffcc) : new Color(0x675133);
+      }));
+      g.fillRect(x, y, width, height);
+
+      g.setColor(JBColor.GRAY);
+      g.drawRect(x, y, width, height);
+
+      g.setColor(EditorColorsManager.getInstance().getGlobalScheme().getDefaultForeground());
+
+      float startingFontSize = 40f;  // large font for smaller rounding error
+      Font font = Bookmark.getBookmarkFont().deriveFont(startingFontSize);
+      FontRenderContext fontRenderContext = ((Graphics2D) g).getFontRenderContext();
+      double height40 = font.createGlyphVector(fontRenderContext, new char[]{'A'}).getVisualBounds().getHeight();
+      font = font.deriveFont((float) (startingFontSize * height / height40 * 0.7));
+
+      GlyphVector gv = font.createGlyphVector(fontRenderContext, new char[]{myMnemonic});
+      Rectangle2D bounds = gv.getVisualBounds();
+      ((Graphics2D) g).drawGlyphVector(gv, (float) (x + (width - bounds.getWidth()) / 2 - bounds.getX()),
+                                       (float) (y + (height - bounds.getHeight()) / 2 - bounds.getY()));
+    }
+
+    @Override
+    public int getIconWidth() {
+      return (int) ceil(scaleVal(BookmarkManager.DEFAULT_ICON.getIconWidth(), OBJ_SCALE));
+    }
+
+    @Override
+    public int getIconHeight() {
+      return (int) ceil(scaleVal(BookmarkManager.DEFAULT_ICON.getIconHeight(), OBJ_SCALE));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) {
+        return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+        return false;
+      }
+
+      MnemonicIcon that = (MnemonicIcon) o;
+
+      return myMnemonic == that.myMnemonic;
+    }
+
+    @Override
+    public int hashCode() {
+      return (int) myMnemonic;
+    }
+  }
+
+  // TODO: remove copy/paste see todo on class
+
+  /**
+   * Copy/paste of {@link Bookmark.MyCheckedIcon}
+   */
+  private static class MyCheckedIcon extends JBCachingScalableIcon<MyCheckedIcon> implements RetrievableIcon {
+    @Nullable
+    @Override
+    public Icon retrieveIcon() {
+      return IconUtil.scale(PlatformIcons.CHECK_ICON, null, getScale());
+    }
+
+    @Override
+    public void paintIcon(Component c, Graphics g, int x, int y) {
+      IconUtil.scale(PlatformIcons.CHECK_ICON, c, getScale()).paintIcon(c, g, x, y);
+    }
+
+    @Override
+    public int getIconWidth() {
+      return scale(PlatformIcons.CHECK_ICON.getIconWidth());
+    }
+
+    private int scale(int width) {
+      return (int) Math.ceil(scaleVal(width, OBJ_SCALE));
+    }
+
+    @Override
+    public int getIconHeight() {
+      return scale(PlatformIcons.CHECK_ICON.getIconHeight());
+    }
+
+    @NotNull
+    @Override
+    public MyCheckedIcon copy() {
+      return new MyCheckedIcon();
+    }
+  }
+
+  private static boolean darkBackground() {
+    Color gutterBackground = EditorColorsManager.getInstance().getGlobalScheme().getColor(EditorColors.GUTTER_BACKGROUND);
+    if (gutterBackground == null) {
+      gutterBackground = EditorColors.GUTTER_BACKGROUND.getDefaultColor();
+    }
+    return ColorUtil.isDark(gutterBackground);
   }
 }

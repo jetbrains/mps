@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,23 +15,35 @@
  */
 package jetbrains.mps.generator.runtime;
 
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Evgeny Gryaznov, 11/5/10
  */
 public interface TemplateSwitchMapping {
 
-  SNodePointer getSwitchNode();
+  SNodeReference getSwitchNode();
 
-  SNodePointer getModifiesSwitch();
+  SNodeReference getModifiesSwitch();
 
   Iterable<TemplateReductionRule> getReductionRules();
 
-  Collection<SNode> applyDefault(TemplateExecutionEnvironment environment, SNodePointer templateSwitch, String mappingName, TemplateContext context) throws GenerationException;
+  /**
+   * @since 2020.1
+   */
+  @Nullable
+  default Collection<SNode> applyDefault(TemplateContext context) throws GenerationException {
+    return Collections.emptyList();
+  }
 
-  void processNull(TemplateExecutionEnvironment environment, SNodePointer templateSwitch, TemplateContext context);
+  /**
+   * @since 2020.1
+   */
+  default void processNull(TemplateExecutionEnvironment environment) {
+  }
 }

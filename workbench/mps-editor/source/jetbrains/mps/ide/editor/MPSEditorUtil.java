@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,24 +19,45 @@ import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.nodeEditor.NodeEditorComponent;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.EditorComponent;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.workbench.nodesFs.MPSNodeVirtualFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 
-public class MPSEditorUtil {
+public final class MPSEditorUtil {
+  /**
+   * for example,
+   * while virtual file points to some concept structure declaration,
+   * the currently edited node might be from another aspect (~tab).
+   *
+   * this method helps to eliminate this integration problem MPS-IJ
+   *
+   * @return null if the file does not point to the tabbed editor
+   */
   @Nullable
-  public static SNode getCurrentEditedNode(@NotNull Project project, @NotNull MPSNodeVirtualFile file) {
-    FileEditor editor = FileEditorManager.getInstance(project).getSelectedEditor(file);
-    if (!(editor instanceof MPSFileNodeEditor)) return null;
+  public static SNode getCurrentEditedNodeFromTabbedEditor(@NotNull Project project, @NotNull MPSNodeVirtualFile file) {
+    /* Use FileEditorManagerImpl#getAllEditors(VirtualFile) instead of FileEditorManagerImpl#getSelectedEditor(VirtualFile)
+    *  because later require dispatch thread (see FileEditorManagerImpl#getSelectedEditorWithProvider)
+    *  but this method is called from NodeFileIconProvider#getIcon that is executed on app pooled thread (see EditorsSplitters#updateFileIconAsynchronously)
+    *
+    * For now several opened tabs for same file can't be distinguished so just first found editor will be fine*/
+    FileEditor[] editors = FileEditorManager.getInstance(project).getAllEditors(file);
+    FileEditor editor = editors.length == 0 ? null : editors[0];
+    if (!(editor instanceof MPSFileNodeEditor)) {
+      return null;
+    }
 
     Editor nodeEditor = ((MPSFileNodeEditor) editor).getNodeEditor();
-    if (nodeEditor == null || !nodeEditor.isTabbed()) return null;
+    if (nodeEditor == null || !nodeEditor.isTabbed()) {
+      return null;
+    }
 
     EditorComponent tabEditor = nodeEditor.getCurrentEditorComponent();
-    if (!(tabEditor instanceof NodeEditorComponent)) return null;
+    if (!(tabEditor instanceof NodeEditorComponent)) {
+      return null;
+    }
 
     return tabEditor.getEditedNode();
   }

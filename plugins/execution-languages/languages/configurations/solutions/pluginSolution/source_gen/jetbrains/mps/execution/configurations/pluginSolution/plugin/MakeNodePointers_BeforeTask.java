@@ -5,38 +5,100 @@ package jetbrains.mps.execution.configurations.pluginSolution.plugin;
 import jetbrains.mps.execution.api.configurations.BaseMpsBeforeTaskProvider;
 import com.intellij.openapi.util.Key;
 import java.util.List;
-import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.baseLanguage.util.plugin.run.RunUtil;
+import com.intellij.execution.runners.ExecutionEnvironment;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.make.resources.IResource;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
+import jetbrains.mps.generator.ModelGenerationStatusManager;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import java.util.ArrayList;
+import jetbrains.mps.smodel.resources.ModelsToResources;
+import jetbrains.mps.make.MakeSession;
+import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
+import jetbrains.mps.make.IMakeService;
+import jetbrains.mps.make.MakeServiceComponent;
+import java.util.concurrent.Future;
+import jetbrains.mps.make.script.IResult;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
 
 public class MakeNodePointers_BeforeTask extends BaseMpsBeforeTaskProvider<MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask> {
-  private static final Key<MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask> KEY = Key.create("jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask");
+  public static final Key<MakeNodePointers_BeforeTask_RunTask> KEY = Key.create("jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask");
 
   public MakeNodePointers_BeforeTask() {
     super("MakeNodePointers", "Make");
   }
 
-  protected MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask createTaskImpl() {
-    return new MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask();
+  protected MakeNodePointers_BeforeTask_RunTask createTaskImpl() {
+    return new MakeNodePointers_BeforeTask_RunTask();
   }
 
-  public Key<MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask> getId() {
+  public Key<MakeNodePointers_BeforeTask_RunTask> getId() {
     return KEY;
   }
 
-  public static class MakeNodePointers_BeforeTask_RunTask extends BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask {
-    private List<SNodePointer> myNodePointers;
+  public static class MakeNodePointers_BeforeTask_RunTask extends BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask<MakeNodePointers_BeforeTask_RunTask> {
+    private List<SNodeReference> myNodePointers;
 
     public MakeNodePointers_BeforeTask_RunTask() {
+      super(KEY);
     }
 
-    public boolean configure(List<SNodePointer> nodePointers) {
+    public boolean configure(List<SNodeReference> nodePointers) {
       myNodePointers = nodePointers;
       return true;
     }
 
-    public boolean execute(Project project) {
-      return RunUtil.makePointersBeforeRun(project, myNodePointers);
+    public boolean execute(Project project, ExecutionEnvironment environment) {
+      final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(project);
+      List<IResource> resources = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(new Computable<List<IResource>>() {
+        public List<IResource> compute() {
+          final ModelGenerationStatusManager statusManager = mpsProject.getComponent(ModelGenerationStatusManager.class);
+          Iterable<SModel> models = ListSequence.fromList(myNodePointers).where(new NotNullWhereFilter<SNodeReference>()).select(new ISelector<SNodeReference, SModel>() {
+            public SModel select(SNodeReference it) {
+              SNode n = it.resolve(mpsProject.getRepository());
+              return (n == null ? null : n.getModel());
+            }
+          }).distinct().where(new IWhereFilter<SModel>() {
+            public boolean accept(SModel it) {
+              return statusManager.generationRequired(it);
+            }
+          });
+          if (Sequence.fromIterable(models).isEmpty()) {
+            return null;
+          }
+          List<IResource> list = ListSequence.fromListWithValues(new ArrayList<IResource>(), new ModelsToResources(models).resources());
+          return list;
+        }
+      });
+
+      if (ListSequence.fromList(resources).isEmpty()) {
+        return true;
+      }
+
+      MakeSession session = new MakeSession(mpsProject, new DefaultMakeMessageHandler(mpsProject), true);
+      IMakeService makeService = mpsProject.getComponent(MakeServiceComponent.class).get();
+      if (makeService.openNewSession(session)) {
+        Future<IResult> future = makeService.make(session, resources);
+        IResult result = null;
+        try {
+          result = future.get();
+        } catch (CancellationException ignore) {
+        } catch (InterruptedException ignore) {
+        } catch (ExecutionException ignore) {
+        }
+        return result != null && result.isSucessful();
+      }
+      return true;
     }
   }
 }

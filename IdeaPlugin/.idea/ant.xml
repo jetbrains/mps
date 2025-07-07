@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AntConfiguration">
-    <defaultAnt bundledAnt="true" />
     <buildFile url="file://$PROJECT_DIR$/build.xml">
-      <additionalClassPath />
-      <antReference projectDefault="true" />
-      <customJdkName value="" />
-      <maximumHeapSize value="128" />
-      <maximumStackSize value="2" />
+      <maximumHeapSize value="2048" />
+      <maximumStackSize value="16" />
       <properties>
         <property name="home.idea_ce" value="$APPLICATION_HOME_DIR$/" />
-        <property name="plugin.version" value="MPS-25.0.SNAPSHOT" />
-        <property name="home.idea_ce.plugins" value="$IDEA_PLUGINS_FOLDER$/" />
+        <property name="plugin.version" value="MPS-3.0.SNAPSHOT" />
+        <property name="home.idea_ce.plugins" value="$APPLICATION_PLUGINS_DIR$/" />
         <property name="plugin.prefix" value="" />
+        <property name="home.jdk" value="$JDKPath$" />
       </properties>
+      <executeOn event="beforeCompilation" target="buildLibs" />
     </buildFile>
   </component>
 </project>
-

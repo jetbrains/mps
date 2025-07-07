@@ -15,34 +15,18 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public class SNodeEditorUtil {
-  public static final String RIGHT_TRANSFORM_HINT = "right_transform_hint";
-  public static final String LEFT_TRANSFORM_HINT = "left_transform_hint";
-
-
-  public static void addRightTransformHint(SNode node) {
-    node.setBooleanProperty(RIGHT_TRANSFORM_HINT, true);
-  }
-
-  public static boolean hasRightTransformHint(SNode node) {
-    return node.getBooleanProperty(RIGHT_TRANSFORM_HINT);
-  }
-
-  public static void removeRightTransformHint(SNode node) {
-    node.setBooleanProperty(RIGHT_TRANSFORM_HINT, false);
-  }
-
-  public static void addLeftTransformHint(SNode node) {
-    node.setBooleanProperty(LEFT_TRANSFORM_HINT, true);
-  }
-
-  public static boolean hasLeftTransformHint(SNode node) {
-    return node.getBooleanProperty(LEFT_TRANSFORM_HINT);
-  }
-
-  public static void removeLeftTransformHint(SNode node) {
-    node.setBooleanProperty(LEFT_TRANSFORM_HINT, false);
+  public static void setSingleChild(SNode node, SContainmentLink role, org.jetbrains.mps.openapi.model.SNode childNode) {
+    SNode oldChild = jetbrains.mps.util.SNodeOperations.getChild(node, role);
+    if (oldChild != null) {
+      node.removeChild(oldChild);
+    }
+    if (childNode != null) {
+      node.addChild(role, childNode);
+    }
   }
 }

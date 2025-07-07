@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,42 +16,28 @@
 package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.runtime.GenerationException;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.annotations.NotNull;
 
+/**
+ * Indicates an issue during generation that prevents the process going on.
+ */
 public class GenerationFailureException extends GenerationException {
 
-  public GenerationFailureException() {
+  /**
+   * There's intentionally no message as this cons is intended merely to propagate an error otherwise reported.
+   * However, do not report an error with extra log statement, message of this exception gets logged.
+   * @param cause error origin
+   */
+  public GenerationFailureException(@NotNull Throwable cause) {
+    super(null, toBetterCause(cause));
   }
 
-  public GenerationFailureException(Throwable cause) {
-    super(toBetterCause(cause));
-  }
-
-  @Deprecated
-  public GenerationFailureException(String message) {
+  public GenerationFailureException(@NotNull String message) {
     super(message);
   }
 
-  @Deprecated
-  public GenerationFailureException(String message, SNode hintNode, Throwable cause) {
-    super(toBetterMessage(message, cause), toBetterCause(cause));
-  }
-
-  @Deprecated
-  public GenerationFailureException(String message, SNode inputNode, SNode templateNode, SNode ruleNode) {
-    super(message);
-  }
-
-  @Deprecated
-  public GenerationFailureException(String message, SNode inputNode, SNode templateNode, SNode ruleNode, Throwable cause) {
-    super(toBetterMessage(message, cause), toBetterCause(cause));
-  }
-
-  private static String toBetterMessage(String message, Throwable cause) {
-    if (cause instanceof GenerationFailureException) {
-      return message + cause.getMessage();
-    }
-    return message + " : " + cause.toString();
+  public GenerationFailureException(@NotNull String message, @NotNull Throwable cause) {
+    super(message, toBetterCause(cause));
   }
 
   private static Throwable toBetterCause(Throwable cause) {

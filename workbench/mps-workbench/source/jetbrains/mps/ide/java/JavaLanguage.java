@@ -28,6 +28,7 @@ public class JavaLanguage extends Language {
 
     SyntaxHighlighterFactory.LANGUAGE_FACTORY.addExplicitExtension(this,
       new SyntaxHighlighterFactory() {
+        @Override
         @NotNull
         public SyntaxHighlighter getSyntaxHighlighter(Project project, VirtualFile virtualFile) {
           return new JavaFileHighlighter();
@@ -35,6 +36,7 @@ public class JavaLanguage extends Language {
       });
   }
 
+  @NotNull
   @Override
   public String getDisplayName() {
     return "Java";

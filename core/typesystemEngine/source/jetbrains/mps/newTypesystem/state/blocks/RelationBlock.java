@@ -15,9 +15,10 @@
  */
 package jetbrains.mps.newTypesystem.state.blocks;
 
+import jetbrains.mps.newTypesystem.context.InferenceTypecheckingContext;
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.Pair;
@@ -33,7 +34,7 @@ public abstract class RelationBlock extends Block {
 
   public RelationBlock(State state, SNode left, SNode right,
                        RelationKind kind, EquationInfo equationInfo) {
-    super(state, equationInfo.getRuleModel(), equationInfo.getRuleId());
+    super(state, equationInfo.getRuleNode());
     myRelationKind = kind;
     myLeftNode = left;
     myRightNode = right;
@@ -62,7 +63,7 @@ public abstract class RelationBlock extends Block {
   }
 
   public boolean isCheckOnly() {
-    return !myState.getTypeCheckingContext().isInferenceMode() && myRelationKind.isCheckOnly();
+    return !(getState().getTypeCheckingContext() instanceof InferenceTypecheckingContext) && myRelationKind.isCheckOnly();
   }
 
   @Override

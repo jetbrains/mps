@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,17 @@
 package jetbrains.mps.generator.template;
 
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public class PropertyMacroContext extends TemplateQueryContextWithMacro {
+public class PropertyMacroContext extends TemplateQueryContext {
   private String myTemplateValue;
 
-  public PropertyMacroContext(SNode node, String templateValue, SNode macroNode, @NotNull TemplateContext context, ITemplateGenerator generator) {
-    super(node, macroNode, context, generator);
-    myTemplateValue = templateValue;
-  }
-
-  public PropertyMacroContext(SNode node, String templateValue, @NotNull SNodePointer macroNode, @NotNull TemplateContext context, @NotNull ITemplateGenerator generator) {
-    super(node, macroNode, context, generator);
+  /**
+   * @since 3.1
+   */
+  public PropertyMacroContext(@NotNull TemplateContext context, String templateValue, @NotNull SNodeReference macroNode) {
+    super(macroNode, context);
     myTemplateValue = templateValue;
   }
 

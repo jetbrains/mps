@@ -1,0 +1,215 @@
+/*
+ * Copyright 2003-2021 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package jetbrains.mps.project;
+
+import jetbrains.mps.library.ModulesMiner;
+import jetbrains.mps.library.ModulesMiner.ModuleHandle;
+import jetbrains.mps.project.structure.project.ModulePath;
+import jetbrains.mps.smodel.ModuleInstanceFactory;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.util.MacroHelper;
+import jetbrains.mps.util.Pair;
+import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModule;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.regex.Matcher;
+
+/**
+ * Extracted project modules loading logic. Currently used in the project only.
+ * Supposed to be merged with the SLibraries modules loading logic (it is essentially the same thing)
+ * TODO the code structure is a shame, rewrite
+ *
+ * Created by apyshkin on 11/5/15.
+ */
+/*package*/ final class ProjectModuleLoader {
+  private static final Logger LOG = LogManager.getLogger(ProjectModuleLoader.class);
+
+  @NotNull private final ProjectBase myProject;
+  private final List<ProjectModuleLoadingListener> myListeners = new CopyOnWriteArrayList<>();
+  private final StringBuilder myErrors = new StringBuilder();
+
+  ProjectModuleLoader(@NotNull ProjectBase project) {
+    myProject = project;
+  }
+
+  private Collection<Pair<ModulePath, SModule>> getRemovedModules(List<ModulePath> newModulePaths) {
+    ArrayList<Pair<ModulePath, SModule>> removedModules = new ArrayList<>();
+    for (SModule oldModule : myProject.getProjectModules()) {
+      ModulePath oldModulePath = myProject.getPath(oldModule);
+      if (!newModulePaths.contains(oldModulePath)) {
+        removedModules.add(new Pair<>(oldModulePath, oldModule));
+      }
+    }
+    return removedModules;
+  }
+
+  private List<ModulePath> getPathsToLoad(List<ModulePath> newModulePaths) {
+    List<ModulePath> pathsToLoad = new ArrayList<>();
+    for (ModulePath newModulePath : newModulePaths) {
+      if (!myProject.containsPath(newModulePath)) {
+        pathsToLoad.add(newModulePath);
+      }
+    }
+    return pathsToLoad;
+  }
+
+  @NotNull
+  public String getErrors() {
+    return myErrors.toString();
+  }
+
+  /**
+   * updates module paths in the project.
+   */
+  void updatePathsInProject(final List<ModulePath> newModulePaths) {
+    LOG.info("Loading modules...");
+    clearErrorsBuffer();
+
+    // Note the order which matters (the case is when the modules.xml is updated from the FS directly --
+    // one of the modules might change its virtual folder but not the location
+    // in this case we need to remove that module from project and insert it again
+    final Collection<Pair<ModulePath, SModule>> removedModules = getRemovedModules(newModulePaths);
+    removeAbsentModules(removedModules);
+
+    final List<ModulePath> pathsToLoad = getPathsToLoad(newModulePaths);
+    int loadedModules = loadNewPaths(pathsToLoad);
+
+    LOG.info(String.format("Modules are loaded: %d new; %d removed", loadedModules, removedModules.size()));
+  }
+
+  /**
+   * @return the number of successfully loaded modules
+   */
+  private int loadNewPaths(final List<ModulePath> pathsToLoad) {
+    final ModulesMiner modulesMiner = new ModulesMiner(myProject.getPlatform());
+    final Map<IFile, ModulePath> fileToPath = new HashMap<>();
+    for (ModulePath modulePath : pathsToLoad) {
+      String descriptorPath = modulePath.getPath();
+      try {
+        // fixme Michael Muhin
+        IFile descriptorFile = FileSystem.getInstance().getFile(descriptorPath);
+        if (descriptorFile.exists()) {
+          // there could be more than 1 module collected from a single file
+          modulesMiner.collectModules(descriptorFile);
+          // if there's more than 1 modulePath with the same IFile, I don't care, fine with the last one
+          fileToPath.put(descriptorFile, modulePath);
+        } else {
+          error(String.format("Can't load module from %s. File doesn't exist.", descriptorPath));
+          fireModuleNotFound(modulePath);
+        }
+      } catch (PathFormatException e) {
+        Matcher matcher = MacroHelper.MACRO_PATTERN.matcher(e.getProblemPath());
+        if (matcher.find()) {
+          LOG.warn("Some paths might contain unknown macros, please define them in 'Path variables' and reopen the project");
+        } else {
+          throw e;
+        }
+      }
+    }
+    int loadedModules = 0;
+    // at the moment, MRF is not capable to register a generator sooner that its language. To make sure no generator comes first,
+    // there's sorter in MM.
+    ModuleInstanceFactory moduleFactory = new ModuleRepositoryFacade(myProject);
+    // XXX This code resembles ProjectModulesFiller (ProjectStrategyBase). Do we need to keep them separate?
+    for (ModuleHandle handle : modulesMiner.getCollectedModules()) {
+      // I expect modulePath to be non null even for language-owned generators (they share same descriptor file)
+      ModulePath modulePath = fileToPath.get(handle.getFile());
+      if (handle.getDescriptor() != null) {
+        SModule module = moduleFactory.instantiate(handle.getDescriptor(), handle.getFile());
+        // it's quite tempting, indeed, to move project update (i.e. addModule) into listener ProjectModuleLoadingListener.moduleLoaded
+        // just need to sort out ModuleLoader and Project relationship.
+
+        if (myProject.addModule0(modulePath, module)) {
+          ++loadedModules;
+          // XXX Here, in ProjectModuleLoadingListener/ModuleFileChangeListener, we track language files only, and rely on regular
+          //     Language.reloadAfterDescriptorChange code to reflect changes in Generator modules
+          fireModuleLoaded(modulePath, module);
+          // Note, historically we didn't do ++loadedModules, nor fireModuleLoaded for Generator modules, beware of the change
+          // if there's existing code that did not account for generator modules. Note, we do this for standalone generators only (addModule0()
+          // returns false when module is not a top-level one)
+        }
+      } else {
+        error(String.format("Can't load module from %s. Unknown file type.", handle.getFile().getPath()));
+        fireModuleTypeIsUnknown(modulePath);
+      }
+    }
+    return loadedModules;
+  }
+
+  private void removeAbsentModules(final Collection<Pair<ModulePath, SModule>> removedModules) {
+    for (Pair<ModulePath, SModule> p : removedModules) {
+      myProject.removeModule(p.o2);
+    }
+  }
+
+  private void clearErrorsBuffer() {
+    myErrors.setLength(0);
+  }
+
+  private void error(@NotNull String text) {
+    if (myErrors.length() > 0) {
+      myErrors.append(System.getProperty("line.separator"));
+    }
+    myErrors.append(text);
+    LOG.error(text);
+  }
+
+  public void addListener(@NotNull ProjectModuleLoadingListener listener) {
+    myListeners.add(listener);
+  }
+
+  public void removeListener(@NotNull ProjectModuleLoadingListener listener) {
+    if (!myListeners.contains(listener)) {
+      LOG.warn("Listener could not be found : " + listener);
+    }
+    myListeners.remove(listener);
+  }
+
+  private void fireModuleNotFound(ModulePath modulePath) {
+    for (ProjectModuleLoadingListener listener : myListeners) {
+      listener.moduleNotFound(modulePath);
+    }
+  }
+
+  private void fireModuleTypeIsUnknown(ModulePath modulePath) {
+    for (ProjectModuleLoadingListener listener : myListeners) {
+      listener.moduleTypeIsUnknown(modulePath);
+    }
+  }
+
+  /*package*/ void fireModuleRemoved(ModulePath modulePath, SModule module) {
+    for (ProjectModuleLoadingListener listener : myListeners) {
+      listener.moduleRemoved(modulePath, module);
+    }
+  }
+
+  /*package*/ void fireModuleLoaded(ModulePath modulePath, SModule module) {
+    for (ProjectModuleLoadingListener listener : myListeners) {
+      listener.moduleLoaded(modulePath, module);
+    }
+  }
+}

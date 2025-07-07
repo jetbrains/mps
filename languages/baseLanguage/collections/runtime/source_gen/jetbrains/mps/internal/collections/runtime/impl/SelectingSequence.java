@@ -9,24 +9,21 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 
 public class SelectingSequence<U, V> extends AbstractChainedSequence<U, V> implements Iterable<V> {
   private final _FunctionTypes._return_P1_E0<? extends V, ? super U> selector;
-
   public SelectingSequence(Iterable<U> input, _FunctionTypes._return_P1_E0<? extends V, ? super U> selector) {
     super(input);
     this.selector = selector;
   }
-
+  @Override
   public Iterator<V> iterator() {
-    return new SelectingSequence.SelectingIterator();
+    return new SelectingIterator();
   }
-
   private class SelectingIterator implements Iterator<V> {
     private Iterator<U> inputIterator = null;
     private HasNextState hasNext = HasNextState.UNKNOWN;
     private V next;
-
     private SelectingIterator() {
     }
-
+    @Override
     public boolean hasNext() {
       if (inputIterator == null) {
         init();
@@ -36,7 +33,7 @@ public class SelectingSequence<U, V> extends AbstractChainedSequence<U, V> imple
       }
       return hasNext.hasNext();
     }
-
+    @Override
     public V next() {
       if (inputIterator == null) {
         init();
@@ -49,15 +46,13 @@ public class SelectingSequence<U, V> extends AbstractChainedSequence<U, V> imple
       }
       return clearNext();
     }
-
+    @Override
     public void remove() {
       throw new UnsupportedOperationException();
     }
-
     private void init() {
       inputIterator = getInput().iterator();
     }
-
     private void moveToNext() {
       hasNext = HasNextState.AT_END;
       next = null;
@@ -73,7 +68,6 @@ public class SelectingSequence<U, V> extends AbstractChainedSequence<U, V> imple
         break;
       }
     }
-
     private V clearNext() {
       V tmp = next;
       next = null;

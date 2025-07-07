@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,22 @@
 package jetbrains.mps.progress;
 
 import com.intellij.openapi.progress.ProgressIndicator;
-import jetbrains.mps.util.EqualUtil;
-import org.apache.commons.lang.StringUtils;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * Evgeny Gryaznov, 9/30/11
  */
 public class ProgressMonitorAdapter extends ProgressMonitorBase {
-
   private final ProgressIndicator myIndicator;
 
-  public ProgressMonitorAdapter(ProgressIndicator indicator) {
+  public ProgressMonitorAdapter(@NotNull ProgressIndicator indicator) {
     myIndicator = indicator;
+    /* As ProgressMonitorAdapter#update uses ProgressIndicator#setFraction,
+    * we have to take into account AbstractProgressIndicatorBase#setFraction check for indicator indeterminate state
+    * */
+    myIndicator.setIndeterminate(false);
   }
 
   @Override
@@ -41,7 +45,7 @@ public class ProgressMonitorAdapter extends ProgressMonitorBase {
       name = null;
     }
     final String oldText = myIndicator.getText();
-    if (!EqualUtil.equals(name, oldText)) {
+    if (!Objects.equals(name, oldText)) {
       myIndicator.setText(name);
     }
   }
@@ -52,7 +56,7 @@ public class ProgressMonitorAdapter extends ProgressMonitorBase {
       description = null;
     }
     final String oldText = myIndicator.getText2();
-    if (!EqualUtil.equals(description, oldText)) {
+    if (!Objects.equals(description, oldText)) {
       myIndicator.setText2(description);
     }
   }
@@ -67,35 +71,25 @@ public class ProgressMonitorAdapter extends ProgressMonitorBase {
 
   }
 
+  public void pushState() {
+    myIndicator.pushState();
+  }
+
+  public void popState() {
+    myIndicator.popState();
+  }
+
   @Override
   public boolean isCanceled() {
     return myIndicator.isCanceled();
   }
 
+  public ProgressIndicator getIndicator() {
+    return myIndicator;
+  }
+
   @Override
   public void cancel() {
     myIndicator.cancel();
-  }
-
-    @Override
-  protected ProgressMonitorBase.SubProgressMonitor subTaskInternal(int work, SubProgressKind kind) {
-    return new ProgressMonitorAdapter.SubProgressMonitor(this, work, kind);
-  }
-
-  protected class SubProgressMonitor extends ProgressMonitorBase.SubProgressMonitor {
-
-    private SubProgressMonitor(ProgressMonitorBase parent, int work, SubProgressKind kind) {
-      super(parent, work, kind);
-    }
-
-    @Override
-    protected void setTitleInternal(String name) {
-      getParent().setTitleInternal(name);
-    }
-
-    @Override
-    protected ProgressMonitorBase.SubProgressMonitor subTaskInternal(int work, SubProgressKind kind) {
-      return new ProgressMonitorAdapter.SubProgressMonitor(this, work, kind);
-    }
   }
 }

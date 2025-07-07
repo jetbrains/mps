@@ -15,10 +15,10 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.style.Padding;
+import jetbrains.mps.editor.runtime.style.Padding;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.openapi.editor.EditorContext;
+import org.jetbrains.mps.openapi.model.SNode;
 
 /**
  * Author: Sergey Dmitriev
@@ -51,14 +51,17 @@ public class EditorCell_Error extends EditorCell_Label {
     getStyle().set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
   }
 
+  @Override
   public boolean canPasteText() {
     return isEditable();
   }
 
+  @Override
   public boolean isValidText(String text) {
     return text.equals(myDefaultText);
   }
 
+  @Override
   public void synchronizeViewWithModel() {
     setText(myEditable ? myDefaultText : "");
     setDefaultText(myDefaultText);

@@ -8,10 +8,6 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.SubtypingRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.ComparisonRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.InequationReplacementRule_Runtime;
-import jetbrains.mps.typesystem.inference.util.IDependency_Runtime;
-import jetbrains.mps.typesystem.inference.util.AbstractDependency_Runtime;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
 public class TypesystemDescriptor extends BaseHelginsDescriptor {
   public TypesystemDescriptor() {
@@ -236,6 +232,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_MapAsSequenceVarRef_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_MapClearOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -265,6 +265,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_MultiForEachVariableReference_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_NotNullOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -436,7 +440,63 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_AbstractEnumeratorOperation_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_AbstractIteratorOperation_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_AbstractMappingOperation_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_AbstractSetOperation_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_AsSequenceOperation_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_CustomContainerCreator_elementType_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_HashMapCreator_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_JoinOperation_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_MapOperation_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_MultiForEachStatement_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_RemoveOperation_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_SequenceOperation_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_SortedMapOperation_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_SortedSetOperation_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_TreeMapCreator_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -584,6 +644,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.mySubtypingRules.add(subtypingRule);
     }
     {
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_ListType_ClassifierTypeList_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
       SubtypingRule_Runtime subtypingRule = new supertypesOf_QueueType_ClassiType_Queue_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
@@ -593,6 +657,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       SubtypingRule_Runtime subtypingRule = new supertypesOf_SequenceType_ClassifierTypeIterable_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_SetType_ClassifierTypeSet_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
     {
@@ -686,102 +754,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     {
       InequationReplacementRule_Runtime eliminationRule = new set_type_equivalent_to_subconcepts_InequationReplacementRule();
       this.myInequationReplacementRules.add(eliminationRule);
-    }
-    {
-      IDependency_Runtime dependency_Runtime = new AbstractDependency_Runtime() {
-        public String getSourceConceptFQName() {
-          return "jetbrains.mps.baseLanguage.collections.structure.ForEachStatement";
-        }
-
-        public SNode getSourceNode(SNode targetNode) {
-          return SNodeOperations.getParent(targetNode);
-        }
-
-        public String getTargetConceptFQName() {
-          return "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable";
-        }
-      };
-      this.myDependencies.add(dependency_Runtime);
-    }
-    {
-      IDependency_Runtime dependency_Runtime = new AbstractDependency_Runtime() {
-        public String getSourceConceptFQName() {
-          return "jetbrains.mps.baseLanguage.collections.structure.ToListOperation";
-        }
-
-        public SNode getSourceNode(SNode targetNode) {
-          return RulesFunctions_Collections.getOutput(targetNode);
-        }
-
-        public String getTargetConceptFQName() {
-          return "jetbrains.mps.baseLanguage.structure.Expression";
-        }
-      };
-      this.myDependencies.add(dependency_Runtime);
-    }
-    {
-      IDependency_Runtime dependency_Runtime = new AbstractDependency_Runtime() {
-        public String getSourceConceptFQName() {
-          return "jetbrains.mps.baseLanguage.collections.structure.SkipOperation";
-        }
-
-        public SNode getSourceNode(SNode targetNode) {
-          return RulesFunctions_Collections.getOutput(targetNode);
-        }
-
-        public String getTargetConceptFQName() {
-          return "jetbrains.mps.baseLanguage.structure.Expression";
-        }
-      };
-      this.myDependencies.add(dependency_Runtime);
-    }
-    {
-      IDependency_Runtime dependency_Runtime = new AbstractDependency_Runtime() {
-        public String getSourceConceptFQName() {
-          return "jetbrains.mps.baseLanguage.collections.structure.PageOperation";
-        }
-
-        public SNode getSourceNode(SNode targetNode) {
-          return RulesFunctions_Collections.getOutput(targetNode);
-        }
-
-        public String getTargetConceptFQName() {
-          return "jetbrains.mps.baseLanguage.structure.Expression";
-        }
-      };
-      this.myDependencies.add(dependency_Runtime);
-    }
-    {
-      IDependency_Runtime dependency_Runtime = new AbstractDependency_Runtime() {
-        public String getSourceConceptFQName() {
-          return "jetbrains.mps.baseLanguage.collections.structure.TakeOperation";
-        }
-
-        public SNode getSourceNode(SNode targetNode) {
-          return RulesFunctions_Collections.getOutput(targetNode);
-        }
-
-        public String getTargetConceptFQName() {
-          return "jetbrains.mps.baseLanguage.structure.Expression";
-        }
-      };
-      this.myDependencies.add(dependency_Runtime);
-    }
-    {
-      IDependency_Runtime dependency_Runtime = new AbstractDependency_Runtime() {
-        public String getSourceConceptFQName() {
-          return "jetbrains.mps.baseLanguage.collections.structure.DistinctOperation";
-        }
-
-        public SNode getSourceNode(SNode targetNode) {
-          return RulesFunctions_Collections.getOutput(targetNode);
-        }
-
-        public String getTargetConceptFQName() {
-          return "jetbrains.mps.baseLanguage.structure.Expression";
-        }
-      };
-      this.myDependencies.add(dependency_Runtime);
     }
   }
 }

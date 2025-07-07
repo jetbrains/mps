@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,104 +16,45 @@
 package jetbrains.mps.nodeEditor.checking;
 
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.EditorMessage;
-import jetbrains.mps.nodeEditor.EditorMessageOwner;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.util.Cancellable;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public abstract class BaseEditorChecker implements EditorMessageOwner {
-  //--------accessible stuff--------
-
-  public final Set<EditorMessage> createMessagesProtected(final SNode rootNode, final List<SModelEvent> events, final boolean wasCheckedOnce, final EditorContext editorContext){
-    final Set<EditorMessage> result = new HashSet<EditorMessage>();
-    performUninterruptableAction(new Runnable() {
-      public void run() {
-        result.addAll(createMessages(rootNode, events, wasCheckedOnce, editorContext));
-      }
-    });
-    return result;
-  }
-
-  public final boolean hasDramaticalEventProtected(final List<SModelEvent> events){
-    final boolean[] result = {false};
-    performUninterruptableAction(new Runnable() {
-      public void run() {
-        result[0] = hasDramaticalEvent(events);
-      }
-    });
-    return result[0];
-  }
-
-  public final boolean isLaterThanProtected(final BaseEditorChecker editorChecker) {
-    final boolean[] result = {false};
-    performUninterruptableAction(new Runnable() {
-      public void run() {
-        result[0] = isLaterThan(editorChecker);
-      }
-    });
-    return result[0];
-  }
-
-  public final boolean areMessagesChangedProtected(){
-    final boolean[] result = {false};
-    performUninterruptableAction(new Runnable() {
-      public void run() {
-        result[0] = areMessagesChanged();
-      }
-    });
-    return result[0];
-  }
-
-  public final void clearProtected(final SNode node, final EditorComponent editor) {
-    performUninterruptableAction(new Runnable() {
-      public void run() {
-        clear(node,editor);
-      }
-    });
-  }
-
-  //--------stuff to override---------
-
-  protected abstract Set<EditorMessage> createMessages(SNode rootNode, List<SModelEvent> events, boolean wasCheckedOnce, EditorContext editorContext);
-
-  protected abstract boolean hasDramaticalEvent(List<SModelEvent> events);
-
-  protected boolean isLaterThan(BaseEditorChecker editorChecker) {
+public abstract class BaseEditorChecker implements EditorChecker, EditorMessageOwner {
+  @Override
+  public boolean isLaterThan(EditorChecker editorChecker) {
     return false;
   }
 
-  protected abstract boolean areMessagesChanged();
-
-  protected void clear(SNode node, EditorComponent editor) {
-
+  @Override
+  public boolean isEssential() {
+    return true;
   }
 
-  protected void doDispose(){
-
+  @Override
+  public void processEvents(List<SModelEvent> events) {
   }
 
-  //--------dispose stuff---------
-  //todo extract a framework
+  @Override
+  public abstract boolean needsUpdate(EditorComponent editorComponent);
 
-  private final Object LOCK = new Object();
-  private boolean myDisposed = false;
+  @NotNull
+  @Override
+  public abstract UpdateResult update(EditorComponent editorComponent, boolean incremental, boolean applyQuickFixes, Cancellable cancellable);
 
-  public final void dispose() {
-    synchronized (LOCK) {
-      myDisposed = true;
-    }
-    doDispose();
+  @Override
+  public void doneUpdating() {
   }
 
-  private void performUninterruptableAction(Runnable r) {
-    synchronized (LOCK) {
-      if (myDisposed) return;
-      r.run();
-    }
+  @Override
+  public void forceAutofix(EditorComponent editorComponent) {
+  }
+
+  @Override
+  public EditorMessageOwner getEditorMessageOwner() {
+    return this;
   }
 }

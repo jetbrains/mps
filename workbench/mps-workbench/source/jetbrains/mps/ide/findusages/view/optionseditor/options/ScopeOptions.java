@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,64 +15,58 @@
  */
 package jetbrains.mps.ide.findusages.view.optionseditor.options;
 
-import jetbrains.mps.ide.BootstrapScope;
-import jetbrains.mps.ide.findusages.model.SearchQuery;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.GlobalScopeMinusTransient;
-import jetbrains.mps.project.IModule;
+import jetbrains.mps.ide.findusages.model.scopes.FindUsagesScope;
+import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
+import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
+import jetbrains.mps.ide.findusages.model.scopes.ModulesScope;
+import jetbrains.mps.ide.findusages.model.scopes.ProjectScope;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.*;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModelName;
 
-import java.util.List;
-
+// FIXME myModel and myModule are DEFAULT_VALUE - why do we serialize this
 public class ScopeOptions extends BaseOptions {
-  private static final Logger LOG = Logger.getLogger(ScopeOptions.class);
-
-  public static final String SCOPE_TYPE = "scope_type";
-
-  public static final String GLOBAL_SCOPE = "global_scope";
-  public static final String PROJECT_SCOPE = "project_scope";
-  public static final String MODULE_SCOPE = "module_scope";
-  public static final String MODEL_SCOPE = "model_scope";
-  public static final String BOOTSTRAP_SCOPE = "bootstrap_scope";
-
+  private static final Logger LOG = LogManager.getLogger(ScopeOptions.class);
+  private static final String SCOPE_TYPE = "scope_type";
   private static final String MODEL = "model";
   private static final String MODULE = "module";
 
   @NotNull
-  private String myScopeType;
+  private ScopeType myScopeType;
   private String myModel;
   private String myModule;
   public static final String DEFAULT_VALUE = "<default>";
 
   public ScopeOptions() {
-    myScopeType = GLOBAL_SCOPE;
+    myScopeType = ScopeType.GLOBAL;
   }
 
   public ScopeOptions(Element element, Project project) {
     read(element, project);
   }
 
-  public ScopeOptions(String scopeType, String model, String module) {
+  public ScopeOptions(@NotNull ScopeType scopeType, String model, String module) {
     myScopeType = scopeType;
     myModel = model;
     myModule = module;
   }
 
+  @Override
   public ScopeOptions clone() {
     return new ScopeOptions(myScopeType, myModel, myModule);
   }
 
-  public void setScopeType(@NotNull String scopeType) {
-    myScopeType = scopeType;
+  @NotNull
+  public ScopeType getScopeType() {
+    return myScopeType;
   }
 
-  @NotNull
-  public String getScopeType() {
-    return myScopeType;
+  public void setScopeType(@NotNull ScopeType scopeType) {
+    myScopeType = scopeType;
   }
 
   public String getModel() {
@@ -91,77 +85,43 @@ public class ScopeOptions extends BaseOptions {
     myModule = module;
   }
 
-  public IScope getScope(IOperationContext operationContext, SModelDescriptor descriptor) {
-    IScope scope;
-
-    if (myScopeType.equals(GLOBAL_SCOPE)) {
-      scope = GlobalScopeMinusTransient.getInstance();
-    } else if (myScopeType.equals(PROJECT_SCOPE)) {
-      scope = operationContext.getProject().getScope();
-    } else if (myScopeType.equals(MODULE_SCOPE)) {
-      if (myModule.equals(DEFAULT_VALUE)) {
-        scope = new OnlyModuleScope(operationContext.getModule());
-      } else {
-        IModule module = getModuleByNamespace(myModule);
-        if (module == null) {
-          LOG.error("Module is not found for " + myModule + ". Using current module.");
-          module = operationContext.getModule();
-          myModule = module.getModuleFqName();
-        }
-        scope = new OnlyModuleScope(module);
-      }
-    } else if (myScopeType.equals(MODEL_SCOPE)) {
-      if (myModel.equals(DEFAULT_VALUE)) {
-        scope = new ModelsOnlyScope(descriptor);
-      } else {
-        List<SModelDescriptor> models = SModelRepository.getInstance().getModelDescriptorsByModelName(myModel);
-        if (models.isEmpty()) {
-          myModel = descriptor.getLongName();
-          models = SModelRepository.getInstance().getModelDescriptorsByModelName(myModel);
-          LOG.error("Model is not found for " + myModel + ". Using current model.");
-        }
-        SModelDescriptor modelDescriptor = models.get(0);
-        scope = new ModelsOnlyScope(modelDescriptor);
-      }
-    } else if (myScopeType.equals(BOOTSTRAP_SCOPE)) {
-      return BootstrapScope.getInstance();
-    } else throw new IllegalArgumentException();
-
-    return scope;
-  }
-
-  private IModule getModuleByNamespace(String namespace) {
-    MPSModuleRepository repo = MPSModuleRepository.getInstance();
-
-    IModule result = repo.getModule(new ModuleReference(namespace));
-    if (result != null) return result;
-
-    for (IModule module : repo.getAllModules()) {
-      String moduleNamespace = module.getModuleFqName();
-      if (moduleNamespace == null) continue;
-      if (moduleNamespace.equals(namespace)) return module;
+  // XXX expects model read despite no SModel/SNode comes in here, only Project
+  public FindUsagesScope getScope(final Project project) {
+    // XXX as long as we serialize model and module name instead of a respective reference, treat all models/modules with the same name
+    //     as scope (despite the fact user may have picked a specific one. OTOH, he may have entered name and its intention is not obvious).
+    switch (myScopeType) {
+      case GLOBAL:
+        return new GlobalScope(project);
+      case PROJECT:
+        return new ProjectScope(project);
+      case MODULE:
+        return new ModulesScope(new ModuleRepositoryFacade(project).getModulesByName(myModule));
+      case MODEL:
+        return new ModelsScope(new ModuleRepositoryFacade(project).getModelsByName(new SModelName(myModel)));
+      default:
+        LOG.error("Illegal scope type: " + myScopeType);
+        return new GlobalScope(project);
     }
-
-    return null;
   }
 
-  @NotNull
-  public SearchQuery getResult(SNode node, IOperationContext context, SModelDescriptor modelDescriptor) {
-    return new SearchQuery(node, getScope(context, modelDescriptor));
-  }
-
+  @Override
   public void write(Element element, Project project) {
     Element scopeTypeXML = new Element(SCOPE_TYPE);
-    scopeTypeXML.setAttribute(SCOPE_TYPE, myScopeType);
+    scopeTypeXML.setAttribute(SCOPE_TYPE, myScopeType.name());
     scopeTypeXML.setAttribute(MODULE, myModule == null ? "" : myModule);
     scopeTypeXML.setAttribute(MODEL, myModel == null ? "" : myModel);
     element.addContent(scopeTypeXML);
   }
 
+  @Override
   public void read(Element element, Project project) {
     Element scopeTypeXML = element.getChild(SCOPE_TYPE);
-    myScopeType = scopeTypeXML.getAttributeValue(SCOPE_TYPE);
+    myScopeType = ScopeType.valueOf(scopeTypeXML.getAttributeValue(SCOPE_TYPE));
     myModule = scopeTypeXML.getAttributeValue(MODULE);
     myModel = scopeTypeXML.getAttributeValue(MODEL);
+  }
+
+  public enum ScopeType {
+    GLOBAL, PROJECT, MODULE, MODEL
   }
 }

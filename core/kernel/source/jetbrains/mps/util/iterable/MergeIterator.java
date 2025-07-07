@@ -20,35 +20,52 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Iterator;
 
 /**
+ * XXX what's the benefit having distinct MergeIterator when there's FlattenIterable (@see IterableUtil#merge())?
  * Evgeny Gryaznov, 9/13/11
+ *
+ * not thread-safe
  */
 public class MergeIterator<T> implements Iterable<T>, Iterator<T> {
+  private final Iterable<T> myFirst, mySecond;
+  private Iterator<T> myIt1, myIt2;
 
-  private Iterator<T> it1;
-  private boolean firstHasNext;
-  private Iterator<T> it2;
+  private boolean myInitialized = false;
 
-  public MergeIterator(@NotNull Iterator<T> it1, @NotNull Iterator<T> it2) {
-    this.it1 = it1;
-    this.it2 = it2;
-    firstHasNext = it1.hasNext();
+  public MergeIterator(@NotNull Iterable<T> it1, @NotNull Iterable<T> it2) {
+    myFirst = it1;
+    mySecond = it2;
   }
 
+  private void init() {
+    if (!myInitialized) {
+      myInitialized = true;
+      reset();
+    }
+  }
+
+  private void reset() {
+    myIt1 = myFirst.iterator();
+    myIt2 = mySecond.iterator();
+  }
+
+  @NotNull
   @Override
   public Iterator<T> iterator() {
+    reset();
     return this;
   }
 
   @Override
   public boolean hasNext() {
-    if (!firstHasNext) return it2.hasNext();
-    firstHasNext = it1.hasNext();
-    return firstHasNext || it2.hasNext();
+    init();
+    return myIt1.hasNext() || myIt2.hasNext();
   }
 
   @Override
   public T next() {
-    return firstHasNext ? it1.next() : it2.next();
+    init();
+    return myIt1.hasNext() ? myIt1.next()
+                           : myIt2.next();
   }
 
   @Override

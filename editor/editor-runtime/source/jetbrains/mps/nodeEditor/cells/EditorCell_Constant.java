@@ -15,23 +15,20 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.nodeEditor.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.EditorContext;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSFonts;
-
-import java.awt.*;
-
+import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
 /**
  * Author: Sergey Dmitriev
  * Created Sep 14, 2003
  */
-public class EditorCell_Constant extends EditorCell_Label {
+public class EditorCell_Constant extends EditorCell_Label implements SynchronizeableEditorCell {
   public static final int DEFAULT_FONT_STYLE = MPSFonts.BOLD;
 
-  protected String myOriginalText;
+  private String myOriginalText;
 
   public EditorCell_Constant(@NotNull EditorContext editorContext, SNode node, String text) {
     this(editorContext, node, text, false);
@@ -44,15 +41,18 @@ public class EditorCell_Constant extends EditorCell_Label {
     setEditable(editable);
   }
 
+  @Override
   public boolean canPasteText() {
     return isEditable();
   }
 
+  @Override
   public void changeText(String text) {
     setErrorState(!isValidText(text));
     super.changeText(text);
   }
 
+  @Override
   public boolean isValidText(String text) {
     return text.equals(myOriginalText);
   }
@@ -61,9 +61,22 @@ public class EditorCell_Constant extends EditorCell_Label {
     return myOriginalText;
   }
 
+  public void setOriginalText(String originalText) {
+    myOriginalText = originalText;
+  }
 
+  @Override
   public void synchronizeViewWithModel() {
     setText(myOriginalText);
     setErrorState(false);
+  }
+
+  @Override
+  public void synchronize() {
+  }
+
+  @Override
+  public boolean canBeSynchronized() {
+    return false;
   }
 }

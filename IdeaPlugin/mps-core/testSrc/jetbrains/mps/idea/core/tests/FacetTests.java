@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,222 +27,218 @@ import com.intellij.openapi.roots.ModifiableRootModel;
 import com.intellij.openapi.roots.ModuleOrderEntry;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.roots.OrderEntry;
+import com.intellij.util.ThrowableRunnable;
+import jetbrains.mps.extapi.persistence.SourceRoot;
+import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.idea.core.facet.MPSConfigurationBean;
 import jetbrains.mps.idea.core.facet.MPSFacet;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
-import jetbrains.mps.project.SModelRoot;
+import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.model.ModelRoot;
-import jetbrains.mps.project.structure.modules.Dependency;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.Language;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.util.misc.hash.HashSet;
+import jetbrains.mps.util.Computable;
+import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.vfs.FileSystem;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 public class FacetTests extends AbstractMPSFixtureTestCase {
+  private ModuleRepositoryFacade myModuleRepositoryFacade;
+
+  @Override
+  protected void setUp() throws Exception {
+    super.setUp();
+    myModuleRepositoryFacade = new ModuleRepositoryFacade(getMpsFixture().getMPSProject());
+  }
+
+  @Override
+  protected void runTestRunnable(@NotNull ThrowableRunnable<java.lang.Throwable> testRunnable) throws Throwable {
+    getMpsFixture().flushEDT();
+    super.runTestRunnable(testRunnable);
+  }
 
   public void testFacetInitialized() {
-    FacetManager facetManager = FacetManager.getInstance(myModule);
+    FacetManager facetManager = FacetManager.getInstance(getMpsFixture().getModule());
     Collection<MPSFacet> mpsFacets = facetManager.getFacetsByType(MPSFacetType.ID);
     assertEquals(1, mpsFacets.size());
-    assertEquals(myFacet, mpsFacets.iterator().next());
-    assertEquals(myFacet, facetManager.getFacetByType(MPSFacetType.ID));
+    assertEquals(getMpsFixture().getMpsFacet(), mpsFacets.iterator().next());
+    assertEquals(getMpsFixture().getMpsFacet(), facetManager.getFacetByType(MPSFacetType.ID));
 
-    assertTrue(myFacet.wasInitialized());
+    assertTrue(getMpsFixture().getMpsFacet().wasInitialized());
 
-    // Default Solution settings
-    Solution solution = myFacet.getSolution();
-    assertEmpty(solution.getSModelRoots());
-    // JDK solution should be always returned as module dependencies for now
-    assertEquals(1, solution.getDependencies().size());
-    assertEmpty(solution.getUsedLanguagesReferences());
+    runModelRead(() -> {
+      // Default Solution settings
+      Solution solution = getMpsFixture().getMpsFacet().getSolution();
+      // MPS facet initialized with model root pointing to module source root
+      assertTrue(solution.getModelRoots().iterator().hasNext());
+      // JDK solution should be always returned as module dependencies for now
+      // Commented out: jdk is connected like a real module sdk, which is probably absent in this test environment
+//    assertEquals(1, solution.getDependencies().size());
 
-    assertEquals(getModuleHome() + "/source_gen", solution.getGeneratorOutputPath());
+      assertEquals(getModuleHome() + "/src_gen", solution.getFacet(JavaModuleFacet.class).getOutputRoot().getPath());
 
-    Solution repositorySolution = ModuleRepositoryFacade.getInstance().getModule(solution.getModuleReference(), Solution.class);
-    assertEquals(solution, repositorySolution);
-    assertEquals(myModule.getName(), solution.getModuleDescriptor().getNamespace());
+      Solution repositorySolution = myModuleRepositoryFacade.getModule(solution.getModuleReference(), Solution.class);
+      assertEquals(solution, repositorySolution);
+      assertEquals(getMpsFixture().getModule().getName(), solution.getModuleDescriptor().getNamespace());
+    });
   }
 
   public void testSolutionRemovedOnFacetDeletion() {
-    ModuleReference solutionReference = myFacet.getSolution().getModuleReference();
+    SModuleReference solutionReference = getMpsFixture().getMpsFacet().getSolution().getModuleReference();
 
-    ApplicationManager.getApplication().runWriteAction(new Runnable() {
-      public void run() {
-        ModifiableFacetModel modifiableModel = FacetManager.getInstance(myModule).createModifiableModel();
-        MPSFacet mpsFacet = modifiableModel.getFacetByType(MPSFacetType.ID);
-        modifiableModel.removeFacet(mpsFacet);
-        modifiableModel.commit();
-      }
+    ApplicationManager.getApplication().runWriteAction(() -> {
+      ModifiableFacetModel modifiableModel = FacetManager.getInstance(getMpsFixture().getModule()).createModifiableModel();
+      MPSFacet mpsFacet = modifiableModel.getFacetByType(MPSFacetType.ID);
+      modifiableModel.removeFacet(mpsFacet);
+      modifiableModel.commit();
     });
 
-    Solution repositorySolution = ModuleRepositoryFacade.getInstance().getModule(solutionReference, Solution.class);
+    Solution repositorySolution = myModuleRepositoryFacade.getModule(solutionReference, Solution.class);
     assertNull(repositorySolution);
   }
 
   public void testSolutionRemovedOnModuleDeletion() {
 
-    ModuleReference solutionReference = myFacet.getSolution().getModuleReference();
+    SModuleReference solutionReference = getMpsFixture().getMpsFacet().getSolution().getModuleReference();
 
-    ApplicationManager.getApplication().runWriteAction(new Runnable() {
-      public void run() {
-        ModuleManager moduleManager = ModuleManager.getInstance(myModule.getProject());
-        ModifiableModuleModel modifiableModel = moduleManager.getModifiableModel();
-        modifiableModel.disposeModule(myModule);
-        modifiableModel.commit();
-      }
+    ApplicationManager.getApplication().runWriteAction(() -> {
+      ModuleManager moduleManager = ModuleManager.getInstance(getMpsFixture().getProject());
+      ModifiableModuleModel modifiableModel = moduleManager.getModifiableModel();
+      modifiableModel.disposeModule(getMpsFixture().getModule());
+      modifiableModel.commit();
     });
 
-    Solution repositorySolution = ModuleRepositoryFacade.getInstance().getModule(solutionReference, Solution.class);
+    Solution repositorySolution = myModuleRepositoryFacade.getModule(solutionReference, Solution.class);
     assertNull(repositorySolution);
   }
 
   public void testAddRemoveModelRoot() throws InterruptedException {
-    @NonNls final File modelRootDir = new File(getModuleHome(), "modelRoot");
+    @NonNls final File modelRootDir = new File(getMpsFixture().getCodeInsightTestFixture().getTempDirPath(), "modelRoot");
     assertTrue(modelRootDir.mkdir());
 
-    ModuleReference solutionReference = myFacet.getSolution().getModuleReference();
+    final SModuleReference solutionReference = getMpsFixture().getMpsFacet().getSolution().getModuleReference();
 
-    String modelRootPath = modelRootDir.getPath();
-    MPSConfigurationBean configurationBean = myFacet.getConfiguration().getState();
-    ArrayList<ModelRoot> roots = new ArrayList<ModelRoot>();
-    roots.add(new ModelRoot(modelRootPath));
-    configurationBean.setModelRoots(roots);
-    myFacet.setConfiguration(configurationBean);
-    flushEDT();
+    MPSConfigurationBean configurationBean = getMpsFixture().getMpsFacet().getConfiguration().getBean();
+    // I didn't find a better alternative how to obtain IFile for java.io.File, resort to what DefaultModelRoot did behind the scenes for string paths.
+    ModelRootDescriptor modelRoot = DefaultModelRoot.createSingleFolderDescriptor(FileSystem.getInstance().getFile(modelRootDir.getPath()));
+    configurationBean.setModelRootDescriptors(Collections.singletonList(modelRoot));
+    getMpsFixture().getMpsFacet().setConfiguration(configurationBean);
+    getMpsFixture().flushEDT();
 
-    Solution repositorySolution = ModuleRepositoryFacade.getInstance().getModule(solutionReference, Solution.class);
-    assertEquals(myFacet.getSolution(), repositorySolution);
-    Collection<SModelRoot> modelRoots = repositorySolution.getSModelRoots();
-    assertEquals(1, modelRoots.size());
-    SModelRoot theModelRoot = modelRoots.iterator().next();
-    assertEquals(modelRootDir.getPath(), theModelRoot.getPath());
+    runModelRead(() -> {
+      Solution repositorySolution = myModuleRepositoryFacade.getModule(solutionReference, Solution.class);
+      assertEquals(getMpsFixture().getMpsFacet().getSolution(), repositorySolution);
+      Iterable<ModelRoot> modelRoots = repositorySolution.getModelRoots();
 
-    configurationBean = myFacet.getConfiguration().getState();
-    configurationBean.setModelRoots(new ArrayList<ModelRoot>());
-    myFacet.setConfiguration(configurationBean);
-    flushEDT();
+      Iterator<ModelRoot> iterator = modelRoots.iterator();
+      assertTrue(iterator.hasNext());
+      ModelRoot theModelRoot = iterator.next();
+      assertFalse(iterator.hasNext());
+      SourceRoot sr = ((DefaultModelRoot) theModelRoot).getSourceRoots(SourceRootKinds.SOURCES).iterator().next();
+      // the contract for getPath is not clear enough, whether it's absolute or not, please fix the contract
+      assertEquals(modelRootDir.getPath(), sr.getAbsolutePath().getPath());
+    });
 
-    assertEmpty(repositorySolution.getSModelRoots());
-  }
+    configurationBean = getMpsFixture().getMpsFacet().getConfiguration().getBean();
+    configurationBean.setModelRootDescriptors(new ArrayList<>());
+    getMpsFixture().getMpsFacet().setConfiguration(configurationBean);
+    getMpsFixture().flushEDT();
 
-  public void testAddRemoveUsedLanguage() throws InterruptedException {
-    Language baseLanguage = ModuleRepositoryFacade.getInstance().getModule("jetbrains.mps.baseLanguage", Language.class);
-    assertNotNull(baseLanguage);
-    Language editorLanguage = ModuleRepositoryFacade.getInstance().getModule("jetbrains.mps.lang.editor", Language.class);
-    assertNotNull(editorLanguage);
-
-    String[] usedLanguageStrings = new String[]{baseLanguage.toString(), editorLanguage.toString()};
-    Language[] usedLanguages = new Language[]{baseLanguage, editorLanguage};
-
-    MPSConfigurationBean configurationBean = myFacet.getConfiguration().getState();
-    configurationBean.setUsedLanguages(usedLanguageStrings);
-    myFacet.setConfiguration(configurationBean);
-    flushEDT();
-
-    Collection<ModuleReference> solutionUsedLanguageRefs = myFacet.getSolution().getUsedLanguagesReferences();
-    Set<Language> solutionUsedLanguages = new HashSet<Language>();
-    for (ModuleReference solutionUsedLanguageRef : solutionUsedLanguageRefs) {
-      solutionUsedLanguages.add(ModuleRepositoryFacade.getInstance().getModule(solutionUsedLanguageRef, Language.class));
-    }
-    assertEquals(usedLanguages.length, solutionUsedLanguages.size());
-    for (Language usedLanguage : usedLanguages) {
-      assertTrue(solutionUsedLanguages.contains(usedLanguage));
-    }
-
-    configurationBean.setUsedLanguages(new String[0]);
-    myFacet.setConfiguration(configurationBean);
-    flushEDT();
-
-    assertEmpty(myFacet.getSolution().getUsedLanguagesReferences());
+    runModelRead(() -> {
+      Solution repositorySolution = myModuleRepositoryFacade.getModule(solutionReference, Solution.class);
+      assertFalse(repositorySolution.getModelRoots().iterator().hasNext());
+    });
   }
 
   public void testSetGeneratorOutputPath() throws InterruptedException {
     @NonNls String generatorOutputPath = getModuleHome() + "/generatorOut";
-    MPSConfigurationBean configurationBean = myFacet.getConfiguration().getState();
+    MPSConfigurationBean configurationBean = getMpsFixture().getMpsFacet().getConfiguration().getBean();
     configurationBean.setGeneratorOutputPath(generatorOutputPath);
-    myFacet.setConfiguration(configurationBean);
-    flushEDT();
+    getMpsFixture().getMpsFacet().setConfiguration(configurationBean);
+    getMpsFixture().flushEDT();
 
-    assertEquals(generatorOutputPath, myFacet.getSolution().getGeneratorOutputPath());
+    assertEquals(generatorOutputPath, getMpsFixture().getMpsFacet().getSolution().getFacet(JavaModuleFacet.class).getOutputRoot().getPath());
   }
 
   public void testDefaultOutput() {
-    MPSConfigurationBean configurationBean = myFacet.getConfiguration().getState();
+    MPSConfigurationBean configurationBean = getMpsFixture().getMpsFacet().getConfiguration().getBean();
     assertFalse(configurationBean.isUseTransientOutputFolder());
     assertFalse(configurationBean.isUseModuleSourceFolder());
   }
 
   public void testAddRemoveDependencies() throws Exception {
-    final Module module2 = addModuleAndSetupFixture(myProjectBuilder);
-    MPSFacet mpsFacet2 = addMPSFacet(module2);
+    final Module module2 = getMpsFixture().addModule();
+    final MPSFacet mpsFacet2 = getMpsFixture().addMpsFacet(module2);
 
-    ApplicationManager.getApplication().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        ModifiableRootModel rootModel = ModuleRootManager.getInstance(module2).getModifiableModel();
-        rootModel.addModuleOrderEntry(myModule);
-        rootModel.commit();
-      }
+    // todo: should be one big ModelAccess.runWriteAction() ?
+    Computable<List<SDependency>> getDependencies = () -> IterableUtil.asList(mpsFacet2.getSolution().getDeclaredDependencies());
+    int originalDependCount = runModelRead(getDependencies).size();
+
+    ApplicationManager.getApplication().runWriteAction(() -> {
+      ModifiableRootModel rootModel = ModuleRootManager.getInstance(module2).getModifiableModel();
+      rootModel.addModuleOrderEntry(getMpsFixture().getModule());
+      rootModel.commit();
     });
-    flushEDT();
+    getMpsFixture().flushEDT();
 
-    List<Dependency> solution2Dependencies = mpsFacet2.getSolution().getDependencies();
-    // JDK solution should be always returned as module dependencies for now
-    assertEquals(2, solution2Dependencies.size());
+    List<SDependency> solution2Dependencies = runModelRead(getDependencies);
+    assertEquals(originalDependCount + 1, solution2Dependencies.size());
     boolean found = false;
-    for (Dependency dependency : solution2Dependencies) {
-      if (myFacet.getSolution().getModuleReference().equals(dependency.getModuleRef())) {
+    for (SDependency dependency : solution2Dependencies) {
+      if (getMpsFixture().getMpsFacet().getSolution().getModuleReference().equals(dependency.getTargetModule())) {
         found = true;
         break;
       }
     }
     assertTrue("Cross-Module dependency was not exposed in faced dependencies", found);
 
-    ApplicationManager.getApplication().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        ModifiableRootModel rootModel = ModuleRootManager.getInstance(module2).getModifiableModel();
-        for (OrderEntry orderEntry : rootModel.getOrderEntries()) {
-          if (orderEntry instanceof ModuleOrderEntry && myModule.equals(((ModuleOrderEntry) orderEntry).getModule())) {
-            rootModel.removeOrderEntry(orderEntry);
-            break;
-          }
+    ApplicationManager.getApplication().runWriteAction(() -> {
+      ModifiableRootModel rootModel = ModuleRootManager.getInstance(module2).getModifiableModel();
+      for (OrderEntry orderEntry : rootModel.getOrderEntries()) {
+        if (orderEntry instanceof ModuleOrderEntry && getMpsFixture().getModule().equals(((ModuleOrderEntry) orderEntry).getModule())) {
+          rootModel.removeOrderEntry(orderEntry);
+          break;
         }
-        rootModel.commit();
       }
+      rootModel.commit();
     });
-    flushEDT();
+    getMpsFixture().flushEDT();
 
-    // JDK solution should be always returned as module dependencies for now
-    assertEquals(1, mpsFacet2.getSolution().getDependencies().size());
-    assertFalse(myFacet.getSolution().getModuleReference().equals(mpsFacet2.getSolution().getDependencies().get(0).getModuleRef()));
+    int finalDependenciesCount = runModelRead(getDependencies).size();
+    assertEquals(originalDependCount, finalDependenciesCount);
+    // commented out: we don't always depend on jdk any longer
+//    assertFalse(myFacet.getSolution().getModuleReference().equals(mpsFacet2.getSolution().getDependencies().get(0).getModuleRef()));
   }
 
   public void testUpdateNamespaceOnModuleRename() throws InterruptedException {
     final String newModuleName = "newModuleName__";
-    ApplicationManager.getApplication().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        ModifiableModuleModel modifiableModel = ModuleManager.getInstance(myModule.getProject()).getModifiableModel();
-        try {
-          modifiableModel.renameModule(myModule, newModuleName);
-        } catch (ModuleWithNameAlreadyExists moduleWithNameAlreadyExists) {
-          fail(moduleWithNameAlreadyExists.getMessage());
-        }
-        modifiableModel.commit();
+    ApplicationManager.getApplication().runWriteAction(() -> {
+      ModifiableModuleModel modifiableModel = ModuleManager.getInstance(getMpsFixture().getProject()).getModifiableModel();
+      try {
+        modifiableModel.renameModule(getMpsFixture().getModule(), newModuleName);
+      } catch (ModuleWithNameAlreadyExists moduleWithNameAlreadyExists) {
+        fail(moduleWithNameAlreadyExists.getMessage());
       }
+      modifiableModel.commit();
     });
-    flushEDT();
+    getMpsFixture().flushEDT();
 
-    assertEquals(newModuleName, myModule.getName());
-    assertEquals(newModuleName, myFacet.getSolution().getModuleDescriptor().getNamespace());
+    //In ModuleRenameHandler method resetFacet(MPSFacet) dispose parameter facet and return new instance
+    MPSFacet facet = FacetManager.getInstance(getMpsFixture().getModule()).getFacetByType(MPSFacetType.ID);
+
+    assertEquals(newModuleName, getMpsFixture().getModule().getName());
+    assertEquals(newModuleName, facet.getSolution().getModuleDescriptor().getNamespace());
   }
 }

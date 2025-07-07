@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,278 +15,170 @@
  */
 package jetbrains.mps.ide.editorTabs.tabfactory.tabs;
 
-import com.intellij.openapi.actionSystem.*;
-import com.intellij.openapi.actionSystem.impl.ActionButton;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.extensions.Extensions;
-import com.intellij.openapi.vcs.FileStatusListener;
-import com.intellij.openapi.vcs.FileStatusManager;
-import com.intellij.openapi.vfs.VirtualFile;
-import gnu.trove.THashMap;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.editorTabs.TabColorProvider;
 import jetbrains.mps.ide.editorTabs.tabfactory.NodeChangeCallback;
 import jetbrains.mps.ide.editorTabs.tabfactory.TabsComponent;
-import jetbrains.mps.ide.editorTabs.tabfactory.tabs.baseListening.ModelListener;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.relations.RelationComparator;
 import jetbrains.mps.ide.undo.MPSUndoUtil;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.smodel.event.SModelCommandListener;
-import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.smodel.event.SModelRootEvent;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.workbench.nodesFs.MPSNodeVirtualFile;
-import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.util.containers.MultiMap;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
+/**
+ * This class expects subclasses to supply single component to serve UI functions. Subclasses shall use {@link #setContent(JComponent)}
+ * and {@link #removeContent(JComponent)}, not <code>getComponent().add()</code> or <code>getComponent().remove()</code> as this class
+ * manages layout constraints of the only child itself. Method {@link #getComponent()} is for external consumers or child unrelated activities.
+ */
 public abstract class BaseTabsComponent implements TabsComponent {
+  private static final Logger LOG = LogManager.getLogger(BaseTabsComponent.class);
+
   private final NodeChangeCallback myCallback;
-  private CreateModeCallback myCreateModeCallback;
-  protected final SNodePointer myBaseNode;
-  protected final Set<RelationDescriptor> myPossibleTabs;
+  private final CreateModeCallback myCreateModeCallback;
+  protected final SNodeReference myBaseNode;
+  protected final Collection<RelationDescriptor> myPossibleTabs;
   protected final JComponent myEditor;
   protected final boolean myShowGrayed;
-  private TabColorProvider myColorProvider = null;
-  private IOperationContext myOperationContext;
+  private final TabColorProvider myColorProvider;
+  private final Project myProject;
 
-  private List<Document> myEditedDocuments = new ArrayList<Document>();
-  private List<SNodePointer> myEditedNodes = new ArrayList<SNodePointer>();
-  private SNodePointer myLastNode = null;
-
-  private ModelListener myTabRemovalListener = new MyTabRemovalListener();
+  private List<Document> myEditedDocuments = new ArrayList<>();
+  private SNodeReference myLastNode = null;
 
   private JComponent myComponent;
-  private MySModelCommandListener myRootAdditionListener = new MySModelCommandListener();
-  private MyFileStatusListener myFileStatusListener = new MyFileStatusListener();
+  private volatile boolean myDisposed = false;
 
-  protected BaseTabsComponent(SNodePointer baseNode, Set<RelationDescriptor> possibleTabs, JComponent editor, NodeChangeCallback callback, boolean showGrayed, CreateModeCallback createModeCallback, IOperationContext operationContext) {
+  protected BaseTabsComponent(SNodeReference baseNode, Set<RelationDescriptor> possibleTabs, JComponent editor, NodeChangeCallback callback, boolean showGrayed,
+                              CreateModeCallback createModeCallback, Project project) {
     myBaseNode = baseNode;
-    myPossibleTabs = possibleTabs;
+    final ArrayList<RelationDescriptor> tabs = new ArrayList<>(possibleTabs);
+    Collections.sort(tabs, new RelationComparator());
+    myPossibleTabs = Collections.unmodifiableList(tabs);
     myEditor = editor;
     myCallback = callback;
     myShowGrayed = showGrayed;
-    TabColorProvider[] extensions = Extensions.getExtensions(TabColorProvider.EP_NAME, ProjectHelper.toIdeaProject(operationContext.getProject()));
+    TabColorProvider[] extensions = Extensions.getExtensions(TabColorProvider.EP_NAME, project);
     myColorProvider = extensions.length > 0 ? extensions[0] : null;
-    myOperationContext = operationContext;
+    myProject = project;
+
     myCreateModeCallback = createModeCallback;
 
-    AnAction addAction = new AddAspectAction(myBaseNode, myPossibleTabs, new NodeChangeCallback() {
-      public void changeNode(SNode newNode) {
-        updateTabs();
-        onNodeChange(newNode);
-      }
-    }) {
-      protected RelationDescriptor getCurrentAspect() {
-        return getCurrentTabAspect();
-      }
-    };
-
     myComponent = new JPanel(new BorderLayout());
-    ActionButton btn = new ActionButton(addAction, addAction.getTemplatePresentation(), ActionPlaces.UNKNOWN, new Dimension(23, 23));
-    myComponent.add(btn, BorderLayout.WEST);
-
-    addListeners();
   }
 
+  @Override
   public void dispose() {
-    removeListeners();
+    myDisposed = true;
   }
 
+  protected boolean isDisposed() {
+    return myDisposed;
+  }
+
+  @Override
   public final JComponent getComponent() {
     return myComponent;
   }
 
-  public List<SNodePointer> getAllEditedNodes() {
-    return myEditedNodes;
+  protected void setContent(JComponent component) {
+    myComponent.add(component, BorderLayout.CENTER);
   }
 
+  protected void removeContent(JComponent component) {
+    myComponent.remove(component);
+  }
+
+  @Override
   public List<Document> getAllEditedDocuments() {
     return myEditedDocuments;
   }
 
-  public void setLastNode(SNodePointer node) {
+  @Override
+  public void editNode(SNodeReference node) {
     myLastNode = node;
-  }
-
-  public SNodePointer getLastNode() {
-    return myLastNode;
-  }
-
-  public ModelListener getTabRemovalListener() {
-    return myTabRemovalListener;
-  }
-
-  protected void onNodeChange(SNode node) {
-    SNodePointer oldNode = myLastNode;
-    setLastNode(new SNodePointer(node));
-    if (oldNode == null && node != null) {
-      if (myCreateModeCallback != null) {
-        myCreateModeCallback.exitCreateMode();
-      }
-    }
     myCallback.changeNode(node);
   }
 
+  protected final SNodeReference getEditedNode() {
+    return myLastNode;
+  }
+
   protected void enterCreateMode(RelationDescriptor tab) {
-    setLastNode(null);
+    myLastNode = null;
+    myCallback.changeNode(null); // this is workaround for update tab header icon
     if (myCreateModeCallback != null) {
-      myCreateModeCallback.enterCreateMode(new CreatePanel(tab));
+      myCreateModeCallback.create(tab);
     }
   }
 
-  protected Map<RelationDescriptor, List<SNode>> updateDocumentsAndNodes() {
-    List<Document> editedDocumentsNew = new ArrayList<Document>();
-    List<SNodePointer> editedNodesNew = new ArrayList<SNodePointer>();
+  protected TabEditorLayout updateDocumentsAndNodes() {
+    List<Document> editedDocumentsNew = new ArrayList<>();
 
-    Map<RelationDescriptor, List<SNode>> result = new THashMap<RelationDescriptor, List<SNode>>();
-    getTabRemovalListener().clearAspects();
+    TabEditorLayout result = new TabEditorLayout();
 
-    SNode baseNode = myBaseNode.getNode();
-    if (baseNode == null) return result;
+    SNode baseNode = myBaseNode.resolve(getProject().getRepository());
+    if (baseNode == null) {
+      return result;
+    }
+    //see MPS-23013; if the node was just deleted and the command is not yet finished, the ref can still be resolved (unregistered nodes?)
+    if (baseNode.getModel() == null) {
+      return result;
+    }
 
     for (RelationDescriptor d : myPossibleTabs) {
-      List<SNode> nodes = new ArrayList<SNode>();
-      for (SNode n : d.getNodes(baseNode)) {
-        if (n == null) continue;
-        nodes.add(n);
+      MultiMap<SNodeReference, SNodeReference> topToUses = new MultiMap<>();
+      List<SNode> nodes;
+      try {
+        nodes = d.getNodes(baseNode);
+      } catch (Throwable t){
+        LOG.error("Exception in extension: ", t);
+        nodes = Collections.emptyList();
       }
-      if (nodes.isEmpty()) continue;
 
-      result.put(d, nodes);
-      for (SNode node : nodes) {
-        getTabRemovalListener().aspectAdded(node.getContainingRoot());
-        SNodePointer nodePointer = new SNodePointer(node);
-        editedNodesNew.add(nodePointer);
-        editedDocumentsNew.add(MPSUndoUtil.getDoc(nodePointer));
+      for (SNode n : nodes) {
+        if (n == null || n.getModel() == null/* n.model == null is hack for MPS-21506*/) {
+          continue;
+        }
+        SNodeReference reference = n.getContainingRoot().getReference();
+        assert reference.resolve(getProject().getRepository()) != null : "Cannot resolve node by reference: " + reference.toString();
+        topToUses.putValue(reference, n.getReference());
+      }
+      if (topToUses.isEmpty()) {
+        continue;
+      }
+
+      for (SNodeReference top : topToUses.keySet()) {
+        editedDocumentsNew.add(MPSUndoUtil.getDoc(getProject().getRepository(), top));
+        result.add(d, top, topToUses.get(top));
       }
     }
 
     myEditedDocuments = editedDocumentsNew;
-    myEditedNodes = editedNodesNew;
 
     return result;
   }
 
-  protected TabColorProvider getColorProvider() {
+  public TabColorProvider getColorProvider() {
     return myColorProvider;
   }
 
-  ///-------------events----------------
-
-  private void addListeners() {
-    myTabRemovalListener.startListening();
-    GlobalSModelEventsManager.getInstance().addGlobalCommandListener(myRootAdditionListener);
-    FileStatusManager.getInstance(ProjectHelper.toIdeaProject(myOperationContext.getProject())).addFileStatusListener(myFileStatusListener);
+  protected final jetbrains.mps.project.Project getProject() {
+    return ProjectHelper.toMPSProject(myProject);
   }
 
-  private void removeListeners() {
-    GlobalSModelEventsManager.getInstance().removeGlobalCommandListener(myRootAdditionListener);
-    myTabRemovalListener.stopListening();
-    FileStatusManager.getInstance(ProjectHelper.toIdeaProject(myOperationContext.getProject())).removeFileStatusListener(myFileStatusListener);
-  }
-
-  private class MyTabRemovalListener extends ModelListener {
-    protected void onImportantRootRemoved(SNodePointer node) {
-      if (isDisposedNode()) return;
-      if (myBaseNode.equals(node)) return;
-      if (!isTabUpdateNeeded(node)) return;
-
-      ModelAccess.instance().runReadInEDT(new Runnable() {
-        public void run() {
-          updateTabs();
-        }
-      });
-    }
-  }
-
-  protected boolean isDisposedNode() {
-    return
-      myBaseNode.getNode() == null ||
-        myBaseNode.getModel() == null ||
-        myBaseNode.getModel().getModule() == null ||
-        ModuleRepositoryFacade.getInstance().getModule(myBaseNode.getModel().getModule().getModuleReference()) == null;
-  }
-
-  protected abstract boolean isTabUpdateNeeded(SNodePointer node);
-
-  protected abstract void updateTabColors();
-
-  protected abstract void updateTabs();
-
-  private class MyFileStatusListener implements FileStatusListener {
-    private void updateTabColorsLater() {
-      ModelAccess.instance().runReadInEDT(new Runnable() {
-        @Override
-        public void run() {
-          updateTabColors();
-        }
-      });
-    }
-
-    @Override
-    public void fileStatusesChanged() {
-      updateTabColorsLater();
-    }
-
-    @Override
-    public void fileStatusChanged(@NotNull VirtualFile virtualFile) {
-      if (virtualFile instanceof MPSNodeVirtualFile && myBaseNode.equals(((MPSNodeVirtualFile) virtualFile).getSNodePointer())) {
-        updateTabColorsLater();
-      }
-    }
-  }
-
-  ///-------------grayed mode----------------
-
-  private class CreatePanel extends JPanel {
-    public CreatePanel(final RelationDescriptor tab) {
-      super(new BorderLayout());
-
-      JLabel label = new JLabel("Click to create new aspect");
-      label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-      label.setHorizontalAlignment(SwingConstants.CENTER);
-      add(label, BorderLayout.CENTER);
-
-      this.addMouseListener(new MouseAdapter() {
-        public void mouseClicked(final MouseEvent e) {
-          ActionGroup group = ModelAccess.instance().runReadAction(new Computable<ActionGroup>() {
-            public ActionGroup compute() {
-              return CreateGroupsBuilder.getCreateGroup(myBaseNode, new NodeChangeCallback() {
-                public void changeNode(SNode newNode) {
-                  updateTabs();
-                  onNodeChange(newNode);
-                }
-              }, tab);
-            }
-          });
-
-          ActionPopupMenu popup = ActionManager.getInstance().createActionPopupMenu(ActionPlaces.UNKNOWN, group);
-          JPopupMenu popupComponent = popup.getComponent();
-          popupComponent.show(e.getComponent(), e.getX(), e.getY());
-        }
-      });
-    }
-  }
-
-  private class MySModelCommandListener implements SModelCommandListener {
-    public void eventsHappenedInCommand(List<SModelEvent> events) {
-      for (SModelEvent e : events) {
-        if (!(e instanceof SModelRootEvent)) continue;
-        SModelRootEvent re = (SModelRootEvent) e;
-        if (!re.isAdded()) continue;
-
-        updateTabs();
-        return;
-      }
-    }
-  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,28 +15,41 @@
  */
 package jetbrains.mps.nodeEditor.cellMenu;
 
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.action.INodeSubstituteAction;
-import jetbrains.mps.typesystem.inference.InequalitySystem;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.ModelDependencyResolver;
+import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
+import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.Pair;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Author: Sergey Dmitriev.
  * Time: Oct 29, 2003 2:17:38 PM
  */
-public abstract class AbstractNodeSubstituteInfo implements NodeSubstituteInfo {
-  private List<INodeSubstituteAction> myCachedActionList;
-  private Map<String, List<INodeSubstituteAction>> myPatternsToActionListsCache = new HashMap<String, List<INodeSubstituteAction>>();
-  private Map<String, List<INodeSubstituteAction>> myStrictPatternsToActionListsCache = new HashMap<String, List<INodeSubstituteAction>>();
-  private SNode myOriginalNode;
+public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
+  private static final Logger LOG = LogManager.getLogger(AbstractNodeSubstituteInfo.class);
+
+  private static SModel ourModelForTypechecking = null;
+
+  public static SModel getModelForTypechecking() {
+    return ourModelForTypechecking;
+  }
+
+  private List<SubstituteAction> myCachedActionList;
+
   private String myOriginalText;
   private EditorContext myEditorContext;
 
@@ -52,149 +65,135 @@ public abstract class AbstractNodeSubstituteInfo implements NodeSubstituteInfo {
     return myEditorContext.getOperationContext();
   }
 
-  public void setOriginalNode(SNode node) {
-    myOriginalNode = node;
-  }
-
-  public SNode getOriginalNode() {
-    return myOriginalNode;
-  }
-
+  @Override
   public void setOriginalText(String text) {
     myOriginalText = text;
   }
 
+  @Override
   public String getOriginalText() {
     return myOriginalText;
   }
 
-  protected abstract List<INodeSubstituteAction> createActions();
+  protected abstract List<SubstituteAction> createActions();
 
+  @Override
+  public void buildActions() {
+    if (myCachedActionList == null) {
+      try {
+        myEditorContext.getRepository().getModelAccess().runReadAction(() -> {
+          myCachedActionList = createActions();
+        });
+      } catch (Throwable th) {
+        LOG.error("Exception while creating substitute actions in " + this.getClass(), th);
+        myCachedActionList = new ArrayList<>();
+      }
+    }
+  }
+
+  private List<SubstituteAction> getActionsFromCache() {
+    buildActions();
+    return myCachedActionList;
+  }
+
+  @Override
   public void invalidateActions() {
     myCachedActionList = null;
-    myPatternsToActionListsCache.clear();
-    myStrictPatternsToActionListsCache.clear();
   }
 
-  public boolean hasNoActionsWithPrefix(String pattern) {
-    return getMatchingActions(pattern, false).isEmpty();
-  }
-
+  @Override
   public boolean hasExactlyNActions(final String pattern, final boolean strictMatching, final int n) {
-    return ModelAccess.instance().runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        Pair<String, List<INodeSubstituteAction>> pair = getPatternAndActions(pattern, strictMatching);
-        List<INodeSubstituteAction> result = pair.o2;
-
-        int count = 0;
-        for (INodeSubstituteAction action : result) {
-          if (strictMatching) {
-            if (action.canSubstituteStrictly(pattern)) {
-              count++;
-            }
-          } else {
-            if (action.canSubstitute(pattern)) {
-              count++;
-            }
-          }
-
-          if (count > n) return false;
+    return new ModelAccessHelper(myEditorContext.getRepository()).runReadAction(() -> {
+      int count = 0;
+      for (SubstituteAction action : getActionsFromCache()) {
+        if (shouldAddItem(action, pattern, strictMatching)) {
+          count++;
         }
 
-        return n == count;
+        if (count > n) {
+          return false;
+        }
       }
+
+      return n == count;
     });
   }
 
-  public InequalitySystem getInequalitiesSystem(EditorCell contextCell) {
+  protected SubstitutionTrial getSubstitutionTrial(EditorCell contextCell) {
     return null;
   }
 
-  public List<INodeSubstituteAction> getSmartMatchingActions(String pattern, boolean strictMatching, EditorCell contextCell) {
-    InequalitySystem inequalitiesSystem = getInequalitiesSystem(contextCell);
+  @Override
+  public List<SubstituteAction> getSmartMatchingActions(final String pattern, final boolean strictMatching, EditorCell contextCell) {
+    // TODO make this thread local maybe?
+    ourModelForTypechecking = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
+    final ModelDependencyResolver mdr = new ModelDependencyResolver(LanguageRegistry.getInstance(), getEditorContext().getRepository());
+    final ModelImports mi = new ModelImports(ourModelForTypechecking);
+    mdr.usedLanguages(getEditorContext().getModel()).forEach(mi::addUsedLanguage);
 
-    List<INodeSubstituteAction> substituteActionList = getMatchingActions(pattern, strictMatching);
-    if (inequalitiesSystem == null) return substituteActionList;
-
-    List<INodeSubstituteAction> result = new ArrayList<INodeSubstituteAction>();
-    TypeChecker.getInstance().enableTypesComputingForCompletion();
-    for (INodeSubstituteAction nodeSubstituteAction : substituteActionList) {
-      SNode type = nodeSubstituteAction.getActionType(pattern, contextCell);
-      if (type != null && inequalitiesSystem.satisfies(type)) {
-        result.add(nodeSubstituteAction);
+    try {
+      List<SubstituteAction> substituteActionList = getMatchingActions(pattern, strictMatching);
+      SubstitutionTrial substitutionTrial = getSubstitutionTrial(contextCell);
+      if (substitutionTrial == null) {
+        return substituteActionList;
       }
-    }
-    TypeChecker.getInstance().clearTypesComputedForCompletion();
-    return result;
-  }
 
-  public List<INodeSubstituteAction> getMatchingActions(final String pattern, final boolean strictMatching) {
-    return ModelAccess.instance().runReadAction(new Computable<List<INodeSubstituteAction>>() {
-      public List<INodeSubstituteAction> compute() {
-        Pair<String, List<INodeSubstituteAction>> pair = getPatternAndActions(pattern, strictMatching);
+      List<SubstituteAction> result = new ArrayList<>();
+      substitutionTrial.runTrial((acceptable) -> {
+        for (SubstituteAction nodeSubstituteAction : substituteActionList) {
+          try {
+            if (nodeSubstituteAction.isAcceptable(pattern, acceptable)) {
+              result.add(nodeSubstituteAction);
+            }
 
-        List<INodeSubstituteAction> result = new ArrayList<INodeSubstituteAction>();
-        for (INodeSubstituteAction item : pair.o2) {
-          if (strictMatching) {
-            if (item.canSubstituteStrictly(pattern)) {
-              result.add(item);
-            }
-          } else {
-            if (item.canSubstitute(pattern)) {
-              result.add(item);
-            }
+          } catch (Throwable th) {
+            LOG.error("Exception on checking smart matching conditions for action: " + (nodeSubstituteAction == null ? "null" : nodeSubstituteAction.getClass()),
+                      th);
           }
         }
+      });
 
-        if (strictMatching) {
-          myStrictPatternsToActionListsCache.put(pattern, new ArrayList<INodeSubstituteAction>(result));
-        } else {
-          myPatternsToActionListsCache.put(pattern, new ArrayList<INodeSubstituteAction>(result));
+      return result;
+    } catch (RuntimeException rte) {
+      LOG.error("Exception while building SmartMatchingActions list", rte);
+      return new ArrayList<>();
+    } finally {
+      TemporaryModels.getInstance().dispose(ourModelForTypechecking);
+      ourModelForTypechecking = null;
+    }
+  }
+
+  /**
+   * Returns the list of actions which returns true for {@link SubstituteAction#canSubstitute(String)} or
+   * {@link SubstituteAction#canSubstituteStrictly(String)} depending on the strictMatchingParameter
+   *
+   * This implementation does not filter the actions by matching text, so the client should filter the actions by matching text herself
+   * One of the options is to use {@link NodeSubstituteInfoFilterDecorator#createSubstituteInfoWithPatternMatchingFilter(SubstituteInfo, SRepository)}
+   */
+  @Override
+  public List<SubstituteAction> getMatchingActions(final String pattern, final boolean strictMatching) {
+    return new ModelAccessHelper(myEditorContext.getRepository()).runReadAction((Computable<List<SubstituteAction>>) () -> {
+      List<SubstituteAction> actionsFromCache = getActionsFromCache();
+      ArrayList<SubstituteAction> result = new ArrayList<>(actionsFromCache.size());
+      for (SubstituteAction item : actionsFromCache) {
+        try {
+          if (shouldAddItem(item, pattern, strictMatching)) {
+            result.add(item);
+          }
+        } catch (Throwable th) {
+          LOG.error("Exception on calling canSubstitute on a substitute action " + (item == null ? "null" : item.getClass()), th);
         }
-
-        return (List) result;
       }
+      result.trimToSize();
+      return result;
     });
   }
 
-  private List<INodeSubstituteAction> getActions() {
-    if (myCachedActionList == null) {
-      ModelAccess.instance().runReadAction(new Runnable() {
-        public void run() {
-          myCachedActionList = (List) createActions();
-        }
-      });
-    }
-    return Collections.unmodifiableList(myCachedActionList);
-  }
-
-  private Pair<String, List<INodeSubstituteAction>> getPatternAndActions(String pattern, boolean strictMatching) {
-    String smallPattern = pattern;
-    List<INodeSubstituteAction> result = null;
-    if (!strictMatching) {
-      if (smallPattern != null) {
-        while (smallPattern.length() > 0) {
-          if (myPatternsToActionListsCache.containsKey(smallPattern)) {
-            result = new ArrayList<INodeSubstituteAction>();
-            result.addAll(myPatternsToActionListsCache.get(smallPattern));
-            break;
-          } else {
-            smallPattern = smallPattern.substring(0, smallPattern.length() - 1);
-          }
-        }
-      }
+  private boolean shouldAddItem(SubstituteAction item, String pattern, boolean strictMatching) {
+    if (strictMatching) {
+      return item.canSubstituteStrictly(pattern);
     } else {
-      if (myStrictPatternsToActionListsCache.containsKey(smallPattern)) {
-        result = new ArrayList<INodeSubstituteAction>();
-        result.addAll(myStrictPatternsToActionListsCache.get(smallPattern));
-      } else if (myPatternsToActionListsCache.containsKey(smallPattern)) {
-        result = new ArrayList<INodeSubstituteAction>();
-        result.addAll(myPatternsToActionListsCache.get(smallPattern));
-      }
+      return item.canSubstitute(pattern);
     }
-    if (result == null) {
-      result = new ArrayList<INodeSubstituteAction>(getActions());
-    }
-    return new Pair<String, List<INodeSubstituteAction>>(smallPattern, result);
   }
 }

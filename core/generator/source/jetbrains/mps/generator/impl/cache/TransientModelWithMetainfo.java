@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,17 @@
  */
 package jetbrains.mps.generator.impl.cache;
 
-import jetbrains.mps.generator.impl.GenerationFailureException;
-import jetbrains.mps.generator.impl.dependencies.DependenciesBuilder;
-import jetbrains.mps.smodel.SModel;
-import jetbrains.mps.smodel.SModelReference;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodeId;
+import jetbrains.mps.util.io.ModelInputStream;
+import jetbrains.mps.util.io.ModelOutputStream;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 /**
@@ -42,8 +44,8 @@ public class TransientModelWithMetainfo {
   public TransientModelWithMetainfo(SModelReference reference, List<SNode> roots) {
     myReference = reference;
     myRoots = roots;
-    myRootToOriginal = new HashMap<SNodeId, SNodeId>();
-    myMappingsMemento = new HashMap<SNodeId, MappingsMemento>();
+    myRootToOriginal = new HashMap<>();
+    myMappingsMemento = new HashMap<>();
   }
 
   public List<SNode> getRoots() {
@@ -51,11 +53,11 @@ public class TransientModelWithMetainfo {
   }
 
   public MappingsMemento getMappingsMemento(String originalId) {
-    return myMappingsMemento.get(SNodeId.fromString(originalId));
+    return myMappingsMemento.get(PersistenceFacade.getInstance().createNodeId(originalId));
   }
 
   public MappingsMemento getMappingsMemento(SNode originalRoot, boolean create) {
-    SNodeId key = originalRoot == null ? null : originalRoot.getSNodeId();
+    SNodeId key = originalRoot == null ? null : originalRoot.getNodeId();
     MappingsMemento mappingsMemento = myMappingsMemento.get(key);
     if(mappingsMemento == null && create) {
       mappingsMemento = new MappingsMemento();
@@ -65,11 +67,11 @@ public class TransientModelWithMetainfo {
   }
 
   public void updateMappings(String originalId, MappingsMemento mappingsMemento) {
-    myMappingsMemento.put(SNodeId.fromString(originalId), mappingsMemento);
+    myMappingsMemento.put(PersistenceFacade.getInstance().createNodeId(originalId), mappingsMemento);
   }
 
   public String getOriginal(SNode root) {
-    SNodeId id = myRootToOriginal.get(root.getSNodeId());
+    SNodeId id = myRootToOriginal.get(root.getNodeId());
     if(id == null) {
       return CONDITIONALS_ID;
     }
@@ -77,7 +79,7 @@ public class TransientModelWithMetainfo {
   }
 
   public void setOriginal(SNodeId sNodeId, String originalId) {
-    myRootToOriginal.put(sNodeId, originalId.equals(CONDITIONALS_ID) ? null : SNodeId.fromString(originalId));
+    myRootToOriginal.put(sNodeId, originalId.equals(CONDITIONALS_ID) ? null : PersistenceFacade.getInstance().createNodeId(originalId));
   }
 
   public void save(ModelOutputStream os) throws IOException {
@@ -126,21 +128,5 @@ public class TransientModelWithMetainfo {
     TransientModelWithMetainfo result = new TransientModelWithMetainfo(modelReference, roots);
     result.loadMetainfo(is);
     return result;
-  }
-
-  public static TransientModelWithMetainfo create(SModel model, DependenciesBuilder builder) throws GenerationFailureException {
-    ArrayList<SNode> roots = new ArrayList<SNode>();
-    for (SNode root1 : model.roots()) {
-      roots.add(root1);
-    }
-    TransientModelWithMetainfo metainfo = new TransientModelWithMetainfo(model.getSModelReference(), roots);
-    Iterator<SNode> it = model.rootsIterator();
-    while (it.hasNext()) {
-      SNode root = it.next();
-      SNode node = builder.getOriginalForOutput(root);
-      metainfo.myRootToOriginal.put(root.getSNodeId(), node == null ? null: node.getSNodeId());
-    }
-    builder.updateUnchanged(metainfo);
-    return metainfo;
   }
 }

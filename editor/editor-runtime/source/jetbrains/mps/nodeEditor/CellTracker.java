@@ -16,17 +16,18 @@
 package jetbrains.mps.nodeEditor;
 
 import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Component;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Collections;
 
 public class CellTracker {
-  private Set<EditorCell> myCellsWithErrorState = new HashSet<EditorCell>();
-  private Set<EditorCell_Component> myComponentCells = new HashSet<EditorCell_Component>();
-  private Set<EditorCell_Collection> myFoldableCells = new HashSet<EditorCell_Collection>();
+  private Set<EditorCell> myCellsWithErrorState = new HashSet<>();
+  private Set<EditorCell_Property> myTransactionalCells = new HashSet<>();
+  private Set<EditorCell_WithComponent> myComponentCells = new HashSet<>();
+  private Set<EditorCell_Collection> myFoldableCells = new HashSet<>();
 
   public Set<EditorCell> getErrorCells() {
     return Collections.unmodifiableSet(myCellsWithErrorState);
@@ -40,15 +41,27 @@ public class CellTracker {
     myCellsWithErrorState.remove(cell);
   }
 
-  public Set<EditorCell_Component> getComponentCells() {
+  public Set<EditorCell_Property> getTransactionalCells() {
+    return Collections.unmodifiableSet(myTransactionalCells);
+  }
+
+  public void addTransactionalCell(EditorCell_Property cell) {
+    myTransactionalCells.add(cell);
+  }
+
+  public void removeTransactionalCell(EditorCell_Property cell) {
+    myTransactionalCells.remove(cell);
+  }
+
+  public Set<EditorCell_WithComponent> getComponentCells() {
     return Collections.unmodifiableSet(myComponentCells);
   }
 
-  public void addComponentCell(EditorCell_Component cell) {
+  public void addComponentCell(EditorCell_WithComponent cell) {
     myComponentCells.add(cell);
   }
 
-  public void removeComponentCell(EditorCell_Component cell) {
+  public void removeComponentCell(EditorCell_WithComponent cell) {
     myComponentCells.remove(cell);
   }
 

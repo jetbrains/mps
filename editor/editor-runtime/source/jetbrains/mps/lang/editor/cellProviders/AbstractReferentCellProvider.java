@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,88 +16,68 @@
 package jetbrains.mps.lang.editor.cellProviders;
 
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteEasily;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.nodeEditor.attribute.AttributeKind;
-import jetbrains.mps.nodeEditor.CellActionType;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
+import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode.DeleteDirection;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_Insert;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
-import jetbrains.mps.nodeEditor.cellMenu.DefaultChildSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellMenu.DefaultReferenceSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteInfo;
+import jetbrains.mps.nodeEditor.cellMenu.DefaultSChildSubstituteInfo;
+import jetbrains.mps.nodeEditor.cellMenu.NullSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
-import jetbrains.mps.smodel.*;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
+import jetbrains.mps.util.IterableUtil;
+import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SAbstractLink;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SReference;
+
+import java.util.List;
 
 public abstract class AbstractReferentCellProvider extends CellProviderWithRole {
+  public static final Logger LOG = Logger.wrap(LogManager.getLogger(AbstractReferentCellProvider.class));
 
-  public static final Logger LOG = Logger.getLogger(AbstractReferentCellProvider.class);
-
-  protected SNode myLinkDeclaration;
-  protected String myGenuineRole;
-  protected SNode myGenuineLinkDeclaration;
-
-  protected boolean myIsAggregation;
-  protected boolean myIsCardinality0;
-  protected boolean myIsCardinality1;
+  private SAbstractLink myLink;
+  private String myRoleName; //used for error text ONLY
+  private SAbstractConcept myTargetConcept;
 
   private String myErrorText = null;
 
   //it is important for descendants to have a unique constructor and with the same parameters as this one
-  public AbstractReferentCellProvider(SNode node, EditorContext context) {
+  public AbstractReferentCellProvider(@NotNull SNode node, SAbstractLink link, SAbstractConcept targetConcept, String roleName, EditorContext context) {
     super(node, context);
+    myLink = link;
+    myRoleName = roleName;
+    myTargetConcept = targetConcept;
   }
 
-
-  public void
-  setRole(Object role) {
-    myLinkDeclaration = getSNode().getLinkDeclaration(role.toString());
-    if (myLinkDeclaration == null) {
-      myErrorText = "?" + role.toString() + "?";
-      LOG.error("can't find a link declaration '" + role.toString() + "' in " + getSNode(), getSNode());
-      return;
-    }
-
-    NodeReadAccessCasterInEditor.runReadTransparentAction(new Runnable() {
-      public void run() {
-        myGenuineLinkDeclaration = SModelUtil.getGenuineLinkDeclaration(myLinkDeclaration);
-        myGenuineRole = SModelUtil.getLinkDeclarationRole(myGenuineLinkDeclaration);
-        myIsAggregation = !SNodeUtil.getLinkDeclaration_IsReference(myGenuineLinkDeclaration);
-        myIsCardinality1 = SNodeUtil.getLinkDeclaration_IsAtLeastOneMultiplicity(myGenuineLinkDeclaration);
-        myIsCardinality0 = !myIsCardinality1;
-      }
-    });
+  protected SAbstractLink getLink() {
+    return myLink;
   }
 
-  //gets an attribute for this provider's node hanging on this provider's role
-  public SNode getRoleAttribute() {
-    return AttributeOperations.getLinkAttribute(getSNode(), null, myGenuineRole);
+  protected String getRoleName() {
+    return myRoleName;
   }
 
-  // gets a kind of attributes possibly hanging on this provider's role
-  public Class getRoleAttributeClass() {
-    return AttributeKind.Reference.class;
+  protected SAbstractConcept getTargetConcept() {
+    return myTargetConcept;
   }
 
+  protected boolean isAggregation() {
+    return myLink instanceof SContainmentLink;
+  }
+
+  @Override
   public EditorCell createEditorCell(EditorContext context) {
-    EditorCell result = createCell_internal(myEditorContext);
-    // do not override role/link-declaration if they are already set
-    if (result.getRole() == null &&
-      result.getLinkDeclaration() == null) {
-      result.setRole(myGenuineRole);
-      if (myGenuineLinkDeclaration != null) {
-        result.setLinkDeclaration(myGenuineLinkDeclaration);
-      } else {
-        LOG.error("Can't find link declaration " + myGenuineRole);
-      }
-    }
-    return result;
+    return createCell_internal(myEditorContext);
   }
 
   protected EditorCell createCell_internal(EditorContext context) {
@@ -106,68 +86,77 @@ public abstract class AbstractReferentCellProvider extends CellProviderWithRole 
       return createErrorCell(myErrorText, node, context);
     }
     SNode referentNode = null;
-    if (myIsAggregation) {
-      referentNode = node.getChild(myGenuineRole);
+    if (isAggregation()) {
+      List<? extends SNode> ch = IterableUtil.asList(node.getChildren(((SContainmentLink) myLink)));
+      referentNode = ch.iterator().hasNext() ? ch.iterator().next() : null;
     } else {
-      SReference reference = node.getReference(myGenuineRole);
+      SReference reference = node.getReference(((SReferenceLink) myLink));
       if (reference != null) {
         referentNode = reference.getTargetNode();
-        if (referentNode == null || context.getScope().getModelDescriptor(referentNode.getModel().getSModelReference()) == null) {
-          String rinfo = reference.getResolveInfo();
-          myErrorText = rinfo != null ? rinfo : "?" + SModelUtil.getLinkDeclarationRole(myLinkDeclaration) + "?";
+        if (referentNode == null || referentNode.getModel() == null) {
+          String rinfo = ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
+          myErrorText = rinfo != null ? rinfo : "?" + myRoleName + "?";
           return createErrorCell(myErrorText, node, context);
         }
       }
     }
 
     if (referentNode == null) {
-      EditorCell_Label noRefCell = myIsCardinality1 ?
-        new EditorCell_Error(context, node, myNoTargetText) :
-        new EditorCell_Constant(context, node, "");
+      EditorCell_Label noRefCell = myLink.isOptional() ? new EditorCell_Constant(context, node, "") : new EditorCell_Error(context, node, myNoTargetText);
       noRefCell.setText("");
       noRefCell.setEditable(true);
       noRefCell.setDefaultText(myNoTargetText);
 
-      noRefCell.setAction(CellActionType.DELETE, new CellAction_DeleteEasily(getSNode()));
+      noRefCell.setAction(CellActionType.DELETE, new CellAction_DeleteEasily(getSNode(), DeleteDirection.FORWARD));
+      noRefCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteEasily(getSNode(), DeleteDirection.BACKWARD));
 
-      if (myIsAggregation) {
-        noRefCell.setAction(CellActionType.INSERT, new CellAction_Insert(getSNode(), myGenuineRole));
-        noRefCell.setAction(CellActionType.INSERT_BEFORE, new CellAction_Insert(getSNode(), myGenuineRole));
+      if (isAggregation()) {
+        SContainmentLink cl = (SContainmentLink) myLink;
+        noRefCell.setAction(CellActionType.INSERT, new CellAction_Insert(getSNode(), cl));
+        noRefCell.setAction(CellActionType.INSERT_BEFORE, new CellAction_Insert(getSNode(), cl));
       }
 
-      noRefCell.setCellId("empty_" + SModelUtil.getLinkDeclarationRole(myLinkDeclaration));
+      noRefCell.setCellId("empty_" + myRoleName);
+      setRoleForCellWithNoTarget(noRefCell);
       return noRefCell;
     }
 
     return createRefCell(context, referentNode, node);
   }
 
-  protected EditorCell createErrorCell(String error, SNode node, EditorContext context) {
-    EditorCell_Error errorCell = new EditorCell_Error(context, node, error);
-    errorCell.setAction(CellActionType.DELETE, new CellAction_DeleteNode(getSNode()));
-    return errorCell;
+  protected abstract EditorCell createErrorCell(String error, SNode node, EditorContext context);
+
+  private void setRoleForCellWithNoTarget(EditorCell cell) {
+    if (myLink != null) {
+      cell.setSRole(myLink);
+      if (!isAggregation()) {
+        cell.setReferenceCell(true);
+      }
+    }
   }
 
   protected abstract EditorCell createRefCell(EditorContext context, SNode referencedNode, SNode node);
 
-  public NodeSubstituteInfo createDefaultSubstituteInfo() {
-    if (myIsAggregation) return new DefaultChildSubstituteInfo(getSNode(), myLinkDeclaration, myEditorContext);
-    return new DefaultReferenceSubstituteInfo(getSNode(), myLinkDeclaration, myEditorContext);
+  @Override
+  public SubstituteInfo createDefaultSubstituteInfo() {
+    if (isAggregation()) {
+      return new DefaultSChildSubstituteInfo(getSNode(), ((SContainmentLink) myLink), myEditorContext);
+    }
+    return new NullSubstituteInfo();
   }
 
-
-  public SNode getLinkDeclaration() {
-    return myLinkDeclaration;
-  }
-
+  @Override
   public CellContext getCellContext() {
-    if (myIsAggregation) {
+    if (isAggregation()) {
       SNode parentNode = getSNode();
-      SNode currentChild = parentNode.getChild(myGenuineRole);
-      return new AggregationCellContext(parentNode, currentChild, myLinkDeclaration);
+      SContainmentLink cl = (SContainmentLink) myLink;
+      List<? extends SNode> ch = IterableUtil.asList(parentNode.getChildren(cl));
+      SNode currentChild = ch.iterator().hasNext() ? ch.iterator().next() : null;
+      return new AggregationCellContext(parentNode, currentChild, cl, myTargetConcept);
     }
     SNode referenceNode = getSNode();
-    SNode currentReferent = referenceNode.getReferent(myGenuineRole);
-    return new ReferenceCellContext(referenceNode, currentReferent, myLinkDeclaration);
+    SReferenceLink rl = (SReferenceLink) myLink;
+    SNode currentReferent = referenceNode.getReferenceTarget(rl);
+    return new ReferenceCellContext(referenceNode, currentReferent, rl, myTargetConcept);
   }
 }

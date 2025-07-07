@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,17 @@
  */
 package jetbrains.mps.generator.impl.plan;
 
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.util.GraphUtil;
+import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Uses linear algorithms.
@@ -27,33 +33,30 @@ import java.util.*;
  * Evgeny Gryaznov, Jan 11, 2010
  */
 public class ConnectedComponentPartitioner {
-
   private static Component[] EMPTY_COMPONENTS = new Component[0];
 
-  private int count;
+  private int myCount;
   private SNode[] myRoots;
   private int[][] myDependencies;
 
   public ConnectedComponentPartitioner(List<SNode> roots) {
-    this.count = roots.size();
-    this.myRoots = roots.toArray(new SNode[this.count]);
+    myCount = roots.size();
+    myRoots = roots.toArray(new SNode[this.myCount]);
     myDependencies = buildDependencies();
   }
 
   private int[][] buildDependencies() {
-    int[] dependsOn = new int[count];
-    int[][] result = new int[count][];
+    int[] dependsOn = new int[myCount];
+    int[][] result = new int[myCount][];
 
-    Map<SNode, Integer> rootIndex = new HashMap<SNode, Integer>();
+    Map<SNode, Integer> rootIndex = new HashMap<>();
     for (int i = 0; i < myRoots.length; i++) {
       rootIndex.put(myRoots[i], i);
     }
 
-    for (int index = 0; index < count; index++) {
+    for (int index = 0; index < myCount; index++) {
       SNode root = myRoots[index];
-      Arrays.fill(dependsOn, 0);
-      buildNodeDependencies(root, dependsOn, rootIndex);
-      for (SNode node : root.getDescendants(null)) {
+      for (SNode node : SNodeUtil.getDescendants(root, null, true)) {
         buildNodeDependencies(node, dependsOn, rootIndex);
       }
       dependsOn[index] = 0;
@@ -64,12 +67,12 @@ public class ConnectedComponentPartitioner {
 
   private void buildNodeDependencies(SNode node, int[] dependsOn, Map<SNode, Integer> rootIndex) {
     for (SReference ref : node.getReferences()) {
-      if (ref.isExternal()) {
-        continue;
-      }
+      SModel sm = node.getModel();
+      assert sm != null;
+      if (!sm.getReference().equals(ref.getTargetSModelReference())) continue;
       SNode targetNode = ref.getTargetNode();
       if (targetNode != null) {
-        Integer targetIndex = rootIndex.get(targetNode.getTopmostAncestor());
+        Integer targetIndex = rootIndex.get(targetNode.getContainingRoot());
         if (targetIndex != null) {
           dependsOn[targetIndex] = 1;
         }
@@ -80,11 +83,11 @@ public class ConnectedComponentPartitioner {
   public List<SNode[]> partition() {
     int[][] partitions = GraphUtil.components(GraphUtil.removeOrientation(myDependencies));
 
-    List<SNode[]> result = new ArrayList<SNode[]>(partitions.length + 1);
-    for (int i = 0; i < partitions.length; i++) {
-      SNode[] proots = new SNode[partitions[i].length];
+    List<SNode[]> result = new ArrayList<>(partitions.length + 1);
+    for (int[] partition : partitions) {
+      SNode[] proots = new SNode[partition.length];
       for (int e = 0; e < proots.length; e++) {
-        proots[e] = myRoots[partitions[i][e]];
+        proots[e] = myRoots[partition[e]];
       }
       result.add(proots);
     }
@@ -113,13 +116,13 @@ public class ConnectedComponentPartitioner {
 
       // calc dependencies
       int count = 0;
-      Arrays.fill(dependencies, (byte)0);
+      Arrays.fill(dependencies, (byte) 0);
       for (int e = 0; e < roots.length; e++) {
         int rootIndex = partitions[i][e];
-        for(int dependsOn : myDependencies[rootIndex]) {
+        for (int dependsOn : myDependencies[rootIndex]) {
           int componentIndex = rootToComponent[dependsOn];
           assert componentIndex >= 0;
-          if(componentIndex < i && dependencies[componentIndex] == 0) {
+          if (componentIndex < i && dependencies[componentIndex] == 0) {
             dependencies[componentIndex] = 1;
             count++;
           }
@@ -127,8 +130,8 @@ public class ConnectedComponentPartitioner {
       }
 
       Component[] dep = count > 0 ? new Component[count] : EMPTY_COMPONENTS;
-      for(int e = 0; count > 0 && e < i; e++) {
-        if(dependencies[e] == 1) {
+      for (int e = 0; count > 0 && e < i; e++) {
+        if (dependencies[e] == 1) {
           dep[--count] = result[e];
         }
       }
@@ -139,10 +142,8 @@ public class ConnectedComponentPartitioner {
     return result;
   }
 
-
+  @Override
   public String toString() {
-    Component[] components = partitionStrong();
-
     int[][] strongPartitions = GraphUtil.tarjan(myDependencies);
     int[][] partitions = GraphUtil.components(GraphUtil.removeOrientation(myDependencies));
 
@@ -153,16 +154,16 @@ public class ConnectedComponentPartitioner {
     StringBuffer sb = new StringBuffer();
     sb.append(myRoots.length).append(" roots, ").append(partitions.length).append(" components\n");
     for (int i = 0; i < partitions.length; i++) {
-      sb.append("#").append(i).append("(").append(partitions[i].length).append("): ");
+      sb.append('#').append(i).append('(').append(partitions[i].length).append("): ");
       for (int e = 0; e < partitions[i].length; e++) {
-        sb.append(" ").append(myRoots[partitions[i][e]]);
+        sb.append(' ').append(myRoots[partitions[i][e]]);
       }
       sb.append('\n');
     }
     return sb.toString();
   }
 
-  public class Component {
+  public static class Component {
     private final SNode[] roots;
     private final Component[] dependsOn;
     private boolean isDirty;

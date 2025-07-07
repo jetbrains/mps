@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,100 +15,102 @@
  */
 package jetbrains.mps.intentions;
 
-import jetbrains.mps.errors.QuickFix_Runtime;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
-import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.Pair;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.errors.item.EditorQuickFix;
+import jetbrains.mps.errors.item.RuleIdFlavouredItem.TypesystemRuleId;
+import jetbrains.mps.nodeEditor.checking.QuickFixRuntimeEditorWrapper;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import jetbrains.mps.openapi.intentions.IntentionExecutable;
+import jetbrains.mps.openapi.intentions.Kind;
+import jetbrains.mps.util.SNodeOperations;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
 
-public class QuickFixAdapter extends BaseIntention  {
-  private QuickFix_Runtime myQuickFix;
-  private boolean myIsError;
-  public QuickFixAdapter(QuickFix_Runtime quickFix, boolean isError) {
+import static jetbrains.mps.errors.item.RuleIdFlavouredItem.FLAVOUR_RULE_ID;
+
+public class QuickFixAdapter extends OldBaseIntentionFactory {
+  private EditorQuickFix myQuickFix;
+  private final MessageStatus myStatus;
+
+  public QuickFixAdapter(@NotNull EditorQuickFix quickFix, @NotNull MessageStatus status) {
     myQuickFix = quickFix;
-    myIsError = isError;
+    myStatus = status;
   }
 
-  public String getConcept() {
-    return null;
+  @Override
+  public String getPersistentStateKey() {
+    return myQuickFix.toPredicate(myQuickFix.getIdFlavours()).serialize();
   }
 
-  public boolean isParameterized() {
-    return false;
-  }
-
-  public String getDescription(SNode node, EditorContext editorContext) {
-    return myQuickFix.getDescription(node);
-  }
-
+  @Override
   public boolean isApplicable(SNode node, EditorContext editorContext) {
-    return false;
+    /*Quick fixes are added "manually" by typesystem rules.
+    * Having a quick fix in messages already means that is is applicable.
+    * So, return true.*/
+    return true;
   }
 
+  @Override
   public boolean isAvailableInChildNodes() {
     return true;
   }
 
-  public List parameter(SNode node, EditorContext editorContext) {
-    return null;
-  }
-
-  public void execute(SNode node, EditorContext editorContext) {
-    EditorCell selectedCell = editorContext.getSelectedCell();
-    int caretX = -1;
-    int caretY = -1;
-    boolean restoreCaretPosition = false;
-    if (selectedCell != null && selectedCell.getSNode().getAncestors(true).contains(node)) {
-      caretX = selectedCell.getCaretX();
-      caretY = selectedCell.getBaseline();
-      restoreCaretPosition= true;
+  @Override
+  public Kind getKind() {
+    switch (myStatus) {
+      case OK: return Kind.QUICKFIX;
+      case WARNING: return Kind.QUICKFIX;
+      case ERROR: return Kind.ERROR;
     }
-    myQuickFix.execute(node);
-    if (restoreCaretPosition) {
-      editorContext.flushEvents();
-      EditorCell rootCell = editorContext.getNodeEditorComponent().getRootCell();
-      EditorCell leaf = rootCell.findLeaf(caretX, caretY);
-      if (leaf != null) {
-        editorContext.getNodeEditorComponent().changeSelection(leaf);
-        leaf.setCaretX(caretX);
-      }
-    }
+    return Kind.NORMAL;
   }
 
-  public IntentionType getType() {
-    return myIsError ? IntentionType.ERROR : IntentionType.NORMAL;
-    //return IntentionType.QUICKFIX;
-  }
-
-  public String getLocationString() {
-    return null;  //todo?
-  }
-
-  //if generated returns source, if not returns null
-  public SNode getNodeByIntention() {
-    String classFQName = myQuickFix.getClass().getName();
-    SModelReference reference = SModelReference.fromString(NameUtil.namespaceFromLongName(classFQName));
-    SModelDescriptor sModelDescriptor = GlobalScope.getInstance().getModelDescriptor(reference);
-    if (sModelDescriptor != null) {
-      SModel model = sModelDescriptor.getSModel();
-      if (model != null) {
-        String shortName = NameUtil.shortNameFromLongName(classFQName);
-        String rootName = shortName.substring(0, shortName.length() - "_QuickFix".length());
-        return SModelOperations.getRootByName(model,rootName);
-      }
+  @Override
+  public SNodeReference getIntentionNodeReference() {
+    Collection<TypesystemRuleId> typesystemRuleIds = FLAVOUR_RULE_ID.getCollection(myQuickFix);
+    if (typesystemRuleIds.size() == 1) {
+      return typesystemRuleIds.iterator().next().getSourceNode();
     }
     return null;
   }
 
-  public List<Intention> getParameterizedInstances(SNode node, EditorContext editorContext) {
-    List<Intention> list = new ArrayList<Intention>();
-    list.add(this);
-    return list;
+  @Override
+  public String getPresentation() {
+    return myQuickFix.getClass().getName();
+  }
+
+  @Override
+  public boolean isSurroundWith() {
+    return false;
+  }
+
+  @Override
+  public Collection<IntentionExecutable> instances(SNode node, EditorContext editorContext) {
+    return Collections.singleton(new Executable());
+  }
+
+  private class Executable implements IntentionExecutable {
+    @Override
+    public String getDescription(SNode node, EditorContext editorContext) {
+      return myQuickFix.getDescription(editorContext.getRepository());
+    }
+
+    @Override
+    public void execute(SNode node, EditorContext editorContext) {
+      EditorCell selectedCell = editorContext.getSelectedCell();
+      boolean restoreCaretPosition = selectedCell != null && SNodeOperations.isAncestor(node, selectedCell.getSNode());
+      QuickFixRuntimeEditorWrapper.getInstance(myQuickFix).execute(editorContext, restoreCaretPosition);
+    }
+
+    @Override
+    public IntentionDescriptor getDescriptor() {
+      return QuickFixAdapter.this;
+    }
   }
 }

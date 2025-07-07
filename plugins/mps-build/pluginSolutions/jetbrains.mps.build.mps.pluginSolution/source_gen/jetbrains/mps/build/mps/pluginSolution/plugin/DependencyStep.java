@@ -11,29 +11,30 @@ import jetbrains.mps.ide.common.LayoutUtil;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import com.intellij.ide.wizard.CommitStepException;
-import org.jetbrains.annotations.NotNull;
 
 public class DependencyStep extends AbstractStep {
   private final AbstractBuildGenerator myGenerator;
   private final IErrorHandler myHandler;
-  private int mySelectedIndex = DependencyStep.DependencyKind.DEFAULT;
+  private int mySelectedIndex = DependencyKind.DEFAULT;
 
   public DependencyStep(AbstractBuildGenerator buildGenerator, IErrorHandler handler) {
     myGenerator = buildGenerator;
     myHandler = handler;
   }
 
+  @Override
   public JComponent createMainComponent() {
     JPanel panel = new JPanel(new GridBagLayout());
 
     ButtonGroup group = new ButtonGroup();
 
-    for (DependencyStep.DependencyKind kind : DependencyStep.DependencyKind.values()) {
+    for (DependencyKind kind : DependencyKind.values()) {
       final int index = kind.ordinal();
       final JRadioButton button = new JRadioButton(kind.getText(), index == mySelectedIndex);
       panel.add(button, LayoutUtil.createLabelConstraints(index));
       group.add(button);
       button.addActionListener(new ActionListener() {
+        @Override
         public void actionPerformed(ActionEvent e) {
           if (button.isSelected()) {
             mySelectedIndex = index;
@@ -45,6 +46,7 @@ public class DependencyStep extends AbstractStep {
     return panel;
   }
 
+  @Override
   public String getDescription() {
     return "Select distribution kind.";
   }
@@ -62,28 +64,19 @@ public class DependencyStep extends AbstractStep {
   @Override
   public void _commit(boolean finished) throws CommitStepException {
     super._commit(finished);
-    myGenerator.setDependencyKind(DependencyStep.DependencyKind.values()[mySelectedIndex]);
+    myGenerator.setDependencyKind(DependencyKind.values()[mySelectedIndex]);
   }
 
-  @NotNull
-  @Override
-  public String getImageText() {
-    return "Distribution Kind";
-  }
-
-  public static   enum DependencyKind {
+  public enum DependencyKind {
     MPS("Plug-in for MPS"),
     IDEA("Plug-in for IntelliJ IDEA"),
     STANDALONE("Standalone IDE");
 
     public static final int DEFAULT = 0;
-
     private final String myText;
-
     DependencyKind(String text) {
       myText = text;
     }
-
     public String getText() {
       return myText;
     }

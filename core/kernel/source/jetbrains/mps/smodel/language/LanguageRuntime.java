@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,118 +15,287 @@
  */
 package jetbrains.mps.smodel.language;
 
-import jetbrains.mps.generator.runtime.TemplateModule;
-import jetbrains.mps.ide.findusages.BaseFindUsagesDescriptor;
-import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
-import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
-import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
-import jetbrains.mps.smodel.runtime.interpreted.BehaviorAspectInterpreted;
-import jetbrains.mps.smodel.runtime.interpreted.ConstraintsAspectInterpreted;
-import jetbrains.mps.smodel.runtime.interpreted.StructureAspectInterpreted;
-import jetbrains.mps.smodel.structure.*;
+import jetbrains.mps.smodel.BootstrapLanguages;
+import jetbrains.mps.smodel.adapter.ids.SLanguageId;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.runtime.AspectExtensionsAware;
+import jetbrains.mps.smodel.runtime.ILanguageAspect;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Collection;
-
-import static jetbrains.mps.smodel.structure.DescriptorUtils.getObjectByClassNameForLanguageNamespace;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.function.Consumer;
 
 /**
- * evgeny, 3/11/11
+ * Runtime representation of a language, extension point for various language aspects.
+ * Dependency from typesystem, find usages and other language aspects is transitional, eventually (after 3.2)
+ * this class shall be generic and aware of {@link jetbrains.mps.smodel.runtime.ILanguageAspect} only.
+ * It shall not load any classes through reflection (any class-loading of generated code/aspects is responsibility of
+ * generated language runtime class).
+ * <p/>
+ * Language runtime keeps track of aspects queried (instantiates them lazily).
  */
 public abstract class LanguageRuntime {
-  private DescriptorProvider<BehaviorDescriptor> _behaviorDescriptor;
-  private DescriptorProvider<FacetDescriptor> facetDescriptor;
+  private final ConcurrentMap<Class<? extends ILanguageAspect>, ILanguageAspect> myAspectDescriptors = new ConcurrentHashMap<>();
+  private final List<LanguageRuntime> myExtendingLanguages = new ArrayList<>();
+  private final List<LanguageRuntime> myExtendedLanguages = new ArrayList<>();
+  private LanguageRegistry myLanguageRegistry;
 
-  private StructureAspectDescriptor structureDescriptor;
-  private BehaviorAspectDescriptor behaviorDescriptor;
-  private ConstraintsAspectDescriptor constraintsDescriptor;
-  private ExtensionDescriptor myExtensionDescriptor;
-
+  /**
+   * @return full name of the language, never {@code null}.
+   */
   public abstract String getNamespace();
 
-  public IHelginsDescriptor getTypesystem() {
-    // TODO generate
-    return new LanguageRuntimeInterpreted(ModuleRepositoryFacade.getInstance().getModule(getNamespace(), Language.class)).getTypesystem();
+  /**
+   * @return identity of the language, never {@code null}. Generated LanguageRuntime classes shall override return value
+   */
+  public abstract SLanguageId getId(); // FIXME supply a cons that takes mandatory values (id, name), rather than overriding methods in generated classes
+
+
+  /**
+   * @return persistable identity of a deployed language
+   */
+  public final SLanguage getIdentity() {
+    // since 2018.2. XXX replace usages MetaAdapterFactory.getLanguage(langRuntime.getId, langRuntime.getNamespace) with this method
+    return MetaAdapterFactory.getLanguage(getId(), getNamespace());
   }
 
-  public BaseFindUsagesDescriptor getFindUsages() {
-    return null;
+  /**
+   * Generated LanguageRuntime classes shall override this method
+   * @since 3.2
+   */
+  public abstract int getVersion();
+
+  public Collection<? extends GeneratorRuntime> getGenerators() {
+    ArrayList<GeneratorRuntime> rv = new ArrayList<>(4);
+    populateRegisteredGenerators(rv);
+    return rv;
   }
 
-  public abstract Collection<TemplateModule> getGenerators();
-
-  @Deprecated
-  private <T> DescriptorProvider<T> getDescriptorProvider(String aspectName, DescriptorProvider<T> defaultProvider) {
-    String className = getNamespace() + "." + aspectName;
-    DescriptorProvider<T> compiled = (DescriptorProvider<T>) getObjectByClassNameForLanguageNamespace(className, DescriptorProvider.class, getNamespace(), true);
-    return compiled != null ? compiled : defaultProvider;
-  }
-
-  @Deprecated
-  public DescriptorProvider<BehaviorDescriptor> getBehaviorAspect() {
-    if (_behaviorDescriptor == null) {
-      _behaviorDescriptor = getDescriptorProvider("behavior.BehaviorAspectDescriptor", LanguageRuntimeInterpreted.BEHAVIOR_PROVIDER);
+  /**
+   * Provide aspect instance associated with the language. Aspect is instantiated only once, lazily (the first time asked)
+   * and the same instance is returned for each subsequent calls.
+   * <p>
+   * At the moment, sole mechanism to supply new aspect is code in generated language runtime subclass (i.e. there's no mechanism yet to
+   * add aspects dynamically).
+   * <p>
+   * Calls {@link LanguageRuntimeAware#setLanguageRuntime(LanguageRuntime)} on aspects implementing {@link LanguageRuntimeAware} after creation, passing itself
+   * as the parameter.
+   *
+   * @param aspectClass identifies aspect to retrieve
+   * @param <T>         subtype of {@link jetbrains.mps.smodel.runtime.ILanguageAspect}
+   * @return instance of aspect implementation if there's one for the language
+   * @see #createAspect(Class)
+   * @see jetbrains.mps.smodel.runtime.ILanguageAspect
+   */
+  public final <T extends ILanguageAspect> T getAspect(@NotNull Class<T> aspectClass) {
+    try {
+      T aspectDescriptor = aspectClass.cast(myAspectDescriptors.get(aspectClass));
+      if (aspectDescriptor == null) {
+        aspectDescriptor = createAspect(aspectClass);
+        if (aspectDescriptor == null) {
+          return null;
+        }
+        if (aspectDescriptor instanceof LanguageRuntimeAware) {
+          ((LanguageRuntimeAware) aspectDescriptor).setLanguageRuntime(this);
+        }
+        T alreadyThere = aspectClass.cast(myAspectDescriptors.putIfAbsent(aspectClass, aspectDescriptor));
+        if (alreadyThere != null) {
+          return alreadyThere;
+        }
+      }
+      return aspectDescriptor;
+    } catch (Throwable th) {
+      String msg = String.format("Failed to instantiate aspect %s in language %s", aspectClass, getNamespace());
+      Logger.getLogger(LanguageRuntime.class).error(msg, th);
+      return null;
     }
-    return _behaviorDescriptor;
   }
 
-  public DescriptorProvider<FacetDescriptor> getFacetProvider() {
-    if (facetDescriptor == null) {
-      facetDescriptor = getDescriptorProvider("plugin.FacetAspectDescriptor", LanguageRuntimeInterpreted.FACET_PROVIDER);
-    }
-    return facetDescriptor;
+  /**
+   * Method every language shall implement to tell its capabilities.
+   * Implementation doesn't need to keep state, {@link #getAspect(Class)} does that.
+   * @param aspectClass never null identifying interface of the aspect
+   * @param <T> aspect class
+   * @return may return {@code null} indicating language has no such aspect
+   */
+  protected abstract <T extends ILanguageAspect> T createAspect(Class<T> aspectClass);
+
+  /*
+   * perhaps, could use WeakHashMap, although proper registration/un-registration sequence shall enforce no stale entries
+   */
+  private final Map<SModuleReference, GeneratorRuntime> myRegisteredGenerators = new HashMap<>();
+
+  protected final void populateRegisteredGenerators(List<? super GeneratorRuntime> consumer) {
+    consumer.addAll(myRegisteredGenerators.values());
   }
 
+  /*package*/ void register(GeneratorRuntime runtime) {
+    myRegisteredGenerators.put(runtime.getModuleReference(), runtime);
+  }
+
+  /*package*/ void unregister(GeneratorRuntime runtime) {
+    myRegisteredGenerators.remove(runtime.getModuleReference());
+  }
+
+  /**
+   * Closure of all languages that extend this one, exclusive.
+   * FIXME why Iterable?
+   *
+   * @return unmodifiable collection of languages
+   */
   @NotNull
-  public StructureAspectDescriptor getStructureAspectDescriptor() {
-//    return StructureAspectInterpreted.getInstance();
-    if (structureDescriptor == null) {
-      String className = getNamespace() + ".structure.StructureAspectDescriptor";
-      Object compiled = getObjectByClassNameForLanguageNamespace(className, getNamespace(), true);
-
-      if (compiled instanceof StructureAspectDescriptor) {
-        structureDescriptor = (StructureAspectDescriptor) compiled;
-      } else {
-        structureDescriptor = StructureAspectInterpreted.getInstance();
-      }
-    }
-
-    return structureDescriptor;
+  public Iterable<LanguageRuntime> getExtendingLanguages() {
+    return myExtendingLanguages;
   }
 
-  public BehaviorAspectDescriptor getBehaviorAspectDescriptor() {
-//    return BehaviorAspectInterpreted.getInstance();
-    if (behaviorDescriptor == null) {
-      String className = getNamespace() + ".behavior.BehaviorAspectDescriptor";
-      Object compiled = getObjectByClassNameForLanguageNamespace(className, getNamespace(), true);
-
-      if (compiled instanceof BehaviorAspectDescriptor) {
-        behaviorDescriptor = (BehaviorAspectDescriptor) compiled;
-      } else {
-        behaviorDescriptor = BehaviorAspectInterpreted.getInstance();
-      }
-    }
-
-    return behaviorDescriptor;
+  /**
+   * Closure of all languages this language extends, exclusive.
+   * Referenced languages are from the same LanguageRegistry as this one.
+   * (Although there's only one LanguageRegistry at the moment, it's likely to change in the future)
+   * <p/>
+   * Collection captures only languages actually available, and might not reflect all dependencies of the language, i.e.
+   * presents state of language relationship through a LanguageRegistry perspective. E.g. if language descriptor states 'extends' dependency
+   * from a language missing in the LanguageRegistry instance, that extended language will be ignored and collection returned won't mention it.
+   *
+   * @return unmodifiable collection of languages
+   */
+  @NotNull
+  public Collection<LanguageRuntime> getExtendedLanguages() {
+    return Collections.unmodifiableCollection(myExtendedLanguages);
   }
 
-  public ConstraintsAspectDescriptor getConstraintsAspectDescriptor() {
-//    return ConstraintsAspectInterpreted.getInstance();
-    if (constraintsDescriptor == null) {
-      String className = getNamespace() + ".constraints.ConstraintsAspectDescriptor";
-      Object compiled = getObjectByClassNameForLanguageNamespace(className, getNamespace(), true);
-
-      if (compiled instanceof ConstraintsAspectDescriptor) {
-        constraintsDescriptor = (ConstraintsAspectDescriptor) compiled;
-      } else {
-        constraintsDescriptor = ConstraintsAspectInterpreted.getInstance();
-      }
-    }
-
-    return constraintsDescriptor;
+  /**
+   * Subclasses shall override to report languages they extend (fill in supplied collection).
+   * It's not necessary to override the method if language doesn't extend any other, not to invoke super, this method is no-op.
+   * <p/>
+   * DESIGN NOTE: while it's sufficient to know SLanguageId only, I stick to SLanguage to keep namespace as debug information.
+   *              Perhaps, shall pass an object that could take different alternatives (e.g. SLanguageId, (long,long), module reference)?
+   */
+  protected void fillExtendedLanguages(Collection<SLanguage> extendedLanguages) {
+    // intentionally non-abstract and no-op
   }
 
+  private void registerExtendingLanguage(LanguageRuntime extendingLanguage) {
+    myExtendingLanguages.add(extendingLanguage);
+    extendingLanguage.myExtendedLanguages.add(this);
+  }
+
+  void initialize(LanguageRegistry registry) {
+    assert myLanguageRegistry == null : "attempt to initialize LanguageRuntime that has been already initialized";
+    Queue<SLanguage> extendedLanguageIDs = new ArrayDeque<>();
+    fillExtendedLanguages(extendedLanguageIDs);
+    Set<SLanguageId> visitedLanguages = new HashSet<>();
+    visitedLanguages.add(getId());
+    while (!extendedLanguageIDs.isEmpty()) {
+      SLanguage nextLanguageID = extendedLanguageIDs.remove();
+      LanguageRuntime extendedLanguage = registry.getLanguage(nextLanguageID);
+      if (extendedLanguage != null && visitedLanguages.add(extendedLanguage.getId())) {
+        extendedLanguage.registerExtendingLanguage(this);
+        extendedLanguage.fillExtendedLanguages(extendedLanguageIDs);
+      }
+    }
+    // generally, should never happen, but doesn't hurt to ensure exclusive contract of getExtended/getExtendingLanguages()
+    myExtendingLanguages.remove(this);
+    myExtendedLanguages.remove(this);
+    // Here's a copy of the hack from smodel.Language#getExtendedLanguageRefs(). We used to manifest lang.core
+    // as extended language for any other language module, and once we switched to SLanguage, shall do the same at least for compatibility reasons.
+    // Once we generate this extends inside #getExtendedLanguageIDs() (better the new one that yield SLanguage instead of String),
+    // AND there are no old LanguageRuntime classes (i.e. past MPS 3.3), the hack shall cease to exist.
+    //
+    // XXX OTOH, does it make sense to force generation of explicit extends lang.core in each language?
+    LanguageRuntime langCore = registry.getLanguage(BootstrapLanguages.getLangCore());
+    assert langCore != null;
+    if (this != langCore && !visitedLanguages.contains(langCore.getId())) {
+      langCore.registerExtendingLanguage(this);
+    }
+    myLanguageRegistry = registry;
+  }
+
+  void deinitialize() {
+    myLanguageRegistry = null;
+    myExtendingLanguages.clear();
+    myExtendedLanguages.clear();
+  }
+
+  /*package*/ final void contributeExtensions(LanguageExtensions extensions) {
+    // I keep this method as an entry point for LanguageRegistry instead of using protected #contribute() directly as I expect to add some mandatory
+    // extension registration in here, and don't want to generate super.contribute() calls
+    contribute(extensions);
+  }
+
+  /**
+   * Override to tell that language represented by this runtime class supplies extensions to aspects of some other language.
+   * Method itself is no-op, no need to call super.
+   * Language is not completely initialized the moment method is invoked, no other activity except contributing extensions
+   * by means of LanguageExtensions is allowed.
+   * @param extensions facade to pass contributions through
+   */
+  protected void contribute(@NotNull LanguageExtensions extensions) {
+    // no-op
+  }
+
+  /**
+   * Visit contributions to this language recorded using {@link LanguageExtensions#recordContribution(SLanguage, Class)} with identity of this language as
+   * contribution target.
+   * @param aspectClass  identity of an aspect extensions were contributed with
+   * @param aspectVisitor code to handle extension aspect instance
+   */
+  public final <T extends ILanguageAspect> void forEachContributor(Class<T> aspectClass, Consumer<T> aspectVisitor) {
+    if (myLanguageRegistry == null) {
+      // generally shall not happen
+      String msg = String.format("Attempt to access contributors of non-initialized language runtime, ignored. Requested aspect: %s", aspectClass);
+      Logger.getLogger(LanguageRuntime.class).error(msg, new Throwable());
+      return;
+    }
+    // XXX not sure it's ok to expose LanguageExtensionRegistry, perhaps, shall keep this code inside LanguageRegistry
+    //     so that it can control the moment languages get re-loaded and the extension registry is invalidated.
+    myLanguageRegistry.getExtensionRegistry().forEachContributingAspect(this, aspectClass, aspectVisitor);
+  }
+
+  /**
+   * Same as {@link #forEachContributor(Class, Consumer)} except that gives access to {@link LanguageRuntime} instance for clients that need it.
+   * Prefer {@link #forEachContributor(Class, Consumer)} when possible.
+   *
+   * XXX Has to be final, but there are tests that don't utilize LanguageRegistry and need to tweak LanguageRuntime implementation
+   */
+  public void forEachContributor(Consumer<LanguageRuntime> visitor, Class<? extends ILanguageAspect> aspectClass) {
+    if (myLanguageRegistry == null) {
+      // generally shall not happen
+      String msg = String.format("Attempt to access contributors of non-initialized language runtime, ignored. Requested aspect: %s", aspectClass);
+      Logger.getLogger(LanguageRuntime.class).error(msg, new Throwable());
+      return;
+    }
+    myLanguageRegistry.getExtensionRegistry().forEachContributor(this, aspectClass, visitor);
+  }
+
+  void languageExtensionsChanged() {
+    myAspectDescriptors.forEach((k, a) -> {
+      if (a instanceof AspectExtensionsAware) {
+        ((AspectExtensionsAware) a).extensionsChanged();
+      }
+    });
+  }
+
+  void dispose() {
+    myAspectDescriptors.values().forEach(ILanguageAspect::dispose);
+  }
+
+  @Override
+  public String toString() {
+    return getNamespace() + " runtime";
+  }
 }

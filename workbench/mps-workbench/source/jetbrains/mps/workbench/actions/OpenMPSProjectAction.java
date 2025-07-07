@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,69 +15,54 @@
  */
 package jetbrains.mps.workbench.actions;
 
+import com.intellij.icons.AllIcons;
 import com.intellij.ide.IdeBundle;
-import com.intellij.ide.actions.OpenProjectFileChooserDescriptor;
-import com.intellij.ide.highlighter.ProjectFileType;
 import com.intellij.ide.impl.ProjectUtil;
-import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.idea.ActionsBundle;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.extensions.Extensions;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.ex.FileChooserDialogImpl;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.platform.ProjectBaseDirectory;
-import com.intellij.projectImport.ProjectOpenProcessor;
-import com.intellij.util.Consumer;
-import jetbrains.mps.ide.ui.filechoosers.treefilechooser.IFileFilter;
-import jetbrains.mps.ide.ui.filechoosers.treefilechooser.TreeFileChooser;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.project.MPSExtentions;
+import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrame;
 import jetbrains.mps.workbench.action.BaseAction;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import java.awt.Frame;
 import java.io.File;
-import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class OpenMPSProjectAction extends BaseAction {
-  private static final Icon OPEN_ICON = new ImageIcon(OpenMPSProjectAction.class.getResource("open.png"));
-  private static final Icon OPEN_ICON_WELCOME_SCREEN = new ImageIcon(OpenMPSProjectAction.class.getResource("openWelcomeScreen.png"));
 
   public OpenMPSProjectAction() {
     setExecuteOutsideCommand(true);
     setDisableOnNoProject(false);
-
-    getTemplatePresentation().setIcon(OPEN_ICON_WELCOME_SCREEN);
   }
 
 
   @Override
   protected void doUpdate(AnActionEvent e, Map<String, Object> _params) {
     super.doUpdate(e, _params);
-
-    if (ActionPlaces.WELCOME_SCREEN.equals(e.getPlace())) {
-      e.getPresentation().setIcon(OPEN_ICON_WELCOME_SCREEN);
-    } else {
-      e.getPresentation().setIcon(OPEN_ICON);
+    Presentation presentation = e.getPresentation();
+    if (FlatWelcomeFrame.USE_TABBED_WELCOME_SCREEN) {
+      presentation.setIcon(AllIcons.Welcome.Open);
+      presentation.setSelectedIcon(AllIcons.Welcome.OpenSelected);
+      presentation.setText(ActionsBundle.message("action.Tabbed.WelcomeScreen.OpenProject.text"));
+    }
+    else {
+      presentation.setIcon(AllIcons.Actions.Menu_open);
     }
   }
 
+  @Override
   public void doExecute(AnActionEvent e, Map<String, Object> _params) {
     final Project currentProject = PlatformDataKeys.PROJECT.getData(e.getDataContext());
 
     final FileChooserDescriptor descriptor = new OpenMPSProjectFileChooserDescriptor(true);
     descriptor.setTitle(IdeBundle.message("title.open.project"));
-    descriptor.setDescription("Project files (" + MPSExtentions.DOT_MPS_PROJECT + ") ");
 
     VirtualFile userHomeDir = null;
     if (SystemInfo.isMac || SystemInfo.isLinux) {
@@ -89,17 +74,12 @@ public class OpenMPSProjectAction extends BaseAction {
 
     descriptor.putUserData(FileChooserDialogImpl.PREFER_LAST_OVER_TO_SELECT, Boolean.TRUE);
 
-    FileChooser.chooseFilesWithSlideEffect(descriptor, currentProject, userHomeDir, new Consumer<VirtualFile[]>() {
-      @Override
-      public void consume(final VirtualFile[] files) {
-        if (files.length == 0 || files[0] == null || files[0].isDirectory()) return;
+    final VirtualFile virtualFile = FileChooser.chooseFile(descriptor, currentProject, userHomeDir);
+    if (virtualFile == null) {
+      return;
+    }
 
-        String filePath = files[0].getPath();
-        Project project = ProjectUtil.openProject(filePath, currentProject, false);
-        if (project != null) {
-          ProjectBaseDirectory.getInstance(project).setBaseDir(project.getBaseDir());
-        }
-      }
-    });
+    String filePath = virtualFile.getPath();
+    ProjectUtil.openProject(filePath, currentProject, false);
   }
 }

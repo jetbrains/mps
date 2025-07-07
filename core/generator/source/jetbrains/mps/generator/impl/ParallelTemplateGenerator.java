@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,48 +18,50 @@ package jetbrains.mps.generator.impl;
 import jetbrains.mps.generator.GenerationCanceledException;
 import jetbrains.mps.generator.GenerationOptions;
 import jetbrains.mps.generator.GenerationSessionContext;
-import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.impl.IGenerationTaskPool.GenerationTask;
 import jetbrains.mps.generator.impl.IGenerationTaskPool.ITaskPoolProvider;
-import jetbrains.mps.generator.impl.dependencies.DependenciesBuilder;
+import jetbrains.mps.generator.impl.template.DeltaBuilder;
+import jetbrains.mps.generator.impl.template.QueryExecutionContextWithTracing;
 import jetbrains.mps.generator.runtime.TemplateCreateRootRule;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateRootMappingRule;
-import jetbrains.mps.generator.template.DefaultQueryExecutionContext;
-import jetbrains.mps.generator.template.ITemplateGenerator;
 import jetbrains.mps.generator.template.QueryExecutionContext;
-import jetbrains.mps.progress.ProgressMonitor;
-import jetbrains.mps.smodel.SModel;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.performance.IPerformanceTracer;
+import jetbrains.mps.util.performance.PerformanceTracer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * Model transformation partially running in parallel threads. For each new potential root in an output model, there's a distinct thread
+ * that performs transformations. Order of output roots match that of single-threaded transformation.
  * Evgeny Gryaznov, Feb 25, 2010
  */
 public class ParallelTemplateGenerator extends TemplateGenerator {
 
-  private static final boolean ROOT_PER_THREAD = true;
-
   private IGenerationTaskPool myPool;
+  // ordered list ensures output roots are added to target model in the same order single-threaded execution does
   private List<RootGenerationTask> myTasks;
-  private Map<Pair<SNode, SNode>, RootGenerationTask> myInputToTask;
-  private Map<SNode, RootBasedQueryExectionContext> myRootContext;
-  private Map<QueryExecutionContext, CompositeGenerationTask> contextToTask = new HashMap<QueryExecutionContext, CompositeGenerationTask>();
+  private Map<Pair<SNode, SNodeReference>, RootGenerationTask> myInputToTask;
+  private final boolean myTracePerformancePerRoot;
 
-  public ParallelTemplateGenerator(ITaskPoolProvider taskPoolProvider, GenerationSessionContext operationContext, ProgressMonitor progressMonitor,
-                                   IGeneratorLogger logger, RuleManager ruleManager,
-                                   SModel inputModel, SModel outputModel, GenerationOptions options,
-                                   DependenciesBuilder dependenciesBuilder, IPerformanceTracer performanceTracer) {
-    super(operationContext, progressMonitor, logger, ruleManager, inputModel, outputModel, options, dependenciesBuilder, performanceTracer);
-    myTasks = new ArrayList<RootGenerationTask>();
-    myInputToTask = new ConcurrentHashMap<Pair<SNode, SNode>, RootGenerationTask>();
+  public ParallelTemplateGenerator(ITaskPoolProvider taskPoolProvider, GenerationSessionContext operationContext, SModel inputModel, SModel outputModel, StepArguments args) {
+    super(operationContext, inputModel, outputModel, args);
+    myTasks = new ArrayList<>();
+    myInputToTask = new ConcurrentHashMap<>();
     myPool = taskPoolProvider.getTaskPool();
+    myTracePerformancePerRoot = operationContext.getGenerationOptions().getTracingMode() >= GenerationOptions.TRACE_LANGS;
   }
 
   @Override
@@ -68,156 +70,129 @@ public class ParallelTemplateGenerator extends TemplateGenerator {
     super.applyReductions(isPrimary);
 
     myPool.waitForCompletion();
-    contextToTask = null;
-    myRootContext = null;
     for (RootGenerationTask task : myTasks) {
-      task.registerGeneratedRoot();
+      task.getGeneratedRoots().forEach(super::registerRoot);
+      task.registerRootTrace(getPerformanceTracer());
     }
   }
 
   @Override
-  protected void createRootNodeByRule(final TemplateCreateRootRule rule, final TemplateExecutionEnvironment environment) throws GenerationCanceledException, GenerationFailureException {
+  protected void applyCreateRoot(final TemplateCreateRootRule rule) {
     pushTask(new RootGenerationTask() {
       @Override
       public void run() throws GenerationCanceledException, GenerationFailureException {
-        ParallelTemplateGenerator.super.createRootNodeByRule(rule, environment);
+        ParallelTemplateGenerator.super.applyCreateRoot(rule, newExecutionEnvironment(getQueryExecutor4Task()));
       }
-    }, new Pair(null, rule.getRuleNode()), environment.getReductionContext().getQueryExecutor());
+    }, new Pair<>(null, rule.getRuleNode()));
   }
 
   @Override
-  protected void createRootNodeByRule(final TemplateRootMappingRule rule, final SNode inputNode, final boolean copyRootOnFailure, final TemplateExecutionEnvironment environment) throws GenerationCanceledException, GenerationFailureException {
+  protected void applyRootRule(final TemplateRootMappingRule rule, final SNode inputNode, final boolean copyRootOnFailure) {
     pushTask(new RootGenerationTask() {
       @Override
       public void run() throws GenerationCanceledException, GenerationFailureException {
-        ParallelTemplateGenerator.super.createRootNodeByRule(rule, inputNode, copyRootOnFailure, environment);
+        ParallelTemplateGenerator.super.createRootNodeByRule(rule, inputNode, newExecutionEnvironment(getQueryExecutor4Task()), copyRootOnFailure);
       }
-    }, new Pair(inputNode, rule.getRuleNode()), environment.getReductionContext().getQueryExecutor());
+    }, new Pair<>(inputNode, rule.getRuleNode()));
   }
 
   @Override
-  protected void copyRootNodeFromInput(@NotNull final SNode inputRootNode, @NotNull final TemplateExecutionEnvironment environment) throws GenerationFailureException, GenerationCanceledException {
+  protected void copyRootInputNode(@NotNull final SNode inputRootNode) {
     pushTask(new RootGenerationTask() {
       @Override
       public void run() throws GenerationCanceledException, GenerationFailureException {
-        ParallelTemplateGenerator.super.copyRootNodeFromInput(inputRootNode, environment);
+        ParallelTemplateGenerator.super.copyRootInputNode(inputRootNode, newExecutionEnvironment(getQueryExecutor4Task()));
       }
-    }, new Pair(inputRootNode, null), environment.getReductionContext().getQueryExecutor());
+    }, new Pair<>(inputRootNode, null));
   }
 
   @Override
-  protected QueryExecutionContext getDefaultExecutionContext(SNode inputNode) {
-    if (ROOT_PER_THREAD) {
-      if (inputNode == null || !inputNode.isRegistered()) {
-        return super.getDefaultExecutionContext(null);
-      }
-      inputNode = inputNode.getTopmostAncestor();
-      if (inputNode.getModel() == getInputModel()) {
-        RootBasedQueryExectionContext context;
-        if (myRootContext == null) {
-          myRootContext = new HashMap<SNode, RootBasedQueryExectionContext>();
-          context = null;
-        } else {
-          context = myRootContext.get(inputNode);
-        }
-        if (context == null) {
-          context = new RootBasedQueryExectionContext(inputNode, this);
-          myRootContext.put(inputNode, context);
-        }
-        return context;
-      }
+  protected DeltaBuilder createDeltaBuilder() {
+    return DeltaBuilder.newConcurrentDeltaBuilder();
+  }
+
+  private void pushTask(RootGenerationTask task, Pair<SNode, SNodeReference> pair) {
+    if (myTracePerformancePerRoot) {
+      PerformanceTracer pt = new PerformanceTracer("");
+      task.configure(pt, new QueryExecutionContextWithTracing(getDefaultExecutionContext(), pt));
+    } else {
+      task.configure(null, getDefaultExecutionContext());
     }
-    return super.getDefaultExecutionContext(inputNode);
-  }
-
-  private void pushTask(RootGenerationTask task, Pair<SNode, SNode> pair, QueryExecutionContext executionContext) {
     myInputToTask.put(pair, task);
     myTasks.add(task);
-    if (executionContext.isMultithreaded()) {
-      myPool.addTask(task);
-    } else {
-      runTaskWithContext(task, executionContext);
-    }
-  }
-
-  private void runTaskWithContext(RootGenerationTask task, QueryExecutionContext executionContext) {
-    CompositeGenerationTask compositeTask;
-    synchronized (contextToTask) {
-      compositeTask = contextToTask.get(executionContext);
-      if (compositeTask != null && compositeTask.addTask(task)) {
-        return;
-      }
-      compositeTask = new CompositeGenerationTask();
-      compositeTask.addTask(task);
-      contextToTask.put(executionContext, compositeTask);
-    }
-    myPool.addTask(compositeTask);
+    myPool.addTask(task);
   }
 
   @Override
-  protected void registerInModel(SNode outputRoot, SNode inputNode, SNodePointer templateNode) {
-    RootGenerationTask task = myInputToTask.get(new Pair(inputNode, templateNode));
+  protected void registerRoot(GeneratedRootDescriptor rd) {
+    // FIXME chances are GRD for a root mapping rule doesn't list templateNode/rule, e.g. when rule had failed and we copied root instead
+    //       in this case, rd would list myTemplateNode == null, while myInputToTask keeps record with RMR reference. Perhaps, it's responsibility of TG
+    //       to register root with appropriate templateNode ref when RMR fails?
+    //       FWIW, there's no single issue with this error message in the tracker.
+    RootGenerationTask task = myInputToTask.get(new Pair<>(rd.myInputNode, rd.myTemplateNode));
     if (task == null) {
-      showErrorMessage(inputNode, templateNode.getNode(), "internal: cannot find task for generated root");
+      getLogger().error(rd.myTemplateNode, "internal: cannot find task for generated root", GeneratorUtil.describe(rd.myInputNode, "input node"));
     } else {
-      task.addGeneratedRoot(outputRoot);
+      task.addGeneratedRoot(rd);
     }
   }
 
-  @Override
-  protected void checkGenerationCanceledFast() throws GenerationCanceledException {
-    if (myPool.isCancelled()) throw new GenerationCanceledException();
-  }
+  /*package*/ abstract static class RootGenerationTask implements GenerationTask {
 
-  @Override
-  protected void checkMonitorCanceled() throws GenerationCanceledException {
-    super.checkMonitorCanceled();
-    if (myPool.isCancelled()) throw new GenerationCanceledException();
-  }
+    private QueryExecutionContext myQueryExecutor;
+    private List<GeneratedRootDescriptor> generated = null;
+    private PerformanceTracer myPerfTrace;
 
-  public abstract class RootGenerationTask implements GenerationTask {
-
-    List<SNode> generated = null;
-
-    @Override
-    public boolean requiresReadAccess() {
-      return true;
+    /*package*/ void configure(@Nullable PerformanceTracer pt, @NotNull QueryExecutionContext queryExecutor) {
+      myPerfTrace = pt;
+      myQueryExecutor = queryExecutor;
     }
 
-    public void addGeneratedRoot(SNode root) {
+    // shall never return null
+    protected final QueryExecutionContext getQueryExecutor4Task() {
+      return myQueryExecutor;
+    }
+
+    public final void addGeneratedRoot(GeneratedRootDescriptor descriptor) {
       if (generated == null) {
-        generated = Collections.singletonList(root);
+        generated = Collections.singletonList(descriptor);
       } else if (generated.size() == 1) {
-        generated = new ArrayList<SNode>(generated);
-        generated.add(root);
+        ArrayList<GeneratedRootDescriptor> a = new ArrayList<>(this.generated.size() + 3);
+        a.addAll(generated);
+        a.add(descriptor);
+        generated = a;
       } else {
-        generated.add(root);
+        generated.add(descriptor);
       }
     }
 
-    public void registerGeneratedRoot() {
-      if (generated == null) {
-        return;
+    public final Collection<GeneratedRootDescriptor> getGeneratedRoots() {
+      return generated == null ? Collections.emptyList() : generated;
+    }
+
+    public void registerRootTrace(IPerformanceTracer sessionTrace) {
+      // by design, sessionTrace is never null.
+      if (myPerfTrace != null) {
+        sessionTrace.push(myPerfTrace);
       }
-      for (SNode root : generated) {
-        myOutputRoots.add(root);
-      }
+      // == Optional.of(myPerfTrace).ifPresent(sessionTrace::push);
+      //    hmm, which one I like most?
     }
   }
 
   public static class CompositeGenerationTask implements GenerationTask {
 
-    private Queue<RootGenerationTask> list = new LinkedList<RootGenerationTask>();
+    private final Queue<GenerationTask> list = new LinkedList<>();
     private boolean isInShutdownMode = false;
 
-    public synchronized boolean addTask(RootGenerationTask task) {
+    public synchronized boolean addTask(GenerationTask task) {
       if (isInShutdownMode) {
         return false;
       }
       return list.add(task);
     }
 
-    private synchronized RootGenerationTask next() {
+    private synchronized GenerationTask next() {
       if (list.isEmpty()) {
         isInShutdownMode = true;
         return null;
@@ -227,27 +202,10 @@ public class ParallelTemplateGenerator extends TemplateGenerator {
 
     @Override
     public void run() throws GenerationCanceledException, GenerationFailureException {
-      RootGenerationTask next;
+      GenerationTask next;
       while ((next = next()) != null) {
         next.run();
       }
-    }
-
-    @Override
-    public boolean requiresReadAccess() {
-      return true;
-    }
-  }
-
-  private static class RootBasedQueryExectionContext extends DefaultQueryExecutionContext {
-
-    public RootBasedQueryExectionContext(SNode root, ITemplateGenerator generator) {
-      super(generator);
-    }
-
-    @Override
-    public boolean isMultithreaded() {
-      return false;
     }
   }
 }

@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <components>
 
+  <applicationListeners>
+    <listener class="jetbrains.mps.nodeEditor.EditorSettingsUISettingsListener" topic="com.intellij.ide.ui.UISettingsListener"/>
+  </applicationListeners>
+
   <extensionPoints>
-    <extensionPoint qualifiedName="jetbrains.mps.editorOpenHandler"
-                    interface="jetbrains.mps.ide.editor.EditorOpenHandler"/>
+    <extensionPoint qualifiedName="jetbrains.mps.NodeEditorFactory"
+                    area="IDEA_PROJECT"
+                    interface="jetbrains.mps.ide.editor.NodeEditorFactory"/>
     <extensionPoint qualifiedName="jetbrains.mps.nodeStructureViewProvider"
                     interface="jetbrains.mps.ide.editor.NodeStructureViewProvider"/>
     <extensionPoint qualifiedName="com.intellij.mps.editorWarningsProvider"
                     interface="jetbrains.mps.ide.editor.warningPanel.EditorWarningsProvider"/>
+    <extensionPoint qualifiedName="com.intellij.mps.IntentionActionsProvider"
+                    interface="jetbrains.mps.nodeEditor.IntentionActionsProvider"/>
   </extensionPoints>
 
   <application-components>
     <component>
-      <implementation-class>jetbrains.mps.nodeEditor.CaretBlinker</implementation-class>
+      <implementation-class>jetbrains.mps.ide.editor.IdeaCaretManager</implementation-class>
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.nodeEditor.EditorSettings</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.ide.editor.MPSFileNodeEditorProvider</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.editor.runtime.impl.EditorsFinderManager</implementation-class>
+      <implementation-class>jetbrains.mps.nodeEditor.cells.contextAssistant.ContextAssistantSettings</implementation-class>
     </component>
 
     <component>
@@ -32,11 +31,15 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.intentions.IntentionsManager</implementation-class>
+      <implementation-class>jetbrains.mps.ide.editor.resolver.EditorResolverComponent</implementation-class>
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.ide.editor.resolver.EditorResolverComponent</implementation-class>
+      <implementation-class>jetbrains.mps.typesystem.checking.EditorCheckerComponent</implementation-class>
+    </component>
+
+    <component>
+      <implementation-class>jetbrains.mps.ide.editor.StyleRegistryIdeaImpl</implementation-class>
     </component>
   </application-components>
 
@@ -46,15 +49,18 @@
     </component>
 
     <component>
+      <interface-class>jetbrains.mps.nodeEditor.Highlighter</interface-class>
       <implementation-class>jetbrains.mps.nodeEditor.Highlighter</implementation-class>
+      <headless-implementation-class>jetbrains.mps.nodeEditor.EmptyHighlighter</headless-implementation-class>
+    </component>
+
+    <component>
+      <interface-class>jetbrains.mps.openapi.editor.extensions.EditorExtensionRegistry</interface-class>
+      <implementation-class>jetbrains.mps.ide.editor.EditorExtensionRegistryImpl</implementation-class>
     </component>
 
     <component>
       <implementation-class>jetbrains.mps.ide.editor.MPSValidationComponent</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.nodeEditor.EditorManager</implementation-class>
     </component>
 
     <component>
@@ -66,17 +72,30 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.ide.editor.MPSEditorOpener</implementation-class>
+      <implementation-class>jetbrains.mps.ide.editor.warningPanel.MPSEditorWarningsManager</implementation-class>
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.ide.editor.warningPanel.MPSEditorWarningsManager</implementation-class>
+      <implementation-class>com.intellij.openapi.fileEditor.FileEditorDataProviderManager</implementation-class>
+    </component>
+
+    <component>
+      <implementation-class>jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintSettingsComponent</implementation-class>
     </component>
   </project-components>
 
   <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceImplementation="jetbrains.mps.nodeEditor.EditorSettings"/>
+    <applicationService serviceImplementation="jetbrains.mps.intentions.IntentionsManager"/>
+
+    <fileEditorProvider implementation="jetbrains.mps.ide.editor.MPSFileNodeEditorProvider"/>
+
     <fileIconProvider implementation="jetbrains.mps.ide.editor.icons.NodeFileIconProvider"/>
     <mps.editorWarningsProvider implementation="jetbrains.mps.ide.editor.warningPanel.TransientModelWarningsProvider"/>
     <mps.editorWarningsProvider implementation="jetbrains.mps.ide.editor.warningPanel.PackagedModelWarningsProvider"/>
+    <mps.editorWarningsProvider implementation="jetbrains.mps.ide.editor.warningPanel.ModelProblemsProvider"/>
+    <mps.editorWarningsProvider implementation="jetbrains.mps.ide.editor.warningPanel.UnresolvedModelImportsProvider"/>
+
+    <customizableActionGroupProvider implementation="jetbrains.mps.ide.editor.MPSEditorCustomizableActionGroupProvider"/>
   </extensions>
 </components>

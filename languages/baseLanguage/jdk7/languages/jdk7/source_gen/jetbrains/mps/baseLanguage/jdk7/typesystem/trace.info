@@ -1,131 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="TypesystemDescriptor.java" startLine="8" startPosition="0" endLine="20" endPosition="0" unitName="jetbrains.mps.baseLanguage.jdk7.typesystem.TypesystemDescriptor" />
-  <root nodeId="400642802550421647" modelId="r:ed059f83-fdac-4e67-8269-91684666291c(jetbrains.mps.baseLanguage.jdk7.typesystem)">
-    <nodeInfo nodeId="400642802550421749" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="25" startPosition="128" endLine="26" endPosition="30" conceptFqName="jetbrains.mps.baseLanguage.structure.SingleLineComment" />
-    <nodeInfo nodeId="364584182801826612" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="26" startPosition="30" endLine="27" endPosition="74" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="400642802550421757" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="30" startPosition="9" endLine="31" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="400642802550421757" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="31" startPosition="62" endLine="32" endPosition="315" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3446170115498222122" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="34" startPosition="14" endLine="35" endPosition="200" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3446170115498222133" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="37" startPosition="11" endLine="38" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3446170115498222133" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="38" startPosition="64" endLine="39" endPosition="311" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3446170115498222142" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="41" startPosition="9" endLine="42" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="47" startPosition="46" endLine="48" endPosition="77" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="52" startPosition="5" endLine="53" endPosition="117" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="53" startPosition="117" endLine="54" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="58" startPosition="30" endLine="59" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="21" startPosition="134" endLine="23" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="check_StringSwitchCase_NonTypesystemRule#()V" />
-    <nodeInfo nodeId="400642802550421757" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="29" startPosition="158" endLine="33" endPosition="9" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="3446170115498222133" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="36" startPosition="66" endLine="40" endPosition="11" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="46" startPosition="0" endLine="50" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="51" startPosition="68" endLine="55" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="57" startPosition="0" endLine="61" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="overrides#()Z" />
-    <nodeInfo nodeId="3446170115498222131" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="35" startPosition="200" endLine="41" endPosition="9" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="50" startPosition="0" endLine="57" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="3446170115498222119" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="34" startPosition="12" endLine="43" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="400642802550421755" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="28" startPosition="89" endLine="43" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="400642802550421751" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="27" startPosition="74" endLine="44" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.ForeachStatement" />
-    <nodeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="24" startPosition="0" endLine="46" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="applyRule#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-    <scopeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="22" startPosition="53" endLine="22" endPosition="53" />
-    <scopeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="47" startPosition="46" endLine="48" endPosition="77" />
-    <scopeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="58" startPosition="30" endLine="59" endPosition="17" />
-    <scopeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="21" startPosition="134" endLine="23" endPosition="3" />
-    <scopeInfo nodeId="400642802550421757" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="30" startPosition="9" endLine="32" endPosition="315">
-      <varInfo nodeId="400642802550421757" varName="_reporter_2309309498" />
-      <varInfo nodeId="400642802550421757" varName="errorTarget" />
-    </scopeInfo>
-    <scopeInfo nodeId="3446170115498222133" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="37" startPosition="11" endLine="39" endPosition="311">
-      <varInfo nodeId="3446170115498222133" varName="_reporter_2309309498" />
-      <varInfo nodeId="3446170115498222133" varName="errorTarget" />
-    </scopeInfo>
-    <scopeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="52" startPosition="5" endLine="54" endPosition="45">
-      <varInfo nodeId="400642802550421647" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="400642802550421756" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="29" startPosition="158" endLine="33" endPosition="9" />
-    <scopeInfo nodeId="3446170115498222132" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="36" startPosition="66" endLine="40" endPosition="11" />
-    <scopeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="46" startPosition="0" endLine="50" endPosition="0" />
-    <scopeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="51" startPosition="68" endLine="55" endPosition="5" />
-    <scopeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="57" startPosition="0" endLine="61" endPosition="0" />
-    <scopeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="50" startPosition="0" endLine="57" endPosition="0">
-      <varInfo nodeId="400642802550421647" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="3446170115498222120" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="34" startPosition="14" endLine="42" endPosition="62">
-      <varInfo nodeId="3446170115498222123" varName="current" />
-    </scopeInfo>
-    <scopeInfo nodeId="400642802550421754" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="28" startPosition="89" endLine="43" endPosition="7" />
-    <scopeInfo nodeId="400642802550421751" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="27" startPosition="74" endLine="44" endPosition="5">
-      <varInfo nodeId="400642802550421752" varName="caseElement" />
-    </scopeInfo>
-    <scopeInfo nodeId="400642802550421648" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="25" startPosition="128" endLine="44" endPosition="5">
-      <varInfo nodeId="364584182801826613" varName="caseElements" />
-    </scopeInfo>
-    <scopeInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="24" startPosition="0" endLine="46" endPosition="0">
-      <varInfo nodeId="400642802550421647" varName="status" />
-      <varInfo nodeId="400642802550421647" varName="switchStatement" />
-      <varInfo nodeId="400642802550421647" varName="typeCheckingContext" />
-    </scopeInfo>
-    <unitInfo nodeId="400642802550421647" fileName="check_StringSwitchCase_NonTypesystemRule.java" startLine="21" startPosition="0" endLine="62" endPosition="0" unitName="jetbrains.mps.baseLanguage.jdk7.typesystem.check_StringSwitchCase_NonTypesystemRule" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <root>
+    <file name="TypesystemDescriptor.java">
+      <unit at="8,0,20,0" name="jetbrains.mps.baseLanguage.jdk7.typesystem.TypesystemDescriptor" />
+    </file>
   </root>
-  <root nodeId="400642802550421653" modelId="r:ed059f83-fdac-4e67-8269-91684666291c(jetbrains.mps.baseLanguage.jdk7.typesystem)">
-    <nodeInfo nodeId="400642802550421655" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="24" startPosition="128" endLine="25" endPosition="79" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="400642802550421663" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="26" startPosition="22" endLine="27" endPosition="13" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="400642802550421669" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="29" startPosition="132" endLine="30" endPosition="13" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="400642802550421676" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="31" startPosition="5" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="400642802550421681" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="34" startPosition="360" endLine="35" endPosition="15" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="400642802550421697" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="37" startPosition="5" endLine="38" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="400642802550421711" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="40" startPosition="383" endLine="41" endPosition="15" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="400642802550421742" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="43" startPosition="5" endLine="44" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="400642802550421743" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="45" startPosition="5" endLine="46" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="400642802550421743" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="46" startPosition="58" endLine="47" endPosition="258" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="51" startPosition="46" endLine="52" endPosition="77" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="56" startPosition="5" endLine="57" endPosition="117" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="57" startPosition="117" endLine="58" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="62" startPosition="30" endLine="63" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="20" startPosition="139" endLine="22" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="check_StringSwitchStatement_NonTypesystemRule#()V" />
-    <nodeInfo nodeId="400642802550421661" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="25" startPosition="79" endLine="28" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="400642802550421667" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="28" startPosition="5" endLine="31" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="400642802550421679" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="33" startPosition="136" endLine="36" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="400642802550421700" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="39" startPosition="139" endLine="42" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="400642802550421743" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="44" startPosition="0" endLine="48" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="50" startPosition="0" endLine="54" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="55" startPosition="68" endLine="59" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="61" startPosition="0" endLine="65" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="overrides#()Z" />
-    <nodeInfo nodeId="400642802550421677" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="32" startPosition="0" endLine="37" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="400642802550421698" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="38" startPosition="0" endLine="43" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="54" startPosition="0" endLine="61" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Ljetbrains/mps/smodel/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="23" startPosition="0" endLine="50" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="applyRule#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-    <scopeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="21" startPosition="58" endLine="21" endPosition="58" />
-    <scopeInfo nodeId="400642802550421662" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="26" startPosition="22" endLine="27" endPosition="13" />
-    <scopeInfo nodeId="400642802550421668" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="29" startPosition="132" endLine="30" endPosition="13" />
-    <scopeInfo nodeId="400642802550421680" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="34" startPosition="360" endLine="35" endPosition="15" />
-    <scopeInfo nodeId="400642802550421710" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="40" startPosition="383" endLine="41" endPosition="15" />
-    <scopeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="51" startPosition="46" endLine="52" endPosition="77" />
-    <scopeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="62" startPosition="30" endLine="63" endPosition="16" />
-    <scopeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="20" startPosition="139" endLine="22" endPosition="3" />
-    <scopeInfo nodeId="400642802550421743" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="45" startPosition="5" endLine="47" endPosition="258">
-      <varInfo nodeId="400642802550421743" varName="_reporter_2309309498" />
-      <varInfo nodeId="400642802550421743" varName="errorTarget" />
-    </scopeInfo>
-    <scopeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="56" startPosition="5" endLine="58" endPosition="45">
-      <varInfo nodeId="400642802550421653" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="400642802550421678" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="33" startPosition="136" endLine="36" endPosition="7" />
-    <scopeInfo nodeId="400642802550421699" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="39" startPosition="139" endLine="42" endPosition="7" />
-    <scopeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="50" startPosition="0" endLine="54" endPosition="0" />
-    <scopeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="55" startPosition="68" endLine="59" endPosition="5" />
-    <scopeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="61" startPosition="0" endLine="65" endPosition="0" />
-    <scopeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="54" startPosition="0" endLine="61" endPosition="0">
-      <varInfo nodeId="400642802550421653" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="400642802550421654" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="24" startPosition="128" endLine="48" endPosition="5">
-      <varInfo nodeId="400642802550421656" varName="arg" />
-    </scopeInfo>
-    <scopeInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="23" startPosition="0" endLine="50" endPosition="0">
-      <varInfo nodeId="400642802550421653" varName="status" />
-      <varInfo nodeId="400642802550421653" varName="switchStatement" />
-      <varInfo nodeId="400642802550421653" varName="typeCheckingContext" />
-    </scopeInfo>
-    <unitInfo nodeId="400642802550421653" fileName="check_StringSwitchStatement_NonTypesystemRule.java" startLine="20" startPosition="0" endLine="66" endPosition="0" unitName="jetbrains.mps.baseLanguage.jdk7.typesystem.check_StringSwitchStatement_NonTypesystemRule" />
+  <root nodeRef="r:ed059f83-fdac-4e67-8269-91684666291c(jetbrains.mps.baseLanguage.jdk7.typesystem)/400642802550421647">
+    <file name="TypesystemDescriptor.java">
+      <node id="400642802550421647" at="10,5,11,99" concept="6" />
+      <node id="400642802550421647" at="11,99,12,55" concept="2" />
+      <node id="400642802550421647" at="9,33,13,5" concept="0" />
+      <scope id="400642802550421647" at="10,5,12,55">
+        <var name="nonTypesystemRule" id="400642802550421647" />
+      </scope>
+    </file>
+    <file name="check_StringSwitchCase_NonTypesystemRule.java">
+      <node id="400642802550421749" at="28,128,29,29" concept="8" />
+      <node id="364584182801826612" at="29,29,30,74" concept="6" />
+      <node id="400642802550421757" at="33,9,34,68" concept="6" />
+      <node id="400642802550421757" at="34,68,35,318" concept="6" />
+      <node id="3446170115498222122" at="37,14,38,185" concept="6" />
+      <node id="3446170115498222133" at="40,11,41,70" concept="6" />
+      <node id="3446170115498222133" at="41,70,42,314" concept="6" />
+      <node id="3446170115498222142" at="44,9,45,62" concept="2" />
+      <node id="400642802550421647" at="49,50,50,45" concept="7" />
+      <node id="400642802550421647" at="52,68,53,102" concept="7" />
+      <node id="400642802550421647" at="55,30,56,17" concept="7" />
+      <node id="400642802550421647" at="60,0,61,0" concept="10" trace="expression$QQk6" />
+      <node id="400642802550421647" at="61,0,62,0" concept="10" trace="case$8PWE" />
+      <node id="400642802550421647" at="65,0,66,0" concept="10" trace="StringLiteral$xu" />
+      <node id="400642802550421647" at="66,0,67,0" concept="10" trace="StringSwitchStatement$Fm" />
+      <node id="400642802550421647" at="70,0,71,0" concept="10" trace="value$w7MM" />
+      <node id="400642802550421647" at="26,0,28,0" concept="1" trace="check_StringSwitchCase_NonTypesystemRule#()V" />
+      <node id="400642802550421647" at="49,0,52,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="400642802550421647" at="52,0,55,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="400642802550421647" at="55,0,58,0" concept="5" trace="overrides#()Z" />
+      <node id="400642802550421757" at="32,134,36,9" concept="0" />
+      <node id="3446170115498222133" at="39,66,43,11" concept="0" />
+      <node id="3446170115498222131" at="38,185,44,9" concept="4" />
+      <node id="3446170115498222119" at="37,12,46,7" concept="0" />
+      <node id="400642802550421755" at="31,93,46,7" concept="4" />
+      <node id="400642802550421751" at="30,74,47,5" concept="3" />
+      <node id="400642802550421647" at="28,0,49,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="400642802550421647" at="26,53,26,53" />
+      <scope id="400642802550421647" at="49,50,50,45" />
+      <scope id="400642802550421647" at="52,68,53,102" />
+      <scope id="400642802550421647" at="55,30,56,17" />
+      <scope id="400642802550421647" at="26,0,28,0" />
+      <scope id="400642802550421757" at="33,9,35,318">
+        <var name="_reporter_2309309498" id="400642802550421757" />
+        <var name="errorTarget" id="400642802550421757" />
+      </scope>
+      <scope id="3446170115498222133" at="40,11,42,314">
+        <var name="_reporter_2309309498" id="3446170115498222133" />
+        <var name="errorTarget" id="3446170115498222133" />
+      </scope>
+      <scope id="400642802550421647" at="49,0,52,0" />
+      <scope id="400642802550421647" at="52,0,55,0">
+        <var name="argument" id="400642802550421647" />
+      </scope>
+      <scope id="400642802550421647" at="55,0,58,0" />
+      <scope id="400642802550421756" at="32,134,36,9" />
+      <scope id="3446170115498222132" at="39,66,43,11" />
+      <scope id="3446170115498222120" at="37,14,45,62">
+        <var name="current" id="3446170115498222123" />
+      </scope>
+      <scope id="400642802550421754" at="31,93,46,7" />
+      <scope id="400642802550421751" at="30,74,47,5">
+        <var name="caseElement" id="400642802550421752" />
+      </scope>
+      <scope id="400642802550421648" at="28,128,47,5">
+        <var name="caseElements" id="364584182801826613" />
+      </scope>
+      <scope id="400642802550421647" at="28,0,49,0">
+        <var name="status" id="400642802550421647" />
+        <var name="switchStatement" id="400642802550421647" />
+        <var name="typeCheckingContext" id="400642802550421647" />
+      </scope>
+      <unit id="400642802550421647" at="69,0,72,0" name="jetbrains.mps.baseLanguage.jdk7.typesystem.check_StringSwitchCase_NonTypesystemRule$PROPS" />
+      <unit id="400642802550421647" at="59,0,63,0" name="jetbrains.mps.baseLanguage.jdk7.typesystem.check_StringSwitchCase_NonTypesystemRule$LINKS" />
+      <unit id="400642802550421647" at="64,0,68,0" name="jetbrains.mps.baseLanguage.jdk7.typesystem.check_StringSwitchCase_NonTypesystemRule$CONCEPTS" />
+      <unit id="400642802550421647" at="25,0,73,0" name="jetbrains.mps.baseLanguage.jdk7.typesystem.check_StringSwitchCase_NonTypesystemRule" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:ed059f83-fdac-4e67-8269-91684666291c(jetbrains.mps.baseLanguage.jdk7.typesystem)/400642802550421653">
+    <file name="TypesystemDescriptor.java">
+      <node id="400642802550421653" at="14,5,15,104" concept="6" />
+      <node id="400642802550421653" at="15,104,16,55" concept="2" />
+      <node id="400642802550421653" at="13,5,17,5" concept="0" />
+      <scope id="400642802550421653" at="14,5,16,55">
+        <var name="nonTypesystemRule" id="400642802550421653" />
+      </scope>
+    </file>
+    <file name="check_StringSwitchStatement_NonTypesystemRule.java">
+      <node id="400642802550421653" at="30,65,31,18" concept="7" />
+      <node id="400642802550421653" at="32,5,33,17" concept="7" />
+      <node id="400642802550421655" at="35,128,36,82" concept="6" />
+      <node id="400642802550421663" at="37,22,38,13" concept="7" />
+      <node id="400642802550421669" at="40,115,41,13" concept="7" />
+      <node id="400642802550421676" at="42,5,43,0" concept="9" />
+      <node id="400642802550421681" at="45,254,46,15" concept="7" />
+      <node id="400642802550421697" at="48,5,49,0" concept="9" />
+      <node id="400642802550421711" at="51,301,52,15" concept="7" />
+      <node id="400642802550421742" at="54,5,55,0" concept="9" />
+      <node id="400642802550421743" at="56,5,57,64" concept="6" />
+      <node id="400642802550421743" at="57,64,58,258" concept="6" />
+      <node id="400642802550421653" at="61,50,62,45" concept="7" />
+      <node id="400642802550421653" at="64,68,65,102" concept="7" />
+      <node id="400642802550421653" at="67,30,68,17" concept="7" />
+      <node id="400642802550421653" at="72,0,73,0" concept="10" trace="expression$CjpY" />
+      <node id="400642802550421653" at="73,0,74,0" concept="10" trace="classifier$cxMr" />
+      <node id="400642802550421653" at="77,0,78,0" concept="10" trace="StringType$uX" />
+      <node id="400642802550421653" at="78,0,79,0" concept="10" trace="ClassifierType$bL" />
+      <node id="400642802550421653" at="79,0,80,0" concept="10" trace="IWillBeClassifier$Td" />
+      <node id="400642802550421653" at="80,0,81,0" concept="10" trace="StringSwitchStatement$Fm" />
+      <node id="400642802550421653" at="27,0,29,0" concept="1" trace="check_StringSwitchStatement_NonTypesystemRule#()V" />
+      <node id="400642802550421653" at="29,60,32,5" concept="4" />
+      <node id="400642802550421661" at="36,82,39,5" concept="4" />
+      <node id="400642802550421667" at="39,5,42,5" concept="4" />
+      <node id="400642802550421679" at="44,119,47,7" concept="4" />
+      <node id="400642802550421700" at="50,122,53,7" concept="4" />
+      <node id="400642802550421653" at="61,0,64,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="400642802550421653" at="64,0,67,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="400642802550421653" at="67,0,70,0" concept="5" trace="overrides#()Z" />
+      <node id="400642802550421743" at="55,0,59,5" concept="0" />
+      <node id="400642802550421677" at="43,0,48,5" concept="4" />
+      <node id="400642802550421698" at="49,0,54,5" concept="4" />
+      <node id="400642802550421653" at="29,0,35,0" concept="5" trace="overrides#(Ljetbrains/mps/lang/typesystem/runtime/NonTypesystemRule_Runtime;)Z" />
+      <node id="400642802550421653" at="35,0,61,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="400642802550421653" at="27,58,27,58" />
+      <scope id="400642802550421653" at="30,65,31,18" />
+      <scope id="400642802550421662" at="37,22,38,13" />
+      <scope id="400642802550421668" at="40,115,41,13" />
+      <scope id="400642802550421680" at="45,254,46,15" />
+      <scope id="400642802550421710" at="51,301,52,15" />
+      <scope id="400642802550421653" at="61,50,62,45" />
+      <scope id="400642802550421653" at="64,68,65,102" />
+      <scope id="400642802550421653" at="67,30,68,17" />
+      <scope id="400642802550421653" at="27,0,29,0" />
+      <scope id="400642802550421743" at="56,5,58,258">
+        <var name="_reporter_2309309498" id="400642802550421743" />
+        <var name="errorTarget" id="400642802550421743" />
+      </scope>
+      <scope id="400642802550421678" at="44,119,47,7" />
+      <scope id="400642802550421699" at="50,122,53,7" />
+      <scope id="400642802550421653" at="61,0,64,0" />
+      <scope id="400642802550421653" at="64,0,67,0">
+        <var name="argument" id="400642802550421653" />
+      </scope>
+      <scope id="400642802550421653" at="67,0,70,0" />
+      <scope id="400642802550421653" at="29,60,33,17" />
+      <scope id="400642802550421653" at="29,0,35,0">
+        <var name="rule" id="400642802550421653" />
+      </scope>
+      <scope id="400642802550421654" at="35,128,59,5">
+        <var name="arg" id="400642802550421656" />
+      </scope>
+      <scope id="400642802550421653" at="35,0,61,0">
+        <var name="status" id="400642802550421653" />
+        <var name="switchStatement" id="400642802550421653" />
+        <var name="typeCheckingContext" id="400642802550421653" />
+      </scope>
+      <unit id="400642802550421653" at="71,0,75,0" name="jetbrains.mps.baseLanguage.jdk7.typesystem.check_StringSwitchStatement_NonTypesystemRule$LINKS" />
+      <unit id="400642802550421653" at="76,0,82,0" name="jetbrains.mps.baseLanguage.jdk7.typesystem.check_StringSwitchStatement_NonTypesystemRule$CONCEPTS" />
+      <unit id="400642802550421653" at="26,0,83,0" name="jetbrains.mps.baseLanguage.jdk7.typesystem.check_StringSwitchStatement_NonTypesystemRule" />
+    </file>
+  </root>
+</debug-info>
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,41 +18,50 @@ package jetbrains.mps;
 import com.intellij.navigation.ChooseByNameContributor;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.navigation.NavigationItem;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileEditor.OpenFileDescriptor;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.module.Module;
+import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vcs.FileStatus;
-import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.util.indexing.FileBasedIndex;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class MPSGoToFileContributor implements ChooseByNameContributor, DumbAware {
-
+  @NotNull
+  @Override
   public String[] getNames(Project project, boolean includeNonProjectItems) {
     return FilenameIndex.getAllFilenames(project);
   }
 
-  public NavigationItem[] getItemsByName(String name, final String pattern, final Project project, boolean includeNonProjectItems) {
-    GlobalSearchScope scope = new AllScope();
+  @NotNull
+  @Override
+  public NavigationItem[] getItemsByName(final String name, final String pattern, final Project project, boolean includeNonProjectItems) {
+    // XXX why not GlobalSearchScope.allScope(project)?
+    final GlobalSearchScope scope = new AllScope();
 
-    Collection<VirtualFile> files = FileBasedIndex.getInstance().getContainingFiles(FilenameIndex.NAME, name, scope);
-    List<NavigationItem> result = new ArrayList<NavigationItem>();
+    Collection<VirtualFile> files;
+    // it's an extension contributed to a point, it's caller responsibility to ensure proper platform read lock, don't grab
+    try {
+      files = FilenameIndex.getVirtualFilesByName(project, name, scope);
+    } catch (ProcessCanceledException ex) {
+      files = Collections.emptyList();
+    }
+
+    List<NavigationItem> result = new ArrayList<>();
     for (final VirtualFile file : files) {
       result.add(new FileNavigationItem(file, project));
     }
 
-    return result.toArray(new NavigationItem[result.size()]);
+    return result.toArray(new NavigationItem[0]);
   }
 
   public static class FileNavigationItem implements NavigationItem {
@@ -64,6 +73,7 @@ public class MPSGoToFileContributor implements ChooseByNameContributor, DumbAwar
       myProject = project;
     }
 
+    @Override
     public String getName() {
       return myFile.getName();
     }
@@ -72,22 +82,27 @@ public class MPSGoToFileContributor implements ChooseByNameContributor, DumbAwar
       return myFile.getName();
     }
 
+    @Override
     public ItemPresentation getPresentation() {
       return new ItemPresentation() {
+        @Override
         public String getPresentableText() {
           return myFile.getName();
         }
 
+        @Override
         public String getLocationString() {
           return myFile.getParent().getPath();
         }
 
+        @Override
         public Icon getIcon(boolean open) {
           return FileTypeManager.getInstance().getFileTypeByFile(myFile).getIcon();
         }
       };
     }
 
+    @Override
     public void navigate(boolean requestFocus) {
       OpenFileDescriptor descriptor = new OpenFileDescriptor(myProject, getVirtualFile(), -1);
       if (descriptor.canNavigate()) {
@@ -95,10 +110,12 @@ public class MPSGoToFileContributor implements ChooseByNameContributor, DumbAwar
       }
     }
 
+    @Override
     public boolean canNavigate() {
       return true;
     }
 
+    @Override
     public boolean canNavigateToSource() {
       return false;
     }
@@ -109,18 +126,22 @@ public class MPSGoToFileContributor implements ChooseByNameContributor, DumbAwar
   }
 
   private static class AllScope extends GlobalSearchScope {
-    public boolean contains(VirtualFile file) {
+    @Override
+    public boolean contains(@NotNull VirtualFile file) {
       return true;
     }
 
-    public int compare(VirtualFile file1, VirtualFile file2) {
+    @Override
+    public int compare(@NotNull VirtualFile file1, @NotNull VirtualFile file2) {
       return 0;
     }
 
+    @Override
     public boolean isSearchInModuleContent(@NotNull Module aModule) {
       return false;
     }
 
+    @Override
     public boolean isSearchInLibraries() {
       return false;
     }

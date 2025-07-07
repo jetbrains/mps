@@ -15,11 +15,9 @@
  */
 package jetbrains.mps.library;
 
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.util.JDOMUtil;
-import jetbrains.mps.util.Macros;
-import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.util.PathManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
+import jetbrains.mps.util.*;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -33,8 +31,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * TODO reuse it to read our libraries (core, workbench) from the generated xml file
+ */
 public class BuiltInLibrariesIO {
-  private static final Logger LOG = Logger.getLogger(BuiltInLibrariesIO.class);
+  private static final Logger LOG = LogManager.getLogger(BuiltInLibrariesIO.class);
   public static final String CONFIG_FILE_NAME = "CustomBuiltInLibraries";
   private static final String CONFIG_FILE_WHOLE_NAME = CONFIG_FILE_NAME + ".xml";
   public static final String ROOT_TAG = "libraries";
@@ -43,7 +44,7 @@ public class BuiltInLibrariesIO {
   public static final String LIBRARY_PATH_TAG = "path";
 
   public static Map<String, Library> readBuiltInLibraries() {
-    Map<String, Library> result = new HashMap<String, Library>();
+    Map<String, Library> result = new HashMap<>();
 
     URL resource = BuiltInLibrariesIO.class.getResource(CONFIG_FILE_WHOLE_NAME);
     if (resource == null) return result;
@@ -58,27 +59,19 @@ public class BuiltInLibrariesIO {
         Element child = (Element) childObj;
         String name = child.getAttribute(LIBRARY_NAME_TAG).getValue();
         String path = child.getAttribute(LIBRARY_PATH_TAG).getValue();
-        final String realPath = MacrosFactory.mpsHomeMacros().expandPath(path, new File(PathManager.getHomePath()));
+        final String realPath = MacrosFactory.getGlobal().expandPath(path);
 
-        Library predefinedLibrary = new Library(name) {
-          @NotNull
-          @Override
-          public String getPath() {
-            return realPath;
-          }
-        };
+        Library predefinedLibrary = new Library(name, realPath);
         result.put(name, predefinedLibrary);
       }
-    } catch (JDOMException e) {
-      LOG.error(e);
-    } catch (IOException e) {
-      LOG.error(e);
+    } catch (JDOMException | IOException e) {
+      LOG.error(null, e);
     } finally {
-       if (in != null) {
+      if (in != null) {
         try {
           in.close();
         } catch (IOException e) {
-          LOG.error(e);
+          LOG.error(null, e);
         }
       }
     }
@@ -93,14 +86,12 @@ public class BuiltInLibrariesIO {
         configFile.createNewFile();
         write(configFile, name, path);
       }
-    } catch (JDOMException e) {
-      LOG.error(e);
     } catch (IOException e) {
-      LOG.error(e);
+      LOG.error(null, e);
     }
   }
 
-  private static void write(File configFile, String name, String path) throws JDOMException, IOException {
+  private static void write(File configFile, String name, String path) throws IOException {
     Document document;
     try {
       document = JDOMUtil.loadDocument(configFile);
@@ -134,7 +125,7 @@ public class BuiltInLibrariesIO {
       String[] strings = param.split("=");
 
       String name = strings[0];
-      String path = Macros.MPS_HOME + File.separator + strings[1];
+      String path = MacrosFactory.MPS_HOME + File.separator + strings[1];
 
       BuiltInLibrariesIO.addLibraryToConfigurationFile(name, path, mpsHome);
     }

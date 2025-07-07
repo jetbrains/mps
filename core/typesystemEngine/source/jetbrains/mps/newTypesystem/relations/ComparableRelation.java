@@ -16,33 +16,35 @@
 package jetbrains.mps.newTypesystem.relations;
 
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
+import jetbrains.mps.newTypesystem.SubtypingUtil;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.newTypesystem.state.blocks.RelationBlock;
 import jetbrains.mps.newTypesystem.state.blocks.RelationKind;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
+import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystemEngine.util.LatticeUtil;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class ComparableRelation extends AbstractRelation {
+  @Override
   public boolean accept(RelationKind kind) {
     return kind.isComparable();
   }
 
+  @Override
   public boolean solve(SNode node, Set<SNode> leftTypes, Set<SNode> rightTypes, State state, Map<SNode, RelationBlock> typesToBlocks) {
-    EquationInfo info;
-    List<SNode> nodes = new LinkedList<SNode>();
+    List<SNode> nodes = new LinkedList<>();
     nodes.addAll(leftTypes);
     nodes.addAll(rightTypes);
     if (nodes.isEmpty()) {
       return false;
     }
-    SubTypingManagerNew subTypingManager = (SubTypingManagerNew) state.getTypeCheckingContext().getTypeChecker().getSubtypingManager();
-    nodes = subTypingManager.eliminateSuperTypes(nodes);
-    List<SNode> types = new LinkedList<SNode>();
+    // TODO: why not use global TypeChecker? there can be the only one, after all
+    SubTypingManagerNew subTypingManager = (SubTypingManagerNew) TypeChecker.getInstance().getSubtypingManager();
+    nodes = SubtypingUtil.eliminateSuperTypes(nodes);
+    List<SNode> types = new LinkedList<>();
     SNode result = null;
     for (SNode type : nodes) {
       for (SNode toCompare : types) {
@@ -53,14 +55,21 @@ public class ComparableRelation extends AbstractRelation {
       types.add(type);
     }
     if (result == null) {
-      result = subTypingManager.createMeet(nodes);
+      result = createMeet(nodes);
     }
     if (result != null) {
       RelationBlock block = typesToBlocks.get(result);
-      info = (block != null) ? block.getEquationInfo() : typesToBlocks.get(nodes.iterator().next()).getEquationInfo();
+      EquationInfo info = (block != null) ? block.getEquationInfo() : typesToBlocks.get(nodes.iterator().next()).getEquationInfo();
       state.addEquation(node, result, info);
     }
     return result != null;
+  }
+
+  private SNode createMeet(List<SNode> nodes) {
+    if (nodes.size() > 1) {
+      nodes = SubtypingUtil.eliminateSuperTypes(nodes);
+    }
+    return LatticeUtil.meetNodes(new LinkedHashSet<>(nodes));
   }
 
 }

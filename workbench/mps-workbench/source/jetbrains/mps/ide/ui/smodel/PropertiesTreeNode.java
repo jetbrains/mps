@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,24 +15,24 @@
  */
 package jetbrains.mps.ide.ui.smodel;
 
-import jetbrains.mps.ide.projectPane.Icons;
-import jetbrains.mps.ide.ui.MPSTreeNodeEx;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.SNode;
-
-import javax.swing.tree.DefaultTreeModel;
-import java.util.ArrayList;
-import java.util.List;
+import com.intellij.icons.AllIcons.Nodes;
+import com.intellij.util.IconUtil;
+import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public class PropertiesTreeNode extends MPSTreeNodeEx {
-  private SNode myNode;
+  private final SNode myNode;
+  private final SNodeReference myNodePointer;
   private boolean myInitialized = false;
 
-  public PropertiesTreeNode(IOperationContext operationContext, SNode node) {
-    super(operationContext);
+  public PropertiesTreeNode(SNode node) {
     myNode = node;
+    myNodePointer = node.getReference();
 
-    setIcon(Icons.PROPERTY_ICON);
+    // TODO: add special icon for node properties
+    setIcon(IconUtil.addText(Nodes.Folder, "P"));
     setNodeIdentifier("properties");
   }
 
@@ -41,24 +41,26 @@ public class PropertiesTreeNode extends MPSTreeNodeEx {
     return myNode;
   }
 
+  @Override
+  public SNodeReference getNodePointer() {
+    return myNodePointer;
+  }
+
+  @Override
   public boolean isInitialized() {
     return myInitialized;
   }
 
+  @Override
   protected void doInit() {
-    super.doInit();
-
-    List<String> props = new ArrayList<String>(myNode.getPropertyNames());
-
-    for (final String p : props) {
-      add(new PropertyTreeNode(getOperationContext(), myNode, p));
+    for (SProperty name : myNode.getProperties()) {
+      add(new PropertyTreeNode(myNode, name));
     }
 
     myInitialized = true;
-
-    ((DefaultTreeModel) getTree().getModel()).nodeStructureChanged(this);
   }
 
+  @Override
   protected void doUpdate() {
     this.removeAllChildren();
     myInitialized = false;

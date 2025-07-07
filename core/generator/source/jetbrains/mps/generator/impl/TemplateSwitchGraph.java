@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,21 @@ package jetbrains.mps.generator.impl;
 import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.generator.runtime.TemplateReductionRule;
 import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
-import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.util.FlattenIterable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class TemplateSwitchGraph {
 
-  private Map<SNodePointer, Node> mySwitchToNode = new HashMap<SNodePointer, Node>();
+  private final Map<SNodeReference, Node> mySwitchToNode = new HashMap<>();
 
-  public TemplateSwitchGraph(Collection<TemplateModel> templateModels) {
+  public TemplateSwitchGraph(Collection<TemplateModel> templateModels) throws GenerationFailureException {
     for (TemplateModel templateModel : templateModels) {
       for (TemplateSwitchMapping root : templateModel.getSwitches()) {
         mySwitchToNode.put(root.getSwitchNode(), new Node(root));
@@ -35,7 +40,7 @@ public class TemplateSwitchGraph {
     }
 
     for (Node node : mySwitchToNode.values()) {
-      SNodePointer modifiesSwitchPtr = node.mySwitch.getModifiesSwitch();
+      SNodeReference modifiesSwitchPtr = node.mySwitch.getModifiesSwitch();
       if (modifiesSwitchPtr != null) {
         Node modifiedSwitch = mySwitchToNode.get(modifiesSwitchPtr);
         if (modifiedSwitch != null) {
@@ -43,7 +48,7 @@ public class TemplateSwitchGraph {
         }
       }
       if (node.myModified == null) {
-        node.myRules = new LinkedList<TemplateSwitchMapping>();
+        node.myRules = new LinkedList<>();
       }
     }
     for (Node node : mySwitchToNode.values()) {
@@ -55,27 +60,22 @@ public class TemplateSwitchGraph {
       if (node != bottom) {
         node.myModified = bottom;
         if (i == 0) {
-          throw new RuntimeException("Template switch loop in: " + node);     // TODO handle correctly
+          throw new GenerationFailureException("Template switch loop in: " + node);
         }
       }
       bottom.myRules.add(node.mySwitch);
     }
-    for (Node node : mySwitchToNode.values()) {
-      if (node.myModified == null) {
-        node.createFinder();
-      }
-    }
   }
 
-  public FastRuleFinder getRuleFinder(SNodePointer baseSwitch) {
+  public FastRuleFinder getRuleFinder(SNodeReference baseSwitch) {
     Node bottom = mySwitchToNode.get(baseSwitch);
     while (bottom.myModified != null) {
       bottom = bottom.myModified;
     }
-    return bottom.finder;
+    return bottom.getFinder();
   }
 
-  public TemplateSwitchMapping getSwitch(SNodePointer switch_) {
+  public TemplateSwitchMapping getSwitch(SNodeReference switch_) {
     Node node = mySwitchToNode.get(switch_);
     return node != null ? node.mySwitch : null;
   }
@@ -84,20 +84,29 @@ public class TemplateSwitchGraph {
     final TemplateSwitchMapping mySwitch;
     Node myModified;
     List<TemplateSwitchMapping> myRules;
-    FastRuleFinder finder;
+    private FastRuleFinder myFinder;
 
     public Node(TemplateSwitchMapping switch_) {
       this.mySwitch = switch_;
     }
 
-    private void createFinder() {
-      FlattenIterable<TemplateReductionRule> rules = new FlattenIterable<TemplateReductionRule>(new ArrayList<Iterable<TemplateReductionRule>>());
+    public FastRuleFinder getFinder() {
+      if (myFinder == null) {
+        createFinder();
+      }
+      return myFinder;
+    }
+
+    private synchronized void createFinder() {
+      if (myFinder != null) {
+        return;
+      }
+      FlattenIterable<TemplateReductionRule> rules = new FlattenIterable<>(new ArrayList<>());
       for (TemplateSwitchMapping sw : myRules) {
         rules.add(sw.getReductionRules());
       }
-
-      this.myRules = null;
-      this.finder = new FastRuleFinder(rules);
+      myRules = null;
+      myFinder = new FastRuleFinder<>(rules);
     }
   }
 }

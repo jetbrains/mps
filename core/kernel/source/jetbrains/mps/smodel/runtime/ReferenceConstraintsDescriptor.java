@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,19 @@
  */
 package jetbrains.mps.smodel.runtime;
 
-import jetbrains.mps.smodel.IScope;
-import jetbrains.mps.smodel.SNode;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public interface ReferenceConstraintsDescriptor {
-  String getRole();
+  SReferenceLink getReference();
 
   ConstraintsDescriptor getContainer();
 
   @Nullable
   ReferenceScopeProvider getScopeProvider();
 
-  boolean validate(SNode referenceNode, SNode oldReferentNode, SNode newReferentNode, IScope scope);
+  boolean validate(SNode referenceNode, SNode oldReferentNode, SNode newReferentNode);
 
-  void onReferenceSet(SNode referenceNode, SNode oldReferentNode, SNode newReferentNode, IScope scope);
+  void onReferenceSet(SNode referenceNode, SNode oldReferentNode, SNode newReferentNode);
 }

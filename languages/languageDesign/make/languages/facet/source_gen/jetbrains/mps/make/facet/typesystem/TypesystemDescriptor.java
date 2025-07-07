@@ -4,15 +4,24 @@ package jetbrains.mps.make.facet.typesystem;
 
 import jetbrains.mps.lang.typesystem.runtime.BaseHelginsDescriptor;
 import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
+import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 
 public class TypesystemDescriptor extends BaseHelginsDescriptor {
   public TypesystemDescriptor() {
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_FacetJavaClassExpression_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
     {
       InferenceRule_Runtime inferenceRule = new typeof_FacetReferenceExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_ForeignParametersExpression_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_InputResourcesParameter_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -26,6 +35,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     {
       InferenceRule_Runtime inferenceRule = new typeof_TargetReferenceExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new ResourceClassifierType_notIn_ResourceTypeDeclaration_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
     }
   }
 }

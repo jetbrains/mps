@@ -34,11 +34,12 @@ public class Executor {
     final Response[] response = new Response[1];
 
     ProgressManager.getInstance().run(new Modal(myProject, "Connection in progress. Please wait.", false) {
+      @Override
       public void run(@NotNull ProgressIndicator indicator) {
         try {
           response[0] = procedure.perform();
         } catch (Throwable e) {
-          response[0] = new Response(e.getMessage(), "", false, e);
+          response[0] = new Response(e.toString(), "", false, e);
         }
       }
     });

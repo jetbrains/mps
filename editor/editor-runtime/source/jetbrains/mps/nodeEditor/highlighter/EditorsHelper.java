@@ -15,20 +15,24 @@
  */
 package jetbrains.mps.nodeEditor.highlighter;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
+import com.intellij.openapi.util.Computable;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.ide.editor.MPSFileNodeEditor;
-import jetbrains.mps.logging.Logger;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EditorsHelper {
-  public static Logger LOG = Logger.getLogger(EditorsHelper.class);
+  public static Logger LOG = LogManager.getLogger(EditorsHelper.class);
 
-  public static List<MPSFileNodeEditor> getAllEditors(FileEditorManager manager) {
-    return filterMPSEditors(manager.getAllEditors());
+  public static List<MPSFileNodeEditor> getAllEditors(final FileEditorManager manager) {
+    FileEditor[] allEditors = ApplicationManager.getApplication().runReadAction((Computable<FileEditor[]>) () -> manager.getAllEditors());
+    return filterMPSEditors(allEditors);
   }
 
   public static List<Editor> getSelectedEditors(FileEditorManager manager) {
@@ -36,7 +40,7 @@ public class EditorsHelper {
   }
 
   public static List<MPSFileNodeEditor> filterMPSEditors(FileEditor[] selectedEditors) {
-    List<MPSFileNodeEditor> editors = new ArrayList<MPSFileNodeEditor>();
+    List<MPSFileNodeEditor> editors = new ArrayList<>();
     for (FileEditor fileEditor : selectedEditors) {
       if (fileEditor instanceof MPSFileNodeEditor) {
         MPSFileNodeEditor mpsFileNodeEditor = (MPSFileNodeEditor) fileEditor;
@@ -50,8 +54,8 @@ public class EditorsHelper {
   }
 
   public static List<Editor> toMPSEditors(List<MPSFileNodeEditor> nodeEditors) {
-    List<MPSFileNodeEditor> emptyEditors = new ArrayList<MPSFileNodeEditor>(0);
-    List<Editor> result = new ArrayList<Editor>();
+    List<MPSFileNodeEditor> emptyEditors = new ArrayList<>(0);
+    List<Editor> result = new ArrayList<>();
     for (MPSFileNodeEditor e : nodeEditors) {
       Editor editor = e.getNodeEditor();
       if (editor != null) {

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependenciesRoot>
+  <dependency className="testCompilationJavaXmlConflict.abc.Main">
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="java.io.IOException" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="javax.xml.parsers.DocumentBuilderFactory" />
+    <classNode dependClassName="javax.xml.parsers.ParserConfigurationException" />
+    <classNode dependClassName="org.w3c.dom.Document" />
+    <classNode dependClassName="org.w3c.dom.ElementTraversal" />
+    <classNode dependClassName="org.w3c.dom.NamedNodeMap" />
+    <classNode dependClassName="org.w3c.dom.Node" />
+    <classNode dependClassName="org.xml.sax.SAXException" />
+  </dependency>
+</dependenciesRoot>
+

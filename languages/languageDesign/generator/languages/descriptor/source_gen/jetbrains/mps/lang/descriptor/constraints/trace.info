@@ -1,37 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="ConstraintsAspectDescriptor.java" startLine="9" startPosition="0" endLine="25" endPosition="0" unitName="jetbrains.mps.lang.descriptor.constraints.ConstraintsAspectDescriptor" />
-  <root nodeId="8780540425167303919" modelId="r:6c8689b4-7e32-4a3b-a4f7-e167320d47c9(jetbrains.mps.lang.descriptor.constraints)">
-    <nodeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="14" startPosition="43" endLine="15" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="19" startPosition="82" endLine="20" endPosition="74" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="23" startPosition="37" endLine="24" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="28" startPosition="56" endLine="29" endPosition="37" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="29" startPosition="37" endLine="30" endPosition="28" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="8780540425167303923" fileName="LanguageDescriptor_Constraints.java" startLine="29" startPosition="37" endLine="30" endPosition="28" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="32" startPosition="7" endLine="33" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="13" startPosition="79" endLine="16" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="LanguageDescriptor_Constraints#()V" />
-    <nodeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="21" startPosition="80" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnGetter#()Z" />
-    <nodeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="26" startPosition="0" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getValue#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/smodel/IScope;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="20" startPosition="74" endLine="32" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="17" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultProperties#()Ljava/util/Map;" />
-    <scopeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="14" startPosition="43" endLine="15" endPosition="72" />
-    <scopeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="23" startPosition="37" endLine="24" endPosition="20" />
-    <scopeInfo nodeId="8780540425167303922" fileName="LanguageDescriptor_Constraints.java" startLine="29" startPosition="37" endLine="30" endPosition="28" />
-    <scopeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="28" startPosition="56" endLine="30" endPosition="28">
-      <varInfo nodeId="8780540425167303919" varName="propertyName" />
-    </scopeInfo>
-    <scopeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="13" startPosition="79" endLine="16" endPosition="3" />
-    <scopeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="21" startPosition="80" endLine="26" endPosition="0" />
-    <scopeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="26" startPosition="0" endLine="32" endPosition="0">
-      <varInfo nodeId="8780540425167303919" varName="node" />
-      <varInfo nodeId="8780540425167303919" varName="scope" />
-    </scopeInfo>
-    <scopeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="19" startPosition="82" endLine="33" endPosition="22">
-      <varInfo nodeId="8780540425167303919" varName="properties" />
-    </scopeInfo>
-    <scopeInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="17" startPosition="0" endLine="35" endPosition="0" />
-    <unitInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="21" startPosition="31" endLine="32" endPosition="5" unitName="jetbrains.mps.lang.descriptor.constraints.LanguageDescriptor_Constraints$1" />
-    <unitInfo nodeId="8780540425167303919" fileName="LanguageDescriptor_Constraints.java" startLine="13" startPosition="0" endLine="36" endPosition="0" unitName="jetbrains.mps.lang.descriptor.constraints.LanguageDescriptor_Constraints" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="ConstraintsAspectDescriptor.java">
+      <unit at="13,0,29,0" name="jetbrains.mps.lang.descriptor.constraints.ConstraintsAspectDescriptor" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:6c8689b4-7e32-4a3b-a4f7-e167320d47c9(jetbrains.mps.lang.descriptor.constraints)/8780540425167303919">
+    <file name="LanguageDescriptor_Constraints.java">
+      <node id="8780540425167303919" at="17,43,18,42" concept="6" />
+      <node id="8780540425167303920" at="22,59,23,40" concept="6" />
+      <node id="8780540425167303920" at="26,35,27,18" concept="4" />
+      <node id="8780540425167303923" at="30,40,31,35" concept="4" />
+      <node id="8780540425167303919" at="35,84,36,119" concept="3" />
+      <node id="8780540425167303920" at="36,119,37,61" concept="1" />
+      <node id="8780540425167303919" at="37,61,38,22" concept="4" />
+      <node id="8780540425167303919" at="42,0,43,0" concept="5" trace="LanguageDescriptor$uh" />
+      <node id="8780540425167303919" at="46,0,47,0" concept="5" trace="name$MnvL" />
+      <node id="8780540425167303919" at="17,0,20,0" concept="0" trace="LanguageDescriptor_Constraints#()V" />
+      <node id="8780540425167303920" at="22,0,25,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
+      <node id="8780540425167303920" at="25,0,29,0" concept="2" trace="hasOwnGetter#()Z" />
+      <node id="8780540425167303920" at="29,0,33,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
+      <node id="8780540425167303919" at="34,0,40,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <scope id="8780540425167303919" at="17,43,18,42" />
+      <scope id="8780540425167303920" at="22,59,23,40" />
+      <scope id="8780540425167303920" at="26,35,27,18" />
+      <scope id="8780540425167303922" at="30,40,31,35" />
+      <scope id="8780540425167303919" at="17,0,20,0" />
+      <scope id="8780540425167303920" at="22,0,25,0">
+        <var name="container" id="8780540425167303920" />
+      </scope>
+      <scope id="8780540425167303919" at="35,84,38,22">
+        <var name="properties" id="8780540425167303919" />
+      </scope>
+      <scope id="8780540425167303920" at="25,0,29,0" />
+      <scope id="8780540425167303920" at="29,0,33,0">
+        <var name="node" id="8780540425167303920" />
+      </scope>
+      <scope id="8780540425167303919" at="34,0,40,0" />
+      <unit id="8780540425167303919" at="41,0,44,0" name="jetbrains.mps.lang.descriptor.constraints.LanguageDescriptor_Constraints$CONCEPTS" />
+      <unit id="8780540425167303919" at="45,0,48,0" name="jetbrains.mps.lang.descriptor.constraints.LanguageDescriptor_Constraints$PROPS" />
+      <unit id="8780540425167303920" at="21,0,34,0" name="jetbrains.mps.lang.descriptor.constraints.LanguageDescriptor_Constraints$Name_Property" />
+      <unit id="8780540425167303919" at="16,0,49,0" name="jetbrains.mps.lang.descriptor.constraints.LanguageDescriptor_Constraints" />
+    </file>
+  </root>
+</debug-info>
 

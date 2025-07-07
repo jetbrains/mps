@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,44 +16,64 @@
 package jetbrains.mps.nodeEditor.cells;
 
 import com.intellij.openapi.command.CommandProcessor;
-import com.intellij.util.LocalTimeCounter;
-import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.editor.runtime.TextBuilderImpl;
+import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
+import jetbrains.mps.editor.runtime.cells.CaretState;
+import jetbrains.mps.editor.runtime.commands.EditorComputable;
+import jetbrains.mps.editor.runtime.style.Padding;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.ide.datatransfer.TextPasteUtil;
-import jetbrains.mps.nodeEditor.*;
-import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteInfo;
+import jetbrains.mps.nodeEditor.CellSide;
+import jetbrains.mps.nodeEditor.EditorSettings;
+import jetbrains.mps.nodeEditor.IntelligentInputUtil;
+import jetbrains.mps.nodeEditor.IntelligentInputUtil.IntelligentCellProcessor;
+import jetbrains.mps.nodeEditor.cellLayout.PunctuationUtil;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstitutePatternEditor;
+import jetbrains.mps.nodeEditor.keyboard.TextChangeEvent;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
-import jetbrains.mps.nodeEditor.selection.MultipleSelection;
-import jetbrains.mps.nodeEditor.selection.SelectionManager;
-import jetbrains.mps.nodeEditor.style.Padding;
-import jetbrains.mps.nodeEditor.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.text.TextBuilder;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.openapi.editor.ActionHandler;
+import jetbrains.mps.openapi.editor.EditorComponent;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.TextBuilder;
+import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
+import jetbrains.mps.openapi.editor.cells.optional.WithCaret;
+import jetbrains.mps.openapi.editor.selection.MultipleSelection;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.smodel.ModelCommandContext;
+import jetbrains.mps.smodel.ModelCommandContext.Provider;
 import jetbrains.mps.smodel.SNodeUndoableAction;
-import jetbrains.mps.smodel.UndoHelper;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.smodel.UndoRunnable;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.workbench.nodesFs.MPSNodesVirtualFileSystem;
-import org.apache.commons.lang.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.lang.ref.WeakReference;
+import java.util.Objects;
 
-public abstract class EditorCell_Label extends EditorCell_Basic {
+public abstract class EditorCell_Label extends EditorCell_Basic implements jetbrains.mps.openapi.editor.cells.EditorCell_Label, WithCaret {
   protected boolean myNoTextSet;
   protected TextLine myTextLine;
   protected TextLine myNullTextLine;
-  protected boolean myCaretIsVisible = true;
+  protected CaretState myCaretState = new CaretState();
 
-  protected EditorCell_Label(@NotNull EditorContext editorContext, SNode node, String text) {
+  protected EditorCell_Label(@NotNull jetbrains.mps.openapi.editor.EditorContext editorContext, SNode node, String text) {
     super(editorContext, node);
-    myTextLine = new TextLine("", getStyle(), false);
-    myNullTextLine = new TextLine("", getStyle(), true);
+    myTextLine = new TextLine("", getStyle(), false, editorContext.getEditorComponent().getEditorComponentSettings());
+    myNullTextLine = new TextLine("", getStyle(), true, editorContext.getEditorComponent().getEditorComponentSettings());
 
     myTextLine.setCaretEnabled(true);
     myNullTextLine.setCaretEnabled(true);
@@ -77,36 +97,23 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
     setAction(CellActionType.COPY, new CopyLabelText());
     setAction(CellActionType.PASTE, new PasteIntoLabelText());
     setAction(CellActionType.CUT, new CutLabelText());
-  }
-
-  public boolean isFirstPositionInBigCell() {
-    return getContainingBigCell().getFirstLeaf() == this && isFirstCaretPosition();
-  }
-
-  public boolean isLastPositionInBigCell() {
-    return getContainingBigCell().getLastLeaf() == this && isLastCaretPosition() && !getTextLine().hasNonTrivialSelection();
-  }
-
-  public CaretPosition getDefaultCaretPosition() {
-    return getStyle().get(StyleAttributes.DEFAULT_CARET_POSITON);
-  }
-
-  public void setDefaultCaretPosition(CaretPosition defaultCaretPosition) {
-    getStyle().set(StyleAttributes.DEFAULT_CARET_POSITON, defaultCaretPosition);
+    setAction(CellActionType.CLEAR_SELECTION, new ClearSelection());
   }
 
   public boolean canPasteText() {
     return true;
   }
 
+  @Override
   public void setSelected(boolean selected) {
     super.setSelected(selected);
     if (!selected && !getEditor().selectionStackContains(this)) {
       myTextLine.resetSelection();
     }
-    myCaretIsVisible = true;
+    myCaretState.touch(selected);
   }
 
+  @Override
   public String getText() {
     return myTextLine.getText();
   }
@@ -147,24 +154,12 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
     getStyle().set(StyleAttributes.NULL_SELECTED_TEXT_BACKGROUND_COLOR, color);
   }
 
-  public boolean isFirstPositionAllowed() {
-    if (getStyle().getCurrent(StyleAttributes.FIRST_POSITION_ALLOWED) != null) {
-      return getStyle().get(StyleAttributes.FIRST_POSITION_ALLOWED);
-    }
-    return !getStyle().get(StyleAttributes.PUNCTUATION_LEFT);
-  }
-
-  public boolean isLastPositionAllowed() {
-    if (getStyle().getCurrent(StyleAttributes.LAST_POSITION_ALLOWED) != null) {
-      return getStyle().get(StyleAttributes.LAST_POSITION_ALLOWED);
-    }
-    return !getStyle().get(StyleAttributes.PUNCTUATION_RIGHT);
-  }
-
+  @Override
   public int getCaretPosition() {
     return myTextLine.getCaretPosition();
   }
 
+  @Override
   public void setCaretPosition(int position) {
     setCaretPosition(position, false);
   }
@@ -177,66 +172,91 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
 
   public void setCaretPosition(int position, boolean selection) {
     assert isCaretPositionAllowed(position) : "Position " + position + " is not allowed for EditorCell_Label: \"" + myTextLine.getText() + "\"";
+    repaintCaret();
     myTextLine.setCaretPosition(position, selection);
-    getEditor().getBracesHighlighter().updateBracesSelection(this);
+    myCaretState.touch();
+    repaintCaret();
   }
 
   public boolean isCaretPositionAllowed(int position) {
-    if (!isFirstPositionAllowed() && position == 0) return false;
-    if (!isLastPositionAllowed() && position == myTextLine.getText().length()) return false;
+    if (!StyleAttributesUtil.isFirstPositionAllowed(getStyle()) && position == 0) {
+      return false;
+    }
+    if (!StyleAttributesUtil.isLastPositionAllowed(getStyle()) && position == myTextLine.getText().length()) {
+      return false;
+    }
     return position >= 0 && position <= myTextLine.getText().length();
   }
 
+  @Override
   public void home() {
-    if (isFirstPositionAllowed()) {
-      setCaretPosition(0);
+    int textLength = getText().length();
+    if (StyleAttributesUtil.isFirstPositionAllowed(getStyle())) {
+      if (textLength > 0 || StyleAttributesUtil.isLastPositionAllowed(getStyle())) {
+        setCaretPosition(0);
+      }
     } else {
-      setCaretPosition(1);
+      if (textLength > 0 && (textLength > 1 || StyleAttributesUtil.isLastPositionAllowed(getStyle()))) {
+        setCaretPosition(1);
+      }
     }
   }
 
+  @Override
   public void end() {
-    if (isLastPositionAllowed()) {
-      setCaretPosition(getText().length());
+    int textLength = getText().length();
+    if (StyleAttributesUtil.isLastPositionAllowed(getStyle())) {
+      if (textLength > 0 || StyleAttributesUtil.isFirstPositionAllowed(getStyle())) {
+        setCaretPosition(getText().length());
+      }
     } else {
-      setCaretPosition(getText().length() - 1);
+      if (textLength > 0 && (textLength > 1 || StyleAttributesUtil.isFirstPositionAllowed(getStyle()))) {
+        setCaretPosition(getText().length() - 1);
+      }
     }
   }
 
+  @Override
   public boolean isSelectable() {
-    if (!super.isSelectable()) return false;
+    if (!super.isSelectable()) {
+      return false;
+    }
 
     if (getText() == null || getText().length() == 0) {
-      return isFirstPositionAllowed() && isLastPositionAllowed();
+      return StyleAttributesUtil.isFirstPositionAllowed(getStyle()) && StyleAttributesUtil.isLastPositionAllowed(getStyle());
     }
 
     if (getText().length() == 1) {
-      return isFirstPositionAllowed() || isLastPositionAllowed();
+      return StyleAttributesUtil.isFirstPositionAllowed(getStyle()) || StyleAttributesUtil.isLastPositionAllowed(getStyle());
     }
 
     return true;
   }
 
+  @Override
   public boolean isFirstCaretPosition() {
-    if (!isFirstPositionAllowed()) {
+    if (!StyleAttributesUtil.isFirstPositionAllowed(getStyle())) {
       return getCaretPosition() == 1;
     } else {
       return getCaretPosition() == 0;
     }
   }
 
+  @Override
   public boolean isLastCaretPosition() {
-    if (!isLastPositionAllowed()) {
+    if (!StyleAttributesUtil.isLastPositionAllowed(getStyle())) {
       return getCaretPosition() == getText().length() - 1;
     } else {
       return getCaretPosition() == getText().length();
     }
   }
 
+  @Override
   public boolean isCaretEnabled() {
     return myTextLine.isCaretEnabled();
   }
 
+  @Override
   public void setCaretEnabled(boolean enabled) {
     myTextLine.setCaretEnabled(enabled);
   }
@@ -251,22 +271,27 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
     myNullTextLine.setText(text);
   }
 
+  @Override
   public int getEffectiveWidth() {
     return getTextLineWidth();
   }
 
+  @Override
   public int getLeftInset() {
     return getRenderedTextLine().getPaddingLeft() + myGapLeft;
   }
 
+  @Override
   public int getRightInset() {
-    return getRenderedTextLine().getPaddingRight() + +myGapRight;
+    return getRenderedTextLine().getPaddingRight() + myGapRight;
   }
 
+  @Override
   public int getTopInset() {
     return getRenderedTextLine().getPaddingTop();
   }
 
+  @Override
   public int getBottomInset() {
     return getRenderedTextLine().getPaddingBottom();
   }
@@ -278,7 +303,9 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
     } else {
       textLineWidth = myTextLine.getEffectiveWidth();
     }
-    if (isDrawBrackets()) textLineWidth += 2 * BRACKET_WIDTH;
+    if (isDrawBrackets()) {
+      textLineWidth += 2 * BRACKET_WIDTH;
+    }
     return textLineWidth;
   }
 
@@ -290,6 +317,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
     getStyle().set(StyleAttributes.EDITABLE, editable);
   }
 
+  @Override
   public void setErrorState(boolean errorState) {
     super.setErrorState(errorState);
     if (errorState) {
@@ -301,52 +329,64 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
     }
   }
 
+  @Override
   public void relayoutImpl() {
     if (isPunctuationLayout()) {
       getStyle().set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
       getStyle().set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
     }
 
-    myTextLine.relayout();
-    myNullTextLine.relayout();
     if (myNoTextSet && myTextLine.getText().length() == 0) {
+      myNullTextLine.relayout();
       myHeight = myNullTextLine.getHeight();
       myWidth = myNullTextLine.getWidth();
     } else {
+      myTextLine.relayout();
       myHeight = myTextLine.getHeight();
       myWidth = myTextLine.getWidth();
     }
   }
 
+  @Override
   public void switchCaretVisible() {
-    myCaretIsVisible = !myCaretIsVisible;
+    myCaretState.tick();
+    repaintCaret();
   }
 
+  @Override
+  public void setCaretVisible(boolean visible) {
+    myCaretState.touch(visible);
+    repaintCaret();
+  }
+
+  private void repaintCaret() {
+    getRenderedTextLine().repaintCaret(getEditor(), getShiftX(), getY());
+  }
+
+  @Override
   protected boolean isSelectionPainted() {
-    return isSelected() && getEditorContext().getNodeEditorComponent().getSelectionManager().getSelection() instanceof MultipleSelection;
+    return isSelected() && getEditor().getSelectionManager().getSelection() instanceof MultipleSelection;
   }
 
-  public void paintContent(Graphics g, ParentSettings parentSettings) {
+  @Override
+  protected void paintContent(Graphics g, ParentSettings parentSettings) {
     TextLine textLine = getRenderedTextLine();
     boolean toShowCaret = toShowCaret();
     boolean selected = isSelectionPaintedOnAncestor(parentSettings).isSelectionPainted();
     textLine.setSelected(selected);
     textLine.setShowCaret(toShowCaret);
     Color cellFontColor = getEditor().getAdditionalCellFontColor(this);
-    if (isDrawBrackets()) {
-      textLine.paint(g, myX + myGapLeft + BRACKET_WIDTH, myY, cellFontColor);
-    } else {
-      textLine.paint(g, myX + myGapLeft, myY, cellFontColor);
-    }
+    textLine.paint(g, getShiftX(), myY, cellFontColor);
   }
 
+  @Override
   public void paintSelection(Graphics g, Color c, boolean drawBorder, ParentSettings parentSettings) {
     if (!isSelectionPaintedOnAncestor(parentSettings).isSelectionPainted() && getEditor().getAdditionalCellFontColor(this) != null) {
       /*
        * Suppressing selection painting in case this cell is not actually selected and additionalCellFontColor() for it is not null.
        * This will hide messages feedback if there is an AdditionalPainter instance (with specified cellFontColor) covering this cell.
        * Probably it's good idea to use separate property (not cellFontColor) to determine if this AdditionalPainter is "hiding" messages feedback
-       * or simply let some additional painters paint background below and above editor messages.   
+       * or simply let some additional painters paint background below and above editor messages.
        */
       return;
     }
@@ -354,7 +394,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
   }
 
   protected boolean toShowCaret() {
-    return myCaretIsVisible && isWithinSelection() && getEditor().hasFocus();
+    return myCaretState.isVisible() && isWithinSelection();
   }
 
   TextLine getTextLine() {
@@ -365,7 +405,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
     return myNullTextLine;
   }
 
-  TextLine getRenderedTextLine() {
+  public TextLine getRenderedTextLine() {
     TextLine textLine;
     if (myNoTextSet && myTextLine.getText().length() == 0) {
       textLine = myNullTextLine;
@@ -375,243 +415,290 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
     return textLine;
   }
 
+  @Override
   public void setCaretX(int x) {
-    myTextLine.setCaretByXCoord(x - myX);
+    myTextLine.setCaretByXCoord(x - getShiftX());
     makePositionValid();
   }
 
+  @Override
+  public int getCaretX() {
+    return myTextLine.getCaretX(getShiftX());
+  }
+
+  private int getShiftX() {
+    return isDrawBrackets() ? myX + myGapLeft + BRACKET_WIDTH : myX + myGapLeft;
+  }
+
   private void makePositionValid() {
-    if (myTextLine.getCaretPosition() == 0 && !isFirstPositionAllowed() && isCaretPositionAllowed(1)) {
+    if (myTextLine.getCaretPosition() == 0 && !StyleAttributesUtil.isFirstPositionAllowed(getStyle()) && isCaretPositionAllowed(1)) {
       setCaretPosition(1);
     }
-    if (myTextLine.getCaretPosition() == getText().length() && !isLastPositionAllowed() && isCaretPositionAllowed(getText().length() - 1)) {
+    if (myTextLine.getCaretPosition() == getText().length() && !StyleAttributesUtil.isLastPositionAllowed(getStyle()) &&
+        isCaretPositionAllowed(getText().length() - 1)) {
       setCaretPosition(getText().length() - 1);
     }
     getEditor().getBracesHighlighter().updateBracesSelection(this);
   }
 
-  public int getCaretX() {
-    return myTextLine.getCaretX(myX);
-  }
-
+  @Override
   public boolean processMousePressed(MouseEvent e) {
-    myTextLine.setCaretByXCoord(e.getX() - myX);
-    myTextLine.resetSelection();
-    makePositionValid();
-    getEditorContext().getNodeEditorComponent().repaint();
+    setCaretX(e.getX());
+    getEditor().repaint(this);
     return true;
   }
 
   public void ensureCaretVisible() {
-    EditorComponent editor = getEditorContext().getNodeEditorComponent();
-    editor.scrollRectToVisible(new Rectangle(getCaretX() - 2 * myTextLine.charWidth(), myY, 4 * myTextLine.charWidth(), myHeight));
+    getEditor().scrollRectToVisible(new Rectangle(getCaretX() - 2 * myTextLine.charWidth(), myY, 4 * myTextLine.charWidth(), myHeight));
   }
 
+  @Override
   protected boolean doProcessKeyTyped(final KeyEvent keyEvent, final boolean allowErrors) {
-    final int wasPosition = getCaretPosition();
-    final CellSide side;
-    if (wasPosition == 0) {
+    if (!isTextTypedEvent(keyEvent)) {
+      return false;
+    }
+
+    int caretPosition = getCaretPosition();
+    CellSide side;
+    if (caretPosition == 0) {
       side = CellSide.LEFT;
-    } else if (wasPosition == getRenderedText().length()) {
+    } else if (caretPosition == getRenderedText().length()) {
       side = CellSide.RIGHT;
     } else {
       side = null;
     }
 
-    myCaretIsVisible = true;
-
+    boolean result = false;
+    String text = String.valueOf(keyEvent.getKeyChar());
 
     if (isEditable()) {
-      final boolean result[] = new boolean[1];
-      String groupId = ModelAccess.instance().runReadAction(new Computable<String>() {
-        @Override
-        public String compute() {
-          return getCellId() + "_" + getSNode().getId();
-        }
-      });
-      ModelAccess.instance().runWriteActionInCommand(new Runnable() {
-        public void run() {
-          if (processMutableKeyTyped(keyEvent, allowErrors)) {
-            getEditorContext().flushEvents();
-
-            if (isErrorState() && side != null) {
-              if (allowsIntelligentInputKeyStroke(keyEvent)) {
-                String pattern = getRenderedText();
-                IntelligentInputUtil.processCell(EditorCell_Label.this, getEditorContext(), pattern, side);
-              }
-            }
-
-            result[0] = true;
-          } else if (isErrorState() && wasPosition == 0 && keyEvent.getKeyChar() == ' ') {
-            result[0] = true;
-          }
-        }
-      }, null, groupId, false, getOperationContext().getProject());
+      ModelAccess modelAccess = getContext().getRepository().getModelAccess();
+      buildActions(modelAccess);
+      IntelligentCellProcessor cellProcessor = IntelligentInputUtil.getIntelligentCellProcessor(this, getContext(), side);
+      ModifyTextCommand command = new ModifyTextCommand(keyEvent, text, allowErrors, side, getContext(), cellProcessor);
+      modelAccess.executeCommand(command);
       getEditor().relayout();
-      if (result[0]) {
+      result = command.getResult();
+    } else {
+      if (side != null) {
+        // TODO: we do this twice ... allowErrors = true/false
+        String pattern = getUpdatedText(text);
+        if (!pattern.equals(getRenderedText())) {
+          result = IntelligentInputUtil.processCell(this, getContext(), pattern, side);
+        }
+      }
+      if (allowErrors && !result && isTypeOverExistingText() && typeOverExistingText(keyEvent)) {
         return true;
       }
     }
-    if (!isEditable() && allowsIntelligentInputKeyStroke(keyEvent)) {
-      String pattern = ModelAccess.instance().runReadAction(new Computable<String>() {
-        public String compute() {
-          return getRenderedTextOn(keyEvent);
-        }
-      });
-      if (!pattern.equals(getRenderedText()) && side != null) {
-        return IntelligentInputUtil.processCell(this, getEditorContext(), pattern, side);
-      }
-    }
-    return false;
-  }
-
-  private boolean allowsIntelligentInputKeyStroke(KeyEvent keyEvent) {
-    return UIUtil.isReallyTypedEvent(keyEvent);
-  }
-
-  private String getRenderedTextOn(KeyEvent keyEvent) {
-    return emulateKeyType(keyEvent, new Computable<String>() {
-      public String compute() {
-        return getRenderedText();
-      }
-    });
-  }
-
-  private <T> T emulateKeyType(KeyEvent keyEvent, Computable<T> c) {
-    String oldString = getText();
-    String oldNullString = getNullText();
-    int caretPosition = myTextLine.getCaretPosition();
-    int nullCaretPosition = myNullTextLine.getCaretPosition();
-    boolean wasErrorState = isErrorState();
-    processMutableKeyTyped(keyEvent, true);
-    T result = c.compute();
-    myTextLine.setText(oldString);
-    myNullTextLine.setText(oldNullString);
-    myTextLine.setCaretPosition(caretPosition);
-    myNullTextLine.setCaretPosition(nullCaretPosition);
-    setErrorState(wasErrorState);
     return result;
   }
 
-  public boolean executeTextAction(CellActionType type, boolean allowErrors) {
-    // only following actions are supported on text
-    switch (type) {
-      case DELETE:
-      case BACKSPACE:
-        break;
-      default:
-        return false;
+  private void buildActions(ModelAccess modelAccess) {
+    SubstituteInfo substituteInfo = getSubstituteInfo();
+    EditorComponent editorComponent = getContext().getEditorComponent();
+    if (substituteInfo != null && editorComponent instanceof jetbrains.mps.nodeEditor.EditorComponent) {
+      TypecheckingSession typecheckingSession = ((jetbrains.mps.nodeEditor.EditorComponent) editorComponent).getTypecheckingSession();
+      if (typecheckingSession != null) {
+        modelAccess.runReadAction(() ->
+                                      TypecheckingFacade.getFromContext()
+                                                        .runWithSession(typecheckingSession,
+                                                                        (session) -> substituteInfo.buildActions()));
+      }
     }
-    // TODO: perform only if action was executed
-    myCaretIsVisible = true;
+  }
+
+  private boolean isTypeOverExistingText() {
+    return EditorSettings.getInstance().isTypeOverExistingText();
+  }
+
+  // https://youtrack.jetbrains.com/issue/MPS-31209
+  private boolean typeOverExistingText(@NotNull KeyEvent keyEvent) {
+    String cellText = getText();
+    if (cellText.isEmpty() || isErrorState()) {
+      return false;
+    }
+
+    EditorCell nextCell = CellTraversalUtil.getNextLeaf(this);
+    ActionHandler actionHandler = getContext().getEditorComponent().getActionHandler();
+
+    char typedChar = keyEvent.getKeyChar();
+    int caretPosition = getCaretPosition();
+    int textLength = cellText.length();
+    if (caretPosition < textLength) {
+      return cellText.charAt(caretPosition) == typedChar && actionHandler.executeAction(this, CellActionType.RIGHT);
+    } else {
+      if (Character.isWhitespace(typedChar) && !PunctuationUtil.hasPunctuationRight(this) && !PunctuationUtil.hasPunctuationLeft(nextCell)) {
+        return actionHandler.executeAction(this, CellActionType.RIGHT);
+      }
+    }
+
+    while ((nextCell instanceof EditorCell_Collection)) {
+      EditorCell_Collection collection = (EditorCell_Collection) nextCell;
+      if (collection.getCellsCount() == 0) {
+        nextCell = CellTraversalUtil.getNextLeaf(nextCell);
+      }
+    }
+
+    if (!(nextCell instanceof EditorCell_Label)) {
+      return false;
+    }
+    EditorCell_Label nextLabel = (EditorCell_Label) nextCell;
+
+    String nextText = nextLabel.getText();
+
+    boolean res = false;
+    if (nextText.length() > 0 && nextText.charAt(0) == typedChar) {
+      if (nextLabel.isEditable() || nextLabel.isCaretPositionAllowed(0)) {
+        actionHandler.executeAction(this, CellActionType.RIGHT);
+        res = nextLabel.processKeyTyped(keyEvent, true);
+      } else {
+        res = actionHandler.executeAction(this, CellActionType.RIGHT);
+      }
+    }
+    return res;
+  }
+
+  @Override
+  public boolean processTextChanged(TextChangeEvent textChangeEvent) {
+    if (!isEditable()) {
+      return false;
+    }
+
+    if (myTextLine.hasNonTrivialSelection()) {
+      myTextLine.resetSelection();
+    }
+    int selectionStart = Math.max(getCaretPosition() - textChangeEvent.getOffset(), 0);
+    while (!isCaretPositionAllowed(selectionStart) && selectionStart < getCaretPosition()) {
+      selectionStart++;
+    }
+    if (selectionStart < getCaretPosition()) {
+      setCaretPosition(selectionStart, true);
+    }
+
+    ModifyTextCommand keyTypedCommand = new ModifyTextCommand(textChangeEvent.getText(), true, getContext());
+    getContext().getRepository().getModelAccess().executeCommand(keyTypedCommand);
+    if (keyTypedCommand.getResult()) {
+      getEditor().relayout();
+    }
+    return keyTypedCommand.getResult();
+  }
+
+  private void addChangeTextUndoableAction() {
+    final ModelAccess ma = getContext().getRepository().getModelAccess();
+    if (ma instanceof ModelCommandContext.Provider) {
+      final ModelCommandContext cc = ((Provider) ma).getCommandContext(getContext().getModel());
+      if (cc != null) {
+        cc.registerActionWithUndo(new DummyUndoableAction(getSNode()));
+      }
+    }
+  }
+
+  @Override
+  public boolean executeTextAction(CellActionType type, boolean allowErrors) {
+    assert type == CellActionType.DELETE || type == CellActionType.BACKSPACE;
     if (!isEditable()) {
       return false;
     }
     // TODO: check if we need command here or we can execute command from UI action...
-    boolean result = getEditorContext().executeCommand(new ProcessTextActionCommand(type, allowErrors));
-    if (result) {
-      getEditorContext().flushEvents();
-      getEditor().relayout();
-    }
-    return result;
+    ProcessTextActionCommand textAction = new ProcessTextActionCommand(getContext(), type, allowErrors);
+    getContext().getRepository().getModelAccess().executeCommand(textAction);
+    return textAction.getResult();
   }
 
-  private boolean processMutableKeyTyped(final KeyEvent keyEvent, final boolean allowErrors) {
-    String oldText = myTextLine.getText();
-    EditorComponent editor = getEditorContext().getNodeEditorComponent();
-
+  /**
+   * @param replacingText the text, replacing selected fragment
+   * @return the string contained in myTextLine, updated by replacing selected text fragment with the replacingText parameter
+   */
+  private String getUpdatedText(String replacingText) {
+    String currentText = myTextLine.getText();
     int startSelection = myTextLine.getStartTextSelectionPosition();
     int endSelection = myTextLine.getEndTextSelectionPosition();
-
-    char keyChar = keyEvent.getKeyChar();
-    if (UIUtil.isReallyTypedEvent(keyEvent)) {
-      String newText = oldText.substring(0, startSelection) + keyChar + oldText.substring(endSelection);
-
-      if (!allowErrors && !isValidText(newText)) {
-        return false;
-      }
-
-      changeText(newText);
-      setCaretPositionIfPossible(startSelection + 1);
-      myTextLine.resetSelection();
-      editor.resetLastCaretX();
-      ensureCaretVisible();
-      return true;
-    }
-    return false;
+    return currentText.substring(0, startSelection) + replacingText + currentText.substring(endSelection);
   }
 
-
-  private boolean canDeleteFrom(EditorCell cell) {
-    if (getText().length() == 0) return false;
-    if (!(cell instanceof EditorCell_Label)) return false;
+  private boolean canDeleteFrom(jetbrains.mps.openapi.editor.cells.EditorCell cell) {
+    if (getText().length() == 0) {
+      return false;
+    }
+    if (!(cell instanceof EditorCell_Label)) {
+      return false;
+    }
     EditorCell_Label label = (EditorCell_Label) cell;
     return label.isEditable() && label.isSelectable();
   }
 
-  private void deleteIfPossible() {
-    if ("".equals(getText()) && isTopCell()) {
-      if (getStyle().get(StyleAttributes.AUTO_DELETABLE)) {
-        getSNode().delete();
-      }
+  private void deleteIfPossible(CellActionType actionType) {
+    assert CellActionType.DELETE == actionType || CellActionType.BACKSPACE == actionType;
+    if (getText() != null && getText().isEmpty() && getStyle().get(StyleAttributes.AUTO_DELETABLE)) {
+      // TODO: just use delete action (do not call getSNode().delete()) in the end if acton was not found or is not applicable
+      getEditorComponent().getActionHandler().executeAction(this, actionType);
     }
   }
 
+  @Override
   public String getSelectedText() {
     return myTextLine.getTextuallySelectedText();
   }
 
+  @Override
   public int getSelectionStart() {
     return myTextLine.getStartTextSelectionPosition();
   }
 
+  @Override
   public void setSelectionStart(int position) {
     myTextLine.setStartTextSelectionPosition(position);
   }
 
+  @Override
   public int getSelectionEnd() {
     return myTextLine.getEndTextSelectionPosition();
   }
 
+  @Override
   public void setSelectionEnd(int position) {
     myTextLine.setEndTextSelectionPosition(position);
   }
 
   public void deleteSelection() {
     String myText = myTextLine.getText();
-    EditorComponent editor = getEditorContext().getNodeEditorComponent();
     int stSel = myTextLine.getStartTextSelectionPosition();
     int endSel = myTextLine.getEndTextSelectionPosition();
     changeText(myText.substring(0, stSel) + myText.substring(endSel));
     myTextLine.setCaretPosition(stSel);
-    editor.resetLastCaretX();
+    addChangeTextUndoableAction();
+    fireSelectionChanged();
     ensureCaretVisible();
   }
 
   public void changeText(final String text) {
     String oldText = getText();
     setText(text);
-    addChangeTextUndoableAction(text, oldText);
+    updateVfsTimestamp(text, oldText);
   }
 
-  private void addChangeTextUndoableAction(String text, String oldText) {
-    EditorComponent editor = getEditor();
-    CellInfo cellInfo = getCellInfo();
-
-    if (getSNode() != null && !ObjectUtils.equals(oldText, text) && !isValidText(text) && CommandProcessor.getInstance().getCurrentCommand() != null) {
-      UndoHelper.getInstance().addUndoableAction(new MySNodeUndoableAction(getSNode(), cellInfo, editor, oldText, text));
-
-      if (getSNode().getContainingRoot() != null) {
-        MPSNodesVirtualFileSystem.getInstance().getFileFor(getSNode().getContainingRoot()).setModificationStamp(LocalTimeCounter.currentTime());
-      }
+  private void updateVfsTimestamp(String text, String oldText) {
+    if (Objects.equals(oldText, text) || isValidText(text)) {
+      return;
     }
+    if (CommandProcessor.getInstance().getCurrentCommand() == null) {
+      return;
+    }
+    getEditorComponent().touch();
   }
 
   public void insertText(String text) {
+    int startSelectionPosition = myTextLine.getStartTextSelectionPosition();
+    int endSelectionPosition = myTextLine.getEndTextSelectionPosition();
+    if (startSelectionPosition >= endSelectionPosition) {
+      startSelectionPosition = myTextLine.getCaretPosition();
+      endSelectionPosition = myTextLine.getCaretPosition();
+    }
     String oldText = getText();
-    myTextLine.insertText(text);
-    changeText(myTextLine.getText());
-    addChangeTextUndoableAction(text, oldText);
+    changeText(oldText.substring(0, startSelectionPosition) + text + oldText.substring(endSelectionPosition));
+    myTextLine.setCaretPosition(startSelectionPosition + text.length());
+    addChangeTextUndoableAction();
   }
 
   public boolean isValidText(String text) {
@@ -622,25 +709,88 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
     getStyle().set(StyleAttributes.UNDERLINED, b);
   }
 
+  @Override
   public int getAscent() {
     return getRenderedTextLine().getAscent();
   }
 
+  @Override
   public int getDescent() {
     return getRenderedTextLine().getDescent();
   }
 
+  @Override
   public NodeSubstitutePatternEditor createSubstitutePatternEditor() {
-    NodeSubstitutePatternEditor pattern = new NodeSubstitutePatternEditor();
-    pattern.setText(getText());
-    pattern.setCaretPosition(getCaretPosition());
-    return pattern;
+    return new NodeSubstitutePatternEditor(getEditor().getEditorComponentSettings(), this);
+  }
+
+  public void selectWordOrAll() {
+    if (selectionNotEmpty()) {
+      selectAll();
+      return;
+    }
+
+    int start = getPrevLocalHome(false);
+    int end = getNextLocalEnd(false);
+
+    if (start != end) {
+      select(start, end);
+    } else {
+      selectAll();
+    }
+
+  }
+
+  private boolean selectionNotEmpty() {
+    TextLine textLine = getTextLine();
+    return textLine.getStartTextSelectionPosition() != textLine.getEndTextSelectionPosition();
+  }
+
+  private void select(int start, int end) {
+    assert start <= end;
+    setSelectionStart(start);
+    setSelectionEnd(end);
+  }
+
+  private int getNextLocalEnd(boolean skipLeadingSpaces) {
+    int length = getText().length();
+    assert getCaretPosition() <= length;
+    for (int i = getCaretPosition(); i != length; ++i) {
+
+      if (Character.isWhitespace(getText().charAt(i))) {
+        if (skipLeadingSpaces) {
+          if (i == length - 1 || !Character.isWhitespace(getText().charAt(i + 1))) {
+            return i + 1;
+          }
+        } else {
+          return i;
+        }
+      }
+    }
+    return length;
+  }
+
+  private int getPrevLocalHome(boolean skipLeadingSpaces) {
+    assert getCaretPosition() >= 0;
+
+    for (int i = getCaretPosition(); i >= 1; --i) {
+      char c = getText().charAt(i - 1);
+      if (Character.isWhitespace(c) && !skipLeadingSpaces) {
+        return i;
+      }
+
+      if (!Character.isWhitespace(c)) {
+        skipLeadingSpaces = false;
+      }
+    }
+    return 0;
   }
 
   public void selectAll() {
     getTextLine().selectAll();
   }
 
+  @Override
   public void deselectAll() {
     getTextLine().deselectAll();
   }
@@ -649,10 +799,11 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
     return getTextLine().isEverythingSelected();
   }
 
-  public NodeSubstituteInfo getSubstituteInfo() {
-    NodeSubstituteInfo substituteInfo = super.getSubstituteInfo();
+  @Override
+  public SubstituteInfo getSubstituteInfo() {
+    SubstituteInfo substituteInfo = super.getSubstituteInfo();
     if (substituteInfo != null) {
-      substituteInfo.setOriginalText(getText() == null || getText().equals("") ? getNullText() : getText());
+      substituteInfo.setOriginalText(getText() == null || getText().isEmpty() ? getNullText() : getText());
     }
     return substituteInfo;
   }
@@ -661,8 +812,9 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
     return NameUtil.shortNameFromLongName(getClass().getName()) + "[text=" + getText() + "]";
   }
 
+  @Override
   public TextBuilder renderText() {
-    return TextBuilder.fromString(getRenderedText());
+    return new TextBuilderImpl(getRenderedText());
   }
 
   public int getCharWidth() {
@@ -677,107 +829,100 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
     return myTextLine.getTextAfterCaret();
   }
 
-  private static class MySNodeUndoableAction extends SNodeUndoableAction {
-    private final CellInfo myCellInfo;
-    private final WeakReference<EditorComponent> myEditor;
-    private final String myOldText;
-    private final String myText;
-
-    public MySNodeUndoableAction(SNode node, CellInfo cellInfo, EditorComponent editor, String oldText, String text) {
-      super(node);
-      myCellInfo = cellInfo;
-      myEditor = new WeakReference<EditorComponent>(editor);
-      myOldText = oldText;
-      myText = text;
-    }
-
-    protected void doUndo() {
-      EditorComponent editor = myEditor.get();
-      if (editor == null) return;
-
-      EditorCell_Label cell = (EditorCell_Label) myCellInfo.findCell(editor);
-      if (cell != null) {
-        cell.changeText(myOldText);
-        cell.getEditorContext().getNodeEditorComponent().relayout();
-      }
-    }
-
-    protected void doRedo() {
-      EditorComponent editor = myEditor.get();
-      if (editor == null) return;
-
-      EditorCell_Label cell = (EditorCell_Label) myCellInfo.findCell(editor);
-      if (cell != null) {
-        cell.changeText(myText);
-      }
-    }
+  private void fireSelectionChanged() {
+    getEditorComponent().getSelectionManager().setSelection(getEditorComponent().getSelectionManager().getSelection());
   }
 
-  private class MoveLeft extends EditorCellAction {
+  private boolean isTheOnlyCompletelySelectedLabelInBigCell() {
+    jetbrains.mps.openapi.editor.cells.EditorCell containingBigCell = CellTraversalUtil.getContainingBigCell(this);
+    return CellTraversalUtil.getFirstLeaf(containingBigCell) == this && CellTraversalUtil.getLastLeaf(containingBigCell) == this &&
+           getText().equals(getSelectedText());
+  }
+
+  private class MoveLeft extends AbstractCellAction {
     private boolean myWithSelection;
 
     private MoveLeft(boolean withSelection) {
       myWithSelection = withSelection;
     }
 
+    @Override
     public boolean canExecute(EditorContext context) {
       return isCaretPositionAllowed(getCaretPosition() - 1);
     }
 
+    @Override
     public void execute(EditorContext context) {
-      setCaretPosition(getCaretPosition() - 1, myWithSelection);
-      context.getNodeEditorComponent().resetLastCaretX();
+      int position;
+      if (!myWithSelection && selectionNotEmpty() && isCaretPositionAllowed(getSelectionStart())) {
+        position = getSelectionStart();
+      } else {
+        position = getCaretPosition() - 1;
+      }
+      setCaretPosition(position, myWithSelection);
+      fireSelectionChanged();
       ensureCaretVisible();
     }
   }
 
-  private class MoveRight extends EditorCellAction {
+  private class MoveRight extends AbstractCellAction {
     private boolean myWithSelection;
 
     private MoveRight(boolean withSelection) {
       myWithSelection = withSelection;
     }
 
+    @Override
     public boolean canExecute(EditorContext context) {
       return isCaretPositionAllowed(getCaretPosition() + 1);
     }
 
+    @Override
     public void execute(EditorContext context) {
-      setCaretPosition(getCaretPosition() + 1, myWithSelection);
-      context.getNodeEditorComponent().resetLastCaretX();
+      int position;
+      if (!myWithSelection && selectionNotEmpty() && isCaretPositionAllowed(getSelectionEnd())) {
+        position = getSelectionEnd();
+      } else {
+        position = getCaretPosition() + 1;
+      }
+      setCaretPosition(position, myWithSelection);
+      fireSelectionChanged();
       ensureCaretVisible();
     }
   }
 
-  private class SelectHome extends EditorCellAction {
+  private class SelectHome extends AbstractCellAction {
+    @Override
     public boolean canExecute(EditorContext context) {
-      if (!isCaretPositionAllowed(0)) return false;
-      return true;
+      return isCaretPositionAllowed(0);
     }
 
+    @Override
     public void execute(EditorContext context) {
       setCaretPosition(0, true);
-      context.getNodeEditorComponent().resetLastCaretX();
+      fireSelectionChanged();
       ensureCaretVisible();
     }
   }
 
-  private class SelectEnd extends EditorCellAction {
+  private class SelectEnd extends AbstractCellAction {
+    @Override
     public boolean canExecute(EditorContext context) {
-      if (!isCaretPositionAllowed(getText().length())) return false;
-      return true;
+      return isCaretPositionAllowed(getText().length());
     }
 
+    @Override
     public void execute(EditorContext context) {
       setCaretPosition(getText().length(), true);
-      context.getNodeEditorComponent().resetLastCaretX();
+      fireSelectionChanged();
       ensureCaretVisible();
     }
   }
 
-  private class CopyLabelText extends EditorCellAction {
+  private class CopyLabelText extends AbstractCellAction {
+    @Override
     public boolean canExecute(EditorContext context) {
-      SelectionManager selectionManager = context.getNodeEditorComponent().getSelectionManager();
+      SelectionManager selectionManager = context.getEditorComponent().getSelectionManager();
       if (selectionManager.getSelection() instanceof EditorCellLabelSelection) {
         EditorCellLabelSelection labelSelection = (EditorCellLabelSelection) selectionManager.getSelection();
         return labelSelection.getEditorCellLabel().getSelectedText().length() > 0;
@@ -785,64 +930,107 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
       return false;
     }
 
+    @Override
     public void execute(EditorContext context) {
+      // TODO: use EditorCell_Label.this. instead..
       EditorCell_Label label = (EditorCell_Label) context.getSelectedCell();
-      CopyPasteUtil.copyTextToClipboard(label.getSelectedText());
+      if (label.isTheOnlyCompletelySelectedLabelInBigCell()) {
+        CopyPasteUtil.copyTextAndNodeToClipboard(label.getSelectedText(), getSNode());
+      } else {
+        CopyPasteUtil.copyTextToClipboard(label.getSelectedText());
+      }
     }
   }
 
-  private class LocalHome extends EditorCellAction {
+  private class LocalHome extends AbstractCellAction {
     private boolean mySelect;
 
     private LocalHome(boolean select) {
       mySelect = select;
     }
 
+    @Override
     public boolean canExecute(EditorContext context) {
-      return !isFirstCaretPosition() && isFirstPositionAllowed();
+      return !isFirstCaretPosition() && (StyleAttributesUtil.isFirstPositionAllowed(getStyle()) || getPrevLocalHome(true) != 0);
     }
 
+    @Override
     public void execute(EditorContext context) {
-      setCaretPosition(0, mySelect);
+      setCaretPosition(getPrevLocalHome(true), mySelect);
     }
+
   }
 
-  private class LocalEnd extends EditorCellAction {
+  private class LocalEnd extends AbstractCellAction {
     private boolean mySelect;
 
     private LocalEnd(boolean select) {
       mySelect = select;
     }
 
+    @Override
     public boolean canExecute(EditorContext context) {
-      return !isLastCaretPosition() && isLastPositionAllowed();
+      return !isLastCaretPosition() && (StyleAttributesUtil.isLastPositionAllowed(getStyle()) || getNextLocalEnd(true) != getText().length());
     }
 
+    @Override
     public void execute(EditorContext context) {
-      setCaretPosition(getText().length(), mySelect);
+      setCaretPosition(getNextLocalEnd(true), mySelect);
     }
   }
 
-  private class PasteIntoLabelText extends EditorCellAction {
+  private class ClearSelection extends AbstractCellAction {
+
+    @Override
     public boolean canExecute(EditorContext context) {
-      if (!(context.getSelectedCell() instanceof EditorCell_Label)) return false;
-      EditorCell_Label label = (EditorCell_Label) context.getSelectedCell();
-      SNode node = label.getSNode();
-      return node != null && label.canPasteText() && TextPasteUtil.hasStringInClipboard() && !(CopyPasteUtil.doesClipboardContainNode());
+      return myTextLine.hasNonTrivialSelection();
     }
 
+    @Override
+    public void execute(EditorContext context) {
+      myTextLine.resetSelection();
+    }
+  }
+
+  private class PasteIntoLabelText extends AbstractCellAction {
+    @Override
+    public boolean canExecute(EditorContext context) {
+      if (!(context.getSelectedCell() instanceof EditorCell_Label)) {
+        return false;
+      }
+      // TODO: use EditorCell_Label.this. instead..
+      EditorCell_Label label = (EditorCell_Label) context.getSelectedCell();
+      SNode node = label.getSNode();
+
+      // If selected cell is:
+      // - the only completely selected label in big cell
+      // - the cursor is in the beginning of this cell
+      // - the cursor is in the end of this cell
+      // then we paste text into the cell only if it is on top of clipboard (text was copied from another cell)
+      // otherwise in this case this action will not be applicable, so node paste action should perform actual pasting
+      //
+      // if non of above is true then just pasting text from the clipboard into this cell (e.g. you can copy 1 + 2 and
+      // paste it into the name label).
+      return node != null && label.canPasteText() && label.isEditable() &&
+             (label.isTheOnlyCompletelySelectedLabelInBigCell() || isFirstCaretPosition() && !getTextLine().hasNonTrivialSelection() ||
+              isLastCaretPosition() && !getTextLine().hasNonTrivialSelection() ? CopyPasteUtil.isStringOnTopOfClipboard() :
+              TextPasteUtil.hasStringInClipboard());
+    }
+
+    @Override
     public void execute(EditorContext context) {
       EditorCell_Label cell = (EditorCell_Label) context.getSelectedCell();
       final String s = TextPasteUtil.getStringFromClipboard();
       cell.insertText(NameUtil.escapeInvisibleCharacters(s));
-      context.getNodeEditorComponent().resetLastCaretX();
+      fireSelectionChanged();
       cell.ensureCaretVisible();
     }
   }
 
-  private class CutLabelText extends EditorCellAction {
+  private class CutLabelText extends AbstractCellAction {
+    @Override
     public boolean canExecute(EditorContext context) {
-      SelectionManager selectionManager = context.getNodeEditorComponent().getSelectionManager();
+      SelectionManager selectionManager = context.getEditorComponent().getSelectionManager();
       if (selectionManager.getSelection() instanceof EditorCellLabelSelection) {
         EditorCellLabelSelection labelSelection = (EditorCellLabelSelection) selectionManager.getSelection();
         return labelSelection.getEditorCellLabel().getSelectedText().length() > 0;
@@ -850,35 +1038,41 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
       return false;
     }
 
+    @Override
     public void execute(EditorContext context) {
+      // TODO: use EditorCell_Label.this. instead..
       EditorCell_Label label = (EditorCell_Label) context.getSelectedCell();
-      String toCopy = label.getSelectedText();
-      CopyPasteUtil.copyTextToClipboard(toCopy);
+      if (label.isTheOnlyCompletelySelectedLabelInBigCell()) {
+        CopyPasteUtil.copyTextAndNodeToClipboard(label.getSelectedText(), getSNode());
+      } else {
+        CopyPasteUtil.copyTextToClipboard(label.getSelectedText());
+      }
       if (label.canPasteText()) {
         label.deleteSelection();
       }
     }
   }
 
-  private class ProcessTextActionCommand implements Computable<Boolean> {
+  private class ProcessTextActionCommand extends EditorComputable<Boolean> implements UndoRunnable {
 
     private CellActionType myActionType;
     private boolean myAllowErrors;
 
-    ProcessTextActionCommand(CellActionType type, boolean allowErrors) {
+    ProcessTextActionCommand(EditorContext context, CellActionType type, boolean allowErrors) {
+      super(context);
       myActionType = type;
       myAllowErrors = allowErrors;
     }
 
     @Override
-    public Boolean compute() {
+    public Boolean doCompute() {
       String oldText = myTextLine.getText();
       int caretPosition = myTextLine.getCaretPosition();
 
       if (myActionType == CellActionType.BACKSPACE) {
         if (myTextLine.hasNonTrivialSelection()) {
           deleteSelection();
-          deleteIfPossible();
+          deleteIfPossible(myActionType);
           return true;
         }
 
@@ -888,15 +1082,19 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
             return false;
           }
           changeText(newText);
-          if (!isCaretPositionAllowed(caretPosition - 1)) return false;
+          addChangeTextUndoableAction();
+          if (!isCaretPositionAllowed(caretPosition - 1)) {
+            return false;
+          }
           setCaretPosition(caretPosition - 1);
           ensureCaretVisible();
-          deleteIfPossible();
+          deleteIfPossible(myActionType);
           return true;
         } else {
-          if (myAllowErrors && canDeleteFrom(getPrevLeaf())) {
-            EditorCell_Label label = (EditorCell_Label) getPrevLeaf();
-            getEditorContext().getNodeEditorComponent().changeSelection(label);
+          jetbrains.mps.openapi.editor.cells.EditorCell prevLeaf = CellTraversalUtil.getPrevLeaf(EditorCell_Label.this);
+          if (myAllowErrors && canDeleteFrom(prevLeaf)) {
+            EditorCell_Label label = (EditorCell_Label) prevLeaf;
+            getEditor().changeSelection(label);
             label.end();
             label.executeTextAction(myActionType, true);
             return true;
@@ -906,7 +1104,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
       } else if (myActionType == CellActionType.DELETE) {
         if (myTextLine.hasNonTrivialSelection()) {
           deleteSelection();
-          deleteIfPossible();
+          deleteIfPossible(myActionType);
           return true;
         } else if (caretPosition < oldText.length()) {
           String newText = oldText.substring(0, caretPosition) + oldText.substring(caretPosition + 1);
@@ -914,13 +1112,15 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
             return false;
           }
           changeText(newText);
+          addChangeTextUndoableAction();
           ensureCaretVisible();
-          deleteIfPossible();
+          deleteIfPossible(myActionType);
           return true;
         } else {
-          if (myAllowErrors && canDeleteFrom(getNextLeaf())) {
-            EditorCell_Label label = (EditorCell_Label) getNextLeaf();
-            getEditorContext().getNodeEditorComponent().changeSelection(label);
+          jetbrains.mps.openapi.editor.cells.EditorCell nextLeaf = CellTraversalUtil.getNextLeaf(EditorCell_Label.this);
+          if (myAllowErrors && canDeleteFrom(nextLeaf)) {
+            EditorCell_Label label = (EditorCell_Label) nextLeaf;
+            getEditor().changeSelection(label);
             label.home();
             label.executeTextAction(myActionType, true);
             return true;
@@ -930,6 +1130,130 @@ public abstract class EditorCell_Label extends EditorCell_Basic {
       }
 
       return false;
+    }
+
+    @Nullable
+    @Override
+    public String getName() {
+      return null;
+    }
+
+    @Nullable
+    @Override
+    public String getGroupId() {
+      return getCommandGroupId();
+    }
+
+    @Override
+    public boolean shallConfirmUndo() {
+      return false;
+    }
+  }
+
+  public class ModifyTextCommand extends EditorComputable<Boolean> implements UndoRunnable {
+    private final String myReplacingText;
+    private final boolean myAllowErrors;
+
+    @Nullable
+    private final CellSide mySide;
+    @Nullable
+    private final IntelligentCellProcessor myIntelligentCellProcessor;
+    private KeyEvent myKeyEvent;
+
+    private ModifyTextCommand(KeyEvent keyEvent, String replacingText, boolean allowErrors, @Nullable CellSide side, EditorContext context,
+                              @Nullable IntelligentCellProcessor cellProcessor) {
+      super(context);
+      this.myKeyEvent = keyEvent;
+      myReplacingText = replacingText;
+      myAllowErrors = allowErrors;
+      mySide = side;
+      myIntelligentCellProcessor = cellProcessor;
+    }
+
+    private ModifyTextCommand(String replacingText, boolean allowErrors, EditorContext context) {
+      this(null, replacingText, allowErrors, null, context, null);
+    }
+
+    @Override
+    protected Boolean doCompute() {
+      String newText = getUpdatedText(myReplacingText);
+      boolean isValid = isValidText(newText);
+      if (myAllowErrors || isValid) {
+        getContext().flushEvents();
+        addChangeTextUndoableAction();
+
+        if (isValid) {
+          commit(newText);
+        } else {
+          if (myIntelligentCellProcessor != null && myIntelligentCellProcessor.processCell(newText)) {
+            /*
+             * Resetting current command group ID if cell was side-transformed. In such situations
+             * side-transforming command as well as char typing command should be separate part of
+             * undo-redo process, not connected with eytyping events which are grouped together.
+             */
+            CommandProcessor.getInstance().setCurrentCommandGroupId(null);
+          } else {
+            if (isTypeOverExistingText() && myKeyEvent != null && typeOverExistingText(myKeyEvent)) {
+                return true;
+            }
+            commit(newText);
+          }
+        }
+        return true;
+      }
+      return isErrorState() && mySide == CellSide.LEFT && " ".equals(myReplacingText);
+    }
+
+    private void commit(String newText) {
+      int startSelection = myTextLine.getStartTextSelectionPosition();
+      changeText(newText);
+      setCaretPositionIfPossible(startSelection + myReplacingText.length());
+      myTextLine.resetSelection();
+      fireSelectionChanged();
+      ensureCaretVisible();
+    }
+
+    @Nullable
+    @Override
+    public String getName() {
+      return null;
+    }
+
+    @Nullable
+    @Override
+    public String getGroupId() {
+      return getCommandGroupId();
+    }
+
+    @Override
+    public boolean shallConfirmUndo() {
+      return false;
+    }
+  }
+
+  /**
+   * This action can be used to introduce empty action into the stack of actions within UndoHelper
+   * forcing it to add undoable command into IDEA undo stack: see {@link jetbrains.mps.ide.undo.WorkbenchUndoHandler}
+   * flushCommand() method implementation. This method will not add {@link jetbrains.mps.ide.undo.SNodeIdeaUndoableAction}
+   * action into IDEA undo stack if it has no own undoable actions.
+   * <p/>
+   * This is helpful in case of UI-only modifications performed upon the cells. For example, if the textual cell is modified
+   * so it represents invalid value. In this case this value cannot be committed into the model and will stay in the editor
+   * cell/memento objects only. Empty command in this case will add a "mark" in IDEA undo stack, so corresponding editor
+   * memento will be restored on udo/redo of this empty command.
+   */
+  @SuppressWarnings("JavadocReference")
+  protected static class DummyUndoableAction extends SNodeUndoableAction {
+    protected DummyUndoableAction(SNode node) {
+      super(node);
+    }
+
+    @Override
+    public void undo() {
+    }
+
+    @Override
+    public void redo() {
     }
   }
 }

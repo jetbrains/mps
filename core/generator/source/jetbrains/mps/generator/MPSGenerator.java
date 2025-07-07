@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,42 +15,88 @@
  */
 package jetbrains.mps.generator;
 
-import jetbrains.mps.MPSCore;
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
-import jetbrains.mps.generator.impl.RootTemplateAnnotator;
+import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.extapi.module.FacetsRegistry;
+import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
 import jetbrains.mps.generator.info.GeneratorPathsComponent;
-import jetbrains.mps.generator.traceInfo.TraceInfoCache;
-import jetbrains.mps.generator.traceInfo.TraceInfoUtilComponent;
-import jetbrains.mps.smodel.GlobalSModelEventsManager;
-import jetbrains.mps.smodel.SModelRepository;
+import jetbrains.mps.generator.trace.TraceRegistry;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
 
 /**
- * evgeny, 10/14/11
+ * Pack of generator-related {@linkplain CoreComponent components}.
+ *
+ * @author Artem Tikhomirov
  */
-public class MPSGenerator extends ComponentPlugin {
+public final class MPSGenerator extends ComponentPlugin implements ComponentHost {
+  private final ComponentHost myKernelComponents;
+  private FacetFactory myGeneratorFacetFactory = new FacetFactory() {
+    @Override
+    public SModuleFacet create(@NotNull SModule module) {
+      return new CustomGenerationModuleFacet(module);
+    }
 
-  private static MPSGenerator ourInstance = new MPSGenerator();
+    @NotNull
+    @Override
+    public String getPresentation() {
+      return "Custom Generation";
+    }
+  };
+  private ModelGenerationStatusManager myGenerationStatusManager;
+  private GenerationSettingsProvider mySettingsProvider;
+  private TraceRegistry myTraceRegistry;
 
-  public static MPSGenerator getInstance() {
-    return ourInstance;
-  }
-
-  private MPSGenerator() {
+  public MPSGenerator(ComponentHost mpsCore) {
+    // It is not quite handy to pass few individual CoreComponents, use a generic component accessor.
+    // Though it's ok for MPSGenerator ComponentPlugin to depend directly from MPSCore,
+    // provided the one lives in [kernel] and doesn't drag any superfluous/unnatural dependencies), it's better to avoid superfluous dependencies provided
+    // we've got nice abstraction for component provider. However, in case we would like to manifest dependencies, like typesystem, we might need to
+    // reconsider what to pass here (using ComponentHost hides actual requirements/dependencies/initialization order)
+    myKernelComponents = mpsCore;
   }
 
   @Override
   public void init() {
     super.init();
-    final SModelRepository modelRepository = MPSCore.getInstance().getModelRepository();
-    final GlobalSModelEventsManager globalSModelEventsManager = MPSCore.getInstance().getGlobalSModelEventsManager();
-
-    init(new TraceInfoCache(modelRepository));
-    init(new TraceInfoUtilComponent());
-    init(new GenerationDependenciesCache(modelRepository));
+    final GenerationDependenciesCache depsCache = new GenerationDependenciesCache();
+    final SRepositoryRegistry repoRegistry = myKernelComponents.findComponent(SRepositoryRegistry.class);
+    myGenerationStatusManager = init(new ModelGenerationStatusManager(repoRegistry, depsCache));
     init(new GeneratorPathsComponent());
-    init(new ModelGenerationStatusManager(globalSModelEventsManager));
-    init(new RootTemplateAnnotator(globalSModelEventsManager));
-    init(new GenerationSettingsProvider());
+    mySettingsProvider = init(new GenerationSettingsProvider());
+    final FacetsRegistry moduleFacetRegistry = myKernelComponents.findComponent(FacetsRegistry.class);
+    moduleFacetRegistry.addFactory(CustomGenerationModuleFacet.FACET_TYPE, myGeneratorFacetFactory);
+    myTraceRegistry = init(new TraceRegistry());
+  }
+
+  @Override
+  public void dispose() {
+    final FacetsRegistry moduleFacetRegistry = myKernelComponents.findComponent(FacetsRegistry.class);
+    moduleFacetRegistry.removeFactory(myGeneratorFacetFactory);
+    super.dispose();
+    myGeneratorFacetFactory = null;
+    myGenerationStatusManager = null;
+    mySettingsProvider = null;
+    myTraceRegistry = null;
+  }
+
+  @Nullable
+  @Override
+  public <T extends CoreComponent> T findComponent(@NotNull Class<T> componentClass) {
+    if (ModelGenerationStatusManager.class.isAssignableFrom(componentClass)) {
+      return componentClass.cast(myGenerationStatusManager);
+    }
+    if (GenerationSettingsProvider.class.isAssignableFrom(componentClass)) {
+      return componentClass.cast(mySettingsProvider);
+    }
+    if (TraceRegistry.class.isAssignableFrom(componentClass)) {
+      return componentClass.cast(myTraceRegistry);
+    }
+    return null;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.nodeEditor;
 
 import com.intellij.ui.ScrollPaneFactory;
-import jetbrains.mps.smodel.SNode;
 import jetbrains.mps.util.WindowsUtil;
 
 import javax.swing.JDialog;
@@ -26,8 +25,13 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * FIXME AbstractInformationDialog, has nothing to do with Node. Worth existence at all, or shall be merged with NodeInformationDialog?
+ *       Why not use IDEA's popup builder (ComponentPopupBuilder) mechanism? We use idea ui (ScrollPaneFactory) anyway.
+ */
 public abstract class AbstractNodeInformationDialog extends JDialog {
   private JTextArea myTextArea;
+  // COLORS: Remove hardcoded color
   private static final Color BACKGROUND_COLOR = new Color(253, 254, 226);
   private Component prevFocusOwner;
   private FocusListener myOwnerFocusListener = new FocusAdapter() {
@@ -62,20 +66,17 @@ public abstract class AbstractNodeInformationDialog extends JDialog {
     }
   };
 
-  public AbstractNodeInformationDialog(Frame owner, Point location, SNode node) {
+  public AbstractNodeInformationDialog(Frame owner, Point location, String text) {
     super(owner);
 
-    prevFocusOwner = owner.getFocusOwner();
-    if (prevFocusOwner == null) {
-      prevFocusOwner = owner.getMostRecentFocusOwner();
-    }
+    prevFocusOwner = owner.getMostRecentFocusOwner();
+    setAutoRequestFocus(false);
 
     setUndecorated(true);
     setModal(false);
 
     myTextArea = new JTextArea();
     myTextArea.setEditable(false);
-    String text = createNodeInfo(node);
     myTextArea.setText(text);
     myTextArea.setFont(EditorSettings.getInstance().getDefaultEditorFont());
 
@@ -108,7 +109,6 @@ public abstract class AbstractNodeInformationDialog extends JDialog {
     myTextArea.addKeyListener(myInformationDialogKeyListener);
   }
 
-
   @Override
   public void dispose() {
     prevFocusOwner.removeFocusListener(myOwnerFocusListener);
@@ -116,15 +116,4 @@ public abstract class AbstractNodeInformationDialog extends JDialog {
     prevFocusOwner.removeMouseListener(myOwnerMouseListener);
     super.dispose();
   }
-  
-  @Override
-  public void setVisible(boolean b) {
-    super.setVisible(b);
-    // focusing prevFocusOvner to redirect all keyboard events there by default
-    if (b) {
-      prevFocusOwner.requestFocus();
-    }
-  }
-
-  protected abstract String createNodeInfo(SNode node);
 }

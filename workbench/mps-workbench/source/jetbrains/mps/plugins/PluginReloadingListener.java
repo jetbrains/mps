@@ -15,8 +15,9 @@
  */
 package jetbrains.mps.plugins;
 
-public interface PluginReloadingListener {
-  void afterPluginsLoaded();
+import java.util.List;
 
-  void beforePluginsDisposed();
+public interface PluginReloadingListener {
+  void afterPluginsLoaded(List<PluginContributor> contributors);
+  void beforePluginsUnloaded(List<PluginContributor> contributors);
 }

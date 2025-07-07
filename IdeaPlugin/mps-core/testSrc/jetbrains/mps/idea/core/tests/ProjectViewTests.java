@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,30 +21,32 @@ import com.intellij.facet.FacetType;
 import com.intellij.facet.FacetTypeRegistry;
 import com.intellij.facet.ModifiableFacetModel;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.ui.Queryable;
-import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.projectView.BaseProjectViewTestCase;
+import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.idea.core.facet.MPSConfigurationBean;
 import jetbrains.mps.idea.core.facet.MPSFacet;
 import jetbrains.mps.idea.core.facet.MPSFacetConfiguration;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
 import jetbrains.mps.idea.core.projectView.MPSTreeStructureProvider;
-import jetbrains.mps.project.structure.model.ModelRoot;
-import junit.framework.Assert;
+import jetbrains.mps.persistence.DefaultModelRoot;
+import jetbrains.mps.vfs.IFile;
+import org.junit.Assert;
 
-import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * evgeny, 1/25/12
  */
 @SuppressWarnings({"HardCodedStringLiteral"})
 public class ProjectViewTests extends BaseProjectViewTestCase {
-
   public void testShowRoots() throws Exception {
     getProjectTreeStructure().setProviders(new MPSTreeStructureProvider());
     myPrintInfo = new Queryable.PrintInfo();
     assertStructureEqual(getPackageDirectory(), "package1\n" +
-      " main.mps\n" +
+      " main\n" +
       "  ConcoleUtil\n" +
       "  MainClass\n" +
       "  ProjectKind\n" +
@@ -53,7 +55,7 @@ public class ProjectViewTests extends BaseProjectViewTestCase {
 
   @Override
   protected String getTestDataPath() {
-    return System.getProperty("idea.plugins.path") + "/tests";
+    return PathManager.getPluginsPath() + "/tests";
   }
 
   @Override
@@ -67,11 +69,10 @@ public class ProjectViewTests extends BaseProjectViewTestCase {
     FacetType<MPSFacet, MPSFacetConfiguration> facetType = FacetTypeRegistry.getInstance().findFacetType(MPSFacetType.ID);
     Assert.assertNotNull("MPS facet type is not found", facetType);
     MPSFacet facet = facetManager.createFacet(facetType, "MPS", null);
-    final MPSFacetConfiguration configuration = facet.getConfiguration();
-    String path = VirtualFileManager.extractPath(getContentRoot().findChild("src").getUrl());
-    ArrayList<ModelRoot> roots = new ArrayList<ModelRoot>();
-    roots.add(new ModelRoot(path));
-    configuration.getState().setModelRoots(roots);
+    IFile path = VirtualFileUtils.toIFile(getContentRoot().findChild("src"));
+    final MPSConfigurationBean cfgBean = facet.getConfiguration().getBean();
+    cfgBean.setModelRootDescriptors(Collections.singleton(DefaultModelRoot.createSingleFolderDescriptor(path)));
+    facet.setConfiguration(cfgBean);
 
     final ModifiableFacetModel facetModel = facetManager.createModifiableModel();
     facetModel.addFacet(facet);

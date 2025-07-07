@@ -15,31 +15,31 @@
  */
 package jetbrains.mps.nodeEditor.folding;
 
-import jetbrains.mps.nodeEditor.EditorCellAction;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
-import jetbrains.mps.util.Condition;
+import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
+import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
+import org.jetbrains.mps.util.Condition;
 
 /**
  * User: Alexander Shatalin
  * Date: 05.10.2010
  */
-public class CallAction_ToggleCellFolding extends EditorCellAction {
-  @Override
-  public boolean canExecute(EditorContext context) {
-    return findCell(context.getNodeEditorComponent().getSelectedCell()) != null;
+public class CallAction_ToggleCellFolding extends AbstractCellAction {
+  public CallAction_ToggleCellFolding() {
+    super(false);
   }
 
   @Override
-  public boolean executeInCommand() {
-    return false;
+  public boolean canExecute(EditorContext context) {
+    return findCell(context.getSelectedCell()) != null;
   }
 
   @Override
   public void execute(EditorContext context) {
-    EditorCell_Collection targetCell = findCell(context.getNodeEditorComponent().getSelectedCell());
-    if (targetCell.isFolded()) {
+    EditorCell_Collection targetCell = findCell(context.getSelectedCell());
+    if (targetCell.isCollapsed()) {
       targetCell.unfold();
     } else {
       targetCell.fold();
@@ -50,10 +50,6 @@ public class CallAction_ToggleCellFolding extends EditorCellAction {
     if (editorCell == null) {
       return null;
     }
-    return editorCell.findParent(new Condition<EditorCell_Collection>() {
-      public boolean met(EditorCell_Collection object) {
-        return object.isFolded() || object.canBePossiblyFolded();
-      }
-    });
+    return CellFinderUtil.findParent(editorCell, object -> object.isCollapsed() || object.isFoldable());
   }
 }

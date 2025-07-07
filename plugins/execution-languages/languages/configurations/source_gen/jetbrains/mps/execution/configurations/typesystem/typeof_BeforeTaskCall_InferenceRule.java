@@ -4,7 +4,7 @@ package jetbrains.mps.execution.configurations.typesystem;
 
 import jetbrains.mps.lang.typesystem.runtime.AbstractInferenceRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import java.util.List;
@@ -14,41 +14,51 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_BeforeTaskCall_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_BeforeTaskCall_InferenceRule() {
   }
-
   public void applyRule(final SNode beforeTaskCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    List<SNode> declaredParameters = SLinkOperations.getTargets(SLinkOperations.getTarget(beforeTaskCall, "beforeTask", false), "parameter", true);
-    if (ListSequence.fromList(SLinkOperations.getTargets(beforeTaskCall, "parameter", true)).count() != ListSequence.fromList(declaredParameters).count()) {
+    List<SNode> declaredParameters = SLinkOperations.getChildren(SLinkOperations.getTarget(beforeTaskCall, LINKS.beforeTask$2WC7), LINKS.parameter$GAuy);
+    if (ListSequence.fromList(SLinkOperations.getChildren(beforeTaskCall, LINKS.parameter$wCAy)).count() != ListSequence.fromList(declaredParameters).count()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(beforeTaskCall, "Incompatible number of parameters", "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765613831", null, errorTarget);
       }
     }
-    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getTargets(beforeTaskCall, "parameter", true)).count(); i++) {
-      {
-        SNode _nodeToCheck_1029348928467 = ListSequence.fromList(SLinkOperations.getTargets(beforeTaskCall, "parameter", true)).getElement(i);
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765613814", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765613798", true), (SNode) typeCheckingContext.typeOf(ListSequence.fromList(declaredParameters).getElement(i), "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765656730", true), false, false, _info_12389875345);
+    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(beforeTaskCall, LINKS.parameter$wCAy)).count(); i++) {
+      SNode param = ListSequence.fromList(SLinkOperations.getChildren(beforeTaskCall, LINKS.parameter$wCAy)).getElement(i);
+      if (param != null) {
+        {
+          SNode _nodeToCheck_1029348928467 = param;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765613814", 0, null);
+          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765613798", true), (SNode) typeCheckingContext.typeOf(ListSequence.fromList(declaredParameters).getElement(i), "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765656730", true), false, false, _info_12389875345);
+        }
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.execution.configurations.structure.BeforeTaskCall";
+  public SAbstractConcept getApplicableConcept() {
+    return CONCEPTS.BeforeTaskCall$iu;
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConceptFqName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink beforeTask$2WC7 = MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x5ae6ebde781f1fd9L, "beforeTask");
+    /*package*/ static final SContainmentLink parameter$GAuy = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x61a8be33d403b7bfL, 0x5ae6ebde781f96aaL, "parameter");
+    /*package*/ static final SContainmentLink parameter$wCAy = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x4bfe4368347f5400L, "parameter");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BeforeTaskCall$iu = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, "jetbrains.mps.execution.configurations.structure.BeforeTaskCall");
   }
 }

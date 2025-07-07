@@ -1,52 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="IntentionsDescriptor.java" startLine="9" startPosition="0" endLine="18" endPosition="0" unitName="jetbrains.mps.debugger.api.lang.intentions.IntentionsDescriptor" />
-  <root nodeId="8751745335399757635" modelId="r:e5ea276a-79c7-4383-9407-3428086d3297(jetbrains.mps.debugger.api.lang.intentions)">
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="16" startPosition="30" endLine="17" endPosition="78" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="20" startPosition="36" endLine="21" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="24" startPosition="37" endLine="25" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="28" startPosition="44" endLine="29" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8751745335399771399" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="33" startPosition="60" endLine="34" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8751745335399771403" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="35" startPosition="5" endLine="36" endPosition="39" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8751745335399772214" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="39" startPosition="76" endLine="40" endPosition="108" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7796501636717810931" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="41" startPosition="127" endLine="42" endPosition="139" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7796501636717827562" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="42" startPosition="139" endLine="43" endPosition="151" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="47" startPosition="37" endLine="48" endPosition="56" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="12" startPosition="95" endLine="14" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="SwitchToComplexIsApplicable_Intention#()V" />
-    <nodeInfo nodeId="8751745335399771342" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="32" startPosition="85" endLine="35" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="15" startPosition="0" endLine="19" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getConcept#()Ljava/lang/String;" />
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="19" startPosition="0" endLine="23" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isParameterized#()Z" />
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="23" startPosition="0" endLine="27" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isErrorIntention#()Z" />
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="27" startPosition="0" endLine="31" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isAvailableInChildNodes#()Z" />
-    <nodeInfo nodeId="7796501636717810798" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="40" startPosition="108" endLine="44" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="46" startPosition="0" endLine="50" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getLocationString#()Ljava/lang/String;" />
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="31" startPosition="0" endLine="38" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getDescription#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/nodeEditor/EditorContext;)Ljava/lang/String;" />
-    <nodeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="38" startPosition="0" endLine="46" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="execute#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/nodeEditor/EditorContext;)V" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="13" startPosition="50" endLine="13" endPosition="50" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="16" startPosition="30" endLine="17" endPosition="78" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="20" startPosition="36" endLine="21" endPosition="17" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="24" startPosition="37" endLine="25" endPosition="17" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="28" startPosition="44" endLine="29" endPosition="17" />
-    <scopeInfo nodeId="8751745335399771344" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="33" startPosition="60" endLine="34" endPosition="32" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="47" startPosition="37" endLine="48" endPosition="56" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="12" startPosition="95" endLine="14" endPosition="3" />
-    <scopeInfo nodeId="7796501636717810799" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="41" startPosition="127" endLine="43" endPosition="151" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="15" startPosition="0" endLine="19" endPosition="0" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="19" startPosition="0" endLine="23" endPosition="0" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="23" startPosition="0" endLine="27" endPosition="0" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="27" startPosition="0" endLine="31" endPosition="0" />
-    <scopeInfo nodeId="8751745335399757637" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="32" startPosition="85" endLine="36" endPosition="39" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="46" startPosition="0" endLine="50" endPosition="0" />
-    <scopeInfo nodeId="8751745335399757639" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="39" startPosition="76" endLine="44" endPosition="5" />
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="31" startPosition="0" endLine="38" endPosition="0">
-      <varInfo nodeId="8751745335399757635" varName="editorContext" />
-      <varInfo nodeId="8751745335399757635" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="38" startPosition="0" endLine="46" endPosition="0">
-      <varInfo nodeId="8751745335399757635" varName="editorContext" />
-      <varInfo nodeId="8751745335399757635" varName="node" />
-    </scopeInfo>
-    <unitInfo nodeId="8751745335399757635" fileName="SwitchToComplexIsApplicable_Intention.java" startLine="12" startPosition="0" endLine="51" endPosition="0" unitName="jetbrains.mps.debugger.api.lang.intentions.SwitchToComplexIsApplicable_Intention" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="IntentionsDescriptor.java">
+      <unit at="18,0,56,0" name="jetbrains.mps.debugger.api.lang.intentions.IntentionsDescriptor" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:e5ea276a-79c7-4383-9407-3428086d3297(jetbrains.mps.debugger.api.lang.intentions)/8751745335399757635">
+    <file name="IntentionsDescriptor.java">
+      <node id="8751745335399757635" at="37,47,38,70" concept="2" />
+      <node id="8751745335399757635" at="50,52,51,56" concept="2" />
+    </file>
+    <file name="SwitchToComplexIsApplicable_Intention.java">
+      <node id="8751745335399757635" at="23,0,24,0" concept="3" trace="myCachedExecutable" />
+      <node id="8751745335399757635" at="24,50,25,157" concept="8" />
+      <node id="8751745335399757635" at="28,35,29,41" concept="6" />
+      <node id="8751745335399757635" at="32,84,33,16" concept="6" />
+      <node id="8751745335399757635" at="36,35,37,17" concept="6" />
+      <node id="8751745335399757635" at="40,37,41,105" concept="2" />
+      <node id="8751745335399757635" at="42,5,43,30" concept="6" />
+      <node id="8751745335399771399" at="50,71,51,34" concept="6" />
+      <node id="8751745335399771403" at="52,7,53,41" concept="6" />
+      <node id="8751745335399772214" at="56,78,57,121" concept="2" />
+      <node id="7796501636717810931" at="58,71,59,83" concept="2" />
+      <node id="7796501636717827562" at="59,83,60,127" concept="2" />
+      <node id="3104811047188453437" at="61,14,62,81" concept="2" />
+      <node id="8751745335399757635" at="66,48,67,56" concept="6" />
+      <node id="8751745335399757635" at="72,0,73,0" concept="7" trace="isComplex$g0M0" />
+      <node id="8751745335399757635" at="76,0,77,0" concept="7" trace="isApplicableBreakpoint$vi1A" />
+      <node id="8751745335399757635" at="77,0,78,0" concept="7" trace="body$e68K" />
+      <node id="8751745335399757635" at="46,0,48,0" concept="1" trace="IntentionImplementation#()V" />
+      <node id="3104811047188452659" at="61,12,63,7" concept="0" />
+      <node id="8751745335399757635" at="24,0,27,0" concept="1" trace="SwitchToComplexIsApplicable_Intention#()V" />
+      <node id="8751745335399757635" at="39,99,42,5" concept="4" />
+      <node id="8751745335399771342" at="49,87,52,7" concept="4" />
+      <node id="8751745335399757635" at="27,0,31,0" concept="5" trace="getPresentation#()Ljava/lang/String;" />
+      <node id="8751745335399757635" at="31,0,35,0" concept="5" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
+      <node id="8751745335399757635" at="35,0,39,0" concept="5" trace="isSurroundWith#()Z" />
+      <node id="8751745335399757635" at="65,0,69,0" concept="5" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
+      <node id="8751745335399757635" at="39,0,45,0" concept="5" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
+      <node id="7796501636717810798" at="57,121,63,7" concept="4" />
+      <node id="8751745335399757635" at="48,0,55,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
+      <node id="8751745335399757635" at="55,0,65,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <scope id="8751745335399757635" at="46,38,46,38" />
+      <scope id="8751745335399757635" at="24,50,25,157" />
+      <scope id="8751745335399757635" at="28,35,29,41" />
+      <scope id="8751745335399757635" at="32,84,33,16" />
+      <scope id="8751745335399757635" at="36,35,37,17" />
+      <scope id="8751745335399757635" at="40,37,41,105" />
+      <scope id="8751745335399771344" at="50,71,51,34" />
+      <scope id="3104811047188452660" at="61,14,62,81" />
+      <scope id="8751745335399757635" at="66,48,67,56" />
+      <scope id="8751745335399757635" at="46,0,48,0" />
+      <scope id="7796501636717810799" at="58,71,60,127" />
+      <scope id="8751745335399757635" at="24,0,27,0" />
+      <scope id="8751745335399757635" at="27,0,31,0" />
+      <scope id="8751745335399757635" at="31,0,35,0">
+        <var name="editorContext" id="8751745335399757635" />
+        <var name="node" id="8751745335399757635" />
+      </scope>
+      <scope id="8751745335399757635" at="35,0,39,0" />
+      <scope id="8751745335399757635" at="39,99,43,30" />
+      <scope id="8751745335399757637" at="49,87,53,41" />
+      <scope id="8751745335399757635" at="65,0,69,0" />
+      <scope id="8751745335399757635" at="39,0,45,0">
+        <var name="context" id="8751745335399757635" />
+        <var name="node" id="8751745335399757635" />
+      </scope>
+      <scope id="8751745335399757635" at="48,0,55,0">
+        <var name="editorContext" id="8751745335399757635" />
+        <var name="node" id="8751745335399757635" />
+      </scope>
+      <scope id="8751745335399757639" at="56,78,63,7" />
+      <scope id="8751745335399757635" at="55,0,65,0">
+        <var name="editorContext" id="8751745335399757635" />
+        <var name="node" id="8751745335399757635" />
+      </scope>
+      <unit id="8751745335399757635" at="71,0,74,0" name="jetbrains.mps.debugger.api.lang.intentions.SwitchToComplexIsApplicable_Intention$PROPS" />
+      <unit id="8751745335399757635" at="75,0,79,0" name="jetbrains.mps.debugger.api.lang.intentions.SwitchToComplexIsApplicable_Intention$LINKS" />
+      <unit id="8751745335399757635" at="45,0,70,0" name="jetbrains.mps.debugger.api.lang.intentions.SwitchToComplexIsApplicable_Intention$IntentionImplementation" />
+      <unit id="8751745335399757635" at="22,0,80,0" name="jetbrains.mps.debugger.api.lang.intentions.SwitchToComplexIsApplicable_Intention" />
+    </file>
+  </root>
+</debug-info>
 

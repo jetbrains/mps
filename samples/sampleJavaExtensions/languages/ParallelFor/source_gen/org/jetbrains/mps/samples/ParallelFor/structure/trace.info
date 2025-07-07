@@ -1,235 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="ParallelFor_Language.java" startLine="9" startPosition="0" endLine="16" endPosition="0" unitName="org.jetbrains.mps.samples.ParallelFor.structure.ParallelFor_Language" />
-  <unitInfo fileName="StructureAspectDescriptor.java" startLine="10" startPosition="0" endLine="33" endPosition="0" unitName="org.jetbrains.mps.samples.ParallelFor.structure.StructureAspectDescriptor" />
-  <root nodeId="2975785153735111398" modelId="r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)">
-    <nodeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="11" startPosition="47" endLine="12" endPosition="100" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="14" startPosition="33" endLine="15" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="18" startPosition="65" endLine="19" endPosition="181" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="22" startPosition="51" endLine="23" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="13" startPosition="0" endLine="16" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ThreadSafe#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="17" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Lorg/jetbrains/mps/samples/ParallelFor/structure/ThreadSafe;" />
-    <nodeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="21" startPosition="0" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Lorg/jetbrains/mps/samples/ParallelFor/structure/ThreadSafe;" />
-    <scopeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="14" startPosition="33" endLine="15" endPosition="16" />
-    <scopeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="18" startPosition="65" endLine="19" endPosition="181" />
-    <scopeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="22" startPosition="51" endLine="23" endPosition="45" />
-    <scopeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="13" startPosition="0" endLine="16" endPosition="3">
-      <varInfo nodeId="2975785153735111398" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="17" startPosition="0" endLine="21" endPosition="0">
-      <varInfo nodeId="2975785153735111398" varName="init" />
-      <varInfo nodeId="2975785153735111398" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="21" startPosition="0" endLine="25" endPosition="0">
-      <varInfo nodeId="2975785153735111398" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="2975785153735111398" fileName="ThreadSafe.java" startLine="11" startPosition="0" endLine="26" endPosition="0" unitName="org.jetbrains.mps.samples.ParallelFor.structure.ThreadSafe" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root>
+    <file name="ConceptPresentationAspectImpl.java">
+      <unit at="11,0,62,0" name="org.jetbrains.mps.samples.ParallelFor.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <unit at="10,0,36,0" name="org.jetbrains.mps.samples.ParallelFor.structure.LanguageConceptSwitch" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <unit at="17,0,118,0" name="org.jetbrains.mps.samples.ParallelFor.structure.StructureAspectDescriptor" />
+    </file>
   </root>
-  <root nodeId="2975785153735230336" modelId="r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)">
-    <nodeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="11" startPosition="55" endLine="12" endPosition="108" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="14" startPosition="41" endLine="15" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="18" startPosition="73" endLine="19" endPosition="197" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="22" startPosition="59" endLine="23" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="13" startPosition="0" endLine="16" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="NonThreadSafeClass#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="17" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Lorg/jetbrains/mps/samples/ParallelFor/structure/NonThreadSafeClass;" />
-    <nodeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="21" startPosition="0" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Lorg/jetbrains/mps/samples/ParallelFor/structure/NonThreadSafeClass;" />
-    <scopeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="14" startPosition="41" endLine="15" endPosition="16" />
-    <scopeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="18" startPosition="73" endLine="19" endPosition="197" />
-    <scopeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="22" startPosition="59" endLine="23" endPosition="53" />
-    <scopeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="13" startPosition="0" endLine="16" endPosition="3">
-      <varInfo nodeId="2975785153735230336" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="17" startPosition="0" endLine="21" endPosition="0">
-      <varInfo nodeId="2975785153735230336" varName="init" />
-      <varInfo nodeId="2975785153735230336" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="21" startPosition="0" endLine="25" endPosition="0">
-      <varInfo nodeId="2975785153735230336" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="2975785153735230336" fileName="NonThreadSafeClass.java" startLine="11" startPosition="0" endLine="26" endPosition="0" unitName="org.jetbrains.mps.samples.ParallelFor.structure.NonThreadSafeClass" />
+  <root nodeRef="r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)/2975785153735111398">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="2975785153735111398" at="16,0,17,0" concept="1" trace="props_ThreadSafe" />
+      <node id="2975785153735111398" at="52,39,53,76" concept="3" />
+      <node id="2975785153735111398" at="53,76,54,44" concept="0" />
+      <node id="2975785153735111398" at="54,44,55,42" concept="0" />
+      <node id="2975785153735111398" at="56,9,57,32" concept="4" />
+      <node id="2975785153735111398" at="51,44,56,9" concept="2" />
+      <scope id="2975785153735111398" at="52,39,55,42">
+        <var name="cpb" id="2975785153735111398" />
+      </scope>
+      <scope id="2975785153735111398" at="51,44,57,32" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="2975785153735111398" at="16,0,17,0" concept="5" trace="ThreadSafe" />
+      <node id="2975785153735111398" at="23,48,24,49" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="2975785153735111398" at="22,0,23,0" concept="1" trace="myConceptThreadSafe" />
+      <node id="2975785153735111398" at="54,44,55,35" concept="4" />
+      <node id="2975785153735111398" at="109,68,110,182" concept="3" />
+      <node id="2975785153735111398" at="110,182,111,34" concept="0" />
+      <node id="2975785153735111398" at="111,34,112,127" concept="0" />
+      <node id="2975785153735111398" at="112,127,113,124" concept="0" />
+      <node id="2975785153735111398" at="113,124,114,17" concept="0" />
+      <node id="2975785153735111398" at="114,17,115,22" concept="4" />
+      <node id="2975785153735111398" at="109,0,117,0" concept="6" trace="createDescriptorForThreadSafe#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="2975785153735111398" at="54,44,55,35" />
+      <scope id="2975785153735111398" at="109,68,115,22">
+        <var name="b" id="2975785153735111398" />
+      </scope>
+      <scope id="2975785153735111398" at="109,0,117,0" />
+    </file>
   </root>
-  <root nodeId="633195941006921788" modelId="r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)">
-    <nodeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="11" startPosition="44" endLine="12" endPosition="100" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="12" startPosition="100" endLine="13" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="NUMBER_OF_THREADS" />
-    <nodeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="15" startPosition="33" endLine="16" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="19" startPosition="35" endLine="20" endPosition="65" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="23" startPosition="45" endLine="24" endPosition="65" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="27" startPosition="65" endLine="28" endPosition="181" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="31" startPosition="51" endLine="32" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="14" startPosition="0" endLine="17" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ThreadPool#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="18" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNumberOfThreads#()I" />
-    <nodeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="22" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setNumberOfThreads#(I)V" />
-    <nodeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="26" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Lorg/jetbrains/mps/samples/ParallelFor/structure/ThreadPool;" />
-    <nodeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="30" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Lorg/jetbrains/mps/samples/ParallelFor/structure/ThreadPool;" />
-    <scopeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="15" startPosition="33" endLine="16" endPosition="16" />
-    <scopeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="19" startPosition="35" endLine="20" endPosition="65" />
-    <scopeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="23" startPosition="45" endLine="24" endPosition="65" />
-    <scopeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="27" startPosition="65" endLine="28" endPosition="181" />
-    <scopeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="31" startPosition="51" endLine="32" endPosition="45" />
-    <scopeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="14" startPosition="0" endLine="17" endPosition="3">
-      <varInfo nodeId="633195941006921788" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="18" startPosition="0" endLine="22" endPosition="0" />
-    <scopeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="22" startPosition="0" endLine="26" endPosition="0">
-      <varInfo nodeId="633195941006921788" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="26" startPosition="0" endLine="30" endPosition="0">
-      <varInfo nodeId="633195941006921788" varName="init" />
-      <varInfo nodeId="633195941006921788" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="30" startPosition="0" endLine="34" endPosition="0">
-      <varInfo nodeId="633195941006921788" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="633195941006921788" fileName="ThreadPool.java" startLine="11" startPosition="0" endLine="35" endPosition="0" unitName="org.jetbrains.mps.samples.ParallelFor.structure.ThreadPool" />
+  <root nodeRef="r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)/2975785153735230336">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="2975785153735230336" at="12,0,13,0" concept="1" trace="props_NonThreadSafeClass" />
+      <node id="2975785153735230336" at="24,47,25,76" concept="3" />
+      <node id="2975785153735230336" at="25,76,26,52" concept="0" />
+      <node id="2975785153735230336" at="26,52,27,50" concept="0" />
+      <node id="2975785153735230336" at="28,9,29,40" concept="4" />
+      <node id="2975785153735230336" at="23,52,28,9" concept="2" />
+      <scope id="2975785153735230336" at="24,47,27,50">
+        <var name="cpb" id="2975785153735230336" />
+      </scope>
+      <scope id="2975785153735230336" at="23,52,29,40" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="2975785153735230336" at="12,0,13,0" concept="5" trace="NonThreadSafeClass" />
+      <node id="2975785153735230336" at="19,116,20,57" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="2975785153735230336" at="18,0,19,0" concept="1" trace="myConceptNonThreadSafeClass" />
+      <node id="2975785153735230336" at="46,52,47,43" concept="4" />
+      <node id="2975785153735230336" at="66,76,67,190" concept="3" />
+      <node id="2975785153735230336" at="67,190,68,34" concept="0" />
+      <node id="2975785153735230336" at="68,34,69,127" concept="0" />
+      <node id="2975785153735230336" at="69,127,70,124" concept="0" />
+      <node id="2975785153735230336" at="70,124,71,17" concept="0" />
+      <node id="2975785153735230336" at="71,17,72,22" concept="4" />
+      <node id="2975785153735230336" at="66,0,74,0" concept="6" trace="createDescriptorForNonThreadSafeClass#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="2975785153735230336" at="46,52,47,43" />
+      <scope id="2975785153735230336" at="66,76,72,22">
+        <var name="b" id="2975785153735230336" />
+      </scope>
+      <scope id="2975785153735230336" at="66,0,74,0" />
+    </file>
   </root>
-  <root nodeId="8923957828369477802" modelId="r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)">
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="17" startPosition="104" endLine="18" endPosition="101" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="18" startPosition="101" endLine="19" endPosition="68" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="SHORT_DESCRIPTION" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="19" startPosition="68" endLine="20" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="ALIAS" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="20" startPosition="45" endLine="21" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="VIRTUAL_PACKAGE" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="21" startPosition="64" endLine="22" endPosition="47" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="NOWAIT" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="22" startPosition="47" endLine="23" endPosition="60" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="LOOP_VARIABLE" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="23" startPosition="60" endLine="24" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="INPUT_SEQUENCE" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="24" startPosition="62" endLine="25" endPosition="56" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="THREAD_POOL" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="25" startPosition="56" endLine="26" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="SMODEL_ATTRIBUTE" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="28" startPosition="34" endLine="29" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="32" startPosition="39" endLine="33" endPosition="59" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="36" startPosition="49" endLine="37" endPosition="59" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="40" startPosition="28" endLine="41" endPosition="47" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="44" startPosition="38" endLine="45" endPosition="47" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="48" startPosition="37" endLine="49" endPosition="57" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="52" startPosition="47" endLine="53" endPosition="57" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="56" startPosition="30" endLine="57" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="60" startPosition="40" endLine="61" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="64" startPosition="49" endLine="65" endPosition="103" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="68" startPosition="58" endLine="69" endPosition="52" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="72" startPosition="40" endLine="73" endPosition="84" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="76" startPosition="49" endLine="77" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="80" startPosition="37" endLine="81" endPosition="81" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="84" startPosition="46" endLine="85" endPosition="50" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="88" startPosition="41" endLine="89" endPosition="60" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="92" startPosition="49" endLine="93" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="96" startPosition="48" endLine="97" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="100" startPosition="50" endLine="101" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="104" startPosition="69" endLine="105" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="108" startPosition="66" endLine="109" endPosition="183" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="112" startPosition="52" endLine="113" endPosition="46" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="27" startPosition="0" endLine="30" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ParallelFor#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="31" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getShortDescription#()Ljava/lang/String;" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="35" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setShortDescription#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="39" startPosition="0" endLine="43" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAlias#()Ljava/lang/String;" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="43" startPosition="0" endLine="47" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setAlias#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="47" startPosition="0" endLine="51" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getVirtualPackage#()Ljava/lang/String;" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="51" startPosition="0" endLine="55" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setVirtualPackage#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="55" startPosition="0" endLine="59" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNowait#()Z" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="59" startPosition="0" endLine="63" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setNowait#(Z)V" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="63" startPosition="0" endLine="67" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getLoopVariable#()Ljetbrains/mps/smodel/INodeAdapter;" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="67" startPosition="0" endLine="71" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setLoopVariable#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="71" startPosition="0" endLine="75" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getInputSequence#()Ljetbrains/mps/smodel/INodeAdapter;" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="75" startPosition="0" endLine="79" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setInputSequence#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="79" startPosition="0" endLine="83" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getThreadPool#()Ljetbrains/mps/smodel/INodeAdapter;" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="83" startPosition="0" endLine="87" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setThreadPool#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="87" startPosition="0" endLine="91" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSmodelAttributesCount#()I" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="91" startPosition="0" endLine="95" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="smodelAttributes#()Ljava/util/Iterator;" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="95" startPosition="0" endLine="99" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSmodelAttributes#()Ljava/util/List;" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="99" startPosition="0" endLine="103" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="addSmodelAttribute#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="103" startPosition="0" endLine="107" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="insertSmodelAttribute#(Ljetbrains/mps/smodel/INodeAdapter;Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="107" startPosition="0" endLine="111" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Lorg/jetbrains/mps/samples/ParallelFor/structure/ParallelFor;" />
-    <nodeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="111" startPosition="0" endLine="115" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Lorg/jetbrains/mps/samples/ParallelFor/structure/ParallelFor;" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="28" startPosition="34" endLine="29" endPosition="16" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="32" startPosition="39" endLine="33" endPosition="59" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="36" startPosition="49" endLine="37" endPosition="59" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="40" startPosition="28" endLine="41" endPosition="47" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="44" startPosition="38" endLine="45" endPosition="47" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="48" startPosition="37" endLine="49" endPosition="57" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="52" startPosition="47" endLine="53" endPosition="57" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="56" startPosition="30" endLine="57" endPosition="55" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="60" startPosition="40" endLine="61" endPosition="55" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="64" startPosition="49" endLine="65" endPosition="103" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="68" startPosition="58" endLine="69" endPosition="52" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="72" startPosition="40" endLine="73" endPosition="84" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="76" startPosition="49" endLine="77" endPosition="53" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="80" startPosition="37" endLine="81" endPosition="81" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="84" startPosition="46" endLine="85" endPosition="50" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="88" startPosition="41" endLine="89" endPosition="60" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="92" startPosition="49" endLine="93" endPosition="72" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="96" startPosition="48" endLine="97" endPosition="75" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="100" startPosition="50" endLine="101" endPosition="54" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="104" startPosition="69" endLine="105" endPosition="63" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="108" startPosition="66" endLine="109" endPosition="183" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="112" startPosition="52" endLine="113" endPosition="46" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="27" startPosition="0" endLine="30" endPosition="3">
-      <varInfo nodeId="8923957828369477802" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="31" startPosition="0" endLine="35" endPosition="0" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="35" startPosition="0" endLine="39" endPosition="0">
-      <varInfo nodeId="8923957828369477802" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="39" startPosition="0" endLine="43" endPosition="0" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="43" startPosition="0" endLine="47" endPosition="0">
-      <varInfo nodeId="8923957828369477802" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="47" startPosition="0" endLine="51" endPosition="0" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="51" startPosition="0" endLine="55" endPosition="0">
-      <varInfo nodeId="8923957828369477802" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="55" startPosition="0" endLine="59" endPosition="0" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="59" startPosition="0" endLine="63" endPosition="0">
-      <varInfo nodeId="8923957828369477802" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="63" startPosition="0" endLine="67" endPosition="0" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="67" startPosition="0" endLine="71" endPosition="0">
-      <varInfo nodeId="8923957828369477802" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="71" startPosition="0" endLine="75" endPosition="0" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="75" startPosition="0" endLine="79" endPosition="0">
-      <varInfo nodeId="8923957828369477802" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="79" startPosition="0" endLine="83" endPosition="0" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="83" startPosition="0" endLine="87" endPosition="0">
-      <varInfo nodeId="8923957828369477802" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="87" startPosition="0" endLine="91" endPosition="0" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="91" startPosition="0" endLine="95" endPosition="0" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="95" startPosition="0" endLine="99" endPosition="0" />
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="99" startPosition="0" endLine="103" endPosition="0">
-      <varInfo nodeId="8923957828369477802" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="103" startPosition="0" endLine="107" endPosition="0">
-      <varInfo nodeId="8923957828369477802" varName="node" />
-      <varInfo nodeId="8923957828369477802" varName="prev" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="107" startPosition="0" endLine="111" endPosition="0">
-      <varInfo nodeId="8923957828369477802" varName="init" />
-      <varInfo nodeId="8923957828369477802" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="111" startPosition="0" endLine="115" endPosition="0">
-      <varInfo nodeId="8923957828369477802" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="8923957828369477802" fileName="ParallelFor.java" startLine="17" startPosition="0" endLine="116" endPosition="0" unitName="org.jetbrains.mps.samples.ParallelFor.structure.ParallelFor" />
+  <root nodeRef="r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)/633195941006921788">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="633195941006921788" at="15,0,16,0" concept="1" trace="props_ThreadPool" />
+      <node id="633195941006921788" at="45,39,46,76" concept="3" />
+      <node id="633195941006921788" at="46,76,47,45" concept="0" />
+      <node id="633195941006921788" at="47,45,48,42" concept="0" />
+      <node id="633195941006921788" at="49,9,50,32" concept="4" />
+      <node id="633195941006921788" at="44,44,49,9" concept="2" />
+      <scope id="633195941006921788" at="45,39,48,42">
+        <var name="cpb" id="633195941006921788" />
+      </scope>
+      <scope id="633195941006921788" at="44,44,50,32" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="633195941006921788" at="15,0,16,0" concept="5" trace="ThreadPool" />
+      <node id="633195941006921788" at="22,59,23,48" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="633195941006921788" at="21,0,22,0" concept="1" trace="myConceptThreadPool" />
+      <node id="633195941006921788" at="52,44,53,35" concept="4" />
+      <node id="633195941006921788" at="98,68,99,181" concept="3" />
+      <node id="633195941006921788" at="99,181,100,34" concept="0" />
+      <node id="633195941006921788" at="100,34,101,121" concept="0" />
+      <node id="633195941006921788" at="101,121,102,123" concept="0" />
+      <node id="633195941006921788" at="102,123,103,17" concept="0" />
+      <node id="633195941006921797" at="103,17,104,120" concept="0" />
+      <node id="633195941006921788" at="104,120,105,49" concept="0" />
+      <node id="633195941006921788" at="105,49,106,27" concept="0" />
+      <node id="633195941006921788" at="106,27,107,22" concept="4" />
+      <node id="633195941006921788" at="98,0,109,0" concept="6" trace="createDescriptorForThreadPool#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="633195941006921788" at="52,44,53,35" />
+      <scope id="633195941006921788" at="98,68,107,22">
+        <var name="b" id="633195941006921788" />
+      </scope>
+      <scope id="633195941006921788" at="98,0,109,0" />
+    </file>
   </root>
-  <root nodeId="8923957828369477803" modelId="r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)">
-    <nodeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="11" startPosition="68" endLine="12" endPosition="110" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="14" startPosition="43" endLine="15" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="18" startPosition="75" endLine="19" endPosition="201" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="22" startPosition="61" endLine="23" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="13" startPosition="0" endLine="16" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ParallelLoopVariable#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="17" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Lorg/jetbrains/mps/samples/ParallelFor/structure/ParallelLoopVariable;" />
-    <nodeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="21" startPosition="0" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Lorg/jetbrains/mps/samples/ParallelFor/structure/ParallelLoopVariable;" />
-    <scopeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="14" startPosition="43" endLine="15" endPosition="16" />
-    <scopeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="18" startPosition="75" endLine="19" endPosition="201" />
-    <scopeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="22" startPosition="61" endLine="23" endPosition="55" />
-    <scopeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="13" startPosition="0" endLine="16" endPosition="3">
-      <varInfo nodeId="8923957828369477803" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="17" startPosition="0" endLine="21" endPosition="0">
-      <varInfo nodeId="8923957828369477803" varName="init" />
-      <varInfo nodeId="8923957828369477803" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="21" startPosition="0" endLine="25" endPosition="0">
-      <varInfo nodeId="8923957828369477803" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="8923957828369477803" fileName="ParallelLoopVariable.java" startLine="11" startPosition="0" endLine="26" endPosition="0" unitName="org.jetbrains.mps.samples.ParallelFor.structure.ParallelLoopVariable" />
+  <root nodeRef="r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)/8923957828369477802">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="8923957828369477802" at="13,0,14,0" concept="1" trace="props_ParallelFor" />
+      <node id="8923957828369477802" at="31,40,32,76" concept="3" />
+      <node id="8923957828369477802" at="32,76,33,45" concept="0" />
+      <node id="8923957828369477802" at="33,45,34,43" concept="0" />
+      <node id="8923957828369477802" at="35,9,36,33" concept="4" />
+      <node id="8923957828369477802" at="30,45,35,9" concept="2" />
+      <scope id="8923957828369477802" at="31,40,34,43">
+        <var name="cpb" id="8923957828369477802" />
+      </scope>
+      <scope id="8923957828369477802" at="30,45,36,33" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="8923957828369477802" at="13,0,14,0" concept="5" trace="ParallelFor" />
+      <node id="8923957828369477802" at="20,57,21,50" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="8923957828369477802" at="19,0,20,0" concept="1" trace="myConceptParallelFor" />
+      <node id="8923957828369477802" at="48,45,49,36" concept="4" />
+      <node id="8923957828369477802" at="74,69,75,183" concept="3" />
+      <node id="8923957828369477802" at="75,183,76,34" concept="0" />
+      <node id="8923957828369477802" at="76,34,77,133" concept="0" />
+      <node id="8923957828369477802" at="77,133,78,71" concept="0" />
+      <node id="8923957828369477802" at="78,71,79,71" concept="0" />
+      <node id="8923957828369477802" at="79,71,80,124" concept="0" />
+      <node id="8923957828369477802" at="80,124,81,17" concept="0" />
+      <node id="8374756414438970116" at="81,17,82,113" concept="0" />
+      <node id="8923957828369518786" at="82,113,83,206" concept="0" />
+      <node id="8923957828369550462" at="83,206,84,201" concept="0" />
+      <node id="4659204813808501246" at="84,201,85,197" concept="0" />
+      <node id="8923957828369477802" at="85,197,86,49" concept="0" />
+      <node id="8923957828369477802" at="86,49,87,27" concept="0" />
+      <node id="8923957828369477802" at="87,27,88,22" concept="4" />
+      <node id="8923957828369477802" at="74,0,90,0" concept="6" trace="createDescriptorForParallelFor#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8923957828369477802" at="48,45,49,36" />
+      <scope id="8923957828369477802" at="74,69,88,22">
+        <var name="b" id="8923957828369477802" />
+      </scope>
+      <scope id="8923957828369477802" at="74,0,90,0" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)/8923957828369477803">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="8923957828369477803" at="14,0,15,0" concept="1" trace="props_ParallelLoopVariable" />
+      <node id="8923957828369477803" at="38,49,39,76" concept="3" />
+      <node id="8923957828369477803" at="39,76,40,35" concept="0" />
+      <node id="8923957828369477803" at="40,35,41,52" concept="0" />
+      <node id="8923957828369477803" at="42,9,43,42" concept="4" />
+      <node id="8923957828369477803" at="37,54,42,9" concept="2" />
+      <scope id="8923957828369477803" at="38,49,41,52">
+        <var name="cpb" id="8923957828369477803" />
+      </scope>
+      <scope id="8923957828369477803" at="37,54,43,42" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="8923957828369477803" at="14,0,15,0" concept="5" trace="ParallelLoopVariable" />
+      <node id="8923957828369477803" at="21,50,22,59" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="8923957828369477803" at="20,0,21,0" concept="1" trace="myConceptParallelLoopVariable" />
+      <node id="8923957828369477803" at="50,54,51,45" concept="4" />
+      <node id="8923957828369477803" at="90,78,91,192" concept="3" />
+      <node id="8923957828369477803" at="91,192,92,34" concept="0" />
+      <node id="8923957828369477803" at="92,34,93,135" concept="0" />
+      <node id="8923957828369477803" at="93,135,94,124" concept="0" />
+      <node id="8923957828369477803" at="94,124,95,17" concept="0" />
+      <node id="8923957828369477803" at="95,17,96,22" concept="4" />
+      <node id="8923957828369477803" at="90,0,98,0" concept="6" trace="createDescriptorForParallelLoopVariable#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8923957828369477803" at="50,54,51,45" />
+      <scope id="8923957828369477803" at="90,78,96,22">
+        <var name="b" id="8923957828369477803" />
+      </scope>
+      <scope id="8923957828369477803" at="90,0,98,0" />
+    </file>
+  </root>
+</debug-info>
 

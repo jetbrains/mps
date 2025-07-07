@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,17 @@
 package jetbrains.mps.nodeEditor.messageTargets;
 
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.nodeEditor.cells.*;
+import jetbrains.mps.nodeEditor.cells.CellConditions.LegacyAggregationCellCondition;
+import jetbrains.mps.nodeEditor.cells.CellConditions.LegacyAssociationCellCondition;
+import jetbrains.mps.nodeEditor.cells.CellConditions.LegacyPropertyCellCondition;
+import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.util.Condition;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Set;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.util.Condition;
 
 /**
  * @author Evgeny Gerashchenko
@@ -40,13 +43,15 @@ public class CellFinder {
 
   @Nullable
   public static EditorCell getCellForReference(@Nullable EditorComponent editorComponent, @Nullable final SNode node, final String role) {
+    if (role == null || node == null) {
+      return null;
+    }
     EditorCell rawCell = getRawCell(editorComponent, node);
-    if (rawCell == null) { return null; }
-    EditorCell child = rawCell.findChild(CellFinders.byCondition(new Condition<EditorCell>() {
-      public boolean met(EditorCell cell) {
-        return cell.isReferenceCell() && role.equals(cell.getRole()) && node == cell.getSNode();
-      }
-    }, true), true);
+    if (rawCell == null) {
+      return null;
+    }
+    Condition<EditorCell> isRefCell = new LegacyAssociationCellCondition(node, role);
+    EditorCell child = CellFinderUtil.findChildByCondition(rawCell, isRefCell, true, true);
     if (child != null) {
       return child;
     } else {
@@ -56,22 +61,31 @@ public class CellFinder {
 
   @Nullable
   public static EditorCell getCellForProperty(@Nullable EditorComponent editorComponent, @Nullable final SNode node, final String name) {
+    if (name == null || node == null) {
+      return null;
+    }
     EditorCell rawCell = getRawCell(editorComponent, node);
-    if (rawCell == null) { return null; }
-    EditorCell child = rawCell.findChild(CellFinders.byCondition(new Condition<EditorCell>() {
-      public boolean met(EditorCell cell) {
-        if (!(cell instanceof EditorCell_Property)) return false;
-        EditorCell_Property propertyCell = (EditorCell_Property) cell;
-        ModelAccessor modelAccessor = propertyCell.getModelAccessor();
-        return modelAccessor instanceof PropertyAccessor && node == propertyCell.getSNode()
-          && name.equals(((PropertyAccessor) modelAccessor).getPropertyName());
-      }
-    }, true), true);
-    if (child != null) {
-      return child;
-    } else {
+    if (rawCell == null) {
+      return null;
+    }
+
+    Condition<EditorCell> isCellForProperty = new LegacyPropertyCellCondition(node, name);
+    EditorCell child = CellFinderUtil.findChildByCondition(rawCell, isCellForProperty, true, true);
+    if (child == null) {
       return rawCell;
     }
+
+    return child;
+  }
+
+
+    /**
+   * @deprecated uses string instead of SProperty to identify meta-object, use {@link jetbrains.mps.openapi.editor.cells.CellConditions.PropertyCellCondition} instead
+   */
+  @Deprecated
+  @ToRemove(version = 2019.2)
+  static boolean isCellForProperty(@NotNull EditorCell cell, @Nullable SNode node, @NotNull String name) {
+    return new LegacyPropertyCellCondition(node, name).met(cell);
   }
 
   @Nullable
@@ -80,13 +94,7 @@ public class CellFinder {
     if (rawCell == null) {
       return null;
     }
-    EditorCell child = rawCell.findChild(CellFinders.byCondition(new Condition<EditorCell>() {
-      @Override
-      public boolean met(EditorCell cell) {
-        return role.equals(cell.getRole()) &&
-          (node == cell.getSNode() || node == cell.getSNode().getParent() && cell.isBigCell());
-      }
-    }, true), true);
+    EditorCell child = CellFinderUtil.findChildByCondition(rawCell, new LegacyAggregationCellCondition(node, role), true, true);
     if (child != null) {
       return child;
     }

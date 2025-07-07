@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,28 +17,57 @@ package jetbrains.mps.ide.editorTabs.tabfactory;
 
 import com.intellij.openapi.editor.Document;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
-import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.JComponent;
+import java.util.Collection;
 import java.util.List;
 
+// FIXME odd contract - getCurrentTabAspect, editNode. Reasonable: getComponent, next/prevTab, dispose. selection - depends on the rest
 public interface TabsComponent {
   void dispose();
-
-  List<SNodePointer> getAllEditedNodes();
 
   List<Document> getAllEditedDocuments();
 
   @Nullable
   RelationDescriptor getCurrentTabAspect();
 
-  void setLastNode(SNodePointer sNodePointer);
+  @NotNull
+  Collection<SNodeReference> getSelectionFor(RelationDescriptor tabDescriptor, SNodeReference editedNode);
+
+  /**
+   * Set a node to edit. Activates appropriate tab and notifies listeners
+   */
+  void editNode(SNodeReference sNodePointer);
 
   JComponent getComponent();
 
-  ///-------------tab navigation----------------
-  abstract void nextTab();
+  /**
+   * Refresh visible tabs, bring them into up-to-date state (add/remove missing/new).
+   * Expects EDT and model read.
+   *
+   * Use TabsComponent#updateTabs(java.util.Collection), if incremental update required
+   */
+  void updateTabs();
 
-  abstract void prevTab();
+  /**
+   * Refresh visible tabs, bring them into up-to-date state (add/remove missing/new).
+   * Expects EDT and model read.
+   *
+   * @param changedRoots collection of roots, that was changed during command and need to be updated
+   */
+  void updateTabs(Collection<SNodeReference> changedRoots);
+
+  /**
+   * Update visual presentation of present tabs, do not add/remove tabs.
+   * Expects EDT and model read.
+   */
+  void updateTabColors();
+
+  ///-------------tab navigation----------------
+  void nextTab();
+
+  void prevTab();
 }

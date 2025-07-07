@@ -17,7 +17,7 @@ package jetbrains.mps.newTypesystem.operation;
 
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 
 import java.util.LinkedList;
@@ -34,24 +34,29 @@ public class AssignTypeOperation extends AbstractOperation {
     setRule(info);
   }
 
+  @Override
   public void doUndo(State state) {
     state.getNodeMaps().removeNodeType(myNode);
   }
 
+  @Override
   public void doRedo(State state) {
     state.getNodeMaps().assignNodeType(myNode, myType);
   }
 
+  @Override
   public String getPresentation() {
     return myNode + " : " + myType+ "   assigned";
   }
 
+  @Override
   public String getPresentationKind() {
     return PresentationKind.TYPE_ASSIGNED;
   }
 
+  @Override
   public List<SNode> getVariables() {
-    LinkedList<SNode> nodes = new LinkedList<SNode>();
+    LinkedList<SNode> nodes = new LinkedList<>();
     if (TypesUtil.isVariable(myType)) {
       nodes.add(myType);
     }

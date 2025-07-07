@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,17 +18,24 @@ package jetbrains.mps.ide.editorTabs.tabfactory.tabs;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
-import jetbrains.mps.ide.relations.RelationComparator;
-import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.ide.editorTabs.tabfactory.NodeChangeCallback;
-import jetbrains.mps.ide.icons.IconManager;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.ide.icons.GlobalIconManager;
+import jetbrains.mps.ide.relations.RelationComparator;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.plugins.relations.RelationDescriptor;
+import jetbrains.mps.project.Project;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.util.NameUtil;
-import org.apache.commons.lang.StringUtils;
+import jetbrains.mps.smodel.language.ConceptRegistry;
+import jetbrains.mps.smodel.runtime.ConceptPresentation;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -36,95 +43,132 @@ import java.util.Collections;
 import java.util.List;
 
 public class CreateGroupsBuilder {
-  public static List<DefaultActionGroup> getCreateGroups(SNodePointer baseNode, Collection<RelationDescriptor> possibleTabs, @Nullable RelationDescriptor currentAspect, NodeChangeCallback callback) {
-    List<DefaultActionGroup> groups = new ArrayList<DefaultActionGroup>();
+  private static final Logger LOG = LogManager.getLogger(CreateGroupsBuilder.class);
 
-    List<RelationDescriptor> tabs = new ArrayList<RelationDescriptor>(possibleTabs);
-    Collections.sort(tabs, new RelationComparator());
+  private final Project myProject;
+  private final SNodeReference myBaseNode;
+  private final NodeChangeCallback myCallback;
 
-    if (currentAspect != null) {
-      tabs.remove(currentAspect);
-      tabs.add(0, currentAspect);
-    }
-
-    for (final RelationDescriptor d : tabs) {
-      List<SNode> nodes = d.getNodes(baseNode.getNode());
-      if (!nodes.isEmpty() && d.isSingle()) continue;
-
-      DefaultActionGroup group = getCreateGroup(baseNode, callback, d);
-      if (group == null) continue;
-
-      if (tabs.indexOf(d) == 0) {
-        group.setPopup(false);
-      }
-
-      groups.add(group);
-    }
-    return groups;
+  public CreateGroupsBuilder(@NotNull Project mpsProject, @NotNull SNodeReference baseNode, @NotNull NodeChangeCallback callback) {
+    myProject = mpsProject;
+    myBaseNode = baseNode;
+    myCallback = callback;
   }
 
-  public static DefaultActionGroup getCreateGroup(SNodePointer baseNode, NodeChangeCallback callback, RelationDescriptor d) {
-    List<SNode> concepts = d.getConcepts(baseNode.getNode());
-    if (concepts.isEmpty()) return new DefaultActionGroup();
+  public List<DefaultActionGroup> getCreateGroups(final Collection<RelationDescriptor> possibleTabs, @Nullable final RelationDescriptor currentAspect) {
+    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> {
+      List<DefaultActionGroup> groups = new ArrayList<>();
+
+      List<RelationDescriptor> tabs = new ArrayList<>(possibleTabs);
+      Collections.sort(tabs, new RelationComparator());
+
+      if (currentAspect != null) {
+        tabs.remove(currentAspect);
+        tabs.add(0, currentAspect);
+      }
+
+      for (final RelationDescriptor d : tabs) {
+        List<SNode> nodes;
+        try {
+          nodes = d.getNodes(myBaseNode.resolve(myProject.getRepository()));
+        } catch (Throwable t) {
+          LOG.error("Exception in extension: ", t);
+          continue;
+        }
+        if (!nodes.isEmpty() && d.isSingle()) {
+          continue;
+        }
+
+        DefaultActionGroup group = doGetCreateGroup(d);
+
+        if (tabs.indexOf(d) == 0) {
+          group.setPopup(false);
+        }
+
+        groups.add(group);
+      }
+      return groups;
+    });
+  }
+
+  @NotNull
+  public DefaultActionGroup getCreateGroup(final RelationDescriptor d) {
+    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> doGetCreateGroup(d));
+  }
+
+  private DefaultActionGroup doGetCreateGroup(RelationDescriptor d) {
+    Iterable<SConcept> concepts = d.getAspectConcepts(myBaseNode.resolve(myProject.getRepository()));
+    if (!concepts.iterator().hasNext()) {
+      return new DefaultActionGroup();
+    }
 
     DefaultActionGroup group = new DefaultActionGroup(d.getTitle(), true);
-    for (final SNode concept : concepts) {
-      group.add(new CreateAction(concept, d, baseNode, callback));
+    for (SConcept concept : concepts) {
+      group.add(new CreateAction(concept, d));
     }
     return group;
   }
 
-  private static String getConceptAlias(SNode concept) {
-    String alias = SNodeUtil.getConceptAlias(concept);
-    if (StringUtils.isEmpty(alias)) {
-      return concept.getName();
-    } else {
-      return alias;
+  @NotNull
+  private static String getActionText(@NotNull SConcept concept) {
+    String noUnderScores = concept.getConceptAlias().replaceAll("_", "__");
+    String result = noUnderScores.isEmpty() ? concept.getName() : noUnderScores;
+    ConceptPresentation conceptProperties = getConceptProperties(concept);
+    // duplication with NewRootNodeAction, very sorry
+    if (conceptProperties.isDeprecated()) {
+      result = "(deprecated) " + result;
+    } else if (conceptProperties.isExperimental()) {
+      result = "[experimental] " + result;
     }
+    return result;
   }
 
-  private static class CreateAction extends AnAction {
-    private final SNode myConcept;
-    private final RelationDescriptor myDescriptor;
-    private SNodePointer myBaseNode;
-    private NodeChangeCallback myCallback;
+  private static ConceptPresentation getConceptProperties(@NotNull SAbstractConcept concept) {
+    return ConceptRegistry.getInstance().getConceptProperties(concept);
+  }
 
-    public CreateAction(SNode concept, RelationDescriptor descriptor, SNodePointer baseNode, NodeChangeCallback callback) {
-      super(getConceptAlias(concept).replaceAll("_", "__"), "", IconManager.getIconForConceptFQName(NameUtil.nodeFQName(concept)));
+  private class CreateAction extends AnAction {
+    private final SConcept myConcept;
+    private final RelationDescriptor myDescriptor;
+
+    public CreateAction(SConcept concept, RelationDescriptor descriptor) {
+      super(getActionText(concept), "Create aspect", GlobalIconManager.getInstance().getIconFor(concept));
       myConcept = concept;
       myDescriptor = descriptor;
-      myBaseNode = baseNode;
-      myCallback = callback;
     }
 
-    public void actionPerformed(AnActionEvent e) {
-      final SNode[] created = new SNode[1];
 
-      final Runnable r1 = new Runnable() {
-        public void run() {
-          created[0] = myDescriptor.createNode(myBaseNode.getNode(), myConcept);
-        }
-      };
-
-      final Runnable r2 = new Runnable() {
-        public void run() {
-          String mainPack = myBaseNode.getNode().getProperty(SNode.PACK);
-          created[0].setProperty(SNode.PACK, mainPack);
-          myCallback.changeNode(created[0]);
-        }
-      };
-
+    @Override
+    public void actionPerformed(@NotNull AnActionEvent e) {
+      final SNode[] res = new SNode[1];
       if (myDescriptor.commandOnCreate()) {
-        ModelAccess.instance().runWriteActionInCommand(new Runnable() {
-          public void run() {
-            r1.run();
+        myProject.getModelAccess().executeCommand(() -> {
+          SNode cNode = myBaseNode.resolve(myProject.getRepository());
+          res[0] = myDescriptor.createAspect(cNode, myConcept);
+          if (res[0] != null) {
+            setPackage(res[0], cNode);
+            myCallback.changeNode(res[0].getReference());
           }
         });
       } else {
-        r1.run();
+        SNode cNODE = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> myBaseNode.resolve(myProject.getRepository()));
+        res[0] = myDescriptor.createAspect(cNODE, myConcept);
+        myProject.getModelAccess().executeCommand(() -> {
+          SNode conceptNode = myBaseNode.resolve(myProject.getRepository());
+          if (res[0] == null || conceptNode == null) {
+            return;
+          }
+          setPackage(res[0], conceptNode);
+          myCallback.changeNode(res[0].getReference());
+        });
       }
-      if (created[0] == null) return;
-      ModelAccess.instance().runWriteActionInCommand(r2);
+    }
+
+    private void setPackage(SNode res, SNode conceptNode) {
+      String conceptPackage = SPropertyOperations.getString(conceptNode, SNodeUtil.property_BaseConcept_virtualPackage);
+      if (conceptPackage != null) {
+        SPropertyOperations.assign(res, SNodeUtil.property_BaseConcept_virtualPackage, conceptPackage);
+      }
     }
   }
 }

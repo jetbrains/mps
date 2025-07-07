@@ -8,11 +8,10 @@ import mf.Quantity;
 
 public class ValueDouble implements Function<Double> {
   private String myValueName;
-
   public ValueDouble(String valueName) {
     myValueName = valueName;
   }
-
+  @Override
   public Double compute(Object parm) {
     AccountingEvent event = (AccountingEvent) parm;
     Object value = event.getAgreement().getValue(myValueName, event.getWhenOccurred());

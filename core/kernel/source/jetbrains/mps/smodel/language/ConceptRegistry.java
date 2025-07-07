@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,51 +16,72 @@
 package jetbrains.mps.smodel.language;
 
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.runtime.BehaviorDescriptor;
+import jetbrains.mps.core.aspects.behaviour.BehaviorRegistryImpl;
+import jetbrains.mps.core.aspects.behaviour.SConceptC3StarMRO;
+import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
+import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
+import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.adapter.ids.SDataTypeId;
+import jetbrains.mps.smodel.adapter.structure.concept.InvalidConcept;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
-import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
+import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
-import jetbrains.mps.smodel.runtime.illegal.IllegalBehaviorDescriptor;
+import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import jetbrains.mps.smodel.runtime.illegal.IllegalConceptDescriptor;
-import jetbrains.mps.smodel.runtime.illegal.IllegalConstraintsDescriptor;
-import jetbrains.mps.smodel.runtime.interpreted.BehaviorAspectInterpreted;
-import jetbrains.mps.smodel.runtime.interpreted.BehaviorAspectInterpreted.InterpretedBehaviorDescriptor;
-import jetbrains.mps.smodel.runtime.interpreted.ConstraintsAspectInterpreted;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.Pair;
-import jetbrains.mps.util.misc.hash.HashSet;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SLanguage;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
-public class ConceptRegistry implements CoreComponent {
-  private static final Logger LOG = Logger.getLogger(ConceptRegistry.class);
+// TODO avoid singleton by creating a new ComponentPlugin instance with smodel-related components (it is not CoreComponent in fact)
+public class ConceptRegistry implements CoreComponent, LanguageRegistryListener {
+  private static Map<String, SAbstractConcept> myConceptByNameCache;
 
-  private final Map<String, ConceptDescriptor> conceptDescriptors = new ConcurrentHashMap<String, ConceptDescriptor>();
-  private final Map<String, BehaviorDescriptor> behaviorDescriptors = new ConcurrentHashMap<String, BehaviorDescriptor>();
-  private final Map<String, ConstraintsDescriptor> constraintsDescriptors = new ConcurrentHashMap<String, ConstraintsDescriptor>();
+  private final LanguageRegistry myLanguageRegistry;
+  private final StructureRegistry myStructureRegistry;
+  private final ConceptPropertiesRegistry myConcPropsRegistry;
+  private final BehaviorRegistry myBehaviorRegistry;
+  private final ConstraintsRegistry myConstraintsRegistry;
+  private final SConceptC3StarMRO myMRO = new SConceptC3StarMRO();
 
-  private final ThreadLocal<Set<Pair<String, LanguageAspect>>> conceptsInLoading = new ThreadLocal<Set<Pair<String, LanguageAspect>>>() {
-    @Override
-    protected Set<Pair<String, LanguageAspect>> initialValue() {
-      return new HashSet<Pair<String, LanguageAspect>>();
-    }
-  };
-
-  public ConceptRegistry() {
+  // fixme wrong naming
+  public ConceptRegistry(@NotNull LanguageRegistry languageRegistry) {
+    myLanguageRegistry = languageRegistry;
+    myStructureRegistry = new StructureRegistry(languageRegistry);
+    myConcPropsRegistry = new ConceptPropertiesRegistry(languageRegistry);
+    myBehaviorRegistry = new BehaviorRegistryImpl(languageRegistry, myMRO);
+    myConstraintsRegistry = new ConstraintsRegistry(languageRegistry, myMRO);
   }
 
   private static ConceptRegistry INSTANCE;
 
+  /**
+   * to avoid #getInstance calls from the generated descriptors we will pass into the aspect descriptor constructor some context paramter (like BehaviorRegistry
+   * for BehaviorAspectDescriptor)
+   * for other cases we will consider introducing a context
+   */
   public static ConceptRegistry getInstance() {
     return INSTANCE;
+  }
+
+  /**
+   * it will be dropped along with #getInstance
+   * @deprecated there's no need to access BehaviorRegistry class through ConceptRegistry.
+   */
+  @NotNull
+  @Deprecated(since = "2019.3", forRemoval = true)
+  public BehaviorRegistry getBehaviorRegistry() {
+    return myBehaviorRegistry;
+  }
+
+  @NotNull
+  public ConstraintsRegistry getConstraintsRegistry() {
+    return myConstraintsRegistry;
   }
 
   @Override
@@ -69,159 +90,98 @@ public class ConceptRegistry implements CoreComponent {
       throw new IllegalStateException("double initialization");
     }
     INSTANCE = this;
+    myLanguageRegistry.addRegistryListener(this);
   }
 
   @Override
   public void dispose() {
+    myLanguageRegistry.removeRegistryListener(this);
     INSTANCE = null;
   }
 
-  private boolean startLoad(String fqName, LanguageAspect aspect) {
-    Pair<String, LanguageAspect> currentConceptAndLanguageAspect = new Pair<String, LanguageAspect>(fqName, aspect);
-    if (conceptsInLoading.get().contains(currentConceptAndLanguageAspect)) {
-      return false;
+  /**
+   * @deprecated It's odd to go from SAbstractConcept back to ConceptDescriptor. It's MPS implementation of SConcept that
+   *             deals with ConceptDescriptors to populate SAbstractConcept and client code shall not reverse this.
+   *             *
+   *             NOTE, THERE ARE NO USES left in MPS code, don't introduce a new one! We'll drop the method any time soon.
+   *             *
+   */
+  @NotNull
+  @Deprecated
+  public ConceptDescriptor getConceptDescriptor(@NotNull SAbstractConcept concept) {
+    SConceptId cid = MetaIdHelper.getConcept(concept);
+    if (cid == MetaIdFactory.INVALID_CONCEPT_ID) {
+      return new IllegalConceptDescriptor(cid, concept.getQualifiedName());
     }
-    conceptsInLoading.get().add(currentConceptAndLanguageAspect);
-    return true;
+    return getConceptDescriptor(cid);
   }
 
-  private void finishLoad(String fqName, LanguageAspect aspect) {
-    conceptsInLoading.get().remove(new Pair<String, LanguageAspect>(fqName, aspect));
+  /**
+   * Looks up {@link ConceptDescriptor} for the given id. If none found,
+   * {@link IllegalConceptDescriptor} instance is returned, with {@link IllegalConceptDescriptor#getId()}
+   * equal to the one supplied.
+   *
+   * @param id identity of a concept (generally, shall not use MetaIdFactory.INVALID_CONCEPT_ID)
+   * @return never {@code null}
+   */
+  @NotNull
+  public ConceptDescriptor getConceptDescriptor(@NotNull SConceptId id) {
+    // XXX shall I check for id == MetaIdFactory.INVALID_CONCEPT_ID?
+    // If yes, handle gracefully or assert !=
+    ConceptDescriptor cd = myStructureRegistry.getConceptDescriptor(id);
+    return cd == null ? new IllegalConceptDescriptor(id) : cd;
+  }
+
+  @Nullable
+  public DataTypeDescriptor getDataTypeDescriptor(@NotNull SDataTypeId id) {
+    DataTypeDescriptor dtd = myStructureRegistry.getDataTypeDescriptor(id);
+    // TODO Introduce IllegalConstrainedStringDatatypeDescriptor in order to make this non-null
+    return dtd;
+  }
+
+  public ConceptPresentation getConceptProperties(@NotNull SAbstractConcept concept){
+    return myConcPropsRegistry.getConceptProperties(concept);
   }
 
   @NotNull
-  public ConceptDescriptor getConceptDescriptor(@Nullable String fqName) {
-    ConceptDescriptor descriptor = conceptDescriptors.get(fqName);
+  public ConstraintsDescriptor getConstraintsDescriptor(@NotNull SAbstractConcept concept) {
+    return myConstraintsRegistry.getConstraintsDescriptor(concept);
+  }
 
-    if (descriptor != null) {
-      return descriptor;
-    }
-
-    if (!startLoad(fqName, LanguageAspect.STRUCTURE)) {
-      return new IllegalConceptDescriptor(fqName);
-    }
-
-    try {
-      try {
-        LanguageRuntime languageRuntime = LanguageRegistry.getInstance().getLanguage(NameUtil.namespaceFromConceptFQName(fqName));
-        if (languageRuntime == null) {
-          LOG.warning("No language for: " + fqName, new Throwable());
-        } else {
-          descriptor = languageRuntime.getStructureAspectDescriptor().getDescriptor(fqName);
+  @Deprecated
+  @ToRemove(version = 3.4)
+  //this method is here for compatibility purposes.
+  //remove as soon as there's no need in optimizing by-name stuff
+  // which is unlikely to happen provided we have support for legacy persistence that needs by-name concepts.
+  synchronized public SAbstractConcept getConceptByName(String conceptName) {
+    if (myConceptByNameCache==null) {
+      myConceptByNameCache = new HashMap<>();
+      for (SLanguage l : myLanguageRegistry.getAllLanguages()) {
+        for (SAbstractConcept c : l.getConcepts()) {
+          myConceptByNameCache.put(c.getQualifiedName(),c);
         }
-      } catch (Throwable e) {
-        LOG.warning("Exception while structure descriptor creating: " + fqName, e);
       }
-
-      if (descriptor == null) {
-        // todo: maybe Interpreted?
-        descriptor = new IllegalConceptDescriptor(fqName);
-      }
-
-      conceptDescriptors.put(fqName, descriptor);
-
-      return descriptor;
-    } finally {
-      finishLoad(fqName, LanguageAspect.STRUCTURE);
     }
+
+    return myConceptByNameCache.getOrDefault(conceptName, new InvalidConcept(conceptName));
   }
 
-  @NotNull
-  public BehaviorDescriptor getBehaviorDescriptor(@Nullable String fqName) {
-    BehaviorDescriptor descriptor = behaviorDescriptors.get(fqName);
-
-    if (descriptor != null) {
-      return descriptor;
-    }
-
-    if (!startLoad(fqName, LanguageAspect.BEHAVIOR)) {
-      return new IllegalBehaviorDescriptor(fqName);
-    }
-
-    try {
-      try {
-        LanguageRuntime languageRuntime = LanguageRegistry.getInstance().getLanguage(NameUtil.namespaceFromConceptFQName(fqName));
-        if (languageRuntime == null) {
-          LOG.warning("No language for: " + fqName + ", while looking for behavior descriptor.", new Throwable());
-        } else {
-          descriptor = languageRuntime.getBehaviorAspectDescriptor().getDescriptor(fqName);
-        }
-      } catch (Throwable e) {
-        LOG.warning("Exception while behavior descriptor creating", e);
-      }
-
-      if (descriptor == null) {
-//        descriptor = new IllegalBehaviorDescriptor(fqName);
-        descriptor = new InterpretedBehaviorDescriptor(fqName);
-      }
-
-      behaviorDescriptors.put(fqName, descriptor);
-
-      return descriptor;
-    } finally {
-      finishLoad(fqName, LanguageAspect.BEHAVIOR);
-    }
+  synchronized private void clearConceptsCache() {
+    myConceptByNameCache = null;
   }
 
-  public BehaviorDescriptor getBehaviorDescriptorForInstanceNode(@Nullable SNode node) {
-    if (node == null) {
-      // todo: more clearly logic
-      return BehaviorAspectInterpreted.getInstance().getDescriptor(null);
-    } else {
-      return getBehaviorDescriptor(node.getConceptFqName());
-    }
+  @Override
+  public void beforeLanguagesUnloaded(Iterable<LanguageRuntime> languages) {
+    // no-op, it's not the right time to drop caches (unless can do it selectively)
+    // as other unload listeners might (although should not) access this registry
   }
 
-  @NotNull
-  public ConstraintsDescriptor getConstraintsDescriptor(@Nullable String fqName) {
-    ConstraintsDescriptor descriptor = constraintsDescriptors.get(fqName);
-
-    if (descriptor != null) {
-      return descriptor;
-    }
-
-    if (!startLoad(fqName, LanguageAspect.CONSTRAINTS)) {
-      return new IllegalConstraintsDescriptor(fqName);
-    }
-
-    try {
-      try {
-        LanguageRuntime languageRuntime = LanguageRegistry.getInstance().getLanguage(NameUtil.namespaceFromConceptFQName(fqName));
-        ConstraintsAspectDescriptor constraintsAspectDescriptor;
-        if (languageRuntime == null) {
-          // Then language was just renamed and was not re-generated then it can happen that it has no
-          LOG.warning("No language for: " + fqName + ", while looking for constraints descriptor.", new Throwable());
-          constraintsAspectDescriptor = ConstraintsAspectInterpreted.getInstance();
-        } else {
-          constraintsAspectDescriptor = languageRuntime.getConstraintsAspectDescriptor();
-        }
-        descriptor = constraintsAspectDescriptor.getDescriptor(fqName);
-      } catch (Throwable e) {
-        LOG.warning("Exception while constraints descriptor creating", e);
-      }
-
-      if (descriptor == null) {
-        descriptor = new IllegalConstraintsDescriptor(fqName);
-      }
-
-      constraintsDescriptors.put(fqName, descriptor);
-
-      return descriptor;
-    } finally {
-      finishLoad(fqName, LanguageAspect.CONSTRAINTS);
-    }
-  }
-
-  public void languagesLoaded(Iterable<LanguageRuntime> languages) {
-    ModelAccess.assertLegalWrite();
-
-    // lazy...
-  }
-
-  public void languagesUnloaded(Iterable<LanguageRuntime> languages, boolean unloadAll) {
+  @Override
+  public void afterLanguagesLoaded(Iterable<LanguageRuntime> languages) {
     // todo: incremental?
-    conceptDescriptors.clear();
-    behaviorDescriptors.clear();
-    constraintsDescriptors.clear();
+    myStructureRegistry.clear();
+    myBehaviorRegistry.clear();
+    myConstraintsRegistry.clear();
+    clearConceptsCache();
   }
 }

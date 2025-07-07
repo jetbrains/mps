@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,22 @@
  */
 package jetbrains.mps.nodeEditor.selection;
 
-import jetbrains.mps.nodeEditor.CellActionType;
-import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.nodeEditor.cells.*;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
+import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
+import jetbrains.mps.nodeEditor.cells.GeometryUtil;
+import jetbrains.mps.openapi.editor.EditorComponent;
+import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.openapi.editor.cells.CellInfo;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
+import jetbrains.mps.openapi.editor.selection.Selection;
+import jetbrains.mps.openapi.editor.selection.SelectionStoreException;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
+import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
@@ -33,20 +44,21 @@ public class EditorCellLabelSelection extends EditorCellSelection {
   private int mySelectionEnd = -1;
   private boolean myNonTrivialSelection = false;
 
-  public EditorCellLabelSelection(EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException, SelectionRestoreException {
+  public EditorCellLabelSelection(EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException,
+                                                                                                                             SelectionRestoreException {
     super(editorComponent, properties, cellInfo);
     if (!(getEditorCell() instanceof EditorCell_Label)) {
       throw new SelectionRestoreException();
     }
-    myNonTrivialSelection = SelectionInfo.Util.getBooleanProperty(properties, HAS_NON_TRIVIAL_SELECTION_PROPERTY_NAME);
+    myNonTrivialSelection = SelectionInfoImpl.Util.getBooleanProperty(properties, HAS_NON_TRIVIAL_SELECTION_PROPERTY_NAME);
     if (getEditorCell().getCellInfo().equals(cellInfo)) {
       if (myNonTrivialSelection) {
         /*
          This is kind of hack for EditorManager.STHintCellInfo - if located cell is different from the original one
          then we do not restore selection.
          */
-        mySelectionStart = SelectionInfo.Util.getIntProperty(properties, SELECTION_START_PROPERTY_NAME);
-        mySelectionEnd = SelectionInfo.Util.getIntProperty(properties, SELECTION_END_PROPERTY_NAME);
+        mySelectionStart = SelectionInfoImpl.Util.getIntProperty(properties, SELECTION_START_PROPERTY_NAME);
+        mySelectionEnd = SelectionInfoImpl.Util.getIntProperty(properties, SELECTION_END_PROPERTY_NAME);
       }
     } else {
       myNonTrivialSelection = false;
@@ -79,9 +91,6 @@ public class EditorCellLabelSelection extends EditorCellSelection {
 
   @Override
   public void activate() {
-    if (!isEditable()) {
-      return;
-    }
     super.activate();
     if (myNonTrivialSelection) {
       getEditorCellLabel().setSelectionStart(mySelectionStart);
@@ -91,9 +100,6 @@ public class EditorCellLabelSelection extends EditorCellSelection {
 
   @Override
   public void deactivate() {
-    if (!isEditable()) {
-      return;
-    }
     super.deactivate();
     mySelectionStart = getEditorCellLabel().getSelectionStart();
     mySelectionEnd = getEditorCellLabel().getSelectionEnd();
@@ -102,8 +108,8 @@ public class EditorCellLabelSelection extends EditorCellSelection {
   }
 
   @Override
-  public SelectionInfo getSelectionInfo() throws SelectionStoreException {
-    SelectionInfo selectionInfo = super.getSelectionInfo();
+  public SelectionInfoImpl getSelectionInfo() throws SelectionStoreException {
+    SelectionInfoImpl selectionInfo = super.getSelectionInfo();
     selectionInfo.getPropertiesMap().put(HAS_NON_TRIVIAL_SELECTION_PROPERTY_NAME, Boolean.toString(hasNonTrivialSelection()));
     if (hasNonTrivialSelection()) {
       selectionInfo.getPropertiesMap().put(SELECTION_START_PROPERTY_NAME, Integer.toString(getSelectionStart()));
@@ -135,16 +141,25 @@ public class EditorCellLabelSelection extends EditorCellSelection {
       if (getSelectionEnd() != that.getSelectionEnd()) {
         return false;
       }
-      if (getSelectionStart() != that.getSelectionStart()) {
-        return false;
-      }
+      return getSelectionStart() == that.getSelectionStart();
     }
     return true;
   }
 
   @Override
+  public boolean canExecuteAction(CellActionType type) {
+    if (type == CellActionType.DELETE || type == CellActionType.BACKSPACE) {
+      return true;
+    }
+    if (type == CellActionType.DELETE_TO_WORD_END) {
+      type = CellActionType.DELETE;
+    }
+    return super.canExecuteAction(type);
+  }
+
+  @Override
   public void executeAction(CellActionType type) {
-    getEditorComponent().assertModelNotDisposed();
+    ((jetbrains.mps.nodeEditor.EditorComponent) getEditorComponent()).assertModelNotDisposed();
     if (type == CellActionType.DELETE || type == CellActionType.BACKSPACE) {
       performDeleteAction(type);
       return;
@@ -157,8 +172,8 @@ public class EditorCellLabelSelection extends EditorCellSelection {
   }
 
   @Override
-  protected boolean suppressDelete() {
-    if (!super.suppressDelete()) {
+  protected boolean suppressDelete(CellActionType type) {
+    if (!super.suppressDelete(type)) {
       return false;
     }
     EditorCell_Label label = getEditorCellLabel();
@@ -166,7 +181,7 @@ public class EditorCellLabelSelection extends EditorCellSelection {
       return false;
     }
     if (label instanceof EditorCell_Constant || label instanceof EditorCell_Property) {
-      return label.isEditable() || label.getContainingBigCell().getLastLeaf(CellConditions.SELECTABLE) != label;
+      return label.isEditable() || CellFinderUtil.findLastSelectableLeaf(CellTraversalUtil.getContainingBigCell(label)) != label;
     }
     return true;
   }
@@ -187,45 +202,76 @@ public class EditorCellLabelSelection extends EditorCellSelection {
   private boolean processSideDeletes(CellActionType type) {
     // TODO: review this logic - it was originally copied from EditorComponentKeyboardHandler
     final EditorCell selectedCell = getEditorCell();
-    if (type == CellActionType.DELETE && selectedCell.isLastPositionInBigCell() && !selectedCell.isFirstPositionInBigCell()) {
+    if (type == CellActionType.DELETE && !hasNonTrivialSelection() && GeometryUtil.isLastPositionInBigCell(selectedCell) &&
+        !GeometryUtil.isFirstPositionInBigCell(selectedCell)) {
       final EditorCell target;
-      if (selectedCell.isLastPositionInBigCell() && selectedCell.getContainingBigCell().getNextSibling() != null) {
-        target = selectedCell.getContainingBigCell().getNextSibling();
-      } else if (selectedCell.getNextSibling() != null) {
-        target = selectedCell.getNextSibling();
+      EditorCell bigCellNextSibling = CellTraversalUtil.getNextSibling(CellTraversalUtil.getContainingBigCell(selectedCell));
+      if (bigCellNextSibling != null) {
+        target = bigCellNextSibling;
       } else {
-        target = selectedCell.getNextLeaf(CellConditions.SELECTABLE);
+        EditorCell nextSibling = CellTraversalUtil.getNextSibling(CellTraversalUtil.getContainingBigCell(selectedCell));
+        if (nextSibling != null) {
+          target = nextSibling;
+        } else {
+          target = CellTraversalUtil.getNextLeaf(selectedCell, jetbrains.mps.openapi.editor.cells.CellConditions.SELECTABLE);
+        }
       }
 
-      if (target == null || ModelAccess.instance().runReadAction(new Computable<Boolean>() {
-        public Boolean compute() {
-          return target.getSNode().isAncestorOf(selectedCell.getSNode());
-        }
-      })) return false;
+      Computable<Boolean> isAncestor = () -> SNodeOperations.isAncestor(target.getSNode(), selectedCell.getSNode());
+      if (target == null || new ModelAccessHelper(selectedCell.getContext().getRepository()).runReadAction(isAncestor)) {
+        return false;
+      }
 
-      return target.executeAction(CellActionType.DELETE);
+      return getEditorComponent().getActionHandler().executeAction(target, type);
     }
 
-    if (type == CellActionType.BACKSPACE && selectedCell.isFirstPositionInBigCell() && !selectedCell.isLastPositionInBigCell()) {
+    if (type == CellActionType.BACKSPACE && !hasNonTrivialSelection() && GeometryUtil.isFirstPositionInBigCell(selectedCell) &&
+        !GeometryUtil.isLastPositionInBigCell(selectedCell)) {
       final EditorCell target;
-      if (selectedCell.isFirstPositionInBigCell() && selectedCell.getContainingBigCell().getPrevSibling() != null) {
-        target = selectedCell.getContainingBigCell().getPrevSibling();
-      } else if (selectedCell.getPrevSibling() != null) {
-        target = selectedCell.getPrevSibling();
+      EditorCell bigCellPrevSibling = CellTraversalUtil.getPrevSibling(CellTraversalUtil.getContainingBigCell(selectedCell));
+      if (bigCellPrevSibling != null) {
+        target = bigCellPrevSibling;
       } else {
-        target = selectedCell.getPrevLeaf(CellConditions.SELECTABLE);
+        EditorCell prevSibling = CellTraversalUtil.getPrevSibling(selectedCell);
+        if (prevSibling != null) {
+          target = prevSibling;
+        } else {
+          target = CellTraversalUtil.getPrevLeaf(selectedCell, jetbrains.mps.openapi.editor.cells.CellConditions.SELECTABLE);
+        }
       }
 
-      if (target == null) return false;
+      if (target == null || ReadOnlyUtil.isCellReadOnly(target)) {
+        return false;
+      }
       /*
+        Was commented out (again) to let some of our unit-tests be green.
+        in particular - pressing BackSpace at this situation:
+          <code>
+            int a = 1;
+            --|a;
+          <code>
+        where "|" is a position of cursor;
       if (ModelAccess.instance().runReadAction(new Computable<Boolean>() {
         public Boolean compute() {
-          return target.getSNode().isAncestorOf(selectedCell.getSNode());
+          return jetbrains.mps.util.SNodeOperations.isAncestor(target.getSNode(), selectedCell.getSNode());
         }
       })) return false;
-      */
-      return target.executeAction(CellActionType.DELETE);
+        */
+      return getEditorComponent().getActionHandler().executeAction(target, type);
     }
     return false;
+  }
+
+  public boolean isExactlyCoveringCell(EditorCell cell) {
+    if (getSelectionStart() != 0 || getSelectionEnd() != getEditorCellLabel().getText().length()) {
+      return false;
+    }
+    return super.isExactlyCoveringCell(cell);
+  }
+
+
+  @Override
+  public String toString() {
+    return String.format("EditorCellLabelSelection{cell=%s, start=%d, end=%d}", getEditorCell(), mySelectionStart, mySelectionEnd);
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,182 +15,218 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.util.Computable;
-import org.apache.commons.lang.ObjectUtils;
+import jetbrains.mps.openapi.editor.EditorComponent;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.CellInfo;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.util.Reference;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
+import java.util.Objects;
 
 public class DefaultCellInfo implements CellInfo {
-  private static final String CELL_ID = "cellId";
-  private static final String CELL_NUMBER = "cellNumber";
-  private static final String IS_IN_LIST = "isInList";
-  private static final String NODE = "node";
-  private static final String MODEL = "model";
-  private static final String ID = "id";
-  private static final String PARENT = "parent";
+  private static final String CELL_ID_ATTR = "cellId";
+  private static final String NODE_ELEMENT = "node";
+  private static final String NODE_REFERENCE_ATTRIBUTE = "node_reference";
+  private static final String PARENT_ELEMENT = "parent";
+  private static final String CELL_NUMBER_ATTR = "cellNumber";
 
+  private static final Logger LOG = LogManager.getLogger(DefaultCellInfo.class);
 
-  @NotNull
-  private SNodePointer myNodePointer;
+  /**
+   * There are two valid states:
+   * - either myCellId & myNodeReference are specified
+   * - or myParentInfo & myCellNumber
+   */
   private String myCellId;
-  private int myCellNumber;
-  private boolean myIsInList = false;
+  private SNodeReference myNodeReference;
 
-  protected CellInfo myParentInfo;
+  private CellInfo myParentInfo;
+  private int myCellNumber = 0;
 
   public DefaultCellInfo(final EditorCell cell) {
-    ModelAccess.instance().runReadAction(new Runnable() {
-
-      public void run() {
-        myNodePointer = new SNodePointer(cell.getSNode());
-      }
-
-    });
-
     myCellId = cell.getCellId();
-
-    EditorCell_Collection parent = cell.getParent();
-    if (parent != null && myCellId == null) {
-      myParentInfo = parent.getCellInfo();
-      myIsInList = parent.hasCellListHandler();
-      if (myIsInList || myCellId == null) {
-        myCellNumber = parent.getCellNumber(cell);
-      }
+    if (isIdMode()) {
+      initNodeReference(cell);
+    } else {
+      initParentInfo(cell);
     }
   }
 
-  private DefaultCellInfo() {
+  private void initNodeReference(EditorCell cell) {
+    SNode sNode = cell.getSNode();
+    myNodeReference = sNode == null ? null : sNode.getReference();
+  }
 
+  private void initParentInfo(EditorCell cell) {
+    EditorCell_Collection parent = (EditorCell_Collection) cell.getParent();
+    if (parent == null) {
+      return;
+    }
+    myParentInfo = parent.getCellInfo();
+    for (EditorCell editorCell : parent) {
+      if (editorCell.equals(cell)) {
+        break;
+      }
+      myCellNumber++;
+    }
+  }
+
+  private DefaultCellInfo(String cellId, SNodeReference nodeReference) {
+    myCellId = cellId;
+    myNodeReference = nodeReference;
+  }
+
+  public DefaultCellInfo(DefaultCellInfo parentInfo, int cellNumber) {
+    myParentInfo = parentInfo;
+    myCellNumber = cellNumber;
+  }
+
+  private boolean isIdMode() {
+    return myCellId != null;
   }
 
   public void saveTo(Element e) {
-    if (myCellId != null) {
-      e.setAttribute(CELL_ID, myCellId);
-    }
-    e.setAttribute(CELL_NUMBER, "" + myCellNumber);
-    e.setAttribute(IS_IN_LIST, "" + myIsInList);
-    Element nodeElement = new Element(NODE);
-    nodeElement.setAttribute(MODEL, myNodePointer.getModelReference().toString());
-    nodeElement.setAttribute(ID, myNodePointer.getNodeId().toString());
-    e.addContent(nodeElement);
-    if (myParentInfo instanceof DefaultCellInfo) {
-      Element parentElement = new Element(PARENT);
-      ((DefaultCellInfo) myParentInfo).saveTo(parentElement);
-      e.addContent(parentElement);
+    if (isIdMode()) {
+      e.setAttribute(CELL_ID_ATTR, myCellId);
+      if (myNodeReference != null) {
+        Element nodeElement = new Element(NODE_ELEMENT);
+        nodeElement.setAttribute(NODE_REFERENCE_ATTRIBUTE, myNodeReference.toString());
+        e.addContent(nodeElement);
+      }
+    } else {
+      if (myParentInfo instanceof DefaultCellInfo) {
+        Element parentElement = new Element(PARENT_ELEMENT);
+        ((DefaultCellInfo) myParentInfo).saveTo(parentElement);
+        e.addContent(parentElement);
+      }
+      e.setAttribute(CELL_NUMBER_ATTR, "" + myCellNumber);
     }
   }
 
+  @NotNull
   public static DefaultCellInfo loadFrom(Element e) {
-    String cellId;
-    int cellNumber;
-    boolean isInList;
-    final String model;
-    final String id;
-    DefaultCellInfo parentInfo = null;
-    cellId = e.getAttributeValue(CELL_ID);
-    String num = e.getAttributeValue(CELL_NUMBER);
-    if (num == null) return null;
-    try {
-      cellNumber = Integer.parseInt(num);
-    } catch (NumberFormatException ex) {
-      return null;
-    }
-    isInList = "true".equals(e.getAttributeValue(IS_IN_LIST));
-    Element nodeElem = e.getChild(NODE);
-    if (nodeElem == null) return null;
-    model = nodeElem.getAttributeValue(MODEL);
-    if (model == null) return null;
-    id = nodeElem.getAttributeValue(ID);
-    if (id == null) return null;
-    Element parentElem = e.getChild(PARENT);
-    if (parentElem != null) {
-      parentInfo = loadFrom(parentElem);
-      if (parentInfo == null) return null;
-    }
-    final DefaultCellInfo result = new DefaultCellInfo();
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        result.myNodePointer = new SNodePointer(model, id);
-      }
-    });
-    result.myCellId = cellId;
-    result.myParentInfo = parentInfo;
-    result.myIsInList = isInList;
-    result.myCellNumber = cellNumber;
-    return result;
-  }
-
-  public int hashCode() {
-    return (myParentInfo == null ? 0 : myParentInfo.hashCode()) +
-      myNodePointer.hashCode() + (myCellId == null ? 0 : myCellId.hashCode()) + myCellNumber;
-  }
-
-  public EditorCell findCell(final EditorComponent editorComponent) {
-    if (myCellId != null) {
-      return ModelAccess.instance().runReadAction(new Computable<EditorCell>() {
-        public EditorCell compute() {
-          // This is needed while merging: if node pointer points to node from current model,
-          // it should be used instead of model in model repository.
-          SNode node;
-          if (editorComponent.getEditedNode() != null &&
-            ObjectUtils.equals(myNodePointer.getModelReference(),
-              editorComponent.getEditedNode().getModel().getSModelReference())) {
-            node = editorComponent.getEditedNode().getModel().getNodeById(myNodePointer.getNodeId());
-          } else {
-            node = myNodePointer.getNode();
-          }
-          return editorComponent.findCellWithId(node, myCellId);
-        }
-      });
-    } else if (myParentInfo != null) {
-      EditorCell_Collection parent = (EditorCell_Collection) myParentInfo.findCell(editorComponent);
-      if (parent == null) {
-        return null;
-      }
-      if (myCellNumber < parent.getChildCount()) {
-        EditorCell editorCell = parent.getChildAt(myCellNumber);
-        // Cell should have same cellId, and myCellId is null.
-        if (editorCell.getCellId() != null) {
-          return null;
-        }
-        return editorCell;
+    String cellId = e.getAttributeValue(CELL_ID_ATTR);
+    if (cellId != null) {
+      Element nodeElem = e.getChild(NODE_ELEMENT);
+      String nodeReferenceText;
+      if (nodeElem != null) {
+        nodeReferenceText = nodeElem.getAttributeValue(NODE_REFERENCE_ATTRIBUTE);
       } else {
+        nodeReferenceText = null;
+      }
+
+      SNodeReference nodeReference = null;
+      if (nodeReferenceText != null) {
+        try {
+          nodeReference = PersistenceFacade.getInstance().createNodeReference(nodeReferenceText);
+        } catch (IllegalArgumentException ex) {
+          LOG.error("Invalid serialized node reference: " + nodeReferenceText, ex);
+        }
+      }
+      return new DefaultCellInfo(cellId, nodeReference);
+    } else {
+      int cellNumber;
+      String num = e.getAttributeValue(CELL_NUMBER_ATTR);
+      try {
+        cellNumber = Integer.parseInt(num);
+      } catch (NumberFormatException ex) {
+        LOG.error("Cannot parse serialized cell number attribute: \"" + num + "\"", ex);
+        cellNumber = 0;
+      }
+
+      DefaultCellInfo parentInfo = null;
+      Element parentElem = e.getChild(PARENT_ELEMENT);
+      if (parentElem != null) {
+        parentInfo = loadFrom(parentElem);
+      }
+      return new DefaultCellInfo(parentInfo, cellNumber);
+    }
+  }
+
+  @Override
+  public EditorCell findCell(@NotNull final EditorComponent editorComponent) {
+    if (isIdMode()) {
+      if (myNodeReference == null) {
         return null;
       }
 
+      final EditorContext editorContext = editorComponent.getEditorContext();
+      Reference<EditorCell> cellRef = new Reference<>();
+      editorContext.getRepository().getModelAccess().runReadAction(
+          () -> cellRef.set(editorComponent.findCellWithId(myNodeReference.resolve(editorContext.getRepository()), myCellId)));
+      return cellRef.get();
+    }
+
+    if (myParentInfo != null) {
+      EditorCell parentCell = myParentInfo.findCell(editorComponent);
+      if (!(parentCell instanceof EditorCell_Collection)) {
+        return null;
+      }
+      EditorCell_Collection parentCollection = (EditorCell_Collection) parentCell;
+      if (myCellNumber >= parentCollection.getCellsCount()) {
+        return null;
+      }
+      EditorCell editorCell = null;
+      int i = 0;
+      for (EditorCell nextCell : parentCollection) {
+        if (i == myCellNumber) {
+          editorCell = nextCell;
+          break;
+        }
+        i++;
+      }
+      assert editorCell != null;
+      // This editorCell should not have any cellId due to corresponding conditions in constructor
+      return editorCell.getCellId() == null ? editorCell : null;
     }
     return null;
   }
 
-  public EditorCell findClosestCell(EditorComponent editorComponent) {
+  @Override
+  public EditorCell findClosestCell(@NotNull EditorComponent editorComponent) {
     return findCell(editorComponent);
   }
 
+  @Override
+  public int hashCode() {
+    return isIdMode() ? Objects.hash(myCellId, myNodeReference)
+                      : Objects.hash(myParentInfo) * 37 + myCellNumber;
+  }
+
+  @Override
   public boolean equals(Object o) {
-    if (!(o instanceof DefaultCellInfo)) return false;
-    DefaultCellInfo cellInfo = (DefaultCellInfo) o;
-    if (!ObjectUtils.equals(cellInfo.myParentInfo, myParentInfo)) return false;
-    if (cellInfo.myNodePointer == null) return false;
-    boolean idsBothNull = false;
-    if (cellInfo.myCellId == null && myCellId == null) idsBothNull = true;
-    return (cellInfo.myCellId == null ? idsBothNull : cellInfo.myCellId.equals(myCellId))
-      && (cellInfo.myNodePointer.equals(myNodePointer))
-      && cellInfo.myCellNumber == myCellNumber;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    DefaultCellInfo that = (DefaultCellInfo) o;
+    if (isIdMode() != that.isIdMode()) {
+      return false;
+    }
+
+    if (isIdMode()) {
+      return Objects.equals(myCellId, that.myCellId)
+             && Objects.equals(myNodeReference, that.myNodeReference);
+    }
+    return myCellNumber == that.myCellNumber && Objects.equals(myParentInfo, that.myParentInfo);
   }
 
   @Override
   public String toString() {
     return "DefaultCellInfo[" +
-      "myNodePointer=" + myNodePointer.getNodeId() +
-      ", myCellId='" + myCellId + '\'' +
-      ", myCellNumber=" + myCellNumber +
-      ", myIsInList=" + myIsInList +
-      ", myParentInfo=" + myParentInfo +
-      ']';
+           "myNodePointer=" + (myNodeReference == null ? null : myNodeReference.toString()) +
+           ", myCellId='" + myCellId + '\'' +
+           ", myCellNumber=" + myCellNumber +
+           ", myParentInfo=" + myParentInfo +
+           ']';
   }
 }

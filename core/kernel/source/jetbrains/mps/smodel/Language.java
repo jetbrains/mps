@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,364 +15,381 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.library.LibraryInitializer;
-import jetbrains.mps.library.ModulesMiner;
-import jetbrains.mps.library.ModulesMiner.ModuleHandle;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.project.*;
-import jetbrains.mps.project.StubSolution;
-import jetbrains.mps.project.dependency.modules.LanguageDependenciesManager;
-import jetbrains.mps.project.persistence.LanguageDescriptorPersistence;
-import jetbrains.mps.project.structure.model.ModelRoot;
-import jetbrains.mps.project.structure.modules.*;
-import jetbrains.mps.reloading.ClassLoaderManager;
-import jetbrains.mps.reloading.ClassPathFactory;
-import jetbrains.mps.reloading.CompositeClassPathItem;
-import jetbrains.mps.reloading.IClassPathItem;
-import jetbrains.mps.runtime.ProtectionDomainUtil;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
-import jetbrains.mps.smodel.loading.ModelLoadingState;
-import jetbrains.mps.util.*;
-import jetbrains.mps.util.containers.ConcurrentHashSet;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.extapi.module.SRepositoryExt;
+import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.module.SDependencyImpl;
+import jetbrains.mps.project.io.DescriptorIO;
+import jetbrains.mps.project.io.DescriptorIOFacade;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
+import jetbrains.mps.project.structure.modules.LanguageDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.language.LanguageAspectSupport;
+import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SDependencyScope;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.io.IOException;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class Language extends ClassLoadingModule implements MPSModuleOwner {
-  private static final Logger LOG = Logger.getLogger(Language.class);
+public class Language extends ReloadableModuleBase implements ReloadableModule {
 
-  public static final String LANGUAGE_MODELS = "languageModels";
+  /**
+   * Default, although not mandatory location we save our models to.
+   * Made public just for the sake of tests.
+   */
+  public static final String LANGUAGE_MODELS = "models";
+  /**
+   * @deprecated Use of default value to detect aspect source root or to check module existence is wrong.
+   */
+  @Deprecated
+  @ToRemove(version = 3.3)
+  public static final String LEGACY_LANGUAGE_MODELS = "languageModels";
 
-  private LanguageDescriptor myLanguageDescriptor;
+  @NotNull private LanguageDescriptor myLanguageDescriptor;
+  // modifications are guarded with model write lock, assertCanChange()
+  private final List<Generator> myAttachedGenerators = new ArrayList<>(2);
 
-  private ConcurrentHashMap<String, SNode> myNameToConceptCache = new ConcurrentHashMap<String, SNode>();
-  //the following is needed because we can't store null values in myNameToConceptCache, as long as it's a ConcurrentHashMap
-  private ConcurrentHashSet<String> myNamesWithNoConcepts = new ConcurrentHashSet<String>(1);
-
-  private ModelLoadingState myNamesLoadingState = ModelLoadingState.NOT_LOADED;
-
-  private final Object LOCK = new Object();
-  private Runnable myClasspathInvalidator = new Runnable() {
-    public void run() {
-      synchronized (LOCK) {
-        myLanguageRuntimeClasspathCache = null;
-      }
-    }
-  };
-  private CompositeClassPathItem myLanguageRuntimeClasspathCache;
-
-  private CachesInvalidator myCachesInvalidator;
-
-  //todo [MihMuh] this should be replaced in 3.0 (don't know exactly with what now)
-  private ClassLoader myStubsLoader = new MyClassLoader();
-
-  protected Language(LanguageDescriptor descriptor, IFile file) {
-    myDescriptorFile = file;
+  protected Language(@NotNull LanguageDescriptor descriptor, @Nullable IFile file) {
+    super(file);
     myLanguageDescriptor = descriptor;
     setModuleReference(descriptor.getModuleReference());
   }
 
-  protected void reloadAfterDescriptorChange() {
-    ModuleRepositoryFacade.getInstance().unregisterModules(this, new Condition<IModule>() {
-      public boolean met(IModule m) {
-        return !(m instanceof Solution && ((Solution) m) instanceof StubSolution);
-      }
-    });
-    ModuleRepositoryFacade.createLanguageLibs(this, getModuleDescriptor());
-
+  @Override
+  public void reloadAfterDescriptorChange() {
     super.reloadAfterDescriptorChange();
     revalidateGenerators();
   }
 
-  public LanguageDependenciesManager getDependenciesManager() {
-    return new LanguageDependenciesManager(this);
-  }
-
-  public void addExtendedLanguage(ModuleReference langRef) {
-    if (myLanguageDescriptor.getExtendedLanguages().contains(langRef)) return;
+  public void addExtendedLanguage(@NotNull SModuleReference langRef) {
+    if (this.getModuleReference().equals(langRef) || myLanguageDescriptor.getExtendedLanguages().contains(langRef)) {
+      return;
+    }
     LanguageDescriptor moduleDescriptor = getModuleDescriptor();
     moduleDescriptor.getExtendedLanguages().add(langRef);
-    setModuleDescriptor(moduleDescriptor, true);
-    save();
+
+    dependenciesChanged();
+    setChanged();
+
+    fireChanged();
   }
 
-  public Set<ModuleReference> getExtendedLanguageRefs() {
-    HashSet<ModuleReference> res = new HashSet<ModuleReference>(myLanguageDescriptor.getExtendedLanguages());
-    //this is needed now as we don't force the user to have an explicit dependency on core
-    res.add(BootstrapLanguages.CORE);
+  public Set<SModuleReference> getExtendedLanguageRefs() {
+    HashSet<SModuleReference> res = new HashSet<>(myLanguageDescriptor.getExtendedLanguages());
+    if (!BootstrapLanguages.coreLanguageRef().equals(getModuleReference())) {
+      //this is needed now as we don't force the user to have an explicit dependency on core
+      res.add(BootstrapLanguages.coreLanguageRef());
+    }
     return res;
   }
 
-  @Deprecated //remove after 2.5
-  public List<Language> getExtendedLanguages() {
-    return ModuleUtil.refsToLanguages(getExtendedLanguageRefs());
-  }
-
-  public List<Dependency> getDependencies() {
-    List<Dependency> result = super.getDependencies();
-    for (ModuleReference ref : getExtendedLanguageRefs()) {
-      Dependency dep = new Dependency();
-      dep.setModuleRef(ref);
-      dep.setReexport(true);
-      result.add(dep);
+  @Override
+  public Iterable<SDependency> getDeclaredDependencies() {
+    HashSet<SDependency> rv = new HashSet<>(IterableUtil.asCollection(super.getDeclaredDependencies()));
+    final SRepository repo = getRepository();
+    for (SModuleReference language : getExtendedLanguageRefs()) {
+      // XXX not clear whether it's worth including implicit "extends lang.core" (see getExtendedLanguageRefs())
+      // or adhere to 'declared' in the name of getDeclaredDependencies and use myLanguageDescriptor.getExtendedLanguages() only
+      rv.add(new SDependencyImpl(language, repo, SDependencyScope.EXTENDS, true));
     }
-    Dependency dep = new Dependency();
-    dep.setModuleRef(BootstrapLanguages.CORE);
-    dep.setReexport(true);
-    result.add(dep);
-
-    return result;
+    return rv;
   }
 
-  public Collection<ModuleReference> getRuntimeModulesReferences() {
-    LanguageDescriptor descriptor = getModuleDescriptor();
-    if (descriptor == null) return Collections.emptySet();
-    return Collections.unmodifiableSet(descriptor.getRuntimeModules());
+  /**
+   * All the language modules extended by this one within the same repository this module is attached to.
+   * For detached module, the set returned is empty. To access 'raw' information about extended languages,
+   * one could use {@link #getExtendedLanguageRefs()}.
+   *
+   * This method requires model read access as it resolves modules.
+   *
+   * IMPORTANT: if any extended language is missing from the repository of the module, it's simply ignored and not included into outcome
+   * (nor the closure of its extended languages).
+   *
+   * NOTE, implementation hides cyclic dependencies between languages, e.g if "A extends B extends A",
+   * you'd get "A extends B" for A and "B extends A" for B.
+   */
+  @NotNull
+  public Set<Language> getAllExtendedLanguages() {
+    HashSet<Language> languages = new HashSet<>();
+    final SRepository repository = getRepository();
+    if (repository == null) {
+      return languages;
+    }
+
+    ArrayDeque<Language> queue = new ArrayDeque<>();
+    queue.add(this);
+
+    do {
+      Language current = queue.poll();
+      if (!languages.add(current)) {
+        continue;
+      }
+      for (SModuleReference lr : current.getExtendedLanguageRefs()) {
+        final SModule l = lr.resolve(repository);
+        if (l instanceof Language) {
+          queue.add((Language) l);
+        }
+      }
+    } while (!queue.isEmpty());
+
+    return languages;
   }
 
-  protected ModuleDescriptor loadDescriptor() {
-    return ModulesMiner.getInstance().loadModuleDescriptor(getDescriptorFile());
+  public Collection<SModuleReference> getRuntimeModulesReferences() {
+    return Collections.unmodifiableSet(myLanguageDescriptor.getRuntimeModules());
   }
 
   public void validateExtends() {
-    boolean changed = false;
-    List<ModuleReference> remove = new ArrayList<ModuleReference>();
-    for (ModuleReference ref : myLanguageDescriptor.getExtendedLanguages()) {
-      if (getModuleFqName().equals(ref.getModuleFqName())) {
+    List<SModuleReference> remove = new ArrayList<>();
+    for (SModuleReference ref : myLanguageDescriptor.getExtendedLanguages()) {
+      if (getModuleName().equals(ref.getModuleName())) {
         remove.add(ref);
-        changed = true;
       }
     }
-    myLanguageDescriptor.getExtendedLanguages().removeAll(remove);
 
-    if (changed && !getDescriptorFile().isReadOnly()) {
-      save();
+    if (!remove.isEmpty()) {
+      myLanguageDescriptor.getExtendedLanguages().removeAll(remove);
+      setChanged();
     }
   }
 
+  @Override
   public void onModuleLoad() {
     super.onModuleLoad();
-
     validateExtends();
+  }
 
-    for (Generator g : getGenerators()) {
-      g.onModuleLoad();
+  @Override
+  public void attach(@NotNull SRepository repository) {
+    super.attach(repository);
+    final SLanguage mineDeployedIdentity = MetaAdapterFactory.getLanguage(getModuleReference());
+    for (Generator generator : new ModuleRepositoryFacade(repository).getAllModules(Generator.class)) {
+      if (!mineDeployedIdentity.equals(generator.sourceLanguage())) {
+        continue;
+      }
+      generator.setSourceLanguageInstance(this);
     }
   }
 
+
+
+  /*
+   * Update repository generator modules associated with this language with descriptors known to the language (registers new generators, if necessary)
+   * This is another place in addition to ModulesMiner that knows about language-generator MD containment
+   */
   private void revalidateGenerators() {
-    MPSModuleRepository repo = MPSModuleRepository.getInstance();
-    for (Generator g : getGenerators()) {
-      repo.unregisterModule(g, this);
+    if (myLanguageDescriptor.getDeploymentDescriptor() != null) {
+      // do not process generators listed in a source descriptor of a deployed language, assume generators
+      // are managed on their own (use of source MD in case of deployed module is sort of design defect we can hardly fix, but at least
+      // we shall not use information sored therein if we know that generators are treated separately when language got module.xml DD)
+      // Perhaps, this could be approached in another way, by using getOwnedGenerators (see below) and not reporting GD for a LD read from
+      // source along with language's DD (ModulesMiner#loadDeploymentDescriptor). I like this approach more as it would keep knowledge
+      // about deployment inside MM, however, I'm quite sure that would ruin some code that relies on Language's knowledge about its generators.
+      return;
     }
-    for (GeneratorDescriptor generatorDescriptor : getModuleDescriptor().getGenerators()) {
-      Generator generator = new Generator(this, generatorDescriptor);
-      repo.registerModule(generator, this);
+    if (getRepository() == null) {
+      // detached module, can not do anything about registration/un-registration
+      // FIXME perhaps, whole reloadAfterDescriptorChange has to be guarded and get executed for attached modules only, including facet reload
+      //       However, it's too much of a change right before the release, shall try in master, instead.
+      //       Besides, CopyModuleHelper approach with model roots copied for instantiated modules is dubious, why can't
+      //       we copy model root descriptors instead, and have it done prior to module instantiation? In this case,
+      //       we build whole descriptor first, instantiate and register with project, no chances to get here w/o detached module instance.
+      return;
+    }
+    // Fair implementation shall deal with getOwnedGenerators() only, however, at the moment, Generator module needs its source Language module
+    // and it's tricky to write external code that would deal with standalone/external generators when language's MD changes (there's no proper notification
+    // mechanism or anything else to react to MD change). That's why we control all generators associated with the language here.
+    //
+    // Another important note here is that getOwnedGenerators() in its present state may not give proper answer (e.g. if a changed MD doesn't list a generator
+    // module that has been previously exposed
+    LinkedList<Generator> existingGenerators = new LinkedList<>(getGenerators());
+
+    SRepositoryExt moduleRepository = (SRepositoryExt) getRepository();
+    ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(moduleRepository);
+    for (GeneratorDescriptor nextDescriptor : myLanguageDescriptor.getGenerators()) {
+      Generator nextGenerator = null;
+      for (Iterator<Generator> it = existingGenerators.iterator(); it.hasNext(); ) {
+        // looking for the existing generator with same ID
+        Generator nextGeneratorCandidate = it.next();
+        GeneratorDescriptor nextGeneratorCandidateDescriptor = nextGeneratorCandidate.getModuleDescriptor();
+        if (Objects.equals(nextGeneratorCandidateDescriptor.getNamespace(), nextDescriptor.getNamespace()) &&
+            Objects.equals(nextGeneratorCandidateDescriptor.getId(), nextDescriptor.getId())) {
+          nextGenerator = nextGeneratorCandidate;
+          it.remove();
+          break;
+        }
+      }
+
+      if (nextGenerator != null) {
+        nextGenerator.updateGeneratorDescriptor(nextDescriptor);
+      } else {
+        // new generator is registered with the same owners as this language
+        // at the moment, we may use old cons that doesn't take explicit descriptor file (as it uses the one from this language, which is what we need there),
+        // but it's fun to try a new one
+        Generator generator = new Generator(MetaAdapterFactory.getLanguage(getModuleReference()), nextDescriptor, getDescriptorFile(), this);
+        for (MPSModuleOwner moduleOwner : mrf.getModuleOwners(this)) {
+          moduleRepository.registerModule(generator, moduleOwner);
+        }
+      }
+    }
+    // stale generator modules are unregistered from all owners
+    // here we assume standalone generator modules could exist without their language
+    // therefore we unregister only generator modules that are not standalone, assuming they originally came from MD of this very language.
+    for (Generator stale : existingGenerators) {
+      if (stale.getModuleDescriptor().isStandaloneModule()) {
+        continue;
+      }
+      mrf.unregisterModule(stale);
     }
   }
 
+  @Override
   public void dispose() {
+    // though MPSModuleRepository.doUnregisterModule() cares to unregister language's generators properly, seems it
+    // doesn't hurt to try to unregister them here as well. Either it would end up as no-op for an empty collection, or would keep
+    // repository consistent (in case dispose() has been reached not through MPSModuleRepository)
+//    final SRepository repo = getRepository();
+//    if (repo != null) {
+//      final ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(repo);
+//      // see revalidateGenerators(), above, for reasons why we unregister all associated generators, not only directly owned.
+//      getGenerators().forEach(mrf::unregisterModule);
+//    }
     super.dispose();
-    ModuleRepositoryFacade.getInstance().unregisterModules(this);
   }
 
+  @NotNull
+  @Override
   public LanguageDescriptor getModuleDescriptor() {
     return myLanguageDescriptor;
   }
 
-  public void setModuleDescriptor(ModuleDescriptor moduleDescriptor, boolean reloadClasses) {
-    setLanguageDescriptor((LanguageDescriptor) moduleDescriptor, reloadClasses);
-  }
-
-  public void setLanguageDescriptor(final LanguageDescriptor newDescriptor, boolean reloadClasses) {
-    myLanguageDescriptor = newDescriptor;
-
-    ModuleReference reference = new ModuleReference(myLanguageDescriptor.getNamespace(), myLanguageDescriptor.getId());
+  @Override
+  public void doSetModuleDescriptor(ModuleDescriptor moduleDescriptor) {
+    assert moduleDescriptor instanceof LanguageDescriptor;
+    myLanguageDescriptor = (LanguageDescriptor) moduleDescriptor;
+    SModuleReference reference = new jetbrains.mps.project.structure.modules.ModuleReference(myLanguageDescriptor.getNamespace(), myLanguageDescriptor.getId());
     setModuleReference(reference);
-
-    reloadAfterDescriptorChange();
-    MPSModuleRepository.getInstance().fireModuleChanged(this);
-
-    if (reloadClasses) {
-      ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
+    if (getRepository() instanceof MPSModuleRepository) {
+      ((MPSModuleRepository) getRepository()).invalidateCaches();
     }
-
-    MPSModuleRepository.getInstance().invalidateCaches();
-
-    if (getStructureModelDescriptor() != null && myCachesInvalidator == null) {
-      getStructureModelDescriptor().addModelListener(myCachesInvalidator = new CachesInvalidator());
-    }
-
-    invalidateDependencies();
   }
 
-  public boolean isBootstrap() {
-    return LibraryInitializer.getInstance().getBootstrapModules(Language.class).contains(this);
+  public int getLanguageVersion() {
+    return getModuleDescriptor().getLanguageVersion();
   }
 
-  public int getVersion() {
-    return getStructureModelDescriptor().getVersion();
+  public void setLanguageVersion(int version) {
+    getModuleDescriptor().setLanguageVersion(version);
+    fireChanged();
+    setChanged();
   }
 
+  /**
+   * @return all generators that treat this language as their source one.
+   */
   public Collection<Generator> getGenerators() {
-    return ModuleRepositoryFacade.getInstance().getModules(this, Generator.class);
+    assertCanRead();
+    // Language module now tracks Generator modules it is owner to. Generator modules, once attached to a repo, tell their source language they are here
+    // with #register(Generator), and tell they are gone with #unregister(Generator).
+    return new ArrayList<>(myAttachedGenerators);
   }
 
-  public void rename(String newNamespace) {
-    LanguageDescriptor languageDescriptor = getModuleDescriptor();
-    languageDescriptor.setNamespace(newNamespace);
-    setLanguageDescriptor(languageDescriptor, false);
+  /**
+   * PROVISIONAL API, DON'T USE UNLESS YOU'RE 100% SURE WHAT IS THE REASON FOR THAT, AND WHAT'S THE (UPCOMING) DIFFERENCE WITH {@link #getGenerators()}
+   * NOTE: BE CAREFUL WHEN INVOKED FROM A CODE THAT REACTS TO MODULE DESCRIPTOR CHANGES
+   *       if invoked with a changed MD, gives state according to MD contents, and not the one exposed in the repository (think about scenario when
+   *       a repo-registered, language-owned generator has been removed from MD. This method would give empty set despite the fact generator module is there)
+   * @return generators declared and controlled by this language module.
+   */
+  public Collection<Generator> getOwnedGenerators() {
+    Set<SModuleReference> ownedGenerators = getModuleDescriptor().getGenerators().stream().map(ModuleDescriptor::getModuleReference).collect(Collectors.toSet());
+    return getGenerators().stream().filter(g -> ownedGenerators.contains(g.getModuleReference())).collect(Collectors.toList());
   }
 
-  public String getGeneratorOutputPath() {
-    IFile result = ProjectPathUtil.getGeneratorOutputPath(getDescriptorFile(), getModuleDescriptor());
-    return result != null ? result.getPath() : null;
-  }
-
-  public String getTestsGeneratorOutputPath() {
-    IFile result = ProjectPathUtil.getGeneratorTestsOutputPath(getDescriptorFile(), getModuleDescriptor());
-    return result != null ? result.getPath() : null;
-  }
-
+  /**
+   * @deprecated method is not bad per se (Language module could tell SNode with concept declaration. However,
+   *            it silently excludes Interface concepts, and likely its uses need attention and switch to SConcept.
+   *            Then, we could decide whether we truly need access to language's concept nodes this way, or shall use
+   *            LanguageAspects instead.
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
   public List<SNode> getConceptDeclarations() {
-    SModelDescriptor structureModel = getStructureModelDescriptor();
+    // FIXME there are uses in mbeddr
+    SModel structureModel = getStructureModelDescriptor();
     if (structureModel == null) return Collections.emptyList();
-    return structureModel.getSModel().getFastNodeFinder().getNodes(SNodeUtil.concept_ConceptDeclaration, true);
+    return FastNodeFinderManager.get(structureModel).getNodes(SNodeUtil.concept_ConceptDeclaration, true);
   }
 
-  public List<EditableSModelDescriptor> getUtilModels() {
-    List<EditableSModelDescriptor> result = new ArrayList<EditableSModelDescriptor>();
-    for (SModelDescriptor md : getOwnModelDescriptors()) {
-      if (md.getStereotype().equals(SModelStereotype.NONE)
-        && getAspectForModel(md) == null
-        && !isAccessoryModel(md.getSModelReference())) {
-        result.add(((EditableSModelDescriptor) md));
+  public List<SModel> getUtilModels() {
+    Set<SModel> models = new HashSet<>(getModels());
+    models.removeAll(LanguageAspectSupport.getAspectModels(this));
+    models.removeAll(getAccessoryModels());
+
+    List<SModel> result = new ArrayList<>(models.size());
+    for (SModel md : models) {
+      if (SModelStereotype.isStubModel(md) || SModelStereotype.isDescriptorModel(md)) {
+        // perhaps, we need more generic isPredefinedStereotypeMPS()
+        continue;
       }
+      result.add((md));
     }
     return result;
   }
 
-  public Collection<SModelDescriptor> getImplicitlyImportedModelsFor(SModelDescriptor sm) {
-    Set<SModelDescriptor> result = new LinkedHashSet<SModelDescriptor>(super.getImplicitlyImportedModelsFor(sm));
-
-    LanguageAspect aspect = Language.getModelAspect(sm);
-
-    if (aspect != LanguageAspect.STRUCTURE && getStructureModelDescriptor() != null) {
-      result.add(getStructureModelDescriptor());
-    }
-
-    if (aspect != LanguageAspect.CONSTRAINTS && LanguageAspect.CONSTRAINTS.get(this) != null) {
-      result.add(LanguageAspect.CONSTRAINTS.get(this));
-    }
-
-    if (aspect != LanguageAspect.BEHAVIOR && LanguageAspect.BEHAVIOR.get(this) != null) {
-      result.add(LanguageAspect.BEHAVIOR.get(this));
-    }
-
-    for (Language extended : ModuleUtil.refsToLanguages(getExtendedLanguageRefs())) {
-      SModelDescriptor structure = LanguageAspect.STRUCTURE.get(extended);
-      if (structure != null) {
-        result.add(structure);
-      }
-      if (LanguageAspect.CONSTRAINTS.get(extended) != null) {
-        result.add(LanguageAspect.CONSTRAINTS.get(extended));
-      }
-
-      if (aspect != null && aspect.get(extended) != null) {
-        result.add(aspect.get(extended));
-      }
-    }
-
-    return result;
-  }
-
-  public Collection<Language> getImplicitlyImportedLanguages(SModelDescriptor sm) {
-    Set<Language> result = new LinkedHashSet<Language>(super.getImplicitlyImportedLanguages(sm));
-
-    LanguageAspect aspect = Language.getModelAspect(sm);
-    if (aspect != null) {
-      for (ModuleReference namespace : aspect.getAllLanguagesToImport(this)) {
-        Language language = GlobalScope.getInstance().getLanguage(namespace);
-        if (language != null) {
-          result.add(language);
-        }
-      }
-    }
-    return result;
-  }
-
-  public DefaultSModelDescriptor getStructureModelDescriptor() {
+  public SModel getStructureModelDescriptor() {
     return LanguageAspect.STRUCTURE.get(this);
   }
 
-  public void invalidateCaches() {
-    super.invalidateCaches();
-    myNameToConceptCache.clear();
-    myNamesWithNoConcepts.clear();
-  }
-
-  public SNode findConceptDeclaration(@NotNull final String conceptName) {
-    if (myNamesLoadingState == ModelLoadingState.FULLY_LOADED) return myNameToConceptCache.get(conceptName);
-    if (myNameToConceptCache.containsKey(conceptName)) return myNameToConceptCache.get(conceptName);
-    if (myNamesWithNoConcepts.contains(conceptName)) return null;
-
-    return NodeReadAccessCasterInEditor.runReadTransparentAction(new Computable<SNode>() {
-      @Override
-      public SNode compute() {
-        SModelDescriptor structureModelDescriptor = getStructureModelDescriptor();
-        if (structureModelDescriptor == null) return null;
-        SModel structureModel = structureModelDescriptor.getSModel();
-
-        //if not all the model is loaded, we try to look up the given concept only between root nodes first
-        if (myNamesLoadingState.compareTo(ModelLoadingState.FULLY_LOADED) < 0) {
-          for (SNode root : structureModel.roots()) {
-            String name = getConceptName(root);
-            if (name == null) continue;
-            myNameToConceptCache.putIfAbsent(name, root);
-          }
-          if (myNameToConceptCache.containsKey(conceptName)) return myNameToConceptCache.get(conceptName);
-        }
-
-        //if we haven't found a root concept, then try to find in any node in the model
-        for (SNode node : structureModel.nodes()) {
-          String name = getConceptName(node);
-          if (name == null) continue;
-          myNameToConceptCache.putIfAbsent(name, node);
-        }
-
-        SNode result = myNameToConceptCache.get(conceptName);
-        if (result == null) {
-          myNamesWithNoConcepts.add(conceptName);
-        }
-
-        return result;
-      }
-    });
-  }
-
-  private String getConceptName(SNode node) {
-    if (!(SNodeUtil.isInstanceOfAbstractConceptDeclaration(node))) return null;
-    return node.getPersistentProperty(SNodeUtil.property_INamedConcept_name);
-  }
-
+  /**
+   * fixme why generator saves language??
+   * generator is contained in language it must be the other way around!
+   */
+  @Override
   public void save() {
-    if (isPackaged()) {
-      LOG.warning("Trying to save packaged language " + getModuleFqName(), new Exception());
+    super.save();
+    if (isReadOnly()) return;
+
+    if (myLanguageDescriptor.getLoadException() != null){
       return;
     }
-    LanguageDescriptorPersistence.saveLanguageDescriptor(myDescriptorFile, getModuleDescriptor(), MacrosFactory.forModuleFile(myDescriptorFile));
+
+    try {
+      DescriptorIO<LanguageDescriptor> io = DescriptorIOFacade.getInstance().standardProvider().languageDescriptorIO();
+      io.writeToFile(getModuleDescriptor(), getDescriptorFile());
+    } catch (Exception ex) {
+      Logger.getLogger(getClass()).error("Save failed", ex);
+    }
   }
 
-  public List<SModelDescriptor> getAccessoryModels() {
-    List<SModelDescriptor> result = new LinkedList<SModelDescriptor>();
+  public List<SModel> getAccessoryModels() {
+    List<SModel> result = new LinkedList<>();
     for (SModelReference model : getModuleDescriptor().getAccessoryModels()) {
-      SModelDescriptor modelDescriptor = SModelRepository.getInstance().getModelDescriptor(model);
+      SModel modelDescriptor = model.resolve(getRepository());
       if (modelDescriptor != null) {
         result.add(modelDescriptor);
       }
@@ -380,30 +397,31 @@ public class Language extends ClassLoadingModule implements MPSModuleOwner {
     return result;
   }
 
-  public boolean isAccessoryModel(SModelReference modelReference) {
-    for (SModelReference model : getModuleDescriptor().getAccessoryModels()) {
-      if (ObjectUtils.equals(model, modelReference)) return true;
-    }
-    return false;
+  public boolean isAccessoryModel(org.jetbrains.mps.openapi.model.SModelReference modelReference) {
+    return myLanguageDescriptor.getAccessoryModels().stream().anyMatch(Predicate.isEqual(modelReference));
   }
 
-  public void removeAccessoryModel(SModelDescriptor sm) {
-    Iterator<SModelReference> i = myLanguageDescriptor.getAccessoryModels().iterator();
-    while (i.hasNext()) {
-      SModelReference model = i.next();
-      if (model.equals(sm.getSModelReference())) {
-        i.remove();
-      }
+  public void removeAccessoryModel(org.jetbrains.mps.openapi.model.SModel sm) {
+    // XXX why removal of accessory model is not done through ModuleDescriptor as other editing activities?
+    //     i.e. module properties add accessory models through MD, but remove them through Language, which is odd.
+    final SModelReference accessoryModelRef = sm.getReference();
+    boolean changed = myLanguageDescriptor.getAccessoryModels().removeIf(accessoryModelRef::equals);
+    if (changed) {
+      // XXX Perhaps, setModuleDescriptor is too much, as it fires changed + dependenciesChange and eventually reloads classes,
+      //     while change in accessory models unlikely to affect any compiled class.
+      //     I'd stick to setChanged(true) + fireChanged() here, instead.
+      setModuleDescriptor(myLanguageDescriptor);
     }
-    setLanguageDescriptor(myLanguageDescriptor, true);
-    save();
   }
 
   public String toString() {
-    return getModuleDescriptor().getNamespace();
+    return getModuleName() + " [language]";
   }
 
-  public LanguageAspect getAspectForModel(@NotNull SModelDescriptor sm) {
+  @Deprecated
+  @ToRemove(version = 3.3)
+  //no full equivalent to this method, use appropriate method from LanguageAspectSupport
+  private LanguageAspect getAspectForModel(@NotNull org.jetbrains.mps.openapi.model.SModel sm) {
     for (LanguageAspect la : LanguageAspect.values()) {
       if (la.get(this) == sm) {
         return la;
@@ -412,210 +430,104 @@ public class Language extends ClassLoadingModule implements MPSModuleOwner {
     return null;
   }
 
-  public static Language getLanguageForLanguageAspect(SModelDescriptor modelDescriptor) {
+  public static Language getLanguageForLanguageAspect(org.jetbrains.mps.openapi.model.SModel modelDescriptor) {
     return getLanguageFor(modelDescriptor);
   }
 
-  public static LanguageAspect getModelAspect(SModelDescriptor sm) {
+  @Deprecated
+  @ToRemove(version = 3.3)
+  //no full equivalent to this method, use appropriate method from LanguageAspectSupport
+  //no usages in MPS, 4 uses in mbeddr
+  @Nullable
+  public static LanguageAspect getModelAspect(org.jetbrains.mps.openapi.model.SModel sm) {
     if (sm == null) return null;
-    IModule module = sm.getModule();
-    if (!(module instanceof Language)) return null;
+    SModule module = sm.getModule();
+    if (!(module instanceof Language)) {
+      return null;
+    }
 
     Language l = (Language) module;
-    if (l.getAspectForModel(sm) == null) return null;
-
     return l.getAspectForModel(sm);
   }
 
-  public static boolean isLanguageOwnedAccessoryModel(SModelDescriptor sm) {
-    Set<ModelOwner> owners = SModelRepository.getInstance().getOwners(sm);
-    for (ModelOwner modelOwner : owners) {
-      if (modelOwner instanceof Language) {
-        Language l = (Language) modelOwner;
-        if (l.isAccessoryModel(sm.getSModelReference())) {
-          return true;
-        }
-      }
+  public static boolean isLanguageOwnedAccessoryModel(org.jetbrains.mps.openapi.model.SModel sm) {
+    SModule modelOwner = sm.getModule();
+    if (modelOwner instanceof Language) {
+      Language l = (Language) modelOwner;
+      return l.isAccessoryModel(sm.getReference());
     }
     return false;
   }
 
-  public static Language getLanguageFor(SModelDescriptor sm) {
-    Set<ModelOwner> owners = SModelRepository.getInstance().getOwners(sm);
-    for (ModelOwner modelOwner : owners) {
-      if (modelOwner instanceof Language) {
-        return (Language) modelOwner;
-      }
+  public static Language getLanguageFor(org.jetbrains.mps.openapi.model.SModel sm) {
+    SModule owner = sm.getModule();
+    if (owner instanceof Language) {
+      return (Language) owner;
     }
     return null;
   }
 
-  @Override
-  public Class getClass(String fqName) {
-    if (!fqName.startsWith(getModuleFqName() + ".stubs.")) return super.getClass(fqName);
-    try {
-      return myStubsLoader.loadClass(fqName);
-    } catch (ClassNotFoundException e) {
-      LOG.error(e);
-    }
-    return null;
+  // TODO
+//  @Nullable
+//  @Override
+//  public Language clone(String targetRoot, String targetNamespace) {
+//    LanguageDescriptor targetDescriptor = new LanguageDescriptor();
+//    IFile targetDescriptorFile = getFileSystem().getFile(targetRoot + File.separator + targetNamespace + MPSExtentions.DOT_LANGUAGE);
+//
+//    targetDescriptor.setId(ModuleId.regular());
+//    targetDescriptor.setNamespace(targetNamespace);
+//    getModuleDescriptor().cloneTo(targetDescriptor, PathConverters.forDescriptorFiles(targetDescriptorFile, getDescriptorFile()));
+//    LanguageDescriptorPersistence.saveLanguageDescriptor(targetDescriptorFile, targetDescriptor, MacrosFactory.forModuleFile(targetDescriptorFile));
+//
+//    Language targetLanguage = new Language(targetDescriptor, targetDescriptorFile);
+//    ModelRootCloneUtil.cloneModelRootsTo(getModelRoots(), targetLanguage);
+//
+//    Iterator<Generator> targetGenerators = targetLanguage.getGenerators().iterator();
+//    for (Generator generator : getGenerators()) {
+//      Generator targetGenerator = targetGenerators.next();
+//      ModelRootCloneUtil.cloneModelRootsTo(generator.getModelRoots(), targetGenerator);
+//    }
+//
+//    FIXME RADIMIR rename models here
+//
+//    return targetLanguage;
+//  }
+
+
+  /*package*/ void register(@NotNull Generator generator) {
+    assertCanChange();
+    myAttachedGenerators.add(generator);
   }
-
-  public Collection<String> getRuntimeStubPaths() {
-    Set<String> result = new LinkedHashSet<String>();
-
-    for (ModelRoot me : getRuntimeModelsEntries()) {
-      result.add(me.getPath());
-    }
-
-    return result;
-  }
-
-  @Override
-  public boolean isCompileInMPS() {
-    // language is always compiled in MPS
-    return true;
-  }
-
-  @Override
-  public Collection<String> getOwnStubPaths() {
-    if (isPackaged()) {
-      return Collections.singletonList(
-        FileSystem.getInstance().getBundleHome(getDescriptorFile()).getPath());
-    }
-
-    IFile classesGen = ProjectPathUtil.getClassesGenFolder(getDescriptorFile());
-    if (classesGen != null) {
-      return Collections.singletonList(classesGen.getPath());
-    }
-    return Collections.emptyList();
-  }
-
-  protected void invalidateClassPath() {
-    super.invalidateClassPath();
-    synchronized (LOCK) {
-      myLanguageRuntimeClasspathCache = null;
+  /*package*/ void unregister(@NotNull Generator generator) {
+    assertCanChange();
+    if (!myAttachedGenerators.remove(generator)) {
+      throw new IllegalStateException(String.format("Generator %s has not been previously registered with the language %s", generator.getModuleName(), getModuleName()));
     }
   }
 
-  public IClassPathItem getLanguageRuntimeClasspath() {
-    synchronized (LOCK) {
-      if (myLanguageRuntimeClasspathCache == null) {
-        myLanguageRuntimeClasspathCache = new CompositeClassPathItem();
-        myLanguageRuntimeClasspathCache.addInvalidationAction(myClasspathInvalidator);
-        for (ModelRoot entry : getRuntimeModelsEntries()) {
-          String s = entry.getPath();
-          try {
-            IFile file = FileSystem.getInstance().getFileByPath(s);
-            if (!file.exists()) {
-              LOG.debug("Can't find " + s);
-              continue;
-            }
+  public static class LanguageModelsAutoImports extends jetbrains.mps.project.ModelsAutoImportsManager.AutoImportsContributor {
+    @Override
+    public boolean isApplicable(SModule module) {
+      return module instanceof Language;
+    }
 
-            myLanguageRuntimeClasspathCache.add(ClassPathFactory.getInstance().createFromPath(s, this.getModuleFqName()));
-          } catch (IOException e) {
-            LOG.debug(e.getMessage());
-          }
-        }
+    @NotNull
+    @Override
+    public Collection<SLanguage> getLanguages(SModule contextModule, SModel model) {
+      return LanguageAspectSupport.getMainLanguages(model);
+    }
+
+    @Override
+    public Collection<SModuleReference> getDevKits(SModule contextModule, SModel forModel) {
+      Collection<SModuleReference> initialDevKits = new ArrayList<>(LanguageAspectSupport.getInitialDevKits(forModel));
+      SModuleReference defaultDevkit = LanguageAspectSupport.getDefaultDevkit(forModel);
+      if(defaultDevkit != null) {
+        initialDevKits.add(defaultDevkit);
       }
-
-      return myLanguageRuntimeClasspathCache;
-    }
-  }
-
-  //todo check this code. Wy not to do it where we add jars?
-  protected void updatePackagedDescriptorClasspath() {
-    super.updatePackagedDescriptorClasspath();
-
-    if (!isPackaged()) return;
-
-    if (myLanguageDescriptor != null) {
-      IFile bundleParent = getBundleHome().getParent();
-      String jarName = getModuleFqName() + ".jar";
-      IFile bundleHomeFile = bundleParent.getDescendant(jarName);
-
-      if (!bundleHomeFile.exists()) return;
-
-      for (GeneratorDescriptor g : myLanguageDescriptor.getGenerators()) {
-        g.getModelRoots().removeAll(myLanguageDescriptor.getRuntimeStubModels());
+      if (!initialDevKits.isEmpty()) {
+        return initialDevKits;
       }
-      myLanguageDescriptor.getRuntimeStubModels().clear();
-
-      DeploymentDescriptor dd = myLanguageDescriptor.getDeploymentDescriptor();
-      if (dd == null) return;
-
-      for (String jarFile : dd.getRuntimeJars()) {
-        IFile jar = jarFile.startsWith("/")
-          ? FileSystem.getInstance().getFileByPath(PathManager.getHomePath() + jarFile)
-          : bundleParent.getDescendant(jarFile);
-        if (jar.exists()) {
-          ClassPathEntry jarEntry = new ClassPathEntry();
-          jarEntry.setPath(jar.getPath());
-          ModelRoot mr = jetbrains.mps.project.structure.model.ModelRootUtil.fromClassPathEntry(jarEntry);
-          myLanguageDescriptor.getRuntimeStubModels().add(mr);
-          for (GeneratorDescriptor g : myLanguageDescriptor.getGenerators()) {
-            g.getModelRoots().add(mr);
-          }
-        }
-      }
+      return Collections.singleton(BootstrapLanguages.getGeneralPurposeDevKit());
     }
-  }
-
-  public Collection<ModelRoot> getRuntimeModelsEntries() {
-    return myLanguageDescriptor.getRuntimeStubModels();
-  }
-
-  public boolean isGenerateAdapters() {
-    return !myLanguageDescriptor.isDoNotGenerateAdapters();
-  }
-
-  protected Collection<ModelRoot> getStubModelEntriesToIncludeOrExclude() {
-    LinkedHashSet<ModelRoot> res = new LinkedHashSet<ModelRoot>();
-    res.addAll(super.getStubModelEntriesToIncludeOrExclude());
-    res.addAll(getRuntimeModelsEntries());
-    return res;
-  }
-
-  @Override
-  public boolean isHidden() {
-    return false;
-  }
-
-  private class CachesInvalidator extends SModelAdapter {
-    public CachesInvalidator() {
-      super(SModelListenerPriority.PLATFORM);
-    }
-
-    public void modelChanged(SModel model) {
-      invalidateCaches();
-    }
-
-    public void modelChangedDramatically(SModel model) {
-      invalidateCaches();
-    }
-  }
-
-  private class MyClassLoader extends ClassLoader {
-    public MyClassLoader() {
-      super(Language.class.getClassLoader());
-    }
-
-    protected Class<?> findClass(String name) throws ClassNotFoundException {
-      byte[] bytes = findClassBytes(name);
-      if (bytes == null) return null;
-      definePackageIfNecessary(name);
-      return defineClass(name, bytes, 0, bytes.length, ProtectionDomainUtil.loadedClassDomain());
-    }
-
-    private void definePackageIfNecessary(String name) {
-      String pack = NameUtil.namespaceFromLongName(name);
-      if (getPackage(pack) != null) return;
-      definePackage(pack, null, null, null, null, null, null, null);
-    }
-  }
-
-  @Deprecated
-  public static Language newInstance(ModuleHandle handle, MPSModuleOwner moduleOwner) {
-    return (Language) ModuleRepositoryFacade.createModule(handle, moduleOwner);
   }
 }

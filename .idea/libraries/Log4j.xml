@@ -4,6 +4,10 @@
       <root url="jar://$PROJECT_DIR$/lib/log4j.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/src/log4j.zip!/" />
+      <root url="jar://$PROJECT_DIR$/lib/src/log4j.zip!/java" />
+      <root url="jar://$PROJECT_DIR$/lib/src/log4j.zip!/javadoc" />
+    </SOURCES>
   </library>
 </component>

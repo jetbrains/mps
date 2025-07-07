@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,29 +15,31 @@
  */
 package jetbrains.mps.nodeEditor.cellActions;
 
-import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
-import jetbrains.mps.nodeEditor.EditorCellAction;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
+import jetbrains.mps.nodeEditor.SNodeEditorUtil;
+import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.smodel.action.NodeFactoryManager;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.model.SNode;
 
-public class CellAction_Insert extends EditorCellAction {
-  private SNode myNode;
-  private String myRole;
+public class CellAction_Insert extends AbstractCellAction {
+  private final SNode myNode;
+  private final SContainmentLink myRole;
 
-  public CellAction_Insert(SNode node, String role) {
+  public CellAction_Insert(SNode node, SContainmentLink role) {
     myNode = node;
     myRole = role;
   }
 
+  @Override
   public boolean canExecute(EditorContext context) {
     return true;
   }
 
+  @Override
   public void execute(EditorContext context) {
-    SNode nodeToInsert = NodeFactoryManager.createNode(myNode, context, myRole);
-    myNode.setChild(myRole, nodeToInsert);
+    SNode nodeToInsert = NodeFactoryManager.createNode(myRole.getTargetConcept(), null, myNode, myNode.getModel());
+    SNodeEditorUtil.setSingleChild(myNode, myRole, nodeToInsert);
   }
 }

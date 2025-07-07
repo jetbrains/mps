@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.workbench.dialogs.project.newproject;
 
+import com.intellij.openapi.components.StorageScheme;
+import org.jetbrains.annotations.TestOnly;
+
 public class ProjectOptions {
   private String myProjectPath;
   private String myProjectName;
@@ -22,12 +25,18 @@ public class ProjectOptions {
   private boolean myCreateNewLanguage;
   private boolean myCreateNewSolution;
   private boolean myCreateModel;
+  private boolean myCreateNewDevkit = false;
 
   private String myLanguageNamespace;
   private String myLanguagePath;
 
   private String mySolutionNamespace;
   private String mySolutionPath;
+
+  private String myDevkitNamespace;
+  private String myDevkitPath;
+
+  private StorageScheme myStorageScheme;
 
   public boolean getCreateNewLanguage() {
     return myCreateNewLanguage;
@@ -43,6 +52,16 @@ public class ProjectOptions {
 
   public void setCreateNewSolution(boolean createNewSolution) {
     myCreateNewSolution = createNewSolution;
+  }
+
+  @TestOnly
+  public boolean getCreateNewDevkit() {
+    return myCreateNewDevkit;
+  }
+
+  @TestOnly
+  public void setCreateNewDevkit(boolean createNewDevkit) {
+    myCreateNewDevkit = createNewDevkit;
   }
 
   public String getLanguageNamespace() {
@@ -93,11 +112,39 @@ public class ProjectOptions {
     mySolutionPath = solutionPath;
   }
 
+  @TestOnly
+  public String getDevkitNamespace() {
+    return myDevkitNamespace;
+  }
+
+  @TestOnly
+  public void setDevkitNamespace(String devkitNamespace) {
+    myDevkitNamespace = devkitNamespace;
+  }
+
+  @TestOnly
+  public String getDevkitPath() {
+    return myDevkitPath;
+  }
+
+  @TestOnly
+  public void setDevkitPath(String devkitPath) {
+    myDevkitPath = devkitPath;
+  }
+
   public boolean getCreateModel() {
     return myCreateModel;
   }
 
   public void setCreateModel(boolean value) {
     myCreateModel = value;
+  }
+
+  public StorageScheme getStorageScheme() {
+    return myStorageScheme;
+  }
+
+  public void setStorageScheme(boolean isDefault) {
+    myStorageScheme = isDefault ? StorageScheme.DEFAULT : StorageScheme.DIRECTORY_BASED;
   }
 }

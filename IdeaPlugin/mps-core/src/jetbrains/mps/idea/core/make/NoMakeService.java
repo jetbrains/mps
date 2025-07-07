@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,88 +16,77 @@
 
 package jetbrains.mps.idea.core.make;
 
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.Disposable;
+import jetbrains.mps.core.platform.Platform;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.IMakeService;
+import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.IScriptController;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.concurrent.Future;
 
 /**
  * evgeny, 11/20/11
  */
-public class NoMakeService implements IMakeService, ApplicationComponent {
+public class NoMakeService implements IMakeService, Disposable {
+  private final Platform myPlatform;
 
-    @Override
-    public boolean openNewSession(MakeSession session) {
-        return false;
-    }
+  @Override
+  public boolean openNewSession(MakeSession session) {
+    return false;
+  }
 
-    @Override
-    public void closeSession(MakeSession session) {
-    }
+  @Override
+  public void closeSession(MakeSession session) {
+  }
 
-    @Override
-    public boolean isSessionActive() {
-        return false;
-    }
+  @Override
+  public boolean isSessionActive() {
+    return false;
+  }
 
-    @Override
-    public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources) {
-        return null;
-    }
+  @Override
+  public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources) {
+    return null;
+  }
 
-    @Override
-    public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources, IScript script) {
-        return null;
-    }
+  @Override
+  public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources, IScript script) {
+    return null;
+  }
 
-    @Override
-    public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources, IScript script, IScriptController controller) {
-        return null;
-    }
+  @Override
+  public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources, IScript script, IScriptController controller) {
+    return null;
+  }
 
-    @Override
-    public void addListener(IMakeNotificationListener listener) {
-    }
+  @Override
+  public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources, IScript script, IScriptController controller, @NotNull ProgressMonitor monitor) {
+    return null;  //To change body of implemented methods use File | Settings | File Templates.
+  }
 
-    @Override
-    public void removeListener(IMakeNotificationListener listener) {
-    }
+  @Override
+  public void addListener(IMakeNotificationListener listener) {
+  }
 
-    @Override
-    public Future<IResult> make(Iterable<? extends IResource> resources) {
-        return null;
-    }
+  @Override
+  public void removeListener(IMakeNotificationListener listener) {
+  }
 
-    @Override
-    public Future<IResult> make(Iterable<? extends IResource> resources, IScript script) {
-        return null;
-    }
+  public NoMakeService(MPSCoreComponents mpsComponents) {
+    myPlatform = mpsComponents.getPlatform();
+    myPlatform.findComponent(MakeServiceComponent.class).install(this);
+  }
 
-    @Override
-    public Future<IResult> make(Iterable<? extends IResource> resources, IScript script, IScriptController controller) {
-        return null;
-    }
-
-    @Override
-    public void initComponent() {
-        IMakeService.INSTANCE.set(this);
-    }
-
-    @Override
-    public void disposeComponent() {
-        IMakeService.INSTANCE.set(null);
-    }
-
-    @NotNull
-    @Override
-    public String getComponentName() {
-        return "dummy make service";
-    }
+  @Override
+  public void dispose() {
+    myPlatform.findComponent(MakeServiceComponent.class).uninstall(this);
+  }
 }

@@ -8,35 +8,30 @@ import java.util.NoSuchElementException;
 
 public class OfTypeSequence<U, V> extends AbstractChainedSequence<U, V> implements Iterable<V> {
   private Class<V> requestedType;
-
   public OfTypeSequence(Iterable<U> input, Class<V> reqType) {
     super(input);
     requestedType = reqType;
   }
-
+  @Override
   public Iterator<V> iterator() {
-    return new OfTypeSequence.OfTypeIterator();
+    return new OfTypeIterator();
   }
-
   private boolean isOfType(U input) {
     return ClassUtils.isInstance(requestedType, input);
   }
-
   private V cast(U input) {
     if (ClassUtils.isInstance(requestedType, input)) {
       return ClassUtils.cast(requestedType, input);
     }
     return null;
   }
-
   private class OfTypeIterator implements Iterator<V> {
     private Iterator<U> inputIterator = null;
     private HasNextState hasNext = HasNextState.UNKNOWN;
     private V next;
-
     private OfTypeIterator() {
     }
-
+    @Override
     public boolean hasNext() {
       if (inputIterator == null) {
         init();
@@ -46,7 +41,7 @@ public class OfTypeSequence<U, V> extends AbstractChainedSequence<U, V> implemen
       }
       return hasNext.hasNext();
     }
-
+    @Override
     public V next() {
       if (inputIterator == null) {
         init();
@@ -59,15 +54,13 @@ public class OfTypeSequence<U, V> extends AbstractChainedSequence<U, V> implemen
       }
       return clearNext();
     }
-
+    @Override
     public void remove() {
       throw new UnsupportedOperationException();
     }
-
     private void init() {
       inputIterator = getInput().iterator();
     }
-
     private void moveToNext() {
       hasNext = HasNextState.AT_END;
       next = null;
@@ -81,7 +74,6 @@ public class OfTypeSequence<U, V> extends AbstractChainedSequence<U, V> implemen
         break;
       }
     }
-
     private V clearNext() {
       V tmp = next;
       next = null;

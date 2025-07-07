@@ -15,62 +15,50 @@
  */
 package jetbrains.mps.lang.editor.cellProviders;
 
-import jetbrains.mps.nodeEditor.EditorCellKeyMap;
-import jetbrains.mps.nodeEditor.EditorCellKeyMapAction;
-import jetbrains.mps.nodeEditor.EditorContext;
+import jetbrains.mps.editor.runtime.cells.KeyMapActionImpl;
+import jetbrains.mps.editor.runtime.cells.KeyMapImpl;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.KeyMap;
+import jetbrains.mps.openapi.editor.cells.KeyMapAction;
 
-import java.awt.event.KeyEvent;
-
-public class RefNodeListHandlerElementKeyMap extends EditorCellKeyMap {
+public class RefNodeListHandlerElementKeyMap extends KeyMapImpl {
   private AbstractCellListHandler myListHandler;
 
   public RefNodeListHandlerElementKeyMap(AbstractCellListHandler listHandler, String elementSeparator) {
     myListHandler = listHandler;
     if (elementSeparator != null && elementSeparator.length() == 1) {
-      EditorCellKeyMapAction insertAction = new EditorCellKeyMapAction() {
+      KeyMapActionImpl insertAction = new KeyMapActionImpl() {
+        @Override
         public String getDescriptionText() {
-          return "insert " + myListHandler.getElementRole();
+          return "insert " + myListHandler.getElementSRole().getName();
         }
 
-        public void execute(KeyEvent keyEvent, EditorContext context) {
-          SNode anchorNode = getAnchorNode(context);
-          SNode nodeToInsert = myListHandler.createNodeToInsert(context);
-          myListHandler.getOwner().insertChild(anchorNode, myListHandler.getElementRole(), nodeToInsert, true);
+        @Override
+        public void execute(EditorContext context) {
+          myListHandler.insertNewChild(context, context.getContextCell(), true);
         }
       };
-      insertAction.setCaretPolicy(EditorCellKeyMapAction.CARET_AT_FIRST_POSITION);
+      insertAction.setCaretPolicy(KeyMapAction.CARET_AT_FIRST_POSITION);
 
-      EditorCellKeyMapAction addAction = new EditorCellKeyMapAction() {
+      KeyMapActionImpl addAction = new KeyMapActionImpl() {
+        @Override
         public String getDescriptionText() {
-          return "add " + myListHandler.getElementRole();
+          return "add " + myListHandler.getElementSRole().getName();
         }
 
-        public void execute(KeyEvent keyEvent, EditorContext context) {
-          SNode anchorNode = getAnchorNode(context);
-          SNode nodeToInsert = myListHandler.createNodeToInsert(context);
-          myListHandler.getOwner().insertChild(anchorNode, myListHandler.getElementRole(), nodeToInsert, false);
+        @Override
+        public void execute(EditorContext context) {
+          myListHandler.insertNewChild(context, context.getContextCell(), false);
         }
       };
-      addAction.setCaretPolicy(EditorCellKeyMapAction.CARET_AT_LAST_POSITION);
+      addAction.setCaretPolicy(KeyMapAction.CARET_AT_LAST_POSITION);
 
       // populate the key map
       if (!" ".equals(elementSeparator)) { //we do not want separator triggered inserts to interfere with RT.
-        putAction(EditorCellKeyMap.KEY_MODIFIERS_ANY, elementSeparator, insertAction);
-        putAction(EditorCellKeyMap.KEY_MODIFIERS_ANY, elementSeparator, addAction);
+        putAction(KeyMap.KEY_MODIFIERS_ANY, elementSeparator, insertAction);
+        putAction(KeyMap.KEY_MODIFIERS_ANY, elementSeparator, addAction);
       }
     }
-  }
-
-  private SNode getAnchorNode(EditorContext context) {
-    SNode owner = myListHandler.getOwner();
-    SNode anchorNode = context.getContextCell().getSNode();
-    assert anchorNode != null;
-    while (anchorNode.getParent() != owner) {
-      anchorNode = anchorNode.getParent();
-      assert anchorNode != null;
-    }
-    return anchorNode;
   }
 }

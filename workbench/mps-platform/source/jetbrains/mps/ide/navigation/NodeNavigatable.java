@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,49 +15,49 @@
  */
 package jetbrains.mps.ide.navigation;
 
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.ModuleContext;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+
+import java.util.Objects;
 
 /**
  * evgeny, 11/6/11
  */
 public class NodeNavigatable extends BaseNavigatable {
-  private static final Logger LOG = Logger.getLogger(NodeNavigatable.class);
+  private final SNodeReference myNodePointer;
 
-  @NotNull
-  private SNodePointer nodePointer;
-
-  public NodeNavigatable(@NotNull Project project, @NotNull SNodePointer nodePointer) {
+  public NodeNavigatable(@NotNull Project project, @NotNull SNodeReference nodePointer) {
     super(project);
-    this.nodePointer = nodePointer;
+    myNodePointer = nodePointer;
   }
 
   @Override
-  public void doNavigate(final boolean focus) {
-    SNode node = nodePointer.getNode();
-    if (node == null) {
-      LOG.info("clicked node was deleted");
-      return;
-    }
-
-    SModelDescriptor modelDescriptor = node.getModel().getModelDescriptor();
-    if (modelDescriptor == null) return;
-
-    IModule module = modelDescriptor.getModule();
-    if (module == null) return;
-
-    ModuleContext context = new ModuleContext(module, project);
-    NavigationSupport.getInstance().openNode(context, node, focus, !node.isRoot());
+  public void navigate(boolean focus) {
+    new EditorNavigator(myProject).shallFocus(focus).selectIfChild().open(myNodePointer);
   }
 
-  public SNodePointer getNodePointer() {
-    return nodePointer;
+  @Override
+  public int hashCode() {
+    return myNodePointer.hashCode();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof NodeNavigatable) {
+      return Objects.equals(myNodePointer, ((NodeNavigatable) obj).myNodePointer);
+    }
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    return "NodeNavigatable[" + myNodePointer + "]";
+  }
+
+  @NotNull
+  public final SNodeReference getNodePointer() {
+    return myNodePointer;
   }
 }

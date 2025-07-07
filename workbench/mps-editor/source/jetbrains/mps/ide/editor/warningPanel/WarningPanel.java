@@ -18,6 +18,7 @@ package jetbrains.mps.ide.editor.warningPanel;
 import com.intellij.ui.HyperlinkLabel;
 import com.intellij.ui.LightColors;
 import com.intellij.xml.util.XmlStringUtil;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,6 +28,7 @@ import javax.swing.JPanel;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 public class WarningPanel extends JPanel {
   private String myText;
@@ -41,19 +43,17 @@ public class WarningPanel extends JPanel {
     myText = text;
     setLayout(new BorderLayout());
 
-    setBackground(LightColors.YELLOW);
+    setBackground(StyleRegistry.getInstance().isDarkTheme() ? Color.LIGHT_GRAY : LightColors.YELLOW);
     setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
 
-    add(new JLabel("<html>" + XmlStringUtil.escapeString(text) + "</html>"), BorderLayout.CENTER);
+    final JLabel label = new JLabel("<html>" + XmlStringUtil.escapeString(text) + "</html>");
+    label.setForeground(StyleRegistry.getInstance().isDarkTheme() ? Color.DARK_GRAY : StyleRegistry.getInstance().getEditorForeground());
+    add(label, BorderLayout.CENTER);
 
     if (linkText != null && handler != null) {
       HyperlinkLabel hyperlinkLabel = new HyperlinkLabel(linkText);
       hyperlinkLabel.setOpaque(false);
-      hyperlinkLabel.addHyperlinkListener(new HyperlinkListener() {
-        public void hyperlinkUpdate(HyperlinkEvent e) {
-          handler.run();
-        }
-      });
+      hyperlinkLabel.addHyperlinkListener(e -> handler.run());
       add(hyperlinkLabel, BorderLayout.EAST);
     }
   }

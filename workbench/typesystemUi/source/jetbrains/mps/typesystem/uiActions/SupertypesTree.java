@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,41 @@
  */
 package jetbrains.mps.typesystem.uiActions;
 
-import jetbrains.mps.ide.dialogs.BaseNodeDialog;
-import jetbrains.mps.ide.dialogs.DialogDimensionsSettings.DialogDimensions;
 import jetbrains.mps.ide.hierarchy.AbstractHierarchyTree;
-import jetbrains.mps.ide.hierarchy.AbstractHierarchyView;
 import jetbrains.mps.ide.hierarchy.HierarchyTreeNode;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodeUtil;
+import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.project.Project;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.typesystem.PresentationManager;
 import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.util.Computable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import javax.swing.AbstractAction;
-import javax.swing.JButton;
-import javax.swing.SwingUtilities;
-import java.awt.HeadlessException;
-import java.awt.event.ActionEvent;
+import javax.swing.Action;
+import javax.swing.JComponent;
 import java.util.HashSet;
 import java.util.Set;
 
 public class SupertypesTree extends AbstractHierarchyTree {
+  private final Project myProject;
   private boolean myShowOnlyStrong = false;
 
-  public SupertypesTree(AbstractHierarchyView abstractHierarchyView) {
-    super(abstractHierarchyView, SNodeUtil.concept_BaseConcept, false);
+  public SupertypesTree(Project mpsProject) {
+    super(mpsProject.getRepository());
+    myProject = mpsProject;
+    setRootVisible(false);
   }
 
   protected String noNodeString() {
     return "(no type)";
+  }
+
+  @Override
+  protected String nodePresentation(SNode n) {
+    // nodes coming from within typesystem (like ClassifierType) rarely have names. Here, we resort to detailed presentation.
+    return PresentationManager.toString(n);
   }
 
   protected SNode getParent(SNode node) {
@@ -49,16 +57,19 @@ public class SupertypesTree extends AbstractHierarchyTree {
   }
 
   protected Set<SNode> getParents(SNode node, Set<SNode> visited) {
-    return new HashSet<SNode>();
+    return new HashSet<>();
   }
 
   protected Set<SNode> getDescendants(SNode node, Set<SNode> visited) {
     if (node == null) {
-      return new HashSet<SNode>();
+      return new HashSet<>();
     }
-    Set<SNode> supertypes = TypeChecker.getInstance().getSubtypingManager().
-      collectImmediateSupertypes(node, !myShowOnlyStrong);
-    return supertypes;
+    return TypeChecker.getInstance().getSubtypingManager().
+        collectImmediateSupertypes(node, !myShowOnlyStrong);
+  }
+
+  public boolean isShowOnlyStrong() {
+    return myShowOnlyStrong;
   }
 
   public void setShowOnlyStrong(boolean showOnlyStrong) {
@@ -66,51 +77,48 @@ public class SupertypesTree extends AbstractHierarchyTree {
     rebuildLater();
   }
 
-  public boolean doubleClick(final HierarchyTreeNode hierarchyTreeNode) {
-    final BaseNodeDialog dialog = new MyBaseNodeDialog(hierarchyTreeNode);
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        dialog.showDialog();
+  @Override
+  protected void doubleClick(@NotNull MPSTreeNode node) {
+    if (node instanceof HierarchyTreeNode) {
+      final HierarchyTreeNode hierarchyTreeNode = (HierarchyTreeNode) node;
+      // XXX in fact, SNode with types coming from within typesystem would never resolve
+      //     Alternatively, one could resort to hierarchyTreeNode.getUserObject which at the moment is original SNode,
+      //     however, earlier code here did node.model != null check, and the model is null for these nodes anyway.
+      // As I don't understand the idea of the dialog, I leave it as it is until anybody complains.
+      if (new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> hierarchyTreeNode.getNodeReference().resolve(myProject.getRepository()) != null)) {
+        new MyBaseNodeDialog(myProject, hierarchyTreeNode.getNodeReference()).show();
       }
-    });
-    return true;
+    }
   }
 
-  public boolean overridesNodeIdentifierCalculation() {
-    return true;
-  }
+  private static class MyBaseNodeDialog extends BaseNodeDialog {
+    private final SNodeReference myNodeReference;
 
-  public String calculateNodeIdentifier(HierarchyTreeNode treeNode) {
-    return PresentationManager.toString(treeNode.getNode());
-  }
+    public MyBaseNodeDialog(Project mpsProject, SNodeReference nodeReference) {
+      super(mpsProject, "Type Explorer");
+      myNodeReference = nodeReference;
 
-  private class MyBaseNodeDialog extends BaseNodeDialog {
-    private final HierarchyTreeNode myHierarchyTreeNode;
+      setHorizontalStretch(2f);
+      setVerticalStretch(2f);
 
-    public MyBaseNodeDialog(HierarchyTreeNode hierarchyTreeNode) throws HeadlessException {
-      super("", SupertypesTree.this.myOperationContext);
-      myHierarchyTreeNode = hierarchyTreeNode;
+      init();
     }
 
-    protected boolean saveChanges() {
-      return true;
-    }
-
+    @Override
     protected SNode getNode() {
-      return myHierarchyTreeNode.getNode();
+      // BaseNodeDialog runs #getNode() from model read action
+      return myNodeReference.resolve(getProject().getRepository());
     }
 
-    public DialogDimensions getDefaultDimensionSettings() {
-      return new DialogDimensions(200, 200, 200, 150);
+    @Override
+    protected JComponent createCenterPanel() {
+      return super.getMainComponent();
     }
 
-    protected JButton[] createButtons() {
-      JButton button = new JButton(new AbstractAction("OK") {
-        public void actionPerformed(ActionEvent e) {
-          MyBaseNodeDialog.this.dispose();
-        }
-      });
-      return new JButton[]{button};
+    @NotNull
+    @Override
+    protected Action[] createActions() {
+      return new Action[]{getOKAction()};
     }
   }
 }

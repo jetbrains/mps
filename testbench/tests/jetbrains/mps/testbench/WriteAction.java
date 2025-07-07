@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,30 @@
  */
 package jetbrains.mps.testbench;
 
-import jetbrains.mps.smodel.ModelAccess;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.junit.rules.MethodRule;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;
 
+import java.util.function.Supplier;
+
 public class WriteAction implements MethodRule {
+  private final Supplier<ModelAccess> myModelAccess;
+
+  public WriteAction(ModelAccess modelAccess) {
+    this(() -> modelAccess);
+  }
+
+  public WriteAction(Supplier<ModelAccess> modelAccess) {
+    myModelAccess = modelAccess;
+  }
+
   public Statement apply(final Statement base, FrameworkMethod method, Object target) {
     return new Statement() {
       public void evaluate() throws Throwable {
         final Throwable[] t = {null};
 
-        ModelAccess.instance().runWriteAction(new Runnable() {
+        myModelAccess.get().runWriteAction(new Runnable() {
           public void run() {
             try {
               base.evaluate();

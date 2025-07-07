@@ -15,10 +15,5 @@
  */
 package jetbrains.mps.generator.runtime;
 
-/**
- * Evgeny Gryaznov, Nov 29, 2010
- */
-public interface TemplateDropRootRule extends TemplateRuleWithCondition {
-
-  String getApplicableConcept();
+public interface TemplateDropRootRule extends TemplateRuleWithCondition, TemplateRuleForConcept {
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,18 @@
  */
 package jetbrains.mps.generator.runtime;
 
-import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Evgeny Gryaznov, 12/7/10
  */
-public interface TemplateRuleWithCondition {
+public interface TemplateRuleWithCondition extends TemplateRule {
 
-  SNodePointer getRuleNode();
-
-  boolean isApplicable(TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationException;
+  /**
+   * Tell whether rule can be applied in the context
+   * FIXME shall throw GenerationFailureException (neither Dismiss/Abandon nor Cancel could not get thrown from within) but has to
+   *       re-generate generated generators that implement this method (either with narrowed throws or without any at all)
+   * @since 3.3
+   */
+  boolean isApplicable(@NotNull TemplateContext context) throws GenerationException;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,27 +15,43 @@
  */
 package jetbrains.mps.generator.runtime;
 
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.language.LanguageRuntime;
+import jetbrains.mps.smodel.language.GeneratorRuntime;
+import org.jetbrains.mps.openapi.language.SLanguage;
 
 import java.util.Collection;
 
 /**
  * evgeny, 3/10/11
  */
-public interface TemplateModule {
+public interface TemplateModule extends GeneratorRuntime {
 
-  LanguageRuntime getSourceLanguage();
-
-  ModuleReference getReference();
-
+  /**
+   * @return collection (possibly empty) of priority rules defined in this generator module, never {@code null}.
+   */
   Collection<TemplateMappingPriorityRule> getPriorities();
 
+  /**
+   * @return set of models in the generator module, generally not empty, never {@code null}.
+   */
   Collection<TemplateModel> getModels();
 
-  Collection<String> getReferencedModules();
+  /**
+   * Generators this generator explicitly extends. This effectively means rules and switches from all
+   * extended generators are considered.
+   */
+  Collection<TemplateModule> getExtendedGenerators();
 
-  Collection<String> getUsedLanguages();
+  /**
+   * Generators that are utilized by this one, e.g. by invoking their templates, <em>excluding</em> extended generators.
+   * Employed generators do not contribute their reduction rules (other than those involved through $SWITCH$ call of invoked template)
+   */
+  Collection<TemplateModule> getEmployedGenerators();
+
+  /**
+   * Languages this generator might produce. Exact set of languages used in generator outcome depends on actual execution and
+   * is always a subset of this set.
+   */
+  Collection<SLanguage> getTargetLanguages();
 
   String getAlias();
 }

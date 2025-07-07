@@ -15,7 +15,8 @@
  */
 package jetbrains.mps.typesystem;
 
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.performance.IPerformanceTracer;
 
@@ -26,9 +27,9 @@ import java.util.Map.Entry;
 public class TypeSystemReporter {
   private static TypeSystemReporter instance = null;
   private boolean isEnabled = false;
-  private Map<String, Pair<Long, Long>> myGetTypeOfTime = new HashMap<String, Pair<Long, Long>>();
-  private Map<String, Pair<Long, Long>> myIsSubTypeTime = new HashMap<String, Pair<Long, Long>>();
-  private Map<String, Pair<Long, Long>> myCoerceTime = new HashMap<String, Pair<Long, Long>>();
+  private Map<String, Pair<Long, Long>> myGetTypeOfTime = new HashMap<>();
+  private Map<String, Pair<Long, Long>> myIsSubTypeTime = new HashMap<>();
+  private Map<String, Pair<Long, Long>> myCoerceTime = new HashMap<>();
 
   private TypeSystemReporter() {
 
@@ -50,7 +51,7 @@ public class TypeSystemReporter {
 
   public void reportTypeOf(SNode node, long time) {
     if (!isEnabled) return;
-    String conceptFqName = node.getConceptFqName();
+    String conceptFqName = node.getConcept().getQualifiedName();
     report(time, conceptFqName, myGetTypeOfTime);
   }
 
@@ -58,7 +59,7 @@ public class TypeSystemReporter {
     if (!isEnabled) return;
     Pair<Long, Long> value = map.get(conceptFqName);
     if (value == null) {
-      value = new Pair<Long, Long>(0L, 0L);
+      value = new Pair<>(0L, 0L);
       map.put(conceptFqName, value);
     }
     value.o1 += time;
@@ -67,13 +68,15 @@ public class TypeSystemReporter {
 
   public void reportIsSubType(SNode subType, SNode superType, long time) {
     if (!isEnabled || null == subType || null == superType) return;
-    String conceptFqName = subType.getConceptFqName() + "   " + superType.getConceptFqName();
+    String conceptFqName = subType.getConcept().getQualifiedName() + "   " + superType.getConcept().getQualifiedName();
     report(time, conceptFqName, myIsSubTypeTime);
   }
 
-  public void reportCoerce(SNode subType, String fq, long time) {
-    if (!isEnabled || null == subType) return;
-    String conceptFqName = subType.getConceptFqName() + "   " + fq;
+  public void reportCoerce(SNode subType, SAbstractConcept concept, long time) {
+    if (!isEnabled || null == subType) {
+      return;
+    }
+    String conceptFqName = subType.getConcept().getQualifiedName() + "   " + concept.getQualifiedName();
     report(time, conceptFqName, myCoerceTime);
   }
 
@@ -89,15 +92,10 @@ public class TypeSystemReporter {
 
   public void printMapReport(Map<String, Pair<Long, Long>> map, int numTop, IPerformanceTracer tracer) {
     if (!isEnabled) return;
-    ArrayList<Entry<String, Pair<Long, Long>>> list = new ArrayList<Entry<String, Pair<Long, Long>>>();
+    ArrayList<Entry<String, Pair<Long, Long>>> list = new ArrayList<>();
     list.addAll(map.entrySet());
 
-    Collections.sort(list, new Comparator<Entry<String, Pair<Long, Long>>>() {
-      @Override
-      public int compare(Entry<String, Pair<Long, Long>> o1, Entry<String, Pair<Long, Long>> o2) {
-        return o2.getValue().o1 > o1.getValue().o1 ? 1 : -1;
-      }
-    });
+    Collections.sort(list, Comparator.comparing(o -> o.getValue().o1));
     long sum = 0;
     int i = 0;
     for (Entry<String, Pair<Long, Long>> entry : list) {
@@ -114,7 +112,7 @@ public class TypeSystemReporter {
         sb.append(name.substring(beginIndex));
        
       }
-      tracer.addText(String.format(sb.toString() + " %.3f s,  %d times", entry.getValue().o1 * 1.0e-9, entry.getValue().o2));
+      tracer.addText(String.format(sb + " %.3f s,  %d times", entry.getValue().o1 * 1.0e-9, entry.getValue().o2));
     }
     tracer.addText("Total: " + sum * 1.0e-9);
   }

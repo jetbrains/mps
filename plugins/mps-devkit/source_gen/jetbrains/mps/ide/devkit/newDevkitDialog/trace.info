@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:00000000-0000-4000-0000-011c895904a8(jetbrains.mps.ide.devkit.newDevkitDialog)/6249396921771873248">
+    <file name="NewDevKitDialog.java">
+      <node id="6249396921772398005" at="18,78,19,34" concept="6" />
+      <node id="6249396921771873273" at="19,34,20,27" concept="1" />
+      <node id="2416721513764783778" at="20,27,21,0" concept="5" />
+      <node id="6249396921771873276" at="21,0,22,11" concept="1" />
+      <node id="8502822873944028076" at="26,32,27,51" concept="3" />
+      <node id="8502822873944028080" at="27,51,28,59" concept="3" />
+      <node id="8502822873944050895" at="28,59,29,81" concept="1" />
+      <node id="2729157578428856464" at="29,81,30,79" concept="1" />
+      <node id="8502822873944057057" at="30,79,31,21" concept="1" />
+      <node id="8502822873943873753" at="35,35,36,36" concept="4" />
+      <node id="8502822873944064323" at="44,47,45,27" concept="4" />
+      <node id="289384041348478753" at="49,47,50,44" concept="4" />
+      <node id="8502822873943856665" at="34,0,38,0" concept="2" trace="getExtension#()Ljava/lang/String;" />
+      <node id="3280470395343105012" at="43,0,47,0" concept="2" trace="getDefaultModuleName#()Ljava/lang/String;" />
+      <node id="3280470395343105019" at="48,0,52,0" concept="2" trace="getDefaultModulePath#()Ljava/lang/String;" />
+      <node id="6249396921771873268" at="18,0,24,0" concept="0" trace="NewDevKitDialog#(Ljetbrains/mps/project/MPSProject;Ljava/lang/String;)V" />
+      <node id="8502822873943856679" at="25,0,33,0" concept="2" trace="runCreation#()V" />
+      <node id="1270586362337293457" at="40,69,52,6" concept="4" />
+      <node id="8502822873943856671" at="39,0,54,0" concept="2" trace="createSettingsInstance#()Ljetbrains/mps/ide/ui/dialogs/modules/AbstractModuleCreationSettings;" />
+      <scope id="8502822873943856669" at="35,35,36,36" />
+      <scope id="3280470395343105017" at="44,47,45,27" />
+      <scope id="3280470395343105034" at="49,47,50,44" />
+      <scope id="6249396921771873272" at="18,78,22,11" />
+      <scope id="8502822873943856665" at="34,0,38,0" />
+      <scope id="3280470395343105012" at="43,0,47,0" />
+      <scope id="3280470395343105019" at="48,0,52,0" />
+      <scope id="8502822873943856683" at="26,32,31,21">
+        <var name="devkitLocation" id="8502822873944028081" />
+        <var name="devkitName" id="8502822873944028077" />
+      </scope>
+      <scope id="6249396921771873268" at="18,0,24,0">
+        <var name="project" id="6249396921771873270" />
+        <var name="virtualFolder" id="8502822873943820389" />
+      </scope>
+      <scope id="8502822873943856679" at="25,0,33,0" />
+      <scope id="8502822873943856675" at="40,69,52,6" />
+      <scope id="8502822873943856671" at="39,0,54,0" />
+      <unit id="3280470395343103100" at="41,15,52,5" name="jetbrains.mps.ide.devkit.newDevkitDialog.NewDevKitDialog$1" />
+      <unit id="6249396921771873248" at="15,0,55,0" name="jetbrains.mps.ide.devkit.newDevkitDialog.NewDevKitDialog" />
+    </file>
+  </root>
+</debug-info>
+

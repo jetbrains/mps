@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,249 +15,187 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.project.SModelRoot;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
+import jetbrains.mps.project.SModuleOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectSupport;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum LanguageAspect {
-  STRUCTURE("structure") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.STRUCTURE;
-    }
+  //mostly migrated
+  STRUCTURE("structure", BootstrapLanguages.structureLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "structure.html"),
 
-    public String getHelpURL() {
-      return CONFLUENCE_BASE + "Structure";
-    }
-  },
+  //mostly migrated
+  EDITOR("editor", BootstrapLanguages.editorLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "editor.html  "),
 
-  EDITOR("editor") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.EDITOR;
-    }
+  //mostly migrated
+  ACTIONS("actions", BootstrapLanguages.actionsLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "editor-actions.html"),
 
-    public String getHelpURL() {
-      return CONFLUENCE_BASE + "Editor";
-    }
-  },
-
-  ACTIONS("actions") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.ACTIONS;
-    }
-
-    public String getHelpURL() {
-      return CONFLUENCE_BASE + "Editor+Actions";
+  //mostly migrated
+  CONSTRAINTS("constraints", BootstrapLanguages.constraintsLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "constraints.html") {
+    @Override
+    public Collection<SLanguage> getMainLanguages() {
+      Collection<SLanguage> mainLanguages = new ArrayList<>();
+      LanguageAspectDescriptor aspectDescriptor = LanguageAspectSupport.getAspectDescriptorById(getName());
+      if (aspectDescriptor != null) {
+        mainLanguages.addAll(aspectDescriptor.getMainLanguages());
+      }
+      SLanguage bootstrapLang = MetaAdapterFactory.getLanguage(getMainLanguage());
+      return Stream.concat(mainLanguages.stream(), Stream.of(bootstrapLang))
+                   .distinct()
+                   .collect(Collectors.toList());
     }
   },
 
-  CONSTRAINTS("constraints") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.CONSTRAINTS;
-    }
+  //mostly migrated
+  BEHAVIOR("behavior", BootstrapLanguages.behaviorLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "behavior.html"),
 
-    public String getHelpURL() {
-      return CONFLUENCE_BASE + "Constraints";
-    }
-  },
+  //mostly migrated
+  TYPESYSTEM("typesystem", BootstrapLanguages.typesystemLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "typesystem.html"),
 
-  BEHAVIOR("behavior") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.BEHAVIOR;
-    }
+  //mostly migrated
+  REFACTORINGS("refactorings", BootstrapLanguages.refactoringLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "refactoring.html"),
 
-    public String getHelpURL() {
-      return CONFLUENCE_BASE + "Behavior";
-    }
-  },
+  //mostly migrated
+  SCRIPTS("scripts", BootstrapLanguages.scriptLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "scripts.html"),
 
-  TYPESYSTEM("typesystem") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.TYPESYSTEM;
-    }
+  //mostly migrated
+  INTENTIONS("intentions", BootstrapLanguages.intentionsLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "intentions.html"),
 
-    public List<ModuleReference> getAllLanguagesToImport(Language l) {
-      List<ModuleReference> result = new ArrayList<ModuleReference>(super.getAllLanguagesToImport(l));
-      result.add(l.getModuleReference());
+  //mostly migrated
+  FIND_USAGES("findUsages", BootstrapLanguages.findUsagesLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "find-usages.html"),
+
+  //migrated, uncomment when migration is finished [compatibility] and deprecate this class
+  PLUGIN("plugin", null, LanguageAspect.HELP_CENTER_BASE + "plugin.html") {
+    @Override
+    public Collection<SLanguage> getMainLanguages() {
+      ArrayList<SLanguage> result = new ArrayList<>();
+      result.add(MetaAdapterFactory.getLanguage(BootstrapLanguages.pluginLanguageRef()));
+      result.add(MetaAdapterFactory.getLanguage(BootstrapLanguages.aspectLanguageRef()));
       return result;
     }
-
-    public String getHelpURL() {
-      return CONFLUENCE_BASE + "Typesystem";
-    }
   },
 
-  REFACTORINGS("refactorings") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.REFACTORING;
-    }
+  //mostly migrated
+  DATA_FLOW("dataFlow", BootstrapLanguages.dataFlowLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "data-flow.html"),
 
-    public String getHelpURL() {
-      return "";
-    }
-  },
+  //mostly migrated
+  TEST("test", BootstrapLanguages.testLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "testing-languages.html"),
 
-  SCRIPTS("scripts") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.SCRIPT;
-    }
+  //mostly migrated
+  TEXT_GEN("textGen", BootstrapLanguages.textGenLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "textGen.html"),
 
-    public String getHelpURL() {
-      return "";
-    }
-  },
+  //mostly migrated
+  MIGRATION("migration", BootstrapLanguages.migrationLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "migrations.html");
 
-  INTENTIONS("intentions") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.INTENTIONS;
-    }
-
-    public String getHelpURL() {
-      return CONFLUENCE_BASE + "Intentions";
-    }
-  },
-
-  FIND_USAGES("findUsages") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.FIND_USAGES;
-    }
-
-    public String getHelpURL() {
-      return CONFLUENCE_BASE + "Find+usages";
-    }
-  },
-
-  @Deprecated
-  PLUGIN("plugin") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.MAKE_FACET;
-    }
-
-    public String getHelpURL() {
-      return "";
-    }
-  },
-
-  DATA_FLOW("dataFlow") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.DATA_FLOW;
-    }
-
-    public String getHelpURL() {
-      return CONFLUENCE_BASE + "Data+flow#Dataflow-intermediatelanguage";
-    }
-  },
-
-  TEST("test") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.TEST;
-    }
-
-    public String getHelpURL() {
-      return CONFLUENCE_BASE + "Language+tests+language#Languagetestslanguage-introduction";
-    }
-  },
-
-  TEXT_GEN("textGen") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.TEXT_GEN;
-    }
-
-    public String getHelpURL() {
-      return "";
-    }
-  },
-
-  STUBS("stubs") {
-    public ModuleReference getMainLanguage() {
-      return BootstrapLanguages.STUBS;
-    }
-
-    public String getHelpURL() {
-      return "";
-    }
-  },;
-
-  private static final String CONFLUENCE_BASE = "http://confluence.jetbrains.com/display/MPSD25/";
+  //TODO must be changed for each major/minor version release
+  public static final String HELP_CENTER_BASE = "https://www.jetbrains.com/help/mps/2021.1/";
 
   private String myName;
+  private final SModuleReference myMainLang;
+  private final String myHelpURL;
 
-  LanguageAspect(String name) {
+  LanguageAspect(String name, SModuleReference mainLang, String helpURL) {
     myName = name;
+    myMainLang = mainLang;
+    myHelpURL = helpURL;
   }
 
-  public boolean is(SModel model) {
-    return is(model.getModelDescriptor());
+  /**
+   * INTERNAL USE ONLY.
+   * Builds a class name of an aspect class according to hardcoded MPS convention.
+   */
+  public String getAspectQualifiedClassName(@NotNull SAbstractConcept concept) {
+    return concept.getLanguage().getQualifiedName() + '.' + getName() + '.' + concept.getName();
   }
 
-  public boolean is(SModelDescriptor sm) {
-    return Language.getModelAspect(sm) == this;
+  public boolean is(@NotNull SModel sm) {
+    SModule module = sm.getModule();
+    if (!(module instanceof Language)) return false;
+    return get(((Language) module)) == sm;
   }
 
-  public DefaultSModelDescriptor get(Language l) {
+  @Nullable
+  public SModel get(Language l) {
     return get_internal(l, false);
   }
 
-  public EditableSModelDescriptor getOrCreate(Language l) {
+  public SModel getOrCreate(Language l) {
     return get_internal(l, true);
   }
 
-  private DefaultSModelDescriptor get_internal(Language l, boolean doCreate) {
-    SModelFqName fqName = new SModelFqName(l.getModuleFqName() + "." + myName, null);
-
-    EditableSModelDescriptor md = (EditableSModelDescriptor) SModelRepository.getInstance().getModelDescriptor(fqName);
-    if (md != null && SModelRepository.getInstance().getOwners(md).contains(l)) return ((DefaultSModelDescriptor) md);
-    return doCreate ? ((DefaultSModelDescriptor) createNew(l)) : null;
-  }
-
-  public SModelReference get(ModuleReference l) {
-    return new SModelReference(l.getModuleFqName() + "." + myName, null);
+  private SModel get_internal(Language l, boolean doCreate) {
+    final String aspectModelName = l.getModuleName() + "." + myName;
+    for (SModel md : l.getModels()) {
+      if (aspectModelName.equals(md.getModelName())) {
+        return md;
+      }
+    }
+    return doCreate ? createNew(l) : null;
   }
 
   public String getName() {
     return myName;
   }
 
-  public EditableSModelDescriptor createNew(Language l) {
+  public SModel createNew(Language l) {
     return createNew(l, true);
   }
 
-  public EditableSModelDescriptor createNew(final Language l, final boolean saveModel) {
+  public SModel createNew(final Language l, final boolean saveModel) {
     assert get(l) == null;
 
-    SModelDescriptor structureModel = l.getStructureModelDescriptor();
-    SModelRoot modelRoot;
+    SModel structureModel = l.getStructureModelDescriptor();
+    ModelRoot modelRoot;
     if (structureModel == null) {
-      modelRoot = l.getSModelRoots().iterator().next();
+      modelRoot = l.getModelRoots().iterator().next();
     } else {
-      modelRoot = ModelRootUtil.getSModelRoot(structureModel);
+      modelRoot = structureModel.getModelRoot();
     }
-    return l.createModel(getModuleUID(l), modelRoot, null);
-  }
-
-  public List<ModuleReference> getAllLanguagesToImport(Language l) {
-    List<ModuleReference> result = new ArrayList<ModuleReference>();
-    if (getMainLanguage() != null) {
-      result.add(getMainLanguage());
-    }
-    return result;
+    return SModuleOperations.createModelWithAdjustments(l.getModuleName() + '.' + getName(), modelRoot);
   }
 
   @Nullable
-  public abstract String getHelpURL();
-
-  public abstract ModuleReference getMainLanguage();
-
-  private SModelFqName getModuleUID(Language l) {
-    return new SModelFqName(l.getModuleFqName() + "." + getName(), "");
+  public String getHelpURL() {
+    return myHelpURL;
   }
 
-  public static Collection<EditableSModelDescriptor> getAspectModels(Language l) {
-    Set<EditableSModelDescriptor> result = new HashSet<EditableSModelDescriptor>();
+  // FIXME tell it as SLanguage
+  // refactor to have constants as fields, not as methods
+  @Deprecated
+  public SModuleReference getMainLanguage() {
+    return myMainLang;
+  }
+
+  public Collection<SLanguage> getMainLanguages() {
+    ArrayList<SLanguage> res = new ArrayList<>();
+    res.add(MetaAdapterFactory.getLanguage(getMainLanguage()));
+    return res;
+  }
+
+  @Deprecated
+  @ToRemove(version = 3.3)
+  //not used in MPS
+  //use jetbrains.mps.smodel.language.LanguageAspectSupport.getAspectModels()
+  public static Collection<SModel> getAspectModels(Language l) {
+    Set<SModel> result = new HashSet<>();
     for (LanguageAspect aspect : LanguageAspect.values()) {
-      EditableSModelDescriptor asp = aspect.get(l);
+      SModel asp = aspect.get(l);
       if (asp != null) {
         result.add(asp);
       }

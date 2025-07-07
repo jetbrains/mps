@@ -1,312 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="Calculator_Language.java" startLine="9" startPosition="0" endLine="16" endPosition="0" unitName="jetbrains.mps.calculator.structure.Calculator_Language" />
-  <unitInfo fileName="StructureAspectDescriptor.java" startLine="10" startPosition="0" endLine="31" endPosition="0" unitName="jetbrains.mps.calculator.structure.StructureAspectDescriptor" />
-  <root nodeId="1241362555920" modelId="r:87765d2d-a756-4883-9acc-6a42e5bf6c23(jetbrains.mps.calculator.structure)">
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="17" startPosition="97" endLine="18" endPosition="87" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="18" startPosition="87" endLine="19" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="NAME" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="19" startPosition="43" endLine="20" endPosition="68" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="SHORT_DESCRIPTION" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="20" startPosition="68" endLine="21" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="ALIAS" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="21" startPosition="45" endLine="22" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="VIRTUAL_PACKAGE" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="22" startPosition="64" endLine="23" endPosition="56" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="INPUT_FIELD" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="23" startPosition="56" endLine="24" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="OUTPUT_FIELD" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="24" startPosition="58" endLine="25" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="SMODEL_ATTRIBUTE" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="27" startPosition="33" endLine="28" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="31" startPosition="27" endLine="32" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="35" startPosition="37" endLine="36" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="39" startPosition="39" endLine="40" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="43" startPosition="49" endLine="44" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="47" startPosition="28" endLine="48" endPosition="46" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="51" startPosition="38" endLine="52" endPosition="46" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="55" startPosition="37" endLine="56" endPosition="56" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="59" startPosition="47" endLine="60" endPosition="56" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="63" startPosition="36" endLine="64" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="67" startPosition="45" endLine="68" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="71" startPosition="44" endLine="72" endPosition="70" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="75" startPosition="46" endLine="76" endPosition="48" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="79" startPosition="66" endLine="80" endPosition="57" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="83" startPosition="37" endLine="84" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="87" startPosition="47" endLine="88" endPosition="69" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="91" startPosition="46" endLine="92" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="95" startPosition="48" endLine="96" endPosition="49" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="99" startPosition="69" endLine="100" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="103" startPosition="41" endLine="104" endPosition="59" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="107" startPosition="49" endLine="108" endPosition="71" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="111" startPosition="48" endLine="112" endPosition="74" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="115" startPosition="50" endLine="116" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="119" startPosition="69" endLine="120" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="123" startPosition="65" endLine="124" endPosition="168" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="127" startPosition="51" endLine="128" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="26" startPosition="0" endLine="29" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="Calculator#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="30" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="34" startPosition="0" endLine="38" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setName#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="38" startPosition="0" endLine="42" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getShortDescription#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="42" startPosition="0" endLine="46" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setShortDescription#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="46" startPosition="0" endLine="50" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAlias#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="50" startPosition="0" endLine="54" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setAlias#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="54" startPosition="0" endLine="58" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getVirtualPackage#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="58" startPosition="0" endLine="62" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setVirtualPackage#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="62" startPosition="0" endLine="66" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getInputFieldsCount#()I" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="66" startPosition="0" endLine="70" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="inputFields#()Ljava/util/Iterator;" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="70" startPosition="0" endLine="74" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getInputFields#()Ljava/util/List;" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="74" startPosition="0" endLine="78" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="addInputField#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="78" startPosition="0" endLine="82" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="insertInputField#(Ljetbrains/mps/smodel/INodeAdapter;Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="82" startPosition="0" endLine="86" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getOutputFieldsCount#()I" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="86" startPosition="0" endLine="90" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="outputFields#()Ljava/util/Iterator;" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="90" startPosition="0" endLine="94" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getOutputFields#()Ljava/util/List;" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="94" startPosition="0" endLine="98" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="addOutputField#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="98" startPosition="0" endLine="102" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="insertOutputField#(Ljetbrains/mps/smodel/INodeAdapter;Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="102" startPosition="0" endLine="106" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSmodelAttributesCount#()I" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="106" startPosition="0" endLine="110" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="smodelAttributes#()Ljava/util/Iterator;" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="110" startPosition="0" endLine="114" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSmodelAttributes#()Ljava/util/List;" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="114" startPosition="0" endLine="118" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="addSmodelAttribute#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="118" startPosition="0" endLine="122" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="insertSmodelAttribute#(Ljetbrains/mps/smodel/INodeAdapter;Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="122" startPosition="0" endLine="126" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/calculator/structure/Calculator;" />
-    <nodeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="126" startPosition="0" endLine="130" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/calculator/structure/Calculator;" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="27" startPosition="33" endLine="28" endPosition="16" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="31" startPosition="27" endLine="32" endPosition="45" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="35" startPosition="37" endLine="36" endPosition="45" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="39" startPosition="39" endLine="40" endPosition="58" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="43" startPosition="49" endLine="44" endPosition="58" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="47" startPosition="28" endLine="48" endPosition="46" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="51" startPosition="38" endLine="52" endPosition="46" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="55" startPosition="37" endLine="56" endPosition="56" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="59" startPosition="47" endLine="60" endPosition="56" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="63" startPosition="36" endLine="64" endPosition="54" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="67" startPosition="45" endLine="68" endPosition="67" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="71" startPosition="44" endLine="72" endPosition="70" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="75" startPosition="46" endLine="76" endPosition="48" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="79" startPosition="66" endLine="80" endPosition="57" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="83" startPosition="37" endLine="84" endPosition="55" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="87" startPosition="47" endLine="88" endPosition="69" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="91" startPosition="46" endLine="92" endPosition="72" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="95" startPosition="48" endLine="96" endPosition="49" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="99" startPosition="69" endLine="100" endPosition="58" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="103" startPosition="41" endLine="104" endPosition="59" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="107" startPosition="49" endLine="108" endPosition="71" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="111" startPosition="48" endLine="112" endPosition="74" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="115" startPosition="50" endLine="116" endPosition="53" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="119" startPosition="69" endLine="120" endPosition="62" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="123" startPosition="65" endLine="124" endPosition="168" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="127" startPosition="51" endLine="128" endPosition="45" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="26" startPosition="0" endLine="29" endPosition="3">
-      <varInfo nodeId="1241362555920" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="30" startPosition="0" endLine="34" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="34" startPosition="0" endLine="38" endPosition="0">
-      <varInfo nodeId="1241362555920" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="38" startPosition="0" endLine="42" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="42" startPosition="0" endLine="46" endPosition="0">
-      <varInfo nodeId="1241362555920" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="46" startPosition="0" endLine="50" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="50" startPosition="0" endLine="54" endPosition="0">
-      <varInfo nodeId="1241362555920" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="54" startPosition="0" endLine="58" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="58" startPosition="0" endLine="62" endPosition="0">
-      <varInfo nodeId="1241362555920" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="62" startPosition="0" endLine="66" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="66" startPosition="0" endLine="70" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="70" startPosition="0" endLine="74" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="74" startPosition="0" endLine="78" endPosition="0">
-      <varInfo nodeId="1241362555920" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="78" startPosition="0" endLine="82" endPosition="0">
-      <varInfo nodeId="1241362555920" varName="node" />
-      <varInfo nodeId="1241362555920" varName="prev" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="82" startPosition="0" endLine="86" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="86" startPosition="0" endLine="90" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="90" startPosition="0" endLine="94" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="94" startPosition="0" endLine="98" endPosition="0">
-      <varInfo nodeId="1241362555920" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="98" startPosition="0" endLine="102" endPosition="0">
-      <varInfo nodeId="1241362555920" varName="node" />
-      <varInfo nodeId="1241362555920" varName="prev" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="102" startPosition="0" endLine="106" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="106" startPosition="0" endLine="110" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="110" startPosition="0" endLine="114" endPosition="0" />
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="114" startPosition="0" endLine="118" endPosition="0">
-      <varInfo nodeId="1241362555920" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="118" startPosition="0" endLine="122" endPosition="0">
-      <varInfo nodeId="1241362555920" varName="node" />
-      <varInfo nodeId="1241362555920" varName="prev" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="122" startPosition="0" endLine="126" endPosition="0">
-      <varInfo nodeId="1241362555920" varName="init" />
-      <varInfo nodeId="1241362555920" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362555920" fileName="Calculator.java" startLine="126" startPosition="0" endLine="130" endPosition="0">
-      <varInfo nodeId="1241362555920" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="1241362555920" fileName="Calculator.java" startLine="17" startPosition="0" endLine="131" endPosition="0" unitName="jetbrains.mps.calculator.structure.Calculator" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root>
+    <file name="ConceptPresentationAspectImpl.java">
+      <unit at="11,0,54,0" name="jetbrains.mps.calculator.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <unit at="10,0,34,0" name="jetbrains.mps.calculator.structure.LanguageConceptSwitch" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <unit at="16,0,101,0" name="jetbrains.mps.calculator.structure.StructureAspectDescriptor" />
+    </file>
   </root>
-  <root nodeId="1241362608529" modelId="r:87765d2d-a756-4883-9acc-6a42e5bf6c23(jetbrains.mps.calculator.structure)">
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="15" startPosition="70" endLine="16" endPosition="87" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="16" startPosition="87" endLine="17" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="NAME" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="17" startPosition="43" endLine="18" endPosition="68" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="SHORT_DESCRIPTION" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="18" startPosition="68" endLine="19" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="ALIAS" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="19" startPosition="45" endLine="20" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="VIRTUAL_PACKAGE" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="20" startPosition="64" endLine="21" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="SMODEL_ATTRIBUTE" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="23" startPosition="33" endLine="24" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="27" startPosition="27" endLine="28" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="31" startPosition="37" endLine="32" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="35" startPosition="39" endLine="36" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="39" startPosition="49" endLine="40" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="43" startPosition="28" endLine="44" endPosition="46" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="47" startPosition="38" endLine="48" endPosition="46" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="51" startPosition="37" endLine="52" endPosition="56" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="55" startPosition="47" endLine="56" endPosition="56" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="59" startPosition="41" endLine="60" endPosition="59" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="63" startPosition="49" endLine="64" endPosition="71" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="67" startPosition="48" endLine="68" endPosition="74" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="71" startPosition="50" endLine="72" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="75" startPosition="69" endLine="76" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="79" startPosition="65" endLine="80" endPosition="168" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="83" startPosition="51" endLine="84" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="22" startPosition="0" endLine="25" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="InputField#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="26" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="30" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setName#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="34" startPosition="0" endLine="38" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getShortDescription#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="38" startPosition="0" endLine="42" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setShortDescription#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="42" startPosition="0" endLine="46" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAlias#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="46" startPosition="0" endLine="50" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setAlias#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="50" startPosition="0" endLine="54" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getVirtualPackage#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="54" startPosition="0" endLine="58" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setVirtualPackage#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="58" startPosition="0" endLine="62" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSmodelAttributesCount#()I" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="62" startPosition="0" endLine="66" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="smodelAttributes#()Ljava/util/Iterator;" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="66" startPosition="0" endLine="70" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSmodelAttributes#()Ljava/util/List;" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="70" startPosition="0" endLine="74" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="addSmodelAttribute#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="74" startPosition="0" endLine="78" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="insertSmodelAttribute#(Ljetbrains/mps/smodel/INodeAdapter;Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="78" startPosition="0" endLine="82" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/calculator/structure/InputField;" />
-    <nodeInfo nodeId="1241362608529" fileName="InputField.java" startLine="82" startPosition="0" endLine="86" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/calculator/structure/InputField;" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="23" startPosition="33" endLine="24" endPosition="16" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="27" startPosition="27" endLine="28" endPosition="45" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="31" startPosition="37" endLine="32" endPosition="45" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="35" startPosition="39" endLine="36" endPosition="58" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="39" startPosition="49" endLine="40" endPosition="58" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="43" startPosition="28" endLine="44" endPosition="46" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="47" startPosition="38" endLine="48" endPosition="46" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="51" startPosition="37" endLine="52" endPosition="56" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="55" startPosition="47" endLine="56" endPosition="56" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="59" startPosition="41" endLine="60" endPosition="59" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="63" startPosition="49" endLine="64" endPosition="71" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="67" startPosition="48" endLine="68" endPosition="74" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="71" startPosition="50" endLine="72" endPosition="53" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="75" startPosition="69" endLine="76" endPosition="62" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="79" startPosition="65" endLine="80" endPosition="168" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="83" startPosition="51" endLine="84" endPosition="45" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="22" startPosition="0" endLine="25" endPosition="3">
-      <varInfo nodeId="1241362608529" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="26" startPosition="0" endLine="30" endPosition="0" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="30" startPosition="0" endLine="34" endPosition="0">
-      <varInfo nodeId="1241362608529" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="34" startPosition="0" endLine="38" endPosition="0" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="38" startPosition="0" endLine="42" endPosition="0">
-      <varInfo nodeId="1241362608529" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="42" startPosition="0" endLine="46" endPosition="0" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="46" startPosition="0" endLine="50" endPosition="0">
-      <varInfo nodeId="1241362608529" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="50" startPosition="0" endLine="54" endPosition="0" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="54" startPosition="0" endLine="58" endPosition="0">
-      <varInfo nodeId="1241362608529" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="58" startPosition="0" endLine="62" endPosition="0" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="62" startPosition="0" endLine="66" endPosition="0" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="66" startPosition="0" endLine="70" endPosition="0" />
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="70" startPosition="0" endLine="74" endPosition="0">
-      <varInfo nodeId="1241362608529" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="74" startPosition="0" endLine="78" endPosition="0">
-      <varInfo nodeId="1241362608529" varName="node" />
-      <varInfo nodeId="1241362608529" varName="prev" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="78" startPosition="0" endLine="82" endPosition="0">
-      <varInfo nodeId="1241362608529" varName="init" />
-      <varInfo nodeId="1241362608529" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362608529" fileName="InputField.java" startLine="82" startPosition="0" endLine="86" endPosition="0">
-      <varInfo nodeId="1241362608529" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="1241362608529" fileName="InputField.java" startLine="15" startPosition="0" endLine="87" endPosition="0" unitName="jetbrains.mps.calculator.structure.InputField" />
+  <root nodeRef="r:87765d2d-a756-4883-9acc-6a42e5bf6c23(jetbrains.mps.calculator.structure)/1241362555920">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1241362555920" at="12,0,13,0" concept="1" trace="props_Calculator" />
+      <node id="1241362555920" at="23,39,24,76" concept="3" />
+      <node id="1241362555920" at="24,76,25,35" concept="0" />
+      <node id="1241362555920" at="25,35,26,42" concept="0" />
+      <node id="1241362555920" at="27,9,28,32" concept="4" />
+      <node id="1241362555920" at="22,44,27,9" concept="2" />
+      <scope id="1241362555920" at="23,39,26,42">
+        <var name="cpb" id="1241362555920" />
+      </scope>
+      <scope id="1241362555920" at="22,44,28,32" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1241362555920" at="12,0,13,0" concept="5" trace="Calculator" />
+      <node id="1241362555920" at="18,116,19,44" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1241362555920" at="17,0,18,0" concept="1" trace="myConceptCalculator" />
+      <node id="1241362555920" at="44,44,45,35" concept="4" />
+      <node id="1241362555920" at="62,68,63,164" concept="3" />
+      <node id="1241362555920" at="63,164,64,33" concept="0" />
+      <node id="1241362555920" at="64,33,65,71" concept="0" />
+      <node id="1241362555920" at="65,71,66,76" concept="0" />
+      <node id="1241362555920" at="66,76,67,76" concept="0" />
+      <node id="1241362555920" at="67,76,68,105" concept="0" />
+      <node id="1241362555920" at="68,105,69,17" concept="0" />
+      <node id="1241362671336" at="69,17,70,186" concept="0" />
+      <node id="1241362849617" at="70,186,71,187" concept="0" />
+      <node id="1241362555920" at="71,187,72,22" concept="4" />
+      <node id="1241362555920" at="62,0,74,0" concept="6" trace="createDescriptorForCalculator#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1241362555920" at="44,44,45,35" />
+      <scope id="1241362555920" at="62,68,72,22">
+        <var name="b" id="1241362555920" />
+      </scope>
+      <scope id="1241362555920" at="62,0,74,0" />
+    </file>
   </root>
-  <root nodeId="1241362815640" modelId="r:87765d2d-a756-4883-9acc-6a42e5bf6c23(jetbrains.mps.calculator.structure)">
-    <nodeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="12" startPosition="46" endLine="13" endPosition="88" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="13" startPosition="88" endLine="14" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="EXPRESSION" />
-    <nodeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="16" startPosition="34" endLine="17" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="20" startPosition="37" endLine="21" endPosition="80" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="24" startPosition="46" endLine="25" endPosition="49" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="28" startPosition="66" endLine="29" endPosition="170" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="32" startPosition="52" endLine="33" endPosition="46" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="15" startPosition="0" endLine="18" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="OutputField#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="19" startPosition="0" endLine="23" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getExpression#()Ljetbrains/mps/smodel/INodeAdapter;" />
-    <nodeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="23" startPosition="0" endLine="27" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setExpression#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="27" startPosition="0" endLine="31" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/calculator/structure/OutputField;" />
-    <nodeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="31" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/calculator/structure/OutputField;" />
-    <scopeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="16" startPosition="34" endLine="17" endPosition="16" />
-    <scopeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="20" startPosition="37" endLine="21" endPosition="80" />
-    <scopeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="24" startPosition="46" endLine="25" endPosition="49" />
-    <scopeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="28" startPosition="66" endLine="29" endPosition="170" />
-    <scopeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="32" startPosition="52" endLine="33" endPosition="46" />
-    <scopeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="15" startPosition="0" endLine="18" endPosition="3">
-      <varInfo nodeId="1241362815640" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="19" startPosition="0" endLine="23" endPosition="0" />
-    <scopeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="23" startPosition="0" endLine="27" endPosition="0">
-      <varInfo nodeId="1241362815640" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="27" startPosition="0" endLine="31" endPosition="0">
-      <varInfo nodeId="1241362815640" varName="init" />
-      <varInfo nodeId="1241362815640" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241362815640" fileName="OutputField.java" startLine="31" startPosition="0" endLine="35" endPosition="0">
-      <varInfo nodeId="1241362815640" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="1241362815640" fileName="OutputField.java" startLine="12" startPosition="0" endLine="36" endPosition="0" unitName="jetbrains.mps.calculator.structure.OutputField" />
+  <root nodeRef="r:87765d2d-a756-4883-9acc-6a42e5bf6c23(jetbrains.mps.calculator.structure)/1241362608529">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1241362608529" at="13,0,14,0" concept="1" trace="props_InputField" />
+      <node id="1241362608529" at="30,39,31,76" concept="3" />
+      <node id="1241362608529" at="31,76,32,35" concept="0" />
+      <node id="1241362608529" at="32,35,33,42" concept="0" />
+      <node id="1241362608529" at="34,9,35,32" concept="4" />
+      <node id="1241362608529" at="29,44,34,9" concept="2" />
+      <scope id="1241362608529" at="30,39,33,42">
+        <var name="cpb" id="1241362608529" />
+      </scope>
+      <scope id="1241362608529" at="29,44,35,32" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1241362608529" at="13,0,14,0" concept="5" trace="InputField" />
+      <node id="1241362608529" at="19,44,20,44" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1241362608529" at="18,0,19,0" concept="1" trace="myConceptInputField" />
+      <node id="1241362608529" at="46,44,47,35" concept="4" />
+      <node id="1241362608529" at="74,68,75,164" concept="3" />
+      <node id="1241362608529" at="75,164,76,34" concept="0" />
+      <node id="1241362608529" at="76,34,77,71" concept="0" />
+      <node id="1241362608529" at="77,71,78,105" concept="0" />
+      <node id="1241362608529" at="78,105,79,17" concept="0" />
+      <node id="1241362608529" at="79,17,80,22" concept="4" />
+      <node id="1241362608529" at="74,0,82,0" concept="6" trace="createDescriptorForInputField#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1241362608529" at="46,44,47,35" />
+      <scope id="1241362608529" at="74,68,80,22">
+        <var name="b" id="1241362608529" />
+      </scope>
+      <scope id="1241362608529" at="74,0,82,0" />
+    </file>
   </root>
-  <root nodeId="1241363083334" modelId="r:87765d2d-a756-4883-9acc-6a42e5bf6c23(jetbrains.mps.calculator.structure)">
-    <nodeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="11" startPosition="53" endLine="12" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="12" startPosition="96" endLine="13" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="FIELD" />
-    <nodeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="15" startPosition="42" endLine="16" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="19" startPosition="32" endLine="20" endPosition="86" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="23" startPosition="41" endLine="24" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="27" startPosition="74" endLine="28" endPosition="186" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="31" startPosition="60" endLine="32" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="14" startPosition="0" endLine="17" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="InputFieldReference#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="18" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getField#()Ljetbrains/mps/smodel/INodeAdapter;" />
-    <nodeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="22" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setField#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="26" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/calculator/structure/InputFieldReference;" />
-    <nodeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="30" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/calculator/structure/InputFieldReference;" />
-    <scopeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="15" startPosition="42" endLine="16" endPosition="16" />
-    <scopeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="19" startPosition="32" endLine="20" endPosition="86" />
-    <scopeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="23" startPosition="41" endLine="24" endPosition="55" />
-    <scopeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="27" startPosition="74" endLine="28" endPosition="186" />
-    <scopeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="31" startPosition="60" endLine="32" endPosition="54" />
-    <scopeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="14" startPosition="0" endLine="17" endPosition="3">
-      <varInfo nodeId="1241363083334" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="18" startPosition="0" endLine="22" endPosition="0" />
-    <scopeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="22" startPosition="0" endLine="26" endPosition="0">
-      <varInfo nodeId="1241363083334" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="26" startPosition="0" endLine="30" endPosition="0">
-      <varInfo nodeId="1241363083334" varName="init" />
-      <varInfo nodeId="1241363083334" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="30" startPosition="0" endLine="34" endPosition="0">
-      <varInfo nodeId="1241363083334" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="1241363083334" fileName="InputFieldReference.java" startLine="11" startPosition="0" endLine="35" endPosition="0" unitName="jetbrains.mps.calculator.structure.InputFieldReference" />
+  <root nodeRef="r:87765d2d-a756-4883-9acc-6a42e5bf6c23(jetbrains.mps.calculator.structure)/1241362815640">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1241362815640" at="15,0,16,0" concept="1" trace="props_OutputField" />
+      <node id="1241362815640" at="44,40,45,76" concept="3" />
+      <node id="1241362815640" at="45,76,46,45" concept="0" />
+      <node id="1241362815640" at="46,45,47,43" concept="0" />
+      <node id="1241362815640" at="48,9,49,33" concept="4" />
+      <node id="1241362815640" at="43,45,48,9" concept="2" />
+      <scope id="1241362815640" at="44,40,47,43">
+        <var name="cpb" id="1241362815640" />
+      </scope>
+      <scope id="1241362815640" at="43,45,49,33" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1241362815640" at="15,0,16,0" concept="5" trace="OutputField" />
+      <node id="1241362815640" at="21,53,22,45" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1241362815640" at="20,0,21,0" concept="1" trace="myConceptOutputField" />
+      <node id="1241362815640" at="50,45,51,36" concept="4" />
+      <node id="1241362815640" at="92,69,93,165" concept="3" />
+      <node id="1241362815640" at="93,165,94,34" concept="0" />
+      <node id="1241362815640" at="94,34,95,105" concept="0" />
+      <node id="1241362815640" at="95,105,96,17" concept="0" />
+      <node id="1241363046126" at="96,17,97,187" concept="0" />
+      <node id="1241362815640" at="97,187,98,22" concept="4" />
+      <node id="1241362815640" at="92,0,100,0" concept="6" trace="createDescriptorForOutputField#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1241362815640" at="50,45,51,36" />
+      <scope id="1241362815640" at="92,69,98,22">
+        <var name="b" id="1241362815640" />
+      </scope>
+      <scope id="1241362815640" at="92,0,100,0" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:87765d2d-a756-4883-9acc-6a42e5bf6c23(jetbrains.mps.calculator.structure)/1241363083334">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1241363083334" at="14,0,15,0" concept="1" trace="props_InputFieldReference" />
+      <node id="1241363083334" at="37,48,38,76" concept="3" />
+      <node id="1241363083334" at="38,76,39,129" concept="0" />
+      <node id="1241363083334" at="39,129,40,51" concept="0" />
+      <node id="1241363083334" at="41,9,42,41" concept="4" />
+      <node id="1241363083334" at="36,53,41,9" concept="2" />
+      <scope id="1241363083334" at="37,48,40,51">
+        <var name="cpb" id="1241363083334" />
+      </scope>
+      <scope id="1241363083334" at="36,53,42,41" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1241363083334" at="14,0,15,0" concept="5" trace="InputFieldReference" />
+      <node id="1241363083334" at="20,44,21,53" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1241363083334" at="19,0,20,0" concept="1" trace="myConceptInputFieldReference" />
+      <node id="1241363083334" at="48,53,49,44" concept="4" />
+      <node id="1241363083334" at="82,77,83,173" concept="3" />
+      <node id="1241363083334" at="83,173,84,34" concept="0" />
+      <node id="1241363083334" at="84,34,85,121" concept="0" />
+      <node id="1241363083334" at="85,121,86,105" concept="0" />
+      <node id="1241363083334" at="86,105,87,17" concept="0" />
+      <node id="1241363105304" at="87,17,88,153" concept="0" />
+      <node id="1241363083334" at="88,153,89,49" concept="0" />
+      <node id="1241363083334" at="89,49,90,22" concept="4" />
+      <node id="1241363083334" at="82,0,92,0" concept="6" trace="createDescriptorForInputFieldReference#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1241363083334" at="48,53,49,44" />
+      <scope id="1241363083334" at="82,77,90,22">
+        <var name="b" id="1241363083334" />
+      </scope>
+      <scope id="1241363083334" at="82,0,92,0" />
+    </file>
+  </root>
+</debug-info>
 

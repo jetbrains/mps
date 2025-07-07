@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,97 +15,94 @@
  */
 package jetbrains.mps.workbench.languagesFs;
 
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.vfs.DeprecatedVirtualFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.project.GlobalScope;
+import com.intellij.openapi.vfs.VirtualFileManager;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-import java.io.IOException;
 import java.util.WeakHashMap;
 
-public class MPSLanguagesVirtualFileSystem extends DeprecatedVirtualFileSystem implements ApplicationComponent {
+public class MPSLanguagesVirtualFileSystem extends DeprecatedVirtualFileSystem {
+
+  private static final String PROTOCOL = "mpslang";
 
   public static MPSLanguagesVirtualFileSystem getInstance() {
-    return ApplicationManager.getApplication().getComponent(MPSLanguagesVirtualFileSystem.class);
+    return (MPSLanguagesVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(PROTOCOL);
   }
 
-  private WeakHashMap<Language, MPSLanguageVirtualFile> myVirtualFiles = new WeakHashMap<Language, MPSLanguageVirtualFile>();
+  private WeakHashMap<SModuleReference, MPSLanguageVirtualFile> myVirtualFiles = new WeakHashMap<>();
 
   public MPSLanguageVirtualFile getFileFor(@NotNull final Language language) {
-    if (myVirtualFiles.containsKey(language)) {
-      return myVirtualFiles.get(language);
+    return getFileFor(language.getModuleReference());
+  }
+
+  public MPSLanguageVirtualFile getFileFor(@NotNull final SModuleReference language) {
+    MPSLanguageVirtualFile vf = myVirtualFiles.get(language);
+    if (vf != null) {
+      return vf;
     }
-    MPSLanguageVirtualFile vf = new MPSLanguageVirtualFile(language);
-    myVirtualFiles.put(language, vf);
+    myVirtualFiles.put(language, vf = new MPSLanguageVirtualFile(language));
     return vf;
   }
 
-  @NonNls
   @NotNull
-  public String getComponentName() {
-    return "MPS Languages File System";
-  }
-
-  public void initComponent() {
-  }
-
-  public void disposeComponent() {
-  }
-
+  @Override
   @NonNls
   public String getProtocol() {
-    return "mpslang";
+    return PROTOCOL;
   }
 
+  @Override
   @Nullable
   public VirtualFile findFileByPath(final @NotNull @NonNls String path) {
-    return ModelAccess.instance().runReadAction(new Computable<VirtualFile>() {
-      public VirtualFile compute() {
-        Language language = GlobalScope.getInstance().getLanguage(path);
-        if (language != null) {
-          return getFileFor(language);
-        }
-        return null;
-      }
-    });
+    return getFileFor(PersistenceFacade.getInstance().createModuleReference(path));
   }
 
+  @Override
   public void refresh(boolean asynchronous) {
   }
 
+  @Override
   @Nullable
-  public VirtualFile refreshAndFindFileByPath(String path) {
+  public VirtualFile refreshAndFindFileByPath(@NotNull String path) {
     return null;
   }
 
-  protected void deleteFile(Object requestor, VirtualFile vFile) throws IOException {
+  @Override
+  protected void deleteFile(Object requestor, @NotNull VirtualFile vFile) {
     throw new UnsupportedOperationException();
   }
 
-  protected void moveFile(Object requestor, VirtualFile vFile, VirtualFile newParent) throws IOException {
+  @Override
+  protected void moveFile(Object requestor, @NotNull VirtualFile vFile, @NotNull VirtualFile newParent) {
     throw new UnsupportedOperationException();
   }
 
-  protected void renameFile(Object requestor, VirtualFile vFile, String newName) throws IOException {
+  @Override
+  protected void renameFile(Object requestor, @NotNull VirtualFile vFile, @NotNull String newName) {
     throw new UnsupportedOperationException();
   }
 
-  protected VirtualFile createChildFile(Object requestor, VirtualFile vDir, String fileName) throws IOException {
+  @NotNull
+  @Override
+  public VirtualFile createChildFile(Object requestor, @NotNull VirtualFile vDir, @NotNull String fileName) {
     throw new UnsupportedOperationException();
   }
 
-  protected VirtualFile createChildDirectory(Object requestor, VirtualFile vDir, String dirName) throws IOException {
+  @NotNull
+  @Override
+  public VirtualFile createChildDirectory(Object requestor, @NotNull VirtualFile vDir, @NotNull String dirName) {
     throw new UnsupportedOperationException();
   }
 
-  protected VirtualFile copyFile(Object requestor, VirtualFile virtualFile, VirtualFile newParent, String copyName) throws IOException {
+  @NotNull
+  @Override
+  public VirtualFile copyFile(Object requestor, @NotNull VirtualFile virtualFile, @NotNull VirtualFile newParent, @NotNull String copyName) {
     throw new UnsupportedOperationException();
   }
 }

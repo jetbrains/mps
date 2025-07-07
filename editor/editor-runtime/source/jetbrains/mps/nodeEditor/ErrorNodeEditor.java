@@ -15,29 +15,40 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
-public class ErrorNodeEditor implements INodeEditor {
+import java.util.Collection;
+import java.util.Collections;
 
-  public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
+public class ErrorNodeEditor implements ConceptEditor {
+  @NotNull
+  @Override
+  public Collection<String> getContextHints() {
+    return Collections.emptyList();
+  }
+
+  @Override
+  public EditorCell createEditorCell(jetbrains.mps.openapi.editor.EditorContext editorContext, SNode node) {
     return new EditorCell_Error(editorContext, node, node.getPresentation());
   }
 
-  public EditorCell createInspectedCell(EditorContext editorContext, SNode node) {
+  @Override
+  public EditorCell createInspectedCell(jetbrains.mps.openapi.editor.EditorContext editorContext, SNode node) {
     EditorCell_Collection collection = EditorCell_Collection.createVertical(editorContext, node);
     collection.addEditorCell(new EditorCell_Error(editorContext, node, "Can't find an editor."));
-    collection.addEditorCell(new EditorCell_Error(editorContext, node, "Concept = " + node.getConceptFqName()));    
+    collection.addEditorCell(new EditorCell_Error(editorContext, node, "Concept = " + node.getConcept().getQualifiedName()));
     return collection;
 
   }
 
   public static class DefaultInspectorCell extends EditorCell_Constant {
-    public DefaultInspectorCell(@NotNull EditorContext editorContext, SNode node, String text, boolean editable) {
+    public DefaultInspectorCell(@NotNull jetbrains.mps.openapi.editor.EditorContext editorContext, SNode node, String text, boolean editable) {
       super(editorContext, node, text, editable);
     }
   }

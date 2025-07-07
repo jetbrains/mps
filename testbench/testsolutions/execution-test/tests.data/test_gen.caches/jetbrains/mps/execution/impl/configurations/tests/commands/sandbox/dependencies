@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependenciesRoot>
+  <dependency className="jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.FailedBTestCase_Test">
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
+  </dependency>
+  <dependency className="jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.Main">
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
+  </dependency>
+  <dependency className="jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.ReadingPropertyBTestCase_Test">
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
+  </dependency>
+  <dependency className="jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.ReadingPropertyWithSpacesBTestCase_Test">
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
+  </dependency>
+  <dependency className="jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.SimpleBTestCase_Test">
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
+  </dependency>
+</dependenciesRoot>
+

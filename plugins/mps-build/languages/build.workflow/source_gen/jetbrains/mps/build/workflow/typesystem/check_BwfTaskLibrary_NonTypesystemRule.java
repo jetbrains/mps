@@ -4,56 +4,50 @@ package jetbrains.mps.build.workflow.typesystem;
 
 import jetbrains.mps.lang.typesystem.runtime.AbstractNonTypesystemRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import java.util.Set;
-import java.util.LinkedHashSet;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.build.workflow.constraints.TaskLibrariesHelper;
-import jetbrains.mps.smodel.SReference;
+import jetbrains.mps.build.workflow.behavior.BwfTaskLibrary__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.openapi.model.SReference;
+import jetbrains.mps.util.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_BwfTaskLibrary_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_BwfTaskLibrary_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode lib, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Set<SNode> libsSet = new LinkedHashSet<SNode>();
-    libsSet.add(lib);
-    for (SNode tldep : SLinkOperations.getTargets(lib, "imports", true)) {
-      libsSet.add(SLinkOperations.getTarget(tldep, "target", false));
-    }
-
-    TaskLibrariesHelper.closure(libsSet);
-    for (SNode n : lib.getDescendantsIterable(null, true)) {
-      for (SReference ref : n.getReferencesIterable()) {
-        SNode targetNode = ref.getTargetNodeSilently();
-        if (targetNode != null && !(libsSet.contains(targetNode.getTopmostAncestor()))) {
+    Set<SNode> libsSet = BwfTaskLibrary__BehaviorDescriptor.closureWithImported_id2U15YDCRefA.invoke(lib);
+    for (SNode n : SNodeUtil.getDescendants(lib)) {
+      for (SReference ref : n.getReferences()) {
+        SNode targetNode = SNodeOperations.getTargetNodeSilently(ref);
+        if (targetNode != null && !(SetSequence.fromSet(libsSet).contains(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(targetNode.getContainingRoot(), CONCEPTS.BwfTaskLibrary$kP)))) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(n, "broken reference, target is not imported", "r:aa7cee44-7e41-4ff3-b944-4eb707b62ad6(jetbrains.mps.build.workflow.typesystem)", "1117643560963219163", null, errorTarget);
           }
         }
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.build.workflow.structure.BwfTaskLibrary";
+  public SAbstractConcept getApplicableConcept() {
+    return CONCEPTS.BwfTaskLibrary$kP;
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConceptFqName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BwfTaskLibrary$kP = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114724ce92L, "jetbrains.mps.build.workflow.structure.BwfTaskLibrary");
   }
 }

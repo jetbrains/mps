@@ -18,7 +18,8 @@ package jetbrains.mps.idea.core.usages.rules;
 
 
 import com.intellij.usages.Usage;
-import jetbrains.mps.smodel.SModel;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModel;
 
 public interface UsageInModel extends Usage {
   SModel getModel();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,53 +15,112 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.MPSCore;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.dependency.ModelDependenciesManager;
+import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.extapi.model.SModelData;
+import jetbrains.mps.extapi.model.SModelDescriptorStub;
 import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.refactoring.StructureModificationHistory;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
-import jetbrains.mps.smodel.event.*;
-import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.project.structure.modules.RefUpdateUtil;
+import jetbrains.mps.smodel.event.ModelEventDispatch;
+import jetbrains.mps.smodel.event.SModelChildEvent;
+import jetbrains.mps.smodel.event.SModelDevKitEvent;
+import jetbrains.mps.smodel.event.SModelImportEvent;
+import jetbrains.mps.smodel.event.SModelLanguageEvent;
+import jetbrains.mps.smodel.event.SModelListener;
+import jetbrains.mps.smodel.event.SModelPropertyEvent;
+import jetbrains.mps.smodel.event.SModelReferenceEvent;
+import jetbrains.mps.smodel.event.SModelRootEvent;
+import jetbrains.mps.smodel.loading.UpdateModeSupport;
 import jetbrains.mps.smodel.nodeidmap.INodeIdToNodeMap;
 import jetbrains.mps.smodel.nodeidmap.UniversalOptimizedNodeIdMap;
-import jetbrains.mps.smodel.persistence.RoleIdsComponent;
-import org.jdom.Element;
+import jetbrains.mps.util.StatefulUpdate;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModelId;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SReference;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.project.Project;
 
 import java.security.SecureRandom;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class SModel {
-  private static final Logger LOG = Logger.getLogger(SModel.class);
+/**
+ * A general {@link SModelData model data} implementation which (!) does not implement
+ * {@link org.jetbrains.mps.openapi.model.SModel}. For {@link org.jetbrains.mps.openapi.model.SModel openapi.SModel}
+ * implementations see subclasses of {@link SModelBase}.
+ * <p>
+ * This is all-purpose model data implementation designed to back up an API representative aka 'model descriptor'.
+ * Can work with any {@link org.jetbrains.mps.openapi.model.SModel openapi.SModel} descriptor, although be careful
+ * to use proper {@link #setModelDescriptor(org.jetbrains.mps.openapi.model.SModel, ModelEventDispatch)} method to
+ * make sure node events get dispatched with proper model descriptor.
+ * </p>
+ * <p>
+ * Generally, it is pure storage and shall not dispatch events, though still does this for legacy {@link SModelListener} events.
+ * Note, it does that only in case associated model descriptor is {@link jetbrains.mps.extapi.model.SModelDescriptorStub}.
+ * </p>
+ * <p>
+ * There's no synchronization nor {@link org.jetbrains.mps.openapi.module.ModelAccess model access} control, it's left up to
+ * discretion of a holding model descriptor.
+ * </p>
+ */
+public class SModel implements SModelData, UpdateModeSupport {
+  private static final Logger LOG = LogManager.getLogger(SModel.class);
+  private static AtomicLong ourCounter = new AtomicLong();
 
-  private Set<SNode> myRoots = new LinkedHashSet<SNode>();
+  static {
+    resetIdCounter();
+  }
+
+  private org.jetbrains.mps.openapi.model.SModel myModelDescriptor;
+  private Set<SNode> myRoots = new LinkedHashSet<>();
   private SModelReference myReference;
-
   private boolean myDisposed;
-
-  private FastNodeFinder myFastNodeFinder;
-
-  private int myMaxImportIndex;
-  private List<ModuleReference> myLanguages = new ArrayList<ModuleReference>();
-  private List<ModuleReference> myLanguagesEngagedOnGeneration = new ArrayList<ModuleReference>();
-  private List<ModuleReference> myDevKits = new ArrayList<ModuleReference>();
-  private List<ImportElement> myImports = new ArrayList<ImportElement>();
-  private List<ImportElement> myImplicitImports = new ArrayList<ImportElement>();
-
-  private INodeIdToNodeMap myIdToNodeMap = createNodeIdMap();
-
-  private StructureModificationHistory myStructureModificationHistory = new StructureModificationHistory();
-
-  private final SModelHeader myHeader = new SModelHeader();
-
-  private SModelDescriptor myModelDescriptor;
-  private boolean fullLoadUpdateMode;
-
+  private List<SLanguage> myLanguagesEngagedOnGeneration = new ArrayList<>();
+  private Map<SLanguage, Integer> myLanguagesIds = new LinkedHashMap<>();
+  // FIXME introduce UniqueList or ArraySet to avoid "if (!myList.contains && myList.add())" on change
+  //       for both myDevKits and myImports. There's intellij's ArrayListSet, but it's dull and introduces unnecessary dependency
+  private List<SModuleReference> myDevKits = new ArrayList<>();
+  private List<ImportElement> myImports = new ArrayList<>();
+  private INodeIdToNodeMap myIdToNodeMap;
   private StackTraceElement[] myDisposedStacktrace = null;
+  private ImplicitImportsLegacyHolder myLegacyImplicitImports;
+  /**
+   * update mode, aka full load mode, is the state we are attaching newly loaded children to a model loaded partially
+   * since it could happen during model read, we can't rely on model read/write action mechanism.
+   * It used to be a mere boolean flag, but it doesn't help to deal with multiple getNode(SNodeId) calls, one of which triggered model load.
+   * Existing implementation used to hack around with synchronized access to model data (in overridden methods SModelBase#geSModelInternal(),
+   * e.g. LazyEditableSModelBase#getSModelInternal synchronize on myModel:UpdatableModel field, and UpdatableModel does synchronize on this when
+   * replacing model nodes in update mode). I could have used the same approach for my model, however, don't want to
+   * (a) build my model on top of LazyEditableSModelBase
+   * (b) keep this synchronized code (future work, though)
+   * <p>
+   * Lock is not the best primitive to use here. With given API (setUpdateMode(boolean) I need smth like a semaphore I could check for being locked,
+   * and wait for release (i.e. without further acquire) if necessary. Neither java's Semaphore, nor Lock are good for this, picked latter just
+   * by tossing a coin (well, it respects the thread, its API is more streamlined with the activity, lock() sounds better than acquire())
+   */
+  private final ReentrantLock myFullLoadMode = new ReentrantLock();
+  // nodes from this model communicate with it through this owner instance.
+  @NotNull
+  private final AttachedNodeOwner myNodeOwner;
 
   public SModel(@NotNull SModelReference modelReference) {
     this(modelReference, new UniversalOptimizedNodeIdMap());
@@ -70,361 +129,7 @@ public class SModel {
   public SModel(@NotNull SModelReference modelReference, INodeIdToNodeMap map) {
     myReference = modelReference;
     myIdToNodeMap = map;
-  }
-
-  //---------common properties--------
-
-  @NotNull
-  public SModelReference getSModelReference() {
-    return myReference;
-  }
-
-  public SModelFqName getSModelFqName() {
-    return getSModelReference().getSModelFqName();
-  }
-
-  public SModelId getSModelId() {
-    return getSModelReference().getSModelId();
-  }
-
-  @NotNull
-  public String getStereotype() {
-    return myReference.getStereotype();
-  }
-
-  @NotNull
-  public String getLongName() {
-    return myReference.getLongName();
-  }
-
-  public boolean isTransient() {
-    return false;
-  }
-
-  @Deprecated   //todo get rid of it
-  public boolean isNotEditable() {
-    assert !isDisposed();
-    SModelDescriptor d = getModelDescriptor();
-    if (!(d instanceof EditableSModelDescriptor)) return true;
-    return ((EditableSModelDescriptor) d).isReadOnly();
-  }
-
-  public boolean isDisposed() {
-    return myDisposed;
-  }
-
-  public StackTraceElement[] getDisposedStacktrace() {
-    return myDisposedStacktrace;
-  }
-
-  public SModelDescriptor getModelDescriptor() {
-    return myModelDescriptor;
-  }
-
-  public synchronized void setModelDescriptor(SModelDescriptor modelDescriptor) {
-    myModelDescriptor = modelDescriptor;
-  }
-
-  //---------incremental load--------
-
-  protected void enforceFullLoad() {
-    if (!(myModelDescriptor instanceof DefaultSModelDescriptor)) return;
-    ((DefaultSModelDescriptor) myModelDescriptor).getUpdateableModel().getModel(ModelLoadingState.FULLY_LOADED);
-  }
-
-  //---------roots manipulation--------
-
-  private void fireModelNodesReadAccess() {
-    if (!canFireEvent()) return;
-    NodeReadEventsCaster.fireModelNodesReadAccess(this);
-  }
-
-  public final Iterable<SNode> roots() {
-    return new Iterable<SNode>() {
-      public Iterator<SNode> iterator() {
-        return rootsIterator();
-      }
-    };
-  }
-
-  public Iterator<SNode> rootsIterator() {
-    fireModelNodesReadAccess();
-    return myRoots.iterator();
-  }
-
-  public void addRoot(@NotNull SNode node) {
-    ModelChange.assertLegalNodeRegistration(this, node);
-    enforceFullLoad();
-    if (myRoots.contains(node)) return;
-    if (node.getModel() != this && node.isRoot()) {
-      node.getModel().removeRoot(node);
-    } else {
-      SNode parent = node.getParent();
-      if (parent != null) {
-        parent.removeChild(node);
-      }
-    }
-
-    myRoots.add(node);
-    node.registerInModel(this);
-    performUndoableAction(new AddRootUndoableAction(node));
-    fireRootAddedEvent(node);
-  }
-
-  public void removeRoot(@NotNull SNode node) {
-    ModelChange.assertLegalNodeUnRegistration(this, node);
-    enforceFullLoad();
-    if (myRoots.contains(node)) {
-      myRoots.remove(node);
-      node.unRegisterFromModel();
-      performUndoableAction(new RemoveRootUndoableAction(node));
-      fireRootRemovedEvent(node);
-    }
-  }
-
-  public int rootsCount() {
-    return myRoots.size();
-  }
-
-  protected void performUndoableAction(SNodeUndoableAction action) {
-    if (!canFireEvent()) return;
-    if (!UndoHelper.getInstance().needRegisterUndo(this)) return;
-    UndoHelper.getInstance().addUndoableAction(action);
-  }
-
-  //---------nodes manipulation--------
-
-  public final Iterable<SNode> nodes() {
-    return new NodesIterable(this);
-  }
-
-  public Iterator<SNode> nodesIterator() {
-    return new NodesIterator(rootsIterator());
-  }
-
-  public int registeredNodesCount() {
-    enforceFullLoad();
-    return myIdToNodeMap.size();
-  }
-
-  public void clearAdaptersAndUserObjects() {
-    for (SNode node : myIdToNodeMap.values()) {
-      node.clearAdapter();
-      node.removeAllUserObjects();
-    }
-  }
-
-  //---------loading state--------
-
-  protected boolean canFireEvent() {
-    return isRegistered() && !isUpdateMode();
-  }
-
-  protected boolean canFireReadEvent() {
-    return canFireEvent();
-  }
-
-  boolean isRegistered() {
-    return myModelDescriptor != null && myModelDescriptor.isRegistered();
-  }
-
-//---------listeners--------
-
-  private List<SModelListener> getModelListeners() {
-    BaseSModelDescriptor modelDescriptor = (BaseSModelDescriptor) getModelDescriptor();
-    return modelDescriptor != null ? modelDescriptor.getModelListeners() : Collections.<SModelListener>emptyList();
-  }
-
-  //todo code in the following methods should be written w/o duplication
-
-  private void fireDevKitAddedEvent(@NotNull ModuleReference ref) {
-    if (!canFireEvent()) return;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.devkitAdded(new SModelDevKitEvent(this, ref, true));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void fireDevKitRemovedEvent(@NotNull ModuleReference ref) {
-    if (!canFireEvent()) return;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.devkitRemoved(new SModelDevKitEvent(this, ref, false));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void fireLanguageAddedEvent(@NotNull ModuleReference ref) {
-    if (!canFireEvent()) return;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.languageAdded(new SModelLanguageEvent(this, ref, true));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void fireLanguageRemovedEvent(@NotNull ModuleReference ref) {
-    if (!canFireEvent()) return;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.languageRemoved(new SModelLanguageEvent(this, ref, false));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void fireImportAddedEvent(@NotNull SModelReference modelReference) {
-    if (!canFireEvent()) return;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.importAdded(new SModelImportEvent(this, modelReference, true));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void fireImportRemovedEvent(@NotNull SModelReference modelReference) {
-    if (!canFireEvent()) return;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.importAdded(new SModelImportEvent(this, modelReference, false));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void fireRootAddedEvent(@NotNull SNode root) {
-    if (!canFireEvent()) return;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.rootAdded(new SModelRootEvent(this, root, true));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void fireRootRemovedEvent(@NotNull SNode root) {
-    if (!canFireEvent()) return;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.rootRemoved(new SModelRootEvent(this, root, false));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  void firePropertyChangedEvent(@NotNull SNode node, @NotNull String property, @Nullable String oldValue, @Nullable String newValue) {
-    if (!canFireEvent()) return;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.propertyChanged(new SModelPropertyEvent(this, property, node, oldValue, newValue));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  void fireChildAddedEvent(@NotNull SNode parent, @NotNull String role, @NotNull SNode child, SNode anchor) {
-    if (!canFireEvent()) return;
-    int childIndex = anchor == null ? 0 : parent.getChildren().indexOf(anchor) + 1;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.childAdded(new SModelChildEvent(this, true, parent, role, childIndex, child));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  void fireChildRemovedEvent(@NotNull SNode parent, @NotNull String role, @NotNull SNode child, SNode anchor) {
-    if (!canFireEvent()) return;
-    int childIndex = anchor == null ? 0 : parent.getChildren().indexOf(anchor) + 1;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.childRemoved(new SModelChildEvent(this, false, parent, role, childIndex, child));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  void fireBeforeChildRemovedEvent(@NotNull SNode parent, @NotNull String role, @NotNull SNode child, SNode anchor) {
-    if (!canFireEvent()) return;
-    int childIndex = anchor == null ? 0 : parent.getChildren().indexOf(anchor) + 1;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.beforeChildRemoved(new SModelChildEvent(this, false, parent, role, childIndex, child));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  void fireReferenceAddedEvent(@NotNull SReference reference) {
-    if (!canFireEvent()) return;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.referenceAdded(new SModelReferenceEvent(this, reference, true));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  void fireReferenceRemovedEvent(@NotNull SReference reference) {
-    if (!canFireEvent()) return;
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.referenceRemoved(new SModelReferenceEvent(this, reference, false));
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  //---------fast node finder--------
-
-  public final synchronized FastNodeFinder getFastNodeFinder() {
-    if (myFastNodeFinder == null) {
-      myFastNodeFinder = createFastNodeFinder();
-    }
-    fireModelNodesReadAccess();
-    return myFastNodeFinder;
-  }
-
-  protected FastNodeFinder createFastNodeFinder() {
-    return new DefaultFastNodeFinder(this);
-  }
-
-  public synchronized void disposeFastNodeFinder() {
-    if (myFastNodeFinder != null) {
-      myFastNodeFinder.dispose();
-      myFastNodeFinder = null;
-    }
-  }
-
-  //---------node id--------
-
-  private static AtomicLong ourCounter = new AtomicLong();
-
-  static {
-    resetIdCounter();
-  }
-
-  protected final INodeIdToNodeMap createNodeIdMap() {
-    return new UniversalOptimizedNodeIdMap();
+    myNodeOwner = new AttachedNodeOwner(this);
   }
 
   static void resetIdCounter() {
@@ -433,103 +138,583 @@ public class SModel {
 
   public static SNodeId generateUniqueId() {
     long id = Math.abs(ourCounter.incrementAndGet());
-    return new SNodeId.Regular(id);
+    return new jetbrains.mps.smodel.SNodeId.Regular(id);
   }
 
-  @Nullable
-  public SNode getNodeById(@NotNull SNodeId nodeId) {
-    checkNotDisposed();
-    if (myDisposed) return null;
 
-    SNode node = myIdToNodeMap.get(nodeId);
-    if (node != null) return node;
+  public SModelId getModelId() {
+    return myReference.getModelId();
+  }
+
+  @NotNull
+  public SModelReference getReference() {
+    return myReference;
+  }
+
+  @Override
+  public Iterable<org.jetbrains.mps.openapi.model.SNode> getRootNodes() {
+    fireModelNodesReadAccess();
+    return () -> new Iterator<org.jetbrains.mps.openapi.model.SNode>() {
+      private final Iterator<SNode> myIterator = myRoots.iterator();
+
+      @Override
+      public boolean hasNext() {
+        return myIterator.hasNext();
+      }
+
+      @Override
+      public org.jetbrains.mps.openapi.model.SNode next() {
+        SNode res = myIterator.next();
+        if (res != null) {
+          res.assertCanRead();
+          res.getNodeOwner().fireNodeRead(res, true);
+        }
+
+        return res;
+      }
+
+      @Override
+      public void remove() {
+        throw new UnsupportedOperationException("can't change model roots through roots iterator");
+      }
+    };
+  }
+
+  public boolean isRoot(@Nullable org.jetbrains.mps.openapi.model.SNode node) {
+    return myRoots.contains(node);
+  }
+
+  //--------------IMPLEMENTATION-------------------
+
+  @Override
+  public void addRootNode(final org.jetbrains.mps.openapi.model.SNode node) {
+    assert node instanceof SNode;
     enforceFullLoad();
-    return myIdToNodeMap.get(nodeId);
+    if (myRoots.contains(node)) {
+      // why not warn?
+      return;
+    }
+    org.jetbrains.mps.openapi.model.SModel model = node.getModel();
+    // FIXME why on earth we remove new root from original location, but don't do the same for insertChild?
+    if (model != null && model != myModelDescriptor && node.getParent() == null) {
+      model.removeRootNode(node);
+    } else {
+      org.jetbrains.mps.openapi.model.SNode parent = node.getParent();
+      if (parent != null) {
+        parent.removeChild(node);
+      }
+    }
+
+    SNode sn = (SNode) node;
+    myRoots.add(sn);
+    myNodeOwner.registerNode(sn);
+    myNodeOwner.performUndoableAction(new AddRootUndoableAction(node));
+    myNodeOwner.fireNodeAdd(null, null, sn, null);
+  }
+
+  @Override
+  public void removeRootNode(final org.jetbrains.mps.openapi.model.SNode node) {
+    assert node instanceof SNode;
+    enforceFullLoad();
+    if (myRoots.contains(node)) {
+      myNodeOwner.fireBeforeNodeRemove(null, null, (SNode) node, null);
+      // performing undoable action while node is still in the model because VirtualFiles
+      // (and so documents) are available only for those nodes existing in the model.
+      myNodeOwner.performUndoableAction(new RemoveRootUndoableAction(node, myModelDescriptor));
+      myRoots.remove(node);
+      SNode sn = (SNode) node;
+      myNodeOwner.unregisterNode(sn);
+      myNodeOwner.fireNodeRemove(null, null, sn, null);
+    }
+  }
+
+  @Override
+  @Nullable
+  public SNode getNode(@NotNull org.jetbrains.mps.openapi.model.SNodeId nodeId) {
+    SNode res = getNode_(nodeId);
+    if (res != null) {
+      res.assertCanRead();
+      myNodeOwner.fireNodeRead(res, true);
+    }
+    return res;
+  }
+
+
+  protected final void waitUpdateModeIsOver() {
+    if (isUpdateMode()) {
+      // there's a thread that updates the model, and myIdToNodeMap might get updated
+      // thus we shall wait once update is over, and lock()/unlock() pair merely ensures update mode if over.
+      // This is not a decent solution, we'd rather get separate SModelData implementation that is update-aware, and use locks/guards
+      // when accessing internal fields.
+      // Note, if the current thread is the one that performs the update, lock()/unlock() is fine, as the lock is re-enterable
+      myFullLoadMode.lock();
+      myFullLoadMode.unlock();
+    }
+  }
+
+  private SNode getNode_(org.jetbrains.mps.openapi.model.SNodeId nodeId) {
+    checkNotDisposed();
+    if (myDisposed) {
+      return null;
+    }
+
+    waitUpdateModeIsOver();
+
+    org.jetbrains.mps.openapi.model.SNode node = myIdToNodeMap.get(nodeId);
+    if (node != null) {
+      return ((SNode) node);
+    }
+    enforceFullLoad();
+    return ((SNode) myIdToNodeMap.get(nodeId));
+  }
+
+  @NotNull
+  public String toString() {
+    return myReference.toString();
+  }
+
+  //todo get rid of, try to cast, show an error if not casted
+  public boolean isDisposed() {
+    return myDisposed;
+  }
+
+  //todo cast if can be
+  public StackTraceElement[] getDisposedStacktrace() {
+    return myDisposedStacktrace;
+  }
+
+  public final org.jetbrains.mps.openapi.model.SModel getModelDescriptor() {
+    return myModelDescriptor;
+  }
+
+  /**
+   * Tells this model data implementation is bound to specific model descriptor and uses a supplied mechanism to dispatch events.
+   * This method is intended for use by {@link org.jetbrains.mps.openapi.model.SModel model descriptor} implementations only.
+   *
+   * @param modelDescriptor
+   * @param eventDispatch   generally, non-null value makes sense only when {@code modelDescriptor} is not null as well.
+   */
+  public void setModelDescriptor(@Nullable org.jetbrains.mps.openapi.model.SModel modelDescriptor, @Nullable ModelEventDispatch eventDispatch) {
+    myModelDescriptor = modelDescriptor;
+    myNodeOwner.setEventDispatch(eventDispatch);
+  }
+
+  protected void enforceFullLoad() {
+    org.jetbrains.mps.openapi.model.SModel md = myModelDescriptor;
+    if (md != null) {
+      md.load();
+    }
+  }
+
+  private void fireModelNodesReadAccess() {
+    if (!canFireReadEvent()) {
+      return;
+    }
+    if (myModelDescriptor != null) {
+      NodeReadEventsCaster.fireModelNodesReadAccess(myModelDescriptor);
+    }
+  }
+
+//---------listeners--------
+
+  /**
+   * Name clash with {@link SNodeOwner#performUndoableAction(SNodeUndoableAction)} is unfortunate.
+   * This one is rather 'registerActionWithUndo'.
+   */
+  protected void performUndoableAction(@NotNull SNodeUndoableAction action) {
+    if (!canFireEvent()) {
+      return;
+    }
+    // indeed, it's not nice to go back and forth from SNodeOwner, but I care to
+    // get the overall picture fixed at the moment. There's subclass that needs to
+    // control undo, need to fit it into the story
+    myNodeOwner.commandContext().registerActionWithUndo(action);
+  }
+
+  //todo code in the following methods should be written w/o duplication
+
+  public boolean canFireEvent() {
+    return myModelDescriptor != null && myModelDescriptor.getRepository() != null && !isUpdateMode();
+  }
+
+  public boolean canFireReadEvent() {
+    return canFireEvent();
+  }
+
+  /**
+   * Make this SModelData unusable, free references to nodes hold to get them available to GC.
+   * Doesn't dispatch any event (it's responsibility of openapi.SModel impl).
+   * Disconnects from openapi.SModel descriptor, if any.
+   * XXX At the moment, doesn't change owner of nodes to DetachedNodeOwner, though it seems it should.
+   * The only objection is that doing so would trigger a lot of unregister events we don't really care to get.
+   */
+  public void dispose() {
+    if (myDisposed) {
+      return;
+    }
+
+    myDisposed = true;
+    setModelDescriptor(null, null);
+    myDisposedStacktrace = new Throwable().getStackTrace();
+    myIdToNodeMap = null;
+    myRoots.clear();
+  }
+
+  private void checkNotDisposed() {
+    if (myDisposed) {
+      final IllegalModelAccessError ex = new IllegalModelAccessError("accessing disposed model");
+      LOG.error(String.format("Model %s is disposed", myReference), ex);
+      if (myDisposedStacktrace != null) {
+        final Throwable d = new Throwable();
+        d.setStackTrace(myDisposedStacktrace);
+        LOG.error(String.format("The model %s has been disposed from ", myReference), d);
+      }
+    }
+  }
+
+  private List<SModelListener> getModelListeners() {
+    if (myModelDescriptor instanceof SModelDescriptorStub) {
+      return ((SModelDescriptorStub) myModelDescriptor).getModelListeners();
+    }
+    return Collections.emptyList();
+  }
+
+  private void fireDevKitAddedEvent(@NotNull SModuleReference ref) {
+    if (!canFireEvent()) {
+      return;
+    }
+    final SModelDevKitEvent event = new SModelDevKitEvent(getModelDescriptor(), ref, true);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.devkitAdded(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  private void fireDevKitRemovedEvent(@NotNull SModuleReference ref) {
+    if (!canFireEvent()) {
+      return;
+    }
+    final SModelDevKitEvent event = new SModelDevKitEvent(getModelDescriptor(), ref, false);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.devkitRemoved(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  private void fireLanguageAddedEvent(@NotNull SLanguage ref) {
+    if (!canFireEvent()) {
+      return;
+    }
+    final SModelLanguageEvent event = new SModelLanguageEvent(getModelDescriptor(), ref, true);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.languageAdded(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  private void fireLanguageRemovedEvent(@NotNull SLanguage ref) {
+    if (!canFireEvent()) {
+      return;
+    }
+    final SModelLanguageEvent event = new SModelLanguageEvent(getModelDescriptor(), ref, false);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.languageRemoved(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  private void fireImportAddedEvent(@NotNull SModelReference modelReference) {
+    if (!canFireEvent()) {
+      return;
+    }
+    final SModelImportEvent event = new SModelImportEvent(getModelDescriptor(), modelReference, true);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.importAdded(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  private void fireImportRemovedEvent(@NotNull SModelReference modelReference) {
+    if (!canFireEvent()) {
+      return;
+    }
+    final SModelImportEvent event = new SModelImportEvent(getModelDescriptor(), modelReference, false);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.importRemoved(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  /*package*/ void fireRootAddedEvent(@NotNull SNode root) {
+    if (!canFireEvent()) {
+      return;
+    }
+    final SModelRootEvent event = new SModelRootEvent(getModelDescriptor(), root, true);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.rootAdded(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  /*package*/ void fireRootRemovedEvent(@NotNull SNode root) {
+    if (!canFireEvent()) {
+      return;
+    }
+    final SModelRootEvent event = new SModelRootEvent(getModelDescriptor(), root, false);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.rootRemoved(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  /*package*/ void fireBeforeRootRemovedEvent(org.jetbrains.mps.openapi.model.SNode node) {
+    if (!canFireEvent()) {
+      return;
+    }
+    final SModelRootEvent event = new SModelRootEvent(getModelDescriptor(), node, false);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.beforeRootRemoved(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  void firePropertyChangedEvent(@NotNull SNode node, @NotNull SProperty property, @Nullable String oldValue, @Nullable String newValue) {
+    if (!canFireEvent()) {
+      return;
+    }
+    final SModelPropertyEvent event = new SModelPropertyEvent(getModelDescriptor(), property, node, oldValue, newValue);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.propertyChanged(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  void fireChildAddedEvent(@NotNull SNode parent, @NotNull SContainmentLink role, @NotNull org.jetbrains.mps.openapi.model.SNode child,
+                           org.jetbrains.mps.openapi.model.SNode anchor) {
+    if (!canFireEvent()) {
+      return;
+    }
+    int childIndex = anchor == null ? 0 : parent.getChildren().indexOf(anchor) + 1;
+    final SModelChildEvent event = new SModelChildEvent(getModelDescriptor(), true, parent, role, childIndex, child);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.childAdded(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  void fireChildRemovedEvent(@NotNull SNode parent, @NotNull SContainmentLink role, @NotNull org.jetbrains.mps.openapi.model.SNode child,
+                             org.jetbrains.mps.openapi.model.SNode anchor) {
+    if (!canFireEvent()) {
+      return;
+    }
+    int childIndex = anchor == null ? 0 : parent.getChildren().indexOf(anchor) + 1;
+    final SModelChildEvent event = new SModelChildEvent(getModelDescriptor(), false, parent, role, childIndex, child);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.childRemoved(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  void fireBeforeChildRemovedEvent(@NotNull SNode parent, @NotNull SContainmentLink role, @NotNull org.jetbrains.mps.openapi.model.SNode child,
+                                   org.jetbrains.mps.openapi.model.SNode anchor) {
+    if (!canFireEvent()) {
+      return;
+    }
+    int childIndex = anchor == null ? 0 : parent.getChildren().indexOf(anchor) + 1;
+    final SModelChildEvent event = new SModelChildEvent(getModelDescriptor(), false, parent, role, childIndex, child);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.beforeChildRemoved(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  void fireReferenceAddedEvent(@NotNull SReference reference) {
+    if (!canFireEvent()) {
+      return;
+    }
+    final SModelReferenceEvent event = new SModelReferenceEvent(getModelDescriptor(), reference, true);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.referenceAdded(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  void fireReferenceRemovedEvent(@NotNull SReference reference) {
+    if (!canFireEvent()) {
+      return;
+    }
+    final SModelReferenceEvent event = new SModelReferenceEvent(getModelDescriptor(), reference, false);
+    for (SModelListener sModelListener : getModelListeners()) {
+      try {
+        sModelListener.referenceRemoved(event);
+      } catch (Throwable t) {
+        LOG.error(null, t);
+      }
+    }
+  }
+
+  public FastNodeFinder createFastNodeFinder() {
+    return new DefaultFastNodeFinder(getModelDescriptor());
   }
 
   //---------node registration--------
 
   void registerNode(@NotNull SNode node) {
     checkNotDisposed();
-    if (myDisposed) return;
-
-    enforceFullLoad();
-    SNodeId id = node.hasId() ? node.getSNodeId() : null;
-    SNode existingNode = id != null ? myIdToNodeMap.get(id) : null;
-    if (id == null || existingNode != null && existingNode != node) {
-      id = generateUniqueId();
-      while (myIdToNodeMap.containsKey(id)) {
-        resetIdCounter();
-        id = generateUniqueId();
-      }
-      node.setId(id);
+    if (myDisposed) {
+      return;
     }
+
+    org.jetbrains.mps.openapi.model.SNodeId id = node.getNodeId();
+    if (id == null) {
+      assignNewId(node);
+      return;
+    }
+
+    org.jetbrains.mps.openapi.model.SNode existingNode = myIdToNodeMap.get(id);
+    if (existingNode == null) {
+      myIdToNodeMap.put(node.getNodeId(), node);
+    }
+
+    if (existingNode != null && existingNode != node) {
+      assignNewId(node);
+    }
+  }
+
+  private void assignNewId(SNode node) {
+    SNodeId id;
+    id = generateUniqueId();
+    while (myIdToNodeMap.containsKey(id)) {
+      resetIdCounter();
+      id = generateUniqueId();
+    }
+    node.setId(id);
     myIdToNodeMap.put(id, node);
   }
 
   void unregisterNode(@NotNull SNode node) {
-    checkNotDisposed();
-
-    enforceFullLoad();
-    SNodeId id = node.getSNodeId();
-    if (myDisposed || id == null) return;
+    org.jetbrains.mps.openapi.model.SNodeId id = node.getNodeId();
+    if (myDisposed || id == null) {
+      return;
+    }
     myIdToNodeMap.remove(id);
-  }
-
-  //---------imports manipulation--------
-
-  public ModelDependenciesManager getModelDepsManager() {
-    return new ModelDependenciesManager(this);
   }
 
   //language
 
-  public List<ModuleReference> importedLanguages() {
-    return Collections.unmodifiableList(myLanguages);
+  public Collection<SLanguage> usedLanguages() {
+    return Collections.unmodifiableSet(myLanguagesIds.keySet());
   }
 
-  public void deleteLanguage(@NotNull ModuleReference ref) {
-    ModelChange.assertLegalChange(this);
-
-    myLanguages.remove(ref);
-    //calculateImplicitImports();
-    fireLanguageRemovedEvent(ref);
+  public int getLanguageImportVersion(SLanguage lang) {
+    // FIXME if lang comes to the model by means of devkit, this method spits a message for each attempt to find out language version.
+    //       Either stop using this method, or fix it to respect devkit
+    Integer res = myLanguagesIds.get(lang);
+    if (res == null) {
+      LOG.error(
+          "Model " + getModelDescriptor().getModelName() + ": version for language " + lang.getQualifiedName() + " not found. Using last version instead.");
+      return lang.getLanguageVersion();
+    }
+    return res;
   }
 
-  public void addLanguage(@NotNull ModuleReference ref) {
-    ModelChange.assertLegalChange(this);
-    if (SModelOperations.hasLanguage(this, ref)) return;
+  public void deleteLanguage(@NotNull SLanguage id) {
+    if (myLanguagesIds.remove(id) != null) {
+      fireLanguageRemovedEvent(id);
+      markChanged();
+    }
+  }
 
-    if (ref.getModuleId() == null) {
-      LOG.warning("Attempt to add language reference to a language without id in model " + getSModelFqName() + ". Language = " + ref);
+  public void addLanguage(@NotNull SLanguage language) {
+    // FIXME where to take version value to put into myLanguagesIds if not from deprecated method???
+    final int version = language.getLanguageVersion();
+    Integer existingVersion = myLanguagesIds.get(language);
+    if (existingVersion != null) {
+      if (version == -1 || existingVersion <= version) {
+        return;
+      }
+      if (existingVersion != -1) {
+        throw new VersionMismatchException(null, getModelDescriptor(), language, existingVersion, version);
+      }
     }
 
-    if (!myLanguages.contains(ref)) {
-      myLanguages.add(ref);
-      fireLanguageAddedEvent(ref);
+    setLanguageVersionInternal(language, version);
+    fireLanguageAddedEvent(language);
+  }
+
+  public void setLanguageImportVersion(SLanguage language, int version) {
+    if (!myLanguagesIds.containsKey(language)) {
+      throw new IllegalStateException("Can't change version for non-existing language import. Model: " + getModelDescriptor() + "; language: " + language);
     }
+
+    setLanguageVersionInternal(language, version);
+  }
+
+  private void setLanguageVersionInternal(SLanguage language, int version) {
+    myLanguagesIds.put(language, version);
+    markChanged();
   }
 
   //devkit
 
-  public List<ModuleReference> importedDevkits() {
+  public List<SModuleReference> importedDevkits() {
     return Collections.unmodifiableList(myDevKits);
   }
 
-  public void addDevKit(@NotNull ModuleReference ref) {
-    ModelChange.assertLegalChange(this);
-
-    if (!myDevKits.contains(ref)) {
-      myDevKits.add(ref);
+  public void addDevKit(SModuleReference ref) {
+    if (!myDevKits.contains(ref) && myDevKits.add(ref)) {
       fireDevKitAddedEvent(ref);
+      markChanged();
     }
   }
 
-  public void deleteDevKit(@NotNull ModuleReference ref) {
-    ModelChange.assertLegalChange(this);
-
-    myDevKits.remove(ref);
-    fireDevKitRemovedEvent(ref);
+  public void deleteDevKit(@NotNull SModuleReference ref) {
+    if (myDevKits.remove(ref)) {
+      fireDevKitRemovedEvent(ref);
+      markChanged();
+    }
   }
 
   //model
@@ -538,192 +723,218 @@ public class SModel {
     return Collections.unmodifiableList(myImports);
   }
 
-  public void addModelImport(@NotNull SModelReference modelReference, boolean firstVersion) {
-    ModelChange.assertLegalChange(this);
+  public void addModelImport(ImportElement importElement) {
+    // myImports is ArrayList, AL.add() doesn't check for presence.
+    if (!myImports.contains(importElement) && myImports.add(importElement)) {
+      fireImportAddedEvent(importElement.getModelReference());
+      markChanged();
+    }
+  }
 
-    ImportElement importElement = SModelOperations.getImportElement(this, modelReference);
-    if (importElement != null) return;
-    importElement = SModelOperations.getAdditionalModelElement(this, modelReference);
-    if (importElement == null) {
-      SModelDescriptor modelDescriptor = MPSCore.getInstance().isMergeDriverMode() ? null : SModelRepository.getInstance().getModelDescriptor(modelReference);
-      int usedVersion = -1;
-      if (modelDescriptor instanceof DefaultSModelDescriptor) {
-        usedVersion = ((DefaultSModelDescriptor) modelDescriptor).getVersion();
+  public void deleteModelImport(ImportElement importElement) {
+    if (myImports.remove(importElement)) {
+      if (myLegacyImplicitImports != null) {
+        // shall keep only if we do track implicit imports
+        myLegacyImplicitImports.addAdditionalModelVersion(importElement);  // to save version and ID if model was imported implicitly
       }
-      importElement = new ImportElement(modelReference, ++myMaxImportIndex, firstVersion ? -1 : usedVersion);
-    }
-    if (importElement.getReferenceID() < 0) { // fix for persistence <6
-      importElement.setReferenceID(++myMaxImportIndex);
-    }
-
-    myImports.add(importElement);
-    fireImportAddedEvent(importElement.getModelReference());
-  }
-
-  public void deleteModelImport(@NotNull SModelReference modelReference) {
-    ModelChange.assertLegalChange(this);
-
-    ImportElement importElement = SModelOperations.getImportElement(this, modelReference);
-    if (importElement != null) {
-      myImports.remove(importElement);
-      myImplicitImports.add(importElement);  // to save version and ID if model was imported implicitly
-      fireImportRemovedEvent(modelReference);
+      fireImportRemovedEvent(importElement.getModelReference());
+      markChanged();
     }
   }
 
+  /**
+   * This is compatibility method with legacy persistence mechanism, unless used, no implicit imports are tracked.
+   * Drop once we no longer need to support serialization of old persistence formats (there's no reason to track
+   * implicit imports if we aren't going to serialize them afterwards)
+   * <p>
+   * It looks that there's no longer consumer of implicit imports. There's code to update them, but no code to read values, except
+   * for clients of #getAllImportElements()
+   */
   @NotNull
-  private static Set<SModelReference> collectUsedModels(@NotNull SModel model, @NotNull Set<SModelReference> result) {
-    for (SNode node : model.nodes()) {
-      if (RoleIdsComponent.isEnabled()) {
-        result.add(RoleIdsComponent.getConceptPointer(node).getModelReference());
-        for (String propname : node.getProperties().keySet()) {
-          result.add(RoleIdsComponent.getPropertyNamePointer(node, propname).getModelReference());
-        }
-        for (SReference ref : node.getReferencesIterable()) {
-          if (ref.getTargetSModelReference() != null) {
-            result.add(ref.getTargetSModelReference());
-          }
-          result.add(RoleIdsComponent.getReferenceRolePointer(ref).getModelReference());
-        }
-        for (SNode child : node.getChildrenIterable()) {
-          result.add(RoleIdsComponent.getNodeRolePointer(child).getModelReference());
-        }
-      } else {
-        SNode concept = node.getConceptDeclarationNode();
-        if (concept == null) {
-          LOG.error("concept not found for node " + node.getDebugText());
-        } else {
-          result.add(concept.getModel().getSModelReference());
-        }
-        for (String propname : node.getProperties().keySet()) {
-          SNode decl = node.getPropertyDeclaration(propname);
-          if (decl == null) {
-            LOG.error("undeclared property: '" + propname + "' in node " + node.getDebugText());
-          } else {
-            result.add(decl.getModel().getSModelReference());
-          }
-        }
-        for (SReference ref : node.getReferencesIterable()) {
-          SModelReference targetModelRef = ref.getTargetSModelReference();
-          if (targetModelRef == null) {
-            LOG.error("target model of reference '" + ref.getRole() + "' is null in node " + node.getDebugText());
-          } else {
-            result.add(targetModelRef);
-          }
-          SNode decl = node.getLinkDeclaration(ref.getRole());
-          if (decl == null) {
-            LOG.error("undeclared link role: '" + ref.getRole() + "' in node " + node.getDebugText());
-          } else {
-            result.add(decl.getModel().getSModelReference());
-          }
-        }
-        for (SNode child : node.getChildrenIterable()) {
-          SNode decl = child.getRoleLink();
-          if (decl == null) {
-            LOG.error("undeclared child role: '" + child.getRole_() + "' in node " + node.getDebugText());
-          } else {
-            result.add(decl.getModel().getSModelReference());
-          }
-        }
-      }
+  @ToRemove(version = 3.4)
+  public ImplicitImportsLegacyHolder getImplicitImportsSupport() {
+    if (myLegacyImplicitImports == null) {
+      myLegacyImplicitImports = new ImplicitImportsLegacyHolder(this);
     }
-    return result;
+    return myLegacyImplicitImports;
   }
 
-  // create new implicit import list based on used models, explicit import and old implicit import list
-  public void calculateImplicitImports() {
-    Set<SModelReference> usedModels = collectUsedModels(this, new HashSet<SModelReference>());
-    if (myModelDescriptor == null || !LanguageAspect.STRUCTURE.is(myModelDescriptor))
-      usedModels.remove(myReference);   // do not import self if not structure
-    for (ImportElement elem : myImports) {
-      usedModels.remove(elem.getModelReference());    // do not add explicit imports to implicit
-    }
-    List<ImportElement> implicitImports = new ArrayList<ImportElement>(usedModels.size());
-    for (ImportElement elem : myImplicitImports) {
-      if (usedModels.remove(elem.getModelReference())) {
-        implicitImports.add(elem);   // already added elements save their version and id
-      }
-    }
-    for (SModelReference ref : usedModels) {
-      int version;
-      if (RoleIdsComponent.isEnabled()) {
-        version = RoleIdsComponent.getModelVersion(ref);
-      } else {
-        SModelDescriptor modelDescriptor = SModelRepository.getInstance().getModelDescriptor(ref);
-        version = modelDescriptor instanceof DefaultSModelDescriptor ? ((DefaultSModelDescriptor) modelDescriptor).getVersion() : -1;
-      }
-      implicitImports.add(new ImportElement(ref, -1, version));  // for compatibility index will be assigned on save
-    }
-    myImplicitImports = implicitImports;
+  /**
+   * @deprecated though it's our internal API, there's 1 use in mbeddr of this exact method we need to fix first.
+   * Once mbeddr use and 2 uses in our model persistence gone, remove the method
+   */
+  @Deprecated
+  @ToRemove(version = 0)
+  public List<SModuleReference> engagedOnGenerationLanguages() {
+    return new SModelLegacy(this).engagedOnGenerationLanguages();
   }
 
-  public List<ModuleReference> engagedOnGenerationLanguages() {
+  private void markChanged() {
+    if (myModelDescriptor == null) {
+      return;
+    }
+    org.jetbrains.mps.openapi.model.SModel model = getModelDescriptor();
+    if (model instanceof EditableSModel) {
+      ((EditableSModel) model).setChanged(true);
+    }
+  }
+
+  public Collection<SLanguage> getLanguagesEngagedOnGeneration() {
     return myLanguagesEngagedOnGeneration;
   }
 
-  public void addEngagedOnGenerationLanguage(ModuleReference ref) {
-    ModelChange.assertLegalChange(this);
-
+  public void addEngagedOnGenerationLanguage(SLanguage ref) {
     if (!myLanguagesEngagedOnGeneration.contains(ref)) {
       myLanguagesEngagedOnGeneration.add(ref);
       // don't send event but mark model as changed
+      // FIXME comment above makes no sense, and is just a historical artifact (there's !isLoaded() when it was introduced)
+      //       however, I wonder why 'markChanged' is guarded by canFireEvent() -  does it mean models that don't fire event deserve no 'changed' state?
       if (canFireEvent()) {
-        SModelRepository.getInstance().markChanged(this);
+        markChanged();
       }
     }
   }
 
-  public void removeEngagedOnGenerationLanguage(ModuleReference ref) {
-    ModelChange.assertLegalChange(this);
-
+  public void removeEngagedOnGenerationLanguage(SLanguage ref) {
     if (myLanguagesEngagedOnGeneration.contains(ref)) {
       myLanguagesEngagedOnGeneration.remove(ref);
       // don't send event but mark model as changed
       if (canFireEvent()) {
-        SModelRepository.getInstance().markChanged(this);
+        markChanged();
       }
     }
   }
 
   //aspects / additional
 
-  public List<ImportElement> getAdditionalModelVersions() {
-    return Collections.unmodifiableList(myImplicitImports);
-  }
-
-  public void addAdditionalModelVersion(@NotNull SModelReference modelReference, int usedVersion) {
-    addAdditionalModelVersion(new ImportElement(modelReference, -1, usedVersion));
-  }
-
-  public void addAdditionalModelVersion(@NotNull ImportElement element) {
-    ModelChange.assertLegalChange(this);
-    myImplicitImports.add(element);
-  }
-
-  public void setUpdateMode(boolean value) {
-    // update mode means we are attaching newly loaded children
-    this.fullLoadUpdateMode = value;
-  }
-
+  /**
+   * update mode means we are attaching newly loaded children
+   */
   public boolean isUpdateMode() {
-    return fullLoadUpdateMode;
+    return myFullLoadMode.isLocked();
   }
 
-  //other
+  @Override
+  public void enterUpdateMode() {
+    myFullLoadMode.lock();
+  }
 
-  public static class ImportElement {
+  @Override
+  public void leaveUpdateMode() {
+    myFullLoadMode.unlock();
+  }
+
+  //to use only from SNode
+  protected SRepository getRepository() {
+    return myModelDescriptor == null ? null : myModelDescriptor.getRepository();
+  }
+
+  //---------refactorings--------
+
+  // To allow update of models not yet attached to a repo (e.g. when we read a model and are going to attach it in with
+  // refreshed state, rather than attach first and then refresh), we pass repository from outside rather than using this.getRepository()
+  public boolean updateExternalReferences(@NotNull SRepository repository) {
+    enforceFullLoad();
+
+    boolean changed = false;
+    // XXX RefUpdateUtil uses MR.differs() which, unlike MR.equals(), compares names and ignores global uniqueness fact. Is that what we
+    //     want for references inside nodes? Perhaps, makes sense to use differs for imports only?
+    final StatefulUpdate<SModelReference> modelRefUpdate = new RefUpdateUtil(repository).withState();
+    for (org.jetbrains.mps.openapi.model.SNode node : myIdToNodeMap.values()) {
+      for (SReference reference : node.getReferences()) {
+        SModelReference oldReference = reference.getTargetSModelReference();
+        if (oldReference == null || !(reference instanceof StaticReference)) {
+          continue;
+        }
+        // FWIW there's similar code in vcs.DiffModelUtil
+        if (modelRefUpdate.isChanged(oldReference)) {
+          changed = true;
+          ((StaticReference) reference).setTargetSModelReference(modelRefUpdate.newValue(oldReference));
+        }
+      }
+    }
+
+    for (ImportElement e : myImports) {
+      if (modelRefUpdate.isChanged(e.getModelReference())) {
+        changed = true;
+        e.myModelReference = modelRefUpdate.newValue(e.getModelReference());
+      }
+    }
+
+    for (int i = 0; i < myDevKits.size(); i++) {
+      SModuleReference ref = myDevKits.get(i);
+      SModule module = ref.resolve(repository);
+      if (module != null) {
+        SModuleReference newRef = module.getModuleReference();
+        myDevKits.set(i, newRef);
+        changed = changed || ModuleReference.differs(ref, newRef);
+      }
+    }
+
+    return changed;
+  }
+
+  public void changeModelReference(SModelReference newModelReference) {
+    enforceFullLoad();
+    final SModelReference oldReference = myReference;
+    myReference = newModelReference;
+    for (org.jetbrains.mps.openapi.model.SNode node : myIdToNodeMap.values()) {
+      for (SReference reference : node.getReferences()) {
+        // XXX here, equals would not notice change in model name, is it what we want? In fact, I would rather not keep model reference to self at all
+        if (reference instanceof StaticReference && oldReference.equals(reference.getTargetSModelReference())) {
+          ((StaticReference) reference).setTargetSModelReference(newModelReference);
+        }
+      }
+    }
+  }
+
+  public SModel createEmptyCopy() {
+    return new jetbrains.mps.smodel.SModel(getReference());
+  }
+
+  public void copyPropertiesTo(SModel to) {
+
+    if (myLegacyImplicitImports != null) {
+      for (ImportElement ie : myLegacyImplicitImports.getAdditionalModelVersions()) {
+        to.getImplicitImportsSupport().addAdditionalModelVersion(ie.copy());
+      }
+    }
+    for (ImportElement ie : importedModels()) {
+      to.addModelImport(ie.copy());
+    }
+    for (SModuleReference mr : importedDevkits()) {
+      to.addDevKit(mr);
+    }
+    for (SLanguage lang : usedLanguages()) {
+      to.addLanguage(lang);
+      to.setLanguageImportVersion(lang, getLanguageImportVersion(lang));
+    }
+    for (SLanguage mr : getLanguagesEngagedOnGeneration()) {
+      to.addEngagedOnGenerationLanguage(mr);
+    }
+  }
+
+  public static final class ImportElement {
     private SModelReference myModelReference;
     private int myReferenceID;  // persistence related index
     private int myUsedVersion;
 
+    @Deprecated
     public ImportElement(SModelReference modelReference, int referenceID) {
       this(modelReference, referenceID, -1);
     }
 
+    @Deprecated
     public ImportElement(SModelReference modelReference, int referenceID, int usedVersion) {
       myModelReference = modelReference;
       myReferenceID = referenceID;
       myUsedVersion = usedVersion;
+    }
+
+    public ImportElement(SModelReference modelReference) {
+      myModelReference = modelReference;
+      myReferenceID = 0;
+      myUsedVersion = -1;
     }
 
     public SModelReference getModelReference() {
@@ -746,26 +957,35 @@ public class SModel {
       return myUsedVersion;
     }
 
+    protected ImportElement copy() {
+      return new ImportElement(myModelReference, myReferenceID, myUsedVersion);
+    }
+
     public String toString() {
       return "ImportElement(" +
-        "uid=" + myModelReference + ", " +
-        "referenceId=" + myReferenceID + ", " +
-        "usedVersion=" + myUsedVersion + ")";
+             "uid=" + myModelReference + ", " +
+             "referenceId=" + myReferenceID + ", " +
+             "usedVersion=" + myUsedVersion + ")";
     }
 
     @Override
     public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
+      if (this == o) {
+        return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+        return false;
+      }
 
       ImportElement that = (ImportElement) o;
 
-      if (myReferenceID != that.myReferenceID) return false;
-      if (myUsedVersion != that.myUsedVersion) return false;
-      if (myModelReference != null ? !myModelReference.equals(that.myModelReference) : that.myModelReference != null)
+      if (myReferenceID != that.myReferenceID) {
         return false;
-
-      return true;
+      }
+      if (myUsedVersion != that.myUsedVersion) {
+        return false;
+      }
+      return myModelReference != null ? myModelReference.equals(that.myModelReference) : that.myModelReference == null;
     }
 
     @Override
@@ -777,219 +997,11 @@ public class SModel {
     }
   }
 
-  //---------persistance-related refactorings--------
-
-  public void setPersistenceVersion(int persistenceVersion) {
-    myHeader.setPersistenceVersion(persistenceVersion);
-  }
-
-  public int getPersistenceVersion() {
-    return myHeader.getPersistenceVersion();
-  }
-
-  public SModelHeader getSModelHeader() {
-    return myHeader;
-  }
-
-  public void refreshRefactoringHistory() {
-    ModelChange.assertLegalChange(this);
-
-    try {
-      Element e = myStructureModificationHistory.toElement();
-      myStructureModificationHistory = new StructureModificationHistory();
-      myStructureModificationHistory.fromElement(e);
-    } catch (Throwable t) {
-      LOG.error("refactoring history refresh failed " + this, t, this);
+  private static class VersionMismatchException extends RuntimeException {
+    public VersionMismatchException(@Nullable Project p, org.jetbrains.mps.openapi.model.SModel modelDescriptor,
+                                    SLanguage language, Integer existingVersion, int version) {
+      super( "Can't add language import with different version. Old version: " + existingVersion + "; new version: " + version +
+               "; model: " + modelDescriptor.getModelName() + "; language: " + language.getQualifiedName());
     }
-  }
-
-  public void updateImportedModelUsedVersion(SModelReference sModelReference, int currentVersion) {
-    ModelChange.assertLegalChange(this);
-
-    ImportElement importElement = SModelOperations.getImportElement(this, sModelReference);
-    if (importElement == null) {
-      importElement = SModelOperations.getAdditionalModelElement(this, sModelReference);
-    }
-
-    if (importElement != null) {
-      importElement.myUsedVersion = currentVersion;
-    } else {
-      addAdditionalModelVersion(sModelReference, currentVersion);
-    }
-  }
-
-  //--------- stuff --------
-
-  @NotNull
-  public String toString() {
-    return getSModelReference().toString();
-  }
-
-  public void dispose() {
-    ModelChange.assertLegalChange(this);
-    if (myDisposed) return;
-
-    myDisposed = true;
-    myDisposedStacktrace = new Throwable().getStackTrace();
-    for (SNode sn : myIdToNodeMap.values()) {
-      sn.dispose();
-    }
-    disposeFastNodeFinder();
-    myIdToNodeMap = null;
-    myRoots.clear();
-  }
-
-  public boolean updateSModelReferences() {
-    ModelChange.assertLegalChange(this);
-    enforceFullLoad();
-
-    boolean changed = false;
-    for (SNode node : myIdToNodeMap.values()) {
-      for (SReference reference : node.getReferences()) {
-        SModelReference oldReference = reference.getTargetSModelReference();
-        if (oldReference == null) continue;
-        SModelReference newRef = oldReference.update();
-        if (newRef.differs(oldReference)) {
-          changed = true;
-          reference.setTargetSModelReference(newRef);
-        }
-      }
-    }
-
-    for (ImportElement e : myImports) {
-      SModelReference oldReference = e.myModelReference;
-      SModelReference newRef = oldReference.update();
-      if (newRef.differs(oldReference)) {
-        changed = true;
-        e.myModelReference = newRef;
-      }
-    }
-
-    for (ImportElement e : myImplicitImports) {
-      SModelReference oldReference = e.myModelReference;
-      SModelReference newRef = oldReference.update();
-      if (newRef.differs(oldReference)) {
-        changed = true;
-        e.myModelReference = newRef;
-      }
-    }
-
-    return changed;
-  }
-
-  public boolean updateModuleReferences() {
-    ModelChange.assertLegalChange(this);
-
-    boolean changed = false;
-
-    if (updateRefs(myDevKits)) {
-      changed = true;
-    }
-
-    if (updateRefs(myLanguages)) {
-      changed = true;
-    }
-
-    if (updateRefs(myLanguagesEngagedOnGeneration)) {
-      changed = true;
-    }
-
-    return changed;
-  }
-
-  //this method is only for access from SNode. Use SNode.isRoot from outer code
-
-  boolean isRoot(@Nullable SNode node) {
-    return myRoots.contains(node);
-  }
-
-  void changeModelReference(SModelReference newModelReference) {
-    enforceFullLoad();
-    SModelReference oldReference = myReference;
-    myReference = newModelReference;
-    for (SNode node : myIdToNodeMap.values()) {
-      for (SReference reference : node.getReferences()) {
-        if (oldReference.equals(reference.getTargetSModelReference())) {
-          reference.setTargetSModelReference(newModelReference);
-        }
-      }
-    }
-  }
-
-  private boolean updateRefs(List<ModuleReference> refs) {
-    boolean changed = false;
-    for (int i = 0; i < refs.size(); i++) {
-      ModuleReference ref = refs.get(i);
-      IModule module = MPSModuleRepository.getInstance().getModule(ref);
-      if (module != null) {
-        ModuleReference newRef = module.getModuleReference();
-        refs.set(i, newRef);
-        changed = changed || ref.differs(newRef);
-      }
-    }
-    return changed;
-  }
-
-  private void checkNotDisposed() {
-    if (!myDisposed) return;
-    LOG.error(new IllegalModelAccessError("accessing disposed model"));
-  }
-
-  //---------deprecated--------
-
-  @Deprecated
-  //to use in old persistence
-  public void addModelImport(ImportElement importElement) {
-    ModelChange.assertLegalChange(this);
-
-    myImports.add(importElement);
-    fireImportAddedEvent(importElement.getModelReference());
-  }
-
-  @Deprecated
-  //to use in old persistence
-  public void setMaxImportIndex(int i) {
-    myMaxImportIndex = i;
-  }
-
-  @Deprecated
-  //to use in old persistence
-  public int getMaxImportIndex() {
-    return myMaxImportIndex;
-  }
-
-  /**
-   * @deprecated Use SModelDescriptor.getRefactoringsHistory()
-   */
-  @Deprecated
-  public StructureModificationHistory getRefactoringHistory() {
-    return myStructureModificationHistory;
-  }
-
-  @Deprecated
-  public void setRefactoringHistory(StructureModificationHistory history) {
-    ModelChange.assertLegalChange(this);
-
-    myStructureModificationHistory = history;
-  }
-
-  @Deprecated
-  //use roots() instead
-  public <N extends INodeAdapter> List<N> getRootsAdapters(@NotNull Class<N> cls) {
-    List<N> result = new ArrayList<N>();
-    for (SNode root : roots()) {
-      INodeAdapter a = root.getAdapter();
-      if (cls.isInstance(a)) {
-        result.add((N) a);
-      }
-    }
-    return result;
-  }
-
-  @Nullable
-  public SNode getNodeById(String idString) {
-    SNodeId nodeId = SNodeId.fromString(idString);
-    assert nodeId != null : "wrong node id string";
-    return getNodeById(nodeId);
   }
 }

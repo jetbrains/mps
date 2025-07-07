@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,102 +15,177 @@
  */
 package jetbrains.mps.nodeEditor.selection;
 
-import jetbrains.mps.nodeEditor.CellActionType;
-import jetbrains.mps.nodeEditor.EditorCellAction;
-import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.cells.CellInfo;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import jetbrains.mps.editor.runtime.impl.cellActions.CommentMultipleNodesAction;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.openapi.editor.EditorComponent;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.CellAction;
+import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.openapi.editor.cells.CellInfo;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.selection.MultipleSelection;
+import jetbrains.mps.openapi.editor.selection.Selection;
+import jetbrains.mps.openapi.editor.selection.SelectionInfo;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.openapi.editor.selection.SelectionStoreException;
+import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public class NodeRangeSelection extends AbstractMultipleSelection implements MultipleSelection {
-  private static final String ROLE_PROPERTY_NAME = "role";
   private static final String MODEL_ID_PROPERTY_NAME = "modelId";
   private static final String FIRST_NODE_ID_PROPERTY_NAME = "firstNodeId";
   private static final String LAST_NODE_ID_PROPERTY_NAME = "lastNodeId";
   private static final String PARENT_NODE_ID_PROPERTY_NAME = "parentNodeId";
+  private static final String SELECTION_FILTER_CLASS_NAME = "selectionFilterClassName";
+  private static final String SELECTION_FILTER_MODULE_REFERENCE = "selectionFilterModuleId";
+  private static final String EMPTY_CELL_ID = "emptyCellId";
 
-  private SNode myFirstNode;
-  private SNode myLastNode;
-  private SNode myParentNode;
-  private String myRole;
+  private final SNode myFirstNode;
+  private final SNode myLastNode;
+  private final SNode myParentNode;
+  private final SContainmentLink myRole;
+  private final String myModelReference;
+  private final RangeSelectionFilter myFilter;
+  private final String myEmptyCellId;
 
-  public NodeRangeSelection(@NotNull EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException, SelectionRestoreException {
+  /**
+   * Invoked via reflection.
+   *
+   * @see SelectionInfoImpl#createSelection
+   */
+  public NodeRangeSelection(@NotNull EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException,
+                                                                                                                                SelectionRestoreException {
     super(editorComponent);
     if (cellInfo != null) {
-      throw new SelectionStoreException("Non-null CellInfo objet passed as a parameter: " + cellInfo);
-    }
-    myRole = properties.get(ROLE_PROPERTY_NAME);
-    if (myRole == null) {
-      throw new SelectionStoreException("Role property missed");
+      throw new SelectionStoreException("Non-null CellInfo object passed as a parameter: " + cellInfo);
     }
 
-    String modelId = properties.get(MODEL_ID_PROPERTY_NAME);
-    if (modelId == null) {
+    myModelReference = properties.get(MODEL_ID_PROPERTY_NAME);
+    if (myModelReference == null) {
       throw new SelectionStoreException("Model ID property missed");
     }
-    SModelDescriptor sModelDescriptor = SModelRepository.getInstance().getModelDescriptor(SModelReference.fromString(modelId));
+    SModel sModelDescriptor;
+    try {
+      final SModelReference modelRef = PersistenceFacade.getInstance().createModelReference(myModelReference);
+      sModelDescriptor = modelRef.resolve(editorComponent.getEditorContext().getRepository());
+    } catch (Exception ex) {
+      SelectionRestoreException sre = new SelectionRestoreException();
+      sre.initCause(ex);
+      throw sre;
+    }
     if (sModelDescriptor == null) {
       throw new SelectionRestoreException();
     }
-    SModel sModel = sModelDescriptor.getSModel();
-    myFirstNode = findNode(sModel, properties, FIRST_NODE_ID_PROPERTY_NAME);
-    myLastNode = findNode(sModel, properties, LAST_NODE_ID_PROPERTY_NAME);
-    myParentNode = findNode(sModel, properties, PARENT_NODE_ID_PROPERTY_NAME);
+    myFirstNode = findNode(sModelDescriptor, properties, FIRST_NODE_ID_PROPERTY_NAME);
+    myLastNode = findNode(sModelDescriptor, properties, LAST_NODE_ID_PROPERTY_NAME);
+    myParentNode = findNode(sModelDescriptor, properties, PARENT_NODE_ID_PROPERTY_NAME);
 
     if (myParentNode != myFirstNode.getParent() || myParentNode != myLastNode.getParent()) {
       throw new SelectionRestoreException();
     }
-    if (!myRole.equals(myFirstNode.getRole_()) || !myRole.equals(myLastNode.getRole_())) {
+    myRole = myFirstNode.getContainmentLink();
+    if (myRole == null || !myRole.equals(myLastNode.getContainmentLink())) {
       throw new SelectionRestoreException();
     }
-    initSelectedCells();
+    myFilter = createSelectionFilter(properties);
+    myEmptyCellId = properties.get(EMPTY_CELL_ID);
+    try {
+      initSelectedCells();
+    } catch (CellNotFoundException e) {
+      throw new SelectionRestoreException();
+    }
   }
 
   public NodeRangeSelection(@NotNull EditorComponent editorComponent, @NotNull SNode firstNode, @NotNull SNode lastNode) {
+    this(editorComponent, firstNode, lastNode, null, null);
+  }
+
+  public NodeRangeSelection(@NotNull EditorComponent editorComponent, @NotNull SNode firstNode, @NotNull SNode lastNode, RangeSelectionFilter filter,
+                            String emptyCellId) {
     super(editorComponent);
     myFirstNode = firstNode;
     myLastNode = lastNode;
     myParentNode = myFirstNode.getParent();
-    myRole = myFirstNode.getRole_();
+    myRole = myFirstNode.getContainmentLink();
+    myModelReference = myFirstNode.getModel().getReference().toString();
+    myFilter = filter;
+    myEmptyCellId = emptyCellId;
 
     assert myParentNode != null;
     assert myParentNode == myLastNode.getParent();
-    assert myRole != null && myRole.equals(myLastNode.getRole_()) : "First node role: " + myRole + ", last node role: " + myLastNode.getRole_();
-    initSelectedCells();
+    assert myRole != null && myRole.equals(
+        myLastNode.getContainmentLink()) : "First node role: " + myRole + ", last node role: " + myLastNode.getContainmentLink();
+    try {
+      initSelectedCells();
+    } catch (CellNotFoundException e) {
+      assert false : "EditorCell was not found for node: " + e.getNode();
+    }
   }
 
-  private void initSelectedCells() {
-    List<EditorCell> selectedCells = new ArrayList<EditorCell>();
-    List<SNode> children = myParentNode.getChildren(myRole);
-    int i1 = children.indexOf(myFirstNode);
-    assert i1 != -1;
-    int i2 = children.indexOf(myLastNode);
-    assert i2 != -1;
-    for (int index = Math.min(i1, i2); index <= Math.max(i1, i2); index++) {
-      SNode nextNode = children.get(index);
-      EditorCell editorCell = getEditorComponent().findNodeCell(nextNode);
-      assert editorCell != null : "editor cell was not found for node: " + nextNode;
-      selectedCells.add(editorCell);
+  private void initSelectedCells() throws CellNotFoundException {
+    List<EditorCell> selectedCells = new ArrayList<>();
+    boolean withinSelection = false;
+    boolean breakLoop = false;
+    for (SNode child : getChildIterable()) {
+      if (myFirstNode.equals(child) || myLastNode.equals(child)) {
+        if (withinSelection || myFirstNode.equals(myLastNode)) {
+          breakLoop = true;
+        }
+        if (!withinSelection) {
+          withinSelection = true;
+        }
+      }
+      if (withinSelection) {
+        EditorCell editorCell = getEditorComponent().findNodeCell(child);
+        if (editorCell == null) {
+          throw new CellNotFoundException(child);
+        }
+        selectedCells.add(editorCell);
+      }
+      if (breakLoop) {
+        break;
+      }
     }
+    // asserting both first/last node was in this children collection
+    assert withinSelection;
+    assert breakLoop;
     setSelectedCells(selectedCells);
   }
 
   @Override
   public SelectionInfo getSelectionInfo() {
-    SelectionInfo selectionInfo = new SelectionInfo(this.getClass().getName());
-    selectionInfo.getPropertiesMap().put(ROLE_PROPERTY_NAME, myRole);
-    selectionInfo.getPropertiesMap().put(MODEL_ID_PROPERTY_NAME, myParentNode.getModel().getSModelReference().toString());
-    selectionInfo.getPropertiesMap().put(FIRST_NODE_ID_PROPERTY_NAME, myFirstNode.getId());
-    selectionInfo.getPropertiesMap().put(LAST_NODE_ID_PROPERTY_NAME, myLastNode.getId());
-    selectionInfo.getPropertiesMap().put(PARENT_NODE_ID_PROPERTY_NAME, myParentNode.getId());
+    SelectionInfoImpl selectionInfo = new SelectionInfoImpl(this.getClass().getName());
+    selectionInfo.getPropertiesMap().put(MODEL_ID_PROPERTY_NAME, myModelReference);
+    selectionInfo.getPropertiesMap().put(FIRST_NODE_ID_PROPERTY_NAME, myFirstNode.getNodeId().toString());
+    selectionInfo.getPropertiesMap().put(LAST_NODE_ID_PROPERTY_NAME, myLastNode.getNodeId().toString());
+    selectionInfo.getPropertiesMap().put(PARENT_NODE_ID_PROPERTY_NAME, myParentNode.getNodeId().toString());
+    if (myFilter != null) {
+      selectionInfo.getPropertiesMap().put(SELECTION_FILTER_CLASS_NAME, myFilter.getClass().getName());
+      selectionInfo.getPropertiesMap().put(SELECTION_FILTER_MODULE_REFERENCE, myFilter.getModuleReference());
+      myFilter.saveFilter(selectionInfo);
+    }
+    if (myEmptyCellId != null) {
+      selectionInfo.getPropertiesMap().put(EMPTY_CELL_ID, myEmptyCellId);
+    }
     return selectionInfo;
   }
 
@@ -124,29 +199,101 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
     }
 
     NodeRangeSelection that = (NodeRangeSelection) another;
-    if (!myFirstNode.equals(that.myFirstNode)) {
-      return false;
-    }
-    if (!myLastNode.equals(that.myLastNode)) {
-      return false;
-    }
-    if (!myParentNode.equals(that.myParentNode)) {
-      return false;
-    }
-    if (!myRole.equals(that.myRole)) {
-      return false;
-    }
+    return myFirstNode.equals(that.myFirstNode) && myLastNode.equals(that.myLastNode) && myParentNode.equals(that.myParentNode) && myRole.equals(that.myRole);
+  }
+
+  /**
+   * For node range selection this should be always returning true
+   *
+   * @param cell cell
+   * @return true
+   */
+  @Override
+  public boolean isExactlyCoveringCell(EditorCell cell) {
     return true;
   }
 
   @Override
+  public boolean canExecuteAction(CellActionType type) {
+    return type == CellActionType.BACKSPACE || type == CellActionType.DELETE || super.canExecuteAction(type);
+  }
+
+  @Override
   public void executeAction(CellActionType type) {
-    getEditorComponent().assertModelNotDisposed();
+    ((jetbrains.mps.nodeEditor.EditorComponent) getEditorComponent()).assertModelNotDisposed();
     if (type == CellActionType.BACKSPACE || type == CellActionType.DELETE) {
       performDeleteAction(type);
       return;
+    } else if (type == CellActionType.COMMENT) {
+      CommentMultipleNodesAction action = new CommentMultipleNodesAction(getSelectedNodes());
+      EditorContext editorContext = getEditorComponent().getEditorContext();
+      if (canExecute(editorContext, action)) {
+        action.execute(editorContext);
+      }
     }
     super.executeAction(type);
+  }
+
+  private RangeSelectionFilter createSelectionFilter(Map<String, String> properties) throws SelectionStoreException, SelectionRestoreException {
+    String filterClassName = properties.get(SELECTION_FILTER_CLASS_NAME);
+    if (filterClassName == null) {
+      return null;
+    }
+
+    String moduleRefString = properties.get(SELECTION_FILTER_MODULE_REFERENCE);
+    RangeSelectionFilter result;
+    try {
+      Class<? extends RangeSelectionFilter> filterClass;
+      if (moduleRefString != null) {
+        filterClass = loadFromModule(moduleRefString, filterClassName);
+      } else {
+        filterClass = (Class<? extends RangeSelectionFilter>) Class.forName(filterClassName);
+      }
+
+      if (filterClass == null) {
+        throw new SelectionStoreException(
+            "Can't load selection filter class: " + filterClassName +
+            (moduleRefString != null ? "" : "module reference: " + moduleRefString));
+      }
+
+      Constructor<? extends RangeSelectionFilter> constructor = filterClass.getConstructor(EditorContext.class);
+      result = constructor.newInstance(getEditorComponent().getEditorContext());
+    } catch (NoSuchMethodException e) {
+      throw new SelectionStoreException("No suitable constructor in filter class: " + e.getMessage());
+    } catch (ClassNotFoundException e) {
+      throw new SelectionStoreException("Filter class not found: " + e.getMessage());
+    } catch (InstantiationException e) {
+      throw new SelectionStoreException("Can't instantiate filter class: " + e.getMessage());
+    } catch (IllegalAccessException e) {
+      throw new SelectionStoreException("Illegal access while instantiating filter class: " + e.getMessage());
+    } catch (InvocationTargetException e) {
+      throw new SelectionStoreException("Exception while executing constructor of filter class: " + e.getMessage());
+    } catch (IllegalArgumentException e) {
+      throw new SelectionStoreException("Illegal argument of constructor of filter class: " + e.getMessage());
+    }
+
+    result.loadFilter(properties);
+    return result;
+  }
+
+  private Class<? extends RangeSelectionFilter> loadFromModule(String moduleRefString, String className) throws SelectionStoreException {
+    SModuleReference moduleReference = PersistenceRegistry.getInstance().createModuleReference(moduleRefString);
+    if (moduleReference == null) {
+      throw new SelectionStoreException("Can't parse module reference: " + moduleRefString);
+    }
+    SModule module = moduleReference.resolve(getEditorComponent().getEditorContext().getRepository());
+    if (module == null) {
+      throw new SelectionStoreException("Can't find module: " + moduleRefString + " in the repository");
+    }
+    if (!(module instanceof ReloadableModule)) {
+      throw new IllegalStateException("Cannot load classes from the module " + module);
+    }
+    try {
+      return (Class<? extends RangeSelectionFilter>) ((ReloadableModule) module).getOwnClass(className);
+    } catch (ClassNotFoundException e) {
+      LogManager.getLogger(NodeRangeSelection.class).debug("Class not found:" + className + " from " + module, e);
+      return null;
+    }
   }
 
   @NotNull
@@ -155,40 +302,75 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
     if (sNodeId == null) {
       throw new SelectionStoreException("Required node Id property missed, propertyName = " + propertyName);
     }
-    SNode sNode = sModel.getNodeById(sNodeId);
+    SNodeId nodeId = PersistenceFacade.getInstance().createNodeId(sNodeId);
+    assert nodeId != null : "wrong node id string";
+    SNode sNode = sModel.getNode(nodeId);
     if (sNode == null) {
       throw new SelectionRestoreException();
     }
     return sNode;
   }
 
-  private void performDeleteAction(CellActionType type) {
+  private void performDeleteAction(final CellActionType type) {
     // TODO: handle delete action similar to all other actions (using corresponding editor component action)
     final EditorContext editorContext = getEditorComponent().getEditorContext();
     int selectedCellsSize = getSelectedCells().size();
     if (selectedCellsSize > 1) {
-      editorContext.executeCommand(new Runnable() {
-        public void run() {
+      editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
+        @Override
+        public void doExecute() {
           List<SNode> selectedNodes = getSelectedNodes();
+          assert selectedNodes.size() > 1;
+          SNode prevSelectableNode = getNextSelectableNode(selectedNodes.get(0), false);
+          SNode nextSelectableNode = getNextSelectableNode(selectedNodes.get(selectedNodes.size() - 1), true);
           for (SNode node : selectedNodes) {
             node.delete();
           }
+          switch (type) {
+            case BACKSPACE:
+              if (selectNode(prevSelectableNode, false) || selectNode(nextSelectableNode, true)) {
+                return;
+              }
+              break;
+            case DELETE:
+              if (selectNode(nextSelectableNode, true) || selectNode(prevSelectableNode, false)) {
+                return;
+              }
+              break;
+            default:
+              assert false : "Incorrect acton type passed: " + type;
+          }
+          // selecting default cell - no children found.
+          if (myEmptyCellId != null) {
+            SelectionUtil.selectLabelCellAnSetCaret(editorContext, myParentNode, myEmptyCellId, 0);
+            return;
+          }
+
+          EditorCell emptyCell = getEditorComponent().findNodeCellWithRole(myParentNode, myRole);
+          if (emptyCell != null) {
+            assert myParentNode.getModel() != null : "The model of the parent node (" + myParentNode + ") in this selection is null.";
+            assert emptyCell.getSNode().getModel() != null : "The model is null for emptyCell node (" + emptyCell.getSNode() + ")";
+            editorContext.selectWRTFocusPolicy(emptyCell);
+            return;
+          }
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, myParentNode, SelectionManager.LAST_CELL, -1);
         }
       });
     } else if (selectedCellsSize == 1) {
       EditorCell nodeCell = getFirstCell();
-      final EditorCellAction action = nodeCell.getAction(CellActionType.DELETE);
-      if (action == null) return;
+      final CellAction action = nodeCell.getAction(type);
+      if (action == null) {
+        return;
+      }
 
-      if (!ModelAccess.instance().runReadAction(new Computable<Boolean>() {
-        public Boolean compute() {
-          return action.canExecute(editorContext);
-        }
-      })) return;
+      if (!canExecute(editorContext, action)) {
+        return;
+      }
 
       if (action.executeInCommand()) {
-        editorContext.executeCommand(new Runnable() {
-          public void run() {
+        editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
+          @Override
+          public void doExecute() {
             action.execute(editorContext);
           }
         });
@@ -198,26 +380,49 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
     }
   }
 
+  private boolean canExecute(final EditorContext editorContext, final CellAction action) {
+    return new ModelAccessHelper(editorContext.getRepository()).runReadAction(() -> action.canExecute(editorContext));
+  }
+
+  private boolean selectNode(SNode node, boolean startPosition) {
+    if (node != null) {
+      SelectionUtil.selectLabelCellAnSetCaret(getEditorComponent().getEditorContext(), node,
+                                              startPosition ? SelectionManager.FIRST_CELL : SelectionManager.LAST_CELL, startPosition ? 0 : -1);
+    }
+    return node != null;
+  }
+
   // TODO: enlargeSelection action should be handled specifically by executeAction() method
   public NodeRangeSelection enlargeSelection(boolean next) {
-    List<SNode> children = myParentNode.getChildren(myRole);
+    SNode newLastNode = getNextSelectableNode(myLastNode, next);
+    return newLastNode != null ? new NodeRangeSelection(getEditorComponent(), myFirstNode, newLastNode, myFilter, myEmptyCellId) : null;
+  }
 
-    SNode newLastNode = null;
-    for (Iterator<SNode> it = children.iterator(); it.hasNext(); ) {
-      SNode semanticNode = it.next();
-      if (semanticNode == myLastNode) {
-        if (next) {
-          if (it.hasNext()) {
-            newLastNode = it.next();
-          } else {
-            newLastNode = null;
-          }
-        }
-        break;
+  private SNode getNextSelectableNode(SNode anchorNode, boolean forward) {
+    SNode prevNode = null;
+    for (SNode child : getChildIterable()) {
+      if (forward && prevNode == anchorNode) {
+        return child;
       }
-      newLastNode = semanticNode;
+      if (!forward && child == anchorNode) {
+        return prevNode;
+      }
+      prevNode = child;
     }
-    return newLastNode != null ? new NodeRangeSelection(getEditorComponent(), myFirstNode, newLastNode) : null;
+    return null;
+  }
+
+  private Iterable<? extends SNode> getChildIterable() {
+    if (myFilter == null) {
+      return myParentNode.getChildren(myRole);
+    }
+    List<SNode> result = new LinkedList<>();
+    for (SNode nextChild : myParentNode.getChildren(myRole)) {
+      if (myFilter.accept(nextChild)) {
+        result.add(nextChild);
+      }
+    }
+    return result;
   }
 
   @Override
@@ -225,5 +430,43 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
     EditorCell lastCellToSelect = getEditorComponent().findNodeCell(myLastNode);
     assert lastCellToSelect != null;
     getEditorComponent().scrollToCell(lastCellToSelect);
+  }
+
+  public static abstract class RangeSelectionFilter {
+    private final EditorContext myEditorContext;
+
+    public RangeSelectionFilter(EditorContext editorContext) {
+      myEditorContext = editorContext;
+    }
+
+    protected EditorContext getEditorContext() {
+      return myEditorContext;
+    }
+
+    public abstract boolean accept(SNode node);
+
+    public void saveFilter(SelectionInfo info) {
+    }
+
+    /**
+     * @return SModuleReference.toString() or null if corresponding filter class can be loaded using NodeRangeSelection classloader.
+     */
+    public abstract String getModuleReference();
+
+    public void loadFilter(Map<String, String> properties) throws SelectionRestoreException, SelectionStoreException {
+    }
+  }
+
+  private static class CellNotFoundException extends Exception {
+    private final SNode myNode;
+
+    private CellNotFoundException(SNode node) {
+      super("EditorCell was not found, node: " + node);
+      myNode = node;
+    }
+
+    public SNode getNode() {
+      return myNode;
+    }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,93 +15,94 @@
  */
 package jetbrains.mps.generator;
 
-import jetbrains.mps.smodel.persistence.def.ModelPersistence;
-import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.ReadUtil;
-import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.StringReader;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Map;
 
 /**
  * Evgeny Gryaznov, Sep 2, 2010
  */
 public class ModelDigestUtil {
 
-  public static Map<String, String> getDigestMap(@NotNull IFile file) {
-    InputStream is = null;
-    byte[] modelBytes = null;
-    try {
-      is = file.openInputStream();
-      modelBytes = ReadUtil.read(is);
-    } catch (IOException e) {
-      /* ignore */
-    } finally {
-      FileUtil.closeFileSafe(is);
-    }
-    if (modelBytes == null) {
-      return null;
-    }
-    return getDigestMap(modelBytes);
-  }
-
-  public static Map<String, String> getDigestMap(byte[] modelBytes) {
-    try {
-      return ModelPersistence.calculateHashes(modelBytes);
-    } catch (ModelReadException e) {
-      return null;
-    }
-  }
-
-  public static String hash(IFile file) {
-    if (file == null) return null;
-
-    InputStream is = null;
-    try {
-      is = file.openInputStream();
-      return hash(new InputStreamReader(is, FileUtil.DEFAULT_CHARSET));
-    } catch (IOException e) {
-      /* ignore */
-    } finally {
-      if (is != null) {
-        try {
-          is.close();
-        } catch (IOException e) {
-          /* ignore */
-        }
+  /**
+   * Ignores newlines when isText == true.
+   */
+  @Contract(value = "null, _ -> null")
+  public static String hash(@Nullable StreamDataSource source, boolean isText) {
+    if (source != null) {
+      try (InputStream is = source.openInputStream()) {
+        return isText ? hashText(new InputStreamReader(is, FileUtil.DEFAULT_CHARSET)) : hashBytes(is);
+      } catch (IOException ignored) {
       }
     }
     return null;
   }
 
-  public static String hash(byte[] content) {
+  /**
+   * Ignores newlines.
+   */
+  @NotNull
+  public static String hashText(String content) {
     try {
-      return hash(new InputStreamReader(new ByteArrayInputStream(content), FileUtil.DEFAULT_CHARSET));
+      return hashText(new StringReader(content));
     } catch (IOException e) {
       // it can't happen
       throw new IllegalStateException(e);
     }
   }
 
-  public static String hash(String content) {
+  @NotNull
+  public static String hashBytes(@NotNull byte[] data) {
     try {
-      return hash(new StringReader(content));
-    } catch (IOException e) {
-      // it can't happen
+      MessageDigest digest = getSHA();
+      digest.update(data);
+      byte[] res = digest.digest();
+      return new BigInteger(res).toString(Character.MAX_RADIX);
+    } catch (NoSuchAlgorithmException e) {
       throw new IllegalStateException(e);
     }
   }
 
-  private static String hash(Reader r) throws IOException {
+  @NotNull
+  public static String hashBytes(InputStream stream) throws IOException {
+    try {
+      MessageDigest digest = getSHA();
+      byte[] block = new byte[1024];
+      int size;
+      while ((size = stream.read(block)) > 0) {
+        digest.update(block, 0, size);
+      }
+
+      byte[] res = digest.digest();
+      return new BigInteger(res).toString(Character.MAX_RADIX);
+    } catch (NoSuchAlgorithmException e) {
+      throw new IllegalStateException(e);
+    }
+  }
+
+  private static MessageDigest getSHA() throws NoSuchAlgorithmException {
+    return MessageDigest.getInstance("SHA");
+  }
+
+  @NotNull
+  public static String hashText(@NotNull Reader r) throws IOException {
     try {
       BufferedReader reader = new BufferedReader(r);
 
-      MessageDigest digest = MessageDigest.getInstance("SHA");
+      MessageDigest digest = getSHA();
       String line;
       while ((line = reader.readLine()) != null) {
         digest.update(line.getBytes(FileUtil.DEFAULT_CHARSET));
@@ -111,6 +112,45 @@ public class ModelDigestUtil {
       return new BigInteger(res).toString(Character.MAX_RADIX);
     } catch (NoSuchAlgorithmException e) {
       throw new IllegalStateException(e);
+    }
+  }
+
+  public static DigestBuilderOutputStream createDigestBuilderOutputStream() {
+    try {
+      return new DigestBuilderOutputStream(getSHA());
+    } catch (NoSuchAlgorithmException e) {
+      throw new IllegalStateException(e);
+    }
+  }
+
+  public final static class DigestBuilderOutputStream extends OutputStream {
+    private final MessageDigest myDigest;
+
+    private DigestBuilderOutputStream(MessageDigest digest) {
+      this.myDigest = digest;
+    }
+
+    @Override
+    public void write(int b) {
+      myDigest.update((byte) (b & 0xff));
+    }
+
+    @Override
+    public void write(@NotNull byte[] b) {
+      myDigest.update(b);
+    }
+
+    @Override
+    public void write(@NotNull byte[] b, int off, int len) {
+      if (off < 0 || off > b.length || len < 0 || off + len > b.length) {
+        throw new IndexOutOfBoundsException();
+      }
+      myDigest.update(b, off, len);
+    }
+
+    public String getResult() {
+      byte[] res = myDigest.digest();
+      return new BigInteger(res).toString(Character.MAX_RADIX);
     }
   }
 }

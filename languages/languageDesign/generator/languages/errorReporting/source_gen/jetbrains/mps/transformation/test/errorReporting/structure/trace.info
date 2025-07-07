@@ -1,110 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="ErrorReporting_Language.java" startLine="9" startPosition="0" endLine="16" endPosition="0" unitName="jetbrains.mps.transformation.test.errorReporting.structure.ErrorReporting_Language" />
-  <unitInfo fileName="StructureAspectDescriptor.java" startLine="10" startPosition="0" endLine="25" endPosition="0" unitName="jetbrains.mps.transformation.test.errorReporting.structure.StructureAspectDescriptor" />
-  <root nodeId="7287346816896104019" modelId="r:13099be6-e9be-4c1b-a5cd-d0d83a6c9f0a(jetbrains.mps.transformation.test.errorReporting.structure)">
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="15" startPosition="78" endLine="16" endPosition="119" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="16" startPosition="119" endLine="17" endPosition="43" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="NAME" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="17" startPosition="43" endLine="18" endPosition="68" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="SHORT_DESCRIPTION" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="18" startPosition="68" endLine="19" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="ALIAS" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="19" startPosition="45" endLine="20" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="VIRTUAL_PACKAGE" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="20" startPosition="64" endLine="21" endPosition="47" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="INTVAL" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="21" startPosition="47" endLine="22" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="SMODEL_ATTRIBUTE" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="24" startPosition="41" endLine="25" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="28" startPosition="27" endLine="29" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="32" startPosition="37" endLine="33" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="36" startPosition="39" endLine="37" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="40" startPosition="49" endLine="41" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="44" startPosition="28" endLine="45" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="48" startPosition="38" endLine="49" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="52" startPosition="37" endLine="53" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="56" startPosition="47" endLine="57" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="60" startPosition="26" endLine="61" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="64" startPosition="36" endLine="65" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="68" startPosition="41" endLine="69" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="72" startPosition="49" endLine="73" endPosition="79" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="76" startPosition="48" endLine="77" endPosition="82" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="80" startPosition="50" endLine="81" endPosition="61" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="84" startPosition="69" endLine="85" endPosition="70" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="88" startPosition="73" endLine="89" endPosition="208" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="92" startPosition="59" endLine="93" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="23" startPosition="0" endLine="26" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ErrorReportingRoot#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="27" startPosition="0" endLine="31" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="31" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setName#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="35" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getShortDescription#()Ljava/lang/String;" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="39" startPosition="0" endLine="43" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setShortDescription#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="43" startPosition="0" endLine="47" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAlias#()Ljava/lang/String;" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="47" startPosition="0" endLine="51" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setAlias#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="51" startPosition="0" endLine="55" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getVirtualPackage#()Ljava/lang/String;" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="55" startPosition="0" endLine="59" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setVirtualPackage#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="59" startPosition="0" endLine="63" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getIntval#()I" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="63" startPosition="0" endLine="67" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setIntval#(I)V" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="67" startPosition="0" endLine="71" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSmodelAttributesCount#()I" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="71" startPosition="0" endLine="75" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="smodelAttributes#()Ljava/util/Iterator;" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="75" startPosition="0" endLine="79" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSmodelAttributes#()Ljava/util/List;" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="79" startPosition="0" endLine="83" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="addSmodelAttribute#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="83" startPosition="0" endLine="87" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="insertSmodelAttribute#(Ljetbrains/mps/smodel/INodeAdapter;Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="87" startPosition="0" endLine="91" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/transformation/test/errorReporting/structure/ErrorReportingRoot;" />
-    <nodeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="91" startPosition="0" endLine="95" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/transformation/test/errorReporting/structure/ErrorReportingRoot;" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="24" startPosition="41" endLine="25" endPosition="16" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="28" startPosition="27" endLine="29" endPosition="53" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="32" startPosition="37" endLine="33" endPosition="53" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="36" startPosition="39" endLine="37" endPosition="66" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="40" startPosition="49" endLine="41" endPosition="66" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="44" startPosition="28" endLine="45" endPosition="54" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="48" startPosition="38" endLine="49" endPosition="54" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="52" startPosition="37" endLine="53" endPosition="64" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="56" startPosition="47" endLine="57" endPosition="64" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="60" startPosition="26" endLine="61" endPosition="62" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="64" startPosition="36" endLine="65" endPosition="62" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="68" startPosition="41" endLine="69" endPosition="67" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="72" startPosition="49" endLine="73" endPosition="79" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="76" startPosition="48" endLine="77" endPosition="82" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="80" startPosition="50" endLine="81" endPosition="61" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="84" startPosition="69" endLine="85" endPosition="70" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="88" startPosition="73" endLine="89" endPosition="208" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="92" startPosition="59" endLine="93" endPosition="53" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="23" startPosition="0" endLine="26" endPosition="3">
-      <varInfo nodeId="7287346816896104019" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="27" startPosition="0" endLine="31" endPosition="0" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="31" startPosition="0" endLine="35" endPosition="0">
-      <varInfo nodeId="7287346816896104019" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="35" startPosition="0" endLine="39" endPosition="0" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="39" startPosition="0" endLine="43" endPosition="0">
-      <varInfo nodeId="7287346816896104019" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="43" startPosition="0" endLine="47" endPosition="0" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="47" startPosition="0" endLine="51" endPosition="0">
-      <varInfo nodeId="7287346816896104019" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="51" startPosition="0" endLine="55" endPosition="0" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="55" startPosition="0" endLine="59" endPosition="0">
-      <varInfo nodeId="7287346816896104019" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="59" startPosition="0" endLine="63" endPosition="0" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="63" startPosition="0" endLine="67" endPosition="0">
-      <varInfo nodeId="7287346816896104019" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="67" startPosition="0" endLine="71" endPosition="0" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="71" startPosition="0" endLine="75" endPosition="0" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="75" startPosition="0" endLine="79" endPosition="0" />
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="79" startPosition="0" endLine="83" endPosition="0">
-      <varInfo nodeId="7287346816896104019" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="83" startPosition="0" endLine="87" endPosition="0">
-      <varInfo nodeId="7287346816896104019" varName="node" />
-      <varInfo nodeId="7287346816896104019" varName="prev" />
-    </scopeInfo>
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="87" startPosition="0" endLine="91" endPosition="0">
-      <varInfo nodeId="7287346816896104019" varName="init" />
-      <varInfo nodeId="7287346816896104019" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="91" startPosition="0" endLine="95" endPosition="0">
-      <varInfo nodeId="7287346816896104019" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="7287346816896104019" fileName="ErrorReportingRoot.java" startLine="15" startPosition="0" endLine="96" endPosition="0" unitName="jetbrains.mps.transformation.test.errorReporting.structure.ErrorReportingRoot" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root>
+    <file name="ConceptPresentationAspectImpl.java">
+      <unit at="11,0,30,0" name="jetbrains.mps.transformation.test.errorReporting.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <unit at="10,0,28,0" name="jetbrains.mps.transformation.test.errorReporting.structure.LanguageConceptSwitch" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <unit at="15,0,60,0" name="jetbrains.mps.transformation.test.errorReporting.structure.StructureAspectDescriptor" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:13099be6-e9be-4c1b-a5cd-d0d83a6c9f0a(jetbrains.mps.transformation.test.errorReporting.structure)/7287346816896104019">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="7287346816896104019" at="12,0,13,0" concept="1" trace="props_ErrorReportingRoot" />
+      <node id="7287346816896104019" at="20,47,21,76" concept="3" />
+      <node id="7287346816896104019" at="21,76,22,35" concept="0" />
+      <node id="7287346816896104019" at="22,35,23,50" concept="0" />
+      <node id="7287346816896104019" at="24,9,25,40" concept="4" />
+      <node id="7287346816896104019" at="19,52,24,9" concept="2" />
+      <scope id="7287346816896104019" at="20,47,23,50">
+        <var name="cpb" id="7287346816896104019" />
+      </scope>
+      <scope id="7287346816896104019" at="19,52,25,40" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="7287346816896104019" at="12,0,13,0" concept="5" trace="ErrorReportingRoot" />
+      <node id="7287346816896104019" at="15,116,16,57" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="7287346816896104019" at="16,0,17,0" concept="1" trace="myConceptErrorReportingRoot" />
+      <node id="7287346816896104019" at="38,52,39,43" concept="4" />
+      <node id="7287346816896104019" at="50,76,51,201" concept="3" />
+      <node id="7287346816896104019" at="51,201,52,33" concept="0" />
+      <node id="7287346816896104019" at="52,33,53,71" concept="0" />
+      <node id="7287346816896104019" at="53,71,54,135" concept="0" />
+      <node id="7287346816896104019" at="54,135,55,17" concept="0" />
+      <node id="7287346816896111112" at="55,17,56,113" concept="0" />
+      <node id="7287346816896104019" at="56,113,57,22" concept="4" />
+      <node id="7287346816896104019" at="50,0,59,0" concept="6" trace="createDescriptorForErrorReportingRoot#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="7287346816896104019" at="38,52,39,43" />
+      <scope id="7287346816896104019" at="50,76,57,22">
+        <var name="b" id="7287346816896104019" />
+      </scope>
+      <scope id="7287346816896104019" at="50,0,59,0" />
+    </file>
+  </root>
+</debug-info>
 

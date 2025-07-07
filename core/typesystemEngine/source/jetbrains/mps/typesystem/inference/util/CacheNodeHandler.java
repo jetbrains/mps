@@ -17,7 +17,7 @@ package jetbrains.mps.typesystem.inference.util;
 
 import jetbrains.mps.lang.pattern.util.IMatchModifier;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.lang.ref.WeakReference;
 
@@ -26,8 +26,8 @@ public class CacheNodeHandler {
   private int myHash;
 
   public CacheNodeHandler(SNode node) {
-    myNodeRef = new WeakReference<SNode>(node);
-    myHash = MatchingUtil.hash(node, false);
+    myNodeRef = new WeakReference<>(node);
+    myHash = MatchingUtil.hash(node);
   }
 
   public int hashCode() {
@@ -51,7 +51,6 @@ public class CacheNodeHandler {
   }
 
   protected SNode getNode() {
-    SNode sn = myNodeRef.get();
-    return sn != null && !(sn.shouldHaveBeenDisposed()) ? sn : null;
+    return myNodeRef.get();
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,37 +18,33 @@ package jetbrains.mps.ide.classpath;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.ui.ScrollPaneFactory;
-import jetbrains.mps.ide.icons.IconManager;
-import jetbrains.mps.ide.ui.MPSTree;
-import jetbrains.mps.ide.ui.MPSTreeNode;
-import jetbrains.mps.ide.ui.TextTreeNode;
-import jetbrains.mps.project.ClasspathCollector;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.reloading.IClassPathItem;
-import jetbrains.mps.util.CollectionUtil;
-import jetbrains.mps.util.ToStringComparator;
-import jetbrains.mps.workbench.action.ActionUtils;
+import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.tools.BaseProjectTool;
+import jetbrains.mps.ide.ui.tree.MPSTree;
+import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.TextTreeNode;
+import jetbrains.mps.project.facets.JavaModuleOperations;
+import jetbrains.mps.smodel.ModelReadRunnable;
+import jetbrains.mps.workbench.action.ActionUtils;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class ClassPathViewerTool extends BaseProjectTool {
   private MyClassPathTree myTree;
   private JPanel myComponent;
-  private IModule myInspectedModule;
 
   public ClassPathViewerTool(Project project) {
-    super(project, "Classpath Explorer", -1, IconManager.EMPTY_ICON, ToolWindowAnchor.BOTTOM, true);
-
+    super(project, "Classpath Explorer", null, IdeIcons.DEFAULT_ICON, ToolWindowAnchor.BOTTOM, false, true);
   }
 
   @Override
@@ -57,65 +53,61 @@ public class ClassPathViewerTool extends BaseProjectTool {
     this.myTree = new MyClassPathTree();
     myComponent.add(ScrollPaneFactory.createScrollPane(myTree), BorderLayout.CENTER);
 
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        DefaultActionGroup group = ActionUtils.groupFromActions(createCloseAction());
-        JComponent toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, false).getComponent();
-        myComponent.add(toolbar, BorderLayout.WEST);
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      DefaultActionGroup group = ActionUtils.groupFromActions(createCloseAction());
+      JComponent toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, false).getComponent();
+      myComponent.add(toolbar, BorderLayout.WEST);
     });
     myTree.rebuildLater();
   }
 
+  @Override
   public JComponent getComponent() {
     return myComponent;
   }
 
-  public void analyzeModule(IModule m) {
-    myInspectedModule = m;
+  public void analyzeModule(SModule m) {
+    myTree.setModule(m);
     myTree.rebuildLater();
   }
 
-  private class MyClassPathTree extends MPSTree {
+  private static class MyClassPathTree extends MPSTree {
+    private SModule myInspectedModule;
+
+    MyClassPathTree() {
+    }
+
+    void setModule(SModule m) {
+      myInspectedModule = m;
+    }
+
+    @Override
+    protected void runRebuildAction(Runnable rebuildAction, boolean saveExpansion) {
+      SRepository r = myInspectedModule == null ? null : myInspectedModule.getRepository();
+      if (r == null) {
+        super.runRebuildAction(rebuildAction, saveExpansion);
+      } else {
+        // JMO.collectCompileClasspath uses GMDM and walks modules, therefore needs model access.
+        super.runRebuildAction(new ModelReadRunnable(r, rebuildAction), saveExpansion);
+      }
+    }
+
+    @Override
     protected MPSTreeNode rebuild() {
       if (myInspectedModule == null) {
         return new TextTreeNode("No Module");
       }
-
-      TextTreeNode root = new TextTreeNode("ClassPath of module " + myInspectedModule.getModuleFqName());
-      ClasspathCollector collector = new ClasspathCollector(CollectionUtil.set(myInspectedModule));
-      collector.collect(false);
-
-      List<IClassPathItem> items = new ArrayList<IClassPathItem>(collector.getResult());
-      Collections.sort(items, new ToStringComparator());
-
-      for (IClassPathItem item : items) {
-        TextTreeNode itemNode = new TextTreeNode(item.toString());
-        root.add(itemNode);
-        for (IModule pathItem : collector.getPathFor(item)) {
-          itemNode.add(new ModuleTreeNode(pathItem));
-        }
+      if (myInspectedModule.getRepository() == null) {
+        return new TextTreeNode("Can not calculate classpath for a detached module");
       }
 
+      TextTreeNode root = new TextTreeNode("ClassPath of module " + myInspectedModule.getModuleName());
+      ArrayList<String> cp = new ArrayList<>(JavaModuleOperations.collectCompileClasspath(Collections.singleton(myInspectedModule), true));
+      cp.sort(null);
+      for (String item : cp) {
+        root.add(new TextTreeNode(item));
+      }
       return root;
-    }
-
-    private class ModuleTreeNode extends MPSTreeNode {
-      private IModule myModule;
-
-      private ModuleTreeNode(IModule module) {
-        super(null);
-        myModule = module;
-
-        setNodeIdentifier(myModule.getModuleFqName());
-
-        setText(myModule.getModuleFqName());
-        setIcon(IconManager.getIconFor(myModule));
-      }
-
-      public boolean isLeaf() {
-        return true;
-      }
     }
   }
 }

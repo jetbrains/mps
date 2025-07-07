@@ -17,7 +17,7 @@ package jetbrains.mps.newTypesystem.operation;
 
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.List;
 
@@ -26,6 +26,7 @@ public class ClearNodeTypeOperation extends AbstractOperation {
   private SNode myType;
   private List<IErrorReporter> myErrors;
 
+  @Override
   public String getPresentationKind() {
     return PresentationKind.TYPE_REMOVED;
   }
@@ -37,16 +38,19 @@ public class ClearNodeTypeOperation extends AbstractOperation {
     myErrors = errors;
   }
 
+  @Override
   protected void doUndo(State state) {
     state.getNodeMaps().assignNodeType(myNode, myType);
     state.getNodeMaps().addNodeErrors(myNode, myErrors);
   }
 
+  @Override
   protected void doRedo(State state) {
     state.getNodeMaps().removeNodeType(myNode);
     state.getNodeMaps().removeNodeErrors(myNode);
   }
 
+  @Override
   public String getPresentation() {
     return "Type and errors cleared for node: " + myNode;
   }

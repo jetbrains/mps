@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,10 @@
  */
 package jetbrains.mps.ide.codeStyle;
 
-import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ProjectComponent;
-import com.intellij.openapi.components.State;
-import com.intellij.openapi.components.Storage;
-import com.intellij.openapi.options.ConfigurationException;
+import com.intellij.openapi.options.Configurable;
+import com.intellij.openapi.options.Configurable.Composite;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.baseLanguage.util.CodeStyleSettings;
-import jetbrains.mps.baseLanguage.util.CodeStyleSettingsRegistry;
-import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
@@ -34,79 +28,47 @@ import javax.swing.JComponent;
 /**
  * Evgeny Gryaznov, 1/6/11
  */
-@State(
-  name = "CodeStyleSettings",
-  storages = {
-    @Storage(
-      id = "other",
-      file = "$PROJECT_FILE$"
-    )
-  }
-)
-public class CodeStyleSettingsConfigurable implements PersistentStateComponent<CodeStyleSettings>, ProjectComponent, SearchableConfigurable {
-
+public class CodeStyleSettingsConfigurable implements SearchableConfigurable, Composite {
   private CodeStylePreferencesPage myPage;
-  private CodeStyleSettings myState = new CodeStyleSettings();
-  private Project myProject;
+  private final Project myProject;
 
   public CodeStyleSettingsConfigurable(Project project) {
     myProject = project;
   }
 
-  private CodeStylePreferencesPage getPage() {
+  public CodeStylePreferencesPage getPage() {
     if (myPage == null) {
-      myPage = new CodeStylePreferencesPage(myState);
+      myPage = new CodeStylePreferencesPage(CodeStyleSettingsComponent.getInstance(myProject).getState());
     }
     return myPage;
   }
 
-  public CodeStyleSettings getState() {
-    return myState;
-  }
-
-  public void loadState(CodeStyleSettings state) {
-    myState = state;
-  }
-
-  public void projectOpened() {
-    CodeStyleSettingsRegistry.registerSettings(ProjectHelper.toMPSProject(myProject), myState);
-  }
-
-  public void projectClosed() {
-    CodeStyleSettingsRegistry.unregisterSettings(ProjectHelper.toMPSProject(myProject));
-  }
-
-  @NotNull
-  public String getComponentName() {
-    return "Code Style Settings Configurable";
-  }
-
-  public void initComponent() {
-  }
-
-  public void disposeComponent() {
-  }
-
+  @Override
   public JComponent createComponent() {
     return getPage().getComponent();
   }
 
+  @Override
   public boolean isModified() {
     return getPage().isModified();
   }
 
-  public void apply() throws ConfigurationException {
+  @Override
+  public void apply() {
     getPage().commit();
   }
 
+  @Override
   public void reset() {
     getPage().update();
   }
 
+  @Override
   public void disposeUIResources() {
     myPage = null;
   }
 
+  @Override
   @Nls
   public String getDisplayName() {
     return "Code Style";
@@ -116,16 +78,25 @@ public class CodeStyleSettingsConfigurable implements PersistentStateComponent<C
     return null;
   }
 
+  @Override
   public String getHelpTopic() {
     return "reference.settingsdialog.IDE.globalcodestyle";
   }
 
+  @NotNull
+  @Override
   public String getId() {
     return "code.style";
   }
 
+  @Override
   public Runnable enableSearch(String option) {
     return null;
   }
 
+  @NotNull
+  @Override
+  public Configurable[] getConfigurables() {
+    return new Configurable[0];
+  }
 }

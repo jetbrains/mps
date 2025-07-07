@@ -15,10 +15,13 @@
  */
 package jetbrains.mps.nodeEditor.cellMenu;
 
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.smodel.action.INodeSubstituteAction;
-import jetbrains.mps.logging.Logger;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,27 +30,39 @@ import java.util.List;
  * Date: Nov 29, 2006
  */
 public class CompositeSubstituteInfo extends AbstractNodeSubstituteInfo {
-  private static final Logger LOG = Logger.getLogger(CompositeSubstituteInfo.class);
+  private static final Logger LOG = LogManager.getLogger(CompositeSubstituteInfo.class);
 
   private CellContext myCellContext;
-  private SubstituteInfoPart[] myParts;
+  private SubstituteInfoPartExt[] myExtParts;
 
-
-  public CompositeSubstituteInfo(EditorContext editorContext, CellContext cellContext, SubstituteInfoPart[] parts) {
+  public CompositeSubstituteInfo(EditorContext editorContext, CellContext cellContext, @NotNull SubstituteInfoPartExt[] parts) {
     super(editorContext);
     myCellContext = cellContext;
-    myParts = parts;
+    myExtParts = parts;
   }
 
-  protected List<INodeSubstituteAction> createActions() {
-    List<INodeSubstituteAction> actions = new LinkedList<INodeSubstituteAction>();
-    for (SubstituteInfoPart menuPart : myParts) {
+  @Override
+  protected List<SubstituteAction> createActions() {
+    List<List<? extends SubstituteAction>> actionLists = new LinkedList<>();
+    for (SubstituteInfoPartExt menuPart : myExtParts) {
       try {
-        actions.addAll(menuPart.createActions(myCellContext, getEditorContext()));
+        actionLists.add(menuPart.createActions(myCellContext, getEditorContext()));
       } catch (Throwable e) {
-        LOG.error(e);
+        LOG.error(null, e);
       }
     }
-    return actions;
+    return flatten(actionLists);
+  }
+
+  private List<SubstituteAction> flatten(List<List<? extends SubstituteAction>> actionLists) {
+    int size = 0;
+    for (List<? extends SubstituteAction> actionList : actionLists) {
+      size += actionList.size();
+    }
+    List<SubstituteAction> result = new ArrayList<>(size);
+    for (List<? extends SubstituteAction> actionList : actionLists) {
+      result.addAll(actionList);
+    }
+    return result;
   }
 }

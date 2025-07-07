@@ -1,640 +1,633 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:00000000-0000-4000-0000-011c895902f3(jetbrains.mps.lang.generator.generationContext.structure)" version="0">
-  <persistence version="7" />
-  <language namespace="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" />
-  <language namespace="7866978e-a0f0-4cc7-81bc-4d213d9375e1(jetbrains.mps.lang.smodel)" />
-  <language namespace="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" />
-  <language namespace="d7706f63-9be2-479c-a3da-ae92af1e64d5(jetbrains.mps.lang.generator.generationContext)" />
-  <devkit namespace="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
-  <import index="tpf8" modelUID="r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)" version="2" />
-  <import index="tpee" modelUID="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" version="4" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" />
-  <import index="tp3t" modelUID="r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)" version="0" />
-  <import index="e2lb" modelUID="f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#java.lang(java.lang@java_stub)" version="-1" />
-  <import index="cu2c" modelUID="f:java_stub#6ed54515-acc8-4d1e-a16c-9fd6cfe951ea#jetbrains.mps.smodel(MPS.Core/jetbrains.mps.smodel@java_stub)" version="-1" />
-  <import index="tp25" modelUID="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" version="16" implicit="yes" />
-  <import index="tpce" modelUID="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" version="0" implicit="yes" />
-  <import index="tpf3" modelUID="r:00000000-0000-4000-0000-011c895902f3(jetbrains.mps.lang.generator.generationContext.structure)" version="0" implicit="yes" />
-  <roots>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1216860049619">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_Base" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
+<model ref="r:00000000-0000-4000-0000-011c895902f3(jetbrains.mps.lang.generator.generationContext.structure)">
+  <persistence version="9" />
+  <languages>
+    <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
+  </languages>
+  <imports>
+    <import index="tpf8" ref="r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)" />
+    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
+    <import index="tp3t" ref="r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)" />
+  </imports>
+  <registry>
+    <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="6054523464626862044" name="jetbrains.mps.lang.structure.structure.AttributeInfo_IsMultiple" flags="ng" index="tn0Fv" />
+      <concept id="6054523464627964745" name="jetbrains.mps.lang.structure.structure.AttributeInfo_AttributedConcept" flags="ng" index="trNpa">
+        <reference id="6054523464627965081" name="concept" index="trN6q" />
+      </concept>
+      <concept id="2992811758677295509" name="jetbrains.mps.lang.structure.structure.AttributeInfo" flags="ng" index="M6xJ_">
+        <property id="7588428831955550663" name="role" index="Hh88m" />
+        <child id="7588428831947959310" name="attributed" index="EQaZv" />
+        <child id="7588428831955550186" name="multiple" index="HhnKV" />
+      </concept>
+      <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
+        <property id="6714410169261853888" name="conceptId" index="EcuMT" />
+        <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
+        <property id="4628067390765956807" name="final" index="R5$K2" />
+        <property id="4628067390765956802" name="abstract" index="R5$K7" />
+        <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
+        <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
+        <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
+      </concept>
+      <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
+        <reference id="1169127628841" name="intfc" index="PrY4T" />
+      </concept>
+      <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
+        <property id="5404671619616246344" name="staticScope" index="2_RsDV" />
+        <reference id="1071489389519" name="extends" index="1TJDcQ" />
+        <child id="1169129564478" name="implements" index="PzmwI" />
+      </concept>
+      <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
+        <property id="241647608299431129" name="propertyId" index="IQ2nx" />
+        <reference id="1082985295845" name="dataType" index="AX2Wp" />
+      </concept>
+      <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
+        <property id="1071599776563" name="role" index="20kJfa" />
+        <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
+        <property id="1071599937831" name="metaClass" index="20lmBu" />
+        <property id="241647608299431140" name="linkId" index="IQ2ns" />
+        <reference id="1071599976176" name="target" index="20lvS9" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="1TIwiD" id="hHiwH3j">
+    <property role="R5$K7" value="true" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="GenerationContextOp_Base" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="EcuMT" value="1216860049619" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="hHiwH3k" role="PzmwI">
+      <ref role="PrY4T" to="tpee:hqOqG0K" resolve="IOperation" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1216860049622">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetOutputByLabel" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="hHiwH3m">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="search output node" />
+    <property role="TrG5h" value="GenerationContextOp_GetOutputByLabel" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="get output by label" />
+    <property role="EcuMT" value="1216860049622" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hHiwH3n" role="1TKVEi">
+      <property role="20kJfa" value="label" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1216860049623" />
+      <ref role="20lvS9" to="tpf8:hurT7o6" resolve="MappingLabelDeclaration" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1216860049627">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetOutputByLabelAndInput" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+    <node concept="1TJgyi" id="hHF46Fo" role="1TKVEl">
+      <property role="TrG5h" value="labelName_intern" />
+      <property role="IQ2nx" value="1217271982808" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1216860049633">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextType" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1068431790189" resolveInfo="Type" />
+    <node concept="1TJgyj" id="5Wn7$dQZ8U2" role="1TKVEi">
+      <property role="IQ2ns" value="6851978633175404162" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="forModel" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1216860049635">
-      <property name="name" nameId="tpck.1169194664001" value="TemplateFunctionParameter_generationContext" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1107135704075" resolveInfo="ConceptFunctionParameter" />
+  </node>
+  <node concept="1TIwiD" id="hHiwH3r">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="search output node" />
+    <property role="TrG5h" value="GenerationContextOp_GetOutputByLabelAndInput" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="get output by label and input" />
+    <property role="EcuMT" value="1216860049627" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyi" id="hHF4cfs" role="1TKVEl">
+      <property role="TrG5h" value="labelName_intern" />
+      <property role="IQ2nx" value="1217272005596" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1216945228272">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetScope" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hHiwH3s" role="1TKVEi">
+      <property role="20kJfa" value="label" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1216860049628" />
+      <ref role="20lvS9" to="tpf8:hurT7o6" resolve="MappingLabelDeclaration" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217004708011">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetInputModel" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hHiwH3w" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="inputNode" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1216860049632" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217026863835">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetOriginalInputModel" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="ZetM4BT5sq" role="1TKVEi">
+      <property role="IQ2ns" value="1138978740058216218" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="input2" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217282130234">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetOutputModel" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="hHiwH3x">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="generation context type" />
+    <property role="TrG5h" value="GenerationContextType" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="gencontext" />
+    <property role="EcuMT" value="1216860049633" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
+  </node>
+  <node concept="1TIwiD" id="hHiwH3z">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="generation context parameter" />
+    <property role="TrG5h" value="TemplateFunctionParameter_generationContext" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="genContext" />
+    <property role="EcuMT" value="1216860049635" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
+  <node concept="1TIwiD" id="hHr8y2F">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="current input model" />
+    <property role="TrG5h" value="GenerationContextOp_GetInputModel" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="inputModel" />
+    <property role="EcuMT" value="1217004708011" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="hHst3br">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="original input model" />
+    <property role="TrG5h" value="GenerationContextOp_GetOriginalInputModel" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="originalModel" />
+    <property role="EcuMT" value="1217026863835" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="hHFEO4U">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="current output model" />
+    <property role="TrG5h" value="GenerationContextOp_GetOutputModel" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="outputModel" />
+    <property role="EcuMT" value="1217282130234" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="hIfr3z2">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="search preceding input node" />
+    <property role="TrG5h" value="GenerationContextOp_GetPrevInputByLabel" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="get prev input by label" />
+    <property role="EcuMT" value="1217881979074" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hIfr3z3" role="1TKVEi">
+      <property role="20kJfa" value="label" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1217881979075" />
+      <ref role="20lvS9" to="tpf8:hurT7o6" resolve="MappingLabelDeclaration" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217369610610">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetTemplateNode" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+    <node concept="1TJgyi" id="hIfr3z7" role="1TKVEl">
+      <property role="TrG5h" value="labelName_intern" />
+      <property role="IQ2nx" value="1217881979079" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217881979074">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetPrevInputByLabel" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="hIf_y3d">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="search output node" />
+    <property role="TrG5h" value="GenerationContextOp_GetCopiedOutputByInput" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="get copied output by input" />
+    <property role="EcuMT" value="1217884725453" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hIf_y3j" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="inputNode" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1217884725459" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217884725453">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetCopiedOutputByInput" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="hIfSARC">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="access to user object" />
+    <property role="TrG5h" value="GenerationContextOp_SessionObjectAccess" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="session object" />
+    <property role="EcuMT" value="1217889725928" />
+    <ref role="1TJDcQ" node="hIfTwd8" resolve="GenerationContextOp_UserObjectAccessBase" />
+  </node>
+  <node concept="1TIwiD" id="hIfTwd8">
+    <property role="R5$K7" value="true" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="GenerationContextOp_UserObjectAccessBase" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="EcuMT" value="1217889960776" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hIfWi7C" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="userKey" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1217890689512" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217889725928">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_SessionObjectAccess" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1217889960776" resolveInfo="GenerationContextOp_UserObjectAccessBase" />
+  </node>
+  <node concept="1TIwiD" id="hIg8Xag">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="access to user object" />
+    <property role="TrG5h" value="GenerationContextOp_StepObjectAccess" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="step object" />
+    <property role="EcuMT" value="1217894011536" />
+    <ref role="1TJDcQ" node="hIfTwd8" resolve="GenerationContextOp_UserObjectAccessBase" />
+  </node>
+  <node concept="1TIwiD" id="hIg92A3">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="access to user object" />
+    <property role="TrG5h" value="GenerationContextOp_TransientObjectAccess" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="transient object" />
+    <property role="EcuMT" value="1217894033795" />
+    <ref role="1TJDcQ" node="hIfTwd8" resolve="GenerationContextOp_UserObjectAccessBase" />
+  </node>
+  <node concept="1TIwiD" id="hIk5nzZ">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="logging" />
+    <property role="TrG5h" value="GenerationContextOp_ShowErrorMessage" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="show error" />
+    <property role="EcuMT" value="1217960179967" />
+    <ref role="1TJDcQ" node="hIk5Spb" resolve="GenerationContextOp_ShowMessageBase" />
+  </node>
+  <node concept="1TIwiD" id="hIk5Spb">
+    <property role="R5$K7" value="true" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="GenerationContextOp_ShowMessageBase" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="EcuMT" value="1217960314443" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hIk5Spg" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="messageText" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1217960314448" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217889960776">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_UserObjectAccessBase" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hIk6f7o" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="referenceNode" />
+      <property role="IQ2ns" value="1217960407512" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217894011536">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_StepObjectAccess" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1217889960776" resolveInfo="GenerationContextOp_UserObjectAccessBase" />
+  </node>
+  <node concept="1TIwiD" id="hIkEO0k">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="logging" />
+    <property role="TrG5h" value="GenerationContextOp_ShowWarningMessage" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="show warning" />
+    <property role="EcuMT" value="1217969995796" />
+    <ref role="1TJDcQ" node="hIk5Spb" resolve="GenerationContextOp_ShowMessageBase" />
+  </node>
+  <node concept="1TIwiD" id="hIkF5CT">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="logging" />
+    <property role="TrG5h" value="GenerationContextOp_ShowInfoMessage" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="show info" />
+    <property role="EcuMT" value="1217970068025" />
+    <ref role="1TJDcQ" node="hIk5Spb" resolve="GenerationContextOp_ShowMessageBase" />
+  </node>
+  <node concept="1TIwiD" id="hIpiZCf">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="generate unique name " />
+    <property role="TrG5h" value="GenerationContextOp_CreateUniqueName" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="unique name" />
+    <property role="EcuMT" value="1218047638031" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hIpiZCg" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="baseName" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1218047638032" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217894033795">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_TransientObjectAccess" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1217889960776" resolveInfo="GenerationContextOp_UserObjectAccessBase" />
+    <node concept="1TJgyj" id="hIpr8Ix" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="contextNode" />
+      <property role="IQ2ns" value="1218049772449" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217960179967">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_ShowErrorMessage" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1217960314443" resolveInfo="GenerationContextOp_ShowMessageBase" />
+  </node>
+  <node concept="1TIwiD" id="hLiAAM3">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="search output nodes" />
+    <property role="TrG5h" value="GenerationContextOp_GetOutputListByLabelAndInput" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="get output list by label and input" />
+    <property role="EcuMT" value="1221156564099" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyi" id="hLiAAM4" role="1TKVEl">
+      <property role="TrG5h" value="labelName_intern" />
+      <property role="IQ2nx" value="1221156564100" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217960314443">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_ShowMessageBase" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hLiAAM5" role="1TKVEi">
+      <property role="20kJfa" value="label" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1221156564101" />
+      <ref role="20lvS9" to="tpf8:hurT7o6" resolve="MappingLabelDeclaration" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217969995796">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_ShowWarningMessage" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1217960314443" resolveInfo="GenerationContextOp_ShowMessageBase" />
+    <node concept="1TJgyj" id="hLiAAM8" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="inputNode" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1221156564104" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1217970068025">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_ShowInfoMessage" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1217960314443" resolveInfo="GenerationContextOp_ShowMessageBase" />
+  </node>
+  <node concept="1TIwiD" id="hLmkIjl">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="search output node using ref.scope" />
+    <property role="TrG5h" value="GenerationContextOp_GetOutputByLabelAndInputAndReferenceScope" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="pick output by label and input using ref.scope" />
+    <property role="EcuMT" value="1221218985173" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hLmmeDJ" role="1TKVEi">
+      <property role="20kJfa" value="label" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1221219379823" />
+      <ref role="20lvS9" to="tpf8:hurT7o6" resolve="MappingLabelDeclaration" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1218047638031">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_CreateUniqueName" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hLmmcvx" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="inputNode" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1221219370977" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1221156564099">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetOutputListByLabelAndInput" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+    <node concept="1TJgyi" id="hLmmaFr" role="1TKVEl">
+      <property role="TrG5h" value="labelName_intern" />
+      <property role="IQ2nx" value="1221219363547" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1221218985173">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetOutputByLabelAndInputAndReferenceScope" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="hT2$i9n">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="original input node copied to output" />
+    <property role="TrG5h" value="GenerationContextOp_GetOriginalCopiedInputByOutput" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="get original copied input by output" />
+    <property role="EcuMT" value="1229477454423" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="hT2$ycJ" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="outputNode" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1229477520175" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1224102704684">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetInvocationContext" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="3YMQ4vlnW8u">
+    <property role="TrG5h" value="GenerationContextOp_NodePatternRef" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="EcuMT" value="4589968773278056990" />
+    <ref role="1TJDcQ" node="1xCtdgeQQCm" resolve="GenerationContextOp_PatternRef" />
+    <node concept="1TJgyj" id="3YMQ4vlnXNl" role="1TKVEi">
+      <property role="20kJfa" value="patternVarDecl" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="4589968773278063829" />
+      <ref role="20lvS9" to="tp3t:gyDMOuj" resolve="PatternVariableDeclaration" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1229477454423">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GetOriginalCopiedInputByOutput" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="4w6U_Q4Qaba">
+    <property role="TrG5h" value="GenerationContextOp_ParameterRef" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="EcuMT" value="5190093307972723402" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyi" id="78xOK0ZyhhY" role="1TKVEl">
+      <property role="TrG5h" value="name_intern" />
+      <property role="IQ2nx" value="8224086392574645374" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4589968773278056990">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_NodePatternRef" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1758784108619328022" resolveInfo="GenerationContextOp_PatternRef" />
+    <node concept="1TJgyj" id="4w6U_Q4Qdka" role="1TKVEi">
+      <property role="20kJfa" value="parameter" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="5190093307972736266" />
+      <ref role="20lvS9" to="tpf8:1$dcvTE2mbA" resolve="TemplateParameterDeclaration" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5190093307972723402">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_ParameterRef" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="1xCtdgeQstn">
+    <property role="TrG5h" value="GenerationContextOp_LinkPatternRef" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="EcuMT" value="1758784108619220823" />
+    <ref role="1TJDcQ" node="1xCtdgeQQCm" resolve="GenerationContextOp_PatternRef" />
+    <node concept="1TJgyj" id="1xCtdgeQstr" role="1TKVEi">
+      <property role="20kJfa" value="linkPatternVar" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1758784108619220827" />
+      <ref role="20lvS9" to="tp3t:gzjrplq" resolve="LinkPatternVariableDeclaration" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1758784108619220823">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_LinkPatternRef" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1758784108619328022" resolveInfo="GenerationContextOp_PatternRef" />
+  </node>
+  <node concept="1TIwiD" id="1xCtdgeQsto">
+    <property role="TrG5h" value="GenerationContextOp_PropertyPatternRef" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="EcuMT" value="1758784108619220824" />
+    <ref role="1TJDcQ" node="1xCtdgeQQCm" resolve="GenerationContextOp_PatternRef" />
+    <node concept="1TJgyj" id="1xCtdgeQsts" role="1TKVEi">
+      <property role="20kJfa" value="propertyPatternVar" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1758784108619220828" />
+      <ref role="20lvS9" to="tp3t:gyDMOul" resolve="PropertyPatternVariableDeclaration" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1758784108619220824">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_PropertyPatternRef" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1758784108619328022" resolveInfo="GenerationContextOp_PatternRef" />
+  </node>
+  <node concept="1TIwiD" id="1xCtdgeQQCm">
+    <property role="R5$K7" value="true" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="GenerationContextOp_PatternRef" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="EcuMT" value="1758784108619328022" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyi" id="1xCtdgeRtxd" role="1TKVEl">
+      <property role="TrG5h" value="name_intern" />
+      <property role="IQ2nx" value="1758784108619487309" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1758784108619328022">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_PatternRef" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="2bdIC8aAwm3">
+    <property role="TrG5h" value="GenerationContextOp_GenParameterRef" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="EcuMT" value="2507865635201615235" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyi" id="3UMyGEUtYFZ" role="1TKVEl">
+      <property role="TrG5h" value="name_intern" />
+      <property role="IQ2nx" value="4517825979522476799" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5403673535105109113">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_DirtyNode" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="2bdIC8aAwm4" role="1TKVEi">
+      <property role="20kJfa" value="importClause" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="2507865635201615236" />
+      <ref role="20lvS9" to="tpf8:$79JWCfbYa" resolve="GeneratorParameterReference" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2507865635201615235">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_GenParameterRef" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="6suuiWXJvTY">
+    <property role="TrG5h" value="GenerationContextOp_ContextVarRef" />
+    <property role="34LRSv" value="#context variable#" />
+    <property role="EcuMT" value="7430509679014182526" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyi" id="6suuiWXJvYy" role="1TKVEl">
+      <property role="TrG5h" value="contextVarName" />
+      <property role="IQ2nx" value="7430509679014182818" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2721957369897614808">
-      <property name="name" nameId="tpck.1169194664001" value="GenerationContextOp_VarRef" />
-      <link role="extends" roleId="tpce.1071489389519" targetNodeId="1216860049619" resolveInfo="GenerationContextOp_Base" />
+  </node>
+  <node concept="1TIwiD" id="4RJ0ilaVNjd">
+    <property role="TrG5h" value="GenerationContextOp_RegisterLabel" />
+    <property role="R4oN_" value="register mapping label" />
+    <property role="34LRSv" value="label" />
+    <property role="EcuMT" value="5615708520036906189" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="4RJ0ilaVRHI" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="inputNode" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="5615708520036924270" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-  </roots>
-  <root id="1216860049619">
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1216860049620">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpee.1197027803184" resolveInfo="IOperation" />
+    <node concept="1TJgyj" id="4RJ0ilaVRHS" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="outputNode" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="5615708520036924280" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.BooleanConceptProperty" typeId="tpce.1105725574259" id="1216860049621">
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473854053" resolveInfo="abstract" />
+    <node concept="1TJgyi" id="4RJ0ilaVRto" role="1TKVEl">
+      <property role="TrG5h" value="labelName_intern" />
+      <property role="IQ2nx" value="5615708520036923224" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.BooleanConceptProperty" typeId="tpce.1105725574259" id="1218574577861">
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473994950" resolveInfo="dontSubstituteByDefault" />
+    <node concept="1TJgyj" id="4RJ0ilaVRti" role="1TKVEi">
+      <property role="20kJfa" value="label" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="5615708520036923218" />
+      <ref role="20lvS9" to="tpf8:hurT7o6" resolve="MappingLabelDeclaration" />
     </node>
-  </root>
-  <root id="1216860049622">
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1216860049623">
-      <property name="role" nameId="tpce.1071599776563" value="label" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpf8.1200911316486" resolveInfo="MappingLabelDeclaration" />
+  </node>
+  <node concept="1TIwiD" id="2cPzl2lSH22">
+    <property role="TrG5h" value="GenerationContextOp_CopyWithTrace" />
+    <property role="34LRSv" value="copy with trace" />
+    <property role="R4oN_" value="Analog of $TRACE$ to use in mapping scripts" />
+    <property role="EcuMT" value="2537089342344712322" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="2cPzl2lSLsJ" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="nodes" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="2537089342344730415" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1216860049625">
-      <property name="value" nameId="tpce.1105725733873" value="get output by label" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
+  </node>
+  <node concept="1TIwiD" id="11UMvNigQBr">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="generate name with optional sequential suffix" />
+    <property role="TrG5h" value="GenerationContextOp_CreateIndexedName" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="name" />
+    <property role="EcuMT" value="1187483539462121947" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyi" id="11UMvNih8pQ" role="1TKVEl">
+      <property role="IQ2nx" value="1187483539462194806" />
+      <property role="TrG5h" value="skipFirstIndex" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217282035887">
-      <property name="value" nameId="tpce.1105725733873" value="search output node" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
+    <node concept="1TJgyj" id="11UMvNigQBs" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="baseName" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1187483539462121948" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="1217271982808">
-      <property name="name" nameId="tpck.1169194664001" value="labelName_intern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
+    <node concept="1TJgyj" id="11UMvNigQBt" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="contextNode" />
+      <property role="IQ2ns" value="1187483539462121949" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-  </root>
-  <root id="1216860049627">
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="1217272005596">
-      <property name="name" nameId="tpck.1169194664001" value="labelName_intern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
+  </node>
+  <node concept="1TIwiD" id="UesZ_nZl96">
+    <property role="TrG5h" value="GenerationContextOp_VarRef2" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="EcuMT" value="1048903277984174662" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="UesZ_nZl97" role="1TKVEi">
+      <property role="20kJfa" value="vardecl" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1048903277984174663" />
+      <ref role="20lvS9" to="tpf8:UesZ_nZ2I6" resolve="VarDeclaration" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1216860049628">
-      <property name="role" nameId="tpce.1071599776563" value="label" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpf8.1200911316486" resolveInfo="MappingLabelDeclaration" />
+    <node concept="1TJgyi" id="UesZ_nZl98" role="1TKVEl">
+      <property role="TrG5h" value="name_intern" />
+      <property role="IQ2nx" value="1048903277984174664" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1216860049630">
-      <property name="value" nameId="tpce.1105725733873" value="get output by label and input" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
+  </node>
+  <node concept="1TIwiD" id="2NfDgTadzb_">
+    <property role="TrG5h" value="GenerationContextOp_UniqueValidId" />
+    <property role="R4oN_" value="unique valid identifier by INamedConcept, close to its name" />
+    <property role="EcuMT" value="3228980938641126117" />
+    <property role="34LRSv" value="unique valid identifier" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="2NfDgTadzbA" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="node" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="2537089342344730415" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217282076780">
-      <property name="value" nameId="tpce.1105725733873" value="search output node" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
+  </node>
+  <node concept="1TIwiD" id="4ywxkOm3GP5">
+    <property role="EcuMT" value="5233329333133561157" />
+    <property role="TrG5h" value="TypeHintAttribute" />
+    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <node concept="1TJgyj" id="htzukip" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="typeHint" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1199964767385" />
+      <ref role="20lvS9" to="tpee:fz3vP1H" resolve="Type" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1216860049632">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="inputNode" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    </node>
-  </root>
-  <root id="1216860049633">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1216860049634">
-      <property name="value" nameId="tpce.1105725733873" value="gencontext" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217362319643">
-      <property name="value" nameId="tpce.1105725733873" value="generation context type" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-  </root>
-  <root id="1216860049635">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1216860049636">
-      <property name="value" nameId="tpce.1105725733873" value="genContext" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1216860049637">
-      <property name="value" nameId="tpce.1105725733873" value="generation context parameter" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.BooleanConceptProperty" typeId="tpce.1105725574259" id="1216860049638">
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473994950" resolveInfo="dontSubstituteByDefault" />
-    </node>
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="1216861920336">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1137545963098" resolveInfo="conceptFunctionParameterType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpf3.GenerationContextType" typeId="1216860049633" id="1216861951775" />
-    </node>
-  </root>
-  <root id="1216945228272">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1216945228275">
-      <property name="value" nameId="tpce.1105725733873" value="scope" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217281960527">
-      <property name="value" nameId="tpce.1105725733873" value="access to IScope" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="1217026337388">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1217022095863" resolveInfo="returnType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="1217026404184">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="cu2c.~IScope" resolveInfo="IScope" />
+    <node concept="M6xJ_" id="4ywxkOm3GP6" role="lGtFl">
+      <property role="Hh88m" value="typeHint" />
+      <node concept="trNpa" id="4ywxkOm3GP8" role="EQaZv">
+        <ref role="trN6q" to="tpee:fz3vP1J" resolve="Expression" />
       </node>
+      <node concept="tn0Fv" id="4ywxkOm3GPa" role="HhnKV" />
     </node>
-  </root>
-  <root id="1217004708011">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217004708014">
-      <property name="value" nameId="tpce.1105725733873" value="inputModel" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217281871506">
-      <property name="value" nameId="tpce.1105725733873" value="current input model" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="1217025941076">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1217022095863" resolveInfo="returnType" />
-      <node role="target" roleId="tpce.1105736901241" type="tp25.SModelType" typeId="tp25.1143226024141" id="1217025946859" />
-    </node>
-  </root>
-  <root id="1217026863835">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217026863836">
-      <property name="value" nameId="tpce.1105725733873" value="originalModel" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217281911229">
-      <property name="value" nameId="tpce.1105725733873" value="original input model" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="1217026863838">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1217022095863" resolveInfo="returnType" />
-      <node role="target" roleId="tpce.1105736901241" type="tp25.SModelType" typeId="tp25.1143226024141" id="1217026863839" />
-    </node>
-  </root>
-  <root id="1217282130234">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217282130235">
-      <property name="value" nameId="tpce.1105725733873" value="outputModel" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217282130236">
-      <property name="value" nameId="tpce.1105725733873" value="current output model" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="1217282130238">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1217022095863" resolveInfo="returnType" />
-      <node role="target" roleId="tpce.1105736901241" type="tp25.SModelType" typeId="tp25.1143226024141" id="1217282130239" />
-    </node>
-  </root>
-  <root id="1217369610610">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217369610611">
-      <property name="value" nameId="tpce.1105725733873" value="templateNode" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217369610612">
-      <property name="value" nameId="tpce.1105725733873" value="template node under macro" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="1217369610614">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1217022095863" resolveInfo="returnType" />
-      <node role="target" roleId="tpce.1105736901241" type="tp25.SNodeType" typeId="tp25.1138055754698" id="1217369699850" />
-    </node>
-  </root>
-  <root id="1217881979074">
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1217881979075">
-      <property name="role" nameId="tpce.1071599776563" value="label" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpf8.1200911316486" resolveInfo="MappingLabelDeclaration" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217881979076">
-      <property name="value" nameId="tpce.1105725733873" value="get prev input by label" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217881979077">
-      <property name="value" nameId="tpce.1105725733873" value="search preceding input node" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="1217881979079">
-      <property name="name" nameId="tpck.1169194664001" value="labelName_intern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
-  <root id="1217884725453">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217884725456">
-      <property name="value" nameId="tpce.1105725733873" value="get copied output by input" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217884725457">
-      <property name="value" nameId="tpce.1105725733873" value="search output node" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1217884725459">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="inputNode" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    </node>
-  </root>
-  <root id="1217889725928">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217889725929">
-      <property name="value" nameId="tpce.1105725733873" value="session object" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217889725930">
-      <property name="value" nameId="tpce.1105725733873" value="access to user object" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.BooleanConceptProperty" typeId="tpce.1105725574259" id="1217891230226">
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpee.1197029536315" resolveInfo="lvalue" />
-    </node>
-  </root>
-  <root id="1217889960776">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.BooleanConceptProperty" typeId="tpce.1105725574259" id="1217889977080">
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473854053" resolveInfo="abstract" />
-    </node>
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="1217889993472">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1217022095863" resolveInfo="returnType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="1217889997318">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~Object" resolveInfo="Object" />
-      </node>
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1217890689512">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="userKey" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    </node>
-  </root>
-  <root id="1217894011536">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217894011537">
-      <property name="value" nameId="tpce.1105725733873" value="step object" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217894011538">
-      <property name="value" nameId="tpce.1105725733873" value="access to user object" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.BooleanConceptProperty" typeId="tpce.1105725574259" id="1217894011539">
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpee.1197029536315" resolveInfo="lvalue" />
-    </node>
-  </root>
-  <root id="1217894033795">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217894033796">
-      <property name="value" nameId="tpce.1105725733873" value="transient object" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217894033797">
-      <property name="value" nameId="tpce.1105725733873" value="access to user object" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.BooleanConceptProperty" typeId="tpce.1105725574259" id="1217894033798">
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpee.1197029536315" resolveInfo="lvalue" />
-    </node>
-  </root>
-  <root id="1217960179967">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217960179970">
-      <property name="value" nameId="tpce.1105725733873" value="show error" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217960179971">
-      <property name="value" nameId="tpce.1105725733873" value="logging" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-  </root>
-  <root id="1217960314443">
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1217960314448">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="messageText" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1217960407512">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="referenceNode" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.BooleanConceptProperty" typeId="tpce.1105725574259" id="1217960375574">
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473854053" resolveInfo="abstract" />
-    </node>
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="1217960829615">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1217022095863" resolveInfo="returnType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.VoidType" typeId="tpee.1068581517677" id="1217960831867" />
-    </node>
-  </root>
-  <root id="1217969995796">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217969995797">
-      <property name="value" nameId="tpce.1105725733873" value="show warning" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217969995798">
-      <property name="value" nameId="tpce.1105725733873" value="logging" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-  </root>
-  <root id="1217970068025">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217970068026">
-      <property name="value" nameId="tpce.1105725733873" value="show info" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1217970068027">
-      <property name="value" nameId="tpce.1105725733873" value="logging" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-  </root>
-  <root id="1218047638031">
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1218047638032">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="baseName" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1218049772449">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="contextNode" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1218047809928">
-      <property name="value" nameId="tpce.1105725733873" value="unique name" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1218047858274">
-      <property name="value" nameId="tpce.1105725733873" value="generate unique name " />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="1218047638035">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1217022095863" resolveInfo="returnType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.StringType" typeId="tpee.1225271177708" id="1303564268278398850" />
-    </node>
-  </root>
-  <root id="1221156564099">
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="1221156564100">
-      <property name="name" nameId="tpck.1169194664001" value="labelName_intern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1221156564101">
-      <property name="role" nameId="tpce.1071599776563" value="label" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpf8.1200911316486" resolveInfo="MappingLabelDeclaration" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1221156564102">
-      <property name="value" nameId="tpce.1105725733873" value="get output list by label and input" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1221156564103">
-      <property name="value" nameId="tpce.1105725733873" value="search output nodes" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1221156564104">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="inputNode" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    </node>
-  </root>
-  <root id="1221218985173">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1221219412886">
-      <property name="value" nameId="tpce.1105725733873" value="pick output by label and input using ref.scope" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1221219412888">
-      <property name="value" nameId="tpce.1105725733873" value="search output node using ref.scope" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1221219379823">
-      <property name="role" nameId="tpce.1071599776563" value="label" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpf8.1200911316486" resolveInfo="MappingLabelDeclaration" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1221219370977">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="inputNode" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="1221219363547">
-      <property name="name" nameId="tpck.1169194664001" value="labelName_intern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
-  <root id="1224102704684">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1224102704685">
-      <property name="value" nameId="tpce.1105725733873" value="invocation context" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1224102704686">
-      <property name="value" nameId="tpce.1105725733873" value="generator invocation context (IOperationContext)" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="1224102704687">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1217022095863" resolveInfo="returnType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="1224102912533">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="cu2c.~IOperationContext" resolveInfo="IOperationContext" />
-      </node>
-    </node>
-  </root>
-  <root id="1229477454423">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1229477546801">
-      <property name="value" nameId="tpce.1105725733873" value="get original copied input by output" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="1229477546818">
-      <property name="value" nameId="tpce.1105725733873" value="original input node copied to output" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1229477520175">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="outputNode" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    </node>
-  </root>
-  <root id="4589968773278056990">
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4589968773278063829">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="patternVarDecl" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tp3t.1136720037779" resolveInfo="PatternVariableDeclaration" />
-    </node>
-  </root>
-  <root id="5190093307972723402">
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="8224086392574645374">
-      <property name="name" nameId="tpck.1169194664001" value="name_intern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5190093307972736266">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="parameter" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpf8.1805153994415891174" resolveInfo="TemplateParameterDeclaration" />
-    </node>
-  </root>
-  <root id="1758784108619220823">
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1758784108619220827">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="linkPatternVar" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tp3t.1137418540378" resolveInfo="LinkPatternVariableDeclaration" />
-    </node>
-  </root>
-  <root id="1758784108619220824">
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1758784108619220828">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="propertyPatternVar" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tp3t.1136720037781" resolveInfo="PropertyPatternVariableDeclaration" />
-    </node>
-  </root>
-  <root id="1758784108619328022">
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="1758784108619487309">
-      <property name="name" nameId="tpck.1169194664001" value="name_intern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.BooleanConceptProperty" typeId="tpce.1105725574259" id="1758784108619586712">
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473854053" resolveInfo="abstract" />
-    </node>
-  </root>
-  <root id="5403673535105109113">
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="5403673535105109115">
-      <property name="value" nameId="tpce.1105725733873" value="is dirty" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473891462" resolveInfo="alias" />
-    </node>
-    <node role="conceptProperty" roleId="tpce.1105725339613" type="tpce.StringConceptProperty" typeId="tpce.1105725638761" id="5403673535105109116">
-      <property name="value" nameId="tpce.1105725733873" value="checks if node is not ignored by generator" />
-      <link role="conceptPropertyDeclaration" roleId="tpce.1105725439818" targetNodeId="tpck.1137473914776" resolveInfo="shortDescription" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5403673535105109114">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="nodeToCheck" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    </node>
-  </root>
-  <root id="2507865635201615235">
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="4517825979522476799">
-      <property name="name" nameId="tpck.1169194664001" value="name_intern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2507865635201615236">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="importClause" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpf8.650531548511911818" resolveInfo="GeneratorParameterReference" />
-    </node>
-  </root>
-  <root id="2721957369897614808">
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2721957369897614810">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="varmacro" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpf8.5015072279636464462" resolveInfo="VarMacro" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="2721957369897614809">
-      <property name="name" nameId="tpck.1169194664001" value="name_intern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
+  </node>
 </model>
 

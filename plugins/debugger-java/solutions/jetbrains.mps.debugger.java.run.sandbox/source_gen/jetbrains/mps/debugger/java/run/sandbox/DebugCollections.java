@@ -10,9 +10,9 @@ import java.util.TreeMap;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.backports.Deque;
+import java.util.Deque;
 import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -20,7 +20,6 @@ import java.util.HashSet;
 public class DebugCollections {
   public DebugCollections() {
   }
-
   public static void main(String[] args) {
     int[] i = {1, 2};
     int k = 0;
@@ -32,16 +31,13 @@ public class DebugCollections {
     DebugCollections.testForeach();
     System.out.println(i);
   }
-
   public static void testMap() {
     Map<String, String> strings = MapSequence.fromMap(new HashMap<String, String>());
     MapSequence.fromMap(strings).put("one", "1");
     MapSequence.fromMap(strings).put("two", "2");
     MapSequence.fromMap(strings).put("three", "3");
-    // <node> 
     System.out.println(strings);
   }
-
   public static void testSortedMap() {
     Map<String, String> strings = SortedMapSequence.fromMap(new TreeMap<String, String>());
     MapSequence.fromMap(strings).put("one", "1");
@@ -50,7 +46,6 @@ public class DebugCollections {
     MapSequence.fromMap(strings).put(string, "3");
     System.out.println(strings);
   }
-
   private static void testList() {
     List<String> strings = ListSequence.fromList(new ArrayList<String>());
     ListSequence.fromList(strings).addElement("alpha");
@@ -58,15 +53,13 @@ public class DebugCollections {
     ListSequence.fromList(strings).addElement("gamma");
     System.out.println(strings);
   }
-
   private static void testLinkedList() {
-    Deque<String> strings = LinkedListSequence.fromLinkedList(new LinkedList<String>());
-    LinkedListSequence.fromLinkedList(strings).addElement("alpha");
-    LinkedListSequence.fromLinkedList(strings).addElement("beta");
-    LinkedListSequence.fromLinkedList(strings).addElement("gamma");
+    Deque<String> strings = LinkedListSequence.fromLinkedListNew(new LinkedList<String>());
+    LinkedListSequence.fromLinkedListNew(strings).addElement("alpha");
+    LinkedListSequence.fromLinkedListNew(strings).addElement("beta");
+    LinkedListSequence.fromLinkedListNew(strings).addElement("gamma");
     System.out.println(strings);
   }
-
   public static void testSet() {
     Set<String> strings = SetSequence.fromSet(new HashSet<String>());
     SetSequence.fromSet(strings).addElement("alpha");
@@ -74,13 +67,12 @@ public class DebugCollections {
     SetSequence.fromSet(strings).addElement("gamma");
     System.out.println(strings);
   }
-
   public static void testForeach() {
     Set<String> strings = SetSequence.fromSet(new HashSet<String>());
     SetSequence.fromSet(strings).addElement("alpha");
     SetSequence.fromSet(strings).addElement("beta");
     SetSequence.fromSet(strings).addElement("gamma");
-    for (String i : SetSequence.fromSet(strings)) {
+    for (String i : strings) {
       System.err.println(i);
     }
     for (String j : strings) {

@@ -4,12 +4,16 @@
   <property name="build.tmp" location="${build.dir}/tmp/buildZZ" />
   <property name="build.layout" location="${build.dir}/artifacts/buildZZ" />
   <property name="artifacts.buildZ" location="${build.dir}/artifacts/buildZ" />
+  <property name="environment" value="env" />
+  <property name="env.JAVA_HOME" value="${java.home}/.." />
+  <property name="jdk.home" value="${env.JAVA_HOME}" />
   
   <target name="assemble" depends="classes">
     <mkdir dir="${build.layout}" />
   </target>
   
   <target name="buildDependents">
+    <ant antfile="buildY.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="buildZ.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
   
@@ -18,7 +22,7 @@
     <unzip src="${artifacts.buildZ}/Aa/AaLibs.zip" dest="${build.tmp}/deps/buildY/AaLibs.zip" />
   </target>
   
-  <target name="build" depends="assemble, check" />
+  <target name="build" depends="assemble" />
   
   <target name="clean">
     <delete dir="${build.tmp}" />
@@ -36,8 +40,9 @@
   <target name="check" depends="test" />
   
   <target name="java.compile.ZZ" depends="fetchDependencies">
+    <mkdir dir="${basedir}/buildD/src" />
     <mkdir dir="${build.tmp}/java/out/ZZ" />
-    <javac destdir="${build.tmp}/java/out/ZZ" fork="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java/out/ZZ" fork="true" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/buildD/src" />

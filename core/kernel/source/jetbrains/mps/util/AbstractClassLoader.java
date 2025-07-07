@@ -15,13 +15,11 @@
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.runtime.ProtectionDomainUtil;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class AbstractClassLoader extends ClassLoader {
-  private Map<String, Class> myCache = new HashMap<String, Class>();
+  private Map<String, Class> myCache = new HashMap<>();
 
   public AbstractClassLoader(ClassLoader classLoader) {
     super(classLoader);
@@ -31,6 +29,7 @@ public abstract class AbstractClassLoader extends ClassLoader {
 
   protected abstract boolean isExcluded(String name);
 
+  @Override
   protected synchronized Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
     Class c = myCache.get(name);
 

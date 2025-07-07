@@ -10,44 +10,54 @@ import java.util.NoSuchElementException;
 import java.util.ArrayList;
 
 public class ComparingSequence<U> extends Sequence<U> implements Iterable<U> {
-  private final ISequence<U> left;
-  private final ISequence<U> right;
-  private final ComparingSequence.Kind kind;
-
-  public ComparingSequence(ISequence<U> left, ISequence<U> right, ComparingSequence.Kind kind) {
+  private final ISequence<? extends U> left;
+  private final ISequence<? extends U> right;
+  private final ISequence<?> rightGeneric;
+  private final Kind kind;
+  public ComparingSequence(ISequence<? extends U> left, ISequence<? extends U> right, Kind kind) {
     if (left == null || right == null) {
       throw new NullPointerException();
     }
     this.left = left;
     this.right = right;
+    this.rightGeneric = right;
     this.kind = kind;
   }
 
-  public Iterator<U> iterator() {
-    return new ComparingSequence.ComparingIterator();
+  public ComparingSequence(Kind kind, ISequence<? extends U> left, ISequence<?> right) {
+    if (left == null || right == null) {
+      throw new NullPointerException();
+    }
+    assert kind == Kind.SUBSTRACTION || kind == Kind.INTERSECTION;
+    this.left = left;
+    this.right = null;
+    this.rightGeneric = right;
+    this.kind = kind;
   }
 
-  public static   enum Kind {
+  @Override
+  public Iterator<U> iterator() {
+    return new ComparingIterator();
+  }
+  public enum Kind {
     UNION(),
     INTERSECTION(),
     SUBSTRACTION(),
     DISJUNCTION();
 
-    Kind() {
+    private Kind() {
     }
   }
-
   private class ComparingIterator implements Iterator<U> {
-    private CardinalityMap<U> cardMap = new CardinalityMap<U>();
+    private CardinalityMap<Object> cardMap = new CardinalityMap<Object>();
     private List<U> cache;
-    private Iterator<U> leftIt;
-    private Iterator<U> rightIt;
+    private Iterator<? extends U> leftIt;
+    private Iterator<? extends U> rightIt;
     private U next;
     private HasNextState hasNext = HasNextState.UNKNOWN;
-
     private ComparingIterator() {
     }
-
+    @Override
     public boolean hasNext() {
       if (leftIt == null && rightIt == null) {
         init();
@@ -57,7 +67,7 @@ public class ComparingSequence<U> extends Sequence<U> implements Iterable<U> {
       }
       return hasNext.hasNext();
     }
-
+    @Override
     public U next() {
       if (leftIt == null && rightIt == null) {
         init();
@@ -70,16 +80,15 @@ public class ComparingSequence<U> extends Sequence<U> implements Iterable<U> {
       }
       return clearNext();
     }
-
+    @Override
     public void remove() {
       throw new UnsupportedOperationException();
     }
-
     private void init() {
       switch (kind) {
         case SUBSTRACTION:
         case INTERSECTION:
-          for (U o : right.toIterable()) {
+          for (Object o : rightGeneric.toIterable()) {
             cardMap.postInc(o);
           }
           leftIt = left.toIterable().iterator();
@@ -101,14 +110,12 @@ public class ComparingSequence<U> extends Sequence<U> implements Iterable<U> {
           break;
       }
     }
-
     private void destroy() {
       cardMap.clear();
       if (cache != null) {
         cache.clear();
       }
     }
-
     private void moveToNext() {
       next = null;
       hasNext = HasNextState.AT_END;
@@ -180,14 +187,12 @@ loop:
         destroy();
       }
     }
-
     private U clearNext() {
       U tmp = next;
       next = null;
       hasNext = HasNextState.UNKNOWN;
       return tmp;
     }
-
     private void setNext(U tmp) {
       next = tmp;
       hasNext = HasNextState.HAS_NEXT;

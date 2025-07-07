@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,13 @@
  */
 package jetbrains.mps.intentions;
 
-import jetbrains.mps.ide.tooltips.MPSToolTipManager;
+import com.intellij.ide.HelpTooltipManager;
+import com.intellij.openapi.keymap.KeymapUtil;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.intentions.icons.Icons;
 
 import javax.swing.JLabel;
-import javax.swing.ToolTipManager;
+import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -34,27 +35,31 @@ public abstract class LightBulbMenu extends JLabel implements TooltipComponent {
     setBorder(new EmptyBorder(0, 2, 1, 2));
     setBackground(Color.WHITE);
 
-    ToolTipManager.sharedInstance().unregisterComponent(this);
-    MPSToolTipManager.getInstance().registerComponent(this);        
+    setToolTipText("Click or press");
+    putClientProperty(HelpTooltipManager.SHORTCUT_PROPERTY, KeymapUtil.getKeystrokeText(KeyStroke.getKeyStroke("alt ENTER")));
 
     setPreferredSize(new Dimension(getWidth(), getHeight()));
     setSize(getWidth(), getHeight());
 
     addMouseListener(new MouseAdapter() {
+      @Override
       public void mousePressed(MouseEvent e) {
         activate();
       }
     });
   }
 
+  @Override
   public String getMPSTooltipText(MouseEvent event) {
-    return "Click or press Alt+Enter";
+    return getToolTipText(event);
   }
 
+  @Override
   public int getWidth() {
     return getIcon().getIconWidth() + 6;
   }
 
+  @Override
   public int getHeight() {
     return getIcon().getIconHeight();
   }

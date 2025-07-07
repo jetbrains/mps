@@ -16,13 +16,14 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.util.containers.ManyToManyMap;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 public class DependencyRecorder<T> {
-  private ManyToManyMap<T, SNode> myObjectsToNodes = new ManyToManyMap<T, SNode>();
+  private ManyToManyMap<T, SNode> myObjectsToNodes = new ManyToManyMap<>();
 
   public void rebuild(T t, Runnable r) {
     MyNodeReadListener listener = new MyNodeReadListener();
@@ -51,24 +52,28 @@ public class DependencyRecorder<T> {
   }
 
   private class MyNodeReadListener extends AbstractNodesReadListener {
-    private Set<SNode> myDependencies = new HashSet<SNode>();
+    private Set<SNode> myDependencies = new HashSet<>();
 
     private Set<SNode> getDependencies() {
       return Collections.unmodifiableSet(myDependencies);
     }
 
+    @Override
     public void nodeChildReadAccess(SNode node, String childRole, SNode child) {
       myDependencies.add(node);
     }
 
+    @Override
     public void nodePropertyReadAccess(SNode node, String propertyName, String value) {
       myDependencies.add(node);
     }
 
+    @Override
     public void nodeReferentReadAccess(SNode node, String referentRole, SNode referent) {
       myDependencies.add(node);
     }
 
+    @Override
     public void nodeUnclassifiedReadAccess(SNode node) {
       myDependencies.add(node);
     }

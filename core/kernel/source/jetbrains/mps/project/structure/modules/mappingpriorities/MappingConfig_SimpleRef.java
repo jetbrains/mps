@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,26 @@
  */
 package jetbrains.mps.project.structure.modules.mappingpriorities;
 
-import jetbrains.mps.smodel.SModelReference;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+
+import java.util.Objects;
 
 public class MappingConfig_SimpleRef extends MappingConfig_AbstractRef {
+  static final int PERSISTENCE_ID = 0x55550002;
+
   private String myModelUID;
   private String myNodeID;
+  /*
+   * hint for MC name (if myNodeId points to specific MC), to avoid dependency from sources
+   * when we need to report an issue with deployed priority rule.
+   */
+  private String myConfigName;
 
   public String getModelUID() {
     return myModelUID;
@@ -37,19 +52,27 @@ public class MappingConfig_SimpleRef extends MappingConfig_AbstractRef {
     myNodeID = nodeID;
   }
 
-  public MappingConfig_SimpleRef getCopy() {
+  public boolean includesAll() {
+    return "*".equals(myNodeID);
+  }
+
+  public void setMapConfigName(String mcName) {
+    myConfigName = mcName;
+  }
+
+  @Override
+  @NotNull
+  public MappingConfig_SimpleRef copy() {
     MappingConfig_SimpleRef result = new MappingConfig_SimpleRef();
     result.myModelUID = myModelUID;
     result.myNodeID = myNodeID;
+    result.myConfigName = myConfigName;
     return result;
   }
 
   @Override
   public boolean isIncomplete() {
-    if (myModelUID == null) return true;
-    if (myModelUID.equals("*")) return false;
-    if (myNodeID == null) return true;
-    return false;
+    return myModelUID == null || myNodeID == null;
   }
 
   @Override
@@ -62,15 +85,68 @@ public class MappingConfig_SimpleRef extends MappingConfig_AbstractRef {
   }
 
   @Override
-  public boolean updateReferences() {
+  public boolean updateReferences(SRepository repository) {
     if (myModelUID.equals("*")) {
       return false;
     }
-    SModelReference ref = SModelReference.fromString(myModelUID);
-    SModelReference newRef = ref.update();
-    if (ref.differs(newRef)) {
-      myModelUID = newRef.toString();
+    final SModelReference modelReference = PersistenceFacade.getInstance().createModelReference(myModelUID);
+    final SModel model = modelReference.resolve(repository);
+    if (model != null && !modelReference.equals(model.getReference())) {
+      myModelUID = PersistenceFacade.getInstance().asString(model.getReference());
       return true;
+    }
+    return false;
+  }
+
+  @Override
+  public String asString(SRepository repository) {
+    final SModelReference modelReference = PersistenceFacade.getInstance().createModelReference(myModelUID);
+    String modelName = modelReference.getName().getLongName();
+    StringBuilder sb = new StringBuilder();
+    sb.append(modelName);
+    sb.append('.');
+    if (myNodeID.equals("*")) {
+      return sb.append('*').toString();
+    } else {
+      SModel refModel = modelReference.resolve(repository);
+      if (refModel != null) {
+        SNodeId nodeId = PersistenceFacade.getInstance().createNodeId(myNodeID);
+        assert nodeId != null : "wrong node id string";
+        SNode mappingConfig = refModel.getNode(nodeId);
+        if (mappingConfig != null) {
+          return sb.append(mappingConfig.getName()).toString();
+        }
+      }
+    }
+    return sb.append(myNodeID).append("!unresolved!").toString();
+  }
+
+  @Override
+  public String asString() {
+    final SModelReference modelReference = PersistenceFacade.getInstance().createModelReference(myModelUID);
+    String modelName = modelReference.getName().getLongName();
+    StringBuilder sb = new StringBuilder();
+    sb.append(modelName);
+    sb.append('.');
+    if (myNodeID.equals("*")) {
+      sb.append('*');
+    } else {
+      sb.append(myConfigName == null ? myNodeID : myConfigName);
+    }
+    return sb.toString();
+  }
+
+  @Override
+  public int hashCode() {
+    // ignore myConfigName, it's not relevant for matching
+    return Objects.hash(myModelUID, myNodeID);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof MappingConfig_SimpleRef) {
+      MappingConfig_SimpleRef r = ((MappingConfig_SimpleRef) obj);
+      return Objects.equals(myModelUID, r.myModelUID) && Objects.equals(myNodeID, r.myNodeID);
     }
     return false;
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,56 +19,128 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.command.impl.UndoManagerImpl;
 import com.intellij.openapi.command.undo.UndoManager;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
-import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.smodel.GlobalSModelEventsManager;
-import jetbrains.mps.smodel.SModelAdapter;
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.workbench.nodesFs.MPSNodeVirtualFile;
-import jetbrains.mps.workbench.nodesFs.MPSNodesVirtualFileSystem;
+import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.util.containers.WeakList;
+import jetbrains.mps.nodefs.FileSystemProjectBridge;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.RepoListenerRegistrar;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelId;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
 
-class OnReloadingUndoCleaner implements ApplicationComponent {
-  private ProjectManager myProjectManager;
-  private GlobalSModelEventsManager myEventsManager;
+// XXX This non-public class is loaded due to ComponentConfigComponentAdapter (instantiated by ComponentManagerImpl, both from
+//     from com.intellij.openapi.components.impl) that defaults to allowNonPublicClasses == true.
+class OnReloadingUndoCleaner implements ProjectComponent {
+  private final UndoManagerImpl myUndoManager;
+  private final MPSProject myProject;
+  private RepoListenerRegistrar myListenerRegistrar;
 
-  OnReloadingUndoCleaner(MPSCoreComponents coreComponents, ProjectManager projectManager) {
-    myProjectManager = projectManager;
-    myEventsManager = coreComponents.getGlobalSModelEventsManager();
+  /**
+   * Using WeakList here - same collection as used in UndoRedoStackHolder.
+   * <p>
+   * All references to a Document may be removed from all other places. In this case a document should be
+   * garbage-collected. Weak container was used here to NOT prevent it from being garbage-collected.
+   * Same logic (weak container) you can found in {@link com.intellij.openapi.fileEditor.impl.FileDocumentManagerImpl#myDocumentCache}
+   */
+  private Map<SModelId, WeakList<VirtualFile>> myUndoForModel = new HashMap<>();
+
+  /**
+   * Dependency on {@link FileSystemProjectBridge} was introduced here just to reflect the fact that this
+   * functionality will not work without another component.
+   */
+  OnReloadingUndoCleaner(MPSProject project, UndoManager undoManager, FileSystemProjectBridge fsPB) {
+    myProject = project;
+    myUndoManager = (UndoManagerImpl) undoManager;
   }
 
+  @Override
   @NotNull
   public String getComponentName() {
     return "Undo Cleaner";
   }
 
+  @Override
   public void initComponent() {
-
-    myEventsManager.addGlobalModelListener(new SModelAdapter() {
-      @Override
-      public void modelReplaced(SModelDescriptor sm) {
-        for (SNode root : sm.getSModel().roots()) {
-          final MPSNodeVirtualFile file = MPSNodesVirtualFileSystem.getInstance().getFileFor(root);
-          assert file.hasValidMPSNode() : "invalid file returned by MPS VFS for following model root: " + root;
-          for (final Project p : myProjectManager.getOpenProjects()) {
-            ApplicationManager.getApplication().invokeLater(new Runnable() {
-              public void run() {
-                if (!p.isDisposed() && file.isValid()) {
-                  ((UndoManagerImpl) UndoManager.getInstance(p)).clearUndoRedoQueueInTests(file);
-                }
-              }
-            }, ModalityState.NON_MODAL);
-          }
-        }
-      }
-    });
-
+    // Looks like we are working only with one repository of the currently open project.
+    //
+    // Nevertheless, registered listener  should receive events from the current
+    // repository of the project and all other repositories (global one) if files from
+    // those repositories may be opened & modified in the scope of editing this project
+    // in MPS.
+    // It is important for properly clean undo stack in case of reloading any models files
+    // from any other (used) repositories (e.g. global one)
+    myListenerRegistrar = new RepoListenerRegistrar(myProject.getRepository(), new MyRepositoryListener());
+    myListenerRegistrar.attach();
   }
 
+  @Override
   public void disposeComponent() {
+    myListenerRegistrar.detach();
+    myListenerRegistrar = null;
+  }
+
+  boolean isDisposed() {
+    return myListenerRegistrar == null;
+  }
+
+  void registerUndo(SModelId modelId, Collection<VirtualFile> files) {
+    Set<VirtualFile> additionalFiles = new LinkedHashSet<>(files);
+    WeakList<VirtualFile> trackedFiles = myUndoForModel.computeIfAbsent(modelId, k -> new WeakList<>());
+    for (VirtualFile file : trackedFiles) {
+      // NOT using .removeAll() here because of WeakList supporting only limited collection API (not supporting .size() operation)
+      additionalFiles.remove(file);
+    }
+    if (additionalFiles.isEmpty()) {
+      return;
+    }
+    trackedFiles.addAll(additionalFiles);
+  }
+
+  private class MyRepositoryListener extends SRepositoryContentAdapter {
+    @Override
+    public void modelReplaced(SModel model) {
+      clearUndoStack(model);
+    }
+
+    @Override
+    protected boolean isIncluded(SModule module) {
+      return !module.isPackaged() && !module.isReadOnly();
+    }
+
+    @Override
+    protected void startListening(SModel model) {
+      model.addModelListener(this);
+    }
+
+    @Override
+    protected void stopListening(SModel model) {
+      model.removeModelListener(this);
+      clearUndoStack(model);
+    }
+
+    private void clearUndoStack(SModel model) {
+      WeakList<VirtualFile> registeredFiles = myUndoForModel.remove(model.getModelId());
+      if (registeredFiles == null || registeredFiles.isEmpty()) {
+        return;
+      }
+
+      ApplicationManager.getApplication().invokeLater(() -> {
+        if (isDisposed()) {
+          return;
+        }
+        for (VirtualFile file : registeredFiles) {
+          myUndoManager.clearUndoRedoQueueInTests(file);
+        }
+      }, ModalityState.NON_MODAL);
+    }
   }
 }

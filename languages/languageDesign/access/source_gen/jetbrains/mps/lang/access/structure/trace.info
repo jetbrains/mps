@@ -1,216 +1,382 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="Access_Language.java" startLine="9" startPosition="0" endLine="16" endPosition="0" unitName="jetbrains.mps.lang.access.structure.Access_Language" />
-  <unitInfo fileName="StructureAspectDescriptor.java" startLine="10" startPosition="0" endLine="41" endPosition="0" unitName="jetbrains.mps.lang.access.structure.StructureAspectDescriptor" />
-  <root nodeId="8974276187400348170" modelId="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)">
-    <nodeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="11" startPosition="60" endLine="12" endPosition="105" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="12" startPosition="105" endLine="13" endPosition="79" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="COMMAND_CLOSURE_LITERAL" />
-    <nodeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="15" startPosition="50" endLine="16" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="19" startPosition="59" endLine="20" endPosition="131" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="23" startPosition="68" endLine="24" endPosition="78" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="27" startPosition="82" endLine="28" endPosition="203" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="31" startPosition="68" endLine="32" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="14" startPosition="0" endLine="17" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="BaseExecuteCommandStatement#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="18" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getCommandClosureLiteral#()Ljetbrains/mps/smodel/INodeAdapter;" />
-    <nodeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="22" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setCommandClosureLiteral#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="26" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/lang/access/structure/BaseExecuteCommandStatement;" />
-    <nodeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="30" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/lang/access/structure/BaseExecuteCommandStatement;" />
-    <scopeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="15" startPosition="50" endLine="16" endPosition="16" />
-    <scopeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="19" startPosition="59" endLine="20" endPosition="131" />
-    <scopeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="23" startPosition="68" endLine="24" endPosition="78" />
-    <scopeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="27" startPosition="82" endLine="28" endPosition="203" />
-    <scopeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="31" startPosition="68" endLine="32" endPosition="62" />
-    <scopeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="14" startPosition="0" endLine="17" endPosition="3">
-      <varInfo nodeId="8974276187400348170" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="18" startPosition="0" endLine="22" endPosition="0" />
-    <scopeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="22" startPosition="0" endLine="26" endPosition="0">
-      <varInfo nodeId="8974276187400348170" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="26" startPosition="0" endLine="30" endPosition="0">
-      <varInfo nodeId="8974276187400348170" varName="init" />
-      <varInfo nodeId="8974276187400348170" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="30" startPosition="0" endLine="34" endPosition="0">
-      <varInfo nodeId="8974276187400348170" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="8974276187400348170" fileName="BaseExecuteCommandStatement.java" startLine="11" startPosition="0" endLine="35" endPosition="0" unitName="jetbrains.mps.lang.access.structure.BaseExecuteCommandStatement" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root>
+    <file name="ConceptPresentationAspectImpl.java">
+      <unit at="11,0,106,0" name="jetbrains.mps.lang.access.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <unit at="10,0,46,0" name="jetbrains.mps.lang.access.structure.LanguageConceptSwitch" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <unit at="16,0,177,0" name="jetbrains.mps.lang.access.structure.StructureAspectDescriptor" />
+    </file>
   </root>
-  <root nodeId="8974276187400348172" modelId="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)">
-    <nodeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="10" startPosition="82" endLine="11" endPosition="109" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="13" startPosition="54" endLine="14" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="17" startPosition="86" endLine="18" endPosition="211" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="21" startPosition="72" endLine="22" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="12" startPosition="0" endLine="15" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="BaseExecuteCommandStatementSync#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="16" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/lang/access/structure/BaseExecuteCommandStatementSync;" />
-    <nodeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="20" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/lang/access/structure/BaseExecuteCommandStatementSync;" />
-    <scopeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="13" startPosition="54" endLine="14" endPosition="16" />
-    <scopeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="17" startPosition="86" endLine="18" endPosition="211" />
-    <scopeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="21" startPosition="72" endLine="22" endPosition="66" />
-    <scopeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="12" startPosition="0" endLine="15" endPosition="3">
-      <varInfo nodeId="8974276187400348172" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="16" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="8974276187400348172" varName="init" />
-      <varInfo nodeId="8974276187400348172" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="20" startPosition="0" endLine="24" endPosition="0">
-      <varInfo nodeId="8974276187400348172" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="8974276187400348172" fileName="BaseExecuteCommandStatementSync.java" startLine="10" startPosition="0" endLine="25" endPosition="0" unitName="jetbrains.mps.lang.access.structure.BaseExecuteCommandStatementSync" />
+  <root nodeRef="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)/5332677359380589431">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="5332677359380589431" at="19,0,20,0" concept="1" trace="props_ExecuteTransparentCommandStatement" />
+      <node id="5332677359380589431" at="82,63,83,76" concept="3" />
+      <node id="5332677359380589431" at="83,76,84,58" concept="0" />
+      <node id="5332677359380589431" at="84,58,85,66" concept="0" />
+      <node id="5332677359380589431" at="86,9,87,56" concept="4" />
+      <node id="5332677359380589431" at="81,68,86,9" concept="2" />
+      <scope id="5332677359380589431" at="82,63,85,66">
+        <var name="cpb" id="5332677359380589431" />
+      </scope>
+      <scope id="5332677359380589431" at="81,68,87,56" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="5332677359380589431" at="19,0,20,0" concept="5" trace="ExecuteTransparentCommandStatement" />
+      <node id="5332677359380589431" at="31,73,32,73" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5332677359380589431" at="24,0,25,0" concept="1" trace="myConceptExecuteTransparentCommandStatement" />
+      <node id="5332677359380589431" at="64,68,65,59" concept="4" />
+      <node id="5332677359380589431" at="149,92,150,194" concept="3" />
+      <node id="5332677359380589431" at="150,194,151,34" concept="0" />
+      <node id="5332677359380589431" at="151,34,152,147" concept="0" />
+      <node id="5332677359380589431" at="152,147,153,112" concept="0" />
+      <node id="5332677359380589431" at="153,112,154,17" concept="0" />
+      <node id="5332677359380589431" at="154,17,155,49" concept="0" />
+      <node id="5332677359380589431" at="155,49,156,40" concept="0" />
+      <node id="5332677359380589431" at="156,40,157,22" concept="4" />
+      <node id="5332677359380589431" at="149,0,159,0" concept="6" trace="createDescriptorForExecuteTransparentCommandStatement#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5332677359380589431" at="64,68,65,59" />
+      <scope id="5332677359380589431" at="149,92,157,22">
+        <var name="b" id="5332677359380589431" />
+      </scope>
+      <scope id="5332677359380589431" at="149,0,159,0" />
+    </file>
   </root>
-  <root nodeId="8974276187400348173" modelId="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)">
-    <nodeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="11" startPosition="59" endLine="12" endPosition="99" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="14" startPosition="44" endLine="15" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="18" startPosition="76" endLine="19" endPosition="191" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="22" startPosition="62" endLine="23" endPosition="56" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="13" startPosition="0" endLine="16" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="CommandClosureLiteral#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="17" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/lang/access/structure/CommandClosureLiteral;" />
-    <nodeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="21" startPosition="0" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/lang/access/structure/CommandClosureLiteral;" />
-    <scopeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="14" startPosition="44" endLine="15" endPosition="16" />
-    <scopeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="18" startPosition="76" endLine="19" endPosition="191" />
-    <scopeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="22" startPosition="62" endLine="23" endPosition="56" />
-    <scopeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="13" startPosition="0" endLine="16" endPosition="3">
-      <varInfo nodeId="8974276187400348173" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="17" startPosition="0" endLine="21" endPosition="0">
-      <varInfo nodeId="8974276187400348173" varName="init" />
-      <varInfo nodeId="8974276187400348173" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="21" startPosition="0" endLine="25" endPosition="0">
-      <varInfo nodeId="8974276187400348173" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="8974276187400348173" fileName="CommandClosureLiteral.java" startLine="11" startPosition="0" endLine="26" endPosition="0" unitName="jetbrains.mps.lang.access.structure.CommandClosureLiteral" />
+  <root nodeRef="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)/8974276187400348170">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="8974276187400348170" at="12,0,13,0" concept="1" trace="props_BaseExecuteCommandStatement" />
+      <node id="8974276187400348170" at="29,56,30,76" concept="3" />
+      <node id="8974276187400348170" at="30,76,31,61" concept="0" />
+      <node id="8974276187400348170" at="31,61,32,59" concept="0" />
+      <node id="8974276187400348170" at="33,9,34,49" concept="4" />
+      <node id="8974276187400348170" at="28,61,33,9" concept="2" />
+      <scope id="8974276187400348170" at="29,56,32,59">
+        <var name="cpb" id="8974276187400348170" />
+      </scope>
+      <scope id="8974276187400348170" at="28,61,34,49" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="8974276187400348170" at="12,0,13,0" concept="5" trace="BaseExecuteCommandStatement" />
+      <node id="8974276187400348170" at="24,116,25,66" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="8974276187400348170" at="17,0,18,0" concept="1" trace="myConceptBaseExecuteCommandStatement" />
+      <node id="8974276187400348170" at="50,61,51,52" concept="4" />
+      <node id="8974276187400348170" at="80,85,81,187" concept="3" />
+      <node id="8974276187400348170" at="81,187,82,34" concept="0" />
+      <node id="8974276187400348170" at="82,34,83,120" concept="0" />
+      <node id="8974276187400348170" at="83,120,84,112" concept="0" />
+      <node id="8974276187400348170" at="84,112,85,17" concept="0" />
+      <node id="8974276187400348171" at="85,17,86,215" concept="0" />
+      <node id="1423104411234567454" at="86,215,87,191" concept="0" />
+      <node id="8974276187400348170" at="87,191,88,49" concept="0" />
+      <node id="8974276187400348170" at="88,49,89,22" concept="4" />
+      <node id="8974276187400348170" at="80,0,91,0" concept="6" trace="createDescriptorForBaseExecuteCommandStatement#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8974276187400348170" at="50,61,51,52" />
+      <scope id="8974276187400348170" at="80,85,89,22">
+        <var name="b" id="8974276187400348170" />
+      </scope>
+      <scope id="8974276187400348170" at="80,0,91,0" />
+    </file>
   </root>
-  <root nodeId="8974276187400348174" modelId="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)">
-    <nodeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="11" startPosition="79" endLine="12" endPosition="106" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="12" startPosition="106" endLine="13" endPosition="49" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="PROJECT" />
-    <nodeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="15" startPosition="51" endLine="16" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="19" startPosition="34" endLine="20" endPosition="94" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="23" startPosition="43" endLine="24" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="27" startPosition="83" endLine="28" endPosition="205" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="31" startPosition="69" endLine="32" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="14" startPosition="0" endLine="17" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ExecuteCommandInEDTStatement#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="18" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getProject#()Ljetbrains/mps/smodel/INodeAdapter;" />
-    <nodeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="22" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setProject#(Ljetbrains/mps/smodel/INodeAdapter;)V" />
-    <nodeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="26" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/lang/access/structure/ExecuteCommandInEDTStatement;" />
-    <nodeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="30" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/lang/access/structure/ExecuteCommandInEDTStatement;" />
-    <scopeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="15" startPosition="51" endLine="16" endPosition="16" />
-    <scopeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="19" startPosition="34" endLine="20" endPosition="94" />
-    <scopeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="23" startPosition="43" endLine="24" endPosition="63" />
-    <scopeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="27" startPosition="83" endLine="28" endPosition="205" />
-    <scopeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="31" startPosition="69" endLine="32" endPosition="63" />
-    <scopeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="14" startPosition="0" endLine="17" endPosition="3">
-      <varInfo nodeId="8974276187400348174" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="18" startPosition="0" endLine="22" endPosition="0" />
-    <scopeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="22" startPosition="0" endLine="26" endPosition="0">
-      <varInfo nodeId="8974276187400348174" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="26" startPosition="0" endLine="30" endPosition="0">
-      <varInfo nodeId="8974276187400348174" varName="init" />
-      <varInfo nodeId="8974276187400348174" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="30" startPosition="0" endLine="34" endPosition="0">
-      <varInfo nodeId="8974276187400348174" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="8974276187400348174" fileName="ExecuteCommandInEDTStatement.java" startLine="11" startPosition="0" endLine="35" endPosition="0" unitName="jetbrains.mps.lang.access.structure.ExecuteCommandInEDTStatement" />
+  <root nodeRef="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)/8974276187400348172">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="8974276187400348172" at="13,0,14,0" concept="1" trace="props_BaseExecuteCommandStatementSync" />
+      <node id="8974276187400348172" at="36,60,37,76" concept="3" />
+      <node id="8974276187400348172" at="37,76,38,65" concept="0" />
+      <node id="8974276187400348172" at="38,65,39,63" concept="0" />
+      <node id="8974276187400348172" at="40,9,41,53" concept="4" />
+      <node id="8974276187400348172" at="35,65,40,9" concept="2" />
+      <scope id="8974276187400348172" at="36,60,39,63">
+        <var name="cpb" id="8974276187400348172" />
+      </scope>
+      <scope id="8974276187400348172" at="35,65,41,53" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="8974276187400348172" at="13,0,14,0" concept="5" trace="BaseExecuteCommandStatementSync" />
+      <node id="8974276187400348172" at="25,66,26,70" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="8974276187400348172" at="18,0,19,0" concept="1" trace="myConceptBaseExecuteCommandStatementSync" />
+      <node id="8974276187400348172" at="52,65,53,56" concept="4" />
+      <node id="8974276187400348172" at="91,89,92,191" concept="3" />
+      <node id="8974276187400348172" at="92,191,93,34" concept="0" />
+      <node id="8974276187400348172" at="93,34,94,143" concept="0" />
+      <node id="8974276187400348172" at="94,143,95,112" concept="0" />
+      <node id="8974276187400348172" at="95,112,96,17" concept="0" />
+      <node id="8974276187400348172" at="96,17,97,49" concept="0" />
+      <node id="8974276187400348172" at="97,49,98,22" concept="4" />
+      <node id="8974276187400348172" at="91,0,100,0" concept="6" trace="createDescriptorForBaseExecuteCommandStatementSync#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8974276187400348172" at="52,65,53,56" />
+      <scope id="8974276187400348172" at="91,89,98,22">
+        <var name="b" id="8974276187400348172" />
+      </scope>
+      <scope id="8974276187400348172" at="91,0,100,0" />
+    </file>
   </root>
-  <root nodeId="8974276187400348177" modelId="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)">
-    <nodeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="10" startPosition="78" endLine="11" endPosition="101" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="13" startPosition="46" endLine="14" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="17" startPosition="78" endLine="18" endPosition="195" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="21" startPosition="64" endLine="22" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="12" startPosition="0" endLine="15" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ExecuteCommandStatement#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="16" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/lang/access/structure/ExecuteCommandStatement;" />
-    <nodeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="20" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/lang/access/structure/ExecuteCommandStatement;" />
-    <scopeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="13" startPosition="46" endLine="14" endPosition="16" />
-    <scopeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="17" startPosition="78" endLine="18" endPosition="195" />
-    <scopeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="21" startPosition="64" endLine="22" endPosition="58" />
-    <scopeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="12" startPosition="0" endLine="15" endPosition="3">
-      <varInfo nodeId="8974276187400348177" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="16" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="8974276187400348177" varName="init" />
-      <varInfo nodeId="8974276187400348177" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="20" startPosition="0" endLine="24" endPosition="0">
-      <varInfo nodeId="8974276187400348177" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="8974276187400348177" fileName="ExecuteCommandStatement.java" startLine="10" startPosition="0" endLine="25" endPosition="0" unitName="jetbrains.mps.lang.access.structure.ExecuteCommandStatement" />
+  <root nodeRef="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)/8974276187400348173">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="8974276187400348173" at="14,0,15,0" concept="1" trace="props_CommandClosureLiteral" />
+      <node id="8974276187400348173" at="43,50,44,76" concept="3" />
+      <node id="8974276187400348173" at="44,76,45,55" concept="0" />
+      <node id="8974276187400348173" at="45,55,46,53" concept="0" />
+      <node id="8974276187400348173" at="47,9,48,43" concept="4" />
+      <node id="8974276187400348173" at="42,55,47,9" concept="2" />
+      <scope id="8974276187400348173" at="43,50,46,53">
+        <var name="cpb" id="8974276187400348173" />
+      </scope>
+      <scope id="8974276187400348173" at="42,55,48,43" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="8974276187400348173" at="14,0,15,0" concept="5" trace="CommandClosureLiteral" />
+      <node id="8974276187400348173" at="26,70,27,60" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="8974276187400348173" at="19,0,20,0" concept="1" trace="myConceptCommandClosureLiteral" />
+      <node id="8974276187400348173" at="54,55,55,46" concept="4" />
+      <node id="8974276187400348173" at="100,79,101,181" concept="3" />
+      <node id="8974276187400348173" at="101,181,102,34" concept="0" />
+      <node id="8974276187400348173" at="102,34,103,135" concept="0" />
+      <node id="8974276187400348173" at="103,135,104,112" concept="0" />
+      <node id="8974276187400348173" at="104,112,105,17" concept="0" />
+      <node id="8974276187400348173" at="105,17,106,49" concept="0" />
+      <node id="8974276187400348173" at="106,49,107,22" concept="4" />
+      <node id="8974276187400348173" at="100,0,109,0" concept="6" trace="createDescriptorForCommandClosureLiteral#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8974276187400348173" at="54,55,55,46" />
+      <scope id="8974276187400348173" at="100,79,107,22">
+        <var name="b" id="8974276187400348173" />
+      </scope>
+      <scope id="8974276187400348173" at="100,0,109,0" />
+    </file>
   </root>
-  <root nodeId="8974276187400348179" modelId="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)">
-    <nodeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="10" startPosition="77" endLine="11" endPosition="104" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="13" startPosition="49" endLine="14" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="17" startPosition="81" endLine="18" endPosition="201" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="21" startPosition="67" endLine="22" endPosition="61" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="12" startPosition="0" endLine="15" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ExecuteEDTCommandStatement#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="16" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/lang/access/structure/ExecuteEDTCommandStatement;" />
-    <nodeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="20" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/lang/access/structure/ExecuteEDTCommandStatement;" />
-    <scopeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="13" startPosition="49" endLine="14" endPosition="16" />
-    <scopeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="17" startPosition="81" endLine="18" endPosition="201" />
-    <scopeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="21" startPosition="67" endLine="22" endPosition="61" />
-    <scopeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="12" startPosition="0" endLine="15" endPosition="3">
-      <varInfo nodeId="8974276187400348179" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="16" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="8974276187400348179" varName="init" />
-      <varInfo nodeId="8974276187400348179" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="20" startPosition="0" endLine="24" endPosition="0">
-      <varInfo nodeId="8974276187400348179" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="8974276187400348179" fileName="ExecuteEDTCommandStatement.java" startLine="10" startPosition="0" endLine="25" endPosition="0" unitName="jetbrains.mps.lang.access.structure.ExecuteEDTCommandStatement" />
+  <root nodeRef="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)/8974276187400348174">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="8974276187400348174" at="15,0,16,0" concept="1" trace="props_ExecuteCommandInEDTStatement" />
+      <node id="8974276187400348174" at="50,57,51,76" concept="3" />
+      <node id="8974276187400348174" at="51,76,52,75" concept="0" />
+      <node id="8974276187400348174" at="52,75,53,56" concept="0" />
+      <node id="8974276187400348174" at="53,56,54,60" concept="0" />
+      <node id="8974276187400348174" at="55,9,56,50" concept="4" />
+      <node id="8974276187400348174" at="49,62,55,9" concept="2" />
+      <scope id="8974276187400348174" at="50,57,54,60">
+        <var name="cpb" id="8974276187400348174" />
+      </scope>
+      <scope id="8974276187400348174" at="49,62,56,50" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="8974276187400348174" at="15,0,16,0" concept="5" trace="ExecuteCommandInEDTStatement" />
+      <node id="8974276187400348174" at="27,60,28,67" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="8974276187400348174" at="20,0,21,0" concept="1" trace="myConceptExecuteCommandInEDTStatement" />
+      <node id="8974276187400348174" at="56,62,57,53" concept="4" />
+      <node id="8974276187400348174" at="109,86,110,188" concept="3" />
+      <node id="8974276187400348174" at="110,188,111,34" concept="0" />
+      <node id="8974276187400348174" at="111,34,112,143" concept="0" />
+      <node id="8974276187400348174" at="112,143,113,112" concept="0" />
+      <node id="8974276187400348174" at="113,112,114,17" concept="0" />
+      <node id="8974276187400348174" at="114,17,115,49" concept="0" />
+      <node id="8974276187400348174" at="115,49,116,38" concept="0" />
+      <node id="8974276187400348174" at="116,38,117,22" concept="4" />
+      <node id="8974276187400348174" at="109,0,119,0" concept="6" trace="createDescriptorForExecuteCommandInEDTStatement#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8974276187400348174" at="56,62,57,53" />
+      <scope id="8974276187400348174" at="109,86,117,22">
+        <var name="b" id="8974276187400348174" />
+      </scope>
+      <scope id="8974276187400348174" at="109,0,119,0" />
+    </file>
   </root>
-  <root nodeId="8974276187400348181" modelId="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)">
-    <nodeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="10" startPosition="89" endLine="11" endPosition="112" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="13" startPosition="57" endLine="14" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="17" startPosition="89" endLine="18" endPosition="217" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="21" startPosition="75" endLine="22" endPosition="69" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="12" startPosition="0" endLine="15" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ExecuteLightweightCommandStatement#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="16" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/lang/access/structure/ExecuteLightweightCommandStatement;" />
-    <nodeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="20" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/lang/access/structure/ExecuteLightweightCommandStatement;" />
-    <scopeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="13" startPosition="57" endLine="14" endPosition="16" />
-    <scopeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="17" startPosition="89" endLine="18" endPosition="217" />
-    <scopeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="21" startPosition="75" endLine="22" endPosition="69" />
-    <scopeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="12" startPosition="0" endLine="15" endPosition="3">
-      <varInfo nodeId="8974276187400348181" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="16" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="8974276187400348181" varName="init" />
-      <varInfo nodeId="8974276187400348181" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="20" startPosition="0" endLine="24" endPosition="0">
-      <varInfo nodeId="8974276187400348181" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="8974276187400348181" fileName="ExecuteLightweightCommandStatement.java" startLine="10" startPosition="0" endLine="25" endPosition="0" unitName="jetbrains.mps.lang.access.structure.ExecuteLightweightCommandStatement" />
+  <root nodeRef="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)/8974276187400348177">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="8974276187400348177" at="16,0,17,0" concept="1" trace="props_ExecuteCommandStatement" />
+      <node id="8974276187400348177" at="58,52,59,76" concept="3" />
+      <node id="8974276187400348177" at="59,76,60,53" concept="0" />
+      <node id="8974276187400348177" at="60,53,61,41" concept="0" />
+      <node id="8974276187400348177" at="61,41,62,55" concept="0" />
+      <node id="8974276187400348177" at="63,9,64,45" concept="4" />
+      <node id="8974276187400348177" at="57,57,63,9" concept="2" />
+      <scope id="8974276187400348177" at="58,52,62,55">
+        <var name="cpb" id="8974276187400348177" />
+      </scope>
+      <scope id="8974276187400348177" at="57,57,64,45" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="8974276187400348177" at="16,0,17,0" concept="5" trace="ExecuteCommandStatement" />
+      <node id="8974276187400348177" at="28,67,29,62" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="8974276187400348177" at="21,0,22,0" concept="1" trace="myConceptExecuteCommandStatement" />
+      <node id="8974276187400348177" at="58,57,59,48" concept="4" />
+      <node id="8974276187400348177" at="119,81,120,183" concept="3" />
+      <node id="8974276187400348177" at="120,183,121,34" concept="0" />
+      <node id="8974276187400348177" at="121,34,122,147" concept="0" />
+      <node id="8974276187400348177" at="122,147,123,112" concept="0" />
+      <node id="8974276187400348177" at="123,112,124,17" concept="0" />
+      <node id="8974276187400348177" at="124,17,125,49" concept="0" />
+      <node id="8974276187400348177" at="125,49,126,23" concept="0" />
+      <node id="8974276187400348177" at="126,23,127,22" concept="4" />
+      <node id="8974276187400348177" at="119,0,129,0" concept="6" trace="createDescriptorForExecuteCommandStatement#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8974276187400348177" at="58,57,59,48" />
+      <scope id="8974276187400348177" at="119,81,127,22">
+        <var name="b" id="8974276187400348177" />
+      </scope>
+      <scope id="8974276187400348177" at="119,0,129,0" />
+    </file>
   </root>
-  <root nodeId="8974276187400348183" modelId="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)">
-    <nodeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="10" startPosition="82" endLine="11" endPosition="105" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <nodeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="13" startPosition="50" endLine="14" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="17" startPosition="82" endLine="18" endPosition="203" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="21" startPosition="68" endLine="22" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="12" startPosition="0" endLine="15" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ExecuteWriteActionStatement#(Ljetbrains/mps/smodel/SNode;)V" />
-    <nodeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="16" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;Z)Ljetbrains/mps/lang/access/structure/ExecuteWriteActionStatement;" />
-    <nodeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="20" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="newInstance#(Ljetbrains/mps/smodel/SModel;)Ljetbrains/mps/lang/access/structure/ExecuteWriteActionStatement;" />
-    <scopeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="13" startPosition="50" endLine="14" endPosition="16" />
-    <scopeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="17" startPosition="82" endLine="18" endPosition="203" />
-    <scopeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="21" startPosition="68" endLine="22" endPosition="62" />
-    <scopeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="12" startPosition="0" endLine="15" endPosition="3">
-      <varInfo nodeId="8974276187400348183" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="16" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="8974276187400348183" varName="init" />
-      <varInfo nodeId="8974276187400348183" varName="sm" />
-    </scopeInfo>
-    <scopeInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="20" startPosition="0" endLine="24" endPosition="0">
-      <varInfo nodeId="8974276187400348183" varName="sm" />
-    </scopeInfo>
-    <unitInfo nodeId="8974276187400348183" fileName="ExecuteWriteActionStatement.java" startLine="10" startPosition="0" endLine="25" endPosition="0" unitName="jetbrains.mps.lang.access.structure.ExecuteWriteActionStatement" />
+  <root nodeRef="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)/8974276187400348179">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="8974276187400348179" at="17,0,18,0" concept="1" trace="props_ExecuteEDTCommandStatement" />
+      <node id="8974276187400348179" at="66,55,67,76" concept="3" />
+      <node id="8974276187400348179" at="67,76,68,69" concept="0" />
+      <node id="8974276187400348179" at="68,69,69,48" concept="0" />
+      <node id="8974276187400348179" at="69,48,70,58" concept="0" />
+      <node id="8974276187400348179" at="71,9,72,48" concept="4" />
+      <node id="8974276187400348179" at="65,60,71,9" concept="2" />
+      <scope id="8974276187400348179" at="66,55,70,58">
+        <var name="cpb" id="8974276187400348179" />
+      </scope>
+      <scope id="8974276187400348179" at="65,60,72,48" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="8974276187400348179" at="17,0,18,0" concept="5" trace="ExecuteEDTCommandStatement" />
+      <node id="8974276187400348179" at="29,62,30,65" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="8974276187400348179" at="22,0,23,0" concept="1" trace="myConceptExecuteEDTCommandStatement" />
+      <node id="8974276187400348179" at="60,60,61,51" concept="4" />
+      <node id="8974276187400348179" at="129,84,130,186" concept="3" />
+      <node id="8974276187400348179" at="130,186,131,34" concept="0" />
+      <node id="8974276187400348179" at="131,34,132,143" concept="0" />
+      <node id="8974276187400348179" at="132,143,133,112" concept="0" />
+      <node id="8974276187400348179" at="133,112,134,17" concept="0" />
+      <node id="8974276187400348179" at="134,17,135,49" concept="0" />
+      <node id="8974276187400348179" at="135,49,136,30" concept="0" />
+      <node id="8974276187400348179" at="136,30,137,22" concept="4" />
+      <node id="8974276187400348179" at="129,0,139,0" concept="6" trace="createDescriptorForExecuteEDTCommandStatement#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8974276187400348179" at="60,60,61,51" />
+      <scope id="8974276187400348179" at="129,84,137,22">
+        <var name="b" id="8974276187400348179" />
+      </scope>
+      <scope id="8974276187400348179" at="129,0,139,0" />
+    </file>
   </root>
-  <root nodeId="8974276187400348185" modelId="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)">
-    <nodeInfo nodeId="8974276187400348185" fileName="IExecuteCommandStatementSync.java" startLine="7" startPosition="68" endLine="8" endPosition="106" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept" />
-    <unitInfo nodeId="8974276187400348185" fileName="IExecuteCommandStatementSync.java" startLine="7" startPosition="0" endLine="10" endPosition="0" unitName="jetbrains.mps.lang.access.structure.IExecuteCommandStatementSync" />
+  <root nodeRef="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)/8974276187400348181">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="8974276187400348181" at="18,0,19,0" concept="1" trace="props_ExecuteLightweightCommandStatement" />
+      <node id="8974276187400348181" at="74,63,75,76" concept="3" />
+      <node id="8974276187400348181" at="75,76,76,50" concept="0" />
+      <node id="8974276187400348181" at="76,50,77,45" concept="0" />
+      <node id="8974276187400348181" at="77,45,78,66" concept="0" />
+      <node id="8974276187400348181" at="79,9,80,56" concept="4" />
+      <node id="8974276187400348181" at="73,68,79,9" concept="2" />
+      <scope id="8974276187400348181" at="74,63,78,66">
+        <var name="cpb" id="8974276187400348181" />
+      </scope>
+      <scope id="8974276187400348181" at="73,68,80,56" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="8974276187400348181" at="18,0,19,0" concept="5" trace="ExecuteLightweightCommandStatement" />
+      <node id="8974276187400348181" at="30,65,31,73" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="8974276187400348181" at="23,0,24,0" concept="1" trace="myConceptExecuteLightweightCommandStatement" />
+      <node id="8974276187400348181" at="62,68,63,59" concept="4" />
+      <node id="8974276187400348181" at="139,92,140,194" concept="3" />
+      <node id="8974276187400348181" at="140,194,141,34" concept="0" />
+      <node id="8974276187400348181" at="141,34,142,147" concept="0" />
+      <node id="8974276187400348181" at="142,147,143,112" concept="0" />
+      <node id="8974276187400348181" at="143,112,144,17" concept="0" />
+      <node id="8974276187400348181" at="144,17,145,49" concept="0" />
+      <node id="8974276187400348181" at="145,49,146,27" concept="0" />
+      <node id="8974276187400348181" at="146,27,147,22" concept="4" />
+      <node id="8974276187400348181" at="139,0,149,0" concept="6" trace="createDescriptorForExecuteLightweightCommandStatement#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8974276187400348181" at="62,68,63,59" />
+      <scope id="8974276187400348181" at="139,92,147,22">
+        <var name="b" id="8974276187400348181" />
+      </scope>
+      <scope id="8974276187400348181" at="139,0,149,0" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)/8974276187400348183">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="8974276187400348183" at="20,0,21,0" concept="1" trace="props_ExecuteWriteActionStatement" />
+      <node id="8974276187400348183" at="89,56,90,76" concept="3" />
+      <node id="8974276187400348183" at="90,76,91,51" concept="0" />
+      <node id="8974276187400348183" at="91,51,92,46" concept="0" />
+      <node id="8974276187400348183" at="92,46,93,59" concept="0" />
+      <node id="8974276187400348183" at="94,9,95,49" concept="4" />
+      <node id="8974276187400348183" at="88,61,94,9" concept="2" />
+      <scope id="8974276187400348183" at="89,56,93,59">
+        <var name="cpb" id="8974276187400348183" />
+      </scope>
+      <scope id="8974276187400348183" at="88,61,95,49" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="8974276187400348183" at="20,0,21,0" concept="5" trace="ExecuteWriteActionStatement" />
+      <node id="8974276187400348183" at="32,73,33,66" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="8974276187400348183" at="25,0,26,0" concept="1" trace="myConceptExecuteWriteActionStatement" />
+      <node id="8974276187400348183" at="66,61,67,52" concept="4" />
+      <node id="8974276187400348183" at="159,85,160,187" concept="3" />
+      <node id="8974276187400348183" at="160,187,161,34" concept="0" />
+      <node id="8974276187400348183" at="161,34,162,147" concept="0" />
+      <node id="8974276187400348183" at="162,147,163,112" concept="0" />
+      <node id="8974276187400348183" at="163,112,164,17" concept="0" />
+      <node id="8974276187400348183" at="164,17,165,49" concept="0" />
+      <node id="8974276187400348183" at="165,49,166,28" concept="0" />
+      <node id="8974276187400348183" at="166,28,167,22" concept="4" />
+      <node id="8974276187400348183" at="159,0,169,0" concept="6" trace="createDescriptorForExecuteWriteActionStatement#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8974276187400348183" at="66,61,67,52" />
+      <scope id="8974276187400348183" at="159,85,167,22">
+        <var name="b" id="8974276187400348183" />
+      </scope>
+      <scope id="8974276187400348183" at="159,0,169,0" />
+    </file>
+  </root>
+  <root nodeRef="r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)/8974276187400348185">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="8974276187400348185" at="21,0,22,0" concept="1" trace="props_IExecuteCommandStatementSync" />
+      <node id="8974276187400348185" at="97,57,98,76" concept="3" />
+      <node id="8974276187400348185" at="98,76,99,60" concept="0" />
+      <node id="8974276187400348185" at="100,9,101,50" concept="4" />
+      <node id="8974276187400348185" at="96,62,100,9" concept="2" />
+      <scope id="8974276187400348185" at="97,57,99,60">
+        <var name="cpb" id="8974276187400348185" />
+      </scope>
+      <scope id="8974276187400348185" at="96,62,101,50" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="8974276187400348185" at="21,0,22,0" concept="5" trace="IExecuteCommandStatementSync" />
+      <node id="8974276187400348185" at="33,66,34,67" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="8974276187400348185" at="26,0,27,0" concept="1" trace="myConceptIExecuteCommandStatementSync" />
+      <node id="8974276187400348185" at="68,62,69,53" concept="4" />
+      <node id="8974276187400348185" at="169,86,170,188" concept="3" />
+      <node id="8974276187400348185" at="170,188,171,19" concept="0" />
+      <node id="8974276187400348185" at="171,19,172,112" concept="0" />
+      <node id="8974276187400348185" at="172,112,173,17" concept="0" />
+      <node id="8974276187400348185" at="173,17,174,22" concept="4" />
+      <node id="8974276187400348185" at="169,0,176,0" concept="6" trace="createDescriptorForIExecuteCommandStatementSync#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8974276187400348185" at="68,62,69,53" />
+      <scope id="8974276187400348185" at="169,86,174,22">
+        <var name="b" id="8974276187400348185" />
+      </scope>
+      <scope id="8974276187400348185" at="169,0,176,0" />
+    </file>
+  </root>
+</debug-info>
 

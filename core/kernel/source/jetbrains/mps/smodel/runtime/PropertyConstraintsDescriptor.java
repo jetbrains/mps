@@ -15,19 +15,30 @@
  */
 package jetbrains.mps.smodel.runtime;
 
-import jetbrains.mps.smodel.IScope;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public interface PropertyConstraintsDescriptor {
-  String getName();
+
+  SProperty getSProperty();
 
   ConstraintsDescriptor getContainer();
 
-  Object getValue(SNode node, IScope scope);
+  Object getValue(SNode node);
 
-  void setValue(SNode node, String value, IScope scope);
+  @Deprecated
+  @ToRemove(version = 2019.2)
+  void setValue(SNode node, String value);
 
-  boolean validateValue(SNode node, String value, IScope scope);
+  void setPropertyValue(SNode node, Object value);
+
+  @Deprecated
+  @ToRemove(version = 2019.2)
+  boolean validateValue(SNode node, String value);
+
+  boolean validateValue(SNode node, Object value, CheckingNodeContext checkingNodeContext);
 
   boolean isReadOnly();
 }

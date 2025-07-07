@@ -11,20 +11,19 @@ import utils.ParallelLoopException;
 
 public class ThreadSafeSample {
   private static final String fixedFieldValue = "Fixed value for ever";
-
   public ThreadSafeSample() {
   }
-
   public static void main(String[] args) throws InterruptedException {
-    // This sample shows that classes marked thread-safe will not be reported 
-    //  as inproperly used from within parallel for loops 
+    // This sample shows that classes marked thread-safe will not be reported
+    //  as inproperly used from within parallel for loops
 
-    // This is a thread safe class to exchange a single value between a producer and a consumer 
-    // Open the DropBox class definition and notice the "@thread safe" annotation for the class 
+    // This is a thread safe class to exchange a single value between a producer and a consumer
+    // Open the DropBox class definition and notice the "@thread safe" annotation for the class
     final DropBox<String> box = new DropBox<String>();
 
-    // A consumer thread reading and printing values exchanged through the drop box 
+    // A consumer thread reading and printing values exchanged through the drop box
     Thread thread = new Thread(new Runnable() {
+      @Override
       public void run() {
         try {
           while (true) {
@@ -40,8 +39,8 @@ public class ThreadSafeSample {
     final List<String> names = ListSequence.fromListAndArray(new ArrayList<String>(), "Joe", "Dave", "Alice");
 
     {
-      final CountDownLatch latch_n0a = new CountDownLatch(ListSequence.fromList(names).count());
-      final List<Exception> exceptions_n0a = new CopyOnWriteArrayList<Exception>();
+      final CountDownLatch latch_n0c = new CountDownLatch(ListSequence.fromList(names).count());
+      final List<Exception> exceptions_n0c = new CopyOnWriteArrayList<Exception>();
 
       for (final String name : names) {
 
@@ -51,17 +50,17 @@ public class ThreadSafeSample {
           public void run() {
             try {
               try {
-                // Notice no warning nor error reported 
+                // Notice no warning nor error reported
                 box.store(localA);
-                // If the DropBox class was annotated as "@non thread safe", we would get an error reported 
-                // No annotation on the class would result in a warning 
+                // If the DropBox class was annotated as "@non thread safe", we would get an error reported
+                // No annotation on the class would result in a warning
               } catch (InterruptedException e) {
                 throw new RuntimeException(e);
               }
             } catch (RuntimeException e) {
-              ListSequence.fromList(exceptions_n0a).addElement(e);
+              ListSequence.fromList(exceptions_n0c).addElement(e);
             } finally {
-              latch_n0a.countDown();
+              latch_n0c.countDown();
             }
           }
         };
@@ -70,24 +69,24 @@ public class ThreadSafeSample {
 
       }
       try {
-        latch_n0a.await();
+        latch_n0c.await();
       } catch (InterruptedException e) {
-        ListSequence.fromList(exceptions_n0a).addElement(e);
+        ListSequence.fromList(exceptions_n0c).addElement(e);
       }
-      if (ListSequence.fromList(exceptions_n0a).isNotEmpty()) {
-        throw new ParallelLoopException("Some parallel calculations failed", exceptions_n0a);
+      if (ListSequence.fromList(exceptions_n0c).isNotEmpty()) {
+        throw new ParallelLoopException("Some parallel calculations failed", exceptions_n0c);
       }
 
     }
 
-    // By annotating a local variable, field or parameter declaration as thread safe you indicate that calling methods 
-    // on the object is thread-safe 
-    // Alt + Enter on variable declarations will let you mark and unmark them as thread-safe 
+    // By annotating a local variable, field or parameter declaration as thread safe you indicate that calling methods
+    // on the object is thread-safe
+    // Alt + Enter on variable declarations will let you mark and unmark them as thread-safe
     final String fixedValue = " fixed value ";
 
     {
-      final CountDownLatch latch_u0a = new CountDownLatch(ListSequence.fromList(names).count());
-      final List<Exception> exceptions_u0a = new CopyOnWriteArrayList<Exception>();
+      final CountDownLatch latch_u0c = new CountDownLatch(ListSequence.fromList(names).count());
+      final List<Exception> exceptions_u0c = new CopyOnWriteArrayList<Exception>();
 
       for (final String name : names) {
 
@@ -99,9 +98,9 @@ public class ThreadSafeSample {
               String finalString = localA + fixedValue.toUpperCase() + fixedFieldValue;
               log("Result: " + finalString);
             } catch (RuntimeException e) {
-              ListSequence.fromList(exceptions_u0a).addElement(e);
+              ListSequence.fromList(exceptions_u0c).addElement(e);
             } finally {
-              latch_u0a.countDown();
+              latch_u0c.countDown();
             }
           }
         };
@@ -110,18 +109,17 @@ public class ThreadSafeSample {
 
       }
       try {
-        latch_u0a.await();
+        latch_u0c.await();
       } catch (InterruptedException e) {
-        ListSequence.fromList(exceptions_u0a).addElement(e);
+        ListSequence.fromList(exceptions_u0c).addElement(e);
       }
-      if (ListSequence.fromList(exceptions_u0a).isNotEmpty()) {
-        throw new ParallelLoopException("Some parallel calculations failed", exceptions_u0a);
+      if (ListSequence.fromList(exceptions_u0c).isNotEmpty()) {
+        throw new ParallelLoopException("Some parallel calculations failed", exceptions_u0c);
       }
 
     }
     thread.interrupt();
   }
-
   private static void log(String message) {
     System.out.println(message);
   }

@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.generator;
 
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.util.misc.hash.HashMap;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -25,43 +25,44 @@ import java.util.*;
  */
 public class DefaultGenerationParametersProvider implements GenerationParametersProviderEx {
 
-  private Map<String, Object> defaultParams = new HashMap<String, Object>();
-  private Map<SModelDescriptor, Map<String, Object>> paramMaps = new HashMap<SModelDescriptor, Map<String, Object>>();
+  private Map<String, Object> defaultParams = new HashMap<>();
+  private Map<SModel, Map<String, Object>> paramMaps = new HashMap<>();
 
-  private List<String> defaultLanguages = new ArrayList<String>();
-  private Map<SModelDescriptor, List<String>> additionalLanguages = new HashMap<SModelDescriptor, List<String>>();
+  private List<String> defaultLanguages = new ArrayList<>();
+  private Map<SModel, List<String>> additionalLanguages = new HashMap<>();
 
-  public Map<String, Object> getParameters(SModelDescriptor descriptor) {
+  @Override
+  public Map<String, Object> getParameters(SModel descriptor) {
     if (descriptor == null) { throw new NullPointerException();}
 
     Map<String, Object> params =
-      paramMaps.containsKey(descriptor) ? paramMaps.get(descriptor) : Collections.<String, Object>emptyMap();
-    return new DelegatingMapWithDefaults<String, Object> (params, defaultParams);
+      paramMaps.containsKey(descriptor) ? paramMaps.get(descriptor) : Collections.emptyMap();
+    return new DelegatingMapWithDefaults<>(params, defaultParams);
   }
 
   public void addParameter (String key, Object value) {
     addParameter(null, key, value);
   }
 
-  public void addParameter (SModelDescriptor descriptor, String key, Object value) {
+  public void addParameter (SModel descriptor, String key, Object value) {
     if (descriptor == null) {
       defaultParams.put(key, value);
     }
     else{
       if (!paramMaps.containsKey(descriptor)) {
-        paramMaps.put(descriptor, new HashMap<String, Object>());
+        paramMaps.put(descriptor, new HashMap<>());
       }
       paramMaps.get(descriptor).put(key, value);
     }
   }
 
   @Override
-  public Collection<String> getAdditionalLanguages(SModelDescriptor descriptor) {
+  public Collection<String> getAdditionalLanguages(SModel descriptor) {
     if (descriptor == null) { throw new NullPointerException();}
 
-    List<String> modelLanguages = additionalLanguages.containsKey(descriptor) ? additionalLanguages.get(descriptor) : Collections.<String>emptyList();
+    List<String> modelLanguages = additionalLanguages.containsKey(descriptor) ? additionalLanguages.get(descriptor) : Collections.emptyList();
     if(!defaultLanguages.isEmpty()) {
-      List<String> result = new ArrayList<String>();
+      List<String> result = new ArrayList<>();
       result.addAll(defaultLanguages);
       result.addAll(modelLanguages);
       return result;
@@ -69,13 +70,13 @@ public class DefaultGenerationParametersProvider implements GenerationParameters
     return Collections.unmodifiableCollection(modelLanguages);
   }
 
-  public void addLanguagesEngagedOnGeneration(SModelDescriptor descriptor, Collection<String> languages) {
+  public void addLanguagesEngagedOnGeneration(SModel descriptor, Collection<String> languages) {
     if (descriptor == null) { throw new NullPointerException();}
     if(languages == null || languages.isEmpty()) return;
 
     List<String> modelLanguages = additionalLanguages.get(descriptor);
     if(modelLanguages == null) {
-      modelLanguages = new ArrayList<String>();
+      modelLanguages = new ArrayList<>();
       additionalLanguages.put(descriptor, modelLanguages);
     }
     modelLanguages.addAll(languages);
@@ -96,9 +97,10 @@ public class DefaultGenerationParametersProvider implements GenerationParameters
       myDefaults = defaults;
     }
 
+    @NotNull
     @Override
     public Set<Entry<K, V>> entrySet() {
-      HashSet<Entry<K, V>> set = new HashSet<Entry<K, V>>(myDelegate.entrySet());
+      HashSet<Entry<K, V>> set = new HashSet<>(myDelegate.entrySet());
       for (Entry<K,V> e: myDefaults.entrySet()) {
         if (!myDelegate.containsKey(e.getKey())) {
           set.add(e);

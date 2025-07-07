@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,213 +15,57 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.AuxilaryRuntimeModel;
-import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.reloading.ClassLoaderManager;
-import jetbrains.mps.reloading.ReloadAdapter;
-import jetbrains.mps.smodel.constraints.ModelConstraintsManager;
-import jetbrains.mps.smodel.event.SModelListener.SModelListenerPriority;
-import jetbrains.mps.smodel.event.SModelPropertyEvent;
-import jetbrains.mps.smodel.event.SModelRootEvent;
-import jetbrains.mps.smodel.search.ConceptAndSuperConceptsScope;
-import jetbrains.mps.smodel.search.SModelSearchUtil;
-import jetbrains.mps.util.Condition;
-import jetbrains.mps.util.ConditionalIterable;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import jetbrains.mps.smodel.constraints.ModelConstraints;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeId;
 
-import java.util.List;
-
-public class SModelUtil_new implements CoreComponent {
-  private static final Logger LOG = Logger.getLogger(SModelUtil_new.class);
-  private ClassLoaderManager myClManager;
-  private GlobalSModelEventsManager myMeManager;
-  private ReloadAdapter myReloadHandler = new ReloadAdapter() {
-    public void unload() {
-      SModelUtil.clearCaches();
-    }
-  };
-  private SModelAdapter myModelListener = new SModelAdapter(SModelListenerPriority.PLATFORM) {
-    public void rootRemoved(SModelRootEvent p0) {
-      if (!LanguageAspect.STRUCTURE.is(p0.getModel())) {
-        return;
-      }
-      if (!(SNodeUtil.isInstanceOfAbstractConceptDeclaration(p0.getRoot()))) {
-        return;
-      }
-
-      SModelUtil.clearCaches();
-    }
-
-    public void modelReplaced(SModelDescriptor descriptor) {
-      if (Language.getModelAspect(descriptor) != LanguageAspect.STRUCTURE) {
-        return;
-      }
-      SModelUtil.clearCaches();
-    }
-
-    public void propertyChanged(SModelPropertyEvent p0) {
-      if (!LanguageAspect.STRUCTURE.is(p0.getModel())) {
-        return;
-      }
-      if (!(SNodeUtil.isInstanceOfAbstractConceptDeclaration(p0.getNode()))) {
-        return;
-      }
-      if (!p0.getPropertyName().equals("name")) {
-        return;
-      }
-
-      String modelName = p0.getNode().getModel().getLongName();
-      String newName = modelName + "." + p0.getNewPropertyValue();
-      String oldName = modelName + "." + p0.getOldPropertyValue();
-      SModelUtil.conceptRenamed(oldName, newName);
-    }
-  };
-
-  public SModelUtil_new(ClassLoaderManager clManager, GlobalSModelEventsManager meManager) {
-    myClManager = clManager;
-    myMeManager = meManager;
-  }
-
-  public void init() {
-    myClManager.addReloadHandler(myReloadHandler);
-    myMeManager.addGlobalModelListener(myModelListener);
-  }
-
-  public void dispose() {
-    myMeManager.removeGlobalModelListener(myModelListener);
-    myClManager.removeReloadHandler(myReloadHandler);
-  }
-
-  public static <T extends BaseAdapter> T findNodeByFQName(String nodeFQName, Class<T> conceptClass, IScope scope) {
-    String modelName = NameUtil.namespaceFromLongName(nodeFQName);
-    final String name = NameUtil.shortNameFromLongName(nodeFQName);
-
-    for (SModelDescriptor descriptor : scope.getModelDescriptors()) {
-      if (!modelName.equals(descriptor.getLongName())) continue;
-
-      SModel model = descriptor.getSModel();
-      Condition<SNode> cond = new Condition<SNode>() {
-        public boolean met(SNode node) {
-          return name.equals(node.getName());
-        }
-      };
-      Iterable<SNode> iterable = new ConditionalIterable<SNode>(model.roots(), cond);
-      for (SNode node : iterable) {
-        INodeAdapter adapter = BaseAdapter.fromNode(node);
-        if (conceptClass.isAssignableFrom(adapter.getClass())) {
-          return (T) adapter;
-        }
-      }
-    }
-    LOG.warning("couldn't find node by fqname: " + nodeFQName);
-    return null;
-  }
-
+public class SModelUtil_new {
 
   /**
-   * use SModelUtil
+   * @deprecated use of this method is discouraged as it exposes {@code SNode} implementation class. There's {@code SModelOperations.createNewNode()} to use from generated code
    */
   @Deprecated
-  public static boolean isAssignableConcept(String fromConceptFqName, String toConceptFqName) {
-    return SModelUtil.isAssignableConcept(fromConceptFqName, toConceptFqName);
-  }
+  public static jetbrains.mps.smodel.SNode instantiateConceptDeclaration(@NotNull SAbstractConcept concept, @Nullable SModel model, SNodeId nodeId,
+      boolean fullNodeStructure) {
+    SConcept concreteConcept = MetaAdapterByDeclaration.asInstanceConcept(concept);
 
-  public static List<SNode> getConceptAndSuperConcepts(SNode topConcept) {
-    return new ConceptAndSuperConceptsScope(topConcept).getConcepts();
-  }
-
-  public static SNode instantiateConceptDeclaration(String conceptFQName, SModel model, IScope scope) {
-    return instantiateConceptDeclaration(conceptFQName, model, scope, true);
-  }
-
-  public static SNode instantiateConceptDeclaration(SNode conceptDeclaration, SModel model) {
-    return instantiateConceptDeclaration(NameUtil.nodeFQName(conceptDeclaration), model, GlobalScope.getInstance());
-  }
-
-  public static SNode instantiateConceptDeclaration(SNode conceptDeclaration, SModel model, boolean fullNodeStructure) {
-    return instantiateConceptDeclaration(NameUtil.nodeFQName(conceptDeclaration), model, GlobalScope.getInstance(), fullNodeStructure);
-  }
-
-  public static SNode instantiateConceptDeclaration(@NotNull String conceptFqName, @Nullable SModel model, IScope scope, boolean fullNodeStructure) {
-    if (model == null) {
-      model = AuxilaryRuntimeModel.getDescriptor().getSModel();
-    }
-    assert model != null;
-    boolean isNotProjectModel = !ProjectModels.isProjectModel(model.getSModelReference());
-    if (isNotProjectModel) {
-      String fqName = ModelConstraintsManager.getInstance().getDefaultConcreteConceptFqName(conceptFqName, scope);
-      if (fqName != null) {
-        conceptFqName = fqName;
-      }
-    }
-
-    // patch: old generated adapters use fqName without word 'structure'
-    if (conceptFqName.indexOf(".structure.") == -1) {
-      String conceptName = NameUtil.shortNameFromLongName(conceptFqName);
-      String languageNamespace = NameUtil.namespaceFromLongName(conceptFqName);
-      conceptFqName = languageNamespace + ".structure." + conceptName;
-    }
-
-    SNode newNode = new SNode(model, conceptFqName);
+    jetbrains.mps.smodel.SNode newNode =
+        nodeId == null ? new jetbrains.mps.smodel.SNode(concreteConcept) : new jetbrains.mps.smodel.SNode(concreteConcept, nodeId);
     // create the node structure
-    if (fullNodeStructure &&
-      isNotProjectModel) { //project models can be created and used
-      //before project language is loaded
-      SNode conceptDeclaration = SModelUtil.findConceptDeclaration(conceptFqName, scope);
-      createNodeStructure(conceptDeclaration, newNode, model);
+    if (fullNodeStructure) {
+      createNodeStructure(newNode);
     }
     return newNode;
   }
 
-  private static void createNodeStructure(SNode nodeConcept,
-                                          SNode newNode, SModel model) {
-    for (SNode linkDeclaration : SModelSearchUtil.getLinkDeclarations(nodeConcept)) {
-      String role = SModelUtil.getGenuineLinkRole(linkDeclaration);
-      SNode genuineLinkDeclaration = SModelUtil.getGenuineLinkDeclaration(linkDeclaration);
-      if (!SNodeUtil.getLinkDeclaration_IsReference(genuineLinkDeclaration) &&
-        SNodeUtil.getLinkDeclaration_IsAtLeastOneMultiplicity(genuineLinkDeclaration)) {
+  private static void createNodeStructure(SNode newNode) {
+    for (SContainmentLink linkDeclaration : newNode.getConcept().getContainmentLinks()) {
+      if (linkDeclaration.isOptional()) {
+        continue;
+      }
 
-        SNode targetConcept = SModelUtil.getLinkDeclarationTarget(linkDeclaration);
-        LOG.assertLog(targetConcept != null, "link target is null");
-        if (newNode.getChildren(role).isEmpty()) {
-          SNode childNode = instantiateConceptDeclaration(targetConcept, model);
-          newNode.addChild(role, childNode);
-        }
+      SAbstractConcept target = linkDeclaration.getTargetConcept();
+      if (!newNode.getChildren(linkDeclaration).iterator().hasNext()) {
+        SNode childNode = new jetbrains.mps.smodel.SNode(ModelConstraints.getDefaultConcreteConcept(target));
+        createNodeStructure(childNode);
+        newNode.addChild(linkDeclaration, childNode);
       }
     }
   }
 
-  public static boolean isAcceptableTarget(SNode sourceNode, String role, SNode targetNode) {
-    SNode conceptDeclaration = sourceNode.getConceptDeclarationNode();
-    SNode linkDeclaration = SModelSearchUtil.findMostSpecificLinkDeclaration(conceptDeclaration, role);
-    if (linkDeclaration == null) {
-      LOG.error("couldn't find link declaration for role '" + role + "' in hierarchy of concept " + conceptDeclaration.getDebugText(), sourceNode);
-      return false;
-    }
-    return SModelUtil.isAcceptableTarget(linkDeclaration, targetNode);
-  }
-
   public static String getAlias(SNode conceptDeclaration) {
-    return getStringConceptProperty(conceptDeclaration, SNodeUtil.CPR_BaseConcept_alias);
-  }
-
-  public static String getStringConceptProperty(SNode conceptDeclaration, String propertyName) {
-    SNode property = SModelSearchUtil.findConceptProperty(conceptDeclaration, propertyName);
-
-    Object value = SNodeUtil.getConceptPropertyValue(property);
-    if (value instanceof String) {
-      return (String) value;
-    }
-    return null;
+    return SNodeUtil.getConceptAlias(conceptDeclaration);
   }
 
   public static boolean isEmptyPropertyValue(String s) {
-    return s == null || s.equals("");
+    return s == null || s.isEmpty();
   }
 
   public static int getMetaLevel(SNode node) {

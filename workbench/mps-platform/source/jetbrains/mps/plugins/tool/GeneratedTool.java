@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,18 +17,24 @@ package jetbrains.mps.plugins.tool;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowAnchor;
+import jetbrains.mps.ide.tools.BaseTool;
 
 import javax.swing.Icon;
+import javax.swing.KeyStroke;
+import java.util.Map;
 
-public abstract class GeneratedTool extends BaseGeneratedTool {
-  protected GeneratedTool(Project project, String id, int number, Icon icon, ToolWindowAnchor anchor, boolean canCloseContent) {
-    super(project, id, number, icon, anchor, canCloseContent);
+public abstract class GeneratedTool extends BaseTool {
+
+  protected GeneratedTool(Project project, String id, Map<String, KeyStroke> shortcutsByKeymap, Icon icon, ToolWindowAnchor anchor, boolean canCloseContent) {
+    super(project, id, shortcutsByKeymap, icon, anchor, false, canCloseContent);
   }
 
+  @Override
   public void init(Project project) {
 
   }
 
+  @Override
   public void dispose() {
 
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,10 @@
 package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.runtime.TemplateReductionRule;
-import jetbrains.mps.generator.template.QueryExecutionContext;
-import jetbrains.mps.smodel.SNode;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,20 +31,17 @@ public class ReductionContext {
   private final ReductionContext myParent;
   private final SNode myInputNode;
   private final TemplateReductionRule myReductionRule;
-  private final QueryExecutionContext myExecutionContext;
 
-  ReductionContext(@NotNull QueryExecutionContext executionContext) {
+  ReductionContext() {
     myParent = null;
     myInputNode = null;
     myReductionRule = null;
-    myExecutionContext = executionContext;
   }
 
   ReductionContext(@NotNull ReductionContext parent, @NotNull SNode inputNode, @NotNull TemplateReductionRule reductionRule) {
     myParent = parent;
     myInputNode = inputNode;
     myReductionRule = reductionRule;
-    myExecutionContext = parent.myExecutionContext;
   }
 
   boolean isBlocked(SNode inputNode, TemplateReductionRule rule) {
@@ -57,18 +54,17 @@ public class ReductionContext {
   }
 
   Object getBlockedRules(SNode inputNode) {
-    Object currentSet = null;
+    ArrayList<TemplateReductionRule> matchingRules = new ArrayList<>();
     for (ReductionContext current = this; current != null; current = current.myParent) {
-      if (current.myInputNode == inputNode) {
-        currentSet = combineRuleSets(currentSet, current.myReductionRule);
+      if (current.myInputNode == inputNode && current.myReductionRule != null) {
+        matchingRules.add(current.myReductionRule);
       }
     }
-    return currentSet;
-  }
-
-  @NotNull
-  public QueryExecutionContext getQueryExecutor() {
-    return myExecutionContext;
+    if (matchingRules.isEmpty()) {
+      return null;
+    } else {
+      return new HashSet<>(matchingRules);
+    }
   }
 
   static Object combineRuleSets(Object set1, Object set2) {
@@ -78,24 +74,24 @@ public class ReductionContext {
       return set1;
     if (set1 instanceof TemplateReductionRule) {
       if (set2 instanceof TemplateReductionRule) {
-        Set<Object> set = new HashSet<Object>(2);
+        Set<Object> set = new HashSet<>(2);
         set.add(set1);
         set.add(set2);
         return set;
       } else {
-        Set<Object> set = new HashSet<Object>(((Set) set2).size() + 1);
+        Set<Object> set = new HashSet<>(((Set) set2).size() + 1);
         set.addAll((Set) set2);
         set.add(set1);
         return set;
       }
     } else {
       if (set2 instanceof TemplateReductionRule) {
-        Set<Object> set = new HashSet<Object>(((Set) set1).size() + 1);
+        Set<Object> set = new HashSet<>(((Set) set1).size() + 1);
         set.addAll((Set) set1);
         set.add(set2);
         return set;
       } else {
-        Set<Object> set = new HashSet<Object>(((Set) set2).size() + ((Set) set1).size());
+        Set<Object> set = new HashSet<>(((Set) set2).size() + ((Set) set1).size());
         set.addAll((Set) set1);
         set.addAll((Set) set2);
         return set;

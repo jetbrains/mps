@@ -15,77 +15,103 @@
  */
 package jetbrains.mps.smodel.action;
 
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
+import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.annotations.Nullable;
-
-import javax.swing.Icon;
+import org.jetbrains.mps.openapi.model.SNode;
 
 /**
  * Igor Alshannikov
  * Jan 30, 2006
  */
-public class NodeSubstituteActionWrapper implements INodeSubstituteAction {
-  private INodeSubstituteAction mySubstituteAction;
+public class NodeSubstituteActionWrapper implements SubstituteAction {
+  private SubstituteAction mySubstituteAction;
 
-  public NodeSubstituteActionWrapper(INodeSubstituteAction substituteAction) {
+  public NodeSubstituteActionWrapper(SubstituteAction substituteAction) {
     mySubstituteAction = substituteAction;
   }
 
+  @Override
   public SNode getSourceNode() {
     return mySubstituteAction.getSourceNode();
   }
 
+  @Override
   public SNode getOutputConcept() {
     return mySubstituteAction.getOutputConcept();
   }
 
+  @Override
+  public boolean isAcceptable(String pattern, SubstitutionAcceptable acceptable) {
+    return mySubstituteAction.isAcceptable(pattern, acceptable);
+  }
+
+  @Override
   public SNode getActionType(String pattern) {
     return mySubstituteAction.getActionType(pattern);
   }
 
-  public Icon getIconFor(String pattern) {
-    return mySubstituteAction.getIconFor(pattern);
+  @Override
+  public SNode getIconNode(String pattern) {
+    return mySubstituteAction.getIconNode(pattern);
   }
 
-  public int getFontStyleFor(String pattern) {
-    return mySubstituteAction.getFontStyleFor(pattern);
+  @Override
+  public boolean isReferentPresentation() {
+    return mySubstituteAction.isReferentPresentation();
   }
 
+  @Override
   public String getMatchingText(String pattern) {
     return mySubstituteAction.getMatchingText(pattern);
   }
 
+  @Override
   public String getVisibleMatchingText(String pattern) {
     return mySubstituteAction.getVisibleMatchingText(pattern);
   }
 
+  @Override
   public String getDescriptionText(String pattern) {
     return mySubstituteAction.getDescriptionText(pattern);
   }
 
+  @Override
   public boolean canSubstituteStrictly(String pattern) {
     return mySubstituteAction.canSubstituteStrictly(pattern);
   }
 
+  @Override
   public boolean canSubstitute(String pattern) {
     return mySubstituteAction.canSubstitute(pattern);
   }
 
+  @Override
   public SNode substitute(@Nullable EditorContext context, String pattern) {
     return mySubstituteAction.substitute(context, pattern);
   }
 
-  public int getSortPriority(String pattern) {
-    return mySubstituteAction.getSortPriority(pattern);
-  }
-
+  @Override
   public SNode getActionType(String pattern, EditorCell contextCell) {
     return mySubstituteAction.getActionType(pattern, contextCell);
   }
 
+  @Override
   public Object getParameterObject() {
     return mySubstituteAction.getParameterObject();
+  }
+
+  @Override
+  public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+    return mySubstituteAction.getEditorMenuTraceInfo();
+  }
+
+  @Override
+  public void customize(String pattern, EditorMenuItemStyle style) {
+    mySubstituteAction.customize(pattern, style);
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,73 +16,64 @@
 
 package jetbrains.mps.idea.core.refactoring;
 
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.findusages.model.SearchResults;
+import jetbrains.mps.ide.findusages.model.SearchTask;
 import jetbrains.mps.ide.platform.refactoring.ModelElementTargetChooser;
-import jetbrains.mps.ide.platform.refactoring.RefactoringAccess;
+import jetbrains.mps.ide.platform.refactoring.RefactoringAccessEx;
 import jetbrains.mps.ide.platform.refactoring.RefactoringViewAction;
 import jetbrains.mps.idea.core.ui.ModelOrNodeChooser;
 import jetbrains.mps.idea.core.ui.RefactoringViewItemImpl;
-import jetbrains.mps.refactoring.framework.IRefactoring;
 import jetbrains.mps.refactoring.framework.RefactoringContext;
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.smodel.SNode;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
 
 /**
  * User: shatalin
  * Date: 2/20/12
  */
-public class RefactoringAccessImpl extends RefactoringAccess implements ApplicationComponent {
+public class RefactoringAccessImpl extends RefactoringAccessEx implements Disposable {
 
   public RefactoringAccessImpl(MPSCoreComponents coreComponents) {
+    super(coreComponents.getPlatform());
+    RefactoringAccessEx.setInstance(this);
   }
 
   @Override
-  public void initComponent() {
-    RefactoringAccess.setInstance(this);
+  public void dispose() {
+    RefactoringAccessEx.setInstance(null);
   }
-
-  @Override
-  public void disposeComponent() {
-    RefactoringAccess.setInstance(null);
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "IDEA Plugin-specific Refactoring Access implementation";
-  }
-
 
   @Override
   public ModelElementTargetChooser createTargetChooser(Project project, SNode node) {
-    return new ModelOrNodeChooser(project, node);
+    return new ModelOrNodeChooser(project);
   }
 
   @Override
-  public ModelElementTargetChooser createTargetChooser(Project project, SModelDescriptor model) {
-    return new ModelOrNodeChooser(project, model);
+  public ModelElementTargetChooser createTargetChooser(Project project, SModel model) {
+    return new ModelOrNodeChooser(project);
   }
 
   @Override
-  public boolean showRefactoringDialog(Project project, RefactoringContext refactoringContext, IRefactoring refactoring, boolean hasModelsToGenerate) {
-    return showRefactoringDialogBase(project, refactoringContext, refactoring, false);
-  }
-
-  @Override
-  public void showRefactoringView(Project project, final RefactoringViewAction callback, SearchResults searchResults, boolean hasModelsToGenerate, String name) {
+  public void showRefactoringView(Project project, final RefactoringViewAction callback, Runnable disposeAction, SearchResults searchResults, SearchTask searchTask, String name) {
     RefactoringViewItemImpl refactoringViewItem = new RefactoringViewItemImpl();
-    refactoringViewItem.showRefactoringView(project, callback, searchResults, hasModelsToGenerate, name);
+    refactoringViewItem.showRefactoringView(project, callback, disposeAction, searchResults, name);
   }
 
-
   @Override
+  public void showRefactoringView(RefactoringContext refactoringContext, RefactoringViewAction callback, Runnable disposeAction, SearchResults searchResults, SearchTask searchTask, String name) {
+    RefactoringViewItemImpl refactoringViewItem = new RefactoringViewItemImpl();
+    refactoringViewItem.showRefactoringView(refactoringContext, callback, disposeAction, searchResults);
+  }
+
+  @Deprecated
+  public void showRefactoringView(Project project, RefactoringViewAction callback, SearchResults searchResults, boolean hasModelsToGenerate, String name) {
+    showRefactoringView(project, callback, null, searchResults, null, name);
+  }
+  @Deprecated
   public void showRefactoringView(RefactoringContext refactoringContext, RefactoringViewAction callback, SearchResults searchResults, boolean hasModelsToGenerate, String name) {
-    RefactoringViewItemImpl refactoringViewItem = new RefactoringViewItemImpl();
-    refactoringViewItem.showRefactoringView(refactoringContext, callback, searchResults, hasModelsToGenerate);
+    showRefactoringView(refactoringContext, callback, null, searchResults, null, name);
   }
-
 }

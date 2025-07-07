@@ -16,6 +16,7 @@
 package jetbrains.mps.smodel;
 
 public class BaseMPSModuleOwner implements MPSModuleOwner{
+  @Override
   public boolean isHidden() {
     return false;
   }

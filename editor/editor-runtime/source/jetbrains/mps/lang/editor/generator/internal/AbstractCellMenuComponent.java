@@ -15,11 +15,13 @@
  */
 package jetbrains.mps.lang.editor.generator.internal;
 
-import jetbrains.mps.nodeEditor.EditorContext;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPart;
-import jetbrains.mps.smodel.action.INodeSubstituteAction;
-import jetbrains.mps.logging.Logger;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -29,21 +31,21 @@ import java.util.List;
  * Date: Nov 29, 2006
  */
 public abstract class AbstractCellMenuComponent {
-  private static final Logger LOG = Logger.getLogger(AbstractCellMenuComponent.class);
+  private static final Logger LOG = LogManager.getLogger(AbstractCellMenuComponent.class);
 
-  private SubstituteInfoPart[] myParts;
+  private SubstituteInfoPartExt[] myExtParts;
 
-  public AbstractCellMenuComponent(SubstituteInfoPart[] menuParts) {
-    myParts = menuParts;
+  public AbstractCellMenuComponent(@NotNull SubstituteInfoPartExt[] menuParts) {
+    myExtParts = menuParts;
   }
 
-  public List<INodeSubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-    List<INodeSubstituteAction> actions = new LinkedList<INodeSubstituteAction>();
-    for (SubstituteInfoPart menuPart : myParts) {
+  public List<SubstituteAction> createSubstituteActions(CellContext cellContext, EditorContext editorContext) {
+    List<SubstituteAction> actions = new LinkedList<>();
+    for (SubstituteInfoPartExt menuPart : myExtParts) {
       try {
         actions.addAll(menuPart.createActions(cellContext, editorContext));
       } catch (Exception e) {
-        LOG.error(e);
+        LOG.error(null, e);
       }
     }
     return actions;

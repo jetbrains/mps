@@ -21,30 +21,17 @@ import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowFactory;
-import jetbrains.mps.project.MPSProjectMigrationListener;
-import jetbrains.mps.project.MPSProjectMigrationListener.DEFAULT;
-import jetbrains.mps.project.MPSProjectMigrationState;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * Created by IntelliJ IDEA.
- * User: fyodor
- * Date: 16.03.2012
- * Time: 10:56
- * To change this template use File | Settings | File Templates.
+ * @deprecated is not used any more, platform {@link com.intellij.ide.projectView.impl.ProjectViewToolWindowFactory} is used instead
  */
+@ScheduledForRemoval(inVersion = "2021.1")
+@Deprecated(forRemoval = true, since = "2020.3")
 public class MPSProjectViewToolWindowFactory implements ToolWindowFactory, DumbAware {
-  public void createToolWindowContent(final Project project, final ToolWindow toolWindow) {
-    MPSProjectMigrationState migrationState = project.getComponent(MPSProjectMigrationState.class);
-    if (migrationState.isMigrationRequired() && migrationState.hasMigrationAgent()) {
-      migrationState.addMigrationListener(new DEFAULT() {
-        @Override
-        public void migrationFinished(Project mpsProject) {
-          ((ProjectViewImpl) ProjectView.getInstance(project)).setupImpl(toolWindow);
-        }
-      });
-    }
-    else {
-      ((ProjectViewImpl) ProjectView.getInstance(project)).setupImpl(toolWindow);
-    }
+  @Override
+  public void createToolWindowContent(@NotNull final Project project, @NotNull final ToolWindow toolWindow) {
+    ((ProjectViewImpl) ProjectView.getInstance(project)).setupImpl(toolWindow);
   }
 }

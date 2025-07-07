@@ -15,20 +15,41 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
+import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
-public class DefaultNodeEditor implements INodeEditor {
+import java.util.Collection;
+import java.util.Collections;
 
-  public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return new EditorCell_Error(editorContext, node, "no editor found");
+public class DefaultNodeEditor implements ConceptEditor {
+  @NotNull
+  @Override
+  public Collection<String> getContextHints() {
+    return Collections.emptyList();
   }
 
+  @Override
+  public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
+    EditorCell_Error editorCell_error = new EditorCell_Error(editorContext, node, "no editor found");
+    editorCell_error.setBig(true);
+    editorCell_error.setCellContext(editorContext.getEditorComponent().getUpdater().getCurrentUpdateSession().getCellFactory().getCellContext());
+    editorCell_error.setCellId("defaultEditor_ErrorCell");
+    return editorCell_error;
+  }
+
+  @Override
   public EditorCell createInspectedCell(EditorContext editorContext, SNode node) {
-    return new DefaultInspectorCell(editorContext, node, node.getDebugText(), true);
+    DefaultInspectorCell cell = new DefaultInspectorCell(editorContext, node, SNodeOperations.getDebugText(node), false);
+    cell.setBig(true);
+    cell.setCellContext(editorContext.getEditorComponent().getUpdater().getCurrentUpdateSession().getCellFactory().getCellContext());
+    cell.setCellId("defaultEditor_InspectorCell");
+    return cell;
   }
 
   public static class DefaultInspectorCell extends EditorCell_Constant {

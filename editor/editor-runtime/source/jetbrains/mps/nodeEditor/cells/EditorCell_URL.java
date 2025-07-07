@@ -16,11 +16,12 @@
 package jetbrains.mps.nodeEditor.cells;
 
 import com.intellij.ide.BrowserUtil;
-import jetbrains.mps.nodeEditor.EditorContext;
+import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
 import jetbrains.mps.smodel.NodeReadAccessInEditorListener;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.util.Pair;
 
 import java.awt.Color;
@@ -30,6 +31,7 @@ import java.awt.event.MouseEvent;
 public class EditorCell_URL extends EditorCell_Property {
   protected EditorCell_URL(EditorContext editorContext, ModelAccessor accessor, SNode node) {
     super(editorContext, accessor, node);
+    // COLORS: Remove hardcoded color
     this.setTextColor(Color.BLUE);
   }
 
@@ -45,16 +47,17 @@ public class EditorCell_URL extends EditorCell_Property {
     }
   }
 
-  public static EditorCell_URL create(EditorContext editorContext, SNode node, String propertyName) {
+  public static EditorCell_URL create(EditorContext editorContext, SNode node, SProperty property) {
     NodeReadAccessInEditorListener listener = NodeReadAccessCasterInEditor.getReadAccessListener();
-    ModelAccessor accessor = new PropertyAccessor(node, propertyName, false, true, editorContext);
+    ModelAccessor accessor = new PropertyAccessor(node, property, false, true, editorContext);
     if (listener != null) {
       listener.clearCleanlyReadAccessProperties();
     }
     EditorCell_URL result = new EditorCell_URL(editorContext, accessor, node);
     if (listener != null) {
-      for (Pair<SNodePointer, String> pair : listener.popCleanlyReadAccessedProperties()) {
-        result.getEditor().addCellDependentOnNodeProperty(result, pair);
+      for (Pair<SNodeReference, String> pair : listener.popCleanlyReadAccessedProperties()) {
+        // TODO: specify property name directly - we know it from PropertyAccessor
+        result.getEditorComponent().getUpdater().getCurrentUpdateSession().registerCleanDependency(result, pair);
       }
     }
     return result;

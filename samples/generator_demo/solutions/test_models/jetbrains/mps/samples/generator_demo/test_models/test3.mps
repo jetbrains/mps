@@ -1,43 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:1ebe3253-04ff-442c-a927-b07e3d7072ae(jetbrains.mps.samples.generator_demo.test_models.test3)">
-  <persistence version="7" />
-  <language namespace="772f6dcd-8c0d-48f7-869c-908e036f7c8e(jetbrains.mps.sampleXML)" />
-  <language-engaged-on-generation namespace="7a4dedfe-9c99-4610-b299-d4a37832823b(jetbrains.mps.samples.generator_demo.demoLang3)" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" implicit="yes" />
-  <import index="dghb" modelUID="r:ec0ffc91-3a14-4002-ac57-dd36c5dcf10a(jetbrains.mps.sampleXML.structure)" version="-1" implicit="yes" />
-  <roots>
-    <node type="dghb.Document" typeId="dghb.1225239603382" id="1228530125337">
-      <property name="name" nameId="tpck.1169194664001" value="Button" />
-    </node>
-    <node type="dghb.Document" typeId="dghb.1225239603382" id="1228530125339">
-      <property name="name" nameId="tpck.1169194664001" value="Label" />
-    </node>
-  </roots>
-  <root id="1228530125337">
-    <node role="rootElement" roleId="dghb.1225239603384" type="dghb.Element" typeId="dghb.1225239603385" id="1228530125338">
-      <property name="name" nameId="tpck.1169194664001" value="button" />
-      <node role="attribute" roleId="dghb.1225239603386" type="dghb.Attribute" typeId="dghb.1225239603361" id="1228530262748">
-        <property name="name" nameId="tpck.1169194664001" value="text" />
-        <property name="value" nameId="dghb.1225239603363" value="Hello" />
+<model ref="r:1ebe3253-04ff-442c-a927-b07e3d7072ae(jetbrains.mps.samples.generator_demo.test_models.test3)">
+  <persistence version="9" />
+  <languages>
+    <use id="772f6dcd-8c0d-48f7-869c-908e036f7c8e" name="jetbrains.mps.sampleXML" version="0" />
+    <engage id="7a4dedfe-9c99-4610-b299-d4a37832823b" name="jetbrains.mps.samples.generator_demo.demoLang3" />
+  </languages>
+  <imports />
+  <registry>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="772f6dcd-8c0d-48f7-869c-908e036f7c8e" name="jetbrains.mps.sampleXML">
+      <concept id="1225239603385" name="jetbrains.mps.sampleXML.structure.Element" flags="ng" index="15YaA$">
+        <child id="1225239603386" name="attribute" index="15YaAB" />
+      </concept>
+      <concept id="1225239603382" name="jetbrains.mps.sampleXML.structure.Document" flags="ng" index="15YaAF">
+        <child id="1225239603384" name="rootElement" index="15YaA_" />
+      </concept>
+      <concept id="1225239603361" name="jetbrains.mps.sampleXML.structure.Attribute" flags="ng" index="15YaAW">
+        <property id="1225239603363" name="value" index="15YaAY" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="15YaAF" id="hSa6wCp">
+    <property role="TrG5h" value="Button" />
+    <node concept="15YaA$" id="hSa6wCq" role="15YaA_">
+      <property role="TrG5h" value="button" />
+      <node concept="15YaAW" id="hSa72bs" role="15YaAB">
+        <property role="TrG5h" value="text" />
+        <property role="15YaAY" value="Hello" />
       </node>
-      <node role="attribute" roleId="dghb.1225239603386" type="dghb.Attribute" typeId="dghb.1225239603361" id="1228532516124">
-        <property name="name" nameId="tpck.1169194664001" value="enabled" />
-        <property name="value" nameId="dghb.1225239603363" value="false" />
+      <node concept="15YaAW" id="hSafCks" role="15YaAB">
+        <property role="TrG5h" value="enabled" />
+        <property role="15YaAY" value="false" />
       </node>
     </node>
-  </root>
-  <root id="1228530125339">
-    <node role="rootElement" roleId="dghb.1225239603384" type="dghb.Element" typeId="dghb.1225239603385" id="1228530125340">
-      <property name="name" nameId="tpck.1169194664001" value="label" />
-      <node role="attribute" roleId="dghb.1225239603386" type="dghb.Attribute" typeId="dghb.1225239603361" id="1228530285546">
-        <property name="name" nameId="tpck.1169194664001" value="text" />
-        <property name="value" nameId="dghb.1225239603363" value="world!" />
+  </node>
+  <node concept="15YaAF" id="hSa6wCr">
+    <property role="TrG5h" value="Label" />
+    <node concept="15YaA$" id="hSa6wCs" role="15YaA_">
+      <property role="TrG5h" value="label" />
+      <node concept="15YaAW" id="hSa77JE" role="15YaAB">
+        <property role="TrG5h" value="text" />
+        <property role="15YaAY" value="world!" />
       </node>
-      <node role="attribute" roleId="dghb.1225239603386" type="dghb.Attribute" typeId="dghb.1225239603361" id="1228532861376">
-        <property name="name" nameId="tpck.1169194664001" value="background" />
-        <property name="value" nameId="dghb.1225239603363" value="orange" />
+      <node concept="15YaAW" id="hSagWB0" role="15YaAB">
+        <property role="TrG5h" value="background" />
+        <property role="15YaAY" value="orange" />
       </node>
     </node>
-  </root>
+  </node>
 </model>
 

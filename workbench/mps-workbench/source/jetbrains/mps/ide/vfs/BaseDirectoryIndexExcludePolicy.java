@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.vfs;
 
-import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ModuleRootModel;
 import com.intellij.openapi.roots.impl.DirectoryIndexExcludePolicy;
@@ -42,28 +41,24 @@ public abstract class BaseDirectoryIndexExcludePolicy implements DirectoryIndexE
   @NotNull
   protected abstract Set<VirtualFile> getAllExcludeRoots();
 
-  public boolean isExcludeRoot(VirtualFile file) {
-    return getAllExcludeRoots().contains(file);
-  }
-
-  public boolean isExcludeRootForModule(Module module, VirtualFile file) {
-    return getAllExcludeRoots().contains(file);
-  }
-
+  @NotNull
+  @Override
   public VirtualFile[] getExcludeRootsForProject() {
     if (myProject.isDisposed()) {
       return VirtualFile.EMPTY_ARRAY;
     }
     final Collection<VirtualFile> roots = getAllExcludeRoots();
-    return roots.toArray(new VirtualFile[roots.size()]);
+    return roots.toArray(new VirtualFile[0]);
   }
 
-  public VirtualFilePointer[] getExcludeRootsForModule(ModuleRootModel rootModel) {
+  @NotNull
+  @Override
+  public VirtualFilePointer[] getExcludeRootsForModule(@NotNull ModuleRootModel rootModel) {
     Set<VirtualFile> roots = getAllExcludeRoots();
-    ArrayList<VirtualFilePointer> filePointers = new ArrayList<VirtualFilePointer>();
+    ArrayList<VirtualFilePointer> filePointers = new ArrayList<>();
     for (VirtualFile root : roots) {
       filePointers.add(VirtualFilePointerManager.getInstance().create(root, myProject, null));
     }
-    return filePointers.toArray(new VirtualFilePointer[filePointers.size()]);
+    return filePointers.toArray(new VirtualFilePointer[0]);
   }
 }

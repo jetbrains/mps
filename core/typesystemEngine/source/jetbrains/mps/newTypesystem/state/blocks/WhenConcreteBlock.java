@@ -17,7 +17,7 @@ package jetbrains.mps.newTypesystem.state.blocks;
 
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.Pair;
 
@@ -29,13 +29,19 @@ public class WhenConcreteBlock extends Block {
   private final SNode myArgument;
   protected final ConditionKind myConditionKind;
   private final boolean mySkipError;
+  private final String myWarningMessage;
 
-  public WhenConcreteBlock(State state, Runnable runnable, String nodeModel, String nodeId, SNode argument, boolean isShallow, boolean skipError) {
+  public WhenConcreteBlock(State state, Runnable runnable, String nodeModel, String nodeId, SNode argument, boolean isShallow, boolean skipError, String warningMessage) {
     super(state, nodeModel, nodeId);
     myRunnable = runnable;
     myArgument = argument;
     myConditionKind = isShallow ? ConditionKind.SHALLOW : ConditionKind.CONCRETE;
     mySkipError = skipError;
+    myWarningMessage = warningMessage;
+  }
+
+  public WhenConcreteBlock(State state, Runnable runnable, String nodeModel, String nodeId, SNode argument, boolean isShallow, boolean skipError) {
+    this(state, runnable, nodeModel, nodeId, argument, isShallow, skipError, null);
   }
 
   public String toString() {
@@ -53,7 +59,7 @@ public class WhenConcreteBlock extends Block {
 
   @Override
   public Set<Pair<SNode, ConditionKind>> getInitialInputs() {
-    Pair<SNode, ConditionKind> input = new Pair<SNode, ConditionKind>(myArgument, myConditionKind);
+    Pair<SNode, ConditionKind> input = new Pair<>(myArgument, myConditionKind);
     return CollectionUtil.set(input);
   }
 
@@ -61,6 +67,10 @@ public class WhenConcreteBlock extends Block {
     return mySkipError;
   }
 
+  public String getWarningMessage() {
+    return myWarningMessage;
+  }
+  
   @Override
   public Set<SNode> getInputs() {
     return CollectionUtil.set(myArgument);

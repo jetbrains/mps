@@ -18,7 +18,8 @@ package jetbrains.mps.workbench.dialogs.project.newproject;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.ide.wizard.CommitStepException;
 import com.intellij.ide.wizard.StepAdapter;
-import jetbrains.mps.logging.Logger;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,7 +35,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public abstract class BaseStep extends StepAdapter {
-  private static final Logger LOG = Logger.getLogger(BaseStep.class);
+  private static final Logger LOG = LogManager.getLogger(BaseStep.class);
 
   private JPanel myComponent;
 
@@ -84,6 +85,7 @@ public abstract class BaseStep extends StepAdapter {
         JLabel aLabel = new JLabel("<html><a href=\"\">Read&nbsp;more</a></html>");
         aLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         aLabel.addMouseListener(new MouseAdapter() {
+          @Override
           public void mouseClicked(MouseEvent e) {
             launchBrowserAction(url, "");
           }
@@ -139,6 +141,7 @@ public abstract class BaseStep extends StepAdapter {
     }
   }
 
+  @Override
   public final JComponent getComponent() {
     return myComponent;
   }
@@ -165,6 +168,7 @@ public abstract class BaseStep extends StepAdapter {
     return null;
   }
 
+  @Override
   @Nullable
   public Icon getIcon() {
     return null;

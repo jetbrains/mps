@@ -41,11 +41,11 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_ReferenceAppendPart_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_SimplestTextGenOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_SimplestTextGenOperation_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_UnitContextReference_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -54,6 +54,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_CallPrivateFunction_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_MissingTextGenBlock_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,15 +25,15 @@ import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.bookmark.BookmarkManager.BookmarkListener;
 import jetbrains.mps.ide.editor.util.EditorComponentUtil;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.nodeEditor.EditorComponent.RebuildListener;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.openapi.editor.update.UpdaterListener;
+import jetbrains.mps.openapi.editor.update.UpdaterListenerAdapter;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.Icon;
 import javax.swing.JPopupMenu;
@@ -53,10 +53,10 @@ public class BookmarksUIComponent implements ProjectComponent {
 
   private final EditorComponentCreateListener editorListener = new MyEditorComponentCreateListener();
   private final BookmarkListener bookmarkListener = new MyBookmarkListener();
-  private final RebuildListener editorRebuildListener = new RebuildListener() {
+  private final UpdaterListener myUpdaterListener = new UpdaterListenerAdapter() {
     @Override
-    public void editorRebuilt(EditorComponent editor) {
-      BookmarksUIComponent.this.onEditorRebuilt(editor);
+    public void editorUpdated(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
+      BookmarksUIComponent.this.onEditorRebuilt((EditorComponent) editorComponent);
     }
   };
 
@@ -100,19 +100,21 @@ public class BookmarksUIComponent implements ProjectComponent {
   }
 
   private void editorComponentCreated(@NotNull EditorComponent editorComponent) {
-    editorComponent.addRebuildListener(editorRebuildListener);
+    editorComponent.getUpdater().addListener(myUpdaterListener);
     SNode editedNode = editorComponent.getEditedNode();
     if (editedNode != null) {
       boolean modified = false;
       for (Pair<SNode, Integer> bookmark : myBookmarkManager.getBookmarks(editedNode.getContainingRoot())) {
         modified |= addRenderer(editorComponent, bookmark.o1, bookmark.o2);
       }
-      if (modified) editorComponent.repaint();
+      if (modified) {
+        editorComponent.repaintExternalComponent();
+      }
     }
   }
 
   private void editorComponentDisposed(@NotNull EditorComponent editorComponent) {
-    editorComponent.removeRebuildListener(editorRebuildListener);
+    editorComponent.getUpdater().removeListener(myUpdaterListener);
     editorComponent.getLeftEditorHighlighter().removeAllIconRenderers(BookmarkIconRenderer.TYPE);
   }
 
@@ -144,7 +146,7 @@ public class BookmarksUIComponent implements ProjectComponent {
     List<EditorComponent> editorComponents = findComponentsForNode(node);
     for (EditorComponent editorComponent : editorComponents) {
       if (addRenderer(editorComponent, node, number)) {
-        editorComponent.repaint();
+        editorComponent.repaintExternalComponent();
       }
     }
   }
@@ -170,7 +172,7 @@ public class BookmarksUIComponent implements ProjectComponent {
         continue;
       }
       editorComponent.getLeftEditorHighlighter().removeIconRenderer(node, BookmarkIconRenderer.TYPE);
-      editorComponent.repaint();
+      editorComponent.repaintExternalComponent();
       // todo should it be executed in ED thread?
     }
   }
@@ -204,12 +206,14 @@ public class BookmarksUIComponent implements ProjectComponent {
 
   private static class BookmarkIconRenderer implements EditorMessageIconRenderer {
     private static final IconRendererType TYPE = new IconRendererType(3);
-    private SNode myNode;
-    private int myNumber;
+    private final SNodeReference myNode;
+    private final int myNumber;
+    private final String myTooltip;
 
     private BookmarkIconRenderer(SNode node, int number) {
-      myNode = node;
+      myNode = node.getReference();
       myNumber = number;
+      myTooltip = String.format("Bookmark %s(%s)", number != -1 ? number : "", node.getPresentation());
     }
 
     @Override
@@ -219,17 +223,11 @@ public class BookmarksUIComponent implements ProjectComponent {
 
     @Override
     public String getTooltipText() {
-      String nodePresentation = ModelAccess.instance().runReadAction(new Computable<String>() {
-        @Override
-        public String compute() {
-          return myNode.getPresentation();
-        }
-      });
-      return (myNumber != -1 ? "Bookmark " + myNumber + " (" : "Bookmark (") + nodePresentation + ")";
+      return myTooltip;
     }
 
     @Override
-    public SNode getNode() {
+    public SNodeReference getNodeReference() {
       return myNode;
     }
 
@@ -240,11 +238,6 @@ public class BookmarksUIComponent implements ProjectComponent {
     @Override
     public IconRendererType getType() {
       return TYPE;
-    }
-
-    @Override
-    public EditorCell getAnchorCell(EditorCell bigCell) {
-      return bigCell;
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,29 +15,58 @@
  */
 package jetbrains.mps.smodel.runtime;
 
-import jetbrains.mps.smodel.SModel;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public interface ReferenceConstraintsContext {
-  SModel getModel();
-
-  boolean isExists();
-
+  /**
+   *
+   * @return closest not-null ancestor of the reference
+   */
+  @NotNull
   SNode getContextNode();
 
-  String getContextRole();
+  /**
+   *
+   * @return containment link between context node and it's child, or null if context node is a node with the reference
+   */
+  @Nullable
+  SContainmentLink getContainmentLink();
 
+  /**
+   *
+   * @return concrete target concept of the reference
+   */
+  @NotNull
+  SAbstractConcept getLinkTargetConcept();
+  /**
+   *
+   * @return position in containment link
+   */
   int getPosition();
 
-  @Deprecated
-  SNode getEnclosingNode();
-
-  @Deprecated
+  /**
+   *
+   * @return node that contains the reference
+   */
+  @Nullable
   SNode getReferenceNode();
 
+  /**
+   *
+   * @return context model
+   * @deprecated  use {@code context.getContextNode().getModel()} instead
+   */
   @Deprecated
-  SNode getLinkTarget();
+  SModel getModel();
 
+  /**
+   * @deprecated equals to {@code getReferenceNode() != null ? getReferenceNode().getParent() : getContextNode()}
+   */
   @Deprecated
-  SNode getContainingLink();
+  SNode getEnclosingNode();
 }

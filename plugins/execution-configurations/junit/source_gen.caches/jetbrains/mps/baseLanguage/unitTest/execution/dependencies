@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependenciesRoot>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TerminationTestEvent">
+    <classNode dependClassName="java.util.Collections" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Immutable" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.ImmutableReturn" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TestCaseNodeKey">
+    <classNode dependClassName="java.lang.IllegalArgumentException" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestType" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Immutable" />
+    <classNode extendsClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TestCaseStringKey">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestType" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Immutable" />
+    <classNode extendsClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestRawKey" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TestEventMessage">
+    <classNode dependClassName="java.lang.Long" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.StringBuilder" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="java.util.regex.Matcher" />
+    <classNode dependClassName="java.util.regex.Pattern" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestRawEvent" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Immutable" />
+    <classNode dependClassName="org.junit.runner.Description" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TestKey">
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestType" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Immutable" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey">
+    <classNode dependClassName="java.lang.IllegalArgumentException" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestCaseNodeKey" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestType" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Immutable" />
+    <classNode extendsClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TestMethodStringKey">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestCaseStringKey" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestType" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Immutable" />
+    <classNode extendsClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestRawKey" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TestNodeEvent">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestCaseNodeKey" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestRawEvent" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestType" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Immutable" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey">
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestCaseNodeKey" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode extendsClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestKey" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKeyFactory">
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestCaseNodeKey" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TestRawEvent">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.Runtime" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.StringBuilder" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestCaseStringKey" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestMethodStringKey" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestRawKey" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Immutable" />
+    <classNode dependClassName="org.junit.runner.Description" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TestRawKey">
+    <classNode extendsClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestKey" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TestType" />
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.TextTestEvent">
+    <classNode dependClassName="com.intellij.openapi.util.Key" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.annotations.Immutable" />
+  </dependency>
+</dependenciesRoot>
+

@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.newTypesystem.operation;
 
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public class ProcessReplacementRuleOperation extends AddRemarkOperation {
   private SNode mySubType;
@@ -27,6 +27,7 @@ public class ProcessReplacementRuleOperation extends AddRemarkOperation {
     mySuperType = superType;
   }
 
+  @Override
   public String getPresentation() {
     return mySubType + " is subtype of " + mySuperType + " by replacement rule";
   }

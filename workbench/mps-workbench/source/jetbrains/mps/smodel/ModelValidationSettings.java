@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,59 +15,37 @@
  */
 package jetbrains.mps.smodel;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
-import com.intellij.openapi.options.ConfigurationException;
-import com.intellij.openapi.options.SearchableConfigurable;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.smodel.ModelValidationSettings.MyState;
 import jetbrains.mps.validation.IModelValidationSettings;
 import jetbrains.mps.validation.ValidationSettings;
-import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
-import java.awt.BorderLayout;
+import javax.swing.Icon;
 
 @State(
-  name = "ModelValidationSettings",
-  storages = {
-    @Storage(
-      id = "other",
-      file = "$APP_CONFIG$/mpsModelValidationSettings.xml"
-    )}
+    name = "ModelValidationSettings",
+    storages = @Storage("mpsModelValidationSettings.xml"),
+    reportStatistic = true
 )
-public class ModelValidationSettings implements SearchableConfigurable, PersistentStateComponent<MyState>, ApplicationComponent, IModelValidationSettings {
-
-  private MyPreferencesPage myPreferencesPage;
-
-  private boolean myDisableCheckOpenAPI = true;
+public class ModelValidationSettings implements PersistentStateComponent<MyState>, IModelValidationSettings, Disposable {
   private boolean myDisableTypeWasNotCalculated = true;
 
   public ModelValidationSettings(MPSCoreComponents coreComponents) {
+    ValidationSettings.getInstance().setModelValidationSettings(this);
+  }
+
+  void setDisableTypeWasNotCalculated(boolean disableTypeWasNotCalculated) {
+    myDisableTypeWasNotCalculated = disableTypeWasNotCalculated;
   }
 
   @Override
-  public JComponent createComponent() {
-    return getPreferencesPage();
-  }
-
-  private MyPreferencesPage getPreferencesPage() {
-    if (myPreferencesPage == null) {
-      myPreferencesPage = new MyPreferencesPage();
-    }
-    return myPreferencesPage;
-  }
-
-  public boolean isDisableCheckOpenAPI() {
-    return myDisableCheckOpenAPI;
-  }
-
   public boolean isDisableTypeWasNotCalculated() {
     return myDisableTypeWasNotCalculated;
   }
@@ -76,107 +54,29 @@ public class ModelValidationSettings implements SearchableConfigurable, Persiste
     return ApplicationManager.getApplication().getComponent(ModelValidationSettings.class);
   }
 
-  @NotNull
-  public String getId() {
-    return "mps.modelValidation.settings";
-  }
-
-  public Runnable enableSearch(String option) {
-    return null;
-  }
-
-  @Nls
-  public String getDisplayName() {
-    return "Model Validation";
-  }
-
   @Nullable
   public Icon getIcon() {
     return null;
   }
 
-  @Nullable
-  @NonNls
-  public String getHelpTopic() {
-    return null;
-  }
-
-  public void apply() throws ConfigurationException {
-    getPreferencesPage().commit();
-  }
-
-  public void reset() {
-    getPreferencesPage().reset();
-  }
-
   @Override
-  public boolean isModified() {
-    return getPreferencesPage().isModified();
-  }
-
-  public void disposeUIResources() {
-    myPreferencesPage = null;
-  }
-
-  @Override
-  public void initComponent() {
-    ValidationSettings.getInstance().setModelValidationSettings(this);
-  }
-
-  @Override
-  public void disposeComponent() {
+  public void dispose() {
     ValidationSettings.getInstance().setModelValidationSettings(null);
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Model Validation Settings";
-  }
-
-  public class MyPreferencesPage extends JPanel {
-    private JCheckBox myCheckBoxOpenAPI = new JCheckBox("Disable nonpublic API usage check");
-    private JCheckBox myCheckBoxTypeWasNotCalculated = new JCheckBox("Disable 'type was not calculated' check");
-
-    public MyPreferencesPage() {
-      super(new BorderLayout());
-      Box box = Box.createVerticalBox();
-      box.add(myCheckBoxOpenAPI);
-      box.add(myCheckBoxTypeWasNotCalculated);
-      add(box, BorderLayout.WEST);
-    }
-
-    public void commit() {
-      myDisableCheckOpenAPI = myCheckBoxOpenAPI.isSelected();
-      myDisableTypeWasNotCalculated = myCheckBoxTypeWasNotCalculated.isSelected();
-    }
-
-    public void reset() {
-      myCheckBoxOpenAPI.setSelected(myDisableCheckOpenAPI);
-      myCheckBoxTypeWasNotCalculated.setSelected(myDisableTypeWasNotCalculated);
-    }
-
-    public boolean isModified() {
-      return myDisableCheckOpenAPI != myCheckBoxOpenAPI.isSelected() || myDisableTypeWasNotCalculated != myCheckBoxTypeWasNotCalculated.isSelected();
-    }
   }
 
   @Override
   public MyState getState() {
     MyState result = new MyState();
-    result.myDisableCheckOpenAPI = myDisableCheckOpenAPI;
     result.myDisableTypeWasNotCalculated = myDisableTypeWasNotCalculated;
     return result;
   }
 
   @Override
-  public void loadState(MyState state) {
-    myDisableCheckOpenAPI = state.myDisableCheckOpenAPI;
+  public void loadState(@NotNull MyState state) {
     myDisableTypeWasNotCalculated = state.myDisableTypeWasNotCalculated;
   }
 
   public static class MyState {
-    public boolean myDisableCheckOpenAPI = true;
     public boolean myDisableTypeWasNotCalculated = true;
   }
 }

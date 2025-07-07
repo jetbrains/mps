@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.util;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -29,17 +31,22 @@ public class FlattenIterable<T> implements Iterable<T> {
   private Collection<Iterable<T>> myContent;
 
   public FlattenIterable() {
-    this(new ArrayList<Iterable<T>>());
+    myContent = new ArrayList<>();
   }
 
-  public FlattenIterable(Collection<Iterable<T>> content) {
-    myContent = content;
+  public FlattenIterable(int initialCapacity) {
+    myContent = new ArrayList<>(initialCapacity);
+  }
+
+  public FlattenIterable(Collection<? extends Iterable<T>> content) {
+    myContent = new ArrayList<>(content);
   }
 
   public void add(Iterable<T> e) {
     myContent.add(e);
   }
 
+  @NotNull
   @Override
   public Iterator<T> iterator() {
     return new Iterator<T>() {

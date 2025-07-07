@@ -16,19 +16,19 @@
 package jetbrains.mps.ide.editorTabs;
 
 import com.intellij.openapi.extensions.ExtensionPointName;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.Color;
 
 public interface TabColorProvider {
-  ExtensionPointName<TabColorProvider> EP_NAME = new ExtensionPointName<TabColorProvider>("com.intellij.mps.TabColorProvider");
+  ExtensionPointName<TabColorProvider> EP_NAME = new ExtensionPointName<>("com.intellij.mps.TabColorProvider");
 
   @Nullable
   Color getNodeColor(@NotNull SNode node);
 
   @Nullable
-  Color getAspectColor(Iterable<SNodePointer> aspectNodes);
+  Color getAspectColor(Iterable<SNodeReference> aspectNodes);
 }

@@ -15,21 +15,27 @@
  */
 package jetbrains.mps.generator;
 
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.SModelDescriptor;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.FileUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 
 /**
+ * FIXME revisit, perhaps can make use of to keep checkpoint models outside of a workspace (not to bother with identical files)
+ *
+ * FIXME There is extension point, what do I do with it?
+ *       new ExtensionPoint<GenerationCacheContainer>("jetbrains.mps.lang.core.GeneratorCache").getObjects();
+ *       GeneratorCache_extension, GeneratorCacheComponent
  * Evgeny Gryaznov, Sep 21, 2010
  */
 public interface GenerationCacheContainer {
 
-  ModelCacheContainer getCache(@NotNull SModelDescriptor descriptor, String hash, boolean create);
+  ModelCacheContainer getCache(@NotNull SModel descriptor, String hash, boolean create);
 
-  public interface ModelCacheContainer {
+  interface ModelCacheContainer {
 
     @NotNull
     InputStream openStream(String name) throws IOException;
@@ -42,9 +48,9 @@ public interface GenerationCacheContainer {
     void revert();
   }
 
-  public static class FileBasedGenerationCacheContainer implements GenerationCacheContainer {
+  class FileBasedGenerationCacheContainer implements GenerationCacheContainer {
 
-    private static final Logger LOG = Logger.getLogger(FileBasedGenerationCacheContainer.class);
+    private static final Logger LOG = LogManager.getLogger(FileBasedGenerationCacheContainer.class);
 
     @NotNull
     private File myGeneratorCaches;
@@ -54,8 +60,8 @@ public interface GenerationCacheContainer {
     }
 
     @Override
-    public ModelCacheContainer getCache(@NotNull SModelDescriptor descriptor, String hash, boolean create) {
-      String modelId = descriptor.getSModelReference().getSModelId().toString();
+    public ModelCacheContainer getCache(@NotNull SModel descriptor, String hash, boolean create) {
+      String modelId = descriptor.getReference().getModelId().toString();
       if(modelId == null || modelId.isEmpty()) {
         LOG.error("bad model id: " + modelId);
         return null;
@@ -92,9 +98,9 @@ public interface GenerationCacheContainer {
     }
   }
 
-  public static class FileBasedModelCacheContainer implements ModelCacheContainer {
+  class FileBasedModelCacheContainer implements ModelCacheContainer {
 
-    private static final Logger LOG = Logger.getLogger(FileBasedModelCacheContainer.class);
+    private static final Logger LOG = LogManager.getLogger(FileBasedModelCacheContainer.class);
 
     private final File myFolder;
     private final File myHashDir;

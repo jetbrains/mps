@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,32 +17,31 @@ package jetbrains.mps.library;
 
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.options.Configurable;
-import com.intellij.openapi.options.ConfigurationException;
-import jetbrains.mps.ide.library.LibraryManagerPreferences;
-import jetbrains.mps.library.BaseLibraryManager.MyState;
+import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.library.BaseLibraryManager.LibraryState;
+import jetbrains.mps.library.contributor.LibDescriptor;
 import jetbrains.mps.library.contributor.LibraryContributor;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
-import org.jetbrains.annotations.NonNls;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import javax.swing.Icon;
-import javax.swing.JComponent;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.regex.Matcher;
 
-public abstract class BaseLibraryManager implements BaseComponent, Configurable, PersistentStateComponent<MyState>, LibraryContributor {
-  protected final MPSModuleRepository myRepository;
+public abstract class BaseLibraryManager implements BaseComponent, PersistentStateComponent<LibraryState>, LibraryContributor {
+  private final LibraryInitializer myLibraryInitializer;
 
-  public BaseLibraryManager(MPSModuleRepository repo) {
-    myRepository = repo;
+  public BaseLibraryManager(MPSCoreComponents components) {
+    myLibraryInitializer = components.getLibraryInitializer();
   }
 
   @Override
@@ -52,40 +51,65 @@ public abstract class BaseLibraryManager implements BaseComponent, Configurable,
 
   @Override
   public void initComponent() {
-    LibraryInitializer.getInstance().addContributor(this);
+    myLibraryInitializer.load(Collections.singletonList(this));
+  }
+
+  @Override
+  public void disposeComponent() {
+    myLibraryInitializer.unload(Collections.singletonList(this));
+  }
+
+  /**
+   *
+   * @return instance that deals with library initialization
+   */
+  public LibraryInitializer getInitializer() {
+    return myLibraryInitializer;
   }
 
   //-------libraries
 
-  public final Set<LibDescriptor> getLibraries() {
-    Set<LibDescriptor> result = new HashSet<LibDescriptor>();
-    for (Library l : getUILibraries()) {
-      result.add(new LibDescriptor(l.getPath(), null));
+  @Override
+  public final Set<LibDescriptor> getPaths() {
+    Set<LibDescriptor> result = new HashSet<>();
+    for (Library lib : getUILibraries()) {
+      String path = lib.getPath();
+      if (path != null) {
+        try {
+          IFile file = FileSystem.getInstance().getFile(path);
+          result.add(new LibDescriptor(file));
+        } catch (PathFormatException e) {
+          // fixme Michael Muhin
+          Matcher matcher = MacroHelper.MACRO_PATTERN.matcher(e.getProblemPath());
+          if (matcher.find()) {
+            LogManager.getLogger(BaseLibraryManager.class).warn("Some paths might contain unknown macros, please define them in 'Path variables'");
+          } else {
+            throw e;
+          }
+        }
+      }
     }
     return result;
   }
 
-  public Library addLibrary(String name) {
-    Library library = new Library();
-    library.setName(name);
-    myState.getLibraries().put(library.getName(), library);
+  public Library addLibrary(@NotNull String name) {
+    Library library = new Library(name);
+    myLibraryState.getLibraries().put(library.getName(), library);
     return library;
   }
 
   public void remove(Library l) {
-    myState.getLibraries().remove(l.getName());
+    myLibraryState.getLibraries().remove(l.getName());
   }
 
   public Set<Library> getUILibraries() {
-    Set<Library> result = new HashSet<Library>();
-    result.addAll(myState.getLibraries().values());
-    return result;
+    return new HashSet<>(myLibraryState.getLibraries().values());
   }
 
   //-------macro stuff
 
-  private MyState removeMacros(MyState state) {
-    MyState result = new MyState();
+  private LibraryState removeMacros(LibraryState state) {
+    LibraryState result = new LibraryState();
     for (Entry<String, Library> entry : state.getLibraries().entrySet()) {
       result.getLibraries().put(entry.getKey(), removeMacros(entry.getValue()));
     }
@@ -105,87 +129,39 @@ public abstract class BaseLibraryManager implements BaseComponent, Configurable,
   }
 
   protected String addMacros(String path) {
-    return MacrosFactory.mpsHomeMacros().shrinkPath(path, (IFile) null);
+    return MacrosFactory.getGlobal().shrinkPath(path);
   }
 
   protected String removeMacros(String path) {
-    return MacrosFactory.mpsHomeMacros().expandPath(path, (IFile) null);
-  }
-
-  //-------configurable stuff
-
-  private LibraryManagerPreferences myPreferences;
-
-  private LibraryManagerPreferences getPreferences() {
-    if (myPreferences == null) {
-      myPreferences = new LibraryManagerPreferences(this);
-    }
-    return myPreferences;
-  }
-
-  @Nullable
-  public Icon getIcon() {
-    return null;
-  }
-
-  @Nullable
-  @NonNls
-  public String getHelpTopic() {
-    return null;
-  }
-
-  public JComponent createComponent() {
-    return getPreferences().getComponent();
-  }
-
-  public boolean isModified() {
-    return getPreferences().isModified();
-  }
-
-  public void apply() throws ConfigurationException {
-    getPreferences().commit();
-  }
-
-  public void reset() {
-    getPreferences().reset();
-  }
-
-  public void disposeUIResources() {
-    myPreferences = null;
+    return MacrosFactory.getGlobal().expandPath(path);
   }
 
   //-------component stuff
 
-  private MyState myState = new MyState();
+  private LibraryState myLibraryState = new LibraryState();
 
-  protected void loadLibraries() {
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      public void run() {
-        LibraryInitializer.getInstance().update(true);
-      }
-    });
-  }
-
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "Library Manager";
-  }
-
-  public MyState getState() {
-    MyState result = new MyState();
-    for (Entry<String, Library> entry : myState.getLibraries().entrySet()) {
+  @Override
+  public LibraryState getState() {
+    LibraryState result = new LibraryState();
+    for (Entry<String, Library> entry : myLibraryState.getLibraries().entrySet()) {
       result.getLibraries().put(entry.getKey(), addMacros(entry.getValue()));
     }
     return result;
   }
 
-  public void loadState(MyState state) {
-    myState = removeMacros(state);
+  @Override
+  public void loadState(@NotNull LibraryState state) {
+    myLibraryState = removeMacros(state);
+    myLibraryInitializer.update();
   }
 
-  public static class MyState {
-    private Map<String, Library> myLibraries = new HashMap<String, Library>();
+  @Override
+  public String toString() {
+    return "BaseLibraryManager";
+  }
+
+  static class LibraryState {
+    private Map<String, Library> myLibraries = new HashMap<>();
 
     public Map<String, Library> getLibraries() {
       return myLibraries;

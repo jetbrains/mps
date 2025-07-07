@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import com.intellij.ide.FileIconProvider;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.ide.projectPane.Icons;
+import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.workbench.languagesFs.MPSLanguageVirtualFile;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -29,22 +29,26 @@ import javax.swing.Icon;
 
 public class MPSIconProvider implements FileIconProvider, ApplicationComponent {
 
+  @Override
   @NonNls
   @NotNull
   public String getComponentName() {
     return "MPS Language Icon Provider";
   }
 
+  @Override
   public void initComponent() {
   }
 
+  @Override
   public void disposeComponent() {
   }
 
+  @Override
   @Nullable
-  public Icon getIcon(final VirtualFile file, int flags, final Project project) {
+  public Icon getIcon(@NotNull final VirtualFile file, int flags, final Project project) {
     if (file instanceof MPSLanguageVirtualFile) {
-      return Icons.PROJECT_LANGUAGE_ICON;
+      return IdeIcons.LANGUAGE_ICON;
     }
     return null;
   }

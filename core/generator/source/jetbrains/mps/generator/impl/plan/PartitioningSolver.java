@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,169 +15,161 @@
  */
 package jetbrains.mps.generator.impl.plan;
 
-import jetbrains.mps.generator.impl.plan.GenerationPartitioner.CoherentSetData;
-import jetbrains.mps.generator.impl.plan.GenerationPartitioner.PriorityData;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
-import jetbrains.mps.generator.runtime.TemplateMappingPriorityRule;
+import jetbrains.mps.project.structure.modules.mappingpriorities.MappingPriorityRule;
+import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.util.CollectionUtil;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 /**
- * evgeny, 3/10/11
+ * @author evgeny, 3/10/11
+ * @author Artem Tikhomirov
  */
 public class PartitioningSolver {
 
-  /*
-   *   Dependencies graph. For each mapping contains a set of mappings which should be applied together or after
-   *   it (PriorityData.isStrict means only after).
-   */
-  private final Map<TemplateMappingConfiguration, Map<TemplateMappingConfiguration, PriorityData>> myPriorityMap;
-
+  private final PriorityGraph myPriorityGraph;
   /*
    *   Each entry defines a set of mappings, which should be applied together.
    */
-  private final List<CoherentSetData> myCoherentMappings;
+  private final List<Group> mySameStepGroups = new ArrayList<>();
+  private final PriorityConflicts myConflicts;
+  private final Set<TemplateMappingConfiguration> myConfigurations = new LinkedHashSet<>();
 
-  /*
-   *   result: Contains rules which caused conflicts.
-   */
-  private final Set<TemplateMappingPriorityRule> myConflictingRules;
-
-  public PartitioningSolver(Map<TemplateMappingConfiguration, Map<TemplateMappingConfiguration, PriorityData>> priorityMap, List<CoherentSetData> coherentMappings, Set<TemplateMappingPriorityRule> conflictingRules) {
-    myPriorityMap = priorityMap;
-    myCoherentMappings = coherentMappings;
-    myConflictingRules = conflictingRules;
+  public PartitioningSolver(@NotNull PriorityConflicts priorityConflicts) {
+    myConflicts = priorityConflicts;
+    myPriorityGraph = new PriorityGraph();
   }
 
-  List<List<TemplateMappingConfiguration>> solve() {
-    // early error detection
-    for (TemplateMappingConfiguration mapping : myPriorityMap.keySet()) {
-      checkSelfLocking(mapping);
-    }
-
-    // process coherent mappings
-    PriorityMapUtil.joinIntersectingCoherentMappings(myCoherentMappings);
-    PriorityMapUtil.makeLockedByAllCoherentIfLockedByOne(myCoherentMappings, myPriorityMap);
-    PriorityMapUtil.makeLocksEqualsForCoherentMappings(myCoherentMappings, myPriorityMap, myConflictingRules);
-
-    // remove 'weak' priorities
-    boolean need_more_passes = true;
-    while (need_more_passes) {
-      need_more_passes = false;
-      iterate_all_mappings:
-      for (TemplateMappingConfiguration lockedMapping : myPriorityMap.keySet()) {
-        while (true) {
-          List<TemplateMappingConfiguration> weakLockMappings = PriorityMapUtil.getWeakLockMappingsForLockedMapping(lockedMapping, myPriorityMap);
-          if (weakLockMappings.isEmpty()) break;
-          for (TemplateMappingConfiguration weakLockMapping : weakLockMappings) {
-            // remove 'weak' dependency but don't allow locked-lockedMapping to go before weak-lock lockedMapping
-            PriorityMapUtil.replaceWeakLock(lockedMapping, weakLockMapping, myPriorityMap);
-            checkSelfLocking(lockedMapping);
-//          // if locked-mapping is strict lock for other mappings,
-//          // then weak-lock-mapping should be strict lock for them as well.
-//          List<TemplateMappingConfiguration> lockedMappings_1 = PriorityMapUtil.getStrictLockedMappingsForLockMapping(lockedMapping, myPriorityMap);
-//          for (TemplateMappingConfiguration lockedMapping_1 : lockedMappings_1) {
-//            Map<TemplateMappingConfiguration, PriorityData> locks_1 = myPriorityMap.get(lockedMapping_1);
-//            PriorityData priorityDataToApply = locks_1.get(lockedMapping);
-//            PriorityMapUtil.addLock(lockedMapping_1, weakLockMapping, priorityDataToApply, myPriorityMap);
-//            checkSelfLocking(lockedMapping_1);
-//          }
-
-            // if locked-lockedMapping is a lock for other mappings,
-            // then weak-lock-lockedMapping should be a lock for them as well.
-            List<TemplateMappingConfiguration> lockedMappings_1 = PriorityMapUtil.getLockedMappingsForLockMapping(lockedMapping, myPriorityMap);
-            for (TemplateMappingConfiguration lockedMapping_1 : lockedMappings_1) {
-              Map<TemplateMappingConfiguration, PriorityData> locks_1 = myPriorityMap.get(lockedMapping_1);
-              PriorityData priorityDataToApply = locks_1.get(lockedMapping);
-              boolean newLockAdded = PriorityMapUtil.addLock(lockedMapping_1, weakLockMapping, priorityDataToApply, myPriorityMap);
-              checkSelfLocking(lockedMapping_1);
-              if (newLockAdded) {
-                // if new lock is a weak lock, then better start all over again (weak locks cleaning)
-                PriorityData priorityData = myPriorityMap.get(lockedMapping_1).get(weakLockMapping);
-                // checkSelfLocking may removed it, check if not null
-                if (priorityData != null && priorityData.isWeak()) {
-                  need_more_passes = true;
-                  break iterate_all_mappings;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    // paranoid check
-    for (Map<TemplateMappingConfiguration, PriorityData> locks : myPriorityMap.values()) {
-      for (PriorityData priorityData : locks.values()) {
-        if (!priorityData.isStrict()) {
-          throw new RuntimeException("Unexpected weak priority");
-        }
-      }
-    }
-
-    // create mappings partitioning
-    List<List<TemplateMappingConfiguration>> mappingSets = createMappingSets();
-    // if the priority map is still not empty, then there are some conflicting rules
-    for (Map<TemplateMappingConfiguration, PriorityData> grtPriMappings : myPriorityMap.values()) {
-      for (PriorityData priorityData : grtPriMappings.values()) {
-        myConflictingRules.addAll(priorityData.myCauseRules);
-      }
-    }
-    return mappingSets;
+  public void prepare(Collection<TemplateMappingConfiguration> mc) {
+    myConfigurations.addAll(mc);
   }
 
-  private void checkSelfLocking(TemplateMappingConfiguration mapping) {
-    Map<TemplateMappingConfiguration, PriorityData> locks = myPriorityMap.get(mapping);
-    PriorityData priorityData = locks.get(mapping);
-    if (priorityData != null) {
-      if (priorityData.isStrict()) {
-        // error
-        myConflictingRules.addAll(priorityData.myCauseRules);
+  public Set<TemplateMappingConfiguration> getKnownMapConfigs() {
+    return Collections.unmodifiableSet(myConfigurations);
+  }
+
+  public void registerCoherent(Collection<TemplateMappingConfiguration> coherentMappings, MappingPriorityRule rule) {
+    ArrayList<Group> groups = new ArrayList<>(coherentMappings.size());
+    for (TemplateMappingConfiguration m : coherentMappings) {
+      groups.add(new Group(m));
+    }
+    boolean withConflicts = false;
+    for (int i = 1, x = groups.size(); i < x; i++) {
+      final Group prev = groups.get(i - 1);
+      final Group curr = groups.get(i);
+      if (prev.isTopPriority() != curr.isTopPriority()) {
+        myConflicts.registerCoherentPriorityMix(prev, curr, rule);
+        withConflicts = true;
       }
-      locks.remove(mapping);
+    }
+    if (withConflicts) {
+      return; // drop set of conflicting coherent rules
+    }
+    mySameStepGroups.add(new Group(groups));
+  }
+
+  // TMC from hiPrio are executed first, then TMC from loPrio are executed
+  public void establishDependency(Collection<TemplateMappingConfiguration> hiPrio, Collection<TemplateMappingConfiguration> loPrio, MappingPriorityRule rule) {
+    // map: lo-pri mapping -> {hi-pri mapping, .... , hi-pri mapping }
+    loPrio = CollectionUtil.subtract(loPrio, hiPrio);
+
+    for (TemplateMappingConfiguration lesserPriMapping : loPrio) {
+      myPriorityGraph.addEdge(lesserPriMapping, hiPrio, rule);
     }
   }
 
-  private List<List<TemplateMappingConfiguration>> createMappingSets() {
-    // reversed order
+  List<GenerationPhase> solve() {
+    myPriorityGraph.finalizeEdges(myConfigurations);
+
+    myPriorityGraph.checkSelfLocking(myConflicts);
+    myPriorityGraph.checkLowPrioLocksTopPrio(myConflicts);
+
+    final Collection<Group> cycles = myPriorityGraph.removeWeakCycles();
+    mySameStepGroups.addAll(cycles);
+
+    List<Group> coherentMappings = joinSameStepMappings();
+    myPriorityGraph.updateWithCoherent(coherentMappings, myConflicts);
+
+    myPriorityGraph.replaceWeakEdgesWithStrict();
+
     boolean topPriorityGroup = false;
-    List<List<TemplateMappingConfiguration>> mappingSets = new ArrayList<List<TemplateMappingConfiguration>>();
-    while (!myPriorityMap.isEmpty()) {
-      List<TemplateMappingConfiguration> mappingSet = createMappingSet(topPriorityGroup);
-      if (mappingSet.isEmpty()) {
-        if (!topPriorityGroup) {
-          topPriorityGroup = true;
-          continue;
-        }
-        // error!!!
+    ArrayDeque<Collection<Group>> stack = new ArrayDeque<>();
+    while (!myPriorityGraph.isEmpty()) {
+      Collection<Group> step = myPriorityGraph.getGroupsNotInDependency();
+      if (step.isEmpty()) {
+        // non-empty graph but no independent groups
+        myPriorityGraph.reportEdgesLeft(myConflicts);
         break;
       }
-      mappingSets.add(mappingSet);
-    }
-    Collections.reverse(mappingSets);
-    // sort mappings within each set: generation must be deterministic
-    for (List<TemplateMappingConfiguration> mappingSet : mappingSets) {
-      Collections.sort(mappingSet, new Comparator<TemplateMappingConfiguration>() {
-        public int compare(TemplateMappingConfiguration o1, TemplateMappingConfiguration o2) {
-          return o1.getMappingNode().getNodeId().compareTo(o2.getMappingNode().getNodeId());
+      for (Iterator<Group> it = step.iterator(); it.hasNext(); ) {
+        if (it.next().isTopPriority() != topPriorityGroup) {
+          it.remove();
         }
-      });
-    }
-    return mappingSets;
-  }
-
-  private List<TemplateMappingConfiguration> createMappingSet(boolean topPriorityGroup) {
-    // add all not-locking-mappinds to set
-    List<TemplateMappingConfiguration> mappingSet = new ArrayList<TemplateMappingConfiguration>();
-    for (TemplateMappingConfiguration mapping : myPriorityMap.keySet()) {
-      if (mapping.isTopPriority() != topPriorityGroup) continue;
-      if (!PriorityMapUtil.isLockingMapping(mapping, myPriorityMap)) {
-        mappingSet.add(mapping);
+      }
+      if (step.isEmpty()) {
+        if (topPriorityGroup) {
+          myPriorityGraph.reportEdgesLeft(myConflicts);
+          break;
+        }
+        topPriorityGroup = true;
+      } else {
+        stack.push(step);
+        myPriorityGraph.dropEdgesOf(step);
       }
     }
-    for (TemplateMappingConfiguration mapping : mappingSet) {
-      myPriorityMap.remove(mapping);
+    ArrayList<GenerationPhase> rv = new ArrayList<>(stack.size());
+    while (!stack.isEmpty()) {
+      rv.add(new GenerationPhase(stack.pop()));
     }
-    return mappingSet;
+    return rv;
+  }
+
+  /**
+   * Process groups of 'run together' to join intersecting into a single group
+   */
+  private List<Group> joinSameStepMappings() {
+    ArrayList<Group> rv = new ArrayList<>(mySameStepGroups.size());
+    ArrayList<Group> toMerge = new ArrayList<>();
+    LinkedList<Group> queue = new LinkedList<>(mySameStepGroups);
+    while (!queue.isEmpty()) {
+      Group head = queue.removeFirst();
+      for (Iterator<Group> it = queue.iterator(); it.hasNext(); ) {
+        Group g = it.next();
+        if (head.hasCommonMappings(g)) {
+          // the way mySameStepGroups are checked for same topPri setting at construction ensures single group is consistent
+          // and hence two intersecting groups can't fail this
+          assert head.isTopPriority() == g.isTopPriority();
+          toMerge.add(g);
+          it.remove();
+        }
+      }
+      if (toMerge.isEmpty()) {
+        // no groups with common mappings, add current group as is
+        rv.add(head);
+      } else {
+        // get a new group that combines all mappings and rules of the same step
+        toMerge.add(head);
+        // there are chances there are more groups, that didn't intersect with head, but
+        // intersect with one of merged, and we need to check for these again
+        queue.add(new Group(toMerge));
+        toMerge.clear();
+      }
+    }
+    return rv;
+  }
+
+  static void sort(List<TemplateMappingConfiguration> mappingSet) {
+    Collections.sort(mappingSet, (o1, o2) -> SNodePointer.serialize(o1.getMappingNode()).compareTo((SNodePointer.serialize(o2.getMappingNode()))));
   }
 }

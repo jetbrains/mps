@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,89 +15,61 @@
  */
 package jetbrains.mps.generator.impl;
 
-import jetbrains.mps.generator.*;
-import jetbrains.mps.generator.generationTypes.IGenerationHandler;
+import jetbrains.mps.generator.GenerationCanceledException;
+import jetbrains.mps.generator.GenerationOptions;
+import jetbrains.mps.generator.GenerationStatus;
+import jetbrains.mps.generator.GenerationTrace;
+import jetbrains.mps.generator.GeneratorTask;
+import jetbrains.mps.generator.GeneratorTaskListener;
+import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.generator.impl.IGenerationTaskPool.ITaskPoolProvider;
 import jetbrains.mps.generator.impl.IGenerationTaskPool.SimpleGenerationTaskPool;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.progress.ProgressMonitor;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.ModuleContext;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.typesystem.inference.TypeChecker;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.Pair;
+import jetbrains.mps.smodel.ModelAccessBase;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typechecking.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession.Handle;
 import jetbrains.mps.util.performance.IPerformanceTracer;
 import jetbrains.mps.util.performance.IPerformanceTracer.NullPerformanceTracer;
 import jetbrains.mps.util.performance.PerformanceTracer;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.ModelAccess;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import org.jetbrains.mps.openapi.util.SubProgressKind;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GenerationController implements ITaskPoolProvider {
-  protected static Logger LOG = Logger.getLogger(GenerationController.class);
-
-  private final TransientModelsProvider myTransientModelsProvider;
-  private List<SModelDescriptor> myInputModels;
-  private final IOperationContext myOperationContext;
-  protected final IGenerationHandler myGenerationHandler;
-  protected GeneratorLoggerAdapter myLogger;
-  private GenerationOptions myOptions;
-  private final ProgressMonitor myCancellationMonitor;
+  private final List<? extends GeneratorTask> myTasks;
+  private final GenControllerContext myContext;
+  private final GeneratorTaskListener<GeneratorTask> myGenerationHandler;
+  private final GeneratorLoggerAdapter myLogger;
+  private final GenerationOptions myOptions;
   private IGenerationTaskPool myParallelTaskPool;
 
-  protected List<Pair<IModule, List<SModelDescriptor>>> myModuleSequence = new ArrayList<Pair<IModule, List<SModelDescriptor>>>();
-
-  public GenerationController(List<SModelDescriptor> _inputModels, TransientModelsProvider transientModelsProvider, GenerationOptions options,
-                              IGenerationHandler generationHandler, GeneratorLoggerAdapter generatorLogger, IOperationContext operationContext, ProgressMonitor cancellationMonitor) {
-    myTransientModelsProvider = transientModelsProvider;
-    myInputModels = _inputModels;
-    myOperationContext = operationContext;
+  public GenerationController(List<? extends GeneratorTask> tasks, @NotNull GenControllerContext context,
+                GeneratorTaskListener<GeneratorTask> generationHandler, GeneratorLoggerAdapter generatorLogger) {
+    myTasks = tasks;
+    myContext = context;
     myGenerationHandler = generationHandler;
     myLogger = generatorLogger;
-    myOptions = options;
-    myCancellationMonitor = cancellationMonitor;
+    myOptions = context.getOptions();
   }
 
-  private void initMaps() {
-    IModule current = null;
-    ArrayList<SModelDescriptor> currentList = null;
-    for (SModelDescriptor inputModel : myInputModels) {
-      IModule newModule = inputModel.getModule();
-      if (newModule == null) {
-        myLogger.warning("Model " + inputModel.getLongName() + " won't be generated");
-        continue;
-      }
-
-      if (current == null || newModule != current) {
-        current = newModule;
-        currentList = new ArrayList<SModelDescriptor>();
-        myModuleSequence.add(new Pair<IModule, List<SModelDescriptor>>(current, currentList));
-      }
-      currentList.add(inputModel);
-    }
-  }
-
+  /**
+   * @return <code>true</code> to indicate generation success (what does constitute a success is, alas, undefined)
+   */
   public boolean generate(ProgressMonitor monitor) {
-    myLogger.clear();
     long startJobTime = System.currentTimeMillis();
 
-    myGenerationHandler.startGeneration(myLogger);
-    initMaps();
     try {
       boolean generationOK = true;
-      final int compileWork = myGenerationHandler.estimateCompilationMillis();
-      int totalWork = compileWork;
-      for (Pair<IModule, List<SModelDescriptor>> moduleAndDescriptors : myModuleSequence) {
-        totalWork += moduleAndDescriptors.o2 != null ? moduleAndDescriptors.o2.size() : 0;
-      }
-      monitor.start("", totalWork);
+      monitor.start("", myTasks.size());
       try {
-        for (Pair<IModule, List<SModelDescriptor>> moduleAndDescriptors : myModuleSequence) {
-          final List<SModelDescriptor> mlist = moduleAndDescriptors.o2;
-          boolean result = generateModelsInModule(moduleAndDescriptors.o1, mlist, monitor.subTask(mlist != null ? mlist.size() : 0));
-          monitor.advance(0);
+        for (GeneratorTask t : myTasks) {
+          checkMonitorCanceled(monitor);
+          boolean result = generateModel(t, monitor.subTask(1, SubProgressKind.REPLACING));
           generationOK = generationOK && result;
         }
       } finally {
@@ -110,118 +82,77 @@ public class GenerationController implements ITaskPoolProvider {
         if (myLogger.needsInfo()) {
           myLogger.info("generation completed successfully in " + (System.currentTimeMillis() - startJobTime) + " ms");
         }
-        // compile
-        generationOK = myGenerationHandler.compile(myOperationContext, myModuleSequence, true, monitor.subTask(compileWork));
         monitor.advance(0);
       } else {
         myLogger.error("generation completed with errors in " + (System.currentTimeMillis() - startJobTime) + " ms");
       }
-
       return generationOK;
     } catch (GenerationCanceledException gce) {
       myLogger.warning("generation canceled");
       return false;
-    } catch (GenerationFailureException e) {
-      if (e.getMessage() != null && e.getCause() == null) {
-        myLogger.error(e.getMessage());
-      }
-      return false;
     } catch (Exception t) {
       myLogger.handleException(t);
       return false;
+    } catch (AssertionError e) {
+      myLogger.handleException(e);
+      throw e;
     } finally {
       monitor.done();
-      myGenerationHandler.finishGeneration();
     }
   }
 
-  protected boolean generateModelsInModule(IModule module, List<SModelDescriptor> inputModels, ProgressMonitor monitor) throws Exception {
-    boolean currentGenerationOK = true;
-    monitor.start("Generating " + module.getModuleFqName(), inputModels.size());
-
-    // TODO fix context
-    IOperationContext invocationContext = new ModuleContext(module, myOperationContext.getProject());
-    myGenerationHandler.startModule(module, inputModels, myOperationContext);
-
-    //++ generation
-    String wasLoggingThreshold = null;
-    try {
-      if (myOptions.isShowErrorsOnly()) {
-        wasLoggingThreshold = Logger.setThreshold("ERROR");
-      }
-
-      for (SModelDescriptor inputModel : inputModels) {
-        currentGenerationOK = currentGenerationOK && generateModel(inputModel, module, invocationContext, monitor.subTask(1));
-        monitor.advance(0);
-      }
-    } finally {
-      if (wasLoggingThreshold != null) {
-        Logger.setThreshold(wasLoggingThreshold);
-      }
+  private boolean generateModel(final GeneratorTask task, final ProgressMonitor monitor) throws GenerationCanceledException {
+    final SModel inputModel = task.getModel();
+    SModule module = inputModel.getModule();
+    if (module == null) {
+      myLogger.warning(String.format("Model %s won't be generated as its module is unknown", inputModel.getName()));
+      monitor.done();
+      return false;
     }
-
-    checkMonitorCanceled(monitor);
-    myLogger.info("");
-
-    monitor.done();
-    return currentGenerationOK;
-  }
-
-  private boolean generateModel(final SModelDescriptor inputModel, final IModule module, final IOperationContext invocationContext, final ProgressMonitor monitor) throws GenerationCanceledException {
-    boolean currentGenerationOK = false;
 
     IPerformanceTracer ttrace = myOptions.getTracingMode() != GenerationOptions.TRACE_OFF
-      ? new PerformanceTracer("model " + NameUtil.shortNameFromLongName(inputModel.getLongName()))
+      ? new PerformanceTracer("model " + inputModel.getName().getSimpleName())
       : new NullPerformanceTracer();
 
     boolean traceTypes = myOptions.getTracingMode() == GenerationOptions.TRACE_TYPES;
-    TypeChecker.getInstance().generationStarted(traceTypes ? ttrace : null);
+    Handle typecheckingSessionToken = TypecheckingFacade.getFromContext().requestNewSession(TypecheckingSession.Flags.generator());
 
-    final GenerationSession generationSession = new GenerationSession(inputModel, invocationContext, this,
-      myCancellationMonitor, myLogger, myTransientModelsProvider.getModule(module), ttrace, myOptions);
+    final TransientModelsModule transientModule = myContext.getTransientModelProvider().getModule(task);
+    final GenerationTrace genTrace = myOptions.isSaveTransientModels() ? new GenTraceImpl(transientModule) : new GenerationTrace.NoOp();
 
-    monitor.start(inputModel.getLongName(), 10);
+    final GenerationSession generationSession = new GenerationSession(inputModel, myContext, this, myLogger, transientModule, ttrace, genTrace);
+
+    monitor.start(inputModel.getName().getValue(), 10);
     try {
-      Logger.addLoggingHandler(generationSession.getLoggingHandler());
-      if (!myGenerationHandler.canHandle(inputModel)) {
-        LOG.error("Can't generate " + inputModel.getSModelReference().getSModelFqName());
-        return true;
-      }
-
+      generationSession.getLoggingHandler().register();
       if (myLogger.needsInfo()) {
         myLogger.info("");
-        myLogger.info("[model " + inputModel.getSModelReference().getSModelFqName() +
-          (myOptions.isRebuildAll()
-            ? ", rebuilding"
-            : "") +
-          (myOptions.isGenerateInParallel()
-            ? ", using " + myOptions.getNumberOfThreads() + " threads]"
-            : "]"));
+        myLogger.info("[model " + inputModel.getName() +
+          (myOptions.isGenerateInParallel() ? ", using " + myOptions.getNumberOfThreads() + " threads]"  : "]"));
       }
 
 
-      try {
-        currentGenerationOK = GeneratorUtil.runReadInWrite(new GenerationComputable<Boolean>() {
-          @Override
-          public Boolean compute() throws GenerationCanceledException {
-            GenerationStatus status = generationSession.generateModel(monitor.subTask(9));
-            monitor.advance(0);
-            status.setOriginalInputModel(inputModel);
-            boolean currentGenerationOK = status.isOk();
+      myGenerationHandler.start(task);
+      GenerationStatus status = generationSession.generateModel(monitor.subTask(9));
+      monitor.advance(0);
+      boolean currentGenerationOK = status.isOk();
 
-            checkMonitorCanceled(monitor);
+      checkMonitorCanceled(monitor);
 
-            currentGenerationOK = currentGenerationOK && myGenerationHandler.handleOutput(module, inputModel, status, invocationContext, monitor.subTask(1));
-            monitor.advance(0);
-
-            return currentGenerationOK;
-          }
-        });
-      } catch (GenerationFailureException e) {
-        // never happens
+      if (myOptions.isSaveTransientModels()) {
+        transientModule.publishTrace(inputModel.getReference(), genTrace);
       }
+
+      myGenerationHandler.done(task, status);
+      monitor.advance(1);
+
+      String report = ttrace.report();
+      if (report != null) {
+        myLogger.trace(report);
+      }
+      return currentGenerationOK;
     } finally {
-      Logger.removeLoggingHandler(generationSession.getLoggingHandler());
+      generationSession.getLoggingHandler().unregister();
       generationSession.discardTransients();
 
       monitor.done();
@@ -229,23 +160,20 @@ public class GenerationController implements ITaskPoolProvider {
       //We need this in order to clear subtyping cache which might occupy too much memory
       //if we generate a lot of models. For example, Charisma generation wasn't possible
       //with -Xmx1200 before this change
-      TypeChecker.getInstance().generationFinished();
+      typecheckingSessionToken.release();
     }
-
-    String report = ttrace.report();
-    if (report != null) {
-      myLogger.trace(report);
-    }
-    return currentGenerationOK;
   }
 
+  @Override
   public IGenerationTaskPool getTaskPool() {
-    if (myParallelTaskPool != null || !myOptions.isGenerateInParallel()) {
-      return myParallelTaskPool;
+    // not too much sense to abstract away ITaskPoolProvider if we have distinct ParallelTemplateGenerator.
+    // either shall merge PTG with TG and use ITaskPoolProvider, or drop SimpleGenerationTaskPool which is dead code otherwise.
+    if (myParallelTaskPool == null) {
+      final ModelAccess repoModelAccess = myContext.getRepository().getModelAccess();
+      myParallelTaskPool = myOptions.isGenerateInParallel()
+        ? new GenerationTaskPool(myOptions.getNumberOfThreads(), ((ModelAccessBase) repoModelAccess).shareRead())
+        : new SimpleGenerationTaskPool(repoModelAccess);
     }
-    myParallelTaskPool = GenerationOptions.USE_PARALLEL_POOL
-      ? new GenerationTaskPool(myCancellationMonitor, myOptions.getNumberOfThreads())
-      : new SimpleGenerationTaskPool();
     return myParallelTaskPool;
   }
 

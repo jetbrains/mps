@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.util.IterableUtil;
 
 import java.util.Iterator;
@@ -62,26 +62,19 @@ abstract class CellNavigator {
   }
 
   private EditorCell findNextCellWithCondition(
-    EditorCell_Collection parent,
-    EditorCell current,
-    boolean backwards) {
+      EditorCell_Collection parent,
+      EditorCell current,
+      boolean backwards) {
 
-    boolean currentMet = current == null;
-    Iterator<EditorCell> iterator = backwards ? parent.reverseCellIterator() : parent.iterator();
+    Iterator<EditorCell> iterator = parent.iterator(current, !backwards);
     for (EditorCell cell : IterableUtil.asIterable(iterator)) {
-      if (currentMet) {
-        if (isSuitableCell(cell)) {
-          return cell;
-        }
-        if (cell instanceof EditorCell_Collection) {
-          EditorCell cellFromCollection = findNextCellWithCondition((EditorCell_Collection) cell, null, backwards);
-          if (cellFromCollection != null) {
-            return cellFromCollection;
-          }
-        }
-      } else {
-        if (cell == current) {
-          currentMet = true;
+      if (isSuitableCell(cell)) {
+        return cell;
+      }
+      if (cell instanceof EditorCell_Collection) {
+        EditorCell cellFromCollection = findNextCellWithCondition((EditorCell_Collection) cell, null, backwards);
+        if (cellFromCollection != null) {
+          return cellFromCollection;
         }
       }
     }

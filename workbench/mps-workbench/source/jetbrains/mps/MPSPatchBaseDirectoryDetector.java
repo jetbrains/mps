@@ -21,11 +21,13 @@ import com.intellij.openapi.vcs.changes.patch.PatchBaseDirectoryDetector;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 
 import java.util.Collection;
 
 //copied from PsiPatchBaseDirectoryDetector, except that allScope is used instead of projectScope
+@ScheduledForRemoval(inVersion = "2021.1")
+@Deprecated(since = "2020.3", forRemoval = true)
 public class MPSPatchBaseDirectoryDetector extends PatchBaseDirectoryDetector {
   private final Project myProject;
 
@@ -33,30 +35,7 @@ public class MPSPatchBaseDirectoryDetector extends PatchBaseDirectoryDetector {
     myProject = project;
   }
 
-  @Nullable
-  public Result detectBaseDirectory(final String patchFileName) {
-    String[] nameComponents = patchFileName.split("/");
-    String patchName = nameComponents[nameComponents.length - 1];
-    if (patchName.length() == 0) {
-      return null;
-    }
-    // MPS Patch Start
-    final Collection<VirtualFile> vfiles = FilenameIndex.getVirtualFilesByName(myProject, patchName, GlobalSearchScope.allScope(myProject));
-    // MPS Patch End
-    if (vfiles.size() == 1) {
-      VirtualFile parent = vfiles.iterator().next().getParent();
-      for (int i = nameComponents.length - 2; i >= 0; i--) {
-        if (!parent.getName().equals(nameComponents[i]) || parent == myProject.getBaseDir()) {
-          return new Result(parent.getPresentableUrl(), i + 1);
-        }
-        parent = parent.getParent();
-      }
-      if (parent == null) return null;
-      return new Result(parent.getPresentableUrl(), 0);
-    }
-    return null;
-  }
-
+  @Override
   public Collection<VirtualFile> findFiles(final String fileName) {
     // MPS Patch Start
     return FilenameIndex.getVirtualFilesByName(myProject, fileName, GlobalSearchScope.allScope(myProject));

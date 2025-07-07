@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,172 +15,223 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.project.IModule;
-import jetbrains.mps.project.Project;
-import jetbrains.mps.project.StandaloneMPSContext;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.constraints.ModelConstraintsUtil;
+import jetbrains.mps.smodel.constraints.ModelConstraints;
+import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Immutable;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
+ * FIXME Either stop extending {@code SReferenceBase} (there's no use of its mature/young myImmatureTargetNode and myTargetModelReference)
+ *       or move respective fields/code into {@code StaticReference} subclass (then, j.m.smodel.SReference shall cease as it
+ *       (a) confusing with openapi counterpart; (b) duplicates {@code SReferenceBase}
+ * JFI, there's code that filters node references based on {@code SReferenceBase} e.g. to setTargetSModelReference, shall decide if it's correct with respect
+ *      to the aforementioned change in superclass
+ *
  * Igor Alshannikov
  * Dec 10, 2007
  */
-public class DynamicReference extends SReferenceBase {
-  private static final Logger LOG = Logger.getLogger(DynamicReference.class);
+public final class DynamicReference extends SReferenceBase {
+  private static final Logger LOG = Logger.wrap(LogManager.getLogger(DynamicReference.class));
 
   private DynamicReferenceOrigin myOrigin;
 
-  /*
-   * create 'young' reference
-   */
-  public DynamicReference(@NotNull String role, @NotNull SNode sourceNode, @NotNull SNode immatureTargetNode) {
-    super(role, sourceNode, null, immatureTargetNode);
-  }
+  // this is for tracking loops in dynref resolving, typically arising from interaction
+  // between type system rules and scopes
+  private static final ThreadLocal<Set<DynamicReference>> currentlyResolved = new ThreadLocal<Set<DynamicReference>>() {
+    @Override
+    protected Set<DynamicReference> initialValue() {
+      return new HashSet<>();
+    }
+  };
+  // we also keep track of references for which we call reportErrorWithOrigin
+  // we need this because it will call source node's getPresentation() which in turn might resolve us again
+  // we don't want to report loop in this case, rather just return null
+  private static final ThreadLocal<Set<DynamicReference>> currentlySourceNodeLogged = new ThreadLocal<Set<DynamicReference>>() {
+    @Override
+    protected Set<DynamicReference> initialValue() {
+      return new HashSet<>();
+    }
+  };
 
-  /*
+  private boolean myHasBeenResolve;
+  private SNode myCachedTargetNode;
+
+  /**
    * create 'mature' reference
+   * Left for compatibility with legacy persistence code
+   * @deprecated use {@link SNodeLegacy#setReference(String, SModelReference, String)} instead.
+   *             There are no uses in MPS code, the cons will be removed in the future versions
    */
+  @Deprecated
+  @ToRemove(version = 2020.2)
   public DynamicReference(@NotNull String role, @NotNull SNode sourceNode, @Nullable SModelReference targetModelReference, String resolveInfo) {
-    super(role, sourceNode, null, null);
-    if (targetModelReference != null && !resolveInfo.startsWith(targetModelReference.getLongName()) && isTargetClassifier(sourceNode, role)) {
-      // hack for classifiers resolving with specified targetModelReference. For now (18/04/2012) targetModelReference used only for Classifiers (in stubs and [model]node construction).
-      setResolveInfo(targetModelReference.getLongName() + "." + resolveInfo);
-    } else {
-      setResolveInfo(resolveInfo);
-    }
+    this(((ConceptMetaInfoConverter) sourceNode.getConcept()).convertAssociation(role), sourceNode, resolveInfo);
   }
 
-  private boolean isTargetClassifier(SNode node, String role) {
-    return SConceptOperations.isSubConceptOf(SLinkOperations.getTarget(SLinkOperations.findLinkDeclaration(node.getConceptFqName(), role), "target", false), "jetbrains.mps.baseLanguage.structure.Classifier");
+  public DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable SModelReference targetModelReference, String resolveInfo) {
+    this(role, sourceNode, resolveInfo);
   }
 
-  protected SNode getTargetNode_internal(boolean silently) {
-    if (myImmatureTargetNode != null) {
-      synchronized (this) {
-        if (!mature()) {
-          return myImmatureTargetNode;
-        }
-      }
-    }
-
-    if (getResolveInfo() == null) {
-      if (!silently) {
-        reportErrorWithOrigin("bad reference: no resolve info");
-      }
-      return null;
-    }
-
-    Scope scope = ModelConstraintsUtil.getScope(this, new ReferenceResolvingContext(getModule()));
-    if (scope instanceof ErrorScope) {
-      if (!silently) {
-        reportErrorWithOrigin("cannot obtain scope for reference `" + getRole() + "': " + ((ErrorScope) scope).getMessage());
-      }
-      return null;
-
-    }
-
-    SNode targetNode = null;
-    try {
-      targetNode = scope.resolve(getSourceNode(), getResolveInfo());
-    } catch (Throwable t) {
-      LOG.warning("Exception was thrown while dynamic reference resolving", t);
-    }
-
-    if (targetNode == null) {
-      if (!silently) {
-        reportErrorWithOrigin("cannot resolve reference by string: '" + getResolveInfo() + "'");
-      }
-    }
-
-    return targetNode;
+  public static DynamicReference createDynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable String modelName, String resolveInfo) {
+    return new DynamicReference(role, sourceNode, resolveInfo);
   }
 
-  private final void reportErrorWithOrigin(String message) {
-    if (myOrigin != null) {
-      List<ProblemDescription> result = new ArrayList<ProblemDescription>(2);
-      if (myOrigin.getInputNode() != null) {
-        result.add(new ProblemDescription(myOrigin.getInputNode(), " -- was input: " + myOrigin.getInputNode().getDebugText()));
-      }
-      if (myOrigin.getTemplate() != null) {
-        result.add(new ProblemDescription(myOrigin.getTemplate(), " -- was template: " + myOrigin.getTemplate().getDebugText()));
-      }
-      if (result.size() > 0) {
-        error(message, result.toArray(new ProblemDescription[result.size()]));
-        return;
-      }
-    }
-    error(message);
+  private DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, String resolveInfo) {
+    super(role, sourceNode);
+    setResolveInfo(resolveInfo);
   }
 
-  private IModule getModule() {
-    SModel model = getSourceNode().getModel();
-    if (model != null) {
-      SModelDescriptor descr = model.getModelDescriptor();
-      if (descr != null) {
-        return descr.getModule();
-      }
-    }
+  @Override
+  public SModelReference getTargetSModelReference() {
+    // don't be shy, tell there's no target model reference right away, rather than let superclass to try to make it indirect
+    // with no-op #makeMature(). Now, with targetModelReference field moved to StaticReference, the only reason to have method
+    // implementation here is abstract method placeholder in SReferenceBase. Perhaps, this implementation (== null) shall be there.
+    //
+    // FWIW, I don't quite get the idea of null target model of DynamicReferences, however, it's the way it was.
+    //       Besides, one of the uses of the method is to refresh node's references the moment model reference changes,
+    //       and to support it properly we shall override setTargetSModelReference to no-op instead. The problem is #getTargetSModelReference
+    //       might be quite expensive for dynamic nodes during bulk updates.
+    //
+
     return null;
   }
 
+  @Override
+  protected SNode getTargetNode_internal(ProblemReporter report) {
+    // seems like getTargetNode() doesn't make sense if source node is detached
+    if (mySourceNode.getModel() == null) {
+      assert myHasBeenResolve : "Taking target node of dynamic reference whose source node is not in a model";
+      return myCachedTargetNode;
+    }
+
+    final SRepository owner = mySourceNode.getModel().getRepository();
+
+
+    final Set<DynamicReference> currentRefs = currentlyResolved.get();
+    final Set<DynamicReference> loggedRefs = currentlySourceNodeLogged.get();
+    if (currentRefs.contains(this)) {
+      // loop detected!
+      if (!loggedRefs.contains(this)) {
+        // it's not spurious loop, via logging. it's real, let's complain
+        LOG.errorWithTrace("Loop detected in dynamic references (number of current dyn. refs: " + currentRefs.size() + ")");
+      }
+      return null;
+    }
+
+    currentRefs.add(this);
+    try {
+
+      if (getResolveInfo() == null) {
+        reportErrorWithOrigin("bad reference: no resolve info", report);
+        return null;
+      }
+
+
+      final Scope scope;
+      if (owner instanceof ReferenceScopeHelper.Source) {
+        scope = ((ReferenceScopeHelper.Source) owner).getReferenceScopeHelper().getScope(this);
+      } else {
+        scope = ModelConstraints.getScope(this);
+      }
+      if (scope instanceof ErrorScope) {
+        reportErrorWithOrigin("cannot obtain scope for reference `" + getRole() + "': " + ((ErrorScope) scope).getMessage(), report);
+        return null;
+
+      }
+
+      SNode targetNode = null;
+      try {
+        targetNode = scope.resolve(getSourceNode(), getResolveInfo());
+      } catch (Throwable t) {
+        LOG.warning("Exception was thrown while dynamic reference resolving", t);
+      }
+
+      if (targetNode == null) {
+        reportErrorWithOrigin("cannot resolve reference by string: '" + getResolveInfo() + "'", report);
+      }
+
+      myHasBeenResolve = true;
+      myCachedTargetNode = targetNode;
+      return targetNode;
+
+    } finally {
+      // cleaning up our loop checking stuff
+      currentRefs.remove(this);
+    }
+  }
+
+  @Override
+  public SNodeReference getTargetNodeReference() {
+    SNode targetNode = getTargetNode_internal(new ProblemReporter() {});
+    if (targetNode == null) {
+      return new SNodePointer(null);
+    }
+    return targetNode.getReference();
+  }
+
+  private void reportErrorWithOrigin(String message, ProblemReporter report) {
+    Set<DynamicReference> refs = currentlySourceNodeLogged.get();
+    try {
+      refs.add(this);
+      if (myOrigin != null) {
+        List<ProblemDescription> result = new ArrayList<>(2);
+        if (myOrigin.getInputNode() != null) {
+          result.add(new ProblemDescription(myOrigin.getInputNode(), " -- was input: " + myOrigin.getInputNode().toString()));
+        }
+        if (myOrigin.getTemplate() != null) {
+          result.add(new ProblemDescription(myOrigin.getTemplate(), " -- was template: " + myOrigin.getTemplate().toString()));
+        }
+        if (result.size() > 0) {
+          report.error(message, result.toArray(new ProblemDescription[0]));
+          return;
+        }
+      }
+      report.error(message);
+    } finally {
+      refs.remove(this);
+    }
+  }
+
+  @Nullable
   public DynamicReferenceOrigin getOrigin() {
     return myOrigin;
   }
 
-  public void setOrigin(DynamicReferenceOrigin origin) {
+  public void setOrigin(@Nullable DynamicReferenceOrigin origin) {
     myOrigin = origin;
   }
 
-  public class ReferenceResolvingContext extends StandaloneMPSContext {
-
-    private IModule module;
-
-    public ReferenceResolvingContext(IModule module) {
-      assert module != null;
-      this.module = module;
-    }
-
-    @Override
-    public Project getProject() {
-      return null;
-    }
-
-    @Override
-    public IModule getModule() {
-      return module;
-    }
-
-    @NotNull
-    @Override
-    public IScope getScope() {
-      return module != null ? module.getScope() : GlobalScope.getInstance() /* FIXME */;
-    }
-  }
-
+  @Immutable
   public static class DynamicReferenceOrigin {
-    private final SNodePointer template;
-    private final SNodePointer inputNode;
+    private final SNodeReference template;
+    private final SNodeReference inputNode;
 
-    public DynamicReferenceOrigin(SNodePointer template, SNodePointer inputNode) {
+    public DynamicReferenceOrigin(SNodeReference template, SNodeReference inputNode) {
       this.template = template;
       this.inputNode = inputNode;
     }
 
-    public SNodePointer getTemplate() {
+    public SNodeReference getTemplate() {
       return template;
     }
 
-    public SNodePointer getInputNode() {
+    public SNodeReference getInputNode() {
       return inputNode;
     }
   }

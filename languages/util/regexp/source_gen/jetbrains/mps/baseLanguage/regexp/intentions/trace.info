@@ -1,49 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="IntentionsDescriptor.java" startLine="9" startPosition="0" endLine="18" endPosition="0" unitName="jetbrains.mps.baseLanguage.regexp.intentions.IntentionsDescriptor" />
-  <root nodeId="305848682816615072" modelId="r:5c2005a8-261b-4759-9059-c2decf025b8a(jetbrains.mps.baseLanguage.regexp.intentions)">
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="15" startPosition="30" endLine="16" endPosition="70" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="19" startPosition="36" endLine="20" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="23" startPosition="37" endLine="24" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="27" startPosition="44" endLine="28" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="305848682816636323" fileName="convertToNamed_Intention.java" startLine="31" startPosition="85" endLine="32" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="305848682817096248" fileName="convertToNamed_Intention.java" startLine="35" startPosition="76" endLine="36" endPosition="128" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="305848682817096658" fileName="convertToNamed_Intention.java" startLine="36" startPosition="128" endLine="37" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="305848682817096269" fileName="convertToNamed_Intention.java" startLine="37" startPosition="32" endLine="38" endPosition="42" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="41" startPosition="37" endLine="42" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="11" startPosition="82" endLine="13" endPosition="3" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="convertToNamed_Intention#()V" />
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="14" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getConcept#()Ljava/lang/String;" />
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="18" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isParameterized#()Z" />
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="22" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isErrorIntention#()Z" />
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="26" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isAvailableInChildNodes#()Z" />
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="30" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getDescription#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/nodeEditor/EditorContext;)Ljava/lang/String;" />
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="40" startPosition="0" endLine="44" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getLocationString#()Ljava/lang/String;" />
-    <nodeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="34" startPosition="0" endLine="40" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="execute#(Ljetbrains/mps/smodel/SNode;Ljetbrains/mps/nodeEditor/EditorContext;)V" />
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="12" startPosition="37" endLine="12" endPosition="37" />
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="15" startPosition="30" endLine="16" endPosition="70" />
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="19" startPosition="36" endLine="20" endPosition="17" />
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="23" startPosition="37" endLine="24" endPosition="17" />
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="27" startPosition="44" endLine="28" endPosition="17" />
-    <scopeInfo nodeId="305848682816615074" fileName="convertToNamed_Intention.java" startLine="31" startPosition="85" endLine="32" endPosition="58" />
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="41" startPosition="37" endLine="42" endPosition="58" />
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="11" startPosition="82" endLine="13" endPosition="3" />
-    <scopeInfo nodeId="305848682816615076" fileName="convertToNamed_Intention.java" startLine="35" startPosition="76" endLine="38" endPosition="42">
-      <varInfo nodeId="305848682817096249" varName="n" />
-    </scopeInfo>
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="14" startPosition="0" endLine="18" endPosition="0" />
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="18" startPosition="0" endLine="22" endPosition="0" />
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="22" startPosition="0" endLine="26" endPosition="0" />
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="26" startPosition="0" endLine="30" endPosition="0" />
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="30" startPosition="0" endLine="34" endPosition="0">
-      <varInfo nodeId="305848682816615072" varName="editorContext" />
-      <varInfo nodeId="305848682816615072" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="40" startPosition="0" endLine="44" endPosition="0" />
-    <scopeInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="34" startPosition="0" endLine="40" endPosition="0">
-      <varInfo nodeId="305848682816615072" varName="editorContext" />
-      <varInfo nodeId="305848682816615072" varName="node" />
-    </scopeInfo>
-    <unitInfo nodeId="305848682816615072" fileName="convertToNamed_Intention.java" startLine="11" startPosition="0" endLine="45" endPosition="0" unitName="jetbrains.mps.baseLanguage.regexp.intentions.convertToNamed_Intention" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="IntentionsDescriptor.java">
+      <unit at="18,0,56,0" name="jetbrains.mps.baseLanguage.regexp.intentions.IntentionsDescriptor" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:5c2005a8-261b-4759-9059-c2decf025b8a(jetbrains.mps.baseLanguage.regexp.intentions)/305848682816615072">
+    <file name="IntentionsDescriptor.java">
+      <node id="305848682816615072" at="37,47,38,57" concept="1" />
+      <node id="305848682816615072" at="50,52,51,43" concept="1" />
+    </file>
+    <file name="convertToNamed_Intention.java">
+      <node id="305848682816615072" at="21,0,22,0" concept="2" trace="myCachedExecutable" />
+      <node id="305848682816615072" at="22,37,23,158" concept="8" />
+      <node id="305848682816615072" at="26,35,27,28" concept="6" />
+      <node id="305848682816615072" at="30,84,31,16" concept="6" />
+      <node id="305848682816615072" at="34,35,35,17" concept="6" />
+      <node id="305848682816615072" at="38,37,39,105" concept="1" />
+      <node id="305848682816615072" at="40,5,41,30" concept="6" />
+      <node id="305848682816636323" at="47,87,48,60" concept="6" />
+      <node id="305848682817096248" at="51,78,52,96" concept="5" />
+      <node id="305848682817096658" at="52,96,53,34" concept="1" />
+      <node id="305848682817096269" at="53,34,54,44" concept="1" />
+      <node id="305848682816615072" at="57,48,58,43" concept="6" />
+      <node id="305848682816615072" at="63,0,64,0" concept="7" trace="MatchParensRegexp$Ea" />
+      <node id="305848682816615072" at="44,0,46,0" concept="0" trace="IntentionImplementation#()V" />
+      <node id="305848682816615072" at="22,0,25,0" concept="0" trace="convertToNamed_Intention#()V" />
+      <node id="305848682816615072" at="37,99,40,5" concept="3" />
+      <node id="305848682816615072" at="25,0,29,0" concept="4" trace="getPresentation#()Ljava/lang/String;" />
+      <node id="305848682816615072" at="29,0,33,0" concept="4" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
+      <node id="305848682816615072" at="33,0,37,0" concept="4" trace="isSurroundWith#()Z" />
+      <node id="305848682816615072" at="46,0,50,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
+      <node id="305848682816615072" at="56,0,60,0" concept="4" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
+      <node id="305848682816615072" at="37,0,43,0" concept="4" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
+      <node id="305848682816615072" at="50,0,56,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <scope id="305848682816615072" at="44,38,44,38" />
+      <scope id="305848682816615072" at="22,37,23,158" />
+      <scope id="305848682816615072" at="26,35,27,28" />
+      <scope id="305848682816615072" at="30,84,31,16" />
+      <scope id="305848682816615072" at="34,35,35,17" />
+      <scope id="305848682816615072" at="38,37,39,105" />
+      <scope id="305848682816615074" at="47,87,48,60" />
+      <scope id="305848682816615072" at="57,48,58,43" />
+      <scope id="305848682816615072" at="44,0,46,0" />
+      <scope id="305848682816615072" at="22,0,25,0" />
+      <scope id="305848682816615076" at="51,78,54,44">
+        <var name="n" id="305848682817096249" />
+      </scope>
+      <scope id="305848682816615072" at="25,0,29,0" />
+      <scope id="305848682816615072" at="29,0,33,0">
+        <var name="editorContext" id="305848682816615072" />
+        <var name="node" id="305848682816615072" />
+      </scope>
+      <scope id="305848682816615072" at="33,0,37,0" />
+      <scope id="305848682816615072" at="37,99,41,30" />
+      <scope id="305848682816615072" at="46,0,50,0">
+        <var name="editorContext" id="305848682816615072" />
+        <var name="node" id="305848682816615072" />
+      </scope>
+      <scope id="305848682816615072" at="56,0,60,0" />
+      <scope id="305848682816615072" at="37,0,43,0">
+        <var name="context" id="305848682816615072" />
+        <var name="node" id="305848682816615072" />
+      </scope>
+      <scope id="305848682816615072" at="50,0,56,0">
+        <var name="editorContext" id="305848682816615072" />
+        <var name="node" id="305848682816615072" />
+      </scope>
+      <unit id="305848682816615072" at="62,0,65,0" name="jetbrains.mps.baseLanguage.regexp.intentions.convertToNamed_Intention$CONCEPTS" />
+      <unit id="305848682816615072" at="43,0,61,0" name="jetbrains.mps.baseLanguage.regexp.intentions.convertToNamed_Intention$IntentionImplementation" />
+      <unit id="305848682816615072" at="20,0,66,0" name="jetbrains.mps.baseLanguage.regexp.intentions.convertToNamed_Intention" />
+    </file>
+  </root>
+</debug-info>
 

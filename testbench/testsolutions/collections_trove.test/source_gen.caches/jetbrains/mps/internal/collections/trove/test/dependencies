@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependenciesRoot>
+  <dependency className="jetbrains.mps.internal.collections.trove.test.PrimMap_Test">
+    <classNode dependClassName="gnu.trove.TByteByteHashMap" />
+    <classNode dependClassName="gnu.trove.TByteObjectHashMap" />
+    <classNode dependClassName="gnu.trove.TDoubleDoubleHashMap" />
+    <classNode dependClassName="gnu.trove.TDoubleObjectHashMap" />
+    <classNode dependClassName="gnu.trove.TFloatFloatHashMap" />
+    <classNode dependClassName="gnu.trove.TIntIntHashMap" />
+    <classNode dependClassName="gnu.trove.TLongLongHashMap" />
+    <classNode dependClassName="gnu.trove.TObjectDoubleHashMap" />
+    <classNode dependClassName="gnu.trove.TShortShortHashMap" />
+    <classNode dependClassName="gnu.trove.decorator.TByteByteHashMapDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TByteObjectHashMapDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TDoubleDoubleHashMapDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TDoubleObjectHashMapDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TFloatFloatHashMapDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TIntIntHashMapDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TLongLongHashMapDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TObjectDoubleHashMapDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TShortShortHashMapDecorator" />
+    <classNode dependClassName="java.lang.Byte" />
+    <classNode dependClassName="java.lang.Double" />
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.Float" />
+    <classNode dependClassName="java.lang.Integer" />
+    <classNode dependClassName="java.lang.Long" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Short" />
+    <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
+    <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
+  </dependency>
+  <dependency className="jetbrains.mps.internal.collections.trove.test.PrimSet_Test">
+    <classNode dependClassName="gnu.trove.TByteHashSet" />
+    <classNode dependClassName="gnu.trove.TDoubleHashSet" />
+    <classNode dependClassName="gnu.trove.TFloatHashSet" />
+    <classNode dependClassName="gnu.trove.TIntHashSet" />
+    <classNode dependClassName="gnu.trove.TLongHashSet" />
+    <classNode dependClassName="gnu.trove.TShortHashSet" />
+    <classNode dependClassName="gnu.trove.decorator.TByteHashSetDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TDoubleHashSetDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TFloatHashSetDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TIntHashSetDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TLongHashSetDecorator" />
+    <classNode dependClassName="gnu.trove.decorator.TShortHashSetDecorator" />
+    <classNode dependClassName="java.lang.Byte" />
+    <classNode dependClassName="java.lang.Double" />
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.Float" />
+    <classNode dependClassName="java.lang.Integer" />
+    <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Long" />
+    <classNode dependClassName="java.lang.Short" />
+    <classNode dependClassName="java.util.HashSet" />
+    <classNode dependClassName="java.util.Iterator" />
+    <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ArrayUtils" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequenceClosure" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
+    <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
+  </dependency>
+</dependenciesRoot>
+

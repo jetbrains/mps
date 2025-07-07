@@ -4,58 +4,77 @@ package jetbrains.mps.build.pluginSolution.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.jetbrains.annotations.NotNull;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import jetbrains.mps.execution.lib.NodeByConcept_Configuration;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ant.execution.AntSettings_Configuration;
-import com.intellij.openapi.project.Project;
+import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import com.intellij.execution.configurations.RuntimeConfigurationError;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
-import com.intellij.util.xmlb.XmlSerializer;
 import com.intellij.openapi.util.InvalidDataException;
+import com.intellij.openapi.project.Project;
+import com.intellij.execution.configurations.ConfigurationFactory;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.RunProfileState;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
 import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.openapi.util.JDOMExternalizable;
+import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
 import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
+import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.openapi.util.Key;
+import com.intellij.execution.BeforeRunTask;
+import jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildScript_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
-  protected static Log log = LogFactory.getLog(BuildScript_Configuration.class);
-
-  @NotNull
-  private BuildScript_Configuration.MyState myState = new BuildScript_Configuration.MyState();
-  private NodeByConcept_Configuration myNode = new NodeByConcept_Configuration("jetbrains.mps.build.structure.BuildProject", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+  private static final Logger LOG = LogManager.getLogger(BuildScript_Configuration.class);
+  private NodeByConcept_Configuration myNodePointer = new NodeByConcept_Configuration(CONCEPTS.BuildProject$ae, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
     public Boolean invoke(SNode node) {
       return true;
     }
   });
   private AntSettings_Configuration mySettings = new AntSettings_Configuration();
 
-  public BuildScript_Configuration(Project project, BuildScript_Configuration_Factory factory, String name) {
-    super(project, factory, name);
+  @Override
+  public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
+    final Wrappers._boolean isPackaged = new Wrappers._boolean();
+    final SRepository repo = context.getProject().getRepository();
+    NodeByConcept_Configuration nodePointer = this.getNodePointer();
+    final SNodeReference reference = nodePointer.getNodeRef();
+    if (reference == null) {
+      throw new RuntimeConfigurationError("The target of the node reference cannot be discovered " + nodePointer);
+    }
+    repo.getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        SNode node = reference.resolve(repo);
+        isPackaged.value = node != null && SNodeOperations.getModel(node).getModule().isPackaged();
+      }
+    });
+    if (isPackaged.value) {
+      throw new RuntimeConfigurationError("Can not execute packaged build script.");
+    }
   }
-
-  public void checkConfiguration() throws RuntimeConfigurationException {
-  }
-
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
-    element.addContent(XmlSerializer.serialize(myState));
     {
-      Element fieldElement = new Element("myNode");
-      myNode.writeExternal(fieldElement);
+      Element fieldElement = new Element("myNodePointer");
+      myNodePointer.writeExternal(fieldElement);
       element.addContent(fieldElement);
     }
     {
@@ -70,14 +89,13 @@ public class BuildScript_Configuration extends BaseMpsRunConfiguration implement
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    XmlSerializer.deserializeInto(myState, (Element) element.getChildren().get(0));
     {
-      Element fieldElement = element.getChild("myNode");
+      Element fieldElement = element.getChild("myNodePointer");
       if (fieldElement != null) {
-        myNode.readExternal(fieldElement);
+        myNodePointer.readExternal(fieldElement);
       } else {
-        if (log.isDebugEnabled()) {
-          log.debug("Element " + "myNode" + " in " + this.getClass().getName() + " was null.");
+        if (LOG.isDebugEnabled()) {
+          LOG.debug("Element " + "myNodePointer" + " in " + this.getClass().getName() + " was null.");
         }
       }
     }
@@ -86,81 +104,81 @@ public class BuildScript_Configuration extends BaseMpsRunConfiguration implement
       if (fieldElement != null) {
         mySettings.readExternal(fieldElement);
       } else {
-        if (log.isDebugEnabled()) {
-          log.debug("Element " + "mySettings" + " in " + this.getClass().getName() + " was null.");
+        if (LOG.isDebugEnabled()) {
+          LOG.debug("Element " + "mySettings" + " in " + this.getClass().getName() + " was null.");
         }
       }
     }
   }
 
-  public NodeByConcept_Configuration getNode() {
-    return myNode;
+  @Override
+  public BuildScript_Configuration clone() {
+    BuildScript_Configuration clone = createCloneTemplate();
+    clone.myNodePointer = (NodeByConcept_Configuration) myNodePointer.clone();
+    clone.mySettings = (AntSettings_Configuration) mySettings.clone();
+    return clone;
   }
 
+  public NodeByConcept_Configuration getNodePointer() {
+    return myNodePointer;
+  }
   public AntSettings_Configuration getSettings() {
     return mySettings;
   }
 
-  @Override
-  public BuildScript_Configuration clone() {
-    BuildScript_Configuration clone = null;
-    try {
-      clone = createCloneTemplate();
-      clone.myState = (BuildScript_Configuration.MyState) myState.clone();
-      clone.myNode = (NodeByConcept_Configuration) myNode.clone();
-      clone.mySettings = (AntSettings_Configuration) mySettings.clone();
-      return clone;
-    } catch (CloneNotSupportedException ex) {
-      if (log.isErrorEnabled()) {
-        log.error("", ex);
-      }
-    }
-    return clone;
+  public void setNodePointer(NodeByConcept_Configuration value) {
+    myNodePointer = value;
+  }
+  public void setSettings(AntSettings_Configuration value) {
+    mySettings = value;
   }
 
+  public BuildScript_Configuration(Project project, ConfigurationFactory factory, String name) {
+    super(project, factory, name);
+  }
   @Nullable
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new BuildScript_Configuration_RunProfileState(this, executor, environment);
   }
-
   @Nullable
-  public SettingsEditor<JDOMExternalizable> getRunnerSettingsEditor(ProgramRunner runner) {
+  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
     return null;
   }
-
-  public JDOMExternalizable createRunnerSettings(ConfigurationInfoProvider provider) {
+  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
     return null;
   }
-
   public SettingsEditorEx<BuildScript_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<BuildScript_Configuration>) getEditor();
   }
-
   public BuildScript_Configuration createCloneTemplate() {
     return (BuildScript_Configuration) super.clone();
   }
-
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
-    return new BuildScript_Configuration_Editor(myNode.getEditor(), mySettings.getEditor());
+    return new BuildScript_Configuration_Editor(myNodePointer.getEditor(), mySettings.getEditor());
   }
-
+  @Override
+  public void checkConfiguration() throws RuntimeConfigurationException {
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    checkConfiguration(new PersistentConfigurationContext() {
+      public jetbrains.mps.project.Project getProject() {
+        return mpsProject;
+      }
+    });
+  }
   @Override
   public boolean canExecute(String executorId) {
     return BuildScript_Configuration_RunProfileState.canExecute(executorId);
   }
-
+  public static void configureBeforeTaskDefaults(Key<? extends BeforeRunTask> providerID, BeforeRunTask task) {
+    if (providerID == MakeNodePointers_BeforeTask.KEY) {
+      task.setEnabled(true);
+    }
+  }
   public Object[] createMakeNodePointersTask() {
-    return new Object[]{ListSequence.fromListAndArray(new ArrayList<SNodePointer>(), this.getNode().getNodePointer())};
+    return new Object[]{ListSequence.fromListAndArray(new ArrayList<SNodeReference>(), this.getNodePointer().getNodeRef())};
   }
 
-  public class MyState {
-    public MyState() {
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-      BuildScript_Configuration.MyState state = new BuildScript_Configuration.MyState();
-      return state;
-    }
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

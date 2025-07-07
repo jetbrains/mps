@@ -18,20 +18,19 @@ import javax.swing.tree.TreePath;
 public class CheckBoxTree<N extends NodeData> extends JPanel {
   private final JTree myTree;
   private final Set<N> mySelectedItems = SetSequence.fromSet(new HashSet<N>());
-
   public CheckBoxTree(CheckBoxNode node) {
     super(new BorderLayout());
     this.myTree = new Tree(node);
     this.myTree.setCellRenderer(new CheckBoxCellRenderrer());
     this.myTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
     this.myTree.addMouseListener(new MouseAdapter() {
+      @Override
       public void mousePressed(MouseEvent e) {
         CheckBoxTree.this.mouseParessed(e.getX(), e.getY());
       }
     });
     this.add(ScrollPaneFactory.createScrollPane(myTree), BorderLayout.CENTER);
   }
-
   public void mouseParessed(int x, int y) {
     int row = this.myTree.getRowForLocation(x, y);
     if (row == 0) {
@@ -51,7 +50,6 @@ public class CheckBoxTree<N extends NodeData> extends JPanel {
     }
     this.repaint();
   }
-
   public void checkNodeRecursively(CheckBoxNode<N> checkBoxNode, boolean check) {
     this.checkNode(checkBoxNode, check);
     int childCount = checkBoxNode.getChildCount();
@@ -59,11 +57,9 @@ public class CheckBoxTree<N extends NodeData> extends JPanel {
       this.checkNodeRecursively((CheckBoxNode<N>) checkBoxNode.getChildAt(i), check);
     }
   }
-
   public boolean isChecked(CheckBoxNode<N> cbNode) {
     return SetSequence.fromSet(CheckBoxTree.this.mySelectedItems).contains(cbNode.getData());
   }
-
   public void uncheckParents(CheckBoxNode<N> cbNode) {
     CheckBoxNode<N> parent = (CheckBoxNode<N>) cbNode.getParent();
     if (parent == null) {
@@ -72,7 +68,6 @@ public class CheckBoxTree<N extends NodeData> extends JPanel {
     this.checkNode(parent, false);
     this.uncheckParents(parent);
   }
-
   private void checkNode(CheckBoxNode<N> checkBoxNode, boolean check) {
     if (check) {
       SetSequence.fromSet(CheckBoxTree.this.mySelectedItems).addElement(checkBoxNode.getData());
@@ -81,7 +76,6 @@ public class CheckBoxTree<N extends NodeData> extends JPanel {
     }
     checkBoxNode.setChecked(check);
   }
-
   public Set<N> getSelectedItems() {
     return SetSequence.fromSetWithValues(new HashSet<N>(), this.mySelectedItems);
   }

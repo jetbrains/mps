@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,43 +17,52 @@ package jetbrains.mps.ide.projectView;
 
 import com.intellij.ide.FileEditorProvider;
 import com.intellij.ide.SelectInContext;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.workbench.ModelUtil;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.workbench.FileSystemModelHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.Collection;
+
+/**
+ * IDEA service to get contributed from MPS-IDEA plugin to tweak EditorComponent.getData() response
+ * No idea why it's done that way, and what's the task this class serves ("fix alt-f1 in MPS" doesn't help to understand)
+ */
 //todo throw away when there's per-node persistence or include into MPSCore.xml when migrated to Idea ProjectView
-public class ProjectViewSelectInProvider implements ApplicationComponent {
-  public SelectInContext getContext(jetbrains.mps.project.Project p, final SNodePointer node) {
-    VirtualFile modelFile = ModelAccess.instance().runReadAction(new Computable<VirtualFile>() {
-      public VirtualFile compute() {
-        if (node == null) return null;
-        SNode n = node.getNode();
-        return n == null ? null : ModelUtil.getFileByModel(n.getModel());
+public class ProjectViewSelectInProvider {
+
+  @Nullable
+  public SelectInContext getContext(@Nullable jetbrains.mps.project.Project p, @Nullable final SNodeReference nodeRef) {
+    if (false == p instanceof MPSProject || nodeRef == null) {
+      return null;
+    }
+    final SRepository repo = p.getRepository();
+    final IFile modelFile = new ModelAccessHelper(repo).runReadAction(() -> {
+      SNode node = nodeRef.resolve(repo);
+      if (node == null) {
+        return null;
       }
+      SModel model = node.getModel();
+      if (model == null) {
+        return null;
+      }
+      final Collection<IFile> files = new FileSystemModelHelper(model).getFiles();
+      return files.isEmpty() ? null : files.iterator().next();
     });
-    if (modelFile == null) {return null;}
-    return new VirtualFileSelectInContext(ProjectHelper.toIdeaProject(p), modelFile);
-  }
-
-  public void initComponent() {
-
-  }
-
-  public void disposeComponent() {
-
-  }
-
-  @NotNull
-  public String getComponentName() {
-    return getClass().getSimpleName();
+    if (modelFile == null) {
+      return null;
+    }
+    final VirtualFile vf = ((MPSProject) p).getFileSystem().asVirtualFile(modelFile);
+    return vf == null ? null : new VirtualFileSelectInContext(ProjectHelper.toIdeaProject(p), vf);
   }
 
   private static class VirtualFileSelectInContext implements SelectInContext {
@@ -65,21 +74,25 @@ public class ProjectViewSelectInProvider implements ApplicationComponent {
       myVirtualFile = virtualFile;
     }
 
+    @Override
     @NotNull
     public Project getProject() {
       return myProject;
     }
 
+    @Override
     @NotNull
     public VirtualFile getVirtualFile() {
       return myVirtualFile;
     }
 
+    @Override
     @Nullable
     public Object getSelectorInFile() {
       return myVirtualFile;
     }
 
+    @Override
     @Nullable
     public FileEditorProvider getFileEditorProvider() {
       return null;

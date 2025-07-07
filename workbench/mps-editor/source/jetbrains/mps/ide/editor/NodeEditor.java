@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +18,12 @@ package jetbrains.mps.ide.editor;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.editor.Document;
 import jetbrains.mps.ide.undo.MPSUndoUtil;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.workbench.nodesFs.MPSNodeVirtualFile;
-import jetbrains.mps.workbench.nodesFs.MPSNodesVirtualFileSystem;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collections;
 import java.util.List;
@@ -30,14 +31,15 @@ import java.util.List;
 public class NodeEditor extends BaseNodeEditor {
   private final MPSNodeVirtualFile myVirtualFile;
 
-  public NodeEditor(IOperationContext context, SNode node) {
-    super(context);
-    myVirtualFile = MPSNodesVirtualFileSystem.getInstance().getFileFor(node);
-    getCurrentEditorComponent().editNode(node, context);
+  public NodeEditor(Project mpsProject, SNode node) {
+    super(mpsProject);
+    myVirtualFile = NodeVirtualFileSystem.getInstance().getFileFor(mpsProject.getRepository(), node);
+    editNode(node.getReference(), null);
   }
 
+  @Override
   public Object getData(@NonNls String dataId) {
-    if (dataId.equals(LangDataKeys.VIRTUAL_FILE.getName())) {
+    if (LangDataKeys.VIRTUAL_FILE.is(dataId)) {
       return myVirtualFile;
     }
 
@@ -47,10 +49,15 @@ public class NodeEditor extends BaseNodeEditor {
   @Override
   public List<Document> getAllEditedDocuments() {
     final MPSNodeVirtualFile virtualFile = getCurrentEditorComponent().getVirtualFile();
-    return virtualFile != null ? Collections.singletonList(MPSUndoUtil.getDoc(virtualFile)) : Collections.<Document>emptyList();
+    return virtualFile != null ? Collections.singletonList(MPSUndoUtil.getDoc(virtualFile)) : Collections.emptyList();
   }
 
+  @Override
   public void showNode(SNode node, boolean select) {
-    getCurrentEditorComponent().selectNode(node);
+    if (select) {
+      getCurrentEditorComponent().selectNode(node);
+    } else {
+      getCurrentEditorComponent().getSelectionManager().setSelection(node, SelectionManager.FOCUS_POLICY_CELL, 0);
+    }
   }
 }

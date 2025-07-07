@@ -15,98 +15,67 @@
  */
 package jetbrains.mps.nodeEditor.inspector;
 
+import com.intellij.ide.DataManager;
+import com.intellij.openapi.fileEditor.FileEditor;
+import com.intellij.util.ui.EDT;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.editor.MPSFileNodeEditor;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorContext;
+import jetbrains.mps.nodeEditor.InspectorEditorContext;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.typesystem.inference.TypeCheckingContext;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
+import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
+import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
+import jetbrains.mps.typechecking.TypecheckingSession;
+import jetbrains.mps.typesystem.inference.ITypeContextOwner;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.JComponent;
-import java.util.List;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 public class InspectorEditorComponent extends EditorComponent {
-  private SNode myRoot;
+  private static final Logger LOG = Logger.wrap(LogManager.getLogger(InspectorEditorComponent.class));
 
-  public InspectorEditorComponent() {
-    this(false);
+  public InspectorEditorComponent(@NotNull SRepository p) {
+    this(p, EditorConfigurationBuilder.buildDefault());
   }
 
-  public InspectorEditorComponent(boolean rightToLeft) {
-    super(null, false, rightToLeft);
+  public InspectorEditorComponent(@NotNull SRepository repository, @NotNull EditorConfiguration configuration) {
+    super(repository, configuration);
     myNode = null;
     myNodePointer = null;
-    reinitEditor();
-  }
-
-  private void reinitEditor() {
-    if (getEditedNode() == null) {
-      setEditorContext(new EditorContext(this, null, null));
-    } else {
-      setEditorContext(new EditorContext(this, getEditedNode().getModel(), getOperationContext()));
-    }
-    rebuildEditorContent();
-    if (getOperationContext() != null) {
-      notifyCreation();
-    }
-  }
-
-  public void editNode(SNode semanticNode, IOperationContext operationContext) {
-    //never used
-    inspectNode(semanticNode, operationContext);
-  }
-
-  public void inspectNode(final SNode node, final IOperationContext context) {
-    if (getOperationContext() != null) {
-      notifyDisposal();
-    }
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        clearModelDisposedTrace();
-        myNode = node;
-        myNodePointer = myNode != null ? new SNodePointer(myNode) : null;
-        myRoot = myNode == null ? null : myNode.getContainingRoot();
-        setReadOnly(node == null || node.isDeleted() || node.getModel().isDisposed() || node.getModel().isNotEditable());
-        if (node == null) {
-          setOperationContext(null);
-        } else {
-          setOperationContext(context);
-        }
-
-        reinitEditor();
-        repaint();
-      }
-    });
+    myRootCell = createEmptyCell();
   }
 
   @NotNull
-  public JComponent getExternalComponent() {
-    return super.getExternalComponent();
-  }
-
-  public EditorCell createRootCell(List<SModelEvent> events) {
-    if (getEditedNode() == null || getEditedNode().isDeleted()) {
-      return new EditorCell_Constant(getEditorContext(), null, "<no inspect info>");
-    }
-    return getEditorContext().createInspectedCell(getEditedNode(), events);
+  @Override
+  protected EditorContext createEditorContext(@Nullable SModel model, @NotNull SRepository repository) {
+    return new InspectorEditorContext(this, model, repository, getEditorConfiguration(), createContextAssistantManager(repository));
   }
 
   @Override
-  public void dispose() {
-    if (getOperationContext() != null) {
-      notifyDisposal();
-    }
-    super.dispose();
+  protected boolean notifiesCreation() {
+    return true;
+  }
+
+  public EditorCell createEmptyCell() {
+    return new EditorCell_Constant(getEditorContext(), null, "<no inspect info>");
+  }
+
+  protected boolean updateContainingRoot(SNode node) {
+    return true;
   }
 
   @Override
-  protected SNode getNodeForTypechecking() {
-    return myRoot;
+  public SNode getNodeForTypechecking() {
+    SNode editedNode = getEditedNode();
+    if (editedNode == null) {
+      return null;
+    }
+    return editedNode.getModel() != null ? editedNode.getContainingRoot() : null;
   }
 }

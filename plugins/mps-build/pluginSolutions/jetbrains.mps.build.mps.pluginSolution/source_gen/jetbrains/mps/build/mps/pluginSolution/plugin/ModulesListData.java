@@ -4,17 +4,16 @@ package jetbrains.mps.build.mps.pluginSolution.plugin;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
-import jetbrains.mps.project.IModule;
+import java.util.LinkedList;
+import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Comparator;
 import javax.swing.Icon;
 
 public class ModulesListData implements NodeData {
   private final List<NodeData> myData = ListSequence.fromList(new LinkedList<NodeData>());
   private final List<ModuleData> myModules = ListSequence.fromList(new LinkedList<ModuleData>());
-
-  public ModulesListData(List<IModule> modules) {
-    for (IModule m : modules) {
+  public ModulesListData(List<SModule> modules) {
+    for (SModule m : modules) {
       ModuleData moduleData = new ModuleData(m);
       ListSequence.fromList(this.myModules).addElement(moduleData);
     }
@@ -25,10 +24,12 @@ public class ModulesListData implements NodeData {
     }, true);
   }
 
+  @Override
   public String getText() {
     return "All Modules In Project";
   }
 
+  @Override
   public List<NodeData> getChildren() {
     return this.myData;
   }
@@ -37,22 +38,27 @@ public class ModulesListData implements NodeData {
     return this.myModules;
   }
 
+  @Override
   public Icon getIcon(boolean expanded) {
     return null;
   }
 
+  @Override
   public boolean canHaveChildren() {
     return true;
   }
 
+  @Override
   public void addChildren(NodeData nodeData) {
     ListSequence.fromList(this.myData).addElement(nodeData);
   }
 
+  @Override
   public NodeData getParent() {
     return null;
   }
 
+  @Override
   public void setParent(NodeData parent) {
   }
 }

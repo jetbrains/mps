@@ -15,20 +15,21 @@
  */
 package jetbrains.mps.smodel.action;
 
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Iterator;
 
 public class RemoveSideTransformActionByConditionContext {
-  private Iterator<INodeSubstituteAction> myActions;
+  private Iterator<SubstituteAction> myActions;
   private SNode mySourceNode;
 
-  public RemoveSideTransformActionByConditionContext(Iterator<INodeSubstituteAction> actions, SNode sourceNode) {
+  public RemoveSideTransformActionByConditionContext(Iterator<SubstituteAction> actions, SNode sourceNode) {
     myActions = actions;
     mySourceNode = sourceNode;
   }
 
-  public Iterator<INodeSubstituteAction> getActions() {
+  public Iterator<SubstituteAction> getSideTransformActions() {
     return myActions;
   }
 

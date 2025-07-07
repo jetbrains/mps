@@ -9,12 +9,11 @@ import mf.Currency;
 public class MoneyAdapter implements Function<Money> {
   private Function<Double> myAmount;
   private Currency myCurrency;
-
   public MoneyAdapter(Function<Double> amount, Currency currency) {
     myAmount = amount;
     myCurrency = currency;
   }
-
+  @Override
   public Money compute(Object parm) {
     Double amount = myAmount.compute(parm);
     return new Money(amount, myCurrency);

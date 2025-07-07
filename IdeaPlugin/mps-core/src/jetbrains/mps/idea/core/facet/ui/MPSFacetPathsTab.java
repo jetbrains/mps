@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,14 +29,16 @@ import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.InsertPathAction;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.facet.MPSConfigurationBean;
+import jetbrains.mps.idea.core.ui.SModuleConfigurationTab;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
-public class MPSFacetPathsTab {
+public class MPSFacetPathsTab implements SModuleConfigurationTab {
     private JPanel myRootPanel;
     private JRadioButton myUseTransientOutputFolder;
     private JRadioButton myUseModuleSourceFolderRadioButton;
@@ -81,7 +83,7 @@ public class MPSFacetPathsTab {
         return myRootPanel;
     }
 
-    public void setData(MPSConfigurationBean data) {
+    public void reset(MPSConfigurationBean data) {
         if (data.isUseTransientOutputFolder()) {
             myUseTransientOutputFolder.doClick();
         } else if (data.isUseModuleSourceFolder()) {
@@ -92,7 +94,7 @@ public class MPSFacetPathsTab {
         myFieldPanel.setText(data.getGeneratorOutputPath());
     }
 
-    public void getData(MPSConfigurationBean data) {
+    public void apply(MPSConfigurationBean data) {
         data.setUseTransientOutputFolder(isUseTransientOutputFolder());
         data.setUseModuleSourceFolder(isUseModuleSourceFolder());
         data.setGeneratorOutputPath(getGeneratorOutputPath());
@@ -105,7 +107,7 @@ public class MPSFacetPathsTab {
         if (data.isUseModuleSourceFolder() != isUseModuleSourceFolder()) {
             return true;
         }
-        if (!data.getGeneratorOutputPath().equals(getGeneratorOutputPath())) {
+        if (!Objects.equals(data.getGeneratorOutputPath(), getGeneratorOutputPath())) {
             return true;
         }
         return false;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,10 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.refactoring;
 
-import com.intellij.CommonBundle;
+import com.intellij.ide.projectView.ProjectView;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
@@ -26,48 +25,44 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.InputValidator;
 import com.intellij.openapi.ui.InputValidatorEx;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.Pair;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.refactoring.rename.RenameHandler;
-import jetbrains.mps.generator.fileGenerator.FileGenerationUtil;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.MPSBundle;
-import jetbrains.mps.idea.core.projectView.MPSDataKeys;
-import jetbrains.mps.project.ReferenceUpdater;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.smodel.SModelFqName;
-import jetbrains.mps.smodel.SModelRepository;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.idea.core.MPSDataKeys;
+import jetbrains.mps.idea.core.psi.impl.MPSPsiProvider;
+import jetbrains.mps.model.ModelDeleteHelper;
+import jetbrains.mps.refactoring.Renamer;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.module.ModelAccess;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.lang.model.SourceVersion;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
-/**
- * Created with IntelliJ IDEA.
- * User: fyodor
- * Date: 7/3/12
- * Time: 2:06 PM
- * To change this template use File | Settings | File Templates.
- */
 public class ModelRenameHandler implements RenameHandler {
-  private static final Logger LOG = Logger.getInstance("#jetbrains.mps.idea.core.refactoring.ModelRenameHandler");
+  private static final Logger LOG = Logger.getInstance(ModelRenameHandler.class);
 
   @Override
   public boolean isAvailableOnDataContext(DataContext dataContext) {
     IFile modelFile = getModelFile(dataContext);
-    if (modelFile == null) return false;
-    SModelDescriptor descriptor = SModelRepository.getInstance().findModel(modelFile);
-    return (descriptor instanceof EditableSModelDescriptor);
+    PsiElement psiElement = PlatformDataKeys.PSI_ELEMENT.getData(dataContext);
+    if (modelFile == null || modelFile.isDirectory() || psiElement == null) return false;
+    SModel model = SModelFileTracker.getInstance(ProjectHelper.getProjectRepository(psiElement.getProject())).findModel(modelFile);
+    return model instanceof EditableSModel;
   }
 
   @Override
@@ -85,54 +80,54 @@ public class ModelRenameHandler implements RenameHandler {
     IFile modelFile = getModelFile(dataContext);
     if (modelFile == null) return;
 
-    SModelDescriptor descriptor = SModelRepository.getInstance().findModel(modelFile);
-    if (!(descriptor instanceof EditableSModelDescriptor)) return;
+    SRepository repository = ProjectHelper.getProjectRepository(project);
+    SModel sModel = SModelFileTracker.getInstance(repository).findModel(modelFile);
+    if (!(sModel instanceof EditableSModel)) return;
 
-    final EditableSModelDescriptor modelDescriptor = (EditableSModelDescriptor) descriptor;
-    final AtomicReference<SModelFqName> targetFqName = new AtomicReference<SModelFqName>(null);
+    final EditableSModel editableSModel = (EditableSModel) sModel;
+    final AtomicReference<String> targetFqName = new AtomicReference<>(null);
 
-    Pair<String,Boolean> result = Messages.showInputDialogWithCheckBox(
-      MPSBundle.message("rename.model.to", modelDescriptor.getLongName()),
+    Pair<String, Boolean> result = Messages.showInputDialogWithCheckBox(
+      MPSBundle.message("rename.model.to", editableSModel.getName().getLongName()),
       MPSBundle.message("rename.model"),
-      MPSBundle.message("update.all.references"), true, true, null, modelDescriptor.getLongName(),
-      new MyInputValidator() {
+      MPSBundle.message("update.all.references"), true, true, null, editableSModel.getName().getLongName(),
+      new MyInputValidator(ProjectHelper.getModelAccess(project)) {
         @Override
-        protected void doRename(SModelFqName fqName) {
+        protected void doRename(String fqName) {
           targetFqName.set(fqName);
+        }
+
+        @Override
+        protected SRepository getRepository() {
+          return repository;
         }
       });
 
     if (targetFqName.get() != null) {
-      ApplicationManager.getApplication().runWriteAction(new Runnable() {
-        @Override
-        public void run() {
-         deleteGeneratedFiles(modelDescriptor);
-        }
-      });
-      final ModelRenamer renamer = new ModelRenamer(modelDescriptor, targetFqName.get(), !(result.getSecond()));
-      ModelAccess.instance().runWriteActionInCommand(new Runnable() {
-        @Override
-        public void run() {
-          renamer.rename();
-        }
-      },
-      ProjectHelper.toMPSProject(project));
-      ProgressManager.getInstance().run(new Task.Modal(project, "Updating model usages...", false) {
+      ApplicationManager.getApplication().runWriteAction(() -> deleteGeneratedFiles(editableSModel));
+      final ModelRenamer renamer = new ModelRenamer(editableSModel, targetFqName.get(), !(result.getSecond()));
+      ProjectHelper.getModelAccess(project).executeCommand(renamer::rename);
+      ProgressManager.getInstance().run(new Task.Modal(project, MPSBundle.message("model.rename.handler.init.progress"), false) {
         @Override
         public void run(@NotNull ProgressIndicator indicator) {
           indicator.pushState();
           indicator.setIndeterminate(true);
           try {
-            ModelAccess.instance().runWriteAction(new Runnable() {
-              public void run() {
-                renamer.updateReferencesIfNeeded();
-              }
-            });
+            ProjectHelper.getModelAccess(project).runWriteAction(() -> renamer.updateReferencesIfNeeded(project));
           } finally {
             indicator.popState();
           }
         }
       });
+
+
+      //Get MPSPsiModel source file to select in project view.
+      final AtomicReference<VirtualFile> psiModelSourceFile = new AtomicReference<>();
+      ProjectHelper.getModelAccess(project).runReadAction(
+        () -> psiModelSourceFile.set(MPSPsiProvider.getInstance(project).getPsi(editableSModel.getReference()).getSourceVirtualFile()));
+
+      //Navigate using SourceFile (pointing to real file)
+      ProjectView.getInstance(project).select(editableSModel, psiModelSourceFile.get(), true);
     }
   }
 
@@ -145,31 +140,34 @@ public class ModelRenameHandler implements RenameHandler {
     return modelFile;
   }
 
-  private void deleteGeneratedFiles(SModelDescriptor modelDescriptor) {
+  private void deleteGeneratedFiles(SModel sModel) {
     // TODO: find a way to safely delete generated files. Until then, let's not make a mess
-    if (true) return;
-    String moduleOutputPath = modelDescriptor.getModule().getOutputFor(modelDescriptor);
-    if (moduleOutputPath == null) {
+    if (true) {
       return;
     }
-    IFile moduleOutput = FileSystem.getInstance().getFileByPath(moduleOutputPath);
-    FileGenerationUtil.getDefaultOutputDir(modelDescriptor, moduleOutput).delete();
-    FileGenerationUtil.getDefaultOutputDir(modelDescriptor, FileGenerationUtil.getCachesDir(moduleOutput)).delete();
+
+    // TODO for 3.5: check rewritten code and remove if(true)
+    new ModelDeleteHelper(sModel).removeGeneratedArtifacts();
   }
 
   private static abstract class MyInputValidator implements InputValidatorEx {
+    private final ModelAccess myModelAccess;
+
+    private MyInputValidator(ModelAccess modelAccess) {
+      myModelAccess = modelAccess;
+    }
 
     @Override
     public boolean checkInput(String text) {
-      return text != null && isModelNameValid(new SModelFqName(text.trim(), ""));
+      return text != null && isModelNameValid(text.trim());
     }
 
     @Override
     public boolean canClose(String text) {
       if (text == null) return false;
-      SModelFqName targetFqName = new SModelFqName(text.trim(), "");
-      if (!isModelNameValid(targetFqName)) return false;
-      doRename(targetFqName);
+      String targetName = text.trim();
+      if (!isModelNameValid(targetName)) return false;
+      doRename(targetName);
       return true;
     }
 
@@ -177,30 +175,27 @@ public class ModelRenameHandler implements RenameHandler {
     public String getErrorText(String text) {
       if (text != null) {
         String[] errorText = new String[1];
-        if (!isModelNameValid(new SModelFqName(text.trim(), ""), errorText)) {
+        if (!isModelNameValid(text.trim(), errorText)) {
           return errorText[0];
         }
       }
       return null;
     }
 
-    protected abstract void doRename (SModelFqName fqName);
+    protected abstract void doRename(String fqName);
 
-    private boolean isModelNameValid(SModelFqName modelFqName) {
+    protected abstract SRepository getRepository();
+
+    private boolean isModelNameValid(String modelFqName) {
       return isModelNameValid(modelFqName, new String[1]);
     }
 
-    private boolean isModelNameValid(SModelFqName modelFqName, String[] errorText) {
-      String modelName = modelFqName.getLongName();
+    private boolean isModelNameValid(String modelName, String[] errorText) {
       if (modelName.length() == 0) {
         errorText[0] = MPSBundle.message("create.new.model.dialog.error.empty.name");
         return false;
       }
 
-      if (SModelRepository.getInstance().getModelDescriptor(modelFqName) != null) {
-        errorText[0] = MPSBundle.message("create.new.model.dialog.error.model.exists", modelName);
-        return false;
-      }
 
       if (modelName.lastIndexOf(".") == modelName.length()) {
         errorText[0] = MPSBundle.message("create.new.model.dialog.error.empty.short.name");
@@ -211,29 +206,38 @@ public class ModelRenameHandler implements RenameHandler {
         errorText[0] = MPSBundle.message("create.new.model.dialog.error.invalid.java", modelName);
         return false;
       }
+      try {
+        SModelName mn = new SModelName(modelName);
+        if (new ModelAccessHelper(myModelAccess).runReadAction(() -> !new ModuleRepositoryFacade(getRepository()).getModelsByName(mn).isEmpty())) {
+          errorText[0] = MPSBundle.message("create.new.model.dialog.error.model.exists", modelName);
+          return false;
+        }
+      } catch (IllegalArgumentException ex) {
+        errorText[0] = ex.getMessage();
+        return false;
+      }
       return true;
     }
   }
 
   private static class ModelRenamer {
-    private EditableSModelDescriptor myModelDescriptor;
-    private SModelFqName myModelFqName;
+    private final EditableSModel myModelDescriptor;
+    private final String myNewName;
     private boolean myLazy;
 
-    public ModelRenamer(EditableSModelDescriptor modelDescriptor, SModelFqName fqName, boolean lazy) {
+    public ModelRenamer(EditableSModel modelDescriptor, String fqName, boolean lazy) {
       myModelDescriptor = modelDescriptor;
-      myModelFqName = fqName;
+      myNewName = fqName;
       myLazy = lazy;
     }
 
     public void rename() {
-      myModelDescriptor.rename(myModelFqName, true);
+      myModelDescriptor.rename(myNewName, true);
     }
 
-    public void updateReferencesIfNeeded() {
+    public void updateReferencesIfNeeded(Project project) {
       if (!myLazy) {
-        ReferenceUpdater.getInstance().updateModelReferences();
-        ReferenceUpdater.getInstance().updateModuleReferences();
+        Renamer.updateModelAndModuleReferences(ProjectHelper.fromIdeaProject(project).getRepository());
       }
     }
   }

@@ -16,17 +16,13 @@
 
 package jetbrains.mps.fileTypes;
 
+import com.intellij.lang.DependentLanguage;
 import com.intellij.lang.Language;
 
-public class MPSLanguage extends Language {
-  private static MPSLanguage INSTANCE;
-
-  public static synchronized MPSLanguage getInstance() {
-    if (INSTANCE==null) {
-      INSTANCE = new MPSLanguage();
-    }
-    return INSTANCE;
-  }
+public class MPSLanguage extends Language implements DependentLanguage {
+  // interface DependentLanguage added for files of this lang to be hidden in ctrl-N
+  // find usages of DependentLanguage shows that there should be no other effects
+  public static final MPSLanguage INSTANCE = new MPSLanguage();
 
   private MPSLanguage() {
     super("MPS");

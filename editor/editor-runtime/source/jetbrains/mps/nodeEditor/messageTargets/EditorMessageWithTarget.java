@@ -19,13 +19,10 @@ import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.nodeEditor.DefaultEditorMessage;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.nodeEditor.EditorMessage;
-import jetbrains.mps.nodeEditor.EditorMessageOwner;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
-import jetbrains.mps.nodeEditor.cells.ModelAccessor;
-import jetbrains.mps.nodeEditor.cells.PropertyAccessor;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
+import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.Color;
@@ -41,6 +38,7 @@ public class EditorMessageWithTarget extends DefaultEditorMessage {
     myMessageTarget = target;
   }
 
+  @Override
   public boolean acceptCell(EditorCell cell, EditorComponent editor) {
     //cell can be not a big one so we don't call super.acceptCell
     if (cell == null || !editor.isValid(cell) || cell.getSNode() != getNode()) {
@@ -49,22 +47,17 @@ public class EditorMessageWithTarget extends DefaultEditorMessage {
 
     switch (myMessageTarget.getTarget()) {
       case NODE:
-        return cell.isBigCell();
+        return cell.isBig();
       case REFERENCE:
         if (cell.isReferenceCell()) {
-          return myMessageTarget.getRole().equals(cell.getRole()) && getNode() == cell.getSNode();
+          return myMessageTarget.getRole().equals(cell.getRole());
         } else {
-          return cell.isBigCell() && getCell(editor) == cell;
+          return cell.isBig() && getCell(editor) == cell;
         }
       case PROPERTY:
-        if (!(cell instanceof EditorCell_Property)) {
-          return cell.isBigCell() && getCell(editor) == cell;
-        }
-        EditorCell_Property propertyCell = (EditorCell_Property) cell;
-        ModelAccessor modelAccessor = propertyCell.getModelAccessor();
-        if (modelAccessor instanceof PropertyAccessor) {
-          return myMessageTarget.getRole().equals(((PropertyAccessor) modelAccessor).getPropertyName()) && getNode() == propertyCell.getSNode();
-        }
+        return CellFinder.isCellForProperty(cell, getNode(), myMessageTarget.getRole())
+            || (cell.isBig() && getCell(editor) == cell);
+
       case DELETED_CHILD:
         return getCell(editor) == cell;
       default:
@@ -72,6 +65,7 @@ public class EditorMessageWithTarget extends DefaultEditorMessage {
     }
   }
 
+  @Override
   public EditorCell getCell(EditorComponent editor) {
     switch (myMessageTarget.getTarget()) {
       case NODE:
@@ -88,7 +82,7 @@ public class EditorMessageWithTarget extends DefaultEditorMessage {
   }
 
   @Override
-  public boolean sameAs(EditorMessage message) {
+  public boolean sameAs(SimpleEditorMessage message) {
     return super.sameAs(message) && message instanceof EditorMessageWithTarget
       && myMessageTarget.sameAs(((EditorMessageWithTarget) message).myMessageTarget);
   }

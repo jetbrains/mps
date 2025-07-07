@@ -16,14 +16,16 @@
 package jetbrains.mps.typesystem.inference;
 
 
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.SNode;
+import jetbrains.mps.util.Pair;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
 
 import java.util.Set;
 
 public abstract class SubtypingManager {
-  private static final Logger LOG = Logger.getLogger(SubtypingManager.class);
+  private static final Logger LOG = LogManager.getLogger(SubtypingManager.class);
 
   protected final TypeChecker myTypeChecker;
 
@@ -35,13 +37,27 @@ public abstract class SubtypingManager {
 
   public abstract boolean isSubtype(SNode subType, SNode superType, boolean isWeak);
 
+  public abstract boolean isSubTypeByReplacementRules(SNode subType, SNode superType, boolean isWeak);
+
+  public abstract Pair<Boolean, Boolean> isSubTypeByReplacementRulesAuth(SNode subType, SNode superType, boolean isWeak);
+
+  public abstract boolean isSuperType(SNode superType, Set<SNode> possibleSubTypes);
+
+  public abstract boolean isComparable(SNode left, SNode right, boolean isWeak);
+
+  public abstract boolean isComparableByRules(SNode left, SNode right, boolean isWeak);
+
   public abstract StructuralNodeSet<?> collectImmediateSupertypes(SNode term);
 
   public abstract StructuralNodeSet collectImmediateSupertypes(SNode term, boolean isWeak);
 
+  public abstract void collectImmediateSuperTypes(SNode term, boolean isWeak, StructuralNodeSet result, TypeCheckingContext context);
+
+  // TODO: adapt to the common API style
   public abstract Set<SNode> leastCommonSupertypes(Set<SNode> types, boolean isWeak);
 
-  public abstract boolean isComparable(SNode left, SNode right, boolean isWeak);
-
+  /**
+   * @deprecated use SubtypingUtil
+   */
   public abstract Set<SNode> mostSpecificTypes(Set<SNode> nodes);
 }

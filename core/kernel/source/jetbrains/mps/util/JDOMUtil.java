@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,18 @@
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
+import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -29,10 +34,23 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.CharArrayReader;
+import java.io.CharArrayWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.Writer;
 
 public class JDOMUtil {
-  private static final Logger LOG = Logger.getLogger(JDOMUtil.class);
+  private static final Logger LOG = LogManager.getLogger(JDOMUtil.class);
 
   private static SAXParserFactory factory = null;
 
@@ -49,20 +67,11 @@ public class JDOMUtil {
     try {
       in = file.openInputStream();
       return saxBuilder.build(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
-    } catch (JDOMException e) {
-      LOG.error("FAILED TO LOAD FILE : " + file.getPath());
-      throw e;
-    } catch (IOException e) {
-      LOG.error("FAILED TO LOAD FILE : " + file.getPath());
+    } catch (JDOMException | IOException e) {
+      LOG.error("FAILED TO LOAD FILE : " + file.getPath(), e);
       throw e;
     } finally {
-      if (in != null) {
-        try {
-          in.close();
-        } catch (IOException e) {
-          LOG.error(e);
-        }
-      }
+      FileUtil.closeFileSafe(in);
     }
   }
 
@@ -70,10 +79,7 @@ public class JDOMUtil {
     SAXBuilder saxBuilder = createBuilder();
     try {
       return saxBuilder.build(source);
-    } catch (JDOMException e) {
-      LOG.error("FAILED TO LOAD FILE : " + source.toString());
-      throw e;
-    } catch (IOException e) {
+    } catch (JDOMException | IOException e) {
       LOG.error("FAILED TO LOAD FILE : " + source.toString());
       throw e;
     }
@@ -84,10 +90,7 @@ public class JDOMUtil {
     FileInputStream in = new FileInputStream(file);
     try {
       return saxBuilder.build(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
-    } catch (JDOMException e) {
-      LOG.error("FAILED TO LOAD FILE : " + file.getAbsolutePath());
-      throw e;
-    } catch (IOException e) {
+    } catch (JDOMException | IOException e) {
       LOG.error("FAILED TO LOAD FILE : " + file.getAbsolutePath());
       throw e;
     } finally {
@@ -111,42 +114,38 @@ public class JDOMUtil {
       writeDocument(doc, writer);
     } catch (IOException e) {
       // This is hardly possible
-      LOG.error(e);
+      LOG.error(String.valueOf(doc), e);
     }
     return writer.toString();
   }
 
   public static void writeDocument(Document document, String filePath) throws IOException {
-    OutputStream stream = new BufferedOutputStream(new FileOutputStream(filePath));
-    try {
+    try (OutputStream stream = new BufferedOutputStream(new FileOutputStream(filePath))) {
       writeDocument(document, stream);
-    } finally {
-      stream.close();
     }
   }
 
   public static SAXBuilder createBuilder() {
     final SAXBuilder saxBuilder = new SAXBuilder();
-    saxBuilder.setEntityResolver(new EntityResolver() {
-      public InputSource resolveEntity(String publicId,
-                                       String systemId)
-        throws SAXException, IOException {
-        return new InputSource(new CharArrayReader(new char[0]));
-      }
-    });
+    saxBuilder.setEntityResolver((publicId, systemId) -> new InputSource(new CharArrayReader(new char[0])));
     return saxBuilder;
   }
 
   public static void writeDocument(Document document, IFile file) throws IOException {
-    if (!file.exists()) {
-      file.createNewFile();
-    }
-
-    OutputStream stream = new BufferedOutputStream(file.openOutputStream());
-    try {
+    try (OutputStream stream = new BufferedOutputStream(file.openOutputStream())) {
       writeDocument(document, stream);
-    } finally {
-      stream.close();
+    }
+  }
+
+  public static void writeDocument(Document document, StreamDataSource source) throws IOException {
+    try (OutputStream stream = new BufferedOutputStream(source.openOutputStream())) {
+      writeDocument(document, stream);
+    }
+  }
+
+  public static void writeDocument(Document document, MultiStreamDataSource source, String streamName) throws IOException {
+    try (OutputStream stream = new BufferedOutputStream(source.getStreamByNameOrCreate(streamName).openOutputStream())) {
+      writeDocument(document, stream);
     }
   }
 
@@ -199,129 +198,147 @@ public class JDOMUtil {
     return xmlOutputter;
   }
 
-  private static class MyXMLOutputter extends XMLOutputter {
+  public static class MyXMLOutputter extends XMLOutputter {
+    @Override
     public String escapeAttributeEntities(String str) {
-      StringBuffer buffer;
-      char ch;
-      String entity;
-
-      buffer = null;
-      for (int i = 0; i < str.length(); i++) {
-        ch = str.charAt(i);
-        switch (ch) {
-          case '<':
-            entity = "&lt;";
-            break;
-          case '>':
-            entity = "&gt;";
-            break;
-/*
-case '\'' :
-entity = "&apos;";
-break;
-*/
-          case '\"':
-            entity = "&quot;";
-            break;
-          case '&':
-            entity = "&amp;";
-            break;
-
-// start Max patch
-          case '\n':
-            entity = "&#10;";
-            break;
-
-          case '\r':
-            entity = "&#13;";
-            break;
-
-          case '\t':
-            entity = "&#9;";
-            break;
-// end Max patch
-
-          default:
-            entity = null;
-            break;
-        }
-        if (buffer == null) {
-          if (entity != null) {
-            // An entity occurred, so we'll have to use StringBuffer
-            // (allocate room for it plus a few more entities).
-            buffer = new StringBuffer(str.length() + 20);
-            // Copy previous skipped characters and fall through
-            // to pickup current character
-            buffer.append(str.substring(0, i));
-            buffer.append(entity);
-          }
-        } else {
-          if (entity == null) {
-            buffer.append(ch);
-          } else {
-            buffer.append(entity);
-          }
-        }
-      }
-
-      // If there were any entities, return the escaped characters
-      // that we put in the StringBuffer. Otherwise, just return
-      // the unmodified input string.
-      return (buffer == null) ? str : buffer.toString();
+      return escapeText(str, false, true);
     }
 
+    @Override
     public String escapeElementEntities(String str) {
-      StringBuffer buffer;
-      char ch;
-      String entity;
-
-      buffer = null;
-      for (int i = 0; i < str.length(); i++) {
-        ch = str.charAt(i);
-        switch (ch) {
-// Start patch by Max.
-          case '\"':
-            entity = "&quot;";
-            break;
-// End patch by Max.
-
-          case '<':
-            entity = "&lt;";
-            break;
-          case '>':
-            entity = "&gt;";
-            break;
-          case '&':
-            entity = "&amp;";
-            break;
-          default:
-            entity = null;
-            break;
-        }
-        if (buffer == null) {
-          if (entity != null) {
-            // An entity occurred, so we'll have to use StringBuffer
-            // (allocate room for it plus a few more entities).
-            buffer = new StringBuffer(str.length() + 20);
-            // Copy previous skipped characters and fall through
-            // to pickup current character
-            buffer.append(str.substring(0, i));
-            buffer.append(entity);
-          }
-        } else {
-          if (entity == null) {
-            buffer.append(ch);
-          } else {
-            buffer.append(entity);
-          }
-        }
-      }
-
-      // If there were any entities, return the escaped characters
-      // that we put in the StringBuffer. Otherwise, just return
-      // the unmodified input string.
-      return (buffer == null) ? str : buffer.toString();
+      return escapeText(str, false, false);
     }
   }
 
+
+  @NotNull
+  public static String escapeText(String text, boolean escapeSpaces, boolean escapeLineEnds) {
+    return escapeText(text, false, escapeSpaces, escapeLineEnds);
+  }
+
+  @NotNull
+  public static String escapeText(String text, boolean escapeApostrophes, boolean escapeSpaces, boolean escapeLineEnds) {
+    StringBuilder buffer = null;
+    for (int i = 0; i < text.length(); i++) {
+      final char ch = text.charAt(i);
+      final String quotation = escapeChar(ch, escapeApostrophes, escapeSpaces, escapeLineEnds);
+
+      if (buffer == null) {
+        if (quotation != null) {
+          // An quotation occurred, so we'll have to use StringBuilder
+          // (allocate room for it plus a few more entities).
+          buffer = new StringBuilder(text.length() + 20);
+          // Copy previous skipped characters and fall through
+          // to pickup current character
+          buffer.append(text, 0, i);
+          buffer.append(quotation);
+        }
+      } else {
+        if (quotation == null) {
+          buffer.append(ch);
+        } else {
+          buffer.append(quotation);
+        }
+      }
+    }
+    // If there were any entities, return the escaped characters
+    // that we put in the StringBuilder. Otherwise, just return
+    // the unmodified input string.
+    return buffer == null ? text : buffer.toString();
+  }
+
+  /**
+   * Returns null if no escapement necessary.
+   */
+  @Nullable
+  private static String escapeChar(char c, boolean escapeApostrophes, boolean escapeSpaces, boolean escapeLineEnds) {
+    switch (c) {
+      case '\n':
+        return escapeLineEnds ? "&#10;" : null;
+      case '\r':
+        return escapeLineEnds ? "&#13;" : null;
+      case '\t':
+        return escapeLineEnds ? "&#9;" : null;
+      case ' ':
+        return escapeSpaces ? "&#20" : null;
+      case '<':
+        return "&lt;";
+      case '>':
+        return "&gt;";
+      case '\"':
+        return "&quot;";
+      case '\'':
+        return escapeApostrophes ? "&apos;" : null;
+      case '&':
+        return "&amp;";
+    }
+    return null;
+  }
+
+  public static String unescapeText(@NotNull String text) {
+    StringBuilder buffer = null;
+    for (int i = 0; i < text.length(); i++) {
+      final char ch = text.charAt(i);
+      String quotation = null;
+      int start = i;
+      if (ch == '&') {
+        int semicolon = text.indexOf(';', start + 1);
+        if (semicolon > 0) {
+          String val = text.substring(start + 1, semicolon);
+          if (val.startsWith("#")) {
+            try {
+              int value;
+              if (val.length() > 2 && (val.charAt(1) == 'x' || val.charAt(1) == 'X')) {
+                value = Integer.parseInt(val.substring(2), 16);
+              } else {
+                value = Integer.parseInt(val.substring(1), 10);
+              }
+              if (value >= 0 && value < 0xffff) {
+                quotation = Character.toString((char) value);
+              }
+            } catch (NumberFormatException ex) {
+              /* ignore, skip */
+            }
+          } else {
+            if (val.length() == 2) {
+              if ("lt".equals(val)) {
+                quotation = "<";
+              } else if ("gt".equals(val)) {
+                quotation = ">";
+              }
+            } else if ("amp".equals(val)) {
+              quotation = "&";
+            } else if ("apos".equals(val)) {
+              quotation = "'";
+            } else if ("quot".equals(val)) {
+              quotation = "\"";
+            }
+          }
+          if (quotation != null) {
+            i = semicolon;
+          }
+        }
+      }
+
+      if (buffer == null) {
+        if (quotation != null) {
+          buffer = new StringBuilder(text.length());
+          // Copy previous skipped characters and fall through
+          // to pickup current character
+          buffer.append(text, 0, start);
+          buffer.append(quotation);
+        }
+      } else {
+        if (quotation == null) {
+          buffer.append(ch);
+        } else {
+          buffer.append(quotation);
+        }
+      }
+    }
+    // If there were any entities, return the escaped characters
+    // that we put in the StringBuilder. Otherwise, just return
+    // the unmodified input string.
+    return buffer == null ? text : buffer.toString();
+  }
 }

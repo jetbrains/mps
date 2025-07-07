@@ -15,53 +15,42 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
-import jetbrains.mps.nodeEditor.selection.SingularSelection;
 import jetbrains.mps.nodeEditor.selection.SingularSelectionListenerAdapter;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.SNode;
-import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.openapi.editor.selection.SingularSelection;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.KeyStroke;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
-import java.util.List;
 
 public class UIEditorComponent extends EditorComponent {
   private InspectorEditorComponent myInspector;
 
-  public UIEditorComponent(IOperationContext operationContext, InspectorEditorComponent inspector) {
-    super(operationContext);
+  public UIEditorComponent(SRepository repository, InspectorEditorComponent inspector) {
+    super(repository);
     unregisterKeyboardAction(KeyStroke.getKeyStroke("ESCAPE"));
     myInspector = inspector;
 
-    myInspector.getExternalComponent().setBorder(new LineBorder(Color.DARK_GRAY));
-    getExternalComponent().setBorder(new LineBorder(Color.DARK_GRAY));
+    if (myInspector == null) return;
 
     getSelectionManager().addSelectionListener(new SingularSelectionListenerAdapter() {
       @Override
-      protected void selectionChangedTo(EditorComponent editorComponent, SingularSelection newSelection) {
-        myInspector.inspectNode(newSelection.getEditorCell().getSNode(), editorComponent.getOperationContext());
+      protected void selectionChangedTo(jetbrains.mps.openapi.editor.EditorComponent editorComponent, SingularSelection newSelection) {
+        SNode node = newSelection.getEditorCell().getSNode();
+        final String[] enabledHints = getEditorHintsForNode(node);
+        boolean needToEdit = myInspector.getUpdater().setInitialEditorHints(enabledHints);
+        if (needToEdit || myInspector.getEditedNode() != node) {
+          myInspector.editNode(node);
+        }
       }
     });
-  }
-
-  public void editNode(SNode semanticNode) {
-    super.editNode(semanticNode);
-  }
-
-  public EditorCell createRootCell(List<SModelEvent> events) {
-    if (getEditedNode() == null || getEditorContext() == null) {
-      return new EditorCell_Constant(new EditorContext(this, null, null), null, "<NO NODE>");
-    }
-    return getEditorContext().createRootCell(getEditedNode(), events);
   }
 
   @Override
   public void dispose() {
     super.dispose();
+
+    if (myInspector == null) return;
     myInspector.dispose();
   }
 }

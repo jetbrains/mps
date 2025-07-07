@@ -1,38 +1,34 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="CheckProjectStructure" type="JUnit" factoryName="JUnit">
-    <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+  <configuration default="false" name="CheckProjectStructure" type="JUnit" factoryName="JUnit" folderName="Tests from IDEA Project">
     <module name="testbench" />
-    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-    <option name="ALTERNATIVE_JRE_PATH" value="" />
-    <option name="PACKAGE_NAME" value="" />
-    <option name="MAIN_CLASS_NAME" value="CheckProjectStructure" />
+    <option name="PACKAGE_NAME" value="jetbrains.mps.testbench.junit.suites" />
+    <option name="MAIN_CLASS_NAME" value="jetbrains.mps.testbench.junit.suites.CheckProjectStructure" />
     <option name="METHOD_NAME" value="" />
     <option name="TEST_OBJECT" value="class" />
-    <option name="VM_PARAMETERS" value="-ea -Xss1024k -Xmx1200m -XX:MaxPermSize=128m -XX:+HeapDumpOnOutOfMemoryError -client " />
+    <option name="VM_PARAMETERS" value="-ea -Dmps.junit.project=. -noverify -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError -client" />
     <option name="PARAMETERS" value="" />
-    <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-    <option name="ENV_VARIABLES" />
-    <option name="PASS_PARENT_ENVS" value="true" />
-    <option name="TEST_SEARCH_SCOPE">
-      <value defaultName="singleModule" />
-    </option>
-    <envs>
-      <env name="useNewTypeSystem" value="true" />
-    </envs>
-    <patterns />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <RunnerSettings RunnerId="Debug">
       <option name="DEBUG_PORT" value="40121" />
       <option name="TRANSPORT" value="0" />
       <option name="LOCAL" value="true" />
     </RunnerSettings>
-    <RunnerSettings RunnerId="Profile ">
-      <option name="myExternalizedOptions" value="&#10;additional-options2=onexit\=snapshot&#10;" />
-    </RunnerSettings>
+    <RunnerSettings RunnerId="Profile " />
     <RunnerSettings RunnerId="Run" />
     <ConfigurationWrapper RunnerId="Debug" />
     <ConfigurationWrapper RunnerId="Profile " />
     <ConfigurationWrapper RunnerId="Run" />
-    <method>
+    <method v="2">
+      <option name="Make" enabled="true" />
+      <option name="BuildArtifacts" enabled="true">
+        <artifact name="bootstrap:mps-annotations" />
+        <artifact name="bootstrap:mps-core" />
+        <artifact name="bootstrap:mps-editor" />
+        <artifact name="bootstrap:mps-openapi" />
+        <artifact name="bootstrap:mps-platform" />
+        <artifact name="bootstrap:mps-testbench" />
+        <artifact name="bootstrap:mps-workbench" />
+      </option>
       <option name="AntTarget" enabled="true" antfile="file://$PROJECT_DIR$/testbench/cleanup.xml" target="cleanup" />
     </method>
   </configuration>

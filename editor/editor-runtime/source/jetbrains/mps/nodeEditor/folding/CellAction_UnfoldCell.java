@@ -15,36 +15,33 @@
  */
 package jetbrains.mps.nodeEditor.folding;
 
-import jetbrains.mps.nodeEditor.EditorCellAction;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
-import jetbrains.mps.util.Condition;
+import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
+import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
+import org.jetbrains.mps.util.Condition;
 
-public class CellAction_UnfoldCell extends EditorCellAction {
+public class CellAction_UnfoldCell extends AbstractCellAction {
+  public CellAction_UnfoldCell() {
+    super(false);
+  }
 
+  @Override
   public boolean canExecute(EditorContext context) {
-    EditorCell selectedCell = context.getNodeEditorComponent().getSelectedCell();
+    EditorCell selectedCell = context.getSelectedCell();
     if (selectedCell == null) return false;
     return findCell(selectedCell) != null;
   }
 
+  @Override
   public void execute(EditorContext context) {
-    EditorCell selectedCell = context.getNodeEditorComponent().getSelectedCell();
+    EditorCell selectedCell = context.getSelectedCell();
     EditorCell_Collection targetCell = findCell(selectedCell);
     targetCell.unfold();
   }
 
-  @Override
-  public boolean executeInCommand() {
-    return false;
-  }
-
   private static EditorCell_Collection findCell(EditorCell editorCell) {
-    return editorCell.findParent(new Condition<EditorCell_Collection>() {
-      public boolean met(EditorCell_Collection object) {
-        return object.isFolded();
-      }
-    });
+    return CellFinderUtil.findParent(editorCell, object -> object.isCollapsed());
   }
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model ref="r:1ec420ce-e1f3-4337-ba22-fe29119e47a1(jetbrains.mps.samples.SwingBuilder.typesystem)">
+  <persistence version="9" />
+  <languages>
+    <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
+  </languages>
+  <imports />
+  <registry />
+</model>
+

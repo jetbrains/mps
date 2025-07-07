@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,40 +15,34 @@
  */
 package jetbrains.mps.ide.generator.index;
 
-import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.util.indexing.FileBasedIndex.InputFilter;
 import com.intellij.util.indexing.FileContent;
 import com.intellij.util.indexing.ID;
-import com.intellij.util.indexing.SingleEntryFileBasedIndexExtension;
-import com.intellij.util.indexing.SingleEntryIndexer;
-import com.intellij.util.io.DataExternalizer;
-import com.intellij.util.io.EnumeratorStringDescriptor;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.generator.ModelDigestUtil;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 public class ModelDigestIndex extends BaseModelDigestIndex {
-  public static final ID<Integer, Map<String, String>> NAME = ID.create("ModelDigest");
+  public static final ID<Integer, String> NAME = ID.create("ModelDigest2");
 
-  public ID<Integer, Map<String, String>> getName() {
-    return NAME;
+  public ModelDigestIndex() {
+    super(NAME, 1);
   }
 
+  @NotNull
+  @Override
   public InputFilter getInputFilter() {
-    return new InputFilter() {
-      public boolean acceptInput(VirtualFile file) {
-        return file.getFileType().equals(MPSFileTypeFactory.MODEL_FILE_TYPE);
-      }
+    return file -> {
+      FileType fileType = file.getFileType();
+      return fileType.equals(MPSFileTypeFactory.MPS_FILE_TYPE)
+          || fileType.equals(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE)
+          || fileType.equals(MPSFileTypeFactory.MPS_HEADER_FILE_TYPE);
     };
   }
 
-  public int getVersion() {
-    return 7;
+  @Override
+  protected String calculateDigest(@NotNull FileContent content) {
+    return ModelDigestUtil.hashText(content.getContentAsText().toString());
   }
 }

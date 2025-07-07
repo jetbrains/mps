@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,27 +15,35 @@
  */
 package jetbrains.mps.project.structure.modules.mappingpriorities;
 
-import jetbrains.mps.smodel.SModelReference;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class MappingConfig_RefSet extends MappingConfig_AbstractRef {
+  public static final int PERSISTENCE_ID = 0x55550003;
+
   private List<MappingConfig_AbstractRef> myRefs;
 
   public MappingConfig_RefSet() {
-    myRefs = new ArrayList<MappingConfig_AbstractRef>();
+    myRefs = new ArrayList<>();
   }
 
   public List<MappingConfig_AbstractRef> getMappingConfigs() {
     return myRefs;
   }
 
-  public MappingConfig_RefSet getCopy() {
+  @NotNull
+  @Override
+  public MappingConfig_RefSet copy() {
     MappingConfig_RefSet result = new MappingConfig_RefSet();
     for (MappingConfig_AbstractRef ref : myRefs) {
-      result.myRefs.add(ref != null ? ref.getCopy() : null);
+      result.myRefs.add(ref != null ? ref.copy() : null);
     }
     return result;
   }
@@ -49,11 +57,11 @@ public class MappingConfig_RefSet extends MappingConfig_AbstractRef {
   }
 
   @Override
-  public boolean updateReferences() {
+  public boolean updateReferences(SRepository repository) {
     boolean result = false;
 
     for (MappingConfig_AbstractRef ref : myRefs) {
-      boolean res = ref.updateReferences();
+      boolean res = ref.updateReferences(repository);
       result = result || res;
     }
 
@@ -71,8 +79,29 @@ public class MappingConfig_RefSet extends MappingConfig_AbstractRef {
         affected = true;
       }
     }
-    if (affected && myRefs.size() == 0) {
-      return true;
+    return affected && myRefs.size() == 0;
+  }
+
+  @Override
+  public String asString(SRepository repository) {
+    return myRefs.stream().map(r -> r.asString(repository)).collect(Collectors.joining(", ", "{", "}"));
+  }
+
+  @Override
+  public String asString() {
+    return myRefs.stream().map(MappingConfig_AbstractRef::asString).collect(Collectors.joining(", ", "{", "}"));
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(myRefs);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof MappingConfig_RefSet) {
+      MappingConfig_RefSet r = ((MappingConfig_RefSet) obj);
+      return Objects.equals(myRefs, r.myRefs);
     }
     return false;
   }
