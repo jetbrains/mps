@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,23 +43,19 @@ import java.util.Collection;
  */
 public interface QueryExecutionContext extends QueryExecutor {
 
-  /**
-   * @return true if nodes using this context can be generated in parallel. When false, all nodes that use this context
-   * will be generated from the same thread.
-   */
-  boolean isMultithreaded();
-
   Collection<SNode> applyRule(TemplateReductionRule rule, TemplateContext context) throws GenerationException;
 
   boolean isApplicable(@NotNull TemplateRuleWithCondition rule, @NotNull TemplateContext context) throws GenerationFailureException;
 
   Collection<SNode> applyRule(TemplateRootMappingRule rule, TemplateContext context) throws GenerationException;
 
-  Collection<SNode> applyRule(TemplateCreateRootRule rule, TemplateExecutionEnvironment environment) throws GenerationException;
+  Collection<SNode> applyRule(TemplateCreateRootRule rule, TemplateContext context) throws GenerationException;
 
-  boolean applyRule(TemplateWeavingRule rule, TemplateContext context, SNode outputContextNode) throws GenerationException;
-
-  SNode getContextNode(TemplateWeavingRule rule, TemplateContext context) throws GenerationFailureException;
-
-  void executeScript(TemplateMappingScript mappingScript, SModel model) throws GenerationFailureException;
+  /**
+   * for QEC that wraps another one, try to get the deepest/topmost executor
+   * @since 2021.2
+   */
+  default QueryExecutionContext unwrap() {
+    return this;
+  }
 }

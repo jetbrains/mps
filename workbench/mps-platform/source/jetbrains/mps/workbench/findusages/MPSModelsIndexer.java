@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,28 +18,31 @@ package jetbrains.mps.workbench.findusages;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.util.Consumer;
 import com.intellij.util.indexing.DataIndexer;
+import com.intellij.util.indexing.DefaultFileTypeSpecificInputFilter;
 import com.intellij.util.indexing.FileBasedIndex;
-import com.intellij.util.indexing.FileBasedIndex.FileTypeSpecificInputFilter;
 import com.intellij.util.indexing.FileBasedIndex.InputFilter;
 import com.intellij.util.indexing.FileContent;
 import com.intellij.util.indexing.ID;
 import com.intellij.util.indexing.ScalarIndexExtension;
 import com.intellij.util.io.KeyDescriptor;
+import jetbrains.mps.core.platform.Platform;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
+import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.IndexAwareModelFactory;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.workbench.findusages.UsageEntry.ConceptInstance;
 import jetbrains.mps.workbench.findusages.UsageEntry.ModelUse;
 import jetbrains.mps.workbench.findusages.UsageEntry.NodeUse;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
+import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -54,20 +57,30 @@ import java.util.Map;
 public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
   private static final ID<UsageEntry, Void> NAME = ID.create("mps.NodeUsage");
 
-  private final Map<FileType, IndexAwareModelFactory> myIndexAwareFileTypes = new HashMap<FileType, IndexAwareModelFactory>();
+  private final Map<FileType, IndexAwareModelFactory> myIndexAwareFileTypes = new HashMap<>();
 
   public static Collection<VirtualFile> getContainingFiles(UsageEntry entry, GlobalSearchScope allFiles) {
     return FileBasedIndex.getInstance().getContainingFiles(NAME, entry, allFiles);
   }
 
   public MPSModelsIndexer() {
-    PersistenceFacade persistenceRegistry = PersistenceFacade.getInstance();
-    for (String ext : persistenceRegistry.getModelFactoryExtensions()) {
-      final ModelFactory mf = persistenceRegistry.getModelFactory(ext);
+    final Platform mpsPlatform = MPSCoreComponents.getInstance().getPlatform();
+    // FTR, (a) there's duplicated code in PropertyValueIndex,
+    //      (b) RootNodeNameIndex.doModeParsing() approaches MF detection in a different way (likely, less hacky)
+    //      (c)  MPSFileTypeFactory.findByExtension("model") == null, therefore not FilePerRootModelFactory for MPSFileTypeFactory.MPS_HEADER_FILE_TYPE,
+    //           which is added with extra code, below. Note, that code overwrites IAMF for .mpsr files (which is detected by findByExtension)
+    //      I suppose using logic like in RootNodeNameIndex (if we don't get our own MPS-aware indexer that doesn't look into files) would help to
+    //      get rid of deprecated MF.getPreferredDataSourceTypes()
+    for (ModelFactory mf : mpsPlatform.findComponent(ModelFactoryService.class).getFactories()) {
       if (mf instanceof IndexAwareModelFactory) {
-        final FileType ft = MPSFileTypeFactory.findByExtension(ext);
-        if (ft != null) {
-          myIndexAwareFileTypes.put(ft, (IndexAwareModelFactory) mf);
+        for (DataSourceType type : mf.getPreferredDataSourceTypes()) {
+          if (type instanceof FileExtensionDataSourceType) {
+            String fileExt = ((FileExtensionDataSourceType) type).getFileExtension();
+            final FileType ft = MPSFileTypeFactory.findByExtension(fileExt);
+            if (ft != null) {
+              myIndexAwareFileTypes.put(ft, (IndexAwareModelFactory) mf);
+            }
+          }
         }
       }
     }
@@ -100,7 +113,7 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
   @NotNull
   @Override
   public InputFilter getInputFilter() {
-    return new MyFilter();
+    return new DefaultFileTypeSpecificInputFilter(myIndexAwareFileTypes.keySet().toArray(new FileType[0]));
   }
 
   @Override
@@ -114,7 +127,7 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
   }
 
   private static class IndexCallback implements Callback {
-    private final Map<UsageEntry, Void> myResult = new HashMap<UsageEntry, Void>(128);
+    private final Map<UsageEntry, Void> myResult = new HashMap<>(128);
 
     public Map<UsageEntry, Void> getResult() {
       return myResult;
@@ -141,23 +154,6 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
     }
   }
 
-  private class MyFilter implements FileTypeSpecificInputFilter {
-
-    @Override
-    public void registerFileTypesUsedForIndexing(@NotNull Consumer<FileType> fileTypeSink) {
-      for (FileType ft : myIndexAwareFileTypes.keySet()) {
-        fileTypeSink.consume(ft);
-      }
-    }
-
-    @Override
-    public boolean acceptInput(@NotNull VirtualFile file) {
-      // AFAIU, FileBasedIndex does filtering according to file types supplied in #registerFileTypesUsedForIndexing
-      // unfortunately, it doesn't state it clearly in the javadoc.
-      return true;
-    }
-  }
-
   private class ModelIndexer implements DataIndexer<UsageEntry, Void, FileContent> {
 
     @NotNull
@@ -172,7 +168,7 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
       try {
         mf.index(new ByteArrayInputStream(content), cb);
       } catch (IOException ex) {
-        Logger.getLogger(MPSModelsIndexer.class).warn(String.format("Indexing failed: %s", ex), ex);
+        Logger.getLogger(MPSModelsIndexer.class).warning(String.format("Indexing failed: %s", ex), ex);
       }
       return cb.getResult();
     }

@@ -8,6 +8,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class ConceptProperties {
   public void stringConceptProperty(SNode node) {
@@ -15,19 +17,28 @@ public class ConceptProperties {
     String alias = SConceptOperations.conceptAlias(SNodeOperations.getConcept(node));
     String text = "alias is " + SConceptOperations.conceptAlias(SNodeOperations.getConcept(node));
     int length = SConceptOperations.conceptAlias(SNodeOperations.getConcept(node)).length();
-    SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34fa226eL, "alias"), "foo");
-    SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34fa226eL, "alias"), "bar");
+    SPropertyOperations.set(node, PROPS.virtualPackage$EkXl, "foo");
+    SPropertyOperations.assign(node, PROPS.virtualPackage$EkXl, "bar");
   }
   public void booleanConceptProperty(SNode node) {
     boolean isAbstract2 = SNodeOperations.getConcept(node).isAbstract();
     SNode cd = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"));
-    SPropertyOperations.set(cd, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract"), "" + (true));
-    SPropertyOperations.set(cd, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract"), "" + (false));
+    SPropertyOperations.set(cd, PROPS.abstract$ibpT, true);
+    SPropertyOperations.assign(cd, PROPS.abstract$ibpT, false);
   }
   public void m1(SNode node) {
-    SConceptOperations.conceptAlias(SNodeOperations.getConcept(SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"))));
+    SConceptOperations.conceptAlias(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw)));
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty abstract$ibpT = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

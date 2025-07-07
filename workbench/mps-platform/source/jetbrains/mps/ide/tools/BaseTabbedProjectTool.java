@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
-import com.intellij.ui.content.ContentManagerAdapter;
 import com.intellij.ui.content.ContentManagerEvent;
+import com.intellij.ui.content.ContentManagerListener;
 import jetbrains.mps.plugins.tool.IComponentDisposer;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,37 +31,41 @@ import javax.swing.KeyStroke;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * Replaces {@link jetbrains.mps.plugins.tool.GeneratedTabbedTool}.
- */
-public abstract class BaseTabbedProjectTool extends BaseProjectTool {
+public abstract class BaseTabbedProjectTool extends BaseTool {
 
-  private List<IDisposableTab> myTabList = new ArrayList<IDisposableTab>();
-  private boolean myContentRemovedListenerAdded = false;
-
-  @Deprecated
-  @ToRemove(version = 3.5)
-  protected BaseTabbedProjectTool(Project project, String id, int number, Icon icon,
-      ToolWindowAnchor anchor, boolean canCloseContent) {
-    super(project, id, number, icon, anchor, canCloseContent);
-  }
+  private final List<IDisposableTab> myTabList = new ArrayList<>();
+  private AtomicBoolean myContentRemovedListenerAdded = new AtomicBoolean(false);
 
   protected BaseTabbedProjectTool(Project project, String id, Map<String, KeyStroke> shortcutsByKeymap, Icon icon,
-      ToolWindowAnchor anchor, boolean canCloseContent) {
+                                  ToolWindowAnchor anchor, boolean canCloseContent) {
     super(project, id, shortcutsByKeymap, icon, anchor, false, canCloseContent);
   }
 
   @Override
   protected void doUnregister() {
     ContentManager contentManager = getContentManager();
-    if (contentManager != null && !contentManager.isDisposed()) {
+    if (contentManager != null && !contentManager.isDisposed() && !getProject().isDisposed()) {
       contentManager.removeAllContents(true);
     }
   }
 
+  /**
+   * Changing the visibility, since the generated subclasses need to call this method,
+   * yet the actual TabbedTool concept instances are not subclasses of {@link BaseTabbedProjectTool}
+   * @return Delegates to the BaseTool class
+   */
+  @Override
+  public @Nullable ContentManager getContentManager() {
+    return super.getContentManager();
+  }
+
   public void closeTab(JComponent component) {
     ContentManager contentManager = getContentManager();
+    if (contentManager == null) {
+      return;
+    }
     Content content = contentManager.getContent(component);
     if (content != null) {
       contentManager.removeContent(content, true);
@@ -71,24 +74,26 @@ public abstract class BaseTabbedProjectTool extends BaseProjectTool {
 
   public <T extends JComponent> void addTab(final T tabComponent, @NotNull String title, Icon icon,
       final IComponentDisposer<T> tabDisposer, boolean openTool) {
-    IDisposableTab tab = new IDisposableTab() {
-      @Override
-      public void disposeTab() {
-        if (tabDisposer == null) {
-          return;
+    Tab tab;
+    if (tabDisposer == null) {
+      tab = new Tab(tabComponent, title, icon);
+    } else {
+      tab = new Tab(tabComponent, title, icon) {
+        @Override
+        public void disposeTab() {
+          tabDisposer.disposeComponent(tabComponent);
         }
-        tabDisposer.disposeComponent(tabComponent);
-      }
+      };
+    }
+    addTab(tab, false, openTool);
+  }
 
-      @Override
-      public JComponent getComponent() {
-        return tabComponent;
-      }
-    };
-
+  public void addTab(final Tab tab, boolean forceNewTab, boolean openTool) {
     addContentRemovedListenerIfNeeded();
-    closeCurrentTabIfUnpinned();
-    addContent(tab.getComponent(), title, icon, true);
+    if (!forceNewTab) {
+      closeCurrentTabIfUnpinned();
+    }
+    addContent(tab.getComponent(), tab.getTitle(), tab.getIcon(), true);
     setSelectedComponent(tab.getComponent());
     myTabList.add(tab);
     if (openTool) {
@@ -96,6 +101,7 @@ public abstract class BaseTabbedProjectTool extends BaseProjectTool {
     }
   }
 
+  @SuppressWarnings("unused")
   public JComponent getSelectedTab() {
     ContentManager contentManager = getContentManager();
     Content selectedContent = contentManager.getSelectedContent();
@@ -110,6 +116,7 @@ public abstract class BaseTabbedProjectTool extends BaseProjectTool {
    * Indicate tab is of interest and shall not be closed/replaced with a new one
    * Does nothing if tab is <code>null</code> or not found
    */
+  @SuppressWarnings("unused")
   public <T extends JComponent> void pinTab(@Nullable T tab) {
     Content content = getContentManager().getContent(tab);
     if (content != null) {
@@ -121,6 +128,7 @@ public abstract class BaseTabbedProjectTool extends BaseProjectTool {
    * Indicates tab could be replaced with a new one.
    * Does nothing if tab is <code>null</code> or not found
    */
+  @SuppressWarnings("unused")
   public <T extends JComponent> void unpinTab(@Nullable T tab) {
     Content content = getContentManager().getContent(tab);
     if (content != null) {
@@ -140,31 +148,58 @@ public abstract class BaseTabbedProjectTool extends BaseProjectTool {
   }
 
   private void addContentRemovedListenerIfNeeded() {
-    if (myContentRemovedListenerAdded) {
+    if (myContentRemovedListenerAdded.getAndSet(true)) {
       return;
     }
 
-    this.getContentManager().addContentManagerListener(new ContentManagerAdapter() {
+    // the listener is removed automatically on content manager dispose
+    this.getContentManager().addContentManagerListener(new ContentManagerListener() {
       @Override
-      public void contentRemoved(ContentManagerEvent event) {
+      public void contentRemoved(@NotNull ContentManagerEvent event) {
         int index = event.getIndex();
-        IDisposableTab tab = myTabList.get(index);
+        IDisposableTab tab = myTabList.remove(index);
         tab.disposeTab();
-        myTabList.remove(index);
       }
     });
-    myContentRemovedListenerAdded = true;
   }
 
   @Override
-  protected void createTool(boolean early) {
-    /* no-op */
+  public Project getProject() {
+    // FIXME methods declared inside node<TabbedToolDeclaration> instance don't see protected
+    //       methods from BaseTabbedProjectTool/BaseTool superclasses, despite recognizing these.
+    //       To address this limitation, provisionally expose protected method as public
+    //       Pretty much the same needed for getContentManager(), overcame that with getToolWindow().getContentManager()
+    return super.getProject();
   }
 
   public interface IDisposableTab {
-    void disposeTab();
+    default void disposeTab() {}
 
     JComponent getComponent();
   }
 
+  public static class Tab implements IDisposableTab {
+    private final JComponent myComponent;
+    private final String myTitle;
+    private final Icon myIcon;
+
+    public Tab(@NotNull JComponent component, @NotNull String title, Icon icon) {
+      myComponent = component;
+      myTitle = title;
+      myIcon = icon;
+    }
+
+    @Override
+    public JComponent getComponent() {
+      return myComponent;
+    }
+
+    public String getTitle() {
+      return myTitle;
+    }
+
+    public Icon getIcon() {
+      return myIcon;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import jetbrains.mps.openapi.editor.cells.EditorCellContext;
 import jetbrains.mps.openapi.editor.descriptor.BaseConceptEditor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -29,11 +28,11 @@ import java.util.Collection;
 abstract class AbstractEditorRegistry<T extends BaseConceptEditor> extends AbstractEditorHintsSpecificRegistry<T> {
 
   @NotNull
-  private final EditorCellContext myCellContext;
+  private final Collection<String> myHints;
 
-  AbstractEditorRegistry(@NotNull EditorCellContext cellContext, @NotNull SRepository repository) {
+  AbstractEditorRegistry(@NotNull Collection<String> hints, @NotNull SRepository repository) {
     super(repository);
-    myCellContext = cellContext;
+    myHints = hints;
   }
 
   @Override
@@ -43,6 +42,6 @@ abstract class AbstractEditorRegistry<T extends BaseConceptEditor> extends Abstr
   }
 
   protected Collection<String> getCurrentContextHints() {
-    return myCellContext.getHints();
+    return myHints;
   }
 }

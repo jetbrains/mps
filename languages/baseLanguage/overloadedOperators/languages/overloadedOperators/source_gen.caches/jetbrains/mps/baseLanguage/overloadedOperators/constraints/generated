@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="du9z1414cxkvql42hqg2pa0t3qggo5o" />
+<product version="3" modelHash="7l4mbd8vrfpew61wrvn909tk3s467jn">
+  <files names="BinaryOperationReference_Constraints.java:ConstraintsAspectDescriptor.java:ContainerImport_Constraints.java:CustomOperatorUsage_Constraints.java:CustomOperator_Constraints.java" />
+</product>
 

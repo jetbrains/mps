@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,14 +34,21 @@ public enum DependencyCellState {
    * Engaged generator entry that might need attention as the language is directly in use by the model
    */
   SUPERFLUOUS_ENGAGED(
-      NORMAL.getTextAttributes().derive(SimpleTextAttributes.STYLE_WAVED, null, null, fromPlatform(CodeInsightColors.WARNINGS_ATTRIBUTES).getEffectColor()),
+      NORMAL.getTextAttributes().derive(SimpleTextAttributes.STYLE_WAVED, null, null, fromPlatform(CodeInsightColors.WARNINGS_ATTRIBUTES).getErrorStripeColor()),
       "Language is used by the model directly, no need to engage it explicitly"),
 
   /**
    * Extends dependency between languages with no extends/implements between their concepts
    */
   SUPERFLUOUS_EXTENDS(SUPERFLUOUS_ENGAGED.getTextAttributes().derive(-1, null, null, null),
-      "No language concepts are extended here, regular dependency might suffice");
+      "No language concepts are extended here, regular dependency might suffice"),
+
+
+  /**
+   * Used language that is not part of associated generation plan (if any)
+   */
+  WARN_NOT_IN_GP(SUPERFLUOUS_ENGAGED.getTextAttributes().derive(-1, null, null, null),
+      "This language is not processed by associated generation plan");
 
   private final SimpleTextAttributes myTextAttributes;
   private final String myTooltip;

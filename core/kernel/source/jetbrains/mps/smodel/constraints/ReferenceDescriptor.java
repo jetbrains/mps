@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,35 +15,24 @@
  */
 package jetbrains.mps.smodel.constraints;
 
-import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.scope.ErrorScope;
-import jetbrains.mps.scope.ModelPlusImportedScope;
+import jetbrains.mps.scope.FilterCommentedScope;
+import jetbrains.mps.scope.FilteringByConceptScope;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.DynamicReference;
-import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.language.ConceptRegistryUtil;
+import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
-import jetbrains.mps.smodel.runtime.base.BaseReferenceScopeProvider;
-import jetbrains.mps.smodel.search.ConceptAndSuperConceptsScope;
-import jetbrains.mps.smodel.search.ISearchScope.Adapter;
-import jetbrains.mps.smodel.search.ISearchScope.RefAdapter;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SReference;
-import org.jetbrains.mps.openapi.module.SModule;
-
-import static jetbrains.mps.smodel.constraints.ModelConstraintsUtils.getOperationContext;
 
 /**
  * Abstraction to capture constraints-related stuff about references.
@@ -55,31 +44,35 @@ import static jetbrains.mps.smodel.constraints.ModelConstraintsUtils.getOperatio
  * (e.g. #getReferencePresentation() with booleans)
  */
 public abstract class ReferenceDescriptor {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(ReferenceDescriptor.class));
-  private static final BaseReferenceScopeProvider EMPTY_REFERENCE_SCOPE_PROVIDER = new BaseReferenceScopeProvider();
+  private static final Logger LOG = Logger.getLogger(ReferenceDescriptor.class);
 
   // can be ErrorScope
   @NotNull
-  abstract public Scope getScope();
+  public Scope getScope() {
+    return getScope(new EvaluateScopeContext());
+  }
 
   /**
-   * @return null if there is no presentation for reference
-   * @deprecated uses only in the editor
+   * {@code EvaluateScopeContext} not necessarily support multi-thread operation,
+   * don't share the instance among different threads (i.e. {@code getScope(ESC)} call with same ESC instance)
+   * unless you provide special implementation.
+   *
+   * @param evaluateContext helps to evaluate scope instances effectively
+   * @return scope for a reference, could be {@code ErrorScope}
    */
-  @Nullable
-  @Deprecated
-  @ToRemove(version = 3.5)
-  abstract public String getReferencePresentation(SNode targetNode, boolean visible, boolean smartRef, boolean inEditor);
+  @NotNull
+  public abstract Scope getScope(EvaluateScopeContext evaluateContext);
+  //
+  //     is in place, or there's only 1 thread to access scopes.
 
   /**
-   * @deprecated this class shall not expose its implementation detail, otherwise there's no point in its presence.
-   * refactor the single use and remove this method, it's our internal api.
-   * Perhaps, we need a distinct validator object?
+   * @return an optional pointer to the scope declaration function
    */
   @Nullable
-  @Deprecated
-  @ToRemove(version = 3.5)
-  public ReferenceScopeProvider getScopeProvider() {
+  public SNodeReference getScopeRuleNodeReference() {
+    // hides implementation detail ReferenceScopeProvider#getSearchScopeValidatorNode(). Templates of lang.constraints
+    // generate ReferenceScopeProvider implementation, hand-written code access ReferenceDescriptor 'facade', not impl classes.
+    // XXX Perhaps, we need a distinct validator object?
     return null;
   }
 
@@ -146,48 +139,38 @@ public abstract class ReferenceDescriptor {
 
     @Override
     @NotNull
-    public Scope getScope() {
+    public Scope getScope(EvaluateScopeContext evaluateContext) {
       final ReferentConstraintsContextImpl context =
-          new ReferentConstraintsContextImpl(myContextNode, myContainmentLink, myPosition, myReferenceNode, myReference != null, myLinkTarget);
+          new ReferentConstraintsContextImpl(myContextNode, myContainmentLink, myPosition, myReferenceNode, myLinkTarget, evaluateContext);
 
       try {
         if (myScopeProvider != null) {
-          Scope searchScope = myScopeProvider.createScope(getOperationContext(getModule()), context);
+          Scope searchScope = myScopeProvider.createScope(context);
           if (searchScope != null) {
-            if (myReference != null && searchScope instanceof Adapter) {
-              return new RefAdapter(((Adapter) searchScope).getSearchScope(), myReference);
-            }
-            return searchScope;
+            // XXX shall I account for EmptyScope? No reason to filter it further.
+            // XXX why do we care to filter further, why don't we rely provider did the filtering responsibly?
+            return new FilteringByConceptScope(searchScope, myLinkTarget);
           }
         }
         // global search scope
-        return new ModelPlusImportedScope(getModel(), false, myLinkTarget);
+        // `FilterCommentedScope` is not moved in ofNodesDefault as it requires knowing the context node rather than being applicable to the whole model
+        return new FilterCommentedScope(
+            myContextNode,
+            context.getScopeEvaluationContext().ofNodesDefault(myContextNode.getModel(), myLinkTarget)
+        );
       } catch (Exception t) {
-        LOG.error(t, myContextNode);
-        return new ErrorScope("can't create search scope for link `" + myReferenceLink + "' in '" + myNodeConcept.getName() + "'");
+        LOG.error(String.format("Context node %s", myContextNode), t);
+        return new ErrorScope("can't create search scope for link `" + myReferenceLink + "' in '" + myNodeConcept.getName() + "'", t);
       }
     }
 
-    @Override
     @Nullable
-    @Deprecated
-    @ToRemove(version = 3.5)
-    public String getReferencePresentation(SNode targetNode, boolean visible, boolean smartRef, boolean inEditor) {
-      if (myScopeProvider == null || !myScopeProvider.hasPresentation()) {
+    @Override
+    public SNodeReference getScopeRuleNodeReference() {
+      if (myScopeProvider == null) {
         return null;
       }
-
-      return myScopeProvider.getPresentation(
-          getOperationContext(getModule()),
-          new PresentationReferentConstraintsContextImpl(myContextNode, myContainmentLink, myPosition, myReferenceNode, myReference != null, myLinkTarget,
-                                                         targetNode, visible, smartRef, inEditor)
-      );
-    }
-
-    @Override
-    @Nullable
-    public ReferenceScopeProvider getScopeProvider() {
-      return myScopeProvider;
+      return myScopeProvider.getSearchScopeValidatorNode();
     }
 
     @Nullable
@@ -206,56 +189,11 @@ public abstract class ReferenceDescriptor {
 
     @NotNull
     private static SAbstractConcept getLinkTarget(@NotNull SReferenceLink genuineLink, @NotNull SAbstractConcept concreteConcept) {
-      // TODO for now, link target is calculated using language sources.
-      //      it will be possible to do it without sources when information about link specialization will be generated.
-      SNode conceptDeclaration = concreteConcept.getDeclarationNode();
-
-      SNode linkDeclaration = new ConceptAndSuperConceptsScope(conceptDeclaration).getMostSpecificLinkDeclarationByRole(genuineLink.getName());
-
-      final SNode linkDeclarationTarget = SModelUtil.getLinkDeclarationTarget(linkDeclaration);
-      if (linkDeclarationTarget != null) {
-        SAbstractConcept concept = MetaAdapterByDeclaration.getConcept(linkDeclarationTarget);
-        if (concept != null) {
-          return concept;
-        }
-      }
-
-      return genuineLink.getTargetConcept();
+      return ConceptRegistryUtil.getMostSpecificLinkTarget(concreteConcept, genuineLink);
     }
 
     private SModel getModel() {
       return myContextNode.getModel();
-    }
-
-    private SModule getModule() {
-      return ModelConstraintsUtils.getModule(getModel());
-    }
-  }
-
-  static class ErrorReferenceDescriptor extends ReferenceDescriptor {
-    private final String message;
-
-    public ErrorReferenceDescriptor(String message) {
-      this.message = message;
-    }
-
-    @NotNull
-    @Override
-    public Scope getScope() {
-      return new ErrorScope(message);
-    }
-
-    @Override
-    @Nullable
-    @Deprecated
-    @ToRemove(version = 3.5)
-    public String getReferencePresentation(SNode targetNode, boolean visible, boolean smartRef, boolean inEditor) {
-      return null;
-    }
-
-    @Override
-    public ReferenceScopeProvider getScopeProvider() {
-      return null;
     }
   }
 }

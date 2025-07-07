@@ -18,14 +18,14 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
   </registry>
   <node concept="15_jI_" id="bxo68MyhKP">
     <property role="TrG5h" value="MyInputRoot1" />
-    <property role="3FifNy" value="argsInTemplateCall" />
+    <property role="3FifNy" value="bxo68MyhqV/argsInTemplateCall" />
     <node concept="15J_HG" id="bxo68MyhKQ" role="15EZgy">
       <property role="TrG5h" value="NodeA" />
     </node>

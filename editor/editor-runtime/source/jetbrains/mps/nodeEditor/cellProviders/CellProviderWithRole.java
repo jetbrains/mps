@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,10 +27,6 @@ public abstract class CellProviderWithRole extends AbstractCellProvider {
   protected String myNoTargetText;
   protected EditorContext myEditorContext;
 
-  // auxiliary cell provider, which may help to create some parts of resulting cell (used in inheritors)
-  @Deprecated
-  protected AbstractCellProvider myAuxiliaryCellProvider;
-
   // if the cell to provide "allows" "empty" target of its relation.
   // The exact meaning of what is "empty" and what is "to allow"
   // may differ among different inheritors of this class.
@@ -52,9 +48,6 @@ public abstract class CellProviderWithRole extends AbstractCellProvider {
   public EditorContext getEditorContext() {
     return myEditorContext;
   }
-
-  //sets a role object for this provider
-  public abstract void setRole(Object role);
 
   //gets an attribute for this provider's node hanging on this provider's role
   public SNode getRoleAttribute() {
@@ -89,21 +82,5 @@ public abstract class CellProviderWithRole extends AbstractCellProvider {
 
   public void setAllowsEmptyTarget(boolean allowsEmptyTarget) {
     myAllowsEmptyTarget = allowsEmptyTarget;
-  }
-
-  /**
-   * @deprecated Since MPS 3.5 not used
-   */
-  @Deprecated
-  public void setAuxiliaryCellProvider(AbstractCellProvider provider) {
-    myAuxiliaryCellProvider = provider;
-  }
-
-  /**
-   * @deprecated Since MPS 3.5 not used
-   */
-  @Deprecated
-  public AbstractCellProvider getAuxiliaryCellProvider() {
-    return myAuxiliaryCellProvider;
   }
 }

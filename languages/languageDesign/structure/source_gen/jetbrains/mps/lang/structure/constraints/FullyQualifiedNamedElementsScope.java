@@ -8,10 +8,13 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /**
  * A simple scope for a sequence of concepts which uses the concept's fully qualified name as its reference text.
+ * [artem] I don't quite understand the benefit of this scope, does it make sense when regular refInfo is not enough? 
+ * What's the process preserves result of getReferenceText() for later use in resolve()?
  */
 public class FullyQualifiedNamedElementsScope extends SimpleScope {
   public FullyQualifiedNamedElementsScope(Iterable<SNode> nodes) {
@@ -24,6 +27,11 @@ public class FullyQualifiedNamedElementsScope extends SimpleScope {
   @Nullable
   @Override
   public String getReferenceText(@NotNull SNode target) {
-    return (String) INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(target, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")));
+    // FWIW, SimpleScope.resolve() uses the same method to convert text to node back
+    return (String) INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(target, CONCEPTS.INamedConcept$Kd));
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

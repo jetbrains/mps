@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,32 +17,67 @@ package jetbrains.mps.extapi.persistence;
 
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.IFileUtils;
+import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 /**
- * Default source root which lives until the <code>Path</code> api appears
+ * Default source root implementation
  *
  * @author apyshkin
  * @since 3.5
  */
-@ToRemove(version = 3.6)
 public final class DefaultSourceRoot implements SourceRoot {
-  private final String myPath;
-  private final IFile myAbsolutePath;
+  private final String myRelativePath; // null when myIsAbsolute;
+  private final PathSpec myLocation; // content dir when !myIsAbsolute (to use with myRelativePath) or absolute path otherwise
+  private final boolean myIsAbsolute;
 
   public DefaultSourceRoot(@NotNull String path, @NotNull IFile contentRootDirectory) {
-    myPath = canonicalize(path);
-    if (FileUtil.isAbsolute(myPath)) {
-      myAbsolutePath = contentRootDirectory.getFileSystem().getFile(myPath);
-    } else {
-      myAbsolutePath = contentRootDirectory.getDescendant(myPath);
-    }
+    this(path, new PathSpec(contentRootDirectory));
+  }
+
+  /**
+   * Handy alternative to {@code new DefaultSourceRoot("", absolutePath)}, with a difference that {@link #getPath()} value is absolute path, not ""
+   * @param absolutePath
+   */
+  public DefaultSourceRoot(@NotNull IFile absolutePath) {
+    this(new PathSpec(absolutePath));
+  }
+
+  public DefaultSourceRoot(@NotNull String relativePath, @NotNull PathSpec contentDirectory) {
+    myIsAbsolute = false;
+    // don't care if relativePath is absolute (don't want to come up with a check or use FileUtil.isAbsolute() due to java.io.File)
+    myRelativePath = canonicalize(relativePath);
+    myLocation = contentDirectory;
+  }
+
+  public DefaultSourceRoot(@NotNull PathSpec rootDir) {
+    myIsAbsolute = true;
+    myRelativePath = null;
+    myLocation = rootDir;
+  }
+
+  /*package*/ void resolve(Function<String,IFile> path2file) {
+    myLocation.resolve(path2file);
+  }
+
+  /*package*/ boolean isAbsolute() {
+    return myIsAbsolute;
+  }
+
+  /*package*/ String relativePath() {
+    assert !myIsAbsolute;
+    return myRelativePath;
+  }
+
+  /*package*/ PathSpec rootSpec() {
+    assert myIsAbsolute;
+    // note, myLocation is the same as geAbsolutePath() ONLY when myIsAbsolute.
+    return myLocation;
   }
 
   @NotNull
@@ -57,18 +92,27 @@ public final class DefaultSourceRoot implements SourceRoot {
   @NotNull
   @Override
   public IFile getAbsolutePath() {
-    return myAbsolutePath;
+    if (myLocation.resolved()) {
+      final IFile base = myLocation.resolvedFile();
+      if (myIsAbsolute) {
+        return base;
+      }
+      return base.getDescendant(myRelativePath);
+    }
+    return new InvalidFile(getPath());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hashCode(myPath);
+    // I'm certain we can't get otherwise identical objects with different myIsAbsolute
+    return Objects.hashCode(myLocation.value()) + 17*Objects.hashCode(myRelativePath);
   }
 
   @Override
   public boolean equals(Object obj) {
     if (obj instanceof DefaultSourceRoot) {
-      return Objects.equals(myPath, ((DefaultSourceRoot) obj).getPath());
+      final DefaultSourceRoot d = (DefaultSourceRoot) obj;
+      return myIsAbsolute == d.myIsAbsolute && Objects.equals(myRelativePath, d.myRelativePath) && Objects.equals(myLocation.value(), d.myLocation.value());
     }
     return false;
   }
@@ -76,11 +120,20 @@ public final class DefaultSourceRoot implements SourceRoot {
   @NotNull
   @Override
   public String getPath() {
-    return myPath;
+    final String base = canonicalize(myLocation.resolved() ? myLocation.resolvedPath() : myLocation.value());
+    if (myIsAbsolute) {
+      return base;
+    }
+    if (base.endsWith(Path.UNIX_SEPARATOR)) {
+      return base + myRelativePath;
+    } else {
+      return base + Path.UNIX_SEPARATOR + myRelativePath;
+    }
   }
 
   @Override
   public String toString() {
-    return "Path [" + getAbsolutePath() + "]";
+    return "SourceRoot [" + getPath() + "]";
   }
+
 }

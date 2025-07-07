@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.util.InternUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -62,25 +60,10 @@ public abstract class SModelId implements org.jetbrains.mps.openapi.model.SModel
   }
 
   /**
-   * @deprecated moduleId shall not be part of model id. Although it's possible that intention was to make it 'globally unique' (as it superclass suggests),
-   * usage pattern tells us they were not deemed global (there's always module id when a model reference with foreign id is created). And even global id shall
-   * not use set of strings concatenated with '#' to describe complex data structure.
-   */
-  @Deprecated
-  @ToRemove(version = 3.4)
-  public static SModelId foreign(String kind, String moduleId, String id) {
-    if (moduleId == null || moduleId.length() == 0) {
-      return new ForeignSModelId(kind + "#" + id);
-    }
-    return new ForeignSModelId(kind + "#" + moduleId + "#" + id);
-  }
-
-  /**
    * @deprecated this method doesn't support {@link org.jetbrains.mps.openapi.persistence.SModelIdFactory},
    * use {@link org.jetbrains.mps.openapi.persistence.PersistenceFacade#createModelId(String)} instead.
    */
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   public static SModelId fromString(String id) {
     if (id.startsWith(REGULAR_PREFIX)) {
       String suffix = id.substring(REGULAR_PREFIX.length());
@@ -97,15 +80,6 @@ public abstract class SModelId implements org.jetbrains.mps.openapi.model.SModel
   }
 
   private SModelId() {
-  }
-
-  /**
-   * @deprecated model id is immutable, what's the point to make a copy?
-   */
-  @Deprecated
-  @ToRemove(version = 3.4)
-  public SModelId getCopy() {
-    return fromString(toString());
   }
 
   @Override
@@ -167,7 +141,8 @@ public abstract class SModelId implements org.jetbrains.mps.openapi.model.SModel
     private final String myId;
 
     /*package*/ ForeignSModelId(String id) {
-      myId = InternUtil.intern(id);
+      // don't care about intern() performance penalty (if any at all), ForeignSModelId is for legacy persistence scenarios only
+      myId = id.intern();
     }
 
     /**

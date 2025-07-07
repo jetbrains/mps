@@ -17,13 +17,24 @@ public class UnpackHelper extends DependenciesHelper {
   private final Set<SNode> requiredSet = new HashSet<SNode>();
   private final Set<SNode> requiredWithContent = new HashSet<SNode>();
   private boolean evaluated = false;
-  private final List<SNode> statements = new ArrayList<SNode>();
   private PathProvider myPathProvider;
 
-  public UnpackHelper(VisibleArtifacts visible, TemplateQueryContext genContext) {
-    super(genContext, visible.getProject());
-    this.visible = visible;
-    this.myPathProvider = new PathProvider(genContext, visible.getProject());
+  /*package*/ UnpackHelper(SNode project, TemplateQueryContext genContext) {
+    super(Context.defaultContext(genContext), project);
+    // Though I'd prefer no custom ArtifactLookup to avoid conversion to original node, DH doesn't get putArtifact unless I supply one
+    // XXX what does ^^^ this comment mean??
+    this.visible = new VisibleArtifacts(project) {
+      @Override
+      protected ArtifactLookup createLookup() {
+        return new ArtifactLookup(this, UnpackHelper.this);
+      }
+    };
+    visible.collectOnlyExternal();
+    this.myPathProvider = new PathProvider(genContext, project);
+  }
+
+  /*package*/ VisibleArtifacts visibleArtifacts() {
+    return visible;
   }
 
   /*package*/ void add(SNode n, boolean withContent) {
@@ -52,19 +63,14 @@ public class UnpackHelper extends DependenciesHelper {
     }
   }
   public boolean isRequired(SNode n) {
+    // FIXME no uses for the method, delete?
     return requiredSet.contains(n);
   }
   public boolean isContentRequired(SNode n) {
     return requiredWithContent.contains(n);
   }
-  public void emit(SNode st) {
-    ListSequence.fromList(statements).addElement(st);
-  }
   public SNode parent(SNode node) {
     return visible.parent(node);
-  }
-  public List<SNode> getStatements() {
-    return ListSequence.fromList(statements).asUnmodifiable();
   }
   public PathProvider getPathProvider() {
     return myPathProvider;

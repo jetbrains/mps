@@ -4,14 +4,14 @@ package jetbrains.mps.generator.test.xmodel.lang1.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_Bean = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Operation = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Property = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_Bean;
+  private ConceptPresentation props_Operation;
+  private ConceptPresentation props_Property;
 
   @Override
   @Nullable
@@ -19,10 +19,25 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.Bean:
+        if (props_Bean == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_Bean = cpb.create();
+        }
         return props_Bean;
       case LanguageConceptSwitch.Operation:
+        if (props_Operation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Operation");
+          props_Operation = cpb.create();
+        }
         return props_Operation;
       case LanguageConceptSwitch.Property:
+        if (props_Property == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_Property = cpb.create();
+        }
         return props_Property;
     }
     return null;

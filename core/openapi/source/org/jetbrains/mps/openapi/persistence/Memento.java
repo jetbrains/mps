@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,6 +66,14 @@ public interface Memento {
    * Creates and registers a new child memento.
    */
   Memento createChild(String type);
+
+  /**
+   * PROVISIONAL API. NEED TO SORT OUT FacetDescriptor persistence, whether we update existing memento (and then we need a way to
+   * edit child mementos with this or similar method) or we use memento as a snapshot (like model root descriptors do)
+   * I lean towards no state kept between uses (i.e. save(Memento) receives blank instance, w/o loaded state), to throw loaded Memento data away
+   * once it's no longer needed (use of mem dump reveals a lot of duplicate string we read from xml and keep in memory as Memento values)
+   */
+  void clearChildren(String type);
 
   /**
    * Returns a deep copy of the current memento and its children

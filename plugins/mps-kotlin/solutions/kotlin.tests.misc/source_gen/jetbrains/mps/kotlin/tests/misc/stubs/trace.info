@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1160998861373:jetbrains.mps.baseLanguage.structure.AssertStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:eec037d7-3e10-4036-974a-838b679589c3(jetbrains.mps.kotlin.tests.misc.stubs@tests)/2543656779682200127">
+    <file name="StubSamplesLoading_Test.java">
+      <node id="2543656779682200127" at="28,36,29,60" concept="9" />
+      <node id="2543656779682234010" at="33,58,34,49" concept="2" />
+      <node id="6949626076594506400" at="37,64,38,55" concept="2" />
+      <node id="2543656779682200127" at="43,52,44,19" concept="9" />
+      <node id="2543656779682200127" at="48,36,49,69" concept="2" />
+      <node id="2543656779682234010" at="52,60,53,22" concept="2" />
+      <node id="2543656779682234010" at="53,22,54,209" concept="2" />
+      <node id="6949626076594506400" at="56,66,57,22" concept="2" />
+      <node id="6949626076594535387" at="58,30,59,84" concept="6" />
+      <node id="6949626076594535646" at="59,84,60,147" concept="6" />
+      <node id="6949626076594534425" at="60,147,61,220" concept="2" />
+      <node id="2543656779682704414" at="65,75,66,50" concept="6" />
+      <node id="2543656779682704740" at="66,50,67,75" concept="6" />
+      <node id="2543656779682705847" at="67,75,68,36" concept="6" />
+      <node id="2543656779682707320" at="68,36,69,96" concept="6" />
+      <node id="2543656779682426994" at="69,96,70,92" concept="5" />
+      <node id="2543656779684497948" at="70,92,71,81" concept="5" />
+      <node id="2543656779684510164" at="72,30,73,96" concept="2" />
+      <node id="2543656779682200127" at="25,0,27,0" concept="8" trace="ourParametersCacheExtension" />
+      <node id="2543656779682200127" at="28,0,31,0" concept="1" trace="StubSamplesLoading_Test#()V" />
+      <node id="2543656779682200127" at="43,0,46,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2543656779684499150" at="71,81,74,7" concept="3" />
+      <node id="2543656779682234010" at="32,0,36,0" concept="4" trace="test_resultClassLoading#()V" />
+      <node id="6949626076594506400" at="36,0,40,0" concept="4" trace="test_componentFunctionLoading#()V" />
+      <node id="2543656779682200127" at="47,0,51,0" concept="4" trace="initTestNodes#()V" />
+      <node id="2543656779682234010" at="52,0,56,0" concept="4" trace="test_resultClassLoading#()V" />
+      <node id="6949626076594506400" at="57,22,62,9" concept="2" />
+      <node id="6949626076594506400" at="56,0,64,0" concept="4" trace="test_componentFunctionLoading#()V" />
+      <node id="6949626076594516096" at="65,0,76,0" concept="4" trace="assertLoadedAs#(Lorg/jetbrains/mps/openapi/model/SNodeReference;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="2543656779682200127" at="28,36,29,60" />
+      <scope id="2543656779682234010" at="33,58,34,49" />
+      <scope id="6949626076594506400" at="37,64,38,55" />
+      <scope id="2543656779682200127" at="43,52,44,19" />
+      <scope id="2543656779682200127" at="48,36,49,69" />
+      <scope id="2543656779684499152" at="72,30,73,96" />
+      <scope id="2543656779682234010" at="52,60,54,209" />
+      <scope id="2543656779682200127" at="28,0,31,0" />
+      <scope id="2543656779682200127" at="43,0,46,0">
+        <var name="owner" id="2543656779682200127" />
+      </scope>
+      <scope id="6949626076594506400" at="58,30,61,220" />
+      <scope id="2543656779682234010" at="32,0,36,0" />
+      <scope id="6949626076594506400" at="36,0,40,0" />
+      <scope id="2543656779682200127" at="47,0,51,0" />
+      <scope id="2543656779682234010" at="52,0,56,0" />
+      <scope id="6949626076594506400" at="56,66,62,9" />
+      <scope id="6949626076594506400" at="56,0,64,0" />
+      <scope id="6949626076594516096" at="65,75,74,7">
+        <var name="diff" id="2543656779684497949" />
+        <var name="stubLoaded" id="2543656779682426995" />
+      </scope>
+      <scope id="6949626076594516096" at="65,0,76,0">
+        <var name="compareTo" id="6949626076594520201" />
+        <var name="reference" id="6949626076594520140" />
+      </scope>
+      <unit id="2543656779682200127" at="41,0,77,0" name="jetbrains.mps.kotlin.tests.misc.stubs.StubSamplesLoading_Test$TestBody" />
+      <unit id="2543656779682200127" at="23,0,78,0" name="jetbrains.mps.kotlin.tests.misc.stubs.StubSamplesLoading_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:eec037d7-3e10-4036-974a-838b679589c3(jetbrains.mps.kotlin.tests.misc.stubs@tests)/3463082351151603486">
+    <file name="FunctionTypeReceiverLoading_Test.java">
+      <node id="3463082351151603486" at="30,45,31,60" concept="9" />
+      <node id="3463082351152143847" at="35,63,36,54" concept="2" />
+      <node id="3463082351151603486" at="41,52,42,19" concept="9" />
+      <node id="3463082351151603486" at="46,36,47,46" concept="2" />
+      <node id="3463082351152143847" at="50,65,51,22" concept="2" />
+      <node id="3463082351152146238" at="52,30,53,111" concept="6" />
+      <node id="3463082351152341440" at="53,111,54,84" concept="6" />
+      <node id="3463082351152342593" at="54,84,55,51" concept="6" />
+      <node id="3463082351152231347" at="55,51,56,102" concept="5" />
+      <node id="3463082351152359659" at="56,102,57,0" concept="7" />
+      <node id="3463082351152360151" at="57,0,58,181" concept="6" />
+      <node id="3463082351152268530" at="58,181,59,153" concept="5" />
+      <node id="3463082351152273250" at="59,153,60,32" concept="0" />
+      <node id="3463082351152235444" at="60,32,61,22" concept="2" />
+      <node id="3463082351152271579" at="61,22,62,32" concept="0" />
+      <node id="3463082351152278244" at="62,32,63,42" concept="5" />
+      <node id="3463082351152302377" at="63,42,64,131" concept="5" />
+      <node id="3463082351152307587" at="64,131,65,43" concept="2" />
+      <node id="3463082351152338978" at="65,43,66,0" concept="7" />
+      <node id="3463082351152362637" at="66,0,67,38" concept="6" />
+      <node id="3463082351152309296" at="67,38,68,173" concept="0" />
+      <node id="3463082351151603486" at="75,0,76,0" concept="8" trace="function$Weyv" />
+      <node id="3463082351151603486" at="76,0,77,0" concept="8" trace="type$1aXr" />
+      <node id="3463082351151603486" at="77,0,78,0" concept="8" trace="receiverType$7yLT" />
+      <node id="3463082351151603486" at="81,0,82,0" concept="8" trace="FunctionType$ig" />
+      <node id="3463082351151603486" at="27,0,29,0" concept="8" trace="ourParametersCacheExtension" />
+      <node id="3463082351151603486" at="30,0,33,0" concept="1" trace="FunctionTypeReceiverLoading_Test#()V" />
+      <node id="3463082351151603486" at="41,0,44,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3463082351152143847" at="34,0,38,0" concept="4" trace="test_receiversProperlyLoaded#()V" />
+      <node id="3463082351151603486" at="45,0,49,0" concept="4" trace="initTestNodes#()V" />
+      <node id="3463082351152143847" at="51,22,69,9" concept="2" />
+      <node id="3463082351152143847" at="50,0,71,0" concept="4" trace="test_receiversProperlyLoaded#()V" />
+      <scope id="3463082351151603486" at="30,45,31,60" />
+      <scope id="3463082351152143847" at="35,63,36,54" />
+      <scope id="3463082351151603486" at="41,52,42,19" />
+      <scope id="3463082351151603486" at="46,36,47,46" />
+      <scope id="3463082351151603486" at="30,0,33,0" />
+      <scope id="3463082351151603486" at="41,0,44,0">
+        <var name="owner" id="3463082351151603486" />
+      </scope>
+      <scope id="3463082351152143847" at="34,0,38,0" />
+      <scope id="3463082351151603486" at="45,0,49,0" />
+      <scope id="3463082351152143847" at="52,30,68,173">
+        <var name="function" id="3463082351152231348" />
+        <var name="functionType" id="3463082351152302378" />
+        <var name="params" id="3463082351152268531" />
+        <var name="secondParam" id="3463082351152278245" />
+      </scope>
+      <scope id="3463082351152143847" at="50,65,69,9" />
+      <scope id="3463082351152143847" at="50,0,71,0" />
+      <unit id="3463082351151603486" at="80,0,83,0" name="jetbrains.mps.kotlin.tests.misc.stubs.FunctionTypeReceiverLoading_Test$CONCEPTS" />
+      <unit id="3463082351151603486" at="74,0,79,0" name="jetbrains.mps.kotlin.tests.misc.stubs.FunctionTypeReceiverLoading_Test$LINKS" />
+      <unit id="3463082351151603486" at="39,0,73,0" name="jetbrains.mps.kotlin.tests.misc.stubs.FunctionTypeReceiverLoading_Test$TestBody" />
+      <unit id="3463082351151603486" at="25,0,84,0" name="jetbrains.mps.kotlin.tests.misc.stubs.FunctionTypeReceiverLoading_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:eec037d7-3e10-4036-974a-838b679589c3(jetbrains.mps.kotlin.tests.misc.stubs@tests)/8869766091651206546">
+    <file name="JvmStubsLoading_Test.java">
+      <node id="8869766091651206546" at="23,33,24,60" concept="9" />
+      <node id="8869766091651422439" at="28,77,29,68" concept="2" />
+      <node id="8869766091651206546" at="34,52,35,19" concept="9" />
+      <node id="8869766091651206546" at="39,36,40,46" concept="2" />
+      <node id="8869766091651422439" at="43,79,44,22" concept="2" />
+      <node id="8869766091651422439" at="45,30,46,63" concept="5" />
+      <node id="8869766091651422439" at="46,63,47,170" concept="2" />
+      <node id="8869766091651206546" at="20,0,22,0" concept="8" trace="ourParametersCacheExtension" />
+      <node id="8869766091651206546" at="23,0,26,0" concept="1" trace="JvmStubsLoading_Test#()V" />
+      <node id="8869766091651206546" at="34,0,37,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8869766091651422439" at="27,0,31,0" concept="4" trace="test_ErrorMessagesCheck8869766091651422439#()V" />
+      <node id="8869766091651206546" at="38,0,42,0" concept="4" trace="initTestNodes#()V" />
+      <node id="8869766091651422439" at="44,22,48,9" concept="2" />
+      <node id="8869766091651422439" at="43,0,50,0" concept="4" trace="test_ErrorMessagesCheck8869766091651422439#()V" />
+      <scope id="8869766091651206546" at="23,33,24,60" />
+      <scope id="8869766091651422439" at="28,77,29,68" />
+      <scope id="8869766091651206546" at="34,52,35,19" />
+      <scope id="8869766091651206546" at="39,36,40,46" />
+      <scope id="8869766091651422439" at="45,30,47,170">
+        <var name="nodeToCheck" id="8869766091651422439" />
+      </scope>
+      <scope id="8869766091651206546" at="23,0,26,0" />
+      <scope id="8869766091651206546" at="34,0,37,0">
+        <var name="owner" id="8869766091651206546" />
+      </scope>
+      <scope id="8869766091651422439" at="27,0,31,0" />
+      <scope id="8869766091651206546" at="38,0,42,0" />
+      <scope id="8869766091651422439" at="43,79,48,9" />
+      <scope id="8869766091651422439" at="43,0,50,0" />
+      <unit id="8869766091651206546" at="32,0,52,0" name="jetbrains.mps.kotlin.tests.misc.stubs.JvmStubsLoading_Test$TestBody" />
+      <unit id="8869766091651206546" at="18,0,53,0" name="jetbrains.mps.kotlin.tests.misc.stubs.JvmStubsLoading_Test" />
+    </file>
+  </root>
+</debug-info>
+

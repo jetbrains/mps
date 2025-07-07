@@ -2,9 +2,7 @@
 <model ref="r:c6b5a119-ed4d-420e-b7df-fa1b4101c68f(jetbrains.mps.lang.editor.menus.testLanguage.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="3" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
-    <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
+    <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
     <import index="tpc2" ref="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)" />
@@ -35,7 +33,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -60,13 +58,12 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="3z8xuiBWPEK" role="1TKVEi">
       <property role="IQ2ns" value="4091667478582876848" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
       <ref role="20lvS9" node="3z8xuiBWPEI" resolve="ScopesTestConceptChild" />
     </node>
     <node concept="1TJgyj" id="3z8xuiBWPEM" role="1TKVEi">
       <property role="IQ2ns" value="4091667478582876850" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="reference" />
       <ref role="20lvS9" node="3z8xuiBWPEJ" resolve="ScopesTestConceptReference" />
     </node>
@@ -90,7 +87,7 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4CpFf$TvO_9" role="1TKVEi">
       <property role="IQ2ns" value="5339489019635910985" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="node" />
       <ref role="20lvS9" to="tpck:gw2VY9q" resolve="BaseConcept" />
     </node>
@@ -114,7 +111,7 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7N9KcaJ6LzU" role="1TKVEi">
       <property role="IQ2ns" value="8991930073415883002" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="child" />
       <ref role="20lvS9" node="7N9KcaJ6Lzu" resolve="ChildOfParentWithEmptyCell" />
     </node>
@@ -125,16 +122,6 @@
     <property role="TrG5h" value="ChildOfParentWithEmptyCell" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
   </node>
-  <node concept="1TIwiD" id="3z8xuiBWPEI">
-    <property role="EcuMT" value="4091667478582876846" />
-    <property role="TrG5h" value="ScopesTestConceptChild" />
-    <property role="3GE5qa" value="Scopes" />
-    <property role="34LRSv" value="scopes test concept - child" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="PrWs8" id="3z8xuiBWQoO" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="3z8xuiBWPEJ">
     <property role="EcuMT" value="4091667478582876847" />
     <property role="TrG5h" value="ScopesTestConceptReference" />
@@ -142,6 +129,16 @@
     <property role="34LRSv" value="scopes test concept - reference" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="3z8xuiBWQoK" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3z8xuiBWPEI">
+    <property role="EcuMT" value="4091667478582876846" />
+    <property role="TrG5h" value="ScopesTestConceptChild" />
+    <property role="3GE5qa" value="Scopes" />
+    <property role="34LRSv" value="scopes test concept - child" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="3z8xuiBWQoO" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>

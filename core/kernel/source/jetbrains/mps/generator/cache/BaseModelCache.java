@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,34 +15,29 @@
  */
 package jetbrains.mps.generator.cache;
 
-import jetbrains.mps.cleanup.CleanupListener;
-import jetbrains.mps.cleanup.CleanupManager;
-import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Per-repository, model-associated caches.
+ * FIXME shall use {@code ModelStreamManager} instead of a file to access associated cached data of a model.
  */
-public abstract class BaseModelCache<T> implements CoreComponent, CleanupListener {
+public abstract class BaseModelCache<T> {
   // absence of model in the cache means we have no idea about present cache state.
   // if model is in the cache, we do know both IFile and cached object
-  private final ConcurrentMap<SModelReference, Pair<IFile, T>> myCache = new ConcurrentHashMap<SModelReference, Pair<IFile, T>>();
-  protected final SRepository myRepository;
-  private final CleanupManager myCleanupManager;
-  private final SRepositoryContentAdapter myRepoListener = new MyRepositoryListener();
+  private final ConcurrentMap<SModelReference, Pair<IFile, T>> myCache = new ConcurrentHashMap<>();
 
   @Nullable
   protected abstract T readCache(SModel model);
@@ -51,31 +46,31 @@ public abstract class BaseModelCache<T> implements CoreComponent, CleanupListene
   public abstract String getCacheFileName();
 
   @Nullable
-  protected IFile getCacheFile(SModel modelDescriptor) {
-    IFile cachesDir = getCachesDirInternal(SModelOperations.getOutputCacheLocation(modelDescriptor));
-    if (cachesDir == null) {
-      return null;
+  protected IFile getCacheFile(final SModel model) {
+    // account for multiple GTFs, take the one to answer with cache dir and prefer existing files
+    final Stream<GenerationTargetFacet> allFacets = GenerationTargetFacet.stream(model);
+    IFile firstNotNullNonExistentFile = null;
+    for (IFile cachesDir : allFacets.map(gtf -> gtf.getOutputCacheLocation(model)).filter(Objects::nonNull).collect(Collectors.toList())) {
+      final IFile descendant = cachesDir.findChild(getCacheFileName());
+      if (descendant.isDirectory()) {
+        // generally, files answer isDirectory/isFile along with existence check, but as long as our IFile API doesn't
+        // document this explicitly not have isFile() method,  I've got additional exists() check.
+        continue;
+      }
+      if (!descendant.exists()) {
+        if (firstNotNullNonExistentFile == null) {
+          firstNotNullNonExistentFile = descendant;
+        }
+        continue;
+      }
+      return descendant;
     }
-
-    return cachesDir.getDescendant(getCacheFileName());
+    // I believe use of this method in update() expects non-existent file to get one created
+    return firstNotNullNonExistentFile;
   }
 
   // In fact, can be application-wide if we use compound key (repo+modelref)
-  protected BaseModelCache(SRepository repository, CleanupManager cleanupManager) {
-    myRepository = repository;
-    myCleanupManager = cleanupManager;
-  }
-
-  @Override
-  public void init() {
-    myRepository.addRepositoryListener(myRepoListener);
-    myCleanupManager.addCleanupListener(this);
-  }
-
-  @Override
-  public void dispose() {
-    myCleanupManager.removeCleanupListener(this);
-    myRepository.removeRepositoryListener(myRepoListener);
+  protected BaseModelCache() {
   }
 
   @Nullable
@@ -98,7 +93,7 @@ public abstract class BaseModelCache<T> implements CoreComponent, CleanupListene
     if (cache == null) {
       return null;
     }
-    final Pair<IFile, T> entry = new Pair<IFile, T>(cacheFile, cache);
+    final Pair<IFile, T> entry = new Pair<>(cacheFile, cache);
     Pair<IFile, T> existing = myCache.putIfAbsent(mr, entry);
     if (existing != null) {
       return existing.o2;
@@ -106,12 +101,13 @@ public abstract class BaseModelCache<T> implements CoreComponent, CleanupListene
     return cache;
   }
 
-  public void invalidateCacheForFile(IFile cacheFile) {
+  @Nullable
+  public SModelReference invalidateCacheForFile(IFile cacheFile) {
     SModelReference mr = findCachedModelForFile(cacheFile);
-    if (mr == null) {
-      return;
+    if (mr != null) {
+      myCache.remove(mr);
     }
-    myCache.remove(mr);
+    return mr;
   }
 
   @Nullable
@@ -124,12 +120,6 @@ public abstract class BaseModelCache<T> implements CoreComponent, CleanupListene
     return null;
   }
 
-  @Nullable
-  protected IFile getCachesDirInternal(@Nullable IFile defaultCachesDir) {
-    // XXX there's little reason to keep this method, GenerationDependenciesCache shall override getCacheFile() directly.
-    return defaultCachesDir;
-  }
-
   /**
    * Invoke to set new cached value
    */
@@ -137,20 +127,32 @@ public abstract class BaseModelCache<T> implements CoreComponent, CleanupListene
     final SModelReference mr = model.getReference();
     Pair<IFile, T> entry = myCache.remove(mr);
     if (entry != null) {
+      myCache.put(mr, new Pair<>(entry.o1, cache));
+    } else {
+      // Note, we need to record new value in cache, otherwise there's no re-use of values we pass here from
+      // e.g. BLDependenciesCache.generateCache(). BLDependenciesCache instance then goes from TextGen to JavaCompile,
+      // where same models get queried for their BL deps. If I don't want to read them again, need to keep cached value here.
+      myCache.put(mr, new Pair<>(getCacheFile(model), cache));
       // decided not to update with incomplete entry, although perhaps it won't hurt (file == null))
-      myCache.put(mr, new Pair<IFile, T>(entry.o1, cache));
+      // File name presence seems to affect discard() only; BLDependenciesCache instance populated this way (through update()) doesn't go
+      // far beyond TextGen/JavaCompile facets, where I don't expect any explicit 'discard'. Perhaps, file == null is ok as well.
     }
   }
 
   /**
    * Forget cached state, if any; unlike {@link #discard(org.jetbrains.mps.openapi.model.SModel)} does not touch persisted/serialized state.
+   * @return {@code true} if there's cached value
    */
-  public final void clean(@NotNull SModel model) {
-    myCache.remove(model.getReference());
+  public final boolean clean(@NotNull SModel model) {
+    return myCache.remove(model.getReference()) != null;
   }
 
   protected final void clean(SModelReference modelRef) {
     myCache.remove(modelRef);
+  }
+
+  public void clean() {
+    myCache.clear();
   }
 
   /**
@@ -161,37 +163,10 @@ public abstract class BaseModelCache<T> implements CoreComponent, CleanupListene
     IFile cachedFile = removed == null ? null : removed.o1;
     IFile actualCacheFile = getCacheFile(model);
     if (actualCacheFile != null) {
-      actualCacheFile.delete();
+      actualCacheFile.deleteIfExists();
     }
     if (cachedFile != null && cachedFile != actualCacheFile) {
-      cachedFile.delete();
-    }
-  }
-
-  @Override
-  public void performCleanup() {
-    myCache.clear();
-  }
-
-  private class MyRepositoryListener extends SRepositoryContentAdapter {
-    @Override
-    public void beforeModelRemoved(SModule module, SModel model) {
-      clean(model);
-    }
-
-    @Override
-    public void modelAdded(SModule module, SModel model) {
-      clean(model);
-    }
-
-    @Override
-    public void modelRenamed(SModule module, SModel model, SModelReference oldRef) {
-      clean(model);
-    }
-
-    @Override
-    public void modelReplaced(SModel model) {
-      clean(model);
+      cachedFile.deleteIfExists();
     }
   }
 }

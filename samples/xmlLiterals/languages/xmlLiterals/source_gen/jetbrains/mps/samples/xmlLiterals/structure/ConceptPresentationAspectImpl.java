@@ -4,14 +4,14 @@ package jetbrains.mps.samples.xmlLiterals.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_ElementMacro = new ConceptPresentationBuilder().shortDesc("element macro").create();
-  private final ConceptPresentation props_TextMacro = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_XmlLiteral = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_ElementMacro;
+  private ConceptPresentation props_TextMacro;
+  private ConceptPresentation props_XmlLiteral;
 
   @Override
   @Nullable
@@ -19,10 +19,26 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.ElementMacro:
+        if (props_ElementMacro == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("element macro");
+          cpb.rawPresentation("$${");
+          props_ElementMacro = cpb.create();
+        }
         return props_ElementMacro;
       case LanguageConceptSwitch.TextMacro:
+        if (props_TextMacro == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("${");
+          props_TextMacro = cpb.create();
+        }
         return props_TextMacro;
       case LanguageConceptSwitch.XmlLiteral:
+        if (props_XmlLiteral == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("xml literal");
+          props_XmlLiteral = cpb.create();
+        }
         return props_XmlLiteral;
     }
     return null;

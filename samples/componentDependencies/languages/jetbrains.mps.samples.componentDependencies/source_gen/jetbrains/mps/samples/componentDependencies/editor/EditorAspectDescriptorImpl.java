@@ -7,7 +7,7 @@ import jetbrains.mps.openapi.editor.descriptor.EditorHintsProvider;
 import java.util.Collection;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditorHint;
 import java.util.Arrays;
-import jetbrains.mps.editor.runtime.desctiptor.ConceptEditorHintImpl;
+import jetbrains.mps.editor.runtime.descriptor.ConceptEditorHintImpl;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -21,7 +21,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
   @NotNull
   public Collection<ConceptEditor> getDeclaredEditors(SAbstractConcept concept) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
-    switch (index_xbvbvu_a0b.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
         return Arrays.asList(new ConceptEditor[]{new Component_Editor(), new Component_diagram_Editor(), new Component_table_Editor()});
       case 1:
@@ -42,5 +42,5 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
   }
 
 
-  private static final ConceptSwitchIndex index_xbvbvu_a0b = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L), MetaIdFactory.conceptId(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814242bL), MetaIdFactory.conceptId(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L), MetaIdFactory.conceptId(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381be166L), MetaIdFactory.conceptId(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381be145L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L), MetaIdFactory.conceptId(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814242bL), MetaIdFactory.conceptId(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L), MetaIdFactory.conceptId(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381be166L), MetaIdFactory.conceptId(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381be145L)).seal();
 }

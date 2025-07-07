@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.extapi.persistence;
 
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -68,7 +69,8 @@ final class SourcePaths {
     }
     SourceRootKind existingRootKind = getKind(root);
     if (existingRootKind != null) {
-      throw new SourceRootAlreadyExistsException(root, kind, root, existingRootKind);
+      Logger.getLogger(SourcePaths.class).warning(SourceRootAlreadyExistsException.getMsg(root, kind, root, existingRootKind));
+      return;
     }
     myFileKind2SourcePaths.putIfAbsent(kind, new ArrayList<>());
     myFileKind2SourcePaths.get(kind).add(root);
@@ -140,8 +142,13 @@ final class SourcePaths {
     @Override
     @NotNull
     public String getMessage() {
-      return MessageFormat.format("Trying to register the source root: [{1}, kind {2}] whilst [{3}, kind {4}] " +
-                                  "is already registered", myRoot, myPathKind, myExistingRoot, myExistingRootKind);
+      return getMsg(myRoot, myPathKind, myExistingRoot, myExistingRootKind);
+    }
+
+    @NotNull
+    public static String getMsg(SourceRoot root, SourceRootKind pathKind, SourceRoot existingRoot, SourceRootKind existingRootKind) {
+      return MessageFormat.format("Trying to register the source root: [{0}, kind {1}] while [{2}, kind {3}] " +
+                                  "is already registered", root, pathKind, existingRoot, existingRootKind);
     }
   }
 }

@@ -15,10 +15,12 @@
  */
 package jetbrains.mps.ide.findusages.view.optionseditor.components;
 
+import com.intellij.icons.AllIcons;
 import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.components.JBCheckBox;
 import com.intellij.ui.components.JBLabel;
+import com.intellij.util.PlatformIcons;
 import jetbrains.mps.ide.findusages.FindersManager;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
 import jetbrains.mps.ide.findusages.view.optionseditor.options.FindersOptions;
@@ -32,8 +34,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.MenuKeyEvent;
 import java.awt.Cursor;
 import java.awt.event.KeyAdapter;
@@ -70,26 +70,21 @@ public class FindersEditor extends BaseEditor<FindersOptions> {
       final JBCheckBox finderCheckBox = new JBCheckBox(finder.getDescription(), isEnabled);
       finderCheckBox.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 0));
 
-      finderCheckBox.addChangeListener(new ChangeListener() {
-        @Override
-        public void stateChanged(ChangeEvent e) {
-          String finderClassName = finder.getClass().getName();
-          if (((JCheckBox) e.getSource()).isSelected()) {
-            if (!myOptions.getFindersClassNames().contains(finderClassName)) {
-              myOptions.getFindersClassNames().add(finderClassName);
-              findersListChangedByUser();
-            }
-          } else {
-            myOptions.getFindersClassNames().remove(finderClassName);
+      finderCheckBox.addChangeListener(e -> {
+        String finderClassName = finder.getClass().getName();
+        if (((JCheckBox) e.getSource()).isSelected()) {
+          if (!myOptions.getFindersClassNames().contains(finderClassName)) {
+            myOptions.getFindersClassNames().add(finderClassName);
             findersListChangedByUser();
           }
+        } else {
+          myOptions.getFindersClassNames().remove(finderClassName);
+          findersListChangedByUser();
         }
       });
 
-      if (!finder.getLongDescription().equals("")) {
-        StringBuilder htmlTooltipText = new StringBuilder();
-        htmlTooltipText.append("<html>").append(finder.getLongDescription().replaceAll("\n", "<br>")).append(")</html>");
-        finderCheckBox.setToolTipText(htmlTooltipText.toString());
+      if (!finder.getLongDescription().isEmpty()) {
+        finderCheckBox.setToolTipText("<html>" + finder.getLongDescription().replaceAll("\n", "<br>") + ")</html>");
       }
 
       JToolBar finderHolder = new JToolBar(JToolBar.HORIZONTAL);
@@ -106,7 +101,7 @@ public class FindersEditor extends BaseEditor<FindersOptions> {
           }
         });
 
-        JBLabel goToFinderLabel = new JBLabel(Nodes.Symlink, JLabel.CENTER);
+        JBLabel goToFinderLabel = new JBLabel(PlatformIcons.EXPORT_ICON , JLabel.CENTER);
         goToFinderLabel.setBorder(BorderFactory.createEmptyBorder());
         goToFinderLabel.setFocusable(false);
         goToFinderLabel.setToolTipText("Go to finder declaration");

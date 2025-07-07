@@ -17,7 +17,6 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
-import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.openapi.editor.style.Style;
@@ -41,19 +40,19 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
   }
 
   /*package*/ EditorCell createCell() {
-    return createAlternation_ho2vdo_a();
+    return createAlternation_0();
   }
 
-  private EditorCell createAlternation_ho2vdo_a() {
+  private EditorCell createAlternation_0() {
     boolean alternationCondition = true;
     alternationCondition = nodeCondition_ho2vdo_a0();
     EditorCell editorCell = null;
     if (alternationCondition) {
-      editorCell = createReadOnlyModelAccessor_ho2vdo_a0();
+      editorCell = createReadOnlyModelAccessor_0();
     } else {
-      editorCell = createError_ho2vdo_a0();
+      editorCell = createError_0();
     }
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ModelReferenceFQName_ComponentBuilder_a.ModelReferenceExpression_component_cellMenu_ho2vdo_a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ModelReferenceExpression_component_cellMenu_ho2vdo_a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   private boolean nodeCondition_ho2vdo_a0() {
@@ -68,15 +67,10 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
       return this.myComponent.createSubstituteActions(cellContext, editorContext);
     }
   }
-  private EditorCell createReadOnlyModelAccessor_ho2vdo_a0() {
-    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor() {
+  private EditorCell createReadOnlyModelAccessor_0() {
+    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
         return (String) ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(myNode);
-      }
-      public void setText(String s) {
-      }
-      public boolean isValidText(String s) {
-        return EqualUtil.equals(s, getText());
       }
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
@@ -84,11 +78,12 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
     editorCell.setCellId("FQName");
     Style style = new StyleImpl();
     style.set(StyleAttributes.AUTO_DELETABLE, true);
+    style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     ModelReferenceDelete.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
   }
-  private EditorCell createError_ho2vdo_a0() {
+  private EditorCell createError_0() {
     EditorCell_Error editorCell = new EditorCell_Error(getEditorContext(), myNode, "<no fqName>");
     editorCell.setCellId("NoFQName");
     return editorCell;

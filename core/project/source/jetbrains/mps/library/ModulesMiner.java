@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,37 +15,36 @@
  */
 package jetbrains.mps.library;
 
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.generator.fileGenerator.FileGenerationUtil;
-import jetbrains.mps.project.ProjectPathUtil;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.persistence.MementoImpl;
+import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOException;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.persistence.DeploymentDescriptorPersistence;
 import jetbrains.mps.project.persistence.ModuleReadException;
+import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
-import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
-import jetbrains.mps.project.structure.modules.LibraryDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.util.IFileUtil;
+import jetbrains.mps.util.MacroHelper;
+import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.PathManager;
-import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.util.io.ModelInputStream;
-import jetbrains.mps.util.io.ModelOutputStream;
-import jetbrains.mps.vfs.FileRefresh;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.IFileUtils;
-import jetbrains.mps.vfs.impl.JarEntryFile;
 import jetbrains.mps.vfs.path.Path;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
+import org.jetbrains.mps.openapi.persistence.Memento;
 
-import java.io.IOException;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -58,12 +57,14 @@ import java.util.Set;
 /**
  * Detects modules in a folder.
  * Methods of this class are not thread-safe, do not share instances of this class between threads.
+ * At the moment, most of the public methods of this class make no distinction whether you care about source/deployment modules, if
+ * we need to handle scenario when only specific kind of MDs is of interest, a new processing model shall get introduced
+ * into MM (e.g. {@code MPSModuleCollector} could make use of a 'sourceMD-only' mode).
  *
  * NB: we will go inside the jar if it either has a 'modules' folder (with modules (!)) or has a module.xml file in the META-INF folder
  */
 public final class ModulesMiner {
-  private static final Logger LOG = LogManager.getLogger(ModulesMiner.class);
-  private static final String DOT_JAR = JarEntryFile.DOT_JAR;
+  private static final Logger LOG = Logger.getLogger(ModulesMiner.class);
   public static final String META_INF = "META-INF";
   private static final String JAR_SEPARATOR = Path.ARCHIVE_SEPARATOR;
   public static final String MODULE_XML = "module.xml";
@@ -73,35 +74,45 @@ public final class ModulesMiner {
   private static final String SOURCES_MODULE_DIR = "module"; // source descriptor (if packaged) resides at the abc-lang-src.jar!/module/abc-lang.msd
 
   // excludes is going to be updated from #processExcludes, ensure it can be changed.
-  private final Set<IFile> myExcludes = new HashSet<IFile>();
-  private final List<ModuleHandle> myOutcome = new ArrayList<ModuleHandle>();
+  private final Set<IFile> myExcludes = new HashSet<>();
+  private final List<ModuleHandle> myOutcome = new ArrayList<>();
+  private final DescriptorIOFacade myDescriptorIOFacade;
 
-  public ModulesMiner() {
-    this(Collections.emptySet());
+  /**
+   * @param componentHost access to MPS configured components
+   * @since 2018.2
+   */
+  public ModulesMiner(@NotNull ComponentHost componentHost) {
+    this(Collections.emptySet(), componentHost.findComponent(DescriptorIOFacade.class));
   }
 
-  public ModulesMiner(@NotNull Collection<IFile> excludes) {
+  /**
+   * @since 2018.2
+   */
+  public ModulesMiner(@NotNull Collection<IFile> excludes, DescriptorIOFacade descriptorsIO) {
     myExcludes.addAll(excludes);
+    myDescriptorIOFacade = descriptorsIO;
   }
 
   /**
    * Updates {@link #getCollectedModules() outcome} and excludes, may be invoked several times.
+   * Recognizes both source and deployment module descriptor files; walks into folders to look modules up.
    * @param file folder or file (descriptor or jar) to look for modules at.
    * @return {@code this} for convenience (chained calls)
    */
   @NotNull
   public ModulesMiner collectModules(IFile file) {
     LOG.debug("Reading modules from " + file);
-    if (!needProcess(file)) {
+    if (shallIgnore(file)) {
       return this;
     }
     if (file.isDirectory()) {
       readModuleDescriptorsFromFolder(file);
     } else {
-      if (IFileUtils.isJarFile(file)) {
+      if (IFileUtil.isJarFile(file)) {
         readModuleDescriptorsFromJarFile(file);
       } else {
-        trySourceModuleDescriptorsFromFile(file);
+        readModuleDescriptorsFromRegularFile(file);
       }
     }
     return this;
@@ -115,49 +126,32 @@ public final class ModulesMiner {
     return Collections.unmodifiableList(rv);
   }
 
-  @Deprecated
-  @ToRemove(version = 3.3)
-  public List<ModuleHandle> collectModules(IFile dir, boolean refreshFiles) {
-    return collectModules(dir, null, refreshFiles);
-  }
-
-  /**
-   * @deprecated use {@link #collectModules(IFile)} instead.
-   *             To refresh files, use {@link FileRefresh} directly
-   */
-  @Deprecated
-  @ToRemove(version = 3.3)
-  public List<ModuleHandle> collectModules(IFile dir, Set<IFile> excludes, boolean refreshFiles) {
-    if (excludes != null) {
-      myExcludes.addAll(excludes);
-    }
-    if (refreshFiles) {
-      LOG.debug("Refreshing recursively in the " + dir);
-      new FileRefresh(dir).run();
-    }
-    myOutcome.clear();
-    collectModules(dir);
-    return new ArrayList<>(myOutcome);
-  }
-
-  private boolean needProcess(IFile file) {
-    return !getFileSystem().isFileIgnored(file.getName()) && !myExcludes.contains(file);
+  private boolean shallIgnore(IFile file) {
+    return myExcludes.contains(file) || file.isIgnored();
   }
 
 
   private boolean trySourceModuleDescriptorsFromFile(IFile file) {
     assert !file.isDirectory();
-    if (isSourceModuleFile(file)) {
-      ModuleDescriptor moduleDescriptor = loadSourceModuleDescriptor(file);
-      if (moduleDescriptor != null) {
-        processExcludes(file, moduleDescriptor);
-        fillOutcome(new ModuleHandle(file, moduleDescriptor), true);
-        return true; // unlike other tryXXX methods, here we make sure descriptor actually read
-        // because of .iml files (see DescriptorIOFacade) that are treated as solution module and thus break
-        // readModuleDescriptorsFromFolder assumption of a single descriptor per dir.
-      }
+    if (!isSourceModule(file)) {
+      return false;
     }
-    return false;
+
+    try {
+      ModuleDescriptor moduleDescriptor = loadSourceModuleDescriptor(file);
+      if (moduleDescriptor == null) {
+        return false;
+      }
+
+      processExcludes(file, moduleDescriptor);
+      fillOutcome(new ModuleHandle(file, moduleDescriptor), true);
+      return true; // unlike other tryXXX methods, here we make sure descriptor actually read
+      // because of .iml files (see DescriptorIOFacade) that are treated as solution module and thus break
+      // readModuleDescriptorsFromFolder assumption of a single descriptor per dir.
+    } catch (Exception e) {
+      LOG.error("Can't read module descriptor from " + file, e);
+      return false;
+    }
   }
 
   /**
@@ -167,7 +161,7 @@ public final class ModulesMiner {
    */
   private void readModuleDescriptorsFromFolder(IFile folder) {
     assert folder.isDirectory();
-    if (!needProcess(folder)) {
+    if (shallIgnore(folder)) {
       // files and folders are collected prior to processing of descriptor excludes,
       // chances are we get here in a recursive call with a folder marked to exclude.
       return;
@@ -176,7 +170,7 @@ public final class ModulesMiner {
     ArrayList<IFile> files = new ArrayList<>();
     ArrayList<IFile> folders = new ArrayList<>();
     for (IFile f : folder.getChildren()) {
-      if (!needProcess(f)) {
+      if (shallIgnore(f)) {
         continue;
       }
       if (f.isDirectory()) {
@@ -184,7 +178,7 @@ public final class ModulesMiner {
       } else {
         files.add(f);
       }
-    };
+    }
 
     boolean sourceModuleFound = false;
     for (IFile f : files) {
@@ -200,21 +194,23 @@ public final class ModulesMiner {
       // don't expect nested module collections or deployed modules nested into another module
       //
       // folder/modules/module-folder-x
-      if (tryReadFromModulesDir(folder, folder.getDescendant(MODULES_DIR))) {
-        // no need to process nested jars or folders
-        return;
-      }
-      // folder/META-INF/module.xml
-      if (tryModuleFromDeploymentDescriptor(folder, folder.getDescendant(META_INF).getDescendant(MODULE_XML))) {
-        // no need to process nested jars or folders
-        return;
+      if (tryReadFromModulesDir(folder, folder.findChild(MODULES_DIR))) {
+        // no need to process nested jars or folders under 'modules/' if we discovered 'group of modules' there,
+        // but still need to look into sibling folders/jars
+        folders.removeIf(f -> MODULES_DIR.equals(f.getName()));
+      } else {
+        // folder/META-INF/module.xml
+        if (tryModuleFromDeploymentDescriptor(folder, folder.findChild(META_INF).findChild(MODULE_XML))) {
+          // no need to process nested jars or folders
+          return;
+        }
       }
     }
     if (!sourceModuleFound) {
       // nor expect jar with modules nested into another module, and
       // do not look into jars under a folder with either META-INF/ or modules/ they are likely auxiliary.
       for (IFile f : files) {
-        if (IFileUtils.isJarFile(f)) {
+        if (IFileUtil.isJarFile(f)) {
           readModuleDescriptorsFromJarFile(f);
         }
       }
@@ -243,13 +239,17 @@ public final class ModulesMiner {
    * @param jarFile {@code folder/module.name.jar} from the sample layouts above.
    */
   private void readModuleDescriptorsFromJarFile(IFile jarFile) {
-    assert IFileUtils.isJarFile(jarFile);
-    IFile jarFileRoot = IFileUtils.stepIntoJar(jarFile);
+    assert IFileUtil.isJarFile(jarFile);
+    try {
+      IFile jarFileRoot = IFileUtil.stepIntoJar(jarFile);
 
-    if (tryModuleFromDeploymentDescriptor(jarFile, jarFileRoot.getDescendant(META_INF).getDescendant(MODULE_XML))) {
-      return;
+      if (tryModuleFromDeploymentDescriptor(jarFile, jarFileRoot.findChild(META_INF).findChild(MODULE_XML))) {
+        return;
+      }
+      tryReadFromModulesDir(jarFile, jarFileRoot.findChild(MODULES_DIR));
+    } catch (Exception e) {
+      LOG.error("Can't read modules in " + jarFile, e);
     }
-    tryReadFromModulesDir(jarFile, jarFileRoot.getDescendant(MODULES_DIR));
   }
 
   /**
@@ -263,17 +263,27 @@ public final class ModulesMiner {
    * @return true if module found under the {@code moduleHome}
    */
   private boolean tryModuleFromDeploymentDescriptor(IFile moduleHome, IFile moduleXml) {
-    if (moduleXml.exists() && !moduleXml.isDirectory()) {
-      ModuleDescriptor moduleDescriptor = loadDeploymentDescriptor(moduleHome, moduleXml);
-      if (moduleDescriptor != null) {
-        processExcludes(moduleXml, moduleDescriptor); // do I really need to exclude anything for DD? There's source module, indeed.
-        fillOutcome(new ModuleHandle(moduleXml, moduleDescriptor), false);
+    try {
+      if (!moduleXml.exists() || moduleXml.isDirectory()) {
+        return false;
       }
+
+      ModuleDescriptor moduleDescriptor = loadDeploymentDescriptor(moduleHome, moduleXml);
+      if (moduleDescriptor == null) {
+        return true;
+      }
+
+      // we don't dive into deployed modules (no nested modules at deployment), nothing to exclude.
+      // well, technically we can still exclude sources and library locations (could be outside a module), but generally
+      // when discovering deployed modules, we don't expect code to look into unexpected, nested layouts
+      fillOutcome(new ModuleHandle(moduleXml, moduleDescriptor), false);
       // even if we didn't succeed to read a module, presence of META-INF/module.xml prevents processing of any other possible
       // module location under moduleHome
       return true;
+    } catch (Exception e) {
+      LOG.error("Can't read module in " + moduleXml, e);
+      return false;
     }
-    return false;
   }
 
   /**
@@ -293,25 +303,27 @@ public final class ModulesMiner {
    */
   private boolean tryReadFromModulesDir(IFile bundleHome, IFile modulesDir) {
     if (modulesDir.exists() && modulesDir.isDirectory()) {
+      boolean moduleInGroup = false;
       for (IFile child : modulesDir.getChildren()) {
         if (child.isDirectory()) {
           // perhaps, we could allow nested directories in tryReadModuleDescriptor, but at the moment
           // we expect 1 level of directories only (XXX what about mps/testbench/modules/aaa.test/languages - disjunction of RVs would help).
-          tryReadModuleDescriptor(bundleHome, child);
+          moduleInGroup |= tryReadModuleDescriptorInModulesGroup(bundleHome, child);
           // XXX may collect folders without modules and dig into them, with e.g. readModuleDescriptorsFromFolder(), just need to pass bundleHome there
         }
         // expect no descriptors under modules/
       }
-      return true; // disjunction of tryReadModuleDescriptor return values, perhaps?
+      return moduleInGroup; // disjunction of tryReadModuleDescriptor return values
     }
     return false;
   }
 
   /**
    * Read descriptor for a module bundled under bundleHome/.../moduleHomeDir, if any.
+   *
    * @return {@code true} if module descriptor found under bundle home
    */
-  private boolean tryReadModuleDescriptor(IFile bundleHome, IFile moduleHomeDir) {
+  private boolean tryReadModuleDescriptorInModulesGroup(IFile bundleHome, IFile moduleHomeDir) {
     assert moduleHomeDir.isDirectory();
     for (IFile child : moduleHomeDir.getChildren()) {
       if (child.isDirectory()) {
@@ -319,31 +331,34 @@ public final class ModulesMiner {
       }
       // XXX now we ignore deployment descriptors here, is it desired?
       if (trySourceModuleDescriptorsFromFile(child)) {
+        // There used to be a hack in JavaModuleFacetImpl.getClassPath():
+        // >>>
+        // Solution(s) bundled into single jar with classes (both from hand-written and generated sources) at the root.
+        // HACK. Fallback for manually bundled modules (vcs.jar or mps-core.jar):
+        //   my.jar
+        //     compile output of module1
+        //   modules
+        //      module sources of module1
+        // There's no DD there, and assumption is that there are classes at the jar root.
+        // Not yet sure what's the right way to deal with them:
+        //   - specify DD (META-INF/module.xml) at build time looks most 'honest', however, with multiple modules inside same jar it's not an option,
+        //     unless we can make DD per module, not per jar (requires support in MM.tryReadFromModulesDir). Support in Build language needed, too (to
+        //     specify 'module descriptor of' under 'folder with sources of'
+        //   - Patch MD in MM when loaded from modules/ location (e.g. add DD with proper classpath there). (+) keep knowledge about deployment layout
+        //     inside MM.
+        //   - Hack in JMFI.getClassPath()
+        // <<<
+        // MPS no longer bundles such modules, nor does mbeddr (well, in MPS there are jars with stub modules packaged this way, but they don't
+        //     assume classes in the same jar, rather reference external jars in their source module descriptors).
+        //     I don't see a point to keep this hack, however, one can never be sure if there's any code elsewhere that still uses this approach
+        //     so I leave this note here. I suppose it's always possible to workaround the case with individual jars
+        //     (+meta-inf/plugin descriptor, +module/sources of), but in case it turns out we have to support the aforementioned case, this is the
+        //     place to fix. Here, one would need to patch source module discovered by trySourceModuleDescriptorsFromFile to use 'bundleHome' value as
+        //     an addition to module classpath.
         return true;
       }
     }
     return false;
-  }
-
-  /**
-   * Attempts to load module descriptor from file.
-   * Updates {@link #getCollectedModules()} collection.
-   * NOTE: single file could trigger more than one module loaded (e.g. lang.mpl loads generators), returned value
-   * is the 'primary' module, i.e. language. Other loaded modules are available in {@link #getCollectedModules()}
-   *
-   * Note, loading a file with language module not necessarily triggers loading of respective generators, only language source
-   * module would pick generator modules up. Deployed language doesn't load generators.
-   *
-   * Please do not use this method, it gonna fade away. With few modules coming from the same file, its API is not handy.
-   *
-   * @param file descriptor file to parse for module information
-   * @return handle for descriptor loaded from file
-   */
-  @NotNull
-  public ModuleHandle loadModuleHandle(@NotNull IFile file) {
-    final ModuleHandle moduleHandle = new ModuleHandle(file, loadModuleDescriptor(file));
-    fillOutcome(moduleHandle, !file.getPath().endsWith(SLASH_META_INF_MODULE_XML));
-    return moduleHandle;
   }
 
   private void fillOutcome(ModuleHandle moduleHandle, boolean isSourceNotDeployment) {
@@ -359,40 +374,32 @@ public final class ModulesMiner {
   }
 
   /**
+   * Basically, this method is a switch to load either META-INF/module.xml or source-descriptor.[msd|mpl].
    * read a module file and update excludes set with output locations (classes, generated sources) of the module
-   * if file points to deployment descriptor, attempt to read descriptor of source module, associates DD with it and return it, or DD if no source
-   * module found.
+   * if file points to deployment descriptor, loads DD and descriptor of source module, if any.
+   * Updates excludes and outcome state of this miner.
+   * Expects file (not directory) as an input.
    */
-  @Nullable
-  private ModuleDescriptor loadModuleDescriptor(IFile file) {
+  private void readModuleDescriptorsFromRegularFile(IFile file) {
     String filePath = file.getPath();
-    ModuleDescriptor descriptor;
     if (filePath.endsWith(SLASH_META_INF_MODULE_XML)) {
       IFile moduleHome;
-      if (file.isInArchive()) {
-        moduleHome = file.getBundleHome();
+      if (file.isInZipArchive()) {
+        moduleHome = file.stepUpToArchive();
       } else {
-        // IFile.getBundleHome is not smart enough to recognize META-INF/module.xml in a regular directory (not archive), and yields
-        // wrong result then (file.getParent() == META-INF/ location which won't help to locate libraries).
         // Instead, assume META-INF/module.xml is at the root of a module location (which if generally the case).
         moduleHome = file.getParent().getParent();
       }
-      // there are no excludes in deployment descriptor, but loadDD reads and returns MD from source module, if any.
-      // OTOH, file is the one under META-INF, and no chances to find neither source_gen nor test_gen relative to it
-      // (need one at lang-src.jar!/module/source.lang.mpl)
-      descriptor = loadDeploymentDescriptor(moduleHome, file);
+      tryModuleFromDeploymentDescriptor(moduleHome, file);
     } else {
-      descriptor = loadSourceModuleDescriptor(file);
+      trySourceModuleDescriptorsFromFile(file);
     }
-    if (descriptor != null) {
-      processExcludes(file, descriptor);
-    }
-    return descriptor;
   }
 
   private ModuleDescriptor loadSourceModuleDescriptor(IFile file) {
     try {
-      DescriptorIO<? extends ModuleDescriptor> descriptorIO = DescriptorIOFacade.getInstance().fromFileType(file);
+      LOG.debug(String.format("Loading source MD from %s", file));
+      DescriptorIO<? extends ModuleDescriptor> descriptorIO = myDescriptorIOFacade.fromFileType(file);
       return descriptorIO.readFromFile(file);
     } catch (DescriptorIOException t) {
       LOG.error("Fail to load module from descriptor " + file.getPath(), t);
@@ -411,11 +418,18 @@ public final class ModulesMiner {
    */
   private ModuleDescriptor loadDeploymentDescriptor(IFile moduleHome, IFile file) {
     try {
-      DeploymentDescriptor deploymentDescriptor = DeploymentDescriptorPersistence.loadDeploymentDescriptor(file);
+      LOG.debug(String.format("Loading deployment MD from %s", file));
+      // XXX why not DeploymentDescriptorPersistence is part of DescriptorIOFacade?!
+      DeploymentDescriptor deploymentDescriptor = new DeploymentDescriptorPersistence().load(file);
       ModuleDescriptor result = null;
       IFile sourceDescriptorFile = getSourceDescriptorFile(file, deploymentDescriptor);
       if (sourceDescriptorFile != null) {
         result = loadSourceModuleDescriptor(sourceDescriptorFile);
+        // XXX it's tempting to strip off GeneratorDescriptor out of LD when we've read language's DD and its source MD (which likely
+        // lists generator module(s) that were part of the language source module. However, I refrain from doing it right away
+        // as there's (likely) code that discovers language's generators by looking into its source MD (e.g. Language.getDescriptor().getGenerators())
+        // and I don't want this ruined now.
+        //
         if (DeploymentDescriptor.TYPE_GENERATOR.equals(deploymentDescriptor.getType()) && result instanceof LanguageDescriptor) {
           // source module keeps generators as part of a language (the only possible layout for the time being)
           for (GeneratorDescriptor gd : ((LanguageDescriptor) result).getGenerators()) {
@@ -438,14 +452,15 @@ public final class ModulesMiner {
         if (".".equals(cpEntry)) {
           it.set(moduleHome.getPath());
         } else if (!cpEntry.isEmpty()) {
+          // XXX what about ../lib/myhandcrafted.jar scenario, why can't I use this for CP?
           StringBuilder moduleHomePath = new StringBuilder();
-          if (IFileUtils.isJarFile(moduleHome)) {
-            moduleHomePath.append(IFileUtils.stepIntoJar(moduleHome).getPath());
+          if (IFileUtil.isJarFile(moduleHome)) {
+            moduleHomePath.append(IFileUtil.stepIntoJar(moduleHome).getPath());
           } else {
             moduleHomePath.append(moduleHome.getPath());
           }
           if (cpEntry.charAt(0) != '/') {
-            // it doesn't hurt to have extra fs delimiter, e.g. if moduleHome doesn't ends with one.
+            // it doesn't hurt to have extra fs delimiter, e.g. if moduleHome doesn't end with one.
             moduleHomePath.append('/');
           }
           moduleHomePath.append(cpEntry);
@@ -455,22 +470,34 @@ public final class ModulesMiner {
       // TODO create module without sources
       if (result != null) {
         result.setDeploymentDescriptor(deploymentDescriptor);
-        // fix stubs libraries:
-        // META-INF/module.xml contains info about model libs, while clients generally look at MD.getAdditionalJavaStubPaths() which were not
+        ArrayList<IFile> deploymentLibraries = new ArrayList<>(4);
+        // fix extra classpath libraries:
+        // META-INF/module.xml contains info about model libs, while clients generally look at MD.getJavaLibs() which were not
         // updated by build language at deployment time and still points to design-time lib location.
+        // In fact, code shall resort to libraries of DD if present (e.g. JavaModuleFacetImpl shall do it), but it doesn't hurt to have source
+        // module updated anyway.
         // Here we ignore stub libraries from source module descriptor, use libs from DeploymentDescriptor
-        result.getAdditionalJavaStubPaths().clear();
+        result.getJavaLibPersistedValues().clear();
         // XXX I don't like this assumption that libraries are siblings to module home, but have no better idea now.
         IFile bundleParent = moduleHome.getParent();
         for (String jarFile : deploymentDescriptor.getLibraries()) {
           IFile jar = jarFile.startsWith("/")
               ? bundleParent.getFileSystem().getFile(PathManager.getHomePath() + jarFile)
               : bundleParent.getDescendant(jarFile);
+          deploymentLibraries.add(jar);
           if (jar.exists()) {
             String path = jar.getPath();
-            result.getAdditionalJavaStubPaths().add(path);
+            // FWIW, we mangle getJavaLibPersistedValues() here, and don't touch getJavaLibOriginalValues(), but as long as we are
+            // processing deployed modules (not project), I don't expect this to break anything.
+            result.getJavaLibPersistedValues().add(path);
           }
         }
+        // hack, see DD.getLibrariesResolved() for explanation
+        deploymentDescriptor.getLibrariesResolved().clear();
+        deploymentDescriptor.getLibrariesResolved().addAll(deploymentLibraries);
+
+        // fix @java_stub locations, if any
+        fixJavaStubModelRoots(result, sourceDescriptorFile, moduleHome, deploymentLibraries);
       }
       // XXX why don't we return DD if no source MD found?
       return result;
@@ -483,11 +510,128 @@ public final class ModulesMiner {
     }
   }
 
+  /**
+   * We've got deployed module, found its source module, and need to fix java and/or kotlin stub paths of the latter to get @java_stub (or @kotlin_common)
+   * models loaded properly.
+   *
+   * On one hand, there's desire to get rid of this code by moving relevant update into build language, as it's odd to 'fix' module descriptor during load.
+   * OTOH, it's source module we get fixed here, and if we move towards no source modules at all, then, perhaps, we shall not care to update neither here nor
+   * in build language. Still, there's a question whether @java_stub models are part of deployment story.
+   * <p>
+   *  Just an idea - if we consider removing 'source' modules but leaving stub models, then, perhaps, we can have another entry in module.xml,
+   *  listing 'stub' models, and then lang.build mapping for entries (done with ArtifactsRelativePathHelper) would be enough, and no rewriting magic here?
+   *  However, there's another tricky point - build language cares about classpath jars and doesn't look into model roots, here we imply model roots
+   *  reference the same jars JMF got as libraries (Dependencies of BM_AbstractModule list jars from JMF, not stub model root)
+   * </p>
+   *
+   * JFTR, next code used to live in AbstractModule#updatePackagedDescriptor. Unlike the method, we no longer expose dd.getLibraries() as @java_stubs,
+   * instead, we do our best to update MRD here with a proper path (we consult deploymentJars, with actual deployed layout, for matches).
+   *
+   * @param sourceModuleDescriptor source module descriptor (usually comes from module-src.jar!/module/module.msd or [module-home]/module/module.msd), see #getSourceDescriptorFile
+   * @param sourcesDescriptorFile IFle {@code sourceModuleDescriptor} has been read from
+   * @param moduleHome either a jar file or a directory, base location for META-INF/module.xml
+   * @param deploymentJars list of libraries recorded in deployment descriptor (generally paths fixed by a build language to point to specific layout elements)
+   */
+  private void fixJavaStubModelRoots(ModuleDescriptor sourceModuleDescriptor, IFile sourcesDescriptorFile, IFile moduleHome, List<IFile> deploymentJars) {
+    // stub model roots
+    // see https://youtrack.jetbrains.com/issue/MPS-19756
+    List<ModelRootDescriptor> toRemove = new ArrayList<>();
+    List<ModelRootDescriptor> toAdd = new ArrayList<>();
+    MacroHelper macroHelper = MacrosFactory.forModuleFile(sourcesDescriptorFile);
+    for (ModelRootDescriptor rootDescriptor : sourceModuleDescriptor.getModelRootDescriptors()) {
+      String rootDescriptorType = rootDescriptor.getType();
+      // KotlinStubModelRootFactory.rootName == "kotlin_common"
+      if (PersistenceRegistry.JAVA_CLASSES_ROOT.equals(rootDescriptorType) || "kotlin_common".equals(rootDescriptorType)) {
+        // there are few possible deployment layouts:
+        //    1. App/Contents/languages/my.lang.jar + -src.jar
+        //    2. App/Contents/plugins/<name>/languages/my.lang.jar + -src.jar + libraries from additional cp
+        //       (build language generator puts libraries there with the help of ArtifactsRelativePathHelper, base on extracted jar deps;
+        //       FWIW, build language ignores jars listed under stub models)
+        //       App/Contents/plugins/<name>/pluginSolutions/my.lang.pluginSolution.jar
+        //       App/Contents/plugins/<name>/lib/icons.jar (placed there by build language generator)
+        //    3. Custom layout:
+        //       e.g. jetpad, which differs from (2) with lib/ full of cp jars
+        //       mps-core, with languageDesign/ and util/ nested under languages/
+        //       mps-vcs, with cp jars under lib/
+        //
+        // trying to load new format : replacing paths like **.jar!/module ->
+        // Here, macroHelper have to be the same as the one used to load sourceModuleDescriptor, and it's just a hidden knowledge that
+        // DescriptorIOFacade uses same approach to construct its macro helper.
+        // FIXME with no macro expansion on MD persistence, no need to shink anything here
+        String contentPath = macroHelper.shrinkPath(rootDescriptor.getMemento().get(FileBasedModelRoot.CONTENT_PATH));
+        if (contentPath == null || !contentPath.startsWith(MacrosFactory.MODULE)) {
+          continue;
+        }
+        contentPath = contentPath.substring(MacrosFactory.MODULE.length());
+        boolean update = false;
+        Memento newMemento = new MementoImpl();
+        IFile moduleHomeDir = IFileUtil.isJarFile(moduleHome) ? moduleHome.getParent() : moduleHome;
+        newMemento.put(FileBasedModelRoot.CONTENT_PATH, moduleHomeDir.getPath());
+        for (Memento sourceRoot : rootDescriptor.getMemento().getChildren(FileBasedModelRoot.SOURCE_ROOTS)) {
+          Memento newMementoChild = newMemento.createChild(FileBasedModelRoot.SOURCE_ROOTS);
+          // bear in mind that FileBasedModelRoot.LOCATION could be "." or ""
+          final String normalizedSuffix = FileUtil.normalize(contentPath + File.separator + sourceRoot.get(FileBasedModelRoot.LOCATION));
+          final String pastModuleMacroSuffix;
+          if (normalizedSuffix.endsWith(Path.ARCHIVE_SEPARATOR)) {
+            // I've seen <modelRoot contentPath="${module}/lib/whatever-1.2.7.jar!" type="java_classes"><sourceRoot location="." /></modelRoot>
+            pastModuleMacroSuffix = normalizedSuffix.substring(0, normalizedSuffix.length() - Path.ARCHIVE_SEPARATOR.length());
+          } else {
+            pastModuleMacroSuffix = normalizedSuffix;
+          }
+          IFile deploymentJarMatch;
+          if (pastModuleMacroSuffix.endsWith("classes_gen") || pastModuleMacroSuffix.endsWith("classes")) {
+            if (IFileUtil.isJarFile(moduleHome)) {
+              newMementoChild.put(FileBasedModelRoot.LOCATION, moduleHome.getName());
+            } else {
+              newMementoChild.put(FileBasedModelRoot.LOCATION, ".");
+            }
+            update = true;
+          } else if ((deploymentJarMatch = deploymentJars.stream().filter(f -> pastModuleMacroSuffix.endsWith(Path.UNIX_SEPARATOR + f.getName())).findFirst().orElse(null)) != null) {
+            // IOW, if there's a deployment jar with a name that matches location we are looking at. "Matches" here is intentionally 'name only' here, as
+            // we may face odd/inconsistent source/deployment layout and file references:
+            // e.g. for collections.trove.msd:
+            //  deployed layout
+            //    /plugins/mps-trove/languages/collections_trove.runtime.jar
+            //    /plugins/mps-trove/languages/trove-2.1.0.jar
+            //  source module
+            //    <modelRoot contentPath="${module}" type="java_classes">
+            //      <sourceRoot location="classes_gen" />
+            //      <sourceRoot location="lib/trove-2.1.0.jar" />
+            //    </modelRoot>
+            // Indeed, we have to fix deployed layout to place trove.jar outside of 'languages/' (whether it's "mps-trove/lib/" or just "mps-trove" is up to
+            // build project. But as long as we may face such layouts, we can not use full location value). Yes, this would fail e.g if one
+            // uses different folder names but same jar libraries, like "trove-2.1.0/library.jar" abd "trove-2.0.5/library.jar", I just expect this to be
+            // much rare case.
+            //
+            // XXX what it deploymentJar lives under <mps-home>/lib, do I care to build relative path? Perhaps, shall replace with distinct MRD then?
+            final String jarRelativeToDeployedModule = FileBasedModelRoot.relativize(deploymentJarMatch.getPath(), moduleHomeDir);
+            newMementoChild.put(FileBasedModelRoot.LOCATION, jarRelativeToDeployedModule);
+            LOG.debug(String.format("Java stub jar %s in module %s updated with location %s", pastModuleMacroSuffix, sourceModuleDescriptor.getNamespace(), jarRelativeToDeployedModule));
+            update = true;
+          } else {
+            // just keep it as is, relative to deployment value of ${module}. If anything important, users may tell build project to copy
+            // relevant stuff as deployed jar's "extra content".
+            newMementoChild.put(FileBasedModelRoot.LOCATION, pastModuleMacroSuffix);
+            // there's intentionally no `update = true`. In case there are no other converted values, just ignore the root descriptor altogether
+            // If, however, there are other location changed, we would preserve this one from the original memento.
+          }
+        }
+        if (update) {
+          toAdd.add(new ModelRootDescriptor(rootDescriptorType, newMemento));
+          toRemove.add(rootDescriptor);
+        }
+      }
+    }
+    sourceModuleDescriptor.getModelRootDescriptors().removeAll(toRemove);
+    sourceModuleDescriptor.getModelRootDescriptors().addAll(toAdd);
+  }
+
   // part of processExcludes() with common code for any module type
-  private void processModuleExcludes(jetbrains.mps.vfs.openapi.FileSystem fileSystem, ModuleDescriptor descriptor) {
-    String generatorOutputPath = ProjectPathUtil.getGeneratorOutputPath(descriptor);
+  @SuppressWarnings("removal")
+  private void processModuleExcludes(jetbrains.mps.vfs.openapi.FileSystem fileSystem, MacroHelper macroHelper, ModuleDescriptor descriptor) {
+    String generatorOutputPath = descriptor.getOutputRoot();
     if (generatorOutputPath != null) {
-      IFile genOutputFile = fileSystem.getFile(generatorOutputPath);
+      IFile genOutputFile = fileSystem.getFile(macroHelper.expandPath(generatorOutputPath));
       excludeGeneratedSourcesDir(genOutputFile);
       // we don't care if there's indeed tests facet or if the folder exists
       // and I don't see why TestsFacetImpl.fromModuleDescriptor(arbitraryFile, MD) gives better result than hard-coded, source_gen-relative path,
@@ -495,30 +639,31 @@ public final class ModulesMiner {
       // is at the same level as source_gen
       // Proper solution would be to use default {module}/test_gen in ModuleDeploymentPersistence for Tests Facet, let it resolve to FS location
       // and use the value here much like we did for getGeneratorOutputPath(MD) above.
-      excludeGeneratedSourcesDir(genOutputFile.getParent().getDescendant("test_gen"));
+      excludeGeneratedSourcesDir(genOutputFile.getParent().findChild("test_gen"));
       //
       // excludeIdeaClassesGen(descriptorFile, descriptor);
       // Again, no reason to expect ProjectPathUtil.getClassesFolder(arbitraryFile) to yield any more meaningful result than 'sibling classes/'.
-      myExcludes.add(genOutputFile.getParent().getDescendant("classes"));
+      myExcludes.add(genOutputFile.getParent().findChild("classes"));
       //
       // excludeClassesGen(descriptorFile, descriptor);
       // Yet one more, ProjectPathUtil.getClassesGenFolder(descriptorFile, descriptor instanceof GeneratorDescriptor) replaced with
       // 'sibling classes_gen/' as ProjectPathUtil.getGeneratorOutputPath(descriptor) (together with MDPersistence code) gives us proper FS location
       // of generator's source_gen, and no reason for md.IsInstanceOf(GeneratorMD) -> getDescendant("generator") magic
       // XXX Would be great to reuse constant from JavaModuleFacetImpl#getClassesGen
-      myExcludes.add(genOutputFile.getParent().getDescendant("classes_gen"));
+      myExcludes.add(genOutputFile.getParent().findChild("classes_gen"));
 
       // and as for jars (-src.jar and -generator.jar) that used to be excluded if descriptorFile.isReadOnly(),
       // check readModuleDescriptorsFromFolder(IFile) - it reads jar only if there's META-INF/module.xml or modules/, neither of this happens to
       // -generator.jar nor -src.jar, so no reason to put their roots into excludes (on a side note, why not ".jar" itself, but ".jar!/"?)
     }
 
-    for (String p : descriptor.getSourcePaths()) {
-      myExcludes.add(fileSystem.getFile(p));
+    // I can tolerate use of MD.getSourcePaths here as MM knows about MD anyway
+    for (String p : descriptor.getSourcePathPersistedValue()) {
+      myExcludes.add(fileSystem.getFile(macroHelper.expandPath(p)));
     }
 
-    for (String entry : descriptor.getAdditionalJavaStubPaths()) {
-      myExcludes.add(fileSystem.getFile(entry));
+    for (String entry : descriptor.getJavaLibPersistedValues()) {
+      myExcludes.add(fileSystem.getFile(macroHelper.expandPath(entry)));
     }
   }
 
@@ -529,28 +674,32 @@ public final class ModulesMiner {
     if (descriptor == null || descriptorFile.isReadOnly()) {
       return;
     }
-    jetbrains.mps.vfs.openapi.FileSystem fileSystem = descriptorFile.getFileSystem();
-    processModuleExcludes(fileSystem, descriptor);
+    try {
+      jetbrains.mps.vfs.openapi.FileSystem fileSystem = descriptorFile.getFileSystem();
+      final MacroHelper mh = MacrosFactory.forModuleFile(descriptorFile);
+      processModuleExcludes(fileSystem, mh, descriptor);
 
-    if (descriptor instanceof LanguageDescriptor) {
-      for (GeneratorDescriptor generator : ((LanguageDescriptor) descriptor).getGenerators()) {
-        processModuleExcludes(fileSystem, generator);
+      if (descriptor instanceof LanguageDescriptor) {
+        for (GeneratorDescriptor generator : ((LanguageDescriptor) descriptor).getGenerators()) {
+          processModuleExcludes(fileSystem, mh, generator);
+        }
       }
+    } catch (PathFormatException ex) {
+      // ignore, we can live w/o excludes, all we pay is extra time walking source_gen and classes_gen.
+      // well, unless there's some clever code that hides other modules under Java Libraries location and assumes MM ignores these.
+      LOG.warning(String.format("Failed to process excludes for a module from %s: %s", descriptorFile, ex.getMessage()));
     }
   }
 
   private void excludeGeneratedSourcesDir(IFile sourceDir) {
     if (sourceDir != null) {
       myExcludes.add(sourceDir);
-      // todo: why?
-      if (!sourceDir.isReadOnly()) {
-        myExcludes.add(FileGenerationUtil.getCachesDir(sourceDir));
-      }
+      myExcludes.add(FileGenerationUtil.getCachesDir(sourceDir));
     }
   }
 
-  static boolean isSourceModuleFile(IFile file) {
-    return !file.isDirectory() && DescriptorIOFacade.getInstance().fromFileType(file) != null;
+  /*package*/ boolean isSourceModule(IFile file) {
+    return !file.isDirectory() && myDescriptorIOFacade.isModuleDescriptorFile(file);
   }
 
   /**
@@ -567,7 +716,11 @@ public final class ModulesMiner {
     // other jar, and process with original/source descriptor from the same as the one of META-INF/module.xml.
     if (sourcesJarPath.isEmpty() || sourcesJarPath.equals(".")) {
       // META-INF/module.xml/../../
-      return deploymentFile.getParent().getParent().getDescendant(SOURCES_MODULE_DIR).getDescendant(deploymentDescriptor.getDescriptorFile());
+      return deploymentFile.getParent().getParent().findChild(SOURCES_MODULE_DIR).getDescendant(deploymentDescriptor.getDescriptorFile());
+      // FIXME any reason to have this hardcoded 'module/' knowledge, why not specify it in dd.getDescriptorFile()?
+      //       when authoring build script, single module jar with externally compiled sources and module sources, why do I have to
+      //       bother to put 'sources of <module>' under 'folder module', to get simple name of dd.getDescriptorFile() resolved correctly.
+      //       e.g. see mpsDevKit for sample
     } else {
       // FIXME any idea why the code below mangles path instead of going up/down with regular FS getParent/getDescendant operations?
       //       I suspect it's just incomplete refactoring in 4c5b44bc9e1242d4e4399dc816e5caa01855dc00, right?
@@ -581,57 +734,6 @@ public final class ModulesMiner {
       }
       return null;
     }
-  }
-
-  @NotNull
-  private static FileSystem getFileSystem() {
-    return FileSystem.getInstance();
-  }
-
-  public void saveHandle(@NotNull ModuleHandle handle, ModelOutputStream stream) throws IOException {
-    stream.writeShort(0x1be0);
-    stream.writeString(handle.getFile().getPath());
-    ModuleDescriptor descriptor = handle.getDescriptor();
-    if (descriptor instanceof LanguageDescriptor) {
-      stream.writeByte(1);
-    } else if (descriptor instanceof SolutionDescriptor) {
-      stream.writeByte(2);
-    } else if (descriptor instanceof DevkitDescriptor) {
-      stream.writeByte(3);
-    } else if (descriptor instanceof GeneratorDescriptor) {
-      stream.writeByte(4);
-    } else if (descriptor instanceof LibraryDescriptor) {
-      stream.writeByte(5);
-    } else if (descriptor instanceof DeploymentDescriptor) {
-      stream.writeByte(6);
-    } else {
-      throw new IllegalArgumentException("unknown module!");
-    }
-    descriptor.save(stream);
-  }
-
-  public ModuleHandle loadHandle(ModelInputStream stream) throws IOException {
-    if (stream.readShort() != 0x1be0) throw new IOException("bad stream: no start marker");
-    String file = stream.readString();
-    ModuleDescriptor descriptor;
-    int type = stream.readByte();
-    if (type == 1) {
-      descriptor = new LanguageDescriptor();
-    } else if (type == 2) {
-      descriptor = new SolutionDescriptor();
-    } else if (type == 3) {
-      descriptor = new DevkitDescriptor();
-    } else if (type == 4) {
-      descriptor = new GeneratorDescriptor();
-    } else if (type == 5) {
-      descriptor = new LibraryDescriptor();
-    } else if (type == 6) {
-      descriptor = new DeploymentDescriptor();
-    } else {
-      throw new IOException("broken stream: invalid descriptor type");
-    }
-    descriptor.load(stream);
-    return new ModuleHandle(getFileSystem().getFile(file), descriptor);
   }
 
   @Immutable

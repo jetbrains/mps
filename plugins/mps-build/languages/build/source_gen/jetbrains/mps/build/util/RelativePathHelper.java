@@ -5,7 +5,6 @@ package jetbrains.mps.build.util;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.util.FileUtil;
 import java.io.File;
 
 public class RelativePathHelper {
@@ -19,7 +18,7 @@ public class RelativePathHelper {
    */
   @Nullable
   public static RelativePathHelper forModule(SModule module) {
-    if (module == null || ((AbstractModule) module).getDescriptorFile() == null || module.isPackaged()) {
+    if (module.isPackaged() || module instanceof AbstractModule == false || ((AbstractModule) module).getDescriptorFile() == null) {
       return null;
     }
     String basePath = ((AbstractModule) module).getDescriptorFile().getParent().getPath();
@@ -30,26 +29,91 @@ public class RelativePathHelper {
     return normalizePath(fullPath, false).startsWith(myBasePath);
   }
 
-  public String makeRelative(String fullPath) throws RelativePathHelper.PathException {
+  public String makeRelative(String fullPath) throws PathException {
     if ((fullPath == null || fullPath.length() == 0)) {
       return "";
     }
-    String normalized = normalizePath(fullPath, false);
+    final String normalized = normalizePath(fullPath, false);
     if (normalized.startsWith(myBasePath)) {
       return normalized.substring(myBasePath.length());
-      // XXX should I check for myBasePath == fullPath + '/'? 
+      // XXX should I check for myBasePath == fullPath + '/'?
     }
-    // FIXME I'd like to have this class purely string/Path-based, without need to access FS or care about file existence. 
-    // However, present uses need refactoring before this may come true, left legacy code for a while. OTOH, getCanonicalPath is pure File operation 
-    // which doesn't check for existence and as such is tolerable here. It's FileUtil.getRelativePath that bugs me, as it checks for file existence 
+    // The purpose of the code below is to keep this class purely string/Path-based, without need to access FS or care about file existence.
     try {
-      return normalizePath(FileUtil.getRelativePath(new File(normalized).getCanonicalPath(), new File(myBasePath).getCanonicalPath(), File.separator), false);
+      String[] base = removeDots(myBasePath.split("/"));
+      String[] target = removeDots(normalized.split("/"));
+      int commonLength = 0;
+      while (commonLength < target.length && commonLength < base.length && target[commonLength].equals(base[commonLength])) {
+        commonLength++;
+      }
+      // XXX why not return normalized, but exception?
+      if (commonLength == 0) {
+        throw new PathException(String.format("No common path element found for '%s' and '%s'", myBasePath, normalized));
+      }
+      if (base.length == target.length && target.length == commonLength) {
+        // though there's a check, above, that covers equal paths scenario, we may face normalizedPath that is the same as base path but technically not
+        // equal due to trailing slash, e.g. RPH("base/").makeRelative("base")
+        return "";
+      }
+
+      StringBuilder relative = new StringBuilder();
+      assert base.length >= commonLength;
+      for (int i = base.length - commonLength; i > 0; i--) {
+        relative.append("../");
+      }
+      assert target.length >= commonLength;
+      for (int i = commonLength; i < target.length; i++) {
+        relative.append(target[i]).append('/');
+      }
+      // if original requested path didn't end with slash, keep relative without slash as well
+      if (normalized.charAt(normalized.length() - 1) != '/' && relative.charAt(relative.length() - 1) == '/') {
+        relative.setLength(relative.length() - 1);
+      }
+
+      return relative.toString();
     } catch (Exception ex) {
-      throw new RelativePathHelper.PathException(ex, ex.getMessage());
+      throw new PathException(ex, ex.getMessage());
     }
   }
 
-  public String makeAbsolute(String shortPath) throws RelativePathHelper.PathException {
+  /**
+   * Normalize segments to resolve '.' and '..' according to standard rules.
+   */
+  public static String[] removeDots(String[] segments) {
+    // An array of boolean indicating whether a segment is excluded from the final result
+    boolean[] ignore = new boolean[segments.length];
+    int remainingCount = segments.length;
+
+    for (int i = 0; i < segments.length; i++) {
+      // Ignore each '.'.
+      // In case of '..', ignore it only if it is preceded by a non-ignored segment, ignore that segment as well.
+      if (".".equals(segments[i])) {
+        ignore[i] = true;
+        remainingCount--;
+      } else if ("..".equals(segments[i])) {
+        for (int j = i - 1; j >= 0; j--) {
+          if (!(ignore[j])) {
+            ignore[j] = true;
+            ignore[i] = true;
+            remainingCount -= 2;
+            break;
+          }
+        }
+      }
+    }
+
+    // Return an array of all non-ignored segments.
+    String[] result = new String[remainingCount];
+    int out = 0;
+    for (int in = 0; in < segments.length; in++) {
+      if (!(ignore[in])) {
+        result[out++] = segments[in];
+      }
+    }
+    return result;
+  }
+
+  public String makeAbsolute(String shortPath) throws PathException {
     if ((shortPath == null || shortPath.length() == 0)) {
       return myBasePath;
     }
@@ -63,14 +127,13 @@ public class RelativePathHelper {
       File res = new File(myBasePath, shortPath);
       return normalizePath(res.getCanonicalPath(), false);
     } catch (Exception ex) {
-      throw new RelativePathHelper.PathException(ex, ex.getMessage());
+      throw new PathException(ex, ex.getMessage());
     }
   }
 
   public String getBasePath() {
     return myBasePath;
   }
-
 
   /**
    * Translates backslashes in the path, if any, to regular slashed, and appends a trailing one if requested.
@@ -90,6 +153,9 @@ public class RelativePathHelper {
 
 
   public static class PathException extends Exception {
+    /*package*/ PathException(String message) {
+      super(message);
+    }
     public PathException(Throwable cause, String message) {
       super(message, cause);
     }

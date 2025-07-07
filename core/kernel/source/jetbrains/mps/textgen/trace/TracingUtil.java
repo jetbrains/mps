@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,16 @@
  */
 package jetbrains.mps.textgen.trace;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +44,10 @@ public final class TracingUtil {
   // only used when output node has been created as a 'copy' of 'original input node'
   public static final String ORIGINAL_INPUT_NODE = "originalInputNode";
 
+  /**
+   * @deprecated see {@link #copyWithTrace(List)}
+   */
+  @Deprecated(since = "2025.2", forRemoval = true)
   public static SNode copyWithTrace(SNode node) {
     if (node == null) {
       return null;
@@ -49,14 +55,24 @@ public final class TracingUtil {
     return copyWithTrace(Collections.singletonList(node)).get(0);
   }
 
+  /**
+   * @deprecated Vague contract, questionable use of a copy mechanism and choice of 'original' node.
+   *             Replace with a node copy facility/mechanism of your choice, combined with {@link #deriveOriginalNode(SNode, Collection, boolean)}
+   *
+   */
+  @Deprecated(since = "2025.2", forRemoval = true)
   public static List<SNode> copyWithTrace(List<SNode> nodes) {
-    HashMap<SNode, SNode> nodeMap = new HashMap<SNode, SNode>();
+    // FIXME warn deprecation once mbeddr templates using this method get fixed
+    // Logger.getLogger(TracingUtil.class).warnDeprecatedUse("scheduled for removal");
+    HashMap<SNode, SNode> nodeMap = new HashMap<>();
+    // Note, when removing this method, consider moving the class up to [smodel] (now in [kernel], and fix class javadoc)
     List<SNode> result = CopyUtil.copy(nodes, nodeMap);
     for (Entry<SNode, SNode> entry : nodeMap.entrySet()) {
       SNodeReference input = getInput(entry.getKey());
       if (input != null) {
         putInput(entry.getValue(), input);
       } else {
+        // XXX a bit suspicious to me, why do we record unknown node as an 'original' input?
         putInputNode(entry.getValue(), entry.getKey());
       }
     }
@@ -74,11 +90,9 @@ public final class TracingUtil {
 
   @Nullable
   public static SNode getInputNode(@NotNull SNode output, @NotNull SRepository repo) {
-    // FIXME there are 3 uses of this method in quotations' QueriesGenerated, where we could use context(TQC).getOriginalCopiedInputNode
-    // and two more (TQC and TextPreviewModel_Action) where we have access to input model, so that we could simply do
-    // originalInputModel.getNode(ptr.getNodeId()), no need to (a) resolve through repo; (b) keep whole reference (nodeId suffice)
-    // However, shall look into cases when original input comes from a model different than the one being generated. Perhaps, shall use
-    // different key in that case?
+    // XXX there are 2 uses of this method in TextGen preview actions,  where we have access to an input model and project repository,
+    // perhaps, could move ptr.resolve() logic outside.
+    // There are also few uses in mbeddr templates.
     SNodeReference inputNodePointer = (SNodeReference) output.getUserObject(ORIGINAL_INPUT_NODE);
     if (inputNodePointer == null) {
       return null;
@@ -90,12 +104,40 @@ public final class TracingUtil {
     output.putUserObject(ORIGINAL_INPUT_NODE, new SNodePointer(input));
   }
 
+  /**
+   * @deprecated code branching done with boolean flag.
+   */
+  @Deprecated(since = "2018.2", forRemoval = true)
   public static void fillOriginalNode(@NotNull SNode inputNode, @NotNull SNode outputNode, boolean originalInput) {
-    if (originalInput) {
-      putInputNode(outputNode, inputNode);
-    } else {
-      SNodeReference originalInputNode = getInput(inputNode);
-      if (originalInputNode != null) {
+    // keep for couple of releases from now (2025.2, where reduce_TraceMacro has been fixed not to use one), and drop then
+    deriveOriginalNode(inputNode, outputNode);
+  }
+
+  /**
+   * Derive original input node from a transient input node, if any. Doesn't override origin trace if already set
+   * @param inputNode shall never be null, the one we take origin from
+   * @param outputNode node to receive same origin as the inputNode (unless already has one), not null.
+   */
+  public static void deriveOriginalNode(SNode inputNode, SNode outputNode) {
+    SNodeReference originalInputNode = getInput(inputNode);
+    if (originalInputNode == null || getInput(outputNode) != null) {
+      return;
+    }
+    putInput(outputNode, originalInputNode);
+  }
+
+    /**
+     * Derive original input node from a transient input node, if any. Optionally doesn't override origin trace if already set
+     * @param inputNode shall never be null, the one we take origin from
+     * @param outputNodes nodes to receive same origin as the inputNode (unless they already has one)
+     */
+  public static void deriveOriginalNode(SNode inputNode, Collection<SNode> outputNodes, boolean force) {
+    SNodeReference originalInputNode = getInput(inputNode);
+    if (originalInputNode == null) {
+      return;
+    }
+    for (SNode outputNode : outputNodes) {
+      if (force || getInput(outputNode) == null) {
         putInput(outputNode, originalInputNode);
       }
     }

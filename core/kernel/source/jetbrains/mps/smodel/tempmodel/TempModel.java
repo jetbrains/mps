@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,12 @@ package jetbrains.mps.smodel.tempmodel;
 
 import jetbrains.mps.smodel.EditableModelDescriptor;
 import jetbrains.mps.smodel.ModelLoadResult;
-import jetbrains.mps.smodel.RegularModelDescriptor;
 import jetbrains.mps.smodel.SModelId;
 import jetbrains.mps.smodel.SNodeUndoableAction;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import org.jetbrains.mps.openapi.model.SModelChangeListener;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.NullDataSource;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -35,20 +31,10 @@ class TempModel extends EditableModelDescriptor implements EditableSModel {
   private final boolean myReadOnly;
   private final boolean myTrackUndo;
 
-  protected TempModel(boolean readOnly, boolean trackUndo, SModuleReference moduleReference) {
-    super(createModelRef("TempModel_" + System.nanoTime(), moduleReference), new NullDataSource());
+  protected TempModel(boolean readOnly, boolean trackUndo, @NotNull String namePrefix, SModuleReference moduleReference) {
+    super(createModelRef(namePrefix + "_" + System.nanoTime(), moduleReference), new NullDataSource());
     myReadOnly = readOnly;
     myTrackUndo = trackUndo;
-  }
-
-  @Override
-  public void updateTimestamp() {
-    // no-op
-  }
-
-  @Override
-  public boolean needsReloading() {
-    return false;
   }
 
   @NotNull
@@ -62,7 +48,7 @@ class TempModel extends EditableModelDescriptor implements EditableSModel {
         }
       }
     };
-    return new ModelLoadResult<jetbrains.mps.smodel.SModel>(smodel, ModelLoadingState.FULLY_LOADED);
+    return new ModelLoadResult<>(smodel, ModelLoadingState.FULLY_LOADED);
   }
 
   @Override
@@ -75,11 +61,6 @@ class TempModel extends EditableModelDescriptor implements EditableSModel {
   @Override
   public void save() {
     // no-op, this is in-memory model
-  }
-
-  @Override
-  public void rename(String newModelName, boolean changeFile) {
-    throw new UnsupportedOperationException();
   }
 
   @Override
@@ -96,5 +77,10 @@ class TempModel extends EditableModelDescriptor implements EditableSModel {
     // todo: make TempModel name customizable? like prefix for temporary file
     SModelId id = SModelId.generate();
     return PersistenceFacade.getInstance().createModelReference(moduleReference, id, modelName);
+  }
+
+  @Override
+  public void unload() {
+
   }
 }

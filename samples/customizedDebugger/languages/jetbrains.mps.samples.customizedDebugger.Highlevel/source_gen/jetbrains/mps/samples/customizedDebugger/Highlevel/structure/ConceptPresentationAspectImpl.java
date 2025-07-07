@@ -4,14 +4,14 @@ package jetbrains.mps.samples.customizedDebugger.Highlevel.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_Conversation = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Message = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Participant = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_Conversation;
+  private ConceptPresentation props_Message;
+  private ConceptPresentation props_Participant;
 
   @Override
   @Nullable
@@ -19,10 +19,25 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.Conversation:
+        if (props_Conversation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_Conversation = cpb.create();
+        }
         return props_Conversation;
       case LanguageConceptSwitch.Message:
+        if (props_Message == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xbdab7456dc1d4dc5L, 0xb5bfab059630252dL, 0x71d6f475fc93f713L, 0x71d6f475fc93f71fL, "author", "", "");
+          props_Message = cpb.create();
+        }
         return props_Message;
       case LanguageConceptSwitch.Participant:
+        if (props_Participant == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_Participant = cpb.create();
+        }
         return props_Participant;
     }
     return null;

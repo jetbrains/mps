@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,42 +15,27 @@
  */
 package jetbrains.mps.ide.generator;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.ProjectComponent;
 import jetbrains.mps.generator.TransientModelsProvider;
-import jetbrains.mps.project.MPSProject;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.project.Project;
 
 /**
  * Evgeny Gryaznov, 12/3/10
  */
-public class TransientModelsComponent extends TransientModelsProvider implements ProjectComponent {
+public class TransientModelsComponent extends TransientModelsProvider implements Disposable {
 
-  public TransientModelsComponent(com.intellij.openapi.project.Project ideaProject, MPSProject project, TransientSwapOwnerComponent swapOwner) {
-    super(project.getRepository(), swapOwner);
+  public static TransientModelsProvider getInstance(Project mpsProject) {
+    return mpsProject.getComponent(TransientModelsProvider.class);
+  }
+
+  public TransientModelsComponent(com.intellij.openapi.project.Project ideaProject) {
+    super(ProjectHelper.fromIdeaProjectOrFail(ideaProject).getRepository(), TransientSwapOwnerComponent.getInstance());
   }
 
   @Override
-  public void projectOpened() {
-  }
-
-  @Override
-  public void projectClosed() {
-  }
-
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "Transient Models Component";
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
+  public void dispose() {
     clearAll(true);
   }
 }

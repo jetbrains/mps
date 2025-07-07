@@ -17,6 +17,7 @@
 package jetbrains.mps.idea.core.projectView.edit;
 
 import com.intellij.ide.DeleteProvider;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.DataContext;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
@@ -66,6 +67,11 @@ public class SNodeDeleteProvider implements DeleteProvider, Runnable {
     for (EditableSModel sModelDescriptor : modelsToSave) {
       sModelDescriptor.save();
     }
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 
   @Override

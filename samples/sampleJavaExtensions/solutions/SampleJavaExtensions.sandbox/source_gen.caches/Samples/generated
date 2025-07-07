@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-e24qa91xjq6k1cqlh77kr2lbdkb7v6g" />
+<product version="3" modelHash="-4z8zqfq5q3xcfh9zwcks6rc2ndv56v">
+  <files names="DecisionSample.java:DropBox.java:MoneySample.java:MyConstants.java:ParallelForSample.java:SidewaysIfSample.java:SimpleParallelForSample.java:ThreadSafeSample.java:UnlessSample.java" />
+</product>
 

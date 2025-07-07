@@ -10,55 +10,81 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBuildSolutionRunnerAspect = createDescriptorForBuildSolutionRunnerAspect();
   /*package*/ final ConceptDescriptor myConceptBuildSolutionRunnerPlugin = createDescriptorForBuildSolutionRunnerPlugin();
-  private final LanguageConceptSwitch myConceptIndex;
+  /*package*/ final ConceptDescriptor myConceptRequiredPlugin = createDescriptorForRequiredPlugin();
+  private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
-    myConceptIndex = new LanguageConceptSwitch();
+    myIndexSwitch = new LanguageConceptSwitch();
+  }
+
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build");
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBuildSolutionRunnerAspect, myConceptBuildSolutionRunnerPlugin);
+    return Arrays.asList(myConceptBuildSolutionRunnerAspect, myConceptBuildSolutionRunnerPlugin, myConceptRequiredPlugin);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
-    switch (myConceptIndex.index(id)) {
+    switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.BuildSolutionRunnerAspect:
         return myConceptBuildSolutionRunnerAspect;
       case LanguageConceptSwitch.BuildSolutionRunnerPlugin:
         return myConceptBuildSolutionRunnerPlugin;
+      case LanguageConceptSwitch.RequiredPlugin:
+        return myConceptRequiredPlugin;
       default:
         return null;
     }
   }
 
+
   /*package*/ int internalIndex(SAbstractConcept c) {
-    return myConceptIndex.index(c);
+    return myIndexSwitch.index(c);
   }
 
   private static ConceptDescriptor createDescriptorForBuildSolutionRunnerAspect() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.build.mps.runner", "BuildSolutionRunnerAspect", 0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.build.structure.BuildAspect", 0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x31292e1a60dd541dL);
+    // extends: jetbrains.mps.build.structure.BuildAspect
+    b.super_(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x31292e1a60dd541dL);
     b.parent(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee1a36a3L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:0f2b4a26-93a1-4327-97ef-ca91b7a4cf5e(jetbrains.mps.build.mps.runner.structure)/4173297143638950526");
+    b.version(3);
+    b.property("classSimpleName", 0x1f7059e5ed82569aL).type(PrimitiveTypeId.STRING).origin("2265409456634484378").done();
     b.associate("solution", 0x54b085b5945c6691L).target(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L).optional(false).origin("6102524510011680401").done();
+    b.aggregate("requiredPlugin", 0x3283ab1237cb7bddL).target(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L).optional(true).ordered(true).multiple(true).origin("3639941018579336157").done();
     b.alias("run code");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForBuildSolutionRunnerPlugin() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.build.mps.runner", "BuildSolutionRunnerPlugin", 0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cbeb5c6L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.build.structure.BuildPlugin", 0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9819eL);
+    // extends: jetbrains.mps.build.structure.BuildPlugin
+    b.super_(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9819eL);
     b.origin("r:0f2b4a26-93a1-4327-97ef-ca91b7a4cf5e(jetbrains.mps.build.mps.runner.structure)/4173297143638832582");
+    b.version(3);
     b.alias("mps-runner");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForRequiredPlugin() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.build.mps.runner", "RequiredPlugin", 0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L);
+    b.class_(false, false, false);
+    b.origin("r:0f2b4a26-93a1-4327-97ef-ca91b7a4cf5e(jetbrains.mps.build.mps.runner.structure)/6593674873635848984");
+    b.version(3);
+    b.associate("plugin", 0x5b81705cdf7bc319L).target(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L).optional(false).origin("6593674873635848985").done();
     return b.create();
   }
 }

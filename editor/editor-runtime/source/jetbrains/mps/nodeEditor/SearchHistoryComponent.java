@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.search.SearchHistoryStorage;
 import jetbrains.mps.nodeEditor.SearchHistoryComponent.MyState;
 import org.jetbrains.annotations.NonNls;
@@ -33,31 +34,13 @@ import java.util.List;
     name = "NodeEditorSearchHistory",
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
-public class SearchHistoryComponent implements ProjectComponent, PersistentStateComponent<MyState>, SearchHistoryStorage {
+public class SearchHistoryComponent implements PersistentStateComponent<MyState>, SearchHistoryStorage {
+
+  public static SearchHistoryStorage getInstance(Project project) {
+    return project.getService(SearchHistoryStorage.class);
+  }
+
   private MyState myState = new MyState();
-
-  @Override
-  public void projectOpened() {
-  }
-
-  @Override
-  public void projectClosed() {
-  }
-
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "MPS editor search history component";
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
 
   @Override
   public MyState getState() {
@@ -65,7 +48,7 @@ public class SearchHistoryComponent implements ProjectComponent, PersistentState
   }
 
   @Override
-  public void loadState(MyState state) {
+  public void loadState(@NotNull MyState state) {
     myState = state;
   }
 
@@ -89,7 +72,7 @@ public class SearchHistoryComponent implements ProjectComponent, PersistentState
   }
 
   public static class MyState {
-    private List<String> mySearches = new ArrayList<String>();
+    private List<String> mySearches = new ArrayList<>();
 
     public List<String> getSearches() {
       return mySearches;

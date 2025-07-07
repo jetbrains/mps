@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -30,6 +31,15 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
  */
 public interface UpdateSession {
   /**
+   * Registering additional dependencies discovered during this editor update session while creating specified editor cell.
+   *
+   * @param cell       - editor cell created as a part of this editor update session
+   * @param nodes      - nodes queried while building this editor cell
+   * @param refTargets - reference targets queried while building this editor cell
+   */
+  void registerAdditionalDependencies(EditorCell cell, Iterable<SNode> nodes, Iterable<SNodeReference> refTargets);
+
+    /**
    * Registering dependency discovered during this editor update session while creating
    * specified editor cell.
    *
@@ -157,7 +167,7 @@ public interface UpdateSession {
    * @param role   - reference role
    * @return result od update computable execution
    */
-  <T> T updateReferencedNodeCell(Computable<T> update, SNode node, String role);
+  <T> T updateReferencedNodeCell(Computable<T> update, SNode node, SReferenceLink role);
 
   /**
    * Returning {@link EditorCellFactory} instance used inside current update session

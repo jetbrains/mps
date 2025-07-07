@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.typesystem.inference;
 
 import gnu.trove.THashSet;
+import gnu.trove.TObjectIntHashMap;
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.lang.typesystem.runtime.CheckingRuleSet;
 import jetbrains.mps.lang.typesystem.runtime.ComparisonRule_Runtime;
@@ -30,105 +31,72 @@ import jetbrains.mps.lang.typesystem.runtime.OverloadedOperationsManager;
 import jetbrains.mps.lang.typesystem.runtime.RuleSet;
 import jetbrains.mps.lang.typesystem.runtime.SubstituteType_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.SubtypingRule_Runtime;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-public class RulesManager {
+public class RulesManager extends AbstractLanguageProcessor {
 
-  private RuleSet<InferenceRule_Runtime> myInferenceRules = new CheckingRuleSet<InferenceRule_Runtime>();
-  private RuleSet<SubtypingRule_Runtime> mySubtypingRules = new RuleSet<SubtypingRule_Runtime>();
-  private RuleSet<SubstituteType_Runtime> mySubstituteTypeRules = new RuleSet<SubstituteType_Runtime>();
-  private DoubleRuleSet<ComparisonRule_Runtime> myComparisonRules = new DoubleRuleSet<ComparisonRule_Runtime>();
-  private DoubleRuleSet<InequationReplacementRule_Runtime> myReplacementRules = new DoubleRuleSet<InequationReplacementRule_Runtime>();
-  private RuleSet<NonTypesystemRule_Runtime> myNonTypeSystemRules = new CheckingRuleSet<NonTypesystemRule_Runtime>();
+  private final RuleSet<InferenceRule_Runtime> myInferenceRules = new CheckingRuleSet<>();
+  private final RuleSet<SubtypingRule_Runtime> mySubtypingRules = new RuleSet<>();
+  private final RuleSet<SubstituteType_Runtime> mySubstituteTypeRules = new RuleSet<>();
+  private final DoubleRuleSet<ComparisonRule_Runtime> myComparisonRules = new DoubleRuleSet<>();
+  private final DoubleRuleSet<InequationReplacementRule_Runtime> myReplacementRules = new DoubleRuleSet<>();
+  private final RuleSet<NonTypesystemRule_Runtime> myNonTypeSystemRules = new CheckingRuleSet<>();
 
-  private Set<IVariableConverter_Runtime> myVariableConverters = new THashSet<IVariableConverter_Runtime>();
+  private final Set<IVariableConverter_Runtime> myVariableConverters = new THashSet<>();
 
-  private OverloadedOperationsManager myOverloadedOperationsManager;
+  private final OverloadedOperationsManager myOverloadedOperationsManager;
 
-  private static final Logger LOG = LogManager.getLogger(RulesManager.class);
-  private volatile boolean myNeedsLoading = false;
-  private Set<LanguageRuntime> myLoadedLanguages = new HashSet<LanguageRuntime>();
-  private Set<LanguageRuntime> myLanguagesToLoad = new HashSet<LanguageRuntime>();
+  private static final Logger LOG = Logger.getLogger(RulesManager.class);
 
-  public RulesManager(TypeChecker typeChecker) {
-    myOverloadedOperationsManager = new OverloadedOperationsManager(typeChecker);
+  public RulesManager() {
+    myOverloadedOperationsManager = new OverloadedOperationsManager();
   }
 
-  public void loadLanguages(Iterable<LanguageRuntime> languages) {
-    for (LanguageRuntime language : languages) {
-      assert !myLoadedLanguages.contains(language);
-      myLanguagesToLoad.add(language);
-      myNeedsLoading = true;
+  @Override
+  protected boolean processLoadedLangugage(LanguageRuntime language, TObjectIntHashMap<String> languageRanks) {
+    IHelginsDescriptor typesystem = null;
+    Throwable error = null;
+    try {
+      typesystem = language.getAspect(IHelginsDescriptor.class);
+    } catch (LinkageError linkageError) {
+      LOG.error("Problems with creating typesystem descriptor " + linkageError.getMessage());
+      error = linkageError;
+    } catch (Throwable t) {
+      LOG.error("Error while loading language: " + language.getNamespace(), t);
+      error = t;
     }
+    if (typesystem == null) {
+      return error == null; // no typesystem aspect or the error has been caught elsewhere
+    }
+    try {
+      myInferenceRules.addRuleSetItem(typesystem.getInferenceRules(), languageRanks::get);
+      mySubtypingRules.addRuleSetItem(typesystem.getSubtypingRules());
+      mySubstituteTypeRules.addRuleSetItem(typesystem.getSubstituteTypeRules());
+      Set<ComparisonRule_Runtime> comparisonRule_runtimes = typesystem.getComparisonRules();
+      myComparisonRules.addRuleSetItem(comparisonRule_runtimes, languageRanks::get);
+      myReplacementRules.addRuleSetItem(typesystem.getEliminationRules(), languageRanks::get);
+      myVariableConverters.addAll(typesystem.getVariableConverters());
+      myNonTypeSystemRules.addRuleSetItem(typesystem.getNonTypesystemRules());
+      myOverloadedOperationsManager.addOverloadedOperationsTypeProviders(typesystem.getOverloadedOperationsTypesProviders());
+    } catch (RuntimeException t) {
+      LOG.error("Error while loading language: " + language.getNamespace(), t);
+      clearCache();
+      return false;
+    }
+    return true;
   }
 
-  private void ensureAllRulesLoaded() {
-    if (!myNeedsLoading) {
-      return;
-    }
-    synchronized (this) {
-      if (!myNeedsLoading) {
-        return;
-      }
 
-      for (LanguageRuntime language : myLanguagesToLoad) {
-        assert !myLoadedLanguages.contains(language);
-        myLoadedLanguages.add(language);
-
-        IHelginsDescriptor typesystem = null;
-        try {
-          typesystem = language.getAspect(IHelginsDescriptor.class);
-        } catch (LinkageError linkageError) {
-          LOG.warn("Problems with creating typesystem descriptor " + linkageError.getMessage());
-        } catch (Throwable t) {
-          LOG.error("Error while loading language: " + language.getNamespace(), t);
-        }
-        if (typesystem == null) {
-          continue;
-        }
-        try {
-          myInferenceRules.addRuleSetItem(typesystem.getInferenceRules());
-          mySubtypingRules.addRuleSetItem(typesystem.getSubtypingRules());
-          mySubstituteTypeRules.addRuleSetItem(typesystem.getSubstituteTypeRules());
-          Set<ComparisonRule_Runtime> comparisonRule_runtimes = typesystem.getComparisonRules();
-          myComparisonRules.addRuleSetItem(comparisonRule_runtimes);
-          myReplacementRules.addRuleSetItem(typesystem.getEliminationRules());
-          myVariableConverters.addAll(typesystem.getVariableConverters());
-          myNonTypeSystemRules.addRuleSetItem(typesystem.getNonTypesystemRules());
-          myOverloadedOperationsManager.addOverloadedOperationsTypeProviders(typesystem.getOverloadedOperationsTypesProviders());
-        } catch (RuntimeException t) {
-        }
-      }
-
-      myLanguagesToLoad = new HashSet<LanguageRuntime>();
-      myNeedsLoading = false;
-    }
-  }
-
-  public void unloadLanguages(Iterable<LanguageRuntime> languages) {
-    for (LanguageRuntime language : languages) {
-      if (myLoadedLanguages.contains(language)) {
-        unloadLoadedAllLoaded();
-      }
-      myLanguagesToLoad.remove(language);
-      myNeedsLoading = true;
-    }
-  }
-
-  private void unloadLoadedAllLoaded() {
-
-    myLanguagesToLoad.addAll(myLoadedLanguages);
-    myLoadedLanguages = new HashSet<LanguageRuntime>();
-
+  @Override
+  protected void clearCache() {
     // TODO: cleanup
     myInferenceRules.clear();
     mySubtypingRules.clear();
@@ -141,7 +109,7 @@ public class RulesManager {
   }
 
   public IVariableConverter_Runtime getVariableConverter(SNode context, String role, SNode variable, boolean isAggregation) {
-    ensureAllRulesLoaded();
+    ensureUpToDate();
     for (IVariableConverter_Runtime converter : myVariableConverters) {
       if (converter.isApplicable(context, role, variable, isAggregation)) return converter;
     }
@@ -149,14 +117,14 @@ public class RulesManager {
   }
 
   public List<Pair<InferenceRule_Runtime, IsApplicableStatus>> getInferenceRules(final SNode node) {
-    ensureAllRulesLoaded();
-    List<Pair<InferenceRule_Runtime, IsApplicableStatus>> result = new LinkedList<Pair<InferenceRule_Runtime, IsApplicableStatus>>();
+    ensureUpToDate();
+    List<Pair<InferenceRule_Runtime, IsApplicableStatus>> result = new LinkedList<>();
     Set<InferenceRule_Runtime> ruleSet;
     ruleSet = myInferenceRules.getRules(node);
     for (InferenceRule_Runtime rule : ruleSet) {
       IsApplicableStatus status = rule.isApplicableAndPattern(node);
       if (status.isApplicable()) {
-        result.add(new Pair<InferenceRule_Runtime, IsApplicableStatus>(rule, status));
+        result.add(new Pair<>(rule, status));
       }
       if (rule.overrides(node, status)) {
         break;
@@ -166,27 +134,40 @@ public class RulesManager {
   }
 
   public List<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>> getNonTypesystemRules(SNode node) {
-    ensureAllRulesLoaded();
-    List<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>> result = new LinkedList<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>>();
+    ensureUpToDate();
+    List<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>> result = new ArrayList<>();
+    List<NonTypesystemRule_Runtime> activeForOverride = new ArrayList<>();
     Set<NonTypesystemRule_Runtime> ruleSet;
     ruleSet = myNonTypeSystemRules.getRules(node);
     for (NonTypesystemRule_Runtime rule : ruleSet) {
+      boolean isOverridden = false;
+      for (NonTypesystemRule_Runtime otherRule : activeForOverride) {
+        if (otherRule.overrides(rule)) {
+          isOverridden = true;
+          break;
+        }
+      }
+      if (isOverridden) {
+        activeForOverride.add(rule);
+        continue;
+      }
       IsApplicableStatus status = rule.isApplicableAndPattern(node);
       if (status.isApplicable()) {
-        result.add(new Pair<NonTypesystemRule_Runtime, IsApplicableStatus>(rule, status));
+        activeForOverride.add(rule);
+        result.add(new Pair<>(rule, status));
       }
     }
     return result;
   }
 
   public List<Pair<SubtypingRule_Runtime, IsApplicableStatus>> getSubtypingRules(final SNode node, final boolean isWeak) {
-    ensureAllRulesLoaded();
-    List<Pair<SubtypingRule_Runtime, IsApplicableStatus>> result = new LinkedList<Pair<SubtypingRule_Runtime, IsApplicableStatus>>();
+    ensureUpToDate();
+    List<Pair<SubtypingRule_Runtime, IsApplicableStatus>> result = new LinkedList<>();
     for (SubtypingRule_Runtime rule : mySubtypingRules.getRules(node)) {
       if ((isWeak || !rule.isWeak())) {
         IsApplicableStatus status = rule.isApplicableAndPattern(node);
         if (status.isApplicable()) {
-          result.add(new Pair<SubtypingRule_Runtime, IsApplicableStatus>(rule, status));
+          result.add(new Pair<>(rule, status));
         }
       }
     }
@@ -194,53 +175,60 @@ public class RulesManager {
   }
 
   public List<Pair<SubstituteType_Runtime, IsApplicableStatus>> getSubstituteTypeRules(final SNode node) {
-    ensureAllRulesLoaded();
-    List<Pair<SubstituteType_Runtime, IsApplicableStatus>> result = new LinkedList<Pair<SubstituteType_Runtime, IsApplicableStatus>>();
+    ensureUpToDate();
+    List<Pair<SubstituteType_Runtime, IsApplicableStatus>> result = new LinkedList<>();
     for (SubstituteType_Runtime rule : mySubstituteTypeRules.getRules(node)) {
       IsApplicableStatus status = rule.isApplicableAndPattern(node);
       if (status.isApplicable()) {
-        result.add(new Pair<SubstituteType_Runtime, IsApplicableStatus>(rule, status));
+        result.add(new Pair<>(rule, status));
       }
     }
     return result;
   }
 
   public List<Pair<ComparisonRule_Runtime, IsApplicable2Status>> getComparisonRules(final SNode node1, final SNode node2, final boolean isWeak) {
-    ensureAllRulesLoaded();
-    List<Pair<ComparisonRule_Runtime, IsApplicable2Status>> result = new LinkedList<Pair<ComparisonRule_Runtime, IsApplicable2Status>>();
+    ensureUpToDate();
+    List<Pair<ComparisonRule_Runtime, IsApplicable2Status>> result = new LinkedList<>();
     Set<ComparisonRule_Runtime> ruleSet = myComparisonRules.getRules(node1, node2);
     for (ComparisonRule_Runtime rule : ruleSet) {
       if (isWeak || !rule.isWeak()) {
         IsApplicable2Status status = rule.isApplicableAndPatterns(node1, node2);
         if (status.isApplicable()) {
-          result.add(new Pair<ComparisonRule_Runtime, IsApplicable2Status>(rule, status));
+          result.add(new Pair<>(rule, status));
         }
       }
     }
     return result;
   }
 
-
   public List<Pair<InequationReplacementRule_Runtime, IsApplicable2Status>> getReplacementRules(final SNode node1, final SNode node2) {
-    ensureAllRulesLoaded();
-    List<Pair<InequationReplacementRule_Runtime, IsApplicable2Status>> result = new LinkedList<Pair<InequationReplacementRule_Runtime, IsApplicable2Status>>();
+    ensureUpToDate();
+    List<Pair<InequationReplacementRule_Runtime, IsApplicable2Status>> result = new LinkedList<>();
     Set<InequationReplacementRule_Runtime> ruleSet = myReplacementRules.getRules(node1, node2);
     for (InequationReplacementRule_Runtime rule : ruleSet) {
       IsApplicable2Status status = rule.isApplicableAndPatterns(node1, node2);
       if (status.isApplicable()) {
-        result.add(new Pair<InequationReplacementRule_Runtime, IsApplicable2Status>(rule, status));
+        result.add(new Pair<>(rule, status));
       }
     }
     return result;
   }
 
+  @Deprecated(forRemoval = true)
   public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
     return getOperationType(operation, leftOperandType, rightOperandType, IRuleConflictWarningProducer.NULL);
   }
 
+  @Deprecated(forRemoval = true)
   public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType, IRuleConflictWarningProducer warningProducer) {
-    ensureAllRulesLoaded();
-    return myOverloadedOperationsManager.getOperationType(operation, leftOperandType, rightOperandType, warningProducer);
+    ensureUpToDate();
+    return myOverloadedOperationsManager.getOperationType(operation, leftOperandType, rightOperandType, warningProducer, TypeChecker.getInstance()
+                                                                                                                                    .getTypeCheckerHelper());
+  }
+
+  public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType, IRuleConflictWarningProducer warningProducer, TypeCheckerHelper typeCheckerHelper) {
+    ensureUpToDate();
+    return myOverloadedOperationsManager.getOperationType(operation, leftOperandType, rightOperandType, warningProducer, typeCheckerHelper);
   }
 }
 

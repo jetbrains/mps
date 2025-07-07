@@ -10,10 +10,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.text.TextUnit;
-import jetbrains.mps.text.impl.BufferLayoutBuilder;
-import jetbrains.mps.text.impl.RegularTextUnit;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TextGenAspectDescriptor extends TextGenAspectBase {
   private final LanguageConceptSwitch myIndex = new LanguageConceptSwitch();
@@ -27,6 +28,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     switch (myIndex.index(concept)) {
       case LanguageConceptSwitch.AdditionalForLoopVariable:
         return new AdditionalForLoopVariable_TextGen();
+      case LanguageConceptSwitch.AlternativeType:
+        return new AlternativeType_TextGen();
       case LanguageConceptSwitch.AndExpression:
         return new AndExpression_TextGen();
       case LanguageConceptSwitch.Annotation:
@@ -63,6 +66,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new AssertStatement_TextGen();
       case LanguageConceptSwitch.BaseAssignmentExpression:
         return new BaseAssignmentExpression_TextGen();
+      case LanguageConceptSwitch.BinaryIntegerLiteral:
+        return new BinaryIntegerLiteral_TextGen();
       case LanguageConceptSwitch.BitwiseAndExpression:
         return new BitwiseAndExpression_TextGen();
       case LanguageConceptSwitch.BitwiseNotExpression:
@@ -99,8 +104,6 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new ClassifierType_TextGen();
       case LanguageConceptSwitch.CommentedStatement:
         return new CommentedStatement_TextGen();
-      case LanguageConceptSwitch.CommentedStatementsBlock:
-        return new CommentedStatementsBlock_TextGen();
       case LanguageConceptSwitch.ConceptFunctionParameter:
         return new ConceptFunctionParameter_TextGen();
       case LanguageConceptSwitch.ConstructorDeclaration:
@@ -109,6 +112,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new ContinueStatement_TextGen();
       case LanguageConceptSwitch.DefaultClassCreator:
         return new DefaultClassCreator_TextGen();
+      case LanguageConceptSwitch.DefaultModifier:
+        return new DefaultModifier_TextGen();
       case LanguageConceptSwitch.DimensionExpression:
         return new DimensionExpression_TextGen();
       case LanguageConceptSwitch.DivExpression:
@@ -119,6 +124,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new DotExpression_TextGen();
       case LanguageConceptSwitch.DoubleType:
         return new DoubleType_TextGen();
+      case LanguageConceptSwitch.DummyCommant:
+        return new DummyCommant_TextGen();
       case LanguageConceptSwitch.ElsifClause:
         return new ElsifClause_TextGen();
       case LanguageConceptSwitch.EnumClass:
@@ -139,6 +146,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new FieldDeclaration_TextGen();
       case LanguageConceptSwitch.FieldReferenceOperation:
         return new FieldReferenceOperation_TextGen();
+      case LanguageConceptSwitch.FinallyClause:
+        return new FinallyClause_TextGen();
       case LanguageConceptSwitch.FloatType:
         return new FloatType_TextGen();
       case LanguageConceptSwitch.FloatingPointConstant:
@@ -157,6 +166,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new GreaterThanOrEqualsExpression_TextGen();
       case LanguageConceptSwitch.HexIntegerLiteral:
         return new HexIntegerLiteral_TextGen();
+      case LanguageConceptSwitch.HexLongLiteral:
+        return new HexLongLiteral_TextGen();
       case LanguageConceptSwitch.IfStatement:
         return new IfStatement_TextGen();
       case LanguageConceptSwitch.ImplicitAnnotationInstanceValue:
@@ -195,6 +206,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new MinusExpression_TextGen();
       case LanguageConceptSwitch.MulExpression:
         return new MulExpression_TextGen();
+      case LanguageConceptSwitch.MultiLineComment:
+        return new MultiLineComment_TextGen();
+      case LanguageConceptSwitch.MultipleCatchClause:
+        return new MultipleCatchClause_TextGen();
       case LanguageConceptSwitch.NestedNewExpression:
         return new NestedNewExpression_TextGen();
       case LanguageConceptSwitch.NotEqualsExpression:
@@ -203,6 +218,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new NotExpression_TextGen();
       case LanguageConceptSwitch.NullLiteral:
         return new NullLiteral_TextGen();
+      case LanguageConceptSwitch.OctalIntegerLiteral:
+        return new OctalIntegerLiteral_TextGen();
       case LanguageConceptSwitch.OrExpression:
         return new OrExpression_TextGen();
       case LanguageConceptSwitch.ParameterDeclaration:
@@ -229,6 +246,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new RemExpression_TextGen();
       case LanguageConceptSwitch.RemarkStatement:
         return new RemarkStatement_TextGen();
+      case LanguageConceptSwitch.ResourceVariable:
+        return new ResourceVariable_TextGen();
       case LanguageConceptSwitch.ReturnStatement:
         return new ReturnStatement_TextGen();
       case LanguageConceptSwitch.ShiftLeftExpression:
@@ -251,10 +270,14 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new StaticFieldDeclaration_TextGen();
       case LanguageConceptSwitch.StaticFieldReference:
         return new StaticFieldReference_TextGen();
+      case LanguageConceptSwitch.StaticFieldReferenceOperation:
+        return new StaticFieldReferenceOperation_TextGen();
       case LanguageConceptSwitch.StaticInitializer:
         return new StaticInitializer_TextGen();
       case LanguageConceptSwitch.StaticMethodCall:
         return new StaticMethodCall_TextGen();
+      case LanguageConceptSwitch.StaticMethodCallOperation:
+        return new StaticMethodCallOperation_TextGen();
       case LanguageConceptSwitch.StaticMethodDeclaration:
         return new StaticMethodDeclaration_TextGen();
       case LanguageConceptSwitch.StringLiteral:
@@ -263,6 +286,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new StringType_TextGen();
       case LanguageConceptSwitch.SuperConstructorInvocation:
         return new SuperConstructorInvocation_TextGen();
+      case LanguageConceptSwitch.SuperInterfaceMethodCall:
+        return new SuperInterfaceMethodCall_TextGen();
       case LanguageConceptSwitch.SuperMethodCall:
         return new SuperMethodCall_TextGen();
       case LanguageConceptSwitch.SwitchStatement:
@@ -281,8 +306,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new ThrowStatement_TextGen();
       case LanguageConceptSwitch.TryCatchStatement:
         return new TryCatchStatement_TextGen();
-      case LanguageConceptSwitch.TryStatement:
-        return new TryStatement_TextGen();
+      case LanguageConceptSwitch.TryFinallyStatement:
+        return new TryFinallyStatement_TextGen();
+      case LanguageConceptSwitch.TryUniversalStatement:
+        return new TryUniversalStatement_TextGen();
       case LanguageConceptSwitch.TypeVariableDeclaration:
         return new TypeVariableDeclaration_TextGen();
       case LanguageConceptSwitch.TypeVariableReference:
@@ -291,8 +318,6 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new UnaryMinus_TextGen();
       case LanguageConceptSwitch.UpperBoundType:
         return new UpperBoundType_TextGen();
-      case LanguageConceptSwitch.VarType:
-        return new VarType_TextGen();
       case LanguageConceptSwitch.VariableArityType:
         return new VariableArityType_TextGen();
       case LanguageConceptSwitch.VariableDeclaration:
@@ -314,28 +339,28 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   @Override
   public void breakdownToUnits(@NotNull TextGenModelOutline outline) {
     for (SNode root : outline.getModel().getRootNodes()) {
-      if (root.getConcept().equals(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation"))) {
+      if (root.getConcept().equals(CONCEPTS.Annotation$he)) {
         String fname = getFileName_Annotation(root);
         String ext = getFileExtension_Annotation(root);
-        outline.registerTextUnit(createTextUnit0((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit0(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
-      if (root.getConcept().equals(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) {
+      if (root.getConcept().equals(CONCEPTS.ClassConcept$bK)) {
         String fname = getFileName_ClassConcept(root);
         String ext = getFileExtension_ClassConcept(root);
-        outline.registerTextUnit(createTextUnit1((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit1(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
-      if (root.getConcept().equals(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
+      if (root.getConcept().equals(CONCEPTS.Interface$db)) {
         String fname = getFileName_Interface(root);
         String ext = getFileExtension_Interface(root);
-        outline.registerTextUnit(createTextUnit2((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit2(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
-      if (root.getConcept().equals(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"))) {
+      if (root.getConcept().equals(CONCEPTS.EnumClass$Vk)) {
         String fname = getFileName_EnumClass(root);
         String ext = getFileExtension_EnumClass(root);
-        outline.registerTextUnit(createTextUnit3((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit3(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
     }
@@ -364,52 +389,82 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   private static String getFileExtension_EnumClass(SNode node) {
     return "java";
   }
-  private static TextUnit createTextUnit0(String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("HEADER");
-    lb.add("IMPORTS");
-    lb.add("SEPARATOR");
-    lb.add("BODY");
-    lb.activate("BODY");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
-    return rv;
+  private static String getPath_Annotation(SNode node) {
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$n3Xr))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$n3Xr).replace('.', '/');
+    }
+    return null;
   }
-  private static TextUnit createTextUnit1(String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("HEADER");
-    lb.add("IMPORTS");
-    lb.add("SEPARATOR");
-    lb.add("BODY");
-    lb.activate("BODY");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
-    return rv;
+  private static String getPath_ClassConcept(SNode node) {
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$n3Xr))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$n3Xr).replace('.', '/');
+    }
+    return null;
   }
-  private static TextUnit createTextUnit2(String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("HEADER");
-    lb.add("IMPORTS");
-    lb.add("SEPARATOR");
-    lb.add("BODY");
-    lb.activate("BODY");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
-    return rv;
+  private static String getPath_Interface(SNode node) {
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$n3Xr))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$n3Xr).replace('.', '/');
+    }
+    return null;
   }
-  private static TextUnit createTextUnit3(String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("HEADER");
-    lb.add("IMPORTS");
-    lb.add("SEPARATOR");
-    lb.add("BODY");
-    lb.activate("BODY");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
-    return rv;
+  private static String getPath_EnumClass(SNode node) {
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$n3Xr))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$n3Xr).replace('.', '/');
+    }
+    return null;
+  }
+  private static TextUnit createTextUnit0(TextGenModelOutline outline, String filename, SNode node) {
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("HEADER", false);
+    rv.layout("IMPORTS", false);
+    rv.layout("SEPARATOR", false);
+    rv.layout("BODY", true);
+    rv.path(getPath_Annotation(node));
+    rv.with("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
+    return rv.build();
+  }
+  private static TextUnit createTextUnit1(TextGenModelOutline outline, String filename, SNode node) {
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("HEADER", false);
+    rv.layout("IMPORTS", false);
+    rv.layout("SEPARATOR", false);
+    rv.layout("BODY", true);
+    rv.path(getPath_ClassConcept(node));
+    rv.with("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
+    return rv.build();
+  }
+  private static TextUnit createTextUnit2(TextGenModelOutline outline, String filename, SNode node) {
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("HEADER", false);
+    rv.layout("IMPORTS", false);
+    rv.layout("SEPARATOR", false);
+    rv.layout("BODY", true);
+    rv.path(getPath_Interface(node));
+    rv.with("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
+    return rv.build();
+  }
+  private static TextUnit createTextUnit3(TextGenModelOutline outline, String filename, SNode node) {
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("HEADER", false);
+    rv.layout("IMPORTS", false);
+    rv.layout("SEPARATOR", false);
+    rv.layout("BODY", true);
+    rv.path(getPath_EnumClass(node));
+    rv.with("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
+    return rv.build();
+  }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Annotation$he = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty packageName$n3Xr = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x26be0cf68be19d69L, "packageName");
   }
 }

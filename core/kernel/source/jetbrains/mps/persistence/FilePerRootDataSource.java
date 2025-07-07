@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,46 +16,26 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.FolderDataSource;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromURL;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
-import java.net.URI;
+import java.io.File;
 import java.util.Objects;
 
 /**
- * @see FolderDataSource comments
- *
  * evgeny, 6/3/13
  */
-@ToRemove(version = 4.0)
 public final class FilePerRootDataSource extends FolderDataSource {
+  @Deprecated(forRemoval = true)
   public static final String HEADER_FILE = MPSExtentions.DOT_MODEL_HEADER;
+  @Deprecated(forRemoval = true)
   public static final String ROOT_EXTENSION = MPSExtentions.MODEL_ROOT;
 
-  /**
-   * @param modelRoot (optional) containing model root, which should be notified before the source during the update
-   *
-   * @deprecated use {@link DataSourceFactoryRuleService#getFactory} AND
-   *             {@link DataSourceFactoryFromName#create}
-   */
-  @ToRemove(version = 3.5) // will become package private
-  @Deprecated
-  public FilePerRootDataSource(@NotNull IFile folder, @Nullable ModelRoot modelRoot) {
-    super(folder, modelRoot);
-  }
-
-  @Override
-  public boolean isIncluded(@NotNull IFile file) {
-    return super.isIncluded(file) && isPerRootPersistenceFile(file);
+  public FilePerRootDataSource(@NotNull IFile folder) {
+    super(folder, FilePerRootDataSource::isPerRootPersistenceFile);
   }
 
   @Override
@@ -71,17 +51,20 @@ public final class FilePerRootDataSource extends FolderDataSource {
     return false;
   }
 
-  /**
-   * fixme exposes my internal notion -- better use {@link DataSourceFactoryFromURL#create(URI, ModelRoot)}
-   */
   @Internal
   public static boolean isPerRootPersistenceFile(@NotNull IFile file) {
+    // I don't like this pair of methods, nor the way they are used in vcs!
+    return isPerRootPersistenceFile(new File(file.getPath()));
+  }
+
+  @Internal
+  public static boolean isPerRootPersistenceFile(@NotNull File file) {
     String fileName = file.getName();
-    if (HEADER_FILE.equals(fileName)) {
+    if (MPSExtentions.DOT_MODEL_HEADER.equals(fileName)) {
       return true;
     }
 
     String extension = FileUtil.getExtension(fileName);
-    return ROOT_EXTENSION.equals(extension);
+    return MPSExtentions.MODEL_ROOT.equals(extension);
   }
 }

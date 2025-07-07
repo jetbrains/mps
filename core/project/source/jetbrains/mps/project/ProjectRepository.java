@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,24 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.extapi.model.StorageMemoryConflictResolver;
 import jetbrains.mps.extapi.module.SRepositoryBase;
 import jetbrains.mps.extapi.module.SRepositoryExt;
+import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.ReferenceScopeHelper;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import org.jetbrains.mps.openapi.module.RepositoryAccess;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
+
+import java.util.Set;
 
 /**
  * Repository with modules visible in MPS {@link Project project}.
@@ -40,23 +48,29 @@ import org.jetbrains.mps.openapi.module.SRepositoryListener;
  * (i.e. module added to the global repository triggers moduleAdded for for both global and
  * each project repository
  */
-public class ProjectRepository extends SRepositoryBase implements SRepositoryExt {
+public class ProjectRepository extends SRepositoryBase implements SRepositoryExt, ReferenceScopeHelper.Source {
   private final Project myProject;
-  private final ProjectModelAccess myProjectModelAccess;
+  private final ModelAccess myProjectModelAccess;
+  private final SRepositoryExt myRootRepo;
+  //
+  private StorageMemoryConflictResolver<EditableSModel> myConflictResolver;
 
-  public ProjectRepository(@NotNull Project project) {
-    myProject = project;
-    myProjectModelAccess = new ProjectModelAccess(project);
+  public ProjectRepository(@NotNull Project project, @NotNull SRepositoryExt rootRepo, @Nullable SRepositoryRegistry repositoryRegistry) {
+    this(project, rootRepo, repositoryRegistry, new ProjectModelAccess(project));
   }
 
-  @Override
-  public void dispose() {
-    super.dispose();
+  // XXX in fact, the only reason to pass project here is to provide it from #getProject()
+  //     there are very few uses of this knowledge, likely can get rid of it.
+  public ProjectRepository(@NotNull Project project, @NotNull SRepositoryExt rootRepo, @Nullable SRepositoryRegistry repositoryRegistry, @NotNull ModelAccess projectModelAccess) {
+    super(repositoryRegistry);
+    myProject = project;
+    myProjectModelAccess = projectModelAccess;
+    myRootRepo = rootRepo;
   }
 
   @NotNull
-  private MPSModuleRepository getRootRepository() {
-    return MPSModuleRepository.getInstance();
+  private SRepositoryExt getRootRepository() {
+    return myRootRepo;
   }
 
   public Project getProject() {
@@ -74,15 +88,16 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
     return getRootRepository().getModules();
   }
 
+  @Nullable
+  @Override
+  public SModel getModel(@NotNull SModelId modelId) {
+    return getRootRepository().getModel(modelId);
+  }
+
   @NotNull
   @Override
   public ModelAccess getModelAccess() {
     return myProjectModelAccess;
-  }
-
-  @Override
-  public RepositoryAccess getRepositoryAccess() {
-    throw new UnsupportedOperationException();
   }
 
   @Override
@@ -98,6 +113,16 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
   @Override
   public void unregisterModule(@NotNull SModule module, @NotNull MPSModuleOwner owner) {
     getRootRepository().unregisterModule(module, owner);
+  }
+
+  @Override
+  public Set<MPSModuleOwner> getOwners(@NotNull SModule module) {
+    return getRootRepository().getOwners(module);
+  }
+
+  @Override
+  public Set<SModule> getModules(MPSModuleOwner moduleOwner) {
+    return getRootRepository().getModules(moduleOwner);
   }
 
   @Override
@@ -123,5 +148,35 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
   @Override
   public void removeRepositoryListener(@NotNull SRepositoryListener listener) {
     getRootRepository().removeRepositoryListener(listener);
+  }
+
+  @Override
+  public boolean needsSave() {
+    return getRootRepository().needsSave();
+  }
+
+  @Override
+  public ReferenceScopeHelper getReferenceScopeHelper() {
+    if (getRootRepository() instanceof ReferenceScopeHelper.Source) {
+      return ((ReferenceScopeHelper.Source) getRootRepository()).getReferenceScopeHelper();
+    }
+    return new ReferenceScopeHelper();
+  }
+
+  @Override
+  public StorageMemoryConflictResolver<EditableSModel> getConflictResolver() {
+    if (myConflictResolver != null) {
+      return myConflictResolver;
+    }
+    return SRepositoryExt.super.getConflictResolver();
+  }
+
+  public void setConflictResolver(StorageMemoryConflictResolver<? super EditableSModel> resolver) {
+    // null value resets to a default resolver logic.
+    myConflictResolver = (StorageMemoryConflictResolver<EditableSModel>) resolver;
+    // don't care if the original resolver deals with any other model, our code pass only EditableSModel instances.
+    if (myRootRepo instanceof MPSModuleRepository) {
+      ((MPSModuleRepository) myRootRepo).setConflictResolver(resolver);
+    }
   }
 }

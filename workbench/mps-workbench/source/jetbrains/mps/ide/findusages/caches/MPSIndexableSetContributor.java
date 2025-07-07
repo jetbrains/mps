@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class MPSIndexableSetContributor extends IndexableSetContributor {
   @NotNull
@@ -33,7 +34,9 @@ public class MPSIndexableSetContributor extends IndexableSetContributor {
   @NotNull
   @Override
   public Set<VirtualFile> getAdditionalProjectRootsToIndex(@NotNull Project project) {
-    MPSIndexableFileSet indexableFileSet = project.getComponent(MPSIndexableFileSet.class);
-    return indexableFileSet.getIndexableRoots();
+    final IndexableRootCalculator rootCalculator = IndexableRootCalculator.getInstance(project);
+    Set<VirtualFile> indexableRoots = rootCalculator.getIndexableRoots();
+    // According to c020e5b3, contract of this method is not to give any invalid file
+    return indexableRoots.stream().filter(VirtualFile::isValid).collect(Collectors.toSet());
   }
 }

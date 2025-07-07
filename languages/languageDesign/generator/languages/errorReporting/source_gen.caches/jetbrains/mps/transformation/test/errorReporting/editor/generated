@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-4678dhe943x2co329q0fa83j2e7cj7k" />
+<product version="3" modelHash="bz3dbh0nwvqmb6c65zlnffdwhuxdwvl">
+  <files names="EditorAspectDescriptorImpl.java:ErrorReportingRoot_Editor.java:ErrorReportingRoot_EditorBuilder_a.java" />
+</product>
 

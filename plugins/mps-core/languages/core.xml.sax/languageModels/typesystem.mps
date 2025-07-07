@@ -3,8 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="dcb5a83a-19a8-44ff-a4cb-fc7d324ecc63" name="jetbrains.mps.core.xml.sax" version="0" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="0" />
-    <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
+    <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
     <import index="nv7r" ref="r:7fae86c9-9d2f-4341-8a38-92d558a78a9a(jetbrains.mps.core.xml.sax.structure)" />
@@ -80,18 +79,15 @@
       <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
-      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
-        <property id="1212056105818" name="inequationPriority" index="Ob790" />
-      </concept>
       <concept id="1227096620180" name="jetbrains.mps.lang.typesystem.structure.ReferenceMessageTarget" flags="ng" index="2OE7Q9">
         <reference id="1227096645744" name="linkDeclaration" index="2OEe5H" />
       </concept>
-      <concept id="1227096774658" name="jetbrains.mps.lang.typesystem.structure.MessageStatement" flags="ng" index="2OEH$v">
-        <child id="1227096802790" name="nodeToReport" index="2OEOjV" />
-        <child id="1227096836496" name="messageTarget" index="2OEWyd" />
-      </concept>
       <concept id="1195213580585" name="jetbrains.mps.lang.typesystem.structure.AbstractCheckingRule" flags="ig" index="18hYwZ">
         <child id="1195213635060" name="body" index="18ibNy" />
+      </concept>
+      <concept id="3937244445246642777" name="jetbrains.mps.lang.typesystem.structure.AbstractReportStatement" flags="ng" index="1urrMJ">
+        <child id="3937244445246643443" name="messageTarget" index="1urrC5" />
+        <child id="3937244445246642781" name="nodeToReport" index="1urrMF" />
       </concept>
       <concept id="1174642788531" name="jetbrains.mps.lang.typesystem.structure.ConceptReference" flags="ig" index="1YaCAy">
         <reference id="1174642800329" name="concept" index="1YaFvo" />
@@ -154,7 +150,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -489,7 +485,6 @@
       <node concept="3clFbJ" id="1XGsQcRHuej" role="3cqZAp">
         <node concept="3clFbS" id="1XGsQcRHuek" role="3clFbx">
           <node concept="1ZobV4" id="1XGsQcRHuel" role="3cqZAp">
-            <property role="Ob790" value="0" />
             <node concept="mw_s8" id="1XGsQcRHuem" role="1ZfhKB">
               <node concept="2OqwBi" id="1XGsQcRHuen" role="mwGJk">
                 <node concept="2OqwBi" id="1XGsQcRHueo" role="2Oq$k0">
@@ -659,14 +654,14 @@
         </node>
         <node concept="3clFbS" id="460Ozqrf72K" role="3clFbx">
           <node concept="2MkqsV" id="460OzqrfLsL" role="3cqZAp">
-            <node concept="1YBJjd" id="460Ozqrg0C$" role="2OEOjV">
-              <ref role="1YBMHb" node="460OzqreYbD" resolve="childRule" />
-            </node>
             <node concept="Xl_RD" id="460OzqrfLzv" role="2MkJ7o">
               <property role="Xl_RC" value="number of arguments doesn't match the declaration" />
             </node>
-            <node concept="2OE7Q9" id="460OzqrorPY" role="2OEWyd">
+            <node concept="2OE7Q9" id="460OzqrorPY" role="1urrC5">
               <ref role="2OEe5H" to="nv7r:fz7wK6I" resolve="actualArgument" />
+            </node>
+            <node concept="1YBJjd" id="460Ozqrg0C$" role="1urrMF">
+              <ref role="1YBMHb" node="460OzqreYbD" resolve="childRule" />
             </node>
           </node>
           <node concept="3cpWs6" id="460Ozqrg1bV" role="3cqZAp" />

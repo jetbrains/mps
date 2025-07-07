@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,11 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.project.ModuleId;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.SModelId.ForeignSModelId;
 import jetbrains.mps.smodel.SModelId.ModelNameSModelId;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.EqualUtil;
-import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.StringUtil;
-import jetbrains.mps.util.annotation.Hack;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -33,17 +27,16 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade.IncorrectModelReferenceFormatException;
 
 import java.util.Objects;
 
 // FIXME move to [smodel] once dependencies from MPSModuleRepository and SModelRepository are gone
 @Immutable
 public final class SModelReference implements org.jetbrains.mps.openapi.model.SModelReference {
-  private static Logger LOG = Logger.getLogger(SModelReference.class);
+  private static final Logger LOG = Logger.getLogger(SModelReference.class);
 
   @NotNull
   private final SModelId myModelId;
@@ -96,43 +89,36 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
 
   @Override
   public SModel resolve(SRepository repo) {
+    // NOTE, shall tolerate null repo unless every single piece of code that expects StaticReference of a newly created node
+    // hanging in the air to resolve. @see StaticReference#getTargetSModel
+    final SRepository repository;
+    if (repo == null) {
+      // see StaticReference, which seems to be the only place we pass null as repository
+      repository = MPSModuleRepository.getInstance();
+    } else {
+      repository = repo;
+    }
     if (myModuleReference != null) {
-      final SRepository repository;
-      if (repo == null) {
-        // see StaticReference, which seems to be the only place we pass null as repository
-        repository = MPSModuleRepository.getInstance();
-      } else {
-        repository = repo;
-      }
-      Computable<SModel> c = new Computable<SModel>() {
-        @Override
-        public SModel compute() {
-          SModule module = repository.getModule(myModuleReference.getModuleId());
-          if (module == null) {
-            return null;
-          }
-          return module.getModel(myModelId);
+      Computable<SModel> c = () -> {
+        SModule module = repository.getModule(myModuleReference.getModuleId());
+        if (module == null) {
+          return null;
         }
+        return module.getModel(myModelId);
       };
       if (!repository.getModelAccess().canRead()) {
-        LOG.warn("Attempt to resolve a model not from read action. What are you going to do with return value? Hint: at least, read. Please ensure proper model access then.", new Throwable());
+        LOG.warning("Attempt to resolve a model not from read action. What are you going to do with return value? Hint: at least, read. Please ensure proper model access then.", new Throwable());
         return new ModelAccessHelper(repository).runReadAction(c);
       } else {
         return c.compute();
       }
     }
-
-    // FIXME !!! use supplied SRepository, not global model repo !!!
-    // If there's no module reference, and model id is global, it's supposed we shall get the model from a global repository.
-    // However, at the moment, there's no easy way to get model from SRepository (other than to iterate over all modules and models,
-    // which doesn't sound like a good approach). Either shall provide method to find model from SRepository, or drop
-    // 'globally unique' model id altogether. What's the benefit of them?
-
-    // NOTE, shall tolerate null repo unless every single piece of code that expects StaticReference of a newly created node
-    // hanging in the air to resolve. @see StaticReference#getTargetSModel
-    if (SModelRepository.getInstance() != null) {
-      // could be null in tests
-      return SModelRepository.getInstance().getModelDescriptor(this);
+    if (myModelId.isGloballyUnique()) {
+      // XXX now with repo.getModel() capable to load models lazily, this code may fail with IMAE where it used to run ok.
+      //     the simplest fix is to wrap here with MR exactly as we do for non-guid case above (after all, what's the difference);
+      //     however, I plan to remove this additional read wrap, above, as it's plain wrong, given it provides access to SModel
+      //     instance. Therefore, my intention is rather to catch scenarios where we use this code without explicit MR.
+      return repository.getModel(myModelId);
     }
     return null;
   }
@@ -165,25 +151,13 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
   }
 
   /**
-   * @deprecated This code shall move to private method of PersistenceRegistry, which would dispatch to proper
-   *   registered factories. Use {@link PersistenceFacade#createModelReference(String)} instead.
    * Format: <code>[ moduleID / ] modelID [ ([moduleName /] modelName ) ]</code>
+   * @return null or 4-element array, with [module id, model id, moduleName, modelName] elements, all optional
    */
-  @Deprecated
-  @ToRemove(version = 3.3)
-  public static SModelReference parseReference(String s) {
-    Pair<Pair<SModuleId, String>, Pair<SModelId, String>> parseResult = parseReference_internal(s);
-    SModuleId moduleId = parseResult.o1.o1;
-    String moduleName = parseResult.o1.o2;
-    SModelId modelId = parseResult.o2.o1;
-    String modelName = parseResult.o2.o2;
-    SModuleReference moduleRef =
-        moduleId != null || moduleName != null ? new jetbrains.mps.project.structure.modules.ModuleReference(moduleName, moduleId) : null;
-    return new SModelReference(moduleRef, modelId, modelName);
-  }
-
-  public static Pair<Pair<SModuleId, String>, Pair<SModelId, String>> parseReference_internal(String s) {
-    if (s == null) return null;
+  public static String[] parseReferenceInternal(@Nullable String s) {
+    if (s == null) {
+      return null;
+    }
     s = s.trim();
     int lParen = s.indexOf('(');
     int rParen = s.lastIndexOf(')');
@@ -195,35 +169,17 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
       rParen = s.lastIndexOf(')');
     }
     if (lParen != -1 || rParen != -1) {
-      throw new IllegalArgumentException("parentheses do not match in: `" + s + "'");
+      throw new IncorrectModelReferenceFormatException("parentheses do not match in: `" + s + "'");
     }
 
-    SModuleId moduleId = null;
+    String moduleId = null;
     int slash = s.indexOf('/');
     if (slash >= 0) {
-      // FIXME I wonder why there's no SModuleIdFactory and corresponding methods in PersistenceFacade
-      moduleId = ModuleId.fromString(StringUtil.unescapeRefChars(s.substring(0, slash)));
+      moduleId = StringUtil.unescapeRefChars(s.substring(0, slash));
       s = s.substring(slash + 1);
     }
 
-    String modelIDString = StringUtil.unescapeRefChars(s);
-    SModelId modelId;
-    if (modelIDString.indexOf(':') >= 0) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      // temporary: SModelReference can be created without active PersistenceFacade
-      if (facade == null) {
-        // FIXME get rid of facade == null case, if any
-        // Besides, shall move the code to PersistenceRegistry, as it's responsible for prefixes and factory pick
-        LOG.warn("Please report stacktrace, which would help us to find out improper MPS initialization sequence", new Throwable());
-      }
-      modelId = facade != null
-          ? facade.createModelId(modelIDString)
-          : jetbrains.mps.smodel.SModelId.fromString(modelIDString);
-    } else {
-      // dead code? I suspect ModelNameSModelId, if any, would start with "m:" prefix and we'd never get into else clause
-      // OTOH, there seems to be a special hack in toString(), that persists ModelNameSModelId without the prefix
-      modelId = new ModelNameSModelId(modelIDString);
-    }
+    String modelID = StringUtil.unescapeRefChars(s);
 
     String moduleName = null;
     String modelName = null;
@@ -236,64 +192,15 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
         modelName = StringUtil.unescapeRefChars(presentationPart);
       }
     }
-
-    if (modelName == null || modelName.isEmpty()) {
-      modelName = modelId.getModelName();
-      if (modelName == null) {
-        throw new IllegalArgumentException("incomplete model reference, presentation part is absent");
-      }
-    }
-
-    if (moduleId == null) {
-      moduleId = extractModuleIdFromModelIdIfJavaStub(modelId);
-    }
-
-    if (SModelRepository.isLegacyJavaStubModelId(modelId)) {
-      modelId = SModelRepository.newJavaPackageStubFromLegacy(modelId);
-    }
-
-    return new Pair(new Pair(moduleId, moduleName), new Pair(modelId, modelName));
-  }
-
-  /**
-   * This temporary code suites the purpose to homogenize java_stub model references, that used
-   * to be kept in two different formats (one is "module id/model id including module id/(module name/model name)"
-   * and another "model id including module id(module name/model name)". If there's module id anyway, why
-   * would anyone keep it to model id then, and common patter for model reference (with module id coming first) shall be used.
-   *
-   * Once all model references to java stub are updated, this code shall cease to exist.
-   *
-   * IMPORTANT: there's a fly in the ointment, though - we shall read references of old models, and thus shall keep this code
-   * forever. Perhaps, we can move it into persistence/vcs modules and bury it there? Another alternative is to introduce
-   * new model identity to replace 'f:' identity, and leave dedicated SModelId factory for the legacy support in vcs/persistence only.
-   */
-  @ToRemove(version = 3.3)
-  @Nullable
-  @Hack
-  private static SModuleId extractModuleIdFromModelIdIfJavaStub(SModelId modelId) {
-    if (SModelRepository.isVerboseJavaStubModelId(modelId)) {
-      String idValue = ((ForeignSModelId) modelId).getId();
-      String stereo = SModelStereotype.getStubStereotypeForId(LanguageID.JAVA);
-      if (idValue.length() > stereo.length() + 2 && idValue.startsWith(stereo) && idValue.charAt(stereo.length()) == '#') {
-        // two forms of legacy stub model id:
-        //    f:java_stub#module id#package name
-        //    f:java_stub#package name
-        int secondHashIndex = idValue.indexOf('#', stereo.length() + 1);
-        // there are two hash chars and non-empty package name
-        if (secondHashIndex != -1 && idValue.length() > secondHashIndex) {
-          return ModuleId.fromString(idValue.substring(stereo.length()+1, secondHashIndex));
-        }
-      }
-    }
-    return null;
+    return new String[] {moduleId, modelID, moduleName, modelName};
   }
 
   public String toString() {
     StringBuilder sb = new StringBuilder();
 
-    if (getModuleReference() != null && getModuleReference().getModuleId() != null) {
+    if (getModuleReference() != null) {
       sb.append(StringUtil.escapeRefChars(getModuleReference().getModuleId().toString()));
-      sb.append("/");
+      sb.append('/');
     }
 
     String modelId = myModelId instanceof ModelNameSModelId ? myModelId.getModelName() : myModelId.toString();
@@ -303,16 +210,16 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
       return sb.toString();
     }
 
-    sb.append("(");
+    sb.append('(');
     if (getModuleReference() != null && getModuleReference().getModuleName() != null) {
       sb.append(StringUtil.escapeRefChars(getModuleReference().getModuleName()));
-      sb.append("/");
+      sb.append('/');
     }
     if (!myModelName.getValue().equals(myModelId.getModelName())) {
       // no reason to write down model name if it's part of module id
       sb.append(StringUtil.escapeRefChars(myModelName.getValue()));
     }
-    sb.append(")");
+    sb.append(')');
     return sb.toString();
   }
 
@@ -326,6 +233,6 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
     if (ModuleReference.differs(ref1.getModuleReference(), ref2.getModuleReference())) {
       return true;
     }
-    return !(EqualUtil.equals(ref1.getModelId(), ref2.getModelId()) && EqualUtil.equals(ref1.getModelName(), ref2.getModelName()));
+    return !(Objects.equals(ref1.getModelId(), ref2.getModelId()) && Objects.equals(ref1.getModelName(), ref2.getModelName()));
   }
 }

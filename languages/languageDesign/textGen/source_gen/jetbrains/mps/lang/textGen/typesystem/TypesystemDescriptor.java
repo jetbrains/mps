@@ -17,6 +17,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_BinaryWriteOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_CallInnerFunctionOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -38,10 +42,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_PrivateMethodCall_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_ReferenceAppendPart_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {

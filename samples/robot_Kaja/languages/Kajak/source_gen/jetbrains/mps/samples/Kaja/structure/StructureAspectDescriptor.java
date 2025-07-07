@@ -4,12 +4,18 @@ package jetbrains.mps.samples.Kaja.structure;
 
 import jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
+import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
 import java.util.Collection;
 import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.runtime.ConceptKind;
+import jetbrains.mps.smodel.runtime.StaticScope;
+import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptAbstractCommand = createDescriptorForAbstractCommand();
@@ -41,10 +47,18 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptTraceMessage = createDescriptorForTraceMessage();
   /*package*/ final ConceptDescriptor myConceptWest = createDescriptorForWest();
   /*package*/ final ConceptDescriptor myConceptWhile = createDescriptorForWhile();
-  private final LanguageConceptSwitch myConceptIndex;
+  /*package*/ final EnumerationDescriptor myEnumerationLookingDirection = new EnumerationDescriptor_LookingDirection();
+  private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
-    myConceptIndex = new LanguageConceptSwitch();
+    myIndexSwitch = new LanguageConceptSwitch();
+  }
+
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0x4caf0310491e41f5L, 0x8a9b2006b3a94898L, "jetbrains.mps.execution.util");
   }
 
   @Override
@@ -55,7 +69,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
-    switch (myConceptIndex.index(id)) {
+    switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.AbstractCommand:
         return myConceptAbstractCommand;
       case LanguageConceptSwitch.CommandList:
@@ -119,31 +133,43 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
+  @Override
+  public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
+    return Arrays.asList(myEnumerationLookingDirection);
+  }
+
   /*package*/ int internalIndex(SAbstractConcept c) {
-    return myConceptIndex.index(c);
+    return myIndexSwitch.index(c);
   }
 
   private static ConceptDescriptor createDescriptorForAbstractCommand() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.class_(false, true, false);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3265739055509559114");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForCommandList() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "CommandList", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x19796fa16a19888bL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039896127");
+    b.version(3);
     b.aggregate("commands", 0x2de971c785f06a40L).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL).optional(true).ordered(true).multiple(true).origin("3308300503039896128").done();
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForCommentLine() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "CommentLine", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713fa2b43L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3f05685639c49599L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/6405700485436287811");
-    b.prop("text", 0x58e59ea713fa2b45L, "6405700485436287813");
+    b.version(3);
+    b.property("text", 0x58e59ea713fa2b45L).type(PrimitiveTypeId.STRING).origin("6405700485436287813").done();
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("#");
     return b.create();
   }
@@ -151,38 +177,48 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "Direction", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d39L);
     b.class_(false, true, false);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039675705");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForDrop() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "Drop", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713f79f27L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/6405700485436120871");
+    b.version(3);
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("drop");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForEast() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "East", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d41L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.Direction", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d39L);
+    // extends: jetbrains.mps.samples.Kaja.structure.Direction
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d39L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039675713");
+    b.version(3);
     b.alias("east");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForEmptyLine() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "EmptyLine", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ee0a16L);
     b.class_(true, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x19796fa16a19888bL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039740438");
+    b.version(3);
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("<empty>");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForHeading() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "Heading", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed2c41L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.LogicalExpression", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
+    // extends: jetbrains.mps.samples.Kaja.structure.LogicalExpression
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039683649");
+    b.version(3);
     b.aggregate("direction", 0x2de971c785ed2c42L).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d39L).optional(false).ordered(true).multiple(false).origin("3308300503039683650").done();
     b.alias("heading");
     return b.create();
@@ -190,43 +226,55 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForIfStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "IfStatement", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039647678");
+    b.version(3);
     b.aggregate("condition", 0x2de971c785ec9fc0L).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L).optional(false).ordered(true).multiple(false).origin("3308300503039647680").done();
     b.aggregate("trueBranch", 0x2de971c785ec9fc4L).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL).optional(false).ordered(true).multiple(false).origin("3308300503039647684").done();
     b.aggregate("falseBranch", 0x2de971c785ec9fc5L).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL).optional(false).ordered(true).multiple(false).origin("3308300503039647685").done();
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("if");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForIsFull() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "IsFull", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0xbebd01a737bec18L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.LogicalExpression", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
+    // extends: jetbrains.mps.samples.Kaja.structure.LogicalExpression
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/859008965969439768");
+    b.version(3);
     b.alias("full");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForIsMark() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "IsMark", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713f89fe6L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.LogicalExpression", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
+    // extends: jetbrains.mps.samples.Kaja.structure.LogicalExpression
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/6405700485436186598");
+    b.version(3);
     b.alias("mark");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForIsWall() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "IsWall", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785eca02cL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.LogicalExpression", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
+    // extends: jetbrains.mps.samples.Kaja.structure.LogicalExpression
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039647788");
+    b.version(3);
     b.alias("wall ahead");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForLeftTurn() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "LeftTurn", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9f8bL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039647627");
+    b.version(3);
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("turnLeft");
     return b.create();
   }
@@ -235,6 +283,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/4394627182934741782");
+    b.version(3);
     b.aggregate("definitions", 0x3cfcda239f19d317L).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L).optional(true).ordered(true).multiple(true).origin("4394627182934741783").done();
     return b.create();
   }
@@ -242,30 +291,37 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "LogicalExpression", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
     b.class_(false, true, false);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039647681");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForLooking() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "Looking", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x61fd16e423a38042L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.LogicalExpression", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
+    // extends: jetbrains.mps.samples.Kaja.structure.LogicalExpression
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893078082");
-    b.prop("direction", 0x61fd16e423a38043L, "7060824959893078083");
+    b.version(3);
+    b.property("direction", 0x61fd16e423a38043L).type(MetaIdFactory.dataTypeId(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x61fd16e423a34c05L)).origin("4241665505353454371").done();
     b.alias("looking");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNorth() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "North", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d3bL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.Direction", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d39L);
+    // extends: jetbrains.mps.samples.Kaja.structure.Direction
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d39L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039675707");
+    b.version(3);
     b.alias("north");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNot() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "Not", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecb8b0L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.LogicalExpression", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
+    // extends: jetbrains.mps.samples.Kaja.structure.LogicalExpression
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039654064");
+    b.version(3);
     b.aggregate("original", 0x2de971c785ecb8b3L).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L).optional(false).ordered(true).multiple(false).origin("3308300503039654067").done();
     b.alias("not");
     return b.create();
@@ -273,44 +329,58 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForPick() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "Pick", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713f85f1dL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/6405700485436170013");
+    b.version(3);
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("pick");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForRepeat() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "Repeat", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039660364");
-    b.prop("count", 0x2de971c785ecd14eL, "3308300503039660366");
+    b.version(3);
+    b.property("count", 0x2de971c785ecd14eL).type(PrimitiveTypeId.INTEGER).origin("3308300503039660366").done();
     b.aggregate("body", 0x2de971c785ecd14fL).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL).optional(false).ordered(true).multiple(false).origin("3308300503039660367").done();
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("repeat");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForRequire() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "Require", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/4394627182934757449");
+    b.version(3);
     b.associate("library", 0x3cfcda239f1a104aL).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L).optional(false).origin("4394627182934757450").done();
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("require");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForRoutineCall() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "RoutineCall", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039700882");
+    b.version(3);
     b.associate("definition", 0x2de971c785ede3ccL).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L).optional(false).origin("3308300503039730636").done();
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForRoutineDefinition() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "RoutineDefinition", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039700857");
+    b.version(3);
     b.aggregate("body", 0x2de971c785ed6f7cL).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL).optional(false).ordered(true).multiple(false).origin("3308300503039700860").done();
     b.alias("routine");
     return b.create();
@@ -321,6 +391,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.parent(0x4caf0310491e41f5L, 0x8a9b2006b3a94898L, 0x40c1a7cb987d20d5L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3265739055509559110");
+    b.version(3);
     b.aggregate("body", 0x2d523c5e4cc4574cL).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL).optional(false).ordered(true).multiple(false).origin("3265739055509559116").done();
     b.aggregate("definitions", 0x2de971c785ed6f78L).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L).optional(true).ordered(true).multiple(true).origin("3308300503039700856").done();
     return b.create();
@@ -328,43 +399,56 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForSouth() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "South", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d4bL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.Direction", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d39L);
+    // extends: jetbrains.mps.samples.Kaja.structure.Direction
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d39L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039675723");
+    b.version(3);
     b.alias("south");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForStep() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "Step", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45762L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3265739055509559138");
+    b.version(3);
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("step");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTraceMessage() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "TraceMessage", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2c8eb033a8375aeeL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3210697320273763054");
-    b.prop("message", 0x2c8eb033a8375aefL, "3210697320273763055");
+    b.version(3);
+    b.property("message", 0x2c8eb033a8375aefL).type(PrimitiveTypeId.STRING).origin("3210697320273763055").done();
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("trace");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForWest() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "West", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed2c3cL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.Direction", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d39L);
+    // extends: jetbrains.mps.samples.Kaja.structure.Direction
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d39L);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039683644");
+    b.version(3);
     b.alias("west");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForWhile() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Kaja", "While", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/3308300503039667424");
+    b.version(3);
     b.aggregate("condition", 0x2de971c785ecece2L).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L).optional(false).ordered(true).multiple(false).origin("3308300503039667426").done();
     b.aggregate("body", 0x2de971c785ecece3L).target(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL).optional(false).ordered(true).multiple(false).origin("3308300503039667427").done();
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("while");
     return b.create();
   }

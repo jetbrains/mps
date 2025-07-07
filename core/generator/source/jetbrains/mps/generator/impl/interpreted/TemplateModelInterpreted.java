@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,38 +16,42 @@
 package jetbrains.mps.generator.impl.interpreted;
 
 import jetbrains.mps.generator.impl.RuleUtil;
+import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.runtime.TemplateDeclaration;
+import jetbrains.mps.generator.runtime.TemplateDeclarationKey;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateModelBase;
 import jetbrains.mps.generator.runtime.TemplateModule;
 import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
+import jetbrains.mps.logging.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 /**
+ *
  * Evgeny Gryaznov, Nov 29, 2010
  */
 public class TemplateModelInterpreted extends TemplateModelBase {
 
   private final SModel myModel;
-  private Collection<TemplateSwitchMapping> mySwitches;
-  private Collection<TemplateMappingConfiguration> myMappings;
+  private final Class<? extends GeneratorQueryProvider> myQueryProviderClass;
+  private final Collection<TemplateSwitchMapping> mySwitches;
+  private final Collection<TemplateMappingConfiguration> myMappings;
+  private final long myModelTimestamp;
 
-  public TemplateModelInterpreted(TemplateModule module, SModel model) {
+  public TemplateModelInterpreted(@NotNull TemplateModule module, @NotNull SModel model, @NotNull Class<? extends GeneratorQueryProvider> queryProviderClass) {
     super(module);
     myModel = model;
-    mySwitches = new ArrayList<TemplateSwitchMapping>();
-    myMappings = new ArrayList<TemplateMappingConfiguration>();
-    init();
-  }
-
-  private void init() {
+    mySwitches = new ArrayList<>();
+    myMappings = new ArrayList<>();
     for (SNode root : myModel.getRootNodes()) {
       SConcept c = root.getConcept();
       if (RuleUtil.concept_TemplateSwitch.equals(c)) {
@@ -56,27 +60,49 @@ public class TemplateModelInterpreted extends TemplateModelBase {
         myMappings.add(new TemplateMappingConfigurationInterpreted(this, root));
       }
     }
+    myModelTimestamp = myModel.getSource().getTimestamp();
+    myQueryProviderClass = queryProviderClass;
+  }
+
+  /**
+   * INTERNAL METHOD, DON'T USE OUTSIDE OF GENERATOR IMPLEMENTATION
+   * 'public' just to give access from TemplateModuleInterpreted2
+   */
+  public boolean isStale() {
+    if (myModelTimestamp == -1) {
+      return true;
+    }
+    return myModelTimestamp != myModel.getSource().getTimestamp();
   }
 
   @Override
   public Collection<TemplateSwitchMapping> getSwitches() {
+    if (isStale()) {
+      return Collections.emptyList();
+    }
     return mySwitches;
   }
 
   @Override
   public Collection<TemplateMappingConfiguration> getConfigurations() {
+    if (isStale()) {
+      return Collections.emptyList();
+    }
     return myMappings;
   }
 
+  @Nullable
   @Override
-  public TemplateDeclaration loadTemplate(SNodeReference template, Object... arguments) {
-    assert template.getModelReference().equals(getSModelReference());
-    SNode templateNode = template.resolve(myModel.getRepository());
+  public TemplateDeclaration loadTemplate(TemplateDeclarationKey tdKey) {
+    if (!tdKey.getSourceModel().equals(getSModelReference())) {
+      return null;
+    }
+    SNode templateNode = tdKey.getSourceNode().resolve(myModel.getRepository());
     if (templateNode == null || !RuleUtil.concept_TemplateDeclaration.equals(templateNode.getConcept())) {
       return null;
     }
 
-    return TemplateDeclarationInterpreted.create(templateNode, arguments);
+    return new TemplateDeclarationInterpreted(templateNode);
   }
 
   @Override
@@ -87,5 +113,16 @@ public class TemplateModelInterpreted extends TemplateModelBase {
   @Override
   public SModelReference getSModelReference() {
     return myModel.getReference();
+  }
+
+  @Override
+  public GeneratorQueryProvider getQueryProvider() {
+    try {
+      return myQueryProviderClass.getDeclaredConstructor().newInstance();
+    } catch (Exception ex) {
+      String msg = String.format("Failed to instantiate class with generated queries: %s", myQueryProviderClass.getName());
+      Logger.getLogger(TemplateModelInterpreted.class).error(msg, ex);
+      return null;
+    }
   }
 }

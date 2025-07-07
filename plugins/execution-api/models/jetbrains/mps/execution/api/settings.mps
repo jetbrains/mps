@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="5" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -16,7 +16,6 @@
     <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
   </imports>
   <registry>
@@ -26,37 +25,27 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
-      <concept id="5293379017992965193" name="jetbrains.mps.baseLanguage.structure.StubStatementList" flags="ig" index="2lzX1y" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
+      </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
-      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
-        <reference id="1188214555875" name="key" index="2B6OnR" />
-        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1070475587102" name="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" flags="nn" index="XkiVB" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
@@ -94,9 +83,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="1111509017652" name="jetbrains.mps.baseLanguage.structure.FloatingPointConstant" flags="nn" index="3b6qkQ">
-        <property id="1113006610751" name="value" index="$nhwW" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <child id="1164879685961" name="throwsItem" index="Sfmx6" />
         <child id="1068580123133" name="returnType" index="3clF45" />
@@ -113,9 +99,8 @@
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
       <concept id="1068580123140" name="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" flags="ig" index="3clFbW" />
-      <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -134,11 +119,19 @@
         <reference id="1107535924139" name="classifier" index="3uigEE" />
         <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615">
         <child id="1107797138135" name="extendedInterface" index="3HQHJm" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -147,7 +140,6 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
-      <concept id="1046929382682558545" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteralType" flags="ig" index="9cv3F" />
       <concept id="1199542442495" name="jetbrains.mps.baseLanguage.closures.structure.FunctionType" flags="in" index="1ajhzC">
         <child id="1199542457201" name="resultType" index="1ajl9A" />
         <child id="1199542501692" name="parameterType" index="1ajw0F" />
@@ -172,9 +164,6 @@
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
       </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
       <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
         <reference id="2217234381367530213" name="classifier" index="VXe09" />
       </concept>
@@ -190,7 +179,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -202,7 +191,6 @@
       <ref role="3uigEE" to="zn9m:~JDOMExternalizable" resolve="JDOMExternalizable" />
     </node>
     <node concept="3clFb_" id="3oW7HLfqDqX" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="checkConfiguration" />
       <node concept="3cqZAl" id="3oW7HLfqDqY" role="3clF45" />
       <node concept="3Tm1VV" id="3oW7HLfqDqZ" role="1B3o_S" />
@@ -216,9 +204,20 @@
           <ref role="3uigEE" node="qCQmZRT2wq" resolve="PersistentConfigurationContext" />
         </node>
       </node>
+      <node concept="P$JXv" id="CZHNfvxvqT" role="lGtFl">
+        <node concept="TZ5HA" id="CZHNfvxvqU" role="TZ5H$">
+          <node concept="1dT_AC" id="CZHNfvxvqV" role="1dT_Ay">
+            <property role="1dT_AB" value="RunConfiguration.checkConfiguration, generified for PersistentConfigurationTemplate." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="CZHNfvxvAy" role="TZ5H$">
+          <node concept="1dT_AC" id="CZHNfvxvAz" role="1dT_Ay">
+            <property role="1dT_AB" value="As long as RunConfiguration has access to context (like project), and PCT does not, a parameter was introduced to share context values." />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3clFb_" id="3oW7HLfqDr2" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="getEditor" />
       <node concept="3uibUv" id="3oW7HLfqDr3" role="3clF45">
         <ref role="3uigEE" node="3oW7HLfqDrn" resolve="SettingsEditorEx" />
@@ -230,14 +229,52 @@
       </node>
       <node concept="3Tm1VV" id="3oW7HLfqDr6" role="1B3o_S" />
       <node concept="3clFbS" id="3oW7HLfqDr7" role="3clF47" />
+      <node concept="P$JXv" id="CZHNfvxuzI" role="lGtFl">
+        <node concept="TZ5HA" id="CZHNfvxuzJ" role="TZ5H$">
+          <node concept="1dT_AC" id="CZHNfvxuzK" role="1dT_Ay">
+            <property role="1dT_AB" value="This is what RunConfiguration.getConfigurationEditor does, generified for PersistentContfigurationTemplate." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="CZHNfvxvin" role="TZ5H$">
+          <node concept="1dT_AC" id="CZHNfvxvio" role="1dT_Ay">
+            <property role="1dT_AB" value="There's no obvious value in SettingsEditorEx, though, shall I drop i?" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="CZHNfvxvmH" role="TZ5H$">
+          <node concept="1dT_AC" id="CZHNfvxvmI" role="1dT_Ay">
+            <property role="1dT_AB" value="There's only apply() method there which seems to be of no use (let alone of any value)." />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3clFb_" id="3oW7HLfqDr8" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="createCloneTemplate" />
       <node concept="3Tm1VV" id="3oW7HLfqDr9" role="1B3o_S" />
       <node concept="3clFbS" id="3oW7HLfqDra" role="3clF47" />
       <node concept="3uibUv" id="3oW7HLfqDrb" role="3clF45">
         <ref role="3uigEE" node="3oW7HLfqDqW" resolve="IPersistentConfiguration" />
+      </node>
+      <node concept="P$JXv" id="CZHNfvxucJ" role="lGtFl">
+        <node concept="TZ5HA" id="CZHNfvxucK" role="TZ5H$">
+          <node concept="1dT_AC" id="CZHNfvxucL" role="1dT_Ay">
+            <property role="1dT_AB" value="Although public, intended for alternative implementations of clone() method in owner class (RunConfiguration has clone() in superclass, " />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="CZHNfvxuiu" role="TZ5H$">
+          <node concept="1dT_AC" id="CZHNfvxuiv" role="1dT_Ay">
+            <property role="1dT_AB" value="while PersistentConfigurationTemplate does not. Both share clone() implementation supplied by PersistentConfiguration template." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="CZHNfvxuq0" role="TZ5H$">
+          <node concept="1dT_AC" id="CZHNfvxuq1" role="1dT_Ay">
+            <property role="1dT_AB" value="I feel there's no need in the method, nor in shared clone() implementation (iow, superclass for PCT that supports clone() would eliminate need for " />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="CZHNfvxuwO" role="TZ5H$">
+          <node concept="1dT_AC" id="CZHNfvxuwP" role="1dT_Ay">
+            <property role="1dT_AB" value="createCloneTemplate)" />
+          </node>
+        </node>
       </node>
     </node>
   </node>
@@ -292,38 +329,41 @@
         </node>
       </node>
       <node concept="3clFbS" id="3oW7HLfqDrx" role="3clF47">
-        <node concept="SfApY" id="3oW7HLfqDry" role="3cqZAp">
-          <node concept="3clFbS" id="3oW7HLfqDrz" role="SfCbr">
+        <node concept="3J1_TO" id="3oW7HLfqDry" role="3cqZAp">
+          <node concept="3clFbS" id="3oW7HLfqDrz" role="1zxBo7">
             <node concept="3clFbF" id="3oW7HLfqDr$" role="3cqZAp">
               <node concept="1rXfSq" id="4hiugqyzeGO" role="3clFbG">
-                <ref role="37wK5l" to="hq8m:~SettingsEditor.applyTo(java.lang.Object):void" resolve="applyTo" />
+                <ref role="37wK5l" to="hq8m:~SettingsEditor.applyTo(java.lang.Object)" resolve="applyTo" />
                 <node concept="37vLTw" id="2BHiRxgmCMB" role="37wK5m">
                   <ref role="3cqZAo" node="3oW7HLfqDrv" resolve="settings" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="TDmWw" id="3oW7HLfqDrB" role="TEbGg">
-            <node concept="3cpWsn" id="3oW7HLfqDrC" role="TDEfY">
+          <node concept="3uVAMA" id="3oW7HLfqDrB" role="1zxBo5">
+            <node concept="XOnhg" id="3oW7HLfqDrC" role="1zc67B">
+              <property role="3TUv4t" value="false" />
               <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="3oW7HLfqDrD" role="1tU5fm">
-                <ref role="3uigEE" to="hq8m:~ConfigurationException" resolve="ConfigurationException" />
+              <node concept="nSUau" id="xvs04dH7gG" role="1tU5fm">
+                <node concept="3uibUv" id="3oW7HLfqDrD" role="nSUat">
+                  <ref role="3uigEE" to="hq8m:~ConfigurationException" resolve="ConfigurationException" />
+                </node>
               </node>
             </node>
-            <node concept="3clFbS" id="3oW7HLfqDrE" role="TDEfX">
+            <node concept="3clFbS" id="3oW7HLfqDrE" role="1zc67A">
               <node concept="3clFbF" id="3oW7HLfqDrF" role="3cqZAp">
                 <node concept="2YIFZM" id="3oW7HLfqDrG" role="3clFbG">
-                  <ref role="37wK5l" to="jkm4:~Messages.showErrorDialog(java.awt.Component,java.lang.String,java.lang.String):void" resolve="showErrorDialog" />
+                  <ref role="37wK5l" to="jkm4:~Messages.showErrorDialog(java.awt.Component,java.lang.String,java.lang.String)" resolve="showErrorDialog" />
                   <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
                   <node concept="1rXfSq" id="4hiugqyyYu7" role="37wK5m">
-                    <ref role="37wK5l" to="hq8m:~SettingsEditor.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                    <ref role="37wK5l" to="hq8m:~SettingsEditor.getComponent()" resolve="getComponent" />
                   </node>
                   <node concept="2OqwBi" id="3oW7HLfqDrI" role="37wK5m">
                     <node concept="37vLTw" id="3GM_nagTzph" role="2Oq$k0">
                       <ref role="3cqZAo" node="3oW7HLfqDrC" resolve="e" />
                     </node>
                     <node concept="liA8E" id="3oW7HLfqDrK" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Throwable.getMessage():java.lang.String" resolve="getMessage" />
+                      <ref role="37wK5l" to="hq8m:~ConfigurationException.getMessage()" resolve="getMessage" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="3oW7HLfqDrL" role="37wK5m">
@@ -359,11 +399,11 @@
       <property role="TrG5h" value="myCallback" />
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="7j2UX07aLic" role="1B3o_S" />
-      <node concept="9cv3F" id="7qWwyLT0LFO" role="1tU5fm">
-        <node concept="3uibUv" id="7qWwyLT0LFP" role="1ajw0F">
+      <node concept="1ajhzC" id="3FS7wUTocr8" role="1tU5fm">
+        <node concept="3uibUv" id="3FS7wUTocr9" role="1ajw0F">
           <ref role="3uigEE" to="hyam:~ActionEvent" resolve="ActionEvent" />
         </node>
-        <node concept="3cqZAl" id="7qWwyLT0LFQ" role="1ajl9A" />
+        <node concept="3cqZAl" id="3FS7wUTocra" role="1ajl9A" />
       </node>
       <node concept="2AHcQZ" id="7j2UX07aLih" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -382,7 +422,7 @@
                 <ref role="3cqZAo" node="7j2UX07aLfC" resolve="action" />
               </node>
               <node concept="liA8E" id="7j2UX07aLiy" role="2OqNvi">
-                <ref role="37wK5l" to="dxuu:~Action.getValue(java.lang.String):java.lang.Object" resolve="getValue" />
+                <ref role="37wK5l" to="dxuu:~Action.getValue(java.lang.String)" resolve="getValue" />
                 <node concept="10M0yZ" id="7j2UX07aLiz" role="37wK5m">
                   <ref role="1PxDUh" to="dxuu:~Action" resolve="Action" />
                   <ref role="3cqZAo" to="dxuu:~Action.NAME" resolve="NAME" />
@@ -393,13 +433,13 @@
         </node>
         <node concept="3clFbF" id="5yIL7HqOd53" role="3cqZAp">
           <node concept="1rXfSq" id="4hiugqyzk5f" role="3clFbG">
-            <ref role="37wK5l" to="dxuu:~AbstractAction.setEnabled(boolean):void" resolve="setEnabled" />
+            <ref role="37wK5l" to="dxuu:~AbstractAction.setEnabled(boolean)" resolve="setEnabled" />
             <node concept="2OqwBi" id="5yIL7HqOd56" role="37wK5m">
               <node concept="37vLTw" id="2BHiRxgmFcn" role="2Oq$k0">
                 <ref role="3cqZAo" node="7j2UX07aLfC" resolve="action" />
               </node>
               <node concept="liA8E" id="5yIL7HqOd5a" role="2OqNvi">
-                <ref role="37wK5l" to="dxuu:~Action.isEnabled():boolean" resolve="isEnabled" />
+                <ref role="37wK5l" to="dxuu:~Action.isEnabled()" resolve="isEnabled" />
               </node>
             </node>
           </node>
@@ -420,7 +460,7 @@
               <ref role="3cqZAo" node="7j2UX07aLfL" resolve="myAction" />
             </node>
             <node concept="liA8E" id="23GyebjhE4P" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~Action.addPropertyChangeListener(java.beans.PropertyChangeListener):void" resolve="addPropertyChangeListener" />
+              <ref role="37wK5l" to="dxuu:~Action.addPropertyChangeListener(java.beans.PropertyChangeListener)" resolve="addPropertyChangeListener" />
               <node concept="2ShNRf" id="23GyebjhE4Q" role="37wK5m">
                 <node concept="YeOm9" id="23GyebjhE4S" role="2ShVmc">
                   <node concept="1Y3b0j" id="23GyebjhE4T" role="YeSDq">
@@ -442,13 +482,13 @@
                       <node concept="3clFbS" id="23GyebjhE50" role="3clF47">
                         <node concept="3clFbF" id="23GyebjhOBb" role="3cqZAp">
                           <node concept="1rXfSq" id="4hiugqyzeWt" role="3clFbG">
-                            <ref role="37wK5l" to="dxuu:~AbstractAction.putValue(java.lang.String,java.lang.Object):void" resolve="putValue" />
+                            <ref role="37wK5l" to="dxuu:~AbstractAction.putValue(java.lang.String,java.lang.Object)" resolve="putValue" />
                             <node concept="2OqwBi" id="23GyebjhOBe" role="37wK5m">
                               <node concept="37vLTw" id="2BHiRxgm8xx" role="2Oq$k0">
                                 <ref role="3cqZAo" node="23GyebjhE4Y" resolve="event" />
                               </node>
                               <node concept="liA8E" id="23GyebjhOBi" role="2OqNvi">
-                                <ref role="37wK5l" to="mnlj:~PropertyChangeEvent.getPropertyName():java.lang.String" resolve="getPropertyName" />
+                                <ref role="37wK5l" to="mnlj:~PropertyChangeEvent.getPropertyName()" resolve="getPropertyName" />
                               </node>
                             </node>
                             <node concept="2OqwBi" id="23GyebjhOBl" role="37wK5m">
@@ -456,7 +496,7 @@
                                 <ref role="3cqZAo" node="23GyebjhE4Y" resolve="event" />
                               </node>
                               <node concept="liA8E" id="23GyebjhOBp" role="2OqNvi">
-                                <ref role="37wK5l" to="mnlj:~PropertyChangeEvent.getNewValue():java.lang.Object" resolve="getNewValue" />
+                                <ref role="37wK5l" to="mnlj:~PropertyChangeEvent.getNewValue()" resolve="getNewValue" />
                               </node>
                             </node>
                           </node>
@@ -494,11 +534,11 @@
       </node>
       <node concept="37vLTG" id="7j2UX07aLgy" role="3clF46">
         <property role="TrG5h" value="callback" />
-        <node concept="9cv3F" id="7qWwyLT0LJG" role="1tU5fm">
-          <node concept="3uibUv" id="7qWwyLT0LJH" role="1ajw0F">
+        <node concept="1ajhzC" id="3FS7wUTocGS" role="1tU5fm">
+          <node concept="3uibUv" id="3FS7wUTocGT" role="1ajw0F">
             <ref role="3uigEE" to="hyam:~ActionEvent" resolve="ActionEvent" />
           </node>
-          <node concept="3cqZAl" id="7qWwyLT0LJI" role="1ajl9A" />
+          <node concept="3cqZAl" id="3FS7wUTocGU" role="1ajl9A" />
         </node>
         <node concept="2AHcQZ" id="7j2UX07aLgD" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -523,7 +563,7 @@
               <ref role="3cqZAo" node="7j2UX07aLfL" resolve="myAction" />
             </node>
             <node concept="liA8E" id="7j2UX07aLgw" role="2OqNvi">
-              <ref role="37wK5l" to="hyam:~ActionListener.actionPerformed(java.awt.event.ActionEvent):void" resolve="actionPerformed" />
+              <ref role="37wK5l" to="hyam:~ActionListener.actionPerformed(java.awt.event.ActionEvent)" resolve="actionPerformed" />
               <node concept="37vLTw" id="2BHiRxghgjc" role="37wK5m">
                 <ref role="3cqZAo" node="7j2UX07aLgn" resolve="event" />
               </node>
@@ -548,52 +588,9 @@
       </node>
     </node>
   </node>
-  <node concept="3HP615" id="3oW7HLfqDre">
-    <property role="TrG5h" value="ITemplatePersistentConfiguration" />
-    <node concept="3Tm1VV" id="3oW7HLfqDrf" role="1B3o_S" />
-    <node concept="3uibUv" id="3oW7HLfqDrg" role="3HQHJm">
-      <ref role="3uigEE" node="3oW7HLfqDqW" resolve="IPersistentConfiguration" />
-    </node>
-    <node concept="3clFb_" id="3oW7HLfqDrh" role="jymVt">
-      <property role="1EzhhJ" value="true" />
-      <property role="TrG5h" value="getEditorEx" />
-      <node concept="2lzX1y" id="3oW7HLfqDri" role="3clF47" />
-      <node concept="3Tm1VV" id="3oW7HLfqDrj" role="1B3o_S" />
-      <node concept="3uibUv" id="3oW7HLfqDrk" role="3clF45">
-        <ref role="3uigEE" node="3oW7HLfqDrn" resolve="SettingsEditorEx" />
-        <node concept="3qUE_q" id="3oW7HLfqDrl" role="11_B2D">
-          <node concept="3uibUv" id="3oW7HLfqDrm" role="3qUE_r">
-            <ref role="3uigEE" node="3oW7HLfqDqW" resolve="IPersistentConfiguration" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3UR2Jj" id="4aB4InNTh0t" role="lGtFl">
-      <node concept="TZ5HI" id="4aB4InNTh0u" role="3nqlJM">
-        <node concept="TZ5HA" id="4aB4InNTh0v" role="3HnX3l">
-          <node concept="1dT_AC" id="4aB4InNTh0O" role="1dT_Ay">
-            <property role="1dT_AB" value="This interface left for compatibility with generated code of execution configurations, there are no uses now in MPS. Once 3.5 is out, drop it." />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2AHcQZ" id="4aB4InNTh0w" role="2AJF6D">
-      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-    </node>
-    <node concept="2AHcQZ" id="4aB4InNTh0Q" role="2AJF6D">
-      <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-      <node concept="2B6LJw" id="4aB4InNTh7j" role="2B76xF">
-        <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-        <node concept="3b6qkQ" id="4aB4InNThdx" role="2B70Vg">
-          <property role="$nhwW" value="3.5" />
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="3HP615" id="qCQmZRT2wq">
     <property role="TrG5h" value="PersistentConfigurationContext" />
     <node concept="3clFb_" id="qCQmZRTcql" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getProject" />
       <node concept="3clFbS" id="qCQmZRTcqo" role="3clF47" />

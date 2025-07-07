@@ -36,7 +36,7 @@ public abstract class AbstractBuildGenerator {
       String modelNamePrefix = this.mySolutionName;
       int count = 0;
       this.myModelName = modelNamePrefix;
-      while (!(this.isValidModelName(this.myModelName))) {
+      while (!(this.isUniqueModelName(this.myModelName))) {
         this.myModelName = modelNamePrefix + count;
         count++;
       }
@@ -85,6 +85,8 @@ public abstract class AbstractBuildGenerator {
   }
 
   public abstract boolean isValidModelName(String text);
+
+  public abstract boolean isUniqueModelName(String text);
 
   public abstract boolean isValidSolutionName(String text);
 

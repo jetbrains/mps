@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,16 +23,14 @@ import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.ui.popup.ListPopup;
 import com.intellij.ui.awt.RelativePoint;
-import jetbrains.mps.ide.icons.IconManager;
+import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.action.NodeFactoryManager;
-import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.util.Setter;
 import jetbrains.mps.util.ToStringComparator;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.workbench.action.BaseGroup;
@@ -50,6 +48,7 @@ import java.awt.Point;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public final class CreateFromUsageUtil {
 
@@ -74,7 +73,7 @@ public final class CreateFromUsageUtil {
     return null;
   }
 
-  public static void showCreateNewRootMenu(@NotNull jetbrains.mps.openapi.editor.EditorContext editorContext, @Nullable Setter<SNode> newRootHandler,
+  public static void showCreateNewRootMenu(@NotNull jetbrains.mps.openapi.editor.EditorContext editorContext, @Nullable Consumer<SNode> newRootHandler,
       @Nullable Condition<SConcept> conceptsFilter) {
     final EditorCell selectedCell = editorContext.getSelectedCell();
     int x = selectedCell.getX();
@@ -91,8 +90,10 @@ public final class CreateFromUsageUtil {
     }
 
     BaseGroup group = new BaseGroup("");
-    Set<SLanguage> modelLanguages = new SLanguageHierarchy(SModelOperations.getAllLanguageImports(model)).getExtended();
-    SLanguage[] languages = modelLanguages.toArray(new SLanguage[modelLanguages.size()]);
+    final LanguageRegistry languageRegistry = LanguageRegistry.getInstance(editorContext.getRepository());
+    ModelDependencyResolver mdr = new ModelDependencyResolver(languageRegistry, editorContext.getRepository());
+    Set<SLanguage> modelLanguages = new SLanguageHierarchy(languageRegistry, mdr.usedLanguages(model)).getExtended();
+    SLanguage[] languages = modelLanguages.toArray(new SLanguage[0]);
     Arrays.sort(languages, new ToStringComparator());
     for (SLanguage language : languages) {
       boolean hasChildren = false;
@@ -100,6 +101,7 @@ public final class CreateFromUsageUtil {
         if (!(ac instanceof SConcept)) {
           continue;
         }
+        // FIXME similar code in CreateRootNodeGroup for ProjectPane
         final SConcept concept = (SConcept) ac;
         if (concept.isRootable() && conceptsFilter.met(concept)) {
           group.add(new AddNewRootAction(model, concept, newRootHandler));
@@ -121,16 +123,16 @@ public final class CreateFromUsageUtil {
   private static class AddNewRootAction extends BaseAction {
     private final SModel myModel;
     private final SConcept myConcept;
-    private final Setter<SNode> myNewRootCallback;
+    private final Consumer<SNode> myNewRootCallback;
 
-    public AddNewRootAction(@NotNull SModel model, @NotNull SConcept concept, @Nullable Setter<SNode> newRootCallback) {
+    public AddNewRootAction(@NotNull SModel model, @NotNull SConcept concept, @Nullable Consumer<SNode> newRootCallback) {
       myModel = model;
       myConcept = concept;
       myNewRootCallback = newRootCallback;
       setExecuteOutsideCommand(false);
       final Presentation tp = getTemplatePresentation();
       tp.setText(concept.getConceptAlias().isEmpty() ? concept.getName() : concept.getConceptAlias());
-      tp.setIcon(IconManager.getIcon(concept));
+      tp.setIcon(GlobalIconManager.getInstance().getIconFor(concept));
     }
 
     @Override
@@ -138,7 +140,7 @@ public final class CreateFromUsageUtil {
       SNode result = NodeFactoryManager.createNode(myConcept, null, null, myModel);
       myModel.addRootNode(result);
       if (myNewRootCallback != null) {
-        myNewRootCallback.set(result);
+        myNewRootCallback.accept(result);
       }
     }
   }

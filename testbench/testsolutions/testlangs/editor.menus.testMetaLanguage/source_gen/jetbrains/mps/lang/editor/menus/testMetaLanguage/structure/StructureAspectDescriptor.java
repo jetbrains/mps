@@ -19,10 +19,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptTransformationLocation_WithFeatures = createDescriptorForTransformationLocation_WithFeatures();
   /*package*/ final ConceptDescriptor myConceptTransformationLocation_WithoutFeatures = createDescriptorForTransformationLocation_WithoutFeatures();
   /*package*/ final ConceptDescriptor myConceptTransformationMenu_Test = createDescriptorForTransformationMenu_Test();
-  private final LanguageConceptSwitch myConceptIndex;
+  private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
-    myConceptIndex = new LanguageConceptSwitch();
+    myIndexSwitch = new LanguageConceptSwitch();
+  }
+
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor");
   }
 
   @Override
@@ -33,7 +39,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
-    switch (myConceptIndex.index(id)) {
+    switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.TransformationFeature_Optional:
         return myConceptTransformationFeature_Optional;
       case LanguageConceptSwitch.TransformationFeature_Required:
@@ -53,63 +59,78 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
+
   /*package*/ int internalIndex(SAbstractConcept c) {
-    return myConceptIndex.index(c);
+    return myIndexSwitch.index(c);
   }
 
   private static ConceptDescriptor createDescriptorForTransformationFeature_Optional() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.testMetaLanguage", "TransformationFeature_Optional", 0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x41c8eff4cc3dfc1dL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.structure.TransformationFeature", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa5L);
+    // extends: jetbrains.mps.lang.editor.structure.TransformationFeature
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa5L);
     b.origin("r:72a1f653-d94c-4c5e-9b1c-92f598e4fc7c(jetbrains.mps.lang.editor.menus.testMetaLanguage.structure)/4740302442485120029");
+    b.version(3);
     b.alias("optional");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTransformationFeature_Required() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.testMetaLanguage", "TransformationFeature_Required", 0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x41c8eff4cc3e09d8L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.structure.TransformationFeature", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa5L);
+    // extends: jetbrains.mps.lang.editor.structure.TransformationFeature
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa5L);
     b.origin("r:72a1f653-d94c-4c5e-9b1c-92f598e4fc7c(jetbrains.mps.lang.editor.menus.testMetaLanguage.structure)/4740302442485123544");
+    b.version(3);
     b.alias("required");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTransformationFeature_Unavailable() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.testMetaLanguage", "TransformationFeature_Unavailable", 0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x33f30f661f866f15L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.structure.TransformationFeature", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa5L);
+    // extends: jetbrains.mps.lang.editor.structure.TransformationFeature
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa5L);
     b.origin("r:72a1f653-d94c-4c5e-9b1c-92f598e4fc7c(jetbrains.mps.lang.editor.menus.testMetaLanguage.structure)/3743352646564998933");
+    b.version(3);
     b.alias("unavailable");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTransformationLocation_Test() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.testMetaLanguage", "TransformationLocation_Test", 0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x595469d6668817a2L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.structure.TransformationLocation", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L);
+    // extends: jetbrains.mps.lang.editor.structure.TransformationLocation
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L);
     b.origin("r:72a1f653-d94c-4c5e-9b1c-92f598e4fc7c(jetbrains.mps.lang.editor.menus.testMetaLanguage.structure)/6436886136983394210");
+    b.version(3);
     b.alias("test location");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTransformationLocation_WithFeatures() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.testMetaLanguage", "TransformationLocation_WithFeatures", 0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x33f30f661f7e88deL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.structure.TransformationLocation", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L);
+    // extends: jetbrains.mps.lang.editor.structure.TransformationLocation
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L);
     b.origin("r:72a1f653-d94c-4c5e-9b1c-92f598e4fc7c(jetbrains.mps.lang.editor.menus.testMetaLanguage.structure)/3743352646564481246");
+    b.version(3);
     b.alias("location with a required and an optional feature");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTransformationLocation_WithoutFeatures() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.testMetaLanguage", "TransformationLocation_WithoutFeatures", 0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x41c8eff4cc3eb92bL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.structure.TransformationLocation", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L);
+    // extends: jetbrains.mps.lang.editor.structure.TransformationLocation
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L);
     b.origin("r:72a1f653-d94c-4c5e-9b1c-92f598e4fc7c(jetbrains.mps.lang.editor.menus.testMetaLanguage.structure)/4740302442485168427");
+    b.version(3);
     b.alias("location with no available features");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTransformationMenu_Test() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.testMetaLanguage", "TransformationMenu_Test", 0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x259f3121f598017fL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.structure.TransformationMenu", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL);
+    // extends: jetbrains.mps.lang.editor.structure.TransformationMenu
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL);
     b.origin("r:72a1f653-d94c-4c5e-9b1c-92f598e4fc7c(jetbrains.mps.lang.editor.menus.testMetaLanguage.structure)/2710939522624389503");
+    b.version(3);
     return b.create();
   }
 }

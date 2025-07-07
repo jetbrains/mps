@@ -4,13 +4,13 @@ package jetbrains.mps.samples.customizedDebugger.Bottomline.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_MessageSequence = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_OutputMessage = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_MessageSequence;
+  private ConceptPresentation props_OutputMessage;
 
   @Override
   @Nullable
@@ -18,8 +18,18 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.MessageSequence:
+        if (props_MessageSequence == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_MessageSequence = cpb.create();
+        }
         return props_MessageSequence;
       case LanguageConceptSwitch.OutputMessage:
+        if (props_OutputMessage == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("output message");
+          props_OutputMessage = cpb.create();
+        }
         return props_OutputMessage;
     }
     return null;

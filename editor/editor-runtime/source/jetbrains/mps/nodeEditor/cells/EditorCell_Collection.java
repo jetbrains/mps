@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,12 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
+import com.intellij.ui.JBColor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.nodeEditor.EditorCellListHandler;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorCell_WithComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout;
@@ -35,6 +36,7 @@ import jetbrains.mps.nodeEditor.cells.collections.EmptyContainer;
 import jetbrains.mps.nodeEditor.cells.collections.SingletonContainer;
 import jetbrains.mps.nodeEditor.cells.collections.UnmodifiableIterator;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -48,9 +50,8 @@ import jetbrains.mps.openapi.editor.selection.SelectionListener;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.util.ConditionalIterable;
 import jetbrains.mps.util.NameUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.util.TreeIterator;
 import org.jetbrains.mps.util.Condition;
@@ -65,14 +66,13 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 /**
  * Author: Sergey Dmitriev
  * Created Sep 14, 2003
  */
 public class EditorCell_Collection extends EditorCell_Basic implements jetbrains.mps.openapi.editor.cells.EditorCell_Collection, SynchronizeableEditorCell {
-  private static Logger LOG = LogManager.getLogger(EditorCell_Collection.class);
+  private static Logger LOG = Logger.getLogger(EditorCell_Collection.class);
 
   public static final String FOLDED_TEXT = "...";
 
@@ -101,24 +101,6 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
   private MouseListener myUnfoldCollectionMouseListener;
   private boolean myCanBeSynchronized;
 
-  /**
-   * @deprecated since MPS 3.5 not used
-   */
-  @SuppressWarnings({"UnusedDeclaration"})
-  @Deprecated
-  public static EditorCell_Collection createVertical(EditorContext editorContext, SNode node, EditorCellListHandler handler) {
-    return new EditorCell_Collection(editorContext, node, new CellLayout_Vertical(), handler);
-  }
-
-  /**
-   * @deprecated since MPS 3.5 not used
-   */
-  @SuppressWarnings({"UnusedDeclaration"})
-  @Deprecated
-  public static EditorCell_Collection createHorizontal(EditorContext editorContext, SNode node, EditorCellListHandler handler) {
-    return new EditorCell_Collection(editorContext, node, new CellLayout_Horizontal(), handler);
-  }
-
   public static EditorCell_Collection createVertical(EditorContext editorContext, SNode node) {
     return new EditorCell_Collection(editorContext, node, new CellLayout_Vertical(), null);
   }
@@ -137,15 +119,6 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
 
   public static EditorCell_Collection createTable(EditorContext editorContext, SNode node) {
     return new EditorCell_Collection(editorContext, node, new CellLayout_Table(), null);
-  }
-
-  /**
-   * @deprecated since MPS 3.5 not used
-   */
-  @SuppressWarnings({"UnusedDeclaration"})
-  @Deprecated
-  public static EditorCell_Collection createFlow(EditorContext editorContext, SNode node, EditorCellListHandler handler) {
-    return new EditorCell_Collection(editorContext, node, new CellLayout_Flow(), handler);
   }
 
   public static EditorCell_Collection createFlow(EditorContext editorContext, SNode node) {
@@ -183,8 +156,8 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
       Style style = foldedCell.getStyle();
       // COLORS: Remove hardcoded colors & font
       style.set(StyleAttributes.FONT_STYLE, Font.BOLD);
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, Color.lightGray);
-      style.set(StyleAttributes.TEXT_COLOR, Color.darkGray);
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, JBColor.LIGHT_GRAY);
+      style.set(StyleAttributes.TEXT_COLOR, JBColor.DARK_GRAY);
       style.set(StyleAttributes.SELECTABLE, Boolean.FALSE);
       setFoldedCell(foldedCell);
     }
@@ -209,31 +182,10 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
     return isCollapsed() ? getFoldedCellCollection() : getEditorCells();
   }
 
-  /**
-   * @deprecated since MPS 3.4 not used
-   */
-  @Deprecated
-  @Override
-  public int indexOf(EditorCell cell) {
-    int i = 0;
-    for (EditorCell editorCell : getVisibleChildCells()) {
-      if (editorCell.equals(cell)) {
-        return i;
-      }
-      i++;
-    }
-    return -1;
-  }
-
   @NotNull
   @Override
   public CellLayout getCellLayout() {
     return myCellLayout;
-  }
-
-  @Override
-  public boolean isLeaf() {
-    return false;
   }
 
   @SuppressWarnings({"UnusedDeclaration"})
@@ -245,27 +197,11 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
     return myCellListHandler != null;
   }
 
-  public String getCellNodesRole() {
+  public SConceptFeature getCellNodesSRole() {
     if (myCellListHandler == null) {
       return null;
     }
-    return myCellListHandler.getElementRole();
-  }
-
-  @Override
-  public EditorCell getCellAt(int number) {
-    if (number < 0 || number >= getVisibleChildCells().size()) {
-      return null;
-    }
-    int i = 0;
-    for (EditorCell editorCell : getVisibleChildCells()) {
-      if (i == number) {
-        return editorCell;
-      }
-      i++;
-    }
-    // The cell should be found above, so this exception will not be thrown in standard situation
-    throw new IndexOutOfBoundsException("Size: " + getVisibleChildCells().size() + ", Index: " + number);
+    return myCellListHandler.getElementSRole();
   }
 
   public void setGridLayout(boolean gridLayout) {
@@ -322,7 +258,7 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
   private void removeBraces() {
     removeCell(myOpeningBrace);
     removeCell(myClosingBrace);
-    getEditor().getSelectionManager().removeSelectionListener(myLastCellSelectionListener);
+    getEditorComponent().getSelectionManager().removeSelectionListener(myLastCellSelectionListener);
 
     myOpeningBrace = null;
     myClosingBrace = null;
@@ -383,46 +319,7 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
     myDescent = newDescent;
   }
 
-  /**
-   * @deprecated since MPS 3.4 use getContentCells();
-   */
-  @Deprecated
-  public Iterable<EditorCell> contentCells() {
-    if (usesBraces()) {
-      return () -> new Iterator<EditorCell>() {//iterates from second to before last
-        private Iterator<EditorCell> myIterator = EditorCell_Collection.this.iterator();
-        private EditorCell myNext;
-
-        {
-          myIterator.next();
-          myNext = myIterator.next();
-        }
-
-        @Override
-        public boolean hasNext() {
-          return myIterator.hasNext();
-        }
-
-        @Override
-        public EditorCell next() {
-          if (!hasNext()) {
-            throw new NoSuchElementException();
-          }
-          EditorCell result = myNext;
-          myNext = myIterator.next();
-          return result;
-        }
-
-        @Override
-        public void remove() {
-          throw new UnsupportedOperationException();
-        }
-      };
-    } else {
-      return this;
-    }
-  }
-
+  @NotNull
   @Override
   public Iterator<EditorCell> iterator() {
     return new UnmodifiableIterator<>(getVisibleChildCells().iterator());
@@ -534,11 +431,6 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
   }
 
   @Override
-  public int getContentCellsCount() {
-    return usesBraces() ? getCellsCount() - 2 : getCellsCount();
-  }
-
-  @Override
   protected void relayoutImpl() {
     myCellLayout.doLayout(this);
     myAscent = myCellLayout.getAscent(this);
@@ -618,8 +510,8 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
     } else {
       removeUnfoldingListener();
     }
-    updateSubtreeOnCollapsedStateChange(getEditorCells().iterator(), !collapsed);
-    updateSubtreeOnCollapsedStateChange(getFoldedCellCollection().iterator(), collapsed);
+    updateSubtreeOnCollapsedStateChange(getEditorCells().iterator(), collapsed);
+    updateSubtreeOnCollapsedStateChange(getFoldedCellCollection().iterator(), !collapsed);
   }
 
   private void updateSelectionOnCollapseChange() {
@@ -647,21 +539,25 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
     return CellTraversalUtil.getFoldedParent(this) != null;
   }
 
-  private void updateSubtreeOnCollapsedStateChange(Iterator<EditorCell> subtreeRootsIterator, boolean visible) {
+  private void updateSubtreeOnCollapsedStateChange(Iterator<EditorCell> subtreeRootsIterator, boolean collapsed) {
     while (subtreeRootsIterator.hasNext()) {
       EditorCell nextSubtreeRootCell = subtreeRootsIterator.next();
       for (TreeIterator<EditorCell> iterator = new CellTreeIterable(nextSubtreeRootCell, nextSubtreeRootCell, true).iterator(); iterator.hasNext(); ) {
         EditorCell child = iterator.next();
         if (child instanceof EditorCell_WithComponent) {
-          ((EditorCell_WithComponent) child).getComponent().setVisible(visible);
+          if (collapsed) {
+            ((EditorCell_WithComponent) child).onCollapse();
+          } else {
+            ((EditorCell_WithComponent) child).onExpand();
+          }
         }
         if (child instanceof EditorCell_Collection) {
           EditorCell_Collection childCollection = (EditorCell_Collection) child;
           if (childCollection.isCollapsed()) {
-            if (visible) {
-              childCollection.addUnfoldingListener();
-            } else {
+            if (collapsed) {
               childCollection.removeUnfoldingListener();
+            } else {
+              childCollection.addUnfoldingListener();
             }
             iterator.skipChildren();
           }
@@ -808,6 +704,11 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
   }
 
   @Override
+  public HtmlTextBuilder renderHtml() {
+    return myCellLayout.doLayoutHtml(this);
+  }
+
+  @Override
   public void synchronizeViewWithModel() {
     for (EditorCell myEditorCell : getEditorCells()) {
       ((jetbrains.mps.nodeEditor.cells.EditorCell) myEditorCell).synchronizeViewWithModel();
@@ -853,48 +754,6 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
       return best;
     }
     return null;
-  }
-
-  /**
-   * @deprecated since MPS 3.4 is deprecated. Use addEditorCellAt(EditorCell cellToAdd, int index).
-   */
-  @Deprecated
-  @Override
-  public void addEditorCellAt(int i, EditorCell cellToAdd, boolean ignoreBraces) {
-    int j = i;
-    if (usesBraces() && !ignoreBraces) {
-      j = i - 1;
-    }
-    addEditorCellAt(cellToAdd, j);
-  }
-
-  /**
-   * @deprecated since MPS 3.4 use addEditorCellBefore()/addEditorCellAfter() methods
-   */
-  @Deprecated
-  @Override
-  public void addEditorCellAt(EditorCell cellToAdd, int index) {
-    detachFromParent(cellToAdd);
-    Iterator<EditorCell> iterator = getEditorCells().iterator();
-    int i = 0;
-    for (; i < index && iterator.hasNext(); i++) {
-      iterator.next();
-    }
-    if (i < index) {
-      throw new IndexOutOfBoundsException("Size: " + getEditorCells().size() + ", Index: " + index);
-    }
-    EditorCell anchor = iterator.hasNext() ? iterator.next() : null;
-    getEditorCells().addBefore(cellToAdd, anchor);
-  }
-
-  /**
-   * @deprecated since MPS 3.4 not used
-   */
-  @Deprecated
-  public void removeAllCells() {
-    for (EditorCell cell : this) {
-      removeCell(cell);
-    }
   }
 
   @Override
@@ -949,34 +808,6 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
     }
     EditorCell result = iterator.next();
     return iterator.hasNext() ? result : null;
-  }
-
-  /**
-   * @deprecated since MPS 3.4 not used
-   */
-  @Deprecated
-  @Override
-  public jetbrains.mps.nodeEditor.cells.EditorCell getFirstLeaf() {
-    return isEmpty() ? this : ((jetbrains.mps.nodeEditor.cells.EditorCell) firstCell()).getFirstLeaf();
-  }
-
-  /**
-   * @deprecated since MPS 3.4 not used
-   */
-  @Deprecated
-  @Override
-  public jetbrains.mps.nodeEditor.cells.EditorCell getLastLeaf() {
-    return isEmpty() ? this : ((jetbrains.mps.nodeEditor.cells.EditorCell) lastCell()).getLastLeaf();
-  }
-
-  @Override
-  public jetbrains.mps.nodeEditor.cells.EditorCell getLastChild() {
-    return (jetbrains.mps.nodeEditor.cells.EditorCell) lastCell();
-  }
-
-  @Override
-  public jetbrains.mps.nodeEditor.cells.EditorCell getFirstChild() {
-    return (jetbrains.mps.nodeEditor.cells.EditorCell) firstCell();
   }
 
   public String toString() {
@@ -1114,7 +945,18 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
 
   @Override
   public boolean isTransparentCollection() {
-    return getCellsCount() == 1 && getStyle().get(StyleAttributes.SELECTABLE);
+    if (!getStyle().get(StyleAttributes.SELECTABLE)) {
+      return false;
+    }
+    Container<EditorCell> visibleChildCells = getVisibleChildCells();
+    if (visibleChildCells.size() == 0) return false;
+    int opaqueCount = 0;
+    for (EditorCell child : visibleChildCells) {
+      if (!child.getStyle().get(StyleAttributes.TRANSPARENT) && ++opaqueCount > 1) {
+        return false;
+      }
+    }
+    return true;
   }
 
   class EditorCell_Brace extends EditorCell_Constant {
@@ -1136,13 +978,14 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
       style.set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
       style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
 
-      myBraceTextLine = new TextLine(text, style, false);
+      myBraceTextLine = new TextLine(text, style, false, editorContext.getEditorComponent().getEditorComponentSettings());
       myBraceTextLine.setCaretEnabled(false);
       setEditable(false);
       setEnabled(false);
       setSelectable(false);
     }
 
+    @NotNull
     @Override
     public CellInfo getCellInfo() {
       return new BraceCellInfo(EditorCell_Brace.this);
@@ -1225,11 +1068,14 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
     }
 
     public boolean equals(Object o) {
-      if (!(o instanceof BraceCellInfo)) {
+      if (this == o) {
+        return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
         return false;
       }
-      BraceCellInfo cellInfo = ((BraceCellInfo) o);
-      return myCollectionCellInfo.equals(cellInfo.myCollectionCellInfo) && myOpeningBrace == cellInfo.myOpeningBrace;
+      BraceCellInfo that = ((BraceCellInfo) o);
+      return super.equals(that) && myCollectionCellInfo.equals(that.myCollectionCellInfo) && myOpeningBrace == that.myOpeningBrace;
     }
   }
 

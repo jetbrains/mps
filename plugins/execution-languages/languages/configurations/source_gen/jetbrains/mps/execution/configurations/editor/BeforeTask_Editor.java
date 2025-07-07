@@ -11,7 +11,4 @@ public class BeforeTask_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
     return new BeforeTask_EditorBuilder_a(editorContext, node).createCell();
   }
-  public EditorCell createInspectedCell(EditorContext editorContext, SNode node) {
-    return new BeforeTask_InspectorBuilder_a(editorContext, node).createCell();
-  }
 }

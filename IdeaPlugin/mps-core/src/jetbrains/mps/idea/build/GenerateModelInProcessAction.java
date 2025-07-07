@@ -16,6 +16,7 @@
 
 package jetbrains.mps.idea.build;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -23,6 +24,7 @@ import com.intellij.openapi.project.Project;
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.fileTypes.FileIcons;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -40,6 +42,11 @@ public class GenerateModelInProcessAction extends AnAction {
 
   public GenerateModelInProcessAction() {
     this("Generate model", null, FileIcons.MODEL_ICON);
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 
   @Override

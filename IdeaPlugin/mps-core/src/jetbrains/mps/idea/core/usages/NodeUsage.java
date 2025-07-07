@@ -49,7 +49,6 @@ public class NodeUsage extends NodeNavigatable implements Usage, UsagePresentati
   private TextChunk[] myChunks;
   private boolean myIsValid;
   private String myParentPresentation;
-  private String myRole;
   private String myCategory;
 
   public NodeUsage(@NotNull SNodeReference node, @NotNull Project project, String category) {
@@ -62,7 +61,6 @@ public class NodeUsage extends NodeNavigatable implements Usage, UsagePresentati
         SNode targetNode = myNode.resolve(repository);
         if (targetNode != null) {
           myParentPresentation = targetNode.getParent().getPresentation();
-          myRole = targetNode.getRoleInParent();
         }
       }
     });
@@ -125,10 +123,7 @@ public class NodeUsage extends NodeNavigatable implements Usage, UsagePresentati
     }
     result.add(new TextChunk(attributes, myTextPresentation));
     result.add(new TextChunk(attributes, " ("));
-    result.add(new TextChunk(attributes, "role: "));
-    result.add(new TextChunk(attributes, myRole));
-    result.add(new TextChunk(attributes, ";"));
-    result.add(new TextChunk(attributes, " in: "));
+    result.add(new TextChunk(attributes, "in: "));
     result.add(new TextChunk(attributes, myParentPresentation));
     result.add(new TextChunk(attributes, ")"));
     return result.toArray(new TextChunk[result.size()]);

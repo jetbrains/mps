@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,21 +17,28 @@ package jetbrains.mps.workbench.dialogs.project.newproject;
 
 import com.intellij.openapi.startup.StartupManager;
 import jetbrains.mps.icons.MPSIcons.Nodes;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
-import jetbrains.mps.ide.ui.dialogs.modules.NewSolutionSettings;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
+import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.project.modules.NewModuleCheck;
+import jetbrains.mps.project.modules.SolutionProducer;
+import jetbrains.mps.util.IStatus;
 import jetbrains.mps.workbench.DocumentationHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import java.io.File;
 
 public class DefaultSolutionProjectTemplate implements SolutionProjectTemplate {
 
-  private NewSolutionSettings myNewSolutionSettings = new NewSolutionSettings();
+  private final NameLocationPanel myNewSolutionSettings;
+
+  public DefaultSolutionProjectTemplate() {
+    myNewSolutionSettings = new NameLocationPanel(new File("."), "Solution name:", "Solution file location:");
+    myNewSolutionSettings.withDefaults("NewSolution", "solutions");
+    myNewSolutionSettings.onChange(this::fireSettingsChanged);
+  }
 
   @Nullable
   @Override
@@ -49,8 +56,8 @@ public class DefaultSolutionProjectTemplate implements SolutionProjectTemplate {
   @Override
   public String getDescription() {
     return "Solutions are used to store code written in MPS languages. " +
-        "Each <a href=\"" + DocumentationHelper.getConfluenceBase() + "MPS+project+structure#MPSprojectstructure-solutions\">MPS solution</a> " +
-        "is a set of models with a name.";
+           "Each <a href=\"" + DocumentationHelper.getHelpCenterBase() + "mps-project-structure.html#solutions\">MPS solution</a> " +
+           "is a set of models with a name.";
   }
 
   @Nullable
@@ -63,29 +70,20 @@ public class DefaultSolutionProjectTemplate implements SolutionProjectTemplate {
   @NotNull
   @Override
   public TemplateFiller getTemplateFiller() {
-    return new TemplateFiller() {
-      @Override
-      public void fillProjectWithModules(final MPSProject project) {
-        StartupManager.getInstance(project.getProject()).registerPostStartupActivity(new Runnable() {
-          @Override
-          public void run() {
-            ModelAccess.instance().runWriteActionInCommand(new Runnable() {
-                                                             @Override
-                                                             public void run() {
-                                                               Solution
-                                                                   solution = NewModuleUtil.createSolution(myNewSolutionSettings.getModuleName(), myNewSolutionSettings.getModuleLocation(), project);
-                                                               project.addModule(solution);
-                                                             }
-                                                           }
-            );
-          }
-        });
-      }
-    };
+    return project -> StartupManager.getInstance(project.getProject()).runAfterOpened(() -> project.getModelAccess().executeCommandInEDT(
+        () -> new SolutionProducer(project).create(myNewSolutionSettings.getModuleName(), project.getFileSystem().getFile(myNewSolutionSettings.getModuleLocation()))
+    ));
   }
 
   @Override
   public void setProjectPath(String projectPath) {
-    myNewSolutionSettings.setProjectPath(projectPath);
+    myNewSolutionSettings.withProjectPath(new File(projectPath));
+  }
+
+  @Nullable
+  @Override
+  public String checkSettings() {
+    final IStatus s = new NewModuleCheck().forSolution().withName(myNewSolutionSettings.getModuleName()).withHome(myNewSolutionSettings.getModuleLocation()).checkAll();
+    return s.getMessage();
   }
 }

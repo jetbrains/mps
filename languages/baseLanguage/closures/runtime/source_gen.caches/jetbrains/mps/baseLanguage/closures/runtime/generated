@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-5nrt2kq6p441l31eo3qf48tf3cc1hj3" />
+<product version="3" modelHash="-ii074gfatek0d61b4tg5abz1mqjpi1">
+  <files names="AdapterClass.java:DelayedException.java:Nothing.java:Outcome.java:Result.java:Wrappers.java:YieldingIterator.java:_FunctionTypes.java" />
+</product>
 

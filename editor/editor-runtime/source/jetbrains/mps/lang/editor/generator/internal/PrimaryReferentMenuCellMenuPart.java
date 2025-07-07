@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.smodel.action.IReferentPresentationProvider;
 import jetbrains.mps.smodel.action.ModelActions;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.List;
@@ -35,23 +36,21 @@ import java.util.List;
 public class PrimaryReferentMenuCellMenuPart implements SubstituteInfoPartExt {
   @Override
   public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-    SNode referenceNode = (SNode) cellContext.get(BasicCellContext.EDITED_NODE);
-    SNode linkDeclaration = (SNode) cellContext.get(ReferenceCellContext.LINK_DECLARATION);
-    SNode currentReferent = (SNode) cellContext.getOpt(ReferenceCellContext.CURRENT_REFERENT_NODE);
+    SNode referenceNode = cellContext.get(BasicCellContext.EDITED_NODE);
+    SReferenceLink linkDeclaration = cellContext.get(ReferenceCellContext.LINK_DECLARATION);
     IReferentPresentationProvider matchingTextProvider = getMatchingTextProvider();
     IReferentPresentationProvider visibleMatchingTextProvider = getVisibleMatchingTextProvider();
     if (matchingTextProvider == null) {
-      matchingTextProvider = IReferentPresentationProvider.getDefaultMatchingText(linkDeclaration);
+      matchingTextProvider = IReferentPresentationProvider.DEFAULT_MATCHING_TEXT;
     }
     if (visibleMatchingTextProvider == null) {
-      visibleMatchingTextProvider = IReferentPresentationProvider.getDefaultVisibleMatchingText(linkDeclaration);
+      visibleMatchingTextProvider = IReferentPresentationProvider.DEFAULT_VISIBLE_MATCHING_TEXT;
     }
     return ModelActions.createReferentSubstituteActions(referenceNode,
-                                                        currentReferent,
                                                         linkDeclaration,
                                                         matchingTextProvider,
                                                         visibleMatchingTextProvider,
-                                                        editorContext.getOperationContext());
+                                                        editorContext);
   }
 
   @Nullable

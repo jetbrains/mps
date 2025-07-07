@@ -9,15 +9,19 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.build.behavior.BuildMacro__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.TemplateQueryContext;
-import java.util.concurrent.ConcurrentMap;
+import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MacroHelper {
   private final Collection<SNode> availableMacros = new ArrayList<SNode>();
@@ -25,24 +29,31 @@ public final class MacroHelper {
   private final Map<SNode, String> exportNames = new HashMap<SNode, String>();
   private final Map<SNode, String> importNames = new HashMap<SNode, String>();
   private final Map<SNode, String> depPrefixes = new HashMap<SNode, String>();
+  private final Map<SNode, String> depNames = new HashMap<SNode, String>();
   private final Set<String> usedNames = new HashSet<String>();
   private final Set<String> usedExports = new HashSet<String>();
   private final Set<String> usedPrefixes = new HashSet<String>();
   private final SNode project;
-  private final MacroHelper.MacroContext context;
-  private MacroHelper(SNode project, MacroHelper.MacroContext context) {
+  private final MacroContext context;
+  private final String macroNameKey;
+
+  private MacroHelper(SNode project, MacroContext context) {
     this.project = project;
     this.context = context;
+    // single model could come with numerous BuildProjects, and actual macro name (for imported through other projects) in each project 
+    // may (although highly unlikely) get different, hence topmost project name to differentiate context.
+    this.macroNameKey = "actual-macro-name." + SPropertyOperations.getString(project, PROPS.name$MnvL);
   }
+
   public void init() {
-    for (SNode m : SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros"))) {
-      if (usedNames.contains(SPropertyOperations.getString(m, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
+    for (SNode m : SLinkOperations.getChildren(project, LINKS.macros$r8_A)) {
+      if (usedNames.contains(SPropertyOperations.getString(m, PROPS.name$MnvL))) {
         context.reportProblem("duplicate macro name", m);
       }
-      add(m, null, ((boolean) BuildMacro__BehaviorDescriptor.isPublic_id5FtnUVJQZyL.invoke(m) ? SPropertyOperations.getString(project, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "." + SPropertyOperations.getString(m, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) : null));
+      add(m, SPropertyOperations.getString(m, PROPS.name$MnvL), null, ((boolean) BuildMacro__BehaviorDescriptor.isPublic_id5FtnUVJQZyL.invoke(m) ? SPropertyOperations.getString(project, PROPS.name$MnvL) + "." + SPropertyOperations.getString(m, PROPS.name$MnvL) : null));
     }
-    for (SNode dep : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency"))) {
-      SNode depProject = SLinkOperations.getTarget(dep, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script"));
+    for (SNode dep : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN)) {
+      SNode depProject = SLinkOperations.getTarget(dep, LINKS.script$6Ehy);
       MacroHelper depHelper = context.getMacros(depProject);
       if (depHelper == null) {
         continue;
@@ -59,20 +70,34 @@ public final class MacroHelper {
         }
         String depprefix = depPrefixes.get(dep);
         if (depprefix == null) {
-          depprefix = makeUnique("import." + SPropertyOperations.getString(SLinkOperations.getTarget(dep, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), usedPrefixes);
+          depprefix = makeUnique("import." + SPropertyOperations.getString(SLinkOperations.getTarget(dep, LINKS.script$6Ehy), PROPS.name$MnvL), usedPrefixes);
           depPrefixes.put(dep, depprefix);
+          depNames.put(dep, SPropertyOperations.getString(SLinkOperations.getTarget(dep, LINKS.script$6Ehy), PROPS.name$MnvL));
         }
-        add(m, depprefix + "." + exportName, exportName);
+        add(m, exportName, depprefix + "." + exportName, exportName);
       }
     }
   }
-  private void add(SNode macro, String importName, String exportName) {
-    SNode macroProject = SNodeOperations.as(SNodeOperations.getContainingRoot(macro), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
-    if (macroProject == null) {
+
+  /**
+   * this method is intended for topmost MH only.
+   * The idea here is to keep name in UO, so that different versions of the same macro node throughout various transient steps could answer with actual name.
+   */
+  /*package*/ void recordNamesInUO() {
+    final SModel pm = SNodeOperations.getModel(project);
+    if (!(pm instanceof TransientSModel)) {
+      return;
+    }
+    Sequence.fromIterable(getAvailableMacros()).where((it) -> SNodeOperations.getModel(it) == pm).visitAll((m) -> m.putUserObject(macroNameKey, macroToName.get(m)));
+  }
+
+  private void add(SNode macro, String macroName, String importName, String exportName) {
+    if (SNodeOperations.as(SNodeOperations.getContainingRoot(macro), CONCEPTS.BuildProject$ae) == null) {
+      // odd check, macro nodes in MH don't show up from nowhere, are taken from project.macros only
       context.reportProblem("macro is defined outside of the project", macro);
       return;
     }
-    String name = makeUnique((macroProject == project ? SPropertyOperations.getString(macro, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) : macroProject + "." + SPropertyOperations.getString(macro, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))), usedNames);
+    String name = makeUnique(macroName, usedNames);
     macroToName.put(macro, name);
     availableMacros.add(macro);
     if (importName != null) {
@@ -91,58 +116,59 @@ public final class MacroHelper {
     }
     return name;
   }
-  public Collection<SNode> getAvailableMacros() {
+  /*package*/ Iterable<SNode> getAvailableMacros() {
     return availableMacros;
   }
   public Iterable<SNode> getVarsContainers() {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(this.project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return depPrefixes.containsKey(it);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(this.project, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN)).where((it) -> depPrefixes.containsKey(it));
   }
   public Iterable<SNode> getMacrosToExport() {
-    return Sequence.fromIterable(((Iterable<SNode>) availableMacros)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return exportNames.containsKey(it);
-      }
-    });
+    return Sequence.fromIterable(getAvailableMacros()).where((it) -> exportNames.containsKey(it));
   }
   public Iterable<SNode> getMacrosToImport() {
-    return Sequence.fromIterable(((Iterable<SNode>) availableMacros)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return importNames.containsKey(it);
-      }
-    });
+    return Sequence.fromIterable(getAvailableMacros()).where((it) -> importNames.containsKey(it));
   }
   public String getName(SNode macro) {
-    return macroToName.get(context.getOriginalMacro(macro));
+    String name = macroToName.get(macro);
+    return (name != null ? name : (String) macro.getUserObject(macroNameKey));
   }
   public String getExportName(SNode macro) {
-    return exportNames.get(context.getOriginalMacro(macro));
+    return exportNames.get(macro);
   }
   public String getImportName(SNode macro) {
-    return importNames.get(context.getOriginalMacro(macro));
+    return importNames.get(macro);
   }
-  public String getPrefix(SNode dep) {
-    return depPrefixes.get(context.getOriginalDep(dep));
+  public String getVarContainerPrefix(SNode dep) {
+    return depPrefixes.get(dep);
+  }
+  public String getVarContainerName(SNode dep) {
+    return depNames.get(dep);
   }
   public String getProjectName() {
-    return SPropertyOperations.getString(project, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    return SPropertyOperations.getString(project, PROPS.name$MnvL);
   }
   public void report(String message, SNode node) {
     context.reportProblem(message, node);
   }
-  public static class MacroContext {
+
+  /*package*/ static class MacroContext {
     private final Set<SNode> seenProjects = new HashSet<SNode>();
     private final TemplateQueryContext genContext;
-    private final ConcurrentMap<SNode, MacroHelper> existingMacros;
-    public MacroContext(SNode project, TemplateQueryContext genContext) {
+    private final MacroHelper projectHelper;
+    private final Map<SNode, MacroHelper> existingMacros;
+
+    /*package*/ MacroContext(SNode project, TemplateQueryContext genContext) {
       this.genContext = genContext;
-      this.existingMacros = GenerationUtil.<SNode,MacroHelper>getSessionMap(project, genContext, "macroHelpers");
+      this.existingMacros = new HashMap<>();
+      projectHelper = getMacros(project);
+      projectHelper.recordNamesInUO();
     }
-    public MacroHelper getMacros(SNode dep) {
-      dep = SNodeOperations.as(DependenciesHelper.getOriginalNode(dep, genContext), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
+
+    /*package*/ MacroHelper getProjectHelper() {
+      return projectHelper;
+    }
+
+    /*package*/ MacroHelper getMacros(SNode dep) {
       if (dep == null) {
         return null;
       }
@@ -165,14 +191,24 @@ public final class MacroHelper {
         return null;
       }
     }
-    public SNode getOriginalMacro(SNode macro) {
-      return SNodeOperations.as(DependenciesHelper.getOriginalNode(macro, genContext), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro"));
-    }
-    public SNode getOriginalDep(SNode dep) {
-      return SNodeOperations.as(DependenciesHelper.getOriginalNode(dep, genContext), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency"));
-    }
-    public void reportProblem(String message, SNode node) {
+
+    /*package*/ void reportProblem(String message, SNode node) {
       genContext.showErrorMessage(node, message);
     }
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink macros$r8_A = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
+    /*package*/ static final SContainmentLink dependencies$redY = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
+    /*package*/ static final SReferenceLink script$6Ehy = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BuildProjectDependency$sN = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

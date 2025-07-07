@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,8 +22,6 @@ import jetbrains.mps.ide.ui.tree.TreeNodeVisitor;
 import jetbrains.mps.ide.ui.tree.module.NamespaceTreeBuilder.NamespaceNodeBuilder;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.util.InternUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -33,11 +31,12 @@ import java.util.List;
 
 public class NamespaceTextNode extends TextTreeNode implements TreeElement {
 
+  // I eagerly hope this NamespaceNodeBuilder fades into the void
   public static NamespaceNodeBuilder<NamespaceTextNode> getBuilder() {
-    return new NamespaceNodeBuilder<NamespaceTextNode>() {
+    return new NamespaceNodeBuilder<>() {
       @Override
       public NamespaceTextNode createNamespaceNode(String text) {
-        return new NamespaceTextNode(text);
+        return new NamespaceTextNode(text.intern());
       }
 
       @Override
@@ -60,13 +59,13 @@ public class NamespaceTextNode extends TextTreeNode implements TreeElement {
   private String myName;
 
   public NamespaceTextNode(String name) {
-    super(name = InternUtil.intern(name));
-    setName(name);
+    super(name);
+    myName = name.intern();
   }
 
   public void setName(String newName) {
-    myName = InternUtil.intern(newName);
-    setText(newName);
+    myName = newName.intern(); // uses suggest it's never null
+    setText(myName);
   }
 
   @Override
@@ -75,8 +74,8 @@ public class NamespaceTextNode extends TextTreeNode implements TreeElement {
   }
 
   public List<SModel> getModelsUnder() {
-    List<SModel> models = new ArrayList<SModel>();
-    for (MPSTreeNode child : this) {
+    List<SModel> models = new ArrayList<>();
+    for (MPSTreeNode child : getChildren()) {
       if (child instanceof SModelTreeNode) {
         models.add(((SModelTreeNode) child).getModel());
         for (SModelTreeNode childTreeNode : ((SModelTreeNode) child).getAllSubfolderSModelTreeNodes()) {
@@ -100,8 +99,8 @@ public class NamespaceTextNode extends TextTreeNode implements TreeElement {
   }
 
   public List<SModule> getModulesUnder() {
-    List<SModule> modules = new ArrayList<SModule>();
-    for (MPSTreeNode child : this) {
+    List<SModule> modules = new ArrayList<>();
+    for (MPSTreeNode child : getChildren()) {
       if (child instanceof ProjectModuleTreeNode) {
         modules.add(((ProjectModuleTreeNode) child).getModule());
       } else if (child instanceof NamespaceTextNode) {

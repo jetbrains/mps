@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082113931046:jetbrains.mps.baseLanguage.structure.ContinueStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:c3b1794e-266e-470d-a2a5-3fe5cf70eaca(jetbrains.mps.ide.mpsmigration.v_2023_3)/419238803118899668">
+    <file name="Migrations_2023_3.java">
+      <node id="419238803119062007" at="9,61,10,54" concept="2" />
+      <node id="419238803118900658" at="9,0,12,0" concept="5" trace="offerInto#(Ljava/util/Deque;)V" />
+      <scope id="419238803118900662" at="9,61,10,54" />
+      <scope id="419238803118900658" at="9,0,12,0">
+        <var name="migrations" id="1291799896031618351" />
+      </scope>
+      <unit id="419238803118899668" at="8,0,13,0" name="jetbrains.mps.ide.mpsmigration.v_2023_3.Migrations_2023_3" />
+    </file>
+  </root>
+  <root nodeRef="r:c3b1794e-266e-470d-a2a5-3fe5cf70eaca(jetbrains.mps.ide.mpsmigration.v_2023_3)/6631294030023018545">
+    <file name="CleanStubForeignMethodIds.java">
+      <node id="6631294030023040531" at="24,38,25,58" concept="8" />
+      <node id="6631294030023019500" at="29,34,30,66" concept="7" />
+      <node id="6631294030023069661" at="34,33,35,16" concept="7" />
+      <node id="6631294030023140004" at="41,28,42,17" concept="1" />
+      <node id="6631294030023210255" at="45,104,46,19" concept="1" />
+      <node id="6631294030024256772" at="47,9,48,32" concept="6" />
+      <node id="4333758727443847450" at="48,32,49,46" concept="6" />
+      <node id="6631294030023416169" at="50,138,51,19" concept="1" />
+      <node id="6631294030023560710" at="54,75,55,37" concept="6" />
+      <node id="2984623698339218233" at="56,56,57,55" concept="2" />
+      <node id="6631294030023879536" at="58,194,59,31" concept="6" />
+      <node id="6631294030024050124" at="59,31,60,33" concept="6" />
+      <node id="6631294030023818865" at="61,171,62,138" concept="2" />
+      <node id="6631294030024287267" at="62,138,63,33" concept="2" />
+      <node id="6631294030024336178" at="69,22,70,38" concept="2" />
+      <node id="7372237140385720221" at="73,5,74,16" concept="7" />
+      <node id="6631294030023020801" at="24,0,27,0" concept="0" trace="CleanStubForeignMethodIds#()V" />
+      <node id="6631294030023125188" at="40,89,43,7" concept="4" />
+      <node id="6631294030023192013" at="44,62,47,9" concept="4" />
+      <node id="6631294030023277776" at="49,46,52,9" concept="4" />
+      <node id="6631294030024319676" at="68,9,71,9" concept="4" />
+      <node id="6631294030023019491" at="28,0,32,0" concept="5" trace="getDescription#()Ljava/lang/String;" />
+      <node id="6631294030023067465" at="33,0,37,0" concept="5" trace="isRerunnable#()Z" />
+      <node id="6631294030023706605" at="60,33,64,17" concept="4" />
+      <node id="2984623698339197295" at="57,55,65,15" concept="4" />
+      <node id="6631294030023487744" at="55,37,66,13" concept="4" />
+      <node id="6631294030023465500" at="53,76,67,11" concept="3" />
+      <node id="6631294030023441875" at="52,9,68,9" concept="3" />
+      <node id="6631294030023174077" at="43,7,72,7" concept="3" />
+      <node id="6631294030023106019" at="39,45,73,5" concept="3" />
+      <node id="6631294030023019481" at="38,0,76,0" concept="5" trace="doExecute#(Ljetbrains/mps/project/Project;)Z" />
+      <scope id="6631294030023020805" at="24,38,25,58" />
+      <scope id="6631294030023019497" at="29,34,30,66" />
+      <scope id="6631294030023067469" at="34,33,35,16" />
+      <scope id="6631294030023125190" at="41,28,42,17" />
+      <scope id="6631294030023192015" at="45,104,46,19" />
+      <scope id="6631294030023277778" at="50,138,51,19" />
+      <scope id="6631294030024319678" at="69,22,70,38" />
+      <scope id="6631294030023706607" at="61,171,63,33" />
+      <scope id="6631294030023020801" at="24,0,27,0" />
+      <scope id="6631294030023019491" at="28,0,32,0" />
+      <scope id="6631294030023067465" at="33,0,37,0" />
+      <scope id="2984623698339197297" at="58,194,64,17">
+        <var name="idValue" id="6631294030023879539" />
+        <var name="retTypeStart" id="6631294030024050127" />
+      </scope>
+      <scope id="6631294030023487746" at="56,56,65,15" />
+      <scope id="6631294030023465506" at="54,75,66,13">
+        <var name="targetRef" id="6631294030023560711" />
+      </scope>
+      <scope id="6631294030023441881" at="53,76,67,11" />
+      <scope id="6631294030023465500" at="53,76,67,11">
+        <var name="ref" id="6631294030023465502" />
+      </scope>
+      <scope id="6631294030023441875" at="52,9,68,9">
+        <var name="n" id="6631294030023441877" />
+      </scope>
+      <scope id="6631294030023174083" at="44,62,71,9">
+        <var name="changed" id="6631294030024256775" />
+        <var name="mi" id="4333758727443847451" />
+      </scope>
+      <scope id="6631294030023174077" at="43,7,72,7">
+        <var name="m" id="6631294030023174079" />
+      </scope>
+      <scope id="6631294030023106028" at="40,89,72,7" />
+      <scope id="6631294030023106019" at="39,45,73,5">
+        <var name="pm" id="6631294030023106022" />
+      </scope>
+      <scope id="6631294030023019487" at="39,45,74,16" />
+      <scope id="6631294030023019481" at="38,0,76,0">
+        <var name="project" id="6631294030023019485" />
+      </scope>
+      <unit id="6631294030023018545" at="22,0,77,0" name="jetbrains.mps.ide.mpsmigration.v_2023_3.CleanStubForeignMethodIds" />
+    </file>
+  </root>
+</debug-info>
+

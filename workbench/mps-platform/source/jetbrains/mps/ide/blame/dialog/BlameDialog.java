@@ -15,46 +15,58 @@
  */
 package jetbrains.mps.ide.blame.dialog;
 
+import com.intellij.credentialStore.CredentialAttributes;
 import com.intellij.credentialStore.CredentialAttributesKt;
-import com.intellij.credentialStore.Credentials;
+import com.intellij.credentialStore.CredentialPromptDialog;
 import com.intellij.diagnostic.DiagnosticBundle;
-import com.intellij.diagnostic.ErrorReportConfigurable;
-import com.intellij.diagnostic.JetBrainsAccountDialogKt;
 import com.intellij.ide.BrowserUtil;
+import com.intellij.ide.passwordSafe.PasswordSafe;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
+import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.application.ApplicationInfo;
+import com.intellij.openapi.application.ApplicationNamesInfo;
 import com.intellij.openapi.application.ex.ApplicationInfoEx;
 import com.intellij.openapi.extensions.PluginDescriptor;
+import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.progress.ProgressManager;
+import com.intellij.openapi.progress.Task.Modal;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.DimensionService;
+import com.intellij.ui.BrowserHyperlinkListener;
+import com.intellij.ui.HideableDecorator;
 import com.intellij.ui.HyperlinkLabel;
+import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.components.JBCheckBox;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import jetbrains.mps.ide.blame.command.Command;
-import jetbrains.mps.ide.blame.command.Poster;
-import jetbrains.mps.ide.blame.perform.Query;
-import jetbrains.mps.ide.blame.perform.Response;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.jdom.Element;
+import com.intellij.uiDesigner.core.Spacer;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.ide.IdeBundle;
+import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.ide.blame.api.Reporter;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.HyperlinkEvent;
+import java.awt.BorderLayout;
 import java.awt.Dialog;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Frame;
-import java.awt.Insets;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -65,17 +77,21 @@ import java.util.List;
 
 public class BlameDialog extends DialogWrapper {
   private static final String CAPTION = "Submit System Exception to Developers";
+  private static final String FULL_PRODUCT_NAME = "JetBrains MPS";
 
   private JPanel myPanel;
   private JTextField myTitleField;
   private JTextArea myDescriptionField;
+  private JCheckBox myDoNotIncludeAppInfo;
   private JPanel myExceptionContainer;
   private JTextArea myException;
+  private JCheckBox mySkipTrace;
   private JCheckBox myHiddenCheckBox;
   private HyperlinkLabel myCredentialsLabel;
+  private JBCheckBox myShareDataAgreementCheck;
+  private JEditorPane myShareDataAgreement;
 
   private boolean myIsCancelled = true;
-  private Response myResult;
   private Project myProject;
 
   private String myTitle = "";
@@ -84,6 +100,7 @@ public class BlameDialog extends DialogWrapper {
   private List<File> myFilesToAttach = new ArrayList<>();
   private String mySubsystem = null;
   private PluginDescriptor myPluginDescriptor;
+  private volatile String myToken;
 
   public BlameDialog(Project project, Dialog dialog) {
     super(dialog, true);
@@ -97,15 +114,6 @@ public class BlameDialog extends DialogWrapper {
 
   public void addExceptions(Collection<Throwable> throwables) {
     myThrowableList.addAll(throwables);
-  }
-
-  /**
-   * @deprecated use {@link BlameDialog#addExceptions(java.util.Collection)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2017.2)
-  public void addEx(Throwable throwable) {
-    addExceptions(Collections.singletonList(throwable));
   }
 
   public void setIssueTitle(String message) {
@@ -134,14 +142,9 @@ public class BlameDialog extends DialogWrapper {
     myPluginDescriptor = pluginDescriptor;
   }
 
-  @Deprecated /*Unused method*/
-  @ToRemove(version = 2017.1)
-  public void setSourceRevision(String sourceRevision) {
-  }
-
   @Override
   protected JComponent createCenterPanel() {
-    myPanel = new JPanel(new GridLayoutManager(7, 1, new Insets(0, 0, 0, 0), -1, -1));
+    myPanel = new JPanel(new GridLayoutManager(9, 1, JBUI.emptyInsets(), -1, -1));
 
     myPanel.add(new JBLabel("Title:"), getConstraints(myPanel.getComponentCount()));
     myTitleField = new JBTextField();
@@ -159,7 +162,22 @@ public class BlameDialog extends DialogWrapper {
     descriptionConstraints.setVSizePolicy(GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW);
     myPanel.add(descriptionScrollPane, descriptionConstraints);
 
-    myExceptionContainer = new JPanel(new GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), -1, -1));
+
+    final JPanel appInfoPanel = new JPanel(new GridLayoutManager(2, 1));
+    appInfoPanel.setBorder(IdeBorderFactory.createEmptyBorder(JBUI.emptyInsets()));
+    final JBLabel appInfo = new JBLabel(AppInfo.getApplicationInfo(AppInfo.Format.HTML, myPluginDescriptor));
+    appInfoPanel.add(appInfo, getConstraints(appInfoPanel.getComponentCount()));
+    myDoNotIncludeAppInfo = new JBCheckBox("Do not include application info to issue description", false);
+    myDoNotIncludeAppInfo.addChangeListener(changeEvent -> appInfo.setEnabled(!myDoNotIncludeAppInfo.isSelected()));
+    appInfoPanel.add(myDoNotIncludeAppInfo, getConstraints(appInfoPanel.getComponentCount()));
+
+    final JPanel appInfoHolder = new JPanel(new BorderLayout());
+    HideableDecorator decorator = new HideableDecorator(appInfoHolder, "Application information", true);
+    decorator.setContentComponent(appInfoPanel);
+    decorator.setOn(false);
+    myPanel.add(appInfoHolder, getConstraints(myPanel.getComponentCount()));
+
+    myExceptionContainer = new JPanel(new GridLayoutManager(3, 1, JBUI.emptyInsets(), -1, -1));
 
     myExceptionContainer.add(new JBLabel("Exception:"), getConstraints(myExceptionContainer.getComponentCount()));
     myException = new JTextArea();
@@ -167,17 +185,21 @@ public class BlameDialog extends DialogWrapper {
     final JBScrollPane exceptionScrollPane = new JBScrollPane();
     exceptionScrollPane.setViewportView(myException);
     myExceptionContainer.add(exceptionScrollPane, getConstraints(myExceptionContainer.getComponentCount()));
+    mySkipTrace = new JBCheckBox("Exclude exception trace from description", false);
+    mySkipTrace.addChangeListener(changeEvent -> myException.setEnabled(!mySkipTrace.isSelected()));
+    myExceptionContainer.add(mySkipTrace, getConstraints(myExceptionContainer.getComponentCount()));
 
     myPanel.add(myExceptionContainer, getConstraints(myPanel.getComponentCount()));
 
-    myHiddenCheckBox = new JBCheckBox("Visible only to MPS developers");
+    myHiddenCheckBox = new JBCheckBox("Visible only to MPS Team");
     myPanel.add(myHiddenCheckBox, getConstraints(myPanel.getComponentCount()));
-    myHiddenCheckBox.setToolTipText("Select this if you want this bug report will be visible only to you and MPS developers");
+    myHiddenCheckBox.setToolTipText("Select this if you want this bug report will be visible only to you and MPS Team");
 
     myCredentialsLabel = new HyperlinkLabel();
     myCredentialsLabel.addHyperlinkListener(e -> {
       if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-        JetBrainsAccountDialogKt.showJetBrainsAccountDialog(getRootPane()).show();
+        CredentialAttributes credentialAttributes = getCredentialAttributes();
+        myToken = CredentialPromptDialog.askPassword(myProject, "Enter Access Token for YouTrack", "Permanent token", credentialAttributes, true);
         updateCredentialsPane();
       }
     });
@@ -186,7 +208,47 @@ public class BlameDialog extends DialogWrapper {
     credentialsConstraints.setFill(GridConstraints.FILL_NONE);
     myPanel.add(myCredentialsLabel, credentialsConstraints);
 
+    JPanel agreementPanel = new JPanel(new GridLayoutManager(1, 3));
+
+    myShareDataAgreementCheck = new JBCheckBox();
+    myShareDataAgreementCheck.addChangeListener(changeEvent -> this.setOKActionEnabled(myShareDataAgreementCheck.isSelected()));
+    myShareDataAgreementCheck.setSelected(false);
+    GridConstraints constraints = getConstraints(0);
+    constraints.setAnchor(GridConstraints.ANCHOR_NORTHWEST);
+    constraints.setFill(GridConstraints.FILL_NONE);
+    agreementPanel.add(myShareDataAgreementCheck, constraints);
+
+    myShareDataAgreement = new JEditorPane(UIUtil.HTML_MIME, "");
+    updateDataUsageAgreementText();
+    myShareDataAgreement.setEditable(false);
+    myShareDataAgreement.setBackground(UIUtil.getPanelBackground());
+    myShareDataAgreement.addHyperlinkListener(new BrowserHyperlinkListener());
+    myShareDataAgreement.setBorder(JBUI.Borders.empty());
+    myShareDataAgreement.setFocusable(false);
+    constraints = getConstraints(0);
+    constraints.setColumn(1);
+    constraints.setAnchor(GridConstraints.ANCHOR_NORTHWEST);
+    agreementPanel.add(myShareDataAgreement, constraints);
+
+    constraints = getConstraints(0);
+    constraints.setColumn(2);
+    constraints.setHSizePolicy(GridConstraints.SIZEPOLICY_CAN_GROW);
+    agreementPanel.add(new Spacer(), constraints);
+
+    myPanel.add(agreementPanel, getConstraints(myPanel.getComponentCount()));
+
     return myPanel;
+  }
+
+  private void updateDataUsageAgreementText() {
+    final Font font = UISettings.getInstance().getFontFace() != null
+                      ? new Font(UISettings.getInstance().getFontFace(), Font.PLAIN, UISettings.getInstance().getFontSize()) : UIUtil.getLabelFont();
+    final String signedInAgreement =
+        String.format(IdeBundle.message("blame.dialog.agreement"), font.getFamily());
+    final String anonymousAgreement =
+        String.format(IdeBundle.message("blame.dialog.agreement.anonymous"), font.getFamily());
+
+    myShareDataAgreement.setText(myToken != null ? signedInAgreement : anonymousAgreement);
   }
 
   private GridConstraints getConstraints(int row) {
@@ -204,14 +266,17 @@ public class BlameDialog extends DialogWrapper {
     return myDescriptionField;
   }
 
+  private CredentialAttributes getCredentialAttributes() {
+    return new CredentialAttributes(CredentialAttributesKt.generateServiceName("MPS token for YouTrack", Reporter.YOUTRACK_BASE_URL));
+  }
+
   private void updateCredentialsPane() {
-    Credentials credentials = ErrorReportConfigurable.getCredentials();
-    if (CredentialAttributesKt.isFulfilled(credentials)) {
-      assert credentials != null;
-      myCredentialsLabel.setHtmlText(DiagnosticBundle.message("diagnostic.error.report.submit.report.as", credentials.getUserName()));
+    if (myToken != null) {
+      myCredentialsLabel.setHtmlText(IdeBundle.message("blame.dialog.submit.error.as"));
     } else {
-      myCredentialsLabel.setHtmlText(DiagnosticBundle.message("diagnostic.error.report.submit.error.anonymously"));
+      myCredentialsLabel.setHtmlText(IdeBundle.message("blame.dialog.submit.error.anonymously"));
     }
+    updateDataUsageAgreementText();
   }
 
   /**
@@ -235,7 +300,11 @@ public class BlameDialog extends DialogWrapper {
       myException.setText(builder.toString());
     }
 
-    updateCredentialsPane();
+    myCredentialsLabel.setHtmlText(IdeBundle.message("blame.dialog.submit.error.loading"));
+    ThreadUtils.submitToBGT(() -> {
+      myToken = PasswordSafe.getInstance().getPassword(getCredentialAttributes());
+      SwingUtilities.invokeLater(BlameDialog.this::updateCredentialsPane);
+    });
 
     Dimension size = DimensionService.getInstance().getSize(getDimensionServiceKey());
     if (size == null) {
@@ -243,19 +312,13 @@ public class BlameDialog extends DialogWrapper {
     }
 
     setOKButtonText("Send");
-    setOKButtonMnemonic('S');
+    setOKActionEnabled(false);
   }
 
   @Override
   @NotNull
   protected String getDimensionServiceKey() {
     return getClass().getName();
-  }
-
-  private Query createQuery() {
-    Credentials credentials = ErrorReportConfigurable.getCredentials();
-    return CredentialAttributesKt.isFulfilled(credentials) ?
-           new Query(credentials.getUserName(), credentials.getPasswordAsString()) : Query.getAnonymousQuery();
   }
 
   private String ex2str(Throwable e) {
@@ -270,29 +333,107 @@ public class BlameDialog extends DialogWrapper {
     return (e.getMessage() == null ? "" : e.getMessage() + "\n") + sw.toString();
   }
 
-  private String getAdditionalInfo() {
-    ApplicationInfo ai = ApplicationInfo.getInstance();
-    StringBuilder builder = new StringBuilder("{cut [Build info]}*[Build info]*\n");
-    if (ai instanceof ApplicationInfoEx) {
-      builder.append("Application name: ''").append(((ApplicationInfoEx) ai).getFullApplicationName()).append("''\n");
+  private void addInfoLine(StringBuilder builder, Object text, String formatStart, String formatEnd, String endLine) {
+    addInfoLine(builder, null, text, formatStart, formatEnd, endLine);
+  }
+
+  private void addInfoLine(StringBuilder builder, @Nullable String name, Object text, String formatStart, String formatEnd, String endLine) {
+    if (name != null) {
+      builder.append(name).append(": ");
     }
-    builder.append("Build number: ''").append(ai.getBuild().asString()).append("''\n");
-    builder.append("Version: ''").append(ai.getFullVersion()).append("''\n");
-    if (myPluginDescriptor != null) {
-      builder.append("*[Plugin info]*").append("\n");
-      builder.append("Plugin id: ''").append(myPluginDescriptor.getPluginId()).append("''\n");
-      if (myPluginDescriptor instanceof IdeaPluginDescriptor) {
-        final IdeaPluginDescriptor pluginDescriptor = (IdeaPluginDescriptor) myPluginDescriptor;
-        builder.append("Name: ''").append(pluginDescriptor.getName()).append("''\n");
-        builder.append("Version: ''").append(pluginDescriptor.getVersion()).append("''\n");
-        builder.append("Vendor: ''").append(pluginDescriptor.getVendor()).append("''\n");
-        builder.append("Category: ''").append(pluginDescriptor.getCategory()).append("''\n");
-        builder.append("Is bundled: ''").append(pluginDescriptor.isBundled()).append("''\n");
-        builder.append("Is enabled: ''").append(pluginDescriptor.isEnabled()).append("''\n");
+    builder.append(formatStart).append(text).append(formatEnd).append(endLine);
+  }
+
+  private static class AppInfo {
+    private final StringBuilder myBuilder = new StringBuilder(1000);
+    private final ApplicationInfo myApplicationInfo = ApplicationInfo.getInstance();
+    private final PluginDescriptor myPluginDescriptor;
+    private final Format myFormat;
+
+    private AppInfo(Format format, PluginDescriptor pluginDescriptor) {
+      myFormat = format;
+      myPluginDescriptor = pluginDescriptor;
+    }
+
+    static String getApplicationInfo(Format format, PluginDescriptor pluginDescriptor) {
+      return new AppInfo(format, pluginDescriptor).getInfo();
+    }
+
+    private String getInfo() {
+      if (myFormat == Format.HTML) {
+        myBuilder.append("<html><body>");
+      }
+
+      addHeaderLine("Build info");
+      if (myApplicationInfo instanceof ApplicationInfoEx) {
+        addInfoLine("Application name", ((ApplicationInfoEx) myApplicationInfo).getFullApplicationName());
+      }
+      addInfoLine("Build number", myApplicationInfo.getBuild().asString());
+      addInfoLine("Version", myApplicationInfo.getFullVersion());
+      myBuilder.append(myFormat.myEndLine);
+
+      if (myPluginDescriptor != null) {
+        addHeaderLine("Plugin info");
+        addInfoLine("Plugin id", myPluginDescriptor.getPluginId());
+        if (myPluginDescriptor instanceof IdeaPluginDescriptor) {
+          final IdeaPluginDescriptor pluginDescriptor = (IdeaPluginDescriptor) myPluginDescriptor;
+          addInfoLine("Name", pluginDescriptor.getName());
+          addInfoLine("Version", pluginDescriptor.getVersion());
+          addInfoLine("Vendor", pluginDescriptor.getVendor());
+          addInfoLine("Category", pluginDescriptor.getCategory());
+          addInfoLine("Is bundled", pluginDescriptor.isBundled());
+          addInfoLine("Is enabled", pluginDescriptor.isEnabled());
+        }
+      }
+
+      if (myFormat == Format.HTML) {
+        myBuilder.append("</body></html>");
+      }
+
+      return myBuilder.toString();
+    }
+
+    private void addHeaderLine(String text) {
+      myBuilder.append(myFormat.myBoldStart).append(text).append(myFormat.myBoldEnd).append(myFormat.myEndLine);
+    }
+
+    private void addInfoLine(String name, Object text) {
+      myBuilder.append(name).append(": ").append(myFormat.myItalicStart).append(text).append(myFormat.myItalicEnd).append(myFormat.myEndLine);
+    }
+
+    private static final String END_LINE_HTML = "<br>";
+    private static final String END_LINE_MARKDOWN = "\n";
+
+    private static final String ITALIC_START_HTML = "<em>";
+    private static final String ITALIC_END_HTML = "</em>";
+    private static final String ITALIC_MARKDOWN = "*";
+    private static final String ITALIC_YOUTRACK_WIKI = "''";
+
+    private static final String BOLD_START_HTML = "<strong>";
+    private static final String BOLD_END_HTML = "</strong>";
+    private static final String BOLD_MARKDOWN = "**";
+    private static final String BOLD_YOUTRACK_WIKI = "'''";
+
+    private enum Format {
+      HTML(END_LINE_HTML, BOLD_START_HTML, BOLD_END_HTML, ITALIC_START_HTML, ITALIC_END_HTML),
+      MARK_DOWN(END_LINE_MARKDOWN, BOLD_MARKDOWN, BOLD_MARKDOWN, ITALIC_MARKDOWN, ITALIC_MARKDOWN),
+      @Deprecated(since = "2021.1.3", forRemoval = true)
+      YOUTRACK_WIKI(END_LINE_MARKDOWN, BOLD_YOUTRACK_WIKI, BOLD_YOUTRACK_WIKI, ITALIC_YOUTRACK_WIKI, ITALIC_YOUTRACK_WIKI);
+
+      final String myEndLine;
+      final String myBoldStart;
+      final String myBoldEnd;
+      final String myItalicStart;
+      final String myItalicEnd;
+
+      Format(String endLine, String boldStart, String boldEnd, String italicStart, String italicEnd) {
+        myEndLine = endLine;
+        myBoldStart = boldStart;
+        myBoldEnd = boldEnd;
+        myItalicStart = italicStart;
+        myItalicEnd = italicEnd;
       }
     }
-    builder.append("{cut}");
-    return builder.toString();
   }
 
   protected JComponent getMainComponent() {
@@ -303,73 +444,79 @@ public class BlameDialog extends DialogWrapper {
     return myIsCancelled;
   }
 
-  public Response getResult() {
-    return myResult;
-  }
-
   @Override
   protected void doOKAction() {
-    StringBuilder description = new StringBuilder(myTitleField.getText().length() + myDescriptionField.getText().length() + 1000);
-    if (myTitleField.getText().trim().length() != 0) {
-      description.append(myTitleField.getText());
-      description.append("\n\n");
-    }
+    StringBuilder description = new StringBuilder(myDescriptionField.getText().length()
+                                                  + (myDoNotIncludeAppInfo.isSelected() ? 0 : 1000) // approximate application info length
+                                                  + (mySkipTrace.isSelected() ? 50 : 5000 * myThrowableList.size())  // approximate stacktrace info length
+    );
 
     if (myDescriptionField.getText().trim().length() != 0) {
       description.append(myDescriptionField.getText());
       description.append("\n\n");
     }
 
-    description.append(getAdditionalInfo());
-    description.append("\n");
+    if (!myDoNotIncludeAppInfo.isSelected()) {
+      description.append(AppInfo.getApplicationInfo(AppInfo.Format.MARK_DOWN, myPluginDescriptor));
+    }
 
     if (!myThrowableList.isEmpty()) {
-      for (Throwable ex : myThrowableList) {
-        description.append(ex2str(ex)).append("\n\n");
+      if (!mySkipTrace.isSelected()) {
+        for (Throwable ex : myThrowableList) {
+          description.append("\n\n");
+          description.append("```stacktrace\n");
+          description.append(ex2str(ex));
+          description.append("\n```");
+        }
+      } else {
+        description.append("Exception trace was hidden by submitter\n");
       }
     }
 
-    Poster poster = new Poster(myProject);
-    Query query = createQuery();
-    query.setIssueTitle(myTitleField.getText());
-    query.setDescription(description.toString());
-    query.setFiles(myFilesToAttach.toArray(new File[myFilesToAttach.size()]));
-    query.setHidden(myHiddenCheckBox.isSelected());
-    query.setSubsystem(mySubsystem);
-    myResult = poster.send(query);
+    final String token = myToken;
+    final String summary = myTitleField.getText();
+    final String descript = description.toString();
+    final boolean hidden = myHiddenCheckBox.isSelected();
+    // add version only if it is JetBrains MPS application itself, not other application or IDEA plugin
+    final String affectedVersion = FULL_PRODUCT_NAME.equals(ApplicationNamesInfo.getInstance().getFullProductName()) ? ApplicationInfo.getInstance().getFullVersion() : null;
+    final String subsystem = mySubsystem;
+    final File[] files = myFilesToAttach.toArray(new File[0]);
 
-    if (!myResult.isSuccess()) {
-      String message = myResult.getMessage();
-      String response = myResult.getResponseString();
-      if (response != null && !response.equals("")) {
-        Element responseXml = myResult.getResponseXml();
-        if (responseXml != null && "error".equalsIgnoreCase(responseXml.getName())) {
-          message += ". " + responseXml.getText();
-        } else {
-          message += ". " + response;
+    // result[0] - id of new issue or null if not successful
+    // result[1] - error message if not successful
+    final String[] result = new String[2];
+
+    ProgressManager.getInstance().run(new Modal(myProject, "Connection in progress. Please wait.", false) {
+      @Override
+      public void run(@NotNull ProgressIndicator indicator) {
+        try {
+          Reporter reporter = new Reporter(token);
+          result[0] = reporter.postIssue(summary, descript, affectedVersion, hidden, null, subsystem, files);
+        } catch (Throwable e) {
+          result[0] = null;
+          result[1] = e.toString();
         }
       }
-      final String errorMessage = String.format("<html>Error occurred while sending:<br><br>%s</html>", message);
+    });
+
+    if (result[0] == null) {
+      final String errorMessage = String.format("Error occurred while sending:%n%n%s", result[1]);
       Messages.showErrorDialog(BlameDialog.this.getOwner(), errorMessage, "Issue Submission Failed");
       return;
     }
 
-    openIssueInBrowser();
+    openIssueInBrowser(result[0]);
 
     myIsCancelled = false;
     close(DialogWrapper.OK_EXIT_CODE);
   }
 
-  private void openIssueInBrowser() {
-    String id = myResult.getIssueId();
-    if (id != null) {
-      BrowserUtil.browse(Command.ISSUE_BASE_URL + id);
-    }
+  private void openIssueInBrowser(String issueReadableId) {
+      BrowserUtil.browse(Reporter.getIssueUrl(issueReadableId));
   }
 
   @Override
   public void doCancelAction() {
-    myResult = null;
     myIsCancelled = true;
     close(DialogWrapper.CANCEL_EXIT_CODE);
   }

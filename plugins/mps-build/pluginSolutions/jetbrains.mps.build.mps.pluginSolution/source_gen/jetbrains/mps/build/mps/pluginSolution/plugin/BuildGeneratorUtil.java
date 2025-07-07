@@ -7,13 +7,10 @@ import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
-import org.jetbrains.mps.openapi.model.EditableSModel;
-import jetbrains.mps.project.Project;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.vfs.openapi.FileSystem;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
+import jetbrains.mps.project.modules.SolutionProducer;
 
 /*package*/ class BuildGeneratorUtil {
   private BuildGeneratorUtil() {
@@ -26,39 +23,35 @@ import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
       }
     }
     for (ModelRoot mr : solution.getModelRoots()) {
-      if (mr.canCreateModel(modelName.getValue())) {
-        SModel model = mr.createModel(modelName.getValue());
-        if (model instanceof EditableSModel) {
-          //  XXX is there true need to setChanged newly created model? 
-          ((EditableSModel) model).setChanged(true);
-        }
-        return model;
+      if (mr.canCreateModel(modelName)) {
+        return mr.createModel(modelName);
       }
     }
     return null;
   }
 
-  public static Solution createSolution(Project mpsProject, String solutionName, IFile solutionBaseDirFile) {
-    SModule existingModule = new ModuleRepositoryFacade(mpsProject).getModuleByName(solutionName);
-    if (existingModule instanceof Solution) {
-      return ((Solution) existingModule);
+  public static Solution createSolution(MPSProject mpsProject, String solutionName, IFile solutionBaseDirFile) {
+    boolean exists = !(new ModuleRepositoryFacade(mpsProject).getModulesByName(solutionName).isEmpty());
+    if (exists) {
+      return null;
     }
 
-    final FileSystem fileSystem = solutionBaseDirFile.getFileSystem();
-    String solutionBaseDirPath = solutionBaseDirFile.getPath();
+    final IFile baseDir = solutionBaseDirFile.getParent();
+    final String solutionBaseName = solutionBaseDirFile.getName();
     int i = 0;
     while (!(BuildGeneratorUtil.isValidSolutionDir(solutionBaseDirFile))) {
-      solutionBaseDirFile = fileSystem.getFile(solutionBaseDirPath + i);
+      solutionBaseDirFile = baseDir.findChild(solutionBaseName + i);
       i++;
     }
 
     if (!(solutionBaseDirFile.exists())) {
       solutionBaseDirFile.mkdirs();
     }
-    return NewModuleUtil.createSolution(solutionName, solutionBaseDirFile.getPath(), mpsProject);
+    Solution solution = new SolutionProducer(mpsProject).create(solutionName, solutionBaseDirFile);
+    return solution;
   }
 
   private static boolean isValidSolutionDir(IFile baseDirFile) {
-    return !(baseDirFile.getDescendant(Solution.SOLUTION_MODELS).exists()) || baseDirFile.getDescendant(Solution.SOLUTION_MODELS).getChildren().isEmpty();
+    return !(baseDirFile.findChild(Solution.SOLUTION_MODELS).exists()) || baseDirFile.findChild(Solution.SOLUTION_MODELS).getChildren().isEmpty();
   }
 }

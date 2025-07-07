@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,19 @@
  */
 package jetbrains.mps.text.impl;
 
-import jetbrains.mps.logging.Log4jUtil;
-import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.text.BasicToken;
 import jetbrains.mps.text.TextArea;
 import jetbrains.mps.text.TextAreaToken;
 import jetbrains.mps.text.TextMark;
 import jetbrains.mps.text.rt.TextGenContext;
-import jetbrains.mps.textGen.TextGenBuffer;
 import jetbrains.mps.textgen.trace.ScopePositionInfo;
 import jetbrains.mps.textgen.trace.TraceablePositionInfo;
 import jetbrains.mps.textgen.trace.UnitPositionInfo;
 import jetbrains.mps.util.SNodeOperations;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.List;
 
@@ -47,13 +40,12 @@ import java.util.List;
  * @author Artem Tikhomirov
  */
 public final class TextGenSupport implements TextArea {
-  /* package */ static final String OUTPUT_ENCODING = "OUTPUT_ENCODING";
   private final TextGenContext myContext;
   private final TraceInfoCollector myTraceInfoCollector;
 
   public TextGenSupport(@NotNull TextGenContext context) {
     myContext = context;
-    myTraceInfoCollector = ((TextGenTransitionContext) context).getTraceInfoCollector();
+    myTraceInfoCollector = ((TextGenContextImpl) context).getTextUnitContextObject(TraceInfoCollector.class.getName(), TraceInfoCollector.class);
   }
 
   public boolean needPositions() {
@@ -110,7 +102,6 @@ public final class TextGenSupport implements TextArea {
     TextMark m = myContext.getBuffer().popMark();
     final UnitPositionInfo pi = tic.createUnitPosition(m, myContext.getPrimaryInput());
     pi.setUnitName(unitName);
-    warnIfUnitNameInvalid(unitName, myContext.getPrimaryInput());
   }
 
   private TraceInfoCollector getTraceInfoCollector() {
@@ -132,7 +123,7 @@ public final class TextGenSupport implements TextArea {
         found = true;
         break;
       }
-      if (TextGenRegistry.getInstance().hasTextGen(attribute)) {
+      if (getContextImpl().getTextGenRegistry().hasTextGen(attribute)) {
         attributedNode = attribute;
       }
     }
@@ -151,7 +142,7 @@ public final class TextGenSupport implements TextArea {
     // start with last attribute with textgen, if any
     SNode n = node;
     for (SNode attribute : node.getChildren(SNodeUtil.link_BaseConcept_smodelAttribute)) {
-      if (TextGenRegistry.getInstance().hasTextGen(attribute)) {
+      if (getContextImpl().getTextGenRegistry().hasTextGen(attribute)) {
         n = attribute;
       }
     }
@@ -159,89 +150,28 @@ public final class TextGenSupport implements TextArea {
   }
 
   private void doAppendNode(SNode node) {
-    ((TextGenTransitionContext) myContext).generateText(node);
-  }
-
-  /**
-   * @deprecated encoding shall be part of TextUnit construction (cons arg), not via {@link #setEncoding(String)} operation
-   *             left for compatibility with MPS 3.3 generated code
-   */
-  // FIXME copy of SNodeTextGen.setEncoding()
-  @Deprecated
-  @ToRemove(version = 3.4)
-  public void setEncoding(@Nullable String encoding) {
-    getLegacyBuffer().putUserObject(OUTPUT_ENCODING, encoding);
+    getContextImpl().generateText(node);
   }
 
 
   // FIXME copy of SNodeTextGen.foundError()
   public void reportError(String info) {
+    final String debugText = SNodeOperations.getDebugText(myContext.getPrimaryInput());
     String message = info != null ?
-        "textgen error: '" + info + "' in " + SNodeOperations.getDebugText(myContext.getPrimaryInput()) :
-        "textgen error in " + SNodeOperations.getDebugText(myContext.getPrimaryInput());
-    getLegacyBuffer().foundError(message, myContext.getPrimaryInput(), null);
+                     String.format("textgen error: '%s' in %s", info, debugText) :
+                     String.format("textgen error in %s", debugText);
+    getContextImpl().foundError(message, myContext.getPrimaryInput(), null);
   }
 
-  // FIXME copy of SNodeTextGen.getReferentPresentation(), slightly modified to drop dead code branches
-  public void appendReferentText(SReference reference) {
-    if (reference == null) {
-      reportError("null reference");
-      append("<err:null reference>");
-      return;
-    }
-
-    String shortName;
-    if (reference instanceof DynamicReference) {
-      shortName = ((DynamicReference) reference).getResolveInfo();
-      if (shortName.startsWith("[")) {
-        // todo: hack, remove with [] removing
-        shortName = shortName.substring(shortName.lastIndexOf("]") + 1).trim();
-      } else {
-        final SModelReference modelReference = reference.getTargetSModelReference();
-        if (modelReference == null) {
-          int lastDot = shortName.lastIndexOf('.');
-          if (lastDot >= 0) {
-            shortName = shortName.substring(lastDot + 1);
-            if (shortName.indexOf('$') >= 0) {
-              shortName = shortName.replace('$', '.');
-            }
-          }
-        }
-      }
-    } else {
-      SNode targetNode = reference.getTargetNode();
-      if (targetNode == null) {
-        reportError(String.format("Unknown target for role %s", reference.getRole()));
-        append("???");
-        return;
-      }
-      shortName = jetbrains.mps.util.SNodeOperations.getResolveInfo(targetNode);
-    }
-    append(shortName);
-  }
-
-  // For compatibility with code that uses TextGenBuffer through 'buffer' concept function parameter
-  @ToRemove(version = 3.3)
-  public TextGenBuffer getLegacyBuffer() {
-    return ((TextGenTransitionContext) myContext).getLegacyBuffer();
-  }
-
-  private void warnIfUnitNameInvalid(String unitName, SNode node) {
-    String modelName = node.getModel().getName().getLongName();
-    if (!(unitName.startsWith(modelName))) {
-      final String msg = String.format("Unit name has to start with model fqName. Fix %s in %s.", unitName, modelName);
-      LogManager.getLogger(getClass()).warn(Log4jUtil.createMessageObject(msg, node));
-    } else if (unitName.length() <= modelName.length() + 1 || unitName.charAt(modelName.length())!= '.' || unitName.indexOf('.', modelName.length()+1) != -1) {
-      String msg = String.format("Unit name has to match \"modelFqName.shortUnitName\" where short unit name does not contain dots. Fix %s in %s", unitName, modelName);
-      LogManager.getLogger(getClass()).warn(Log4jUtil.createMessageObject(msg, node));
-    }
+  private TextGenContextImpl getContextImpl() {
+    return ((TextGenContextImpl) myContext);
   }
 
   /**
    * Mechanism to access context object instance in a typed manner.
    */
   public <T> T getContextObject(String identity, Class<T> kind) {
-    return kind.cast(getLegacyBuffer().getUserObject(identity));
+    return getContextImpl().getTextUnitContextObject(identity, kind);
   }
 
 

@@ -18,13 +18,18 @@ package jetbrains.mps.errors;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents a runtime class for quick fixes.
+ * <p>
+ * Although declared in this package, the only usage of this interface is in
+ * <strong>typesystem</strong>'s generator, which uses it as a base class for its quickfixes.
+ */
 public abstract class QuickFix_Runtime {
-  private final Map<String, Object[]> myMap = new HashMap<String, Object[]>();
+  private final Map<String, Object[]> myMap = new HashMap<>();
   private final SNodeReference myFixDeclaration;
 
   protected QuickFix_Runtime() {
@@ -46,6 +51,10 @@ public abstract class QuickFix_Runtime {
 
   public void putArgument(String key, Object argument) {
     this.getField(key)[0] = argument;
+  }
+
+  public boolean isApplicable(SNode node) {
+    return true;
   }
 
   public abstract void execute(SNode node);

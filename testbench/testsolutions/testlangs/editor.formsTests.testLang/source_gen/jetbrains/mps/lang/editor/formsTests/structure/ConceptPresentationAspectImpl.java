@@ -4,14 +4,14 @@ package jetbrains.mps.lang.editor.formsTests.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_UsesPlatformCheckbox = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_UsesTextCheckbox = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_VariousCheckboxes = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_UsesPlatformCheckbox;
+  private ConceptPresentation props_UsesTextCheckbox;
+  private ConceptPresentation props_VariousCheckboxes;
 
   @Override
   @Nullable
@@ -19,10 +19,25 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.UsesPlatformCheckbox:
+        if (props_UsesPlatformCheckbox == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("UsesPlatformCheckbox");
+          props_UsesPlatformCheckbox = cpb.create();
+        }
         return props_UsesPlatformCheckbox;
       case LanguageConceptSwitch.UsesTextCheckbox:
+        if (props_UsesTextCheckbox == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("UsesTextCheckbox");
+          props_UsesTextCheckbox = cpb.create();
+        }
         return props_UsesTextCheckbox;
       case LanguageConceptSwitch.VariousCheckboxes:
+        if (props_VariousCheckboxes == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("VariousCheckboxes");
+          props_VariousCheckboxes = cpb.create();
+        }
         return props_VariousCheckboxes;
     }
     return null;

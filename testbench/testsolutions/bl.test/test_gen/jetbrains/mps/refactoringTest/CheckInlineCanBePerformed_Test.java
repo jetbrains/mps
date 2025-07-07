@@ -4,33 +4,55 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
-import junit.framework.Assert;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
+import org.junit.Assert;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.InlineMethodModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class CheckInlineCanBePerformed_Test extends BaseTransformationTest {
-  @Test
-  public void test_CheckInlineCanBePerformed() throws Throwable {
-    initTest("${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-    runTest("jetbrains.mps.refactoringTest.CheckInlineCanBePerformed_Test$TestBody", "test_CheckInlineCanBePerformed", true);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CheckInlineCanBePerformed_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
+
+  public CheckInlineCanBePerformed_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseTestBody {
-    public void test_CheckInlineCanBePerformed() throws Exception {
-      addNodeById("1230053187318");
-      Assert.assertNull(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230053187326"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors());
-      Assert.assertTrue(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230053187332"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors() != null);
-      Assert.assertNull(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230053187337"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors());
-      Assert.assertNull(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230053187342"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors());
-      Assert.assertTrue(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230053187347"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors() != null);
-      Assert.assertNull(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230053187351"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors());
+  @Test
+  public void test_CheckInlineCanBePerformed() throws Throwable {
+    new TestBody(this).test_CheckInlineCanBePerformed();
+  }
+
+  /*package*/ static class TestBody extends BaseTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053187318");
+    }
+
+    public void test_CheckInlineCanBePerformed() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        Assert.assertNull(new InlineMethodModel(getAnnotatedNode("call1")).getErrors());
+        Assert.assertTrue(new InlineMethodModel(getAnnotatedNode("call2")).getErrors() != null);
+        Assert.assertNull(new InlineMethodModel(getAnnotatedNode("call3")).getErrors());
+        Assert.assertNull(new InlineMethodModel(getAnnotatedNode("call4")).getErrors());
+        Assert.assertTrue(new InlineMethodModel(getAnnotatedNode("call5")).getErrors() != null);
+        Assert.assertNull(new InlineMethodModel(getAnnotatedNode("call6")).getErrors());
+        Assert.assertNotNull(new InlineMethodModel(getAnnotatedNode("call7")).getErrors());
+        Assert.assertNotNull(new InlineMethodModel(getAnnotatedNode("call8")).getErrors());
+        Assert.assertNull(new InlineMethodModel(getAnnotatedNode("call9")).getErrors());
+        Assert.assertNull(new InlineMethodModel(getAnnotatedNode("call10")).getErrors());
+      });
+    }
 
   }
 }

@@ -4,13 +4,13 @@ package jetbrains.mps.samples.multipleProjections.requestTracking.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_Workflow = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_WorkflowContainer = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_Workflow;
+  private ConceptPresentation props_WorkflowContainer;
 
   @Override
   @Nullable
@@ -18,8 +18,18 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.Workflow:
+        if (props_Workflow == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_Workflow = cpb.create();
+        }
         return props_Workflow;
       case LanguageConceptSwitch.WorkflowContainer:
+        if (props_WorkflowContainer == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_WorkflowContainer = cpb.create();
+        }
         return props_WorkflowContainer;
     }
     return null;

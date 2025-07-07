@@ -20,6 +20,7 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
   private final BHDescriptor myNamedTupleType__BehaviorDescriptor = new NamedTupleType__BehaviorDescriptor();
   private final BHDescriptor myNamedTupleLiteral__BehaviorDescriptor = new NamedTupleLiteral__BehaviorDescriptor();
   private final BHDescriptor myNamedTupleComponentAccessOperation__BehaviorDescriptor = new NamedTupleComponentAccessOperation__BehaviorDescriptor();
+  private final BHDescriptor myLocalVariableDeclarationInTuple__BehaviorDescriptor = new LocalVariableDeclarationInTuple__BehaviorDescriptor();
 
   public BehaviorAspectDescriptor() {
   }
@@ -27,7 +28,7 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
   @Nullable
   public BHDescriptor getDescriptor(@NotNull SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
-    switch (index_846f5o_a0l.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
         return myIndexedTupleLiteral__BehaviorDescriptor;
       case 1:
@@ -35,18 +36,20 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
       case 2:
         return myIndexedTupleType__BehaviorDescriptor;
       case 3:
-        return myNamedTupleComponentAccessOperation__BehaviorDescriptor;
+        return myLocalVariableDeclarationInTuple__BehaviorDescriptor;
       case 4:
-        return myNamedTupleComponentDeclaration__BehaviorDescriptor;
+        return myNamedTupleComponentAccessOperation__BehaviorDescriptor;
       case 5:
-        return myNamedTupleDeclaration__BehaviorDescriptor;
+        return myNamedTupleComponentDeclaration__BehaviorDescriptor;
       case 6:
-        return myNamedTupleLiteral__BehaviorDescriptor;
+        return myNamedTupleDeclaration__BehaviorDescriptor;
       case 7:
+        return myNamedTupleLiteral__BehaviorDescriptor;
+      case 8:
         return myNamedTupleType__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex index_846f5o_a0l = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x387e75e5416d26cbL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L)).seal();
 }

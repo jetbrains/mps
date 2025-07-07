@@ -8,13 +8,13 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <root nodeRef="r:49eba21e-740e-4a19-9958-32f14a0e86d2(jetbrains.jetpad.builders.sandbox)/3816167865390667291">
     <file name="Abc.java">
-      <node id="3816167865391248602" at="27,63,28,55" concept="1" />
-      <node id="3816167865391248602" at="29,58,30,55" concept="1" />
-      <node id="3816167865391248602" at="31,58,32,55" concept="1" />
-      <node id="3816167865391248602" at="33,58,34,55" concept="1" />
-      <node id="3816167865391248602" at="35,58,36,55" concept="1" />
-      <node id="3816167865391248602" at="37,58,38,55" concept="1" />
-      <node id="3816167865391250056" at="38,55,39,51" concept="1" />
+      <node id="3816167865391248602" at="24,61,25,53" concept="1" />
+      <node id="3816167865391248602" at="26,56,27,53" concept="1" />
+      <node id="3816167865391248602" at="28,56,29,53" concept="1" />
+      <node id="3816167865391248602" at="30,56,31,53" concept="1" />
+      <node id="3816167865391248602" at="32,56,33,53" concept="1" />
+      <node id="3816167865391248602" at="34,56,35,53" concept="1" />
+      <node id="3816167865391250056" at="35,53,36,49" concept="1" />
     </file>
     <file name="As.java">
       <node id="5389689214217329180" at="10,43,11,45" concept="1" />
@@ -73,37 +73,34 @@
   </root>
   <root nodeRef="r:49eba21e-740e-4a19-9958-32f14a0e86d2(jetbrains.jetpad.builders.sandbox)/7057666463730252450">
     <file name="Abc.java">
-      <node id="6666322667909804025" at="10,28,11,55" concept="4" />
-      <node id="6666322667909804025" at="11,55,12,49" concept="4" />
-      <node id="6666322667909804025" at="12,49,13,55" concept="1" />
-      <node id="6666322667909804025" at="13,55,14,33" concept="5" />
-      <node id="3816167865390946758" at="20,28,21,56" concept="4" />
-      <node id="3816167865390946758" at="21,56,22,56" concept="4" />
-      <node id="3816167865390946758" at="22,56,23,58" concept="4" />
-      <node id="3816167865390946758" at="23,58,24,47" concept="4" />
-      <node id="3816167865390946758" at="24,47,25,62" concept="1" />
-      <node id="3816167865390946758" at="25,62,26,61" concept="4" />
-      <node id="3816167865390946758" at="26,61,27,63" concept="1" />
-      <node id="3816167865390946758" at="28,55,29,58" concept="4" />
-      <node id="3816167865390946758" at="30,55,31,58" concept="4" />
-      <node id="3816167865390946758" at="32,55,33,58" concept="4" />
-      <node id="3816167865390946758" at="34,55,35,58" concept="4" />
-      <node id="3816167865390946758" at="36,55,37,58" concept="4" />
-      <node id="3816167865390946758" at="39,51,40,33" concept="5" />
-      <node id="6666322667909804025" at="10,0,16,0" concept="3" trace="invoke#()Ljetbrains/jetpad/builders/sandbox/Node;" />
-      <node id="6666322667909804024" at="8,16,16,15" concept="1" />
-      <node id="7057666463730252452" at="8,0,18,0" concept="0" trace="Abc#()V" />
-      <node id="3816167865390946758" at="20,0,42,0" concept="3" trace="invoke#()Ljetbrains/jetpad/builders/sandbox/Node;" />
-      <node id="3816167865390946757" at="18,21,42,15" concept="1" />
-      <node id="3816167865390667312" at="18,0,44,0" concept="3" trace="aaa#()V" />
-      <scope id="6666322667909804025" at="10,28,14,33">
+      <node id="6666322667909804025" at="9,49,10,53" concept="4" />
+      <node id="6666322667909804025" at="10,53,11,47" concept="4" />
+      <node id="6666322667909804025" at="11,47,12,53" concept="1" />
+      <node id="6666322667909804025" at="12,53,13,31" concept="5" />
+      <node id="3816167865390946758" at="17,49,18,54" concept="4" />
+      <node id="3816167865390946758" at="18,54,19,54" concept="4" />
+      <node id="3816167865390946758" at="19,54,20,56" concept="4" />
+      <node id="3816167865390946758" at="20,56,21,45" concept="4" />
+      <node id="3816167865390946758" at="21,45,22,60" concept="1" />
+      <node id="3816167865390946758" at="22,60,23,59" concept="4" />
+      <node id="3816167865390946758" at="23,59,24,61" concept="1" />
+      <node id="3816167865390946758" at="25,53,26,56" concept="4" />
+      <node id="3816167865390946758" at="27,53,28,56" concept="4" />
+      <node id="3816167865390946758" at="29,53,30,56" concept="4" />
+      <node id="3816167865390946758" at="31,53,32,56" concept="4" />
+      <node id="3816167865390946758" at="33,53,34,56" concept="4" />
+      <node id="3816167865390946758" at="36,49,37,31" concept="5" />
+      <node id="6666322667909804024" at="8,16,14,16" concept="1" />
+      <node id="7057666463730252452" at="8,0,16,0" concept="0" trace="Abc#()V" />
+      <node id="3816167865390946757" at="16,21,38,16" concept="1" />
+      <node id="3816167865390667312" at="16,0,40,0" concept="3" trace="aaa#()V" />
+      <scope id="6666322667909804025" at="9,49,13,31">
         <var name="result_pb5_a0a0a0" id="6666322667909804025" />
         <var name="result_pb5_a0a0a0a0" id="6666322667909804025" />
       </scope>
-      <scope id="6666322667909804025" at="10,0,16,0" />
-      <scope id="7057666463730252455" at="8,16,16,15" />
-      <scope id="7057666463730252452" at="8,0,18,0" />
-      <scope id="3816167865390946758" at="20,28,40,33">
+      <scope id="7057666463730252455" at="8,16,14,16" />
+      <scope id="7057666463730252452" at="8,0,16,0" />
+      <scope id="3816167865390946758" at="17,49,37,31">
         <var name="result_pb5_a0a0a0a0a0a1" id="3816167865390946758" />
         <var name="result_pb5_a0a0a0a0a1" id="3816167865390946758" />
         <var name="result_pb5_a0a0a0a1" id="3816167865390946758" />
@@ -115,12 +112,9 @@
         <var name="result_pb5_a4a0a0a0a1" id="3816167865390946758" />
         <var name="result_pb5_a5a0a0a0a1" id="3816167865390946758" />
       </scope>
-      <scope id="3816167865390946758" at="20,0,42,0" />
-      <scope id="3816167865390667315" at="18,21,42,15" />
-      <scope id="3816167865390667312" at="18,0,44,0" />
-      <unit id="6666322667909804025" at="9,8,16,5" name="jetbrains.jetpad.builders.sandbox.Abc$1" />
-      <unit id="3816167865390946758" at="19,8,42,5" name="jetbrains.jetpad.builders.sandbox.Abc$2" />
-      <unit id="7057666463730252450" at="7,0,45,0" name="jetbrains.jetpad.builders.sandbox.Abc" />
+      <scope id="3816167865390667315" at="16,21,38,16" />
+      <scope id="3816167865390667312" at="16,0,40,0" />
+      <unit id="7057666463730252450" at="7,0,41,0" name="jetbrains.jetpad.builders.sandbox.Abc" />
     </file>
   </root>
   <root nodeRef="r:49eba21e-740e-4a19-9958-32f14a0e86d2(jetbrains.jetpad.builders.sandbox)/8009360033695026859">

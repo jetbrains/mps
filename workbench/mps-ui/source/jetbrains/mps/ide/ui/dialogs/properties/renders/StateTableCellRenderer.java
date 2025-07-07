@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,6 @@ import javax.swing.Icon;
 import javax.swing.JTable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * TableCellRenderer with conditional rendering of cells with DependencyCellState
@@ -73,21 +71,13 @@ import java.util.TreeMap;
       return;
     }
     final C cellValue = (C) value;
-    final DependencyCellState[] cellState = {null};
-    final Object[] cellElement = {null};
-    myRepository.getModelAccess().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        final T ce = getCellElement(cellValue);
-        cellElement[0] = ce;
-        cellState[0] = getDependencyCellState(ce);
-      }
+    myRepository.getModelAccess().runReadAction(() -> {
+      final T ce = getCellElement(cellValue);
+      final DependencyCellState cellState = getDependencyCellState(ce);
+      setIcon(getIcon(cellValue, ce));
+      append(getText(cellValue, ce), cellState.getTextAttributes());
+      setToolTipText(cellState.getTooltip());
     });
-    // XXX it's odd getIcon and getText, which deal with repository objects, are outside of model read. WHY?
-    final T ce = (T) cellElement[0];
-    setIcon(getIcon(cellValue, ce));
-    append(getText(cellValue, ce), cellState[0].getTextAttributes());
-    setToolTipText(cellState[0].getTooltip());
   }
 
   protected abstract T getCellElement(C cellValue);

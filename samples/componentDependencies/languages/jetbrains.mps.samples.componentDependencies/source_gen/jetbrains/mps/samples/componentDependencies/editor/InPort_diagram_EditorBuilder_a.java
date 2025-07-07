@@ -20,7 +20,6 @@ import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.jetpad.geometry.Rectangle;
 import jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.PortDecoratorView;
 import jetbrains.jetpad.model.property.ReadableProperty;
 
@@ -40,14 +39,14 @@ import jetbrains.jetpad.model.property.ReadableProperty;
   }
 
   /*package*/ EditorCell createCell() {
-    return createDiagramPort_a45455_a();
+    return createDiagramPort_0();
   }
 
-  private EditorCell createDiagramPort_a45455_a() {
-    final EditorCell editorCell = new InPort_diagram_EditorBuilder_a.PortCellImpl_a45455_a(getEditorContext(), myNode);
+  private EditorCell createDiagramPort_0() {
+    final EditorCell editorCell = new PortCellImpl_a45455_a(getEditorContext(), myNode);
     editorCell.setCellId("DiagramPort_a45455_a");
     editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
+    setCellContext(editorCell);
     return editorCell;
   }
   private class PortCellImpl_a45455_a extends PortCell {
@@ -104,11 +103,7 @@ import jetbrains.jetpad.model.property.ReadableProperty;
     }
     private RectView createPortView() {
       RectView portView = new RectView();
-      configureView(portView, new _FunctionTypes._return_P0_E0<Boolean>() {
-        public Boolean invoke() {
-          return true;
-        }
-      });
+      configureView(portView, () -> true);
       portView.prop(JetpadUtils.SOURCE).set(getSNode());
       portView.focusable().set(true);
       return portView;

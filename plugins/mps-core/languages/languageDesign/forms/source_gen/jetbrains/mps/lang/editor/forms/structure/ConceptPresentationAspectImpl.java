@@ -4,16 +4,16 @@ package jetbrains.mps.lang.editor.forms.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_AbstractCheckboxUI = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CellModel_Checkbox = new ConceptPresentationBuilder().shortDesc("checkbox").create();
-  private final ConceptPresentation props_CheckboxUI_Platform = new ConceptPresentationBuilder().shortDesc("platform checkbox UI").create();
-  private final ConceptPresentation props_CheckboxUI_Text = new ConceptPresentationBuilder().shortDesc("text checkbox UI").create();
-  private final ConceptPresentation props_StubCellModel_Checkbox = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_AbstractCheckboxUI;
+  private ConceptPresentation props_CellModel_Checkbox;
+  private ConceptPresentation props_CheckboxUI_Platform;
+  private ConceptPresentation props_CheckboxUI_Text;
+  private ConceptPresentation props_StubCellModel_Checkbox;
 
   @Override
   @Nullable
@@ -21,14 +21,41 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.AbstractCheckboxUI:
+        if (props_AbstractCheckboxUI == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_AbstractCheckboxUI = cpb.create();
+        }
         return props_AbstractCheckboxUI;
       case LanguageConceptSwitch.CellModel_Checkbox:
+        if (props_CellModel_Checkbox == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("checkbox");
+          cpb.rawPresentation("checkbox");
+          props_CellModel_Checkbox = cpb.create();
+        }
         return props_CellModel_Checkbox;
       case LanguageConceptSwitch.CheckboxUI_Platform:
+        if (props_CheckboxUI_Platform == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("platform checkbox UI");
+          cpb.rawPresentation("platform");
+          props_CheckboxUI_Platform = cpb.create();
+        }
         return props_CheckboxUI_Platform;
       case LanguageConceptSwitch.CheckboxUI_Text:
+        if (props_CheckboxUI_Text == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("text checkbox UI");
+          cpb.rawPresentation("text");
+          props_CheckboxUI_Text = cpb.create();
+        }
         return props_CheckboxUI_Text;
       case LanguageConceptSwitch.StubCellModel_Checkbox:
+        if (props_StubCellModel_Checkbox == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("StubCellModel_Checkbox");
+          props_StubCellModel_Checkbox = cpb.create();
+        }
         return props_StubCellModel_Checkbox;
     }
     return null;

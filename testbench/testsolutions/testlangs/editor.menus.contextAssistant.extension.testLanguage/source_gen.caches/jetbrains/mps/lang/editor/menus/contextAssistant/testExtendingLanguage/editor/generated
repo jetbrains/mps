@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-a8v0r860b7v8v3716jroy4sug5wu528" />
+<product version="3" modelHash="-3y33nulvim0ueyz8wp4il6h10bavquc">
+  <files names="Child_MoreDefaultActions.java:Child_MoreNamedActions.java:DefaultMenuContribution.java:EditorAspectDescriptorImpl.java:Extras.java:IconContainer.java:NamedMenuContribution.java:Parameterized.java" />
+</product>
 

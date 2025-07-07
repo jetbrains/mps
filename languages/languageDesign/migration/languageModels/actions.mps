@@ -49,13 +49,13 @@
       <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
         <property id="1068580123138" name="value" index="3clFbU" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
-      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ng" index="2c44t0">
+      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ngI" index="2c44t0">
         <child id="1196350785111" name="expression" index="2c44t1" />
       </concept>
       <concept id="1196350785117" name="jetbrains.mps.lang.quotation.structure.ReferenceAntiquotation" flags="ng" index="2c44tb" />
@@ -77,6 +77,7 @@
       <concept id="5584396657084920413" name="jetbrains.mps.lang.actions.structure.NodeSetupFunction_SampleNode" flags="nn" index="1r4N5L" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="3506770386464365589" name="jetbrains.mps.lang.smodel.structure.Model_PointerOperation" flags="ng" index="aIX43" />
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
@@ -112,10 +113,10 @@
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="3364660638048049745" name="jetbrains.mps.lang.core.structure.LinkAttribute" flags="ng" index="A9Btn">
-        <property id="1757699476691236116" name="linkRole" index="2qtEX8" />
+        <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
         <property id="1341860900488019036" name="linkId" index="P3scX" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -211,11 +212,11 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="2uZcAeYa5Kp" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                        <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                       </node>
                     </node>
                     <node concept="liA8E" id="2uZcAeYa5Kq" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Object.toString():java.lang.String" resolve="toString" />
+                      <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                     </node>
                   </node>
                   <node concept="2OqwBi" id="2uZcAeYa5Kr" role="37vLTJ">
@@ -236,31 +237,27 @@
                   </node>
                   <node concept="2OqwBi" id="2uZcAeYa7nb" role="37vLTx">
                     <node concept="2YIFZM" id="2uZcAeYa7nc" role="2Oq$k0">
-                      <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                      <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
                       <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
                     </node>
                     <node concept="liA8E" id="2uZcAeYa7nd" role="2OqNvi">
-                      <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SModelReference):java.lang.String" resolve="asString" />
-                      <node concept="2OqwBi" id="2uZcAeYa7ne" role="37wK5m">
-                        <node concept="2JrnkZ" id="2uZcAeYa7nf" role="2Oq$k0">
-                          <node concept="2OqwBi" id="2uZcAeYa7ng" role="2JrQYb">
-                            <node concept="2OqwBi" id="2uZcAeYa7nh" role="2Oq$k0">
-                              <node concept="1PxgMI" id="2uZcAeYa7ni" role="2Oq$k0">
-                                <node concept="1r4N5L" id="2uZcAeYa7nj" role="1m5AlR" />
-                                <node concept="chp4Y" id="714IaVdH0xN" role="3oSUPX">
-                                  <ref role="cht4Q" to="53vh:6szrkDoc3tL" resolve="DirectNodeReference" />
-                                </node>
-                              </node>
-                              <node concept="3TrEf2" id="6szrkDocsYS" role="2OqNvi">
-                                <ref role="3Tt5mk" to="53vh:6szrkDoc3Cg" resolve="target" />
+                      <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SModelReference)" resolve="asString" />
+                      <node concept="2OqwBi" id="3XR0QgVCmUc" role="37wK5m">
+                        <node concept="2OqwBi" id="3XR0QgVCmU5" role="2Oq$k0">
+                          <node concept="2OqwBi" id="3XR0QgVCmU6" role="2Oq$k0">
+                            <node concept="1PxgMI" id="3XR0QgVCmU7" role="2Oq$k0">
+                              <node concept="1r4N5L" id="3XR0QgVCmU8" role="1m5AlR" />
+                              <node concept="chp4Y" id="3XR0QgVCmU9" role="3oSUPX">
+                                <ref role="cht4Q" to="53vh:6szrkDoc3tL" resolve="DirectNodeReference" />
                               </node>
                             </node>
-                            <node concept="I4A8Y" id="2uZcAeYa7nl" role="2OqNvi" />
+                            <node concept="3TrEf2" id="3XR0QgVCmUa" role="2OqNvi">
+                              <ref role="3Tt5mk" to="53vh:6szrkDoc3Cg" resolve="target" />
+                            </node>
                           </node>
+                          <node concept="I4A8Y" id="3XR0QgVCmUb" role="2OqNvi" />
                         </node>
-                        <node concept="liA8E" id="2uZcAeYa7nm" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SModel.getReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getReference" />
-                        </node>
+                        <node concept="aIX43" id="3XR0QgVCmUd" role="2OqNvi" />
                       </node>
                     </node>
                   </node>

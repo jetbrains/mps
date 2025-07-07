@@ -19,7 +19,6 @@ import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -30,7 +29,8 @@ import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 /**
  * Data source factory base for factories based
- * on the different file extensions :
+ * on the different file extensions.
+ *
  * @see FileExtensionDataSourceType
  * @author apyshkin
  * @since 27/12/16
@@ -46,21 +46,18 @@ public class RegularFileDataSourceFactory implements DataSourceFactoryFromName {
   @NotNull
   @Override
   public DataSource create(@NotNull SModelName modelName,
-                           @NotNull SourceRoot sourceRoot,
-
-                           @ToRemove(version = 0)
-                           @Nullable ModelRoot modelRoot) {
-    ModelFileCalculator modelFileCalculator = new ModelFileCalculator(modelName, sourceRoot, modelRoot, myDataSourceType.getFileExtension());
+                           @NotNull SourceRoot sourceRoot) {
+    ModelFileCalculator modelFileCalculator = new ModelFileCalculator(modelName, sourceRoot, myDataSourceType.getFileExtension());
     IFile modelFile = modelFileCalculator.calculate();
-    return createFromFile(modelFile, modelRoot);
+    return createFromFile(modelFile);
   }
 
   @NotNull
-  private DataSource createFromFile(@NotNull IFile file, @Nullable ModelRoot modelRoot) {
+  private DataSource createFromFile(@NotNull IFile file) {
     if (file.isDirectory()) {
       throw new IllegalArgumentException("Cannot accept directory file " + file);
     }
-    return new FileDataSource(file, modelRoot);
+    return new FileDataSource(file);
   }
 
   @NotNull

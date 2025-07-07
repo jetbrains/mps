@@ -4,15 +4,15 @@ package BHL1.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_A = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_A1 = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_I = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_I1 = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_A;
+  private ConceptPresentation props_A1;
+  private ConceptPresentation props_I;
+  private ConceptPresentation props_I1;
 
   @Override
   @Nullable
@@ -20,12 +20,30 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.A:
+        if (props_A == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("A");
+          props_A = cpb.create();
+        }
         return props_A;
       case LanguageConceptSwitch.A1:
+        if (props_A1 == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("A1");
+          props_A1 = cpb.create();
+        }
         return props_A1;
       case LanguageConceptSwitch.I:
+        if (props_I == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_I = cpb.create();
+        }
         return props_I;
       case LanguageConceptSwitch.I1:
+        if (props_I1 == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_I1 = cpb.create();
+        }
         return props_I1;
     }
     return null;

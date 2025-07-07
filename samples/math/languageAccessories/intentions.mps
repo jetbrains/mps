@@ -3,10 +3,10 @@
   <persistence version="9" />
   <languages>
     <use id="3304fc6e-7c6b-401e-a016-b944934bb21f" name="jetbrains.mps.baseLanguage.math" version="0" />
-    <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="0" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="8" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="5" />
+    <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="1" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -37,7 +37,7 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -60,7 +60,7 @@
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
-      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ng" index="2c44t0">
+      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ngI" index="2c44t0">
         <child id="1196350785111" name="expression" index="2c44t1" />
       </concept>
       <concept id="1196350785112" name="jetbrains.mps.lang.quotation.structure.Antiquotation" flags="ng" index="2c44te" />
@@ -89,7 +89,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -108,7 +108,7 @@
       <node concept="3clFbS" id="i09b8Wm" role="2VODD2">
         <node concept="3clFbF" id="i09biQ1" role="3cqZAp">
           <node concept="Xl_RD" id="i09biQ2" role="3clFbG">
-            <property role="Xl_RC" value="Use java notation for division operation" />
+            <property role="Xl_RC" value="Use Java Notation for Division Operation" />
           </node>
         </node>
       </node>
@@ -157,7 +157,7 @@
       <node concept="3clFbS" id="i09ba11" role="2VODD2">
         <node concept="3clFbF" id="i09blAN" role="3cqZAp">
           <node concept="Xl_RD" id="i09blAO" role="3clFbG">
-            <property role="Xl_RC" value="Use fraction notation for division operation" />
+            <property role="Xl_RC" value="Use Fraction Notation for Division Operation" />
           </node>
         </node>
       </node>
@@ -205,7 +205,7 @@
       <node concept="3clFbS" id="i1m$gSL" role="2VODD2">
         <node concept="3clFbF" id="i1m$iLJ" role="3cqZAp">
           <node concept="Xl_RD" id="i1m$nBl" role="3clFbG">
-            <property role="Xl_RC" value="Explicitly specify math context for operation with big decimals" />
+            <property role="Xl_RC" value="Explicitly Specify Math Context for Operation with Big Decimals" />
           </node>
         </node>
       </node>
@@ -250,7 +250,7 @@
       <node concept="3clFbS" id="i1QK1bm" role="2VODD2">
         <node concept="3clFbF" id="i1QKdkd" role="3cqZAp">
           <node concept="Xl_RD" id="i1QKdke" role="3clFbG">
-            <property role="Xl_RC" value="Use default math context" />
+            <property role="Xl_RC" value="Use Default Math Context" />
           </node>
         </node>
       </node>

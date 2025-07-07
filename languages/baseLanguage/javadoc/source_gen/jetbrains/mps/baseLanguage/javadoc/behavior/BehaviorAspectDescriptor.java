@@ -13,14 +13,22 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
   private final BHDescriptor myClassifierDocComment__BehaviorDescriptor = new ClassifierDocComment__BehaviorDescriptor();
+  private final BHDescriptor myCodeInlineDocTag__BehaviorDescriptor = new CodeInlineDocTag__BehaviorDescriptor();
+  private final BHDescriptor myBaseDocReference__BehaviorDescriptor = new BaseDocReference__BehaviorDescriptor();
+  private final BHDescriptor myLinkInlineDocTag__BehaviorDescriptor = new LinkInlineDocTag__BehaviorDescriptor();
+  private final BHDescriptor myCodeSnippet__BehaviorDescriptor = new CodeSnippet__BehaviorDescriptor();
+  private final BHDescriptor myInheritDocInlineDocTag__BehaviorDescriptor = new InheritDocInlineDocTag__BehaviorDescriptor();
   private final BHDescriptor myEmptyBlockDocTag__BehaviorDescriptor = new EmptyBlockDocTag__BehaviorDescriptor();
   private final BHDescriptor myBaseDocComment__BehaviorDescriptor = new BaseDocComment__BehaviorDescriptor();
   private final BHDescriptor myAuthorBlockDocTag__BehaviorDescriptor = new AuthorBlockDocTag__BehaviorDescriptor();
   private final BHDescriptor myMethodDocComment__BehaviorDescriptor = new MethodDocComment__BehaviorDescriptor();
   private final BHDescriptor myHTMLElement__BehaviorDescriptor = new HTMLElement__BehaviorDescriptor();
   private final BHDescriptor myFieldDocComment__BehaviorDescriptor = new FieldDocComment__BehaviorDescriptor();
+  private final BHDescriptor myBaseInlineDocTag__BehaviorDescriptor = new BaseInlineDocTag__BehaviorDescriptor();
+  private final BHDescriptor myValueInlineDocTag__BehaviorDescriptor = new ValueInlineDocTag__BehaviorDescriptor();
   private final BHDescriptor myCommentLine__BehaviorDescriptor = new CommentLine__BehaviorDescriptor();
   private final BHDescriptor myCommentLinePart__BehaviorDescriptor = new CommentLinePart__BehaviorDescriptor();
+  private final BHDescriptor myTextCommentLinePart__BehaviorDescriptor = new TextCommentLinePart__BehaviorDescriptor();
   private final BHDescriptor myInlineTagCommentLinePart__BehaviorDescriptor = new InlineTagCommentLinePart__BehaviorDescriptor();
 
   public BehaviorAspectDescriptor() {
@@ -29,30 +37,46 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
   @Nullable
   public BHDescriptor getDescriptor(@NotNull SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
-    switch (index_846f5o_a0n.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
         return myAuthorBlockDocTag__BehaviorDescriptor;
       case 1:
         return myBaseDocComment__BehaviorDescriptor;
       case 2:
-        return myClassifierDocComment__BehaviorDescriptor;
+        return myBaseDocReference__BehaviorDescriptor;
       case 3:
-        return myCommentLine__BehaviorDescriptor;
+        return myBaseInlineDocTag__BehaviorDescriptor;
       case 4:
-        return myCommentLinePart__BehaviorDescriptor;
+        return myClassifierDocComment__BehaviorDescriptor;
       case 5:
-        return myEmptyBlockDocTag__BehaviorDescriptor;
+        return myCodeInlineDocTag__BehaviorDescriptor;
       case 6:
-        return myFieldDocComment__BehaviorDescriptor;
+        return myCodeSnippet__BehaviorDescriptor;
       case 7:
-        return myHTMLElement__BehaviorDescriptor;
+        return myCommentLine__BehaviorDescriptor;
       case 8:
-        return myInlineTagCommentLinePart__BehaviorDescriptor;
+        return myCommentLinePart__BehaviorDescriptor;
       case 9:
+        return myEmptyBlockDocTag__BehaviorDescriptor;
+      case 10:
+        return myFieldDocComment__BehaviorDescriptor;
+      case 11:
+        return myHTMLElement__BehaviorDescriptor;
+      case 12:
+        return myInheritDocInlineDocTag__BehaviorDescriptor;
+      case 13:
+        return myInlineTagCommentLinePart__BehaviorDescriptor;
+      case 14:
+        return myLinkInlineDocTag__BehaviorDescriptor;
+      case 15:
         return myMethodDocComment__BehaviorDescriptor;
+      case 16:
+        return myTextCommentLinePart__BehaviorDescriptor;
+      case 17:
+        return myValueInlineDocTag__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex index_846f5o_a0n = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990286L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x44ac82392ce5c6b0L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990289L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252c9a26L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e838L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252a7b73L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x2398cefbc261e3ffL), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990286L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x44ac82392ce5c6b0L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x41a6af3499e5305fL), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990289L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e83bL)).seal();
 }
