@@ -26,9 +26,6 @@
         <property id="1932269937152561478" name="useLabelSelection" index="OXtK3" />
         <property id="1229432188737" name="isLastPosition" index="ZRATv" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="210559400605421433" name="jetbrains.mps.lang.test.structure.PressMouseStatement" flags="ng" index="37Q87h">
         <property id="210559400606080744" name="y" index="37OD10" />
         <property id="210559400606080743" name="x" index="37OD1f" />
@@ -69,9 +66,6 @@
       </concept>
     </language>
   </registry>
-  <node concept="2XOHcx" id="hlYdQAfJtj">
-    <property role="2XOHcw" value="${mps_home}" />
-  </node>
   <node concept="LiM7Y" id="4CPWB7pWCi9">
     <property role="TrG5h" value="TextCheckbox_SPACE_Toggles" />
     <property role="3YCmrE" value="When inside a checkbox, pressing SPACE will toggle it" />

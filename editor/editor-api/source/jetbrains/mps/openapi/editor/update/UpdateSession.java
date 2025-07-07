@@ -31,6 +31,15 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
  */
 public interface UpdateSession {
   /**
+   * Registering additional dependencies discovered during this editor update session while creating specified editor cell.
+   *
+   * @param cell       - editor cell created as a part of this editor update session
+   * @param nodes      - nodes queried while building this editor cell
+   * @param refTargets - reference targets queried while building this editor cell
+   */
+  void registerAdditionalDependencies(EditorCell cell, Iterable<SNode> nodes, Iterable<SNodeReference> refTargets);
+
+    /**
    * Registering dependency discovered during this editor update session while creating
    * specified editor cell.
    *

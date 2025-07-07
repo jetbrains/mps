@@ -10,11 +10,10 @@ import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.java.stub.ClassStubRootConfiguration;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModelId;
+import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Map;
+import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.vfs.IFile;
@@ -47,11 +46,6 @@ public class JDKStubsModelRoot extends ModelRootBase {
   @Override
   public String getType() {
     return PersistenceRegistry.JDK_CLASSES_ROOT;
-  }
-  @Nullable
-  @Override
-  public SModel getModel(@NotNull SModelId id) {
-    return null;
   }
 
   @Override

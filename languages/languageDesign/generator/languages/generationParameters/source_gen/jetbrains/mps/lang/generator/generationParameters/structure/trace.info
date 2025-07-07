@@ -13,7 +13,7 @@
       <unit at="11,0,48,0" name="jetbrains.mps.lang.generator.generationParameters.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.generator.generationParameters.structure.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.generator.generationParameters.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,32,0" name="jetbrains.mps.lang.generator.generationParameters.structure.LanguageConceptSwitch" />
@@ -102,8 +102,8 @@
       <node id="8484425748929510072" at="14,0,15,0" concept="1" trace="props_DefaultGeneratorParameterContainer" />
       <node id="8484425748929510072" at="37,63,38,76" concept="3" />
       <node id="8484425748929510072" at="38,76,39,35" concept="0" />
-      <node id="8484425748929510072" at="39,35,40,55" concept="0" />
-      <node id="8484425748929510072" at="40,55,41,66" concept="0" />
+      <node id="8484425748929510072" at="39,35,40,45" concept="0" />
+      <node id="8484425748929510072" at="40,45,41,66" concept="0" />
       <node id="8484425748929510072" at="42,9,43,56" concept="4" />
       <node id="8484425748929510072" at="36,68,42,9" concept="2" />
       <scope id="8484425748929510072" at="37,63,41,66">

@@ -5,7 +5,6 @@ package jetbrains.mps.java.core.sourceStubs;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.RegularModelDescriptor;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSourceListener;
-import jetbrains.mps.logging.Logger;
 import java.util.Map;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -30,6 +29,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import java.io.InputStream;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.java.core.newparser.FeatureKind;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -46,10 +46,9 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 
 @GeneratedClass(node = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)/4423331261408224789", model = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)")
 public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implements MultiStreamDataSourceListener {
-  private static Logger LOG = Logger.getLogger(JavaSourceStubModelDescriptor.class);
   private boolean myIsLoadInProgress = false;
-  private Map<String, Set<SNode>> myRootsPerFile = MapSequence.fromMap(new HashMap<String, Set<SNode>>());
-  private Map<SNodeId, SNode> myRootsById = MapSequence.fromMap(new HashMap<SNodeId, SNode>());
+  private final Map<String, Set<SNode>> myRootsPerFile = MapSequence.fromMap(new HashMap<String, Set<SNode>>());
+  private final Map<SNodeId, SNode> myRootsById = MapSequence.fromMap(new HashMap<SNodeId, SNode>());
 
 
   public JavaSourceStubModelDescriptor(SModelReference modelRef, MultiStreamDataSource dataSource) {
@@ -68,7 +67,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
   }
 
   @Override
-  public void attach(SRepository repository) {
+  public void attach(@NotNull SRepository repository) {
     getSource().addListener(this);
     super.attach(repository);
   }
@@ -92,7 +91,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
     assertCanChange();
 
     SModel oldModel = getCurrentModelInternal();
-    // already attached but not createModel'd yet
+    // already attached but not createModel()'d yet
     if (oldModel == null) {
       return;
     }
@@ -102,8 +101,14 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
   }
 
   @Override
-  public void changed(DataSource source) {
+  public void changed(@NotNull DataSource source) {
     // ignore
+  }
+
+
+  @Override
+  public boolean isReadOnly() {
+    return true;
   }
 
   private void processStreams(Stream<StreamDataSource> streams, SModelData into) {
@@ -118,7 +123,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
       try (InputStream is = ds.openInputStream()) {
         code = readInputStream(is);
       } catch (Exception ex) {
-        LOG.error("Failed to read java file. " + ex.getMessage());
+        Logger.getLogger(JavaSourceStubModelDescriptor.class).error("Failed to read java file. " + ex.getMessage());
         // we've come from event and file has been deleted
         SetSequence.fromSet(oldNodes).visitAll((it) -> SNodeOperations.deleteNode(it));
         MapSequence.fromMap(myRootsPerFile).removeKey(streamName);
@@ -143,7 +148,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
         SetSequence.fromSet(oldNodes).visitAll((it) -> SNodeOperations.deleteNode(it));
         MapSequence.fromMap(myRootsPerFile).put(streamName, SetSequence.fromSetWithValues(new HashSet<SNode>(), parseResult.getNodes()));
       } catch (JavaParseException ex) {
-        LOG.error("Failed to parse java file. " + ex.getMessage(), ex);
+        Logger.getLogger(JavaSourceStubModelDescriptor.class).error("Failed to parse java file. " + ex.getMessage(), ex);
       }
     }
   }

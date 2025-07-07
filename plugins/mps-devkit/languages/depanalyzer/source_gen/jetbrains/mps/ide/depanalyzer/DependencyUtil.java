@@ -21,9 +21,6 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.Set;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 
 public final class DependencyUtil {
@@ -237,12 +234,7 @@ public final class DependencyUtil {
     }
     ListSequence.fromList(result).addSequence(Sequence.fromIterable(modules).select((module) -> new DepLink(module, role, linktype)));
   }
-  private static Iterable<SModuleReference> getReexportDeps(SModule module) {
-    return Sequence.fromIterable(((Iterable<SDependency>) module.getDeclaredDependencies())).where((dep) -> dep.isReexport()).select((dep) -> dep.getTargetModule());
-  }
-  private static Iterable<SModuleReference> getNonreexportDeps(ModuleDescriptor descr) {
-    return SetSequence.fromSet(((Set<jetbrains.mps.project.structure.modules.Dependency>) descr.getDependencies())).where((dep) -> !(dep.isReexport())).select((dep) -> dep.getModuleRef());
-  }
+
   public enum LinkType {
     Depends("depends on"),
     ReexportsDep("reexports dependency on"),
@@ -293,10 +285,11 @@ public final class DependencyUtil {
     Role() {
     }
     public boolean isUsedLanguage() {
+      // FWIW a language extended by used language is considered 'used', see #addExtendedLanguages()
       return this == Role.UsedLanguage;
     }
     public boolean isDependency() {
-      return this == Role.RegularDependency || this == Role.OwnedGenerator || this == Role.RuntimeDependency;
+      return this == Role.RegularDependency || this == Role.SourceLanguage || this == Role.RuntimeDependency;
     }
   }
   public static class Dependency extends MultiTuple._2<SModuleReference, Role> {

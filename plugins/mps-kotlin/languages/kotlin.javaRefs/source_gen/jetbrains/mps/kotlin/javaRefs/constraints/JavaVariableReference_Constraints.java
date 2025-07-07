@@ -37,7 +37,7 @@ public class JavaVariableReference_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).navigationReceiver().properties().noExtensionMembers().prioritizeProperties(null).buildScope(CONCEPTS.VariableDeclaration$Y0);
+            return KotlinScopes.scopeWithLegacyTypesystemFallback(_context.getContextNode(), CONCEPTS.VariableDeclaration$Y0, () -> KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).navigationReceiver().properties().noExtensionMembers().prioritizeProperties(null).buildSigScope());
           }
         };
       }

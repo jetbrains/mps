@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ public interface ModelRootFactory {
   /**
    * Creates a model root, typical factory pattern.
    * Newly created model root is supposed to initialized with
-   * {@link ModelRoot#load(Memento)}
+   * {@link ModelRoot#load(Memento, ModulePersistenceContext)}
    *
    * @return a new model root
    */

@@ -572,7 +572,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     try {
       Runnable restoreExpansion = null;
       if (saveExpansion) {
-        final List<String> expansion = getExpandedPaths();
+        final List<String> expansion = getExpandedTreePaths();
         final List<String> selection = getSelectedPaths();
         restoreExpansion = () -> {
           expandPaths(expansion);
@@ -823,7 +823,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     return result;
   }
 
-  private List<String> getExpandedPaths() {
+  private List<String> getExpandedTreePaths() {
     List<String> result = new ArrayList<>();
     if (getModel().getRoot()==null) {
       return result;
@@ -877,7 +877,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
 
   public TreeState saveState() {
     TreeState result = new TreeState();
-    result.myExpansion.addAll(getExpandedPaths());
+    result.myExpansion.addAll(getExpandedTreePaths());
     result.mySelection.addAll(getSelectedPaths());
     return result;
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,15 @@
  */
 package jetbrains.mps.ide.util;
 
+import com.intellij.icons.AllIcons;
+import com.intellij.icons.AllIcons.Actions;
+import com.intellij.icons.AllIcons.ObjectBrowser;
 import com.intellij.ide.IdeBundle;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
@@ -665,7 +669,12 @@ public class GroupedNodesChooser extends DialogWrapper {
     public SortEmAction() {
       // 'action.sort.alphabetically' comes from app.jar!/messages/IdeDeprecatedMessagesBundle.properties
       super(IdeBundle.message("action.sort.alphabetically"),
-        IdeBundle.message("action.sort.alphabetically"), IconLoader.getIcon("/objectBrowser/sorted.png", GroupedNodesChooser.class));
+            IdeBundle.message("action.sort.alphabetically"), ObjectBrowser.Sorted);
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
     }
 
     @Override
@@ -689,6 +698,11 @@ public class GroupedNodesChooser extends DialogWrapper {
     }
 
     @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+
+    @Override
     public boolean isSelected(AnActionEvent event) {
       return myShowContainers;
     }
@@ -709,7 +723,7 @@ public class GroupedNodesChooser extends DialogWrapper {
   private class ExpandAllAction extends AnAction {
     public ExpandAllAction() {
       super(IdeBundle.message("action.expand.all"), IdeBundle.message("action.expand.all"),
-        IconLoader.getIcon("/actions/expandall.png", GroupedNodesChooser.class));
+        Actions.Expandall);
     }
 
     @Override
@@ -721,7 +735,7 @@ public class GroupedNodesChooser extends DialogWrapper {
   private class CollapseAllAction extends AnAction {
     public CollapseAllAction() {
       super(IdeBundle.message("action.collapse.all"), IdeBundle.message("action.collapse.all"),
-        IconLoader.getIcon("/actions/collapseall.png", GroupedNodesChooser.class));
+            Actions.Collapseall);
     }
 
     @Override

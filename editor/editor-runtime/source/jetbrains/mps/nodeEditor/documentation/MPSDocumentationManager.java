@@ -21,8 +21,9 @@ import com.intellij.ui.LightweightHint;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.ui.popup.AbstractPopup;
 import com.intellij.util.ui.JBUI;
+import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.nodeEditor.EditorTooltipProvider;
+import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationPopupUI;
 import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationUI;
 import org.jetbrains.annotations.NotNull;
@@ -34,6 +35,7 @@ import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
+import java.awt.Window;
 import java.lang.ref.WeakReference;
 import java.util.function.Consumer;
 
@@ -44,24 +46,24 @@ public class MPSDocumentationManager {
   private WeakReference<JBPopup> myHintPopupReference;
   private ProgressIndicator myCurrentProgress;
 
-
   public static MPSDocumentationManager getInstance() {
     return ApplicationManager.getApplication().getService(MPSDocumentationManager.class);
   }
-  
+
   /**
    * Show quick documentation: either as a popup or in the tool window.
    * Calling this method results in focus being transferred to the documentation UI component.
    */
-  public void showQuickDocumentation(Frame owner, Project project, Point location, String docMessage) {
-    if (docMessage == null) {
+  public void showQuickDocumentation(Frame owner, Project project, Point location, @NotNull DocumentationProvider provider) {
+    if (!provider.hasDocumentation()) {
       LOG.warning("null doc message specified");
       return;
     }
     cancelAll();
 
-    MPSDocumentationUI documentationUI = new MPSDocumentationUI(docMessage);
-    if (docMessage != null && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
+    MPSDocumentationUI documentationUI = new MPSDocumentationUI(project, provider);
+    if (provider.hasDocumentation() && (MPSDocumentationToolWindowManager.getInstance(project).isVisible() || !EditorSettings.getInstance()
+                                                                                                                             .isShowDocumentationPopupFirst())) {
       // redirect to the tool window
       MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(documentationUI);
       return;
@@ -91,9 +93,10 @@ public class MPSDocumentationManager {
    * Does nothing if both {@code docMessage} and {@code tooltipRenderer} are null.
    * <p>
    * The code in {@code continuation} is called after the popup window has been created, so that
-   * the caller has a chance to install appropriate callbacks, etc. 
+   * the caller has a chance to install appropriate callbacks, etc.
    */
-  public void showHintPopup(Project project, Editor editor, String docMessage, TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup, RelativePoint showPoint, Consumer<AbstractPopup> continuation) {
+  public void showHintPopup(Project project, Editor editor, @Nullable DocumentationProvider provider, TooltipRenderer tooltipRenderer,
+                            TooltipGroup tooltipGroup, RelativePoint showPoint, Consumer<AbstractPopup> continuation) {
     cancelProgress();
     ProgressManager.getInstance().executeProcessUnderProgress(() -> {
       cancelHintPopup();
@@ -101,24 +104,65 @@ public class MPSDocumentationManager {
         // avoid showing two popups
         return;
       }
-      String popupDocMessage = docMessage;
-      if (docMessage != null && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
+      DocumentationProvider currentProvider = provider;
+      if (currentProvider != null && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
         // redirect to the tool window
-        MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(new MPSDocumentationUI(docMessage));
-        popupDocMessage = null;
+        MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(new MPSDocumentationUI(project, currentProvider));
+        currentProvider = null;
       }
 
-      if (popupDocMessage == null && tooltipRenderer == null) {
+      JComponent highlightHoverInfo = tooltipRenderer == null
+                                      ? null : createHighlightInfoComponent(editor, tooltipRenderer, tooltipGroup);
+
+      MPSDocumentationPopupUI popupUI = currentProvider == null ? null : new MPSDocumentationPopupUI(project, new MPSDocumentationUI(project, provider));
+      JComponent documentationHoverInfo = currentProvider == null || !currentProvider.hasDocumentation()
+                                          ? null : createQuickDocComponent(highlightHoverInfo != null, popupUI);
+
+      if (highlightHoverInfo == null && documentationHoverInfo == null) {
         return;
       }
 
-      HoverInfo info = new HoverInfo(popupDocMessage, tooltipRenderer, tooltipGroup);
-      AbstractPopup hint = info.createHint(editor, project);
+      HoverInfo info = new HoverInfo(highlightHoverInfo, documentationHoverInfo);
+      AbstractPopup hint = info.createHint(popupUI);
       hint.show(showPoint);
+
+      Window window = hint.getPopupWindow();
+      if (window != null) {
+        window.setFocusableWindowState(true);
+      }
+
       myHintPopupReference = new WeakReference<>(hint);
       continuation.accept(hint);
 
     }, myCurrentProgress);
+  }
+
+  private @Nullable JComponent createHighlightInfoComponent(@NotNull Editor editor, @Nullable TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup) {
+    if (tooltipRenderer == null) {
+      return null;
+    }
+    // FIXME: how is this hard cast justified?
+    LightweightHint hint = ((LineTooltipRenderer) tooltipRenderer).createHint(editor,
+                                                                              new Point(),
+                                                                              false,
+                                                                              tooltipGroup,
+                                                                              HintUtil.getInformationHint(),
+                                                                              true,
+                                                                              true,
+                                                                              null);
+    return hint.getComponent();
+  }
+
+
+  private @Nullable JComponent createQuickDocComponent(boolean jointPopup, MPSDocumentationPopupUI popupUI) {
+    // If the flag is set to false, the documentation popup will not appear on mouse movement. It can only be displayed using the shortcut.
+    if (!EditorSettings.getInstance().isShowOnMouseMove()) {
+      return null;
+    }
+    if (jointPopup) {
+      popupUI.jointHover();
+    }
+    return popupUI.getComponent();
   }
 
   public boolean isQuickDocPopupShown() {
@@ -171,84 +215,53 @@ public class MPSDocumentationManager {
    * A factory for highlight + doc components to be shown in a popup.
    */
   private static class HoverInfo {
-    private final String myQuickDocMessage;
-    private final TooltipRenderer myTooltipRenderer;
-    private final TooltipGroup myTooltipGroup;
-    private MPSDocumentationPopupUI myPopupUI;
+    private final JComponent myHighlightHoverInfo;
+    private final JComponent myDocumentationHoverInfo;
 
     /**
-     * Either {@code quickDocMessage} or {@code tooltipRenderer} may be null, but not both!
+     * Either {@code documentationProvider} or {@code tooltipRenderer} may be null, but not both!
      */
-    HoverInfo(String quickDocMessage, TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup) {
-      assert (quickDocMessage != null) || (tooltipRenderer != null);
-      myQuickDocMessage = quickDocMessage;
-      myTooltipRenderer = tooltipRenderer;
-      myTooltipGroup = tooltipGroup;
+    HoverInfo(@Nullable JComponent highlightHoverInfo, @Nullable JComponent documentationHoverInfo) {
+      assert (highlightHoverInfo != null) || (documentationHoverInfo != null);
+      myHighlightHoverInfo = highlightHoverInfo;
+      myDocumentationHoverInfo = documentationHoverInfo;
     }
 
-    public AbstractPopup createHint(Editor editor, Project project) {
-      JComponent component = createComponent(editor, project);
+    AbstractPopup createHint(@Nullable MPSDocumentationPopupUI popupUI) {
+      JComponent component = createComponent();
       assert component != null;
-      AbstractPopup popup = createHintPopup(component);
-      if (myPopupUI != null) {
-        myPopupUI.setPopup(popup);
+      AbstractPopup popup = createHintPopup(component, popupUI);
+      if (popupUI != null) {
+        popupUI.setPopup(popup);
       }
       return popup;
     }
 
 
-    private @NotNull JComponent createComponent(@NotNull Editor editor,
-                                                @NotNull Project project) {
-      JComponent c1 = myTooltipRenderer == null
-                      ? null : createHighlightInfoComponent(editor);
-      JComponent c2 = myQuickDocMessage == null
-                      ? null : createQuickDocComponent(project, c1 != null);
-      assert (c1 != null || c2 != null);
-
+    private @NotNull JComponent createComponent() {
       JPanel p = new JPanel(new GridBagLayout());
       GridBagConstraints c = new GridBagConstraints(0, 0, 1, 1, 1, 0, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                                                     JBUI.emptyInsets(), 0, 0);
-      if (c1 != null) {
-        p.add(c1, c);
+      if (myHighlightHoverInfo != null) {
+        p.add(myHighlightHoverInfo, c);
       }
       c.gridy = 1;
       c.weighty = 1;
       c.fill = GridBagConstraints.BOTH;
-      if (c2 != null) {
-        p.add(c2, c);
+      if (myDocumentationHoverInfo != null) {
+        p.add(myDocumentationHoverInfo, c);
       }
       return p;
     }
 
-    private @Nullable JComponent createHighlightInfoComponent(@NotNull Editor editor) {
-      // FIXME: how is this hard cast justified?
-      LightweightHint hint = ((LineTooltipRenderer) myTooltipRenderer).createHint(editor,
-                                                                                  new Point(),
-                                                                                  false,
-                                                                                  myTooltipGroup,
-                                                                                  HintUtil.getInformationHint(),
-                                                                                  true,
-                                                                                  true,
-                                                                                  null);
-      return hint.getComponent();
-    }
-
-
-    private @Nullable JComponent createQuickDocComponent(@NotNull Project project, boolean jointPopup) {
-      this.myPopupUI = new MPSDocumentationPopupUI(project, new MPSDocumentationUI(myQuickDocMessage));
-      if (jointPopup) {
-        myPopupUI.jointHover();
-      }
-      return myPopupUI.getComponent();
-    }
-
-    private AbstractPopup createHintPopup(JComponent component) {
+    private AbstractPopup createHintPopup(JComponent component, @Nullable MPSDocumentationPopupUI popupUI) {
+      JComponent preferableFocusComponent = popupUI == null ? component : popupUI.getPreferableFocusComponent();
       return (AbstractPopup) JBPopupFactory.getInstance()
-                                           .createComponentPopupBuilder(component, component)
+                                           .createComponentPopupBuilder(component, preferableFocusComponent)
                                            .setRequestFocus(false)
+                                           .setFocusable(true)
                                            .setMovable(true)
                                            .setResizable(true)
-                                           .setCancelOnClickOutside(false)
                                            .createPopup();
     }
 

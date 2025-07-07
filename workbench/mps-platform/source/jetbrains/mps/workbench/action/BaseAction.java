@@ -58,7 +58,7 @@ public abstract class BaseAction extends AnAction {
   private boolean myDisableOnNoProject = true;
   private Set<ActionPlace> myPlaces = null;
 
-  private ActionUpdateThread myUpdateThread;
+  private ActionUpdateThread myUpdateThread = ActionUpdateThread.EDT;
 
   public BaseAction() {
     this((String) null, (String) null, (Icon) null);
@@ -92,11 +92,6 @@ public abstract class BaseAction extends AnAction {
 
   @Override
   public @NotNull ActionUpdateThread getActionUpdateThread() {
-    if (myUpdateThread == null) {
-      // MPS_Frame and MPS_MPSProject values, supplied by a GetDataRule, are not available in EDT, hence OLD_EDT default
-      // (As I read ActionUpdateThread javadoc, EDT doesn't give access to anything but DataProviders from Swing component hierarchy)
-      myUpdateThread = Registry.is("mps.actions.old_edt", false) ? ActionUpdateThread.OLD_EDT : ActionUpdateThread.EDT;
-    }
     return myUpdateThread;
   }
 

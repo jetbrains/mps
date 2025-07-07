@@ -19,9 +19,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -54,8 +54,9 @@ public class ExtensionMethodCall_Constraints extends BaseConstraintsDescriptor {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
             List<SNode> result = new ArrayList<SNode>();
             SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
+            SNode operandType = TypecheckingFacade.getFromContext().getTypeOf(operand);
             for (SNode extension : ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.TypeExtension$Er))) {
-              if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(operand), Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(SLinkOperations.getTarget(extension, LINKS.type$Htle), SetSequence.fromSet(new HashSet<SNode>())))) {
+              if (TypecheckingFacade.getFromContext().isSubtype(operandType, Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(SLinkOperations.getTarget(extension, LINKS.type$Htle), SetSequence.fromSet(new HashSet<SNode>())))) {
                 for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(extension, LINKS.methods$7wWM))) {
                   if (VisibilityUtil.isVisible(enclosingNode, method)) {
                     ListSequence.fromList(result).addElement(method);
@@ -65,8 +66,8 @@ public class ExtensionMethodCall_Constraints extends BaseConstraintsDescriptor {
             }
             for (SNode container : ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.SimpleExtensionMethodsContainer$j3))) {
               for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.methods$7wWM))) {
-                if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(operand), Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(SLinkOperations.getTarget(method, LINKS.extendedType$G3_w), SetSequence.fromSet(new HashSet<SNode>())))) {
-                  if (VisibilityUtil.isVisible(enclosingNode, method)) {
+                if (VisibilityUtil.isVisible(enclosingNode, method)) {
+                  if (TypecheckingFacade.getFromContext().isSubtype(operandType, Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(SLinkOperations.getTarget(method, LINKS.extendedType$G3_w), SetSequence.fromSet(new HashSet<SNode>())))) {
                     ListSequence.fromList(result).addElement(method);
                   }
                 }

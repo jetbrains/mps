@@ -48,7 +48,7 @@ public final class Default_KeymapChanges extends BaseKeymapChanges {
     add("jetbrains.mps.ide.actions.ShowDefinition_Action", "ctrl shift I");
     add("jetbrains.mps.ide.actions.ShowInLogicalView_Action", "alt F2");
     add("jetbrains.mps.ide.actions.ShowNodeInInspector_Action", "ctrl alt I");
-    add("jetbrains.mps.ide.actions.ShowNodeInfo_Action", "ctrl Q");
+    add("jetbrains.mps.ide.actions.ShowNodeInfo_Action", "ctrl shift Q");
     add("jetbrains.mps.ide.actions.ShowParameters_Action", "ctrl P");
     add("jetbrains.mps.ide.actions.ShowQuickDocumentation_Action", " F1");
     // parameterized

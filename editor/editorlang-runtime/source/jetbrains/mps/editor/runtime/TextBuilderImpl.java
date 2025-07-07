@@ -27,8 +27,8 @@ import java.util.List;
  * Date: 03/03/16
  */
 public class TextBuilderImpl implements TextBuilder {
-  private List<StringBuilder> myLines = new ArrayList<>();
-  private int myWidth;
+  protected List<StringBuilder> myLines = new ArrayList<>();
+  protected int myWidth;
 
   public TextBuilderImpl() {
   }

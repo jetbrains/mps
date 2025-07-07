@@ -5,7 +5,12 @@ package jetbrains.mps.ide.migration.wizard;
 import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.Icon;
 
+/**
+ * 
+ * @deprecated use MPSIcons directly
+ */
+@Deprecated(forRemoval = true, since = "2025.1")
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/4570314324458801858", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public class Icons {
-  public static final Icon Language = IconContainer.ICON_a0;
+  public static final Icon Language = IconContainer.ICON0;
 }

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.keymaps;
 
+import com.intellij.util.ui.UIUtil;
 import gnu.trove.TIntObjectHashMap;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
@@ -25,10 +26,14 @@ import jetbrains.mps.openapi.editor.cells.KeyMap.ActionKey;
 import jetbrains.mps.openapi.editor.cells.KeyMapAction;
 import jetbrains.mps.util.Pair;
 
+import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JViewport;
 import javax.swing.KeyStroke;
+import javax.swing.plaf.basic.BasicMenuItemUI;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -191,6 +196,7 @@ public class AWTKeymapHandler extends KeymapHandler<KeyEvent> {
   @Override
   public void showActionsMenu(Collection<Pair<KeyMapAction, EditorCell>> actionsInfo, final EditorContext editorContext, EditorCell selectedCell) {
     JPopupMenu menu = new JPopupMenu();
+    final Color selectionColor = UIUtil.getTreeSelectionBackground(true);
     int index = 1;
     for (Pair<KeyMapAction, EditorCell> actionAndContextCell : actionsInfo) {
       final KeyMapAction action = actionAndContextCell.o1;
@@ -209,6 +215,20 @@ public class AWTKeymapHandler extends KeymapHandler<KeyEvent> {
       }
       ActionListener actionListener = e -> executeAction(action, contextCell, editorContext);
       menuItem.addActionListener(actionListener);
+      menuItem.setUI(new BasicMenuItemUI(){
+        @Override
+        protected void paintBackground(Graphics g, JMenuItem mi, Color bgColor) {
+          final Color originalColor = g.getColor();
+          if (mi.isArmed() || (mi instanceof JMenu && mi.getModel().isSelected())) {
+            g.setColor(selectionColor);
+            g.fillRect(0, 0, mi.getWidth(), mi.getHeight());
+          } else {
+            g.setColor(mi.getBackground());
+            g.fillRect(0, 0, mi.getWidth(), mi.getHeight());
+          }
+          g.setColor(originalColor);
+        }
+      });
       menu.add(menuItem);
       index++;
     }

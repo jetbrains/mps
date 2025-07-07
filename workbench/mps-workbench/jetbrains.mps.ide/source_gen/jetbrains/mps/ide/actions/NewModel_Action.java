@@ -14,7 +14,7 @@ import jetbrains.mps.ide.IdeBundle;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.project.AbstractModule;
-import javax.swing.tree.TreeNode;
+import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.project.MPSProject;
@@ -40,7 +40,11 @@ public class NewModel_Action extends BaseAction {
     if (!(((SModule) MapSequence.fromMap(_params).get("module")) instanceof AbstractModule)) {
       presentation.setEnabledAndVisible(false);
     } else {
-      String stereotype = NewModelActionExecutor.getDefaultStereotypeProvider(((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).getStereotype();
+      StereotypeProvider stereotypeProvider = StereotypeProvider.NONE;
+      if (((Object) MapSequence.fromMap(_params).get("userObject")) instanceof StereotypeProvider) {
+        stereotypeProvider = ((StereotypeProvider) ((Object) MapSequence.fromMap(_params).get("userObject")));
+      }
+      String stereotype = stereotypeProvider.getStereotype();
       presentation.setEnabledAndVisible(Sequence.fromIterable(Sequence.fromArray(SModelStereotype.values)).contains(stereotype));
     }
   }
@@ -64,8 +68,8 @@ public class NewModel_Action extends BaseAction {
       }
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
-      MapSequence.fromMap(_params).put("treeNode", p);
+      Object p = event.getData(MPSCommonDataKeys.USER_OBJECT);
+      MapSequence.fromMap(_params).put("userObject", p);
       if (p == null) {
         return false;
       }
@@ -77,7 +81,11 @@ public class NewModel_Action extends BaseAction {
     NewModel_Action.this.getExecutor(_params).execute();
   }
   protected NewModelActionExecutor getExecutor(final Map<String, Object> _params) {
-    return new NewModelActionExecutor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModule) MapSequence.fromMap(_params).get("module")), ((TreeNode) MapSequence.fromMap(_params).get("treeNode")), NewModel_Action.this.getNamespace(_params));
+    StereotypeProvider stereotypeProvider = StereotypeProvider.NONE;
+    if (((Object) MapSequence.fromMap(_params).get("userObject")) instanceof StereotypeProvider) {
+      stereotypeProvider = ((StereotypeProvider) ((Object) MapSequence.fromMap(_params).get("userObject")));
+    }
+    return new NewModelActionExecutor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModule) MapSequence.fromMap(_params).get("module")), stereotypeProvider, NewModel_Action.this.getNamespace(_params));
   }
   protected String getNamespace(final Map<String, Object> _params) {
     return NewModelActionExecutor.getDefaultNamespaceFor(((SModule) MapSequence.fromMap(_params).get("module")));

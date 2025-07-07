@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ public class CellAction_PasteNodeRelative extends AbstractCellAction {
     if (anchorNode == null) {
       return false;
     }
-    List<SNode> pasteNodes = CopyPasteUtil.getNodesFromClipboard(anchorNode.getModel());
+    List<SNode> pasteNodes = CopyPasteUtil.getNodesFromClipboard();
     if (pasteNodes == null || pasteNodes.isEmpty()) {
       return false;
     }
@@ -73,7 +73,7 @@ public class CellAction_PasteNodeRelative extends AbstractCellAction {
     EditorCell selectedCell = editorComponent.getSelectedCell();
     SNode anchorNode = selectedCell.getSNode();
 
-    PasteNodeData pasteNodeData = CopyPasteUtil.getPasteNodeDataFromClipboard(anchorNode.getModel());
+    final PasteNodeData pasteNodeData = CopyPasteUtil.getPasteNodeData();
     if (pasteNodeData == null || pasteNodeData.getNodes().isEmpty()) {
       return;
     }
@@ -99,5 +99,7 @@ public class CellAction_PasteNodeRelative extends AbstractCellAction {
       SelectionManager selectionManager = editorComponent.getSelectionManager();
       selectionManager.pushSelection(selectionManager.createRangeSelection(pasteNodes.get(0), pasteNodes.get(pasteNodes.size() - 1)));
     }
+
+    pasteNodeData.consume();
   }
 }

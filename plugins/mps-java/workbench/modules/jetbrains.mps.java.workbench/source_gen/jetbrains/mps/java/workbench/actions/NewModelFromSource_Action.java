@@ -15,7 +15,6 @@ import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.mps.openapi.module.SModule;
-import javax.swing.tree.TreeNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -107,7 +106,7 @@ public class NewModelFromSource_Action extends BaseAction {
       }
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
+      Object p = event.getData(MPSCommonDataKeys.USER_OBJECT);
       if (p == null) {
         return false;
       }
@@ -177,14 +176,14 @@ public class NewModelFromSource_Action extends BaseAction {
     }
   }
   protected String getStereotype(final AnActionEvent event) {
-    if (event.getData(MPSCommonDataKeys.TREE_NODE) instanceof StereotypeProvider) {
-      return ((StereotypeProvider) event.getData(MPSCommonDataKeys.TREE_NODE)).getStereotype();
+    if (event.getData(MPSCommonDataKeys.USER_OBJECT) instanceof StereotypeProvider) {
+      return ((StereotypeProvider) event.getData(MPSCommonDataKeys.USER_OBJECT)).getStereotype();
     }
     return null;
   }
   protected boolean isStrict(final AnActionEvent event) {
-    if (event.getData(MPSCommonDataKeys.TREE_NODE) instanceof StereotypeProvider) {
-      return ((StereotypeProvider) event.getData(MPSCommonDataKeys.TREE_NODE)).isStrict();
+    if (event.getData(MPSCommonDataKeys.USER_OBJECT) instanceof StereotypeProvider) {
+      return ((StereotypeProvider) event.getData(MPSCommonDataKeys.USER_OBJECT)).isStrict();
     }
     return false;
   }

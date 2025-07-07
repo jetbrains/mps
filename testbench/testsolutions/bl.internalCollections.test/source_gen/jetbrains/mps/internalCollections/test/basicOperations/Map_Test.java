@@ -207,11 +207,11 @@ public class Map_Test extends Util_Test {
   @Test
   public void test_opAssign() throws Exception {
     Map<String, Integer> mapsi = MapSequence.fromMapAndEntryArray(new HashMap<String, Integer>(), Map.entry("A", 345), Map.entry("B", 543), Map.entry("C", 1111));
-    Assert.assertTrue(645 == (int) BLOperations.plusAssign(MapSequence.fromMap(mapsi).getValueRef("A"), 300));
+    Assert.assertTrue(645 == (BLOperations.plusAssign(MapSequence.fromMap(mapsi).getValueRef("A"), 300)));
     Assert.assertTrue(645 == (int) MapSequence.fromMap(mapsi).get("A"));
-    Assert.assertTrue((int) BLOperations.minusAssign(MapSequence.fromMap(mapsi).getValueRef("B"), 40) == 503);
+    Assert.assertTrue((BLOperations.minusAssign(MapSequence.fromMap(mapsi).getValueRef("B"), 40)) == 503);
     Assert.assertTrue((int) MapSequence.fromMap(mapsi).get("B") == 503);
-    Assert.assertTrue(9999 == (int) BLOperations.multAssign(MapSequence.fromMap(mapsi).getValueRef("C"), 9));
+    Assert.assertTrue(9999 == (BLOperations.multAssign(MapSequence.fromMap(mapsi).getValueRef("C"), 9)));
     Assert.assertTrue(9999 == (int) MapSequence.fromMap(mapsi).get("C"));
   }
 }

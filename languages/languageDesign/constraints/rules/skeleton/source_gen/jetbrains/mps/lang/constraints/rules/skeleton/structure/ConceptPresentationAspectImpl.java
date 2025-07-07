@@ -44,7 +44,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.experimental(true);
           cpb.shortDesc("define rules here");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a3b0f);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_RulesConstraintsRoot = cpb.create();
         }
         return props_RulesConstraintsRoot;

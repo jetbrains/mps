@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -112,7 +112,7 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
 
     // Create temporary client file
     final File clientFile = KotlinCompilerOptions.createClientFile();
-    maker.options(JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(myMPSProject))
+    maker.options(myMPSProject.getComponent(JavaCompilerOptionsComponent.class).getJavaCompilerOptions(myMPSProject))
          .kotlinCompileCache(new JvmKotlinCompileCacheHandler(IMessageHandler.NULL_HANDLER))
          .kotlinOptions(new KotlinCompilerOptions(clientFile));
     final ReloadManager reloadManager = ReloadManager.getInstance();

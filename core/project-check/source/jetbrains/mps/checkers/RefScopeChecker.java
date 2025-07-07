@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import jetbrains.mps.smodel.ReferenceScopeHelper;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.constraints.ReferenceDescriptor;
 import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -47,14 +48,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+// XXX FWIW, there's also UnresolverReferenceChecker, which does pretty much the same
 public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
-  private final ComponentHost myHost;
+  protected final ComponentHost myHost;
 
-  public RefScopeChecker() {
-    myHost = null;
-  }
-
-  public RefScopeChecker(@Nullable ComponentHost host) {
+  public RefScopeChecker(@NotNull ComponentHost host) {
     myHost = host;
   }
 
@@ -77,7 +75,8 @@ public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChe
     if (module == null) {
       return;
     }
-    boolean executeImmediately = ReferenceResolverUtils.canExecuteImmediately(node.getModel(), repository);
+    final boolean readOnlyModel = node.getModel().isReadOnly();
+    boolean executeImmediately = !readOnlyModel && ReferenceResolverUtils.canExecuteImmediately(node.getModel(), repository);
     final EvaluateScopeContext evaluateReferenceScopeContext = detectRefEvalContext(repository);
     for (SReference ref : node.getReferences()) {
       SNode target = ref.getTargetNode();
@@ -102,19 +101,18 @@ public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChe
         FeedbackAspectRegistry registry = getFeedbackAspectRegistry();
         MessagesFacade facade = new MessagesFacade(registry);
         List<String> messages = facade.findTextMessagesForProblem(node.getConcept(), problem, context);
+        final EditorQuickFix qf1 = readOnlyModel ? null : createResolveReferenceQuickfix(ref, executeImmediately);
+        final EditorQuickFix qf2 = readOnlyModel ? null : createAddImportQuickfix(ref);
         for (String message : messages) {
-          errorsCollector.addError(new OutOfScopeReferenceReportItem(ref,
-                                                                     debugInfo,
-                                                                     createResolveReferenceQuickfix(ref, executeImmediately),
-                                                                     createAddImportQuickfix(ref),
-                                                                     message));
+          errorsCollector.addError(new OutOfScopeReferenceReportItem(ref, debugInfo, qf1, qf2, message));
         }
       }
     }
   }
 
   protected EditorQuickFix createResolveReferenceQuickfix(SReference reference, boolean executeImmediately) {
-    return new RefScopeChecker.ResolveReferenceQuickFix(reference, executeImmediately);
+    final ResolverComponent resolver = myHost.findComponent(ResolverComponent.class);
+    return new RefScopeChecker.ResolveReferenceQuickFix(resolver, reference, executeImmediately);
   }
 
   @Nullable
@@ -137,17 +135,19 @@ public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChe
   }
 
   protected static class ResolveReferenceQuickFix implements EditorQuickFix, NodeFeatureFlavouredItem {
-    protected SReference myReference;
-    private boolean myExecuteImmediately;
+    protected final ResolverComponent myResolver;
+    protected final SReference myReference;
+    private final boolean myExecuteImmediately;
 
-    public ResolveReferenceQuickFix(SReference reference, boolean executeImmediately) {
+    public ResolveReferenceQuickFix(ResolverComponent resolver, SReference reference, boolean executeImmediately) {
+      myResolver = resolver;
       myReference = reference;
       myExecuteImmediately = executeImmediately;
     }
 
     @Override
     public void execute(SRepository repository) {
-      ResolverComponent.getInstance().resolve(myReference, repository);
+      myResolver.resolve(myReference, repository);
     }
 
     @Override
@@ -170,6 +170,7 @@ public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChe
       return myReference.getLink();
     }
 
+    @NotNull
     @Override
     public SNodeReference getNode() {
       return myReference.getSourceNode().getReference();

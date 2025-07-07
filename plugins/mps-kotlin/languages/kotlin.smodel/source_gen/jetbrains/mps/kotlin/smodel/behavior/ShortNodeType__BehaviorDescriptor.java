@@ -17,6 +17,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
@@ -35,20 +36,24 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class ShortNodeType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xeb56ebf4df56438eL, 0xaf06fc1cd08b495aL, 0x6192a85328793883L, "jetbrains.mps.kotlin.smodel.structure.ShortNodeType");
 
-  public static final SMethod<SNode> getConceptType_id28CvMylq0Pm = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConceptType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008640019798L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
+  public static final SMethod<Iterable<SNode>> getConceptTypes_id28CvMylq0Pm = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getConceptType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008640019798L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
+  public static final SMethod<SNode> getConceptType_id4VnyIrvoQ8N = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConceptType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5681162179146113587L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
   public static final SMethod<String> toString_id4nn3FPlZH$r = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5032507314964191515L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<Void> populateSubstitutions_id4f4W8JpwgWV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateSubstitutions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4883292379416694587L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(TypeVarSubs.class, ""));
   public static final SMethod<SNodeReference> getJavaClassPointer_idAa0Z14eCoU = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl((Class<SNodeReference>) ((Class) Object.class))).name("getJavaClassPointer").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599142458L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
   public static final SMethod<TypeKey> typeKey_idJmO2PmZtH5 = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("shallowId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(853098072584870725L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> createConstructor_id2$1CHwF$28b = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("createConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2954821879859257867L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConceptType_id28CvMylq0Pm, toString_id4nn3FPlZH$r, populateSubstitutions_id4f4W8JpwgWV, getJavaClassPointer_idAa0Z14eCoU, typeKey_idJmO2PmZtH5, createConstructor_id2$1CHwF$28b);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConceptTypes_id28CvMylq0Pm, getConceptType_id4VnyIrvoQ8N, toString_id4nn3FPlZH$r, populateSubstitutions_id4f4W8JpwgWV, getJavaClassPointer_idAa0Z14eCoU, typeKey_idJmO2PmZtH5, createConstructor_id2$1CHwF$28b);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static SNode getConceptType_id28CvMylq0Pm(@NotNull SNode __thisNode__) {
-    return createConceptType_7xg5x8_a0a0(SLinkOperations.getTarget(__thisNode__, LINKS.concept$qJcX));
+  /*package*/ static Iterable<SNode> getConceptTypes_id28CvMylq0Pm(@NotNull SNode __thisNode__) {
+    return Sequence.singleton(ShortNodeType__BehaviorDescriptor.getConceptType_id4VnyIrvoQ8N.invoke(__thisNode__));
+  }
+  /*package*/ static SNode getConceptType_id4VnyIrvoQ8N(@NotNull SNode __thisNode__) {
+    return createConceptType_7xg5x8_a0a1(SLinkOperations.getTarget(__thisNode__, LINKS.concept$qJcX));
   }
   /*package*/ static String toString_id4nn3FPlZH$r(@NotNull SNode __thisNode__, boolean erased) {
     if (erased) {
@@ -56,15 +61,16 @@ public final class ShortNodeType__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     StringBuilder builder = new StringBuilder();
-    builder.append("node<").append(IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(IBehaviorMethodCaller__BehaviorDescriptor.getConceptType_id28CvMylq0Pm.invoke(__thisNode__), ((boolean) false))).append(">");
+    builder.append("node<").append(IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(ShortNodeType__BehaviorDescriptor.getConceptType_id4VnyIrvoQ8N.invoke(__thisNode__), ((boolean) false))).append(">");
     return builder.toString();
   }
   /*package*/ static void populateSubstitutions_id4f4W8JpwgWV(@NotNull SNode __thisNode__, TypeVarSubs<SNode> subs) {
-    subs.populate(new SingleConceptTypeParameter(), IType__BehaviorDescriptor.asInvariantProjection_id2gj5XQXIqKf.invoke(IBehaviorMethodCaller__BehaviorDescriptor.getConceptType_id28CvMylq0Pm.invoke(__thisNode__)));
+    subs.populate(new SingleConceptTypeParameter(), IType__BehaviorDescriptor.asInvariantProjection_id2gj5XQXIqKf.invoke(ShortNodeType__BehaviorDescriptor.getConceptType_id4VnyIrvoQ8N.invoke(__thisNode__)));
   }
   /*package*/ static SNodeReference getJavaClassPointer_idAa0Z14eCoU(@NotNull SNode __thisNode__) {
     return new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode");
   }
+  @NotNull
   /*package*/ static TypeKey typeKey_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
     // Need to use the same one as NodeType
     return new ClassTypeKey(new SNodePointer("r:e4815086-4c30-49cb-8870-1731d8a054ca(jetbrains.mps.kotlin.smodel.structure)", "8163976557869562761"));
@@ -77,7 +83,7 @@ public final class ShortNodeType__BehaviorDescriptor extends BaseBHDescriptor {
       SLinkOperations.setNewChild(callExpression, LINKS.lambda$U$kC, null);
 
       // Should this be supported with callOperation?
-      return createNavigationOperation_7xg5x8_a5a0a0f(createReceiverType_7xg5x8_a0a0a5a0a0f(SLinkOperations.getTarget(__thisNode__, LINKS.concept$qJcX)), callExpression);
+      return createNavigationOperation_7xg5x8_a5a0a0g(createReceiverType_7xg5x8_a0a0a5a0a0g(SLinkOperations.getTarget(__thisNode__, LINKS.concept$qJcX)), callExpression);
     };
   }
 
@@ -97,17 +103,19 @@ public final class ShortNodeType__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((SNode) getConceptType_id28CvMylq0Pm(node));
+        return (T) ((Iterable<SNode>) getConceptTypes_id28CvMylq0Pm(node));
       case 1:
-        return (T) ((String) toString_id4nn3FPlZH$r(node, ((boolean) (Boolean) parameters[0])));
+        return (T) ((SNode) getConceptType_id4VnyIrvoQ8N(node));
       case 2:
+        return (T) ((String) toString_id4nn3FPlZH$r(node, ((boolean) (Boolean) parameters[0])));
+      case 3:
         populateSubstitutions_id4f4W8JpwgWV(node, (TypeVarSubs<SNode>) parameters[0]);
         return null;
-      case 3:
-        return (T) ((SNodeReference) getJavaClassPointer_idAa0Z14eCoU(node));
       case 4:
-        return (T) ((TypeKey) typeKey_idJmO2PmZtH5(node));
+        return (T) ((SNodeReference) getJavaClassPointer_idAa0Z14eCoU(node));
       case 5:
+        return (T) ((TypeKey) typeKey_idJmO2PmZtH5(node));
+      case 6:
         return (T) ((_FunctionTypes._return_P0_E0<? extends SNode>) createConstructor_id2$1CHwF$28b(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -137,18 +145,18 @@ public final class ShortNodeType__BehaviorDescriptor extends BaseBHDescriptor {
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode createConceptType_7xg5x8_a0a0(SNode p0) {
+  private static SNode createConceptType_7xg5x8_a0a1(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ConceptType$Jb);
     n0.setReferenceTarget(LINKS.concept$PItp, p0);
     return n0.getResult();
   }
-  private static SNode createNavigationOperation_7xg5x8_a5a0a0f(SNode p0, SNode p1) {
+  private static SNode createNavigationOperation_7xg5x8_a5a0a0g(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NavigationOperation$4I);
     n0.forChild(LINKS.operand$YS5t).initNode(p0, CONCEPTS.IExpression$2i, true);
     n0.forChild(LINKS.target$C6zp).initNode(p1, CONCEPTS.INavigationTarget$Ae, true);
     return n0.getResult();
   }
-  private static SNode createReceiverType_7xg5x8_a0a0a5a0a0f(SNode p0) {
+  private static SNode createReceiverType_7xg5x8_a0a0a5a0a0g(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ReceiverType$$f);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.type$NVFj).init(CONCEPTS.ConceptType$Jb);

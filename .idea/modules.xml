@@ -18,6 +18,7 @@
       <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/context/context.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/context/context.iml" group="core/aspects/feedback" />
       <module fileurl="file://$PROJECT_DIR$/plugins/debugger-api/api/debugger-api-api.iml" filepath="$PROJECT_DIR$/plugins/debugger-api/api/debugger-api-api.iml" group="plugins/debugger/debugger-api" />
       <module fileurl="file://$PROJECT_DIR$/plugins/debugger-api/runtime/debugger-api-runtime.iml" filepath="$PROJECT_DIR$/plugins/debugger-api/runtime/debugger-api-runtime.iml" group="plugins/debugger/debugger-api" />
+      <module fileurl="file://$PROJECT_DIR$/plugins/debugger-api/core/debugger-core.iml" filepath="$PROJECT_DIR$/plugins/debugger-api/core/debugger-core.iml" group="plugins/debugger/debugger-api" />
       <module fileurl="file://$PROJECT_DIR$/plugins/debugger-java/api/debugger-java-api.iml" filepath="$PROJECT_DIR$/plugins/debugger-java/api/debugger-java-api.iml" group="plugins/debugger/debugger-java" />
       <module fileurl="file://$PROJECT_DIR$/plugins/debugger-java/customViewers/debugger-java-customViewers.iml" filepath="$PROJECT_DIR$/plugins/debugger-java/customViewers/debugger-java-customViewers.iml" group="plugins/debugger" />
       <module fileurl="file://$PROJECT_DIR$/plugins/debugger-java/runtime/debugger-java-runtime.iml" filepath="$PROJECT_DIR$/plugins/debugger-java/runtime/debugger-java-runtime.iml" group="plugins/debugger/debugger-java" />
@@ -49,14 +50,12 @@
       <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/messages-for-structure/messages-for-structure.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/messages-for-structure/messages-for-structure.iml" group="core/aspects/feedback" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-migration/migration-platform/migration-platform.iml" filepath="$PROJECT_DIR$/plugins/mps-migration/migration-platform/migration-platform.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/languages/languageDesign/migration/solutions/runtime/migrations-runtime.iml" filepath="$PROJECT_DIR$/languages/languageDesign/migration/solutions/runtime/migrations-runtime.iml" group="languages" />
-      <module fileurl="file://$PROJECT_DIR$/testbench/modules/miscTests/misc-tests.iml" filepath="$PROJECT_DIR$/testbench/modules/miscTests/misc-tests.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/model/model.iml" filepath="$PROJECT_DIR$/core/model/model.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/module/module.iml" filepath="$PROJECT_DIR$/core/module/module.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/mps.iml" filepath="$PROJECT_DIR$/mps.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/mps-annotations/mps-annotations.iml" filepath="$PROJECT_DIR$/core/mps-annotations/mps-annotations.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/tool/builder/mps-ant.iml" filepath="$PROJECT_DIR$/core/tool/builder/mps-ant.iml" group="ant" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-console/mps-console.iml" filepath="$PROJECT_DIR$/plugins/mps-console/mps-console.iml" group="plugins" />
-      <module fileurl="file://$PROJECT_DIR$/workbench/mps-debugger/mps-debugger.iml" filepath="$PROJECT_DIR$/workbench/mps-debugger/mps-debugger.iml" group="workbench/platform" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-devkit/mps-devkit.iml" filepath="$PROJECT_DIR$/plugins/mps-devkit/mps-devkit.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/workbench/mps-editor/mps-editor.iml" filepath="$PROJECT_DIR$/workbench/mps-editor/mps-editor.iml" group="workbench" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-httpsupport/mps-httpsupport.iml" filepath="$PROJECT_DIR$/plugins/mps-httpsupport/mps-httpsupport.iml" group="plugins" />

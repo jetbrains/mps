@@ -227,7 +227,10 @@
               </node>
               <node concept="2ShNRf" id="1y5ThBEOhOO" role="33vP2m">
                 <node concept="1pGfFk" id="74A5ZXrpnVh" role="2ShVmc">
-                  <ref role="37wK5l" to="vl5q:~LocalReference$_int.&lt;init&gt;()" resolve="LocalReference._int" />
+                  <ref role="37wK5l" to="vl5q:~LocalReference$_int.&lt;init&gt;(int)" resolve="LocalReference._int" />
+                  <node concept="3cmrfG" id="1b4cM$P33TI" role="37wK5m">
+                    <property role="3cmrfH" value="0" />
+                  </node>
                 </node>
               </node>
             </node>

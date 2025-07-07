@@ -29,6 +29,7 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
     addGroup(new DataFlowInternal_ActionGroup(this));
   }
   public void adjustRegularGroups() {
+    insertGroupIntoAnother(DataFlowInternal_ActionGroup.ID, DebugActions_ActionGroup.ID, DebugActions_ActionGroup.LABEL_ID_dataFlow);
     insertGroupIntoAnother(DFAActions_ActionGroup.ID, DebugActions_ActionGroup.ID, DebugActions_ActionGroup.LABEL_ID_dataFlow);
   }
 }

@@ -25,6 +25,14 @@
     <extensionPoint qualifiedName="jetbrains.mps.debugger.PositionProvider" beanClass="jetbrains.mps.debug.api.source.PositionProviderBean" dynamic="true">
       <with attribute="class" implements="jetbrains.mps.debug.api.source.IPositionProvider"/>
     </extensionPoint>
+    <extensionPoint qualifiedName="jetbrains.mps.debugger.breakpointProvider" beanClass="jetbrains.mps.debug.api.breakpoints.BreakpointProviderBean" dynamic="false">
+      <with attribute="class" implements="jetbrains.mps.debug.api.breakpoints.IBreakpointsProvider"/>
+      <with attribute="id"/>
+    </extensionPoint>
+    <extensionPoint qualifiedName="jetbrains.mps.debugger.implementation" beanClass="jetbrains.mps.debug.api.DebuggerImplBean" dynamic="true">
+      <with attribute="class" implements="jetbrains.mps.debug.api.IDebugger"/>
+      <with attribute="id"/>
+    </extensionPoint>
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">

@@ -30,5 +30,5 @@ public interface KotlinModuleCache {
    * @param compiledFiles relative paths list of output files
    * @return true if cache knows about files that are missing from the provided list
    */
-  Boolean missesOutput(@NotNull Set<String> compiledFiles);
+  Boolean missesOutput(@NotNull Set<File> compiledFiles);
 }

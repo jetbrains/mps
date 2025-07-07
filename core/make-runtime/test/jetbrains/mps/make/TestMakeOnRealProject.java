@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +42,7 @@ import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.util.PathSpecBundle;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -229,7 +230,7 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     ourModelAccess.runWriteAction(new Runnable() {
       @Override
       public void run() {
-        myTmpDir = IFileUtil.createTmpDir();
+        myTmpDir = IFileUtil.createTmpDir(myEnvironment.getPlatform().findComponent(VFSManager.class).getUmbrellaFileSystemJavaIO());
 
         myCreatedRuntimeSolution = createNewRuntimeSolution();
         createJavaFiles(myCreatedRuntimeSolution);

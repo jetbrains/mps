@@ -25,6 +25,7 @@ import org.jetbrains.mps.openapi.persistence.NavigationParticipant.NavigationTar
 import java.util.function.BiConsumer;
 
 /**
+ * TODO may not be needed of NavigationTargetPresentationWithIconForNode prooves to be performant enough, otherwise use this class instead.
  * Tells {@link ChooseByNameData} how to render {@link NavigationTarget}
  * @author Artem Tikhomirov
  * @since 3.5

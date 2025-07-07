@@ -36,6 +36,7 @@ import com.intellij.openapi.project.ProjectUtil;
 import java.util.ArrayList;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFileVisitor;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.AnActionButtonRunnable;
 import java.awt.Dimension;
@@ -137,6 +138,12 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
         });
 
         filesToModulePathsProcessor.accept(moduleFiles);
+      }
+
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
       }
     };
 

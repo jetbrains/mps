@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,6 +41,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelId;
+import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -100,7 +101,7 @@ public class SModel implements SModelData, UpdateModeSupport {
   private List<ImportElement> myImports = new ArrayList<>();
   private INodeIdToNodeMap myIdToNodeMap;
   private StackTraceElement[] myDisposedStacktrace = null;
-  private ImplicitImportsLegacyHolder myLegacyImplicitImports;
+
   /**
    * update mode, aka full load mode, is the state we are attaching newly loaded children to a model loaded partially
    * since it could happen during model read, we can't rely on model read/write action mechanism.
@@ -140,10 +141,17 @@ public class SModel implements SModelData, UpdateModeSupport {
   }
 
 
+  @Override
   public SModelId getModelId() {
     return myReference.getModelId();
   }
 
+  @Override
+  public SModelName getModelName() {
+    return myReference.getName();
+  }
+
+  @Override
   @NotNull
   public SModelReference getReference() {
     return myReference;
@@ -268,7 +276,7 @@ public class SModel implements SModelData, UpdateModeSupport {
 
   @NotNull
   public String toString() {
-    return myReference.toString();
+    return String.format("%s(%s)", getModelName(), getModelId());
   }
 
   //todo get rid of, try to cast, show an error if not casted
@@ -361,11 +369,11 @@ public class SModel implements SModelData, UpdateModeSupport {
   private void checkNotDisposed() {
     if (myDisposed) {
       final IllegalModelAccessError ex = new IllegalModelAccessError("accessing disposed model");
-      LOG.error(String.format("Model %s is disposed", myReference), ex);
+      LOG.error(String.format("Model %s(%s) is disposed", getModelName(), getModelId()), ex);
       if (myDisposedStacktrace != null) {
         final Throwable d = new Throwable();
         d.setStackTrace(myDisposedStacktrace);
-        LOG.error(String.format("The model %s has been disposed from ", myReference), d);
+        LOG.error(String.format("The model %s(%s) has been disposed from: ", getModelName(), getModelId()), d);
       }
     }
   }
@@ -622,11 +630,11 @@ public class SModel implements SModelData, UpdateModeSupport {
   }
 
   private void assignNewId(SNode node) {
-    SNodeId id;
-    id = generateUniqueId();
+    org.jetbrains.mps.openapi.model.SNodeId id;
+    id = NodeIdentityComponent.getInstance().issue(myModelDescriptor);
     while (myIdToNodeMap.containsKey(id)) {
       resetIdCounter();
-      id = generateUniqueId();
+      id = NodeIdentityComponent.getInstance().issue(myModelDescriptor);
     }
     node.setId(id);
     myIdToNodeMap.put(id, node);
@@ -658,20 +666,22 @@ public class SModel implements SModelData, UpdateModeSupport {
     return res;
   }
 
-  public void deleteLanguage(@NotNull SLanguage id) {
+  public boolean deleteLanguage(@NotNull SLanguage id) {
     if (myLanguagesIds.remove(id) != null) {
       fireLanguageRemovedEvent(id);
       markChanged();
+      return true;
     }
+    return false;
   }
 
-  public void addLanguage(@NotNull SLanguage language) {
+  public boolean addLanguage(@NotNull SLanguage language) {
     // FIXME where to take version value to put into myLanguagesIds if not from deprecated method???
     final int version = language.getLanguageVersion();
     Integer existingVersion = myLanguagesIds.get(language);
     if (existingVersion != null) {
       if (version == -1 || existingVersion <= version) {
-        return;
+        return false;
       }
       if (existingVersion != -1) {
         throw new VersionMismatchException(null, getModelDescriptor(), language, existingVersion, version);
@@ -680,6 +690,7 @@ public class SModel implements SModelData, UpdateModeSupport {
 
     setLanguageVersionInternal(language, version);
     fireLanguageAddedEvent(language);
+    return true;
   }
 
   public void setLanguageImportVersion(SLanguage language, int version) {
@@ -701,18 +712,22 @@ public class SModel implements SModelData, UpdateModeSupport {
     return Collections.unmodifiableList(myDevKits);
   }
 
-  public void addDevKit(SModuleReference ref) {
+  public boolean addDevKit(SModuleReference ref) {
     if (!myDevKits.contains(ref) && myDevKits.add(ref)) {
       fireDevKitAddedEvent(ref);
       markChanged();
+      return true;
     }
+    return false;
   }
 
-  public void deleteDevKit(@NotNull SModuleReference ref) {
+  public boolean deleteDevKit(@NotNull SModuleReference ref) {
     if (myDevKits.remove(ref)) {
       fireDevKitRemovedEvent(ref);
       markChanged();
+      return true;
     }
+    return false;
   }
 
   //model
@@ -721,41 +736,25 @@ public class SModel implements SModelData, UpdateModeSupport {
     return Collections.unmodifiableList(myImports);
   }
 
-  public void addModelImport(ImportElement importElement) {
+  public boolean addModelImport(ImportElement importElement) {
     // myImports is ArrayList, AL.add() doesn't check for presence.
     if (!myImports.contains(importElement) && myImports.add(importElement)) {
       fireImportAddedEvent(importElement.getModelReference());
       markChanged();
+      return true;
     }
+    return false;
   }
 
-  public void deleteModelImport(ImportElement importElement) {
+  public boolean deleteModelImport(ImportElement importElement) {
     if (myImports.remove(importElement)) {
-      if (myLegacyImplicitImports != null) {
-        // shall keep only if we do track implicit imports
-        myLegacyImplicitImports.addAdditionalModelVersion(importElement);  // to save version and ID if model was imported implicitly
-      }
       fireImportRemovedEvent(importElement.getModelReference());
       markChanged();
+      return true;
     }
+    return false;
   }
 
-  /**
-   * This is compatibility method with legacy persistence mechanism, unless used, no implicit imports are tracked.
-   * Drop once we no longer need to support serialization of old persistence formats (there's no reason to track
-   * implicit imports if we aren't going to serialize them afterwards)
-   * <p>
-   * It looks that there's no longer consumer of implicit imports. There's code to update them, but no code to read values, except
-   * for clients of #getAllImportElements()
-   */
-  @NotNull
-  @Deprecated(since = "3.4", forRemoval = true)
-  public ImplicitImportsLegacyHolder getImplicitImportsSupport() {
-    if (myLegacyImplicitImports == null) {
-      myLegacyImplicitImports = new ImplicitImportsLegacyHolder(this);
-    }
-    return myLegacyImplicitImports;
-  }
 
   /**
    * @deprecated though it's our internal API, there's 1 use in mbeddr of this exact method we need to fix first.
@@ -790,6 +789,7 @@ public class SModel implements SModelData, UpdateModeSupport {
         markChanged();
       }
     }
+    // as long as these languages make sense for m2m process, there seems to be no need to notify about changes
   }
 
   public void removeEngagedOnGenerationLanguage(SLanguage ref) {
@@ -874,17 +874,21 @@ public class SModel implements SModelData, UpdateModeSupport {
   }
 
   public void changeModelReference(SModelReference newModelReference) {
-    enforceFullLoad();
-    final SModelReference oldReference = myReference;
     myReference = newModelReference;
-    for (org.jetbrains.mps.openapi.model.SNode node : myIdToNodeMap.values()) {
-      for (SReference reference : node.getReferences()) {
-        // XXX here, equals would not notice change in model name, is it what we want? In fact, I would rather not keep model reference to self at all
-        if (reference instanceof StaticReference && oldReference.equals(reference.getTargetSModelReference())) {
-          ((StaticReference) reference).setTargetSModelReference(newModelReference);
-        }
-      }
+  }
+
+  public void changeNodeId(@NotNull org.jetbrains.mps.openapi.model.SNodeId existingNodeId, @NotNull org.jetbrains.mps.openapi.model.SNodeId newId) {
+    SNode existing = getNode_(existingNodeId);
+    if (existing == null) {
+      throw new IllegalArgumentException(String.format("No node with id %s in the model %s", existingNodeId, getModelName()));
     }
+    if (getNode_(newId) != null) {
+      throw new IllegalArgumentException(String.format("Node with id %s already present in the model %s", existingNodeId, getModelName()));
+    }
+    org.jetbrains.mps.openapi.model.SNode removed = myIdToNodeMap.remove(existingNodeId);
+    assert removed == existing;
+    existing._setId(newId);
+    myIdToNodeMap.put(newId, existing);
   }
 
   public SModel createEmptyCopy() {
@@ -893,11 +897,6 @@ public class SModel implements SModelData, UpdateModeSupport {
 
   public void copyPropertiesTo(SModel to) {
 
-    if (myLegacyImplicitImports != null) {
-      for (ImportElement ie : myLegacyImplicitImports.getAdditionalModelVersions()) {
-        to.getImplicitImportsSupport().addAdditionalModelVersion(ie.copy());
-      }
-    }
     for (ImportElement ie : importedModels()) {
       to.addModelImport(ie.copy());
     }

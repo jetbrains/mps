@@ -24,23 +24,31 @@ public class PathSpecTableRenderer extends ColoredTableCellRenderer {
     if (value != null) {
       PathSpec p = (PathSpec) value;
       if (p.resolved()) {
+        final IFile file = p.resolvedFile();
         if (p.startsWithMacro()) {
           final Optional<String> first = p.allMacro().findFirst();
+          String pathValue = p.value();
           if (first.isPresent()) {
             append(first.get(), SimpleTextAttributes.GRAYED_SMALL_ATTRIBUTES);
-            append("   ");
+            pathValue = pathValue.substring(first.get().length());
           }
-          setToolTipText(p.value());
-        }
-        final IFile file = p.resolvedFile();
-        if (!file.exists()) {
-          append(file.getPath(), SimpleTextAttributes.ERROR_ATTRIBUTES);
+          if (!file.exists()) {
+            append(pathValue, SimpleTextAttributes.ERROR_ATTRIBUTES);
+          } else {
+            append(pathValue);
+          }
         } else {
-          append(file.getPath());
+          if (!file.exists()) {
+            append(file.getPath(), SimpleTextAttributes.ERROR_ATTRIBUTES);
+          } else {
+            append(file.getPath());
+          }
         }
+        setToolTipText(file.getPath());
       } else {
         append(p.value(), SimpleTextAttributes.GRAY_ITALIC_ATTRIBUTES);
       }
     }
   }
+
 }

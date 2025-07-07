@@ -10,12 +10,11 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.actionSystem.Presentation;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
-import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.Language;
-import javax.swing.tree.TreeNode;
 import jetbrains.mps.ide.actions.NewModelActionExecutor;
+import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 
@@ -35,7 +34,7 @@ public class NewAccessoryModel_Action extends BaseAction {
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     Presentation presentation = event.getPresentation();
     presentation.setEnabledAndVisible(true);
-    presentation.setText(((event.getData(MPSCommonDataKeys.TREE_NODE) instanceof ProjectModuleTreeNode ? "" : "New ")) + "Accessory Model");
+    presentation.setText(((event.getData(MPSCommonDataKeys.VALUE) instanceof SModule ? "" : "New ")) + "Accessory Model");
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -58,7 +57,13 @@ public class NewAccessoryModel_Action extends BaseAction {
       }
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
+      Object p = event.getData(MPSCommonDataKeys.USER_OBJECT);
+      if (p == null) {
+        return false;
+      }
+    }
+    {
+      Object p = event.getData(MPSCommonDataKeys.VALUE);
       if (p == null) {
         return false;
       }
@@ -70,7 +75,11 @@ public class NewAccessoryModel_Action extends BaseAction {
     NewAccessoryModel_Action.this.getExecutor(event).execute();
   }
   protected NewModelActionExecutor getExecutor(final AnActionEvent event) {
-    return new NewModelActionExecutor(event.getData(MPSCommonDataKeys.MPS_PROJECT), ((Language) event.getData(MPSCommonDataKeys.CONTEXT_MODULE)), event.getData(MPSCommonDataKeys.TREE_NODE)) {
+    StereotypeProvider stereotypeProvider = StereotypeProvider.NONE;
+    if (event.getData(MPSCommonDataKeys.USER_OBJECT) instanceof StereotypeProvider) {
+      stereotypeProvider = ((StereotypeProvider) event.getData(MPSCommonDataKeys.USER_OBJECT));
+    }
+    return new NewModelActionExecutor(event.getData(MPSCommonDataKeys.MPS_PROJECT), ((Language) event.getData(MPSCommonDataKeys.CONTEXT_MODULE)), stereotypeProvider) {
       @Override
       protected void onModelCreated(final SModel model) {
         // FIXME bad design. onModelCreated runs command to create a model and attach it to a module,

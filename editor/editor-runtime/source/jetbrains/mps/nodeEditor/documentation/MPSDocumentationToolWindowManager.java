@@ -3,52 +3,46 @@
  */
 package jetbrains.mps.nodeEditor.documentation;
 
-import com.intellij.icons.AllIcons.Toolwindows;
-import com.intellij.openapi.components.PersistentStateComponent;
+import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.wm.ToolWindow;
-import com.intellij.openapi.wm.ToolWindowAnchor;
+import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.openapi.wm.ex.ToolWindowEx;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
-import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
 import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationToolWindowUI;
 import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationUI;
-import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JPanel;
 
 public class MPSDocumentationToolWindowManager {
-  private final DocumentationToolWindow myToolWindow;
   private final Key<MPSDocumentationToolWindowUI> TW_UI_KEY = Key.create("mps.documentation.tw.ui");
+  private final Project myProject;
 
   public static MPSDocumentationToolWindowManager getInstance(@NotNull Project project) {
     return project.getService(MPSDocumentationToolWindowManager.class);
   }
 
   private MPSDocumentationToolWindowManager(Project project) {
-    myToolWindow = new DocumentationToolWindow(project);
+    myProject = project;
   }
 
   public void showInToolWindow(MPSDocumentationUI ui) {
-    Content reusableContent = getReusableContent();
-    if (reusableContent == null) {
-      showInNewTab(ui);
+    Content content = getReusableContent();
+    if (content == null) {
+      content = addNewContent();
     } else {
-      MPSDocumentationToolWindowUI toolWindowUI = reusableContent.getUserData(TW_UI_KEY);
+      MPSDocumentationToolWindowUI toolWindowUI = content.getUserData(TW_UI_KEY);
       Disposer.dispose(toolWindowUI);
-      reusableContent.putUserData(TW_UI_KEY, null);
-      initUI(ui, reusableContent);
-      makeVisible();
+      content.putUserData(TW_UI_KEY, null);
     }
-  }
-
-  private void showInNewTab(MPSDocumentationUI ui) {
-    Content content = addNewContent();
     initUI(ui, content);
+    installToolWindowActions(ui);
     makeVisible();
   }
 
@@ -60,54 +54,60 @@ public class MPSDocumentationToolWindowManager {
 
   @NotNull
   private Content addNewContent() {
-    Content content = ContentFactory.getInstance().createContent(new JPanel(), "Document", false);
+    Content content = ContentFactory.getInstance().createContent(new JPanel(), null, false);
     content.setCloseable(true);
     content.putUserData(ToolWindow.SHOW_CONTENT_ICON, true);
-    myToolWindow.addContent(content);
+    getToolWindow().getContentManager().addContent(content);
     return content;
   }
 
+  private @Nullable ToolWindow getToolWindow() {
+    ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(myProject);
+    return toolWindowManager.getToolWindow("Doc");
+  }
+
+  private void installToolWindowActions(MPSDocumentationUI ui) {
+    ToolWindowEx toolWindowEx = (ToolWindowEx) getToolWindow();
+    if (toolWindowEx != null) {
+      toolWindowEx.setTitleActions(ui.getNavigateActions());
+      toolWindowEx.setAdditionalGearActions(new DefaultActionGroup(ui.getCommonGearActions()));
+    }
+  }
+
   private void makeVisible() {
-    myToolWindow.openToolLater(false);
+    if (getToolWindow().isVisible()) {
+      return;
+    }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      if (!getToolWindow().isAvailable()) {
+        getToolWindow().setAvailable(true);
+      }
+      getToolWindow().show();
+      getToolWindow().activate(null);
+    });
   }
 
   public boolean isVisible() {
-    return myToolWindow.toolIsOpened();
+    final ToolWindow toolWindow = getToolWindow();
+    return toolWindow != null && toolWindow.isVisible();
   }
 
   @Nullable
   private Content getReusableContent() {
-    Content[] contents = myToolWindow.getContent();
-    if (contents.length >= 1) {
+    Content[] contents = getToolWindow().getContentManager().getContents();
+    assert (contents.length == 1 || contents.length == 0);
+    if (contents.length == 1) {
       return contents[0];
     } else {
       return null;
     }
   }
 
-
-  private static class DocumentationToolWindow extends BaseTabbedProjectTool implements PersistentStateComponent<Element> {
-    DocumentationToolWindow(Project project) {
-      super(project, "Documentation", null, Toolwindows.Documentation, ToolWindowAnchor.RIGHT, true);
+  public void updateContentDisplayName(String newName) {
+    Content reusableContent = getReusableContent();
+    if (reusableContent != null) {
+      reusableContent.setDisplayName(newName);
     }
-
-    @Override
-    public @Nullable Element getState() {
-      return null;
-    }
-
-    @Override
-    public void loadState(@NotNull Element state) {
-
-    }
-
-    void addContent(Content content) {
-      getContentManager().addContent(content);
-    }
-
-    Content[] getContent() {
-      return getContentManager().getContents();
-    }
-
   }
+
 }

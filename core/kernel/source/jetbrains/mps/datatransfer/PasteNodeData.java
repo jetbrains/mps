@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,54 +30,43 @@ import java.util.Set;
 /**
  * immutable data
  */
-public class PasteNodeData {
+public final class PasteNodeData {
+  private final PasteNodeData myOrigin; // != null for paste usage scenario
+  private int myPasteCount; // Given the nature of copy-paste operations, I don't expect threading issues, although AtomicInteger might not be bad anyway
   private final List<SNode> myNodes;
+  // at the moment, make sense for "out" PND, created from myCopiedLinks
   private final Set<SReference> myRequireResolveReferences;
+  // at the moment, make sense for "in" PND only, serves as an input to constuct myRequireResolveReferences for paste. FIXME get rid of SReference
   private final Collection<AssociationLink> myCopiedLinks;
-  private final Set<SLanguage> myNecessaryLanguages;
-  private final Set<SModelReference> myNecessaryModels;
-  private final SModelReference mySourceModel;
-
-  // for paste scenario, legacy
-  public PasteNodeData(List<SNode> nodes, Set<SReference> references,
-                       SModelReference sourceModelRef,
-                       Set<SLanguage> necessaryLanguages,
-                       Set<SModelReference> necessaryModels) {
-    myNodes = nodes;
-    myRequireResolveReferences = references;
-    myCopiedLinks = Collections.emptyList();
-    mySourceModel = sourceModelRef;
-    myNecessaryLanguages = necessaryLanguages;
-    myNecessaryModels = necessaryModels;
-  }
+  private final Set<SLanguage> myNecessaryLanguages; // r/o
+  private final Set<SModelReference> myNecessaryModels; // r/o
 
   // for paste scenario, new
   public PasteNodeData(PasteNodeData in, List<SNode> nodes, Set<SReference> references) {
-    this(nodes, references, in.mySourceModel, in.getNecessaryLanguages(), in.getNecessaryModels());
+    myOrigin = in;
+    myNodes = nodes;
+    myRequireResolveReferences = references;
+    myCopiedLinks = Collections.emptySet(); // employed on copy only
+    myNecessaryLanguages = in.getNecessaryLanguages();
+    myNecessaryModels = in.getNecessaryModels();
   }
 
-    // for copy scenario
-  public PasteNodeData(SModelReference sourceModelRef,
-                       List<SNode> nodes,
+  // for copy scenario, new
+  public PasteNodeData(List<SNode> nodes,
                        @NotNull Collection<AssociationLink> references,
                        Set<SLanguage> necessaryLanguages,
                        Set<SModelReference> necessaryModels) {
+    myOrigin = null;
     myNodes = nodes;
-    myRequireResolveReferences = Collections.emptySet();
+    myRequireResolveReferences = Collections.emptySet(); // employed on paste only
     myCopiedLinks = references;
-    mySourceModel = sourceModelRef;
     myNecessaryLanguages = necessaryLanguages;
     myNecessaryModels = necessaryModels;
   }
 
-    // empty
-  private PasteNodeData(@Nullable SModelReference sourceModel) {
-    myNodes = Collections.emptyList();
-    myRequireResolveReferences = Collections.emptySet();
-    myCopiedLinks = Collections.emptyList();
-    mySourceModel = sourceModel;
-    myNecessaryLanguages = Collections.emptySet();
-    myNecessaryModels = Collections.emptySet();
+  // empty
+  private PasteNodeData() {
+    this(Collections.emptyList(), Collections.emptySet(), Collections.emptySet(), Collections.emptySet());
   }
 
   public List<SNode> getNodes() {
@@ -92,11 +81,6 @@ public class PasteNodeData {
     return myCopiedLinks;
   }
 
-  @Nullable
-  public SModelReference getSourceModel() {
-    return mySourceModel;
-  }
-
   public Set<SLanguage> getNecessaryLanguages() {
     return myNecessaryLanguages;
   }
@@ -105,7 +89,26 @@ public class PasteNodeData {
     return myNecessaryModels;
   }
 
-  public static PasteNodeData emptyPasteNodeData(SModelReference sourceModel) {
-    return new PasteNodeData(sourceModel);
+  /**
+   * Invoke when PasteNodeData instance has been applied and its nodes have been inserted into a new model.
+   * This is necessary to handle to handle scenarios like Cut-Paste, Cut-Paste-Paste, and Copy-Paste  when
+   * original nodes come with unique values that are not supposed to be copied (or copied more than once for
+   * Cut-Paste scenarios)
+   * @since 2024.1
+   */
+  public void consume() {
+    assert myOrigin != null : "Don't invoke consume() on node data other than intended for paste operation";
+    myOrigin.myPasteCount++; // XXX would be great to decrement on undo!
+  }
+
+  /**
+   * INTERNAL API, DON'T USE OUTSIDE OF MPS
+   */
+  public boolean consumed() {
+    return myPasteCount > 0;
+  }
+
+  public static PasteNodeData emptyPasteNodeData() {
+    return new PasteNodeData();
   }
 }

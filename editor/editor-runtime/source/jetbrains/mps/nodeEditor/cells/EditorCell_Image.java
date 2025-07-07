@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -227,6 +227,9 @@ public class EditorCell_Image extends EditorCell_Basic {
     public Icon loadIcon(EditorContext context, SNode node) {
       assert myModule != null || myModuleRef != null;
       // try deployed location first
+      // Note, we don't care if myModuleRef points to deployed, packaged module or one from sources of an actual project.
+      // For module deployed from sources, there's IClassPathItem extension to supply resources under ${module} location, see LocalResourceClassPathItem.
+      // For packaged deployed modules, it's build language responsibility to add respective icons into jar with binaries.
       if (myPath.startsWith(MacrosFactory.MODULE) && myPath.length() > MacrosFactory.MODULE.length()+1) {
         // there's '/' b/w module macro and the rest of the path, we gonna strip it off, make sure we don't get out of bounds
         AtomicReference<Icon> loaded = new AtomicReference<>(null);
@@ -244,8 +247,8 @@ public class EditorCell_Image extends EditorCell_Basic {
               loaded.set(new ImageIcon(is.readAllBytes(), asAbsoluteResourcePath));
             }
           } catch (IOException e) {
-            LOG.info(String.format("Can't load icon [%s]%s", mr.getSourceModule().getModuleName(), asAbsoluteResourcePath), e);
-            // ignore
+            LOG.info(String.format("Can't load icon [%s]%s", mr.getSourceModule().getModuleName(), asAbsoluteResourcePath));
+            // ignore, try regular file and macro resolution
           }
         });
         if (loaded.get() != null) {
@@ -257,7 +260,7 @@ public class EditorCell_Image extends EditorCell_Basic {
         return null;
       }
       String fullPath = MacrosFactory.forModule(m).expandPath(myPath);
-      if (fullPath == null || !(m instanceof AbstractModule)) {
+      if (fullPath == null || !(m instanceof AbstractModule) || ((AbstractModule) m).getDescriptorFile() == null) {
         return null;
       }
 
@@ -273,7 +276,7 @@ public class EditorCell_Image extends EditorCell_Basic {
         // into EditorContext implementation (which could use ModuleRuntime.getOwnResource() for deployed modules)
         // or even under some IconManager (BaseIconManager alternative) so that there's single place to look for modules
         // come and go.
-        IFile iconFile = ((AbstractModule) m).getFileSystem().findExistingFile(fullPath);
+        IFile iconFile = ((AbstractModule) m).getDescriptorFile().getFileSystem().findExistingFile(fullPath);
         if (iconFile == null) {
           LOG.info(String.format("Can't find image '%s' in module %s", myPath, m.getModuleName()));
           return null;

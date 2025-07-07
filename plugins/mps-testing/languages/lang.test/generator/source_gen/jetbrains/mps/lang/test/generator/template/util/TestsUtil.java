@@ -26,8 +26,8 @@ public final class TestsUtil {
     if (projectPath != null) {
       return NameUtil.escapeString(projectPath);
     }
-    Logger.getLogger(TestsUtil.class).error(String.format("Model %s (from %s) doesn't specify project path in TestInfo!", SModelOperations.getModelName(model), model.getSource()));
-    return "";
+    Logger.getLogger(TestsUtil.class).info(String.format("Model %s (from %s) doesn't specify project path in TestInfo. Use -Dmps.test.project.path to specify project path.", SModelOperations.getModelName(model), model.getSource()));
+    return null;
   }
 
   public static void mapSrcExtract(SNode outputNode) {

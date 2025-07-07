@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
@@ -2991,6 +2991,16 @@
       <node concept="3F0ifn" id="6$2CuKCDA$B" role="3EZMnx">
         <property role="3F0ifm" value=")" />
         <ref role="1k5W1q" to="tpen:hXb$V4T" resolve="RightBracket" />
+      </node>
+      <node concept="3F0ifn" id="2$nlLZcl7Dt" role="3EZMnx">
+        <property role="3F0ifm" value="open tab instantly:" />
+        <node concept="pVoyu" id="2$nlLZcl7Pp" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F1sOY" id="2$nlLZcnuLU" role="3EZMnx">
+        <property role="1$x2rV" value="&lt;true by default&gt;" />
+        <ref role="1NtTu8" to="tp4k:2$nlLZcnuCb" resolve="openTab" />
       </node>
       <node concept="l2Vlx" id="6$2CuKCDA$v" role="2iSdaV" />
     </node>

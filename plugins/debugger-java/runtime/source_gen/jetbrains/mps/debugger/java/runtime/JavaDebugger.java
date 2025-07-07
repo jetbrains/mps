@@ -4,24 +4,19 @@ package jetbrains.mps.debugger.java.runtime;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.AbstractDebugger;
-import com.intellij.openapi.components.BaseComponent;
-import jetbrains.mps.debugger.java.runtime.breakpoints.JavaBreakpointsProvider;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debug.api.AbstractDebugSessionCreator;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.debugger.java.runtime.engine.VmCreator;
 import jetbrains.mps.debug.api.breakpoints.IBreakpointsProvider;
-import jetbrains.mps.debugger.java.runtime.evaluation.proxies.MirrorUtilImpl;
-import jetbrains.mps.debugger.java.runtime.evaluation.EvaluationUtilsImpl;
-import jetbrains.mps.debugger.java.api.evaluation.EvaluationUtils;
-import jetbrains.mps.debugger.java.api.evaluation.proxies.MirrorUtil;
+import jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager;
 
 @GeneratedClass(node = "r:171d7488-7735-44dd-8049-f905d8fca4b0(jetbrains.mps.debugger.java.runtime)/4352118152439837554", model = "r:171d7488-7735-44dd-8049-f905d8fca4b0(jetbrains.mps.debugger.java.runtime)")
-public class JavaDebugger extends AbstractDebugger implements BaseComponent {
-  private final JavaBreakpointsProvider myJavaBreakpointsProvider = new JavaBreakpointsProvider();
+public class JavaDebugger extends AbstractDebugger {
 
   public JavaDebugger() {
     super("Java");
+    // this is a regular IDEA extension for j.m.debugger.implementation extpoint, no need to init()/dispose()
   }
 
   @NotNull
@@ -33,31 +28,7 @@ public class JavaDebugger extends AbstractDebugger implements BaseComponent {
   @NotNull
   @Override
   public IBreakpointsProvider getBreakpointsProvider() {
-    return myJavaBreakpointsProvider;
+    return BreakpointProvidersManager.getInstance().getProvider(getName());
   }
 
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return getName() + " Debugger";
-  }
-
-  @Override
-  public void initComponent() {
-    super.init();
-    myJavaBreakpointsProvider.init();
-    new MirrorUtilImpl().init();
-    new EvaluationUtilsImpl().init();
-  }
-
-  @Override
-  public void disposeComponent() {
-    EvaluationUtils.getInstance().dispose();
-    MirrorUtil mirrorUtil = MirrorUtil.getInstance();
-    if (mirrorUtil != null) {
-      mirrorUtil.dispose();
-    }
-    myJavaBreakpointsProvider.dispose();
-    super.dispose();
-  }
 }

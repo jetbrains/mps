@@ -166,9 +166,6 @@
     <node concept="PrWs8" id="2yYXHtl6JEn" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjj" resolve="IDeclaration" />
     </node>
-    <node concept="PrWs8" id="213J8chjiJ$" role="PzmwI">
-      <ref role="PrY4T" node="213J8chjiEQ" resolve="IVariableIdentifier" />
-    </node>
     <node concept="PrWs8" id="1Izr$$XgfUD" role="PzmwI">
       <ref role="PrY4T" node="1Izr$$XgfU$" resolve="IObject" />
     </node>
@@ -724,8 +721,11 @@
     <node concept="PrWs8" id="18X2O0Fyb4a" role="PzmwI">
       <ref role="PrY4T" node="18X2O0Fy6BI" resolve="IStatementHolder" />
     </node>
+    <node concept="PrWs8" id="7LH$Ac_$$yg" role="PzmwI">
+      <ref role="PrY4T" node="2mD64u3yQho" resolve="IInferencePart" />
+    </node>
     <node concept="t5JxF" id="6gam351cCpq" role="lGtFl">
-      <property role="t5JxN" value="block of statements, that can be seen either as a { list of statements } or as an expression" />
+      <property role="t5JxN" value="block of statements, that can be seen either as a { list of statements } or as an expression. To be used as part of an expression (example: if, when), otherwise use IStatementHolder which lets you free to use IInferencePart or not." />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JfJ">
@@ -1297,6 +1297,9 @@
     <property role="EcuMT" value="2936055411798373497" />
     <property role="TrG5h" value="ILambdaParameter" />
     <property role="3GE5qa" value="expression.function" />
+    <node concept="PrWs8" id="2tT4f1P7a57" role="PrDN$">
+      <ref role="PrY4T" node="2mD64u3yQho" resolve="IInferencePart" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JhV">
     <property role="EcuMT" value="2936055411798373499" />
@@ -1779,7 +1782,7 @@
       <property role="IQ2ns" value="7960033071993940670" />
       <property role="20kJfa" value="parameter" />
       <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="2yYXHtl6Jkd" resolve="TypeParameter" />
+      <ref role="20lvS9" node="4QzAmvhcm6x" resolve="ITypeParameter" />
     </node>
     <node concept="PrWs8" id="6cg9X74h_iP" role="PzmwI">
       <ref role="PrY4T" node="6TRHYuCB$BU" resolve="IAnnotated" />
@@ -2294,6 +2297,9 @@
     </node>
     <node concept="PrWs8" id="2zU6wHFnfeR" role="PrDN$">
       <ref role="PrY4T" node="7Iv8Cw7qLdE" resolve="ITypecheckingRoot" />
+    </node>
+    <node concept="PrWs8" id="4DC0lW7c08" role="PrDN$">
+      <ref role="PrY4T" node="5D4bOjrr8CG" resolve="IFunctionCall" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jmh">
@@ -4176,6 +4182,9 @@
     <node concept="PrWs8" id="1$jFvlEU7BR" role="PrDN$">
       <ref role="PrY4T" node="2gj5XQXEpsk" resolve="ITypeArguments" />
     </node>
+    <node concept="PrWs8" id="4DC0lWfTKn" role="PrDN$">
+      <ref role="PrY4T" node="5D4bOjrr8CG" resolve="IFunctionCall" />
+    </node>
     <node concept="t5JxF" id="1$jFvlEW9v6" role="lGtFl">
       <property role="t5JxN" value="inheritance specifier that initialize the parent type with a constructor call" />
     </node>
@@ -4540,7 +4549,7 @@
     <property role="3GE5qa" value="declaration.property.accessor" />
     <property role="TrG5h" value="PropertyAccessor" />
     <property role="R5$K7" value="true" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="3hnD4DbJU$F" role="PzmwI">
       <ref role="PrY4T" node="213J8chjiEQ" resolve="IVariableIdentifier" />
     </node>

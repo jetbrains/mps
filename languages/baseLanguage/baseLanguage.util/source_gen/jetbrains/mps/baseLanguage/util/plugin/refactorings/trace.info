@@ -715,7 +715,7 @@
       <node id="2315910000642821276" at="34,50,35,239" concept="11" />
       <node id="2821913196967912898" at="39,83,40,87" concept="4" />
       <node id="1145499560084479629" at="40,87,41,131" concept="11" />
-      <node id="1145499560084480681" at="42,12,43,47" concept="11" />
+      <node id="1145499560084480681" at="42,12,43,55" concept="11" />
       <node id="2821913196968013473" at="48,29,49,13" concept="11" />
       <node id="2821913196968037408" at="52,39,53,105" concept="11" />
       <node id="2821913196968048788" at="56,36,57,86" concept="4" />
@@ -743,7 +743,7 @@
       <scope id="2315910000642821210" at="24,75,25,39" />
       <scope id="2315910000642821255" at="29,39,30,198" />
       <scope id="2315910000642821275" at="34,50,35,239" />
-      <scope id="1145499560084477178" at="42,12,43,47" />
+      <scope id="1145499560084477178" at="42,12,43,55" />
       <scope id="2821913196968009173" at="48,29,49,13" />
       <scope id="2821913196968036622" at="52,39,53,105" />
       <scope id="2821913196968047990" at="56,36,57,86" />
@@ -1497,20 +1497,24 @@
       <node id="8741374780833929543" at="79,21,80,19" concept="11" />
       <node id="8741374780833935237" at="81,5,82,42" concept="10" />
       <node id="8741374780833937016" at="82,42,83,68" concept="10" />
-      <node id="8033368885383950919" at="83,68,84,68" concept="10" />
-      <node id="8741374780833912685" at="84,68,85,35" concept="4" />
-      <node id="8033368885383953277" at="85,35,86,67" concept="10" />
+      <node id="8033368885383950919" at="83,68,84,91" concept="10" />
+      <node id="8741374780833912685" at="84,91,85,35" concept="4" />
+      <node id="8033368885383953277" at="85,35,86,90" concept="10" />
       <node id="8741374780833942515" at="87,49,88,41" concept="4" />
       <node id="8033368885383973062" at="89,5,90,34" concept="11" />
-      <node id="4909369320862629899" at="94,0,95,0" concept="14" trace="ClassifierMember$At" />
-      <node id="4909369320862629899" at="95,0,96,0" concept="14" trace="Classifier$Ix" />
+      <node id="181788137983450538" at="92,68,93,47" concept="11" />
+      <node id="181788137983478267" at="95,68,96,47" concept="11" />
+      <node id="4909369320862629899" at="100,0,101,0" concept="14" trace="ClassifierMember$At" />
+      <node id="4909369320862629899" at="101,0,102,0" concept="14" trace="Classifier$Ix" />
       <node id="1279276159889585467" at="27,0,29,0" concept="2" trace="MoveRefactoringUtils#()V" />
       <node id="2996818953919429954" at="34,132,37,9" concept="8" />
       <node id="4358493250249988866" at="41,70,44,5" concept="8" />
       <node id="4458227202731875184" at="45,50,48,5" concept="8" />
       <node id="3251278247448580166" at="55,82,58,9" concept="8" />
       <node id="8741374780833924751" at="78,47,81,5" concept="8" />
-      <node id="8741374780833938611" at="86,67,89,5" concept="8" />
+      <node id="8741374780833938611" at="86,90,89,5" concept="8" />
+      <node id="181788137983450538" at="92,0,95,0" concept="15" trace="as_rpe1sx_a0a0a4a5#(Ljava/lang/Object;Ljava/lang/Class;)null" />
+      <node id="181788137983478267" at="95,0,98,0" concept="15" trace="as_rpe1sx_a0a0a6a5#(Ljava/lang/Object;Ljava/lang/Class;)null" />
       <node id="1603057458588772996" at="67,0,71,0" concept="15" trace="addNodeModelImportIfNeed#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2996818953919429951" at="33,66,38,7" concept="7" />
       <node id="3251278247448564785" at="54,84,59,7" concept="7" />
@@ -1529,9 +1533,19 @@
       <scope id="1603057458588772999" at="68,75,69,88" />
       <scope id="8741374780833924753" at="79,21,80,19" />
       <scope id="8741374780833938613" at="87,49,88,41" />
+      <scope id="181788137983450538" at="92,68,93,47" />
+      <scope id="181788137983478267" at="95,68,96,47" />
       <scope id="1279276159889585467" at="27,0,29,0" />
       <scope id="2996818953919429953" at="34,132,37,9" />
       <scope id="3251278247448564791" at="55,82,58,9" />
+      <scope id="181788137983450538" at="92,0,95,0">
+        <var name="o" id="181788137983450538" />
+        <var name="type" id="181788137983450538" />
+      </scope>
+      <scope id="181788137983478267" at="95,0,98,0">
+        <var name="o" id="181788137983478267" />
+        <var name="type" id="181788137983478267" />
+      </scope>
       <scope id="1603057458588772996" at="67,0,71,0">
         <var name="node" id="1603057458588773014" />
         <var name="toImport" id="1603057458588773020" />
@@ -1572,8 +1586,8 @@
         <var name="model" id="4458227202731875179" />
         <var name="toImport" id="4458227202731875181" />
       </scope>
-      <unit id="4909369320862629899" at="93,0,97,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MoveRefactoringUtils$CONCEPTS" />
-      <unit id="4909369320862629899" at="26,0,98,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MoveRefactoringUtils" />
+      <unit id="4909369320862629899" at="99,0,103,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MoveRefactoringUtils$CONCEPTS" />
+      <unit id="4909369320862629899" at="26,0,104,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MoveRefactoringUtils" />
     </file>
   </root>
   <root nodeRef="r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)/5142438244426402999">

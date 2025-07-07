@@ -5,6 +5,7 @@ package jetbrains.mps.lang.typesystem.pluginSolution.plugin;
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -13,6 +14,7 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.errors.IErrorReporter;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.errors.SimpleErrorReporter;
@@ -29,7 +31,7 @@ public class ShowNodeType_Action extends BaseAction {
   public ShowNodeType_Action() {
     super("Show Type", "Show node's type", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(true);
+    this.setActionAccess(ActionAccess.NONE);
     updateInBackground(true);
   }
   @Override
@@ -57,11 +59,13 @@ public class ShowNodeType_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
+    // This code (and concerns it rises) is quite similar to ShowExpectedType action
     final Wrappers._T<IErrorReporter> error = new Wrappers._T<IErrorReporter>();
     final Wrappers._T<SNode> type = new Wrappers._T<SNode>();
     final Wrappers._T<String> dialogTitle = new Wrappers._T<String>();
 
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
+    final SRepository projectRepository = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository();
+    projectRepository.getModelAccess().runReadAction(() -> {
       TypecheckingFacade tf = TypecheckingFacade.getFromContext();
       type.value = tf.getTypeOf(event.getData(MPSCommonDataKeys.NODE));
 
@@ -83,8 +87,8 @@ public class ShowNodeType_Action extends BaseAction {
 
     try {
 
-      event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().executeUndoTransparentCommand(() -> {
-        tmpModel.value = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.forDefaultModule());
+      projectRepository.getModelAccess().runWriteAction(() -> {
+        tmpModel.value = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.nonReloadableModule(projectRepository));
         tmpModel.value.addRootNode(type.value);
         TemporaryModels.getInstance().addMissingImports(tmpModel.value);
       });
@@ -92,7 +96,7 @@ public class ShowNodeType_Action extends BaseAction {
       new MyBaseNodeDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT), dialogTitle.value, type.value, error.value).show();
 
     } finally {
-      event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().executeUndoTransparentCommand(() -> {
+      projectRepository.getModelAccess().executeUndoTransparentCommand(() -> {
         // XXX what's the need to remove type node from the model we dispose anyway?
         // YYY maybe b/c the type object can be referenced elsewhere and we don't want to break that code
         // YYY that's the price one pays for having "free floating" nodes as part of the design

@@ -17,6 +17,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import java.awt.Color;
+import com.intellij.openapi.editor.colors.TextAttributesKey;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -28,7 +32,9 @@ public class ToDoHighlighter extends BaseEventProcessingEditorChecker {
     SNode node = editorComponent.getEditedNode();
     for (SNode textComment : SNodeOperations.getNodeDescendants(node, CONCEPTS.IComment$KY, false, new SAbstractConcept[]{})) {
       if (((boolean) (Boolean) BHReflection.invoke0(textComment, CONCEPTS.IGenericComment$bD, SMethodIdV2.create("isTODOComment", 281208147563576489L, 0x553941aeb020c32eL)))) {
-        SetSequence.fromSet(messages).addElement(new ToDoMessage(textComment, ((String) BHReflection.invoke0(textComment, CONCEPTS.IGenericComment$bD, SMethodIdV2.create("getTextualRepresentation", 281208147581426571L, 0x553941aeb020c32eL))), this));
+        EditorColorsScheme scheme = EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
+        Color foregroundColor = scheme.getAttributes(TextAttributesKey.createTextAttributesKey("TODO_DEFAULT_ATTRIBUTES")).getForegroundColor();
+        SetSequence.fromSet(messages).addElement(new ToDoMessage(textComment, ((String) BHReflection.invoke0(textComment, CONCEPTS.IGenericComment$bD, SMethodIdV2.create("getTextualRepresentation", 281208147581426571L, 0x553941aeb020c32eL))), this, foregroundColor));
       }
     }
     // There used to be code in needsUpdateAfterPropertyEvent() reacting to changes in legacy nodes

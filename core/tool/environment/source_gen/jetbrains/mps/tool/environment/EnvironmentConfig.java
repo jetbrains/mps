@@ -131,7 +131,7 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withTestingPlugin() {
-    return withCorePlugin().withIDEPlugin().addDistributedPlugin("mps-testing", "jetbrains.mps.testing");
+    return withCorePlugin().withIDEPlugin().addDistributedPlugin("mps-junit5", "jetbrains.mps.junit5").addDistributedPlugin("mps-testing", "jetbrains.mps.testing");
   }
 
   public EnvironmentConfig withGit4IdeaPlugin() {
@@ -158,14 +158,23 @@ public class EnvironmentConfig {
     if (!(PathManager.isFromSources())) {
       // we're running from app bundle/installed app
       return addDistributedPlugin("mps-debugger-api", "jetbrains.mps.debugger.api").addDistributedPlugin("mps-debugger-java", "jetbrains.mps.debugger.java").addDistributedPlugin("mps-execution-api", "jetbrains.mps.execution.api");
-
     } else {
       return addDistributedPlugin("debugger-api", "jetbrains.mps.debugger.api").addDistributedPlugin("debugger-java", "jetbrains.mps.debugger.java").addDistributedPlugin("execution-api", "jetbrains.mps.execution.api");
     }
   }
 
+  public EnvironmentConfig withExecutionPlugins() {
+    EnvironmentConfig ec = withDebuggerPlugin().withTestingPlugin().withBuildPlugin();
+    if (!(PathManager.isFromSources())) {
+      // same idea as in withDebuggerPlugin, above
+      return ec.addDistributedPlugin("mps-execution-languages", "jetbrains.mps.execution.languages").addDistributedPlugin("mps-execution-configurations", "jetbrains.mps.execution.configurations");
+    } else {
+      return ec.addDistributedPlugin("execution-languages", "jetbrains.mps.execution.languages").addDistributedPlugin("execution-configurations", "jetbrains.mps.execution.configurations");
+    }
+  }
+
   public EnvironmentConfig withModelCheckerPlugin() {
-    return addDistributedPlugin("mps-modelchecker", "jetbrains.mps.ide.modelchecker").withTestingPlugin();
+    return addDistributedPlugin("mps-modelchecker", "jetbrains.mps.ide.modelchecker");
   }
 
   public EnvironmentConfig withMigrationPlugin() {

@@ -25,6 +25,9 @@
 
   <target name="unpack">
     <unzip src="${mps.zip}" dest="${build.tmp}"/>
+    <copy todir="${mps_build_home}/lib/jna">
+      <fileset dir="${mps_build_home}/lib/jna/amd64" includes="*.*"/>
+    </copy>
   </target>
 
   <target name="check-project-structure" depends="unpack">
@@ -61,6 +64,11 @@
       <property name="mps_home" value="${mps_build_home}"/>
     </ant>
     <ant antfile="build/tests/mpsTestModules.xml" inheritAll="true" useNativeBasedir="true">
+      <target name="build"/>
+      <target name="check"/>
+      <property name="mps_home" value="${mps_build_home}"/>
+    </ant>
+    <ant antfile="build/tests/mpsTestRefactoring.xml" inheritAll="true" useNativeBasedir="true">
       <target name="build"/>
       <target name="check"/>
       <property name="mps_home" value="${mps_build_home}"/>

@@ -20,7 +20,7 @@
       <unit at="19,0,136,0" name="jetbrains.mps.lang.modelapi.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,14,0" name="jetbrains.mps.lang.modelapi.editor.IconContainer" />
+      <unit at="8,0,15,0" name="jetbrains.mps.lang.modelapi.editor.IconContainer" />
     </file>
     <file name="PresentationProviders.java">
       <unit at="13,0,16,0" name="jetbrains.mps.lang.modelapi.editor.PresentationProviders$PROPS" />
@@ -1184,10 +1184,10 @@
       <node id="8228083397230375774" at="123,66,124,24" concept="8" />
       <node id="8228083397230375781" at="125,18,126,82" concept="8" />
       <node id="8228083397231416031" at="131,62,132,98" concept="7" />
-      <node id="8228083397231040681" at="133,43,134,53" concept="8" />
-      <node id="8228083397230611426" at="136,43,137,53" concept="8" />
-      <node id="8228083397231196538" at="139,44,140,53" concept="8" />
-      <node id="8228083397231041692" at="142,41,143,53" concept="8" />
+      <node id="8228083397231040681" at="133,43,134,44" concept="8" />
+      <node id="8228083397230611426" at="136,43,137,44" concept="8" />
+      <node id="8228083397231196538" at="139,44,140,44" concept="8" />
+      <node id="8228083397231041692" at="142,41,143,44" concept="8" />
       <node id="8228083397231041027" at="144,11,145,22" concept="8" />
       <node id="8440876301206562030" at="153,0,154,0" concept="11" trace="ModulePointer$7i" />
       <node id="8228083397230375779" at="125,16,127,11" concept="0" />
@@ -1229,10 +1229,10 @@
       <scope id="8228083397230375764" at="121,25,122,46" />
       <scope id="8228083397230375773" at="123,66,124,24" />
       <scope id="8228083397230375780" at="125,18,126,82" />
-      <scope id="8228083397231040680" at="133,43,134,53" />
-      <scope id="8228083397230599628" at="136,43,137,53" />
-      <scope id="8228083397231196537" at="139,44,140,53" />
-      <scope id="8228083397231041691" at="142,41,143,53" />
+      <scope id="8228083397231040680" at="133,43,134,44" />
+      <scope id="8228083397230599628" at="136,43,137,44" />
+      <scope id="8228083397231196537" at="139,44,140,44" />
+      <scope id="8228083397231041691" at="142,41,143,44" />
       <scope id="8440876301206563172" at="76,52,78,29" />
       <scope id="8440876301206562030" at="36,0,39,0" />
       <scope id="8440876301206562030" at="41,118,44,18">
@@ -1307,10 +1307,10 @@
       <scope id="8440876301206562030" at="118,82,119,92" />
     </file>
     <file name="IconContainer.java">
-      <node id="8228083397231040682" at="9,0,10,0" concept="11" trace="RESOURCE_a0a1a31e3d" />
-      <node id="8228083397230612473" at="10,0,11,0" concept="11" trace="RESOURCE_a0a2a31e3d" />
-      <node id="8228083397231196539" at="11,0,12,0" concept="11" trace="RESOURCE_a0a3a31e3d" />
-      <node id="8228083397231041693" at="12,0,13,0" concept="11" trace="RESOURCE_a0a4a31e3d" />
+      <node id="8228083397231040682" at="10,0,11,0" concept="11" trace="RESOURCE_0" />
+      <node id="8228083397230612473" at="11,0,12,0" concept="11" trace="RESOURCE_1" />
+      <node id="8228083397231196539" at="12,0,13,0" concept="11" trace="RESOURCE_2" />
+      <node id="8228083397231041693" at="13,0,14,0" concept="11" trace="RESOURCE_3" />
     </file>
   </root>
   <root nodeRef="r:7bd127a5-e641-4c13-b150-b9c9b96f76ae(jetbrains.mps.lang.modelapi.editor)/8440876301206692951">

@@ -264,7 +264,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private Color _StyleParameter_QueryFunction_cvgoyj_a0d0a0() {
-    return _EditorUtil.grayIfNotSelectable(getNode());
+    return _EditorUtil.grayIfNotSelectable(getNode(), getEditorContext());
   }
   private EditorCell createComponent_2() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor._CloseTag");

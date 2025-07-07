@@ -57,26 +57,26 @@ public class JvmKotlinCompileCacheUtil {
   }
 
   @Nullable
-  public static KotlinModuleCache deserialize(@NotNull Element root) {
+  public static KotlinModuleCache deserialize(@NotNull Element root, String classeOutPath) {
     if (!ELEMENT_COMPILE_CACHE.equals(root.getName()) || !"1".equals(root.getAttributeValue("version"))) {
       return null;
     }
 
-    final Map<String, List<String>> map = new HashMap<>();
+    final Map<File, List<File>> map = new HashMap<>();
     final HashSet<File> inputFiles = new HashSet<>();
 
     for (var element : root.getChildren(ELEMENT_OUTPUT)) {
       final String outputPath = element.getAttributeValue(ATTR_PATH);
       for (var child : element.getChildren(ELEMENT_INPUT)) {
-        final String inputPath = child.getAttributeValue(ATTR_PATH);
+        var inputPath = new File(child.getAttributeValue(ATTR_PATH));
         if (outputPath != null && inputPath != null) {
-          map.computeIfAbsent(outputPath, path -> new ArrayList<>())
+          map.computeIfAbsent(new File(classeOutPath, outputPath), path -> new ArrayList<>())
              .add(inputPath);
         }
 
         // Keep all input files (so we don't need to iterate over map and convert strings to files again)
         if (inputPath != null) {
-          inputFiles.add(new File(inputPath));
+          inputFiles.add(inputPath);
         }
       }
     }

@@ -23,6 +23,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.behavior.IFunctionCall__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.kotlin.plugin.ExtensionsHelper;
+import jetbrains.mps.scope.FilterCommentedScope;
+import jetbrains.mps.scope.ModelPlusImportedScope;
 
 /**
  * Builder for signature scopes, covering most use cases for kotlin features.
@@ -47,6 +50,7 @@ public class KotlinScopes {
   protected SignatureFilter filter = null;
   protected List<_FunctionTypes._return_P1_E0<? extends SignatureScope, ? super SignatureScope>> wrappers;
   protected MemberReceiver receiver;
+  protected List<SignatureScope> additionalScopes = null;
 
   protected KotlinScopes(FullScopeContext context) {
     this.context = context;
@@ -71,9 +75,19 @@ public class KotlinScopes {
    * - `::member`: will get the scope from both the standalone methods and the contextual receivers (this@*)
    */
   public KotlinScopes membersReceiver() {
-    this.forceIncludeInstance = true;
+    forceInstanceInclusion();
 
     return NavigationHelper.withMemberReceiver(context, (operand) -> receiver(MemberReceiver.of(operand)), () -> useHierarchy());
+  }
+
+  /**
+   * This enabled inclusion of instance members, regardless of whether the type is static or not.
+   * 
+   * This should mainly be used for member references (...::member)
+   */
+  public KotlinScopes forceInstanceInclusion() {
+    this.forceIncludeInstance = true;
+    return this;
   }
 
   /**
@@ -150,6 +164,14 @@ public class KotlinScopes {
     return this;
   }
 
+  public KotlinScopes plus(SignatureScope scope) {
+    if (additionalScopes == null) {
+      additionalScopes = ListSequence.fromList(new ArrayList<>());
+    }
+    ListSequence.fromList(additionalScopes).addElement(scope);
+    return this;
+  }
+
   /**
    * Build the scopes from provided settings. Returns a list of independent scopes (they can be used for overload resolution).
    * 
@@ -187,6 +209,8 @@ public class KotlinScopes {
       SignatureScope.collectHierarchyScopes(context, collector);
       ListSequence.fromList(scopes.value).addSequence(ListSequence.fromList(collector.getScopes()));
     }
+
+    ListSequence.fromList(scopes.value).addSequence(ListSequence.fromList(additionalScopes));
 
     // If no wrapper, will keep initial form
     ListSequence.fromList(wrappers).visitAll((it) -> {
@@ -227,7 +251,26 @@ public class KotlinScopes {
     return IFunctionCall__BehaviorDescriptor.getFunctionScopeParts_id6dAo8EmAhT7.invoke(SNodeOperations.asSConcept(callConcept), new FullScopeContext(referenceNode, contextNode, containmentLink));
   }
 
-  public static Scope forKotlinFunction(SAbstractConcept callConcept, SNode referenceNode, @NotNull SNode contextNode, SContainmentLink containmentLink, SAbstractConcept filterConcept) {
-    return new SignatureScopeAsScope(HidingBySignatureScope.of(forKotlinFunction(callConcept, referenceNode, contextNode, containmentLink)), filterConcept);
+  public static Scope forKotlinFunction(final SAbstractConcept callConcept, final SNode referenceNode, @NotNull final SNode contextNode, final SContainmentLink containmentLink, SAbstractConcept filterConcept) {
+    return scopeWithLegacyTypesystemFallback(contextNode, filterConcept, () -> HidingBySignatureScope.of(forKotlinFunction(callConcept, referenceNode, contextNode, containmentLink)));
   }
+
+  /**
+   * Mechanism to create scope for a given target concept depending on the presence of the Kotlin typesystem.
+   * 
+   * If the typesystem is enabled and available, runs the computation and use the result as Scope.
+   * Otherwise, use a default implementation with all compatible elements of the given concept available.
+   * 
+   * This should be used to wrap any scope that use instance types (eg. call on receiver `a.b()`, `a.c`...) that need
+   * to be computed with Kotlin typesystem.
+   * 
+   * @param contextNode context node to use to retrieve typesystem (linked to target repository)
+   * @param filterConcept concept to filter signatures with in the resulting scope
+   * @param action computation of the scope
+   * @return constraint scope filtered on the provided filter concept
+   */
+  public static Scope scopeWithLegacyTypesystemFallback(final SNode contextNode, final SAbstractConcept filterConcept, final _FunctionTypes._return_P0_E0<? extends SignatureScope> action) {
+    return ExtensionsHelper.withTypesystem(contextNode, () -> new FilterCommentedScope(contextNode, new ModelPlusImportedScope(SNodeOperations.getModel(contextNode), false, filterConcept)), (_typesystem) -> new SignatureScopeAsScope(action.invoke(), filterConcept));
+  }
+
 }

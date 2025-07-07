@@ -14,8 +14,10 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BaseConcept;
   private ConceptPresentation props_BasePlaceholder;
   private ConceptPresentation props_ChildAttribute;
+  private ConceptPresentation props_DocumentationContent;
   private ConceptPresentation props_IAntisuppressErrors;
   private ConceptPresentation props_ICanSuppressErrors;
+  private ConceptPresentation props_ICommentedOutFromScope;
   private ConceptPresentation props_IContainer;
   private ConceptPresentation props_IDeprecatable;
   private ConceptPresentation props_IDontApplyTypesystemRules;
@@ -58,7 +60,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.Attribute:
         if (props_Attribute == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.icon(IconContainer.RESOURCE_a0a1a0a0b0pb);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_Attribute = cpb.create();
         }
         return props_Attribute;
@@ -90,6 +92,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ChildAttribute = cpb.create();
         }
         return props_ChildAttribute;
+      case LanguageConceptSwitch.DocumentationContent:
+        if (props_DocumentationContent == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_DocumentationContent = cpb.create();
+        }
+        return props_DocumentationContent;
       case LanguageConceptSwitch.IAntisuppressErrors:
         if (props_IAntisuppressErrors == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -103,6 +111,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ICanSuppressErrors = cpb.create();
         }
         return props_ICanSuppressErrors;
+      case LanguageConceptSwitch.ICommentedOutFromScope:
+        if (props_ICommentedOutFromScope == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_ICommentedOutFromScope = cpb.create();
+        }
+        return props_ICommentedOutFromScope;
       case LanguageConceptSwitch.IContainer:
         if (props_IContainer == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

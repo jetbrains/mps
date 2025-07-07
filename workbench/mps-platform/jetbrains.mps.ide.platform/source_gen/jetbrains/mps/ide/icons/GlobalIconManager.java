@@ -4,51 +4,40 @@ package jetbrains.mps.ide.icons;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.Disposable;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.smodel.language.ConceptRegistry;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import com.intellij.openapi.util.Disposer;
-import com.intellij.openapi.components.ServiceManager;
-import jetbrains.mps.classloading.DeployListener;
-import java.util.Set;
-import jetbrains.mps.module.ReloadableModule;
+import com.intellij.openapi.application.ApplicationManager;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentChange;
 
 @GeneratedClass(node = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)/1315815304215647153", model = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)")
 public class GlobalIconManager extends BaseIconManager implements Disposable {
-  private ClassLoaderManager myClm;
   private MyDeployListener myListener = new MyDeployListener();
 
   public GlobalIconManager() {
-    super(ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform().findComponent(ConceptRegistry.class));
-    MPSCoreComponents cc = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
-    myClm = cc.getClassLoaderManager();
-    myClm.addListener(this.myListener);
+    super(MPSCoreComponents.getInstance().getPlatform());
+    MPSCoreComponents cc = MPSCoreComponents.getInstance();
+    cc.getPlatform().findComponent(LanguageRegistry.class).addRegistryListener(myListener);
+    // XXX is explicit Disposer necessary? Perhaps, as lon as MPSCoreComponent is AppComponent, and we want
+    // this service to go sooner? OTOH, why do I care when this service is disposed?
     Disposer.register(cc, this);
   }
 
   public static GlobalIconManager getInstance() {
-    return ServiceManager.getService(GlobalIconManager.class);
+    return ApplicationManager.getApplication().getService(GlobalIconManager.class);
   }
 
   @Override
   public void dispose() {
-    if (myClm != null) {
-      myClm.removeListener(myListener);
-      myClm = null;
-    }
+    MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class).removeRegistryListener(myListener);
   }
 
-  private class MyDeployListener implements DeployListener {
-    public MyDeployListener() {
-    }
-    public void onUnloaded(Set<ReloadableModule> unloaded, @NotNull ProgressMonitor pm) {
-      invalidate(unloaded);
-    }
-    public void onLoaded(Set<ReloadableModule> loaded, @NotNull ProgressMonitor pm) {
-      invalidate(loaded);
+  private class MyDeployListener implements ModuleDeploymentListener {
+    @Override
+    public void deploymentStateChanged(@NotNull ModuleDeploymentChange change) {
+      invalidate();
     }
   }
 }

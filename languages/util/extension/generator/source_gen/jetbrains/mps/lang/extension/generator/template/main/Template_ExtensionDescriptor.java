@@ -143,7 +143,7 @@ public class Template_ExtensionDescriptor extends TemplateDeclarationBase {
                               TemplateContext context11 = context10.subContext();
                               {
                                 final SNode tnode20 = environment.createOutputNode(myConcepts[9]);
-                                environment.resolve(new RefResolver(tnode20, myAssociationLinks[1], context11, new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "63012922130977669"), "Extension") {
+                                environment.resolve(new RefResolver(tnode20, myAssociationLinks[1], context11, new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "4103205777867490221"), "Extension") {
                                   @Override
                                   public Object resolve() {
                                     return QueriesGenerated.referenceMacro_GetReferent_1_0(createQueryContext());
@@ -156,37 +156,11 @@ public class Template_ExtensionDescriptor extends TemplateDeclarationBase {
                           }
                           environment.aggregate(tnode17, myAggregationLinks[3], tlist18);
                         }
-                        {
-                          final List<SNode> tlist21 = new ArrayList<SNode>();
-                          final Iterable<SNode> loopList21 = QueriesGenerated.sourceNodesQuery_1_2(new SourceSubstituteMacroNodesContext(context9, loopMacroRef2));
-                          for (SNode itnode21 : loopList21) {
-                            if (itnode21 == null) {
-                              continue;
-                            }
-                            TemplateContext context12 = context9.subContext(itnode21);
-                            final SNode tnode22 = environment.createOutputNode(myConcepts[8]);
-                            {
-                              TemplateContext context13 = context12.subContext();
-                              {
-                                final SNode tnode23 = environment.createOutputNode(myConcepts[9]);
-                                environment.resolve(new RefResolver(tnode23, myAssociationLinks[1], context13, new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "4103205777867490221"), "Extension") {
-                                  @Override
-                                  public Object resolve() {
-                                    return QueriesGenerated.referenceMacro_GetReferent_1_1(createQueryContext());
-                                  }
-                                });
-                                environment.aggregate(tnode22, myAggregationLinks[4], tnode23);
-                              }
-                            }
-                            tlist21.add(tnode22);
-                          }
-                          environment.aggregate(tnode17, myAggregationLinks[3], tlist21);
-                        }
                       }
                       tlist16 = TemplateUtil.singletonList(tnode17);
                     } else {
-                      final SNode tnode24 = environment.createOutputNode(myConcepts[11]);
-                      tlist16 = TemplateUtil.singletonList(tnode24);
+                      final SNode tnode21 = environment.createOutputNode(myConcepts[11]);
+                      tlist16 = TemplateUtil.singletonList(tnode21);
                     }
                     environment.aggregate(tnode8, myAggregationLinks[3], tlist16);
                   }
@@ -257,7 +231,6 @@ public class Template_ExtensionDescriptor extends TemplateDeclarationBase {
   private static final SNodePointer loopMacroRef = new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "63012922130955092");
   private static final SNodePointer propertyMacro = new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "63012922130955116");
   private static final SNodePointer ifMacroRef = new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "3698530148185596575");
-  private static final SNodePointer loopMacroRef1 = new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "63012922130977658");
-  private static final SNodePointer loopMacroRef2 = new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "4103205777867490233");
+  private static final SNodePointer loopMacroRef1 = new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "4103205777867490233");
   private static final SNodePointer ifMacroRef1 = new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "3698530148185600852");
 }

@@ -9,25 +9,36 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class BuildMps_IdeaPluginContent__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbebL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginContent");
 
   public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547494638219603457L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(Object.class, ""));
+  public static final SMethod<Iterable<SNode>> getModules_id26vVkElqAGr = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getModules").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2422916029138758427L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(exports_id5FtnUVJQES1);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(exports_id5FtnUVJQES1, getModules_id26vVkElqAGr);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object object) {
+    {
+      final SNode module = as_jioj3d_a0a0a0a9(object, SNode.class);
+      if (SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_AbstractModule$FZ)) {
+        return Sequence.fromIterable(BuildMps_IdeaPluginContent__BehaviorDescriptor.getModules_id26vVkElqAGr.invoke(__thisNode__)).contains(module);
+      }
+    }
+
     return false;
   }
 
@@ -75,5 +86,12 @@ public final class BuildMps_IdeaPluginContent__BehaviorDescriptor extends BaseBH
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+  private static <T> T as_jioj3d_a0a0a0a9(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BuildMps_AbstractModule$FZ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
   }
 }

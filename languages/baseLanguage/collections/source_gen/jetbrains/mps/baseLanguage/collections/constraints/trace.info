@@ -177,46 +177,48 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590328(jetbrains.mps.baseLanguage.collections.constraints)/1576845966386891452">
     <file name="CustomMapCreator_Constraints.java">
-      <node id="1576845966386891452" at="30,41,31,40" concept="10" />
-      <node id="9034802358628290360" at="42,63,43,153" concept="6" />
-      <node id="6836281137582647784" at="46,80,47,196" concept="5" />
-      <node id="6836281137582647790" at="47,196,48,351" concept="6" />
-      <node id="1576845966386891452" at="52,6,53,131" concept="5" />
-      <node id="9034802358628290360" at="53,131,54,42" concept="1" />
-      <node id="1576845966386891452" at="54,42,55,22" concept="6" />
-      <node id="1576845966386891452" at="59,0,60,0" concept="8" trace="CustomMapCreator$j2" />
-      <node id="1576845966386891452" at="60,0,61,0" concept="8" trace="Expression$mB" />
-      <node id="1576845966386891452" at="61,0,62,0" concept="8" trace="TypeDerivable$EC" />
-      <node id="1576845966386891452" at="65,0,66,0" concept="8" trace="containerDeclaration$QVZa" />
-      <node id="1576845966386891452" at="30,0,33,0" concept="0" trace="CustomMapCreator_Constraints#()V" />
-      <node id="9034802358628290360" at="41,0,45,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="9034802358628290360" at="45,0,50,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="9034802358628290360" at="39,56,50,10" concept="6" />
-      <node id="9034802358628290360" at="37,0,52,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="9034802358628290360" at="35,90,52,6" concept="5" />
-      <node id="1576845966386891452" at="34,0,57,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1576845966386891452" at="30,41,31,40" />
-      <scope id="9034802358628290360" at="42,63,43,153" />
-      <scope id="9034802358628290360" at="46,80,48,351">
+      <node id="1576845966386891452" at="33,41,34,40" concept="10" />
+      <node id="9034802358628290360" at="45,63,46,153" concept="6" />
+      <node id="6836281137582647784" at="49,80,50,196" concept="5" />
+      <node id="6836281137582647790" at="50,196,51,557" concept="6" />
+      <node id="1576845966386891452" at="55,6,56,131" concept="5" />
+      <node id="9034802358628290360" at="56,131,57,42" concept="1" />
+      <node id="1576845966386891452" at="57,42,58,22" concept="6" />
+      <node id="1576845966386891452" at="62,0,63,0" concept="8" trace="CustomMapCreator$j2" />
+      <node id="1576845966386891452" at="63,0,64,0" concept="8" trace="Expression$mB" />
+      <node id="1576845966386891452" at="64,0,65,0" concept="8" trace="TypeDerivable$EC" />
+      <node id="1576845966386891452" at="65,0,66,0" concept="8" trace="MapType$h0" />
+      <node id="1576845966386891452" at="69,0,70,0" concept="8" trace="containerDeclaration$QVZa" />
+      <node id="1576845966386891452" at="70,0,71,0" concept="8" trace="containerType$WQze" />
+      <node id="1576845966386891452" at="33,0,36,0" concept="0" trace="CustomMapCreator_Constraints#()V" />
+      <node id="9034802358628290360" at="44,0,48,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="9034802358628290360" at="48,0,53,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="9034802358628290360" at="42,56,53,10" concept="6" />
+      <node id="9034802358628290360" at="40,0,55,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="9034802358628290360" at="38,90,55,6" concept="5" />
+      <node id="1576845966386891452" at="37,0,60,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="1576845966386891452" at="33,41,34,40" />
+      <scope id="9034802358628290360" at="45,63,46,153" />
+      <scope id="9034802358628290360" at="49,80,51,557">
         <var name="expr" id="6836281137582647785" />
       </scope>
-      <scope id="1576845966386891452" at="30,0,33,0" />
-      <scope id="9034802358628290360" at="41,0,45,0" />
-      <scope id="9034802358628290360" at="45,0,50,0">
+      <scope id="1576845966386891452" at="33,0,36,0" />
+      <scope id="9034802358628290360" at="44,0,48,0" />
+      <scope id="9034802358628290360" at="48,0,53,0">
         <var name="_context" id="9034802358628290360" />
       </scope>
-      <scope id="9034802358628290360" at="39,56,50,10" />
-      <scope id="9034802358628290360" at="37,0,52,0" />
-      <scope id="1576845966386891452" at="35,90,55,22">
+      <scope id="9034802358628290360" at="42,56,53,10" />
+      <scope id="9034802358628290360" at="40,0,55,0" />
+      <scope id="1576845966386891452" at="38,90,58,22">
         <var name="d0" id="9034802358628290360" />
         <var name="references" id="1576845966386891452" />
       </scope>
-      <scope id="1576845966386891452" at="34,0,57,0" />
-      <unit id="1576845966386891452" at="64,0,67,0" name="jetbrains.mps.baseLanguage.collections.constraints.CustomMapCreator_Constraints$LINKS" />
-      <unit id="1576845966386891452" at="58,0,63,0" name="jetbrains.mps.baseLanguage.collections.constraints.CustomMapCreator_Constraints$CONCEPTS" />
-      <unit id="9034802358628290360" at="40,19,50,9" name="jetbrains.mps.baseLanguage.collections.constraints.CustomMapCreator_Constraints$1$1" />
-      <unit id="9034802358628290360" at="36,48,52,5" name="jetbrains.mps.baseLanguage.collections.constraints.CustomMapCreator_Constraints$1" />
-      <unit id="1576845966386891452" at="29,0,68,0" name="jetbrains.mps.baseLanguage.collections.constraints.CustomMapCreator_Constraints" />
+      <scope id="1576845966386891452" at="37,0,60,0" />
+      <unit id="1576845966386891452" at="68,0,72,0" name="jetbrains.mps.baseLanguage.collections.constraints.CustomMapCreator_Constraints$LINKS" />
+      <unit id="1576845966386891452" at="61,0,67,0" name="jetbrains.mps.baseLanguage.collections.constraints.CustomMapCreator_Constraints$CONCEPTS" />
+      <unit id="9034802358628290360" at="43,19,53,9" name="jetbrains.mps.baseLanguage.collections.constraints.CustomMapCreator_Constraints$1$1" />
+      <unit id="9034802358628290360" at="39,48,55,5" name="jetbrains.mps.baseLanguage.collections.constraints.CustomMapCreator_Constraints$1" />
+      <unit id="1576845966386891452" at="32,0,73,0" name="jetbrains.mps.baseLanguage.collections.constraints.CustomMapCreator_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590328(jetbrains.mps.baseLanguage.collections.constraints)/2879969100346192014">

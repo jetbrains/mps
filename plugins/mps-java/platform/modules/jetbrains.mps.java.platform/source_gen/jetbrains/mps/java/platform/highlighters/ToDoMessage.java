@@ -13,8 +13,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 
 @GeneratedClass(node = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/5916754392152656888", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
 public class ToDoMessage extends DefaultEditorMessage {
-  public ToDoMessage(SNode node, String message, EditorMessageOwner owner) {
-    super(node, Color.BLUE, message, owner);
+  public ToDoMessage(SNode node, String message, EditorMessageOwner owner, Color color) {
+    super(node, color, message, owner);
   }
   @Override
   public void paint(Graphics graphics, EditorComponent component, EditorCell cell) {

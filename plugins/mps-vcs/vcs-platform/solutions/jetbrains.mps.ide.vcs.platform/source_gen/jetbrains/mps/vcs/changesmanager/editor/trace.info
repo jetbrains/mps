@@ -774,74 +774,74 @@
   </root>
   <root nodeRef="r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/6402272430682179765">
     <file name="EditorHighlighterFactory.java">
-      <node id="6080400160196223146" at="18,0,19,0" concept="6" trace="myEditorsHighlighters" />
-      <node id="3489964820036546854" at="19,0,20,0" concept="6" trace="myProject" />
-      <node id="3489964820036550592" at="21,52,22,24" concept="5" />
-      <node id="3489964820036530771" at="25,75,26,66" concept="12" />
-      <node id="1682111275047043203" at="30,138,31,121" concept="5" />
-      <node id="1682111275047043059" at="35,82,36,80" concept="5" />
-      <node id="5643745088231031248" at="36,80,37,76" concept="5" />
-      <node id="2052504288806110218" at="40,85,41,75" concept="12" />
-      <node id="3489964820036561666" at="45,0,46,0" concept="6" trace="myProject" />
-      <node id="3489964820036563454" at="47,61,48,26" concept="5" />
-      <node id="3489964820036572233" at="51,107,52,85" concept="11" />
-      <node id="3489964820036582010" at="53,24,54,55" concept="5" />
-      <node id="3489964820036588089" at="58,108,59,85" concept="11" />
-      <node id="3489964820036595433" at="60,24,61,56" concept="5" />
-      <node id="6402272430682179767" at="21,0,24,0" concept="3" trace="EditorHighlighterFactory#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="3489964820036526147" at="25,0,28,0" concept="16" trace="getInstance#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/vcs/changesmanager/editor/EditorHighlighterFactory;" />
-      <node id="6402272430682179815" at="29,109,32,5" concept="9" />
-      <node id="2052504288806110209" at="40,0,43,0" concept="10" trace="getHighlighter#(Ljetbrains/mps/openapi/editor/EditorComponent;)Ljetbrains/mps/vcs/changesmanager/editor/EditorHighlighter;" />
-      <node id="5643745088231031267" at="47,0,50,0" concept="3" trace="MyEditorComponentCreateListener#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="3489964820036574175" at="52,85,55,7" concept="9" />
-      <node id="3489964820036589733" at="59,85,62,7" concept="9" />
-      <node id="1682111275047043017" at="34,110,38,5" concept="9" />
-      <node id="1682111275047034270" at="29,0,34,0" concept="10" trace="addHighighlighterIfNeeded#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
-      <node id="1682111275047034298" at="34,0,40,0" concept="10" trace="disposeHighlighterIfNeeded#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
-      <node id="5267577397386525095" at="50,0,57,0" concept="10" trace="editorComponentCreated#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
-      <node id="5267577397386525131" at="57,0,64,0" concept="10" trace="editorComponentDisposed#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
-      <scope id="6402272430682179770" at="21,52,22,24" />
-      <scope id="3489964820036526150" at="25,75,26,66" />
-      <scope id="6402272430682179816" at="30,138,31,121" />
-      <scope id="2052504288806110212" at="40,85,41,75" />
-      <scope id="5643745088231031270" at="47,61,48,26" />
-      <scope id="3489964820036574177" at="53,24,54,55" />
-      <scope id="3489964820036589735" at="60,24,61,56" />
-      <scope id="1682111275047043019" at="35,82,37,76" />
-      <scope id="6402272430682179767" at="21,0,24,0">
+      <node id="6080400160196223146" at="19,0,20,0" concept="6" trace="myEditorsHighlighters" />
+      <node id="3489964820036546854" at="20,0,21,0" concept="6" trace="myProject" />
+      <node id="3489964820036550592" at="22,52,23,24" concept="5" />
+      <node id="3489964820036530771" at="26,75,27,66" concept="12" />
+      <node id="1682111275047043203" at="31,162,32,121" concept="5" />
+      <node id="1682111275047043059" at="36,82,37,80" concept="5" />
+      <node id="5643745088231031248" at="37,80,38,76" concept="5" />
+      <node id="2052504288806110218" at="41,85,42,75" concept="12" />
+      <node id="3489964820036561666" at="46,0,47,0" concept="6" trace="myProject" />
+      <node id="3489964820036563454" at="48,61,49,26" concept="5" />
+      <node id="3489964820036572233" at="52,107,53,85" concept="11" />
+      <node id="3489964820036582010" at="54,24,55,55" concept="5" />
+      <node id="3489964820036588089" at="59,108,60,85" concept="11" />
+      <node id="3489964820036595433" at="61,24,62,56" concept="5" />
+      <node id="6402272430682179767" at="22,0,25,0" concept="3" trace="EditorHighlighterFactory#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="3489964820036526147" at="26,0,29,0" concept="16" trace="getInstance#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/vcs/changesmanager/editor/EditorHighlighterFactory;" />
+      <node id="6402272430682179815" at="30,109,33,5" concept="9" />
+      <node id="2052504288806110209" at="41,0,44,0" concept="10" trace="getHighlighter#(Ljetbrains/mps/openapi/editor/EditorComponent;)Ljetbrains/mps/vcs/changesmanager/editor/EditorHighlighter;" />
+      <node id="5643745088231031267" at="48,0,51,0" concept="3" trace="MyEditorComponentCreateListener#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="3489964820036574175" at="53,85,56,7" concept="9" />
+      <node id="3489964820036589733" at="60,85,63,7" concept="9" />
+      <node id="1682111275047043017" at="35,110,39,5" concept="9" />
+      <node id="1682111275047034270" at="30,0,35,0" concept="10" trace="addHighighlighterIfNeeded#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
+      <node id="1682111275047034298" at="35,0,41,0" concept="10" trace="disposeHighlighterIfNeeded#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
+      <node id="5267577397386525095" at="51,0,58,0" concept="10" trace="editorComponentCreated#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
+      <node id="5267577397386525131" at="58,0,65,0" concept="10" trace="editorComponentDisposed#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
+      <scope id="6402272430682179770" at="22,52,23,24" />
+      <scope id="3489964820036526150" at="26,75,27,66" />
+      <scope id="6402272430682179816" at="31,162,32,121" />
+      <scope id="2052504288806110212" at="41,85,42,75" />
+      <scope id="5643745088231031270" at="48,61,49,26" />
+      <scope id="3489964820036574177" at="54,24,55,55" />
+      <scope id="3489964820036589735" at="61,24,62,56" />
+      <scope id="1682111275047043019" at="36,82,38,76" />
+      <scope id="6402272430682179767" at="22,0,25,0">
         <var name="project" id="6402272430682179774" />
       </scope>
-      <scope id="3489964820036526147" at="25,0,28,0">
+      <scope id="3489964820036526147" at="26,0,29,0">
         <var name="ideaProject" id="3489964820036529883" />
       </scope>
-      <scope id="1682111275047034273" at="29,109,32,5" />
-      <scope id="2052504288806110209" at="40,0,43,0">
+      <scope id="1682111275047034273" at="30,109,33,5" />
+      <scope id="2052504288806110209" at="41,0,44,0">
         <var name="editorComponent" id="2052504288806110214" />
       </scope>
-      <scope id="5643745088231031267" at="47,0,50,0">
+      <scope id="5643745088231031267" at="48,0,51,0">
         <var name="project" id="3489964820036560797" />
       </scope>
-      <scope id="1682111275047034301" at="34,110,38,5" />
-      <scope id="5267577397386525101" at="51,107,55,7">
+      <scope id="1682111275047034301" at="35,110,39,5" />
+      <scope id="5267577397386525101" at="52,107,56,7">
         <var name="ehf" id="3489964820036572234" />
       </scope>
-      <scope id="5267577397386525137" at="58,108,62,7">
+      <scope id="5267577397386525137" at="59,108,63,7">
         <var name="ehf" id="3489964820036588090" />
       </scope>
-      <scope id="1682111275047034270" at="29,0,34,0">
+      <scope id="1682111275047034270" at="30,0,35,0">
         <var name="editorComponent" id="1682111275047043004" />
       </scope>
-      <scope id="1682111275047034298" at="34,0,40,0">
+      <scope id="1682111275047034298" at="35,0,41,0">
         <var name="editorComponent" id="1682111275047043006" />
       </scope>
-      <scope id="5267577397386525095" at="50,0,57,0">
+      <scope id="5267577397386525095" at="51,0,58,0">
         <var name="editorComponent" id="5267577397386525098" />
       </scope>
-      <scope id="5267577397386525131" at="57,0,64,0">
+      <scope id="5267577397386525131" at="58,0,65,0">
         <var name="editorComponent" id="5267577397386525134" />
       </scope>
-      <unit id="5643745088231031265" at="44,0,65,0" name="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory$MyEditorComponentCreateListener" />
-      <unit id="6402272430682179765" at="16,0,66,0" name="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory" />
+      <unit id="5643745088231031265" at="45,0,66,0" name="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory$MyEditorComponentCreateListener" />
+      <unit id="6402272430682179765" at="17,0,67,0" name="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory" />
     </file>
   </root>
   <root nodeRef="r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/867367425399189430">

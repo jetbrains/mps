@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -19,7 +19,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class NullProperties_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(NullProperties_Test.class, "${mps_home}", "r:f6873416-2681-4a14-803b-33f9e8bdd0a6(testSubtypingTest.model@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(NullProperties_Test.class).projectPath(null).modelRef("r:f6873416-2681-4a14-803b-33f9e8bdd0a6(testSubtypingTest.model@tests)").reopenProject(null).build());
 
   public NullProperties_Test() {
     super(ourParametersCacheExtension.getParametersCache());

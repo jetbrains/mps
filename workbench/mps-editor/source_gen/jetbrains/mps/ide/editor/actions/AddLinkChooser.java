@@ -23,6 +23,8 @@ import java.awt.Point;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.ui.Messages;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -88,6 +90,20 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
     myPopup.show(new RelativePoint(myEditorComponent, new Point(cell.getX(), cell.getY() + cell.getHeight())));
   }
+
+  /*package*/ void reshowPopup(String wordValue, String linkValue) {
+    JPanel mainPanel = createMainPanel();
+    myTextField.setText(wordValue);
+    myLinkField.setText(linkValue);
+    myPopup = JBPopupFactory.getInstance().createComponentPopupBuilder(mainPanel, myLinkField).setResizable(true).setRequestFocus(true).createPopup();
+
+    EditorCell cell = myEditorComponent.getSelectedCell();
+    if (cell == null) {
+      return;
+    }
+    myPopup.show(new RelativePoint(myEditorComponent, new Point(cell.getX(), cell.getY() + cell.getHeight())));
+  }
+
   /*package*/ String getLinkText() {
     return myLinkField.getText();
   }
@@ -100,12 +116,29 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public void actionPerformed(ActionEvent event) {
       myEditorComponent.getEditorContext().getRepository().getModelAccess().executeCommand(new EditorCommand(myEditorComponent) {
         protected void doExecute() {
-          SPropertyOperations.assign(myWord, PROPS.value$zQr_, myTextField.getText());
-          SPropertyOperations.assign(myWord, PROPS.url$SIrt, myLinkField.getText());
-          myPopup.closeOk(null);
+          final String linkValue = myLinkField.getText();
+          final String wordValue = myTextField.getText();
+          if (wordValue != null && isNotEmptyString(((wordValue == null ? null : wordValue.trim()))) && linkValue != null && isNotEmptyString(((linkValue == null ? null : linkValue.trim()))) && linkValue.matches("https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)")) {
+            SPropertyOperations.assign(myWord, PROPS.value$zQr_, myTextField.getText());
+            SPropertyOperations.assign(myWord, PROPS.url$SIrt, myLinkField.getText());
+            myPopup.closeOk(null);
+          } else {
+            ApplicationManager.getApplication().invokeLater(new Runnable() {
+              @Override
+              public void run() {
+                Messages.showErrorDialog(myEditorComponent, "The specified link is invalid.");
+                reshowPopup(wordValue, linkValue);
+              }
+            });
+          }
+
         }
       });
+
     }
+  }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
   }
 
   private static final class PROPS {

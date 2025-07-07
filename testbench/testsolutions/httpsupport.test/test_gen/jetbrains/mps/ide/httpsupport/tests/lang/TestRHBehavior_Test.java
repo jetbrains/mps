@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.jetbrains.ide.BuiltInServerManager;
@@ -27,7 +27,7 @@ import jetbrains.mps.ide.httpsupport.tests.plugin.testConverter_Converter;
 @MPSLaunch
 public class TestRHBehavior_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(TestRHBehavior_Test.class, "${mps_home}", "r:9e9ac0ea-b755-4d57-b406-d0cd74445963(jetbrains.mps.ide.httpsupport.tests.lang@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestRHBehavior_Test.class).projectPath(null).modelRef("r:9e9ac0ea-b755-4d57-b406-d0cd74445963(jetbrains.mps.ide.httpsupport.tests.lang@tests)").reopenProject(null).build());
 
   public TestRHBehavior_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -147,7 +147,7 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
       initTestNodes();
       runWithinCommand(() -> {
         String url = TestBody.this.buildRequest("/handlerTest/requiredParams");
-        TestBody.this.testRequestResponse(url, 404, null);
+        TestBody.this.testRequestResponse(url, 400, null);
       });
     }
     public void test_testRHRequiredParams() throws Exception {

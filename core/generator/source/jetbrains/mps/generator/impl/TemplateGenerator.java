@@ -1228,6 +1228,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
           if (inputReference instanceof DynamicReference || external) {
             // dynamic & external references don't need validation => replace input model with output
             SModelReference targetModelReference = external ? inputReference.getTargetSModelReference() : myOutputModelRef;
+            // FIXME ^^^ external == false ==> it's DynamicReference - why do we care to set myOutputModelRef?!
             if (inputReference instanceof StaticReference) {
               if (targetModelReference == null) {
                 reportBrokenRef(inputNode, inputReference);

@@ -544,32 +544,145 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="50pO7_b7$p0" role="3cqZAp">
-              <node concept="2OqwBi" id="4IjTpK4Go_9" role="3clFbG">
-                <node concept="2OqwBi" id="4IjTpK4GmH5" role="2Oq$k0">
-                  <node concept="2OqwBi" id="50pO7_b7_Wx" role="2Oq$k0">
-                    <node concept="37vLTw" id="50pO7_b7$oY" role="2Oq$k0">
+            <node concept="3clFbJ" id="3ZzSubueLQN" role="3cqZAp">
+              <node concept="3clFbS" id="3ZzSubueLQP" role="3clFbx">
+                <node concept="3clFbF" id="3ZzSubueQZc" role="3cqZAp">
+                  <node concept="2OqwBi" id="3ZzSubueQZe" role="3clFbG">
+                    <node concept="37vLTw" id="3ZzSubueQZf" role="2Oq$k0">
                       <ref role="3cqZAo" node="6SVxhiG6cys" resolve="mm" />
                     </node>
-                    <node concept="liA8E" id="50pO7_b7AGo" role="2OqNvi">
+                    <node concept="liA8E" id="3ZzSubueQZg" role="2OqNvi">
                       <ref role="37wK5l" to="vqh0:~ModuleMaker.options(jetbrains.mps.compiler.JavaCompilerOptions)" resolve="options" />
-                      <node concept="1aIXbY" id="50pO7_b7AGV" role="37wK5m">
-                        <node concept="1aIXbZ" id="50pO7_b7AGU" role="2Oq$k0" />
-                        <node concept="2sxana" id="50pO7_b7AGY" role="2OqNvi">
+                      <node concept="1aIXbY" id="3ZzSubueQZh" role="37wK5m">
+                        <node concept="1aIXbZ" id="3ZzSubueQZi" role="2Oq$k0" />
+                        <node concept="2sxana" id="3ZzSubueQZj" role="2OqNvi">
                           <ref role="2sxfKC" node="bvkaYAFSqh" resolve="options" />
                         </node>
                       </node>
                     </node>
                   </node>
-                  <node concept="liA8E" id="4IjTpK4GotH" role="2OqNvi">
-                    <ref role="37wK5l" to="vqh0:~ModuleMaker.kotlinOptions(jetbrains.mps.make.kotlin.KotlinCompilerOptions)" resolve="kotlinOptions" />
-                    <node concept="1aIXbY" id="4IjTpK4Gowu" role="37wK5m">
-                      <node concept="1aIXbZ" id="4IjTpK4Gowt" role="2Oq$k0" />
-                      <node concept="2sxana" id="4IjTpK4Gowx" role="2OqNvi">
-                        <ref role="2sxfKC" node="4IjTpK4Glh8" resolve="kotlinOptions" />
+                </node>
+              </node>
+              <node concept="3y3z36" id="3ZzSubueOYF" role="3clFbw">
+                <node concept="10Nm6u" id="3ZzSubuePH2" role="3uHU7w" />
+                <node concept="1aIXbY" id="3ZzSubueNwJ" role="3uHU7B">
+                  <node concept="1aIXbZ" id="3ZzSubueNwI" role="2Oq$k0" />
+                  <node concept="2sxana" id="3ZzSubueNwM" role="2OqNvi">
+                    <ref role="2sxfKC" node="bvkaYAFSqh" resolve="options" />
+                  </node>
+                </node>
+              </node>
+              <node concept="9aQIb" id="3ZzSubueQm5" role="9aQIa">
+                <node concept="3clFbS" id="3ZzSubueQm6" role="9aQI4">
+                  <node concept="3cpWs8" id="2qoqtMKOOzX" role="3cqZAp">
+                    <node concept="3cpWsn" id="2qoqtMKOOzY" role="3cpWs9">
+                      <property role="TrG5h" value="jcOptions" />
+                      <node concept="3uibUv" id="2qoqtMKOJHV" role="1tU5fm">
+                        <ref role="3uigEE" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
+                      </node>
+                      <node concept="2OqwBi" id="2qoqtMKOOzZ" role="33vP2m">
+                        <node concept="2OqwBi" id="3ZzSubufBFE" role="2Oq$k0">
+                          <node concept="2_BwXt" id="3ZzSubufBx4" role="2Oq$k0" />
+                          <node concept="liA8E" id="3ZzSubufBPZ" role="2OqNvi">
+                            <ref role="37wK5l" to="hfuk:2BjwmTxTf34" resolve="getProject" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="2qoqtMKOO$1" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                          <node concept="3VsKOn" id="2qoqtMKOO$2" role="37wK5m">
+                            <ref role="3VsUkX" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
+                          </node>
+                        </node>
                       </node>
                     </node>
                   </node>
+                  <node concept="3clFbF" id="3ZzSubueR6R" role="3cqZAp">
+                    <node concept="2OqwBi" id="3ZzSubueR6T" role="3clFbG">
+                      <node concept="37vLTw" id="3ZzSubueR6U" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6SVxhiG6cys" resolve="mm" />
+                      </node>
+                      <node concept="liA8E" id="3ZzSubueR6V" role="2OqNvi">
+                        <ref role="37wK5l" to="vqh0:~ModuleMaker.options(jetbrains.mps.compiler.JavaCompilerOptions)" resolve="options" />
+                        <node concept="2OqwBi" id="3ZzSubufFal" role="37wK5m">
+                          <node concept="37vLTw" id="3ZzSubufFam" role="2Oq$k0">
+                            <ref role="3cqZAo" node="2qoqtMKOOzY" resolve="jcOptions" />
+                          </node>
+                          <node concept="liA8E" id="3ZzSubufFan" role="2OqNvi">
+                            <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getJavaCompilerOptions(jetbrains.mps.project.Project)" resolve="getJavaCompilerOptions" />
+                            <node concept="2OqwBi" id="3ZzSubufFao" role="37wK5m">
+                              <node concept="2_BwXt" id="3ZzSubufFap" role="2Oq$k0" />
+                              <node concept="liA8E" id="3ZzSubufFaq" role="2OqNvi">
+                                <ref role="37wK5l" to="hfuk:2BjwmTxTf34" resolve="getProject" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="3ZzSubufAji" role="3cqZAp">
+              <node concept="1PaTwC" id="3ZzSubufAjj" role="1aUNEU">
+                <node concept="3oM_SD" id="3ZzSubufAjk" role="1PaTwD">
+                  <property role="3oM_SC" value="FIXME" />
+                </node>
+                <node concept="3oM_SD" id="3ZzSubufBaP" role="1PaTwD">
+                  <property role="3oM_SC" value="WorkbenchMakeService" />
+                </node>
+                <node concept="3oM_SD" id="3ZzSubufBcc" role="1PaTwD">
+                  <property role="3oM_SC" value="shall" />
+                </node>
+                <node concept="3oM_SD" id="3ZzSubufBcd" role="1PaTwD">
+                  <property role="3oM_SC" value="not" />
+                </node>
+                <node concept="3oM_SD" id="3ZzSubufBce" role="1PaTwD">
+                  <property role="3oM_SC" value="care" />
+                </node>
+                <node concept="3oM_SD" id="3ZzSubufBd2" role="1PaTwD">
+                  <property role="3oM_SC" value="about" />
+                </node>
+                <node concept="3oM_SD" id="3ZzSubufBd_" role="1PaTwD">
+                  <property role="3oM_SC" value="kotlin" />
+                </node>
+                <node concept="3oM_SD" id="3ZzSubufBdR" role="1PaTwD">
+                  <property role="3oM_SC" value="compilation," />
+                </node>
+                <node concept="3oM_SD" id="3ZzSubufBdS" role="1PaTwD">
+                  <property role="3oM_SC" value="move" />
+                </node>
+                <node concept="3oM_SD" id="3ZzSubufBff" role="1PaTwD">
+                  <property role="3oM_SC" value="kotlinOptions" />
+                </node>
+                <node concept="3oM_SD" id="3ZzSubufBfg" role="1PaTwD">
+                  <property role="3oM_SC" value="initialization" />
+                </node>
+                <node concept="3oM_SD" id="3ZzSubufBfN" role="1PaTwD">
+                  <property role="3oM_SC" value="elsewhere" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="3ZzSubueWlT" role="3cqZAp">
+              <node concept="2OqwBi" id="3ZzSubueWym" role="3clFbG">
+                <node concept="37vLTw" id="3ZzSubueWlR" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6SVxhiG6cys" resolve="mm" />
+                </node>
+                <node concept="liA8E" id="3ZzSubueWJA" role="2OqNvi">
+                  <ref role="37wK5l" to="vqh0:~ModuleMaker.kotlinOptions(jetbrains.mps.make.kotlin.KotlinCompilerOptions)" resolve="kotlinOptions" />
+                  <node concept="1aIXbY" id="3ZzSubueWKg" role="37wK5m">
+                    <node concept="1aIXbZ" id="3ZzSubueWKf" role="2Oq$k0" />
+                    <node concept="2sxana" id="3ZzSubueWKj" role="2OqNvi">
+                      <ref role="2sxfKC" node="4IjTpK4Glh8" resolve="kotlinOptions" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="50pO7_b7$p0" role="3cqZAp">
+              <node concept="2OqwBi" id="4IjTpK4Go_9" role="3clFbG">
+                <node concept="37vLTw" id="50pO7_b7$oY" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6SVxhiG6cys" resolve="mm" />
                 </node>
                 <node concept="liA8E" id="4IjTpK4Gq03" role="2OqNvi">
                   <ref role="37wK5l" to="vqh0:~ModuleMaker.kotlinCompileCache(jetbrains.mps.make.kotlin.cache.KotlinCompileCacheHandler)" resolve="kotlinCompileCache" />

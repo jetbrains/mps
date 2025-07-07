@@ -48,9 +48,6 @@ public class TemplateModelImpl extends TemplateModelBase {
       return null;
     }
     final SNodeReference template = key.getSourceNode();
-    if (template.equals(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "7036359038356141288"))) {
-      return new Template_reduce_ExtensionFieldReference();
-    }
     if (template.equals(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "1778592072147425621"))) {
       return new Template_reduce_Extension();
     }
@@ -59,9 +56,6 @@ public class TemplateModelImpl extends TemplateModelBase {
     }
     if (template.equals(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "8820339482096464708"))) {
       return new Template_ExtensionDescriptor();
-    }
-    if (template.equals(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "8820339482096486792"))) {
-      return new Template_Extension();
     }
     if (template.equals(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "4103205777867115429"))) {
       return new Template_map_Extension();

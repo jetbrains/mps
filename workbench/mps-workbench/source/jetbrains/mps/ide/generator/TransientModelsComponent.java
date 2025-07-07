@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.generator;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.ProjectComponent;
 import jetbrains.mps.generator.TransientModelsProvider;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -23,10 +24,10 @@ import jetbrains.mps.project.Project;
 /**
  * Evgeny Gryaznov, 12/3/10
  */
-public class TransientModelsComponent extends TransientModelsProvider implements ProjectComponent {
+public class TransientModelsComponent extends TransientModelsProvider implements Disposable {
 
-  public static TransientModelsComponent getInstance(Project mpsProject) {
-    return ProjectHelper.toIdeaProject(mpsProject).getComponent(TransientModelsComponent.class);
+  public static TransientModelsProvider getInstance(Project mpsProject) {
+    return mpsProject.getComponent(TransientModelsProvider.class);
   }
 
   public TransientModelsComponent(com.intellij.openapi.project.Project ideaProject) {
@@ -34,7 +35,7 @@ public class TransientModelsComponent extends TransientModelsProvider implements
   }
 
   @Override
-  public void disposeComponent() {
+  public void dispose() {
     clearAll(true);
   }
 }

@@ -11,12 +11,8 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.ui.Messages;
 import org.jetbrains.mps.openapi.model.SModel;
-import java.awt.datatransfer.Transferable;
+import jetbrains.mps.datatransfer.SNodeClip;
 import com.intellij.ide.CopyPasteManagerEx;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.java.core.newparser.JavaParser;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -36,7 +32,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.ide.datatransfer.SModelDataFlavor;
+import java.awt.datatransfer.DataFlavor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
@@ -76,29 +72,7 @@ public class JavaPaster {
   }
 
   public String getStringFromClipboard() {
-    Transferable contents = null;
-    for (Transferable trf : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
-      if (trf != null && trf.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-        contents = trf;
-      }
-      break;
-    }
-    if (contents == null) {
-      return null;
-    }
-    if (contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-      try {
-        Object data = contents.getTransferData(DataFlavor.stringFlavor);
-        if (data instanceof String) {
-          return (String) data;
-        }
-      } catch (UnsupportedFlavorException ex) {
-        return null;
-      } catch (IOException ex) {
-        Logger.getLogger(JavaPaster.class).error(ex);
-      }
-    }
-    return null;
+    return SNodeClip.peekStringFlavor(CopyPasteManagerEx.getInstanceEx().getAllContents()).orElse(null);
   }
 
   public void pasteJavaAsNode(final SNode anchor, final SModel model, String javaCode, final FeatureKind featureKind, final Project project, final ProgressMonitorAdapter progress, final SRepository repository) {
@@ -242,7 +216,7 @@ public class JavaPaster {
   }
 
   public static boolean isStringOnlyDataAvailableInClipboard() {
-    return CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(DataFlavor.stringFlavor) && !(CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(SModelDataFlavor.sNode));
+    return CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(DataFlavor.stringFlavor) && !(CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(SNodeClip.NODE));
   }
 
   private static final class CONCEPTS {

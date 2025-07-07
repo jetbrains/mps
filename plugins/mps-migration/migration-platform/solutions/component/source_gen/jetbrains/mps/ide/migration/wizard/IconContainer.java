@@ -4,9 +4,9 @@ package jetbrains.mps.ide.migration.wizard;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.Icon;
-import jetbrains.mps.ide.icons.IconLoadingUtil;
+import jetbrains.mps.icons.MPSIcons;
 
 @GeneratedClass(model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public class IconContainer {
-  protected static Icon ICON_a0 = (IconLoadingUtil.isNewUIActive() ? IconLoadingUtil.loadIcon("language_newui.svg", IconContainer.class) : IconLoadingUtil.loadIcon("language.png", IconContainer.class));
+  protected static Icon ICON0 = MPSIcons.Nodes.Language;
 }

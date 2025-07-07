@@ -11,7 +11,6 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SReference;
 import java.util.Arrays;
@@ -21,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.baseLanguage.scopes.MethodResolveUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -41,13 +39,12 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static final SMethod<SNode> getConcreteType_id6WzWPTX2xhN = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConcreteType").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(8008512149545161843L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getTypeAnnotation_idhXbqSv6 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeAnnotation").modifiers(8, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(1233920952262L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> isInTypeInferenceContext_id4cxv$9$kw67 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInTypeInferenceContext").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4837286298388660615L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Tuples._2<SNode, Boolean>> resolveMethod_id28$D10lLyGj = new SMethodBuilder<Tuples._2<SNode, Boolean>>(new SJavaCompoundTypeImpl((Class<Tuples._2<SNode, Boolean>>) ((Class) Object.class))).name("resolveMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2460271685442874131L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<List<SNode>> getActualArguments_id5DBbMQ33xDf = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getActualArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258533485135L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getMethodDeclaration_id5DBbMQ3xohB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMethodDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541311079L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Void> setMethodDeclaration_id5DBbMQ3xovP = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setMethodDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541311989L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SReference> getMethodDeclarationReference_id5DBbMQ3ynbU = new SMethodBuilder<SReference>(new SJavaCompoundTypeImpl((Class<SReference>) ((Class) Object.class))).name("getMethodDeclarationReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541568762L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActualArguments_idhJyuD6_, declaredArgumentType_id2TF6A0TNzEJ, deriveType_idhEwIVPz, getConcreteType_id6WzWPTX2xhN, getTypeAnnotation_idhXbqSv6, isInTypeInferenceContext_id4cxv$9$kw67, resolveMethod_id28$D10lLyGj, getActualArguments_id5DBbMQ33xDf, getMethodDeclaration_id5DBbMQ3xohB, setMethodDeclaration_id5DBbMQ3xovP, getMethodDeclarationReference_id5DBbMQ3ynbU);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActualArguments_idhJyuD6_, declaredArgumentType_id2TF6A0TNzEJ, deriveType_idhEwIVPz, getConcreteType_id6WzWPTX2xhN, getTypeAnnotation_idhXbqSv6, isInTypeInferenceContext_id4cxv$9$kw67, getActualArguments_id5DBbMQ33xDf, getMethodDeclaration_id5DBbMQ3xohB, setMethodDeclaration_id5DBbMQ3xovP, getMethodDeclarationReference_id5DBbMQ3ynbU);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -146,11 +143,6 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     SNode methodAnc = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IMethodLike$L7, false, false);
     return SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.AssignmentExpression$SE), LINKS.rValue$spNK) == __thisNode__ || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.VariableDeclaration$Y0), LINKS.initializer$2twD) == __thisNode__ || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ReturnStatement$lt), LINKS.expression$eJ92) == __thisNode__ || ((methodAnc != null) && IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(methodAnc) == SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExpressionStatement$O8));
   }
-  @Deprecated
-  /*package*/ static Tuples._2<SNode, Boolean> resolveMethod_id28$D10lLyGj(@NotNull SNode __thisNode__) {
-    // todo: this method can be deleted as soon as MethodCallsFixer will be removed
-    return MethodResolveUtil.resolveMethod(__thisNode__);
-  }
   /*package*/ static List<SNode> getActualArguments_id5DBbMQ33xDf(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.actualArgument$pzdx);
   }
@@ -192,15 +184,13 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
       case 5:
         return (T) ((Boolean) isInTypeInferenceContext_id4cxv$9$kw67(node));
       case 6:
-        return (T) ((Tuples._2<SNode, Boolean>) resolveMethod_id28$D10lLyGj(node));
-      case 7:
         return (T) ((List<SNode>) getActualArguments_id5DBbMQ33xDf(node));
-      case 8:
+      case 7:
         return (T) ((SNode) getMethodDeclaration_id5DBbMQ3xohB(node));
-      case 9:
+      case 8:
         setMethodDeclaration_id5DBbMQ3xovP(node, (SNode) parameters[0]);
         return null;
-      case 10:
+      case 9:
         return (T) ((SReference) getMethodDeclarationReference_id5DBbMQ3ynbU(node));
       default:
         throw new BHMethodNotFoundException(this, method);

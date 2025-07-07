@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 @MPSLaunch
 public class TransientFeaturesNotPersisted_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(TransientFeaturesNotPersisted_Test.class, "${mps_home}", "r:688f53d4-3997-403e-9588-25640f0414aa(jetbrains.mps.persistence.transients.tests@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TransientFeaturesNotPersisted_Test.class).projectPath(null).modelRef("r:688f53d4-3997-403e-9588-25640f0414aa(jetbrains.mps.persistence.transients.tests@tests)").reopenProject(null).build());
 
   public TransientFeaturesNotPersisted_Test() {
     super(ourParametersCacheExtension.getParametersCache());

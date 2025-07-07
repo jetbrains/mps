@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -103,12 +103,15 @@ public final class PartialModelDataSupport<T extends SModelData & UpdateModeSupp
             // no reason to go ahead and to try to update a model if there's nothing to update either in source or in destination
             res = fullModel;
           } else {
-            myModel.enterUpdateMode();   //not to send events on changes
-            fullModel.getModelData().enterUpdateMode();
-            new PartialModelUpdateFacility(myModel, fullModel.getModelData(), myModelDescriptor).update();
-            myLoader.completeUpdate(myModel);
-            fullModel.getModelData().leaveUpdateMode();
-            myModel.leaveUpdateMode();  //enable events
+            try {
+              myModel.enterUpdateMode();   //not to send events on changes
+              fullModel.getModelData().enterUpdateMode();
+              new PartialModelUpdateFacility(myModel, fullModel.getModelData(), myModelDescriptor).update();
+              myLoader.completeUpdate(myModel);
+            } finally {
+              fullModel.getModelData().leaveUpdateMode();
+              myModel.leaveUpdateMode();  //enable events
+            }
             res = new ModelLoadResult<>(myModel, fullModel.getState());
           }
           break;
@@ -129,6 +132,8 @@ public final class PartialModelDataSupport<T extends SModelData & UpdateModeSupp
 
   private void doReplace(T newModel, ModelLoadingState state) {
     myModel = newModel;
+    // myModelDescriptor.replaceModelAndFireEvent()??? - perhaps, this is the place to myModel.setModelDescriptor(myModelDescriptor, ),
+    // not in LazyEditableSModelBase#doLoad()? I'd like to hide SModelBase#getNodeEventDispatch() method, eventually
     myModelDescriptor.setLoadingState(state);
   }
 

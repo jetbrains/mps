@@ -12,7 +12,7 @@
       <unit at="11,0,55,0" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="7,0,10,0" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,34,0" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.LanguageConceptSwitch" />
@@ -28,8 +28,8 @@
       <node id="1867733327984720090" at="43,76,44,33" concept="0" />
       <node id="1867733327984720090" at="44,33,45,45" concept="0" />
       <node id="1867733327984720090" at="45,45,46,35" concept="0" />
-      <node id="1867733327984720090" at="46,35,47,55" concept="0" />
-      <node id="1867733327984720090" at="47,55,48,52" concept="0" />
+      <node id="1867733327984720090" at="46,35,47,45" concept="0" />
+      <node id="1867733327984720090" at="47,45,48,52" concept="0" />
       <node id="1867733327984720090" at="49,9,50,42" concept="4" />
       <node id="1867733327984720090" at="41,54,49,9" concept="2" />
       <scope id="1867733327984720090" at="42,49,48,52">

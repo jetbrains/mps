@@ -20,6 +20,9 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
+        <child id="1145553007750" name="creator" index="2ShVmc" />
+      </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
@@ -29,6 +32,10 @@
       </concept>
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
+      </concept>
+      <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
+        <child id="1068580123160" name="condition" index="3clFbw" />
+        <child id="1068580123161" name="ifTrue" index="3clFbx" />
       </concept>
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
@@ -72,6 +79,13 @@
       </concept>
       <concept id="1883223317721008713" name="jetbrains.mps.lang.smodel.structure.IfInstanceOfVariable" flags="ng" index="JncvC" />
       <concept id="1883223317721107059" name="jetbrains.mps.lang.smodel.structure.IfInstanceOfVarReference" flags="nn" index="Jnkvi" />
+      <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
+      <concept id="1180636770613" name="jetbrains.mps.lang.smodel.structure.SNodeCreator" flags="nn" index="3zrR0B">
+        <child id="1180636770616" name="createdType" index="3zrR0E" />
+      </concept>
+      <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
+        <reference id="1138405853777" name="concept" index="ehGHo" />
+      </concept>
       <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
         <reference id="1138056395725" name="property" index="3TsBF5" />
       </concept>
@@ -244,6 +258,29 @@
             <node concept="JncvC" id="WJz9iAY4HT" role="JncvA">
               <property role="TrG5h" value="l" />
               <node concept="2jxLKc" id="WJz9iAY4HU" role="1tU5fm" />
+            </node>
+          </node>
+          <node concept="3clFbJ" id="qh2$UC3h7F" role="3cqZAp">
+            <node concept="3clFbS" id="qh2$UC3h7H" role="3clFbx">
+              <node concept="3clFbF" id="2Ct14h6cZy$" role="3cqZAp">
+                <node concept="2OqwBi" id="2Ct14h6cZIT" role="3clFbG">
+                  <node concept="1r4Lsj" id="2Ct14h6cZyz" role="2Oq$k0" />
+                  <node concept="2qgKlT" id="qh2$UC3jGC" role="2OqNvi">
+                    <ref role="37wK5l" to="vdrq:WJz9iAYdP6" resolve="addTextElement" />
+                    <node concept="2ShNRf" id="qh2$UC3jGD" role="37wK5m">
+                      <node concept="3zrR0B" id="qh2$UC3jGE" role="2ShVmc">
+                        <node concept="3Tqbb2" id="qh2$UC3jGF" role="3zrR0E">
+                          <ref role="ehGHo" to="zqge:8D0iRqSPW4" resolve="Word" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="qh2$UC3hu8" role="3clFbw">
+              <node concept="1r4N5L" id="qh2$UC3h9e" role="2Oq$k0" />
+              <node concept="3w_OXm" id="qh2$UC3jhi" role="2OqNvi" />
             </node>
           </node>
         </node>

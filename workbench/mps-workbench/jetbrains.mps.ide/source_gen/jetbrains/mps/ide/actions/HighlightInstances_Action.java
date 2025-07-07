@@ -74,7 +74,7 @@ public class HighlightInstances_Action extends BaseAction {
     Set<SNode> usages = FindUsagesFacade.getInstance().findInstances(new ModelsScope(event.getData(MPSCommonDataKeys.CONTEXT_MODEL)), Collections.singleton(concept), false, new EmptyProgressMonitor());
     for (SNode ref : SetSequence.fromSet(usages)) {
       if (ref.getContainingRoot() == event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getRootCell().getSNode().getContainingRoot()) {
-        highlightManager.mark(((SNode) ref), HighlightConstants.INSTANCES_COLOR, "usage", messageOwner);
+        highlightManager.mark(((SNode) ref), HighlightConstants.getSearchResultsBackgroundColor(), "usage", messageOwner);
       }
     }
     highlightManager.repaintAndRebuildEditorMessages();

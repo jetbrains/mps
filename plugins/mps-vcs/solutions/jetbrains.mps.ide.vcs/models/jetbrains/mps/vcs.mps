@@ -1282,7 +1282,7 @@
           <node concept="3clFbF" id="4Io9bth0eW2" role="3cqZAp">
             <node concept="37vLTI" id="4Io9bth0eW4" role="3clFbG">
               <node concept="37vLTw" id="4Io9bth0eW7" role="37vLTJ">
-                <ref role="3cqZAo" node="4Io9bth0eVY" resolve="myIdeaProject" />
+                <ref role="3cqZAo" node="4Io9bth0eVY" resolve="myProject" />
               </node>
               <node concept="37vLTw" id="4Io9bth0eW8" role="37vLTx">
                 <ref role="3cqZAo" node="4Io9bth0bUJ" resolve="ideaProject" />
@@ -1455,7 +1455,7 @@
           <node concept="3clFbF" id="4Io9bth1vNv" role="3cqZAp">
             <node concept="37vLTI" id="4Io9bth1vNx" role="3clFbG">
               <node concept="37vLTw" id="4Io9bth1vN$" role="37vLTJ">
-                <ref role="3cqZAo" node="4Io9bth1vNr" resolve="myIdeaProject" />
+                <ref role="3cqZAo" node="4Io9bth1vNr" resolve="myProject" />
               </node>
               <node concept="37vLTw" id="4Io9bth1vN_" role="37vLTx">
                 <ref role="3cqZAo" node="4Io9bth1vyE" resolve="ideaProject" />
@@ -1496,7 +1496,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="4Io9bth1r01" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="3UR2Jj" id="4Io9bth1Qdq" role="lGtFl">
@@ -1576,7 +1576,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="4Io9bth2dKW" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="3UR2Jj" id="4Io9bth2jyl" role="lGtFl">

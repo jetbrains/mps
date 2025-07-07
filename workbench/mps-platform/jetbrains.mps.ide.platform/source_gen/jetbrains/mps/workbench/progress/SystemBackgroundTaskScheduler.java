@@ -31,12 +31,12 @@ public class SystemBackgroundTaskScheduler extends AbstractBackgroundTaskSchedul
   }
 
   @Override
-  protected AbstractBackgroundTaskScheduler.AbstractTaskQueue<ProgressTask> createQueue(int size) {
+  protected AbstractBackgroundTaskScheduler.AbstractJobQueue<ProgressTask> createQueue(int size) {
     return new AsyncTaskQueue(this, size, () -> false);
   }
 
   @Override
-  protected ProgressTask createTask(ProgressTask task, ProgressMonitor monitor) {
+  protected ProgressTask createJob(ProgressTask task, ProgressMonitor monitor) {
     return task;
   }
 
@@ -54,7 +54,7 @@ public class SystemBackgroundTaskScheduler extends AbstractBackgroundTaskSchedul
     }
   }
 
-  protected static class AsyncTaskQueue extends AbstractBackgroundTaskScheduler.AbstractTaskQueue<ProgressTask> {
+  protected static class AsyncTaskQueue extends AbstractBackgroundTaskScheduler.AbstractJobQueue<ProgressTask> {
 
     private final TaskScheduler myTaskScheduler;
     protected AsyncTaskQueue(TaskScheduler taskScheduler, int queueSize, BooleanSupplier shouldFinish) {
@@ -63,12 +63,12 @@ public class SystemBackgroundTaskScheduler extends AbstractBackgroundTaskSchedul
     }
 
     @Override
-    protected AbstractBackgroundTaskScheduler.TaskRunnable createRunnable(ProgressTask task, Runnable afterTask, ProgressMonitor progressMonitor) {
-      return new AsyncTaskRunnable(task, afterTask, new TaskSchedulerProgressMonitor(progressMonitor, myTaskScheduler));
+    protected AbstractBackgroundTaskScheduler.JobQueueItem createItem(ProgressTask task, Runnable afterTask, ProgressMonitor progressMonitor) {
+      return new AsyncJobQueueItem(task, afterTask, new TaskSchedulerProgressMonitor(progressMonitor, myTaskScheduler));
     }
 
     @Override
-    protected void runBlocking(final AbstractBackgroundTaskScheduler.AbstractTaskQueue.Blocking blocking) throws InterruptedException {
+    protected void runBlocking(final AbstractBackgroundTaskScheduler.AbstractJobQueue.Blocking blocking) throws InterruptedException {
       ForkJoinPool.managedBlock(new ForkJoinPool.ManagedBlocker() {
         @Override
         public boolean block() throws InterruptedException {
@@ -83,24 +83,24 @@ public class SystemBackgroundTaskScheduler extends AbstractBackgroundTaskSchedul
     }
   }
 
-  public static class AsyncTaskRunnable implements AbstractBackgroundTaskScheduler.TaskRunnable {
+  public static class AsyncJobQueueItem implements AbstractBackgroundTaskScheduler.JobQueueItem {
 
     private final ProgressTask myTask;
     private final ProgressMonitor myProgressMonitor;
     private final Runnable myAfterTask;
 
-    public AsyncTaskRunnable(ProgressTask task, Runnable afterTask, ProgressMonitor progressMonitor) {
+    public AsyncJobQueueItem(ProgressTask task, Runnable afterTask, ProgressMonitor progressMonitor) {
       myTask = task;
       myProgressMonitor = progressMonitor;
       myAfterTask = afterTask;
     }
 
     @Override
-    public void accept(Runnable continuation) {
+    public void accept(Runnable queueContinuation) {
       try {
         runAsynchronously(myTask, myProgressMonitor, myAfterTask);
       } finally {
-        continuation.run();
+        queueContinuation.run();
       }
     }
 
@@ -149,7 +149,7 @@ public class SystemBackgroundTaskScheduler extends AbstractBackgroundTaskSchedul
 
       };
       return CompletableFuture.runAsync(onThreadCallable, ForkJoinPool.commonPool()).handle((result, err) -> {
-        Throwable t = AsyncTaskRunnable.unwrap(err);
+        Throwable t = AsyncJobQueueItem.unwrap(err);
         if (progressMonitor.isCanceled()) {
           CancellationException exception = new CancellationException();
           if (t != null) {

@@ -15,12 +15,12 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
+import jetbrains.mps.kotlin.behavior.AbstractConstructorDelegationCall__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ThisConstructorDelegationCall_Constraints extends BaseConstraintsDescriptor {
   public ThisConstructorDelegationCall_Constraints() {
@@ -36,11 +36,13 @@ public class ThisConstructorDelegationCall_Constraints extends BaseConstraintsDe
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return new SNodePointer("r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)", "1806979145064368224");
+            return new SNodePointer("r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)", "8345096074697272670");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new NamedElementsScope(Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ClassDeclaration$Jm, true, false))).where((it) -> it != SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.SecondaryConstructor$Lg, true, false)));
+            // Could be the following, but the added complexity does not seem necessary here (needed for automatic resolution though)
+            //  KotlinScopes.forKotlinFunction(concept<IFunctionCall>,node<IFunctionCall>,node<>,aggregation,concept<INamedConcept>):Scope
+            return new NamedElementsScope(AbstractConstructorDelegationCall__BehaviorDescriptor.getAvailableConstructors_id4DC0lWpsin.invoke(SNodeOperations.asSConcept(CONCEPTS.ThisConstructorDelegationCall$nG), _context.getContextNode()));
           }
         };
       }
@@ -52,8 +54,8 @@ public class ThisConstructorDelegationCall_Constraints extends BaseConstraintsDe
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ThisConstructorDelegationCall$nG = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af591L, "jetbrains.mps.kotlin.structure.ThisConstructorDelegationCall");
-    /*package*/ static final SConcept ClassDeclaration$Jm = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, "jetbrains.mps.kotlin.structure.ClassDeclaration");
-    /*package*/ static final SConcept SecondaryConstructor$Lg = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af393L, "jetbrains.mps.kotlin.structure.SecondaryConstructor");
+    /*package*/ static final SConcept AbstractConstructorDelegationCall$RC = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56a195b73L, "jetbrains.mps.kotlin.structure.AbstractConstructorDelegationCall");
+    /*package*/ static final SInterfaceConcept IConstructorDeclaration$rR = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7069a625f2b0238aL, "jetbrains.mps.kotlin.structure.IConstructorDeclaration");
   }
 
   private static final class LINKS {

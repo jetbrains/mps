@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,55 +41,13 @@ public final class CopyUtil {
     }
   }
 
+  /**
+   * @deprecated use appropriately configure {@link NodeDuplicator}, instead
+   */
+  @Deprecated(since = "2024.1", forRemoval = true)
   public static void copyModelContentAndUpdateCrossRootReferences(SModel from, SModel to) {
     // copy content and update references for targets in the same model to point to copied counterparts
-    // we gonna record each cloned node, map would be huge
-    HashMap<SNode, SNode> nodeMap = new HashMap<>(1 << 10);
-    ArrayList<SNode> newRoots = new ArrayList<>();
-    ArrayDeque<SNode> queue = new ArrayDeque<>();
-    for (SNode r : from.getRootNodes()) {
-      queue.addLast(r);
-      while (!(queue.isEmpty())) {
-        SNode n = queue.removeFirst();
-        SNode copy = to.createNode(n.getConcept());
-        nodeMap.put(n, copy);
-        copyProperties(n, copy);
-        copyUserObjects(n, copy);
-        SContainmentLink ownerLink = n.getContainmentLink();
-        if (ownerLink == null) {
-          newRoots.add(copy);
-        } else {
-          // add a copy as a child into our parent's copy.
-          // We walk source model from top to bottom, no chance to lack mapping for parent node
-          nodeMap.get(n.getParent()).addChild(ownerLink, copy);
-        }
-        for (SNode ch : n.getChildren()) {
-          queue.addLast(ch);
-        }
-      }
-    }
-    // Once map is ready, we can update references, so that references between original nodes are restored to their copies
-    // despite lack of elements from newRoots, implicitly updates nodeMap.get(r) counterparts, i.e. new nodes
-    for (SNode n : SNodeUtil.getDescendants(from.getRootNodes())) {
-      // XXX would be great to re-use code of CloneUtil from generator
-      // This code is similar to CopyUtil.addReferences without odd arguments, static checks and dead branches.
-      SNode copy = nodeMap.get(n);
-      if (copy == null) {
-        continue;
-      }
-      for (SReference ref : n.getReferences()) {
-        SNode targetNode = SNodeOperations.getTargetNodeSilently(ref);
-        if (targetNode != null) {
-          SNode newTarget = nodeMap.getOrDefault(targetNode, targetNode);
-          copy.setReferenceTarget(ref.getLink(), newTarget);
-        } else {
-          copy.setReference(ref.getLink(), ref.describeTarget());
-        }
-      }
-    }
-    for (SNode r : newRoots) {
-      to.addRootNode(r);
-    }
+    new NodeDuplicator().keepNodeId(false).duplicate(from, to);
   }
 
   public static void copyModelContentAndPreserveIds(SModel from, SModel to) {
@@ -173,6 +131,7 @@ public final class CopyUtil {
     mapping.put(node, result);
     copyProperties(node, result);
     copyUserObjects(node, result);
+    NodeIdentityComponent.getInstance().configure(result, null, node);
     for (SNode child : node.getChildren()) {
       if (!copyAttributes && AttributeOperations.isAttribute(child)) continue;
       SContainmentLink role = child.getContainmentLink();
@@ -199,6 +158,9 @@ public final class CopyUtil {
 
   public static void copyUserObjects(SNode from, final SNode to) {
     for (Object key : from.getUserObjectKeys()) {
+      if (key instanceof InherentUserObject) {
+        continue;
+      }
       to.putUserObject(key, from.getUserObject(key));
     }
   }

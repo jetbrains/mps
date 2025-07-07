@@ -9,7 +9,7 @@ import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SEnumeration;
 import org.jetbrains.mps.openapi.language.SType;
-import jetbrains.mps.util.InternUtil;
+import jetbrains.mps.logging.Logger;
 import java.util.Objects;
 import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import jetbrains.mps.util.EqualUtil;
@@ -81,13 +81,16 @@ public class SPropertyOperations {
     }
     return null;
   }
+  /**
+   * 
+   * @deprecated no uses of the method
+   */
+  @Deprecated(forRemoval = true, since = "2024.1")
   public static String getString(String value) {
-    if (value != null) {
-      return InternUtil.intern(value);
-    } else {
-      return null;
-    }
+    Logger.getLogger(SPropertyOperations.class).warnDeprecatedUse("NO-OP method, shall not use one from templates (let alone from hand-written code)");
+    return value;
   }
+
   public static int getInteger(SNode node, SProperty property) {
     if (node != null) {
       Object value = downgradeFromEnumMember(property, SNodeAccessUtil.getPropertyValue(node, property));
@@ -253,12 +256,12 @@ public class SPropertyOperations {
     if (member == null) {
       return null;
     }
-    SEnumerationAdapter enumeration = as_sbyy7e_a0a1a04(member.getEnumeration(), SEnumerationAdapter.class);
+    SEnumerationAdapter enumeration = as_sbyy7e_a0a1a14(member.getEnumeration(), SEnumerationAdapter.class);
     return enumeration.toString(member);
   }
 
   public static SEnumerationLiteral deserializeEnummember(long uuidHigh, long uuidLow, long enumId, String fqEnumNameHint, String serializedValue) {
-    SEnumerationAdapter enumeration = as_sbyy7e_a0a0a24(MetaAdapterFactory.getEnumeration(uuidHigh, uuidLow, enumId, fqEnumNameHint), SEnumerationAdapter.class);
+    SEnumerationAdapter enumeration = as_sbyy7e_a0a0a34(MetaAdapterFactory.getEnumeration(uuidHigh, uuidLow, enumId, fqEnumNameHint), SEnumerationAdapter.class);
     Object value = enumeration.fromString(serializedValue);
     return (value == SType.NOT_A_VALUE ? null : (SEnumerationLiteral) value);
   }
@@ -315,10 +318,10 @@ public class SPropertyOperations {
   private static <T> T as_sbyy7e_a0a0a0a9(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_sbyy7e_a0a1a04(Object o, Class<T> type) {
+  private static <T> T as_sbyy7e_a0a1a14(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_sbyy7e_a0a0a24(Object o, Class<T> type) {
+  private static <T> T as_sbyy7e_a0a0a34(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

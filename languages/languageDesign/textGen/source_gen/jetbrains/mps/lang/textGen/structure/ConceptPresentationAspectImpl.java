@@ -15,6 +15,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_AbstractTextGenParameter;
   private ConceptPresentation props_AppendOperation;
   private ConceptPresentation props_AttributedNodePart;
+  private ConceptPresentation props_BinaryWriteOperation;
   private ConceptPresentation props_ClassConceptUnitContext;
   private ConceptPresentation props_CollectionAppendPart;
   private ConceptPresentation props_ConceptTextGenDeclaration;
@@ -89,6 +90,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_AttributedNodePart = cpb.create();
         }
         return props_AttributedNodePart;
+      case LanguageConceptSwitch.BinaryWriteOperation:
+        if (props_BinaryWriteOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("write");
+          props_BinaryWriteOperation = cpb.create();
+        }
+        return props_BinaryWriteOperation;
       case LanguageConceptSwitch.ClassConceptUnitContext:
         if (props_ClassConceptUnitContext == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -110,7 +118,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a7b0pb);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_ConceptTextGenDeclaration = cpb.create();
         }
         return props_ConceptTextGenDeclaration;
@@ -234,7 +242,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL1);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a42b0pb);
+          cpb.icon(IconContainer.RESOURCE_1);
           props_LanguageTextGenDeclaration = cpb.create();
         }
         return props_LanguageTextGenDeclaration;

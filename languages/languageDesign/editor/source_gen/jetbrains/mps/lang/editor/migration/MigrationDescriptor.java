@@ -9,7 +9,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 
 public class MigrationDescriptor implements MigrationAspectDescriptor {
-  private Map<Integer, MigrationScript> myScripts = MapSequence.fromMapAndEntryArray(new HashMap<Integer, MigrationScript>(), Map.entry(8, new Migrate_ExplicitMenuForSmartReferences()), Map.entry(9, new Migrate_SCAPartsForSmartReferences()), Map.entry(10, new Migrate_InlineReferencePresentations()), Map.entry(11, new RemoveCellModelCollectionDeprecatedProps()), Map.entry(12, new MigrateEnumPropertyUsages()), Map.entry(13, new Migrate_MergeNamedAndDefaultMenus()));
+  private Map<Integer, MigrationScript> myScripts = MapSequence.fromMapAndEntryArray(new HashMap<Integer, MigrationScript>(), Map.entry(8, new Migrate_ExplicitMenuForSmartReferences()), Map.entry(9, new Migrate_SCAPartsForSmartReferences()), Map.entry(10, new Migrate_InlineReferencePresentations()), Map.entry(11, new RemoveCellModelCollectionDeprecatedProps()), Map.entry(12, new MigrateEnumPropertyUsages()), Map.entry(13, new Migrate_MergeNamedAndDefaultMenus()), Map.entry(14, new Migrate_CellModelTxPropertyToExtendCellModel_WithRole()));
   public MigrationScript getScript(int fromVersion) {
     return MapSequence.fromMap(myScripts).get(fromVersion);
   }

@@ -9,7 +9,8 @@ import org.jetbrains.annotations.NotNull;
  * @author simon
  */
 public class ProgramBuilderContextImpl implements ProgramBuilderContext {
-  private Collection<IDataFlowModeId> myBuilderModes;
+  private final Collection<IDataFlowModeId> myBuilderModes;
+
   public ProgramBuilderContextImpl(@NotNull Collection<IDataFlowModeId> builderModes) {
     myBuilderModes = builderModes;
   }

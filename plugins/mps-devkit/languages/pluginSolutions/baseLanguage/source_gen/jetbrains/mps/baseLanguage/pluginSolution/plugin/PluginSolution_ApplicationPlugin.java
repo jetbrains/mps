@@ -44,12 +44,14 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
     // groups
     addGroup(new AnalyzersActions_ActionGroup(this));
     addGroup(new RefactoringAdditions_ActionGroup(this));
+    addGroup(new ShowAsErrorIntentions_ActionGroup(this));
     addGroup(new ShowAsIntentions_ActionGroup(this));
     addGroup(new TouchBarDefault_shift_ActionGroup(this));
   }
   public void adjustRegularGroups() {
     insertGroupIntoAnother(RefactoringAdditions_ActionGroup.ID, "jetbrains.mps.ide.platform.actions.NodeRefactoring_ActionGroup", null);
     insertGroupIntoAnother(TouchBarDefault_shift_ActionGroup.ID, jetbrains.mps.ide.actions.TouchBarDefault_shift_ActionGroup.ID, jetbrains.mps.ide.actions.TouchBarDefault_shift_ActionGroup.LABEL_ID_rename);
+    insertGroupIntoAnother(ShowAsErrorIntentions_ActionGroup.ID, "jetbrains.mps.ide.editor.actions.ActionsAsErrorIntentions_ActionGroup", null);
     insertGroupIntoAnother(ShowAsIntentions_ActionGroup.ID, "jetbrains.mps.ide.editor.actions.ActionsAsIntentions_ActionGroup", null);
     insertGroupIntoAnother(AnalyzersActions_ActionGroup.ID, DFAActions_ActionGroup.ID, null);
   }

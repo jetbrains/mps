@@ -13,7 +13,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.console.tool.ConsoleTool;
+import jetbrains.mps.console.plugin.ConsoleTool_Tool;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.console.tool.DialogConsoleTab;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -35,7 +36,7 @@ public class FindInstancesByCondition_Action extends BaseAction {
   }
   @Override
   public boolean isDumbAware() {
-    return true;
+    return false;
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -61,13 +62,15 @@ public class FindInstancesByCondition_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ConsoleTool tool = event.getData(CommonDataKeys.PROJECT).getComponent(ConsoleTool.class);
+    ConsoleTool_Tool tool = ProjectPluginManager.getInstance(event.getData(CommonDataKeys.PROJECT)).getTool(ConsoleTool_Tool.class);
+    assert tool.isAvailable();
     DialogConsoleTab tab = tool.getCurrentEditableTab();
-    SNode command = _quotation_createNode_flklsf_a0c0a(event.getData(MPSCommonDataKeys.NODE));
+    assert tab != null;
+    SNode command = _quotation_createNode_flklsf_a0e0a(event.getData(MPSCommonDataKeys.NODE));
     tab.insertCommand(command);
     tab.selectNode(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(tab.getRoot(), LINKS.commandHolder$LTfs), CONCEPTS.ClosureLiteral$rp, false, new SAbstractConcept[]{})).first(), LINKS.body$Ujx2));
   }
-  private static SNode _quotation_createNode_flklsf_a0c0a(Object parameter_1) {
+  private static SNode _quotation_createNode_flklsf_a0e0a(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;

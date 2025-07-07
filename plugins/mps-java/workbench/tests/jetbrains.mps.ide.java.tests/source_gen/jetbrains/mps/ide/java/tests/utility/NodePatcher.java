@@ -9,10 +9,10 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.List;
@@ -25,25 +25,12 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public class NodePatcher {
+/*package*/ class NodePatcher {
   public NodePatcher() {
   }
   public static void removeStatements(SNode node) {
     for (SNode method : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.BaseMethodDeclaration$kD, false, new SAbstractConcept[]{}))) {
       SLinkOperations.setTarget(method, LINKS.body$5xQk, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4975dc2bdcfa0c49L, "jetbrains.mps.baseLanguage.structure.StubStatementList")));
-    }
-  }
-  /**
-   * Sometimes editor doesn't set nonStatic to true, sometimes it does.
-   * It makes node matching hard, as we don't know whether to set this property in
-   * in the parser or not.
-   * This method normalises classifier in this respect.
-   */
-  public static void fixNonStatic(SNode node) {
-    for (SNode cls : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.Classifier$Ix, true, new SAbstractConcept[]{}))) {
-      if (SNodeAccessUtil.getProperty(cls, PROPS.nonStatic$aWW8) == null) {
-        SPropertyOperations.assign(cls, PROPS.nonStatic$aWW8, true);
-      }
     }
   }
   public static void removeInitializers(SNode node) {
@@ -64,7 +51,7 @@ public class NodePatcher {
     }
   }
   public static void removeSourceLevelAnnotations(SNode node, SRepository repo) {
-    final SNode retentionAnno = ListSequence.fromList(SModelOperations.roots(PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.annotation(JDK/)").resolve(repo), CONCEPTS.Annotation$he)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals("Retention"));
+    final SNode retentionAnno = ListSequence.fromList(SModelOperations.roots(SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.annotation(JDK/)"), repo), CONCEPTS.Annotation$he)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals("Retention"));
 
     for (SNode thisAnnoInst : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.AnnotationInstance$yl, false, new SAbstractConcept[]{}))) {
       // getting value of retention annotation for this annotation
@@ -121,18 +108,17 @@ public class NodePatcher {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
     /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept Annotation$he = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
     /*package*/ static final SConcept EnumConstantReference$kA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference");
     /*package*/ static final SConcept AnnotationInstance$yl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept JavaImports$b_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nonStatic$aWW8 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

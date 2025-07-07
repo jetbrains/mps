@@ -5,8 +5,6 @@ package jetbrains.mps.ide.httpsupport.runtime.base;
 import jetbrains.mps.ide.httpsupport.manager.plugin.IHttpRequestHandler;
 import jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.Objects;
 
 public abstract class HttpRequestHandlerBase implements IHttpRequestHandler {
 
@@ -16,20 +14,14 @@ public abstract class HttpRequestHandlerBase implements IHttpRequestHandler {
     this.request = request;
   }
 
-  @Override
-  public boolean canHandle() {
-    List<String> queryPrefixSegments = getQueryPrefix();
-    List<String> queryPathSegments = request.getSegments();
-    if (ListSequence.fromList(queryPathSegments).count() < ListSequence.fromList(queryPrefixSegments).count()) {
-      return false;
-    }
-    for (int i = 0; i < ListSequence.fromList(queryPrefixSegments).count(); i++) {
-      if (!(Objects.equals(ListSequence.fromList(queryPathSegments).getElement(i), ListSequence.fromList(queryPrefixSegments).getElement(i)))) {
-        return false;
-      }
-    }
-    return true;
+  /**
+   * 
+   * 
+   * @deprecated handled in handler factory
+   */
+  @Deprecated(forRemoval = true)
+  protected List<String> getQueryPrefix() {
+    return null;
   }
 
-  protected abstract List<String> getQueryPrefix();
 }

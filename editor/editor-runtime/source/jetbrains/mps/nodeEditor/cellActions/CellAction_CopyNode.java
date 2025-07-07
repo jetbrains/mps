@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.nodeEditor.cellActions;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples._4;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
-import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
@@ -57,7 +56,7 @@ public class CellAction_CopyNode extends AbstractCellAction {
   public void execute(EditorContext context) {
     _4<List<SNode>, List<SNode>, Map<SNode, Set<SNode>>, String> tuple = extractSelection(context);
     if (tuple == null) return;
-    CopyPasteUtil.copyNodesAndTextToClipboard(tuple._0(), tuple._2(), tuple._3());
+    context.getClipboard().put(tuple._0(), tuple._3(), tuple._2());
   }
 
   /**
@@ -68,7 +67,7 @@ public class CellAction_CopyNode extends AbstractCellAction {
    * @param context The EditorContext
    * @return A four-element tuple - nodes to pass through clipboard, nodes to remove from the source, map of attributes per copied node, text representation of the copied nodes
    */
-  protected _4<List<SNode>, List<SNode>, Map<SNode, Set<SNode>>, String> extractSelection (EditorContext context) {
+  protected _4<List<SNode>, List<SNode>, Map<SNode, Set<SNode>>, String> extractSelection(EditorContext context) {
     EditorComponent editorComponent = (EditorComponent) context.getEditorComponent();
     TextBuilder textBuilder = TextRenderUtil.getTextBuilderForSelectedCellsOfEditor(editorComponent);
 

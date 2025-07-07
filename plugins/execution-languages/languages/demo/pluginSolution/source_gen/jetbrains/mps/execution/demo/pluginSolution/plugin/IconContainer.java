@@ -5,5 +5,5 @@ package jetbrains.mps.execution.demo.pluginSolution.plugin;
 import javax.swing.Icon;
 
 public class IconContainer {
-  protected static Icon ICON_b0a0a0c0d;
+  protected static Icon ICON0;
 }

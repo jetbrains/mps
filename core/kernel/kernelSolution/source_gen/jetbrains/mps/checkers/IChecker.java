@@ -9,9 +9,14 @@ import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.errors.item.ReportItem;
+import jetbrains.mps.errors.item.ModuleReportItemBase;
+import jetbrains.mps.errors.MessageStatus;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.errors.item.ModelReportItemBase;
 import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.errors.item.NodeReportItemBase;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -54,9 +59,73 @@ public interface IChecker<O, I extends IssueKindReportItem> {
   }
 
   abstract class AbstractModuleChecker<I extends IssueKindReportItem> extends AbstractChecker<SModule, I> {
+    public AbstractModuleChecker<I> catchingErrors() {
+      return new AbstractModuleChecker<>() {
+        @Override
+        public IssueKindReportItem.CheckerCategory getCategory() {
+          return AbstractModuleChecker.this.getCategory();
+        }
+        @Nullable
+        @Override
+        public ICheckingPostprocessor<I> getPostprocessor() {
+          return AbstractModuleChecker.this.getPostprocessor();
+        }
+        @Override
+        public void check(SModule toCheck, SRepository repository, Consumer<? super I> errorCollector, ProgressMonitor monitor) {
+          try {
+            AbstractModuleChecker.this.check(toCheck, repository, errorCollector, monitor);
+          } catch (Throwable t) {
+            ReportItem item = new ModuleReportItemBase(MessageStatus.ERROR, toCheck.getModuleReference(), String.valueOf(t)) {
+              @Override
+              public IssueKindReportItem.ItemKind getIssueKind() {
+                return AbstractModuleChecker.this.getCategory().deriveItemKind("error");
+              }
+            };
+            // must satisfy the typechecker
+            errorCollector.accept((I) item);
+          }
+        }
+        @Override
+        public String toString() {
+          return AbstractModuleChecker.this.toString();
+        }
+      };
+    }
   }
 
   abstract class AbstractModelChecker<I extends IssueKindReportItem> extends AbstractChecker<SModel, I> {
+    public AbstractModelChecker<I> catchingErrors() {
+      return new AbstractModelChecker<>() {
+        @Override
+        public IssueKindReportItem.CheckerCategory getCategory() {
+          return AbstractModelChecker.this.getCategory();
+        }
+        @Nullable
+        @Override
+        public ICheckingPostprocessor<I> getPostprocessor() {
+          return AbstractModelChecker.this.getPostprocessor();
+        }
+        @Override
+        public String toString() {
+          return AbstractModelChecker.this.toString();
+        }
+        @Override
+        public void check(SModel toCheck, SRepository repository, Consumer<? super I> errorCollector, ProgressMonitor monitor) {
+          try {
+            AbstractModelChecker.this.check(toCheck, repository, errorCollector, monitor);
+          } catch (Throwable t) {
+            ReportItem item = new ModelReportItemBase(MessageStatus.ERROR, toCheck.getReference(), String.valueOf(t)) {
+              @Override
+              public IssueKindReportItem.ItemKind getIssueKind() {
+                return AbstractModelChecker.this.getCategory().deriveItemKind("error");
+              }
+            };
+            // must satisfy the typechecker
+            errorCollector.accept((I) item);
+          }
+        }
+      };
+    }
   }
 
   /**
@@ -64,7 +133,38 @@ public interface IChecker<O, I extends IssueKindReportItem> {
    */
   abstract class AbstractRootChecker<I extends NodeReportItem> extends AbstractChecker<SNode, I> {
     public AbstractModelChecker<I> asModelChecker() {
-      final IAbstractChecker<SModel, I> result = new IteratingChecker<SModel, SNode, I>(this, (SModel model) -> new IteratingChecker.CollectionIteratorWithProgress<SNode>(SModelOperations.roots(model, null)));
+      AbstractRootChecker<I> catchingErrors = new AbstractRootChecker<I>() {
+        @Override
+        public IssueKindReportItem.CheckerCategory getCategory() {
+          return AbstractRootChecker.this.getCategory();
+        }
+        @Nullable
+        @Override
+        public ICheckingPostprocessor<I> getPostprocessor() {
+          return AbstractRootChecker.this.getPostprocessor();
+        }
+        @Override
+        public String toString() {
+          return AbstractRootChecker.this.toString();
+        }
+        @Override
+        public void check(SNode toCheck, SRepository repository, Consumer<? super I> errorCollector, ProgressMonitor monitor) {
+          try {
+            AbstractRootChecker.this.check(toCheck, repository, errorCollector, monitor);
+          } catch (Throwable t) {
+            ReportItem item = new NodeReportItemBase(MessageStatus.ERROR, toCheck.getReference(), String.valueOf(t)) {
+              @Override
+              public IssueKindReportItem.ItemKind getIssueKind() {
+                return AbstractRootChecker.this.getCategory().deriveItemKind("error");
+              }
+            };
+            // must satisfy the typechecker
+            errorCollector.accept((I) item);
+          }
+        }
+      };
+
+      final IAbstractChecker<SModel, I> result = new IteratingChecker<SModel, SNode, I>(catchingErrors, (SModel model) -> new IteratingChecker.CollectionIteratorWithProgress<SNode>(SModelOperations.roots(model, null)));
       return new AbstractModelChecker<I>() {
         public IssueKindReportItem.CheckerCategory getCategory() {
           return AbstractRootChecker.this.getCategory();
@@ -90,7 +190,38 @@ public interface IChecker<O, I extends IssueKindReportItem> {
    */
   abstract class AbstractNodeChecker<I extends NodeReportItem> extends AbstractChecker<SNode, I> {
     public AbstractRootChecker<I> asRootChecker() {
-      final IteratingChecker<SNode, SNode, I> skippingChecker = new IteratingChecker<SNode, SNode, I>(this, (SNode root) -> {
+      AbstractNodeChecker<I> catchingErrors = new AbstractNodeChecker<I>() {
+        @Override
+        public IssueKindReportItem.CheckerCategory getCategory() {
+          return AbstractNodeChecker.this.getCategory();
+        }
+        @Nullable
+        @Override
+        public ICheckingPostprocessor<I> getPostprocessor() {
+          return AbstractNodeChecker.this.getPostprocessor();
+        }
+        @Override
+        public String toString() {
+          return AbstractNodeChecker.this.toString();
+        }
+        @Override
+        public void check(SNode toCheck, SRepository repository, Consumer<? super I> errorCollector, ProgressMonitor monitor) {
+          try {
+            AbstractNodeChecker.this.check(toCheck, repository, errorCollector, monitor);
+          } catch (Throwable t) {
+            ReportItem item = new NodeReportItemBase(MessageStatus.ERROR, toCheck.getReference(), String.valueOf(t)) {
+              @Override
+              public IssueKindReportItem.ItemKind getIssueKind() {
+                return AbstractNodeChecker.this.getCategory().deriveItemKind("error");
+              }
+            };
+            // must satisfy the typechecker
+            errorCollector.accept((I) item);
+          }
+        }
+      };
+
+      final IteratingChecker<SNode, SNode, I> skippingChecker = new IteratingChecker<SNode, SNode, I>(catchingErrors, (SNode root) -> {
         List<SNode> toCheck = ListSequence.fromList(new ArrayList<SNode>());
         DescendantsTreeIterator fullCheckIterator = new DescendantsTreeIterator(root);
         while (fullCheckIterator.hasNext()) {

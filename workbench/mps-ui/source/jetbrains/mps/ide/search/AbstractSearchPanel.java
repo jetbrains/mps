@@ -19,6 +19,7 @@ import com.intellij.icons.AllIcons.Actions;
 import com.intellij.icons.AllIcons.ToolbarDecorator;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
@@ -33,6 +34,7 @@ import com.intellij.ui.LightColors;
 import com.intellij.ui.components.panels.NonOpaquePanel;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.ui.CompletionTextField;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.AbstractAction;
 import javax.swing.JCheckBox;
@@ -354,6 +356,12 @@ public abstract class AbstractSearchPanel extends EditorHeaderComponent {
     }
 
     @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
+    }
+
+    @Override
     public void update(final AnActionEvent e) {
       e.getPresentation().setEnabled(!myText.getProposals(null).isEmpty());
     }
@@ -373,6 +381,12 @@ public abstract class AbstractSearchPanel extends EditorHeaderComponent {
       registerCustomShortcutSet(
         new CustomShortcutSet(shortcuts.toArray(new Shortcut[0])),
         myText);
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
     }
 
     @Override
@@ -403,6 +417,12 @@ public abstract class AbstractSearchPanel extends EditorHeaderComponent {
     }
 
     @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
+    }
+
+    @Override
     public void update(AnActionEvent e) {
       e.getPresentation().setEnabled(!myText.completionIsVisible() && myText.getText().length() > 0);
     }
@@ -422,6 +442,12 @@ public abstract class AbstractSearchPanel extends EditorHeaderComponent {
       if (findNext != null) {
         registerCustomShortcutSet(findNext.getShortcutSet(), myText);
       }
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
     }
 
     @Override

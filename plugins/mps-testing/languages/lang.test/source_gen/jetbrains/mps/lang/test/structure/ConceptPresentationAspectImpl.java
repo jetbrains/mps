@@ -220,12 +220,10 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_EditorOperation;
       case LanguageConceptSwitch.EditorTestCase:
         if (props_EditorTestCase == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L);
-          cpb.deprecateAggregation(0x11e314b78e4L, "nodeToEdit");
-          cpb.deprecateAggregation(0x11e314bf3d3L, "result");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL);
-          cpb.icon(IconContainer.RESOURCE_a0a5a0a81b0dd);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_EditorTestCase = cpb.create();
         }
         return props_EditorTestCase;
@@ -348,11 +346,10 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_MigrationReference;
       case LanguageConceptSwitch.MigrationTestCase:
         if (props_MigrationTestCase == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L);
-          cpb.deprecateAssociation(0x4c010b30d9be54a3L, "migration_old");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL1);
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a63b0dd);
+          cpb.icon(IconContainer.RESOURCE_1);
           props_MigrationTestCase = cpb.create();
         }
         return props_MigrationTestCase;
@@ -510,7 +507,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateProperty(0x57f984daa37add4aL, "needsNoWriteAction");
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL2);
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a85b0dd);
+          cpb.icon(IconContainer.RESOURCE_2);
           props_NodesTestCase = cpb.create();
         }
         return props_NodesTestCase;

@@ -42,6 +42,6 @@ public class RemoveAllBookmarks_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(CommonDataKeys.PROJECT).getComponent(BookmarkManager.class).clearBookmarks();
+    BookmarkManager.getInstance(event.getData(CommonDataKeys.PROJECT)).clearBookmarks();
   }
 }

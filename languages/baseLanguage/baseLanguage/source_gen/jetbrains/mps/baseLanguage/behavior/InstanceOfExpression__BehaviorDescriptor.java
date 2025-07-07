@@ -26,8 +26,9 @@ public final class InstanceOfExpression__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<SNode> getSyntacticallyLeftSideExpression_id1wHCnsn590c = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSyntacticallyLeftSideExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1742226163722653708L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Void> setSyntacticallyLeftSideExpression_id1wHCnsn58ZK = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setSyntacticallyLeftSideExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1742226163722653680L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<PrecedenceUtil.Precedence> getPrecedenceLevel_id1O90zDONSxM = new SMethodBuilder<PrecedenceUtil.Precedence>(new SJavaCompoundTypeImpl(PrecedenceUtil.Precedence.class)).name("getPrecedenceLevel").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2092205951981422706L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> allowRawType_id6SseLh999LE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("allowRawType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7934281601832492138L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSyntacticallyLeftSideExpression_id1wHCnsn590c, setSyntacticallyLeftSideExpression_id1wHCnsn58ZK, getPrecedenceLevel_id1O90zDONSxM);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSyntacticallyLeftSideExpression_id1wHCnsn590c, setSyntacticallyLeftSideExpression_id1wHCnsn58ZK, getPrecedenceLevel_id1O90zDONSxM, allowRawType_id6SseLh999LE);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -40,6 +41,9 @@ public final class InstanceOfExpression__BehaviorDescriptor extends BaseBHDescri
   }
   /*package*/ static PrecedenceUtil.Precedence getPrecedenceLevel_id1O90zDONSxM(@NotNull SAbstractConcept __thisConcept__) {
     return PrecedenceUtil.Precedence.J_7;
+  }
+  /*package*/ static boolean allowRawType_id6SseLh999LE(@NotNull SNode __thisNode__, @NotNull SNode children) {
+    return children == SLinkOperations.getTarget(__thisNode__, LINKS.classType$StzW);
   }
 
   /*package*/ InstanceOfExpression__BehaviorDescriptor() {
@@ -62,6 +66,8 @@ public final class InstanceOfExpression__BehaviorDescriptor extends BaseBHDescri
       case 1:
         setSyntacticallyLeftSideExpression_id1wHCnsn58ZK(node, (SNode) parameters[0]);
         return null;
+      case 3:
+        return (T) ((Boolean) allowRawType_id6SseLh999LE(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -95,5 +101,6 @@ public final class InstanceOfExpression__BehaviorDescriptor extends BaseBHDescri
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink leftExpression$StkV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
+    /*package*/ static final SContainmentLink classType$StzW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
   }
 }

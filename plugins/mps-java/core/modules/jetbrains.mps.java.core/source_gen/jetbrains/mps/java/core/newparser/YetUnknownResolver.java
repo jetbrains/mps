@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.List;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
@@ -29,6 +30,7 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -43,6 +45,7 @@ public class YetUnknownResolver {
   private Map<SNode, SNode> myResolutionMap;
   private List<SNode> myNodesToResolve;
   private Set<SModelReference> myRefTargetOfResolved;
+  private Set<SLanguage> myLanguagesOfResolved;
   private int myIterationCount = 0;
   private SModel myModel;
 
@@ -133,6 +136,7 @@ public class YetUnknownResolver {
   public void replaceYetUnresolved(final ProgressMonitor progress) {
     progress.start("replacing nodes", MapSequence.fromMap(myResolutionMap).count());
     myRefTargetOfResolved = SetSequence.fromSet(new HashSet<SModelReference>());
+    myLanguagesOfResolved = SetSequence.fromSet(new HashSet<SLanguage>());
     for (IMapping<SNode, SNode> it : MapSequence.fromMap(myResolutionMap)) {
       SNode unresolved = it.key();
       SNode resolved = it.value();
@@ -143,6 +147,11 @@ public class YetUnknownResolver {
           SetSequence.fromSet(myRefTargetOfResolved).addElement(targetModelRef);
         }
       }
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(resolved, null, true, new SAbstractConcept[]{})).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+        public void invoke(SNode it) {
+          SetSequence.fromSet(myLanguagesOfResolved).addElement(SNodeOperations.getConcept(it).getLanguage());
+        }
+      });
       progress.advance(1);
     }
     progress.done();
@@ -150,16 +159,18 @@ public class YetUnknownResolver {
 
   /**
    * Update imports of a source model with references to newly resolved targets (discovered from replacement nodes of most recent {@link jetbrains.mps.java.core.newparser.YetUnknownResolver#replaceYetUnresolved(ProgressMonitor) } run).
-   * Although it's not necessary to update imports after *each* replacement step, it might be vital for replacement of futher IYetUnresolved as model imports affect scope.
+   * Although it's not necessary to update imports after *each* replacement step, it might be vital for replacement of further IYetUnresolved as model imports affect scope.
    */
   public void updateWithImportsOfResolved() {
     assert myRefTargetOfResolved != null;
     SModelReference srcModelRef = SModelOperations.getPointer(myModel);
     SetSequence.fromSet(myRefTargetOfResolved).removeElement(srcModelRef);
-    ModelImports mi = new ModelImports(myModel);
+    final ModelImports mi = new ModelImports(myModel);
     for (SModelReference mr : myRefTargetOfResolved) {
       mi.addModelImport(mr);
     }
+    SetSequence.fromSet(myLanguagesOfResolved).subtract(CollectionSequence.fromCollection(mi.getUsedLanguages())).visitAll((it) -> mi.addUsedLanguage(it));
+    SetSequence.fromSet(myLanguagesOfResolved).clear();
   }
 
   /**

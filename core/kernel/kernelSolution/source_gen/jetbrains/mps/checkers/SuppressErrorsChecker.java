@@ -48,7 +48,7 @@ public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
     return new IssueKindReportItem.CheckerCategory(IssueKindReportItem.KindLevel.PROJECT, "suppressed error");
   }
   @Override
-  protected void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository) {
+  public void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository) {
     // do nothing
   }
   public static final FlavouredItem.ReportItemFlavour<SuppressedWrapperReportItem, SNodeReference> FLAVOUR_ACTIVE_SUPPRESSOR = new ReportItemBase.SimpleReportItemFlavour<SuppressedWrapperReportItem, SNodeReference>("FLAVOUR_ACTIVE_SUPPRESSOR", SuppressedWrapperReportItem.class, (SuppressedWrapperReportItem reportItem) -> reportItem.getSuppressor());

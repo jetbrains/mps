@@ -9,7 +9,7 @@
     <use id="22e72e4c-0f69-46ce-8403-6750153aa615" name="jetbrains.mps.execution.configurations" version="2" />
     <use id="756e911c-3f1f-4a48-bdf5-a2ceb91b723c" name="jetbrains.mps.execution.settings" version="-1" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="-1" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
@@ -43,8 +43,8 @@
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
-      <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
-        <child id="6976585500156684809" name="iconExpression" index="3xaMm5" />
+      <concept id="7927811850890310904" name="jetbrains.mps.lang.resources.structure.ConstantFieldIcon" flags="ng" index="1GtWCo">
+        <child id="7927811850890311914" name="field" index="1GtWoa" />
       </concept>
     </language>
     <language id="f3347d8a-0e79-4f35-8ac9-1574f25c986f" name="jetbrains.mps.execution.commands">
@@ -764,10 +764,10 @@
   <node concept="3wDVqV" id="3S2GenT8ffv">
     <property role="TrG5h" value="Build Script" />
     <property role="3GE5qa" value="execution" />
-    <node concept="1QGGSu" id="6tW99mzV1pQ" role="1bitO_">
-      <node concept="10M0yZ" id="4CNhY$tqa4q" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAx" role="1bitO_">
+      <node concept="10M0yZ" id="4CNhY$tqa4q" role="1GtWoa">
         <ref role="3cqZAo" to="l7us:~MPSIcons$Ant.Build" resolve="Build" />
-        <ref role="1PxDUh" to="l7us:~MPSIcons$Ant" resolve="Ant" />
+        <ref role="1PxDUh" to="l7us:~MPSIcons$Ant" resolve="MPSIcons.Ant" />
       </node>
     </node>
   </node>

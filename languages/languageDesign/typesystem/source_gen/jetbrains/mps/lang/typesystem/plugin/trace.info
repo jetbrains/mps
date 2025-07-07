@@ -13,7 +13,7 @@
       <unit at="8,0,13,0" name="jetbrains.mps.lang.typesystem.plugin.ExtensionDescriptor" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.typesystem.plugin.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.typesystem.plugin.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:8ffb9fde-829b-4ee3-ade6-f4eee43e66a8(jetbrains.mps.lang.typesystem.plugin)/3193873080290339088">
@@ -23,7 +23,7 @@
       <node id="3193873080290339088" at="31,60,32,71" concept="4" />
       <node id="3193873080290339088" at="34,50,35,149" concept="4" />
       <node id="3193873080290339088" at="39,55,40,180" concept="4" />
-      <node id="3193873080290339088" at="43,45,44,49" concept="4" />
+      <node id="3193873080290339088" at="43,45,44,40" concept="4" />
       <node id="3193873080290339088" at="47,34,48,24" concept="4" />
       <node id="4726480899536083435" at="52,0,53,0" concept="5" trace="HELP_URL" />
       <node id="3193873080290339088" at="23,0,26,0" concept="1" trace="LanguageAspectsEP_extension#()V" />
@@ -38,7 +38,7 @@
       <scope id="3193873080290339088" at="31,60,32,71" />
       <scope id="3193873080290339088" at="34,50,35,149" />
       <scope id="3193873080290339088" at="39,55,40,180" />
-      <scope id="3193873080290339088" at="43,45,44,49" />
+      <scope id="3193873080290339088" at="43,45,44,40" />
       <scope id="3193873080290339088" at="47,34,48,24" />
       <scope id="3193873080290339088" at="23,0,26,0" />
       <scope id="3193873080290339088" at="34,0,37,0" />

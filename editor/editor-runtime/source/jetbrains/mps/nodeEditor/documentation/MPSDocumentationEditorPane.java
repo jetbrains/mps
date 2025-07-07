@@ -9,6 +9,7 @@ import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.EditorColorsUtil;
 import com.intellij.openapi.editor.impl.EditorCssFontResolver;
+import com.intellij.openapi.options.FontSize;
 import com.intellij.openapi.ui.popup.JBPopup;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.ui.JBColor;
@@ -26,6 +27,7 @@ import javax.swing.text.View;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLEditorKit;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 
@@ -50,8 +52,7 @@ public final class MPSDocumentationEditorPane extends JEditorPane implements Dis
 
     setEditable(false);
     setBackground(BACKGROUND_COLOR);
-    HTMLEditorKit editorKit = new HTMLEditorKitBuilder()
-                                  .withFontResolver(EditorCssFontResolver.getGlobalInstance()).build();
+    HTMLEditorKit editorKit = new HTMLEditorKitBuilder().withFontResolver(EditorCssFontResolver.getGlobalInstance()).build();
     MPSDocumentationHtmlUtil.addDocumentationPaneDefaultCssRules(editorKit);
 
     setEditorKit(editorKit);
@@ -116,13 +117,10 @@ public final class MPSDocumentationEditorPane extends JEditorPane implements Dis
   protected void processMouseEvent(MouseEvent e) {
     if (e.getID() == MouseEvent.MOUSE_PRESSED && myHint != null) {
       myInitialPress = null;
-      StyledDocument document = (StyledDocument)getDocument();
+      StyledDocument document = (StyledDocument) getDocument();
       int x = e.getX();
       int y = e.getY();
-      if (!hasTextAt(document, x, y) &&
-          !hasTextAt(document, x + 3, y) &&
-          !hasTextAt(document, x - 3, y) &&
-          !hasTextAt(document, x, y + 3) &&
+      if (!hasTextAt(document, x, y) && !hasTextAt(document, x + 3, y) && !hasTextAt(document, x - 3, y) && !hasTextAt(document, x, y + 3) &&
           !hasTextAt(document, x, y - 3)) {
         myInitialPress = e.getPoint();
       }
@@ -135,8 +133,7 @@ public final class MPSDocumentationEditorPane extends JEditorPane implements Dis
     try {
       String text = document.getText(element.getStartOffset(), element.getEndOffset() - element.getStartOffset());
       return !text.trim().isEmpty();
-    }
-    catch (BadLocationException ignored) {
+    } catch (BadLocationException ignored) {
       return false;
     }
   }
@@ -150,5 +147,9 @@ public final class MPSDocumentationEditorPane extends JEditorPane implements Dis
       return;
     }
     super.processMouseMotionEvent(e);
+  }
+
+  public void applyFontProps(@NotNull FontSize size) {
+    setFont(new Font(getFont().getName(), Font.PLAIN, size.getSize()));
   }
 }

@@ -31,6 +31,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicMarkableReference;
 
@@ -93,6 +94,13 @@ final class RepositoryVirtualFiles {
 
   /*package*/ NiceReferenceSerializer getPathFacility() {
     return myPathFacility;
+  }
+
+  public Optional<MPSNodeVirtualFile> lookupFileFor(@NotNull final SNodeReference nodePointer) {
+    if (hasVirtualFileFor(nodePointer)) {
+      return Optional.of(getVirtualFile(nodePointer));
+    }
+    return Optional.empty();
   }
 
   public MPSNodeVirtualFile getFileFor(@NotNull final SNodeReference nodePointer) {

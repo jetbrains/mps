@@ -495,7 +495,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x2e25b6b7919dd6d8L);
     b.origin("r:8b09f5e2-b403-4747-aaa3-eac5acb1f753(jetbrains.mps.lang.dataFlow.analyzers.structure)/3325264799421303651");
     b.version(3);
-    b.aggregate("pattern", 0x2e25b6b7919e1042L).target(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L).optional(false).ordered(true).multiple(false).origin("3325264799421304898").done();
+    b.aggregate("pattern", 0x2e25b6b7919e1042L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("3325264799421304898").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForProgramParameter() {

@@ -8,10 +8,10 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import javax.swing.tree.TreeNode;
+import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.ide.ui.smodel.PropertyTreeNode;
-import jetbrains.mps.ide.ui.smodel.PropertiesTreeNode;
+import jetbrains.mps.ide.ui.tree.ContextValueProvider;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
@@ -30,11 +30,13 @@ public class DeletePropertyAction_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    if (!(((TreeNode) MapSequence.fromMap(_params).get("node")) instanceof PropertyTreeNode)) {
+    if (!(((SProperty) MapSequence.fromMap(_params).get("selectedValue")) instanceof SProperty)) {
       return false;
     }
-    TreeNode parent = ((TreeNode) MapSequence.fromMap(_params).get("node")).getParent();
-    return parent instanceof PropertiesTreeNode;
+    if (((Object) MapSequence.fromMap(_params).get("selectedObject")) instanceof ContextValueProvider) {
+      return ((ContextValueProvider) ((Object) MapSequence.fromMap(_params).get("selectedObject"))).contextValueOfType(SNode.class).isPresent();
+    }
+    return false;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -46,9 +48,19 @@ public class DeletePropertyAction_Action extends BaseAction {
       return false;
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
-      MapSequence.fromMap(_params).put("node", p);
+      Object p = event.getData(MPSCommonDataKeys.USER_OBJECT);
+      MapSequence.fromMap(_params).put("selectedObject", p);
       if (p == null) {
+        return false;
+      }
+    }
+    {
+      Object p = event.getData(MPSCommonDataKeys.VALUE);
+      MapSequence.fromMap(_params).put("selectedValue", p);
+      if (p == null) {
+        return false;
+      }
+      if (p != null && !(p instanceof SProperty)) {
         return false;
       }
     }
@@ -56,9 +68,7 @@ public class DeletePropertyAction_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    TreeNode parent = ((TreeNode) MapSequence.fromMap(_params).get("node")).getParent();
-    PropertiesTreeNode propsNode = (PropertiesTreeNode) parent;
-    PropertyTreeNode propNode = (PropertyTreeNode) ((TreeNode) MapSequence.fromMap(_params).get("node"));
-    SNodeAccessUtil.setProperty(propsNode.getSNode(), propNode.getProperty(), null);
+    SNode snode = ((ContextValueProvider) ((Object) MapSequence.fromMap(_params).get("selectedObject"))).contextValueOfType(SNode.class).get();
+    SNodeAccessUtil.setPropertyValue(snode, ((SProperty) MapSequence.fromMap(_params).get("selectedValue")), null);
   }
 }

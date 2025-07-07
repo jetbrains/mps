@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ public final class MPSTypesystem extends ComponentPlugin implements ComponentHos
 
   // dependencies
   private final LanguageRegistry myLanguageRegistry;
-  private final ClassLoaderManager myClassLoaderManager;
   private final MPSTypechecking myMPSTypechecking;
 
   // sub-components
@@ -48,7 +47,6 @@ public final class MPSTypesystem extends ComponentPlugin implements ComponentHos
                        @NotNull ClassLoaderManager classLoaderManager,
                        @NotNull MPSTypechecking mpsTypechecking) {
     myLanguageRegistry = languageRegistry;
-    myClassLoaderManager = classLoaderManager;
     myMPSTypechecking = mpsTypechecking;
   }
 
@@ -58,7 +56,7 @@ public final class MPSTypesystem extends ComponentPlugin implements ComponentHos
     myTypeChecker = init(new TypeChecker());
     myTypeContextManager = init(new TypeContextManager());
     final LanguageScopeFactory scopeFactory = myMPSTypechecking.findComponent(LanguageScopeFactory.class);
-    final LegacyTypecheckingProvider lpt = new LegacyTypecheckingProvider(myClassLoaderManager, myLanguageRegistry, scopeFactory);
+    final LegacyTypecheckingProvider lpt = new LegacyTypecheckingProvider(myLanguageRegistry, scopeFactory);
     myProviderToken = myMPSTypechecking.getBackend().installProvider(lpt, new DefaultProviderLevel());
   }
 

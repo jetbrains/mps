@@ -12,14 +12,18 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
+import jetbrains.mps.kotlin.overloading.Argument;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
+import jetbrains.mps.kotlin.overloading.NodeArgument;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class IConstructorSuperSpecifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56ae8700cL, "jetbrains.mps.kotlin.structure.IConstructorSuperSpecifier");
@@ -27,9 +31,10 @@ public final class IConstructorSuperSpecifier__BehaviorDescriptor extends BaseBH
   public static final SMethod<Boolean> isClass_id1$jFvlEiPXX = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145067618173L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<ParameterDeclaration>> getAvailableParameters_id1$jFvlD0xqw = new SMethodBuilder<Iterable<ParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<ParameterDeclaration>>) ((Class) Object.class))).name("getAvailableParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145046038176L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> convertToNonConstructor_id1$jFvlEUFDL = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("convertToNonConstructor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145078061681L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<FunctionDeclaration> getConstructorDescriptor_idnhyiqudFLy = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getConstructorDescriptor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(419267039278316642L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<FunctionDeclaration> getConstructorDescriptor_idnhyiqudFLy = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getConstructorDescriptor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(419267039278316642L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Iterable<Argument>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<Argument>>(new SJavaCompoundTypeImpl((Class<Iterable<Argument>>) ((Class) Object.class))).name("getArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2228752951862577661L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isClass_id1$jFvlEiPXX, getAvailableParameters_id1$jFvlD0xqw, convertToNonConstructor_id1$jFvlEUFDL, getConstructorDescriptor_idnhyiqudFLy);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isClass_id1$jFvlEiPXX, getAvailableParameters_id1$jFvlD0xqw, convertToNonConstructor_id1$jFvlEUFDL, getConstructorDescriptor_idnhyiqudFLy, getArguments_id1VI7K1jROBX);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -40,11 +45,18 @@ public final class IConstructorSuperSpecifier__BehaviorDescriptor extends BaseBH
   }
   @NotNull
   /*package*/ static Iterable<ParameterDeclaration> getAvailableParameters_id1$jFvlD0xqw(@NotNull SNode __thisNode__) {
-    FunctionDeclaration descriptor = IConstructorSuperSpecifier__BehaviorDescriptor.getConstructorDescriptor_idnhyiqudFLy.invoke(__thisNode__);
+    FunctionDeclaration descriptor = IFunctionCall__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(__thisNode__);
     if (descriptor == null) {
       return Sequence.fromIterable(Collections.<ParameterDeclaration>emptyList());
     }
     return descriptor.getParameters();
+  }
+  @Deprecated
+  /*package*/ static FunctionDeclaration getConstructorDescriptor_idnhyiqudFLy(@NotNull SNode __thisNode__) {
+    return IFunctionCall__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(__thisNode__);
+  }
+  /*package*/ static Iterable<Argument> getArguments_id1VI7K1jROBX(@NotNull SNode __thisNode__) {
+    return NodeArgument.ofList(SLinkOperations.getChildren(__thisNode__, LINKS.arguments$zJyV));
   }
 
   /*package*/ IConstructorSuperSpecifier__BehaviorDescriptor() {
@@ -66,6 +78,10 @@ public final class IConstructorSuperSpecifier__BehaviorDescriptor extends BaseBH
         return (T) ((Boolean) isClass_id1$jFvlEiPXX(node));
       case 1:
         return (T) ((Iterable<ParameterDeclaration>) getAvailableParameters_id1$jFvlD0xqw(node));
+      case 3:
+        return (T) ((FunctionDeclaration) getConstructorDescriptor_idnhyiqudFLy(node));
+      case 4:
+        return (T) ((Iterable<Argument>) getArguments_id1VI7K1jROBX(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -93,5 +109,9 @@ public final class IConstructorSuperSpecifier__BehaviorDescriptor extends BaseBH
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink arguments$zJyV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL, 0x5b1dd60162ecf00cL, "arguments");
   }
 }

@@ -28,9 +28,8 @@ class KotlinClassesPersistence(private val myFacade: PersistenceFacade) : CoreCo
         // Kotlin functions node ids
         myFacade.setNodeIdFactory(FUNCTION_NODE_ID_FACTORY, KtFunctionNodeId.factory)
 
-        // Legacy kotlin name and Kotlin/JVM specific loading (deprecated)
+        // Legacy Kotlin/JVM specific loading (deprecated)
         myFacade.setModelIdFactory(LEGACY_JVM_MODEL_ID, KotlinJvmModelKind.factory)
-        myFacade.setModelRootFactory(LEGACY_COMMON_ROOT_FACTORY, factory)
         myFacade.setModelRootFactory(LEGACY_JVM_ROOT_FACTORY, factory)
     }
 

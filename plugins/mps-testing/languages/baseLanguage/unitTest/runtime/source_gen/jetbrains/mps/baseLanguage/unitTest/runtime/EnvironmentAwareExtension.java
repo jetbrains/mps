@@ -6,15 +6,19 @@ import org.junit.jupiter.api.extension.TestInstancePostProcessor;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import java.util.concurrent.atomic.AtomicReference;
 import jetbrains.mps.tool.environment.Environment;
+import java.util.Optional;
+import java.util.function.Supplier;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 
 public class EnvironmentAwareExtension implements TestInstancePostProcessor, BeforeAllCallback {
 
-  private static AtomicReference<Environment> ourEnvironment = new AtomicReference<Environment>();
+  private static AtomicReference<Environment> ourEnvironment = new AtomicReference<>();
+  private static AtomicReference<Optional<Supplier<String>>> ourProjectUrl = new AtomicReference<>();
 
-  public static void setEnvironment(Environment environment) {
+  public static void setEnvironment(Environment environment, Optional<Supplier<String>> projectUrl) {
     ourEnvironment.set(environment);
+    ourProjectUrl.set(projectUrl);
   }
 
   public EnvironmentAwareExtension() {
@@ -25,9 +29,10 @@ public class EnvironmentAwareExtension implements TestInstancePostProcessor, Bef
   }
 
   @Override
-  public void postProcessTestInstance(Object object, ExtensionContext context) throws Exception {
+  public void postProcessTestInstance(final Object object, ExtensionContext context) throws Exception {
     if (object instanceof EnvironmentAware) {
       ((EnvironmentAware) object).setEnvironment(ourEnvironment.get());
+      ourProjectUrl.get().ifPresent((supp) -> ((EnvironmentAware) object).setProjectUrl(supp));
     }
   }
 

@@ -118,14 +118,14 @@ public final class UsedModulesCollector {
           result.add(dependencyModule);
         }
       } else {
-        if (scope != GENERATES_INTO && scope != DESIGN) {
+        if (scope != GENERATES_INTO && scope != DESIGN) { // aka CLDependencies.isClassLoadingDependency()
           myErrorHandler.depCannotBeResolved(module, dependency);
         }
       }
     }
   }
 
-  /*package*/ Set<SModuleReference> runtimeModulesOfUsedLanguages(@NotNull SModule module) {
+  public Set<SModuleReference> runtimeModulesOfUsedLanguages(@NotNull SModule module) {
     assert myLanguageRuntimesCache != null;
     return new RuntimesOfUsedLanguageCalculator(myLanguageRuntimesCache, myErrorHandler).invoke(module);
   }

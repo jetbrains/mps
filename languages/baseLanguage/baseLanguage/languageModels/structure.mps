@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -24,9 +24,6 @@
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
-      </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
       </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
@@ -967,6 +964,9 @@
     </node>
     <node concept="PrWs8" id="7plk_f0weUh" role="PzmwI">
       <ref role="PrY4T" node="1wHCnsn58oY" resolve="IBinaryLike" />
+    </node>
+    <node concept="PrWs8" id="6SseLh99l1T" role="PzmwI">
+      <ref role="PrY4T" node="6SseLh999Lm" resolve="IRawTypeHolder" />
     </node>
   </node>
   <node concept="1TIwiD" id="fJfqX4d">
@@ -3114,13 +3114,6 @@
       <property role="TrG5h" value="trimKind" />
       <property role="IQ2nx" value="1225271546413" />
       <ref role="AX2Wp" node="3Ftr4R6BF27" resolve="TrimKind" />
-      <node concept="3l_iC" id="3Ftr4R6BGZR" role="lGtFl">
-        <node concept="1TJgyi" id="hP7S18H" role="3l_iP">
-          <property role="TrG5h" value="trimKind" />
-          <property role="IQ2nx" value="1225271546413" />
-          <ref role="AX2Wp" node="3Ftr4R6BF27" resolve="TrimKind" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="PlHQZ" id="hP8qxQu">
@@ -3894,7 +3887,7 @@
     <node concept="1TJgyi" id="3H1xM9LtL2P" role="1TKVEl">
       <property role="TrG5h" value="value" />
       <property role="IQ2nx" value="4269842503726207157" />
-      <ref role="AX2Wp" node="7fGiXOMF9Mm" resolve="_HexLongType_String" />
+      <ref role="AX2Wp" node="7fGiXOMF9Mm" resolve="_LongType_String" />
     </node>
   </node>
   <node concept="1TIwiD" id="4_5hYVHKxAT">
@@ -5057,6 +5050,11 @@
     <property role="3F6X1D" value="7819569477702424854" />
     <property role="TrG5h" value="_HexaLongType_String" />
     <property role="FLfZY" value="[0-9a-fA-F]+(l|L)" />
+  </node>
+  <node concept="PlHQZ" id="6SseLh999Lm">
+    <property role="EcuMT" value="7934281601832492118" />
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="IRawTypeHolder" />
   </node>
 </model>
 

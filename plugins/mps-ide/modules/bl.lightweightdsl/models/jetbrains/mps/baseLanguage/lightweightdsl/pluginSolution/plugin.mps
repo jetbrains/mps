@@ -10,7 +10,7 @@
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -48,15 +48,14 @@
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
-    <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
+      <concept id="5979521222239143262" name="jetbrains.mps.lang.resources.structure.IconResourceExpression" flags="ng" index="2SwGe0">
+        <child id="5979521222239172928" name="icon" index="2SwzYu" />
+      </concept>
       <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
         <property id="2756621024541341363" name="file" index="1iqoE4" />
-      </concept>
-      <concept id="8974276187400029891" name="jetbrains.mps.lang.resources.structure.IconExpression" flags="nn" index="1QGGTA">
-        <child id="8974276187400029893" name="icon" index="1QGGTw" />
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -2032,10 +2031,19 @@
         <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
       </node>
       <node concept="3clFbS" id="1aVHDCk5gk1" role="3clF47">
-        <node concept="3clFbF" id="3ezQTUrYhS5" role="3cqZAp">
-          <node concept="1QGGTA" id="3ezQTUrYhRZ" role="3clFbG">
-            <node concept="1QGGSu" id="3ezQTUrYhS2" role="1QGGTw">
-              <property role="1iqoE4" value="${module}/icons/arrow.png" />
+        <node concept="3clFbF" id="1_Lbg1ytFgy" role="3cqZAp">
+          <node concept="2OqwBi" id="1_Lbg1ytG0Q" role="3clFbG">
+            <node concept="2YIFZM" id="1_Lbg1ytF$D" role="2Oq$k0">
+              <ref role="37wK5l" to="sn11:5UC$YgehaLf" resolve="getInstance" />
+              <ref role="1Pybhc" to="sn11:192HKKPMXeL" resolve="GlobalIconManager" />
+            </node>
+            <node concept="liA8E" id="1_Lbg1ytIlC" role="2OqNvi">
+              <ref role="37wK5l" to="sn11:192HKKPP2rb" resolve="getIconForResource" />
+              <node concept="2SwGe0" id="1_Lbg1ytJ2l" role="37wK5m">
+                <node concept="1QGGSu" id="3ezQTUrYhS2" role="2SwzYu">
+                  <property role="1iqoE4" value="${module}/icons/arrow.png" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -2336,34 +2344,8 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="1c9oVaxlDp5" role="3cqZAp">
-          <node concept="37vLTI" id="1c9oVaxlDv2" role="3clFbG">
-            <node concept="2OqwBi" id="1c9oVaxlDoZ" role="37vLTJ">
-              <node concept="2WthIp" id="1c9oVaxlDp2" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="1c9oVaxlDp4" role="2OqNvi">
-                <ref role="2WH_rO" node="1c9oVaxlD9O" resolve="myHighlighter" />
-              </node>
-            </node>
-            <node concept="2OqwBi" id="1c9oVaxlDx$" role="37vLTx">
-              <node concept="1KvdUw" id="1c9oVaxlDx_" role="2Oq$k0" />
-              <node concept="liA8E" id="1c9oVaxlDxA" role="2OqNvi">
-                <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1c9oVaxlDxB" role="37wK5m">
-                  <ref role="3VsUkX" to="exr9:~Highlighter" resolve="Highlighter" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="1c9oVaxlDAn" role="3cqZAp" />
         <node concept="3clFbF" id="__dkv7f$XH" role="3cqZAp">
           <node concept="2OqwBi" id="__dkv7fAhk" role="3clFbG">
-            <node concept="2OqwBi" id="1c9oVaxlD_E" role="2Oq$k0">
-              <node concept="2WthIp" id="1c9oVaxlD_H" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="1c9oVaxlD_J" role="2OqNvi">
-                <ref role="2WH_rO" node="1c9oVaxlD9O" resolve="myHighlighter" />
-              </node>
-            </node>
             <node concept="liA8E" id="__dkv7fAGV" role="2OqNvi">
               <ref role="37wK5l" to="exr9:~Highlighter.addChecker(jetbrains.mps.nodeEditor.checking.EditorChecker)" resolve="addChecker" />
               <node concept="2OqwBi" id="3JREjbh0YqZ" role="37wK5m">
@@ -2372,6 +2354,11 @@
                   <ref role="2WH_rO" node="3JREjbh0XWf" resolve="myChecker" />
                 </node>
               </node>
+            </node>
+            <node concept="2YIFZM" id="6Z07o0_V_SX" role="2Oq$k0">
+              <ref role="37wK5l" to="exr9:~Highlighter.getInstance(jetbrains.mps.project.MPSProject)" resolve="getInstance" />
+              <ref role="1Pybhc" to="exr9:~Highlighter" resolve="Highlighter" />
+              <node concept="1KvdUw" id="6Z07o0_V_UF" role="37wK5m" />
             </node>
           </node>
         </node>
@@ -2384,23 +2371,10 @@
         <ref role="3uigEE" node="1aVHDCk4S7m" resolve="DSLComponentChecker" />
       </node>
     </node>
-    <node concept="2BZ0e9" id="1c9oVaxlD9O" role="2uRRBA">
-      <property role="TrG5h" value="myHighlighter" />
-      <node concept="3Tm6S6" id="1c9oVaxlD9P" role="1B3o_S" />
-      <node concept="3uibUv" id="1c9oVaxlDh1" role="1tU5fm">
-        <ref role="3uigEE" to="exr9:~Highlighter" resolve="Highlighter" />
-      </node>
-    </node>
     <node concept="2uRRBN" id="3JREjbh0Yso" role="2uRRB_">
       <node concept="3clFbS" id="3JREjbh0Ysp" role="2VODD2">
         <node concept="3clFbF" id="3JREjbh0Zfb" role="3cqZAp">
           <node concept="2OqwBi" id="3JREjbh0Zfc" role="3clFbG">
-            <node concept="2OqwBi" id="1c9oVaxlDCK" role="2Oq$k0">
-              <node concept="2WthIp" id="1c9oVaxlDCN" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="1c9oVaxlDCP" role="2OqNvi">
-                <ref role="2WH_rO" node="1c9oVaxlD9O" resolve="myHighlighter" />
-              </node>
-            </node>
             <node concept="liA8E" id="3JREjbh0Zfh" role="2OqNvi">
               <ref role="37wK5l" to="exr9:~Highlighter.removeChecker(jetbrains.mps.nodeEditor.checking.EditorChecker)" resolve="removeChecker" />
               <node concept="2OqwBi" id="3JREjbh0Zfi" role="37wK5m">
@@ -2409,6 +2383,11 @@
                   <ref role="2WH_rO" node="3JREjbh0XWf" resolve="myChecker" />
                 </node>
               </node>
+            </node>
+            <node concept="2YIFZM" id="6Z07o0_VHxa" role="2Oq$k0">
+              <ref role="37wK5l" to="exr9:~Highlighter.getInstance(jetbrains.mps.project.MPSProject)" resolve="getInstance" />
+              <ref role="1Pybhc" to="exr9:~Highlighter" resolve="Highlighter" />
+              <node concept="1KvdUw" id="6Z07o0_VHxb" role="37wK5m" />
             </node>
           </node>
         </node>

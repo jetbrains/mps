@@ -159,7 +159,12 @@ public class ProjectFactory {
       StartupManagerEx startupManager = StartupManagerEx.getInstanceEx(myCreatedProject);
       // extra .invokeLater() was added here (copied from IDEA platform) see: https://youtrack.jetbrains.com/issue/IDEA-158859
       Runnable projectPaneActivator =
-          () -> ApplicationManager.getApplication().invokeLater(ProjectPane.getInstance(myCreatedProject)::activate, ModalityState.NON_MODAL);
+          () -> {
+            final ProjectPane projectPane = ProjectPane.getInstance(myCreatedProject);
+            if (projectPane != null) {
+              ApplicationManager.getApplication().invokeLater(projectPane::activate, ModalityState.NON_MODAL);
+            }
+          };
       startupManager.runAfterOpened(projectPaneActivator);
     }
   }

@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -36,7 +36,7 @@ import java.util.Collections;
 @MPSLaunch
 public class FindUsages_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(FindUsages_Test.class, "${mps_home}", "r:0fc0617b-a58c-4b18-af63-dc67be77023b(mps.test.findusages@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FindUsages_Test.class).projectPath(null).modelRef("r:0fc0617b-a58c-4b18-af63-dc67be77023b(mps.test.findusages@tests)").reopenProject(null).build());
 
   public FindUsages_Test() {
     super(ourParametersCacheExtension.getParametersCache());

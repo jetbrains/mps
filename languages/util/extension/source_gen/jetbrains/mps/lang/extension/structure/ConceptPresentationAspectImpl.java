@@ -11,11 +11,6 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_BasicExtensionDeclaration;
   private ConceptPresentation props_Extension;
-  private ConceptPresentation props_ExtensionDeclaration;
-  private ConceptPresentation props_ExtensionFieldDeclaration;
-  private ConceptPresentation props_ExtensionFieldReference;
-  private ConceptPresentation props_ExtensionFunction;
-  private ConceptPresentation props_ExtensionObjectGetter;
   private ConceptPresentation props_ExtensionPointDeclaration;
   private ConceptPresentation props_ExtensionPointExpression;
   private ConceptPresentation props_ExtensionPointType;
@@ -46,50 +41,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Extension = cpb.create();
         }
         return props_Extension;
-      case LanguageConceptSwitch.ExtensionDeclaration:
-        if (props_ExtensionDeclaration == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.presentationByName();
-          props_ExtensionDeclaration = cpb.create();
-        }
-        return props_ExtensionDeclaration;
-      case LanguageConceptSwitch.ExtensionFieldDeclaration:
-        if (props_ExtensionFieldDeclaration == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.presentationByName();
-          props_ExtensionFieldDeclaration = cpb.create();
-        }
-        return props_ExtensionFieldDeclaration;
-      case LanguageConceptSwitch.ExtensionFieldReference:
-        if (props_ExtensionFieldReference == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.presentationByReference(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e9eL, 0x61a62b43e1534e9fL, "declaration", "", "");
-          props_ExtensionFieldReference = cpb.create();
-        }
-        return props_ExtensionFieldReference;
-      case LanguageConceptSwitch.ExtensionFunction:
-        if (props_ExtensionFunction == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.rawPresentation("ExtensionFunction");
-          props_ExtensionFunction = cpb.create();
-        }
-        return props_ExtensionFunction;
-      case LanguageConceptSwitch.ExtensionObjectGetter:
-        if (props_ExtensionObjectGetter == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.rawPresentation("ExtensionObjectGetter");
-          props_ExtensionObjectGetter = cpb.create();
-        }
-        return props_ExtensionObjectGetter;
       case LanguageConceptSwitch.ExtensionPointDeclaration:
         if (props_ExtensionPointDeclaration == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L);
-          cpb.deprecateProperty(0x520ae19dd2771b96L, "extensionName");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           props_ExtensionPointDeclaration = cpb.create();
         }

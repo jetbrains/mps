@@ -37,7 +37,7 @@ import com.intellij.ide.util.treeView.smartTree.Sorter;
         return true;
       }
     }
-    return Sorter.ALPHA_SORTER_ID.equals(name);
+    return Sorter.getAlphaSorterId().equals(name);
   }
   public void setActionIncluded(final TreeAction filter, final boolean selected) {
     if (selected) {

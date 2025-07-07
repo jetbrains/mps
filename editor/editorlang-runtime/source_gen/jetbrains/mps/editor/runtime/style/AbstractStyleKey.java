@@ -4,8 +4,8 @@ package jetbrains.mps.editor.runtime.style;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 
 @GeneratedClass(node = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)/4037229630278692002", model = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)")
@@ -22,16 +22,6 @@ public abstract class AbstractStyleKey {
     myPriority = priority;
   }
 
-  /**
-   * 
-   * @deprecated use #apply(EditorBuilderEnvironment, Style) instead
-   */
-  @Deprecated(forRemoval = true, since = "2023.3")
-  public void apply(Style toStyle) {
-    // uses if the method would fade away as code is regenerated with new versions. 
-    // keep old api for 2-3 releases and then drop.
-    apply(StyleRegistry.getInstance(), toStyle);
-  }
   private void apply(StyleRegistry registry, Style toStyle) {
     Style style = registry.getStyle(myKey);
     if (style == null) {
@@ -43,14 +33,6 @@ public abstract class AbstractStyleKey {
     apply(env.getStyleRegistry(), toStyle);
   }
 
-  /**
-   * 
-   * @deprecated use #unapply(EditorBuilderEnvironment, Style) instead
-   */
-  @Deprecated(forRemoval = true, since = "2023.3")
-  public void unapply(Style toStyle) {
-    unapply(StyleRegistry.getInstance(), toStyle);
-  }
   private void unapply(StyleRegistry registry, Style toStyle) {
     Style style = registry.getStyle(myKey);
     if (style == null) {

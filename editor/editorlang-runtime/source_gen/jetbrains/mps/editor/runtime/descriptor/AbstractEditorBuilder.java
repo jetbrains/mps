@@ -37,7 +37,7 @@ public abstract class AbstractEditorBuilder implements EditorBuilderEnvironment 
 
   @Override
   public StyleRegistry getStyleRegistry() {
-    return StyleRegistry.getInstance();
+    return myEditorContext.getEditorComponent().getStyleRegistry();
   }
 
   protected void setInnerCellsContext(EditorCell_Collection cells) {

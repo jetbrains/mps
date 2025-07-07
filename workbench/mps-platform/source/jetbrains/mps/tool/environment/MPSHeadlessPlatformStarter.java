@@ -44,7 +44,8 @@ public final class MPSHeadlessPlatformStarter implements ApplicationStarter {
       }
 
       try {
-        if (!myInitializedLatch.await(100, TimeUnit.SECONDS)) {
+        long timeout = Long.parseLong(System.getProperty("mps.headless.startup.timeout.seconds", "100"));
+        if (!myInitializedLatch.await(timeout, TimeUnit.SECONDS)) {
           throw new RuntimeException("FAILED TO START CMDLINE IJ: TIMED OUT WAITING");
         }
       } catch (InterruptedException e) {

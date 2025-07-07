@@ -4,18 +4,18 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/platform/configuration-store-impl/src/ProjectStoreBridge.kt b/platform/configuration-store-impl/src/ProjectStoreBridge.kt
---- a/platform/configuration-store-impl/src/ProjectStoreBridge.kt	(revision 7a36c2274a1ca4f8a2fd516ab254510dc174324a)
-+++ b/platform/configuration-store-impl/src/ProjectStoreBridge.kt	(date 1654073872041)
-@@ -200,7 +200,7 @@
+--- a/platform/configuration-store-impl/src/ProjectStoreBridge.kt	(revision f6a9881a92d5d27ffbfd5409c59c240a84e1d3cf)
++++ b/platform/configuration-store-impl/src/ProjectStoreBridge.kt	(date 1737378000801)
+@@ -430,7 +430,7 @@
    val fileName = PathUtil.getFileName(filePath)
    val parentPath = PathUtil.getParentPath(filePath)
    val parentFileName = PathUtil.getFileName(parentPath)
--  if (FileUtil.extensionEquals(filePath, "ipr") || fileName == "misc.xml" && parentFileName == ".idea") {
+-  if (FileUtil.extensionEquals(filePath, "ipr") || fileName == "misc.xml" && parentFileName == Project.DIRECTORY_STORE_FOLDER) {
 +  if (FileUtil.extensionEquals(filePath, "ipr") || fileName == "misc.xml" && parentFileName == ".mps") {
      collapsedPath = "\$PROJECT_FILE$"
      splitterClass = StateSplitterEx::class.java
    }
-@@ -229,7 +229,7 @@
+@@ -459,7 +459,7 @@
            }
          }
          if (StreamProviderFactory.EP_NAME.hasAnyExtensions(project)) {
@@ -41,20 +41,20 @@ diff --git a/platform/workspace/jps/src/com/intellij/platform/workspace/jps/seri
          JpsProjectFileEntitySource.ExactFile(externalStorageRoot.append("project/$directoryName.xml"), projectLocation)
        }
        else {
-Index: platform/workspaceModel/jps/src/com/intellij/workspaceModel/ide/impl/jps/serialization/JpsProjectSerializersImpl.kt
+Index: platform/workspace/jps/src/com/intellij/platform/workspace/jps/serialization/impl/JpsProjectSerializersImpl.kt
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/platform/workspace/jps/src/com/intellij/platform/workspace/jps/serialization/impl/JpsProjectSerializersImpl.kt b/platform/workspace/jps/src/com/intellij/platform/workspace/jps/serialization/impl/JpsProjectSerializersImpl.kt
---- a/platform/workspace/jps/src/com/intellij/platform/workspace/jps/serialization/impl/JpsProjectSerializersImpl.kt	(revision d309c49b7f8f453252c0bdfc700ba1a234b14021)
-+++ b/platform/workspace/jps/src/com/intellij/platform/workspace/jps/serialization/impl/JpsProjectSerializersImpl.kt	(date 1679351108298)
-@@ -875,7 +875,7 @@
+--- a/platform/workspace/jps/src/com/intellij/platform/workspace/jps/serialization/impl/JpsProjectSerializersImpl.kt	(revision 5fae0bafa59db4d0adedcbfaeeb394647dce2959)
++++ b/platform/workspace/jps/src/com/intellij/platform/workspace/jps/serialization/impl/JpsProjectSerializersImpl.kt	(date 1708600814555)
+@@ -949,7 +949,7 @@
  fun isExternalModuleFile(filePath: String): Boolean {
    val parentPath = PathUtilRt.getParentPath(filePath)
-   return FileUtil.extensionEquals(filePath, "xml") && PathUtilRt.getFileName(parentPath) == "modules"
+   return filePath.endsWith(".xml") && PathUtilRt.getFileName(parentPath) == "modules"
 -         && PathUtilRt.getFileName(PathUtilRt.getParentPath(parentPath)) != ".idea"
 +         && PathUtilRt.getFileName(PathUtilRt.getParentPath(parentPath)) != ".mps"
  }
- 
- internal fun getInternalFileSource(source: EntitySource) = when (source) {
+
+ internal fun getInternalFileSource(source: EntitySource): JpsFileEntitySource? {

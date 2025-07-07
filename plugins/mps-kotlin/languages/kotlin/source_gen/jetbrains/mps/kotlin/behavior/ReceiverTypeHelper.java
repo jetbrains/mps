@@ -17,7 +17,7 @@ public class ReceiverTypeHelper {
     {
       final SNode receiver = receiverType;
       if (SNodeOperations.isInstanceOf(receiver, CONCEPTS.ReceiverType$$f)) {
-        return !((boolean) IType__BehaviorDescriptor.isExpression_id2J12cYi1t5p.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(receiver, LINKS.type$NVFj)))));
+        return !((boolean) IType__BehaviorDescriptor.isExpression_id3sYZzPj0plI.invoke(SLinkOperations.getTarget(receiver, LINKS.type$NVFj)));
       }
     }
 

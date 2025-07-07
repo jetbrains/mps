@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -15,7 +15,7 @@ import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 @MPSLaunch
 public class NamedNodeReferenceEditor_DeleteChildWithChild_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(NamedNodeReferenceEditor_DeleteChildWithChild_Test.class, "${mps_home}", "r:ac4e0a5b-1a20-4b0d-81c0-8da38271aafd(jetbrains.mps.smodel.test.editor@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(NamedNodeReferenceEditor_DeleteChildWithChild_Test.class).projectPath(null).modelRef("r:ac4e0a5b-1a20-4b0d-81c0-8da38271aafd(jetbrains.mps.smodel.test.editor@tests)").reopenProject(false).build());
 
   public NamedNodeReferenceEditor_DeleteChildWithChild_Test() {
     super(ourParametersCacheExtension.getParametersCache());

@@ -12,7 +12,7 @@ import com.intellij.ui.components.JBCheckBox;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.FileSystem;
 import java.awt.HeadlessException;
 import java.awt.GridLayout;
 import java.awt.Dimension;
@@ -45,7 +45,7 @@ public class NewGeneratorDialog extends DialogWrapper {
   private final Language mySourceLanguage;
   private Generator myResult;
   private final MPSProject myProject;
-  private final IFileSystem myProjectFS;
+  private final FileSystem myProjectFS;
   private final String myVirtualFolder;
 
   public NewGeneratorDialog(MPSProject project, Language sourceLanguage) throws HeadlessException {

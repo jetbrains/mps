@@ -16,9 +16,6 @@ public class ModelRefactoring_ActionGroup extends GeneratedActionGroup {
     setPopup(true);
     ModelRefactoring_ActionGroup.this.addAction("jetbrains.mps.ide.refactoring.plugin.RenameModel_Action");
     ModelRefactoring_ActionGroup.this.addAction("jetbrains.mps.ide.refactoring.plugin.MoveModel_Action");
-  }
-  @Override
-  public boolean hideIfNoVisibleChildren() {
-    return true;
+    getTemplatePresentation().setHideGroupIfEmpty(true);
   }
 }

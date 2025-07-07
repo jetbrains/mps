@@ -14,7 +14,7 @@ public class InstanceMethodDeclaration_Constraints extends BaseConstraintsDescri
     super(CONCEPTS.InstanceMethodDeclaration$39);
   }
   public IconResource getInstanceIcon(SNode node) {
-    return ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(node) ? IconContainer.RESOURCE_a0a0a : null);
+    return ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(node) ? IconContainer.RESOURCE_3 : null);
   }
 
   private static final class CONCEPTS {

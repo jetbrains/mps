@@ -15,7 +15,7 @@ public class Icons {
   public static final Icon WATCH = AllIcons.Debugger.Watch;
   public static final Icon THREAD_RUNNING = AllIcons.Debugger.ThreadRunning;
   public static final Icon THREAD_SUSPENDED = AllIcons.Debugger.ThreadSuspended;
-  public static final Icon THREAD_AT_BREAKPOINT = AllIcons.Debugger.ThreadAtBreakpoint;
+  public static final Icon THREAD_CURRENT = AllIcons.Debugger.ThreadCurrent;
   public Icons() {
   }
 }

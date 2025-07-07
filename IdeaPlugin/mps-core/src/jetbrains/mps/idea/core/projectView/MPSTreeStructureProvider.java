@@ -182,10 +182,6 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
 
                 @Override
                 public void navigate(boolean requestFocus) {
-                  MPSPropertiesConfigurable configurable = new ModelPropertiesConfigurableFix(perRootModel, mpsProject);
-                  final SingleConfigurableEditor dialog = new SingleConfigurableEditor(myProject, configurable);
-                  configurable.setParentForCallBack(dialog);
-                  ApplicationManager.getApplication().invokeLater(dialog::show, ModalityState.current());
                 }
               });
             }
@@ -438,10 +434,10 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
   private SModelReference getModel(AbstractTreeNode<?> selectedNode) {
     if (selectedNode instanceof MPSPsiElementTreeNode) {
       MPSPsiNodeBase value = ((MPSPsiElementTreeNode) selectedNode).getValue();
-      return value.getContainingModel().getSModelReference();
+      return value == null ? null : value.getContainingModel().getSModelReference();
     } else if (selectedNode instanceof MPSPsiModelTreeNode) {
       MPSPsiModel psiModel = ((MPSPsiModelTreeNode) selectedNode).getModel();
-      return psiModel.getSModelReference();
+      return psiModel == null ? null : psiModel.getSModelReference();
     } else if (selectedNode instanceof ProjectViewNode && ((ProjectViewNode<?>) selectedNode).getVirtualFile() != null && ((ProjectViewNode<?>) selectedNode).getVirtualFile().isDirectory()) {
       // XXX [artem] FWIW, I don't quite understand ProjectViewNode change by MB. Is it for per-root persistence?
       MPSProject mpsProject = ProjectHelper.fromIdeaProject(selectedNode.getProject());

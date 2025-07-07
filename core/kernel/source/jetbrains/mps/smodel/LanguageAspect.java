@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,7 +69,7 @@ public enum LanguageAspect {
   TYPESYSTEM("typesystem", BootstrapLanguages.typesystemLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "typesystem.html"),
 
   //mostly migrated
-  REFACTORINGS("refactorings", BootstrapLanguages.refactoringLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "refactoring.html"),
+  REFACTORINGS("refactorings", BootstrapLanguages.refactoringLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "mps-refactoring.html"),
 
   //mostly migrated
   SCRIPTS("scripts", BootstrapLanguages.scriptLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "scripts.html"),
@@ -100,11 +100,11 @@ public enum LanguageAspect {
   //mostly migrated
   TEXT_GEN("textGen", BootstrapLanguages.textGenLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "textGen.html"),
 
-  //mostly migrated
+  //mostly migrated. No uses in MPS, 1 in mbeddr
   MIGRATION("migration", BootstrapLanguages.migrationLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "migrations.html");
 
   //TODO must be changed for each major/minor version release
-  public static final String HELP_CENTER_BASE = "https://www.jetbrains.com/help/mps/2023.2/";
+  public static final String HELP_CENTER_BASE = "https://www.jetbrains.com/help/mps/2024.1/";
 
   private String myName;
   private final SModuleReference myMainLang;

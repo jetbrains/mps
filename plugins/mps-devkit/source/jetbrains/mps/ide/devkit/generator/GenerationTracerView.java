@@ -20,6 +20,7 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -60,11 +61,11 @@ final class GenerationTracerView {
 
   private final JPanel myPanel;
   private final GenerationTracerTree myTree;
-  private final GenerationTracerViewTool myTool;
+  private final GenerationTracerViewToolState myTool;
   private final SNodeReference myInputNode;
   private final Kind myViewToken;
 
-  public GenerationTracerView(GenerationTracerViewTool tool, SNodeReference inputNode, Kind viewToken, TraceNodeUI tracerNode) {
+  public GenerationTracerView(GenerationTracerViewToolState tool, SNodeReference inputNode, Kind viewToken, TraceNodeUI tracerNode) {
     myTool = tool;
     myInputNode = inputNode;
     myViewToken = viewToken;
@@ -79,7 +80,7 @@ final class GenerationTracerView {
   }
 
   private Component createActionsToolbar() {
-    ToggleAction autoscrollAction = new ToggleAction("", "Autoscroll to Source", Icons.AUTOSCROLL_TO_SOURCE) {
+    ToggleAction autoscrollAction = new ToggleAction("Autoscroll to Source", "Autoscroll to Source", Icons.AUTOSCROLL_TO_SOURCE) {
       public boolean isSelected(AnActionEvent e) {
         return myTool.isAutoscroll();
       }
@@ -87,9 +88,14 @@ final class GenerationTracerView {
       public void setSelected(AnActionEvent e, boolean state) {
         myTool.autoscrollsChanged(state);
       }
+
+      @Override
+      public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
+      }
     };
 
-    AnAction closeAction = new AnAction("", "Close", Icons.CLOSE) {
+    AnAction closeAction = new AnAction("Close", "Close", Icons.CLOSE) {
       @Override
       public void actionPerformed(AnActionEvent e) {
         myTool.close(GenerationTracerView.this);
@@ -111,7 +117,7 @@ final class GenerationTracerView {
     ActionGroup group = ActionUtils.groupFromActions(autoscrollAction, closeAction, new PresentationSettings());
     ActionManager manager = ActionManager.getInstance();
     ActionToolbar toolbar = manager.createActionToolbar(ActionPlaces.USAGE_VIEW_TOOLBAR, group, false);
-    toolbar.setTargetComponent(myTree); // myPanel, perhaps?
+    toolbar.setTargetComponent(myPanel); // myPanel, perhaps?
     return toolbar.getComponent();
   }
 
@@ -136,7 +142,7 @@ final class GenerationTracerView {
   boolean isBackwardTraceView() {
     return myViewToken == Kind.TraceBackward;
   }
-  GenerationTracerViewTool getTool() {
+  GenerationTracerViewToolState getTool() {
     return myTool;
   }
 

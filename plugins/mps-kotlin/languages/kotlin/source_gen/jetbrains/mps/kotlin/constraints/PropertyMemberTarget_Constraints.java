@@ -40,10 +40,10 @@ public class PropertyMemberTarget_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).membersReceiver().properties().wrap((scope) -> {
+            return KotlinScopes.scopeWithLegacyTypesystemFallback(_context.getContextNode(), CONCEPTS.IVariableIdentifier$v2, () -> KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).membersReceiver().properties().wrap((scope) -> {
               // Return a custom scope that prioritize setter over getters (if setter: type is MutableProperty rather than just Property)
               return KindPriorityPropertyScope.of(scope, AccessorKind.SETTER, null);
-            }).buildScope(CONCEPTS.IVariableIdentifier$v2);
+            }).buildSigScope());
           }
         };
       }

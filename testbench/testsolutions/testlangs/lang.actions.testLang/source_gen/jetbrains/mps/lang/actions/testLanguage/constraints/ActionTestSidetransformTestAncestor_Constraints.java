@@ -30,7 +30,7 @@ public class ActionTestSidetransformTestAncestor_Constraints extends BaseConstra
         boolean result = staticCanBeAnAncestor(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getParentNode(), context.getLink());
 
         if (!(result) && checkingNodeContext != null) {
-          checkingNodeContext.setBreakingNode(canBeRootBreakingPoint);
+          checkingNodeContext.setBreakingNode(canBeAncestorBreakingPoint);
         }
 
         return result;
@@ -40,7 +40,7 @@ public class ActionTestSidetransformTestAncestor_Constraints extends BaseConstra
   private static boolean staticCanBeAnAncestor(SNode node, SNode childNode, SAbstractConcept childConcept, SNode parentNode, SContainmentLink link) {
     return childConcept != CONCEPTS.ActionTestSidetransformChild1$gm && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl)) && childConcept != CONCEPTS.ActionTestSidetransformAddConceptChild$mP;
   }
-  private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:51315b9d-b515-42e5-b0a0-21c0544c81b4(jetbrains.mps.lang.actions.testLanguage.constraints)", "1227128029536583749");
+  private static final SNodePointer canBeAncestorBreakingPoint = new SNodePointer("r:51315b9d-b515-42e5-b0a0-21c0544c81b4(jetbrains.mps.lang.actions.testLanguage.constraints)", "1227128029536583749");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ActionTestSidetransformTestAncestor$U8 = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c35cefefc9cfa78L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformTestAncestor");

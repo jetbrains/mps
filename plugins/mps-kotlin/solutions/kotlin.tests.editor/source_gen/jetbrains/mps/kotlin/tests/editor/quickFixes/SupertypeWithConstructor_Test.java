@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class SupertypeWithConstructor_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(SupertypeWithConstructor_Test.class, "${mps_home}", "r:1e8116dd-1bcd-4a5f-b941-fe5e2f48cccc(jetbrains.mps.kotlin.tests.editor.quickFixes@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SupertypeWithConstructor_Test.class).projectPath(null).modelRef("r:1e8116dd-1bcd-4a5f-b941-fe5e2f48cccc(jetbrains.mps.kotlin.tests.editor.quickFixes@tests)").reopenProject(false).build());
 
   public SupertypeWithConstructor_Test() {
     super(ourParametersCacheExtension.getParametersCache());

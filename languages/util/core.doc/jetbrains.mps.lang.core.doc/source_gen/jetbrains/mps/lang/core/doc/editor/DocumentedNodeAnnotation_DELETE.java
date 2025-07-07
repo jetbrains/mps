@@ -20,6 +20,7 @@ public class DocumentedNodeAnnotation_DELETE {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
+        editorContext.selectWRTFocusPolicy(SNodeOperations.getParent(node));
         SNodeOperations.deleteNode(node);
       }
 

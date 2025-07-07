@@ -80,7 +80,7 @@ public class HtmlWord_TransformationMenu extends TransformationMenuBase {
       @Nullable
       @Override
       public String getLabelText(String pattern) {
-        return "<!";
+        return "<<";
       }
 
       @Override
@@ -125,7 +125,7 @@ public class HtmlWord_TransformationMenu extends TransformationMenuBase {
       @Nullable
       @Override
       public String getLabelText(String pattern) {
-        return "<@";
+        return "<>";
       }
 
       @Override

@@ -55,18 +55,7 @@ public class EvaluationUtilsImpl extends EvaluationUtils {
   public static final String JAVA_LANG_OBJECT_CLASSNAME = "java.lang.Object";
   public EvaluationUtilsImpl() {
   }
-  @Override
-  public void dispose() {
-    synchronized (LOCK) {
-      INSTANCE = null;
-    }
-  }
-  @Override
-  public void init() {
-    synchronized (LOCK) {
-      INSTANCE = this;
-    }
-  }
+
   public void assertEvaluating() {
     // todo real check
     LOG.assertLog(!(ApplicationManager.getApplication().isDispatchThread()), "Evaluation should be invoked in evaluation command rather than in edt.");

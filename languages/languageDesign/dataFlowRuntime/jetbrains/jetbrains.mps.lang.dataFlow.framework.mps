@@ -276,10 +276,14 @@
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690324397" name="jetbrains.mps.baseLanguage.javadoc.structure.SinceBlockDocTag" flags="ng" index="TZ7YB">
+        <property id="8465538089690324399" name="text" index="TZ7Y_" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -642,11 +646,48 @@
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
       </node>
-      <node concept="3clFbS" id="3yaa4ph8uSd" role="3clF47" />
+      <node concept="3clFbS" id="3yaa4ph8uSd" role="3clF47">
+        <node concept="3cpWs6" id="4UWoudWLKRq" role="3cqZAp">
+          <node concept="2YIFZM" id="4UWoudWLKRr" role="3cqZAk">
+            <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
+          </node>
+        </node>
+      </node>
       <node concept="3uibUv" id="3yaa4ph8uSe" role="3clF45">
         <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
         <node concept="3uibUv" id="3yaa4ph8uSf" role="11_B2D">
           <ref role="3uigEE" node="3yaa4ph8uRC" resolve="DataFlowConstructor" />
+        </node>
+      </node>
+      <node concept="2JFqV2" id="4UWoudWLKKU" role="2frcjj" />
+    </node>
+    <node concept="2tJIrI" id="4UWoudWLEjJ" role="jymVt" />
+    <node concept="3clFb_" id="4UWoudWLEid" role="jymVt">
+      <property role="TrG5h" value="getDataFlowBuilders" />
+      <node concept="3Tm1VV" id="4UWoudWLEie" role="1B3o_S" />
+      <node concept="2AHcQZ" id="4UWoudWLEif" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="37vLTG" id="4UWoudWLEig" role="3clF46">
+        <property role="TrG5h" value="concept" />
+        <node concept="3uibUv" id="4UWoudWLEih" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="4UWoudWLEii" role="3clF47">
+        <node concept="3cpWs6" id="4UWoudWLKTQ" role="3cqZAp">
+          <node concept="2YIFZM" id="4UWoudWLKTR" role="3cqZAk">
+            <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
+          </node>
+        </node>
+      </node>
+      <node concept="2JFqV2" id="4UWoudWLEil" role="2frcjj" />
+      <node concept="3uibUv" id="4UWoudWLOWx" role="3clF45">
+        <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
+        <node concept="3uibUv" id="4UWoudWLOWy" role="11_B2D">
+          <ref role="3uigEE" node="3yaa4ph8uyb" resolve="IDataFlowBuilder" />
         </node>
       </node>
     </node>
@@ -1308,6 +1349,9 @@
       <node concept="2AHcQZ" id="3yaa4ph8udO" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
+      <node concept="2AHcQZ" id="4UWoudWLR3Z" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
       <node concept="37vLTG" id="3yaa4ph8udP" role="3clF46">
         <property role="TrG5h" value="concept" />
         <node concept="3uibUv" id="3yaa4ph8udQ" role="1tU5fm">
@@ -1385,6 +1429,36 @@
       </node>
       <node concept="3clFbS" id="3yaa4ph8uD3" role="3clF47" />
       <node concept="3cqZAl" id="3yaa4ph8uD4" role="3clF45" />
+    </node>
+    <node concept="3clFb_" id="4OKSZMEXIWN" role="jymVt">
+      <property role="TrG5h" value="newFactory" />
+      <node concept="3clFbS" id="4OKSZMEXIWQ" role="3clF47" />
+      <node concept="3Tm1VV" id="4OKSZMEXIWR" role="1B3o_S" />
+      <node concept="3uibUv" id="4OKSZMEXIOM" role="3clF45">
+        <ref role="3uigEE" node="3yaa4ph8uCL" resolve="ProgramFactory" />
+        <node concept="16syzq" id="4OKSZMEXITF" role="11_B2D">
+          <ref role="16sUi3" node="3yaa4ph8uCN" resolve="AnalyzerIdT" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="4OKSZMEXIZR" role="3clF46">
+        <property role="TrG5h" value="modes" />
+        <node concept="3uibUv" id="4OKSZMEXIZQ" role="1tU5fm">
+          <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
+          <node concept="3uibUv" id="4OKSZMEXRgS" role="11_B2D">
+            <ref role="3uigEE" node="3yaa4ph8tQx" resolve="IDataFlowModeId" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="4OKSZMEXJao" role="lGtFl">
+        <node concept="TZ5HA" id="4OKSZMEXJap" role="TZ5H$">
+          <node concept="1dT_AC" id="4OKSZMEXJaq" role="1dT_Ay">
+            <property role="1dT_AB" value="create a factory with another set of analyzer ids" />
+          </node>
+        </node>
+        <node concept="TZ7YB" id="4OKSZMEXJoN" role="3nqlJM">
+          <property role="TZ7Y_" value="2025.1" />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="312cEu" id="3yaa4ph8tXR">
@@ -2455,6 +2529,7 @@
     </node>
     <node concept="312cEg" id="3yaa4ph8uH2" role="jymVt">
       <property role="TrG5h" value="myBuilderModes" />
+      <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="3yaa4ph8uH4" role="1tU5fm">
         <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
         <node concept="3uibUv" id="3yaa4ph8uH5" role="11_B2D">
@@ -2463,6 +2538,7 @@
       </node>
       <node concept="3Tm6S6" id="3yaa4ph8uH6" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="2ZISQuMvgxJ" role="jymVt" />
     <node concept="3clFbW" id="3yaa4ph8uH7" role="jymVt">
       <node concept="3cqZAl" id="3yaa4ph8uH8" role="3clF45" />
       <node concept="37vLTG" id="3yaa4ph8uH9" role="3clF46">

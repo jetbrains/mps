@@ -526,13 +526,13 @@
                 </node>
               </node>
               <node concept="1rXfSq" id="4hiugqysgug" role="28zNqd">
-                <ref role="37wK5l" node="1Ik8KAj7q60" resolve="isMale" />
+                <ref role="37wK5l" node="1Ik8KAj7q60" resolve="isOneTimeVisitorB" />
                 <node concept="37vLTw" id="3GM_nagTsG_" role="37wK5m">
                   <ref role="3cqZAo" node="1Ik8KAj7q7G" resolve="person" />
                 </node>
               </node>
               <node concept="1rXfSq" id="4hiugqysiEa" role="28zNqd">
-                <ref role="37wK5l" node="1Ik8KAj7qa9" resolve="isFemale" />
+                <ref role="37wK5l" node="1Ik8KAj7qa9" resolve="isRegularVisitor" />
                 <node concept="37vLTw" id="3GM_nagTu5Z" role="37wK5m">
                   <ref role="3cqZAo" node="1Ik8KAj7q7G" resolve="person" />
                 </node>
@@ -624,7 +624,7 @@
               <ref role="3cqZAo" node="1Ik8KAj7m_I" resolve="discount" />
             </node>
             <node concept="1rXfSq" id="4hiugqyzcoz" role="37vLTx">
-              <ref role="37wK5l" node="46bU2WhOwUq" resolve="create" />
+              <ref role="37wK5l" node="46bU2WhOwUq" resolve="createDiscount" />
               <node concept="37vLTw" id="3GM_nagTyr2" role="37wK5m">
                 <ref role="3cqZAo" node="1Ik8KAj7q7G" resolve="person" />
               </node>
@@ -802,13 +802,13 @@
               </node>
             </node>
             <node concept="1rXfSq" id="4hiugqyskFu" role="28zNqd">
-              <ref role="37wK5l" node="1Ik8KAj7q60" resolve="isMale" />
+              <ref role="37wK5l" node="1Ik8KAj7q60" resolve="isOneTimeVisitorB" />
               <node concept="37vLTw" id="2BHiRxgmvb1" role="37wK5m">
                 <ref role="3cqZAo" node="46bU2WhOwUp" resolve="person" />
               </node>
             </node>
             <node concept="1rXfSq" id="4hiugqysqrD" role="28zNqd">
-              <ref role="37wK5l" node="1Ik8KAj7qa9" resolve="isFemale" />
+              <ref role="37wK5l" node="1Ik8KAj7qa9" resolve="isRegularVisitor" />
               <node concept="37vLTw" id="2BHiRxghfBW" role="37wK5m">
                 <ref role="3cqZAo" node="46bU2WhOwUp" resolve="person" />
               </node>
@@ -1238,7 +1238,7 @@
         <node concept="3cpWs6" id="1Ik8KAj7qal" role="3cqZAp">
           <node concept="3fqX7Q" id="1Ik8KAj7qan" role="3cqZAk">
             <node concept="1rXfSq" id="4hiugqysrEj" role="3fr31v">
-              <ref role="37wK5l" node="1Ik8KAj7q60" resolve="isMale" />
+              <ref role="37wK5l" node="1Ik8KAj7q60" resolve="isOneTimeVisitorB" />
               <node concept="37vLTw" id="2BHiRxgmHzz" role="37wK5m">
                 <ref role="3cqZAo" node="1Ik8KAj7qad" resolve="person" />
               </node>

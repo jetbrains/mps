@@ -947,8 +947,8 @@
       <node id="2148145109766229639" at="60,92,61,48" concept="8" />
       <node id="2148145109766229651" at="61,48,62,59" concept="3" />
       <node id="2148145109766229647" at="62,59,63,18" concept="9" />
-      <node id="8015517816488723297" at="65,95,66,347" concept="8" />
-      <node id="8015517816488738259" at="66,347,67,144" concept="9" />
+      <node id="8015517816488723297" at="65,95,66,223" concept="8" />
+      <node id="8015517816488738259" at="66,223,67,144" concept="9" />
       <node id="3403446150498856021" at="69,92,70,16" concept="9" />
       <node id="5854467014743261292" at="73,86,74,16" concept="9" />
       <node id="5854467014743262052" at="76,75,77,68" concept="9" />
@@ -980,11 +980,9 @@
       <node id="7888336927073638240" at="151,34,152,217" concept="3" />
       <node id="7888336927073638240" at="152,217,153,24" concept="9" />
       <node id="1229204042979" at="157,0,158,0" concept="12" trace="name$MnvL" />
-      <node id="1229204042979" at="161,0,162,0" concept="12" trace="nodeToEdit$SO8n" />
-      <node id="1229204042979" at="162,0,163,0" concept="12" trace="result$sGjR" />
-      <node id="1229204042979" at="163,0,164,0" concept="12" trace="testNodeBefore$aUeC" />
-      <node id="1229204042979" at="164,0,165,0" concept="12" trace="testNodeResult$bm9v" />
-      <node id="1229204042979" at="165,0,166,0" concept="12" trace="code$dfmf" />
+      <node id="1229204042979" at="161,0,162,0" concept="12" trace="testNodeBefore$aUeC" />
+      <node id="1229204042979" at="162,0,163,0" concept="12" trace="testNodeResult$bm9v" />
+      <node id="1229204042979" at="163,0,164,0" concept="12" trace="code$dfmf" />
       <node id="1229204042979" at="45,0,47,0" concept="13" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1229204042979" at="85,0,87,0" concept="2" trace="EditorTestCase__BehaviorDescriptor#()V" />
       <node id="1229204042979" at="48,0,51,0" concept="13" trace="getTestSet_idhGB2z8L#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
@@ -1106,8 +1104,8 @@
         <var name="parameters" id="1229204042979" />
       </scope>
       <unit id="1229204042979" at="156,0,159,0" name="jetbrains.mps.lang.test.behavior.EditorTestCase__BehaviorDescriptor$PROPS" />
-      <unit id="1229204042979" at="160,0,167,0" name="jetbrains.mps.lang.test.behavior.EditorTestCase__BehaviorDescriptor$LINKS" />
-      <unit id="1229204042979" at="29,0,168,0" name="jetbrains.mps.lang.test.behavior.EditorTestCase__BehaviorDescriptor" />
+      <unit id="1229204042979" at="160,0,165,0" name="jetbrains.mps.lang.test.behavior.EditorTestCase__BehaviorDescriptor$LINKS" />
+      <unit id="1229204042979" at="29,0,166,0" name="jetbrains.mps.lang.test.behavior.EditorTestCase__BehaviorDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590380(jetbrains.mps.lang.test.behavior)/1262430001741703830">

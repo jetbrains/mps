@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@ import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.function.BiConsumer;
 
 public class DefaultSModelDescriptor extends LazyEditableSModelBase implements GeneratableSModel, PersistenceVersionAware, ModelWithAttributes {
@@ -182,11 +183,16 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
 
   @Override
   public void setAttribute(@NotNull String key, @Nullable String value) {
+    final String oldValue = getModelHeader().getOptionalProperty(key);
+    if (Objects.equals(oldValue, value)) {
+      return;
+    }
     if (value == null) {
       getModelHeader().removeOptionalProperty(key);
     } else {
       getModelHeader().setOptionalProperty(key, value);
     }
+    setChanged(true);
   }
 
   @Nullable

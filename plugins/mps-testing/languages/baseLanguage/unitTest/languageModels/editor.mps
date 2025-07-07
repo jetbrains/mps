@@ -4,7 +4,7 @@
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -510,7 +510,7 @@
       </node>
       <node concept="3F1sOY" id="h3vmArp" role="3EZMnx">
         <property role="1$x2rV" value="actual" />
-        <ref role="1NtTu8" to="tpe3:7jPoEeD$ZP5" />
+        <ref role="1NtTu8" to="tpe3:7jPoEeD$ZP5" resolve="actual" />
       </node>
       <node concept="3F0ifn" id="h3vlQYs" role="3EZMnx">
         <property role="3F0ifm" value="equals" />
@@ -520,7 +520,7 @@
       </node>
       <node concept="3F1sOY" id="h3vm$Fz" role="3EZMnx">
         <property role="1$x2rV" value="expected" />
-        <ref role="1NtTu8" to="tpe3:7jPoEeD$ZP4" />
+        <ref role="1NtTu8" to="tpe3:7jPoEeD$ZP4" resolve="expected" />
       </node>
       <node concept="PMmxH" id="4uU5oUYY2Mp" role="3EZMnx">
         <ref role="PMmxG" node="4uU5oUYY2Mi" resolve="MessageComponent" />

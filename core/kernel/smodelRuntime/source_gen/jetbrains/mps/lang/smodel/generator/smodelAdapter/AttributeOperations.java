@@ -110,7 +110,7 @@ public class AttributeOperations {
     }
 
     @Override
-    protected void addFirst(SNode node) {
+    public void addFirst(SNode node) {
       ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.smodelAttribute$KJ43)).insertElement(0, SNodeOperations.cast(node, CONCEPTS.Attribute$g1));
       myDescriptor.update(node);
     }

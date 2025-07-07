@@ -26,6 +26,7 @@ import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.kotlin.api.builtins.BuiltIn;
 import jetbrains.mps.lang.scopes.runtime.HidingByNameScope;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
@@ -34,7 +35,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.kotlin.scopes.InheritorHelper;
 import java.util.Collections;
 import java.util.Objects;
-import jetbrains.mps.kotlin.api.builtins.BuiltIn;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -94,7 +94,17 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
     return SLinkOperations.getChildren(__thisNode__, LINKS.parameters$dfEr);
   }
   /*package*/ static SNode getReturnType_id6QVUYzas5Of(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.returnType$fGYV);
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.returnType$fGYV) != null)) {
+      return SLinkOperations.getTarget(__thisNode__, LINKS.returnType$fGYV);
+    }
+
+    // No explicit type + no return expression -> Unit
+    if ((IStatementHolder__BehaviorDescriptor.asSingleExpression_id18X2O0FvKfA.invoke(__thisNode__) == null)) {
+      return BuiltIn.UNIT.toClassType();
+    }
+
+    // Undefined: to be inferred
+    return null;
   }
   /*package*/ static SNode getReturnExpression_id6yQJbFyGtec(@NotNull SNode __thisNode__) {
     return IStatementHolder__BehaviorDescriptor.asSingleExpression_id18X2O0FvKfA.invoke(__thisNode__);

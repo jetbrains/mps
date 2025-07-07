@@ -18,6 +18,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeParent;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -26,6 +27,11 @@ import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
 import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.smodel.SModelStereotype;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -35,7 +41,7 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
     super(CONCEPTS.ConceptDeclaration$gH);
   }
   public IconResource getInstanceIcon(SNode node) {
-    return (SPropertyOperations.getBoolean(node, PROPS.rootable$_9pz) ? IconContainer.RESOURCE_a0a0a : IconContainer.RESOURCE_a0a0a_0);
+    return (SPropertyOperations.getBoolean(node, PROPS.rootable$_9pz) ? IconContainer.RESOURCE_0 : IconContainer.RESOURCE_1);
   }
 
   @Override
@@ -53,6 +59,21 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
             return _context.getScopeEvaluationContext().ofModel(_context.getModel(), "j.m.l.structure.CD", (SModel m) -> (Scope) Scopes.forConcepts(m, CONCEPTS.ConceptDeclaration$gH));
           }
         };
+      }
+    };
+  }
+  @Override
+  protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
+    return new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
+      @NotNull
+      public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
+        boolean result = staticCanBeAParent(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getLink());
+
+        if (!(result) && checkingNodeContext != null) {
+          checkingNodeContext.setBreakingNode(canBeParentBreakingPoint);
+        }
+
+        return result;
       }
     };
   }
@@ -97,10 +118,17 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   private static boolean staticCanBeARoot(SModel model) {
     return SModuleOperations.isAspect(model, "structure") || SModelStereotype.isGeneratorModel(model);
   }
+  private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
+    // ConceptPresentationAspectImpl template creates IconResource for the icon, and we don't know (yet?)
+    // how to make resource from an image
+    return !(Objects.equals(link, LINKS.icon$HKhR)) || !(SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.ConstantFieldIcon$r));
+  }
+  private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "5814497342257226114");
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "1227087258260");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept ConstantFieldIcon$r = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x6e053ee00272f4f8L, "jetbrains.mps.lang.resources.structure.ConstantFieldIcon");
   }
 
   private static final class PROPS {
@@ -109,5 +137,6 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink icon$HKhR = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x57cf4eb14c4f9ef5L, "icon");
   }
 }

@@ -5,6 +5,9 @@
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="app.jar" />
       <sourceRoot location="lib.jar" />
+      <sourceRoot location="modules/intellij.platform.vcs.impl.jar" />
+      <sourceRoot location="modules/intellij.platform.vcs.dvcs.impl.jar" />
+      <sourceRoot location="modules/intellij.platform.vcs.log.impl.jar" />
       <sourceRoot location="testFramework.jar" />
       <sourceRoot location="platform-loader.jar" />
       <sourceRoot location="util.jar" />
@@ -53,6 +56,9 @@
       <library location="${platform_lib}/util_rt.jar" />
       <library location="${platform_lib}/jps-model.jar" />
       <library location="${platform_lib}/forms_rt.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.dvcs.impl.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.log.impl.jar" />
     </facet>
   </facets>
   <sourcePath />

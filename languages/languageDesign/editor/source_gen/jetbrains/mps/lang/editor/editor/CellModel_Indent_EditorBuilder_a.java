@@ -12,7 +12,10 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.rootCellModelStyleStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.MPSColors;
+import java.awt.Color;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.colors.TextAttributesKey;
 
 /*package*/ class CellModel_Indent_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -40,9 +43,14 @@ import jetbrains.mps.nodeEditor.MPSColors;
     setCellContext(editorCell);
     Style style = new StyleImpl();
     new rootCellModelStyleStyleClass(this).apply(style, editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.lightGray));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_l8ulis_a0a()));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+  private Color _StyleParameter_QueryFunction_l8ulis_a0a() {
+    EditorColorsScheme scheme = EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
+    Color foregroundColor = scheme.getAttributes(TextAttributesKey.createTextAttributesKey("DEFAULT_LINE_COMMENT")).getForegroundColor();
+    return foregroundColor;
   }
 }

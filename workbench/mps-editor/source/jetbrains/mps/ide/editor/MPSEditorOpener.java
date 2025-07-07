@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import com.intellij.openapi.fileEditor.FileEditorProvider;
 import com.intellij.openapi.fileEditor.ex.IdeDocumentHistory;
 import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.openapi.wm.ToolWindowManager;
+import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.nodeEditor.InspectorTool;
@@ -41,6 +42,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 
 import java.awt.Component;
+import java.util.Collections;
 
 /**
  * Front-end both to create Editor for node and to open an editor based on node's file (which eventually ends up with creation of node's Editor)
@@ -83,7 +85,7 @@ public class MPSEditorOpener {
     if (!SNodeUtil.isAccessible(node, myProject.getRepository())) {
       return null;
     }
-    final Editor nodeEditor = openEditor(node.getContainingRoot(), false);
+    final Editor nodeEditor = openEditor(node.getContainingRoot(), focus);
 
     if ((nodeEditor.getCurrentEditorComponent() instanceof NodeEditorComponent)) {
       NodeEditorComponent nec = (NodeEditorComponent) nodeEditor.getCurrentEditorComponent();
@@ -179,13 +181,13 @@ public class MPSEditorOpener {
       getFocusManager().requestFocus(toBeFocused, false);
     } else {
       final InspectorTool inspectorTool = getInspector();
-      inspectorTool.getToolWindow().activate(null);
+      inspectorTool.activate();
       getFocusManager().requestFocus(inspectorTool.getInspector(), false);
     }
   }
 
   private InspectorTool getInspector() {
-    return myProject.getProject().getComponent(InspectorTool.class);
+    return InspectorTool.getInstance(myProject);
   }
 
   private jetbrains.mps.openapi.editor.EditorComponent getInspectorComponent() {
@@ -233,9 +235,11 @@ public class MPSEditorOpener {
   //todo this code is a duplicate of inspect(SNode) in jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser
   //todo remove this and make NodeEditorComponent open inspector when needed
   private boolean inspect(NodeEditorComponent editorComponent, SNode node) {
+    jetbrains.mps.nodeEditor.cells.EditorCell cell = editorComponent.findNodeCell(node, true);
+    boolean cellsReadOnlyInEditor = cell != null && ReadOnlyUtil.isCellsReadOnlyInEditor(editorComponent, Collections.singleton(cell));
     DataContext dataContext = DataManager.getInstance().getDataContext(editorComponent);
     FileEditor fileEditor = MPSCommonDataKeys.FILE_EDITOR.getData(dataContext);
-    getInspector().inspect(node, fileEditor, editorComponent.getEditorHintsForNode(node));
+    getInspector().inspect(node, fileEditor, editorComponent.getEditorHintsForNode(node), cellsReadOnlyInEditor);
     return true;
   }
 

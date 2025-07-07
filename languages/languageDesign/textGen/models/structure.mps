@@ -2,7 +2,7 @@
 <model ref="r:de0d3c0c-d049-41cf-bbf9-a920ba513cd3(jetbrains.mps.lang.textGen.structure)">
   <persistence version="9" />
   <languages>
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <engage id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
@@ -126,7 +126,7 @@
       <property role="20kJfa" value="conceptDeclaration" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1233670257997" />
-      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+      <ref role="20lvS9" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
     </node>
     <node concept="PrWs8" id="3gHHc5sBWgv" role="PzmwI">
       <ref role="PrY4T" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
@@ -157,6 +157,14 @@
     <property role="34LRSv" value="do generate text" />
     <property role="EcuMT" value="1233749247888" />
     <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+    <node concept="1TJgyi" id="mnd_T6VhrG" role="1TKVEl">
+      <property role="IQ2nx" value="402850470217717484" />
+      <property role="TrG5h" value="binaryOutput" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="mnd_T6VhwL" role="lGtFl">
+        <property role="t5JxN" value="implementation code access binary (sequence of bytes) output instead of a text buffer" />
+      </node>
+    </node>
   </node>
   <node concept="1TIwiD" id="hX1kVMc">
     <property role="R5$K7" value="true" />
@@ -675,6 +683,20 @@
     <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
     <node concept="PrWs8" id="6NuIk8swWsw" role="PzmwI">
       <ref role="PrY4T" node="6NuIk8swUPh" resolve="FilePathSpec" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4URE8v98gJD">
+    <property role="EcuMT" value="5672187556844866537" />
+    <property role="3GE5qa" value="operation" />
+    <property role="TrG5h" value="BinaryWriteOperation" />
+    <property role="34LRSv" value="write" />
+    <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
+    <node concept="1TJgyj" id="4URE8v98h6s" role="1TKVEi">
+      <property role="IQ2ns" value="5672187556844867996" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="data" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
   </node>
 </model>

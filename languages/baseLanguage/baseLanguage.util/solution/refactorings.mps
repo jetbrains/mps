@@ -48,6 +48,10 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1224071154655" name="jetbrains.mps.baseLanguage.structure.AsExpression" flags="nn" index="0kSF2">
+        <child id="1224071154657" name="classifierType" index="0kSFW" />
+        <child id="1224071154656" name="expression" index="0kSFX" />
+      </concept>
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
@@ -533,6 +537,10 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
       </concept>
       <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
         <property id="709746936026609031" name="linkId" index="3V$3ak" />
@@ -5465,7 +5473,9 @@
         <property role="TrG5h" value="node" />
         <node concept="3Tqbb2" id="Me9jjHmbtS" role="1tU5fm" />
       </node>
-      <node concept="3Tqbb2" id="Me9jjHmbtT" role="3clF45" />
+      <node concept="3Tqbb2" id="Me9jjHmbtT" role="3clF45">
+        <ref role="ehGHo" to="tpee:fz12cDA" resolve="ClassConcept" />
+      </node>
       <node concept="3Tmbuc" id="Me9jjHmbtU" role="1B3o_S" />
       <node concept="3clFbS" id="Me9jjHmbu3" role="3clF47">
         <node concept="3clFbF" id="Me9jjHmdyb" role="3cqZAp">
@@ -6156,6 +6166,10 @@
       </node>
       <node concept="3clFbS" id="3u7EY3u25lX" role="3clF47">
         <node concept="3clFbF" id="3u7EY3u25m2" role="3cqZAp">
+          <node concept="15s5l7" id="a5PP$GRbPJ" role="lGtFl">
+            <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;VariableDeclaration&gt; is not a subtype of node&lt;FieldDeclaration&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/4649457259827193981]&quot;;" />
+            <property role="huDt6" value="Error: type node&lt;VariableDeclaration&gt; is not a subtype of node&lt;FieldDeclaration&gt;" />
+          </node>
           <node concept="2OqwBi" id="3u7EY3u25m4" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxgm_pQ" role="2Oq$k0">
               <ref role="3cqZAo" node="3u7EY3u25lT" resolve="node" />
@@ -15342,7 +15356,9 @@
     </node>
     <node concept="3clFb_" id="7l_6fisO4yY" role="jymVt">
       <property role="TrG5h" value="findContainer" />
-      <node concept="3Tqbb2" id="7l_6fisO4yZ" role="3clF45" />
+      <node concept="3Tqbb2" id="7l_6fisO4yZ" role="3clF45">
+        <ref role="ehGHo" to="tpee:fz12cDA" resolve="ClassConcept" />
+      </node>
       <node concept="3Tmbuc" id="7l_6fisO4z0" role="1B3o_S" />
       <node concept="37vLTG" id="7l_6fisO4z1" role="3clF46">
         <property role="TrG5h" value="node" />
@@ -15368,7 +15384,9 @@
         <node concept="3cpWs8" id="7l_6fisO4z6" role="3cqZAp">
           <node concept="3cpWsn" id="7l_6fisO4z7" role="3cpWs9">
             <property role="TrG5h" value="container" />
-            <node concept="3Tqbb2" id="7l_6fisO4z8" role="1tU5fm" />
+            <node concept="3Tqbb2" id="7l_6fisO4z8" role="1tU5fm">
+              <ref role="ehGHo" to="tpee:fz12cDA" resolve="ClassConcept" />
+            </node>
             <node concept="2OqwBi" id="7l_6fisO4zb" role="33vP2m">
               <node concept="37vLTw" id="2BHiRxglQaM" role="2Oq$k0">
                 <ref role="3cqZAo" node="7l_6fisO4z1" resolve="node" />
@@ -15832,9 +15850,7 @@
           </node>
         </node>
       </node>
-      <node concept="3Tqbb2" id="7nrhK3uHdRr" role="3clF45">
-        <ref role="ehGHo" to="tpee:fz7vLUk" resolve="ParameterDeclaration" />
-      </node>
+      <node concept="3Tqbb2" id="7nrhK3uHdRr" role="3clF45" />
     </node>
     <node concept="3Tm1VV" id="7nrhK3uHdRs" role="1B3o_S" />
   </node>
@@ -20863,7 +20879,9 @@
     </node>
     <node concept="312cEg" id="7nrhK3uHff8" role="jymVt">
       <property role="TrG5h" value="myExpression" />
-      <node concept="3Tqbb2" id="7nrhK3uHffa" role="1tU5fm" />
+      <node concept="3Tqbb2" id="7nrhK3uHffa" role="1tU5fm">
+        <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+      </node>
       <node concept="3Tm6S6" id="7nrhK3uHff9" role="1B3o_S" />
     </node>
     <node concept="312cEg" id="7nrhK3uHffb" role="jymVt">
@@ -20883,7 +20901,9 @@
     <node concept="312cEg" id="7l_6fisO4fQ" role="jymVt">
       <property role="TrG5h" value="myContainer" />
       <node concept="3Tmbuc" id="7l_6fisOaqR" role="1B3o_S" />
-      <node concept="3Tqbb2" id="7l_6fisO4yc" role="1tU5fm" />
+      <node concept="3Tqbb2" id="7l_6fisO4yc" role="1tU5fm">
+        <ref role="ehGHo" to="tpee:fz12cDA" resolve="ClassConcept" />
+      </node>
     </node>
     <node concept="312cEg" id="1S4GctIhgtQ" role="jymVt">
       <property role="TrG5h" value="myIsReplacingAll" />
@@ -20926,7 +20946,9 @@
       <node concept="3Tm1VV" id="7nrhK3uHfhs" role="1B3o_S" />
       <node concept="37vLTG" id="7nrhK3uHffj" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3Tqbb2" id="7nrhK3uHffk" role="1tU5fm" />
+        <node concept="3Tqbb2" id="7nrhK3uHffk" role="1tU5fm">
+          <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+        </node>
       </node>
       <node concept="3clFbS" id="7nrhK3uHffn" role="3clF47">
         <node concept="3clFbF" id="7l_6fisNZXG" role="3cqZAp">
@@ -21257,7 +21279,9 @@
       </node>
       <node concept="37vLTG" id="1XKu_aiA7co" role="3clF46">
         <property role="TrG5h" value="initializer" />
-        <node concept="3Tqbb2" id="1XKu_aiA7cp" role="1tU5fm" />
+        <node concept="3Tqbb2" id="1XKu_aiA7cp" role="1tU5fm">
+          <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+        </node>
       </node>
       <node concept="3clFbS" id="1XKu_aiA7cq" role="3clF47">
         <node concept="3clFbJ" id="1XKu_aiAl3U" role="3cqZAp">
@@ -22023,7 +22047,9 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="7nrhK3uHfhO" role="1B3o_S" />
-      <node concept="3Tqbb2" id="7nrhK3uHfhN" role="3clF45" />
+      <node concept="3Tqbb2" id="7nrhK3uHfhN" role="3clF45">
+        <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+      </node>
     </node>
     <node concept="3clFb_" id="7nrhK3uHfhU" role="jymVt">
       <property role="TrG5h" value="getExpressionType" />
@@ -22206,7 +22232,9 @@
         <property role="TrG5h" value="node" />
         <node concept="3Tqbb2" id="7l_6fisO4yL" role="1tU5fm" />
       </node>
-      <node concept="3Tqbb2" id="7l_6fisO4yJ" role="3clF45" />
+      <node concept="3Tqbb2" id="7l_6fisO4yJ" role="3clF45">
+        <ref role="ehGHo" to="tpee:fz12cDA" resolve="ClassConcept" />
+      </node>
       <node concept="3Tmbuc" id="7l_6fisO4yI" role="1B3o_S" />
       <node concept="3clFbS" id="7l_6fisO4yH" role="3clF47">
         <node concept="3cpWs6" id="7l_6fisOerS" role="3cqZAp">
@@ -22392,6 +22420,10 @@
           <node concept="9aQIb" id="17CLyZpM6eN" role="9aQIa">
             <node concept="3clFbS" id="17CLyZpM6eO" role="9aQI4">
               <node concept="3clFbF" id="17CLyZpM6eQ" role="3cqZAp">
+                <node concept="15s5l7" id="a5PP$GSEKG" role="lGtFl">
+                  <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;&gt; is not a subtype of node&lt;Classifier&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/4649457259827193981]&quot;;" />
+                  <property role="huDt6" value="Error: type node&lt;&gt; is not a subtype of node&lt;Classifier&gt;" />
+                </node>
                 <node concept="2OqwBi" id="17CLyZpM6eS" role="3clFbG">
                   <node concept="1P9Npp" id="17CLyZpM6eX" role="2OqNvi">
                     <node concept="2c44tf" id="17CLyZpM6eY" role="1P9ThW">
@@ -22448,6 +22480,10 @@
           </node>
           <node concept="3clFbS" id="17CLyZpM6eq" role="3clFbx">
             <node concept="3clFbF" id="62XPXDPdOoZ" role="3cqZAp">
+              <node concept="15s5l7" id="a5PP$GSEfc" role="lGtFl">
+                <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;&gt; is not a subtype of node&lt;VariableDeclaration&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/4649457259827193981]&quot;;" />
+                <property role="huDt6" value="Error: type node&lt;&gt; is not a subtype of node&lt;VariableDeclaration&gt;" />
+              </node>
               <node concept="2OqwBi" id="62XPXDPdOpl" role="3clFbG">
                 <node concept="37vLTw" id="62XPXDPdOp0" role="2Oq$k0">
                   <ref role="3cqZAo" node="7nBiwHqaLk5" resolve="usage" />
@@ -23010,14 +23046,12 @@
             <node concept="10Oyi0" id="6XWgB1aZ6Zq" role="1tU5fm" />
             <node concept="2OqwBi" id="6XWgB1aZ799" role="33vP2m">
               <node concept="2OqwBi" id="6XWgB1aZ79a" role="2Oq$k0">
-                <node concept="1eOMI4" id="6XWgB1aZ79b" role="2Oq$k0">
-                  <node concept="10QFUN" id="6XWgB1aZ79c" role="1eOMHV">
-                    <node concept="3uibUv" id="6XWgB1aZ79d" role="10QFUM">
-                      <ref role="3uigEE" to="w1kc:~SModelInternal" resolve="SModelInternal" />
-                    </node>
-                    <node concept="37vLTw" id="6XWgB1aZ79e" role="10QFUP">
-                      <ref role="3cqZAo" node="7_fAwM$axUI" resolve="mm" />
-                    </node>
+                <node concept="0kSF2" id="a5PP$GSxQE" role="2Oq$k0">
+                  <node concept="37vLTw" id="6XWgB1aZ79e" role="0kSFX">
+                    <ref role="3cqZAo" node="7_fAwM$axUI" resolve="mm" />
+                  </node>
+                  <node concept="3uibUv" id="6XWgB1aZ79d" role="0kSFW">
+                    <ref role="3uigEE" to="w1kc:~SModelInternal" resolve="SModelInternal" />
                   </node>
                 </node>
                 <node concept="liA8E" id="6XWgB1aZ79f" role="2OqNvi">
@@ -23049,18 +23083,16 @@
             <node concept="10Oyi0" id="6XWgB1aZ7HZ" role="1tU5fm" />
             <node concept="2OqwBi" id="6XWgB1aZ7I0" role="33vP2m">
               <node concept="2OqwBi" id="6XWgB1aZ7I1" role="2Oq$k0">
-                <node concept="1eOMI4" id="6XWgB1aZ7I2" role="2Oq$k0">
-                  <node concept="10QFUN" id="6XWgB1aZ7I3" role="1eOMHV">
-                    <node concept="3uibUv" id="6XWgB1aZ7I4" role="10QFUM">
-                      <ref role="3uigEE" to="w1kc:~SModelInternal" resolve="SModelInternal" />
-                    </node>
-                    <node concept="37vLTw" id="6XWgB1aZ7I5" role="10QFUP">
-                      <ref role="3cqZAo" node="7_fAwM$axUI" resolve="mm" />
-                    </node>
-                  </node>
-                </node>
                 <node concept="liA8E" id="6XWgB1aZ7I6" role="2OqNvi">
                   <ref role="37wK5l" to="w1kc:~SModelInternal.getModelImports()" resolve="getModelImports" />
+                </node>
+                <node concept="0kSF2" id="a5PP$GSCBV" role="2Oq$k0">
+                  <node concept="37vLTw" id="a5PP$GSCBW" role="0kSFX">
+                    <ref role="3cqZAo" node="7_fAwM$axUI" resolve="mm" />
+                  </node>
+                  <node concept="3uibUv" id="a5PP$GSCBX" role="0kSFW">
+                    <ref role="3uigEE" to="w1kc:~SModelInternal" resolve="SModelInternal" />
+                  </node>
                 </node>
               </node>
               <node concept="liA8E" id="6XWgB1aZ7I7" role="2OqNvi">
@@ -24046,6 +24078,10 @@
             <node concept="3clFbJ" id="nfsfDyw8I1" role="3cqZAp">
               <node concept="3clFbS" id="nfsfDyw8I2" role="3clFbx">
                 <node concept="3clFbF" id="1FCWHVNh_UG" role="3cqZAp">
+                  <node concept="15s5l7" id="a5PP$GSH8B" role="lGtFl">
+                    <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;&gt; is not a subtype of node&lt;BaseMethodDeclaration&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/4649457259827193981]&quot;;" />
+                    <property role="huDt6" value="Error: type node&lt;&gt; is not a subtype of node&lt;BaseMethodDeclaration&gt;" />
+                  </node>
                   <node concept="37vLTI" id="1FCWHVNhQLZ" role="3clFbG">
                     <node concept="37vLTw" id="1FCWHVNh_UH" role="37vLTJ">
                       <ref role="3cqZAo" node="nfsfDyw8HZ" resolve="newCall" />
@@ -24090,6 +24126,10 @@
               <node concept="9aQIb" id="nfsfDyw8Il" role="9aQIa">
                 <node concept="3clFbS" id="nfsfDyw8Im" role="9aQI4">
                   <node concept="3clFbF" id="nfsfDyw8In" role="3cqZAp">
+                    <node concept="15s5l7" id="a5PP$GSI0x" role="lGtFl">
+                      <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;&gt; is not a subtype of node&lt;Classifier&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/4649457259827193981]&quot;;" />
+                      <property role="huDt6" value="Error: type node&lt;&gt; is not a subtype of node&lt;Classifier&gt;" />
+                    </node>
                     <node concept="37vLTI" id="nfsfDyw8Io" role="3clFbG">
                       <node concept="2c44tf" id="nfsfDyw8Iq" role="37vLTx">
                         <node concept="2YIFZM" id="nfsfDyw8Ir" role="2c44tc">
@@ -25412,6 +25452,10 @@
                     </node>
                   </node>
                 </node>
+              </node>
+              <node concept="15s5l7" id="a5PP$GXs_j" role="lGtFl">
+                <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;&gt; is not a subtype of node&lt;Classifier&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/4649457259827193981]&quot;;" />
+                <property role="huDt6" value="Error: type node&lt;&gt; is not a subtype of node&lt;Classifier&gt;" />
               </node>
             </node>
           </node>
@@ -34606,8 +34650,13 @@
               <node concept="3cpWs6" id="Z_CsvxcUaD" role="3cqZAp">
                 <node concept="3nyPlj" id="Z_CsvxcUaF" role="3cqZAk">
                   <ref role="37wK5l" node="7nrhK3uHffi" resolve="init" />
-                  <node concept="37vLTw" id="7cxw0ltUM$Y" role="37wK5m">
-                    <ref role="3cqZAo" node="2sDsLBWgxIF" resolve="node" />
+                  <node concept="10QFUN" id="a5PP$GRuZ4" role="37wK5m">
+                    <node concept="37vLTw" id="7cxw0ltUM$Y" role="10QFUP">
+                      <ref role="3cqZAo" node="2sDsLBWgxIF" resolve="node" />
+                    </node>
+                    <node concept="3Tqbb2" id="a5PP$GRvoc" role="10QFUM">
+                      <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+                    </node>
                   </node>
                   <node concept="37vLTw" id="Z_CsvxcUaH" role="37wK5m">
                     <ref role="3cqZAo" node="2sDsLBWgxLj" resolve="editorComponent" />
@@ -34790,7 +34839,9 @@
         <property role="TrG5h" value="node" />
         <node concept="3Tqbb2" id="Me9jjHm9dS" role="1tU5fm" />
       </node>
-      <node concept="3Tqbb2" id="Me9jjHm9dT" role="3clF45" />
+      <node concept="3Tqbb2" id="Me9jjHm9dT" role="3clF45">
+        <ref role="ehGHo" to="tpee:fz12cDA" resolve="ClassConcept" />
+      </node>
       <node concept="3Tmbuc" id="Me9jjHm9dU" role="1B3o_S" />
       <node concept="3clFbS" id="Me9jjHm9e3" role="3clF47">
         <node concept="3clFbF" id="Me9jjHmj2K" role="3cqZAp">
@@ -34870,7 +34921,9 @@
         <node concept="3cpWs8" id="20zKY0o4y4S" role="3cqZAp">
           <node concept="3cpWsn" id="20zKY0o4y4T" role="3cpWs9">
             <property role="TrG5h" value="expression" />
-            <node concept="3Tqbb2" id="20zKY0o4y4Q" role="1tU5fm" />
+            <node concept="3Tqbb2" id="20zKY0o4y4Q" role="1tU5fm">
+              <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+            </node>
             <node concept="2OqwBi" id="20zKY0o4y4U" role="33vP2m">
               <node concept="2OqwBi" id="20zKY0o4y4V" role="2Oq$k0">
                 <node concept="Xjq3P" id="20zKY0o4y4W" role="2Oq$k0" />

@@ -1113,18 +1113,18 @@
   <root nodeRef="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)/4074113095384032101">
     <file name="DataFlowAspectDescriptorBase.java">
       <node id="4074113095384032110" at="16,77,17,35" concept="10" />
-      <node id="4074113095384032120" at="20,85,21,35" concept="10" />
-      <node id="4074113095384032115" at="19,0,23,0" concept="8" trace="getDataFlowBuilders#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/util/Collection;" />
+      <node id="4074113095384032120" at="21,85,22,35" concept="10" />
       <node id="4074113095384032104" at="14,0,19,0" concept="8" trace="getConstructors#(Ljava/lang/String;)Ljava/util/Collection;" />
+      <node id="4074113095384032115" at="19,0,24,0" concept="8" trace="getDataFlowBuilders#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/util/Collection;" />
       <scope id="4074113095384032109" at="16,77,17,35" />
-      <scope id="4074113095384032119" at="20,85,21,35" />
-      <scope id="4074113095384032115" at="19,0,23,0">
-        <var name="concept" id="4074113095384032117" />
-      </scope>
+      <scope id="4074113095384032119" at="21,85,22,35" />
       <scope id="4074113095384032104" at="14,0,19,0">
         <var name="analyzerId" id="4074113095384032107" />
       </scope>
-      <unit id="4074113095384032101" at="13,0,24,0" name="jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptorBase" />
+      <scope id="4074113095384032115" at="19,0,24,0">
+        <var name="concept" id="4074113095384032117" />
+      </scope>
+      <unit id="4074113095384032101" at="13,0,25,0" name="jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptorBase" />
     </file>
   </root>
   <root nodeRef="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)/4074113095384032581">
@@ -1668,17 +1668,21 @@
   </root>
   <root nodeRef="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)/4074113095384033841">
     <file name="ProgramFactory.java">
-      <node id="4074113095384033845" at="11,0,12,0" concept="8" trace="createProgram#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/dataFlow/framework/Program;" />
-      <node id="4074113095384033851" at="12,0,13,0" concept="8" trace="prepareProgram#(Ljetbrains/mps/lang/dataFlow/framework/Program;Lorg/jetbrains/mps/openapi/model/SNode;null)V" />
-      <scope id="4074113095384033845" at="11,0,12,0">
+      <node id="4074113095384033845" at="12,0,13,0" concept="8" trace="createProgram#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/dataFlow/framework/Program;" />
+      <node id="4074113095384033851" at="13,0,14,0" concept="8" trace="prepareProgram#(Ljetbrains/mps/lang/dataFlow/framework/Program;Lorg/jetbrains/mps/openapi/model/SNode;null)V" />
+      <node id="5562196214142136115" at="19,0,20,0" concept="8" trace="newFactory#(Ljava/util/Collection;)Ljetbrains/mps/lang/dataFlow/framework/ProgramFactory;" />
+      <scope id="4074113095384033845" at="12,0,13,0">
         <var name="node" id="4074113095384033847" />
       </scope>
-      <scope id="4074113095384033851" at="12,0,13,0">
+      <scope id="4074113095384033851" at="13,0,14,0">
         <var name="analyzerIdT" id="4074113095384033857" />
         <var name="node" id="4074113095384033855" />
         <var name="program" id="4074113095384033853" />
       </scope>
-      <unit id="4074113095384033841" at="10,0,14,0" name="jetbrains.mps.lang.dataFlow.framework.ProgramFactory" />
+      <scope id="5562196214142136115" at="19,0,20,0">
+        <var name="modes" id="5562196214142136311" />
+      </scope>
+      <unit id="4074113095384033841" at="11,0,21,0" name="jetbrains.mps.lang.dataFlow.framework.ProgramFactory" />
     </file>
   </root>
   <root nodeRef="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)/4074113095384033867">
@@ -1716,17 +1720,17 @@
   <root nodeRef="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)/4074113095384034111">
     <file name="ProgramBuilderContextImpl.java">
       <node id="4074113095384034114" at="12,0,13,0" concept="4" trace="myBuilderModes" />
-      <node id="4074113095384034126" at="13,87,14,34" concept="3" />
-      <node id="4074113095384034134" at="17,56,18,26" concept="10" />
-      <node id="4074113095384034119" at="13,0,16,0" concept="1" trace="ProgramBuilderContextImpl#(Ljava/util/Collection;)V" />
-      <node id="4074113095384034131" at="16,0,20,0" concept="8" trace="getBuilderModes#()Ljava/util/Collection;" />
-      <scope id="4074113095384034125" at="13,87,14,34" />
-      <scope id="4074113095384034133" at="17,56,18,26" />
-      <scope id="4074113095384034119" at="13,0,16,0">
+      <node id="4074113095384034126" at="14,87,15,34" concept="3" />
+      <node id="4074113095384034134" at="18,56,19,26" concept="10" />
+      <node id="4074113095384034119" at="14,0,17,0" concept="1" trace="ProgramBuilderContextImpl#(Ljava/util/Collection;)V" />
+      <node id="4074113095384034131" at="17,0,21,0" concept="8" trace="getBuilderModes#()Ljava/util/Collection;" />
+      <scope id="4074113095384034125" at="14,87,15,34" />
+      <scope id="4074113095384034133" at="18,56,19,26" />
+      <scope id="4074113095384034119" at="14,0,17,0">
         <var name="builderModes" id="4074113095384034121" />
       </scope>
-      <scope id="4074113095384034131" at="16,0,20,0" />
-      <unit id="4074113095384034111" at="11,0,21,0" name="jetbrains.mps.lang.dataFlow.framework.ProgramBuilderContextImpl" />
+      <scope id="4074113095384034131" at="17,0,21,0" />
+      <unit id="4074113095384034111" at="11,0,22,0" name="jetbrains.mps.lang.dataFlow.framework.ProgramBuilderContextImpl" />
     </file>
   </root>
   <root nodeRef="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)/4074113095384034792">
@@ -1749,11 +1753,19 @@
   </root>
   <root nodeRef="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)/4074113095384034821">
     <file name="DataFlowAspectDescriptor.java">
-      <node id="4074113095384034824" at="13,0,15,0" concept="8" trace="getConstructors#(Ljava/lang/String;)Ljava/util/Collection;" />
-      <scope id="4074113095384034824" at="13,0,15,0">
+      <node id="5673517260258872794" at="16,78,17,35" concept="10" />
+      <node id="5673517260258872950" at="21,86,22,35" concept="10" />
+      <node id="4074113095384034824" at="15,0,19,0" concept="8" trace="getConstructors#(Ljava/lang/String;)Ljava/util/Collection;" />
+      <node id="5673517260258845837" at="20,0,24,0" concept="8" trace="getDataFlowBuilders#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/util/Collection;" />
+      <scope id="4074113095384034829" at="16,78,17,35" />
+      <scope id="5673517260258845842" at="21,86,22,35" />
+      <scope id="4074113095384034824" at="15,0,19,0">
         <var name="analyzerId" id="4074113095384034827" />
       </scope>
-      <unit id="4074113095384034821" at="12,0,16,0" name="jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor" />
+      <scope id="5673517260258845837" at="20,0,24,0">
+        <var name="concept" id="5673517260258845840" />
+      </scope>
+      <unit id="4074113095384034821" at="14,0,25,0" name="jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)/4074113095384034840">

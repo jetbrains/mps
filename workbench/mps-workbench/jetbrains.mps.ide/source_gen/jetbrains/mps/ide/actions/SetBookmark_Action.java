@@ -58,7 +58,7 @@ public class SetBookmark_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((Project) MapSequence.fromMap(_params).get("project")).getComponent(BookmarkManager.class).setBookmark(((SNode) MapSequence.fromMap(_params).get("node")), SetBookmark_Action.this.num);
+    BookmarkManager.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).setBookmark(((SNode) MapSequence.fromMap(_params).get("node")), SetBookmark_Action.this.num);
   }
   @NotNull
   public String getActionId() {

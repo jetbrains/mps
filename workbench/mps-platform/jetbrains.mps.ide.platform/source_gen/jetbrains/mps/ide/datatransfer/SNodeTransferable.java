@@ -12,6 +12,7 @@ import java.util.List;
 import java.awt.datatransfer.DataFlavor;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.datatransfer.SNodeClip;
 import java.util.Map;
 import java.util.Set;
 import java.util.Collections;
@@ -34,9 +35,10 @@ public class SNodeTransferable implements Transferable {
   public SNodeTransferable(List<SNode> nodes, String text) {
     myPasteData = saveNodes(nodes, null);
     mySupportedDataFlavors.add(SModelDataFlavor.sNode);
+    mySupportedDataFlavors.add(SNodeClip.NODE);
     if (nodes.size() == 1) {
       mySNodeReference = nodes.get(0).getReference();
-      mySupportedDataFlavors.add(SModelDataFlavor.sNodeReference);
+      mySupportedDataFlavors.add(SNodeClip.NODEREF);
     } else {
       mySNodeReference = null;
     }
@@ -46,9 +48,10 @@ public class SNodeTransferable implements Transferable {
   public SNodeTransferable(@NotNull List<SNode> nodes, String text, Map<SNode, Set<SNode>> nodesAndAttributes) {
     myPasteData = saveNodes(nodes, nodesAndAttributes);
     mySupportedDataFlavors.add(SModelDataFlavor.sNode);
+    mySupportedDataFlavors.add(SNodeClip.NODE);
     if (nodes.size() == 1) {
       mySNodeReference = nodes.get(0).getReference();
-      mySupportedDataFlavors.add(SModelDataFlavor.sNodeReference);
+      mySupportedDataFlavors.add(SNodeClip.NODEREF);
     } else {
       mySNodeReference = null;
     }
@@ -63,8 +66,9 @@ public class SNodeTransferable implements Transferable {
     saveText(text);
     myPasteData = saveNodes(Collections.singletonList(node), null);
     mySupportedDataFlavors.add(SModelDataFlavor.sNode);
+    mySupportedDataFlavors.add(SNodeClip.NODE);
     mySNodeReference = node.getReference();
-    mySupportedDataFlavors.add(SModelDataFlavor.sNodeReference);
+    mySupportedDataFlavors.add(SNodeClip.NODEREF);
   }
 
   @Override
@@ -79,15 +83,20 @@ public class SNodeTransferable implements Transferable {
   @Override
   public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
     if (isDataFlavorSupported(flavor)) {
-      if (flavor.equals(SModelDataFlavor.sNode)) {
+      if (SModelDataFlavor.sNode.equals(flavor)) {
+        // FIXME for transition period of 1 release we still support this flavor, and keep [ide.platform]SNodeTransferable
+        //      in Clipboard. I'm not aware of clients using SNodeTransferable directly, and generally there's no need to,
+        //      and the code will be removed after 2025.1
+        //      Perhaps, we shall replace SNodeTransferable with another Transferable implementation (SNodeClip?), which
+        //      won't be part of [ide.platform], not to drag complete IDEA platform just for the sake of Clipboard operations.
         return this;
-      } else if (flavor.equals(SModelDataFlavor.sNodeReference)) {
+      } else if (SNodeClip.NODEREF.equals(flavor)) {
         return mySNodeReference;
-      } else
-      if (flavor.equals(DataFlavor.stringFlavor)) {
+      } else if (SNodeClip.NODE.equals(flavor)) {
+        return createNodeData();
+      } else if (DataFlavor.stringFlavor.equals(flavor)) {
         return getAsString();
-      } else
-      if (flavor.equals(DataFlavor.plainTextFlavor)) {
+      } else if (flavor.equals(DataFlavor.plainTextFlavor)) {
         return new StringReader(getAsString());
       }
     }

@@ -10,12 +10,17 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import jetbrains.mps.smodel.Language;
-import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.smodel.language.CreateAspectContext;
+import java.util.function.Consumer;
+import java.util.Optional;
 
 @GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/1929018697514833165", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public interface NodeLocation {
@@ -23,7 +28,7 @@ public interface NodeLocation {
   void insertNode(SRepository repository, SNode nodeToMove);
   boolean isRoot();
   class NodeLocationChild implements NodeLocation {
-    private SNodeReference parent;
+    private final SNodeReference parent;
     private SContainmentLink role;
     public NodeLocationChild(SNode parent, SContainmentLink role) {
       this(parent);
@@ -53,38 +58,52 @@ public interface NodeLocation {
     }
   }
   class NodeLocationRoot implements NodeLocation {
-    private SModelReference myModel;
-    public NodeLocationRoot(SModel model) {
+    private final SModelReference myModel;
+
+    public NodeLocationRoot(@NotNull SModel model) {
       this.myModel = model.getReference();
     }
-    public boolean canInsert(SRepository repository, SNode nodeToMove) {
+    public boolean canInsert(@NotNull SRepository repository, @NotNull SNode nodeToMove) {
       SModel modelResolved = myModel.resolve(repository);
       return modelResolved != null && !(modelResolved.isReadOnly()) && ((SConcept) SNodeOperations.getConcept(nodeToMove)).isRootable();
     }
     public boolean isRoot() {
       return true;
     }
-    public void insertNode(SRepository repository, SNode nodeToMove) {
+    public void insertNode(@NotNull SRepository repository, @NotNull SNode nodeToMove) {
       myModel.resolve(repository).addRootNode(nodeToMove);
     }
   }
   class NodeLocationRootWithAspectModelCreation implements NodeLocation {
-    private SModuleReference myLanguage;
-    private LanguageAspect myAspect;
-    public NodeLocationRootWithAspectModelCreation(Language languageModule, LanguageAspect aspect) {
+    private final SModuleReference myLanguage;
+    private final LanguageAspectDescriptor myAspect;
+
+    public NodeLocationRootWithAspectModelCreation(@NotNull Language languageModule, @NotNull LanguageAspectDescriptor aspect) {
       myLanguage = languageModule.getModuleReference();
       myAspect = aspect;
     }
-    public boolean canInsert(SRepository repository, SNode nodeToMove) {
-      SModule languageResolved = myLanguage.resolve(repository);
-      return languageResolved instanceof Language && !(((Language) languageResolved).isReadOnly()) && ((SConcept) SNodeOperations.getConcept(nodeToMove)).isRootable();
+    public boolean canInsert(@NotNull SRepository repository, @NotNull SNode nodeToMove) {
+      final ComponentHost platform = MPSCoreComponents.getInstance().getPlatform();
+      CreateAspectContext cac = CreateAspectContext.create(myLanguage.resolve(repository), platform, null);
+      return (existingWritableAspectModel(cac).isPresent() || myAspect.canCreate(cac)) && ((SConcept) SNodeOperations.getConcept(nodeToMove)).isRootable();
     }
     public boolean isRoot() {
       return true;
     }
-    public void insertNode(SRepository repository, SNode nodeToMove) {
-      SModel model = myAspect.getOrCreate(((Language) myLanguage.resolve(repository)));
-      model.addRootNode(nodeToMove);
+    public void insertNode(@NotNull SRepository repository, @NotNull final SNode nodeToMove) {
+      // see LanguageStructureMigrationParticipant.MigrationBuilder for comments about CH access
+      final ComponentHost platform = MPSCoreComponents.getInstance().getPlatform();
+      Consumer<SModel> insert = (m) -> m.addRootNode(nodeToMove);
+      CreateAspectContext cac = CreateAspectContext.create(myLanguage.resolve(repository), platform, insert);
+      Optional<SModel> am = existingWritableAspectModel(cac);
+      if (am.isPresent()) {
+        am.ifPresent(insert);
+      } else {
+        myAspect.create(cac);
+      }
+    }
+    private Optional<SModel> existingWritableAspectModel(CreateAspectContext cac) {
+      return myAspect.getAspectModels(cac.getOwner()).stream().filter((m) -> !(m.isReadOnly())).findAny();
     }
   }
 }

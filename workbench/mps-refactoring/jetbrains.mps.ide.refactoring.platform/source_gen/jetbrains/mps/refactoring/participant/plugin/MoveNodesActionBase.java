@@ -14,11 +14,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.Map;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.platform.refactoring.MoveNodesDialog;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -53,6 +53,11 @@ public class MoveNodesActionBase implements MoveNodesAction {
   }
 
   public void execute(final MPSProject project, final List<SNode> nodesToMove) {
+    execute(project, nodesToMove, null);
+  }
+
+  @Override
+  public void execute(MPSProject project, final List<SNode> nodesToMove, Object destinationHint) {
     project.getRepository().getModelAccess().runReadAction(() -> {
       if (ListSequence.fromList(nodesToMove).count() == 1 && SNodeOperations.isInstanceOf(SNodeOperations.getParent(ListSequence.fromList(nodesToMove).first()), CONCEPTS.BaseCommentAttribute$nv)) {
         ListSequence.fromList(nodesToMove).addElement(SNodeOperations.getParent(ListSequence.fromList(nodesToMove).first()));
@@ -60,7 +65,12 @@ public class MoveNodesActionBase implements MoveNodesAction {
       }
     });
 
-    final NodeLocation newLocation = askLocation(project, nodesToMove);
+    final NodeLocation newLocation;
+    if (destinationHint instanceof SModel) {
+      newLocation = new NodeLocation.NodeLocationRoot(((SModel) destinationHint));
+    } else {
+      newLocation = askLocation(project, nodesToMove);
+    }
     if (newLocation == null) {
       return;
     }
@@ -68,12 +78,13 @@ public class MoveNodesActionBase implements MoveNodesAction {
     MoveNodesUtil.NodeProcessor processor = new MoveNodesUtil.NodeCreatingProcessor(newLocation, project);
     MoveNodesUtil.moveTo(project, getName(), MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(processor, nodesToMove)));
   }
+
   public NodeLocation askLocation(final MPSProject project, final List<SNode> nodesToMove) {
     final Wrappers._T<SModel> currentModel = new Wrappers._T<SModel>();
     project.getRepository().getModelAccess().runReadAction(() -> currentModel.value = SNodeOperations.getModel(ListSequence.fromList(nodesToMove).first()));
     return MoveNodesDialog.getSelectedObject(project, currentModel.value, new MoveNodesDialog.ModelFilter() {
       public String getErrorMessage(NodeLocation selectedObject) {
-        return "Choose model or node that can contain moving nodes";
+        return "Please select a model or a node that can accommodate the nodes you wish to move";
       }
       @Override
       public boolean check(final NodeLocation selectedObject, SModel model) {

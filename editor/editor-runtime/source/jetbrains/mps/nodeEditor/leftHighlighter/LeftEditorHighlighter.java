@@ -26,7 +26,9 @@ import com.intellij.openapi.actionSystem.ActionPopupMenu;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.DataSink;
 import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.openapi.actionSystem.UiDataProvider;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColorsListener;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
@@ -45,6 +47,7 @@ import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer.IconRendererType;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.EditorTooltipProvider;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager;
 import jetbrains.mps.nodeEditor.leftHighlighter.IconPositionCalculator.IntLocation;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.update.UpdaterListenerAdapter;
@@ -85,7 +88,7 @@ import java.util.TreeSet;
 /**
  * This class should be called in UI (EventDispatch) thread only
  */
-public final class LeftEditorHighlighter extends JComponent {
+public final class LeftEditorHighlighter extends JComponent implements UiDataProvider {
   public static final String ICON_AREA = "LeftEditorHighlighterIconArea";
 
   private static final int MIN_LEFT_TEXT_WIDTH = 0;
@@ -203,6 +206,11 @@ public final class LeftEditorHighlighter extends JComponent {
           EditorColorsManager.TOPIC, (EditorColorsListener) scheme -> LeftEditorHighlighter.this.setBackground(EditorSettings.getInstance().getLeftHighlighterBackgroundColor())
       );
     }
+  }
+
+  @Override
+  public void uiDataSnapshot(@NotNull DataSink sink) {
+    DataSink.uiDataSnapshot(sink, myEditorComponent);
   }
 
   public void selectionChanged() {
@@ -695,6 +703,8 @@ public final class LeftEditorHighlighter extends JComponent {
   }
 
   private void mousePressedInIconsArea(MouseEvent e) {
+    MPSDocumentationManager.getInstance().cancelAll();
+    myEditorComponent.getPlatformEditorEmulation().cancelShowInfoToolTipRequest();
     EditorMessageIconRenderer iconRenderer = getIconRendererUnderMouse(e);
     if (iconRenderer != null) {
       if (e.getButton() == MouseEvent.BUTTON3) {

@@ -478,10 +478,7 @@
         <child id="1197683466920" name="keyType" index="3rvQeY" />
         <child id="1197683475734" name="valueType" index="3rvSg0" />
       </concept>
-      <concept id="1197686869805" name="jetbrains.mps.baseLanguage.collections.structure.HashMapCreator" flags="nn" index="3rGOSV">
-        <child id="1197687026896" name="keyType" index="3rHrn6" />
-        <child id="1197687035757" name="valueType" index="3rHtpV" />
-      </concept>
+      <concept id="1197686869805" name="jetbrains.mps.baseLanguage.collections.structure.HashMapCreator" flags="nn" index="3rGOSV" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
       <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
       <concept id="1197932370469" name="jetbrains.mps.baseLanguage.collections.structure.MapElement" flags="nn" index="3EllGN">
@@ -8351,14 +8348,7 @@
         </node>
       </node>
       <node concept="2ShNRf" id="41qKLiDKrdk" role="33vP2m">
-        <node concept="3rGOSV" id="1htmYMk1Vrs" role="2ShVmc">
-          <node concept="3uibUv" id="1htmYMk20N6" role="3rHrn6">
-            <ref role="3uigEE" node="1htmYMjXX7h" resolve="JUnitRunType" />
-          </node>
-          <node concept="3uibUv" id="1htmYMk21MC" role="3rHtpV">
-            <ref role="3uigEE" node="1_3tIz4jG4t" resolve="ScopeAndPanels.PanelPerScope" />
-          </node>
-        </node>
+        <node concept="3rGOSV" id="1htmYMk1Vrs" role="2ShVmc" />
       </node>
     </node>
     <node concept="2tJIrI" id="1_3tIz4lvnY" role="jymVt" />

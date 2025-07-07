@@ -21,6 +21,8 @@ import static org.junit.Assert.assertEquals;
  * @author Artem Tikhomirov
  */
 public class LegacyJavaStubModelRefTest implements EnvironmentAware {
+  // XXX with VfsTest+FSListeningTest moved to [testbench], is there a need to keep LegacyJavaStubModelRefTest and DiskMemoryConflictTest
+  //     under ide.vcs.test solution? Alternatively, move hand-written tests to MPS world, instead
   private Environment myEnv;
   private PersistenceRegistry myPersistenceRegistry = null;
 

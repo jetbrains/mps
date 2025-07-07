@@ -1789,7 +1789,7 @@
                   <node concept="37vLTI" id="2_jX3OnHZQA" role="3clFbG">
                     <node concept="2YIFZM" id="2_jX3OnHZXB" role="37vLTx">
                       <ref role="1Pybhc" to="18ew:~IFileUtil" resolve="IFileUtil" />
-                      <ref role="37wK5l" to="18ew:~IFileUtil.createTmpDir(jetbrains.mps.vfs.FileSystem)" resolve="createTmpDir" />
+                      <ref role="37wK5l" to="18ew:~IFileUtil.createTmpDir(jetbrains.mps.vfs.openapi.FileSystem)" resolve="createTmpDir" />
                       <node concept="2OqwBi" id="2Z81NTQQWEb" role="37wK5m">
                         <node concept="37vLTw" id="2Z81NTQQWc9" role="2Oq$k0">
                           <ref role="3cqZAo" node="7l0SErcZkaN" resolve="project" />

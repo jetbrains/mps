@@ -519,8 +519,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("description", 0x1a226282e4830468L).type(PrimitiveTypeId.STRING).origin("1883175908513350760").done();
     b.aggregate("testNodeBefore", 0x2b9f5f5eae643562L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L).optional(true).ordered(true).multiple(false).origin("3143335925185262946").done();
     b.aggregate("testNodeResult", 0x2b9f5f5eae643585L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L).optional(true).ordered(true).multiple(false).origin("3143335925185262981").done();
-    b.aggregate("nodeToEdit", 0x11e314b78e4L).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL).optional(true).ordered(true).multiple(false).origin("1229187676388").done();
-    b.aggregate("result", 0x11e314bf3d3L).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL).optional(true).ordered(true).multiple(false).origin("1229187707859").done();
     b.aggregate("code", 0x11e314cad13L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(true).ordered(true).multiple(false).origin("1229187755283").done();
     b.aggregate("logEvents", 0x486f8079df2fd868L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x486f8079df2fd630L).optional(true).ordered(true).multiple(true).origin("5219531754069547112").done();
     b.kind(ConceptKind.IMPLEMENTATION, StaticScope.GLOBAL);
@@ -698,7 +696,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x12509ddfaa7c0557L);
     b.origin("r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/5476670926298696679");
     b.version(3);
-    b.associate("migration_old", 0x4c010b30d9be54a3L).target(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x47bb811da2acc4d6L).optional(true).origin("5476670926298698915").done();
     b.aggregate("inputNodes", 0x4c010b30d9be4be8L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L).optional(true).ordered(true).multiple(true).origin("5476670926298696680").done();
     b.aggregate("outputNodes", 0x4c010b30d9be5494L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L).optional(true).ordered(true).multiple(true).origin("5476670926298698900").done();
     b.aggregate("migration", 0x5bf7864595df8b02L).target(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L).optional(false).ordered(true).multiple(true).origin("6626913010124294914").done();

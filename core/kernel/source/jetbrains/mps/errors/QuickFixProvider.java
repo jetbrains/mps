@@ -19,6 +19,14 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Captures an essence of a reference to a runtime {@link QuickFix_Runtime} object, but without
+ * holding a direct reference to that object. Also, serves as an ID of the particular instance
+ * of the quickfix being referenced here. See
+ * <a href="https://youtrack.jetbrains.com/issue/MPS-33221">MPS-33221 Typesystem checks quick fixes "apply immediately" works very unstable.</a>
+ * <p>
+ * Method {@link #getQuickFix} is supposed to instantiate the runtime object when accessed.
+ */
 // XXX it's a bit odd to have isExecutedImmediately here, but to instantiate QuickFix_Runtime to get declaration node, could we do anything about that?
 public interface QuickFixProvider {
 

@@ -64,7 +64,7 @@ public class GoByReference_ActionGroup extends GeneratedActionGroup {
           mpsProject.getModelAccess().executeUndoTransparentCommand(new Runnable() {
             @Override
             public void run() {
-              ResolverComponent.getInstance().resolve(finalRef, mpsProject.getRepository());
+              mpsProject.getComponent(ResolverComponent.class).resolve(finalRef, mpsProject.getRepository());
             }
           });
           SReferenceLink role = finalRef.getLink();

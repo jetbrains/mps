@@ -22,6 +22,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.workbench.MPSDataKeys;
 import jetbrains.mps.workbench.action.BaseGroup;
 import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.ActionManager;
 import org.jetbrains.annotations.Nullable;
 
 public class ScriptsForSelection_ActionGroup extends GeneratedActionGroup {
@@ -50,7 +51,7 @@ public class ScriptsForSelection_ActionGroup extends GeneratedActionGroup {
 
     ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(project);
     BaseGroup catGroup = menuBuilder.createPopup(true);
-    for (AnAction a : catGroup.getChildren(null)) {
+    for (AnAction a : catGroup.getChildren(ActionManager.getInstance())) {
       ScriptsForSelection_ActionGroup.this.add(a);
     }
     ScriptsForSelection_ActionGroup.this.addParameterizedAction(new RunMigrationScripts_Action(true), true);

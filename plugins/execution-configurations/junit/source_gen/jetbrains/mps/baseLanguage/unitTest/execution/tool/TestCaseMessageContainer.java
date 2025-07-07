@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey;
 import jetbrains.mps.baseLanguage.unitTest.execution.TextTestEvent;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
-import jetbrains.mps.baseLanguage.unitTest.execution.TestType;
+import jetbrains.mps.baselanguage.unitTest.execution.TestType;
 import java.util.Objects;
 
 public class TestCaseMessageContainer extends MessageContainerBase<MethodMessageContainer> implements TestMessage {

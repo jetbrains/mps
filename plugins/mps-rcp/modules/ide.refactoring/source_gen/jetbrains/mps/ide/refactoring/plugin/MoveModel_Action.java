@@ -16,6 +16,7 @@ import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.project.MPSProject;
+import org.jetbrains.mps.openapi.module.SModule;
 
 public class MoveModel_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -66,6 +67,10 @@ public class MoveModel_Action extends BaseAction {
         return false;
       }
     }
+    {
+      SModule p = event.getData(MPSCommonDataKeys.TARGET_MODULE);
+      MapSequence.fromMap(_params).put("targetModule", p);
+    }
     return true;
   }
   @Override
@@ -73,6 +78,6 @@ public class MoveModel_Action extends BaseAction {
     MoveModel_Action.this.getExecutor(_params).execute();
   }
   private MoveModelActionExecutor getExecutor(final Map<String, Object> _params) {
-    return new MoveModelActionExecutor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModel) MapSequence.fromMap(_params).get("model")));
+    return new MoveModelActionExecutor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModel) MapSequence.fromMap(_params).get("model")), ((SModule) MapSequence.fromMap(_params).get("targetModule")));
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.tempmodel.TempModule;
-import jetbrains.mps.util.NotCondition;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
@@ -33,9 +32,10 @@ import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.module.event.SModuleChangedEvent;
+import org.jetbrains.mps.openapi.module.event.SRepositoryEvent;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
-import org.jetbrains.mps.util.Condition;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,8 +44,9 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.stream.Stream;
 
 import static java.lang.ClassLoader.getSystemClassLoader;
 import static jetbrains.mps.classloading.ClassLoadingProgress.UNLOADED;
@@ -205,9 +206,13 @@ public class ClassLoaderManager implements CoreComponent {
 
   public ClassLoaderManager(@NotNull SRepository repository) {
     myRepository = repository;
-    myModulesWatcher = new ModulesWatcher(myRepository, myWatchableCondition);
-    // XXX ModuleEventsHandler implies we care about ReloadableModuleBase instances, and the rest of this code
-    //     sort of assumes it receives these instances (e.g. conditions)
+    // watchableCondition is to filter modules that are subject to class loading. We want to watch and trace the dependencies between these.
+    // It answers if it is possible to associate a ClassLoader (whether IDEA-delegating or true MPS module CL) with the module.
+    // XXX perhaps, this condition shall include a check for actual .class present, to avoid attempts like e.g. LanguageRegistry to access classes
+    // from bare, non-compiled modules (i.e. not *can*ProvideClasses but also *does*ProvideClasses)
+    final Predicate<SModule> watchableCondition = SModuleOperations::classesAvailableToMPS;
+    myModulesWatcher = new ModulesWatcher(myRepository, watchableCondition);
+    // ModuleEventsHandler batches module events and pumps it back here, for susbequent processing by myModulesWatcher
     myRepositoryListener = new ModuleEventsHandler(repository, this);
     myBroadCaster = new ClassLoadingBroadCaster(repository.getModelAccess(), myClassLoadersHolder.getDisposer());
   }
@@ -231,12 +236,6 @@ public class ClassLoaderManager implements CoreComponent {
   @TestOnly
   /*package*/ ModulesWatcher getModulesWatcher() {
     return myModulesWatcher;
-  }
-
-  private void assertCanLoad(@NotNull SModule module) {
-    if (!(module instanceof ReloadableModule)) {
-      throw new IllegalArgumentException("The module " + module.getModuleName() + " does not comply with the MPS class loading system restrictions");
-    }
   }
 
   /**
@@ -279,26 +278,26 @@ public class ClassLoaderManager implements CoreComponent {
    */
   @NotNull
   public MPSModuleClassLoader getClassLoader(final SModule module) {
-    if (!myWatchableCondition.met(module)) {
-      // FTR, prior to use of JMF for condition, we didn't get into this if for a module removed inside the same write.
-      //      Instead, refresh(), below, brought the watcher state up-to-date. Now, module removed from a repo got no
-      //      facets, and we get into this if right away. Not sure how important is this scenario (see related change in
-      //      ModuleReloadTest#testUnload1()
-      return DEFAULT_DELEGATING_TO_SYSTEM_CL;
-    }
+//    if (!myValidCondition.test(module)) {
+//      // I'm not sure there's any reason to keep this condition, as it seems to be just some sort of optimization
+//      // especially as long as there's subsequent `refresh()` call, yet there's a long story for this condition, and
+//      // reluctant to remove it right away
+//      return DEFAULT_DELEGATING_TO_SYSTEM_CL;
+//    }
 
     if (myRepository.getModelAccess().canWrite()) {
       // fixme awful solution, unpredictable return value;
       //  however we need this in the during long writes where we want to see the update without explicit  #reload invocation
       refresh();
-    }
 
-    ReloadableModule reloadableModule = (ReloadableModule) module;
-    if (!myValidCondition.met(reloadableModule)) {
+    }
+    if (!myValidCondition.test(module)) {
       return DEFAULT_DELEGATING_TO_SYSTEM_CL;
     }
+    // myValidCondition is true here
+
 //    createClassloaders(Collections.singleton(reloadableModule), new EmptyProgressMonitor());
-    MPSModuleClassLoader classLoader = myClassLoadersHolder.getClassLoader(reloadableModule.getModuleReference());
+    MPSModuleClassLoader classLoader = myClassLoadersHolder.getClassLoader(module.getModuleReference());
     return classLoader != null ? classLoader : DEFAULT_DELEGATING_TO_SYSTEM_CL;
   }
 
@@ -353,7 +352,7 @@ public class ClassLoaderManager implements CoreComponent {
    * Note: currently we need to broadcast load/unload events because there are clients of {@link DeployListener}
    * These clients need to be rewritten in a lazy way, i.e. using only #getClass [#getClassLoader] method. (do they?)
    */
-  private void preLoadModules(Iterable<? extends ReloadableModule> modules, ProgressMonitor monitor) {
+  private void preLoadModules(Collection<CModule> modules, ProgressMonitor monitor) {
     // pre: modules - transitive closure
     checkWriteAccess();
     monitor.start("Loading", 6);
@@ -364,7 +363,7 @@ public class ClassLoaderManager implements CoreComponent {
     // XXX is it ok to assume dependencies could not be in 'lazy_loaded' state at the moment? Why myUnloadedCondition?
     // XXX myUnloadedCondition sort of implies classloading process for re-loaded module (unloaded and the loaded again) has to be complete at this point
     //     but what if/when I combine unload/preLoad into single transaction, would this assumption cause any throuble then?
-    Set<ReloadableModule> modulesPreLoad = filterModules(modules, myUnloadedCondition, myValidCondition);
+    Set<ReloadableModule> modulesPreLoad = filterModules(onlyRM(modules), myClassLoadersHolder.getUnloadedCondition().and(myValidCondition));
     if (modulesPreLoad.isEmpty()) {
       return;
     }
@@ -390,13 +389,11 @@ public class ClassLoaderManager implements CoreComponent {
    * FIXME not sure supplied modules match myMPSLoadableCondition, perhaps externally-managed modules are
    *       among these, as well. If yes, this means we dispatch different set of modules in onLoaded and in onUnloaded
    */
-  private void unloadModules(Iterable<? extends ReloadableModule> modules, @NotNull ProgressMonitor monitor) {
+  private void unloadModules(Collection<CModule> modules, @NotNull ProgressMonitor monitor) {
     // pre: modules - transitive closure
     checkWriteAccess();
     monitor.start("Unloading", 6);
-    Condition<ReloadableModule> loadedCondition = new NotCondition<>(myUnloadedCondition);
-    // LAZY_LOADED or LOADED
-    Set<ReloadableModule> modulesToUnload = filterModules(modules, loadedCondition);
+    Set<ReloadableModule> modulesToUnload = filterModules(onlyRM(modules), myClassLoadersHolder.getLoadedCondition());
     if (modulesToUnload.isEmpty()) {
       return;
     }
@@ -411,10 +408,13 @@ public class ClassLoaderManager implements CoreComponent {
     monitor.done();
   }
 
-  static <M> Set<M> filterModules(Iterable<? extends M> modules, Condition<? super M>... conditions) {
-    CompositeCondition<M> compositeCondition = new CompositeCondition<M>(conditions);
+  private static Stream<ReloadableModule> onlyRM(final Collection<CModule> modules) {
+    return modules.stream().map(CModule::getModule).filter(ReloadableModule.class::isInstance).map(ReloadableModule.class::cast);
+  }
+
+  static <M> Set<M> filterModules(Stream<? extends M> modules, Predicate<? super M> condition) {
     Set<M> filteredModules = new LinkedHashSet<>();
-    StreamSupport.stream(modules.spliterator(), false).filter(compositeCondition.asPredicate()).forEach(filteredModules::add);
+    modules.filter(condition).forEach(filteredModules::add);
     return filteredModules;
   }
 
@@ -436,17 +436,18 @@ public class ClassLoaderManager implements CoreComponent {
     refresh();
     // this is a hack. just a missstep towards better code (once reload process with a new watcher loguc is streamlined, we won't need casts)
     // perhaps, we can just ask watcher to give us tracked modules among these
-    Collection<ReloadableModuleBase> modulesToReload = new LinkedHashSet();
+    Collection<ReloadableModule> modulesToReload = new LinkedHashSet();
     for (SModule module : modules) {
       if (!(module instanceof TempModule) && module.getRepository() == null) {
         // FIXME I don't quite undertand how come TempModule from console could get repository == null (e4ebe803, MPS-20789 10yo! hotfix!!)
         throw new IllegalStateException(String.format("Cannot reload the module %s which does not belong to a repository", module));
       }
-      if (module instanceof ReloadableModuleBase) {
-        modulesToReload.add((ReloadableModuleBase) module);
+      if (module instanceof ReloadableModule) {
+        modulesToReload.add((ReloadableModule) module);
       }
     }
-    processModuleChanges(Collections.emptyList(), Collections.emptyList(), new ArrayList<>(modulesToReload), monitor);
+    // report modules as changed to trigger update of their CL
+    processModuleChanges(modulesToReload.stream().map(SModuleChangedEvent::new).collect(Collectors.toList()), monitor);
     LOG.info(String.format("Reloaded %d module(s) in %.3f s", modulesToReload.size(), (System.nanoTime() - beginTime) / 1e9));
   }
 
@@ -475,24 +476,6 @@ public class ClassLoaderManager implements CoreComponent {
       return;
     }
     reloadModules(toReload, monitor);
-  }
-
-  /**
-   * @deprecated Use instance methods of this class
-   */
-  @Deprecated(forRemoval = true, since = "2022.2")
-  public static void reload(@NotNull List<SModule> modules) {
-    LOG.warnDeprecatedUse("CLM.reload() has been deprecated and will be removed in the next release");
-    List<ReloadableModule> reloadableModules = new ArrayList<>();
-    for (SModule module : modules) {
-      if (module instanceof ReloadableModule) {
-        reloadableModules.add((ReloadableModule) module);
-      }
-    }
-    if (reloadableModules.isEmpty()) {
-      return;
-    }
-    ClassLoaderManager.getInstance().reloadModules(reloadableModules);
   }
 
   /**
@@ -550,12 +533,11 @@ public class ClassLoaderManager implements CoreComponent {
   /**
    * requires exclusive/write access to CL repository
    */
-  /*package*/ void processModuleChanges(List<ReloadableModuleBase> toLoad, List<SModuleReference> toUnload, List<ReloadableModuleBase> toUpdate,
-                                        @NotNull ProgressMonitor monitor) {
+  /*package*/ void processModuleChanges(List<SRepositoryEvent> events, @NotNull ProgressMonitor monitor) {
     checkWriteAccess();
     monitor.start("", 4);
     _runTransaction(() -> {
-      final UpdateOutcome r = myModulesWatcher.update(toLoad, toUnload, toUpdate, monitor.subTask(2, SubProgressKind.REPLACING));
+      final UpdateOutcome r = myModulesWatcher.update(events, monitor.subTask(2, SubProgressKind.REPLACING));
       unloadModules(r.unloaded, monitor.subTask(1, SubProgressKind.REPLACING));
       preLoadModules(r.loaded, monitor.subTask(1, SubProgressKind.REPLACING));
     });
@@ -596,56 +578,14 @@ public class ClassLoaderManager implements CoreComponent {
     }
   }
 
-  // conditions part
-  private static class CompositeCondition<T> implements Condition<T> {
-    private final Condition<? super T>[] myConditions;
-
-    public CompositeCondition(Condition<? super T>... conditions) {
-      myConditions = conditions;
-    }
-
-    @Override
-    public boolean met(T t) {
-      for (Condition<? super T> condition : myConditions) {
-        if (!condition.met(t)) {
-          return false;
-        }
-      }
-      return true;
-    }
-  }
-
-  /**
-   * the modules we want to watch (and trace the dependencies between them)
-   * Answers if it is possible to associate a ClassLoader (whether IDEA-delegating or true MPS module CL) with the module
-   */
-  private final Condition<SModule> myWatchableCondition = SModuleOperations::classesAvailableToMPS;
-
-  /**
-   * @deprecated dubious single use, bad name (rather answers if module *can* get MPS CL, not if module got any or has been loaded)
-   *             Alternatively, use {@link SModuleOperations#classloadingManagedByMPS(SModule)}
-   */
-  @Deprecated(forRemoval = true, since = "2023.1")
-  public boolean isLoadedByMPS(@NotNull ReloadableModule module) {
-    return ModuleClassLoaderSupport.canCreate(module);
-  }
-
   /**
    * status of this module is valid in the dependencies graph
    * @see ModulesWatcher
    */
-  private final Condition<ReloadableModule> myValidCondition = new Condition<>() {
+  private final Predicate<SModule> myValidCondition = new Predicate<SModule>() {
     @Override
-    public boolean met(ReloadableModule module) {
-      SModuleReference mRef = module.getModuleReference();
-      return myWatchableCondition.met(module) && myModulesWatcher.getStatus(mRef).isValid();
-    }
-  };
-
-  private final Condition<ReloadableModule> myUnloadedCondition = new Condition<>() {
-    @Override
-    public boolean met(ReloadableModule module) {
-      return myClassLoadersHolder.getClassLoadingProgress(module.getModuleReference()) == UNLOADED;
+    public boolean test(SModule module) {
+      return myModulesWatcher.getStatus(module.getModuleReference()).isValid();
     }
   };
 }

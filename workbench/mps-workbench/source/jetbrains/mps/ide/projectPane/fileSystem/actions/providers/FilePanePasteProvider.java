@@ -17,6 +17,7 @@ package jetbrains.mps.ide.projectPane.fileSystem.actions.providers;
 
 import com.intellij.ide.CopyPasteManagerEx;
 import com.intellij.ide.PasteProvider;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
@@ -102,5 +103,10 @@ public class FilePanePasteProvider implements PasteProvider {
   @Override
   public boolean isPasteEnabled(@NotNull DataContext dataContext) {
     return (getDir(dataContext) != null) && (getData(dataContext) != null);
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 }

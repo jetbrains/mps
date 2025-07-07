@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -14,8 +14,6 @@ import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.closures.helper.ClosureLiteralTarget;
 import jetbrains.mps.baseLanguage.closures.behavior.FunctionType__BehaviorDescriptor;
-import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
-import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.baseLanguage.closures.helper.Values;
 import org.junit.Assert;
 import jetbrains.mps.smodel.SNodeMatcher;
@@ -25,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @MPSLaunch
 public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(ClosureLiteraltargetFunType_Test.class, "${mps_home}", "r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ClosureLiteraltargetFunType_Test.class).projectPath(null).modelRef("r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)").reopenProject(null).build());
 
   public ClosureLiteraltargetFunType_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -34,10 +32,6 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
   @Test
   public void test_throwsOrder() throws Throwable {
     new TestBody(this).test_throwsOrder();
-  }
-  @Test
-  public void test_NodeErrorCheck3981396688773519576() throws Throwable {
-    new TestBody(this).test_NodeErrorCheck3981396688773519576();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -57,15 +51,8 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
         TemplateQueryContext genContext = TestBody.this.getContext();
         SNode literal = getAnnotatedNode("literal");
         SNode funtype = getAnnotatedNode("funtype");
-        new ClosureLiteralTarget(genContext).setTarget(literal, FunctionType__BehaviorDescriptor.getDeclarationRuntimeType_idhTOKQzf.invoke(funtype), _quotation_createNode_7325qm_c0a3a0a1a5h());
-        TestBody.this.assertLiteralTarget(genContext, literal, _quotation_createNode_7325qm_c0a4a0a1a5h());
-      });
-    }
-    public void test_NodeErrorCheck3981396688773519576() throws Exception {
-      initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getNodeById("6374750171056867612");
-        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+        new ClosureLiteralTarget(genContext).setTarget(literal, FunctionType__BehaviorDescriptor.getDeclarationRuntimeType_idhTOKQzf.invoke(funtype), _quotation_createNode_7325qm_c0a3a0a1a5g());
+        TestBody.this.assertLiteralTarget(genContext, literal, _quotation_createNode_7325qm_c0a4a0a1a5g());
       });
     }
 
@@ -77,7 +64,7 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
 
       Assert.assertTrue(new SNodeMatcher().match(expected, target));
     }
-    private static SNode _quotation_createNode_7325qm_c0a3a0a1a5h() {
+    private static SNode _quotation_createNode_7325qm_c0a3a0a1a5g() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0x1174a4d19ffL, "FunctionType"));
@@ -87,7 +74,7 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), quotedNode_2);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_7325qm_c0a4a0a1a5h() {
+    private static SNode _quotation_createNode_7325qm_c0a4a0a1a5g() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;

@@ -181,7 +181,7 @@
       <property role="TrG5h" value="myMigrationAccess" />
       <node concept="3Tm6S6" id="5eQdigY5Bb5" role="1B3o_S" />
       <node concept="3uibUv" id="5eQdigY5B_s" role="1tU5fm">
-        <ref role="3uigEE" to="4o98:~DynamicComponentWarden$Token" resolve="Token" />
+        <ref role="3uigEE" to="4o98:~DynamicComponentWarden$Token" resolve="DynamicComponentWarden.Token" />
       </node>
     </node>
     <node concept="2tJIrI" id="5eQdigY5t2N" role="jymVt" />
@@ -198,7 +198,7 @@
         <node concept="3clFbF" id="5eQdigY5t0D" role="3cqZAp">
           <node concept="37vLTI" id="5eQdigY5t0F" role="3clFbG">
             <node concept="37vLTw" id="5eQdigY5t0I" role="37vLTJ">
-              <ref role="3cqZAo" node="5eQdigY5t0_" resolve="myMpsPlatform" />
+              <ref role="3cqZAo" node="5eQdigY5t0_" resolve="myPlatform" />
             </node>
             <node concept="37vLTw" id="5eQdigY5t0J" role="37vLTx">
               <ref role="3cqZAo" node="5eQdigY5sXd" resolve="mpsPlatform" />
@@ -235,7 +235,7 @@
                 <node concept="2ShNRf" id="5eQdigY9u5n" role="37wK5m">
                   <node concept="1pGfFk" id="5eQdigY9uWK" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="5eQdigY7klb" />
+                    <ref role="37wK5l" node="5eQdigY7klb" resolve="MigrationAccess" />
                     <node concept="2OqwBi" id="5eQdigY9vsF" role="37wK5m">
                       <node concept="37vLTw" id="5eQdigY9v8f" role="2Oq$k0">
                         <ref role="3cqZAo" node="5eQdigY5t0_" resolve="myPlatform" />
@@ -252,13 +252,13 @@
               </node>
             </node>
             <node concept="37vLTw" id="5eQdigY5C8z" role="37vLTJ">
-              <ref role="3cqZAo" node="5eQdigY5BlV" resolve="myMigrationTrigger" />
+              <ref role="3cqZAo" node="5eQdigY5BlV" resolve="myMigrationAccess" />
             </node>
           </node>
         </node>
       </node>
       <node concept="2AHcQZ" id="5eQdigY5_sp" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="5eQdigY5ATW" role="jymVt" />
@@ -270,7 +270,7 @@
         <node concept="3clFbF" id="5eQdigY5FmE" role="3cqZAp">
           <node concept="2OqwBi" id="5eQdigY5FwN" role="3clFbG">
             <node concept="37vLTw" id="5eQdigY5FmD" role="2Oq$k0">
-              <ref role="3cqZAo" node="5eQdigY5BlV" resolve="myMigrationTrigger" />
+              <ref role="3cqZAo" node="5eQdigY5BlV" resolve="myMigrationAccess" />
             </node>
             <node concept="liA8E" id="5eQdigY5FGB" role="2OqNvi">
               <ref role="37wK5l" to="4o98:~DynamicComponentWarden$Token.discard()" resolve="discard" />
@@ -281,7 +281,7 @@
           <node concept="37vLTI" id="5eQdigY5FZD" role="3clFbG">
             <node concept="10Nm6u" id="5eQdigY5G67" role="37vLTx" />
             <node concept="37vLTw" id="5eQdigY5FT4" role="37vLTJ">
-              <ref role="3cqZAo" node="5eQdigY5BlV" resolve="myMigrationTrigger" />
+              <ref role="3cqZAo" node="5eQdigY5BlV" resolve="myMigrationAccess" />
             </node>
           </node>
         </node>
@@ -292,7 +292,7 @@
     </node>
     <node concept="3Tm1VV" id="5eQdigY5suR" role="1B3o_S" />
     <node concept="3uibUv" id="5eQdigY5sVx" role="EKbjA">
-      <ref role="3uigEE" to="ze1i:~ModuleRuntime$Activator" resolve="Activator" />
+      <ref role="3uigEE" to="ze1i:~ModuleRuntime$Activator" resolve="ModuleRuntime.Activator" />
     </node>
   </node>
   <node concept="312cEu" id="5eQdigY7jYd">
@@ -425,7 +425,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5eQdigY7mXz" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="5eQdigY7kgx" role="jymVt" />
@@ -567,7 +567,7 @@
                     <node concept="2ShNRf" id="5eQdigY7Utm" role="37vLTx">
                       <node concept="1pGfFk" id="5eQdigY7W7l" role="2ShVmc">
                         <property role="373rjd" value="true" />
-                        <ref role="37wK5l" to="bim2:4D3Y1hNyLMS" />
+                        <ref role="37wK5l" to="bim2:4D3Y1hNyLMS" resolve="HeadlessMigrationExecutor" />
                         <node concept="2OqwBi" id="5eQdigY7WpO" role="37wK5m">
                           <node concept="37vLTw" id="5eQdigY7WpP" role="2Oq$k0">
                             <ref role="3cqZAo" node="5eQdigY7k9U" resolve="mpsProject" />
@@ -622,7 +622,7 @@
                       <node concept="2ShNRf" id="5eQdigY7sdl" role="37vLTx">
                         <node concept="1pGfFk" id="5eQdigY7sRY" role="2ShVmc">
                           <property role="373rjd" value="true" />
-                          <ref role="37wK5l" to="bim2:1AzqgyAfaNk" />
+                          <ref role="37wK5l" to="bim2:1AzqgyAfaNk" resolve="MigrationTrigger" />
                           <node concept="2OqwBi" id="5eQdigY7tCV" role="37wK5m">
                             <node concept="37vLTw" id="5eQdigY7t4K" role="2Oq$k0">
                               <ref role="3cqZAo" node="5eQdigY7k9U" resolve="mpsProject" />
@@ -664,7 +664,7 @@
                     <node concept="2ShNRf" id="5eQdigY890b" role="37vLTx">
                       <node concept="HV5vD" id="5eQdigY89V0" role="2ShVmc">
                         <property role="373rjd" value="true" />
-                        <ref role="HV5vE" node="5eQdigY87cp" resolve="PL" />
+                        <ref role="HV5vE" node="5eQdigY87cp" resolve="MigrationAccess.PL" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="5eQdigY84wp" role="37vLTJ">
@@ -693,34 +693,34 @@
                 </node>
               </node>
             </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="5eQdigYaiSu" role="3cqZAp">
-          <node concept="3clFbS" id="5eQdigYaiSv" role="3clFbx">
-            <node concept="3clFbF" id="5eQdigYaiSw" role="3cqZAp">
-              <node concept="2OqwBi" id="5eQdigYaiSx" role="3clFbG">
-                <node concept="1eOMI4" id="5eQdigYaiSy" role="2Oq$k0">
-                  <node concept="10QFUN" id="5eQdigYaiSz" role="1eOMHV">
-                    <node concept="3uibUv" id="5eQdigYaiS$" role="10QFUM">
-                      <ref role="3uigEE" to="bim2:5SsFeroaajZ" resolve="MigrationTrigger" />
+            <node concept="3clFbJ" id="5eQdigYaiSu" role="3cqZAp">
+              <node concept="3clFbS" id="5eQdigYaiSv" role="3clFbx">
+                <node concept="3clFbF" id="5eQdigYaiSw" role="3cqZAp">
+                  <node concept="2OqwBi" id="5eQdigYaiSx" role="3clFbG">
+                    <node concept="1eOMI4" id="5eQdigYaiSy" role="2Oq$k0">
+                      <node concept="10QFUN" id="5eQdigYaiSz" role="1eOMHV">
+                        <node concept="3uibUv" id="5eQdigYaiS$" role="10QFUM">
+                          <ref role="3uigEE" to="bim2:5SsFeroaajZ" resolve="MigrationTrigger" />
+                        </node>
+                        <node concept="37vLTw" id="5eQdigYaiS_" role="10QFUP">
+                          <ref role="3cqZAo" node="5eQdigY7p7H" resolve="rv" />
+                        </node>
+                      </node>
                     </node>
-                    <node concept="37vLTw" id="5eQdigYaiS_" role="10QFUP">
-                      <ref role="3cqZAo" node="5eQdigY7p7H" resolve="rv" />
+                    <node concept="liA8E" id="5eQdigYaiSA" role="2OqNvi">
+                      <ref role="37wK5l" to="bim2:1AzqgyAfalq" resolve="projectOpened" />
                     </node>
                   </node>
                 </node>
-                <node concept="liA8E" id="5eQdigYaiSA" role="2OqNvi">
-                  <ref role="37wK5l" to="bim2:1AzqgyAfalq" resolve="projectOpened" />
+              </node>
+              <node concept="2ZW3vV" id="5eQdigYaiSB" role="3clFbw">
+                <node concept="3uibUv" id="5eQdigYaiSC" role="2ZW6by">
+                  <ref role="3uigEE" to="bim2:5SsFeroaajZ" resolve="MigrationTrigger" />
+                </node>
+                <node concept="37vLTw" id="5eQdigYalel" role="2ZW6bz">
+                  <ref role="3cqZAo" node="5eQdigY7p7H" resolve="rv" />
                 </node>
               </node>
-            </node>
-          </node>
-          <node concept="2ZW3vV" id="5eQdigYaiSB" role="3clFbw">
-            <node concept="3uibUv" id="5eQdigYaiSC" role="2ZW6by">
-              <ref role="3uigEE" to="bim2:5SsFeroaajZ" resolve="MigrationTrigger" />
-            </node>
-            <node concept="37vLTw" id="5eQdigYalel" role="2ZW6bz">
-              <ref role="3cqZAo" node="5eQdigY7p7H" resolve="rv" />
             </node>
           </node>
         </node>
@@ -880,7 +880,7 @@
         </node>
         <node concept="3Tm1VV" id="5eQdigY8FmV" role="1B3o_S" />
         <node concept="2AHcQZ" id="5eQdigY8HNj" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="3uibUv" id="5eQdigY88Jv" role="EKbjA">

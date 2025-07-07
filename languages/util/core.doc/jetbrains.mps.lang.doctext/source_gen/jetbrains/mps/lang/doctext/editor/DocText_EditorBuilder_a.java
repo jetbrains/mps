@@ -9,9 +9,12 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
-import jetbrains.mps.lang.text.editor.Text_InsertPlaceholder_ActionMap;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
-import jetbrains.mps.lang.text.editor.Text_Delete_ActionMap;
+import jetbrains.mps.openapi.editor.style.Style;
+import jetbrains.mps.editor.runtime.style.StyleImpl;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import java.awt.Color;
+import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -50,7 +53,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Collection_avpfmb_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
-    Text_InsertPlaceholder_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
+    DocText_DELETE.setCellActions(editorCell, myNode, getEditorContext());
     try {
       getCellFactory().pushCellContext();
       getCellFactory().addCellContextHints(new String[]{});
@@ -64,9 +67,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Vertical());
     editorCell.setCellId("Collection_avpfmb_a0");
-    Text_Delete_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.DRAW_BRACKETS, true);
+    style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_avpfmb_a1a0()));
+    editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createRefNodeList_0());
     return editorCell;
+  }
+  private Color _StyleParameter_QueryFunction_avpfmb_a1a0() {
+    return MPSColors.LIGHT_GRAY;
   }
   private EditorCell createRefNodeList_0() {
     AbstractCellListHandler handler = new linesListHandler_avpfmb_a0a(myNode, getEditorContext());
@@ -144,7 +153,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     private EditorCell createConstant_0() {
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
       editorCell.setCellId("Constant_avpfmb_a0a0");
-      editorCell.setDefaultText("");
+      DocText_DELETE.setCellActions(editorCell, myNode, getEditorContext());
+      editorCell.addKeyMap(new DocText_createEmptyLine());
+      editorCell.setDefaultText("<no documentation>");
       return editorCell;
     }
   }

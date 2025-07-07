@@ -42,7 +42,7 @@ public class ShowBookmarksDialog_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    BookmarkManager bookmarkManager = event.getData(CommonDataKeys.PROJECT).getComponent(BookmarkManager.class);
+    BookmarkManager bookmarkManager = BookmarkManager.getInstance(event.getData(CommonDataKeys.PROJECT));
     BookmarksDialog dialog = new BookmarksDialog(event.getData(CommonDataKeys.PROJECT), bookmarkManager);
     dialog.show();
   }

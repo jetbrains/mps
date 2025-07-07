@@ -10,11 +10,6 @@ import jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
-import jetbrains.mps.debug.api.DebugSessionManagerComponent;
-import com.intellij.openapi.project.ProjectManagerListener;
-import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.project.ProjectManager;
 import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy;
@@ -35,35 +30,23 @@ import jetbrains.mps.debugger.java.api.evaluation.proxies.IObjectValueProxy;
 import java.util.Objects;
 import com.sun.jdi.ObjectReference;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
 import jetbrains.mps.debug.api.AbstractDebugSession;
+import jetbrains.mps.debug.api.DebugSessionManagerComponent;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaValue;
 import org.jetbrains.annotations.Nullable;
 import com.sun.jdi.Value;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.MirrorUtil;
-import com.intellij.openapi.project.ProjectManagerAdapter;
 
 @GeneratedClass(node = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)/3432969378036015275", model = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)")
 public class CustomViewersManagerImpl extends CustomViewersManager {
   private static final Logger LOG = Logger.getLogger(CustomViewersManagerImpl.class);
   private final Map<String, ValueWrapperFactory> myFactories = MapSequence.fromMap(new HashMap<String, ValueWrapperFactory>());
   private final Map<DebugSession, Map<Long, String>> myObjectIdToFactory = MapSequence.fromMap(new HashMap<DebugSession, Map<Long, String>>());
-  private final DebugSessionManagerComponent.DebugSessionAdapter myDebugSessionListener = new MyDebugSessionAdapter();
-  private final ProjectManagerListener myProjectManagerListener = new MyProjectManagerAdapter();
-  private MessageBusConnection myBusConnection;
 
   public CustomViewersManagerImpl() {
   }
 
-  @Override
-  public void initComponent() {
-    myBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
-    myBusConnection.subscribe(ProjectManager.TOPIC, myProjectManagerListener);
-  }
-  @Override
-  public void disposeComponent() {
-    myBusConnection.disconnect();
-    myBusConnection = null;
-  }
   @Override
   public void addFactory(@NotNull ValueWrapperFactory factory) {
     MapSequence.fromMap(myFactories).put(factory.getClass().getName(), factory);
@@ -72,9 +55,19 @@ public class CustomViewersManagerImpl extends CustomViewersManager {
   public void removeFactory(@NotNull ValueWrapperFactory factory) {
     MapSequence.fromMap(myFactories).removeKey(factory.getClass().getName());
   }
+
+  private Map<String, ValueWrapperFactory> allFactories() {
+    Map<String, ValueWrapperFactory> rv = MapSequence.fromMap(new HashMap<String, ValueWrapperFactory>());
+    for (ValueWrapperFactory f : CustomViewersManager.EXT_POINT.getExtensionList()) {
+      MapSequence.fromMap(rv).put(f.getClass().getName(), f);
+    }
+    MapSequence.fromMap(rv).putAll(myFactories);
+    return rv;
+  }
+
   public Set<ValueWrapperFactory> getValueWrapperFactories(@NotNull final IValueProxy originalValue) {
     Set<ValueWrapperFactory> result = SetSequence.fromSet(new LinkedHashSet<ValueWrapperFactory>());
-    for (ValueWrapperFactory factory : MapSequence.fromMap(myFactories).values()) {
+    for (ValueWrapperFactory factory : MapSequence.fromMap(allFactories()).values()) {
       if (factory.canWrapValue(originalValue)) {
         SetSequence.fromSet(result).addElement(factory);
       }
@@ -105,9 +98,10 @@ public class CustomViewersManagerImpl extends CustomViewersManager {
     }
     return currentBest._0();
   }
+
   public synchronized ValueWrapper getValueWrapper(@NotNull IValueProxy proxy, ThreadReference threadReference) {
     if (proxy instanceof INullValueProxy) {
-      return MapSequence.fromMap(myFactories).get(ObjectWrapperFactory.class.getName()).createValueWrapper(proxy, threadReference);
+      return MapSequence.fromMap(allFactories()).get(ObjectWrapperFactory.class.getName()).createValueWrapper(proxy, threadReference);
     }
 
     ValueWrapperFactory factory = null;
@@ -122,7 +116,7 @@ public class CustomViewersManagerImpl extends CustomViewersManager {
       long uniqueID = getValueId(proxy);
       String factoryId = MapSequence.fromMap(objectIdToFactory).get(uniqueID);
       if ((factoryId != null && factoryId.length() > 0)) {
-        factory = MapSequence.fromMap(myFactories).get(factoryId);
+        factory = MapSequence.fromMap(allFactories()).get(factoryId);
       }
     }
 
@@ -135,6 +129,7 @@ public class CustomViewersManagerImpl extends CustomViewersManager {
     }
     return factory.createValueWrapper(proxy, threadReference);
   }
+
   public synchronized void setValueWrapper(@NotNull IValueProxy value, @NotNull ValueWrapperFactory factory, @NotNull DebugSession session) {
     Map<Long, String> objectIdToFactory = MapSequence.fromMap(myObjectIdToFactory).get(session);
     if (objectIdToFactory == null) {
@@ -167,28 +162,18 @@ public class CustomViewersManagerImpl extends CustomViewersManager {
     }
     return null;
   }
+
   public JavaValue fromJdi(@Nullable Value value, @NotNull ThreadReference threadReference) {
     return getValueWrapper(MirrorUtil.getInstance().getValueProxy(value), threadReference);
   }
-  private class MyProjectManagerAdapter extends ProjectManagerAdapter {
-    public MyProjectManagerAdapter() {
-    }
-    @Override
-    public void projectOpened(Project project) {
-      DebugSessionManagerComponent.getInstance(project).addDebugSessionListener(myDebugSessionListener);
-    }
-    @Override
-    public void projectClosing(Project project) {
-      DebugSessionManagerComponent.getInstance(project).removeDebugSessionListener(CustomViewersManagerImpl.this.myDebugSessionListener);
-    }
-  }
-  private class MyDebugSessionAdapter extends DebugSessionManagerComponent.DebugSessionAdapter {
-    public MyDebugSessionAdapter() {
+
+  public static class DebugSessionListener implements DebugSessionManagerComponent.DebugSessionListener {
+    public DebugSessionListener() {
     }
     @Override
     public void detached(AbstractDebugSession session) {
       if (session instanceof DebugSession) {
-        MapSequence.fromMap(myObjectIdToFactory).removeKey((DebugSession) session);
+        MapSequence.fromMap(getInstanceImpl().myObjectIdToFactory).removeKey((DebugSession) session);
       }
     }
   }

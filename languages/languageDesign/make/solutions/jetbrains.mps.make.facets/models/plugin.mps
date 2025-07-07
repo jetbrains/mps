@@ -3530,6 +3530,20 @@
                                             </node>
                                           </node>
                                         </node>
+                                        <node concept="3clFbJ" id="ECV7zt8BIQ" role="3cqZAp">
+                                          <node concept="3clFbS" id="ECV7zt8BIS" role="3clFbx">
+                                            <node concept="3N13vt" id="ECV7zt8CKr" role="3cqZAp" />
+                                          </node>
+                                          <node concept="3clFbC" id="ECV7zt8C7x" role="3clFbw">
+                                            <node concept="37vLTw" id="ECV7zt8BUR" role="3uHU7B">
+                                              <ref role="3cqZAo" node="ECV7zt8_NV" resolve="tgState" />
+                                            </node>
+                                            <node concept="Rm8GO" id="ECV7zt8C_$" role="3uHU7w">
+                                              <ref role="Rm8GQ" to="ao3:~TextUnit$Status.Empty" resolve="Empty" />
+                                              <ref role="1Px2BO" to="ao3:~TextUnit$Status" resolve="TextUnit.Status" />
+                                            </node>
+                                          </node>
+                                        </node>
                                         <node concept="3clFbF" id="3NK3q5VbLks" role="3cqZAp">
                                           <node concept="2OqwBi" id="3NK3q5VbLzw" role="3clFbG">
                                             <node concept="37vLTw" id="3NK3q5VbLkq" role="2Oq$k0">
@@ -3553,20 +3567,6 @@
                                                   <ref role="37wK5l" to="ao3:~TextUnit.getFileName()" resolve="getFileName" />
                                                 </node>
                                               </node>
-                                            </node>
-                                          </node>
-                                        </node>
-                                        <node concept="3clFbJ" id="ECV7zt8BIQ" role="3cqZAp">
-                                          <node concept="3clFbS" id="ECV7zt8BIS" role="3clFbx">
-                                            <node concept="3N13vt" id="ECV7zt8CKr" role="3cqZAp" />
-                                          </node>
-                                          <node concept="3clFbC" id="ECV7zt8C7x" role="3clFbw">
-                                            <node concept="37vLTw" id="ECV7zt8BUR" role="3uHU7B">
-                                              <ref role="3cqZAo" node="ECV7zt8_NV" resolve="tgState" />
-                                            </node>
-                                            <node concept="Rm8GO" id="ECV7zt8C_$" role="3uHU7w">
-                                              <ref role="Rm8GQ" to="ao3:~TextUnit$Status.Empty" resolve="Empty" />
-                                              <ref role="1Px2BO" to="ao3:~TextUnit$Status" resolve="TextUnit.Status" />
                                             </node>
                                           </node>
                                         </node>
@@ -7248,15 +7248,30 @@
                                           <property role="3TUv4t" value="true" />
                                           <property role="TrG5h" value="cleanResourceMake" />
                                           <node concept="10P_77" id="LjFZHkLir0" role="1tU5fm" />
-                                          <node concept="2OqwBi" id="LjFZHkLtAD" role="33vP2m">
-                                            <node concept="37vLTw" id="LjFZHkLroN" role="2Oq$k0">
-                                              <ref role="3cqZAo" node="6KnarftVWGN" resolve="res" />
+                                          <node concept="3K4zz7" id="6WjMfNCa__F" role="33vP2m">
+                                            <node concept="3clFbT" id="6WjMfNCaDpC" role="3K4GZi" />
+                                            <node concept="2OqwBi" id="LjFZHkLtAD" role="3K4Cdx">
+                                              <node concept="37vLTw" id="LjFZHkLroN" role="2Oq$k0">
+                                                <ref role="3cqZAo" node="6KnarftVWGN" resolve="res" />
+                                              </node>
+                                              <node concept="liA8E" id="LjFZHkLvv2" role="2OqNvi">
+                                                <ref role="37wK5l" to="upz5:gLj2gn3oQw" resolve="hasKey" />
+                                                <node concept="10M0yZ" id="gLj2gna5Rg" role="37wK5m">
+                                                  <ref role="3cqZAo" to="fn29:gLj2gn6zzY" resolve="CLEAN_MAKE" />
+                                                  <ref role="1PxDUh" to="fn29:gLj2gn6thP" resolve="MakeKeys" />
+                                                </node>
+                                              </node>
                                             </node>
-                                            <node concept="liA8E" id="LjFZHkLvv2" role="2OqNvi">
-                                              <ref role="37wK5l" to="upz5:gLj2gn3qcs" resolve="getValue" />
-                                              <node concept="10M0yZ" id="gLj2gna5Rg" role="37wK5m">
-                                                <ref role="3cqZAo" to="fn29:gLj2gn6zzY" resolve="CLEAN_MAKE" />
-                                                <ref role="1PxDUh" to="fn29:gLj2gn6thP" resolve="MakeKeys" />
+                                            <node concept="2OqwBi" id="6WjMfNCaBbI" role="3K4E3e">
+                                              <node concept="37vLTw" id="6WjMfNCaBbJ" role="2Oq$k0">
+                                                <ref role="3cqZAo" node="6KnarftVWGN" resolve="res" />
+                                              </node>
+                                              <node concept="liA8E" id="6WjMfNCaBbK" role="2OqNvi">
+                                                <ref role="37wK5l" to="upz5:gLj2gn3qcs" resolve="getValue" />
+                                                <node concept="10M0yZ" id="6WjMfNCaBbL" role="37wK5m">
+                                                  <ref role="3cqZAo" to="fn29:gLj2gn6zzY" resolve="CLEAN_MAKE" />
+                                                  <ref role="1PxDUh" to="fn29:gLj2gn6thP" resolve="MakeKeys" />
+                                                </node>
                                               </node>
                                             </node>
                                           </node>
@@ -7266,7 +7281,7 @@
                                         <node concept="3cpWsn" id="6KnarftVYeW" role="3cpWs9">
                                           <property role="TrG5h" value="factory" />
                                           <node concept="3uibUv" id="6KnarftVYeU" role="1tU5fm">
-                                            <ref role="3uigEE" to="ap4t:~GeneratorTask$Factory" resolve="Factory" />
+                                            <ref role="3uigEE" to="ap4t:~GeneratorTask$Factory" resolve="GeneratorTask.Factory" />
                                             <node concept="3uibUv" id="6KnarftVYeL" role="11_B2D">
                                               <ref role="3uigEE" to="ap4t:~GeneratorTask" resolve="GeneratorTask" />
                                             </node>
@@ -7275,7 +7290,7 @@
                                             <node concept="YeOm9" id="6KnarftVYeY" role="2ShVmc">
                                               <node concept="1Y3b0j" id="6KnarftVYeZ" role="YeSDq">
                                                 <property role="2bfB8j" value="true" />
-                                                <ref role="1Y3XeK" to="ap4t:~GeneratorTask$Factory" resolve="Factory" />
+                                                <ref role="1Y3XeK" to="ap4t:~GeneratorTask$Factory" resolve="GeneratorTask.Factory" />
                                                 <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                                                 <node concept="3Tm1VV" id="6KnarftVYf0" role="1B3o_S" />
                                                 <node concept="3clFb_" id="6KnarftVYf1" role="jymVt">

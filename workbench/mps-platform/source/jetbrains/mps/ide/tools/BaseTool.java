@@ -57,6 +57,7 @@ public abstract class BaseTool {
   private final boolean mySideTool;
   private boolean myCanCloseContent;
   private boolean myIsRegistered;
+  private boolean myIsDisposed = false;
 
   private JComponent myComponent = null;
 
@@ -205,7 +206,7 @@ public abstract class BaseTool {
   public void registerLater() {
     ThreadUtils.runInUIThreadNoWait(() -> {
       final Project project = getProject();
-      if (project.isDisposed()) {
+      if (project.isDisposed() || this.myIsDisposed) {
         return;
       }
       DumbService.getInstance(project).runWhenSmart(this::register);
@@ -213,7 +214,7 @@ public abstract class BaseTool {
   }
 
   public final void register() {
-    if (myProject.isDisposed()) {
+    if (myProject.isDisposed() || myIsDisposed) {
       return;
     }
     if (isRegistered()) {
@@ -417,6 +418,7 @@ public abstract class BaseTool {
   }
 
   public void dispose() {
+    this.myIsDisposed = true;
     // FIXME what's the contract for this method? Seems that it's only BaseProjectPlugin that cares to invoke it.
     //       There's BaseProjectTool subclass, with disposeComponent() that doesn't invoke dispose(), is it right?
     //       No idea where to put general dispose code in subclasses like UsagesViewTool - shall I use disposeComponent() or dispose()?

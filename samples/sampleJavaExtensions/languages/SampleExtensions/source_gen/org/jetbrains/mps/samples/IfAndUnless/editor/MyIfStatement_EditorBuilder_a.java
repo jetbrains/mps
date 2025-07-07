@@ -21,8 +21,9 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
-import java.awt.Color;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import java.awt.Color;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Indent;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -107,7 +108,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSRole(LINKS.condition$47xw);
       }
       Style style = new StyleImpl();
-      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(16119260)));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_a1fgw3_a0b0()));
       editorCell.getStyle().putAll(style);
     }
     @Override
@@ -126,6 +127,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
     protected String getNoTargetText() {
       return "<no condition>";
+    }
+    private Color _StyleParameter_QueryFunction_a1fgw3_a0b0() {
+      return new JBColor(new Color(0xF5F5DC), new Color(0x5050AC));
     }
   }
   private EditorCell createRefNode_1() {

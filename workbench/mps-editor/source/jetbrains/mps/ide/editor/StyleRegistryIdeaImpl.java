@@ -20,6 +20,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.CodeInsightColors;
 import com.intellij.openapi.editor.colors.ColorKey;
+import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsListener;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
@@ -38,7 +39,9 @@ import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.Color;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class StyleRegistryIdeaImpl extends StyleRegistry {
@@ -73,11 +76,86 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
    */
   @SuppressWarnings("UseJBColor")
   private void fillCustomStyles() {
-    StyleImpl da = new StyleImpl();;
-    final Color cc = isDarkTheme() ? Color.GREEN : Color.RED;
-    // logic for new color taken from DeletionApproverImpl
-    da.set(StyleAttributes.TEXT_BACKGROUND_COLOR, new Color(cc.getRed(), cc.getGreen(), cc.getBlue(), cc.getAlpha() / 5));
-    setStyle("DELETION_APPROVER", da);
+    final StyleImpl mappingLabelStyle = new StyleImpl();
+    final JBColor backgroundColor = new JBColor(new Color(0xff, 0xe9, 0x59, 100), new Color(0x11, 0x49, 0x57, 200));
+    mappingLabelStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, backgroundColor);
+    mappingLabelStyle.set(StyleAttributes.BACKGROUND_COLOR, backgroundColor);
+    setStyle("HIGHLIGHTED_LABEL_IN_EDITOR", mappingLabelStyle);
+
+    final StyleImpl highlightedCellStyle = new StyleImpl();
+    final JBColor highlightedCellColor = new JBColor(new Color(0xff, 0xe9, 0x59, 160), new Color(0x11, 0x49, 0x57, 255));
+    highlightedCellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, highlightedCellColor);
+    highlightedCellStyle.set(StyleAttributes.BACKGROUND_COLOR, highlightedCellColor);
+    setStyle("HIGHLIGHTED_CELL", highlightedCellStyle);
+
+    final StyleImpl quotationStyle = new StyleImpl();
+    final JBColor quotationColor = new JBColor(new  Color(0, 200, 200, 90), new Color(0, 155, 155, 200));
+    quotationStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, quotationColor);
+    quotationStyle.set(StyleAttributes.BACKGROUND_COLOR, quotationColor);
+    setStyle("QUOTATION_BRACE", quotationStyle);
+
+    final StyleImpl lightQuotationStyle = new StyleImpl();
+    final JBColor lightQuotationColor = new JBColor(new  Color(0x74, 0xa4, 0xc8, 200), new Color(0x74, 0xb4, 0xd8, 140));
+    lightQuotationStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, lightQuotationColor);
+    lightQuotationStyle.set(StyleAttributes.BACKGROUND_COLOR, lightQuotationColor);
+    setStyle("LIGHT_QUOTATION_BRACE", lightQuotationStyle);
+
+    final StyleImpl errorCellStyle = new StyleImpl();
+    final JBColor errorCellColor = new JBColor(new  Color(255, 220, 220, 250), new Color(0xd6, 0x4d, 0x5b, 150));
+    errorCellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, errorCellColor);
+    errorCellStyle.set(StyleAttributes.BACKGROUND_COLOR, errorCellColor);
+    setStyle("ERROR_CELL", errorCellStyle);
+
+    final StyleImpl reflectiveEditorFirstLabelCellStyle = new StyleImpl();
+    final JBColor reflectiveEditorFirstLabelColor = new JBColor(new Color(107, 142, 20, 60), new Color(107, 142, 20, 100));
+    reflectiveEditorFirstLabelCellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, reflectiveEditorFirstLabelColor);
+    reflectiveEditorFirstLabelCellStyle.set(StyleAttributes.BACKGROUND_COLOR, reflectiveEditorFirstLabelColor);
+    setStyle("REFLECTIVE_EDITOR_FIRST_LABEL", reflectiveEditorFirstLabelCellStyle);
+
+    final StyleImpl cellCollectionTagStyle = new StyleImpl();
+    final JBColor cellCollectionTagColor = new  JBColor(new  Color(230, 230, 230), new  Color(84, 84, 84));
+    cellCollectionTagStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, cellCollectionTagColor);
+    cellCollectionTagStyle.set(StyleAttributes.BACKGROUND_COLOR, cellCollectionTagColor);
+    setStyle("CELL_COLLECTION_TAG_BACKGROUND", cellCollectionTagStyle);
+
+    final StyleImpl sc = new StyleImpl();
+    sc.set(StyleAttributes.TEXT_COLOR, getEditorForeground());
+    final JBColor bg = new JBColor(new Color(235, 244, 254), new Color(0x141D29));
+    sc.set(StyleAttributes.TEXT_BACKGROUND_COLOR, bg);
+    sc.set(StyleAttributes.BACKGROUND_COLOR, bg);
+    sc.set(StyleAttributes.SELECTED_TEXT_COLOR, getColorsScheme().getColor(EditorColors.SELECTION_FOREGROUND_COLOR));
+    sc.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getColorsScheme().getColor(EditorColors.SELECTION_BACKGROUND_COLOR));
+    // TODO HIGHLIGHT_COLOR, SELECTION_HIGHLIGHT_COLOR attributes for use in NodeItemCellRenderer
+    setStyle("COMPLETION_POPUP", sc);
+
+    // afaiu, IDEA's EditorColorsScheme.getAttributes() gives TextAttributes with overridden values only (no inherited/derived)
+    // which makes it tricky to use getStyle("IDEA_STYLE") w/o knowledge which exact attributes the style specifies.
+    // I didn't find a way for TextAttributes to supply defaults (other than TextAttributesKey.getDefaultAttributes(), which
+    // is seems quite cumbersome), therefore, use our own Style hierarchy for generic values.
+    // Another possible approach is to use HighlighterColors.TEXT, which I believe does the same (didn't check, though).
+    StyleImpl def = new StyleImpl();
+    def.set(StyleAttributes.TEXT_COLOR, getEditorForeground());
+    def.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getEditorBackground());
+    setStyle("EDITOR_DEFAULTS", def);
+
+    adjustStylesFromIDEA();
+  }
+
+  private void adjustStylesFromIDEA() {
+    // in IDEA, not all TextAttributes are defined per TextAttributesKey, and neither IDEA delegation nor our own (EDITOR_DEFAULTS) works
+    // right for us (e.g. IDEA using direct color/color key references, like EditorColors.NOTIFICATION_BACKGROUND). However, I'd like to
+    // stick to single approach, with Style in its core, therefore I need to adjust Style we build from IDEA to match our expectations.
+    final Style ipStyle = getStyle("INFORMATION_PANEL");
+    final Color color = getColorsScheme().getColor(EditorColors.NOTIFICATION_BACKGROUND);
+    ipStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, color);
+
+    // in light ui, warnings has yellowish background specified, but none in the Dark, newUI theme.
+    // the replacement value stolen from MPS-36959 fix (c676df40), although I don't quite agree warnings have to share
+    // background with informational messages.
+    final Style wpStyle = getStyle("WARNING_PANEL");
+    if (!wpStyle.isSpecified(StyleAttributes.TEXT_BACKGROUND_COLOR)) {
+      wpStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, color);
+    }
   }
 
   @Override
@@ -155,7 +233,14 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
       // TODO: check if specified key is valid. We should return null for unknown keys...
       style = new StyleImpl();
 
-      TextAttributes textAttributes = getColorsScheme().getAttributes(TextAttributesKey.find(key));
+      final TextAttributesKey taKey = TextAttributesKey.find(key);
+      TextAttributes textAttributes = getColorsScheme().getAttributes(taKey);
+      if (textAttributes == null) {
+        // XXX not sure if this is the right way to use IDEA platform, just need to deal with the fact
+        //     getAttributes():TextAttributes doesn't necessarily give me complete set of all attributes
+        //     I'm interested in
+        textAttributes = taKey.getDefaultAttributes();
+      }
       if (textAttributes == null) {
         textAttributes = new TextAttributes();
       }
@@ -166,7 +251,9 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
         style.set(StyleAttributes.UNDERLINED, textAttributes.getEffectType() == EffectType.LINE_UNDERSCORE);
         style.set(StyleAttributes.STRIKE_OUT, textAttributes.getEffectType() == EffectType.STRIKEOUT);
       }
-
+      // see fillCustomStyles()
+      final Style defaults = super.getStyle("EDITOR_DEFAULTS");
+      style.setParent(defaults, List.of(StyleAttributes.TEXT_COLOR, StyleAttributes.TEXT_BACKGROUND_COLOR));
       setStyle(key, style);
     }
     return style;
@@ -221,6 +308,7 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
       addIdeaMappingsExt("EXECUTIONPOINT", "EXECUTIONPOINT_ATTRIBUTES");
 
       addIdeaMappingsExt("WARNING_PANEL", CodeInsightColors.WARNINGS_ATTRIBUTES.getExternalName());
+      addIdeaMappingsExt("INFORMATION_PANEL", CodeInsightColors.INFORMATION_ATTRIBUTES.getExternalName());
 
       //addIdeaMappingsExt("","");
     } catch (StyleRegistryMappingKeyException e) {

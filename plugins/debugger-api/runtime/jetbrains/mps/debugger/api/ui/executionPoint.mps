@@ -242,7 +242,7 @@
       </node>
       <node concept="3clFbS" id="1ijklmZVTVk" role="3clF47">
         <node concept="XkiVB" id="1ijklmZVTVl" role="3cqZAp">
-          <ref role="37wK5l" to="5ajx:4U88gsho6nR" />
+          <ref role="37wK5l" to="5ajx:4U88gsho6nR" resolve="CurrentLinePositionComponentEx" />
           <node concept="37vLTw" id="2BHiRxgm7WG" role="37wK5m">
             <ref role="3cqZAo" node="1ijklmZVTVg" resolve="project" />
           </node>
@@ -646,7 +646,7 @@
           <node concept="3clFbF" id="1Va1nD_h8wj" role="3cqZAp">
             <node concept="37vLTI" id="1Va1nD_h8wl" role="3clFbG">
               <node concept="37vLTw" id="1Va1nD_h8wo" role="37vLTJ">
-                <ref role="3cqZAo" node="1Va1nD_h8wf" resolve="myIdeaProject" />
+                <ref role="3cqZAo" node="1Va1nD_h8wf" resolve="myProject" />
               </node>
               <node concept="37vLTw" id="1Va1nD_h8wp" role="37vLTx">
                 <ref role="3cqZAo" node="1Va1nD_h7EQ" resolve="ideaProject" />
@@ -709,7 +709,7 @@
                 <ref role="3cqZAo" node="1Va1nD_h8wf" resolve="myProject" />
               </node>
               <node concept="37vLTw" id="1Va1nD_hAqA" role="37wK5m">
-                <ref role="3cqZAo" node="1ijklmZVTU6" resolve="newDebugSession" />
+                <ref role="3cqZAo" node="1ijklmZVTU6" resolve="debugSession" />
               </node>
             </node>
           </node>
@@ -740,7 +740,7 @@
                 <ref role="3cqZAo" node="1Va1nD_h8wf" resolve="myProject" />
               </node>
               <node concept="37vLTw" id="1Va1nD_hI8F" role="37wK5m">
-                <ref role="3cqZAo" node="1ijklmZVTUi" resolve="newDebugSession" />
+                <ref role="3cqZAo" node="1ijklmZVTUi" resolve="session" />
               </node>
             </node>
           </node>
@@ -2004,7 +2004,7 @@
         <node concept="3clFbF" id="1Va1nD_kJJD" role="3cqZAp">
           <node concept="2OqwBi" id="1Va1nD_kJJE" role="3clFbG">
             <node concept="37vLTw" id="1Va1nD_kPge" role="2Oq$k0">
-              <ref role="3cqZAo" node="1Va1nD_kPgb" resolve="instance" />
+              <ref role="3cqZAo" node="1Va1nD_kPgb" resolve="cc" />
             </node>
             <node concept="liA8E" id="1Va1nD_kP4D" role="2OqNvi">
               <ref role="37wK5l" node="5iJck12pn$" resolve="reAttachPainter" />
@@ -2047,7 +2047,7 @@
           <node concept="3clFbF" id="1Va1nD_iLXA" role="3cqZAp">
             <node concept="37vLTI" id="1Va1nD_iLXC" role="3clFbG">
               <node concept="37vLTw" id="1Va1nD_iLXF" role="37vLTJ">
-                <ref role="3cqZAo" node="1Va1nD_iLXy" resolve="myIdeaProject" />
+                <ref role="3cqZAo" node="1Va1nD_iLXy" resolve="myProject" />
               </node>
               <node concept="37vLTw" id="1Va1nD_iLXG" role="37vLTx">
                 <ref role="3cqZAo" node="1Va1nD_iIpU" resolve="ideaProject" />
@@ -2267,7 +2267,7 @@
           <node concept="3clFbF" id="1Va1nD_kBa1" role="3cqZAp">
             <node concept="37vLTI" id="1Va1nD_kBa3" role="3clFbG">
               <node concept="37vLTw" id="1Va1nD_kBa6" role="37vLTJ">
-                <ref role="3cqZAo" node="1Va1nD_kB9X" resolve="myIdeaProject" />
+                <ref role="3cqZAo" node="1Va1nD_kB9X" resolve="myProject" />
               </node>
               <node concept="37vLTw" id="1Va1nD_kBa7" role="37vLTx">
                 <ref role="3cqZAo" node="1Va1nD_kzmV" resolve="ideaProject" />

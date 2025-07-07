@@ -11,6 +11,10 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
+        <property id="1225118929411" name="build" index="YLPcu" />
+        <property id="1225118933224" name="comment" index="YLQ7P" />
+      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -154,6 +158,16 @@
       <node concept="t5JxF" id="1tJmw8EAXUg" role="lGtFl">
         <property role="t5JxN" value="using JAVA_TOOL_OPTIONS variable to prevent issues like https://youtrack.jetbrains.com/issue/MPS-24137" />
       </node>
+      <node concept="asaX9" id="1_zhZIMQOMj" role="lGtFl">
+        <property role="YLQ7P" value="Not in use since introduction of MPS-own &lt;launchtest&gt; task" />
+        <property role="YLPcu" value="2023.1" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="7wBXNqHfd9m" role="1TKVEi">
+      <property role="IQ2ns" value="8658160622849806934" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="reportsDir" />
+      <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
     <node concept="1TJgyj" id="51DD0tdLLzh" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -176,6 +190,12 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="jvmArgs" />
       <ref role="20lvS9" to="3ior:3NagsOfThPf" resolve="BuildString" />
+    </node>
+    <node concept="1TJgyj" id="6US8dKph52U" role="1TKVEi">
+      <property role="IQ2ns" value="7978162869575635130" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="projectPath" />
+      <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
   </node>
 </model>

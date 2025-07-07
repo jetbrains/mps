@@ -11,25 +11,37 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class TypeParameter__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, "jetbrains.mps.kotlin.structure.TypeParameter");
 
   public static final SMethod<TypeParameterDeclaration> getDescriptor_id28CvMylflrH = new SMethodBuilder<TypeParameterDeclaration>(new SJavaCompoundTypeImpl(TypeParameterDeclaration.class)).name("getDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008637220589L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<List<SNode>> getUpperBounds_id4VnyIrvnC4l = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getUpperBounds").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5681162179145793813L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescriptor_id28CvMylflrH);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescriptor_id28CvMylflrH, getUpperBounds_id4VnyIrvnC4l);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static TypeParameterDeclaration getDescriptor_id28CvMylflrH(@NotNull SNode __thisNode__) {
     return new KotlinTypeParameterDeclaration(__thisNode__);
+  }
+  /*package*/ static List<SNode> getUpperBounds_id4VnyIrvnC4l(@NotNull SNode __thisNode__) {
+    List<SNode> upperBounds = ITypeParameter__BehaviorDescriptor.getUpperBounds_id4VnyIrvnC4l.invoke0(__thisNode__, CONCEPTS.ITypeParameter$fG);
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.bound$KhhI) != null)) {
+      ListSequence.fromList(upperBounds).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.bound$KhhI));
+    }
+    return upperBounds;
   }
 
   /*package*/ TypeParameter__BehaviorDescriptor() {
@@ -49,6 +61,8 @@ public final class TypeParameter__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 0:
         return (T) ((TypeParameterDeclaration) getDescriptor_id28CvMylflrH(node));
+      case 1:
+        return (T) ((List<SNode>) getUpperBounds_id4VnyIrvnC4l(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -76,5 +90,13 @@ public final class TypeParameter__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept ITypeParameter$fG = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4da39967d13161a1L, "jetbrains.mps.kotlin.structure.ITypeParameter");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink bound$KhhI = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, 0x28bef6d7551af850L, "bound");
   }
 }

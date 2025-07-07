@@ -26,8 +26,12 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.project.ModelsAutoImportsManager;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.smodel.CopyUtil;
-import jetbrains.mps.extapi.model.GeneratableSModel;
+import jetbrains.mps.smodel.NodeDuplicator;
+import jetbrains.mps.smodel.NodeIdentitySupplier;
+import jetbrains.mps.smodel.NodeIdentityComponent;
+import java.util.Map;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.extapi.model.ModelWithAttributes;
 
 @GeneratedClass(node = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)/3839167337201983584", model = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)")
 public class ModelCreateHelper {
@@ -138,14 +142,22 @@ public class ModelCreateHelper {
         imports.copyUsedLanguagesFrom(myClone);
         imports.copyEmployedDevKitsFrom(myClone);
         imports.copyLanguageEngagedOnGeneration(myClone);
+
+        NodeDuplicator nd = new NodeDuplicator().keepNodeId(myPreserveIds).keepNodeMap(myPreserveIds);
+        nd.duplicate(myClone, result);
         if (myPreserveIds) {
-          CopyUtil.copyModelContentAndPreserveIds(myClone, result);
-        } else {
-          CopyUtil.copyModelContentAndUpdateCrossRootReferences(myClone, result);
+          // FIXME assuming myClone would get removed once this code ends
+          NodeIdentitySupplier nic = NodeIdentityComponent.getInstance();
+          Map<SNode, SNode> nodeMap = nd.nodeMap();
+          for (SNode rr : myClone.getRootNodes()) {
+            if (nodeMap.containsKey(rr)) {
+              nic.moved(rr, nodeMap);
+            }
+          }
         }
-        if (myClone instanceof GeneratableSModel && result instanceof GeneratableSModel) {
-          ((GeneratableSModel) result).setDoNotGenerate(((GeneratableSModel) myClone).isDoNotGenerate());
-          ((GeneratableSModel) result).setGenerateIntoModelFolder(((GeneratableSModel) myClone).isGenerateIntoModelFolder());
+        if (myClone instanceof ModelWithAttributes && result instanceof ModelWithAttributes) {
+          final ModelWithAttributes mwa = ((ModelWithAttributes) result);
+          ((ModelWithAttributes) myClone).forEachAttribute(mwa::setAttribute);
         }
         rv.save();
         return rv;

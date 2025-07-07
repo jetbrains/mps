@@ -194,6 +194,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$pzdx);
   }
   public static SNode mapSrcMacro_map_1_0(final MapSrcMacroContext _context) {
+    // Here comes speciality of MAP_SRC macro. Despite the fact we iterate over input model, we can't replace it
+    // COPY_SRCL, as there's another rule that updates the references, and idea behind this seemingly no-op `return node`
+    //  is to give node as it was the moment method was extracted, not transformed with a reference to parameter as if from within
+    //  the generated checkXXX method. Perhaps, could have accomplished the same with LOOP + INSERT, didn't check.
     return _context.getNode();
   }
   public static boolean mc_Condition_0(final TemplateQueryContext _context) {
@@ -313,7 +317,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snsqMethods.put("629557350449693433", new SNsQ(i++));
     snsqMethods.put("5837079428841717746", new SNsQ(i++));
     snsqMethods.put("131924539844672796", new SNsQ(i++));
-    snsqMethods.put("4726684212254314052", new SNsQ(i++));
+    snsqMethods.put("19720371281058797", new SNsQ(i++));
     snsqMethods.put("4741735385321357379", new SNsQ(i++));
   }
   @NotNull
@@ -444,7 +448,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, MapNodeQuery> mnqMethods = new HashMap<String, MapNodeQuery>();
   {
-    mnqMethods.put("4726684212254314050", new MNQ(0));
+    mnqMethods.put("19720371281058796", new MNQ(0));
   }
   @NotNull
   @Override

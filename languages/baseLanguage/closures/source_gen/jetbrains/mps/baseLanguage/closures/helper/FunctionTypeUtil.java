@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.closures.util.FunctionalInterfaceHelper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.baseLanguage.closures.util.Constants;
@@ -28,7 +27,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 public class FunctionTypeUtil {
   /**
@@ -95,10 +93,9 @@ with_throws:
     return result;
   }
   private static SNode getFunctionMethod(SNode functionTypeOrClassifier) {
-    for (SNode method : Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(SNodeOperations.cast(functionTypeOrClassifier, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr))) {
-      if (!("equals".equals(SPropertyOperations.getString(method, PROPS.name$MnvL))) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(method)) {
-        return method;
-      }
+    // Note: used to be classifier type as input only
+    if (SNodeOperations.isInstanceOf(functionTypeOrClassifier, CONCEPTS.ClassifierType$bL)) {
+      FunctionalInterfaceHelper.getClassifierFunctionalMethod(SLinkOperations.getTarget(SNodeOperations.as(functionTypeOrClassifier, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)).getMethod();
     }
     return null;
   }
@@ -193,7 +190,8 @@ with_meet:
 
     // Expected scenario: right type is a function type and left type is likely compatible with it
     if ((rFType != null) && SNodeOperations.isInstanceOf(rexpr, CONCEPTS.ClosureLiteral$rp)) {
-      SNode leftFunctionType = ((lFType != null) ? lFType : TypecheckingFacade.getFromContext().coerceType(lCType, CONCEPTS.FunctionType$9U));
+      // Here, coercion was used, but since changes in subtyping for classifiers / function types, is no longer applicable
+      SNode leftFunctionType = ((lFType != null) ? lFType : FunctionalInterfaceHelper.getFunctionType(lCType).orElse(null));
 
       // Expects a return type or closure returns nothing: no obvious issue
       if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(leftFunctionType, LINKS.resultType$2oOC), CONCEPTS.VoidType$BF)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rFType, LINKS.resultType$2oOC), CONCEPTS.VoidType$BF) || !(hasReturnedExpression(SNodeOperations.cast(rexpr, CONCEPTS.ClosureLiteral$rp)))) {
@@ -278,9 +276,5 @@ with_meet:
     /*package*/ static final SContainmentLink body$Ujx2 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
     /*package*/ static final SContainmentLink resultType$2oOC = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType");
     /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

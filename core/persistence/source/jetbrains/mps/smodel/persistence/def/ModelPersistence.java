@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,15 @@
  */
 package jetbrains.mps.smodel.persistence.def;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
+import jetbrains.mps.persistence.MPSPersistence;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
+import jetbrains.mps.persistence.UserObjectsPersistence;
 import jetbrains.mps.persistence.xml.XMLPersistence;
 import jetbrains.mps.persistence.xml.XMLPersistence.Indexer;
 import jetbrains.mps.smodel.DefaultSModel;
@@ -41,6 +44,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel.Problem.Kind;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
+import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.xml.sax.Attributes;
@@ -290,6 +294,18 @@ public class ModelPersistence {
     }
   }
 
+  private static ModelSaveOption[] saveOptionsFor(SModelData model) {
+    final SModelHeader header = model instanceof DefaultSModel ? ((DefaultSModel) model).getSModelHeader() : null;
+    if (header != null) {
+      if (RuntimeFlags.customNodeIdentitySupport()) {
+        return new UserObjectsPersistence[]{UserObjectsPersistence.DESIRED};
+      }
+      String value = header.getOptionalProperty(MPSPersistence.UO_MODEL_ATTRIBUTE);
+      return value != null ? new UserObjectsPersistence[]{UserObjectsPersistence.valueOf(value)} : null;
+    }
+    return null;
+  }
+
   /**
    * Serialize model to xml in conformance with given persistence version.
    *
@@ -303,7 +319,8 @@ public class ModelPersistence {
       throw new ModelSaveException(p);
     }
     final MetaModelInfoProvider mmiProvider = mmiProviderFor(model);
-    IModelWriter writer = modelPersistence.getModelWriter(mmiProvider);
+    final ModelSaveOption[] opts = saveOptionsFor(model);
+    IModelWriter writer = modelPersistence.getModelWriter(mmiProvider, opts);
     if (writer == null) {
       final String m = String.format("Persistence has no writer. Version %d", persistenceVersion);
       PersistenceProblem p = new PersistenceProblem(Kind.Save, m, String.valueOf(model.getReference()), true);

@@ -67,9 +67,14 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -9579,41 +9584,53 @@
       </node>
       <node concept="3Tm1VV" id="1CAhW0wY4c9" role="1B3o_S" />
       <node concept="3clFbS" id="1CAhW0wY4ca" role="3clF47">
-        <node concept="3clFbF" id="1CAhW0wYeJe" role="3cqZAp">
-          <node concept="3K4zz7" id="1CAhW0wYg32" role="3clFbG">
-            <node concept="2OqwBi" id="1CAhW0wYgoX" role="3K4E3e">
-              <node concept="2OqwBi" id="1CAhW0wYgbB" role="2Oq$k0">
-                <node concept="37vLTw" id="1CAhW0wYgaM" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1CAhW0wYcRy" resolve="maybeFork" />
-                </node>
-                <node concept="3TrEf2" id="1CAhW0wYgj8" role="2OqNvi">
-                  <ref role="3Tt5mk" to="bjdw:6_DCGR5BD9Y" resolve="forkOf" />
-                </node>
-              </node>
-              <node concept="3TrEf2" id="1CAhW0wYgxi" role="2OqNvi">
-                <ref role="3Tt5mk" to="bjdw:6_DCGR5BBl9" resolve="primary" />
-              </node>
-            </node>
-            <node concept="10Nm6u" id="1CAhW0wYgCr" role="3K4GZi" />
-            <node concept="2OqwBi" id="1CAhW0wYeJg" role="3K4Cdx">
-              <node concept="2OqwBi" id="1CAhW0wYeJh" role="2Oq$k0">
-                <node concept="37vLTw" id="1CAhW0wYeJi" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1CAhW0wYcRy" resolve="maybeFork" />
-                </node>
-                <node concept="3TrEf2" id="1CAhW0wYeJj" role="2OqNvi">
-                  <ref role="3Tt5mk" to="bjdw:6_DCGR5BD9Y" resolve="forkOf" />
-                </node>
-              </node>
-              <node concept="3x8VRR" id="1CAhW0wYeJk" role="2OqNvi" />
-            </node>
-          </node>
+        <node concept="3clFbF" id="6RmmpomDvyq" role="3cqZAp">
+          <node concept="10Nm6u" id="6RmmpomDvyp" role="3clFbG" />
         </node>
       </node>
       <node concept="3Tqbb2" id="1CAhW0wYcgI" role="3clF45">
         <ref role="ehGHo" to="bjdw:1_4co2y1LvV" resolve="Plan" />
       </node>
+      <node concept="2AHcQZ" id="6RmmpomDheX" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+        <node concept="2B6LJw" id="6RmmpomDhuT" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="6RmmpomDhxt" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="1UVrAZQpd2b" role="jymVt" />
+    <node concept="2YIFZL" id="6RmmpomEnaR" role="jymVt">
+      <property role="TrG5h" value="getForkGenerationTarget" />
+      <node concept="37vLTG" id="6RmmpomEnaS" role="3clF46">
+        <property role="TrG5h" value="maybeFork" />
+        <node concept="3Tqbb2" id="6RmmpomEnaT" role="1tU5fm">
+          <ref role="ehGHo" to="bjdw:1_4co2y1LvV" resolve="Plan" />
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="6RmmpomEnaU" role="1B3o_S" />
+      <node concept="3clFbS" id="6RmmpomEnaV" role="3clF47">
+        <node concept="3clFbF" id="6RmmpomEwjC" role="3cqZAp">
+          <node concept="2OqwBi" id="6RmmpomExcq" role="3clFbG">
+            <node concept="2OqwBi" id="6RmmpomEwA7" role="2Oq$k0">
+              <node concept="37vLTw" id="6RmmpomEwjB" role="2Oq$k0">
+                <ref role="3cqZAo" node="6RmmpomEnaS" resolve="maybeFork" />
+              </node>
+              <node concept="3TrEf2" id="6RmmpomEwSr" role="2OqNvi">
+                <ref role="3Tt5mk" to="bjdw:1tYEJSwm25y" resolve="forkAs" />
+              </node>
+            </node>
+            <node concept="3TrcHB" id="6RmmpomExvy" role="2OqNvi">
+              <ref role="3TsBF5" to="bjdw:1tYEJSwlxVa" resolve="gentarget" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="17QB3L" id="6RmmpomEvxb" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="6RmmpomEnaQ" role="jymVt" />
     <node concept="3clFbW" id="1UVrAZQmUpe" role="jymVt">
       <node concept="3cqZAl" id="1UVrAZQmUph" role="3clF45" />
       <node concept="3Tm1VV" id="1UVrAZQmUpi" role="1B3o_S" />
@@ -9732,58 +9749,6 @@
       <node concept="3clFbS" id="7NlTw7DqUMS" role="3clF47">
         <node concept="3clFbJ" id="7NlTw7DrLj6" role="3cqZAp">
           <node concept="3clFbS" id="7NlTw7DrLj7" role="3clFbx">
-            <node concept="3cpWs8" id="7NlTw7DrLj8" role="3cqZAp">
-              <node concept="3cpWsn" id="7NlTw7DrLj9" role="3cpWs9">
-                <property role="TrG5h" value="primary" />
-                <node concept="3Tqbb2" id="7NlTw7DrLja" role="1tU5fm">
-                  <ref role="ehGHo" to="bjdw:1_4co2y1LvV" resolve="Plan" />
-                </node>
-                <node concept="2OqwBi" id="7NlTw7DrLjb" role="33vP2m">
-                  <node concept="2OqwBi" id="7NlTw7DrLjc" role="2Oq$k0">
-                    <node concept="37vLTw" id="7NlTw7DrLjd" role="2Oq$k0">
-                      <ref role="3cqZAo" node="1UVrAZQmUqz" resolve="myPlanDeclaration" />
-                    </node>
-                    <node concept="3TrEf2" id="7NlTw7DrLje" role="2OqNvi">
-                      <ref role="3Tt5mk" to="bjdw:6_DCGR5BD9Y" resolve="forkOf" />
-                    </node>
-                  </node>
-                  <node concept="3TrEf2" id="7NlTw7DrLjf" role="2OqNvi">
-                    <ref role="3Tt5mk" to="bjdw:6_DCGR5BBl9" resolve="primary" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbJ" id="7NlTw7DrLjg" role="3cqZAp">
-              <node concept="3clFbS" id="7NlTw7DrLjh" role="3clFbx">
-                <node concept="YS8fn" id="7NlTw7DrLji" role="3cqZAp">
-                  <node concept="2ShNRf" id="7NlTw7DrLjj" role="YScLw">
-                    <node concept="1pGfFk" id="7NlTw7DrLjk" role="2ShVmc">
-                      <ref role="37wK5l" to="wyt6:~IllegalStateException.&lt;init&gt;(java.lang.String)" resolve="IllegalStateException" />
-                      <node concept="3cpWs3" id="7NlTw7DrLjl" role="37wK5m">
-                        <node concept="Xl_RD" id="7NlTw7DrLjm" role="3uHU7B">
-                          <property role="Xl_RC" value="Invalid plan declaration " />
-                        </node>
-                        <node concept="2OqwBi" id="7NlTw7DrLjn" role="3uHU7w">
-                          <node concept="37vLTw" id="7NlTw7DrLjo" role="2Oq$k0">
-                            <ref role="3cqZAo" node="1UVrAZQmUqz" resolve="myPlanDeclaration" />
-                          </node>
-                          <node concept="2qgKlT" id="7NlTw7DrLjp" role="2OqNvi">
-                            <ref role="37wK5l" to="tpcu:hEwIMiw" resolve="getPresentation" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbH" id="7NlTw7DrLjq" role="3cqZAp" />
-              </node>
-              <node concept="3clFbC" id="7NlTw7DrLjr" role="3clFbw">
-                <node concept="10Nm6u" id="7NlTw7DrLjs" role="3uHU7w" />
-                <node concept="37vLTw" id="7NlTw7DrLjt" role="3uHU7B">
-                  <ref role="3cqZAo" node="7NlTw7DrLj9" resolve="primary" />
-                </node>
-              </node>
-            </node>
             <node concept="3clFbF" id="7NlTw7DrLju" role="3cqZAp">
               <node concept="1rXfSq" id="7NlTw7DrLjv" role="3clFbG">
                 <ref role="37wK5l" node="1CAhW0wVnuq" resolve="buildFork" />
@@ -9795,14 +9760,14 @@
                 </node>
                 <node concept="2OqwBi" id="7NlTw7DrLjy" role="37wK5m">
                   <node concept="3TrcHB" id="7NlTw7DrLjz" role="2OqNvi">
-                    <ref role="3TsBF5" to="bjdw:6_DCGR5BBl$" resolve="gentarget" />
+                    <ref role="3TsBF5" to="bjdw:1tYEJSwlxVa" resolve="gentarget" />
                   </node>
                   <node concept="2OqwBi" id="7NlTw7DrLj$" role="2Oq$k0">
                     <node concept="37vLTw" id="7NlTw7DrLj_" role="2Oq$k0">
                       <ref role="3cqZAo" node="1UVrAZQmUqz" resolve="myPlanDeclaration" />
                     </node>
                     <node concept="3TrEf2" id="7NlTw7DrLjA" role="2OqNvi">
-                      <ref role="3Tt5mk" to="bjdw:6_DCGR5BD9Y" resolve="forkOf" />
+                      <ref role="3Tt5mk" to="bjdw:1tYEJSwm25y" resolve="forkAs" />
                     </node>
                   </node>
                 </node>
@@ -9818,7 +9783,7 @@
                 <ref role="3cqZAo" node="1UVrAZQmUqz" resolve="myPlanDeclaration" />
               </node>
               <node concept="3TrEf2" id="7NlTw7DrLjG" role="2OqNvi">
-                <ref role="3Tt5mk" to="bjdw:6_DCGR5BD9Y" resolve="forkOf" />
+                <ref role="3Tt5mk" to="bjdw:1tYEJSwm25y" resolve="forkAs" />
               </node>
             </node>
             <node concept="3x8VRR" id="7NlTw7DrLjH" role="2OqNvi" />

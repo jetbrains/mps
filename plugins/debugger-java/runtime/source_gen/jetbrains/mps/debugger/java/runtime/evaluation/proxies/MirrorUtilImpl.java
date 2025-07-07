@@ -153,16 +153,4 @@ public class MirrorUtilImpl extends MirrorUtil {
     }
     return argValues;
   }
-  @Override
-  public void dispose() {
-    synchronized (LOCK) {
-      INSTANCE = null;
-    }
-  }
-  @Override
-  public void init() {
-    synchronized (LOCK) {
-      INSTANCE = this;
-    }
-  }
 }

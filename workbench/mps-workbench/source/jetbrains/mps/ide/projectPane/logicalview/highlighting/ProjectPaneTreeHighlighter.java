@@ -49,6 +49,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+@Deprecated(forRemoval = true)
 public class ProjectPaneTreeHighlighter {
   private final GenStatusUpdater myGenStatusVisitor;
   private final ErrorChecker myErrorVisitor;
@@ -62,9 +63,6 @@ public class ProjectPaneTreeHighlighter {
   private final ProjectPaneTree myTree;
   // although could access one with myTree.getProject().getRepository, it seems safe to record the instance I listen to
   private final SRepository myProjectRepository;
-  // containers that control listeners of module and model respectively
-  private ModuleNodeListeners myModuleListeners;
-  private SModelNodeListeners myModelListeners;
   private volatile boolean myIsPaused = false;
 
   public ProjectPaneTreeHighlighter(ProjectPaneTree tree, MPSProject mpsProject) {
@@ -86,56 +84,26 @@ public class ProjectPaneTreeHighlighter {
 
   public void dispose() {
     myTree.removeTreeNodeListener(myNodeListener);
-    if (myModuleListeners != null) {
-      myModuleListeners.stopListening();
-      myModuleListeners = null;
-    }
-    if (myModelListeners != null) {
-      myModelListeners.stopListening(myProjectRepository, myGenStatusVisitor.getStatusManager());
-      myModelListeners = null;
-    }
     myExecutor.shutdownNow();
     myGenStatusVisitor.setUpdater(null);
     myErrorVisitor.setUpdater(null);
     myModifiedMarker.setUpdater(null);
   }
 
-  private SModelNodeListeners getModelListeners() {
-    if (myModelListeners == null) {
-      myModelListeners = new SModelNodeListeners(this);
-      myModelListeners.startListening(myProjectRepository, myGenStatusVisitor.getStatusManager());
-    }
-    return myModelListeners;
-  }
-
-  private ModuleNodeListeners getModuleListeners() {
-    if (myModuleListeners == null) {
-      myModuleListeners = new ModuleNodeListeners(this);
-      myModuleListeners.startListening();
-    }
-    return myModuleListeners;
-  }
   @SuppressWarnings("WeakerAccess")
   /*package*/ void moduleNodeAdded(@NotNull ProjectModuleTreeNode node) {
-    getModuleListeners().attach(node);
   }
   @SuppressWarnings("WeakerAccess")
   /*package*/ void moduleNodeRemoved(@NotNull ProjectModuleTreeNode node) {
-    assert myModuleListeners != null;
-    getModuleListeners().detach(node);
   }
 
 
   @SuppressWarnings("WeakerAccess")
   /*package*/ void modelNodeAdded(SModelTreeNode modelNode) {
-    getModelListeners().attach(modelNode);
-
   }
 
   @SuppressWarnings("WeakerAccess")
   /*package*/ void modelNodeRemoved(SModelTreeNode modelNode) {
-    assert myModelListeners != null;
-    getModelListeners().detach(modelNode);
   }
 
   /**

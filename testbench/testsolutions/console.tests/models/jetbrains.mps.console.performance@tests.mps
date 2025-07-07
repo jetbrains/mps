@@ -21,9 +21,6 @@
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
         <property id="2616911529524314943" name="accessMode" index="3DII0k" />
         <child id="1216993439383" name="methods" index="1qtyYc" />
@@ -70,6 +67,9 @@
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1092119917967" name="jetbrains.mps.baseLanguage.structure.MulExpression" flags="nn" index="17qRlL" />
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
@@ -364,8 +364,19 @@
             <node concept="2OqwBi" id="5bkJW_j6yqD" role="33vP2m">
               <node concept="2ShNRf" id="5bkJW_j6yqE" role="2Oq$k0">
                 <node concept="1pGfFk" id="5bkJW_j6yqF" role="2ShVmc">
-                  <ref role="37wK5l" to="wsw7:6bXa3O$ak8k" resolve="ModelCheckerBuilder" />
-                  <node concept="3clFbT" id="5bkJW_j6yqG" role="37wK5m" />
+                  <ref role="37wK5l" to="wsw7:6nj_ILmBNrL" resolve="ModelCheckerBuilder" />
+                  <node concept="2OqwBi" id="1p3K8b3a29m" role="37wK5m">
+                    <node concept="2ShNRf" id="1p3K8b39TJ5" role="2Oq$k0">
+                      <node concept="1pGfFk" id="1p3K8b39UUM" role="2ShVmc">
+                        <property role="373rjd" value="true" />
+                        <ref role="37wK5l" to="wsw7:6pnunaLnyyn" resolve="ModelCheckerBuilder.ModelsExtractorImpl" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1p3K8b3a31A" role="2OqNvi">
+                      <ref role="37wK5l" to="wsw7:34euvBSCGJN" resolve="includeStubs" />
+                      <node concept="3clFbT" id="1p3K8b3a3B1" role="37wK5m" />
+                    </node>
+                  </node>
                 </node>
               </node>
               <node concept="liA8E" id="5bkJW_j6yqH" role="2OqNvi">
@@ -697,9 +708,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="10gsdiJDoBW">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
 </model>
 

@@ -19,7 +19,7 @@ class JvmKotlinCompilerRunner(
         "-jvm-target=" + javaVersion.compilerVersion,
 
         // We pass module data through a build file
-        "-Xbuild-file=" + KotlinBuildFileSerialization.createBuildFile(modulesToCompile).absolutePath
+        "-Xbuild-file=" + KotlinBuildFileSerialization.createBuildFile(modulesToCompile, logger).absolutePath
     )
 
     override val compileOptions: CompilationOptions
@@ -37,7 +37,7 @@ class JvmKotlinCompilerRunner(
                 ReportCategory.COMPILER_MESSAGE.code,
                 ReportCategory.OUTPUT_MESSAGE.code
             ),
-            ReportSeverity.INFO.code, arrayOf()
+            ReportSeverity.INFO.code, emptyArray()
         )
     }
 }

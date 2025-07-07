@@ -89,6 +89,9 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
                 membersOverallTime.value += CalcClassifiersInRootsStatistic_Action.this.analyzeClassifiersInRoot(node, event);
               }
               subTask.advance(1);
+              if (subTask.isCanceled()) {
+                return;
+              }
             }
             subTask.done();
           }

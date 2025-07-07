@@ -15,7 +15,7 @@ public class FailureDetector implements TestExecutionListener {
   @Override
   public void executionFinished(TestIdentifier testIdentifier, TestExecutionResult testExecutionResult) {
     if (testExecutionResult.getStatus() == TestExecutionResult.Status.FAILED) {
-      errors.add("Test failure: " + testIdentifier.getDisplayName());
+      errors.add("Test failure: " + testIdentifier.getDisplayName() + " " + testExecutionResult.toString());
     }
   }
 

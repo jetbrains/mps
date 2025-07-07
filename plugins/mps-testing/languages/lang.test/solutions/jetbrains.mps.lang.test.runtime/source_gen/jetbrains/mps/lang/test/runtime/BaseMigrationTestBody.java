@@ -40,13 +40,16 @@ public abstract class BaseMigrationTestBody extends BaseTestBody {
   }
   public void testMethod() {
     MigrationScript[] scripts = getMigrationScript();
-    SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
+    // FIXME use of project's repository for temp models is not entirely correct - would be great to use separate repo for test models as well as transients/temp models
+    SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule(myProject.getRepository()));
     for (SNode root : ListSequence.fromList(CopyUtil.copy(CollectionSequence.fromCollection(getInputNodes()).toList()))) {
       SModelOperations.addRootNode(model, root);
     }
     SModel model2 = null;
     if (shouldCheckStableIds()) {
-      model2 = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
+      // XXX is it necessary to have distinct module, can't we share one with the one of 'model'?
+      //    Note, TemporaryModels.dispose() doesn't expect more than 1 temp model per module, have to be careful 
+      model2 = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule(myProject.getRepository()));
       CopyUtil.copyModelContentAndPreserveIds(model, model2);
       // It is unclear why CopyUtil does not update internal references by itself and we have to do it explicitly
       for (Tuples._2<SNode, SReferenceLink> ref : ListSequence.fromList(SModelOperations.nodes(model2, null)).translate((it) -> SNodeOperations.getReferences(it)).select((it) -> MultiTuple.<SNode,SReferenceLink>from(it.getSourceNode(), it.getLink()))) {

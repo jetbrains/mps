@@ -471,7 +471,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("class declaration");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a32b0qk);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_ClassDeclaration = cpb.create();
         }
         return props_ClassDeclaration;
@@ -488,7 +488,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("class parameter");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a52b0qk);
+          cpb.icon(IconContainer.RESOURCE_1);
           props_ClassParameter = cpb.create();
         }
         return props_ClassParameter;
@@ -527,7 +527,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("companion object");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a03b0qk);
+          cpb.icon(IconContainer.RESOURCE_2);
           props_CompanionObject = cpb.create();
         }
         return props_CompanionObject;
@@ -681,7 +681,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("enum class declaration");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a05b0qk);
+          cpb.icon(IconContainer.RESOURCE_3);
           props_EnumClassDeclaration = cpb.create();
         }
         return props_EnumClassDeclaration;
@@ -821,7 +821,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("function value parameter");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a76b0qk);
+          cpb.icon(IconContainer.RESOURCE_4);
           props_FunctionParameter = cpb.create();
         }
         return props_FunctionParameter;
@@ -1454,7 +1454,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("interface declaration");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a661b0qk);
+          cpb.icon(IconContainer.RESOURCE_5);
           props_InterfaceDeclaration = cpb.create();
         }
         return props_InterfaceDeclaration;
@@ -1494,7 +1494,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("kotlin file");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a171b0qk);
+          cpb.icon(IconContainer.RESOURCE_6);
           props_KotlinFile = cpb.create();
         }
         return props_KotlinFile;
@@ -1503,7 +1503,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("script");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a271b0qk);
+          cpb.icon(IconContainer.RESOURCE_7);
           props_KtScript = cpb.create();
         }
         return props_KtScript;
@@ -1523,7 +1523,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateAggregation(0x37f51ee20f70b404L, "_itTypeHolder_hack");
           cpb.shortDesc("lambda literal");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a6a0a471b0qk);
+          cpb.icon(IconContainer.RESOURCE_8);
           props_LambdaLiteral = cpb.create();
         }
         return props_LambdaLiteral;
@@ -1665,7 +1665,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("object declaration");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a291b0qk);
+          cpb.icon(IconContainer.RESOURCE_9);
           props_ObjectDeclaration = cpb.create();
         }
         return props_ObjectDeclaration;
@@ -1806,7 +1806,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("primary constructor");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a112b0qk);
+          cpb.icon(IconContainer.RESOURCE_10);
           props_PrimaryConstructor = cpb.create();
         }
         return props_PrimaryConstructor;
@@ -1957,7 +1957,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateAggregation(0x28bef6d7551af640L, "_body");
           cpb.shortDesc("secondary constructor");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a032b0qk);
+          cpb.icon(IconContainer.RESOURCE_11);
           props_SecondaryConstructor = cpb.create();
         }
         return props_SecondaryConstructor;
@@ -2138,7 +2138,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("type alias");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a352b0qk);
+          cpb.icon(IconContainer.RESOURCE_12);
           props_TypeAlias = cpb.create();
         }
         return props_TypeAlias;
@@ -2261,7 +2261,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("variable declaration");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a962b0qk);
+          cpb.icon(IconContainer.RESOURCE_13);
           props_VariableDeclaration = cpb.create();
         }
         return props_VariableDeclaration;

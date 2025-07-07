@@ -9,7 +9,6 @@ import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.messages.IMessageHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.logging.Logger;
 import java.util.Map;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -41,17 +40,6 @@ public class CoreMakeTask {
 
   /**
    * 
-   * @deprecated use constructor without unused script name
-   */
-  @Deprecated(forRemoval = true, since = "2023.2")
-  public CoreMakeTask(@NotNull String ignored, MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh) {
-    myMakeSequence = makeSeq;
-    myController = ctl;
-    myMessageHandler = mh;
-  }
-
-  /**
-   * 
    * @since 2023.2
    */
   public CoreMakeTask(MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh) {
@@ -62,21 +50,12 @@ public class CoreMakeTask {
 
   public void run(@NotNull ProgressMonitor monitor) {
     myResult = new IResult.FAILURE("not started", null);
-    try {
-      doRun(monitor);
-    } finally {
-      try {
-        reconcile();
-      } catch (RuntimeException ex) {
-        Logger.getLogger(CoreMakeTask.class).debug("Unexpected exception", ex);
-      }
-    }
+    doRun(monitor);
   }
 
   protected void doRun(final ProgressMonitor monitor) {
     final Map<ITarget.Name, Long> timeStatistic = MapSequence.fromMap(new HashMap<ITarget.Name, Long>());
 
-    aboutToStart();
     final int clsize = myMakeSequence.steps();
     if (clsize == 0) {
       return;
@@ -137,39 +116,6 @@ public class CoreMakeTask {
       myMessageHandler.handle(new Message(MessageKind.INFORMATION, CoreMakeTask.class, String.format("Other targets execution time: %d ms; %s", (overallTime - currentTime), IterableUtils.join(ListSequence.fromList(otherTargets).select((it) -> it.name() + ": " + MapSequence.fromMap(timeStatistic).get(it) + " ms"), ", "))));
       monitor.done();
     }
-  }
-
-  /**
-   * 
-   * @deprecated not invoked any more
-   */
-  @Deprecated(forRemoval = true, since = "2023.2")
-  protected void displayInfo(String info) {
-  }
-
-  /**
-   * 
-   * @deprecated override run(ProgressMonitor) and do what you need to do *before* super.run() call
-   */
-  @Deprecated(forRemoval = true, since = "2023.2")
-  protected void aboutToStart() {
-  }
-
-  /**
-   * 
-   * @deprecated override run(ProgressMonitor) and do what you need to do *after* super.run() call
-   */
-  @Deprecated
-  protected void reconcile() {
-  }
-
-  /**
-   * 
-   * @deprecated no idea what's this method for
-   */
-  @Deprecated(forRemoval = true, since = "2023.2")
-  public IMessageHandler getMessageHandler() {
-    return myMessageHandler;
   }
 
   public IResult getResult() {

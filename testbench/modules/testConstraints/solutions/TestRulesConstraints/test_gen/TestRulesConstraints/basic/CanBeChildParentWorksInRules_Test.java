@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.SNodePointer;
 @MPSLaunch
 public class CanBeChildParentWorksInRules_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(CanBeChildParentWorksInRules_Test.class, "${mps_home}", "r:aca600c4-c2ff-4395-8294-417b84791061(TestRulesConstraints.basic@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CanBeChildParentWorksInRules_Test.class).projectPath(null).modelRef("r:aca600c4-c2ff-4395-8294-417b84791061(TestRulesConstraints.basic@tests)").reopenProject(null).build());
 
   public CanBeChildParentWorksInRules_Test() {
     super(ourParametersCacheExtension.getParametersCache());

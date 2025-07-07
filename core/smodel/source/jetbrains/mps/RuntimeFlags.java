@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,9 @@ public final class RuntimeFlags {
   private static Boolean ourCastException = null;
   private static Boolean ourEclipseJavaCompiler = null;
   private static Boolean ourLegacyLoadModels = null;
+  private static Boolean ourCustomNodeIdentitySupport;
+
+  private static Boolean ourLegacyCLDeps = null;
 
   private RuntimeFlags() {
   }
@@ -110,5 +113,20 @@ public final class RuntimeFlags {
       // ourLegacyLoadModels = val == null || Boolean.parseBoolean(val);
     }
     return ourLegacyLoadModels;
+  }
+
+  public static boolean legacyCLDependencies() {
+    if (ourLegacyCLDeps == null) {
+      // we're good with new approach unless forced to use the old one
+      ourLegacyCLDeps = Boolean.getBoolean("mps.clm.deps.legacy");
+    }
+    return ourLegacyCLDeps;
+  }
+
+  public static boolean customNodeIdentitySupport() {
+    if (ourCustomNodeIdentitySupport == null) {
+      ourCustomNodeIdentitySupport = Boolean.getBoolean("mps.nodeuid");
+    }
+    return ourCustomNodeIdentitySupport;
   }
 }

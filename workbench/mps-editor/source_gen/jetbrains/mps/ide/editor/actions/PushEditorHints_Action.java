@@ -15,6 +15,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintSettings;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -75,7 +76,11 @@ public class PushEditorHints_Action extends BaseAction {
         editorComponent = null;
       }
       MapSequence.fromMap(_params).put("editorComponent", editorComponent);
-      if (editorComponent == null) {
+    }
+    {
+      EditorContext p = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT);
+      MapSequence.fromMap(_params).put("context", p);
+      if (p == null) {
         return false;
       }
     }
@@ -86,7 +91,7 @@ public class PushEditorHints_Action extends BaseAction {
     final Wrappers._T<ConceptEditorHintSettings> hintSettings = new Wrappers._T<ConceptEditorHintSettings>();
 
     final LanguageRegistry languageRegistry = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getComponent(LanguageRegistry.class);
-    final SModel currentModel = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getRootCell().getSNode().getModel();
+    final SModel currentModel = PushEditorHints_Action.this.findEditorComponent(_params).getRootCell().getSNode().getModel();
 
     if (currentModel == null) {
       hintSettings.value = new ConceptEditorHintSettings(languageRegistry);
@@ -98,11 +103,20 @@ public class PushEditorHints_Action extends BaseAction {
     }
 
     ApplicationManager.getApplication().invokeLater(() -> {
-      String[] initialEditorHints = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getUpdater().getInitialEditorHints();
+      EditorComponent component = PushEditorHints_Action.this.findEditorComponent(_params);
+      String[] initialEditorHints = component.getUpdater().getInitialEditorHints();
       hintSettings.value.updateSettings((initialEditorHints == null ? Collections.<String>emptySet() : SetSequence.fromSetAndArray(new HashSet<String>(), initialEditorHints)));
       final ConceptEditorHintPreferencesPage page = new ConceptEditorHintPreferencesPage(hintSettings.value);
-      DialogWrapper dialog = new HintsDialog(((Project) MapSequence.fromMap(_params).get("project")), page, hintSettings.value, ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")));
+      DialogWrapper dialog = new HintsDialog(((Project) MapSequence.fromMap(_params).get("project")), page, hintSettings.value, component);
       dialog.show();
     });
+  }
+  private EditorComponent findEditorComponent(final Map<String, Object> _params) {
+    EditorComponent component = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent"));
+    if (component == null) {
+      jetbrains.mps.openapi.editor.EditorComponent editorComponent = ((EditorContext) MapSequence.fromMap(_params).get("context")).getEditorComponent();
+      component = ((EditorComponent) editorComponent);
+    }
+    return component;
   }
 }

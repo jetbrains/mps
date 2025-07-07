@@ -9,7 +9,6 @@ import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -17,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
-import javax.swing.tree.TreeNode;
 import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.ide.projectPane.ProjectPane;
@@ -42,7 +40,7 @@ public class NewSubTestModel_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    if (!(event.getData(MPSCommonDataKeys.TREE_NODE) instanceof SModelTreeNode)) {
+    if (!(event.getData(MPSCommonDataKeys.VALUE) instanceof SModel)) {
       return false;
     }
     SModel m = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
@@ -81,7 +79,7 @@ public class NewSubTestModel_Action extends BaseAction {
       }
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
+      Object p = event.getData(MPSCommonDataKeys.VALUE);
       if (p == null) {
         return false;
       }

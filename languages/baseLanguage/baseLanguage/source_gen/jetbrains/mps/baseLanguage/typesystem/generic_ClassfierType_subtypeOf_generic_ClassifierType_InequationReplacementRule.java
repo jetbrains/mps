@@ -123,33 +123,32 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
             }
           } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.WildCardType$uV)) {
             // nothing to do
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
-            {
-              SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7192154694570987550", 0, null);
-              _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-              typeCheckingContext.createEquation((SNode) leftParam, (SNode) rightParam, _info_12389875345);
-            }
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
-            {
-              SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5450156852673290347", 0, null);
-              _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-              typeCheckingContext.createEquation((SNode) leftParam, (SNode) rightParam, _info_12389875345);
-            }
           } else {
-            // TODO this is actually an equivalence relation
-            {
-              SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3216938209399927487", 0, null);
-              _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-              typeCheckingContext.createLessThanInequality((SNode) leftParam, (SNode) rightParam, false, true, inequalityIsLessThan, _info_12389875345);
-            }
-            {
-              SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3216938209399927516", 0, null);
-              _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-              typeCheckingContext.createLessThanInequality((SNode) rightParam, (SNode) leftParam, false, true, !(inequalityIsLessThan), _info_12389875345);
+            // Either left or right is raw -> resort to :==: as :<=: + :>=: incorrectly works 
+            boolean leftRaw = SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(leftParam, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(leftParam, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
+            boolean rightRaw = SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(rightParam, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
+
+            if (leftRaw ^ rightRaw) {
+              {
+                SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7416430614149323372", 0, null);
+                _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
+                typeCheckingContext.createEquation((SNode) leftParam, (SNode) rightParam, _info_12389875345);
+              }
+            } else {
+              // TODO this is actually an equivalence relation
+              {
+                SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3216938209399927487", 0, null);
+                _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
+                typeCheckingContext.createLessThanInequality((SNode) leftParam, (SNode) rightParam, false, true, inequalityIsLessThan, _info_12389875345);
+              }
+              {
+                SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3216938209399927516", 0, null);
+                _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
+                typeCheckingContext.createLessThanInequality((SNode) rightParam, (SNode) leftParam, false, true, !(inequalityIsLessThan), _info_12389875345);
+              }
             }
           }
         }
@@ -199,14 +198,18 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
             result_14532009 = result_14532009 && new SNodeMatcher().match((SNode) rightParam, (SNode) leftParam);
           } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.WildCardType$uV)) {
             // nothing to do
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
-            result_14532009 = result_14532009 && new SNodeMatcher().match((SNode) leftParam, (SNode) rightParam);
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
-            result_14532009 = result_14532009 && new SNodeMatcher().match((SNode) leftParam, (SNode) rightParam);
           } else {
-            // TODO this is actually an equivalence relation
-            result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) leftParam, (SNode) rightParam);
-            result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) rightParam, (SNode) leftParam);
+            // Either left or right is raw -> resort to :==: as :<=: + :>=: incorrectly works 
+            boolean leftRaw = SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(leftParam, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(leftParam, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
+            boolean rightRaw = SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(rightParam, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
+
+            if (leftRaw ^ rightRaw) {
+              result_14532009 = result_14532009 && new SNodeMatcher().match((SNode) leftParam, (SNode) rightParam);
+            } else {
+              // TODO this is actually an equivalence relation
+              result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) leftParam, (SNode) rightParam);
+              result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) rightParam, (SNode) leftParam);
+            }
           }
         }
         if (leftParamIt.hasNext() || rightParamIt.hasNext()) {
@@ -260,6 +263,7 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
     /*package*/ static final SContainmentLink bound$ciZM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
     /*package*/ static final SContainmentLink bound$$a6H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
   }
 
   private static final class CONCEPTS {

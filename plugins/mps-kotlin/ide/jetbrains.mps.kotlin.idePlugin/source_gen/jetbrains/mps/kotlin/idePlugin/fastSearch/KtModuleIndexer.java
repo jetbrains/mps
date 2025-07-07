@@ -9,30 +9,30 @@ import java.util.HashMap;
 import jetbrains.mps.kotlin.stubs.loading.ids.KotlinId;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.kotlin.stubs.loading.kind.KotlinCommonModelKind;
-import kotlinx.metadata.internal.common.KmModuleFragment;
-import kotlinx.metadata.KmPackage;
-import kotlinx.metadata.KmClass;
-import kotlinx.metadata.ClassKind;
-import kotlinx.metadata.Attributes;
+import kotlin.metadata.internal.common.KmModuleFragment;
+import kotlin.metadata.KmPackage;
+import kotlin.metadata.KmClass;
+import kotlin.metadata.ClassKind;
+import kotlin.metadata.Attributes;
 import jetbrains.mps.kotlin.stubs.smodel.metadata.KtAttributes;
 import jetbrains.mps.kotlin.stubs.extension.KtAnnotations;
-import kotlinx.metadata.KmType;
-import kotlinx.metadata.KmClassifier;
-import kotlinx.metadata.KmTypeProjection;
-import kotlinx.metadata.KmConstructor;
-import kotlinx.metadata.KmValueParameter;
-import kotlinx.metadata.KmTypeParameter;
-import kotlinx.metadata.KmFunction;
+import kotlin.metadata.KmType;
+import kotlin.metadata.KmClassifier;
+import kotlin.metadata.KmTypeProjection;
+import kotlin.metadata.KmConstructor;
+import kotlin.metadata.KmValueParameter;
+import kotlin.metadata.KmTypeParameter;
+import kotlin.metadata.KmFunction;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import kotlinx.metadata.KmProperty;
-import kotlinx.metadata.KmTypeAlias;
+import kotlin.metadata.KmProperty;
+import kotlin.metadata.KmTypeAlias;
 import java.util.List;
-import kotlinx.metadata.KmAnnotation;
+import kotlin.metadata.KmAnnotation;
 import jetbrains.mps.internal.collections.runtime.IMapping;
-import kotlinx.metadata.KmAnnotationArgument;
+import kotlin.metadata.KmAnnotationArgument;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import kotlinx.metadata.KmFlexibleTypeUpperBound;
+import kotlin.metadata.KmFlexibleTypeUpperBound;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -256,10 +256,12 @@ public class KtModuleIndexer {
     } else if (arg instanceof KmAnnotationArgument.KClassValue) {
       KmAnnotationArgument.KClassValue value = (KmAnnotationArgument.KClassValue) arg;
       putClassRef(value.getClassName());
-      if (value.getArrayDimensionCount() > 1) {
-        putConcepts(CONCEPTS.TypeProjection$5e);
-        putRef("kotlin/Array");
-      }
+      putConcepts(CONCEPTS.MemberNavigationExpression$7I, CONCEPTS.ClassMemberTarget$le, CONCEPTS.ReceiverType$$f);
+    } else if (arg instanceof KmAnnotationArgument.ArrayKClassValue) {
+      KmAnnotationArgument.ArrayKClassValue value = (KmAnnotationArgument.ArrayKClassValue) arg;
+      putClassRef(value.getClassName());
+      putConcepts(CONCEPTS.TypeProjection$5e);
+      putRef("kotlin/Array");
       putConcepts(CONCEPTS.MemberNavigationExpression$7I, CONCEPTS.ClassMemberTarget$le, CONCEPTS.ReceiverType$$f);
     } else if (arg instanceof KmAnnotationArgument.EnumValue) {
       KmAnnotationArgument.EnumValue value = ((KmAnnotationArgument.EnumValue) arg);

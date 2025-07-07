@@ -17,11 +17,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import java.util.ArrayList;
 import java.util.Objects;
 import com.intellij.ui.icons.ImageDescriptor;
 import com.intellij.ui.icons.ImageDescriptorKt;
@@ -76,15 +76,20 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
       return null;
     }
 
-    String source = MacrosFactory.forModule(SNodeOperations.getModel(__thisNode__).getModule()).expandPath(fileName);
-    String newuiSource = MacrosFactory.forModule(SNodeOperations.getModel(__thisNode__).getModule()).expandPath(FileIcon__BehaviorDescriptor.getNewuiFileName_id1$fQzw7yhpR.invoke(__thisNode__));
-
-    // copy all possible selected files
-    List<Tuples._2<IFile, byte[]>> additional = ListSequence.fromList(FileIcon__BehaviorDescriptor.getAdditionalFiles_id2NwO_B0ZkCe.invoke(__thisNode__, source)).select((it) -> ((Tuples._2<IFile, byte[]>) FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, it, outputDir, ((boolean) false)))).where(new NotNullWhereFilter()).toList();
-    ListSequence.fromList(additional).insertElement(0, FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, source, outputDir, ((boolean) true)));
-    List<Tuples._2<IFile, byte[]>> additionalNewui = ListSequence.fromList(FileIcon__BehaviorDescriptor.getAdditionalFiles_id2NwO_B0ZkCe.invoke(__thisNode__, newuiSource)).select((it) -> ((Tuples._2<IFile, byte[]>) FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, it, outputDir, ((boolean) false)))).where(new NotNullWhereFilter()).toList();
-    ListSequence.fromList(additionalNewui).insertElement(0, FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, newuiSource, outputDir, ((boolean) false)));
-    ListSequence.fromList(additional).addSequence(ListSequence.fromList(additionalNewui));
+    List<Tuples._2<IFile, byte[]>> additional = ListSequence.fromList(new ArrayList<>());
+    // we copy files with non-module relative path only, and assume module-relative files get copied as files into deployed jar or made available as CL resource on sources.
+    if (!(fileName.startsWith(MacrosFactory.MODULE))) {
+      String source = MacrosFactory.forModule(SNodeOperations.getModel(__thisNode__).getModule()).expandPath(fileName);
+      // copy all possible selected files
+      ListSequence.fromList(additional).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, source, outputDir, ((boolean) true)));
+      ListSequence.fromList(additional).addSequence(ListSequence.fromList(FileIcon__BehaviorDescriptor.getAdditionalFiles_id2NwO_B0ZkCe.invoke(__thisNode__, source)).select((it) -> ((Tuples._2<IFile, byte[]>) FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, it, outputDir, ((boolean) false)))).where(new NotNullWhereFilter()));
+    }
+    if (!(Objects.equals(Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__), Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(__thisNode__))) && !(FileIcon__BehaviorDescriptor.getNewuiFileName_id1$fQzw7yhpR.invoke(__thisNode__).startsWith(MacrosFactory.MODULE))) {
+      //  old id != new id is condition employed in templates. Here, used to get emulated with copyFile(newuiSource,..., _false_)
+      String newuiSource = MacrosFactory.forModule(SNodeOperations.getModel(__thisNode__).getModule()).expandPath(FileIcon__BehaviorDescriptor.getNewuiFileName_id1$fQzw7yhpR.invoke(__thisNode__));
+      ListSequence.fromList(additional).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, newuiSource, outputDir, ((boolean) false)));
+      ListSequence.fromList(additional).addSequence(ListSequence.fromList(FileIcon__BehaviorDescriptor.getAdditionalFiles_id2NwO_B0ZkCe.invoke(__thisNode__, newuiSource)).select((it) -> ((Tuples._2<IFile, byte[]>) FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, it, outputDir, ((boolean) false)))).where(new NotNullWhereFilter()));
+    }
     return additional;
   }
   /*package*/ static List<String> getAdditionalFiles_id2NwO_B0ZkCe(@NotNull SNode __thisNode__, final String sourcePath) {
@@ -96,7 +101,7 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
 
     if (Objects.equals(ext, "svg") || Objects.equals(ext, "png")) {
       // All possibly needed files
-      List<ImageDescriptor> imageDescriptors = ImageDescriptorKt.getImageDescriptors(sourcePath, true, ScaleContext.createIdentity());
+      List<ImageDescriptor> imageDescriptors = ImageDescriptorKt.getImageDescriptors(sourcePath, true, true, ScaleContext.createIdentity());
 
       final String prefix = FileUtil.getNameWithoutExtension(sourcePath);
       return imageDescriptors.stream().map((desc) -> desc.pathTransform.invoke(prefix, ext)).filter((path) -> !(Objects.equals(path, sourcePath))).distinct().toList();

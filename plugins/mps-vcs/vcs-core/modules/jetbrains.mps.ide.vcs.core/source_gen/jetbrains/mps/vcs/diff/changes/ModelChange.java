@@ -17,12 +17,6 @@ public abstract class ModelChange {
   private ModelChange myOpposite = null;
   private final SNodeId myRootId;
 
-  @Deprecated(forRemoval = true)
-  protected ModelChange(@NotNull ChangeSet changeSet) {
-    myChangeSet = changeSet;
-    myRootId = null;
-  }
-
   protected ModelChange(@NotNull ChangeSet changeSet, @Nullable SNodeId rootId) {
     myChangeSet = changeSet;
     myRootId = rootId;

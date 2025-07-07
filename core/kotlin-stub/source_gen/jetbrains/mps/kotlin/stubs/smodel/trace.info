@@ -28,7 +28,7 @@
       <node id="3618847927238580432" at="37,0,40,0" concept="5" trace="addDeclarations#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)V" />
       <node id="4324907694463382464" at="49,0,52,0" concept="5" trace="as_ctnfz1_a0a0a0a7#(Ljava/lang/Object;Ljava/lang/Class;)null" />
       <node id="3758303616303541423" at="29,0,36,0" concept="5" trace="createKotlinFileRootNode#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="3758303616305142821" at="41,0,48,0" concept="5" trace="createClassRootNode#(Lkotlinx/metadata/ClassKind;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="3758303616305142821" at="41,0,48,0" concept="5" trace="createClassRootNode#(Lkotlin/metadata/ClassKind;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="3618847927238580433" at="37,76,38,84" />
       <scope id="4324907694463382464" at="49,68,50,47" />
       <scope id="3618847927238580432" at="37,0,40,0">

@@ -243,7 +243,7 @@
     <file name="EditorComponentUtil.java">
       <node id="772403858154374041" at="34,28,35,18" concept="10" />
       <node id="772403858154380626" at="36,5,37,96" concept="9" />
-      <node id="772403858154342933" at="37,96,38,147" concept="9" />
+      <node id="772403858154342933" at="37,96,38,140" concept="9" />
       <node id="772403858154342947" at="39,28,40,40" concept="9" />
       <node id="772403858154342951" at="40,40,41,37" concept="9" />
       <node id="772403858154342957" at="42,41,43,68" concept="9" />
@@ -277,7 +277,7 @@
       <node id="4491627601716787331" at="107,43,108,43" concept="4" />
       <node id="4491627601716787336" at="110,5,111,18" concept="10" />
       <node id="4491627601716787351" at="115,44,116,18" concept="10" />
-      <node id="4491627601716787353" at="117,5,118,80" concept="9" />
+      <node id="4491627601716787353" at="117,5,118,104" concept="9" />
       <node id="4491627601716787367" at="119,23,120,18" concept="10" />
       <node id="4491627601716787369" at="121,5,122,31" concept="10" />
       <node id="4491627601716787028" at="25,0,27,0" concept="3" trace="EditorComponentUtil#()V" />
@@ -289,7 +289,7 @@
       <node id="4491627601716787295" at="99,102,102,7" concept="7" />
       <node id="4491627601716787326" at="106,166,109,7" concept="7" />
       <node id="4491627601716787344" at="114,99,117,5" concept="7" />
-      <node id="4491627601716787362" at="118,80,121,5" concept="7" />
+      <node id="4491627601716787362" at="118,104,121,5" concept="7" />
       <node id="772403858154343015" at="57,79,61,9" concept="7" />
       <node id="4491627601716787182" at="72,110,77,5" concept="7" />
       <node id="4491627601716787197" at="77,5,82,5" concept="6" />
@@ -304,7 +304,7 @@
       <node id="772403858154342955" at="41,37,54,7" concept="17" />
       <node id="4491627601716787159" at="69,0,85,0" concept="13" trace="findComponentForNode#(Lorg/jetbrains/mps/openapi/model/SNode;Lcom/intellij/openapi/fileEditor/FileEditorManager;)Ljava/util/List;" />
       <node id="4491627601716787262" at="93,0,113,0" concept="13" trace="getAllEditorComponents#(Lcom/intellij/openapi/fileEditor/FileEditorManager;Z)Ljava/util/List;" />
-      <node id="772403858154342938" at="38,147,64,5" concept="7" />
+      <node id="772403858154342938" at="38,140,64,5" concept="7" />
       <node id="772403858154340402" at="33,0,68,0" concept="13" trace="scrollToNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorComponent;)Ljetbrains/mps/openapi/editor/EditorComponent;" />
       <scope id="4491627601716787031" at="25,32,25,32" />
       <scope id="772403858154371043" at="34,28,35,18" />

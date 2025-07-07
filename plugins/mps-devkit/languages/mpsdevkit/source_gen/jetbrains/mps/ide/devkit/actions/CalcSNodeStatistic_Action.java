@@ -9,6 +9,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
@@ -17,7 +18,6 @@ import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -49,6 +49,9 @@ public class CalcSNodeStatistic_Action extends BaseAction {
         return false;
       }
     }
+    {
+      SModule p = event.getData(MPSCommonDataKeys.MODULE);
+    }
     return true;
   }
   @Override
@@ -62,7 +65,13 @@ public class CalcSNodeStatistic_Action extends BaseAction {
       public void run(@NotNull ProgressIndicator indicator) {
         final ProgressMonitorAdapter progress = new ProgressMonitorAdapter(indicator);
         event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
-          Iterable<SModule> modules = event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope().getModules();
+          final boolean individualModule = event.getData(MPSCommonDataKeys.MODULE) != null;
+          Iterable<SModule> modules;
+          if (individualModule) {
+            modules = Sequence.<SModule>singleton(event.getData(MPSCommonDataKeys.MODULE));
+          } else {
+            modules = event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope().getModules();
+          }
           if (LOG.isWarningLevel()) {
             LOG.warning("Modules: " + Sequence.fromIterable(modules).count());
           }
@@ -74,6 +83,9 @@ public class CalcSNodeStatistic_Action extends BaseAction {
           progress.start("Traversing models...", Sequence.fromIterable(models).count());
           for (SModel m : Sequence.fromIterable(models)) {
             progress.step(m.getName().getValue());
+            int nodeCount = 0;
+            int propsInModel = 0;
+            int refsInModel = 0;
             for (SNode node : Sequence.fromIterable(SNodeUtil.getDescendants(m))) {
               int propertiesCount = IterableUtil.asCollection(node.getProperties()).size();
               MapSequence.fromMap(propertiesStatistic).put(propertiesCount, (MapSequence.fromMap(propertiesStatistic).containsKey(propertiesCount) ? MapSequence.fromMap(propertiesStatistic).get(propertiesCount) + 1 : 1));
@@ -87,8 +99,20 @@ public class CalcSNodeStatistic_Action extends BaseAction {
               if (propertiesCount + refsCount + childrenCount == 0) {
                 zeros.value++;
               }
+              nodeCount++;
+              propsInModel += propertiesCount;
+              refsInModel += refsCount;
+
+            }
+            if (individualModule) {
+              if (LOG.isWarningLevel()) {
+                LOG.warning(String.format("Model %s has %d nodes, %d properties and %d associations", m.getName(), nodeCount, propsInModel, refsInModel));
+              }
             }
             progress.advance(1);
+            if (progress.isCanceled()) {
+              return;
+            }
           }
           progress.done();
         });
@@ -105,7 +129,7 @@ public class CalcSNodeStatistic_Action extends BaseAction {
       LOG.warning("Children size statistic: " + childrenStatistic);
     }
     if (LOG.isWarningLevel()) {
-      LOG.warning("Zeros statistic: " + zeros.value);
+      LOG.warning("Leaf nodes w/o properties or associations: " + zeros.value);
     }
   }
 }

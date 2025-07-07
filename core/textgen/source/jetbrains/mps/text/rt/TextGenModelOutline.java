@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -94,6 +94,8 @@ public interface TextGenModelOutline {
    * @param input @see {@link #registerTextUnit(String, SNode...)} above
    */
   void registerTextUnit(@NotNull String unitName, @Nullable String unitPath, @Nullable Charset encoding, SNode... input);
+
+  void registerBinaryUnit(@NotNull String unitName, @Nullable String unitPath, SNode... input);
 
 //  XXX perhaps, generation of a binary file shall start this way
 //  void registerBinaryUnit(@NotNull String unitName, SNode... input);

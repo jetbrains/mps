@@ -321,7 +321,6 @@
         <property id="1177959072138" name="keepSourceRoot" index="13Pg2o" />
         <reference id="1167514355421" name="template" index="3lhOvi" />
       </concept>
-      <concept id="1131073187192" name="jetbrains.mps.lang.generator.structure.MapSrcNodeMacro" flags="ln" index="1pdMLZ" />
       <concept id="1195499912406" name="jetbrains.mps.lang.generator.structure.MappingScript" flags="lg" index="1pmfR0">
         <property id="1195595592106" name="scriptKind" index="1v3f2W" />
         <property id="1195595611951" name="modifiesModel" index="1v3jST" />
@@ -1738,7 +1737,7 @@
     </node>
     <node concept="2tJIrI" id="3VMyTr1Y9rg" role="jymVt" />
     <node concept="3clFbW" id="zWYlCGIiYD" role="jymVt">
-      <node concept="1pdMLZ" id="zWYlCGKtK6" role="lGtFl">
+      <node concept="2ZBi8u" id="6MbZi$kNTOg" role="lGtFl">
         <ref role="2rW$FS" node="zWYlCGIwHb" resolve="map_IntentionFactoryConstructor" />
       </node>
       <node concept="3cqZAl" id="zWYlCGIiYE" role="3clF45" />
@@ -2059,7 +2058,7 @@
         </node>
       </node>
       <node concept="3clFbW" id="zWYlCGLS8v" role="jymVt">
-        <node concept="1pdMLZ" id="1VQ0jyzss8j" role="lGtFl">
+        <node concept="2ZBi8u" id="6MbZi$kNUuJ" role="lGtFl">
           <ref role="2rW$FS" node="3jb7BNzCVpn" resolve="map_IntentionConstructor" />
         </node>
         <node concept="37vLTG" id="zWYlCGM1Bt" role="3clF46">

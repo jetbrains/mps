@@ -27,7 +27,7 @@ public abstract class AbstractNodeCheckerInEditor extends IChecker.AbstractNodeC
       return SNodeOperations.isInstanceOf(root, CONCEPTS.ISkipConstraintsChecking$8j);
     }
   };
-  protected abstract void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository);
+  public abstract void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository);
 
   @Override
   public final void check(SNode toCheck, SRepository repository, final Consumer<? super NodeReportItem> errorCollector, ProgressMonitor monitor) {

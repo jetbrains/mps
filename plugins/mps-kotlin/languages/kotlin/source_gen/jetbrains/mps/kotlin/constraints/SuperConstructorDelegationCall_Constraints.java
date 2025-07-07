@@ -14,21 +14,13 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.kotlin.behavior.IInheritExplicitly__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.kotlin.behavior.ISuperTypeSpecifier__BehaviorDescriptor;
-import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
-import jetbrains.mps.kotlin.behavior.IClassType__BehaviorDescriptor;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
-import jetbrains.mps.scope.EmptyScope;
+import jetbrains.mps.kotlin.behavior.AbstractConstructorDelegationCall__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class SuperConstructorDelegationCall_Constraints extends BaseConstraintsDescriptor {
   public SuperConstructorDelegationCall_Constraints() {
@@ -48,26 +40,9 @@ public class SuperConstructorDelegationCall_Constraints extends BaseConstraintsD
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode parent = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.IInheritExplicitly$UG, true, false);
-
-            // No primary, need super() scope
-            if (!((boolean) IInheritExplicitly__BehaviorDescriptor.hasPrimaryConstructor_id1$jFvlEi5P5.invoke(parent))) {
-              SNode classSpecifier = ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.superclasses$6CkZ)).findFirst((it) -> (boolean) ISuperTypeSpecifier__BehaviorDescriptor.isClass_id1$jFvlEiPXX.invoke(it));
-
-              {
-                final SNode classType = ISuperTypeSpecifier__BehaviorDescriptor.getInheritedType_id5q426iHvzD9.invoke(classSpecifier);
-                if (SNodeOperations.isInstanceOf(classType, CONCEPTS.IClassType$8T)) {
-                  // For now, only IClassLike are handled there
-                  Iterable<SNode> constructors = IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.as(IClassType__BehaviorDescriptor.getClassifier_id7an2tsIdpk7.invoke(classType), CONCEPTS.IClassLike$go));
-                  if (constructors != null) {
-                    return new NamedElementsScope(constructors);
-                  }
-                }
-              }
-            }
-
-            // Otherwise, any secondary should forward to primary
-            return new EmptyScope();
+            // Could be the following, but the added complexity does not seem necessary here (needed for automatic resolution though)
+            //  KotlinScopes.forKotlinFunction(concept<IFunctionCall>,node<IFunctionCall>,node<>,aggregation,concept<INamedConcept>):Scope
+            return new NamedElementsScope(AbstractConstructorDelegationCall__BehaviorDescriptor.getAvailableConstructors_id4DC0lWpsin.invoke(SNodeOperations.asSConcept(CONCEPTS.SuperConstructorDelegationCall$ob), _context.getContextNode()));
           }
         };
       }
@@ -79,13 +54,11 @@ public class SuperConstructorDelegationCall_Constraints extends BaseConstraintsD
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SuperConstructorDelegationCall$ob = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af592L, "jetbrains.mps.kotlin.structure.SuperConstructorDelegationCall");
-    /*package*/ static final SInterfaceConcept IInheritExplicitly$UG = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, "jetbrains.mps.kotlin.structure.IInheritExplicitly");
-    /*package*/ static final SInterfaceConcept IClassType$8T = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x729709d72e3594f9L, "jetbrains.mps.kotlin.structure.IClassType");
-    /*package*/ static final SInterfaceConcept IClassLike$go = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L, "jetbrains.mps.kotlin.structure.IClassLike");
+    /*package*/ static final SConcept AbstractConstructorDelegationCall$RC = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56a195b73L, "jetbrains.mps.kotlin.structure.AbstractConstructorDelegationCall");
+    /*package*/ static final SInterfaceConcept IConstructorDeclaration$rR = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7069a625f2b0238aL, "jetbrains.mps.kotlin.structure.IConstructorDeclaration");
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink constructor$vAAY = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56a195b73L, 0x1913adf56a196517L, "constructor");
-    /*package*/ static final SContainmentLink superclasses$6CkZ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, 0x1ba36e493d40fea5L, "superclasses");
   }
 }

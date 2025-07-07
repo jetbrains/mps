@@ -207,7 +207,7 @@ public class JUnit5TestExecutionListener implements TestExecutionListener {
       myPrintStream.println("##teamcity[testSuiteFinished " + idAndName(testIdentifier, displayName) + "]");
     }
   }
-  private void flushSystemStreams() {
+  protected void flushSystemStreams() {
     System.out.flush();
     System.err.flush();
   }

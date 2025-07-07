@@ -45,7 +45,7 @@ public class TestSubstituteParentWithConstraints_Constraints extends BaseConstra
         boolean result = staticCanBeAnAncestor(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getParentNode(), context.getLink());
 
         if (!(result) && checkingNodeContext != null) {
-          checkingNodeContext.setBreakingNode(canBeRootBreakingPoint);
+          checkingNodeContext.setBreakingNode(canBeAncestorBreakingPoint);
         }
 
         return result;
@@ -65,7 +65,7 @@ public class TestSubstituteParentWithConstraints_Constraints extends BaseConstra
     return !(Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraints3$OL)) && !(Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraintsWrapper3$es)) && !(Objects.equals(childConcept, CONCEPTS.TestSubstituteGrandChildWithConstraintsProhibited$wj));
   }
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1227128029536583138");
-  private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1227128029536583118");
+  private static final SNodePointer canBeAncestorBreakingPoint = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1227128029536583118");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TestSubstituteParentWithConstraints$6i = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteParentWithConstraints");

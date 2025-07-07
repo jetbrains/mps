@@ -12,7 +12,7 @@
       <unit at="11,0,39,0" name="jetbrains.mps.baseLanguage.blTypes.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.baseLanguage.blTypes.structure.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.baseLanguage.blTypes.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,30,0" name="jetbrains.mps.baseLanguage.blTypes.structure.LanguageConceptSwitch" />
@@ -26,8 +26,8 @@
       <node id="1159268590033" at="12,0,13,0" concept="1" trace="props_PrimitiveTypeDescriptor" />
       <node id="1159268590033" at="21,52,22,76" concept="3" />
       <node id="1159268590033" at="22,76,23,35" concept="0" />
-      <node id="1159268590033" at="23,35,24,55" concept="0" />
-      <node id="1159268590033" at="24,55,25,55" concept="0" />
+      <node id="1159268590033" at="23,35,24,45" concept="0" />
+      <node id="1159268590033" at="24,45,25,55" concept="0" />
       <node id="1159268590033" at="26,9,27,45" concept="4" />
       <node id="1159268590033" at="20,57,26,9" concept="2" />
       <scope id="1159268590033" at="21,52,25,55">

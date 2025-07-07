@@ -28,7 +28,9 @@ import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
+import javax.swing.JScrollPane;
 import com.intellij.ui.ScrollPaneFactory;
+import com.intellij.ui.IdeBorderFactory;
 import java.awt.Dimension;
 import com.intellij.openapi.util.DimensionService;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
@@ -107,11 +109,12 @@ public class ModelDifferenceViewer implements DataProvider {
 
     // create panels
     myPanel.setSplitterProportionKey(getClass().getName() + "ModelTreeSplitter");
-
     myPanel.setSecondComponent(myNoRootPanel);
     if (showTree) {
       myTree = new ModelDifferenceTree(project.getRepository());
-      myPanel.setFirstComponent(ScrollPaneFactory.createScrollPane(myTree));
+      JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(myTree);
+      scrollPane.setViewportBorder(IdeBorderFactory.createBorder());
+      myPanel.setFirstComponent(scrollPane);
 
       // actions connected to model tree
       myGoToNeighbourRootActions = new MyGoToNeighbourRootActions();

@@ -280,7 +280,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
     runUndoableCommandInEDTAndWait(() -> {
       SNode checkedNode = getEditorContext().getSelectedNode();
       SRepository repository = SNodeOperations.getModel(checkedNode).getRepository();
-      TestsErrorsChecker checker = new TestsErrorsChecker(myBefore);
+      TestsErrorsChecker checker = new TestsErrorsChecker(myBefore, myProject.getPlatform());
       Iterable<NodeReportItem> reports = checker.getErrors(checkedNode);
       QuickFixBase fixToRun = null;
       for (NodeReportItem report : Sequence.fromIterable(reports)) {

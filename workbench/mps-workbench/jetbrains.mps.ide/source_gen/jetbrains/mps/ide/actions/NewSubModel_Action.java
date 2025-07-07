@@ -9,13 +9,11 @@ import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
-import javax.swing.tree.TreeNode;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1420252515663895912", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NewSubModel_Action extends BaseAction {
@@ -32,7 +30,7 @@ public class NewSubModel_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    final SModel model = ((SModelTreeNode) event.getData(MPSCommonDataKeys.TREE_NODE)).getModel();
+    final SModel model = ((SModel) event.getData(MPSCommonDataKeys.VALUE));
     if (!(model.getModule() instanceof AbstractModule)) {
       return false;
     }
@@ -55,11 +53,11 @@ public class NewSubModel_Action extends BaseAction {
       }
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
+      Object p = event.getData(MPSCommonDataKeys.VALUE);
       if (p == null) {
         return false;
       }
-      if (p != null && !(p instanceof SModelTreeNode)) {
+      if (p != null && !(p instanceof SModel)) {
         return false;
       }
     }
@@ -72,7 +70,7 @@ public class NewSubModel_Action extends BaseAction {
   protected NewModelActionExecutor getExecutor(final AnActionEvent event) {
     // XXX I don't feel this protected method truly helps with what 6d50aeda claims it does - 
     //  e.g. not clear how does it access event parameters
-    final SModel model = ((SModelTreeNode) event.getData(MPSCommonDataKeys.TREE_NODE)).getModel();
+    final SModel model = ((SModel) event.getData(MPSCommonDataKeys.VALUE));
     return new NewModelActionExecutor(event.getData(MPSCommonDataKeys.MPS_PROJECT), model.getModule(), model);
   }
 }

@@ -14,7 +14,12 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
+import jetbrains.mps.kotlin.scopes.signed.NavigationHelper;
+import jetbrains.mps.kotlin.behavior.MemberReceiver;
+import jetbrains.mps.scope.CompositeScope;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -37,7 +42,30 @@ public class JavaMemberTarget_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).functions().membersReceiver().noExtensionMembers().buildScope(CONCEPTS.GenericDeclaration$bC);
+            final Wrappers._boolean isStandalone = new Wrappers._boolean(false);
+
+            Scope regularScope = KotlinScopes.scopeWithLegacyTypesystemFallback(_context.getContextNode(), CONCEPTS.GenericDeclaration$bC, () -> {
+              FullScopeContext context = new FullScopeContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
+              final KotlinScopes scope = KotlinScopes.create(context).functions().noExtensionMembers().forceInstanceInclusion();
+
+              // Same as receiverMember() but store whether it is standalone
+              isStandalone.value = NavigationHelper.withMemberReceiver(context, (operand) -> {
+                scope.receiver(MemberReceiver.of(operand));
+                return false;
+              }, () -> {
+                // Add constructors for standalone member navigation
+                scope.useHierarchy();
+                return true;
+              });
+
+              return scope.buildSigScope();
+            });
+
+            if (isStandalone.value) {
+              return new CompositeScope(regularScope, JavaConstructorHelper.getConstructorsScope(_context.getContextNode()), JavaConstructorHelper.getDefaultConstructorScope(_context.getContextNode()));
+            } else {
+              return regularScope;
+            }
           }
         };
       }

@@ -184,7 +184,7 @@ public final class PersistenceUtil {
     @NotNull
     @Override
     public InputStream openInputStream() throws IOException {
-      throw new UnsupportedOperationException("I am not able to read only to write " + this);
+      return getContentAsStream();
     }
 
     @NotNull

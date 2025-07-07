@@ -77,6 +77,9 @@ public class StubResolver {
     return result;
   }
   public void resolveInModel(SModel model) {
+    if (model.isReadOnly()) {
+      return;
+    }
     Map<SModelReference, SModelReference> models = MapSequence.fromMap(new HashMap<SModelReference, SModelReference>());
     List<SReference> toResolve = getReferencesToResolve(model, models);
     if (ListSequence.fromList(toResolve).isEmpty()) {

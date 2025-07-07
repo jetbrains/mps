@@ -38,6 +38,8 @@
       <root url="file://$PROJECT_DIR$/core/kernel/source" />
       <root url="file://$PROJECT_DIR$/workbench/mps-workbench/source" />
       <root url="file://$PROJECT_DIR$/core/make-runtime/source" />
+      <root url="file://$PROJECT_DIR$/workbench/mps-platform/source" />
+      <root url="file://$PROJECT_DIR$/workbench/mps-workbench/source" />
     </SOURCES>
   </library>
 </component>

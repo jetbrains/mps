@@ -408,7 +408,7 @@ public class ModelReader7Handler extends XMLSAXHandler<ModelLoadResult> {
       String[] child = (String[]) value;
       if (child[1] != null) {
         String pname = my_helperField.readName(child[0]);
-        result.setProperty(pname, child[1]);
+        new SNodeLegacy(result).setProperty(pname, child[1]);
       }
     }
     private void handleChild_286176397450364288(Object resultObject, Object value) throws SAXException {

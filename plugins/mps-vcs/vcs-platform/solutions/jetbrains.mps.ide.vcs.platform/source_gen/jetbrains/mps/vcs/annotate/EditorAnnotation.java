@@ -34,8 +34,8 @@ import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
@@ -66,8 +66,7 @@ import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.diff.DiffManager;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
-import jetbrains.mps.openapi.editor.Editor;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import java.io.IOException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -316,6 +315,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   }
 
   private void updateMessages(CellAnnotation cellAnnotation, Set<RevisionNodeChange> changes, final EditorCell cell, List<AnnotatedCellMessage> oldMessages, List<AnnotatedCellMessage> newMessages) {
+    final Wrappers._T<Set<RevisionNodeChange>> _changes = new Wrappers._T<Set<RevisionNodeChange>>(changes);
 
     if (CellTraversalUtil.getFoldedParent(cell) != null) {
       return;
@@ -331,28 +331,28 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       return;
     }
 
-    changes = SetSequence.fromSetWithValues(new HashSet<RevisionNodeChange>(), SetSequence.fromSet(changes).where((final RevisionNodeChange it) -> {
+    // XXX I wonder if whole method shall get wrapped with read action, rather than this piece only
+    _changes.value = getModelAccess().computeReadAction(() -> SetSequence.fromSetWithValues(new HashSet<RevisionNodeChange>(), SetSequence.fromSet(_changes.value).where((it) -> {
       if (SetSequence.fromSet(it.getNodeIds()).count() == 1) {
-        final Wrappers._T<SNode> node = new Wrappers._T<SNode>();
-        getModelAccess().runReadAction(() -> node.value = getModel().getNode(SetSequence.fromSet(it.getNodeIds()).first()));
-        if (SNodeOperations.isInstanceOf(node.value, CONCEPTS.BaseCommentAttribute$nv)) {
-          boolean commentedNode = cell.isBig() && !(Objects.equals(cell.getSNode(), node.value)) && !(Objects.equals(cell.getParent().getSNode(), node.value));
+        SNode node = getModel().getNode(SetSequence.fromSet(it.getNodeIds()).first());
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseCommentAttribute$nv)) {
+          boolean commentedNode = cell.isBig() && !(Objects.equals(cell.getSNode(), node)) && !(Objects.equals(cell.getParent().getSNode(), node));
           return !(commentedNode);
         }
       }
       return !(ListSequence.fromList(it.getMovedChildIds()).contains(cellNodeId));
-    }));
+    })));
 
-    if (SetSequence.fromSet(changes).isEmpty()) {
+    if (SetSequence.fromSet(_changes.value).isEmpty()) {
       return;
     }
 
     if (cell instanceof EditorCell_Collection) {
       for (EditorCell childCell : Sequence.fromIterable((EditorCell_Collection) cell)) {
-        updateMessages(cellAnnotation, changes, childCell, oldMessages, newMessages);
+        updateMessages(cellAnnotation, _changes.value, childCell, oldMessages, newMessages);
       }
     } else {
-      updateLeafMessage(cellAnnotation.getCommitsGraphNode(), changes, cell, oldMessages, newMessages);
+      updateLeafMessage(cellAnnotation.getCommitsGraphNode(), _changes.value, cell, oldMessages, newMessages);
     }
   }
 
@@ -474,8 +474,8 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
 
     EditorColorsScheme colorsScheme = EditorColorsManager.getInstance().getGlobalScheme();
     // The VCS_ANNOTATIONS_COLOR_1-5 colors in the Light scheme are way too close to each other, revert to the IntelliJ Light colors, if available
-    if (colorsScheme.getName().contains("user_Light")) {
-      EditorColorsScheme intellijScheme = EditorColorsManager.getInstance().getScheme("IntelliJ Light");
+    if (colorsScheme.getName().contains("Light")) {
+      EditorColorsScheme intellijScheme = EditorColorsManager.getInstance().getScheme("Default");
       if (intellijScheme != null) {
         colorsScheme = intellijScheme;
       }
@@ -620,7 +620,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       if (commitModel == null) {
         return;
       }
-      final SNode root = commitModel.getNode(getRootId());
+      SNode root = commitModel.getNode(getRootId());
       if (root == null) {
         return;
       }
@@ -628,20 +628,19 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       final String shortCommit = revision.getRevisionNumber().asString().substring(0, 8);
       getModelAccess().runWriteAction(() -> DiffModelUtil.renameModelAndRegister(commitModel, shortCommit, true));
 
-      getModelAccess().runReadInEDT(() -> {
-        Editor newEditor = NavigationSupport.getInstance().openNode(myMpsProject, root, true, false);
-        if (newEditor != null) {
-          EditorComponent newEditorComponent = (EditorComponent) newEditor.getCurrentEditorComponent();
-          if (newEditorComponent != null) {
-            // Revision editor is read-only and should not be highlighted. 
-            // Similarly, editors in the Diff dialog window are not highlighted.
-            newEditorComponent.getHighlighter().setPaused(true);
-            EditorAnnotation revisionEditorAnnotation = new EditorAnnotation(newEditorComponent, myFile, myVcs, myMpsProject, myRootAnnotation, myAllRevisions, revision);
-            AnnotationColumn annotationColumn = new AnnotationColumn(myMpsProject.getProject(), newEditorComponent.getLeftEditorHighlighter(), revisionEditorAnnotation, null);
-            revisionEditorAnnotation.updateAndRepaint();
-          }
+      new EditorNavigator(myMpsProject).shallFocus(true).onceEditorReady((n, newEditor) -> {
+        EditorComponent newEditorComponent = (EditorComponent) newEditor.getCurrentEditorComponent();
+        if (newEditorComponent != null) {
+          // Revision editor is read-only and should not be highlighted. 
+          // Similarly, editors in the Diff dialog window are not highlighted.
+          newEditorComponent.getHighlighter().setPaused(true);
+          // XXX I wonder if Highlighter is capable to detect read-only editors itself, instead of explicit setPaused() here?
+          EditorAnnotation revisionEditorAnnotation = new EditorAnnotation(newEditorComponent, myFile, myVcs, myMpsProject, myRootAnnotation, myAllRevisions, revision);
+          // FWIW, AnnotationColumn registers itself as a listener to EditorAnnotation and adds it to highlighter when appropriate
+          AnnotationColumn annotationColumn = new AnnotationColumn(myMpsProject.getProject(), newEditorComponent.getLeftEditorHighlighter(), revisionEditorAnnotation, null);
+          revisionEditorAnnotation.updateAndRepaint();
         }
-      });
+      }).open(SNodeOperations.getPointer(root));
     });
   }
 

@@ -84,12 +84,13 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
   private final MyPropertiesListener myPropertiesListener = new MyPropertiesListener();
   private final LanguageRegistryListener myLanguageDeployListener = new MyLangDeployListener();
   private boolean myListenersAdded = false;
+  private boolean myExecutorDiscarded = false;
 
   private final MigrationBlock myMigrationBlock = new MigrationBlock(this);
   private final AtomicReference<PostponedState> myPostponedState = new AtomicReference<PostponedState>();
 
   private final IMakeService myMake;
-  private final IMakeNotificationListener.Stub myMakeListener = new IMakeNotificationListener.Stub() {
+  private final IMakeNotificationListener myMakeListener = new IMakeNotificationListener() {
     private final MigrationBlock.BlockCause myCause = new MigrationBlock.BlockCause("make session is in progress");
 
     @Override
@@ -148,6 +149,9 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
   public void projectOpened() {
     // wait until project is fully loaded (if not yet)
     StartupManager.getInstance(myProject).runWhenProjectIsInitialized(() -> {
+      if (myExecutorDiscarded) {
+        return;
+      }
       addListeners();
       ApplicationManager.getApplication().executeOnPooledThread(() -> {
         if (myProject.isDisposed()) {
@@ -160,6 +164,10 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
   }
 
   public void projectClosed() {
+    // addListeners() in projectOpened(), above is postponed until project is fully open, while 
+    // our CL/Plugin logic could get this instance disposed before the project is at that state,
+    // let scheduled code know there's no more need in this executor instance.
+    myExecutorDiscarded = true;
     removeListeners();
   }
 
@@ -286,7 +294,7 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
               final Tuples._2<MigrationResult, MigrationError> result = runMigration(migrationSetup);
               if (result._0() == MigrationResult.POSTPONED) {
                 myPostponedState.set(newState);
-                myNotifications.showRequired();
+                myNotifications.showRequired(migrationSetup);
               } else if (result._0() == MigrationResult.FINISHED_WITH_ERRORS) {
                 ProgressManager.getInstance().run(new Task.Modal(myProject, "Collecting Errors", false) {
                   public void run(@NotNull final ProgressIndicator progressIndicator) {
@@ -297,7 +305,7 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
                   }
                 });
                 myPostponedState.set(newState);
-                myNotifications.showRequired();
+                myNotifications.showRequired(null);
                 cleanup();
               } else if (result._0() == MigrationResult.FINISHED) {
                 myPostponedState.set(null);
@@ -309,7 +317,7 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
               myNotifications.showNotRequired();
             }
           } else {
-            if (myNotifications.showRequired()) {
+            if (myNotifications.showRequired(null)) {
               myPostponedState.accumulateAndGet(newState, new BinaryOperator<PostponedState>() {
                 @Override
                 public PostponedState apply(PostponedState current, PostponedState additional) {
@@ -376,12 +384,7 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
   private Tuples._2<MigrationResult, MigrationError> runMigration(MigrationSetup migrationSetup) {
     myMigrationRunning = true;
     try {
-      // FIXME logic copied from PostponedState. Don't see a reason though to pass this explicitly
-      //      into MigrationSessionImpl as long as we pass MigrationSetup there as well.
-      final boolean updateVersions = migrationSetup.importVersionsUpdateRequired();
-      // aka PostponedState.hasMigrations()
-      final boolean migrate = migrationSetup.isMigrationRequired();
-      MigrationSessionImpl session = new MigrationSessionImpl(myMpsProject, migrationSetup, true, updateVersions, migrate);
+      MigrationSessionImpl session = new MigrationSessionImpl(myMpsProject, migrationSetup);
       final MigrationWizard wizard = new MigrationWizard(myProject, session);
       boolean finished = wizard.showAndGet();
       MigrationError errors = session.getError();

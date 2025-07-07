@@ -41,8 +41,7 @@ public final class BuildVarRefStringPart__BehaviorDescriptor extends BaseBHDescr
     if (helper != null) {
       macroName = helper.getName(SLinkOperations.getTarget(__thisNode__, LINKS.macro$zsHz));
       if (macroName == null) {
-        helper.report("macro " + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.macro$zsHz), PROPS.name$MnvL) + " is not available in " + helper.getProjectName() + ", make it exportable", __thisNode__);
-        macroName = "???";
+        helper.report(String.format("macro %s is not available in %s, make it exportable", SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.macro$zsHz), PROPS.name$MnvL), helper.getProjectName()), __thisNode__);
       }
     }
     return "${" + macroName + "}";

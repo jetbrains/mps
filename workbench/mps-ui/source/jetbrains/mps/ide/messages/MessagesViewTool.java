@@ -168,6 +168,18 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
    */
   @NotNull
   public IMessageList getMessageList(@NotNull final String name, MessageListOptions... options) {
+    return this.getMessageList(name, null, options);
+  }
+  /**
+   * Creates/retrieves existing named collection of messages, with respect to supplied options.
+   *
+   * @param name    name of the list. It's up to caller to provide reasonable name in case of {@link MessageListOptions#AlwaysNew} to tell one list from another.
+   * @param nonActivationHandler A handler to notify the user if the tool window is not activated as a result of adding new messages
+   * @param options if no options specified, {@link MessageListOptions#ActivateOnMessage} and {@link MessageListOptions#ReuseExisting} is assumed.
+   * @return UI-backed collection of messages
+   */
+  @NotNull
+  public IMessageList getMessageList(@NotNull final String name, @Nullable final Runnable nonActivationHandler, MessageListOptions... options) {
     List<MessageListOptions> optionsList = Arrays.asList(options);
     if (!optionsList.isEmpty()) {
       if (!optionsList.contains(MessageListOptions.AlwaysNew) && !optionsList.contains(MessageListOptions.ReuseExisting)) {
@@ -185,6 +197,7 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
     boolean activateOnMessage = !optionsList.contains(MessageListOptions.DeafOnMessage) ||
                                 optionsList.contains(MessageListOptions.ActivateOnMessage);
     list.setActivateOnMessage(activateOnMessage);
+    list.setNonActivationHandler(nonActivationHandler);
     return list;
   }
 

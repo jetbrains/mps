@@ -477,16 +477,16 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
     ProjectBackup projectBackup = new ProjectBackup(myProject);
     Reference<Language> langRef = new Reference<>();
     invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(moduleName, getNewDirInProject(moduleName))));
+    saveProjectInTest();
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
-      saveProjectInTest();
       projectBackup.doBackup();
       deleteModule(lang, deleteFiles);
       Assert.assertFalse(deleteFiles && lang.getDescriptorFile().exists());
       Assert.assertTrue(myProject.getProjectModules().isEmpty());
     });
+    saveProjectInTest();
     invokeInCommand(() -> {
-      saveProjectInTest();
       projectBackup.restoreFromBackup();
     });
     refreshProjectRecursively();

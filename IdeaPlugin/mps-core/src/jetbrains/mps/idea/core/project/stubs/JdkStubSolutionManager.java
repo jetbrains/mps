@@ -115,7 +115,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
       // StubSolutionIdea casts to SdkModificator to access getRoots(CLASSES)
       return;
     }
-    if (sdk instanceof MockSdk) {
+    if (sdk.getHomePath().contains("mockJDK")) {
       // in 19.3 there used to be MockJdkWrapper implements Sdk, but not SdkModificator, that filtered out MockSdk (wrapped by MockJdkWrapper) in tests.
       // with MockJdkWrapper gone (https://github.com/JetBrains/intellij-community/commit/62c2c5461a0714c393d720621767d7fcb3eebbe9), I use this explicit check
       // to get behavior similar to 19.3; although I don't see any reason why not to use true JDK here instead of MockSdk (just not aware how to do it right)

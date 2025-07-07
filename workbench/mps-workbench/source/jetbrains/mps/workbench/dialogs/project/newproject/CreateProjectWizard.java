@@ -380,7 +380,16 @@ public final class CreateProjectWizard extends DialogWrapper {
     if (myProjectName.getText().isEmpty()) {
       getOKAction().setEnabled(false);
       setErrorText("Project name cannot be empty");
-
+      return;
+    }
+    if (myProjectPath.getPath().isEmpty()) {
+      getOKAction().setEnabled(false);
+      setErrorText("Project location must not be empty");
+      return;
+    }
+    if (!new File(myProjectPath.getPath()).isAbsolute()) {
+      getOKAction().setEnabled(false);
+      setErrorText("Project location must be an absolute path");
       return;
     }
 
@@ -403,7 +412,7 @@ public final class CreateProjectWizard extends DialogWrapper {
     // Extension point for project template to check settings on template choose
     if (myCurrentTemplateItem != null) {
       final String errorText = myCurrentTemplateItem.myTemplate.checkSettings();
-      getOKAction().setEnabled(errorText == null);
+      getOKAction().setEnabled(errorText == null || errorText.trim().length()==0);
       setErrorText(errorText);
 
       return;

@@ -39,7 +39,7 @@ public class EmptyProjectTemplate implements OtherProjectTemplate {
   @Nullable
   @Override
   public String getDescription() {
-    return "Empty <a href=\"" + DocumentationHelper.getHelpCenterBase() + "MPS+project+structure#MPSprojectstructure-projects\">MPS project</a> without languages and solutions.";
+    return "Empty <a href=\"" + DocumentationHelper.getHelpCenterBase() + "mps-project-structure.html#project\">MPS project</a> without languages and solutions.";
   }
 
   @Nullable

@@ -11,10 +11,10 @@ import java.util.Collections;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import java.util.Arrays;
-import jetbrains.mps.internal.collections.runtime.ArrayUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Iterator;
 import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ArrayUtils;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
@@ -281,7 +281,7 @@ __switch__:
   @Test
   public void test_toOperations() throws Exception {
     Iterable<Integer> input = this.input5();
-    Assert.assertTrue(Arrays.equals(new int[]{1, 2, 3, 4, 5}, ArrayUtils.toIntArray(ListSequence.fromList(Sequence.fromIterable(input).toList()))));
+    Assert.assertTrue(Arrays.equals(new Integer[]{1, 2, 3, 4, 5}, ListSequence.fromList(Sequence.fromIterable(input).toList()).toGenericArray(Integer.class)));
     this.assertIterableEquals(this.expect5(), Sequence.fromIterable(input).toList());
     Integer i = 1;
     for (Iterator<Integer> it = input.iterator(); it.hasNext(); i++) {
@@ -501,6 +501,7 @@ __switch__:
         };
       };
     });
+    // Note: error is suppressed instead of adding support for raw sequence
     Iterable is = si;
     this.assertIterableEquals(this.input5(), is);
   }

@@ -14,7 +14,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.openapi.vcs.FileStatusManager;
-import jetbrains.mps.util.ComputeRunnable;
+import java.util.function.Supplier;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
@@ -78,7 +78,7 @@ public class NodeFileStatusMapping implements Disposable {
   }
 
   private boolean calcStatus(@NotNull final SNodeReference root) {
-    ComputeRunnable<FileStatus> cr = new ComputeRunnable<FileStatus>(() -> {
+    Supplier<FileStatus> cr = () -> {
       SModel m = root.getModelReference().resolve(myProject.getRepository());
       if (m instanceof EditableSModel && m.getSource() instanceof FileSystemBasedDataSource && !(m.isReadOnly())) {
         EditableSModel model = (EditableSModel) m;
@@ -92,7 +92,7 @@ public class NodeFileStatusMapping implements Disposable {
         if (diff.getChangeSet() == null) {
           return FileStatus.NOT_CHANGED;
         }
-        List<ModelChange> modelChanges = check_onkh7z_a0f0b0a0a0a0r(diff.getChangeSet());
+        List<ModelChange> modelChanges = check_onkh7z_a0f0b0a0a0r(diff.getChangeSet());
         List<ModelChange> rootChanges = ListSequence.fromList(modelChanges).where((ch) -> root.getNodeId().equals(ch.getRootId())).distinct().toList();
         if (ListSequence.fromList(rootChanges).isNotEmpty()) {
           if (ListSequence.fromList(rootChanges).any((it) -> it instanceof AddRootChange)) {
@@ -106,9 +106,8 @@ public class NodeFileStatusMapping implements Disposable {
         }
       }
       return FileStatus.NOT_CHANGED;
-    });
-    myProject.getModelAccess().runReadAction(cr);
-    FileStatus status = cr.getResult();
+    };
+    FileStatus status = myProject.getModelAccess().computeReadAction(cr);
     return myFileStatusMap.put(root, status) != status;
   }
 
@@ -175,7 +174,7 @@ public class NodeFileStatusMapping implements Disposable {
       addAffectedRoot(change);
     }
   }
-  private static List<ModelChange> check_onkh7z_a0f0b0a0a0a0r(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_onkh7z_a0f0b0a0a0r(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }

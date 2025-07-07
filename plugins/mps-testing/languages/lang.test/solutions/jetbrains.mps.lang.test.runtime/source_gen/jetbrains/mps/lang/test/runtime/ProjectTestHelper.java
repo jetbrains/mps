@@ -80,7 +80,8 @@ public class ProjectTestHelper {
    */
   public void setEnvironment(Environment environment) throws Exception {
     this.myEnvironment = environment;
-    myParametersCache.initializeOnce(this, myEnvironment);
+    // FIXME specify correct ScriptData instance
+    myParametersCache.initializeOnce(this, myEnvironment, null);
   }
 
   public void dispose() {

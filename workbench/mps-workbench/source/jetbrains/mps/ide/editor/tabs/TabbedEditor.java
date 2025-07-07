@@ -238,7 +238,7 @@ public class TabbedEditor extends BaseNodeEditor {
 
     if (newState != null) {
       editNode(nodeRef, null);
-      super.loadState(newState);
+      super.loadStateImpl(newState, false);
     } else {
       SModule module = md.getModule();
       assert module != null : md.getReference() + "; node is disposed = " + !org.jetbrains.mps.openapi.model.SNodeUtil.isAccessible(node,
@@ -338,18 +338,24 @@ public class TabbedEditor extends BaseNodeEditor {
   }
 
   @Override
-  public void loadState(@NotNull final EditorState newState) {
-    myProject.getModelAccess().runReadAction(() -> loadStateImpl(newState));
+  public void loadState(@NotNull EditorState state) {
+    loadStateImpl(state, false);
   }
 
-  private void loadStateImpl(@NotNull EditorState newState) {
+  @Override
+  public void loadState(@NotNull final EditorState newState, boolean isUndo) {
+    myProject.getModelAccess().runReadAction(() -> loadStateImpl(newState, isUndo));
+  }
+
+  @Override
+  protected void loadStateImpl(@NotNull EditorState newState, boolean isUndo) {
     if (newState instanceof TabbedEditorState) {
       state = ((TabbedEditorState) newState).copy();
       SNodeReference nodePointer = state.getNode();
       SNode node = nodePointer == null ? null : nodePointer.resolve(myProject.getRepository());
       if (node != null) {
         showNode(node, false);
-        super.loadState(state.loadState(nodePointer));
+        super.loadStateImpl(state.loadState(nodePointer), isUndo);
       }
     } else {
       //regular editor was shown for that node last time

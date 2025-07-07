@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,6 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.project.ProjectOperationContext;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.performance.IPerformanceTracer;
 import jetbrains.mps.util.performance.PerformanceTracer;
 import org.jetbrains.annotations.NotNull;
@@ -53,6 +52,7 @@ import javax.swing.Icon;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Author: Sergey Dmitriev
@@ -217,7 +217,7 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
   @Nullable
   private InspectorTool inspectorTool() {
     Project project = ProjectHelper.getProject(myRepository);
-    return project != null ? project.getComponent(InspectorTool.class) : null;
+    return project != null ? InspectorTool.getInstance(project) : null;
   }
 
   @Override
@@ -244,7 +244,7 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
     ThreadUtils.runInUIThreadNoWait(() -> IdeFocusManager.getGlobalInstance().doWhenFocusSettlesDown(() -> {
       final InspectorTool inspector = inspectorTool();
       if (inspector != null) {
-        inspector.openToolLater(true);
+        inspector.activate();
       }
     }));
   }
@@ -371,13 +371,13 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
   public Clipboard getClipboard() {
     return new Clipboard() {
       @Override
-      public void put(SNode node, String text) {
-        put(List.of(node), text);
+      public void put(@NotNull Iterable<SNode> nodes, @NotNull String text, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes) {
+        CopyPasteUtil.putToClipboard(nodes, nodesAndAttributes, text, false);
       }
 
       @Override
-      public void put(Iterable<SNode> nodes, String text) {
-        CopyPasteUtil.copyNodesAndTextToClipboard(IterableUtil.asList(nodes), null, text);
+      public void putAsFresh(@NotNull Iterable<SNode> nodes, @NotNull String text, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes) {
+        CopyPasteUtil.putToClipboard(nodes, nodesAndAttributes, text, true);
       }
     };
   }

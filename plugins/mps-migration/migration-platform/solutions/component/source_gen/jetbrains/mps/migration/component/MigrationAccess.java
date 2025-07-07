@@ -59,9 +59,9 @@ public class MigrationAccess implements CoreComponent {
         myProjectListener = new PL();
         myProjectManager.addProjectListener(myProjectListener);
       }
-    }
-    if (rv instanceof MigrationTrigger) {
-      ((MigrationTrigger) rv).projectOpened();
+      if (rv instanceof MigrationTrigger) {
+        ((MigrationTrigger) rv).projectOpened();
+      }
     }
     return rv;
   }

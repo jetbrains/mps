@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.impl.IoFileSystem;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.vfs.util.PathFormatChecker;
@@ -66,7 +65,7 @@ public class JarEntryFile implements IFile {
   @NotNull
   @Override
   public FileSystem getFileSystem() {
-    return IoFileSystem.INSTANCE;
+    return myFileSystem.getUmbrellaFileSystem();
   }
 
   @NotNull
@@ -113,6 +112,12 @@ public class JarEntryFile implements IFile {
   @Override
   public boolean isZipArchive() {
     return false;
+  }
+
+  @Override
+  @NotNull
+  public IFile stepIntoArchive() {
+    return this;
   }
 
   @Override

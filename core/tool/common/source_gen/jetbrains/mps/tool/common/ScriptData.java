@@ -147,7 +147,6 @@ public class ScriptData {
       // I know I'm inside a loop, but I don't expect more that 1 <repo> tag
       setRepo(repo);
     }
-
     for (Element e : root.getChildren(ELEM_MACRO)) {
       addMacro(e.getAttributeValue(NAME), e.getAttributeValue(VALUE));
     }

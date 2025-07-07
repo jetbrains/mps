@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,16 +75,6 @@ public abstract class RelationDescriptor implements Comparable<RelationDescripto
   }
 
   /**
-   * @deprecated use {@link #createAspect(CreateAspectContext)} instead.
-   *             Generally, it's MPS that invokes the method, and clients that provide implementation.
-   *             Can remove in a release next to the one where templates have been fixed
-   */
-  @Deprecated(since = "2022.3", forRemoval = true)
-  public SNode createAspect(@Nullable SNode baseNode, SConcept concept){
-    throw new UnsupportedOperationException();
-  }
-
-  /**
    * Quite an odd duplication of {@link jetbrains.mps.smodel.language.LanguageAspectDescriptor#create(jetbrains.mps.smodel.language.CreateAspectContext)} but
    * needs a thorough refactoring to get aligned. Seems that this class is a precursor for LAD and therefore bears a lot of similar
    * functionality.
@@ -118,10 +108,7 @@ public abstract class RelationDescriptor implements Comparable<RelationDescripto
   protected SNode doCreateAspect(@NotNull CreateAspectContext _context) {
     // FWIW, would be great to change return value to avoid SNode coming out of command boundary, but it's a change I can't make
     // compatible with existing CreateBlock statements. Therefore, CreateAspectContext#aspectNodeCreated() callback is here.
-    //
-    // remove body once deprecated method gone (replace with exception?).
-    // use of _context.getBaseNode() is unfortunate (not necessarily under read now), but it's transitional code eventually to throw away.
-    return createAspect(_context.getBaseNode(), _context.getAspectConcept());
+    throw new UnsupportedOperationException();
   }
 
   @Nullable

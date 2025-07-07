@@ -7,7 +7,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="6" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="-1" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -45,8 +45,8 @@
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
-      <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
-        <child id="6976585500156684809" name="iconExpression" index="3xaMm5" />
+      <concept id="7927811850890310904" name="jetbrains.mps.lang.resources.structure.ConstantFieldIcon" flags="ng" index="1GtWCo">
+        <child id="7927811850890311914" name="field" index="1GtWoa" />
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -143,6 +143,10 @@
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
+      </concept>
+      <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
+        <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
+        <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
@@ -325,8 +329,8 @@
     <property role="3GE5qa" value="tool" />
     <property role="2uzpH1" value="Evaluate Expression" />
     <property role="1teQrl" value="true" />
-    <node concept="1QGGSu" id="6XsdSphFHI2" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphFK9T" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAe" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphFK9T" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Debugger" resolve="AllIcons.Debugger" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Debugger.EvaluateExpression" resolve="EvaluateExpression" />
       </node>
@@ -642,8 +646,8 @@
       <ref role="1DUlNI" to="qkt:~CommonDataKeys.PROJECT" resolve="PROJECT" />
       <node concept="1oajcY" id="7HZe2EwZDkm" role="1oa70y" />
     </node>
-    <node concept="1QGGSu" id="6XsdSphFVsn" role="3Uehp1">
-      <node concept="10M0yZ" id="5wRYDvyuP4H" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAf" role="3Uehp1">
+      <node concept="10M0yZ" id="5wRYDvyuP4H" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$ToolbarDecorator.Export" resolve="Export" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$ToolbarDecorator" resolve="AllIcons.ToolbarDecorator" />
       </node>
@@ -1307,8 +1311,8 @@
     <property role="2uzpH1" value="Pause" />
     <property role="1teQrl" value="true" />
     <property role="1rBW0U" value="true" />
-    <node concept="1QGGSu" id="6XsdSphGd5l" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphGdlv" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAg" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphGdlv" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Pause" resolve="Pause" />
       </node>
@@ -1385,8 +1389,8 @@
     <property role="2uzpH1" value="Resume" />
     <property role="1teQrl" value="true" />
     <property role="1rBW0U" value="true" />
-    <node concept="1QGGSu" id="6XsdSphGedS" role="3Uehp1">
-      <node concept="10M0yZ" id="5wRYDvyuLdV" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAh" role="3Uehp1">
+      <node concept="10M0yZ" id="5wRYDvyuLdV" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Resume" resolve="Resume" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
       </node>
@@ -1461,8 +1465,8 @@
     <property role="2uzpH1" value="Step Into" />
     <property role="1teQrl" value="true" />
     <property role="1rBW0U" value="true" />
-    <node concept="1QGGSu" id="6XsdSphGg91" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphGhE7" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAi" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphGhE7" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.TraceInto" resolve="TraceInto" />
       </node>
@@ -1537,8 +1541,8 @@
     <property role="2uzpH1" value="Step Out" />
     <property role="1teQrl" value="true" />
     <property role="1rBW0U" value="true" />
-    <node concept="1QGGSu" id="6XsdSphGijq" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphGizo" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAj" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphGizo" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.StepOut" resolve="StepOut" />
       </node>
@@ -1614,8 +1618,8 @@
     <property role="2uzpH1" value="Step Over" />
     <property role="1teQrl" value="true" />
     <property role="1rBW0U" value="true" />
-    <node concept="1QGGSu" id="6XsdSphGjcl" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphGjsk" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAk" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphGjsk" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.TraceOver" resolve="TraceOver" />
       </node>
@@ -1832,8 +1836,8 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="4_scbGUJDhK" role="1oa70y" />
     </node>
-    <node concept="1QGGSu" id="6XsdSphGnqG" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphGnFP" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAl" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphGnFP" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Debugger" resolve="AllIcons.Debugger" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Debugger.ViewBreakpoints" resolve="ViewBreakpoints" />
       </node>
@@ -2053,8 +2057,8 @@
     <property role="9BnSL" value="Base debugging support for MPS" />
     <property role="9BnSM" value="JetBrains" />
     <property role="TrG5h" value="Debugger API for MPS" />
-    <property role="9BnSO" value="232.1" />
-    <property role="9BnSK" value="2023.3" />
+    <property role="9BnSO" value="251.1" />
+    <property role="9BnSK" value="2025.1.1" />
   </node>
   <node concept="312cEu" id="24OxoGwTqg6">
     <property role="TrG5h" value="MuteBreakpoints" />
@@ -2248,6 +2252,27 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="3clFb_" id="6lFKwfyH6mh" role="jymVt">
+      <property role="TrG5h" value="getActionUpdateThread" />
+      <node concept="3Tm1VV" id="6lFKwfyH6mi" role="1B3o_S" />
+      <node concept="2AHcQZ" id="6lFKwfyH6mj" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="3uibUv" id="6lFKwfyH6mk" role="3clF45">
+        <ref role="3uigEE" to="qkt:~ActionUpdateThread" resolve="ActionUpdateThread" />
+      </node>
+      <node concept="3clFbS" id="6lFKwfyH6ml" role="3clF47">
+        <node concept="3clFbF" id="6lFKwfyH6mm" role="3cqZAp">
+          <node concept="Rm8GO" id="6lFKwfyH6mn" role="3clFbG">
+            <ref role="Rm8GQ" to="qkt:~ActionUpdateThread.BGT" resolve="BGT" />
+            <ref role="1Px2BO" to="qkt:~ActionUpdateThread" resolve="ActionUpdateThread" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="6lFKwfyH6mo" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
     <node concept="3Tm1VV" id="24OxoGwTqg7" role="1B3o_S" />
     <node concept="3uibUv" id="24OxoGwTqg8" role="1zkMxy">
       <ref role="3uigEE" to="qkt:~ToggleAction" resolve="ToggleAction" />
@@ -2284,8 +2309,8 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="1_xVpoi0xbi" role="1oa70y" />
     </node>
-    <node concept="1QGGSu" id="1Pvy3VLlVy2" role="3Uehp1">
-      <node concept="10M0yZ" id="1Pvy3VLlVyr" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAm" role="3Uehp1">
+      <node concept="10M0yZ" id="1Pvy3VLlVyr" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Debug" resolve="MPSIcons.Debug" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Debug.GoToSource" resolve="GoToSource" />
       </node>
@@ -2508,10 +2533,10 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="1_xVpoi0ERK" role="1oa70y" />
     </node>
-    <node concept="1QGGSu" id="3SQRqvYTzFM" role="3Uehp1">
-      <node concept="10M0yZ" id="3SQRqvYTzFN" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAn" role="3Uehp1">
+      <node concept="10M0yZ" id="6FJbCpTvhN5" role="1GtWoa">
+        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.ShowCode" resolve="ShowCode" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
-        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.ShowViewer" resolve="ShowViewer" />
       </node>
     </node>
     <node concept="tnohg" id="5DEfk93eNLB" role="tncku">
@@ -2687,8 +2712,8 @@
       <ref role="1DUlNI" to="qkt:~CommonDataKeys.PROJECT" resolve="PROJECT" />
       <node concept="1oajcY" id="ndZCfAIfOk" role="1oa70y" />
     </node>
-    <node concept="1QGGSu" id="1Pvy3VLlIyP" role="3Uehp1">
-      <node concept="10M0yZ" id="1Pvy3VLlUBw" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAo" role="3Uehp1">
+      <node concept="10M0yZ" id="1Pvy3VLlUBw" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Debug" resolve="MPSIcons.Debug" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Debug.DeleteBreakpoint" resolve="DeleteBreakpoint" />
       </node>

@@ -24,6 +24,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.make.ModuleMaker;
+import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.make.kotlin.cache.JvmKotlinCompileCacheHandler;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.lang.core.plugin.TextGen_Facet.Target_textGen;
@@ -91,7 +92,15 @@ public class JavaCompile_Facet extends IFacet.Stub {
               }
               progressMonitor.start("Compiling Java", 100);
               final ModuleMaker mm = new ModuleMaker(monitor.getSession().getMessageHandler());
-              mm.options(vars(pa.global()).options()).kotlinOptions(vars(pa.global()).kotlinOptions()).kotlinCompileCache(new JvmKotlinCompileCacheHandler(monitor.getSession().getMessageHandler()));
+              if (vars(pa.global()).options() != null) {
+                mm.options(vars(pa.global()).options());
+              } else {
+                JavaCompilerOptionsComponent jcOptions = monitor.getSession().getProject().getComponent(JavaCompilerOptionsComponent.class);
+                mm.options(jcOptions.getJavaCompilerOptions(monitor.getSession().getProject()));
+              }
+              // FIXME WorkbenchMakeService shall not care about kotlin compilation, move kotlinOptions initialization elsewhere
+              mm.kotlinOptions(vars(pa.global()).kotlinOptions());
+              mm.kotlinCompileCache(new JvmKotlinCompileCacheHandler(monitor.getSession().getMessageHandler()));
               new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(() -> {
                 // re-use dependencies known to textGen facet (freshly built, in fact)
                 mm.dependencies(Target_textGen.vars(pa.global()).dependenciesCache());

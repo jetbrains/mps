@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.ui.dialogs.properties;
 
 import com.intellij.icons.AllIcons;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.ui.AnActionButton;
 import com.intellij.ui.AnActionButtonUpdater;
@@ -58,6 +59,7 @@ import jetbrains.mps.ide.ui.finders.LanguageUsagesFinder;
 import jetbrains.mps.ide.ui.finders.ModelUsagesFinder;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ModuleInstanceCondition;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.VisibleModuleCondition;
@@ -68,10 +70,10 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.ModelDependencyScanner;
+import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.ConditionalIterable;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IterableUtil;
@@ -106,7 +108,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
-  private ModelProperties myModelProperties;
+  private final ModelProperties myModelProperties;
   protected SModel myModelDescriptor;
   private boolean myInPlugin = false;
 
@@ -115,7 +117,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
   }
 
   public ModelPropertiesConfigurable(final SModel modelDescriptor, Project project, boolean inPlugin) {
-    super(project);
+    super((MPSProject) project);
     myModelDescriptor = modelDescriptor;
     // readAction here is a hack, rather action shall do read. Alas, there are few places to get fixed, can't do it right now.
     myModelProperties = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> new ModelProperties(modelDescriptor));
@@ -147,7 +149,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
     // unless model dispatch proper change events (which it does not at the moment), and project pane
     // got no other means to find out it needs to update generation status
     myMPSProject.getComponent(ModelGenerationStatusManager.class).invalidateData(Collections.singleton(myModelDescriptor));
-    new MissingDependenciesFixer(myModelDescriptor).fixModuleDependencies();
+    new ModelDependencyUpdate(myModelDescriptor).updateModuleDependencies(myMPSProject.getRepository());
 
     if (!(myModelDescriptor.getSource() instanceof NullDataSource)) {
       ((EditableSModel) myModelDescriptor).save();
@@ -297,6 +299,11 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
       }).addExtraAction(new AnActionButton(PropertiesBundle.message("model.dependencies.unused"), MPSIcons.General.ModelChecker) {
 
         @Override
+        public @NotNull ActionUpdateThread getActionUpdateThread() {
+          return ActionUpdateThread.EDT;
+        }
+
+        @Override
         public boolean isEnabled() {
           return super.isEnabled() && anyModelNotUsed();
         }
@@ -394,9 +401,9 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
       decorator.setAddAction(anActionButton -> {
         Iterable<SModule> modules = new ConditionalIterable<>(getProjectModules(), new ModuleInstanceCondition(Language.class, DevKit.class));
         modules = new ConditionalIterable<>(modules, new VisibleModuleCondition());
-        ComputeRunnable<List<SModuleReference>> c = new ComputeRunnable<>(new ModuleCollector(modules));
-        myMPSProject.getModelAccess().runReadAction(c);
-        List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, PropertiesBundle.message("model.usedlanguages.choose"), c.getResult());
+        List<SModuleReference> c = myMPSProject.getModelAccess().computeReadAction(new ModuleCollector(modules));
+        ;
+        List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, PropertiesBundle.message("model.usedlanguages.choose"), c);
         for (SModuleReference reference : list) {
           myUsedLangsTableModel.addItem(reference);
         }
@@ -453,6 +460,11 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
               myUsedLangsTable.clearSelection();
             }
           });
+        }
+
+        @Override
+        public @NotNull ActionUpdateThread getActionUpdateThread() {
+          return ActionUpdateThread.EDT;
         }
       };
       removeUnusedLang.setEnabled(!myIsReadOnly);

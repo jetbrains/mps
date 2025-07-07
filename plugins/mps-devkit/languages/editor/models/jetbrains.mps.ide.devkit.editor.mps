@@ -8,7 +8,7 @@
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
@@ -65,9 +65,11 @@
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
+      <concept id="7927811850890310904" name="jetbrains.mps.lang.resources.structure.ConstantFieldIcon" flags="ng" index="1GtWCo">
+        <child id="7927811850890311914" name="field" index="1GtWoa" />
+      </concept>
       <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
         <property id="2756621024541341363" name="file" index="1iqoE4" />
-        <child id="6976585500156684809" name="iconExpression" index="3xaMm5" />
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -801,8 +803,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="3Cl1bgmeEAI" role="3xeRvj">
-      <node concept="10M0yZ" id="2II1e7FVFU1" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAA" role="3xeRvj">
+      <node concept="10M0yZ" id="2II1e7FVFU1" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Action" resolve="Action" />
       </node>
@@ -1132,8 +1134,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="2II1e7FVGFL" role="3xeRvj">
-      <node concept="10M0yZ" id="2II1e7FVGFM" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAB" role="3xeRvj">
+      <node concept="10M0yZ" id="2II1e7FVGFM" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Behavior" resolve="Behavior" />
       </node>
@@ -3037,8 +3039,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="2II1e7FVHIo" role="3xeRvj">
-      <node concept="10M0yZ" id="2II1e7FVHIp" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAC" role="3xeRvj">
+      <node concept="10M0yZ" id="2II1e7FVHIp" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Constraint" resolve="Constraint" />
       </node>
@@ -3409,8 +3411,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="2II1e7FVIJz" role="3xeRvj">
-      <node concept="10M0yZ" id="2II1e7FVIJ$" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAD" role="3xeRvj">
+      <node concept="10M0yZ" id="2II1e7FVIJ$" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.DataFlow" resolve="DataFlow" />
       </node>
@@ -3790,8 +3792,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="2II1e7FVKPa" role="3xeRvj">
-      <node concept="10M0yZ" id="2II1e7FVKPb" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAE" role="3xeRvj">
+      <node concept="10M0yZ" id="2II1e7FVKPb" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Editor" resolve="Editor" />
       </node>
@@ -4565,8 +4567,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="2II1e7FVMw6" role="3xeRvj">
-      <node concept="10M0yZ" id="2II1e7FVMw7" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAF" role="3xeRvj">
+      <node concept="10M0yZ" id="2II1e7FVMw7" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.UsagesFinder" resolve="UsagesFinder" />
       </node>
@@ -6101,8 +6103,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="2II1e7FWhiG" role="3xeRvj">
-      <node concept="10M0yZ" id="2II1e7FWiXG" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAG" role="3xeRvj">
+      <node concept="10M0yZ" id="2II1e7FWiXG" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Reduction" resolve="Reduction" />
       </node>
@@ -6457,8 +6459,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="6XsdSpixK8o" role="3xeRvj">
-      <node concept="10M0yZ" id="6XsdSpixLp9" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAH" role="3xeRvj">
+      <node concept="10M0yZ" id="6XsdSpixLp9" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.IntentionBulb" resolve="IntentionBulb" />
       </node>
@@ -6810,8 +6812,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="2II1e7FWmNp" role="3xeRvj">
-      <node concept="10M0yZ" id="2II1e7FWmNq" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAI" role="3xeRvj">
+      <node concept="10M0yZ" id="2II1e7FWmNq" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Refactoring" resolve="Refactoring" />
       </node>
@@ -6857,8 +6859,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="2II1e7FWnvt" role="3xeRvj">
-      <node concept="10M0yZ" id="2II1e7FWnvu" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAJ" role="3xeRvj">
+      <node concept="10M0yZ" id="2II1e7FWnvu" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Structure" resolve="Structure" />
       </node>
@@ -7211,8 +7213,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="2II1e7FWop$" role="3xeRvj">
-      <node concept="10M0yZ" id="2II1e7FWop_" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAK" role="3xeRvj">
+      <node concept="10M0yZ" id="2II1e7FWop_" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.TextGen" resolve="TextGen" />
       </node>
@@ -7757,8 +7759,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="2II1e7FWqRu" role="3xeRvj">
-      <node concept="10M0yZ" id="2II1e7FWqRv" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAL" role="3xeRvj">
+      <node concept="10M0yZ" id="2II1e7FWqRv" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Type" resolve="Type" />
       </node>

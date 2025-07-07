@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -142,7 +142,8 @@ public abstract class SModelId implements org.jetbrains.mps.openapi.model.SModel
     private final String myId;
 
     /*package*/ ForeignSModelId(String id) {
-      myId = InternUtil.intern(id);
+      // don't care about intern() performance penalty (if any at all), ForeignSModelId is for legacy persistence scenarios only
+      myId = id.intern();
     }
 
     /**

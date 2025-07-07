@@ -43,12 +43,14 @@ private class JvmDescriptorParser(val packageName: PackageName) : ClassVisitor(O
             private var metadataVersion = IntArray(0)
             private var data1 = arrayOf<String>()
             private var data2 = arrayOf<String>()
+            private var specifiedPackageName = packageName
 
             override fun visit(name: String?, value: Any?) {
                 when {
                     name == "k" && value is Int -> kind = value
                     name == "mv" && value is IntArray -> metadataVersion = value
                     name == "x1" && value is Int -> extraInt = value
+                    name == "pn" && value is String -> specifiedPackageName = PackageName.fromDotSeparated(value)
                 }
             }
 
@@ -70,7 +72,7 @@ private class JvmDescriptorParser(val packageName: PackageName) : ClassVisitor(O
             }
 
             override fun visitEnd() {
-                metadata = Metadata(kind, metadataVersion, data1 = data1, data2 = data2, packageName = packageName.slashName, extraInt = extraInt)
+                metadata = Metadata(kind, metadataVersion, data1 = data1, data2 = data2, packageName = specifiedPackageName.slashName, extraInt = extraInt)
             }
         }
     }

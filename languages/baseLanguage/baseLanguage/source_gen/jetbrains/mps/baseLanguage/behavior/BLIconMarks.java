@@ -5,12 +5,12 @@ package jetbrains.mps.baseLanguage.behavior;
 import jetbrains.mps.smodel.runtime.IconResource;
 
 public class BLIconMarks {
-  public static final IconResource FINAL = IconContainer.RESOURCE_a0;
-  public static final IconResource STATIC = IconContainer.RESOURCE_a1;
-  public static final IconResource RUNNABLE = IconContainer.RESOURCE_a2;
+  public static final IconResource FINAL = IconContainer.RESOURCE_0;
+  public static final IconResource STATIC = IconContainer.RESOURCE_1;
+  public static final IconResource RUNNABLE = IconContainer.RESOURCE_2;
 
-  public static final IconResource PLOCAL = IconContainer.RESOURCE_a4;
-  public static final IconResource PUBLIC = IconContainer.RESOURCE_a5;
-  public static final IconResource PROTECTED = IconContainer.RESOURCE_a6;
-  public static final IconResource PRIVATE = IconContainer.RESOURCE_a7;
+  public static final IconResource PLOCAL = IconContainer.RESOURCE_3;
+  public static final IconResource PUBLIC = IconContainer.RESOURCE_4;
+  public static final IconResource PROTECTED = IconContainer.RESOURCE_5;
+  public static final IconResource PRIVATE = IconContainer.RESOURCE_6;
 }

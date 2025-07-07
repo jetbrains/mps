@@ -3,7 +3,7 @@
   <readOnlyStubs/>
   <models>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <sourceRoot location="app.jar" />
+      <sourceRoot location="lib.jar" />
       <PackageScope>
         <!-- javax.activation.jar also included few com.sun.activation classes, do I need these?-->
         <include prefix="javax.activation." />
@@ -14,7 +14,7 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <library location="${platform_lib}/app.jar" />
+      <library location="${platform_lib}/lib.jar" />
     </facet>
   </facets>
   <sourcePath />

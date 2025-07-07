@@ -2339,6 +2339,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
           editorCell = EditorCell_Property.create(getEditorContext(), modelAccessor, myNode);
           editorCell.setCellId("TransactionalProperty_i8r80j_a31a0a");
           editorCell.setDefaultText("<no theProperty>");
+
           setCellContext(editorCell);
           editorCell.setCommitInCommand(false);
         }
@@ -2375,6 +2376,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
           editorCell = EditorCell_Property.create(getEditorContext(), modelAccessor, myNode);
           editorCell.setCellId("TransactionalProperty_i8r80j_b31a0a");
           editorCell.setDefaultText("<no theProperty>");
+
           setCellContext(editorCell);
           editorCell.setCommitInCommand(true);
         }
@@ -2631,6 +2633,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
           new testParentStyleStyleClass(this).apply(style, editorCell);
           editorCell.getStyle().putAll(style);
           editorCell.setDefaultText("<no theProperty>");
+
           setCellContext(editorCell);
           editorCell.setCommitInCommand(false);
         }
@@ -2760,6 +2763,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
           style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09e31a0a());
           editorCell.getStyle().putAll(style);
           editorCell.setDefaultText("<no theProperty>");
+
           setCellContext(editorCell);
           editorCell.setCommitInCommand(false);
         }

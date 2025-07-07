@@ -30,8 +30,9 @@ public final class MethodReferenceTypeTargetExpression__BehaviorDescriptor exten
 
   public static final SMethod<String> getDetailedPresentation_id22G2W3WJ92t = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDetailedPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2354269628709769373L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<SNode> getSubstituteNode_id2Yg2DIzFJuK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSubstituteNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3427250980011308976L).languageId(0xb3706f4a983f05b2L, 0xacfc188dd5d64598L).build2();
+  public static final SMethod<Boolean> allowRawType_id6SseLh999LE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("allowRawType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7934281601832492138L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDetailedPresentation_id22G2W3WJ92t, getSubstituteNode_id2Yg2DIzFJuK);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDetailedPresentation_id22G2W3WJ92t, getSubstituteNode_id2Yg2DIzFJuK, allowRawType_id6SseLh999LE);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -48,6 +49,10 @@ public final class MethodReferenceTypeTargetExpression__BehaviorDescriptor exten
     }
 
     return ((SNode) IMethodReferenceTarget__BehaviorDescriptor.getSubstituteNode_id2Yg2DIzFJuK.invoke0(__thisNode__, CONCEPTS.IMethodReferenceTarget$LB));
+  }
+  /*package*/ static boolean allowRawType_id6SseLh999LE(@NotNull SNode __thisNode__, @NotNull SNode children) {
+    // effectively true in most situations
+    return SLinkOperations.getTarget(__thisNode__, LINKS.type$z9_f) == children;
   }
 
   /*package*/ MethodReferenceTypeTargetExpression__BehaviorDescriptor() {
@@ -69,6 +74,8 @@ public final class MethodReferenceTypeTargetExpression__BehaviorDescriptor exten
         return (T) ((String) getDetailedPresentation_id22G2W3WJ92t(node));
       case 1:
         return (T) ((SNode) getSubstituteNode_id2Yg2DIzFJuK(node));
+      case 2:
+        return (T) ((Boolean) allowRawType_id6SseLh999LE(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

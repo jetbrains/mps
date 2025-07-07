@@ -3,6 +3,8 @@
  */
 package jetbrains.mps.ide.editor;
 
+import com.intellij.openapi.keymap.Keymap;
+import com.intellij.openapi.keymap.ex.KeymapManagerEx;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.ComponentPluginFactory;
@@ -10,6 +12,7 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.editor.EditorComponentTrackService;
 import jetbrains.mps.ide.editor.resolver.EditorResolverComponent;
 import jetbrains.mps.nodeEditor.caret.CaretManager;
+import jetbrains.mps.openapi.editor.extensions.EditorExtensionRegistry;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.typesystem.checking.EditorCheckerComponent;
@@ -27,6 +30,7 @@ public final class MPSEditorPlugin extends ComponentPlugin implements ComponentH
   private EditorComponentTracker myEditorComponentTracker;
   private CaretManager myCaretManager;
   private StyleRegistry myStyleRegistry;
+  private EditorExtensionRegistry myExtensionRegistry;
 
   public MPSEditorPlugin(@NotNull ComponentHost platform) {
     myPlatform = platform;
@@ -39,6 +43,14 @@ public final class MPSEditorPlugin extends ComponentPlugin implements ComponentH
     init(new EditorCheckerComponent(myPlatform));
     myCaretManager = init(new IdeaCaretManager());
     myStyleRegistry = init(new StyleRegistryIdeaImpl());
+    myExtensionRegistry = init(new EditorExtensionRegistryImpl());
+
+    final Keymap[] allKeymaps = KeymapManagerEx.getInstanceEx().getAllKeymaps();
+    for (Keymap keymap : allKeymaps) {
+      if (keymap.getShortcuts("EditorScrollToCenter").length > 0) {
+        keymap.removeAllActionShortcuts("EditorScrollToCenter");
+      }
+    }
   }
 
   @Override
@@ -51,6 +63,9 @@ public final class MPSEditorPlugin extends ComponentPlugin implements ComponentH
     }
     if (CaretManager.class.isAssignableFrom(componentClass)) {
       return componentClass.cast(myCaretManager);
+    }
+    if (EditorExtensionRegistry.class.isAssignableFrom(componentClass)) {
+      return componentClass.cast(myExtensionRegistry);
     }
     return null;
   }

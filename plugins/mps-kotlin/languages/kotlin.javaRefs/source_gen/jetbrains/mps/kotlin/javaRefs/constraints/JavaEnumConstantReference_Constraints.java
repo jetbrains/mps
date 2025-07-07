@@ -37,7 +37,7 @@ public class JavaEnumConstantReference_Constraints extends BaseConstraintsDescri
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).properties().navigationReceiver().buildScope(CONCEPTS.EnumConstantDeclaration$MW);
+            return KotlinScopes.scopeWithLegacyTypesystemFallback(_context.getContextNode(), CONCEPTS.EnumConstantDeclaration$MW, () -> KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).properties().navigationReceiver().buildSigScope());
           }
         };
       }

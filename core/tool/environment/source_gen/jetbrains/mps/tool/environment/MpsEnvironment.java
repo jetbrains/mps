@@ -14,6 +14,7 @@ import java.util.List;
 import jetbrains.mps.library.contributor.LibraryContributor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
 import java.io.File;
@@ -56,7 +57,7 @@ public final class MpsEnvironment extends EnvironmentBase {
     // can move the field here and init CLs along with field initialization
     myPlugins.buildClassLoaders(getRootClassLoader());
     final List<LibraryContributor> libContribs = ListSequence.fromList(new ArrayList<LibraryContributor>());
-    LibraryContributorHelper helper = new LibraryContributorHelper();
+    LibraryContributorHelper helper = new LibraryContributorHelper(myPlatform.findComponent(VFSManager.class).getUmbrellaFileSystemJavaIO());
     if (SetSequence.fromSet(myConfig.getLibs()).isNotEmpty()) {
       ListSequence.fromList(libContribs).addElement(helper.createLibContributorForLibs(myConfig.getLibs(), getRootClassLoader()));
     }

@@ -55,6 +55,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -175,6 +176,14 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
   public MPSNodeVirtualFile getFileFor(@NotNull SRepository repository, @NotNull final SNodeReference nodePointer) {
     final RepositoryVirtualFiles rvf = findForRepository(repository);
     return rvf != null ? rvf.getFileFor(nodePointer) : myGlobalRepoFiles.getFileFor(nodePointer);
+  }
+
+  /**
+   * Attempts to find the file associated with the passed reference to a root node.
+   */
+  public Optional<MPSNodeVirtualFile> lookupVirtualFile(@NotNull SRepository repository, @NotNull final SNodeReference rootNodeRef) {
+    final RepositoryVirtualFiles rvf = findForRepository(repository);
+    return rvf != null ? rvf.lookupFileFor(rootNodeRef) : myGlobalRepoFiles.lookupFileFor(rootNodeRef);
   }
 
   public MPSModelVirtualFile getFileFor(@NotNull SRepository repository, @NotNull final SModelReference modelReference) {
@@ -500,7 +509,7 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
       if (vf1 != null) {
         files.add(vf1);
       }
-      if (root != null && root.equals(changed)) {
+      if (root != null && !root.equals(changed)) {
         MPSNodeVirtualFile vf2 = rvf.getVirtualFile(root);
         if (vf2 != null && !vf2.equals(vf1)) {
           files.add(vf2);

@@ -35,8 +35,8 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope;
 import org.jetbrains.annotations.ApiStatus;
 import jetbrains.mps.kotlin.api.types.identifiers.UnmatchableType;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -62,11 +62,12 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getCompanionType_id13qggQDnK5I = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCompanionType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1214354576461726062L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SignatureScope> getCompanionInstanceScope_id1ODRHGtugRP = new SMethodBuilder<SignatureScope>(new SJavaCompoundTypeImpl(SignatureScope.class)).name("getCompanionInstanceScope").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(2101455733818723829L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureFilter.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<TypeKey> typeKey_idJmO2PmZtH5 = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("typeKey").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(853098072584870725L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isExpression_id3sYZzPj0plI = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3980898659981170030L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isExpression_id2J12cYi1t5p = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExpression").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3152810901737165145L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> createConstructor_id2$1CHwF$28b = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("createConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2954821879859257867L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> asNullable_id5pwU7dG5dvS = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("asNullable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6224230267458213880L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeParameters_id7an2tsIdpkM, visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, populateSubstitutions_id4f4W8JpwgWV, toString_id4nn3FPlZH$r, getPresentation_idhEwIMiw, asProjection_idJmO2PmVt2A, asInvariantProjection_id2gj5XQXIqKf, getInstanceScopes_id1ODRHGtuist, getFullStaticScope_id7ZA3QJnL$CF, getStaticScope_id1ODRHGtufGw, getCompanionType_id13qggQDnK5I, getCompanionInstanceScope_id1ODRHGtugRP, typeKey_idJmO2PmZtH5, isExpression_id2J12cYi1t5p, createConstructor_id2$1CHwF$28b, asNullable_id5pwU7dG5dvS);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeParameters_id7an2tsIdpkM, visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, populateSubstitutions_id4f4W8JpwgWV, toString_id4nn3FPlZH$r, getPresentation_idhEwIMiw, asProjection_idJmO2PmVt2A, asInvariantProjection_id2gj5XQXIqKf, getInstanceScopes_id1ODRHGtuist, getFullStaticScope_id7ZA3QJnL$CF, getStaticScope_id1ODRHGtufGw, getCompanionType_id13qggQDnK5I, getCompanionInstanceScope_id1ODRHGtugRP, typeKey_idJmO2PmZtH5, isExpression_id3sYZzPj0plI, isExpression_id2J12cYi1t5p, createConstructor_id2$1CHwF$28b, asNullable_id5pwU7dG5dvS);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -136,6 +137,10 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static TypeKey typeKey_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
     return new UnmatchableType();
   }
+  /*package*/ static boolean isExpression_id3sYZzPj0plI(@NotNull SNode __thisNode__) {
+    return (boolean) IType__BehaviorDescriptor.isExpression_id2J12cYi1t5p.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)));
+  }
+  @Deprecated
   /*package*/ static boolean isExpression_id2J12cYi1t5p(@NotNull SAbstractConcept __thisConcept__) {
     return false;
   }
@@ -147,7 +152,7 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
     if (SPropertyOperations.getBoolean(SNodeOperations.as(__thisNode__, CONCEPTS.INullableType$$I), PROPS.isNullable$KWwD)) {
       return __thisNode__;
     }
-    return createNullableType_7kdw5j_a1a61(__thisNode__);
+    return createNullableType_7kdw5j_a1a71(__thisNode__);
   }
 
   /*package*/ IType__BehaviorDescriptor() {
@@ -196,9 +201,11 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((SignatureScope) getCompanionInstanceScope_id1ODRHGtugRP(node, (SignatureFilter) parameters[0], (SNode) parameters[1]));
       case 13:
         return (T) ((TypeKey) typeKey_idJmO2PmZtH5(node));
-      case 15:
-        return (T) ((_FunctionTypes._return_P0_E0<? extends SNode>) createConstructor_id2$1CHwF$28b(node));
+      case 14:
+        return (T) ((Boolean) isExpression_id3sYZzPj0plI(node));
       case 16:
+        return (T) ((_FunctionTypes._return_P0_E0<? extends SNode>) createConstructor_id2$1CHwF$28b(node));
+      case 17:
         return (T) ((SNode) asNullable_id5pwU7dG5dvS(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -212,7 +219,7 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 14:
+      case 15:
         return (T) ((Boolean) isExpression_id2J12cYi1t5p(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -236,7 +243,7 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
     n0.setProperty(PROPS.variance$9nw2, SPropertyOperations.serializeEnummember(p1));
     return n0.getResult();
   }
-  private static SNode createNullableType_7kdw5j_a1a61(SNode p0) {
+  private static SNode createNullableType_7kdw5j_a1a71(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NullableType$E0);
     n0.forChild(LINKS.type$Tm0J).initNode(p0, CONCEPTS.IType$Ni, true);
     return n0.getResult();

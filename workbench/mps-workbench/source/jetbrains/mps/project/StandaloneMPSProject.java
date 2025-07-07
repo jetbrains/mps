@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,9 +29,11 @@ import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
 import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
+import jetbrains.mps.vfs.tracking.ModelStorageProblemsListener;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jetbrains.annotations.NotNull;
@@ -60,6 +62,8 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   private ModuleFileChangeListener myListener;
   private final VFSManager myManager;
 
+  private final ModelStorageProblemsListener myProblemsListener;
+
   // AP fixme must be final, however StandaloneMpsProject exposes it (a client can publicly reset the project descriptor)
   private ProjectDescriptor myProjectDescriptor;
 
@@ -71,6 +75,15 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
     // but now project libraries get initialized from a lifecycle listener, and I see no point to care to init PLM here.
     // The dependency was introduced in db00760f. Proper dispose order is ensured by the listener now.
     myManager = MPSCoreComponents.getInstance().getPlatform().findComponent(VFSManager.class);
+    myListener = new ModuleFileChangeListener(this);
+    addListener(myListener);
+    // NOTE, this listener used to be installed with ModelTracking project component both for Big MPS and MPS-as-IDEA plugin.
+    // With ProjectComponents eclipse, moved listener registration here explicitly. For completeness, same registration has
+    // to be part of MPS-as-IDEA-plugin project init sequence (likely, in MPSFacet or directly by MPSProject), but as long as
+    // MPS-as-IDEA-plugin is now a history, *AND* this listener is relevant for IDE/UI activities only (not for headless IDEA-backed
+    // environment where we still can get simple MPSProject instance), I decided to put it here.
+    // FWIW, could be ProjectRepository attribute, not a listener. See conflict resolver in superclass
+    myProblemsListener = new ModelStorageProblemsListener(this);
   }
 
   @Override
@@ -78,16 +91,12 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
     if (getProject().isDefault()) {
       return null;
     }
-    // FIXME Do I truly need to grab model read here?
-    return new ModelAccessHelper(getModelAccess()).runReadAction(() -> {
-      ProjectDescriptor descriptor = getProjectDescriptor();
-
-      // getProjectFile() uses ideaProject.getPresentableUrl. By contract the project is default <=> presentable url == null
-      IFile projectFile = myManager.getFileSystem(VFSManager.FILE_FS).getFile(getProjectFile());
-      // IDEA expands $PROJECT_DIR$ for us in loadState, but here we need to give paths with the right macro, and
-      //      MacrosFactory.forProjectFile does this.
-      return new ProjectDescriptorPersistence(projectFile, MacrosFactory.forProjectFile(projectFile)).save(descriptor);
-    });
+    ProjectDescriptor descriptor = getProjectDescriptor();
+    // getProjectFile() uses ideaProject.getPresentableUrl. By contract the project is default <=> presentable url == null
+    IFile projectFile = myManager.getFileSystem(VFSManager.FILE_FS).getFile(getProjectFile());
+    // IDEA expands $PROJECT_DIR$ for us in loadState, but here we need to give paths with the right macro, and
+    //      MacrosFactory.forProjectFile does this.
+    return new ProjectDescriptorPersistence(projectFile, MacrosFactory.forProjectFile(projectFile)).save(descriptor);
   }
 
   @Override
@@ -97,23 +106,21 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
       IFile projectFile = myManager.getFileSystem(VFSManager.FILE_FS).getFile(getProjectFile());
       // here, global macro helper is ok, as it's IDEA's responsibility to expand $PROJECT_DIR$ in modules.xml
       myProjectDescriptor = new ProjectDescriptorPersistence(projectFile, MacrosFactory.getGlobal()).load(state);
-      if (myProjectManager.getOpenedProjects().contains(this)) {
-        update();
-      }
+      update();
     }
   }
 
   @Override
   public void initComponent() {
-    myListener = new ModuleFileChangeListener(this);
-    addListener(myListener);
     super.initComponent();
+    new RepoListenerRegistrar(getRepository(), myProblemsListener).attach();
   }
 
   @Override
   public void disposeComponent() {
-    super.disposeComponent();
+    new RepoListenerRegistrar(getRepository(), myProblemsListener).detach();
     removeListener(myListener);
+    super.disposeComponent();
   }
 
   // todo remove; project descriptor is its internal substance which represents the persistence data
@@ -121,7 +128,9 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   @Deprecated(since = "3.3", forRemoval = true)
   public ProjectDescriptor getProjectDescriptor() {
     final ProjectDescriptor pd = new ProjectDescriptor(getName());
-    allModulePaths().forEach(pd::addModulePath);
+    // read access here is just a way to guard myModuleLoader (in allModulePaths) changes from a write action (e.g. update())
+    // perhaps, shall introduce a separate lock, rather than use MA.
+    getModelAccess().runReadAction(() -> allModulePaths().forEach(pd::addModulePath));
     return pd;
   }
 
@@ -149,7 +158,6 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
       getModelAccess().runWriteAction(() -> {
         loadModules(myProjectDescriptor.getModulePaths());
         myProjectDescriptor = null; // indicate it's all in RT now.
-        fireModulesLoaded();
       });
       if (progressIndicator != null) {
         progressIndicator.setText2("");
@@ -161,33 +169,5 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
 
   public static StandaloneMPSProject open(@NotNull String projectPath) throws JDOMException, InvalidDataException, IOException {
     return (StandaloneMPSProject) MPSProject.open(projectPath);
-  }
-
-
-  // AP: fixme these two methods are working with the UI virtual paths; I want them to be extracted somewhere else
-  /**
-   * @deprecated use the one from {@link ProjectBase#getVirtualFolder(SModule)} instead.
-   *             Pay attention to nullable contract change, however.
-   */
-  @Nullable
-  @Deprecated(forRemoval = true, since = "2022.1")
-  public String getFolderFor(@NotNull SModule module) {
-    ModulePath modulePath = getPath(module);
-    if (modulePath != null) {
-      return modulePath.getVirtualFolder();
-    } else {
-      LOG.warning("Could not find module path for the module " + module);
-      return null;
-    }
-  }
-
-  // XXX there's no reason to keep this method if ProjectBase#setVirtualFolder get exposed and MPS model references to this one get updated.
-
-  /**
-   * @deprecated use {@link ProjectBase#setVirtualFolder(SModule, String)} instead
-   */
-  @Deprecated(forRemoval = true, since = "2022.1")
-  public void setFolderFor(@NotNull SModule module, String newFolder) {
-    super.setVirtualFolder(module, newFolder);
   }
 }

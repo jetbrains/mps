@@ -39,7 +39,7 @@ public class LinkAccessExpression_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).filter(new SignatureFilterImpl<>(LinkSignature.class)).navigationReceiver().noExtensionMembers().prioritizeProperties((link, kind, receiver) -> new LinkSignature(link, kind)).buildScope(CONCEPTS.LinkDeclaration$1p);
+            return KotlinScopes.scopeWithLegacyTypesystemFallback(_context.getContextNode(), CONCEPTS.LinkDeclaration$1p, () -> KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).filter(new SignatureFilterImpl<>(LinkSignature.class)).navigationReceiver().noExtensionMembers().prioritizeProperties((link, kind, receiver) -> new LinkSignature(link, kind)).buildSigScope());
           }
         };
       }

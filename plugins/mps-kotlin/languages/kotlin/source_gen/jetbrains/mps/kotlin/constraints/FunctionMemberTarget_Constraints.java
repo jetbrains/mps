@@ -15,6 +15,10 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
+import jetbrains.mps.kotlin.scopes.signed.NavigationHelper;
+import jetbrains.mps.kotlin.behavior.MemberReceiver;
+import jetbrains.mps.kotlin.scopes.signed.ConstructorsScope;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -38,7 +42,17 @@ public class FunctionMemberTarget_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).membersReceiver().functions().buildScope(CONCEPTS.IFunctionDeclaration$ZB);
+            return KotlinScopes.scopeWithLegacyTypesystemFallback(_context.getContextNode(), CONCEPTS.IFunctionDeclaration$ZB, () -> {
+              final FullScopeContext context = new FullScopeContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
+              final KotlinScopes scope = KotlinScopes.create(context).functions().forceInstanceInclusion();
+
+              NavigationHelper.withMemberReceiver(context, (operand) -> scope.receiver(MemberReceiver.of(operand)), () -> {
+                // Add constructors for standalone member navigation
+                return scope.useHierarchy().plus(new ConstructorsScope(context));
+              });
+
+              return scope.buildSigScope();
+            });
           }
         };
       }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -182,9 +182,7 @@ public class JarFileClassPathItem extends RealClassPathItem {
 
   @Override
   public List<RealClassPathItem> flatten() {
-    List<RealClassPathItem> result = new ArrayList<>();
-    result.add(this);
-    return result;
+    return Collections.singletonList(this);
   }
 
   public String toString() {
@@ -221,7 +219,7 @@ public class JarFileClassPathItem extends RealClassPathItem {
             className = name.substring(packEnd + 1, name.length() - MPSExtentions.DOT_CLASSFILE.length());
           }
 
-          myCache.addClass(pack, InternUtil.intern(className));
+          myCache.addClass(pack, className);
         }
       }
     } catch (IOException e) {
@@ -273,9 +271,9 @@ public class JarFileClassPathItem extends RealClassPathItem {
       Entry e = myTopPackage;
       PackageNameIterator it = new PackageNameIterator(pack);
       while (it.hasNext()) {
-        e = e.createSubPackage(it.next());
+        e = e.createSubPackage(it.next().intern()); // if anything, it's a package name that we see a lot.
       }
-      e.addClass(className);
+      e.addClass(className.intern());
     }
   }
 

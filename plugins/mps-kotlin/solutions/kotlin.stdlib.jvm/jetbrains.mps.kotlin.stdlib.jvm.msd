@@ -7,7 +7,7 @@
   <models>
     <!-- Here we only hold JVM specific parts of kotlin stdlib -->
     <modelRoot contentPath="${mps_home}/plugins/mps-kotlin/lib" type="kotlin_jvm">
-      <sourceRoot location="kotlin-stdlib-1.9.0.jar" />
+      <sourceRoot location="kotlin-stdlib-2.1.0.jar" />
       <PackageScope>
         <include prefix="kotlin.jvm" />
       </PackageScope>

@@ -131,16 +131,16 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
         public IconResource getIcon(@NotNull String pattern) {
           SModule module = myParameterObject.resolve(_context.getEditorContext().getRepository());
           if (module instanceof Solution) {
-            return IconContainer.RESOURCE_a0a1a31e3d;
+            return IconContainer.RESOURCE_0;
           }
           if (module instanceof Language) {
-            return IconContainer.RESOURCE_a0a2a31e3d;
+            return IconContainer.RESOURCE_1;
           }
           if (module instanceof Generator) {
-            return IconContainer.RESOURCE_a0a3a31e3d;
+            return IconContainer.RESOURCE_2;
           }
           if (module instanceof DevKit) {
-            return IconContainer.RESOURCE_a0a4a31e3d;
+            return IconContainer.RESOURCE_3;
           }
           return null;
         }

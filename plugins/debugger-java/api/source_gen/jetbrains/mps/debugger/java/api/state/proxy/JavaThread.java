@@ -98,7 +98,7 @@ public class JavaThread extends ProxyForJava implements IThread {
   private Icon calculateIcon() {
     assert !(ThreadUtils.isInEDT());
     if (myThreadReference.isAtBreakpoint()) {
-      return Icons.THREAD_AT_BREAKPOINT;
+      return Icons.THREAD_CURRENT;
     } else
     if (myThreadReference.isSuspended()) {
       return Icons.THREAD_SUSPENDED;

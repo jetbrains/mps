@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,10 @@
  */
 package jetbrains.mps.util;
 
+/**
+ * @deprecated see {@link #intern(String)} for explanation
+ */
+@Deprecated(since = "2024.1")
 public class InternUtil {
   private static final Interner ourInterner = new Interner(20000);
 

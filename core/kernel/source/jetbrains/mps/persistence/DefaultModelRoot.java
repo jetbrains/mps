@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.persistence.DataSourceFactoryBridge.DSourceAndOptions;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.util.FileUtil;
@@ -482,14 +483,9 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
     new CopyDefaultModelRootHelper(this, targetModelRoot).copy();
   }
 
-  /**
-   * Obviously whilst the model root descriptors are in the <code>AbstractModule</code> we
-   * need this method
-   */
-@Deprecated(since = "3.6", forRemoval = true)
-  public ModelRootDescriptor toDescriptor() {
+  private ModelRootDescriptor toDescriptor() {
     ModelRootDescriptor result = new ModelRootDescriptor(getType());
-    save(result.getMemento());
+    save(result.getMemento(), PersistenceContextImpl.empty());
     return result;
   }
 

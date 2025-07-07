@@ -72,7 +72,7 @@ public final class GenerateOutput_Intention extends AbstractIntentionDescriptor 
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SModel tempModel = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
+      SModel tempModel = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule(editorContext.getRepository()));
       for (SNode root : ListSequence.fromList(CopyUtil.copy(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.inputNodes$aDmk), LINKS.nodeToCheck$OBcW)).toList()))) {
         SModelOperations.addRootNode(tempModel, root);
       }

@@ -198,6 +198,7 @@
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset dir="${artifacts.IDEA}/plugins/java/lib" includes="*.jar" />
         <path refid="path.jdk.classpath" />

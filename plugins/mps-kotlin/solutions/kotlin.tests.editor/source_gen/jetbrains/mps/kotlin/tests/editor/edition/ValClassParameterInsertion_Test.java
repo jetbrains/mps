@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class ValClassParameterInsertion_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(ValClassParameterInsertion_Test.class, "${mps_home}", "r:0454b9a6-3097-4b9d-8d62-441f146822c5(jetbrains.mps.kotlin.tests.editor.edition@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ValClassParameterInsertion_Test.class).projectPath(null).modelRef("r:0454b9a6-3097-4b9d-8d62-441f146822c5(jetbrains.mps.kotlin.tests.editor.edition@tests)").reopenProject(false).build());
 
   public ValClassParameterInsertion_Test() {
     super(ourParametersCacheExtension.getParametersCache());

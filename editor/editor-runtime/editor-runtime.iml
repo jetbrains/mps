@@ -36,5 +36,7 @@
     <orderEntry type="module" module-name="typechecking" />
     <orderEntry type="module" module-name="constraints-runtime" />
     <orderEntry type="module" module-name="messages-for-legacy-constraints" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
+    <orderEntry type="module" module-name="mps-workbench" />
   </component>
 </module>

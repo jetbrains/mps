@@ -11,6 +11,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.notification.NotificationType;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.notification.NotificationListener;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.event.HyperlinkEvent;
@@ -30,10 +31,14 @@ import com.intellij.openapi.ui.popup.Balloon;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.util.IStatus;
 import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.IterableUtils;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/2632090902167058889", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 /*package*/ abstract class MigrationNotificationsSupport {
@@ -72,7 +77,7 @@ import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
     Messages.showMessageDialog(myIdeaProject, "No problems found.\nProject can be migrated", "Migration", null);
   }
 
-  public boolean showRequired() {
+  public boolean showRequired(@Nullable MigrationSetup migrationSetup) {
     if (myLastNotification != null) {
       if (myLastNotification.getType() == NotificationType.INFORMATION) {
         myLastNotification.expire();
@@ -97,6 +102,9 @@ import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
       }
     });
     myLastNotification.addAction(new ShowProjectDetails());
+    if (migrationSetup != null && migrationSetup.importVersionsUpdateRequired()) {
+      myLastNotification.addAction(new ShowModuleVersionDetails(migrationSetup.modulesToUpdateVersions()));
+    }
     myLastNotification.notify(myIdeaProject);
     return true;
   }
@@ -224,6 +232,12 @@ import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
     /*package*/ ShowProjectDetails() {
       super("Show Details");
     }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
     @Override
     public void update(@NotNull AnActionEvent e) {
       e.getPresentation().setEnabled(e.getProject() != null && ProjectHelper.fromIdeaProject(e.getProject()) != null);
@@ -232,6 +246,30 @@ import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
     public void actionPerformed(@NotNull AnActionEvent event) {
       IStatus m = ProjectMigrationsRegistry.getInstance().checkMigratedToNewerVersion(ProjectHelper.fromIdeaProject(event.getProject()));
       Messages.showInfoMessage(event.getProject(), m.getMessage(), "Project Details");
+    }
+  }
+
+  private static class ShowModuleVersionDetails extends AnAction {
+    private List<String> myModules;
+
+    /*package*/ ShowModuleVersionDetails(List<SModuleReference> modules) {
+      super("Modules with inconsistent versions");
+      myModules = ListSequence.fromList(modules).select((it) -> it.getModuleName()).toList();
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+    @Override
+    public void update(@NotNull AnActionEvent e) {
+      e.getPresentation().setEnabled(e.getProject() != null && ProjectHelper.fromIdeaProject(e.getProject()) != null);
+    }
+    @Override
+    public void actionPerformed(@NotNull AnActionEvent event) {
+      String header = "Modules with mismatching dependency versions recorded:";
+      Messages.showInfoMessage(event.getProject(), header + "<br/><br/>" + IterableUtils.join(ListSequence.fromList(myModules), "<br>"), "Modules to update import versions");
     }
   }
 }

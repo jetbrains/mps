@@ -1,25 +1,34 @@
+Index: platform/platform-resources/src/META-INF/LangExtensions.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/platform/platform-resources/src/META-INF/LangExtensions.xml b/platform/platform-resources/src/META-INF/LangExtensions.xml
+--- a/platform/platform-resources/src/META-INF/LangExtensions.xml	(revision 4c05f0d21177c9549ced3c89b08fe670b15a8c6d)
++++ b/platform/platform-resources/src/META-INF/LangExtensions.xml	(date 1745477411166)
+@@ -1489,7 +1489,7 @@
+     <projectService serviceInterface="com.intellij.ide.actions.searcheverywhere.SearchEverywhereManager"
+                     serviceImplementation="com.intellij.ide.actions.searcheverywhere.SearchEverywhereManagerImpl"/>
+
+-    <advancedSetting id="se.text.search" default="true" groupKey="group.advanced.settings.se"/>
++    <advancedSetting id="se.text.search" default="false" groupKey="group.advanced.settings.se"/>
+     <searchEverywhereContributor implementation="com.intellij.find.impl.TextSearchContributor$Companion$Factory"/>
+     <searchEverywhereContributor implementation="com.intellij.ide.actions.searcheverywhere.ClassSearchEverywhereContributor$Factory"/>
+     <searchEverywhereContributor implementation="com.intellij.ide.actions.searcheverywhere.FileSearchEverywhereContributorFactory"/>
 Index: platform/platform-resources/src/META-INF/PlatformExtensions.xml
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/platform/platform-resources/src/META-INF/PlatformExtensions.xml b/platform/platform-resources/src/META-INF/PlatformExtensions.xml
---- a/platform/platform-resources/src/META-INF/PlatformExtensions.xml	(revision 2009584ac1359e2f11097dd44cf6165c97df5d57)
-+++ b/platform/platform-resources/src/META-INF/PlatformExtensions.xml	(date 1696338648079)
-@@ -1424,7 +1424,7 @@
-     <advancedSetting id="confirm.rerun.with.termination" default="true" groupKey="group.advanced.settings.run"/>
-     <advancedSetting id="start.run.configurations.pinned" default="false" groupKey="group.advanced.settings.run"/>
-     <advancedSetting id="max.recent.run.configurations" default="5" groupKey="group.advanced.settings.run"/>
--    <advancedSetting id="se.text.search" default="true" groupKey="group.advanced.settings.se"/>
-+    <advancedSetting id="se.text.search" default="false" groupKey="group.advanced.settings.se"/>
-     <advancedSetting id="edit.source.on.enter.key.request.focus.in.editor" default="true" groupKey="group.advanced.settings.project.view"/>
-     <advancedSetting id="ide.tree.collapse.recursively" default="true" groupKey="group.advanced.settings.project.view"/>
-     <advancedSetting id="project.view.do.not.autoscroll.to.libraries" default="false" groupKey="group.advanced.settings.project.view"/>
-@@ -1501,7 +1501,6 @@
+--- a/platform/platform-resources/src/META-INF/PlatformExtensions.xml	(revision 4c05f0d21177c9549ced3c89b08fe670b15a8c6d)
++++ b/platform/platform-resources/src/META-INF/PlatformExtensions.xml	(date 1744789044258)
+@@ -1743,8 +1743,6 @@
      <registryKey key="popup.advertiser.speed.search" defaultValue="false" description="Shows speed search advertiser in popups"/>
      <actionPromoter implementation="com.intellij.ide.actions.speedSearch.SpeedSearchActionPromoter"/>
- 
+
 -    <interactiveCourseFactory implementation="com.intellij.openapi.wm.impl.welcomeScreen.learnIde.jbAcademy.JBAcademyInteractiveCourse"/>
- 
+-
      <cachesInvalidator implementation="com.intellij.ide.ui.IconCacheInvalidator"/>
- 
+
+     <cachesInvalidator implementation="com.intellij.openapi.editor.impl.zombie.NecropolisDestroyer$InvalidationRequest"/>

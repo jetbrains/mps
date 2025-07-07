@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import java.util.Map;
-import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -90,13 +90,13 @@ public class MoveAspectsParticipant extends RefactoringParticipantBase<SNodeRefe
       final SNode sourceConcept = SNodeOperations.cast(initialState.resolve(repository), CONCEPTS.AbstractConceptDeclaration$KA);
       Language sourceLanguage = ((Language) SNodeOperations.getModel(sourceConcept).getModule());
 
-      Map<LanguageAspect, List<SNode>> aspectsMap = MoveConceptUtil.getAspectNodes(sourceLanguage, Sequence.<SNode>singleton(sourceConcept));
+      Map<LanguageAspectDescriptor, List<SNode>> aspectsMap = MoveConceptUtil.getAspectNodes(sourceLanguage, Sequence.<SNode>singleton(sourceConcept));
 
       int participantSize = Sequence.fromIterable(new ExtensionPoint<MoveNodeRefactoringParticipant<?, ?>>("jetbrains.mps.refactoring.participant.MoveNodeParticipantEP").getObjects()).count();
       Iterable<SNode> aspects = Sequence.fromIterable(MapSequence.fromMap(aspectsMap).values()).translate((x) -> x);
       progressMonitor.start("", participantSize * Sequence.fromIterable(aspects).foldLeft(0, (Integer s, SNode it) -> s + ListSequence.fromList(SNodeOperations.getNodeDescendants(it, null, true, new SAbstractConcept[]{})).count()));
 
-      return MapSequence.fromMap(aspectsMap).translate((final IMapping<LanguageAspect, List<SNode>> mapping) -> {
+      return MapSequence.fromMap(aspectsMap).translate((final IMapping<LanguageAspectDescriptor, List<SNode>> mapping) -> {
         return ListSequence.fromList(mapping.value()).select((final SNode aspect) -> {
 
           List<SNode> descendants = SNodeOperations.getNodeDescendants(aspect, null, true, new SAbstractConcept[]{});
@@ -129,6 +129,7 @@ public class MoveAspectsParticipant extends RefactoringParticipantBase<SNodeRefe
             public void confirm(SNodeReference finalState, final SRepository repository, final RefactoringSession refactoringSession) {
               SNode targetConcept = SNodeOperations.cast(finalState.resolve(repository), CONCEPTS.AbstractConceptDeclaration$KA);
               Language targetLanguage = ((Language) SNodeOperations.getModel(targetConcept).getModule());
+              // XXX would be great to have access to Platform/CH here (not just a Repo, or shall access CH through Repo)
               NodeLocation.NodeLocationRootWithAspectModelCreation newLocation = new NodeLocation.NodeLocationRootWithAspectModelCreation(targetLanguage, mapping.key());
 
               List<SNode> copied = NodeCopyTracker.get(refactoringSession).copyAndTrack(ListSequence.fromListAndArray(new ArrayList<SNode>(), aspect));

@@ -20,7 +20,6 @@ public class DependenciesHelper {
   private final Map<SNode, String> contentLocationMap;
   private final Map<Object, SNode> idToArtifactMap;
   private final MacroHelper macros;
-  private final TemplateQueryContext myGenContext;
   private final SNode myProject;
   private final String myLocationKey;
   private final String myContentLocationKey;
@@ -33,8 +32,7 @@ public class DependenciesHelper {
     locationMap = new HashMap<SNode, String>(100);
     contentLocationMap = new HashMap<SNode, String>(100);
     idToArtifactMap = new HashMap<Object, SNode>(100);
-    this.macros = new MacroHelper.MacroContext(project, genContext).getMacros(project);
-    myGenContext = genContext;
+    this.macros = Context.defaultContext(genContext).getMacros(project);
     myProject = project;
     final String qualifiedProjectName = SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
     myLocationKey = "location:" + qualifiedProjectName;
@@ -43,23 +41,17 @@ public class DependenciesHelper {
     myArtifactIdKey = "artifact-key:" + qualifiedProjectName;
   }
 
-  /*package*/ static void put(DependenciesHelper dh, String token) {
+  /*package*/ static void put(TemplateQueryContext genContext, DependenciesHelper dh, String token) {
     final String key = token + "::" + SModelOperations.getModelName(SNodeOperations.getModel(dh.myProject)) + "/" + SPropertyOperations.getString(dh.myProject, PROPS.name$MnvL);
     // FIXME eventually (if DH persists), could at least become 'step' object;
     //      now need to span several steps (build.mps: load modules, aliases, main), hence session
-    assert dh.myGenContext.getSessionObject(key) == null : "just to notice if anything wrong with our assumptions";
-    dh.myGenContext.putSessionObject(key, dh);
+    assert genContext.getSessionObject(key) == null : "just to notice if anything wrong with our assumptions";
+    genContext.putSessionObject(key, dh);
   }
 
   public static DependenciesHelper get(TemplateQueryContext genContext, SNode project, String token) {
     final String key = token + "::" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + "/" + SPropertyOperations.getString(project, PROPS.name$MnvL);
     return (DependenciesHelper) genContext.getSessionObject(key);
-  }
-
-  public TemplateQueryContext getGenContext() {
-    // FIXME DH doesn't need genContext any more; shall get rid of this method here, as well as refactor last uses of getOriginalNode(),
-    //      just too much for the present change, left as an exercise.
-    return myGenContext;
   }
 
   public void putLocation(SNode layoutNode, String location) {

@@ -12,82 +12,89 @@ import jetbrains.mps.progress.ProgressTask;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.concurrent.FutureTask;
+import java.util.function.Consumer;
 import com.intellij.util.concurrency.QueueProcessor;
 import java.util.concurrent.CountDownLatch;
 import java.util.function.BooleanSupplier;
 import com.intellij.openapi.util.Condition;
 import com.intellij.openapi.application.ModalityState;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 
 @GeneratedClass(node = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)/5860855079808959130", model = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)")
-public abstract class AbstractBackgroundTaskScheduler<TASK> extends DefaultTaskScheduler {
+public abstract class AbstractBackgroundTaskScheduler<JOB> extends DefaultTaskScheduler {
   private final Project myMpsProject;
-  private Executor readExecutor;
+  private Executor myExecutor;
 
   public AbstractBackgroundTaskScheduler(Project mpsProject) {
     this.myMpsProject = mpsProject;
-    this.readExecutor = new DefaultTaskScheduler.DirectExecutor();
+    this.myExecutor = new DefaultTaskScheduler.DirectExecutor();
   }
 
   public AbstractBackgroundTaskScheduler(Project mpsProject, Executor executor) {
     this.myMpsProject = mpsProject;
-    this.readExecutor = executor;
+    this.myExecutor = executor;
   }
 
   @Override
   public RunnableFuture<Void> scheduleAllParallel(final Collection<ProgressTask> tasks, final ProgressMonitor monitor) {
-    final AbstractTaskQueue<TASK> queue = createQueue(CollectionSequence.fromCollection(tasks).count());
+    final AbstractJobQueue<JOB> queue = createQueue(CollectionSequence.fromCollection(tasks).count());
     return new FutureTask<>(() -> {
-      runWithQueue(tasks, queue, monitor);
+      submitAll(tasks, queue, monitor);
       queue.waitForTasksToFinish();
     }, null);
   }
 
   @Override
   public RunnableFuture<Void> execute(final Runnable runnable) {
-    return new FutureTask<>(() -> readExecutor.execute(runnable), null);
+    return new FutureTask<>(() -> myExecutor.execute(runnable), null);
   }
 
-  protected void runWithQueue(Collection<ProgressTask> tasks, AbstractTaskQueue<TASK> queue, final ProgressMonitor monitor) {
+  protected final void submitAll(Collection<ProgressTask> tasks, AbstractJobQueue<JOB> queue, final ProgressMonitor monitor) {
     for (final ProgressTask task : tasks) {
-      TASK btask = createTask(task, monitor);
-      queue.runWithMonitor(btask, monitor);
+      if (monitor.isCanceled()) {
+        return;
+      }
+      queue.submit(createJob(task, monitor), monitor);
     }
   }
 
-  protected abstract AbstractTaskQueue<TASK> createQueue(int size);
+  protected abstract AbstractJobQueue<JOB> createQueue(int size);
 
-  protected abstract TASK createTask(ProgressTask task, ProgressMonitor monitor);
+  protected abstract JOB createJob(ProgressTask task, ProgressMonitor monitor);
 
   protected Project getMpsProject() {
     return this.myMpsProject;
   }
 
-  protected static abstract class AbstractTaskQueue<TASK> {
+  @FunctionalInterface
+  public interface JobQueueItem extends Consumer<Runnable> {
+
+  }
+
+  protected static abstract class AbstractJobQueue<JOB> {
 
     public interface Blocking {
       boolean willBlock();
       boolean run() throws InterruptedException;
     }
 
-    private final QueueProcessor<TaskRunnable> myProcessor;
+    private final QueueProcessor<JobQueueItem> myProcessor;
     private final CountDownLatch myLatch;
 
-    protected AbstractTaskQueue(int queueSize, final BooleanSupplier shouldStop) {
+    protected AbstractJobQueue(int queueSize, final BooleanSupplier shouldStop) {
       // Condition must be imported here explicitly to avoid generation failure
       Condition<Object> condition = (__) -> shouldStop.getAsBoolean();
       // ThreadToUse.POOLED is preferrable here because IDEA application may not be available
-      this.myProcessor = new QueueProcessor<TaskRunnable>((TaskRunnable bgRunnable, Runnable continuation) -> bgRunnable.accept(continuation), true, QueueProcessor.ThreadToUse.POOLED, condition);
+      this.myProcessor = new QueueProcessor<JobQueueItem>((JobQueueItem bgRunnable, Runnable continuation) -> bgRunnable.accept(continuation), true, QueueProcessor.ThreadToUse.POOLED, condition);
       this.myLatch = new CountDownLatch(queueSize);
     }
 
-    protected abstract TaskRunnable createRunnable(TASK task, Runnable afterTask, ProgressMonitor monitor);
+    protected abstract JobQueueItem createItem(JOB job, Runnable afterJobFinished, ProgressMonitor monitor);
 
     protected abstract void runBlocking(Blocking blocking) throws InterruptedException;
 
-    protected void runWithMonitor(TASK bgTask, ProgressMonitor monitor) {
-      myProcessor.add(createRunnable(bgTask, myLatch::countDown, monitor), ModalityState.NON_MODAL);
+    protected final void submit(JOB job, ProgressMonitor monitor) {
+      myProcessor.add(createItem(job, myLatch::countDown, monitor), ModalityState.NON_MODAL);
     }
 
     protected void waitForTasksToFinish() {
@@ -109,11 +116,6 @@ public abstract class AbstractBackgroundTaskScheduler<TASK> extends DefaultTaskS
       }
       assert myLatch.getCount() <= 0;
     }
-  }
-
-  @FunctionalInterface
-  public interface TaskRunnable extends Consumer<Runnable> {
-
   }
 
 }

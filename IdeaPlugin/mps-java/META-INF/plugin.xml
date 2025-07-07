@@ -19,9 +19,9 @@
   <name>MPS BaseLanguage Support</name>
   <description>Integrate MPS BaseLanguage (Java) into IDEA PSI Model</description>
   <category>Custom Languages</category>
-  <version>2023.3</version>
+  <version>2025.1.1</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="233.1" until-build="241.1"/>
+  <idea-version since-build="251.1" until-build="252.1"/>
   <depends>jetbrains.mps.core</depends>
 
   <xi:include href="JavaPlatform.xml"/>
@@ -84,31 +84,7 @@
                               order="before java"/>
     <refactoring.elementListenerProvider implementation="jetbrains.mps.idea.java.refactoring.PackageRenameListener"/>
     <mps.gotoParticipant implementation="jetbrains.mps.idea.java.fastFind.JavaPsiStubsNavigationContributor"/>
-    <!-- BreakpointEditorIntegration service comes together with EditorIntegrationListener projectListener, below -->
-    <projectService serviceInterface="jetbrains.mps.debugger.core.breakpoints.BreakpointEditorIntegration"
-                    serviceImplementation="jetbrains.mps.idea.java.debugger.breakpoints.IdeaBreakpointsUiComponent"/>
-    <projectService serviceImplementation="jetbrains.mps.idea.java.debugger.IdeaDebuggerPositionHighlighter"/>
   </extensions>
-
-  <projectListeners>
-    <!-- this listener works together with BreakpointEditorIntegration service, above-->
-    <listener class="jetbrains.mps.debugger.core.breakpoints.EditorIntegrationListener"
-              topic="jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener"
-              activeInTestMode="false"
-              activeInHeadlessMode="false"/>
-    <listener class="jetbrains.mps.idea.java.debugger.breakpoints.IdeaBreakpointsUiComponent$BreakpointListener"
-              topic="com.intellij.xdebugger.breakpoints.XBreakpointListener"
-              activeInTestMode="false"
-              activeInHeadlessMode="false"/>
-    <listener class="jetbrains.mps.idea.java.debugger.IdeaDebuggerPositionHighlighter$RunContentListener"
-              topic="com.intellij.execution.ui.RunContentWithExecutorListener"
-              activeInTestMode="false"
-              activeInHeadlessMode="false"/>
-    <listener class="jetbrains.mps.idea.java.debugger.IdeaDebuggerPositionHighlighter$DebuggerManagerListener"
-              topic="com.intellij.debugger.impl.DebuggerManagerListener"
-              activeInTestMode="false"
-              activeInHeadlessMode="false"/>
-  </projectListeners>
 
   <extensions defaultExtensionNs="jetbrains.mps">
     <nodeStructureViewProvider implementation="jetbrains.mps.idea.java.psi.structureView.MPSStructureViewFactory"/>

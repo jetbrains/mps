@@ -32,9 +32,6 @@
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
-      </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118933224" name="comment" index="YLQ7P" />
       </concept>
@@ -86,7 +83,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -567,13 +564,6 @@
       <property role="TrG5h" value="strong" />
       <property role="IQ2nx" value="4614734314076988359" />
       <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
-      <node concept="3l_iC" id="3Ftr4R6BH9f" role="lGtFl">
-        <node concept="1TJgyi" id="40aP6yznmf7" role="3l_iP">
-          <property role="TrG5h" value="strong" />
-          <property role="IQ2nx" value="4614734314076988359" />
-          <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="h8eJokL">
@@ -682,13 +672,6 @@
       <property role="TrG5h" value="strong" />
       <property role="IQ2nx" value="7739208407757214262" />
       <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
-      <node concept="3l_iC" id="3Ftr4R6BH9h" role="lGtFl">
-        <node concept="1TJgyi" id="6HBcgFN5t8Q" role="3l_iP">
-          <property role="TrG5h" value="strong" />
-          <property role="IQ2nx" value="7739208407757214262" />
-          <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="h9UdQCX">
@@ -1163,13 +1146,6 @@
       <property role="TrG5h" value="inequationPriority" />
       <property role="IQ2nx" value="1212056105818" />
       <ref role="AX2Wp" node="3Ftr4R6BFAD" resolve="InequationPriority" />
-      <node concept="3l_iC" id="3Ftr4R6BH9j" role="lGtFl">
-        <node concept="1TJgyi" id="hCOb7dq" role="3l_iP">
-          <property role="TrG5h" value="inequationPriority" />
-          <property role="IQ2nx" value="1212056105818" />
-          <ref role="AX2Wp" node="3Ftr4R6BFAD" resolve="InequationPriority" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="49g6ijgJmi1" role="1TKVEl">
       <property role="TrG5h" value="label" />
@@ -1180,25 +1156,11 @@
       <property role="TrG5h" value="strong" />
       <property role="IQ2nx" value="7739208407757103785" />
       <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
-      <node concept="3l_iC" id="3Ftr4R6BH9l" role="lGtFl">
-        <node concept="1TJgyi" id="6HBcgFN52aD" role="3l_iP">
-          <property role="TrG5h" value="strong" />
-          <property role="IQ2nx" value="7739208407757103785" />
-          <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="3Ftr4R6BH9m" role="1TKVEl">
       <property role="TrG5h" value="orientation" />
       <property role="IQ2nx" value="7739208407757103786" />
       <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
-      <node concept="3l_iC" id="3Ftr4R6BH9n" role="lGtFl">
-        <node concept="1TJgyi" id="6HBcgFN52aE" role="3l_iP">
-          <property role="TrG5h" value="orientation" />
-          <property role="IQ2nx" value="7739208407757103786" />
-          <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="hGQ5zx_">
@@ -1262,6 +1224,12 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1205851242421" />
       <ref role="20lvS9" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+    </node>
+    <node concept="1TJgyj" id="4USTbHlrVgT" role="1TKVEi">
+      <property role="IQ2ns" value="5672535223916540985" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="applicableBlock" />
+      <ref role="20lvS9" node="4USTbHlrUxi" resolve="QuickFixApplicableBlock" />
     </node>
   </node>
   <node concept="1TIwiD" id="hGQ5ZVt">
@@ -2218,6 +2186,16 @@
     <node concept="PrWs8" id="3qzTJpCVcjK" role="PzmwI">
       <ref role="PrY4T" node="hQOEHw2" resolve="MessageStatement" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="4USTbHlrUxi">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="QuickFixApplicableBlock" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="34LRSv" value="applicable" />
+    <property role="3GE5qa" value="definition.quickfix" />
+    <property role="EcuMT" value="5672535223916537938" />
+    <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
   </node>
 </model>
 

@@ -17,11 +17,11 @@ import jetbrains.mps.debugger.api.ui.icons.Icons;
 import com.intellij.execution.ui.layout.PlaceInGrid;
 import javax.swing.JComponent;
 import jetbrains.mps.debug.api.evaluation.IEvaluationProvider;
-import com.intellij.openapi.actionSystem.DataProvider;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.NonNls;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.UiDataProvider;
 import java.awt.LayoutManager;
+import com.intellij.util.concurrency.annotations.RequiresEdt;
+import com.intellij.openapi.actionSystem.DataSink;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.ui.ListCellRendererWrapper;
@@ -78,17 +78,15 @@ public class DebuggerToolPanel {
     }
   }
 
-  public class DebuggerPanel extends JPanel implements DataProvider {
+  public class DebuggerPanel extends JPanel implements UiDataProvider {
 
-    @Nullable
-    public Object getData(@NonNls String id) {
-      if (PlatformDataKeys.HELP_ID.is(id)) {
-        return "ideaInterface.debuggerView";
-      }
-      return null;
-    }
     public DebuggerPanel(LayoutManager p0) {
       super(p0);
+    }
+    @RequiresEdt
+    @Override
+    public void uiDataSnapshot(@NotNull DataSink sink) {
+      sink.set(PlatformDataKeys.HELP_ID, "debugging.DebugWindow");
     }
   }
 

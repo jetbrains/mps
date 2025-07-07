@@ -8,6 +8,7 @@ import java.util.List;
 import java.io.File;
 import java.util.ArrayList;
 import org.apache.tools.ant.BuildException;
+import jetbrains.mps.build.ant.ProjectPath;
 import jetbrains.mps.build.ant.ModuleJarDataType;
 import jetbrains.mps.build.ant.Macro;
 import java.util.Set;
@@ -15,6 +16,7 @@ import java.util.LinkedHashSet;
 import jetbrains.mps.tool.common.Script;
 import org.apache.tools.ant.taskdefs.ExecuteStreamHandler;
 import jetbrains.mps.build.ant.Arg;
+import org.apache.tools.ant.Project;
 
 /**
  * A runtime object representing Ant task &lt;launchtest&gt;.
@@ -25,6 +27,7 @@ import jetbrains.mps.build.ant.Arg;
  * <li>&lt;macro&gt; </li>
  * <li>&lt;plugin&gt; </li>
  * <li>&lt;testmodules&gt; </li>
+ * <li>&lt;project&gt; </li>
  * </ul>
  */
 @GeneratedClass(node = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)/5529288089450537962", model = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)")
@@ -71,6 +74,12 @@ public class LaunchTestTask extends MpsLoadTask {
 
   public void setOpenTest(boolean openTest) {
     this.myWhatToDo.putProperty(TEST_REPORTS_OPENTEST, Boolean.toString(openTest));
+  }
+
+  public void addConfiguredProject(ProjectPath projectPath) {
+    if (checkProperProjectDir(projectPath.getPath())) {
+      myWhatToDo.addProjectFile(projectPath.getPath());
+    }
   }
 
   public void addConfiguredLibrary(ModuleJarDataType jar) {
@@ -146,6 +155,14 @@ public class LaunchTestTask extends MpsLoadTask {
     Arg arg = new Arg();
     arg.setValue(value);
     return arg;
+  }
+
+  private boolean checkProperProjectDir(File dir) {
+    if (new File(dir, ".mps").exists()) {
+      return true;
+    }
+    getProject().log(String.format("Not an MPS project: %s", dir), Project.MSG_ERR);
+    return false;
   }
 
 }

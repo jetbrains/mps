@@ -8,18 +8,27 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.IdeBundle;
-import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.ide.ui.tree.DiscoveryValueProvider;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
-import javax.swing.tree.TreeNode;
+import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import java.util.List;
+import java.util.stream.Collectors;
+import com.intellij.openapi.ui.InputValidator;
+import com.intellij.openapi.ui.InputValidatorEx;
+import com.intellij.openapi.util.NlsContexts;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NonNls;
+import java.util.Arrays;
+import com.intellij.openapi.util.NlsSafe;
 import com.intellij.openapi.ui.Messages;
 import java.util.Objects;
 import jetbrains.mps.smodel.undo.NamedCommand;
-import java.util.List;
-import org.jetbrains.mps.openapi.module.SModule;
 import com.intellij.openapi.command.undo.DocumentReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.command.undo.UndoManager;
@@ -43,7 +52,7 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText(IdeBundle.message("actions.virtual.package.rename.on.modules.text"));
-    return RenameModulesVirtualFolder_Action.this.getProjectPane(_params) != null && !(((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode")).isFinalName()) && ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode")).hasModulesUnder();
+    return !(Sequence.fromIterable(Sequence.fromStream(((DiscoveryValueProvider) MapSequence.fromMap(_params).get("selectedObject")).discoverValuesOfType(SModule.class))).isEmpty());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -62,12 +71,22 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
       }
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
-      MapSequence.fromMap(_params).put("treeNode", p);
+      Object p = event.getData(MPSCommonDataKeys.VALUE);
+      MapSequence.fromMap(_params).put("selectedValue", p);
       if (p == null) {
         return false;
       }
-      if (p != null && !(p instanceof NamespaceTextNode)) {
+      if (p != null && !(p instanceof VirtualFolder.Modules)) {
+        return false;
+      }
+    }
+    {
+      Object p = event.getData(MPSCommonDataKeys.USER_OBJECT);
+      MapSequence.fromMap(_params).put("selectedObject", p);
+      if (p == null) {
+        return false;
+      }
+      if (p != null && !(p instanceof DiscoveryValueProvider)) {
         return false;
       }
     }
@@ -82,10 +101,32 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final NamespaceTextNode node = ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode"));
-    final String originalVFolder = node.getNamespace();
+    final String originalVFolder = ((VirtualFolder.Modules) MapSequence.fromMap(_params).get("selectedValue")).getName();
+    final List<SModule> modules = ((DiscoveryValueProvider) MapSequence.fromMap(_params).get("selectedObject")).discoverValuesOfType(SModule.class).collect(Collectors.<SModule>toList());
 
-    final String modifiedVFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.virtual.package.rename.on.modules.title"), null, originalVFolder, null);
+    InputValidator validator = new InputValidatorEx() {
+
+      @NlsContexts.DetailedDescription
+      @Nullable
+      @Override
+      public String getErrorText(@NonNls String virtualFolder) {
+        String normalized = (virtualFolder == null ? "" : virtualFolder);
+        normalized = String.join(".", Arrays.asList(normalized.split("\\.+")));
+        if (!(normalized.equals(virtualFolder))) {
+          return "Invalid virtual folder format";
+        }
+        normalized = (normalized.startsWith(".") ? normalized.substring(1) : normalized);
+        if (!(normalized.equals(virtualFolder))) {
+          return "Virtual folder cannot start with a '.'";
+        }
+        return null;
+      }
+      @Override
+      public boolean canClose(@NlsSafe String virtualFolder) {
+        return getErrorText(virtualFolder) == null;
+      }
+    };
+    final String modifiedVFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.virtual.package.rename.on.modules.title"), null, originalVFolder, validator);
 
     // Allow passing of an empty string which will result in virtual folder removal
     if (modifiedVFolder == null || Objects.equals(originalVFolder, modifiedVFolder)) {
@@ -96,7 +137,6 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
     NamedCommand command = new NamedCommand("Rename virtual folder to " + modifiedVFolder, true) {
       @Override
       public void run() {
-        final List<SModule> modules = node.getModulesUnder();
         final DocumentReference[] myDocumentReferences = NamespaceInternalActionsUtil.obtainDocumentReferences(modules, mpsProject);
         for (SModule module : ListSequence.fromList(modules)) {
           mpsProject.setVirtualFolder(module, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getVirtualFolder(module), originalVFolder, modifiedVFolder));

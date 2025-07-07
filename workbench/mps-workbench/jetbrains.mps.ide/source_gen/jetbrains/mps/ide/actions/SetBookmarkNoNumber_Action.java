@@ -60,7 +60,7 @@ public class SetBookmarkNoNumber_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    BookmarkManager bookmarkManager = ((Project) MapSequence.fromMap(_params).get("project")).getComponent(BookmarkManager.class);
+    BookmarkManager bookmarkManager = BookmarkManager.getInstance(((Project) MapSequence.fromMap(_params).get("project")));
     bookmarkManager.setUnnumberedBookmark(((SNode) MapSequence.fromMap(_params).get("node")));
   }
 }

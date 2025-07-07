@@ -11,8 +11,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import java.util.concurrent.atomic.AtomicInteger;
-import jetbrains.mps.make.IMakeService;
-import com.intellij.openapi.application.ApplicationManager;
+import jetbrains.mps.make.MakeServiceComponent;
+import jetbrains.mps.ide.MPSCoreComponents;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import java.util.function.Supplier;
 import jetbrains.mps.util.Computable;
@@ -44,13 +44,14 @@ public class ReloadManagerComponent extends ReloadManager implements Disposable 
   private final Object myUpdateId = new Object();
   private final AtomicInteger mySuspendCount = new AtomicInteger(0);
 
-  private final IMakeService myMakeService;
+  private final MakeServiceComponent myMakeService;
 
   public ReloadManagerComponent() {
     myTaskQueue.setRestartTimerOnAdd(true);
-    // I'd love to use MakeServiceComponent.get() but no mechanism to ensure MakeServiceComponent is already initialized,
-    // (it's WorkbenchMakeService AppComponent that is responsible for init), therefore have to access the instance explicitly
-    myMakeService = ApplicationManager.getApplication().getComponent(IMakeService.class);
+    // JFI, there' [mps-platform]/j.m.ide.platform activator that registers WorkbenchMakeService implementation with MakeServiceComponent,
+    // but we don't care here if it's already there or not - all we need is a listener, and MSC does its job to make sure we get 
+    // respective notifications once proper IMakeService is installed.
+    myMakeService = MPSCoreComponents.getInstance().getPlatform().findComponent(MakeServiceComponent.class);
     myMakeService.addListener(myMakeListener);
     VirtualFileManager.getInstance().addVirtualFileManagerListener(new NoReloadOnRefresh(), this);
   }
@@ -237,27 +238,36 @@ public class ReloadManagerComponent extends ReloadManager implements Disposable 
     }
   }
 
-  private class NotReloadingOnMakeListener extends IMakeNotificationListener.Stub {
+  private class NotReloadingOnMakeListener implements IMakeNotificationListener {
+    private boolean myInFirstRun = true;
     @Override
     public void sessionOpened(MakeNotification notification) {
+      myInFirstRun = false;
       suspendReloads();
     }
 
     @Override
     public void sessionClosed(MakeNotification notification) {
+      if (myInFirstRun) {
+        return;
+      }
       resumeReloads();
     }
   }
 
   private class NoReloadOnRefresh implements VirtualFileManagerListener {
+    private boolean myInFirstRun = true;
     @Override
     public void beforeRefreshStart(boolean async) {
+      myInFirstRun = false;
       suspendReloads();
     }
 
     @Override
     public void afterRefreshFinish(boolean async) {
-      resumeReloads();
+      if (!(myInFirstRun)) {
+        resumeReloads();
+      }
       if (!(async)) {
         flushAllPendingReloads();
       }

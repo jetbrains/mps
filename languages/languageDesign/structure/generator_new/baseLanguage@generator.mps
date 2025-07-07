@@ -9,7 +9,7 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
   </languages>
   <imports>
@@ -9965,7 +9965,7 @@
                           <node concept="2OqwBi" id="2XhLPK3nLmU" role="3uHU7B">
                             <node concept="2OqwBi" id="2XhLPK3nLmV" role="2Oq$k0">
                               <node concept="3TrEf2" id="2XhLPK3nLmW" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tpce:fA0ks94" />
+                                <ref role="3Tt5mk" to="tpce:fA0ks94" resolve="specializedLink" />
                               </node>
                               <node concept="30H73N" id="2XhLPK3nLmX" role="2Oq$k0" />
                             </node>
@@ -9984,7 +9984,7 @@
                         <node concept="2OqwBi" id="7jKywMxejOR" role="2Oq$k0">
                           <node concept="30H73N" id="7jKywMxejOS" role="2Oq$k0" />
                           <node concept="3TrEf2" id="7jKywMxejOT" role="2OqNvi">
-                            <ref role="3Tt5mk" to="tpce:fA0ks94" />
+                            <ref role="3Tt5mk" to="tpce:fA0ks94" resolve="specializedLink" />
                           </node>
                         </node>
                         <node concept="1mfA1w" id="7jKywMxeAD6" role="2OqNvi" />

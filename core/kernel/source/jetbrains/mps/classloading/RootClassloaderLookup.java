@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.library.SLibrary;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.smodel.MPSModuleOwner;
@@ -41,13 +42,13 @@ public final class RootClassloaderLookup implements Supplier<ClassLoader> {
   @Override
   public ClassLoader get() {
     SRepository repository = myModule.getRepository();
-    if (false == repository instanceof MPSModuleRepository) {
+    if (false == repository instanceof SRepositoryExt) {
       // no idea how/why to look up owners of a module attached to unknown repository.
       return ReloadableModule.class.getClassLoader();
     }
     repository.getModelAccess().checkReadAccess();
     // XXX may want to refactor this to ModuleRepositoryFacade() to hide getOwners internals of an SRepository
-    Set<MPSModuleOwner> moduleOwners = ((MPSModuleRepository) repository).getOwners(myModule);
+    Set<MPSModuleOwner> moduleOwners = ((SRepositoryExt) repository).getOwners(myModule);
     for (MPSModuleOwner owner : moduleOwners) {
       if (owner instanceof SLibrary) {
         ClassLoader classLoader = ((SLibrary) owner).getPluginClassLoader();

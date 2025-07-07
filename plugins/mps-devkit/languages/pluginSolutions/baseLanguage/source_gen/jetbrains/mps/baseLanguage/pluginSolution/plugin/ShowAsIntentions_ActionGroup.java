@@ -13,6 +13,5 @@ public class ShowAsIntentions_ActionGroup extends GeneratedActionGroup {
     super("ShowAsIntentions", ID, plugin);
     setIsInternal(false);
     setPopup(false);
-    ShowAsIntentions_ActionGroup.this.addAction("jetbrains.mps.baseLanguage.pluginSolution.plugin.CreateMatchingConstructor_Action");
   }
 }

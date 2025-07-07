@@ -42,11 +42,11 @@ public class ClassScopeHelper {
   public static Scope create(final SNode contextNode) {
     TargetPlatform platform = IKotlinRoot__BehaviorDescriptor.getPlatform_id2Gpd$BYJrkg.invoke(SNodeOperations.asSConcept(CONCEPTS.IKotlinRoot$xV), contextNode);
 
-    return new FilteringScope(new ModelsScope(Sequence.fromStream(PlatformHelper.compatibleImportedModels(contextNode, platform)), false, CONCEPTS.IClassDeclaration$bQ)) {
+    return new FilteringScope(new ModelsScope(Sequence.fromStream(PlatformHelper.compatibleImportedModels(contextNode, platform)), false, CONCEPTS.IClassLike$go)) {
       @Override
       public boolean isExcluded(SNode node) {
-        // Filter out visibility
-        return !(TopLevelVisibility.visibleTo(node, contextNode));
+        // Only objects and classes, and filter out visibility
+        return (!(SNodeOperations.isInstanceOf(node, CONCEPTS.IClassDeclaration$bQ)) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.IObject$38))) || !(TopLevelVisibility.visibleTo(node, contextNode));
       }
     };
   }
@@ -56,5 +56,6 @@ public class ClassScopeHelper {
     /*package*/ static final SConcept InnerClassModifier$wL = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af40bL, "jetbrains.mps.kotlin.structure.InnerClassModifier");
     /*package*/ static final SInterfaceConcept IKotlinRoot$xV = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x713f27d92240e539L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
     /*package*/ static final SInterfaceConcept IClassDeclaration$bQ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b56dL, "jetbrains.mps.kotlin.structure.IClassDeclaration");
+    /*package*/ static final SInterfaceConcept IObject$38 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1ba36e493d40fea4L, "jetbrains.mps.kotlin.structure.IObject");
   }
 }

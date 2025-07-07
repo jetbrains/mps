@@ -22,10 +22,12 @@ abstract class KotlinComponent(val platform: TargetPlatform, val root: IFile) {
 
     open fun take(consumer: KotlinStubModelProducer, file: IFile, pkg: PackageName, pkgScope: PackageScopeControl?): Boolean {
         // Contains any content files
-        if (pkgScope.isIncluded(pkg) && file.childrenOrEmpty.any { accept(it) }) {
+        val included = pkgScope.isIncluded(pkg)
+
+        if (included && file.childrenOrEmpty.any { accept(it) }) {
             consumer.addPath(file, pkg, this.platform)
         }
 
-        return pkgScope.isAnyChildIncluded(pkg)
+        return included || pkgScope.isAnyChildIncluded(pkg)
     }
 }

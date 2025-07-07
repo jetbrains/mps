@@ -8,12 +8,12 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.AbstractModule;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.openapi.module.SDependency;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import java.util.Map;
@@ -65,7 +65,7 @@ public final class ModuleDependencyVersions {
    */
   public boolean needsUpdate(@NotNull SModule module) {
     myModuleRepo.getModelAccess().checkReadAccess();
-    return doUpdateImportVersions(module, true);
+    return !(module.isReadOnly()) && module instanceof AbstractModule && ((AbstractModule) module).getModuleDescriptor() != null && doUpdateImportVersions(module, true);
   }
 
   /**
@@ -243,7 +243,13 @@ public final class ModuleDependencyVersions {
       if (oldDepVersions.containsKey(dep.getModuleReference())) {
         newDepVersions.put(dep.getModuleReference(), oldDepVersions.get(dep.getModuleReference()));
       } else {
-        newDepVersions.put(dep.getModuleReference(), ((AbstractModule) dep).getModuleVersion());
+        if (dep instanceof AbstractModule) {
+          newDepVersions.put(dep.getModuleReference(), ((AbstractModule) dep).getModuleVersion());
+        } else {
+          if (LOG.isWarningLevel()) {
+            LOG.warning(String.format("Module %s depends from a module w/o version information %s", module.getModuleName(), dep.getModuleName()));
+          }
+        }
       }
     }
     return newDepVersions;

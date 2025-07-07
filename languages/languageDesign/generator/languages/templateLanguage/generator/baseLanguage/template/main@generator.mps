@@ -150,6 +150,9 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
@@ -3756,6 +3759,7 @@
         <node concept="3cpWs8" id="Vt8Qt9S8NR" role="3cqZAp">
           <node concept="3cpWsn" id="Vt8Qt9S8NS" role="3cpWs9">
             <property role="TrG5h" value="pattern" />
+            <property role="3TUv4t" value="true" />
             <node concept="3uibUv" id="Vt8Qt9S8NT" role="1tU5fm">
               <ref role="3uigEE" to="7jhi:~GeneratedMatchingPattern" resolve="GeneratedMatchingPattern" />
             </node>
@@ -3802,29 +3806,52 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="Vt8Qt9S8Od" role="3cqZAp">
-          <node concept="2OqwBi" id="Vt8Qt9S8Oe" role="3clFbG">
-            <node concept="37vLTw" id="Vt8Qt9S8Of" role="2Oq$k0">
-              <ref role="3cqZAo" node="7gHSFcXqTtI" resolve="_context" />
+        <node concept="3cpWs8" id="2EChGJgNXsJ" role="3cqZAp">
+          <node concept="3cpWsn" id="2EChGJgNXsK" role="3cpWs9">
+            <property role="TrG5h" value="rv" />
+            <node concept="3uibUv" id="2EChGJgNXsL" role="1tU5fm">
+              <ref role="3uigEE" to="r99j:~PatternMatch" resolve="PatternMatch" />
             </node>
-            <node concept="liA8E" id="Vt8Qt9S8Og" role="2OqNvi">
-              <ref role="37wK5l" to="q1l7:~PatternRuleContext.createPatternContext(jetbrains.mps.lang.pattern.GeneratedMatchingPattern)" resolve="createPatternContext" />
-              <node concept="37vLTw" id="Vt8Qt9S8Oh" role="37wK5m">
-                <ref role="3cqZAo" node="Vt8Qt9S8NS" resolve="pattern" />
-              </node>
-            </node>
-          </node>
-          <node concept="1W57fq" id="Vt8Qt9S8Oi" role="lGtFl">
-            <node concept="3IZrLx" id="Vt8Qt9S8Oj" role="3IZSJc">
-              <node concept="3clFbS" id="Vt8Qt9S8Ok" role="2VODD2">
-                <node concept="3clFbF" id="Vt8Qt9S8Ol" role="3cqZAp">
-                  <node concept="2OqwBi" id="Vt8Qt9S8Om" role="3clFbG">
-                    <node concept="3x8VRR" id="Vt8Qt9S8On" role="2OqNvi" />
-                    <node concept="2OqwBi" id="Vt8Qt9S8Oo" role="2Oq$k0">
-                      <node concept="3TrEf2" id="Vt8Qt9Spmk" role="2OqNvi">
-                        <ref role="3Tt5mk" to="tpf8:1$dcvTE4IIP" resolve="conditionFunction" />
+            <node concept="2ShNRf" id="2EChGJgO2vA" role="33vP2m">
+              <node concept="YeOm9" id="2EChGJgO7mQ" role="2ShVmc">
+                <node concept="1Y3b0j" id="2EChGJgO7mT" role="YeSDq">
+                  <property role="2bfB8j" value="true" />
+                  <property role="373rjd" value="true" />
+                  <ref role="1Y3XeK" to="r99j:~PatternMatch" resolve="PatternMatch" />
+                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                  <node concept="3Tm1VV" id="2EChGJgO7mU" role="1B3o_S" />
+                  <node concept="3clFb_" id="2EChGJgO7n8" role="jymVt">
+                    <property role="TrG5h" value="getValue" />
+                    <node concept="3Tm1VV" id="2EChGJgO7n9" role="1B3o_S" />
+                    <node concept="2AHcQZ" id="2EChGJgO7nb" role="2AJF6D">
+                      <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+                    </node>
+                    <node concept="3uibUv" id="2EChGJgO7nc" role="3clF45">
+                      <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+                    </node>
+                    <node concept="37vLTG" id="2EChGJgO7nd" role="3clF46">
+                      <property role="TrG5h" value="name" />
+                      <node concept="3uibUv" id="2EChGJgO7ne" role="1tU5fm">
+                        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                       </node>
-                      <node concept="30H73N" id="Vt8Qt9S8Oq" role="2Oq$k0" />
+                    </node>
+                    <node concept="3clFbS" id="2EChGJgO7nf" role="3clF47">
+                      <node concept="3cpWs6" id="2EChGJgOeXS" role="3cqZAp">
+                        <node concept="2OqwBi" id="2EChGJgO9FP" role="3cqZAk">
+                          <node concept="37vLTw" id="2EChGJgO7Sf" role="2Oq$k0">
+                            <ref role="3cqZAo" node="Vt8Qt9S8NS" resolve="pattern" />
+                          </node>
+                          <node concept="liA8E" id="2EChGJgOccd" role="2OqNvi">
+                            <ref role="37wK5l" to="7jhi:~GeneratedMatchingPattern.getFieldValue(java.lang.String)" resolve="getFieldValue" />
+                            <node concept="37vLTw" id="2EChGJgOcCt" role="37wK5m">
+                              <ref role="3cqZAo" node="2EChGJgO7nd" resolve="name" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="2AHcQZ" id="2EChGJgO7nh" role="2AJF6D">
+                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                     </node>
                   </node>
                 </node>
@@ -3880,8 +3907,16 @@
                   </node>
                 </node>
               </node>
-              <node concept="37vLTw" id="Vt8Qt9S8P4" role="37wK5m">
-                <ref role="3cqZAo" node="7gHSFcXqTtI" resolve="_context" />
+              <node concept="2OqwBi" id="2EChGJgNV2C" role="37wK5m">
+                <node concept="37vLTw" id="2EChGJgNTqt" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7gHSFcXqTtI" resolve="_context" />
+                </node>
+                <node concept="liA8E" id="2EChGJgNW$8" role="2OqNvi">
+                  <ref role="37wK5l" to="q1l7:~PatternRuleContext.withValues(jetbrains.mps.generator.runtime.PatternMatch)" resolve="withValues" />
+                  <node concept="37vLTw" id="2EChGJgNYvu" role="37wK5m">
+                    <ref role="3cqZAo" node="2EChGJgNXsK" resolve="rv" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -3893,7 +3928,7 @@
         </node>
         <node concept="3cpWs6" id="Vt8Qt9S8P8" role="3cqZAp">
           <node concept="37vLTw" id="Vt8Qt9S8P9" role="3cqZAk">
-            <ref role="3cqZAo" node="Vt8Qt9S8NS" resolve="pattern" />
+            <ref role="3cqZAo" node="2EChGJgNXsK" resolve="rv" />
           </node>
         </node>
       </node>
@@ -3953,7 +3988,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="7gHSFcXqTtF" role="3clF45">
-        <ref role="3uigEE" to="7jhi:~GeneratedMatchingPattern" resolve="GeneratedMatchingPattern" />
+        <ref role="3uigEE" to="r99j:~PatternMatch" resolve="PatternMatch" />
       </node>
       <node concept="17Uvod" id="Vt8Qt9S0AU" role="lGtFl">
         <property role="2qtEX9" value="name" />
@@ -26639,7 +26674,7 @@
               <property role="TrG5h" value="pattern" />
               <property role="3TUv4t" value="true" />
               <node concept="3uibUv" id="6o3PfK5bsOC" role="1tU5fm">
-                <ref role="3uigEE" to="7jhi:~GeneratedMatchingPattern" resolve="GeneratedMatchingPattern" />
+                <ref role="3uigEE" to="r99j:~PatternMatch" resolve="PatternMatch" />
               </node>
               <node concept="2YIFZM" id="6o3PfK5bsOD" role="33vP2m">
                 <ref role="1Pybhc" node="gZ0modb" resolve="QueriesGenerated" />
@@ -26733,7 +26768,7 @@
                   <ref role="3cqZAo" node="5gzAr1$5Kem" resolve="templateContext" />
                 </node>
                 <node concept="liA8E" id="6o3PfK5bsOW" role="2OqNvi">
-                  <ref role="37wK5l" to="r99j:~TemplateContext.subContext(jetbrains.mps.lang.pattern.GeneratedMatchingPattern)" resolve="subContext" />
+                  <ref role="37wK5l" to="r99j:~TemplateContext.subContext(jetbrains.mps.generator.runtime.PatternMatch)" resolve="subContext" />
                   <node concept="37vLTw" id="6o3PfK5bsOX" role="37wK5m">
                     <ref role="3cqZAo" node="6o3PfK5bsOB" resolve="pattern" />
                   </node>
@@ -37613,11 +37648,11 @@
         </node>
         <node concept="3clFb_" id="50GoLNORg$1" role="jymVt">
           <property role="1EzhhJ" value="false" />
-          <property role="TrG5h" value="pattern" />
+          <property role="TrG5h" value="match" />
           <property role="DiZV1" value="false" />
           <node concept="3Tm1VV" id="50GoLNORg$2" role="1B3o_S" />
           <node concept="3uibUv" id="50GoLNORg$3" role="3clF45">
-            <ref role="3uigEE" to="7jhi:~GeneratedMatchingPattern" resolve="GeneratedMatchingPattern" />
+            <ref role="3uigEE" to="r99j:~PatternMatch" resolve="PatternMatch" />
           </node>
           <node concept="37vLTG" id="50GoLNORg$4" role="3clF46">
             <property role="TrG5h" value="ctx" />

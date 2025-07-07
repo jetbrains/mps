@@ -15,9 +15,9 @@ import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.console.tool.ConsoleTool;
+import com.intellij.ide.PasteProvider;
+import jetbrains.mps.console.tool.MPSConsoleDataKeys;
+import com.intellij.openapi.actionSystem.impl.SimpleDataContext;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.IdeActions;
@@ -65,17 +65,15 @@ public class PasteOriginalNode_Action extends BaseAction {
         return false;
       }
     }
-    {
-      Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
-      if (p == null) {
-        return false;
-      }
-    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((Project) MapSequence.fromMap(_params).get("project")).getComponent(ConsoleTool.class).runWithoutPasteAsRef(() -> ActionUtils.updateAndPerformAction(ActionManager.getInstance().getAction(IdeActions.ACTION_PASTE), event));
+    // Override the paste provider defined in BaseConsoleTab
+    PasteProvider parentPP = (PasteProvider) ((EditorComponent) MapSequence.fromMap(_params).get("editor")).getData(MPSConsoleDataKeys.PARENT_PASTE_PROVIDER.getName());
+    if (parentPP != null) {
+      AnActionEvent customizedEvent = event.withDataContext(SimpleDataContext.getSimpleContext(PlatformDataKeys.PASTE_PROVIDER, parentPP, event.getDataContext()));
+      ActionUtils.updateAndPerformAction(ActionManager.getInstance().getAction(IdeActions.ACTION_PASTE), customizedEvent);
+    }
   }
 }

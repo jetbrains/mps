@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,7 +74,7 @@ public abstract class RealClassPathItem extends AbstractClassPathItem {
       } else if (Files.isJarOrZipFile(file)) {
         return new JarFileClassPathItem(file, path);
       } else if (file.isDirectory()) {
-        return new FileClassPathItem(path);
+        return new FileClassPathItem(file);
       } else if (archiveSep != -1) {
         throw new IllegalArgumentException(String.format("Path '%s' points to the location inside the jar which is not supported", path));
       } else {

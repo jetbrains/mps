@@ -39,8 +39,10 @@ public class PropertyAccessExpression_Constraints extends BaseConstraintsDescrip
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            // Filter on links rather than regular signature
-            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).navigationReceiver().filter(new SignatureFilterImpl<>(LinkSignature.class)).prioritizeProperties((link, kind, receiver) -> new LinkSignature(link, kind)).buildScope(CONCEPTS.PropertyDeclaration$1S);
+            return KotlinScopes.scopeWithLegacyTypesystemFallback(_context.getContextNode(), CONCEPTS.PropertyDeclaration$1S, () -> {
+              // Filter on links rather than regular signature
+              return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).navigationReceiver().filter(new SignatureFilterImpl<>(LinkSignature.class)).prioritizeProperties((link, kind, receiver) -> new LinkSignature(link, kind)).buildSigScope();
+            });
           }
         };
       }

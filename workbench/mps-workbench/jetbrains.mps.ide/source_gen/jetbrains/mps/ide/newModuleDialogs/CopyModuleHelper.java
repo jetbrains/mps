@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import jetbrains.mps.extapi.persistence.CopyableModelRoot;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.extapi.persistence.ModelRootBase;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import jetbrains.mps.persistence.MementoImpl;
@@ -54,7 +56,7 @@ public final class CopyModuleHelper {
       throw new IllegalArgumentException("The module descriptor is null for the " + myOriginal);
     }
     AbstractModule copy;
-    ModuleDescriptor copyDescriptor = new DescriptorCopyOrganizer(myOriginal, myCopyName, myCopyLocation).copyDescriptor();
+    ModuleDescriptor copyDescriptor = new DescriptorCopyOrganizer(myOriginal, myCopyName).copyDescriptor();
     copy = createModule(myCopyLocation, copyDescriptor);
     try {
       addModuleToProject(copy);
@@ -120,6 +122,7 @@ public final class CopyModuleHelper {
     referenceUpdater.adjust();
   }
 
+  @SuppressWarnings("rawtypes")
   private static void copyModelRoots(AbstractModule source, AbstractModule target) throws CopyNotSupportedException {
     List<ModelRoot> targetModelRoots = new ArrayList<ModelRoot>();
     for (ModelRoot sourceModelRoot : source.getModelRoots()) {
@@ -130,17 +133,17 @@ public final class CopyModuleHelper {
       if (targetModelRoot instanceof ModelRootBase) {
         ((ModelRootBase) targetModelRoot).setModule(target);
       }
-      // noinspection unchecked
       ((CopyableModelRoot) sourceModelRoot).copyTo((CopyableModelRoot) targetModelRoot);
       targetModelRoots.add(targetModelRoot);
     }
 
     ModuleDescriptor targetDescriptor = target.getModuleDescriptor();
     if (targetDescriptor != null) {
+      ModulePersistenceContext mpc = PersistenceContextImpl.forModule(target);
       Collection<ModelRootDescriptor> modelRootDescriptors = targetDescriptor.getModelRootDescriptors();
       for (ModelRoot targetModelRoot : targetModelRoots) {
         Memento targetMemento = new MementoImpl();
-        targetModelRoot.save(targetMemento);
+        targetModelRoot.save(targetMemento, mpc);
         modelRootDescriptors.add(new ModelRootDescriptor(targetModelRoot.getType(), targetMemento));
       }
       target.setModuleDescriptor(targetDescriptor);

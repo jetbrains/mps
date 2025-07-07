@@ -18,11 +18,13 @@ package jetbrains.mps.nodeEditor;
 import com.intellij.ide.DataManager;
 import com.intellij.ide.lightEdit.LightEditCompatible;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.keymap.KeymapUtil;
 import com.intellij.openapi.project.DumbAwareAction;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.search.AbstractSearchPanel;
 import jetbrains.mps.ide.search.SearchHistoryStorage;
@@ -78,9 +80,9 @@ public class SearchPanel extends AbstractSearchPanel {
   @Override
   protected SearchHistoryStorage getSearchHistory() {
     if (mySearchHistory == null) {
-      final MPSProject p = MPSCommonDataKeys.MPS_PROJECT.getData(DataManager.getInstance().getDataContext(myEditor));
+      final Project p = CommonDataKeys.PROJECT.getData(DataManager.getInstance().getDataContext(myEditor));
       if (p != null) {
-        mySearchHistory = p.getComponent(SearchHistoryComponent.class);
+        mySearchHistory = SearchHistoryComponent.getInstance(p);
       }
       if (mySearchHistory == null) {
         mySearchHistory = new SearchHistoryComponent();

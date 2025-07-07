@@ -13,7 +13,7 @@
       <unit at="8,0,13,0" name="jetbrains.mps.vcs.mergehints.plugin.ExtensionDescriptor" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.vcs.mergehints.plugin.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.vcs.mergehints.plugin.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:aae8a471-8cae-4fe5-80b6-376816bdad4a(jetbrains.mps.vcs.mergehints.plugin)/4140018591229953705">
@@ -23,7 +23,7 @@
       <node id="4140018591229953705" at="30,60,31,71" concept="4" />
       <node id="4140018591229953705" at="33,50,34,142" concept="4" />
       <node id="4140018591229953705" at="38,55,39,179" concept="4" />
-      <node id="4140018591229953705" at="42,45,43,49" concept="4" />
+      <node id="4140018591229953705" at="42,45,43,40" concept="4" />
       <node id="4140018591229953705" at="46,34,47,24" concept="4" />
       <node id="4726480899536083435" at="51,0,52,0" concept="5" trace="HELP_URL" />
       <node id="4140018591229953705" at="22,0,25,0" concept="1" trace="LanguageAspectsEP_extension#()V" />
@@ -38,7 +38,7 @@
       <scope id="4140018591229953705" at="30,60,31,71" />
       <scope id="4140018591229953705" at="33,50,34,142" />
       <scope id="4140018591229953705" at="38,55,39,179" />
-      <scope id="4140018591229953705" at="42,45,43,49" />
+      <scope id="4140018591229953705" at="42,45,43,40" />
       <scope id="4140018591229953705" at="46,34,47,24" />
       <scope id="4140018591229953705" at="22,0,25,0" />
       <scope id="4140018591229953705" at="33,0,36,0" />

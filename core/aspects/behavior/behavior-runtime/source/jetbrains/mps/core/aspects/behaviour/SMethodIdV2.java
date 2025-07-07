@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,23 +17,21 @@ package jetbrains.mps.core.aspects.behaviour;
 
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.api.SMethodId;
-import jetbrains.mps.smodel.SNodeId.Regular;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
-import org.jetbrains.mps.openapi.model.SNodeId;
 
 /**
- * An improvement over SMethodTrimmedId.
- * It includes the language identity now.
  * Represents a handle which uniquely identifies {@link SMethod} within the concept (including all the ancestors).
- * This implementation is based on the NodeId of the method node and the language id of the method
+ * This implementation is based on the NodeId of the method node and identity of its language
  *
  * @author apyshkin
  */
 @Immutable
 public final class SMethodIdV2 implements SMethodId {
+  // This is an improvement over original SMethodTrimmedId, includes the method's language identity.
+
   // we need two separate fields in order to preserve runtime compatibility with the previous version: SMethodTrimmedId
-  /*package*/ final long myBaseMethodId;
+  private final long myBaseMethodId;
   private final long myBaseMethodLanguageCompressedId;
 
   /**
@@ -50,8 +48,7 @@ public final class SMethodIdV2 implements SMethodId {
 
   @Override
   public int hashCode() {
-    // important that during migration period it is equal to SMethodTrimmedId#hashCode
-    return Long.hashCode(myBaseMethodId /*+ 31 * myBaseMethodLanguageCompressedId*/); // fixme [apyshkin] uncomment after 223
+    return Long.hashCode(myBaseMethodId + 31 * myBaseMethodLanguageCompressedId);
   }
 
   @Override
@@ -60,19 +57,7 @@ public final class SMethodIdV2 implements SMethodId {
       return ((SMethodIdV2) o).myBaseMethodId == myBaseMethodId &&
              ((SMethodIdV2) o).myBaseMethodLanguageCompressedId == myBaseMethodLanguageCompressedId;
     }
-    if (o instanceof SMethodTrimmedId) {
-      return nodeIdToLong(((SMethodTrimmedId) o).myNodeId) == myBaseMethodId;
-    }
     return false;
-  }
-
-  /*package*/ static long nodeIdToLong(SNodeId id) {
-    if (!(id instanceof Regular)) {
-      // todo [apyshkin]: work on SNodeId serialization if needed, we can make an extension for people to provide their
-      //                  own java-friendly serializations of SNodeId
-      throw new IllegalArgumentException("only work with Regular ids " + id);
-    }
-    return ((Regular) id).getId();
   }
 
   @Override
@@ -82,7 +67,7 @@ public final class SMethodIdV2 implements SMethodId {
 
   // methodName is just needed for the readability of the generated calls
   @NotNull
-  public static SMethodIdV2 create(@NotNull String methodName, long baseMethodId, long languageCompressedId) {
+  public static SMethodIdV2 create(@NotNull String ignoredMethodName, long baseMethodId, long languageCompressedId) {
     return new SMethodIdV2(baseMethodId, languageCompressedId);
   }
 }

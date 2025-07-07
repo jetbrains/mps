@@ -31,9 +31,6 @@
         <property id="1932269937152561478" name="useLabelSelection" index="OXtK3" />
         <property id="1229432188737" name="isLastPosition" index="ZRATv" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="1216989428737" name="jetbrains.mps.lang.test.structure.TestNode" flags="ng" index="1qefOq">
         <child id="1216989461394" name="nodeToCheck" index="1qenE9" />
       </concept>
@@ -710,9 +707,6 @@
         <node concept="3Tm1VV" id="1M51tTb4Jmz" role="1B3o_S" />
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="5DBbMQ1Hau4">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
   <node concept="LiM7Y" id="27WzgVxEMfL">
     <property role="TrG5h" value="FromClosure_Generics" />

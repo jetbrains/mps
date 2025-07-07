@@ -19,10 +19,10 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.icons.MPSIcons.Nodes;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
-import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.modules.LanguageAndSolutionsProducer;
+import jetbrains.mps.project.modules.NewModuleCheck;
+import jetbrains.mps.util.IStatus;
 import jetbrains.mps.workbench.DocumentationHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -39,6 +39,7 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   private final NameLocationPanel mySettings;
   private final JCheckBox myRuntimeSolution;
   private final JCheckBox mySandboxSolution;
+  private final JCheckBox myGenerator;
 
   public DefaultLanguageProjectTemplate() {
     myRuntimeSolution = new JCheckBox("Create Runtime Solution");
@@ -55,17 +56,26 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
         fireSettingsChanged();
       }
     });
+    myGenerator = new JCheckBox("Create Generator (as part of the language)");
+    myGenerator.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+        fireSettingsChanged();
+      }
+    });
     mySettings = new NameLocationPanel(new File("."), "Language name:", "Language file location:") {
       {
         // logic derived from NewLanguageSettings, see NewLanguage_Action for further considerations.
         add(myRuntimeSolution, 4, 0.0);
         add(mySandboxSolution, 5, 0.0);
+        add(myGenerator, 6, 0.0);
       }
       @Override
       public void reset() {
         super.reset();
         myRuntimeSolution.setSelected(false);
         mySandboxSolution.setSelected(false);
+        myGenerator.setSelected(true);
       }
     };
     mySettings.withDefaults("NewLanguage", "languages");
@@ -89,7 +99,7 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   public String getDescription() {
     return "In MPS, you create new languages and then use them to write code " +
            "in solutions. An <a href=\"" + DocumentationHelper.getHelpCenterBase() +
-           "MPS+project+structure#MPSprojectstructure-languages\">MPS language</a> describes the syntax, editor, generator and other aspects of the " +
+           "mps-project-structure.html#languages\">MPS language</a> describes the syntax, editor, generator and other aspects of the " +
            "new language.";
   }
 
@@ -106,7 +116,7 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   public TemplateFiller getTemplateFiller() {
     return project -> StartupManager.getInstance(project.getProject()).runAfterOpened(() -> project.getModelAccess().executeCommandInEDT(() -> {
       final LanguageAndSolutionsProducer lp = new LanguageAndSolutionsProducer(project);
-      lp.withRuntimeSolution(myRuntimeSolution.isSelected()).withSandboxSolution(mySandboxSolution.isSelected());
+      lp.withRuntimeSolution(myRuntimeSolution.isSelected()).withSandboxSolution(mySandboxSolution.isSelected()).withGenerator(myGenerator.isSelected());
       try {
         lp.create(mySettings.getModuleName(), project.getFileSystem().getFile(mySettings.getModuleLocation()));
       } catch (IllegalStateException | IllegalArgumentException e) {
@@ -126,22 +136,24 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   @Nullable
   @Override
   public String checkSettings() {
-    String checkResult = NewModuleUtil.check(null, MPSExtentions.DOT_LANGUAGE, mySettings.getModuleName(), mySettings.getModuleLocation().getAbsolutePath());
-    if (checkResult != null && !checkResult.isEmpty()) {
-      return checkResult;
+    final IStatus s = new NewModuleCheck().forLanguage().withName(mySettings.getModuleName()).withHome(mySettings.getModuleLocation()).checkAll();
+    if (s.isError()) {
+      return s.getMessage();
     }
     if (myRuntimeSolution.isSelected()) {
-      checkResult = NewModuleUtil.check(null, MPSExtentions.DOT_SOLUTION, mySettings.getModuleName() + ".runtime", mySettings.getModuleLocation().getAbsolutePath() + ".runtime");
-      if (checkResult != null && !checkResult.isEmpty()) {
-        return checkResult;
+      final File moduleLocation = new File(mySettings.getModuleLocation().getAbsolutePath() + ".runtime");
+      final IStatus status = new NewModuleCheck().forSolution().withName(mySettings.getModuleName() + ".runtime").withHome(moduleLocation).checkAll();
+      if (status.isError()) {
+        return status.getMessage();
       }
     }
     if (mySandboxSolution.isSelected()) {
-      checkResult = NewModuleUtil.check(null, MPSExtentions.DOT_SOLUTION, mySettings.getModuleName() + ".sandbox", mySettings.getModuleLocation().getAbsolutePath() + ".sandbox");
-      if (checkResult != null && !checkResult.isEmpty()) {
-        return checkResult;
+      final File moduleLocation = new File(mySettings.getModuleLocation().getAbsolutePath() + ".sandbox");
+      final IStatus status = new NewModuleCheck().forSolution().withName(mySettings.getModuleName() + ".sandbox").withHome(moduleLocation).checkAll();
+      if (status.isError()) {
+        return status.getMessage();
       }
     }
-    return checkResult;
+    return s.getMessage();
   }
 }

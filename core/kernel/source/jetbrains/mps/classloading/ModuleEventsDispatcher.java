@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -105,7 +105,12 @@ public class ModuleEventsDispatcher implements WriteActionListener {
 
   private void fireModuleEvents(List<SRepositoryEvent> events) {
     myRepository.getModelAccess().checkWriteAccess();
-    if (myPaused.get()) return;
+    if (myPaused.get()) {
+      return;
+    }
+    if (events.isEmpty()) {
+      return;
+    }
     for (SRepositoryBatchListener listener : myListeners) {
       listener.eventsHappened(events);
     }

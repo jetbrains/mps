@@ -170,7 +170,7 @@
       <node id="705057939849524982" at="35,0,36,22" concept="5" />
       <node id="705057939849524982" at="44,130,45,161" concept="4" />
       <node id="705057939849524982" at="45,161,46,0" concept="6" />
-      <node id="705057939849524982" at="47,55,48,70" concept="1" />
+      <node id="705057939849524982" at="47,55,48,74" concept="1" />
       <node id="705057939849524982" at="49,9,50,0" concept="6" />
       <node id="705057939849524982" at="50,0,51,22" concept="5" />
       <node id="1227128029536583142" at="56,60,57,91" concept="5" />
@@ -178,7 +178,7 @@
       <node id="1227128029536583162" at="61,5,62,16" concept="5" />
       <node id="1227128029536583120" at="64,149,65,281" concept="5" />
       <node id="705057939849524982" at="67,0,68,0" concept="7" trace="canBeParentBreakingPoint" />
-      <node id="705057939849524982" at="68,0,69,0" concept="7" trace="canBeRootBreakingPoint" />
+      <node id="705057939849524982" at="68,0,69,0" concept="7" trace="canBeAncestorBreakingPoint" />
       <node id="705057939849524982" at="71,0,72,0" concept="7" trace="TestSubstituteParentWithConstraints$6i" />
       <node id="705057939849524982" at="72,0,73,0" concept="7" trace="TestSubstituteChildWithConstraints1$xf" />
       <node id="705057939849524982" at="73,0,74,0" concept="7" trace="TestSubstituteChildWithConstraintsWrapper1$UK" />
@@ -202,7 +202,7 @@
       <node id="705057939849524982" at="40,0,55,0" concept="3" trace="calculateCanBeAncestorConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
       <scope id="705057939849524982" at="21,60,22,59" />
       <scope id="705057939849524982" at="32,55,33,72" />
-      <scope id="705057939849524982" at="47,55,48,70" />
+      <scope id="705057939849524982" at="47,55,48,74" />
       <scope id="1227128029536583141" at="56,60,57,91" />
       <scope id="1227128029536583152" at="59,67,60,98" />
       <scope id="1227128029536583119" at="64,149,65,281" />

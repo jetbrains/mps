@@ -47,7 +47,7 @@
   </registry>
   <node concept="1TIwiD" id="3In7kjT_Q2O">
     <property role="EcuMT" value="4293932951803486388" />
-    <property role="TrG5h" value="DocumentedNodeAnnotation" />
+    <property role="TrG5h" value="DocumentationAnnotation" />
     <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
     <node concept="M6xJ_" id="3In7kjT_RH_" role="lGtFl">
       <property role="Hh88m" value="documentation" />
@@ -63,7 +63,7 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="text" />
       <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" to="tpck:3xhyJYa45Zm" resolve="IPlaceholderContent" />
+      <ref role="20lvS9" to="tpck:2se02g_X34z" resolve="DocumentationContent" />
     </node>
   </node>
 </model>

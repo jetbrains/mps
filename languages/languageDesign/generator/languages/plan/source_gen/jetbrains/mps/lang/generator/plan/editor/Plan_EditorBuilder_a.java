@@ -94,7 +94,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_ibbzj5_a2a0() {
-    return (SLinkOperations.getTarget(myNode, LINKS.forkOf$KiHp) != null);
+    return (SLinkOperations.getTarget(myNode, LINKS.forkAs$K6gO) != null);
   }
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
@@ -104,7 +104,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
       editorCell.setCellId("property_name");
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.Plan$X1, "jetbrains.mps.lang.generator.plan.editor.Transform_MakeForkOf"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.Plan$X1, "jetbrains.mps.lang.generator.plan.editor.Transform_MakeForkAs"));
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
@@ -126,9 +126,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   public static class Plan_component_cellMenu_ibbzj5_a0b0a implements SubstituteInfoPartExt {
-    private Cell_MakeForkOf myComponent;
+    private Cell_MakeForkAs myComponent;
     public Plan_component_cellMenu_ibbzj5_a0b0a() {
-      this.myComponent = new Cell_MakeForkOf();
+      this.myComponent = new Cell_MakeForkAs();
     }
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
       return this.myComponent.createSubstituteActions(cellContext, editorContext);
@@ -144,14 +144,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new forkOfSingleRoleHandler_ibbzj5_a2a0(myNode, LINKS.forkOf$KiHp, getEditorContext());
+    SingleRoleCellProvider provider = new forkAsSingleRoleHandler_ibbzj5_a2a0(myNode, LINKS.forkAs$K6gO, getEditorContext());
     return provider.createCell();
   }
-  private static class forkOfSingleRoleHandler_ibbzj5_a2a0 extends SingleRoleCellProvider {
+  private static class forkAsSingleRoleHandler_ibbzj5_a2a0 extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public forkOfSingleRoleHandler_ibbzj5_a2a0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public forkAsSingleRoleHandler_ibbzj5_a2a0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -164,8 +164,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.forkOf$KiHp, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.forkOf$KiHp, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.forkAs$K6gO, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.forkAs$K6gO, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -177,16 +177,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.forkOf$KiHp);
+        editorCell.setSRole(LINKS.forkAs$K6gO);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.forkOf$KiHp));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.forkAs$K6gO));
       try {
         EditorCell editorCell = super.createEmptyCell();
-        editorCell.setCellId("empty_forkOf");
+        editorCell.setCellId("empty_forkAs");
         installCellInfo(null, editorCell, true);
         setCellContext(editorCell);
         return editorCell;
@@ -195,7 +195,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     }
     protected String getNoTargetText() {
-      return "<no forkOf>";
+      return "<no forkAs>";
     }
   }
   private EditorCell createConstant_1() {
@@ -280,7 +280,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink forkOf$KiHp = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, 0x6969a2cdc59e927eL, "forkOf");
+    /*package*/ static final SContainmentLink forkAs$K6gO = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, 0x177eaafe20582162L, "forkAs");
     /*package*/ static final SContainmentLink steps$Xwbb = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, 0x19443180a2071807L, "steps");
   }
 

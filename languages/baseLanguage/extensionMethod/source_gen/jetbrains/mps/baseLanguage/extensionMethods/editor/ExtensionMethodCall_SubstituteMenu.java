@@ -13,53 +13,65 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
-import java.util.Collection;
+import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
-import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class ExtensionMethodCall_SubstituteMenu extends SubstituteMenuBase {
   public ExtensionMethodCall_SubstituteMenu() {
-    super(false, new EditorMenuDescriptorBase("default substitute menu for ExtensionMethodCall. Generated from implicit smart reference attribute.", new SNodePointer("r:4f6f8ed5-c3d7-49f4-b0dd-d70029feffdf(jetbrains.mps.baseLanguage.extensionMethods.structure)", "1550313277221324859")));
+    super(false, new EditorMenuDescriptorBase("default substitute menu for " + "ExtensionMethodCall", new SNodePointer("r:ba4ce2b4-b708-4183-95e3-2753aef5bf29(jetbrains.mps.baseLanguage.extensionMethods.editor)", "1712822512186516789")));
   }
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_jhp199_a(), CONCEPTS.ExtensionMethodCall$xm));
-    result.add(new SMP_Subconcepts_jhp199_b());
     return result;
   }
 
   public class SMP_ReferenceScope_jhp199_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_jhp199_a() {
-      super(CONCEPTS.ExtensionMethodCall$xm, LINKS.baseMethodDeclaration$pyYw, new EditorMenuDescriptorBase("reference scope substitute menu part", null));
-    }
-
-  }
-  public class SMP_Subconcepts_jhp199_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    public SMP_Subconcepts_jhp199_b() {
-      super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "ExtensionMethodCall", null));
+      super(CONCEPTS.ExtensionMethodCall$xm, LINKS.baseMethodDeclaration$pyYw, new EditorMenuDescriptorBase("reference scope substitute menu part", new SNodePointer("r:ba4ce2b4-b708-4183-95e3-2753aef5bf29(jetbrains.mps.baseLanguage.extensionMethods.editor)", "1712822512186517279")));
     }
 
     @Override
-    protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
-      return getDirectDescendants(_context, CONCEPTS.ExtensionMethodCall$xm);
+    @NotNull
+    protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
+      return new Item(context, referencedNode, getSConcept(), getReferenceLink());
     }
+    private class Item extends ReferenceScopeSubstituteMenuItem {
+      private final SubstituteMenuContext _context;
+      private final SNode referencedNode;
+      private EditorMenuTraceInfo myTraceInfo;
 
-    @Override
-    protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
-      return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
+      private Item(SubstituteMenuContext context, SNode refNode, SAbstractConcept concept, SReferenceLink referenceLink) {
+        super(concept, context, refNode, referenceLink);
+        _context = context;
+        referencedNode = refNode;
+        myTraceInfo = context.getEditorMenuTrace().getTraceInfo();
+      }
+      @Override
+      public String getDescriptionText(String pattern) {
+        return "^extension method from " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNodeAncestor(referencedNode, CONCEPTS.BaseExtensionMethodContainer$oL, false, false));
+      }
+
+      @Override
+      public EditorMenuTraceInfo getTraceInfo() {
+        return myTraceInfo;
+      }
     }
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ExtensionMethodCall$xm = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63359483bL, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodCall");
+    /*package*/ static final SConcept BaseExtensionMethodContainer$oL = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, "jetbrains.mps.baseLanguage.extensionMethods.structure.BaseExtensionMethodContainer");
   }
 
   private static final class LINKS {

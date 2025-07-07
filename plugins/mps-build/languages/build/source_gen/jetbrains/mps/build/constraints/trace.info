@@ -958,7 +958,7 @@
       <node id="7181125477683218680" at="37,0,38,22" concept="5" />
       <node id="7181125477683218680" at="46,130,47,161" concept="4" />
       <node id="7181125477683218680" at="47,161,48,0" concept="7" />
-      <node id="7181125477683218680" at="49,55,50,70" concept="1" />
+      <node id="7181125477683218680" at="49,55,50,74" concept="1" />
       <node id="7181125477683218680" at="51,9,52,0" concept="7" />
       <node id="7181125477683218680" at="52,0,53,22" concept="5" />
       <node id="1227128029536580556" at="57,128,58,17" concept="5" />
@@ -966,7 +966,7 @@
       <node id="1227128029536580543" at="64,121,65,19" concept="5" />
       <node id="1227128029536580549" at="66,5,67,16" concept="5" />
       <node id="7181125477683218680" at="69,0,70,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="7181125477683218680" at="70,0,71,0" concept="8" trace="canBeRootBreakingPoint" />
+      <node id="7181125477683218680" at="70,0,71,0" concept="8" trace="canBeAncestorBreakingPoint" />
       <node id="7181125477683218680" at="73,0,74,0" concept="8" trace="BuildExternalLayout$8z" />
       <node id="7181125477683218680" at="74,0,75,0" concept="8" trace="BuildLayout_PureNode$ge" />
       <node id="7181125477683218680" at="75,0,76,0" concept="8" trace="BuildLayout_Node$Rb" />
@@ -986,7 +986,7 @@
       <node id="7181125477683218680" at="42,0,57,0" concept="3" trace="calculateCanBeAncestorConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
       <scope id="7181125477683218680" at="23,44,24,43" />
       <scope id="7181125477683218680" at="34,55,35,71" />
-      <scope id="7181125477683218680" at="49,55,50,70" />
+      <scope id="7181125477683218680" at="49,55,50,74" />
       <scope id="1227128029536580555" at="57,128,58,17" />
       <scope id="1227128029536580531" at="61,116,62,123" />
       <scope id="1227128029536580542" at="64,121,65,19" />

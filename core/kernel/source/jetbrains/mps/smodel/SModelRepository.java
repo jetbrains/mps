@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,12 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.SModelId.ModelNameSModelId;
-import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SaveOptions;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
@@ -33,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 // not deprecated yet, despite access and methods are, as it might be reasonable to
 // keep a facility that gives access to all models of an SRepository (alternative to SRepository.getAllModels method). Or do it with SearchScope?
@@ -81,41 +76,13 @@ public class SModelRepository {
   }
 
   /**
-   * @deprecated this method makes sense for {@link SModelId#isGloballyUnique() globally unique} model id only, but doesn't manifest this contract.
-   * Use {@link SModelReference#resolve(SRepository)} instead
+   * this method makes sense for {@link SModelId#isGloballyUnique() globally unique} model id only
    */
-  @Deprecated
-  @Nullable
-  public SModel getModelDescriptor(@NotNull SModelReference modelReference) {
-    return getModelDescriptor(modelReference.getModelId());
+  /*package*/ SModel getModelDescriptor(SModelId id) {
+    assert id.isGloballyUnique();
+    return myIdToModelDescriptorMap.get(id);
   }
 
-  /**
-   * @deprecated this method makes sense for {@link SModelId#isGloballyUnique() globally unique} model id only, but doesn't manifest this contract.
-   * Use {@link SModelReference#resolve(SRepository)} instead
-   */
-  @Deprecated
-  public SModel getModelDescriptor(SModelId id) {
-    SModel value = myIdToModelDescriptorMap.get(id);
-    if (value == null && id instanceof ModelNameSModelId) {
-      // inexact search...
-      value = getModelDescriptor(id.getModelName());
-    }
-    return value;
-  }
-
-
-  // XXX there are uses in mbeddr
-  @Deprecated
-  public List<SModel> getModelDescriptorsByModelName(String modelName) {
-    LOG.warning("Use of SModelRepository.getModelDescriptorsByModelName is ineffective, please refactor to use SModelReference");
-    return getModelDescriptors().stream().filter(m -> modelName.equals(m.getName().getLongName())).collect(Collectors.toList());
-  }
-
-  // there's 1 use in mbeddr
-  public List<SModel> getModelDescriptors(SModule module) {
-    return IterableUtil.asList(module.getModels());
-  }
 
   /*package*/ boolean hasModelsToSave() {
     synchronized (myModelsLock) {
@@ -146,24 +113,17 @@ public class SModelRepository {
             public boolean refreshDataSource() {
               return true;
             }
+
+            @Override
+            public boolean updateResolveInfoInRefs() {
+              return true;
+            }
           });
         } catch (Throwable t) {
           LOG.error(t);
         }
       }
     }
-  }
-
-  //---------------------------events----------------------------
-
-  // FIXME Why this method is different in implementation from #getModelDescriptorsByModelName(String modelName)?
-  //       This one takes full name, including stereotype, while getModelDescriptorsByModelName() cares about fqn only
-  public SModel getModelDescriptor(String modelName) {
-    if (modelName == null) {
-      return null;
-    }
-    LOG.warning("Use of SModelRepository.getModelDescriptor(String) is ineffective, please refactor to use SModelReference");
-    return getModelDescriptors().stream().filter(m -> m.getName().getValue().equals(modelName)).findFirst().orElse(null);
   }
 
   private class GlobalRepositoriesListener extends SRepositoryContentAdapter {

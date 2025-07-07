@@ -6,9 +6,8 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.ide.datatransfer.SNodeTransferable;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.datatransfer.PasteNodeData;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
@@ -37,9 +36,9 @@ public class PasteHandler {
       handleStringValue(editorContext, node, dataFromClipboard);
     }
 
-    if (dataFromClipboard instanceof SNodeTransferable) {
+    if (dataFromClipboard instanceof PasteNodeData) {
       final Wrappers._T<SNode> currentNode = new Wrappers._T<SNode>(node);
-      PasteNodeData pasteData = ((SNodeTransferable) dataFromClipboard).createNodeData();
+      PasteNodeData pasteData = (PasteNodeData) dataFromClipboard;
       List<SNode> data = pasteData.getNodes();
 
       final Wrappers._T<SNode> currentLine = new Wrappers._T<SNode>(SNodeOperations.getNodeAncestor(currentNode.value, CONCEPTS.Line$yC, false, false));

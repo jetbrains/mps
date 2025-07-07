@@ -576,6 +576,31 @@
       <unit id="491383275436614940" at="16,0,43,0" name="jetbrains.mps.lang.editor.style.test.FontFamilyGenerationIfUnknown_Test" />
     </file>
   </root>
+  <root nodeRef="r:e796bc79-24a8-4433-8903-c71c59526bf7(jetbrains.mps.lang.editor.style.test)/521245079299941975">
+    <file name="ManualTestInspectorStyle_Test.java">
+      <node id="521245079299941975" at="19,42,20,60" concept="6" />
+      <node id="521245079299941975" at="24,64,25,36" concept="1" />
+      <node id="521245079299941975" at="30,52,31,19" concept="6" />
+      <node id="521245079299941975" at="35,51,36,52" concept="1" />
+      <node id="521245079299941975" at="16,0,18,0" concept="5" trace="ourParametersCacheExtension" />
+      <node id="521245079299941975" at="19,0,22,0" concept="0" trace="ManualTestInspectorStyle_Test#()V" />
+      <node id="521245079299941975" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="521245079299941975" at="23,0,27,0" concept="2" trace="test_ManualTestInspectorStyle#()V" />
+      <node id="521245079299941975" at="34,0,38,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="521245079299941975" at="19,42,20,60" />
+      <scope id="521245079299941975" at="24,64,25,36" />
+      <scope id="521245079299941975" at="30,52,31,19" />
+      <scope id="521245079299941975" at="35,51,36,52" />
+      <scope id="521245079299941975" at="19,0,22,0" />
+      <scope id="521245079299941975" at="30,0,33,0">
+        <var name="owner" id="521245079299941975" />
+      </scope>
+      <scope id="521245079299941975" at="23,0,27,0" />
+      <scope id="521245079299941975" at="34,0,38,0" />
+      <unit id="521245079299941975" at="28,0,39,0" name="jetbrains.mps.lang.editor.style.test.ManualTestInspectorStyle_Test$TestBody" />
+      <unit id="521245079299941975" at="14,0,40,0" name="jetbrains.mps.lang.editor.style.test.ManualTestInspectorStyle_Test" />
+    </file>
+  </root>
   <root nodeRef="r:e796bc79-24a8-4433-8903-c71c59526bf7(jetbrains.mps.lang.editor.style.test)/6519503956375921847">
     <file name="StyleOfSingleRoleChild_Test.java">
       <node id="6519503956375921847" at="19,40,20,60" concept="6" />

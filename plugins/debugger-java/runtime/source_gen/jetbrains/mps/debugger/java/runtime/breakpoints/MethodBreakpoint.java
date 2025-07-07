@@ -6,10 +6,11 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
+import jetbrains.mps.textgen.trace.NodeTraceInfo;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 import com.sun.jdi.ReferenceType;
 import jetbrains.mps.debugger.java.runtime.engine.RequestManager;
@@ -29,7 +30,7 @@ import java.util.Objects;
 public class MethodBreakpoint extends JavaBreakpoint implements ILocationBreakpoint {
   private static final Logger LOG = Logger.getLogger(MethodBreakpoint.class);
   private final SNodeReference myNode;
-  private BreakpointLocation myLocation;
+  private NodeTraceInfo myTargetCodeLocation;
   private String myMethodName = null;
   private String myJniSignature = null;
 
@@ -44,15 +45,20 @@ public class MethodBreakpoint extends JavaBreakpoint implements ILocationBreakpo
   @NotNull
   @Override
   public BreakpointLocation getLocation() {
-    if (myLocation == null) {
-      myLocation = new BreakpointLocationUpdate(myNode, getRepository()).get();
+    return new BreakpointLocation(myNode);
+  }
+
+  @NotNull
+  protected NodeTraceInfo getTargetCodeLocation() {
+    if (myTargetCodeLocation == null) {
+      myTargetCodeLocation = new BreakpointLocationUpdate(myNode, getRepository()).get();
     }
-    return myLocation;
+    return myTargetCodeLocation;
   }
 
   @Override
   protected String getClassNameToPrepare() {
-    return getLocation().getTargetUnitName();
+    return getTargetCodeLocation().getUnitName();
   }
   @NotNull
   @Override
@@ -88,7 +94,7 @@ public class MethodBreakpoint extends JavaBreakpoint implements ILocationBreakpo
     if (myMethodName != null && myJniSignature != null) {
       return true;
     }
-    TraceablePositionInfo targetCodePosition = getLocation().getTargetCodePosition();
+    TraceablePositionInfo targetCodePosition = getTargetCodeLocation().getPosition();
     if (targetCodePosition == null) {
       return false;
     }

@@ -65,7 +65,7 @@ public class DebugSessionManagerComponent implements Disposable {
   }
 
 
-  public DebugSessionListener getEventPublisher() {
+  private DebugSessionListener getEventPublisher() {
     return myProject.getMessageBus().syncPublisher(TOPIC);
   }
 

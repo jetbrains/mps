@@ -160,7 +160,7 @@ public class EvaluationProvider implements IEvaluationProvider {
     }
     final EvaluationWithContextContainer rv = new EvaluationWithContextContainer(myDebugSession.getProject(), myDebugSession, myContainerModuleRef, isWatch);
     ApplicationManager.getApplication().invokeLater(() -> {
-      myDebugSession.getProject().getModelAccess().executeCommand(() -> rv.setUpNode(selectedNodes));
+      myDebugSession.getProject().getModelAccess().runWriteAction(() -> rv.setUpNode(selectedNodes));
       onNodeSetUp.invoke(rv);
     });
     return rv;

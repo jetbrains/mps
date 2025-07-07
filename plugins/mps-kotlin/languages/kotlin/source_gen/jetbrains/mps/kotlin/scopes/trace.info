@@ -102,10 +102,10 @@
       <scope id="3444023549506016927" at="48,115,53,31" />
       <scope id="7536791998132080050" at="56,52,61,22" />
       <scope id="7777545755366211602" at="82,33,87,7">
-        <var name="same" id="6282552464970718518" />
+        <var name="same" id="1962637813264808086" />
       </scope>
       <scope id="6234117012687611862" at="119,41,124,21">
-        <var name="enterType" id="4908873500000811226" />
+        <var name="enterType" id="1962637813264841016" />
       </scope>
       <scope id="7777545755365088938" at="70,205,76,13" />
       <scope id="6903332590452713923" at="104,0,110,0">
@@ -124,7 +124,7 @@
       <scope id="6903332590455836213" at="101,0,112,0" />
       <scope id="7777545755364159718" at="65,130,93,5">
         <var name="context" id="1884888429263828265" />
-        <var name="visibility" id="7777545755365063628" />
+        <var name="visibility" id="1962637813264776143" />
       </scope>
       <scope id="7777545755364159689" at="64,0,95,0">
         <var name="attributes" id="7777545755364159694" />
@@ -201,12 +201,13 @@
       <node id="3233005502713787623" at="38,5,39,17" concept="7" />
       <node id="456109728138493759" at="42,55,43,161" concept="6" />
       <node id="456109728138498126" at="43,161,44,0" concept="9" />
-      <node id="5058569165273929004" at="47,45,48,32" concept="8" />
-      <node id="540816939198441546" at="48,32,49,66" concept="7" />
+      <node id="3980898659981067196" at="47,45,48,62" concept="8" />
+      <node id="3980898659981042852" at="48,62,49,202" concept="7" />
       <node id="3233005502710132745" at="55,0,56,0" concept="10" trace="IClassLike$go" />
       <node id="3233005502710132745" at="56,0,57,0" concept="10" trace="InnerClassModifier$wL" />
       <node id="3233005502710132745" at="57,0,58,0" concept="10" trace="IKotlinRoot$xV" />
       <node id="3233005502710132745" at="58,0,59,0" concept="10" trace="IClassDeclaration$bQ" />
+      <node id="3233005502710132745" at="59,0,60,0" concept="10" trace="IObject$38" />
       <node id="3233005502713787599" at="27,97,30,5" concept="4" />
       <node id="3233005502713787606" at="30,5,33,5" concept="4" />
       <node id="3233005502713787613" at="33,5,38,5" concept="4" />
@@ -216,7 +217,7 @@
       <node id="3233005502713787587" at="25,0,41,0" concept="11" trace="hasAccessToInstanceScopeOf#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <scope id="3233005502713787600" at="28,27,29,19" />
       <scope id="3233005502713787607" at="31,34,32,18" />
-      <scope id="5058569165273900355" at="47,45,49,66" />
+      <scope id="5058569165273900355" at="47,45,49,202" />
       <scope id="3233005502713787614" at="34,126,37,65">
         <var name="childToUse" id="3233005502717792611" />
       </scope>
@@ -237,8 +238,8 @@
         <var name="parentClass" id="3233005502713787629" />
       </scope>
       <unit id="5058569165273899828" at="45,15,51,5" name="jetbrains.mps.kotlin.scopes.ClassScopeHelper$1" />
-      <unit id="3233005502710132745" at="54,0,60,0" name="jetbrains.mps.kotlin.scopes.ClassScopeHelper$CONCEPTS" />
-      <unit id="3233005502710132745" at="20,0,61,0" name="jetbrains.mps.kotlin.scopes.ClassScopeHelper" />
+      <unit id="3233005502710132745" at="54,0,61,0" name="jetbrains.mps.kotlin.scopes.ClassScopeHelper$CONCEPTS" />
+      <unit id="3233005502710132745" at="20,0,62,0" name="jetbrains.mps.kotlin.scopes.ClassScopeHelper" />
     </file>
   </root>
   <root nodeRef="r:7d051f7f-1a28-4ed6-9de6-95fd49d3fa23(jetbrains.mps.kotlin.scopes)/3403467835376390424">

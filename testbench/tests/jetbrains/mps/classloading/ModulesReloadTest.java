@@ -415,6 +415,40 @@ public class ModulesReloadTest extends ModuleMpsTest {
   }
 
   @Test
+  public void testModuleDeps_MPS37515() {
+    final Reference<Solution> s1 = new Reference<>();
+    final Reference<Solution> s2 = new Reference<>();
+    getModelAccess().runWriteAction(() -> {
+      s1.set(createSolution());
+      s2.set(createSolution());
+      s2.get().addDependency(s1.get().getModuleReference(), false);
+      addClassTo(s1.get());
+      // next is to help this test to pass under stress of ModulesReloadTestStress. The listener there
+      // processes "module added" events for s1 and s2, and creates their CL (w/o any library CP) at the time.
+      // Then, dependency s2->s1 is added, and it's the only change being processed once write is over
+      // (as addClassTo() aka JMF.setLibClassPath() doesn't constitute a module change) - and it's only s2 CL
+      // that get refreshed. Therefore, safeGetClass(s1) gives null as s1 CL is the old one (has been initialized
+      // before lib path modified by addClassTo()). Next line triggers addition moduleChanged event, to reload s1 CL.
+      s1.get().setChanged();
+      // alternatively, can explicitly reload s1 (although I prefer to check if module is reloaded once write action is over):
+      // myManager.reloadModule(s1.get());
+    });
+    final Class<?> c1 = safeGetClass(s1.get(), CLASS_TO_LOAD);
+    Assert.assertNotNull(c1); // == classIsLoadableFromModule(s1)
+    // access the same class through s2, initialize dependent classloaders.
+    Assert.assertEquals(c1, safeGetClass(s2.get(), CLASS_TO_LOAD));
+    getModelAccess().runWriteAction(() -> {
+      myManager.reloadModule(s1.get());
+    });
+    // after reloading of a dependency, class has to be still available to dependants
+    final Class<?> c2 = safeGetClass(s2.get(), CLASS_TO_LOAD);
+    Assert.assertNotNull("after reload of a dependency, class has to be available in dependants", c2);
+    // and it has to be different from the original one
+    Assert.assertNotSame("newly loaded class expected", c1, c2);
+    Assert.assertEquals("and matching the one from reloaded module", c2, safeGetClass(s1.get(), CLASS_TO_LOAD));
+  }
+
+    @Test
   public void testDisposedDepsIsNotValidForCL() {
     final Language l1 = createLanguage();
     addClassTo(l1);

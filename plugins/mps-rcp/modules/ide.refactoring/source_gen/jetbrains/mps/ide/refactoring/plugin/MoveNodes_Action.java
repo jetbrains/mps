@@ -22,6 +22,7 @@ import jetbrains.mps.refactoring.participant.plugin.MoveNodesActionHelper;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import java.util.ArrayList;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import org.jetbrains.mps.openapi.model.SModel;
 
 public class MoveNodes_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -83,10 +84,14 @@ public class MoveNodes_Action extends BaseAction {
       }
       MapSequence.fromMap(_params).put("editorComponent", editorComponent);
     }
+    {
+      SModel p = event.getData(MPSCommonDataKeys.TARGET_MODEL);
+      MapSequence.fromMap(_params).put("targetModel", p);
+    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    MoveNodesActionHelper.getRefactoring(((MPSProject) MapSequence.fromMap(_params).get("project")), ((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove"))).execute(((MPSProject) MapSequence.fromMap(_params).get("project")), ((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove")));
+    MoveNodesActionHelper.getRefactoring(((MPSProject) MapSequence.fromMap(_params).get("project")), ((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove"))).execute(((MPSProject) MapSequence.fromMap(_params).get("project")), ((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove")), ((SModel) MapSequence.fromMap(_params).get("targetModel")));
   }
 }

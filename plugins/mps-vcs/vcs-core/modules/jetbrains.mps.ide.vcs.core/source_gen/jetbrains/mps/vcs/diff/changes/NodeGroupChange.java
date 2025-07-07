@@ -102,16 +102,6 @@ public class NodeGroupChange extends StructureChange {
     return containingRoot.getNodeId();
   }
 
-  /**
-   * 
-   * @deprecated use getRoleLink()
-   */
-  @NotNull
-  @Deprecated
-  public String getRole() {
-    return myRole.getRoleName();
-  }
-
   @NotNull
   public SContainmentLink getRoleLink() {
     return myRole;
@@ -155,9 +145,9 @@ public class NodeGroupChange extends StructureChange {
 
   public final List<SNode> getChangedCollection(boolean isNewModel) {
     if (myRespectCommentedOutNodes) {
-      return check_yjf6x2_a0a0a34(check_yjf6x2_a0a0a0rb(getParent(isNewModel), myRole, this), this);
+      return check_yjf6x2_a0a0a14(check_yjf6x2_a0a0a0pb(getParent(isNewModel), myRole, this), this);
     } else {
-      return check_yjf6x2_a0a0a0rb_0(getParent(isNewModel), myRole, this);
+      return check_yjf6x2_a0a0a0pb_0(getParent(isNewModel), myRole, this);
     }
   }
 
@@ -185,7 +175,7 @@ public class NodeGroupChange extends StructureChange {
   }
 
   private void deleteOldNodes(@NotNull final SModel model) {
-    ListSequence.fromList(myPreparedIdsToDelete).visitAll((id) -> check_yjf6x2_a0a0a0a0yb(model.getNode(id)));
+    ListSequence.fromList(myPreparedIdsToDelete).visitAll((id) -> check_yjf6x2_a0a0a0a0wb(model.getNode(id)));
     myPreparedIdsToDelete = null;
   }
 
@@ -198,10 +188,10 @@ public class NodeGroupChange extends StructureChange {
     if (ListSequence.fromList(nodesToAdd).isEmpty()) {
       return;
     }
-    SContainmentLink link = (myRespectCommentedOutNodes && SNodeOperations.isInstanceOf(ListSequence.fromList(nodesToAdd).first(), CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : myRole);
     SNode parent = nodeCopier.getNode(model, getParentNodeId(false));
     SNode beforAnchor = nodeCopier.getNode(model, myBeforeAnchorId);
     for (SNode newNode : ListSequence.fromList(nodesToAdd)) {
+      SContainmentLink link = (myRespectCommentedOutNodes && SNodeOperations.isInstanceOf(newNode, CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : myRole);
       parent.insertChildBefore(link, newNode, beforAnchor);
     }
     StructureChange.fixInnerModelReferences(nodesToAdd, SModelOperations.getPointer(getChangeSet().getNewModel()), model);
@@ -364,7 +354,7 @@ public class NodeGroupChange extends StructureChange {
       return false;
     }
     SNode node = getChangeSet().getOldModel().getNode(nodeId);
-    SNode parent = check_yjf6x2_a0e0hd(node);
+    SNode parent = check_yjf6x2_a0e0fd(node);
     while (parent != null) {
       if (Sequence.fromIterable(deletedNodeIds).contains(node.getNodeId())) {
         return true;
@@ -392,17 +382,17 @@ public class NodeGroupChange extends StructureChange {
     }
 
     if (otherChange instanceof NodeGroupChange) {
-      return conflictsWithNodeGroupChange(as_yjf6x2_a0a0a3a98(otherChange, NodeGroupChange.class));
+      return conflictsWithNodeGroupChange(as_yjf6x2_a0a0a3a78(otherChange, NodeGroupChange.class));
     }
     if (otherChange instanceof NodeChange) {
-      return this.containsDeletedNode((as_yjf6x2_a0a0a0a0e0ld(otherChange, NodeChange.class)).getAffectedNodeId(false));
+      return this.containsDeletedNode((as_yjf6x2_a0a0a0a0e0jd(otherChange, NodeChange.class)).getAffectedNodeId(false));
     }
     return false;
   }
 
   @Override
   public boolean isSymmetricWith(ModelChange otherChange) {
-    return otherChange instanceof NodeGroupChange && isSymmetricWithNodeGroupChange(as_yjf6x2_a0a0a0nd(otherChange, NodeGroupChange.class));
+    return otherChange instanceof NodeGroupChange && isSymmetricWithNodeGroupChange(as_yjf6x2_a0a0a0ld(otherChange, NodeGroupChange.class));
   }
 
   private boolean isSymmetricWithNodeGroupChange(NodeGroupChange other) {
@@ -420,43 +410,43 @@ public class NodeGroupChange extends StructureChange {
     }
     return false;
   }
-  private static List<SNode> check_yjf6x2_a0a0a34(Iterable<SNode> checkedDotOperand, NodeGroupChange checkedDotThisExpression) {
+  private static List<SNode> check_yjf6x2_a0a0a14(Iterable<SNode> checkedDotOperand, NodeGroupChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return Sequence.fromIterable(checkedDotOperand).toList();
     }
     return null;
   }
-  private static Iterable<SNode> check_yjf6x2_a0a0a0rb(SNode checkedDotOperand, SContainmentLink myRole, NodeGroupChange checkedDotThisExpression) {
+  private static Iterable<SNode> check_yjf6x2_a0a0a0pb(SNode checkedDotOperand, SContainmentLink myRole, NodeGroupChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return AttributeOperations.getChildNodesAndAttributes(checkedDotOperand, myRole);
     }
     return null;
   }
-  private static List<SNode> check_yjf6x2_a0a0a0rb_0(SNode checkedDotOperand, SContainmentLink myRole, NodeGroupChange checkedDotThisExpression) {
+  private static List<SNode> check_yjf6x2_a0a0a0pb_0(SNode checkedDotOperand, SContainmentLink myRole, NodeGroupChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return SNodeOperations.getChildren(checkedDotOperand, myRole);
     }
     return null;
   }
-  private static void check_yjf6x2_a0a0a0a0yb(SNode checkedDotOperand) {
+  private static void check_yjf6x2_a0a0a0a0wb(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.delete();
     }
 
   }
-  private static SNode check_yjf6x2_a0e0hd(SNode checkedDotOperand) {
+  private static SNode check_yjf6x2_a0e0fd(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SNodeOperations.getParent(checkedDotOperand);
     }
     return null;
   }
-  private static <T> T as_yjf6x2_a0a0a3a98(Object o, Class<T> type) {
+  private static <T> T as_yjf6x2_a0a0a3a78(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_yjf6x2_a0a0a0a0e0ld(Object o, Class<T> type) {
+  private static <T> T as_yjf6x2_a0a0a0a0e0jd(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_yjf6x2_a0a0a0nd(Object o, Class<T> type) {
+  private static <T> T as_yjf6x2_a0a0a0ld(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

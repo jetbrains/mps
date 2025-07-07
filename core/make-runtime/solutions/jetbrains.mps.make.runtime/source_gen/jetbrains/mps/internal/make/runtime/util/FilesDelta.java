@@ -84,6 +84,7 @@ public class FilesDelta implements IDelta {
       return new FilesDelta(that).copy(this);
     }
 
+    // FIXME this functionality is never actually used
     DeltaKey commonPrefix = key.commonPrefix(that.key);
     if (!(commonPrefix.isEmpty())) {
       return new FilesDelta(commonPrefix).copy(this).copy(that);

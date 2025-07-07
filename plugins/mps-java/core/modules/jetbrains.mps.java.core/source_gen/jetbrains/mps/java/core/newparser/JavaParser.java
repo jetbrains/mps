@@ -57,12 +57,12 @@ public class JavaParser {
     // in eclipse there is full recovery and statement recovery
     // TODO use full recovery
 
-    boolean stubsMode = FeatureKind.CLASS_STUB.equals(what);
+    final boolean stubsMode = FeatureKind.CLASS_STUB == what;
     CodeSnippetParsingUtil util = new CodeSnippetParsingUtil(stubsMode);
     Map<String, String> settings = new HashMap<String, String>();
     settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_1_8);
     settings.put(CompilerOptions.OPTION_DocCommentSupport, "enabled");
-    ASTConverter converter = (FeatureKind.CLASS_STUB.equals(what) ? new ASTConverterWithExpressions(stubsMode) : new FullASTConverter(null));
+    ASTConverter converter = (stubsMode ? new ASTConverterWithExpressions(stubsMode) : new FullASTConverter(null));
 
     List<SNode> resultNodes = new ArrayList<SNode>();
     String resultPackageName = null;

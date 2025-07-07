@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +42,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -65,13 +66,6 @@ public class CachedDefaultModelRoot extends ModelRootBase {
   @Override
   public String getPresentation() {
     return getClass().getName();
-  }
-
-  @Nullable
-  @Override
-  public SModel getModel(@NotNull SModelId id) {
-    // assertCanRead(); - private in superclass
-    return getModels().stream().filter(m -> id.equals(m.getModelId())).findFirst().orElse(null);
   }
 
   @Override
@@ -102,47 +96,6 @@ public class CachedDefaultModelRoot extends ModelRootBase {
   @NotNull
   @Override
   public Iterable<SModel> loadModels() {
-    SModuleReference module = getModule().getModuleReference();
-
-    CachedModuleData moduleData = myCachedRepository.getModuleData(module);
-    if (moduleData == null) {
-      return myDelegate.loadModels();
-    }
-
-    List<CachedModelData> models = moduleData.getModels(myDelegate);
-    if (models == null) {
-      return myDelegate.loadModels();
-    }
-
-    List<SModel> result = new ArrayList<SModel>();
-
-    for (CachedModelData mdata : models) {
-      IFile file = myDelegate.getFileSystem().getFile(mdata.getFile());
-
-      Object header = mdata.getHeader();
-      if (mdata.getCacheKind() == CachedModelData.Kind.Binary) {
-        result.add(BinaryModelFactory.createFromHeader(((SModelHeader) header), new FileDataSource(file)));
-      } else if (mdata.getCacheKind() == CachedModelData.Kind.Regular) {
-        result.add(DefaultModelPersistence.createFromHeader((SModelHeader) header, new FileDataSource(file)));
-      } else if (mdata.getCacheKind() == Kind.RegularFilePerRoot) {
-        result.add(FilePerRootModelFactory.createFromHeader((SModelHeader) header, new FilePerRootDataSource(file)));
-      } else {
-        FileDataSource source = new FileDataSource(file);
-        String fileName = file.getName();
-        String extension = FileUtil.getExtension(fileName);
-
-        if (extension == null) continue;
-        ModelFactory modelFactory = PersistenceFacade.getInstance().getModelFactory(extension);
-        if (modelFactory == null) continue;
-
-        try {
-          SModel model = modelFactory.load(source);
-          result.add(model);
-        } catch (ModelLoadException | IOException e) {
-          // TODO handle errors
-        }
-      }
-    }
-    return result;
+    return Collections.emptyList();
   }
 }

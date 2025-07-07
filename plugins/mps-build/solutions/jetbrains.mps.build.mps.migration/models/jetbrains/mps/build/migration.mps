@@ -1497,7 +1497,7 @@
               <ref role="3cqZAo" to="jo3e:KL8Aqlj5lG" resolve="myWhatToDo" />
             </node>
             <node concept="liA8E" id="6tzA4yIkP8a" role="2OqNvi">
-              <ref role="37wK5l" to="asz6:KL8Aql8et6" resolve="getMPSProjectFiles" />
+              <ref role="37wK5l" to="asz6:7CPkROrsoB_" resolve="getProjectDirectories" />
             </node>
           </node>
         </node>

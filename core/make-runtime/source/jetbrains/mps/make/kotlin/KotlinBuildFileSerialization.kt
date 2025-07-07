@@ -3,6 +3,7 @@
  */
 package jetbrains.mps.make.kotlin
 
+import jetbrains.mps.make.CompositeTracer
 import jetbrains.mps.util.JDOMUtil
 import org.jdom.Document
 import org.jdom.Element
@@ -27,23 +28,23 @@ import java.util.*
  */
 object KotlinBuildFileSerialization {
     @Throws(IOException::class)
-    fun createBuildFile(modules: Collection<KotlinModule>): File {
-        val root = serializeModuleList(modules)
+    fun createBuildFile(modules: Collection<KotlinModule>, logger: CompositeTracer): File {
+        val root = serializeModuleList(modules, logger)
         val tempFile = Files.createTempFile("mps-kotlin-build", ".xml").toFile()
         tempFile.deleteOnExit()
         JDOMUtil.writeDocument(Document(root), tempFile)
         return tempFile
     }
 
-    private fun serializeModuleList(modules: Collection<KotlinModule>): Element {
+    private fun serializeModuleList(modules: Collection<KotlinModule>, logger: CompositeTracer): Element {
         val root = Element(ModuleXmlParser.MODULES)
         modules
-            .mapNotNull { serializeModule(it) }
+            .mapNotNull { serializeModule(it, logger) }
             .forEach { root.addContent(it) }
         return root
     }
 
-    private fun serializeModule(module: KotlinModule): Element? {
+    private fun serializeModule(module: KotlinModule, logger: CompositeTracer): Element? {
         // We need modules that will have output destinations, others are to be ignored
         val classesOut = module.classesOut ?: return null
 
@@ -53,7 +54,12 @@ object KotlinBuildFileSerialization {
         moduleXml.setAttribute(ModuleXmlParser.TYPE, ModuleXmlParser.TYPE_PRODUCTION)
         moduleXml.setAttribute(ModuleXmlParser.OUTPUT_DIR, classesOut.absolutePath)
 
-        module.sourcePaths!!.forEach {
+        module.sourcePaths!!.filter {
+            // Kotlin compiler does not tolerate inexistent files, which may happen if sources_gen does not exist (if only test_gen is there for instance)
+            File(it).exists().also {
+                if (!it) logger.warn("Kotlin source root points to a non-existent location: $it", null)
+            }
+        }.forEach {
             var sourceElement = Element(ModuleXmlParser.SOURCES)
             sourceElement.setAttribute(ModuleXmlParser.PATH, it)
             moduleXml.addContent(sourceElement)

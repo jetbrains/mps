@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="1" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -127,7 +127,7 @@
                 <node concept="2OqwBi" id="66iE5cCyS5O" role="1P9ThW">
                   <node concept="2Sf5sV" id="66iE5cCyS1Y" role="2Oq$k0" />
                   <node concept="2qgKlT" id="66iE5cCySwh" role="2OqNvi">
-                    <ref role="37wK5l" to="jglh:28CvMylq0Pm" resolve="getConceptType" />
+                    <ref role="37wK5l" to="jglh:4VnyIrvoQ8N" resolve="getConceptType" />
                   </node>
                 </node>
               </node>

@@ -1459,7 +1459,7 @@
                   <node concept="3clFbF" id="6tVVYsejNxN" role="3cqZAp">
                     <node concept="2OqwBi" id="6tVVYsejN$4" role="3clFbG">
                       <node concept="liA8E" id="6tVVYsejOfR" role="2OqNvi">
-                        <ref role="37wK5l" to="lui2:~ModelAccess.executeCommand(java.lang.Runnable)" resolve="executeCommand" />
+                        <ref role="37wK5l" to="lui2:~ModelAccess.runWriteAction(java.lang.Runnable)" resolve="runWriteAction" />
                         <node concept="1bVj0M" id="6tVVYsejOhD" role="37wK5m">
                           <node concept="3clFbS" id="6tVVYsejOhE" role="1bW5cS">
                             <node concept="3clFbF" id="6tVVYsejOiZ" role="3cqZAp">
@@ -1960,60 +1960,7 @@
       <node concept="3Tm1VV" id="2KV5YDxCrRS" role="1B3o_S" />
       <node concept="3clFbS" id="2KV5YDxCrRT" role="3clF47" />
     </node>
-    <node concept="3clFb_" id="2KV5YDxCrRV" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="dispose" />
-      <property role="od$2w" value="false" />
-      <node concept="2AHcQZ" id="3tYsUK_Uo7n" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="3cqZAl" id="2KV5YDxCrRW" role="3clF45" />
-      <node concept="3Tm1VV" id="2KV5YDxCrRX" role="1B3o_S" />
-      <node concept="3clFbS" id="2KV5YDxCrRY" role="3clF47">
-        <node concept="1HWtB8" id="2KV5YDxCrRZ" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeooKt" role="1HWFw0">
-            <ref role="3cqZAo" to="qgwr:6w0uxLH27wC" resolve="LOCK" />
-          </node>
-          <node concept="3clFbS" id="2KV5YDxCrS1" role="1HWHxc">
-            <node concept="3clFbF" id="2KV5YDxCrS2" role="3cqZAp">
-              <node concept="37vLTI" id="2KV5YDxCrS3" role="3clFbG">
-                <node concept="37vLTw" id="2BHiRxeolOE" role="37vLTJ">
-                  <ref role="3cqZAo" to="qgwr:6w0uxLH27vW" resolve="INSTANCE" />
-                </node>
-                <node concept="10Nm6u" id="7SAx9HxXGd_" role="37vLTx" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3clFb_" id="2KV5YDxCrS6" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="init" />
-      <property role="od$2w" value="false" />
-      <node concept="2AHcQZ" id="3tYsUK_Uo79" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="3cqZAl" id="2KV5YDxCrS7" role="3clF45" />
-      <node concept="3Tm1VV" id="2KV5YDxCrS8" role="1B3o_S" />
-      <node concept="3clFbS" id="2KV5YDxCrS9" role="3clF47">
-        <node concept="1HWtB8" id="2KV5YDxCrSa" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeodkT" role="1HWFw0">
-            <ref role="3cqZAo" to="qgwr:6w0uxLH27wC" resolve="LOCK" />
-          </node>
-          <node concept="3clFbS" id="2KV5YDxCrSc" role="1HWHxc">
-            <node concept="3clFbF" id="2KV5YDxCrSd" role="3cqZAp">
-              <node concept="37vLTI" id="2KV5YDxCrSe" role="3clFbG">
-                <node concept="37vLTw" id="2BHiRxeoqaz" role="37vLTJ">
-                  <ref role="3cqZAo" to="qgwr:6w0uxLH27vW" resolve="INSTANCE" />
-                </node>
-                <node concept="Xjq3P" id="7SAx9HxXGdA" role="37vLTx" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
+    <node concept="2tJIrI" id="1MgGTZ27TJL" role="jymVt" />
     <node concept="3clFb_" id="1r98CuogMRB" role="jymVt">
       <property role="TrG5h" value="assertEvaluating" />
       <node concept="3cqZAl" id="1r98CuogMRD" role="3clF45" />

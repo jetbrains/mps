@@ -9,8 +9,7 @@ import jetbrains.mps.workbench.action.ActionAccess;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import javax.swing.tree.TreeNode;
-import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
+import jetbrains.mps.ide.ui.tree.ContextValueProvider;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.IdeBundle;
 import com.intellij.openapi.project.Project;
@@ -35,21 +34,23 @@ public class RemoveVirtualFolder_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    boolean isApplicable = !(event.getData(MPSCommonDataKeys.TREE_NODES).isEmpty());
+    boolean isApplicable = !(event.getData(MPSCommonDataKeys.VALUES).isEmpty());
     boolean hasVirtualFolder = false;
-    for (TreeNode tn : event.getData(MPSCommonDataKeys.TREE_NODES)) {
-      if (!(tn instanceof ProjectModuleTreeNode)) {
-        isApplicable = false;
-        break;
-      }
-      if (tn.getParent() instanceof ProjectModuleTreeNode) {
+    for (Object selectedObject : event.getData(MPSCommonDataKeys.USER_OBJECTS)) {
+      if (selectedObject instanceof ContextValueProvider && ((ContextValueProvider) selectedObject).parentContextValueOfType(SModule.class).isPresent()) {
         // project module nested under another project module (e.g. Generator inside a Language)
         // is no go when selected explicitly (used to be limited with project.getPath() == null for such modules)
         // I don't quite agree that's right, but don't want to deal with the change right now
         isApplicable = false;
         break;
       }
-      SModule module = ((ProjectModuleTreeNode) tn).getModule();
+    }
+    for (Object selectedValue : event.getData(MPSCommonDataKeys.VALUES)) {
+      if (!(selectedValue instanceof SModule)) {
+        isApplicable = false;
+        break;
+      }
+      SModule module = (SModule) selectedValue;
       // project.isProjectModule says true for a generator under a language
       // perhaps, makes sense to have a method in PMTN or Project that tells if a module is top-level or a nested one?
       if (!(event.getData(MPSCommonDataKeys.MPS_PROJECT).isProjectModule(module))) {
@@ -82,7 +83,16 @@ public class RemoveVirtualFolder_Action extends BaseAction {
       }
     }
     {
-      List<TreeNode> p = event.getData(MPSCommonDataKeys.TREE_NODES);
+      List<Object> p = event.getData(MPSCommonDataKeys.VALUES);
+      if (p == null) {
+        return false;
+      }
+      if (p.isEmpty()) {
+        return false;
+      }
+    }
+    {
+      List<Object> p = event.getData(MPSCommonDataKeys.USER_OBJECTS);
       if (p == null) {
         return false;
       }
@@ -99,7 +109,7 @@ public class RemoveVirtualFolder_Action extends BaseAction {
     }
 
     final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-    mpsProject.getRepository().getModelAccess().executeCommand(() -> event.getData(MPSCommonDataKeys.TREE_NODES).stream().map(ProjectModuleTreeNode.class::cast).map(ProjectModuleTreeNode::getModule).forEach((SModule m) -> mpsProject.setVirtualFolder(m, null)));
+    mpsProject.getRepository().getModelAccess().executeCommand(() -> event.getData(MPSCommonDataKeys.VALUES).stream().map(SModule.class::cast).forEach((SModule m) -> mpsProject.setVirtualFolder(m, null)));
     ProjectPane.getInstance(event.getData(CommonDataKeys.PROJECT)).rebuild();
   }
 }

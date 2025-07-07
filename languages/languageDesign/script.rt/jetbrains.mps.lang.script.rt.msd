@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="jetbrains.mps.lang.script.rt" uuid="3330376f-82a0-45ed-ae50-a320ee8b0b63" moduleVersion="0">
   <models>
-    <modelRoot type="java_classes" contentPath="${mps_home}/lib">
+    <modelRoot contentPath="${mps_home}/lib" type="java_classes">
       <sourceRoot location="mps-scripts-rt.jar" />
     </modelRoot>
   </models>
   <facets>
-    <facet compile="ext" classes="provided" ext="no" type="java">
+    <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
       <library location="${mps_home}/lib/mps-scripts-rt.jar" />
     </facet>

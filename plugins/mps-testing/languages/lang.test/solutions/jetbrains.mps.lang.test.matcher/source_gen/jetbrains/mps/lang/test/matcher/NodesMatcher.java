@@ -176,16 +176,28 @@ public final class NodesMatcher {
         roles.add(nextReference.getLink());
       }
       for (SReferenceLink role : roles) {
-        SReference reference1 = a.getReference(role);
+        final SReference reference1 = a.getReference(role);
         SNode referenceTarget1 = null;
         if (reference1 != null) {
           referenceTarget1 = reference1.getTargetNode();
         }
 
-        SReference reference2 = b.getReference(role);
+        final SReference reference2 = b.getReference(role);
         SNode referenceTarget2 = null;
         if (reference2 != null) {
           referenceTarget2 = reference2.getTargetNode();
+        }
+
+        assert reference1 != null || reference2 != null;
+
+        // handle scenario when 1 node doesn't have an association set, and another got an unresolved link (referenceTarget1 == referenceTarget2 == null)
+        if (reference1 == null && reference2 != null) {
+          myDifferences.add(new ReferenceDifference(role, false, null, referenceTarget2));
+          continue;
+        }
+        if (reference2 == null && reference1 != null) {
+          myDifferences.add(new ReferenceDifference(role, false, referenceTarget1, null));
+          continue;
         }
 
         if (myMap.containsKey(referenceTarget1)) {

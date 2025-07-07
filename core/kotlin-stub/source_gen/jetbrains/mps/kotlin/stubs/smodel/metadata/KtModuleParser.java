@@ -5,7 +5,7 @@ package jetbrains.mps.kotlin.stubs.smodel.metadata;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import kotlinx.metadata.KmDeclarationContainer;
+import kotlin.metadata.KmDeclarationContainer;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 

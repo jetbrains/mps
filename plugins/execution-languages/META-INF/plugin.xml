@@ -10,18 +10,18 @@
   <depends>jetbrains.mps.execution.api</depends>
   <depends>jetbrains.mps.testing</depends>
 
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.execution.impl.configurations.RunConfigurationsStateManager</implementation-class>
-      <headless-implementation-class>jetbrains.mps.execution.impl.configurations.DummyRunConfigurationsStateManager</headless-implementation-class>
-      <skipForDefaultProject/>
-    </component>
-  </project-components>
-
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="languages/" hide="true"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <programRunner id="defaultRunRunner"
                    implementation="jetbrains.mps.execution.impl.configurations.runners.MPSProgramRunner"/>
   </extensions>
+
+  <projectListeners>
+    <listener class="jetbrains.mps.execution.impl.configurations.RunConfigurationsStateManager"
+              topic="jetbrains.mps.plugins.PluginReloadingListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+  </projectListeners>
+
 </idea-plugin>

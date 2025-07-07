@@ -10,4 +10,6 @@ import com.intellij.openapi.actionSystem.DataKey;
 public class MPSConsoleDataKeys extends MPSCommonDataKeys {
   @MPSCommonDataKeys.Description(description = "current console tab")
   public static final DataKey<BaseConsoleTab> CONSOLE_TAB = DataKey.create("MPS_ConsoleTab");
+  @MPSCommonDataKeys.Description(description = "the original paste provider, not the one defined by BaseConsoleTab")
+  public static final DataKey<BaseConsoleTab> PARENT_PASTE_PROVIDER = DataKey.create("MPS_ConsoleTab_Parent_Paste_Provider");
 }

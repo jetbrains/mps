@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.idea.core.actions;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
@@ -34,6 +35,7 @@ import jetbrains.mps.idea.core.project.module.ModuleMPSSupport;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
 
@@ -46,6 +48,11 @@ public abstract class NewModelActionBase extends AnAction {
 
   protected NewModelActionBase(String text, String description, Icon icon) {
     super(text, description, icon);
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 
   @Override

@@ -152,10 +152,7 @@ public class JavaBreakpointsProvider implements IBreakpointsProvider<JavaBreakpo
   public Icon getIcon(@NotNull JavaBreakpoint breakpoint, @Nullable AbstractDebugSession session) {
     return BreakpointsIconCache.getInstance(breakpoint.getProject()).getIcon(breakpoint, session);
   }
-  public void init() {
-  }
-  public void dispose() {
-  }
+
   private static class MyIBreakpointPropertiesUi implements IBreakpointPropertiesUi<JavaBreakpoint> {
     private JavaBreakpoint myBreakpoint;
     private final JPanel myMainPanel;

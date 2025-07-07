@@ -68,7 +68,6 @@ public class MergeTest extends ChangesTestBase {
   @BeforeClass
   public static void setUpClass() {
     MergeTest.ourMergeDriverModeWas = RuntimeFlags.isMergeDriverMode();
-    RuntimeFlags.setMergeDriverMode(true);
   }
 
   @AfterClass

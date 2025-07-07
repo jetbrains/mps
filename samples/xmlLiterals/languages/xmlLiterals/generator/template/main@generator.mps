@@ -115,6 +115,7 @@
       <concept id="1722980698497626400" name="jetbrains.mps.lang.generator.structure.ITemplateCall" flags="ngI" index="v9R3L">
         <reference id="1722980698497626483" name="template" index="v9R2y" />
       </concept>
+      <concept id="5133195082121471908" name="jetbrains.mps.lang.generator.structure.LabelMacro" flags="ln" index="2ZBi8u" />
       <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
       <concept id="1167169308231" name="jetbrains.mps.lang.generator.structure.BaseMappingRule" flags="ng" index="30H$t8">
         <property id="1167272244852" name="applyToConceptInheritors" index="36QftV" />
@@ -133,7 +134,6 @@
       <concept id="1167327847730" name="jetbrains.mps.lang.generator.structure.Reduction_MappingRule" flags="lg" index="3aamgX">
         <child id="1169672767469" name="ruleConsequence" index="1lVwrX" />
       </concept>
-      <concept id="1131073187192" name="jetbrains.mps.lang.generator.structure.MapSrcNodeMacro" flags="ln" index="1pdMLZ" />
       <concept id="1048903277984099206" name="jetbrains.mps.lang.generator.structure.VarDeclaration" flags="ng" index="1ps_xZ">
         <child id="1048903277984099209" name="type" index="1ps_xK" />
         <child id="1048903277984099210" name="value" index="1ps_xN" />
@@ -414,7 +414,7 @@
                 </node>
               </node>
             </node>
-            <node concept="1pdMLZ" id="6rLoj5R3bzi" role="lGtFl">
+            <node concept="2ZBi8u" id="37kycsVQrNp" role="lGtFl">
               <ref role="2rW$FS" node="5DyuYwOP63C" resolve="contentToVariable" />
             </node>
           </node>
@@ -632,7 +632,7 @@
                 </node>
               </node>
             </node>
-            <node concept="1pdMLZ" id="6rLoj5R4q3I" role="lGtFl">
+            <node concept="2ZBi8u" id="37kycsVQsOv" role="lGtFl">
               <ref role="2rW$FS" node="5DyuYwOP63C" resolve="contentToVariable" />
             </node>
           </node>
@@ -788,7 +788,7 @@
                 </node>
               </node>
             </node>
-            <node concept="1pdMLZ" id="6rLoj5R3$hd" role="lGtFl">
+            <node concept="2ZBi8u" id="37kycsVQtiX" role="lGtFl">
               <ref role="2rW$FS" node="5DyuYwOP63C" resolve="contentToVariable" />
             </node>
           </node>

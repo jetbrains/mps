@@ -4,8 +4,12 @@
     <!-- Initialize and load properties                        -->
     <!-- ===================================================== -->
 
+    <property name="tc.root" location="${basedir}/../../.."/>
+    <property name="tc.community.root" location="${tc.root}/ij-community"/>
+    <property name="tc.android.root" location="${tc.root}/ij-android"/>
     <property name="jps.project.root" location="${basedir}/.."/>
     <property name="community.folder" location="${basedir}/../community"/>
+    <property name="android.folder" location="${community.folder}/android"/>
     <property name="community.out" value="${basedir}/../out/jetbrains mps"/>
     <property name="mps.folder" value="${basedir}/../.."/>
     <property name="version.properties.file" value="${mps.folder}/build/version.properties"/>
@@ -128,9 +132,9 @@
             <substitution expression="\1community/"/>
         </replaceregexp>
         <replaceregexp file="${basedir}/../.idea/modules.xml">
-            <regexp pattern="&lt;modules&gt;${line.separator}"/>
+            <regexp pattern="&lt;/modules>"/>
             <substitution
-                expression="\0      &lt;module fileurl=&quot;file://$PROJECT_DIR$/mps-platform.iml&quot; filepath=&quot;$PROJECT_DIR$/mps-platform.iml&quot; /&gt;${line.separator}      &lt;module fileurl=&quot;file://$PROJECT_DIR$/intellij.mps.resources/intellij.mps.resources.iml&quot; filepath=&quot;$PROJECT_DIR$/intellij.mps.resources/intellij.mps.resources.iml&quot; /&gt;${line.separator}"/>
+                expression="  &lt;module fileurl=&quot;file://$PROJECT_DIR$/mps-platform.iml&quot; filepath=&quot;$PROJECT_DIR$/mps-platform.iml&quot; /&gt;${line.separator}      &lt;module fileurl=&quot;file://$PROJECT_DIR$/intellij.mps.resources/intellij.mps.resources.iml&quot; filepath=&quot;$PROJECT_DIR$/intellij.mps.resources/intellij.mps.resources.iml&quot; /&gt;${line.separator}&lt;/modules>"/>
         </replaceregexp>
     </target>
 
@@ -162,34 +166,72 @@
         </replaceregexp>
     </target>
 
-    <target name="artifacts" description="Copy IDEA Community artifacts and update paths (add the community folder)">
-        <echo message="Copy and update IDEA Community libraries"/>
-        <delete dir="${basedir}/../.idea/artifacts"/>
-        <mkdir dir="${basedir}/../.idea/artifacts"/>
-        <copy todir="${basedir}/../.idea/artifacts">
-            <fileset dir="${community.folder}/.idea/artifacts"/>
-        </copy>
-        <replaceregexp flags="g" byline="true">
-            <regexp pattern="\$PROJECT_DIR\$"/>
-            <substitution expression="\0/community"/>
-            <fileset dir="${basedir}/../.idea/artifacts"/>
-        </replaceregexp>
-    </target>
-
     <target name="patch" description="Apply MPS patches to IDEA Community sources">
         <echo message="Applying MPS patches to IDEA Community sources..."/>
 
-        <property name="patchVcsExtensions"
-                  value="${basedir}/patches/VcsExtensions.patch"/>
-        <echo message="Applying ${patchVcsExtensions}"/>
+        <property name="MPS-37563"
+                  value="${basedir}/patches/MPS-37563.patch"/>
+        <echo message="Applying ${MPS-37563}"/>
         <exec executable="git" dir="${community.folder}" failonerror="true">
             <arg value="apply"/>
             <arg value="&#45;-check"/>
-            <arg value="${patchVcsExtensions}"/>
+            <arg value="${MPS-37563}"/>
         </exec>
         <exec executable="git" dir="${community.folder}">
             <arg value="apply"/>
-            <arg value="${patchVcsExtensions}"/>
+            <arg value="${MPS-37563}"/>
+        </exec>
+
+        <property name="MPS-38534"
+                  value="${basedir}/patches/MPS-38534-WelcomeScreenPromotions_for251.patch"/>
+        <echo message="Applying ${MPS-38534}"/>
+        <exec executable="git" dir="${community.folder}" failonerror="true">
+            <arg value="apply"/>
+            <arg value="&#45;-check"/>
+            <arg value="${MPS-38534}"/>
+        </exec>
+        <exec executable="git" dir="${community.folder}">
+            <arg value="apply"/>
+            <arg value="${MPS-38534}"/>
+        </exec>
+
+        <property name="MPS-38050"
+                  value="${basedir}/patches/MPS-38050.patch"/>
+        <echo message="Applying ${MPS-38050}"/>
+        <exec executable="git" dir="${community.folder}" failonerror="true">
+            <arg value="apply"/>
+            <arg value="&#45;-check"/>
+            <arg value="${MPS-38050}"/>
+        </exec>
+        <exec executable="git" dir="${community.folder}">
+            <arg value="apply"/>
+            <arg value="${MPS-38050}"/>
+        </exec>
+
+        <property name="DisableSlowOperationsInEAP"
+                  value="${basedir}/patches/DisableSlowOperationsInEAP.patch"/>
+        <echo message="Applying ${DisableSlowOperationsInEAP}"/>
+        <exec executable="git" dir="${community.folder}" failonerror="true">
+            <arg value="apply"/>
+            <arg value="&#45;-check"/>
+            <arg value="${DisableSlowOperationsInEAP}"/>
+        </exec>
+        <exec executable="git" dir="${community.folder}">
+            <arg value="apply"/>
+            <arg value="${DisableSlowOperationsInEAP}"/>
+        </exec>
+
+        <property name="LoadModulesFromJars"
+                  value="${basedir}/patches/LoadModulesFromJars.patch"/>
+        <echo message="Applying ${LoadModulesFromJars}"/>
+        <exec executable="git" dir="${community.folder}" failonerror="true">
+            <arg value="apply"/>
+            <arg value="&#45;-check"/>
+            <arg value="${LoadModulesFromJars}"/>
+        </exec>
+        <exec executable="git" dir="${community.folder}">
+            <arg value="apply"/>
+            <arg value="${LoadModulesFromJars}"/>
         </exec>
 
         <property name="patchIconLoader"
@@ -203,19 +245,6 @@
         <exec executable="git" dir="${community.folder}">
             <arg value="apply"/>
             <arg value="${patchIconLoader}"/>
-        </exec>
-
-        <property name="patchHideNewUIVideo"
-                  value="${basedir}/patches/HideNewUIVideo.patch"/>
-        <echo message="Applying ${patchHideNewUIVideo}"/>
-        <exec executable="git" dir="${community.folder}" failonerror="true">
-            <arg value="apply"/>
-            <arg value="&#45;-check"/>
-            <arg value="${patchHideNewUIVideo}"/>
-        </exec>
-        <exec executable="git" dir="${community.folder}">
-            <arg value="apply"/>
-            <arg value="${patchHideNewUIVideo}"/>
         </exec>
 
         <property name="patchInitComponentsBeforeEditorOpens"
@@ -255,19 +284,6 @@
         <exec executable="git" dir="${community.folder}">
             <arg value="apply"/>
             <arg value="${patchDisableCoursesAndTextSearch}"/>
-        </exec>
-
-        <property name="patchChangeGroupingSupport"
-                  value="${basedir}/patches/ChangeGroupingSupport.patch"/>
-        <echo message="Applying ${patchChangeGroupingSupport}"/>
-        <exec executable="git" dir="${community.folder}" failonerror="true">
-            <arg value="apply"/>
-            <arg value="--check"/>
-            <arg value="${patchChangeGroupingSupport}"/>
-        </exec>
-        <exec executable="git" dir="${community.folder}">
-            <arg value="apply"/>
-            <arg value="${patchChangeGroupingSupport}"/>
         </exec>
 
         <property name="patchFile"
@@ -322,21 +338,6 @@
             <arg value="${patchJps}"/>
         </exec>
 
-    <!--
-        <property name="patchJBUIScale"
-                  value="${basedir}/patches/JBUIScale.patch"/>
-        <echo message="Applying ${patchJBUIScale}"/>
-        <exec executable="git" dir="${community.folder}" failonerror="true">
-            <arg value="apply"/>
-            <arg value="&#45;-check"/>
-            <arg value="${patchJBUIScale}"/>
-        </exec>
-        <exec executable="git" dir="${community.folder}">
-            <arg value="apply"/>
-            <arg value="${patchJBUIScale}"/>
-        </exec>
-    -->
-
     </target>
 
     <!-- ===================================================== -->
@@ -344,7 +345,7 @@
     <!-- ===================================================== -->
 
     <!-- Exists as standalone task for TeamCity build -->
-    <target name="prepare" depends="patch,compiler,modules,kotlinc,jar-repositories,libraries,artifacts"
+    <target name="prepare" depends="link,patch,compiler,modules,kotlinc,jar-repositories,libraries"
             description="Make all build preparation tasks"/>
 
     <!-- Exists as standalone task for TeamCity build -->
@@ -352,6 +353,11 @@
         <os family="windows" />
     </condition>
     <property name="script.suffix" value=".sh" />
+
+    <target name="link" description="Links IC and Android repositories into MPS project">
+        <symlink link="${community.folder}" resource="${tc.community.root}"/>
+        <symlink link="${community.folder}/android" resource="${tc.android.root}"/>
+    </target>
 
     <target name="compile" description="Runs building script.">
         <symlink link="${jps.project.root}/.mps" resource="${jps.project.root}/.idea"/>
@@ -371,7 +377,7 @@
     <!-- We need this to remove IdeaApplicationInfo.xml and IdeaPlugin.xml from platform-impl.jar.
     MPS declare its own files -->
     <target name="repackage-app-jar" description="Remove IDEA specific descriptors">
-        <jar destfile="${community.out}/dist.all/lib/stripped.jar" zip64Mode="always">
+        <jar destfile="${community.out}/dist.all/lib/stripped.jar" zip64Mode="as-needed">
             <zipfileset src="${community.out}/dist.all/lib/app.jar" excludes="idea/IdeaApplicationInfo.xml,META-INF/IdeaPlugin.xml" />
         </jar>
         <move file="${community.out}/dist.all/lib/stripped.jar" tofile="${community.out}/dist.all/lib/app.jar"/>
@@ -382,7 +388,7 @@
     Also, a possible solution is to load JRT roots with IO FS -->
     <!--In java-impl.jar, we remove META-INF contents for Idea not to try loading plugins from it (see MPS-30538) -->
     <target name="repackage-java-plugin" description="Remove IDEA specific descriptors">
-        <jar destfile="${community.out}/dist.all/plugins/java/lib/stripped.jar" zip64Mode="always">
+        <jar destfile="${community.out}/dist.all/plugins/java/lib/stripped.jar">
             <zipfileset src="${community.out}/dist.all/plugins/java/lib/java-impl.jar" excludes="META-INF/**" />
         </jar>
         <copy file="${community.out}/dist.all/plugins/java/lib/stripped.jar" tofile="${community.out}/dist.all/lib/java-impl.jar"/>
@@ -452,7 +458,9 @@
         <copy todir="${mps.folder}/bin/win">
             <fileset dir="${community.out}/dist.all/bin/win"/>
         </copy>
-        <copy file="${community.out}/dist.all/build/resources/mps" todir="${mps.folder}/build/resources"/>
+        <copy  todir="${mps.folder}/build/resources">
+            <fileset includes="${community.out}/dist.all/build/resources/mps*"/>
+        </copy>
         <copy file="${community.out}/dist.all/build/dependencies/gradle.properties" todir="${mps.folder}/build/dependencies"/>
 
         <!--Copy plugin libraries to plugin folders-->

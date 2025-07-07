@@ -18,7 +18,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.vfs.IFile;
 import java.awt.Component;
 import com.intellij.execution.process.ProcessIOExecutorService;
@@ -89,21 +88,19 @@ public class EditorUtil {
     });
   }
 
-  public static JComponent createSelectImageButton(final SNode node, final SProperty property, final EditorContext context, final Iterable<String> supportedFormats, @NotNull final PathShrinker shrinkPath, @NotNull _FunctionTypes._return_P1_E0<? extends String, ? super String> expandPath) {
+  public static JComponent createSelectImageButton(final SNode node, final SProperty property, final EditorContext context, final Iterable<String> supportedFormats, @NotNull final PathShrinker shrinkPath, @NotNull final _FunctionTypes._return_P1_E0<? extends String, ? super String> expandPath) {
     var descriptor = FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor().withFileFilter((f) -> Sequence.fromIterable(supportedFormats).contains(f.getExtension()));
     descriptor.setTitle("Select Image File");
-
-    var modelAccess = context.getRepository().getModelAccess();
-    final var moduleDir = modelAccess.computeReadAction(() -> ((AbstractModule) SNodeOperations.getModel(node).getModule()).getModuleSourceDir());
 
     return createSelectButton(node, property, context, descriptor, expandPath, (final IFile chosenFile, final Component parentComponent) -> {
       // VFS operations (findChild(), getPath() and exists()) should not be called on EDT (might trigger VFS update)
       ProcessIOExecutorService.INSTANCE.execute(() -> {
-        final var modulePath = moduleDir.getPath();
+        final var modulePath = expandPath.invoke(MacrosFactory.MODULE);
         final var chosenFileName = chosenFile.getName();
 
-        final var isUnderModule = FileUtil.isAncestor(modulePath, chosenFile.getPath());
-        final var resultFile = (isUnderModule ? chosenFile : moduleDir.findChild("icons").findChild(chosenFileName));
+        // sort of hack to avoid dialog if ${module} macro couldn't get resolved
+        final var isUnderModule = (MacrosFactory.MODULE.equals(modulePath) ? true : FileUtil.isAncestor(modulePath, chosenFile.getPath()));
+        final var resultFile = (isUnderModule ? chosenFile : chosenFile.getFileSystem().getFile(modulePath + "/icons/" + chosenFileName));
         final var needOverwrite = !(isUnderModule) && resultFile.exists();
         final var resultPath = resultFile.getPath();
 

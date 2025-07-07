@@ -60,7 +60,7 @@ public class KotlinPropertySetterCall_Constraints extends BaseConstraintsDescrip
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return KotlinInBaseLanguageScopeHelper.getScopeForAccessor(_context.getReferenceNode(), _context.getContextNode(), AccessorKind.SETTER);
+            return KotlinInJavaScopeHelper.getScopeForAccessor(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink(), AccessorKind.SETTER);
           }
         };
       }

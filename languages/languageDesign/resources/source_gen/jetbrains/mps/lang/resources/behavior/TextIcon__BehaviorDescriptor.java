@@ -21,9 +21,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import com.intellij.ui.LayeredIcon;
 import javax.swing.ImageIcon;
-import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
-import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -61,25 +58,8 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
     }
     res.paintIcon(null, dc.g, 0, 0);
   }
-  /*package*/ static List<Tuples._2<IFile, byte[]>> generate_id7Mb2akaesv8(@NotNull final SNode __thisNode__, IFile outputDir) {
-
-    if (((int) BaseConcept__BehaviorDescriptor.getMetaLevel_id3t0v3yFOD1A.invoke(__thisNode__)) != 0) {
-      return null;
-    }
-
-    // copy
-    String source = Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__);
-    if (source == null) {
-      return null;
-    }
-
-    byte[] iconData = IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> TextIcon__BehaviorDescriptor.processLayers_id2xAJZV4smYU.invokeSpecial(__thisNode__.getConcept(), SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD), dc));
-    List<Tuples._2<IFile, byte[]>> result = ListSequence.fromListAndArray(new ArrayList<Tuples._2<IFile, byte[]>>(), MultiTuple.<IFile,byte[]>from(outputDir.getDescendant(Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__)), iconData));
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.newuiLayers$lptJ)).isNotEmpty()) {
-      byte[] iconDataNewUI = IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> TextIcon__BehaviorDescriptor.processLayers_id2xAJZV4smYU.invokeSpecial(__thisNode__.getConcept(), SLinkOperations.getChildren(__thisNode__, LINKS.newuiLayers$lptJ), dc));
-      ListSequence.fromList(result).addElement(MultiTuple.<IFile,byte[]>from(outputDir.getDescendant(Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(__thisNode__)), iconDataNewUI));
-    }
-    return result;
+  /*package*/ static List<Tuples._2<IFile, byte[]>> generate_id7Mb2akaesv8(@NotNull SNode __thisNode__, IFile outputDir) {
+    return null;
   }
 
   /*package*/ TextIcon__BehaviorDescriptor() {
@@ -141,6 +121,5 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink newuiLayers$lptJ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x7cb0b849e7eb993bL, "newuiLayers");
-    /*package*/ static final SContainmentLink layers$pqJD = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers");
   }
 }

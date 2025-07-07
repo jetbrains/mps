@@ -31,6 +31,7 @@ import jetbrains.mps.refactoring.participant.NodeCopyTracker;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -182,6 +183,7 @@ public class MoveNodesUtil {
     public void process(List<SNode> nodeRoots, Map<SNode, RefactoringParticipant.KeepOldNodes> ifKeepOldNodes, RefactoringSession refactoringSession) {
       NodeCopyTracker copyMap = NodeCopyTracker.get(refactoringSession);
       copyMap.copyAndTrack(nodeRoots);
+      final NodeIdentityComponent nic = myProject.getComponent(NodeIdentityComponent.class);
       for (SNode oldNode : ListSequence.fromList(nodeRoots)) {
         SNode newNode = MapSequence.fromMap(copyMap.getCopyMap()).get(oldNode);
         if (myNodeLocation.isRoot()) {
@@ -189,6 +191,9 @@ public class MoveNodesUtil {
         }
         if (MapSequence.fromMap(ifKeepOldNodes).get(oldNode) == RefactoringParticipant.KeepOldNodes.REMOVE) {
           SNodeOperations.deleteNode(oldNode);
+          if (nic != null) {
+            nic.moved(oldNode, copyMap.getCopyMap());
+          }
         }
         myNodeLocation.insertNode(myProject.getRepository(), newNode);
       }

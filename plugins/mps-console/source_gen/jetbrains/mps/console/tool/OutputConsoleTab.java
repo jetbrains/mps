@@ -4,6 +4,7 @@ package jetbrains.mps.console.tool;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.console.actions.IConsoleTool;
 import org.jetbrains.annotations.Nullable;
 import org.jdom.Element;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -25,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 @GeneratedClass(node = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/2893936025727763809", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
 public class OutputConsoleTab extends BaseConsoleTab {
 
-  public OutputConsoleTab(MPSProject mpsProject, ConsoleTool tool, String title, @Nullable Element history) {
+  public OutputConsoleTab(MPSProject mpsProject, IConsoleTool tool, String title, @Nullable Element history) {
     super(mpsProject, tool, title, history);
   }
 

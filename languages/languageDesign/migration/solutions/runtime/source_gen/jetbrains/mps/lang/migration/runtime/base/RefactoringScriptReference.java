@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.smodel.Language;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
@@ -31,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 @GeneratedClass(node = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)/5168866961623738063", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
-public class RefactoringScriptReference implements BaseScriptReference<RefactoringScript> {
+public class RefactoringScriptReference implements BaseScriptReference {
   private static final Logger LOG = Logger.getLogger(RefactoringScriptReference.class);
   private final SModuleReference myModule;
   private final int fromVersion;
@@ -79,18 +78,6 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
   @Override
   public String toString() {
     return "Refactoring[" + myModule.getModuleName() + ";" + fromVersion + "]";
-  }
-
-  /**
-   * 
-   * 
-   * @deprecated use {@link jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference#resolve(SRepository, RefactoringScriptReference) } instead
-   */
-  @Override
-  @Deprecated(forRemoval = true, since = "2023.1")
-  public RefactoringScript resolve(Project p, boolean silent) {
-    return RefactoringScriptReference.resolve(p.getRepository(), this);
-    // todo store ModuleRef instead of SModule
   }
 
   public static RefactoringScript resolve(final SRepository repo, final RefactoringScriptReference sr) {

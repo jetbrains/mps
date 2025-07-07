@@ -27,6 +27,7 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.icons.MPSIcons;
 
@@ -184,6 +185,12 @@ public class DependenciesPanel extends JPanel {
     public void actionPerformed(AnActionEvent event) {
       myTool.setAvailable(false);
     }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
+    }
   }
 
   private class RerunAction extends AnAction {
@@ -193,6 +200,11 @@ public class DependenciesPanel extends JPanel {
     @Override
     public void actionPerformed(AnActionEvent event) {
       resetContent(getInitialScope(), isMeta());
+    }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
     }
   }
 
@@ -207,6 +219,11 @@ public class DependenciesPanel extends JPanel {
     @Override
     public void setSelected(AnActionEvent event, boolean b) {
       resetContent(getInitialScope(), b);
+    }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
     }
   }
 }

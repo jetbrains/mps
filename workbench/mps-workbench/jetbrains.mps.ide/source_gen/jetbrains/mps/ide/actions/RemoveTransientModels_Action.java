@@ -8,8 +8,7 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.TransientModelsProvider;
 
@@ -33,7 +32,7 @@ public class RemoveTransientModels_Action extends BaseAction {
       return false;
     }
     {
-      Project p = event.getData(CommonDataKeys.PROJECT);
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       if (p == null) {
         return false;
       }
@@ -42,7 +41,7 @@ public class RemoveTransientModels_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    TransientModelsProvider component = event.getData(CommonDataKeys.PROJECT).getComponent(TransientModelsProvider.class);
+    TransientModelsProvider component = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(TransientModelsProvider.class);
     if (component != null) {
       component.removeAllTransients(true);
     }

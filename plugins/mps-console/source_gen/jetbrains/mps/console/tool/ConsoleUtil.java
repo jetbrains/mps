@@ -72,7 +72,7 @@ public class ConsoleUtil {
   }
   private static UsagesViewTool check_xg48a4_a0a0a0c(com.intellij.openapi.project.Project checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.getComponent(UsagesViewTool.class);
+      return checkedDotOperand.getService(UsagesViewTool.class);
     }
     return null;
   }

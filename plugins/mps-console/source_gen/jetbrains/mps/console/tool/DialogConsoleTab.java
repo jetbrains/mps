@@ -7,6 +7,7 @@ import com.intellij.openapi.actionSystem.DataProvider;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.console.actions.IConsoleTool;
 import org.jetbrains.annotations.Nullable;
 import org.jdom.Element;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -53,16 +54,29 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
   }
 
 
-  public DialogConsoleTab(MPSProject project, ConsoleTool tool, String title, @Nullable Element history) {
+  public DialogConsoleTab(MPSProject project, IConsoleTool tool, String title, @Nullable Element history) {
     super(project, tool, title, history);
   }
 
+  @Override
   protected void registerActions(DefaultActionGroup group) {
     super.registerActions(group);
-    group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleExecute_Action")));
-    group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsolePrev_Action")));
-    group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleNext_Action")));
-    group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleClear_Action")));
+    BaseAction action = ((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleExecute_Action"));
+    if (action != null) {
+      group.add(action);
+    }
+    action = ((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsolePrev_Action"));
+    if (action != null) {
+      group.add(action);
+    }
+    action = ((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleNext_Action"));
+    if (action != null) {
+      group.add(action);
+    }
+    action = ((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleClear_Action"));
+    if (action != null) {
+      group.add(action);
+    }
   }
 
   private SNode lastCmd() {

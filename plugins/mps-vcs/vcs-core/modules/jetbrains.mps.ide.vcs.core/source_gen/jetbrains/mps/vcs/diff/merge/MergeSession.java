@@ -33,15 +33,14 @@ import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
 import jetbrains.mps.persistence.PersistenceVersionAware;
-import jetbrains.mps.smodel.SModelAdapter;
-import jetbrains.mps.smodel.event.SModelEvent;
+import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.event.SModelReferenceEvent;
-import jetbrains.mps.smodel.event.SModelChildEvent;
-import jetbrains.mps.smodel.event.SModelPropertyEvent;
-import jetbrains.mps.smodel.event.SModelRootEvent;
+import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
+import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
+import org.jetbrains.mps.openapi.event.SNodeAddEvent;
+import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -105,7 +104,8 @@ public final class MergeSession {
   }
 
   public void installResultModelListener() {
-    myResultModel.addModelListener(myModelListener);
+    // FIXME why there's no remove listener? Perhaps, MergeSession deserves a dispose()?
+    myResultModel.addChangeListener(myModelListener);
   }
 
   private void fillNodeToChangesMap() {
@@ -174,7 +174,7 @@ public final class MergeSession {
   }
 
   public Iterable<ModelChange> getConflictedWith(ModelChange change) {
-    // even after conlict resolving we still consider the change conflicted, so it should be applied manually
+    // even after conflict resolving we still consider the change conflicted, so it should be applied manually
     return MapSequence.fromMap(myConflictingChanges).get(change);
   }
 
@@ -213,7 +213,7 @@ public final class MergeSession {
   }
 
   private static int compareChanges(ModelChange ch1, ModelChange ch2) {
-    // sort out nonconflicting changes to the end of list, so they will be ignored if other connected changes exists
+    // sort out non-conflicting changes to the end of list, so they will be ignored if other connected changes exists
     boolean aa = ch1.isNonConflicting();
     boolean bb = ch2.isNonConflicting();
     int result = (aa == bb ? 0 : (aa ? 1 : -1));
@@ -458,23 +458,24 @@ public final class MergeSession {
     void someChangesInvalidated();
   }
 
-  private class MyResultModelListener extends SModelAdapter {
+  private class MyResultModelListener implements SNodeChangeListener {
     private boolean myListeningAllowed = true;
 
-    private MyResultModelListener() {
+    /*package*/ MyResultModelListener() {
     }
 
-    private void enable() {
+    /*package*/ void enable() {
       myListeningAllowed = true;
     }
 
-    private void disable() {
+    /*package*/ void disable() {
       myListeningAllowed = false;
     }
 
-    private void invalidateDeletedRoot(SModelEvent event) {
-      assert event.getAffectedRoot() != null;
-      List<ModelChange> nodeChanges = MapSequence.fromMap(myNodeToChanges).get(event.getAffectedRoot().getNodeId());
+    private void invalidateDeletedRoot(SNode affectedNode) {
+      SNode root = SNodeOperations.getContainingRoot(affectedNode);
+      assert root != null;
+      List<ModelChange> nodeChanges = MapSequence.fromMap(myNodeToChanges).get(root.getNodeId());
       SetSequence.fromSet(myResolvedChanges).addSequence(ListSequence.fromList(nodeChanges).ofType(DeleteRootChange.class));
     }
 
@@ -486,62 +487,40 @@ public final class MergeSession {
       }
     }
 
-    private void referenceModified(SModelReferenceEvent event) {
-      invalidateDeletedRoot(event);
+    @Override
+    public void referenceChanged(@NotNull SReferenceChangeEvent event) {
+      if (!(myListeningAllowed)) {
+        return;
+      }
+      invalidateDeletedRoot(event.getNode());
       invalidateChanges();
     }
 
     @Override
-    public void referenceRemoved(SModelReferenceEvent event) {
-      if (!(myListeningAllowed)) {
-        return;
-      }
-      referenceModified(event);
-    }
-
-    @Override
-    public void referenceAdded(SModelReferenceEvent event) {
-      if (!(myListeningAllowed)) {
-        return;
-      }
-      referenceModified(event);
-    }
-
-    @Override
-    public void beforeChildRemoved(SModelChildEvent event) {
+    public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
       if (!(myListeningAllowed)) {
         return;
       }
       beforeNodeRemovedRecursively(event.getChild());
-      invalidateDeletedRoot(event);
+      invalidateDeletedRoot((event.isRoot() ? event.getChild() : event.getParent()));
       invalidateChanges();
     }
 
     @Override
-    public void childAdded(SModelChildEvent event) {
-      if (!(myListeningAllowed)) {
+    public void nodeAdded(@NotNull SNodeAddEvent event) {
+      if (!(myListeningAllowed) || event.isRoot()) {
         return;
       }
-      invalidateDeletedRoot(event);
+      invalidateDeletedRoot(event.getParent());
       invalidateChanges();
     }
 
     @Override
-    public void propertyChanged(SModelPropertyEvent event) {
+    public void propertyChanged(@NotNull SPropertyChangeEvent event) {
       if (!(myListeningAllowed)) {
         return;
       }
-      invalidateDeletedRoot(event);
-      invalidateChanges();
-    }
-
-    @Override
-    public void beforeRootRemoved(SModelRootEvent event) {
-      if (!(myListeningAllowed)) {
-        return;
-      }
-      beforeNodeRemovedRecursively(event.getRoot());
-      invalidateDeletedRoot(event);
+      invalidateDeletedRoot(event.getNode());
       invalidateChanges();
     }
   }

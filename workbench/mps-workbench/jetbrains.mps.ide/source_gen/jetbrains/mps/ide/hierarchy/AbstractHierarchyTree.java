@@ -35,7 +35,7 @@ import jetbrains.mps.workbench.action.ActionUtils;
 
 @GeneratedClass(node = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)/5797068448049410623", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
 public abstract class AbstractHierarchyTree extends MPSTree {
-  private AbstractHierarchyView myHierarchyView;
+  private AbstractHierarchyViewState myHierarchyView;
   private SNode myHierarchyNode;
   protected boolean myIsParentHierarchy;
   protected boolean myOnlyInOneModel;
@@ -50,7 +50,7 @@ public abstract class AbstractHierarchyTree extends MPSTree {
   /**
    * Tree shall not depend on hierarchy view, and all uses of myHierarchyView/getHierarchyView() shall get refactored and removed.
    */
-  public void setHierarchyView(AbstractHierarchyView hv) {
+  public void setHierarchyView(AbstractHierarchyViewState hv) {
     myHierarchyView = hv;
   }
 
@@ -67,7 +67,7 @@ public abstract class AbstractHierarchyTree extends MPSTree {
   }
 
   @Nullable
-  public AbstractHierarchyView getHierarchyView() {
+  public AbstractHierarchyViewState getHierarchyView() {
     return myHierarchyView;
   }
 
@@ -234,7 +234,7 @@ public abstract class AbstractHierarchyTree extends MPSTree {
     }
 
     final SNodeReference ptr = ((HierarchyTreeNode) treeNode).getNodeReference();
-    final AbstractHierarchyView hierarchyView = getHierarchyView();
+    final AbstractHierarchyViewState hierarchyView = getHierarchyView();
     if (hierarchyView == null) {
       return null;
     }

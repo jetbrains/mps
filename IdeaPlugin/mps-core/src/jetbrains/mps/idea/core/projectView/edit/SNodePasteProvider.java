@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 package jetbrains.mps.idea.core.projectView.edit;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.datatransfer.PasteNodeData;
@@ -45,6 +46,12 @@ public class SNodePasteProvider implements com.intellij.ide.PasteProvider, Runna
   }
 
   @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    // isPasteXXX are constant, any thread is fine
+    return ActionUpdateThread.BGT;
+  }
+
+  @Override
   public void performPaste(@NotNull DataContext dataContext) {
     myProject.getModelAccess().runReadInEDT(this);
   }
@@ -62,7 +69,7 @@ public class SNodePasteProvider implements com.intellij.ide.PasteProvider, Runna
   @Override
   public void run() {
     // Should be executed inside read action
-    PasteNodeData nodeData = CopyPasteUtil.getPasteNodeDataFromClipboard(myModel);
+    PasteNodeData nodeData = CopyPasteUtil.getPasteNodeData();
     ApplicationManager.getApplication().invokeLater(getAddImportsRunnable(nodeData));
   }
 
@@ -95,7 +102,7 @@ public class SNodePasteProvider implements com.intellij.ide.PasteProvider, Runna
         return;
       }
       pasteProcessor.pasteAsRoots(myModel, "");
-      ResolverComponent.getInstance().resolveScopesOnly(referencesToResolve, myProject.getRepository());
+      myProject.getComponent(ResolverComponent.class).resolveScopesOnly(referencesToResolve, myProject.getRepository());
       myModel.save();
     };
   }

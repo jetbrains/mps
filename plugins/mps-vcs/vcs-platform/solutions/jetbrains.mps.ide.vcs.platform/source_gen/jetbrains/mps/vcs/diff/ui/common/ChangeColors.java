@@ -7,6 +7,7 @@ import java.util.Map;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.awt.Color;
 import java.util.EnumMap;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.application.ApplicationManager;
@@ -24,7 +25,8 @@ public class ChangeColors {
   private final Map<ChangeType, Color> myTreeColors = new EnumMap<ChangeType, Color>(ChangeType.class);
   private final Map<ChangeType, Color> myGutterColors = new EnumMap<ChangeType, Color>(ChangeType.class);
   private final Map<ChangeType, Color> myErrorStripeColors = new EnumMap<ChangeType, Color>(ChangeType.class);
-  private final Color MOVE_COLOR = new Color(255, 255, 224);
+
+  private final Color MOVE_COLOR = new JBColor(new Color(238, 239, 211), new Color(0x11, 0x49, 0x57));
 
 
   private ChangeColors() {

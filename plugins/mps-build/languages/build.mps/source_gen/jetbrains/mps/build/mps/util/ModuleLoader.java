@@ -70,7 +70,7 @@ public final class ModuleLoader {
     myBuildProject = buildProject;
     myBuildContext = (genContext != null ? Context.defaultContext(genContext) : Context.defaultContext());
     myPathConverter = new PathConverter(myBuildContext, buildProject);
-    myVisibleModules = new VisibleModules(buildProject, msgHandler, genContext);
+    myVisibleModules = new VisibleModules(buildProject, msgHandler, null);
     myVisibleModules.collect();
     myMsgHandler = msgHandler;
     // TODO enforce outer code to specify FS to avoid singleton access

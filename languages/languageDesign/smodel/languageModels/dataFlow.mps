@@ -778,5 +778,21 @@
       </node>
     </node>
   </node>
+  <node concept="3_zdsH" id="6cn4pfbj_Su">
+    <property role="3GE5qa" value="enumerations" />
+    <ref role="3_znuS" to="tp25:1HbIxIw0iPB" resolve="Enum_FromNameOperation" />
+    <node concept="3__wT9" id="6cn4pfbj_Sv" role="3_A6iZ">
+      <node concept="3clFbS" id="6cn4pfbj_Sw" role="2VODD2">
+        <node concept="3AgYrR" id="6cn4pfbj_W8" role="3cqZAp">
+          <node concept="2OqwBi" id="6cn4pfbjA6I" role="3Ah4Yx">
+            <node concept="3__QtB" id="6cn4pfbj_XG" role="2Oq$k0" />
+            <node concept="3TrEf2" id="6cn4pfbjAmN" role="2OqNvi">
+              <ref role="3Tt5mk" to="tp25:1HbIxIw0kf8" resolve="nameExpression" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

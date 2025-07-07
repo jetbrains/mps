@@ -9,9 +9,9 @@ import java.util.function.Supplier;
 import org.jetbrains.annotations.Nullable;
 
 public class MPSClassTestProxy extends BaseMPSTestProxy {
-  private final ITestNodeWrapper<?> myTestNodeWrapper;
+  private final ITestNodeWrapper myTestNodeWrapper;
 
-  public MPSClassTestProxy(@NotNull ITestNodeWrapper<?> testNodeWrapper, @NotNull TestRunState runState, @NotNull Supplier<TestState> currentState) {
+  public MPSClassTestProxy(@NotNull ITestNodeWrapper testNodeWrapper, @NotNull TestRunState runState, @NotNull Supplier<TestState> currentState) {
     super(runState, currentState);
     assert (testNodeWrapper.isTestCase());
     myTestNodeWrapper = testNodeWrapper;

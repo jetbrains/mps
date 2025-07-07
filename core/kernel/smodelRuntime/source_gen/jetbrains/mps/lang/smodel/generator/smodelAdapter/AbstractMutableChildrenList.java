@@ -237,5 +237,5 @@ public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
 
   protected abstract void insertBefore(SNode node, SNode anchor);
 
-  protected abstract void addFirst(SNode node);
+  public abstract void addFirst(SNode node);
 }

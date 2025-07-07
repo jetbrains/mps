@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,4 +22,9 @@ package jetbrains.mps.text.rt;
  */
 public interface TextGenDescriptor {
   void generateText(TextGenContext context);
+
+  /**
+   * @since 2024.2
+   */
+  void generateBinary(TextGenContext ctx);
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.persistence.def;
 
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.project.MPSExtentions;
@@ -22,6 +23,7 @@ import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SNodeId.Regular;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadResult.ContentKind;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
@@ -30,6 +32,7 @@ import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import org.jdom.Document;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
  import org.jetbrains.mps.openapi.persistence.StreamDataSource;
@@ -165,10 +168,6 @@ public class FilePerRootFormatUtil {
     final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(modelData);
 
     // save into JDOM
-    if (persistenceVersion < 9) {
-      //noinspection removal
-      modelData.getImplicitImportsSupport().calculateImplicitImports();
-    }
     Map<String, Document> result = ModelPersistence.getPersistence(persistenceVersion).getModelWriter(mmiProvider).saveModelAsMultiStream(modelData);
 
     // write to storage
@@ -207,8 +206,8 @@ public class FilePerRootFormatUtil {
     Set<String> usedNames = new HashSet<>();
     for (SNode root : roots) {
       SNodeId key = root.getNodeId();
-      String value = asFileName(root.getName());
-      if (value.length() == 0) {
+      String value = asFileName(SPropertyOperations.getString(root, SNodeUtil.property_INamedConcept_name));
+      if (value.isEmpty()) {
         value = key instanceof Regular ? key.toString() : "Root";
       }
       if (!usedNames.add(value.toLowerCase())) {

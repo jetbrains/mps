@@ -8,6 +8,7 @@ import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.make.facet.FacetRegistry;
+import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.components.CoreComponent;
 import org.jetbrains.annotations.NotNull;
@@ -17,6 +18,7 @@ public class MPSMake extends ComponentPlugin implements ComponentHost {
   private final LanguageRegistry myLanguageRegistry;
   private MakeServiceComponent myMakeServiceComponent;
   private FacetRegistry myFacetRegistry;
+  private JavaCompilerOptionsComponent myJavaCompilerOptions;
 
   public MPSMake(LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
@@ -26,8 +28,8 @@ public class MPSMake extends ComponentPlugin implements ComponentHost {
   public void init() {
     myMakeServiceComponent = init(new MakeServiceComponent());
     myFacetRegistry = init(new FacetRegistry(myLanguageRegistry));
+    myJavaCompilerOptions = init(new JavaCompilerOptionsComponent());
   }
-
 
   @Nullable
   @Override
@@ -37,6 +39,9 @@ public class MPSMake extends ComponentPlugin implements ComponentHost {
     }
     if (aClass == FacetRegistry.class) {
       return aClass.cast(myFacetRegistry);
+    }
+    if (JavaCompilerOptionsComponent.class == aClass) {
+      return aClass.cast(myJavaCompilerOptions);
     }
     // I don't expose other core components unless there's need to.
     return null;

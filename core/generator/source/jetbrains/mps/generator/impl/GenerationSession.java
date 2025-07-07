@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -210,11 +210,11 @@ class GenerationSession {
       while (!forkQueue.isEmpty()) {
         PlanBranchInfo branchInfo = forkQueue.removeFirst();
         SModel output = processGenPlanBranch(branchInfo, forkQueue, monitor);
-        gentargetByOutputModel.put(output.getReference(), branchInfo.generationTarget);
         // for *each* completed GP branch, keep model as it's the outcome we are going to process further
         if (output != null) {
           allOutputModels.add(output);
           mySessionContext.getModule().addModelToKeep(output.getReference(), true);
+          gentargetByOutputModel.put(output.getReference(), branchInfo.generationTarget);
         }
       }
 
@@ -462,7 +462,7 @@ class GenerationSession {
   // precondition: myStepArguments initialized (!= null);
   private SModel executeMajorStepInternal(SModel inputModel, ProgressMonitor progress) throws GenerationFailureException, GenerationCanceledException {
     SModel currentInputModel = inputModel;
-    // XXX Does cloneInputModel == true make any sense for for a first model in a branch (which is itself a copy at the fork point?)
+    // XXX Does cloneInputModel == true make any sense for a first model in a branch (which is itself a copy at the fork point?)
     final boolean cloneInputModel = myControlEnv.getOptions().isSaveTransientModels() && myControlEnv.getOptions().applyTransformationsInplace();
 
     // -----------------------
@@ -835,6 +835,8 @@ class GenerationSession {
   }
 
   private boolean keepTransientForMessageNavigation() {
+    // FIXME (a) would be great to have it as a configuration setting (b) command-line m2t doesn't need transients as well (can't use 'em anyway)
+    //       therefore using !isTestMode in not good enough
     return !RuntimeFlags.isTestMode();
   }
 
@@ -900,6 +902,7 @@ class GenerationSession {
     if (mySessionContext == null) {
       return;
     }
+    ttrace.push("discard transients"); // XXX not nice to use it here once we've shared the instance with status object.
     if (!myControlEnv.getOptions().isSaveTransientModels()) {
       mySessionContext.getModule().clearUnused();
     }
@@ -909,5 +912,6 @@ class GenerationSession {
       myQuerySource = null;
     }
     mySessionContext = null;
+    ttrace.pop();
   }
 }

@@ -53,7 +53,7 @@ import org.jetbrains.annotations.NotNull;
   }
 
   @Override
-  protected void addFirst(SNode node) {
+  public void addFirst(SNode node) {
     insertBefore(node, myNode.getFirstChild());
   }
 

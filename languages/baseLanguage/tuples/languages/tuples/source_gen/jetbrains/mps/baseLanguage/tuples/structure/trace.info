@@ -13,7 +13,7 @@
       <unit at="11,0,109,0" name="jetbrains.mps.baseLanguage.tuples.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.baseLanguage.tuples.structure.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.baseLanguage.tuples.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,46,0" name="jetbrains.mps.baseLanguage.tuples.structure.LanguageConceptSwitch" />
@@ -148,8 +148,8 @@
       <node id="1239360506533" at="81,50,82,76" concept="3" />
       <node id="1239360506533" at="82,76,83,51" concept="0" />
       <node id="1239360506533" at="83,51,84,35" concept="0" />
-      <node id="1239360506533" at="84,35,85,55" concept="0" />
-      <node id="1239360506533" at="85,55,86,53" concept="0" />
+      <node id="1239360506533" at="84,35,85,45" concept="0" />
+      <node id="1239360506533" at="85,45,86,53" concept="0" />
       <node id="1239360506533" at="87,9,88,43" concept="4" />
       <node id="1239360506533" at="80,55,87,9" concept="2" />
       <scope id="1239360506533" at="81,50,86,53">

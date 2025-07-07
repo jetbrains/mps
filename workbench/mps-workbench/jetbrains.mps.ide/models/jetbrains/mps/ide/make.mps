@@ -2179,7 +2179,7 @@
               <ref role="3cqZAo" node="311V6Zi0r8d" resolve="icon" />
             </node>
             <node concept="liA8E" id="311V6Zi0zx9" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~JComponent.setToolTipText(java.lang.String)" resolve="setToolTipText" />
+              <ref role="37wK5l" to="qqrq:~JBLabel.setToolTipText(java.lang.String)" resolve="setToolTipText" />
               <node concept="37vLTw" id="311V6Zi0zxa" role="37wK5m">
                 <ref role="3cqZAo" node="311V6Zi0bGd" resolve="tooltipMessage" />
               </node>

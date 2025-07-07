@@ -38,11 +38,4 @@ public interface CachingFileSystem extends jetbrains.mps.vfs.FileSystem {
   void addListener(@NotNull FileSystemListener listener);
 
   void removeListener(@NotNull FileSystemListener listener);
-
-  /**
-   * @deprecated replaced with per-project {@code org.jetbrains.mps.project.Project#reconcileProjectFiles(Iterable<IFile>)}
-   *             present implementation is no-op
-   */
-@Deprecated(since = "2020.2", forRemoval = true)
-  default void scheduleUpdateForWrittenFiles(Iterable<IFile> writtenFiles) {};
 }

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="24oasrl2lkjpnq7hnnt0a575ka91nzo">
-  <files names="AddNewLineAfterTextNodeReference_Test.java:AddNewLineBeforeTextNodeReference_Test.java:AddSpaceAfterTextNodeReference_Test.java:AddSpaceBeforeTextNodeReference_Test.java:BackspaceSpaceBetweenTextNodeReferences_Test.java:BackspaceSpaceBetweenWordAndTextNodeReference1_Test.java:BackspaceSpaceBetweenWordAndTextNodeReference2_Test.java:BackspaceSpaceBetweenWrapperAndTextNodeReference_Test.java:DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference2_Test.java:DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference_Test.java" />
-</product>
-

@@ -16,7 +16,6 @@
 package jetbrains.mps.plugins;
 
 import com.intellij.configurationStore.JdomSerializer;
-import com.intellij.ide.ApplicationInitializedListener;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.application.ApplicationManager;
@@ -32,7 +31,9 @@ import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.wm.ex.WindowManagerEx;
 import com.intellij.openapi.wm.impl.ProjectFrameHelper;
-import jetbrains.mps.classloading.ClassLoaderManager;
+import com.intellij.util.EventDispatcher;
+import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.messages.Topic;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
@@ -40,7 +41,6 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import jetbrains.mps.plugins.projectplugins.BaseProjectPlugin;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.runtime.ModuleDeploymentChange;
 import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
@@ -48,8 +48,6 @@ import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import jetbrains.mps.util.JavaNameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.ModelAccess;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.lang.reflect.InvocationTargetException;
@@ -76,43 +74,38 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <p>
  * It listens for class loading events, calculate the plugin contributors which need to be updated and notifies these managers.
  * <p>
+ * This is an application service. There's a `PluginReloadingListener` topic with reloading events dispatched.
  */
 public class PluginLoaderRegistry implements Disposable {
   private static final Logger LOG = Logger.getLogger(PluginLoaderRegistry.class);
 
-  private final ClassLoaderManager myClassLoaderManager;
-  private final ModelAccess myModelAccess;
-
   private final SchedulingUpdateListener myClassesListener = new SchedulingUpdateListener();
   private final Set<PluginContributor> myCurrentContributors = new LinkedHashSet<>();
   private final Set<PluginLoader> myCurrentLoaders = new LinkedHashSet<>();
-  private final List<PluginReloadingListener> myReloadingListeners = new CopyOnWriteArrayList<>();
+  @Topic.AppLevel
+  public static final Topic<PluginReloadingListener> TOPIC = Topic.create("MPS Plugin Management", PluginReloadingListener.class);
+  private final EventDispatcher<PluginReloadingListener> myReloadingListeners = EventDispatcher.create(PluginReloadingListener.class);
 
   private final AtomicBoolean myUpdateIsScheduledInEDT = new AtomicBoolean(false);
   private final AtomicBoolean myAppInitialized = new AtomicBoolean();
 
   public static PluginLoaderRegistry getInstance() {
-    return ApplicationManager.getApplication().getComponent(PluginLoaderRegistry.class);
+    return ApplicationManager.getApplication().getService(PluginLoaderRegistry.class);
   }
 
   public PluginLoaderRegistry() {
-    // FIXME Now, PluginLoaderRegistry is app component. Seems easy to convert to a
-    //       service, however, doesn't make too much sense unless we convert
-    //       ApplicationPluginManager and ProjectPluginManager as well.
+    // XXX Now, PluginLoaderRegistry is app service, although indeed doesn't make too much
+    //     sense unless we convert ApplicationPluginManager and ProjectPluginManager as well.
     //       Switching to extension points for these managers might be an option
     //       although I don't clearly see how to approach per-project PPM and app-wide
     //       APM in a single extpoint (two would be too much, imo).
-    // Note, registerAppInitListener fits service story quite well - it would be the
-    // listener to activate PLR service by issuing an update.
+    // Note, MPSApplicationInitializedListener fits service story quite well - it would be the
+    // listener to activate PLR service by issuing an update (see uses of #signalAppInitialized).
     MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
     Platform mpsPlatform = coreComponents.getPlatform();
-    myClassLoaderManager = mpsPlatform.findComponent(ClassLoaderManager.class);
-    SRepository repo = mpsPlatform.findComponent(MPSModuleRepository.class);
-    assert repo != null;
-    myModelAccess = repo.getModelAccess();
-
-    assert myCurrentContributors.isEmpty();
     mpsPlatform.findComponent(LanguageRegistry.class).addRegistryListener(myClassesListener);
+    final MessageBusConnection mbc = ApplicationManager.getApplication().getMessageBus().connect(this);
+    mbc.subscribe(TOPIC, myReloadingListeners.getMulticaster());
   }
 
   void signalAppInitialized() {
@@ -138,37 +131,39 @@ public class PluginLoaderRegistry implements Disposable {
   }
 
   private void fireAfterPluginsLoaded(List<PluginContributor> contributorsToLoad) {
-    if (LOG.isDebugLevel()) {
-      final String m = "Dispatch %d contributors loaded to %d listeners";
-      LOG.debug(String.format(m, contributorsToLoad.size(), myReloadingListeners.size()));
-    }
     if (contributorsToLoad.isEmpty()) {
       return;
     }
-    for (PluginReloadingListener listener : myReloadingListeners) {
-      listener.afterPluginsLoaded(contributorsToLoad);
+    if (LOG.isDebugLevel()) {
+      // there's no way to tell the number of actual topic listeners, therefore we
+      // assume there's at least one to perform dispatch, and optionally those registered directly
+      final String m = "Dispatch %d contributors loaded to %d or more listeners";
+      LOG.debug(String.format(m, contributorsToLoad.size(), 1 + myReloadingListeners.getListeners().size()));
     }
+    getPublisher().afterPluginsLoaded(contributorsToLoad);
   }
 
   private void fireBeforePluginsUnloaded(List<PluginContributor> contributorsToUnload) {
-    if (LOG.isDebugLevel()) {
-      final String m = "Dispatch %d contributors unloaded to %d listeners";
-      LOG.debug(String.format(m, contributorsToUnload.size(), myReloadingListeners.size()));
-    }
     if (contributorsToUnload.isEmpty()) {
       return;
     }
-    for (PluginReloadingListener listener : myReloadingListeners) {
-      listener.beforePluginsUnloaded(contributorsToUnload);
+    if (LOG.isDebugLevel()) {
+      final String m = "Dispatch %d contributors unloaded to %d or more listeners";
+      LOG.debug(String.format(m, contributorsToUnload.size(), 1 + myReloadingListeners.getListeners().size()));
     }
+    getPublisher().beforePluginsUnloaded(contributorsToUnload);
   }
 
   public void addReloadingListener(@NotNull PluginReloadingListener listener) {
-    myReloadingListeners.add(listener);
+    myReloadingListeners.addListener(listener);
   }
 
   public void removeReloadingListener(PluginReloadingListener listener) {
-    myReloadingListeners.remove(listener);
+    myReloadingListeners.removeListener(listener);
+  }
+
+  private static PluginReloadingListener getPublisher() {
+    return ApplicationManager.getApplication().getMessageBus().syncPublisher(TOPIC);
   }
 
   /**
@@ -463,28 +458,9 @@ public class PluginLoaderRegistry implements Disposable {
         myUpdateIsScheduledInEDT.compareAndSet(true, false);
         monitor.start("Reloading MPS Plugins", 6);
         ProgressManager.checkCanceled();
-        // model access here is for MPSModuleRepository singleton. While it's ok now, when project repo
-        // shares MA with the global one, it's not quite good as generally we load plugins from project modules, too
-        // and MA of global repo is not the one to lock here. However, if we eventually move to MPSModuleRepository
-        // being the one responsible for modules with CL (aka 'deployed'), this approach might be still valid.
-//        myModelAccess.runReadAction(() -> {
-          // XXX readAction here is necessary for runTransaction not to get into deadlock (uses of runTransaction from CLM
-          //     usually got writeAction already, so if a read attempts to start inside runTransaction, we could face a deadlock
-          //     (first thread holds write and waits for transaction, another got transaction, and waiting for read).
-          //     However, once we move to ModuleRuntime, I expect this code not to require model access at all. Nevertheless, in case
-          //     there's some bad code (like SNodeOperations.getNode, accessing global repo), need to switch from lock() to tryLock()
-          //     for scenarios inside CLM to be ready for possible abuse and to prevent deadlock.
-          //     If necessary, can grab read lock inside CLM.runTransaction as it has knowledge of the repo it deals with.
-          // FWIW, ModuleCL.loadOwnClass->loadClass->loadFromDeps may end up in RootClassloaderLookup for an SModule, which
-          // requires MODEL READ. FIXME I don't think CL shall depend on model read, we have no means to guarantee loading of a
-          //                       class would happen in a thread that grabs any model access at all.
-          // Another curious point is that reload of a module happens in 2 CLM transaction but within single model write,
-          // see CLM.doReloadModules and transactions in #unloadModules() + #preLoadModules. I'm not quite sure there's
-          // a reason to be explicit about CLM transactions here (now that we listen to LanguageRegistry here), but given the fact
-          // class loading is picky about SModule state (see RootClassloaderLookup mention, above), I feel we shall keep it for now,
-          // until LanguageRegistry notification mechanism becomes mainstream and demand for CLs w/o model read would force us to
-          // make true CLs
-//          myClassLoaderManager.runTransaction(() -> {
+        // FWIW, here used to be quite an interesting log explaining why we needed model read and CLM transactions, and
+        //       why it's not true anymore.
+        //
             // NOTE: when we call #reset we are bound to process those changes, otherwise we lose them
             // for instance, that is the reason we cannot call #checkCancelled here
             // FIXME although with our own code we can have sort of 'staged' reset here, and 'revert' reset() in case
@@ -546,8 +522,6 @@ public class PluginLoaderRegistry implements Disposable {
             } finally {
               snapshot.invokePostRunnables();
             }
-//          });
-//        });
       } catch (VirtualMachineError e) {
         throw e;
       } catch (ProcessCanceledException ignored) {

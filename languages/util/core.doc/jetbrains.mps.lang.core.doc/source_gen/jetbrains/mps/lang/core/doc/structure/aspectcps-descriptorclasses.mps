@@ -218,7 +218,7 @@
       <property role="eg7rD" value="false" />
       <property role="34CwA1" value="false" />
       <property role="3TUv4t" value="false" />
-      <property role="TrG5h" value="props_DocumentedNodeAnnotation" />
+      <property role="TrG5h" value="props_DocumentationAnnotation" />
       <node concept="3uibUv" id="6" role="1tU5fm">
         <ref role="3uigEE" to="ze1i:~ConceptPresentation" resolve="ConceptPresentation" />
       </node>
@@ -300,7 +300,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
                         <uo k="s:originTrace" v="n:4293932951803486388" />
                         <node concept="Xl_RD" id="J" role="37wK5m">
-                          <property role="Xl_RC" value="DocumentedNodeAnnotation" />
+                          <property role="Xl_RC" value="DocumentationAnnotation" />
                           <uo k="s:originTrace" v="n:4293932951803486388" />
                         </node>
                         <node concept="M6xJ_" id="K" role="lGtFl">
@@ -329,7 +329,7 @@
                         </node>
                       </node>
                       <node concept="37vLTw" id="P" role="37vLTJ">
-                        <ref role="3cqZAo" node="2" resolve="props_DocumentedNodeAnnotation" />
+                        <ref role="3cqZAo" node="2" resolve="props_DocumentationAnnotation" />
                       </node>
                     </node>
                   </node>
@@ -337,19 +337,19 @@
                 <node concept="3clFbC" id="$" role="3clFbw">
                   <node concept="10Nm6u" id="S" role="3uHU7w" />
                   <node concept="37vLTw" id="T" role="3uHU7B">
-                    <ref role="3cqZAo" node="2" resolve="props_DocumentedNodeAnnotation" />
+                    <ref role="3cqZAo" node="2" resolve="props_DocumentationAnnotation" />
                   </node>
                 </node>
               </node>
               <node concept="3cpWs6" id="y" role="3cqZAp">
                 <node concept="37vLTw" id="U" role="3cqZAk">
-                  <ref role="3cqZAo" node="2" resolve="props_DocumentedNodeAnnotation" />
+                  <ref role="3cqZAo" node="2" resolve="props_DocumentationAnnotation" />
                 </node>
               </node>
             </node>
             <node concept="10M0yZ" id="w" role="3Kbmr1">
               <ref role="1PxDUh" node="13" resolve="LanguageConceptSwitch" />
-              <ref role="3cqZAo" node="15" resolve="DocumentedNodeAnnotation" />
+              <ref role="3cqZAo" node="15" resolve="DocumentationAnnotation" />
             </node>
           </node>
         </node>
@@ -405,7 +405,7 @@
       <property role="2dlcS1" value="false" />
       <property role="2dld4O" value="false" />
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="DocumentedNodeAnnotation" />
+      <property role="TrG5h" value="DocumentationAnnotation" />
       <node concept="3Tm1VV" id="1f" role="1B3o_S" />
       <node concept="10Oyi0" id="1g" role="1tU5fm" />
       <node concept="3cmrfG" id="1h" role="33vP2m">
@@ -447,7 +447,7 @@
                 <property role="11gdj1" value="3b971d44f99760b4L" />
               </node>
               <node concept="37vLTw" id="1y" role="37wK5m">
-                <ref role="3cqZAo" node="15" resolve="DocumentedNodeAnnotation" />
+                <ref role="3cqZAo" node="15" resolve="DocumentationAnnotation" />
               </node>
             </node>
           </node>
@@ -533,12 +533,12 @@
       <property role="eg7rD" value="false" />
       <property role="34CwA1" value="false" />
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="myConceptDocumentedNodeAnnotation" />
+      <property role="TrG5h" value="myConceptDocumentationAnnotation" />
       <node concept="3uibUv" id="2e" role="1tU5fm">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
       <node concept="1rXfSq" id="2f" role="33vP2m">
-        <ref role="37wK5l" node="2d" resolve="createDescriptorForDocumentedNodeAnnotation" />
+        <ref role="37wK5l" node="2d" resolve="createDescriptorForDocumentationAnnotation" />
       </node>
     </node>
     <node concept="312cEg" id="1Y" role="jymVt">
@@ -637,7 +637,7 @@
             <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
             <node concept="37vLTw" id="2O" role="37wK5m">
-              <ref role="3cqZAo" node="1X" resolve="myConceptDocumentedNodeAnnotation" />
+              <ref role="3cqZAo" node="1X" resolve="myConceptDocumentationAnnotation" />
             </node>
           </node>
         </node>
@@ -671,13 +671,13 @@
             <node concept="3clFbS" id="31" role="3Kbo56">
               <node concept="3cpWs6" id="33" role="3cqZAp">
                 <node concept="37vLTw" id="34" role="3cqZAk">
-                  <ref role="3cqZAo" node="1X" resolve="myConceptDocumentedNodeAnnotation" />
+                  <ref role="3cqZAo" node="1X" resolve="myConceptDocumentationAnnotation" />
                 </node>
               </node>
             </node>
             <node concept="10M0yZ" id="32" role="3Kbmr1">
               <ref role="1PxDUh" node="13" resolve="LanguageConceptSwitch" />
-              <ref role="3cqZAo" node="15" resolve="DocumentedNodeAnnotation" />
+              <ref role="3cqZAo" node="15" resolve="DocumentationAnnotation" />
             </node>
           </node>
           <node concept="2OqwBi" id="2Z" role="3KbGdf">
@@ -740,7 +740,7 @@
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="createDescriptorForDocumentedNodeAnnotation" />
+      <property role="TrG5h" value="createDescriptorForDocumentationAnnotation" />
       <node concept="3clFbS" id="3j" role="3clF47">
         <node concept="3cpWs8" id="3m" role="3cqZAp">
           <node concept="3cpWsn" id="3u" role="3cpWs9">
@@ -755,7 +755,7 @@
                   <property role="Xl_RC" value="jetbrains.mps.lang.core.doc" />
                 </node>
                 <node concept="Xl_RD" id="3z" role="37wK5m">
-                  <property role="Xl_RC" value="DocumentedNodeAnnotation" />
+                  <property role="Xl_RC" value="DocumentationAnnotation" />
                 </node>
                 <node concept="11gdke" id="3$" role="37wK5m">
                   <property role="11gdj1" value="343f8205dc88465bL" />
@@ -872,7 +872,7 @@
                           <property role="11gdj1" value="9b92103b95ca8c0cL" />
                         </node>
                         <node concept="11gdke" id="4i" role="37wK5m">
-                          <property role="11gdj1" value="38518aff8a105fd6L" />
+                          <property role="11gdj1" value="270e002425f43123L" />
                         </node>
                       </node>
                     </node>

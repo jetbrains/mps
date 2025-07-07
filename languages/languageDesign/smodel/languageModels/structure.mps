@@ -2,7 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)">
   <persistence version="9" />
   <languages>
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -3201,6 +3201,27 @@
     <property role="TrG5h" value="Node_PresentationOperation" />
     <property role="34LRSv" value="presentation" />
     <property role="R4oN_" value="string representation" />
+    <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
+  </node>
+  <node concept="1TIwiD" id="lhC5EIKrMB">
+    <property role="EcuMT" value="383263754642635943" />
+    <property role="3GE5qa" value="operation.node" />
+    <property role="TrG5h" value="Node_SetUID" />
+    <property role="34LRSv" value="set uid" />
+    <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
+    <node concept="1TJgyj" id="lhC5EIKs5I" role="1TKVEi">
+      <property role="IQ2ns" value="383263754642637166" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="value" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="lhC5EIKpoC">
+    <property role="EcuMT" value="383263754642626088" />
+    <property role="3GE5qa" value="operation.node" />
+    <property role="TrG5h" value="Node_GetUID" />
+    <property role="34LRSv" value="get uuid" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>
 </model>

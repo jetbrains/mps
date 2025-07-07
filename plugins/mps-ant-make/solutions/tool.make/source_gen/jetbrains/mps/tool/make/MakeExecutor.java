@@ -65,8 +65,9 @@ public final class MakeExecutor implements Runnable {
     //      It seems it doesn't add too much of a value, as most of the stuff happens outside as it's here
     final MakeSession session = new MakeSession(project, myMessageHandler, cleanMakeParam);
     // this is what WorkbenchMakeService does, as well as 
+    // FIXME and this is wrong (to do it in WMS). It's ok to do it here or better yet, move it as a default (i.e. no parameter explicitly set) right into JavaCompile facet
     JavaCompileFacetInitializer jcfi = new JavaCompileFacetInitializer().skipCompilation(false);
-    jcfi.setJavaCompileOptions(JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(project));
+    jcfi.setJavaCompileOptions(myEnvironment.getPlatform().findComponent(JavaCompilerOptionsComponent.class).getJavaCompilerOptions(project));
     IScriptController ctl = new IScriptController.Stub2(session, jcfi);
     // resources from project
     MakeSequence seq = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
@@ -102,7 +103,7 @@ public final class MakeExecutor implements Runnable {
     } else {
       options = new JavaCompilerOptions(parsedJavaVersion);
     }
-    JavaCompilerOptionsComponent.getInstance().setJavaCompilerOptions(project, options);
+    myEnvironment.getPlatform().findComponent(JavaCompilerOptionsComponent.class).setJavaCompilerOptions(project, options);
   }
 
   private void setupGenerationProperties() {

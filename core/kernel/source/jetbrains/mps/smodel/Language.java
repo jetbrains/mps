@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -90,7 +90,6 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     LanguageDescriptor moduleDescriptor = getModuleDescriptor();
     moduleDescriptor.getExtendedLanguages().add(langRef);
 
-    dependenciesChanged();
     setChanged();
 
     fireChanged();
@@ -161,25 +160,6 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     return Collections.unmodifiableSet(myLanguageDescriptor.getRuntimeModules());
   }
 
-  public void validateExtends() {
-    List<SModuleReference> remove = new ArrayList<>();
-    for (SModuleReference ref : myLanguageDescriptor.getExtendedLanguages()) {
-      if (getModuleName().equals(ref.getModuleName())) {
-        remove.add(ref);
-      }
-    }
-
-    if (!remove.isEmpty()) {
-      myLanguageDescriptor.getExtendedLanguages().removeAll(remove);
-      setChanged();
-    }
-  }
-
-  @Override
-  public void onModuleLoad() {
-    super.onModuleLoad();
-    validateExtends();
-  }
 
   @Override
   public void attach(@NotNull SRepository repository) {
@@ -234,8 +214,7 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
         // looking for the existing generator with same ID
         Generator nextGeneratorCandidate = it.next();
         GeneratorDescriptor nextGeneratorCandidateDescriptor = nextGeneratorCandidate.getModuleDescriptor();
-        if (Objects.equals(nextGeneratorCandidateDescriptor.getNamespace(), nextDescriptor.getNamespace()) &&
-            Objects.equals(nextGeneratorCandidateDescriptor.getId(), nextDescriptor.getId())) {
+        if (Objects.equals(nextGeneratorCandidateDescriptor.getId(), nextDescriptor.getId())) {
           nextGenerator = nextGeneratorCandidate;
           it.remove();
           break;

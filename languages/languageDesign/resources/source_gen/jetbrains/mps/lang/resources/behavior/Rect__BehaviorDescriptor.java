@@ -14,15 +14,15 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.IconCreationUtil;
-import java.awt.Color;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.resources.enumMigration.Size_MigrationUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import java.awt.Color;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class Rect__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, "jetbrains.mps.lang.resources.structure.Rect");
@@ -36,8 +36,8 @@ public final class Rect__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static byte[] getImageForGeneration_id2p1v3tObywX(@NotNull final SNode __thisNode__) {
     return IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> {
-      int centerX = dc.width / 2;
-      int centerY = dc.height / 2;
+      int centerX = (int) (((float) dc.width) - (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2)) / 2;
+      int centerY = (int) (((float) dc.height) - (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2)) / 2;
 
       Color fillColor = new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$VwDK)));
       if ((SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37) == null)) {
@@ -51,7 +51,7 @@ public final class Rect__BehaviorDescriptor extends BaseBHDescriptor {
         // inner
         int border = 2;
         dc.g.setColor(fillColor);
-        dc.g.fillRect(centerX, centerY, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) - border) * 2, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) - border) * 2);
+        dc.g.fillRect(centerX + border, centerY + border, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) - border) * 2, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) - border) * 2);
       }
     });
   }
@@ -102,12 +102,12 @@ public final class Rect__BehaviorDescriptor extends BaseBHDescriptor {
     return CONCEPT;
   }
 
+  private static final class PROPS {
+    /*package*/ static final SProperty r$s2ZM = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r");
+  }
+
   private static final class LINKS {
     /*package*/ static final SContainmentLink fillColor$VwDK = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor");
     /*package*/ static final SContainmentLink borderColor$VA37 = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty r$s2ZM = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r");
   }
 }

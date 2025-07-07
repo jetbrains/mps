@@ -2,13 +2,13 @@
 <solution name="DiffUtils" uuid="3669929d-7269-4de9-a160-f80b04ef909d" moduleVersion="0">
   <models>
     <modelRoot contentPath="${lib_ext}" type="java_classes">
-      <sourceRoot location="diffutils-1.2.1.jar" />
+      <sourceRoot location="java-diff-utils-4.15.jar" />
     </modelRoot>
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
-      <library location="${lib_ext}/diffutils-1.2.1.jar" />
+      <library location="${lib_ext}/java-diff-utils-4.15.jar" />
     </facet>
   </facets>
   <dependencies>

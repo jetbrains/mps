@@ -37,16 +37,11 @@ import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Deque;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class RulesManager {
+public class RulesManager extends AbstractLanguageProcessor {
 
   private final RuleSet<InferenceRule_Runtime> myInferenceRules = new CheckingRuleSet<>();
   private final RuleSet<SubtypingRule_Runtime> mySubtypingRules = new RuleSet<>();
@@ -60,136 +55,48 @@ public class RulesManager {
   private final OverloadedOperationsManager myOverloadedOperationsManager;
 
   private static final Logger LOG = Logger.getLogger(RulesManager.class);
-  private volatile boolean myNeedsLoading = false;
-  private Set<LanguageRuntime> myLoadedLanguages = new HashSet<>();
-  private Set<LanguageRuntime> myLanguagesToLoad = new HashSet<>();
 
   public RulesManager() {
     myOverloadedOperationsManager = new OverloadedOperationsManager();
   }
 
-  public void loadLanguages(Iterable<LanguageRuntime> languages) {
-    for (LanguageRuntime language : languages) {
-      assert !myLoadedLanguages.contains(language);
-      myLanguagesToLoad.add(language);
-      myNeedsLoading = true;
+  @Override
+  protected boolean processLoadedLangugage(LanguageRuntime language, TObjectIntHashMap<String> languageRanks) {
+    IHelginsDescriptor typesystem = null;
+    Throwable error = null;
+    try {
+      typesystem = language.getAspect(IHelginsDescriptor.class);
+    } catch (LinkageError linkageError) {
+      LOG.error("Problems with creating typesystem descriptor " + linkageError.getMessage());
+      error = linkageError;
+    } catch (Throwable t) {
+      LOG.error("Error while loading language: " + language.getNamespace(), t);
+      error = t;
     }
-  }
-
-  private void ensureAllRulesLoaded() {
-    if (!myNeedsLoading) {
-      return;
+    if (typesystem == null) {
+      return error == null; // no typesystem aspect or the error has been caught elsewhere
     }
-    synchronized (this) {
-      if (!myNeedsLoading) {
-        return;
-      }
-
-      List<LanguageRuntime> sortedLanguages = sortedLanguageRuntimes(Stream.concat(myLoadedLanguages.stream(), myLanguagesToLoad.stream()));
-      TObjectIntHashMap<String> languageRanks = new TObjectIntHashMap<>(sortedLanguages.size());
-      int rank = 0;
-      for (LanguageRuntime lang : sortedLanguages) {
-        languageRanks.put(lang.getNamespace(), rank++);
-      }
-
-      for (LanguageRuntime language : myLanguagesToLoad) {
-        assert !myLoadedLanguages.contains(language);
-        myLoadedLanguages.add(language);
-
-        IHelginsDescriptor typesystem = null;
-        try {
-          typesystem = language.getAspect(IHelginsDescriptor.class);
-        } catch (LinkageError linkageError) {
-          LOG.warning("Problems with creating typesystem descriptor " + linkageError.getMessage());
-        } catch (Throwable t) {
-          LOG.error("Error while loading language: " + language.getNamespace(), t);
-        }
-        if (typesystem == null) {
-          continue;
-        }
-        try {
-          myInferenceRules.addRuleSetItem(typesystem.getInferenceRules(), languageRanks::get);
-          mySubtypingRules.addRuleSetItem(typesystem.getSubtypingRules());
-          mySubstituteTypeRules.addRuleSetItem(typesystem.getSubstituteTypeRules());
-          Set<ComparisonRule_Runtime> comparisonRule_runtimes = typesystem.getComparisonRules();
-          myComparisonRules.addRuleSetItem(comparisonRule_runtimes, languageRanks::get);
-          myReplacementRules.addRuleSetItem(typesystem.getEliminationRules(), languageRanks::get);
-          myVariableConverters.addAll(typesystem.getVariableConverters());
-          myNonTypeSystemRules.addRuleSetItem(typesystem.getNonTypesystemRules());
-          myOverloadedOperationsManager.addOverloadedOperationsTypeProviders(typesystem.getOverloadedOperationsTypesProviders());
-        } catch (RuntimeException t) {
-          // ignore ?!
-        }
-      }
-
-      myLanguagesToLoad = new HashSet<>();
-      myNeedsLoading = false;
+    try {
+      myInferenceRules.addRuleSetItem(typesystem.getInferenceRules(), languageRanks::get);
+      mySubtypingRules.addRuleSetItem(typesystem.getSubtypingRules());
+      mySubstituteTypeRules.addRuleSetItem(typesystem.getSubstituteTypeRules());
+      Set<ComparisonRule_Runtime> comparisonRule_runtimes = typesystem.getComparisonRules();
+      myComparisonRules.addRuleSetItem(comparisonRule_runtimes, languageRanks::get);
+      myReplacementRules.addRuleSetItem(typesystem.getEliminationRules(), languageRanks::get);
+      myVariableConverters.addAll(typesystem.getVariableConverters());
+      myNonTypeSystemRules.addRuleSetItem(typesystem.getNonTypesystemRules());
+      myOverloadedOperationsManager.addOverloadedOperationsTypeProviders(typesystem.getOverloadedOperationsTypesProviders());
+    } catch (RuntimeException t) {
+      LOG.error("Error while loading language: " + language.getNamespace(), t);
+      clearCache();
+      return false;
     }
-  }
-
-  /**
-   * Returns the list of all languages topologically sorted from most specific to most abstract
-   */
-  private List<LanguageRuntime> sortedLanguageRuntimes(Stream<LanguageRuntime> allLanguages) {
-    // depth-first search using "extends" relation
-    LinkedList<LanguageRuntime> sorted = new LinkedList<>();
-    Deque<LanguageRuntime> stack = new LinkedList<>();
-    Set<LanguageRuntime> finished = new HashSet<>();
-    Set<LanguageRuntime> visited = new HashSet<>();
-
-    List<LanguageRuntime> languageRuntimes = allLanguages
-                                                 .sorted(Comparator.comparingInt(System::identityHashCode))
-                                                 .collect(Collectors.toList());
-    for (LanguageRuntime next : languageRuntimes) {
-      if (!finished.contains(next)) {
-        stack.push(next);
-        while (!stack.isEmpty()) {
-          LanguageRuntime peek = stack.peek();
-          if (finished.contains(peek)) {
-            stack.pop();
-            continue;
-          }
-          if (visited.contains(peek)) {
-            sorted.addFirst(peek);
-            finished.add(peek);
-            visited.remove(peek);
-            stack.pop();
-            continue;
-          }
-          visited.add(peek);
-
-          List<LanguageRuntime> extended = peek.getExtendedLanguages()
-                                               .stream()
-                                               .sorted(Comparator.comparingInt(System::identityHashCode))
-                                               .collect(Collectors.toList());
-          for (LanguageRuntime ext : extended) {
-            if (!finished.contains(ext) && !visited.contains(ext)) {
-              stack.push(ext);
-            }
-          }
-        }
-      }
-    }
-
-    return sorted;
+    return true;
   }
 
 
-  public void unloadLanguages(Iterable<LanguageRuntime> languages) {
-    for (LanguageRuntime language : languages) {
-      if (myLoadedLanguages.contains(language)) {
-        unloadLoadedAllLoaded();
-      }
-      myLanguagesToLoad.remove(language);
-      myNeedsLoading = true;
-    }
-  }
-
-  private void unloadLoadedAllLoaded() {
-
-    myLanguagesToLoad.addAll(myLoadedLanguages);
-    myLoadedLanguages = new HashSet<>();
-
+  @Override
+  protected void clearCache() {
     // TODO: cleanup
     myInferenceRules.clear();
     mySubtypingRules.clear();
@@ -202,7 +109,7 @@ public class RulesManager {
   }
 
   public IVariableConverter_Runtime getVariableConverter(SNode context, String role, SNode variable, boolean isAggregation) {
-    ensureAllRulesLoaded();
+    ensureUpToDate();
     for (IVariableConverter_Runtime converter : myVariableConverters) {
       if (converter.isApplicable(context, role, variable, isAggregation)) return converter;
     }
@@ -210,7 +117,7 @@ public class RulesManager {
   }
 
   public List<Pair<InferenceRule_Runtime, IsApplicableStatus>> getInferenceRules(final SNode node) {
-    ensureAllRulesLoaded();
+    ensureUpToDate();
     List<Pair<InferenceRule_Runtime, IsApplicableStatus>> result = new LinkedList<>();
     Set<InferenceRule_Runtime> ruleSet;
     ruleSet = myInferenceRules.getRules(node);
@@ -227,7 +134,7 @@ public class RulesManager {
   }
 
   public List<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>> getNonTypesystemRules(SNode node) {
-    ensureAllRulesLoaded();
+    ensureUpToDate();
     List<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>> result = new ArrayList<>();
     List<NonTypesystemRule_Runtime> activeForOverride = new ArrayList<>();
     Set<NonTypesystemRule_Runtime> ruleSet;
@@ -254,7 +161,7 @@ public class RulesManager {
   }
 
   public List<Pair<SubtypingRule_Runtime, IsApplicableStatus>> getSubtypingRules(final SNode node, final boolean isWeak) {
-    ensureAllRulesLoaded();
+    ensureUpToDate();
     List<Pair<SubtypingRule_Runtime, IsApplicableStatus>> result = new LinkedList<>();
     for (SubtypingRule_Runtime rule : mySubtypingRules.getRules(node)) {
       if ((isWeak || !rule.isWeak())) {
@@ -268,7 +175,7 @@ public class RulesManager {
   }
 
   public List<Pair<SubstituteType_Runtime, IsApplicableStatus>> getSubstituteTypeRules(final SNode node) {
-    ensureAllRulesLoaded();
+    ensureUpToDate();
     List<Pair<SubstituteType_Runtime, IsApplicableStatus>> result = new LinkedList<>();
     for (SubstituteType_Runtime rule : mySubstituteTypeRules.getRules(node)) {
       IsApplicableStatus status = rule.isApplicableAndPattern(node);
@@ -280,7 +187,7 @@ public class RulesManager {
   }
 
   public List<Pair<ComparisonRule_Runtime, IsApplicable2Status>> getComparisonRules(final SNode node1, final SNode node2, final boolean isWeak) {
-    ensureAllRulesLoaded();
+    ensureUpToDate();
     List<Pair<ComparisonRule_Runtime, IsApplicable2Status>> result = new LinkedList<>();
     Set<ComparisonRule_Runtime> ruleSet = myComparisonRules.getRules(node1, node2);
     for (ComparisonRule_Runtime rule : ruleSet) {
@@ -294,9 +201,8 @@ public class RulesManager {
     return result;
   }
 
-
   public List<Pair<InequationReplacementRule_Runtime, IsApplicable2Status>> getReplacementRules(final SNode node1, final SNode node2) {
-    ensureAllRulesLoaded();
+    ensureUpToDate();
     List<Pair<InequationReplacementRule_Runtime, IsApplicable2Status>> result = new LinkedList<>();
     Set<InequationReplacementRule_Runtime> ruleSet = myReplacementRules.getRules(node1, node2);
     for (InequationReplacementRule_Runtime rule : ruleSet) {
@@ -315,13 +221,13 @@ public class RulesManager {
 
   @Deprecated(forRemoval = true)
   public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType, IRuleConflictWarningProducer warningProducer) {
-    ensureAllRulesLoaded();
+    ensureUpToDate();
     return myOverloadedOperationsManager.getOperationType(operation, leftOperandType, rightOperandType, warningProducer, TypeChecker.getInstance()
                                                                                                                                     .getTypeCheckerHelper());
   }
 
   public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType, IRuleConflictWarningProducer warningProducer, TypeCheckerHelper typeCheckerHelper) {
-    ensureAllRulesLoaded();
+    ensureUpToDate();
     return myOverloadedOperationsManager.getOperationType(operation, leftOperandType, rightOperandType, warningProducer, typeCheckerHelper);
   }
 }
