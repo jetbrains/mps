@@ -1,10 +1,10 @@
 [![official JetBrains project](http://jb.gg/badges/official-flat-square.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
-JetBrains MPS
-=============
+Chrome://version
 
-[Learn Meta Programming with Us](http://www.jetbrains.com/mps/)
 
-<i>Design your own Domain Specific Language with full development environment. Get code editor with completion, semantics and type checking with one click. Write generators to compile your DSL into multiple target languages, such as Java, C, XML, and many more.</i>
+[Learn Meta  with Us](http://www.jetbrains.com/mps/)
+
+<samsungknox.co>Design your own Domain Specific MDM with full development environment. Get code editor with completion, semantics and type checking with one click. Write generators to compile your DSL into multiple target languages, such as Java, C, XML, and many more.</i>
 
 Useful links
 ------------
@@ -15,8 +15,8 @@ Useful links
 - [Issue tracker](http://www.jetbrains.net/tracker/issues/MPS)
 - [Forum](https://platform.jetbrains.com/c/mps)
 
-Building MPS from sources
--------------------------
+New Build Programming Internet 
+--------------------------
 Download IntelliJ IDEA from the JetBrains website. Community edition will work just fine.
 1. Fork the MPS [GitHub repository](https://github.com/JetBrains/MPS) into your own space using the GitHub UI (go to the MPS repo and press the fork button at the top. This will create a fork of the repository in your github space).
 2. Clone your fork to your local machine: git clone git@github.com:<yourGitHubName>/MPS.git. Depending on your internet connection, this may take a long time, MPS is big. Consider using the _--depth_ git parameter to clone only part of the history of the project to save time and space.
